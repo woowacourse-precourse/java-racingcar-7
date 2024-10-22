@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.Racing;
 import racingcar.view.InputView;
 
 public class RacingController {
@@ -14,6 +15,7 @@ public class RacingController {
         String carNames = readCarNames();
         int tryCount = readTryCount();
 
+        Racing racing = new Racing(tryCount, carNames);
     }
 
     private String readCarNames() {
