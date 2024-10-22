@@ -8,19 +8,29 @@ public class OutputView {
 
 
     public static void printResult(List<Car> cars) {
-        System.out.println("\n 실행 결과");
+        System.out.println("\n실행 결과");
         for (Car car : cars) {
-            System.out.printf("%s : %s\n\n",car.getName(),"-".repeat(car.getMove()));
+            System.out.printf("%s : %s\n",car.getName(), generateMovement(car.getMove()));
         }
     }
 
+    private static String generateMovement(int move) {
+        return "-".repeat(move);
+    }
+
     public static void printWinner(List<Car> cars) {
+        int max = Collections.max(cars).getMove();
+        List<String> results = getWinners(cars, max);
+
+        System.out.printf("최종 우승자 : %s \n", String.join(", ", results) );
+
+    }
+
+    private static List<String> getWinners(List<Car> cars, int max) {
         List<String> results = cars.stream()
-                .filter(c -> c.getMove() >= Collections.max(cars).getMove())
+                .filter(c -> c.getMove() >= max)
                 .map(Car::getName)
                 .toList();
-
-        System.out.printf("최종 우승자 : %s ", String.join(", ", results) );
-
+        return results;
     }
 }

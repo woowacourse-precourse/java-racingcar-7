@@ -41,7 +41,7 @@ public class CarService {
     }
 
     private void validCarsRange() {
-        if (cars.size() <= MIN_CARS_RANGE || cars.size() >= MAX_CARS_RANGE) {
+        if (cars.size() < MIN_CARS_RANGE || cars.size() > MAX_CARS_RANGE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CARS_RANGE.getMessage());
         }
     }
