@@ -18,4 +18,9 @@ public class RacingCarState {
     }
 
 
+    public void tryToMove(MoveCondition moveCondition) {
+        if(moveCondition.isMovable(this)){
+            position++;
+        }
+    }
 }
