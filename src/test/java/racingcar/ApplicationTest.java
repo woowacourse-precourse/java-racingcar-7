@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("입력한 시도 횟수가 0 일 때")
     void tryNumberIsZeroExceptionTest() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "0"))
+                assertThatThrownBy(() -> runException("pobi,java", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
