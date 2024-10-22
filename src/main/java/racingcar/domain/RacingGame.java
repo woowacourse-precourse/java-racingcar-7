@@ -24,6 +24,14 @@ public class RacingGame {
         }
     }
 
+    public List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
+    }
+
     private void printRaceStatus() {
         for (Car car : cars) {
             String carName = car.getName();
@@ -43,5 +51,12 @@ public class RacingGame {
             car.forward(randomNumber);
         }
         printRaceStatus();
+    }
+
+    private int getMaxDistance() {
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
     }
 }
