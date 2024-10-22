@@ -9,4 +9,10 @@ public class InputView {
         String cars = Console.readLine();
         return new Input(cars);
     }
+
+    public Input readRacingTryCount() {
+        System.out.println(DisplayedMessage.INPUT_TRY_COUNT_MESSAGE);
+        String count = Console.readLine();
+        return new Input(count);
+    }
 }

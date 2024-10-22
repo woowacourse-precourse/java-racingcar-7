@@ -1,13 +1,13 @@
 package racingcar.domain;
 
 public class Input {
-    private final String cars;
-    public Input(String cars) {
-        this.cars = cars;
+    private final String input;
+    public Input(String input) {
+        this.input = input;
     }
 
-    public String getCars() {
-        return cars;
+    public String getInput() {
+        return input;
     }
 
 }
