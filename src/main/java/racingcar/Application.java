@@ -35,6 +35,7 @@ public class Application {
         inputPlayCount();
         play();
         outputWinner();
+
     }
 
     private static void outputWinner() {
@@ -72,6 +73,7 @@ public class Application {
         String input = Console.readLine();
         if (isValidInput(input)) playCount = Integer.parseInt(input);
         if (playCount > 30) throw new IllegalArgumentException("시도 횟수는 30이하로 입력하세요.");
+        Console.close();
     }
 
     private static boolean isValidInput(String input) {
