@@ -36,4 +36,30 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class,
             () -> InputValidator.validateCarNames(input4));
     }
+
+    @Test
+    void 시행횟수_검증_테스트() {
+        //given
+        String two = "2";
+
+        //then
+        assertDoesNotThrow(() -> InputValidator.validateNumberOfTrial(two));
+    }
+
+    @Test
+    void 시행횟수_검증_예외_테스트() {
+        //given
+        String notNum = "three";
+        String notPositive = "-2";
+        String zero = "0";
+
+        //then
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateNumberOfTrial(notNum));
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateNumberOfTrial(notPositive));
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateNumberOfTrial(zero));
+
+    }
 }
