@@ -90,8 +90,8 @@ public class Application {
 
     public static List<String> getWinners(List<RacingCar> racingCarList, int maxPosition) {
         List<String> winnerList = new ArrayList<>();
-        for(RacingCar racingCar : racingCarList) {
-            if(racingCar.position == maxPosition) {
+        for (RacingCar racingCar : racingCarList) {
+            if (racingCar.position == maxPosition) {
                 winnerList.add(racingCar.name);
             }
         }
@@ -100,13 +100,12 @@ public class Application {
 
     public static void printWinners(List<String> winnerList) {
         String notice = "최종 우승자 : ";
-        if(winnerList.size() == 1) {
+        if (winnerList.size() == 1) {
             notice += winnerList.get(0);
             System.out.println(notice);
             return;
-        }
-        else if(winnerList.size() > 1) {
-            for(int i = 0; i < winnerList.size(); i++) {
+        } else if (winnerList.size() > 1) {
+            for (int i = 0; i < winnerList.size(); i++) {
                 notice += winnerList.get(i);
                 notice += SPLITTER;
             }
