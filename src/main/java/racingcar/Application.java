@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -11,7 +14,13 @@ public class Application {
         int attempts = getValidAttempts(readLine());
 
         try {
-            System.out.println("최종 우승자 : ");
+            List<Car> cars = createCars(carNames);
+            Race game = new Race(cars, attempts);
+            game.start();
+
+            List<String> winners = game.getWinners();
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
@@ -39,6 +48,14 @@ public class Application {
             }
         }
         return carNames;
+    }
+
+    private static List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 }
 
