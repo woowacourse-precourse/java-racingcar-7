@@ -2,7 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,8 +20,25 @@ public class Application {
             }
         }
 
+        // 자동차 객체 생성
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            Car car = new Car(name);
+            cars.add(car);
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputCount = Integer.parseInt(Console.readLine());
 
+    }
+
+    static class Car {
+        String name;
+        int advance;
+
+        Car(String name) {
+            this.name = name;
+            this.advance = 0;
+        }
     }
 }
