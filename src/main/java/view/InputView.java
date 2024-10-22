@@ -21,7 +21,6 @@ public class InputView {
     private static final Integer MINIMUM_CAR_NUMBER = 2;
 
     public static List<Car> getCarNames() {
-        OutputView.printInputCarNames();
         String input = Console.readLine();
         validateEmpty(input);
         validateDelimiter(input);
