@@ -8,7 +8,7 @@ import racingcar.model.Car;
 
 public class RacingService {
 
-    public void race(ArrayList<Car> cars) {
+    public void race(List<Car> cars) {
         for (Car car : cars) {
             if (shouldMove()) {
                 car.move();
@@ -17,16 +17,22 @@ public class RacingService {
     }
 
     public boolean shouldMove() {
-        if (Randoms.pickNumberInRange(0, 9) > 3) {
-            return true;
-        }
-        return false;
-
+        return Randoms.pickNumberInRange(0, 9) > 3;
     }
 
-    public void printCarStatus(ArrayList<Car> cars) {
+    public void printCarStatus(List<Car> cars) {
         for(Car car : cars) {
             System.out.println(car.getStatus());
         }
+    }
+
+    public Car compareCarStatus(List<Car> cars) {
+        Car winner = cars.get(0);
+        for (Car car : cars) {
+            if (car.getPosition() > winner.getPosition()) {
+                winner = car;
+            }
+        }
+        return winner;
     }
 }
