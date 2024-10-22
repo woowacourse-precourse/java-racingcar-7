@@ -25,4 +25,11 @@ public class RacingCarTest {
         Assertions.assertThrows(IllegalArgumentException.class, () ->
                 racingCar.separateCarNames("pobipobi,woni,jun"));
     }
+
+    @Test
+    void 시도할_횟수가_양수가_아닌_경우_예외처리() {
+        RacingCar racingCar = new RacingCar();
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                racingCar.validateNumberOfAttempts("-1"));
+    }
 }
