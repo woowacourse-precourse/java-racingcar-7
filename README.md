@@ -1,5 +1,15 @@
 # java-racingcar-precourse
 
+# 어떤 객체가 필요할까?
+- [x] 필요한 객체 파악하기
+- 사용자의 입력을 받을 `InputView`
+- 경주 결과를 알려줄 `OutputView`
+- `View`와 `Service` 사이의 중재자 `RacingController`
+- 메인 로직이 수행될 `RacingService`
+- 하나의 차 정보가 저장될 `Car`
+- 경주에 참여할 차들의 정보가 저장될 `Cars`
+- 경주를 담당할 `Racing`
+
 # 기능 목록
 
 ### 1. 입력 로직
