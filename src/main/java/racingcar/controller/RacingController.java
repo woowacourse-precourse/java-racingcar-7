@@ -19,9 +19,12 @@ public class RacingController {
         OutputView.printInputAttemptCountMessage();
         int attemptCount = InputView.inputAttemptCount();
 
+        OutputView.printExecutionResultMessage();
+
         List<Integer> moveCounts = new ArrayList<>(Collections.nCopies(totalCarCounts, 0));
         while (attemptCount-- > 0) {
             RacingService.moveOrStop(moveCounts);
+            OutputView.printEachStepResult(carNames, moveCounts, totalCarCounts);
         }
 
 
