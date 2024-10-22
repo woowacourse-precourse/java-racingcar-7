@@ -16,6 +16,7 @@ public class Application {
         //4. 우승자 로직
         Winners(cars);
     }
+
     private static List<Car> createCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
@@ -29,11 +30,13 @@ public class Application {
         }
         return cars;
     }
+
     private static void validateCarName(String name) {
         if (name.length() == 0 || name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하로 입력해야 합니다.");
         }
     }
+
     private static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(Console.readLine());
@@ -50,16 +53,19 @@ public class Application {
             System.out.println();
         }
     }
+
     private static void raceRound(List<Car> cars) {
         for (Car car : cars) {
             car.move(Randoms.pickNumberInRange(0, 9));
             System.out.println(car);
         }
     }
+    //4.우승자 찾는 메소드
     private static void Winners(List<Car> cars) {
+        //cars의 mapToInt를 통해 객체를 정수값으로 변환하고 최대값 찾는 것. 만약 메서드값 X -> 0으로 반환
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         List<String> winners = new ArrayList<>();
-
+        //winner 카운팅.
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
