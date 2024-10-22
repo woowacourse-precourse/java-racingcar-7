@@ -18,6 +18,10 @@ public class Car {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
     private boolean isMoveForwardPossible(int number) {
         return number >= 4;
     }
