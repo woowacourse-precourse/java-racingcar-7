@@ -44,7 +44,7 @@ public class Application {
         }
 
         String output = String.join(",", winners);
-        print(output);
+        print("최종 우승자 : " + output);
     }
 
     private static void play() {
