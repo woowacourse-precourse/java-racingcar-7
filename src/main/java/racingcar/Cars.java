@@ -37,7 +37,7 @@ public class Cars {
 
     public List<Car> getLeadingCars() {
         List<Car> leadingCars = new ArrayList<>();
-        Car leadingCar = cars.get(0);
+        Car leadingCar = cars.getFirst();
         for (Car car : cars) {
             if (car.compete(leadingCar) == WIN) {
                 leadingCar = car;
