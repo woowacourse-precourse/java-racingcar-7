@@ -15,24 +15,34 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void 자동차이름은_5자이하여야한다(){
+    void 입력값이_공백일수_없다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름이 입력되지 않았습니다.")
+        );
+    }
+
+
+    @Test
+    void 자동차이름은_5자이하여야한다() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234,123456", "3"))
                         .isInstanceOf(IllegalArgumentException.class)
