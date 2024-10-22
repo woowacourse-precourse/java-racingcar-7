@@ -13,6 +13,12 @@ public class Car {
         this.position = position;
     }
 
+    public void go(int random) {
+        if (random >= 4) {
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
     }
