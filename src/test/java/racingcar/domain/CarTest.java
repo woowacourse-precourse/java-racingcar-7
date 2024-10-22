@@ -24,7 +24,14 @@ class CarTest {
     @Test
     void 자동차_전진() {
         Car car = new Car("hwan2");
-        car.move(5);
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 자동차_멈춤() {
+        Car car = new Car("hwan2");
+        car.move(false);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

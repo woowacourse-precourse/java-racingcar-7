@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
     private static final int DEFAULT_POSITION = 0;
-    private static final int MOVE_MIN_NUMBER = 4;
     private static final int MAX_LENGTH = 5;
     private static final String BLANK = " ";
     private static final String NAME_LENGTH_ERROR = "자동차의 이름의 길이는 1 이상 " + MAX_LENGTH + "이하이어야 합니다.";
@@ -31,8 +30,8 @@ public class Car {
         }
     }
 
-    public void move(int value) {
-        if (value >= MOVE_MIN_NUMBER) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             position++;
         }
     }

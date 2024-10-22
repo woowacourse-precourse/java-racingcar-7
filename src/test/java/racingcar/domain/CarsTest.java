@@ -18,4 +18,24 @@ class CarsTest {
         assertThatThrownBy(() -> new Cars(List.of(new Car("hwan2"), new Car("hwan2"))))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차들_전진() {
+        Cars cars = new Cars(List.of(new Car("hwan2"), new Car("hwan3")));
+        cars.racing(() -> true);
+        List<Integer> positions = cars.getCars().stream()
+                .map(Car::getPosition)
+                .toList();
+        assertThat(positions).anyMatch(position -> position == 1);
+    }
+
+    @Test
+    void 자동차들_정지() {
+        Cars cars = new Cars(List.of(new Car("hwan2"), new Car("hwan3")));
+        cars.racing(() -> false);
+        List<Integer> positions = cars.getCars().stream()
+                .map(Car::getPosition)
+                .toList();
+        assertThat(positions).anyMatch(position -> position == 0);
+    }
 }

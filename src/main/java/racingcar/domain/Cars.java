@@ -1,7 +1,9 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.strategy.MoveStrategy;
 
 public class Cars {
     private static final String DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다.";
@@ -25,5 +27,13 @@ public class Cars {
         if (cars.size() != cars.stream().distinct().count()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR);
         }
+    }
+
+    public void racing(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy.isMovable()));
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
