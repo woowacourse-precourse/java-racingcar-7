@@ -1,9 +1,18 @@
-package racingcar.view.inputView.service.impl;
+package racingcar.view.input.service.impl;
 
-import racingcar.view.inputView.service.InputService;
+import camp.nextstep.edu.missionutils.Console;
+import racingcar.view.input.service.InputService;
+import racingcar.view.output.service.InfoOutputViewService;
 
 public class CarInputView implements InputService {
+    private final InfoOutputViewService infoOutputViewService;
+    public CarInputView(InfoOutputViewService infoOutputViewService) {
+        this.infoOutputViewService = infoOutputViewService;
+    }
     @Override
     public String input() {
+        infoOutputViewService.info();
+        String input = Console.readLine();
+        return input;
     }
 }
