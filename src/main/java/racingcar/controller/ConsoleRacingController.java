@@ -1,17 +1,20 @@
-package controller;
+package racingcar.controller;
 
-import constants.AppConstants;
+import racingcar.constants.AppConstants;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import utility.CarNameParser;
-import view.RacingView;
+import racingcar.service.CarService;
+import racingcar.utility.CarNameParser;
+import racingcar.view.RacingView;
 
 public class ConsoleRacingController implements RacingController {
     public final RacingView racingView;
+    public final CarService carService;
     @Override
     public void run() {
         String carNamesAsString = getCarNamesAsString();
         List<String> carNames = CarNameParser.parseCarNames(carNamesAsString);
+        carNames.forEach(carService::register);
     }
 
     @Override
