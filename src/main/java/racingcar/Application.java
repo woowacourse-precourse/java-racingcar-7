@@ -42,6 +42,9 @@ public class Application {
         for (Car car : cars) {
             if (car.moveCount == winnerScore) winners.add(car.name);
         }
+
+        String output = String.join(",", winners);
+        print(output);
     }
 
     private static void play() {
