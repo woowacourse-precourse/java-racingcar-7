@@ -12,5 +12,8 @@ public class RacingController {
         String trimmedInput = InputView.removeSpace(input);
         List<String> carNames = InputView.splitStringByDelimiters(trimmedInput, ",");
 
+        OutputView.printInputAttemptCountMessage();
+        int attemptCount = InputView.inputAttemptCount();
+
     }
 }

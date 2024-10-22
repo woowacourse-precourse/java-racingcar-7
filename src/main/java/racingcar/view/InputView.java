@@ -22,4 +22,11 @@ public class InputView {
     public static String removeSpace(String input) {
         return input.replaceAll("\\s+", "");
     }
+
+    public static Integer inputAttemptCount() {
+        String input = Console.readLine();
+        int attemptCount = Integer.parseInt(input);
+        return attemptCount;
+    }
+
 }
