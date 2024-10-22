@@ -59,6 +59,8 @@ public class Application {
             printRoundResult();
             System.out.println();
         }
+        List<String> winner = getWinner();
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 
     public static Map<String, Integer> initResult(List<String> carNameList) {
@@ -93,5 +95,4 @@ public class Application {
                 .map(Map.Entry::getKey)
                 .toList();
     }
-
 }
