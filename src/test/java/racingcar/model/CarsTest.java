@@ -2,7 +2,9 @@ package racingcar.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +56,20 @@ class CarsTest {
         for (Car car : carList) {
             assertEquals(car.getPosition(), 0);
         }
+    }
+
+    @Test
+    void 라운드별_결과_구하기() {
+        //given
+        LinkedHashMap<String, Integer> expectedResult = new LinkedHashMap<>();
+        expectedResult.put("alex", 0);
+        expectedResult.put("철수", 0);
+        expectedResult.put("john", 0);
+
+        //when
+        Map<String, Integer> roundResult = cars.getRoundResult();
+
+        //then
+        assertEquals(roundResult, expectedResult);
     }
 }
