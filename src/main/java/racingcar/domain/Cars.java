@@ -51,4 +51,8 @@ public class Cars {
         }
     }
 
+    public void race() {
+        cars.stream()
+                .forEach(car -> car.act(RandomNumberGenerator.createRandomNumber()));
+    }
 }

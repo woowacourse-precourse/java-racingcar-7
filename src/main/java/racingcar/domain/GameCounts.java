@@ -10,6 +10,10 @@ public class GameCounts {
 
     int gameCounts;
 
+    public int getGameCounts() {
+        return gameCounts;
+    }
+
     public GameCounts(String gameCounts){
         validateIntegerRange(gameCounts);
         validateMoreThanZero(gameCounts);

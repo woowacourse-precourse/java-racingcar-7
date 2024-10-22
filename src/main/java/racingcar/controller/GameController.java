@@ -8,13 +8,20 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
-    public void enterInputs(){
+    public static void enterInputs(){
         OutputView.printStartCommand();
         Cars cars=new Cars(InputView.enterCarNames());
 
         OutputView.printRacingCounts();
         GameCounts gameCounts=new GameCounts(InputView.enterCounts());
 
-        //processGame(cars,gameCounts);
+        processGame(cars,gameCounts);
+    }
+
+    private static void processGame(Cars cars, GameCounts gameCounts) {
+        for (int count=0;count<gameCounts.getGameCounts();count++){
+            cars.race();
+        }
+
     }
 }
