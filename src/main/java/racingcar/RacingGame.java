@@ -15,18 +15,16 @@ public class RacingGame {
     public void start() {
         System.out.println(START_MESSAGE);
         String names = readLine();
-        List<Car> cars = nameCheck(names);
+        List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name.trim(), 0)).collect(Collectors.toList());
         System.out.println(GAME_COUNT_MESSAGE);
         int count = Integer.parseInt(readLine());
     }
 
-    public List<Car> nameCheck(String names) {
-        List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name.trim(), 0)).collect(Collectors.toList());
+    private void nameCheck(List<Car> cars) {
         for (Car car : cars) {
             if (car.name.length() > 5) {
                 throw new IllegalArgumentException();
             }
         }
-        return cars;
     }
 }
