@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.security.PrivateKey;
 import java.util.ArrayList;
@@ -26,6 +27,15 @@ public class Application {
         String inputAttempt = readLine();
         attempts = Integer.parseInt(inputAttempt);
 
+        for (int i = 0; i < attempts; i++) {
+            for (Car car : cars) {
+                int number = pickNumberInRange(0, 9);
+                if (number >= 4) {
+                    // 자동차를 움직인다.
+                }
+            }
+            // 경주의 현재 상태를 출력한다.
+        }
 
     }
 }
