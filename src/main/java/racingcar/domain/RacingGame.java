@@ -19,4 +19,9 @@ public class RacingGame {
                 .map(Racingcar::new)
                 .collect(Collectors.toList());
     }
+
+    public void startRacingGame(int racingCount){
+        Validation.validateRacingGameCount(racingCount);
+
+    }
 }

@@ -12,7 +12,7 @@ public class RacingcarController {
 
     public void run(){
         initRacingGame();
-
+        startRacingGame();
     }
 
     private void initRacingGame(){
@@ -25,6 +25,10 @@ public class RacingcarController {
         return Utils.stringToList(racingcarNamesString);
     }
 
-
+    private void startRacingGame(){
+        InputView.printInputRacingCountMessage();
+        int racingGameCount = Utils.stringToInt(readLine().trim());
+        racingGame.startRacingGame(racingGameCount);
+    }
 
 }

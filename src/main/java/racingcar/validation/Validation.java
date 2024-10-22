@@ -7,6 +7,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Validation {
+    private static final String NONE_INPUT_STRING = "";
+
     private static int MAX_RACINGCAR_NAME_LENGTH = 5;
 
     public static void validateRacingcarNames(List<String> racingcarNames){
@@ -40,5 +42,20 @@ public class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateRacingGameCount(int racingGameCount){
+        if(racingGameCount < 0){
+            ErrorView.printRacingGameCountErrorMessage();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateStringToInteger(String input){
+        if(!input.chars().allMatch(Character::isDigit) || input.equals(NONE_INPUT_STRING)){
+            ErrorView.printRacingGameCountErrorMessage();
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }

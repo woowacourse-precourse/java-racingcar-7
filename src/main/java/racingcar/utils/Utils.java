@@ -3,6 +3,9 @@ package racingcar.utils;
 import java.util.Arrays;
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.validation.Validation;
+
 public class Utils {
 
     private static final String DELIMITER = ",";
@@ -13,4 +16,14 @@ public class Utils {
     private static String[] splitStringToArray(String input){
         return input.split(DELIMITER);
     }
+
+    public static int getRandomNumber(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public static int stringToInt(String input){
+        Validation.validateStringToInteger(input);
+        return Integer.parseInt(input);
+    }
+
 }
