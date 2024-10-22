@@ -14,11 +14,8 @@ public class Car {
         this.name = name;
         this.position = "";
     }
-    public static List<Car> generateCars(String carNames) {
-        return Arrays.stream(carNames.split(","))
-                .map(Validator::validateNameLength)
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public static Car generateCars(String carName) {
+        return new Car(carName);
     }
 
     public String getName() {
