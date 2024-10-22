@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    final List<Car> racingCars;
+    private static final String CAR_NAME_DELIMITER = ",";
+    private final List<Car> racingCars;
 
     public Cars(String carNames) {
         racingCars = new ArrayList<>();
 
-        for (String carName : carNames.split(",")) {
+        for (String carName : carNames.split(CAR_NAME_DELIMITER)) {
             racingCars.add(new Car(carName));
         }
     }
@@ -34,6 +35,6 @@ public class Cars {
             }
         }
 
-        return String.join(", ", winners); // 여러 명이면 쉼표로 연결되고, 1명이면 쉼표 없이 이름만 출력됨
+        return String.join(CAR_NAME_DELIMITER + " ", winners); // 여러 명이면 쉼표로 연결되고, 1명이면 쉼표 없이 이름만 출력됨
     }
 }
