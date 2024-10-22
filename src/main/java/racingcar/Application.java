@@ -29,9 +29,9 @@ public class Application {
 
         String[] carNames = inputCarNames.split(",");
 
-        Map<String, Integer> carMoveMap = new HashMap<>();
+        Map<String, String> carMoveMap = new HashMap<>();
         for(String carName : carNames) { //carName의 앞 뒤에 공백이 있을 경우 고려
-            carMoveMap.put(carName, 0);
+            carMoveMap.put(carName, "");
         }
 
         for (String s : carMoveMap.keySet()) {
@@ -39,6 +39,26 @@ public class Application {
         }
 
         int attempts = Integer.parseInt(Console.readLine());
+
+        int trial = 0;
+        int randomNum = 0;
+        while (trial <= attempts) {
+            trial++;
+
+            randomNum = Randoms.pickNumberInRange(0, 9);
+
+            if (randomNum >= MOVING_FORWARD) {
+                System.out.println("randomNum = " + randomNum);
+                System.out.println("\"go\" = " + "go");
+            } else if (randomNum >= STOP) {
+                System.out.println("randomNum = " + randomNum);
+
+                System.out.println("\"stop\" = " + "stop");
+            }
+        }
+
+
+        //랜덤값 추출
 
         Console.close();
     }
