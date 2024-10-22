@@ -1,0 +1,17 @@
+package racingcar.constant;
+
+public enum ErrorMessage {
+    ERROR_IS_CAR_NAME_EMPTY("빈 값은 자동차 이름으로 사용할 수 없어요."),
+    ERROR_IS_CAR_NAME_TO_LONG("자동차 이름은 5글자 이하만 입력할 수 있어요."),
+    ERROR_IS_CAR_NAME_ALREADY_EXIST("이미 입력한 이름은 사용할 수 없어요.");
+
+    private final String message;
+
+    ErrorMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}
