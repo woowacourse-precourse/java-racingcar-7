@@ -2,7 +2,7 @@ package domain;
 
 public class Car {
     private final String name;
-    private final int score = 0;
+    private int score = 0;
 
     public Car(String name) {
         this.name = name;
@@ -14,5 +14,9 @@ public class Car {
 
     public int getScore() {
         return score;
+    }
+
+    public void addScore() {
+        score += 1;
     }
 }

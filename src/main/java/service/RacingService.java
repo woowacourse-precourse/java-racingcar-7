@@ -1,5 +1,6 @@
 package service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import domain.Car;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,4 +16,20 @@ public class RacingService {
 
         return carsList;
     }
+
+
+    public void moveCars(List<Car> carsList) {
+        for (Car car : carsList) {
+            int randomNumber = getRandomNumber();
+            if (randomNumber >= 4) {
+                car.addScore();
+            }
+            System.out.println(car.getName() + " " + car.getScore());
+        }
+    }
+
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
 }
