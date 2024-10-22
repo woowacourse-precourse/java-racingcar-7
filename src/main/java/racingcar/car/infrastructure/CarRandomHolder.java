@@ -8,6 +8,6 @@ import racingcar.car.service.port.RandomHolder;
 public class CarRandomHolder implements RandomHolder {
     @Override
     public int getRandom() {
-        return Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+        return Randoms.pickNumberInRange(RANDOM_START_RANGE, RANDOM_END_RANGE);
     }
 }
