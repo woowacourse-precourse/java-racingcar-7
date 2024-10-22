@@ -3,6 +3,7 @@ package racingcar.common;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,7 +28,7 @@ class InputSplitterTest {
     @Test
     void 분할된_입력값_연결_기능_테스트() {
         // given
-        String[] elements = {"1", "2", "3"};
+        List<String> elements = List.of(new String[]{"1", "2", "3"});
 
         // when
         String result = InputSplitter.join(elements);
