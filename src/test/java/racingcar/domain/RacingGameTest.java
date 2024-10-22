@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -24,6 +25,17 @@ class RacingGameTest {
 
         // when
         racingGame.play();
+    }
+
+    @Test
+    void 예외_중복되는_자동차_이름() {
+        // given
+        int gameRound = 5;
+        List<Car> overlappingNamesCars = List.of(new Car("1"), new Car("1"), new Car("2"));
+
+        // when & then
+        assertThatThrownBy(() -> new RacingGame(overlappingNamesCars, gameRound))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

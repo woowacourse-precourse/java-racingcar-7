@@ -3,7 +3,9 @@ package racingcar.domain;
 import static racingcar.view.constants.ViewMessage.RACE_RESULT_TITLE;
 import static racingcar.view.constants.ViewMessage.RACE_STATUS;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.common.RandomNumber;
 
 public class RacingGame {
@@ -12,6 +14,8 @@ public class RacingGame {
     private final RacingGameRound gameRound;
 
     public RacingGame(final List<Car> cars, final Integer gameRound) {
+        validate(cars);
+
         this.cars = cars;
         this.gameRound = new RacingGameRound(gameRound);
     }
@@ -58,5 +62,17 @@ public class RacingGame {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElse(0);
+    }
+
+    private void validate(final List<Car> cars) {
+        Set<String> carNames = new HashSet<>();
+
+        cars.stream()
+                .map(Car::getName)
+                .forEach(carName -> {
+                    if (!carNames.add(carName)) {
+                        throw new IllegalArgumentException();
+                    }
+                });
     }
 }
