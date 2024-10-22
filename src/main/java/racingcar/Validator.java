@@ -10,4 +10,11 @@ public abstract class Validator {
         return names;
     }
 
+    public static int validateCount(String count) {
+        int countAsInt = Integer.parseInt(count);
+        if (countAsInt < 0) {
+            throw new IllegalArgumentException();
+        }
+        return countAsInt;
+    }
 }
