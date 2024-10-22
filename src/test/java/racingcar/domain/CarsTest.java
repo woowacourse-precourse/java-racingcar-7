@@ -23,7 +23,11 @@ class CarsTest {
                 hasMessageContaining("차는 다섯글자 이하이어야 합니다");
     }
 
+    @Test
+    void 올바른_입력값일때_객체_검증(){
+        String carsInput="임지우,이지우,박지우,신지우";
 
-
-
+        Cars actualCars=new Cars(carsInput);
+        assertThat(new Cars(carsInput)).usingRecursiveComparison().isEqualTo(actualCars);
+    }
 }
