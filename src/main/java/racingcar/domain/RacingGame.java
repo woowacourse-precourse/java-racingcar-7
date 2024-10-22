@@ -23,6 +23,7 @@ public class RacingGame {
     }
 
     public void play() {
+        System.out.println();
         System.out.println(RACE_RESULT_TITLE.getMessage());
 
         Integer round = gameRound.getRound();
