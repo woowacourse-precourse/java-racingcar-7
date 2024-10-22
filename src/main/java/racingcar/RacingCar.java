@@ -8,10 +8,10 @@ public class RacingCar {
     public int position;
     public List<Integer> randomNumbers;
 
-    public RacingCar(String name, int size) {
+    public RacingCar(String name) {
         this.name = name;
         this.position = 0;
-        this.randomNumbers = new ArrayList<>(size);
+        this.randomNumbers = new ArrayList<>();
     }
 
 }

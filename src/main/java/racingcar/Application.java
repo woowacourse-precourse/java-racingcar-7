@@ -12,7 +12,12 @@ public class Application {
     public static void main(String[] args) {
         List<RacingCar> cars = getCarInput();
         Integer trial = getTrial();
-
+        assignRandomNumber(cars, trial);
+        checkRandomNumber(cars);
+        printCarInfo(cars);
+        int winPosition = getWinPosition(cars);
+        List<String> winners = getWinners(cars, winPosition);
+        printWinners(winners);
     }
 
     //경주할 자동차 입력 받기
@@ -26,7 +31,7 @@ public class Application {
             if (carName.isEmpty() || carName == null || carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
-            RacingCar racingCar = new RacingCar(carName, numOfCars);
+            RacingCar racingCar = new RacingCar(carName);
             racingCarList.add(racingCar);
         }
         return racingCarList;
@@ -52,10 +57,10 @@ public class Application {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void assignRandomNumber(List<RacingCar> racingCarList) {
+    public static void assignRandomNumber(List<RacingCar> racingCarList, Integer trial) {
         for (RacingCar racingCar : racingCarList) {
-            for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
-                racingCar.randomNumbers.set(i, getRandomNumber());
+            for (int i = 0; i < trial; i++) {
+                racingCar.randomNumbers.add(getRandomNumber());
             }
         }
     }
