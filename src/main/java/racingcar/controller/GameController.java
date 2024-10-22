@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.GameCounts;
 import racingcar.view.InputView;
@@ -16,12 +17,18 @@ public class GameController {
         GameCounts gameCounts=new GameCounts(InputView.enterCounts());
 
         processGame(cars,gameCounts);
+
     }
 
     private static void processGame(Cars cars, GameCounts gameCounts) {
+        OutputView.printRacingProcess();
         for (int count=0;count<gameCounts.getGameCounts();count++){
             cars.race();
+            cars.printState();
         }
 
     }
+
+
+
 }
