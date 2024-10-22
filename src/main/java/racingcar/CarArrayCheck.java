@@ -1,13 +1,13 @@
 package racingcar;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CarArrayCheck {
 	
 	String[] carArray = {};
 	int carLength = 0;
-	Map<String, Integer> carMap = new HashMap<String, Integer>();
+	Map<String, Integer> carMap = new LinkedHashMap<String, Integer>();
 	
 	public void carNameSplit(String carName) {
 		this.carArray = carName.split(",");
@@ -50,4 +50,9 @@ public class CarArrayCheck {
 			carMap.put(name, 0);
 		}
 	}
+
+	public Map<String, Integer> getCarMap() {
+		return carMap;
+	}
+	
 }

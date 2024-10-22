@@ -21,4 +21,8 @@ public class PlayCntCheck {
 		}
 	}
 
+	public int getPlayCnt() {
+		return playCnt;
+	}
+
 }

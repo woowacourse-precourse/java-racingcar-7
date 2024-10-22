@@ -15,6 +15,9 @@ public class Application {
     		String playCnt = Console.readLine();
     		PlayCntCheck playCntCheck = new PlayCntCheck();
     		playCntCheck.playCntInt(playCnt);
+    		
+    		Racing racing = new Racing();
+    		racing.playRacing(carCheck.getCarMap(), playCntCheck.getPlayCnt());
     	}catch(Exception e){
     		throw new IllegalArgumentException(); 
     	}
