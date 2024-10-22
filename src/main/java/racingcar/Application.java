@@ -16,14 +16,14 @@ public class Application {
     }
 
     //경주할 자동차 입력 받기
-    public static List<RacingCar> getCarInput(){
+    public static List<RacingCar> getCarInput() {
         String input = Console.readLine();
         String[] racingCars = input.split(SPLITTER);
         //기능 분리하기
         List<RacingCar> racingCarList = new ArrayList<>();
         int numOfCars = racingCars.length;
-        for(String carName : racingCars){
-            if(carName.isEmpty() || carName == null || carName.length() > 5){
+        for (String carName : racingCars) {
+            if (carName.isEmpty() || carName == null || carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
             RacingCar racingCar = new RacingCar(carName, numOfCars);
@@ -33,48 +33,47 @@ public class Application {
     }
 
     //시도 횟수 입력 받기
-    public static Integer getTrial(){
+    public static Integer getTrial() {
         String input = Console.readLine();
         Integer trial = 0;
         try {
             trial = Integer.parseInt(input);
             return trial;
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static Integer getCarNumber(List<RacingCar> racingCarList){
+    public static Integer getCarNumber(List<RacingCar> racingCarList) {
         return racingCarList.size();
     }
 
-    public static Integer getRandomNumber(){
+    public static Integer getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void assignRandomNumber(List<RacingCar> racingCarList){
-        for(RacingCar racingCar : racingCarList){
-            for(int i = 0; i < racingCar.randomNumbers.size(); i++){
+    public static void assignRandomNumber(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
                 racingCar.randomNumbers.set(i, getRandomNumber());
             }
         }
     }
 
-    public static void checkRandomNumber(List<RacingCar> racingCarList){
-        for(RacingCar racingCar : racingCarList){
-            for(int i = 0; i < racingCar.randomNumbers.size(); i++){
-                if(racingCar.randomNumbers.get(i) >= 4) racingCar.position += 1;
+    public static void checkRandomNumber(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
+                if (racingCar.randomNumbers.get(i) >= 4) racingCar.position += 1;
             }
         }
     }
 
-    public static void printCarInfo(List<RacingCar> racingCarList){
-        for(RacingCar racingCar : racingCarList){
+    public static void printCarInfo(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
             String carInfo = "";
             carInfo += racingCar.name;
             carInfo += " : ";
-            for(int i = 0; i < racingCar.position; i++){
+            for (int i = 0; i < racingCar.position; i++) {
                 carInfo += "-";
             }
             System.out.println(carInfo);
