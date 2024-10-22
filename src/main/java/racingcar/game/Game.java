@@ -23,5 +23,22 @@ public class Game {
         List<Car> cars = carInputService.getCars();
         int attemptCount = StringUtils.convertStringToInteger(countService.getAttemptCount());
         IOUtils.outputStringWithEnter("");
+
+        processingGame(cars, attemptCount);
+    }
+
+    private void processingGame(List<Car> cars, int attemptCount) {
+        IOUtils.outputStringWithEnter("실행 결과");
+
+        while (attemptCount > 0) {
+            for (Car car : cars) {
+                car.moveForward();
+            }
+
+            attemptCount--;
+            gameView.printMove(cars);
+        }
+
+        gameView.printWinner(cars);
     }
 }
