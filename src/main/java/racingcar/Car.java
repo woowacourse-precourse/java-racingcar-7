@@ -12,4 +12,9 @@ public class Car {
     public void move() {
         this.position++;
     }
+
+    public void display() {
+        String positionDisplay = "-".repeat(this.position);
+        System.out.println(this.name + " : " + positionDisplay);
+    }
 }
