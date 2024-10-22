@@ -23,7 +23,16 @@ public class Application {
         String carsInput = Console.readLine();
 
         List<String> names = getValidNames(carsInput);
+        if (isValidInput(names)) {
 
+        }
+
+    }
+
+    private static boolean isValidInput(List<String> names) {
+        if (names.size() > 20) throw new IllegalArgumentException("자동차 이름은 20개 이하로 입력하세요.");
+
+        return true;
     }
 
     private static List<String> getValidNames(String namesInput) {
