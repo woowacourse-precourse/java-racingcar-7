@@ -12,9 +12,14 @@ public class Application {
     public static void main(String[] args) {
         List<RacingCar> cars = getCarInput();
         Integer trial = getTrial();
-        assignRandomNumber(cars, trial);
-        checkRandomNumber(cars);
-        printCarInfo(cars);
+
+        for(int i = 0; i < trial; i++){
+            assignRandomNumber(cars, trial);
+            checkRandomNumber(cars);
+            printCarInfo(cars);
+            System.out.println("");
+        }
+
         int winPosition = getWinPosition(cars);
         List<String> winners = getWinners(cars, winPosition);
         printWinners(winners);
