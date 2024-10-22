@@ -2,6 +2,7 @@ package racingcar.car.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.tuple;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -68,12 +69,14 @@ class CarServiceTest {
         String input = "pobi,woni,jun";
         carService.create(input);
         List<Car> cars = carService.getCars();
-        Car target = cars.get(0);
 
         // when
-        carService.move(target);
+        carService.move(cars);
 
         // then
-        assertThat(target.getMove()).isEqualTo(1);
+        assertThat(cars).hasSize(3)
+                .extracting("name","move")
+                .containsExactlyInAnyOrder(
+                        tuple("pobi",1),tuple("woni",1),tuple("jun",1));
     }
 }
