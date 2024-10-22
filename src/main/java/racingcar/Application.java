@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -18,8 +21,19 @@ public class Application {
     private static void inputCars() {
         print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carsInput = Console.readLine();
-        String[] inputs = carsInput.split(",");
 
+        List<String> names = getValidNames(carsInput);
+
+    }
+
+    private static List<String> getValidNames(String namesInput) {
+        List<String> names = new ArrayList<>();
+        for (String name : namesInput.split(",")) {
+            String compactName = name.trim();
+            if (!compactName.isEmpty()) names.add(compactName);
+        }
+
+        return names;
     }
 
     private static void print(String message) {
