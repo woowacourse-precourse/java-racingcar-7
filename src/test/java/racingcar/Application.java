@@ -12,6 +12,6 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputString2 = Console.readLine();
         int NumberOfAttempts = racingCar.validateNumberOfAttempts(inputString2);
-
+        racingCar.race(NumberOfAttempts);
     }
 }
