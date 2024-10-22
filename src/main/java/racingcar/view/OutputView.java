@@ -16,7 +16,7 @@ public class OutputView {
     }
 
     public static void printExecutionResultMessage() {
-        System.out.println("실행 결과");
+        System.out.println("실행 결과\n");
     }
 
     public static void printEachStepResult(List<String> carNames, List<Integer> moveCounts, int totalCarCounts) {
