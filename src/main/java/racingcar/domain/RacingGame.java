@@ -36,6 +36,19 @@ public final class RacingGame {
         }
     }
 
+    public RacingCars judge() {
+        Set<Car> cars = racingCars.getCars();
+
+        Integer maxDistance = cars.stream()
+                .map(Car::getDistance)
+                .max(Comparator.naturalOrder())
+                .orElseThrow();
+
+        return RacingCars.of(cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList());
+    }
+
     private boolean isCarAllowedToMove() {
         int value = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
 
