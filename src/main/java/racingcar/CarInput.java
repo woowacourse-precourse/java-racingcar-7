@@ -17,14 +17,33 @@ public class CarInput {
         return carNames;
     }
 
+    public static int inputMoveCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        String input = scanner.nextLine();
+
+        return validateMoveCount(input);
+    }
+
+    private static int validateMoveCount(String input) {
+        try {
+            int moveCount = Integer.parseInt(input);
+            if (moveCount < 1) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
+            }
+            return moveCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+        }
+    }
+
     private static void validateCarNames(String[] carNames) {
         for (String name : carNames) {
             validateNameLength(name);
         }
     }
 
-    private static void validateNameLength(String name){
-        if(name.length() > 5 ){
+    private static void validateNameLength(String name) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
         }
     }
