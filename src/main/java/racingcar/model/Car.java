@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int START_POSITION = 0;
     private String name;
     private int position;
 
