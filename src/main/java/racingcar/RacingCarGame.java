@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +17,38 @@ public class RacingCarGame {
         String carNamesString = ioHandler.askCarNames();
         String roundString = ioHandler.askRound();
 
-        String[] split = carNamesString.split(",");
 
-        for (String s : split) {
+        if (carNamesString == null || roundString == null) {
+            throw new IllegalArgumentException();
+        }
+
+        // 자동차 이름에 대한 검증 로직
+        List<String> carNames = Arrays.asList(carNamesString.split(","));
+        carNames.stream()
+                .filter(carName -> carName.isEmpty() || carName.length() >= 5)
+                .findAny()
+                .ifPresent(carName -> {
+                    throw new IllegalArgumentException();
+                });
+
+        // 시도할 횟수에 대한 검증 로직
+        int round = 0;
+
+        try {
+            round = Integer.parseInt(roundString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (round <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+
+        for (String s : carNames) {
             racingCars.add(new RacingCar(s, 0));
         }
 
-        int round = Integer.parseInt(roundString);
 
         for (int i = 0; i < round; i++) {
             for (int j = 0; j < racingCars.size(); j++) {
