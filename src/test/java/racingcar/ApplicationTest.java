@@ -43,4 +43,28 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
+
+    @Test
+    void 시도_횟수_테스트1(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","0"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수_테스트2(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 시도_횟수_테스트3(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("java,jre,jdk","c"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
 }

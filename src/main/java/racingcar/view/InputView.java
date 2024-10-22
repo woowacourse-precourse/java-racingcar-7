@@ -15,7 +15,9 @@ public class InputView {
         if(!message.isBlank())
             System.out.println(message);
         String input = Console.readLine();
-        Console.close();
         return input;
+    }
+    public void close(){
+        Console.close();
     }
 }
