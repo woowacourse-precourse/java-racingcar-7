@@ -29,8 +29,8 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public Set<Car> getCars() {
-        return Set.copyOf(cars);
+    public List<Car> getCars() {
+        return List.copyOf(cars);
     }
 
     @Override
