@@ -17,11 +17,15 @@ public class CarInput {
         return carNames;
     }
 
-    private static void validateCarNames(String[] carNames){
-        for(String name : carNames){
-            if(name.length() > 5){
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
-            }
+    private static void validateCarNames(String[] carNames) {
+        for (String name : carNames) {
+            validateNameLength(name);
+        }
+    }
+
+    private static void validateNameLength(String name){
+        if(name.length() > 5 ){
+            throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
         }
     }
 }
