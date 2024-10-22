@@ -15,4 +15,8 @@ public class Cars {
             carList.add(new Car(carName));
         }
     }
+
+    public static List<Car> getCarList() {
+        return carList;
+    }
 }
