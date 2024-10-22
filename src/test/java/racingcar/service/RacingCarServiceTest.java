@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.exception.constants.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
+import static racingcar.exception.constants.ErrorMessage.INVALID_NUMBER;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -53,5 +54,17 @@ class RacingCarServiceTest {
         assertThatThrownBy(() -> racingCarService.start(requestDto))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessage(DUPLICATE_CAR_NAME.getMessage());
+    }
+
+    @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(ints = {-1, 0})
+    void 예외_음수_또는_0인_라운드_값_입력(final int input) {
+        // given
+        RacingCarRequestDto requestDto = new RacingCarRequestDto("1,2,3", input);
+
+        // when & then
+        assertThatThrownBy(() -> racingCarService.start(requestDto))
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(INVALID_NUMBER.getMessage());
     }
 }
