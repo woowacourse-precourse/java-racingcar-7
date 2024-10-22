@@ -17,4 +17,7 @@ public class RacingCar {
         return 0;
     }
 
+    public String getName() {
+        return name;
+    }
 }

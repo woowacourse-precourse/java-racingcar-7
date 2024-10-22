@@ -9,4 +9,8 @@ public class OutputView {
     public static OutputView getInstance() {
         return OUTPUT_VIEW;
     }
+
+    public void outputString(String output){
+        System.out.println(output);
+    }
 }
