@@ -21,9 +21,10 @@ class CarTest {
         //then
         Assertions.assertAll(
                 () -> assertEquals(3, cars1.size()),
-                () -> assertEquals(1, cars2.size())
+                () -> assertEquals(1, cars2.size()),
+                () -> assertEquals(cars1.getFirst().getName(), "pobi")
         );
-    }
+;    }
     @Test
     void createCar_exception() {
         //given
