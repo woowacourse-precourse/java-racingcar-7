@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,16 +9,18 @@ public class Viewer {
     private final String tryInputString = "시도할 횟수는 몇 회인가요?";
     private final String outputString = "최종 우승자 : ";
     private String carInput;
-    private String tryInput;
+    private int tryInput;
     private List<String> carList;
 
-    public void carInputToCarList(){
+    public void carInputToCarList() {
         this.carList = Arrays.asList(carInput.split(","));
     }
-    public void readInput(){
+
+    public void readInput() {
         readCarInput();
         readTryInput();
     }
+
     public void readCarInput() {
         System.out.println(carInputString);
         this.carInput = Console.readLine();
@@ -27,14 +28,14 @@ public class Viewer {
 
     public void readTryInput() {
         System.out.println(tryInputString);
-        this.tryInput = Console.readLine();
+        this.tryInput = Integer.parseInt(Console.readLine());
     }
 
-    public String getCarInput(){
+    public String getCarInput() {
         return this.carInput;
     }
 
-    public String getTryInput(){
+    public int getTryInput() {
         return this.tryInput;
     }
 }
