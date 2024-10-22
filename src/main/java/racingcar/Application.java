@@ -68,4 +68,16 @@ public class Application {
             }
         }
     }
+
+    public static void printCarInfo(List<RacingCar> racingCarList){
+        for(RacingCar racingCar : racingCarList){
+            String carInfo = "";
+            carInfo += racingCar.name;
+            carInfo += " : ";
+            for(int i = 0; i < racingCar.position; i++){
+                carInfo += "-";
+            }
+            System.out.println(carInfo);
+        }
+    }
 }
