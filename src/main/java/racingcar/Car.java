@@ -1,9 +1,8 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 class Car {
-    private String name;
+    private static final int MOVEMENT_THRESHOLD = 4;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -19,10 +18,9 @@ class Car {
         return position;
     }
 
-    public void move() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
-        if (randomValue >= 4) {
-            position++;
+    public void move(int moveDistance) {
+        if (moveDistance >= MOVEMENT_THRESHOLD) {
+            this.position++;
         }
     }
 }
