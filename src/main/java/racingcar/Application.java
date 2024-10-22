@@ -54,6 +54,11 @@ public class Application {
                     continue;
                 }
             }
+            for (Entry<String, String> items : carMoveMap.entrySet()) {
+                String car = items.getKey();
+                String move = items.getValue();
+                System.out.println(car + " : " + move);
+            }
         }
 
 
