@@ -24,6 +24,7 @@ public class RacingService {
         for(Car car : cars) {
             System.out.println(car.getStatus());
         }
+        System.out.println();
     }
 
     public List<Car> findWinners(List<Car> cars) {

@@ -22,6 +22,6 @@ public class Car {
     }
 
     public String getStatus() {
-        return name + " : " + position;
+        return name + " : " + "-".repeat(position);
     }
 }
