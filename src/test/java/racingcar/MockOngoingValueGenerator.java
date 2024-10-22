@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MockGoingValueGenerator extends GoingValueGenerator {
+public class MockOngoingValueGenerator extends OngoingValueGenerator {
 
-    private final List<GoingValue> result;
+    private final List<OngoingValue> result;
 
-    public MockGoingValueGenerator(GoingValue... result) {
+    public MockOngoingValueGenerator(OngoingValue... result) {
         this.result = new ArrayList<>(Arrays.asList(result));
     }
 
     @Override
-    public GoingValue generate() {
+    public OngoingValue generate() {
         if (result.isEmpty()) {
-            return GoingValue.GO;
+            return OngoingValue.GO;
         }
         return result.removeFirst();
     }

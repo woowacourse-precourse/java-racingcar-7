@@ -3,8 +3,8 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static racingcar.GoingValue.GO;
-import static racingcar.GoingValue.STOP;
+import static racingcar.OngoingValue.GO;
+import static racingcar.OngoingValue.STOP;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +21,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class RacingGameTest {
 
     private final Cars cars = new Cars(List.of(new Car("1"), new Car("2"), new Car("3")));
-    private final GoingValueGenerator goingValueGenerator = new MockGoingValueGenerator(GO, STOP, GO);
+    private final OngoingValueGenerator ongoingValueGenerator = new MockOngoingValueGenerator(GO, STOP, GO);
 
     @Nested
     class 라운드_검증 {
@@ -31,7 +31,7 @@ class RacingGameTest {
         void 라운드가_1회_미만_혹은_10000회_초과라면_예외(int invalidRound) {
             // when & then
             assertThatThrownBy(() -> {
-                new RacingGame(goingValueGenerator, cars, invalidRound);
+                new RacingGame(ongoingValueGenerator, cars, invalidRound);
             }).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -40,7 +40,7 @@ class RacingGameTest {
         void 라운드가_1회_이상_10000회_이하라면_정상_진행(int round) {
             // when & then
             assertDoesNotThrow(() -> {
-                new RacingGame(goingValueGenerator, cars, round);
+                new RacingGame(ongoingValueGenerator, cars, round);
             });
         }
     }
@@ -51,7 +51,7 @@ class RacingGameTest {
         @Test
         void 경주가_진행되면_자동차들은_전진하고_라운드가_증가한다() {
             // given
-            RacingGame racingGame = new RacingGame(goingValueGenerator, cars, 10);
+            RacingGame racingGame = new RacingGame(ongoingValueGenerator, cars, 10);
 
             // when
             racingGame.progress();
@@ -70,7 +70,7 @@ class RacingGameTest {
         @Test
         void 지정된_라운드가_모두_끝났다면_경기_종료() {
             // given
-            RacingGame racingGame = new RacingGame(goingValueGenerator, cars, 3);
+            RacingGame racingGame = new RacingGame(ongoingValueGenerator, cars, 3);
             racingGame.progress();
             racingGame.progress();
             racingGame.progress();
@@ -85,7 +85,7 @@ class RacingGameTest {
         @Test
         void 지정된_라운드가_모두_끝나지_않았다면_경기_진행_중() {
             // given
-            RacingGame racingGame = new RacingGame(goingValueGenerator, cars, 3);
+            RacingGame racingGame = new RacingGame(ongoingValueGenerator, cars, 3);
             racingGame.progress();
             racingGame.progress();
 

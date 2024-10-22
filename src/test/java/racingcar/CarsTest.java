@@ -3,8 +3,8 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static racingcar.GoingValue.GO;
-import static racingcar.GoingValue.STOP;
+import static racingcar.OngoingValue.GO;
+import static racingcar.OngoingValue.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +58,10 @@ class CarsTest {
             Car car1 = new Car("1");
             Car car2 = new Car("2");
             Car car3 = new Car("3");
-            car1.go(GO);
-            car1.go(GO);
-            car3.go(GO);
-            car3.go(GO);
+            car1.ongoing(GO);
+            car1.ongoing(GO);
+            car3.ongoing(GO);
+            car3.ongoing(GO);
             Cars cars = new Cars(List.of(car1, car2, car3));
 
             // when
@@ -84,10 +84,10 @@ class CarsTest {
             Car car2 = new Car("2");
             Car car3 = new Car("3");
             Cars cars = new Cars(List.of(car1, car2, car3));
-            GoingValueGenerator goingValueGenerator = new MockGoingValueGenerator(GO, STOP, GO);
+            OngoingValueGenerator onGoingValueGenerator = new MockOngoingValueGenerator(GO, STOP, GO);
 
             // when
-            cars.ongoingAllCars(goingValueGenerator);
+            cars.ongoingAllCars(onGoingValueGenerator);
 
             // then
             assertThat(cars.getCars())

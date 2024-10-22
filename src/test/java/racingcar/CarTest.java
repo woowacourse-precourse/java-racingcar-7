@@ -55,7 +55,7 @@ class CarTest {
             Car car = new Car("김정재");
 
             // when
-            car.go(GoingValue.GO);
+            car.ongoing(OngoingValue.GO);
 
             // then
             assertThat(car.getPosition()).isEqualTo(1);
@@ -67,7 +67,7 @@ class CarTest {
             Car car = new Car("김정재");
 
             // when
-            car.go(GoingValue.STOP);
+            car.ongoing(OngoingValue.STOP);
 
             // then
             assertThat(car.getPosition()).isEqualTo(0);
@@ -83,7 +83,7 @@ class CarTest {
         @Test
         void 다른_자동차보다_앞에_위치하면_승리() {
             // given
-            me.go(GoingValue.GO);
+            me.ongoing(OngoingValue.GO);
 
             // when
             CompeteResult result = me.compete(other);
@@ -95,8 +95,8 @@ class CarTest {
         @Test
         void 다른_자동와_동일_위치하면_무승부() {
             // given
-            me.go(GoingValue.GO);
-            other.go(GoingValue.GO);
+            me.ongoing(OngoingValue.GO);
+            other.ongoing(OngoingValue.GO);
 
             // when
             CompeteResult result = me.compete(other);
@@ -108,7 +108,7 @@ class CarTest {
         @Test
         void 다른_자동차보다_뒤에_위치하면_패배() {
             // given
-            other.go(GoingValue.GO);
+            other.ongoing(OngoingValue.GO);
 
             // when
             CompeteResult result = me.compete(other);

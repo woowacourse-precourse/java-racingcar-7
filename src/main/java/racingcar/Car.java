@@ -1,6 +1,6 @@
 package racingcar;
 
-import static racingcar.GoingValue.GO;
+import static racingcar.OngoingValue.GO;
 
 public class Car {
 
@@ -29,8 +29,8 @@ public class Car {
         }
     }
 
-    public void go(GoingValue goingValue) {
-        if (goingValue == GO) {
+    public void ongoing(OngoingValue ongoingValue) {
+        if (ongoingValue == GO) {
             position++;
         }
     }

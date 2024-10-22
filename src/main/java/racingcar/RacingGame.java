@@ -4,14 +4,14 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final GoingValueGenerator goingValueGenerator;
+    private final OngoingValueGenerator ongoingValueGenerator;
     private final Cars cars;
     private final int round;
     private int currentRound = 0;
 
-    public RacingGame(GoingValueGenerator goingValueGenerator, Cars cars, int round) {
+    public RacingGame(OngoingValueGenerator ongoingValueGenerator, Cars cars, int round) {
         validateRound(round);
-        this.goingValueGenerator = goingValueGenerator;
+        this.ongoingValueGenerator = ongoingValueGenerator;
         this.cars = cars;
         this.round = round;
     }
@@ -23,7 +23,7 @@ public class RacingGame {
     }
 
     public void progress() {
-        cars.ongoingAllCars(goingValueGenerator);
+        cars.ongoingAllCars(ongoingValueGenerator);
         currentRound ++;
     }
 

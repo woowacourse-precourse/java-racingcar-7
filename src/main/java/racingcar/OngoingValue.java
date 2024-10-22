@@ -1,13 +1,13 @@
 package racingcar;
 
-public enum GoingValue {
+public enum OngoingValue {
     GO,
     STOP;
 
     public static int MIN_INCLUDE_BOUND = 0;
     public static int MAX_INCLUDE_BOUND = 9;
 
-    public static GoingValue from(int number) {
+    public static OngoingValue from(int number) {
         validateNumberBound(number);
         if (number < 4) {
             return STOP;

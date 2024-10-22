@@ -22,9 +22,9 @@ public class Cars {
         }
     }
 
-    public void ongoingAllCars(GoingValueGenerator goingValueGenerator) {
+    public void ongoingAllCars(OngoingValueGenerator onGoingValueGenerator) {
         for (Car car : this.cars) {
-            car.go(goingValueGenerator.generate());
+            car.ongoing(onGoingValueGenerator.generate());
         }
     }
 
