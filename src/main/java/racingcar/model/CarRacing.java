@@ -3,13 +3,16 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class CarRacing {
     private final List<Car> carList = new ArrayList<>();
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public CarRacing(InputView inputView) {
+    public CarRacing(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void start() {
@@ -21,8 +24,11 @@ public class CarRacing {
     }
 
     private void startRounds(int trialCount) {
-        for (int i = 0; i < trialCount; i++) {
+        System.out.println("\n실행 결과");
+
+        for (int round = 0; round < trialCount; round++) {
             carList.forEach(Car::moveIfPossible);
+            outputView.printLeaderBoard(carList);
         }
     }
 
