@@ -31,7 +31,7 @@ public class Application {
             for (Car car : cars) {
                 int number = pickNumberInRange(0, 9);
                 if (number >= 4) {
-                    // 자동차를 움직인다.
+                    car.move();// 자동차를 움직인다.
                 }
             }
             // 경주의 현재 상태를 출력한다.
