@@ -6,10 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
 
-        run();
+    static List<Car> cars;
 
+    static class Car {
+        String name;
+        int moveCount;
+
+        public Car(String name) {
+            this.name = name;
+            moveCount = 0;
+        }
+
+        @Override
+        public String toString() {
+            return name + " : " + "-".repeat(moveCount) + "\n";
+        }
     }
 
     private static void run() {
@@ -23,9 +35,9 @@ public class Application {
         String carsInput = Console.readLine();
 
         List<String> names = getValidNames(carsInput);
-        if (isValidInput(names)) {
-
-        }
+        cars = new ArrayList<>();
+        if (isValidInput(names))
+            for (String name : names) cars.add(new Car(name));
 
     }
 
@@ -51,5 +63,11 @@ public class Application {
 
     private static void print(String message) {
         System.out.println(message);
+    }
+
+    public static void main(String[] args) {
+
+        run();
+
     }
 }
