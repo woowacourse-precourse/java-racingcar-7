@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class ConsoleInputView implements InputView {
 
     private static final Pattern carNamePattern =
-            Pattern.compile("^[0-9a-zA-Z가-힣]{1,5}(,[0-9a-zA-Z가-힣]{1,5})*");
+            Pattern.compile("^[0-9a-zA-Z가-힣]{1,5}(,[0-9a-zA-Z가-힣]{1,5})*$");
 
     @Override
     public String getCarNames() {
@@ -28,7 +28,7 @@ public class ConsoleInputView implements InputView {
 
     private String validateNameFormat(String nameToValidate) {
         Matcher matcher = carNamePattern.matcher(nameToValidate);
-        if (matcher.hasMatch()) {
+        if (matcher.matches()) {
             return nameToValidate;
         }
         throw new IllegalArgumentException("[ERROR] 올바른 자동차 이름 형식이 아닙니다.");
@@ -39,7 +39,7 @@ public class ConsoleInputView implements InputView {
         try {
             chance = Integer.parseInt(numberToValidate);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자가 아니거나 int 범위를 벗어납니다.");
         }
         return chance;
     }
