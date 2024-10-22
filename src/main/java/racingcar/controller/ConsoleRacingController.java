@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import java.util.NoSuchElementException;
 import racingcar.constants.AppConstants;
 import racingcar.service.CarService;
 import racingcar.utility.CarNameParser;
@@ -22,7 +21,7 @@ public class ConsoleRacingController implements RacingController {
         String carNamesAsString = getCarNamesAsString();
         List<String> carNames = CarNameParser.parseCarNames(carNamesAsString);
         carNames.forEach(carService::register);
-
+        int moveCount = getMoveCount();
     }
 
     @Override
@@ -36,8 +35,8 @@ public class ConsoleRacingController implements RacingController {
         racingView.showRequestMessage(AppConstants.REQUEST_MOVE_COUNT_MESSAGE);
         try {
             return Integer.parseInt(Console.readLine());
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("아무 숫자도 입력하지 않음");
         }
     }
 }
