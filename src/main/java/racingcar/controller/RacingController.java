@@ -29,6 +29,8 @@ public class RacingController {
 
         List<String> winnerNames = RacingService.getWinners(moveCounts, carNames);
         if(winnerNames.size() == 1) OutputView.printSoloWinnerMessage(winnerNames.get(0));
+        if(winnerNames.size() != 1) OutputView.printJointWinnerMessage(winnerNames);
+
 
     }
 }

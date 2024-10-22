@@ -30,4 +30,9 @@ public class OutputView {
     public static void printSoloWinnerMessage(String winner) {
         System.out.println("최종 우승자 : " + winner);
     }
+
+    public static void printJointWinnerMessage(List<String> winnerNames) {
+        String s = String.join(", ", winnerNames);
+        System.out.println("최종 우승자 : " + s);
+    }
 }
