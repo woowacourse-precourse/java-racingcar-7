@@ -8,14 +8,10 @@ public class CarRacing {
     private static int tryCount;
 
     public static void start() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
+        String[] input = input();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCountString = Console.readLine();
-
-        initCarArray(carNames);
-        initTryCount(tryCountString);
+        initCarArray(input[0]);
+        initTryCount(input[1]);
 
         while (CarRacing.tryCount-- > 0) {
             updatePosition();
@@ -25,6 +21,16 @@ public class CarRacing {
 
         String[] winners = getWinner();
         System.out.print("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static String[] input() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carNames = Console.readLine();
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String tryCountString = Console.readLine();
+
+        return new String[]{carNames, tryCountString};
     }
 
     private static void initTryCount(String tryCountString) {
