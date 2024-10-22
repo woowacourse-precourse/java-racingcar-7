@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.model.Car;
 import racingcar.view.OutputView;
 
+import java.util.List;
 import java.util.Map;
 
 public class CarService {
@@ -19,7 +20,7 @@ public class CarService {
         return car.carNameSplit(inputCarName);
     }
 
-    public void racing(Map<String, Integer> cars, int count){
+    public Map<String, Integer> racing(Map<String, Integer> cars, int count){
 
         System.out.println("실행 결과");
 
@@ -28,5 +29,10 @@ public class CarService {
             outputView.racingView(cars);
         }
 
+        return cars;
+    }
+
+    public void result(Map<String, Integer> cars){
+        List<String> winnerCarList = car.getWinningCars(cars);
     }
 }

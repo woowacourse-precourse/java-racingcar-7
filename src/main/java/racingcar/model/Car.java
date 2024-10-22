@@ -3,12 +3,12 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validation.Validator;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Car {
 
     Map<String, Integer> cars = new HashMap<>();
+    List<String> winnerCars = new ArrayList<>();
 
     public Map<String, Integer> carNameSplit(String carNames){
         String[] tokens = carNames.split(",");
@@ -31,5 +31,17 @@ public class Car {
         }
 
         return cars;
+    }
+
+    public List<String> getWinningCars(Map<String, Integer> cars){
+        Optional<Integer> maxDistance = cars.values().stream()
+                .max(Integer::compare);
+
+        for (Map.Entry<String, Integer> entry : cars.entrySet()) {
+            if (Objects.equals(entry.getValue(), maxDistance.get())) {
+                winnerCars.add(entry.getKey());  // 우승한 자동차 이름 추가
+            }
+        }
+        return winnerCars;
     }
 }
