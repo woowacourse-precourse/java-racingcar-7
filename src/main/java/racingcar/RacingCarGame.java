@@ -33,5 +33,14 @@ public class RacingCarGame {
                 ioHandler.showRacingCarsProgress(racingCars);
             }
         }
+        int max = racingCars.stream()
+                .mapToInt(RacingCar::getMoveCount)
+                .max().orElseThrow(() -> new RuntimeException("최대값을 찾을 수 없습니다."));
+        List<String> winnersName = new ArrayList<>(racingCars.stream()
+                .filter(racingCar -> racingCar.isWinner(max))
+                .map(racingCar -> racingCar.getName())
+                .toList());
+        ioHandler.showWinners(winnersName);
+
     }
 }

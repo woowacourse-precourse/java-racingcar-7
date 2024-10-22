@@ -23,11 +23,11 @@ public class RacingCar {
         return moveCount;
     }
 
-    public boolean isFinish(int finishCount) {
-        return moveCount >= finishCount;
-    }
-
     public String getProgress() {
         return "-".repeat(moveCount);
+    }
+
+    public boolean isWinner(int max) {
+        return moveCount == max;
     }
 }

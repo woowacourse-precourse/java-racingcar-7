@@ -24,4 +24,8 @@ public class RacingCarIOHandler {
                         racingCar.getName(), racingCar.getProgress()));
         System.out.println();
     }
+    public void showWinners(List<String> winners) {
+        String result = String.join(", ", winners);
+        System.out.printf("최종 우승자 : %s%n", result);
+    }
 }
