@@ -75,7 +75,10 @@ public class Service {
 
             if(maxLength.equals(value.length())){
                 resultList.add(car);
-                resultString += resultString.length()==INITIAL_NUMBER ? car : COMMA +car;
+
+                if(resultString.length()==INITIAL_NUMBER)
+                    resultString += car;
+                else resultString+= COMMA +car;
             }
         }
 
