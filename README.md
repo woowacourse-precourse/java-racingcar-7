@@ -10,8 +10,8 @@ src/
 │   └── java/
 │       ├── custom/
 │       │   ├── controller        // 컨트롤 패키지
-│       │   ├── service           // 서비스 패키지
 │       │   ├── model             // 모델 패키지
+│       │   ├── service           // 서비스 패키지
 │       │   ├── validator         // 유효성 검사 패키지
 │       │   └── view              // 뷰 패키지
 │       └── racingcar/
