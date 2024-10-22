@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Racingcar {
+public class RacingcarModel {
 
     private Map<String, String> car = new HashMap<>();
 
