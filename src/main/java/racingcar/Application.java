@@ -97,4 +97,21 @@ public class Application {
         }
         return winnerList;
     }
+
+    public static void printWinners(List<String> winnerList) {
+        String notice = "최종 우승자 : ";
+        if(winnerList.size() == 1) {
+            notice += winnerList.get(0);
+            System.out.println(notice);
+            return;
+        }
+        else if(winnerList.size() > 1) {
+            for(int i = 0; i < winnerList.size(); i++) {
+                notice += winnerList.get(i);
+                notice += SPLITTER;
+            }
+            notice = notice.substring(0, notice.length() - 1);
+            System.out.println(notice);
+        }
+    }
 }
