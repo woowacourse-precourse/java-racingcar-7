@@ -2,8 +2,14 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import racingcar.utils.Validator;
 
 public class InputView {
+    private final Validator validator;
+
+    public InputView(Validator validator) {
+        this.validator = validator;
+    }
 
     public ArrayList<String> inputCarName() {
         ArrayList<String> carNames = new ArrayList<>();
@@ -16,6 +22,8 @@ public class InputView {
         for (String car : carArray) {
             carNames.add(car.trim());
         }
+
+        validator.validateInputCarName(carNames);
 
         return carNames;
 
