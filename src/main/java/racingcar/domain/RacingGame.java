@@ -21,6 +21,8 @@ public class RacingGame {
     }
 
     public void play() {
+        System.out.println(RACE_RESULT_TITLE.getMessage());
+
         Integer round = gameRound.getRound();
 
         for (int i = 0; i < round; i++) {
@@ -48,8 +50,6 @@ public class RacingGame {
     }
 
     private void raceRound() {
-        System.out.println(RACE_RESULT_TITLE.getMessage());
-
         for (Car car : cars) {
             int randomNumber = RandomNumber.pick();
             car.forward(randomNumber);
