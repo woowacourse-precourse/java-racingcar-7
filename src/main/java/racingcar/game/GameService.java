@@ -7,6 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GameService {
+    void moveEachCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.moveForward();
+        }
+    }
+
     List<String> getWinnerByRanks(List<Car> cars) {
         HashMap<Integer, List<String>> ranks = new HashMap<>();
         int maxMoveCount = 0;
