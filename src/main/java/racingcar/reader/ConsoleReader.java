@@ -3,7 +3,7 @@ package racingcar.reader;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.Reader;
 
-public class ConsoleRead implements Reader {
+public class ConsoleReader implements Reader {
 
     @Override
     public String readOrigin() {
