@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static racingcar.GoingValue.GO;
+import static racingcar.GoingValue.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,28 @@ class CarsTest {
             assertThat(leadingCars)
                     .extracting(Car::getName)
                     .contains("1", "3");
+        }
+    }
+
+    @Nested
+    class 자동차들_전진_테스트 {
+
+        @Test
+        void 자동차들을_전진시킨다() {
+            // given
+            Car car1 = new Car("1");
+            Car car2 = new Car("2");
+            Car car3 = new Car("3");
+            Cars cars = new Cars(List.of(car1, car2, car3));
+            GoingValueGenerator goingValueGenerator = new MockGoingValueGenerator(GO, STOP, GO);
+
+            // when
+            cars.ongoingAllCars(goingValueGenerator);
+
+            // then
+            assertThat(cars.getCars())
+                    .extracting(Car::getPosition)
+                    .contains(1, 0, 1);
         }
     }
 

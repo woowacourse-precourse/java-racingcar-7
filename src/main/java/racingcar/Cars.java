@@ -22,6 +22,12 @@ public class Cars {
         }
     }
 
+    public void ongoingAllCars(GoingValueGenerator goingValueGenerator) {
+        for (Car car : this.cars) {
+            car.go(goingValueGenerator.generate());
+        }
+    }
+
     public List<Car> getLeadingCars() {
         List<Car> leadingCars = new ArrayList<>();
         Car leadingCar = cars.get(0);
@@ -35,6 +41,10 @@ public class Cars {
                 leadingCars.add(car);
             }
         }
+        return cars;
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 }
