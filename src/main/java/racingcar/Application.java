@@ -52,5 +52,11 @@ public class Application {
                 .orElseThrow(() -> new IllegalArgumentException("경주에 참가한 자동차가 없습니다."))
                 .getPosition();
 
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+
+
     }
 }
