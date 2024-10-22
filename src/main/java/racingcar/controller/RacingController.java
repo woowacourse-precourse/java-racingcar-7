@@ -16,6 +16,7 @@ public class RacingController {
         int tryCount = readTryCount();
 
         Racing racing = new Racing(tryCount, carNames);
+        racing.startRacing();
     }
 
     private String readCarNames() {

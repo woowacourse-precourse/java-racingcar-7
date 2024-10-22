@@ -1,7 +1,10 @@
 package racingcar.model;
 
+import java.util.Random;
+
 public class Car {
     private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final int MIN_FORWARD_NUM = 4;
 
     private final String carName;
     private int forwardCount;
@@ -10,6 +13,15 @@ public class Car {
         checkCarNameIsValid(carName);
         this.carName = carName;
         this.forwardCount = 0;
+    }
+
+    public String forwardProcess() {
+        if (isForwardable()) {
+            this.forwardCount++;
+        }
+        String progress = "-".repeat(forwardCount);
+
+        return carName + " : " + progress;
     }
 
     private void checkCarNameIsValid(String carName) {

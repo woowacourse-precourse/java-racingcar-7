@@ -8,12 +8,18 @@ public class Cars {
 
     public Cars(String carNames) {
         racingCars = new ArrayList<>();
+
         for (String carName : carNames.split(",")) {
             racingCars.add(new Car(carName));
         }
     }
 
-    public List<Car> getRacingCars() {
-        return racingCars;
+    public String racing() {
+        StringBuilder roundRecord = new StringBuilder();
+        for (Car racingCar : racingCars) {
+            roundRecord.append(racingCar.forwardProcess()).append("\n");
+        }
+
+        return roundRecord.toString();
     }
 }
