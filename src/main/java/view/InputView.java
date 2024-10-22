@@ -3,7 +3,6 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import domain.Car;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,15 +20,15 @@ public class InputView {
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
     private static final Integer MINIMUM_CAR_NUMBER = 2;
 
-    public static String[] getCarNames() {
+    public static List<Car> getCarNames() {
+        OutputView.printInputCarNames();
         String input = Console.readLine();
         validateEmpty(input);
         validateDelimiter(input);
         String[] carNames = input.split(DELIMITER);
         validateInputSize(carNames);
         validateDuplicate(carNames);
-        List<Car> cars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
-        return carNames;
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 
     private static void validateDelimiter(final String input) {
@@ -45,19 +44,19 @@ public class InputView {
                 .distinct()
                 .count() != carNames.length;
 
-        if(result) {
+        if (result) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     private static void validateEmpty(final String input) {
-        if(input.isBlank()) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException(EMPTY_ERROR_MESSAGE);
         }
     }
 
     private static void validateInputSize(final String[] carNames) {
-        if(carNames.length < MINIMUM_CAR_NUMBER) {
+        if (carNames.length < MINIMUM_CAR_NUMBER) {
             throw new IllegalArgumentException(CAR_NUMBER_ERROR_MESSAGE);
         }
     }
