@@ -26,7 +26,7 @@ public class CarName {
             throw new RacingCarException(EMPTY_CAR_NAME_NOT_ALLOWED.getMessage());
         }
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEEDED.getMessage());
+            throw new RacingCarException(CAR_NAME_LENGTH_EXCEEDED.getMessage());
         }
     }
 }
