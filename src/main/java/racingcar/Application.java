@@ -43,9 +43,15 @@ public class Application {
 
     private static void playOnce() {
         for (Car car : cars) {
-            int randomNumbers = Randoms.pickNumberInRange(0, 9);
+            if (canGo()) {
 
+            }
         }
+    }
+
+    private static boolean canGo() {
+        int randomNumbers = Randoms.pickNumberInRange(0, 9);
+        return randomNumbers >= STANDARD;
     }
 
     private static void inputPlayCount() {
