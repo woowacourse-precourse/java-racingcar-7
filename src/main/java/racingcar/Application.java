@@ -56,9 +56,17 @@ public class Application {
         System.out.println("실행 결과");
         for (int i = 0; i < gameCount; i++) {
             startRound(carNameList);
-            printResult();
+            printRoundResult();
             System.out.println();
         }
+    }
+
+    public static Map<String, Integer> initResult(List<String> carNameList) {
+        Map<String, Integer> carGameResult = new LinkedHashMap<>();
+        for (String carName : carNameList) {
+            carGameResult.put(carName, 0);
+        }
+        return carGameResult;
     }
 
     public static void startRound(List<String> carNameList) {
@@ -70,17 +78,20 @@ public class Application {
         }
     }
 
-    public static void printResult() {
+    public static void printRoundResult() {
         for (String carName : carGameResult.keySet()) {
             System.out.println(carName + " : " + "-".repeat(carGameResult.get(carName)));
         }
     }
 
-    public static Map<String, Integer> initResult(List<String> carNameList) {
-        Map<String, Integer> carGameResult = new LinkedHashMap<>();
-        for (String carName : carNameList) {
-            carGameResult.put(carName, 0);
-        }
-        return carGameResult;
+    public static List<String> getWinner() {
+        int maxDistance = carGameResult.values().stream()
+                .max(Integer::compareTo)
+                .orElseThrow(IllegalArgumentException::new);
+        return carGameResult.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxDistance)
+                .map(Map.Entry::getKey)
+                .toList();
     }
+
 }
