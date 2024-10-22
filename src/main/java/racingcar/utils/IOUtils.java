@@ -10,4 +10,8 @@ public class IOUtils {
     public static void outputString(String message) {
         System.out.println(message);
     }
+
+    public static void outputStringWithoutEnter(String message) {
+        System.out.print(message);
+    }
 }
