@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private String position;
 
     private Car(String name) {
@@ -19,5 +19,9 @@ public class Car {
                 .map(Validator::validateNameLength)
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public String getName() {
+        return name;
     }
 }
