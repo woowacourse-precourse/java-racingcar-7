@@ -1,10 +1,5 @@
 package racingcar;
 
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Car {
 
     private final String name;
@@ -20,5 +15,19 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void move(int moveNum) {
+        if (moveNum >= 4) {
+            position += "-";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", position='" + position + '\'' +
+                '}';
     }
 }
