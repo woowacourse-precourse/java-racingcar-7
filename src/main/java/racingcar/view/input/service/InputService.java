@@ -1,4 +1,4 @@
-package racingcar.view.inputView.service;
+package racingcar.view.input.service;
 
 public interface InputService {
     String input();
