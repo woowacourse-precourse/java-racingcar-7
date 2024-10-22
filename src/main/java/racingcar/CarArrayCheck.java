@@ -9,10 +9,14 @@ public class CarArrayCheck {
 	int carLength = 0;
 	Map<String, Integer> carMap = new LinkedHashMap<String, Integer>();
 
+	private void error() {
+		throw new IllegalArgumentException();
+	}
+	
 	public void carNameCheck(String carName) {
 		if (carName.endsWith(",")) {
 			System.err.println("자동차 이름은 빈문자열로 입력할 수 없습니다.");
-			throw new IllegalArgumentException();
+			error();
 		}
 		carNameSplit(carName);
 	}
@@ -31,7 +35,7 @@ public class CarArrayCheck {
 	private void carArrayLength() {
 		if (carArray == null || carLength <= 1) {
 			System.err.println("경주할 자동차를 2개 이상 입력해주세요.");
-			throw new IllegalArgumentException();
+			error();
 		}
 	}
 
@@ -45,15 +49,19 @@ public class CarArrayCheck {
 	private void nameCheck(String name) {
 		if (name.isBlank()) {
 			System.err.println("자동차 이름은 공백으로 입력할 수 없습니다.");
-			throw new IllegalArgumentException();
+			error();
+		}
+		if (name.contains(" ")) {
+			System.err.println("자동차 이름에 공백은 포함할 수 없습니다.");
+			error();
 		}
 		if (name.length() > 5) {
 			System.err.println("자동차 이름은 5자 이하로 입력해주세요.");
-			throw new IllegalArgumentException();
+			error();
 		}
 		if (carMap.containsKey(name)) {
 			System.err.println("자동차 이름은 중복될 수 없습니다.");
-			throw new IllegalArgumentException();
+			error();
 		}
 	}
 
