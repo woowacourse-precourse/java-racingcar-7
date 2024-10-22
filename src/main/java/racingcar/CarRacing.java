@@ -30,6 +30,7 @@ public class CarRacing {
         displayResult();
 
         String[] winners = getWinner();
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 
     private static String[] getWinner() {
