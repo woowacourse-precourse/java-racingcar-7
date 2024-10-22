@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
 
     static List<Car> cars;
+    static int playCount;
 
     static class Car {
         String name;
@@ -34,6 +35,12 @@ public class Application {
     private static void inputPlayCount() {
         print("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
+        if (isValidInput(input)) playCount = Integer.parseInt(input);
+    }
+
+    private static boolean isValidInput(String input) {
+
+        return true;
     }
 
     private static void inputCars() {
