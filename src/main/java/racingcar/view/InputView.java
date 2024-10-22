@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
@@ -10,6 +11,6 @@ public class InputView {
         System.out.println(InputInstruction);
         String[] splitInput = Console.readLine().split(",");
 
-        return List.of(splitInput);
+        return Arrays.stream(splitInput).map(String::trim).toList();
     }
 }
