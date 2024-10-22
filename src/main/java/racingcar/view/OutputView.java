@@ -25,4 +25,9 @@ public class OutputView {
         }
         return sb.toString();
     }
+
+    public static void printFinalResult(List<String> finalResult) {
+        String result = String.join(",", finalResult);
+        System.out.printf("최종 우승자 : %s", result);
+    }
 }
