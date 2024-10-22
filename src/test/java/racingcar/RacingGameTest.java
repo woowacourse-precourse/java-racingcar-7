@@ -96,4 +96,28 @@ class RacingGameTest {
             assertThat(finished).isFalse();
         }
     }
+
+    @Nested
+    class 우승자_조회 {
+
+        @Test
+        void 경주_게임의_우승자를_조회한다() {
+            // given
+            OngoingValueGenerator ongoingValueGenerator = new MockOngoingValueGenerator(
+                    GO, GO, GO,
+                    GO, STOP, GO
+            );
+            RacingGame racingGame = new RacingGame(ongoingValueGenerator, cars, 3);
+            racingGame.progress();
+            racingGame.progress();
+
+            // when
+            List<Car> winners = racingGame.getWinners();
+
+            // then
+            assertThat(winners)
+                    .extracting(Car::getName)
+                    .containsExactly("1", "3");
+        }
+    }
 }

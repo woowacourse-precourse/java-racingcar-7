@@ -31,6 +31,10 @@ public class RacingGame {
         return currentRound >= round;
     }
 
+    public List<Car> getWinners() {
+        return cars.getLeadingCars();
+    }
+
     public List<Car> getCars() {
         return cars.getCars();
     }
