@@ -5,4 +5,6 @@ public interface RacingController {
 
     public String getCarNamesAsString();
 
+    public int getMoveCount();
+
 }
