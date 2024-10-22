@@ -9,5 +9,7 @@ public class Application {
 
         CarInputValidator carInputValidator = new CarInputValidator();
         carInputValidator.validate(carInput);
+
+        String roundInput = view.getRoundInput();
     }
 }
