@@ -79,4 +79,12 @@ public class Application {
             System.out.println(carInfo);
         }
     }
+
+    public static Integer getWinPosition(List<RacingCar> racingCarList) {
+        int maxPosition = 0;
+        for (RacingCar racingCar : racingCarList) {
+            if (racingCar.position > maxPosition) maxPosition = racingCar.position;
+        }
+        return maxPosition;
+    }
 }
