@@ -15,7 +15,6 @@ public class InputView {
 
     private static final String DELIMITER = ",";
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
-    private static final Integer DUPLICATE_VALUE = 2;
     private static final Integer MINIMUM_CAR_NUMBER = 2;
 
     public static String[] getCarNames() {
@@ -39,7 +38,7 @@ public class InputView {
     private static void validateDuplicate(final String[] carNames) {
         Boolean result = Arrays.stream(carNames)
                 .distinct()
-                .count() >= DUPLICATE_VALUE;
+                .count() != carNames.length;
 
         if(result) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
