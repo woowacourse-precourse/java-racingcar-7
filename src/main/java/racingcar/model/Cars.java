@@ -31,15 +31,22 @@ public class Cars {
     }
 
     public List<String> getFinalResult() {
-        int max = cars.stream()
-            .mapToInt(car -> car.getPosition())
-            .max()
-            .getAsInt();
+        int maxPosition = findMaxPosition();
+        return findWinnersName(maxPosition);
+    }
 
+    private List<String> findWinnersName(int max) {
         return cars.stream()
             .filter(car -> car.getPosition() == max)
             .map(car -> car.getName())
             .toList();
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+            .mapToInt(car -> car.getPosition())
+            .max()
+            .getAsInt();
     }
 
     public List<Car> getCars() {
