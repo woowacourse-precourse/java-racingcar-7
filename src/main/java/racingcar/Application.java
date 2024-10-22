@@ -60,4 +60,12 @@ public class Application {
             }
         }
     }
+
+    public static void checkRandomNumber(List<RacingCar> racingCarList){
+        for(RacingCar racingCar : racingCarList){
+            for(int i = 0; i < racingCar.randomNumbers.size(); i++){
+                if(racingCar.randomNumbers.get(i) >= 4) racingCar.position += 1;
+            }
+        }
+    }
 }
