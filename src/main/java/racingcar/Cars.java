@@ -41,7 +41,7 @@ public class Cars {
                 leadingCars.add(car);
             }
         }
-        return cars;
+        return leadingCars;
     }
 
     public List<Car> getCars() {

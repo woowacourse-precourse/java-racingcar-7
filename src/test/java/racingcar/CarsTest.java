@@ -70,7 +70,7 @@ class CarsTest {
             // then
             assertThat(leadingCars)
                     .extracting(Car::getName)
-                    .contains("1", "3");
+                    .containsExactly("1", "3");
         }
     }
 
@@ -92,7 +92,7 @@ class CarsTest {
             // then
             assertThat(cars.getCars())
                     .extracting(Car::getPosition)
-                    .contains(1, 0, 1);
+                    .containsExactly(1, 0, 1);
         }
     }
 
