@@ -10,18 +10,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class InputViewTrialCountTest extends NsTest {
+class InputViewTrialCountTest extends NsTest {
     private InputView inputView;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         inputView = new InputView();
     }
 
     @DisplayName("시도 횟수 입력을 받는다.")
     @MethodSource("inputTrialCount")
     @ParameterizedTest
-    public void inputTrialCount(String input, String output) {
+    void inputTrialCount(String input, String output) {
         run(input);
         assertThat(output().contains(output)).isTrue();
     }
