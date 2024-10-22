@@ -10,13 +10,16 @@ public class GameCounts {
 
     int gameCounts;
 
-    public GameCounts(int gameCounts){
+    public GameCounts(String gameCounts){
         validateMoreThanZero(gameCounts);
-        this.gameCounts=gameCounts;
+
+        this.gameCounts=Integer.parseInt(gameCounts);
     }
 
-    private void validateMoreThanZero(int gameCounts) {
-        if (gameCounts<SMALLEST_COUNT){
+    private void validateMoreThanZero(String gameCounts) {
+        int countsToNum=Integer.parseInt(gameCounts);
+
+        if (countsToNum<SMALLEST_COUNT){
             throw new IllegalArgumentException(UNDER_SMALLEST_COUNT);
         }
     }
