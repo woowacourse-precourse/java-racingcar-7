@@ -2,6 +2,8 @@ package racingcar.model;
 
 import racingcar.dto.RacingInfo;
 
+import java.util.stream.IntStream;
+
 public class Racing {
     private final int tryCount;
     private final Cars racingCars;
@@ -14,10 +16,9 @@ public class Racing {
     }
 
     public void startRacing() {
-        for (int i = 0; i < tryCount; i++) {
-            String roundResult = racingCars.racing();
-            racingRecord.addRoundRecordLog(roundResult);
-        }
+        IntStream.range(0, tryCount)
+                .mapToObj(i -> racingCars.racing())
+                .forEach(racingRecord::addRoundRecordLog);
     }
 
     public String getRacingRecord() {
