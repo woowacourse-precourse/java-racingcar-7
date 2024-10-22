@@ -21,6 +21,30 @@ public class CarRacing {
 
         carNameList.forEach(this::enroll);
         startRounds(trialCount);
+        printWinner();
+    }
+
+    private void printWinner() {
+        int maxValue = Integer.MIN_VALUE;
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : carList) {
+            int position = car.getPosition();
+
+            if (position > maxValue) {
+                maxValue = position;
+            }
+        }
+
+        for (Car car : carList) {
+            int position = car.getPosition();
+
+            if (position == maxValue) {
+                winners.add(car);
+            }
+        }
+
+        outputView.printWinners(winners);
     }
 
     private void startRounds(int trialCount) {

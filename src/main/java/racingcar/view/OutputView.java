@@ -16,4 +16,9 @@ public class OutputView {
 
         System.out.println(leaderBoard);
     }
+
+    public void printWinners(List<Car> winners) {
+        System.out.print("최종 우승자 : ");
+        winners.forEach(car -> System.out.print(car.getName() + " "));
+    }
 }
