@@ -14,15 +14,25 @@ public class Application {
 
         Map<String, Integer> cars = new LinkedHashMap<>();
         for (String carName : carNames) {
-            cars.put(carName, 0);
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+            cars.put(carName.trim(), 0);
+        }
+        if (cars.size() < 1) {
+            throw new IllegalArgumentException("자동차는 1대 이상 있어야합니다.");
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int moveCount = Integer.parseInt(Console.readLine());
+        try {
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            int moveCount = Integer.parseInt(Console.readLine());
 
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < moveCount; i++) {
-            moveCars(cars);
+            System.out.println("\n실행 결과");
+            for (int i = 0; i < moveCount; i++) {
+                moveCars(cars);
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 입력할 수 있습니다.");
         }
 
         ArrayList<String> winners = getWinners(cars);
