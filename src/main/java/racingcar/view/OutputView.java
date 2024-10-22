@@ -14,7 +14,7 @@ public class OutputView {
 
     public static void printRacingCars(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.getName() + COLON + LINE.repeat(car.getPosition()));
+            System.out.println(car.getCarName() + COLON + LINE.repeat(car.getPosition()));
         }
         System.out.println();
     }
