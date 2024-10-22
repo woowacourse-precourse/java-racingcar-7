@@ -1,7 +1,6 @@
 package racingcar;
 
 class Car {
-    private static final int MOVEMENT_THRESHOLD = 4;
     private final String name;
     private int position;
 
@@ -9,6 +8,13 @@ class Car {
         this.name = name;
         this.position = 0;
     }
+
+    public void move(boolean shouldMove){
+        if(!shouldMove) {
+            this.position++;
+        }
+    }
+
 
     public String getName() {
         return name;
@@ -18,9 +24,8 @@ class Car {
         return position;
     }
 
-    public void move(int moveDistance) {
-        if (moveDistance >= MOVEMENT_THRESHOLD) {
-            this.position++;
-        }
+    @Override
+    public String toString() {
+        return String.format("%s : %s", name, "-".repeat(position));
     }
 }
