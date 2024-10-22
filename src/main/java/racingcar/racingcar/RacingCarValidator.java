@@ -9,8 +9,6 @@ public class RacingCarValidator {
     private static final String MORE_THAN_ONE = "한 대 이상의 자동차 이름이 필요합니다.";
     private static final String OVER_MAX_LENGTH = "한 대 이상의 자동차 이름이 최대 길이를 초과했습니다.";
     private static final String EXIST_SAME_NAME = "동일한 이름을 가진 자동차가 존재합니다.";
-    private static final String IS_NOT_NUMBER = "정수 입력이 잘못 되었습니다.";
-    private static final String PUT_OVER_ZERO = "시도 횟수는 0회 이상이 입력 되어야 합니다.";
 
     private RacingCarValidator(){
 
@@ -37,17 +35,5 @@ public class RacingCarValidator {
         Set<String> nameSet = new HashSet<>(carNames);
         if(nameSet.size()!= carNames.size())
             throw new IllegalArgumentException(EXIST_SAME_NAME);
-    }
-
-    public void numberCheck(String number){
-        for(char c:number.toCharArray()){
-            if(!Character.isDigit(c))
-                throw new IllegalArgumentException(IS_NOT_NUMBER);
-        }
-    }
-
-    public void validTryTimeCheck(int tryTimes){
-        if(tryTimes <= 0)
-            throw new IllegalArgumentException(PUT_OVER_ZERO);
     }
 }

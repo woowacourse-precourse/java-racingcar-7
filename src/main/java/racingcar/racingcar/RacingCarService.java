@@ -30,9 +30,4 @@ public class RacingCarService {
         return racingCars;
     }
 
-    public void raceStart(String tryTimes){
-        racingCarValidator.numberCheck(tryTimes);
-        int intTryTimes = Integer.parseInt(tryTimes);
-        racingCarValidator.validTryTimeCheck(intTryTimes);
-    }
 }
