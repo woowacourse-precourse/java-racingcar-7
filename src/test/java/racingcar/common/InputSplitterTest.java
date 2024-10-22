@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,6 +22,18 @@ class InputSplitterTest {
         assertThat(numbers).containsExactly(expected);
 
         System.out.println(Arrays.toString(numbers));
+    }
+
+    @Test
+    void 분할된_입력값_연결_기능_테스트() {
+        // given
+        String[] elements = {"1", "2", "3"};
+
+        // when
+        String result = InputSplitter.join(elements);
+
+        // then
+        assertThat(result).isEqualTo("1, 2, 3");
     }
 
     static Stream<Arguments> provideInput() {
