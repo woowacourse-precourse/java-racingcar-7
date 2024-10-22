@@ -40,7 +40,7 @@ public class Application {
     //시도 횟수 입력 받기
     public static Integer getTrial() {
         String input = Console.readLine();
-        Integer trial = 0;
+        Integer trial;
         try {
             trial = Integer.parseInt(input);
             return trial;
@@ -59,9 +59,7 @@ public class Application {
 
     public static void assignRandomNumber(List<RacingCar> racingCarList, Integer trial) {
         for (RacingCar racingCar : racingCarList) {
-            for (int i = 0; i < trial; i++) {
-                racingCar.randomNumbers.add(getRandomNumber());
-            }
+            racingCar.randomNumbers.add(getRandomNumber());
         }
     }
 
