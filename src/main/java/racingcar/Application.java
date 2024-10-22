@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,5 +16,7 @@ public class Application {
             cars.racing(new RandomMoveStrategy());
             OutputView.printRacingCars(cars);
         }
+
+        OutputView.printRaceWinners(new Winners(cars));
     }
 }

@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static racingcar.domain.Car.DEFAULT_POSITION;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Winners {
@@ -26,6 +25,12 @@ public class Winners {
     }
 
     public List<Car> getWinners() {
-        return Collections.unmodifiableList(winners);
+        return winners;
+    }
+
+    public List<String> getWinnerNames() {
+        return winners.stream()
+                .map(Car::getCarName)
+                .toList();
     }
 }
