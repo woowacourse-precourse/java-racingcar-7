@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class CarNameValidator {
     final String carNames = InputController.printCarNamesInput();
+    final String tryTimes = InputController.printTryTimesInput();
 
     public String[] separateCarNames() {
         return carNames.split(",");
@@ -11,9 +12,18 @@ public class CarNameValidator {
 
     public void checkLengthCarNames() {
         System.out.println(Arrays.toString(separateCarNames()));
-        if (separateCarNames().length > 5) {
-            throw new IllegalArgumentException();
+        for (String carName:separateCarNames()) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
+    public void changeTryTimesNumber() {
+        try {
+            Integer.parseInt(tryTimes);
+        }catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

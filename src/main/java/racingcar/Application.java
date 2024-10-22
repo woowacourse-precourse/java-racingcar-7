@@ -6,5 +6,6 @@ public class Application {
 
         CarNameValidator carNameValidator = new CarNameValidator();
         carNameValidator.checkLengthCarNames();
+        carNameValidator.isTryTimesNumber();
     }
 }
