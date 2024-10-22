@@ -1,8 +1,12 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,6 +14,7 @@ public class Racing {
 
 	private Map<String, Integer> carMap = new LinkedHashMap<>();
 	private int playCnt = 0;
+	private List<String> winners = new ArrayList<>();
 
 	public void playRacing(Map<String, Integer> carMap, int playCnt) {
 		this.carMap = carMap;
@@ -67,10 +72,20 @@ public class Racing {
 
 	private void winners() {
 		int max = findMax();
+		findWinners(max);
 	}
 
 	private int findMax() {
 		return Collections.max(carMap.values());
+	}
+
+	private void findWinners(int max) {
+		Set<Entry<String, Integer>> entrySet = carMap.entrySet();
+		for (Entry<String, Integer> entry : entrySet) {
+			if (entry.getValue() == max) {
+				winners.add(entry.getKey());
+			}
+		}
 	}
 
 }
