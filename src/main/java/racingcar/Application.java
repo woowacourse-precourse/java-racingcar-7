@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class Application {
             carList.add(new Car(carName));
         }
 
-        Race race = new Race(carList, attempts);
+        RacingGame race = new RacingGame(carList, attempts);
         race.start();
 
         List<String> winners = race.getWinners();
