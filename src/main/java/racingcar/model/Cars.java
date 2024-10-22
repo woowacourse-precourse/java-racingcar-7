@@ -1,6 +1,8 @@
 package racingcar.model;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.util.Generator;
 
 public class Cars {
@@ -19,6 +21,13 @@ public class Cars {
             int randomNum = generator.generate();
             car.go(randomNum);
         }
+    }
+
+    public Map<String, Integer> getRoundResult() {
+        LinkedHashMap<String, Integer> roundResult = new LinkedHashMap<>();
+        cars.stream()
+            .forEach(car -> roundResult.put(car.getName(), car.getPosition()));
+        return roundResult;
     }
 
     public List<Car> getCars() {
