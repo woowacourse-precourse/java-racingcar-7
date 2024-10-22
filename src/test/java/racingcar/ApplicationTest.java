@@ -35,4 +35,12 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 자동차_동일_이름_테스트(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("java,java"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
 }
