@@ -11,14 +11,14 @@ public class GameDirector {
 
     public GameDirector(String carNames,String count) {
         manager.add(carNames);
-        this.count = Integer.parseInt(count);
+        this.count = Validator.validateCountIfNegative(count);
     }
 
     public void run() {
-        moveCar();
+        List<Car> result = getResult();
     }
 
-    private List<Car> moveCar() {
+    private List<Car> getResult() {
         List<Car> carList = manager.getList();
         IntStream.range(0, count)
                 .forEach(i -> {
