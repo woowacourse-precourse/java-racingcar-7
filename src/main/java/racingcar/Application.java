@@ -15,6 +15,12 @@ public class Application {
         for (String carName : carNames) {
             cars.put(carName, 0);
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int moveCount = Integer.parseInt(Console.readLine());
+        for (int i = 0; i < moveCount; i++) {
+            moveCars(cars);
+        }
     }
 
     public static void moveCars(Map<String, Integer> cars) {
