@@ -18,6 +18,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int moveCount = Integer.parseInt(Console.readLine());
+
+        System.out.println("\n실행 결과");
         for (int i = 0; i < moveCount; i++) {
             moveCars(cars);
         }
@@ -25,14 +27,25 @@ public class Application {
 
     public static void moveCars(Map<String, Integer> cars) {
         for (String carName : cars.keySet()) {
+            int position = cars.get(carName);
             if (isMoveSuccess()) {
-                cars.put(carName, cars.get(carName) + 1);
+                cars.put(carName, ++position);
             }
+            printCarMoveStatus(carName, position);
         }
+        System.out.println();
     }
 
     public static boolean isMoveSuccess() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         return randomNumber >= 4;
+    }
+
+    public static void printCarMoveStatus(String carName, int position) {
+        System.out.print(carName + " : ");
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
