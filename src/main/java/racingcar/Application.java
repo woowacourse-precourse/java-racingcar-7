@@ -4,17 +4,21 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램
 
+        // 자동차 이름 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputName = Console.readLine();
 
+        // 자동차 이름 구분
         String[] names = inputName.split(",");
 
+        // 자동차 이름 글자수 검증
         for (String name : names){
             if (name.length() > 5){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
@@ -28,9 +32,11 @@ public class Application {
             cars.add(car);
         }
 
+        // 시도 횟수 입력
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputCount = Integer.parseInt(Console.readLine());
 
+        // 실행 결과 출력
         System.out.println("실행 결과");
         for (int i = 0; i < inputCount; i++){
             for (int j = 0; j < names.length; j++ ){
@@ -46,6 +52,24 @@ public class Application {
             }
             System.out.println();
         }
+
+        // 우승자 출력
+        List<String> winner = new ArrayList<>();
+        List<Integer> advances = new ArrayList<>();
+
+        for (int i = 0; i < names.length; i++){
+            advances.add(cars.get(i).advance);
+        }
+
+        int maxAdvance = Collections.max(advances);
+
+        for (int i = 0; i < names.length; i++){
+            if (cars.get(i).advance == maxAdvance){
+                winner.add(cars.get(i).name);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 
     static class Car {
