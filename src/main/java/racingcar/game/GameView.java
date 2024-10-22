@@ -25,4 +25,17 @@ public class GameView {
 
         IOUtils.outputStringWithEnter("");
     }
+
+    void printWinner(List<Car> cars) {
+        List<String> winners = gameService.getWinnerByRanks(cars);
+
+        IOUtils.outputStringWithoutEnter("최종 우승자 : ");
+        int winnersSize = winners.size();
+
+        for (int i = 0; i < winners.size() - 1; i++) {
+            IOUtils.outputStringWithoutEnter(winners.get(i) + ", ");
+        }
+
+        IOUtils.outputStringWithEnter(winners.get(winnersSize - 1));
+    }
 }
