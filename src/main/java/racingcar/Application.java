@@ -12,12 +12,17 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String names = readLine();
+        String[] names = readLine().split(",");
+        for (String name : names) {
+            if(name.isEmpty() || name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름을 잘못 입력 하셨습니다.");
+            }
+        }
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(readLine());
 
         Map<String, boolean[]>  playerGameHistory = new HashMap<>();
-        for(String name : names.split(",")) {
+        for(String name : names) {
             playerGameHistory.put(name, new boolean[tryCount]);
         }
 
