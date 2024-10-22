@@ -14,8 +14,16 @@ public class CarRacing {
 
     public void start() {
         List<String> carNameList = inputView.inputCarNames();
+        int trialCount = inputView.inputTrialCount();
 
         carNameList.forEach(this::enroll);
+        startRounds(trialCount);
+    }
+
+    private void startRounds(int trialCount) {
+        for (int i = 0; i < trialCount; i++) {
+            carList.forEach(Car::moveIfPossible);
+        }
     }
 
     private void enroll(String name) {
