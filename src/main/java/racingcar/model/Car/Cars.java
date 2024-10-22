@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static List<String> carList = new ArrayList<>();
+    private static List<Car> carList = new ArrayList<>();
 
     public Cars(String[] carNames) {
         addCarName(carNames);
@@ -12,7 +12,7 @@ public class Cars {
 
     private void addCarName(String[] carNames) {
         for (String carName : carNames) {
-            carList.add(carName);
+            carList.add(new Car(carName));
         }
     }
 }
