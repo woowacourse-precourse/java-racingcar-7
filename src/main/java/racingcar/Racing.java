@@ -19,7 +19,19 @@ public class Racing {
 	private void start() {
 		System.out.println("실행결과");
 		for (int i = 0; i < playCnt; i++) {
+			playCnt();
 		}
 	}
+
+	private void playCnt() {
+		for (String carName : carMap.keySet()) {
+			int random = random();
+		}
+	}
+
+	private int random() {
+		return Randoms.pickNumberInRange(0, 9);
+	}
+
 
 }
