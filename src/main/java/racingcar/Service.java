@@ -11,9 +11,12 @@ import java.util.Map;
 
 public class Service {
     private Map<String,String> CARMAP = new HashMap<>();
+    private final String RACE_LINE = "-";
     private final String COMMA = ",";
     private final String BLANK_STRING = "";
     private final Integer INITIAL_NUMBER = 0;
+    private final Integer RANDOM_NUMBER_END = 9;
+    private final Integer REQUIRED_RANDOM_NUMBER = 4;
 
     void setCarName(){
         String[] inputs;
@@ -31,6 +34,23 @@ public class Service {
 
         for(String name : inputs)
             CARMAP.put(name, BLANK_STRING);
+    }
+
+    void goCarMovement(Integer count){
+        for(int i=INITIAL_NUMBER; i<count; i++){
+            for(var name : CARMAP.keySet()){
+                goRandomMovement(name);
+            }
+        }
+    }
+
+    private void goRandomMovement(String name) {
+        Integer num = pickNumberInRange(INITIAL_NUMBER,RANDOM_NUMBER_END);
+
+        if(num>=REQUIRED_RANDOM_NUMBER){
+            String movement = CARMAP.get(name) + RACE_LINE;
+            CARMAP.put(name,movement);
+        }
     }
 
     String getWinner(){
