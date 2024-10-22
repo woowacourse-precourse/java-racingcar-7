@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -42,6 +43,34 @@ class CarTest {
 
             // then
             assertThat(car.getName()).isEqualTo(expected);
+        }
+    }
+
+    @Nested
+    class 전진_테스트 {
+
+        @Test
+        void 전진한다() {
+            // given
+            Car car = new Car("김정재");
+
+            // when
+            car.go(GoingValue.GO);
+
+            // then
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
+
+        @Test
+        void 전진하지_않는다() {
+            // given
+            Car car = new Car("김정재");
+
+            // when
+            car.go(GoingValue.STOP);
+
+            // then
+            assertThat(car.getPosition()).isEqualTo(0);
         }
     }
 }

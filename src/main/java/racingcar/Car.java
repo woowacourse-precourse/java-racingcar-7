@@ -1,10 +1,13 @@
 package racingcar;
 
+import static racingcar.GoingValue.GO;
+
 public class Car {
 
     private static final String WHITE_SPACE_REGEX = "\\s+";
 
     private final String name;
+    private int position = 0;
 
     public Car(String name) {
         if (name == null) {
@@ -26,7 +29,17 @@ public class Car {
         }
     }
 
+    public void go(GoingValue goingValue) {
+        if (goingValue == GO) {
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
