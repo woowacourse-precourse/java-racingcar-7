@@ -10,7 +10,9 @@ public class Application {
 
     static final int STANDARD = 4;
     static List<Car> cars;
+    static List<String> winners;
     static int playCount;
+    static int winnerScore;
 
     static class Car {
         String name;
@@ -32,7 +34,14 @@ public class Application {
         inputCars();
         inputPlayCount();
         play();
+        outputWinner();
+    }
 
+    private static void outputWinner() {
+        winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.moveCount == winnerScore) winners.add(car.name);
+        }
     }
 
     private static void play() {
@@ -43,7 +52,7 @@ public class Application {
 
     private static void playOnce() {
         for (Car car : cars) {
-            if (canGo()) car.moveCount++;
+            if (canGo()) winnerScore = Math.max(winnerScore, ++car.moveCount);
         }
     }
 
