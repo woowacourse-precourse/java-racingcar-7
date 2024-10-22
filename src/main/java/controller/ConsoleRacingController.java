@@ -2,6 +2,8 @@ package controller;
 
 import constants.AppConstants;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import utility.CarNameParser;
 import view.RacingView;
 
 public class ConsoleRacingController implements RacingController {
@@ -9,6 +11,7 @@ public class ConsoleRacingController implements RacingController {
     @Override
     public void run() {
         String carNamesAsString = getCarNamesAsString();
+        List<String> carNames = CarNameParser.parseCarNames(carNamesAsString);
     }
 
     @Override
