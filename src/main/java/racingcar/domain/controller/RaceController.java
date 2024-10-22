@@ -9,6 +9,7 @@ import racingcar.domain.view.RaceView;
 public class RaceController {
 
 	private static final String DEFAULT_SEPARATOR = ",";
+	private static final String EMPTY_INPUT_REGEX = ".*\\s+.*";
 	private static final int MAX_CAR_NAME_LENGTH = 5;
 
 	private final CarList carList;
@@ -29,7 +30,7 @@ public class RaceController {
 		carList.addCars(names);
 	}
 
-	public int receiveRaceLap(){
+	public int receiveRaceLap() {
 		int lap = raceView.receiveRaceLap();
 		validLapCount(lap);
 
@@ -52,8 +53,8 @@ public class RaceController {
 		}
 	}
 
-	private void validLapCount(int lap){
-		if(lap <= 0){
+	private void validLapCount(int lap) {
+		if (lap <= 0) {
 			throw new IllegalArgumentException(ErrorMessage.LAP_COUNT_ERROR.getMessage());
 		}
 	}
@@ -63,12 +64,11 @@ public class RaceController {
 	}
 
 	private boolean isInvalidName(String name) {
-		return name.isEmpty() || name.length() > MAX_CAR_NAME_LENGTH;
+		return name.isEmpty() || name.length() > MAX_CAR_NAME_LENGTH || name.matches(EMPTY_INPUT_REGEX);
 	}
 
 	private boolean hasInvalidName(String[] names) {
 		return Arrays.stream(names).anyMatch(this::isInvalidName);
 	}
-
 
 }
