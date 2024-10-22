@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.validation.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ public class Car {
         String[] tokens = carNames.split(",");
 
         for(String car : tokens){
+            Validator.checkNameLength(car);
             cars.put(car, 0);
         }
 
