@@ -19,5 +19,6 @@ public class CarController {
         String inputCarName = inputView.inputCarName();
         Map<String, Integer> cars = carService.carNames(inputCarName);
         int inputCount = inputView.getAttemptCount();
+        carService.racing(cars, inputCount);
     }
 }
