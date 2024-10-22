@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.PlayerValidation;
+
 import java.util.ArrayList;
 import java.util.List;
 
