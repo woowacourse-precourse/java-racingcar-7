@@ -27,4 +27,12 @@ public class Car {
             throw new IllegalArgumentException(INVALID_NAME_FORMAT.getMessage());
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMove() {
+        return move;
+    }
 }

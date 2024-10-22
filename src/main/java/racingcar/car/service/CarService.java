@@ -1,7 +1,7 @@
 package racingcar.car.service;
 
-import static racingcar.global.util.CarConst.MAX_CAR_COUNT;
-import static racingcar.global.util.CarConst.MIN_CAR_COUNT;
+import static racingcar.global.util.CarConst.MAX_CARS_RANGE;
+import static racingcar.global.util.CarConst.MIN_CARS_RANGE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class CarService {
     public void create(String carInput) {
         String[] split = getCarNames(carInput);
         for (String s : split) {
-            cars.add(new Car(s));
+            cars.add(new Car(s.trim()));
         }
         validCarsRange();
     }
@@ -39,7 +39,7 @@ public class CarService {
     }
 
     private void validCarsRange() {
-        if (cars.size() < MIN_CAR_COUNT || cars.size() > MAX_CAR_COUNT) {
+        if (cars.size() < MIN_CARS_RANGE || cars.size() > MAX_CARS_RANGE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CARS_RANGE.getMessage());
         }
     }
