@@ -48,4 +48,30 @@ public class RacingCarTest {
         //when
         assertThatThrownBy(() -> new RacingCar(input)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void TDD_자동차_전진_성공() {
+        //given
+        RacingCar pobi = new RacingCar("pobi");
+        int input = 5;
+
+        //when
+        pobi.move(input);
+
+        //then
+        assertThat(pobi.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void TDD_자동차_멈춤_성공() {
+        //given
+        RacingCar pobi = new RacingCar("pobi");
+        int input = 3;
+
+        //when
+        pobi.move(input);
+
+        //then
+        assertThat(pobi.getPosition()).isEqualTo(0);
+    }
 }

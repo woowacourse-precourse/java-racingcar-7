@@ -3,6 +3,7 @@ package racingcar.domain;
 public class RacingCar {
 
     private final String name;
+    private int position = 0;
 
     public RacingCar(String name) {
         name = name.strip();
@@ -23,7 +24,22 @@ public class RacingCar {
         }
     }
 
+    public void move(int input) {
+        // TODO : 4 상수 처리
+        if (input >= 4) {
+            go();
+        }
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    private void go() {
+        position++;
     }
 }
