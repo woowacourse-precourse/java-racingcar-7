@@ -23,7 +23,11 @@ public class Cars {
     }
 
     private void validateDuplicated(List<Car> cars) {
-        if (cars.size() != cars.stream().distinct().count()) {
+        List<String> carNames = cars.stream()
+                .map(Car::getCarName)
+                .distinct()
+                .toList();
+        if (cars.size() != carNames.size()) {
             throw new IllegalArgumentException(DUPLICATE_ERROR);
         }
     }
