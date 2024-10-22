@@ -15,4 +15,10 @@ public class CountValidator {
             throw new IllegalArgumentException(ErrorMessage.ERROR_IS_ATTEMPT_COUNT_INVALID.getMessage());
         }
     }
+
+    private void checkIsNumber(String attemptCount) {
+        if (!StringUtils.isNumericString(attemptCount)) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_IS_ATTEMPT_COUNT_NOT_A_NUMBER.getMessage());
+        }
+    }
 }
