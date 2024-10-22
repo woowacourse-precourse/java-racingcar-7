@@ -27,6 +27,10 @@ public class RacingGame {
         currentRound ++;
     }
 
+    public boolean isFinished() {
+        return currentRound >= round;
+    }
+
     public List<Car> getCars() {
         return cars.getCars();
     }

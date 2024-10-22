@@ -14,6 +14,9 @@ public class MockGoingValueGenerator implements GoingValueGenerator {
 
     @Override
     public GoingValue generate() {
+        if (result.isEmpty()) {
+            return GoingValue.GO;
+        }
         return result.removeFirst();
     }
 }

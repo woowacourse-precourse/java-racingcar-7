@@ -63,4 +63,37 @@ class RacingGameTest {
             assertThat(racingGame.getCurrentRound()).isEqualTo(1);
         }
     }
+
+    @Nested
+    class 게임_종료_상태_판단 {
+
+        @Test
+        void 지정된_라운드가_모두_끝났다면_경기_종료() {
+            // given
+            RacingGame racingGame = new RacingGame(goingValueGenerator, cars, 3);
+            racingGame.progress();
+            racingGame.progress();
+            racingGame.progress();
+
+            // when
+            boolean finished = racingGame.isFinished();
+
+            // then
+            assertThat(finished).isTrue();
+        }
+
+        @Test
+        void 지정된_라운드가_모두_끝나지_않았다면_경기_진행_중() {
+            // given
+            RacingGame racingGame = new RacingGame(goingValueGenerator, cars, 3);
+            racingGame.progress();
+            racingGame.progress();
+
+            // when
+            boolean finished = racingGame.isFinished();
+
+            // then
+            assertThat(finished).isFalse();
+        }
+    }
 }
