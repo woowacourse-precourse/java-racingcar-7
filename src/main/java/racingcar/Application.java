@@ -3,7 +3,6 @@ package racingcar;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,10 @@ public class Application {
         String[] carNames = input.split(",");
 
         for (String carName : carNames) {
+            carName = carName.trim(); // 이 부분 나중에 Car에 메세지를 주는식으로 바꿔도 될듯
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
             cars.add(new Car(carName));
         }
 

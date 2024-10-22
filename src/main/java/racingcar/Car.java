@@ -5,7 +5,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name.trim();
+        this.name = name;
     }
 
     public void move() {
