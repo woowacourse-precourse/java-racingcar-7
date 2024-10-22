@@ -13,4 +13,12 @@ public class Car {
     public void move() {
         position.forward();
     }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public boolean isSamePosition(Position position){
+        return this.position.equals(position);
+    }
 }

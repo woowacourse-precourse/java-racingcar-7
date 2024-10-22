@@ -27,4 +27,8 @@ public class Cars {
             throw new IllegalArgumentException(DUPLICATE_CARS.getMessage());
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

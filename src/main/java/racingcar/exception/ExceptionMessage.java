@@ -5,7 +5,8 @@ public enum ExceptionMessage {
     OUT_OF_NAME_LENGTH("자동차의 이름은 5자를 초과하였습니다."),
     ILLEGAL_POSITION("자동차의 위치는 음수가 될 수 없습니다."),
     DUPLICATE_CARS("자동차의 이름은 중복될 수 없습니다."),
-    ILLEGAL_TRY_COUNT("시도 횟수는 음수가 될 수 없습니다.");
+    ILLEGAL_TRY_COUNT("시도 횟수는 음수가 될 수 없습니다."),
+    EMPTY_CARS("자동차가 1대도 없습니다.");
 
     private final String message;
     ExceptionMessage(String message){

@@ -23,4 +23,8 @@ public class Position {
     public void forward(){
         position++;
     }
+
+    public int getPosition(){
+        return position;
+    }
 }

@@ -15,4 +15,8 @@ public class TryCount {
             throw new IllegalArgumentException(ILLEGAL_TRY_COUNT.getMessage());
         }
     }
+
+    public boolean playOneRound() {
+        return tryCount-->0;
+    }
 }
