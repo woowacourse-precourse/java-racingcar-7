@@ -11,9 +11,11 @@ public class Application {
         String carNames = Console.readLine();
         Printer.print(SystemMessage.ATTEMPT_COUNT_MESSAGE);
         String count = Console.readLine();
-        /*
-        List<Car> list = Car.createCars(carNames);
-        GameDirector.run(list, count);
-        */
+
+        CarManager manager = new CarManager();
+        manager.add(carNames);
+
+        GameDirector director = new GameDirector();
+        /*director.run(list, count);*/
     }
 }
