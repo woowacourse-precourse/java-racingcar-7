@@ -25,7 +25,7 @@ public class Application {
 
         @Override
         public String toString() {
-            return name + " : " + "-".repeat(moveCount) + "\n";
+            return name + " : " + "-".repeat(moveCount);
         }
     }
 
