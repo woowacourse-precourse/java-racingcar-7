@@ -2,6 +2,8 @@ package racingcar.record;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import racingcar.racingcar.RacingCar;
 
 public class RecordService {
@@ -26,6 +28,8 @@ public class RecordService {
         for (int i = 1; i <= intTryTimes; i++) {
             recordOneTry(record, racingCarList);
         }
+
+        record.getTrace().append("최종 우승자 : ").append(findWinner(record));
 
         return record.getTrace().toString();
     }
@@ -52,9 +56,18 @@ public class RecordService {
         }
     }
 
-    private void findWinner(Record record){
-        record.getLatestPosition()
+    private String findWinner(Record record){
+        int max = record.getLatestPosition()
+                .values()
+                .stream()
+                .max(Integer::compareTo)
+                .get();
+
+        return record.getLatestPosition()
                 .entrySet()
-                .so
+                .stream()
+                .filter(it -> it.getValue() == max)
+                .map(Entry::getKey)
+                .collect(Collectors.joining(", "));
     }
 }
