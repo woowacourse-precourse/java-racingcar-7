@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Application {
 
@@ -26,6 +27,8 @@ public class Application {
         //잘못된 값 입력시 IllegalArgumentException 발생
 
         String inputCarNames = Console.readLine();
+        int attempts = Integer.parseInt(Console.readLine());
+        Console.close();
 
         String[] carNames = inputCarNames.split(",");
 
@@ -38,28 +41,21 @@ public class Application {
             System.out.println("s = " + s);
         }
 
-        int attempts = Integer.parseInt(Console.readLine());
 
         int trial = 0;
         int randomNum = 0;
         while (trial <= attempts) {
             trial++;
-
-            randomNum = Randoms.pickNumberInRange(0, 9);
-
-            if (randomNum >= MOVING_FORWARD) {
-                System.out.println("randomNum = " + randomNum);
-                System.out.println("\"go\" = " + "go");
-            } else if (randomNum >= STOP) {
-                System.out.println("randomNum = " + randomNum);
-
-                System.out.println("\"stop\" = " + "stop");
+            for (String carName: carNames) {
+                randomNum = Randoms.pickNumberInRange(0, 9);
+                if (randomNum >= MOVING_FORWARD) {
+                    carMoveMap.put(carName, carMoveMap.get(carName) + '-');
+                } else if (randomNum >= STOP) {
+                    continue;
+                }
             }
         }
 
 
-        //랜덤값 추출
-
-        Console.close();
     }
 }
