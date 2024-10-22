@@ -19,7 +19,7 @@ public class InputParser {
     public List<Car> splitCarsToList(final Input input) {
         List<Car> carList = new ArrayList<>();
 
-        String cars = input.getCars();
+        String cars = input.getInput();
         String[] carNames = cars.split(DELIMITER);
 
         for (String carName : carNames) {
@@ -27,6 +27,16 @@ public class InputParser {
             carList.add(new Car(carName));
         }
         return carList;
+    }
+
+    public int parseTryCount(final Input input) {
+        try {
+            int count = Integer.parseInt(input.getInput());
+            inputValidator.validateTryCountGreaterZero(count);
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 형태의 시도 횟수입니다.");
+        }
     }
 
 }
