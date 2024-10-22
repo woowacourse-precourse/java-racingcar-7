@@ -2,6 +2,11 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class RacingGame {
 
     private static String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -9,8 +14,19 @@ public class RacingGame {
 
     public void start() {
         System.out.println(START_MESSAGE);
-        String cars = readLine();
+        String names = readLine();
+        List<Car> cars = nameCheck(names);
         System.out.println(GAME_COUNT_MESSAGE);
         int count = Integer.parseInt(readLine());
+    }
+
+    public List<Car> nameCheck(String names) {
+        List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name.trim(), 0)).collect(Collectors.toList());
+        for (Car car : cars) {
+            if (car.name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return cars;
     }
 }
