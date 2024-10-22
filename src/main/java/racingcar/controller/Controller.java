@@ -16,5 +16,7 @@ public class Controller {
     public void run () {
         printHandler.racingStartMessage();
         String [] tempCarNames = inputHandler.inputCarNames();
+        printHandler.racingNumberMessage();
+        int gameNumber = inputHandler.inputGameNumber();
     }
 }
