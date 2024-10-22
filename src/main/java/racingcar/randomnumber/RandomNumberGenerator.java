@@ -1,13 +1,12 @@
 package racingcar.randomnumber;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.GetRandomNumber;
+import racingcar.NumberGenerator;
 
-public class RandomNumberGenerator implements GetRandomNumber {
+public class RandomNumberGenerator implements NumberGenerator {
 
     @Override
-    public boolean isRandomNumberAgainstRule() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        return (randomNumber < 4);
+    public int RandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

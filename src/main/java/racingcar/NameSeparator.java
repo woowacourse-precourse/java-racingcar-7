@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 
-public interface SeparateNames {
+public interface NameSeparator {
 
     List<String> separatingNames(String origin);
 }
