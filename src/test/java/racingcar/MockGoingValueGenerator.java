@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MockGoingValueGenerator implements GoingValueGenerator {
+public class MockGoingValueGenerator extends GoingValueGenerator {
 
     private final List<GoingValue> result;
 
