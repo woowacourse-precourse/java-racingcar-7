@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarTest {
 
     @Test
-    void createCar() {
+    void createCar_success() {
         String case1 = "pobi,woni,jun";
         String case2 = "pobi";
 
@@ -21,5 +21,14 @@ class CarTest {
                 () -> assertEquals(1, cars2.size())
         );
     }
-  
+    @Test
+    void createCar_exception() {
+        String case1 = "hello";
+        String case2 = "helloWorld";
+
+        Assertions.assertAll(
+                () -> assertEquals(1, Car.generateCars(case1).size()),
+                () -> assertThrows(IllegalArgumentException.class, () -> Car.generateCars(case2))
+        );
+    }
 }
