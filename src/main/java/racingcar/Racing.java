@@ -26,6 +26,7 @@ public class Racing {
 	private void playCnt() {
 		for (String carName : carMap.keySet()) {
 			int random = random();
+			carValue(carName, random);
 		}
 	}
 
@@ -33,5 +34,15 @@ public class Racing {
 		return Randoms.pickNumberInRange(0, 9);
 	}
 
+	private void carValue(String carName, int random) {
+		int value = carMap.get(carName);
+		if (randomCheck(random)) {
+			carMap.replace(carName, value + 1);
+		}
+	}
+
+	private boolean randomCheck(int random) {
+		return random >= 4;
+	}
 
 }
