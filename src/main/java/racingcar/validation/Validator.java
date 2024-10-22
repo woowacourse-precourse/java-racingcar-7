@@ -10,4 +10,12 @@ public class Validator {
             throw new CustomException(ErrorMessage.INVALID_NAME_LENGTH);
         }
     }
+
+    public static int checkIfNumber(String number){
+        try{
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e){
+            throw new CustomException(ErrorMessage.INVALID_NUMBER);
+        }
+    }
 }

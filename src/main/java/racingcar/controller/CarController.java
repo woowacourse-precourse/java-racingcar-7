@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
 
+import java.util.Map;
+
 public class CarController {
 
     private final InputView inputView;
@@ -15,6 +17,7 @@ public class CarController {
 
     public void run(){
         String inputCarName = inputView.inputCarName();
-        String result = carService.racing(inputCarName);
+        Map<String, Integer> cars = carService.carNames(inputCarName);
+        int inputCount = inputView.getAttemptCount();
     }
 }
