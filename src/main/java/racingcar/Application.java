@@ -32,6 +32,10 @@ public class Application {
     private static boolean isValidInput(List<String> names) {
         if (names.size() > 20) throw new IllegalArgumentException("자동차 이름은 20개 이하로 입력하세요.");
 
+        for (String name : names) {
+            if (name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력하세요.");
+        }
+
         return true;
     }
 
