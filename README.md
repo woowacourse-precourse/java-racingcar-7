@@ -28,7 +28,7 @@
     게임 종료 시 우승자를 판단해야 한다.  
 
 
-- [ ] 입력 처리  
+- [x] 입력 처리  
     자동차 이름과 시도할 횟수를 입력받아야 한다.
 
 
@@ -41,7 +41,7 @@
 ## Who(누가 담당할 것인가)
 - [ ] Model/Car 클래스 (자동차 역할)  
 - [ ] Controller/RacingGame 클래스 (경주 게임 역할)  
-- [ ] View/InputHandler 클래스 (입력 처리 역할)
+- [x] View/InputHandler 클래스 (입력 처리 역할)
 - [ ] View/OutputHandler 클래스 (출력 처리 역할)
 
 
