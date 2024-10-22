@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CarManager {
 
-    private List<Car> list;
+    private final List<Car> list;
 
     public CarManager() {
         this.list = new ArrayList<>();
@@ -16,5 +16,9 @@ public class CarManager {
                 .map(Validator::validateNameLength)
                 .map(Car::generateCars)
                 .forEach(list::add);
+    }
+
+    public List<Car> getList() {
+        return new ArrayList<>(list);
     }
 }
