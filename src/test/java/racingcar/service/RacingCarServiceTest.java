@@ -17,7 +17,7 @@ class RacingCarServiceTest {
 
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(strings = {"1", "1,2", "1,2,3", "1, 2, 3"})
-    void 레이싱_경주_시작(String input) {
+    void 레이싱_경주_시작(final String input) {
         // given
         RacingCarRequestDto requestDto = new RacingCarRequestDto(input, 5);
 
@@ -33,7 +33,7 @@ class RacingCarServiceTest {
 
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(strings = {"", "1,", "1,,3", "1, ,3", " ,2,3"})
-    void 예외_빈_값_입력(String input) {
+    void 예외_빈_값_입력(final String input) {
         // given
         RacingCarRequestDto requestDto = new RacingCarRequestDto(input, 5);
 
@@ -45,7 +45,7 @@ class RacingCarServiceTest {
 
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(strings = {"1,1", "1,2,2", "1,2,1"})
-    void 예외_중복된_값_입력(String input) {
+    void 예외_중복된_값_입력(final String input) {
         // given
         RacingCarRequestDto requestDto = new RacingCarRequestDto(input, 5);
 
