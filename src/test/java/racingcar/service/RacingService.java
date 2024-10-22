@@ -26,13 +26,26 @@ public class RacingService {
         }
     }
 
-    public Car compareCarStatus(List<Car> cars) {
-        Car winner = cars.get(0);
+    public List<Car> findWinners(List<Car> cars) {
+        int maxPosition = findMaxPosition(cars);
+
+        List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() > winner.getPosition()) {
-                winner = car;
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
             }
         }
-        return winner;
+        return winners;
+    }
+
+    private int findMaxPosition(List<Car> cars) {
+        int maxPosition = cars.get(0).getPosition();
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }
