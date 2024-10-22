@@ -4,7 +4,7 @@ import racingcar.constant.ErrorMessage;
 
 import java.util.HashSet;
 
-public class CarNameValidator {
+public class CarInputValidator {
     public void checkIsCarNameValid(String carName, HashSet<String> carsToCheckDuplicate) {
         checkIsCarNameEmpty(carName);
         checkCarNameLength(carName);
