@@ -33,6 +33,10 @@ public class CarGame {
         return racingCarStates;
     }
 
+    /**
+     * 현재 가장 멀리 나간 자동차의 위치를 구한다.
+     * 그후 해당 위치에 있는 자동차들의 이름을 반환한다.
+     */
     public List<String> getTopCarNames() {
         int maxPosition = racingCarStates.stream()
             .mapToInt(RacingCarState::getPosition)
