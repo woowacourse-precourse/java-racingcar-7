@@ -11,6 +11,12 @@ public class CarInputValidator {
         checkIsCarNameAlreadyExist(carName, carsToCheckDuplicate);
     }
 
+    public void checkIsCarInputEmpty(String carInput) {
+        if (carInput.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_IS_CAR_INPUT_EMPTY.getMessage());
+        }
+    }
+
     private void checkCarNameLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_IS_CAR_NAME_TO_LONG.getMessage() + ": " + carName);
