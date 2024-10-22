@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -37,10 +38,6 @@ public class Application {
             carMoveMap.put(carName, "");
         }
 
-        for (String s : carMoveMap.keySet()) {
-            System.out.println("s = " + s);
-        }
-
 
         int trial = 0;
         int randomNum = 0;
@@ -50,7 +47,7 @@ public class Application {
                 randomNum = Randoms.pickNumberInRange(0, 9);
                 if (randomNum >= MOVING_FORWARD) {
                     carMoveMap.put(carName, carMoveMap.get(carName) + '-');
-                } else if (randomNum >= STOP) {
+                } else if (randomNum <= STOP) {
                     continue;
                 }
             }
@@ -61,6 +58,24 @@ public class Application {
             }
         }
 
+        int winnerPosition = 0;
+        ArrayList<String> winners = new ArrayList<>();
+        for (Entry<String, String> items : carMoveMap.entrySet()) {
+            int position = items.getValue().length();
 
+            if (position > winnerPosition) {
+                winnerPosition = position;
+                winners.clear();
+                winners.add(items.getKey());
+            } else if (position == winnerPosition) {
+                winners.add(items.getKey());
+            } else {
+                continue;
+            }
+        }
+
+
+        String winnerPrint = "최종 우승자 : " + String.join(",", winners);
+        System.out.println("winnerPrint = " + winnerPrint);
     }
 }
