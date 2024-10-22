@@ -18,6 +18,8 @@ public class CarRacing {
                 .peek(CarRacing::validateCarName)
                 .map(Car::new)
                 .toArray(Car[]::new);
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
     private static void validateCarName(String carName) {
