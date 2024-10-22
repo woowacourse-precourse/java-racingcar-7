@@ -21,7 +21,7 @@ class CarNameTest {
 
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(strings = {"", " "})
-    void 예외_자동차_이름이_빈_값(String input) {
+    void 예외_자동차_이름이_빈_값(final String input) {
         // then
         assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(IllegalArgumentException.class);

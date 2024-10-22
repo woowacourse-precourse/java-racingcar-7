@@ -21,7 +21,7 @@ class RacingGameRoundTest {
 
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(ints = {-1, 0})
-    void 예외_레이싱_게임_라운드가_0_또는_음수일_경우(int input) {
+    void 예외_레이싱_게임_라운드가_0_또는_음수일_경우(final int input) {
         // then
         assertThatThrownBy(() -> new RacingGameRound(input))
                 .isInstanceOf(IllegalArgumentException.class);
