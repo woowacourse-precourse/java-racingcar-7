@@ -5,7 +5,7 @@ import static racingcar.global.util.ErrorMessage.INVALID_NAME_FORMAT;
 import java.util.regex.Pattern;
 import racingcar.car.service.port.RandomHolder;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private String name;
     private int move;
 
@@ -34,5 +34,10 @@ public class Car {
 
     public int getMove() {
         return move;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(o.move, this.move);
     }
 }
