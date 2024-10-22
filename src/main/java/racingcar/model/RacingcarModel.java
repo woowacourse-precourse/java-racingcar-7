@@ -29,4 +29,20 @@ public class RacingcarModel {
         }
     }
 
+    public String getWinners() {
+        int maxDistance = car.values().stream().mapToInt(String::length).max().orElse(0);
+        StringBuilder winners = new StringBuilder();
+
+        // 가장 많이 이동한 자동차(들) 찾기
+        for (Map.Entry<String, String> entry : car.entrySet()) {
+            if (entry.getValue().length() == maxDistance) {
+                if (winners.length() > 0) {
+                    winners.append(", ");
+                }
+                winners.append(entry.getKey());
+            }
+        }
+        return winners.toString();  // 우승자 이름 반환
+    }
+
 }
