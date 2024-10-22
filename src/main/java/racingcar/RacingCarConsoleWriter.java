@@ -13,12 +13,16 @@ public class RacingCarConsoleWriter {
         System.out.printf("최종 우승자 : %s\n", winnerString);
     }
 
-    public static void writeCarState(String carName, int position) {
-        if(position < 0) {
-            throw new IllegalArgumentException("자동차의 위치는 음수가 될 수 없습니다.");
+    public static void writeRoundStartMessage(){
+        System.out.println("\n실행 결과");
+    }
+
+    public static void writeCarState(List<RacingCarState> currentRacingCarStates) {
+        for (RacingCarState racingCarState : currentRacingCarStates) {
+            String carState = "-".repeat(racingCarState.getPosition());
+            System.out.printf("%s : %s%n", racingCarState.getCarName(), carState);
         }
-        String carState = "-".repeat(position);
-        System.out.printf("%s : %s%n", carName, carState);
+        System.out.println();
     }
 
 
