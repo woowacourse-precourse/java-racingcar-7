@@ -39,6 +39,6 @@ public class RacingCars {
                 .map(Car::getName)
                 .toList();
 
-        return String.join(NAME_DELIMITER, names);
+        return String.join(NAME_DELIMITER + " ", names);
     }
 }
