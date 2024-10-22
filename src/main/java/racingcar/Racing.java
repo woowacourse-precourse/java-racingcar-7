@@ -28,6 +28,7 @@ public class Racing {
 			playCnt();
 		}
 		winners();
+		winnersPrint();
 	}
 
 	private void playCnt() {
@@ -88,4 +89,8 @@ public class Racing {
 		}
 	}
 
+	private void winnersPrint() {
+		String print = String.join(", ", winners);
+		System.out.println("최종 우승자 : " + print);
+	}
 }
