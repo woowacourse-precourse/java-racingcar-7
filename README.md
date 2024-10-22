@@ -7,7 +7,7 @@
 ### 입력 예외 구현 사항
 - [X] 자동차 이름이 공백이거나 5자 초과면 `IllegalArgumentException` 발생시키기
 - [X] 자동차 이름이 중복될 경우 `IllegalArgumentException` 발생시키기
-- [ ] 시도 횟수가 양의 정수가 아닐 경우 `IllegalArgumentException` 발생시키기
+- [X] 시도 횟수가 양의 정수가 아닐 경우 `IllegalArgumentException` 발생시키기
 
 ### 비즈니스 로직 구현 사항
 - [ ] 시도 횟수만큼 로직 진행하기
