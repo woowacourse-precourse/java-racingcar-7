@@ -63,10 +63,8 @@ public class Racing {
 
 	private String valueStr(int value) {
 		String str = "";
-		if(value > 0) {
-			for(int i = 0; i < value; i++) {
-				str += "-";
-			}
+		for (int i = 0; i < value; i++) {
+			str += "-";
 		}
 		return str;
 	}
