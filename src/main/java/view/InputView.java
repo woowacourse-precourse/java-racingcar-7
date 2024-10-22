@@ -10,6 +10,7 @@ public class InputView {
 
     private static final String DELIMITER_ERROR_MESSAGE = "올바른 구분자를 입력해야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복되지 않은 이름을 입력해야 합니다.";
+    private static final String EMPTY_ERROR_MESSAGE = "올바른 값을 입력해야 합니다.";
 
     private static final String DELIMITER = ",";
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
@@ -17,6 +18,7 @@ public class InputView {
 
     public static String[] getCarNames() {
         String input = Console.readLine();
+        validateEmpty(input);
         validateDelimiter(input);
         String[] carNames = input.split(DELIMITER);
         validateDuplicate(carNames);
@@ -38,6 +40,12 @@ public class InputView {
 
         if(result) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+        }
+    }
+
+    private static void validateEmpty(final String input) {
+        if(input.isBlank()) {
+            throw new IllegalArgumentException(EMPTY_ERROR_MESSAGE);
         }
     }
 }
