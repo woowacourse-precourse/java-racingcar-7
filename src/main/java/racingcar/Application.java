@@ -4,7 +4,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -43,8 +45,12 @@ public class Application {
             for (Car car : cars) {
                 System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
             }
-
         }
+
+        int maxPosition = cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow(() -> new IllegalArgumentException("경주에 참가한 자동차가 없습니다."))
+                .getPosition();
 
     }
 }
