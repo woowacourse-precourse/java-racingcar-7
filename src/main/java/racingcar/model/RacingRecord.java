@@ -1,17 +1,17 @@
 package racingcar.model;
 
 public class RacingRecord {
-    private StringBuilder racingRecord;
+    private final StringBuilder recordLog;
 
     public RacingRecord() {
-        racingRecord = new StringBuilder();
+        recordLog = new StringBuilder();
     }
 
-    public void addRoundRecord(String roundRecord) {
-        racingRecord.append(roundRecord).append("\n");
+    public void addRoundRecordLog(String roundRecordLog) {
+        recordLog.append(roundRecordLog).append("\n");
     }
 
     public String getRacingRecord() {
-        return racingRecord.toString();
+        return recordLog.toString();
     }
 }

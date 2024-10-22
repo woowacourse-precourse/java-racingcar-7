@@ -16,7 +16,7 @@ public class Racing {
     public void startRacing() {
         for (int i = 0; i < tryCount; i++) {
             String roundResult = racingCars.racing();
-            racingRecord.addRoundRecord(roundResult);
+            racingRecord.addRoundRecordLog(roundResult);
         }
     }
 
