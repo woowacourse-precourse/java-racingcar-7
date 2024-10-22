@@ -27,7 +27,9 @@ public class Racing {
 		for (String carName : carMap.keySet()) {
 			int random = random();
 			carValue(carName, random);
+			carPrint(carName);
 		}
+		System.out.println();
 	}
 
 	private int random() {
@@ -43,6 +45,22 @@ public class Racing {
 
 	private boolean randomCheck(int random) {
 		return random >= 4;
+	}
+
+	private void carPrint(String carName) {
+		int value = carMap.get(carName);
+		String valueStr = valueStr(value);
+		System.out.println(carName + " : " + valueStr);
+	}
+
+	private String valueStr(int value) {
+		String str = "";
+		if(value > 0) {
+			for(int i = 0; i < value; i++) {
+				str += "-";
+			}
+		}
+		return str;
 	}
 
 }
