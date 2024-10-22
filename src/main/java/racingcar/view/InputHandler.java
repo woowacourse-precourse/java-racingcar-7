@@ -1,8 +1,6 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import racingcar.util.StringParser;
 import racingcar.util.Validator;
@@ -26,8 +24,7 @@ public class InputHandler {
         String input = Console.readLine();
         validator.checkAboutCars(input);
 
-        List<String> carNames = stringParser.makeList(input);
-        return carNames;
+        return stringParser.makeList(input);
     }
 
     public int getInputAboutRound() {
