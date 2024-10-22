@@ -18,11 +18,11 @@ public class Car {
         }
     }
 
-    public void forward() {
-        this.forwardCount++;
-    }
+    private boolean isForwardable() {
+        // Random 유틸을 만드는것도 좋은 생각인거같음!
+        Random random = new Random();
+        int randomNumber = random.nextInt(10); // 0부터 9까지의 난수를 생성
 
-    public String getCarName() {
-        return carName;
+        return randomNumber > MIN_FORWARD_NUM;
     }
 }
