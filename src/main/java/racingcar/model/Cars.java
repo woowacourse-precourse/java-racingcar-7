@@ -22,4 +22,18 @@ public class Cars {
 
         return roundRecord.toString();
     }
+
+    public String getRacingWinners() {
+        racingCars.sort((c1, c2) -> c2.getForwardCount() - c1.getForwardCount());
+        List<String> winners = new ArrayList<>();
+
+        int winnerForwardCount = racingCars.getFirst().getForwardCount();
+        for (Car racingCar : racingCars) {
+            if (racingCar.getForwardCount() == winnerForwardCount) {
+                winners.add(racingCar.getCarName());
+            }
+        }
+
+        return String.join(", ", winners); // 여러 명이면 쉼표로 연결되고, 1명이면 쉼표 없이 이름만 출력됨
+    }
 }

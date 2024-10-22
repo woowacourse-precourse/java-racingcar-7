@@ -37,4 +37,12 @@ public class Car {
 
         return randomNumber > MIN_FORWARD_NUM;
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
+    }
 }

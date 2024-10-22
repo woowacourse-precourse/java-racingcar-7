@@ -1,13 +1,15 @@
 package racingcar.model;
 
+import racingcar.dto.RacingInfo;
+
 public class Racing {
     private final int tryCount;
     private final Cars racingCars;
     private final RacingRecord racingRecord;
 
-    public Racing(int tryCount, String carNames) {
-        this.tryCount = tryCount;
-        this.racingCars = new Cars(carNames);
+    public Racing(RacingInfo racingInfo) {
+        this.racingCars = new Cars(racingInfo.carNames());
+        this.tryCount = racingInfo.tryCount();
         this.racingRecord = new RacingRecord();
     }
 
@@ -16,5 +18,13 @@ public class Racing {
             String roundResult = racingCars.racing();
             racingRecord.addRoundRecord(roundResult);
         }
+    }
+
+    public String getRacingRecord() {
+        return racingRecord.getRacingRecord();
+    }
+
+    public String getWinners() {
+        return racingCars.getRacingWinners();
     }
 }
