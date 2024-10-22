@@ -48,4 +48,8 @@ public class Application {
     public static Integer getCarNumber(List<RacingCar> racingCarList){
         return racingCarList.size();
     }
+
+    public static Integer getRandomNumber(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
 }
