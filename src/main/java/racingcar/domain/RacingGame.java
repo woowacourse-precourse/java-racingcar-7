@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
-import static racingcar.view.constants.ViewMessage.RACE_RESULT_TITLE;
 import static racingcar.view.constants.ViewMessage.RACE_STATUS;
 
 import java.util.HashSet;
@@ -9,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 import racingcar.common.RandomNumber;
 import racingcar.exception.RacingCarException;
+import racingcar.view.OutputView;
 
 public class RacingGame {
 
@@ -23,9 +23,7 @@ public class RacingGame {
     }
 
     public void play() {
-        System.out.println();
-        System.out.println(RACE_RESULT_TITLE.getMessage());
-
+        OutputView.printRaceResultTitle();
         Integer round = gameRound.getRound();
 
         for (int i = 0; i < round; i++) {
@@ -47,7 +45,7 @@ public class RacingGame {
             Integer distance = car.getDistance();
             String raceStatus = String.format(RACE_STATUS.getMessage(), carName, "-".repeat(distance));
 
-            System.out.println(raceStatus);
+            OutputView.printRaceStatus(raceStatus);
         }
         System.out.println();
     }
