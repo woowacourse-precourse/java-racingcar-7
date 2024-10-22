@@ -28,6 +28,41 @@ public class CarRacing {
         }
 
         displayResult();
+
+        String[] winners = getWinner();
+    }
+
+    private static String[] getWinner() {
+        int[] maxPositionAndCount = getWinnerPositionAndCount();
+        int maxPosition = maxPositionAndCount[0];
+        int count = maxPositionAndCount[1];
+
+        String[] winners = new String[count];
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners[--count] = car.getName();
+            }
+        }
+
+        return winners;
+    }
+
+    private static int[] getWinnerPositionAndCount() {
+        int maxPosition = 0;
+        int count = 0;
+        for (Car car : cars) {
+            if (maxPosition == car.getPosition()) {
+                count++;
+            }
+
+            if (maxPosition < car.getPosition()) {
+                maxPosition = car.getPosition();
+                count = 1;
+            }
+        }
+
+        return new int[]{maxPosition, count};
     }
 
     private static void displayResult() {
