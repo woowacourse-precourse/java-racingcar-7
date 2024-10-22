@@ -12,8 +12,8 @@ class CarTest {
         Car sumin = new Car("sumin", 0);
 
         //when
-        Car newboye = boye.updateDistance(boye, 4);
-        Car newsumin = sumin.updateDistance(sumin, 1);
+        Car newboye = boye.updateDistance(boye, true);
+        Car newsumin = sumin.updateDistance(sumin, false);
 
         //then
         Assertions.assertThat(newboye.distance()).isEqualTo(1);

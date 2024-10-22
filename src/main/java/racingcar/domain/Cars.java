@@ -11,7 +11,7 @@ public record Cars(
     public Cars eachGame() {
         List<Car> result = new ArrayList<>();
         for (Car car : allCar) {
-            Car resultCar = car.updateDistance(car, RandomNumberGenerator.RandomNumber());
+            Car resultCar = car.updateDistance(car, RandomNumberGenerator.isFollowNumberRule());
             result.add(resultCar); //네이밍
         }
         return new Cars(result);
@@ -23,5 +23,14 @@ public record Cars(
             allCar.add(new Car(name, 0));
         }
         return new Cars(allCar);
+    }
+
+    public String makingEachGameResult() {
+        StringBuilder result = new StringBuilder();
+        for (Car car : allCar) {
+            result.append(car.makingCarDistanceResult());
+            result.append("\n");
+        }
+        return result.toString();
     }
 }
