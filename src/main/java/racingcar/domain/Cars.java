@@ -5,48 +5,51 @@ import java.util.List;
 
 public class Cars {
 
-    private static final String DUPLICATED_NAME="각 차는 한번만 입력해야 합니다";
-    private static final String OUT_OF_RANGE_NAME="차는 다섯글자 이하이어야 합니다";
+    private static final String DUPLICATED_NAME = "각 차는 한번만 입력해야 합니다";
+    private static final String OUT_OF_RANGE_NAME = "차는 다섯글자 이하이어야 합니다";
 
-    private static final String SPLITOR=",";
-    private static final Integer HIGHEST_NAME_LENGTH=5;
+    private static final String BLANK="";
+    private static final String SPACE=" ";
+    private static final String DELIMITER=":";
+    private static final String SPLITOR = ",";
+    private static final Integer HIGHEST_NAME_LENGTH = 5;
 
     private List<Car> cars;
 
-    public Cars(String carsInput){
+    public Cars(String carsInput) {
         validateDuplicatedName(carsInput);
         validateOutOfRangeName(carsInput);
 
-        this.cars=makeCarList(carsInput);
+        this.cars = makeCarList(carsInput);
 
     }
 
     private List<Car> makeCarList(String carsInput) {
-        List<Car> carList=Arrays.stream(carsInput.split(SPLITOR))
-                .map(carName->new Car(carName,""))
+        List<Car> carList = Arrays.stream(carsInput.split(SPLITOR))
+                .map(carName -> new Car(carName, ""))
                 .toList();
 
         return carList;
     }
 
 
-    private static void validateDuplicatedName(String carsInput){
-        long before=carsInput.split(SPLITOR).length;
+    private static void validateDuplicatedName(String carsInput) {
+        long before = carsInput.split(SPLITOR).length;
 
-        long after=Arrays.stream(carsInput.split(SPLITOR)).
+        long after = Arrays.stream(carsInput.split(SPLITOR)).
                 distinct().
                 count();
 
-        if (before!=after){
+        if (before != after) {
             throw new IllegalArgumentException(DUPLICATED_NAME);
         }
     }
 
     private void validateOutOfRangeName(String carsInput) {
-        boolean result=Arrays.stream(carsInput.split(SPLITOR))
-                .anyMatch((car)->car.length()>HIGHEST_NAME_LENGTH);
+        boolean result = Arrays.stream(carsInput.split(SPLITOR))
+                .anyMatch((car) -> car.length() > HIGHEST_NAME_LENGTH);
 
-        if (result){
+        if (result) {
             throw new IllegalArgumentException(OUT_OF_RANGE_NAME);
         }
     }
@@ -54,5 +57,13 @@ public class Cars {
     public void race() {
         cars.stream()
                 .forEach(car -> car.act(RandomNumberGenerator.createRandomNumber()));
+    }
+
+    public void printState() {
+        cars.stream()
+                .forEach(car -> {
+                    System.out.println(car.name + SPACE + DELIMITER +SPACE+ car.state);
+                });
+        System.out.println(BLANK);
     }
 }
