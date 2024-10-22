@@ -43,9 +43,7 @@ public class Application {
 
     private static void playOnce() {
         for (Car car : cars) {
-            if (canGo()) {
-
-            }
+            if (canGo()) car.moveCount++;
         }
     }
 
