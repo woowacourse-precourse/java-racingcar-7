@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @SuppressWarnings("NonAsciiCharacters")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-@DisplayName("게임 참여 자동차들 게임 테스트")
+@DisplayName("게임 참여 자동차들 테스트")
 class CarsTest {
 
     @Nested
