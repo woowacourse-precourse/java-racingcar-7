@@ -2,7 +2,6 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-import static java.lang.Math.PI;
 import static java.lang.Math.max;
 
 import java.util.ArrayList;
@@ -15,48 +14,60 @@ public class Service {
     private Map<String,String> CARMAP = new HashMap<>();
     private final String RACE_LINE = "-";
     private final String RACING_OUTPUT = " : ";
-    private final String COMMA = ",";
+    private final String COMMA_STRING = ",";
     private final String BLANK_STRING = "";
     private final Integer INITIAL_NUMBER = 0;
     private final Integer RANDOM_NUMBER_END = 9;
-    private final Integer REQUIRED_RANDOM_NUMBER = 4;
-    private final Integer MAX_CAR_NAME_LENGTH=5;
+    private final Integer RANDOM_NUMBER_REQUIRED = 4;
+    private final Integer MAX_CAR_NAME_LENGTH = 5;
 
     void setCarName(){
         List<String> nameList;
         try {
-            nameList = Arrays.asList(readLine().split(COMMA));
-
-            for(String name : nameList) {
-                if (name.length() == INITIAL_NUMBER || name.length() > MAX_CAR_NAME_LENGTH) {
-                    throw new IllegalArgumentException();
-                }
-            }
-
-
+            nameList = getCarNameInput();
         }
         catch(IllegalArgumentException e){
             throw new IllegalArgumentException(e);
         }
 
-        for(String name : nameList)
+        for(String name : nameList) {
             CARMAP.put(name, BLANK_STRING);
+        }
+    }
+
+    private List<String> getCarNameInput(){
+        List<String> nameList = Arrays.asList(readLine().split(COMMA_STRING));
+        for(String name : nameList) {
+            checkCarNameLength(name);
+        }
+
+        return nameList;
+    }
+
+    private void checkCarNameLength(String name) {
+        if (name.length() == INITIAL_NUMBER || name.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 
     void goCarMovement(Integer count){
         for(int i=INITIAL_NUMBER; i<count; i++){
-            for(var name : CARMAP.keySet()){
-                goRandomMovement(name);
-                System.out.println(name + RACING_OUTPUT + CARMAP.get(name));
-            }
+            asfwe();
             System.out.println();
+        }
+    }
+
+    private void asfwe(){
+        for(var name : CARMAP.keySet()){
+            goRandomMovement(name);
+            System.out.println(name + RACING_OUTPUT + CARMAP.get(name));
         }
     }
 
     private void goRandomMovement(String name) {
         Integer num = pickNumberInRange(INITIAL_NUMBER,RANDOM_NUMBER_END);
 
-        if(num>=REQUIRED_RANDOM_NUMBER){
+        if(num>=RANDOM_NUMBER_REQUIRED){
             String movement = CARMAP.get(name) + RACE_LINE;
             CARMAP.put(name,movement);
         }
@@ -65,30 +76,23 @@ public class Service {
     String getWinner(){
         List<String> resultList = new ArrayList<>();
         Integer maxLength = INITIAL_NUMBER;
-        String resultString = BLANK_STRING;
-
-        for(var car : CARMAP.keySet()){
-            String value = CARMAP.get(car);
-            maxLength = max(maxLength, value.length());
-
-            if(maxLength.equals(value.length())){
-                resultList.add(car);
-            }
+        for(String car : CARMAP.keySet()) {
+            maxLength = getMaxRaceLine(resultList, car, maxLength);
         }
+        return String.join(COMMA_STRING, resultList);
+    }
 
-        for(var car : CARMAP.keySet()){
-            String value = CARMAP.get(car);
+    private Integer getMaxRaceLine(List<String> resultList, String car, Integer maxLength){
+        String value = CARMAP.get(car);
 
-            if(maxLength.equals(value.length())){
-                resultList.add(car);
-
-                if(resultString.length()==INITIAL_NUMBER)
-                    resultString += car;
-                else resultString+= COMMA +car;
-            }
+        if (maxLength < value.length()) {
+            maxLength = value.length();
+            resultList.clear();
+            resultList.add(car);
+        } else if (maxLength == value.length()){
+            resultList.add(car);
         }
-
-        return resultString;
+        return maxLength;
     }
 
 }
