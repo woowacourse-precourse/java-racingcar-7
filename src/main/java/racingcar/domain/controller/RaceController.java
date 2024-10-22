@@ -29,6 +29,13 @@ public class RaceController {
 		carList.addCars(names);
 	}
 
+	public int receiveRaceLap(){
+		int lap = raceView.receiveRaceLap();
+		validLapCount(lap);
+
+		return lap;
+	}
+
 	private void validateInput(String input) {
 		if (input == null || input.isEmpty()) {
 			throw new IllegalArgumentException(ErrorMessage.STRING_EMPTY_ERROR.getMessage());
@@ -45,6 +52,12 @@ public class RaceController {
 		}
 	}
 
+	private void validLapCount(int lap){
+		if(lap <= 0){
+			throw new IllegalArgumentException(ErrorMessage.LAP_COUNT_ERROR.getMessage());
+		}
+	}
+
 	private String[] splitInput(String input) {
 		return input.split(DEFAULT_SEPARATOR);
 	}
@@ -56,5 +69,6 @@ public class RaceController {
 	private boolean hasInvalidName(String[] names) {
 		return Arrays.stream(names).anyMatch(this::isInvalidName);
 	}
+
 
 }
