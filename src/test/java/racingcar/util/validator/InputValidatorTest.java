@@ -24,6 +24,7 @@ class InputValidatorTest {
         String input1 = "LongNameMan,short";
         String input2 = "john:rock";
         String input3 = "";
+        String input4 = "철수,철수,영희";
 
         //then
         assertThrows(IllegalArgumentException.class,
@@ -32,5 +33,7 @@ class InputValidatorTest {
             () -> InputValidator.validateCarNames(input2));
         assertThrows(IllegalArgumentException.class,
             () -> InputValidator.validateCarNames(input3));
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateCarNames(input4));
     }
 }
