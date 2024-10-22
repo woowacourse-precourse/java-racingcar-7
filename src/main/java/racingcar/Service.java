@@ -2,9 +2,11 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static java.lang.Math.PI;
 import static java.lang.Math.max;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,20 +23,23 @@ public class Service {
     private final Integer MAX_CAR_NAME_LENGTH=5;
 
     void setCarName(){
-        String[] inputs;
+        List<String> nameList;
         try {
-            inputs = readLine().split(COMMA);
+            nameList = Arrays.asList(readLine().split(COMMA));
 
-            if (inputs.length == INITIAL_NUMBER || inputs.length > MAX_CAR_NAME_LENGTH) {
-                throw new IllegalArgumentException();
+            for(String name : nameList) {
+                if (name.length() == INITIAL_NUMBER || name.length() > MAX_CAR_NAME_LENGTH) {
+                    throw new IllegalArgumentException();
+                }
             }
+
 
         }
         catch(IllegalArgumentException e){
             throw new IllegalArgumentException(e);
         }
 
-        for(String name : inputs)
+        for(String name : nameList)
             CARMAP.put(name, BLANK_STRING);
     }
 
