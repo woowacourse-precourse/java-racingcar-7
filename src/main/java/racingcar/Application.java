@@ -23,6 +23,9 @@ public class Application {
         List<RacingCar> racingCarList = new ArrayList<>();
         int numOfCars = racingCars.length;
         for(String carName : racingCars){
+            if(carName.isEmpty() || carName == null || carName.length() > 5){
+                throw new IllegalArgumentException();
+            }
             RacingCar racingCar = new RacingCar(carName, numOfCars);
             racingCarList.add(racingCar);
         }
@@ -32,6 +35,13 @@ public class Application {
     //시도 횟수 입력 받기
     public static Integer getTrial(){
         String input = Console.readLine();
-        return Integer.parseInt(input);
+        Integer trial = 0;
+        try {
+            trial = Integer.parseInt(input);
+            return trial;
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
     }
 }
