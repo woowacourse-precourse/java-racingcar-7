@@ -17,9 +17,7 @@ public abstract class StringParser {
                 .map(String::trim)
                 .collect(Collectors.toSet());
 
-        if (names.size() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름의 길이는 " + MAX_NAME_LENGTH + "이하여야 합니다.");
-        }
+        names.forEach(StringParser::validateName);
 
         return names;
     }
@@ -42,6 +40,16 @@ public abstract class StringParser {
         Matcher matcher = Pattern.compile(regex).matcher(str);
         if (matcher.find()) {
             throw new IllegalArgumentException("허용되지 않는 구분자가 포함되어 있습니다." + matcher.group());
+        }
+    }
+
+    private static void validateName(final String str) {
+        if (str == null || str.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있어서는 안됩니다.");
+        }
+
+        if (str.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH + "자 이하여야 합니다.");
         }
     }
 }
