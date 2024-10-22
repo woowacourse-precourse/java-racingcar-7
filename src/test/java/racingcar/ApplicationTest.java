@@ -37,6 +37,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("players에 ,(쉼표)가 없으면 예외가 발생한다.")
+    void playersInputTest1() {
+        PlayerMaker playerMaker = new PlayerMaker();
+
+        assertThatThrownBy(() -> playerMaker.createPlayer("pobi"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
     void cratePlayerListTest() {
         // give
