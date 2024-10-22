@@ -30,6 +30,18 @@ public class Cars {
         return roundResult;
     }
 
+    public List<String> getFinalResult() {
+        int max = cars.stream()
+            .mapToInt(car -> car.getPosition())
+            .max()
+            .getAsInt();
+
+        return cars.stream()
+            .filter(car -> car.getPosition() == max)
+            .map(car -> car.getName())
+            .toList();
+    }
+
     public List<Car> getCars() {
         return cars;
     }
