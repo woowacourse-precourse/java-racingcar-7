@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.domain.Input;
-import racingcar.domain.OutPut;
+import racingcar.domain.Output;
 import racingcar.parser.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -28,8 +28,13 @@ public class RacingGame {
         int tryCount = inputParser.parseTryCount(tryCountString);
 
         Game game = new Game(carList);
+        Output outPut = new Output();
+
+        outputView.printResultText();
         for (int i = 0; i < tryCount; i++) {
             game.moveForward();
+            List<String> carMoveResultList = outPut.getAllCarProgress(carList);
+            outputView.printMoveResult(carMoveResultList);
         }
     }
 
