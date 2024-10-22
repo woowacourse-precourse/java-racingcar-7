@@ -1,4 +1,4 @@
-package racingcar.view.inputView.handler;
+package racingcar.view.input.handler;
 
 import java.util.function.Function;
 
