@@ -18,4 +18,11 @@ public class RacingCarTest {
         Assertions.assertThrows(IllegalArgumentException.class, () ->
                 racingCar.separateCarNames("pobiwonijun"));
     }
+
+    @Test
+    void 자동차_이름이_5자를_초과할경우_예외처리() {
+        RacingCar racingCar = new RacingCar();
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                racingCar.separateCarNames("pobipobi,woni,jun"));
+    }
 }

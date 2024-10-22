@@ -7,6 +7,14 @@ public class RacingCar {
             throw new IllegalArgumentException("구분자가 없습니다.");
         }
 
-        return inputString.split(",");
+        String[] carList = inputString.split(",");
+
+        for (String car : carList) {
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름이 5자를 초과합니다.");
+            }
+        }
+
+        return carList;
     }
 }
