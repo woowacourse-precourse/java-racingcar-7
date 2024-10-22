@@ -26,7 +26,11 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttempt = readLine();
-        attempts = Integer.parseInt(inputAttempt);
+        try {
+            attempts = Integer.parseInt(inputAttempt);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
 
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
