@@ -1,4 +1,4 @@
-package controller;
+package racingcar.controller;
 
 public interface RacingController {
     public void run();

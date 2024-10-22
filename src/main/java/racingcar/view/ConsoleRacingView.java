@@ -1,4 +1,4 @@
-package view;
+package racingcar.view;
 
 public class ConsoleRacingView implements RacingView {
     @Override
