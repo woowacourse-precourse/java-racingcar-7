@@ -12,4 +12,14 @@ public class CarMemoryRepository implements CarRepository {
     public void save(Car car) {
         cars.add(car);
     }
+
+    @Override
+    public int getNumberOfCars() {
+        return cars.size();
+    }
+
+    @Override
+    public List<Car> findAll() {
+        return cars;
+    }
 }
