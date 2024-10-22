@@ -23,6 +23,10 @@ public class CarGame {
 
 
     public void playOneRound() {
+        if(!canPlay()) { // 방어 로직
+            throw new IllegalStateException("게임이 끝났습니다.");
+        }
+
         for (RacingCarState racingCarState : racingCarStates) {
             racingCarState.tryToMove(moveCondition);
         }
