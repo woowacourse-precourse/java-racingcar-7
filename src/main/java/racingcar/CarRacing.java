@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 
 public class CarRacing {
@@ -21,6 +22,18 @@ public class CarRacing {
         String tryCount = Console.readLine();
         validateTryCountInput(tryCount);
         CarRacing.tryCount = Integer.parseInt(tryCount);
+
+        while (CarRacing.tryCount-- > 0) {
+            updatePosition();
+        }
+    }
+
+    private static void updatePosition() {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.move();
+            }
+        }
     }
 
     private static void validateTryCountInput(String tryCountString) {
