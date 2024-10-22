@@ -25,4 +25,9 @@ public class RacingView {
         }
     }
 
+    // 최종 우승자 출력
+    public void printWinners(String winners) {
+        System.out.println("최종 우승자 : " + winners);
+    }
+
 }
