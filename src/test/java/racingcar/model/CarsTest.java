@@ -72,4 +72,19 @@ class CarsTest {
         //then
         assertEquals(roundResult, expectedResult);
     }
+
+    @Test
+    void 최종_결과_구하기() {
+        //given
+        List<Car> carList = cars.getCars();
+        Car alexCar = carList.get(0);
+        alexCar.go(9);
+
+        //when
+        List<String> finalResult = cars.getFinalResult();
+
+        //then
+        assertEquals(finalResult.size(), 1);
+        assertEquals(finalResult.get(0), "alex");
+    }
 }
