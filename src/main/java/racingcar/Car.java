@@ -22,6 +22,10 @@ public class Car {
         return name;
     }
 
+    public int getCurrentMoveCount() {
+        return currentMoveCount;
+    }
+
     private boolean isMoveForwardPossible(int number) {
         return number >= 4;
     }
