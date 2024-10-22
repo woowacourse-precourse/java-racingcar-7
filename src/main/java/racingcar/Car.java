@@ -5,10 +5,19 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = name.trim();
     }
 
     public void move() {
         position++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
 }

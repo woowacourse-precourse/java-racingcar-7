@@ -21,8 +21,6 @@ public class Application {
             cars.add(new Car(carName));
         }
 
-
-
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttempt = readLine();
         attempts = Integer.parseInt(inputAttempt);
@@ -35,6 +33,10 @@ public class Application {
                 }
             }
             // 경주의 현재 상태를 출력한다.
+            for (Car car : cars) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+            }
+
         }
 
     }
