@@ -1,10 +1,14 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Car;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -24,6 +28,7 @@ public class InputView {
         String[] carNames = input.split(DELIMITER);
         validateInputSize(carNames);
         validateDuplicate(carNames);
+        List<Car> cars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
         return carNames;
     }
 
