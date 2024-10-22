@@ -12,4 +12,8 @@ public class InputHandler {
     }
 
 
+    public int inputGameNumber() {
+        int gameNumber = Integer.parseInt(Console.readLine());
+        return gameNumber;
+    }
 }
