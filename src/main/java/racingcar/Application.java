@@ -36,10 +36,11 @@ public class Application {
         print("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         if (isValidInput(input)) playCount = Integer.parseInt(input);
+        if (playCount > 30) throw new IllegalArgumentException("시도 횟수는 30이하로 입력하세요.");
     }
 
     private static boolean isValidInput(String input) {
-        if (!input.matches("\\d+")) throw new IllegalArgumentException("숫자만 입력하세요");
+        if (!input.matches("\\d+")) throw new IllegalArgumentException("숫자만 입력하세요.");
 
         return true;
     }
