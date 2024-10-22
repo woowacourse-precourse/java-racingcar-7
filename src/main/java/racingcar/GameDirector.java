@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class GameDirector {
     private final int count;
@@ -14,12 +15,20 @@ public class GameDirector {
     }
 
     public void run() {
+        moveCar();
+    }
+
+    private List<Car> moveCar() {
         List<Car> carList = manager.getList();
-        for (int i = 0; i < count; i++) {
-            for (Car car : carList) {
-                int moveNum = Randoms.pickNumberInRange(0, 9);
-                car.move(moveNum);
-            }
-        }
+        IntStream.range(0, count)
+                .forEach(i -> {
+                    carList.forEach(car -> {
+                        int moveNum = Randoms.pickNumberInRange(0, 9);
+                        car.move(moveNum);
+                        Printer.print(car);
+                    });
+                    Printer.newLine();
+                });
+        return carList;
     }
 }
