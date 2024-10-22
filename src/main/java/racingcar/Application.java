@@ -65,9 +65,11 @@ public class Application {
 
     public static void checkRandomNumber(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
+            int pos = 0;
             for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
-                if (racingCar.randomNumbers.get(i) >= 4) racingCar.position += 1;
+                if (racingCar.randomNumbers.get(i) >= 4) pos++;
             }
+            racingCar.position = pos;
         }
     }
 
