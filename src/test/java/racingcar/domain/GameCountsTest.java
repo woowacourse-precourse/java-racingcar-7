@@ -18,6 +18,15 @@ class GameCountsTest {
     }
 
     @Test
+    void 양수정수_범위_초과_입력시_예외_발생(){
+        String gameCounts = String.valueOf(Long.MAX_VALUE);
+
+        assertThatThrownBy(()->new GameCounts(gameCounts)).
+                isInstanceOf(IllegalArgumentException.class).
+                hasMessageContaining("게임은 양수인 정수 범위에서 실행되어야 합니다");
+    }
+
+    @Test
     void 정상_작동_확인(){
         GameCounts expectedCounts=new GameCounts("3");
 
