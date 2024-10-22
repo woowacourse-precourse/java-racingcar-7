@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 
 public class RacingCar {
     private int[] carCount;
@@ -12,6 +13,7 @@ public class RacingCar {
         }
 
         carList = inputString.split(",");
+        carCount = new int[carList.length];
 
         for (String car : carList) {
             if (car.length() > 5) {
@@ -29,7 +31,6 @@ public class RacingCar {
     }
 
     void race(int numberOfAttempts) {
-        carCount = new int[carList.length];
 
         System.out.println();
         System.out.println("실행 결과");
@@ -61,5 +62,27 @@ public class RacingCar {
 
     int[] getCarCount() {
         return carCount;
+    }
+
+    String extractWinners() {
+        int maxCount = 0;
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < carCount.length; i++) {
+            if (carCount[i] > maxCount) {
+                maxCount = carCount[i];
+            }
+        }
+
+        for (int i = 0; i < carCount.length; i++) {
+            if (carCount[i] == maxCount) {
+                winners.add(carList[i]);
+            }
+        }
+
+        if (winners.size() > 1) {
+            return String.join(",", winners);
+        }
+        return winners.get(0);
     }
 }

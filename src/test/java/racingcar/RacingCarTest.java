@@ -67,4 +67,32 @@ public class RacingCarTest {
             assertEquals(0, Count);
         }
     }
+
+    @Test
+    void 승자가_한명인_경우_테스트() {
+        RacingCar racingCar = new RacingCar();
+
+        racingCar.separateCarNames("pobi,woni,jun");
+
+        racingCar.getCarCount()[0] = 3;
+        racingCar.getCarCount()[1] = 2;
+        racingCar.getCarCount()[2] = 1;
+
+        String winner = racingCar.extractWinners();
+        assertEquals("pobi", winner);
+    }
+
+    @Test
+    void 승자가_여러_명인_경우_테스트() {
+        RacingCar racingCar = new RacingCar();
+
+        racingCar.separateCarNames("pobi,woni,jun");
+
+        racingCar.getCarCount()[0] = 3;
+        racingCar.getCarCount()[1] = 3;
+        racingCar.getCarCount()[2] = 1;
+
+        String winner = racingCar.extractWinners();
+        assertEquals("pobi,woni", winner);
+    }
 }

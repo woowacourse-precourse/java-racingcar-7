@@ -13,5 +13,7 @@ public class Application {
         String inputString2 = Console.readLine();
         int NumberOfAttempts = racingCar.validateNumberOfAttempts(inputString2);
         racingCar.race(NumberOfAttempts);
+        String winners = racingCar.extractWinners();
+        System.out.println("최종 우승자 : " + winners);
     }
 }
