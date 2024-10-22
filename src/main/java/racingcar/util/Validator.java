@@ -1,7 +1,7 @@
 package racingcar.util;
 
 public class Validator {
-    private static final String CAR_REGEX = "^([^,]+,)+[^,]+$"; // 차 이름에는 구분자(반점)가 포함될 수 없다.
+    private static final String CAR_REGEX = "^([^,]{1,5},)+[^,]{1,5}+$"; // 차 이름에는 구분자(반점)가 포함될 수 없다. 5자 이하여야 한다.
     private static final String ROUND_REGEX = "^[1-9][0-9]*$"; // 라운드 수는 0이거나, 비어있을 수 없다.
 
     public void checkAboutCars(String input) {
