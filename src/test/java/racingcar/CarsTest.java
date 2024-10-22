@@ -1,7 +1,9 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static racingcar.GoingValue.GO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -42,6 +45,31 @@ class CarsTest {
             assertDoesNotThrow(() -> {
                 new Cars(cars);
             });
+        }
+    }
+
+    @Nested
+    class 가장_앞서있는_자동차_조회_테스트 {
+
+        @Test
+        void 자동차들_중_가장_앞에있는_자동차들을_조회한다() {
+            // given
+            Car car1 = new Car("1");
+            Car car2 = new Car("2");
+            Car car3 = new Car("3");
+            car1.go(GO);
+            car1.go(GO);
+            car3.go(GO);
+            car3.go(GO);
+            Cars cars = new Cars(List.of(car1, car2, car3));
+
+            // when
+            List<Car> leadingCars = cars.getLeadingCars();
+
+            // then
+            assertThat(leadingCars)
+                    .extracting(Car::getName)
+                    .contains("1", "3");
         }
     }
 
