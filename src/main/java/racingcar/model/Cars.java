@@ -12,4 +12,8 @@ public class Cars {
             .map(carName -> new Car(carName, START_POSITION))
             .toList();
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
