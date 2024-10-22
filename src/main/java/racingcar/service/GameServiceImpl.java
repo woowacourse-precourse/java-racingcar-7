@@ -1,6 +1,10 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
+import racingcar.utility.Calculator;
 
 public class GameServiceImpl implements GameService {
 
@@ -10,14 +14,16 @@ public class GameServiceImpl implements GameService {
         this.carRepository = carRepository;
     }
 
-    @Override
-    public void executeRace(int moveCount) {
-        for (int i = 0; i < moveCount; i++) {
-            moveCarsRandomly();
+    public void moveCarsRandomly() {
+        List<Car> cars = carRepository.findAll();
+        for (Car car : cars) {
+            moveRandom(car);
         }
     }
 
-    private void moveCarsRandomly() {
-
+    private void moveRandom(Car car) {
+        if (Calculator.canMove(Randoms.pickNumberInRange(0, 9))) {
+            car.move();
+        }
     }
 }

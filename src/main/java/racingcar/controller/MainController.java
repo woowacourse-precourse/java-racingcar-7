@@ -27,7 +27,7 @@ public class MainController {
         registerCar(carNames);
 
         int moveCount = getMoveCount();
-        gameService.executeRace(moveCount);
+        gameController.executeRace(moveCount);
     }
 
     private void registerCar(List<String> carNames) {
