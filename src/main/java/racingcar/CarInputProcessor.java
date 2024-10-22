@@ -35,6 +35,7 @@ public class CarInputProcessor {
             String carName = input.trim();
             carNameValidator.checkIsCarNameValid(carName, carsToCheckDuplicate);
             cars.add(new Car(carName));
+            carsToCheckDuplicate.add(carName);
         }
 
         return cars;
