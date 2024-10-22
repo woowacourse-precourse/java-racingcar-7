@@ -20,9 +20,9 @@ class InputViewCarNameTest extends NsTest {
     }
 
     @DisplayName("쉼표(,)를 구분자로 자동차의 이름을 입력받는다.")
-    @ParameterizedTest
     @MethodSource("inputCarNames")
-    public void inputCarNameBySeparator(String input, String output) {
+    @ParameterizedTest
+    public void inputCarNamesWithSeparator(String input, String output) {
         run(input);
         assertTrue(output().contains(output));
     }
