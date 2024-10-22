@@ -6,21 +6,23 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class CarInputProcessor {
-    CarNameValidator carNameValidator;
+public class CarInputService {
+    CarInputValidator carInputValidator;
 
-    public CarInputProcessor(CarNameValidator carNameValidator) {
-        this.carNameValidator = carNameValidator;
+    public CarInputService(CarInputValidator carInputValidator) {
+        this.carInputValidator = carInputValidator;
     }
 
     public List<Car> getCars() {
-        String userInput = getCarsFromUser();
-        String[] splitUserInput = splitCarsByComma(userInput);
+        String carInput = getCarsFromUser();
+        String[] splitUserInput = splitCarsByComma(carInput);
         return returnValidatedCars(splitUserInput);
     }
 
     private String getCarsFromUser() {
-        return IOUtils.input();
+        String carInput = IOUtils.input();
+        carInputValidator.checkIsCarInputEmpty(carInput);
+        return carInput;
     }
 
     private String[] splitCarsByComma(String userInput) {
@@ -33,7 +35,7 @@ public class CarInputProcessor {
 
         for (String input : splitUserInput) {
             String carName = input.trim();
-            carNameValidator.checkIsCarNameValid(carName, carsToCheckDuplicate);
+            carInputValidator.checkIsCarNameValid(carName, carsToCheckDuplicate);
             cars.add(new Car(carName));
             carsToCheckDuplicate.add(carName);
         }
