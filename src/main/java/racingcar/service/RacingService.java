@@ -13,4 +13,10 @@ public class RacingService {
             }
         }
     }
+
+    public static List<String> getWinners(List<Integer> moveCounts, List<String> carNames) {
+        int maxMoveCount = RandomUtil.getMaxValueFromList(moveCounts);
+        List<String> winners = RandomUtil.getWinnersByMoveCount(moveCounts, maxMoveCount, carNames);
+        return winners;
+    }
 }

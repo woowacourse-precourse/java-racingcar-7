@@ -27,6 +27,9 @@ public class RacingController {
             OutputView.printEachStepResult(carNames, moveCounts, totalCarCounts);
         }
 
+        List<String> winnerNames = RacingService.getWinners(moveCounts, carNames);
+
+
 
     }
 }
