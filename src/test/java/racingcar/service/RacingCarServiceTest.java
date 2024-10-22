@@ -2,10 +2,12 @@ package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.constants.ErrorMessage.CAR_NAME_LENGTH_EXCEEDED;
 import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.exception.constants.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
 import static racingcar.exception.constants.ErrorMessage.INVALID_NUMBER;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.RacingCarRequestDto;
@@ -54,6 +56,17 @@ class RacingCarServiceTest {
         assertThatThrownBy(() -> racingCarService.start(requestDto))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessage(DUPLICATE_CAR_NAME.getMessage());
+    }
+
+    @Test
+    void 예외_초과된_값_입력() {
+        // given
+        RacingCarRequestDto requestDto = new RacingCarRequestDto("1,123456,3", 5);
+
+        // when & then
+        assertThatThrownBy(() -> racingCarService.start(requestDto))
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
 
     @ParameterizedTest(name = "입력값: {0}")
