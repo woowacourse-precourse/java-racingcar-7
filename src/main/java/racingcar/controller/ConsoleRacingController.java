@@ -28,11 +28,7 @@ public class ConsoleRacingController implements RacingController {
     @Override
     public String getCarNamesAsString() {
         racingView.showRequestMessage(AppConstants.REQUEST_CAR_NAMES_MESSAGE);
-        try {
-            return Console.readLine();
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException();
-        }
+        return Console.readLine();
     }
 
     @Override
