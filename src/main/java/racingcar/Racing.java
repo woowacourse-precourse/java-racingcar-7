@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class Racing {
 		for (int i = 0; i < playCnt; i++) {
 			playCnt();
 		}
+		winners();
 	}
 
 	private void playCnt() {
@@ -61,6 +63,14 @@ public class Racing {
 			}
 		}
 		return str;
+	}
+
+	private void winners() {
+		int max = findMax();
+	}
+
+	private int findMax() {
+		return Collections.max(carMap.values());
 	}
 
 }
