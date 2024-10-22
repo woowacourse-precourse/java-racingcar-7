@@ -1,10 +1,17 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+
+    private static Map<String, Integer> carGameResult;
+
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = readLine();
@@ -13,6 +20,7 @@ public class Application {
 
         List<String> carNameList = validCarNames(carNames);
         int gameCount = validGameCount(countInput);
+        startGame(carNameList, gameCount);
     }
 
     public static List<String> validCarNames(String carNames) {
@@ -41,5 +49,38 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
+    }
+
+    public static void startGame(List<String> carNameList, int gameCount) {
+        carGameResult = initResult(carNameList);
+        System.out.println("실행 결과");
+        for (int i = 0; i < gameCount; i++) {
+            startRound(carNameList);
+            printResult();
+            System.out.println();
+        }
+    }
+
+    public static void startRound(List<String> carNameList) {
+        for (String carName : carNameList) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                carGameResult.put(carName, carGameResult.get(carName) + 1);
+            }
+        }
+    }
+
+    public static void printResult() {
+        for (String carName : carGameResult.keySet()) {
+            System.out.println(carName + " : " + "-".repeat(carGameResult.get(carName)));
+        }
+    }
+
+    public static Map<String, Integer> initResult(List<String> carNameList) {
+        Map<String, Integer> carGameResult = new LinkedHashMap<>();
+        for (String carName : carNameList) {
+            carGameResult.put(carName, 0);
+        }
+        return carGameResult;
     }
 }
