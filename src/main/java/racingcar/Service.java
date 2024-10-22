@@ -18,13 +18,14 @@ public class Service {
     private final Integer INITIAL_NUMBER = 0;
     private final Integer RANDOM_NUMBER_END = 9;
     private final Integer REQUIRED_RANDOM_NUMBER = 4;
+    private final Integer MAX_CAR_NAME_LENGTH=5;
 
     void setCarName(){
         String[] inputs;
         try {
             inputs = readLine().split(COMMA);
 
-            if (inputs.length == INITIAL_NUMBER) {
+            if (inputs.length == INITIAL_NUMBER || inputs.length > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException();
             }
 
