@@ -1,6 +1,8 @@
 package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.RacingCar;
 
 public class RacingCarIOHandler {
 
@@ -9,10 +11,17 @@ public class RacingCarIOHandler {
         return Console.readLine();
     }
 
-    public String askRoundCount() {
+    public String askRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String roundCountString = Console.readLine();
         Console.close();
         return roundCountString;
+    }
+
+    public void showRacingCarsProgress(List<RacingCar> racingCars) {
+        racingCars.stream()
+                .forEach(racingCar -> System.out.printf("%s : %s%n",
+                        racingCar.getName(), racingCar.getProgress()));
+        System.out.println();
     }
 }
