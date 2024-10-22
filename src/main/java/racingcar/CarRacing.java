@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 
 public class CarRacing {
     private static Car[] cars;
@@ -12,10 +11,7 @@ public class CarRacing {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         String carNames = Console.readLine();
-        CarRacing.cars = Arrays.stream(carNames.split(","))
-                .peek(CarRacing::validateCarName)
-                .map(Car::new)
-                .toArray(Car[]::new);
+        initCarArray(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
 
@@ -31,6 +27,18 @@ public class CarRacing {
 
         String[] winners = getWinner();
         System.out.print("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static void initCarArray(String carNames) {
+        String[] carNameArray = carNames.split(",");
+        for (String carName : carNameArray) {
+            validateCarName(carName);
+        }
+
+        cars = new Car[carNameArray.length];
+        for (int carNameIndex = 0; carNameIndex < carNameArray.length; carNameIndex++) {
+            cars[carNameIndex] = new Car(carNameArray[carNameIndex]);
+        }
     }
 
     private static String[] getWinner() {
