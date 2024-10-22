@@ -9,7 +9,7 @@ public class InputParserImpl implements InputParser {
     @Override
     public List<String> parseCars(String input) {
         String[] st = input.split(",");
-        if(!validLength(st)) {
+        if (!validLength(st)) {
             throw new IllegalArgumentException();
         }
         return new ArrayList<> (Arrays.asList(st));
