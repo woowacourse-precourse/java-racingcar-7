@@ -48,6 +48,7 @@ public class Application {
     }
 
     private static void play() {
+        print("\n실행 결과");
         for (int i = 0; i < playCount; i++) {
             playOnce();
         }
@@ -56,7 +57,9 @@ public class Application {
     private static void playOnce() {
         for (Car car : cars) {
             if (canGo()) winnerScore = Math.max(winnerScore, ++car.moveCount);
+            print(car.toString());
         }
+        print("");
     }
 
     private static boolean canGo() {
