@@ -18,7 +18,6 @@ public class InputView {
         String input;
         try {
             input = Console.readLine();
-            Console.close();
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
