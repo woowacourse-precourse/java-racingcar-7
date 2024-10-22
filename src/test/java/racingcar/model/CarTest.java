@@ -5,27 +5,30 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.modle.Car;
+import racingcar.modle.CarFactory;
 
 public class CarTest {
 
+    CarFactory carFactory = new CarFactory();
     private Car car;
 
 
     @BeforeEach
     public void setUp() {
-        this.car = new Car();
+        car = carFactory.createCar("gamza");
     }
 
     @Test
     @DisplayName("자동차 이동 기능 테스트")
     public void moveTest(){
         // given
-        int moveCount = 3;
+        int movedCount = 3;
         // when
-        car.move();
-        car.move();
-        car.move();
+        for(int i = 0; i < movedCount; i++){
+            car = car.move();
+        }
         // then
-        assertThat(car.getDistance()).isEqualTo(moveCount);
+        assertThat(car.getPosition()).isEqualTo(movedCount);
     }
 }
