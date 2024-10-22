@@ -20,6 +20,6 @@ public class CarController {
         Map<String, Integer> cars = carService.carNames(inputCarName);
         int inputCount = inputView.getAttemptCount();
         cars = carService.racing(cars, inputCount);
-
+        carService.result(cars);
     }
 }

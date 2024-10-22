@@ -34,5 +34,6 @@ public class CarService {
 
     public void result(Map<String, Integer> cars){
         List<String> winnerCarList = car.getWinningCars(cars);
+        outputView.resultView(winnerCarList);
     }
 }
