@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class CarName {
     private static final int MAX_LENGTH = 5;
     private static final String BLANK = " ";
@@ -28,5 +30,22 @@ public class CarName {
 
     public String getCarName() {
         return carName;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        CarName carName1 = (CarName) object;
+        return Objects.equals(carName, carName1.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(carName);
     }
 }

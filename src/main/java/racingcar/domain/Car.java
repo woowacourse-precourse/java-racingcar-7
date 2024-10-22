@@ -3,33 +3,30 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    public static final int DEFAULT_POSITION = 0;
-    private static final int MOVE_COUNT = 1;
-
     private final CarName carName;
-    private int position = DEFAULT_POSITION;
+    private Position position;
 
-    public Car(String carName) {
-        this(new CarName(carName));
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
+        this.position = position;
     }
 
-    private Car(CarName carName) {
-        this.carName = carName;
+    public Car(String carName) {
+        this(new CarName(carName), new Position());
     }
 
     public Car(String carName, int position) {
-        this.carName = new CarName(carName);
-        this.position = position;
+        this(new CarName(carName), new Position(position));
     }
 
     public void move(boolean isMovable) {
         if (isMovable) {
-            this.position += MOVE_COUNT;
+            position = position.move();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getCarName() {
@@ -37,7 +34,7 @@ public class Car {
     }
 
     public boolean isWin(int maxPosition) {
-        return position == maxPosition;
+        return position.getPosition() == maxPosition;
     }
 
     @Override

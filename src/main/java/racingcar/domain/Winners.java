@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import static racingcar.domain.Car.DEFAULT_POSITION;
+
+import static racingcar.domain.Position.DEFAULT_POSITION;
 
 import java.util.List;
 
