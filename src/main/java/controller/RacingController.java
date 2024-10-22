@@ -12,9 +12,12 @@ public class RacingController {
     public void set() {
         String input = InputView.inputCars();
         carsList = racingService.getCarsList(input);
-        for (Car car : carsList) {
-            System.out.println("car.getName() = " + car.getName());
-        }
+//        for (Car car : carsList) {
+//            System.out.println("car.getName() = " + car.getName());
+//        }
+
+        String attempt = InputView.inputAttempt();
+        System.out.println("attempt = " + attempt);
     }
 
 }
