@@ -17,4 +17,8 @@ public class CarName {
             throw new IllegalArgumentException("자동차 이름 길이 초과");
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

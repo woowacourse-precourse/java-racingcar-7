@@ -14,4 +14,8 @@ public class CarPosition {
     public void moveForward() {
         this.carPosition += MOVE_UNIT;
     }
+
+    public int getCarPosition() {
+        return carPosition;
+    }
 }

@@ -1,7 +1,9 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 import racingcar.utility.Calculator;
@@ -14,6 +16,7 @@ public class GameServiceImpl implements GameService {
         this.carRepository = carRepository;
     }
 
+    @Override
     public void moveCarsRandomly() {
         List<Car> cars = carRepository.findAll();
         for (Car car : cars) {
@@ -25,5 +28,15 @@ public class GameServiceImpl implements GameService {
         if (Calculator.canMove(Randoms.pickNumberInRange(0, 9))) {
             car.move();
         }
+    }
+
+    @Override
+    public Map<String, Integer> getGameData() {
+        Map<String, Integer> dataMap = new HashMap<>();
+        List<Car> cars = carRepository.findAll();
+        for (Car car : cars) {
+            dataMap.put(car.getName(), car.getPosition());
+        }
+        return dataMap;
     }
 }
