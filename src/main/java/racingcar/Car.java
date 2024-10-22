@@ -16,6 +16,7 @@ public class Car {
     }
     public static List<Car> generateCars(String carNames) {
         return Arrays.stream(carNames.split(","))
+                .map(Validator::validateNameLength)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
