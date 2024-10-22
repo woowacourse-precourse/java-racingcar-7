@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.domain.Car;
+import racingcar.dto.GameResultDto;
 import racingcar.repository.CarRepository;
 import racingcar.utility.Calculator;
 
@@ -31,12 +32,12 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Map<String, Integer> getGameData() {
+    public GameResultDto getGameData() {
         Map<String, Integer> dataMap = new HashMap<>();
         List<Car> cars = carRepository.findAll();
         for (Car car : cars) {
             dataMap.put(car.getName(), car.getPosition());
         }
-        return dataMap;
+        return new GameResultDto(dataMap);
     }
 }

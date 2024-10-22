@@ -1,8 +1,10 @@
 package racingcar.controller;
 
-import java.util.Map;
+import java.util.List;
 import racingcar.domain.MoveCount;
+import racingcar.dto.GameResultDto;
 import racingcar.service.GameService;
+import racingcar.utility.Calculator;
 import racingcar.view.OutputView;
 
 public class GameController {
@@ -17,11 +19,17 @@ public class GameController {
 
     public void executeRace(MoveCount moveCount) {
         outputView.showStartMessage();
+        GameResultDto gameResultDto = null;
         while (moveCount.canMove()) {
             gameService.moveCarsRandomly();
             moveCount.decreaseCount();
-            Map<String, Integer> gameDataMap = gameService.getGameData();
-            outputView.showCurrentStatus(gameDataMap);
+            gameResultDto = gameService.getGameData();
+            outputView.showCurrentStatus(gameResultDto);
         }
+        if (gameResultDto == null) {
+            throw new IllegalArgumentException();
+        }
+        List<String> winners = Calculator.findWinners(gameResultDto);
+        outputView.showWinner(winners);
     }
 }

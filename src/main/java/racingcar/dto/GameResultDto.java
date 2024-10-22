@@ -1,20 +1,19 @@
 package racingcar.dto;
 
 import java.util.Map;
-import racingcar.domain.CarPosition;
 
 public class GameResultDto {
-    Map<String, CarPosition> gameData;
+    Map<String, Integer> gameData;
 
-    public GameResultDto(Map<String, CarPosition> gameData) {
+    public GameResultDto(Map<String, Integer> gameData) {
         this.gameData = gameData;
     }
 
-    public Map<String, CarPosition> getGameData() {
+    public Map<String, Integer> getGameData() {
         return gameData;
     }
 
-    public void setGameData(Map<String, CarPosition> gameData) {
+    public void setGameData(Map<String, Integer> gameData) {
         this.gameData = gameData;
     }
 }
