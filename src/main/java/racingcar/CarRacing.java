@@ -26,6 +26,14 @@ public class CarRacing {
         while (CarRacing.tryCount-- > 0) {
             updatePosition();
         }
+
+        displayResult();
+    }
+
+    private static void displayResult() {
+        for (Car car : cars) {
+            car.display();
+        }
     }
 
     private static void updatePosition() {
