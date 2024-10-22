@@ -1,7 +1,9 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Car;
 
+import java.util.List;
 import java.util.Map;
 
 public class RacingView {
@@ -19,9 +21,9 @@ public class RacingView {
     }
 
     // 각 차수별로 자동차 상태 출력
-    public void printCarStates(Map<String, String> carStates) {
-        for (Map.Entry<String, String> entry : carStates.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+    public void printCarStates(List<Car> carStates) {
+        for (Car car : carStates) {
+            System.out.println(car.getName() + " : " + car.getPosition());
         }
     }
 

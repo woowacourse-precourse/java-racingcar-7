@@ -16,24 +16,21 @@ public class RacingController {
 
     // 게임 실행
     public void run() {
-        // 1. 자동차 이름 입력 받기
-        String[] carNames = view.getCarNames();
-        model.initializeCars(carNames);  // Model에 자동차 이름 초기화
+        // 1. 사용자 입력 받기 (자동차 이름 입력 및 시도 횟수 입력)
+        String[] carNames = view.getCarNames();  // 자동차 이름 입력 받기
+        int roundCount = view.getRoundCount();   // 라운드 수 입력 받기
 
-        // 2. 시도 횟수 입력 받기
-        int roundCount = view.getRoundCount();
+        // 2. 자동차 이름을 Model에 초기화
+        model.initializeCars(carNames);
 
-        // 3. 경주 진행
+        // 3. 시도 횟수만큼 경주 진행
         for (int i = 0; i < roundCount; i++) {
             System.out.println("차시 : " + (i + 1));
-            for (String carName : carNames) {
-                model.advanceCar(carName);  // 각 차수마다 자동차 전진
-            }
-            // 4. 현재 차수의 자동차 상태 출력
-            view.printCarStates(model.getCarStates());
+            model.raceOneRound();  // 각 라운드에서 모든 자동차 전진 시도
+            view.printCarStates(model.getCarStates());  // 각 라운드의 자동차 상태 출력
         }
 
-        // 5. 최종 우승자 출력
+        // 4. 우승자 결정 및 출력
         String winners = model.getWinners();
         view.printWinners(winners);
     }
