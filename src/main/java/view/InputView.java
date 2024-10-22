@@ -11,16 +11,19 @@ public class InputView {
     private static final String DELIMITER_ERROR_MESSAGE = "올바른 구분자를 입력해야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "중복되지 않은 이름을 입력해야 합니다.";
     private static final String EMPTY_ERROR_MESSAGE = "올바른 값을 입력해야 합니다.";
+    private static final String CAR_NUMBER_ERROR_MESSAGE = "자동차는 2개 이상을 입력해야 합니다.";
 
     private static final String DELIMITER = ",";
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
     private static final Integer DUPLICATE_VALUE = 2;
+    private static final Integer MINIMUM_CAR_NUMBER = 2;
 
     public static String[] getCarNames() {
         String input = Console.readLine();
         validateEmpty(input);
         validateDelimiter(input);
         String[] carNames = input.split(DELIMITER);
+        validateInputSize(carNames);
         validateDuplicate(carNames);
         return carNames;
     }
@@ -46,6 +49,12 @@ public class InputView {
     private static void validateEmpty(final String input) {
         if(input.isBlank()) {
             throw new IllegalArgumentException(EMPTY_ERROR_MESSAGE);
+        }
+    }
+
+    private static void validateInputSize(final String[] carNames) {
+        if(carNames.length < MINIMUM_CAR_NUMBER) {
+            throw new IllegalArgumentException(CAR_NUMBER_ERROR_MESSAGE);
         }
     }
 }
