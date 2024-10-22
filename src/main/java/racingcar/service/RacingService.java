@@ -3,7 +3,6 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import racingcar.model.Car;
 
 public class RacingService {
@@ -14,6 +13,7 @@ public class RacingService {
                 car.move();
             }
         }
+        printCarStatus(cars);
     }
 
     public boolean shouldMove() {

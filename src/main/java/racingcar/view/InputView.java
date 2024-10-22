@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import racingcar.utils.Validator;
 
 public class InputView {
-    private final Validator validator;
+    private Validator validator;
 
-    public InputView(Validator validator) {
-        this.validator = validator;
+    public InputView() {
+        this.validator = new Validator();
     }
 
     public ArrayList<String> inputCarName() {
