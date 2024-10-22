@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
+import racingcar.dto.RaceResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -32,4 +33,8 @@ public class RacingView {
         System.out.println("최종 우승자 : " + winners);
     }
 
+    public void printRaceResult(RaceResponse response){
+        printCarStates(response.getCarStates());
+        printCarStates(response.getCarStates());
+    }
 }

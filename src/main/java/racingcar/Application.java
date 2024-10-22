@@ -2,6 +2,7 @@ package racingcar;
 
 
 import racingcar.controller.RacingController;
+import racingcar.dto.RaceRequest;
 import racingcar.model.RacingcarModel;
 import racingcar.view.RacingView;
 
@@ -13,7 +14,10 @@ public class Application {
         RacingView view = new RacingView();
         RacingController controller = new RacingController(model, view);
 
-        controller.run();  // 게임 실행
+        String[] carNames = view.getCarNames();
+        int roundCount = view.getRoundCount();
+        RaceRequest request = new RaceRequest(carNames, roundCount);
+        controller.run(request);  // 게임 실행
 
     }
 }
