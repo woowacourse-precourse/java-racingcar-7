@@ -16,7 +16,19 @@ public class Cars {
     public Cars(String carsInput){
         validateDuplicatedName(carsInput);
         validateOutOfRangeName(carsInput);
+
+        this.cars=makeCarList(carsInput);
+
     }
+
+    private List<Car> makeCarList(String carsInput) {
+        List<Car> carList=Arrays.stream(carsInput.split(SPLITOR))
+                .map(carName->new Car(carName,""))
+                .toList();
+
+        return carList;
+    }
+
 
     private static void validateDuplicatedName(String carsInput){
         long before=carsInput.split(SPLITOR).length;
