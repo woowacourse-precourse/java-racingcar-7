@@ -1,7 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Player;
+import racingcar.domain.PlayerMaker;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -29,6 +34,20 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
+    void cratePlayerListTest() {
+        // give
+        String players = "pobi,woni";
+        PlayerMaker playerMaker = new PlayerMaker();
+
+        // when
+        List<Player> playerList = playerMaker.createPlayer(players);
+
+        //then
+        assertThat(playerList).hasSize(2);
     }
 
     @Override
