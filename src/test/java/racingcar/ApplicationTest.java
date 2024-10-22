@@ -1,7 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.NamedExecutable;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -29,6 +32,16 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 이름_테스트() {
+        assertSimpleTest(() -> {
+            List<Name> names = Name.createNames("one,two,three");
+            assertThat(names)
+                    .extracting(Name::getName)
+                    .containsExactly("one", "two", "three");
+        });
     }
 
     @Override
