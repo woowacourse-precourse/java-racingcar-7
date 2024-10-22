@@ -52,4 +52,12 @@ public class Application {
     public static Integer getRandomNumber(){
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public static void assignRandomNumber(List<RacingCar> racingCarList){
+        for(RacingCar racingCar : racingCarList){
+            for(int i = 0; i < racingCar.randomNumbers.size(); i++){
+                racingCar.randomNumbers.set(i, getRandomNumber());
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@
    * 시도할 횟수에 대한 예외 : 숫자가 아닌 경우, null 값인 경우, 빈 문자열인 경우
 4. 자동차 개수 구하기
 5. 0 ~ 9 사이의 Random number를 구하는 기능
-6. 시도 횟수만큼 random number를 각 자동차 map에 할당하기
+6. 시도 횟수만큼 random number를 각 자동차 random number list에 할당하기
 7. 각 자동차마다 숫자가 4 이상일 경우 전진시키는 기능
 
    * position += 1
