@@ -1,9 +1,9 @@
-package racingcar.racingcar.util;
+package racingcar.util;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class RacingCarConvertor {
+public class ConvertorProcess {
     public static List<String> splitByCommaToList(String input) {
 
         return Arrays.stream(splitByComma(input))
