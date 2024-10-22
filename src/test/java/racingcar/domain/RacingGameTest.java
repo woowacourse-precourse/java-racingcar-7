@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.RacingCarException;
+import racingcar.exception.constants.ErrorMessage;
 
 class RacingGameTest {
 
@@ -35,7 +37,8 @@ class RacingGameTest {
 
         // when & then
         assertThatThrownBy(() -> new RacingGame(overlappingNamesCars, gameRound))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
     }
 
     @Test

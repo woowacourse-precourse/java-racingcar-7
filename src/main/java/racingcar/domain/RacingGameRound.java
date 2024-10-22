@@ -1,5 +1,9 @@
 package racingcar.domain;
 
+import static racingcar.exception.constants.ErrorMessage.INVALID_NUMBER;
+
+import racingcar.exception.RacingCarException;
+
 public class RacingGameRound {
 
     private final Integer round;
@@ -16,7 +20,7 @@ public class RacingGameRound {
 
     private void validate(final Integer round) {
         if (round == null || round <= 0) {
-            throw new IllegalArgumentException();
+            throw new RacingCarException(INVALID_NUMBER.getMessage());
         }
     }
 }

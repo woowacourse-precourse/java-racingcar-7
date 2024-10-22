@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.view.constants.ViewMessage.RACE_RESULT_TITLE;
 import static racingcar.view.constants.ViewMessage.RACE_STATUS;
 
@@ -7,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.common.RandomNumber;
+import racingcar.exception.RacingCarException;
 
 public class RacingGame {
 
@@ -71,7 +73,7 @@ public class RacingGame {
                 .map(Car::getName)
                 .forEach(carName -> {
                     if (!carNames.add(carName)) {
-                        throw new IllegalArgumentException();
+                        throw new RacingCarException(DUPLICATE_CAR_NAME.getMessage());
                     }
                 });
     }
