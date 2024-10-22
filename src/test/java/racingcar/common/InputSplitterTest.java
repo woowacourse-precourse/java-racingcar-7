@@ -28,7 +28,7 @@ class InputSplitterTest {
     @Test
     void 분할된_입력값_연결_기능_테스트() {
         // given
-        List<String> elements = List.of(new String[]{"1", "2", "3"});
+        List<String> elements = List.of("1", "2", "3");
 
         // when
         String result = InputSplitter.join(elements);
