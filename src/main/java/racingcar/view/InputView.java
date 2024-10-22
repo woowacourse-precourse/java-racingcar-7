@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exception.Validator;
 
 public class InputView {
 
@@ -9,9 +10,9 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String getTryNumber() {
+    public long getTryNumber() {
         System.out.println(ConsoleMessage.ENTER_TRY_NUMBER);
-        return Console.readLine();
+        return Validator.isNumeric(Console.readLine());
     }
 
     public void close() {
