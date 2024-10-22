@@ -21,4 +21,12 @@ public class Racingcar {
         return car;
     }
 
+    // 무작위 값이 4 이상일 때만 전진
+    public void advanceCar(String carName) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
+            car.put(carName, car.get(carName) + "-");
+        }
+    }
+
 }
