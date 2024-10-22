@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.Car;
 
 public class Car {
     private static final int MAX_CAR_NAME_SIZE = 5;
@@ -14,6 +14,5 @@ public class Car {
         if (carName.length() > MAX_CAR_NAME_SIZE) {
             throw new IllegalArgumentException();
         }
-
     }
 }
