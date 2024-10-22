@@ -2,6 +2,7 @@ package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.constants.ErrorMessage.DUPLICATE_CAR_NAME;
 import static racingcar.exception.constants.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
 
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class RacingCarServiceTest {
     }
 
     @ParameterizedTest(name = "입력값: {0}")
-    @ValueSource(strings = {"", "1,", "1,,3", "1, ,3"})
+    @ValueSource(strings = {"", "1,", "1,,3", "1, ,3", " ,2,3"})
     void 예외_빈_값_입력(String input) {
         // given
         RacingCarRequestDto requestDto = new RacingCarRequestDto(input, 5);
@@ -40,5 +41,17 @@ class RacingCarServiceTest {
         assertThatThrownBy(() -> racingCarService.start(requestDto))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessage(EMPTY_CAR_NAME_NOT_ALLOWED.getMessage());
+    }
+
+    @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(strings = {"1,1", "1,2,2", "1,2,1"})
+    void 예외_중복된_값_입력(String input) {
+        // given
+        RacingCarRequestDto requestDto = new RacingCarRequestDto(input, 5);
+
+        // when & then
+        assertThatThrownBy(() -> racingCarService.start(requestDto))
+                .isInstanceOf(RacingCarException.class)
+                .hasMessage(DUPLICATE_CAR_NAME.getMessage());
     }
 }
