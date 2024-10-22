@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 public class Car {
     private final String name;
@@ -20,4 +20,6 @@ public class Car {
     public int getAdvanceCount() {
         return advanceCount;
     }
+
+    public void stop() { }
 }
