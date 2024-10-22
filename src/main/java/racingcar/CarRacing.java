@@ -4,6 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarRacing {
+    private static final int RANDOM_NUMBER_START = 0;
+    private static final int RANDOM_NUMBER_END = 9;
+    private static final int MOVABLE_NUMBER = 4;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final String INPUT_NAME_SEPARATOR = ",";
+    private static final String WINNER_SEPARATOR = ",";
+
     private static Car[] cars;
     private static int tryCount;
 
@@ -20,7 +27,7 @@ public class CarRacing {
         displayResult();
 
         String[] winners = getWinner();
-        System.out.print("최종 우승자 : " + String.join(", ", winners));
+        System.out.print("최종 우승자 : " + String.join(WINNER_SEPARATOR, winners));
     }
 
     private static String[] input() {
@@ -39,7 +46,7 @@ public class CarRacing {
     }
 
     private static void initCarArray(String carNames) {
-        String[] carNameArray = carNames.split(",");
+        String[] carNameArray = carNames.split(INPUT_NAME_SEPARATOR);
         for (String carName : carNameArray) {
             validateCarName(carName);
         }
@@ -91,7 +98,7 @@ public class CarRacing {
 
     private static void updatePosition() {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            if (Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END) >= MOVABLE_NUMBER) {
                 car.move();
             }
         }
@@ -104,8 +111,8 @@ public class CarRacing {
     }
 
     private static void validateCarName(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은" + MAX_CAR_NAME_LENGTH + "자 이하여야 합니다.");
         }
     }
 }
