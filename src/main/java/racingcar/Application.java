@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNamesInput = Console.readLine();
         String[] carNames = carNamesInput.split(","); // 쉼표로 구분하여 배열로
@@ -34,13 +33,13 @@ public class Application {
         // 동적 배열(ArrayList)로 자동차 리스트 관리
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            carList.add(new Car(carName));  // ArrayList에 Car 객체 추가
+            carList.add(new Car(carName));
         }
 
         // 경주 진행
         for (int i = 0; i < attempts; i++) {
             for (Car car : carList) {
-                car.move();  // 자동차 움직이기
+                car.move(); // 이동 로직
                 System.out.print(car.getName() + ": " + "-".repeat(car.getPosition()) + "\n"); // 전진 결과 출력
             }
             System.out.println();
