@@ -87,4 +87,14 @@ public class Application {
         }
         return maxPosition;
     }
+
+    public static List<String> getWinners(List<RacingCar> racingCarList, int maxPosition) {
+        List<String> winnerList = new ArrayList<>();
+        for(RacingCar racingCar : racingCarList) {
+            if(racingCar.position == maxPosition) {
+                winnerList.add(racingCar.name);
+            }
+        }
+        return winnerList;
+    }
 }
