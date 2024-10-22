@@ -35,6 +35,16 @@ public class Car {
         }
     }
 
+    public CompeteResult compete(Car other) {
+        if (position == other.position) {
+            return CompeteResult.DRAW;
+        }
+        if (position > other.position) {
+            return CompeteResult.WIN;
+        }
+        return CompeteResult.LOSE;
+    }
+
     public String getName() {
         return name;
     }

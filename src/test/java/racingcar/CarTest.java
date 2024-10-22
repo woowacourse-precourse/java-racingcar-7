@@ -73,4 +73,48 @@ class CarTest {
             assertThat(car.getPosition()).isEqualTo(0);
         }
     }
+
+    @Nested
+    class 경쟁_테스트 {
+
+        private final Car me = new Car("me");
+        private final Car other = new Car("other");
+
+        @Test
+        void 다른_자동차보다_앞에_위치하면_승리() {
+            // given
+            me.go(GoingValue.GO);
+
+            // when
+            CompeteResult result = me.compete(other);
+
+            // then
+            assertThat(result).isEqualTo(CompeteResult.WIN);
+        }
+
+        @Test
+        void 다른_자동와_동일_위치하면_무승부() {
+            // given
+            me.go(GoingValue.GO);
+            other.go(GoingValue.GO);
+
+            // when
+            CompeteResult result = me.compete(other);
+
+            // then
+            assertThat(result).isEqualTo(CompeteResult.DRAW);
+        }
+
+        @Test
+        void 다른_자동차보다_뒤에_위치하면_패배() {
+            // given
+            other.go(GoingValue.GO);
+
+            // when
+            CompeteResult result = me.compete(other);
+
+            // then
+            assertThat(result).isEqualTo(CompeteResult.LOSE);
+        }
+    }
 }
