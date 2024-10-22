@@ -2,7 +2,8 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
-import java.util.Set;
+import java.util.List;
+import racingcar.util.RacingGameScoreBoard;
 
 public final class RacingGame {
 
@@ -23,6 +24,7 @@ public final class RacingGame {
     }
 
     public void start() {
+        RacingGameScoreBoard.printTitle();
         for (int i = 0; i < rounds; i++) {
             nextRound();
         }
@@ -34,19 +36,22 @@ public final class RacingGame {
                 car.forward();
             }
         }
+        RacingGameScoreBoard.printCurrentScore(racingCars);
     }
 
-    public RacingCars judge() {
-        Set<Car> cars = racingCars.getCars();
+    public void judge() {
+        List<Car> cars = racingCars.getCars();
 
         Integer maxDistance = cars.stream()
                 .map(Car::getDistance)
                 .max(Comparator.naturalOrder())
                 .orElseThrow();
 
-        return RacingCars.of(cars.stream()
+        RacingCars winners = RacingCars.of(cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList());
+
+        RacingGameScoreBoard.printWinners(winners);
     }
 
     private boolean isCarAllowedToMove() {
