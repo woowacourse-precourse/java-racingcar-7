@@ -3,32 +3,27 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.constants.AppConstants;
+import racingcar.domain.MoveCount;
 import racingcar.service.CarService;
-import racingcar.service.GameService;
 import racingcar.utility.CarNameParser;
 import racingcar.view.InputView;
 
-public class MainController {
+public class InputController {
 
     private final CarService carService;
 
-    private final GameService gameService;
-
     private final InputView inputView;
 
-    public MainController(CarService carService, GameService gameService, InputView inputView) {
+    public InputController(CarService carService, InputView inputView) {
         this.carService = carService;
-        this.gameService = gameService;
         this.inputView = inputView;
     }
 
-    public void run() {
+    public void postNames() {
         List<String> carNames = getCarNamesFromUser();
         registerCar(carNames);
-
-        int moveCount = getMoveCount();
-        gameController.executeRace(moveCount);
     }
+
 
     private void registerCar(List<String> carNames) {
         carNames.forEach(carService::register);
@@ -36,7 +31,7 @@ public class MainController {
 
     private List<String> getCarNamesFromUser() {
         String carNamesAsString = getCarNamesAsString();
-        CarNameParser.parseCarNames(carNamesAsString);
+        return CarNameParser.parseCarNames(carNamesAsString);
     }
 
     private String getCarNamesAsString() {
@@ -44,7 +39,7 @@ public class MainController {
         return Console.readLine();
     }
 
-    private int getMoveCount() {
+    public MoveCount getMoveCount() {
         inputView.showRequestMessage(AppConstants.REQUEST_MOVE_COUNT_MESSAGE);
         int moveCount = 0;
         try {
@@ -57,6 +52,6 @@ public class MainController {
             throw new IllegalArgumentException();
         }
 
-        return moveCount;
+        return new MoveCount(moveCount);
     }
 }
