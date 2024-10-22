@@ -3,7 +3,7 @@ package racingcar.count;
 import racingcar.constant.ErrorMessage;
 import racingcar.utils.StringUtils;
 
-public class CountValidator {
+public class CountInputValidator {
     public void checkIsAttemptCountValid(String attemptCount) {
         checkIsEmpty(attemptCount);
         checkIsNumber(attemptCount);
