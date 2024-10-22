@@ -17,7 +17,7 @@ public class RacingCarService {
 
         String[] splitCarNames = InputSplitter.split(carNames);
         List<Car> cars = Arrays.stream(splitCarNames)
-                .map(Car::new)
+                .map(name -> new Car(name.trim()))
                 .toList();
 
         RacingGame racingGame = new RacingGame(cars, round);
