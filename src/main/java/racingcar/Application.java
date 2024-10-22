@@ -1,12 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
+    static final int STANDARD = 4;
     static List<Car> cars;
     static int playCount;
 
@@ -40,7 +42,10 @@ public class Application {
     }
 
     private static void playOnce() {
+        for (Car car : cars) {
+            int randomNumbers = Randoms.pickNumberInRange(0, 9);
 
+        }
     }
 
     private static void inputPlayCount() {
