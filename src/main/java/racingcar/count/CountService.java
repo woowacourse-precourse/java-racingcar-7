@@ -10,7 +10,7 @@ public class CountService {
     }
 
     public String getAttemptCount() {
-        IOUtils.outputString("시도할 횟수는 몇 회인가요?");
+        IOUtils.outputStringWithEnter("시도할 횟수는 몇 회인가요?");
         String attemptCount = IOUtils.input();
 
         countValidator.checkIsAttemptCountValid(attemptCount);

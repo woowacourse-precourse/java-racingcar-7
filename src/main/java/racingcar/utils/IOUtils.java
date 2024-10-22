@@ -7,7 +7,7 @@ public class IOUtils {
         return Console.readLine();
     }
 
-    public static void outputString(String message) {
+    public static void outputStringWithEnter(String message) {
         System.out.println(message);
     }
 
