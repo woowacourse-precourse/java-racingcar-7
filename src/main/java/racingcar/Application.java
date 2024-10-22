@@ -44,7 +44,7 @@ public class Application {
             if (car.moveCount == winnerScore) winners.add(car.name);
         }
 
-        String output = String.join(",", winners);
+        String output = String.join(", ", winners);
         print("최종 우승자 : " + output);
     }
 
