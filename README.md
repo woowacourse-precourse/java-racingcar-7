@@ -39,8 +39,11 @@
       * 테스트 입력 : "pobi,javaji", "1"
       * 기대 동작 : IllegalArgumentException 발생
  - [ ] **구분자의 정상 여부 확인**
-      * 목적 : 구분자가 정상적으로 입력되었는지 확인
+      * 목적 : 구분자가 ,로 입력되었는지 확인
       * 테스트 입력 : "pobi|woni", "1"
+      * 기대 동작 : IllegalArgumentException 발생
+      * 목적 : 구분자가 정상적으로 공백 없이 입력되었는지 확인
+      * 테스트 입력 : "pobi, woni", "1"
       * 기대 동작 : IllegalArgumentException 발생
  - [ ] **시도 횟수의 정수 여부 확인**
       * 목적 : 시도 횟수가 정수로 입력되었는지 확인
