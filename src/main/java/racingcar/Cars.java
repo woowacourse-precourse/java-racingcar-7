@@ -4,11 +4,18 @@ import static racingcar.CompeteResult.DRAW;
 import static racingcar.CompeteResult.WIN;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
+
+    public Cars(String... carNames) {
+        this(Arrays.stream(carNames)
+                .map(Car::new)
+                .toList());
+    }
 
     public Cars(List<Car> cars) {
         validateParticipantsCount(cars);
