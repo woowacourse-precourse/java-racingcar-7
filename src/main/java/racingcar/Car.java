@@ -4,11 +4,10 @@ import racingcar.utils.RandomUtils;
 
 public class Car {
     private final String name;
-    private int currentMoveCount;
+    private int currentMoveCount = 0;
 
-    public Car(String name, int currentMoveCount) {
+    public Car(String name) {
         this.name = name;
-        this.currentMoveCount = 0;
     }
 
     public void moveForward() {
