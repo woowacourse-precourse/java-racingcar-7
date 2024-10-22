@@ -40,14 +40,14 @@ public class Application {
         print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carsInput = Console.readLine();
 
-        List<String> names = getValidNames(carsInput);
+        List<String> names = getCompactNames(carsInput);
         cars = new ArrayList<>();
-        if (isValidInput(names))
+        if (isValidNames(names))
             for (String name : names) cars.add(new Car(name));
 
     }
 
-    private static boolean isValidInput(List<String> names) {
+    private static boolean isValidNames(List<String> names) {
         if (names.size() > 20) throw new IllegalArgumentException("자동차 이름은 20개 이하로 입력하세요.");
 
         for (String name : names) {
@@ -57,7 +57,7 @@ public class Application {
         return true;
     }
 
-    private static List<String> getValidNames(String namesInput) {
+    private static List<String> getCompactNames(String namesInput) {
         List<String> names = new ArrayList<>();
         for (String name : namesInput.split(",")) {
             String compactName = name.trim();
