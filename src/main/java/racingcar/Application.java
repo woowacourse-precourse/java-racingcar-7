@@ -39,6 +39,7 @@ public class Application {
     }
 
     private static boolean isValidInput(String input) {
+        if (!input.matches("\\d+")) throw new IllegalArgumentException("숫자만 입력하세요");
 
         return true;
     }
