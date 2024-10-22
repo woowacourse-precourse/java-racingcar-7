@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import java.util.Random;
+import racingcar.util.RandomUtil;
 
 public class Car {
     private static final int CAR_NAME_MAX_LENGTH = 5;
@@ -24,6 +24,14 @@ public class Car {
         return carName + " : " + progress;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
+    }
+
     private void checkCarNameIsValid(String carName) {
         if (carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
@@ -31,18 +39,6 @@ public class Car {
     }
 
     private boolean isForwardable() {
-        // Random 유틸을 만드는것도 좋은 생각인거같음!
-        Random random = new Random();
-        int randomNumber = random.nextInt(10); // 0부터 9까지의 난수를 생성
-
-        return randomNumber > MIN_FORWARD_NUM;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public int getForwardCount() {
-        return forwardCount;
+        return RandomUtil.getRandomNumber() > MIN_FORWARD_NUM;
     }
 }
