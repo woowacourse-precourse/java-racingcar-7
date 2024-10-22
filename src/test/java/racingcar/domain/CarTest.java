@@ -24,4 +24,12 @@ class CarTest {
         assertThat(car.act(4).getState()).isEqualTo("---");
     }
 
+    @Test
+    void n번_움직일_경우_상태가_정상_저장된다(){
+        for (int i=0;i<2;i++){
+            car.act(4);
+        }
+        assertThat(car.getState()).isEqualTo("----");
+    }
+
 }
