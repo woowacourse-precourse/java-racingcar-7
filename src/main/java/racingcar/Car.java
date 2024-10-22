@@ -1,8 +1,9 @@
 package racingcar;
 
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Car {
 
@@ -14,11 +15,8 @@ public class Car {
         this.position = "";
     }
     public static List<Car> generateCars(String carNames) {
-        String[] names = carNames.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
+        return Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
