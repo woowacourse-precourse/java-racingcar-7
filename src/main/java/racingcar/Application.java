@@ -19,6 +19,8 @@ public class Application {
             }
         }
 
-        System.out.println(Arrays.toString(names));
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int inputCount = Integer.parseInt(Console.readLine());
+
     }
 }
