@@ -11,9 +11,17 @@ public class GameCounts {
     int gameCounts;
 
     public GameCounts(String gameCounts){
+        validateIntegerRange(gameCounts);
         validateMoreThanZero(gameCounts);
-
         this.gameCounts=Integer.parseInt(gameCounts);
+    }
+
+    private void validateIntegerRange(String gameCounts) {
+        try{
+            Integer.parseInt(gameCounts);
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(OVER_BIGGEST_COUNT);
+        }
     }
 
     private void validateMoreThanZero(String gameCounts) {
@@ -23,6 +31,5 @@ public class GameCounts {
             throw new IllegalArgumentException(UNDER_SMALLEST_COUNT);
         }
     }
-
 
 }
