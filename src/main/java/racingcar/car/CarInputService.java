@@ -20,6 +20,7 @@ public class CarInputService {
     }
 
     private String getCarsFromUser() {
+        IOUtils.outputString("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carInput = IOUtils.input();
         carInputValidator.checkIsCarInputEmpty(carInput);
         return carInput;
