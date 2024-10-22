@@ -2,6 +2,8 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Map;
+
 public class RacingView {
 
     // 자동차 이름 입력 받기
@@ -14,6 +16,13 @@ public class RacingView {
     public int getRoundCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
+    }
+
+    // 각 차수별로 자동차 상태 출력
+    public void printCarStates(Map<String, String> carStates) {
+        for (Map.Entry<String, String> entry : carStates.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
     }
 
 }
