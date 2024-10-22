@@ -6,8 +6,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = readLine();
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String countInput = readLine();
+
         List<String> carNameList = validCarNames(carNames);
+        int gameCount = validGameCount(countInput);
     }
 
     public static List<String> validCarNames(String carNames) {
@@ -24,5 +29,17 @@ public class Application {
             }
         }
         return carName;
+    }
+
+    public static int validGameCount(String gameCount) {
+        try {
+            int count = Integer.parseInt(gameCount);
+            if (count < 1) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
     }
 }
