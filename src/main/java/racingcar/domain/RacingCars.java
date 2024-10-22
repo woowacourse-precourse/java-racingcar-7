@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import static java.util.stream.Collectors.toCollection;
+
 public class RacingCars {
 
     private final LinkedList<RacingCar> cars = new LinkedList<>();
@@ -25,5 +27,17 @@ public class RacingCars {
         }
 
         return this;
+    }
+
+    public LinkedList<RacingCar> getWinners() {
+        int maxPosition = getMaxPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(toCollection(LinkedList::new));
+    }
+
+    private int getMaxPosition() {
+        return cars.stream().mapToInt(RacingCar::getPosition).max().orElse(Integer.MIN_VALUE);
     }
 }
