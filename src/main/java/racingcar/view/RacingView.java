@@ -10,4 +10,10 @@ public class RacingView {
         return Console.readLine().trim().split(",");
     }
 
+    // 시도 횟수 입력 받기
+    public int getRoundCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
