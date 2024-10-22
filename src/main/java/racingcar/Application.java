@@ -44,4 +44,8 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public static Integer getCarNumber(List<RacingCar> racingCarList){
+        return racingCarList.size();
+    }
 }
