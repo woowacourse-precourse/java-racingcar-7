@@ -87,4 +87,60 @@ class CarRacingTest {
         Assertions.assertThatThrownBy(() -> carRacing.parseAttempts(attempts))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    public void 우승자_테스트() throws Exception {
+        //Given
+        CarRacing carRacing = new CarRacing();
+        List<Car> carList = new ArrayList<>();
+        Car pobi = new Car("pobi");
+        Car woni = new Car("woni");
+        Car jun = new Car("jun");
+
+        for (int i = 0; i < 4; i++) {
+            pobi.forwardOrStop(4);
+        }
+        for (int i = 0; i < 3; i++) {
+            woni.forwardOrStop(4);
+        }
+        for (int i = 0; i < 2; i++) {
+            jun.forwardOrStop(4);
+        }
+        carList.add(pobi);
+        carList.add(woni);
+        carList.add(jun);
+
+        String expected = "최종 우승자 : pobi";
+        //When
+        String winner = carRacing.winner(carList);
+
+        //Then
+        Assertions.assertThat(winner).isEqualTo(expected);
+    }
+
+    @Test
+    public void 공동_우승자_테스트() throws Exception {
+        //Given
+        CarRacing carRacing = new CarRacing();
+        List<Car> carList = new ArrayList<>();
+        Car pobi = new Car("pobi");
+        Car woni = new Car("woni");
+        Car jun = new Car("jun");
+
+        for (int i = 0; i < 4; i++) {
+            pobi.forwardOrStop(4);
+            woni.forwardOrStop(4);
+            jun.forwardOrStop(4);
+        }
+        carList.add(pobi);
+        carList.add(woni);
+        carList.add(jun);
+
+        String expected = "최종 우승자 : pobi,woni,jun";
+        //When
+        String winner = carRacing.winner(carList);
+
+        //Then
+        Assertions.assertThat(winner).isEqualTo(expected);
+    }
 }

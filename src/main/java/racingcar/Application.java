@@ -14,5 +14,7 @@ public class Application {
 
         System.out.println("\n실행 결과");
         carRacing.race();
+
+        System.out.println(carRacing.winner(carRacing.getCarList()));
     }
 }

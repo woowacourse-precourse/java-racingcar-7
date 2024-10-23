@@ -40,6 +40,26 @@ public class CarRacing {
         car.forwardOrStop(randomValue);
     }
 
+    public String winner(List<Car> carList) {
+        carList.sort(((o1, o2) -> o2.getMileage() - o1.getMileage()));
+        int maxMileage = carList.get(0).getMileage();
+        List<String> winnerList = new ArrayList<>();
+
+        for (Car car : carList) {
+            if (car.getMileage() < maxMileage) {
+                break;
+            }
+            winnerList.add(car.getName());
+        }
+
+        StringBuilder sb = new StringBuilder("최종 우승자 : ");
+        for (int i = 0; i < winnerList.size() - 1; i++) {
+            sb.append(winnerList.get(i)).append(",");
+        }
+        sb.append(winnerList.getLast());
+        return sb.toString();
+    }
+
     public void race() {
         int n = carList.size();
         for (int i = 0; i < attempts; i++) {
