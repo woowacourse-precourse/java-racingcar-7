@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.utils.Constants;
-
 /**
  * 자동차 주행 과정을 전달하는 DTO
  */
@@ -18,8 +16,7 @@ public class CarRacingProgress {
 
     @Override
     public String toString() {
-        return name + " ".repeat(Constants.MAX_CAR_NAME_LENGTH - name.length())
-                + " : " + "-".repeat(Math.max(0, progress));
+        return name + " : " + "-".repeat(Math.max(0, progress));
     }
 
 }
