@@ -13,7 +13,7 @@ public class Car {
     }
 
     private void validateName(){}
-    
+
     public void setDistance(int randomNumber) {
         if (randomNumber >= MINIMUM_ADVANCE_VALUE) {
             this.distance += 1;
