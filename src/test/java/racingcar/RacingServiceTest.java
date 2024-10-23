@@ -31,8 +31,14 @@ class RacingServiceTest {
     void 자동차_추출_테스트2() {
         String input = "aa";
         String[] result = racingService.convertCarInputToArray(input);
-        System.out.println(Arrays.toString(result));
         assertThat(result).containsExactly("aa");
+    }
+
+    @Test
+    @DisplayName("랜덤 값이 올바른 범위에 포함되는지 확인")
+    void 랜덤_값_테스트() {
+        int result = racingService.createRandomValue();
+        assertThat(result).isBetween(0, 9);
     }
 }
 
