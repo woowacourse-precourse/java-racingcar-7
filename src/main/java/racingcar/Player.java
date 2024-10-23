@@ -18,7 +18,7 @@ public class Player {
 
     public void move() {
         int pick = pickUpLogic.get();
-        if (pick >= 4) {
+        if (pick >= 4 && pick < 10) {
             place++;
         }
     }
