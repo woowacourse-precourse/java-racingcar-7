@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.validator.CarNameValidator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
