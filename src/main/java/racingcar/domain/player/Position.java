@@ -11,6 +11,10 @@ public class Position {
         return currentPosition++;
     }
 
+    public boolean isGreaterThan(Position otherPosition) {
+        return currentPosition > otherPosition.getCurrentPosition();
+    }
+
     public int getCurrentPosition() {
         return currentPosition;
     }
