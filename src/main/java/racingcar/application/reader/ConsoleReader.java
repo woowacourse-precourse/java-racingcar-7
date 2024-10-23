@@ -12,7 +12,7 @@ public class ConsoleReader implements Reader {
 
     @Override
     public int readGameNumber() {
-        String s = Console.readLine();
+        String s = read();
         if (s.isEmpty()) {
             throw new IllegalArgumentException("게임 횟수를 입력해야 합니다.");
         }
