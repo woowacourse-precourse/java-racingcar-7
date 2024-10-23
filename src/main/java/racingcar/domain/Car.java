@@ -12,6 +12,10 @@ public class Car { // 자동차를 관리하는 클래스
         return carName;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public void setPosition(int position) {
         this.position = position;
     }
