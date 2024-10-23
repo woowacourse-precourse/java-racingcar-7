@@ -17,8 +17,7 @@ public class RaceUtils {
         for (int i = 1; i < carList.size(); i++) {
             if (carList.get(i).getTotalMoves() < maxMoves)
                 break;
-            else
-                winnerList.add(carList.get(i).getName());
+            winnerList.add(carList.get(i).getName());
         }
 
         return String.join(", ", winnerList);
