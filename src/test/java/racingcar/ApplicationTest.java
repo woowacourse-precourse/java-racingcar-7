@@ -31,6 +31,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void inputStringTest(){
+        InputString inputString = new InputString("pobi,woni");
+        assertSimpleTest(
+            ()->assertThat(inputString.getInputString()).isEqualTo("pobi,woni")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
