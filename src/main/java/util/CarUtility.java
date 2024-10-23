@@ -1,5 +1,6 @@
 package util;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import racingcar.Car;
 
@@ -14,5 +15,8 @@ public class CarUtility {
         return cars;
     }
 
+    public static int makeRandomInt() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
 
 }
