@@ -39,4 +39,16 @@ public class CarRacing {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         car.forwardOrStop(randomValue);
     }
+
+    public void race() {
+        int n = carList.size();
+        for (int i = 0; i < attempts; i++) {
+            for (int j = 0; j < n; j++) {
+                Car car = carList.get(j);
+                randomlyAccelerate(car);
+                System.out.println(car.toString());
+            }
+            System.out.println();
+        }
+    }
 }
