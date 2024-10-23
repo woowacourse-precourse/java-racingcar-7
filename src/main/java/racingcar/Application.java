@@ -24,12 +24,6 @@ public class Application {
         // 입력 받은 자동차 이름 문자열을 `쉼표(,)` 기준으로 분리한다.
         final String[] carNames = carNamesInput.split(",");
         for (String carName : carNames) {
-            // 분리된 문자열이 `Blank` 인지 검사한다. (Console에 Null이 입력될 가능성은 없다.)
-            if (carName.isBlank()) {
-                // 예외 처리: 자동차 이름을 쉼표를 기준으로 분리한 후, `빈 문자열`일 때
-                throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
-            }
-
             final List<Car> cars = new ArrayList<>();
             cars.add(new Car(carName));
         }
