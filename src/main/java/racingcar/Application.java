@@ -9,7 +9,9 @@ public class Application {
     public static void main(String[] args) {
         String cars = Console.readLine();
         String move_cnt = Console.readLine();
-        race_start(cars,move_cnt);
+        ArrayList<Car> race_result = race_start(cars,move_cnt);
+        ArrayList<String> winners = getRaceWinners(race_result);
+
     }
     public static ArrayList<Car> add_cars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
@@ -29,7 +31,7 @@ public class Application {
         int move_time = Integer.parseInt(move_cnt);
         while(move_time-- > 0) {
             carList = move_car(carList);
-            showraceprogress(carList);
+            showRaceprogress(carList);
         }
         return carList;
     }
@@ -41,7 +43,7 @@ public class Application {
         }
         return carList;
     }
-    public static void showraceprogress(ArrayList<Car> carList) {
+    public static void showRaceprogress(ArrayList<Car> carList) {
         for(Car car : carList) {
             System.out.print(car.getName()+" : ");
             for(int i=0; i<car.getDistance(); i++) {
@@ -49,5 +51,20 @@ public class Application {
             }
             System.out.println();
         }
+    }
+    public static ArrayList<String> getRaceWinners(ArrayList<Car> carList) {
+        int maxwins = 0;
+        ArrayList<String> winners = new ArrayList<>();
+        for(Car car : carList) {
+            if(car.getDistance() > maxwins) {
+                maxwins = car.getDistance();
+                winners.clear();
+                winners.add(car.getName());
+            }
+            else if(car.getDistance() == maxwins) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 }
