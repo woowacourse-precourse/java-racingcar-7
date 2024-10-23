@@ -6,7 +6,7 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(String name) {
+    private Car(String name) {
         this.name = validateCar(name);
         this.position = 0;
     }
@@ -33,7 +33,9 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        this.position++;
+    public void move(final int randomValue) {
+        if (randomValue >= 4) {
+            this.position++;
+        }
     }
 }
