@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -12,5 +15,11 @@ public class Application {
         String inputCount = Console.readLine();
 
         System.out.println(inputCarName + " " + inputCount);
+
+        String[] names = inputCount.split(",");
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
     }
 }
