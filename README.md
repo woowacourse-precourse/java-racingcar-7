@@ -45,9 +45,17 @@
     ├── dto/
     ├── service/
     ├── view/
+    │   └─ InputView.java
+    │       ├─ getRacingCarNameFromUser() : String
+    │       └─ getNumberOfRaceFromUser() : String
     └── util/
-        
-
+        ├─ checkRacingCarNameListIsAvailable.java
+        │   ├─ checkRacingCarNameListIsAvailable(racingCarNames : String)
+        │   ├─ validateNameLength(racingCarList : String[]) 
+        │   ├─ validateDelimiter(racingCarNames : String, numOfRacingCar : int)
+        │   └─ validateDuplicateNames(racingCarList : String[])
+        └─ RacingNumberValidator.java
+            └─ checkNumberOfRacingIsAvailable(stringNumOfRace : String)
 ```
 
 ## 2️⃣ _ 나만의 Git Convention 
@@ -92,5 +100,17 @@
         - 구현된 기능에 대한 Test Code를 작성한다.
 
     ✅ 구현 후 느낀점 / 추가 개선사항 
+
+    -   처음에는 View에서 사용자의 입력을 받은 뒤에 Controller에 넘기기전에 예외처리를 하려고했다.
+        하지만 다시 생각해보았을때 단일 책임의 원칙인데 View한테 그런걸 시켜도 되나? 라고 생각했고 
+        View는 정말 자신의 역할 그대로, 입력만 받아서 전달 그 어떤 가공도 하지 않도록 하였다.
+    
+    -   1주차에서는 예외처리를 클래스 1개로 운영했지만 이번에는 각각의 역할에 맞춰서 분리하여 구성하였다.
+        현재는 먼저 주어진 명세에서 제공된 예외처리(이름은 5보다 이하여아한다.)를 먼저 구현하고, 
+        중요한 몇가지 경우의 수(null 값, 중복 이름)에 대한 내용을 추가했다.
+
+    -   오늘 구현한 예외 처리에 대해서 테스트 케이스를 바로 작성해 보았다.
+        생각보다 어디에서는 의도대로 되고, 어디에서는 의도대로 되지않았다.
+        기존에는 올바른 입력들에 대해서는 테스트를 안짰는데 더욱 많은 테스트 케이스를 짜보아야겠다고 느꼈다.
    
 ```
