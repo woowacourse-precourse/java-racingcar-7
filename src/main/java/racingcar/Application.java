@@ -65,5 +65,9 @@ public class Application {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+
+        final List<Car> winningCars = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 }
