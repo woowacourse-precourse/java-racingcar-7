@@ -27,7 +27,7 @@ public class RaceManager {
     public void startRace(int cycle, List<RacingCar> racingCars) {
         for (int i = 0; i < cycle; i++) {
             System.out.println();
-            gogo(racingCars);
+            printRaceStatus(racingCars);
         }
         System.out.println("최종 우승자 : "+getWinner(racingCars));
 
@@ -39,7 +39,7 @@ public class RaceManager {
         return Arrays.asList(string.split(","));
     }
 
-    private static void gogo(List<RacingCar> racingCars) {
+    private static void printRaceStatus(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.moveOrStop();
             System.out.println(racingCar.getName() + " : " + racingCar.getStatusToDash());
