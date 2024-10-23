@@ -6,6 +6,7 @@ import racingcar.service.CarMakerService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
@@ -45,5 +46,25 @@ public class RacingCarController {
             outputView.printMovedCars(cars);
             System.out.println();
         }
+
+        printWinner(cars);
+    }
+
+    private void printWinner(List<Car> cars){
+        List<String> winners = new ArrayList<>();
+        int maxMovedNumber = -1;
+
+        for (Car car : cars) {
+            int movedNumber = car.getMovedNumber();
+            if (movedNumber > maxMovedNumber) {
+                maxMovedNumber = movedNumber;
+                winners.clear();
+                winners.add(car.getName());
+            } else if (movedNumber == maxMovedNumber) {
+                winners.add(car.getName());
+            }
+        }
+
+        outputView.printWinner(winners);
     }
 }
