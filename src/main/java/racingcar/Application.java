@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,8 +15,6 @@ public class Application {
         List<String> cars = getCarNames(br);
         int moves = getMovementCounts(br);
 
-        System.out.println(cars);
-        System.out.println(moves);
     }
 
     public static List<String> getCarNames(BufferedReader br) {
@@ -23,7 +23,9 @@ public class Application {
             String input = br.readLine().trim();
 
             validateInput(input);
-            return new ArrayList<>(List.of(input.split(",")));
+            List<String> cars = new ArrayList<>(List.of(input.split(",")));
+            validateNames(cars);
+            return cars;
         } catch (IOException e){
             throw new IllegalArgumentException("입력 오류: 잘못된 입력입니다.");
         }
@@ -32,6 +34,20 @@ public class Application {
     public static void validateInput(String input) {
         if (input.isEmpty() || input.startsWith(",") || input.endsWith(",") || input.contains(",,")){
             throw new IllegalArgumentException("입력 오류: 쉼표를 확인하세요.");
+        }
+    }
+
+    public static void validateNames(List<String> cars) {
+        Set<String> uniqueNames = new HashSet<>();
+
+        for (String car : cars) {
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("입력 오류: 5글자를 초과한 이름이 있습니다.");
+            }
+
+            if (!uniqueNames.add(car)) {
+                throw new IllegalArgumentException("입력 오류: 중복된 이름이 있습니다.");
+            }
         }
     }
 
