@@ -16,7 +16,7 @@
       3. 입력된 이름이 2 개 이상일 경우
          - 모두 경주 진행
     - 각자의 이름은 5 자 이하만 가능
-      1. 5 자 이상일 경우
+      1. 6 자 이상일 경우
          - IllegalArgumentException 발생
       2. 빈칸일 경우
          - IllegalArgumentException 발생
