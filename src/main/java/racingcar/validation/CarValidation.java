@@ -33,6 +33,14 @@ public class CarValidation {
         }
     }
 
+    private static void checkSameCarName(List<Car> carList, String carName) {
+        for (Car car : carList) {
+            if (car.carName.equals(carName)) {
+                throw new IllegalArgumentException(SAME_NAME_FOUND.getMessage());
+            }
+        }
+    }
+
 
 
 }
