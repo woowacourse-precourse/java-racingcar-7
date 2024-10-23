@@ -5,10 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = new ArrayList<>();
+
         parseCarNames(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -33,10 +35,8 @@ public class Application {
         if (attempts == 0) {
             throw new IllegalArgumentException();
         }
-        for (int i = 0; i < carNames.size(); i++) {
-            String updateName = carNames.get(i) + " : ";
-            carNames.set(i, updateName);
-        }
+        carNames.replaceAll(s -> s + " : ");
+        
         for (int i = 0; i < attempts; i++) {
             for (int j = 0; j < carNames.size(); j++) {
                 int ranNum = Randoms.pickNumberInRange(0, 9);
