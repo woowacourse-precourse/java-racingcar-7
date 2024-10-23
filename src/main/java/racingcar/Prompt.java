@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Map;
+import java.util.List;
 
 public class Prompt {
     public static String input() {
@@ -13,8 +13,10 @@ public class Prompt {
         return Integer.parseInt(Console.readLine());
     }
 
-    public static void resultPrint(String output) {
-        System.out.println(output);
+    public static void resultPrint(List<RacingCar> biggestDistanceRacingCar) {
+        List<String> racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
+        String result = String.join(",", racingCarName);
+        System.out.println("최종 우승자 : " + result);
         Console.close();
     }
 
