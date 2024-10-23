@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Record {
-    private Map<String,Integer> latestPosition;
-    private StringBuilder trace;
+    private final Map<String,Integer> latestPosition;
+    private final StringBuilder trace;
     public Record(){
         latestPosition = new HashMap<>();
         trace = new StringBuilder();

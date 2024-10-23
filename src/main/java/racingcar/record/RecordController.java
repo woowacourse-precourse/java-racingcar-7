@@ -27,7 +27,8 @@ public class RecordController {
 
     public void run(){
         String tryTimes = inputView.inputString(REQUEST_TRY_TIMES);
-        String result = recordService.raceStart(tryTimes, racingCarList);
+        int intTryTimes = recordService.raceSetting(tryTimes);
+        String result = recordService.raceStart(racingCarList, intTryTimes);
         outputView.outputString(result);
     }
 }

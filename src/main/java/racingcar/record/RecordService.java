@@ -18,23 +18,30 @@ public class RecordService {
         return RECORD_SERVICE;
     }
 
-    public String raceStart(String tryTimes, List<RacingCar> racingCarList) {
+    public int raceSetting(String tryTimes) {
         recordValidator.numberCheck(tryTimes);
         int intTryTimes = Integer.parseInt(tryTimes);
         recordValidator.validTryTimeCheck(intTryTimes);
-        Record record = new Record();
-        settingRecord(record, racingCarList);
-
-        for (int i = 1; i <= intTryTimes; i++) {
-            recordOneTry(record, racingCarList);
-        }
-
-        record.getTrace().append("최종 우승자 : ").append(findWinner(record));
-
-        return record.getTrace().toString();
+        return intTryTimes;
     }
 
-    private void recordOneTry(Record record, List<RacingCar> racingCarList) {
+    public String raceStart(List<RacingCar> racingCarList, int intTryTimes) {
+        Record record = new Record();
+        settingRecord(racingCarList, record);
+
+        for (int i = 1; i <= intTryTimes; i++) {
+            recordOneTry(racingCarList, record);
+        }
+
+        record.getTrace()
+                .append("최종 우승자 : ")
+                .append(findWinner(record));
+
+        return record.getTrace()
+                .toString();
+    }
+
+    private void recordOneTry(List<RacingCar> racingCarList, Record record) {
         Map<String, Integer> latestPosition = record.getLatestPosition();
         StringBuilder trace = record.getTrace();
 
@@ -49,7 +56,7 @@ public class RecordService {
         trace.append("\n");
     }
 
-    private void settingRecord(Record record, List<RacingCar> racingCarList) {
+    private void settingRecord(List<RacingCar> racingCarList, Record record) {
         Map<String, Integer> latestPosition = record.getLatestPosition();
         for (RacingCar c : racingCarList) {
             latestPosition.put(c.getName(), 0);
