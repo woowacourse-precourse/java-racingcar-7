@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.dto.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputService {
@@ -16,7 +17,7 @@ public class InputService {
             throw new IllegalArgumentException("입력값이 누락되었습니다.");
         }
 
-        String[] cars = splitCarValue(carValue);
+        List<String> cars = splitCarValue(carValue);
         List<Car> carList = new ArrayList<>();
         for (String car : cars) {
             if(car.length() > 5){
@@ -33,8 +34,8 @@ public class InputService {
         return carList;
     }
 
-    private String[] splitCarValue(String carValue){
-        return carValue.split(",");
+    private List<String> splitCarValue(String carValue){
+        return Arrays.asList(carValue.split(","));
     }
 
     private boolean isNumeric(String countValue){
