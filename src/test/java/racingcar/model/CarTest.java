@@ -54,4 +54,26 @@ class CarTest {
             .containsExactlyInAnyOrder("pobi", 0);
     }
 
+    @DisplayName("현재 위치와 비교 위치가 다르면 true를 반환한다.")
+    @Test
+    void isNotSamePosition() {
+        //given
+        Car car = Car.from("pobi");
+        //when
+        boolean status = car.isNotSamePositionTo(1);
+        //then
+        assertThat(status).isTrue();
+    }
+
+    @DisplayName("현재 위치와 비교 위치가 같으면 false를 반환한다.")
+    @Test
+    void isSamePosition() {
+        //given
+        Car car = Car.from("pobi");
+        //when
+        boolean status = car.isNotSamePositionTo(0);
+        //then
+        assertThat(status).isFalse();
+    }
+
 }
