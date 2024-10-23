@@ -9,8 +9,17 @@ class UtilsTest {
     @Test
     @DisplayName("자동차 이름 검증 테스트 - 올바른 입력은 예외를 던지지 않는다.")
     void givenValidInput_whenValidateNames_thenCorrectResult() {
-        String input = "aa,bb,cc1";
-        Assertions.assertDoesNotThrow(() -> Utils.validateNames(input));
+        String input1 = "aa,bb,cc1";
+        Assertions.assertDoesNotThrow(() -> Utils.validateNames(input1));
+        String input2 = "12345,aaaaa";
+        Assertions.assertDoesNotThrow(() -> Utils.validateNames(input2));
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증 테스트 - 0글자 혹은 5글자 초과인 경우 예외를 던진다.")
+    void givenInvalidLength_whenValidateNames_thenThrowIllegalArgumentException(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames("aa,123456"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames(""));
     }
 
     @Test
