@@ -27,12 +27,14 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttempt = readLine();
+        System.out.println();
         try {
             attempts = Integer.parseInt(inputAttempt);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("숫자만 입력해야 합니다." + e);
         }
 
+        System.out.println("실행 결과");
         for (int i = 0; i < attempts; i++) {
             for (Car car : cars) {
                 int number = pickNumberInRange(0, 9);
@@ -44,6 +46,7 @@ public class Application {
             for (Car car : cars) {
                 System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
             }
+            System.out.println();
         }
 
         // 우승자의 position 추출
