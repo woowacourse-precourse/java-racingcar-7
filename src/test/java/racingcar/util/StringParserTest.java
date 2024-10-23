@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.util;
 
 import org.junit.jupiter.api.Test;
 
