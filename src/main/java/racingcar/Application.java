@@ -21,6 +21,10 @@ public class Application {
 
         // 수정 대상: 컬렉션을 사용하고, Immutable 하게 만든다.
         final String[] carNames = carNamesInput.split(",");
+        if (carNames.length == 1) {
+            throw new IllegalArgumentException("경주에 참가할 자동차를 최소 2개 이상 입력해주세요.");
+        }
+
         final List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
