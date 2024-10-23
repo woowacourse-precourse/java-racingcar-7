@@ -33,7 +33,7 @@ class RacingCarNameValidatorTest {
     }
 
     @Test
-    @DisplayName("Case 2: 앞에 빈 문자열이 있는 경우")
+    @DisplayName("Case 3: 앞에 빈 문자열이 있는 경우")
     void CarRacingNameTestCase_EmptyNameAtStart() {
         // given
         String input = ",name,test";  // 처음에 빈 문자열이 있는 경우
@@ -45,7 +45,7 @@ class RacingCarNameValidatorTest {
     }
 
     @Test
-    @DisplayName("Case 3: 뒤에 빈 문자열이 있는 경우")
+    @DisplayName("Case 4: 뒤에 빈 문자열이 있는 경우")
     void CarRacingNameTestCase_EmptyNameAtEnd() {
         // given
         String input = "name,test,";  // 마지막에 빈 문자열이 있는 경우
@@ -57,10 +57,10 @@ class RacingCarNameValidatorTest {
     }
 
     @Test
-    @DisplayName("Case 4: 중복 문자열이 존재하는 경우")
+    @DisplayName("Case 5: 중복 문자열이 존재하는 경우")
     void CarRacingNameTestCase_Duplicate() {
         // given
-        String input = "name,test,name";  // 마지막에 빈 문자열이 있는 경우
+        String input = "name,test,name";  // 중복 문자열이 있는 경우
 
         // then
         assertThrows(IllegalArgumentException.class,
