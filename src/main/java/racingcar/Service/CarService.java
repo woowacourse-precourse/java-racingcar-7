@@ -1,6 +1,7 @@
 package racingcar.Service;
 
 import racingcar.Car;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarService {
     public Car[] convertToCar(String[] carNames){
@@ -13,9 +14,11 @@ public class CarService {
         return cars;
     }
 
-    public void startRace(Car[] cars, int cnt){
-
-
+    public void startRace(Car[] cars){
+        for(Car car: cars){
+            int rnd = Randoms.pickNumberInRange(0,9);
+            if(rnd>=4) car.goFront();
+        }
     }
 
 

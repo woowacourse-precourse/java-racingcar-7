@@ -21,6 +21,9 @@ public class carController {
         outputMethod.cntPrint();
         int cnt = inputMethod.getCntInput(Console.readLine());
 
-        carService.startRace(cars,cnt);
+        for(int i=0;i<cnt;i++){
+            carService.startRace(cars);
+            outputMethod.printRace(cars);
+        }
     }
 }
