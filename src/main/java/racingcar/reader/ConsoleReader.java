@@ -1,7 +1,7 @@
 package racingcar.reader;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Reader;
+import racingcar.racingapplication.Reader;
 
 public class ConsoleReader implements Reader {
 

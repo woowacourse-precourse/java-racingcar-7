@@ -1,7 +1,7 @@
 package racingcar.printer;
 
 import java.util.List;
-import racingcar.Printer;
+import racingcar.racingapplication.Printer;
 import racingcar.domain.Cars;
 
 public class PrintRacingResult implements Printer {

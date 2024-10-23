@@ -1,9 +1,6 @@
 package racingcar.racingapplication;
 
 import java.util.List;
-import racingcar.NameSeparator;
-import racingcar.Printer;
-import racingcar.Reader;
 import racingcar.configuration.AppConfig;
 import racingcar.domain.Cars;
 import racingcar.domain.Result;
