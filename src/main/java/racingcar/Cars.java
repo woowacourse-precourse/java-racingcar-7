@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,11 @@ public class Cars {
 
     public static Cars from(List<Car> cars) {
         return new Cars(cars);
+    }
+
+    public List<Car> move() {
+        cars.forEach(car -> car.move(Randoms.pickNumberInRange(1,9)));
+        return cars;
     }
 
     public List<Car> getWinnerCars() {
