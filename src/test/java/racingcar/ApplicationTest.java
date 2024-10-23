@@ -114,17 +114,11 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("count의 값이 음수이면 예외가 발생한다.")
-    void countInputTest2() {
-        assertThatThrownBy(() -> CounterValidation.validation("-1"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("count의 값이 0이면 예외가 발생한다.")
-    void countInputTest3() {
-        assertThatThrownBy(() -> CounterValidation.validation("0"))
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0"})
+    @DisplayName("count의 값이 양수가 아니면 예외가 발생한다.")
+    void countInputTest2(String count) {
+        assertThatThrownBy(() -> CounterValidation.validation(count))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -144,48 +138,60 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("랜덤 값이 4이상이면 전진한다.")
     void forwardTest() {
+        // give
         Player player = new Player("pobi", 0);
         int randomNumber = 4;
 
+        // when
         Racing.racing(player, randomNumber);
 
+        //then
         assertThat(player.getScore()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("랜덤 값이 4미만이면 정지한다.")
     void stopTest() {
+        // give
         Player player = new Player("pobi", 0);
         int randomNumber = 3;
 
+        // when
         Racing.racing(player, randomNumber);
 
+        // then
         assertThat(player.getScore()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("최종 우승자가 두 명일 때의 출력를 테스트한다.")
     void winnerTest1() {
+        // give
         List<Player> players = List.of(
                 new Player("pobi", 3),
                 new Player("woni", 3),
                 new Player("java", 2));
 
+        // when
         String winner = WinnerMaker.createWinner(players);
 
+        // then
         assertThat(winner).isEqualTo("pobi, woni");
     }
 
     @Test
     @DisplayName("최종 우승자가 세 명일 때의 출력를 테스트한다.")
     void winnerTest2() {
+        // give
         List<Player> players = List.of(
                 new Player("pobi", 3),
                 new Player("woni", 3),
                 new Player("java", 3));
 
+        // when
         String winner = WinnerMaker.createWinner(players);
 
+        // then
         assertThat(winner).isEqualTo("pobi, woni, java");
     }
 
