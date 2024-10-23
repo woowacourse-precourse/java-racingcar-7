@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.model.Car;
+import racingcar.view.RacingView;
 
 public class RacingService {
     private static Car[] carList; // 자동차 목록을 저장할 배열
@@ -17,9 +18,27 @@ public class RacingService {
         }
     }
 
+    public static void startRacing() {
+        System.out.println("실행 결과");
+        int count = Integer.parseInt(carList[0].getMoveCount());
+        for (int i = 0; i < count; i++) {
+            trymove();
+            RacingView.tryResult(getCars());
+            System.out.println();
+        }
+    }
+
     private static Car[] getCars() {
         // 현재 자동차 배열을 반환
         return carList; // 자동차 배열 반환
+    }
+
+    private static void trymove() {
+        for (Car car : carList) {
+            if (car != null) {
+                car.tryMoving(); // 각 자동차에 대해 전진 시도
+            }
+        }
     }
 
 }

@@ -11,6 +11,7 @@ public class RacingController {
         String moveCount = Console.readLine();
         inputValid(racingCars, moveCount);
         RacingService.setupRacing(racingCars, moveCount);
+        RacingService.startRacing();
     }
 
     private static void inputValid(String carNames, String moveCount) {
