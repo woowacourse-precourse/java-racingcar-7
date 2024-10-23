@@ -8,7 +8,8 @@ class CarTest {
     @Test
     void 자동차는_전진할_수_있다() {
         //given
-        Car car = new Car("test");
+        CarName carName = new CarName("test");
+        Car car = new Car(carName);
 
         //when
         car.forward();
@@ -20,7 +21,7 @@ class CarTest {
     @Test
     void 자동차를_출력했을_때_이름과_이동거리가_포함된다() {
         //given
-        String carName = "test";
+        CarName carName = new CarName("test");
         Car car = new Car(carName);
         
         //when
@@ -28,6 +29,6 @@ class CarTest {
         final String output = car.toString();
 
         //then
-        Assertions.assertThat(output).isEqualTo(carName + " : " + "-".repeat(car.getDistance()));
+        Assertions.assertThat(output).isEqualTo(carName.getContent() + " : " + "-".repeat(car.getDistance()));
     }
 }

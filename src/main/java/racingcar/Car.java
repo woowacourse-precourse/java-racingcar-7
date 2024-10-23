@@ -3,10 +3,11 @@ package racingcar;
 public class Car {
 
     private static final String DISTANCE_FORMAT = "-";
-    private final String name;
+
+    private final CarName name;
     private int distance;
 
-    public Car(final String name) {
+    public Car(final CarName name) {
         this.name = name;
         this.distance = 0;
     }
@@ -21,6 +22,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + " : " + DISTANCE_FORMAT.repeat(distance);
+        return name.getContent() + " : " + DISTANCE_FORMAT.repeat(distance);
     }
 }
