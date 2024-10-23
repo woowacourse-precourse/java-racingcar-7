@@ -13,6 +13,12 @@ public class CarValidation {
     private static final Integer MAX_LENGTH = 5;
     private static final Pattern REGEX = Pattern.compile("[!@#$%^&*]");
 
+    public static void carValid(List<Car> carList, String carName) {
+        checkNullOrEmpty(carName);
+        checkOverLength(carName);
+        checkRegex(carName);
+        checkSameCarName(carList, carName);
+    }
 
     private static void checkNullOrEmpty(String carName) {
         if (carName == null || carName.isEmpty()) {
