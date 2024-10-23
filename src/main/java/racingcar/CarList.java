@@ -7,11 +7,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class CarManager {
+public class CarList {
     private static final String DELIMITER = ",";
     private final List<Car> list;
 
-    public CarManager() {
+    public CarList() {
         this.list = new ArrayList<>();
     }
 

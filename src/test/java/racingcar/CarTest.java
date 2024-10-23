@@ -41,10 +41,10 @@ class CarTest {
         String case1 = "hello";
         String case2 = "helloWorld";
 
-        CarManager manager1 = new CarManager();
+        CarList manager1 = new CarList();
         manager1.add(case1);
 
-        CarManager manager2 = new CarManager();
+        CarList manager2 = new CarList();
 
         //when // then
         Assertions.assertAll(

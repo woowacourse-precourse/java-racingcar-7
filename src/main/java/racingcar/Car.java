@@ -15,9 +15,13 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= FORWARD_NUMBER) {
+        if (canMove(number)) {
             position++;
         }
+    }
+
+    private boolean canMove(int number) {
+        return number >= FORWARD_NUMBER;
     }
 
     public String getName() {
