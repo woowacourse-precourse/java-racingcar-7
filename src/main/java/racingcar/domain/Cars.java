@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private final static String COMMA = ",";
     private final List<Car> cars;
-    public Cars(List<String> carNames) {
-        validateProcess(carNames);
-        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+    public Cars(String carNames) {
+        List<String> convertedStringToList = convertStringToList(carNames);
+        validateProcess(convertedStringToList);
+        this.cars = convertedStringToList.stream().map(Car::new).collect(Collectors.toList());
     }
-
+    private List<String> convertStringToList(String carNames) {
+        return List.of(carNames.split(COMMA));
+    }
     private void validateProcess(List<String> carNames) {
         validateLengthCarName(carNames);
         validateDuplicationCarName(carNames);
