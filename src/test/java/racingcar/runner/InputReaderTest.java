@@ -10,8 +10,12 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class InputReaderTest {
 
     private OutputStream captor;
@@ -22,6 +26,7 @@ class InputReaderTest {
         System.setOut(new PrintStream(this.captor));
     }
 
+    @Order(1)
     @DisplayName("[정상] 숫자 입력 호출")
     @Test
     void getInteger() {
@@ -34,6 +39,7 @@ class InputReaderTest {
         assertThat(output()).contains("question");
     }
 
+    @Order(2)
     @DisplayName("[예외] 숫자 입력 호출 (숫자가 아닌 경우)")
     @Test
     void getIntegerException() {
@@ -46,6 +52,7 @@ class InputReaderTest {
         assertThat(output()).contains("question");
     }
 
+    @Order(3)
     @DisplayName("[정상] 문자열 입력 호출")
     @Test
     void getString() {
@@ -58,6 +65,7 @@ class InputReaderTest {
         assertThat(output()).contains("question");
     }
 
+    @Order(4)
     @DisplayName("[예외] 호출 횟수가 넘은 경우")
     @Test
     void overTotalReadCnt() {
