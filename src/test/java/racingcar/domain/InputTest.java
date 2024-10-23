@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,17 @@ class InputTest {
                 input::toCarList);
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
+    }
+
+    @Test
+    @DisplayName("빈 입력")
+    void test5() {
+        String s = "";
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new Input(s));
+
+        assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
 }
