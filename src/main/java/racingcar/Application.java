@@ -9,5 +9,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int moveAttempts = Integer.parseInt(Console.readLine());
+
+        String raceWinner = CarRace.start(carNames, moveAttempts);
     }
 }
