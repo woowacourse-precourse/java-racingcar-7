@@ -28,4 +28,30 @@ class CarTest {
             .withMessage("이름은 5자 이하여야 합니다.");
     }
 
+    @DisplayName("4 이상의 값을 받으면 자동차는 이동한다.")
+    @Test
+    void moveCar() {
+        //given
+        Car car = Car.from("pobi");
+        //when
+        car.move(4);
+        //then
+        assertThat(car)
+            .extracting("name", "position")
+            .containsExactlyInAnyOrder("pobi", 1);
+    }
+
+    @DisplayName("4 미만의 값을 받으면 자동차는 이동하지 않는다.")
+    @Test
+    void stayCar() {
+        //given
+        Car car = Car.from("pobi");
+        //when
+        car.move(3);
+        //then
+        assertThat(car)
+            .extracting("name", "position")
+            .containsExactlyInAnyOrder("pobi", 0);
+    }
+
 }
