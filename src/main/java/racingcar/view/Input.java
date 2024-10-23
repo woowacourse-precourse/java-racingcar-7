@@ -11,4 +11,13 @@ public class Input {
             throw new IllegalArgumentException();
         }
     }
+
+    public static int inputAttemptNumber() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

@@ -7,9 +7,9 @@ public class RacingCarScoreMachine {
     private final static int FORWARDABLE_MIN_RANDOM_CRITERIA = 4;
     private final static int FORWARD_DISTANCE = 1;
 
-    public RacingCarScoreMachine(AttemptManager attemptManager, Cars cars, NumberMaker randomNumberMaker) {
-        this.attemptManager = attemptManager;
+    public RacingCarScoreMachine(Cars cars, AttemptManager attemptManager, NumberMaker randomNumberMaker) {
         this.cars = cars;
+        this.attemptManager = attemptManager;
         this.randomNumberMaker = randomNumberMaker;
     }
 
@@ -22,6 +22,11 @@ public class RacingCarScoreMachine {
                 }
             }
             //todo 출력?
+            for (Car car : cars.getCars()) {
+                System.out.println(car.getName());
+                System.out.println(car.getDistance());
+                System.out.println();
+            }
         }
     }
 }
