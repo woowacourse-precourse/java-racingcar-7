@@ -4,6 +4,7 @@ public class Car {
 	private final String name;
 
 	public Car(String name) {
+		validateCarLength(name);
 		this.name = name;
 	}
 
