@@ -4,16 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 public class Prompt {
-    public String input() {
+    public static String input() {
         return Console.readLine();
     }
 
-    public int racingTryCount() {
+    public static int racingTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
 
-    public void resultPrint(String output) {
+    public static void resultPrint(String output) {
         System.out.println(output);
         Console.close();
     }

@@ -36,7 +36,7 @@ public class RacingCarTrace {
     }
 
     public List<RacingCar> getBiggestDistanceRacingCar() {
-        Integer max = trace.values().stream().max(Integer::compare).orElse(0);
+        var max = trace.values().stream().max(Integer::compare).orElse(0);
         return trace.keySet().stream()
                 .filter(racingCar -> trace.get(racingCar).equals(max))
                 .toList();
