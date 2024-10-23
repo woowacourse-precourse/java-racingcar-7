@@ -3,7 +3,6 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.domain.Input;
-import racingcar.domain.Output;
 import racingcar.parser.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -22,22 +21,33 @@ public class RacingGame {
     }
 
     public void startRace() {
-        Input carNames = inputView.readRacingCarNames();
-        List<Car> carList = inputParser.parseRacingCarList(carNames);
-        Input tryCountString = inputView.readRacingTryCount();
-        int tryCount = inputParser.parseTryCount(tryCountString);
+        List<Car> carList = creatCarListUsingGame(inputView.readRacingCarNames());
+        int tryCount = getTryCount(inputView.readRacingTryCount());
 
         Game game = Game.carListFrom(carList);
-        Output outPut = Output.getInstance();
+        gameStart(game, tryCount);
 
-        outputView.printResultText();
+        announceTheWinners(game);
+    }
+
+    private List<Car> creatCarListUsingGame(Input carNames) {
+        return inputParser.parseRacingCarList(carNames);
+    }
+
+    private int getTryCount(Input tryCountString) {
+        return inputParser.parseTryCount(tryCountString);
+    }
+
+    private void gameStart(Game game, int tryCount) {
+        outputView.printBeforeMessage();
         for (int i = 0; i < tryCount; i++) {
-            game.moveForward();
-            List<String> carMoveResultList = outPut.getAllCarProgress(carList);
-            outputView.printMoveResult(carMoveResultList);
+            game.playOneRound();
+            outputView.printOneRoundResult(game.getCarList());
         }
+    }
 
-        String winnerNames = game.getWinner();
+    private void announceTheWinners(Game game) {
+        String winnerNames = game.getWinners();
         outputView.printWinners(winnerNames);
     }
 

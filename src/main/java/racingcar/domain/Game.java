@@ -17,27 +17,21 @@ public class Game {
         return new Game(carList);
     }
 
-    public void moveForward() {
+    public void playOneRound() {
         for (Car car : carList) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
             car.moveOrNothing(randomNum);
         }
     }
 
-    public String getWinner() {
-        int highestScore = getHighestScore();
-        List<String> winnerList = createWinnerList(highestScore);
+    public String getWinners() {
+        List<String> winnerList = extractWinnerList();
         return String.join(", ", winnerList);
     }
 
-    public List<String> createWinnerList(int highestScore) {
-        List<String> winnerList = new ArrayList<>();
-        for (Car car : carList) {
-            if (car.getMoveCnt() == highestScore) {
-                winnerList.add(car.getName());
-            }
-        }
-        return winnerList;
+    private List<String> extractWinnerList() {
+        int highestScore = getHighestScore();
+        return createWinnerList(highestScore);
     }
 
     private int getHighestScore() {
@@ -45,5 +39,16 @@ public class Game {
                 .mapToInt(Car::getMoveCnt)
                 .max()
                 .orElse(0);
+    }
+
+    private List<String> createWinnerList(final int highestScore) {
+        return carList.stream()
+                .filter(c -> c.getMoveCnt() == highestScore)
+                .map(Car::getName)
+                .toList();
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
