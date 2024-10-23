@@ -22,6 +22,11 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
+    @Test
+    void function(){
+        run("pobi,woni", "1");
+        assertThat(RacingCar.input()).contains("pobi,woni","1");
+    }
 
     @Test
     void 예외_테스트() {
