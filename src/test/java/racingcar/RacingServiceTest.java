@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,23 +14,25 @@ class RacingServiceTest {
 
     @BeforeEach
     void setUp() {
-        racingService = new RacingService();
+        racingService = new RacingService("a,b,c", 4);
     }
 
     @Test
-    @DisplayName("입력받은 여러 자동차를 구분자(,) 기준으로 추출")
+    @DisplayName("입력받은 여러 자동차를 구분자(,) 기준으로 추출하여 HashMap 으로 생성")
     void 자동차_추출_테스트1() {
         String input = "aa,bb,cc";
-        String[] result = racingService.convertCarInputToArray(input);
-        assertThat(result).contains("aa", "bb", "cc");
+        racingService.setCarInput(input);
+        assertThat(racingService.getCarMap()).hasSize(3);
+        assertThat(racingService.getCarMap().keySet()).contains("cc");
     }
 
     @Test
-    @DisplayName("입력받은 자동차가 한 대일 경우 추출")
+    @DisplayName("입력받은 자동차가 한 대일 경우 추출하여 HashMap 으로 생성")
     void 자동차_추출_테스트2() {
         String input = "aa";
-        String[] result = racingService.convertCarInputToArray(input);
-        assertThat(result).containsExactly("aa");
+        racingService.setCarInput(input);
+        assertThat(racingService.getCarMap()).hasSize(1);
+        assertThat(racingService.getCarMap().keySet()).contains("aa");
     }
 
     @Test
