@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarCollection;
+import racingcar.domain.Round;
 import racingcar.io.input.Input;
 import racingcar.io.output.Output;
 
@@ -18,7 +19,7 @@ public class RacingCarController {
     public void start() {
         try {
             CarCollection cars = initializeCars();
-            int rounds = input.getRaceRounds();
+            Round rounds = input.getRaceRounds();
             output.printStartMessage();
             runRoundsAndDisplayResults(cars, rounds);
             printWinners(cars);
@@ -32,8 +33,8 @@ public class RacingCarController {
         return CarCollection.from(carNamesInput);
     }
 
-    private void runRoundsAndDisplayResults(CarCollection cars, int rounds) {
-        for (int i = 0; i < rounds; i++) {
+    private void runRoundsAndDisplayResults(CarCollection cars, Round rounds) {
+        for (int i = 0; i < rounds.getValue(); i++) {
             cars.moveAll();
             output.printRoundResult(cars);
         }

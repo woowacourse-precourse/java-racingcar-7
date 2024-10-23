@@ -12,6 +12,14 @@ public class CarCollection {
         this.cars = List.copyOf(cars);
     }
 
+    /**
+     * 입력된 문자열을 쉼표로 분리하여 CarCollection 객체를 생성합니다. 각 분리된 문자열은 자동차 이름으로 사용되며, CarName과 Car 객체로 변환된 후 리스트에 담아
+     * CarCollection을 생성합니다.
+     *
+     * @param input 자동차 이름을 쉼표(,)로 구분한 문자열
+     * @return CarCollection 객체
+     * @throws IllegalArgumentException 유효하지 않은 자동차 이름이 포함된 경우
+     */
     public static CarCollection from(String input) {
         List<Car> carList = Arrays.stream(input.split(","))
                 .map(String::trim)

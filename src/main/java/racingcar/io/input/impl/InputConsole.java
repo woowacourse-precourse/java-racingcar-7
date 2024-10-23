@@ -1,6 +1,7 @@
 package racingcar.io.input.impl;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Round;
 import racingcar.io.input.Input;
 
 public class InputConsole implements Input {
@@ -11,21 +12,9 @@ public class InputConsole implements Input {
     }
 
     @Override
-    public int getRaceRounds() {
+    public Round getRaceRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
-        return parseRounds(input);
-    }
-
-    private int parseRounds(String input) {
-        try {
-            int rounds = Integer.parseInt(input);
-            if (rounds <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-            }
-            return rounds;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
-        }
+        return Round.of(input);
     }
 }
