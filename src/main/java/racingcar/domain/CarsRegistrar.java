@@ -11,20 +11,21 @@ import java.util.Set;
 public class CarsRegistrar {
 
     public Cars registerCars(String input) {
-        Set<Car> carsList = new HashSet<>();
+        Set<Car> cars = new HashSet<>();
 
-        for (String carName : getParsedCarNames(input)) {
-            carsList.add(new Car(carName));
+        for (Car car : getParsedCar(input)) {
+            if (!cars.add(car)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+            }
         }
-
-        return new Cars(carsList);
+        return new Cars(cars);
     }
 
-    private static List<String> getParsedCarNames(String carNames) {
-        List<String> result = new ArrayList<>();
+    private static List<Car> getParsedCar(String carNames) {
+        List<Car> result = new ArrayList<>();
         String[] splitWord = carNames.split(",");
         for (String s : splitWord) {
-            result.add(s.trim());
+            result.add(new Car(s.trim()));
         }
         return result;
     }
