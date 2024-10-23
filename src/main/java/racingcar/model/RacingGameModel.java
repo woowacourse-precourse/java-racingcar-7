@@ -7,18 +7,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingGameModel {
 
-    public List<Car> generateCarsFromNames(List<String> carNames) {
-        return carNames.stream()
-                .map(name -> new Car(name, Constant.CAR_SCORE_DEFAULT_VALUE))
-                .toList();
-    }
-
-    public List<String> generateNamesFromCars(List<Car> cars) {
-        return cars.stream()
-                .map(Car::getName)
-                .toList();
-    }
-
     public void attemptMove(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = getRandomNumber();
@@ -40,6 +28,18 @@ public class RacingGameModel {
                 .toList();
 
         return generateNamesFromCars(winners);
+    }
+
+    public List<Car> generateCarsFromNames(List<String> carNames) {
+        return carNames.stream()
+                .map(name -> new Car(name, Constant.CAR_SCORE_DEFAULT_VALUE))
+                .toList();
+    }
+
+    public List<String> generateNamesFromCars(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .toList();
     }
 
     private int getRandomNumber() {
