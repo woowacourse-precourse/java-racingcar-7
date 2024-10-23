@@ -43,7 +43,8 @@ public class CarTest {
         String carNames = "abcdef";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> new Car (carNames, new FixedAcceleration(MOVING_FORWARD.getCriterion())))
+        Assertions.assertThatThrownBy(
+	() -> new Car(carNames, new FixedAcceleration(MOVING_FORWARD.getCriterion())))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
@@ -54,8 +55,23 @@ public class CarTest {
         String carNames = "";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> new Car(carNames, new FixedAcceleration(MOVING_FORWARD.getCriterion())))
+        Assertions.assertThatThrownBy(
+	() -> new Car(carNames, new FixedAcceleration(MOVING_FORWARD.getCriterion())))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_EMPTY.getMessage());
+    }
+
+    @Test
+    void 경기_결과를_출력한다() {
+        // given
+        Car car = new Car("pobi, jack", new FixedAcceleration(MOVING_FORWARD.getCriterion()));
+
+        // when
+        car.move();
+
+        // then
+        assertThat(car.getResult()).isEqualTo(
+            "pobi : -\n" + "jack : -\n"
+        );
     }
 }
