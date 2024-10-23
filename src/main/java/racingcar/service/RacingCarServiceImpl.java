@@ -24,6 +24,7 @@ public class RacingCarServiceImpl implements RacingCarService {
 
             System.out.println(car);
         }
+        System.out.println();
     }
 
     private List<String> getWinners(List<Car> cars) {
