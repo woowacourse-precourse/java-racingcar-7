@@ -51,4 +51,26 @@ public class InputValidatorTest {
         Assertions.assertThatCode(() -> InputValidator.validate(carNames))
             .doesNotThrowAnyException();
     }
+
+    @Test
+    void 시도_횟수가_1_미만일시_예외를_발생한다() {
+        // given
+        int rounds = 0;
+
+        // when % then
+        Assertions.assertThatThrownBy(() -> InputValidator.validate(rounds))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_MINIMUM.getMessage());
+    }
+
+    @Test
+    void 시도_횟수가_숫자가_아니라면_예외를_발생한다() {
+        // given
+        String rounds = "a";
+
+        // when % then
+        Assertions.assertThatThrownBy(() -> InputValidator.validate(rounds))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_NOT_NUMBER.getMessage());
+    }
 }
