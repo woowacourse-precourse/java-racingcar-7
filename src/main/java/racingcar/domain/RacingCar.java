@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.PlayerMaker;
 import racingcar.util.Racing;
 import racingcar.util.RandomNumberMaker;
