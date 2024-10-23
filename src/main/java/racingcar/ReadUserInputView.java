@@ -6,11 +6,17 @@ import static racingcar.TextString.NAME_SEPARATOR;
 public class ReadUserInputView {
     public String[] readCarNames() {
         var carNames = readLine().split(NAME_SEPARATOR.getValue());
+        if (!UserInputValidator.isValidCarName(carNames)) {
+            throw new IllegalArgumentException();
+        }
         return carNames;
     }
 
     public int readTryCount() {
-        var carNames = readLine();
-        return Integer.parseInt(carNames);
+        var tryCount = readLine();
+        if (!UserInputValidator.isValidTryCount(tryCount)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(tryCount);
     }
 }
