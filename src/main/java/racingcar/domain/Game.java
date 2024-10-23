@@ -31,6 +31,17 @@ public class Game {
         }
     }
 
+    public List<Car> findWinners() {
+        int bestRecord = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] Car 리스트가 비어 있습니다."));
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == bestRecord)
+                .collect(Collectors.toList());
+    }
+
     private void readCarsData() {
         InputView.printCarInputMessage();
         List<String> names = StringParser.parseCarName(InputView.readCars());
