@@ -2,28 +2,33 @@ package racingcar.domain;
 
 public class RacingCar {
 
-    public static final int MIN_CAR_NAME_LENGTH = 5;
-    private static int maxDistance = 0;
+    public static final int ID_MIN_LENGTH = 5;
+    private static int winnerDistance = 0;
 
     private final String id;
     private int distance = 0;
 
     public RacingCar(String id) {
-        if (id.length() > MIN_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-        }
+        validateNameLength(id);
         this.id = id;
     }
 
-    public void moveForward() {
-        int nextDistance = ++this.distance;
-        if (nextDistance > maxDistance) {
-            maxDistance = nextDistance;
+    private void validateNameLength(String id) {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
+        }
+        if (id.length() > ID_MIN_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
 
+    public int moveForward() {
+        winnerDistance = Math.max(++distance , winnerDistance);
+        return distance;
+    }
+
     public boolean isWinner() {
-        return this.distance == maxDistance;
+        return distance == winnerDistance;
     }
 
     public String getId() {
@@ -32,6 +37,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return id + " : " + "-".repeat(distance);
+        return id + " : " + "-".repeat(distance) + "\n";
     }
 }
