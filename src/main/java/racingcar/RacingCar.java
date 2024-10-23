@@ -1,12 +1,24 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RacingCar {
 
     public void run() {
         String[] carNames = inputCarName();
         int numberOfAttempts = inputNumberOfAttempts();
+
+        Map<String, Integer> cars = createCar(carNames);
+    }
+
+    public Map<String, Integer> createCar(String[] carNames) {
+        Map<String, Integer> cars = new HashMap<>();
+        for (String name : carNames) {
+            cars.put(name, 0);
+        }
+        return cars;
     }
 
     private String[] inputCarName() {
