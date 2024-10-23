@@ -15,7 +15,7 @@ public class GameManager {
         }
     }
 
-    
+
     //한번의 레이싱
     private List<CarDTO> raceOnce() {
         List<CarDTO> carDTOList = new ArrayList<>();
@@ -33,5 +33,22 @@ public class GameManager {
             racingResult.add(this.raceOnce());
         }
         return racingResult;
+    }
+
+    public List<CarDTO> getWinner() {
+        List<CarDTO> winnerList = new ArrayList<>();
+        int maxSize = 0;
+        for (Car car : this.carList) {
+            if (car.getDistance() > maxSize) {
+                maxSize = car.getDistance();
+                winnerList.clear();
+                winnerList.add(new CarDTO(car.getName(), car.getDistance()));
+            } else if (car.getDistance() == maxSize) {
+                winnerList.add(new CarDTO(car.getName(), car.getDistance()));
+            } else {
+                continue;
+            }
+        }
+        return winnerList;
     }
 }
