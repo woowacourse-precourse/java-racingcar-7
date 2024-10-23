@@ -19,6 +19,9 @@ public class Application {
         for (int i = 0; i < carNum; i++) {
             cars[i] = new Car(carNames[i]);
         }
+
+        whoWin(cars, num, carNum); //실행 결과
+        finalWin(whoMaxWin(cars,carNum)); //최종 우승자 결과
     }
 
     //실행 결과 출력 메서드
