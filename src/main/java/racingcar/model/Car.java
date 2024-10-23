@@ -3,7 +3,7 @@ package racingcar.model;
 import racingcar.exceptions.ValidateError;
 
 public class Car {
-    private String carName;
+    private final String carName;
     private int score;
 
     public Car(String carName) {
