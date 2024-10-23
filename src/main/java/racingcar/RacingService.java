@@ -1,13 +1,35 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
 
 public class RacingService {
     private final String CAR_INPUT_DELIMITER = ",";
+    private final int MOVE_COUNT;
+    private final int INITIAL_POSITION = 0;
+    private final HashMap<String, Integer> CAR_MAP = new HashMap<>();
 
-    public String[] convertCarInputToArray(String input) {
-        return input.split(CAR_INPUT_DELIMITER);
+    public RacingService(String carInput, int moveCount) {
+        this.MOVE_COUNT = moveCount;
+        initializeCarMapFromInput(carInput);
     }
+
+    public void setCarInput(String carInput) {
+        CAR_MAP.clear();
+        initializeCarMapFromInput(carInput);
+    }
+
+    public HashMap<String, Integer> getCarMap() {
+        return CAR_MAP;
+    }
+
+    public void initializeCarMapFromInput(String input) {
+        for (String car : input.split(CAR_INPUT_DELIMITER)) {
+            CAR_MAP.put(car, INITIAL_POSITION);
+        }
+    }
+
+
 
     public int createRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
