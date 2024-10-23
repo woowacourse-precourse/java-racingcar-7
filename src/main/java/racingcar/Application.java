@@ -8,10 +8,10 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = new ArrayList<>();
-        SeparateCarNames(carNames);
+        parseCarNames(carNames);
     }
 
-    public static void SeparateCarNames(ArrayList<String> carNames) {
+    public static void parseCarNames(ArrayList<String> carNames) {
         String[] names = Console.readLine().split(",");
         for (String name : names) {
             name = name.trim();
