@@ -48,6 +48,7 @@ class ApplicationTest extends NsTest {
         assertThat(carList.get(1).getCarName()).isEqualTo("woni");
         assertThat(carList.get(2).getCarName()).isEqualTo("jun");
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
