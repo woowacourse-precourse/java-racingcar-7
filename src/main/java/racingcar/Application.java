@@ -18,12 +18,12 @@ public class Application {
 //우승자 출력하기
 //예외 처리
 class Racingcar {
-    HashMap<String, Integer> carLocation = new HashMap<String, Integer>(); // (자동차 이름: 현재 위치)
+    HashMap<String, Integer> carMove = new HashMap<String, Integer>(); // (자동차 이름: 현재 위치)
     int moveCnt;
 
     void inputCar(final String text) {
         for(final String carName : text.split(",")) {
-            carLocation.put(carName, 0);
+            carMove.put(carName, 0);
         }
     }
 
@@ -31,15 +31,23 @@ class Racingcar {
         moveCnt = cnt;
     }
 
-    void race(HashMap<String, Integer> carLocation) {
-        for(Map.Entry<String, Integer> curCar : carLocation.entrySet()) {
+    void race(HashMap<String, Integer> carMove) {
+        for(Map.Entry<String, Integer> curCar : carMove.entrySet()) {
             curCar.setValue(curCar.getValue() + pickNumberInRange(0, 9)); // 10까지 범위인지를 모르겠음.
         }
     }
 
     void totalRace(final int moveCnt) {
         for (int i = 0; i < moveCnt; i++) {
-            race(carLocation);
+            race(carMove);
+        }
+    }
+
+    void raceResult(HashMap<String, Integer> carLocation) {
+        for(Map.Entry<String, Integer> curCar : carLocation.entrySet()) {
+            String carName = curCar.getKey();
+            int move = curCar.getValue();
+            System.out.println(carName + ":" + "-".repeat(move));
         }
     }
 
