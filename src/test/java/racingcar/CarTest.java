@@ -83,4 +83,24 @@ class CarTest {
         //When, Then
         Assertions.assertThat(car.getMileage()).isEqualTo(expected);
     }
+
+    @Test
+    public void toString_테스트() throws Exception {
+        //Given
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("pobi");
+        for (int i = 0; i < 3; i++) {
+            car2.forwardOrStop(4);
+        }
+        String expected1 = "pobi : ";
+        String expected2 = "pobi : ---";
+
+        //When
+        String actual1 = car1.toString();
+        String actual2 = car2.toString();
+
+        //Then
+        Assertions.assertThat(actual1).isEqualTo(expected1);
+        Assertions.assertThat(actual2).isEqualTo(expected2);
+    }
 }

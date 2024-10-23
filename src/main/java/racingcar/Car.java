@@ -49,4 +49,9 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, mileage);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", name, "-".repeat(mileage));
+    }
 }
