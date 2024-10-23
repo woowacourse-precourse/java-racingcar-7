@@ -38,6 +38,17 @@ public class PlayGame {
         System.out.println();
     }
 
+    public int getMaxDistance(String[] carNames) {
+        int maxDistance = 0;
+        for (String carName : carNames) {
+            int currentDistance = this.carData.get(carName).length();
+            if (currentDistance > maxDistance) {
+                maxDistance = currentDistance;
+            }
+        }
+        return maxDistance;
+    }
+
     public void racingStart(){
         String carName = inputMessage.inputCarName();
         String[] carNames = inputMessage.splitCarName(carName, ",");
@@ -49,5 +60,7 @@ public class PlayGame {
             moveCars(carNames);
             printRaceResult(carNames);
         }
+
+        getMaxDistance(carNames);
     }
 }
