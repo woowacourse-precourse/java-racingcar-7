@@ -5,14 +5,19 @@ import java.util.List;
 
 public class CarNameValidator {
     public void validate(List<String> carNames) {
+        validateEmptyList(carNames);
         validateLengthCarName(carNames);
         validateDuplicationCarName(carNames);
     }
-
+    private void validateEmptyList(List<String> carNames) {
+        if(carNames.isEmpty()) {
+            throw new IllegalArgumentException(",만 입력하시면 안됩니다.");
+        }
+    }
     private void validateLengthCarName(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 빈칸이 아니어야 합니다.");
+            if (carName.isEmpty() || carName.isBlank()) {
+                throw new IllegalArgumentException("자동차 이름은 비어있거나 공백이어서는 안됩니다.");
             }
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
