@@ -15,6 +15,7 @@ public class RacingCar {
 
         for (int i = 0; i < numberOfAttempts; i++) {
             playRound(cars);
+            showRaceProgress(cars);
         }
     }
 
@@ -48,6 +49,18 @@ public class RacingCar {
             if (canMove()) {
                 cars.put(car.getKey(), car.getValue() + 1);
             }
+        }
+    }
+
+    private void showRaceProgress(Map<String, Integer> cars) {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            System.out.print(car.getKey() + " : ");
+            for (int j = 0; j < car.getValue(); j++) {
+                System.out.print("-");
+            }
+            System.out.println();
         }
     }
 }
