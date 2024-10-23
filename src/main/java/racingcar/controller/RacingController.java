@@ -20,11 +20,9 @@ public class RacingController {
     }
 
     public void run() {
-        final CarNameParser carNameParser = new CarNameParser();
-
         outputView.printMessage(ASK_CAR_NAMES);
         String input = inputView.userInput();
-        List<String> carNames = carNameParser.parse(input);
+        List<String> carNames = CarNameParser.parse(input);
 
         outputView.printMessage(ASK_TRY_COUNT);
         int tryCount = Integer.parseInt(inputView.userInput());
