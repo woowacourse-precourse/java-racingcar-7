@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import racingcar.constants.RacingGameConstants;
 import racingcar.view.ErrorMessage;
 
 public class CarNameValidator implements ValidationStrategy {
-    private static final int MINIMUM_CAR_COUNT = 2; // 최소 자동차 수
 
     @Override
     public void validate(String carNames) {
         validateNotNullOrEmpty(carNames);
         List<String> names = splitCarNames(carNames);
-        validateCarNames(names); // 자동차 이름 검증 먼저 수행
-        validateMinimumCarCount(names); // 최소 자동차 수 검증은 나중에 수행
+        validateCarNames(names);
+        validateMinimumCarCount(names);
     }
 
     private void validateNotNullOrEmpty(String carNames) {
@@ -45,7 +45,7 @@ public class CarNameValidator implements ValidationStrategy {
     }
 
     private void validateLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > RacingGameConstants.MAX_CAR_NAME_LENGTH.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG.getMessage());
         }
     }
@@ -57,9 +57,9 @@ public class CarNameValidator implements ValidationStrategy {
     }
 
     private void validateMinimumCarCount(List<String> names) {
-        if (names.size() < MINIMUM_CAR_COUNT) {
+        if (names.size() < RacingGameConstants.MINIMUM_CAR_COUNT.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.MINIMUM_CARS.getMessage());
         }
     }
-}
 
+}

@@ -1,5 +1,6 @@
 package racingcar.validator.strategies;
 
+import racingcar.constants.RacingGameConstants;
 import racingcar.view.ErrorMessage;
 
 public class TryCountValidator implements ValidationStrategy {
@@ -34,7 +35,7 @@ public class TryCountValidator implements ValidationStrategy {
     }
 
     private void checkIfPositive(int count) {
-        if (count <= 0) {
+        if (count <= RacingGameConstants.INITIAL_POSITION.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
     }
