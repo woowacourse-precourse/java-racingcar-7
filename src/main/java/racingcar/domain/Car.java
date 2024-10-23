@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Objects;
 
 public class Car {
     private static final int RANDOM_NUMBER_MIN = 0;
@@ -28,5 +29,19 @@ public class Car {
         if (n >= MOVEMENT_THRESHOLD) {
             distance++;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Car) {
+            Car castedCar = (Car) o;
+            return name.equals(castedCar.getName()) && distance == castedCar.getDistance();
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
     }
 }
