@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.common.ExceptionMessage;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,19 +13,24 @@ public class RacingCarInput {
 
     public List<String> getUserInput() {
         System.out.println(INPUT_NAME_MESSAGE);
-        String nameStr = Console.readLine();
+        String nameStr = Console.readLine().trim();
 
         System.out.println(INPUT_NUMBER_MESSAGE);
         String numberStr;
         try {
-            numberStr = Console.readLine();
+            numberStr = Console.readLine().trim();
         } catch (NoSuchElementException e) {
             Console.close();
-            numberStr = Console.readLine();
+            try {
+                numberStr = Console.readLine().trim();
+            } catch (NoSuchElementException e2) {
+                throw new IllegalArgumentException(ExceptionMessage.NOT_ENOUGH_INPUTS.getMessage());
+            }
         } finally {
             Console.close();
         }
 
+        Validator.validateUserInput(List.of(nameStr, numberStr));
 
         return List.of(nameStr, numberStr);
     }
