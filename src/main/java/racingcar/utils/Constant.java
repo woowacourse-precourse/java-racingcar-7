@@ -11,5 +11,8 @@ public class Constant {
     public static final String CAR_NAME_EMPTY_ERROR_MESSAGE = "한 개 이상의 자동차 이름을 입력해야 합니다.";
     public static final String ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE = "시도할 횟수는 1 이상의 정수이어야 합니다.";
 
+    // 구분자
+    public static final String DELIMITER = ",";
+
     private Constant() {}
 }
