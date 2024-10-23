@@ -7,6 +7,20 @@ public class Application {
         // TODO: 프로그램 구현
         String carNames = readCarNames();
         String tryCount = readTryCount();
+
+        validateCarNames(carNames);
+    }
+
+    static void validateCarNames(String carNames) {
+        for (String carName : carNames.split(",")) {
+            String stripCarName = carName.strip();
+            if (stripCarName.isEmpty()) {
+                throw new IllegalArgumentException("쉼표 이후에 자동차 이름이 존재하지 않습니다");
+            }
+            if (stripCarName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다");
+            }
+        }
     }
 
     static String readCarNames() {
