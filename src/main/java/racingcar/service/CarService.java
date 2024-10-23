@@ -21,7 +21,20 @@ public class CarService {
         carGame.addParticipant(newCar);
     }
 
-    public boolean isAdvance(){
+    public void advanceCars(){
+        for (Car car : carGame.getParticipants()){
+            if(isAdvance()) car.increaseDistance();
+            updateMaxDistance(car);
+        }
+    }
+
+    private void updateMaxDistance(Car car) {
+        if (car.getDistance() >= carGame.getMaxDistance()){
+            carGame.updateMaxDistance(car.getDistance());
+        }
+    }
+
+    private boolean isAdvance(){
         int num = Randoms.pickNumberInRange(0, 9);
         if (num >= 4){
             return true;
