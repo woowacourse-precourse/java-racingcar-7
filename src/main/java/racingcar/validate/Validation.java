@@ -10,4 +10,10 @@ public class Validation {
         }
     }
 
+    public void isInvalidNameLength(String input) {
+        if(input.trim().length() > 5) {
+            throw new IllegalArgumentException(ErrorType.CAR_NAME_LENGTH_ERROR.getMessage());
+        }
+    }
+
 }
