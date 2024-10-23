@@ -29,8 +29,8 @@
     - [ ] method : viewRound
         - [ ] TestCode
 - [ ] Car Class
-  - [ ] variable : name, distance
-  - [ ] method : move, of(create Instance)
+  - [X] variable : name, distance
+  - [X] method : move, of(create Instance)
     - [ ] TestCode
 - [ ] Validator Class
   - [ ] method : validNameLength, validNumber, validCarNameFormat
