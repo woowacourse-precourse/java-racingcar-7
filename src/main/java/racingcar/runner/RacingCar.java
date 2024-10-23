@@ -26,7 +26,16 @@ public class RacingCar {
             .toList();
         rounds = Integer.parseInt(roundString);
 
-        return "";
+        return String.join(", ", this.getWinners());
+    }
+
+    private List<String> getWinners() {
+        this.startRace();
+
+        return cars.stream()
+            .filter(car -> car.getMovementStatus() == this.getMaxMovement())
+            .map(CarDto::getCarName)
+            .toList();
     }
 
     private void startRace() {
