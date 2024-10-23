@@ -9,6 +9,11 @@ public class InputView {
     }
     public int getInputTimes(){
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        try {
+            int result = Integer.parseInt(Console.readLine());
+            return result;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
