@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -33,10 +34,10 @@ public class CarRacing {
     private void startRounds() {
         int trialCount = inputView.inputTrialCount();
 
-        for (int round = 0; round < trialCount; round++) {
+        IntStream.range(0, trialCount).forEach(round -> {
             carList.forEach(Car::moveIfPossible);
             roundList.add(Round.of(carList));
-        }
+        });
     }
 
     private void printResult() {
