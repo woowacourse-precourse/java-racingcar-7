@@ -43,8 +43,8 @@
 ### 유틸
 - 랜덤 숫자 생성하는 기능(메소드명: generateRandomNumber)
 - 랜덤 숫자가 4이상인지 검증하는 기능(메소드명: isMoreFour)
-- 차 이름이 5자 이하인지 검증하는 기능(메소드명: validationCarName)
-- 시도할 횟수 숫자로 받았는지 검증하는 기능(메소드명: validationTryCount)
+- 차 이름이 5자 이하인지 검증하는 기능(메소드명: validateCarName)
+- 시도할 횟수 숫자로 받았는지 검증하는 기능(메소드명: validateTryCount)
 
 ### 컨트롤러
 - 게임 진행 기능(메소드명: run)
