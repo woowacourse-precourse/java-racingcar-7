@@ -9,12 +9,12 @@ public record Cars(
 ) {
 
     public Cars eachGame() {
-        List<Car> result = new ArrayList<>();
+        List<Car> afterEachRaceCars = new ArrayList<>();
         for (Car car : allCar) {
-            Car resultCar = car.updateDistance(car, RandomNumberGenerator.isFollowNumberRule());
-            result.add(resultCar); //네이밍
+            Car updateCar = car.updateDistance(car, RandomNumberGenerator.isFollowNumberRule());
+            afterEachRaceCars.add(updateCar);
         }
-        return new Cars(result);
+        return new Cars(afterEachRaceCars);
     }
 
     public static List<Cars> makeOriginCars(List<String> carNames) {
@@ -24,7 +24,7 @@ public record Cars(
         return result;
     }
 
-    private static int findLongestDistance(List<Car> finalAllCar) {
+    public static int findLongestDistance(List<Car> finalAllCar) {
         int longestDistance = 0;
         for (Car car : finalAllCar) {
             if (car.distance() > longestDistance) {
@@ -32,17 +32,6 @@ public record Cars(
             }
         }
         return longestDistance;
-    }
-
-    public static List<String> findWinnersName(List<Car> finalAllCar) {
-        int longestDistance = findLongestDistance(finalAllCar);
-        List<String> winners = new ArrayList<>();
-        for (Car car : finalAllCar) {
-            if (car.distance() == longestDistance) {
-                winners.add(car.name());
-            }
-        }
-        return winners;
     }
 
     public static String makeResultOutput(List<Car> allCar) {
