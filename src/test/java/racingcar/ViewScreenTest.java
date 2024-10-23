@@ -7,6 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,6 +32,20 @@ public class ViewScreenTest {
         System.setOut(new PrintStream(outputStream));
 
         viewScreen.printRace(name, intDistance);
+        assertEquals(expectedOutput, outputStream.toString().trim());
+        System.setOut(originalOut);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"pobi;최종 우승자 : pobi", "pobi,woni,elly;최종 우승자 : pobi, woni, elly",
+            "pobi,woni,elly,a,b,c,d;최종 우승자 : pobi, woni, elly, a, b, c, d"}, delimiter = ';')
+    void 우승자_출력(String namesString, String expectedOutput) {
+        List<String> nameList = Arrays.asList(namesString.split(","));
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        viewScreen.printWinner(nameList);
         assertEquals(expectedOutput, outputStream.toString().trim());
         System.setOut(originalOut);
     }
