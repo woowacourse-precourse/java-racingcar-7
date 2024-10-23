@@ -1,9 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Racing {
-//    ### 2. 시도할 횟수 입력받기
 //    ### 3. 무작위 값 생성하기
 //    ### 4. 생성된 랜덤수를 통한 전진여부 판단하기
 //    ### 5. 최종 우승자 확인후 출력하기
@@ -26,6 +26,10 @@ public class Racing {
         return input.split(",");
     }
 
+    // # 3. 무작위 값 생성하기
+    public int randomGenerator(){
+        return Randoms.pickNumberInRange(0,9);
+    }
 
 
 }
