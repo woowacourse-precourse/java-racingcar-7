@@ -5,7 +5,7 @@ import java.util.List;
 public class InputValidator {
 
     public List<String> validateCarNames(String userInput) {
-        List<String> carNames = List.of(userInput.split(Constant.DELIMITER));
+        List<String> carNames = List.of(userInput.split(Constant.INPUT_DELIMITER));
 
         validateNameLength(carNames);
         validateNameEmpty(carNames);
