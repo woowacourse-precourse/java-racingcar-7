@@ -16,12 +16,23 @@ public class Application {
 
     public static class Car {
         final String name;
+        int movedAmount;
 
         public Car(String name) {
             this.name = name;
+            this.movedAmount = 0;
         }
 
         public void run() {
+            int randomNumber = Utils.generateRandomValue();
+
+            if(Utils.checkMoveCondition(randomNumber)) {
+                moveForward();
+            }
+        }
+
+        private void moveForward(){
+            ++movedAmount;
         }
     }
 
@@ -101,6 +112,10 @@ public class Application {
     public static class Utils {
         public static int generateRandomValue() {
             return pickNumberInRange(0, 9);
+        }
+
+        public static boolean checkMoveCondition(int randomNum) {
+            return randomNum >= 4;
         }
     }
 }
