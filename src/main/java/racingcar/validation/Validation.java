@@ -44,7 +44,7 @@ public class Validation {
     }
 
     public static void validateRacingGameCount(int racingGameCount){
-        if(racingGameCount < 0){
+        if(racingGameCount <= 0){
             ErrorView.printRacingGameCountErrorMessage();
             throw new IllegalArgumentException();
         }
@@ -56,6 +56,5 @@ public class Validation {
             throw new IllegalArgumentException();
         }
     }
-
 
 }

@@ -22,6 +22,10 @@ public class Racingcar {
         printRacingcarStep();
     }
 
+    private void printRacingcarStep(){
+        OutputView.printRacingCarStepResultMessage(name, getStepString());
+    }
+
     private String getStepString(){
         StringBuilder stepString = new StringBuilder();
         for(int i = 0; i < step; i++){
@@ -29,10 +33,5 @@ public class Racingcar {
         }
         return stepString.toString();
     }
-
-    private void printRacingcarStep(){
-        OutputView.printRacingCarStepResultMessage(name, getStepString());
-    }
-
 }
 
