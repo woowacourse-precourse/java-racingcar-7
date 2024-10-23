@@ -32,8 +32,8 @@
 
 ## 구현 기능 목록
 1. 입력 값 추출
-   - [] camp.nextstep.edu.missionutils에서 제공하는 Console API 사용
-   - [] 경주할 자동차 이름 입력하기
+   - [o] camp.nextstep.edu.missionutils에서 제공하는 Console API 사용
+   - [o] 경주할 자동차 이름 입력하기
    - [] 시도할 횟수 입력하기
 2. 입력된 문자열 분리
    - [] 쉼표(,)를 기준으로 구분
