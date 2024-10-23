@@ -88,6 +88,28 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void checkMoveConditionTest() {
+        assertSimpleTest(
+                () -> {
+                    assertThat(Application.Utils.checkMoveCondition(4)).isEqualTo(true);
+                }
+        );
+    }
+
+    @Test
+    void runTest() {
+        Application.Car car = new Application.Car("testCar");
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    car.run();
+                    assertThat(car.movedAmount).isEqualTo(1);
+                },
+                MOVING_FORWARD
+        );
+    }
+
 
     @Override
     public void runMain() {
