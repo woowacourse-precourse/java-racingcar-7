@@ -17,6 +17,7 @@ public class InputView {
     private static final String CAR_NUMBER_ERROR_MESSAGE = "자동차는 2개 이상을 입력해야 합니다.";
     private static final String TRY_COUNT_NOT_NUMBER_ERROR_MESSAGE = "시도 횟수는 숫자를 입력해야 합니다.";
     private static final String TRY_COUNT_NUMBER_ZERO_ERROR_MESSAGE = "시도 횟수는 0보다 큰 숫자를 입력해야 합니다.";
+    private static final String TRY_COUNT_NUMBER_MINUS_ERROR_MESSAGE = "시도 횟수는 양수를 입력해야 합니다.";
 
     private static final String DELIMITER = ",";
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
@@ -37,6 +38,7 @@ public class InputView {
         String input = Console.readLine();
         validateTryCountNumber(input);
         validateTryCountZero(input);
+        validateTryCountMinusNumber(input);
         return Integer.parseInt(input);
     }
 
@@ -49,6 +51,12 @@ public class InputView {
     private static void validateTryCountZero(final String input) {
         if(Integer.parseInt(input) == 0) {
             throw new IllegalArgumentException(TRY_COUNT_NUMBER_ZERO_ERROR_MESSAGE);
+        }
+    }
+
+    private static void validateTryCountMinusNumber(final String input) {
+        if(Integer.parseInt(input) < 0) {
+            throw new IllegalArgumentException(TRY_COUNT_NUMBER_MINUS_ERROR_MESSAGE);
         }
     }
 
