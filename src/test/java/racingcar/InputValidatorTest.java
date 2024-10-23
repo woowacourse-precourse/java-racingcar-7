@@ -53,14 +53,24 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 시도_횟수가_1_미만일시_예외를_발생한다() {
+    void 시도_횟수가_비어있다면_예외를_발생한다() {
         // given
-        int rounds = 0;
+        String rounds = "";
 
         // when % then
-        Assertions.assertThatThrownBy(() -> InputValidator.validate(rounds))
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ROUND_NUMBER_MINIMUM.getMessage());
+            .hasMessage(ROUNDS_EMPTY.getMessage());
+    }
+    @Test
+    void 시도_횟수가_1_미만일시_예외를_발생한다() {
+        // given
+        String rounds = "0";
+
+        // when % then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUNDS_LESS_THAN_ONE.getMessage());
     }
 
     @Test
@@ -69,8 +79,8 @@ public class InputValidatorTest {
         String rounds = "a";
 
         // when % then
-        Assertions.assertThatThrownBy(() -> InputValidator.validate(rounds))
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRound(rounds))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(ROUND_NUMBER_NOT_NUMBER.getMessage());
+            .hasMessage(ROUNDS_NOT_NUMBER.getMessage());
     }
 }
