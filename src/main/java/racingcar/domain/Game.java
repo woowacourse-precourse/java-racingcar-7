@@ -18,6 +18,7 @@ public class Game {
     }
 
     public void doGame() {
+        OutputView.printExecutionResultMessage();
         while (moveNumber > 0) {
             move();
             moveNumber--;
