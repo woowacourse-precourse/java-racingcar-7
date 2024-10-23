@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.validation.Validation;
+import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public class RacingGame {
         Validation.validateRacingGameCount(racingCount);
         for(int i = 0;  i < racingCount; i++){
             startGameRound();
+            OutputView.printRacingGameRoundEndBlankLine();
         }
     }
 

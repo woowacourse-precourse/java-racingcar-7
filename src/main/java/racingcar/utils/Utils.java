@@ -14,7 +14,10 @@ public class Utils {
     }
 
     private static String[] splitStringToArray(String input){
-        return input.split(DELIMITER);
+        return Arrays.stream(input.split(DELIMITER))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toArray(String[]::new);
     }
 
     public static int getRandomNumber(){
