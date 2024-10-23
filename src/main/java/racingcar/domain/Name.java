@@ -28,4 +28,9 @@ public class Name {
             throw new IllegalArgumentException(OUT_OF_NAME_LENGTH.getMessage());
         }
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

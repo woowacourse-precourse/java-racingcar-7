@@ -3,11 +3,11 @@ package racingcar.domain;
 import static racingcar.exception.ExceptionMessage.ILLEGAL_POSITION;
 
 public class Position {
-    private int position;
+    private int value;
 
-    public Position(int position) {
-        validatePosition(position);
-        this.position = position;
+    public Position(int value) {
+        validatePosition(value);
+        this.value = value;
     }
 
     private void validatePosition(int position) {
@@ -21,10 +21,10 @@ public class Position {
     }
 
     public void forward(){
-        position++;
+        value++;
     }
 
-    public int getPosition(){
-        return position;
+    public int getValue(){
+        return value;
     }
 }
