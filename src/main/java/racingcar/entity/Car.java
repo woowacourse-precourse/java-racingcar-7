@@ -8,25 +8,25 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
-    private Integer cnt;
+    private Long cnt;
 
     public Car(String name) {
         this.name = name;
-        this.cnt = 0;
+        this.cnt = 0L;
     }
 
-    public Car(String name, Integer cnt) {
+    public Car(String name, Long cnt) {
         this.name = name;
         this.cnt = cnt;
     }
 
     // 랜덤값에 따라 전진하는지 멈추는 기능
-    public Integer move() {
+    public Long move() {
 
         // 랜덤 값을 강제로 지정하게 하고 싶은데
         int randomNum = Randoms.pickNumberInRange(0, 9);
 
-        if (randomNum <= 4) {
+        if (randomNum < 4) {
             return this.cnt;
         }
         this.cnt += 1;
@@ -36,14 +36,20 @@ public class Car {
 
     // 현재 현황을 스트링으로 표현하는 기능
     public String print() {
-        String status = MOVING.repeat(cnt);
-        String output = this.name + " : " + status;
-        System.out.println(output);
+        StringBuilder output = new StringBuilder(name + " : ");
 
-        return output;
+        long repeat = 0L;
+        while (repeat < this.cnt) {
+            output.append(MOVING);
+            repeat++;
+        }
+        output.append("\n");
+        System.out.print(output);
+
+        return output.toString();
     }
 
-    public boolean isMaxMove(Integer maxCnt) {
+    public boolean isMaxMove(Long maxCnt) {
         return cnt.equals(maxCnt);
     }
 

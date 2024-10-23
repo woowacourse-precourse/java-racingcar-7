@@ -8,16 +8,16 @@ import java.util.StringJoiner;
 public class CarList {
 
     private final List<Car> cars;
-    private Integer maxMoveCnt;
+    private Long maxMoveCnt;
 
     public CarList() {
         this.cars = new ArrayList<>();
-        this.maxMoveCnt = 0;
+        this.maxMoveCnt = 0L;
     }
 
     public CarList(List<Car> cars) {
         this.cars = cars;
-        this.maxMoveCnt = 0;
+        this.maxMoveCnt = 0L;
     }
 
     public void add(String name) {
@@ -28,7 +28,7 @@ public class CarList {
     // 모든 자동차들을 움직이게 합니다.
     public void moveAll() {
         for (Car car : cars) {
-            Integer moveCnt = car.move();
+            Long moveCnt = car.move();
             maxMoveCnt(moveCnt);
         }
     }
@@ -42,14 +42,14 @@ public class CarList {
     }
 
     // 현재 자동차 중 제일 많이 움직인 값을 반환합니다.
-    public void maxMoveCnt(Integer moveCnt) {
+    public void maxMoveCnt(Long moveCnt) {
         if (this.maxMoveCnt < moveCnt) {
             this.maxMoveCnt = moveCnt;
         }
     }
 
     // 제일 많이 움직인 자동차들을 반환합니다.
-    public Winners getWinners() {
+    public Winners toWinners() {
         List<Car> winnerList = cars.stream()
                 .filter(car -> car.isMaxMove(this.maxMoveCnt))
                 .toList();
