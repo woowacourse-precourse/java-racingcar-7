@@ -46,6 +46,8 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수이어야 합니다.");
         }
 
+        final int playTimes = Integer.parseInt(playTimesInput);
+
         final int randomNumber = Randoms.pickNumberInRange(0, 9);
     }
 }
