@@ -18,7 +18,7 @@ public class RacingCarRunner {
     }
 
     public void start() {
+        System.out.println("\n실행 결과");
         game.start();
-        game.printWinner();
     }
 }

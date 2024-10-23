@@ -4,45 +4,56 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.creator.RacingCarGameCreator;
 import racingcar.domain.RacingCar;
+import racingcar.runner.Output;
 
 public class RacingCarGame {
 
+    private final Output out = new Output();
     private final List<RacingCar> carList;
-    private final int numOfAttempts;
+    private final int totalRound;
 
     public RacingCarGame(RacingCarGameCreator creator) {
         this.carList = creator.getCarList();
-        this.numOfAttempts = creator.getNumOfAttempts();
+        this.totalRound = creator.getTotalRound();
     }
 
     public void start() {
-        StringBuilder sb = new StringBuilder("\n");
-        sb.append("실행 결과\n");
-        int cnt = 0;
-        while (cnt < numOfAttempts) {
-            carList.forEach(car -> {
-                int random = Randoms.pickNumberInRange(0, 9);
-                if (random >= 4) {
-                    car.moveForward();
-                }
-                sb.append(car + "\n");
-            });
-            sb.append("\n");
-            cnt++;
+        int round = 0;
+        while (round++ < totalRound) {
+            raceOneRound();
         }
-        System.out.print(sb);
+        printWinner();
     }
 
-    public void printWinner() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("최종 우승자 : ");
-        carList.forEach(car -> {
-            if (car.isWinner()) {
-                sb.append(car.getId());
-                sb.append(", ");
-            }
-        });
-        sb.append("\b\b");
-        System.out.println(sb);
+    private void raceOneRound() {
+        for (RacingCar car : carList) {
+            moveOrNot(car);
+        }
+        out.newLine();
+    }
+
+    private void moveOrNot(RacingCar car) {
+        if (isMovable()) {
+            car.moveForward();
+        }
+        out.add(car);
+    }
+
+    private boolean isMovable() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    private void printWinner() {
+        out.add("최종 우승자 : ");
+        for (RacingCar racingCar : carList) {
+            determineWinner(racingCar);
+        }
+        out.print();
+    }
+
+    private void determineWinner(RacingCar car) {
+        if (car.isWinner()) {
+            out.addWinner(car);
+        }
     }
 }
