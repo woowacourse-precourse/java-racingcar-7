@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
@@ -26,9 +27,11 @@ public class Racing {
 
         List<Car> cars = carRepository.findAll();
 
+        System.out.println("실행 결과");
         for (int i = 0; i < number; i++) {
             for (Car car : cars) {
                 car.moveOrStop();
+                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
             }
         }
 
