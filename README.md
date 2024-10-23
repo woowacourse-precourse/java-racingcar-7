@@ -1,24 +1,30 @@
 # java-racingcar-precourse
+# 자동차 경주 racing
 
-## racing package
-1. Application class
-    + static void main()
-        + 기능 : 시작점
-    + void racingcar(String[] carNames)
-        + 기능 : racing진행
-        + car의 최대 value값 max변수 관리
+----------------------
 
-2. Input class
-    + String[] input()
-        + 기능 : 입력을 담당하는 함수
-          input : X | output : String[] carNames
-    + String check()
+## 기능 요구 사항
+1. 자동차 개수, 이름, 실행 횟수 입력
+2. 실행 횟수마다 진행사항 출력
+3. 마지막 승자 출력
 
-3. Car class
-    + public Car() : constructor
-        + 기능 : init Car
-    + public void update(int updateValue)
-        + 확률 계산하여  
-          updateValue만큼 value값 증가
-    + public String getName()
-    + public int getValue()
+## 주요 기능 분리
+1. 입력받기
+2. 입력 처리(문자열 분리, 문자열 오류 확인)
+3. 자동차 Car 구현
+4. 진행사항 구현
+5. 결과 확인 밑 출력
+
+## 입출력 요구 사항
+### 입력  
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)  
+  name1,name2,name3  
+실행할 횟수는 몇 회인가요?  
+  3  
+### 출력  
+실행 결과  
+name1 : -  
+name2 : ---  
+name3 : --  
+
+최종 우승자 : name3
