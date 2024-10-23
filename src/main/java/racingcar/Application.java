@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
@@ -36,19 +35,27 @@ public class Application {
             throw new IllegalArgumentException();
         }
         carNames.replaceAll(s -> s + " : ");
-        
+
         for (int i = 0; i < attempts; i++) {
-            for (int j = 0; j < carNames.size(); j++) {
-                int ranNum = Randoms.pickNumberInRange(0, 9);
-                if (ranNum >= 4) {
-                    String updateName = carNames.get(j) + "-";
-                    carNames.set(j, updateName);
-                }
-            }
-            for (String name : carNames) {
-                System.out.println(name);
-            }
-            System.out.println();
+            moveCar(carNames);
+            printRaceState(carNames);
         }
+    }
+
+    public static void moveCar(ArrayList<String> carNames) {
+        for (int j = 0; j < carNames.size(); j++) {
+            int ranNum = Randoms.pickNumberInRange(0, 9);
+            if (ranNum >= 4) {
+                String updateName = carNames.get(j) + "-";
+                carNames.set(j, updateName);
+            }
+        }
+    }
+
+    public static void printRaceState(ArrayList<String> carNames) {
+        for (String name : carNames) {
+            System.out.println(name);
+        }
+        System.out.println();
     }
 }
