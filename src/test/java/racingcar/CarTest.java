@@ -19,4 +19,16 @@ public class CarTest {
         // then
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void 무작위_값이_4_미만이라면_거리는_변하지_않는다() {
+        // given
+        Car car = new Car("pobi");
+
+        // when
+        car.move(3);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
