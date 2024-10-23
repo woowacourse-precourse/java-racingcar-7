@@ -9,6 +9,7 @@ public class Car {
     private static final int PICK_NUMBER_IN_RANGE_MAX = 9;
     private static final int FORWARD_STANDARD = 4;
     private static final int CAR_SPEED = 1;
+
     private final String carName;
     private int position = 0;
 

@@ -20,11 +20,9 @@ public class RacingCarService {
             String states = racingCars.getStates();
             outputView.printRacingCarsState(states);
         }
-        this.ending(outputView);
     }
 
-    private void ending(OutputView outputView) {
-        String winners = racingCars.getWinners();
-        outputView.printWinners(winners);
+    public String getWinners() {
+        return racingCars.getWinners();
     }
 }

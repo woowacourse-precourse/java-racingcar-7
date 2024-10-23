@@ -8,8 +8,6 @@ public class RacingCarController {
     private final OutputView outputView;
     private final InputView inputView;
 
-    private RacingCarService racingCarService;
-
     public RacingCarController() {
         outputView = new OutputView();
         inputView = new InputView();
@@ -18,9 +16,15 @@ public class RacingCarController {
     public void start() {
         String readCarNames = getCarNames();
         String readNumberOfAttempts = getNumberOfAttempts();
-        racingCarService = new RacingCarService(readCarNames,readNumberOfAttempts);
+        RacingCarService racingCarService = new RacingCarService(readCarNames, readNumberOfAttempts);
         outputView.printResultMessage();
         racingCarService.play(outputView);
+        printResult(racingCarService);
+    }
+
+    private void printResult(RacingCarService racingCarService) {
+        String winners = racingCarService.getWinners();
+        outputView.printWinners(winners);
     }
 
     private String getNumberOfAttempts() {
