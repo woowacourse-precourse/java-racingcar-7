@@ -17,12 +17,17 @@ public class RaceService {
         }
     }
 
-    public void setCarList(List<Car> carList) {
+    public void initialize(int numOfStages, List<Car> carList) {
+        this.numOfStages = numOfStages;
         this.carList = carList;
     }
 
-    public void setNumOfStages(int numOfStages) {
-        this.numOfStages = numOfStages;
+    public int getNumOfStages() {
+        return this.numOfStages;
+    }
+
+    public List<Car> getCarList() {
+        return this.carList;
     }
 
     public List<Car> getCarList(UserInputDTO userInputDTO) {

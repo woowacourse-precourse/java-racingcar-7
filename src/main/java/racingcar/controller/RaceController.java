@@ -14,12 +14,10 @@ public class RaceController {
         this.raceService = raceService;
     }
 
-    // 프로그램 시작 메소드
     public void raceStart() {
         UserInputDTO userInputDTO = InputView.getUserInput();
-        raceService.setNumOfStages(userInputDTO.numOfStages());
-        raceService.setCarList(InputParser.getCarList(userInputDTO));
+        raceService.initialize(userInputDTO.numOfStages(), InputParser.getCarList(userInputDTO));
         raceService.raceStart();
-//        OutputView.showResult(userInputDTO.numOfStages(), raceService.getCarList(userInputDTO));
+        OutputView.showResult(this.raceService.getNumOfStages(), this.raceService.getCarList());
     }
 }

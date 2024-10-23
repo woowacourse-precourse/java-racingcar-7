@@ -2,6 +2,7 @@ package racingcar.util;
 
 import racingcar.domain.Car;
 import racingcar.dto.UserInputDTO;
+import racingcar.exception.Validator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,10 @@ public class InputParser {
     public static List<Car> getCarList(UserInputDTO userInputDTO) {
         List<String> carNames = getCarNames(userInputDTO.names());
         return carNames.stream()
-                .map(carName -> new Car(carName, userInputDTO.numOfStages()))
+                .map(carName -> {
+                    Validator.checkNameLen(carName);
+                    return new Car(carName, userInputDTO.numOfStages());
+                })
                 .collect(Collectors.toList());
     }
 
