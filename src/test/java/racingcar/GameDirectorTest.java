@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 
 class GameDirectorTest {
     @Test
@@ -11,7 +13,7 @@ class GameDirectorTest {
         String count = "5";
         GameDirector gameDirector = new GameDirector(carNames,count);
         //when //then
-        gameDirector.run();
-        gameDirector.printWinner();
+        List<Car> matchResult = gameDirector.run();
+        gameDirector.printWinner(matchResult);
     }
 }

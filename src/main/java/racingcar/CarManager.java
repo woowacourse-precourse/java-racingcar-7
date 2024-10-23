@@ -22,7 +22,7 @@ public class CarManager {
                 .forEach(list::add);
     }
 
-    public void moveCars(int count) {
+    public List<Car> moveCars(int count) {
         for (int i = 0; i < count; i++) {
             for (Car car : this.getList()) {
                 int randomNum = Randoms.pickNumberInRange(0, 9);
@@ -31,23 +31,28 @@ public class CarManager {
             }
             Printer.newLine();
         }
+        return this.getList();
     }
 
-    public List<String> getWinner() {
-        int maxPosition = getMaxPosition();
-        List<String> winnerList = getList().stream()
+    public String getWinner(List<Car> matchResult) {
+        int maxPosition = getMaxPosition(matchResult);
+        List<String> winnerList = matchResult.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
-        return winnerList;
+
+        if (winnerList.size() == 1) {
+            return winnerList.getFirst();
+        }
+        return String.join(DELIMITER, winnerList);
     }
 
     public List<Car> getList() {
         return list;
     }
 
-    private int getMaxPosition() {
-        List<Car> sortedList = new ArrayList<>(this.list);
+    private int getMaxPosition(List<Car> matchResult) {
+        List<Car> sortedList = new ArrayList<>(matchResult);
         sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
         return sortedList.getFirst().getPosition();
     }

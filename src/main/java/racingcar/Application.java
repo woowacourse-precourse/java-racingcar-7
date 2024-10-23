@@ -16,7 +16,7 @@ public class Application {
 
         GameDirector gameDirector = new GameDirector(carNames, count);
         Printer.print(SystemMessage.RESULT_MESSAGE);
-        gameDirector.run();
-        gameDirector.printWinner();
+        List<Car> matchResult = gameDirector.run();
+        gameDirector.printWinner(matchResult);
     }
 }
