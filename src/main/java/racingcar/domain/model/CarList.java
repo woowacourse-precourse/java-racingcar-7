@@ -19,7 +19,7 @@ public class CarList {
 	}
 
 	public Car getCar(int index) {
-		if (index < 0 || index > getCount()) {
+		if (index < 0 || index >= getCount()) {
 			throw new IllegalArgumentException(ErrorMessage.CAR_LIST_INDEX_ERROR.getMessage());
 		}
 		return cars.get(index);
