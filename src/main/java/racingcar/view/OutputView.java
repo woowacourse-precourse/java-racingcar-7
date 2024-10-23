@@ -6,7 +6,7 @@ import static racingcar.util.Message.OUTPUT_WINNER;
 
 import java.util.List;
 import racingcar.dto.OutputDTO;
-import racingcar.model.CarRacer;
+import racingcar.model.RacingCar;
 
 public class OutputView {
 
@@ -22,10 +22,10 @@ public class OutputView {
         }
     }
 
-    public void displayRaceResult(int currentTrial, List<CarRacer> allRacers) {
-        allRacers.forEach(carRacer -> {
-            String name = carRacer.getName();
-            String currentMoves = ONE_MOVE.repeat(carRacer.getCurrentMoveCount(currentTrial));
+    public void displayRaceResult(int currentTrial, List<RacingCar> allRacers) {
+        allRacers.forEach(racingCar -> {
+            String name = racingCar.getName();
+            String currentMoves = ONE_MOVE.repeat(racingCar.getCurrentMoveCount(currentTrial));
 
             System.out.printf("%s : %s\n", name, currentMoves);
         });
