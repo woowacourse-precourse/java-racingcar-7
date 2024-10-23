@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -24,9 +25,9 @@ public class GameContext {
 
     public static GameContext getGameContext(String playerNameInput, int round) {
         List<Player> players = new ArrayList<>();
-        for (String playerName : playerNameInput.split(",")) {
-            players.add(new Player(playerName, () -> Randoms.pickNumberInRange(0, 9)));
-        }
+        Arrays.stream(playerNameInput.split(","))
+                .map(s-> new Player(s, ()->Randoms.pickNumberInRange(0, 9)))
+                .forEach(players::add);
         return new GameContext(players, round);
     }
 
