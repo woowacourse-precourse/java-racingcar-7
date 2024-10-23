@@ -106,3 +106,23 @@ readLine();
 import camp.nextstep.edu.missionutils.Randoms;
 pickNumberInRange();
 ```
+
+# 오류
+## 10/22
+저번 주에는 vscode에서 개발을 진행하였으나 느린 속도에 inteliJ에서 개발을 진행하는 중인데 오류가 발생하였다.<br>
+![](./img/inteliJ.png)<br>
+inteliJ에서 한글 인코딩이 깨지는 문제가 발생하였다.<br>
+다양한 해결법을 찾아 보았으나, 한글이 되는 경우가 없었다.<br>
+1. vmoptions (X)
+2. console- default encoder (X)
+3. file encoder (X)
+4. 실행파일 vmoptions (X)
+
+혹시나 해 vscode에서 돌려보았다.<br>
+![](./img/vscode.png)<br>
+역시 정상 출력하였다.
+
+## 10/23
+![](./img/build.png)<br>
+빌드를 기본 값인 gradle에서 하는 것이 아닌 intelliJ의 터미널에서 돌림으로써 해결했다.<br>
+![](./img/clear.png)<br>
