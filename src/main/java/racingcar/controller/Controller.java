@@ -25,9 +25,13 @@ public class Controller {
     }
 
     private void racing(RacingCar racingCar ,int count) {
+        output.printExecutionResult();
         for (int i = 0; i < count; i++) {
             List<Player> playerList = racingCar.racing();
-            output.printRacingResult(playerList);
+            for (Player player : playerList) {
+                output.printRacingResult(player.getName(), player.getScore());
+            }
         }
+        output.printWinner(racingCar.createWinner());
     }
 }

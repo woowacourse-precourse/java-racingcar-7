@@ -1,16 +1,13 @@
 package racingcar.view;
 
-import racingcar.domain.Player;
-
-import java.util.List;
-
 public class OutputView {
 
-    public void printRacingResult(List<Player> players) {
+    public void printExecutionResult() {
         System.out.println("실행 결과");
-        for (Player player : players) {
-            System.out.println(player.getName() + " : " + "-".repeat(player.getScore()));
-        }
+    }
+
+    public void printRacingResult(String name, int score) {
+        System.out.println(name + " : " + "-".repeat(score));
     }
 
     public void printWinner(String winner) {
