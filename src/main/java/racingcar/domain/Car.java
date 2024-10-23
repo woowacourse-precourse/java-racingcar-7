@@ -42,4 +42,12 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
