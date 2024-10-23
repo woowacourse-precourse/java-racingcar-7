@@ -1,9 +1,15 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    private final int position;
+    private static final int PICK_NUMBER_IN_RANGE_MIN = 0;
+    private static final int PICK_NUMBER_IN_RANGE_MAX = 9;
+    private static final int FORWARD_STANDARD = 4;
+    private static final int CAR_SPEED = 1;
     private final String carName;
+    private int position;
 
     public Car(String name) {
         validationEmptyName(name);
@@ -21,6 +27,13 @@ public class Car {
     private void validationNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
+        }
+    }
+
+    public void randomMove() {
+        int random = Randoms.pickNumberInRange(PICK_NUMBER_IN_RANGE_MIN, PICK_NUMBER_IN_RANGE_MAX);
+        if(random >= FORWARD_STANDARD) {
+            this.position += CAR_SPEED;
         }
     }
 }

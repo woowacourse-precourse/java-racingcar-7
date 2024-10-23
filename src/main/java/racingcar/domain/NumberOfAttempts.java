@@ -5,6 +5,7 @@ public class NumberOfAttempts {
     private static final int MAX_ATTEMPTS = 20;
 
     private final int numberOfAttempts;
+
     public NumberOfAttempts(String readNumberOfAttempts) {
         int numberOfAttempts = integerParsing(readNumberOfAttempts);
         validationNumberOfAttempts(numberOfAttempts);
@@ -27,4 +28,9 @@ public class NumberOfAttempts {
             throw new IllegalArgumentException("[ERROR] 시도할 횟수는 " + MAX_ATTEMPTS + "이하만 가능합니다.");
         }
     }
+
+    public int getNumberOfAttempts() {
+        return numberOfAttempts;
+    }
+
 }

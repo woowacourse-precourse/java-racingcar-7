@@ -11,4 +11,11 @@ public class RacingCarService {
         racingCars = new RacingCars(readCarNames);
         numberOfAttempts = new NumberOfAttempts(readNumberOfAttempts);
     }
+
+    public void play() {
+        int count = this.numberOfAttempts.getNumberOfAttempts();
+        for (int i = 0; i < count; i++) {
+            racingCars.move();
+        }
+    }
 }
