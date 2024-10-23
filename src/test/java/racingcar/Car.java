@@ -15,4 +15,10 @@ public class Car {
     public int getDistance() {
         return distance;
     }
+
+    public void moveOrStay(int randomNumber) {
+        if (randomNumber >= 4) {
+            distance++;
+        }
+    }
 }
