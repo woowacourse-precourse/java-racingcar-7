@@ -26,8 +26,8 @@ public class Car {
         return format("%s : %s", name, myProgress.toString());
     }
 
-    public void updateProgress(final int moveDistance) {
-        myProgress.updatePositionBy(moveDistance);
+    public void updateProgress() {
+        myProgress.updatePosition();
         myProgress.updateRemainingLap();
     }
 }

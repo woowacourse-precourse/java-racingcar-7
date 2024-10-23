@@ -4,10 +4,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.helper.ReflectionUtil.forceSetField;
 
 import java.math.BigInteger;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.common.config.AppConfig;
 
 public class MyProgressTest {
+
+    @AfterEach
+    void resetProfile() {
+        AppConfig.resetProfile();
+    }
 
     @Test
     @DisplayName("Lap을 모두 완주한 경우")
@@ -39,13 +46,16 @@ public class MyProgressTest {
     @DisplayName("총 5바퀴 중 3바뀌 남았을 때")
     void test() {
         // given
+        AppConfig.setTestProfileWithValue("4");
+
         Lap remainingLap = Lap.of(BigInteger.valueOf(3));
         Position position = Position.initiate();
         forceSetField(position, "value", "---");
+
         MyProgress myProgress = MyProgress.initiate(remainingLap, position);
         // when
         myProgress.updateRemainingLap();
-        myProgress.updatePositionBy(1);
+        myProgress.updatePosition();
         // then
         assertThat(myProgress.toString()).isEqualTo("----");
     }

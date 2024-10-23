@@ -84,7 +84,7 @@
 
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
-|        |           |             |                |
+| move   | -         | void        | DONE ✅         |
 
 <br>
 
@@ -117,9 +117,10 @@
 
 ### 6. Position
 
-| Method | Parameter | Return Type | Implementation |
-|--------|-----------|-------------|----------------|
-| add    | int       | void        | Done ✅         |
+| Method               | Parameter | Return Type | Implementation |
+|----------------------|-----------|-------------|----------------|
+| add                  | int       | void        | Done ✅         |
+| generateNextPosition | int       | void        | Done ✅         |
 
 <br>
 

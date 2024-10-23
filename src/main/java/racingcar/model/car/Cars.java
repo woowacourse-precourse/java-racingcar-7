@@ -7,12 +7,21 @@ import racingcar.common.exception.ShouldNotBeNullException;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(final List<Car> cars) {
-        validateNullObj(cars);
+    public static Cars of(final List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    private Cars(final List<Car> cars) {
+        validateIsNotNull(cars);
         this.cars = cars;
     }
 
-    private void validateNullObj(final List<Car> cars) {
+    public void move() {
+        cars.forEach(Car::updateProgress);
+    }
+
+
+    private void validateIsNotNull(final List<Car> cars) {
         boolean matched = cars.stream().anyMatch(Objects::isNull);
         if (matched) {
             throw new ShouldNotBeNullException();

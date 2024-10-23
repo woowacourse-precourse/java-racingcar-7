@@ -2,6 +2,8 @@ package racingcar.model.race;
 
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
+import racingcar.model.car.MovementCondition;
+
 public class MyProgress {
     private final Lap remainingLap;
     private final Position position;
@@ -20,7 +22,8 @@ public class MyProgress {
     }
 
 
-    public void updatePositionBy(final int moveDistance) {
+    public void updatePosition() {
+        int moveDistance = MovementCondition.getDistance();
         position.add(moveDistance);
     }
 

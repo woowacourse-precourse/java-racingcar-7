@@ -21,10 +21,15 @@ public class Position {
         if (moveDistance == NO_MOVEMENT) {
             return;
         }
+        this.value = generateNextPosition(moveDistance);
+    }
+
+    // TODO : Util로 가져가야 할까?
+    private String generateNextPosition(final int moveDistance) {
         StringBuilder positionBuilder = new StringBuilder(this.value);
         IntStream.range(0, moveDistance)
                 .forEach(idx -> positionBuilder.append(POSITION_ICON));
-        this.value = positionBuilder.toString();
+        return positionBuilder.toString();
     }
 
     @Override
