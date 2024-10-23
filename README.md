@@ -36,7 +36,7 @@
 - [ ] , 로 끝나는 경우
 
 **Test**
-- [ ] 정상 입력 (pobi,woni,jun) , 5
+- [x] 정상 입력 (pobi,woni,jun) , 5
 - [ ] 공동 우승 
 - [ ] 아무도 전진하지 않은 경우 
 
@@ -49,5 +49,5 @@
 - [x] 이름 사이에 공백이 포함 : IllegalArgumentException
 - [x] 자동차 이름 5자 이상 : IllegalArgumentException
 - [x] 이름에 공백이 포함 : 양끝 -> 정상 출력
-- [ ] 렌덤값이 4 이상만 전진
+- [x] 렌덤값이 4 이상만 전진
 - [x] 렌덤값 생성기 테스트
