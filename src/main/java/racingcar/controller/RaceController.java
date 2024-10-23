@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
+import racingcar.util.RandomValue;
 
 public class RaceController {
 
@@ -23,12 +23,8 @@ public class RaceController {
 
     private void race(Car car, int count) {
         while (count-- > 0) {
-            car.process(generateRandomValue());
+            car.process(RandomValue.generate());
             uiController.printRaceResult(car);
         }
-    }
-
-    private int generateRandomValue() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 }
