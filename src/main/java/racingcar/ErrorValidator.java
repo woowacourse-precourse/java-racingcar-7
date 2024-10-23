@@ -9,4 +9,12 @@ public class ErrorValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void gameCount(String game_count) {
+        try {
+            Integer.parseInt(game_count);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

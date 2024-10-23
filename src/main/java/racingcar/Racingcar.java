@@ -21,9 +21,19 @@ public class Racingcar {
         carList.add(car);
     }
 
+    public void startGames(int game_count) {
+        for (int i = 0; i < game_count; i++) {
+            Game game = new Game(carList);
+        }
+    }
+
     public void start() {
         System.out.println(Contants.NOTICE_CAR_NAMES);
         String input_value = Console.readLine();
         splitInputValue(input_value);
+
+        System.out.println(Contants.NOTICE_GAME_TIMES);
+        String input_value2 = Console.readLine();
+
     }
 }
