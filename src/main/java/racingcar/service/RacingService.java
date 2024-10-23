@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static racingcar.global.error.Error.NAME_BLANK_EXCEPION;
+import static racingcar.global.error.Error.NAME_LENGTH_EXCEPION;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +21,18 @@ public class RacingService {
         if (!validateNameNotNull(carNames)) {
             throw new NameError(NAME_BLANK_EXCEPION);
         }
+        if (!validateNameLength(carNames)) {
+            throw new NameError(NAME_LENGTH_EXCEPION);
+        }
     }
 
     private boolean validateNameNotNull(List<String> carNames) {
 
         return carNames.stream().allMatch(name -> name != null && !name.isEmpty());
+    }
+
+    private boolean validateNameLength(List<String> carNames) {
+        return carNames.stream().allMatch(name -> name.length() <= 5);
     }
 
 }
