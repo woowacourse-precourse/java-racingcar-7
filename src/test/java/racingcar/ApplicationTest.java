@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Player;
 import racingcar.util.PlayerMaker;
+import racingcar.util.Racing;
 
 import java.util.List;
 
@@ -68,6 +69,28 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(playerList).hasSize(2);
+    }
+
+    @Test
+    @DisplayName("랜덤 값이 4이상이면 전진한다.")
+    void forwardTest() {
+        Player player = new Player("pobi", 0);
+        int randomNumber = 4;
+
+        Racing.racing(player, randomNumber);
+
+        assertThat(player.getScore()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("랜덤 값이 4미만이면 정지한다.")
+    void stopTest() {
+        Player player = new Player("pobi", 0);
+        int randomNumber = 3;
+
+        Racing.racing(player, randomNumber);
+
+        assertThat(player.getScore()).isEqualTo(0);
     }
 
     @Override
