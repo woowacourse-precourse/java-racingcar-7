@@ -1,19 +1,30 @@
 package racingcar.view;
 
+import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryCountValidator;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
     private final TryCountValidator tryCountValidator;
+    private final CarNameValidator carNameValidator;
 
-    public InputView(TryCountValidator tryCountValidator) {
+    public InputView(TryCountValidator tryCountValidator,
+                     CarNameValidator carNameValidator) {
         this.tryCountValidator = tryCountValidator;
+        this.carNameValidator = carNameValidator;
     }
 
-    public String scanCarNames(){
+    public String[] scanCarNames(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return readLine();
+        String carNameString = readLine();
+
+        String[] carNames = carNameString.split(",");
+
+        carNameValidator.isLengthUnderFive(carNames);
+        carNameValidator.isNotEmpty(carNames);
+
+        return carNames;
     }
 
     public int scanTryCount() {

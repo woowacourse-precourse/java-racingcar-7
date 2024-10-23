@@ -19,11 +19,11 @@ public class CarNameValidatorTest {
     @Test
     void checkNameLength() {
         // Arrange
-        String name = "stephanie";
+        String[] names = {"stephanie","a"};
 
         // Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
-            carNameValidator.isLengthUnderFive(name);
+            carNameValidator.isLengthUnderFive(names);
         });
     }
 
@@ -31,11 +31,11 @@ public class CarNameValidatorTest {
     @Test
     void checkNameNotEmpty() {
         //Arrange
-        String name = "";
+        String[] names = {""};
 
         //Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
-            carNameValidator.isNotEmpty(name);
+            carNameValidator.isNotEmpty(names);
         });
     }
 }

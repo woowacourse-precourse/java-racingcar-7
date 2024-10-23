@@ -13,15 +13,10 @@ public class CarMakerService {
         this.carNameValidator = carNameValidator;
     }
 
-    public List<Car> makeCars(String carNames) {
+    public List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
 
-        String[] carNamesArray = carNames.split(",");
-
-        for (String carName : carNamesArray) {
-            carNameValidator.isNotEmpty(carName);
-            carNameValidator.isLengthUnderFive(carName);
-
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
 

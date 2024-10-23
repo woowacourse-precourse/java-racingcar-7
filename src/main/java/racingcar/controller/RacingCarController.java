@@ -26,12 +26,12 @@ public class RacingCarController {
     }
 
     public void startGame() {
-        String carNames = inputView.scanCarNames();
+        String[] carNames = inputView.scanCarNames();
         int tryCount = inputView.scanTryCount();
         playGame(carNames, tryCount);
     }
 
-    private void playGame(String carNames, int tryCount) {
+    private void playGame(String[] carNames, int tryCount) {
         List<Car> cars = carMakerService.makeCars(carNames);
 
         outputView.printMoveResultMessage();
