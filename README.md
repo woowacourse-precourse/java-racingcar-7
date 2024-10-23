@@ -12,20 +12,29 @@
 - [ ] 우승자 안내 문구 출력 로직 구현
     - [ ] 단독 우승자 안내 문구 구현
     - [ ] 공동 우승자 안내 문구 구현
-- [ ] 
-- [ ]
 
 
 - [ ] 예외처리
 
-    - [x] 입력된 수가 양수가 아닐 때
-        -[x] 0 인 경우 IllegalArgumentException 발생 후 프로그램 종료
-        -[x] -를 구분자로 세팅하지 않고 입력한 경우 IllegalArgumentException 발생 후 프로그램 종료
+    - [x] 입력된 자동차 이름이 정상이 아닐 때
+        - [x] ,사이에 아무것도 입력이 안되었을 경우 IllegalArgumentException 발생 후 프로그램 종료
+        - [x] ,를 구분자로 세팅하지 않고 입력한 경우 IllegalArgumentException 발생 후 프로그램 종료
+        - [ ] 5글자를 넘겼을 경우 IllegalArgumentException 발생 후 프로그램 종료
+        - [ ] 같은 이름을 등록했을 경우 IllegalArgumentException 발생 후 프로그램 종료
+        - [ ] \n과 같은 에러를 낼만한 이름으로 등록했을 경우 이스케이프 
 
-    - [x] 커스텀 구분자로 선언되지 않은 구분자가 입력됐을 경우 IllegalArgumentException 발생 후 프로그램 종료
+    - [x] 
 
-    - [x] 커스텀 구분자 세팅이 중간에 입력될 경우 IllegalArgumentException 발생 후 프로그램 종료
+    - [x] 횟수가 long 값을 넘겼을 때 IllegalArgumentException 발생 후 프로그램 종료
 
-    - [x] 커스텀 구분자가 공백이 될 경우 IllegalArgumentException 발생 후 프로그램 종료
+    - [x] 횟수에 숫자 입력 안했을 때 IllegalArgumentException 발생 후 프로그램 종료
+        - [ ] 횟수에 공백이 끼었을 때 IllegalArgumentException 발생 후 프로그램 종료
+        - [ ] 아무것도 입력 안했을 때 IllegalArgumentException 발생 후 프로그램 종료
 
-    - [x] 숫자와 숫자 사이에 구분자 없이 공백이 입력될 경우 IllegalArgumentException 발생 후 프로그램 종료 
+    - [x] 횟수에 음수 임력했을 때 IllegalArgumentException 발생 후 프로그램 종료 
+  
+    - [ ] 정수형 아닐 때 IllegalArgumentException 발생 후 프로그램 종료 
+
+
+
+이름 사이 공백 에러?
