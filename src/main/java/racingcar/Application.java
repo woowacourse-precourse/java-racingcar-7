@@ -92,11 +92,19 @@ public class Application {
     }
 
     private static int validateInputInteger(String input) {
+        int inputCount;
+
         try {
-            return Integer.parseInt(input);
+            inputCount = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력해주세요.");
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
+
+        if (inputCount <= 0) {
+            throw new IllegalArgumentException("1 이상의 양의 정수만 입력해주세요.");
+        }
+
+        return inputCount;
     }
 
     private static String[] getInputName() {
@@ -113,7 +121,7 @@ public class Application {
     }
 
     private static void validateInputEmpty(String inputName) {
-        if (inputName.isEmpty()){
+        if (inputName.isEmpty()) {
             throw new IllegalArgumentException("내용을 입력해주세요.");
         }
     }
