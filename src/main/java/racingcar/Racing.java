@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
@@ -22,6 +23,14 @@ public class Racing {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberInput = Console.readLine();
         int number = Integer.parseInt(numberInput);
+
+        List<Car> cars = carRepository.findAll();
+
+        for (int i = 0; i < number; i++) {
+            for (Car car : cars) {
+                car.moveOrStop();
+            }
+        }
 
         Console.close();
     }
