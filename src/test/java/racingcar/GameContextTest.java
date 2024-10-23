@@ -20,6 +20,7 @@ class GameContextTest {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i <= 100; i++) {
             builder.append(i);
+            builder.append(",");
         }
         String input = builder.toString();
         int round = 100;

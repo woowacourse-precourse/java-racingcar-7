@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class GameContext {
-
     private final List<Player> players;
     private final int round;
 
