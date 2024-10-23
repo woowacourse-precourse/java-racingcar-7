@@ -18,7 +18,7 @@ public class Application {
         GameContext gameContext = GameContext.getGameContext(playerNameInput, round);
 
         System.out.println("실행 결과");
-        gameContext.run(()-> Randoms.pickNumberInRange(0, 9));
+        gameContext.run();
         List<String> gameResult = gameContext.findWinners();
 
         System.out.print("최종 우승자 : " + String.join(",", gameResult));

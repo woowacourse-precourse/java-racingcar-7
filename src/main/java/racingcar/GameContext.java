@@ -41,7 +41,7 @@ public class GameContext {
         return round;
     }
 
-    public void run(Supplier<Integer> pickUpLogic){
+    public void run(){
         for (int i = 0; i < round; i++) {
             playRound();
         }
