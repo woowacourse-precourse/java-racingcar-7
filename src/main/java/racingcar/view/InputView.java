@@ -7,7 +7,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public Integer getAttempts() {
+    public Integer getRounds() {
         return Integer.parseInt(Console.readLine());
     }
 }
