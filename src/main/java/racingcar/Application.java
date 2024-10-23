@@ -43,6 +43,16 @@ public class Application {
 
     public static void main(String[] args){
         HashMap<String, Integer> scoreMap = getUserInfo();
-        System.out.println(findWinner(scoreMap));
+        ArrayList arrayList = findWinner(scoreMap);
+        for(Object s:arrayList){
+            System.out.print(s);
+            if (s != arrayList.get(arrayList.size()-1)){
+                System.out.print(", ");
+            }
+            else{
+                System.out.print("");
+            }
+            ;
+        }
     }
 }
