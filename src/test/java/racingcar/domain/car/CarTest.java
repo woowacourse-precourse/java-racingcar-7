@@ -21,7 +21,8 @@ public class CarTest {
         // when, then
         assertAll(
             () -> assertThat(car).isNotNull(),
-            () -> assertThat(car.getPosition()).isEqualTo(0)
+            () -> assertThat(car.getPosition()).isEqualTo(0),
+            () -> assertThat(car.getName()).isEqualTo("pobi")
         );
     }
 
