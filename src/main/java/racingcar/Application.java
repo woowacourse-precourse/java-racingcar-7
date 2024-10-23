@@ -3,9 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -45,5 +43,14 @@ public class Application {
         }
 
 //  - [ ] 우승자 조건 : 가장 많이 전진한 자동차(우승자는 2명 이상이 될 수 있다.)
+        List<String> winners = new ArrayList<>();
+        int  first = Collections.max(cars.values());
+
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            if (car.getValue() == first) {
+                winners.add(car.getKey());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
