@@ -6,13 +6,13 @@ public class Car {
     private final String carName;
 
     public Car(String name) {
-        validationNotIsEmpty(name);
+        validationEmptyName(name);
         validationNameLength(name);
         this.position = 0;
         this.carName = name;
     }
 
-    private void validationNotIsEmpty(String name) {
+    private void validationEmptyName(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 자동차의 이름은 5자 이하만 가능합니다.");
         }
