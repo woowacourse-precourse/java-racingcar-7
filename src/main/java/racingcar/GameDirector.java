@@ -8,7 +8,7 @@ import static racingcar.SystemMessage.*;
 
 public class GameDirector {
     private final int count;
-    private final CarManager manager = new CarManager();
+    private final CarList manager = new CarList();
 
     public GameDirector(String carNames,String count) {
         manager.add(carNames);
