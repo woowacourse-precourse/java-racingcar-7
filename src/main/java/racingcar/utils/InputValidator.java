@@ -11,4 +11,12 @@ public class InputValidator {
             }
         }
     }
+
+    private void validateNameEmpty(List<String> carNames) {
+        for (String name : carNames) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException(Constant.CAR_NAME_EMPTY_ERROR_MESSAGE);
+            }
+        }
+    }
 }
