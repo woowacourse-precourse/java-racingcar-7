@@ -17,7 +17,8 @@ public class OutputMaker {
     }
 
     public static String finalResult(Winners winners) {
-        return winners.getWinnerNames().stream()
+        return winners.getWinnerNames()
+                .stream()
                 .collect(Collectors.joining(", ", FINAL_RESULT_START_MESSAGE, ""));
     }
 
