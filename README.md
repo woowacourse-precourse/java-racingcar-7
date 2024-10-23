@@ -1,1 +1,18 @@
-# java-racingcar-precourse
+1. Car 객체
+- [ ]  자동차는 이름과 이동 거리를 가지고 있다.
+- [ ]  자동차의 이름은 5자 이하만 가능하다 → 잘못되면 illegalArgumentException
+- [ ]  자동차는 전진 기능이 있다. (무작위 수가 4이상인 경우 전진)
+
+1. Cars 객체
+- [ ]  Car들을 가지고 있다.
+
+1. InputView
+- [ ]  , 를 기준으로 이름을 입력받는다
+- [ ]  몇번을 이동할 것인지 결정한다
+
+1. raceResultView
+- [ ]  각 회차의 결과를 출력한다. ( 자동차 이름과 distance)
+- [ ]  단독 혹은 다수의 우승자를 출력할 수 있다 , 로 구분해서 출력한다.
+
+1. randomNumberGenerator
+- [ ]  자동차의 전진 기능을 결정하는 랜덤 숫자 생성기 4
