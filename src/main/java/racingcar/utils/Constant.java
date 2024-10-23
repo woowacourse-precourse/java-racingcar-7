@@ -11,6 +11,15 @@ public class Constant {
     public static final String CAR_NAME_EMPTY_ERROR_MESSAGE = "한 개 이상의 자동차 이름을 입력해야 합니다.";
     public static final String ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE = "시도할 횟수는 1 이상의 정수이어야 합니다.";
 
+    // 자동차 이름 길이 최대값
+    public static final int CAR_NAME_MAX_LENGTH_VALUE = 5;
+
+    // 가능한 시도 횟수 최소값
+    public static final int ATTEMPT_COUNT_MIN_VALUE = 1;
+
+    // 양의 정수만 포함되어있는지 판별 정규식
+    public static final String POSITIVE_INTEGER_REGEX = "[0-9]+";
+
     // 구분자
     public static final String DELIMITER = ",";
 
