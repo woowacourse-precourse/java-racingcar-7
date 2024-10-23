@@ -24,4 +24,25 @@ public class InputValidator {
             }
         });
     }
+
+    public void validateTrialCount(String trialCount) {
+        validateParseToInteger(trialCount);
+        validateGreaterThanZero(trialCount);
+    }
+
+    private void validateParseToInteger(String trialCount) {
+        try {
+            Integer.parseInt(trialCount);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("정수를 입력해주세요. (1 ~ 2147483647)");
+        }
+    }
+
+    private void validateGreaterThanZero(String trialCount) {
+        int parsedInt = Integer.parseInt(trialCount);
+
+        if (parsedInt <= 0) {
+            throw new IllegalArgumentException("1 이상의 정수를 입력해주세요.");
+        }
+    }
 }
