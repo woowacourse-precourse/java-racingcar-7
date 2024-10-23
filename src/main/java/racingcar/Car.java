@@ -17,4 +17,12 @@ public class Car {
             position++;
         }
     }
+
+    public String displayStatus() {
+        StringBuilder status = new StringBuilder(name + " : ");
+        for (int i = 0; i < position; i++) {
+            status.append("-");
+        }
+        return status.toString();
+    }
 }

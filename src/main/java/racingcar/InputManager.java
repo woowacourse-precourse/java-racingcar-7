@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class InputManager {
     public void processInput() {
@@ -14,5 +15,23 @@ public class InputManager {
 
         GameInitializer gameInitializer = new GameInitializer();
         gameInitializer.gameInitialize(names);
+        startGame(gameInitializer.getCars(), number);
+    }
+
+
+    public void startGame(ArrayList<Car> cars, Integer number) {
+        for (int i = 0; i < number; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
+            gamePrint(cars);
+        }
+    }
+
+    public void gamePrint(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.displayStatus());
+        }
+        System.out.println();
     }
 }
