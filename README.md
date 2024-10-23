@@ -69,4 +69,4 @@
   ```text
   최종 우승자 : pobi, jun
   ```
-- [ ] Console(Scanner)을 닫는다.
+- [x] Console(Scanner)을 닫는다.

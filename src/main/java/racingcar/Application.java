@@ -79,5 +79,7 @@ public class Application {
             }
         }
         System.out.println(resultBuilder);
+
+        Console.close();
     }
 }
