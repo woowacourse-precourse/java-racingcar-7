@@ -37,6 +37,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return id + " : " + "-".repeat(distance) + "\n";
+        return id + " : " + "-".repeat(distance);
     }
 }

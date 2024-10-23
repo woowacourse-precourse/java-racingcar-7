@@ -16,7 +16,7 @@ class RacingCarTest {
         RacingCar car = new RacingCar(carName);
         // then
         assertEquals("goo", car.getId());
-        assertEquals("goo : \n", car.toString());
+        assertEquals("goo : ", car.toString());
     }
 
     @DisplayName("[예외] 객체 생성 (이름 5자 초과)")
@@ -62,7 +62,7 @@ class RacingCarTest {
         RacingCar car = new RacingCar("goo");
         // when & then
         assertEquals(1, car.moveForward());
-        assertEquals("goo : -\n", car.toString());
+        assertEquals("goo : -", car.toString());
     }
 
     @DisplayName("[정상] 우승자 인지 확인")
