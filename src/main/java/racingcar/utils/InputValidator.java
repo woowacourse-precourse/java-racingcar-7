@@ -3,6 +3,16 @@ package racingcar.utils;
 import java.util.List;
 
 public class InputValidator {
+    private static final String DELIMITER = ",";
+
+    public List<String> validateCarNames(String inputString) {
+        List<String> carNames = List.of(inputString.split(Constant.DELIMITER));
+
+        validateNameLength(carNames);
+        validateNameEmpty(carNames);
+
+        return carNames;
+    }
 
     private void validateNameLength(List<String> carNames) {
         for (String name : carNames) {
