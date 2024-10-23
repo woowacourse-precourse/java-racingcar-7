@@ -48,4 +48,19 @@ public class CustomUnitTest {
             validator.checkNumberOfLetters(car.getName());
         });
     }
+
+    @Test
+    void CHECK_CAR_NAME_HAS_SPACE_INBETWEEN_EXCEPTION(){
+        //arrange
+        Validator validator = new CarValidator();
+        Car car = new Car();
+
+        //act
+        car.setName("AB CD");
+
+        // assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            validator.checkCarNameHasSpace(car.getName());
+        });
+    }
 }
