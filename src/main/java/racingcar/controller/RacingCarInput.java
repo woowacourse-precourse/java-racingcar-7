@@ -12,27 +12,21 @@ public class RacingCarInput {
     private static final String INPUT_NUMBER_MESSAGE = "이동할 횟수를 입력해 주세요. : ";
 
     public List<String> getUserInput() {
-        System.out.println(INPUT_NAME_MESSAGE);
-        String nameStr = Console.readLine().trim();
-
-        System.out.println(INPUT_NUMBER_MESSAGE);
-        String numberStr;
         try {
-            numberStr = Console.readLine().trim();
+            System.out.println(INPUT_NAME_MESSAGE);
+            String nameStr = Console.readLine().trim();
+
+            System.out.println(INPUT_NUMBER_MESSAGE);
+            String numberStr = Console.readLine().trim();
+
+            Validator.validateUserInput(List.of(nameStr, numberStr));
+
+            return List.of(nameStr, numberStr);
         } catch (NoSuchElementException e) {
-            Console.close();
-            try {
-                numberStr = Console.readLine().trim();
-            } catch (NoSuchElementException e2) {
-                throw new IllegalArgumentException(ExceptionMessage.NOT_ENOUGH_INPUTS.getMessage());
-            }
+            throw new IllegalArgumentException(ExceptionMessage.NOT_ENOUGH_INPUTS.getMessage());
         } finally {
             Console.close();
         }
-
-        Validator.validateUserInput(List.of(nameStr, numberStr));
-
-        return List.of(nameStr, numberStr);
     }
 
 }
