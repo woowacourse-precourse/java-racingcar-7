@@ -17,4 +17,10 @@ public class Car {
     public int getMileage() {
         return mileage;
     }
+
+    public void forwardOrStop(int threshold) {
+        if (threshold >= 4) {
+            mileage++;
+        }
+    }
 }

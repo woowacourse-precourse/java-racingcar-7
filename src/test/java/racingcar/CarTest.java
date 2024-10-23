@@ -19,4 +19,34 @@ class CarTest {
         Assertions.assertThat(actualName).isEqualTo(carName);
         Assertions.assertThat(actualMileage).isEqualTo(0);
     }
+
+    @Test
+    public void 자동차_전진_테스트() throws Exception {
+        //Given
+        String carName = "pobi";
+        Car car = new Car(carName);
+        int threshold = 4;
+        int expected = 1;
+
+        //When
+        car.forwardOrStop(threshold);
+
+        //When, Then
+        Assertions.assertThat(car.getMileage()).isEqualTo(expected);
+    }
+
+    @Test
+    public void 자동차_정지_테스트() throws Exception {
+        //Given
+        String carName = "pobi";
+        Car car = new Car(carName);
+        int threshold = 3;
+        int expected = 0;
+
+        //When
+        car.forwardOrStop(threshold);
+
+        //When, Then
+        Assertions.assertThat(car.getMileage()).isEqualTo(expected);
+    }
 }
