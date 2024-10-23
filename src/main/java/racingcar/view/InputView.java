@@ -16,11 +16,20 @@ public class InputView {
 
         List<Car> cars = new ArrayList<>();
         for (String inputname : splitNames) {
+            inputname = inputname.trim();
+            validateNameLength(inputname);
             Car car = new Car(inputname);
             cars.add(car);
         }
         return cars;
     }
+
+    private static void validateNameLength(String inputname) {
+        if (inputname.length() > 5) {
+            throw new IllegalArgumentException("5글자 이하의 이름만 입력할 수 있습니다.");
+        }
+    }
+
     public static int readTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCount = Console.readLine();
