@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
@@ -22,6 +23,7 @@ class CarTest {
         String name2 = "abcdef";
         //expect
         Car car = new Car(name1);
+        assertThat(car.getName()).isEqualTo(name1);
         assertThrows(IllegalArgumentException.class, () -> new Car(name2));
     }
 }
