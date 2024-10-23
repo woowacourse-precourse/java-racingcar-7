@@ -23,14 +23,17 @@
 
 ### 입출력
 - [ ] 사용자에게 입력받기
-  - [ ] 자동차 이름을 입력받기
-    - [ ] `pobi, woni, jun`처럼 ` `이 있는 경우와 `pobi,woni,jun`처럼 공백이 없는 경우 정상 작동
+  - [x] 자동차 이름을 입력받기
+    - [x] `pobi, woni, jun`처럼 ` `이 있는 경우와 `pobi,woni,jun`처럼 공백이 없는 경우 정상 작동
     - [x] `,,`같은 입력 `IllegalArgumentException`
       - [x] `a,,b,c`나 `,,,`
     - [x] `,pobi,woni`, `pobi,woni,` 처럼 끝에 `,`가 있는 경우 `IllegalArgumentException`
-  - [ ] 시도 횟수를 입력받기
+  - [x] 시도 횟수를 입력받기
     - [x] 숫자가 아닌 경우 `IllegalArgumentException`
     - [x] 음수를 입력한 경우 `IllegalArgumentException`
+- [ ] 출력하기
+  - [ ] 세부 결과 출력하기
+  - [ ] 우승자 출력하기
 
 ### 프로그램 연결하기
 - [ ] 입출력과 핵심로직(자동차 달리기, 우승자 판별하기)을 조합해 완성된 프로그램 로직 구현
