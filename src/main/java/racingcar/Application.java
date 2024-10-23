@@ -35,12 +35,33 @@ public class Application {
             System.out.println(count + "차");
             startRace(racingCars);
         }
+        String winnerNames = getWinner(racingCars);
+        System.out.println("최종 우승자: " + winnerNames);
+
     }
 
     private static void startRace(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.moveOrStop();
+            System.out.println(racingCar.getName()+" : "+racingCar.getStatus());
         }
     }
+    private static String getWinner(List<RacingCar> racingCars) {
+        List<String> winners = new ArrayList<>();
+        int maxScore = Integer.MIN_VALUE;
+
+        for (RacingCar racingCar : racingCars) {
+            int score = racingCar.getStatus();
+            if (score > maxScore) {
+                maxScore = score;
+                winners.clear();
+                winners.add(racingCar.getName());
+            } else if (score == maxScore) {
+                winners.add(racingCar.getName());
+            }
+        }
+        return String.join(", ", winners);
+    }
+
 
 }
