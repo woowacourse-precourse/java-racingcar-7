@@ -11,11 +11,19 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼포(,)기준으로 구분");
         String nameInput = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryInput = Console.readLine();
-
-
+        int tryInput = Integer.parseInt(Console.readLine());
 
         System.out.println("실행 결과");
+        List<String> carNames = delimiterCar(nameInput);
+
+        String character = "-";
+
+        for (int i = 0; i < tryInput; i++) {
+            for (int j = 0; j < carNames.size(); j++) {
+                System.out.println(carNames.get(j) + " : " + character.repeat(4) );
+            }
+            System.out.println();
+        }
     }
 
     public static List<String> delimiterCar(String nameInput) {
@@ -32,5 +40,10 @@ public class Application {
         int i = Randoms.pickNumberInRange(0,9);
         return i >= 4;
     }
+
+
+//    public static String carMove(boolean input) {
+//
+//    }
 
 }
