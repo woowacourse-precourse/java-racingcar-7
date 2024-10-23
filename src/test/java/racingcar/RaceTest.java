@@ -1,14 +1,15 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.ErrorCode.*;
-import static racingcar.race.constants.RaceCriterion.*;
+import static racingcar.infrastructure.exception.ErrorCode.*;
+import static racingcar.domain.race.constants.RaceCriterion.MOVING_FORWARD;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.race.Race;
+import racingcar.domain.acceleration.Acceleration;
+import racingcar.domain.car.Car;
+import racingcar.domain.race.Race;
 
 @DisplayName("Race 클래스 테스트")
 public class RaceTest {
@@ -71,7 +72,7 @@ public class RaceTest {
     @Test
     void 경기_결과를_출력한다() {
         // given
-        String input = "pobi, jack";
+        String input = "pobi,jack";
         Race race = Race.of(input, acceleration);
 
         // when

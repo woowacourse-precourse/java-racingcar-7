@@ -1,10 +1,11 @@
 package racingcar;
 
-import static racingcar.ErrorCode.*;
+import static racingcar.infrastructure.exception.ErrorCode.*;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.application.validation.InputValidator;
 
 @DisplayName("InputValidator 클래스 테스트")
 public class InputValidatorTest {

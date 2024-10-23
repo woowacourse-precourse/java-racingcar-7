@@ -1,7 +1,7 @@
-package racingcar.vo;
+package racingcar.domain.car.vo;
 
-import static racingcar.ErrorCode.CAR_NAME_EMPTY;
-import static racingcar.ErrorCode.CAR_NAME_LENGTH_EXCEEDED;
+import static racingcar.infrastructure.exception.ErrorCode.CAR_NAME_EMPTY;
+import static racingcar.infrastructure.exception.ErrorCode.CAR_NAME_LENGTH_EXCEEDED;
 
 public record CarName(String value) {
 

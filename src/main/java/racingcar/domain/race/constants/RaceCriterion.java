@@ -1,4 +1,4 @@
-package racingcar.race.constants;
+package racingcar.domain.race.constants;
 
 public enum RaceCriterion {
     MOVING_FORWARD(4),

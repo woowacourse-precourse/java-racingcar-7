@@ -1,11 +1,11 @@
-package racingcar.race;
+package racingcar.domain.race;
 
 import java.util.Arrays;
 import java.util.List;
 
 import java.util.stream.Collectors;
-import racingcar.Acceleration;
-import racingcar.car.Car;
+import racingcar.domain.acceleration.Acceleration;
+import racingcar.domain.car.Car;
 
 public class Race {
 
@@ -17,7 +17,7 @@ public class Race {
 
     public static Race of(final String input, final Acceleration acceleration) {
         List<Car> cars = Arrays.stream(input.split(","))
-            .map(name -> new Car(name, acceleration))
+            .map(name -> new Car(name.trim(), acceleration))
             .collect(Collectors.toUnmodifiableList());
 
         return new Race(cars);

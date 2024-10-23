@@ -1,10 +1,10 @@
-package racingcar.car;
+package racingcar.domain.car;
 
-import static racingcar.race.constants.RaceCriterion.*;
+import static racingcar.domain.race.constants.RaceCriterion.MOVING_FORWARD;
 
-import racingcar.Acceleration;
-import racingcar.vo.CarName;
-import racingcar.vo.Position;
+import racingcar.domain.acceleration.Acceleration;
+import racingcar.domain.car.vo.CarName;
+import racingcar.domain.car.vo.Position;
 
 public class Car {
 

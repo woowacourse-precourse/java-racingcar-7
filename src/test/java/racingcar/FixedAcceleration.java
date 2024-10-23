@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.acceleration.Acceleration;
+
 public class FixedAcceleration implements Acceleration {
 
     private final int fixedCriterion;

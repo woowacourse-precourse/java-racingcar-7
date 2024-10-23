@@ -1,4 +1,4 @@
-package racingcar.vo;
+package racingcar.domain.car.vo;
 
 public record Position(int value) {
 

@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.application.validation;
 
-import static racingcar.ErrorCode.*;
+import static racingcar.infrastructure.exception.ErrorCode.*;
 
 class InputValidator {
 
