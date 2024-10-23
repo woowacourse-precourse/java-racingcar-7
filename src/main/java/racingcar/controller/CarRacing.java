@@ -1,8 +1,10 @@
-package racingcar.model;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import racingcar.model.Car;
+import racingcar.model.Round;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
