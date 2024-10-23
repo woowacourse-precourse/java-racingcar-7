@@ -2,6 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.Model.Car;
+import racingcar.Service.GameService;
+
+import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -29,6 +33,19 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Test
+    void 자동차_이름_분리_테스트(){
+        //given
+        GameService gameService=new GameService();
+        String carNames="pobi,woni,jun";
+        //when
+        ArrayList<Car> carList=gameService.Separate_Carnames(carNames);
+        //then
+        assertThat(carList).hasSize(3);
+        assertThat(carList.get(0).getCarName()).isEqualTo("pobi");
+        assertThat(carList.get(1).getCarName()).isEqualTo("woni");
+        assertThat(carList.get(2).getCarName()).isEqualTo("jun");
     }
 
     @Override
