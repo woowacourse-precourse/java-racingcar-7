@@ -50,8 +50,27 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    @DisplayName("자동차 이름이 빈 문자열 일 경우 예외처리 테스트입니다.")
+    void carNameEmptyInputTest() {
+        //given
+        String input = " , javaji";
+        //when, then
+        assertThrows(
+                CarNameInputException.class,
+                () -> Application.createParticipant(input));
+    }
 
-
+    @Test
+    @DisplayName("자동차 이름이 5자 초과일 경우 예외처리 테스트입니다.")
+    void carNameTooLongInputTest() {
+        //given
+        String input = "hahahahah, ijij, kk";
+        //when, then
+        assertThrows(
+                CarNameInputException.class,
+                () -> Application.createParticipant(input));
+    }
 
     @Override
     public void runMain() {
