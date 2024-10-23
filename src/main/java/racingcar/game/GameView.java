@@ -14,13 +14,7 @@ public class GameView {
 
     void printMove(List<Car> cars) {
         for (Car car : cars) {
-            IOUtils.outputStringWithoutEnter(car.getName() + " : ");
-
-            for (int i = 0; i < car.getCurrentMoveCount(); i++) {
-                IOUtils.outputStringWithoutEnter("-");
-            }
-
-            IOUtils.outputStringWithEnter("");
+            executionResultOfEachCar(car);
         }
 
         IOUtils.outputStringWithEnter("");
@@ -37,5 +31,15 @@ public class GameView {
         }
 
         IOUtils.outputStringWithEnter(winners.get(winnersSize - 1));
+    }
+
+    private void executionResultOfEachCar(Car car) {
+        IOUtils.outputStringWithoutEnter(car.getName() + " : ");
+
+        for (int i = 0; i < car.getCurrentMoveCount(); i++) {
+            IOUtils.outputStringWithoutEnter("-");
+        }
+
+        IOUtils.outputStringWithEnter("");
     }
 }

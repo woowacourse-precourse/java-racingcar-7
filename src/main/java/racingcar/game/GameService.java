@@ -21,13 +21,21 @@ public class GameService {
             int carCurrentMoveCount = car.getCurrentMoveCount();
             maxMoveCount = Math.max(maxMoveCount, carCurrentMoveCount);
 
-            if (!ranks.containsKey(carCurrentMoveCount)) {
-                ranks.put(carCurrentMoveCount, new ArrayList<>());
-            }
-
-            ranks.get(carCurrentMoveCount).add(car.getName());
+            putCarNameInRanks(car, carCurrentMoveCount, ranks);
         }
 
         return ranks.get(maxMoveCount);
+    }
+
+    private boolean checkIsCurrentMoveCountAlreadyExistInRanks(int carCurrentMoveCount, HashMap<Integer, List<String>> ranks) {
+        return ranks.containsKey(carCurrentMoveCount);
+    }
+
+    private void putCarNameInRanks(Car car, int carCurrentMoveCount, HashMap<Integer, List<String>> ranks) {
+        if(!checkIsCurrentMoveCountAlreadyExistInRanks(carCurrentMoveCount, ranks)) {
+            ranks.put(carCurrentMoveCount, new ArrayList<>());
+        }
+
+        ranks.get(carCurrentMoveCount).add(car.getName());
     }
 }
