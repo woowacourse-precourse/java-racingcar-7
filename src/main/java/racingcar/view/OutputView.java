@@ -11,7 +11,7 @@ public class OutputView {
     private static final String WINNERS_DELIMITER = ", ";
 
     public static void showRaceStart() {
-        System.out.println("Race Start");
+        System.out.println(RACE_START_VIEW);
     }
 
     public static void showRaceResult(String carName, int winCount) {
