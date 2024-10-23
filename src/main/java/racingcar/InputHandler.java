@@ -1,0 +1,32 @@
+package racingcar;
+
+import static racingcar.constants.Constraints.CAR_NAME_DELIMITER;
+
+import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+
+public class InputHandler {
+
+    public static List<String> requestCarNames() {
+        String carNamesText = Console.readLine();
+        List<String> carNames = extractCarNamesToList(carNamesText);
+        validateCarNames(carNames);
+        return carNames;
+    }
+
+    private static List<String> extractCarNamesToList(String carNamesText) {
+        List<String> carNames = Arrays.stream(carNamesText.split(CAR_NAME_DELIMITER)).
+                map(String::trim).
+                toList();
+        return carNames;
+    }
+
+    private static void validateCarNames(List<String> carNames) {
+        carNames.stream()
+                .forEach(carName -> {
+                    InputValidator.validateCarName(carName);
+                });
+    }
+
+}
