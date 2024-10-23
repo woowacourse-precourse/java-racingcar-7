@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class InputView {
 
+    private static final String SEPARATOR = ",";
+
     public List<String> getCarNames() {
         String input = Console.readLine();
 
@@ -23,7 +25,7 @@ public class InputView {
     }
 
     private void validateMultipleCars(String input) {
-        if (!input.contains(",")) {
+        if (!input.contains(SEPARATOR)) {
             throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
         }
     }
