@@ -1,5 +1,7 @@
 package view;
 
+import model.Car;
+
 public class OutputHandler {
 
     public void printGuide() {
@@ -8,5 +10,10 @@ public class OutputHandler {
 
     public void printAttemptPrompt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public static void printCurrentStatus(Car car) {
+        String result = car.getPositionStatus();
+        System.out.println(result);
     }
 }
