@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Prompt {
-    public static String input() {
-        return Console.readLine();
+    public static void input(RacingCarTrace racingCarTrace) {
+        String input = Console.readLine();
+        IOPreprocessor.inputPreprocessing(input, racingCarTrace);
     }
 
     public static int racingTryCount() {
