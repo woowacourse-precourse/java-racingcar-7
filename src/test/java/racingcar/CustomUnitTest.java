@@ -99,4 +99,17 @@ public class CustomUnitTest {
             trialValidator.checkTrialIsNumber(trial);
         });
     }
+
+    @Test
+    void CHECK_TRIAL_NUMBER_IS_NEGATIVE(){
+        //arrange
+        String trial = "-1";
+        TrialValidator trialValidator = new TrialValidator();
+
+        //act
+        //assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            trialValidator.checkTrialIsNegative(trial);
+        });
+    }
 }
