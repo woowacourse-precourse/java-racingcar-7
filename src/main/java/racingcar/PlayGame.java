@@ -13,10 +13,6 @@ public class PlayGame {
     InputMessage inputMessage = new InputMessage();
     Map<String, String> carData = new HashMap<>();
 
-    public int returnRandomNumber(){
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
     public void racingCarCreate(String[] carNames){
         for (String carName : carNames) {
             this.carData.put(carName, "");
@@ -26,7 +22,7 @@ public class PlayGame {
     public void moveCars(String[] carNames) {
         for (String carName : carNames) {
             // 무작위 수 구하기
-            int randomNumber = returnRandomNumber();
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
 
             if (randomNumber >= MINIMUM_VALUE_CAR_MOVE) {
                 String currentDistance = this.carData.get(carName);
@@ -35,10 +31,23 @@ public class PlayGame {
         }
     }
 
-    public void run(){
+    public void printRaceResult(String[] carNames) {
+        for (String carName : carNames) {
+            System.out.println(carName + " : " + this.carData.get(carName));
+        }
+        System.out.println();
+    }
+
+    public void racingStart(){
         String carName = inputMessage.inputCarName();
         String[] carNames = inputMessage.splitCarName(carName, ",");
+        String tryCarGame = inputMessage.inputNumberOfTries();
+
         racingCarCreate(carNames);
-        moveCars(carNames);
+
+        for(int i=0; i<Integer.parseInt(tryCarGame); i++){
+            moveCars(carNames);
+            printRaceResult(carNames);
+        }
     }
 }
