@@ -17,7 +17,14 @@ public class RacingCarService {
         int count = this.numberOfAttempts.getNumberOfAttempts();
         for (int i = 0; i < count; i++) {
             racingCars.move();
-            outputView.printRacingCarsState(racingCars);
+            String states = racingCars.getStates();
+            outputView.printRacingCarsState(states);
         }
+        this.ending(outputView);
+    }
+
+    private void ending(OutputView outputView) {
+        String winners = racingCars.getWinners();
+        outputView.printWinners(winners);
     }
 }

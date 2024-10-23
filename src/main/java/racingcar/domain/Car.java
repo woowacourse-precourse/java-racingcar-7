@@ -40,4 +40,12 @@ public class Car {
     public String getState() {
         return carName + " : " + "-".repeat(Math.max(0, position));
     }
+
+    public int getPostion() {
+        return position;
+    }
+
+    public String getName() {
+        return carName;
+    }
 }

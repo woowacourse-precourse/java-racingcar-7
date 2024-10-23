@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +37,36 @@ public class RacingCars {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public String getWinners() {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<String> winnerList = getWinnerList();
+        for (String winner : winnerList) {
+            stringBuilder.append(winner);
+        }
+        return stringBuilder.toString();
+    }
+
+    private List<String> getWinnerList() {
+        List<String> winnerList = new ArrayList<>();
+        int maxPostion = getMaxPostion();
+        for(Car car : carList) {
+            if(car.getPostion() == maxPostion) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
+    }
+
+    private int getMaxPostion() {
+        int max = -1;
+        for(Car car : carList) {
+            int postion = car.getPostion();
+            if(postion > max){
+                max = postion;
+            }
+        }
+        return max;
     }
 }
