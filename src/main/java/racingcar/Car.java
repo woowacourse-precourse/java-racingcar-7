@@ -12,12 +12,21 @@ public class Car {
         this.distance = 0;
     }
 
+    public Car(final CarName name, final int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     public void forward() {
         distance++;
     }
 
     public int getDistance() {
         return distance;
+    }
+
+    public CarName getName() {
+        return name;
     }
 
     @Override
