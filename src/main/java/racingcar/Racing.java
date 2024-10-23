@@ -9,11 +9,15 @@ public class Racing {
 //    ### 5. 최종 우승자 확인후 출력하기
 
     public void run() {
-        // #1. 경주할 자동차 입력받기
+        // # 1. 경주할 자동차 입력받기
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
 
+        // # 2. 시도할 횟수 입력받기
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int repeat = Integer.parseInt(Console.readLine());
 
+        String[] racer = spliter(input);
 
     }
 
@@ -21,6 +25,7 @@ public class Racing {
     public String[] spliter(String input) {
         return input.split(",");
     }
+
 
 
 }
