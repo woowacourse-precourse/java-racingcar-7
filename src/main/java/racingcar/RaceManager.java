@@ -40,6 +40,6 @@ public class RaceManager {
                 winners.add(racingCar.getName());
             }
         }
-        return IO_HANDLER.getWinerList(winners);
+        return IO_HANDLER.getWinnerList(winners);
     }
 }
