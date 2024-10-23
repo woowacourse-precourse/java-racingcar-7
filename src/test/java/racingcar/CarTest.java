@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
+    private final Car TESTER_CAR = new Car("TEST");
+
     @Test
     public void 자동차_이름_주행거리_초기화_테스트() throws Exception {
         //Given
@@ -18,6 +20,38 @@ class CarTest {
         //Then
         Assertions.assertThat(actualName).isEqualTo(carName);
         Assertions.assertThat(actualMileage).isEqualTo(0);
+    }
+
+    @Test
+    public void 자동차이름_5글자이하_테스트() throws Exception {
+        //Given
+        String carName = "pobi";
+
+        //When, Then
+        Assertions.assertThatCode(() -> TESTER_CAR.validateName(carName))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 자동차이름_5글자초과_예외테스트() throws Exception {
+        //Given
+        CarRacing carRacing = new CarRacing();
+        String carName = "woni:jun";
+
+        //When, Then
+        Assertions.assertThatThrownBy(() -> TESTER_CAR.validateName(carName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 빈_자동차이름_예외테스트() throws Exception {
+        //Given
+        CarRacing carRacing = new CarRacing();
+        String carName = "";
+
+        //When, Then
+        Assertions.assertThatThrownBy(() -> TESTER_CAR.validateName(carName))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

@@ -9,96 +9,21 @@ class CarRacingTest {
 
 
     @Test
-    public void 자동차이름목록_쉼표기준분리_테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carNames = "pobi,woni,jun";
-
-        List<String> expectedCarList = new ArrayList<>();
-        expectedCarList.add("pobi");
-        expectedCarList.add("woni");
-        expectedCarList.add("jun");
-        int expectedSize = expectedCarList.size();
-
-        //When
-        carRacing.parseCarList(carNames);
-        List<String> carList = carRacing.getCarList();
-
-        //Then
-        Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-        Assertions.assertThat(carList).containsExactlyElementsOf(expectedCarList);
-    }
-
-    @Test
-    public void 자동차이름목록_쉼표_외_문자기준분리_테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carNames = "pobi,woni:jun";
-        int expectedSize = 2;
-
-        //When
-        carRacing.parseCarList(carNames);
-        List<String> carList = carRacing.getCarList();
-
-        //Then
-        Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-    }
-
-    @Test
-    public void 자동차이름_5글자이하_테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carName = "pobi";
-
-        //When, Then
-        Assertions.assertThatCode(() -> carRacing.validateCarName(carName))
-                .doesNotThrowAnyException();
-    }
-
-    @Test
-    public void 자동차이름_5글자초과_예외테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carName = "woni:jun";
-
-        //When, Then
-        Assertions.assertThatThrownBy(() -> carRacing.validateCarName(carName))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void 빈_자동차이름_예외테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carName = "";
-
-        //When, Then
-        Assertions.assertThatThrownBy(() -> carRacing.validateCarName(carName))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     public void 자동차이름목록_쉼표기준분리_5글자이하_테스트() throws Exception {
         //Given
         CarRacing carRacing = new CarRacing();
         String carNames = "pobi,woni,jun";
 
-        List<String> expectedCarList = new ArrayList<>();
-        expectedCarList.add("pobi");
-        expectedCarList.add("woni");
-        expectedCarList.add("jun");
+        List<Car> expectedCarList = new ArrayList<>();
+        expectedCarList.add(new Car("pobi"));
+        expectedCarList.add(new Car("woni"));
+        expectedCarList.add(new Car("jun"));
         int expectedSize = expectedCarList.size();
 
-        //When
-        carRacing.parseCarList(carNames);
-        List<String> carList = carRacing.getCarList();
-
-        //Then
-        Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-        for (String carName : carList) {
-            Assertions.assertThatCode(() -> carRacing.validateCarName(carName))
-                    .doesNotThrowAnyException();
-        }
+        //When, Then
+        Assertions.assertThatCode(() -> carRacing.parseCarList(carNames))
+                .doesNotThrowAnyException();
+        Assertions.assertThat(carRacing.getCarList().size()).isEqualTo(expectedSize);
     }
 
     @Test
@@ -106,17 +31,9 @@ class CarRacingTest {
         //Given
         CarRacing carRacing = new CarRacing();
         String carNames = "pobi,woni:jun";
-        int expectedSize = 2;
 
         //When
-        carRacing.parseCarList(carNames);
-        List<String> carList = carRacing.getCarList();
-
-        //Then
-        Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-        Assertions.assertThatCode(() -> carRacing.validateCarName(carList.get(0)))
-                .doesNotThrowAnyException();
-        Assertions.assertThatThrownBy(() -> carRacing.validateCarName(carList.get(1)))
+        Assertions.assertThatThrownBy(() -> carRacing.parseCarList(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -126,22 +43,16 @@ class CarRacingTest {
         CarRacing carRacing = new CarRacing();
         String carNames = "pobi,pobi,pobi";
 
-        List<String> expectedCarList = new ArrayList<>();
-        expectedCarList.add("pobi");
-        expectedCarList.add("pobi");
-        expectedCarList.add("pobi");
+        List<Car> expectedCarList = new ArrayList<>();
+        expectedCarList.add(new Car("pobi"));
+        expectedCarList.add(new Car("pobi"));
+        expectedCarList.add(new Car("pobi"));
         int expectedSize = expectedCarList.size();
 
-        //When
-        carRacing.parseCarList(carNames);
-        List<String> carList = carRacing.getCarList();
-
-        //Then
-        Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-        for (String carName : carList) {
-            Assertions.assertThatCode(() -> carRacing.validateCarName(carName))
-                    .doesNotThrowAnyException();
-        }
+        //When, Then
+        Assertions.assertThatCode(() -> carRacing.parseCarList(carNames))
+                .doesNotThrowAnyException();
+        Assertions.assertThat(carRacing.getCarList().size()).isEqualTo(expectedSize);
     }
 
     @Test

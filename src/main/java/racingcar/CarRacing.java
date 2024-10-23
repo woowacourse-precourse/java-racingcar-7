@@ -2,29 +2,24 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarRacing {
 
     private int attempts;
-    private final List<String> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
 
     public int getAttempts() {
         return attempts;
     }
 
-    public List<String> getCarList() {
+    public List<Car> getCarList() {
         return carList;
     }
 
     public void parseCarList(String carNames) {
-        carList.addAll(Arrays.asList(carNames.split(",")));
-    }
-
-    public void validateCarName(String carName) {
-        if (carName == null || carName.isEmpty() || carName.length() > 5) {
-            throw new IllegalArgumentException();
+        for (String CarName : carNames.split(",")) {
+            carList.add(new Car(CarName));
         }
     }
 
