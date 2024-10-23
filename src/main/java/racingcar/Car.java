@@ -1,6 +1,8 @@
 package racingcar;
 
-public class Car {
+import java.util.Objects;
+
+public class Car implements Comparable<Car> {
 
     private final String name;
     private Long distance;
@@ -23,5 +25,16 @@ public class Car {
             builder.append("-");
         }
         return builder.append("\n").toString();
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        if (Objects.equals(this.distance, car.distance)) {
+            return this.name.compareTo(car.name);
+        }
+        if (car.distance > this.distance) {
+            return 1;
+        }
+        return -1;
     }
 }
