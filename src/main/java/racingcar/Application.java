@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.agent.builder.AgentBuilder;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public class Application
     public static void printResult(List<List<Object>> status)
     {
         for(List<Object> temp : status) {
-            System.out.print(temp.getFirst() + " : ");
+            System.out.print(temp.get(0) + " : ");
             printBar((int) temp.get(1));
         }
         System.out.println();
@@ -132,29 +133,48 @@ public class Application
         System.out.println();
     }
 
-    public static void result(int count, List<List<Object>> Status)
+    public static List<List<Object>> runCountTime(int count, List<List<Object>> Status)
     {
-        int max=-1;
-        List<String> winner= new ArrayList<>();
+        List<List<Object>> preStatus=Status;
+
         for(int i=0; i<count; i++)
         {
-            run(Status);
-            printResult(Status);
+            preStatus=run(preStatus);
+            printResult(preStatus);
         }
-        for(List<Object> temp : Status)
+        return preStatus;
+    }
+
+    public static void result(int count, List<List<Object>> status)
+    {
+        List<List<Object>> finalStatus = runCountTime(count, status);
+
+        int maxDistance = findMaxDistance(finalStatus);
+        List<String> winners = findWinners(finalStatus, maxDistance);
+        printWinner(winners);
+    }
+
+    private static int findMaxDistance(List<List<Object>> status)
+    {
+        int maxDistance = -1;
+        for (List<Object> carStatus : status)
         {
-            if((int)temp.get(1)>=max)
-            {
-
-                if((int) temp.get(1) > max)
-                    winner.clear();
-
-                max=(int)temp.get(1);
-
-                winner.add((String)temp.getFirst());
-            }
+            int currentDistance = (int) carStatus.get(1);
+            if (currentDistance > maxDistance)
+                maxDistance = currentDistance;
         }
-        printWinner(winner);
+        return maxDistance;
+    }
+
+    private static List<String> findWinners(List<List<Object>> status, int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (List<Object> carStatus : status)
+        {
+            int currentDistance = (int) carStatus.get(1);
+            if (currentDistance == maxDistance)
+                winners.add((String) carStatus.get(0));
+        }
+        return winners;
     }
 
     public static void printWinner(List<String> winner)

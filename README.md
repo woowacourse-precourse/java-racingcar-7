@@ -64,17 +64,17 @@
 >git switch (브랜치명)
 
 3. 기능 구현 후
->git status //변경된 파일 확인
->git add . //변경사항 전부 반영
+>git status //변경된 파일 확인<br>
+>git add . //변경사항 전부 반영<br>
 >git commit -m "제목" - "본문"
 
 4. 로컬에서 git 원격 저장소에 업로드
 >git push origin bloodmoon3929
 
 5. 브랜치 합치기
-> git switch dev
-> git merge feat/Input
-> git push origin dev
+> git switch dev<br>
+> git merge feat/Input<br>
+> git push origin dev<br>
 
 - 의미 있는 커밋 메시지
 ```text
@@ -111,6 +111,8 @@ readLine();
 import camp.nextstep.edu.missionutils.Randoms;
 pickNumberInRange();
 ```
+터미널에서 돌릴시 정상 작동하지만, ApplicationTest에서 돌릴 시 (4,3,3,3,3,3,3,3,3,3) 반환함<br>
+테스트 하기 위해 이런식으로 동작하는 듯함
 
 # 오류
 ## 10/22
