@@ -12,10 +12,18 @@ public class RacingCarController {
     }
 
     public void start() {
-        outputView.printReadCarNameMessage();
-        String readCarNames = inputView.readCarNames();
-        outputView.printReadNumberOfAttempts();
-        String readNumberOfAttempts = inputView.readNumberOfAttempts();
+        String readCarNames = getCarNames();
+        String readNumberOfAttempts = getNumberOfAttempts();
         racingCarService = new RacingCarService(readCarNames,readNumberOfAttempts);
+    }
+
+    private String getNumberOfAttempts() {
+        outputView.printReadNumberOfAttempts();
+        return inputView.readNumberOfAttempts();
+    }
+
+    private String getCarNames() {
+        outputView.printReadCarNameMessage();
+        return inputView.readCarNames();
     }
 }
