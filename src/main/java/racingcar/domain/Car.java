@@ -20,4 +20,11 @@ public class Car {
         return movedDistance;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getMovedDistance() {
+        return movedDistance;
+    }
 }
