@@ -33,5 +33,9 @@ public class Application {
             cars.forEach(Car::printMoves);
             System.out.println();
         }
+
+        int highestMove = cars.stream().mapToInt(Car::getMoves).max().getAsInt();
+
+        List<Car> winners = cars.stream().filter(car -> car.getMoves() == highestMove).toList();
     }
 }

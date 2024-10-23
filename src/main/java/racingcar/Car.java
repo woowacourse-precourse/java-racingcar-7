@@ -20,4 +20,8 @@ public class Car {
     public void printMoves() {
         System.out.println(this.name + " : " + "-".repeat(this.moves));
     }
+
+    public int getMoves() {
+        return this.moves;
+    }
 }
