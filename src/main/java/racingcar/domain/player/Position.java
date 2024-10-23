@@ -7,6 +7,10 @@ public class Position {
         this.currentPosition = 0;
     }
 
+    public int addPosition() {
+        return currentPosition++;
+    }
+
     public int getCurrentPosition() {
         return currentPosition;
     }
