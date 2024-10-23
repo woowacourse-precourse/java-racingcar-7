@@ -15,9 +15,10 @@ public class Application {
     }
 
     private static void runFullGame() {
-        //입력 받기
+        //입력 받기 (나중에 한 메서드로 묶을 것)
         Map<String, Integer> carStepsMap = getCarMap();
         int round = getRound();
+        System.out.println();
 
         //로직 실행
         System.out.println("실행 결과");
