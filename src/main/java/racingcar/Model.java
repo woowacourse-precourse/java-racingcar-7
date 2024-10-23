@@ -10,7 +10,11 @@ public class Model {
 
 
     public Model(InputView input, OutputView output, ArrayList<Car> carList) {
-
+        this.input = input;
+        this.output = output;
+        this.carList = carList;
     }
+
+
 
 }

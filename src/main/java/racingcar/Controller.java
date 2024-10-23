@@ -24,6 +24,12 @@ public class Controller {
 
     public void setVar() {
         ArrayList<String> nameList = new ArrayList<String>(Arrays.asList(input.getName().split(",")));
+
+        isInputValid(nameList);
+
+        for (String s : nameList) {
+            carList.add(new Car(s, 0));
+        }
         count = input.getCount();
         model = new Model(input, output, carList);
 
@@ -42,6 +48,7 @@ public class Controller {
                 temp.add(s);
             }
         }
+
     }
 
 }
