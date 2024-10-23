@@ -36,6 +36,12 @@ public class GameContext {
         return round;
     }
 
+    public void run(Supplier<Integer> pickUpLogic){
+        for (int i = 0; i < round; i++) {
+            playRound(pickUpLogic);
+        }
+    }
+
     public List<String> findWinners() {
         int topPlayerPlace = 0;
         List<Player> winner = new ArrayList<>();
@@ -51,9 +57,9 @@ public class GameContext {
         return getWinnersNameList(winner);
     }
 
-    public void playRound(Supplier<Integer> supplier) {
+    private void playRound(Supplier<Integer> pickUpLogic) {
         for (Player player : players) {
-            int pick = supplier.get();
+            int pick = pickUpLogic.get();
             player.move(pick);
             player.printPlace();
         }
