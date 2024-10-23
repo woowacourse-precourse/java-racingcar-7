@@ -1,12 +1,15 @@
 package domain;
 
 import java.util.Objects;
+import validator.CarValidator;
 
 public class Car {
     private final String name;
     private int score = 0;
 
     public Car(String name) {
+        CarValidator.isNameEmpty(name);
+        CarValidator.isNameLengthExceed(name);
         this.name = name;
     }
 

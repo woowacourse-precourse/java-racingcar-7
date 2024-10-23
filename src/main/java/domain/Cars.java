@@ -2,25 +2,29 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import validator.CarValidator;
 
 public class Cars {
-    private List<Car> carsList = new ArrayList<>();
+    private List<Car> carsList;
 
     public Cars(String carNames) {
-        carsList = splitCars(carNames);
+        List<String> carsNameList = splitCars(carNames);
+        CarValidator.checkMinimumCarCount(carsNameList);
+        CarValidator.checkNoDuplicateNames(carsNameList);
+        carsList = makeCarsList(carsNameList);
     }
 
     public List<Car> getCarsList() {
         return carsList;
     }
 
-    private List<Car> splitCars(String input) {
-        String[] names = input.split(",");
+    private List<String> splitCars(String input) {
+        return List.of(input.split(","));
+    }
 
+    private List<Car> makeCarsList(List<String> carsNameList) {
         List<Car> carsList = new ArrayList<>();
-        for (String name : names) {
-            carsList.add(new Car(name));
-        }
+        carsNameList.forEach(name -> carsList.add(new Car(name)));
 
         return carsList;
     }
