@@ -12,8 +12,10 @@ public class Application {
         carRacing.init();
     }
 
-    public class Car {
+    public static class Car {
+        final String name;
         public Car(String name) {
+            this.name = name;
         }
     }
 
@@ -22,8 +24,16 @@ public class Application {
         private static final String ATTEMPTS_REGEXP = "\\d+";
 
         public void init() {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
             String nameInput = Console.readLine();
-            convertCarNames(nameInput);
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            String attemptsInput = Console.readLine();
+
+            int attempts = convertAttempts(attemptsInput);
+            ArrayList<Car> cars = createCarObjects(convertCarNames(nameInput));
+
+            racingStart(cars, attempts);
+
         }
 
         ArrayList<String> convertCarNames(String nameInput) {
@@ -52,5 +62,18 @@ public class Application {
             }
             return true;
         }
+
+        ArrayList<Car> createCarObjects(ArrayList<String> carNames) {
+            ArrayList<Car> cars = new ArrayList<>();
+            for(String name: carNames) {
+                cars.add(new Car(name));
+            }
+            return cars;
+        }
+
+        ArrayList<String> racingStart(ArrayList<Car> cars, int attempts) {
+            return new ArrayList<>();
+        }
+
     }
 }
