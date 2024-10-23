@@ -6,7 +6,7 @@ import racingcar.application.Reader;
 public class ConsoleReader implements Reader {
 
     @Override
-    public String readOrigin() {
+    public String read() {
         return Console.readLine();
     }
 

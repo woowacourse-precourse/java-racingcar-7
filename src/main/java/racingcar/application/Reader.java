@@ -2,7 +2,7 @@ package racingcar.application;
 
 public interface Reader {
 
-    String readOrigin();
+    String read();
 
     int readGameNumber();
 }
