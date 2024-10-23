@@ -4,6 +4,11 @@ public class Car {
     private String name;
     private int moveCount;
 
+    public Car(String name, int moveCount) {
+        this.name = name;
+        this.moveCount = moveCount;
+    }
+
     public String getName() {
         return name;
     }
@@ -12,7 +17,7 @@ public class Car {
         return moveCount;
     }
 
-    void move(){
+    public void move(){
         this.moveCount++;
     }
 }
