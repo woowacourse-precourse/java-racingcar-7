@@ -12,27 +12,35 @@ public class Racingcar {
         String[] carNames = input_value.split(",");
         for (String carName : carNames) {
             ErrorValidator.carName(carName);
-            createCars(carName);
+            carList.add(new Car(carName));
         }
-    }
-
-    public void createCars(String carName) {
-        Car car = new Car(carName);
-        carList.add(car);
     }
 
     public void startGames(int game_count) {
+        System.out.println(Contants.OUTPUT_NOTICE_GAME_RESULT);
         for (int i = 0; i < game_count; i++) {
             Game game = new Game(carList);
+            game.start();
+            printGameResult();
         }
     }
 
+    public void printGameResult() {
+        for (Car car : carList) {
+            String result = car.getName()
+                    + Contants.OUTPUT_COLON_CAHR
+                    + Contants.OUTPUT_DISTANCE_CHAR.repeat(car.getDistance());
+            System.out.println(result);
+        }
+        System.out.println();
+    }
+
     public void start() {
-        System.out.println(Contants.NOTICE_CAR_NAMES);
+        System.out.println(Contants.INPUT_NOTICE_CAR_NAMES);
         String input_value = Console.readLine();
         splitInputValue(input_value);
 
-        System.out.println(Contants.NOTICE_GAME_TIMES);
+        System.out.println(Contants.INPUT_NOTICE_GAME_TIMES);
         String input_value2 = Console.readLine();
         ErrorValidator.gameCount(input_value2);
 
@@ -40,4 +48,6 @@ public class Racingcar {
         startGames(game_count);
 
     }
+
+
 }

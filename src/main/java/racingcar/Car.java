@@ -9,11 +9,16 @@ public class Car {
         this.distance = 0;
     }
 
-    public void updateDistance() {
-        this.distance += 1;
+    public String getName() {
+        return this.name;
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
     }
+
+    public void updateDistance() {
+        this.distance++;
+    }
+
 }
