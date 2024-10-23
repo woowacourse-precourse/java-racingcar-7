@@ -12,8 +12,8 @@ class NameExtractorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"Car1,Car2","Car1,Car3"})
-    void 이름구분_테스트(String str){
-        assertThat(NameExtractor.extractNames(str)).isEqualTo(List.of(str.split(",")));
+    void 이름구분_테스트(String string){
+        assertThat(NameExtractor.extractNames(string)).isEqualTo(List.of(string.split(",")));
     }
 
 }

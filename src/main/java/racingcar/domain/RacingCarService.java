@@ -9,9 +9,9 @@ public class RacingCarService {
     private List<RacingCar> cars = new ArrayList<>();
     private Integer number;
 
-    public RacingCarService(String nameStr,Integer number) {
+    public RacingCarService(String nameString,Integer number) {
         this.number = number;
-        NameExtractor.extractNames(nameStr).stream()
+        NameExtractor.extractNames(nameString).stream()
                 .forEach(name -> cars.add(new RacingCar(name)));
     }
 }

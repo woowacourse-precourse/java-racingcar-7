@@ -14,14 +14,14 @@ public class RacingCarInput {
     public static List<String> getUserInput() {
         try {
             System.out.println(INPUT_NAME_MESSAGE);
-            String nameStr = Console.readLine().trim();
+            String nameString = Console.readLine().trim();
 
             System.out.println(INPUT_NUMBER_MESSAGE);
-            String numberStr = Console.readLine().trim();
+            String numberString = Console.readLine().trim();
 
-            Validator.validateUserInput(List.of(nameStr, numberStr));
+            Validator.validateUserInput(List.of(nameString, numberString));
 
-            return List.of(nameStr, numberStr);
+            return List.of(nameString, numberString);
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_ENOUGH_INPUTS.getMessage());
         } finally {
