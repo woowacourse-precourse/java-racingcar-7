@@ -22,7 +22,7 @@ public class CustomUnitTest {
     @Test
     void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION(){
         // arrange
-        CarValidator carValidator = new CarValidator();
+        Validator validator = new CarValidator();
         Car car = new Car();
 
         // act
@@ -30,7 +30,22 @@ public class CustomUnitTest {
 
         // assert
         assertThrows(IllegalArgumentException.class, () -> {
-            carValidator.checkEmptyOrNullCarName(car.getName());
+            validator.checkEmptyOrNullCarName(car.getName());
+        });
+    }
+
+    @Test
+    void CHECK_CAR_NAME_OVER_FIVE_LETTERS_EXCEPTION(){
+        // arrange
+        Validator validator = new CarValidator();
+        Car car = new Car();
+
+        // act
+        car.setName("ABCDEF");
+
+        // assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            validator.checkNumberOfLetters(car.getName());
         });
     }
 }
