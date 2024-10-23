@@ -2,7 +2,7 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,6 +16,7 @@ public class RacingGame {
         System.out.println(START_MESSAGE);
         String names = readLine();
         List<Car> cars = Stream.of(names.split(",")).map(name -> new Car(name.trim(), 0)).collect(Collectors.toList());
+        nameCheck(cars);
         System.out.println(GAME_COUNT_MESSAGE);
         int count = Integer.parseInt(readLine());
     }
@@ -26,5 +27,9 @@ public class RacingGame {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    private int randomNumberPick() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
