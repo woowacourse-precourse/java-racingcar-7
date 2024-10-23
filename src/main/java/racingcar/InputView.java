@@ -10,13 +10,15 @@ public class InputView {
     private final static String DELIM = ",";
     final static List<String> userNames = new ArrayList<>();
 
-    public CarDTO getInput() {
+    public InputDTO getInput() {
         String carNames = Console.readLine();
         String tryNums = Console.readLine();
         StringTokenizer stringTokenizer = new StringTokenizer(carNames);
-
         if (!tryNums.isBlank()) {
             throw new IllegalArgumentException("숫자 공백 입력 값은 허용하지 않습니다.");
+        }
+        if (!isNumeric(tryNums)) {
+            throw new IllegalArgumentException("숫자가 아닌 값은 올 수 없습니다.");
         }
         while (stringTokenizer.hasMoreTokens()) {
             String name = stringTokenizer.nextToken(DELIM);
@@ -28,11 +30,10 @@ public class InputView {
             }
             userNames.add(name);
         }
-
-        return new CarDTO(userNames, Long.parseLong(tryNums));
-
+        return new InputDTO(userNames, Long.parseLong(tryNums));
     }
 
+    //todo: validateInput 클래스 생성해 유효성 검사 클래스 분리
     public boolean isContainComma(String input) {
         if (!input.contains(DELIM)) {
             return false;
