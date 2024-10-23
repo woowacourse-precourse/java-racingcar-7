@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import view.InputView;
+import racingcar.view.InputView;
 
 public class RacingGame {
     public void race() {
