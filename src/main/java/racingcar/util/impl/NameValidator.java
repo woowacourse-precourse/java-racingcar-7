@@ -8,13 +8,13 @@ public class NameValidator implements Validator {
     public void validate(Object o) {
         List<String> list = (List<String>) o;
 
-        if (list.isEmpty()) {
-            throw new IllegalArgumentException();
+        if (list.isEmpty() || list.contains("")) {
+            throw new IllegalArgumentException("자동차의 이름을 입력해주십시오.");
         }
 
         for (String s : list) {
             if (s.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("자동차의 이름은 5자 이하로 입력해주십시오.");
             }
         }
     }

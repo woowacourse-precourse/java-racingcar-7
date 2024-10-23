@@ -8,10 +8,10 @@ public class NumberValidator implements Validator {
         try {
             int num = Integer.parseInt(o.toString());
             if (num < 0) {
-                throw new NumberFormatException();
+                throw new IllegalArgumentException("양수를 입력해주십시오.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자를 입력해주십시오.");
         }
     }
 }
