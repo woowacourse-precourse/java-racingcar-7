@@ -17,9 +17,16 @@ public class NameParser {
         List<String> names = Arrays.stream(input.split(DELIMITER))
                 .map(String::trim)
                 .toList();
+        hasMorThanOneCar(names);
         validateNames(names);
 
         return names;
+    }
+
+    private void hasMorThanOneCar(List<String> names) {
+        if (names.size() < 2) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateNames(List<String> names) {
