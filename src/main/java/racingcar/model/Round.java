@@ -28,7 +28,7 @@ public class Round {
 
     public List<String> findAllLeadingCars() {
         int maxValue = state.sequencedValues().stream()
-                .min(Comparator.comparing(Integer::intValue))
+                .max(Comparator.comparing(Integer::intValue))
                 .orElse(Integer.MIN_VALUE);
 
         return state.sequencedEntrySet().stream()
