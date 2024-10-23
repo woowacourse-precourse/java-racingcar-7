@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final String name;
     private int distance;
@@ -35,5 +35,10 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return distance - otherCar.distance;
     }
 }

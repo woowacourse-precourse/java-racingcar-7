@@ -1,7 +1,9 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
 
@@ -12,7 +14,7 @@ public class Application {
         String[] carNames = inputView.inputCarNames().split(",");
         int raceRound = inputView.inputRaceRound();
 
-        List<Car> cars = Arrays.stream(carNames).map(Car::new).toList();
+        List<Car> cars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
 
         System.out.println();
         System.out.println("실행결과");
@@ -29,6 +31,12 @@ public class Application {
             System.out.println();
         }
 
-
+        cars.sort(Collections.reverseOrder());
+        Car largestCar = cars.get(0); // 가장 큰 요소
+        List<Car> largestCars = cars.stream()
+                .filter(car -> car.compareTo(largestCar) == 0)
+                .toList();
+        String result = largestCars.stream().map(Car::getName).collect(Collectors.joining(", "));
+        System.out.print("최종 우승자 : " + result);
     }
 }
