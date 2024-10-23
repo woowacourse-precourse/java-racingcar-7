@@ -17,7 +17,7 @@ public class CarTest {
         //given에 String타입 이름 리스트를 사용해 Car 리스트에 객체를 생성하며 담아낸다.
         //3.Then(검증): 기대하는 결과는 무엇인가? 각 자동차가 올바르게 생성되는지 확인한다.
         assertThat(car.getCarName()).isEqualTo("pobi");
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
 
         //테스트를 작성하며 결정한 것은 차 객체 생성시 어떤 매개변수를 받을건지, 어떤 인스턴스 변수를 세팅할지
         //결정하였다. name과 distance는 이후 로직 작동에 필요한 인스턴스 변수이다.
@@ -29,9 +29,9 @@ public class CarTest {
         //테스트를 위해 랜덤넘버를 고정한다.
         int randomNumber = 4;
         //랜덤값을 매개변수로 받는 메서드로 숫자에 따라 이동과 멈춤을 결정한다.
-        car.moveOrStay(randomNumber);
+        car.goForward(randomNumber);
         //조건을 만족할 경우 distance가 증가하는지 확인한다.
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -40,11 +40,11 @@ public class CarTest {
         //테스트를 위해 랜덤넘버를 고정한다.
         int randomNumber = 3;
         //멈춰있는지 테스트는 시작값과 메서드 시행 이후의 값이 같은지 테스트한다.
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
 
         //랜덤값을 매개변수로 받는 메서드로 숫자에 따라 이동과 멈춤을 결정한다.
-        car.moveOrStay(randomNumber);
+        car.goForward(randomNumber);
         //조건을 만족할 경우 distance가 증가하는지 확인한다.
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

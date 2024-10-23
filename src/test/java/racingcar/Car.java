@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
     private String carName;
-    private int distance = 0;
+    private int position = 0;
 
     public Car(String carName) {
         this.carName = carName;
@@ -12,13 +12,13 @@ public class Car {
         return carName;
     }
 
-    public int getDistance() {
-        return distance;
+    public int getPosition() {
+        return position;
     }
 
-    public void moveOrStay(int randomNumber) {
+    public void goForward(int randomNumber) {
         if (randomNumber >= 4) {
-            distance++;
+            position++;
         }
     }
 }
