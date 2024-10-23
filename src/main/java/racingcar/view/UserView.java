@@ -74,7 +74,7 @@ public class UserView {
         String[] carNames = input.split(",");
 
         for(String carName : carNames){
-            cars.add(new Car(carName));
+            cars.add(new Car(carName.trim()));
         }
 
         return cars;
