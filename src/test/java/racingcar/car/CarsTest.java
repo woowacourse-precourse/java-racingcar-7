@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -7,22 +7,19 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.ErrorMessage;
 
 class CarsTest {
 
     private Car pobi;
-    private Car jason;
     private Car dk;
     private Car foo;
-    private Car acme;
 
     @BeforeEach
     void setup() {
         pobi = new Car("pobi");
-        jason = new Car("jason");
         dk = new Car("DK");
         foo = new Car("foo");
-        acme = new Car("acme");
     }
 
     @Test
@@ -30,7 +27,7 @@ class CarsTest {
     void carsAreUnmodifiable() {
         // 수정 가능
         List<Car> modifiableCarList = new ArrayList<>(List.of(pobi));
-        modifiableCarList.add(jason);  // 예외가 발생하지 않음
+        modifiableCarList.add(dk);  // 예외가 발생하지 않음
 
         // 수정 불가능 (불변)
         Cars cars = new Cars(modifiableCarList);
