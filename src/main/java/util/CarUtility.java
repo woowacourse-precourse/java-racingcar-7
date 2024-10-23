@@ -19,4 +19,10 @@ public class CarUtility {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public static String makeHyphen(int advanceCount) {
+        if (advanceCount < 1) {
+            return "";
+        }
+        return "-".repeat(advanceCount);
+    }
 }
