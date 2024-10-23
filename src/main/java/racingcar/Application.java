@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -13,6 +12,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptsNum = Integer.parseInt(Console.readLine());
 
-        List<String> cars = new ArrayList<>(Arrays.asList(userInput.split(",")));
+        List<Car> cars = new ArrayList<>();
+        for (String carName : userInput.split(",")) {
+            cars.add(Car.from(carName));
+        }
     }
 }
