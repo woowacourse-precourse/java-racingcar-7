@@ -23,6 +23,8 @@ public class GameController {
         for (String carName : carNames) {
             cars.addCar(new Car(carName));
         }
+
+        int attemptCount = inputView.getAttemptCount();
     }
 }
         
