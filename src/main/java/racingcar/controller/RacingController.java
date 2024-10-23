@@ -19,5 +19,8 @@ public class RacingController {
         String[] carNames = inputHandler.split(Console.readLine());
         outputHandler.promptAttemptCountInput();
         int attemptGameCount = inputHandler.getAttemptGameCount();
+
     }
+
+
 }
