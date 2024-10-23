@@ -1,14 +1,14 @@
-package racingcar;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class CarCollection {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public CarCollection(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 

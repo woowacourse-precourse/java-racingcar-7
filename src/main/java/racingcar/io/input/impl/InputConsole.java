@@ -1,7 +1,7 @@
-package io.input.impl;
+package racingcar.io.input.impl;
 
 import camp.nextstep.edu.missionutils.Console;
-import io.input.Input;
+import racingcar.io.input.Input;
 
 public class InputConsole implements Input {
     @Override

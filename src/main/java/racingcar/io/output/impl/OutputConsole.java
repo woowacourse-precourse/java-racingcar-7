@@ -1,10 +1,10 @@
-package io.output.impl;
+package racingcar.io.output.impl;
 
-import io.output.Output;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.Car;
-import racingcar.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.CarCollection;
+import racingcar.io.output.Output;
 
 public class OutputConsole implements Output {
     @Override
@@ -13,7 +13,7 @@ public class OutputConsole implements Output {
     }
 
     @Override
-    public void printRoundResult(Cars cars) {
+    public void printRoundResult(CarCollection cars) {
         cars.getCars().forEach(car -> {
             System.out.println(formatCarStatus(car));
         });

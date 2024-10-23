@@ -1,16 +1,19 @@
-package racingcar;
+package racingcar.controller;
 
-import io.input.Input;
-import io.output.Output;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
+import racingcar.domain.CarCollection;
+import racingcar.domain.CarName;
+import racingcar.io.input.Input;
+import racingcar.io.output.Output;
 
-public class RaceGameService {
+public class RacingCarController {
     private final Input input;
     private final Output output;
 
-    public RaceGameService(Input input, Output output) {
+    public RacingCarController(Input input, Output output) {
         this.input = input;
         this.output = output;
     }
@@ -18,7 +21,7 @@ public class RaceGameService {
     public void start() {
         try {
             String carNamesInput = input.getCarNames();
-            Cars cars = createCars(carNamesInput);
+            CarCollection cars = createCars(carNamesInput);
 
             int rounds = input.getRaceRounds();
             output.printStartMessage();
@@ -35,12 +38,12 @@ public class RaceGameService {
         }
     }
 
-    private Cars createCars(String input) {
+    private CarCollection createCars(String input) {
         List<Car> carList = Arrays.stream(input.split(","))
                 .map(String::trim)
                 .map(CarName::new)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return new Cars(carList);
+        return new CarCollection(carList);
     }
 }
