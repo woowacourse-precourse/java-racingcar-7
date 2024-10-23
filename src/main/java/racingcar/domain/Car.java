@@ -5,9 +5,6 @@ import racingcar.dto.CarDTO;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final int PICK_NUMBER_IN_RANGE_MIN = 0;
-    private static final int PICK_NUMBER_IN_RANGE_MAX = 9;
-    private static final int FORWARD_STANDARD = 4;
     private static final int CAR_SPEED = 1;
 
     private final String carName;
@@ -32,11 +29,8 @@ public class Car {
         }
     }
 
-    public void randomMove() {
-        int random = Randoms.pickNumberInRange(PICK_NUMBER_IN_RANGE_MIN, PICK_NUMBER_IN_RANGE_MAX);
-        if(random >= FORWARD_STANDARD) {
-            this.position += CAR_SPEED;
-        }
+    public void advance() {
+        position += CAR_SPEED;
     }
 
     public CarDTO getCarDTO() {

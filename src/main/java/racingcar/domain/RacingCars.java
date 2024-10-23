@@ -28,7 +28,9 @@ public class RacingCars {
 
     public void move() {
         for(Car car : carList) {
-            car.randomMove();
+            if(RandomNumber.getSpeed()){
+                car.advance();
+            }
         }
     }
 
