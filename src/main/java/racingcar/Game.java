@@ -12,13 +12,13 @@ public class Game {
 
     public void updateCarMove(Car car) {
         RandomNumber randomNumber = new RandomNumber();
-        boolean isMove = randomNumber.start();
+        boolean isMove = randomNumber.pick();
         if (isMove) {
             car.updateDistance();
         }
     }
 
-    public void start() {
+    public void play() {
         for (Car car : carList) {
            updateCarMove(car);
         }

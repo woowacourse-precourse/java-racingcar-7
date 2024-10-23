@@ -20,7 +20,7 @@ public class Racingcar {
         System.out.println(Contants.OUTPUT_NOTICE_GAME_RESULT);
         for (int i = 0; i < game_count; i++) {
             Game game = new Game(carList);
-            game.start();
+            game.play();
             printGameResult();
         }
     }
@@ -41,7 +41,7 @@ public class Racingcar {
         System.out.println(result);
     }
 
-    public void start() {
+    public void play() {
         System.out.println(Contants.INPUT_NOTICE_CAR_NAMES);
         String input_value = Console.readLine();
         splitInputValue(input_value);

@@ -11,7 +11,7 @@ public class RandomNumber {
         return num > Contants.COMPARISON_VALUE || num == Contants.COMPARISON_VALUE;
     }
 
-    public boolean start() {
+    public boolean pick() {
         int random_num = make();
         return isNotLessThanFour(random_num);
     }
