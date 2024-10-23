@@ -41,4 +41,8 @@ public class RacingCarTrace {
                 .filter(racingCar -> trace.get(racingCar).equals(max))
                 .toList();
     }
+
+    public int size() {
+        return trace.size();
+    }
 }
