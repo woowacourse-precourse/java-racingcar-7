@@ -18,6 +18,7 @@ public class GameDirector {
     public List<Car> run() {
         return manager.moveCars(this.count);
     }
+
     public void printWinner(List<Car> matchResult) {
         String winner = manager.getWinner(matchResult);
         Printer.print(RESULT,winner);

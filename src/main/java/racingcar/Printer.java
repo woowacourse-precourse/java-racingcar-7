@@ -3,17 +3,20 @@ package racingcar;
 public abstract class Printer {
 
     public static void print(SystemMessage message) {
-        System.out.println(message.getMessage());
+        print(message.getMessage());
     }
     public static void print(Car car) {
-        System.out.println(car.toString());
+        print(car.toString());
     }
-
     public static void newLine() {
-        System.out.println();
+        print("");
     }
 
     public static void print(SystemMessage message, String winner) {
-        System.out.println(message.getMessage() + winner);
+        print(message.getMessage() + winner);
+    }
+
+    private static void print(String message) {
+        System.out.println(message);
     }
 }
