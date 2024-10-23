@@ -1,6 +1,4 @@
-package racingcar;
-
-import java.util.SplittableRandom;
+package racingcar.car;
 
 public class RacingCar {
     private final String name;

@@ -2,8 +2,7 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.RacingCar;
-import racingcar.RacingCars;
+import racingcar.car.RacingCars;
 
 public class RacingCarIOHandler {
 
