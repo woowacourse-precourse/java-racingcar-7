@@ -1,20 +1,22 @@
-package racingcar.domain;
+package racingcar.domain.car;
+
+import racingcar.domain.common.IncrementNumber;
 
 public class Car {
 
     private final CarName name;
     private final Condition condition;
-    private final Position position;
+    private final IncrementNumber position;
 
     public Car(String name, Condition condition) {
         this.name = new CarName(name);
         this.condition = condition;
-        this.position = new Position();
+        this.position = new IncrementNumber();
     }
 
     public void forward() {
         if (condition.canMoveForward()) {
-            this.position.increasing();
+            this.position.increment();
         }
     }
 

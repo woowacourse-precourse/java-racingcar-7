@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.domain.Car;
-import racingcar.domain.Condition;
-import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Condition;
+import racingcar.domain.car.RandomNumberGenerator;
 
 public class Application {
 

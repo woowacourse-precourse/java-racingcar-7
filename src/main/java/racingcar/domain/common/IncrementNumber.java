@@ -1,14 +1,14 @@
-package racingcar.domain;
+package racingcar.domain.common;
 
-public class Position {
+public class IncrementNumber {
 
     private int value;
 
-    public Position() {
+    public IncrementNumber() {
         this.value = 0;
     }
 
-    public void increasing() {
+    public void increment() {
         this.value++;
     }
 
