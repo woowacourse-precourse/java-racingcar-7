@@ -16,23 +16,7 @@ public class Application {
 
         final List<Car> cars = createCars(names);
 
-
-        // 실행 결과 출력
-        System.out.println("실행 결과");
-        for (int i = 0; i < inputCount; i++) {
-            for (int j = 0; j < names.length; j++) {
-                int randomNum = Randoms.pickNumberInRange(0, 9);
-
-                if (randomNum > 3) {
-                    cars.get(j).advance += 1;
-                }
-            }
-
-            for (int j = 0; j < names.length; j++) {
-                System.out.println(cars.get(j).name + " : " + "-".repeat(cars.get(j).advance));
-            }
-            System.out.println();
-        }
+        runRace(inputCount, cars);
 
         // 우승자 출력
         List<String> winner = new ArrayList<>();
@@ -51,6 +35,33 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
+
+    private static void runRace(int inputCount, List<Car> cars) {
+        // 실행 결과 출력
+        System.out.println("실행 결과");
+        for (int i = 0; i < inputCount; i++) {
+            updateCarsAdvance(cars);
+
+            printCarsPosition(cars);
+        }
+    }
+
+    private static void printCarsPosition(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.name + " : " + "-".repeat(car.advance));
+        }
+        System.out.println();
+    }
+
+    private static void updateCarsAdvance(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+
+            if (randomNum > 3) {
+                car.advance += 1;
+            }
+        }
     }
 
     private static List<Car> createCars(String[] names) {
