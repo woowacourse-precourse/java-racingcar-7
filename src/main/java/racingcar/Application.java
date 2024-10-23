@@ -9,6 +9,7 @@ public class Application {
         String tryCount = readTryCount();
 
         validateCarNames(carNames);
+        validateTryCount(tryCount);
     }
 
     static void validateCarNames(String carNames) {
@@ -24,6 +25,17 @@ public class Application {
     static void checkCarNameLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다");
+        }
+    }
+
+    static void validateTryCount(String tryCount) {
+        try {
+            int tryCountNum = Integer.parseInt(tryCount);
+            if (tryCountNum <= 0) {
+                throw new IllegalArgumentException("시도할 횟수가 자연수가 아닙니다");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수가 자연수가 아닙니다");
         }
     }
 
