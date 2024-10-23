@@ -40,4 +40,11 @@ public class Validator {
             throw new IllegalArgumentException(e.getMessage(), e.fillInStackTrace());
         }
     }
+
+    public static int validatePositive(int trialCount) {
+        if (trialCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return trialCount;
+    }
 }

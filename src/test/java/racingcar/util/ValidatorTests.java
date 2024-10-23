@@ -6,6 +6,7 @@ import static racingcar.util.Validator.validateInputString;
 import static racingcar.util.Validator.validateInteger;
 import static racingcar.util.Validator.validateNameCount;
 import static racingcar.util.Validator.validateNameLength;
+import static racingcar.util.Validator.validatePositive;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -51,7 +52,7 @@ class ValidatorTests {
 
     @ParameterizedTest
     @DisplayName("자동차 이름이 5글자를 초과하거나 빈 문자열일 경우 예외 발생")
-    @ValueSource(strings = {"", "racingCar"})
+    @ValueSource(strings = {"", "racer1"})
     void testIfNameLengthNotInRange(String name) {
         assertThatThrownBy(() -> validateNameLength(name))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -62,6 +63,14 @@ class ValidatorTests {
     void exceptionIfTrialCountNotInteger() {
         String trialCountString = "a";
         assertThatThrownBy(() -> validateInteger(trialCountString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("숫자 뽑기 횟수가 양이 아닌 정수이면 IllegalArgumentException 발생")
+    @ValueSource(ints = {0, -1})
+    public void exceptionIfTrialCountNotPositive(int trialCount) {
+        assertThatThrownBy(() -> validatePositive(trialCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
