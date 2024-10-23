@@ -13,10 +13,22 @@ public class Race {
     }
     public void start() {
         for (int i = 0; i < trial; i++) {
-            for (Car car : cars) {
-                print(car);
-            }
+            play();
             System.out.println();
+        }
+    }
+    private void play() {
+        for (Car car : cars) {
+            move(car);
+            print(car);
+        }
+    }
+    private void move(Car car) {
+        int random = Randoms.pickNumberInRange(0, 9);
+        if (random >= 4) {
+            String result = car.getResult();
+            result += "-";
+            car.setResult(result);
         }
     }
     private void print(Car car) {
