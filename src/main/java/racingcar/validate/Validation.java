@@ -16,4 +16,10 @@ public class Validation {
         }
     }
 
+    public void isInvalidGameTryCount(int count) {
+        if(count < 1) {
+            throw new IllegalArgumentException(ErrorType.GAME_TRY_COUNT_ERROR.getMessage());
+        }
+    }
+
 }
