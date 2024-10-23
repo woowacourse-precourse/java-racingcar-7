@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
