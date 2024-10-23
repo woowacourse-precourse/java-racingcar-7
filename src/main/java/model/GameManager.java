@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
-    private List<Car> carList;
+    private List<Car> carList = new ArrayList<>();
     private int runTimes;
 
     public GameManager(List<String> carNameList, int runTimes) {
