@@ -38,6 +38,23 @@ class ApplicationTest extends NsTest {
             ()->assertThat(inputString.getInputString()).isEqualTo("pobi,woni")
         );
     }
+    @Test
+    void emptyStringTest(){
+        assertSimpleTest(
+            ()->assertThatThrownBy(
+                ()->new InputString("")
+            ).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void nullStringTest(){
+        assertSimpleTest(
+            ()->assertThatThrownBy(
+                ()->new InputString(null)
+            ).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
