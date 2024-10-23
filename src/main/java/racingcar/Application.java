@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,6 +12,22 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryInput = Console.readLine();
 
+
         System.out.println("실행 결과");
     }
+
+    public static List<String> delimiterCar(String nameInput) {
+        StringTokenizer st = new StringTokenizer(nameInput,",");
+        List<String> carNames = new ArrayList<>();
+
+        while (st.hasMoreTokens()) {
+            carNames.add(st.nextToken());
+        }
+        return carNames;
+    }
+
+
+
+
+
 }
