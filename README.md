@@ -67,6 +67,7 @@ pobi,pobi
     │      ├─model
     │      │      Car.java
     │      │      Race.java
+    │      │      RaceInput.java
     │      │
     │      ├─racingcar
     │      │      Application.java
