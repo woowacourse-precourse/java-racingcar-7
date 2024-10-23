@@ -13,17 +13,14 @@ public class RaceTest {
     @Test
     void 각_자동차에_이름을_부여할_수_있다() {
         // given
-        final List<String> carNames = List.of("pobi", "woni", "jun");
-        final Race race = new Race(carNames);
+        final List<Car> cars = List.of(
+                new Car("pobi"), new Car("woni"), new Car("jun"));
 
         // when
-        final List<Car> expected = List.of(
-                new Car("pobi"), new Car("woni"), new Car("jun"));
-        final List<Car> actual = race.getCars();
+        final Race race = new Race(cars);
 
-        // then
-        assertThat(actual)
+        assertThat(race.getCars())
                 .usingRecursiveFieldByFieldElementComparator()
-                .containsExactlyInAnyOrderElementsOf(expected);
+                .containsExactlyInAnyOrderElementsOf(cars);
     }
 }
