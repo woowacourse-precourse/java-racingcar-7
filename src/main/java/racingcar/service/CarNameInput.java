@@ -13,4 +13,13 @@ public class CarNameInput implements CarManager{
 
         return carNameList;
     }
+
+    private List<String> carNamesSplit(String carNames) {
+        validateCarNameEmpty(carNames);
+    }
+
+    private void validateCarNameEmpty(String carNames) {
+        if(carNames == null || carNames.isEmpty())
+            throw new IllegalArgumentException("error: 입력받은 문자열이 빈문자열 또는 null입니다");
+    }
 }
