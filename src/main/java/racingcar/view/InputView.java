@@ -16,5 +16,8 @@ public class InputView {
         return input.split(",");
     }
 
+    public static boolean isValidCarInput(String input) {
+        return VALID_CAR_INPUT_PATTERN.matcher(input).matches();
+    }
 
 }
