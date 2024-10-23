@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-
-public class Validate {
+class Validate {
 
     static class InvalidNameLength extends IllegalArgumentException {
         private static final String DEFAULT_MESSAGE = "이름은 공백이 아닌 5자 이하의 문자열이어야 합니다.";

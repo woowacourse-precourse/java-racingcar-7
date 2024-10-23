@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import racingcar.Validate.InvalidRange;
 
 class Input {
-    final String nameInput = Console.readLine();
-    final String numberInput = Console.readLine();
+    String string = Console.readLine();
 
     static ArrayList<String> splitInput(String input) {
         String[] nameContainer = input.split(",");

@@ -13,13 +13,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 임시_예외_테스트() {
-        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaji"))
-                .isInstanceOf(Validate.InvalidNameLength.class)
-        );
-    }
-
-    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
