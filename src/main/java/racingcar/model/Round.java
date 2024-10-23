@@ -1,7 +1,9 @@
 package racingcar.model;
 
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class Round {
     private final LinkedHashMap<String, Integer> state;
@@ -22,5 +24,16 @@ public class Round {
         });
 
         return new Round(state);
+    }
+
+    public List<String> findAllLeadingCars() {
+        int maxValue = state.sequencedValues().stream()
+                .min(Comparator.comparing(Integer::intValue))
+                .orElse(Integer.MIN_VALUE);
+
+        return state.sequencedEntrySet().stream()
+                .filter(entry -> entry.getValue() == maxValue)
+                .map(Entry::getKey)
+                .toList();
     }
 }
