@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidationTest {
 
@@ -22,6 +23,15 @@ class InputValidationTest {
     void inputNullOrEmpty(String input) {
         //given //when //then
         assertThatThrownBy(() -> inputValidation.validateNullOrEmpty(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("공백을 입력하면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "pobi ", "pobi,woni, jun"})
+    void inputBlank(String input) {
+        //given //when //then
+        assertThatThrownBy(() -> inputValidation.validateBlank(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
