@@ -27,6 +27,7 @@ public final class InputParser {
     public static ArrayList<String> parseNames(String names) {
         return Arrays.stream(names.split(","))
                 .map(String::strip)
+                .filter(s -> !s.isEmpty())
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
