@@ -17,5 +17,9 @@ public class Constant {
     // 자동차 객체 초기값
     public static final int CAR_SCORE_DEFAULT_VALUE = 0;
 
+    // 무작위 값
+    public static final int MIN_RANDOM_VALUE = 0;
+    public static final int MAX_RANDOM_VALUE = 9;
+
     private Constant() {}
 }
