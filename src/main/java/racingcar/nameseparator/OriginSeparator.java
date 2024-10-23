@@ -7,7 +7,7 @@ import racingcar.racingapplication.NameSeparator;
 public class OriginSeparator implements NameSeparator {
 
     @Override
-    public List<String> separatingNames(String origin) {
+    public List<String> separateNames(String origin) {
         if (origin.isEmpty()) {
             throw new IllegalArgumentException("입력이 필요합니다.");
         }

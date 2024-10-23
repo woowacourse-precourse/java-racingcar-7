@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 class OriginSeparatorTest {
 
     @Test
-    void separatingNames() {
+    void separateNames() {
         //given
         String origin = "sumin,boye";
         OriginSeparator originSeparator = new OriginSeparator();
 
         //when
-        List<String> result = originSeparator.separatingNames(origin);
+        List<String> result = originSeparator.separateNames(origin);
 
         //then
         Assertions.assertThat(result).isEqualTo(List.of("sumin", "boye"));

@@ -2,20 +2,10 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.RandomNumberGenerator;
 
 public record Cars(
         List<Car> allCar
 ) {
-
-    public Cars eachGame() {
-        List<Car> afterEachRaceCars = new ArrayList<>();
-        for (Car car : allCar) {
-            Car updateCar = car.updateDistance(car, RandomNumberGenerator.isFollowNumberRule());
-            afterEachRaceCars.add(updateCar);
-        }
-        return new Cars(afterEachRaceCars);
-    }
 
     public static List<Cars> makeOriginCars(List<String> carNames) {
         Cars cars = new Cars(Car.makeCars(carNames));
