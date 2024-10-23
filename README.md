@@ -12,7 +12,7 @@
   - [ ] 시도할 횟수에 숫자를 입력하지 않았을 경우, IllegalArguementException을 발생시킨다
 
 ### 입력값 나누기
-- [ ] 입력값을 "," 기준으로 나눈다
+- [x] 입력값을 "," 기준으로 나눈다
   - Exception
   - [ ] 자동차 이름이 5자를 넘어설 경우, IllegalArgumentException을 발생시킨다
 
