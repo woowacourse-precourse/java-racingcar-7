@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,5 +32,16 @@ class CarTest {
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("CarName의 크기가 5를 초과하면 예외를 발생한다.")
+    @Test
+    void carNameLengthExceedThenFive() {
+        //given
+        String carName = "javaji";
+
+        //when //then
+        assertThatThrownBy(() -> Car.from(carName))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
