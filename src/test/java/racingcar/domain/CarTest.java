@@ -20,7 +20,7 @@ class CarTest {
         //given
         String name1 = "test";
         String name2 = "abcdef";
-        //expected
+        //expect
         Car car = new Car(name1);
         assertThrows(IllegalArgumentException.class, () -> new Car(name2));
     }
