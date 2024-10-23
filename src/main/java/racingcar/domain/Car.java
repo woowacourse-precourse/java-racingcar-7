@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomNumber;
-
 public class Car {
 
     private static final int MOVING_STANDARD_NUMBER = 4;
@@ -13,8 +11,8 @@ public class Car {
         this.name = name;
     }
 
-    public int move() {
-        if (RandomNumber.generate() >= MOVING_STANDARD_NUMBER) {
+    public int move(int randomNumber) {
+        if (randomNumber >= MOVING_STANDARD_NUMBER) {
             movedDistance++;
         }
         return movedDistance;
