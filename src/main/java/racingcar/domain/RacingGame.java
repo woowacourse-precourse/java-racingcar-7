@@ -22,6 +22,14 @@ public class RacingGame {
 
     public void startRacingGame(int racingCount){
         Validation.validateRacingGameCount(racingCount);
-
+        for(int i = 0;  i < racingCount; i++){
+            startGameRound();
+        }
     }
+
+    private void startGameRound(){
+        racingcars.stream()
+                .forEach(Racingcar::goFoward);
+    }
+
 }
