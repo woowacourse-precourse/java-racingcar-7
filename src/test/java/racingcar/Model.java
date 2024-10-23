@@ -1,14 +1,17 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Model {
 
-    String[] getCarNames(String inputString) {
-        String[] carNames = inputString.split(",");
+    List<String> getCarNames(String inputString) {
+        List<String> carNames = Arrays.asList(inputString.split(","));
         validateCarNames(carNames);
         return carNames;
     }
 
-    private void validateCarNames(String[] carNames) {
+    private void validateCarNames(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름이 5자를 초과합니다.");
