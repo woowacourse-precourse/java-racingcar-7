@@ -15,7 +15,23 @@ class InputTest extends NsTest {
     }
 
     @Test
-    void 자동차이름_공백_실패_테스트() {
+    void 자동차이름_공백_입력_실패_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차이름_중복_이름_실패_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("핍비,핍비", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차이름_공백_포함_실패_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(",다섯글자초과", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
