@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import static racingcar.utils.Constant.INPUT_CAR_NAME_PROMPT;
+import static racingcar.utils.Constant.INPUT_GAME_COUNT_PROMPT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import racingcar.utils.Validator;
@@ -14,7 +17,7 @@ public class InputView {
     public ArrayList<String> inputCarName() {
         ArrayList<String> carNames = new ArrayList<>();
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(INPUT_CAR_NAME_PROMPT);
         String cars = Console.readLine();
 
         String[] carArray = cars.split(",");
@@ -30,7 +33,7 @@ public class InputView {
     }
 
     public String inPutGameCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(INPUT_GAME_COUNT_PROMPT);
         String gameCount = Console.readLine();
 
         validator.validateInputGameCount(gameCount);

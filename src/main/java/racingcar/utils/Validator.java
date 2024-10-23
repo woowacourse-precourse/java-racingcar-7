@@ -1,22 +1,26 @@
 package racingcar.utils;
 
+import static racingcar.utils.Constant.CAR_NAME_LENGTH_ERROR;
+import static racingcar.utils.Constant.GAME_COUNT_FORMAT_ERROR;
+import static racingcar.utils.Constant.GAME_COUNT_POSITIVE_ERROR;
+
 import java.util.ArrayList;
 
 public class Validator {
     public void validateInputCarName(ArrayList<String> carNames) {
         for(String car : carNames){
             if (car.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+                throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
             }
         }
     }
 
     public void validateInputGameCount(String gameCount) {
         if(!isValidNumber(gameCount)) {
-            throw new IllegalArgumentException("게임 횟수는 숫자로 입력하여야 합니다.");
+            throw new IllegalArgumentException(GAME_COUNT_FORMAT_ERROR);
         }
         if(Integer.parseInt(gameCount) < 0) {
-            throw new IllegalArgumentException("게임 횟수는 양수만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(GAME_COUNT_POSITIVE_ERROR);
         }
     }
 
