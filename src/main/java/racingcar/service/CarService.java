@@ -16,4 +16,9 @@ public class CarService {
         }
     }
 
+    public void moveAllCarsMultipleTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            cars.forEach(Car::move);
+        }
+    }
 }
