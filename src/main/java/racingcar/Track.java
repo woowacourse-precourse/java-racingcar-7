@@ -11,4 +11,8 @@ public class Track {
     public boolean isLapInProgress() {
         return lap > 0;
     }
+
+    public void decrementLap() {
+        lap -= 1;
+    }
 }
