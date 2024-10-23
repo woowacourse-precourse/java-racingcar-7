@@ -8,16 +8,26 @@ public class Car {
     private final String name;
     private int position;
 
+    public Car(String name) {
+        this.numberGenerator = new RandomNumberGenerator();
+        this.name = name;
+        this.position = 0;
+    }
+
+    /* 자동차 움직임 테스트에 사용되는 생성자
+       고정된 값으로 테스트 하기 위함 */
     public Car(String name, NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
         this.name = name;
         this.position = 0;
     }
 
-    public Car(String name) {
+    /* 자동차 움직임 테스트에 사용되는 생성자
+       올바른 position 값을 갖는지 확인용 */
+    public Car(String name, int position) {
         this.numberGenerator = new RandomNumberGenerator();
         this.name = name;
-        this.position = 0;
+        this.position = position;
     }
 
     public int getPosition() {

@@ -19,8 +19,32 @@ public class RaceTest {
         // when
         final Race race = new Race(cars);
 
+        // then
         assertThat(race.getCars())
                 .usingRecursiveFieldByFieldElementComparator()
                 .containsExactlyInAnyOrderElementsOf(cars);
+    }
+
+    @Test
+    void 무작위_값이_4_이상일_경우_전진한다() {
+        // given
+        final List<Car> cars = List.of(
+                new Car("pobi", new FixedNumberGenerator(4)), new Car("woni", new FixedNumberGenerator(0)));
+
+        // when
+        final Race race = new Race(cars);
+
+        race.start();
+
+        final List<Car> expected = List.of(
+                new Car("pobi", 1), new Car("woni", 0)
+        );
+        final List<Car> actual = race.getCars();
+
+        // then
+        assertThat(actual)
+                .usingRecursiveFieldByFieldElementComparatorIgnoringFields("numberGenerator")
+                .containsExactlyInAnyOrderElementsOf(expected);
+
     }
 }
