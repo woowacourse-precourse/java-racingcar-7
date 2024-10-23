@@ -15,5 +15,13 @@ public class Validator {
         if(!userInput.get(1).matches("[0-9]+")){
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_INVALID_FORMAT.getMessage());
         }
+        for(String name : NameExtractor.extractNames(userInput.get(0))){
+            if(name.isEmpty()){
+                throw new IllegalArgumentException(ExceptionMessage.NAME_INVALID_EMPTY.getMessage());
+            }
+        }
+        if(userInput.get(0).endsWith(",")){
+            throw new IllegalArgumentException(ExceptionMessage.NAME_INVALID_EMPTY.getMessage());
+        }
     }
 }

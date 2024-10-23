@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,12 +20,12 @@ class RacingCarInputTest {
         List<String> readStr = racingCarInput.getUserInput();
 
         List<String> expectedStr = List.of(str.split("\n")).stream()
-                        .map(String::trim).toList();
+                .map(String::trim).toList();
         assertThat(readStr).isEqualTo(expectedStr);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Car1 2","\n2","Car1,Car2\n three"})
+    @ValueSource(strings = {"Car1 2", "\n2", "Car1,Car2\n three", "Car1,,Car2\n3,", ",Car1,Car2\n3", "Car1,Car2,\n3"})
     void 잘못된입력_테스트(String str) {
         System.setIn(new ByteArrayInputStream(str.getBytes()));
         assertThatThrownBy(() ->
