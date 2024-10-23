@@ -28,4 +28,10 @@ public class RaceGame {
         }
     }
 
+    private void printCurrentStatus() {
+        for (Car car : cars) {
+            System.out.println(car.getCurrentPosition());
+        }
+        System.out.println();
+    }
 }
