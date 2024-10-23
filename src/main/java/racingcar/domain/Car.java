@@ -31,4 +31,8 @@ public class Car {
         this.state = String.join("", this.state, "-");
     }
 
+    public int getDistance(){
+        return state.length();
+    }
+
 }
