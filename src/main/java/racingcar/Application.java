@@ -53,6 +53,12 @@ public class Application {
                 final int randomNumber = Randoms.pickNumberInRange(0, 9);
                 car.move(randomNumber);
             }
+
+            for (Car car : cars) {
+                String positionBar = "-".repeat(car.getPosition());
+                System.out.println(car.getName() + " : " + positionBar);
+            }
+            System.out.println();
         }
     }
 }
