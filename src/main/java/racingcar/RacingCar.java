@@ -2,25 +2,23 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RacingCar implements Car {
+public class RacingCar {
     private String name;
-    private int status = 0;
+    private int status;
 
     public RacingCar(String name) {
         this.name = setName(name);
     }
 
 
-    @Override
     public void moveOrStop() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            status++;
+            move();
         }
     }
 
-    @Override
     public void move() {
-
+        status++;
     }
 
     public String getName() {
@@ -37,6 +35,7 @@ public class RacingCar implements Car {
     public int getStatus() {
         return status;
     }
+
     public String getStatusToDash() {
         return "-".repeat(Math.max(0, status));
     }
