@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
@@ -32,6 +33,22 @@ public class Application {
         if (attemps == 0) {
             throw new IllegalArgumentException();
         }
+        for (int i = 0; i < carNames.size(); i++) {
+            String updateName = carNames.get(i) + " : ";
+            carNames.set(i, updateName);
+        }
+        for (int i = 0; i < attemps; i++) {
+            for (int j = 0; j < carNames.size(); j++) {
+                int ranNum = Randoms.pickNumberInRange(0, 9);
+                if (ranNum >= 4) {
+                    String updateName = carNames.get(j) + "-";
+                    carNames.set(j, updateName);
+                }
+            }
+            for (String name : carNames) {
+                System.out.println(name);
+            }
+            System.out.println();
+        }
     }
-
 }
