@@ -14,6 +14,26 @@ public class RacingCar {
         String inputCarNames = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputRoofCount = Console.readLine();
+    public static class Car {
+        private String name;
+        private int winningPoint;
+
+        public Car(String name) {
+            this.name = name;
+            this.winningPoint = 0;
+        }
+
+        public void moveForward() {
+            winningPoint++;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getWinningPoint() {
+            return winningPoint;
+        }
     }
 }
 
