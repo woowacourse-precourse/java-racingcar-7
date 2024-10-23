@@ -70,13 +70,13 @@
 
 ---
 
-### 1. RacingCar
+### 1. Car
 
-| Method          | Parameter         | Return Type | Implementation |
-   |-----------------|-------------------|-------------|----------------|
-| completedAllLap | -                 | boolean     | DONE ✅         |
-| myProgress      | -                 | String      | DONE ✅         |
-| updateProgress  | MovementCondition | void        |                |
+| Method          | Parameter | Return Type | Implementation |
+|-----------------|-----------|-------------|----------------|
+| completedAllLap | -         | boolean     | DONE ✅         |
+| myProgress      | -         | String      | DONE ✅         |
+| updateProgress  | int       | void        | DONE ✅         |
 
 <br>
 
@@ -98,12 +98,12 @@
 
 ### 4. MyProgress
 
-| Method             | Parameter         | Return Type | Implementation |
-|--------------------|-------------------|-------------|----------------|
-| completedAllLap    | -                 | boolean     | Done ✅         |
-| toString           | -                 | toString    | Done ✅         |
-| updateRemainingLap | -                 | void        |                |
-| updatePosition     | MovementCondition | void        |                |
+| Method             | Parameter | Return Type | Implementation |
+|--------------------|-----------|-------------|----------------|
+| completedAllLap    | -         | boolean     | Done ✅         |
+| toString           | -         | toString    | Done ✅         |
+| updateRemainingLap | -         | void        | Done ✅         |
+| updatePositionBy   | int       | void        | Done ✅         |
 
 <br>
 
@@ -111,7 +111,7 @@
 
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
-| next   | -         | void        |                |
+| minus  | int       | void        | Done ✅         |
 
 <br>
 
@@ -119,7 +119,7 @@
 
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
-| TBD    | TBD       | TBD         |                |
+| add    | int       | void        | Done ✅         |
 
 <br>
 

@@ -6,7 +6,7 @@ import racingcar.model.race.MyProgress;
 
 public class Car {
     private final String name;
-    private MyProgress myProgress;
+    private final MyProgress myProgress;
 
     private Car(final String name, final MyProgress myProgress) {
         this.name = name;
@@ -24,5 +24,10 @@ public class Car {
 
     public String myProgress() {
         return format("%s : %s", name, myProgress.toString());
+    }
+
+    public void updateProgress(final int moveDistance) {
+        myProgress.updatePositionBy(moveDistance);
+        myProgress.updateRemainingLap();
     }
 }

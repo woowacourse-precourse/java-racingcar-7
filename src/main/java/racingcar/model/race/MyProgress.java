@@ -1,8 +1,10 @@
 package racingcar.model.race;
 
+import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
+
 public class MyProgress {
-    private Lap remainingLap;
-    private Position position;
+    private final Lap remainingLap;
+    private final Position position;
 
     private MyProgress(final Lap remainingLap, final Position position) {
         this.remainingLap = remainingLap;
@@ -15,6 +17,15 @@ public class MyProgress {
 
     public boolean completedAllLap() {
         return remainingLap.equals(Lap.ZERO);
+    }
+
+
+    public void updatePositionBy(final int moveDistance) {
+        position.add(moveDistance);
+    }
+
+    public void updateRemainingLap() {
+        remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
     @Override
