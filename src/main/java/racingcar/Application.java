@@ -42,6 +42,11 @@ public class Application {
         String input = Console.readLine();
         List<Car> carList = createCarList( input );
         int count = Integer.parseInt( Console.readLine() );
+        for( int inning = 1; inning <= count; inning++ ){
+            for( Car challenger: carList ){
+                challenger.drive( tryRoll() );
+            }
+        }
 
         System.out.println( "실행 결과" );
     }
