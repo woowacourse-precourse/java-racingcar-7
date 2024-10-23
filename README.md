@@ -35,7 +35,6 @@
     - WinnerFinder : Cars 중 우승자를 찾음
 
 - controller
-    - RacingSetUp : 자동차 이름, 시도 횟수 초기화
     - RacingGame : 자동차 경주 게임을 실행
 
 ## 프로그래밍 요구사항
