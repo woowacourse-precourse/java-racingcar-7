@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
     public List<Car> createCars(List<String> carNames, MoveStrategy moveStrategy) {
-        return carNames.stream().map(carName -> new Car(moveStrategy, carName)).collect(Collectors.toList());
+        return carNames.stream()
+                .map(carName -> new Car(moveStrategy, carName))
+                .collect(Collectors.toList());
     }
 }
