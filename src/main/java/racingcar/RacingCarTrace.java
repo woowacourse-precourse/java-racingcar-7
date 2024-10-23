@@ -3,6 +3,7 @@ package racingcar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class RacingCarTrace {
     private final Map<RacingCar, Integer> trace = new LinkedHashMap<>();
@@ -15,8 +16,12 @@ public class RacingCarTrace {
         trace.put(racingCar, trace.get(racingCar) + 1);
     }
 
-    public int getDistance(RacingCar racingCar) {
-        return trace.get(racingCar);
+    public int getDistance(int index) {
+        return trace.entrySet().stream()
+                .skip(index)
+                .findFirst()
+                .map(Entry::getValue)
+                .orElse(0);
     }
 
     public List<RacingCar> getBiggestDistanceRacingCar() {
