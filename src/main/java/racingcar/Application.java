@@ -3,10 +3,9 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//- **경주할 자동차 이름 입력받기**
-//        - 경주할 자동차 이름을 입력하세요
-//        - 이름은 쉼표(,) 기준으로 구분
-//        - 각 이름이 5자 이하인지 확인하고 아닐경우 **IllegalArgumentException** 발생시킨 후 애플리케이션 종료
+//- **몇 번의 이동을 할 지 사용자에게 입력받기**
+//        - 시도할 횟수는 몇 회인가요?
+//        - 10번 이하로 가정하고 입력받기
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -18,6 +17,12 @@ public class Application {
             if (car.length() > 5){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 해야합니다.");
             }
+        }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNumber = Integer.parseInt(readLine());
+        if (tryNumber > 10){
+            throw new IllegalArgumentException("시도하는 횟수가 너무 많습니다. 10회 이하로 설정해주세요");
         }
     }
 }

@@ -3,9 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,19 +13,27 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 자동차_이름_입력_테스트(){
-        String input = "poby,woni,jun";
-        ArrayList<String> testCars = new ArrayList<>(Arrays.asList(input.split(",")));
-        assertThat(testCars).containsExactly("poby", "woni", "jun");
+    void 자동차_횟수_입력_테스트() {
+        // 정상적인 입력
+        assertSimpleTest(() -> {
+            run("poby,woni,jun", "3");
+            assertThat(output())
+                    .contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)", "시도할 횟수는 몇 회인가요?");
+        });
+
+        // 자동차 이름이 5자를 초과
+        assertThatThrownBy(() -> {
+            run("poby,woni,abcdef", "3");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자 이하로 입력 해야합니다.");
+
+        // 시도 횟수가 10회를 초과
+        assertThatThrownBy(() -> {
+            run("poby,woni,jun", "12");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도하는 횟수가 너무 많습니다. 10회 이하로 설정해주세요");
     }
 
-    @Test
-    void 자동차_이름_입력_예외테스트(){
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
 
     @Test
     void 기능_테스트() {
