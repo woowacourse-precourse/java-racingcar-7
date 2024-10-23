@@ -23,5 +23,19 @@ public class MainController {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputTryCount = Integer.parseInt(Console.readLine());
 
+        for (int i = 0; i < inputTryCount; i++) {
+            for (Car car : cars) {
+                car.randomlyMove(if60PercentChance());
+            }
+        }
+
     }
+    private static boolean if60PercentChance() {
+        int pickNumberInRange = Randoms.pickNumberInRange(0, 9);
+        if (pickNumberInRange >= 4) {
+            return true;
+        }
+        return false;
+    }
+
 }
