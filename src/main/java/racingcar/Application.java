@@ -10,14 +10,11 @@ public class Application {
     public static void main(String[] args) {
 
         RaceManager raceManager = new RaceManager();
+        CarFactory carFactory = new CarFactory();
+
         List<String> strings = raceManager.setRacer();
 
-        //입력한 문자열 리스트로 자동차 객체 리스트 만들기
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (String carName : strings) {
-            RacingCar newRacingCar = new RacingCar(carName);
-            racingCars.add(newRacingCar);
-        }
+        List<RacingCar> racingCars = carFactory.createRacingCars(strings);
 
         int cycle = raceManager.setRaceCycle();
 
