@@ -20,7 +20,7 @@ public class Application {
             cars[i] = new Car(carNames[i]);
         }
     }
-    
+
     //실행 결과 출력 메서드
     static void whoWin(Car[] carNames, int num, int carNum) {
         System.out.println("실행 결과");
@@ -30,6 +30,12 @@ public class Application {
             }
             System.out.println();
         }
+    }
+
+    //최종 우승자 결과 출력 메서드
+    static void finalWin(String[] whoMaxWin) {
+        String result = String.join(", ", whoMaxWin);
+        System.out.println("최종 우승자 : " + result);
     }
 
     //최종 우승자가 누군지 가리는 메서드
