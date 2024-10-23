@@ -96,8 +96,11 @@ public class Application {
         private void printGameStatus() {
         }
 
+    }
 
-
-
+    public static class Utils {
+        public static int generateRandomValue() {
+            return pickNumberInRange(0, 9);
+        }
     }
 }
