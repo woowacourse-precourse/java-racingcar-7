@@ -1,10 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 
 public class CarRacing {
 
-    public void start(RacingCarTrace racingCarTrace) {
+    public List<RacingCar> start(RacingCarTrace racingCarTrace) {
         int tryCount = Prompt.racingTryCount();
 
         for (int i = 0; i < tryCount; i++) {
@@ -17,5 +18,6 @@ public class CarRacing {
             }
             Prompt.tracePrint(racingCarTrace);
         }
+        return racingCarTrace.getBiggestDistanceRacingCar();
     }
 }
