@@ -7,4 +7,8 @@ public class InputView {
     public String getCarNames() {
         return InputConsole.readLine();
     }
+
+    public long getTryCount() {
+        return Long.parseLong(InputConsole.readLine());
+    }
 }
