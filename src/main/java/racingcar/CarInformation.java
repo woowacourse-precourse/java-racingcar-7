@@ -20,7 +20,6 @@ public class CarInformation {
             carNameAndScore.put(name, 0);
 
         }
-
         return carNameAndScore;
     }
 }
