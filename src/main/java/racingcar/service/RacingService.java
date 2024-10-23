@@ -22,31 +22,31 @@ public class RacingService {
 
     public void printCarStatus(List<Car> cars) {
         for(Car car : cars) {
-            System.out.println(car.getStatus());
+            car.pritntStatus();
         }
         System.out.println();
     }
 
     public List<Car> findWinners(List<Car> cars) {
-        int maxPosition = findMaxPosition(cars);
+        Car maxPositionCar = findMaxPositionCar(cars);
 
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.isAtSamePosition(maxPositionCar)) {
                 winners.add(car);
             }
         }
         return winners;
     }
 
-    private int findMaxPosition(List<Car> cars) {
-        int maxPosition = cars.get(0).getPosition();
+    private Car findMaxPositionCar(List<Car> cars) {
+        Car maxPositionCar = cars.get(0);
 
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
+            if (car.isAheadOf(maxPositionCar)) {
+                maxPositionCar = car;
             }
         }
-        return maxPosition;
+        return maxPositionCar;
     }
 }

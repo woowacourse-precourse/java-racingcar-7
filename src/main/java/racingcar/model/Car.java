@@ -13,15 +13,21 @@ public class Car {
         position++;
     }
 
-    public int getPosition() {
-        return position;
+
+    public void pritntStatus() {
+        System.out.println(name + " : " + "-".repeat(position));
     }
 
-    public String getName() {
-        return name;
+    public boolean isAheadOf(Car otherCar) {
+        return this.position > otherCar.position;
     }
 
-    public String getStatus() {
-        return name + " : " + "-".repeat(position);
+    public boolean isAtSamePosition(Car otherCar) {
+        return this.position == otherCar.position;
     }
+
+    public void printWinner() {
+        System.out.print(name);
+    }
+
 }

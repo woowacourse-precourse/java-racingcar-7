@@ -6,14 +6,14 @@ import racingcar.model.Car;
 
 public class OutputView {
     public void printResult(List<Car> winners) {
-        StringBuilder result = new StringBuilder("최종 우승자 : ");
+        System.out.print("최종 우승자 : ");
 
         for (int i = 0; i < winners.size(); i++) {
-            result.append(winners.get(i).getName());
+            winners.get(i).printWinner();
             if (i < winners.size() -1 ) {
-                result.append(", ");
+                System.out.println(", ");
             }
         }
-        System.out.println(result);
+        System.out.println();
     }
 }
