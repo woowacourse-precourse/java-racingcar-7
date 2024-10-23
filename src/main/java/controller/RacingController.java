@@ -17,15 +17,21 @@ public class RacingController {
 
         attempt = Integer.parseInt(InputView.inputAttempt());
 
-        start();
+        race();
+        result();
     }
 
-    public void start() {
+    public void race() {
         System.out.println("실행 결과");
         for (int i = 0; i < attempt; i++) {
             racingService.moveCars(carsList);
             OutputView.showRoundResult(carsList);
         }
+    }
+
+    private void result() {
+        System.out.print("최종 우승자 : ");
+        racingService.getWinners(carsList);
     }
 
 

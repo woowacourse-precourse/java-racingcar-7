@@ -12,4 +12,8 @@ public class OutputView {
         });
         System.out.println();
     }
+
+    public static void showWinners(List<String> winners) {
+        System.out.println(String.join(", ", winners));
+    }
 }

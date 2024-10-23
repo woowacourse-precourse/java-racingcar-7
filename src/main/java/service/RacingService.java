@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import domain.Car;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import view.OutputView;
 
 public class RacingService {
     public List<Car> getCarsList(String input) {
@@ -31,4 +33,17 @@ public class RacingService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public void getWinners(List<Car> carsList) {
+        int maxScore = carsList.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(0);
+
+        List<String> winners = carsList.stream()
+                .filter(car -> car.getScore() == maxScore)
+                .map(Car::getName)
+                .toList();
+
+        OutputView.showWinners(winners);
+    }
 }
