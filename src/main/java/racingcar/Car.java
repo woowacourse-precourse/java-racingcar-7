@@ -12,6 +12,19 @@ public class Car {
         this.name = name;
         this.position = 0;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void moveForward() {
+        position++;
+    }
+
     private void validateName(String name) {
         if (name == null || name.trim().isEmpty() || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ERROR_NAME_LENGTH);
