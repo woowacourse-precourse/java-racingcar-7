@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.dto.CarDTO;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
@@ -9,7 +10,7 @@ public class Car {
     private static final int FORWARD_STANDARD = 4;
     private static final int CAR_SPEED = 1;
     private final String carName;
-    private int position;
+    private int position = 0;
 
     public Car(String name) {
         validationEmptyName(name);
@@ -37,15 +38,7 @@ public class Car {
         }
     }
 
-    public String getState() {
-        return carName + " : " + "-".repeat(Math.max(0, position));
-    }
-
-    public int getPostion() {
-        return position;
-    }
-
-    public String getName() {
-        return carName;
+    public CarDTO getCarDTO() {
+        return new CarDTO(carName, position);
     }
 }

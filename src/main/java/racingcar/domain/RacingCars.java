@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,8 @@ public class RacingCars {
     public String getStates() {
         StringBuilder stringBuilder = new StringBuilder();
         for(Car car : carList) {
-            stringBuilder.append(car.getState());
+            CarDTO carDTO = car.getCarDTO();
+            stringBuilder.append(carDTO.getState());
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
@@ -50,19 +53,21 @@ public class RacingCars {
 
     private List<String> getWinnerList() {
         List<String> winnerList = new ArrayList<>();
-        int maxPostion = getMaxPostion();
+        int maxPosition = getMaxPosition();
         for(Car car : carList) {
-            if(car.getPostion() == maxPostion) {
-                winnerList.add(car.getName());
+            CarDTO carDTO = car.getCarDTO();
+            if(carDTO.getPosition() == maxPosition) {
+                winnerList.add(carDTO.getCarName());
             }
         }
         return winnerList;
     }
 
-    private int getMaxPostion() {
+    private int getMaxPosition() {
         int max = -1;
         for(Car car : carList) {
-            int postion = car.getPostion();
+            CarDTO carDTO = car.getCarDTO();
+            int postion = carDTO.getPosition();
             if(postion > max){
                 max = postion;
             }
