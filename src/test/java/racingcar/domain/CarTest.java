@@ -54,63 +54,41 @@ class CarTest {
         }
 
 
-        @ParameterizedTest(name = "({index}) {1} ==> {2}")
-        @MethodSource("argumentsAboutCarAndMovingAndExpectedPosition")
+        @Test
         @DisplayName("위치 조회")
-        void getPosition_호출_시_자동차의_현재_위치를_반환한다(
-                // given
-                Car testCar, long moveDistance, long expected
-        ) {
+        void getPosition_호출_시_자동차의_현재_위치를_반환한다() {
+            // given
+            Car testCar = new Car("test");
+
             // when
-            testCar.move(moveDistance);
+            testCar.move();
 
             // then
+            long expected = 1;
             assertThat(testCar.getPosition()).isEqualTo(expected);
         }
-        static Stream<Arguments> argumentsAboutCarAndMovingAndExpectedPosition() {
-            return Stream.of(
-                    Arguments.of(new Car("test"), 10, 10),
-                    Arguments.of(new Car("test"), 0, 0),
-                    Arguments.of(new Car("pobi"), 5, 5)
-            );
-        }
+
 
         @ParameterizedTest(name = "({index}) {1} ==> {2}")
         @MethodSource("argumentsAboutCarAndMovingAndExpectedInformation")
         @DisplayName("자동차 상태 정보 조회")
         void getInformation_호출_시_자동차의_현재_상태_정보를_반환한다(
                 // given
-                Car givenCar, long moveDistance, String expected
+                Car givenCar, boolean isAbleToMove, String expected
         ) {
             // when
-            givenCar.move(moveDistance);
+            if (isAbleToMove) {
+                givenCar.move();
+            }
 
             // then
             assertThat(givenCar.getInformation()).isEqualTo(expected);
         }
         static Stream<Arguments> argumentsAboutCarAndMovingAndExpectedInformation() {
             return Stream.of(
-                    Arguments.of(new Car("test"), 10, "test : ----------"),
-                    Arguments.of(new Car("test"), 0, "test : "),
-                    Arguments.of(new Car("pobi"), 5, "pobi : -----")
+                    Arguments.of(new Car("test"), true, "test : -"),
+                    Arguments.of(new Car("test"), false, "test : ")
             );
-        }
-
-        @ParameterizedTest(name = "({index}) {0} ==> {1}")
-        @ValueSource(
-                longs = {10, 100, 1_000, 10_000, 100_000}
-        )
-        @DisplayName("이동")
-        void move_호출_시_자동차가_이동하며_이동한만큼_현재_위치가_증가한다(
-                long moveDistance
-        ) {
-            // given
-            Car testCar = new Car("test");
-
-            // when & then
-            assertThatCode(() -> testCar.move(moveDistance))
-                    .doesNotThrowAnyException();
-            assertThat(testCar.getPosition()).isEqualTo(moveDistance);
         }
 
     }

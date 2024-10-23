@@ -36,8 +36,8 @@ public class Car {
         return String.format(INFORMATION_FORMAT, this.name, totalDistance);
     }
 
-    public void move(long distance) {
-        this.position += distance;
+    public void move() {
+        this.position ++;
     }
 
 }
