@@ -1,30 +1,35 @@
-/*
 package racingcar.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.function.Supplier;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RacingTest {
     private Racing racing;
-    private List<RacingCar> racingCarList;
 
     @BeforeEach
     void init() {
-        racingCarList = List.of(
-                new RacingCar("pobi"),
-                new RacingCar("woni"),
-                new RacingCar("jun")
-        );
-        racing = new Racing(racingCarList, 1, () -> 4);
+        List<String> racingCarNames = List.of("pobi", "woni", "jun");
+        racing = new Racing(racingCarNames);
     }
 
     @Test
-    void 랜덤값이_4_이상일경우_자동차의_위치가_1_증가한다() {
+    void 현재_가장_멀리_있는_자동차를_알_수_있다() {
+        // given
+        racing.getCars().get(0).moveForward(() -> 5); // pobi 전진
+        racing.getCars().get(2).moveForward(() -> 5); // jun 전진
 
+        // when
+        List<RacingCar> farthestRacingCarList = racing.findFarthestCars();
+
+        // then
+        assertThat(farthestRacingCarList).hasSize(2)
+                .extracting("name")
+                .containsExactlyInAnyOrder("pobi", "jun");
     }
 }
-*/

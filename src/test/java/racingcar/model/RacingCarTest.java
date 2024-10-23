@@ -2,6 +2,8 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.ErrorBase.CAR_NAME_IS_BETWEEN_ONE_AND_FIVE;
+import static racingcar.exception.ErrorBase.CAR_NAME_IS_EMPTY;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +36,10 @@ class RacingCarTest {
 
         assertThatThrownBy(() -> new RacingCar(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름이 비어있습니다.");
+                .hasMessage(CAR_NAME_IS_EMPTY.getMessage());
 
         assertThatThrownBy(() -> new RacingCar("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 [1,5] 이내여야 합니다.");
+                .hasMessage(CAR_NAME_IS_BETWEEN_ONE_AND_FIVE.getMessage());
     }
 }

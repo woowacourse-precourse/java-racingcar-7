@@ -9,7 +9,7 @@ import org.junit.platform.commons.util.StringUtils;
 public class RacingCar {
     private String name; // 자동차의 이름
     private int pos; // 자동차의 현재 위치
-    private final int MOVESTANDARD = 4;
+    private final int FORWARD_STANDARD = 4;
 
 
     public RacingCar(String name) {
@@ -18,9 +18,10 @@ public class RacingCar {
     }
 
     public void moveForward(Supplier<Integer> randomSupplier) {
-        if(isForward(randomSupplier.get())) pos++;
+        if(isForward(randomSupplier.get())) {
+            pos++;
+        }
     }
-
 
     public int getPos() {
         return pos;
@@ -29,6 +30,7 @@ public class RacingCar {
     public String getName(){
         return name;
     }
+
 
     private void withName(String name) {
         if (StringUtils.isBlank(name)) {
@@ -41,6 +43,6 @@ public class RacingCar {
     }
 
     private boolean isForward(int num) {
-        return num >= MOVESTANDARD;
+        return num >= FORWARD_STANDARD;
     }
 }
