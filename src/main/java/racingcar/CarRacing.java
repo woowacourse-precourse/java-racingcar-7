@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class CarRacing {
-
     public List<RacingCar> start(RacingCarTrace racingCarTrace) {
         int tryCount = Prompt.racingTryCount();
 
