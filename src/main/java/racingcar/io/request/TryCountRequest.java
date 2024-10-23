@@ -4,25 +4,21 @@ public record TryCountRequest(
     int tryCount
 ) {
 
-    public TryCountRequest(String request) {
-        this(validateRequest(request));
+    public TryCountRequest(final String request) {
+        this(parseToInt(request));
     }
 
-    private static int validateRequest(String request) {
-        int count = parseToInt(request);
-        validateCount(count);
-        return count;
-    }
-
-    private static int parseToInt(String request) {
+    private static int parseToInt(final String request) {
         try {
-            return Integer.parseInt(request);
+            int count = Integer.parseInt(request);
+            checkNumberOver(count);
+            return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
     }
 
-    private static void validateCount(int count) {
+    private static void checkNumberOver(final int count) {
         if (count < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }

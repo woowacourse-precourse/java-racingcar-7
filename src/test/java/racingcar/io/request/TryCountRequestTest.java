@@ -26,7 +26,7 @@ class TryCountRequestTest {
 
     @DisplayName("시도 횟수는 1 이상이어야 한다.")
     @Test
-    void validateCount() {
+    void checkNumberOver() {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> new TryCountRequest("0"))
             .withMessage("시도 횟수는 1 이상이어야 합니다.");
