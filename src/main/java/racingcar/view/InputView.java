@@ -18,4 +18,9 @@ public class InputView {
     public static void printMoveInputMessage() {
         System.out.println(MOVE_INPUT_MESSAGE);
     }
+
+    public static int readMoveNumber() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }
