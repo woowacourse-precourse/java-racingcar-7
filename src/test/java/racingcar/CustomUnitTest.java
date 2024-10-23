@@ -17,5 +17,20 @@ public class CustomUnitTest {
         int randomNumber = Randoms.pickNumberInRange(8,9);
         assertThat(randomNumber).isBetween(8,9);
     }
-    
+
+
+    @Test
+    void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION(){
+        // arrange
+        CarValidator carValidator = new CarValidator();
+        Car car = new Car();
+
+        // act
+        car.setName("");
+
+        // assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            carValidator.checkEmptyOrNullCarName(car.getName());
+        });
+    }
 }
