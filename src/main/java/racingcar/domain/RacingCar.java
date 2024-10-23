@@ -14,7 +14,7 @@ public class RacingCar {
     }
 
     private void validateNameLength(String id) {
-        if (id == null || id.isEmpty()) {
+        if (id == null || id.isEmpty() || id.contains("\n")) {
             throw new IllegalArgumentException("유효하지 않은 자동차 이름입니다.");
         }
         if (id.length() > ID_MIN_LENGTH) {

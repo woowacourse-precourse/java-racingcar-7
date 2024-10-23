@@ -46,6 +46,15 @@ class RacingCarTest {
         assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
     }
 
+    @DisplayName("[예외] 객체 생성 (이름에 개행 문자 포함)")
+    @Test
+    void enterIdException() {
+        // given
+        String carName = "\nab";
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
+    }
+
     @DisplayName("[정상] 한 칸 전진")
     @Test
     void moveForward() {
