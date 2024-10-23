@@ -13,7 +13,7 @@ public class RacingCarController {
     }
 
     public void run() {
-        String rawNames = receiveCarNames();
+        String rawCarNames = receiveCarNames();
         String rawTryCount = receiveTryCount();
     }
 
