@@ -10,10 +10,32 @@ import java.util.List;
 public class RacingCar {
 
     public static void main(String[] args) {
+
+        /*
+         * 1. 자동차 이름이 중복되어서는 안된다
+         * 2. 자동차 이름에 null, 공백, ""의 값은 들어올 수 없다
+         * 3. pobi, leo, json 과 같이 구분자 사이에 공백이 있는건? trim()으로 없애자
+         */
         System.out.println("경주할 자동차 이름을 입력하세요");
         String inputCarNames = Console.readLine();
+        validateInputCarNames(inputCarNames);
+
+
         System.out.println("시도할 횟수는 몇 회인가요?");
+        /*
+         * 문자열이 들어올 경우 NumberFormatException 발생
+         * 1. try catch 사용
+         * 2. 아예 문자열로 입력을 받고 파싱하기
+         */
         String inputRoofCount = Console.readLine();
+        int roofCount = validateInputRoofCount(inputRoofCount);
+
+        List<String> carNames = Arrays.asList(inputCarNames.split(","));
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
 
         System.out.println("실행 결과");
         for (int i = 0; i < roofCount; i++) {
@@ -36,6 +58,40 @@ public class RacingCar {
             }
         }
 
+    }
+
+    private static void validateInputCarNames(String input) {
+
+    }
+
+    private static int validateInputRoofCount(String input) {
+        if (!isNumeric(input)) {
+            throw new IllegalArgumentException("숫자외의 값이 포함되어있습니다");
+        }
+
+        //음수여부도 isNumeric에서 처리되는 중
+        //TODO readLine()상태에서 Enter를 입력할 경우 NumberFormatException
+        if (isExistNegativeNumber(input)) {
+            throw new IllegalArgumentException("양의 정수만 입력할 수 있습니다");
+        }
+
+        return Integer.parseInt(input);
+    }
+
+    /*
+     * 1. 스트림을 사용할경우: 가독성은 좋지만 많은 연산이 필요할 경우 성능이 저하될 수 있음(언박싱,,오토박싱 등)
+     * 2. 반복문을 사용할경우: 가독성은 좋지 않지만 많은 연산을 수행해도 성능측면에서 스트림보다 나음
+     */
+    //문자열이 숫자로만 이루어져있는가?
+    private static boolean isNumeric(String input) {
+        return input.chars()
+                .allMatch(Character::isDigit);
+    }
+
+    //문자열에 음수가 포함되어있지 않은가?
+    private static boolean isExistNegativeNumber(String input) {
+        final String NEGATIVE_SYMBOL = "-";
+        return input.contains(NEGATIVE_SYMBOL);
     }
 
     private static List<Car> getWinners(List<Car> cars) {
