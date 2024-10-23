@@ -16,9 +16,17 @@ public class RacingCar {
         int distance = 0;
         if (engin.start()) {
             distance += 1;
-            odometer.increase(distance);
         }
+        int accumulatedMileage = odometer.increase(distance);
+        doAfterMove(accumulatedMileage);
         return distance;
+    }
+
+    private void doAfterMove(int accumulatedMileage) {
+        String oneMileMark = "-";
+        String totalMileMark = oneMileMark.repeat(accumulatedMileage);
+        System.out.printf("%s : %s", name, totalMileMark);
+        System.out.println();
     }
 
 }
