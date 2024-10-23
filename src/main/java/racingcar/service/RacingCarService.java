@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.service;
+
+import racingcar.domain.NumberOfAttempts;
+import racingcar.domain.RacingCars;
 
 public class RacingCarService {
     private final RacingCars racingCars;

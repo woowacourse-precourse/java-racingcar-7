@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.service.RacingCarService;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
     private final OutputView outputView;
