@@ -11,10 +11,9 @@ public class Race {
     }
 
     public void run(){
-        lap++;
-
         for (Racer racer : racers) {
             racer.move(Randoms.pickNumberInRange(0,9));
         }
+        lap++;
     }
 }

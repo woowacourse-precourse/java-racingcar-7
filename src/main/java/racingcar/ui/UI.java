@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.race.Racer;
 
 public class UI {
 
@@ -24,5 +25,26 @@ public class UI {
         }
 
         return times;
+    }
+
+    public void showProgress(Racer racer) {
+        System.out.print(racer.getName() + " : ");
+
+        for(int i = 0; i<racer.getPosition(); i++){
+            System.out.print("-");
+        }
+
+        System.out.println();
+    }
+
+    public void showResult(Racer[] racers) {
+        System.out.print("최종 우승자 : ");
+
+        for(int i = 0; i<racers.length; i++) {
+            System.out.print(racers[i].getName());
+            if(i < racers.length - 1){
+                System.out.print(", ");
+            }
+        }
     }
 }
