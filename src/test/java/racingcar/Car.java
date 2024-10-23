@@ -8,6 +8,11 @@ public class Car {
         this.carName = carName;
     }
 
+    public Car(String carName, int position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
     public String getCarName() {
         return carName;
     }
