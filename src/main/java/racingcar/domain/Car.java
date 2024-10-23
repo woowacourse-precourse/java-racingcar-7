@@ -28,4 +28,12 @@ public class Car {
     private static boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }
