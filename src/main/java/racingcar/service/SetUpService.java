@@ -25,8 +25,8 @@ public class SetUpService {
         checkCarNumber(carNumber);
 
         raceStatus.clearCarList();
-        for (int index = 0; index < carNumber; index++) {
-            raceStatus.setUpCar(carNameArray[index]);
+        for (String carName : carNameArray) {
+            raceStatus.setUpCar(carName);
         }
     }
 

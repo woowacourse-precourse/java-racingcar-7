@@ -44,7 +44,7 @@ public class SetUpServiceTest {
         assertThat(e.getMessage()).isEqualTo(exceptionMessage);
     }
 
-    static Stream<Arguments> invalidNames() throws Throwable {
+    static Stream<Arguments> invalidNames() {
         return Stream.of(
                 Arguments.of("pobi,cinador", "자동차 이름 5자 초과", NAME_LENGTH_MASSAGE),
                 Arguments.of("pobi,,,", "자동차 이름 1자 미만 1", NAME_LENGTH_MASSAGE),
