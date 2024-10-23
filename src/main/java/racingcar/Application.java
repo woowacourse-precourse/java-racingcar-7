@@ -14,5 +14,10 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> cars = new ArrayList<>(Arrays.asList(readLine().split(",")));
+        for (String car : cars){
+            if (car.length() > 5){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 해야합니다.");
+            }
+        }
     }
 }

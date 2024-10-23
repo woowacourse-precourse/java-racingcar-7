@@ -23,6 +23,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 자동차_이름_입력_예외테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
