@@ -35,4 +35,20 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 자동차_이름이_5자를_초과할_경우_예외가_발생한다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("mimi,btsjjk", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수로_문자가_입력될_경우_예외가_발생한다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("mimi,jk", "f"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
