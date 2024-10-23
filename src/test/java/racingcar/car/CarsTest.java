@@ -14,12 +14,14 @@ class CarsTest {
     private Car pobi;
     private Car dk;
     private Car foo;
+    private MovingStrategy defaultStrategy;
 
     @BeforeEach
     void setup() {
-        pobi = new Car("pobi");
-        dk = new Car("DK");
-        foo = new Car("foo");
+        defaultStrategy = new RandomMovingStrategy();
+        pobi = new Car("pobi", defaultStrategy);
+        dk = new Car("DK", defaultStrategy);
+        foo = new Car("foo", defaultStrategy);
     }
 
     @Test

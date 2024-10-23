@@ -6,13 +6,15 @@ import racingcar.ErrorMessage;
 public class Car {
     private final String name;
     private int position;
+    private final MovingStrategy movingStrategy;
 
-    public Car(String inputName) {
+    public Car(String inputName, MovingStrategy movingStrategy) {
         validateBlank(inputName);
         this.name = inputName;
+        this.movingStrategy = movingStrategy;
     }
 
-    public void move(MovingStrategy movingStrategy) {
+    public void move() {
         if (movingStrategy.movable()){
             position++;
         }

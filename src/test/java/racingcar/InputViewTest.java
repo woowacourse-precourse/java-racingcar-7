@@ -12,7 +12,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest {
-
     private InputView inputView;
 
     @BeforeEach
@@ -45,7 +44,7 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("RuntimeException 발생 시 그대로 터진다.")
+    @DisplayName("NoSuchElementException 예외 이외는 발생 시 그대로 터진다.")
     void unexpectedExceptionIsHandled() {
         String exceptionMessage = "강제 발생한 RuntimeException";
         InputStream mockIn = new InputStream() {

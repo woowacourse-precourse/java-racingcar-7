@@ -13,6 +13,10 @@ public record Cars(List<Car> carList) {
         this.carList = Collections.unmodifiableList(carList);
     }
 
+    public void moveAll(){
+        carList.forEach(Car::move);
+    }
+
     private void validateDuplicateNames(List<Car> carList) {
         Set<String> uniqueNames = carList.stream()
                 .map(Car::getName)
