@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,22 +10,38 @@ public class Controller {
     InputView input = new InputView();
     OutputView output = new OutputView();
 
-    ArrayList<String> nameList;
+    ArrayList<Car> carList = new ArrayList<Car>();
+    ArrayList<Integer> positionList;
     int count;
 
     public Controller() {
-
-    }
-
-    public void start() {
         setVar();
     }
 
-    public void setVar() {
-        nameList = new ArrayList<String>(Arrays.asList(input.getName().split(",")));
-        count = input.getCount();
-        model = new Model(input, output, nameList);
+    public void start() {
+
     }
 
+    public void setVar() {
+        ArrayList<String> nameList = new ArrayList<String>(Arrays.asList(input.getName().split(",")));
+        count = input.getCount();
+        model = new Model(input, output, carList);
+
+    }
+
+    public void isInputValid(ArrayList<String> nameList) {
+        ArrayList<String> temp = new ArrayList<String>();
+        for (String s : nameList) {
+            if (temp.contains(s)) {
+                throw new IllegalArgumentException("이미 존재하는 이름입니다.");
+            }
+            else if (s.length() > 5) {
+                throw new IllegalArgumentException("이름은 5글자를 초과할 수 없습니다.");
+            }
+            else {
+                temp.add(s);
+            }
+        }
+    }
 
 }
