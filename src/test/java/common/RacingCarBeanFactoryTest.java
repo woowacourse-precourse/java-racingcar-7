@@ -7,7 +7,6 @@ import service.RacingService;
 
 class RacingCarBeanFactoryTest {
 
-
     @DisplayName("레이싱카서비스 빈을 가져올 수 있다.")
     @Test
     void getRacingService() {

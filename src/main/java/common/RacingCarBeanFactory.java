@@ -25,7 +25,7 @@ public class RacingCarBeanFactory implements BeanFactory {
 
     @Override
     public VehicleRepository provideVehicleRepository() {
-        return new CarRepositoryImpl(new HashMap<>());
+        return new CarRepositoryImpl(new HashMap<String,Car>());
     }
 
 }
