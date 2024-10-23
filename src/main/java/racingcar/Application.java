@@ -11,7 +11,7 @@ public class Application {
         String move_cnt = Console.readLine();
         ArrayList<Car> race_result = race_start(cars,move_cnt);
         ArrayList<String> winners = getRaceWinners(race_result);
-
+        printWinners(winners);
     }
     public static ArrayList<Car> add_cars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
@@ -51,6 +51,7 @@ public class Application {
             }
             System.out.println();
         }
+        System.out.println();
     }
     public static ArrayList<String> getRaceWinners(ArrayList<Car> carList) {
         int maxwins = 0;
@@ -66,5 +67,13 @@ public class Application {
             }
         }
         return winners;
+    }
+    public static void printWinners(ArrayList<String> winners) {
+        int i;
+        System.out.print("최종 우승자 : ");
+        for(i=0; i<winners.size()-1; i++) {
+            System.out.print(winners.get(i)+", ");
+        }
+        System.out.print(winners.get(winners.size()-1));
     }
 }
