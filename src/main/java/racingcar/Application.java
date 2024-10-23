@@ -11,19 +11,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램
 
-        // 자동차 이름 입력
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputName = Console.readLine();
-
-        // 자동차 이름 구분
-        String[] names = inputName.split(",");
-
-        // 자동차 이름 글자수 검증
-        for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-        }
+        final String[] names = getInput();
 
         // 자동차 객체 생성
         List<Car> cars = new ArrayList<>();
@@ -76,6 +64,32 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
+
+    private static String[] getInput() {
+        // 자동차 이름 입력
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String inputName = Console.readLine();
+
+        // 자동차 이름 구분
+        final String[] names = splitDelimiter(inputName);
+
+        // 자동차 이름 글자수 검증
+        validateNameLength(names);
+
+        return names;
+    }
+
+    private static void validateNameLength(String[] names) {
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
+
+    private static String[] splitDelimiter(String inputName) {
+        return inputName.split(",");
     }
 
     static class Car {
