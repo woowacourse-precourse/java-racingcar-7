@@ -26,11 +26,11 @@ public class RacingGame {
         return roundResults;
     }
 
-    public void raceRound() {
+    private void raceRound() {
         racingCars.forEach(Car::move);
     }
 
-    public List<CarStatusDto> getCurrentRoundStatus() {
+    private List<CarStatusDto> getCurrentRoundStatus() {
         return racingCars.stream()
                 .map(car -> new CarStatusDto(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
