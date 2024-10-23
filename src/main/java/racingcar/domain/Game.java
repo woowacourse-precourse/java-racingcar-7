@@ -30,6 +30,7 @@ public class Game {
                 getCars().get(i).move();
             }
         }
+        OutputView.printCarMove(cars);
     }
 
     public List<Car> findWinners() {
