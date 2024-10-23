@@ -18,6 +18,7 @@ public class OutputView {
     public void printCarStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.printf(Constant.CAR_STATUS_MESSAGE, car.getName(), Constant.MOVE_STRING.repeat(car.getScore()));
+            printEmptyLine();
         }
     }
 
