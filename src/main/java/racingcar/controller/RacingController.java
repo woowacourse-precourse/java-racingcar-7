@@ -4,13 +4,13 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Race;
 import racingcar.util.CarNameParser;
+import racingcar.util.RoundResultGenerator;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
 
 import java.util.List;
 
-import static racingcar.constants.OutputMessages.ASK_CAR_NAMES;
-import static racingcar.constants.OutputMessages.ASK_TRY_COUNT;
+import static racingcar.constants.OutputMessages.*;
 
 public class RacingController {
     private final InputView inputView;
@@ -37,8 +37,15 @@ public class RacingController {
     private void startRace(List<Car> cars, int tryCount) {
         Race race = new Race(cars);
 
+        outputView.printNewLine();
+        outputView.printMessage(RESULT_TITLE);
+
         for(int round = 0; round < tryCount; round++) {
             race.start();
+
+            List<String> roundResults = RoundResultGenerator.generate(cars);
+            outputView.printRound(roundResults);
+            outputView.printNewLine();
         }
     }
 }
