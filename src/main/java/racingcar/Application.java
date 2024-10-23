@@ -13,6 +13,10 @@ public class Application {
         String input = Console.readLine();
 
         List<Car> cars = createParticipant(input);
+
+        for (Car car : cars) {
+            System.out.println(car.getCarName());
+        }
     }
 
     public static List<Car> createParticipant(String input) {
