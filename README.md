@@ -1,29 +1,45 @@
 # java-racingcar-precourse
 
 ## 1차 기능 구현 목록
+
 - 기본 입력
-  - 경주할 자동차 이름 입력 - Console.readLine 활용
-    - 쉼표로 구분 : 쉼표가 아닐 시 예외 처리
-    - 이름 : 5자 이하가 아닐 시 예외 처리
-    - 예외는 IllegalArgumentException으로 관리
-  - 시도 횟수 입력
+    - 경주할 자동차 이름 입력 - Console.readLine 활용
+        - 쉼표로 구분 : 쉼표가 아닐 시 예외 처리
+        - 이름 : 5자 이하가 아닐 시 예외 처리
+        - 예외는 IllegalArgumentException으로 관리
+    - 시도 횟수 입력
 
 - 경주 진행
-  - 자동차마다 0 ~ 9 사이 무작위 값 추출 후 4 이상이면 전진 - Randoms.pickNumberInRange 활용
-  
-- 경주 종료
-  - 우승자 이름 반환
-  - 우승자가 여러 명이면 쉼표 이용하여 구분
+    - 자동차마다 0 ~ 9 사이 무작위 값 추출 후 4 이상이면 전진 - Randoms.pickNumberInRange 활용
 
+- 경주 종료
+    - 우승자 이름 반환
+    - 우승자가 여러 명이면 쉼표 이용하여 구분
 
 ## 클래스 다이어그램
+
 - 메시지를 선택한 후 메시지를 처리할 책임이 있는 객체를 할당하는 방법으로 클래스 다이어그램을 제작했습니다
-  
-![자동차 경주 1차 클래스 다이어그램 (1)](https://github.com/user-attachments/assets/bb7d9fb6-7229-4dba-a41a-8047913f59b0)
 
+![자동차 경주 1차 클래스 다이어그램](https://github.com/user-attachments/assets/7e09a81a-5260-4dcd-a52c-ccec238c061d)
 
+## 패키지 설계
+
+- view
+    - InputView : 자동차 이름, 시도 횟수 입력 문구 출력
+    - ResultView : 경주 결과, 우승자 출력
+
+- domain
+    - CarFactory : 자동차 이름을 기준으로 Cars 생성
+    - Cars : 생성된 여러 Car을 관리
+    - Car : 각 자동차를 의미. 이동/정지 결정
+    - WinnerFinder : Cars 중 우승자를 찾음
+
+- controller
+    - RacingSetUp : 자동차 이름, 시도 횟수 초기화
+    - RacingGame : 자동차 경주 게임을 실행
 
 ## 프로그래밍 요구사항
+
 - 들여쓰기는 2까지 허용
 - 삼항 연산자 금지
 - 함수는 한 가지 일만 하도록
