@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,7 +53,7 @@ public class CustomUnitTest {
     }
 
     @Test
-    void CHECK_CAR_NAME_HAS_SPACE_INBETWEEN_EXCEPTION(){
+    void CHECK_CAR_NAME_HAS_SPACE_IN_BETWEEN_EXCEPTION(){
         //arrange
         Validator validator = new CarValidator();
         Car car = new Car();
@@ -62,5 +65,23 @@ public class CustomUnitTest {
         assertThrows(IllegalArgumentException.class, () -> {
             validator.checkCarNameHasSpace(car.getName());
         });
+    }
+
+    @Test void TRIM_SPACES_AT_BOTH_ENDS(){
+        //arrange
+        List<Car> carList = new ArrayList<Car>();
+        Formatter formatter = new CarListFormatter();
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        //act
+        car1.setName(" AB");
+        car2.setName("CD ");
+        carList.add(car1);
+        carList.add(car2);
+        formatter.trimSpaces(carList);
+        List<String> nameList = List.of("AB","CD");
+
+        assertThat(nameList).containsExactly("AB","CD");
     }
 }
