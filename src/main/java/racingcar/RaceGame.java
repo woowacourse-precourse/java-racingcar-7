@@ -19,4 +19,13 @@ public class RaceGame {
         }
         return carList;
     }
+
+    public void playRound() {
+        for (Car car : cars) {
+            if (RaceUtil.canMove()) {
+                car.moveForward();
+            }
+        }
+    }
+
 }
