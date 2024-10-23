@@ -19,6 +19,11 @@ public class Application {
 
         for (String carName : carNames) {
             carName = carName.trim(); // 이 부분 나중에 Car에 메세지를 주는식으로 바꿔도 될듯
+
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
+            }
+
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
@@ -37,16 +42,13 @@ public class Application {
         System.out.println("실행 결과");
         for (int i = 0; i < attempts; i++) {
             for (final Car car : cars) {
-                int number = pickNumberInRange(0, 9);
+                final int number = pickNumberInRange(0, 9);
                 if (number >= 4) {
                     car.move();
                 }
             }
-            // 경주의 현재 상태를 출력한다.
-            for (final Car car : cars) {
-                System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-            }
-            System.out.println();
+
+            printCurrentStatus(cars);
         }
 
         // 우승자의 position 추출
@@ -64,5 +66,12 @@ public class Application {
         //최종 우승자 출력
         String winnerNames = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerNames);
+    }
+
+    private static void printCurrentStatus(List<Car> cars) {
+        for (final Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 }
