@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
@@ -27,7 +28,7 @@ public class OutputViewTest {
             car2.move();
         }
         List<Car> cars = Arrays.asList(car1, car2);
-        String expectedOutput = "pobi : ----\njun : --\n";
+        String expectedOutput = "pobi : ----\njun : --\n\n";
 
         OutputView.printCarMove(cars);
         assertEquals(expectedOutput, outputStream.toString());
