@@ -21,6 +21,13 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,준팍", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "준팍 : -", "최종 우승자 : pobi, 준팍");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
     }
 
     @Test
@@ -28,6 +35,18 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,でja", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
