@@ -7,6 +7,7 @@
 ---
 
 ### 1. User
+
 - 경주할 자동차 이름을 입력할 수 있다.
     - 1개 이상
     - 구분은 쉼표(,)로 한다.
@@ -16,6 +17,7 @@
 <br>
 
 ### 2. System
+
 - 자동차에는 이름을 부여할 수 있다.
     - 이름의 길이는 5자 이하
 - 자동차는 두 가지 상태를 가진다.
@@ -39,6 +41,7 @@
 ---
 
 ### 1. 자동차 이름 입력
+
 - [ ] 자동차 이름을 하나도 입력하지 않은 경우
 - [ ] 구분자가 쉼표(,)가 아닌 경우
 - [ ] 글자 사이에 공백이 들어간 경우
@@ -48,6 +51,7 @@
 <br>
 
 ### 2. 시도할 횟수 입력
+
 - [ ] 0 이하의 값을 입력하는 경우
 - [ ] 소수점있는 값을 입력하는 경우
 - [ ] 숫자 이외의 문자가 들어가는 경우
@@ -55,6 +59,7 @@
 <br>
 
 ### 3. 우승자 출력
+
 - [ ] 우승자가 0명인 경우
 - [ ] ~~[Don’t care]공동 우승일 때 출력 순서~~
 
@@ -66,15 +71,17 @@
 ---
 
 ### 1. RacingCar
-   | Method          | Parameter         | Return Type | Implementation |
+
+| Method          | Parameter         | Return Type | Implementation |
    |-----------------|-------------------|-------------|----------------|
-   | completedAllLap | -                 | boolean     | DONE ✅         |
-   | myProgress      | -                 | String      | DONE ✅         |
-   | updateProgress  | MovementCondition | void        |                |
+| completedAllLap | -                 | boolean     | DONE ✅         |
+| myProgress      | -                 | String      | DONE ✅         |
+| updateProgress  | MovementCondition | void        |                |
 
 <br>
 
 ### 2. Cars
+
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
 |        |           |             |                |
@@ -82,13 +89,15 @@
 <br>
 
 ### 3. MovementCondition : Enum
-| Method       | Parameter | Return Type       | Implementation |
-|--------------|-----------|-------------------|----------------|
-| getCondition | Integer   | MovementCondition |                |
+
+| Method      | Parameter | Return Type | Implementation |
+|-------------|-----------|-------------|----------------|
+| getDistance | -         | int         | Done ✅         |
 
 <br>
 
 ### 4. MyProgress
+
 | Method             | Parameter         | Return Type | Implementation |
 |--------------------|-------------------|-------------|----------------|
 | completedAllLap    | -                 | boolean     | Done ✅         |
@@ -99,6 +108,7 @@
 <br>
 
 ### 5. Lap
+
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
 | next   | -         | void        |                |
@@ -106,6 +116,7 @@
 <br>
 
 ### 6. Position
+
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
 | TBD    | TBD       | TBD         |                |
@@ -113,6 +124,7 @@
 <br>
 
 ### 7. Race
+
 | Method        | Parameter | Return Type | Implementation |
 |---------------|-----------|-------------|----------------|
 | isPlaying     | -         | boolean     |                |
@@ -121,6 +133,7 @@
 <br>
 
 ### 8. DashBoard
+
 | Method          | Parameter | Return Type | Implementation |
 |-----------------|-----------|-------------|----------------|
 | offerLapChart   | -         | String      |                |
