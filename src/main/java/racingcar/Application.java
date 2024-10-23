@@ -13,7 +13,7 @@ public class Application {
 
     public static void validateCharacters(List<String> names) {
         final String englishRegex = "a-zA-Z";
-        final String koreanRegex = "가-힣";
+        final String koreanRegex = "ㄱ-ㅎㅏ-ㅣ가-힣";
 
         if (!names.stream().allMatch(name -> name.matches("^[" + englishRegex + koreanRegex + "]*$"))) {
             throw new IllegalArgumentException("이름에 허용되지 않는 문자가 들어가 있습니다 (한국어+영어만 가능).");

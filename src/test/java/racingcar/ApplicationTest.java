@@ -23,10 +23,10 @@ class ApplicationTest extends NsTest {
         );
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni,준팍", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "준팍 : -", "최종 우승자 : pobi, 준팍");
+                    run("pobi,woni,준팍,ㅇㅇ", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "준팍 : ", "ㅇㅇ : -", "최종 우승자 : pobi, ㅇㅇ");
                 },
-                MOVING_FORWARD, STOP, MOVING_FORWARD
+                MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
         );
     }
 
