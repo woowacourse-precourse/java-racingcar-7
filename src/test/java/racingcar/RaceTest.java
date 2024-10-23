@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 import static racingcar.ErrorCode.*;
+import static racingcar.race.constants.RaceCriterion.*;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,7 @@ import racingcar.race.Race;
 @DisplayName("Race 클래스 테스트")
 public class RaceTest {
 
-    private final Acceleration acceleration = new FixedAcceleration(4);
+    private final Acceleration acceleration = new FixedAcceleration(MOVING_FORWARD.getCriterion());
 
     @Test
     void 문자열을_파싱하여_자동차_객체를_생성한다() {

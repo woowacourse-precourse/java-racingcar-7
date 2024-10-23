@@ -1,12 +1,13 @@
 package racingcar.car;
 
+import static racingcar.race.constants.RaceCriterion.*;
+
 import racingcar.Acceleration;
 import racingcar.vo.CarName;
 import racingcar.vo.Position;
 
 public class Car {
 
-    private final static int MOVE_FORWARD_CRITERION = 4;
     private CarName name;
     private Position position;
     private Acceleration acceleration;
@@ -19,7 +20,7 @@ public class Car {
 
     public void move() {
         int forwardCriterion = acceleration.generateForwardCriterion();
-        if (forwardCriterion >= MOVE_FORWARD_CRITERION) {
+        if (forwardCriterion >= MOVING_FORWARD.getCriterion()) {
             this.position = position.increase();
         }
     }
