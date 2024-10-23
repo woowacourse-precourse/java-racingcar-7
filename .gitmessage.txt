@@ -1,0 +1,58 @@
+  ################
+  # 모든 커밋 라인은 100자를 초과하면 안된다!
+  # <type>(<scope>): <subject> 형식으로 제목작성
+  # Allowed <type> type으로 올 수 있는 것들
+    # feat (feature)
+    # fix (bug fix)
+    # docs (documentation)
+    # style (formatting, missing semi colons, …)
+    # refactor
+    # test (when adding missing tests)
+    # chore (maintain) chore : 빌드 업무 수정, 패키지 매니저 수정
+  # <scope> 커밋이 영향을 미치는 코드의 범위 기재
+  # <subject>
+    # 명령형, 현재시제(동사원형쓰기) 사용
+    # 첫 글자 대문자 금지
+    # 끝에 마침표(.) 금지
+
+  # 아래 공백 지우지 말기
+
+  ################
+  # 본문부분
+  # 현재시제(동사원형쓰기) 사용
+  # 이유와 이전 코드와의 다른 점을 중점으로 기술하기
+
+  ################
+  # footer부분
+  # 주요 변경내역기록
+  # BREAKING CHANGE : 코드의 어떤 부분이 변경 되었는지 기술(다른 사람들도 보고 적용할 수 있게)
+
+  ################
+  # footer 형식 예시
+  #BREAKING CHANGE: isolate scope bindings definition has changed and
+  #   the inject option for the directive controller injection was removed.
+  #
+  #    To migrate the code follow the example below:
+  #
+  #    Before:
+  #
+  #    scope: {
+  #      myAttr: 'attribute',
+  #      myBind: 'bind',
+  #      myExpression: 'expression',
+  #      myEval: 'evaluate',
+  #      myAccessor: 'accessor'
+  #    }
+  #
+  #    After:
+  #
+  #    scope: {
+  #      myAttr: '@',
+  #      myBind: '@',
+  #      myExpression: '&',
+  #      // myEval - usually not useful, but in cases where the expression is assignable, you can use '='
+  #      myAccessor: '=' // in directive's template change myAccessor() to myAccessor
+  #    }
+  #
+  #    The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+  ################
