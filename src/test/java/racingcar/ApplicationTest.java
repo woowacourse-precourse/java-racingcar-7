@@ -24,11 +24,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 기능_테스트2() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "5");
+                assertThat(output()).contains("pobi : -----", "woni : ----", "jun : -----", "최종 우승자 : pobi");
+            }, 4, 0,4
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override
