@@ -1,19 +1,24 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 import racingcar.repository.impl.CarRepositoryImpl;
-import racingcar.util.Validator;
-import racingcar.util.impl.NameValidator;
-import racingcar.util.impl.NumberValidator;
+import racingcar.validator.Validator;
+import racingcar.validator.impl.NameValidator;
+import racingcar.validator.impl.NumberValidator;
 
 public class Racing {
-    CarRepository carRepository = new CarRepositoryImpl();
-    Validator nameValidator = new NameValidator();
-    Validator numberValidator = new NumberValidator();
+    CarRepository carRepository;
+    Validator nameValidator;
+    Validator numberValidator;
+
+    public Racing() {
+        this.carRepository = new CarRepositoryImpl();
+        this.nameValidator = new NameValidator();
+        this.numberValidator = new NumberValidator();
+    }
 
     public void race() {
         inputRacingCar();
@@ -21,7 +26,7 @@ public class Racing {
         int number = inputFrequency();
         printExecution(number);
 
-        int maxDistance = countMaxDistance();
+        int maxDistance = getMaxDistance();
         List<Car> winners = decisionWinners(maxDistance);
 
         printWinners(winners);
@@ -32,22 +37,24 @@ public class Racing {
     private void inputRacingCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
+
+        carNameInput = carNameInput.replaceAll(" ", "");
         List<String> carNames = List.of(carNameInput.split(","));
         nameValidator.validate(carNames);
 
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            carRepository.save(car);
-        }
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .toList();
+
+        carRepository.saveAll(cars);
     }
 
     private int inputFrequency() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberInput = Console.readLine();
         numberValidator.validate(numberInput);
-        int number = Integer.parseInt(numberInput);
 
-        return number;
+        return Integer.parseInt(numberInput);
     }
 
     private void printExecution(int number) {
@@ -64,38 +71,32 @@ public class Racing {
         }
     }
 
-    private int countMaxDistance() {
+    private int getMaxDistance() {
         List<Car> carsResult = carRepository.findAll();
-        int maxDistance = 0;
-        for (Car car : carsResult) {
-            int carDistance = car.getDistance();
-            if (carDistance > maxDistance) {
-                maxDistance = carDistance;
-            }
-        }
+
+        int maxDistance = carsResult.stream()
+                .map(Car::getDistance)
+                .max(Integer::compareTo)
+                .orElse(0);
 
         return maxDistance;
     }
 
     private List<Car> decisionWinners(int maxDistance) {
         List<Car> carsResult = carRepository.findAll();
-        List<Car> winners = new ArrayList<>();
-        for (Car car : carsResult) {
-            if (car.getDistance() == maxDistance) {
-                winners.add(car);
-            }
-        }
+        List<Car> winners = carsResult.stream()
+                .filter((car) -> car.getDistance() == maxDistance)
+                .toList();
 
         return winners;
     }
 
     private void printWinners(List<Car> winners) {
-        System.out.print("최종 우승자 : " + winners.getFirst().getName());
-        if (winners.size() > 1) {
-            for (int i = 1; i < winners.size(); i++) {
-                System.out.print(", " + winners.get(i).getName());
-            }
-        }
-    }
+        String[] winnerArr = winners.stream()
+                .map(Car::getName)
+                .toArray(String[]::new);
 
+        String winnersStr = String.join(", ", winnerArr);
+        System.out.print("최종 우승자 : " + winnersStr);
+    }
 }

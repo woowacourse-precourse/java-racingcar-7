@@ -14,6 +14,13 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
+    public void saveAll(List<Car> cars) {
+        for (Car car : cars) {
+            this.save(car);
+        }
+    }
+
+    @Override
     public List<Car> findAll() {
         return cars;
     }

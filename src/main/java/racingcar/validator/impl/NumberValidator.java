@@ -1,6 +1,6 @@
-package racingcar.util.impl;
+package racingcar.validator.impl;
 
-import racingcar.util.Validator;
+import racingcar.validator.Validator;
 
 public class NumberValidator implements Validator {
     @Override
