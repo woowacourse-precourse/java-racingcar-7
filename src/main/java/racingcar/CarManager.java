@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarManager {
     private static final String DELIMITER = ",";
@@ -34,18 +33,25 @@ public class CarManager {
         }
     }
 
-    public List<Car> getList() {
-        return new ArrayList<>(list);
+    public List<Car> getSortedList() {
+        List<Car> sortedList = new ArrayList<>(this.list);
+        sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
+        return sortedList;
     }
 
     public List<String> getWinner() {
-        return getList().stream()
-                .filter(car -> car.getPosition() == getMaxPosition())
+        int maxPosition = getMaxPosition();
+        return getSortedList().stream()
+                .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
     }
+
+    public List<Car> getList() {
+        return list;
+    }
+
     private int getMaxPosition() {
-        getList().sort(Comparator.comparing(Car::getPosition).reversed());
-        return getList().getFirst().getPosition();
+        return getSortedList().getFirst().getPosition();
     }
 }
