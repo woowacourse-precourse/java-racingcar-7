@@ -7,6 +7,8 @@ public class RacingService {
     private final String CAR_INPUT_DELIMITER = ",";
     private final int MOVE_COUNT;
     private final int INITIAL_POSITION = 0;
+    private final int FORWARD_STEP = 1;
+    private final int STOP_STEP = 0;
     private final HashMap<String, Integer> CAR_MAP = new HashMap<>();
 
     public RacingService(String carInput, int moveCount) {
@@ -29,9 +31,14 @@ public class RacingService {
         }
     }
 
-
-
     public int createRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public int decideMovement(int randomValue) {
+        if (randomValue >= 4) {
+            return FORWARD_STEP;
+        }
+        return STOP_STEP;
     }
 }
