@@ -14,4 +14,8 @@ public class Race {
                 .map(Car::new)
                 .toList();
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
