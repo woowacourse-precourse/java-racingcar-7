@@ -6,8 +6,7 @@ import java.util.List;
 public class RaceManager {
     public static final IOHandler IO_HANDLER = new IOHandler();
 
-    public List<String> setupRace() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    public List<String> getRacerList() {
         return IO_HANDLER.setRacerList();
     }
 
@@ -28,9 +27,9 @@ public class RaceManager {
     }
 
     private static String getWinner(List<RacingCar> racingCars) {
-        List<String> winners = new ArrayList<>();
-        int maxScore = 0;
 
+        int maxScore = 0;
+        List<String> winners = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
             int score = racingCar.getStatus();
             if (score > maxScore) {
@@ -41,6 +40,6 @@ public class RaceManager {
                 winners.add(racingCar.getName());
             }
         }
-        return String.join(",", winners);
+        return IO_HANDLER.getWinerList(winners);
     }
 }
