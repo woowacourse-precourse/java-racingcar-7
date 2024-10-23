@@ -9,17 +9,12 @@ public class CarGame {
 
     private List<Car> participants;
     private List<Car> winners;
-    private int attempts;
     private int maxDistance;
 
     public CarGame() {
         this.participants = new ArrayList<>();
         this.winners = new ArrayList<>();
         this.maxDistance = 0;
-    }
-
-    public void updateAttempts(int attempts) {
-        this.attempts = attempts;
     }
 
     public void updateMaxDistance(int maxDistance) {

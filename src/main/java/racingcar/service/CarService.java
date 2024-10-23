@@ -14,10 +14,6 @@ public class CarService {
         this.carGame = new CarGame();
     }
 
-    public void updateAttempts(int attempts) {
-        this.carGame.updateAttempts(attempts);
-    }
-
     public void addParticipant(String name){
         Car newCar = new Car(name, 0);
         carGame.addParticipant(newCar);
@@ -59,4 +55,7 @@ public class CarService {
                 .toList();
     }
 
+    public List<Car> getParticipants(){
+        return carGame.getParticipants();
+    }
 }

@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -35,8 +36,13 @@ public class CarController {
     }
 
     private void startGame(int attempts) {
+        outputView.printResultMessage();
+
+        List<Car> participants = carService.getParticipants();
         for (int i = 0; i < attempts; i++) {
             carService.advanceCars();
+            outputView.printResult(participants);
+
         }
         carService.updateWinners();
     }
