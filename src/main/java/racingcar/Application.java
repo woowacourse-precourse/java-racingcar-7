@@ -12,7 +12,7 @@ public class Application {
     static String INVAILD_INPUT_MESSAGE = "잘못된 입력입니다. ";
     static List<String> carNames = new ArrayList<>();
     static int attemptCount;
-    static Map<String, Integer> racingResult = new HashMap<>();
+    static Map<String, Integer> racingWin = new HashMap<>();
 
     public static void main(String[] args) {
         input();
@@ -20,6 +20,9 @@ public class Application {
         for (int i = 0; i < attemptCount; i++) {
             carRacing(carNames);
         }
+
+        int maxWinCount = getWinCount();
+        //printFinalWinners(maxWinCount);
     }
 
     private static void input() {
@@ -74,7 +77,7 @@ public class Application {
 
         racingOutput(scores);
         System.out.println();
-        //getWinner(scores, max);
+        getWinner(scores, max);
     }
 
     private static Integer randomScore() {
@@ -98,5 +101,21 @@ public class Application {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    private static void getWinner(List<Integer> scores, int max) {
+        for (int i = 0; i < scores.size(); i++) {
+            if (scores.get(i) == max) {
+                racingWin.put(carNames.get(i), racingWin.getOrDefault(carNames.get(i), 0) + 1);
+            }
+        }
+    }
+
+    private static int getWinCount() {
+
+        List<String> keySet = new ArrayList<>(racingWin.keySet());
+        //우승 회수 내림차순 정렬
+        keySet.sort((o1, o2) -> racingWin.get(o2).compareTo(racingWin.get(o1)));
+        return racingWin.get(keySet.get(0));
     }
 }
