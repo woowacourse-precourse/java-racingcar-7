@@ -12,8 +12,8 @@ import java.util.Map.Entry;
 public class Application {
 
     public static void validateCharacters(List<String> names) {
-        String englishRegex = "a-zA-Z";
-        String koreanRegex = "가-힣";
+        final String englishRegex = "a-zA-Z";
+        final String koreanRegex = "가-힣";
 
         if (!names.stream().allMatch(name -> name.matches("^[" + englishRegex + koreanRegex + "]*$"))) {
             throw new IllegalArgumentException("이름에 허용되지 않는 문자가 들어가 있습니다 (한국어+영어만 가능).");
@@ -21,7 +21,7 @@ public class Application {
     }
 
     public static void validateLength(List<String> names) {
-        int MAX_NAME_LENGTH = 5;
+        final int MAX_NAME_LENGTH = 5;
 
         if (!names.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH)) {
             throw new IllegalArgumentException("각 이름의 길이는 " + MAX_NAME_LENGTH + "자를 넘길 수 없습니다.");
