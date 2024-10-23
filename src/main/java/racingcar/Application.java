@@ -7,8 +7,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application ap = new Application();
-
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        ap.start(ap);
+    }
+    
+    public void start(Application ap) {
+    	System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         try{
             member = Console.readLine().split(",");
         }catch (IllegalArgumentException e){
@@ -28,10 +31,11 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
         for(int i = 0; i < try_count; i++){
-            ap.r_print();
+            ap.r_print(ap);
         }
         ap.result_print(ap.winner_score());
     }
+    
     public void mem_trim() {
         for(String str : member) {
             if(str.trim().isEmpty()) {
@@ -39,12 +43,13 @@ public class Application {
             }
         }
     }
-    public void r_print(){
-        Application ap = new Application();
+    
+    public void r_print(Application ap){
         ap.add();
         ap.print_result();
         System.out.println();
     }
+    
     public void result_print(int max){
         System.out.print("최종 우승자 : ");
         boolean check = true;
