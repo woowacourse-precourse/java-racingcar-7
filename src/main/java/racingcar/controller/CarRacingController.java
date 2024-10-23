@@ -12,13 +12,13 @@ import racingcar.view.OutputView;
  * 전체적인 진행을 맡는 클래스
  * View와 메시지를 주고 받는다.
  */
-public class CarController {
+public class CarRacingController {
 
     private final InputView inputView;
 
     private final OutputView outputView;
 
-    public CarController(InputView inputView, OutputView outputView) {
+    public CarRacingController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
