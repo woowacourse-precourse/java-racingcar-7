@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -44,5 +45,7 @@ public class Application {
         if (!playTimesInput.matches("^[1-9]\\d*$")) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수이어야 합니다.");
         }
+
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
     }
 }
