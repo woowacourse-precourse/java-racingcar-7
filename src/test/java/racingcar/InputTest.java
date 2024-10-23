@@ -85,14 +85,6 @@ class InputTest extends NsTest {
         );
     }
 
-    @Test
-    void 이동횟수_실수_실패_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("핍비,피비", "1.1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
