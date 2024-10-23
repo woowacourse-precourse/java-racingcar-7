@@ -19,6 +19,9 @@ public class RacingGame {
         nameCheck(cars);
         System.out.println(GAME_COUNT_MESSAGE);
         int count = Integer.parseInt(readLine());
+        for (int i = 0; i < count; i++) {
+            cars = findMovingCar(cars);
+        }
     }
 
     private void nameCheck(List<Car> cars) {
@@ -27,6 +30,15 @@ public class RacingGame {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    private List<Car> findMovingCar(List<Car> cars) {
+        return cars.stream().map(car -> {
+            if (randomNumberPick() >= 4) {
+                car.distance++;
+            }
+            return car;
+        }).collect(Collectors.toList());
     }
 
     private int randomNumberPick() {
