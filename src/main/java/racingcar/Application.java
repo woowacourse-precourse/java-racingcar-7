@@ -1,6 +1,5 @@
 package racingcar;
 
-
 import racingcar.controller.RacingController;
 
 public class Application {
