@@ -1,4 +1,4 @@
-package racingcar.printer;
+package racingcar.application.printer;
 
 import java.util.List;
 import racingcar.application.Printer;

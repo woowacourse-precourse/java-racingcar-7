@@ -1,4 +1,4 @@
-package racingcar.nameseparator;
+package racingcar.application.nameseparator;
 
 import java.util.Arrays;
 import java.util.List;
