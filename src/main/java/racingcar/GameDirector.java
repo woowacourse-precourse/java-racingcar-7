@@ -20,7 +20,7 @@ public class GameDirector {
     }
 
     public void printWinner(List<Car> matchResult) {
-        String winner = manager.getWinner(matchResult);
+        String winner = manager.findWinner(matchResult);
         Printer.print(RESULT,winner);
     }
 }

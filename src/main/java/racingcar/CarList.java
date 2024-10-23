@@ -9,6 +9,7 @@ import java.util.List;
 
 public class CarList {
     private static final String DELIMITER = ",";
+    private static final int SINGLE_WINNER = 1;
     private final List<Car> list;
 
     public CarList() {
@@ -34,14 +35,15 @@ public class CarList {
         return this.getList();
     }
 
-    public String getWinner(List<Car> matchResult) {
-        int maxPosition = getMaxPosition(matchResult);
-        List<String> winnerList = matchResult.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+    public String findWinner(List<Car> matchResult) {
+        return getWinnerNames(matchResult.stream()
+                .filter(car -> car.getPosition() == findMaxPosition(matchResult))
                 .map(Car::getName)
-                .toList();
+                .toList());
+    }
 
-        if (winnerList.size() == 1) {
+    private static String getWinnerNames(List<String> winnerList) {
+        if (winnerList.size() == SINGLE_WINNER) {
             return winnerList.getFirst();
         }
         return String.join(DELIMITER, winnerList);
@@ -51,7 +53,7 @@ public class CarList {
         return list;
     }
 
-    private int getMaxPosition(List<Car> matchResult) {
+    private int findMaxPosition(List<Car> matchResult) {
         List<Car> sortedList = new ArrayList<>(matchResult);
         sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
         return sortedList.getFirst().getPosition();

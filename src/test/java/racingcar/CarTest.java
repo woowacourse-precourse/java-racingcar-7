@@ -15,22 +15,22 @@ class CarTest {
         String case1 = "pobi,woni,jun";
         String case2 = "pobi";
 
-        CarManager manager1 = new CarManager();
-        manager1.add(case1);
+        CarList list1 = new CarList();
+        list1.add(case1);
 
-        CarManager manager2 = new CarManager();
-        manager2.add(case2);
+        CarList list2 = new CarList();
+        list2.add(case2);
 
         //when
 
-        List<Car> list1 = manager1.getList();
-        List<Car> list2 = manager2.getList();
+        List<Car> carList1 = list1.getList();
+        List<Car> carList2 = list2.getList();
 
         //then
         Assertions.assertAll(
-                () -> assertEquals(3, list1.size()),
-                () -> assertEquals(1, list2.size()),
-                () -> assertEquals(list1.getFirst().getName(), "pobi")
+                () -> assertEquals(3, carList1.size()),
+                () -> assertEquals(1, carList2.size()),
+                () -> assertEquals(carList1.getFirst().getName(), "pobi")
         );
 
     }
