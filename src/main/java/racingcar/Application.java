@@ -23,8 +23,4 @@ public class Application {
 
         System.out.print("최종 우승자 : " + String.join(",", gameResult));
     }
-
-
-
-
 }

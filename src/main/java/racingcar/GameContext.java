@@ -22,6 +22,7 @@ public class GameContext {
         this.players = players;
         this.round = round;
     }
+
     public static GameContext getGameContext(String playerNameInput, int round) {
         List<Player> players = new ArrayList<>();
         for (String playerName : playerNameInput.split(",")) {
@@ -29,6 +30,7 @@ public class GameContext {
         }
         return new GameContext(players, round);
     }
+
     public static GameContext getGameContext(List<Player> players, int round) {
         return new GameContext(players, round);
     }
@@ -41,7 +43,7 @@ public class GameContext {
         return round;
     }
 
-    public void run(){
+    public void run() {
         for (int i = 0; i < round; i++) {
             playRound();
         }

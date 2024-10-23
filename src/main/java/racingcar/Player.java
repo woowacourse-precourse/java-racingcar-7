@@ -10,7 +10,7 @@ public class Player {
     private final Supplier<Integer> pickUpLogic;
 
     public Player(String playerName, Supplier<Integer> pickUpLogic) {
-        if(playerName.isEmpty() || playerName.length() > 5) throw new IllegalArgumentException();
+        if (playerName.isEmpty() || playerName.length() > 5) throw new IllegalArgumentException();
         this.playerName = playerName;
         this.place = 0;
         this.pickUpLogic = pickUpLogic;
