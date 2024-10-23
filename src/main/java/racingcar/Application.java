@@ -1,11 +1,14 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.io.Input;
+import racingcar.io.Output;
 
 import java.util.*;
 
 public class Application {
     public static final Input input = new Input();
+    public static final Output output = new Output();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         runFullGame();
@@ -23,6 +26,24 @@ public class Application {
         }
 
         //우승자 출력 받기
+        List<String> winnerList = getWinner(carStepsMap);
+        output.winner(winnerList);
+    }
+
+    private static List<String> getWinner(Map<String, Integer> carMap) {
+        List<String> winnerList = new ArrayList<>();
+        int top = 0;
+        for (String carName : carMap.keySet()) {
+            if (carMap.get(carName) > top) {
+                top = carMap.get(carName);
+            }
+        }
+        for (String carName : carMap.keySet()) {
+            if (carMap.get(carName) == top) {
+                winnerList.add(carName);
+            }
+        }
+        return winnerList;
     }
 
     private static Map<String, Integer> getCarMap() {
