@@ -18,10 +18,9 @@ public class CarService {
         }
     }
 
-    public void moveAllCarsMultipleTimes(int times) {
-        for (int i = 0; i < times; i++) {
-            cars.forEach(Car::move);
-        }
+    public List<Car> moveAllCars() {
+        cars.forEach(Car::move);
+        return cars.stream().toList();
     }
 
     public List<String> getCarsWithMaxDistance() {
@@ -29,7 +28,7 @@ public class CarService {
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private int calculateMaxDistance() {
