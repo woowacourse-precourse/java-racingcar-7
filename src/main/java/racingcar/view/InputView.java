@@ -21,14 +21,18 @@ public class InputView {
 		return InputViewHolder.INSTANCE;
 	}
 
-	public String readInput() {
+	public String readCarInput() {
 		System.out.println(View.CAR_NAME_INPUT.getConstant());
 		return Console.readLine();
 	}
 
-	private List<String> splitBySeparator(String input) {
-		return Arrays.stream(input.split(","))
+	public List<String> splitNames(String input) {
+		String regex = Arrays.stream(Separator.values())
+			.map(Separator::getSeparator)
+			.reduce((s1, s2) -> s1 + "|" + s2)
+			.orElseThrow(() -> new NoSeparatorException("구분자가 존재하지 않습니다."));
+
+		return Arrays.stream(input.split(regex))
 			.toList();
 	}
-
 }
