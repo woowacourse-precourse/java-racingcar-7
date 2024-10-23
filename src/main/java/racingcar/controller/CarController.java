@@ -1,30 +1,31 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Optional;
 import racingcar.domain.CarList;
 import racingcar.domain.Input;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
+import racingcar.viewer.Viewer;
 
 public class CarController {
 
     // 이름을 입력받고
     private final CarService carService;
+    private final Viewer viewer;
 
-    public CarController(CarService carService) {
+    public CarController(CarService carService, Viewer viewer) {
         this.carService = carService;
+        this.viewer = viewer;
     }
 
     public Input toInput() {
-        String carName = Console.readLine();
+        String carNames = viewer.readCarNames();
 
-        return new Input(carName);
+        return new Input(carNames);
     }
 
     public TryCount toTryCount() {
-        String countStr = Console.readLine();
+        String countStr = viewer.readTryCount();
 
         return new TryCount(countStr);
     }

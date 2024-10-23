@@ -17,7 +17,8 @@ public class Winners {
         StringJoiner stringJoiner = new StringJoiner(", ");
 
         for (Car car : winnerList) {
-            stringJoiner.add(car.toString());
+            String carName = car.toString();
+            stringJoiner.add(carName);
         }
         String result = stringJoiner.toString();
 

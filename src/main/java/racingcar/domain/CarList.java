@@ -45,8 +45,7 @@ public class CarList {
         return stringJoiner.toString();
     }
 
-    // 현재 자동차 중 제일 많이 움직인 값을 반환합니다.
-    public void changeMaxMoveCnt(Long moveCnt) {
+    private void changeMaxMoveCnt(Long moveCnt) {
         if (this.maxMoveCnt < moveCnt) {
             this.maxMoveCnt = moveCnt;
         }
@@ -80,9 +79,9 @@ public class CarList {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarList carList1 = (CarList) o;
-        return Objects.equals(cars, carList1.cars) && Objects.equals(maxMoveCnt,
-                carList1.maxMoveCnt);
+        CarList compareCarList = (CarList) o;
+        return Objects.equals(cars, compareCarList.cars) && Objects.equals(maxMoveCnt,
+                compareCarList.maxMoveCnt);
     }
 
     @Override

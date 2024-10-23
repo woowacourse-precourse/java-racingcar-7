@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.MAX_RANDOM;
+import static racingcar.utils.Constant.MIN_RANDOM;
+import static racingcar.utils.Constant.MOVE_THRESHOLD;
 import static racingcar.utils.Constant.MOVING;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -22,21 +25,16 @@ public class Car {
 
     // 랜덤값에 따라 전진하는지 멈추는 기능
     public Long move() {
-
-        // 랜덤 값을 강제로 지정하게 하고 싶은데
-        int randomNum = Randoms.pickNumberInRange(0, 9);
-
-        if (randomNum < 4) {
-            return this.cnt;
+        if (isMoveable()) {
+            this.cnt += 1;
         }
-        this.cnt += 1;
 
         return this.cnt;
     }
 
     // 현재 현황을 스트링으로 표현하는 기능
     public String generateStatus() {
-        StringBuilder output = new StringBuilder(name + " : ");
+        StringBuilder output = new StringBuilder(this.name + " : ");
 
         long repeat = 0L;
         while (repeat < this.cnt) {
@@ -49,6 +47,12 @@ public class Car {
 
     public boolean isMaxMove(Long maxCnt) {
         return cnt.equals(maxCnt);
+    }
+
+    private boolean isMoveable() {
+        int randomNum = Randoms.pickNumberInRange(MIN_RANDOM, MAX_RANDOM);
+
+        return randomNum >= MOVE_THRESHOLD;
     }
 
     @Override

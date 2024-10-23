@@ -1,7 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.MAX_CAR_NAME_LEN;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
-import static racingcar.utils.ErrorMessage.WRONG_INPUT;
+import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
 import java.util.Objects;
 
@@ -10,40 +11,50 @@ public class Input {
     private final String value;
 
     public Input(String input) {
-        if (input == null) {
-            throw new IllegalStateException(WRONG_INPUT.getMessage());
-        }
-
-        this.value = input;
+        this.value = invalidInput(input);
     }
 
     public CarList toCarList() {
-        String[] splitInput = value.split(",");
         CarList carList = new CarList();
-
-        if (splitInput.length == 0) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-        }
+        String[] splitInput = splitInput();
 
         for (String name : splitInput) {
-            if (invalidName(name)) {
-                throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-            }
-
-            carList.add(name);
+            carList.add(validName(name));
         }
 
         return carList;
     }
 
-    private boolean invalidName(String name) {
-        int length = name.length();
+    private String[] splitInput() {
+        String[] splitInput = value.split(",");
 
-        if (name.trim().isEmpty()) {
-            return true;
+        if (splitInput.length == 0) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
         }
 
-        return length > 5 || length == 0;
+        return splitInput;
+    }
+
+    private String invalidInput(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+        }
+
+        return input;
+    }
+
+    private String validName(String name) {
+        if (isInValidName(name)) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
+        }
+
+        return name;
+    }
+
+    private boolean isInValidName(String name) {
+        int length = name.length();
+
+        return length == 0 || length > MAX_CAR_NAME_LEN;
     }
 
     @Override
@@ -54,8 +65,8 @@ public class Input {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Input input1 = (Input) o;
-        return Objects.equals(value, input1.value);
+        Input compareInput = (Input) o;
+        return Objects.equals(value, compareInput.value);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package racingcar.viewer;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.utils.Output;
 
 public class Viewer {
@@ -12,5 +13,13 @@ public class Viewer {
 
     public void print() {
         System.out.println(output);
+    }
+
+    public String readCarNames() {
+        return Console.readLine();
+    }
+
+    public String readTryCount() {
+        return Console.readLine();
     }
 }
