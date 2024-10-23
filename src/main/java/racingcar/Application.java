@@ -12,15 +12,9 @@ public class Application {
         // TODO: 프로그램
 
         final String[] names = getInputName();
-
         final int inputCount = getInputCount();
 
-        // 자동차 객체 생성
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            Car car = new Car(name);
-            cars.add(car);
-        }
+        final List<Car> cars = createCars(names);
 
 
         // 실행 결과 출력
@@ -57,6 +51,16 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
+
+    private static List<Car> createCars(String[] names) {
+        // 자동차 객체 생성
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            Car car = new Car(name);
+            cars.add(car);
+        }
+        return cars;
     }
 
     private static int getInputCount() {
