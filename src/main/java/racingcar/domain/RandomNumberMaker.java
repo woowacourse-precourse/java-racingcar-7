@@ -9,6 +9,6 @@ public class RandomNumberMaker implements NumberMaker {
 
     @Override
     public int make() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(MIN, MAX);
     }
 }

@@ -24,7 +24,7 @@ public class RacingCarScoreMachine {
                     car.updateDistance(FORWARD_DISTANCE);
                 }
             }
-            //todo 출력?
+            //todo 출력?????여기서???????
             Output.printIntermediateScore(cars.getCars());
         }
     }
