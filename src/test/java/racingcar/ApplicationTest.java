@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    private static final Application.CarRacing carRacing = new Application.CarRacing();
 
     @Test
     void 기능_테스트() {
@@ -29,6 +32,21 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void convertCarNamesTest(){
+        assertSimpleTest(() -> {
+            ArrayList<String> resultNames = carRacing.convertCarNames("pobi,woni,jun");
+            assertThat(resultNames).contains("pobi","woni","jun");
+        });
+    }
+
+    @Test
+    void 예외_convertCarNamesTest(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(()-> carRacing.convertCarNames("pobi;woni,jun")).isInstanceOf(IllegalArgumentException.class);
+        });
     }
 
     @Override
