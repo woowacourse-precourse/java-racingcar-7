@@ -15,4 +15,13 @@ public class Car {
             this.distance++;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(this.name + " : ");
+        for (int i=0; i<this.distance; i++) {
+            builder.append("-");
+        }
+        return builder.append("\n").toString();
+    }
 }
