@@ -1,6 +1,6 @@
 package racingcar.race;
 
-import racingcar.Racer;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Race {
     private Racer[] racers;
@@ -14,7 +14,7 @@ public class Race {
         lap++;
 
         for (Racer racer : racers) {
-            racer.move();
+            racer.move(Randoms.pickNumberInRange(0,9));
         }
     }
 }
