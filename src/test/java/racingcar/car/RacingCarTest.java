@@ -36,4 +36,21 @@ class RacingCarTest {
         // then
         assertThat(result).isTrue();
     }
+
+    @DisplayName("moveCount만큼 -문자가 반복된 문자열을 반환한다")
+    @Test
+    void getProgress() {
+        // given
+        RacingCar racingCar = RacingCar.of("carName");
+        int maxMoveCount = 3;
+        for (int i = 0; i < maxMoveCount; i++) {
+            racingCar.increaseMoveCount();
+        }
+
+        // when
+        String progress = racingCar.getProgress();
+
+        // then
+        assertThat(progress).isEqualTo("---");
+    }
 }
