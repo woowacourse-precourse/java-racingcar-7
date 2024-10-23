@@ -18,23 +18,36 @@ public class Application {
 
         runRace(inputCount, cars);
 
+        printWinner(cars);
+    }
+
+    private static void printWinner(List<Car> cars) {
         // 우승자 출력
-        List<String> winner = new ArrayList<>();
-        List<Integer> advances = new ArrayList<>();
-
-        for (int i = 0; i < names.length; i++) {
-            advances.add(cars.get(i).advance);
-        }
-
-        int maxAdvance = Collections.max(advances);
-
-        for (int i = 0; i < names.length; i++) {
-            if (cars.get(i).advance == maxAdvance) {
-                winner.add(cars.get(i).name);
-            }
-        }
+        final List<Integer> advances = getAdvances(cars);
+        final List<String> winner = getWinner(cars, advances);
 
         System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
+
+    private static List<String> getWinner(List<Car> cars, List<Integer> advances) {
+        List<String> winner = new ArrayList<>();
+        int maxAdvance = Collections.max(advances);
+
+        for (Car car : cars) {
+            if (car.advance == maxAdvance) {
+                winner.add(car.name);
+            }
+        }
+        return winner;
+    }
+
+    private static List<Integer> getAdvances(List<Car> cars) {
+        List<Integer> advances = new ArrayList<>();
+
+        for (Car car : cars) {
+            advances.add(car.advance);
+        }
+        return advances;
     }
 
     private static void runRace(int inputCount, List<Car> cars) {
