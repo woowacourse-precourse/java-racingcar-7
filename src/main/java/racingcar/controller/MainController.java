@@ -7,6 +7,7 @@ import racingcar.domain.NumberMaker;
 import racingcar.domain.RacingCarScoreMachine;
 import racingcar.domain.RandomNumberMaker;
 import racingcar.view.Input;
+import racingcar.view.Output;
 
 public class MainController {
 
@@ -15,8 +16,9 @@ public class MainController {
         AttemptManager attemptManager = createAttemptManager();
 
         RacingCarScoreMachine racingCarScoreMachine = createRacingCarScoreMachine(cars, attemptManager);
-        racingCarScoreMachine.updateCarScore();
 
+        Output.printExecutionResultsMessage();
+        racingCarScoreMachine.updateCarScore();
 
     }
 

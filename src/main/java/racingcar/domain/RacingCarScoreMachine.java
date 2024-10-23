@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.Output;
+
 public class RacingCarScoreMachine {
     private final Cars cars;
     private final AttemptManager attemptManager;
@@ -22,11 +24,8 @@ public class RacingCarScoreMachine {
                 }
             }
             //todo 출력?
-            for (Car car : cars.getCars()) {
-                System.out.println(car.getName());
-                System.out.println(car.getDistance());
-                System.out.println();
-            }
+            Output.printIntermediateScore(cars.getCars());
+
         }
     }
 }
