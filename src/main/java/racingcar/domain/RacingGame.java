@@ -23,6 +23,7 @@ public class RacingGame {
 
     public void startRacingGame(int racingCount){
         Validation.validateRacingGameCount(racingCount);
+        OutputView.printRacingGameExecuteResultMessage();
         for(int i = 0;  i < racingCount; i++){
             startGameRound();
             OutputView.printRacingGameRoundEndBlankLine();
