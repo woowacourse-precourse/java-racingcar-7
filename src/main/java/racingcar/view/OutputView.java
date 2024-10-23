@@ -6,23 +6,19 @@ import racingcar.model.Round;
 
 public class OutputView {
     public void printRoundState(List<Round> roundList) {
-        StringBuilder leaderBoard = new StringBuilder();
-        leaderBoard.append("\n실행 결과\n");
+        System.out.println("\n실행 결과");
 
-        roundList.forEach(round -> {
-            LinkedHashMap<String, Integer> state = round.getState();
+        roundList.forEach(this::printCarState);
+    }
 
-            state.sequencedEntrySet().forEach(entry -> {
-                leaderBoard.append(entry.getKey())
-                        .append(" : ")
-                        .append("-".repeat(entry.getValue()))
-                        .append("\n");
-            });
+    private void printCarState(Round round) {
+        LinkedHashMap<String, Integer> state = round.getState();
 
-            leaderBoard.append("\n");
+        state.sequencedEntrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
         });
 
-        System.out.print(leaderBoard);
+        System.out.println();
     }
 
     public void printWinners(Round round) {
