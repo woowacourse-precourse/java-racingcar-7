@@ -1,9 +1,8 @@
 package racingcar.controller;
 
-import racingcar.exception.CarNameException;
-import racingcar.exception.CountException;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -30,14 +29,14 @@ public class RacingController {
     private Cars getCars() {
         String carInput = getCarInput();
         List<String> carsBeforeConvert = splitCar(carInput);
-        validateCarNames(carsBeforeConvert);
+        InputValidator.validateCarNames(carsBeforeConvert);
         Cars cars = convertToCars(carsBeforeConvert);
         return cars;
     }
 
     private int getCount() {
         String countInput = getCountInput();
-        validateCount(countInput);
+        InputValidator.validateCount(countInput);
         int count = convertToInt(countInput);
         return count;
     }
@@ -63,33 +62,12 @@ public class RacingController {
         return carNamesWithoutBlank;
     }
 
-    private void validateCarNames(List<String> carNames) {
-        for (String carName : carNames) {
-            if (carName == null || carName.isBlank() || carName.length() > 5) {
-                throw new CarNameException(carName);
-            }
-        }
-    }
-
     private Cars convertToCars(List<String> stringCars) {
         List<Car> cars = new ArrayList<>();
         for (String stringCar : stringCars) {
             cars.add(new Car(stringCar));
         }
         return new Cars(cars);
-    }
-
-    private void validateCount(String countInput) {
-        int count;
-        try {
-            count = Integer.parseInt(countInput);
-        } catch (IllegalStateException e) {
-            throw new CountException();
-        }
-
-        if (count <= 0) {
-            throw new CountException();
-        }
     }
 
     private int convertToInt(String countInput) {
