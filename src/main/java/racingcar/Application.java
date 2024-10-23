@@ -26,12 +26,9 @@ public class Application {
         System.out.println("\n실행 결과");
         for (int i = 0; i < Integer.parseInt(roundInput); i++) {
             for (Car car : cars) {
-                boolean isMovable = car.isMovable(Randomizer.getRandomValue());
-                if (isMovable) {
-                    car.moveForward();
-                }
+                car.makeMove(Randomizer.getRandomValue());
             }
-            cars.forEach(Car::printMoves);
+            cars.forEach(car -> System.out.println(car.getName() + " : " + "-".repeat(car.getMoves())));
             System.out.println();
         }
 
