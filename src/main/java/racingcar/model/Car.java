@@ -1,9 +1,8 @@
 package racingcar.model;
 
-import java.util.Objects;
-
 public class Car {
 
+    public static final int MOVE_THRESHOLD = 4;
     private String name;
     private int position;
 
@@ -13,7 +12,7 @@ public class Car {
     }
 
     public void go(int random) {
-        if (random >= 4) {
+        if (random >= MOVE_THRESHOLD) {
             position++;
         }
     }

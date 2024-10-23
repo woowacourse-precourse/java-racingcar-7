@@ -6,6 +6,7 @@ public class InputValidator {
 
     private static final String CAR_NAMES_REGEX = "[가-힣|a-zA-Z]{1,5}(,[가-힣|a-zA-Z]{1,5})*";
     private static final String NUMBER_OF_TRIAL_REGEX = "0|([1-9])([0-9])*";
+    public static final String COMMA = ",";
 
     public static void validateCarNames(String input) {
         checkInputForm(input);
@@ -19,7 +20,7 @@ public class InputValidator {
     }
 
     private static void checkDuplicate(String input) {
-        String[] names = input.split(",");
+        String[] names = input.split(COMMA);
         HashSet<String> carNames  = new HashSet<>();
         for (String name : names) {
             if (!carNames.add(name)) {
