@@ -6,6 +6,28 @@ import org.junit.jupiter.api.Test;
 
 class UtilsTest {
 
+    @Test
+    @DisplayName("자동차 이름 검증 테스트 - 올바른 입력은 예외를 던지지 않는다.")
+    void givenValidInput_whenValidateNames_thenCorrectResult() {
+        String input = "aa,bb,cc1";
+        Assertions.assertDoesNotThrow(() -> Utils.validateNames(input));
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증 테스트 - ,로 시작하거나 ,로 끝나면 예외를 던진다.")
+    void givenStartingOrEndingComma_whenValidateNames_thenIllegalArgumentException() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames(",aa,bb"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames("aa,bcb,d,"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames(",aa,bbb,aac"));
+    }
+
+    @Test
+    @DisplayName("자동차 이름 검증 테스트 - 연속된 컴마가 있는 경우 예외를 던진다.")
+    void givenContainingConsecutiveCommas_whenValidateNames_thenIllegalArgumentException() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames(",,,"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Utils.validateNames("a,,b,,,c"));
+    }
+
 
     @Test
     @DisplayName("숫자 검증 및 파싱 테스트 - 올바른 입력엔 올바른 결과가 나온다")
