@@ -3,6 +3,7 @@ package controller;
 import domain.Car;
 import java.util.List;
 import service.RacingService;
+import validator.AttemptValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -15,7 +16,10 @@ public class RacingController {
         String input = InputView.inputCars();
         carsList = racingService.getCarsList(input);
 
-        attempt = Integer.parseInt(InputView.inputAttempt());
+
+        String attemptInput = InputView.inputAttempt();
+        AttemptValidator.isPositiveDigit(attemptInput);
+        attempt = Integer.parseInt(attemptInput);
 
         race();
         result();

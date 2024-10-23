@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import domain.Car;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import view.OutputView;
 
 public class RacingService {
