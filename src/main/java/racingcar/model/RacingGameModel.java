@@ -13,6 +13,12 @@ public class RacingGameModel {
                 .toList();
     }
 
+    public List<String> generateNamesFromCars(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .toList();
+    }
+
     public void attemptMove(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = getRandomNumber();
