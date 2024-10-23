@@ -16,6 +16,7 @@ public class OutputView {
             System.out.printf("%s : %s",name, printCountBar(result.get(name)));
             System.out.println();
         }
+        System.out.println();
     }
 
     private static String printCountBar(Integer integer) {
