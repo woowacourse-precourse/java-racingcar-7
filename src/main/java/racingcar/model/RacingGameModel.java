@@ -29,6 +29,19 @@ public class RacingGameModel {
         }
     }
 
+    public List<String> getWinners(List<Car> cars) {
+        int maxScore = cars.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(Constant.CAR_SCORE_DEFAULT_VALUE);
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getScore() == maxScore)
+                .toList();
+
+        return generateNamesFromCars(winners);
+    }
+
     private int getRandomNumber() {
         return Randoms.pickNumberInRange(Constant.MIN_RANDOM_VALUE, Constant.MAX_RANDOM_VALUE);
     }
