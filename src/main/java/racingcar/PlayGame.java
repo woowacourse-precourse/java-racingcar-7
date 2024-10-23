@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayGame {
     // 랜덤한 값 반환 하는 함수
@@ -12,6 +14,7 @@ public class PlayGame {
     public static final int MINIMUM_VALUE_CAR_MOVE = 4;
     InputMessage inputMessage = new InputMessage();
     Map<String, String> carData = new HashMap<>();
+    int maxDistance = 0;
 
     public void racingCarCreate(String[] carNames){
         for (String carName : carNames) {
@@ -39,7 +42,6 @@ public class PlayGame {
     }
 
     public int getMaxDistance(String[] carNames) {
-        int maxDistance = 0;
         for (String carName : carNames) {
             int currentDistance = this.carData.get(carName).length();
             if (currentDistance > maxDistance) {
@@ -47,6 +49,17 @@ public class PlayGame {
             }
         }
         return maxDistance;
+    }
+
+    public List<String> getWinners(String[] carNames) {
+        List<String> winners = new ArrayList<>();
+        for (String carName : carNames) {
+            int currentDistance = carData.get(carName).length();
+            if (currentDistance == maxDistance) {
+                winners.add(carName);  // 우승자 추가
+            }
+        }
+        return winners;
     }
 
     public void racingStart(){
@@ -62,5 +75,6 @@ public class PlayGame {
         }
 
         getMaxDistance(carNames);
+        getWinners(carNames);
     }
 }
