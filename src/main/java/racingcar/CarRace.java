@@ -23,7 +23,7 @@ public class CarRace {
             printRaceStaus(carMap);
         }
 
-        return new ArrayList<>(); // 임시
+        return determineRaceWinners(carMap, carNames);
     }
 
     private static void move(Map<String, String> carMap, String[] carNames){
@@ -46,7 +46,32 @@ public class CarRace {
         System.out.println();
     }
 
-    public static void printFinalWinners(List<String> winner){
+    private static List<String> determineRaceWinners(Map<String, String> playerMap, String[] playerNames){
+        Map<String, Integer> playerWithMoveCounts = new HashMap<>();
+        for (int i = 0; i < playerMap.size(); i++) {
+            playerWithMoveCounts.put(playerNames[i], playerMap.get(playerNames[i]).length());
+        }
 
+        Collection<Integer> values = playerWithMoveCounts.values();
+        Integer max = Collections.max(values);
+
+        List<String> winner = new ArrayList<>();
+        for (int i = 0; i < playerMap.size(); i++) {
+            if(playerMap.get(playerNames[i]).length() == max){
+                winner.add(playerNames[i]);
+            }
+        }
+
+        return winner;
+    }
+
+    public static void printFinalWinners(List<String> winner){
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winner.size(); i++) {
+            System.out.print(winner.get(i));
+            if (i != winner.size() - 1){
+                System.out.print(", ");
+            }
+        }
     }
 }

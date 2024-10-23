@@ -12,6 +12,6 @@ public class Application {
         int moveAttempts = Integer.parseInt(Console.readLine());
 
         List<String> winner = CarRace.start(carNames, moveAttempts);
-
+        CarRace.printFinalWinners(winner);
     }
 }
