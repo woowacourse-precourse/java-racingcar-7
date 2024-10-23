@@ -1,9 +1,7 @@
 package policy;
 
-import vehicle.Vehicle;
-
 public interface RacingPolicy {
-    Boolean isMoveForward(Vehicle vehicle);
+    Boolean isMoveForward();
     String getMoveForwardSymbol();
     String getNameSeparator();
     int getNameLengthPolicy();

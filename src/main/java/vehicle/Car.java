@@ -33,6 +33,11 @@ public class Car implements Vehicle{
         return this.moveForwardCount;
     }
 
+    @Override
+    public void move() {
+        moveForwardCount+=1L;
+    }
+
     public String validateNameLength(String carName){
         if(carName.length() > racingPolicy.getNameLengthPolicy()){
             //TODO : exceptionMessage Enum 만들어서 관리 하기.
@@ -40,5 +45,7 @@ public class Car implements Vehicle{
         }
         return carName;
     }
+
+
 
 }

@@ -44,4 +44,7 @@ public class RacingCarService implements RacingService {
             repository.save(car.getVehicleName(), car.getMoveForwardCount());
         }
     }
+
+
+
 }
