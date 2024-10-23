@@ -22,6 +22,10 @@ public class InputView {
 
     public int getAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+
+        InputValidator.validateAttemptCount(input);
+
+        return Integer.parseInt(input);
     }
 }
