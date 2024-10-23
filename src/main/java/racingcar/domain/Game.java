@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.util.RandomNumber;
 import racingcar.util.StringParser;
 import racingcar.view.InputView;
 
@@ -13,6 +14,14 @@ public class Game {
     public void startGame() {
         readCarsData();
         readMoveNumberData();
+    }
+
+    public void move() {
+        for (int i = 0; i < cars.size(); i++) {
+            if (RandomNumber.createRandomNumber() >= 4) {
+                getCars().get(i).move();
+            }
+        }
     }
 
     private void readCarsData() {
