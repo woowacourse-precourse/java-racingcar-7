@@ -12,11 +12,18 @@ public class Car {
     }
 
     public void move() {
+        if (!canMove()) {
+            return;
+        }
         System.out.print(carName + " : ");
         for (int i = 0; i < currentPosition; i++) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public boolean canMove() { // 랜덤 정수 4 이상인 경우 자동차 이동 가능
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public String getCarName() {
