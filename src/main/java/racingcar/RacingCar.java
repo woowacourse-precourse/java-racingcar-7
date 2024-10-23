@@ -1,10 +1,10 @@
 package racingcar;
 
-public class Car {
+public class RacingCar {
     private final String name;
     private Integer score;
 
-    public Car(String name) {
+    public RacingCar(String name) {
         this.name = name;
         this.score = 0;
     }
