@@ -13,6 +13,16 @@ public class RacingGameModel {
                 .toList();
     }
 
+    public void attemptMove(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNumber = getRandomNumber();
+
+            if (randomNumber >= Constant.MOVE_THRESHOLD_VALUE) {
+                car.move();
+            }
+        }
+    }
+
     private int getRandomNumber() {
         return Randoms.pickNumberInRange(Constant.MIN_RANDOM_VALUE, Constant.MAX_RANDOM_VALUE);
     }
