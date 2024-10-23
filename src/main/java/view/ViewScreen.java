@@ -13,4 +13,8 @@ public class ViewScreen {
         return Arrays.asList(carNamesInput, runTimes);
     }
 
+    public void printRace(String name, int distance) {
+        System.out.println(name + " : " + "-".repeat(distance));
+    }
+
 }
