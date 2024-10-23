@@ -17,4 +17,9 @@ public class ViewScreen {
         System.out.println(name + " : " + "-".repeat(distance));
     }
 
+    public void printWinner(List<String> nameList) {
+        String namesString = String.join(", ", nameList);
+        System.out.println("최종 우승자 : " + namesString);
+    }
+
 }
