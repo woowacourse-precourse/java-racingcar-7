@@ -29,6 +29,12 @@ public class MainController {
             }
         }
 
+        System.out.println("실행 결과");
+        for (Car car : cars) {
+            String carResult = car.getName() + " : " +"-".repeat(car.getPosition());
+            System.out.println(carResult);
+        }
+
     }
     private static boolean if60PercentChance() {
         int pickNumberInRange = Randoms.pickNumberInRange(0, 9);
@@ -37,5 +43,4 @@ public class MainController {
         }
         return false;
     }
-
 }
