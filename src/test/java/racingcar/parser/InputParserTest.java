@@ -1,31 +1,24 @@
 package racingcar.parser;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Input;
-import racingcar.validator.InputValidator;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputParserTest {
-    private InputParser inputParser;
-
-    @BeforeEach
-    void setup() {
-        inputParser = new InputParser(new InputValidator());
-    }
+    private final InputParser inputParser = InputParserFactory.create();
 
     @Test
     void 자동차이름들_분리후_리스트로_반환() {
         String carNames = "ph,dd,aa,ee";
-        List<Car> cars = inputParser.splitCarsToList(new Input(carNames));
+        List<Car> cars = inputParser.parseRacingCarList(new Input(carNames));
         assertEquals(4, cars.size());
         assertEquals("ph", cars.getFirst().getName());
         assertEquals(0, cars.get(1).getMoveCnt());
@@ -35,7 +28,7 @@ class InputParserTest {
     @Test
     void 자동차이름들_중복_존재_에러() {
         String carNames = "ph,aa,ee,aa";
-        assertThatThrownBy(() -> inputParser.splitCarsToList(new Input(carNames)))
+        assertThatThrownBy(() -> inputParser.parseRacingCarList(new Input(carNames)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

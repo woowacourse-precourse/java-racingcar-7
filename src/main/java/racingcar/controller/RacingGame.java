@@ -23,7 +23,7 @@ public class RacingGame {
 
     public void startRace() {
         Input carNames = inputView.readRacingCarNames();
-        List<Car> carList = inputParser.splitCarsToList(carNames);
+        List<Car> carList = inputParser.parseRacingCarList(carNames);
         Input tryCountString = inputView.readRacingTryCount();
         int tryCount = inputParser.parseTryCount(tryCountString);
 

@@ -3,41 +3,51 @@ package racingcar.parser;
 import racingcar.domain.Car;
 import racingcar.domain.Input;
 import racingcar.exception.GameErrorMessage;
-import racingcar.validator.InputValidator;
+import racingcar.validator.CarNameValidator;
+import racingcar.validator.TryCountValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputParser {
     private static final String DELIMITER = ",";
-    private final InputValidator inputValidator;
+    private final CarNameValidator carNameValidator;
+    private final TryCountValidator tryCountValidator;
 
-    public InputParser(final InputValidator inputValidator) {
-        this.inputValidator = inputValidator;
+    protected InputParser(final CarNameValidator carNameValidator, final TryCountValidator tryCountValidator) {
+        this.carNameValidator = carNameValidator;
+        this.tryCountValidator = tryCountValidator;
     }
 
-    public List<Car> splitCarsToList(final Input input) {
-        List<Car> carList = new ArrayList<>();
-        String cars = input.getInput();
+    public List<Car> parseRacingCarList(final Input input) {
+        List<Car> carList = splitCarsToList(input.getInput());
+        carNameValidator.validateCarNamesUnique(carList);
+        return carList;
+    }
+
+    private List<Car> splitCarsToList(String cars) {
         String[] carNames = cars.split(DELIMITER);
+        return createCarList(carNames);
+    }
 
+    private List<Car> createCarList(String[] carNames) {
+        List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            inputValidator.validateCarNameLength(carName);
+            carNameValidator.validateCarNameLength(carName);
             carList.add(Car.create(carName));
-        }
-
-        long distinctCount = carList.stream().map(Car::getName).distinct().count();
-        if (distinctCount != carList.size()) {
-            throw new IllegalArgumentException(GameErrorMessage.CAR_NAME_DUPLICATED.getValue());
         }
         return carList;
     }
 
     public int parseTryCount(final Input input) {
+        int count = parseInteger(input.getInput());
+        tryCountValidator.validateTryCountGreaterZero(count);
+        return count;
+    }
+
+    private int parseInteger(String input) {
         try {
-            int count = Integer.parseInt(input.getInput());
-            inputValidator.validateTryCountGreaterZero(count);
-            return count;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(GameErrorMessage.WRONG_TYPE_TRY_COUNT.getValue());
         }
