@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Player;
 import racingcar.util.PlayerMaker;
 import racingcar.util.Racing;
+import racingcar.util.WinnerMaker;
+import racingcar.validation.PlayerValidation;
 
 import java.util.List;
 
@@ -40,21 +42,21 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("players에 ,(쉼표)가 없으면 예외가 발생한다.")
     void playersInputTest1() {
-        assertThatThrownBy(() -> PlayerMaker.createPlayer("pobi"))
+        assertThatThrownBy(() -> PlayerValidation.validation("pobi"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("player가 1명이면 예외가 발생한다.")
     void playersInputTest2() {
-        assertThatThrownBy(() -> PlayerMaker.createPlayer("pobi,"))
+        assertThatThrownBy(() -> PlayerValidation.validation("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("player의 이름이 숫자이면 예외가 발생한다.")
     void playersInputTest3() {
-        assertThatThrownBy(() -> PlayerMaker.createPlayer("1111,24123"))
+        assertThatThrownBy(() -> PlayerValidation.validation("1111,24123"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -91,6 +93,32 @@ class ApplicationTest extends NsTest {
         Racing.racing(player, randomNumber);
 
         assertThat(player.getScore()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("최종 우승자가 두 명일 때의 출력를 테스트한다.")
+    void winnerTest1() {
+        List<Player> players = List.of(
+                new Player("pobi", 3),
+                new Player("woni", 3),
+                new Player("java", 2));
+
+        String winner = WinnerMaker.createWinner(players);
+
+        assertThat(winner).isEqualTo("pobi, woni");
+    }
+
+    @Test
+    @DisplayName("최종 우승자가 세 명일 때의 출력를 테스트한다.")
+    void winnerTest2() {
+        List<Player> players = List.of(
+                new Player("pobi", 3),
+                new Player("woni", 3),
+                new Player("java", 3));
+
+        String winner = WinnerMaker.createWinner(players);
+
+        assertThat(winner).isEqualTo("pobi, woni, java");
     }
 
     @Override
