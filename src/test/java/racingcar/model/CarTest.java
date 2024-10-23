@@ -17,4 +17,16 @@ public class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void 랜덤_숫자가_4_이하인_경우_자동차_멈춤() {
+        // given
+        Car car = new Car("TestCar");
+
+        // when
+        moveIfPossible(3);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
