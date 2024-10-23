@@ -8,5 +8,6 @@ public class InputView {
 
     public List<String> getCarNames() {
         System.out.println(Constant.CAR_NAME_INPUT_MESSAGE);
+        String inputString = Console.readLine();
     }
 }
