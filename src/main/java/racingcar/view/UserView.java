@@ -30,6 +30,8 @@ public class UserView {
         System.out.println(RACING_RESULT_MESSAGE);
 
         List<String> winners = racingCarController.start(repeatNumber, cars);
+
+        System.out.println(WINNER_MESSAGE + String.join(", ", winners));
     }
 
     private String printStart() {
