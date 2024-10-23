@@ -1,5 +1,6 @@
 package racingcar.io.output.impl;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -33,7 +34,9 @@ public class OutputConsole implements Output {
     }
 
     @Override
-    public void printErrorMessage(String message) {
-        System.out.println("오류: " + message);
+    public void close() {
+        Console.close();
     }
+
+
 }

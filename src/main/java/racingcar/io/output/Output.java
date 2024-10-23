@@ -11,5 +11,5 @@ public interface Output {
 
     void printWinners(List<Car> winners);
 
-    void printErrorMessage(String message);
+    void close();
 }

@@ -1,11 +1,8 @@
 package racingcar.controller;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarCollection;
-import racingcar.domain.CarName;
 import racingcar.io.input.Input;
 import racingcar.io.output.Output;
 
@@ -20,30 +17,30 @@ public class RacingCarController {
 
     public void start() {
         try {
-            String carNamesInput = input.getCarNames();
-            CarCollection cars = createCars(carNamesInput);
-
+            CarCollection cars = initializeCars();
             int rounds = input.getRaceRounds();
             output.printStartMessage();
-
-            for (int i = 0; i < rounds; i++) {
-                cars.moveAll();
-                output.printRoundResult(cars);
-            }
-
-            List<Car> winners = cars.getWinners();
-            output.printWinners(winners);
-        } catch (IllegalArgumentException e) {
-            output.printErrorMessage(e.getMessage());
+            runRoundsAndDisplayResults(cars, rounds);
+            printWinners(cars);
+        } finally {
+            output.close();
         }
     }
 
-    private CarCollection createCars(String input) {
-        List<Car> carList = Arrays.stream(input.split(","))
-                .map(String::trim)
-                .map(CarName::new)
-                .map(Car::new)
-                .collect(Collectors.toList());
-        return new CarCollection(carList);
+    private CarCollection initializeCars() {
+        String carNamesInput = input.getCarNames();
+        return CarCollection.from(carNamesInput);
+    }
+
+    private void runRoundsAndDisplayResults(CarCollection cars, int rounds) {
+        for (int i = 0; i < rounds; i++) {
+            cars.moveAll();
+            output.printRoundResult(cars);
+        }
+    }
+
+    private void printWinners(CarCollection cars) {
+        List<Car> winners = cars.getWinners();
+        output.printWinners(winners);
     }
 }
