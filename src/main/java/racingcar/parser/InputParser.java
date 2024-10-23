@@ -23,7 +23,7 @@ public class InputParser {
 
         for (String carName : carNames) {
             inputValidator.validateCarNameLength(carName);
-            carList.add(new Car(carName));
+            carList.add(Car.create(carName));
         }
 
         long distinctCount = carList.stream().map(Car::getName).distinct().count();

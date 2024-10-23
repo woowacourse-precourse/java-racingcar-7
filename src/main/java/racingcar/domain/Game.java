@@ -9,8 +9,12 @@ import java.util.List;
 public class Game {
     private final List<Car> carList;
 
-    public Game(final List<Car> carList) {
+    private Game(final List<Car> carList) {
         this.carList = carList;
+    }
+
+    public static Game carListFrom(final List<Car> carList) {
+        return new Game(carList);
     }
 
     public void moveForward() {

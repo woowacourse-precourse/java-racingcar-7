@@ -27,8 +27,8 @@ public class RacingGame {
         Input tryCountString = inputView.readRacingTryCount();
         int tryCount = inputParser.parseTryCount(tryCountString);
 
-        Game game = new Game(carList);
-        Output outPut = new Output();
+        Game game = Game.carListFrom(carList);
+        Output outPut = Output.getInstance();
 
         outputView.printResultText();
         for (int i = 0; i < tryCount; i++) {
