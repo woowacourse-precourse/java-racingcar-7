@@ -5,8 +5,8 @@ public class Application {
         // TODO: 프로그램 구현
 
         Contest contest = new Contest();
-        contest.input();
-        contest.gameStart();
+        contest.init();
+        contest.startRace();
 
     }
 }

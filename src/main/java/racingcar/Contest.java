@@ -5,35 +5,56 @@ import java.util.ArrayList;
 
 public class Contest {
     private ArrayList<Car> cars = new ArrayList();
-    private int gameNum = 0;
+    private int gameCount = 0;
 
     public Contest() {//생성자
         System.out.println("경주할 자동차 이름을 입력하세요.");
     }
 
-    public void input() {
-        String inputCars = Console.readLine();
-        String[] carNmaes = inputCars.split(",");
+    public void init() {
+      carNameInput();
+      gameCountInput();
+    }
 
-        for(String name : carNmaes) {
+    private void carNameInput(){
+        String inputCars = Console.readLine();
+        String[] carNames = inputCars.split(",");
+        validateCarNames(carNames); //예외처리
+        createCars(carNames);
+    }
+
+    private void createCars(String[] carNames) {
+        for(String name : carNames) {
             Car car = new Car(name.trim());
             cars.add(car);
         }
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        gameNum = Integer.valueOf(Console.readLine().trim());
-
     }
-    public void gameStart() {
+    private void gameCountInput(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        gameCount = Integer.valueOf(Console.readLine().trim());
+    }
+
+    private void validateCarNames(String[] carNames) {
+        if (carNames.length <= 1) {
+            throw new IllegalArgumentException("자동차 이름이 2개보다 작습니다.");
+        }
+        for (String name : carNames) {
+            if (name.trim().length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
+            }
+        }
+    }
+    public void startRace() {
         System.out.println();
         System.out.println("실행 결과");
-        for (int i = 0; i < gameNum; i++) {
-            this.gamePlay();
+        for (int i = 0; i < gameCount; i++) {
+            this.carRun();
             gameInfoPrint();
             System.out.println();
         }
         gameEnd();
     }
-    private void gamePlay(){
+    private void carRun(){
         for (Car car : cars) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
             if (randomNum >= 4) { //0~9 정수 중 한 개
@@ -41,13 +62,13 @@ public class Contest {
             }
         }
     }
-    public void gameInfoPrint(){
+    private void gameInfoPrint(){
         for (Car car : cars) {
             System.out.printf("%s : %s%n", car.getName(), car.getDistance());
         }
     }
 
-    private String winner() {
+    private String whoIsWinner() {
         int maxDistance = -1;
         StringBuilder winnerBuilder = new StringBuilder();
 
@@ -59,13 +80,13 @@ public class Contest {
                 winnerBuilder.setLength(0);
                 winnerBuilder.append(car.getName());
             } else if (distance == maxDistance) {
-                winnerBuilder.append(",").append(car.getName());
+                winnerBuilder.append(", ").append(car.getName());
             }
         }
 
         return winnerBuilder.toString();
     }
     public void gameEnd() {
-        System.out.println("최종 우승자 : "+ winner());
+        System.out.println("최종 우승자 : "+ whoIsWinner());
     }
 }
