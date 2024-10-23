@@ -2,13 +2,15 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.Splitter;
 import racingcar.exception.Validator;
 
 public class InputView {
 
     public List<String> getCarNameList() {
         System.out.println(ConsoleMessage.ENTER_CAR_NAME);
-        return splitString(escapeSpecialRegexChars(Console.readLine()));
+        Splitter splitter = new Splitter(Console.readLine());
+        return splitter.parsingCarName();
     }
 
     public long getTryNumber() {
@@ -20,19 +22,4 @@ public class InputView {
         Console.close();
     }
 
-    private List<String> splitString(String input) {
-        String carNameString = Validator.isNotBLANK(input);
-
-        List<String> carNameList = List.of(carNameString.split(","));
-
-        Validator.isDuplicatedCarName(carNameList);
-
-        Validator.overFiveCharsInCarName(carNameList);
-
-        return carNameList;
-    }
-
-    private String escapeSpecialRegexChars(String input) {
-        return input.replaceAll("([\\\\.\\^\\$\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|])", "\\\\$1");
-    }
 }
