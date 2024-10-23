@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ public class Application {
         String nameInput = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryInput = Console.readLine();
+
 
 
         System.out.println("실행 결과");
@@ -26,8 +28,9 @@ public class Application {
         return carNames;
     }
 
-
-
-
+    public static boolean isForward() {
+        int i = Randoms.pickNumberInRange(0,9);
+        return i >= 4;
+    }
 
 }
