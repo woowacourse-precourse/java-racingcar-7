@@ -2,9 +2,11 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import racingcar.domain.Car;
 
 public class RaceView {
 
@@ -53,5 +55,18 @@ public class RaceView {
         }
 
     }
+
+    public void printRace(List<Car> cars) {
+        System.out.println("실행 결과");
+        for (Car car : cars) {
+            System.out.print(car.getCarName() + " : ");
+            for (int i = 0; i < car.getDistance(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
 
 }
