@@ -38,7 +38,43 @@ class InputTest extends NsTest {
         );
     }
 
+    @Test
+    void 이동횟수_성공_테스트() {
+        assertSimpleTest(() ->
+                runException("핍비,피비", "4")
+        );
+    }
 
+    @Test
+    void 이동횟수_음수_실패_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("핍비,피비", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이동횟수_문자열_실패_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("핍비,피비", "문자열"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이동횟수_실수_성공_테스트() {
+        assertSimpleTest(() ->
+                runException("핍비,피비", "1.0")
+        );
+    }
+
+    @Test
+    void 이동횟수_실수_실패_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("핍비,피비", "1.1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
