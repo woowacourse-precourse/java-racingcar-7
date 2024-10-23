@@ -30,7 +30,7 @@ public class Game {
                 winnerList.add(car.getName());
             }
         }
-        return String.join(",", winnerList);
+        return String.join(", ", winnerList);
     }
 
     private int getHighestScore() {
