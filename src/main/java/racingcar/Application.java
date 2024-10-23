@@ -7,6 +7,6 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView();
         String[] carNames = inputView.inputCarNames().split(",");
-
+        int raceRound = inputView.inputRaceRound();
     }
 }
