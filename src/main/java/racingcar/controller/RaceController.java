@@ -7,9 +7,15 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
-    private final CarNameValidator carNameValidator = new CarNameValidator();
-    private final TrialCountsValidator trialCountsValidator = new TrialCountsValidator();
-    private final OutputView outputView = new OutputView();
+    private final CarNameValidator carNameValidator;
+    private final TrialCountsValidator trialCountsValidator;
+    private final OutputView outputView;
+
+    public RaceController(CarNameValidator carNameValidator, TrialCountsValidator trialCountsValidator, OutputView outputView) {
+        this.carNameValidator = carNameValidator;
+        this.trialCountsValidator = trialCountsValidator;
+        this.outputView = outputView;
+    }
 
     public void start() {
         Cars cars = initializeCars();
