@@ -7,7 +7,6 @@ public class Application {
         Contest contest = new Contest();
         contest.input();
         contest.gameStart();
-        contest.gameEnd();
 
     }
 }

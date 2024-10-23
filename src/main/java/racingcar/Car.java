@@ -17,5 +17,14 @@ public class Car {
     public int getPos(){
         return this.pos;
     }
+    public String getDistance(){
+        int distance = this.getPos();
+        StringBuilder distanceLineBuilder = new StringBuilder();
+
+        for (int i=0 ; i<distance ; i++){
+            distanceLineBuilder.append("-");
+        }
+        return distanceLineBuilder.toString();
+    }
 
 }
