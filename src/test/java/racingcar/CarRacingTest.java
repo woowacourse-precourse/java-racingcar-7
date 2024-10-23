@@ -131,4 +131,34 @@ class CarRacingTest {
                     .doesNotThrowAnyException();
         }
     }
+
+    @Test
+    public void 시도횟수_테스트() throws Exception {
+        //Given
+        String attempts = "5";
+
+        //When, Then
+        Assertions.assertThatCode(() -> CAR_RACING.parseAttempts(attempts))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 시도횟수_int범위초과_예외테스트() throws Exception {
+        //Given
+        String attempts = Long.toString(Long.MAX_VALUE);
+
+        //When, Then
+        Assertions.assertThatThrownBy(() -> CAR_RACING.parseAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 시도횟수_음수_예외테스트() throws Exception {
+        //Given
+        String attempts = "-1";
+
+        //When, Then
+        Assertions.assertThatThrownBy(() -> CAR_RACING.parseAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
