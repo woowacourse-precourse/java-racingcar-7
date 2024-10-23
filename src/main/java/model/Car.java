@@ -14,7 +14,7 @@ public class Car {
     }
 
     public int getDistance() {
-        return  distance;
+        return distance;
     }
 
     public void addDistance(int distance) {
