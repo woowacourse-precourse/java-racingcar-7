@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.model.CarGame;
 
+import java.util.List;
+
 public class CarService {
 
     private final CarGame carGame;
@@ -40,6 +42,21 @@ public class CarService {
             return true;
         }
         return false;
+    }
+
+    public void updateWinners(){
+        for (Car car : carGame.getParticipants()){
+            if(car.getDistance() == carGame.getMaxDistance()){
+                carGame.addWinner(car);
+            }
+        }
+    }
+
+    public List<String> getWinners(){
+        return carGame.getWinners()
+                .stream()
+                .map(w -> w.getCarName())
+                .toList();
     }
 
 }
