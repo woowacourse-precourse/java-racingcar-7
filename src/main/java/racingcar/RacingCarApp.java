@@ -30,4 +30,8 @@ public class RacingCarApp {
             throw new IllegalArgumentException();
         }
     }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
 }
