@@ -21,6 +21,11 @@ public final class InputHandler {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttempt = readLine();
         System.out.println();
+
+        if (inputAttempt == null) {
+            throw new IllegalArgumentException("시도 횟수를 입력해야 합니다.");
+        }
+
         try {
             return Integer.parseInt(inputAttempt);
         } catch (NumberFormatException e) {
