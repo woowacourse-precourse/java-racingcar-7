@@ -48,5 +48,17 @@ public class Application {
             }
             System.out.println();
         }
+
+        int maxMoveCount = result.values().stream()
+                .mapToInt(StringBuilder::length)
+                .max()
+                .orElse(0);
+
+        List<String> winners = result.entrySet().stream()
+                .filter(entry -> entry.getValue().length() == maxMoveCount)
+                .map(Map.Entry::getKey)
+                .toList();
+
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 }
