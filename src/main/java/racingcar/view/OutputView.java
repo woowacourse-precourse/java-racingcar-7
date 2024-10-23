@@ -15,6 +15,10 @@ public class OutputView {
 
     }
 
+    public void outputViewWinner(String winner){
+        System.out.print("최종 우승자 : " + winner);
+    }
+
     private void printRacingResultOnce(RacingResult racing){
         List<Car> cars = racing.getCars();
         for (Car car : cars) {
