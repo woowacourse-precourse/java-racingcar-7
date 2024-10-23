@@ -18,10 +18,11 @@ class GameContextTest {
     void 예외_테스트_비정상_사용자_수() {
         //given
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i <= 100; i++) {
+        for (int i = 0; i < 100; i++) {
             builder.append(i);
             builder.append(",");
         }
+        builder.append("100");
         String input = builder.toString();
         int round = 100;
 
