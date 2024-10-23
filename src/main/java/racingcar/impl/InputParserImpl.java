@@ -28,7 +28,7 @@ public class InputParserImpl implements InputParser {
 
     public boolean validLength(String[] str){
         for (String s: str) {
-            if (s.length() > 5 || s.length() == 0) {
+            if (s.length() > 5 || s.equals("")) {
                 return false;
             }
         }
