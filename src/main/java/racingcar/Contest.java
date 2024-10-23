@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Contest {
@@ -20,6 +21,25 @@ public class Contest {
         }
 
         gameNum = Integer.valueOf(Console.readLine().trim());
+
+    }
+    public void gameStart() {
+        for (int i = 0; i < gameNum; i++) {
+            this.gamePlay();
+        }
+    }
+    private void gamePlay(){
+        for (Car car : cars) {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+            if (randomNum >= 4) { //0~9 정수 중 한 개
+                car.move();
+            }
+        }
+    }
+    public void gameEnd() {
+        for (Car car : cars) {
+            System.out.printf("%s : %d%n",car.getName(),car.getPos());
+        }
 
     }
 }
