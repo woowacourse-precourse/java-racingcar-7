@@ -1,14 +1,19 @@
 package racingcar;
 
+import racingcar.domain.car.Car;
+import racingcar.domain.move.RandomMoveDecider;
+import racingcar.domain.race.CarRace;
+import racingcar.domain.race.RacePosition;
 import racingcar.io.InputReceiver;
-import racingcar.model.CarName;
-import racingcar.model.MoveAttempt;
+import racingcar.domain.car.CarName;
+import racingcar.domain.move.MoveAttempt;
+import racingcar.randomGenerator.RandomDigitGenerator;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class RaceManager {
-    private InputReceiver inputReceiver;
+    private final InputReceiver inputReceiver;
 
     public RaceManager(InputReceiver inputReceiver) {
         this.inputReceiver = inputReceiver;
@@ -16,10 +21,19 @@ public class RaceManager {
 
     public void run() {
         String carNamesString = inputReceiver.readInput();
-        List<CarName> carNames = Arrays.stream(carNamesString.split(","))
+        List<CarName> carNameList = Arrays.stream(carNamesString.split(","))
                 .map(CarName::of)
                 .toList();
+        List<Car> carList = carNameList.stream()
+                .map(Car::new)
+                .toList();
+        RacePosition racePosition = new RacePosition(carList);
         String attemptCountString = inputReceiver.readInput();
         MoveAttempt moveAttempt = MoveAttempt.of(attemptCountString);
+        RandomMoveDecider randomMoveDecider = new RandomMoveDecider(RandomDigitGenerator.getInstance());
+        CarRace carRace = new CarRace(randomMoveDecider);
+        for(int i = moveAttempt.getCount(); i > 0; i--) {
+            racePosition = carRace.execute(racePosition);
+        }
     }
 }
