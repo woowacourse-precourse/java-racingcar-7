@@ -12,7 +12,7 @@ public class NamingProcessor {
 
     public List<String> separateName(String namingInput) {
         if (isInvalid(namingInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("경주 자동차 이름이 존재하지 않습니다.");
         }
 
         return Arrays.stream(namingInput.split(NAME_DELIMITER))
