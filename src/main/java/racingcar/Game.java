@@ -1,6 +1,5 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
@@ -28,14 +27,8 @@ public class Game {
     }
 
     private void inputAttempts() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputAttempt = readLine();
-        System.out.println();
-        try {
-            attempts = Integer.parseInt(inputAttempt);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해야 합니다." + e);
-        }
+        attempts = InputHandler.getAttempts();
+
         Validator.validateAttempts(attempts);
     }
 

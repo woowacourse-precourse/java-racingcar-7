@@ -11,4 +11,15 @@ public final class InputHandler {
 
         return readLine().split(",");
     }
+
+    public static int getAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputAttempt = readLine();
+        System.out.println();
+        try {
+            return Integer.parseInt(inputAttempt);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다." + e);
+        }
+    }
 }
