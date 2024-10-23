@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NameParser {
 
@@ -30,13 +32,22 @@ public class NameParser {
     }
 
     private void validateNames(List<String> names) {
+        Set<String> validatedNames = new HashSet<>();
+
         for (String name : names) {
             checkNameLength(name);
+            checkDuplicatedName(name, validatedNames);
         }
     }
 
     private void checkNameLength(String name) {
         if (name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkDuplicatedName(String name, Set<String> validatedNames) {
+        if (!validatedNames.add(name)) {
             throw new IllegalArgumentException();
         }
     }
