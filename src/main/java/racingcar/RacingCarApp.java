@@ -20,7 +20,14 @@ public class RacingCarApp {
 
     public void makeCar(String inputData) {
         for (String carName : inputData.split(",")) {
+            validateCarName(carName);
             cars.add(new Car(carName));
+        }
+    }
+
+    public void validateCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException();
         }
     }
 }
