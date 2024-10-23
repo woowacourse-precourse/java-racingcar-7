@@ -15,6 +15,7 @@ public class CarRacing {
                     racingCarTrace.forward(racingCar);
                 }
             }
+            Prompt.tracePrint(racingCarTrace);
         }
     }
 }
