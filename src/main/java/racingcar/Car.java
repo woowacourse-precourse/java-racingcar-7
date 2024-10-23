@@ -5,6 +5,9 @@ public class Car {
 
     // TODO: 예외 메시지 처리
     public Car(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
         if (name.length() > 5) {
             throw new IllegalArgumentException();
         }
