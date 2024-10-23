@@ -44,17 +44,27 @@ class RacingServiceTest {
     }
 
     @Test
-    @DisplayName("전진 조건에 따른 이동 거리가 맞는지 확인")
-    void 이동_위치_테스트1() {
+    @DisplayName("전진 조건에 따른 이동해야 할 거리가 맞는지 확인")
+    void 이동_거리_테스트1() {
         int result = racingService.decideMovement(5);
         assertThat(result).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("정지 조건에 따른 이동 거리가 맞는지 확인")
-    void 이동_위치_테스트2() {
+    @DisplayName("정지 조건에 따른 이동해야 할 거리가 맞는지 확인")
+    void 이동_거리_테스트2() {
         int result = racingService.decideMovement(1);
         assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차의 위치가 올바르게 변하는지 확인")
+    void 자동차_위치_테스트() {
+        String input = "111,222,333";
+        racingService.setCarInput(input);
+        int beforePosition = racingService.getCarMap().get("111");
+        racingService.updateMovement("111", 1);
+        assertThat(racingService.getCarMap().get("111")).isGreaterThan(beforePosition);
     }
 }
 
