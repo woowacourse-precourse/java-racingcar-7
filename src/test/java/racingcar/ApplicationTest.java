@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Model.Car;
 import racingcar.Service.GameService;
+import racingcar.View.InputView;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,6 @@ class ApplicationTest extends NsTest {
         assertThat(carList.get(1).getCarName()).isEqualTo("woni");
         assertThat(carList.get(2).getCarName()).isEqualTo("jun");
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});

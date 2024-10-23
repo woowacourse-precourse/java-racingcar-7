@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Game {
     private int count;
     private ArrayList<Car> cars;
-    public Game(String count,ArrayList<Car> cars) {
-        this.count = Integer.parseInt(count);
+    public Game(int count,ArrayList<Car> cars) {
+        this.count =count;
         this.cars = cars;
     }
     public int getCount(){return count;}
