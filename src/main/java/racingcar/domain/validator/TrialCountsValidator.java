@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.validator;
 
 public class TrialCountsValidator {
 
@@ -14,7 +14,6 @@ public class TrialCountsValidator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-
         return tempCounts;
     }
 
