@@ -16,17 +16,25 @@ public class CarRace {
         String tryNumString = Console.readLine();
         validateTryNumConvert(tryNumString);
 
-        carPositionRandom(carList);
-        carPositionPrint(carList);
+        System.out.println("실행결과");
+        for(Car car : carList){
+            carPositionRandom(car);
+            carPositionPrint(carList);
+        }
+
     }
 
-    private void carPositionRandom(List<Car> carList) {
+    private void carPositionPrint(List<Car> carList) {
         for(Car car : carList){
-            int random = Randoms.pickNumberInRange(0, 9);
-            if(random >= fowardRange){
-                int position = car.getPosition();
-                car.setPosition(position++);
-            }
+            System.out.println(car);
+        }
+    }
+
+    private void carPositionRandom(Car car) {
+        int random = Randoms.pickNumberInRange(0, 9);
+        if(random >= fowardRange){
+            int position = car.getPosition();
+            car.setPosition(++position);
         }
     }
 
