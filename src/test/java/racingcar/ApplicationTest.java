@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -34,5 +35,13 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+
+    @Test
+    void 숫자_랜덤() {
+        for (int i=0; i<10; i++) {
+            System.out.println("0-9 사이에서 뽑힌 랜덤한 숫자는 " + Randoms.pickNumberInRange(0, 9));
+        }
     }
 }
