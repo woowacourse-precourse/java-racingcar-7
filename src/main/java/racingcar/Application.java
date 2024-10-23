@@ -11,7 +11,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램
 
-        final String[] names = getInput();
+        final String[] names = getInputName();
+
+        final int inputCount = getInputCount();
 
         // 자동차 객체 생성
         List<Car> cars = new ArrayList<>();
@@ -20,15 +22,6 @@ public class Application {
             cars.add(car);
         }
 
-        // 시도 횟수 입력
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int inputCount;
-
-        try {
-            inputCount = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력해 주세요.");
-        }
 
         // 실행 결과 출력
         System.out.println("실행 결과");
@@ -66,7 +59,23 @@ public class Application {
         System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 
-    private static String[] getInput() {
+    private static int getInputCount() {
+        // 시도 횟수 입력
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+
+        return validateInputInteger(input);
+    }
+
+    private static int validateInputInteger(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("정수만 입력해주세요.");
+        }
+    }
+
+    private static String[] getInputName() {
         // 자동차 이름 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputName = Console.readLine();
