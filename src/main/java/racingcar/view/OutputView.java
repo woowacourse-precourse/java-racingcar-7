@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.StringJoiner;
 import racingcar.domain.Car;
 import racingcar.utils.Constant;
 
@@ -18,5 +19,11 @@ public class OutputView {
         for (Car car : cars) {
             System.out.printf(Constant.CAR_STATUS_MESSAGE, car.getName(), Constant.MOVE_STRING.repeat(car.getScore()));
         }
+    }
+
+    public void printWinners(List<String> carNames) {
+        String winners = String.join(", ", carNames);
+
+        System.out.printf(Constant.GAME_WINNER_MESSAGE, winners);
     }
 }
