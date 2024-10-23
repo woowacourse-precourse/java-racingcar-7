@@ -11,7 +11,7 @@ public class OutputView {
         for (int i = 0; i < winners.size(); i++) {
             winners.get(i).printWinner();
             if (i < winners.size() -1 ) {
-                System.out.println(", ");
+                System.out.print(", ");
             }
         }
         System.out.println();
