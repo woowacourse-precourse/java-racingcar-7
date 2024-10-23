@@ -46,6 +46,7 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수이어야 합니다.");
         }
 
+        System.out.println("실행 결과");
         final int playTimes = Integer.parseInt(playTimesInput);
         for (int i = 0; i < playTimes; i++) {
             for (Car car : cars) {
