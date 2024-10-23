@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,20 +20,23 @@ public class RacingController {
     }
 
     public void run() {
-        String carInput = getCarInput();
-        String countInput = getCountInput();
-
-        List<Car> cars = getCars(carInput);
-        int count = convertStringCountToInt(countInput);
-
-        outputView.printResultMessage();
-
-        for (int i = 0; i < count; i++) {
-            raceCars(cars);
-            printCarsStatus(cars);
-        }
-
+        Cars cars = getCars();
+        int count = getCount();
+        raceCars(cars, count);
         printWinners(cars);
+    }
+
+    private Cars getCars() {
+        String carInput = getCarInput();
+        List<String> carsBeforeConvert = splitCar(carInput);
+        Cars cars = convertToCars(carsBeforeConvert);
+        return cars;
+    }
+
+    private int getCount() {
+        String countInput = getCountInput();
+        int count = convertToInt(countInput);
+        return count;
     }
 
     private String getCarInput() {
@@ -45,62 +49,39 @@ public class RacingController {
         return inputView.input();
     }
 
-    private List<Car> getCars(String carInput) {
-        List<String> stringCars = splitCar(carInput);
-        return convertStringCarsToCars(stringCars);
-    }
-
     private List<String> splitCar(String carInput) {
-        return new ArrayList<String>(Arrays.asList(carInput.split(",")));
+        return new ArrayList<>(Arrays.asList(carInput.split(",")));
     }
 
-    private List<Car> convertStringCarsToCars(List<String> stringCars) {
+    private Cars convertToCars(List<String> stringCars) {
         List<Car> cars = new ArrayList<>();
         for (String stringCar : stringCars) {
             cars.add(new Car(stringCar));
         }
-        return cars;
+        return new Cars(cars);
     }
 
-    private int convertStringCountToInt(String countInput) {
+    private int convertToInt(String countInput) {
         return Integer.parseInt(countInput);
     }
 
-    private void raceCars(List<Car> cars) {
-        for (Car car : cars) {
-            car.race();
+    private void raceCars(Cars cars, int count) {
+        outputView.printResultMessage();
+        for (int i = 0; i < count; i++) {
+             cars.race();
+             printCarsInformation(cars.getCarsInformation());
         }
     }
 
-    private void printCarsStatus(List<Car> cars) {
-        for (Car car : cars) {
-            outputView.printCarStatus(car.getName(), car.getStatus());
+    private void printCarsInformation(List<String> carsInformation) {
+        for (String carInformation : carsInformation) {
+            outputView.printCarInformation(carInformation);
         }
         outputView.printNewLine();
     }
 
-    private void printWinners(List<Car> cars) {
-        List<String> winners = determineWinners(cars);
-
+    private void printWinners(Cars cars) {
+        List<String> winners = cars.determineWinners();
         outputView.printWinners(winners);
-    }
-
-    private List<String> determineWinners(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
-        int maxStatus = 0;
-
-        for (Car car : cars) {
-            if (maxStatus < car.getStatus()) {
-                maxStatus = car.getStatus();
-            }
-        }
-
-        for (Car car : cars) {
-            if (car.getStatus() == maxStatus) {
-                winners.add(car.getName());
-            }
-        }
-
-        return winners;
     }
 }

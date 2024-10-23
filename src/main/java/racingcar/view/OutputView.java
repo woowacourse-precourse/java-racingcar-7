@@ -21,8 +21,8 @@ public class OutputView {
         System.out.println(resultMessage);
     }
 
-    public void printCarStatus(String carName, int status) {
-        System.out.println(carName + " : " + "-".repeat(status));
+    public void printCarInformation(String carInformation) {
+        System.out.println(carInformation);
     }
 
     public void printNewLine() {

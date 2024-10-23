@@ -26,4 +26,8 @@ public class Car {
             status++;
         }
     }
+
+    public String getInformation() {
+        return name + " : " + "-".repeat(status);
+    }
 }
