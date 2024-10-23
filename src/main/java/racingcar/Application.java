@@ -61,7 +61,10 @@ public class Application {
         List<Car> carList = createCarList( input );
         System.out.println( "시도할 횟수는 몇 회인가요?" );
         int count;
-        try{ count = Integer.parseInt( Console.readLine() ); }
+        try{
+            count = Integer.parseInt( Console.readLine() );
+            if( count < 0 ) throw new IllegalArgumentException();
+        }
         catch( NumberFormatException e ){ throw new IllegalArgumentException(); }
         for( int inning = 1; inning <= count; inning++ ){
             for( Car challenger: carList ){
