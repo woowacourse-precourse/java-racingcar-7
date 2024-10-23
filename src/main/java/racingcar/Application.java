@@ -17,6 +17,10 @@ public class Application {
         int round = getRound();
 
         //로직 실행
+        System.out.println("실행 결과");
+        for (int i = 0; i < round; i++) {
+            output.gameResult(startGame(carStepsMap));
+        }
 
         //우승자 출력 받기
     }
@@ -41,6 +45,16 @@ public class Application {
             throw new IllegalArgumentException("음수는 입력이 불가능합니다.");
         }
         return numRound;
+    }
+
+    private static Map<String,Integer> startGame(Map<String,Integer> carMap) {
+        for (String key : carMap.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carMap.put(key, carMap.get(key) + 1);
+            }
+        }
+
+        return carMap;
     }
 
 }
