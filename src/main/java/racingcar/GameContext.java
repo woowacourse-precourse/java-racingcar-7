@@ -26,7 +26,7 @@ public class GameContext {
     public static GameContext getGameContext(String playerNameInput, int round) {
         List<Player> players = new ArrayList<>();
         Arrays.stream(playerNameInput.split(","))
-                .map(s-> new Player(s, ()->Randoms.pickNumberInRange(0, 9)))
+                .map(s -> new Player(s, () -> Randoms.pickNumberInRange(0, 9)))
                 .forEach(players::add);
         return new GameContext(players, round);
     }
