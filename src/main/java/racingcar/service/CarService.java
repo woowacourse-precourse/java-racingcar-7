@@ -3,7 +3,6 @@ package racingcar.service;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
 public class CarService {
