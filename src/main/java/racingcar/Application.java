@@ -20,6 +20,18 @@ public class Application {
             cars[i] = new Car(carNames[i]);
         }
     }
+    
+    //실행 결과 출력 메서드
+    static void whoWin(Car[] carNames, int num, int carNum) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < carNum; j++) {
+                System.out.println(carNames[j].name+" : "+carNames[j].isWin());
+            }
+            System.out.println();
+        }
+    }
+
     //최종 우승자가 누군지 가리는 메서드
     static String[] whoMaxWin(Car[] carNames,int carNum) {
         for (int i = 0; i < carNum; i++) {
