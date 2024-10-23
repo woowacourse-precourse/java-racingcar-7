@@ -15,6 +15,8 @@ public class InputView {
 
     private void validateNullOrEmpty(String input) {
         InputValidation inputValidation = new InputValidation();
+
         inputValidation.validateNullOrEmpty(input);
+        inputValidation.validateBlank(input);
     }
 }
