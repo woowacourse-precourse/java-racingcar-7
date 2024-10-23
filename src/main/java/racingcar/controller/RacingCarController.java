@@ -14,10 +14,16 @@ public class RacingCarController {
 
     public void run() {
         String rawNames = receiveCarNames();
+        String rawTryCount = receiveTryCount();
+    }
+
+    private String receiveTryCount() {
+        outputView.requestTryCount();
+        return inputView.receiveString();
     }
 
     private String receiveCarNames() {
         outputView.requestCarNames();
-        return inputView.receiveCarNames();
+        return inputView.receiveString();
     }
 }
