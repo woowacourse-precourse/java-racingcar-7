@@ -14,11 +14,10 @@ public class Validator {
         return tryNumber;
     }
 
-    public static String isNotBLANK(String carNameInput) {
+    public static void isNotBLANK(String carNameInput) {
         if (carNameInput.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.IS_BLANK);
         }
-        return carNameInput;
     }
 
     public static void overFiveCharsInCarName(List<String> carNameList) {

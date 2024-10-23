@@ -14,7 +14,6 @@ public class RacingController {
 
         outputView = new OutputView();
         racingService = new RacingService();
-
     }
 
 }
