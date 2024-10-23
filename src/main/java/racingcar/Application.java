@@ -5,17 +5,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
+    static ArrayList<Integer> moveCounts = new ArrayList<>();
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = new ArrayList<>();
 
         parseCarNames(carNames);
+        for (int i = 0; i < carNames.size(); i++) {
+            moveCounts.add(0);
+        }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attempts = Integer.parseInt(Console.readLine());
         System.out.println("실행 결과");
         canMove(carNames, attempts);
+
+        printWinners(carNames);
     }
 
     public static void parseCarNames(ArrayList<String> carNames) {
@@ -48,6 +55,7 @@ public class Application {
             if (ranNum >= 4) {
                 String updateName = carNames.get(j) + "-";
                 carNames.set(j, updateName);
+                moveCounts.set(j, moveCounts.get(j) + 1);
             }
         }
     }
@@ -58,4 +66,22 @@ public class Application {
         }
         System.out.println();
     }
+
+    public static void printWinners(ArrayList<String> carNames) {
+        int maxMove = 0;
+        for (int count : moveCounts) {
+            if (count > maxMove) {
+                maxMove = count;
+            }
+        }
+
+        ArrayList<String> winners = new ArrayList<>();
+        for (int i = 0; i < moveCounts.size(); i++) {
+            if (moveCounts.get(i) == maxMove) {
+                winners.add(carNames.get(i).charAt(0) + "");
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(",", winners));
+    }
+
 }
