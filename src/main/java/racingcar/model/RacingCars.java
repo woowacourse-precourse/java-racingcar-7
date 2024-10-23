@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.ramdom.RandomRange;
+
 import java.util.List;
 
 public class RacingCars {
@@ -9,6 +11,10 @@ public class RacingCars {
     public RacingCars(List<RacingCar> values) {
         validate(values);
         this.values = List.copyOf(values);
+    }
+
+    public void moveRandomly(RandomRange randomRange) {
+        values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
     }
 
     private void validate(List<RacingCar> values) {
