@@ -7,6 +7,5 @@ public class Application {
 
         controller.start();
 
-
     }
 }
