@@ -1,7 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import input.InputData;
+import input.OriginalInput;
 
 public class RacingCarInputView implements InputView{
 
@@ -9,8 +9,8 @@ public class RacingCarInputView implements InputView{
     private static final String INPUT_GUIDELINE_TRY_COUNT = "시도할 횟수를 입력해주세요";
 
     @Override
-    public InputData run(){
-        return new InputData(receiveName(), receiveTryCount());
+    public OriginalInput receiveInputData(){
+        return new OriginalInput(receiveName(), receiveTryCount());
     }
 
     public String receiveName(){

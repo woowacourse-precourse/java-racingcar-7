@@ -1,5 +1,6 @@
 package common;
 
+import input.ValidatedInputData;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,10 @@ class RacingCarBeanFactoryTest {
     void getRacingService() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
+        ValidatedInputData validatedInputData = new ValidatedInputData("dada,dodo,lala", Long.parseLong("5"));
 
         //when
-        RacingService racingCarService = beanFactory.provideRacingService();
+        RacingService racingCarService = beanFactory.provideRacingService(validatedInputData);
 
         //then
         Assertions.assertThat(racingCarService).isNotNull();

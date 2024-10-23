@@ -1,7 +1,7 @@
 package view;
 
-import input.InputData;
+import input.OriginalInput;
 
 public interface InputView {
-    InputData run();
+    OriginalInput receiveInputData();
 }

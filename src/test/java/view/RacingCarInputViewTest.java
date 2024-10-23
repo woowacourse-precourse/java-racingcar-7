@@ -31,6 +31,7 @@ class RacingCarInputViewTest {
         //when
         String name = inputView.receiveName();
         System.out.println(name);
+
         //then
         Assertions.assertThat(name).isEqualTo("dodo,moo,hahaha");
 
@@ -47,6 +48,7 @@ class RacingCarInputViewTest {
         //when
         String count = inputView.receiveTryCount();
         System.out.println(count);
+
         //then
         Assertions.assertThat(count).isEqualTo("3");
 

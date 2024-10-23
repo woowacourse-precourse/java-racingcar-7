@@ -1,8 +1,8 @@
 package common;
 
+import input.ValidatedInputData;
 import java.util.HashMap;
-import java.util.Map;
-import policy.CarRacingPolicyImpl;
+import policy.RacingCarPolicyImpl;
 import policy.RacingPolicy;
 import repository.CarRepositoryImpl;
 import repository.VehicleRepository;
@@ -14,18 +14,18 @@ public class RacingCarBeanFactory implements BeanFactory {
 
 
     @Override
-    public RacingService provideRacingService() {
-        return new RacingCarServiceImpl();
-    }
-
-    @Override
     public RacingPolicy provideRacingPolicy() {
-        return new CarRacingPolicyImpl();
+        return new RacingCarPolicyImpl();
     }
 
     @Override
     public VehicleRepository provideVehicleRepository() {
         return new CarRepositoryImpl(new HashMap<String,Car>());
+    }
+
+    @Override
+    public RacingService provideRacingService(ValidatedInputData validatedInputData) {
+        return new RacingCarServiceImpl(validatedInputData,provideRacingPolicy(),provideVehicleRepository());
     }
 
 }
