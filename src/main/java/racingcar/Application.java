@@ -35,8 +35,10 @@ public class Application {
     public static void printWinners(LinkedHashMap<String, Integer> cars) {
         List<String> winners = new ArrayList<>();
 
+        final int winnerScore = Collections.max(cars.values());
+
         for (Entry<String, Integer> car : cars.entrySet()) {
-            if (car.getValue() == Collections.max(cars.values())) {
+            if (car.getValue() == winnerScore) {
                 winners.add(car.getKey());
             }
         }
