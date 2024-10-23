@@ -30,4 +30,15 @@ class CarTest {
         assertThrows(IllegalArgumentException.class, () -> new Car(name2));
     }
 
+    @Test
+    @DisplayName("CarDTO 테스트")
+    public void getCarDTOTest() {
+        //given
+        Car car = new Car("test");
+        //when
+        CarDTO carDTO = car.getCarDTO();
+        //then
+        assertThat(carDTO.getCarName()).isEqualTo("test");
+        assertThat(carDTO.getPosition()).isEqualTo(0);
+    }
 }
