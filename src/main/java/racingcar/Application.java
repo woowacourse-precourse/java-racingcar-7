@@ -1,18 +1,25 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Application {
     static String INVAILD_INPUT_MESSAGE = "잘못된 입력입니다. ";
     static List<String> carNames = new ArrayList<>();
     static int attemptCount;
+    static Map<String, Integer> racingResult = new HashMap<>();
 
     public static void main(String[] args) {
-        // 입력
         input();
+
+        for (int i = 0; i < attemptCount; i++) {
+            carRacing(carNames);
+        }
     }
 
     private static void input() {
@@ -52,6 +59,29 @@ public class Application {
             } else {
                 throw new IllegalArgumentException(INVAILD_INPUT_MESSAGE);
             }
+        }
+    }
+
+    private static void carRacing(List<String> carNames) {
+        List<Integer> scores = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < carNames.size(); i++) {
+            int score = randomScore();
+            scores.add(score);
+            max = Math.max(max, score);
+        }
+
+        //racingOutput(scores);
+        //getWinner(scores, max);
+    }
+
+    private static Integer randomScore() {
+        int score = Randoms.pickNumberInRange(0, 9);
+        if (score >= 4) {
+            return score;
+        } else {
+            return 0;
         }
     }
 }
