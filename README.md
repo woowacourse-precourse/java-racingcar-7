@@ -7,7 +7,7 @@
     - 이름은 5자 이하만 허용되며, 이를 초과하면 `IllegalArgumentException`을 발생시킨다.
 
 
-- [ ] **시도 횟수 입력 기능**
+- [x] **시도 횟수 입력 기능**
     - 사용자가 자동차 경주를 몇 번 할지 횟수를 입력한다.
     - 음수나 0일 경우 `IllegalArgumentException`을 발생시킨다.
 
