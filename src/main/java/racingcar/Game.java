@@ -39,6 +39,7 @@ public class Game {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력해야 합니다." + e);
         }
+        Validator.validateAttempts(attempts);
     }
 
     private void runRace() {
