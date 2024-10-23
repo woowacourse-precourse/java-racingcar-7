@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.service.RacingService;
 
 public class RacingController {
     public static void start() {
@@ -8,7 +9,8 @@ public class RacingController {
         String racingCars = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         String moveCount = Console.readLine();
-
+        inputValid(racingCars, moveCount);
+        RacingService.setupRacing(racingCars, moveCount);
     }
 
     private static void inputValid(String carNames, String moveCount) {
