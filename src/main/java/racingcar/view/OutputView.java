@@ -11,11 +11,9 @@ public class OutputView {
     }
 
     public static void printRoundResult(Map<String, Integer> result) {
-        List<String> names = new ArrayList<>(result.keySet());
-        for (String name : names) {
-            System.out.printf("%s : %s",name, printCountBar(result.get(name)));
-            System.out.println();
-        }
+        result.forEach((name, position) -> {
+            System.out.printf("%s : %s%n",name, printCountBar(result.get(name)));
+        });
         System.out.println();
     }
 
