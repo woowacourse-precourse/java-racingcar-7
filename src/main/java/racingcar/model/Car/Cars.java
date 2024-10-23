@@ -12,11 +12,16 @@ public class Cars {
 
     private void addCarName(String[] carNames) {
         for (String carName : carNames) {
-            carList.add(new Car(carName));
+            Car car = new Car(carName);
+            carList.add(car);
         }
     }
 
-    public static List<Car> getCarList() {
-        return carList;
+    public String getCarListValue(int index) {
+        return carList.get(index).getCarName();
+    }
+
+    public int getCarListSize() {
+        return carList.size();
     }
 }
