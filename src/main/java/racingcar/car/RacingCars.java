@@ -14,7 +14,7 @@ public class RacingCars {
 
     public static RacingCars fromNames(List<String> carNames) {
         List<RacingCar> cars = carNames.stream()
-                .map(carName -> new RacingCar(carName, 0))
+                .map(RacingCar::of)
                 .toList();
         return new RacingCars(cars);
     }
@@ -37,7 +37,7 @@ public class RacingCars {
 
     public List<String> getWinnersName() {
         return new ArrayList<>(cars.stream()
-                .filter(racingCar -> racingCar.isWinner(getMaxMoveCount()))
+                .filter(racingCar -> racingCar.isMoveCountEqualTo(getMaxMoveCount()))
                 .map(RacingCar::getName)
                 .toList());
     }
