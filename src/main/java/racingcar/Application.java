@@ -36,14 +36,14 @@ public class Application {
             startRace(racingCars);
         }
         String winnerNames = getWinner(racingCars);
-        System.out.println("최종 우승자: " + winnerNames);
+        System.out.println("최종 우승자 : " + winnerNames);
 
     }
 
     private static void startRace(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.moveOrStop();
-            System.out.println(racingCar.getName()+" : "+racingCar.getStatus());
+            System.out.println(racingCar.getName()+" : "+racingCar.getStatusToDash());
         }
     }
     private static String getWinner(List<RacingCar> racingCars) {

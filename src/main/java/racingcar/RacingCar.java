@@ -37,4 +37,7 @@ public class RacingCar implements Car {
     public int getStatus() {
         return status;
     }
+    public String getStatusToDash() {
+        return "-".repeat(Math.max(0, status));
+    }
 }
