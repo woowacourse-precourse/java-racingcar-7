@@ -21,7 +21,7 @@ public class RaceTest {
         String input = "pobi,woni,javai";
 
         // when
-        Race race = Race.from(input, acceleration);
+        Race race = Race.of(input, acceleration);
 
         // then
         assertThat(race.getCars().size()).isEqualTo(3);
@@ -33,7 +33,7 @@ public class RaceTest {
         String input = "pobi,woni,javai";
 
         // when
-        Race race = Race.from(input, acceleration);
+        Race race = Race.of(input, acceleration);
 
         // then
         List<Car> cars = race.getCars();
@@ -47,7 +47,7 @@ public class RaceTest {
         // given
         String exceededLengthName = "pobi,woni,javai,123456789012345678901";
 
-        assertThatThrownBy(() -> Race.from(exceededLengthName, acceleration))
+        assertThatThrownBy(() -> Race.of(exceededLengthName, acceleration))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
@@ -56,7 +56,7 @@ public class RaceTest {
     void 매_턴_마다_조건에_따라_자동차가_전진다() {
         // given
         String input = "pobi,woni,javai";
-        Race race = Race.from(input, acceleration);
+        Race race = Race.of(input, acceleration);
 
         // when
         race.lap();
@@ -72,7 +72,7 @@ public class RaceTest {
     void 경기_결과를_출력한다() {
         // given
         String input = "pobi, jack";
-        Race race = Race.from(input, acceleration);
+        Race race = Race.of(input, acceleration);
 
         // when
         race.lap();
