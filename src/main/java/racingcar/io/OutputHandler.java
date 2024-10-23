@@ -1,6 +1,6 @@
 package racingcar.io;
 
-import racingcar.Car;
+import racingcar.model.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,12 +32,12 @@ public class OutputHandler {
 
     public void showCarsPosition(List<Car> cars) {
         cars.forEach(car -> {
-                System.out.print(car.getName() + " : ");
-                for (int i = 0; i < car.getPosition(); i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            });
+            System.out.print(car.getName() + " : ");
+            for (int i = 0; i < car.getPosition(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        });
         System.out.println();
     }
 }

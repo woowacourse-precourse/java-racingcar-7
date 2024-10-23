@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -18,7 +18,7 @@ public class Cars {
     }
 
     public List<Car> move() {
-        cars.forEach(car -> car.move(Randoms.pickNumberInRange(1,9)));
+        cars.forEach(car -> car.move(Randoms.pickNumberInRange(1, 9)));
         return cars;
     }
 

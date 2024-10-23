@@ -3,6 +3,8 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 

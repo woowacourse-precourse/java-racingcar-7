@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.io.InputHandler;
 import racingcar.io.OutputHandler;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.Arrays;
 import java.util.List;
