@@ -24,7 +24,7 @@ public class InputValidator {
 
     private void validateNameLength(List<String> carNames) {
         for (String name : carNames) {
-            if (name.length() > 5) {
+            if (name.length() > Constant.CAR_NAME_MAX_LENGTH_VALUE) {
                 throw new IllegalArgumentException(Constant.CAR_NAME_LENGTH_ERROR_MESSAGE);
             }
         }
@@ -39,13 +39,13 @@ public class InputValidator {
     }
 
     private void validateNumber(String userInput) {
-        if (!userInput.matches("[0-9]+")) {
+        if (!userInput.matches(Constant.POSITIVE_INTEGER_REGEX)) {
             throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private void validatePositiveNumber(int attemptCount) {
-        if (attemptCount <= 0) {
+        if (attemptCount < Constant.ATTEMPT_COUNT_MIN_VALUE) {
             throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
         }
     }
