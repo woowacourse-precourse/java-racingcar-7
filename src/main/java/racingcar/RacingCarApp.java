@@ -10,7 +10,18 @@ public class RacingCarApp {
         String inputData = getCarInput();
         int attemptCount = getAttemptCount();
         makeCar(inputData);
+        while (attemptCount > 0) {
+            carsMove();
+            attemptCount--;
+        }
     }
+
+    public void carsMove() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
     public String getCarInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
