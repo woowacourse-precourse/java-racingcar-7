@@ -2,12 +2,11 @@ package racingcar.parser;
 
 import racingcar.domain.Car;
 import racingcar.domain.Input;
+import racingcar.exception.GameErrorMessage;
 import racingcar.validator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
 public class InputParser {
     private static final String DELIMITER = ",";
@@ -29,7 +28,7 @@ public class InputParser {
 
         long distinctCount = carList.stream().map(Car::getName).distinct().count();
         if (distinctCount != carList.size()) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다. 자동차 이름은 중복되면 안됩니다.");
+            throw new IllegalArgumentException(GameErrorMessage.CAR_NAME_DUPLICATED.getValue());
         }
         return carList;
     }
@@ -40,7 +39,7 @@ public class InputParser {
             inputValidator.validateTryCountGreaterZero(count);
             return count;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 형태의 시도 횟수입니다.");
+            throw new IllegalArgumentException(GameErrorMessage.WRONG_TYPE_TRY_COUNT.getValue());
         }
     }
 
