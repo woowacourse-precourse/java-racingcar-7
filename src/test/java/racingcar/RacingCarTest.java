@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,5 +25,19 @@ class RacingCarTest {
 
         racingCar.moveForward(4);
         assertThat(racingCar.getPos()).isEqualTo(initialPos + 1);
+    }
+
+    @Test
+    void 자동차의_이름은_5자_이하만_가능하다() {
+        new RacingCar("abcde");
+        new RacingCar("abcd ");
+
+        assertThatThrownBy(() -> new RacingCar(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름이 비어있습니다.");
+
+        assertThatThrownBy(() -> new RacingCar("abcdef"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 [1,5] 이내여야 합니다.");
     }
 }
