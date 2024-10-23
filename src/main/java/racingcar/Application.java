@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String cars = Console.readLine();
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String move_cnt = Console.readLine();
 
         ArrayList<Car> race_result = race_start(cars, move_cnt);
@@ -18,6 +20,7 @@ public class Application {
     public static ArrayList<Car> add_cars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
         for (String car_name : cars.split(",")) {
+            car_name = car_name.strip();
             validate(car_name);
             carList.add(new Car(car_name, 0));
         }
