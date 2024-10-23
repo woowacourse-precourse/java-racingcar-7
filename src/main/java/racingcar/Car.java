@@ -13,6 +13,7 @@ public class Car {
         }
         this.name = name;
         this.position = 0;  // 시작위치 0 으로 초기화
+        
     }
 
 
