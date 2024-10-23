@@ -8,7 +8,15 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.count = Randoms.pickNumberInRange(0,9);
+        this.count = getRandomCount();
+    }
+
+    private int getRandomCount() {
+        count = 0;
+        while(count < 4) {
+            count = Randoms.pickNumberInRange(0,9);
+        }
+        return count;
     }
 
     public String getName() {
