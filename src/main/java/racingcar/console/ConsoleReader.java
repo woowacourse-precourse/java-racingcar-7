@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ConsoleReader {
 
-    public static String read(String input){
+    public static String readName(String input){
         return Validator.validate(input);
     }
 
