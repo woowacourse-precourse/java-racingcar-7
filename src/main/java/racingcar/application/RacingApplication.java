@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.RandomNumberGenerator;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Result;
 
 public class RacingApplication {
 
@@ -14,7 +15,14 @@ public class RacingApplication {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public List<Cars> race(int gameNumber, List<Cars> allCars) {
+    public Result totalRace(Cars cars, int gameNumber) {
+        List<Cars> list = new ArrayList<>();
+        list.add(cars);
+        List<Cars> afterRaceCars = race(gameNumber, list);
+        return Result.of(afterRaceCars.subList(1, afterRaceCars.size()));
+    }
+
+    private List<Cars> race(int gameNumber, List<Cars> allCars) {
         if (gameNumber == 0) {
             return allCars;
         }

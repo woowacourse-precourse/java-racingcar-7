@@ -27,8 +27,7 @@ public class GameApplication {
         printer.print("시도할 횟수는 몇 회인가요?");
         int gameNumber = reader.readGameNumber();
 
-        List<Cars> afterRaceCars = racingApplication.race(gameNumber, Cars.makeOriginCars(carNames));
-        Result result = Result.of(afterRaceCars.subList(1, afterRaceCars.size()));
+        Result result = racingApplication.totalRace(Cars.makeOriginCars(carNames), gameNumber);
         List<String> winners = result.findWinners();
         printer.printAfterGameResult(result);
         printer.printFinalWinner(winners);
