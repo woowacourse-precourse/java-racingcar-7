@@ -22,4 +22,10 @@ public class Validation {
         }
     }
 
+    public void isDuplicateName(int listSize, int setSize) {
+        if(listSize != setSize) {
+            throw new IllegalArgumentException(ErrorType.CAR_NAME_DUPLICATE_ERROR.getMessage());
+        }
+    }
+
 }
