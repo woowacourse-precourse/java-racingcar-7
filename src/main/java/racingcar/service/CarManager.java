@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import racingcar.domain.Car;
+
 import java.util.List;
 
 public interface CarManager {
@@ -7,5 +9,5 @@ public interface CarManager {
     String SEPARATOR_NAME = "쉼표";
     String VALID_INPUT_PATTERN = "^\\d+("+SEPARATOR+"\\d+)*$";
     Integer CarNameLength = 5;
-    public List<String> carNameInput();
+    public List<Car> carNameInput();
 }
