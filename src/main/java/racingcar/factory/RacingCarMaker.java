@@ -1,6 +1,6 @@
 package racingcar.factory;
 
-import racingcar.race.RacingCar;
+import racingcar.component.RacingCar;
 
 public class RacingCarMaker {
 
