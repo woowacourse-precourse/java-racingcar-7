@@ -11,7 +11,7 @@
       - 이름이 0 또는 5자 초과할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 2. 자동차 객체 생성하여 자동차 객체 리스트에 저장
 3. 시도할 횟수 입력 (= 게임 진행 횟수 )
-    - 시도할 횟수 만ㅋ
+    - 숫자가 아닐 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 <hr>
 
 ### 자동차 경주 게임
@@ -40,7 +40,6 @@
  - startGames() : 게임 횟수에 맞게 게임 객체 생성 및 실행
  - printGameResult() : 게임 후 전진한 횟수 출력 메소드
  - findWinner() : 우승자 찾기 메소드
- - printWinner() : 우승자 출력 메소드
 <br>
    
 `Car.class` : 자동차 클래스
@@ -48,7 +47,8 @@
 <br>
 
 `Game.class` : 한 게임 작동 기능 클래스
- - start() : 무작위 값에 따라 전진 또는 멈춤 실행 메소드
+ - updateCarMove() : 무작위 값에 따라 전진 또는 멈춤 실행 메소드
+ - start() : 각 자동차별 게임 진행 메소드
 <br>
 
 `RandomNumber.class` : 무작위 값 클래스

@@ -35,6 +35,12 @@ public class Racingcar {
         System.out.println();
     }
 
+    public void findWinner(){
+        String result = Contants.OUTPUT_NOTICE_WINNER_RESULT
+                +Contants.OUTPUT_COLON_CAHR;
+        System.out.println(result);
+    }
+
     public void start() {
         System.out.println(Contants.INPUT_NOTICE_CAR_NAMES);
         String input_value = Console.readLine();
@@ -47,6 +53,7 @@ public class Racingcar {
         int game_count = Integer.parseInt(input_value2);
         startGames(game_count);
 
+        findWinner();
     }
 
 

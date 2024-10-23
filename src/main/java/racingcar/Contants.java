@@ -5,6 +5,7 @@ public class Contants {
     static final String INPUT_NOTICE_GAME_TIMES = "시도할 횟수는 몇 회인가요?";
     static final String INPUT_SPLIT_CHAR = ",";
     static final String OUTPUT_NOTICE_GAME_RESULT = "실행 결과";
+    static final String OUTPUT_NOTICE_WINNER_RESULT = "최종 우승자";
     static final String OUTPUT_COLON_CAHR = " : ";
     static final String OUTPUT_DISTANCE_CHAR = "-";
 

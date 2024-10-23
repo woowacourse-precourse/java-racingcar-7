@@ -10,13 +10,17 @@ public class Game {
         this.carList = new ArrayList<>(carList);
     }
 
+    public void updateCarMove(Car car) {
+        RandomNumber randomNumber = new RandomNumber();
+        boolean isMove = randomNumber.start();
+        if (isMove) {
+            car.updateDistance();
+        }
+    }
+
     public void start() {
         for (Car car : carList) {
-            RandomNumber randomNumber = new RandomNumber();
-            boolean isMove = randomNumber.start();
-            if (isMove) {
-                car.updateDistance();
-            }
+           updateCarMove(car);
         }
         //end for loop
     }
