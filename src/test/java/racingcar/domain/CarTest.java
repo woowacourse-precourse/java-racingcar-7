@@ -16,4 +16,13 @@ public class CarTest {
             assertEquals("[ERROR] 자동차 이름은 5자 이하여야 합니다.", e.getMessage());
         }
     }
+
+    @Test
+    void 전진하기_테스트() {
+        Car car = new Car("pobi");
+        for (int i = 0; i < 3; i++) {
+            car.move();
+        }
+        assertEquals(3, car.getPosition());
+    }
 }
