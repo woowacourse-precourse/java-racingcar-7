@@ -9,7 +9,6 @@ public class Record {
     public Record(){
         latestPosition = new HashMap<>();
         trace = new StringBuilder();
-        trace.append("실행 결과").append("\n");
     }
 
     public Map<String, Integer> getLatestPosition() {

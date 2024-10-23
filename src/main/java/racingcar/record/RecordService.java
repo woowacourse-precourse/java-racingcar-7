@@ -61,6 +61,9 @@ public class RecordService {
         for (RacingCar c : racingCarList) {
             latestPosition.put(c.getName(), 0);
         }
+        record.getTrace()
+                .append("실행 결과")
+                .append("\n");
     }
 
     private String findWinner(Record record){

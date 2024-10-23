@@ -3,12 +3,10 @@ package racingcar.racingcar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.constant.Strings;
 
 public class RacingCarValidator {
     private static final RacingCarValidator RACING_CAR_VALIDATOR = new RacingCarValidator();
-    private static final String MORE_THAN_ONE = "한 대 이상의 자동차 이름이 필요합니다.";
-    private static final String OVER_MAX_LENGTH = "한 대 이상의 자동차 이름이 최대 길이를 초과했습니다.";
-    private static final String EXIST_SAME_NAME = "동일한 이름을 가진 자동차가 존재합니다.";
 
     private RacingCarValidator(){
 
@@ -22,18 +20,18 @@ public class RacingCarValidator {
     // 아래에 있는 메서드들이랑 일관성이 없기도 해서 이렇게 함.
     public void existCheck(String joinedCarNames) {
         if(joinedCarNames.isBlank())
-            throw new IllegalArgumentException(MORE_THAN_ONE);
+            throw new IllegalArgumentException(Strings.MORE_THAN_ONE.getMessage());
     }
 
     public void lengthCheck(List<String> carNames, int maxLength){
         for(String name:carNames){
             if(name.length()>maxLength)
-                throw new IllegalArgumentException(OVER_MAX_LENGTH);
+                throw new IllegalArgumentException(Strings.OVER_MAX_LENGTH.getMessage());
         }
     }
     public void sameNameCheck(List<String> carNames){
         Set<String> nameSet = new HashSet<>(carNames);
         if(nameSet.size()!= carNames.size())
-            throw new IllegalArgumentException(EXIST_SAME_NAME);
+            throw new IllegalArgumentException(Strings.EXIST_SAME_NAME.getMessage());
     }
 }
