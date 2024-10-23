@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingGame {
+
     private final LinkedHashMap<String, Integer> carNameAndScore;
     private final int tryCount;
 
-    public RacingGame(LinkedHashMap<String, Integer> carScore) {
+    public RacingGame(LinkedHashMap<String, Integer> carScarNameAndScore, int tryCount) {
         this.carNameAndScore = CarInformation.getCarInformation();
         this.tryCount = Input.inputTryCount(); // 시도 횟수를 Input 클래스에서 입력받음
     }
@@ -30,9 +31,9 @@ public class RacingGame {
     }
 
     private void printResult() {
-        for(Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
+        for (Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
             System.out.println(entry.getKey() + " : ");
-            for(int i=0;i<entry.getValue();i++) {
+            for (int i = 0; i < entry.getValue(); i++) {
                 System.out.println("-");
             }
             System.out.println();
@@ -40,12 +41,12 @@ public class RacingGame {
         System.out.println();
     }
 
-    private void printWinner() {
+    public void printWinner() {
         int maxScore = Collections.max(carNameAndScore.values());
 
         List<String> winners = new ArrayList<>();
-        for(Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
-            if(entry.getValue() == maxScore) {
+        for (Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
+            if (entry.getValue() == maxScore) {
                 winners.add(entry.getKey());
             }
         }
