@@ -14,7 +14,7 @@ public class UserView {
     private static final String RACING_RESULT_MESSAGE = "\n실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
-    private RacingCarController racingCarController;
+    private final RacingCarController racingCarController;
 
     public UserView(RacingCarController racingCarController) {
         this.racingCarController = racingCarController;
