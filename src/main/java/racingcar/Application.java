@@ -9,59 +9,22 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String string = Console.readLine();
-        String[] carList = string.split(",");
+        RaceManager raceManager = new RaceManager();
+        List<String> strings = raceManager.setRacer();
 
-        int count = 0;
+        //입력한 문자열 리스트로 자동차 객체 리스트 만들기
         List<RacingCar> racingCars = new ArrayList<>();
-        for (String carName : carList) {
-            count++;
+        for (String carName : strings) {
             RacingCar newRacingCar = new RacingCar(carName);
             racingCars.add(newRacingCar);
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int cycle;
-        String cycleInput = Console.readLine();
-        try {
-            cycle = Integer.parseInt(cycleInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        int cycle = raceManager.setRaceCycle();
 
-        for (int i = 0; i < cycle; i++) {
-            System.out.println();
-            System.out.println(count + "차");
-            startRace(racingCars);
-        }
-        String winnerNames = getWinner(racingCars);
-        System.out.println("최종 우승자 : " + winnerNames);
+        raceManager.startRace(cycle, racingCars);
 
     }
 
-    private static void startRace(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop();
-            System.out.println(racingCar.getName()+" : "+racingCar.getStatusToDash());
-        }
-    }
-    private static String getWinner(List<RacingCar> racingCars) {
-        List<String> winners = new ArrayList<>();
-        int maxScore = Integer.MIN_VALUE;
-
-        for (RacingCar racingCar : racingCars) {
-            int score = racingCar.getStatus();
-            if (score > maxScore) {
-                maxScore = score;
-                winners.clear();
-                winners.add(racingCar.getName());
-            } else if (score == maxScore) {
-                winners.add(racingCar.getName());
-            }
-        }
-        return String.join(", ", winners);
-    }
 
 
 }
