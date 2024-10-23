@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.service.CarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,6 +20,6 @@ public class CarController {
         outputView.printStartMessage();
         ArrayList<String> carNames = inputView.readCarNames();
         outputView.printAttemptMessage();
-        int attemps = inputView.readAttempts();
+        int attempts = inputView.readAttempts();
     }
 }

@@ -7,9 +7,17 @@ public class CarService {
 
     private final CarGame carGame;
 
-    public CarService(CarGame carGame) {
-        this.carGame = carGame;
+    public CarService() {
+        this.carGame = new CarGame();
     }
 
+    public void updateAttempts(int attempts) {
+        this.carGame.updateAttempts(attempts);
+    }
+
+    public void addParticipant(String name){
+        Car newCar = new Car(name, 0);
+        carGame.addParticipant(newCar);
+    }
 
 }

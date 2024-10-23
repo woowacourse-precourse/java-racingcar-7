@@ -9,12 +9,15 @@ public class CarGame {
 
     private List<Car> participants;
     private List<Car> winners;
-    private int attemps;
+    private int attempts;
 
-    public CarGame(int attemps) {
+    public CarGame() {
         this.participants = new ArrayList<>();
         this.winners = new ArrayList<>();
-        this.attemps = attemps;
+    }
+
+    public void updateAttempts(int attempts) {
+        this.attempts = attempts;
     }
 
     public void addParticipant(Car car) {
