@@ -1,8 +1,7 @@
 package racingcar.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
-import java.util.List;
 
 class ExtractNameTest {
 
@@ -11,10 +10,10 @@ class ExtractNameTest {
         ExtractName extractor = new ExtractName();
         String input = " car1 , car2 , car3 ,   ";
 
-        List<String> result = extractor.extractName(input);
+        String[] result = extractor.extractName(input);
 
-        List<String> expected = List.of("car1", "car2", "car3", "");
-        assertEquals(expected, result);
+        String[] expected = {"car1", "car2", "car3", ""};
+        assertArrayEquals(expected, result);
     }
 
     @Test
@@ -22,10 +21,10 @@ class ExtractNameTest {
         ExtractName extractor = new ExtractName();
         String input = "";
 
-        List<String> result = extractor.extractName(input);
+        String[] result = extractor.extractName(input);
 
-        List<String> expected = List.of("");
-        assertEquals(expected, result);
+        String[] expected = {""};
+        assertArrayEquals(expected, result);
     }
 
     @Test
@@ -33,10 +32,10 @@ class ExtractNameTest {
         ExtractName extractor = new ExtractName();
         String input = "car1";
 
-        List<String> result = extractor.extractName(input);
+        String[] result = extractor.extractName(input);
 
-        List<String> expected = List.of("car1");
-        assertEquals(expected, result);
+        String[] expected = {"car1"};
+        assertArrayEquals(expected, result);
     }
 
     @Test
@@ -44,9 +43,9 @@ class ExtractNameTest {
         ExtractName extractor = new ExtractName();
         String input = "  car1  ,   car2  , car3 ";
 
-        List<String> result = extractor.extractName(input);
+        String[] result = extractor.extractName(input);
 
-        List<String> expected = List.of("car1", "car2", "car3");
-        assertEquals(expected, result);
+        String[] expected = {"car1", "car2", "car3"};
+        assertArrayEquals(expected, result);
     }
 }
