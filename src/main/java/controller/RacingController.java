@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Attempt;
 import domain.Car;
 import java.util.List;
 import service.RacingService;
@@ -10,16 +11,13 @@ import view.OutputView;
 public class RacingController {
     private final RacingService racingService = new RacingService();
     private List<Car> carsList;
-    private int attempt;
+    private Attempt attempt;
 
     public void set() {
         String input = InputView.inputCars();
         carsList = racingService.getCarsList(input);
 
-
-        String attemptInput = InputView.inputAttempt();
-        AttemptValidator.isPositiveDigit(attemptInput);
-        attempt = Integer.parseInt(attemptInput);
+        attempt = new Attempt(InputView.inputAttempt());
 
         race();
         result();
@@ -27,7 +25,7 @@ public class RacingController {
 
     public void race() {
         System.out.println("실행 결과");
-        for (int i = 0; i < attempt; i++) {
+        for (int i = 0; i < attempt.getAttempt(); i++) {
             racingService.moveCars(carsList);
             OutputView.showRoundResult(carsList);
         }
