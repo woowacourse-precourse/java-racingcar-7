@@ -26,12 +26,12 @@ public class Application {
         public void run() {
             int randomNumber = Utils.generateRandomValue();
 
-            if(Utils.checkMoveCondition(randomNumber)) {
+            if (Utils.checkMoveCondition(randomNumber)) {
                 moveForward();
             }
         }
 
-        private void moveForward(){
+        private void moveForward() {
             ++movedAmount;
         }
     }
@@ -89,13 +89,13 @@ public class Application {
         }
 
         ArrayList<String> racingStart(ArrayList<Car> cars, int attempts) {
+            System.out.println("실행 결과");
             for (int i = 0; i < attempts; i++) {
                 // 랜덤 값 생성하고 자동차 전진
                 for (Car car : cars) {
                     car.run();
                 }
-                // 현황 문자열 생성하고 값 출력
-                printGameStatus();
+                printGameStatus(cars);
             }
             return determineWinner(cars);
         }
@@ -104,7 +104,19 @@ public class Application {
             return new ArrayList<String>();
         }
 
-        private void printGameStatus() {
+        private void printGameStatus(ArrayList<Car> cars) {
+            for (Car car : cars) {
+                System.out.println(makeMovedAmountString(car.name, car.movedAmount));
+            }
+            System.out.println("\n");
+        }
+
+        public String makeMovedAmountString(String carName, int movedAmount) {
+            String movedAmountString = "-".repeat(movedAmount);
+            if (movedAmount == 0) {
+                movedAmountString = "";
+            }
+            return String.format("%s : %s", carName, movedAmountString);
         }
 
     }
@@ -117,5 +129,6 @@ public class Application {
         public static boolean checkMoveCondition(int randomNum) {
             return randomNum >= 4;
         }
+
     }
 }
