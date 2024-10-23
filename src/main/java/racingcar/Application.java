@@ -15,6 +15,9 @@ public class Application {
         if (carNamesInput.startsWith(",") || carNamesInput.endsWith(",")) {
             throw new IllegalArgumentException("입력 문자열 앞과 뒤에는 쉼표가 위치할 수 없습니다.");
         }
+        if (carNamesInput.contains(",,")) {
+            throw new IllegalArgumentException("입력 문자열에는 쉼표가 연속될 수 없습니다.");
+        }
 
         // 수정 대상: 컬렉션을 사용하고, Immutable 하게 만든다.
         final String[] carNames = carNamesInput.split(",");
