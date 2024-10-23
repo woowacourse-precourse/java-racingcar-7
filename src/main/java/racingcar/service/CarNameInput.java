@@ -23,10 +23,18 @@ public class CarNameInput implements CarManager{
 
     private List<String> carNamesSplit(String carNames) {
         String[] carNameArray = carNames.split(SEPARATOR);
+        carNamesTrim(carNameArray);
+
         List<String> carNameList = Arrays.asList(carNameArray);
         validateCarNameLength(carNameList);
 
         return carNameList;
+    }
+
+    private void carNamesTrim(String[] carNameArray) {
+        for (int i = 0; i < carNameArray.length; i++) {
+            carNameArray[i] = carNameArray[i].trim();
+        }
     }
 
     private void validateCarNameLength(List<String> carNameList) {
