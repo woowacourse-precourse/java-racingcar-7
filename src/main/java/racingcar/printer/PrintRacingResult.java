@@ -15,7 +15,7 @@ public class PrintRacingResult implements Printer {
     public void printAfterGameResult(List<Cars> afterGameCars) {
         System.out.println("실행 결과");
         for (Cars cars : afterGameCars) {
-            System.out.println(Cars.makeResultOutput(cars.allCar()));
+            System.out.println(cars.makeResultOutput());
         }
     }
 

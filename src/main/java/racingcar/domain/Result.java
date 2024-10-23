@@ -8,10 +8,10 @@ public record Result(
 ) {
 
     public List<String> findWinners() {
-        List<Car> finalCars = finalResultCars.getLast().allCar();
-        int longestDistance = Cars.findLongestDistance(finalResultCars.getLast().allCar());
+        Cars finalCars = finalResultCars.getLast();
+        int longestDistance = finalCars.findLongestDistance();
         List<String> winners = new ArrayList<>();
-        for (Car car : finalCars) {
+        for (Car car : finalCars.allCar()) {
             if (car.distance() == longestDistance) {
                 winners.add(car.name());
             }

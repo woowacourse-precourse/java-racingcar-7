@@ -14,9 +14,9 @@ public record Cars(
         return result;
     }
 
-    public static int findLongestDistance(List<Car> finalAllCar) {
+    public int findLongestDistance() {
         int longestDistance = 0;
-        for (Car car : finalAllCar) {
+        for (Car car : allCar) {
             if (car.distance() > longestDistance) {
                 longestDistance = car.distance();
             }
@@ -24,7 +24,7 @@ public record Cars(
         return longestDistance;
     }
 
-    public static String makeResultOutput(List<Car> allCar) {
+    public String makeResultOutput() {
         StringBuilder resultString = new StringBuilder();
         for (Car car : allCar) {
             resultString.append(car.makingCarDistanceResult());

@@ -22,7 +22,6 @@ public class RacingApplication {
         Cars nextCars = eachRace(allCar);
         allCars.add(nextCars);
         return race(gameNumber - 1, allCars);
-
     }
 
     private Cars eachRace(List<Car> allCar) {
