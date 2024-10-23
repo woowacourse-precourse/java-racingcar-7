@@ -1,7 +1,7 @@
 package racingcar;
 
 public interface Car {
-    void setStaus();
+    void moveOrStop();
     void move();
 
 }
