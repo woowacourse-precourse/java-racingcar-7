@@ -2,25 +2,16 @@ package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import domain.Car;
-import java.util.ArrayList;
+import domain.Cars;
 import java.util.List;
 import view.OutputView;
 
 public class RacingService {
-    public List<Car> getCarsList(String input) {
-        String[] names = input.split(",");
-
-        List<Car> carsList = new ArrayList<>();
-        for (String name : names) {
-            carsList.add(new Car(name));
-        }
-
-        return carsList;
-    }
 
 
-    public void moveCars(List<Car> carsList) {
-        for (Car car : carsList) {
+
+    public void moveCars(Cars carsList) {
+        for (Car car : carsList.getCarsList()) {
             int randomNumber = getRandomNumber();
             if (randomNumber >= 4) {
                 car.addScore();
@@ -32,13 +23,13 @@ public class RacingService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public void getWinners(List<Car> carsList) {
-        int maxScore = carsList.stream()
+    public void getWinners(Cars carsList) {
+        int maxScore = carsList.getCarsList().stream()
                 .mapToInt(Car::getScore)
                 .max()
                 .orElse(0);
 
-        List<String> winners = carsList.stream()
+        List<String> winners = carsList.getCarsList().stream()
                 .filter(car -> car.getScore() == maxScore)
                 .map(Car::getName)
                 .toList();

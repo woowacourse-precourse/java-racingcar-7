@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import domain.Car;
+import domain.Cars;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,9 +27,10 @@ class RacingServiceTest {
         Car car2 = new Car("c2");
         Car car3 = new Car("c3");
 
-        List<Car> carsList = racingService.getCarsList(input);
+        Cars cars = new Cars(input);
+//        List<Car> carsList = racingService.getCarsList(input);
 
-        assertThat(carsList)
+        assertThat(cars.getCarsList())
                 .hasSize(3)
                 .contains(car1, car2, car3);
     }

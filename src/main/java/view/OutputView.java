@@ -1,13 +1,14 @@
 package view;
 
 import domain.Car;
+import domain.Cars;
 import java.util.List;
 
 public class OutputView {
     private OutputView() {}
 
-    public static void showRoundResult(List<Car> carsList) {
-        carsList.forEach((car) -> {
+    public static void showRoundResult(Cars carsList) {
+        carsList.getCarsList().forEach((car) -> {
             System.out.println(car.getName() + " : " + "-".repeat(car.getScore()));
         });
         System.out.println();
