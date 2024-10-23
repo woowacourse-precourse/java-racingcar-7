@@ -12,9 +12,9 @@ public class Application {
         parseCarNames(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int attemps = Integer.parseInt(Console.readLine());
+        int attempts = Integer.parseInt(Console.readLine());
         System.out.println("실행 결과");
-        canMove(carNames, attemps);
+        canMove(carNames, attempts);
     }
 
     public static void parseCarNames(ArrayList<String> carNames) {
@@ -29,15 +29,15 @@ public class Application {
         }
     }
 
-    public static void canMove(ArrayList<String> carNames, int attemps) {
-        if (attemps == 0) {
+    public static void canMove(ArrayList<String> carNames, int attempts) {
+        if (attempts == 0) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < carNames.size(); i++) {
             String updateName = carNames.get(i) + " : ";
             carNames.set(i, updateName);
         }
-        for (int i = 0; i < attemps; i++) {
+        for (int i = 0; i < attempts; i++) {
             for (int j = 0; j < carNames.size(); j++) {
                 int ranNum = Randoms.pickNumberInRange(0, 9);
                 if (ranNum >= 4) {
