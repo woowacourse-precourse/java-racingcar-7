@@ -9,6 +9,7 @@ public final class Message {
     public static final String OUTPUT_WINNER = "최종 우승자";
 
     public static final String DELIMITER_POSITION_INCORRECT = "쉼표(,)의 위치가 잘못되었습니다.";
+    public static final String NEED_MULTIPLE_RACING_CAR = "자동차 1대로는 자동차 경주를 진행할 수 없습니다.";
     public static final String NAME_LENGTH_NOT_VALID = "이름의 길이가 맞지 않습니다.";
 
     private Message() {

@@ -1,10 +1,9 @@
 package racingcar.model;
 
-import static racingcar.util.Validator.validateOneName;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.util.Validator;
 
 public class RacingCar {
 
@@ -16,7 +15,7 @@ public class RacingCar {
         validateNameLength(name);
     }
     private void validateNameLength(String name) {
-        validateOneName(name);
+        Validator.validateNameLength(name);
         this.name = name;
     }
 
