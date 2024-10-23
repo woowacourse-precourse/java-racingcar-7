@@ -23,7 +23,7 @@ public class Car implements Comparable<Car> {
     }
 
     private void validateNameFormat(String name) {
-        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣0-9]{2,8}$", name)) {
+        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣0-9]{1,5}$", name)) {
             throw new IllegalArgumentException(INVALID_NAME_FORMAT.getMessage());
         }
     }
