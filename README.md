@@ -17,7 +17,7 @@
 <br>
 
 ## What(무엇이 필요한가)
-- [ ] 자동차가 필요하다  
+- [x] 자동차가 필요하다  
     자동차는 이름과 위치를 필드로 가져야 한다.  
 
 
@@ -39,7 +39,7 @@
 <br>
 
 ## Who(누가 담당할 것인가)
-- [ ] Model/Car 클래스 (자동차 역할)  
+- [x] Model/Car 클래스 (자동차 역할)  
 - [ ] Controller/RacingGame 클래스 (경주 게임 역할)  
 - [x] View/InputHandler 클래스 (입력 처리 역할)
 - [ ] View/OutputHandler 클래스 (출력 처리 역할)
