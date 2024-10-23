@@ -25,4 +25,10 @@ public class InputValidator {
             throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
         }
     }
+
+    private void validatePositiveNumber(int attemptCount) {
+        if (attemptCount <= 0) {
+            throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
+        }
+    }
 }
