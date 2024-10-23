@@ -25,5 +25,14 @@ public class Application {
         String carsName = Console.readLine();
         String tryNumber = Console.readLine();
 
+        // 경기 진행
+//  - [x] 입력 받은 경주 자동차 이름 구분
+        Map<String, Integer> cars = new LinkedHashMap<>();
+        cars = Arrays.stream(carsName.split(",")).collect(Collectors.toMap(s -> s, s -> 0));
+        System.out.println(cars);
+//  - [ ] 자동차 이동 조건
+//    - [ ] 전진 : 무작위 값이 4이상
+//    - [ ] 정지 : 무작위 값이 4미만
+//  - [ ] 우승자 조건 : 가장 많이 전진한 자동차(우승자는 2명 이상이 될 수 있다.)
     }
 }
