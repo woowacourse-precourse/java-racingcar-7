@@ -9,8 +9,16 @@ public class RacingCar {
         this.id = id;
     }
 
-    public void moveForward() {
-        this.distance++;
+    public int moveForward() {
+        return ++this.distance;
+    }
+
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override
