@@ -17,12 +17,14 @@ public class Application {
     public static void main(String[] args) {
         input();
 
+        System.out.println("\n실행 결과");
         for (int i = 0; i < attemptCount; i++) {
             carRacing(carNames);
         }
 
         int maxWinCount = getWinCount();
-        //printFinalWinners(maxWinCount);
+        List<String> winners = getFinalWinners(maxWinCount);
+        printFinalWinners(winners);
     }
 
     private static void input() {
@@ -117,5 +119,28 @@ public class Application {
         //우승 회수 내림차순 정렬
         keySet.sort((o1, o2) -> racingWin.get(o2).compareTo(racingWin.get(o1)));
         return racingWin.get(keySet.get(0));
+    }
+
+    private static List<String> getFinalWinners(int maxWinCount) {
+        List<String> keySet = new ArrayList<>(racingWin.keySet());
+        List<String> winners = new ArrayList<>();
+
+        for (String key : keySet) {
+            if (racingWin.get(key) == maxWinCount) {
+                winners.add(key);
+            }
+        }
+
+        return winners;
+    }
+
+    private static void printFinalWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.println(winners.get(i));
+            if (i < winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
