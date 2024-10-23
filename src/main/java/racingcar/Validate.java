@@ -21,15 +21,7 @@ public class Validate {
         }
     }
 
-    class InvalidNumberType extends IllegalArgumentException {
-        private static final String DEFAULT_MESSAGE = "횟수는 음이 아닌 정수여야 합니다.";
-
-        InvalidNumberType() {
-            super(DEFAULT_MESSAGE);
-        }
-    }
-
-    class InvalidRange extends IllegalArgumentException {
+    static class InvalidRange extends IllegalArgumentException {
         private static final String DEFAULT_MESSAGE = "횟수는 음이 아닌 정수여야 합니다.";
 
         InvalidRange() {
@@ -51,4 +43,7 @@ public class Validate {
         return true;
     }
 
+    static boolean validNumber(int number) {
+        return number >= 0 && number < Integer.MAX_VALUE;
+    }
 }

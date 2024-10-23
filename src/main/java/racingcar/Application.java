@@ -9,5 +9,8 @@ class Application {
         ArrayList<String> carNames = Input.getCarNames(input.nameInput);
         ArrayList<Car> cars = Racing.generateCars(carNames);
 
+        Print.numberInputMessage();
+        int num = Input.getNumber(input.numberInput);
+
     }
 }
