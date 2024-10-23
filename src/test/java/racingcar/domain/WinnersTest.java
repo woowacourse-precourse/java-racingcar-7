@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.utils.Constant.WINNER_RESULT;
@@ -28,7 +28,7 @@ class WinnersTest {
 
         // when
         Winners winners = carList.toWinners();
-        String result = winners.print();
+        String result = winners.result();
 
         // then
         assertThat(result).isEqualTo(WINNER_RESULT + carList);

@@ -1,19 +1,26 @@
 package racingcar;
 
 import racingcar.controller.CarController;
-import racingcar.entity.Input;
-import racingcar.entity.TryCount;
+import racingcar.domain.Input;
+import racingcar.utils.Output;
+import racingcar.domain.TryCount;
 import racingcar.service.CarService;
 import racingcar.service.impl.CarServiceImpl;
+import racingcar.viewer.Viewer;
 
 public class Application {
     public static void main(String[] args) {
-        CarService carService = new CarServiceImpl();
+        Output output = new Output();
+
+        CarService carService = new CarServiceImpl(output);
         CarController carController = new CarController(carService);
+        Viewer viewer = new Viewer(output);
 
         Input input = carController.toInput();
         TryCount tryCount = carController.toTryCount();
 
-        carController.process(input, tryCount);
+        carController.startRace(input, tryCount);
+
+        viewer.print();
     }
 }

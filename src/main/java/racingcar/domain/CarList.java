@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,20 +29,24 @@ public class CarList {
     public void moveAll() {
         for (Car car : cars) {
             Long moveCnt = car.move();
-            maxMoveCnt(moveCnt);
+            changeMaxMoveCnt(moveCnt);
         }
     }
 
     // 모든 자동차들의 현황을 출력합니다.
-    public void printAll() {
+    public String generateStatus() {
+        StringJoiner stringJoiner = new StringJoiner("\n");
+
         for (Car car : cars) {
-            car.print();
+            stringJoiner.add(car.generateStatus());
         }
-        System.out.println();
+        stringJoiner.add("\n");
+
+        return stringJoiner.toString();
     }
 
     // 현재 자동차 중 제일 많이 움직인 값을 반환합니다.
-    public void maxMoveCnt(Long moveCnt) {
+    public void changeMaxMoveCnt(Long moveCnt) {
         if (this.maxMoveCnt < moveCnt) {
             this.maxMoveCnt = moveCnt;
         }

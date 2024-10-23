@@ -1,6 +1,7 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.utils.ErrorMessage.WRONG_INPUT;
 
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class Input {
 
     public Input(String input) {
         if (input == null) {
-            throw new IllegalStateException("적절한 입력을 해야합니다.");
+            throw new IllegalStateException(WRONG_INPUT.getMessage());
         }
 
         this.value = input;
@@ -25,12 +26,7 @@ public class Input {
         }
 
         for (String name : splitInput) {
-            int length = name.length();
-            if (name.trim().isEmpty()) {
-                throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-            }
-
-            if (length > 5 || length == 0) {
+            if (invalidName(name)) {
                 throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
             }
 
@@ -38,6 +34,16 @@ public class Input {
         }
 
         return carList;
+    }
+
+    private boolean invalidName(String name) {
+        int length = name.length();
+
+        if (name.trim().isEmpty()) {
+            return true;
+        }
+
+        return length > 5 || length == 0;
     }
 
     @Override

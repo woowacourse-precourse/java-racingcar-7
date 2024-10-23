@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static racingcar.utils.ErrorMessage.INVALID_COUNT;
 
@@ -31,7 +31,6 @@ public class TryCount {
         this.count = 0L;
     }
 
-    // while 문에서 동작하는
     public boolean canTry() {
         if (count < maxCount) {
             count++;

@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +15,7 @@ class CarTest {
         Car car = new Car("car", 5L);
 
         // when
-        String result = car.print();
+        String result = car.generateStatus();
 
         // then
         assertThat(result).isEqualTo(name + " : " + "-----");

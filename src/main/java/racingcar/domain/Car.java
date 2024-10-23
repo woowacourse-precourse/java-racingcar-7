@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static racingcar.utils.Constant.MOVING;
 
@@ -35,7 +35,7 @@ public class Car {
     }
 
     // 현재 현황을 스트링으로 표현하는 기능
-    public String print() {
+    public String generateStatus() {
         StringBuilder output = new StringBuilder(name + " : ");
 
         long repeat = 0L;
@@ -43,8 +43,6 @@ public class Car {
             output.append(MOVING);
             repeat++;
         }
-        output.append("\n");
-        System.out.print(output);
 
         return output.toString();
     }

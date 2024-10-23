@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain;
 
 import static racingcar.utils.Constant.WINNER_RESULT;
 
@@ -13,14 +13,13 @@ public class Winners {
     }
 
     // 최종 승자를 반환합니다.
-    public String print() {
+    public String result() {
         StringJoiner stringJoiner = new StringJoiner(", ");
 
         for (Car car : winnerList) {
             stringJoiner.add(car.toString());
         }
         String result = stringJoiner.toString();
-        System.out.println(WINNER_RESULT + result);
 
         return WINNER_RESULT + result;
 
