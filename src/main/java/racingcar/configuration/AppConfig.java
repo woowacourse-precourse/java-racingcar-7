@@ -1,10 +1,10 @@
 package racingcar.configuration;
 
+import racingcar.nameseparator.OriginSeparator;
+import racingcar.printer.PrintRacingResult;
 import racingcar.racingapplication.NameSeparator;
 import racingcar.racingapplication.Printer;
 import racingcar.racingapplication.Reader;
-import racingcar.nameseparator.OriginSeparator;
-import racingcar.printer.PrintRacingResult;
 import racingcar.reader.ConsoleReader;
 
 public class AppConfig {

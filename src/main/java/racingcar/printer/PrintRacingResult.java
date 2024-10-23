@@ -1,8 +1,8 @@
 package racingcar.printer;
 
 import java.util.List;
-import racingcar.racingapplication.Printer;
 import racingcar.domain.Cars;
+import racingcar.racingapplication.Printer;
 
 public class PrintRacingResult implements Printer {
 
@@ -22,7 +22,7 @@ public class PrintRacingResult implements Printer {
     @Override
     public void printFinalWinner(List<String> winner) {
         String finalWinner = "최종 우승자 : "
-            + String.join(", ", winner);
+                + String.join(", ", winner);
         System.out.println(finalWinner);
     }
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Car(
-    String name,
-    int distance
+        String name,
+        int distance
 ) {
 
     public Car updateDistance(Car car, boolean followingNumberRule) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Result(
-    List<Cars> finalResultCars
+        List<Cars> finalResultCars
 ) {
 
     public List<String> findWinners() {

@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.RandomNumberGenerator;
 
 public record Cars(
-    List<Car> allCar
+        List<Car> allCar
 ) {
 
     public Cars eachGame() {
