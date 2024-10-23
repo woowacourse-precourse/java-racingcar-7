@@ -36,14 +36,14 @@ public class Application {
 
         System.out.println("실행 결과");
         for (int i = 0; i < attempts; i++) {
-            for (Car car : cars) {
+            for (final Car car : cars) {
                 int number = pickNumberInRange(0, 9);
                 if (number >= 4) {
                     car.move();
                 }
             }
             // 경주의 현재 상태를 출력한다.
-            for (Car car : cars) {
+            for (final Car car : cars) {
                 System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
             }
             System.out.println();
