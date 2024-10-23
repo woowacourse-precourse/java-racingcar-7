@@ -3,6 +3,9 @@ package racingcar.model;
 import racingcar.exception.RacingCarErrorMessage;
 
 public class Car {
+    private static final int MIN_NUMBER = 4;
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
     private int moveCount;
 
@@ -11,7 +14,7 @@ public class Car {
             throw new IllegalArgumentException(RacingCarErrorMessage.CAR_NAME_BLANK_ERROR.getMessage());
         }
 
-        if(name.length() > 5) {
+        if(name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(RacingCarErrorMessage.CAR_NAME_LENGTH_ERROR.getMessage());
         }
 
@@ -28,7 +31,7 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if(randomNumber >= 4) {
+        if(randomNumber >= MIN_NUMBER) {
             moveCount++;
         }
     }
