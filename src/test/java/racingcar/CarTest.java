@@ -51,7 +51,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("이동 거리가 같으면 이름을 사전식 나열시 더 앞에 있는 Car의 우선순위 높음")
+    @DisplayName("이동 거리가 같으면 Car 이름 사전식 비교")
     void compareName() {
         Car anotherCar = new Car("Jihye");
         car.execute(4);
