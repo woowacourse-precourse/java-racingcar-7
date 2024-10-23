@@ -86,6 +86,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
+        validateEmptyInput(input);
+
         return validateInputInteger(input);
     }
 
@@ -101,15 +103,19 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputName = Console.readLine();
 
-        if (inputName.isEmpty()){
-            throw new IllegalArgumentException("이름을 입력해주세요.");
-        }
+        validateEmptyInput(inputName);
 
         final String[] names = splitDelimiter(inputName);
 
         validateNameLength(names);
 
         return names;
+    }
+
+    private static void validateEmptyInput(String inputName) {
+        if (inputName.isEmpty()){
+            throw new IllegalArgumentException("내용을 입력해주세요.");
+        }
     }
 
     private static void validateNameLength(String[] names) {
