@@ -1,5 +1,11 @@
 package racingcar.view;
 
+import static racingcar.util.ConstantData.INPUT_DELIMITER;
+import static racingcar.util.Message.INPUT_TRIAL_COUNT;
+import static racingcar.util.Message.INPUT_NAMES;
+import static racingcar.util.Validator.validateInputString;
+import static racingcar.util.Validator.validateInteger;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -9,26 +15,23 @@ public class InputView {
 
     public InputDTO display() {
         List<String> racerNames = inputRacerNames();
-        int moveCount = inputMoveCount();
-        return new InputDTO(racerNames, moveCount);
+        int trialCount = inputTrialCount();
+        Console.close();
+
+        return new InputDTO(racerNames, trialCount);
     }
 
     public List<String> inputRacerNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(INPUT_NAMES);
         String input = Console.readLine();
+        validateInputString(input);
 
-        if (input.startsWith(",") || input.endsWith(",")) {
-            throw new IllegalArgumentException();
-        }
-        return Arrays.stream(input.split(",")).map(String::strip).toList();
+        return Arrays.stream(input.split(INPUT_DELIMITER)).map(String::strip).toList();
     }
 
-    public int inputMoveCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e.getMessage(), e);
-        }
+    public int inputTrialCount() {
+        System.out.println(INPUT_TRIAL_COUNT);
+
+        return validateInteger(Console.readLine());
     }
 }

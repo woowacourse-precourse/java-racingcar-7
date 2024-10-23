@@ -1,5 +1,7 @@
 package racingcar.dto;
 
+import static racingcar.util.ConstantData.OUTPUT_DELIMITER;
+
 import java.util.List;
 import racingcar.model.CarRacer;
 
@@ -13,11 +15,11 @@ public class OutputDTO {
         this.winners = winners;
     }
 
-    public List<CarRacer> getResult() {
+    public List<CarRacer> getRaceRecord() {
         return raceRecord;
     }
 
     public String getWinners() {
-        return String.join(", ", winners);
+        return String.join(OUTPUT_DELIMITER, winners);
     }
 }

@@ -1,33 +1,38 @@
 package racingcar.view;
 
+import static racingcar.util.ConstantData.ONE_MOVE;
+import static racingcar.util.Message.OUTPUT_RACE_RESULT;
+import static racingcar.util.Message.OUTPUT_WINNER;
+
 import java.util.List;
-import racingcar.dto.ResultDTO;
-import racingcar.model.MoveRecord;
-import racingcar.model.carRacer;
+import racingcar.dto.OutputDTO;
+import racingcar.model.CarRacer;
 
 public class OutputView {
 
-    public void display(ResultDTO raceResult) {
-        displayRaceResult(raceResult);
+    public void display(int totalCount, OutputDTO raceResult) {
+        displayRaceResult(totalCount, raceResult);
         displayWinner(raceResult);
     }
 
-    public void displayRaceResult(ResultDTO raceRecord) {
-        System.out.println("\n실행 결과");
-        for (int i = 1; i <= raceRecord.getTotalCount(); i++) {
-            displayRaceResult(raceRecord.getCarRacers(), i);
+    public void displayRaceResult(int totalCount, OutputDTO raceResult) {
+        System.out.println(OUTPUT_RACE_RESULT);
+        for (int i = 1; i <= totalCount; i++) {
+            displayRaceResult(i, raceResult.getRaceRecord());
         }
     }
 
-    public void displayRaceResult(List<carRacer> allRacers, int currentTrial) {
+    public void displayRaceResult(int currentTrial, List<CarRacer> allRacers) {
         allRacers.forEach(carRacer -> {
-            MoveRecord current = carRacer.getRecord(currentTrial);
-            System.out.printf(current.getCurrentMove());
+            String name = carRacer.getName();
+            String currentMoves = ONE_MOVE.repeat(carRacer.getCurrentMoveCount(currentTrial));
+
+            System.out.printf("%s : %s\n", name, currentMoves);
         });
         System.out.println();
     }
 
-    public static void displayWinner(ResultDTO raceResult) {
-        System.out.printf("최종 우승자 : %s\n", String.join(", ", raceResult.getWinner()));
+    public static void displayWinner(OutputDTO raceResult) {
+        System.out.printf("%s : %s\n", OUTPUT_WINNER, raceResult.getWinners());
     }
 }
