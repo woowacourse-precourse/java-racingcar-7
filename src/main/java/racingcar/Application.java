@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         String cars = Console.readLine();
         String move_cnt = Console.readLine();
+        race_start(cars,move_cnt);
     }
     public static ArrayList<Car> add_cars(String cars) {
         ArrayList<Car> carList = new ArrayList<>();
@@ -28,6 +29,7 @@ public class Application {
         int move_time = Integer.parseInt(move_cnt);
         while(move_time-- > 0) {
             carList = move_car(carList);
+            showraceprogress(carList);
         }
         return carList;
     }
@@ -38,5 +40,14 @@ public class Application {
             }
         }
         return carList;
+    }
+    public static void showraceprogress(ArrayList<Car> carList) {
+        for(Car car : carList) {
+            System.out.print(car.getName()+" : ");
+            for(int i=0; i<car.getDistance(); i++) {
+                System.out.print('-');
+            }
+            System.out.println();
+        }
     }
 }
