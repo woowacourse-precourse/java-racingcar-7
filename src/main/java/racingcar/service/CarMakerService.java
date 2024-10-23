@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarMakerService {
-    private final CarNameValidator carNameValidator;
-
-    public CarMakerService(CarNameValidator carNameValidator) {
-        this.carNameValidator = carNameValidator;
-    }
 
     public List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
