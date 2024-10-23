@@ -1,24 +1,19 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-
-public class Participant {
-    System.out.println("시도할 횟수는 몇 회인가요?");
-    String input_turn = Console.readLine();
-    int turn_count = Integer.parseInt(input_turn);
+public class Car {
     private String name;
-    private int move_count;
+    private int distance;
 
-    public Participant(String name){
+    public Car(String name) {
         this.name = name;
-        this.move_count = 0;
+        this.distance = 0;
     }
 
-    public void updateMoveCount(){
-        this.move_count+=1;
+    public void updateDistance() {
+        this.distance += 1;
     }
 
-    public int getMoveCount(){
-        return move_count;
+    public int getDistance() {
+        return distance;
     }
 }
