@@ -15,4 +15,10 @@ public class Model {
             }
         }
     }
+
+    void validateAttemptCount(String input) {
+        if (!input.matches("^[1-9]\\d*$")) {
+            throw new IllegalArgumentException("시행횟수가 양수가 아닙니다.");
+        }
+    }
 }
