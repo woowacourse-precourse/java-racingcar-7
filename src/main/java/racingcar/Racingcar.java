@@ -9,7 +9,7 @@ public class Racingcar {
     private List<Car> carList = new ArrayList<>();
 
     public void splitInputValue(String input_value) {
-        String[] carNames = input_value.split(",");
+        String[] carNames = input_value.split(Contants.INPUT_SPLIT_CHAR);
         for (String carName : carNames) {
             ErrorValidator.carName(carName);
             carList.add(new Car(carName));
