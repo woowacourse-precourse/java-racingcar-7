@@ -14,5 +14,11 @@ public class Application {
         for (String name:names) {
             System.out.println(name);
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int numMoves = Integer.parseInt(Console.readLine());
+
+        System.out.println(numMoves + "회");
+
     }
 }
