@@ -9,6 +9,8 @@ public class CarRacing {
 
         for (int i = 0; i < tryCount; i++) {
             for (int j = 0; j < racingCarTrace.size(); j++) {
+                var racingCar = racingCarTrace.getRacingCar(j);
+                var randomNumber = Randoms.pickNumberInRange(0, 9);
 
             }
         }
