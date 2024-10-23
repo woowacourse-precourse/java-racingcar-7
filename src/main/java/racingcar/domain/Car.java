@@ -8,8 +8,8 @@ import racingcar.domain.strategy.CarDrivingStrategy;
 
 public class Car {
 
+    public static final int MAXIMUM_NAME_LENGTH = 5;
     private static final int ZERO = 0;
-    private static final int MAXIMUM_NAME_LENGTH = 5;
     private static final String POSITION_SYMBOL = "-";
     private static final String NAME_POSITION_SEPARATOR = " : ";
 
