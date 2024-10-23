@@ -12,6 +12,12 @@ public class Game {
     private List<Car> cars;
     private int moveNumber;
 
+    public void race() {
+        startGame();
+        doGame();
+        finishGame();
+    }
+
     public void startGame() {
         readCarsData();
         readMoveNumberData();
