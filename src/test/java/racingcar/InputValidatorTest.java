@@ -15,7 +15,7 @@ public class InputValidatorTest {
         String carNames = "a,,b";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validate(carNames))
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CONSECUTIVE_COMMA.getMessage());
     }
@@ -26,7 +26,7 @@ public class InputValidatorTest {
         String carNames = "abcdef";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validate(carNames))
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
@@ -37,7 +37,7 @@ public class InputValidatorTest {
         String carNames = "";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validate(carNames))
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_EMPTY.getMessage());
     }
@@ -48,7 +48,7 @@ public class InputValidatorTest {
         String carNames = "a,b,c";
 
         // when & then
-        Assertions.assertThatCode(() -> InputValidator.validate(carNames))
+        Assertions.assertThatCode(() -> InputValidator.validateCarNames(carNames))
             .doesNotThrowAnyException();
     }
 

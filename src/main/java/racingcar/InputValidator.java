@@ -5,38 +5,49 @@ import static racingcar.ErrorCode.*;
 class InputValidator {
 
     private final static String COMMAS = ",,";
-    private final static int MAX_CAR_NAME_LENGTH_CRITERION = 5;
+    private final static int MAXIMUM_CAR_NAME_LENGTH_CRITERION = 5;
+    private final static int MINIMUM_ROUND_CRITERION = 1;
 
-    public static void validate(final String carNames) {
+    public static void validateCarNames(final String carNames) {
         validateNoConsecutiveCommas(carNames);
         validateCarNameLength(carNames);
-        validateCarNameEmpty(carNames);
+        validateCarNameNotEmpty(carNames);
     }
 
     public static void validateRound(final String rounds) {
-        if (rounds.isEmpty()) {
-            throw new IllegalArgumentException(ROUNDS_EMPTY.getMessage());
-        }
+        validateRoundNotEmpty(rounds);
+        validateRoundIsNumber(rounds);
+        validateRoundNotLessThanOne(rounds);
+    }
 
+    private static void validateRoundNotLessThanOne(String rounds) {
+        if (Integer.parseInt(rounds) < MINIMUM_ROUND_CRITERION) {
+            throw new IllegalArgumentException(ROUNDS_LESS_THAN_ONE.getMessage());
+        }
+    }
+
+    private static void validateRoundIsNumber(String rounds) {
         try {
             Integer.parseInt(rounds);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ROUNDS_NOT_NUMBER.getMessage());
         }
+    }
 
-        if (Integer.parseInt(rounds) < 1) {
-            throw new IllegalArgumentException(ROUNDS_LESS_THAN_ONE.getMessage());
+    private static void validateRoundNotEmpty(String rounds) {
+        if (rounds.isEmpty()) {
+            throw new IllegalArgumentException(ROUNDS_EMPTY.getMessage());
         }
     }
 
-    private static void validateCarNameEmpty(final String carNames) {
+    private static void validateCarNameNotEmpty(final String carNames) {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(CAR_NAME_EMPTY.getMessage());
         }
     }
 
     private static void validateCarNameLength(final String carNames) {
-        if (carNames.length() > MAX_CAR_NAME_LENGTH_CRITERION) {
+        if (carNames.length() > MAXIMUM_CAR_NAME_LENGTH_CRITERION) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEEDED.getMessage());
         }
     }
