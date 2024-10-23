@@ -10,15 +10,18 @@ import java.util.List;
 
 public class RaceController {
 
-    private RaceService raceService;
+    private final RaceService raceService;
+
+    public RaceController(RaceService raceService) {
+        this.raceService = raceService;
+    }
 
     // 프로그램 시작 메소드
     public void raceStart() {
         UserInputDTO userInputDTO = InputView.getUserInput();
-        System.out.println(userInputDTO.name());
-        System.out.println(userInputDTO.numOfStages());
-
-//        List<Car> carList = raceService.getCarList();
-//        OutputView.showResult(userInputDTO.numOfStages(), carList);
+//        System.out.println(userInputDTO.name());
+//        System.out.println(userInputDTO.numOfStages());
+        List<Car> carList = raceService.getCarList(userInputDTO);
+        OutputView.showResult(userInputDTO.numOfStages(), carList);
     }
 }

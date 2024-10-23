@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.util.RaceUtils;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
         for (int i = 0; i < numOfStages; i++)
             showResultInStage(i, carList);
-        showWinner();
+        showWinner(carList);
     }
 
     private static void showResultInStage(final int numOfStages, final List<Car> carList) {
@@ -22,8 +23,8 @@ public class OutputView {
         System.out.println();
     }
 
-    // todo : 우승자가 1명일 때와 2명 이상일 때 구분
-    private static void showWinner() {
-        System.out.println(WINNER_MESSAGE);
+    private static void showWinner(final List<Car> carList) {
+        String winners = RaceUtils.getWinners(carList);
+        System.out.println(WINNER_MESSAGE + winners);
     }
 }
