@@ -12,6 +12,7 @@ public class OutputView {
     private static final String FINAL_WINNER_MESSAGE = "최종 우승자 : %s";
 
     public static void printExecutionResultMessage() {
+        System.out.println();
         System.out.println(EXECUTION_RESULT_MESSAGE);
     }
 
@@ -19,6 +20,7 @@ public class OutputView {
         for (Car car : cars) {
             System.out.println(String.format(CAR_MOVE, car.getName(), "-".repeat(car.getPosition())));
         }
+        System.out.println();
     }
 
     public static void printFinalWinners(List<Car> winners) {
