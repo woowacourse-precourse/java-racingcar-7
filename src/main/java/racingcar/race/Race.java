@@ -30,4 +30,10 @@ public class Race {
     public void lap() {
         cars.forEach(Car::move);
     }
+
+    public String getResult() {
+        return cars.stream()
+            .map(Car::toString)  // 각 Car 객체의 toString()을 호출하여 문자열로 변환
+            .collect(Collectors.joining("\n"));  // 각 자동차 결과를 줄바꿈으로 연결
+    }
 }

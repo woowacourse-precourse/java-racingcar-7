@@ -53,7 +53,7 @@ public class RaceTest {
     }
 
     @Test
-    void 매_턴_마다_조건에_따라_자동차가_전진한다() {
+    void 매_턴_마다_조건에_따라_자동차가_전진다() {
         // given
         String input = "pobi,woni,javai";
         Race race = Race.from(input, acceleration);
@@ -66,5 +66,20 @@ public class RaceTest {
         assertThat(cars.get(0).getPosition()).isEqualTo(1);
         assertThat(cars.get(1).getPosition()).isEqualTo(1);
         assertThat(cars.get(2).getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 경기_결과를_출력한다() {
+        // given
+        String input = "pobi, jack";
+        Race race = Race.from(input, acceleration);
+
+        // when
+        race.lap();
+
+        // then
+        assertThat(race.getResult()).isEqualTo(
+            "pobi : -\n jack : -"
+        );
     }
 }

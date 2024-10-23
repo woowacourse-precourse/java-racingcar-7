@@ -60,18 +60,4 @@ public class CarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_EMPTY.getMessage());
     }
-
-    @Test
-    void 경기_결과를_출력한다() {
-        // given
-        Car car = new Car("pobi, jack", new FixedAcceleration(MOVING_FORWARD.getCriterion()));
-
-        // when
-        car.move();
-
-        // then
-        assertThat(car.getResult()).isEqualTo(
-            "pobi : -\n" + "jack : -\n"
-        );
-    }
 }
