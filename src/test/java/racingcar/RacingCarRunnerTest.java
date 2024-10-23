@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ class RacingCarRunnerTest {
 
     @DisplayName("한 칸 전진")
     @Test
-    void carList() {
+    void moveForward() {
         // given
         String carName = "pobi";
         // when
@@ -29,4 +30,16 @@ class RacingCarRunnerTest {
         // then
         assertEquals("pobi : " + "-".repeat(1), car.toString());
     }
+
+    @DisplayName("자동차 이름 5자 초과 시 예외 발생")
+    @Test
+    void nameException() {
+        // given
+        String carName = "abcdef";
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName));
+    }
+
+
 }

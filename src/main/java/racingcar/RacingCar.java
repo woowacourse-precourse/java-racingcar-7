@@ -6,6 +6,9 @@ public class RacingCar {
     private int distance = 0;
 
     public RacingCar(String id) {
+        if (id.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
         this.id = id;
     }
 
