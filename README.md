@@ -1,7 +1,7 @@
 # java-racingcar-precourse
 
 ### 자동차 이름 입력 기능
-    - camp.nextstep.edu.missionutils.Console의 readLine()을 활용
+    - camp.nextstep.edu.missionutils.Console의 readLine()을 활용
     - 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분) 출력
     - String으로 자동차 이름 받아옴
 
@@ -13,7 +13,7 @@
     - pobi,woni,jun에서 쉼표를 기준으로 이름 분리
 
 ### 무작위 값 생성 기능
-    - camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()사용해서 0에서 9까지의 정수 중 한 개의 정수 반환
+    - camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()사용해서 0에서 9까지의 정수 중 한 개의 정수 반환
     - Randoms.pickNumberInRange(0, 9);
 
 ### 전진 여부 파악 기능
