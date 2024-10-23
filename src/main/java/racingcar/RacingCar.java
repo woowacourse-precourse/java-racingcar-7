@@ -15,6 +15,10 @@ public class RacingCar {
         position += 1;
     }
 
+    public boolean isWinner(int maxPosition) {
+        return position == maxPosition;
+    }
+
     public int getPosition() {
         return position;
     }
