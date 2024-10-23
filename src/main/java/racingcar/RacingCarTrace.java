@@ -9,4 +9,8 @@ public class RacingCarTrace {
     public void put(RacingCar racingCar) {
         trace.put(racingCar, 0);
     }
+
+    public void forward(RacingCar racingCar) {
+        trace.put(racingCar, trace.get(racingCar) + 1);
+    }
 }
