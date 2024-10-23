@@ -56,7 +56,8 @@ public class Application {
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
-
+        String winnerNames = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + winnerNames);
 
     }
 }
