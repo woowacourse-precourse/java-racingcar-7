@@ -32,8 +32,11 @@ public class Application {
     }
 
     public static void validateInput(String input) {
-        if (input.isEmpty() || input.startsWith(",") || input.endsWith(",") || input.contains(",,")){
-            throw new IllegalArgumentException("입력 오류: 쉼표를 확인하세요.");
+        if (input.isEmpty()){
+            throw new IllegalArgumentException("입력 오류: 입력값이 없습니다.");
+        }
+        if (input.startsWith(",") || input.endsWith(",") || input.contains(",,")){
+            throw new IllegalArgumentException("입력 오류: 잘못된 쉼표 사용입니다.");
         }
     }
 
