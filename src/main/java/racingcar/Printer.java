@@ -12,4 +12,8 @@ public abstract class Printer {
     public static void newLine() {
         System.out.println();
     }
+
+    public static void print(SystemMessage message, String winner) {
+        System.out.println(message.getMessage() + winner);
+    }
 }
