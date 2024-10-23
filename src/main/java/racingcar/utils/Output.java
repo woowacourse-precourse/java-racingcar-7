@@ -1,11 +1,13 @@
 package racingcar.utils;
 
+import static racingcar.utils.Constant.EXEC_RESULT;
+
 public class Output {
 
     private final StringBuilder value;
 
     public Output() {
-        this.value = new StringBuilder();
+        this.value = new StringBuilder(EXEC_RESULT);
     }
 
     public void append(String value) {
