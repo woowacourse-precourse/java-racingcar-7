@@ -24,4 +24,16 @@ public class CarService {
         }
     }
 
+    public List<String> getCarsWithMaxDistance() {
+        int maxDistance = calculateMaxDistance();
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int calculateMaxDistance() {
+        return cars.stream().mapToInt(Car::getDistance).max().orElse(BASE_DISTANCE);
+    }
+
 }
