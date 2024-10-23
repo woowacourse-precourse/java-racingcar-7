@@ -33,6 +33,7 @@ public class Application {
         for(int i = 0; i < try_count; i++){
             ap.r_print(ap);
         }
+     
         ap.result_print(ap.winner_score());
     }
     
@@ -53,13 +54,13 @@ public class Application {
     public void result_print(int max){
         System.out.print("최종 우승자 : ");
         boolean check = true;
-        for(int i = 0; i < list.length; i++){
-            int len = list[i].car_count.length();
+        for(car i : list) {
+        	int len = i.car_count.length();
             if(len == max && check){
-                System.out.print(list[i].car_name);
+                System.out.print(i.getCar_name());
                 check = false;
             }else if(len == max) {
-                System.out.print(","+list[i].car_name);
+                System.out.print(","+i.getCar_name());
             }
         }
     }
@@ -68,9 +69,9 @@ public class Application {
         for(int i = 0; i < list.length; i++){
             int random = Randoms.pickNumberInRange(0,9);
             if(random >= 4){
-                list[i] = new car(list[i].car_name,true,list[i].car_count);
+                list[i] = new car(list[i].getCar_name(),true,list[i].getCar_count());
             }else{
-                list[i] = new car(list[i].car_name,false,list[i].car_count);
+                list[i] = new car(list[i].getCar_name(),false,list[i].getCar_count());
             }
         }
     }
@@ -87,9 +88,9 @@ public class Application {
     }
 
     public void print_result(){
-        for(int i = 0; i < list.length; i++){
-            System.out.println(list[i].car_name+" : "+list[i].car_count);
-        }
+    	for(car i : list) {
+    		System.out.println(i.getCar_name()+" : "+i.getCar_count());
+    	}
     }
 
     public car [] initial(String [] member){
@@ -102,7 +103,13 @@ public class Application {
 }
 
 class car{
-    String car_name;
+    public String getCar_name() {
+		return car_name;
+	}
+	public StringBuffer getCar_count() {
+		return car_count;
+	}
+	String car_name;
     StringBuffer car_count = new StringBuffer();
     public car(String car_name, boolean go, StringBuffer prev_count){
         this.car_name = car_name;
