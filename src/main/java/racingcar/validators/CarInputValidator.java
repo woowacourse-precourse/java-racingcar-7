@@ -1,26 +1,33 @@
 package racingcar.validators;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CarInputValidator implements Validator {
     private static final String CAR_COUNT_ERROR = "자동차 이름이 2개 이상 필요합니다.";
     private static final String NAME_LENGTH_ERROR = "자동차 이름은 공백 포함 5자 이하여야 합니다.";
+    private static final String DUPLICATE_NAME_ERROR = "자동차 이름은 중복될 수 없습니다.";
 
     @Override
     public void validate(String input) {
-        String[] cars = input.split(",");
+        List<String> cars = Arrays.asList(input.split(","));
         checkCarCount(cars);
-        checkNameLengths(cars);
+        checkNameValidity(cars);
     }
 
-    private void checkCarCount(String[] cars) {
-        if (cars.length < 2) {
+    private void checkCarCount(List<String> cars) {
+        if (cars.size() < 2) {
             throw new IllegalArgumentException(CAR_COUNT_ERROR);
         }
     }
 
-    private void checkNameLengths(String[] names) {
+    private void checkNameValidity(List<String> names) {
         for (String name : names) {
             if (name.strip().length() > 5) {
                 throw new IllegalArgumentException(NAME_LENGTH_ERROR);
+            }
+            if (names.indexOf(name) != names.lastIndexOf(name)) {
+                throw new IllegalArgumentException(DUPLICATE_NAME_ERROR);
             }
         }
     }
