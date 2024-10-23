@@ -3,8 +3,10 @@ package racingcar;
 import java.util.Arrays;
 
 public class CarNameValidator {
-    final String carNames = InputController.printCarNamesInput();
-    final String tryTimes = InputController.printTryTimesInput();
+    InputController inputController = new InputController();
+
+    final String carNames = inputController.printCarNamesInput();
+    final String tryTimes = inputController.printTryTimesInput();
 
     public String[] separateCarNames() {
         return carNames.split(",");
@@ -19,9 +21,9 @@ public class CarNameValidator {
         }
     }
 
-    public void changeTryTimesNumber() {
+    public Integer changeTryTimesNumber() {
         try {
-            Integer.parseInt(tryTimes);
+            return Integer.parseInt(tryTimes);
         }catch (Exception e) {
             throw new IllegalArgumentException();
         }
