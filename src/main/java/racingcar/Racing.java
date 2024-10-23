@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Racing {
 
     private final RacingCars racingCars;
@@ -15,6 +17,10 @@ public class Racing {
             moveRacingCars();
             track.decrementLap();
         }
+    }
+
+    public List<String> endRacing() {
+        return racingCars.getWinners();
     }
 
     private void moveRacingCars() {
