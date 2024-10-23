@@ -12,5 +12,7 @@ public class InputManager {
         String numberInput = Console.readLine();
         int number = Integer.parseInt(numberInput);
 
+        GameInitializer gameInitializer = new GameInitializer();
+        gameInitializer.gameInitialize(names);
     }
 }
