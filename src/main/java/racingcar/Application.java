@@ -11,7 +11,6 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = new ArrayList<>();
-
         parseCarNames(carNames);
         for (int i = 0; i < carNames.size(); i++) {
             moveCounts.add(0);
@@ -78,7 +77,7 @@ public class Application {
         ArrayList<String> winners = new ArrayList<>();
         for (int i = 0; i < moveCounts.size(); i++) {
             if (moveCounts.get(i) == maxMove) {
-                winners.add(carNames.get(i).charAt(0) + "");
+                winners.add(carNames.get(i).split(" : ")[0]);
             }
         }
         System.out.println("최종 우승자 : " + String.join(",", winners));
