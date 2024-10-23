@@ -11,7 +11,9 @@ public class carController {
 
     public void start(){
         String input = Console.readLine();
-        String[] carNames = inputMethod.getInput(input);
+        String[] carNames = inputMethod.getCarInput(input);
         Car[] cars = carService.convertToCar(carNames);
+
+        int cnt = inputMethod.getCntInput(Console.readLine());
     }
 }
