@@ -36,6 +36,9 @@ public class RacingGame {
             List<String> carMoveResultList = outPut.getAllCarProgress(carList);
             outputView.printMoveResult(carMoveResultList);
         }
+
+        String winnerNames = game.getWinner();
+        outputView.printWinners(winnerNames);
     }
 
 }

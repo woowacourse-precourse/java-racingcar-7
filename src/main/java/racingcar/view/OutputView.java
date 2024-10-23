@@ -13,4 +13,8 @@ public class OutputView {
         carMoveResultList.forEach(sb::append);
         System.out.println(sb);
     }
+
+    public void printWinners(String winners) {
+        System.out.println(DisplayedMessage.OUTPUT_WINNER_MESSAGE.getValue() + winners);
+    }
 }
