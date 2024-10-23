@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Random;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -17,4 +19,31 @@ public class Application {
         for (int i = 0; i < carNum; i++) {
             cars[i] = new Car(carNames[i]);
         }
+    }
+}
+
+class Car{ //car 객체 생성
+    static int maxWin;
+    static int winNum;
+    Random random = new Random();
+    int randomNumber;
+
+    int win = 0;
+    String strWin = "";
+    String name;
+    Car(String name) {
+        this.name = name;
+    }
+
+    String isWin(){
+        randomNumber = random.nextInt(10);
+        if (randomNumber >= 4) {
+            win += 1;
+            strWin += "-";
+        }
+        if (win >= maxWin) {
+            maxWin = win;
+        }
+        return strWin;
+    }
 }
