@@ -37,3 +37,26 @@ jun : ---
 - 각 자동차 이름사이에 `,`가 아닌 값이 들어올 경우 예외
 - `,`과 자동차이름 사이의 공백은 허용
 - 같은 이름이 중복되어서는 안된다
+
+<hr>
+## Commit Message Conventions
+
+## 커밋메시지 포맷
+```
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+## type
+- feat: 기능 추가
+- fix: 버그 수정
+- docs: 문서 수정
+- style: 코드 형식 수정(세미콜론, 오타, 포맷팅)
+- refactor: 리팩터링
+- test: 테스트 추가
+- chore: 유지보수 관련 작업
+- merge: 브랜치 병합 및 병합 관련 커밋
+- conflict: 병합충돌 발생시 해결 커밋
