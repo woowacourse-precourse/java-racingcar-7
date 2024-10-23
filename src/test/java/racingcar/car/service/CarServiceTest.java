@@ -45,7 +45,7 @@ class CarServiceTest {
     }
 
     @ParameterizedTest
-    @DisplayName("cars의 범위가 2~9사이가 아니라면 에러를 반환한다")
+    @DisplayName("car 개수가 2~9사이가 아니라면 에러를 반환한다")
     @MethodSource("providedOutOfRangeCarCount")
     void OutOfRangeCarCount(String input) throws Exception {
         // then
@@ -57,8 +57,8 @@ class CarServiceTest {
     private static Stream<Arguments> providedOutOfRangeCarCount() {
         return Stream.of(
                 Arguments.arguments("pobi"),
-                Arguments.arguments("pobi,adf,adf,wer,as,vaasdf,werq,adf,qwer,aasdf"),
-                Arguments.arguments("pobi, adf, adf, wer,as, vaasdf, werq, adf, qwer, aasdf")
+                Arguments.arguments("pobi,adf,adf,wer,as,vadf,werq,adf,qwer,aasdf"),
+                Arguments.arguments("pobi, adf, adf, wer,as, vaadf, werq, adf, qwer, aasdf,112aㅁ")
         );
     }
 

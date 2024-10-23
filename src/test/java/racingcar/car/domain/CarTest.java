@@ -31,7 +31,7 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("이름의 길이가 2~8이 아니면 에러를 반환")
+    @DisplayName("이름의 길이가 1~5가 아니면 에러를 반환")
     @MethodSource("provideOutOfRangeNameLength")
     void OutOfRangeNameLength(String name) throws Exception {
         // then
@@ -43,12 +43,13 @@ class CarTest {
 
     private static Stream<Arguments> provideOutOfRangeNameLength() {
         return Stream.of(
-                Arguments.arguments("123456789"),
-                Arguments.arguments("a"),
-                Arguments.arguments("abcdferts"),
-                Arguments.arguments("1"),
-                Arguments.arguments("가"),
-                Arguments.arguments("가가가가가가가가가"),
+                Arguments.arguments("123456"),
+                Arguments.arguments("@"),
+                Arguments.arguments("abcdfe"),
+                Arguments.arguments("#"),
+                Arguments.arguments("+"),
+                Arguments.arguments("가가가가가갸"),
+                Arguments.arguments("가나다ab1"),
                 Arguments.arguments(""),
                 Arguments.arguments(" ")
         );
@@ -72,8 +73,8 @@ class CarTest {
                 Arguments.arguments("qdcvz@"),
                 Arguments.arguments("@@"),
                 Arguments.arguments("$$$@"),
-                Arguments.arguments("\n"),
-                Arguments.arguments("\t"),
+                Arguments.arguments("\\n"),
+                Arguments.arguments("\\t"),
                 Arguments.arguments("  ")
         );
     }
