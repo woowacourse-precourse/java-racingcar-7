@@ -5,7 +5,7 @@ import racingcar.model.*;
 import racingcar.view.InputView;
 
 public class RacingCarController {
-    private final InputView inputView = new InputView();
+    private final InputView inputView = InputView.getInstance();
     private final Race race;
 
     public RacingCarController() {
