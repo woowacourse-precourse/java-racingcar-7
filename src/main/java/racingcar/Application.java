@@ -15,7 +15,7 @@ public class Application {
         try{
             member = Console.readLine().split(",");
         }catch (IllegalArgumentException e){
-            System.out.print("invaild error");
+            System.out.print("invalid error");
         }
         ap.mem_trim();
         list = ap.initial(member);
@@ -25,22 +25,25 @@ public class Application {
         try{
             try_count = Integer.parseInt(Console.readLine());
         }catch (IllegalArgumentException e){
-            System.out.print("invaild error");
+            System.out.print("invalid error");
         }
 
         System.out.println();
         System.out.println("실행 결과");
+
+
+
         for(int i = 0; i < try_count; i++){
             ap.r_print(ap);
         }
-     
+
         ap.result_print(ap.winner_score());
     }
     
     public void mem_trim() {
         for(String str : member) {
             if(str.trim().isEmpty()) {
-                throw new IllegalArgumentException("invaild error");
+                throw new IllegalArgumentException("invalid error");
             }
         }
     }
