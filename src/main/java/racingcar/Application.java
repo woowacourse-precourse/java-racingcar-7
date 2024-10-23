@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,10 +21,25 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String inputCount = Console.readLine();
+        int count = -1;
         try {
-            int count = Integer.parseInt(inputCount);
+            count = Integer.parseInt(inputCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 정수인 숫자여야 합니다.");
+        }
+
+        Map<String, StringBuilder> result = new HashMap<>();
+        for(String carName : carNames) {
+            result.put(carName, new StringBuilder());
+        }
+
+        for (int i = 0; i < count; i++) {
+            for(String carName : carNames) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    result.put(carName, result.get(carName).append("-"));
+                }
+            }
         }
     }
 }
