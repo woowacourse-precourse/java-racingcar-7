@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.ErrorCode.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,15 +17,6 @@ public class InputValidatorTest {
         // when & then
         Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("입력에 쉼표가 연속적으로 입력되었습니다.");
-    }
-
-    static class InputValidator {
-
-        public static void validateCarNames(String carNames) {
-            if (carNames.contains(",,")) {
-	throw new IllegalArgumentException("입력에 쉼표가 연속적으로 입력되었습니다.");
-            }
-        }
+            .hasMessage(CONSECUTIVE_COMMA.getMessage());
     }
 }
