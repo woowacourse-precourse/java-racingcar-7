@@ -12,16 +12,24 @@ public class RaceController {
     private final OutputView outputView = new OutputView();
 
     public void start() {
-        String carNames = InputView.inputCarNames();
-        Cars cars = new Cars(carNames, carNameValidator);
-
-        String counts = InputView.inputTrialCounts();
-        TrialCounts trialCounts = new TrialCounts(counts, trialCountsValidator);
-
+        Cars cars = initializeCars();
+        TrialCounts trialCounts = initializeTrialCounts();
         InputView.closeConsole();
+        runRace(cars, trialCounts);
+    }
 
+    private Cars initializeCars() {
+        String carNames = InputView.inputCarNames();
+        return new Cars(carNames, carNameValidator);
+    }
+
+    private TrialCounts initializeTrialCounts() {
+        String counts = InputView.inputTrialCounts();
+        return new TrialCounts(counts, trialCountsValidator);
+    }
+
+    private void runRace(Cars cars, TrialCounts trialCounts) {
         Race race = new Race(cars, trialCounts);
-
         outputView.executionResultMessage();
         while (race.isRaceOngoing()) {
             race.raceOneStep();
@@ -30,3 +38,4 @@ public class RaceController {
         outputView.finalWinnerMessage(race.getWinners());
     }
 }
+
