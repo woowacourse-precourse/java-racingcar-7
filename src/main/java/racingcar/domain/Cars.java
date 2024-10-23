@@ -76,7 +76,7 @@ public class Cars {
 
         String winnerNames = winnerList.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
 
         return winnerNames;
     }
