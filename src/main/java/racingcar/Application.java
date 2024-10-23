@@ -28,6 +28,7 @@ public class Application {
 
     } catch (IllegalArgumentException e){
         System.out.println(e.getMessage());
+        throw e;
         }
     }
 
@@ -41,6 +42,7 @@ public class Application {
     //난수 생성 후 전진 여부 결정
     private static boolean moveOrNah(){
         int randNum = Randoms.pickNumberInRange(0,9);
+        //System.out.println("코인 값:" + randNum);
         return randNum >= 4;
     }
 
@@ -74,12 +76,14 @@ public class Application {
         }
 
         List<String> winners = new ArrayList<>();
-        for (String s : racingCarList) {
-            if (s.length() == maxPosition) {
-                winners.add(s);
+        for(int i = 0; i < racingCarList.size(); i++){
+            if (positions.get(i).length() == maxPosition){
+                winners.add(racingCarList.get(i));
             }
         }
 
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
+
+
 }
