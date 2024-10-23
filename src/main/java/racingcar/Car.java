@@ -5,11 +5,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = formatCarName(name);
-    }
-
-    private String formatCarName(String name) {
-        return name.trim();
+        this.name = name;
     }
 
     public void move() {

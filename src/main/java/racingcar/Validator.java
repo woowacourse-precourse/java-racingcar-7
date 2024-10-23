@@ -14,11 +14,10 @@ public final class Validator {
     }
 
     private static void validateCarName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
         }
-        String trimmedName = name.trim();
-        if (trimmedName.length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
     }
