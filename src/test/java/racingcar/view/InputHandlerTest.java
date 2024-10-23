@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.NullSource;
 class InputHandlerTest {
     @NullSource
     @ParameterizedTest
-    @CsvSource(value = {"'      '", "''", "''"})
+    @CsvSource(value = {"'     '", "''", "''"})
     void 문자열_null이거나_비어있는_경우_예외처리(String input) {
         InputHandler inputHandler = new InputHandler();
 
