@@ -10,4 +10,9 @@ public class InputView {
         System.out.println(INPUT_RACE_CAR_NAME);
         return Console.readLine();
     }
+
+    public static String inputMoveCount() {
+        System.out.println(INPUT_MOVE_COUNT);
+        return Console.readLine();
+    }
 }
