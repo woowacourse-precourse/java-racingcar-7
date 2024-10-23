@@ -1,5 +1,6 @@
 package controller;
 
+import constant.Prompt;
 import domain.Attempt;
 import domain.Car;
 import domain.Cars;
@@ -24,7 +25,7 @@ public class RacingController {
     }
 
     public void race() {
-        System.out.println("실행 결과");
+        System.out.println(Prompt.RACE_RESULT.getMessage());
         for (int i = 0; i < attempt.getAttempt(); i++) {
             racingService.moveCars(cars);
             OutputView.showRoundResult(cars);
@@ -32,7 +33,7 @@ public class RacingController {
     }
 
     private void result() {
-        System.out.print("최종 우승자 : ");
+        System.out.print(Prompt.WINNER.getMessage());
         racingService.getWinners(cars);
     }
 

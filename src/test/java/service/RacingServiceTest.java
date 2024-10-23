@@ -1,12 +1,9 @@
 package service;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import domain.Car;
 import domain.Cars;
-import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +25,6 @@ class RacingServiceTest {
         Car car3 = new Car("c3");
 
         Cars cars = new Cars(input);
-//        List<Car> carsList = racingService.getCarsList(input);
 
         assertThat(cars.getCarsList())
                 .hasSize(3)

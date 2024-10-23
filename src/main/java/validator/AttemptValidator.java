@@ -1,5 +1,7 @@
 package validator;
 
+import constant.ErrorCode;
+
 public class AttemptValidator {
     private AttemptValidator() {}
 
@@ -8,11 +10,11 @@ public class AttemptValidator {
         try {
             number = Integer.parseInt(attempt);
         } catch (Exception e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorCode.INVALID_ATTEMPT_TYPE.getMessage());
         }
         
         if (number <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 양수를 입력해야 합니다.");
+            throw new IllegalArgumentException(ErrorCode.ATTEMPT_SHOULD_POSITIVE.getMessage());
         }
     }
 }

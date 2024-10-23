@@ -1,6 +1,7 @@
 package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import constant.Race;
 import domain.Car;
 import domain.Cars;
 import java.util.List;
@@ -11,14 +12,14 @@ public class RacingService {
     public void moveCars(Cars cars) {
         for (Car car : cars.getCarsList()) {
             int randomNumber = getRandomNumber();
-            if (randomNumber >= 4) {
+            if (randomNumber >= Race.MOVE_THRESHOLD.getValue()) {
                 car.addScore();
             }
         }
     }
 
     private int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(Race.MIN_RANDOM_VALUE.getValue(), Race.MAX_RANDOM_VALUE.getValue());
     }
 
     public void getWinners(Cars cars) {
