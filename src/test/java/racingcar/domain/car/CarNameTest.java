@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,13 +11,12 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 
 class CarNameTest {
-
     @Test
     @DisplayName("빈문자열을 통해 생성시 IllegalArugmentException을 반환하는지 확인")
     void testEmptyStringThrowIllegalArgumentException() {
         String emptyString = "";
 
-        assertThatThrownBy(()->CarName.of(emptyString)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> CarName.of(emptyString)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
