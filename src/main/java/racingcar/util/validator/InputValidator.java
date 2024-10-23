@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class InputValidator {
 
     private static final String CAR_NAMES_REGEX = "[가-힣|a-zA-Z]{1,5}(,[가-힣|a-zA-Z]{1,5})*";
-    private static final String NUMBER_OF_TRIAL_REGEX = "\\d";
+    private static final String NUMBER_OF_TRIAL_REGEX = "\\d+";
 
     public static void validateCarNames(String input) {
         checkInputForm(input);
