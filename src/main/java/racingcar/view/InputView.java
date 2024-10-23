@@ -7,11 +7,11 @@ import racingcar.domain.Car;
 public class InputView {
     private final InputHandler inputHandler;
 
-    public InputView(InputHandler inputHandler) {
+    public InputView(final InputHandler inputHandler) {
         this.inputHandler = inputHandler;
     }
 
     public void readCarNames() {
-        String input = Console.readLine();
+        final String input = Console.readLine();
     }
 }

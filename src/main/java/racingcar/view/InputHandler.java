@@ -6,11 +6,17 @@ import java.util.List;
 public class InputHandler {
     private static final String DELIMITER = ",";
 
-    public List<String> validateUniqueNames(String input) {
-        List<String> uniqueNames = new ArrayList<>();
+    public void checkEmpty(final String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
 
-        String[] parsedNames = input.split(DELIMITER);
-        for (String name : parsedNames) {
+    public List<String> validateUniqueNames(final String input) {
+        final List<String> uniqueNames = new ArrayList<>();
+
+        final String[] parsedNames = input.split(DELIMITER);
+        for (final String name : parsedNames) {
             if (uniqueNames.contains(name)) {
                 throw new IllegalArgumentException();
             }

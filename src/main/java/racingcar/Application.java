@@ -8,9 +8,9 @@ import racingcar.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        InputView inputView = new InputView(new InputHandler());
-        OutputView outputView = new OutputView();
-        Race race = new Race(inputView, outputView);
+        final InputView inputView = new InputView(new InputHandler());
+        final OutputView outputView = new OutputView();
+        final Race race = new Race(inputView, outputView);
         race.start();
     }
 }
