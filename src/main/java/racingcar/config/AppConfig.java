@@ -1,10 +1,12 @@
-package racingcar.configuration;
+package racingcar.config;
 
-import racingcar.nameseparator.OriginSeparator;
-import racingcar.printer.PrintRacingResult;
+import racingcar.RandomNumberGenerator;
 import racingcar.application.NameSeparator;
+import racingcar.application.NumberGenerator;
 import racingcar.application.Printer;
 import racingcar.application.Reader;
+import racingcar.nameseparator.OriginSeparator;
+import racingcar.printer.PrintRacingResult;
 import racingcar.reader.ConsoleReader;
 
 public class AppConfig {
@@ -19,5 +21,9 @@ public class AppConfig {
 
     public Printer printer() {
         return new PrintRacingResult();
+    }
+
+    public NumberGenerator randomGenerator() {
+        return new RandomNumberGenerator();
     }
 }
