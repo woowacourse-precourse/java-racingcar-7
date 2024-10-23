@@ -61,7 +61,7 @@ public class Name {
 
     private void checkNameLength(final int length) {
         if (length > NAME_MAX_LENGTH) {
-            throw new CarException(CarValidationError.EXCEEDS_MAX_LENGTH_EXCEPTION.getMessage(NAME_MAX_LENGTH));
+            throw new CarException(CarValidationError.EXCEEDS_MAX_NAME_LENGTH_EXCEPTION.getMessage(NAME_MAX_LENGTH));
         }
     }
 }

@@ -80,6 +80,6 @@ class NameTest {
         // when, then
         assertThatThrownBy(() -> Name.from(value))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CarValidationError.EXCEEDS_MAX_LENGTH_EXCEPTION.getMessage(5));
+                .hasMessage(CarValidationError.EXCEEDS_MAX_NAME_LENGTH_EXCEPTION.getMessage(5));
     }
 }
