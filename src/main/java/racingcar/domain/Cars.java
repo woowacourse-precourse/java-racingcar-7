@@ -2,11 +2,13 @@ package racingcar.domain;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-
+    private final List<Car> cars;
     public Cars(List<String> carNames) {
         validateProcess(carNames);
+        this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
     private void validateProcess(List<String> carNames) {
