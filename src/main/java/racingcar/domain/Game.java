@@ -20,21 +20,24 @@ public class Game {
     public void moveForward() {
         for (Car car : carList) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
-            if (randomNum >= 4) {
-                car.moveForward();
-            }
+            car.moveOrNothing(randomNum);
         }
     }
 
     public String getWinner() {
-        List<String> winnerList = new ArrayList<>();
         int highestScore = getHighestScore();
+        List<String> winnerList = createWinnerList(highestScore);
+        return String.join(", ", winnerList);
+    }
+
+    public List<String> createWinnerList(int highestScore) {
+        List<String> winnerList = new ArrayList<>();
         for (Car car : carList) {
             if (car.getMoveCnt() == highestScore) {
                 winnerList.add(car.getName());
             }
         }
-        return String.join(", ", winnerList);
+        return winnerList;
     }
 
     private int getHighestScore() {

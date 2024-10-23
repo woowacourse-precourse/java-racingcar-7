@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final int MOVE_ABLE_NUM = 4;
     private final String name;
     private int moveCnt;
 
@@ -14,7 +15,13 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveForward() {
+    public void moveOrNothing(int randomNum) {
+        if (randomNum >= MOVE_ABLE_NUM) {
+            moveForward();
+        }
+    }
+
+    private void moveForward() {
         this.moveCnt++;
     }
 
