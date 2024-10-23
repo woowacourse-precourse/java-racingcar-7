@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,10 +16,8 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveCar() {
-        // Random에 대한 테스트는 어떻게 진행해야 하는가?
-        // 테스트를 위해서 생성자를 따로 열어두어야 하는가?
-        if(Randoms.pickNumberInRange(0, 9) >= 4) {
+    public void moveCar(Integer randomNumber) {
+        if(randomNumber >= 4) {
             distance++;
         }
     }

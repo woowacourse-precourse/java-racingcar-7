@@ -16,10 +16,10 @@
     - [ ] variable : race, input, output
     - [ ] method : playGame
         - [ ] TestCode
-- [ ] Race Class
-    - [ ] variable : cars
-    - [ ] method : playOneRound
-        - [ ] TestCode
+- [X] Race Class
+    - [X] variable : cars
+    - [X] method : playOneRound, getWinnerCars, getCars
+        - [X] TestCode
 - [ ] Input Class
     - [ ] variable : validator
     - [ ] method : getCarnames, getTotalRound
@@ -28,10 +28,10 @@
     - [ ] variable : cars
     - [ ] method : viewRound
         - [ ] TestCode
-- [ ] Car Class
+- [X] Car Class
   - [X] variable : name, distance
   - [X] method : move, of(create Instance)
-    - [ ] TestCode
+    - [X] TestCode
 - [ ] Validator Class
   - [ ] method : validNameLength, validNumber, validCarNameFormat
     - [ ] TestCode
