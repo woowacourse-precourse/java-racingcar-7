@@ -2,6 +2,9 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final String COLON = " : ";
+    private static final String RACE_SYMBOL = "-";
+
     private final String name;
     private int position;
 
@@ -26,5 +29,10 @@ public class Car {
 
     private boolean isFourOrMore(int value) {
         return value >= 4;
+    }
+
+    @Override
+    public String toString() {
+        return name + COLON + RACE_SYMBOL.repeat(position);
     }
 }
