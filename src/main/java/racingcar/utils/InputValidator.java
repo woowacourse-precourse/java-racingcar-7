@@ -13,6 +13,15 @@ public class InputValidator {
         return carNames;
     }
 
+    public int validateAttemptCount(String userInput) {
+        validateNumber(userInput);
+
+        int attemptCount = Integer.parseInt(userInput);
+        validatePositiveNumber(attemptCount);
+
+        return attemptCount;
+    }
+
     private void validateNameLength(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
