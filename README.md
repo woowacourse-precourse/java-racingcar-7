@@ -12,48 +12,59 @@
 ### 입출력 요구 사항
 #### 입력
 * 경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)
-    >pobi, woni, jun
+    ```declarative
+    pobi, woni, jun
+    ```
 * 시도할 횟수
-    >5
+    ```declarative
+    5
+    ```
 #### 출력
-* 차수별 실행 결과 
-    > pobi : --<br>
-      woni : --<br>
-      jun  : --
-
+* 차수별 실행 결과
+  ```declarative
+  pobi : --<br>
+  woni : --<br>
+  jun  : --
+  ```
 * 단독 우승자 안내 문구
-    > 최종 우승자 : pobi
+  ```declarative
+  최종 우승자 : pobi
+  ```
 * 공동 우승자 안내 문구
-    > 최종 우승자 : pobi, jun
+  ```declarative
+  최종 우승자 : pobi, jun
+  ```
 * 실행 결과 예시 
-    > 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)<br>
-    pobi,woni,jun <br>
-  > 
-  > 시도할 횟수는 몇 회인가요? <br>
-  >  5 <br>
-  > 
-  > 실행 결과 <br>
-  > pobi : - <br>
-    woni : <br>
-    jun : - <br>
-  > 
-  > pobi : -- <br>
-    woni : -<br>
-    jun : --<br>
-  > 
-  > pobi : ---<br>
-    woni : --<br>
-    jun : ---<br>
-  > 
-  > pobi : ----<br>
-    woni : ---<br>
-    jun : ----<br>
-  > 
-  > pobi : -----<br>
-    woni : ----<br>
-    jun : -----<br>
-  > 
-  > 최종 우승자 : pobi, jun
+  ```declarative
+  경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+  pobi,woni,jun 
+  
+  시도할 횟수는 몇 회인가요? 
+  5 
+   
+  실행 결과 
+  pobi : - 
+  woni : 
+  jun : - 
+  
+  pobi : -- 
+  woni : -
+  jun : --
+  
+  pobi : ---
+  woni : --
+  jun : ---
+  
+  pobi : ----
+  woni : ---
+  jun : ----
+  
+  pobi : -----
+  woni : ----
+  jun : -----
+  
+  최종 우승자 : pobi, jun
+  ```
 
 ## 🔊 프로그래밍 요구 사항 
 * 프리코스 1주차 문자열 덧셈 계산기에서 제시한 [프로그래밍 요구사항](https://github.com/usnijee/java-calculator-7/tree/usnijee)
