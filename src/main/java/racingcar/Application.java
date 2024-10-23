@@ -72,7 +72,8 @@ public class Application {
             max = Math.max(max, score);
         }
 
-        //racingOutput(scores);
+        racingOutput(scores);
+        System.out.println();
         //getWinner(scores, max);
     }
 
@@ -83,5 +84,19 @@ public class Application {
         } else {
             return 0;
         }
+    }
+
+    private static void racingOutput(List<Integer> scores) {
+        for (int i = 0; i < scores.size(); i++) {
+            System.out.print(carNames.get(i) + " : ");
+            scoreOutput(scores.get(i));
+        }
+    }
+
+    private static void scoreOutput(int score) {
+        for (int i = 0; i < score; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
