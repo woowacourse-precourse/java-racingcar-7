@@ -105,6 +105,29 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+    @ParameterizedTest
+    @ValueSource(strings = {",", "a", "가", "1.3"})
+    @DisplayName("count가 숫자가 아니면 예외를 발생한다.")
+    void countInputTest1(String count) {
+        assertThatThrownBy(() -> CounterValidation.validation(count))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("count의 값이 음수이면 예외가 발생한다.")
+    void countInputTest2() {
+        assertThatThrownBy(() -> CounterValidation.validation("-1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("count의 값이 0이면 예외가 발생한다.")
+    void countInputTest3() {
+        assertThatThrownBy(() -> CounterValidation.validation("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
     void cratePlayerListTest() {
