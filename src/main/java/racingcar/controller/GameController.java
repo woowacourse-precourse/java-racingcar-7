@@ -21,7 +21,9 @@ public class GameController {
         int attemptCount = inputView.getAttemptCount();
 
         Game game = new Game(carNames, attemptCount);
-        game.play();
+        while (game.isRunning()) {
+            game.play();
+        }
     }
 }
         

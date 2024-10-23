@@ -9,7 +9,7 @@ public class Game {
     private static final int RANDOM_MAX_NUMBER = 9;
     private static final int MOVEMENT_CRITERIA = 4;
     private final List<Car> cars;
-    private final int attemptCount;
+    private int attemptCount;
 
     public Game(String[] carNames, int attemptCount) {
         this.cars = new ArrayList<>();
@@ -21,9 +21,8 @@ public class Game {
     }
 
     public void play() {
-        for (int i = 0; i < attemptCount; i++) {
-            attemptToMoveCars();
-        }
+        attemptCount--;
+        attemptToMoveCars();
     }
 
     private void attemptToMoveCars() {
@@ -34,5 +33,9 @@ public class Game {
                 car.move();
             }
         }
+    }
+
+    public boolean isRunning() {
+        return attemptCount > 0;
     }
 }
