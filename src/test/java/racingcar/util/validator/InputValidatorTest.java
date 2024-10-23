@@ -41,9 +41,11 @@ class InputValidatorTest {
     void 시행횟수_검증_테스트() {
         //given
         String two = "2";
+        String fifteen = "15";
 
         //then
         assertDoesNotThrow(() -> InputValidator.validateNumberOfTrial(two));
+        assertDoesNotThrow(() -> InputValidator.validateNumberOfTrial(fifteen));
     }
 
     @Test
@@ -51,7 +53,7 @@ class InputValidatorTest {
         //given
         String notNum = "three";
         String notPositive = "-2";
-        String zero = "0";
+        String tooBigNumber = "99999999999999999";
 
         //then
         assertThrows(IllegalArgumentException.class,
@@ -59,7 +61,7 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class,
             () -> InputValidator.validateNumberOfTrial(notPositive));
         assertThrows(IllegalArgumentException.class,
-            () -> InputValidator.validateNumberOfTrial(zero));
+            () -> InputValidator.validateNumberOfTrial(tooBigNumber));
 
     }
 }
