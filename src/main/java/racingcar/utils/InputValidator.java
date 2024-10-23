@@ -19,4 +19,10 @@ public class InputValidator {
             }
         }
     }
+
+    private void validateNumber(String inputString) {
+        if (!inputString.matches("[0-9]+")) {
+            throw new IllegalArgumentException(Constant.CAR_NAME_EMPTY_ERROR_MESSAGE);
+        }
+    }
 }
