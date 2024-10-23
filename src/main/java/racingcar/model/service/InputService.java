@@ -1,14 +1,9 @@
 package racingcar.model.service;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.dto.Car;
-import racingcar.model.exception.CarNameLengthExceededException;
-import racingcar.model.exception.InvalidAttemptCountException;
-import racingcar.model.exception.InvalidCarCountException;
-import racingcar.model.exception.MissingInputValueException;
+import racingcar.model.exception.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class InputService {
 
@@ -29,6 +24,10 @@ public class InputService {
 
         if(cars.size() == 1){
             throw new InvalidCarCountException("자동차는 1개 일 수 없습니다.");
+        }
+
+        if(DuplicateCarName(cars)){
+            throw new DuplicateCarNameException("자동차 이름이 중복될 수 없습니다.");
         }
 
         List<Car> carList = new ArrayList<>();
@@ -60,4 +59,13 @@ public class InputService {
         }
     }
 
+    public boolean DuplicateCarName(List<String> cars){
+        Set<String> carNameSet = new HashSet<>();
+        for (String car : cars) {
+            if(!carNameSet.add(car)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
