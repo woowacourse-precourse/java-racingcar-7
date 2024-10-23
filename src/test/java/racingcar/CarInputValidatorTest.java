@@ -14,5 +14,6 @@ class CarInputValidatorTest {
     void 자동차_입력값_검증_테스트() {
         assertThrows(RuntimeException.class, () -> validator.validate("car1"));
         assertThrows(RuntimeException.class, () -> validator.validate("car111,car2"));
+        assertThrows(RuntimeException.class, () -> validator.validate("car,car"));
     }
 }
