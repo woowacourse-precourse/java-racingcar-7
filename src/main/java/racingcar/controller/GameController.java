@@ -1,7 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.model.Game;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,12 +18,10 @@ public class GameController {
     public void start() {
         String inputCarNames = inputView.getNameOfCars();
         String[] carNames = inputCarNames.split(DELIMITER);
-        Cars cars = new Cars();
-        for (String carName : carNames) {
-            cars.addCar(new Car(carName));
-        }
-
         int attemptCount = inputView.getAttemptCount();
+
+        Game game = new Game(carNames, attemptCount);
+        game.play();
     }
 }
         
