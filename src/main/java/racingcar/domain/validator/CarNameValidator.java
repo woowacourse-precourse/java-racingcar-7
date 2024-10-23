@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.validator;
 
 import java.util.HashMap;
 import java.util.List;
