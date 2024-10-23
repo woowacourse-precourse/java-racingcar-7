@@ -14,12 +14,20 @@ public class RacingCarController {
     }
 
     public void start() {
+        RacingCarService racingCarService = getRacingCarService();
+        play(racingCarService);
+        printResult(racingCarService);
+    }
+
+    private RacingCarService getRacingCarService() {
         String readCarNames = getCarNames();
         String readNumberOfAttempts = getNumberOfAttempts();
-        RacingCarService racingCarService = new RacingCarService(readCarNames, readNumberOfAttempts);
+        return new RacingCarService(readCarNames, readNumberOfAttempts);
+    }
+
+    private void play(RacingCarService racingCarService) {
         outputView.printResultMessage();
         racingCarService.play(outputView);
-        printResult(racingCarService);
     }
 
     private void printResult(RacingCarService racingCarService) {
