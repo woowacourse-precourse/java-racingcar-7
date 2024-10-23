@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * This class is immutable as all fields are final and the contained ArrayList
  * is not exposed for modification.
  */
-public record RaceInput(ArrayList<String> names, Integer times) {
+public record RaceInput(ArrayList<String> names, int times) {
     /**
      * Creates a new race input with participant names and running times.
      *
@@ -34,7 +34,7 @@ public record RaceInput(ArrayList<String> names, Integer times) {
      * @return the number of race iterations
      */
     @Override
-    public Integer times() {
+    public int times() {
         return times;
     }
 }
