@@ -2,7 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomMoveStrategy implements MoveStrategy{
+public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_CONDITION_NUMBER = 4;
     private static final int MOVE_ONCE = 1;
     private static final int STOP = 0;
