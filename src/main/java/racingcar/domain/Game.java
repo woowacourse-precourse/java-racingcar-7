@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.util.RandomNumber;
 import racingcar.util.StringParser;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Game {
 
@@ -40,6 +41,10 @@ public class Game {
         return cars.stream()
                 .filter(car -> car.getPosition() == bestRecord)
                 .collect(Collectors.toList());
+    }
+
+    public void finishGame() {
+        OutputView.printFinalWinners(findWinners());
     }
 
     private void readCarsData() {
