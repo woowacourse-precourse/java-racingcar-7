@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.global.enums.PrintMessage;
 import racingcar.model.Cars;
 import racingcar.model.Race;
 import racingcar.view.OutputView;
@@ -12,7 +13,7 @@ public class RacingCarService {
         Integer raceCount = race.getRaceCount();
         Cars cars = race.getCars();
 
-        outputView.printMessage(OutputView.GAME_MESSAGE);
+        outputView.printMessage(PrintMessage.GAME_MESSAGE);
         for (int count = 0; count < raceCount; count++) {
             move(cars);
             outputView.printGameResult(cars);

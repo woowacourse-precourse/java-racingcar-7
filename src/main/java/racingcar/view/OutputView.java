@@ -1,10 +1,9 @@
 package racingcar.view;
 
+import racingcar.global.enums.PrintMessage;
 import racingcar.model.Cars;
 
 public class OutputView {
-    public static final String GAME_MESSAGE = "실행 결과";
-    private static final String WINNER_MESSAGE = "최종 우승자";
     private static OutputView instance;
 
     public static OutputView getInstance() {
@@ -14,15 +13,15 @@ public class OutputView {
         return instance;
     }
 
-    public void printMessage(String message) {
-        System.out.println(message);
+    public void printMessage(PrintMessage message) {
+        System.out.println(message.getMessage());
     }
 
     public void printGameResult(Cars cars) {
         cars.getCarList().forEach(
                 car -> System.out.println(car.getName() + " : " + "-".repeat(car.getDistance())
                 ));
-        printMessage("");
+        printMessage(PrintMessage.EMPTY_MESSAGE);
     }
 
     public void printWinner() {
