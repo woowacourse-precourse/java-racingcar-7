@@ -21,13 +21,15 @@ public class Validator {
         return carNameInput;
     }
 
-    public static void overFiveChars(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException(ErrorMessage.OVER_FIVE_WORD);
+    public static void overFiveCharsInCarName(List<String> carNameList) {
+        for (String carName : carNameList) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException(ErrorMessage.OVER_FIVE_WORD);
+            }
         }
     }
 
-    public static void isDuplicated(List<String> carNameList) {
+    public static void isDuplicatedCarName(List<String> carNameList) {
         if (carNameList.size() != carNameList.stream().distinct().count()) {
             throw new IllegalArgumentException(ErrorMessage.IS_DUPLICATED);
         }

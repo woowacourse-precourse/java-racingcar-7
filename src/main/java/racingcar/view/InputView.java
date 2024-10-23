@@ -25,11 +25,9 @@ public class InputView {
 
         List<String> carNameList = List.of(carNameString.split(","));
 
-        Validator.isDuplicated(carNameList);
+        Validator.isDuplicatedCarName(carNameList);
 
-        for (String carName : carNameList) {
-            Validator.overFiveChars(carName);
-        }
+        Validator.overFiveCharsInCarName(carNameList);
 
         return carNameList;
     }
