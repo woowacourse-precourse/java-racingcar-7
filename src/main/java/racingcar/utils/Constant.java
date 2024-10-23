@@ -21,5 +21,8 @@ public class Constant {
     public static final int MIN_RANDOM_VALUE = 0;
     public static final int MAX_RANDOM_VALUE = 9;
 
+    // 전진하기 위한 무작위 값의 임계값
+    public static final int MOVE_THRESHOLD_VALUE = 4;
+
     private Constant() {}
 }
