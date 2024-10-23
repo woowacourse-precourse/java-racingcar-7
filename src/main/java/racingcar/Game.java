@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Game {
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     private int attempts;
 
     public void start() {
@@ -22,17 +22,10 @@ public class Game {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = readLine();
         String[] carNames = input.split(",");
+        Validator.validateCarNames(carNames);
 
         for (String carName : carNames) {
-            carName = carName.trim(); // 이 부분 나중에 Car에 메세지를 주는식으로 바꿔도 될듯
 
-            if (carName.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
-            }
-
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-            }
             cars.add(new Car(carName));
         }
     }
