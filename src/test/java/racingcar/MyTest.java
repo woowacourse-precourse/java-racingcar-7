@@ -1,6 +1,6 @@
 package racingcar;
 
-import org.junit.jupiter.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.util.Validator;
@@ -40,12 +40,12 @@ public class MyTest {
         };
 
         for (String cars : validCars) {
-            Assertions.assertDoesNotThrow(() -> validator.checkAboutCars(cars));
+            assertThatNoException().isThrownBy(() -> validator.checkAboutCars(cars));
         }
 
         for (String cars : invalidCars) {
-            final RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> validator.checkAboutCars(cars));
-            Assertions.assertEquals(WRONG_CAR_NAME_EXCEPTION, exception.getMessage());
+            assertThatIllegalArgumentException().isThrownBy(() -> validator.checkAboutCars(cars))
+                    .withMessage(WRONG_CAR_NAME_EXCEPTION);
         }
     }
 
@@ -56,17 +56,16 @@ public class MyTest {
             String currentRound = Integer.toString(i);
 
             if (i == 0) {
-                final RuntimeException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                        () -> validator.checkAboutRound(currentRound));
-                Assertions.assertEquals(WRONG_ROUND_EXCEPTION, exception.getMessage());
+                assertThatIllegalArgumentException().isThrownBy(() -> validator.checkAboutRound(currentRound))
+                        .withMessage(WRONG_ROUND_EXCEPTION);
                 continue;
             }
 
-            Assertions.assertDoesNotThrow(() -> validator.checkAboutRound(currentRound));
+            assertThatNoException().isThrownBy(() -> validator.checkAboutCars(currentRound));
         }
 
         // 시도할 횟수는 비어있을 수 없음
         String emptyString = "";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> validator.checkAboutRound(emptyString));
+        assertThatIllegalArgumentException().isThrownBy(() -> validator.checkAboutRound(emptyString));
     }
 }
