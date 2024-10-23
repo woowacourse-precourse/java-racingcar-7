@@ -27,11 +27,11 @@
 - 시도할 횟수를 입력받는 기능(메소드명: inputTryCount)
 
 ### 출력
-- 실행 결과 메세지 출력 기능(메소드명: outputResultMessage)
-- 최종 우승자 출력하는 기능(메소드명: outputWinners)
-- 한 라운드의 결과를 출력하는 기능(메소드명: outputRoundResult)
-- 자동차 이름을 입력하라는 메세지 출력 기능(메소드명: outputCarNameMessage)
-- 시도할 횟수 입력하라는 메세지 출력 가능(메소드명: outputTryCountMessage)
+- 실행 결과 메세지 출력 기능(메소드명: printResultMessage)
+- 최종 우승자 출력하는 기능(메소드명: printWinners)
+- 한 라운드의 결과를 출력하는 기능(메소드명: printRoundResult)
+- 자동차 이름을 입력하라는 메세지 출력 기능(메소드명: printCarNameMessage)
+- 시도할 횟수 입력하라는 메세지 출력 가능(메소드명: printTryCountMessage)
 
 ### 서비스
 - 자동차 이름을 쉼표 기준으로 분리하는 기능(메소드명: splitCarNames)
