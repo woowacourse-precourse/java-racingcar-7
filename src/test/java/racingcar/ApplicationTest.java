@@ -39,27 +39,21 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("players에 ,(쉼표)가 없으면 예외가 발생한다.")
     void playersInputTest1() {
-        PlayerMaker playerMaker = new PlayerMaker();
-
-        assertThatThrownBy(() -> playerMaker.createPlayer("pobi"))
+        assertThatThrownBy(() -> PlayerMaker.createPlayer("pobi"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("player가 1명이면 예외가 발생한다.")
     void playersInputTest2() {
-        PlayerMaker playerMaker = new PlayerMaker();
-
-        assertThatThrownBy(() -> playerMaker.createPlayer("pobi,"))
+        assertThatThrownBy(() -> PlayerMaker.createPlayer("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("player의 이름이 숫자이면 예외가 발생한다.")
     void playersInputTest3() {
-        PlayerMaker playerMaker = new PlayerMaker();
-
-        assertThatThrownBy(() -> playerMaker.createPlayer("1111,24123"))
+        assertThatThrownBy(() -> PlayerMaker.createPlayer("1111,24123"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -68,10 +62,9 @@ class ApplicationTest extends NsTest {
     void cratePlayerListTest() {
         // give
         String players = "pobi,woni";
-        PlayerMaker playerMaker = new PlayerMaker();
 
         // when
-        List<Player> playerList = playerMaker.createPlayer(players);
+        List<Player> playerList = PlayerMaker.createPlayer(players);
 
         //then
         assertThat(playerList).hasSize(2);
