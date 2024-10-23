@@ -22,6 +22,7 @@ public class RacingCar {
         }
 
         List<String> winners = findWinner(cars);
+        showResult(winners);
     }
 
     public Map<String, Integer> createCar(String[] carNames) {
@@ -83,5 +84,10 @@ public class RacingCar {
             }
             System.out.println();
         }
+    }
+
+    private void showResult(List<String> winners) {
+        System.out.println();
+        System.out.println("최종 우승자 : " + winners);
     }
 }
