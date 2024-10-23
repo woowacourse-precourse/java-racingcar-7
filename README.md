@@ -71,4 +71,4 @@ DDD(도메인 주도 설계) structure
 - Presentation layer : user interface로 사용
 - Application layer : 비즈니스 로직으로 사용 (service)
 - Domain layer : 실질적인 도메인에 대한 정보 및 도메인 로직 (model)
-- infrastructure layer : 외부 통신 대신 저장소로 사용
+- Infrastructure layer : 외부 통신 대신 저장소로 사용
