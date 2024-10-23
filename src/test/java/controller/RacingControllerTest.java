@@ -2,7 +2,7 @@ package controller;
 
 import common.BeanFactory;
 import common.RacingCarBeanFactory;
-import input.OriginalInput;
+import dto.OriginalInputDTO;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -19,7 +19,7 @@ class RacingControllerTest {
     void provideServiceFromBeanFactory() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
-        OriginalInput originalInput = new OriginalInput("dada,ming,mong", "5");
+        OriginalInputDTO originalInput = new OriginalInputDTO("dada,ming,mong", "5");
         //when
         RacingController racingController = new RacingController(beanFactory, originalInput);
         //then
@@ -32,11 +32,11 @@ class RacingControllerTest {
     void replaceBlankInput() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
-        OriginalInput originalInput = new OriginalInput("dada,ming,mong", "5");
+        OriginalInputDTO originalInput = new OriginalInputDTO("dada,ming,mong", "5");
         RacingController racingController = new RacingController(beanFactory, originalInput);
 
         //when
-        OriginalInput replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(), originalInput.count());
+        OriginalInputDTO replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(), originalInput.count());
         //then
         Assertions.assertThat(replaceBlankInputData.name()).isEqualTo("dada,ming,mong");
         Assertions.assertThat(replaceBlankInputData.count()).isEqualTo("5");
@@ -47,9 +47,9 @@ class RacingControllerTest {
     void isEmptyInput() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
-        OriginalInput originalInput = new OriginalInput(" ", " ");
+        OriginalInputDTO originalInput = new OriginalInputDTO(" ", " ");
         RacingController racingController = new RacingController(beanFactory, originalInput);
-        OriginalInput replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
+        OriginalInputDTO replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
 
         //when
 
@@ -67,9 +67,9 @@ class RacingControllerTest {
     void test() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
-        OriginalInput originalInput = new OriginalInput(" ", " ");
+        OriginalInputDTO originalInput = new OriginalInputDTO(" ", " ");
         RacingController racingController = new RacingController(beanFactory, originalInput);
-        OriginalInput replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
+        OriginalInputDTO replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
 
         List<Car> carList = new ArrayList<>();
         carList.add(new Car("dodo", new RacingCarPolicy(), Long.parseLong("2")));

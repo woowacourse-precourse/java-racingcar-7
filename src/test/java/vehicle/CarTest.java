@@ -16,7 +16,7 @@ class CarTest {
         //when
         //then
         Assertions.assertThatThrownBy(() ->
-                new Car("dadadada", beanFactory.provideRacingPolicy())).isInstanceOf(IllegalArgumentException.class);
+                new Car("dadadada", beanFactory.provideRacingPolicy())).isInstanceOf(IllegalArgumentException.class).hasMessage("자동차 이름은 "+"5"+"를 넘을 수 없습니다.");
     }
 
 

@@ -24,9 +24,15 @@ public class CarRepository implements Repository{
         carRepository.put(name, moveForwardCount);
     }
 
+
     @Override
     public Long find(String name) {
         return carRepository.get(name);
+    }
+
+    @Override
+    public int size() {
+        return carRepository.size();
     }
 
 }

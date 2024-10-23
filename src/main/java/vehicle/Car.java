@@ -35,6 +35,7 @@ public class Car implements Vehicle{
 
     public String validateNameLength(String carName){
         if(carName.length() > racingPolicy.getNameLengthPolicy()){
+            //TODO : exceptionMessage Enum 만들어서 관리 하기.
            throw  new IllegalArgumentException("자동차 이름은 "+ racingPolicy.getNameLengthPolicy()+"를 넘을 수 없습니다.");
         }
         return carName;

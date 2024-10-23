@@ -1,7 +1,7 @@
 package view;
 
-import input.OriginalInput;
+import dto.OriginalInputDTO;
 
 public interface InputView {
-    OriginalInput receiveInputData();
+    OriginalInputDTO receiveInputData();
 }

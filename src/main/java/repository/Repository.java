@@ -7,4 +7,7 @@ public interface Repository {
 
     Long find(String name);
 
+    int size();
+
+
 }

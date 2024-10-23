@@ -1,6 +1,6 @@
 package common;
 
-import input.ValidatedInputData;
+import dto.ValidatedInputDataDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ class RacingCarBeanFactoryTest {
     void getRacingService() {
         //given
         BeanFactory beanFactory = new RacingCarBeanFactory();
-        ValidatedInputData validatedInputData = new ValidatedInputData("dada,dodo,lala", Long.parseLong("5"));
+        ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,dodo,lala", Long.parseLong("5"));
 
         //when
-        RacingService racingCarService = beanFactory.provideRacingService(validatedInputData);
+        RacingService racingCarService = beanFactory.provideRacingService(validatedInputDataDTO);
 
         //then
         Assertions.assertThat(racingCarService).isNotNull();

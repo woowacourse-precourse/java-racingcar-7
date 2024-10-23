@@ -1,6 +1,6 @@
 package common;
 
-import input.ValidatedInputData;
+import dto.ValidatedInputDataDTO;
 import java.util.HashMap;
 import policy.RacingCarPolicy;
 import policy.RacingPolicy;
@@ -22,8 +22,8 @@ public class RacingCarBeanFactory implements BeanFactory {
     }
 
     @Override
-    public RacingService provideRacingService(ValidatedInputData validatedInputData) {
-        return new RacingCarService(validatedInputData,provideRacingPolicy(),provideVehicleRepository());
+    public RacingService provideRacingService(ValidatedInputDataDTO validatedInputDataDTO) {
+        return new RacingCarService(validatedInputDataDTO,provideRacingPolicy(),provideVehicleRepository());
     }
 
 }
