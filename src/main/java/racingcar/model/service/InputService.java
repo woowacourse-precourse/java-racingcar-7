@@ -26,11 +26,24 @@ public class InputService {
             carList.add(carInfo);
         }
 
+        if(!isNumeric(countValue)){
+            throw new IllegalArgumentException("시도할 횟수는 숫자여야합니다.");
+        }
+
         return carList;
     }
 
     private String[] splitCarValue(String carValue){
         return carValue.split(",");
+    }
+
+    private boolean isNumeric(String countValue){
+        try{
+            Integer.parseInt(countValue);
+            return true;
+        }catch(NumberFormatException e){
+            return false;
+        }
     }
 
 }
