@@ -19,24 +19,41 @@ public class RacingGame {
     }
 
     public void run() {
-        outputHandler.showGameStartComment();
-        String carNamesFromUser = inputHandler.getCarNamesFromUser();
-        outputHandler.showTryCountComment();
-        int tryCount = inputHandler.getTryCountFromUser().tryCount();
-        String[] split = carNamesFromUser.split(",");
-        Cars cars = Cars.from(Arrays.stream(split)
-            .map(Car::from)
-            .toList());
+        String namesOfCars = getNamesOfCarsFromUser();
+        Cars cars = generateCarsFrom(namesOfCars);
+        
+        int tryCount = getTryCountFromUser();
 
+        executeRaceRoundBy(tryCount, cars);
+
+        List<Car> winnerCars = cars.getWinnerCars();
+        outputHandler.showWinners(winnerCars);
+    }
+
+    private void executeRaceRoundBy(int tryCount, Cars cars) {
         outputHandler.showResultComment();
+        
         for (int i = 0; i < tryCount; i++) {
             List<Car> movedCars = cars.move();
             outputHandler.showCarsPosition(movedCars);
         }
+    }
 
-        List<Car> winnerCars = cars.getWinnerCars();
-        outputHandler.showWinners(winnerCars);
+    private Cars generateCarsFrom(String namesOfCars) {
+        String[] split = namesOfCars.split(",");
+        return Cars.from(Arrays.stream(split)
+            .map(Car::from)
+            .toList());
+    }
 
+    private String getNamesOfCarsFromUser() {
+        outputHandler.showGameStartComment();
+        return inputHandler.getCarNamesFromUser();
+    }
+
+    private int getTryCountFromUser() {
+        outputHandler.showTryCountComment();
+        return inputHandler.getTryCountFromUser().tryCount();
     }
 
 }
