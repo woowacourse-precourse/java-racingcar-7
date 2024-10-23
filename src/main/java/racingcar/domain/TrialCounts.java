@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.validator.TrialCountsValidator;
+
 public class TrialCounts {
     private final int trialCounts;
 
