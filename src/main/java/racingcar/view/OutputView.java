@@ -6,6 +6,7 @@ import java.util.List;
 
 import static racingcar.constant.InputMessage.NUMBER_OF_ATTEMPTS;
 import static racingcar.constant.InputMessage.START_GAME;
+import static racingcar.constant.OutputMessage.FINAL_WINNERS;
 import static racingcar.constant.OutputMessage.RESULT;
 
 public class OutputView {
@@ -29,5 +30,10 @@ public class OutputView {
             System.out.println(participant.getCarName() + " : " + distance);
         }
         System.out.println();
+    }
+
+    public void printWinners(List<String> winners) {
+        String finalWinners = String.join(", ", winners);
+        System.out.println(FINAL_WINNERS.getMessage() + " : " + finalWinners);
     }
 }

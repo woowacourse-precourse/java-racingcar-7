@@ -1,7 +1,8 @@
 package racingcar.constant;
 
 public enum OutputMessage {
-    RESULT("실행 결과");
+    RESULT("실행 결과"),
+    FINAL_WINNERS("최종 우승자");
 
     private final String message;
 

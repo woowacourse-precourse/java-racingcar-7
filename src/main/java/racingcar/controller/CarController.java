@@ -33,6 +33,7 @@ public class CarController {
 
         startGame(attempts);
         List<String> winners = carService.getWinners();
+        outputView.printWinners(winners);
     }
 
     private void startGame(int attempts) {
