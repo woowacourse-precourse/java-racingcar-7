@@ -9,6 +9,11 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
         ArrayList<String> carNames = new ArrayList<>();
         parseCarNames(carNames);
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int attemps = Integer.parseInt(Console.readLine());
+        System.out.println("실행 결과");
+        canMove(carNames, attemps);
     }
 
     public static void parseCarNames(ArrayList<String> carNames) {
@@ -22,4 +27,11 @@ public class Application {
             }
         }
     }
+
+    public static void canMove(ArrayList<String> carNames, int attemps) {
+        if (attemps == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
