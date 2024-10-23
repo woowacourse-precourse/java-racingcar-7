@@ -10,7 +10,7 @@ public class Car {
 
 	private static void validateCarLength(String carName) {
 		if (carName.length() > 5) {
-			throw new RuntimeException();
+			throw new IllegalArgumentException();
 		}
 	}
 }
