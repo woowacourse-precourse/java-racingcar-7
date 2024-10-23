@@ -49,6 +49,21 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void convertAttemptsTest(){
+        assertSimpleTest(() -> {
+            int resultCount = carRacing.convertAttempts("4");
+            assertThat(resultCount).isEqualTo(4);
+        });
+    }
+
+    @Test
+    void 예외_convertAttemptsTest(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(()-> carRacing.convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
