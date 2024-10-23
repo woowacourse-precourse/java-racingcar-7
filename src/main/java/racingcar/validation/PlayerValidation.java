@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.validation;
 
 public class PlayerValidation {
 

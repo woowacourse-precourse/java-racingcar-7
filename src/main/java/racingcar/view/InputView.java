@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.util.PlayerValidation;
+import racingcar.validation.PlayerValidation;
 
 public class InputView {
 
