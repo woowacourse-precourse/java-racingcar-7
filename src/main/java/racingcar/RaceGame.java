@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGame {
-    private static final String WINNERS_PREFIX = "최종 우승자 : ";
     private static final String WINNERS_DELIMITER = ", ";
 
     private final List<Car> cars;
@@ -58,6 +57,16 @@ public class RaceGame {
 
     private void printWinners() {
         List<String> winners = getWinners();
-        System.out.println(WINNERS_PREFIX + String.join(WINNERS_DELIMITER, winners));
+        System.out.println("최종 우승자 : " + String.join(WINNERS_DELIMITER, winners));
+    }
+
+    public void playGame(int attempts) {
+        RaceUtil.validateAttempts(attempts);
+        System.out.println("\n" + "실행 결과");
+        for (int i = 0; i < attempts; i++) {
+            playRound();
+            printCurrentStatus();
+        }
+        printWinners();
     }
 }
