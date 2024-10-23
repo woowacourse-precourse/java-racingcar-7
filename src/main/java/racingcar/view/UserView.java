@@ -58,7 +58,7 @@ public class UserView {
         }
 
         try {
-            int number = Integer.parseInt(repeatNumber);
+            int number = Integer.parseInt(repeatNumber.trim());
             if(number <= 0) {
                 throw new IllegalArgumentException(RacingCarErrorMessage.POSITIVE_REPEAT_NUMBER_ERROR.getMessage());
             }
