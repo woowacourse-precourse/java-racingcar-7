@@ -42,3 +42,14 @@
 ---
 
 ## Note
+
+- Car
+    - 이름
+    - 거리
+- Cars :  List<Car>
+- AttemptManager
+
+- NumberMaker(i)
+- RandomNumberMaker (impl)
+- RacingCarScoreMachine 시도횟수와 자동차를 받아 ... 동작시키는
+
