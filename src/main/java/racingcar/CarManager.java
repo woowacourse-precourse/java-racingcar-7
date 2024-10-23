@@ -33,18 +33,13 @@ public class CarManager {
         }
     }
 
-    public List<Car> getSortedList() {
-        List<Car> sortedList = new ArrayList<>(this.list);
-        sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
-        return sortedList;
-    }
-
     public List<String> getWinner() {
         int maxPosition = getMaxPosition();
-        return getSortedList().stream()
+        List<String> winnerList = getList().stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
+        return winnerList;
     }
 
     public List<Car> getList() {
@@ -52,6 +47,8 @@ public class CarManager {
     }
 
     private int getMaxPosition() {
-        return getSortedList().getFirst().getPosition();
+        List<Car> sortedList = new ArrayList<>(this.list);
+        sortedList.sort(Comparator.comparing(Car::getPosition).reversed());
+        return sortedList.getFirst().getPosition();
     }
 }
