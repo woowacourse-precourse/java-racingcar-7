@@ -5,6 +5,7 @@ import static racingcar.exception.ExceptionMessage.EMPTY_CARS;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -32,19 +33,11 @@ public class RacingCarService {
 
     public List<String> findWinnersName() {
         Position longestPosition = getLongestPosition();
-
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars.getCars()){
-            if(car.getPosition().getValue() == longestPosition.getValue()){
-                winners.add(car);
-            }
-        }
-
-        List<String> winnersNames = new ArrayList<>();
-        for (Car car : winners){
-            winnersNames.add(car.getName().toString());
-        }
-        return winnersNames;
+        return cars.getCars()
+                .stream()
+                .filter(car -> car.getPosition().getValue() == longestPosition.getValue())
+                .map(car -> car.getName().toString())
+                .collect(Collectors.toList());
     }
 
     private Position getLongestPosition() {
