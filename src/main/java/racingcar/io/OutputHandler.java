@@ -15,7 +15,11 @@ public class OutputHandler {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    private void showWinners(List<Car> cars) {
+    public void showResultComment() {
+        System.out.println("실행 결과");
+    }
+
+    public void showWinners(List<Car> cars) {
         String carsName = generateWinnerCarsName(cars);
         System.out.printf("최종 우승자 : %s", carsName);
     }
@@ -26,4 +30,14 @@ public class OutputHandler {
             .collect(Collectors.joining(", "));
     }
 
+    public void showCarsPosition(List<Car> cars) {
+        cars.forEach(car -> {
+                System.out.print(car.getName() + " : ");
+                for (int i = 0; i < car.getPosition(); i++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            });
+        System.out.println();
+    }
 }
