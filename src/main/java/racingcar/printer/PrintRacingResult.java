@@ -17,7 +17,6 @@ public class PrintRacingResult implements Printer {
         for (Cars cars : afterGameCars) {
             System.out.println(Cars.makeResultOutput(cars.allCar()));
         }
-        System.out.println("\n");
     }
 
     @Override
