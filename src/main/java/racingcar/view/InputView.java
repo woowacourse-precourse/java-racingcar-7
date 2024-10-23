@@ -33,6 +33,10 @@ public class InputView {
 			.orElseThrow(() -> new NoSeparatorException("구분자가 존재하지 않습니다."));
 
 		return Arrays.stream(input.split(regex))
+			.peek(s -> {
+				if (s.isBlank())
+					throw new IllegalArgumentException("잘못된 자동차 이름이 있습니다.");
+			})
 			.toList();
 	}
 }
