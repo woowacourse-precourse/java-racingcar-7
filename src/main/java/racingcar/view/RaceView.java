@@ -21,7 +21,7 @@ public class RaceView {
             if (!token.isEmpty() && token.length() <= 5 && validateNameToken(token)) {
                 carNames.add(token);
             } else {
-                throw new IllegalArgumentException("Invalid car name");
+                throw new IllegalArgumentException("자동차 이름 형식이 올바르지 않습니다.");
             }
         }
 
@@ -37,6 +37,21 @@ public class RaceView {
         Pattern pattern = Pattern.compile("^[a-zA-Z가-힣]+$");
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
+    }
+
+    public int inputTryTime() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int N = 0;
+        try {
+            N = Integer.parseInt(Console.readLine().trim());
+            if (N <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return N;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("양수를 입력해주세요.");
+        }
+
     }
 
 }
