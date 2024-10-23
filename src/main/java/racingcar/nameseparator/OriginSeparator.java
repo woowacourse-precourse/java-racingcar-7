@@ -2,7 +2,7 @@ package racingcar.nameseparator;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.racingapplication.NameSeparator;
+import racingcar.application.NameSeparator;
 
 public class OriginSeparator implements NameSeparator {
 

@@ -1,4 +1,4 @@
-package racingcar.racingapplication;
+package racingcar.application;
 
 import java.util.List;
 import racingcar.RandomNumberGenerator;
@@ -19,6 +19,7 @@ public class GameApplication {
     }
 
     public void run() {
+        RacingApplication racingApplication = new RacingApplication(new RandomNumberGenerator());
         printer.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String origin = reader.readOrigin();
         List<String> carNames = nameSeparator.separateNames(origin);
@@ -26,11 +27,10 @@ public class GameApplication {
         printer.print("시도할 횟수는 몇 회인가요?");
         int gameNumber = reader.readGameNumber();
 
-        RacingApplication racingApplication = new RacingApplication(new RandomNumberGenerator());
         List<Cars> afterRaceCars = racingApplication.race(gameNumber, Cars.makeOriginCars(carNames));
         Result result = Result.of(afterRaceCars.subList(1, afterRaceCars.size()));
         List<String> winners = result.findWinners();
-        printer.printAfterGameResult(result.finalResultCars());
+        printer.printAfterGameResult(result);
         printer.printFinalWinner(winners);
     }
 }
