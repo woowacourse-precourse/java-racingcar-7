@@ -3,6 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,6 +14,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @Test
+    void 자동차_이름_입력_테스트(){
+        String input = "poby,woni,jun";
+        ArrayList<String> testCars = new ArrayList<>(Arrays.asList(input.split(",")));
+        assertThat(testCars).containsExactly("poby", "woni", "jun");
+    }
 
     @Test
     void 기능_테스트() {
