@@ -9,9 +9,9 @@ public class Car implements Comparable<Car> {
     private int totalMoves;
     private List<String> moveHistory;
 
-    public Car(String name, int numberOfMoves) {
+    public Car(String name, int numberOfStages) {
         this.name = name;
-        this.moveHistory = new ArrayList<>(numberOfMoves);
+        this.moveHistory = new ArrayList<>(numberOfStages);
     }
 
     public void setTotalMoves(int totalMoves) {

@@ -1,12 +1,10 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
 import racingcar.dto.UserInputDTO;
 import racingcar.service.RaceService;
+import racingcar.util.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.List;
 
 public class RaceController {
 
@@ -19,9 +17,9 @@ public class RaceController {
     // 프로그램 시작 메소드
     public void raceStart() {
         UserInputDTO userInputDTO = InputView.getUserInput();
-//        System.out.println(userInputDTO.name());
-//        System.out.println(userInputDTO.numOfStages());
-        List<Car> carList = raceService.getCarList(userInputDTO);
-        OutputView.showResult(userInputDTO.numOfStages(), carList);
+        raceService.setNumOfStages(userInputDTO.numOfStages());
+        raceService.setCarList(InputParser.getCarList(userInputDTO));
+        raceService.raceStart();
+//        OutputView.showResult(userInputDTO.numOfStages(), raceService.getCarList(userInputDTO));
     }
 }
