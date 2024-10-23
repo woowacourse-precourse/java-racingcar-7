@@ -9,9 +9,9 @@
     - 각 이름이 5자 이하인지 검사한다.
     - 이동 횟수를 입력받는다.
 
-  ⚠️ 잘못된 구분자가 입력될 경우 `IllegalArgumentException` 발생
+  ⚠️ 잘못된 구분자가 입력될 경우 `IllegalArgumentException` 발생시킨다.
 
-  ⚠️ 이름이 5자를 초과할 경우 `IllegalArgumentException` 발생
+  ⚠️ 이름이 5자를 초과할 경우 `IllegalArgumentException` 발생시킨다.
 
 ### 동작 분석
 
