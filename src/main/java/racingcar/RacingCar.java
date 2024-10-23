@@ -9,9 +9,8 @@ public class RacingCar {
         this.id = id;
     }
 
-    // TODO : 클래스 내부에서 이동거리 더하는 연산으로 변경 예정
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public void moveForward() {
+        this.distance++;
     }
 
     @Override
