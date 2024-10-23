@@ -14,4 +14,12 @@ public class Car {
         int moveCount = moveStrategy.getPossibleMoveCount();
         position += moveCount;
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
