@@ -9,13 +9,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.model.InputValidator;
 
 class InputViewTrialCountTest extends NsTest {
     private InputView inputView;
 
     @BeforeEach
     void setup() {
-        inputView = new InputView();
+        inputView = new InputView(new InputValidator());
     }
 
     @DisplayName("시도 횟수 입력을 받는다.")

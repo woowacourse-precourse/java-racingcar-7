@@ -10,13 +10,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.model.InputValidator;
 
 class InputViewCarNameTest extends NsTest {
     private InputView inputView;
 
     @BeforeEach
     void setup() {
-        inputView = new InputView();
+        inputView = new InputView(new InputValidator());
     }
 
     @DisplayName("쉼표(,)를 구분자로 자동차의 이름을 입력받는다.")
@@ -37,7 +38,7 @@ class InputViewCarNameTest extends NsTest {
 
     @Override
     protected void runMain() {
-        List<String> carNameList = inputView.inputCarNames();
+        List<String> carNameList = inputView.inputCarNameList();
         System.out.println(carNameList);
     }
 }
