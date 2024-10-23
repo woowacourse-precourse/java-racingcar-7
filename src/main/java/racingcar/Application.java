@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -33,6 +34,8 @@ public class Application {
             result.put(carName, new StringBuilder());
         }
 
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
             for(String carName : carNames) {
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
@@ -40,6 +43,10 @@ public class Application {
                     result.put(carName, result.get(carName).append("-"));
                 }
             }
+            for (String carName : carNames) {
+                System.out.println(carName + " : " + result.get(carName));
+            }
+            System.out.println();
         }
     }
 }
