@@ -23,7 +23,7 @@ public class Car {
         return name;
     }
 
-    public int getMoveCount(int randomNumber) {
+    public int getMoveCount() {
         return moveCount;
     }
 
