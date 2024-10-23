@@ -2,7 +2,6 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -26,9 +25,10 @@ class NameTest {
     }
 
     @DisplayName("이름 공백 입력")
-    @Test
-    void 이름이_공백_입력() {
-        Assertions.assertThatThrownBy(() -> new Name(""))
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void 이름_공백_입력(String name) {
+        Assertions.assertThatThrownBy(() -> new Name(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 공백일 수 없습니다.");
     }
