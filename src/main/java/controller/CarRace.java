@@ -14,12 +14,13 @@ public class CarRace {
         OutputView.printInputTryCount();
         int tryCount = InputView.getTryCount();
 
+        OutputView.printOutputResult();
         while(tryCount > 0) {
 
             for (Car car: cars) {
                 car.move();
             }
-
+            OutputView.printOutputStatus(cars);
             tryCount--;
         }
     }
