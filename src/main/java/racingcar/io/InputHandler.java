@@ -12,7 +12,6 @@ public class InputHandler {
 
     private static final Pattern CAR_NAME_PATTERN = Pattern.compile("^[^\\s]+(,[^\\s])*$");
 
-
     public Cars getCarNamesFromUser() {
         String userInput = Console.readLine();
         return generateCarsFrom(userInput);
@@ -23,7 +22,7 @@ public class InputHandler {
         return new TryCountRequest(userInput);
     }
 
-    private Cars generateCarsFrom(String namesOfCars) {
+    private Cars generateCarsFrom(final String namesOfCars) {
         validateCarNames(namesOfCars);
         String[] split = namesOfCars.split(",");
         return Cars.from(Arrays.stream(split)
@@ -31,7 +30,7 @@ public class InputHandler {
             .toList());
     }
 
-    private void validateCarNames(String userInput) {
+    private void validateCarNames(final String userInput) {
         if (userInput == null || userInput.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }

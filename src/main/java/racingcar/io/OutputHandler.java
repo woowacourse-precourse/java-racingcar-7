@@ -19,18 +19,18 @@ public class OutputHandler {
         System.out.println("실행 결과");
     }
 
-    public void showWinners(List<Car> cars) {
+    public void showWinners(final List<Car> cars) {
         String carsName = generateWinnerCarsName(cars);
         System.out.printf("최종 우승자 : %s", carsName);
     }
 
-    private String generateWinnerCarsName(List<Car> cars) {
+    private String generateWinnerCarsName(final List<Car> cars) {
         return cars.stream()
             .map(Car::getName)
             .collect(Collectors.joining(", "));
     }
 
-    public void showCarsPosition(List<Car> cars) {
+    public void showCarsPosition(final List<Car> cars) {
         cars.forEach(car -> {
             System.out.print(car.getName() + " : ");
             for (int i = 0; i < car.getPosition(); i++) {

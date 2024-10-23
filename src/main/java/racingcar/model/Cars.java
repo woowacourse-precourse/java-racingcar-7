@@ -9,11 +9,11 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    private Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars from(List<Car> cars) {
+    public static Cars from(final List<Car> cars) {
         return new Cars(cars);
     }
 
@@ -23,7 +23,7 @@ public class Cars {
     }
 
     public List<Car> getWinnerCars() {
-        ArrayList<Car> winnerCars = new ArrayList<>(cars);
+        List<Car> winnerCars = new ArrayList<>(cars);
 
         int maxPosition = calculateMaxPosition(winnerCars);
         winnerCars.removeIf(car -> car.isNotSamePositionTo(maxPosition));
@@ -31,7 +31,7 @@ public class Cars {
         return winnerCars;
     }
 
-    private int calculateMaxPosition(ArrayList<Car> winnerCars) {
+    private int calculateMaxPosition(final List<Car> winnerCars) {
         return winnerCars.stream()
             .mapToInt(Car::getPosition)
             .max()
