@@ -40,7 +40,7 @@ public class CustomUnitTest {
     @Test
     void CHECK_CAR_NAME_OVER_FIVE_LETTERS_EXCEPTION(){
         // arrange
-        Validator validator = new CarValidator();
+        CarValidator carValidator = new CarValidator();
         Car car = new Car();
 
         // act
@@ -48,14 +48,14 @@ public class CustomUnitTest {
 
         // assert
         assertThrows(IllegalArgumentException.class, () -> {
-            validator.checkNumberOfLetters(car.getName());
+            carValidator.checkNumberOfLetters(car.getName());
         });
     }
 
     @Test
     void CHECK_CAR_NAME_HAS_SPACE_IN_BETWEEN_EXCEPTION(){
         //arrange
-        Validator validator = new CarValidator();
+        CarValidator carValidator = new CarValidator();
         Car car = new Car();
 
         //act
@@ -63,11 +63,12 @@ public class CustomUnitTest {
 
         // assert
         assertThrows(IllegalArgumentException.class, () -> {
-            validator.checkCarNameHasSpace(car.getName());
+            carValidator.checkCarNameHasSpace(car.getName());
         });
     }
 
-    @Test void TRIM_SPACES_AT_BOTH_ENDS(){
+    @Test
+    void TRIM_SPACES_AT_BOTH_ENDS(){
         //arrange
         List<Car> carList = new ArrayList<Car>();
         Formatter formatter = new CarListFormatter();
@@ -82,6 +83,20 @@ public class CustomUnitTest {
         formatter.trimSpaces(carList);
         List<String> nameList = List.of("AB","CD");
 
+        // assert
         assertThat(nameList).containsExactly("AB","CD");
+    }
+
+    @Test
+    void CHECK_TRIAL_NUMBER_IS_NUMBER_EXCEPTION(){
+        //arrange
+        String trial = "a";
+        TrialValidator trialValidator = new TrialValidator();
+
+        //act
+        //assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            trialValidator.checkTrialIsNumber(trial);
+        });
     }
 }
