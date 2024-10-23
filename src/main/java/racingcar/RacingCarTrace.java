@@ -16,6 +16,13 @@ public class RacingCarTrace {
         trace.put(racingCar, trace.get(racingCar) + 1);
     }
 
+    public RacingCar getRacingCar(int index) {
+        return trace.keySet().stream()
+                .skip(index)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
     public int getDistance(int index) {
         return trace.entrySet().stream()
                 .skip(index)
