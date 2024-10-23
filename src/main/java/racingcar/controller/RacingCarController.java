@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.*;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.Race;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
@@ -29,6 +31,7 @@ public class RacingCarController {
         }
         return cars;
     }
+
     private Integer setRaceCount() {
         return inputView.inputCount();
     }

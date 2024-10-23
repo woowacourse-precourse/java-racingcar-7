@@ -24,7 +24,8 @@ public class OutputView {
         printMessage(PrintMessage.EMPTY_MESSAGE);
     }
 
-    public void printWinner() {
+    public void printWinner(String winners) {
+        System.out.println(PrintMessage.WINNER_MESSAGE.getMessage() + winners);
     }
 
 }
