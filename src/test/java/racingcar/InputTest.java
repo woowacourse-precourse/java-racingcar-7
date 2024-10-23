@@ -33,7 +33,7 @@ class InputTest extends NsTest {
     @Test
     void 자동차이름_특수문자_실패_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("다섯글자초과,둘다다섯글자초과", "1"))
+                assertThatThrownBy(() -> runException("네글자임,다섯글자초과!@#!$@", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
