@@ -6,14 +6,20 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 import racingcar.repository.impl.CarRepositoryImpl;
+import racingcar.util.Validator;
+import racingcar.util.impl.NameValidator;
+import racingcar.util.impl.NumberValidator;
 
 public class Racing {
     CarRepository carRepository = new CarRepositoryImpl();
+    Validator nameValidator = new NameValidator();
+    Validator numberValidator = new NumberValidator();
 
     public void race() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
         List<String> carNames = List.of(carNameInput.split(","));
+        nameValidator.validate(carNames);
 
         for (String carName : carNames) {
             Car car = new Car(carName);
@@ -22,6 +28,7 @@ public class Racing {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberInput = Console.readLine();
+        numberValidator.validate(numberInput);
         int number = Integer.parseInt(numberInput);
 
         List<Car> cars = carRepository.findAll();
