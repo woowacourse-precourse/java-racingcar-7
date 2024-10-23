@@ -13,6 +13,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OutputViewTest {
 
+    private final PrintStream originalOut = System.out; // 원래의 System.out 저장
+
+    @AfterEach
+    void restoreSystemOut() {
+        // 각 테스틑 이후 원래 System.out 복원
+        System.setOut(originalOut);
+    }
+
     @Test
     void 차_이동_내역_출력_테스트() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -32,7 +40,6 @@ public class OutputViewTest {
 
         OutputView.printCarMove(cars);
         assertEquals(expectedOutput, outputStream.toString());
-        System.setOut(System.out);
     }
 
     @Test
@@ -54,6 +61,5 @@ public class OutputViewTest {
 
         OutputView.printFinalWinners(cars);
         assertEquals(expectedOutput, outputStream.toString());
-        System.setOut(System.out);
     }
 }
