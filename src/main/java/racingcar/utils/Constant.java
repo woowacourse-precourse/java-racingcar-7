@@ -14,5 +14,8 @@ public class Constant {
     // 구분자
     public static final String DELIMITER = ",";
 
+    // 자동차 객체 초기값
+    public static final int CAR_SCORE_DEFAULT_VALUE = 0;
+
     private Constant() {}
 }
