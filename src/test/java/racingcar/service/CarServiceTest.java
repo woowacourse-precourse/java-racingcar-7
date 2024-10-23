@@ -28,4 +28,12 @@ class CarServiceTest {
                 () -> carService.addCar(duplicatedCarName, differentDistance));
     }
 
+    @Test
+    @DisplayName("최대 거리 자동차 목록 가져오기 테스트")
+    void givenBasicInput_whenGetCarsWithMaxDistance_thenCorrectResult() {
+        List<String> expected = List.of("b", "c");
+        List<String> result = carService.getCarsWithMaxDistance();
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
