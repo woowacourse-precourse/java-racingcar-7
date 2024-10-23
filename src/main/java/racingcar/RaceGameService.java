@@ -1,29 +1,37 @@
 package racingcar;
 
-import io.input.impl.InputConsole;
-import io.output.impl.OutputConsole;
+import io.input.Input;
+import io.output.Output;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RaceGame {
+public class RaceGameService {
+    private final Input input;
+    private final Output output;
+
+    public RaceGameService(Input input, Output output) {
+        this.input = input;
+        this.output = output;
+    }
+
     public void start() {
         try {
-            String carNamesInput = InputConsole.getCarNames();
+            String carNamesInput = input.getCarNames();
             Cars cars = createCars(carNamesInput);
 
-            int rounds = InputConsole.getRaceRounds();
-            OutputConsole.printStartMessage();
+            int rounds = input.getRaceRounds();
+            output.printStartMessage();
 
             for (int i = 0; i < rounds; i++) {
                 cars.moveAll();
-                OutputConsole.printRoundResult(cars);
+                output.printRoundResult(cars);
             }
 
             List<Car> winners = cars.getWinners();
-            OutputConsole.printWinners(winners);
-        } finally {
-
+            output.printWinners(winners);
+        } catch (IllegalArgumentException e) {
+            output.printErrorMessage(e.getMessage());
         }
     }
 
