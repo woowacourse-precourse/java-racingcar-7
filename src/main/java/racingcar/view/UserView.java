@@ -11,7 +11,7 @@ import java.util.List;
 public class UserView {
     private static final String RACING_START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String REPEAT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
-    private static final String RACING_RESULT_MESSAGE = "실행 결과";
+    private static final String RACING_RESULT_MESSAGE = "\n실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     private RacingCarController racingCarController;
@@ -25,9 +25,14 @@ public class UserView {
 
         List<Car> cars = getCarsList(input);
 
+        int repeatNumber = printRepeatNumber();
+
+        System.out.println(RACING_RESULT_MESSAGE);
+
+
     }
 
-    private String printStart(){
+    private String printStart() {
         System.out.println(RACING_START_MESSAGE);
 
         String input = Console.readLine();
@@ -37,6 +42,28 @@ public class UserView {
         }
 
         return input;
+    }
+
+    private int printRepeatNumber() {
+        System.out.println(REPEAT_NUMBER_MESSAGE);
+
+        return getValidRepeatNumber(Console.readLine());
+    }
+
+    private int getValidRepeatNumber(String repeatNumber){
+        if(repeatNumber == null || repeatNumber.isBlank()) {
+            throw new IllegalArgumentException(RacingCarErrorMessage.BLANK_REPEAT_NUMBER_ERROR.getMessage());
+        }
+
+        try {
+            int number = Integer.parseInt(repeatNumber);
+            if(number <= 0) {
+                throw new IllegalArgumentException(RacingCarErrorMessage.POSITIVE_REPEAT_NUMBER_ERROR.getMessage());
+            }
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(RacingCarErrorMessage.INVALID_REPEAT_NUMBER_ERROR.getMessage());
+        }
     }
 
     private List<Car> getCarsList(String input){
