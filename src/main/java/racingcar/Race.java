@@ -1,14 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
+    private final Integer rounds;
+    private final List<Car> cars;
 
-    private final int rounds;
-    private final List<Car> players = new ArrayList<>();
-
-    public Race(int rounds) {
+    public Race(final Integer rounds, final List<Car> cars) {
         this.rounds = rounds;
+        this.cars = cars;
     }
 }

@@ -24,7 +24,7 @@ public class Car implements Comparable<Car> {
         for (int i=0; i<this.distance; i++) {
             builder.append("-");
         }
-        return builder.append("\n").toString();
+        return builder.toString();
     }
 
     @Override
