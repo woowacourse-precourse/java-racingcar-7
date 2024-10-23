@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 public class Car {
     private String name;
@@ -21,5 +21,9 @@ public class Car {
 
     private boolean canCarMove(int moveNumber){
         return moveNumber >= 4;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }
