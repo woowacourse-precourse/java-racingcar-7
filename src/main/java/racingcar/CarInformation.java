@@ -7,7 +7,7 @@ public class CarInformation {
     public static LinkedHashMap<String, Integer> getCarInformation() {
         String carName = Input.inputCarName();
 
-        LinkedHashMap<String, Integer> carInformation = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> carNameAndScore = new LinkedHashMap<>();
         String[] names = carName.split(",");
 
         for (String name : names) {
@@ -17,10 +17,10 @@ public class CarInformation {
             if (!name.matches("^[a-zA-Z]+$")) {
                 throw new IllegalArgumentException("자동차 이름은 영문으로 입력해주세요.");
             }
-            carInformation.put(name, 0);
+            carNameAndScore.put(name, 0);
 
         }
 
-        return carInformation;
+        return carNameAndScore;
     }
 }
