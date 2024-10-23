@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,20 @@ class RacingServiceTest {
     void 랜덤_값_테스트() {
         int result = racingService.createRandomValue();
         assertThat(result).isBetween(0, 9);
+    }
+
+    @Test
+    @DisplayName("전진 조건에 따른 이동 거리가 맞는지 확인")
+    void 이동_위치_테스트1() {
+        int result = racingService.decideMovement(5);
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("정지 조건에 따른 이동 거리가 맞는지 확인")
+    void 이동_위치_테스트2() {
+        int result = racingService.decideMovement(1);
+        assertThat(result).isEqualTo(0);
     }
 }
 
