@@ -8,5 +8,7 @@ public class Application {
         InputView inputView = new InputView();
         String[] carNames = inputView.inputCarNames().split(",");
         int raceRound = inputView.inputRaceRound();
+
+
     }
 }

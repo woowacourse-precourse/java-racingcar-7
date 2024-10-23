@@ -4,7 +4,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
+    private final String name;
     private int distance;
+
+    public Car(String name) {
+        String trimName = name.trim();
+        validateName(trimName);
+        this.name = trimName;
+    }
+
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다.");
+        }
+    }
 
     public void move() {
         if (canMove()) {
