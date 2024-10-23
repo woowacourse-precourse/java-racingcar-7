@@ -5,7 +5,11 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = formatCarName(name);
+    }
+
+    private String formatCarName(String name) {
+        return name.trim();
     }
 
     public void move() {
@@ -19,5 +23,4 @@ public class Car {
     public int getPosition() {
         return position;
     }
-
 }
