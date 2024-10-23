@@ -9,6 +9,8 @@
         - 예외는 IllegalArgumentException으로 관리
     - 시도 횟수 입력
 
+- 자동차 이름 바탕으로 자동차 객체 및 리스트 생성
+
 - 경주 진행
     - 자동차마다 0 ~ 9 사이 무작위 값 추출 후 4 이상이면 전진 - Randoms.pickNumberInRange 활용
 
@@ -36,6 +38,9 @@
 
 - controller
     - RacingGame : 자동차 경주 게임을 실행
+
+- util
+    - StringUtil : split, trim, 구분자 아닐 때 예외 처리를 담당
 
 ## 프로그래밍 요구사항
 
