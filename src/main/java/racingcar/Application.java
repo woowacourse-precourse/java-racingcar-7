@@ -1,13 +1,14 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        String[] names;
+        Map<String, Integer> race = new HashMap<String, Integer>();
         try {
-            names = getNames(input);
+            getNames(race, input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
@@ -18,9 +19,12 @@ public class Application {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
+        for(int i=0; i<num; i++) {
+
+        }
     }
 
-    public static String[] getNames(String input) throws IllegalArgumentException {
+    public static void getNames(Map<String, Integer> race, String input) throws IllegalArgumentException {
         if(input.isEmpty() || input.isBlank()) {
             throw new IllegalArgumentException("빈 문자열을 입력할 수 없습니다.");
         }
@@ -34,8 +38,8 @@ public class Application {
             } else if(name.length() > 5) {
                 throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
             }
+            race.put(name, 0);
         }
-        return names;
     }
 
     public static int parseNumber(String input) throws IllegalArgumentException {
