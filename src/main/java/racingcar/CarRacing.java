@@ -11,7 +11,9 @@ public class CarRacing {
             for (int j = 0; j < racingCarTrace.size(); j++) {
                 var racingCar = racingCarTrace.getRacingCar(j);
                 var randomNumber = Randoms.pickNumberInRange(0, 9);
-
+                if (randomNumber >= 4) {
+                    racingCarTrace.forward(racingCar);
+                }
             }
         }
     }
