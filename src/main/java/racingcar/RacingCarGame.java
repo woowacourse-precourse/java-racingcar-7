@@ -11,19 +11,31 @@ import racingcar.io.RacingCarIOHandler;
 public class RacingCarGame {
 
     private final RacingCarIOHandler ioHandler = new RacingCarIOHandler();
-    private List<RacingCar> racingCars = new ArrayList<>();
+
     public void run(){
         // 입력에 대한 검증 필요
         String carNamesString = ioHandler.askCarNames();
         String roundString = ioHandler.askRound();
 
-
         if (carNamesString == null || roundString == null) {
             throw new IllegalArgumentException();
         }
 
+        List<String> carNames = extractCarNames(carNamesString);
+        int round = convertToRound(roundString);
+
+        ioHandler.showExecutionResultMessage();
+        RacingCars racingCars = RacingCars.fromNames(carNames);
+        playRound(round, racingCars);
+
+        List<String> winnersName = racingCars.getWinnersName();
+        ioHandler.showWinners(winnersName);
+    }
+
+    private List<String> extractCarNames(String carNamesString) {
         // 자동차 이름에 대한 검증 로직
         List<String> carNames = Arrays.asList(carNamesString.split(","));
+
         carNames.stream()
                 .filter(carName -> carName.isEmpty() || carName.length() >= 5)
                 .findAny()
@@ -31,42 +43,24 @@ public class RacingCarGame {
                     throw new IllegalArgumentException();
                 });
 
-        // 시도할 횟수에 대한 검증 로직
-        int round = 0;
+        return carNames;
+    }
 
-        try {
-            round = Integer.parseInt(roundString);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+    private int convertToRound(String roundString) {
+        // 시도할 횟수에 대한 검증 로직
+        int round = Integer.parseInt(roundString);
 
         if (round <= 0) {
             throw new IllegalArgumentException();
         }
 
+        return round;
+    }
 
-        for (String s : carNames) {
-            racingCars.add(new RacingCar(s, 0));
-        }
-
-
+    private void playRound(int round, RacingCars racingCars) {
         for (int i = 0; i < round; i++) {
-            for (int j = 0; j < racingCars.size(); j++) {
-                int pickedNumber = Randoms.pickNumberInRange(0, 9);
-                if (pickedNumber >= 4) {
-                    racingCars.get(j).increaseMoveCount();
-                }
-                ioHandler.showRacingCarsProgress(racingCars);
-            }
+            racingCars.playOneRound();
+            ioHandler.showRacingCarsProgress(racingCars);
         }
-        int max = racingCars.stream()
-                .mapToInt(RacingCar::getMoveCount)
-                .max().orElseThrow(() -> new RuntimeException("최대값을 찾을 수 없습니다."));
-        List<String> winnersName = new ArrayList<>(racingCars.stream()
-                .filter(racingCar -> racingCar.isWinner(max))
-                .map(racingCar -> racingCar.getName())
-                .toList());
-        ioHandler.showWinners(winnersName);
-
     }
 }

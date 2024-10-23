@@ -3,7 +3,7 @@ package racingcar;
 import java.util.SplittableRandom;
 
 public class RacingCar {
-    private String name;
+    private final String name;
     private int moveCount;
 
     public RacingCar(String name, int moveCount) {
@@ -13,6 +13,10 @@ public class RacingCar {
 
     public void increaseMoveCount() {
         moveCount += 1;
+    }
+
+    public boolean isWinner(int maxMoveCount) {
+        return moveCount == maxMoveCount;
     }
 
     public String getName() {
@@ -25,9 +29,5 @@ public class RacingCar {
 
     public String getProgress() {
         return "-".repeat(moveCount);
-    }
-
-    public boolean isWinner(int max) {
-        return moveCount == max;
     }
 }

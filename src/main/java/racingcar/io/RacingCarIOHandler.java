@@ -3,6 +3,7 @@ package racingcar.io;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.RacingCar;
+import racingcar.RacingCars;
 
 public class RacingCarIOHandler {
 
@@ -18,12 +19,15 @@ public class RacingCarIOHandler {
         return roundCountString;
     }
 
-    public void showRacingCarsProgress(List<RacingCar> racingCars) {
-        racingCars.stream()
-                .forEach(racingCar -> System.out.printf("%s : %s%n",
-                        racingCar.getName(), racingCar.getProgress()));
-        System.out.println();
+    public void showExecutionResultMessage() {
+        System.out.println("\n실행결과");
     }
+
+    public void showRacingCarsProgress(RacingCars racingCars) {
+        String racingCarsProgress = racingCars.getRacingCarsProgress();
+        System.out.println(racingCarsProgress);
+    }
+
     public void showWinners(List<String> winners) {
         String result = String.join(", ", winners);
         System.out.printf("최종 우승자 : %s%n", result);
