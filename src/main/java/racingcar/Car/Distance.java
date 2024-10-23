@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.Car;
 
 public class Distance {
     private static final int INITIAL_POSITION = 0;

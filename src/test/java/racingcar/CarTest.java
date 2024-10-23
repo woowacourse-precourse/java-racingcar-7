@@ -1,10 +1,10 @@
 package racingcar;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.Car.Car;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -112,7 +112,19 @@ class CarTest {
 
         // then
         assertThat(car.provideCurrentPosition()).isEqualTo(0);
+    }
+    @Test
+    void provideCurrentPosition_이동한후_현위치반환함(){
+        // given
+        String name = "test";
+        final int stepCount = 10;
 
+        // when
+        Car car = Car.createNamedCar(name);
+        Car movedCar = car.increaseDistanceBy(stepCount);
+
+        // then
+        assertThat(movedCar.provideCurrentPosition()).isEqualTo(stepCount);
     }
 
 
