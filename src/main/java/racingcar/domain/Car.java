@@ -2,11 +2,13 @@ package racingcar.domain;
 
 public class Car {
 
-    public String carName;
-    public String carMove;
+    private final static Integer START = 0;
+    public final String carName;
+    public final Integer carPosition;
 
-    public Car(String carName, String carMove) {
+    public Car(String carName) {
         this.carName = carName;
-        this.carMove = carMove;
+        this.carPosition = START;
     }
+
 }
