@@ -10,7 +10,7 @@
 >
 >
 > 2. 프로그램의 메인 로직 구현은 별도의 클래스(`CarRace`)에서 진행한다.
->    1. `race(String cars, int moveAttempts)` : 자동차 경주를 진행하는 메서드
+>    1. `start(String cars, int moveAttempts)` : 자동차 경주를 진행하는 메서드
 >    2. `printFinalWinnner()` : 최종 우승자를 출력하는 메서드
 >
 >
