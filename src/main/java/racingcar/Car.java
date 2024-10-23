@@ -3,11 +3,13 @@ package racingcar;
 public class Car {
 
     private final String name;
+    private int position;
 
     public Car(final String name) {
         validateNameIsBlank(name);
         validateNameLength(name);
         this.name = name;
+        this.position = 0;
     }
 
     private void validateNameIsBlank(final String name) {
