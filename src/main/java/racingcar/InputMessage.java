@@ -12,6 +12,11 @@ public class InputMessage {
         return Console.readLine();
     }
 
+    public String inputNumberOfTries(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
+    }
+
     public String[] splitCarName(String inputCarName){
         String[] carNames = inputCarName.split(",");
         validateInput(carNames);
