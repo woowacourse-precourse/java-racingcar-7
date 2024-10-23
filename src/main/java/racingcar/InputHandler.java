@@ -1,6 +1,7 @@
 package racingcar;
 
 import static racingcar.constants.Constraints.CAR_NAME_DELIMITER;
+import static racingcar.constants.ErrorMessages.NUMBER_FORMAT_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -29,4 +30,15 @@ public class InputHandler {
                 });
     }
 
+    public static int requestTotalRounds(){
+        return convertTotalRoundToInt(Console.readLine());
+    }
+
+    private static int convertTotalRoundToInt(String input) {
+        try{
+            return Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            throw new NumberFormatException(NUMBER_FORMAT_ERROR_MESSAGE);
+        }
+    }
 }

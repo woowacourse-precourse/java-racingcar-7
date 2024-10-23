@@ -1,6 +1,8 @@
 package racingcar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.constants.ErrorMessages.NUMBER_FORMAT_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -57,5 +59,34 @@ class InputHandlerTest {
 
         //then
         assertEquals(expectedCarNames, carNames);
+    }
+
+    @DisplayName("사용자가 입력한 시도 횟수가 정상적으로 반환")
+    @Test
+    void requestTotalRounds_Return_Correct_Total_Rounds() {
+        //given
+        String input = "4\n";
+        setInput(input);
+
+        //when
+        int totalRounds = InputHandler.requestTotalRounds();
+
+        //then
+        assertEquals(4, totalRounds);
+    }
+
+
+    @DisplayName("입력한 시도 횟수가 숫자가 아니면 예외처리")
+    @Test
+    void requestTotalRounds_number_format_error() {
+        //given
+        String input = "a\n";
+        setInput(input);
+
+        //when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> InputHandler.requestTotalRounds());
+
+        //then
+        assertEquals(NUMBER_FORMAT_ERROR_MESSAGE, exception.getMessage());
     }
 }
