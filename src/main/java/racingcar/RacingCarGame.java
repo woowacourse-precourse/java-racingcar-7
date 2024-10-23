@@ -15,5 +15,6 @@ public class RacingCarGame {
 
     public void run() {
         outputView.requestCarNames();
+        inputView.getCarNames();
     }
 }

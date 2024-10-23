@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.car.Cars;
 
 /**
  * InputView 검증: 빈 문자열, null, 구분자 포함 여부
@@ -10,12 +11,13 @@ public class InputView {
 
     private static final String SEPARATOR = ",";
 
-    public List<String> getCarNames() {
-        String input = Console.readLine();
+    public Cars getCarNames() {
+        String input = Console.readLine().trim();
 
         validateBlankInput(input);
         validateMultipleCars(input);
-        return List.of(input);
+
+        return new Cars(List.of(input.split(SEPARATOR)));
     }
 
     private void validateBlankInput(String input) {
