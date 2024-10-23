@@ -5,12 +5,17 @@ import policy.RacingPolicy;
 public class Car implements Vehicle{
     private final String carName;
     private final RacingPolicy racingPolicy;
-    private final Long moveForwardCount;
+    private Long moveForwardCount;
 
     public Car(String carName, RacingPolicy racingPolicy, Long moveForwardCount) {
         this.carName = carName;
         this.racingPolicy = racingPolicy;
         this.moveForwardCount = moveForwardCount;
+    }
+    public Car(String carName, RacingPolicy racingPolicy) {
+        this.carName = carName;
+        this.racingPolicy = racingPolicy;
+        this.moveForwardCount = 0L;
     }
 
     @Override

@@ -4,8 +4,6 @@ import common.BeanFactory;
 import common.RacingCarBeanFactory;
 import input.OriginalInput;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -77,12 +75,6 @@ class RacingControllerTest {
         carList.add(new Car("dodo", new RacingCarPolicyImpl(), Long.parseLong("2")));
         carList.add(new Car("lala", new RacingCarPolicyImpl(), Long.parseLong("3")));
         carList.add(new Car("dada", new RacingCarPolicyImpl(), Long.parseLong("1")));
-
-        System.out.println();
-
-        carList.sort(Comparator.comparing(Car::getMoveForwardCount).reversed());
-
-        System.out.println(Arrays.toString(carList.toArray()));
         //when
 
         //then

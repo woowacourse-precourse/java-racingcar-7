@@ -1,13 +1,32 @@
 package repository;
 
 import java.util.Map;
-import vehicle.Car;
 
-public class CarRepositoryImpl implements VehicleRepository{
-    private final Map<String, Car> carRepository;
+public class CarRepositoryImpl implements Repository{
+    private final Map<String, Long> carRepository;
 
-
-    public CarRepositoryImpl(Map<String, Car> carRepository) {
+    public CarRepositoryImpl(Map<String, Long> carRepository) {
         this.carRepository = carRepository;
     }
+
+    /**
+     * 중복이름 검사
+     * @param name : 자동차 이름
+     * @return : 중복데이터가 존재하면 true
+     */
+    @Override
+    public Boolean isDuplicateName(String name){
+        return carRepository.containsKey(name);
+    }
+
+    @Override
+    public void save(String name, Long moveForwardCount) {
+        carRepository.put(name, moveForwardCount);
+    }
+
+    @Override
+    public Long find(String name) {
+        return carRepository.get(name);
+    }
+
 }

@@ -44,9 +44,7 @@ public class RacingController {
 
     public Long convertTryCount(String tryCount){
         //TODO : Long 범위 벗어나면 예외처리
-
         return Long.parseLong(tryCount);
     }
-
 
 }

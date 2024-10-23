@@ -5,13 +5,12 @@ import java.util.HashMap;
 import policy.RacingCarPolicyImpl;
 import policy.RacingPolicy;
 import repository.CarRepositoryImpl;
-import repository.VehicleRepository;
+import repository.Repository;
 import service.RacingCarServiceImpl;
 import service.RacingService;
-import vehicle.Car;
+import vehicle.Vehicle;
 
 public class RacingCarBeanFactory implements BeanFactory {
-
 
     @Override
     public RacingPolicy provideRacingPolicy() {
@@ -19,8 +18,8 @@ public class RacingCarBeanFactory implements BeanFactory {
     }
 
     @Override
-    public VehicleRepository provideVehicleRepository() {
-        return new CarRepositoryImpl(new HashMap<String,Car>());
+    public Repository provideVehicleRepository() {
+        return new CarRepositoryImpl(new HashMap<String, Long>());
     }
 
     @Override

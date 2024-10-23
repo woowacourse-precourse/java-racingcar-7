@@ -2,15 +2,15 @@ package service;
 
 import input.ValidatedInputData;
 import policy.RacingPolicy;
-import repository.VehicleRepository;
+import repository.Repository;
 
 public class RacingCarServiceImpl implements RacingService {
     private final ValidatedInputData validatedInputData;
     private final RacingPolicy racingPolicy;
-    private final VehicleRepository repository;
+    private final Repository repository;
 
     public RacingCarServiceImpl(ValidatedInputData validatedInputData, RacingPolicy racingPolicy,
-                                VehicleRepository repository) {
+                                Repository repository) {
         this.validatedInputData = validatedInputData;
         this.racingPolicy = racingPolicy;
         this.repository = repository;
