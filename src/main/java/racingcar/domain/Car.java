@@ -25,6 +25,13 @@ public class Car {
         }
     }
 
+    public Car move(int random) {
+        if (random >= 4) {
+            return new Car(name, position + 1);
+        }
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object object) {

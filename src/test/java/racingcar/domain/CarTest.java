@@ -17,4 +17,15 @@ public class CarTest {
                 .withMessageMatching("자동차 이름은 5자 이하여야 합니다");
     }
 
+    @Test
+    void 전진() {
+        Car car = new Car("pobi", 0);
+        assertThat(car.move(4)).isEqualTo(new Car("pobi", 1));
+    }
+
+    @Test
+    void 정지() {
+        Car car = new Car("pobi", 0);
+        assertThat(car.move(3)).isEqualTo(new Car("pobi", 0));
+    }
 }
