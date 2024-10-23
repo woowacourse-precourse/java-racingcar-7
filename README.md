@@ -126,10 +126,10 @@
 
 ### 7. Race
 
-| Method        | Parameter | Return Type | Implementation |
-|---------------|-----------|-------------|----------------|
-| isPlaying     | -         | boolean     |                |
-| moveToNextLap | -         | void        |                |
+| Method        | Parameter | Return Type | Exception                 | Implementation |
+|---------------|-----------|-------------|---------------------------|----------------|
+| isUnderway    | -         | boolean     |                           | Done ✅         |
+| moveToNextLap | -         | void        | ShouldNotBeMinusException | Done ✅         |
 
 <br>
 

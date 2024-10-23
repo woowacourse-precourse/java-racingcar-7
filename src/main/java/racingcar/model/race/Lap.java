@@ -21,8 +21,12 @@ public class Lap {
         return new Lap(value);
     }
 
-    public void minus(final int value) {
-        this.value = this.value.subtract(BigInteger.valueOf(value));
+    public boolean hasRemaining() {
+        return !this.equals(ZERO);
+    }
+
+    public void minus(final String value) {
+        this.value = this.value.subtract(new BigInteger(value));
     }
 
     private static void validateIsNull(final BigInteger value) {
