@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 public class Round {
     private final LinkedHashMap<String, Integer> state;
 
-    public Round(LinkedHashMap<String, Integer> state) {
+    private Round(LinkedHashMap<String, Integer> state) {
         this.state = state;
     }
 
