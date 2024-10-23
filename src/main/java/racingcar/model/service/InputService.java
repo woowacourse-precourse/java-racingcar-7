@@ -47,11 +47,11 @@ public class InputService {
         return carList;
     }
 
-    private List<String> splitCarValue(String carValue){
+    public List<String> splitCarValue(String carValue){
         return Arrays.asList(carValue.split(","));
     }
 
-    private boolean isNumeric(String countValue){
+    public boolean isNumeric(String countValue){
         try{
             Integer.parseInt(countValue);
             return true;

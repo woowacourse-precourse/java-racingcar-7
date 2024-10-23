@@ -36,7 +36,7 @@ public class RacingService {
 
     }
 
-    private void playAttemptCount(List<Car> cars){
+    public void playAttemptCount(List<Car> cars){
         for (Car car : cars) {
             if(isPossibleMove()){
                 car.move();
