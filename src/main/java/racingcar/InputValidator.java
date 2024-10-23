@@ -5,13 +5,10 @@ import static racingcar.ErrorCode.*;
 class InputValidator {
 
     private final static String COMMAS = ",,";
-    private final static int MAXIMUM_CAR_NAME_LENGTH_CRITERION = 5;
     private final static int MINIMUM_ROUND_CRITERION = 1;
 
     public static void validateCarNames(final String carNames) {
         validateNoConsecutiveCommas(carNames);
-        validateCarNameLength(carNames);
-        validateCarNameNotEmpty(carNames);
     }
 
     public static void validateRound(final String rounds) {
@@ -37,18 +34,6 @@ class InputValidator {
     private static void validateRoundNotEmpty(String rounds) {
         if (rounds.isEmpty()) {
             throw new IllegalArgumentException(ROUNDS_EMPTY.getMessage());
-        }
-    }
-
-    private static void validateCarNameNotEmpty(final String carNames) {
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException(CAR_NAME_EMPTY.getMessage());
-        }
-    }
-
-    private static void validateCarNameLength(final String carNames) {
-        if (carNames.length() > MAXIMUM_CAR_NAME_LENGTH_CRITERION) {
-            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEEDED.getMessage());
         }
     }
 

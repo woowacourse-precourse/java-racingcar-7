@@ -21,28 +21,6 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 자동차_이름이_5자를_초과하면_예외를_발생한다() {
-        // given
-        String carNames = "abcdef";
-
-        // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
-    }
-
-    @Test
-    void 자동차_이름이_비어있다면_예외를_발생한다() {
-        // given
-        String carNames = "";
-
-        // when & then
-        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(carNames))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage(CAR_NAME_EMPTY.getMessage());
-    }
-
-    @Test
     void 자동차_이름이_1자_이상_5자_이하라면_예외를_발생하지_않는다() {
         // given
         String carNames = "a,b,c";

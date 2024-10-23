@@ -1,9 +1,13 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.ErrorCode.CAR_NAME_EMPTY;
+import static racingcar.ErrorCode.CAR_NAME_LENGTH_EXCEEDED;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Car;
 
 @DisplayName("Car 클래스 테스트")
 public class CarTest {
@@ -30,5 +34,27 @@ public class CarTest {
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 자동차_이름이_5자를_초과하면_예외를_발생한다() {
+        // given
+        String carNames = "abcdef";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> new Car (carNames))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
+    }
+
+    @Test
+    void 자동차_이름이_비어있다면_예외를_발생한다() {
+        // given
+        String carNames = "";
+
+        // when & then
+        Assertions.assertThatThrownBy(() -> new Car(carNames))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_EMPTY.getMessage());
     }
 }
