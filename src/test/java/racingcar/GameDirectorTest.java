@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameDirectorTest {
     @Test
@@ -13,5 +12,6 @@ class GameDirectorTest {
         GameDirector gameDirector = new GameDirector(carNames,count);
         //when //then
         gameDirector.run();
+        gameDirector.printWinner();
     }
 }
