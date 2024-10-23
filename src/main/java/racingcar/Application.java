@@ -22,11 +22,16 @@ public class Application {
         List<String> carNames = Arrays.asList(carInput.split(","));
         List<Car> cars = carNames.stream().map(Car::new).toList();
 
-        for (Car car : cars) {
-            boolean isMovable = car.isMovable();
-            if (isMovable) {
-                car.moveForward();
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < Integer.parseInt(roundInput); i++) {
+            for (Car car : cars) {
+                boolean isMovable = car.isMovable();
+                if (isMovable) {
+                    car.moveForward();
+                }
             }
+            cars.forEach(Car::printMoves);
+            System.out.println();
         }
     }
 }

@@ -17,6 +17,9 @@ public class Car {
 
     public void moveForward() {
         this.moves += 1;
-        System.out.println(this.moves);
+    }
+
+    public void printMoves() {
+        System.out.println(this.name + " : " + "-".repeat(this.moves));
     }
 }
