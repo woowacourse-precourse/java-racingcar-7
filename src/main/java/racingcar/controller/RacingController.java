@@ -29,6 +29,7 @@ public class RacingController {
 
         for (int i = 0; i < count; i++) {
             raceCars(cars);
+            printCarsStatus(cars);
         }
 
 
@@ -69,5 +70,12 @@ public class RacingController {
         for (Car car : cars) {
             car.race();
         }
+    }
+
+    private void printCarsStatus(List<Car> cars) {
+        for (Car car : cars) {
+            outputView.printCarStatus(car.getName(), car.getStatus());
+        }
+        outputView.printNewLine();
     }
 }

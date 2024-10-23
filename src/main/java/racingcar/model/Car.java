@@ -12,6 +12,14 @@ public class Car {
         this.status = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
     public void race() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
