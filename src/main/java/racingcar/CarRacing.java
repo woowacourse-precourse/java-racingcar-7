@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RacingCar {
+public class CarRacing {
 
     public List<String> splitCarNamesByComma(String carNames) {
         return new ArrayList<>(Arrays.asList(carNames.split(",")));

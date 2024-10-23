@@ -5,9 +5,9 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class RacingCarTest {
+class CarRacingTest {
 
-    private static final RacingCar racingCar = new RacingCar();
+    private static final CarRacing CAR_RACING = new CarRacing();
 
     @Test
     public void 자동차이름목록_쉼표기준분리_테스트() throws Exception {
@@ -21,7 +21,7 @@ class RacingCarTest {
         int expectedSize = expectedCarList.size();
 
         //When
-        List<String> carList = racingCar.splitCarNamesByComma(carNames);
+        List<String> carList = CAR_RACING.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
@@ -35,7 +35,7 @@ class RacingCarTest {
         int expectedSize = 2;
 
         //When
-        List<String> carList = racingCar.splitCarNamesByComma(carNames);
+        List<String> carList = CAR_RACING.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
@@ -47,7 +47,7 @@ class RacingCarTest {
         String carName = "pobi";
 
         //When, Then
-        Assertions.assertThatCode(() -> racingCar.validateCarName(carName))
+        Assertions.assertThatCode(() -> CAR_RACING.validateCarName(carName))
                 .doesNotThrowAnyException();
     }
 
@@ -57,7 +57,7 @@ class RacingCarTest {
         String carName = "woni:jun";
 
         //When, Then
-        Assertions.assertThatThrownBy(() -> racingCar.validateCarName(carName))
+        Assertions.assertThatThrownBy(() -> CAR_RACING.validateCarName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,7 +67,7 @@ class RacingCarTest {
         String carName = "";
 
         //When, Then
-        Assertions.assertThatThrownBy(() -> racingCar.validateCarName(carName))
+        Assertions.assertThatThrownBy(() -> CAR_RACING.validateCarName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -83,12 +83,12 @@ class RacingCarTest {
         int expectedSize = expectedCarList.size();
 
         //When
-        List<String> carList = racingCar.splitCarNamesByComma(carNames);
+        List<String> carList = CAR_RACING.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
         for (String carName : carList) {
-            Assertions.assertThatCode(() -> racingCar.validateCarName(carName))
+            Assertions.assertThatCode(() -> CAR_RACING.validateCarName(carName))
                     .doesNotThrowAnyException();
         }
     }
@@ -100,13 +100,13 @@ class RacingCarTest {
         int expectedSize = 2;
 
         //When
-        List<String> carList = racingCar.splitCarNamesByComma(carNames);
+        List<String> carList = CAR_RACING.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
-        Assertions.assertThatCode(() -> racingCar.validateCarName(carList.get(0)))
+        Assertions.assertThatCode(() -> CAR_RACING.validateCarName(carList.get(0)))
                 .doesNotThrowAnyException();
-        Assertions.assertThatThrownBy(() -> racingCar.validateCarName(carList.get(1)))
+        Assertions.assertThatThrownBy(() -> CAR_RACING.validateCarName(carList.get(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -122,12 +122,12 @@ class RacingCarTest {
         int expectedSize = expectedCarList.size();
 
         //When
-        List<String> carList = racingCar.splitCarNamesByComma(carNames);
+        List<String> carList = CAR_RACING.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
         for (String carName : carList) {
-            Assertions.assertThatCode(() -> racingCar.validateCarName(carName))
+            Assertions.assertThatCode(() -> CAR_RACING.validateCarName(carName))
                     .doesNotThrowAnyException();
         }
     }
