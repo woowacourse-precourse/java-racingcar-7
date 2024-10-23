@@ -1,8 +1,10 @@
 package racingcar;
 
 import java.util.HashMap;
-import camp.nextstep.edu.missionutils.Console; // readLine()
-import camp.nextstep.edu.missionutils.Randoms; //pickNumberInRange()
+import java.util.Map;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,14 +22,25 @@ class Racingcar {
     int moveCnt;
 
     void inputCar(final String text) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         for(final String carName : text.split(",")) {
             carLocation.put(carName, 0);
         }
     }
 
     void inputCnt(final int cnt) {
-        System.out.println("시도할 횟수는 몇 회인가요?");
         moveCnt = cnt;
     }
+
+    void race(HashMap<String, Integer> carLocation) {
+        for(Map.Entry<String, Integer> curCar : carLocation.entrySet()) {
+            curCar.setValue(curCar.getValue() + pickNumberInRange(0, 9)); // 10까지 범위인지를 모르겠음.
+        }
+    }
+
+    void totalRace(final int moveCnt) {
+        for (int i = 0; i < moveCnt; i++) {
+            race(carLocation);
+        }
+    }
+
 }
