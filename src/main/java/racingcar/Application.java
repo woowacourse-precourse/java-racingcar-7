@@ -15,6 +15,9 @@ public class Application {
         int times = Integer.parseInt(Console.readLine());
         HashMap<String, String> scoreMap = new HashMap<>();
         for (String name:StrArr_Name) {
+            if (name.length() > 5){
+                throw new IllegalArgumentException();
+            }
             scoreMap.put(name, "");
         }
         for (int i = 0; i < times; i++) {
