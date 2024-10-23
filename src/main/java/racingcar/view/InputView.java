@@ -16,6 +16,12 @@ public class InputView {
         return Convertor.toList(splitCarNames);
     }
 
+    public int inputRacingCount() {
+        String racingCount = Console.readLine();
+
+        return Integer.parseInt(racingCount);
+    }
+
     private void validateCarNames(String carNames) {
         InputValidation inputValidation = new InputValidation();
 

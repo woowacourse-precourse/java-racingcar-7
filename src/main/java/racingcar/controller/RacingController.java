@@ -25,6 +25,9 @@ public class RacingController {
         List<String> carNames = inputView.inputCarNames();
 
         List<Car> cars = creatCars(carNames);
+
+        outputView.printInputRacingCount();
+        int racingCount = inputView.inputRacingCount();
     }
 
     private List<Car> creatCars(List<String> carNames) {
