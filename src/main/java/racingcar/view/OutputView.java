@@ -8,6 +8,7 @@ import java.util.List;
 public class OutputView {
 
     public void outputViewResult(List<RacingResult> racingResults){
+        System.out.println("실행 결과 : ");
         for (RacingResult racingResult : racingResults) {
             printRacingResultOnce(racingResult);
             System.out.println();
