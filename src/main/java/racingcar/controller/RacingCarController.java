@@ -20,7 +20,7 @@ public class RacingCarController {
         String readNumberOfAttempts = getNumberOfAttempts();
         racingCarService = new RacingCarService(readCarNames,readNumberOfAttempts);
         outputView.printResultMessage();
-        racingCarService.play();
+        racingCarService.play(outputView);
     }
 
     private String getNumberOfAttempts() {

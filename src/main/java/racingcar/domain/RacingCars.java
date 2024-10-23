@@ -31,4 +31,13 @@ public class RacingCars {
             car.randomMove();
         }
     }
+
+    public String getStates() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Car car : carList) {
+            stringBuilder.append(car.getState());
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }

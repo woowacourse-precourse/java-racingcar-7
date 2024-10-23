@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.RacingCars;
+import racingcar.view.OutputView;
 
 public class RacingCarService {
     private final RacingCars racingCars;
@@ -12,10 +13,11 @@ public class RacingCarService {
         numberOfAttempts = new NumberOfAttempts(readNumberOfAttempts);
     }
 
-    public void play() {
+    public void play(OutputView outputView) {
         int count = this.numberOfAttempts.getNumberOfAttempts();
         for (int i = 0; i < count; i++) {
             racingCars.move();
+            outputView.printRacingCarsState(racingCars);
         }
     }
 }

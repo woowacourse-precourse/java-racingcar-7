@@ -36,4 +36,8 @@ public class Car {
             this.position += CAR_SPEED;
         }
     }
+
+    public String getState() {
+        return carName + " : " + "-".repeat(Math.max(0, position));
+    }
 }
