@@ -11,6 +11,7 @@
       - 이름이 0 또는 5자 초과할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 2. 자동차 객체 생성하여 자동차 객체 리스트에 저장
 3. 시도할 횟수 입력 (= 게임 진행 횟수 )
+    - 숫자가 아닐 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료
 <hr>
 
 ### 자동차 경주 게임
@@ -37,6 +38,7 @@
  - splitInputValue() : 입력받은 문자열 쉼표(,) 기준으로 분리 메소드
  - createCars() : 자동차 객체 생성 및 자동차 객체 리스트에 생성한 객체 저장 메소드
  - start() : 자동차 경주 게임 실행 메소드
+ - startGames() : 게임 횟수에 맞게 게임 객체 생성 및 실행
  - printResult() : 게임 후 전진한 횟수 출력 메소드
  - findWinner() : 우승자 찾기 메소드
  - printWinner() : 우승자 출력 메소드
@@ -59,6 +61,7 @@
 
 `ErrorValidator.class` : 조건 확인 및 에러 처리 클래스
  - carName() : 자동차 이름이 1~5자인지 판단 메소드 -> 조건에 부합하지 않을 경우 에러 발생
+ - gameCount() : 게임 횟수를 정수로 형 병환 검증 메소드 
 <br>
 
 `Contants.class` : 상수들을 모아서 관리하는 클래스
