@@ -1,5 +1,7 @@
 package racingcar.exception;
 
+import java.util.List;
+
 public class Validator {
     public static long isNumeric(String tryNumberInput) {
         long tryNumber;
@@ -17,5 +19,17 @@ public class Validator {
             throw new IllegalArgumentException(ErrorMessage.IS_BLANK);
         }
         return carNameInput;
+    }
+
+    public static void overFiveChars(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(ErrorMessage.OVER_FIVE_WORD);
+        }
+    }
+
+    public static void isDuplicated(List<String> carNameList) {
+        if (carNameList.size() != carNameList.stream().distinct().count()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_DUPLICATED);
+        }
     }
 }

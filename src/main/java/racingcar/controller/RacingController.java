@@ -10,6 +10,6 @@ public class RacingController {
     private static final RacingService racingService = new RacingService();
 
     public RacingController() {
-        racingService.start(inputView.getCarName(), inputView.getTryNumber());
+        racingService.start(inputView.getCarNameList(), inputView.getTryNumber());
     }
 }
