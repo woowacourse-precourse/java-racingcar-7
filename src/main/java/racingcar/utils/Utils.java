@@ -1,6 +1,18 @@
 package racingcar.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Utils {
+
+    private static final Pattern pattern = Pattern.compile("^[a-z0-9]+(,[a-z0-9]+)*$");
+
+    public static void validateNames(String input) {
+        Matcher matcher = pattern.matcher(input);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("[ERROR] 입력 형식에 맞지 않습니다. 입력 형식 예시: `pobi , woni, jun `");
+        }
+    }
 
     public static int parseNumber(String input) {
         try {
