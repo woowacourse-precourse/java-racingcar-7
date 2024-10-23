@@ -3,7 +3,7 @@ package racingcar.view;
 import racingcar.model.Cars;
 
 public class OutputView {
-    private static final String GAME_MESSAGE = "실행 결과";
+    public static final String GAME_MESSAGE = "실행 결과";
     private static final String WINNER_MESSAGE = "최종 우승자";
     private static OutputView instance;
 
@@ -19,10 +19,10 @@ public class OutputView {
     }
 
     public void printGameResult(Cars cars) {
-        printMessage(GAME_MESSAGE);
         cars.getCarList().forEach(
-                car -> System.out.println(car.getName() + " : " + '-' * car.getDistance())
-        );
+                car -> System.out.println(car.getName() + " : " + "-".repeat(car.getDistance())
+                ));
+        printMessage("");
     }
 
     public void printWinner() {

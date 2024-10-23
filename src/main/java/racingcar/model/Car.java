@@ -16,4 +16,10 @@ public class Car {
     public Integer getDistance() {
         return distance;
     }
+
+    public void increaseDistance(Integer random) {
+        if (random >= 4) {
+            this.distance++;
+        }
+    }
 }
