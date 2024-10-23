@@ -47,7 +47,10 @@ public class Application {
         }
 
         final int playTimes = Integer.parseInt(playTimesInput);
-
-        final int randomNumber = Randoms.pickNumberInRange(0, 9);
+        for (int i = 0; i < playTimes; i++) {
+            for (int j = 0; j < cars.size(); j++) {
+                final int randomNumber = Randoms.pickNumberInRange(0, 9);
+            }
+        }
     }
 }
