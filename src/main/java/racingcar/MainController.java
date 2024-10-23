@@ -1,10 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.view.InputView;
 
 public class MainController {
     public static void run() {
@@ -19,7 +19,9 @@ public class MainController {
             cars.add(car);
         }
 
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int inputTryCount = Integer.parseInt(Console.readLine());
+
     }
-
-
 }
