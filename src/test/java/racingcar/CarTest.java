@@ -7,22 +7,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
     @Test
-    @DisplayName("car 이름 ")
-    public void validationNotIsEmptyTest() throws Exception{
+    @DisplayName("공백 이름 테스트 ")
+    public void validationEmptyNameTest() {
         //given
-
-        //when
-
-        //then
-
+        String name = "";
+        //expected
+        assertThrows(IllegalArgumentException.class, () -> new Car(name));
     }
     @Test
-    public void validationNameLengthTest() throws Exception{
+    @DisplayName("car 이름 크기 테스트")
+    public void validationNameLengthTest() {
         //given
-
-        //when
-
-        //then
-
+        String name1 = "test";
+        String name2 = "abcdef";
+        //expected
+        Car car = new Car(name1);
+        assertThrows(IllegalArgumentException.class, () -> new Car(name2));
     }
 }
