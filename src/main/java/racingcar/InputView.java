@@ -15,4 +15,12 @@ public class InputView {
         }
         return readLine;
     }
+
+    public String readNumberOfAttempts() {
+        String readLine = readLine();
+        if(readLine.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        return readLine;
+    }
 }
