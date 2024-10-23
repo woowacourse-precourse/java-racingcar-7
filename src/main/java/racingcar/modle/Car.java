@@ -1,27 +1,32 @@
 package racingcar.modle;
 
-public class Car {
+public class Car implements Movable {
     private static final int START_POSITION = 0;
     private static final int PLUS_ONE = 1;
 
-    private final String name;
-    private final int position;
+    private final Name name;
+    private final Position position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = START_POSITION;
+        this.name = new Name(name);
+        this.position = new Position(START_POSITION);
     }
 
     private Car(String name, int position) {
-        this.name = name;
-        this.position = position;
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
+    @Override
     public Car move(){
-        return new Car(name, position + PLUS_ONE);
+        return new Car(name.getName(), position.getPosition() + PLUS_ONE);
+    }
+
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 }

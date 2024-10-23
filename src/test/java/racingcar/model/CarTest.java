@@ -13,10 +13,9 @@ public class CarTest {
     CarFactory carFactory = new CarFactory();
     private Car car;
 
-
     @BeforeEach
     public void setUp() {
-        car = carFactory.createCar("gamza");
+        car = carFactory.create("gamza");
     }
 
     @Test
@@ -26,7 +25,7 @@ public class CarTest {
         int movedCount = 3;
         // when
         for(int i = 0; i < movedCount; i++){
-            car = car.move();
+            car = car.move(); // 이거 쫌 걸리는데... 흐음... 고민해보자
         }
         // then
         assertThat(car.getPosition()).isEqualTo(movedCount);
