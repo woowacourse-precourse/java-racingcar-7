@@ -7,6 +7,7 @@ import racingcar.view.OutputView;
 
 public class CarRacing {
     private final List<Car> carList = new ArrayList<>();
+    private final List<Round> roundList = new ArrayList<>();
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -35,7 +36,7 @@ public class CarRacing {
         System.out.println("\n실행 결과");
         for (int round = 0; round < trialCount; round++) {
             carList.forEach(Car::moveIfPossible);
-            outputView.printLeaderBoard(carList);
+            roundList.add(Round.of(carList));
         }
     }
 
