@@ -22,7 +22,7 @@ public class OutputView {
     }
 
     public void printWinners(List<String> carNames) {
-        String winners = String.join(", ", carNames);
+        String winners = String.join(Constant.WINNER_DELIMITER, carNames);
 
         System.out.printf(Constant.GAME_WINNER_MESSAGE, winners);
     }
