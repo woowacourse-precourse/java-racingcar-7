@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    @DisplayName("자동차의 이름으로 자동차를 생성할 수 있다.")
+    @DisplayName("name으로 Car를 생성할 수 있다.")
     @Test
-    void creatCar() {
+    void createCarByName() {
         //given
         String carName = "pobi";
 
@@ -20,7 +20,7 @@ class CarTest {
         assertThat(car.getName()).isEqualTo(carName);
     }
 
-    @DisplayName("자동차의 초기 위치 값은 0 이다.")
+    @DisplayName("Car의 초기 position은 0 이다.")
     @Test
     void createCarSetPositionIsZero() {
         //given
@@ -32,5 +32,4 @@ class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }
-
 }
