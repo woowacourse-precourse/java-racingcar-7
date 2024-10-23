@@ -32,4 +32,12 @@ public class ValidatorTest {
         assertFalse(validator.validateCarName("karina"));
         assertTrue(validator.validateCarName("pobi"));
     }
+
+    @DisplayName("시도할 횟수 검증하는 기능 테스트")
+    @Test
+    public void validateTryCount() {
+        assertFalse(validator.validateTryCount(-1));
+        assertFalse(validator.validateTryCount("."));
+        assertTrue(validator.validateTryCount(1));
+    }
 }
