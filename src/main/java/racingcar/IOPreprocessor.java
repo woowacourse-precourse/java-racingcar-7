@@ -13,14 +13,14 @@ public class IOPreprocessor {
     }
 
     public static void inputPreprocessing(String input, RacingCarTrace racingCarTrace) {
-        List<String> parsingInput = parsingInput(input);
+        var parsingInput = parsingInput(input);
         setRacingCarTrace(parsingInput, racingCarTrace);
     }
 
     public static String tracePreprocessing(RacingCarTrace racingCarTrace) {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         for (int i = 0; i < racingCarTrace.size(); i++) {
-            RacingCar racingCar = racingCarTrace.getRacingCar(i);
+            var racingCar = racingCarTrace.getRacingCar(i);
             sb.append(racingCar.name()).append(" : ");
             for (int j = 0; j < racingCarTrace.getDistance(racingCar); j++) {
                 sb.append("-");
@@ -31,7 +31,7 @@ public class IOPreprocessor {
     }
 
     public static String resultPreprocessing(List<RacingCar> biggestDistanceRacingCar) {
-        List<String> racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
+        var racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
         return String.join(",", racingCarName);
     }
 }

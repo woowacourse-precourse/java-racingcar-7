@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Prompt {
     public static void input(RacingCarTrace racingCarTrace) {
-        String input = Console.readLine();
+        var input = Console.readLine();
         IOPreprocessor.inputPreprocessing(input, racingCarTrace);
     }
 
@@ -15,7 +15,7 @@ public class Prompt {
     }
 
     public static void resultPrint(List<RacingCar> biggestDistanceRacingCar) {
-        String result = IOPreprocessor.resultPreprocessing(biggestDistanceRacingCar);
+        var result = IOPreprocessor.resultPreprocessing(biggestDistanceRacingCar);
         System.out.println("최종 우승자 : " + result);
         Console.close();
     }
