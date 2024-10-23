@@ -1,8 +1,5 @@
 package racingcar.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExtractName {
     public String[] extractName(String input){
         String[] names = input.split(",");
