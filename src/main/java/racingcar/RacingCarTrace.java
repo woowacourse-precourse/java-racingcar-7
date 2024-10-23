@@ -18,4 +18,11 @@ public class RacingCarTrace {
     public int getDistance(RacingCar racingCar) {
         return trace.get(racingCar);
     }
+
+    public List<RacingCar> getBiggestDistanceRacingCar() {
+        Integer max = trace.values().stream().max(Integer::compare).orElse(0);
+        return trace.keySet().stream()
+                .filter(racingCar -> trace.get(racingCar).equals(max))
+                .toList();
+    }
 }
