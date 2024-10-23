@@ -7,7 +7,7 @@ public class InputView {
 
     public String getCarName() {
         System.out.println(ConsoleMessage.ENTER_CAR_NAME);
-        return Console.readLine();
+        return Validator.isNotBLANK(Console.readLine());
     }
 
     public long getTryNumber() {
