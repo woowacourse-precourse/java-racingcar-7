@@ -12,17 +12,16 @@ import java.util.List;
 
 public class Validator {
 
-    private Validator() {
-    }
-
     public static List<String> validateInputString(String input) {
-        if (input.startsWith(INPUT_DELIMITER) || input.endsWith(INPUT_DELIMITER)) {
-            throw new IllegalArgumentException(NAME_LENGTH_NOT_VALID);
+        if (input.isBlank() || input.startsWith(INPUT_DELIMITER) || input.endsWith(INPUT_DELIMITER)) {
+            throw new IllegalArgumentException(DELIMITER_POSITION_INCORRECT);
         }
-        return Arrays.stream(input.split(INPUT_DELIMITER)).map(String::strip).toList();
+        return Arrays.stream(input.split(INPUT_DELIMITER))
+                .map(String::strip)
+                .toList();
     }
 
-    public static void validateInputString(int nameCount) {
+    public static void validateNameCount(int nameCount) {
         if (nameCount < MINIMUM_RACING_CAR_NEEDED) {
             throw new IllegalArgumentException(NEED_MULTIPLE_RACING_CAR);
         }
@@ -30,7 +29,7 @@ public class Validator {
 
     public static void validateNameLength(String name) {
         if (name.isBlank() || name.length() > NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(DELIMITER_POSITION_INCORRECT);
+            throw new IllegalArgumentException(NAME_LENGTH_NOT_VALID);
         }
     }
 
