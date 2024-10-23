@@ -31,6 +31,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 단순히 글자수로만 하면 이렇게 에러가 발생하는 모습.
+    @Test
+    void 예외_이상한_구분자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pa;a", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
