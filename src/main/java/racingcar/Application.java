@@ -12,11 +12,18 @@ public class Application {
         String[] carNames = carNamesInput.split(",");
         List<Car> cars = new ArrayList<>();
 
+        for(String name : carNames){
+            if(name.length() > 5){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+            cars.add(new Car(name));
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
         int numberOfRounds = Integer.parseInt(Console.readLine());
     }
 
-    class Car{
+    static class Car{
         private String name;
         private int position = 0;
 
