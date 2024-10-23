@@ -16,6 +16,13 @@ public class Game {
         readMoveNumberData();
     }
 
+    public void doGame() {
+        while (moveNumber > 0) {
+            move();
+            moveNumber--;
+        }
+    }
+
     public void move() {
         for (int i = 0; i < cars.size(); i++) {
             if (RandomNumber.createRandomNumber() >= 4) {
