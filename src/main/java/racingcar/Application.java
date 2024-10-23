@@ -23,8 +23,12 @@ public class Application {
     public static void validateLength(List<String> names) {
         final int MAX_NAME_LENGTH = 5;
 
-        if (!names.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH)) {
+        if (names.stream().anyMatch(name -> name.length() > MAX_NAME_LENGTH)) {
             throw new IllegalArgumentException("각 이름의 길이는 " + MAX_NAME_LENGTH + "자를 넘길 수 없습니다.");
+        }
+
+        if (names.stream().anyMatch(String::isEmpty)) {
+            throw new IllegalArgumentException("빈 이름이 존재합니다.");
         }
     }
 
@@ -58,7 +62,7 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> names = Arrays.asList(Console.readLine()
                 .replace(" ", "")
-                .split(","));
+                .split(",", -1));
 
         validateCharacters(names);
         validateLength(names);
