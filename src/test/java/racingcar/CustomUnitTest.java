@@ -112,4 +112,25 @@ public class CustomUnitTest {
             trialValidator.checkTrialIsNegative(trial);
         });
     }
+
+    @Test
+    void CHECK_RANDOM_NUMBER_OVER_FOUR_PROGRESS_AND_UNDER_FOUR_NOT(){
+        // arrange
+        RaceGame raceGame = new RaceGame();
+        List<Car> carList = new ArrayList<Car>();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        int car1Number = 3;
+        int car2Number = 5;
+
+        // act
+        carList.add(car1);
+        carList.add(car2);
+        raceGame.setCars(carList);
+        raceGame.progress(car1, car1Number);
+        raceGame.progress(car2, car2Number);
+
+        assertThat(car1.getProgress()).isEqualTo(0);
+        assertThat(car2.getProgress()).isEqualTo(1);
+    }
 }

@@ -43,7 +43,7 @@
 
 
 **UnitTest**
-- [ ] 시도 횟수 음수 : IllegalArgumentException
+- [x] 시도 횟수 음수 : IllegalArgumentException
 - [x] 시도 횟수 숫자가 아닌 경우 : IllegalArgumentException
 - [x] 빈 자동차 : IllegalArgumentException
 - [x] 이름 사이에 공백이 포함 : IllegalArgumentException
