@@ -20,6 +20,14 @@ public class Application {
         }
     }
 
+    public static void validateLength(List<String> names) {
+        int MAX_NAME_LENGTH = 5;
+
+        if (!names.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH)) {
+            throw new IllegalArgumentException("각 이름의 길이는 " + MAX_NAME_LENGTH + "자를 넘길 수 없습니다.");
+        }
+    }
+
     public static void printWinners(LinkedHashMap<String, Integer> cars) {
         List<String> winners = new ArrayList<>();
 
@@ -53,6 +61,7 @@ public class Application {
                 .split(","));
 
         validateCharacters(names);
+        validateLength(names);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int totalMoves = Integer.parseInt(Console.readLine());
