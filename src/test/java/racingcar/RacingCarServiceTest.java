@@ -10,10 +10,10 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarServiceTest {
-    private final RacingCarService  racingCarService = new RacingCarService();
+    private final RacingCarService racingCarService = new RacingCarService();
 
     @Test
-    void 자동차_전진_조건(){
+    void 자동차_전진_조건() {
         int randomNumberOne = 1;
         int randomNumberTwo = 4;
         boolean result1 = racingCarService.moveOrStop(randomNumberOne);
@@ -22,19 +22,20 @@ public class RacingCarServiceTest {
         assertFalse(result1);
         assertTrue(result2);
     }
+
     @Test
-    void 랜덤_숫자_생성(){
+    void 랜덤_숫자_생성() {
         int expect = racingCarService.randomNumberCreate();
         boolean result = expect >= 0 && expect <= 9;
         assertTrue(result);
     }
 
     @Test
-    void 입력값_리스트로_분리(){
+    void 입력값_리스트로_분리() {
         String input = "qw,er,ty";
         List<RacingCar> resultList = racingCarService.getCarListFromInput(input);
         Set<String> resultSet = new HashSet<>();
-        for (RacingCar car : resultList){
+        for (RacingCar car : resultList) {
             resultSet.add(car.name);
         }
         Set<String> expectSet = new HashSet<>();
@@ -44,10 +45,11 @@ public class RacingCarServiceTest {
 
         assertEquals(expectSet, resultSet);
     }
+
     @Test
-    void 자동차_전진_시_currentMovingPoint_증가(){
+    void 자동차_전진_시_currentMovingPoint_증가() {
         int input = 6;
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("pobi", "");
         racingCarService.increasingCurrentMovingPoint(racingCar, input);
         assertEquals("-", racingCar.currentMovingPoint);
         racingCarService.increasingCurrentMovingPoint(racingCar, input);
