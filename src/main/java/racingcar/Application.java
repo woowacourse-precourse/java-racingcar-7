@@ -12,5 +12,9 @@ class Application {
         Print.numberInputMessage();
         int num = Input.getNumber(input.numberInput);
 
+        for (int i=0;i<num;i++) {
+            Racing.race(cars);
+        }
+
     }
 }

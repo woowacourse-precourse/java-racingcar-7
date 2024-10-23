@@ -35,12 +35,11 @@ public class Validate {
         return nameLength >= 1 && nameLength <= 5;
     }
 
-    static boolean checkName(String name) {
+    static void checkName(String name) {
         String trimedName = name.trim();
         if (!validNameLength(trimedName)) {
             throw new InvalidNameLength();
         }
-        return true;
     }
 
     static boolean validNumber(int number) {
