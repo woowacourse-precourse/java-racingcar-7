@@ -1,11 +1,13 @@
 package racingcar.racingapplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.NameSeparator;
 import racingcar.Printer;
 import racingcar.Reader;
 import racingcar.configuration.AppConfig;
 import racingcar.domain.Cars;
+import racingcar.domain.Result;
 
 public class GameApplication {
 
@@ -26,16 +28,12 @@ public class GameApplication {
         Cars cars = Cars.makeOriginCars(carNames);
         printer.print("시도할 횟수는 몇 회인가요?");
         int gameNumber = reader.readGameNumber();
-        List<Cars> afterGameResult = runEachGame(List.of(cars), gameNumber);
-        printer.printAfterGameResult(afterGameResult);
-    }
-
-    public List<Cars> runEachGame(List<Cars> cars, int gameNumber) {
-        for (int i = 0; i < gameNumber; i++) {
-            Cars nowCars = cars.getLast();
-            Cars nextCars = nowCars.eachGame();
-            cars.add(nextCars);
-        }
-        return cars;
+        List<Cars> carList = new ArrayList<>();
+        carList.add(cars);
+        List<Cars> afterRaceCars = RacingApplication.race(gameNumber, carList);
+        Result result = Result.of(afterRaceCars);
+        List<String> winners = result.findWinners();
+        printer.printAfterGameResult(result.finalResultCars());
+        printer.printFinalWinner(winners);
     }
 }

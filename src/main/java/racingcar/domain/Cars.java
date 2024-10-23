@@ -25,12 +25,33 @@ public record Cars(
         return new Cars(allCar);
     }
 
-    public String makingEachGameResult() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : allCar) {
-            result.append(car.makingCarDistanceResult());
-            result.append("\n");
+    private static int findLongestDistanceAtFinal(List<Car> finalAllCar) {
+        int longestDistance = 0;
+        for (Car car : finalAllCar) {
+            if (car.distance() > longestDistance) {
+                longestDistance = car.distance();
+            }
         }
-        return result.toString();
+        return longestDistance;
+    }
+
+    public static List<String> findWinnersName(List<Car> finalAllCar) {
+        int longestDistance = findLongestDistanceAtFinal(finalAllCar);
+        List<String> winners = new ArrayList<>();
+        for (Car car : finalAllCar) {
+            if (car.distance() == longestDistance) {
+                winners.add(car.name());
+            }
+        }
+        return winners;
+    }
+
+    public static String makeResultOutput(List<Car> allCar) {
+        StringBuilder resultString = new StringBuilder();
+        for (Car car : allCar) {
+            resultString.append(car.makingCarDistanceResult());
+            resultString.append('\n');
+        }
+        return resultString.toString();
     }
 }
