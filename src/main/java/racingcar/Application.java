@@ -17,11 +17,17 @@ public class Application {
 //예외 처리
 class Racingcar {
     HashMap<String, Integer> carLocation = new HashMap<String, Integer>(); // (자동차 이름: 현재 위치)
+    int moveCnt;
 
     void inputCar(final String text) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         for(final String carName : text.split(",")) {
             carLocation.put(carName, 0);
         }
+    }
+
+    void inputCnt(final int cnt) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        moveCnt = cnt;
     }
 }
