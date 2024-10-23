@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RacingGame {
     private final LinkedHashMap<String, Integer> carNameAndScore;
@@ -21,6 +22,18 @@ public class RacingGame {
                     carNameAndScore.put(car, carNameAndScore.get(car) + 1);
                 }
             }
+            printResult();
         }
+    }
+
+    private void printResult() {
+        for(Map.Entry<String, Integer> entry : carNameAndScore.entrySet()) {
+            System.out.println(entry.getKey() + " : ");
+            for(int i=0;i<entry.getValue();i++) {
+                System.out.println("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
