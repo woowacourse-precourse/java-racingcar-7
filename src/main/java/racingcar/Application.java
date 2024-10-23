@@ -20,6 +20,23 @@ public class Application {
             cars[i] = new Car(carNames[i]);
         }
     }
+    //최종 우승자가 누군지 가리는 메서드
+    static String[] whoMaxWin(Car[] carNames,int carNum) {
+        for (int i = 0; i < carNum; i++) {
+            if (Car.maxWin == carNames[i].win) {
+                Car.winNum += 1;
+            }
+        }
+        String[] winList = new String[Car.winNum];
+        int index = 0;
+        for (int i = 0; i < carNum; i++) {
+            if (Car.maxWin == carNames[i].win) {
+                winList[index] = carNames[i].name;
+                index += 1;
+            }
+        }
+        return winList;
+    }
 }
 
 class Car{ //car 객체 생성
