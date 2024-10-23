@@ -5,5 +5,5 @@ public class OutputMessages {
     public static final String ASK_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     public static final String RESULT_TITLE = "실행 결과";
     public static final String RESULT_DETAIL = "%s : %s";
-    public static final String FINAL_RESULT = "최종 결과 : %s";
+    public static final String FINAL_RESULT = "최종 우승자 : %s";
 }
