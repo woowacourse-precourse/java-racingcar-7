@@ -9,6 +9,7 @@ import racingcar.outputview.OutputHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingController {
     InputHandler inputHandler;
@@ -31,6 +32,7 @@ public class RacingController {
 
         List<Car> result = gameStart(carList, attemptGameCount);
 
+        outputHandler.showWinners(getWinner(result));
 
 
 
@@ -50,6 +52,18 @@ public class RacingController {
             currentCount++;
         }
         return carList;
+    }
+
+    private List<Car> getWinner(List<Car> carList){
+
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max().orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+
     }
 
 

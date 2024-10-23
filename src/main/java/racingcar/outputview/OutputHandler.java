@@ -3,6 +3,7 @@ package racingcar.outputview;
 import racingcar.model.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputHandler {
 
@@ -26,6 +27,10 @@ public class OutputHandler {
             System.out.print(sb.toString() + "\n");
         }
         System.out.println();
+
+    }
+    public void showWinners(List<Car> carList){
+        System.out.println("최종 우승자 : " + carList.stream().map(Car::getName).collect(Collectors.joining(", ")));
 
     }
 }
