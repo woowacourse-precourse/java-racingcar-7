@@ -14,4 +14,12 @@ public class RacingCar {
     public void move() {
         position += 1;
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
