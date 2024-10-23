@@ -14,6 +14,11 @@ public class InputView {
         String carNames = Console.readLine();
         validateEmptyOrZeroString(carNames);
 
+        List<Car> cars = splitCarNames(carNames);
+        return cars;
+    }
+
+    private static List<Car> splitCarNames(String carNames) {
         List<String> splitNames = Arrays.asList(carNames.split(","));
 
         List<Car> cars = new ArrayList<>();
