@@ -1,7 +1,12 @@
 package racingcar;
 
+import racingcar.model.RacingCar;
+import racingcar.model.RacingCars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Application {
 
@@ -10,6 +15,16 @@ public class Application {
 
     public static void main(String[] args) {
         String carNames = getCarNames();
+        List<String> carNameList = getCarNameList(carNames);
+        RacingCars racingCars = createRacingCars(carNameList);
+    }
+
+    private static RacingCars createRacingCars(List<String> carNameList) {
+        return new RacingCars(carNameList.stream().map(RacingCar::new).toList());
+    }
+
+    private static List<String> getCarNameList(String carNames) {
+        return Arrays.stream(carNames.split(",")).toList();
     }
 
     private static String getCarNames() {
