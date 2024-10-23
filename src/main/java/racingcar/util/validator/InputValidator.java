@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class InputValidator {
 
     private static final String CAR_NAMES_REGEX = "[가-힣|a-zA-Z]{1,5}(,[가-힣|a-zA-Z]{1,5})*";
-    private static final String NUMBER_OF_TRIAL_REGEX = "\\d+";
+    private static final String NUMBER_OF_TRIAL_REGEX = "0|([1-9])([0-9])*";
 
     public static void validateCarNames(String input) {
         checkInputForm(input);
@@ -30,7 +30,7 @@ public class InputValidator {
 
     public static void validateNumberOfTrial(String numberOfTrial) {
         checkNumberForm(numberOfTrial);
-        checkPositiveNumber(numberOfTrial);
+        checkNumberRange(numberOfTrial);
     }
 
     private static void checkNumberForm(String numberOfTrial) {
@@ -39,10 +39,11 @@ public class InputValidator {
         }
     }
 
-    private static void checkPositiveNumber(String numberOfTrial) {
-        int num = Integer.parseInt(numberOfTrial);
-        if (num <= 0) {
-            throw new IllegalArgumentException("[ERROR] 올바른 숫자를 입력해주세요");
+    private static void checkNumberRange(String numberOfTrial) {
+        try {
+            Integer.parseInt(numberOfTrial);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 정수 범위를 초과했습니다.");
         }
     }
 }
