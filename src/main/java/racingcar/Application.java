@@ -69,5 +69,15 @@ public class Application {
         final List<Car> winningCars = cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+
+        final StringBuilder resultBuilder = new StringBuilder("최종 우승자 : ");
+        for (int i = 0; i < winningCars.size(); i++) {
+            final Car winningCar = winningCars.get(i);
+            resultBuilder.append(winningCar.getName());
+            if (i != winningCars.size() - 1) {
+                resultBuilder.append(", ");
+            }
+        }
+        System.out.println(resultBuilder);
     }
 }
