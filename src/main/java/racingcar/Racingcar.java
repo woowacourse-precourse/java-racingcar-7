@@ -34,6 +34,10 @@ public class Racingcar {
 
         System.out.println(Contants.NOTICE_GAME_TIMES);
         String input_value2 = Console.readLine();
+        ErrorValidator.gameCount(input_value2);
+
+        int game_count = Integer.parseInt(input_value2);
+        startGames(game_count);
 
     }
 }
