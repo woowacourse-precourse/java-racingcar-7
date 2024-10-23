@@ -1,7 +1,13 @@
 package racingcar;
 
-public class Application {
+import java.util.ArrayList;
+
+class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Print.nameInputMessage();
+        Input input = new Input();
+        ArrayList<String> carNames = Input.getCarNames(input.nameInput);
+        ArrayList<Car> cars = Racing.generateCars(carNames);
+
     }
 }
