@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 class InputTest extends NsTest {
+
     @Test
     void 자동차이름_성공_테스트() {
         assertSimpleTest(() ->
