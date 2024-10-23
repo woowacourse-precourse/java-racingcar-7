@@ -1,22 +1,20 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import racingcar.factory.RacingCarFactory;
 import racingcar.component.RacingCar;
+import racingcar.factory.RacingCarFactory;
+import racingcar.race.RacingGame;
 
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String input = Console.readLine();
-        RacingCarFactory racingCarFactory = new RacingCarFactory(input);
+        String userInput = "red, blue, grey";
+        int matchCount = 5;
+
+        RacingCarFactory racingCarFactory = new RacingCarFactory(userInput);
         List<RacingCar> racingCars = racingCarFactory.createRacingCars();
-        RacingCar racingCar = racingCars.get(0);
 
-        for (int i = 0; i < 5; i++) {
-            racingCar.move();
-        }
-
-        Console.close();
+        RacingGame racingGame = new RacingGame(racingCars, matchCount);
+        racingGame.play();
     }
 }
