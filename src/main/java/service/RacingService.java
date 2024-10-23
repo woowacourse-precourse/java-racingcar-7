@@ -24,7 +24,6 @@ public class RacingService {
             if (randomNumber >= 4) {
                 car.addScore();
             }
-            System.out.println(car.getName() + " " + car.getScore());
         }
     }
 

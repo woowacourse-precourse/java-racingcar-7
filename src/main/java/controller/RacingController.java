@@ -21,6 +21,7 @@ public class RacingController {
     }
 
     public void start() {
+        System.out.println("실행 결과");
         for (int i = 0; i < attempt; i++) {
             racingService.moveCars(carsList);
             OutputView.showRoundResult(carsList);
