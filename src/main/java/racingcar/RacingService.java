@@ -41,4 +41,9 @@ public class RacingService {
         }
         return STOP_STEP;
     }
+
+    public void updateMovement(String carName, int movement) {
+        int carPosition = CAR_MAP.get(carName);
+        CAR_MAP.replace(carName, carPosition + movement);
+    }
 }
