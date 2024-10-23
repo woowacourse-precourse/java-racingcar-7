@@ -3,10 +3,13 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Player;
 import racingcar.util.PlayerMaker;
 import racingcar.util.Racing;
 import racingcar.util.WinnerMaker;
+import racingcar.validation.CounterValidation;
 import racingcar.validation.PlayerValidation;
 
 import java.util.List;
