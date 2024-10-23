@@ -2,8 +2,6 @@ package racingcar.model.car;
 
 import static java.lang.String.format;
 
-import racingcar.model.race.MyProgress;
-
 public class Car {
     private final String name;
     private final MyProgress myProgress;

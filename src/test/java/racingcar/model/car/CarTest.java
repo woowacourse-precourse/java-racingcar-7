@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.helper.ReflectionUtil;
 import racingcar.model.race.Lap;
-import racingcar.model.race.MyProgress;
 import racingcar.model.race.Position;
 
 public class CarTest {

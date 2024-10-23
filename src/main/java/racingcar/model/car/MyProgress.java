@@ -1,8 +1,9 @@
-package racingcar.model.race;
+package racingcar.model.car;
 
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
-import racingcar.model.car.MovementCondition;
+import racingcar.model.race.Lap;
+import racingcar.model.race.Position;
 
 public class MyProgress {
     private final Lap remainingLap;

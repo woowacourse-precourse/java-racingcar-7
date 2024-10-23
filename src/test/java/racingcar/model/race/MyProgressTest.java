@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.common.config.AppConfig;
+import racingcar.model.car.MyProgress;
 
 public class MyProgressTest {
 
