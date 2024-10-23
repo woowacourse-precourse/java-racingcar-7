@@ -2,6 +2,7 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String carList = camp.nextstep.edu.missionutils.Console.readLine();
+        int count = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
     }
 }
