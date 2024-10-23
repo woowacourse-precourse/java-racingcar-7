@@ -3,9 +3,9 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.Race;
-import racingcar.util.CarNameParser;
-import racingcar.util.RoundResultGenerator;
-import racingcar.util.WinnerDeterminer;
+import racingcar.utils.CarNameParser;
+import racingcar.utils.RoundResultGenerator;
+import racingcar.utils.WinnerDeterminer;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
 

@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
+import racingcar.utils.NumberGenerator;
+import racingcar.utils.RandomNumberGenerator;
 
 public class Car {
     private final NumberGenerator numberGenerator;

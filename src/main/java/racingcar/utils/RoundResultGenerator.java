@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.utils;
 
 import racingcar.domain.Car;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 import static racingcar.constants.OutputMessages.RESULT_DETAIL;
-import static racingcar.constants.RacingSymbols.POSITION_INDICATOR;
+import static racingcar.constants.Config.POSITION_INDICATOR;
 
 public class RoundResultGenerator {
     public static List<String> generate(List<Car> cars) {

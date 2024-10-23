@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.util.NumberGenerator;
+import racingcar.utils.NumberGenerator;
 
 public class FixedNumberGenerator implements NumberGenerator {
     private final int number;
