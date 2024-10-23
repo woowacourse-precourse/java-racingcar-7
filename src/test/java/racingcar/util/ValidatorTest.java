@@ -16,7 +16,7 @@ public class ValidatorTest {
         this.validator = new Validator();
     }
 
-    @DisplayName("랜덤 숫자가 4 이상인지 검증하는 로직 테스트")
+    @DisplayName("랜덤 숫자가 4 이상인지 검증하는 기능 테스트")
     @Test
     public void isMoreFourTest() {
         assertFalse(validator.isMoreFour(1));
@@ -24,5 +24,12 @@ public class ValidatorTest {
         assertFalse(validator.isMoreFour(3));
         assertTrue(validator.isMoreFour(4));
         assertTrue(validator.isMoreFour(5));
+    }
+
+    @DisplayName("차 이름 5자 이하인지 검증하는 기능 테스트")
+    @Test
+    public void validateCarNameTest() {
+        assertFalse(validator.validateCarName("karina"));
+        assertTrue(validator.validateCarName("pobi"));
     }
 }
