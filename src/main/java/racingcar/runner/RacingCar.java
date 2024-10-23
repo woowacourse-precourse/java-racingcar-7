@@ -3,9 +3,7 @@ package racingcar.runner;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.runner.dto.CarDto;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class RacingCar {
 
@@ -21,11 +19,7 @@ public class RacingCar {
     }
 
     public String run() {
-        cars = Arrays.stream(carString.split(","))
-            .map(car -> new CarDto(car, 0))
-            .toList();
-        rounds = Integer.parseInt(roundString);
-
+        this.validateInputStrings();
         return String.join(", ", this.getWinners());
     }
 
@@ -74,5 +68,53 @@ public class RacingCar {
             .max(Comparator.comparingInt(CarDto::getMovementStatus))
             .map(CarDto::getMovementStatus)
             .orElse(0);
+    }
+
+    private void validateInputStrings() {
+        this.validateCarString();
+        this.validateRoundString();
+    }
+
+    private void validateRoundString() {
+        try {
+            rounds = Integer.parseInt(roundString);
+            if (rounds < 1) {
+                throw new IllegalArgumentException("시도 횟수가 적절하지 않습니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.", e);
+        }
+    }
+
+    private void validateCarString() {
+        cars = Arrays.stream(carString.split(","))
+            .map(car -> this.createCarIfValid(car.trim()))
+            .toList();
+        this.validateDuplication();
+    }
+
+    private CarDto createCarIfValid(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("빈 이름은 허용되지 않습니다.");
+        }
+
+        if (this.isValidCarName(carName)) {
+            throw new IllegalArgumentException("자동차 이름은 영문, 한글, 숫자로 이루어진 5자 이하의 문자열만 허용됩니다.");
+        }
+
+        return new CarDto(carName, 0);
+    }
+
+    private boolean isValidCarName(String carName) {
+        String regex = "^[a-zA-Z0-9가-힣 ]{1,5}$";    // 5자 이하, 영문, 한글, 숫자, 공백 포함
+        return !carName.matches(regex);
+    }
+
+    private void validateDuplication() {
+        List<String> carNames = cars.stream().map(CarDto::getCarName).toList();
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException("중복된 이름은 허용되지 않습니다.");
+        }
     }
 }
