@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -58,9 +59,22 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_convertAttemptsTest(){
+    void 예외_convertAttemptsTest() {
         assertSimpleTest(() -> {
             assertThatThrownBy(()-> carRacing.convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void createCarObjectsTest() {
+        ArrayList<String> testNames = new ArrayList<>();
+        testNames.addAll(Arrays.asList("pobi","woni","jun"));
+
+        assertSimpleTest(() -> {
+            ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
+            for (int i = 0; i < testCars.size(); i++) {
+                assertThat(testCars.get(i).name).isEqualTo(testNames.get(i));
+            }
         });
     }
 
