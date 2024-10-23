@@ -34,4 +34,9 @@ public class Application {
         String num = Console.readLine();
         return Integer.parseInt(num);
     }
+
+    private static boolean moveOrNah(){
+        int Randint = Randoms.pickNumberInRange(0,9);
+        return Randint >= 4;
+    }
 }
