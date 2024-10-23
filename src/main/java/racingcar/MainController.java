@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class MainController {
     public static void run() {
@@ -12,17 +13,9 @@ public class MainController {
 
         racingStart(inputTryCount, cars);
 
-        printTryResult(cars);
+        OutputView.printTryResult(cars);
 
-        List<String> winners = getWinners(cars);
-
-        printWinnerResult(winners);
-
-    }
-
-    private static void printWinnerResult(List<String> winners) {
-        String winnerResult = "최종 우승자" + " : " + String.join(", ", winners);
-        System.out.println(winnerResult);
+        OutputView.printWinnerResult(getWinners(cars));
     }
 
     private static List<String> getWinners(List<Car> cars) {
@@ -42,15 +35,6 @@ public class MainController {
         }
         return winners;
     }
-
-    private static void printTryResult(List<Car> cars) {
-        System.out.println("실행 결과");
-        for (Car car : cars) {
-            String carResult = car.getName() + " : " +"-".repeat(car.getPosition());
-            System.out.println(carResult);
-        }
-    }
-
     private static void racingStart(int inputTryCount, List<Car> cars) {
         for (int i = 0; i < inputTryCount; i++) {
             for (Car car : cars) {
@@ -58,8 +42,6 @@ public class MainController {
             }
         }
     }
-
-
     private static boolean if60PercentChance() {
         int pickNumberInRange = Randoms.pickNumberInRange(0, 9);
         if (pickNumberInRange >= 4) {
