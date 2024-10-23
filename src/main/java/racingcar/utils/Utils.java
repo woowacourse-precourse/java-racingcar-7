@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    private static final Pattern pattern = Pattern.compile("^[a-z0-9]+(,[a-z0-9]+)*$");
+    private static final Pattern pattern = Pattern.compile("^[a-z0-9]{1,5}(,[a-z0-9]{1,5})*$");
 
     public static void validateNames(String input) {
         Matcher matcher = pattern.matcher(input);
