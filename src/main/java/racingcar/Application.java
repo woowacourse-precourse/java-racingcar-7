@@ -25,7 +25,9 @@ public class Application {
         StringTokenizer tokenizer = new StringTokenizer( input, "," );
         List<Car> carList = new ArrayList<Car>();
         while( tokenizer.hasMoreTokens() ){
-            Car newCar = new Car( tokenizer.nextToken() );
+            String name = tokenizer.nextToken();
+            if( name.toCharArray().length > 5 ) throw new IllegalArgumentException();
+            Car newCar = new Car( name );
             carList.add( newCar );
         }
         return carList;
@@ -58,7 +60,9 @@ public class Application {
         String input = Console.readLine();
         List<Car> carList = createCarList( input );
         System.out.println( "시도할 횟수는 몇 회인가요?" );
-        int count = Integer.parseInt( Console.readLine() );
+        int count;
+        try{ count = Integer.parseInt( Console.readLine() ); }
+        catch( NumberFormatException e ){ throw new IllegalArgumentException(); }
         for( int inning = 1; inning <= count; inning++ ){
             for( Car challenger: carList ){
                 int moveLength = tryRoll();
@@ -72,7 +76,7 @@ public class Application {
         if( winners.size() == 1 ) System.out.print( winners.get(0).getName() );
         else if( winners.size() > 1 ) {
             System.out.print( winners.get(0).getName() );
-            for( int index = 1; index <= winners.size() - 1; index++ ){System.out.print( ", " + winners.get(index).getName() );}
+            for( int index = 1; index <= winners.size() - 1; index++ ){ System.out.print( ", " + winners.get(index).getName() ); }
         }
     }
 }
