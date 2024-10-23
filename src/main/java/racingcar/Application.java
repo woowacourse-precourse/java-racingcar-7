@@ -12,7 +12,11 @@ public class Application {
         RacingCarFactory racingCarFactory = new RacingCarFactory(input);
         List<RacingCar> racingCars = racingCarFactory.createRacingCars();
         RacingCar racingCar = racingCars.get(0);
-        racingCar.move();
+
+        for (int i = 0; i < 5; i++) {
+            racingCar.move();
+        }
+
         Console.close();
     }
 }
