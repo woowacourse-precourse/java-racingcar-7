@@ -68,8 +68,8 @@
 ### 1. RacingCar
    | Method          | Parameter         | Return Type | Implementation |
    |-----------------|-------------------|-------------|----------------|
-   | completedAllLap | -                 | boolean     |                |
-   | myProgress      | -                 | String      |                |
+   | completedAllLap | -                 | boolean     | DONE ✅         |
+   | myProgress      | -                 | String      | DONE ✅         |
    | updateProgress  | MovementCondition | void        |                |
 
 <br>
@@ -91,8 +91,8 @@
 ### 4. MyProgress
 | Method             | Parameter         | Return Type | Implementation |
 |--------------------|-------------------|-------------|----------------|
-| completedAllLap    | -                 | boolean     |                |
-| toString           | -                 | toString    |                |
+| completedAllLap    | -                 | boolean     | Done ✅         |
+| toString           | -                 | toString    | Done ✅         |
 | updateRemainingLap | -                 | void        |                |
 | updatePosition     | MovementCondition | void        |                |
 
