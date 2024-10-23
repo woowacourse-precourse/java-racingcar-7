@@ -48,4 +48,20 @@ public class RaceTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
+
+    @Test
+    void 매_턴_마다_조건에_따라_자동차가_전진한다() {
+        // given
+        String input = "pobi,woni,javai";
+        Race race = Race.from(input);
+
+        // when
+        race.lap();
+
+        // then
+        List<Car> cars = race.getCars();
+        assertThat(cars.get(0).getPosition()).isEqualTo(1);
+        assertThat(cars.get(1).getPosition()).isEqualTo(1);
+        assertThat(cars.get(2).getPosition()).isEqualTo(1);
+    }
 }
