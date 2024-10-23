@@ -24,4 +24,8 @@ public class Car {
     public int getMoves() {
         return this.moves;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
