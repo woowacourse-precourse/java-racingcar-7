@@ -8,7 +8,7 @@ public class Car {
     private static final int RANDOM_NUMBER_MAX = 9;
     private static final int MOVEMENT_THRESHOLD = 4;
 
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name, int distance) {
@@ -33,8 +33,7 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Car) {
-            Car castedCar = (Car) o;
+        if (o instanceof Car castedCar) {
             return name.equals(castedCar.getName());
         }
         return false;
