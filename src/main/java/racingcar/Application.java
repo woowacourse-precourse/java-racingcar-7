@@ -23,6 +23,7 @@ public class Application {
         }
 
         int attempts = inputNum();  // 시도할 횟수 입력
+        System.out.println();
         racingGameStart(racingCarList, attempts);  // 레이싱 게임 시작
 
     } catch (IllegalArgumentException e){
@@ -58,7 +59,27 @@ public class Application {
                 }
                 System.out.println(racingCarList.get(j) + " : " + positions.get(j));
             }
-            System.out.println();  // 한 라운드가 끝난 후 빈 줄 출력
+            System.out.println();
         }
+        printWinner(racingCarList, positions);
+    }
+
+    // 최종 우승자 출력하기
+    private static void printWinner(List<String> racingCarList, List<StringBuilder> positions) {
+        int maxPosition = 0;
+        for (StringBuilder position : positions) {
+            if (position.length() > maxPosition) {
+                maxPosition = position.length();
+            }
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (String s : racingCarList) {
+            if (s.length() == maxPosition) {
+                winners.add(s);
+            }
+        }
+
+        System.out.println("최종 우승자: " + String.join(", ", winners));
     }
 }
