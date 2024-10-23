@@ -20,14 +20,15 @@
 
 ✔️입력1 고려사항
 - 한글,영어,특수문자 혼용을 허용한다  ex) 차 종류 중 K5, 포르쉐 911가 존재한다
-
+- 입력 사이에 공백이 있으면 제거하고 게임을 진행한다
 
 ***입력2) 게임을 몇 번 진행할지 입력한다***
 >5
 
 ✔️입력2 예외사항
 - 0 이하의 수를 입력하면 IllegalArgumentException을 발생시킨다
-- Integr.MAX_VALUE를 초과하는 수를 입력하면 IllegalArgumentException을 발생시킨다
+- Integer.MAX_VALUE를 초과하는 수를 입력하면 IllegalArgumentException을 발생시킨다
+- 숫자가 아닌 것을 입력하면 IllegalArgumentException을 발생시킨다
 
 
 
