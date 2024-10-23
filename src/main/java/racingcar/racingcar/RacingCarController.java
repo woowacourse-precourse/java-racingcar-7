@@ -1,7 +1,7 @@
 package racingcar.racingcar;
 
 import java.util.List;
-import racingcar.common.Strings;
+import racingcar.constant.Strings;
 import racingcar.record.RecordController;
 import racingcar.view.InputView;
 
