@@ -9,8 +9,8 @@ import racingcar.model.Winner;
 public class ConsoleOutputView implements OutputView {
 
     @Override
-    public void printProgress(CarRacingProgress car) {
-        System.out.println(car);
+    public void printProgress(CarRacingProgress carDto) {
+        System.out.println(carDto);
     }
 
     @Override
