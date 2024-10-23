@@ -12,4 +12,11 @@ public class CarService {
         }
         return cars;
     }
+
+    public void startRace(Car[] cars, int cnt){
+
+
+    }
+
+
 }
