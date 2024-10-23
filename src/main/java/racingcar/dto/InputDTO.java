@@ -5,18 +5,18 @@ import java.util.List;
 public class InputDTO {
 
     private final List<String> racerNames;
-    private final int trialCount;
+    private final int totalTrialCount;
 
-    public InputDTO(List<String> racerNames, int trialCount) {
+    public InputDTO(List<String> racerNames, int totalTrialCount) {
         this.racerNames = racerNames;
-        this.trialCount = trialCount;
+        this.totalTrialCount = totalTrialCount;
     }
 
     public List<String> getRacerNames() {
         return racerNames;
     }
 
-    public int getTrialCount() {
-        return trialCount;
+    public int getTotalTrialCount() {
+        return totalTrialCount;
     }
 }

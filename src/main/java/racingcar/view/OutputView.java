@@ -25,7 +25,7 @@ public class OutputView {
     public void displayRaceResult(int currentTrial, List<RacingCar> allRacers) {
         allRacers.forEach(racingCar -> {
             String name = racingCar.getName();
-            String currentMoves = ONE_MOVE.repeat(racingCar.getCurrentMoveCount(currentTrial));
+            String currentMoves = ONE_MOVE.repeat(racingCar.getCurrentDistance(currentTrial));
 
             System.out.printf("%s : %s\n", name, currentMoves);
         });

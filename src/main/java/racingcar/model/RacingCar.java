@@ -1,38 +1,36 @@
 package racingcar.model;
 
+import static racingcar.util.Validator.validateNameLength;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.util.Validator;
 
 public class RacingCar {
 
     private final List<Integer> moveRecords = new ArrayList<>();
-    private String name;
-    private int moveCount;
+    private final String name;
+    private int distance;
 
     public RacingCar(String name) {
         validateNameLength(name);
-    }
-    private void validateNameLength(String name) {
-        Validator.validateNameLength(name);
         this.name = name;
     }
 
     public void moveOrStop() {
         int randomNumber = Randoms.pickNumberInRange(0,9);
         if (randomNumber >= 4) {
-            moveCount++;
+            distance++;
         }
-        moveRecords.add(moveCount);
+        moveRecords.add(distance);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCurrentMoveCount(int currentTrial) {
-        int index = currentTrial-1;
+    public int getCurrentDistance(int currentTrialCount) {
+        int index = currentTrialCount-1;
         return moveRecords.get(index);
     }
 }
