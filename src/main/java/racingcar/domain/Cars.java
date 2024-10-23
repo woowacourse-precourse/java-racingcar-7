@@ -17,18 +17,14 @@ public record Cars(
         return new Cars(result);
     }
 
-    public static Cars makeOriginCars(List<String> carNames) {
-        ArrayList<Car> allCar = new ArrayList<>();
-        for (String name : carNames) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("이름의 길이는 5자 이하여야 합니다.");
-            }
-            allCar.add(new Car(name, 0));
-        }
-        return new Cars(allCar);
+    public static List<Cars> makeOriginCars(List<String> carNames) {
+        Cars cars = new Cars(Car.makeCars(carNames));
+        List<Cars> result = new ArrayList<>();
+        result.add(cars);
+        return result;
     }
 
-    private static int findLongestDistanceAtFinal(List<Car> finalAllCar) {
+    private static int findLongestDistance(List<Car> finalAllCar) {
         int longestDistance = 0;
         for (Car car : finalAllCar) {
             if (car.distance() > longestDistance) {
@@ -39,7 +35,7 @@ public record Cars(
     }
 
     public static List<String> findWinnersName(List<Car> finalAllCar) {
-        int longestDistance = findLongestDistanceAtFinal(finalAllCar);
+        int longestDistance = findLongestDistance(finalAllCar);
         List<String> winners = new ArrayList<>();
         for (Car car : finalAllCar) {
             if (car.distance() == longestDistance) {

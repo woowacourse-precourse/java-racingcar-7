@@ -13,9 +13,9 @@ class CarsTest {
         List<Car> expectAllCars = List.of(new Car("sumin", 0), new Car("boye", 0));
 
         //when
-        Cars cars = Cars.makeOriginCars(carNames);
+        List<Cars> allCars = Cars.makeOriginCars(carNames);
 
         //then
-        Assertions.assertThat(cars.allCar()).isEqualTo(expectAllCars);
+        Assertions.assertThat(allCars.getFirst().allCar()).isEqualTo(expectAllCars);
     }
 }
