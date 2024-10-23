@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.model.CarMovementResults;
+
 public class OutputView {
     private static OutputView instance;
 
@@ -11,6 +14,24 @@ public class OutputView {
             instance = new OutputView();
         }
         return instance;
+    }
+
+    public void displayMovementResults(List<CarMovementResults> resultDtos) {
+
+        System.out.println("실행 결과");
+
+        for (CarMovementResults resultDto : resultDtos) {
+
+            resultDto.getCarMovementResults().forEach(movementResult -> {
+                String name = movementResult.name();
+                int position = movementResult.position();
+
+                String result = name + " : " + "-".repeat(position);
+                System.out.println(result);
+            });
+            System.out.println();
+        }
+
     }
 
 }

@@ -2,7 +2,9 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.SequencedMap;
 
 public class Game {
     private static final int RANDOM_MIN_NUMBER = 0;
@@ -37,5 +39,11 @@ public class Game {
 
     public boolean isRunning() {
         return attemptCount > 0;
+    }
+
+    public SequencedMap<String, Integer> getStatusOfCars() {
+        SequencedMap<String, Integer> carStatusMap = new LinkedHashMap<>();
+        cars.forEach(car -> carStatusMap.put(car.getName(), car.getPosition()));
+        return carStatusMap;
     }
 }
