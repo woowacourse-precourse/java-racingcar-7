@@ -14,6 +14,13 @@ public class ConsoleInputView implements InputView {
     private static final Pattern carNamePattern =
             Pattern.compile("^[0-9a-zA-Z가-힣]{1,5}(,[0-9a-zA-Z가-힣]{1,5})*$");
 
+    /**
+     * 콘솔로부터 자동차 이름 문자열을 받아서 형식을 검증한 후 문자열로 반환하는 메서드
+     *
+     * @return 자동차 이름 문자열(이름 사이에 쉼표(",")가 있는)
+     * @throws 자동차 이름이 5글자 초과하거나 이름 중간에 알파벳, 한글, 숫자 이외의 문자가
+     *         있으면 IllegalArgumentException 발생
+     */
     @Override
     public String getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -22,6 +29,14 @@ public class ConsoleInputView implements InputView {
         return carNamesToValidate;
     }
 
+    /**
+     * 콘솔로부터 자동차 주행 시도 횟수를 입력받아서 올바른 형식인지 검증한 다음
+     * 정수(int)로 반환하는 메서드
+     *
+     * @return 자동차 주행 시도 횟수
+     * @throws 콘솔에서 입력된 문자열이 int 범위를 벗어나거나 숫자가 아닌 문자열이거나
+     *         0이면 IllegalArgumentException 발생
+     */
     @Override
     public int getChanceToMove() {
         System.out.println("시도할 횟수는 몇 회인가요?");
