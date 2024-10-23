@@ -8,12 +8,12 @@ public class InputView {
     public String inputCarNames() {
         String input = Console.readLine();
 
-        validateNullOrEmpty(input);
+        validateInput(input);
 
         return input;
     }
 
-    private void validateNullOrEmpty(String input) {
+    private void validateInput(String input) {
         InputValidation inputValidation = new InputValidation();
 
         inputValidation.validateNullOrEmpty(input);
