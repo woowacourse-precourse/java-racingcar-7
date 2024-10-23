@@ -7,14 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayGame {
-    // 랜덤한 값 반환 하는 함수
-    // 여러대의 자동차를 배열에 담음
-    // 각 요소에 접근
-    // 0 ~ 3이면 멈춤, 4 ~ 9 전진
+
     public static final int MINIMUM_VALUE_CAR_MOVE = 4;
     InputMessage inputMessage = new InputMessage();
     Map<String, String> carData = new HashMap<>();
     int maxDistance = 0;
+    List<String> winners = new ArrayList<>();
 
     public void racingCarCreate(String[] carNames){
         for (String carName : carNames) {
@@ -52,7 +50,6 @@ public class PlayGame {
     }
 
     public List<String> getWinners(String[] carNames) {
-        List<String> winners = new ArrayList<>();
         for (String carName : carNames) {
             int currentDistance = carData.get(carName).length();
             if (currentDistance == maxDistance) {
@@ -62,19 +59,23 @@ public class PlayGame {
         return winners;
     }
 
+    public void printWinners() {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
     public void racingStart(){
-        String carName = inputMessage.inputCarName();
-        String[] carNames = inputMessage.splitCarName(carName, ",");
+        String[] carName = inputMessage.inputCarNameReturnSplit(",");
         String tryCarGame = inputMessage.inputNumberOfTries();
 
-        racingCarCreate(carNames);
+        racingCarCreate(carName);
 
         for(int i=0; i<Integer.parseInt(tryCarGame); i++){
-            moveCars(carNames);
-            printRaceResult(carNames);
+            moveCars(carName);
+            printRaceResult(carName);
         }
 
-        getMaxDistance(carNames);
-        getWinners(carNames);
+        getMaxDistance(carName);
+        getWinners(carName);
+        printWinners();
     }
 }
