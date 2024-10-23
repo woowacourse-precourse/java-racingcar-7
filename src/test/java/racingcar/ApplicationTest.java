@@ -34,6 +34,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("참가 자동차 입력 테스트입니다.")
+    void carInputTest() {
+        //given
+        String input = "pobi, woni, jun";
+        //when
+        List<Car> cars = Application.createParticipant(input);
+        //then
+        assertThat(cars).hasSize(3);
+        assertThat(cars.get(0).getCarName()).isEqualTo("pobi");
+        assertThat(cars.get(1).getCarName()).isEqualTo("woni");
+        assertThat(cars.get(2).getCarName()).isEqualTo("jun");
+
+    }
 
     @Override
     public void runMain() {
