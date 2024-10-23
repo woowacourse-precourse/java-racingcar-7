@@ -28,4 +28,22 @@ public class RacingCarTest {
                 .map(Car::getName))
                 .containsExactlyElementsOf(carNames);
     }
+
+    @Test
+    void 자동차_전진_테스트() {
+        Car car = new Car("MCshin00");
+
+        car.move(4);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 자동차_멈춤_테스트() {
+        Car car = new Car("MCshin00");
+
+        car.move(3);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
