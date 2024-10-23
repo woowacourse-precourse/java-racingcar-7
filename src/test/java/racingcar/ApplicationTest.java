@@ -70,8 +70,9 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
+        ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
+
         assertSimpleTest(() -> {
-            ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
             for (int i = 0; i < testCars.size(); i++) {
                 assertThat(testCars.get(i).name).isEqualTo(testNames.get(i));
             }
@@ -110,6 +111,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void printGameStatusTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "jun : -");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
 
     @Override
     public void runMain() {
