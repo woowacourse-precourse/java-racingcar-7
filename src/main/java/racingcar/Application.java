@@ -55,7 +55,7 @@ public class Application {
             }
 
             for (Car car : cars) {
-                String positionBar = "-".repeat(car.getPosition());
+                final String positionBar = "-".repeat(car.getPosition());
                 System.out.println(car.getName() + " : " + positionBar);
             }
             System.out.println();
