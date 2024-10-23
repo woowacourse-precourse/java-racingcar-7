@@ -17,9 +17,13 @@ public class Application {
             if (stripCarName.isEmpty()) {
                 throw new IllegalArgumentException("쉼표 이후에 자동차 이름이 존재하지 않습니다");
             }
-            if (stripCarName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다");
-            }
+            checkCarNameLength(stripCarName);
+        }
+    }
+
+    static void checkCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다");
         }
     }
 
