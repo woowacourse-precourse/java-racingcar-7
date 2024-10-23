@@ -3,10 +3,9 @@ package racingcar.utils;
 import java.util.List;
 
 public class InputValidator {
-    private static final String DELIMITER = ",";
 
-    public List<String> validateCarNames(String inputString) {
-        List<String> carNames = List.of(inputString.split(Constant.DELIMITER));
+    public List<String> validateCarNames(String userInput) {
+        List<String> carNames = List.of(userInput.split(Constant.DELIMITER));
 
         validateNameLength(carNames);
         validateNameEmpty(carNames);
@@ -30,8 +29,8 @@ public class InputValidator {
         }
     }
 
-    private void validateNumber(String inputString) {
-        if (!inputString.matches("[0-9]+")) {
+    private void validateNumber(String userInput) {
+        if (!userInput.matches("[0-9]+")) {
             throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
         }
     }
