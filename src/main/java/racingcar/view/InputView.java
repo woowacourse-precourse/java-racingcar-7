@@ -5,6 +5,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.car.exception.NoSeparatorException;
+import racingcar.constant.ErrorStatus;
 import racingcar.constant.Separator;
 import racingcar.constant.View;
 
@@ -24,6 +25,31 @@ public class InputView {
 	public String readCarInput() {
 		System.out.println(View.CAR_NAME_INPUT.getConstant());
 		return Console.readLine();
+	}
+
+	public String readCountInput() {
+		System.out.println(View.COUNT_INPUT.getConstant());
+		return Console.readLine();
+	}
+
+	public Integer parseCount(String input) {
+		if (!isNumber(input)) {
+			throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
+		}
+		try {
+			return Integer.parseInt(Console.readLine());
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
+		}
+	}
+
+	private Boolean isNumber(String input) {
+		for (char c : input.toCharArray()) {
+			if (!Character.isDigit(c)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public List<String> splitNames(String input) {
