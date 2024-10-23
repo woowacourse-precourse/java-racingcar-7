@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarService {
+
     public boolean moveOrStop(int randomNumber) {
         if (randomNumber >= 4 && randomNumber < 10) {
             return true;
@@ -19,14 +20,19 @@ public class RacingCarService {
     }
 
     public List<RacingCar> getCarListFromInput(String input) {
-        List<RacingCar> carList = new ArrayList<>();
         List<String> carNameList = List.of(input.split(","));
+        return convertRacingCarListFromNameList(carNameList);
+    }
+
+    private List<RacingCar> convertRacingCarListFromNameList(List<String> carNameList){
+        List<RacingCar> carList = new ArrayList<>();
+
         for (String s : carNameList) {
-            RacingCar racingCar = new RacingCar(s, "");
-            carList.add(racingCar);
+            carList.add(new RacingCar(s,""));
         }
         return carList;
     }
+
 
     public void increasingCurrentMovingPoint(RacingCar racingCar, int randomNum) {
         if (moveOrStop(randomNum)) {

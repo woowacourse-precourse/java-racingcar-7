@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class OutputServiceTest {
-    private final OutputService outputService = new OutputService();
+    private final OutputService outputService = new OutputService(new RacingCarService());
 
     @Test
     void a자동차_n회차_실행_결과_출력() {
@@ -39,7 +39,13 @@ public class OutputServiceTest {
         racingCarList.add(racingCar2);
         String actual = outputService.getWinnerRacingCar(racingCarList);
         assertEquals(expect, actual);
+    }
 
+    @Test
+    void 기능_작동_테스트(){
+        String carList = "pobi,woni,jun";
+        int count = 4;
+        outputService.run(carList, count);
     }
 
 }
