@@ -27,13 +27,12 @@ public class RaceManager {
         List<Car> carList = carNameList.stream()
                 .map(Car::new)
                 .toList();
-        RacePosition racePosition = new RacePosition(carList);
+        RacePosition startPosition = new RacePosition(carList);
         String attemptCountString = inputReceiver.readInput();
         MoveAttempt moveAttempt = MoveAttempt.of(attemptCountString);
         RandomMoveDecider randomMoveDecider = new RandomMoveDecider(RandomDigitGenerator.getInstance());
         CarRace carRace = new CarRace(randomMoveDecider);
-        for(int i = moveAttempt.getCount(); i > 0; i--) {
-            racePosition = carRace.execute(racePosition);
-        }
+        RacePosition resultPosition = carRace.repeatExecution(startPosition, moveAttempt);
+        List<Car> farthestCars = resultPosition.findFarthestCar();
     }
 }

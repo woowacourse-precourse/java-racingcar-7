@@ -3,10 +3,7 @@ package racingcar.domain.race;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarName;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 public class RacePosition {
     private final List<Car> carList;
@@ -20,7 +17,7 @@ public class RacePosition {
         List<CarName> carNameList = carList.stream()
                 .map(Car::getName)
                 .toList();
-        if(hasDuplicate(carNameList)) {
+        if (hasDuplicate(carNameList)) {
             throw new IllegalArgumentException("has duplicate car name : " + carNameList.toString());
         }
     }
@@ -38,6 +35,15 @@ public class RacePosition {
         return carList.stream()
                 .filter(car -> car.getName().equals(carName))
                 .findFirst()
-                .orElseThrow(()->new NoSuchElementException("found no Car with name : " + carName.getIdentifier()));
+                .orElseThrow(() -> new NoSuchElementException("found no Car with name : " + carName.getIdentifier()));
+    }
+
+    public List<Car> findFarthestCar() {
+        Car farthest = carList.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new NoSuchElementException("found no farthest car"));
+        return carList.stream()
+                .filter(car -> car.compareTo(farthest) == 0)
+                .toList();
     }
 }
