@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,6 +16,6 @@ public class RacingCarGame {
 
     public void run() {
         outputView.requestCarNames();
-        inputView.getCarNames();
+        Cars cars = inputView.getCarNames();
     }
 }

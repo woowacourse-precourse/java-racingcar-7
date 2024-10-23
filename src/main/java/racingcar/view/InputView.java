@@ -17,7 +17,7 @@ public class InputView {
         validateBlankInput(input);
         validateMultipleCars(input);
 
-        return new Cars(List.of(input.split(SEPARATOR)));
+        return new Cars(List.of(input.split(SEPARATOR, -1)));
     }
 
     private void validateBlankInput(String input) {
