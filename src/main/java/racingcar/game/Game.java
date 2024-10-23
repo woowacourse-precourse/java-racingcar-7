@@ -1,8 +1,8 @@
 package racingcar.game;
 
-import racingcar.count.CountService;
 import racingcar.car.Car;
 import racingcar.car.CarInputService;
+import racingcar.count.CountInputService;
 import racingcar.utils.IOUtils;
 import racingcar.utils.StringUtils;
 
@@ -10,18 +10,24 @@ import java.util.List;
 
 public class Game {
     CarInputService carInputService;
-    CountService countService;
+    CountInputService countInputService;
+    GameService gameService;
     GameView gameView;
 
-    public Game(CarInputService carInputService, CountService countService, GameView gameView) {
+    public Game(
+            CarInputService carInputService,
+            CountInputService countInputService,
+            GameService gamerService,
+            GameView gameView) {
         this.carInputService = carInputService;
-        this.countService = countService;
+        this.countInputService = countInputService;
+        this.gameService = gamerService;
         this.gameView = gameView;
     }
 
     public void run() {
         List<Car> cars = carInputService.getCars();
-        int attemptCount = StringUtils.convertStringToInteger(countService.getAttemptCount());
+        int attemptCount = StringUtils.convertStringToInteger(countInputService.getAttemptCount());
         IOUtils.outputStringWithEnter("");
 
         processingGame(cars, attemptCount);
@@ -31,10 +37,7 @@ public class Game {
         IOUtils.outputStringWithEnter("실행 결과");
 
         while (attemptCount > 0) {
-            for (Car car : cars) {
-                car.moveForward();
-            }
-
+            gameService.moveEachCars(cars);
             attemptCount--;
             gameView.printMove(cars);
         }
