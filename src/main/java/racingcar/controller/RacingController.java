@@ -23,6 +23,15 @@ public class RacingController {
         String countInput = getCountInput();
 
         List<Car> cars = getCars(carInput);
+        int count = convertStringCountToInt(countInput);
+
+        outputView.printResultMessage();
+
+        for (int i = 0; i < count; i++) {
+            raceCars(cars);
+        }
+
+
     }
 
     private String getCarInput() {
@@ -50,5 +59,15 @@ public class RacingController {
             cars.add(new Car(stringCar));
         }
         return cars;
+    }
+
+    private int convertStringCountToInt(String countInput) {
+        return Integer.parseInt(countInput);
+    }
+
+    private void raceCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.race();
+        }
     }
 }
