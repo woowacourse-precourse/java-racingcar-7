@@ -1,5 +1,9 @@
 package racingcar.outputview;
 
+import racingcar.model.Car;
+
+import java.util.List;
+
 public class OutputHandler {
 
     public void promptCarNameInput(){
@@ -8,5 +12,20 @@ public class OutputHandler {
 
     public void promptAttemptCountInput(){
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+    public void showGameResult(){
+        System.out.println("실행 결과");
+    }
+
+    public void showCurrentCarPosition(List<Car> carList){
+        for(Car car : carList){
+            StringBuilder sb= new StringBuilder();
+            int count = car.getPosition();
+            System.out.print(car.getName() + " : ");
+            sb.append("-".repeat(Math.max(0, count)));
+            System.out.print(sb.toString() + "\n");
+        }
+        System.out.println();
+
     }
 }

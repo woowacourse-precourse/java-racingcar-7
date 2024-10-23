@@ -8,6 +8,9 @@ public class Car {
         this.name = nameInput;
         this.position = 0;
     }
+    public String getName(){
+        return name;
+    }
 
     public void moveFoward(){
         position++;

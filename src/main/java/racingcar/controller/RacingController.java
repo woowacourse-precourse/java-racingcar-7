@@ -31,9 +31,7 @@ public class RacingController {
 
         List<Car> result = gameStart(carList, attemptGameCount);
 
-        for(Car car : result){
-            System.out.println(car.getPosition());
-        }
+
 
 
 
@@ -41,12 +39,14 @@ public class RacingController {
 
     private List<Car> gameStart(List<Car> carList , int gameCount){
         int currentCount = 0;
+        outputHandler.showGameResult();
         while(currentCount < gameCount){
             for(Car car : carList){
                 if(Randoms.pickNumberInRange(0,9) >= 4){
                     car.moveFoward();
                 }
             }
+            outputHandler.showCurrentCarPosition(carList);
             currentCount++;
         }
         return carList;
