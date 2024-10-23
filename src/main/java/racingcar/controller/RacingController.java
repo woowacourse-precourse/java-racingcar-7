@@ -5,6 +5,7 @@ import racingcar.domain.CarFactory;
 import racingcar.domain.Race;
 import racingcar.util.CarNameParser;
 import racingcar.util.RoundResultGenerator;
+import racingcar.util.WinnerDeterminer;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
 
@@ -32,6 +33,7 @@ public class RacingController {
         int tryCount = Integer.parseInt(inputView.userInput());
 
         startRace(cars, tryCount);
+        determineWinners(cars);
     }
 
     private void startRace(List<Car> cars, int tryCount) {
@@ -47,5 +49,11 @@ public class RacingController {
             outputView.printRound(roundResults);
             outputView.printNewLine();
         }
+    }
+
+    private void determineWinners(List<Car> cars) {
+        List<String> winnerList = WinnerDeterminer.getWinners(cars);
+
+        outputView.printWinners(winnerList);
     }
 }
