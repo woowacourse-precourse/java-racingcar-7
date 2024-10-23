@@ -25,11 +25,22 @@ public class ModelTest {
         //2.When(실행): 어떤 동작을 실행하는가? - getCarName을 실행한다.
         //3.Then(검증): 기대하는 결과는 무엇인가? - 자동차 이름이 5자 초과시 예외 발생
         //3->2->1 순으로 작성해나간다.
+        //given
         Model model = new Model();
         String input = "pobiwoni,jun";
-
+        //when&then - 예외발생 테스트는 when과 then이 함께 묶이는 경우가 많다.
         assertThrows(IllegalArgumentException.class, () -> {
             model.getCarNames(input);
+        });
+    }
+
+    @Test
+    void 시행_횟수_입력이_잘못된_값인_경우_예외발생() {
+        Model model = new Model();
+        String input = "-1";
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            model.validateAttemptCount(input);
         });
     }
 }
