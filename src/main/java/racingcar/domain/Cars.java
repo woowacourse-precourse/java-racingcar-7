@@ -1,2 +1,29 @@
-package racingcar.domain;public class Cars {
+package racingcar.domain;
+
+import java.util.List;
+import java.util.Objects;
+
+public class Cars {
+
+    private final List<Car> carList;
+
+    public Cars(final List<Car> carList) {
+        this.carList = carList;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Cars cars)) {
+            return false;
+        }
+        return Objects.equals(carList, cars.carList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carList);
+    }
 }
