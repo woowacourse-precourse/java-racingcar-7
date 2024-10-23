@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,6 +18,26 @@ public class Cars {
 
     public Set<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinningCar() {
+        List<Car> winningCars = new ArrayList<>();
+        int winningDistanceScore = getHighestDistance();
+
+        for (Car car : cars) {
+            if (car.getDistance() == winningDistanceScore) {
+                winningCars.add(car);
+            }
+        }
+        return winningCars;
+    }
+
+    private int getHighestDistance() {
+        List<Integer> distances = new ArrayList<>();
+        for (Car car : cars) {
+            distances.add(car.getDistance());
+        }
+        return Collections.max(distances);
     }
 
 
