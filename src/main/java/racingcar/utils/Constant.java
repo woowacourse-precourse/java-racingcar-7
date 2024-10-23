@@ -34,8 +34,8 @@ public class Constant {
     public static final int MOVE_THRESHOLD_VALUE = 4;
 
     // 출력 메시지
-    public static final String GAME_RESULT_MESSAGE = "\n실행 결과";
-    public static final String CAR_STATUS_MESSAGE = "%s : %s\n";
+    public static final String GAME_RESULT_MESSAGE = "실행 결과";
+    public static final String CAR_STATUS_MESSAGE = "%s : %s";
     public static final String GAME_WINNER_MESSAGE = "최종 우승자 : %s";
     public static final String MOVE_STRING = "-";
 
