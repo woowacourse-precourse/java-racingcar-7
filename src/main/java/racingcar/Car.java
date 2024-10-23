@@ -27,4 +27,12 @@ public class Car {
         }
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public boolean isNotSamePositionTo(int position) {
+        return this.position != position;
+    }
+
 }
