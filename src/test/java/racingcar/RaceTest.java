@@ -12,13 +12,15 @@ import racingcar.race.Race;
 @DisplayName("Race 클래스 테스트")
 public class RaceTest {
 
+    private final Acceleration acceleration = new FixedAcceleration(4);
+
     @Test
     void 문자열을_파싱하여_자동차_객체를_생성한다() {
         // given
         String input = "pobi,woni,javai";
 
         // when
-        Race race = Race.from(input);
+        Race race = Race.from(input, acceleration);
 
         // then
         assertThat(race.getCars().size()).isEqualTo(3);
@@ -30,7 +32,7 @@ public class RaceTest {
         String input = "pobi,woni,javai";
 
         // when
-        Race race = Race.from(input);
+        Race race = Race.from(input, acceleration);
 
         // then
         List<Car> cars = race.getCars();
@@ -44,7 +46,7 @@ public class RaceTest {
         // given
         String exceededLengthName = "pobi,woni,javai,123456789012345678901";
 
-        assertThatThrownBy(() -> Race.from(exceededLengthName))
+        assertThatThrownBy(() -> Race.from(exceededLengthName, acceleration))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(CAR_NAME_LENGTH_EXCEEDED.getMessage());
     }
@@ -53,7 +55,7 @@ public class RaceTest {
     void 매_턴_마다_조건에_따라_자동차가_전진한다() {
         // given
         String input = "pobi,woni,javai";
-        Race race = Race.from(input);
+        Race race = Race.from(input, acceleration);
 
         // when
         race.lap();
