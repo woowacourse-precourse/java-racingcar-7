@@ -14,4 +14,9 @@ public class Car {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         return randomNumber >= 4;
     }
+
+    public void moveForward() {
+        this.moves += 1;
+        System.out.println(this.moves);
+    }
 }

@@ -24,6 +24,9 @@ public class Application {
 
         for (Car car : cars) {
             boolean isMovable = car.isMovable();
+            if (isMovable) {
+                car.moveForward();
+            }
         }
     }
 }
