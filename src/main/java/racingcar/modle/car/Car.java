@@ -1,4 +1,6 @@
-package racingcar.modle;
+package racingcar.modle.car;
+
+import racingcar.modle.Movable;
 
 public class Car implements Movable {
     private static final int START_POSITION = 0;
@@ -22,10 +24,12 @@ public class Car implements Movable {
         return new Car(name.getName(), position.getPosition() + PLUS_ONE);
     }
 
+    @Override
     public String getName() {
         return name.getName();
     }
 
+    @Override
     public int getPosition() {
         return position.getPosition();
     }
