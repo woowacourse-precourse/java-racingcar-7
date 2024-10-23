@@ -18,7 +18,9 @@ public class Application {
             this.distance = 0;
         }
         String getName() { return this.name; }
-        void drive( int distance ){ this.distance += distance; }
+        void drive( int distance ){
+            this.distance += distance;
+        }
     }
 
     static List<Car> createCarList( String input ){
@@ -37,17 +39,26 @@ public class Application {
         else return 0;
     }
 
+    static String showMoveLengthToDash( int moveLength ){
+        String dash = "";
+        for( int index = 0; index < moveLength; index++ ) dash += "-";
+        return dash;
+    }
+
     public static void main(String[] args) {
         System.out.println( "경주할 자동차 이름을 입력하세요.(이름은 쉽고(,) 기준으로 구분)" );
         String input = Console.readLine();
         List<Car> carList = createCarList( input );
+        System.out.println( "시도할 횟수는 몇 회인가요?" );
         int count = Integer.parseInt( Console.readLine() );
         for( int inning = 1; inning <= count; inning++ ){
             for( Car challenger: carList ){
-                challenger.drive( tryRoll() );
+                int moveLength = tryRoll();
+                System.out.println( challenger.getName() + " : " + showMoveLengthToDash( moveLength ) );
+                challenger.drive( moveLength );
             }
+            System.out.println();
         }
-
         System.out.println( "실행 결과" );
     }
 }
