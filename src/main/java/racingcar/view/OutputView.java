@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 import java.util.List;
 
 public class OutputView {
@@ -8,13 +10,19 @@ public class OutputView {
         System.out.println(DisplayedMessage.OUTPUT_EXECUTE_RESULT_TEXT.getValue());
     }
 
-    public void printMoveResult(List<String> carMoveResultList) {
+    public void printOneMoveResult(final List<Car> carList) {
         StringBuilder sb = new StringBuilder();
-        carMoveResultList.forEach(sb::append);
+        List<String> carProgressList = carList.stream().map(this::getOutPut).toList();
+        carProgressList.forEach(sb::append);
         System.out.println(sb);
     }
 
-    public void printWinners(String winners) {
+    private String getOutPut(final Car car) {
+        String scoreHyphen = "-".repeat(car.getMoveCnt());
+        return String.format("%s : %s%n", car.getName(), scoreHyphen);
+    }
+
+    public void printWinners(final String winners) {
         System.out.println(DisplayedMessage.OUTPUT_WINNER_MESSAGE.getValue() + winners);
     }
 }
