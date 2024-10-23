@@ -1,6 +1,5 @@
 package racingcar;
 
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class CarInputHandler {
@@ -8,8 +7,11 @@ public class CarInputHandler {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
     }
-    public String[] splitCarNames(String carNames){
-        String[] separatedNames  = carNames.split(",");
+    public String[] splitCarNames(String carNames) {
+        String[] separatedNames = carNames.split(",");
+        for (int i = 0; i < separatedNames.length; i++) {
+            separatedNames[i] = separatedNames[i].trim();
+        }
         return separatedNames;
     }
 }
