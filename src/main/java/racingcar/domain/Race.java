@@ -18,4 +18,8 @@ public class Race {
     public List<Car> getCars() {
         return cars;
     }
+
+    public void start() {
+        cars.forEach(Car::move);
+    }
 }

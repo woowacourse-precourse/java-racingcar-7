@@ -32,5 +32,9 @@ public class RacingController {
 
     private void startRace(List<String> carNames, int tryCount) {
         Race race = new Race(carNames);
+
+        for(int round = 0; round < tryCount; round++) {
+            race.start();
+        }
     }
 }
