@@ -24,7 +24,7 @@ public class RacingCarService {
     public void moveCars() {
         for (Car car : cars.getCars()) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            if (randomNumber >= STOP_BOUNDARY) {
+            if (randomNumber > STOP_BOUNDARY) {
                 car.move();
             }
         }

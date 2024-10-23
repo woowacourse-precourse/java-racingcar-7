@@ -16,10 +16,6 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-//    public Cars(List<Car> cars){
-//        this.cars = cars;
-//    }
-
     private void checkDuplicateCars(List<String> cars) {
         Map<String, Long> duplicateCars = cars.stream()
                 .collect(Collectors.groupingBy(s -> s, Collectors.counting()))
