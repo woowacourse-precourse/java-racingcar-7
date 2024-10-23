@@ -29,7 +29,7 @@ public class UserView {
 
         System.out.println(RACING_RESULT_MESSAGE);
 
-
+        List<String> winners = racingCarController.start(repeatNumber, cars);
     }
 
     private String printStart() {
@@ -72,7 +72,7 @@ public class UserView {
         String[] carNames = input.split(",");
 
         for(String carName : carNames){
-            cars.add(new Car(carName.trim()));
+            cars.add(new Car(carName));
         }
 
         return cars;
