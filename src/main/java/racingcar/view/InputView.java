@@ -12,7 +12,7 @@ public class InputView {
     public static List<Car> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = Console.readLine();
-        validateEmptyString(carNames);
+        validateEmptyOrZeroString(carNames);
 
         List<String> splitNames = Arrays.asList(carNames.split(","));
 
@@ -30,15 +30,26 @@ public class InputView {
     public static int readTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCount = Console.readLine();
-        validateEmptyString(tryCount);
+        validateEmptyOrZeroString(tryCount);
+        validateNotNumber(tryCount);
 
         int inputTryCount = Integer.parseInt(tryCount);
         return inputTryCount;
     }
 
-    private static void validateEmptyString(String inputString) {
-        if (inputString.isBlank()) {
-            throw new IllegalArgumentException("빈 값을 입력하셨습니다");
+    private static void validateNotNumber(String tryCount) {
+        String rex = "[\\D]*";
+        Pattern pattern = Pattern.compile(rex);
+        Matcher matcher = pattern.matcher(tryCount);
+
+        if (matcher.find()) {
+            throw new IllegalArgumentException("시도횟수는 양수만 입력할 수 있습니다.");
+        }
+    }
+
+    private static void validateEmptyOrZeroString(String inputString) {
+        if (inputString.isBlank() || inputString =="0") {
+            throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다");
         }
     }
     private static void validateNameLength(String inputname) {
