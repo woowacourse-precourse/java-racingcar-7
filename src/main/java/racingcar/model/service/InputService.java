@@ -3,6 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.dto.Car;
 import racingcar.model.exception.CarNameLengthExceededException;
 import racingcar.model.exception.InvalidAttemptCountException;
+import racingcar.model.exception.InvalidCarCountException;
 import racingcar.model.exception.MissingInputValueException;
 
 import java.util.ArrayList;
@@ -20,7 +21,16 @@ public class InputService {
             throw new MissingInputValueException("입력값이 누락되었습니다.");
         }
 
+        if(countValue.equals("0")) {
+            throw new InvalidAttemptCountException("시도할 횟수는 0일 수 없습니다.");
+        }
+
         List<String> cars = splitCarValue(carValue);
+
+        if(cars.size() == 1){
+            throw new InvalidCarCountException("자동차는 1개 일 수 없습니다.");
+        }
+
         List<Car> carList = new ArrayList<>();
         for (String car : cars) {
             if(car.length() > 5){
