@@ -13,5 +13,6 @@ public class InputView {
 
     public int getAttemptCount() {
         System.out.println(Constant.ATTEMPT_COUNT_INPUT_MESSAGE);
+        String inputString = Console.readLine();
     }
 }
