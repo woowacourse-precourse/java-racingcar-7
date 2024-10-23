@@ -17,7 +17,20 @@ public class NameParser {
         List<String> names = Arrays.stream(input.split(DELIMITER))
                 .map(String::trim)
                 .toList();
+        validateNames(names);
 
         return names;
+    }
+
+    private void validateNames(List<String> names) {
+        for (String name : names) {
+            checkNameLength(name);
+        }
+    }
+
+    private void checkNameLength(String name) {
+        if (name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 }
