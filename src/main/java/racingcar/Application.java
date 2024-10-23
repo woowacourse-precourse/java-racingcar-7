@@ -18,5 +18,11 @@ public class Application {
             }
         }
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = Integer.parseInt(Console.readLine());
+        if (tryCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+
     }
 }
