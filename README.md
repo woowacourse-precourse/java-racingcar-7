@@ -25,9 +25,9 @@
 - [ ] 사용자에게 입력받기
   - [ ] 자동차 이름을 입력받기
     - [ ] `pobi, woni, jun`처럼 ` `이 있는 경우와 `pobi,woni,jun`처럼 공백이 없는 경우 정상 작동
-    - [ ] `,,`같은 입력 `IllegalArgumentException`
-      - [ ] `a,,b,c`나 `,,,`
-    - [ ] `,pobi,woni`, `pobi,woni,` 처럼 끝에 `,`가 있는 경우 `IllegalArgumentException`
+    - [x] `,,`같은 입력 `IllegalArgumentException`
+      - [x] `a,,b,c`나 `,,,`
+    - [x] `,pobi,woni`, `pobi,woni,` 처럼 끝에 `,`가 있는 경우 `IllegalArgumentException`
   - [ ] 시도 횟수를 입력받기
     - [x] 숫자가 아닌 경우 `IllegalArgumentException`
     - [x] 음수를 입력한 경우 `IllegalArgumentException`
