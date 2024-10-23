@@ -2,16 +2,24 @@ package view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import model.InputHandler;
+
 public class ConsoleView {
 
-    public String getCarNames(){
+    private final InputHandler inputHandler = new InputHandler();
+
+    public String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return readLine();
+
+        String carNames = readLine();
+        return inputHandler.splitCarNames(carNames);
     }
 
-    public String getMoveCount(){
+    public int getMoveCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return readLine();
+
+        String moveCount = readLine();
+        return inputHandler.toInt(moveCount);
     }
 
 }

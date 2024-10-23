@@ -5,11 +5,11 @@ import view.ConsoleView;
 public class Application {
     public static void main(String[] args) {
 
-        // 1. 입력
+        // 1. 입력 & 2. 구분
         ConsoleView consoleView = new ConsoleView();
-        consoleView.getCarNames();
-        consoleView.getMoveCount();
+        String[] carNames = consoleView.getCarNames();
+        int moveCount = consoleView.getMoveCount();
 
-        // TODO: 입력 구조 정검 및 다음 기능들 구현
+        // TODO: 입력 구조 점검 및 다음 기능들 구현
     }
 }
