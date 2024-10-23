@@ -30,7 +30,7 @@ public class GameApplication {
 
         List<Cars> afterRaceCars = RacingApplication.race(gameNumber,
             Cars.makeOriginCars(carNames));
-        Result result = Result.of(afterRaceCars);
+        Result result = Result.of(afterRaceCars.subList(1, afterRaceCars.size()));
         List<String> winners = result.findWinners();
         printer.printAfterGameResult(result.finalResultCars());
         printer.printFinalWinner(winners);
