@@ -17,7 +17,15 @@ public class Prompt {
         System.out.println(output);
         Console.close();
     }
-    /**
-     * TODO - 레이싱 카 이동 거리 출력 메서드
-     */
+
+    public static void tracePrint(RacingCarTrace racingCarTrace) {
+        for (int i = 0; i < racingCarTrace.size(); i++) {
+            RacingCar racingCar = racingCarTrace.getRacingCar(i);
+            System.out.print(racingCar.name() + " : ");
+            for (int j = 0; j < racingCarTrace.getDistance(racingCar); j++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+    }
 }
