@@ -17,8 +17,7 @@ public class CarRacing {
 
     public void start() {
         enrollCars();
-        int trialCount = inputView.inputTrialCount();
-        startRounds(trialCount);
+        startRounds();
         printWinner();
     }
 
@@ -28,6 +27,16 @@ public class CarRacing {
         carNameList.forEach(name -> {
             carList.add(Car.of(name));
         });
+    }
+
+    private void startRounds() {
+        int trialCount = inputView.inputTrialCount();
+
+        System.out.println("\n실행 결과");
+        for (int round = 0; round < trialCount; round++) {
+            carList.forEach(Car::moveIfPossible);
+            outputView.printLeaderBoard(carList);
+        }
     }
 
     private void printWinner() {
@@ -51,14 +60,5 @@ public class CarRacing {
         }
 
         outputView.printWinners(winners);
-    }
-
-    private void startRounds(int trialCount) {
-        System.out.println("\n실행 결과");
-
-        for (int round = 0; round < trialCount; round++) {
-            carList.forEach(Car::moveIfPossible);
-            outputView.printLeaderBoard(carList);
-        }
     }
 }
