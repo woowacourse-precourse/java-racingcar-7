@@ -1,14 +1,18 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
-    public static List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(String carNames) {
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
 
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }
