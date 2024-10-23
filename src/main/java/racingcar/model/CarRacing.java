@@ -16,12 +16,18 @@ public class CarRacing {
     }
 
     public void start() {
-        List<String> carNameList = inputView.inputCarNames();
+        enrollCars();
         int trialCount = inputView.inputTrialCount();
-
-        carNameList.forEach(this::enroll);
         startRounds(trialCount);
         printWinner();
+    }
+
+    private void enrollCars() {
+        List<String> carNameList = inputView.inputCarNames();
+
+        carNameList.forEach(name -> {
+            carList.add(Car.of(name));
+        });
     }
 
     private void printWinner() {
@@ -54,9 +60,5 @@ public class CarRacing {
             carList.forEach(Car::moveIfPossible);
             outputView.printLeaderBoard(carList);
         }
-    }
-
-    private void enroll(String name) {
-        carList.add(Car.of(name));
     }
 }
