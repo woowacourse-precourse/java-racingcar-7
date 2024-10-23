@@ -15,10 +15,12 @@ public class InputView {
     private static final String DUPLICATE_ERROR_MESSAGE = "중복되지 않은 이름을 입력해야 합니다.";
     private static final String EMPTY_ERROR_MESSAGE = "올바른 값을 입력해야 합니다.";
     private static final String CAR_NUMBER_ERROR_MESSAGE = "자동차는 2개 이상을 입력해야 합니다.";
+    private static final String TRY_COUNT_NOT_NUMBER_ERROR_MESSAGE = "시도 횟수는 숫자를 입력해야 합니다.";
 
     private static final String DELIMITER = ",";
     private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
     private static final Integer MINIMUM_CAR_NUMBER = 2;
+    private static final String NUMBER_REGEX = "\\d+";
 
     public static List<Car> getCarNames() {
         String input = Console.readLine();
@@ -28,6 +30,19 @@ public class InputView {
         validateInputSize(carNames);
         validateDuplicate(carNames);
         return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+    }
+
+    public static int getTryCount() {
+        String input = Console.readLine();
+        validateTryCountNumber(input);
+
+        return Integer.parseInt(input);
+    }
+
+    private static void validateTryCountNumber(final String input) {
+        if(!input.matches(NUMBER_REGEX)) {
+            throw new IllegalArgumentException(TRY_COUNT_NOT_NUMBER_ERROR_MESSAGE);
+        }
     }
 
     private static void validateDelimiter(final String input) {

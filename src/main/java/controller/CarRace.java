@@ -8,5 +8,7 @@ public class CarRace {
     public static void start() {
         OutputView.printInputCarNames();
         InputView.getCarNames();
+        OutputView.printInputTryCount();
+        InputView.getTryCount();
     }
 }
