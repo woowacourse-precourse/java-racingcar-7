@@ -29,6 +29,10 @@ public class RacingGameController {
         for (int count = 0; count < gameAttemptCount; count++) {
             racingGameModel.attemptMove(cars);
             outputView.printCarStatus(cars);
+            outputView.printEmptyLine();
         }
+
+        List<String> winners = racingGameModel.getWinners(cars);
+        outputView.printWinners(winners);
     }
 }
