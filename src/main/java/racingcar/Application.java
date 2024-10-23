@@ -23,8 +23,8 @@ public class Application {
          */
         // 입력 받은 자동차 이름 문자열을 `쉼표(,)` 기준으로 분리한다.
         final String[] carNames = carNamesInput.split(",");
+        final List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            final List<Car> cars = new ArrayList<>();
             cars.add(new Car(carName));
         }
     }
