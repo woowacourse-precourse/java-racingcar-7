@@ -9,5 +9,7 @@ public class GameController {
         String carNames = InputView.readInput();
 
         OutputView.printInputRoundMessage();
+        String round = InputView.readInput();
+        int roundCount = Integer.parseInt(round);
     }
 }
