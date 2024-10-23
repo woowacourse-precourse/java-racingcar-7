@@ -7,7 +7,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public Integer getFrequency() {
+    public Integer getAttempts() {
         return Integer.parseInt(Console.readLine());
     }
 }
