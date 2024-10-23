@@ -24,6 +24,34 @@ public class Application {
             forwardWithRandomCondition(cars);
             outputStatus(cars);
         }
+
+        int maxStatus = findMaxStatus(cars);
+        List<String> winnersName = findWinners(cars, maxStatus);
+        outputWinners(winnersName);
+    }
+
+    private static void outputWinners(List<String> winnersName) {
+        String result = String.join(", ", winnersName);
+        System.out.println("최종 우승자 : " + result);
+    }
+
+    private static List<String> findWinners(List<Car> cars, int maxStatus) {
+        List<String> winnersName = new ArrayList<>();
+        for (Car car : cars) {
+            if (maxStatus == car.status()) {
+                winnersName.add(car.name());
+            }
+        }
+        return winnersName;
+    }
+
+    private static int findMaxStatus(List<Car> cars) {
+        int max = 0;
+        for (Car car : cars) {
+            max = Math.max(car.status(), max);
+        }
+
+        return max;
     }
 
     private static void forwardWithRandomCondition(List<Car> cars) {
