@@ -25,6 +25,8 @@ public class OutputHandler {
             System.out.print(pro.getKey());
             System.out.print(" : ");
             System.out.print("-".repeat(pro.getValue()));
+            System.out.println();
         }
+        System.out.println();
     }
 }
