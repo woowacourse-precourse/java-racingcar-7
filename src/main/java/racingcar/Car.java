@@ -12,6 +12,12 @@ public class Car {
         this.position = 0;
     }
 
+    public void move(final int randomNumber) {
+        if (randomNumber >= 4) {
+            position++;
+        }
+    }
+
     private void validateNameIsBlank(final String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");

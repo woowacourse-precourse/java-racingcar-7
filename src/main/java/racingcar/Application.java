@@ -48,8 +48,9 @@ public class Application {
 
         final int playTimes = Integer.parseInt(playTimesInput);
         for (int i = 0; i < playTimes; i++) {
-            for (int j = 0; j < cars.size(); j++) {
+            for (Car car : cars) {
                 final int randomNumber = Randoms.pickNumberInRange(0, 9);
+                car.move(randomNumber);
             }
         }
     }
