@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,5 +29,10 @@ public class CarRacing {
         if (attempts < 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void randomlyAccelerate(Car car) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        car.forwardOrStop(randomValue);
     }
 }
