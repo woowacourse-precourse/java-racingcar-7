@@ -84,8 +84,30 @@ class CarTest {
 
     //
     @Test
-    void maintainCurrentPosition_위치유지_이전위치유지() {
+    void maintainCurrentPosition_생성되고안움직일떄_이전위치유지() {
+        // given
+        String name = "test";
+        Car car = Car.createNamedCar(name);
 
+        // when
+        Car noMoveCar = car.maintainCurrentPosition();
+
+        // then
+        assertThat(noMoveCar.provideCurrentPosition()).isEqualTo(0);
+    }
+    @Test
+    void maintainCurrentPosition_움직인이후위치유지_이전위치유지() {
+        // given
+        String name = "test";
+        final int moveCount =10;
+
+        // when
+        Car car = Car.createNamedCar(name);
+        Car movedCar = car.increaseDistanceBy(moveCount);
+        Car stoppedCar = movedCar.maintainCurrentPosition();
+
+        // then
+        assertThat(stoppedCar.provideCurrentPosition()).isEqualTo(movedCar.provideCurrentPosition());
     }
     //
     @Test
@@ -114,7 +136,7 @@ class CarTest {
         assertThat(car.provideCurrentPosition()).isEqualTo(0);
     }
     @Test
-    void provideCurrentPosition_이동한후_현위치반환함(){
+    void provideCurrentPosition_이동한후_현위치반환(){
         // given
         String name = "test";
         final int stepCount = 10;

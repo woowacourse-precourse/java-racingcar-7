@@ -22,8 +22,8 @@ public class Car {
        );
     }
 
-    public void maintainCurrentPosition() {
-
+    public Car maintainCurrentPosition() {
+        return new Car(this.carName,this.distance);
     }
 
     public int provideCurrentPosition() {
