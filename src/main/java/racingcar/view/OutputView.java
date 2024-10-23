@@ -32,7 +32,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void displayWinner(OutputDTO raceResult) {
+    public void displayWinner(OutputDTO raceResult) {
         System.out.printf("%s : %s\n", OUTPUT_WINNER, raceResult.getWinners());
     }
 }
