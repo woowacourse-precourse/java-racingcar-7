@@ -19,4 +19,9 @@ public class Cars {
         return cars.size();
     }
 
+    public void move() {
+        for (Car car : cars){
+            car.move();
+        }
+    }
 }
