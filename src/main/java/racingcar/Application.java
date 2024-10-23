@@ -47,17 +47,20 @@ public class Application {
             }
         }
 
+        // 우승자의 position 추출
         int maxPosition = cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .orElseThrow(() -> new IllegalArgumentException("경주에 참가한 자동차가 없습니다."))
                 .getPosition();
 
+        // maxPosition과 같은 값을 가지는 자동차 추출
         List<String> winners = cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
+
+        //최종 우승자 출력
         String winnerNames = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerNames);
-
     }
 }
