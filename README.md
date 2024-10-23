@@ -71,6 +71,11 @@
 4. 로컬에서 git 원격 저장소에 업로드
 >git push origin bloodmoon3929
 
+5. 브랜치 합치기
+> git switch dev
+> git merge feat/Input
+> git push origin dev
+
 - 의미 있는 커밋 메시지
 ```text
     50자 이내의 요약문장과 설명문 사이에 빈 줄 하나를 만들것
