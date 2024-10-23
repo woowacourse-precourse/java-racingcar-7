@@ -27,13 +27,4 @@ public record Cars(
         }
         return longestDistance;
     }
-
-    public String makeResultOutput() {
-        StringBuilder resultString = new StringBuilder();
-        for (Car car : allCar) {
-            resultString.append(car.makingCarDistanceResult());
-            resultString.append('\n');
-        }
-        return resultString.toString();
-    }
 }

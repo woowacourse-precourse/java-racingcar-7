@@ -11,8 +11,4 @@ public record Car(
         }
         return car;
     }
-
-    public String makingCarDistanceResult() {
-        return name + " : " + "-".repeat(Math.max(0, distance));
-    }
 }
