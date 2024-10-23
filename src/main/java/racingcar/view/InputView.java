@@ -10,4 +10,8 @@ public class InputView {
         System.out.println(Constant.CAR_NAME_INPUT_MESSAGE);
         String inputString = Console.readLine();
     }
+
+    public int getAttemptCount() {
+        System.out.println(Constant.ATTEMPT_COUNT_INPUT_MESSAGE);
+    }
 }
