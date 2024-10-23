@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.car.exception.NoSeparatorException;
+import racingcar.constant.Separator;
+import racingcar.constant.View;
 
 public class InputView {
 
@@ -18,13 +21,14 @@ public class InputView {
 		return InputViewHolder.INSTANCE;
 	}
 
-	public List<String> readCarNames() {
-		String input = Console.readLine();
-		return splitCarNames(input);
+	public String readInput() {
+		System.out.println(View.CAR_NAME_INPUT.getConstant());
+		return Console.readLine();
 	}
 
-	private List<String> splitCarNames(String input) {
+	private List<String> splitBySeparator(String input) {
 		return Arrays.stream(input.split(","))
 			.toList();
 	}
+
 }
