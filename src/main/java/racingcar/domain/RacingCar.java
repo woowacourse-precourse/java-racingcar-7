@@ -1,13 +1,24 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.PlayerMaker;
+import racingcar.util.Racing;
+import racingcar.util.RandomNumberMaker;
+
+import java.util.List;
+
 public class RacingCar {
 
-    private final String players;
+    private final List<Player> playerList;
 
-    private final int count;
+    public RacingCar(String players) {
+        playerList = PlayerMaker.createPlayer(players);
+    }
 
-    public RacingCar(String players, int count) {
-        this.players = players;
-        this.count = count;
+    public List<Player> racing() {
+        for (Player player : playerList) {
+            Racing.racing(player, RandomNumberMaker.randomNumber());
+        }
+        return playerList;
     }
 }
