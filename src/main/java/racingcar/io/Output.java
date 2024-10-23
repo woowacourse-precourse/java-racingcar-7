@@ -1,5 +1,6 @@
 package racingcar.io;
 
+import java.util.List;
 import java.util.Map;
 
 public class Output {
@@ -13,9 +14,16 @@ public class Output {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
-    public void winner() {
-
+    public void winner(List<String> winnerList) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winnerList.size(); i++) {
+            System.out.print(winnerList.get(i));
+            if (i != winnerList.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
