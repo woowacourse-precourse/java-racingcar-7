@@ -15,6 +15,7 @@ public class Car {
         if (!canMove()) {
             return;
         }
+        currentPosition++;
         System.out.print(carName + " : ");
         for (int i = 0; i < currentPosition; i++) {
             System.out.print("-");
