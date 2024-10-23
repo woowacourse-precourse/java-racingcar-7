@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -19,8 +20,11 @@ public class InputView {
 
 	public List<String> readCarNames() {
 		String input = Console.readLine();
+		return splitCarNames(input);
+	}
 
-		// input을 쉼표를 기준으로 구분한 후 반환한다.
-		return List.of();
+	private List<String> splitCarNames(String input) {
+		return Arrays.stream(input.split(","))
+			.toList();
 	}
 }
