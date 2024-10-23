@@ -8,9 +8,18 @@ import java.util.List;
 public class CarRacing {
 
     private int attempts;
+    private final List<String> carList = new ArrayList<>();
 
-    public List<String> splitCarNamesByComma(String carNames) {
-        return new ArrayList<>(Arrays.asList(carNames.split(",")));
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public List<String> getCarList() {
+        return carList;
+    }
+
+    public void parseCarList(String carNames) {
+        carList.addAll(Arrays.asList(carNames.split(",")));
     }
 
     public void validateCarName(String carName) {
