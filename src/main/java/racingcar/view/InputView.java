@@ -6,17 +6,17 @@ import racingcar.exception.InputValidation;
 public class InputView {
 
     public String inputCarNames() {
-        String input = Console.readLine();
+        String carNames = Console.readLine();
 
-        validateInput(input);
+        validateCarNames(carNames);
 
-        return input;
+        return carNames;
     }
 
-    private void validateInput(String input) {
+    private void validateCarNames(String carNames) {
         InputValidation inputValidation = new InputValidation();
 
-        inputValidation.validateNullOrEmpty(input);
-        inputValidation.validateBlank(input);
+        inputValidation.validateNullOrEmpty(carNames);
+        inputValidation.validateBlank(carNames);
     }
 }
