@@ -1,24 +1,33 @@
 package racingcar.view;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.model.Round;
 
 public class OutputView {
-    public void printLeaderBoard(List<Car> carList) {
+    public void printRoundState(List<Round> roundList) {
         StringBuilder leaderBoard = new StringBuilder();
+        leaderBoard.append("\n실행 결과\n");
 
-        carList.forEach(car -> {
-            leaderBoard.append(car.getName())
-                    .append(" : ")
-                    .append("-".repeat(car.getPosition()))
-                    .append("\n");
+        roundList.forEach(round -> {
+            LinkedHashMap<String, Integer> state = round.getState();
+
+            state.sequencedEntrySet().forEach(entry -> {
+                leaderBoard.append(entry.getKey())
+                        .append(" : ")
+                        .append("-".repeat(entry.getValue()))
+                        .append("\n");
+            });
+
+            leaderBoard.append("\n");
         });
 
-        System.out.println(leaderBoard);
+        System.out.print(leaderBoard);
     }
 
-    public void printWinners(List<Car> winners) {
-        System.out.print("최종 우승자 : ");
-        winners.forEach(car -> System.out.print(car.getName() + " "));
+    public void printWinners(Round round) {
+        String winners = String.join(" ", round.findAllLeadingCars());
+
+        System.out.print("최종 우승자 : " + winners);
     }
 }

@@ -19,7 +19,7 @@ public class CarRacing {
     public void start() {
         enrollCars();
         startRounds();
-        printWinner();
+        printResult();
     }
 
     private void enrollCars() {
@@ -33,33 +33,14 @@ public class CarRacing {
     private void startRounds() {
         int trialCount = inputView.inputTrialCount();
 
-        System.out.println("\n실행 결과");
         for (int round = 0; round < trialCount; round++) {
             carList.forEach(Car::moveIfPossible);
             roundList.add(Round.of(carList));
         }
     }
 
-    private void printWinner() {
-        int maxValue = Integer.MIN_VALUE;
-        List<Car> winners = new ArrayList<>();
-
-        for (Car car : carList) {
-            int position = car.getPosition();
-
-            if (position > maxValue) {
-                maxValue = position;
-            }
-        }
-
-        for (Car car : carList) {
-            int position = car.getPosition();
-
-            if (position == maxValue) {
-                winners.add(car);
-            }
-        }
-
-        outputView.printWinners(winners);
+    private void printResult() {
+        outputView.printRoundState(roundList);
+        outputView.printWinners(roundList.getLast());
     }
 }
