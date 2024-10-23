@@ -68,3 +68,5 @@ racingcar
     - InvalidCarCountException("자동차는 1개 일 수 없습니다.")
 - 횟수가 숫자가 아닐때
     - InvalidAttemptCountException("시도할 횟수는 숫자여야합니다.")
+- 자동차 이름이 중복일 경우
+  - DuplicateCarNameException("자동차 이름이 중복될 수 없습니다.")
