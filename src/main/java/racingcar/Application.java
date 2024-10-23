@@ -11,6 +11,17 @@ import java.util.Map.Entry;
 
 public class Application {
 
+    public static void printWinners(LinkedHashMap<String, Integer> cars) {
+        List<String> winners = new ArrayList<>();
+
+        for (Entry<String, Integer> car : cars.entrySet()) {
+            if (car.getValue() == Collections.max(cars.values())) {
+                winners.add(car.getKey());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
     public static void moveCars(LinkedHashMap<String, Integer> cars) {
         for (Entry<String, Integer> car : cars.entrySet()) {
             if (canMove()) {
@@ -33,9 +44,6 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int totalMoves = Integer.parseInt(Console.readLine());
 
-//        List<String> names = List.of("pobi","woni","jun");
-//        int totalMoves = 5;
-
         System.out.println("실행 결과");
 
         LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
@@ -47,5 +55,7 @@ public class Application {
         for (int indexMoves = 0; indexMoves < totalMoves; indexMoves++) {
             moveCars(cars);
         }
+
+        printWinners(cars);
     }
 }
