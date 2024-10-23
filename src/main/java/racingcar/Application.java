@@ -5,10 +5,12 @@ public class Application {
         // TODO: 프로그램 구현
 
         //CarNameValidator carNameValidator = new CarNameValidator();
-        RacingGame racingGame = new RacingGame();
+        //RacingGame racingGame = new RacingGame();
+        WinnerValidator winnerValidator = new WinnerValidator();
         //carNameValidator.checkLengthCarNames();
         //carNameValidator.changeTryTimesNumber();
-        racingGame.getCarNumber();
+        //racingGame.getCarNumber();
+        winnerValidator.outputWinners(winnerValidator.findRacingWinners());
 
     }
 }
