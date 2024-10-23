@@ -14,14 +14,18 @@ public class Car {
         return new Car(carName);
     }
 
+    public void move(int number) {
+        if (number >= FORWARD_NUMBER) {
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
     }
 
-    public void move(int moveNum) {
-        if (moveNum >= FORWARD_NUMBER) {
-            position++;
-        }
+    public int getPosition() {
+        return position;
     }
 
     @Override
