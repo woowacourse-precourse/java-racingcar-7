@@ -19,39 +19,39 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
-    void convertCarNamesTest(){
+    void convertCarNamesTest() {
         assertSimpleTest(() -> {
             ArrayList<String> resultNames = carRacing.convertCarNames("pobi,woni,jun");
-            assertThat(resultNames).contains("pobi","woni","jun");
+            assertThat(resultNames).contains("pobi", "woni", "jun");
         });
     }
 
     @Test
-    void 예외_convertCarNamesTest(){
+    void 예외_convertCarNamesTest() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(()-> carRacing.convertCarNames("pobi;woni,jun")).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> carRacing.convertCarNames("pobi;woni,jun")).isInstanceOf(IllegalArgumentException.class);
         });
     }
 
     @Test
-    void convertAttemptsTest(){
+    void convertAttemptsTest() {
         assertSimpleTest(() -> {
             int resultCount = carRacing.convertAttempts("4");
             assertThat(resultCount).isEqualTo(4);
@@ -61,14 +61,14 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_convertAttemptsTest() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(()-> carRacing.convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> carRacing.convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
         });
     }
 
     @Test
     void createCarObjectsTest() {
         ArrayList<String> testNames = new ArrayList<>();
-        testNames.addAll(Arrays.asList("pobi","woni","jun"));
+        testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
         assertSimpleTest(() -> {
             ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
@@ -77,6 +77,17 @@ class ApplicationTest extends NsTest {
             }
         });
     }
+
+    @Test
+    void generateRandomValueTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThat(Application.Utils.generateRandomValue()).isEqualTo(4);
+                },
+                MOVING_FORWARD
+        );
+    }
+
 
     @Override
     public void runMain() {
