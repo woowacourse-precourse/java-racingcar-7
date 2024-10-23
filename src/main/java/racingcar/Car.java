@@ -12,6 +12,10 @@ public class Car implements Comparable<Car> {
         this.distance = 0L;
     }
 
+    public Long getDistance() {
+        return distance;
+    }
+
     public void execute(final int command) {
         if (command >= 4) {
             this.distance++;
