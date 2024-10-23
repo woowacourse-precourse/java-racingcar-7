@@ -14,6 +14,8 @@ public class Race {
                 name = name.trim();
                 cars.add(new Car(name));
             }
+            int raceCount = input.countInput();
+
         } catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return;
