@@ -29,7 +29,7 @@ public final class InputHandler {
         try {
             return Integer.parseInt(inputAttempt);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해야 합니다." + e);
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다. " + e);
         }
     }
 }
