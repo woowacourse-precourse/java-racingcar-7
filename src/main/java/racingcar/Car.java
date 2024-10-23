@@ -2,16 +2,24 @@ package racingcar;
 
 public class Car {
     private final CarName carName;
+    private final Distance distance;
 
-    private Car(String name){
-        this.carName = CarName.createCarName(name);
+    private Car(CarName carName, Distance distance){
+        this.carName = carName;
+        this.distance = distance;
     }
-    public static Car createNamedCar(String name){
-        return new Car(name);
+    public static Car createNamedCar(String carName){
+        return new Car(
+                CarName.createCarName(carName),
+                Distance.initialzeDistance()
+        );
     }
 
-    public void moveForwardPosition(int i) {
-
+    public Car increaseDistanceBy(int stepCount) {
+       return new Car(
+               this.carName,
+               this.distance.increaseDistanceBy(stepCount)
+       );
     }
 
     public void maintainCurrentPosition() {
@@ -19,10 +27,10 @@ public class Car {
     }
 
     public int provideCurrentPosition() {
-        return 0;
+        return this.distance.getValue();
     }
 
     public String provideCarName() {
-        return carName.getValue();
+        return this.carName.getValue();
     }
 }
