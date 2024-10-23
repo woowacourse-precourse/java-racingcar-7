@@ -11,6 +11,15 @@ import java.util.Map.Entry;
 
 public class Application {
 
+    public static void validateCharacters(List<String> names) {
+        String englishRegex = "a-zA-Z";
+        String koreanRegex = "가-힣";
+
+        if (!names.stream().allMatch(name -> name.matches("^[" + englishRegex + koreanRegex + "]*$"))) {
+            throw new IllegalArgumentException("이름에 허용되지 않는 문자가 들어가 있습니다 (한국어+영어만 가능).");
+        }
+    }
+
     public static void printWinners(LinkedHashMap<String, Integer> cars) {
         List<String> winners = new ArrayList<>();
 
@@ -39,7 +48,11 @@ public class Application {
     public static void main(String[] args) {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        List<String> names = Arrays.asList(Console.readLine().split(","));
+        List<String> names = Arrays.asList(Console.readLine()
+                .replace(" ", "")
+                .split(","));
+
+        validateCharacters(names);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int totalMoves = Integer.parseInt(Console.readLine());
