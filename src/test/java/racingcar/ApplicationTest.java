@@ -38,6 +38,13 @@ class ApplicationTest extends NsTest {
                 .hasMessage("쉼표 이후에 자동차 이름이 존재하지 않습니다");
     }
 
+    @Test
+    void 예외_테스트_시도횟수() {
+        assertThatThrownBy(() -> runException("pobi,java", "-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수가 자연수가 아닙니다");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
