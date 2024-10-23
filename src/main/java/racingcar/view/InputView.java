@@ -1,16 +1,19 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.exception.InputValidation;
+import racingcar.util.Convertor;
 
 public class InputView {
 
-    public String inputCarNames() {
+    public List<String> inputCarNames() {
         String carNames = Console.readLine();
 
         validateCarNames(carNames);
 
-        return carNames;
+        String[] splitCarNames = carNameSplit(carNames);
+        return Convertor.toList(splitCarNames);
     }
 
     private void validateCarNames(String carNames) {
@@ -18,5 +21,9 @@ public class InputView {
 
         inputValidation.validateNullOrEmpty(carNames);
         inputValidation.validateBlank(carNames);
+    }
+
+    private String[] carNameSplit(String carNames) {
+        return carNames.split(",");
     }
 }
