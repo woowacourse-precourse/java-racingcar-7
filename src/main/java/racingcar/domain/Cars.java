@@ -19,11 +19,15 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String carsInput) {
+        carsInput= removeBlank(carsInput);
         validateDuplicatedName(carsInput);
         validateOutOfRangeName(carsInput);
-
         this.cars = makeCarList(carsInput);
 
+    }
+
+    private String removeBlank(String carsInput) {
+        return carsInput.replace(" ","");
     }
 
     private List<Car> makeCarList(String carsInput) {
