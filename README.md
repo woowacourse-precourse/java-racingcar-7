@@ -12,7 +12,8 @@
 
 ## 구현할 기능 목록
 ### 자동차 달리기
-- [ ] 자동차 추가 하기
+- [x] 자동차 추가 하기
+  - [x] `pobi, pobi`처럼 중복 이름이 있는 경우 `IllegalArgumentException`
 - [x] 자동차 거리 전진
   - [x] `0,1,2,3` : 이동하지 않음 / `4,5,6,7,8,9`: 전진
 
@@ -24,7 +25,6 @@
   - [ ] 자동차 이름을 입력받기
     - [ ] `pobi, woni, jun`처럼 ` `이 있는 경우와 `pobi,woni,jun`처럼 공백이 없는 경우 정상 작동
     - [ ] `,,`같은 입력 `IllegalArgumentException`
-    - [ ] `pobi, pobi`처럼 중복 이름이 있는 경우 `IllegalArgumentException`
     - [ ] `,pobi,woni`, `pobi,woni,` 처럼 끝에 `,`가 있는 경우 `IllegalArgumentException`
   - [ ] 시도 횟수를 입력받기
     - [ ] 숫자가 아닌 경우 `IllegalArgumentException`
