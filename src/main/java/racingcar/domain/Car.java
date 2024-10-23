@@ -5,17 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
 
     private final String name;
-    private int distance;
+    private int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
-        this.distance = 0;
+        this.position = 0;
     }
 
     public void move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            distance += 1;
+            position += 1;
         }
     }
 
