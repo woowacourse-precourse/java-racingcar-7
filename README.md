@@ -2,7 +2,9 @@
 
 
 ---
-
+<p align="center">
+    <img src="src/main/resources/logo.png" alt="우아한테크코스" width="250px">
+</p>
 
 ---
 
