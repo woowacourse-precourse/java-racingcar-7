@@ -19,12 +19,8 @@ public class OutputView {
         System.out.println();
     }
 
-    private static String drawCountBar(Integer integer) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < integer; i++) {
-            sb.append(COUNT_BAR);
-        }
-        return sb.toString();
+    private static String drawCountBar(Integer goCount) {
+        return COUNT_BAR.repeat(goCount);
     }
 
     public static void printFinalResult(List<String> finalResult) {
