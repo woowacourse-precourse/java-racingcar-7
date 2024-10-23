@@ -39,13 +39,18 @@
 - [x] : 전진 횟수를 기준으로 우승자를 판별한 후, (한 명 이상 가능) 우승자를 출력한다. (여러명일 겨우 쉼표 구분)
 - [x] : 자동차 이름 5자 초과 시 예외를 던진다.
 
+### 리펙터링
+
+- [x] : 클래스 분리 설계도 시각화
+- [x] : 클리스 분리 구현 (car, runner, creator, game, inputReader)
+
 <br/>
 
 ## ✨ 프로그래밍 요구사항
 
 - [ ] : indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다. 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-- [ ] : 3항 연산자를 쓰지 않는다.
+- [x] : 3항 연산자를 쓰지 않는다.
 - [ ] : 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ] : JUnit5 와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
-- [ ] : Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+- [x] : JUnit5 와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
+- [x] : Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
 - [x] : 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
