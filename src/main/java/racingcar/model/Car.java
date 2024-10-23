@@ -1,12 +1,14 @@
 package racingcar.model;
 
+import racingcar.exceptions.ValidateError;
+
 public class Car {
     private String carName;
     private int score;
 
-    public Car(String carName, int score) {
+    public Car(String carName) {
+        ValidateError.validateCarName(carName);
         this.carName = carName;
-        this.score = score;
     }
 
     public String getCarName() {
