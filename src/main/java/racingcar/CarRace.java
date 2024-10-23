@@ -38,27 +38,27 @@ public class CarRace {
         return Randoms.pickNumberInRange(0, 9) > 4;
     }
 
-    private static void printRaceStaus(Map<String, String> playerMap){
+    private static void printRaceStaus(Map<String, String> carMap){
         System.out.println("실행 결과");
-        for (String str : playerMap.keySet()) {
-            System.out.println(str + " : " + playerMap.get(str));
+        for (String str : carMap.keySet()) {
+            System.out.println(str + " : " + carMap.get(str));
         }
         System.out.println();
     }
 
-    private static List<String> determineRaceWinners(Map<String, String> playerMap, String[] playerNames){
-        Map<String, Integer> playerWithMoveCounts = new HashMap<>();
-        for (int i = 0; i < playerMap.size(); i++) {
-            playerWithMoveCounts.put(playerNames[i], playerMap.get(playerNames[i]).length());
+    private static List<String> determineRaceWinners(Map<String, String> carMap, String[] carNames){
+        Map<String, Integer> carsWithMoveCount = new HashMap<>();
+        for (int i = 0; i < carMap.size(); i++) {
+            carsWithMoveCount.put(carNames[i], carMap.get(carNames[i]).length());
         }
 
-        Collection<Integer> values = playerWithMoveCounts.values();
+        Collection<Integer> values = carsWithMoveCount.values();
         Integer max = Collections.max(values);
 
         List<String> winner = new ArrayList<>();
-        for (int i = 0; i < playerMap.size(); i++) {
-            if(playerMap.get(playerNames[i]).length() == max){
-                winner.add(playerNames[i]);
+        for (int i = 0; i < carMap.size(); i++) {
+            if(carMap.get(carNames[i]).length() == max){
+                winner.add(carNames[i]);
             }
         }
 
