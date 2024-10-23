@@ -9,6 +9,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int n = Integer.parseInt(Console.readLine());
 
-        RacingCarRunner.run(cars.split(","), n);
+        RacingCarRunner runner = new RacingCarRunner(cars.split(","), n);
+        runner.run();
     }
 }
