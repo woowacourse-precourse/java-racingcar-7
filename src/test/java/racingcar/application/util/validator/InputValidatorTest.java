@@ -58,7 +58,7 @@ class InputValidatorTest {
         @ParameterizedTest(name = "({index}) {0} ==> IllegalArgumentException")
         @ValueSource(
                 strings = {
-                        "   ", "\n", ",woni,jun", ",,,", ",woni,"
+                        "   ", "\n", ",woni,jun", ",,,", ",woni,", "pobi,pobi,pobi"
                 }
         )
         @DisplayName("잘못된 형식으로 이름을 입력할 경우, IllegalArgumentException 발생")
