@@ -5,21 +5,25 @@ import java.util.ArrayList;
 
 public class RacingCarApp {
     private ArrayList<Car> cars = new ArrayList<>();
+    private ArrayList<String> winnerList = new ArrayList<>();
 
     public void run() {
         String inputData = getCarInput();
         int attemptCount = getAttemptCount();
         makeCar(inputData);
+        System.out.println("실행 결과");
         while (attemptCount > 0) {
             carsMove();
             attemptCount--;
         }
+        printWinners();
     }
 
     public void carsMove() {
         for (Car car : cars) {
             car.move();
         }
+        System.out.println();
     }
 
     public String getCarInput() {
@@ -46,6 +50,29 @@ public class RacingCarApp {
         if (carName.length() > 5) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition,car.getCurrentPosition());
+        }
+        return maxPosition;
+    }
+
+    public void winnerCheck(Car car,int maxPosition) {
+        if (car.getCurrentPosition() == maxPosition) {
+            winnerList.add(car.getCarName());
+        }
+    }
+
+    public void printWinners() {
+        int maxPosition = findMaxPosition();
+        for (Car car : cars) {
+            winnerCheck(car,maxPosition);
+        }
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(",", winnerList));
     }
 
     public ArrayList<Car> getCars() {
