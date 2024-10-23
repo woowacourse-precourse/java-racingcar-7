@@ -41,5 +41,8 @@ public class Application {
         if (playTimesInput.isBlank()) {
             throw new IllegalArgumentException("빈 문자열은 입력할 수 없습니다.");
         }
+        if (!playTimesInput.matches("^[1-9]\\d*$")) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수이어야 합니다.");
+        }
     }
 }
