@@ -35,13 +35,13 @@ public class Car {
     public boolean equals(Object o) {
         if (o instanceof Car) {
             Car castedCar = (Car) o;
-            return name.equals(castedCar.getName()) && distance == castedCar.getDistance();
+            return name.equals(castedCar.getName());
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, distance);
+        return Objects.hash(name);
     }
 }
