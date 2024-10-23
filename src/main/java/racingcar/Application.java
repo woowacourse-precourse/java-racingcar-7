@@ -9,18 +9,18 @@ import java.util.HashMap;
 
 public class Application {
 
-    public static HashMap<String, Integer> getUserInfo() {
+    public static HashMap<String, String> getUserInfo() {
         String input = Console.readLine();
         String[] StrArr_Name = input.split(",");
         int times = Integer.parseInt(Console.readLine());
-        HashMap<String, Integer> scoreMap = new HashMap<>();
+        HashMap<String, String> scoreMap = new HashMap<>();
         for (String name:StrArr_Name) {
-            scoreMap.put(name, 0);
+            scoreMap.put(name, "");
         }
         for (int i = 0; i < times; i++) {
             for (String name:scoreMap.keySet()) {
                 if (Randoms.pickNumberInRange(0,9) >= 4){
-                    int step = scoreMap.get(name) + 1;
+                    String step = scoreMap.get(name) + "-";
                     scoreMap.put(name, step);
                 }
                 System.out.println(name + " : " + scoreMap.get(name));
@@ -29,11 +29,15 @@ public class Application {
         }
         return scoreMap;
     }
-    public static ArrayList findWinner(HashMap<String, Integer> scoreMap) {
-        Integer winnerScore = Collections.max(scoreMap.values());
+    public static ArrayList findWinner(HashMap<String, String> scoreMap) {
+        HashMap<String, Integer> WinnerArray = new HashMap<>();
+        for (String name:scoreMap.keySet()){
+            WinnerArray.put(name, scoreMap.get(name).length());
+        }
+        int winnerScore = Collections.max(WinnerArray.values());
         ArrayList<String> ArrWinner = new ArrayList<>(scoreMap.size());
-        for (String name:scoreMap.keySet()) {
-            if (scoreMap.get(name).equals(winnerScore)) {
+        for (String name:WinnerArray.keySet()) {
+            if (WinnerArray.get(name).equals(winnerScore)) {
                 ArrWinner.add(name);
             }
         }
@@ -42,8 +46,9 @@ public class Application {
 
 
     public static void main(String[] args){
-        HashMap<String, Integer> scoreMap = getUserInfo();
+        HashMap<String, String> scoreMap = getUserInfo();
         ArrayList arrayList = findWinner(scoreMap);
+        System.out.print("최종 우승자 : ");
         for(Object s:arrayList){
             System.out.print(s);
             if (s != arrayList.get(arrayList.size()-1)){
