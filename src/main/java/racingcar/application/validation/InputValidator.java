@@ -2,7 +2,7 @@ package racingcar.application.validation;
 
 import static racingcar.infrastructure.exception.ErrorCode.*;
 
-class InputValidator {
+public class InputValidator {
 
     private final static String COMMAS = ",,";
     private final static int MINIMUM_ROUND_CRITERION = 1;
