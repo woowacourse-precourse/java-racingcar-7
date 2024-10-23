@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.common.exception.CarValidationError;
 import racingcar.model.Name;
 
 class NameTest {
@@ -17,15 +18,17 @@ class NameTest {
     void nullNameExceptionTest() {
         // given, when, then
         assertThatThrownBy(() -> Name.from(null))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CarValidationError.NULL_OR_EMPTY_NAME_EXCEPTION.getMessage());
     }
 
     @Test
     @DisplayName("이름이 빈 문자열인 경우 예외가 발생해야 한다.")
     void emptyNameExceptionTest() {
         // given, when, then
-        assertThatThrownBy(() -> Name.from(" "))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Name.from(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CarValidationError.NULL_OR_EMPTY_NAME_EXCEPTION.getMessage());
     }
 
     @ParameterizedTest
@@ -59,12 +62,13 @@ class NameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"name.", "na me", "ㅎㄱㄷ", "홍길동!", "", " ", "name1"})
+    @ValueSource(strings = {"name.", "na me", "ㅎㄱㄷ", "홍길동!", " ", "name1"})
     @DisplayName("이름이 영어 또는 한글이 아니라면 예외가 발생해야 한다.")
     void nameFormExceptionTest(String value) {
         // when, then
         assertThatThrownBy(() -> Name.from(value))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CarValidationError.INVALID_NAME_FORMAT_EXCEPTION.getMessage());
     }
 
     @Test
@@ -75,6 +79,7 @@ class NameTest {
 
         // when, then
         assertThatThrownBy(() -> Name.from(value))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CarValidationError.EXCEEDS_MAX_LENGTH_EXCEPTION.getMessage(5));
     }
 }

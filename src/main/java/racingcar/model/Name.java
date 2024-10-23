@@ -1,11 +1,12 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.common.exception.CarException;
+import racingcar.common.exception.CarValidationError;
 
 public class Name {
 
     private static final int NAME_MAX_LENGTH = 5;
-    private static final String ERROR_PREFIX = "[ERROR] ";
     private static final String NAME_FORMAT_PATTERN = "^[a-zA-Z가-힣]+$";
 
     private final String value;
@@ -48,19 +49,19 @@ public class Name {
 
     private void checkNullOrEmpty(final String value) {
         if (value == null || value.isEmpty()) {
-            throw new IllegalArgumentException(ERROR_PREFIX + "이름은 null 또는 빈 문자열일 수 없습니다.");
+            throw new CarException(CarValidationError.NULL_OR_EMPTY_NAME_EXCEPTION.getMessage());
         }
     }
 
     private void checkNameFormat(final String value) {
         if (!value.matches(NAME_FORMAT_PATTERN)) {
-            throw new IllegalArgumentException(ERROR_PREFIX + "이름은 영어 또는 한글로만 이루어져 있어야 합니다.");
+            throw new CarException(CarValidationError.INVALID_NAME_FORMAT_EXCEPTION.getMessage());
         }
     }
 
     private void checkNameLength(final int length) {
         if (length > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(ERROR_PREFIX + "이름은 " + NAME_MAX_LENGTH + "자 이하여야 합니다.");
+            throw new CarException(CarValidationError.EXCEEDS_MAX_LENGTH_EXCEPTION.getMessage(NAME_MAX_LENGTH));
         }
     }
 }
