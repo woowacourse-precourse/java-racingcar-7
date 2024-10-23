@@ -61,6 +61,48 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("player의 이름이 특수문자이면 예외가 발생한다.")
+    void playersInputTest4() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pobi,?!@!,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("player의 이름이 한글이라도 단어가 아니면 예외가 발생한다.")
+    void playersInputTest5() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pobi,ㅁㄱ,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName(",(쉼표)가 연속으로 입력되면 예외가 발생한다.")
+    void playersInputTest6() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pobi,,,,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("player 중간에 숫자가 들어가면 예외가 발생한다.")
+    void playersInputTest7() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pob1,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("player 중간에 초성이 들어가면 예외가 발생한다.")
+    void playersInputTest8() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pobㄱ,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("player 중간에 특수문자가 들어가면 예외가 발생한다.")
+    void playersInputTest9() {
+        assertThatThrownBy(() -> PlayerValidation.validation("pob?,java"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
     void cratePlayerListTest() {
         // give
