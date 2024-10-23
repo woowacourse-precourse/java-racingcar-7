@@ -32,7 +32,7 @@ public class RacingController {
             printCarsStatus(cars);
         }
 
-
+        printWinners(cars);
     }
 
     private String getCarInput() {
@@ -77,5 +77,30 @@ public class RacingController {
             outputView.printCarStatus(car.getName(), car.getStatus());
         }
         outputView.printNewLine();
+    }
+
+    private void printWinners(List<Car> cars) {
+        List<String> winners = determineWinners(cars);
+
+        outputView.printWinners(winners);
+    }
+
+    private List<String> determineWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        int maxStatus = 0;
+
+        for (Car car : cars) {
+            if (maxStatus < car.getStatus()) {
+                maxStatus = car.getStatus();
+            }
+        }
+
+        for (Car car : cars) {
+            if (car.getStatus() == maxStatus) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
     }
 }
