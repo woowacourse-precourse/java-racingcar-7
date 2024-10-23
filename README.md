@@ -28,6 +28,7 @@
     - [x] `,,`같은 입력 `IllegalArgumentException`
       - [x] `a,,b,c`나 `,,,`
     - [x] `,pobi,woni`, `pobi,woni,` 처럼 끝에 `,`가 있는 경우 `IllegalArgumentException`
+    - [ ] 1글자 이상 5자 이하의 이름만 가능하다. 충족되지 않으먄 `IllegalArgumentException`
   - [x] 시도 횟수를 입력받기
     - [x] 숫자가 아닌 경우 `IllegalArgumentException`
     - [x] 음수를 입력한 경우 `IllegalArgumentException`
