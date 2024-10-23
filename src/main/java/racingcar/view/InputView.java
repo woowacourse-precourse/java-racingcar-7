@@ -37,7 +37,7 @@ public class InputView {
 			throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
 		}
 		try {
-			return Integer.parseInt(Console.readLine());
+			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
 		}
