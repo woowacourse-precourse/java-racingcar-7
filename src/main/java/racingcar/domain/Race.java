@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Race {
     private final List<Car> cars;
-    private final int tryCount;
 
-    public Race(List<String> carNames, int tryCount) {
+    public Race(List<String> carNames) {
         this.cars = createCars(carNames);
-        this.tryCount = tryCount;
     }
 
     private static List<Car> createCars(List<String> carNames) {
