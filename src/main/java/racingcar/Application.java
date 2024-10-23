@@ -6,7 +6,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -38,7 +37,7 @@ public class Application {
             for (Car car : cars) {
                 int number = pickNumberInRange(0, 9);
                 if (number >= 4) {
-                    car.move();// 자동차를 움직인다.
+                    car.move();
                 }
             }
             // 경주의 현재 상태를 출력한다.
