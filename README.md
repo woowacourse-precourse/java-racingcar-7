@@ -80,26 +80,36 @@
     </tr>
     <!--------------------(새로운 Class)----------------------------->
     <tr>
-      <td rowspan="1" style="padding: 10px;">전진, 멈춤 판단<br>(DetermineRandomNum)</td>
-      <td style="padding: 10px;">랜덤하게 뽑은 수가 4이상인지 판단<br>(randomMore4)</td>
+      <td rowspan="3" style="padding: 10px;">자동차 경주<br>(CarRacing)</td>
+      <td style="padding: 10px;">경주 시작<br>(start)</td>
       <td style="padding: 10px;">
         <ul>
-            <li>0~9 사이에서 무작위 값 구하기</li>
-            <li>4이상인지 판단하기</li>
+            <li>시도 횟수대로 랜덤 수 뽑기와 진행 결과 출력 진행</li>
+        </ul>
+      </td>
+    </tr><!-------------------------------------------------><tr>
+      <td style="padding: 10px;">모든 차량이 랜덤 수를 뽑음<br>(pickRandom)</td>
+      <td style="padding: 10px;">
+        <ul>
+            <li>차량 각각이 0~9 사이에서 무작위 값 뽑음</li>
         </ul>
       </td><td style="padding: 10px;">
         <ol>
-            <li>각 자동차의 전진/멈춤 결과 저장할 새로운 boolean 형 리스트를 0으로 초기화하여 생성</li>
-            <li>랜덤 수 받기</li>
-            <li>랜덤 수가 4 이상인지 판단</li>
-            <li>4 이상일 경우 해당 요소의 값 +1</li>
-            <li>전진/멈춤 결과 저장한 리스트 반환</li>
+            <li>각 자동차가 0~9 사이의 랜덤 수를 뽑음</li>
+            <li>랜덤 수가 4이상인지 판단</li>
         </ol>
+      </td>
+    </tr><!-------------------------------------------------><tr>
+      <td style="padding: 10px;">랜덤하게 뽑은 수가 4이상인지 판단<br>(determineMore4)</td>
+      <td style="padding: 10px;">
+        <ul>
+            <li>입력받은 수가 4 이상이라면 해당 차의 전진 횟수 +1</li>
+        </ul>
       </td>
     </tr>
     <!--------------------(새로운 Class)----------------------------->
     <tr>
-      <td rowspan="2" style="padding: 10px;">결과 출력<br>(Result)</td>
+      <td rowspan="3" style="padding: 10px;">결과 출력<br>(Result)</td>
       <td style="padding: 10px;">진행 결과 출력<br>(printOngoing)</td>
       <td style="padding: 10px;">
         <ul>
@@ -112,6 +122,18 @@
         <ul>
             <li>입력받은 리스트에서 가장 큰 값을 가지는 항목(여러개 가능) 출력</li>
         </ul>
+      </td>
+    </tr><!-------------------------------------------------><tr>
+      <td style="padding: 10px;">입력값 비교<br>(compareValue)</td>
+      <td style="padding: 10px;">
+        <ul>
+            <li>입력 값을 비교해가며 최종 우승자(여러명 가능) 판단</li>
+        </ul>
+      </td><td style="padding: 10px;">
+        <ol>
+            <li>현재 비교 값이 가장 큰 값보다 크다면, 지금까지 우승자라고 여겨졌던 자동차의 이름을 지우고 현재 자동차의 이름을 저장, 가장 큰 값은 현재 값으로 변경</li>
+            <li>현재 비교 값이 가장 큰 값과 같다면, 우승자 항목에 현재 자동차의 이름 추가</li>
+        </ol>
       </td>
     </tr>
   </tbody>
