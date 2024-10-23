@@ -18,5 +18,7 @@ public class CarController {
     public void run() {
         outputView.printStartMessage();
         ArrayList<String> carNames = inputView.readCarNames();
+        outputView.printAttemptMessage();
+        int attemps = inputView.readAttempts();
     }
 }

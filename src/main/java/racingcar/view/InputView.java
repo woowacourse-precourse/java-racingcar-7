@@ -14,4 +14,9 @@ public class InputView {
 
         return Arrays.stream(carNames).collect(Collectors.toCollection(ArrayList::new));
     }
+
+    public int readAttempts(){
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }
