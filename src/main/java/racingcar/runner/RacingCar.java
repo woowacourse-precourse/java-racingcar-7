@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.runner.dto.CarDto;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingCar {
@@ -57,5 +58,12 @@ public class RacingCar {
 
     private void printRoundResult(CarDto car) {
         System.out.printf("%s : %s%n", car.getCarName(), "-".repeat(car.getMovementStatus()));
+    }
+
+    private int getMaxMovement() {
+        return cars.stream()
+            .max(Comparator.comparingInt(CarDto::getMovementStatus))
+            .map(CarDto::getMovementStatus)
+            .orElse(0);
     }
 }
