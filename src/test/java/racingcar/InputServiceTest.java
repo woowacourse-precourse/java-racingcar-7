@@ -2,10 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import racingcar.model.exception.CarNameLengthExceededException;
-import racingcar.model.exception.InvalidAttemptCountException;
-import racingcar.model.exception.InvalidCarCountException;
-import racingcar.model.exception.MissingInputValueException;
+import racingcar.model.exception.*;
 import racingcar.model.service.InputService;
 
 import java.util.Arrays;
@@ -80,11 +77,20 @@ public class InputServiceTest extends NsTest {
     }
 
     @Test
-    void 이름_입력값_갯수_검증(){
+    void 예외_테스트_이름_입력값_갯수_검증(){
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi","2"))
                         .isInstanceOf(InvalidCarCountException.class)
                         .hasMessageContaining("자동차는 1개 일 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복_이름(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi,woni","2"))
+                        .isInstanceOf(DuplicateCarNameException.class)
+                        .hasMessageContaining("자동차 이름이 중복될 수 없습니다.")
         );
     }
 
