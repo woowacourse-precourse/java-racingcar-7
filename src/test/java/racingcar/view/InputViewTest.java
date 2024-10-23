@@ -36,4 +36,37 @@ public class InputViewTest {
 			inputView.splitNames(input);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("시도 횟수가 숫자로만 입력되었는지 검증한다.")
+	public void isNumberCount() {
+	    // GIVEN
+		String input = "ab12c";
+
+	    // WHEN - THEN
+		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("정확한 시도 횟수를 반환한다.")
+	public void parseNumber() {
+	    // GIVEN
+		String input = "9999";
+
+	    // WHEN
+		Integer result = inputView.parseCount(input);
+
+		// THEN
+		assertThat(result).isEqualTo(9999);
+	}
+
+	@Test
+	@DisplayName("Int 범위를 넘어가는 숫자는 예외를 발생시킨다.")
+	public void isIntRange() {
+	    // GIVEN
+		String input = "2147483648";
+
+	    // WHEN - THEN
+		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+	}
 }
