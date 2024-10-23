@@ -33,7 +33,7 @@ public class CarList {
 	}
 
 	private void addCar(String name) {
-		cars.add(new Car(name));
+		cars.add(new Car(name.trim()));
 	}
 
 	public Optional<String> getWinner() {

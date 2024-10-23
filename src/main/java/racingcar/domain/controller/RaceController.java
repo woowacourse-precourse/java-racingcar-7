@@ -26,10 +26,13 @@ public class RaceController {
 	public void run() {
 		receiveCarNames();
 		int lap = receiveRaceLap();
+
+		raceView.startLap();
 		for (int i = 0; i < lap; ++i) {
 			getLapResult();
+			raceView.nextLap();
 		}
-		getWinner();
+		raceView.displayWinner(getWinner());
 	}
 
 	public void receiveCarNames() {
@@ -53,6 +56,7 @@ public class RaceController {
 		for (int i = 0; i < carList.getCount(); ++i) {
 			Car car = carList.getCar(i);
 			moveForwardTargetCar(car);
+			displayRaceStatus(car);
 		}
 	}
 
@@ -62,6 +66,10 @@ public class RaceController {
 
 	private void moveForwardTargetCar(Car car) {
 		car.moveForward(pickNumberInRange());
+	}
+
+	private void displayRaceStatus(Car car) {
+		raceView.displayCarPosition(car.getName(), car.getPosition());
 	}
 
 	private String getWinner() {
@@ -95,7 +103,8 @@ public class RaceController {
 	}
 
 	private boolean isInvalidName(String name) {
-		return name.isEmpty() || name.length() > MAX_CAR_NAME_LENGTH || name.matches(EMPTY_INPUT_REGEX);
+		String trimName = name.trim();
+		return trimName.isEmpty() || trimName.length() > MAX_CAR_NAME_LENGTH || trimName.matches(EMPTY_INPUT_REGEX);
 	}
 
 	private boolean hasInvalidName(String[] names) {
