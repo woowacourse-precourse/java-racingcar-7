@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.presentation;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -10,6 +11,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.ErrorMessage;
 
 class InputViewTest {
     private InputView inputView;
@@ -29,7 +33,7 @@ class InputViewTest {
     void getCarNames_Success() {
         String carNames = "pobi,DK,jun";
         getSystemInput(carNames);
-        Assertions.assertThat(inputView.getCarsNames()).isEqualTo(carNames);
+        Assertions.assertThat(inputView.getCarNames()).isEqualTo(carNames);
     }
 
     @Test
@@ -38,7 +42,7 @@ class InputViewTest {
         String emptyLine = "";
         getSystemInput(emptyLine);
 
-        assertThatThrownBy(() -> inputView.getCarsNames())
+        assertThatThrownBy(() -> inputView.getCarNames())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NO_LINES_FOUND.getMessage());
     }
@@ -55,9 +59,16 @@ class InputViewTest {
         };
         System.setIn(mockIn);
 
-        assertThatThrownBy(() -> inputView.getCarsNames())
+        assertThatThrownBy(() -> inputView.getCarNames())
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage(exceptionMessage);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "100000"})
+    void getTrialCount_InvalidInput(String invalidInput) {
+        getSystemInput(invalidInput);
+        assertDoesNotThrow(() -> inputView.getTrialCount());
     }
 
     private static void getSystemInput(String emptyLine) {
