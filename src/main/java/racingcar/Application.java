@@ -15,7 +15,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int round = Integer.parseInt(readLine());
 
-        GameContext gameContext = new GameContext(playerNameInput, round);
+        GameContext gameContext = GameContext.getGameContext(playerNameInput, round);
 
         System.out.println("실행 결과");
         gameContext.run(()-> Randoms.pickNumberInRange(0, 9));
@@ -23,6 +23,8 @@ public class Application {
 
         System.out.print("최종 우승자 : " + String.join(",", gameResult));
     }
+
+
 
 
 }

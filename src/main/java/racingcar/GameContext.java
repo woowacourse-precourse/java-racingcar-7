@@ -8,16 +8,10 @@ import java.util.function.Supplier;
 
 public class GameContext {
 
-    private final List<Player> players = new ArrayList<>();
+    private final List<Player> players;
     private final int round;
 
-    public GameContext(String playerInput, int round) {
-        for (String playerName : playerInput.split(",")) {
-            if (playerName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            players.add(new Player(playerName));
-        }
+    private GameContext(List<Player> players, int round) {
         if (players.size() > 100) {
             throw new IllegalArgumentException();
         }
@@ -25,7 +19,18 @@ public class GameContext {
         if (round > 10_000 || round <= 0) {
             throw new IllegalArgumentException();
         }
+        this.players = players;
         this.round = round;
+    }
+    public static GameContext getGameContext(String playerNameInput, int round) {
+        List<Player> players = new ArrayList<>();
+        for (String playerName : playerNameInput.split(",")) {
+            players.add(new Player(playerName, () -> Randoms.pickNumberInRange(0, 9)));
+        }
+        return new GameContext(players, round);
+    }
+    public static GameContext getGameContext(List<Player> players, int round) {
+        return new GameContext(players, round);
     }
 
     public List<Player> getPlayers() {
@@ -38,7 +43,7 @@ public class GameContext {
 
     public void run(Supplier<Integer> pickUpLogic){
         for (int i = 0; i < round; i++) {
-            playRound(pickUpLogic);
+            playRound();
         }
     }
 
@@ -57,10 +62,9 @@ public class GameContext {
         return getWinnersNameList(winner);
     }
 
-    private void playRound(Supplier<Integer> pickUpLogic) {
+    private void playRound() {
         for (Player player : players) {
-            int pick = pickUpLogic.get();
-            player.move(pick);
+            player.move();
             player.printPlace();
         }
         System.out.println();
