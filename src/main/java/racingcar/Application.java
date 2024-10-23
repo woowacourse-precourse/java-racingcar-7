@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
@@ -27,6 +29,9 @@ public class Application {
                 // 예외 처리: 자동차 이름을 쉼표를 기준으로 분리한 후, `빈 문자열`일 때
                 throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
             }
+
+            final List<Car> cars = new ArrayList<>();
+            cars.add(new Car(carName));
         }
     }
 }
