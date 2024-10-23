@@ -1,13 +1,13 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
 
+    private static final RacingCar racingCar = new RacingCar();
 
     @Test
     public void 자동차이름목록_쉼표기준분리_테스트() throws Exception {
@@ -21,7 +21,7 @@ class RacingCarTest {
         int expectedSize = expectedCarList.size();
 
         //When
-        List<String> carList = Arrays.asList(carNames.split(","));
+        List<String> carList = racingCar.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
@@ -37,7 +37,7 @@ class RacingCarTest {
         int expectedSize = 2;
 
         //When
-        List<String> carList = Arrays.asList(carNames.split(","));
+        List<String> carList = racingCar.splitCarNamesByComma(carNames);
 
         //Then
         Assertions.assertThat(carList.size()).isEqualTo(expectedSize);
