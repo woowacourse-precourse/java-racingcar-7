@@ -46,6 +46,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("player가 1명이면 예외가 발생한다.")
+    void playersInputTest2() {
+        PlayerMaker playerMaker = new PlayerMaker();
+
+        assertThatThrownBy(() -> playerMaker.createPlayer("pobi,"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("player의 이름이 숫자이면 예외가 발생한다.")
+    void playersInputTest3() {
+        PlayerMaker playerMaker = new PlayerMaker();
+
+        assertThatThrownBy(() -> playerMaker.createPlayer("1111,24123"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("Plyaers를 입력받으면 plyaer를 가지는 객체를 반환한다.")
     void cratePlayerListTest() {
         // give
