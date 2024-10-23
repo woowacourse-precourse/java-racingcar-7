@@ -6,4 +6,5 @@ public interface RacingPolicy {
     Boolean isMoveForward(Vehicle vehicle);
     String getMoveForwardSymbol();
     String getNameSeparator();
+    int getNameLengthPolicy();
 }

@@ -2,10 +2,10 @@ package repository;
 
 import java.util.Map;
 
-public class CarRepositoryImpl implements Repository{
+public class CarRepository implements Repository{
     private final Map<String, Long> carRepository;
 
-    public CarRepositoryImpl(Map<String, Long> carRepository) {
+    public CarRepository(Map<String, Long> carRepository) {
         this.carRepository = carRepository;
     }
 

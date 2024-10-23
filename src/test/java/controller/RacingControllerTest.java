@@ -8,7 +8,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import policy.RacingCarPolicyImpl;
+import policy.RacingCarPolicy;
 import vehicle.Car;
 
 class RacingControllerTest {
@@ -72,9 +72,9 @@ class RacingControllerTest {
         OriginalInput replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
 
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car("dodo", new RacingCarPolicyImpl(), Long.parseLong("2")));
-        carList.add(new Car("lala", new RacingCarPolicyImpl(), Long.parseLong("3")));
-        carList.add(new Car("dada", new RacingCarPolicyImpl(), Long.parseLong("1")));
+        carList.add(new Car("dodo", new RacingCarPolicy(), Long.parseLong("2")));
+        carList.add(new Car("lala", new RacingCarPolicy(), Long.parseLong("3")));
+        carList.add(new Car("dada", new RacingCarPolicy(), Long.parseLong("1")));
         //when
 
         //then

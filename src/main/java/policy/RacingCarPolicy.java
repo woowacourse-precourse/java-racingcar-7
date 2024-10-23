@@ -2,12 +2,14 @@ package policy;
 
 import vehicle.Vehicle;
 
-public class RacingCarPolicyImpl implements RacingPolicy {
-    private final static String NAME_SEPARATOR = ",";
-    private final static String MOVE_FORWARD_SYMBOL = "-";
+public class RacingCarPolicy implements RacingPolicy {
+    private final  String NAME_SEPARATOR = ",";
+    private final String MOVE_FORWARD_SYMBOL = "-";
+    private final int nameLengthPolicy= 5;
 
-    public RacingCarPolicyImpl() {
+    public RacingCarPolicy() {
     }
+
 
     @Override
     public Boolean isMoveForward(Vehicle vehicle) {
@@ -22,6 +24,11 @@ public class RacingCarPolicyImpl implements RacingPolicy {
     @Override
     public String getNameSeparator() {
         return NAME_SEPARATOR;
+    }
+
+    @Override
+    public int getNameLengthPolicy() {
+        return nameLengthPolicy;
     }
 
 }

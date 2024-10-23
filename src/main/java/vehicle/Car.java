@@ -13,8 +13,8 @@ public class Car implements Vehicle{
         this.moveForwardCount = moveForwardCount;
     }
     public Car(String carName, RacingPolicy racingPolicy) {
-        this.carName = carName;
         this.racingPolicy = racingPolicy;
+        this.carName = validateNameLength(carName);
         this.moveForwardCount = 0L;
     }
 
@@ -32,4 +32,12 @@ public class Car implements Vehicle{
     public Long getMoveForwardCount() {
         return this.moveForwardCount;
     }
+
+    public String validateNameLength(String carName){
+        if(carName.length() > racingPolicy.getNameLengthPolicy()){
+           throw  new IllegalArgumentException("자동차 이름은 "+ racingPolicy.getNameLengthPolicy()+"를 넘을 수 없습니다.");
+        }
+        return carName;
+    }
+
 }
