@@ -22,5 +22,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String playTimesInput = Console.readLine();
+        if (playTimesInput.isBlank()) {
+            throw new IllegalArgumentException("빈 문자열은 입력할 수 없습니다.");
+        }
     }
 }
