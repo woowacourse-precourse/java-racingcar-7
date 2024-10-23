@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.view.Output;
 
 public class RacingCarScoreMachine {
@@ -25,7 +26,10 @@ public class RacingCarScoreMachine {
             }
             //todo 출력?
             Output.printIntermediateScore(cars.getCars());
-
         }
+    }
+
+    public List<Car> getWinningCarS() {
+        return cars.getWinningCar();
     }
 }

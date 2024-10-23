@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.Set;
 import racingcar.domain.Car;
 
@@ -21,6 +22,11 @@ public class Output {
 
     public static void printExecutionResultsMessage() {
         System.out.println("실행 결과");
+    }
+
+    public static void printWinningCars(List<String> winningCars) {
+        System.out.printf("최종 우승자 : %s",
+                String.join(", ", winningCars));
     }
 
 
