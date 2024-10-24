@@ -5,8 +5,8 @@ import racingcar.car.CarInputValidator;
 import racingcar.count.CountInputService;
 import racingcar.count.CountInputValidator;
 import racingcar.game.Game;
-import racingcar.game.GameService;
 import racingcar.game.GameView;
+import racingcar.game.RankService;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,10 +16,10 @@ public class Application {
         CountInputValidator countInputValidator = new CountInputValidator();
         CountInputService countInputService = new CountInputService(countInputValidator);
 
-        GameService gameService = new GameService();
-        GameView gameView = new GameView(gameService);
+        RankService rankService = new RankService();
+        GameView gameView = new GameView(rankService);
 
-        Game game = new Game(carInputService, countInputService, gameService, gameView);
+        Game game = new Game(carInputService, countInputService, gameView);
 
         game.run();
     }

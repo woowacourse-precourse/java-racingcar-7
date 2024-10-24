@@ -6,22 +6,22 @@ import racingcar.utils.IOUtils;
 import java.util.List;
 
 public class GameView {
-    GameService gameService;
+    RankService rankService;
 
-    public GameView(GameService gameService) {
-        this.gameService = gameService;
+    public GameView(RankService rankService) {
+        this.rankService = rankService;
     }
 
-    void printMove(List<Car> cars) {
+    void printExecutionResultOfCars(List<Car> cars) {
         for (Car car : cars) {
-            executionResultOfEachCar(car);
+            printExecutionResultOfEachCar(car);
         }
 
         IOUtils.outputStringWithEnter("");
     }
 
     void printWinner(List<Car> cars) {
-        List<String> winners = gameService.getWinnerByRanks(cars);
+        List<String> winners = rankService.getWinnerByRanks(cars);
 
         IOUtils.outputStringWithoutEnter("최종 우승자 : ");
         int winnersSize = winners.size();
@@ -33,7 +33,7 @@ public class GameView {
         IOUtils.outputStringWithEnter(winners.get(winnersSize - 1));
     }
 
-    private void executionResultOfEachCar(Car car) {
+    private void printExecutionResultOfEachCar(Car car) {
         IOUtils.outputStringWithoutEnter(car.getName() + " : ");
 
         for (int i = 0; i < car.getCurrentMoveCount(); i++) {

@@ -11,17 +11,14 @@ import java.util.List;
 public class Game {
     CarInputService carInputService;
     CountInputService countInputService;
-    GameService gameService;
     GameView gameView;
 
     public Game(
             CarInputService carInputService,
             CountInputService countInputService,
-            GameService gamerService,
             GameView gameView) {
         this.carInputService = carInputService;
         this.countInputService = countInputService;
-        this.gameService = gamerService;
         this.gameView = gameView;
     }
 
@@ -37,11 +34,17 @@ public class Game {
         IOUtils.outputStringWithEnter("실행 결과");
 
         while (attemptCount > 0) {
-            gameService.moveEachCars(cars);
+            moveEachCars(cars);
             attemptCount--;
-            gameView.printMove(cars);
+            gameView.printExecutionResultOfCars(cars);
         }
 
         gameView.printWinner(cars);
+    }
+
+    private void moveEachCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.moveForward();
+        }
     }
 }
