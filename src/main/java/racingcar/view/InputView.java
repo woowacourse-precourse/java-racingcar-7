@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.model.parser.CarsParser.DELIMITER;
+
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.common.ErrorMessage;
 
@@ -15,12 +17,19 @@ public class InputView {
         System.out.println(NAME_INPUT_MESSAGE);
         final String input = Console.readLine();
         validateCarNames(input);
+        validateCarCount(input);
         return input;
     }
 
     private static void validateCarNames(final String carNames) {
         if (carNames.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+        }
+    }
+
+    private static void validateCarCount(final String carNames) {
+        if (carNames.contains(DELIMITER)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_COUNT.getMessage());
         }
     }
 
