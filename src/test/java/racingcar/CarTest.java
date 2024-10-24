@@ -19,4 +19,17 @@ class CarTest {
         Assertions.assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void test3() {
+        Car car1 = new Car("car1");
+
+        int distance1 = car1.go();
+        int distance2 = car1.go();
+        int distance3 = car1.go();
+
+        Assertions.assertThat(distance1).isEqualTo(1);
+        Assertions.assertThat(distance2).isEqualTo(2);
+        Assertions.assertThat(distance3).isEqualTo(3);
+    }
 }
