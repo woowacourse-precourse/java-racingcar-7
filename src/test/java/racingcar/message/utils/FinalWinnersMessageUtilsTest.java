@@ -1,9 +1,9 @@
-package racingcar.utils;
+package racingcar.message.utils;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCar;
+import racingcar.message.utils.FinalWinnersMessageUtils;
 
 import java.util.function.Predicate;
 import java.util.stream.IntStream;

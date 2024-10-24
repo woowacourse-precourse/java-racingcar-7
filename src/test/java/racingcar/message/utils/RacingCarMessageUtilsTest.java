@@ -1,8 +1,9 @@
-package racingcar.utils;
+package racingcar.message.utils;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
+import racingcar.message.utils.RacingCarMessageUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.message.utils;
 
 import racingcar.domain.RacingCar;
 
