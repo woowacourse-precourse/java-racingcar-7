@@ -1,12 +1,12 @@
-package racingcar.model.car;
+package racingcar.model.vehicle.car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.modle.car.Car;
-import racingcar.modle.car.CarFactory;
+import racingcar.modle.vehicle.car.Car;
+import racingcar.modle.vehicle.car.CarFactory;
 
 public class CarTest {
 

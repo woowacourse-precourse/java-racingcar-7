@@ -2,14 +2,12 @@ package racingcar.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.modle.GameRule;
-import racingcar.modle.Movable;
-import racingcar.modle.car.Car;
-import racingcar.modle.car.CarFactory;
+import racingcar.modle.rule.GameRule;
+import racingcar.modle.vehicle.Movable;
+import racingcar.modle.vehicle.car.CarFactory;
 
 public class GameRuleTest {
 
@@ -30,7 +28,7 @@ public class GameRuleTest {
         // given
         Movable movedCar = carFactory.create("newGamza");
         // when
-        if(gameRule.isGo(4)){
+        if(gameRule.isMove(4)){
             movedCar = car.move();
         }
         // then
@@ -43,7 +41,7 @@ public class GameRuleTest {
         // given
         Movable stoppedCar = carFactory.create("newGamza");
         // when
-        if(gameRule.isGo(3)){
+        if(gameRule.isMove(3)){
            stoppedCar =  car.move();
         }
         // then

@@ -1,4 +1,4 @@
-package racingcar.modle;
+package racingcar.modle.vehicle;
 
 public interface Movable {
     public Movable move();

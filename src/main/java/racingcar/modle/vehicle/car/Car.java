@@ -1,6 +1,6 @@
-package racingcar.modle.car;
+package racingcar.modle.vehicle.car;
 
-import racingcar.modle.Movable;
+import racingcar.modle.vehicle.Movable;
 
 public class Car implements Movable {
     private static final int START_POSITION = 0;

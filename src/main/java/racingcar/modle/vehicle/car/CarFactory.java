@@ -1,4 +1,4 @@
-package racingcar.modle.car;
+package racingcar.modle.vehicle.car;
 
 public class CarFactory {
 
