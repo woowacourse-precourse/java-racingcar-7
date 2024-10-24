@@ -9,14 +9,10 @@ public class Cars {
     private static final String COMMA = ",";
     private final List<Car> cars;
 
-    public Cars(String carNames, CarNameValidator validator) {
-        List<String> convertedStringToList = convertStringToList(carNames);
-        validator.validate(convertedStringToList);
+    public Cars(String carNames, CarNameValidator carNameValidator) {
+        List<String> convertedStringToList = List.of(carNames.split(COMMA));
+        carNameValidator.validate(convertedStringToList);
         this.cars = convertedStringToList.stream().map(Car::new).collect(Collectors.toList());
-    }
-
-    private List<String> convertStringToList(String carNames) {
-        return List.of(carNames.split(COMMA));
     }
 
     public List<Car> getCars() {
