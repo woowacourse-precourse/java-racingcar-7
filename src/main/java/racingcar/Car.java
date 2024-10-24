@@ -30,8 +30,8 @@ public class Car {
 
     public static List<Car> makeCarList(String[] carnames){
         List<Car> cars = new ArrayList<>();
-        for (String carname : carnames) {
-            Car newcar = new Car(carname);
+        for (String carNames : carnames) {
+            Car newcar = new Car(carNames);
             cars.add(newcar);
         }
         return cars;
