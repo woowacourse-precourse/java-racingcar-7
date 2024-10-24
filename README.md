@@ -83,53 +83,6 @@ jun : -----
 최종 우승자 : pobi, jun
 ```
 
-## 구현할 기능 목록
-- 입력
-- 자동차 등록
-    - 자동차 이름 입력
-    - 자동차 이름 구분
-        - 자동차 이름 검증
-    - 실행할 횟수 입력
-- 자동차 경주 결과
-    - 무작위 값 구하기
-    - 턴 당 이동
-    - 결과 출력
-- 결과 계산
-- 결과 출력
-
-
-## 파일 구조
-- controller
-- view
-- model
-- util
-- exception
-
-
-## 메소드 시그니처
-- view
-  - input() -> String
-  - carRegistMessage() -> void
-  - countRegistMessage() -> void
-  - executionMessage() -> void
-  - printResult(List<Car>) -> void
-- controller
-  - run() -> void
-- service
-  - carRegist() -> List<Car>
-  - splitInput(String) -> List<String>
-  - isValidRegist(String) -> boolean
-  - containsUnvalidCharacter(String) -> boolean
-  - isAlphabet(String) -> boolean
-  - isValidLength(String) -> boolean
-  - parseToInt(String) -> int
-  - isNumber(String) -> boolean
-  - isValidRange(String) -> boolean
-  - raceResult(List<Car>) -> void
-  - carMoving(List<Car>) -> List<Car>
-  - resultsPerTurn(List<Car>) -> List<Car>
-  - randomNumber() -> int
-
 
 ## 주의해야할 프로그래밍 요구사항
 - JUnit 5와 AssertJ를 이용할 것
@@ -140,3 +93,65 @@ jun : -----
 - **camp.nextstep.edu.missionutils**에서 제공하는 **Randoms** 및 **Console API**를 사용하여 구현해야 한다.
 - Random 값 추출은 **camp.nextstep.edu.missionutils.Randoms**의 **pickNumberInRange**를 활용한다.
 - 사용자가 입력하는 값은 **camp.nextstep.edu.missionutils.Console**의 **readLine**을 활용한다.
+
+
+## 구현할 기능 목록
+- 입력
+- 자동차 등록
+    - 자동차 이름 입력
+    - 자동차 이름 구분
+        - 자동차 이름 검증
+    - 실행할 횟수 입력
+        - 입력한 횟수 검증
+- 자동차 경주 결과
+    - 무작위 값 구하기
+    - 턴 당 이동
+        - 턴 당 실행 결과 출력
+- 결과 계산
+- 결과 출력
+
+
+## 파일 구조
+- controller
+- view
+- model
+- util
+- service
+- exception
+
+
+## 메소드 시그니처
+- view
+  - input() -> String
+  - carRegistMessage() -> void
+  - newLine() -> void
+  - countRegistMessage() -> void
+  - executionMessage() -> void
+  - printResult(List<Car>) -> void
+  - finalWinnerMessage(List<Var>) -> void
+- controller
+  - carRegist() -> List<Car>
+  - registExecutionNumber() -> Long
+  - race(List<Car>, ExecutionNumber) -> List<Car>
+  - raceResult(List<Car>) -> void
+- service
+  - splitInput(String) -> List<String>
+  - convertToCar(List<String>) -> List<Car>
+  - parseToLong(String) -> Long
+  - isMoving() -> boolean
+  - randomNumber() -> int
+  - raceResult(List<Car>) -> List<Car>
+  - isRaceStarted(Integer) -> boolean
+  - isValidLength(List<String>) -> boolean
+  - isNumber(String) -> boolean
+  - containsInvalidCharacter(String) -> boolean
+  - isValidRange(String) -> boolean
+
+
+## 예외 목록
+- 빈 입력값 예외
+- 특수문자 입력 예외
+- 입력값 길이 예외
+- 시도 횟수 입력 시 문자 예외
+- 숫자 범위 예외
+- 모든 자동차 시작 위치 예외
