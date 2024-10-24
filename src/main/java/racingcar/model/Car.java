@@ -2,21 +2,21 @@ package racingcar.model;
 
 public class Car {
     private String name;
-    private int forwardTime;
+    private int position;
 
     public Car(String name) {
         this.name = name;
     }
 
-    public void forwardCar() {
-        this.forwardTime++;
+    public void move() {
+        this.position++;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getForwardTime() {
-        return forwardTime;
+    public int getPosition() {
+        return position;
     }
 }
