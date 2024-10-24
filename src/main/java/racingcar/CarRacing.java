@@ -14,9 +14,16 @@ public class CarRacing {
 
     private static void forwardCarByRandomNumber(RacingCarTrace racingCarTrace) {
         IntStream.range(0, racingCarTrace.size()).forEach(index -> {
-            var racingCar = racingCarTrace.getRacingCar(index);
-            racingCarTrace.forwardOrStop(racingCar, Randoms.pickNumberInRange(0, 9));
+            forwardCarLogic(racingCarTrace, index);
         });
+    }
+
+    private static void forwardCarLogic(RacingCarTrace racingCarTrace, int index) {
+        var racingCar = racingCarTrace.getRacingCar(index);
+        var randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            racingCarTrace.forwardOrStop(racingCar);
+        }
     }
 
     private static void carRacingByTryCount(int tryCount, RacingCarTrace racingCarTrace) {
