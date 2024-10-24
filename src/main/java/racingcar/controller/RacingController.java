@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,10 +14,12 @@ public class RacingController {
     }
 
     public void run() {
-        InputCarsName();
+        Cars cars;
+        cars = InputCarsName();
     }
 
-    private void InputCarsName() {
-        inputView.inputCarNamesMessage();
+    private Cars InputCarsName() {
+        String rawCarsName = inputView.inputCarNamesMessage();
+        return new Cars(rawCarsName);
     }
 }
