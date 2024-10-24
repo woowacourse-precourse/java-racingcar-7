@@ -1,6 +1,8 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +32,19 @@ class RacingCarTest {
 
         //then
         assertFalse(actual);
+    }
+
+    @Test
+    void 레이싱카는_한_칸씩_움직인다() {
+        //given
+        int position = 0;
+        RacingCar racingCar = new RacingCar("준수", position);
+
+        //when
+        racingCar.move();
+
+        //then
+        assertThat(racingCar.getPosition()).isEqualTo(position + 1);
     }
 
 }
