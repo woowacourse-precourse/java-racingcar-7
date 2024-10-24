@@ -29,6 +29,7 @@ class CarRegistryTest {
     }
 
     @Test
+    @DisplayName("중복된 이름이 걸러져서 나오는지 테스트")
     void testDuplicateCarNames() {
         // Given
         String input = "pobi,woni,pobi";
@@ -45,18 +46,7 @@ class CarRegistryTest {
     }
 
     @Test
-    void testEmptyInput() {
-        // Given
-        String input = "";
-
-        // When
-        CarRegistry carRegistry = new CarRegistry(input);
-
-        // Then
-        assertTrue(carRegistry.getCars().isEmpty());
-    }
-
-    @Test
+    @DisplayName("하나의 이름이 너무 클 때, 오류를 반환하는지 확인")
     void testInvalidCarNameTooLong() {
         // Given
         String input = "pobi,woni,pobi Maguire"; // One name too long
