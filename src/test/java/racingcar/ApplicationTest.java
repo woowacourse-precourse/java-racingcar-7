@@ -78,6 +78,13 @@ class ApplicationTest extends NsTest {
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 랜덤숫자생성_테스트(){
+        Racing racing = new Racing("test");
+        assertThat(racing.getRandomNumber())
+            .isGreaterThanOrEqualTo(0)
+            .isLessThanOrEqualTo(9);
+    }
 
     @Override
     public void runMain() {
