@@ -70,4 +70,8 @@ public class GameManager {
                 .map(Entry::getKey)
                 .toList();
     }
+
+    public List<Car> getRacers() {
+        return Collections.unmodifiableList(racers);
+    }
 }
