@@ -26,6 +26,6 @@ public class ValidationTest {
 		assertThrows(IllegalArgumentException.class, () -> validation.validateCarNameInput("name,,name2"));
 		assertThrows(IllegalArgumentException.class, () -> validation.validateCarNameInput("name,name2,"));
 		assertThrows(IllegalArgumentException.class, () -> validation.validateCarNameInput("name_over_than_five,name"));
-		assertThrows(IllegalArgumentException.class, () -> validation.validateCarNameInput("name_over_than_five,name"));
+		assertThrows(IllegalArgumentException.class, () -> validation.validateCarNameInput("sixcar"));
 	}
 }
