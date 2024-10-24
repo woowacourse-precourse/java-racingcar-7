@@ -15,4 +15,12 @@ public class CarRecord {
     public CarRecord of(Car car){
         return new CarRecord(car.getCarName(),car.getDistance());
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }
