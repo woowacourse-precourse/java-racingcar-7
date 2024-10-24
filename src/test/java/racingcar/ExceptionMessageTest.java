@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.domain.Cars;
 import racingcar.model.io.CarNames;
 import racingcar.model.io.RacingChance;
 
