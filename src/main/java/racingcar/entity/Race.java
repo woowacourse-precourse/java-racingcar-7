@@ -1,6 +1,8 @@
 package racingcar.entity;
 
 import java.util.List;
+import racingcar.exception.ExceptionUtils;
+import racingcar.exception.RaceCarValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class Race {
@@ -8,17 +10,7 @@ public class Race {
 
     public Race(List<Car> cars) {
         this.cars = cars;
-
-        if (cars == null) {
-            throw new IllegalArgumentException("자동차 배열은 null이 될 수 없습니다.");
-        } else if (10 < cars.size()) {
-            throw new IllegalArgumentException("자동차는 10대 이하여야 합니다.");
-        } else if (cars.stream()
-                .map(Car::getName)
-                .distinct()
-                .count() != cars.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
+        validate(cars);
     }
 
     public void runSingleRound(RandomNumberGenerator randomNumberGenerator) {
@@ -28,7 +20,8 @@ public class Race {
     }
 
     public String[] getWinners() {
-        int maxPosition = this.cars.stream()
+        int maxPosition = this.cars
+                .stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(IllegalStateException::new);
@@ -40,9 +33,16 @@ public class Race {
     }
 
     public String[] getCarNames() {
-        return this.cars.stream()
-                .map(Car::getName)
-                .toArray(String[]::new);
+        return this.cars.stream().map(Car::getName).toArray(String[]::new);
     }
 
+    private void validate(List<Car> cars) {
+        if (cars == null) {
+            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_NULL);
+        } else if (10 < cars.size()) {
+            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_EXCEED_LIMIT);
+        } else if (cars.stream().map(Car::getName).distinct().count() != cars.size()) {
+            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_DUPLICATE_NAME);
+        }
+    }
 }
