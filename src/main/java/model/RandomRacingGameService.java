@@ -24,6 +24,16 @@ public class RandomRacingGameService implements RacingGameService {
         }
     }
 
+    private List<RacingCar> findWinner(List<RacingCar> cars) {
+        int maxDistance = cars.stream()
+                .mapToInt(RacingCar::getDistance)
+                .max().getAsInt();
+
+        return cars.stream()
+                .filter(car -> maxDistance == car.getDistance())
+                .toList();
+    }
+
     private void race(List<RacingCar> cars) {
         cars.stream()
                 .filter(car -> RandomUtil.getRandomNumber(RANDOM_MIN, RANDOM_MAX) >= FORWARD_THRESHOLD)
