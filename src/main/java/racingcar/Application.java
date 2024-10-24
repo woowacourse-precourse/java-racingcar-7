@@ -20,7 +20,12 @@ public class Application {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            cars.add(new Car(st.nextToken()));
+            String name = st.nextToken();
+            if(name.length() < 5 ) {
+                cars.add(new Car(name));
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
 
         for (int i = 0; i < playCount; i++) {
