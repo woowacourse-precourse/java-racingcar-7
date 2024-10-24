@@ -13,7 +13,7 @@ class CarTest {
     public void 자동차_이름_주행거리_초기화_테스트() throws Exception {
         //Given
         String carName = "pobi";
-        Car car = new Car(carName, accelerator);
+        Car car = new Car(carName);
 
         //When
         String actualName = car.getName();
@@ -57,10 +57,10 @@ class CarTest {
     @Test
     public void toString_테스트() throws Exception {
         //Given
-        Car car1 = new Car("pobi", accelerator);
+        Car car1 = new Car("pobi");
         String expected1 = "pobi : ";
 
-        Car car2 = new Car("pobi", accelerator);
+        Car car2 = new Car("pobi");
         car2.setMileageForTest(3);
         String expected2 = "pobi : ---";
 

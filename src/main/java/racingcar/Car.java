@@ -7,13 +7,11 @@ public class Car {
 
     private String name;
     private int mileage;
-    private final Accelerator accelerator;
 
-    Car(String name, Accelerator accelerator) {
+    Car(String name) {
         validateName(name);
         this.name = name;
         this.mileage = 0;
-        this.accelerator = accelerator;
     }
 
     public String getName() {
@@ -37,7 +35,7 @@ public class Car {
         }
     }
 
-    public void accelerate() {
+    public void accelerate(Accelerator accelerator) {
         int ACCELERATION_THRESHOLD = 4;
         mileage += accelerator.accelerate(ACCELERATION_THRESHOLD);
     }
