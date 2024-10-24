@@ -2,22 +2,22 @@ package racingcar;
 
 public class Car {
     private String name;
-    private Integer moveCount;
+    private String moveCount;
 
     public Car(String name) {
         this.name = name;
-        this.moveCount = 0;
+        this.moveCount = "";
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getMoveCount() {
+    public String getMoveCount() {
         return moveCount;
     }
 
     public void move(){
-        moveCount++;
+        moveCount+="-";
     }
 }
