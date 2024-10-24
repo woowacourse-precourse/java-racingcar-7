@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.model.entity.Car;
 import racingcar.model.entity.Cars;
-import racingcar.model.dto.CarRacingProgress;
+import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingResult;
 import racingcar.model.entity.RacingChance;
 import racingcar.model.dto.RacingWinners;
@@ -34,7 +34,7 @@ public class RacingServiceImpl implements RacingService {
         for (int i = 0; i < racingChance.getValue(); i++) {
             for (Car car : cars) {
                 car.moveOrNot();
-                CarRacingProgress progress = new CarRacingProgress(car);
+                RacingProgress progress = new RacingProgress(car);
                 repository.saveProgress(progress);
             }
             repository.saveBreakingLine();

@@ -1,12 +1,12 @@
 package racingcar.repository;
 
-import racingcar.model.dto.CarRacingProgress;
+import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingResult;
 import racingcar.model.dto.RacingWinners;
 
 public interface Repository {
 
-    void saveProgress(CarRacingProgress progress);
+    void saveProgress(RacingProgress progress);
 
     void saveBreakingLine();
 
