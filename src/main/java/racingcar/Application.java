@@ -37,7 +37,7 @@ public class Application {
             ap.r_print(ap);
         }
 
-        ap.result_print(ap.winner_score());
+        ap.winner_print(ap.winner_score());
     }
     
     public void mem_trim() {
@@ -54,7 +54,7 @@ public class Application {
         System.out.println();
     }
     
-    public void result_print(int max){
+    public void winner_print(int max){
         System.out.print("최종 우승자 : ");
         boolean check = true;
         for(car i : list) {
