@@ -72,7 +72,7 @@ class CarTest {
 
         assertThat(driveResult).isEqualTo(DriveResult.FAILURE);
         assertThat(mileageAfterDriving.compareTo(mileageBeforeDriving))
-                .isGreaterThan(0);
+                .isEqualTo(0);
         assertThat(mileageAfterDriving.distance())
                 .isEqualTo(mileageBeforeDriving.distance());
     }
