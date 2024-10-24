@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Application {
     List<String> cars = getCarInput();
     Map<String, String> carGameRecords = createCarGameRecords(cars);
     int frequency = getRepeatFrequency();
+    showGame(carGameRecords, frequency);
   }
 
   public static List<String> getCarInput() {
@@ -54,6 +56,33 @@ public class Application {
     }
 
     return Integer.parseInt(frequencyInput);
+  }
+
+  public static int carRun() {
+    return Randoms.pickNumberInRange(0, 9);
+  }
+
+  public static void getGameSituation(Map<String, String> carGameRecords) {
+    for (Map.Entry<String, String> carsRecords : carGameRecords.entrySet()) {
+      String result = carsRecords.getKey() + " : ";
+      String forward = "-";
+      String gameSituation = carsRecords.getValue();
+      if (carRun() >= 4) {
+        gameSituation += forward;
+        carGameRecords.put(carsRecords.getKey(), gameSituation);
+        result = result + gameSituation;
+      }
+      System.out.println(result);
+    }
+
+  }
+
+  public static void showGame(Map<String, String> carGameRecords, int frequency) {
+    System.out.println("실행 결과");
+    for (int i = 0; i < frequency; i++) {
+      getGameSituation(carGameRecords);
+      System.out.println("\n");
+    }
   }
 
 }
