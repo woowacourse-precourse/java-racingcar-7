@@ -8,5 +8,6 @@ public class RacingCarController {
         RacingCarView racingCarView = new RacingCarView();
         String cars = racingCarView.readCars();
         String round = racingCarView.readRaceRound();
+        racingCarView.closeInput();
     }
 }

@@ -15,4 +15,8 @@ public class RacingCarView {
         System.out.println(INPUT_RACING_ROUND_MESSAGE);
         return Console.readLine();
     }
+
+    public void closeInput() {
+        Console.close();
+    }
 }
