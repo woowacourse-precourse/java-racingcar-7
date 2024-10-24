@@ -5,6 +5,8 @@ public enum TextString {
     NAME_SEPARATOR(","),
     TRY_COUNT_TEXT("시도할 횟수는 몇 회인가요?"),
     RESULT_TEXT("실행 결과"),
+    RACING_POSITION_TEXT("-"),
+    NEW_LINE("\n"),
     FINAL_WINNERS_TEXT("최종 우승자 : ");
 
 
