@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.car.Car;
 
 public class OutputHandler {
     private static final String RESULT_NOTICE_PHRASE = "\n실행 결과";
