@@ -6,12 +6,12 @@ public class InputReader {
 
     Validators validator = new Validators();
 
-    public String readLine1() throws IllegalArgumentException {
+    public String[] readLine1() throws IllegalArgumentException {
         String inputView = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
         System.out.println(inputView);
 
         String input = Console.readLine();
-        String validatedString = validator.validateString(input);
+        String[] validatedString = validator.validateString(input);
 
         return validatedString;
     }
