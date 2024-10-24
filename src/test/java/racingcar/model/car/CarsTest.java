@@ -13,4 +13,12 @@ public class CarsTest {
         Assertions.assertThatThrownBy(() -> new Cars(cars))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void throwExceptionIfHasNotEnoughCar() {
+        List<Car> cars = List.of(new Car("A"));
+
+        Assertions.assertThatThrownBy(() -> new Cars(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
