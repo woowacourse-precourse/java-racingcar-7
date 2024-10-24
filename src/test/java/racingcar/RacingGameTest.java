@@ -15,7 +15,7 @@ class RacingGameTest {
         Car car2 = new Car("crong", 0, 4);
         Car car3 = new Car("honux", 0, 4);
         List<Car> cars = List.of(car1, car2, car3);
-        
+
         racingGame.play(cars, 5);
 
         Assertions.assertThat(car1.getPosition()).isEqualTo(5);
@@ -37,5 +37,41 @@ class RacingGameTest {
         Assertions.assertThat(car1.getPosition()).isEqualTo(0);
         Assertions.assertThat(car2.getPosition()).isEqualTo(0);
         Assertions.assertThat(car3.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Single car wins the race")
+    void singleCarWins() {
+        RacingGame racingGame = new RacingGame(() -> 4);
+        Car car1 = new Car("pobi", 0, 4);
+        List<Car> cars = List.of(car1);
+
+        List<String> winners = racingGame.play(cars, 5);
+
+        Assertions.assertThat(winners).containsExactly("pobi");
+    }
+
+    @Test
+    @DisplayName("Multiple cars win the race")
+    void multipleCarsWin() {
+        RacingGame racingGame = new RacingGame(() -> 4);
+        Car car1 = new Car("pobi", 0, 4);
+        Car car2 = new Car("crong", 0, 4);
+        List<Car> cars = List.of(car1, car2);
+
+        List<String> winners = racingGame.play(cars, 5);
+
+        Assertions.assertThat(winners).containsExactlyInAnyOrder("pobi", "crong");
+    }
+
+    @Test
+    @DisplayName("No cars in the race")
+    void noCarsInRace() {
+        RacingGame racingGame = new RacingGame(() -> 4);
+        List<Car> cars = List.of();
+
+        List<String> winners = racingGame.play(cars, 5);
+
+        Assertions.assertThat(winners).isEmpty();
     }
 }
