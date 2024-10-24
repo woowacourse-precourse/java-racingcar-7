@@ -7,12 +7,9 @@ public class Constant {
     public static final String RACING_RESULT_STRING = "최종 우승자 : ";
 
     public static final String MAX_NAME_SIZE_STRING = "이름은 5자 이하만 가능합니다.";
-    public static final String COUNT_ONLY_NATURAL_NUMBER_STRING = "숫자 이외의 값이 존재해서는 안됩니다.";
+    public static final String COUNT_ONLY_NATURAL_NUMBER_STRING = "시도할 횟수는 양수여야 합니다.";
     public static final String SPACE_BETWEEN_NAME_STRING = "이름 사이에 공백이 존재해서는 안됩니다.";
     public static final String INPUT_NULL_OR_EMPTY_STRING = "입력값이 Null 또는 공백이면 안됩니다.";
-
-    public static final String COMMA = ",";
-    public static final String SPACE = " ";
-    public static final String ONLY_NUMBER = "\\d+";
-    public static final int MAX_SIZE = 5;
+    public static final String RANDOM_RANGE_VALUE_ERROR_STRING = "무작위 값이 0 또는 9 사이 값이 아닙니다.";
+    public static final String CARS_EMPTY_ERROR_STRING = "참가한 자동차가 없습니다.";
 }
