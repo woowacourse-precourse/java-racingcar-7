@@ -6,13 +6,13 @@ public class CarDomain {
     private final String name;
     private Integer distance;
 
-    private CarDomain(String name, Integer foward) {
+    private CarDomain(String name, Integer distance) {
         this.name = name;
-        this.distance = foward;
+        this.distance = distance;
     }
 
-    public static CarDomain create(String name, Integer foward) {
-        return new CarDomain(name, foward);
+    public static CarDomain create(String name, Integer distance) {
+        return new CarDomain(name, distance);
     }
 
     public String getName() {
