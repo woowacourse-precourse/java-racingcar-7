@@ -12,6 +12,7 @@
 - 게임을 진행할 때 사용하는 Game 클래스 생성
 - play(): for문을 n번 반복 수행
 - round(): car.move()를 통해 전진 후 상태 출력 
-- winner(): 우승자 결정 및 우승자 출력
+- getMaxScore(): 우승자 결정
+- printWinner(): 우승자 출력
 
 ## 4. 예외 처리 및 코드 정리
