@@ -3,9 +3,6 @@ package racingcar.validator;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import racingcar.Exception.DuplicateNameException;
-import racingcar.Exception.NameTooLongException;
-import racingcar.Exception.ValidationException;
 import racingcar.constant.Constant;
 
 public class InputValidator {
@@ -33,25 +30,25 @@ public class InputValidator {
 
     private static void validateCarNameInputBlank(String input) {
         if (input.isBlank()) {
-            throw new ValidationException(CAR_NAME_INPUT_BLANK_MESSAGE);
+            throw new IllegalArgumentException(CAR_NAME_INPUT_BLANK_MESSAGE);
         }
     }
 
     private static void validateCarNameBlank(String name) {
         if (name.isBlank()) {
-            throw new ValidationException(CAR_NAME_BLANK_MESSAGE);
+            throw new IllegalArgumentException(CAR_NAME_BLANK_MESSAGE);
         }
     }
 
     private static void validateCarNameTooLong(String name) {
         if (name.length() > Constant.CAR_NAME_LENGTH_CRITERIA) {
-            throw new NameTooLongException(CAR_NAME_TOO_LONG_MESSAGE);
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG_MESSAGE);
         }
     }
 
     private static void validateDuplicatedCarName(int carSetCount, int inputCarCount) {
         if (carSetCount != inputCarCount) {
-            throw new DuplicateNameException(CAR_NAME_DUPLICATE_MESSAGE);
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE_MESSAGE);
         }
     }
 
@@ -62,7 +59,7 @@ public class InputValidator {
 
     private static void validateRoundCountInputBlank(String input) {
         if (input.isBlank()) {
-            throw new ValidationException(ROUND_COUNT_INPUT_BLANK_MESSAGE);
+            throw new IllegalArgumentException(ROUND_COUNT_INPUT_BLANK_MESSAGE);
         }
     }
 
@@ -72,7 +69,7 @@ public class InputValidator {
         try {
             roundCount = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new ValidationException(ROUND_COUNT_INVALID_MESSAGE);
+            throw new IllegalArgumentException(ROUND_COUNT_INVALID_MESSAGE);
         }
 
         return roundCount;
