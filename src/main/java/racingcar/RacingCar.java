@@ -8,31 +8,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RacingCar {
+    public RacingCar() {
+    }
 
     public static void main(String[] args) {
 
-        /*
-         * 1. 자동차 이름이 중복되어서는 안된다
-         * 2. 자동차 이름에 null, 공백, ""의 값은 들어올 수 없다
-         * 3. pobi, leo, json 과 같이 구분자 사이에 공백이 있는건? trim()으로 없애자
-         */
         System.out.println("경주할 자동차 이름을 입력하세요");
         String inputCarNames = Console.readLine();
-        validateInputCarNames(inputCarNames);
-
+        List<String> carNames = validateInputCarNames(inputCarNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        /*
-         * 문자열이 들어올 경우 NumberFormatException 발생
-         * 1. try catch 사용
-         * 2. 아예 문자열로 입력을 받고 파싱하기
-         */
         String inputRoofCount = Console.readLine();
+
+        //검증을 하고 타입을 가공하여 리턴받는건 한 가지의 기능을 수행하는 메서드가맞는지
         int roofCount = validateInputRoofCount(inputRoofCount);
 
-        List<String> carNames = Arrays.asList(inputCarNames.split(","));
         List<Car> cars = new ArrayList<>();
-
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -60,8 +51,59 @@ public class RacingCar {
 
     }
 
-    private static void validateInputCarNames(String input) {
+    public static List<String> validateInputCarNames(String input) {
+        if (!checkLengthWithinLimits(input)) {
+            throw new IllegalArgumentException("자동차 이름의 길이는 최대 5글자입니다");
+        }
+        if (hasDuplicatedCarName(input)) {
+            throw new IllegalArgumentException("중복되는 자동차 이름이 있습니다");
+        }
+        if (!hasValidDelimiter(input)) {
+            throw new IllegalArgumentException("자동차 이름으로 공백이 허용되지 않습니다");
+        }
 
+        return Arrays.stream(input.split(","))
+                .toList();
+    }
+
+    private static boolean checkLengthWithinLimits(String input) {
+        final int LENGTH_CONDITION = 5;
+        String[] carNames = input.split(",");
+
+        for (String carName : carNames) {
+            if (carName.length() >= LENGTH_CONDITION) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean hasDuplicatedCarName(String input) {
+        List<String> carNames = Arrays.stream(input.split(","))
+                .toList();
+
+        //중복값이 있으면 true를 반환
+        //디버그의 단점: 스트림을 꽂아서 사용할 경우 변수표시가 명확하지않음
+        return carNames.stream()
+                .distinct()
+                .count() != carNames.size();
+    }
+
+    private static boolean hasValidDelimiter(String input) {
+        final String CAR_NAME_DELIMITER = ",";
+        String[] carNames = input.split(CAR_NAME_DELIMITER);
+
+        for (String carName : carNames) {
+            //공백 허용하지않음
+            if (carName.trim().isEmpty()) {
+                return false;
+            }
+
+            if (carName.contains(CAR_NAME_DELIMITER)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static int validateInputRoofCount(String input) {
@@ -78,17 +120,11 @@ public class RacingCar {
         return Integer.parseInt(input);
     }
 
-    /*
-     * 1. 스트림을 사용할경우: 가독성은 좋지만 많은 연산이 필요할 경우 성능이 저하될 수 있음(언박싱,,오토박싱 등)
-     * 2. 반복문을 사용할경우: 가독성은 좋지 않지만 많은 연산을 수행해도 성능측면에서 스트림보다 나음
-     */
-    //문자열이 숫자로만 이루어져있는가?
     private static boolean isNumeric(String input) {
         return input.chars()
                 .allMatch(Character::isDigit);
     }
 
-    //문자열에 음수가 포함되어있지 않은가?
     private static boolean isExistNegativeNumber(String input) {
         final String NEGATIVE_SYMBOL = "-";
         return input.contains(NEGATIVE_SYMBOL);
@@ -105,7 +141,7 @@ public class RacingCar {
             }
         }
 
-        //stream filter가 나을지도? 성능고려?
+        //stream filter
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.winningPoint == highestPoint) {
