@@ -23,12 +23,9 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
     /**
      * 예외 테스트
      */
-
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -42,6 +39,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,abcdef", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 5자 이하여야 합니다: ")
         );
     }
 
