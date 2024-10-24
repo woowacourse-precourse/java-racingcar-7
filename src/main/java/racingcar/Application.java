@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = Console.readLine().split(",");
-        List<Car> raceCars = makeCarList(carNames);
+        String[] carnames = Console.readLine().split(",");
+        List<Car> raceCars = makeCarList(carnames);
         runRace(raceCars);
     }
 }
