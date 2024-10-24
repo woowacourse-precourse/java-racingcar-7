@@ -7,6 +7,10 @@ import static racingcar.game.policy.GameRoundPolicy.GAME_MINIMUM_ROUND;
 
 import java.util.List;
 import racingcar.car.Car;
+import racingcar.game.exception.GamePlayersException.MaximumPlayersExceededException;
+import racingcar.game.exception.GamePlayersException.MinimumPlayersRequiredException;
+import racingcar.game.exception.GameRoundException.MaximumGameRoundExceededException;
+import racingcar.game.exception.GameRoundException.MinimumGameRoundRequiredException;
 
 public class RacingCarGame {
     private final int loop;
@@ -19,19 +23,19 @@ public class RacingCarGame {
 
     public static RacingCarGame createLoopedRacingCarGame(int loop, List<Car> cars) {
         if(cars.size() < GAME_MINIMUM_PLAYERS){
-                throw new IllegalArgumentException(String.format("자동차 최소 %d대부터 게임 가능합니다.",GAME_MINIMUM_PLAYERS));
+                throw new MinimumPlayersRequiredException();
         }
 
         if(cars.size() > GAME_MAXIMUM_PLAYERS){
-                throw new IllegalArgumentException(String.format("자동차 최대 %d대까지 게임 가능합니다.",GAME_MAXIMUM_PLAYERS));
+                throw new MaximumPlayersExceededException();
         }
 
         if(loop < GAME_MINIMUM_ROUND){
-                throw new IllegalArgumentException(String.format("게임횟수 최소 1번부터 게임 가능합니다", GAME_MINIMUM_ROUND));
+                throw new MinimumGameRoundRequiredException();
         }
 
         if(loop > GAME_MAXIMUM_ROUND){
-            throw new IllegalArgumentException(String.format("게임횟수 최대 100번까지 게임 가능합니다", GAME_MAXIMUM_ROUND));
+            throw new MaximumGameRoundExceededException();
         }
 
         return new RacingCarGame(loop,cars);

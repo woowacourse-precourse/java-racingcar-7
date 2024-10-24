@@ -1,14 +1,14 @@
 package racingcar.game;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
-import racingcar.car.CarName;
+import racingcar.game.exception.GamePlayersException.MaximumPlayersExceededException;
+import racingcar.game.exception.GamePlayersException.MinimumPlayersRequiredException;
+import racingcar.game.exception.GameRoundException.MaximumGameRoundExceededException;
+import racingcar.game.exception.GameRoundException.MinimumGameRoundRequiredException;
 
 class RacingCarGameTest {
 
@@ -40,8 +40,8 @@ class RacingCarGameTest {
 
         // expect
         assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,fiveOverCars))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 최대 5대까지 게임 가능합니다.");
+                .isInstanceOf(MaximumPlayersExceededException.class)
+                .hasMessage("최대 5명까지 게임 가능합니다.");
     }
 
     @Test
@@ -54,8 +54,8 @@ class RacingCarGameTest {
 
         // expect
         assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,oneCar))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 최소 2대부터 게임 가능합니다.");
+                .isInstanceOf(MinimumPlayersRequiredException.class)
+                .hasMessage("최소 2명부터 게임 가능합니다.");
     }
 
     @Test
@@ -68,8 +68,8 @@ class RacingCarGameTest {
 
         // expect
         assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(lessThanGAME_MINIMUM_ROUND,cars))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("게임횟수 최소 1번부터 게임 가능합니다");
+                .isInstanceOf(MinimumGameRoundRequiredException.class)
+                .hasMessage("최소 1번부터 게임 시작 가능합니다");
     }
 
     @Test
@@ -82,8 +82,8 @@ class RacingCarGameTest {
 
         // expect
         assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(overThanGAME_MAXIMUM_ROUND,cars))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("게임횟수 최대 100번까지 게임 가능합니다");
+                .isInstanceOf(MaximumGameRoundExceededException.class)
+                .hasMessage("최대 100번까지 게임 시작 가능합니다");
     }
 
 
