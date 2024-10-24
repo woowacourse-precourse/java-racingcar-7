@@ -21,6 +21,12 @@ public class RacingCar {
         this.position = DEFAULT_POSITION;
     }
 
+    public RacingCar(RacingCar other) {
+        validateName(other.name);
+        this.name = other.name;
+        this.position = other.position;
+    }
+
     public void moveRandomly(RandomRange randomRange) {
         int randomNumber = RandomUtils.generateRandomNumber(randomRange);
         if (isMoveable(randomNumber)) {
