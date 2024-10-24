@@ -49,4 +49,29 @@ public class RacingService {
         int carPosition = CAR_MAP.get(carName);
         CAR_MAP.replace(carName, carPosition + movement);
     }
+
+    public String[] getWinner() {
+        int maxPosition = getMaxPosition();
+
+        HashSet<String> winner = new HashSet<>();
+        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
+            if (entry.getValue() == maxPosition) {
+                winner.add(entry.getKey());
+            }
+        }
+
+        return winner.toArray(new String[0]);
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = INITIAL_POSITION;
+
+        for (Integer curPosition : CAR_MAP.values()) {
+            if (curPosition > maxPosition) {
+                maxPosition = curPosition;
+            }
+        }
+
+        return maxPosition;
+    }
 }
