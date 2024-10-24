@@ -9,9 +9,11 @@ public class OutputView {
         System.out.println(name+" : "+position);
     }
 
-    public static void racingResult(Cars cars){
+    public static void racingResult(){
         System.out.println("실행 결과");
-        RacingService.doRacing(cars);
-        System.out.println();
+    }
+
+    public static void newLine() {
+        System.out.println(); // 줄바꿈
     }
 }
