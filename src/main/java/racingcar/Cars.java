@@ -6,7 +6,6 @@ public class Cars {
 
     private final List<String> cars;
     static final int INCLUDE_LAST_EMPTY_STRING = -1;
-    static final int DEFAULT_MOVE_POINT = 0;
 
     public Cars(String carNameString) {
 //        Map<String, Integer> cars = new LinkedHashMap<>();
@@ -36,7 +35,7 @@ public class Cars {
 
     private void validateWrongValue(List<String> cars) {
         if (cars.contains("")) {
-            throw new IllegalArgumentException("잘못된 값이 입력됐습니다.");
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
     }
 }
