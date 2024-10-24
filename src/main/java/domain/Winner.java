@@ -2,9 +2,9 @@ package domain;
 
 import java.util.List;
 
-import static java.util.Comparator.comparingInt;
-
 public class Winner {
+
+    private static final StringBuilder sb = new StringBuilder();
 
     private final List<Car> cars;
     private String winner;
@@ -15,18 +15,22 @@ public class Winner {
     }
 
     public void findWinners() {
-
-        StringBuilder sb = new StringBuilder();
-        cars.sort(comparingInt(Car::getStatus).reversed());
-        Car MaxStatusCar = cars.get(0);
+        int maxStatus = findMaxStatus();
 
         for(Car car: cars) {
-            if(MaxStatusCar.getStatus() == car.getStatus()) {
-                sb.append(car.getName() + " ");
+            if(maxStatus == car.getStatus()) {
+                sb.append(car.getName());
+                sb.append(" ");
             }
         }
 
         this.winner = sb.toString();
+    }
+
+    private int findMaxStatus() {
+        return cars.stream()
+                .mapToInt(Car::getStatus)
+                .max().getAsInt();
     }
 
     public String getWinner() {
