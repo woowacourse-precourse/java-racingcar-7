@@ -1,10 +1,12 @@
 package racingcar.domain.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import racingcar.common.util.ErrorMessage;
+import racingcar.common.util.RandomNumberGenerator;
 
 public class CarList {
 
@@ -25,18 +27,19 @@ public class CarList {
 		return cars.get(index);
 	}
 
-	public void addCars(String[] names) {
-		if (names == null || names.length == 0) {
-			throw new IllegalArgumentException(ErrorMessage.CAR_LIST_EMPTY_ERROR.getMessage());
-		}
-		Arrays.stream(names).forEach(this::addCar);
+	public List<RaceStatus> getRaceStatus() {
+		return cars.stream().map(Car::toStatus).toList();
 	}
 
-	private void addCar(String name) {
-		cars.add(new Car(name.trim()));
+	public void addCar(Car car) {
+		cars.add(car);
 	}
 
-	public Optional<String> getWinner() {
+	public void moveAll(RandomNumberGenerator randomNumberGenerator) {
+		cars.forEach(car -> car.moveForward(randomNumberGenerator));
+	}
+
+	public Optional<String> getWinners() {
 		int highScore = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
 		if (highScore == 0) {
 			return Optional.empty();

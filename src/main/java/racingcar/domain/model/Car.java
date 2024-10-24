@@ -1,24 +1,26 @@
 package racingcar.domain.model;
 
+import racingcar.common.util.GameConstants;
+import racingcar.common.util.RandomNumberGenerator;
+import racingcar.common.util.Validator;
+
 public class Car {
 
-	private static final int FORWARD_MINIMUM_VALUE = 4;
-
 	private final String name;
-	private int position;
+	private final Position position;
 
 	public Car(String name) {
+		Validator.validateName(name);
 		this.name = name;
-		position = 0;
+		position = new Position(0);
 	}
 
-	private boolean shouldMoveForward(int number) {
-		return number >= FORWARD_MINIMUM_VALUE;
-	}
+	public void moveForward(RandomNumberGenerator randomNumberGenerator) {
 
-	public void moveForward(int number) {
-		if (shouldMoveForward(number)) {
-			position++;
+		int number = randomNumberGenerator.generateNumber(GameConstants.MIN_PICK_NUMBER, GameConstants.MAX_PICK_NUMBER);
+
+		if (number >= GameConstants.FORWARD_MINIMUM_VALUE) {
+			position.increase();
 		}
 	}
 
@@ -27,6 +29,10 @@ public class Car {
 	}
 
 	public int getPosition() {
-		return position;
+		return position.getValue();
+	}
+
+	public RaceStatus toStatus() {
+		return new RaceStatus(name, getPosition());
 	}
 }
