@@ -28,7 +28,7 @@ public class RacingCar {
         this.movingStrategy = other.movingStrategy;
     }
 
-    public void moveRandomly() {
+    public void move() {
         if (movingStrategy.isMovable()) {
             position += DEFAULT_MOVE_DISTANCE;
         }
