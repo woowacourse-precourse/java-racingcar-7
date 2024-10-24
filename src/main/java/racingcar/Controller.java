@@ -8,6 +8,7 @@ public class Controller {
     private final InputView inputView = new InputView();
 
     private final CarArgumentResolver carArgumentResolver = new CarArgumentResolver();
+    private final SizeValidator sizeValidator = new SizeValidator();
 
     private final CarConverter carConverter = new CarConverter();
 
@@ -16,6 +17,7 @@ public class Controller {
         String racingCarNames = inputView.read();
 
         List<String> carNames = carArgumentResolver.parse(racingCarNames);
+        sizeValidator.isValid(carNames);
         List<Car> cars = carConverter.to(carNames);
 
     }
