@@ -31,7 +31,7 @@ public class InputView {
 
     private static void validateBlankAttempts(String tryCount) {
         if (tryCount.isEmpty() || tryCount.isBlank()) {
-            print(BLANK_ATTEMPTS_ERROR);
+            throw new IllegalArgumentException(BLANK_ATTEMPTS_ERROR);
         }
     }
 
@@ -39,7 +39,7 @@ public class InputView {
         try {
             Integer.parseInt(attempts);
         } catch (NumberFormatException e) {
-            print(INVALID_INPUT_ERROR);
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR);
         }
     }
 }
