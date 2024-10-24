@@ -11,9 +11,15 @@ public class IOController {
         return Console.readLine();
 
     }
-    public static String tryCountInput(){
+    public static Integer tryCountInput(){
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        String tryCount = Console.readLine();
+        for(int i = 0; i < tryCount.length(); i++){
+            if(!Character.isDigit(tryCount.charAt(i))){
+                throw new IllegalArgumentException();
+            }
+        }
+        return Integer.parseInt(tryCount);
     }
 
     public static void printOutput(ArrayList<String> winners){
