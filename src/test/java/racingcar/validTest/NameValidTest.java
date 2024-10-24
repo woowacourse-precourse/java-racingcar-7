@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

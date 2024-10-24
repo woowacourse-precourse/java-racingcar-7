@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.serviceTest;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Assertions;
