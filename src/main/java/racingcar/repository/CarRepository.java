@@ -25,4 +25,9 @@ public class CarRepository {
 	public List<Car> findAll() {
 		return new ArrayList<>(repository.values());
 	}
+
+	public boolean existWinner(int tryCount) {
+		return findAll().stream()
+			.anyMatch(car -> car.isWinner(tryCount));
+	}
 }
