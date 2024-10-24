@@ -1,5 +1,5 @@
 package racingcar;
 
-public class RacingService {
+public class Race {
 
 }
