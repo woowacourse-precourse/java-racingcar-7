@@ -11,7 +11,7 @@ public class Car {
     public static Car createNamedCar(String carName){
         return new Car(
                 CarName.createCarName(carName),
-                MovementDistance.initialzeDistance()
+                MovementDistance.initializeDistance()
         );
     }
 

@@ -1,20 +1,21 @@
 package racingcar.car;
 
+import static racingcar.car.MovementPolicy.INITIAL_POSITION;
+import static racingcar.car.MovementPolicy.MAX_STEP;
+import static racingcar.car.MovementPolicy.MIN_STEP;
 import static racingcar.car.exception.MovementException.*;
 
 import racingcar.car.exception.MovementException;
 
 public class MovementDistance {
-    private static final int INITIAL_POSITION = 0;
-    private static final int MIN_STEP = 1;
-    private static final int MAX_STEP = 100;
+
     private final int value;
 
     public MovementDistance(int value) {
         this.value = value;
     }
 
-    public static MovementDistance initialzeDistance() {
+    public static MovementDistance initializeDistance() {
         return new MovementDistance(INITIAL_POSITION);
     }
 
