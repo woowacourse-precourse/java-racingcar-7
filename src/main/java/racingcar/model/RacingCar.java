@@ -15,6 +15,10 @@ public class RacingCar {
         return name;
     }
 
+    public int getMovingCount() {
+        return movingCount;
+    }
+
     public void move() {
         this.movingCount++;
     }

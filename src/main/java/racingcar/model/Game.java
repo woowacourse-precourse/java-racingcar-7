@@ -31,4 +31,27 @@ public class Game {
             }
         }
     }
+
+    public List<String> findWinners() {
+        int maxMovingCount = findMaxMovingCount();
+
+        List<String> winnerNames = new ArrayList<>();
+        for (RacingCar car : racingCars) {
+            if (car.getMovingCount() == maxMovingCount) {
+                winnerNames.add(car.getName());
+            }
+        }
+
+        return winnerNames;
+    }
+
+    private int findMaxMovingCount() {
+        int maxMovingCount = 0;
+
+        for (RacingCar car : racingCars) {
+            maxMovingCount = Math.max(maxMovingCount, car.getMovingCount());
+        }
+
+        return maxMovingCount;
+    }
 }

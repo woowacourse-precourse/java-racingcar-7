@@ -24,7 +24,7 @@ public class GameController {
         run(game);
     }
 
-    public void run(Game game) {
+    private void run(Game game) {
         OutputView.printFinalResultMessage();
 
         for (int i = 0; i < roundCount; i++) {
@@ -32,6 +32,8 @@ public class GameController {
 
             printRoundResult(game.getRacingCars());
         }
+
+        finish(game);
     }
 
     private void printRoundResult(List<RacingCar> racingCars) {
@@ -40,5 +42,9 @@ public class GameController {
         }
 
         OutputView.printBlankLine();
+    }
+
+    private void finish(Game game) {
+        List<String> winnerNames = game.findWinners();
     }
 }
