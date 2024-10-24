@@ -21,13 +21,21 @@ public class Application {
 
         try {
             int raceRounds = Integer.parseInt(Console.readLine());
-            for (int i = 0; i < raceRounds; i++) {
-                vehicles.forEach(vehicle -> {
-                    Randoms.pickNumberInRange(0, 9);
-                });
-            }
+            raceStart(vehicles, raceRounds);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다. 올바른 값을 입력해주세요.");
         }
+    }
+
+    private static void raceStart(List<Vehicle> vehicles, int raceRounds) {
+        for (int i = 0; i < raceRounds; i++) {
+            getRandom(vehicles);
+        }
+    }
+
+    private static void getRandom(List<Vehicle> vehicles) {
+        vehicles.forEach(vehicle -> {
+            Randoms.pickNumberInRange(0, 9);
+        });
     }
 }
