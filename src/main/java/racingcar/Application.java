@@ -6,6 +6,7 @@ import racingcar.car.strategy.MoveStrategy;
 import racingcar.car.strategy.RandomMoveStrategy;
 import racingcar.game.RacingGame;
 import racingcar.car.*;
+import racingcar.game.RacingGameController;
 import racingcar.util.*;
 import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
@@ -25,9 +26,10 @@ public class Application {
         CarFactory carFactory = new CarFactory();
         List<Car> cars = carFactory.createCars(carNames, moveStrategy);
 
-        // 경주 게임 시작
-        OutputHandler outputHandler = new OutputHandler();
-        RacingGame racingGame = new RacingGame(outputHandler, cars, rounds);
-        racingGame.start();
+        // 경주 게임을 생성하고 시작
+        RacingGame racingGame = new RacingGame(cars, rounds);
+        RacingGameController racingGameController = new RacingGameController(racingGame, new OutputHandler());
+
+        racingGameController.startGame();
     }
 }
