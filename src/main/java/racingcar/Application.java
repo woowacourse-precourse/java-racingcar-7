@@ -21,10 +21,10 @@ public class Application {
 
             CarRacing.start();
 
-            Result.printWinner();
+            Result.printWinner(cars, currentSituation);
 
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage()+"\n프로그램을 종료합니다.");
+            System.out.println(e.getMessage() + "\n프로그램을 종료합니다.");
             throw new IllegalArgumentException(e.getMessage() + "프로그램을 종료합니다.");
         }
     }
