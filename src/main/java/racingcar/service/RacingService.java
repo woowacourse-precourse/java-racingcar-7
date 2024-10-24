@@ -22,4 +22,9 @@ public class RacingService {
             throw new IllegalStateException("게임을 시작하기 위한 자동차가 존재하지 않습니다.");
         }
     }
+
+    private RacingRoundResult playRound(RacingCars racingCars) {
+        racingCars.moveRandomly(RANDOM_RANGE);
+        return new RacingRoundResult(racingCars.getCarNamesAndPositions());
+    }
 }
