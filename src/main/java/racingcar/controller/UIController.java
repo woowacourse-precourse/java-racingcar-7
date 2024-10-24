@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,8 +13,9 @@ public class UIController {
     private static final String RACE_RESULT = "실행 결과";
     private static final String WINNER_FORMAT = "최종 우승자 : ";
     private static final String NEXT_LINE = "\n";
+    private static final String NAME_SEPARATOR_SYMBOL = ",";
 
-    public String receiveName() {
+    public List<String> receiveName() {
         OutputView.print(QUESTION_CAR_NAME);
         return validateName(InputView.read());
     }
@@ -34,16 +37,24 @@ public class UIController {
         OutputView.print(WINNER_FORMAT + car.getName());
     }
 
-    private String validateName(String name) {
-        validateBlank(name);
-        validateEnglish(name);
+    private List<String> validateName(String input) {
+        validateBlank(input);
+        validateSeparator(input);
 
-        return name;
+        List<String> inputs = split(input, NAME_SEPARATOR_SYMBOL);
+        validateEnglish(inputs);
+
+        return inputs;
+    }
+
+    private List<String> split(String input, String separator) {
+        return Arrays.stream(input.split(separator))
+                .toList();
     }
 
     private void validateBlank(String input) {
         if (isBlank(input)) {
-            throw new IllegalArgumentException("[ERROR]횟수는 0을 입력할 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR]빈 문자열을 입력할 수 없습니다.");
         }
     }
 
@@ -51,14 +62,42 @@ public class UIController {
         return input.isBlank();
     }
 
-    private void validateEnglish(String name) {
-        if (isNotEnglish(name)) {
-            throw new IllegalArgumentException("[ERROR]이름은 영문자만 입력 가능합니다.");
-        }
+    private void validateEnglish(List<String> inputs) {
+        inputs.stream()
+                .filter(this::isNotEnglish)
+                .findAny()
+                .ifPresent(input -> {
+                    throw new IllegalArgumentException("[ERROR]영문자가 아닌 다른 문자가 포함되어 있습니다.");
+                });
     }
 
     private boolean isNotEnglish(String name) {
         return !name.matches("^[a-z|A-Z]*$");
+    }
+
+    private void validateSeparator(String input) {
+        validateEdgeSeparator(input);
+        validateContinuousSeparator(input);
+    }
+
+    private void validateEdgeSeparator(String input) {
+        if (isEdgeSeparator(input)) {
+            throw new IllegalArgumentException("[ERROR]잘못된 입력 형식입니다.");
+        }
+    }
+
+    private boolean isEdgeSeparator(String input) {
+        return input.startsWith(NAME_SEPARATOR_SYMBOL) || input.endsWith(NAME_SEPARATOR_SYMBOL);
+    }
+
+    private void validateContinuousSeparator(String input) {
+        if (isContinuousSeparator(input)) {
+            throw new IllegalArgumentException("[ERROR]연속된 쉼표는 올 수 없습니다.");
+        }
+    }
+
+    private boolean isContinuousSeparator(String input) {
+        return input.contains(NAME_SEPARATOR_SYMBOL.repeat(2));
     }
 
     private int validateCount(String count) {
