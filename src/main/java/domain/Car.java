@@ -20,7 +20,7 @@ public class Car {
     }
 
     public void validateNameSize(final String name) {
-        if(name.length() > MAXIMUM_NAME_SIZE) {
+        if(name.length() >= MAXIMUM_NAME_SIZE) {
             throw new IllegalArgumentException(MAXIMUM_NAME_SIZE_ERROR_MESSAGE);
         }
     }
