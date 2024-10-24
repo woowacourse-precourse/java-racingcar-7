@@ -11,6 +11,7 @@ public class CarUtility {
         String[] carNames = carsWithComma.split(",");
         ArrayList<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
+            generateExceptionIfNameAbove5(carName);
             cars.add(new Car(carName));
         }
         return cars;
