@@ -4,8 +4,8 @@ public class Round {
     private final int value;
 
     public Round(int value) {
-        if (value <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        if (value <= 0 || value > 20) {
+            throw new IllegalArgumentException("시도 횟수는 1에서 20 사이여야 합니다.");
         }
         this.value = value;
     }

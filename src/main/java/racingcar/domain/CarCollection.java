@@ -3,12 +3,14 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CarCollection {
     private final List<Car> cars;
 
     public CarCollection(List<Car> cars) {
+        validateCarNamesAreUnique(cars);
         this.cars = List.copyOf(cars);
     }
 
@@ -27,6 +29,16 @@ public class CarCollection {
                 .map(Car::new)
                 .collect(Collectors.toList());
         return new CarCollection(carList);
+    }
+
+    private void validateCarNamesAreUnique(List<Car> cars) {
+        Set<String> uniqueNames = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
+
+        if (uniqueNames.size() != cars.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     public void moveAll() {
