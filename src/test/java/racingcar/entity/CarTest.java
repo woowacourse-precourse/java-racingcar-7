@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.CarNameValidationError;
 
 public class CarTest {
 
@@ -28,7 +29,8 @@ public class CarTest {
     void failWhenNameTooLong() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car("123456")
+                () -> new Car("123456"),
+                CarNameValidationError.NAME_TOO_LONG.getMessage()
         );
     }
 
@@ -37,7 +39,8 @@ public class CarTest {
     void failWhenNameEmpty() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car("")
+                () -> new Car(""),
+                CarNameValidationError.NAME_EMPTY.getMessage()
         );
     }
 
@@ -46,7 +49,8 @@ public class CarTest {
     void failWhenNameHasSpace() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car("pobi ")
+                () -> new Car("pobi "),
+                CarNameValidationError.NAME_CONTAINS_SPACE.getMessage()
         );
     }
 
@@ -55,7 +59,8 @@ public class CarTest {
     void failWhenNameNull() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car(null)
+                () -> new Car(null),
+                CarNameValidationError.NAME_NULL.getMessage()
         );
     }
 

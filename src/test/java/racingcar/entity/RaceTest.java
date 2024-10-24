@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.TestUtils;
+import racingcar.exception.RaceCarValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class RaceTest {
@@ -39,7 +40,8 @@ public class RaceTest {
 
         // When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(cars));
+                () -> new Race(cars),
+                RaceCarValidationError.CARS_EXCEED_LIMIT.getMessage());
     }
 
     @Test
@@ -54,7 +56,8 @@ public class RaceTest {
 
         // When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(cars));
+                () -> new Race(cars),
+                RaceCarValidationError.CARS_DUPLICATE_NAME.getMessage());
     }
 
     @Test
@@ -62,7 +65,8 @@ public class RaceTest {
     void failWhenCarListNull() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(null));
+                () -> new Race(null),
+                RaceCarValidationError.CARS_NULL.getMessage());
     }
 
     @Test
@@ -132,4 +136,5 @@ public class RaceTest {
         // Then
         assertArrayEquals(new String[]{"c", "d"}, winners);
     }
+
 }
