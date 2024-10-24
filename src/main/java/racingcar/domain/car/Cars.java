@@ -3,9 +3,7 @@ package racingcar.domain.car;
 import racingcar.exception.BusinessException;
 import racingcar.exception.RacingCarExceptionMessage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
@@ -16,6 +14,20 @@ public class Cars {
         Arrays.stream(input.split(",")).forEach(user -> {
             cars.add(new Car(user));
         });
+        validateDuplicateCarName();
+    }
+
+    private void validateDuplicateCarName() {
+        Set<String> carsName = new HashSet<>();
+        cars.forEach(car -> {
+            if (isDuplicate(car, carsName)) {
+                throw new BusinessException(RacingCarExceptionMessage.CAR_NAME_DUPLICATE_EXCEPTION);
+            }
+        });
+    }
+
+    private boolean isDuplicate(Car car, Set<String> carsName) {
+        return !carsName.add(car.getName());
     }
 
     private void validateInput(String input) {
@@ -28,10 +40,6 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<String> winners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
@@ -42,5 +50,9 @@ public class Cars {
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

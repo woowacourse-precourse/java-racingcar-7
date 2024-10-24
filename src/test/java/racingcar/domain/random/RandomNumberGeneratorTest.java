@@ -15,7 +15,6 @@ public class RandomNumberGeneratorTest {
     public static final int ACCEPT_VALUE = 4;
     public static final int TEST_FAIL_MIN_VALUE = 11;
 
-
     @Test
     void 랜덤_숫자_생성_테스트() {
         // given

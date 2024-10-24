@@ -40,4 +40,12 @@ public class CarsTest {
             new Cars(",");
         }).isInstanceOf(BusinessException.class);
     }
+
+    @Test
+    void 차량_컬렉션_생성시_같은_이름을_받은경우_BusinessException() {
+        // given & when & then
+        assertThatThrownBy(() -> {
+            new Cars("kim,kim,kang");
+        }).isInstanceOf(BusinessException.class);
+    }
 }
