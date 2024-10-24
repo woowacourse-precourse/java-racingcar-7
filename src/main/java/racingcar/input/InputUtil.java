@@ -22,7 +22,7 @@ public class InputUtil {
         return new Input(names, tryNumber);
     }
 
-    public static List<String> parseNames(String input) throws IllegalArgumentException {
+    private static List<String> parseNames(String input) throws IllegalArgumentException {
 
         if(input.startsWith(",") || input.endsWith(","))
             throw new IllegalArgumentException("공백의 이름은 넣을 수 없습니다.");
@@ -32,14 +32,14 @@ public class InputUtil {
         for(String s : splitNames){
             if( !s.matches("^[a-zA-Z0-9,]*$"))
                 throw new IllegalArgumentException("구분자는 ','만 가능합니다.");
-            if(s.length() > 5 || s.equals(""))
+            if(s.length() > 5 || s.isEmpty())
                 throw new IllegalArgumentException("각 이름은 1자 이상 5자 이하여야 합니다.");
         }
 
         return List.of(splitNames);
     }
 
-    public static int getTryNumber(String input) throws IllegalArgumentException {
+    private static int getTryNumber(String input) throws IllegalArgumentException {
 
         int tryNumber;
         try {
