@@ -1,16 +1,16 @@
 package racingcar.view;
 
+
+import java.util.List;
 import racingcar.model.Car;
 
 
-import java.util.List;
-
-
 public class ResultView {
-    public static void printRaceResult(List<Car> cars) {
-    }
+   public static void printRaceResult(List<Car> cars) {
+   }
 
 
-    public static void printWinners(List<Car> winners) {
-    }
+   public static void printWinners(List<Car> winners) {
+   }
+  
 }
