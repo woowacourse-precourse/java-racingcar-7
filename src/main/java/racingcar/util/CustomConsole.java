@@ -3,7 +3,7 @@ package racingcar.util;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
-public class CustomIO {
+public class CustomConsole {
 
     public static String readLine() {
         try {
