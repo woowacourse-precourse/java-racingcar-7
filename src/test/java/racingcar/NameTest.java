@@ -34,4 +34,13 @@ class NameTest {
                 .hasMessage("이름은 공백일 수 없습니다.");
     }
 
+    @DisplayName("특수문자 포함된 이름 입력")
+    @ParameterizedTest
+    @ValueSource(strings = {"ju;", "po@", "$me$", "ok."})
+    void 특수문자_이름_입력(String name) {
+        Assertions.assertThatThrownBy(() -> new Name(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름에 특수문자를 사용할 수 없습니다.");
+    }
+
 }
