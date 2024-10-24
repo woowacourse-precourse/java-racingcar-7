@@ -11,7 +11,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    //For test only
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
