@@ -1,6 +1,5 @@
 package racingcar.common.exception;
 
-import java.lang.reflect.Constructor;
 import racingcar.common.exception.dto.ExceptionEnum;
 
 /**
