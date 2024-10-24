@@ -16,7 +16,15 @@ public class CarRace {
                     cars.put(car, cars.get(car) + 1);
                 }
             }
+
+            // 라운드 결과 출력
+            for (String car : cars.keySet()) {
+                System.out.println(car + " : " + "-".repeat(cars.get(car)));
+            }
+            System.out.println();
         }
+
+
     }
 
     public int random() {
