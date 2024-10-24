@@ -20,7 +20,7 @@ public class Game {
         for (int i = 0; i < n; i++) {
             round();
         }
-        winner();
+        printWinner();
     }
 
     // 게임 한 라운드 진행
@@ -33,8 +33,13 @@ public class Game {
         System.out.println();
     }
 
-    // 우승자 결정 및 우승자 출력
-    private void winner() {
+    // 최고 점수 산정
+    private int getMaxScore() {
+
+    }
+
+    // 우승자 출력
+    private void printWinner() {
 
     }
 
