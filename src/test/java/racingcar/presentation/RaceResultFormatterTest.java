@@ -12,13 +12,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-class CarPositionsDisplayTest {
+class RaceResultFormatterTest {
 
-    private CarPositionsDisplay carPositionsDisplay;
+    private RaceResultFormatter raceResultFormatter;
 
     @BeforeEach
     void setUp() {
-        carPositionsDisplay = new CarPositionsDisplay();
+        raceResultFormatter = new RaceResultFormatter();
     }
 
     @ParameterizedTest
@@ -28,7 +28,7 @@ class CarPositionsDisplayTest {
         cars.moveAll();
 
         // when
-        String result = carPositionsDisplay.formatPositions(cars);
+        String result = raceResultFormatter.formatPositions(cars);
 
         // then
         assertThat(result.strip()).isEqualTo(expected.strip());
