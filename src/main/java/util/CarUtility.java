@@ -2,6 +2,7 @@ package util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import racingcar.Car;
 
 public class CarUtility {
@@ -19,7 +20,7 @@ public class CarUtility {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void advanceIf4More(Car car) {
+    public static void advanceSixTimesOutOfTen(Car car) {
         int randomInt = makeRandomInt();
         if (randomInt >= 4) {
             car.addAdvanceCount();
@@ -32,5 +33,18 @@ public class CarUtility {
                 .mapToInt(Car::getAdvanceCount)
                 .max()
                 .orElse(0);
+    }
+
+    public static String getWinnerNames(ArrayList<Car> cars) {
+        int maxAdvanceCount = getMaxAdvanceCount(cars);
+        return cars.stream()
+                .filter(car -> car.getAdvanceCount() == maxAdvanceCount)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    public static void printWinners(ArrayList<Car> cars) {
+        String winners = getWinnerNames(cars);
+        System.out.println("최종 우승자 : " + winners);
     }
 }
