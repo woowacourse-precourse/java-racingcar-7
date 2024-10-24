@@ -12,16 +12,8 @@ public class RaceManager {
 
     public void startRace(List<RacingCar> racingCars) {
         int cycle = IO_HANDLER.setRaceCycle();
-        for (int i = 0; i < cycle; i++) {
-            System.out.println();
-            displayRaceBroadcast(racingCars);
-        }
-        System.out.println("최종 우승자 : " + getWinner(racingCars));
-    }
-
-    private static void displayRaceBroadcast(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop();
+            racingCar.run(cycle);
             IO_HANDLER.printRaceState(racingCar);
         }
     }
