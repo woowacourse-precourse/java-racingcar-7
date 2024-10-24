@@ -6,12 +6,13 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class RacingService {
+    private final HashMap<String, Integer> CAR_MAP = new HashMap<>();
     private final String CAR_INPUT_DELIMITER = ",";
     private final int MOVE_COUNT;
     private final int INITIAL_POSITION = 0;
     private final int FORWARD_STEP = 1;
     private final int STOP_STEP = 0;
-    private final HashMap<String, Integer> CAR_MAP = new HashMap<>();
+    public int executionCount = 0;
 
     public RacingService(String carInput, int moveCount) {
         this.MOVE_COUNT = moveCount;
@@ -59,7 +60,6 @@ public class RacingService {
                 winner.add(entry.getKey());
             }
         }
-
         return winner.toArray(new String[0]);
     }
 
@@ -71,7 +71,21 @@ public class RacingService {
                 maxPosition = curPosition;
             }
         }
-
         return maxPosition;
+    }
+
+    private void executeTurn() {
+        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
+            int randomValue = createRandomValue();
+            updateMovement(entry.getKey(), randomValue);
+        }
+    }
+
+    public String[] startRaceGame() {
+        while (executionCount < MOVE_COUNT) {
+            executeTurn();
+            executionCount++;
+        }
+        return getWinner();
     }
 }
