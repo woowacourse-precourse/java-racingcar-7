@@ -5,7 +5,8 @@ public enum InteractionMessageEnum {
     ATTEMPT_COUNT("시도할 횟수는 몇 회인가요?"),
     RESULT_MESSAGE("실행 결과"),
     COLON(" : "),
-    WINNERS_MESSAGE("최종 우승자");
+    WINNERS_MESSAGE("최종 우승자"),
+    COMMA(", ");
 
     private final String message;
 
@@ -13,7 +14,8 @@ public enum InteractionMessageEnum {
         this.message = message;
     }
 
-    public String getInteractionMessage() {
-        return message;
-    }
+    //TODO: getter vs. 직접 사용??
+//    public String getInteractionMessage() {
+//        return message;
+//    }
 }
