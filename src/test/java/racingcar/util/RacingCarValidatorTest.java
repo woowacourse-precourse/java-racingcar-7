@@ -26,9 +26,9 @@ class RacingCarValidatorTest {
     void validateCarDuplicateTest() throws Exception {
         //given
         final List<Car> cars = List.of(
-                new Car("작은 자동차", randomNumberGenerator),
-                new Car("작은 자동차", randomNumberGenerator),
-                new Car("큰 자동차", randomNumberGenerator)
+                Car.of("작은차", randomNumberGenerator),
+                Car.of("작은차", randomNumberGenerator),
+                Car.of("큰차", randomNumberGenerator)
         );
 
         //when

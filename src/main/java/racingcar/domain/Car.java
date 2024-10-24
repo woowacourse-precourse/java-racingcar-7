@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 import racingcar.constant.Rule;
 import racingcar.util.NumberGenerator;
+import racingcar.util.RacingCarValidator;
 
 public class Car {
 
@@ -10,10 +11,15 @@ public class Car {
     private final NumberGenerator randomNumberGenerator;
     private long score;
 
-    public Car(final String name, final NumberGenerator randomNumberGenerator) {
+    private Car(final String name, final NumberGenerator randomNumberGenerator) {
         this.name = name;
         this.randomNumberGenerator = randomNumberGenerator;
         score = 0L;
+    }
+
+    public static Car of(final String name, final NumberGenerator randomNumberGenerator) {
+        RacingCarValidator.validateCarNameLength(name, Rule.CAR_NAME_LENGTH_MAX);
+        return new Car(name, randomNumberGenerator);
     }
 
     public String getName() {
