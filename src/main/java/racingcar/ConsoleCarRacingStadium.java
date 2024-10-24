@@ -3,15 +3,38 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.component.RacingCar;
 import racingcar.factory.RacingCarFactory;
+import racingcar.race.RacingGame;
 import racingcar.race.RacingPlayer;
 
 import java.util.List;
 
 public class ConsoleCarRacingStadium {
 
+    RacingGame<RacingCar> racingGame;
+
     public ConsoleCarRacingStadium() {
         List<RacingPlayer<RacingCar>> racingCars = setUpRacingCars();
+        int matchCount = setUpMatchCount();
+        this.racingGame = new RacingGame<>(racingCars, matchCount);
         Console.close();
+    }
+
+    private int setUpMatchCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String matchCountInput = Console.readLine();
+        if (!isPositiveNumber(matchCountInput)) {
+            throw new IllegalArgumentException("시도할 횟수는 양의 정수로 입력하세요.");
+        }
+        return Integer.parseInt(matchCountInput);
+    }
+
+    private boolean isPositiveNumber(String number) {
+        try {
+            int parsedInt = Integer.parseInt(number);
+            return parsedInt > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private List<RacingPlayer<RacingCar>> setUpRacingCars() {
