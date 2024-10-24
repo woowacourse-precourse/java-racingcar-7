@@ -17,12 +17,11 @@ public class Car {
 
     public void moveForward() {
         if (getNumberInRange() >= 4) {
+
+    public void moveForward(int number) {
+        if (number >= 4) {
             this.distance++;
         }
-    }
-
-    private int getNumberInRange() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 
     private void validateCarNameLength(String name) {
