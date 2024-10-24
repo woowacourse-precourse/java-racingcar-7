@@ -32,7 +32,7 @@ public class RacingCar {
         setUserList(usernameArray);
         startRace(round);
         winnerList = getWinner();
-//        showWinnerList(winnerList);
+        showWinnerList(winnerList);
     }
 
     private void setUserList(String usernameArray[]) {
@@ -48,8 +48,6 @@ public class RacingCar {
     private void checkRoundError(int round) {
         if(round < 0) {
             throw new IllegalArgumentException();
-        }else if(round == 0) {
-            System.out.println("경주를 진행하지 않고 종료");
         }
     }
 
@@ -62,8 +60,10 @@ public class RacingCar {
     }
 
     private void startRace(int round) {
+        System.out.println("\n실행 결과");
         for(int i = 0; i < round; i++) {
-           runRaceForRound(i);
+            runRaceForRound(i);
+            System.out.println();
         }
     }
 
@@ -108,5 +108,16 @@ public class RacingCar {
             winnerList.add(user);
         }
         return max;
+    }
+
+    private void showWinnerList(Vector<User> winnerList) {
+        System.out.print("최종 우승자 : ");
+
+        Iterator<User> iterator = winnerList.iterator();
+        System.out.print(iterator.next().name);
+        while(iterator.hasNext()) {
+            User user = iterator.next();
+            System.out.print(", " + user.name);
+        }
     }
 }
