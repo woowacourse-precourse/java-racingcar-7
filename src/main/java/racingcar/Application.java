@@ -9,15 +9,23 @@ import java.util.StringTokenizer;
 
 
 public class Application {
+    static List<Car> cars = new ArrayList<>();
+    static int playCount;
+    static int count;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String str = Console.readLine();
+        playCount = Integer.parseInt(Console.readLine());
+        
+        createCar(str);
 
+        playGame();
+
+        printWinner();
+    }
+    static void createCar(String str) {
         StringTokenizer st = new StringTokenizer(str,",");
-        int playCount = Integer.parseInt(Console.readLine());
-        int count = st.countTokens();
-
-        List<Car> cars = new ArrayList<>();
+        count = st.countTokens();
 
         for (int i = 0; i < count; i++) {
             String name = st.nextToken();
@@ -27,7 +35,9 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
 
+    static void playGame() {
         for (int i = 0; i < playCount; i++) {
             for (int j = 0; j < count; j++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
@@ -42,13 +52,13 @@ public class Application {
             }
             System.out.println();
         }
+    }
 
+    static void printWinner() {
         int temp = 0;
         for (int i = 0; i < count; i++) {
             temp = Math.max(temp, cars.get(i).location);
         }
-
-
 
         List<String> winner = new ArrayList<>();
         if(temp != 0){
@@ -68,6 +78,5 @@ public class Application {
         }
 
         System.out.println(sb);
-
     }
 }
