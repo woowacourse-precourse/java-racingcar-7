@@ -1,5 +1,7 @@
 package controller;
 
+import static java.lang.Integer.parseInt;
+
 import dto.CarDTO;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +29,7 @@ public class ViewScreenController {
     }
 
     private void nullCheck(String input) {
-        if (input.isEmpty()) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
@@ -38,10 +40,20 @@ public class ViewScreenController {
         return input;
     }
 
-    // Todo runTimes 양식 체크
     public int checkRunTimesFormat(String input) {
         nullCheck(input);
-        return Integer.parseInt(input);
+        try {
+            int runTimes = parseInt(input);
+
+            if (runTimes < 0) {
+                throw new IllegalArgumentException(); //음수일 때 에러
+            }
+
+            return runTimes;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e); // 숫자 형식 아닐 때 에러
+        }
+
     }
 
     // 경주 게임 전체 관리
