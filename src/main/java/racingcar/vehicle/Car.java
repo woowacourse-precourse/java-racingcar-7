@@ -5,7 +5,7 @@ public class Car {
     private int cnt;
 
     public Car(String name) {
-        if (name == null || name.isEmpty() || name.length() > 6) {
+        if (name == null || name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException();
         }
         this.name = name;
@@ -22,6 +22,7 @@ public class Car {
 
     public void run(int randomNum) {
         if (randomNum < 4) {
+            System.out.println(toString());
             return;
         }
         cnt++;
@@ -30,7 +31,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + " : "  + printCnt();
+        return name + " : " + printCnt();
     }
 
     public String printCnt() {
