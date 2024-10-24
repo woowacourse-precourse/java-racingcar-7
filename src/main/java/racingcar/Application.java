@@ -13,60 +13,22 @@ package racingcar;
 [x]사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 */
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
+import racingcar.controller.RacingCarController;
+import racingcar.service.RacingCarService;
+import racingcar.service.RacingCarServiceImpl;
+import racingcar.validation.CarNameValidator;
+import racingcar.validation.NameValidator;
+import racingcar.view.RacingCarView;
+import racingcar.view.RacingCarViewImpl;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉽표(,) 기준으로 구분");
-        String readLine = Console.readLine();
-        LinkedHashMap<String, Integer> members = new LinkedHashMap<>();
 
-        String[] split = readLine.split(",");
-        for (String s : split) {
-            if (s.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능하다.");
-            }
-            members.put(s, 0);
-        }
+        NameValidator nameValidator = new CarNameValidator();
+        RacingCarService racingCarService = new RacingCarServiceImpl(nameValidator);
+        RacingCarView racingCarView = new RacingCarViewImpl();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        Integer count = Integer.valueOf(Console.readLine());
-        System.out.println(count);
-
-        System.out.println("실행 결과");
-        for (int i = 0; i < count; i++) {
-            for (String s : members.keySet()) {
-                int randomCount = Randoms.pickNumberInRange(0, 9);
-                if (randomCount >= 4) {
-                    members.put(s, members.get(s) + randomCount);
-                }
-            }
-
-            for (String s : members.keySet()) {
-                System.out.println(s + " : " + "-".repeat(members.get(s)));
-            }
-            System.out.println();
-        }
-
-        int max = 0;
-        for (int carCount : members.values()) {
-            if (carCount > max) {
-                max = carCount;
-            }
-        }
-
-        LinkedHashSet<String> winners = new LinkedHashSet<>();
-        for (String name : members.keySet()) {
-            if (members.get(name) == max) {
-                winners.add(name);
-            }
-        }
-
-        // TODO: 우승자가 한명일때는 쉽표가 없도록 구현
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        RacingCarController racingCarController = new RacingCarController(racingCarService, racingCarView);
+        racingCarController.run();
     }
 }
