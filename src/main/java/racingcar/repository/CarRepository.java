@@ -15,4 +15,8 @@ public class CarRepository {
 	public void save(Car car) {
 		repository.put(car.getName(), car);
 	}
+
+	public boolean existByName(String name) {
+		return repository.containsKey(name);
+	}
 }
