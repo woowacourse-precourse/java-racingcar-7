@@ -15,9 +15,12 @@ public class Game {
         }
     }
 
-    // 게임을 n번 반복하는 메서드
+    // 게임을 n번 반복 후, 우승자를 출력하는 메서드
     public void play(int n) {
-
+        for (int i = 0; i < n; i++) {
+            round();
+        }
+        winner();
     }
 
     // 게임 한 라운드 진행
