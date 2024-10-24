@@ -43,6 +43,9 @@
 | 자동차 이름이 1개만 입력됐을 경우 | 애플리케이션을 종료시킨다.    |
 | 시도 획수가 자연수가 아닐 경우 | 애플리케이션을 종료시킨다.    |
 
+## Use Case  다이어그램
+<img src="https://github.com/user-attachments/assets/fabbaef2-c0d1-4793-89c6-47cb552cb388" alt="미션2_유스케이스_다이어그램" width="400"/>
+
 ## MVC
 🔵 **Model**
 
