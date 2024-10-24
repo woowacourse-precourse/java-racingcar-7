@@ -1,15 +1,16 @@
-package racingcar;
+package racingcar.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.car.Car;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 /**
@@ -75,5 +76,30 @@ class CarTest {
 
         assertThat(carsList.size()).isSameAs(3);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {":koo,sang,woo!", "koo ,sangL:woo", "1Skk,상우,한글"})
+    @DisplayName("다른 특수기호, 숫자값에 대해 모두 예외를 리턴해야함")
+    void 이름_유효성_검사_예외_테스트(String carNames) {
+        assertThatThrownBy(() -> {
+            Car.specialCharValidation(carNames);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("특수기호는 , 외에 사용하면 안됩니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Koo , Sang, woo", " Hong, Gil,Dong", "kim,Duk,bae"})
+    @DisplayName("공백값이 있으면 잘라줘야함")
+    void 공백_값을_없앤다(String containSpace) {
+        List<String> carNameList = Arrays.stream(containSpace.split(",")).map(carName -> {
+            return carName.trim();
+        }).toList();
+
+        for (int i = 0; i < carNameList.size(); i++) {
+            String carName = carNameList.get(i);
+            assertThat(carName).doesNotContain(" ");
+        }
+    }
+
+
 
 }
