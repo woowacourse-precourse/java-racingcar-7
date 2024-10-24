@@ -11,6 +11,18 @@ public class RacingCar {
         this.position = position;
     }
 
+    public static RacingCar from(String name) {
+        validateNameLength(name);
+        return new RacingCar(name, 0);
+    }
+
+    private static void validateNameLength(String name) {
+        int maxNameLength = 5;
+        if (name.isEmpty() || name.length() > maxNameLength) {
+            throw new IllegalArgumentException("자동차 이름은 1~5글자입니다.");
+        }
+    }
+
     public void move() {
         position += 1;
     }
@@ -26,4 +38,5 @@ public class RacingCar {
     public String getName() {
         return name;
     }
+
 }
