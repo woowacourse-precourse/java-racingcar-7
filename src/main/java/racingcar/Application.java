@@ -1,13 +1,13 @@
 package racingcar;
 
 import racingcar.configuration.AppConfig;
-import racingcar.controller.RacingControllerImpl;
+import racingcar.controller.RacingController;
 
 public class Application {
     public static void main(String[] args) {
 
         AppConfig config = new AppConfig();
-        RacingControllerImpl controller = config.getCarRacingController();
+        RacingController controller = config.getCarRacingController();
         controller.run();
 
     }
