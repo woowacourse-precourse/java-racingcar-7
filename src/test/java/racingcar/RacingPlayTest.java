@@ -28,13 +28,13 @@ public class RacingPlayTest {
 
     @DisplayName("자동차가 전진하는지 확인한다")
     @Test
-    void validMoveCar(){
+    void validMoveCar() {
         List<Car> expect = new ArrayList<>();
         expect.add(new Car("pobi"));
         expect.add(new Car("crong"));
         boolean test = false;
 
-        for(int i=0;i<30;i++) {
+        for (int i = 0; i < 30; i++) {
             RacingUtil.setMoveOrStop(expect);
             if (expect.get(0).getPosition() > 0 || expect.get(1).getPosition() > 0) {
                 test = true;
@@ -45,6 +45,32 @@ public class RacingPlayTest {
         assertThat(test).isTrue();
     }
 
+    @DisplayName("우승자가 1명일 경우")
+    @Test
+    void OneWinner() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi"));
+        carList.add(new Car("crong"));
+        carList.get(0).forward();
 
+        List<String> winners = RacingUtil.findWinner(carList);
 
+        assertThat(winners.get(0).equals("pobi")).isTrue();
+    }
+
+    @DisplayName("우승자가 여러명일 경우")
+    @Test
+    void multipleWinner() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("pobi"));
+        carList.add(new Car("crong"));
+        carList.add(new Car("honux"));
+        carList.add(new Car("java"));
+        carList.get(0).forward();
+        carList.get(2).forward();
+
+        List<String> winners = RacingUtil.findWinner(carList);
+
+        assertThat(winners.get(0).equals("pobi") && winners.get(1).equals("honux")).isTrue();
+    }
 }

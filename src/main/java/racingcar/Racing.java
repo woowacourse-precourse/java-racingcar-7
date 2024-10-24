@@ -16,6 +16,7 @@ public class Racing {
         carList = getCarListFromUser();
         int moveCount = getMoveCountFromUser();
         move(moveCount);
+        getWinner();
     }
 
     private List<Car> getCarListFromUser() {
@@ -40,6 +41,11 @@ public class Racing {
         }
     }
 
+    private void getWinner() {
+        List<String> winners = RacingUtil.findWinner(carList);
+        printWinners(winners);
+    }
+
     private void printCarPosition() {
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
@@ -54,4 +60,10 @@ public class Racing {
         }
         System.out.println();
     }
+
+    private void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
+    }
+
 }
