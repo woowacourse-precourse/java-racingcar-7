@@ -15,10 +15,14 @@ public class Application {
     static void validateCarNames(String carNames) {
         for (String carName : carNames.split(",")) {
             String stripCarName = carName.strip();
-            if (stripCarName.isEmpty()) {
-                throw new IllegalArgumentException("쉼표 이후에 자동차 이름이 존재하지 않습니다");
-            }
+            checkEmptyName(stripCarName);
             checkCarNameLength(stripCarName);
+        }
+    }
+
+    static void checkEmptyName(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("쉼표 이후에 자동차 이름이 존재하지 않습니다");
         }
     }
 
