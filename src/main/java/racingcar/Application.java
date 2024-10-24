@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +38,7 @@ public class Application {
         for (int i = 0; i < tryCount; i++) {
             doRace(carPositions);
         }
+        printWinners(carPositions);
     }
 
     private static void doRace(Map<String, Integer> carPositions) {
@@ -53,5 +56,22 @@ public class Application {
             System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
         }
         System.out.println();
+    }
+
+    private static void printWinners(Map<String, Integer> carPositions) {
+        int maxPosition = 0;
+        for (int position : carPositions.values()) {
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+        List<String> winners = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
+            if (entry.getValue() == maxPosition) {
+                winners.add(entry.getKey());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
