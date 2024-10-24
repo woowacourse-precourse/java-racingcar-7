@@ -8,10 +8,14 @@ import java.util.List;
 public class RacingGame {
     public static final int NAME_MAX = 5;
     private List<Car> cars;
+    private int tryCount;
 
     public void ready() {
         String inputNames = readLine();
         cars = createCars(createNames(inputNames));
+
+        String tryCountStr = readLine();
+        tryCount = inputTryCount(tryCountStr);
     }
 
     public String[] createNames(String inputNames) {
