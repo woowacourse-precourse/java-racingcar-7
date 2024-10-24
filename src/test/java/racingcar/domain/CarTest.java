@@ -41,4 +41,15 @@ class CarTest {
         assertThat(carDTO.getCarName()).isEqualTo("test");
         assertThat(carDTO.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    public void advanceTest() {
+        //given
+        Car car = new Car("test");
+        //when
+        car.advance();
+        CarDTO carDTO = car.getCarDTO();
+        //then
+        assertThat(carDTO.getPosition()).isEqualTo(1);
+    }
 }
