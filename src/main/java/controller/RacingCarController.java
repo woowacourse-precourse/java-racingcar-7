@@ -22,7 +22,7 @@ public class RacingCarController {
         List<String> carNameList = racingCarParser.parseRacingCar(cars);
 
         RacingRoundParser racingRoundParser = new RacingRoundParser(validator);
-        long round = racingRoundParser.parseRacingRound(roundString);
+        int round = racingRoundParser.parseRacingRound(roundString);
 
         RacingGame racingGame = new RacingGame(RacingCar.createRacingCars(carNameList), round,
                 new RandomRacingGameService());

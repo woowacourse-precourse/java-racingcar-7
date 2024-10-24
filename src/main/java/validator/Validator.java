@@ -40,14 +40,14 @@ public class Validator {
 
     public void validateRound(String roundString) {
         try {
-            long round = Long.parseLong(roundString);
+            int round = Integer.parseInt(roundString);
             checkRoundPositive(round);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorCode.ROUND_PARSE_ERROR.getMessage());
         }
     }
-    
-    private void checkRoundPositive(long round) {
+
+    private void checkRoundPositive(int round) {
         if (round < 0) {
             throw new IllegalArgumentException(ErrorCode.ROUND_PARSE_ERROR.getMessage());
         }

@@ -9,8 +9,8 @@ public class RacingRoundParser {
         this.validator = validator;
     }
 
-    public long parseRacingRound(String input) {
+    public int parseRacingRound(String input) {
         validator.validateRound(input);
-        return Long.parseLong(input);
+        return Integer.parseInt(input);
     }
 }
