@@ -86,6 +86,72 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 기능_테스트_자동차_한대_1시도() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    //첫 번째 시도 출력
+                    assertThat(output()).contains("pobi : -");
+
+                    //최종 우승자 출력
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 기능_테스트_자동차_한대_1시도_2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    //첫 번째 시도 출력
+                    assertThat(output()).contains("pobi : ");
+
+                    //최종 우승자 출력
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트_자동차_한대_2시도() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "2");
+                    //첫 번째 시도 출력
+                    assertThat(output()).contains("pobi : -");
+
+                    //두 번째 시도 출력
+                    assertThat(output()).contains("pobi : ");
+
+                    //최종 우승자 출력
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트_자동차_한대_2시도_2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "2");
+                    //첫 번째 시도 출력
+                    assertThat(output()).contains("pobi : ");
+
+                    //두 번째 시도 출력
+                    assertThat(output()).contains("pobi : ");
+
+                    //최종 우승자 출력
+                    assertThat(output()).contains("최종 우승자 : pobi");
+                },
+                STOP, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
