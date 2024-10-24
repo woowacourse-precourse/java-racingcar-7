@@ -2,6 +2,7 @@ package racingcar.entity;
 
 import racingcar.enums.DisplaySymbol;
 import racingcar.enums.ErrorMessage;
+import racingcar.enums.NameLength;
 
 public class Car {
     private final String name;
@@ -13,7 +14,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > 5 || name.isEmpty()) {
+        if (name.length() > NameLength.MAX_LENGTH.getValue() || name.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME.getMessage());
         }
     }
