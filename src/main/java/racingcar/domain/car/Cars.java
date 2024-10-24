@@ -21,6 +21,10 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void playOneRound(RandomMovement randomMovement) {
         cars.forEach(car -> car.go(randomMovement));
     }
