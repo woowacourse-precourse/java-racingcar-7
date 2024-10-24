@@ -24,5 +24,9 @@ public class GameController {
 
     public void run(Game game) {
         OutputView.printFinalResultMessage();
+
+        for (int i = 0; i < roundCount; i++) {
+            game.playRound();
+        }
     }
 }
