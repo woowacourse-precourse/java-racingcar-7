@@ -31,4 +31,18 @@ class RacingCountTest {
         assertThatThrownBy(() -> RacingCount.from(count))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("경주 횟수를 1회 차감한다.")
+    @Test
+    void deductCount() {
+        //given
+        int count = 1;
+        RacingCount racingCount = RacingCount.from(count);
+
+        //when
+        racingCount.deduct();
+
+        //then
+        assertThat(racingCount.getCount()).isEqualTo(--count);
+    }
 }
