@@ -11,10 +11,9 @@ public class Application {
         String[] separatedCarNames = carInputHandler.splitCarNames(inputCarNames);
         List<String> carNameList = new ArrayList<>(Arrays.asList(separatedCarNames));
 
-        String howManyTimesMove = carInputHandler.userInputHowManyTimes();
-        int numberOfMoves = Integer.parseInt(howManyTimesMove);
+        int howManyTimesMove = carInputHandler.userInputHowManyTimes();
         // 출력 TEST 출력 메서드 따로 생성후 삭제 예정
-        System.out.println(numberOfMoves);
+        System.out.println(howManyTimesMove);
 
 
     }
