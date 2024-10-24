@@ -47,7 +47,7 @@ public class RacingCarView {
         }
 
         // 최종 우승자 출력
-        System.out.println(winners.toString());
+        System.out.println(winners);
     }
 
 }
