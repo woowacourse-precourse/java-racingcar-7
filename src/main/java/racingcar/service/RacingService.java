@@ -1,14 +1,11 @@
 package racingcar.service;
 
 import racingcar.model.RacingCars;
-import racingcar.util.ramdom.RandomRange;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingService {
-
-    private final RandomRange RANDOM_RANGE = new RandomRange(0, 9);
 
     public RacingResult play(RacingCars racingCars, int tryCount) {
         List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
@@ -31,7 +28,7 @@ public class RacingService {
     }
 
     private RacingRoundResult playRound(RacingCars racingCars) {
-        racingCars.moveRandomly(RANDOM_RANGE);
+        racingCars.move();
         return new RacingRoundResult(racingCars.getCarNamesAndPositions());
     }
 }
