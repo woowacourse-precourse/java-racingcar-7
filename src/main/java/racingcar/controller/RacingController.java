@@ -14,19 +14,20 @@ import java.util.stream.Collectors;
 public class RacingController {
     InputHandler inputHandler;
     OutputHandler outputHandler;
-    public RacingController(){
+
+    public RacingController() {
         this.inputHandler = new InputHandler();
         this.outputHandler = new OutputHandler();
     }
 
-    public void run(){
+    public void run() {
         outputHandler.promptCarNameInput();
-        String[] carNames = inputHandler.split(Console.readLine());
+        String[] carNames = inputHandler.split();
         outputHandler.promptAttemptCountInput();
         int attemptGameCount = inputHandler.getAttemptGameCount();
 
         List<Car> carList = new ArrayList<>();
-        for(String car: carNames){
+        for (String car : carNames) {
             carList.add(new Car(car));
         }
 
@@ -34,17 +35,14 @@ public class RacingController {
 
         outputHandler.showWinners(getWinner(result));
 
-
-
-
     }
 
-    private List<Car> gameStart(List<Car> carList , int gameCount){
+    private List<Car> gameStart(List<Car> carList, int gameCount) {
         int currentCount = 0;
         outputHandler.showGameResult();
-        while(currentCount < gameCount){
-            for(Car car : carList){
-                if(Randoms.pickNumberInRange(0,9) >= 4){
+        while (currentCount < gameCount) {
+            for (Car car : carList) {
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
                     car.moveFoward();
                 }
             }
@@ -54,7 +52,7 @@ public class RacingController {
         return carList;
     }
 
-    private List<Car> getWinner(List<Car> carList){
+    private List<Car> getWinner(List<Car> carList) {
 
         int maxPosition = carList.stream()
                 .mapToInt(Car::getPosition)
