@@ -14,7 +14,6 @@ public class RacingCarBeanFactory{
         return new RacingCarRepository(new HashMap<String, Vehicle>());
     }
 
-
     public RacingService provideRacingService(ValidatedInputDataDTO validatedInputDataDTO) {
         return new RacingCarService(validatedInputDataDTO,new RacingCarPolicy(), provideRacingStatusRepository());
     }

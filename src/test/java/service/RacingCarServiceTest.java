@@ -30,23 +30,6 @@ class RacingCarServiceTest {
         Assertions.assertThat(repository.size()).isEqualTo(3);
     }
 
-    @DisplayName("이름에는 중복값이 올 수 없다.")
-    @Test
-    void isDuplicateName() {
-        //given
-        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
-        ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dada", 3L);
-        RacingCarService racingCarService = new RacingCarService(validatedInputDataDTO, new RacingCarPolicy(),
-                new RacingCarRepository(new HashMap<>()));
-
-        //when
-        RacingCarRepository repository = racingCarService.getRacingCarRepository();
-
-        //then
-        Assertions.assertThatThrownBy(racingCarService::racingStart).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복되는 이름은 사용할 수 없습니다.");
-    }
-
 
     @DisplayName("레이스 진행사항을 출력한다.")
     @Test

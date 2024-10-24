@@ -10,9 +10,7 @@ import vehicle.Car;
 
 public class RacingCarService implements RacingService {
     private final ValidatedInputDataDTO validatedInputDataDTO;
-    //TODO : 서비스가 레이싱 정책을 갖고있는게 맞을까..? car 객체가 가지고있어야 하는게 아니고..? 정책을 굳이 빈팩토리에서 주입해줘야할까? 그냥 상수모음인데..?
     private final RacingPolicy racingPolicy;
-    //TODO : 서비스는 레이싱상태 레포지토리랑 카객체 레포지토리만 갖고있자. 근데 그러면 둘 다 동기화를 해줘야하는데 괜찮을까..?
     private final RacingCarRepository racingCarRepository;
 
     public RacingCarService(ValidatedInputDataDTO validatedInputDataDTO, RacingPolicy racingPolicy,
@@ -24,7 +22,7 @@ public class RacingCarService implements RacingService {
 
     @Override
     public RacingOutputDTO racingStart() {
-        String[] splitNames = splitCarName();
+        String[] splitNames = validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
         generateRacer(splitNames);
         String raceStatus = runRace(splitNames);
         String raceWinner = fineRaceWinner();
@@ -32,40 +30,29 @@ public class RacingCarService implements RacingService {
         return new RacingOutputDTO(raceStatus, raceWinner);
     }
 
-    private String[] splitCarName() {
-        if(!validatedInputDataDTO.name().contains(racingPolicy.getNameSeparator())
-                && validatedInputDataDTO.name().length()>racingPolicy.getNameLengthPolicy()){
-            throw new IllegalArgumentException("이름 사이에는 " + racingPolicy.getNameSeparator() + " 구분자를 넣어주세요");
-        }
-        return validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
-    }
-
     @Override
     public void generateRacer(String[] splitNames) {
         for (String name:splitNames) {
             Car car = new Car(name,racingPolicy);
-            if(racingCarRepository.isDuplicateName(car.getVehicleName())){
-                //TODO : exceptionMessage Enum 만들어서 관리 하기.
-                throw new IllegalArgumentException("중복되는 이름은 사용할 수 없습니다.");
-            };
             racingCarRepository.save(car.getVehicleName(),car);
         }
     }
 
 
     /**
-     * 전체 턴만 출력된다.
-     * @param splitNames
-     * @return 레이스 전체턴 진행결과
+     * 전체 레이스경기가 실행된다.
+     * @param splitNames : 중복없이 구분자를 기준으로 자른 자동차 이름
+     * @return : 레이스 전체턴 진행결과
      */
     @Override
     public String runRace(String[] splitNames){
         StringBuilder stringBuilder = new StringBuilder();
-        
+        //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
         for (int i = 0; i < validatedInputDataDTO.count(); i++) {
             if(i < validatedInputDataDTO.count()-1){
                 stringBuilder.append(executeRaceTurn(splitNames)).append("\n");
-            }else {
+            }
+            if(i == validatedInputDataDTO.count()-1){
                 stringBuilder.append(executeRaceTurn(splitNames));
             }
         }
@@ -98,10 +85,12 @@ public class RacingCarService implements RacingService {
     public String fineRaceWinner(){
         List<String> winners = racingCarRepository.findWinner();
         StringBuilder stringBuilder = new StringBuilder();
+        //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
         for (int i = 0; i < winners.size(); i++) {
             if(i< winners.size()-1){
                 stringBuilder.append(winners.get(i)).append(","); 
-            }else {
+            }
+            if(i == winners.size()-1){
                 stringBuilder.append(winners.get(i));
             }
         }

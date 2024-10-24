@@ -3,7 +3,6 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import vehicle.Vehicle;
 
 public class RacingCarRepository implements Repository{
@@ -12,17 +11,6 @@ public class RacingCarRepository implements Repository{
     public RacingCarRepository(Map<String, Vehicle> racingStatusRepository) {
         this.racingCarRepository = racingStatusRepository;
     }
-
-    /**
-     * 중복이름 검사
-     *
-     * @param name : 자동차 이름
-     * @return : 중복데이터가 존재하면 true
-     */
-    public Boolean isDuplicateName(String name) {
-        return racingCarRepository.containsKey(name);
-    }
-
 
     public void save(String name, Vehicle car) {
         racingCarRepository.put(name, car);
@@ -36,11 +24,6 @@ public class RacingCarRepository implements Repository{
 
     public int size() {
         return racingCarRepository.size();
-    }
-
-
-    public Set<String> repositoryKeyset() {
-        return racingCarRepository.keySet();
     }
 
     public List<String> findWinner() {

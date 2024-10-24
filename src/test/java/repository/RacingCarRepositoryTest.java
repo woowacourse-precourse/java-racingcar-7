@@ -11,20 +11,6 @@ import vehicle.Car;
 
 class RacingCarRepositoryTest {
 
-    @DisplayName("name 중복검사 후 중복된 값이 있으면 true를 리턴한다.")
-    @Test
-    void isDuplicateName(){
-        //given
-        RacingCarRepository repository = new RacingCarRepository(new HashMap<>());
-        repository.save("lala",new Car("lala",12L));
-        repository.save("dodo",new Car("dodo",12L));
-        repository.save("dada",new Car("dada",12L));
-
-        //when
-        Boolean duplicateName = repository.isDuplicateName("dada");
-        //then
-        Assertions.assertThat(duplicateName).isTrue();
-    }
 
     @DisplayName("repository에 데이터를 저장한다.")
     @Test
