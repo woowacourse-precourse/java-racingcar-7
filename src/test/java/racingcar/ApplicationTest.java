@@ -92,4 +92,60 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.isValidName(emptyName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateNumberFormat() {
+        String numberWithCharacters = "a1b";
+        assertThatThrownBy(() -> Application.validateNumberFormat(numberWithCharacters))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String negativeNumber = "-2";
+        assertThatThrownBy(() -> Application.validateNumberFormat(negativeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String zero = "0";
+        assertThatThrownBy(() -> Application.validateNumberFormat(zero))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String empty = "";
+        assertThatThrownBy(() -> Application.validateNumberFormat(empty))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateBound() {
+        String bigNumber = "2147483648";
+        assertThatThrownBy(() -> Application.validateBound(bigNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void isValidTryCount() {
+        String inputTryCount = "42";
+        assertThat(Application.isValidTryCount(inputTryCount))
+                .isTrue();
+    }
+
+    @Test
+    void isValidTryCount_fail() {
+        String numberWithCharacters = "a1b";
+        assertThatThrownBy(() -> Application.isValidTryCount(numberWithCharacters))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String negativeNumber = "-2";
+        assertThatThrownBy(() -> Application.isValidTryCount(negativeNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String zero = "0";
+        assertThatThrownBy(() -> Application.isValidTryCount(zero))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String empty = "";
+        assertThatThrownBy(() -> Application.isValidTryCount(empty))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        String bigNumber = "123456789123456789";
+        assertThatThrownBy(() -> Application.isValidTryCount(bigNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
