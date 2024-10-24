@@ -7,6 +7,7 @@ import java.util.Set;
 public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
     private static final String PRINTABLE_PATTERN = "\\p{Print}+";
+
     public void carNameValidate(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
 
@@ -29,7 +30,6 @@ public class Validator {
             if (!carName.matches(PRINTABLE_PATTERN)) {
                 throw new IllegalArgumentException();
             }
-
         }
     }
 }
