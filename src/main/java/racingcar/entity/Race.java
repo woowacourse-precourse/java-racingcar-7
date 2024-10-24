@@ -1,6 +1,7 @@
 package racingcar.entity;
 
 import java.util.List;
+import racingcar.util.RandomNumberGenerator;
 
 public class Race {
     final List<Car> cars;
@@ -18,6 +19,24 @@ public class Race {
                 .count() != cars.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
+    }
+
+    public void runSingleRound(RandomNumberGenerator randomNumberGenerator) {
+        for (Car car : this.cars) {
+            car.move(randomNumberGenerator.pickRandomNumberInRange(0, 9));
+        }
+    }
+
+    public String[] getWinners() {
+        int maxPosition = this.cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(IllegalStateException::new);
+
+        return this.cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toArray(String[]::new);
     }
 
     public String[] getCarNames() {
