@@ -19,6 +19,27 @@ public class InputValidatorTest {
     }
 
     @ParameterizedTest
+    @DisplayName("사용자가 입력한 자동차의 이름이 구분자로만 이루어져 있으면 예외를 던진다.")
+    @ValueSource(strings = {",", ",,,,", ",,,,,,,,,,,,,,"})
+    void throwExceptionWhenNameContainsOnlyDelimiter(String inputValue) {
+        // when & then
+        assertThatThrownBy(() -> InputValidator.validateNameOfCars(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 구분자인 쉼표(,)로만 이루어질 수 없습니다.");
+    }
+
+    @ParameterizedTest
+    @DisplayName("사용자가 입력한 자동차의 이름이 구분자로 끝나면 예외를 던진다.")
+    @ValueSource(strings = {"pobi,", "jun,woni,"})
+    void throwExceptionWhenNameEndsWithDelimiter(String inputValue) {
+        // when & then
+        assertThatThrownBy(() -> InputValidator.validateNameOfCars(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 구분자인 쉼표(,)로 끝나서는 안됩니다.");
+    }
+
+
+    @ParameterizedTest
     @DisplayName("사용자가 입력한 시도 횟수가 양의 정수가 아니면 예외를 던진다.")
     @ValueSource(strings = {"abc", "123abc", "-1", "42.5", "", " ", "       "})
     void throwExceptionWhenAttemptCountIsNotPositiveInteger(String inputValue) {
