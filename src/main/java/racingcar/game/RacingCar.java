@@ -21,6 +21,8 @@ public class RacingCar {
         displayAccumulateForEachAttempt(attemptCount, carNames, moveAccumulator);
 
         String winners = retrieveWinners(moveAccumulator);
+
+        System.out.printf("최종 우승자 : %s\n", winners);
     }
 
     private List<String> getCarNamesFromUser() {
