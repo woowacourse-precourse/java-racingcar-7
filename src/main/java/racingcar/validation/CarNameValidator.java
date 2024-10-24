@@ -37,6 +37,15 @@ public class CarNameValidator {
     }
 
     public static void validateCar(String input) {
+        String[] cars = input.split(",");
+        for (String car : cars) {
+            validateCarNameLength(car);
+        }
+    }
 
+    private static void validateCarNameLength(String carName) {
+        if (carName.length() > 5 || carName.length() < 1) {
+            throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_ONE_TO_FIVE.getMessage());
+        }
     }
 }
