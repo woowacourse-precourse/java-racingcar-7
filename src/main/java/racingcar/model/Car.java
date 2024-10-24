@@ -1,17 +1,17 @@
 package racingcar.model;
 
-import racingcar.model.vo.Name;
+import racingcar.model.vo.CarName;
 
 public class Car {
-    private final Name name;
+    private final CarName carName;
     private int position = 0;
 
     public Car(String name) {
-        this.name = new Name(name);
+        this.carName = new CarName(name);
     }
 
     public String getName() {
-        return name.name();
+        return carName.name();
     }
 
     public void move() {

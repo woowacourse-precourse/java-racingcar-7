@@ -1,10 +1,10 @@
 package racingcar.model.vo;
 
-public record Name(String name) {
+public record CarName(String name) {
 
     private static final int MAX_NAME_LENGTH = 5;
 
-    public Name {
+    public CarName {
         validateLessThanFiveCharacters(name);
         validateAlphabeticString(name);
     }
