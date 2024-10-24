@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;
 
@@ -14,11 +15,23 @@ public class RacingService {
         this.movingStrategy = movingStrategy;
     }
 
+    public RacingCars getRacingCars(List<String> carNames) {
+        List<RacingCar> racingCars = createRacingCars(carNames);
+
+        return new RacingCars(racingCars);
+    }
+
     public RacingResult play(RacingCars racingCars, int tryCount) {
         List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
         RacingCars winners = getWinners(racingCars);
 
         return new RacingResult(racingRoundResults, winners);
+    }
+
+    private List<RacingCar> createRacingCars(List<String> carNameList) {
+        return carNameList.stream()
+                .map(carName -> new RacingCar(carName, movingStrategy))
+                .toList();
     }
 
     private RacingCars getWinners(RacingCars racingCars) {
