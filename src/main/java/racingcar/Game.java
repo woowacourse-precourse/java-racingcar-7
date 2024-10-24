@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Game {
     Setting setting = new Setting();
+    Winner winner = new Winner();
     private List<Car> cars;
 
     public void run() {
         cars = setting.grantCarName();
         game(setting.grantMoveCount());
+        winner.result(cars);
     }
 
     private void game(int moves) {
