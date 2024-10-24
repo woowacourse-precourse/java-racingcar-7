@@ -1,5 +1,6 @@
 package racingcar.model.validator;
 
+import racingcar.model.util.StringProcessor.;
 public class CarNameValidator {
 
     String input;
@@ -9,7 +10,7 @@ public class CarNameValidator {
 
         checkEmpty();
         checkNull();
-        
+
     }
 
     private void setInput(String input){
@@ -17,7 +18,6 @@ public class CarNameValidator {
     }
 
     private void checkEmpty(){
-
         input = input.trim();
         if(input.isEmpty()){
             throw new IllegalArgumentException();
@@ -25,7 +25,6 @@ public class CarNameValidator {
     }
 
     private void checkNull(){
-
         if(input == null){
             throw new IllegalArgumentException();
         }
