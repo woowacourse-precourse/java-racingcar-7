@@ -13,5 +13,6 @@ public class RaceServiceImpl implements RaceService {
 
     @Override
     public List<CarDomain> getWinners(RaceDomain race) {
+        return race.getWinnersInstance();
     }
 }
