@@ -8,4 +8,8 @@ public class Car {
         this.name = name;
         this.distance = 0;
     }
+
+    public void increaseDistance(){
+        this.distance++;
+    }
 }
