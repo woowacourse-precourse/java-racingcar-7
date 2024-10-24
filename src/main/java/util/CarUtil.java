@@ -1,11 +1,14 @@
 package util;
 
+import static console.Input.OUTPUT_WINNERS;
+import static console.Input.generateExceptionIfNameAbove5;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import racingcar.Car;
 
-public class CarUtility {
+public class CarUtil {
 
     public static ArrayList<Car> makeCarList(String carsWithComma) {
         String[] carNames = carsWithComma.split(",");
@@ -46,6 +49,6 @@ public class CarUtility {
 
     public static void printWinners(ArrayList<Car> cars) {
         String winners = getWinnerNames(cars);
-        System.out.println("최종 우승자 : " + winners);
+        System.out.println(OUTPUT_WINNERS + winners);
     }
 }
