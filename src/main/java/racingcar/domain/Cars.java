@@ -1,21 +1,22 @@
 package racingcar.domain;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.global.ErrorMessage;
 
 public record Cars(List<Car> carList) {
-    // 일급 컬렉션으로 사용한다.
+    private static final String CAR_NAME_DELIMITER = ",";
+
     public Cars(List<Car> carList) {
         validateDuplicateNames(carList);
-        this.carList = Collections.unmodifiableList(carList);
+        this.carList = List.copyOf(carList);
     }
 
     public static Cars of(String carNames, MovingStrategy movingStrategy) {
-        List<Car> carList = Arrays.stream(carNames.split(","))
+        List<Car> carList = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+                .map(String::trim)
                 .map(each -> new Car(each, movingStrategy))
                 .toList();
         return new Cars(carList);
@@ -27,7 +28,6 @@ public record Cars(List<Car> carList) {
 
     public List<String> getWinnerNames() {
         int maxPosition = getMaxPosition();
-
         return carList.stream()
                 .filter(each -> each.getPosition() == maxPosition)
                 .map(Car::getName)
@@ -38,14 +38,13 @@ public record Cars(List<Car> carList) {
         return carList.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow();
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NO_CARS_AVAILABLE.getMessage()));
     }
 
     private void validateDuplicateNames(List<Car> carList) {
         Set<String> uniqueNames = carList.stream()
                 .map(Car::getName)
                 .collect(Collectors.toSet());
-
         if (uniqueNames.size() != carList.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
         }

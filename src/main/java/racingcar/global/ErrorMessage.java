@@ -3,6 +3,7 @@ package racingcar.global;
 public enum ErrorMessage {
     // 도메인관련
     DUPLICATE_CAR_NAME("자동차 이름은 중복되어서는 안됩니다."),
+    NO_CARS_AVAILABLE("자동차가 없습니다."),
 
     // 입력관련,
     NO_LINES_FOUND("입력이 없습니다"),
