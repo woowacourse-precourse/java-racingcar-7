@@ -3,22 +3,26 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.dto.InputDTO;
 import racingcar.dto.OutputDTO;
-import racingcar.model.RacingCar;
 import racingcar.model.Racing;
 import racingcar.model.RacingResult;
 
 public class RacingController {
 
-    public static OutputDTO execute(InputDTO inputDTO) {
+    public static OutputDTO run(InputDTO inputDTO) {
+        List<String> racerNames = inputDTO.getRacerNames();
         int totalTrialCount = inputDTO.getTotalTrialCount();
 
-        Racing racing = new Racing(inputDTO.getRacerNames());
-        racing.start(totalTrialCount);
-        List<RacingCar> raceResult = racing.getRacingRecord();
-
-        RacingResult racingResult = new RacingResult(raceResult, totalTrialCount);
+        RacingResult racingResult = startRace(racerNames, totalTrialCount);
         List<String> winners = racingResult.findWinner();
 
-        return new OutputDTO(raceResult, winners);
+        return new OutputDTO(racingResult.get(), winners, totalTrialCount);
+    }
+
+    public static RacingResult startRace(List<String> racerNames, Integer totalTrialCount) {
+        Racing racing = new Racing(racerNames);
+
+        racing.start(totalTrialCount);
+
+        return new RacingResult(racing.getRacingRecord(), totalTrialCount);
     }
 }
