@@ -5,6 +5,7 @@ public class Car {
     private static final String EXECUTE_RESULT_DELIMITER = " : ";
     private static final String CURRENT_CAR_POSITION = "-";
     private static final Integer INITIAL_POSITION = 0;
+    private static final String NEW_LINE = "\n";
 
     private final String name;
     private Integer position;
@@ -26,6 +27,6 @@ public class Car {
     }
 
     public String displayPosition() {
-        return name + EXECUTE_RESULT_DELIMITER + CURRENT_CAR_POSITION.repeat(position);
+        return name + EXECUTE_RESULT_DELIMITER + CURRENT_CAR_POSITION.repeat(position) + NEW_LINE;
     }
 }
