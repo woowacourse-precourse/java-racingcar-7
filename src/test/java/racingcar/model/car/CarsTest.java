@@ -38,4 +38,72 @@ class CarsTest {
         // then
         assertThat(real).isInstanceOf(String.class).contains("car1", "car2", "car3", " : ");
     }
+
+    @Test
+    void 단일_우승자를_구하는_데_성공한다() {
+        // given
+        Car car1 = new Car("car1") {
+            @Override
+            int pickRandomNumber() {
+                return 4;
+            }
+        };
+
+        Car car2 = new Car("car2") {
+            @Override
+            int pickRandomNumber() {
+                return 3;
+            }
+        };
+
+        Car car3 = new Car("car3") {
+            @Override
+            int pickRandomNumber() {
+                return 3;
+            }
+        };
+
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        // when
+        cars.race();
+        String real = cars.winners();
+
+        // then
+        assertThat(real).isInstanceOf(String.class).contains("car1");
+    }
+
+    @Test
+    void 복수_우승자를_구하는_데_성공한다() {
+        // given
+        Car car1 = new Car("car1") {
+            @Override
+            int pickRandomNumber() {
+                return 4;
+            }
+        };
+
+        Car car2 = new Car("car2") {
+            @Override
+            int pickRandomNumber() {
+                return 4;
+            }
+        };
+
+        Car car3 = new Car("car3") {
+            @Override
+            int pickRandomNumber() {
+                return 3;
+            }
+        };
+
+        Cars cars = new Cars(List.of(car1, car2, car3));
+
+        // when
+        cars.race();
+        String real = cars.winners();
+
+        // then
+        assertThat(real).isInstanceOf(String.class).contains("car1", ",", "car2");
+    }
 }

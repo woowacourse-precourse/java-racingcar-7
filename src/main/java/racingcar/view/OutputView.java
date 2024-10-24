@@ -5,6 +5,7 @@ public class OutputView {
     private static final String REQUEST_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final String RESULT_HEADER = "실행 결과";
     private static final String LINE_BREAK = "\n";
+    private static final String WINNERS_PREFIX = "최종 우승자 : ";
 
     public void requestCarNames() {
         System.out.println(REQUEST_CAR_NAMES);
@@ -20,5 +21,9 @@ public class OutputView {
 
     public void printCarStatus(String result) {
         System.out.println(result);
+    }
+
+    public void printWinners(String winners) {
+        System.out.println(WINNERS_PREFIX + winners);
     }
 }

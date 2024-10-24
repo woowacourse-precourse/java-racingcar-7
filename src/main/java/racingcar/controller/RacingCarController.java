@@ -24,14 +24,7 @@ public class RacingCarController {
         String rawTryCount = receiveTryCount();
         TryCount tryCount = new TryCount(rawTryCount);
         race(cars, tryCount);
-    }
-
-    private void race(Cars cars, TryCount tryCount) {
-        outputView.printResultHeader();
-        for (int i = 0; i < tryCount.toInteger(); i++) {
-            String result = cars.race();
-            outputView.printCarStatus(result);
-        }
+        displayWinners(cars);
     }
 
     private String receiveCarNames() {
@@ -51,5 +44,18 @@ public class RacingCarController {
     private String receiveTryCount() {
         outputView.requestTryCount();
         return inputView.receiveString();
+    }
+
+    private void race(Cars cars, TryCount tryCount) {
+        outputView.printResultHeader();
+        for (int i = 0; i < tryCount.toInteger(); i++) {
+            String result = cars.race();
+            outputView.printCarStatus(result);
+        }
+    }
+
+    private void displayWinners(Cars cars) {
+        String winners = cars.winners();
+        outputView.printWinners(winners);
     }
 }

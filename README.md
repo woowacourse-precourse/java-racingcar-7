@@ -38,7 +38,7 @@
 
 <br>
 
-- [ ] __최종 우승자 출력__
+- [x] __최종 우승자 출력__
   - 예시: 
   
         최종 우승자 : pobi, jun
@@ -46,4 +46,4 @@
 <br>
 
 - __예외 처리__
-  - [ ] 사용자의 잘못된 입력의 경우 IllegalArgumentException 을 발생시키고 프로그램 종료
+  - [x] 사용자의 잘못된 입력의 경우 IllegalArgumentException 을 발생시키고 프로그램 종료

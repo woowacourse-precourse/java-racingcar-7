@@ -1,9 +1,11 @@
 package racingcar.model.car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static final String DELIMITER = " : ";
+    private static final String PROCESS_DELIMITER = " : ";
+    private static final String RESULT_DELIMITER = ", ";
     private static final String LINE_BREAK = "\n";
 
     private final List<Car> cars;
@@ -23,7 +25,7 @@ public class Cars {
 
     private void makeResult(StringBuilder result, Car car) {
         result.append(car.getName());
-        result.append(DELIMITER);
+        result.append(PROCESS_DELIMITER);
         result.append(car.positionToString());
         result.append(LINE_BREAK);
     }
@@ -48,5 +50,24 @@ public class Cars {
             return false;
         }
         return true;
+    }
+
+    public String winners() {
+        List<String> winners = new ArrayList<>();
+        int max = 0;
+        for (Car car : cars) {
+            int position = car.positionToString().length();
+            if (max < position) {
+                max = position;
+            }
+        }
+
+        for (Car car : cars) {
+            int position = car.positionToString().length();
+            if (max == position) {
+                winners.add(car.getName());
+            }
+        }
+        return String.join(RESULT_DELIMITER, winners);
     }
 }

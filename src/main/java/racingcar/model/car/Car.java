@@ -45,7 +45,7 @@ public class Car {
         return POSITION_STRING_VALUE.repeat(position);
     }
 
-    boolean canMove() {
+    private boolean canMove() {
         return MIN_VALID_NUMBER <= pickRandomNumber();
     }
 
