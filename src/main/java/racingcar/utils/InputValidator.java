@@ -13,8 +13,9 @@ public final class InputValidator {
         }
 
         List<String> cars = Parser.parseCarNames(input);
-        if(cars.contains("")){
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAMES.getMessage());
+        for(String car : cars){
+            if(car.isEmpty() || car.length() > 5)
+                throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAMES.getMessage());
         }
         if(isDuplicated(cars)){
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NAMES.getMessage());
