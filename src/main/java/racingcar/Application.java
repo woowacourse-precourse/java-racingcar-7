@@ -2,7 +2,7 @@ package racingcar;
 
 public class Application {
     static String[] cars;
-    static int[] carsPosition;
+    static StringBuilder[] carsRaceProgress;
     public static void main(String[] args) {
 
     }
