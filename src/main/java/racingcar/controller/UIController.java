@@ -41,10 +41,7 @@ public class UIController {
         validateBlank(input);
         validateSeparator(input);
 
-        List<String> inputs = split(input, NAME_SEPARATOR_SYMBOL);
-        validateEnglish(inputs);
-
-        return inputs;
+        return split(input, NAME_SEPARATOR_SYMBOL);
     }
 
     private List<String> split(String input, String separator) {
@@ -60,19 +57,6 @@ public class UIController {
 
     private boolean isBlank(String input) {
         return input.isBlank();
-    }
-
-    private void validateEnglish(List<String> inputs) {
-        inputs.stream()
-                .filter(this::isNotEnglish)
-                .findAny()
-                .ifPresent(input -> {
-                    throw new IllegalArgumentException("[ERROR]영문자가 아닌 다른 문자가 포함되어 있습니다.");
-                });
-    }
-
-    private boolean isNotEnglish(String name) {
-        return !name.matches("^[a-z|A-Z]*$");
     }
 
     private void validateSeparator(String input) {
