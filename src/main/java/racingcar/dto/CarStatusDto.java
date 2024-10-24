@@ -3,18 +3,18 @@ package racingcar.dto;
 public class CarStatusDto {
 
     private final String name;
-    private final int distance;
+    private final int position;
 
-    public CarStatusDto(String name, int distance) {
+    public CarStatusDto(String name, int position) {
         this.name = name;
-        this.distance = distance;
+        this.position = position;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getDistance() {
-        return distance;
+    public int getPosition() {
+        return position;
     }
 }
