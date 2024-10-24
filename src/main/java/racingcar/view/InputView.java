@@ -7,6 +7,8 @@ import racingcar.util.Convertor;
 
 public class InputView {
 
+    private static final String NOT_CONTAIN_BLANK_MESSAGE = "공백을 입력할 수 없습니다.";
+
     public List<String> inputCarNames() {
         String carNames = Console.readLine();
 
@@ -25,21 +27,19 @@ public class InputView {
     }
 
     private void validateCarNames(String carNames) {
-        if (InputValidation.validateNullOrEmpty(carNames)) {
-            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
-        }
-        if (InputValidation.validateBlank(carNames)) {
-            throw new IllegalArgumentException("공백을 입력할 수 없습니다.");
-        }
+        validateInput(carNames, "자동차 이름을 입력해야 합니다.");
     }
 
     private void validateRacingCount(String racingCount) {
-        if (InputValidation.validateNullOrEmpty(racingCount)) {
-            throw new IllegalArgumentException("시도 횟수를 입력해야 합니다.");
-        }
+        validateInput(racingCount, "시도 횟수를 입력해야 합니다.");
+    }
 
-        if (InputValidation.validateBlank(racingCount)) {
-            throw new IllegalArgumentException("공백을 입력할 수 없습니다.");
+    private void validateInput(String input, String emptyMessage) {
+        if (InputValidation.validateNullOrEmpty(input)) {
+            throw new IllegalArgumentException(emptyMessage);
+        }
+        if (InputValidation.validateBlank(input)) {
+            throw new IllegalArgumentException(NOT_CONTAIN_BLANK_MESSAGE);
         }
     }
 
