@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트_자동차이름_5글자_넘으면_예외발생() {
+    void 예외_테스트_자동차이름_5글자_넘으면_예외() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("soohaa"))
                 .isInstanceOf(IllegalArgumentException.class)
