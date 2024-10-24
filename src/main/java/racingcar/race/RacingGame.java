@@ -18,9 +18,10 @@ public class RacingGame<T extends RacingPlayer<T>> {
 
     public void play() {
         doBeforePlay();
-        while (goToNextRound()) {
+        while (continueGame()) {
             playRound();
             doAfterRound();
+            goToNextRound();
         }
     }
 
@@ -32,16 +33,12 @@ public class RacingGame<T extends RacingPlayer<T>> {
         racingPlayers.playEach();
     }
 
-    private boolean goToNextRound() {
-        if (isLastRound()) {
-            return false;
-        }
+    private void goToNextRound() {
         currentRound++;
-        return true;
     }
 
-    private boolean isLastRound() {
-        return currentRound == matchCount;
+    private boolean continueGame() {
+        return currentRound <= matchCount;
     }
 
     private void doBeforePlay() {
