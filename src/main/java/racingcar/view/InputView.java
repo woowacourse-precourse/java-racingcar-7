@@ -23,7 +23,7 @@ public class InputView {
 
         validateRacingCount(racingCount);
 
-        return Integer.parseInt(racingCount);
+        return toInt(racingCount);
     }
 
     private void validateCarNames(String carNames) {
@@ -45,5 +45,13 @@ public class InputView {
 
     private String[] carNameSplit(String carNames) {
         return carNames.split(",");
+    }
+
+    private int toInt(String racingCount) {
+        try {
+            return Integer.parseInt(racingCount);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("시도 횟수는 1이상의 정수로 입력해야 합니다.");
+        }
     }
 }
