@@ -10,6 +10,14 @@ public class RacingCar {
         this.distance = distance;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
     public void forwardCar(int move) {
         distance += move;
     }
@@ -18,4 +26,6 @@ public class RacingCar {
         String currentCarStatus = carName + " : " + "=".repeat(distance);
         System.out.println(currentCarStatus);
     }
+
+
 }
