@@ -12,4 +12,8 @@ public class Car {
     public int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public String getName() {
+        return name;
+    }
 }

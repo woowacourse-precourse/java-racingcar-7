@@ -19,7 +19,6 @@ public class RacingService {
             carList.add(car);
             carToRacingProgress.put(car, 0);
         }
-        start();
     }
 
     public void start() {
