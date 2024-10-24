@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.validator.ValidateCarName;
+import racingcar.validator.ValidateCarNames;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -13,18 +13,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class InputValueTest {
-    private static final String CAR_NAME_BLANK = "";
+    private static final String CAR_NAMES_BLANK = "";
 
-    @DisplayName("자동차 이름이 빈 값이면 예외 발생")
+    @DisplayName("경주할 자동차들이 빈 문자열이면 예외 발생")
     @Test
     void ThrowExceptionIfCarNameBlank() {
         // given
-        String carName = CAR_NAME_BLANK;
-        ValidateCarName validateCarName = new ValidateCarName();
+        ValidateCarNames validateCarNames = new ValidateCarNames();
 
         // when
         Throwable thrown = catchThrowable(() -> {
-            validateCarName.isBlank(carName);
+            validateCarNames.isBlank(CAR_NAMES_BLANK);
         });
 
         //then
