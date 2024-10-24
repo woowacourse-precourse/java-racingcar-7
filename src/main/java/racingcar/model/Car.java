@@ -1,8 +1,8 @@
 package racingcar.model;
 
 public class Car {
-    String name;
-    int position;
+    private final String name;
+    private int position;
 
     public Car(String name) {
         this.name = name;
