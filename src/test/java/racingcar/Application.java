@@ -10,6 +10,7 @@ public class Application {
 
         String carNameInput = inputView.inputCarNamesString();
         List<String> carNames = model.getCarNames(carNameInput);
+        Validator.validateCarNames(carNames);
 
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -17,7 +18,7 @@ public class Application {
         }
 
         String attemptCountInput = inputView.inputAttemptCount();
-        model.validateAttemptCount(attemptCountInput);
+        Validator.validateAttemptCount(attemptCountInput);
         int attemptCount = Integer.parseInt(attemptCountInput);
 
         RacingGame racingGame = new RacingGame();
