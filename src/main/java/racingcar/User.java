@@ -21,9 +21,8 @@ public class User {
     }
 
     public int moves(){
-        int moves;
 
-        moves = Integer.parseInt(Console.readLine());
+        int moves = Integer.parseInt(Console.readLine());
 
         Console.close();
 
