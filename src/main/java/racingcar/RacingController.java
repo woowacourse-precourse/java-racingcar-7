@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class RacingController {
     private final RacingInputView inputView;
 
@@ -33,6 +35,7 @@ public class RacingController {
             }
         }
     }
+
     public void RacingRun() {
         try {
             String[] carNames = finalGetCarsNames();
