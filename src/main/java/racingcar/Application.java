@@ -2,7 +2,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 class CarNameInput {
     public String getInput() {
@@ -36,6 +36,14 @@ class CounterInput{
     }
 }
 
+//난수 생성 클래스
+class RandomNum{
+    public int generate(){
+        return Randoms.pickNumberInRange(0,9);
+    }
+}
+
+
 
 public class Application {
     public static void main(String[] args) {
@@ -47,6 +55,11 @@ public class Application {
 
         CarNameValidator validator = new CarNameValidator();
         validator.validate(carNames);
+
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
 
         CounterInput attemptInput = new CounterInput();
         int attempts = attemptInput.getInput();
