@@ -17,12 +17,11 @@ public class Application {
 
         int count = st.countTokens();
 
-        List<String> cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         List<Integer> location = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            cars.add(st.nextToken());
-            location.add(0);
+            cars.add(new Car(st.nextToken()));
         }
 
         for (int i = 0; i < 5; i++) {
@@ -31,20 +30,17 @@ public class Application {
                 int randomNum = Randoms.pickNumberInRange(0,9);
 
                 if(randomNum >= 4) {
-                    location.set(j, location.get(j) + randomNum);
+                    cars.get(j).location += randomNum;
                 }
             }
 
             for (int j = 0; j < count; j++) {
-                sb.append(cars.get(j));
-                sb.append(" : ");
-                for (int k = 0; k < location.get(j); k++) {
-                    sb.append("-");
-                };
-                sb.append("\n");
+                System.out.print(cars.get(j).getInfo());
             }
-            sb.append("\n");
-            System.out.println(sb);
+            System.out.println();
         }
+
+
+
     }
 }
