@@ -1,9 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
-import racingcar.model.CarRacingProgress;
-import racingcar.model.Cars;
-import racingcar.model.Winner;
+import racingcar.model.*;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -24,17 +21,18 @@ public class CarRacingController {
     }
 
     public void run() {
-        String carNames = inputView.getCarNames();
-        int chanceToMove = inputView.getChanceToMove();
+        CarNames carNames = CarNames.getAfterValidateForm(inputView.getCarNames());
+        RacingChance racingChance =
+                RacingChance.getAfterValidateForm(inputView.getChanceToMove());
         Cars cars = Cars.getOfNamesAndStrategy(carNames, new RandomMoveStrategy());
-        raceCarsAndTimes(cars, chanceToMove);
+        raceOfCarsAndChance(cars, racingChance);
         Winner winner = Winner.getFromCars(cars);
         outputView.printRaceResult(winner);
     }
 
-    private void raceCarsAndTimes(Cars cars, int chanceToMove) {
+    private void raceOfCarsAndChance(Cars cars, RacingChance chanceToRace) {
         outputView.printStartRace();
-        for (int i = 0; i < chanceToMove; i++) {
+        for (int i = 0; i < chanceToRace.get(); i++) {
             for (Car car : cars) {
                 car.moveOrNot();
                 CarRacingProgress progress = new CarRacingProgress(car);

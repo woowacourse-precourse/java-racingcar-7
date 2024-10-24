@@ -15,8 +15,9 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public static Cars getOfNamesAndStrategy(String names, Strategy strategy) {
-        List<Car> elements = Arrays.stream(names.split(",")).
+    public static Cars getOfNamesAndStrategy(CarNames names, Strategy strategy) {
+        String lineOfNames = names.getString();
+        List<Car> elements = Arrays.stream(lineOfNames.split(",")).
                 map(name -> new Car(name, strategy)).
                 toList();
         return new Cars(elements);

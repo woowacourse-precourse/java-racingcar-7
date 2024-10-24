@@ -6,5 +6,5 @@ package racingcar.view;
 public interface InputView {
     String getCarNames();
 
-    int getChanceToMove();
+    String getChanceToMove();
 }
