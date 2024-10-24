@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.controller.GameController;
 import racingcar.io.Input;
 import racingcar.io.Output;
 
@@ -11,7 +12,9 @@ public class Application {
     public static final Output output = new Output();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        runFullGame();
+        GameController gameController = new GameController();
+        gameController.runFullGame();
+//        runFullGame();
     }
 
     private static void runFullGame() {
