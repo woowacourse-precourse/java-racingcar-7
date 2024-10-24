@@ -22,7 +22,10 @@ public class ConsoleController {
                 .toList();
     }
 
-    public String getRoundRequest() {
-        return "";
+    public Integer getRoundRequest() {
+        outputView.displayRoundRequest();
+        String inputRound = Console.readLine();
+        filterConfig.getRoundFilterChain().doFilter(inputRound);
+        return Integer.valueOf(inputRound);
     }
 }
