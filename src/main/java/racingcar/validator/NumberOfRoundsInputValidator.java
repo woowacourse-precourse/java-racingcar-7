@@ -7,6 +7,7 @@ public class NumberOfRoundsInputValidator implements BasicValidator<String> {
         isInputEmpty(userInput);
         isInputInteger(userInput);
         isInputPositive(userInput);
+        isInputBetweenOneAndNinetyNine(userInput);
     }
 
     private void isInputEmpty(String userInput) {
@@ -26,6 +27,12 @@ public class NumberOfRoundsInputValidator implements BasicValidator<String> {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값이 정수가 아닙니다.");
+        }
+    }
+
+    private void isInputBetweenOneAndNinetyNine(String userInput) {
+        if (Integer.parseInt(userInput) > 99) {
+            throw new IllegalArgumentException("입력값이 99 초과의 숫자입니다.");
         }
     }
 }
