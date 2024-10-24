@@ -43,6 +43,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("쉼표를 2번 이상 연속으로 입력했을 때")
+    void colonIsNotOneExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,,java", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
