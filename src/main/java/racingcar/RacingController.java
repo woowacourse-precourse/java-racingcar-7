@@ -7,9 +7,11 @@ import java.util.List;
 
 public class RacingController {
     private final RacingInputView inputView;
+    private final RacingOutputView outputView;
 
-    public RacingController(RacingInputView inputView) {
+    public RacingController(RacingInputView inputView, RacingOutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
     public String[] splitCarNames(String RacingCarNames) {
         return RacingCarNames.split(",");
@@ -46,11 +48,10 @@ public class RacingController {
 
             List<Car> cars = new ArrayList<>();
 
-            runRace(cars, RacingRounds);
-
             for (String name : carNames) {
                 cars.add(new Car(name, 0));
             }
+            runRace(cars, RacingRounds);
         }catch (IllegalArgumentException e) {
             System.out.println("오류" + e.getMessage());
         }
@@ -60,6 +61,7 @@ public class RacingController {
             for (Car car : cars) {
                 car.canMove();
             }
+            outputView.printStatus(cars);
         }
     }
 }
