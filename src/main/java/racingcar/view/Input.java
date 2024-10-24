@@ -15,15 +15,25 @@ public class Input {
         return new Input();
     }
 
-    public String getInput() {
-        return readLine();
+    public List<String> getCarnames() {
+        System.out.println(InputMessage.자동차_이름_입력);
+        return splitCarnames(getInput());
     }
 
-    public List<String> getCarnames(String inputData) {
+    public Integer getTotalRound() {
+        System.out.println(InputMessage.자동차_이름_입력);
+        return parserTotalRound(getInput());
+    }
+
+    public List<String> splitCarnames(String inputData) {
         return List.of(inputData.split(COMMA));
     }
 
-    public Integer getTotalRound(String inputData) {
+    public Integer parserTotalRound(String inputData) {
         return Integer.parseInt(inputData);
+    }
+
+    public String getInput() {
+        return readLine();
     }
 }

@@ -20,14 +20,13 @@
     - [X] variable : cars
     - [X] method : playOneRound, getWinnerCars, getCars
         - [X] TestCode
-- [ ] Input Class
+- [X] Input Class
     - [ ] variable : validator
-    - [ ] method : getCarnames, getTotalRound
-        - [ ] TestCode
-- [ ] Output Class
-    - [ ] variable : cars
-    - [ ] method : viewRound
-        - [ ] TestCode
+    - [X] method : getCarnames, getTotalRound
+        - [X] TestCode
+- [X] Output Class
+    - [X] method : viewOneRound, viewResult
+        - [X] TestCode
 - [X] Car Class
   - [X] variable : name, distance
   - [X] method : move, of(create Instance)
