@@ -11,7 +11,6 @@ public class InputView {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.CARS_INPUT_EMPTY);
         }
-        Console.close();
         return cars;
     }
 
@@ -21,7 +20,6 @@ public class InputView {
         if (countString.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.COUNTS_INPUT_EMPTY);
         }
-        Console.close();
         return Integer.parseInt(countString);
     }
 
