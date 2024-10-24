@@ -43,6 +43,7 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("전진 테스트")
     public void advanceTest() {
         //given
         Car car = new Car("test");

@@ -9,6 +9,7 @@ public class RacingCars {
     private static final int CAR_LIST_MAX_SIZE = 10;
 
     private final List<Car> carList;
+
     public RacingCars(String readLine) {
         List<Car> tmpList = new ArrayList<>();
         String[] nameArray = readLine.split(",");
@@ -49,7 +50,9 @@ public class RacingCars {
         List<String> winnerList = getWinnerList();
         for (String winner : winnerList) {
             stringBuilder.append(winner);
+            stringBuilder.append(",");
         }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 
