@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.service.Service;
@@ -45,5 +46,12 @@ public class Controller {
 
     public void printWinners(final ArrayList<Car> winnerList) {
         outputView.printWinners(winnerList);
+    }
+
+    public void playGame(final Race race) {
+        IntStream.range(0, race.getAttemptCount()).forEach(attemptCount -> {
+            service.playRound(race);
+            printExecutionResult(race);
+        });
     }
 }
