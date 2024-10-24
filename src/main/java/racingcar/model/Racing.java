@@ -17,7 +17,7 @@ public class Racing {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void start(int totalTrialCount) {
+    public void start(Integer totalTrialCount) {
         for (int i = 1; i <= totalTrialCount; i++) {
             racingRecord.forEach(RacingCar::moveOrStop);
         }

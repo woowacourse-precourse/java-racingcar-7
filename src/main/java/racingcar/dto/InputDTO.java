@@ -7,7 +7,7 @@ public class InputDTO {
     private final List<String> racerNames;
     private final int totalTrialCount;
 
-    public InputDTO(List<String> racerNames, int totalTrialCount) {
+    public InputDTO(List<String> racerNames, Integer totalTrialCount) {
         this.racerNames = racerNames;
         this.totalTrialCount = totalTrialCount;
     }
