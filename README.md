@@ -76,7 +76,7 @@
 |-----------------|-----------|-------------|----------------|
 | completedAllLap | -         | boolean     | DONE ✅         |
 | myProgress      | -         | String      | DONE ✅         |
-| updateProgress  | int       | void        | DONE ✅         |
+| updateProgress  | -         | void        | DONE ✅         |
 
 <br>
 

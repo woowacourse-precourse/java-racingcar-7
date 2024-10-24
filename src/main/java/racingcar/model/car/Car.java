@@ -21,8 +21,11 @@ public class Car {
     }
 
     public void updateProgress() {
-        myProgress.updatePosition();
-        myProgress.updateRemainingLap();
+        MovementCondition condition = MovementCondition.getCondition();
+        if (condition.carCanMove()) {
+            myProgress.updatePosition(condition.getDistance());
+            myProgress.updateRemainingLap();
+        }
     }
 
     public String myProgressSummary() {

@@ -23,7 +23,7 @@ public class MovementTest {
         AppConfig.setTestProfileWithValue("4");
 
         // when
-        int actual = MovementCondition.getDistance();
+        int actual = MovementCondition.getCondition().getDistance();
 
         // then
         assertThat(actual).isEqualTo(FORWARD_MOVEMENT);
@@ -37,7 +37,7 @@ public class MovementTest {
         AppConfig.setTestProfileWithValue("3");
 
         // when
-        int actual = MovementCondition.getDistance();
+        int actual = MovementCondition.getCondition().getDistance();
 
         // then
         assertThat(actual).isEqualTo(NO_MOVEMENT);

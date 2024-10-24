@@ -15,10 +15,9 @@ import racingcar.model.race.Race;
 public class RaceService {
 
     public Cars generateCars(final String input, final String lapCount) {
-        Lap remainingCount = Lap.of(lapCount);
         List<Car> cars = Arrays.stream(input.split(INPUT_DELIMITER))
                 .map(String::strip)
-                .map(name -> Car.from(name, MyProgress.from(remainingCount, Position.initiate())))
+                .map(name -> Car.from(name, MyProgress.from(Lap.of(lapCount), Position.initiate())))
                 .toList();
         return Cars.of(cars);
     }

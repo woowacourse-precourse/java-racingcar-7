@@ -22,13 +22,20 @@ public enum MovementCondition {
         this.predicate = predicate;
     }
 
-    public static int getDistance() {
+    public int getDistance() {
+        return distance;
+    }
+
+    public static MovementCondition getCondition() {
         IRandomUtil randomUtil = RandomUtilFactory.getUtil();
         int speed = randomUtil.generateRandomNum();
-        MovementCondition condition = Arrays.stream(MovementCondition.values())
+        return Arrays.stream(MovementCondition.values())
                 .filter(val -> val.predicate.test(speed))
                 .findFirst()
                 .orElse(NONE);
-        return condition.distance;
+    }
+
+    public boolean carCanMove() {
+        return this == FORWARD;
     }
 }

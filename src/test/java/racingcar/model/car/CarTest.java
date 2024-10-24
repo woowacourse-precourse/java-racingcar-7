@@ -2,13 +2,20 @@ package racingcar.model.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.common.config.AppConfig;
 import racingcar.helper.ReflectionUtil;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Position;
 
 public class CarTest {
+
+    @AfterEach
+    void resetProfile() {
+        AppConfig.resetProfile();
+    }
 
     @Test
     @DisplayName("중간 진행 사항 확인")
@@ -31,6 +38,7 @@ public class CarTest {
     @DisplayName("내 현황 수정")
     void test() {
         // given
+        AppConfig.setTestProfileWithValue("4");
         Lap remainLap = Lap.of("3");
         Position position = Position.initiate();
         ReflectionUtil.forceSetField(position, "value", "---");

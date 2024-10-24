@@ -1,7 +1,12 @@
 package racingcar;
 
+import racingcar.infra.controller.MainController;
+import racingcar.service.RaceService;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RaceService raceService = new RaceService();
+        MainController mainController = new MainController(raceService);
+        mainController.run();
     }
 }

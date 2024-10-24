@@ -23,9 +23,8 @@ public class MyProgress {
     }
 
 
-    public void updatePosition() {
-        int moveDistance = MovementCondition.getDistance();
-        position.add(moveDistance);
+    public void updatePosition(int moveCondition) {
+        position.add(moveCondition);
     }
 
     public void updateRemainingLap() {
