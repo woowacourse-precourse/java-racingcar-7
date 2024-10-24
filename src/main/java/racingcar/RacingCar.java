@@ -10,12 +10,6 @@ public class RacingCar {
         if (name.codePoints().anyMatch(c -> (!Character.isLetter(c) && !Character.isWhitespace(c)))) {
             throw new IllegalArgumentException("이름은 문자만 가능합니다.");
         }
-        if (name.codePoints().anyMatch(Character::isDigit)) {
-            throw new IllegalArgumentException("이름에 숫자가 포함되어있습니다.");
-        }
-        if (name.codePoints().anyMatch(Character::isEmoji)) {
-            throw new IllegalArgumentException("이름에 문자 외 다른 문자가 존재합니다.");
-        }
         this.name = name;
     }
 
