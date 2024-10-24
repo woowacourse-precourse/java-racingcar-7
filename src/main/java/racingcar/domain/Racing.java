@@ -26,7 +26,7 @@ public class Racing {
     }
 
     public List<String> findWinners() {
-        int maxPosition = cars.stream()
+        final int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);

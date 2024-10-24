@@ -21,7 +21,7 @@ public class Car {
         return position;
     }
 
-    public void move(int distance) {
+    public void move(final int distance) {
         position += distance;
     }
 

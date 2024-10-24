@@ -22,25 +22,25 @@ public class MainController {
     }
 
     public void run() {
-        String carNameInput = InputView.readCarNameInput();
-        List<String> carStrings = convertToStrings(carNameInput);
-        List<Car> cars = convertToCars(carStrings);
-        Racing racing = Racing.create(cars);
+        final String carNameInput = InputView.readCarNameInput();
+        final List<String> carStrings = convertToStrings(carNameInput);
+        final List<Car> cars = convertToCars(carStrings);
+        final Racing racing = Racing.create(cars);
 
-        String trialNumberInput = InputView.readTrialNumberInput();
-        int trialNumber = Integer.parseInt(trialNumberInput);
+        final String trialNumberInput = InputView.readTrialNumberInput();
+        final int trialNumber = Integer.parseInt(trialNumberInput);
 
         racingGameTrials(racing, trialNumber);
         displayWinners(racing);
     }
 
-    private List<String> convertToStrings(String carNameInput) {
+    private List<String> convertToStrings(final String carNameInput) {
         return Arrays.stream(carNameInput.split(","))
                 .map(String::trim)
                 .toList();
     }
 
-    private List<Car> convertToCars(List<String> carStrings) {
+    private List<Car> convertToCars(final List<String> carStrings) {
         return carStrings.stream().map(Car::create).toList();
     }
 
