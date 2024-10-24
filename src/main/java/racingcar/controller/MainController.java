@@ -4,14 +4,21 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
+import racingcar.dto.WinnerResponseDto;
+import racingcar.service.MoveRule;
+import racingcar.service.ThresholdScoreMoveRule;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class MainController {
-    private MainController() {
+    private final MoveRule moveRule;
+
+    private MainController(final MoveRule moveRule) {
+        this.moveRule = moveRule;
     }
 
     public static MainController create() {
-        return new MainController();
+        return new MainController(new ThresholdScoreMoveRule());
     }
 
     public void run() {
@@ -22,6 +29,8 @@ public class MainController {
 
         String trialNumberInput = InputView.readTrialNumberInput();
         int trialNumber = Integer.parseInt(trialNumberInput);
+
+        racingGameTrials(racing, trialNumber);
     }
 
     private List<String> convertToStrings(String carNameInput) {
@@ -32,6 +41,20 @@ public class MainController {
 
     private List<Car> convertToCars(List<String> carStrings) {
         return carStrings.stream().map(Car::create).toList();
+    }
+
+    private void racingGameTrials(final Racing racing, int trialNumber) {
+        for (int i = 0; i < trialNumber; i++) {
+            racing.performRace(moveRule);
+            List<WinnerResponseDto> result = convertToResultDtos(racing);
+            OutputView.printRacingOutput(result);
+        }
+    }
+
+    private List<WinnerResponseDto> convertToResultDtos(final Racing racing) {
+        return racing.getCars().stream()
+                .map(car -> WinnerResponseDto.of(car.getName(), car.getPosition()))
+                .toList();
     }
 
 }

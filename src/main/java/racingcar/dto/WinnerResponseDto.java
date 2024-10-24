@@ -2,6 +2,9 @@ package racingcar.dto;
 
 public record WinnerResponseDto(
         String name,
-        String positionDisplay
+        int position
 ) {
+    public static WinnerResponseDto of(final String name, final int position) {
+        return new WinnerResponseDto(name, position);
+    }
 }

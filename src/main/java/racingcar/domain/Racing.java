@@ -18,7 +18,7 @@ public class Racing {
         return cars;
     }
 
-    public void playRacingCar(MoveRule moveRule) {
+    public void performRace(final MoveRule moveRule) {
         for (Car car : cars) {
             car.move(moveRule.tryMove());
         }
