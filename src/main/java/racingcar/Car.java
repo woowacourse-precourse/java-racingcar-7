@@ -1,12 +1,13 @@
 package racingcar;
 
+
 public class Car {
-    private static final int FORWARD_NUM = 4;
+    CarList carList = new CarList();
 
-    private final String name;
+    public void addCar(String carNames) {
+        for(String carName : carNames.split(",")) {
+            carList.add(carName);
 
-
-    public Car(String name) {
-        this.name = name;
+        }
     }
 }

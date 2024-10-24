@@ -15,7 +15,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_이름에_대한_예외_테스트() {
         assertThatThrownBy(() -> {
-            cars.addCar("pobi,jjuchan");
+            car.addCar("pobi,jjuchan");
 
         })
                 .isInstanceOf(IllegalArgumentException.class);

@@ -1,8 +1,9 @@
 package view;
 
 public class OutputView {
-    public static void main(String[] args) {
-        System.out.println();
+    public static void printSetCarNameMessage() {
+        System.out.println(SystemMessage.SET_CAR_NAME_MESSAGE.print());
+
     }
 
 }
