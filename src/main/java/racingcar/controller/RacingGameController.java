@@ -12,5 +12,6 @@ public class RacingGameController {
 
     public void start() {
         String carNames = inputView.requestCarNames();
+        String round = inputView.requestRaceRound();
     }
 }
