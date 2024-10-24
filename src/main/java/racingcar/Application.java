@@ -109,6 +109,7 @@ class GameRepeater {
     }
 }
 
+//우승자 판별 기능 추가
 class WinnerCalculator {
     public List<String> calculate(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);
