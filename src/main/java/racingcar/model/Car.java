@@ -36,4 +36,8 @@ public class Car {
             addScore();
         }
     }
+
+    public String scoreToDash(int score){
+        return "-".repeat(Math.max(0, score));
+    }
 }
