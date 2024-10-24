@@ -16,8 +16,8 @@ public class OutputView {
         System.out.println(car.getName() + " : " + dashString + " ");
     }
 
-    public void printWinner(final Car car) {
-        System.out.println("최종 우승자 : " + car.getName());
+    public void printWinner(final Car winnerCar) {
+        System.out.println("최종 우승자 : " + winnerCar.getName());
     }
 
     private static String getDashString(final int dashCount) {
