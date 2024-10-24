@@ -1,0 +1,77 @@
+package racingcar.view;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.Car;
+
+class OutputViewTest {
+    private OutputView outputView;
+    private static OutputStream outputStream;
+
+    @BeforeEach
+    void setup() {
+        outputView = new OutputView();
+    }
+
+    @DisplayName("개행 문자를 출력한다.")
+    @Test
+    void printEndLine() {
+        String expected = "\n";
+
+        SystemOut();
+        outputView.printEndLine();
+
+        Assertions.assertEquals(expected, outputStream.toString());
+    }
+
+    @DisplayName("\"실행 결과\" 메시지를 출력한다.")
+    @Test
+    void printExecutionResultMessage() {
+        String expectedMessage = "실행 결과\n";
+        SystemOut();
+        outputView.printExecutionResultMessage();
+
+        Assertions.assertEquals(expectedMessage, outputStream.toString());
+    }
+
+    @DisplayName("각 자동차의 이름과 이동거리를 출력하는 기능이 잘 수행되야 한다.")
+    @MethodSource("provideEachExecutionResultTestCases")
+    @ParameterizedTest(name = "기대값: \"{0}\", 입력값: \"{1}\"")
+    void printEachExecutionResult(String expected, Car car) {
+        SystemOut();
+        outputView.printEachExecutionResult(car);
+
+        Assertions.assertEquals(expected, outputStream.toString());
+    }
+
+    private static Stream<Arguments> provideEachExecutionResultTestCases() {
+        Car pobi = new Car("pobi");
+        Car wooni = new Car("wooni");
+        Car jun = new Car("jun");
+
+        wooni.plusLocation();
+        jun.plusLocation();
+        jun.plusLocation();
+
+        return Stream.of(
+                Arguments.of("pobi :  \n", pobi),
+                Arguments.of("wooni : - \n", wooni),
+                Arguments.of("jun : -- \n", jun)
+        );
+    }
+
+    private static void SystemOut() {
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+    }
+
+}
