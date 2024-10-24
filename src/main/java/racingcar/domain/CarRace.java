@@ -1,7 +1,10 @@
 package racingcar.domain;
 
+import static java.util.stream.Collectors.toMap;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class CarRace {
 
@@ -17,9 +20,11 @@ public class CarRace {
         return cars;
     }
 
-    public List<String> getCarsMovingDistance() {
+    public Map<String, String> getCarsNameAndMovingDistance() {
         return cars.stream()
-                .map(Car::getMovingDistance)
-                .toList();
+                .collect(toMap(
+                        Car::getName,
+                        Car::getMovingDistance
+                ));
     }
 }
