@@ -9,9 +9,9 @@ class InputValidatorTest {
     public void 입력이_없는_경우() {
         InputValidator inputValidator = new InputValidator();
 
-        boolean hasInput = inputValidator.hasNoInput("");
+        boolean hasNoInput = inputValidator.hasNoInput("");
 
-        Assertions.assertThat(hasInput).isFalse();
+        Assertions.assertThat(hasNoInput).isTrue();
     }
 
 }
