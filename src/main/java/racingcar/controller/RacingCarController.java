@@ -18,18 +18,25 @@ public class RacingCarController {
     }
 
     public void playGame() {
-        Cars cars = makeCars();
-        raceCars(cars);
+        Cars cars = makeCars(scanCarNames());
+        int tryCount = scanTryCount();
+        raceCars(cars, tryCount);
         printWinner(cars);
     }
 
-    private Cars makeCars() {
-        String[] carNames = inputView.scanCarNames();
+    private String[] scanCarNames(){
+        return inputView.scanCarNames();
+    }
+
+    private Cars makeCars(String[] carNames) {
         return new Cars(carNames);
     }
 
-    private void raceCars(Cars cars) {
-        int tryCount = inputView.scanTryCount();
+    private int scanTryCount(){
+        return inputView.scanTryCount();
+    }
+
+    private void raceCars(Cars cars, int tryCount) {
         outputView.printMoveResultMessage();
 
         for (int i = 0; i < tryCount; i++) {
