@@ -36,4 +36,13 @@ class ValidatorsTest {
         assertThrows(IllegalArgumentException.class, () -> validators.validateString(input));
     }
 
+    @Test
+    void 자동차_이름_입력_테스트_정상() {
+        String input = "a,b,c";
+
+        String[] output = validators.validateString(input);
+
+        assertArrayEquals(new String[]{"a", "b", "c"}, output);
+    }
+
 }
