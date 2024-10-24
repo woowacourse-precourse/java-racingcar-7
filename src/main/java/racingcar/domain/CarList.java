@@ -17,7 +17,6 @@ public class CarList {
     }
 
     public void moveAll() {
-        int randonNumber = randomGenerator.generate();
-        carList.forEach(car -> car.move(randonNumber));
+        carList.forEach(car -> car.move(randomGenerator.generate()));
     }
 }
