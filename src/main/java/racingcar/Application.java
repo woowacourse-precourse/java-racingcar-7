@@ -13,7 +13,15 @@ public class Application {
     }
 
     public static String inputCarName() {
-        return Console.readLine();
+        String carName =  Console.readLine();
+        isSeperatorPresent(carName);
+        return carName;
+    }
+
+    public static void isSeperatorPresent(String carName) {
+        if (!carName.contains(",")) {
+            throw new IllegalArgumentException("쉼표를 이용하여 자동차 이름을 2개 이상 입력해 주세요.");
+        }
     }
 
     public static int makeRandomNumber() {
