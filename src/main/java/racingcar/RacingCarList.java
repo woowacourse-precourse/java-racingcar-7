@@ -32,4 +32,21 @@ public class RacingCarList {
         }
         return carList;
     }
+
+    public String findWinner(List<Car> cars) {
+        int maxPosition = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+                winners.clear();
+            }
+
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return String.join(", ", winners);
+    }
 }

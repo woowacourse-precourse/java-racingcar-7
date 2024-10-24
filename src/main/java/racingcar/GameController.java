@@ -13,5 +13,7 @@ public class GameController {
 
     public void startRun(String attemptCount) {
         List<Car> cars = racingCarList.moveCar(attemptCount);
+        String winner = racingCarList.findWinner(cars);
+        System.out.println(winner);
     }
 }

@@ -24,5 +24,4 @@ public class OutputView {
     public static void printLineBreak() {
         System.out.println();
     }
-
 }
