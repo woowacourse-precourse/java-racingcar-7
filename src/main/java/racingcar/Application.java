@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -70,14 +73,14 @@ public class Application {
 
 	public static void printWinner(int maxMove, int numCars, Car[] cars) {
 
-		System.out.print("최종 우승자 : ");
+		List<String> winners = new ArrayList<>();
 
 		for (int i = 0; i < numCars; i++) {
-			if (cars[i].getMoveCounter() == maxMove && i != numCars - 1) {
-				System.out.print(cars[i].getName() + ", ");
-			} else if (cars[i].getMoveCounter() == maxMove && i == numCars - 1) {
-				System.out.print(cars[i].getName());
+			if (cars[i].getMoveCounter() == maxMove) {
+				winners.add(cars[i].getName());
 			}
 		}
+
+		System.out.printf("최종 우승자 : %s", String.join(",", winners));
 	}
 }
