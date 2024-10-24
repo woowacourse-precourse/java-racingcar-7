@@ -1,8 +1,9 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Winners;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 import racingcar.service.RaceService;
 
 public class RaceController {
@@ -20,16 +21,17 @@ public class RaceController {
         int count = uiController.receiveCount();
 
         uiController.printRaceResultPhrase();
-        race(cars, count);
 
-        //uiController.printWinner(car);
+        uiController.printWinner(race(cars, count));
     }
 
-    private void race(Cars cars, int count) {
+    private Winners race(Cars cars, int count) {
         while (count-- > 0) {
             raceService.start(cars);
             uiController.printRaceResult(cars);
         }
+
+        return new Winners(cars);
     }
 
     private List<Car> parse(List<String> names) {
