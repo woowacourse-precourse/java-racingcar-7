@@ -15,19 +15,32 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(List<String> carNames){
+    public static Cars from(List<String> carNames) {
         return new Cars(carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList()));
     }
 
-    public void playOneRound(RandomMovement randomMovement){
+    public void playOneRound(RandomMovement randomMovement) {
         cars.forEach(car -> car.go(randomMovement));
     }
 
-    public RaceRoundRecord getRaceRoundRecord(){
+    public RaceRoundRecord getRaceRoundRecord() {
         return RaceRoundRecord.from(cars);
     }
 
+    public List<Car> getWinners() {
+        int maxDistance = getMaxDistance();
+        return cars.stream()
+                .filter(cars -> cars.getDistance() == maxDistance)
+                .collect(Collectors.toList());
 
+    }
+
+    private int getMaxDistance(){
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+    }
 }
