@@ -59,7 +59,7 @@ jun : -----
 
 ---
 
-### 실행 결과
+## 실행 결과
 
 ```
 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
@@ -89,4 +89,55 @@ woni : ----
 jun : -----
 
 최종 우승자 : pobi, jun
+```
+
+---
+
+## 프로젝트 구조
+
+```
+├── main
+│   └── java
+│       └── racingcar
+│           ├── Application.java
+│           ├── common
+│           │   ├── CarParser.java
+│           │   ├── InputSplitter.java
+│           │   └── RandomNumber.java
+│           ├── controller
+│           │   └── RacingCarController.java
+│           ├── domain
+│           │   ├── Car.java
+│           │   ├── CarName.java
+│           │   ├── RacingGame.java
+│           │   └── RacingGameRound.java
+│           ├── dto
+│           │   ├── RacingCarRequestDto.java
+│           │   └── RacingCarResponseDto.java
+│           ├── exception
+│           │   ├── RacingCarException.java
+│           │   └── constants
+│           │       └── ErrorMessage.java
+│           ├── service
+│           │   └── RacingCarService.java
+│           └── view
+│               ├── InputView.java
+│               ├── OutputView.java
+│               └── constants
+│                   └── ViewMessage.java
+└── test
+    └── java
+        └── racingcar
+            ├── ApplicationTest.java
+            ├── common
+            │   ├── CarParserTest.java
+            │   ├── InputSplitterTest.java
+            │   └── RandomNumberTest.java
+            ├── domain
+            │   ├── CarNameTest.java
+            │   ├── CarTest.java
+            │   ├── RacingGameRoundTest.java
+            │   └── RacingGameTest.java
+            └── service
+                └── RacingCarServiceTest.java
 ```
