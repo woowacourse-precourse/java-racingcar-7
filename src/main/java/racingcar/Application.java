@@ -15,10 +15,14 @@ public class Application {
 
         StringTokenizer st = new StringTokenizer(str,",");
 
-        List<String> cars = new ArrayList<>();
+        int count = st.countTokens();
 
-        for (int i = 0; i < st.countTokens(); i++) {
+        List<String> cars = new ArrayList<>();
+        List<Integer> location = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
             cars.add(st.nextToken());
+            location.add(0);
         }
 
     }
