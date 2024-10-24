@@ -3,8 +3,8 @@ package racingcar.config;
 import racingcar.filter.FilterChain;
 import racingcar.filter.impl.filter.CarNameCharacterFilter;
 import racingcar.filter.impl.filter.CarNameLengthFilter;
+import racingcar.filter.impl.filter.RoundInputPositiveIntegerFilter;
 import racingcar.filter.impl.filter.RoundInputTypeFilter;
-import racingcar.filter.impl.filter.RoundRangeFilter;
 import racingcar.filter.impl.filterchain.CarNameFilterChain;
 import racingcar.filter.impl.filterchain.RoundFilterChain;
 
@@ -16,7 +16,7 @@ public class FilterConfig {
         carNameFilterChain.addFilter(new CarNameCharacterFilter());
         carNameFilterChain.addFilter(new CarNameLengthFilter());
         roundFilterChain.addFilter(new RoundInputTypeFilter());
-        roundFilterChain.addFilter(new RoundRangeFilter());
+        roundFilterChain.addFilter(new RoundInputPositiveIntegerFilter());
     }
 
     public FilterChain getCarNameFilterChain() {
