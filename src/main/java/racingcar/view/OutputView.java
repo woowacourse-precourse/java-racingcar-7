@@ -11,11 +11,15 @@ public class OutputView {
 
     public void showStatus(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.name() + " : ");
-            for (int j = 0; j < car.status(); j++) {
-                System.out.print("-");
-            }
-            System.out.println();
+            showCarLocationToGauge(car);
+        }
+        System.out.println();
+    }
+
+    private void showCarLocationToGauge(Car car) {
+        System.out.print(car.name() + " : ");
+        for (int gauge = 0; gauge < car.location(); gauge++) {
+            System.out.print("-");
         }
         System.out.println();
     }

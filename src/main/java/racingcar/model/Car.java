@@ -2,12 +2,14 @@ package racingcar.model;
 
 public class Car {
 
+    public static final int START_LOCATION = 0;
+
     private final Name name;
-    private Integer progress;
+    private Integer location;
 
     private Car(final String name) {
         this.name = new Name(name);
-        this.progress = 0;
+        this.location = START_LOCATION;
     }
 
     public static Car from(final String name) {
@@ -15,14 +17,14 @@ public class Car {
     }
 
     public void forward() {
-        progress++;
+        location++;
     }
 
     public String name() {
         return name.name();
     }
 
-    public int status() {
-        return progress;
+    public int location() {
+        return location;
     }
 }

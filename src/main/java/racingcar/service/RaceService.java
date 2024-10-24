@@ -21,10 +21,10 @@ public class RaceService {
     }
 
     public List<String> findWinners(List<Car> cars) {
-        int maxStatus = findMaxProgress(cars);
+        int maxLocation = findMaxLocation(cars);
         List<String> winnersName = new ArrayList<>();
         for (Car car : cars) {
-            if (maxStatus == car.status()) {
+            if (maxLocation == car.location()) {
                 winnersName.add(car.name());
             }
         }
@@ -40,12 +40,12 @@ public class RaceService {
         }
     }
 
-    private int findMaxProgress(List<Car> cars) {
-        int max = 0;
+    private int findMaxLocation(List<Car> cars) {
+        int maxLocation = 0;
         for (Car car : cars) {
-            max = Math.max(car.status(), max);
+            maxLocation = Math.max(car.location(), maxLocation);
         }
-        return max;
+        return maxLocation;
     }
 
     private void validateSameNameIn(List<Car> cars, String carName) {
