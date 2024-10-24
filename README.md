@@ -72,11 +72,11 @@ public List\<String> countWinners(List\<Car> participants)
 public String[] validateCarName(String input)
 : \: 입력받은 자동차 이름이 요구 사항에 맞는지 확인하는 메소드.
 
-- [ ]  input에 쉼표가 포함되어 있지 않으면 자동차가 한 대뿐이므로 예외 발생
-- [ ]  split()을 사용하여 input을 쉼표 기준으로 분할
-- [ ]  분할된 배열 요소들에 하나씩 접근
-    - [ ]  이름이 6자 이상이거나, 알파벳이나 숫자 외에 다른 문자를 포함하는 경우 예외 발생
-- [ ]  예외가 발생하지 않은 경우 분할된 String 배열을 리턴
+- [x]  input에 쉼표가 포함되어 있지 않으면 자동차가 한 대뿐이므로 예외 발생
+- [x]  split()을 사용하여 input을 쉼표 기준으로 분할
+- [x]  분할된 배열 요소들에 하나씩 접근
+    - [x]  이름이 6자 이상이거나, 알파벳이나 숫자 외에 다른 문자를 포함하는 경우 예외 발생
+- [x]  예외가 발생하지 않은 경우 분할된 String 배열을 리턴
 
 public int validateRoundLimit(String input)
 : \: 입력받은 시도 횟수 값이 요구 사항에 맞는지 확인하는 메소드.
@@ -90,10 +90,10 @@ public int validateRoundLimit(String input)
 public String[] getCarNames()
 : \: 경주할 자동차 이름을 입력받는 메소드.
 
-- [ ]  `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)` 메시지 출력
-- [ ]  `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용해 자동차 이름을 입력받기
-- [ ]  Validate.validateCarName() 호출해 입력 받은 값 검증
-- [ ]  입력받은 값에 문제가 없다면 해당 입력 값이 분할된 결과를 리턴
+- [x]  `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)` 메시지 출력
+- [x]  `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용해 자동차 이름을 입력받기
+- [x]  Validate.validateCarName() 호출해 입력 받은 값 검증
+- [x]  입력받은 값에 문제가 없다면 해당 입력 값이 분할된 결과를 리턴
 
 public int getRoundLimit()
 : \: 경주 시도 횟수를 입력받는 메소드.
