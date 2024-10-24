@@ -89,4 +89,21 @@ public class RacingService {
                 .forEach(history -> System.out.println(history.getCarName() + COLON + BAR.repeat(history.getGoCount())));
         System.out.println();
     }
+
+    public void printWinner() {
+        countSortReverse();
+        List<String> winners = getWinners();
+        OutputView.printWinner(winners);
+    }
+
+    private void countSortReverse() {
+        moveForwardHistories.stream().sorted((car1, car2) -> Integer.compare(car2.getGoCount(), car1.getGoCount()));
+    }
+
+    private List<String> getWinners() {
+        int winnerCount = moveForwardHistories.get(0).getGoCount();
+
+        return moveForwardHistories.stream().filter(history -> history.getGoCount() == winnerCount)
+                .map(MoveForwardHistory::getCarName).collect(Collectors.toList());
+    }
 }
