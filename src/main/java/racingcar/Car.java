@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private final String carName;
@@ -27,8 +28,8 @@ public class Car {
         this.position += 1;
     }
 
-    public static ArrayList<Car> makeCarArrayList(String[] carnames){
-        ArrayList<Car> cars = new ArrayList<>();
+    public static List<Car> makeCarList(String[] carnames){
+        List<Car> cars = new ArrayList<>();
         for (String carname : carnames) {
             Car newcar = new Car(carname);
             cars.add(newcar);
