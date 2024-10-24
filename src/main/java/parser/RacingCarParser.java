@@ -13,7 +13,9 @@ public class RacingCarParser {
     }
 
     public List<String> parseRacingCar(String input) {
-        List<String> carNames = Arrays.stream(input.split(carSeparator, -1)).toList();
+        List<String> carNames = Arrays.stream(input.split(carSeparator, -1))
+                .map(String::trim)
+                .toList();
         validator.validateCar(carNames);
         return carNames;
     }

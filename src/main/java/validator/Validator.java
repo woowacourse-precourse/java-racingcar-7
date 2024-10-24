@@ -11,7 +11,7 @@ public class Validator {
 
     private void checkCarNotEmpty(List<String> carNames) {
         if (carNames.stream().anyMatch(
-                name -> name.trim().isEmpty())) {
+                String::isEmpty)) {
             throw new IllegalArgumentException(ErrorCode.EMPTY_CAR_NAME.getMessage());
         }
     }
