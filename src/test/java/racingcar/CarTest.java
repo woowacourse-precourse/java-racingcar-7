@@ -2,6 +2,7 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,14 @@ class CarTest {
             car.increaseDistance();
             car.increaseDistance();
             assertThat(car.toString()).isEqualTo("woni : --");
+        });
+    }
+
+    @Test
+    void 이름_길이_예외() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> new Car("pobiiii"))
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 }
