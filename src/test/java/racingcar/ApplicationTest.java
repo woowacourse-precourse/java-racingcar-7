@@ -31,6 +31,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름이_공백일_때_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 공백이 될 수 없습니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
