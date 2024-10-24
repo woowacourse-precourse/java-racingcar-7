@@ -25,7 +25,7 @@ public class CarGroup {
         }
     }
 
-    public void getMaxScore() {
+    public void calculateMaxScore() {
         for (Car car : carList) {
             int i = car.getScore();
             if (maxScore < i) {
