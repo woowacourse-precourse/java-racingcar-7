@@ -15,6 +15,10 @@ public class RacingCars {
                 .toList();
     }
 
+    public RacingCars(RacingCars other) {
+        this(other.values);
+    }
+
     public void moveRandomly(RandomRange randomRange) {
         values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
     }
