@@ -44,10 +44,25 @@ public class Car {
     }
 
     public static void specialCharValidation(String inputVal) {
-        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z0-9].*");
+        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z].*");
+
         if(isContainAnotherSpecialChar){
             throw new IllegalArgumentException("특수기호는 , 외에 사용하면 안됩니다.");
         }
+    }
+
+    // 특수기호 유효성검사를 마치고 공백 제거 및 길이 확인
+    public static List<String> splitAndNameValidation(String inputVal) {
+        List<String> trimCarNameList = Arrays.stream(inputVal.split(",")).map(String::trim).toList();
+
+        for (int i = 0; i < trimCarNameList.size(); i++) {
+            if (trimCarNameList.get(i).length() > 5) {
+                throw new IllegalArgumentException("이름은 다섯글자를 넘을 수 없습니다.\n " +
+                        "잘못된 이름 : " + trimCarNameList.get(i));
+            }
+        }
+
+        return trimCarNameList;
     }
 
     private Car() {
