@@ -7,10 +7,10 @@ public class RacingCar {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
         }
-        if (name.chars().noneMatch(Character::isLetter)) {
+        if (name.codePoints().noneMatch(Character::isLetterOrDigit)) {
             throw new IllegalArgumentException("이름은 문자만 가능합니다.");
         }
-        if (name.chars().anyMatch(Character::isDigit)) {
+        if (name.codePoints().anyMatch(Character::isDigit)) {
             throw new IllegalArgumentException("이름에 숫자가 포함되어있습니다.");
         }
         if (name.codePoints().anyMatch(Character::isEmoji)) {
