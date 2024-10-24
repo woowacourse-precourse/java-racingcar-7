@@ -2,6 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Application {
     static String[] cars;
     static StringBuilder[] carsRaceProgress;
@@ -34,5 +38,25 @@ public class Application {
         for(int i=0; i<cars.length; i++) {
             System.out.printf("%s : %s\n", cars[i], carsRaceProgress[i]);
         }
+    }
+    public static void printRaceWinner() {
+        // 최종 우승 자동차의 위치 winnerProgress
+        int winnerProgress = 0;
+        // 최종 우승 자동차(들)의 index 저장할 리스트 winnerList
+        List<Integer> winnerList = new ArrayList<>();
+
+        for(int i=0; i<carsRaceProgress.length; i++) {
+            int pos = carsRaceProgress[i].length();
+            if(pos > winnerProgress) {
+                winnerProgress = pos;
+                winnerList.clear();
+                winnerList.add(i);
+            } else if(pos == winnerProgress) {
+                winnerList.add(i);
+            }
+        }
+
+        System.out.printf("최종 우승자 : %s", winnerList.stream().map(i -> cars[i])
+                .collect(Collectors.joining(", ")));
     }
 }
