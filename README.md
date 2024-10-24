@@ -32,7 +32,7 @@ pobi,woni,jun
   발생시킨다. (자동차 별 테스트)
   ex) ``po bi, 우니, Ju nn``
 
-- [ ] 경주를 시도할 횟수에 1보다 작은 수를 입력한 경우, ``IllegalArgumentException``을 발생시킨다.
+- [x] 경주를 시도할 횟수에 1보다 작은 수를 입력한 경우, ``IllegalArgumentException``을 발생시킨다.
 - [ ] 경주를 시도할 횟수를 입력하지 않은 경우(공백 입력), ``IllegalArgumentException``을 발생시킨다.
 - [ ] 경주를 시도할 횟수에 숫자가 아닌 값을 입력한 경우, ``IllegalArgumentException``을 발생시킨다.
 
