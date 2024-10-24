@@ -15,8 +15,4 @@ public class Cars {
 		List<Car> cars = names.stream().map(Car::new).toList();
 		return new Cars(cars);
 	}
-
-	public int getNumberOfCars() {
-		return cars.size();
-	}
 }
