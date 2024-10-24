@@ -19,5 +19,7 @@ public class Application {
             cars.raceStart();
             System.out.println();
         }
+
+        cars.printWinner();
     }
 }
