@@ -55,6 +55,14 @@ interface MoveStrategy {
     boolean canMove(int randomValue);
 }
 
+//생성된 난수가 4 이상일 경우 전진하는 클래스
+class CarMover {
+    public void move(Car car, MoveStrategy strategy, int randomValue) {
+        if (strategy.canMove(randomValue)) {
+            car.move(true);
+        }
+    }
+}
 class RandomMoveStrategy implements MoveStrategy {
     @Override
     public boolean canMove(int randomValue) {
