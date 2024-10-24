@@ -30,13 +30,10 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winners) {
-        String winnersString = "";
-        for (int i = 0; i < winners.size(); i++) {
-            winnersString += winners.get(i);
-            if (i != winners.size() - 1) {
-                winnersString += ", ";
-            }
-        }
-        System.out.println(winnerMessage + winnersString);
+        StringBuilder winnersString = new StringBuilder();
+        winners.forEach(winner -> {
+            winnersString.append(winner).append(", ");
+        });
+        System.out.println(winnerMessage + winnersString.substring(0, winnersString.length() - 2));
     }
 }

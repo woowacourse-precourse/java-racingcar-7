@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -12,35 +12,18 @@ public class Cars {
     }
 
     public void race() {
-        for (Car car : cars) {
-            car.race();
-        }
+        cars.forEach(Car::race);
     }
 
     public List<String> getCarsInformation() {
-        List<String> carsInformation = new ArrayList<>();
-        for (Car car : cars) {
-            carsInformation.add(car.getInformation());
-        }
-        return carsInformation;
+        return cars.stream().map(Car::getInformation).toList();
     }
 
     public List<String> determineWinners() {
-        List<String> winners = new ArrayList<>();
-        int maxStatus = 0;
+        int maxStatus = cars.stream().max(Comparator.comparingInt(Car::getStatus))
+                .get().getStatus();
 
-        for (Car car : cars) {
-            if (maxStatus < car.getStatus()) {
-                maxStatus = car.getStatus();
-            }
-        }
-
-        for (Car car : cars) {
-            if (car.getStatus() == maxStatus) {
-                winners.add(car.getName());
-            }
-        }
-
-        return winners;
+        List<String> winnersName = cars.stream().filter(car -> car.getStatus() == maxStatus).map(Car::getName).toList();
+        return winnersName;
     }
 }

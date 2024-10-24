@@ -1,13 +1,12 @@
 package racingcar.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingController {
 
@@ -53,20 +52,11 @@ public class RacingController {
 
     private List<String> splitCar(String carInput) {
         String[] carNames = carInput.split(",");
-
-        List<String> carNamesWithoutBlank = new ArrayList<>();
-        for (String carName : carNames) {
-            carNamesWithoutBlank.add(carName.trim());
-        }
-
-        return carNamesWithoutBlank;
+        return Arrays.stream(carNames).map(String::trim).toList();
     }
 
     private Cars convertToCars(List<String> stringCars) {
-        List<Car> cars = new ArrayList<>();
-        for (String stringCar : stringCars) {
-            cars.add(new Car(stringCar));
-        }
+        List<Car> cars = stringCars.stream().map(Car::new).toList();
         return new Cars(cars);
     }
 
@@ -77,15 +67,13 @@ public class RacingController {
     private void raceCars(Cars cars, int count) {
         outputView.printResultMessage();
         for (int i = 0; i < count; i++) {
-             cars.race();
-             printCarsInformation(cars.getCarsInformation());
+            cars.race();
+            printCarsInformation(cars.getCarsInformation());
         }
     }
 
     private void printCarsInformation(List<String> carsInformation) {
-        for (String carInformation : carsInformation) {
-            outputView.printCarInformation(carInformation);
-        }
+        carsInformation.forEach(outputView::printCarInformation);
         outputView.printNewLine();
     }
 
