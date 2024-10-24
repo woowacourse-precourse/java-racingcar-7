@@ -3,16 +3,16 @@
 # 기능 목록
 
 ## ❌ 1. 각 자동차의 이름을 입력받는다.
-- [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-- [ ] 자동차 이름은 쉼표(`,`)로 구분된다.
-- [ ] 각 자동차의 이름은 5자 이하이다.
-  - [ ] 아닐 경우 `IllegalArgumentException`을 발생시킨다.
-- [ ] `name1,,name2`와 같이, 자동차 이름이 `0`글자일 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [x] 자동차 이름은 쉼표(`,`)로 구분된다.
+- [x] 각 자동차의 이름은 5자 이하이다.
+  - [x] 아닐 경우 `IllegalArgumentException`을 발생시킨다.
+- [x] `name1,,name2`와 같이, 자동차 이름이 `0`글자일 경우 `IllegalArgumentException`을 발생시킨다.
 
 ## ❌ 2. 시도할 횟수를 입력받는다.
-- [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
-- [ ] 시도할 횟수가 정수가 아닐 경우, `IllegalArgumentException`을 발생시킨다.
-- [ ] 시도할 횟수가 `0`이하일 경우, `IllegalArgumentException`을 발생시킨다.
+- [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [x] 시도할 횟수가 정수가 아닐 경우, `IllegalArgumentException`을 발생시킨다.
+- [x] 시도할 횟수가 `0`이하일 경우, `IllegalArgumentException`을 발생시킨다.
 
 ## ❌ 3. 무작위 값으로 자동차가 전진할지 결정한다.
 - [ ] `0`에서 `9`사이의 무작위 값에서 값이 `4`이상인 경우에 전진한다.
