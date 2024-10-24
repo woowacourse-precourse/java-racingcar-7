@@ -1,16 +1,23 @@
 package racingcar.util;
 
 public enum ConstCharacter {
-    CAR_DELIMITER(","),
-    CAR_DISTANCE("-");
+    CAR_DELIMITER(','),
+    CAR_DISTANCE('-'),
+    LOWER_CASE_START_WITH('a'),
+    LOWER_CASE_END_WITH('z'),
+    UPPER_CASE_START_WITH('A'),
+    UPPER_CASE_END_WITH('Z'),
+    NUMBER_START_WITH('0'),
+    NUMBER_END_WITH('9');
 
-    private String character;
 
-    ConstCharacter(String character) {
+    private char character;
+
+    ConstCharacter(char character) {
         this.character = character;
     }
 
-    public String getCharacter() {
+    public char getCharacter() {
         return character;
     }
 }

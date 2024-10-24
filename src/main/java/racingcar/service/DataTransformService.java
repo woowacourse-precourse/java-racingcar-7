@@ -10,7 +10,7 @@ import java.util.List;
 public class DataTransformService {
 
     public List<String> splitInput(final String input) {
-        return Arrays.stream(input.split(CAR_DELIMITER.getCharacter())).toList();
+        return Arrays.stream(input.split(String.valueOf(CAR_DELIMITER.getCharacter()))).toList();
     }
 
     public List<Car> convertToCar(List<String> carNames) {
