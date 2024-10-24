@@ -24,6 +24,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 극적으로_bbb가_3대4로_역전승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("aaa,bbb", "5");
+                    assertThat(output()).contains("aaa : ---", "bbb : ----", "최종 우승자 : bbb");
+                },
+                MOVING_FORWARD, STOP,
+                MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD,
+                STOP, MOVING_FORWARD,
+                STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
