@@ -38,4 +38,24 @@ public class Race {
 
         return roundResult.toString();
     }
+
+    public List<String> getRaceWinner() {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == getMaxPosition()) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+    public int getMaxPosition() {
+        cars.sort((o1, o2) -> {
+            return Integer.compare(o2.getPosition(), o1.getPosition());
+        });
+
+        return cars.getFirst().getPosition();
+    }
 }
