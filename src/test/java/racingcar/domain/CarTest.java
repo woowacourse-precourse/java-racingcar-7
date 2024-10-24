@@ -32,5 +32,17 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하만 가능합니다.");
     }
+    
+    @Test
+    @DisplayName("자동차 이름이 중복된 경우 예외가 발생한다.")
+    void duplicateCarNameValidation() {
+        // given
+        String input = "pobi,woni,jun,pobi";
+
+        // when & then
+        assertThatThrownBy(() -> Car.from(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 중복될 수 없습니다.");
+    }
 
 }
