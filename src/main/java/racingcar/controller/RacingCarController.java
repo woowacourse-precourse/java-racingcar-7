@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.Set;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 
 public class RacingCarController {
@@ -11,6 +13,6 @@ public class RacingCarController {
 
     public void run() {
         inputView.printCarNameInputMessage();
-        String carName = inputView.getCarName();
+        Set<String> carNames = InputValidator.validateCarNameInput(inputView.getCarName());
     }
 }
