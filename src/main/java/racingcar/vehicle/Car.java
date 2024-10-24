@@ -20,4 +20,24 @@ public class Car {
         return cnt;
     }
 
+    public void run(int randomNum) {
+        if (randomNum < 4) {
+            return;
+        }
+        cnt++;
+        System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+        return name + " : "  + printCnt();
+    }
+
+    public String printCnt() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < cnt; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
+    }
 }

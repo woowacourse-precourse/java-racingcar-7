@@ -44,7 +44,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("자동차_생성_테스트")
     @Test
-    void createCar() {
+    void createCarTest() {
         Car car = new Car("pobi");
         int result = car.getCnt();
         assertThat(0).isEqualTo(result);
@@ -59,7 +59,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("자동차_다수_생성_테스트")
     @Test
-    void createCars() {
+    void createCarsTest() {
         ArrayList<Car> cars = new ArrayList<>();
         String input = "pobi,woni,jun";
         for (String name : input.split(",")) {
@@ -69,5 +69,32 @@ class ApplicationTest extends NsTest {
         assertThat(3).isEqualTo(cars.size());
     }
 
+    @DisplayName("자동차_전진_출력_테스트")
+    @Test
+    void goCarTest() {
+        Car car = new Car("pobi");
+        int randomNum = Randoms.pickNumberInRange(5,9);
+        car.run(randomNum);
+        // TODO : byteArrayOutputStream 이용해서 출력문을 임시 저장해서 검증할 수 있으니 적용해보기
+    }
 
+    @DisplayName("자동차_여러대_전진_출력_테스트")
+    @Test
+    void goCarsTest() {
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+        cars.add(new Car("woni"));
+        cars.add(new Car("jun"));
+        int randomNum = Randoms.pickNumberInRange(5,9);
+        cars.forEach(car -> car.run(randomNum));
+    }
+
+    @DisplayName("우승자_중복_테스트")
+    @Test
+    void winnerTest() {
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+        cars.add(new Car("woni"));
+        cars.add(new Car("jun"));
+    }
 }
