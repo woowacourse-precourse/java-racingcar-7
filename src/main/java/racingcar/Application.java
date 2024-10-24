@@ -1,5 +1,7 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -175,39 +177,37 @@ class ErrorPrinter {
 
 public class Application {
     public static void main(String[] args) {
-        CarNameInput carNameInput = new CarNameInput();
-        String carNameInputStr = carNameInput.getInput();
+        try {
+            CarNameInput carNameInput = new CarNameInput();
+            String carNameInputStr = carNameInput.getInput();
 
-        CarNameParser parser = new CarNameParser();
-        List<String> carNames = parser.parse(carNameInputStr);
+            CarNameParser parser = new CarNameParser();
+            List<String> carNames = parser.parse(carNameInputStr);
 
-        CarNameValidator validator = new CarNameValidator();
-        validator.validate(carNames);
+            CarNameValidator validator = new CarNameValidator();
+            validator.validate(carNames);
 
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
+            List<Car> cars = new ArrayList<>();
+            for (String name : carNames) {
+                cars.add(new Car(name));
+            }
+
+            CounterInput attemptInput = new CounterInput();
+            int attempts = attemptInput.getInput();  // 시도 횟수를 먼저 입력받음
+
+            GameRepeater repeater = new GameRepeater();
+            MoveStrategy strategy = new RandomMoveStrategy();
+            repeater.repeat(cars, attempts, strategy);  // 이제 attempts 변수가 초기화된 후 사용됩니다
+
+            WinnerCalculator winnerCalculator = new WinnerCalculator();
+            List<String> winners = winnerCalculator.calculate(cars);
+
+            WinnerPrinter winnerPrinter = new WinnerPrinter();
+            winnerPrinter.print(winners);
+
+        } catch (IllegalArgumentException e) {
+            ErrorPrinter errorPrinter = new ErrorPrinter();
+            errorPrinter.print(e.getMessage());
         }
-
-        GameRepeater repeater = new GameRepeater();
-        MoveStrategy strategy = new RandomMoveStrategy();
-        repeater.repeat(cars, attempts, strategy);
-
-        CounterInput attemptInput = new CounterInput();
-        int attempts = attemptInput.getInput();
-
-        WinnerCalculator winnerCalculator = new WinnerCalculator();
-        List<String> winners = winnerCalculator.calculate(cars);
-
-        WinnerPrinter winnerPrinter = new WinnerPrinter();
-        winnerPrinter.print(winners);
-
-    }catch(
-    IllegalArgumentException e)
-
-    {
-        ErrorPrinter errorPrinter = new ErrorPrinter();
-        errorPrinter.print(e.getMessage());
     }
 }
-
