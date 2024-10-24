@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.game.controller.io.InputHandler;
 import racingcar.game.controller.io.OutputHandler;
+import racingcar.game.controller.model.Car;
 import racingcar.game.controller.model.util.RandomNumberGenerator;
 
 public class RacingCar {
@@ -14,59 +15,58 @@ public class RacingCar {
 
     public void race() {
         outputHandler.showCarNamesNavigateMessage();
-        List<String> carNames = inputHandler.getCarNamesFromUser();
+        List<Car> cars = inputHandler.getCarNamesFromUser();
 
         outputHandler.showAttemptCountNavigateMessage();
         int attemptCount = inputHandler.getAttemptCountFromUser();
 
-        Map<String, Integer> moveAccumulator = createCarMoveAccumulator(carNames);
-        displayAccumulateForEachAttempt(attemptCount, carNames, moveAccumulator);
+        Map<Car, Integer> moveAccumulator = createCarMoveAccumulator(cars);
+        displayAccumulateForEachAttempt(attemptCount, cars, moveAccumulator);
 
-        List<String> winners = retrieveWinners(moveAccumulator);
+        List<Car> winners = retrieveWinners(moveAccumulator);
 
         outputHandler.showWinners(winners);
     }
 
-    private Map<String, Integer> createCarMoveAccumulator(List<String> carNames) {
+    private Map<Car, Integer> createCarMoveAccumulator(List<Car> carNames) {
         return carNames.stream()
-                .collect(Collectors.toMap(carName -> carName, carName -> 0));
+                .collect(Collectors.toMap(car -> car, car -> 0));
     }
 
-    private void displayAccumulateForEachAttempt(int attemptCount, List<String> carNames,
-                                                 Map<String, Integer> moveAccumulator) {
+    private void displayAccumulateForEachAttempt(int attemptCount, List<Car> cars, Map<Car, Integer> moveAccumulator) {
         for (int attempt = 0; attempt < attemptCount; attempt++) {
-            accumulateMoveCount(carNames, moveAccumulator);
-            outputHandler.showCurrentAccumulation(carNames, moveAccumulator);
+            accumulateMoveCount(cars, moveAccumulator);
+            outputHandler.showCurrentAccumulation(cars, moveAccumulator);
         }
     }
 
-    private void accumulateMoveCount(List<String> carNames, Map<String, Integer> moveAccumulator) {
-        for (String carName : carNames) {
+    private void accumulateMoveCount(List<Car> cars, Map<Car, Integer> moveAccumulator) {
+        for (Car car : cars) {
             int randomNumber = RandomNumberGenerator.generate();
-            accumulateIfCanMove(randomNumber, moveAccumulator, carName);
+            accumulateIfCanMove(randomNumber, moveAccumulator, car);
         }
     }
 
-    private void accumulateIfCanMove(int randomNumber, Map<String, Integer> moveAccumulator, String carName) {
+    private void accumulateIfCanMove(int randomNumber, Map<Car, Integer> moveAccumulator, Car car) {
         if (randomNumber < 4) {
             return;
         }
 
-        moveAccumulator.merge(carName, 1, Integer::sum);
+        moveAccumulator.merge(car, 1, Integer::sum);
     }
 
-    private List<String> retrieveWinners(Map<String, Integer> moveAccumulator) {
+    private List<Car> retrieveWinners(Map<Car, Integer> moveAccumulator) {
         Integer maxProgressiveCount = findMaxMoveCount(moveAccumulator);
         return getWinners(moveAccumulator, maxProgressiveCount);
     }
 
-    private Integer findMaxMoveCount(Map<String, Integer> moveAccumulator) {
+    private Integer findMaxMoveCount(Map<Car, Integer> moveAccumulator) {
         return moveAccumulator.values().stream()
                 .max(Comparator.naturalOrder())
                 .orElse(0);
     }
 
-    private List<String> getWinners(Map<String, Integer> moveAccumulator, Integer progressiveCount) {
+    private List<Car> getWinners(Map<Car, Integer> moveAccumulator, Integer progressiveCount) {
         return moveAccumulator.keySet().stream()
                 .filter(carName -> moveAccumulator.get(carName).equals(progressiveCount))
                 .toList();
