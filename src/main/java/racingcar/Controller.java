@@ -18,8 +18,15 @@ public class Controller {
         setVar();
     }
 
-    public void start() {
+    public void startGame() {
+        startRace();
+    }
 
+    public void startRace() {
+        for (int i = 0; i < count ; i++) {
+            model.checkMoveOrStop(carList);
+            output.printGame(carList);
+        }
     }
 
     public void setVar() {
@@ -31,7 +38,7 @@ public class Controller {
             carList.add(new Car(s, 0));
         }
         count = input.getCount();
-        model = new Model(input, output, carList);
+        model = new Model(input, output, carList, count);
 
     }
 

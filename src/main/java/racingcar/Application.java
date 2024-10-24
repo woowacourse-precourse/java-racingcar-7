@@ -5,7 +5,7 @@ public class Application {
 
         Controller controller = new Controller();
 
-        controller.start();
+        controller.startGame();
 
     }
 }
