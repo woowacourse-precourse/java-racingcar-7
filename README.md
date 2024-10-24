@@ -59,7 +59,7 @@
 ---
 
 
-**🚫 예외 처리**
+## **🚫 예외 처리**
 
 - [ ] 자동차 이름 입력 시, 경주할 자동차 이름이 5자를 초과 할 경우 `IllegalArgumentException`
 - [ ] 시도할 횟수 입력 시, 음수 또는 문자열을 입력할 경우 `IllegalArgumentException`
