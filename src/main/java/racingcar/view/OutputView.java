@@ -1,12 +1,15 @@
 package racingcar.view;
 
+import static racingcar.enums.Message.EXECUTION_RESULT_HEADER;
+import static racingcar.enums.Message.FINAL_WINNER;
+
 import java.util.List;
 import java.util.Map;
 
 public class OutputView {
 
     public void printExecutionResultHeader() {
-        System.out.println("\n실행 결과");
+        System.out.println(EXECUTION_RESULT_HEADER);
     }
 
     public void printCarsStatus(Map<String, String> cars) {
@@ -16,6 +19,6 @@ public class OutputView {
 
     public void printWinners(List<String> winners) {
         String winnerNames = String.join(", ", winners);
-        System.out.print("최종 우승자 : " + winnerNames);
+        System.out.print(FINAL_WINNER + winnerNames);
     }
 }
