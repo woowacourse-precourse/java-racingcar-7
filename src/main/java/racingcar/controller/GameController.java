@@ -19,11 +19,17 @@ public class GameController {
         extractCarNames();
     }
 
-    public void extractCarNames() {
+    private void extractCarNames() {
         InputMessage.inputCarNames();
         final String input = Console.readLine();
         validation.isInvalidInput(input);
         clientService.createCar(input);
     }
+
+    private void attemptGame() {
+        InputMessage.inputGamesAttempts();
+        final int count = Integer.parseInt(Console.readLine());
+    }
+
 
 }
