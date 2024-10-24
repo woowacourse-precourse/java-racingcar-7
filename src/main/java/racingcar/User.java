@@ -10,4 +10,13 @@ public class User {
         this.name = name;
         totalGo = 0;
     }
+
+    @Override
+    public String toString() {
+        String information = name + " : ";
+        for(int i = 0; i < totalGo; i++) {
+            information += "-";
+        }
+        return information;
+    }
 }
