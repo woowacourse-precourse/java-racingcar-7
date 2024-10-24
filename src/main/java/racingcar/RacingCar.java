@@ -13,7 +13,9 @@ public class RacingCar {
         if (name.chars().anyMatch(Character::isDigit)) {
             throw new IllegalArgumentException("이름에 숫자가 포함되어있습니다.");
         }
-
+        if (name.codePoints().anyMatch(Character::isEmoji)) {
+            throw new IllegalArgumentException("이름에 문자 외 다른 문자가 존재합니다.");
+        }
         this.name = name;
     }
 
