@@ -53,7 +53,7 @@ public class CarRace {
      * @return : 0부터 9사이의 값을 임의로 추출할때, 그 값이 4 이상인 경우 true 반환
      */
     private static boolean canMove(){
-        return Randoms.pickNumberInRange(0, 9) > 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     /**
