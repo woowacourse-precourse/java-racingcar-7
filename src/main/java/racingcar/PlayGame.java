@@ -8,51 +8,65 @@ import java.util.List;
 
 public class PlayGame {
 
-    public static final int MINIMUM_VALUE_CAR_MOVE = 4;
+    public static final int MINIMUM_VALUE_CAR_POWER = 4;
     InputMessage inputMessage = new InputMessage();
     Map<String, String> carData = new HashMap<>();
     int maxDistance = 0;
     List<String> winners = new ArrayList<>();
 
-    public void racingCarCreate(String[] carNames){
+    public void racingRaceParticipation(String[] carNames){
         for (String carName : carNames) {
-            this.carData.put(carName, "");
+            goStartingLine(carName);
         }
     }
 
-    public void moveCars(String[] carNames) {
-        for (String carName : carNames) {
-            // 무작위 수 구하기
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+    public void goStartingLine(String carName){
+        carData.put(carName, "");
+    }
 
-            if (randomNumber >= MINIMUM_VALUE_CAR_MOVE) {
-                String currentDistance = this.carData.get(carName);
-                this.carData.put(carName, currentDistance + "-");
+    public void racingMatchInProgress(String[] carNames) {
+        for (String carName : carNames) {
+            if (carPower() >= MINIMUM_VALUE_CAR_POWER) {
+                moveForward(carName);
             }
         }
     }
 
+    public int carPower(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public String currentDistance(String carName){
+        return carData.get(carName);
+    }
+
+    public void moveForward(String carName){
+        carData.put(carName, currentDistance(carName) + "-");
+    }
+
     public void printRaceResult(String[] carNames) {
         for (String carName : carNames) {
-            System.out.println(carName + " : " + this.carData.get(carName));
+            System.out.println(carName + " : " + carData.get(carName));
         }
         System.out.println();
     }
 
-    public int getMaxDistance(String[] carNames) {
+    public int whoMaxDistance(String[] carNames) {
         for (String carName : carNames) {
-            int currentDistance = this.carData.get(carName).length();
-            if (currentDistance > maxDistance) {
-                maxDistance = currentDistance;
+            if (finalDistanceMeasurement(carName) > maxDistance) {
+                maxDistance = finalDistanceMeasurement(carName);
             }
         }
         return maxDistance;
     }
 
-    public List<String> getWinners(String[] carNames) {
+    public int finalDistanceMeasurement(String carName){
+        return carData.get(carName).length();
+    }
+
+    public List<String> Winners(String[] carNames) {
         for (String carName : carNames) {
-            int currentDistance = carData.get(carName).length();
-            if (currentDistance == maxDistance) {
+            if (finalDistanceMeasurement(carName) == maxDistance) {
                 winners.add(carName);  // 우승자 추가
             }
         }
@@ -67,15 +81,15 @@ public class PlayGame {
         String[] carName = inputMessage.inputCarNameReturnSplit(",");
         String tryCarGame = inputMessage.inputNumberOfTries();
 
-        racingCarCreate(carName);
+        racingRaceParticipation(carName);
 
         for(int i=0; i<Integer.parseInt(tryCarGame); i++){
-            moveCars(carName);
+            racingMatchInProgress(carName);
             printRaceResult(carName);
         }
 
-        getMaxDistance(carName);
-        getWinners(carName);
+        whoMaxDistance(carName);
+        Winners(carName);
         printWinners();
     }
 }
