@@ -150,20 +150,31 @@
 
 🟣 Enum
 
+### SystemMessage 👉 시스템 메세지 관리를 위한 인터페이스  
+
+**- 메서드**  
+`getMessage`: 시스템 메세지 반환하기   
+
+### ErrorMessage 👉 시스템 에러 메세지 관리를 위한 enum  
+
 **- 상수 필드**  
 `INVALID_CAR_NAME`: "유효하지 않은 자동차 이름이 포함되어 있습니다."  
 `INVALID_CAR_NUMBER`: "경기에 최소 2대 자동차가 참여할 수 있습니다."  
 `INVALID_TURN_NUMBER`: "자연수가 아닌 숫자입니다."  
 
----
+**- 메서드**  
+`getMessage`: 시스템 메세지 반환하기   
 
-🟠 Common
+### IOMessage 👉 시스템 입출력 메세지 관리를 위한 enum  
 
 **- 상수 필드**  
 `INPUT_CARS_NAME`: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"  
 `INPUT_TURN_COUNT`: "시도할 횟수는 몇 회인가요?"  
 `PRINT_GAME_RESULT`: "실행 결과"  
 `PRINT_GAME_WINNER`: "최종 우승자 : "  
+
+**- 메서드**  
+`getMessage`: 시스템 메세지 반환하기   
 
 ---
 
