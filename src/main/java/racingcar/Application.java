@@ -40,6 +40,17 @@ public class Application {
             System.out.println();
         }
 
+        int temp = 0;
+        for (int i = 0; i < count; i++) {
+            temp = Math.max(temp, cars.get(i).location);
+        }
+
+        for (int i = 0; i < count; i++) {
+            if(cars.get(i).location == temp) {
+                System.out.println("최종 우승자 : " + cars.get(i).name);
+                break;
+            }
+        }
 
 
     }
