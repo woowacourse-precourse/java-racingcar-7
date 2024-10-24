@@ -11,11 +11,11 @@ public class Car {
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public int getDistance(){
-        return distance;
+        return this.distance;
     }
 
     public void go(int distance){
