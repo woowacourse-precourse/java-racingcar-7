@@ -18,15 +18,24 @@ public class GameController {
     }
 
     public void run() {
-        String inputCarsName = inputView.inputCarsName();
+        List<Car> cars = initGamePlay();
         int inputPlayCount = inputView.inputPlayCount();
+    }
 
-        String[] carArray = inputCarsName.split(",");
-
-        List<String> carList = Arrays.asList(carArray);
+    private List<Car> initGamePlay() {
+        List<String> carList = getCarNames();
         validateNoDuplicates(carList);
 
-        List<Car> cars = carList.stream()
+        return createCars(carList);
+    }
+
+    private List<String> getCarNames() {
+        String inputCarsName = inputView.inputCarsName();
+        return Arrays.asList(inputCarsName.split(","));
+    }
+
+    private List<Car> createCars(List<String> carList) {
+        return carList.stream()
                 .map(car -> new Car(car, 0))
                 .toList();
     }
