@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
 public class Position {
-    private static final String ONE_STEP = "_";
+    private static final String ONE_STEP = "-";
     private final StringBuilder distance;
 
     protected Position() {
@@ -12,7 +12,7 @@ public class Position {
         distance.append(ONE_STEP);
     }
 
-    protected int calculateMovingDistance() {
+    public int calculateMovingDistance() {
         return distance.toString().length();
     }
 
