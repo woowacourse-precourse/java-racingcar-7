@@ -31,7 +31,7 @@ public class InputValidator {
         }
 
         if (!Pattern.matches("^[0-9]+$", attemptsInput)) {
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
         }
 
         int attempts = Integer.parseInt(attemptsInput);
