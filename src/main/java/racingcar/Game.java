@@ -12,7 +12,7 @@ public class Game {
     }
 
     private void registerParticipants(List<String> carNamesList) {
-        carNamesList.forEach(carName -> participants.add(new Car(carName, 0)));
+        carNamesList.forEach(carName -> participants.add(new Car(carName)));
     }
 
     public void moveCar() {

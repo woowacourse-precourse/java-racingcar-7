@@ -2,12 +2,11 @@ package racingcar;
 
 public class Car {
     private final String name;
-    private int distance;
+    private int distance = 0;
 
-    public Car(String name, int distance) {
+    public Car(String name) {
         validateNameLength(name);
         this.name = name;
-        this.distance = distance;
     }
 
     public String getName() {
