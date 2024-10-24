@@ -19,7 +19,7 @@ public final class InputHandler {
 
     public static int getAttempts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputAttempt = readLine();
+        String inputAttempt = readLine().trim();
         System.out.println();
 
         if (inputAttempt == null) {
@@ -29,7 +29,7 @@ public final class InputHandler {
         try {
             return Integer.parseInt(inputAttempt);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다. " + e);
+            throw new IllegalArgumentException("시도 횟수는 '한 개'의 '숫자'여야 합니다. ", e);
         }
     }
 }
