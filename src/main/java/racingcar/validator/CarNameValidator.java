@@ -17,6 +17,9 @@ public class CarNameValidator {
     }
 
     public static void validateDelimiter(String input){
-        
+        String regex = "^[^,]*$";
+        if(input.matches(regex)){
+            throw new IllegalArgumentException("자동차 이름들은 콤마로 구분해야합니다.");
+        }
     }
 }
