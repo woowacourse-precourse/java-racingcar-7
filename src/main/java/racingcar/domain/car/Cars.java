@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.exception.ErrorMessage;
 
 public class Cars {
 
@@ -49,7 +50,7 @@ public class Cars {
 
     private void validateParticipant(List<Car> cars) {
         if (isOne(cars)) {
-            throw new IllegalArgumentException("[ERROR] 시합은 두명 이상부터 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RACE_LIST_SIZE.getMessage());
         }
     }
 
@@ -59,7 +60,7 @@ public class Cars {
 
     private void validateDuplicateName(List<Car> cars) {
         if (hasDuplicateName(cars)) {
-            throw new IllegalArgumentException("[ERROR] 동일한 이름이 있습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SAME_NAME.getMessage());
         }
     }
 

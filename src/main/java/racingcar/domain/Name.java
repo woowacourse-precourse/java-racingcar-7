@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.ErrorMessage;
+
 public class Name {
 
     private static final String PATTERN = "^[a-z|A-Z]*$";
@@ -23,7 +25,7 @@ public class Name {
 
     private static void validateEnglish(String name) {
         if (isNotEnglish(name)) {
-            throw new IllegalArgumentException("[ERROR]이름은 영문자만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_NOT_ENGLISH.getMessage());
         }
     }
 
@@ -33,7 +35,7 @@ public class Name {
 
     private static void validateLength(String name) {
         if (isOverFive(name)) {
-            throw new IllegalArgumentException("[ERROR]이름은 5글자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_OVER_FIVE.getMessage());
         }
     }
 

@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.domain.Winners;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.exception.ErrorMessage;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -54,7 +55,7 @@ public class UIController {
 
     private void validateBlank(String input) {
         if (isBlank(input)) {
-            throw new IllegalArgumentException("[ERROR]빈 문자열을 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_BLANK.getMessage());
         }
     }
 
@@ -69,7 +70,7 @@ public class UIController {
 
     private void validateEdgeSeparator(String input) {
         if (isEdgeSeparator(input)) {
-            throw new IllegalArgumentException("[ERROR]잘못된 입력 형식입니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_FORMAT.getMessage());
         }
     }
 
@@ -79,7 +80,7 @@ public class UIController {
 
     private void validateContinuousSeparator(String input) {
         if (isContinuousSeparator(input)) {
-            throw new IllegalArgumentException("[ERROR]연속된 쉼표는 올 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CONTINUOUS_SEPARATOR.getMessage());
         }
     }
 
@@ -94,7 +95,7 @@ public class UIController {
 
     private int validateNumber(String count) {
         if (isNotPositiveInteger(count)) {
-            throw new IllegalArgumentException("[ERROR]횟수는 양의 정수만 입력가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT_FORMAT.getMessage());
         }
         return Integer.parseInt(count);
     }
