@@ -15,6 +15,9 @@ public class Application {
         while (stringTokenizer.hasMoreTokens()) {
             cars.add(new Car(stringTokenizer.nextToken()));
         }
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        inputString = Console.readLine();
+        int playTime = Integer.parseInt(inputString);
     }
 
     static class Car {
