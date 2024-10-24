@@ -1,10 +1,13 @@
 package model;
 
+import strategy.Strategy;
+
 import java.util.Objects;
 
 public class Car {
+    private static final int FRONT_MOVE_NUMBER = 4;
     private final Name name;
-    private final int moveCount;
+    private int moveCount;
 
 
     public Car(String name) {
@@ -14,6 +17,12 @@ public class Car {
     public Car(Name name, int moveCount) {
         this.name = name;
         this.moveCount = moveCount;
+    }
+
+    public void move(Strategy strategy) {
+        if(strategy.move() >= FRONT_MOVE_NUMBER) {
+            moveCount++;
+        }
     }
 
     @Override
