@@ -11,6 +11,8 @@ import java.util.List;
 
 public class RacingService {
 
+    private final int MIN_TRY_COUNT = 1;
+
     private final RacingCarDependency racingCarDependency;
 
     public RacingService(RacingCarDependency racingCarDependency) {
@@ -24,6 +26,7 @@ public class RacingService {
     }
 
     public RacingResult play(RacingCars racingCars, int tryCount) {
+        validateTryCount(tryCount);
         List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
         RacingCars winners = getWinners(racingCars);
 
@@ -34,6 +37,12 @@ public class RacingService {
         return carNameList.stream()
                 .map(carName -> new RacingCar(carName, racingCarDependency))
                 .toList();
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount < MIN_TRY_COUNT) {
+            throw new IllegalArgumentException("시도 횟수는 " + MIN_TRY_COUNT + " 이상이어야 합니다.");
+        }
     }
 
     private RacingCars getWinners(RacingCars racingCars) {
