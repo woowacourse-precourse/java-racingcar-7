@@ -27,6 +27,7 @@ public class Cars {
 	}
 
 	public void printWinner(){
+		System.out.print("최종 우승자 : ");
 		int maxLocation = getMaxLocation();
 		cars.stream()
 			.filter(car -> car.getLocation() == maxLocation)
