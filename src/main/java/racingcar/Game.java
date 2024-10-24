@@ -43,4 +43,20 @@ public class Game {
         }
         System.out.println();
     }
+
+    private List<String> findWinner() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = 0;
+
+        for (Car participant : participants) {
+            int participantDistance = participant.getDistance();
+            if (maxDistance < participantDistance) maxDistance = participantDistance;
+        }
+
+        for (Car participant : participants) {
+            int participantDistance = participant.getDistance();
+            if (participantDistance == maxDistance) winners.add(participant.getName());
+        }
+        return winners;
+    }
 }
