@@ -5,4 +5,7 @@ public class MessageConstants {
     public static final String INPUT_ATTEMPT_COUNT = "시도할 횟수는 몇 회인가요?\n";
     public static final String EXECUTION_RESULT = "실행 결과\n";
     public static final String FINAL_WINNER = "최종 우승자 : ";
+
+    public static final String PLAYER_POSITION_FORMAT = "%s : ";
+    public static final String DASH = "-";
 }
