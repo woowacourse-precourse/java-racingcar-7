@@ -1,8 +1,8 @@
 package racingcar.model;
 
-public record ExecutionNumber(Long number) {
+public record ExecutionNumber(int number) {
 
-    public long getNumber() {
+    public int getNumber() {
         return number;
     }
 }

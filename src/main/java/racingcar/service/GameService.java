@@ -10,7 +10,7 @@ import racingcar.model.Car;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
-
+    // TODO : 상수화 리팩토링
     public boolean isMoving() {
         int carCondition = randomNumber();
         return carCondition >= 4;
@@ -24,10 +24,10 @@ public class GameService {
         List<Car> winners = new ArrayList<>(cars);
         winners.sort(comparingInt(Car::getDistance).reversed());
 
-        Integer winningScore = winners.getFirst().getDistance();
+        int winningScore = winners.getFirst().getDistance();
         isRaceStarted(winningScore);
 
-        return winners.stream().filter(c -> c.getDistance().equals(winningScore)).toList();
+        return winners.stream().filter(c -> c.getDistance() == winningScore).toList();
     }
 
     private boolean isRaceStarted(Integer winningScore) {

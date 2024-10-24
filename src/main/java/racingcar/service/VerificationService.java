@@ -50,7 +50,7 @@ public class VerificationService {
         }
 
         try {
-            Long.parseLong(value);
+            Integer.parseInt(value);
             return true;
         } catch(NumberFormatException e) {
             throw new NotNumberException();
@@ -58,9 +58,9 @@ public class VerificationService {
     }
 
     public boolean isValidRange(String value) {
-        long valueToLong = Long.parseLong(value);
-        if (valueToLong < EXECUTION_RANGE_MIN_VALUE.getValue() ||
-                valueToLong > EXECUTION_RANGE_MAX_VALUE.getValue()) {
+        int valueToInt = Integer.parseInt(value);
+        if (valueToInt < EXECUTION_RANGE_MIN_VALUE.getValue() ||
+                valueToInt > EXECUTION_RANGE_MAX_VALUE.getValue()) {
             throw new NumberRangeException();
         }
         return true;

@@ -3,9 +3,9 @@ package racingcar.model;
 public class Car {
 
     private final String name;
-    private Integer distance;
+    private int distance;
 
-    public Car(String name, Integer distance) {
+    public Car(String name, int distance) {
         this.name = name;
         this.distance = distance;
     }
@@ -14,7 +14,7 @@ public class Car {
         return name;
     }
 
-    public Integer getDistance() {
+    public int getDistance() {
         return distance;
     }
 

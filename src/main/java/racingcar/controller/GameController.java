@@ -37,14 +37,14 @@ public class GameController {
         return dataTransformService.convertToCar(carNames);
     }
 
-    public Long registExecutionNumber() {
+    public int registExecutionNumber() {
         outputView.countRegistMessage();
-        final String input = inputView.input();
-        verificationService.isNumber(input);
-        verificationService.isValidRange(input);
+        final String executionNumberInput = inputView.input();
+        verificationService.isNumber(executionNumberInput);
+        verificationService.isValidRange(executionNumberInput);
         outputView.newline();
 
-        return dataTransformService.parseToLong(input);
+        return dataTransformService.parseToInt(executionNumberInput);
     }
 
     public List<Car> race(List<Car> cars, ExecutionNumber executionNumber) {

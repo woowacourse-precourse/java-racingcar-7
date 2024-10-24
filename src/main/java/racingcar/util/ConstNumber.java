@@ -5,13 +5,13 @@ public enum ConstNumber {
     EXECUTION_RANGE_MAX_VALUE(1_000),
     EXECUTION_RANGE_MIN_VALUE(1);
 
-    private final long value;
+    private final int value;
 
-    private ConstNumber(long value) {
+    private ConstNumber(int value) {
         this.value = value;
     }
 
-    public long getValue() {
+    public int getValue() {
         return value;
     }
 }
