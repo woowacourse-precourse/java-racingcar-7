@@ -6,7 +6,7 @@ public class RacingController {
     public RacingController(RacingInputView inputView) {
         this.inputView = inputView;
     }
-    public String[] SplitCarNames(String RacingCarNames) {
+    public String[] splitCarNames(String RacingCarNames) {
         return RacingCarNames.split(",");
     }
     private String[] trimCarNames(String[] carNames) {
@@ -15,5 +15,24 @@ public class RacingController {
             trimNames[i] = carNames[i].trim();
         }
         return trimNames;
+    }
+
+    public String[] finalGetCarsNames() {
+        String inputCarNames = inputView.RacingCarNames();
+        String[] carNames = splitCarNames(inputCarNames);
+        return trimCarNames(carNames);
+    }
+
+    private int getRoundRacing() {
+        return inputView.RacingRoundCount();
+    }
+    public void RacingRun() {
+        try {
+            String[] carNames = finalGetCarsNames();
+            int RacingRounds = getRoundRacing();
+
+        }catch (IllegalArgumentException e) {
+            System.out.println("오류" + e.getMessage());
+        }
     }
 }
