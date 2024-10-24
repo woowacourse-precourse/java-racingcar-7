@@ -32,6 +32,8 @@ public class Application {
             race(cars);
             printRaceResult(cars);
         }
+
+        List<String> winnerList = determineWinner(cars);
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -118,6 +120,23 @@ public class Application {
             System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
         }
         System.out.println();
+    }
+
+    private static List<String> determineWinner(List<Car> cars) {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            if (maxDistance < car.getDistance()) {
+                maxDistance = car.getDistance();
+            }
+        }
+
+        List<String> winner = new ArrayList<>();
+        for (Car car : cars) {
+            if (maxDistance == car.getDistance()) {
+                winner.add(car.getName());
+            }
+        }
+        return winner;
     }
 
     private static class Car {
