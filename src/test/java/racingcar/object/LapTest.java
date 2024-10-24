@@ -14,13 +14,13 @@ class LapTest {
 
     @Test
     void doLap으로_랩을수행하고_랩의결과를받는다() {
-        Lap lap = new Lap(List.of(
+        Lap lap = new Lap(new Cars(List.of(
                 Car.ready(new AlwaysOnDriveCarEngine(), new CarName("1번씽씽이")),
-                Car.ready(new BrokenCarEngine(), new CarName("2번폐차"))));
+                Car.ready(new BrokenCarEngine(), new CarName("2번폐차")))));
 
         // 씽씽이는 두번 모두 달리고, 폐차는 두번 모두 서있는다
-        LapRecord firstLapRecord = lap.doLap();
-        LapRecord secondLapRecord = lap.doLap();
+        LapRecord firstLapRecord = lap.launchLap();
+        LapRecord secondLapRecord = lap.launchLap();
 
         // 랩-기록의 결과는 CarName 오름차순이다
         // firstLap
