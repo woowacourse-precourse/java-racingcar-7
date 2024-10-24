@@ -13,4 +13,12 @@ public class StringParser {
                 .peek(NameValidator::isNotBlank)
                 .toList();
     }
+
+    public static Long parseToNumeric(String secondLine) {
+        try {
+            return Long.parseLong(secondLine);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("invalid number format : " + secondLine);
+        }
+    }
 }
