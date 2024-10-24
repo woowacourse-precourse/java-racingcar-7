@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.MovementCondition;
@@ -46,5 +47,22 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        Car that = (Car) other;
+        return Objects.equals(this.getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getName());
     }
 }
