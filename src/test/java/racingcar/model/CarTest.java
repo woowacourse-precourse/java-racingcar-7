@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("자동차 객체 테스트")
 class CarTest {
@@ -23,14 +25,11 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = { "po-bi", "p@bi", "pobi!" })
     @DisplayName("자동차의 이름에 알파벳과 숫자가 아닌 문자가 포함된 경우 예외가 발생한다.")
-    void should_ThrowException_When_CarNameContainsInvalidCharacters() {
-        assertThatThrownBy(() -> new Car("po-bi"))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Car("p@bi"))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Car("2~3"))
+    void should_ThrowException_When_CarNameContainsInvalidCharacters(String testCarName) {
+        assertThatThrownBy(() -> new Car(testCarName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
