@@ -2,8 +2,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     static HashMap<String, Integer> carScores = new HashMap<String, Integer>();
@@ -26,12 +25,11 @@ public class Application {
 
         // 입력받은 횟수만큼 차량 전진
         while (repeat-- > 0) {
-            moveCars(cars); // 차량 이동
-            showCurrentStatus(cars); // 현재 차수 실행 결과 출력
+            moveCars(cars);
+            showCurrentStatus(cars);
         }
 
-        // 프로그램 완료: 우승자 출력
-        getWinnerAndShow();
+        System.out.println("최종 우승자 : "+getWinner());
     }
     public static void moveCars(String[] cars) {
         for (int i=0; i<cars.length; i++) {
@@ -44,7 +42,7 @@ public class Application {
         }
     }
 
-    public static void showCurrentStatus(String cars[]) {
+    public static void showCurrentStatus(String[] cars) {
         for (String carName : cars) {
             int score = carScores.get(carName);
             String scoreStr = makeScoreString(score);
@@ -59,7 +57,33 @@ public class Application {
         }
         return result;
     }
-    public static void getWinnerAndShow() {
+    public static String getWinner() {
+        String result = "";
+        List<String> winners = new ArrayList<>();
+        int maxScore = 0;
 
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(carScores.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue(); // 내림차순 정렬
+            }
+        });
+        for(Map.Entry<String, Integer> entry : entryList){
+            int curScore = entry.getValue();
+            if (maxScore <= curScore) { // 처음엔 0<3이므로 해당, 두번째는 3=3이므로 해당, 2<3이면 종료
+                maxScore = curScore;
+                winners.add(entry.getKey());
+            }
+            else {
+                break;
+            }
+        }
+        result = String.join(", ", winners);
+        /*
+        * var members = List.of("pobi", "jason");
+          var result = String.join(",", members); // pobi,jason
+        * */
+        return result;
     }
 }
