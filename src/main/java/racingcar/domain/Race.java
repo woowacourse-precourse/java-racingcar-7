@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.convertor.RaceConvertor;
+import racingcar.parser.CarNamesParser;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class Race {
 
     private Race(final String input, final Integer attemptCount) {
         this.attemptCount = attemptCount;
-        this.cars = createCars(RaceConvertor.parseCarNames(input));
+        this.cars = createCars(CarNamesParser.parseCarNames(input));
     }
 
     public static Race createRace(final String input, final Integer attemptCount) {
