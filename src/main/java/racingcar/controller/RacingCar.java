@@ -25,6 +25,11 @@ public class RacingCar {
 
         int tryCount = Integer.parseInt(inputView.input());
 
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveAll();
+        }
+
+
 
 
     }
