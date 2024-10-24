@@ -20,6 +20,8 @@ public class Controller {
         sizeValidator.isValid(carNames);
         List<Car> cars = carConverter.to(carNames);
 
+        outputView.println("시도할 횟수는 몇 회인가요?");
+
     }
 
 }
