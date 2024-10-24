@@ -11,6 +11,10 @@ public class Application {
 
         // 이름 판단
         List<String> carNameList = Validate.carName(inputCarName);
-        System.out.println(carNameList);
+
+        // 시도할 횟수를 입력 받는 기능
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputAttempts = Console.readLine();
+        int attempts = Validate.attempts(inputAttempts);
     }
 }

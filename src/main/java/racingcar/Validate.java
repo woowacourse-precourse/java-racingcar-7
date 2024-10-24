@@ -54,4 +54,25 @@ public class Validate {
         return splitCarName;
     }
 
+    public static int attempts(String inputAttempts) {
+        try {
+            int resultAttempts = numberCheck(inputAttempts);
+            return resultAttempts;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    private static int numberCheck(String inputAttempts) {
+        try {
+            int number = Integer.parseInt(inputAttempts);
+            if (number <= 0) {
+                throw new IllegalArgumentException("숫자는 양의 정수여야 합니다.");
+            }
+
+            return number;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
+        }
+    }
 }
