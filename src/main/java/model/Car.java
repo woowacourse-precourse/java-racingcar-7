@@ -6,8 +6,18 @@ public class Car {
 
 
     public Car(String name, int position) {
+        validateName(name);
         this.name = name;
         this.position = position;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+        }
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
     }
 
 
