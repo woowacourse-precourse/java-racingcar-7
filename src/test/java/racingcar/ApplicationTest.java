@@ -86,6 +86,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("랜덤 값이 4 이상일 경우 자동차가 이동하는지 확인하는 테스트 입니다.")
+    void moveWhenNumberIsGraterThanOrEqualFour() {
+        //given
+        Car car = new Car("pobi");
+        //when
+        for (int i = 0; i < 100; i++) {
+            car.isMove();
+        }
+        //then
+        assertThat(car.getPosition() > 0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
