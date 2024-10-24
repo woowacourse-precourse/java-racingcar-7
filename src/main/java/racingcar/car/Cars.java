@@ -18,4 +18,11 @@ public class Cars {
 			car.printResult();
 		}
 	}
+
+	private int getMaxLocation() {
+		return cars.stream()
+			.mapToInt(Car::getLocation)
+			.max()
+			.orElse(0);
+	}
 }
