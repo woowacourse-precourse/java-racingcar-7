@@ -10,8 +10,15 @@ public class CarGroup {
 
     public CarGroup(String[] carList) {
         for (String carName : carList) {
+            validateCarName(carName);
             Car car = new Car(carName);
             this.carList.add(car);
+        }
+    }
+
+    private void validateCarName(String carName){
+        if(carName.length()==0){
+            throw new IllegalArgumentException("자동차 이름의 길이는 0이 될 수 없습니다.");
         }
     }
 
