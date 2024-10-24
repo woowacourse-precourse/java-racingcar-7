@@ -10,7 +10,13 @@ public class BasicRacingCarValidator implements RacingCarValidator {
 
     @Override
     public void validateCarNamesAndMoveCount(List<String> carNames, int moveCount) {
+        validateCarNameNumberMoreThanMin(carNames);
+        validateMoveCountMoreThanMin(moveCount);
 
+        carNames.stream().forEach((carName) -> {
+            validateCarNameLengthLessThanMax(carName);
+            validateCarNameLengthMoreThanMin(carName);
+        });
     }
 
     private void validateCarNameLengthLessThanMax(String carName) {
@@ -31,7 +37,7 @@ public class BasicRacingCarValidator implements RacingCarValidator {
         }
     }
 
-    private void validateCarNameMoreThanMin(List<String> carNames) {
+    private void validateCarNameNumberMoreThanMin(List<String> carNames) {
         if (carNames.size() < CAR_NAME_NUMBER_MIN) {
             throw new IllegalArgumentException();
         }
