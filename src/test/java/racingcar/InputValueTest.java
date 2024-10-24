@@ -46,7 +46,7 @@ public class InputValueTest {
                 .hasMessageContaining("자동차 이름은 빈 값이 될 수 없습니다.");
     }
 
-    @DisplayName("")
+    @DisplayName("경주할 자동차들이 null이면 예외 발생")
     @Test
     public void ThrowExceptionIfCarNamesNULL() {
         // given
