@@ -12,7 +12,7 @@ class RacingResultTests extends NsTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-    private static final int TOTAL_TRIAL_COUNT = 2;
+    private static final int TOTAL_TRIAL_COUNT = 3;
 
     private RacingResult racingResult;
 
@@ -24,14 +24,37 @@ class RacingResultTests extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 경주의 우승자가 여러 명일 경우")
-    void testGetWinner() {
-        List<String> expectedWinner = List.of("alice", "john");
+    @DisplayName("최종 우승자는 마지막 숫자 뽑기 종료 시점에서의 이동 거리를 기준으로 선정")
+    void testFindSingleWinner() {
+        List<String> expectedWinner = List.of("john");
+        int expectedMaxDistance = 2;
+
         assertRandomNumberInRangeTest(
                 () -> {
                     runMain();
-                    assertThat(expectedWinner).isEqualTo(racingResult.getWinner());
-                }, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+                    assertThat(racingResult.findWinner()).isEqualTo(expectedWinner);
+                    assertThat(racingResult.findMaxDistance()).isEqualTo(expectedMaxDistance);
+                },
+                STOP, STOP, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    @DisplayName("최대 이동 거리를 갖는 자동차가 여러 대일 경우 최종 우승자는 여러 명")
+    void testFindMultipleWinner() {
+        List<String> expectedWinner = List.of("alice", "john");
+        int expectedMaxDistance = 2;
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    runMain();
+                    assertThat(racingResult.findWinner()).isEqualTo(expectedWinner);
+                    assertThat(racingResult.findMaxDistance()).isEqualTo(expectedMaxDistance);
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP,
+                STOP, MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
 }

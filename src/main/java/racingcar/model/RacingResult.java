@@ -14,13 +14,13 @@ public class RacingResult {
         this.maxDistance = findMaxDistance();
     }
 
-    private Integer findMaxDistance() {
+    public Integer findMaxDistance() {
         return racingResult.stream()
                 .map(racingCar -> racingCar.getCurrentDistance(totalTrialCount))
                 .reduce(maxDistance, Integer::max);
     }
 
-    public List<String> getWinner() {
+    public List<String> findWinner() {
         return racingResult.stream()
                 .filter(racingCar -> racingCar.getCurrentDistance(totalTrialCount) == maxDistance)
                 .map(RacingCar::getName)
