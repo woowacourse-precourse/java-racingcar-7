@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.RacingRegisterForm;
+import racingcar.model.Cars;
 import racingcar.service.RegistrationService;
 
 public class RacingGameController {
@@ -16,5 +17,6 @@ public class RacingGameController {
         RacingRegisterForm registerForm = registrationService.register();
         List<String> carNames = registerForm.carNames();
         int raceRoundCount = registerForm.raceRoundCount();
+        Cars cars = new Cars(carNames);
     }
 }
