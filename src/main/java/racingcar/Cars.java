@@ -3,26 +3,20 @@ package racingcar;
 import java.util.List;
 
 public class Cars {
+    private final List<String> nameList;
+    private static final int INCLUDE_LAST_EMPTY_STRING = -1;
 
-    private final List<String> cars;
-    static final int INCLUDE_LAST_EMPTY_STRING = -1;
+    public Cars(String namesStr) {
+        List<String> namesArr = List.of(namesStr.split(",", INCLUDE_LAST_EMPTY_STRING));
 
-    public Cars(String carNameString) {
-//        Map<String, Integer> cars = new LinkedHashMap<>();
+        validateWrongValue(namesArr);
+        validateNameLength(namesArr);
 
-        List<String> carNameArray = List.of(carNameString.split(",", INCLUDE_LAST_EMPTY_STRING));
-//        for (String carName : carNameArray) {
-//            cars.put(carName, DEFAULT_MOVE_POINT);
-//        }
-
-        validateWrongValue(carNameArray);
-        validateNameLength(carNameArray);
-
-        this.cars = carNameArray;
+        this.nameList = namesArr;
     }
 
-    public List<String> getCars() {
-        return cars;
+    public List<String> getNameList() {
+        return nameList;
     }
 
     private void validateNameLength(List<String> cars) {

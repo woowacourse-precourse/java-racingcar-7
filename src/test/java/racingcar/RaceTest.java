@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
     @Test
-    void 자동차경주_총라운드_최소_1회() {
+    void 자동차경주_총라운드_1회_미만_에러() {
         Assertions.assertThatThrownBy(() -> new Race(0, new Cars("pobi")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 경주는 1회 이상 진행되어야 합니다.");
@@ -16,15 +16,18 @@ class RaceTest {
                 .hasMessage("자동차 경주는 1회 이상 진행되어야 합니다.");
     }
 
-//    @Test
-//    void 레이스_결과() {
-//        Assertions.assertThat(new Race(2, new Cars("pobi,woni")).renderScoreBoard())
-//                .isEqualTo(true);
-//    }
+    @Test
+    void 자동차경주_총라운드_1회_이상_점검() {
+        Assertions.assertThat(new Race(1, new Cars("pobi")).getTOTAL_RACE_TURN())
+                .isEqualTo(1);
 
-//    @Test
-//    void 우승자_발표() {
-//        Assertions.assertThat(new Race(5).getWinner())
-//                .contains("pobi");
-//    }
+        Assertions.assertThat(new Race(30, new Cars("pobi")).getTOTAL_RACE_TURN())
+                .isEqualTo(30);
+    }
+
+    @Test
+    void 우승자_발표() {
+        Assertions.assertThat(new Race(2, new Cars("pobi")).getWinner())
+                .contains("pobi");
+    }
 }

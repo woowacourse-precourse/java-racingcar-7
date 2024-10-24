@@ -1,29 +1,27 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-    private ArrayList<String> convertMapToList(Cars cars) {
-        return new ArrayList<>(cars.getCars());
-    }
-
     @Test
     void 자동차이름_쉼표기준으로_나누기() {
-        Assertions.assertThat(convertMapToList(new Cars("abcde,woni,jun")))
-                        .isEqualTo(List.of("abcde", "woni", "jun"));
-        Assertions.assertThat(convertMapToList(new Cars("가나다라마,woni,jun")))
+        Assertions.assertThat(new Cars("abcde,woni,jun").getNameList())
+                .isEqualTo(List.of("abcde", "woni", "jun"));
+
+        Assertions.assertThat(new Cars("가나다라마,woni,jun").getNameList())
                 .isEqualTo(List.of("가나다라마", "woni", "jun"));
-        Assertions.assertThat(convertMapToList(new Cars("12345,woni,jun")))
+
+        Assertions.assertThat(new Cars("12345,woni,jun").getNameList())
                 .isEqualTo(List.of("12345", "woni", "jun"));
-        Assertions.assertThat(convertMapToList(new Cars("++==+,woni,jun")))
+
+        Assertions.assertThat(new Cars("++==+,woni,jun").getNameList())
                 .isEqualTo(List.of("++==+", "woni", "jun"));
     }
 
-    @DisplayName(",를 기준으로 구분했을 때 빈문자열이 있으면 오류")
+    @DisplayName("분리됐을 때 빈문자열이 있으면 오류")
     @Test
     void 자동차이름_잘못된_입력() {
         Assertions.assertThatThrownBy(() -> new Cars(""))
