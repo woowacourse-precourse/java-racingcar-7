@@ -31,6 +31,46 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_빈값_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,dsfe", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_중복_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,set", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_횟수없음_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,set", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_횟수없음_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,set", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_횟수문자_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,set", "d"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
