@@ -5,25 +5,20 @@ import java.util.List;
 public class Racing {
 
     private final RacingCars racingCars;
-    private final Track track;
 
-    public Racing(RacingCars racingCars, Track track) {
+    public Racing(RacingCars racingCars) {
         this.racingCars = racingCars;
-        this.track = track;
     }
 
-    public void startRacing() {
-        while (track.isLapInProgress()) {
-            moveRacingCars();
-            track.decrementLap();
-        }
+    public static Racing from(RacingCars racingCars) {
+        return new Racing(racingCars);
     }
 
-    public List<String> endRacing() {
+    public List<String> getWinnerCarNames() {
         return racingCars.getWinners();
     }
 
-    private void moveRacingCars() {
+    public void moveCars() {
         for (RacingCar racingCar : racingCars.getCars()) {
             if (canMove()) {
                 racingCar.move();
@@ -37,5 +32,26 @@ public class Racing {
         int conditionNumber = 4;
 
         return RandomNumber.generateInRange(start, end) >= conditionNumber;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (RacingCar racingCar : racingCars.getCars()) {
+            builder.append(getRacingCarData(racingCar));
+        }
+        builder.append("\n");
+
+        return builder.toString();
+    }
+
+    private String getRacingCarData(RacingCar racingCar) {
+        String positionMark = "-";
+
+        return String.format(
+            "%s : %s\n",
+            racingCar.getName(),
+            positionMark.repeat(racingCar.getPosition())
+        );
     }
 }
