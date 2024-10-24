@@ -1,6 +1,6 @@
 package racingcar.validator;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class CarNamesInputValidator implements BasicValidator<String> {
     private static final int MAX_CAR_NAME_LENGTH = 5;
@@ -60,10 +60,10 @@ public class CarNamesInputValidator implements BasicValidator<String> {
     }
 
     private boolean isDuplicate(String input) {
-        String[] carNames = input.split(",");
-        long deduplicationCount = Arrays.stream(carNames)
+        List<String> carNames = List.of(input.split(","));
+        long deduplicationCount = carNames.stream()
                 .distinct()
                 .count();
-        return carNames.length != deduplicationCount;
+        return carNames.size() != deduplicationCount;
     }
 }
