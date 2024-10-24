@@ -3,6 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +30,14 @@ class ApplicationTest extends NsTest {
         run("pobi,woni", "1");
         assertThat(RacingCar.input()).contains("pobi,woni","1");
         assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi","woni");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi","bee9827"),"1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi","woni"),"A"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
 

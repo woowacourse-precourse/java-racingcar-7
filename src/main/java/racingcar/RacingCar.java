@@ -25,4 +25,15 @@ public class RacingCar {
                 .map(String::trim)
                 .toList();
     }
+
+    public static void checkValid(List<String> participants, String executionCount) {
+        for (String participant : participants) {
+            if(participant.length() > 5){
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            };
+            if(!executionCount.contains("^[0-9]*$")){
+                throw new IllegalArgumentException("숫자 입력 형식이 잘못되었습니다.");
+            }
+        }
+    }
 }
