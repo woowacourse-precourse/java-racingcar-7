@@ -28,6 +28,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차이름_5글자_넘으면_예외발생() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("soohaa"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 //    @Test
 //    void 기능_테스트() {
 //        assertRandomNumberInRangeTest(
