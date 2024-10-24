@@ -17,6 +17,7 @@ public class InputValidator {
         validateCarNameInputBlank(input);
 
         String[] names = input.split(Constant.DELIMITER);
+        Arrays.setAll(names, i -> names[i].trim());
         for (String name : names) {
             validateCarNameBlank(name);
             validateCarNameTooLong(name);
