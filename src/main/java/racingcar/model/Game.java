@@ -15,7 +15,7 @@ public class Game {
         this.numberGenerator = numberGenerator;
     }
 
-    public void play() {
+    public void playOneRound() {
         tryMoveAllCars();
     }
 
