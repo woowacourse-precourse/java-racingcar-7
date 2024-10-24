@@ -10,11 +10,6 @@ public class InputValidator {
     private static final String LENGTH_IS_TOO_LONG = "자동차 이름은 5자 이하만 가능합니다.";
     private static final String IS_NOT_NUMBER = "숫자만 입력 가능합니다.";
 
-    public void execute(String carNames, String tryCounts) {
-        validateCarNames(carNames);
-        validateTryCounts(tryCounts);
-    }
-
     public void validateCarNames(String input) {
         checkBlack(input);
         checkSpecialChar(input);
