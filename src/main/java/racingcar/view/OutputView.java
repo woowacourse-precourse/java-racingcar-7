@@ -17,4 +17,8 @@ public class OutputView {
     public void getAttemptCount() {
         System.out.println(OutputMessage.ASK_ATTEMPT_COUNT.getMessage());
     }
+
+    public void runResult() {
+        System.out.println(OutputMessage.RUN_RESULT.getMessage());
+    }
 }
