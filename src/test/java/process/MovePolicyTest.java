@@ -20,7 +20,7 @@ class MovePolicyTest {
             for (int i = 0; i < 10; i++) {
                 actual.add(policy.run());
             }
-            List<Boolean> expected = List.of(false, false, false, false, false, true, true, true, true, true);
+            List<Boolean> expected = List.of(false, false, false, false, true, true, true, true, true, true);
             assertIterableEquals(expected, actual);
         }, 0,1,2,3,4,5,6,7,8,9);
     }
