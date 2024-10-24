@@ -17,8 +17,10 @@ public class RacingGame<T extends RacingPlayer<T>> {
     }
 
     public void play() {
+        doBeforePlay();
         while (goToNextRound()) {
             playRound();
+            doAfterRound();
         }
     }
 
@@ -31,7 +33,6 @@ public class RacingGame<T extends RacingPlayer<T>> {
     }
 
     private boolean goToNextRound() {
-        doBetweenRound();
         if (isLastRound()) {
             return false;
         }
@@ -43,7 +44,12 @@ public class RacingGame<T extends RacingPlayer<T>> {
         return currentRound == matchCount;
     }
 
-    private void doBetweenRound() {
+    private void doBeforePlay() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    private void doAfterRound() {
         System.out.println();
     }
 
