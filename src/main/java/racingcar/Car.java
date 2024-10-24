@@ -21,4 +21,12 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    // 랜덤값이 4 이상일 경우 한 칸 전진
+    public void move() {
+        int randNum = Randoms.pickNumberInRange(0, 9);
+        if (randNum >= 4) {
+            score++;
+        }
+    }
 }
