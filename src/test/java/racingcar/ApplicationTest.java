@@ -50,14 +50,14 @@ class ApplicationTest extends NsTest {
     void 예외_테스트_빈문자열() {
         assertThatThrownBy(() -> runException("", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차에 이름을 부여해주세요");
+                .hasMessage("자동차 이름이 존재하지 않습니다");
     }
 
     @Test
     void 예외_테스트_쉼표만() {
-        assertThatThrownBy(() -> runException(",,"), "1")
+        assertThatThrownBy(() -> runException(",,", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차에 이름을 부여해주세요");
+                .hasMessage("자동차 이름이 존재하지 않습니다");
     }
 
     @Override
