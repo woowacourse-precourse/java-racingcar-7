@@ -8,7 +8,7 @@ import racingcar.model.dto.RacingResult;
 public class ConsoleOutputView implements OutputView {
 
     @Override
-    public void printRacingResult(RacingResult result) {
+    public void printResult(RacingResult result) {
         System.out.println(result);
     }
 }

@@ -38,7 +38,7 @@ public class RacingServiceImpl implements RacingService {
     private void raceAndSaveProgress(Cars cars, RacingChance racingChance) {
         for (int i = 0; i < racingChance.getValue(); i++) {
             for (Car car : cars) {
-                car.moveOrNot();
+                car.move();
                 RacingProgress progress = new RacingProgress(car);
                 repository.saveProgress(progress);
             }

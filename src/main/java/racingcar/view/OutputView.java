@@ -7,5 +7,5 @@ import racingcar.model.dto.RacingResult;
  */
 public interface OutputView {
 
-    void printRacingResult(RacingResult result);
+    void printResult(RacingResult result);
 }

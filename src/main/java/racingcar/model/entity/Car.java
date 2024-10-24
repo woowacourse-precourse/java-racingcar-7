@@ -18,8 +18,8 @@ public class Car {
         this.strategy = strategy;
         this.progress = 0;
     }
-    public void moveOrNot() {
-        progress += strategy.getDistanceMove();
+    public void move() {
+        progress += strategy.getMovingDistance();
     }
 
     public int getProgress() {

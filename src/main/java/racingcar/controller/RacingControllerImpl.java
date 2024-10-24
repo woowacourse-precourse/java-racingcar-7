@@ -37,7 +37,7 @@ public class RacingControllerImpl implements RacingController {
 
         racingService.raceOfCarsAndChance(cars, racingChance);
         RacingResult result = racingService.getResult();
-        outputView.printRacingResult(result);
+        outputView.printResult(result);
     }
 
 }

@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomMoveStrategy implements Strategy {
 
     @Override
-    public int getDistanceMove() {
+    public int getMovingDistance() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
             return 1;
