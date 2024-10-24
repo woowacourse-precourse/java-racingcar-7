@@ -1,3 +1,3 @@
 # java-racingcar-precourse
 
-연결 테스트
+테스트 중
