@@ -1,9 +1,11 @@
 package racingcar.game.exception;
 
+import static racingcar.game.exception.message.GameRoundExceptionMessage.*;
 import static racingcar.game.policy.GameRoundPolicy.GAME_MAXIMUM_ROUND;
 import static racingcar.game.policy.GameRoundPolicy.GAME_MINIMUM_ROUND;
 
 import racingcar.common.exception.RacingCarException;
+import racingcar.game.exception.message.GameRoundExceptionMessage;
 
 public class GameRoundException extends RacingCarException {
     public GameRoundException(String message) {
@@ -11,14 +13,10 @@ public class GameRoundException extends RacingCarException {
     }
 
     public static class MinimumGameRoundRequiredException extends GameRoundException{
-        public MinimumGameRoundRequiredException() {
-            super(String.format("최소 %d번부터 게임 시작 가능합니다", GAME_MINIMUM_ROUND));
-        }
+        public MinimumGameRoundRequiredException() {super(MINIMUM_ROUND_REQUIRED);}
     }
 
     public static class MaximumGameRoundExceededException extends GameRoundException{
-        public MaximumGameRoundExceededException() {
-            super(String.format("최대 %d번까지 게임 시작 가능합니다", GAME_MAXIMUM_ROUND));
-        }
+        public MaximumGameRoundExceededException() {super(MAXIMUM_ROUND_EXCEEDED);}
     }
 }

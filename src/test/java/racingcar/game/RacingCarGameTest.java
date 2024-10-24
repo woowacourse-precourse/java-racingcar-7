@@ -41,7 +41,7 @@ class RacingCarGameTest {
         // expect
         assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,fiveOverCars))
                 .isInstanceOf(MaximumPlayersExceededException.class)
-                .hasMessage("최대 5명까지 게임 가능합니다.");
+                .hasMessage("최대 5명까지 게임 시작 가능합니다.");
     }
 
     @Test
@@ -55,7 +55,7 @@ class RacingCarGameTest {
         // expect
         assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,oneCar))
                 .isInstanceOf(MinimumPlayersRequiredException.class)
-                .hasMessage("최소 2명부터 게임 가능합니다.");
+                .hasMessage("최소 2명부터 게임 시작 가능합니다.");
     }
 
     @Test

@@ -13,15 +13,15 @@ import racingcar.game.exception.GameRoundException.MaximumGameRoundExceededExcep
 import racingcar.game.exception.GameRoundException.MinimumGameRoundRequiredException;
 
 public class RacingCarGame {
-    private final int loop;
+    private final int roundLoopCount;
     private final List<Car> cars;
 
-    private RacingCarGame(int loop, List<Car> cars) {
-        this.loop = loop;
+    private RacingCarGame(int roundLoopCount, List<Car> cars) {
+        this.roundLoopCount = roundLoopCount;
         this.cars = cars;
     }
 
-    public static RacingCarGame createLoopedRacingCarGame(int loop, List<Car> cars) {
+    public static RacingCarGame createLoopedRacingCarGame(int roundLoopCount, List<Car> cars) {
         if(cars.size() < GAME_MINIMUM_PLAYERS){
                 throw new MinimumPlayersRequiredException();
         }
@@ -30,14 +30,14 @@ public class RacingCarGame {
                 throw new MaximumPlayersExceededException();
         }
 
-        if(loop < GAME_MINIMUM_ROUND){
+        if(roundLoopCount < GAME_MINIMUM_ROUND){
                 throw new MinimumGameRoundRequiredException();
         }
 
-        if(loop > GAME_MAXIMUM_ROUND){
+        if(roundLoopCount > GAME_MAXIMUM_ROUND){
             throw new MaximumGameRoundExceededException();
         }
 
-        return new RacingCarGame(loop,cars);
+        return new RacingCarGame(roundLoopCount,cars);
     }
 }
