@@ -1,14 +1,15 @@
 package racingcar.domain;
 
 import java.util.List;
-
-import static racingcar.utils.RandomNumberGenerator.generateRandomNumber;
+import racingcar.utils.RandomGenerator;
 
 public class CarList {
     private final List<Car> carList;
+    private final RandomGenerator randomGenerator;
 
-    public CarList(List<Car> carList) {
+    public CarList(List<Car> carList, RandomGenerator randomGenerator) {
         this.carList = carList;
+        this.randomGenerator = randomGenerator;
     }
 
     public List<Car> getCarList() {
@@ -16,6 +17,7 @@ public class CarList {
     }
 
     public void moveAll() {
-        carList.forEach(car -> car.move(generateRandomNumber()));
+        int randonNumber = randomGenerator.generate();
+        carList.forEach(car -> car.move(randonNumber));
     }
 }
