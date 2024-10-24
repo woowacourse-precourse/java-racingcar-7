@@ -6,7 +6,7 @@ import static racingcar.TextString.NAME_SEPARATOR;
 public class ReadUserInputView {
     public String[] readRacingCarNames() {
         var carNames = readLine().split(NAME_SEPARATOR.getValue());
-        if (!UserInputValidator.isValidCarName(carNames)) {
+        if (!UserInputValidator.isValidRacingCarName(carNames)) {
             throw new IllegalArgumentException();
         }
         return carNames;

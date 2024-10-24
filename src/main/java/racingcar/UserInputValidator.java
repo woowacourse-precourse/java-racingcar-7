@@ -1,7 +1,7 @@
 package racingcar;
 
 public class UserInputValidator {
-    public static boolean isValidCarName(String[] carNames) {
+    public static boolean isValidRacingCarName(String[] carNames) {
         for (String carName : carNames) {
             if (carName.length() > 5) {
                 return false;
@@ -11,6 +11,6 @@ public class UserInputValidator {
     }
 
     public static boolean isValidTryCount(String tryCount) {
-        return tryCount.chars().allMatch(Character::isDigit) && Integer.parseInt(tryCount) > 0;
+        return tryCount.chars().allMatch(Character::isDigit) && tryCount.length() < 20 && Long.parseLong(tryCount) > 0;
     }
 }
