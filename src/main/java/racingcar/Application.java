@@ -27,8 +27,18 @@ public class Application {
         return cars;
 
     }
-
-
+    public static void move(int count,Car[] cars){
+        System.out.println("실행 결과");
+        for (int i=0; i<count;i++){
+            for(int j=0;j<cars.length;j++){
+                int randomNum=(int) (Math.random()*10);
+                if(randomNum>=4){
+                    cars[j].setMoveCountPlus();
+                }
+            }
+            printByRound(cars);
+        }
+    }
 
     public static void printByRound(Car[] cars){
         for(int i=0;i<cars.length;i++){
