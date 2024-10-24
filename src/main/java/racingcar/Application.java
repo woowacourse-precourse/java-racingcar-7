@@ -1,7 +1,12 @@
 package racingcar;
 
+import racingcar.race.Race;
+import racingcar.separator.Extractor;
+import racingcar.ui.UI;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Race race = new Race(Extractor.extract(UI.getRacerName()));
+        race.startRace(UI.getRacingTimes());
     }
 }
