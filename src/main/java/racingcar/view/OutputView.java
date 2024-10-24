@@ -15,4 +15,8 @@ public class OutputView {
     public static void printInputTryCount() {
         System.out.println(INPUT_TRY_COUNT);
     }
+
+    public static void printResult() {
+        System.out.println(RESULT);
+    }
 }

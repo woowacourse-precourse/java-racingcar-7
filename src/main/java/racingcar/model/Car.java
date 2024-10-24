@@ -3,7 +3,7 @@ package racingcar.model;
 public class Car {
 
     private final String name;
-    private int startLine = 0;
+    private int positon = 0;
 
     public Car(String name) {
         this.name = name;
@@ -14,6 +14,12 @@ public class Car {
     }
 
     public int getStartLine() {
-        return startLine;
+        return positon;
+    }
+
+    public void move(int randomMove) {
+        if (randomMove >= 4) {
+            positon++;
+        }
     }
 }
