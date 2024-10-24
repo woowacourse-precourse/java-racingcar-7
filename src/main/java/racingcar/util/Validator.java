@@ -43,6 +43,9 @@ public class Validator {
             if (number < 0 || number != (int) number) {
                 throw new IllegalArgumentException();
             }
+            if (number > 1000) {
+                throw new IllegalArgumentException();
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
