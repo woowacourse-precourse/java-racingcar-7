@@ -7,13 +7,13 @@ public class UI {
 
     public UI() {}
 
-    public String getRacerName() {
+    public static String getRacerName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉰표(,) 기준으로 구분)");
 
         return Console.readLine();
     }
 
-    public int getRacingTimes(){
+    public static int getRacingTimes(){
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         int times;
@@ -27,7 +27,7 @@ public class UI {
         return times;
     }
 
-    public void showProgress(Racer racer) {
+    public static void showProgress(Racer racer) {
         System.out.print(racer.getName() + " : ");
 
         for(int i = 0; i<racer.getPosition(); i++){
@@ -37,7 +37,7 @@ public class UI {
         System.out.println();
     }
 
-    public void showResult(Racer[] racers) {
+    public static void showResult(Racer[] racers) {
         System.out.print("최종 우승자 : ");
 
         for(int i = 0; i<racers.length; i++) {
