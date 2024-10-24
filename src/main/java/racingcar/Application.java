@@ -51,6 +51,7 @@ public class Application {
         String[] splitCarName = input.carName().split(",");
         Map<String, Integer> carMap = new HashMap<>();
         for (String carName : splitCarName) {
+            if (carName.length() > 5) throw new IllegalArgumentException();
             carMap.put(carName, 0);
         }
         return carMap;
