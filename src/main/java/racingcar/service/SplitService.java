@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SplitService {
-
     private static SplitService instance;
 
     private SplitService() {
