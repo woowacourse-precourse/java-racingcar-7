@@ -29,7 +29,7 @@
   - [ ] 게임 마무리
 ### Oher
 - Validator
-  - [ ㅌ] 출전 선수 이름이 5자를 초과할 시 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
+  - [ ] 출전 선수 이름이 5자를 초과할 시 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
   - [ ] 출전 선수 이름이 공백일 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
   - [ ] 출전 선수 이름 중복될 시 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
   - [ ] 게임을 진행할 횟수를 입력 받을때 숫자가 아닌 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
