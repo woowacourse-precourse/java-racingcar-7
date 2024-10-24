@@ -32,6 +32,6 @@ public class Cars {
 		cars.stream()
 			.filter(car -> car.getLocation() == maxLocation)
 			.map(Car::getName)
-			.forEach((name) -> System.out.println(name + " "));
+			.forEach((name) -> System.out.print(name + " "));
 	}
 }
