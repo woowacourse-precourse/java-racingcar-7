@@ -44,6 +44,7 @@ public class CarNameValidator {
         for (String car : cars) {
             validateCarNameLength(car);
             validateCarNameDuplication(carNames, car);
+            validateCarNameEmpty(car);
         }
     }
 
@@ -59,5 +60,9 @@ public class CarNameValidator {
         }
     }
 
-
+    private static void validateCarNameEmpty(String carName) {
+        if (carName.trim().isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_BLANK.getMessage());
+        }
+    }
 }
