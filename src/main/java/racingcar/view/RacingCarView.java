@@ -1,9 +1,9 @@
 package racingcar.view;
 
 public interface RacingCarView {
-    String getCarNames();
+    String getCarNamesFromView();
 
-    Integer getNumberOfAttempts();
+    Integer getNumberOfAttemptsFromView();
 
     void printRaceResults(String carName, String progress);
 
