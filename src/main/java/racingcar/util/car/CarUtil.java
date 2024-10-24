@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.util.car;
 
 
 import java.util.Arrays;
@@ -9,12 +9,12 @@ import java.util.List;
  * @author ddaerae
  * 자동차와 관련된 기능이 모이는 유틸리티 클래스
  */
-public class Car {
+public class CarUtil {
 
     // 요구 사항 먼저 구현해보기
 
     // 자동차의 이름과 전진횟수를 넣을 수 있는 객체를 리턴함
-    static List<HashMap<String, String>> getCarNameAndGoCountList(String inputValue) {
+    public static List<HashMap<String, String>> getCarNameAndGoCountList(String inputValue) {
         specialCharValidation(inputValue);
         return splitAndNameValidation(inputValue).stream().map(carName -> {
             var nameAndGoCount = new HashMap<String, String>();
@@ -23,16 +23,6 @@ public class Car {
             return nameAndGoCount;
         }).toList();
 
-    }
-
-
-    // 차량의 정지, 혹은 전진 여부를 판단하여 문자열을 리턴한다.
-    public static String goOrStop(int ranNum) {
-        if (ranNum >= 4) {
-            return "-";
-        } else {
-            return "";
-        }
     }
 
     public static void specialCharValidation(String inputVal) {
@@ -61,7 +51,7 @@ public class Car {
         return trimCarNameList;
     }
 
-    private Car() {
+    private CarUtil() {
 
     }
 
