@@ -14,4 +14,14 @@ public class InputView {
 
         return names;
     }
+
+    public int inputLap() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        String lap = Console.readLine();
+
+        inputValidator.validateNumeric(lap);
+
+        return Integer.parseInt(lap);
+    }
 }
