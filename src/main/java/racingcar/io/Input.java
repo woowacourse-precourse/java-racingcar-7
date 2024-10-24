@@ -9,6 +9,23 @@ public class Input {
         return carNames;
     }
 
+    public String rounds() {
+        String rounds = Console.readLine();
+        validateRoundNumber(rounds);
+        return rounds;
+    }
+
+    private void validateRoundNumber(String rounds) {
+        try {
+            int numberOfRounds = Integer.parseInt(rounds);
+            if (numberOfRounds <= 0) {
+                throw new IllegalArgumentException("Round number must be positive");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Round number must be numeric");
+        }
+    }
+
     private void validateCarNamesInput(String carNames) {
         validateCarNameInputBlank(carNames);
         validateNotEndingWithComma(carNames);
