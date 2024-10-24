@@ -4,6 +4,10 @@ import racingcar.constants.GameConstatns;
 import racingcar.exception.ExceptionMessage;
 import racingcar.model.Game;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class NameValid {
     public static void checkNamesInput(String names){
         if(!names.matches(GameConstatns.CAR_NAMES_REGEX)){
@@ -32,5 +36,11 @@ public class NameValid {
         }
     }
 
+    public static void checkNameDuplication(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>(names);
+        if(uniqueNames.size() != names.size()) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NAME);
+        }
+    }
 
 }
