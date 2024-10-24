@@ -13,7 +13,7 @@ public class OutputView {
         StringBuilder stringBuilder = new StringBuilder();
 
         cars.getCars().forEach(car ->{
-            stringBuilder.append(car.getName()+":");
+            stringBuilder.append(car.getName()+" : ");
             stringBuilder.append(BAR.repeat(car.getDistance()));
             stringBuilder.append(NEW_LINE);
         });
@@ -22,8 +22,11 @@ public class OutputView {
     }
 
     public void printWinner(List<String> winner){
-        System.out.println(WINNER_ALERT);
-        String winnerName = String.join(", ", winner);
-        System.out.println(winnerName);
+        System.out.print(WINNER_ALERT);
+        System.out.print(winner.get(0));
+
+        for(int i = 1; i < winner.size(); i++){
+            System.out.print(", "+winner.get(i));
+        }
     }
 }

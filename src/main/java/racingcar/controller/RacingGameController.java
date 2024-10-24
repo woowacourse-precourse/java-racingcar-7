@@ -7,6 +7,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
+    private static final String NEW_LINE = "\n";
     private static final String RESULT_ALERT = "실행 결과";
 
     private InputView inputView;
@@ -32,6 +33,7 @@ public class RacingGameController {
     }
 
     public void doRacing(Cars cars, int count){
+        System.out.print(NEW_LINE);
         System.out.println(RESULT_ALERT);
 
         while(count > 0){
