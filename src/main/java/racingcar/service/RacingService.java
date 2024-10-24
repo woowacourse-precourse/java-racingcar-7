@@ -28,14 +28,14 @@ public class RacingService {
     }
 
     public List<String> getWinner() {
-        long maxValue = carToRacingProgress.values()
+        long maxProgress = carToRacingProgress.values()
                 .stream()
                 .max(Long::compare)
-                .orElse(Long.MIN_VALUE);
+                .orElse(0L);
 
         return carToRacingProgress.entrySet()
                 .stream()
-                .filter(entry -> entry.getValue() == maxValue)
+                .filter(entry -> entry.getValue() == maxProgress)
                 .map(entry -> entry.getKey().name())
                 .collect(Collectors.toList());
     }
