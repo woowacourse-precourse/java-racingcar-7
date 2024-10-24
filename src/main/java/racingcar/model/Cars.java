@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.SequencedMap;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -39,5 +40,17 @@ public class Cars {
 
     public void move(int index) {
         cars.get(index).move();
+    }
+
+    public List<String> getNameOfMaxPositionCars() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("등록된 차량이 없습니다."));
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

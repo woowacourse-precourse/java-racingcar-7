@@ -10,7 +10,6 @@ import racingcar.view.OutputView;
 
 public class GameController {
     private static final String DELIMITER = ",";
-
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -36,5 +35,7 @@ public class GameController {
         }
 
         outputView.displayMovementResults(allAttemptResults);
+
+        List<String> nameOfWinners = game.getNameOfWinner();
     }
 }

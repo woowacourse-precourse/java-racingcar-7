@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 import java.util.SequencedMap;
 
 public class Game {
@@ -36,5 +37,9 @@ public class Game {
 
     public SequencedMap<String, Integer> getStatusOfCars() {
         return cars.getStatus();
+    }
+
+    public List<String> getNameOfWinner() {
+        return cars.getNameOfMaxPositionCars();
     }
 }
