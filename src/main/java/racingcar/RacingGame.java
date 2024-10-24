@@ -27,7 +27,16 @@ public class RacingGame {
     public void startRound(List<Car> cars) {
         for (Car car : cars) {
             car.goAndStop();
+            printCurForward(car);
         }
+    }
+
+    public void printCurForward(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getForwardCount(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public String[] createNames(String inputNames) {
