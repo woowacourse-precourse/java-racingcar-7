@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class View {
 
     public static String[] getUserinfo(){
@@ -18,5 +20,8 @@ public class View {
         return round;
     }
 
+    public void displayResult(List listWinner){
+        System.out.print("최종 우승자 : " + String.join(",", listWinner));
+    }
 
 }

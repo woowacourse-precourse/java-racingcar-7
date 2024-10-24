@@ -34,7 +34,7 @@ public class Model {
         return racingHashmap;
     }
 
-    public static List<String> fineWinner(HashMap<String, String> racingHashmap){
+    public static List<String> findWinner(HashMap<String, String> racingHashmap){
         List<String> listWinners = new ArrayList<>();
         HashMap<String, Integer> winnerMap = new HashMap<>();
         for (String name : racingHashmap.keySet()) {
