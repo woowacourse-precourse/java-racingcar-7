@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,11 @@ public class Application {
         }
     }
 
+    public static String[] seperateCarNames(String carNames) {
+        String[] carName = carNames.strip().split("\\s*,\\s*");
+        return carName;
+    }
+
     public static int makeRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
@@ -42,6 +48,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        System.out.println(inputCarName());
+
     }
 }
