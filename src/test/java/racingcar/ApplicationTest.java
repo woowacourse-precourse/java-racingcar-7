@@ -122,6 +122,19 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void determineWinnerTest() {
+        ArrayList<String> testNames = new ArrayList<>();
+        testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
+
+        ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
+        testCars.get(0).movedAmount = 2;
+        testCars.get(1).movedAmount = 3;
+        testCars.get(2).movedAmount = 3;
+
+        assertThat(carRacing.determineWinner(testCars)).contains("woni","jun");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
