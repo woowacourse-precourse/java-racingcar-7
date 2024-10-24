@@ -1,5 +1,6 @@
 package racingcar.view.input;
 
+import racingcar.view.input.dto.RacingRequest;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -18,5 +19,11 @@ public class InputView {
   private static String promptRoundCount(){
     System.out.println(ASK_ROUND_COUNT);
     return Console.readLine();
+  }
+
+  public static RacingRequest promptRacingRequest(){
+    final String carNames = promptCarNames();
+    final String roundCount = promptRoundCount();
+    return RacingRequest.from(carNames, roundCount);
   }
 }
