@@ -1,5 +1,7 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.ArrayList;
 
 public class RacingGame {
@@ -22,6 +24,14 @@ public class RacingGame {
             cars.add(car);
         }
         return cars;
+    }
+
+    public int inputTryCount(String tryCountStr) {
+        int tryCount = Integer.parseInt(tryCountStr);
+        if (tryCount <= 0 ) {
+            throw new IllegalArgumentException("시도 횟수는 1이상 이어야 합니다");
+        }
+        return tryCount;
     }
 
 }
