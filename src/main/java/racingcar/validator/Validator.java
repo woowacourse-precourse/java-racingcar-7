@@ -11,6 +11,18 @@ public final class Validator {
         nameCountValidate(names);
     }
 
+    public static void countValidate(String count) {
+        try {
+            int cnt = Integer.parseInt(count);
+            if (cnt < 1) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     private static void nameLengthValidate(List<String> names) {
         names.forEach((name) -> {
             if (name.length() > 5) {
