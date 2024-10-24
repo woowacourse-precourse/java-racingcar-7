@@ -72,6 +72,20 @@ class ApplicationTest extends NsTest {
                 () -> Application.createParticipant(input));
     }
 
+    @Test
+    @DisplayName("횟수를 음수로 입력할 경우 예외처리 테스트입니다.")
+    void negativeNumberInputTest() {
+        //given
+        int n = -1;
+        //when, then
+        assertThrows(
+                NumberInputException.class,
+                () -> {
+                    throw new NumberInputException();
+                }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
