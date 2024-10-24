@@ -4,7 +4,6 @@ package racingcar.car;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author ddaerae
@@ -15,23 +14,16 @@ public class Car {
     // 요구 사항 먼저 구현해보기
 
     // 자동차의 이름과 전진횟수를 넣을 수 있는 객체를 리턴함
-    static List<Map<String,String>> getCarNameAndGoCountList(String inputValue) {
-        return Arrays.stream(inputValue.split(",")).map(Car::validateForCarName).toList();
+    static List<HashMap<String, String>> getCarNameAndGoCountList(String inputValue) {
+        specialCharValidation(inputValue);
+        return splitAndNameValidation(inputValue).stream().map(carName -> {
+            var nameAndGoCount = new HashMap<String, String>();
+            nameAndGoCount.put("name", carName);
+            nameAndGoCount.put("goCount", "");
+            return nameAndGoCount;
+        }).toList();
+
     }
-
-    static Map<String,String> validateForCarName(String carName) {
-        if (carName != null && !carName.isEmpty() && carName.length() <= 5) {
-            var carNameAndGoCount = new HashMap<String, String>();
-            carNameAndGoCount.put(carName,"");
-            return carNameAndGoCount;
-        } else if(carName != null && carName.length() > 5) {
-            throw new IllegalArgumentException("자동차명은 5글자를 넘을 수 없습니다.");
-        } else {
-            throw new IllegalArgumentException("자동차 명이 정상적이지 못합니다. 입력 값을 확인하세요");
-        }
-    }
-
-
 
 
     // 차량의 정지, 혹은 전진 여부를 판단하여 문자열을 리턴한다.
@@ -44,21 +36,25 @@ public class Car {
     }
 
     public static void specialCharValidation(String inputVal) {
-        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z가-힣].*");
+        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z가-힣 ].*");
 
-        if(isContainAnotherSpecialChar){
+        if (isContainAnotherSpecialChar) {
             throw new IllegalArgumentException(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
         }
     }
 
     // 특수기호 유효성검사를 마치고 공백 제거 및 길이 확인
     public static List<String> splitAndNameValidation(String inputVal) {
-        List<String> trimCarNameList = Arrays.stream(inputVal.split(",")).map(String::trim).toList();
+        List<String> trimCarNameList = Arrays.stream(inputVal.split(","))
+                .map(carName -> carName.replace(" ", "")).toList();
 
-        for (int i = 0; i < trimCarNameList.size(); i++) {
-            if (trimCarNameList.get(i).length() > 5) {
+        for (String carName : trimCarNameList) {
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException("이름은 다섯글자를 넘을 수 없습니다.\n " +
-                        "잘못된 이름 : " + trimCarNameList.get(i));
+                        "잘못된 이름 : " + carName);
+            } else if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차명은 공백이 될 수 없습니다.\n" +
+                        ", 의 위치를 확인하세요");
             }
         }
 
