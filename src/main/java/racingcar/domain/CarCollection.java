@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +34,6 @@ public record CarCollection(List<Car> cars) {
                 .collect(Collectors.toList());
     }
 
-
     private void validateCarNamesAreUnique(List<Car> cars) {
         Set<String> uniqueNames = extractCarNames(cars);
         if (uniqueNames.size() != cars.size()) {
@@ -54,9 +54,11 @@ public record CarCollection(List<Car> cars) {
         }
     }
 
-    public List<Car> getWinners() {
+    public String getWinnerNames() {
         int maxPosition = getMaxPosition();
-        return findCarsWithMaxPosition(maxPosition);
+        List<Car> winners = getCarsWithMaxPosition(maxPosition);
+        List<String> names = extractWinnerNames(winners);
+        return String.join(", ", names);
     }
 
     private int getMaxPosition() {
@@ -66,9 +68,29 @@ public record CarCollection(List<Car> cars) {
                 .orElse(0);
     }
 
-    private List<Car> findCarsWithMaxPosition(int maxPosition) {
+    private List<Car> getCarsWithMaxPosition(int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
+    }
+
+    private List<String> extractWinnerNames(List<Car> winners) {
+        List<String> names = new ArrayList<>();
+        for (Car car : winners) {
+            names.add(car.getName());
+        }
+        return names;
+    }
+
+    public List<String> getCarStatuses() {
+        List<String> statuses = new ArrayList<>();
+        for (Car car : cars) {
+            statuses.add(extractCarStatus(car));
+        }
+        return statuses;
+    }
+
+    private String extractCarStatus(Car car) {
+        return car.getName() + " : " + "-".repeat(car.getPosition());
     }
 }

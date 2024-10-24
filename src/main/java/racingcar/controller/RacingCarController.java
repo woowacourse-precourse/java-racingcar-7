@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.Car;
 import racingcar.domain.CarCollection;
 import racingcar.domain.Round;
 import racingcar.io.input.Input;
@@ -34,14 +32,13 @@ public class RacingCarController {
     }
 
     private void runRoundsAndDisplayResults(CarCollection cars, Round rounds) {
-        for (int i = 0; i < rounds.getValue(); i++) {
+        for (int i = 0; i < rounds.value(); i++) {
             cars.moveAll();
             output.printRoundResult(cars);
         }
     }
 
     private void printWinners(CarCollection cars) {
-        List<Car> winners = cars.getWinners();
-        output.printWinners(winners);
+        output.printWinners(cars);
     }
 }

@@ -1,17 +1,10 @@
 package racingcar.domain;
 
-public class Round {
-    private final int value;
-
-    public Round(int value) {
+public record Round(int value) {
+    public Round {
         if (value <= 0 || value > 20) {
             throw new IllegalArgumentException("시도 횟수는 1에서 20 사이여야 합니다.");
         }
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
     }
 
     /**
