@@ -1,6 +1,8 @@
 package controller;
 
 import racingcar.Car;
+import view.InputView;
+import view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,22 +11,19 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RaceController {
-    private static final int MIN_Car_Name = 1;
-    private static final int MAX_Car_Name = 5;
-
-    private final List<Car> cars = new ArrayList<>();
-
-    public void run(Scanner sc) {
-        SetCars(sc);
+    public void start() {
+        Car car = new Car();
+        setCars(car);
     }
 
-    private void SetCars(Scanner sc) {
-        List<String> names;
-        String[] input;
-        System.out.println("경주할 차 이름을 입력해주세요.");
-        input = sc.nextLine().split(","); //쉼표 기준으로 이름을 구분한다.
-        names = Arrays.stream(input).map(String::trim).collect(Collectors.toList());
-        names.forEach(name -> cars.add(new Car(name)));
+
+    public void setCars(Car car) {
+        try {
+            car.addCar(InputView.printSetCarsNameMessage());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            setcars(car);
+        }
     }
 
 
