@@ -3,15 +3,18 @@ package racingcar.service;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;
+import racingcar.model.validator.RacingCarValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingService {
 
+    private final RacingCarValidator racingCarValidator;
     private final MovingStrategy movingStrategy;
 
-    public RacingService(MovingStrategy movingStrategy) {
+    public RacingService(RacingCarValidator racingCarValidator, MovingStrategy movingStrategy) {
+        this.racingCarValidator = racingCarValidator;
         this.movingStrategy = movingStrategy;
     }
 
@@ -30,7 +33,7 @@ public class RacingService {
 
     private List<RacingCar> createRacingCars(List<String> carNameList) {
         return carNameList.stream()
-                .map(carName -> new RacingCar(carName, movingStrategy))
+                .map(carName -> new RacingCar(carName, racingCarValidator, movingStrategy))
                 .toList();
     }
 
