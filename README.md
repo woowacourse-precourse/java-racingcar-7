@@ -13,8 +13,15 @@
 - 예외 처리
 
 ## 기능 분석
-- 자동차의 종류는 따로 없으므로, Car 클래스 생성하여 제작
-- StringBuilder를 사용해 자동차의 이동 여부 증가
+- MVC 패턴을 적용해본다.
+    1. Car (Entity)
+    2. CarRepository (Repository Interface)
+    3. CarRepositoryImpl (Repository 구현)
+    4. InputView (입력 분리)
+    5. OutputView (출력 분리)
+    6. CarController(컨트롤러)
+    7. CarService (실행 로직) 
+    
 
 ## 상세 기능 명세
 
