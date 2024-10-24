@@ -14,14 +14,19 @@ public class Application {
 		System.out.println("시도할 횟수는 몇 회인가요?");
 		int m = validateNumber(Console.readLine());
 
+		int maxMoveCounter = 0;
 		for (int i = 0; i < m; i++) {
 			for (int j = 0; j < n; j++) {
 				int moveCounter = cars[j].move();
+
+				maxMoveCounter = Math.max(moveCounter, maxMoveCounter);
 			}
 
 			System.out.println("\n실행 결과");
 			printResult(n, cars);
 		}
+
+		printWinner(maxMoveCounter, cars);
 
 	}
 
@@ -53,13 +58,17 @@ public class Application {
 
 	public static void printResult(int numCars, Car[] cars) {
 
-		for(int i=0; i<numCars; i++) {
+		for (int i = 0; i < numCars; i++) {
 			System.out.printf("%s : ", cars[i].getName());
 
-			for(int j=0; j<cars[i].getMoveCounter(); j++) {
+			for (int j = 0; j < cars[i].getMoveCounter(); j++) {
 				System.out.print("-");
 			}
 			System.out.println();
 		}
+	}
+
+	public static void printWinner(int maxMove, Car[] cars) {
+
 	}
 }
