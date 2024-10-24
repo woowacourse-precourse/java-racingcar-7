@@ -1,10 +1,14 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
@@ -31,15 +35,33 @@ class ValidatorTest {
                 .hasMessage("0또는 빈 값을 입력하셨습니다.");
     }
 
-    @Test
-    @Disabled
+    @ParameterizedTest
+    @MethodSource("unvalidatedNameSource")
     @DisplayName("이름 입력시 이름길이가 5자 초과시 IllegalArgumentException()예외처리")
-    void validateNameLength() {
+    void validateNameLength(String over5wordname) {
+        //given
+        //when
+        //then
+        Assertions.assertThatThrownBy(()->Validator.validateNameLength(over5wordname))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    static Stream<Arguments> unvalidatedNameSource() {
+        return Stream.of(
+                Arguments.of("pobidd22"),
+                Arguments.of("pobiii"),
+                Arguments.of("over5word")
+        );
     }
 
     @Test
-    @Disabled
+    @MethodSource("unvalidatedNameFormatSource")
     @DisplayName("이름 입력시 이름포맷(영문, 숫자, '_') 이외 문자 입력시 IllegalArgumentException() 예외처리")
     void validateNameFormat() {
+        //given
+
+        //when
+
+        //then
     }
 }
