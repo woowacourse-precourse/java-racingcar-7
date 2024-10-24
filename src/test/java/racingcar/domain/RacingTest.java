@@ -24,10 +24,10 @@ public class RacingTest {
         car3.move(0);
         car3.move(2);
 
-        List<Car> winner = racing.findWinner(cars.getCars());
-        assertThat(winner.size()).isEqualTo(1);
-        assertThat(winner.get(0).getName()).isEqualTo("pobi");
-        assertThat(winner.get(0).getMovedDistance()).isEqualTo(2);
+        String expectedValue = "pobi";
+
+        String winner = racing.findWinner(cars.getCars());
+        assertThat(winner).isEqualTo(expectedValue);
     }
 
     @DisplayName("Cars가 주어졌을 때, 가장 많이 움직인 자동차를 우승자로 뽑는다 - 복수 우승의 경우")
@@ -47,10 +47,9 @@ public class RacingTest {
         car3.move(9);
         car3.move(9);
 
-        List<Car> expectedWinner = List.of(car1, car3);
-        List<Car> winner = racing.findWinner(cars.getCars());
-        assertThat(winner.size()).isEqualTo(2);
-        assertThat(winner).containsAll(expectedWinner);
-    }
+        String expectedWinner = "pobi, even";
 
+        String winner = racing.findWinner(cars.getCars());
+        assertThat(winner).isEqualTo(expectedWinner);
+    }
 }
