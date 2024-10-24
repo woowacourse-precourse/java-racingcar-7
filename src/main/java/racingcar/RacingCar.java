@@ -2,52 +2,111 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Iterator;
 import java.util.Vector;
 
 public class RacingCar {
-    Vector<User> userList;
+    private Vector<User> userList;
 
     RacingCar(){
         userList = new Vector<>();
     }
 
-    public void run(){
+    public void run() {
+        int round;
+        Vector<User> winnerList = new Vector<>();
+
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         input = input.replaceAll(" ","");
-        String userNameArray[] = input.split(",");
-        setUserList(userNameArray);
+        String usernameArray[] = input.split(",");
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         try{
-            int round = Integer.valueOf(Console.readLine());
-            checkRound(round);
+            round = Integer.valueOf(Console.readLine());
+            checkRoundError(round);
         }catch(NumberFormatException e){
             throw new IllegalArgumentException();
         }
+
+        setUserList(usernameArray);
+        startRace(round);
+        winnerList = getWinner();
+//        showWinnerList(winnerList);
     }
 
-    private void setUserList(String userNameArray[]) {
-        if(userNameArray.length == 0) {
+    private void setUserList(String usernameArray[]) {
+        if(usernameArray.length == 0) {
             throw new IllegalArgumentException();
         }
-        for(int i = 0; i < userNameArray.length; i++) {
-            if(userNameArray[i].isEmpty()){
-                throw new IllegalArgumentException();
-            }
-            if(userNameArray[i].length() > 5){
-                throw new IllegalArgumentException();
-            }
-            userList.add(new User(userNameArray[i]));
+        for(int i = 0; i < usernameArray.length; i++) {
+            checkUsernameError(usernameArray[i]);
+            userList.add(new User(usernameArray[i]));
         }
     }
 
-    private void checkRound(int round) {
-        if(round < 0){
+    private void checkRoundError(int round) {
+        if(round < 0) {
             throw new IllegalArgumentException();
-        }
-        if(round == 0){
+        }else if(round == 0) {
             System.out.println("경주를 진행하지 않고 종료");
         }
+    }
+
+    private void checkUsernameError(String username) {
+        if(username.isEmpty()) {
+            throw new IllegalArgumentException();
+        }else if(username.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void startRace(int round) {
+        for(int i = 0; i < round; i++) {
+           runRaceForRound(i);
+        }
+    }
+
+    private void runRaceForRound(int roundIndex) {
+        Iterator<User> iterator = userList.iterator();
+        while(iterator.hasNext()) {
+            User user = iterator.next();
+            goOrStay(user);
+            showResult(user);
+        }
+    }
+
+    private void goOrStay(User user) {
+        int random = Randoms.pickNumberInRange(0, 9);
+        if(random >= 4){
+            user.totalGo++;
+        }
+    }
+
+    private void showResult(User user) {
+        System.out.println(user);
+    }
+
+    private Vector<User> getWinner() {
+        Vector<User> winnerList = new Vector<>();
+        int max = 0;
+
+        Iterator<User> iterator = userList.iterator();
+        while(iterator.hasNext()) {
+            User user = iterator.next();
+            max = updateWinnerList(user, max, winnerList);
+        }
+        return winnerList;
+    }
+
+    private int updateWinnerList(User user, int max, Vector<User> winnerList) {
+        if(max == user.totalGo) {
+            winnerList.add(user);
+        }else if(max < user.totalGo) {
+            max = user.totalGo;
+            winnerList.clear();
+            winnerList.add(user);
+        }
+        return max;
     }
 }
