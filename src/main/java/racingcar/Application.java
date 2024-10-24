@@ -14,8 +14,7 @@ public class Application {
 
         List<Integer> countList = createParticipantCount(participants.size());
 
-        raceOneTime(countList);
-        printEachRaceResult(participants, countList);
+        raceManyTimes(raceTimes, countList, participants);
     }
 
     public static String getInput() {
@@ -33,6 +32,14 @@ public class Application {
                 add(0);
             }
         }};
+    }
+
+    private static void raceManyTimes(int raceTimes, List<Integer> countList, List<String> participants) {
+        for (int i = 0; i < raceTimes; i++) {
+            raceOneTime(countList);
+            printEachRaceResult(participants, countList);
+            System.out.println();
+        }
     }
 
     public static void raceOneTime(List<Integer> countList) {
