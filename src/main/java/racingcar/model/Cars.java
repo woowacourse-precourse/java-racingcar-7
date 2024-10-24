@@ -17,10 +17,8 @@ public class Cars {
     }
 
     public void playRound(Generator generator) {
-        for (Car car : cars) {
-            int randomNum = generator.generate();
-            car.go(randomNum);
-        }
+        cars.stream()
+            .forEach(car -> car.go(generator.generate()));
     }
 
     public Map<String, Integer> getRoundResult() {
@@ -31,8 +29,7 @@ public class Cars {
     }
 
     public List<String> getFinalResult() {
-        int maxPosition = findMaxPosition();
-        return findWinnersName(maxPosition);
+        return findWinnersName(findMaxPosition());
     }
 
     private List<String> findWinnersName(int max) {
