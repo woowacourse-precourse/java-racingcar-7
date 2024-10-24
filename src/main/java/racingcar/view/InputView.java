@@ -28,7 +28,7 @@ public class InputView {
     }
 
     private static void validateCarCount(final String carNames) {
-        if (carNames.contains(DELIMITER)) {
+        if (!carNames.contains(DELIMITER)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_COUNT.getMessage());
         }
     }
