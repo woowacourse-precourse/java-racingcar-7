@@ -21,10 +21,13 @@ public class RacingCar {
     }
 
     public static List<String> splitParticipants(String input) {
-        return List.of(input.split(","));
+        return Arrays.stream(input.split(",")).map(String::trim).toList();
     }
 
-    public static void checkValid(List<String> participants, String executionCount) {
+    public static void validInput(String[] input) {
+        List<String> participants = splitParticipants(input[0]);
+        String executionCount = input[1];
+
         for (String participant : participants) {
             if (participant.length() > 5) {
                 throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
@@ -38,10 +41,11 @@ public class RacingCar {
 
     public static void simulate() {
         String[] input = input();
-        List<String> participants = splitParticipants(input[0]);
-        checkValid(participants, input[1]);
+        validInput(input);
 
+        List<String> participants = splitParticipants(input[0]);
         int executionCount = Integer.parseInt(input[1]);
+
         int[] scores = new int[participants.size()];
 
         for (int i = 0; i < executionCount; i++) {
@@ -65,7 +69,6 @@ public class RacingCar {
             System.out.println(participants.get(i) + " : " + "-".repeat(scores[i]));
         }
     }
-
 
     private static String getWinner(int[] scores, List<String> participants) {
         List<Integer> winnerIndex = new ArrayList<>();
@@ -92,6 +95,4 @@ public class RacingCar {
 
         return winner.toString();
     }
-
-
 }

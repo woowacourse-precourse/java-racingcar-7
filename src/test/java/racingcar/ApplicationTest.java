@@ -31,11 +31,11 @@ class ApplicationTest extends NsTest {
         assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi", "woni");
 
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi", "bee9827"), "1"))
+                assertThatThrownBy(() -> RacingCar.validInput(new String[]{"pobi, bee9827", "1"}))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi", "woni"), "A"))
+                assertThatThrownBy(() -> RacingCar.validInput(new String[]{"pobi, woni", "A"}))
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
         );
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni,yong", "1");
+                    run("pobi, woni, yong", "1");
                     assertThat(output()).contains("pobi : -", "woni : -", "yong : -", "최종 우승자 : pobi, woni, yong");
                 },
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
