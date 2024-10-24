@@ -60,6 +60,12 @@ public class CarServiceTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {" CARR ", "CARR ", "  CARR", "   CARRR   "})
+    public void CarService_자동차이름_유효성테스트_통과_이름앞뒤_공백처리(String newCarName) {
+        assertThat(carService.validateCarName(newCarName)).isTrue();
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"carA", "carB", "carC"})
     public void CarService_자동차이름_유효성테스트_불통과_이미존재(String newCarName) {
         assertThat(carService.validateCarName("")).isFalse();

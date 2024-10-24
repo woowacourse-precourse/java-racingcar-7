@@ -27,6 +27,8 @@ public class CarService {
     }
 
     public boolean validateCarName(String newCarName) {
+        newCarName = newCarName.trim();
+
         if (newCarName.isBlank()) {
             return false;
         }
