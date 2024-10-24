@@ -44,6 +44,11 @@ public class Application {
             if (carName.contains(" ")) {
                 throw new IllegalArgumentException();
             }
+
+            // 5글자 초과
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
