@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private static List<Car> carList = new ArrayList<>();
+    private List<Car> carList = new ArrayList<>();
 
     public Cars(String[] carNames) {
         addCarName(carNames);
@@ -15,6 +15,10 @@ public class Cars {
             Car car = new Car(carName);
             carList.add(car);
         }
+    }
+
+    public Car getCar(int index) {
+        return carList.get(index);
     }
 
     public String getCarListValue(int index) {
