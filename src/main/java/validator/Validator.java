@@ -37,4 +37,7 @@ public class Validator {
             }
         }
     }
+
+    public void validateRound(String roundString) {
+    }
 }
