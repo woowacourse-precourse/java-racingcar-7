@@ -2,6 +2,7 @@ package racingcar.model;
 
 import racingcar.util.ramdom.RandomRange;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class RacingCars {
@@ -21,6 +22,15 @@ public class RacingCars {
 
     public void moveRandomly(RandomRange randomRange) {
         values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
+    }
+
+    public LinkedHashMap<String, Integer> getCarNamesAndPositions() {
+        LinkedHashMap<String, Integer> carNameAndPosition = new LinkedHashMap<>();
+        values.forEach(racingCar ->
+                carNameAndPosition.put(racingCar.getName(), racingCar.getPosition())
+        );
+
+        return carNameAndPosition;
     }
 
     public RacingCars getMaxPositionCars() {
