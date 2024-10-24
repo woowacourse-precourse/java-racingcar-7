@@ -12,4 +12,8 @@ public class Cars {
             cars.add(new Car(carName, 0));
         }
     }
+
+    public List<Car> getCars(){
+        return cars;
+    }
 }
