@@ -46,5 +46,8 @@ public class GameController {
 
     private void finish(Game game) {
         List<String> winnerNames = game.findWinners();
+
+        String winners = String.join(", ", winnerNames); // 우승자 이름을 쉼표로 연결
+        OutputView.printFinalWinners(winners);
     }
 }

@@ -22,4 +22,8 @@ public class OutputView {
         System.out.printf(SystemMessage.CAR_NAME_AND_MOVING_RESULT.getMessage(), name, result);
         printBlankLine();
     }
+
+    public static void printFinalWinners(String winners) {
+        System.out.printf(SystemMessage.FINAL_WINNERS.getMessage(), winners);
+    }
 }
