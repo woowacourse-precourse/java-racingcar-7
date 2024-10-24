@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 자동차_이름은_null이어서는_안_된다() {
-        assertThatThrownBy(() -> Application.validate(null))
+        assertThatThrownBy(() -> Application.validateCarNames(null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 null이어서는 안 됩니다.");
     }
@@ -63,77 +63,77 @@ class ApplicationTest extends NsTest {
             errorInput.append(i + ",");
         }
         errorInput.deleteCharAt(errorInput.length() - 1);
-        assertThat(Application.validate(normalInput.toString())).hasSize(100);
+        assertThat(Application.validateCarNames(normalInput.toString())).hasSize(100);
 
-        assertThatThrownBy(() -> Application.validate(errorInput.toString()))
+        assertThatThrownBy(() -> Application.validateCarNames(errorInput.toString()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 100개 이하로 입력되어야 합니다.");
     }
 
     @Test
     void 자동차_이름은_쉼표를_기준으로_구분한다() {
-        assertThat(Application.validate("a,b,c,d,e")).hasSize(5);
-        assertThat(Application.validate("a.,b,c,d,e")).hasSize(5);
-        assertThat(Application.validate("a ,b,c,d,e")).hasSize(5);
+        assertThat(Application.validateCarNames("a,b,c,d,e")).hasSize(5);
+        assertThat(Application.validateCarNames("a.,b,c,d,e")).hasSize(5);
+        assertThat(Application.validateCarNames("a ,b,c,d,e")).hasSize(5);
     }
 
     @Test
     void 자동차_이름은_5자_이하만_가능하다() {
-        assertThat(Application.validate("five5")).hasSize(1);
+        assertThat(Application.validateCarNames("five5")).hasSize(1);
 
-        assertThatThrownBy(() -> Application.validate("sixsix"))
+        assertThatThrownBy(() -> Application.validateCarNames("sixsix"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
     @Test
     void 자동차_이름은_1자_이상이어야_한다() {
-        assertThatThrownBy(() -> Application.validate(""))
+        assertThatThrownBy(() -> Application.validateCarNames(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상이어야 합니다.");
 
-        assertThatThrownBy(() -> Application.validate(",,,"))
+        assertThatThrownBy(() -> Application.validateCarNames(",,,"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상이어야 합니다.");
 
-        assertThatThrownBy(() -> Application.validate(",a,b"))
+        assertThatThrownBy(() -> Application.validateCarNames(",a,b"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상이어야 합니다.");
 
-        assertThatThrownBy(() -> Application.validate("a,b,"))
+        assertThatThrownBy(() -> Application.validateCarNames("a,b,"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상이어야 합니다.");
     }
 
     @Test
     void 자동차_이름은_아스키코드여야_한다() {
-        assertThatThrownBy(() -> Application.validate("향미,종현,영서,병규"))
+        assertThatThrownBy(() -> Application.validateCarNames("향미,종현,영서,병규"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 아스키 코드여야 합니다.");
     }
 
     @Test
     void 자동차_이름이_공백_문자로만_이루어져_있어서는_안_된다() {
-        assertThatThrownBy(() -> Application.validate(" "))
+        assertThatThrownBy(() -> Application.validateCarNames(" "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백 문자로만 이루어져 있어서는 안 됩니다.");
 
-        assertThatThrownBy(() -> Application.validate("   "))
+        assertThatThrownBy(() -> Application.validateCarNames("   "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백 문자로만 이루어져 있어서는 안 됩니다.");
 
-        assertThatThrownBy(() -> Application.validate("mimi, "))
+        assertThatThrownBy(() -> Application.validateCarNames("mimi, "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백 문자로만 이루어져 있어서는 안 됩니다.");
 
-        assertThatThrownBy(() -> Application.validate("    ,mimi"))
+        assertThatThrownBy(() -> Application.validateCarNames("    ,mimi"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백 문자로만 이루어져 있어서는 안 됩니다.");
     }
 
     @Test
     void 자동차_이름은_중복되어서는_안_된다() {
-        assertThatThrownBy(() -> Application.validate("mimi,jk,mimi"))
+        assertThatThrownBy(() -> Application.validateCarNames("mimi,jk,mimi"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름이 중복되어서는 안 됩니다.");
     }
