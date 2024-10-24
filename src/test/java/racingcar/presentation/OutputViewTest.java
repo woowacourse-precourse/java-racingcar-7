@@ -33,7 +33,7 @@ class OutputViewTest {
         outputView.printRunStarted();
 
         // then
-        String expectedOutput = "실행 결과\n";
+        String expectedOutput = "\n실행 결과\n";
         assertThat(outContent).hasToString(expectedOutput);
     }
 
