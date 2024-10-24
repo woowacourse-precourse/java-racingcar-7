@@ -14,18 +14,16 @@ public class Application {
         String str = Console.readLine();
 
         StringTokenizer st = new StringTokenizer(str,",");
-
+        int playCount = Integer.parseInt(Console.readLine());
         int count = st.countTokens();
 
         List<Car> cars = new ArrayList<>();
-        List<Integer> location = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             cars.add(new Car(st.nextToken()));
         }
 
-        for (int i = 0; i < 5; i++) {
-            StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < playCount; i++) {
             for (int j = 0; j < count; j++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
 
@@ -45,10 +43,17 @@ public class Application {
             temp = Math.max(temp, cars.get(i).location);
         }
 
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자 : ");
+        boolean first = true;
         for (int i = 0; i < count; i++) {
             if(cars.get(i).location == temp) {
-                System.out.println("최종 우승자 : " + cars.get(i).name);
-                break;
+                if(first) {
+                    sb.append(", ");
+                }
+                first = false;
+                sb.append(cars.get(i).name);
             }
         }
 
