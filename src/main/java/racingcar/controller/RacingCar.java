@@ -19,6 +19,8 @@ public class RacingCar {
             cars.add(carInputs[i]);
         }
 
+        OutputView.printAttemptCountPrompt();
+
 
     }
 }
