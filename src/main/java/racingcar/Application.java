@@ -29,6 +29,7 @@ public class Application {
         RacingResult racingResult = racingService.play(racingCars, tryCount);
 
         outputView.printRacingRoundResults(racingResult.roundResults());
+        outputView.printWinners(racingResult.winners());
     }
 
     private static RacingCars createRacingCars(List<String> carNameList) {
