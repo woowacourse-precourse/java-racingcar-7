@@ -13,6 +13,8 @@ public class Application {
     private static final int CAR_MAX_COUNT = 10;
     private static final int CAR_MIN_COUNT = 2;
 
+    private static final String GAME_TIME_TEXT = "시도할 횟수는 몇 회인가요?";
+    private static final int MAX_GAME_COUNT = 10;
 
     private static String getInput(){
         String inputString = Console.readLine();
@@ -65,9 +67,24 @@ public class Application {
         checkDuplicateName(carNames);
         return carNames;
     }
+    private static void isValidTimes(final int times){
+        if ((times < 1) || (times > MAX_GAME_COUNT)){
+            throw new IllegalArgumentException("최대 게임 횟수는 10번입니다.");
+        }
+    }
+
+    private static int getGameTimes(){
+        final int GAME_TIMES;
+        GAME_TIMES = Integer.parseInt(getInput());
+        isValidTimes(GAME_TIMES);
+        return GAME_TIMES;
+    }
 
     public static void main(String[] args) {
         System.out.println(START_TEXT);
         getCarNames();
+        System.out.println(GAME_TIME_TEXT);
+        getGameTimes();
+
     }
 }
