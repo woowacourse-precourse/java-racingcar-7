@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.model.moving_strategy.MovingStrategy;
+import racingcar.model.moving_strategy.random.DefaultRandomMovingStrategy;
 import racingcar.service.RacingResult;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
@@ -16,6 +18,7 @@ public class Application {
     private final static OutputView outputView = new OutputView();
 
     private final static RacingService racingService = new RacingService();
+    private static final MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
 
     // 필요 변수
     private static RacingCars racingCars;
@@ -56,7 +59,7 @@ public class Application {
 
     // helper 함수
     private static RacingCars createRacingCars(List<String> carNameList) {
-        return new RacingCars(carNameList.stream().map(RacingCar::new).toList());
+        return new RacingCars(carNameList.stream().map(carName -> new RacingCar(carName, movingStrategy)).toList());
     }
 
     private static List<String> getCarNameList(String carNames) {
