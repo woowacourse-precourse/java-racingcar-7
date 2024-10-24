@@ -11,6 +11,7 @@ public class RacingCar {
         List<String> carNames = getCarNamesFromUser();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+        int attemptCount = getAttemptCountFromUser();
     }
 
     private List<String> getCarNamesFromUser() {
@@ -23,6 +24,19 @@ public class RacingCar {
     private void validateCarNameLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름의 길이는 5를 넘을 수 없습니다.");
+        }
+    }
+
+    private int getAttemptCountFromUser() {
+        String attemptCount = Console.readLine();
+        return parseAttemptCountAsInteger(attemptCount);
+    }
+
+    private int parseAttemptCountAsInteger(String attemptCount) {
+        try {
+            return Integer.parseInt(attemptCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 문자일 수 없습니다.");
         }
     }
 }
