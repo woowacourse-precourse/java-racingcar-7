@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
 	private final String name;
 
-	private long location;
+	private int location;
 
 	public Car(String name) {
 		validateCarLength(name);
