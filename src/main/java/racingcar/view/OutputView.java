@@ -26,6 +26,7 @@ public class OutputView {
             System.out.println(String.format(MessageConstants.PLAYER_POSITION_FORMAT, car.getName())
                     + MessageConstants.DASH.repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     public static void printWinners(List<Car> winners) {
