@@ -1,7 +1,13 @@
 package racingcar;
 
+import racingcar.common.factory.GameFactory;
+import racingcar.controller.GameController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameFactory factory = new GameFactory();
+
+        GameController gameController = factory.gameController();
+        gameController.run();
     }
 }
