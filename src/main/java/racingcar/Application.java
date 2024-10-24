@@ -14,8 +14,8 @@ public class Application {
         Printer.print(SystemMessage.ATTEMPT_COUNT_MESSAGE);
         String count = Console.readLine();
 
-        GameDirector gameDirector = new GameDirector(carNames, count);
         Printer.print(SystemMessage.RESULT_MESSAGE);
+        GameDirector gameDirector = new GameDirector(carNames, count);
         List<Car> matchResult = gameDirector.run();
         gameDirector.printWinner(matchResult);
     }

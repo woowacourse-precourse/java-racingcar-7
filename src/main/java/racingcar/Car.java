@@ -2,7 +2,6 @@ package racingcar;
 
 public class Car {
     private static final String DASH = "-";
-    private static final int FORWARD_NUMBER = 4;
 
     private final String name;
     private int position;
@@ -20,10 +19,6 @@ public class Car {
         }
     }
 
-    private boolean canMove(int number) {
-        return number >= FORWARD_NUMBER;
-    }
-
     public String getName() {
         return name;
     }
@@ -35,5 +30,9 @@ public class Car {
     @Override
     public String toString() {
         return getName() + " : " + DASH.repeat(position);
+    }
+
+    private boolean canMove(int number) {
+        return number >= 4;
     }
 }
