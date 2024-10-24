@@ -4,6 +4,32 @@ import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
+//car 클래스 추가
+class Car {
+    private final String name;
+    private int position;
+
+    public Car(String name) {
+        this.name = name;
+        this.position = 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(boolean shouldMove) {
+        if (shouldMove) {
+            position++;
+        }
+    }
+}
+
+
 class CarNameInput {
     public String getInput() {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표(,) 기준으로 구분)");
