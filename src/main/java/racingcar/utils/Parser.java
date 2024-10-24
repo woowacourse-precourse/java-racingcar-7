@@ -5,6 +5,6 @@ import java.util.List;
 
 public final class Parser {
     public static List<String> parse(String input) {
-        return Arrays.stream(input.split(",")).toList();
+        return Arrays.stream(input.split(",")).map(String::trim).toList();
     }
 }
