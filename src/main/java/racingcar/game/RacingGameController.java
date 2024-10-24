@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.game;
 
 import java.util.List;
+import racingcar.car.Car;
 
 public class RacingGameController {
     private final RacingGame racingGame;

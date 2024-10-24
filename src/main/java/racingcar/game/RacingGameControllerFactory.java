@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.game;
+
+import racingcar.generator.RandomNumberGenerator;
 
 public class RacingGameControllerFactory {
 

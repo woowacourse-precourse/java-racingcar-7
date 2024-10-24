@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.car.CarFactory;
+import racingcar.game.RacingGameController;
+import racingcar.game.RacingGameControllerFactory;
 
 public class Application {
 
