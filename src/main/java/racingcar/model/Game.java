@@ -44,4 +44,10 @@ public class Game {
         return winners;
     }
 
+
+
+    //test only
+    public void setMaxPosition(int maxPosition) {
+        this.maxPosition = maxPosition;
+    }
 }

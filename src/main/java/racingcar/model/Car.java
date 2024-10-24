@@ -23,4 +23,12 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+
+    // !!! TEST CODE ONLY !!!
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }
+
+
