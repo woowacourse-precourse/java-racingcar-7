@@ -13,6 +13,8 @@ public class Application {
         String[] carsNameArray = parseCarsName(carsNameInput);
         List<String> carsNameList = arrayToList(carsNameArray);
         List<String> trimmedCarsNameList = carsNameTrim(carsNameList);
+
+        validateCarsName(trimmedCarsNameList);
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -29,5 +31,14 @@ public class Application {
             trimmedCarsName.add(car.trim());
         }
         return trimmedCarsName;
+    }
+
+    private static void validateCarsName(List<String> trimmedCarsNameList) {
+        for (String carName : trimmedCarsNameList) {
+            // 공백, 빈값
+            if (carName == null || carName.isBlank()) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
