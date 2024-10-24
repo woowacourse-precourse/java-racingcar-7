@@ -18,7 +18,7 @@ public class GameUtil {
         }
     }
 
-    public static List<CarVO> oneTurnPrintAndUpdate(List<CarVO> carNameAndGoCountList) {
+    public static void oneTurnPrintAndUpdate(List<CarVO> carNameAndGoCountList) {
         for (var carAndCount : carNameAndGoCountList) {
             int randomNumber = Randoms.pickNumberInRange(0,9);
             if (randomNumber >= 4) {
@@ -27,7 +27,8 @@ public class GameUtil {
             System.out.println(carAndCount.getCarName() + " : " + "-".repeat(carAndCount.getGoCount()));
         }
 
-        return carNameAndGoCountList;
+        System.out.println();
+
     }
 
     // TODO : 우승한 자동차를 추출하고 출력하는 함수
