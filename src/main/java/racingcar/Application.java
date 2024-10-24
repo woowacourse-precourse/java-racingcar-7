@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -49,11 +50,19 @@ public class Application {
         }
     }
 
+    private static void checkDuplicateName(ArrayList<String> carNames){
+        LinkedHashSet<String> carNamesSet  = new LinkedHashSet<>(carNames);
+        if (carNamesSet.size() != carNames.size()){
+            throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
+        }
+    }
+
     private static ArrayList<String> getCarNames(){
         String inputString = getInput();
         ArrayList<String> carNames = splitCarNames(inputString);
         validCarCount(carNames);
         validCarNames(carNames);
+        checkDuplicateName(carNames);
         return carNames;
     }
 
