@@ -18,7 +18,7 @@ public class Car {
     }
 
     public String makeHyphen() {
-        if (this.advanceCount < 1) {
+        if (this.advanceCount == 0) {
             return "";
         }
         return "-".repeat(advanceCount);
