@@ -1,6 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import java.util.List;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarState;
+import racingcar.domain.car.Cars;
 
 public class RacingGame {
     private final Cars cars;

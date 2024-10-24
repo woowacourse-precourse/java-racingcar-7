@@ -1,6 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.Objects;
+import racingcar.domain.strategy.MovingStrategy;
 import racingcar.global.ErrorMessage;
 
 public class Car {

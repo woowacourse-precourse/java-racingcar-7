@@ -1,12 +1,11 @@
 package racingcar.application;
 
-import racingcar.domain.Cars;
-import racingcar.domain.MovingStrategy;
-import racingcar.domain.RacingGame;
-import racingcar.domain.RaceRounds;
-import racingcar.domain.ScoreBoard;
+import racingcar.domain.car.Cars;
+import racingcar.domain.strategy.MovingStrategy;
+import racingcar.domain.game.RaceRounds;
+import racingcar.domain.game.RacingGame;
+import racingcar.domain.game.ScoreBoard;
 
-// 서비스는 도메인놈들이 모여서 회의하는 곳. 스트레티지를 의존주입받아서는 안되지 않을까?
 public class RacingService {
     private final MovingStrategy movingStrategy;
 

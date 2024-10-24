@@ -5,8 +5,8 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.CarState;
-import racingcar.domain.ScoreBoard;
+import racingcar.domain.car.CarState;
+import racingcar.domain.game.ScoreBoard;
 
 class RacingServiceTest {
 

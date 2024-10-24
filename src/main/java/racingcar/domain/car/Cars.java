@@ -1,9 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.domain.strategy.MovingStrategy;
 import racingcar.global.ErrorMessage;
 
 public record Cars(List<Car> carList) {

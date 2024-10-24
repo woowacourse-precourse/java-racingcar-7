@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
@@ -46,5 +47,27 @@ class RaceRoundsTest {
         assertThatThrownBy(() -> new RaceRounds(-1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
+    }
+
+    @Test
+    @DisplayName("forEach 메서드는 지정된 횟수만큼 Runnable을 실행한다.")
+    void forEach_runsCorrectNumberOfTimes() {
+        RaceRounds raceRounds = new RaceRounds(3);
+        int[] count = {0};
+
+        raceRounds.forEach(() -> count[0]++);
+
+        assertThat(count[0]).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("0으로 RaceRounds 객체를 생성하면 forEach 메서드는 Runnable을 실행하지 않는다.")
+    void forEach_zeroRounds() {
+        RaceRounds raceRounds = new RaceRounds(0);
+        int[] count = {0};
+
+        raceRounds.forEach(() -> count[0]++);
+
+        assertThat(count[0]).isZero();
     }
 }

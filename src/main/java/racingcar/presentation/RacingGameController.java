@@ -1,7 +1,7 @@
 package racingcar.presentation;
 
 import racingcar.application.RacingService;
-import racingcar.domain.ScoreBoard;
+import racingcar.domain.game.ScoreBoard;
 
 public class RacingGameController {
     private final InputView inputView;
