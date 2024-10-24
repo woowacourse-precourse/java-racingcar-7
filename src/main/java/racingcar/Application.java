@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.component.RacingCar;
 import racingcar.factory.RacingCarFactory;
 import racingcar.race.RacingGame;
+import racingcar.race.RacingPlayer;
 
 import java.util.List;
 
@@ -12,10 +13,13 @@ public class Application {
         int matchCount = 5;
 
         RacingCarFactory racingCarFactory = new RacingCarFactory(userInput);
-        List<RacingCar> racingCars = racingCarFactory.createRacingCars();
+        List<RacingPlayer<RacingCar>> racingCars = racingCarFactory.createRacingCars()
+                .stream()
+                .map((racingCar) -> (RacingPlayer<RacingCar>) racingCar)
+                .toList();
 
-        RacingGame racingGame = new RacingGame(racingCars, matchCount);
+        RacingGame<RacingCar> racingGame = new RacingGame<>(racingCars, matchCount);
         racingGame.play();
-        List<RacingCar> winners = racingGame.getWinners();
+        List<RacingPlayer<RacingCar>> winners = racingGame.getWinners();
     }
 }

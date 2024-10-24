@@ -1,6 +1,8 @@
 package racingcar.component;
 
-public class RacingCar implements Comparable<RacingCar> {
+import racingcar.race.RacingPlayer;
+
+public class RacingCar implements RacingPlayer<RacingCar> {
 
     private final String name;
     private final Odometer odometer;
@@ -12,6 +14,7 @@ public class RacingCar implements Comparable<RacingCar> {
         this.engin = new Engine();
     }
 
+    @Override
     public int move() {
         int distance = 0;
         if (engin.start()) {
@@ -29,17 +32,9 @@ public class RacingCar implements Comparable<RacingCar> {
         System.out.println();
     }
 
+    @Override
     public int getTotalDistance() {
         return odometer.getTotalDistance();
-    }
-
-    @Override
-    public int compareTo(RacingCar compared) {
-        return this.getTotalDistance() - compared.getTotalDistance();
-    }
-
-    public boolean isNotLoserWith(RacingCar compared) {
-        return this.compareTo(compared) >= 0;
     }
 
 }

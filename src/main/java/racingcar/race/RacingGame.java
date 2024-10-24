@@ -1,18 +1,16 @@
 package racingcar.race;
 
-import racingcar.component.RacingCar;
-
 import java.util.List;
 
-public class RacingGame {
+public class RacingGame<T extends RacingPlayer<T>> {
 
-    private final List<RacingCar> racingCars;
+    private final Players<RacingPlayer<T>> racingPlayers;
     private final MatchResolver matchResolver;
     private final int matchCount;
     private int currentRound;
 
-    public RacingGame(List<RacingCar> racingCars, int matchCount) {
-        this.racingCars = racingCars;
+    public RacingGame(List<RacingPlayer<T>> racingPlayers, int matchCount) {
+        this.racingPlayers = new Players<>(racingPlayers);
         this.matchResolver = new MatchResolver();
         this.matchCount = matchCount;
         this.currentRound = 1;
@@ -24,14 +22,12 @@ public class RacingGame {
         }
     }
 
-    public List<RacingCar> getWinners() {
-        return matchResolver.determineWinner(racingCars);
+    public List<RacingPlayer<T>> getWinners() {
+        return matchResolver.determineWinner(racingPlayers);
     }
 
     private void playRound() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.move();
-        }
+        racingPlayers.playEach();
     }
 
     private boolean goToNextRound() {

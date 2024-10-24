@@ -1,26 +1,16 @@
 package racingcar.race;
 
-import racingcar.component.RacingCar;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class MatchResolver {
 
-    public List<RacingCar> determineWinner(List<RacingCar> players) {
-        List<RacingCar> sortedPlayers = sortDescending(players);
+    public <T extends Player<T>> List<T> determineWinner(Players<T> players) {
+        List<T> SortedByWinner = players.getSortedByWinner();
 
-        RacingCar firstWinner = sortedPlayers.getFirst();
-        return sortedPlayers.stream()
-                .filter((racingCar) -> racingCar.isNotLoserWith(firstWinner))
+        T firstWinner = SortedByWinner.getFirst();
+        return SortedByWinner.stream()
+                .filter((player) -> !player.isLoser(firstWinner))
                 .toList();
-    }
-
-    private List<RacingCar> sortDescending(List<RacingCar> players) {
-        ArrayList<RacingCar> clonedPlayers = new ArrayList<>(players);
-        clonedPlayers.sort(Comparator.reverseOrder());
-        return clonedPlayers;
     }
 
 }
