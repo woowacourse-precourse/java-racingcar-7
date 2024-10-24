@@ -20,6 +20,7 @@ public class RacingController {
         String tryCounts = InputView.getTryCounts();
         racingService.validateTryCount(tryCounts);
         go(splittedCarNames, tryCounts);
+        printWinner();
     }
 
     public List<String> getSplittedCarNames(String input) {
@@ -31,4 +32,7 @@ public class RacingController {
         racingService.go(tryCounts);
     }
 
+    public void printWinner() {
+        racingService.printWinner();
+    }
 }
