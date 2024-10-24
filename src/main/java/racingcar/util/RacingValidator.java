@@ -27,5 +27,13 @@ public class RacingValidator {
         }
     }
 
+    public static void isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
 }

@@ -25,4 +25,5 @@ public class RacingPlayTest {
 
         assertThat(expect.retainAll(carList)).isTrue();
     }
+
 }

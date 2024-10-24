@@ -26,9 +26,17 @@ public class RacingValidatorTest {
 
     @DisplayName("이름의 길이가 비어있을 경우 오류 테스트")
     @Test
-    void inNameLengthEmpty() {
+    void isNameLengthEmpty() {
         String input = ",test,21";
         assertThatThrownBy(() -> RacingValidator.isCarNameInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("이동 횟수 입력이 숫자가 아닐 경우 오류 테스트")
+    @Test
+    void isValidMoveCount() {
+        String input = "1,";
+        assertThatThrownBy(() -> RacingValidator.isInteger(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

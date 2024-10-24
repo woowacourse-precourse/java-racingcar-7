@@ -13,7 +13,7 @@ public class Racing {
 
     public void play() {
         List<Car> carList = getCarListFromUser();
-
+        int moveCount = getMoveCountFromUser();
     }
 
     private List<Car> getCarListFromUser() {
@@ -21,5 +21,12 @@ public class Racing {
         String input = readLine();
         RacingValidator.isCarNameInput(input);
         return RacingUtil.getCarList(input);
+    }
+
+    private int getMoveCountFromUser() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = readLine();
+        RacingValidator.isInteger(input);
+        return Integer.parseInt(input);
     }
 }
