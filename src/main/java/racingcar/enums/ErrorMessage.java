@@ -11,8 +11,8 @@ public enum ErrorMessage {
     MIN_CAR_COUNT("경기에 참여하는 자동차는 최소 2대 이상이어야 합니다."),
     CAR_NAME_CONDITION("자동차 이름은 영어, 한글, 숫자, 공백을 허용합니다."),
     TRY_COUNT_UNDER_ONE("경주 횟수는 1 이상의 수를 입력해주세요."),
-    NOT_ALLOW_TRY_COUNT_BLANK("경주 횟수를 양의 정수로 입력해 주세요."),
-    NOT_ALLOW_TRY_COUNT_CHAR("경주 횟수는 숫자를 제회한 문자를 허용하지 않습니다.");
+    NOT_ALLOW_TRY_COUNT_BLANK("경주 횟수가 입력되지 않았습니다."),
+    NOT_ALLOW_TRY_COUNT_WITHOUT_NUM("경주 횟수는 숫자를 제회한 문자를 허용하지 않습니다.");
 
     private final String message;
 
