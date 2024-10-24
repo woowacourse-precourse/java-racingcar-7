@@ -1,11 +1,13 @@
 package racingcar.domain;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
 
     @Test
+    @DisplayName("거리의 증가를 확인한다.")
     void updateDistance() {
         //given
         Car boye = new Car("boye", 0);
