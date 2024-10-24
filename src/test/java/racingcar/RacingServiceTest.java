@@ -64,5 +64,35 @@ class RacingServiceTest {
         racingService.updateMovement("a", 4);
         assertThat(racingService.getCarMap().get("a")).isGreaterThan(beforePosition);
     }
+
+    @Test
+    @DisplayName("최대 이동 거리를 가진 한 명의 사람을 우승자로 알려주는지 확인")
+    void 우승자_확인_테스트1() {
+        racingService.updateMovement("a", 4);
+        racingService.updateMovement("a", 4);
+        racingService.updateMovement("a", 4);
+
+        racingService.updateMovement("b", 2);
+        racingService.updateMovement("c", 1);
+
+        String[] result = racingService.getWinner();
+        assertThat(result).containsExactly("a");
+    }
+
+    @Test
+    @DisplayName("최대 이동 거리를 가진 여러 명의 사람을 우승자로 알려주는지 확인")
+    void 우승자_확인_테스트2() {
+        racingService.updateMovement("a", 4);
+        racingService.updateMovement("a", 4);
+
+        racingService.updateMovement("b", 8);
+        racingService.updateMovement("b", 8);
+
+        racingService.updateMovement("c", 1);
+
+        String[] result = racingService.getWinner();
+        assertThat(result).contains("a");
+        assertThat(result).contains("b");
+    }
 }
 
