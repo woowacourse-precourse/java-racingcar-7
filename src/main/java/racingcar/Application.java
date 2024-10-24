@@ -45,5 +45,13 @@ public class Application {
                 carPositions.put(entry.getKey(), entry.getValue() + 1);
             }
         }
+        raceStatus(carPositions);
+    }
+
+    private static void raceStatus(Map<String, Integer> carPositions) {
+        for (Map.Entry<String, Integer> entry : carPositions.entrySet()) {
+            System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+        }
+        System.out.println();
     }
 }
