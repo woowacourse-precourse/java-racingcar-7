@@ -46,11 +46,21 @@ class RandomNumberGenerator{
 //각 자동차 마다 생성된 난수 값을 부여하는 클래스
 
 class CarRandomValueAssigner{
-    public void assign(Car car int randomValue){
+    public void assign(Car car ,int randomValue){
         car.move(randomValue>=4);
     }
 }
+//생성된 난수가 4 이상인지 판별하는 기능
+interface MoveStrategy {
+    boolean canMove(int randomValue);
+}
 
+class RandomMoveStrategy implements MoveStrategy {
+    @Override
+    public boolean canMove(int randomValue) {
+        return randomValue >= 4;
+    }
+}
 
 public class Application {
     public static void main(String[] args) {
@@ -70,7 +80,6 @@ public class Application {
 
         CounterInput attemptInput = new CounterInput();
         int attempts = attemptInput.getInput();
-
 
     }
 }
