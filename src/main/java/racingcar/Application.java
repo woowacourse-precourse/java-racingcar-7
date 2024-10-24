@@ -40,7 +40,7 @@ public class Application {
     private static int validateAttemptConunt(String attemptCountInput) {
         int attemptCount;
 
-        if (attemptCountInput == null) {
+        if (attemptCountInput == null || attemptCountInput.equals("0") || attemptCountInput.contains(" ")) {
             throw new IllegalArgumentException(INVAILD_INPUT_MESSAGE);
         }
         try {
@@ -137,7 +137,7 @@ public class Application {
     private static void printFinalWinners(List<String> winners) {
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winners.size(); i++) {
-            System.out.println(winners.get(i));
+            System.out.print(winners.get(i));
             if (i < winners.size() - 1) {
                 System.out.print(", ");
             }
