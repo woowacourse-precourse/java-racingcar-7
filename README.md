@@ -66,7 +66,7 @@
 <br>
 <br>
 
-## Domain & Business Logic
+## Domain Logic
 
 ---
 
@@ -110,9 +110,9 @@
 
 ### 5. Lap
 
-| Method | Parameter | Return Type | Implementation |
-|--------|-----------|-------------|----------------|
-| minus  | int       | void        | Done ✅         |
+| Method | Parameter | Return Type | Exception                 | Implementation |
+|--------|-----------|-------------|---------------------------|----------------|
+| minus  | int       | void        | ShouldNotBeMinusException | Done ✅         |
 
 <br>
 
@@ -140,3 +140,17 @@
 |---------------|-----------|-------------|----------------|
 | offerLapChart | -         | String      | Done ✅         |
 | offerWinners  | -         | String      | Done ✅         |
+
+<br>
+<br>
+
+## Domain Logic
+
+---
+
+### 1. RaceService
+
+| Method       | Parameter      | Return Type | Implementation |
+|--------------|----------------|-------------|----------------|
+| generateCars | String, String | Cars        | Done ✅         |
+| startRace    | Race, Cars     | DashBoard   | Done ✅         |

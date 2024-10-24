@@ -11,7 +11,7 @@ public class Car {
         this.myProgress = myProgress;
     }
 
-    public static Car of(final String name, final MyProgress myProgress) {
+    public static Car from(final String name, final MyProgress myProgress) {
         //TODO: validation
         return new Car(name, myProgress);
     }

@@ -27,9 +27,10 @@ public class Cars {
     }
 
     public List<Car> filterCompletedAllLap() {
-        return cars.stream()
+        List<Car> cars1 = cars.stream()
                 .filter(Car::completedAllLap)
                 .toList();
+        return cars1;
     }
 
 

@@ -1,14 +1,15 @@
 package racingcar.model.race;
 
 import static java.util.Objects.isNull;
+import static racingcar.common.constant.SystemConstant.STR_ZERO;
 
 import java.math.BigInteger;
 import java.util.Objects;
-import racingcar.common.constant.SystemConstant;
 import racingcar.common.exception.ShouldNotBeNullException;
+import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Lap {
-    public static Lap ZERO = Lap.of(BigInteger.valueOf(SystemConstant.ZERO));
+    public static Lap ZERO = Lap.of(STR_ZERO);
 
     private BigInteger value;
 
@@ -16,9 +17,9 @@ public class Lap {
         this.value = value;
     }
 
-    public static Lap of(final BigInteger value) {
+    public static Lap of(final String value) {
         validateIsNull(value);
-        return new Lap(value);
+        return new Lap(new BigInteger(value));
     }
 
     public boolean hasRemaining() {
@@ -30,10 +31,18 @@ public class Lap {
     }
 
     public void minus(final String value) {
-        this.value = this.value.subtract(new BigInteger(value));
+        BigInteger subtrahend = new BigInteger(value);
+        if (isLowerThanZero()) {
+            throw new ShouldNotBeMinusException();
+        }
+        this.value = this.value.subtract(subtrahend);
     }
 
-    private static void validateIsNull(final BigInteger value) {
+    public boolean isLowerThanZero() {
+        return this.value.compareTo(BigInteger.ZERO) < 0;
+    }
+
+    private static void validateIsNull(final String value) {
         if (isNull(value)) {
             throw new ShouldNotBeNullException();
         }

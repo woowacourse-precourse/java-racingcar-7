@@ -14,7 +14,7 @@ public class MyProgress {
         this.position = position;
     }
 
-    public static MyProgress initiate(final Lap remainingLap, final Position position) {
+    public static MyProgress from(final Lap remainingLap, final Position position) {
         return new MyProgress(remainingLap, position);
     }
 
