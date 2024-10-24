@@ -1,6 +1,4 @@
 # java-racingcar-precourse
-<<<<<<< Updated upstream
-=======
 
 # 구현 기능 목록
 
@@ -28,4 +26,3 @@
     - 빈 문자열
     - 숫자가 아닌 경우
     - 숫자가 Integer의 값을 넘어갈 경우
->>>>>>> Stashed changes
