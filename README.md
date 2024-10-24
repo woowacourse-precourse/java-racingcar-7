@@ -6,25 +6,31 @@
 
 ```
 src/
-├── main/
-│   └── java/
-│       ├── custom/
-│       │   ├── controller        // 컨트롤 패키지
-│       │   ├── model             // 모델 패키지
-│       │   ├── service           // 서비스 패키지
-│       │   ├── validator         // 유효성 검사 패키지
-│       │   └── view              // 뷰 패키지
-│       └── racingcar/
-│           └── Application.java  // 실행 파일
-└── test/
-    └── java/
-        ├── custom/
-        │   ├── ApplicationCustomTest.java // 커스텀 테스트
-        │   ├── ServiceTest.java           // 서비스 테스트
-        │   └── ViewTest.java              // 뷰어 테스트
-        └── racingcar/
-            └── ApplicationTest.java       // 기본 테스트
-
+├───main
+│   └───java
+│       ├───custom
+│       │   ├───controller
+│       │   │   └───RacingCarController.java // 컨트롤러
+│       │   ├───model
+│       │   │   ├───RacingData.java          // 경주 데이터
+│       │   │   └───RacingScoreData.java     // 경주 점수 데이터
+│       │   ├───service
+│       │   │   └───RacingCarService.java    // 서비스
+│       │   ├───validator
+│       │   │   └───InputValidator.java      // 유효성 검사
+│       │   └───view
+│       │       ├───InputView.java           // 입력
+│       │       └───OutputView.java          // 출력
+│       └───racingcar
+│           └───Application.java             // 실행 파일
+└───test
+    └───java
+        ├───custom
+        │   ├───ApplicationCustomTest.java    // 커스텀 테스트
+        │   ├───ServiceTest.java              // 서비스 테스트
+        │   └───ValidatorTest                 // 유효성 검사 테스트
+        └───racingcar 
+            └───ApplicationTest.java          // 기본 테스트
 ```
 
 ## 기능 목록
