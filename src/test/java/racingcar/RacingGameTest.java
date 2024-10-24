@@ -11,14 +11,14 @@ public class RacingGameTest {
 
     @Test
     void 자동차들이_전진_조건을_실행하는지_테스트() {
-        RacingGame racingGame = new RacingGame();
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
         cars.add(new Car("woni"));
         cars.add(new Car("jun"));
 
-        racingGame.playRace(cars, 4);
+        RacingGame.playRace(cars, 4);
+        RacingGame.playRace(cars, 5);
 
-        assertThat(cars.get(0).getPosition()).isEqualTo(1);
+        assertThat(cars.get(0).getPosition()).isEqualTo(2);
     }
 }
