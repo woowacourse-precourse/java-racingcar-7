@@ -1,5 +1,5 @@
 package racingcar.model;
 
-public record ExecutionNumber(long number) {
+public record ExecutionNumber(Long number) {
 
 }
