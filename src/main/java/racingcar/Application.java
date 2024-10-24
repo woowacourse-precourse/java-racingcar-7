@@ -3,6 +3,8 @@ package racingcar;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;
 import racingcar.model.moving_strategy.random.DefaultRandomMovingStrategy;
+import racingcar.model.validator.DefaultRacingCarValidator;
+import racingcar.model.validator.RacingCarValidator;
 import racingcar.service.RacingResult;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
@@ -16,8 +18,9 @@ public class Application {
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
 
+    private static final RacingCarValidator racingCarValidator = new DefaultRacingCarValidator();
     private static final MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
-    private final static RacingService racingService = new RacingService(movingStrategy);
+    private final static RacingService racingService = new RacingService(racingCarValidator, movingStrategy);
 
     // 필요 변수
     private static RacingCars racingCars;
