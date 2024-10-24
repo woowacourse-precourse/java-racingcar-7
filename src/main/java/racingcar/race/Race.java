@@ -1,13 +1,16 @@
 package racingcar.race;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Race {
-    private Racer[] racers;
+    private List<Racer> racers;
     private int lap = 0;
 
     public Race(Racer[] racers) {
-        this.racers = racers;
+        this.racers = Arrays.asList(racers);
     }
 
     public void startRace(int times){
