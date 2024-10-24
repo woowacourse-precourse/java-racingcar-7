@@ -16,8 +16,8 @@ class InputValidatorTest {
     @ParameterizedTest
     @MethodSource("provideBlankOrNullInputs")
     @DisplayName("공백 또는 null 입력 시 IllegalArgumentException이 발생한다.")
-    void validateBlank_ThrowsException_WhenInputIsBlankOrNull(String input) {
-        assertThatThrownBy(() -> InputValidator.validateBlank(input))
+    void validateBlank_ThrowsException_WhenInputIsNotBlankOrNull(String input) {
+        assertThatThrownBy(() -> InputValidator.validateCarNamesInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.BLANK_CAR_NAME.getMessage());
     }
@@ -33,8 +33,8 @@ class InputValidatorTest {
     @ParameterizedTest
     @CsvSource({"abc", "-123", "12.3"})
     @DisplayName("양의 정수가 아닌 경우 IllegalArgumentException이 발생한다.")
-    void validatePositiveInteger_ThrowsException_WhenInputIsNotPositiveInteger(String input) {
-        assertThatThrownBy(() -> InputValidator.validatePositiveInteger(input))
+    void validatePositiveInteger_ThrowsException_WhenInputIsNotTrialCount(String input) {
+        assertThatThrownBy(() -> InputValidator.validateTrialCountInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
     }
@@ -42,8 +42,8 @@ class InputValidatorTest {
     @ParameterizedTest
     @MethodSource("provideBlankOrNullInputs")
     @DisplayName("null 또는 공백 입력 시 validatePositiveInteger에서도 예외가 발생한다.")
-    void validatePositiveInteger_ThrowsException_WhenInputIsBlankOrNull(String input) {
-        assertThatThrownBy(() -> InputValidator.validatePositiveInteger(input))
+    void validateTrialCount_Input_ThrowsException_WhenInputIsBlankOrNull(String input) {
+        assertThatThrownBy(() -> InputValidator.validateTrialCountInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.BLANK_CAR_NAME.getMessage());
     }
@@ -51,7 +51,7 @@ class InputValidatorTest {
     @ParameterizedTest
     @CsvSource({"123", "456", "789"})
     @DisplayName("올바른 양의 정수 입력 시 예외가 발생하지 않는다.")
-    void validatePositiveInteger_DoesNotThrowException_WhenInputIsValid(String input) {
-        assertDoesNotThrow(() -> InputValidator.validatePositiveInteger(input));
+    void validateTrialCount_Input_DoesNotThrowException_WhenInputIsValid(String input) {
+        assertDoesNotThrow(() -> InputValidator.validateTrialCountInput(input));
     }
 }

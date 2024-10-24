@@ -10,15 +10,22 @@ public class InputValidator {
         throw new UnsupportedOperationException();
     }
 
-    public static void validateBlank(String rawInput){
+    public static void validateTrialCountInput(String rawInput){
+        ensureNotBlank(rawInput);
+        ensurePositiveInteger(rawInput);
+    }
+
+    public static void validateCarNamesInput(String rawInput){
+        ensureNotBlank(rawInput);
+    }
+
+    private static void ensureNotBlank(String rawInput){
         if (Objects.isNull(rawInput) || rawInput.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.BLANK_CAR_NAME.getMessage());
         }
     }
 
-    public static void validatePositiveInteger(String rawInput){
-        validateBlank(rawInput);
-
+    private static void ensurePositiveInteger(String rawInput) {
         if (!rawInput.matches(POSITIVE_INTEGER_REGEX)) {
             throw new IllegalArgumentException(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
         }
