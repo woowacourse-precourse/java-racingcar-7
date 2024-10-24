@@ -31,6 +31,7 @@ public class Car {
 
         private static void validateCars(List<String> cars) {
             validateCarNames(cars);
+            validateUniqueCarNames(cars);
         }
 
         private static void validateCarNames(List<String> carNames) {
@@ -40,6 +41,15 @@ public class Car {
                 }
             });
         }
+
+        private static void validateUniqueCarNames(List<String> validCarNames) {
+            int validCarNameSize = validCarNames.size();
+            int uniqueCarNameSize = new HashSet<>(validCarNames).size();
+            if (validCarNameSize != uniqueCarNameSize) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
+        }
+
     }
 
 }
