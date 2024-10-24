@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -17,7 +18,19 @@ public class Application {
         }
         System.out.println("시도할 횟수는 몇 회인가요?");
         inputString = Console.readLine();
+        System.out.println("\n실행 결과");
         int playTime = Integer.parseInt(inputString);
+        while (playTime-- > 0) {
+            for (Car car : cars) {
+                int value = Randoms.pickNumberInRange(0, 9);
+                car.move(value);
+            }
+            StringBuilder stringBuilder = new StringBuilder();
+            for (Car car : cars) {
+                stringBuilder.append(car).append("\n");
+            }
+            System.out.println(stringBuilder);
+        }
     }
 
     static class Car {
