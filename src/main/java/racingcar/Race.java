@@ -11,8 +11,12 @@ public class Race {
 
     public void run(int rounds) {
         for (int i = 0; i < rounds; i++){
-            cars.forEach(car -> car.move(Utils.isMovable()));
+            playRound();
         }
+    }
+
+    private void playRound() {
+        cars.forEach(car -> car.move(Utils.isMovable()));
     }
 
     public List<Car> getWinners() {
