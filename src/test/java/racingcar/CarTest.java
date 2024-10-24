@@ -1,5 +1,7 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,5 +35,37 @@ class CarTest {
         int expectedPosition = 0;
         //then
         Assertions.assertThat(testCar.getCurrentPosition()).isEqualTo(expectedPosition);
+    }
+
+    @DisplayName("Random number 4이상 시 1만큼 이동")
+    @Test
+    void moveOrStop_moveable() {
+        //given
+        assertRandomNumberInRangeTest(() -> {
+                    //given
+                    Car testCar = car;
+                    MovementDecider movementDecider = new RandomMovementDecider();
+                    //when
+                    car.moveOrStop(movementDecider);
+                    //then
+                    Assertions.assertThat(testCar.getCurrentPosition()).isEqualTo(1);
+                }
+                , 4);
+    }
+
+    @DisplayName("Random number 4미만 시 이동하지 않음")
+    @Test
+    void moveOrStop_not_moveable() {
+        //given
+        assertRandomNumberInRangeTest(() -> {
+                    //given
+                    Car testCar = car;
+                    MovementDecider movementDecider = new RandomMovementDecider();
+                    //when
+                    car.moveOrStop(movementDecider);
+                    //then
+                    Assertions.assertThat(testCar.getCurrentPosition()).isEqualTo(0);
+                }
+                , 3);
     }
 }

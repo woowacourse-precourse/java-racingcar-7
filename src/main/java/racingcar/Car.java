@@ -16,4 +16,10 @@ public class Car {
         return currentPosition;
     }
 
+    public void moveOrStop(MovementDecider movementDecider) {
+        if (movementDecider.isMoveable()) {
+            currentPosition++;
+        }
+    }
+
 }
