@@ -14,9 +14,6 @@ public class Application {
         List<Car> cars = new ArrayList<>();
 
         for(String name : carNames){
-            if(name.length() > 5){
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
             cars.add(new Car(name));
         }
 
@@ -51,30 +48,5 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
-    }
-
-    static class Car{
-        private String name;
-        private int position = 0;
-
-        public Car(String name){
-            this.name = name;
-        }
-
-        public String getName(){
-            return name;
-        }
-
-        public int getPosition(){
-            return position;
-        }
-
-        public void move(){
-            position++;
-        }
-
-        public String displayPosition(){
-            return "-".repeat(position);
-        }
     }
 }
