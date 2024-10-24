@@ -44,7 +44,7 @@ class OutputViewTest {
         String input = "Test Output";
 
         // when
-        outputView.printCurrentPositions(input);
+        outputView.print(input);
 
         // then
         String expectedOutput = "Test Output\n";
@@ -53,12 +53,12 @@ class OutputViewTest {
 
     @Test
     @DisplayName("우승자를 출력한다.")
-    void printWinner() {
+    void print() {
         // given
         String winner = "pobi";
 
         // when
-        outputView.printWinner(winner);
+        outputView.print(winner);
 
         // then
         String expectedOutput = "pobi\n";

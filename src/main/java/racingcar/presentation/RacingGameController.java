@@ -1,5 +1,6 @@
 package racingcar.presentation;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.application.RacingService;
 import racingcar.domain.game.ScoreBoard;
 
@@ -17,13 +18,17 @@ public class RacingGameController {
     }
 
     public void run(){
-        String carNames = inputView.getCarNames();
-        String rawCount = inputView.getTrialCount();
+        try {
+            String carNames = inputView.getCarNames();
+            String rawCount = inputView.getTrialCount();
 
-        ScoreBoard scoreBoard = racingService.getRacingResult(carNames, rawCount);
-        String racingResults = raceResultFormatter.formatScoreBoard(scoreBoard);
+            ScoreBoard scoreBoard = racingService.getRacingResult(carNames, rawCount);
+            String racingResults = raceResultFormatter.formatScoreBoard(scoreBoard);
 
-        outputView.printRunStarted();
-        outputView.printWinner(racingResults);
+            outputView.printRunStarted();
+            outputView.print(racingResults);
+        } finally {
+            Console.close();
+        }
     }
 }

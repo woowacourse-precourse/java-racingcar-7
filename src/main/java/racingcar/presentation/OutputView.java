@@ -7,12 +7,7 @@ public class OutputView {
         System.out.println(RUN_START_NOTIFIER);
     }
 
-    // 아래 두 메서드를 합칠지 고민한다.
-    public void printCurrentPositions(String input) {
+    public void print(String input){
         System.out.println(input);
-    }
-
-    public void printWinner(String winner){
-        System.out.println(winner);
     }
 }
