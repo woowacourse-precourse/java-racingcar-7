@@ -9,8 +9,7 @@ public class InputView {
     public List<String> getCarNames() {
         System.out.println("자동차 이름을 쉼표로 구분하여 입력하세요. (각 이름은 5자 이하)");
         String input = Console.readLine();
-        List<String> list = Arrays.asList(input.split(","));
-        return list;
+        return Arrays.asList(input.split(","));
     }
 
     public int getMoveCount() {
