@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +37,20 @@ class CarTest {
 
         // then
         assertEquals(1, car.getCarInfo().get(carName));
+    }
+
+    @Test
+    @DisplayName("자동차가 다른 자동차보다 앞서 있는지 확인한다.")
+    public void 자동차_위치_비교_기능() {
+        //given
+        Car car1 = new Car("povi");
+        Car car2 = new Car("min");
+
+        //when
+        car1.accelerator();
+        boolean result = car1.isAheadOf(car2.getCarInfo().get("min"));
+
+        //then
+        Assertions.assertTrue(result);
     }
 }

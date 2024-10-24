@@ -16,6 +16,10 @@ public class Car {
         currentPosition.addPosition();
     }
 
+    public boolean isAheadOf(Integer otherCarPosition) {
+        return currentPosition.isGreaterThan(otherCarPosition);
+    }
+
     public Map<String, Integer> getCarInfo() {
         return Map.of(name.getName(), currentPosition.getCurrentPosition());
     }
