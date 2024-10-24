@@ -10,14 +10,20 @@ public class CarValidator {
 
         if(isEmpty(carNames)) throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
         if(hasInvalidCharacters(carNames)) throw new IllegalArgumentException("특수문자는 입력할 수 없습니다.");
-        if(hasExceedMaxLength(carNames)) throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+        if(isCarNameInvalid(carNames)) throw new IllegalArgumentException("자동차 이름을 제대로 입력해야합니다.");
 
         return true;
     }
 
-    private static boolean hasExceedMaxLength(String carNames) {
-        return Arrays.stream(carNames.split(","))
-                .anyMatch(carName -> carName.length() > 5);
+    private static boolean isCarNameInvalid(String carNames) {
+        String[] carNamesArray = carNames.split(",");
+
+        if (carNamesArray.length == 0) return true;
+
+        return Arrays.stream(carNamesArray)
+                .anyMatch(carName -> {
+                    return carName.length() > 5 || carName.trim().isEmpty() || carName.trim().isBlank();
+                });
     }
 
     private static boolean hasInvalidCharacters(String carNames) {

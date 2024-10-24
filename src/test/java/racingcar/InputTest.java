@@ -3,12 +3,14 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingGameController;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.RaceRound;
+import racingcar.validator.CarValidator;
 import racingcar.view.InputView;
 
 public class InputTest {
@@ -27,5 +29,12 @@ public class InputTest {
         assertNotNull(lastCar);
         assertEquals(LAST_CAR_NAME, lastCar.getName());
 
+    }
+
+    @Test
+    void 모든자동차이름공백_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            CarValidator.isValid(",,,");
+        });
     }
 }
