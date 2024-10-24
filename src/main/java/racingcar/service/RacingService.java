@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import racingcar.dto.RacingResult;
+import racingcar.dto.RacingRoundResult;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;

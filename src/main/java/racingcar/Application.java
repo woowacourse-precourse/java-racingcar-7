@@ -1,11 +1,11 @@
 package racingcar;
 
+import racingcar.dto.RacingResult;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;
 import racingcar.model.moving_strategy.random.DefaultRandomMovingStrategy;
 import racingcar.model.validator.DefaultRacingCarValidator;
 import racingcar.model.validator.RacingCarValidator;
-import racingcar.service.RacingResult;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

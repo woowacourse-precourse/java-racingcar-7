@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.dto;
 
 import racingcar.model.RacingCars;
 
