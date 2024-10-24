@@ -1,12 +1,20 @@
 package racingcar.config;
 
-import racingcar.controller.RacingGameController;
+import racingcar.controller.GameController;
 import racingcar.model.CarMaker;
+import racingcar.model.CarMover;
+import racingcar.model.RacingGame;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class AppConfig {
 
-    public RacingGameController racingGameController() {
-        return new RacingGameController(new InputView(), new CarMaker());
+    public GameController racingGameController() {
+        return new GameController(
+                new InputView(), new OutputView(), new CarMaker(), racingGame());
+    }
+
+    public RacingGame racingGame() {
+        return new RacingGame(new CarMover());
     }
 }
