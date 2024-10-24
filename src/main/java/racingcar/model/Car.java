@@ -21,13 +21,16 @@ public class Car {
     }
 
     public void race() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
+        if (pickRandomNumberFromZeroToNine() >= 4) {
             status++;
         }
     }
 
     public String getInformation() {
         return name + " : " + "-".repeat(status);
+    }
+
+    private int pickRandomNumberFromZeroToNine() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

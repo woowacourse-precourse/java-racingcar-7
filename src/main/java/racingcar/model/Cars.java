@@ -20,10 +20,14 @@ public class Cars {
     }
 
     public List<String> determineWinners() {
-        int maxStatus = cars.stream().max(Comparator.comparingInt(Car::getStatus))
-                .get().getStatus();
-
-        List<String> winnersName = cars.stream().filter(car -> car.getStatus() == maxStatus).map(Car::getName).toList();
+        int maxStatus = getMaximumStatus();
+        List<String> winnersName = cars.stream().filter(car -> car.getStatus() == maxStatus)
+                .map(Car::getName).toList();
         return winnersName;
+    }
+
+    private int getMaximumStatus() {
+        return cars.stream().max(Comparator.comparingInt(Car::getStatus))
+                .get().getStatus();
     }
 }
