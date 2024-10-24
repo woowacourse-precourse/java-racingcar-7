@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +26,10 @@ public class Application {
 
         validateCount(countInput);
         int count = parseInt(countInput);
+
+        for (int i = 0; i < count; i++) {
+            race(cars);
+        }
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -94,6 +99,12 @@ public class Application {
 
     private static Car createCar(String name) {
         return new Car(name);
+    }
+
+    private static void race(List<Car> cars) {
+        for (Car car : cars) {
+            int random = Randoms.pickNumberInRange(0, 9);
+        }
     }
 
     private static class Car {
