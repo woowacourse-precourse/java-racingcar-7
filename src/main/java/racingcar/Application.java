@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
 // 출력
 //  - [x] 입력 안내 문자 출력 (경주 자동차 이름, 시도 횟수)
         System.out.println("경주할 자동차 이름을 입력하세요.");
@@ -22,7 +21,7 @@ public class Application {
 //  - [x] 시도 횟수 입력 받기
 //    [ ] (시도 횟수는 양수만 허용)
         String carsName = Console.readLine();
-       int tryNumber = Integer.parseInt(Console.readLine());
+        int tryNumber = Integer.parseInt(Console.readLine());
 
         // 경기 진행
 //  - [x] 입력 받은 경주 자동차 이름 구분
@@ -34,7 +33,7 @@ public class Application {
 //  - [ ] 자동차 이동 조건
 //  - [x] 전진 : 무작위 값이 4이상
             for (String name : cars.keySet()) {
-                if (Randoms.pickNumberInRange(0,9) >= 4) { // 랜덤값을 변수에 담는 게 좋을지
+                if (Randoms.pickNumberInRange(0, 9) >= 4) { // 랜덤값을 변수에 담는 게 좋을지
                     cars.put(name, cars.get(name) + 1);
                     System.out.println(cars.get(name));
                 }
@@ -42,9 +41,20 @@ public class Application {
             }
         }
 
+//        실행 결과 출력
+        for (Map.Entry<String, Integer> car : cars.entrySet()) {
+            System.out.print(car.getKey() + " : ");
+            for (int i = 0; i < car.getValue(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+
+//        자동차 이동 메서드
+
 //  - [ ] 우승자 조건 : 가장 많이 전진한 자동차(우승자는 2명 이상이 될 수 있다.)
         List<String> winners = new ArrayList<>();
-        int  first = Collections.max(cars.values());
+        int first = Collections.max(cars.values());
 
         for (Map.Entry<String, Integer> car : cars.entrySet()) {
             if (car.getValue() == first) {
