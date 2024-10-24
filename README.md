@@ -42,3 +42,123 @@
 | 이름이 특수 기호를 포함하고 있을 경우 | 애플리케이션을 종료시킨다.    |
 | 자동차 이름이 1개만 입력됐을 경우 | 애플리케이션을 종료시킨다.    |
 | 시도 획수가 자연수가 아닐 경우 | 애플리케이션을 종료시킨다.    |
+
+## MVC
+🔵 **Model**
+
+### RacingRule 👉 확장을 고려하여 레이싱 룰을 위한 인터페이스
+
+**- 메서드**  
+`goOrStop`: 자동차 전진 조건을 확인하기
+`pickWinner`: 최종 우승자를 확인하기
+
+
+### Car 👉 자동차를 위한 클래스
+
+**- 필드**  
+`String name`: 자동차 이름
+`int location`: 자동차 위치
+
+**- 생성자**  
+`Car()`
+
+**- 메서드**  
+`goFront()`: 자동차 위치를 증가하기  
+`nameWithLocationToString()`: 이름과 위치를 문자열로 변환하기
+`compareLocation()`: 자기 위치와 최고위치를 비교하기
+
+### Splitter 👉 이름 문자열을 분할하는 클래스
+
+**- 메서드**   
+`splitNames()`: ','기준으로 문자열을 분할하기
+
+### Random 👉 무작위 작업을 위한 클래스
+
+**- 메서드**   
+`generateRandomNumber()`: 무작위 숫자를 만들기
+
+### Racing 👉 자동차 경주를 진행하기 위한 클래스
+
+**- 필드**  
+`Collection<Car> Cars`: 경기에 참여할 자동차 객체들
+
+**- 생성자**  
+`Cars()`
+
+**- 메서드**  
+`setCars()`: 자동차들을 세팅하기
+`runRound()`: 한 라운드 진행하기
+`goOrStop()`: 자동차 전진 조건을 확인하기
+`resultOfRound()`: 한 라운드의 결과를 문자열로 반환하기
+`pickWinner()`: 최종 우승자를 선별하기
+
+---
+
+🟡 **View**
+
+### InputView 👉 사용자로부터 입력을 받는 클래스
+
+**- 메서드**  
+`nameAndTurn()`: 사용자로부터 받은 이름과 시도 횟수 한번에 반환하기
+`readCarsName()`: 서용자로부터 자동차 이름 문자열 입력 받기
+`readTurnCount()`: 사용자로부터 시도 횟수 입력 받기
+
+### OutputView 👉 계산 결과를 출력하는 클래스
+
+**- 메서드**  
+`printGameResult()`: 이제부터 레이싱 결과를 출력하겠다는 텍스트 출력하기
+`printResultOfTurn()`: 한 횟차의 결과를 출력하기
+`printWinner()`: 최종 우승자를 출력하기
+
+---
+
+🟢 **Controller**
+#### RacingController 👉 사용자 요청을 처리여 모델과 상호작용 후 응답을 다시 사용자에서 전달하기 위한 클래스
+
+**- 필드**  
+`Racing racing`: racing 객체
+
+**- 메서드**  
+`startGame()` : 애플리케이션 시작하기  
+`readNamesAndTurnCount()` : 사용자로부터 자동차 이름과 시도 횟수 입력 받기 
+`startRacing()` : 경기 시작하기
+`printGameResult()` : 이제부터 레이싱 결과를 출력하겠다는 텍스트 출력하기
+`printResultOfTurn()` : 한 횟차 결과를 출력하기
+`pickWinner()` : 최종 우승자를 선별하기
+`printWinner()` : 최종 우승자를 출력하기
+
+---
+
+🔴 **Validation**
+
+### CarValidator 👉 자동차 유효성을 검사하는 클래스
+
+**- 메서드**  
+`validateCarName()`: 자동차 이름의 유효성 검하하기 
+`validateCarNumber()`: 자동차 수량 유효성 검하하기 
+
+### TurnCountValidator 👉 시도 횟수 유효성을 검사하는 클래스
+
+**- 메서드**  
+`validateTurnCount()`: 시도 홧수의 유효성 검하하기 
+
+---
+
+🟣 Enum
+
+**- 상수 필드**  
+`INVALID_CAR_NAME`: "유효하지 않은 자동차 이름이 포함되어 있습니다."  
+`INVALID_CAR_NUMBER`: "경기에 최소 2대 자동차가 참여할 수 있습니다." 
+`INVALID_TURN_NUMBER`: "자연수가 아닌 숫자입니다."
+
+---
+
+🟠 Common
+
+**- 상수 필드**  
+`INPUT_CARS_NAME`: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"  
+`INPUT_TURN_COUNT`: "시도할 횟수는 몇 회인가요?"  
+`PRINT_GAME_RESULT`: "실행 결과"  
+`PRINT_GAME_WINNER`: "최종 우승자 : "  
+
+---
