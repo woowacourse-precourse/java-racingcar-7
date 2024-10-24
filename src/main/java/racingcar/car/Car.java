@@ -1,4 +1,6 @@
-package racingcar.model;
+package racingcar.car;
+
+import racingcar.car.strategy.MoveStrategy;
 
 public class Car {
     private final MoveStrategy moveStrategy;

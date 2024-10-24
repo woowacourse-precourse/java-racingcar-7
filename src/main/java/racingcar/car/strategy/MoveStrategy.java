@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.car.strategy;
 
 public interface MoveStrategy {
     int getPossibleMoveCount();
