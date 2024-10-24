@@ -1,12 +1,12 @@
 package racingcar.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.game.controller.io.InputHandler;
 import racingcar.game.controller.io.OutputHandler;
+import racingcar.game.controller.model.util.RandomNumberGenerator;
 
 public class RacingCar {
     private final OutputHandler outputHandler = new OutputHandler();
@@ -42,7 +42,7 @@ public class RacingCar {
 
     private void accumulateMoveCount(List<String> carNames, Map<String, Integer> moveAccumulator) {
         for (String carName : carNames) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = RandomNumberGenerator.generate();
             accumulateIfCanMove(randomNumber, moveAccumulator, carName);
         }
     }
