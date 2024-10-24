@@ -17,6 +17,8 @@ public class Application {
         List<String> trimmedCarsNameList = carsNameTrim(carsNameList);
 
         validateCarsName(trimmedCarsNameList);
+
+        int count = parseInt(countInput);
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -65,5 +67,10 @@ public class Application {
         if (existCarsNameList.size() <= 1) {
             throw new IllegalArgumentException();
         }
+    }
+
+    // TODO: 엄청 큰 숫자가 들어왔을 때도 고려
+    private static int parseInt(String string) {
+        return Integer.parseInt(string);
     }
 }
