@@ -13,7 +13,7 @@ public class Application {
 
     public static void main(String[] args) {
         InputDTO inputDTO = inputView.display();
-        OutputDTO outputDTO = RacingController.execute(inputDTO);
-        outputView.display(inputDTO.getTotalTrialCount(), outputDTO);
+        OutputDTO outputDTO = RacingController.run(inputDTO);
+        outputView.display(outputDTO);
     }
 }
