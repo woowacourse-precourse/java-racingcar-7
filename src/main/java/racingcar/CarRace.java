@@ -1,26 +1,27 @@
 package racingcar;
 
-import java.math.BigInteger;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 
 
 public class CarRace {
 
-    private final HashMap<String, BigInteger> cars;
-    private final BigInteger tryCount;
-
-    public CarRace(String cars, String tryCount) {
-        this.cars = getCar(cars);
-        this.tryCount = getCount(tryCount);
+    public void play(String names, String count) {
+        HashMap<String, Integer> cars = getCar(names);
+        int tryCount = getCount(count);
     }
 
-    private HashMap<String, BigInteger> getCar(String input) {
+    public int random() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private HashMap<String, Integer> getCar(String input) {
         try {
             String[] cars = input.split(",");
 
-            HashMap<String, BigInteger> carMap = new HashMap<>();
+            HashMap<String, Integer> carMap = new HashMap<>();
             for (String car : cars) {
-                carMap.put(car, BigInteger.ZERO);
+                carMap.put(car, 0);
             }
 
             return carMap;
@@ -29,20 +30,12 @@ public class CarRace {
         }
     }
 
-    private BigInteger getCount(String input) {
+    private int getCount(String input) {
         try {
-            return new BigInteger(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("1이상의 숫자를 입력해주세요", e);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "CarRace{" +
-                "cars=" + cars +
-                ", tryCount=" + tryCount +
-                '}';
     }
 }
 
