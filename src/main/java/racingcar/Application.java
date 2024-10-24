@@ -24,6 +24,7 @@ public class Application {
             Result.printWinner();
 
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()+"\n프로그램을 종료합니다.");
             throw new IllegalArgumentException(e.getMessage() + "프로그램을 종료합니다.");
         }
     }
