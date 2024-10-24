@@ -70,8 +70,8 @@ class GameStatusTest {
 
         assertThat(
                 gameStatus.getRacersMovement().values().stream()
-                        .toList().equals(result)
-        ).isEqualTo(true);
+                        .toList()
+        ).isEqualTo(result);
     }
 
     static Stream<Arguments> carToMoveForwardAndResult() {
