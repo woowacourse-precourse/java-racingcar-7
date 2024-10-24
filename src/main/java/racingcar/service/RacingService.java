@@ -26,4 +26,8 @@ public class RacingService {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public boolean canRacing(int tryCount) {
+		return !carRepository.existWinner(tryCount);
+	}
 }
