@@ -25,5 +25,12 @@ public class Application {
             location.add(0);
         }
 
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < count; j++) {
+                int randomNum = Randoms.pickNumberInRange(0,9);
+
+            }
+
+        }
     }
 }
