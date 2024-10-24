@@ -29,5 +29,4 @@ public class ConsoleOutputView implements OutputView {
         System.out.println(IOMessage.WINNER_ANNOUNCEMENT.toString() + winner);
     }
 
-
 }
