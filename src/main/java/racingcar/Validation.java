@@ -1,5 +1,7 @@
 package racingcar;
 
+import org.assertj.core.api.ThrowableAssert;
+
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -16,5 +18,13 @@ public class Validation {
             }
         }
         return carNames;
+    }
+
+    public int validateRoundLimit(String input) {
+        int limit = Integer.parseInt(input);
+        if (limit <= 0 || limit > 100) {
+            throw new IllegalArgumentException();
+        }
+        return limit;
     }
 }

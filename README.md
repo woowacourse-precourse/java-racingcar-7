@@ -81,9 +81,9 @@ public String[] validateCarName(String input)
 public int validateRoundLimit(String input)
 : \: 입력받은 시도 횟수 값이 요구 사항에 맞는지 확인하는 메소드.
 
-- [ ]  input을 정수로 변환
-- [ ]  input이 숫자 형태가 아니거나, 양의 정수가 아니거나, 100 초과인 경우 예외 발생
-- [ ]  예외가 발생하지 않았다면 정수로 변환된 input을 리턴
+- [x]  input을 정수로 변환
+- [x]  input이 숫자 형태가 아니거나, 양의 정수가 아니거나, 100 초과인 경우 예외 발생
+- [x]  예외가 발생하지 않았다면 정수로 변환된 input을 리턴
 
 ## UI 클래스
 
@@ -98,10 +98,10 @@ public String[] getCarNames()
 public int getRoundLimit()
 : \: 경주 시도 횟수를 입력받는 메소드.
 
-- [ ]  `시도할 횟수는 몇 회인가요?` 메시지 출력
-- [ ]  `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용해 시도할 횟수 입력받기
-- [ ]  Validate.validateRoundLimit() 호출해 입력받은 값 검증
-- [ ]  입력받은 값에 문제가 없다면 해당 입력 값을 정수로 변환한 값을 리턴
+- [x]  `시도할 횟수는 몇 회인가요?` 메시지 출력
+- [x]  `camp.nextstep.edu.missionutils.Console`의`readLine()`을 활용해 시도할 횟수 입력받기
+- [x]  Validate.validateRoundLimit() 호출해 입력받은 값 검증
+- [x]  입력받은 값에 문제가 없다면 해당 입력 값을 정수로 변환한 값을 리턴
 
 public void printRoundResult(boolean isFirstRound, List\<Car> participants)
 : \: 각 라운드의 결과를 출력하는 메소드.
