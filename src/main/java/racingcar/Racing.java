@@ -36,6 +36,22 @@ public class Racing {
         System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
             RacingUtil.setMoveOrStop(carList);
+            printCarPosition();
         }
+    }
+
+    private void printCarPosition() {
+        for (Car car : carList) {
+            System.out.print(car.getName() + " : ");
+            barFromCarPosition(car.getPosition());
+        }
+        System.out.println();
+    }
+
+    private void barFromCarPosition(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
