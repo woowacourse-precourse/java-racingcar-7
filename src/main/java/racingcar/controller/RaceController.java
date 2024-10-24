@@ -17,7 +17,7 @@ public class RaceController {
 
     public void execute() {
         do {
-            List<Car> cars = service.play();
+            List<Car> cars = service.proceed();
             view.displayMessage(cars.toString());
         } while (!service.isGameEnd());
         view.displayMessage("우승자 : " + service.getWinner().toString());
