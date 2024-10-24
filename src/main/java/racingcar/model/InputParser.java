@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputParser {
-    public List<String> parse(String initialInput) {
+    public List<String> parseName(String initialInput) {
         return Arrays.stream(initialInput.split(",")).toList();
     }
 }
