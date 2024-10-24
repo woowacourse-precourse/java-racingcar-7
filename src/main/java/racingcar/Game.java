@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Game {
     private final List<Car> participants = new ArrayList<>();
-    private int gameRepeat;
 
-    public Game(List<String> carNamesList, int gameRepeat) {
+    public Game(List<String> carNamesList) {
         registerParticipants(carNamesList);
-        this.gameRepeat = gameRepeat;
     }
 
     private void registerParticipants(List<String> carNamesList) {
