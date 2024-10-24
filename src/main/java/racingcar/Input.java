@@ -15,6 +15,7 @@ public class Input {
     }
     return names;
   }
+
   public static int count(){
     System.out.println("시도할 횟수는 몇 회인가요?");
     String s = Console.readLine();
