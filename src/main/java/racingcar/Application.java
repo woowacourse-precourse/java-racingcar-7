@@ -27,5 +27,11 @@ public class Application {
         Car(String name) {
             this.name = name;
         }
+
+        void move(int value) {
+            if (value >= 4) {
+                this.moveCount++;
+            }
+        }
     }
 }
