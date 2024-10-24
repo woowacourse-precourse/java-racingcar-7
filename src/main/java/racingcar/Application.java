@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.dto.RacingResult;
 import racingcar.model.RacingCars;
+import racingcar.model.dependency.RacingCarDependency;
 import racingcar.model.dependency.moving_strategy.MovingStrategy;
 import racingcar.model.dependency.moving_strategy.random.DefaultRandomMovingStrategy;
 import racingcar.model.dependency.validator.DefaultRacingCarValidator;
@@ -18,9 +19,8 @@ public class Application {
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
 
-    private static final RacingCarValidator racingCarValidator = new DefaultRacingCarValidator();
-    private static final MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
-    private final static RacingService racingService = new RacingService(racingCarValidator, movingStrategy);
+    private static final RacingCarDependency racingCarDependency = buildRacingCarDependency();
+    private final static RacingService racingService = buildRacingService();
 
     // 필요 변수
     private static RacingCars racingCars;
@@ -76,5 +76,16 @@ public class Application {
     private static int getTryCount() {
         outputView.printInputTryCount();
         return inputView.getTryCount();
+    }
+
+    // dependency injection 을 위한 함수
+    private static RacingCarDependency buildRacingCarDependency() {
+        RacingCarValidator racingCarValidator = new DefaultRacingCarValidator();
+        MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
+        return new RacingCarDependency(racingCarValidator, movingStrategy);
+    }
+
+    private static RacingService buildRacingService() {
+        return new RacingService(racingCarDependency);
     }
 }
