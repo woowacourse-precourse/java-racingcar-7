@@ -1,5 +1,6 @@
 package racingcar.util;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class RacingValidator {
@@ -11,6 +12,7 @@ public class RacingValidator {
         List<String> nameList = List.of(input.split(","));
         isValidNameListSize(nameList);
         isValidNameLength(nameList);
+        isValidDuplicateName(nameList);
     }
 
     private static void isValidNameListSize(List<String> nameList) {
@@ -23,6 +25,13 @@ public class RacingValidator {
         boolean validLength = nameList.stream()
                 .anyMatch(s -> s.length() < MIN_NAME_LENGTH || s.length() > MAX_NAME_LENGTH);
         if (validLength) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isValidDuplicateName(List<String> nameList) {
+        int validLength = new HashSet<>(nameList).size();
+        if (validLength != nameList.size()) {
             throw new IllegalArgumentException();
         }
     }

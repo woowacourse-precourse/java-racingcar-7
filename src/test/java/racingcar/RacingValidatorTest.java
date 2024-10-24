@@ -32,6 +32,14 @@ public class RacingValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("이름이 중복일 경우 오류 테스트")
+    @Test
+    void isDuplicateName() {
+        String input = "java,test,test";
+        assertThatThrownBy(() -> RacingValidator.isCarNameInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("이동 횟수 입력이 숫자가 아닐 경우 오류 테스트")
     @Test
     void isValidMoveCount() {
