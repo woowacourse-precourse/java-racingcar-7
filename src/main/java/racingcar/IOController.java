@@ -34,9 +34,7 @@ public class IOController {
     }
 
     public static void printFinalWinner(List<String> winners){
-
         String str = String.join(", ", winners);
         System.out.print("최종 우승자 : "+ str);
-
     }
 }
