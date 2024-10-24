@@ -9,8 +9,8 @@
 
 ### 2. StringUtils
 
-- [ ] validateNotEmpty - 입력 받은 문자열이 비어있는지 검증하는 메서드
-- [ ] toNumber - 문자열을 숫자로 형 변환 메서드
+- [X] validateNotEmpty - 입력 받은 문자열이 비어있는지 검증하는 메서드
+- [X] toNumber - 문자열을 숫자로 형 변환 메서드
 
 ### 3. Car
 
