@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.stream.IntStream;
 import racingcar.service.CarRaceService;
+import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,6 +20,7 @@ public class CarRaceController {
 
     public void run() {
         String carNames = inputView.inputCarNames();
+        Validator.validateCarNames(carNames);
         String attempts = inputView.inputAttempts();
         carRaceService.init(carNames);
 
