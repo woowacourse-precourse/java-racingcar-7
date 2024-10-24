@@ -22,4 +22,9 @@ public class Car {
     return position;
   }
 
+  public void move() {
+    if (Randoms.pickNumberInRange(0, 9) >= 4) {
+      position++;
+    }
+  }
 }
