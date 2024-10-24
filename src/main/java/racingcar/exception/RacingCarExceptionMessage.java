@@ -9,7 +9,8 @@ public enum RacingCarExceptionMessage {
     INPUT_IS_NOT_EMPTY("입력 값은 빈 값이 될 수 없습니다."),
     INPUT_IS_NOT_COMMA("입력 값은 ,만 입력할 수 없습니다."),
     REPETITIONS_IS_ACCESS_OVER_ONCE("반복 횟수는 1이상 만 입력할 수 있습니다."),
-    CAR_NAME_DUPLICATE_EXCEPTION("반복 횟수는 1이상 만 입력할 수 있습니다.");
+    CAR_NAME_DUPLICATE_EXCEPTION("반복 횟수는 1이상 만 입력할 수 있습니다."),
+    POSITION_MUST_BE_INTEGER("반복 횟수는 1이상 만 입력할 수 있습니다.");
 
 
     private final String errorMessage;
