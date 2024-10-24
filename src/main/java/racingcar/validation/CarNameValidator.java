@@ -46,6 +46,7 @@ public class CarNameValidator {
             validateCarNameLength(car);
             validateCarNameDuplication(carNames, car);
             validateCarNameEmpty(car);
+            validateCarNameCondition(car);
         }
     }
 
@@ -70,6 +71,12 @@ public class CarNameValidator {
     private static void validateCarCount(String[] cars) {
         if (cars.length < 2) {
             throw new IllegalArgumentException(ErrorMessage.MIN_CAR_COUNT.getMessage());
+        }
+    }
+
+    private static void validateCarNameCondition(String carName) {
+        if (!Pattern.compile("^[a-zA-Z0-9가-힣 ]+$").matcher(carName).matches()) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CONDITION.getMessage());
         }
     }
 }

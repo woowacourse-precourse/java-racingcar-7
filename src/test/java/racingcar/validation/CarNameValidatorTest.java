@@ -76,7 +76,7 @@ class CarNameValidatorTest {
 
     @DisplayName("자동차 이름에 공백, 영어, 숫자, 한글을 제외한 문자가 포함된 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"poBi,우니", "p0b1,우ㄴ1"})
+    @ValueSource(strings = {"poB#,우니", "p0b1,우.1"})
     void validateNameCondition(String input) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CarNameValidator.validateCar(input);
