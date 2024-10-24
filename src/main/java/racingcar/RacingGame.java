@@ -18,6 +18,18 @@ public class RacingGame {
         tryCount = changeTryCountToInt(tryCountStr);
     }
 
+    public void start(List<Car> cars, int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            startRound(cars);
+        }
+    }
+
+    public void startRound(List<Car> cars) {
+        for (Car car : cars) {
+            car.goAndStop();
+        }
+    }
+
     public String[] createNames(String inputNames) {
         String[] names = inputNames.split(",");
         for (String name : names) {
