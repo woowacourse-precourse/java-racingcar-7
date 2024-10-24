@@ -9,7 +9,7 @@ public final class RacingGame {
 
     private static final int MIN_RANGE = 0;
     private static final int MAX_RANGE = 9;
-    private static final int ALLOWED_TO_MOVE_BEGIN = 4;
+    private static final int ALLOWED_TO_MOVE_THRESHOLD = 4;
 
     private final RacingCars racingCars;
     private final int rounds;
@@ -57,6 +57,6 @@ public final class RacingGame {
     private boolean isCarAllowedToMove() {
         int value = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
 
-        return value >= ALLOWED_TO_MOVE_BEGIN;
+        return value >= ALLOWED_TO_MOVE_THRESHOLD;
     }
 }
