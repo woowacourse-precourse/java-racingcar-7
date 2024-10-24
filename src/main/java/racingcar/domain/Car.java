@@ -5,15 +5,15 @@ public class Car {
     private static final String COLON = " : ";
     private static final String RACE_SYMBOL = "-";
 
-    private final String name;
+    private final Name name;
     private int position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = 0;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
@@ -33,6 +33,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + COLON + RACE_SYMBOL.repeat(position);
+        return name.getName() + COLON + RACE_SYMBOL.repeat(position);
     }
 }
