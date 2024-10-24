@@ -62,7 +62,7 @@ public class Application {
                 carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
             }
 
-            if (carNames.size() < 2 || !validateNameLimit(carNames)) {
+            if (carNames.size() < 1 || !validateNameLimit(carNames)) {
                 throw new IllegalArgumentException();
             }
             return carNames;
@@ -85,7 +85,7 @@ public class Application {
 
         boolean validateNameLimit(ArrayList<String> carNames) {
             for (String name : carNames) {
-                if(name.length()>5){
+                if (name.length() > 5) {
                     return false;
                 }
             }
