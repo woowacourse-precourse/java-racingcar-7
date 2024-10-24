@@ -60,6 +60,7 @@ public class InputView {
         String count = Console.readLine();
         int gameCount = validateCount(count);
         System.out.println();
+        Console.close();
 
         return new InputResult(cars, gameCount);
     }
