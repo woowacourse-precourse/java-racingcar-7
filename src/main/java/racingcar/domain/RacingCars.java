@@ -8,6 +8,7 @@ import java.util.List;
 public class RacingCars {
     private static final int CAR_LIST_MAX_SIZE = 10;
 
+    private final RandomNumber randomNumber;
     private final List<Car> carList;
 
     public RacingCars(String readLine) {
@@ -19,6 +20,7 @@ public class RacingCars {
         }
         validationListSize(tmpList);
         this.carList = tmpList;
+        randomNumber = new RandomNumber();
     }
 
     private void validationListSize(List<Car> tmpList) {
@@ -29,7 +31,7 @@ public class RacingCars {
 
     public void move() {
         for(Car car : carList) {
-            if(RandomNumber.isAdvance()){
+            if(randomNumber.isAdvance()){
                 car.advance();
             }
         }
@@ -73,9 +75,9 @@ public class RacingCars {
         int max = -1;
         for(Car car : carList) {
             CarDTO carDTO = car.getCarDTO();
-            int postion = carDTO.getPosition();
-            if(postion > max){
-                max = postion;
+            int position = carDTO.getPosition();
+            if(position > max){
+                max = position;
             }
         }
         return max;
