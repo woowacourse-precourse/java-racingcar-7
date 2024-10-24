@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Car;
 
 public class OutputHandler {
@@ -12,8 +14,29 @@ public class OutputHandler {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void printCurrentStatus(Car car) {
+    public void printCurrentStatus(Car car) {
         String result = car.getPositionStatus();
         System.out.println(result);
+    }
+
+    public List<String> findFinalWinners(List<Car> cars) {
+        List<String> finalWinners = new ArrayList<>();
+        int tmp = 0;
+        for (Car car : cars) {
+            if (car.getPosition() >= tmp) {
+                tmp = car.getPosition();
+            }
+        }
+        for (Car car : cars) {
+            if (car.getPosition() == tmp) {
+                finalWinners.add(car.getName());
+            }
+        }
+        return finalWinners;
+    }
+
+    public void printFinalWinner(List<String> finalWinners) {
+        String result = String.join(", ", finalWinners);
+        System.out.println("최종 우승자 : " + result);
     }
 }
