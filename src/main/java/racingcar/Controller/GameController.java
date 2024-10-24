@@ -22,6 +22,6 @@ public class GameController {
         IntStream.range(0,roundNum).forEach(i -> racingCars.playRound());
     }
     public void showWinner(){
-
+        racingCars.printWinner();
     }
 }

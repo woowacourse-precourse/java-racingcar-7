@@ -26,4 +26,7 @@ public class Car {
     public String getRoundResult(){
         return this.name + " : " + Utils.repeatDash(this.position);
     }
+    public boolean checkWinner(int winnerDistance){
+        return this.position == winnerDistance;
+    }
 }

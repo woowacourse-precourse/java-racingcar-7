@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.IntStream;
 
 public class Utils {
@@ -17,5 +18,8 @@ public class Utils {
         StringBuilder sb = new StringBuilder();
         IntStream.range(0,position).forEach(i -> sb.append("-"));
         return sb.toString();
+    }
+    public static int getMax(ArrayList<Integer> nums){
+        return Collections.max(nums);
     }
 }
