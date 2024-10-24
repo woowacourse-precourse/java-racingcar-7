@@ -76,4 +76,19 @@ public class RacingCarServiceTest {
         // then
         assertThat(namesOfWinners).containsExactlyInAnyOrder("Car1", "Car2");
     }
+
+    @Test
+    void 모든_자동차가_우승자인_경우() {
+        // given
+        Car car1 = new Car("Car1", 5);
+        Car car2 = new Car("Car2", 5);
+        Car car3 = new Car("Car3", 5);
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+
+        // when
+        List<String> namesOfWinners = racingCarService.getWinners(cars);
+
+        // then
+        assertThat(namesOfWinners).containsExactlyInAnyOrder("Car1", "Car2", "Car3");
+    }
 }
