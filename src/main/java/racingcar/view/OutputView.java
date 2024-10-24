@@ -9,6 +9,7 @@ public class OutputView {
     private static final String DETAIL = " : ";
     private static final String DELIMITER = ", ";
     private static final String WINNER_MESSAGE = "최종 우승자" + DETAIL;
+    private static final String ERROR_MESSAGE = "[ERROR] ";
 
     private OutputView() {
     }
@@ -29,7 +30,11 @@ public class OutputView {
     }
 
     public static void printWinner(final List<String> winners) {
-        System.out.println(WINNER_MESSAGE);
+        System.out.print(WINNER_MESSAGE);
         System.out.println(String.join(DELIMITER, winners));
+    }
+
+    public static void printErrorMessage(final String message) {
+        System.out.println(ERROR_MESSAGE + message);
     }
 }
