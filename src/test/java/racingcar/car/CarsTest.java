@@ -14,11 +14,10 @@ class CarsTest {
     private Car pobi;
     private Car dk;
     private Car foo;
-    private MovingStrategy defaultStrategy;
 
     @BeforeEach
     void setup() {
-        defaultStrategy = new RandomMovingStrategy();
+        MovingStrategy defaultStrategy = new RandomMovingStrategy();
         pobi = new Car("pobi", defaultStrategy);
         dk = new Car("DK", defaultStrategy);
         foo = new Car("foo", defaultStrategy);
