@@ -11,7 +11,7 @@ public class InputHandler {
         return parseCarNames(carNames);
     }
 
-    public int getAttemp() {
+    public int getAttemptCount() {
         return Integer.parseInt(Console.readLine());
     }
 
