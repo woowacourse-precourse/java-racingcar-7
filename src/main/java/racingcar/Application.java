@@ -15,12 +15,19 @@ public class Application {
     public static String inputCarName() {
         String carName =  Console.readLine();
         isSeperatorPresent(carName);
+        isLastCharacterComma(carName);
         return carName;
     }
 
     public static void isSeperatorPresent(String carName) {
         if (!carName.contains(",")) {
             throw new IllegalArgumentException("쉼표를 이용하여 자동차 이름을 2개 이상 입력해 주세요.");
+        }
+    }
+
+    public static void isLastCharacterComma(String carName) {
+        if (carName.charAt(carName.length() - 1) == ',') {
+            throw new IllegalArgumentException("쉼표 뒤에 자동차 이름을 입력해 주세요.");
         }
     }
 
