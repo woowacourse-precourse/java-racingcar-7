@@ -25,4 +25,24 @@ public class Game {
             }
         }
     }
+
+    public void printProgress() {
+        String DISTANCE_INDICATOR = "-";
+        String NAME_DISTANCE_SPLIT = " : ";
+        StringBuilder printMessage = new StringBuilder();
+
+        for (Car participant : participants) {
+            printMessage.setLength(0);
+
+            String participantName = participant.getName();
+            int participantDistance = participant.getDistance();
+
+            printMessage.append(participantName);
+            printMessage.append(NAME_DISTANCE_SPLIT);
+            printMessage.append(DISTANCE_INDICATOR.repeat(participantDistance));
+            printMessage.append("\n");
+
+            System.out.println(printMessage);
+        }
+    }
 }
