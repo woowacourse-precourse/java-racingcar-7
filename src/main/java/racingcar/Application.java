@@ -26,7 +26,7 @@ public class Application {
 			printResult(n, cars);
 		}
 
-		printWinner(maxMoveCounter, cars);
+		printWinner(maxMoveCounter, n, cars);
 
 	}
 
@@ -68,7 +68,16 @@ public class Application {
 		}
 	}
 
-	public static void printWinner(int maxMove, Car[] cars) {
+	public static void printWinner(int maxMove, int numCars, Car[] cars) {
 
+		System.out.print("최종 우승자 : ");
+
+		for (int i = 0; i < numCars; i++) {
+			if (cars[i].getMoveCounter() == maxMove && i != numCars - 1) {
+				System.out.print(cars[i].getName() + ", ");
+			} else if (cars[i].getMoveCounter() == maxMove && i == numCars - 1) {
+				System.out.print(cars[i].getName());
+			}
+		}
 	}
 }
