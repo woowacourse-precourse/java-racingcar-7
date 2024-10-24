@@ -26,6 +26,7 @@ public class Application {
         }
 
         for (int i = 0; i < 5; i++) {
+            StringBuilder sb = new StringBuilder();
             for (int j = 0; j < count; j++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
 
@@ -34,6 +35,16 @@ public class Application {
                 }
             }
 
+            for (int j = 0; j < count; j++) {
+                sb.append(cars.get(j));
+                sb.append(" : ");
+                for (int k = 0; k < location.get(j); k++) {
+                    sb.append("-");
+                };
+                sb.append("\n");
+            }
+            sb.append("\n");
+            System.out.println(sb);
         }
     }
 }
