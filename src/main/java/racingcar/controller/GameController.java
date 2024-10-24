@@ -2,11 +2,16 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.Game;
+import racingcar.service.SplitService;
+import racingcar.valid.NumberValid;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class GameController {
     private static GameController instance;
+    private SplitService splitService = SplitService.getInstance();
     private Game game;
 
     private GameController() {
@@ -22,15 +27,16 @@ public class GameController {
     public void gameInput(){
         OutputView.requestCarNames();
         String names = InputView.inputCarsNames();
+        List<String> splitNames = splitService.splitNames(names);
         OutputView.requestAttemptCount();
         String times = InputView.inputGameTimes();
+        NumberValid.checkNumberType(times);
+        NumberValid.checkNumber(Integer.parseInt(times));
 
-        //valid check
         game = new Game(Integer.parseInt(times));
-        for(String name: names.split(",")){
-            game.addCar(new Car(name));
+        for(String name: splitNames){
+            game.addCar(name);
         }
-        System.out.println();
     }
 
     public void gameProgress(){
