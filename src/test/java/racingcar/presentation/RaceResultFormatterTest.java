@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.game.RacingGame;
-import racingcar.domain.game.RaceRounds;
+import racingcar.domain.game.RoundCount;
 import racingcar.domain.game.ScoreBoard;
 
 class RaceResultFormatterTest {
@@ -29,7 +29,7 @@ class RaceResultFormatterTest {
     @DisplayName("자동차들의 위치를 올바른 형식으로 포맷한다.")
     void formatScoreBoard(Cars cars, String expected) {
         // given
-        RacingGame racingGame = new RacingGame(cars, new RaceRounds(1), ScoreBoard.ofEmpty());
+        RacingGame racingGame = new RacingGame(cars, new RoundCount(1), ScoreBoard.ofEmpty());
         ScoreBoard play = racingGame.play();
 
         // when

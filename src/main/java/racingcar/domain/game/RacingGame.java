@@ -1,29 +1,28 @@
 package racingcar.domain.game;
 
 import java.util.List;
-import racingcar.domain.car.Car;
 import racingcar.domain.car.CarState;
 import racingcar.domain.car.Cars;
 
 public class RacingGame {
     private final Cars cars;
-    private final RaceRounds raceRounds;
+    private final RoundCount roundCount;
     private final ScoreBoard scoreBoard;
 
-    public RacingGame(Cars cars, RaceRounds raceRounds, ScoreBoard scoreBoard) {
+    public RacingGame(Cars cars, RoundCount roundCount, ScoreBoard scoreBoard) {
         this.cars = cars;
-        this.raceRounds = raceRounds;
+        this.roundCount = roundCount;
         this.scoreBoard = scoreBoard;
     }
 
     public ScoreBoard play() {
-        moveCarsInRounds();
+        runAllRounds();
         scoreBoard.recordWinners(cars.getWinnerNames());
         return scoreBoard;
     }
 
-    private void moveCarsInRounds() {
-        raceRounds.forEach(() -> {
+    private void runAllRounds() {
+        roundCount.iterate(() -> {
             cars.moveAll();
             scoreBoard.recordRound(createRoundScores());
         });
@@ -31,12 +30,8 @@ public class RacingGame {
 
     private RoundScores createRoundScores() {
         List<CarState> carStates = cars.carList().stream()
-                .map(this::getCarState)
+                .map(each -> new CarState(each.getName(), each.getPosition()))
                 .toList();
         return new RoundScores(carStates);
-    }
-
-    private CarState getCarState(Car car) {
-        return new CarState(car.getName(), car.getPosition());
     }
 }

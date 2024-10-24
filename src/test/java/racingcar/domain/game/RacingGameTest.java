@@ -16,9 +16,9 @@ class RacingGameTest {
     void setUp() {
         String carNames = "car1,car2";
         Cars cars = Cars.of(carNames, () -> true);
-        RaceRounds raceRounds = new RaceRounds(3);
+        RoundCount roundCount = new RoundCount(3);
         ScoreBoard scoreBoard = ScoreBoard.ofEmpty();
-        racingGame = new RacingGame(cars, raceRounds, scoreBoard);
+        racingGame = new RacingGame(cars, roundCount, scoreBoard);
     }
 
     @Test

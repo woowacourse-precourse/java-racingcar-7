@@ -13,13 +13,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.global.ErrorMessage;
 
-class RaceRoundsTest {
+class RoundCountTest {
 
     @ParameterizedTest
     @DisplayName("유효하지 않은 입력 값에 대해 IllegalArgumentException을 던진다")
     @MethodSource("provideInvalidInputs")
     void throwsIfInvalidInput(String invalidInput) {
-        assertThatThrownBy(() -> RaceRounds.of(invalidInput))
+        assertThatThrownBy(() -> RoundCount.of(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NUMBER_FORMAT_REQUIRED.getMessage());
     }
@@ -35,38 +35,38 @@ class RaceRoundsTest {
 
     @ParameterizedTest
     @CsvSource({"5, 5", "0, 0"})
-    @DisplayName("Rounds는 유효한 입력 값을 받아 올바르게 생성된다.")
+    @DisplayName("RoundCount 는 유효한 입력 값을 받아 올바르게 생성된다.")
     void construct(String input, int expectedValue) {
-        RaceRounds raceRounds = RaceRounds.of(input);
-        Assertions.assertThat(raceRounds.value()).isEqualTo(expectedValue);
+        RoundCount roundCount = RoundCount.of(input);
+        Assertions.assertThat(roundCount.value()).isEqualTo(expectedValue);
     }
 
     @Test
     @DisplayName("음수 값을 직접 입력할 경우 IllegalArgumentException을 던진다")
     void throwsIfNegativeValue() {
-        assertThatThrownBy(() -> new RaceRounds(-1))
+        assertThatThrownBy(() -> new RoundCount(-1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
     }
 
     @Test
-    @DisplayName("forEach 메서드는 지정된 횟수만큼 Runnable을 실행한다.")
-    void forEach_runsCorrectNumberOfTimes() {
-        RaceRounds raceRounds = new RaceRounds(3);
+    @DisplayName("executeForEachRound 메서드는 지정된 횟수만큼 Runnable을 실행한다.")
+    void executeForEach_Round_runsCorrectNumberOfTimes() {
+        RoundCount roundCount = new RoundCount(3);
         int[] count = {0};
 
-        raceRounds.forEach(() -> count[0]++);
+        roundCount.iterate(() -> count[0]++);
 
         assertThat(count[0]).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("0으로 RaceRounds 객체를 생성하면 forEach 메서드는 Runnable을 실행하지 않는다.")
-    void forEach_zeroRounds() {
-        RaceRounds raceRounds = new RaceRounds(0);
+    @DisplayName("0으로 RoundCount 객체를 생성하면 forEach 메서드는 Runnable을 실행하지 않는다.")
+    void executeForEach_Round_zeroRounds() {
+        RoundCount roundCount = new RoundCount(0);
         int[] count = {0};
 
-        raceRounds.forEach(() -> count[0]++);
+        roundCount.iterate(() -> count[0]++);
 
         assertThat(count[0]).isZero();
     }
