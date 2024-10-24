@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Race {
     private final int totalRaceTurn;
+    private final Cars cars = new Cars("pobi,woni,jun");
 
     public Race(int totalRaceTurn) {
         if (totalRaceTurn <= 0) {
@@ -17,7 +18,7 @@ public class Race {
         return pickedNumber;
     }
 
-    public boolean moveForwardOrNot() {
+    private boolean moveForwardOrNot() {
         int pickedNumber = pickRandomNumber();
 
         if (pickedNumber >= 4) {
@@ -26,7 +27,14 @@ public class Race {
         return false;
     }
 
-//    public static String renderScoreBoard() {
-//        for (int i = 0; i < totalRaceTurn)
-//    }
+    public String renderScoreBoard() {
+        for (int i = 0; i < totalRaceTurn; i++) {
+            for (String carName : cars.getCars().keySet()) {
+                if (moveForwardOrNot()) {
+                    cars.getCars().put(carName, cars.getCars().get(carName) + 1);
+                }
+            }
+        }
+        return String.format("pobi : %s\nwoni : %s\njun : %s", "-".repeat(cars.getCars().get("pobi")), "-".repeat(cars.getCars().get("woni")), "-".repeat(cars.getCars().get("jun")));
+    }
 }
