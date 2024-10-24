@@ -14,6 +14,15 @@ public class InputView {
                 .map(String::trim)
                 .map(ForwardController::new)
                 .toList();
+    }
 
+    public static int getAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+        }
     }
 }
