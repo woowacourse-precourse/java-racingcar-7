@@ -89,6 +89,26 @@ class RoundResultPrinter {
     }
 }
 
+//시도횟수만큼 반복하는 클래스
+class GameRepeater {
+    public void repeat(List<Car> cars, int attempts, MoveStrategy strategy) {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        CarMover carMover = new CarMover();
+        CarRandomValueAssigner assigner = new CarRandomValueAssigner();
+        RoundResultPrinter printer = new RoundResultPrinter();
+
+        for (int i = 0; i < attempts; i++) {
+            for (Car car : cars) {
+                int randomValue = randomNumberGenerator.generate();
+                assigner.assign(car, randomValue);
+                carMover.move(car, strategy, randomValue);
+            }
+            printer.print(cars);
+            System.out.println();
+        }
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput();
@@ -104,6 +124,10 @@ public class Application {
         for (String name : carNames) {
             cars.add(new Car(name));
         }
+
+        GameRepeater repeater = new GameRepeater();
+        MoveStrategy strategy = new RandomMoveStrategy();
+        repeater.repeat(cars, attempts, strategy);
 
         CounterInput attemptInput = new CounterInput();
         int attempts = attemptInput.getInput();
