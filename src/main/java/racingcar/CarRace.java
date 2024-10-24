@@ -6,42 +6,17 @@ import java.util.HashMap;
 
 public class CarRace {
 
+    private static final int MOVING_FORWARD = 4;
+    private static final int NAME_LENGTH = 5;
+
     public String play(String names, String count) {
         HashMap<String, Integer> cars = getCar(names);
         int tryCount = getCount(count);
         for (int round = 0; round < tryCount; round++) {
-            for (String car : cars.keySet()) {
-                int random = random();
-                if (random >= 4) {
-                    cars.put(car, cars.get(car) + 1);
-                }
-            }
-
-            // 라운드 결과 출력
-            for (String car : cars.keySet()) {
-                System.out.println(car + " : " + "-".repeat(cars.get(car)));
-            }
-            System.out.println();
+            move(cars);
+            printRoundResult(cars);
         }
-
         return getWinner(cars);
-
-    }
-
-    private String getWinner(HashMap<String, Integer> cars) {
-        int max = cars.values().stream().max(Integer::compare).get();
-        StringBuilder sb = new StringBuilder();
-        for (String car : cars.keySet()) {
-            if (cars.get(car) == max) {
-                sb.append(car).append(",");
-            }
-        }
-        return sb.deleteCharAt(sb.length() - 1).toString();
-
-    }
-
-    public int random() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 
     private HashMap<String, Integer> getCar(String input) {
@@ -50,6 +25,9 @@ public class CarRace {
 
             HashMap<String, Integer> carMap = new HashMap<>();
             for (String car : cars) {
+                if (car.length() >= NAME_LENGTH) {
+                    throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요");
+                }
                 carMap.put(car, 0);
             }
 
@@ -65,6 +43,44 @@ public class CarRace {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("1이상의 숫자를 입력해주세요", e);
         }
+    }
+
+    private void move(HashMap<String, Integer> cars) {
+        for (String car : cars.keySet()) {
+            int random = random();
+            if (random >= MOVING_FORWARD) {
+                cars.put(car, cars.get(car) + 1);
+            }
+        }
+    }
+
+    private int random() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private void printRoundResult(HashMap<String, Integer> cars) {
+        StringBuilder sb = new StringBuilder();
+        for (String car : cars.keySet()) {
+            sb.append(car).append(" : ").append("-".repeat(cars.get(car))).append("\n");
+        }
+        System.out.println(sb);
+    }
+
+    private String getWinner(HashMap<String, Integer> cars) {
+        int max = maxDistance(cars);
+        StringBuilder sb = new StringBuilder();
+        for (String car : cars.keySet()) {
+            if (cars.get(car) == max) {
+                sb.append(car).append(",");
+            }
+        }
+        return sb.deleteCharAt(sb.length() - 1).toString();
+
+    }
+
+    private int maxDistance(HashMap<String, Integer> cars) {
+        return cars.values().stream().max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("자동차가 없습니다"));
     }
 }
 
