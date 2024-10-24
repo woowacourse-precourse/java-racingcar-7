@@ -6,6 +6,7 @@ import racingcar.domain.CarList;
 
 import java.util.List;
 import racingcar.domain.RandomNumberGenerator;
+import racingcar.mock.TestRandomNumberGenerator;
 import racingcar.utils.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,5 +49,19 @@ public class RacingCarTest {
         car.move(3);
 
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 자동차_전체_이동_테스트() {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> cars = List.of(car1, car2);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
+        CarList carList = new CarList(cars, testRandomNumberGenerator);
+
+        carList.moveAll();
+
+        assertThat(car1.getPosition()).isEqualTo(1);
+        assertThat(car2.getPosition()).isEqualTo(0);
     }
 }
