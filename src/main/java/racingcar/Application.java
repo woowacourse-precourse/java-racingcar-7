@@ -17,6 +17,7 @@ public class Application {
         System.out.println("실행 결과");
         for (int i = 0; i < raceNumbers; i++) {
             cars.raceStart();
+            System.out.println();
         }
     }
 }
