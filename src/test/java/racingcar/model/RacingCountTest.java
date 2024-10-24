@@ -45,4 +45,36 @@ class RacingCountTest {
         //then
         assertThat(racingCount.getCount()).isEqualTo(--count);
     }
+
+    @DisplayName("경주 횟수가 0 이라면 true를 반환한다.")
+    @Test
+    void isEnd() {
+        //given
+        int count = 1;
+        RacingCount racingCount = RacingCount.from(count);
+
+        racingCount.deduct();
+
+        //when
+        boolean result = racingCount.isEnd();
+
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("경주 횟수가 0이 아니라면 false를 반환한다.")
+    @Test
+    void isNotEnd() {
+        //given
+        int count = 1;
+        RacingCount racingCount = RacingCount.from(count);
+
+        //when
+        boolean result = racingCount.isEnd();
+
+        //then
+        assertThat(result).isFalse();
+    }
+
+
 }
