@@ -27,7 +27,7 @@ class CarTest {
     @Test
     void 이름_길이_예외() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> new Car("pobiiii"))
+            assertThatThrownBy(() -> Car.validateNameLength("pobiiii"))
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
