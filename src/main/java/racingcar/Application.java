@@ -27,6 +27,7 @@ public class Application {
         return cars;
 
     }
+
     public static void move(int count,Car[] cars){
         System.out.println("실행 결과");
         for (int i=0; i<count;i++){
@@ -57,7 +58,7 @@ public class Application {
         Car[] cars=getCarName(inputCars);
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count=scanner.nextInt();
-
+        move(count,cars);
 
     }
 }
