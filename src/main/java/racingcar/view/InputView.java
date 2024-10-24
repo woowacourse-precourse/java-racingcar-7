@@ -12,7 +12,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String requestRaceRound() {
+    public String requestRaceRoundCount() {
         System.out.println(REQUEST_RACE_ROUND_MESSAGE);
         return Console.readLine();
     }
