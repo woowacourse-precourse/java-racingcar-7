@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.NoSuchElementException;
 
-public class IOHandler {
+public class InputHandler {
 
     public UserInput inputCarNamesAndAttemptCount() {
         try {
