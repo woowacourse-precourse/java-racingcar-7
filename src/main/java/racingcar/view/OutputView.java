@@ -13,4 +13,8 @@ public class OutputView {
     public void getCarName() {
         System.out.println(OutputMessage.TYPE_CAR_NAME.getMessage());
     }
+
+    public void getAttemptCount() {
+        System.out.println(OutputMessage.ASK_ATTEMPT_COUNT.getMessage());
+    }
 }
