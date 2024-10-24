@@ -20,4 +20,8 @@ public class Cars {
     private boolean hasDuplicateCar(List<Car> cars) {
         return cars.stream().distinct().count() != cars.size();
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

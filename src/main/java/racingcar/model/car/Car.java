@@ -2,7 +2,7 @@ package racingcar.model.car;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVEABLE_LIMIT = 4;
@@ -61,10 +61,5 @@ public class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
-    }
-
-    @Override
-    public int compareTo(Car car) {
-        return car.location - this.location;
     }
 }

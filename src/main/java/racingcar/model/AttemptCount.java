@@ -19,4 +19,8 @@ public class AttemptCount {
     private boolean isOutOfRange(int attemptCount) {
         return attemptCount <= MINIMUM;
     }
+
+    public int getAttemptCount() {
+        return attemptCount;
+    }
 }

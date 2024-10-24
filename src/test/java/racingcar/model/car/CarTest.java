@@ -1,6 +1,5 @@
 package racingcar.model.car;
 
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,18 +40,5 @@ public class CarTest {
         Car car2 = new Car("A");
 
         Assertions.assertThat(car1).isEqualTo(car2);
-    }
-
-    @Test
-    void shouldSortedByLocationDesc() {
-        Car carA = new Car("A");
-        carA.move(3);
-
-        Car carB = new Car("B");
-        carB.move(5);
-
-        List<Car> cars = List.of(carA, carB);
-        Assertions.assertThat(cars.stream().sorted().toList())
-                .isEqualTo(List.of(carB, carA));
     }
 }
