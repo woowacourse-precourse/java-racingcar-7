@@ -31,13 +31,12 @@ class InputTest {
     @DisplayName("에러 올바른 값과 빈값")
     void test2() {
         String s = ",woni,jun";
-        Input input = new Input(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarList.from(input);
+            new Input(s);
         });
 
-        assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
+        assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
     @Test
@@ -57,13 +56,12 @@ class InputTest {
     @DisplayName("빈값 처리")
     void test4() {
         String s = ",,";
-        Input input = new Input(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarList.from(input);
+            new Input(s);
         });
 
-        assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
+        assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
     @Test

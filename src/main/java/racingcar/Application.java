@@ -1,26 +1,28 @@
 package racingcar;
 
+import racingcar.config.RacingcarConfig;
 import racingcar.controller.CarController;
 import racingcar.domain.Input;
 import racingcar.domain.TryCount;
-import racingcar.service.CarService;
-import racingcar.service.impl.CarServiceImpl;
-import racingcar.utils.Output;
 import racingcar.viewer.Viewer;
 
 public class Application {
     public static void main(String[] args) {
-        Output output = new Output();
+        Viewer viewer = RacingcarConfig.viewer();
+        CarController carController = RacingcarConfig.carController();
 
-        CarService carService = new CarServiceImpl(output);
-        Viewer viewer = new Viewer(output);
-        CarController carController = new CarController(carService, viewer);
+        try {
+            Input input = carController.toInput();
+            TryCount tryCount = carController.toTryCount();
 
-        Input input = carController.toInput();
-        TryCount tryCount = carController.toTryCount();
+            carController.startRace(input, tryCount);
 
-        carController.startRace(input, tryCount);
+            viewer.print();
+        } catch (OutOfMemoryError e) {
+            throw new IllegalArgumentException();
 
-        viewer.print();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }

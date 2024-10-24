@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.COLON_SEPARATOR;
 import static racingcar.utils.Constant.MAX_RANDOM;
 import static racingcar.utils.Constant.MIN_RANDOM;
 import static racingcar.utils.Constant.MOVE_THRESHOLD;
@@ -11,20 +12,20 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
-    private Long cnt;
+    private Integer cnt;
 
     public Car(String name) {
         this.name = name;
-        this.cnt = 0L;
+        this.cnt = 0;
     }
 
-    public Car(String name, Long cnt) {
+    public Car(String name, Integer cnt) {
         this.name = name;
         this.cnt = cnt;
     }
 
     // 랜덤값에 따라 전진하는지 멈추는 기능
-    public Long move() {
+    public Integer move() {
         if (isMoveable()) {
             this.cnt += 1;
         }
@@ -34,18 +35,12 @@ public class Car {
 
     // 현재 현황을 스트링으로 표현하는 기능
     public String generateStatus() {
-        StringBuilder output = new StringBuilder(this.name + " : ");
+        String repeatStr = MOVING.repeat(this.cnt);
 
-        long repeat = 0L;
-        while (repeat < this.cnt) {
-            output.append(MOVING);
-            repeat++;
-        }
-
-        return output.toString();
+        return this.name + COLON_SEPARATOR + repeatStr;
     }
 
-    public boolean isMaxMove(Long maxCnt) {
+    public boolean isMaxMove(Integer maxCnt) {
         return cnt.equals(maxCnt);
     }
 

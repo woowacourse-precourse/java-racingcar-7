@@ -15,7 +15,7 @@ class TryCountTest {
     void test1() {
         String s = "5";
         TryCount result = new TryCount(s);
-        TryCount except = new TryCount(5L);
+        TryCount except = new TryCount(5);
 
         assertThat(result).isEqualTo(except);
     }
@@ -52,7 +52,7 @@ class TryCountTest {
         String s = "0";
 
         TryCount result = new TryCount(s);
-        TryCount except = new TryCount(0L);
+        TryCount except = new TryCount(0);
 
         assertThat(result).isEqualTo(except);
     }
@@ -70,10 +70,10 @@ class TryCountTest {
     @Test
     @DisplayName("정상 값 : 최대 입력")
     void test6() {
-        String maxValue = String.valueOf(Long.MAX_VALUE);
+        String maxValue = String.valueOf(Integer.MAX_VALUE);
 
         TryCount result = new TryCount(maxValue);
-        TryCount except = new TryCount(Long.MAX_VALUE);
+        TryCount except = new TryCount(Integer.MAX_VALUE);
 
         assertThat(result).isEqualTo(except);
     }

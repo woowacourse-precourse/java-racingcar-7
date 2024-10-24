@@ -6,17 +6,17 @@ import java.util.Objects;
 
 public class TryCount {
 
-    private final Long maxCount;
-    private Long count;
+    private final Integer maxCount;
+    private Integer count;
 
     public TryCount(String input) {
         this.maxCount = parseAndValidateInput(input);
-        this.count = 0L;
+        this.count = 0;
     }
 
-    public TryCount(Long maxCount) {
+    public TryCount(Integer maxCount) {
         this.maxCount = maxCount;
-        this.count = 0L;
+        this.count = 0;
     }
 
     public boolean canTry() {
@@ -27,21 +27,21 @@ public class TryCount {
         return false;
     }
 
-    private long parseAndValidateInput(String input) {
-        long parsedCount = parseInput(input);
+    private Integer parseAndValidateInput(String input) {
+        Integer parsedCount = parseInput(input);
         validateParsedCount(parsedCount);
         return parsedCount;
     }
 
-    private long parseInput(String input) {
+    private Integer parseInput(String input) {
         try {
-            return Long.parseLong(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_COUNT.getMessage());
         }
     }
 
-    private void validateParsedCount(long count) {
+    private void validateParsedCount(Integer count) {
         if (count < 0) {
             throw new IllegalArgumentException(INVALID_COUNT.getMessage());
         }

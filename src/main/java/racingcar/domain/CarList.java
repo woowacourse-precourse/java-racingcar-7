@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.utils.Constant.SEPARATOR;
+import static racingcar.utils.Constant.COMMA_SEPARATOR;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.StringJoiner;
 public class CarList {
 
     private final List<Car> cars;
-    private Long maxMoveCnt;
+    private Integer maxMoveCnt;
 
     public CarList() {
         this.cars = new ArrayList<>();
-        this.maxMoveCnt = 0L;
+        this.maxMoveCnt = 0;
     }
 
     public CarList(List<Car> cars) {
         this.cars = cars;
-        this.maxMoveCnt = 0L;
+        this.maxMoveCnt = 0;
     }
 
     public static CarList from(Input input) {
@@ -38,10 +38,9 @@ public class CarList {
         cars.add(new Car(name));
     }
 
-    // 모든 자동차들을 움직이게 합니다.
     public void moveAll() {
         for (Car car : cars) {
-            Long moveCnt = car.move();
+            Integer moveCnt = car.move();
             changeMaxMoveCnt(moveCnt);
         }
     }
@@ -64,7 +63,7 @@ public class CarList {
                 .toList();
     }
 
-    private void changeMaxMoveCnt(Long moveCnt) {
+    private void changeMaxMoveCnt(Integer moveCnt) {
         if (this.maxMoveCnt < moveCnt) {
             this.maxMoveCnt = moveCnt;
         }
@@ -72,7 +71,7 @@ public class CarList {
 
     @Override
     public String toString() {
-        StringJoiner stringJoiner = new StringJoiner(SEPARATOR + " ");
+        StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
 
         for (Car car : cars) {
             stringJoiner.add(car.toString());

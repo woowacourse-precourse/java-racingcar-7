@@ -1,7 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.COMMA_SEPARATOR;
 import static racingcar.utils.Constant.MAX_CAR_NAME_LEN;
-import static racingcar.utils.Constant.SEPARATOR;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
@@ -16,7 +16,7 @@ public class Input {
     }
 
     protected String[] splitInput() {
-        String[] splitInput = value.split(SEPARATOR);
+        String[] splitInput = value.split(COMMA_SEPARATOR);
 
         if (splitInput.length == 0) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
@@ -26,7 +26,7 @@ public class Input {
     }
 
     protected String validName(String name) {
-        if (isInValidName(name)) {
+        if (isInvalidName(name)) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
         }
 
@@ -38,11 +38,18 @@ public class Input {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
 
+        boolean isStartComma = input.startsWith(",");
+        boolean isEndComma = input.endsWith(",");
+
+        if (isStartComma || isEndComma) {
+            throw new IllegalArgumentException(INVALID_INPUT.getMessage());
+        }
+
         return input;
     }
 
 
-    private boolean isInValidName(String name) {
+    private boolean isInvalidName(String name) {
         int length = name.length();
 
         return length == 0 || length > MAX_CAR_NAME_LEN;
