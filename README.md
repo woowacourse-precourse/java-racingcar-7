@@ -43,7 +43,7 @@
 - [X] saveAll - 입력 받은 문자열을 가지고 자동차를 모두 저장하는 메서드
 - [X] race - 레이스 진행하는 메서드
 - [X] canRacing - 레이스를 진행할 수 있는지 확인하는 메서드
-- [ ] getWinnerNames - 우승한 사용자의 이름을 가져오는 메서드
+- [X] getWinnerNames - 우승한 사용자의 이름을 가져오는 메서드
 
 ### 5. ResponseView
 

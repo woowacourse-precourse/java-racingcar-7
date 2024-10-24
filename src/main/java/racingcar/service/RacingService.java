@@ -46,4 +46,11 @@ public class RacingService {
 			car.move();
 		}
 	}
+
+	public List<String> getWinnerNames(int tryCount) {
+		List<Car> findWinners = carRepository.findWinnersByTryCount(tryCount);
+		return findWinners.stream()
+			.map(Car::getName)
+			.toList();
+	}
 }
