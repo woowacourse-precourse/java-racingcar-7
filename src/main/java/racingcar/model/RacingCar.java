@@ -3,16 +3,24 @@ package racingcar.model;
 public class RacingCar {
 
     private String carName;
-    private int position;
+    private String position;
 
-    public RacingCar(String carName, int position) {
+    public RacingCar(String carName, String position) {
         this.carName = carName;
         this.position = position;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
     void move(boolean isMovable){
         if(isMovable){
-            this.position++;
+            this.position += "-";
         }
     }
 }

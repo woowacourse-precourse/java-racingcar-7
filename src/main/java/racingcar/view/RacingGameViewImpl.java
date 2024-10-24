@@ -17,6 +17,6 @@ public class RacingGameViewImpl implements RacingGameView{
 
     @Override
     public void showResult(String result) {
-
+        System.out.println(result);
     }
 }
