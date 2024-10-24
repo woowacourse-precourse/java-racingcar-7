@@ -14,7 +14,7 @@ public class InputView {
         return input;
     }
 
-    public String inputPlayCount() {
+    public int inputPlayCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         int inputNumber = Integer.parseInt(input);
@@ -22,7 +22,7 @@ public class InputView {
         validateNull(input);
         validatePlayCount(inputNumber);
 
-        return Console.readLine();
+        return inputNumber;
     }
 
     private void validateNull(String input) {
