@@ -13,5 +13,12 @@ public class GameUtil {
         }
     }
 
+    // TODO : 게임 진행 함수
+
+    // TODO : 게임의 한턴을 진행하여 각 자동차의 값을 업데이트 해주는 함수
+
+    // TODO : 우승한 자동차를 추출하는 함수
+
+
     private GameUtil() {}
 }

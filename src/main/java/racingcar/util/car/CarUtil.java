@@ -1,6 +1,8 @@
 package racingcar.util.car;
 
 
+import racingcar.vo.CarVO;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,12 +16,10 @@ public class CarUtil {
     // 요구 사항 먼저 구현해보기
 
     // 자동차의 이름과 전진횟수를 넣을 수 있는 객체를 리턴함
-    public static List<HashMap<String, String>> getCarNameAndGoCountList(String inputValue) {
+    public static List<CarVO> getCarNameAndGoCountList(String inputValue) {
         specialCharValidation(inputValue);
         return splitAndNameValidation(inputValue).stream().map(carName -> {
-            var nameAndGoCount = new HashMap<String, String>();
-            nameAndGoCount.put("name", carName);
-            nameAndGoCount.put("goCount", "");
+            var nameAndGoCount = new CarVO(carName);
             return nameAndGoCount;
         }).toList();
 
