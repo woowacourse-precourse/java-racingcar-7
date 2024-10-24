@@ -18,6 +18,10 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
 
-        int raceRounds = Integer.parseInt(Console.readLine());
+        try {
+            int raceRounds = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다. 올바른 값을 입력해주세요.");
+        }
     }
 }
