@@ -95,7 +95,7 @@ public class CarRacing {
     }
 
     private void printGameWinners(final ArrayList<String> winners) {
-        println(WINNER_NOTICE+ String.join(", ", winners));
+        println(WINNER_NOTICE + String.join(", ", winners));
     }
 
 }

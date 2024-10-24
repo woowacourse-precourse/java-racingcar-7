@@ -137,6 +137,37 @@ class ApplicationTest extends NsTest {
         assertThat(carRacing.determineWinner(testCars)).contains("woni", "jun");
     }
 
+    @Test
+    void 자동차_한대_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi", "5");
+            assertThat(output()).contains("최종 우승자 : pobi");
+        });
+    }
+
+    @Test
+    void isUniqueNameTest() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> convertCarNames("pobi,pobi")).isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 예외_음수_시도횟수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 한글_이름_테스트() {
+        assertSimpleTest(() -> {
+            run("해은", "5");
+            assertThat(output()).contains("최종 우승자 : 해은");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

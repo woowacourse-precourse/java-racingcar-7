@@ -1,7 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static racingcar.Constants.ATTEMPTS_REGEXP;
@@ -32,6 +31,16 @@ public class Utils {
         return true;
     }
 
+    private static boolean isUniqueName(ArrayList<String> carNames) {
+        Set<String> carNameSet = new HashSet<>();
+        for (String name : carNames) {
+            if (!carNameSet.add(name)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static ArrayList<String> convertCarNames(final String nameInput) {
         ArrayList<String> carNames = new ArrayList<>();
 
@@ -39,7 +48,7 @@ public class Utils {
             carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
         }
 
-        if (carNames.isEmpty() || !validateNameLimit(carNames)) {
+        if (carNames.isEmpty() || !validateNameLimit(carNames) || !isUniqueName(carNames)) {
             throw new IllegalArgumentException();
         }
         return carNames;
