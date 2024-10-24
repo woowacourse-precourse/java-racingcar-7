@@ -2,8 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.io.CarNames;
-import racingcar.model.io.RacingChance;
+import racingcar.model.entity.CarNames;
+import racingcar.model.entity.RacingChance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
