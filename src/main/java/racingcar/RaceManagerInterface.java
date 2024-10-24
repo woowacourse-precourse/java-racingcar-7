@@ -8,5 +8,9 @@ public interface RaceManagerInterface {
     int MAX_DICE_NUM = 9;
 
     void doRace(int times);
+
     List<List<String>> getLog();
+
+    List<String> getWinner();
+
 }

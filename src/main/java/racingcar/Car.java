@@ -24,6 +24,14 @@ public class Car {
         }
     }
 
+    public boolean isFasterThan(Car car) {
+        return this.getPosition() > car.getPosition();
+    }
+
+    public boolean isDrawWith(Car car) {
+        return this.getPosition() == car.getPosition();
+    }
+
     private boolean isForward(int num) {
         return  num >= RaceManager.MIN_FORWARD_NUM;
     }
