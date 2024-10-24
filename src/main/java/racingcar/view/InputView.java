@@ -1,7 +1,10 @@
 package racingcar.view;
 
+import static racingcar.common.exception.ErrorMessage.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingCarNames;
+import racingcar.common.exception.RacingCarException;
 
 public class InputView {
 
@@ -17,7 +20,7 @@ public class InputView {
 
     private void validateEmptyInput(String input) {
         if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("입력값이 빈 문자열입니다. 입력을 다시 확인해주세요.");
+            throw RacingCarException.from(EMPTY_INPUT);
         }
     }
 }

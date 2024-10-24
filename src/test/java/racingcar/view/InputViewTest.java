@@ -18,7 +18,7 @@ class InputViewTest extends ConsoleOutputTestHelper {
         assertThatThrownBy(() -> {
                     inputView.readRacingCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값이 빈 문자열입니다. 입력을 다시 확인해주세요.")
+                .hasMessageContaining("입력값이 비어 있습니다. 값을 입력해주세요.")
         ;
     }
 }
