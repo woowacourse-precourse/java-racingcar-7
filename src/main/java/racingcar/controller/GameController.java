@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 
 import racingcar.model.Car;
+import racingcar.model.NumberValidator;
 import racingcar.model.TextSeparator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,6 +18,6 @@ public class GameController {
 				.map(Car::new)
 				.toList();
 		OutputView.printTrialCountInputMessage();
-		String trialCount = InputView.getTrialCountInput();
+		String trialCountInput = InputView.getTrialCountInput();
 	}
 }
