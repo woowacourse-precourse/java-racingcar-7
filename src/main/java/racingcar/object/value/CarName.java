@@ -1,7 +1,5 @@
 package racingcar.object.value;
 
-import java.util.Objects;
-
 public record CarName(String name) {
 
     public CarName {
@@ -21,19 +19,6 @@ public record CarName(String name) {
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof String otherName) {
-            return name.equals(otherName);
-        }
-        return false;
     }
 
 }
