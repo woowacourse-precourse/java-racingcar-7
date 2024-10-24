@@ -12,8 +12,12 @@ public class Car {
         return name;
     }
 
-    void move(){
+    public void move(){
         position++;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override

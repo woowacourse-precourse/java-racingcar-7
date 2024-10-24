@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 // GameManager 클래스명 바꿀까 고민
 public class GameController {
 
@@ -7,5 +9,9 @@ public class GameController {
 
     public GameController(String carName) {
         racingCarList.add(carName);
+    }
+
+    public void startRun(String attemptCount) {
+        List<Car> cars = racingCarList.moveCar(attemptCount);
     }
 }

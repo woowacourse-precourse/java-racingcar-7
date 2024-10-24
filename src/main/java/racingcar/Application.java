@@ -12,5 +12,6 @@ public class Application {
         String attemptCount = Console.readLine();
 
         GameController gameController = new GameController(carNames);
+        gameController.startRun(attemptCount);
     }
 }

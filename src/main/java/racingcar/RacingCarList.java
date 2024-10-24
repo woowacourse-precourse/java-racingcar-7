@@ -18,4 +18,18 @@ public class RacingCarList {
             carList.add(new Car(splitName));
         }
     }
+
+    public List<Car> moveCar(String attemptCount) {
+        int count = Validation.validateAttemptCount(attemptCount);
+        for (int i = 0; i < count; i++) {
+            for (Car car : carList) {
+                if (MoveCondition.getCondition() >= 4) {
+                    car.move();
+                }
+            }
+            OutputView.printRacingStatus(carList);
+            OutputView.printLineBreak();
+        }
+        return carList;
+    }
 }
