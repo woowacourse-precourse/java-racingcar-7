@@ -14,15 +14,16 @@ public class RaceController {
     public void start() {
         Car car = new Car();
         setCars(car);
+        set
     }
 
 
     public void setCars(Car car) {
         try {
-            car.addCar(InputView.printSetCarsNameMessage());
+            car.addCar(InputView.printSetCarsMessage());
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
-            setcars(car);
+            setCars(car);
         }
     }
 
