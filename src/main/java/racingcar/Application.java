@@ -18,6 +18,9 @@ public class Application {
 			for (int j = 0; j < n; j++) {
 				int moveCounter = cars[j].move();
 			}
+
+			System.out.println("\n실행 결과");
+			printResult(n, cars);
 		}
 
 	}
@@ -42,10 +45,21 @@ public class Application {
 			if (number < 0) {
 				throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
 			}
-
 			return number;
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("유효한 숫자가 아닙니다.", e);
+		}
+	}
+
+	public static void printResult(int numCars, Car[] cars) {
+
+		for(int i=0; i<numCars; i++) {
+			System.out.printf("%s : ", cars[i].getName());
+
+			for(int j=0; j<cars[i].getMoveCounter(); j++) {
+				System.out.print("-");
+			}
+			System.out.println();
 		}
 	}
 }
