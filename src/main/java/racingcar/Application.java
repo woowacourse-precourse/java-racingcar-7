@@ -39,6 +39,8 @@ public class Application {
                 winners.add(car.name);
             }
         }
+        String result = String.join(", ", winners);
+        System.out.printf("최종 우승자 : %s", result);
     }
 
     static class Car {
