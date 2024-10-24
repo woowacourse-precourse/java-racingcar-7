@@ -17,4 +17,8 @@ public class Parsing {
         }
         return player;
     }
+
+    public static String joinWinner(String[] winners) {
+        return String.join(DELIMITER, winners);
+    }
 }
