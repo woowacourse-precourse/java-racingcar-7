@@ -1,9 +1,11 @@
-package racingcar;
+package racingcar.ready;
 
 import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
+import racingcar.RacingGame;
 
 class RacingGameCreateCarTest {
     public RacingGame racingGame;
@@ -16,7 +18,7 @@ class RacingGameCreateCarTest {
     @Test
     public void 차생성테스트() throws Exception {
         //given
-        String[] names = racingGame.createName("pobi,woni,jun");
+        String[] names = racingGame.createNames("pobi,woni,jun");
         //when
         ArrayList<Car> cars = racingGame.createCars(names);
         //then
