@@ -27,8 +27,11 @@ public class Controller {
         String attemptCountRequest = inputView.read();
         int attemptCount = attemptCountArgumentResolver.parse(attemptCountRequest);
 
+        outputView.println("\n실행 결과");
         for (int count = 0; count < attemptCount; count++) {
             allCarMover.run(cars);
+            outputView.printCars(cars);
+            outputView.endLine();
         }
 
     }

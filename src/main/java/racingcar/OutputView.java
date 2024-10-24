@@ -5,7 +5,12 @@ import java.util.List;
 public class OutputView {
 
     public void println(final String message) {
-        System.out.println(message);
+        System.out.print(message);
+        endLine();
+    }
+
+    public void endLine() {
+        System.out.println();
     }
 
     public void printCars(final List<Car> cars) {
