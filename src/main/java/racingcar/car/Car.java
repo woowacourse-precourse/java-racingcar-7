@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import racingcar.utils.MovingUtils;
+
 import java.math.BigInteger;
 
 public class Car {
@@ -23,8 +25,8 @@ public class Car {
         return name + " : " + position;
     }
 
-    public void moveOrStop(boolean isMoveable) {
-        if (isMoveable) {
+    public void moveOrStop() {
+        if (MovingUtils.isMovable()) {
             position += "-";
         }
     }
