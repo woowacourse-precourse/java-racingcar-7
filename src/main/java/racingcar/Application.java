@@ -18,8 +18,11 @@ public class Application {
         List<String> carNames = inputHandler.getInputAboutCars();
         int rounds = inputHandler.getInputAboutRound();
 
-        // 자동차 객체를 생성하고 전략 주입
-        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        // 전략 주입
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        MoveStrategy moveStrategy = new RandomMoveStrategy(numberGenerator);
+
+        // 자동차 객체 목록 생성
         CarFactory carFactory = new CarFactory();
         List<Car> cars = carFactory.createCars(carNames, moveStrategy);
 
