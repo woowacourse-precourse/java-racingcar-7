@@ -6,24 +6,29 @@ import java.util.List;
 public class Winner {
     private List<String> winners;
 
-    public Winner(){
+    public Winner() {
         winners = new ArrayList<>();
     }
 
     public List<String> getWinner(Cars cars) {
-        List<String> winners = new ArrayList<>();
+        int maxMovedNumber = findMaxMovedNumber(cars);
+
+        for (Car car : cars.getCars()) {
+            if(car.getMovedNumber() == maxMovedNumber){
+                this.winners.add(car.getName());
+            }
+        }
+
+        return this.winners;
+    }
+
+    private int findMaxMovedNumber(Cars cars) {
         int maxMovedNumber = -1;
 
         for (Car car : cars.getCars()) {
-            int movedNumber = car.getMovedNumber();
-            if (movedNumber > maxMovedNumber) {
-                maxMovedNumber = movedNumber;
-                winners.clear();
-                winners.add(car.getName());
-            } else if (movedNumber == maxMovedNumber) {
-                winners.add(car.getName());
-            }
+            maxMovedNumber = Math.max(maxMovedNumber, car.getMovedNumber());
         }
-        return winners;
+
+        return maxMovedNumber;
     }
 }
