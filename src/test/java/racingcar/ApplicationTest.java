@@ -46,9 +46,18 @@ class ApplicationTest extends NsTest {
     @Test
     void 숫자가_아닌_시도횟수가_입력되는_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("a, b, c", "a"))
+                assertThatThrownBy(() -> runException("a,b,c", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("시도 횟수는 '한 개'의 '숫자'여야 합니다. ")
+        );
+    }
+
+    @Test
+    void 자동차_이름이_빈_문자열인_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,,b", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.")
         );
     }
 
