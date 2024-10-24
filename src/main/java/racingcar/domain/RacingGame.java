@@ -15,7 +15,8 @@ public class RacingGame {
             race();
             raceResult.append(getRaceStatus()).append("\n");
         }
-        System.out.println(raceResult.toString());
+        System.out.print(raceResult.toString());
+        printWinners();
     }
 
     private void race(){
@@ -26,9 +27,23 @@ public class RacingGame {
 
     private String getRaceStatus() {
         StringBuilder status = new StringBuilder();
-        for (Car car : cars) {
+        for (final Car car : cars) {
             status.append(car.getName()).append(" : ").append("-".repeat(car.getPosition())).append("\n");
         }
         return status.toString();
+    }
+
+    void printWinners(){
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition) // 우승자의 위치와 동일한 자동차들
+                .map(Car::getName)
+                .toList();
+
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 }
