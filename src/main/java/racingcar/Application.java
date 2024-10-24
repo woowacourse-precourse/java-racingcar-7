@@ -28,7 +28,7 @@ public class Application {
                 int randomNum = Randoms.pickNumberInRange(0,9);
 
                 if(randomNum >= 4) {
-                    cars.get(j).location += randomNum;
+                    cars.get(j).location += 1;
                 }
             }
 
