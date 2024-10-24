@@ -38,17 +38,12 @@ public class RacingCarController {
 
     private void raceCars(Cars cars, int tryCount) {
         outputView.printMoveResultMessage();
+        Race race = new Race();
 
         for (int i = 0; i < tryCount; i++) {
-            runRaceIteration(cars);
+            Cars racingCars = race.startRace(cars);
+            outputView.printMovedCars(racingCars);
         }
-    }
-
-    private void runRaceIteration(Cars cars) {
-        Race race = new Race();
-        Cars racingCars = race.startRace(cars);
-        outputView.printMovedCars(racingCars);
-        System.out.println();
     }
 
     private void printWinner(Cars cars) {
