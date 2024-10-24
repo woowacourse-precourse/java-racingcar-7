@@ -6,11 +6,11 @@
     - [ ] Car
     - [ ] CarName
     - [ ] Movement
-    - [ ] NumberValidator
+    - [x] NumberValidator
     - [ ] RandomNumberGenerator
     - [ ] WinnerDeterminer
 - View
-    - [ ] InputView
+    - [x] InputView
     - [ ] OutputView
 - Controller
     - [ ] GameController
