@@ -16,17 +16,19 @@ public class RacingGameController {
     }
 
     private int getRound(String input) {
-        int round;
-        try {
-            round = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
-
+        int round = parseRound(input);
         if (round < 1) {
             throw new IllegalArgumentException("1이상의 숫자를 입력해주세요");
         }
         return round;
+    }
+
+    private static int parseRound(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     private String formatWinner(List<String> winner) {
