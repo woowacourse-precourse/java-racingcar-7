@@ -11,16 +11,16 @@ public class CarNameValidator {
     }
     private void validateEmptyList(List<String> carNames) {
         if(carNames.isEmpty()) {
-            throw new IllegalArgumentException(",만 입력하시면 안됩니다.");
+            throw new IllegalArgumentException("입력한 값은 ,만 있으면 안됩니다 : " + carNames);
         }
     }
     private void validateLengthCarName(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.isEmpty() || carName.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 비어있거나 공백이어서는 안됩니다.");
+                throw new IllegalArgumentException("자동차 이름은 비어있거나 공백이어서는 안됩니다 : " + carName);
             }
             if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다 : " + carName.length());
             }
         }
     }
@@ -32,7 +32,7 @@ public class CarNameValidator {
         }
         for (int count : carsMap.values()) {
             if (count > 1) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다 : " + count);
             }
         }
     }
