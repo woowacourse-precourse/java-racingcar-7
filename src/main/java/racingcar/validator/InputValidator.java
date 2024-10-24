@@ -9,6 +9,12 @@ public class InputValidator {
 
     //문자열 길이가 5이하면 true, 5보다 크면 false
     public boolean checkInputLength(String input) {
+        String[] splitInput = input.split(",");
+        for (String name : splitInput) {
+            if (name.length() > 5) {
+                return false;
+            }
+        }
         return true;
     }
 }
