@@ -40,7 +40,7 @@ public class Car {
         }
     }
 
-    private boolean isValidOnlyLetters(String name){
+    private boolean isValidOnlyLetters(String name) {
         return !name.matches("[a-zA-Z]+");
     }
 }
