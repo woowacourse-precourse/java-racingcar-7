@@ -14,8 +14,8 @@ public class Validator {
         }
     }
     public static void validateEmptyOrZeroTryCount(String inputString) {
-        if (inputString.isBlank() || inputString =="0") {
-            throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다");
+        if (inputString.isBlank() || inputString.equals("0")) {
+            throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다.");
         }
     }
     public static void validateNameLength(String inputname) {

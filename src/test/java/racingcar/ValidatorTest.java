@@ -19,14 +19,16 @@ class ValidatorTest {
         Assertions.assertThatThrownBy(() ->Validator.validateNotNumber(inputString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도횟수는 양수만 입력할 수 있습니다.");
-
     }
 
 
-    @Test
-    @Disabled
+    @ParameterizedTest
+    @ValueSource(strings =  {"", "0"})
     @DisplayName("시도 횟수 입력시 빈값 또는 0 입력시 IllegalArgumentException() 예외처리")
-    void validateEmptyOrZeroString() {
+    void validateEmptyOrZeroString(String inputString) {
+        Assertions.assertThatThrownBy(()->Validator.validateEmptyOrZeroTryCount(inputString))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("0또는 빈 값을 입력하셨습니다.");
     }
 
     @Test
