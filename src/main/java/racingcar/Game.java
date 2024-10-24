@@ -1,20 +1,22 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Car> cars = new ArrayList<>();
-    private int moves;
+    Setting setting = new Setting();
+    private List<Car> cars;
 
     public void run() {
+        cars = setting.grantCarName();
+        game(setting.grantMoveCount());
     }
 
     private void game(int moves) {
         for (int i = 0; i < moves; i++) {
             judgeCarMove();
             currentCarPositions();
+            System.out.println();
         }
     }
 
