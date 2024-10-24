@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,10 +9,11 @@ import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        List<String> participants = divideMember(getInput());
+        InputHandler inputHandler = new InputHandler();
 
-        int raceTimes = Integer.parseInt(getInput());
+        List<String> participants = divideMember(inputHandler.getInput());
+
+        int raceTimes = Integer.parseInt(inputHandler.getInput());
 
         List<Integer> countList = createParticipantCount(participants.size());
 
@@ -24,10 +24,6 @@ public class Application {
         printWinner(maxCountList, participants);
     }
 
-
-    public static String getInput() {
-        return Console.readLine();
-    }
 
     public static List<String> divideMember(String input) {
         String[] names = input.split(",");
