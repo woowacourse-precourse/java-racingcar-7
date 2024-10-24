@@ -17,31 +17,34 @@ public class RacingCarController {
         this.outputView = outputView;
     }
 
-    public void playGame(){
+    public void playGame() {
         Cars cars = makeCars();
         raceCars(cars);
         printWinner(cars);
     }
 
-    private Cars makeCars(){
+    private Cars makeCars() {
         String[] carNames = inputView.scanCarNames();
         return new Cars(carNames);
     }
 
     private void raceCars(Cars cars) {
         int tryCount = inputView.scanTryCount();
-
         outputView.printMoveResultMessage();
 
-        for(int i=0; i<tryCount; i++){
-            Race race = new Race();
-            Cars racingCars = race.startRace(cars);
-            outputView.printMovedCars(racingCars);
-            System.out.println();
+        for (int i = 0; i < tryCount; i++) {
+            runRaceIteration(cars);
         }
     }
 
-    private void printWinner(Cars cars){
+    private void runRaceIteration(Cars cars) {
+        Race race = new Race();
+        Cars racingCars = race.startRace(cars);
+        outputView.printMovedCars(racingCars);
+        System.out.println();
+    }
+
+    private void printWinner(Cars cars) {
         Winner winner = new Winner();
         List<String> winners = winner.getWinner(cars);
         outputView.printWinner(winners);
