@@ -6,7 +6,7 @@ import racingcar.domain.Winners;
 
 public class OutputView {
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
-    private static final String RESULT = "실행 결과";
+    private static final String RESULT = "\n실행 결과";
     private static final String COLON = " : ";
     private static final String LINE = "-";
     private static final String DELIMITER = ", ";
