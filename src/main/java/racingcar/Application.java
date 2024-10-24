@@ -18,5 +18,7 @@ public class Application {
         GameDirector gameDirector = new GameDirector(carNames, count);
         List<Car> matchResult = gameDirector.run();
         gameDirector.printWinner(matchResult);
+
+        Console.close();
     }
 }
