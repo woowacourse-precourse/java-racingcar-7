@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 
+import racingcar.enums.Delimiter;
 import racingcar.enums.ErrorMessage;
 import racingcar.enums.NotificationMessage;
 
@@ -12,7 +13,7 @@ public class InputView {
     public List<String> inputCarNames() {
         System.out.println(NotificationMessage.INPUT_CAR_NAMES.getMessage());
         String input = Console.readLine();
-        return Arrays.asList(input.split(","));
+        return Arrays.asList(input.split(Delimiter.COMMA.getValue()));
     }
 
     public int inputRounds() {
