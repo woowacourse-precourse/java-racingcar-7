@@ -46,7 +46,30 @@ public class Game {
 
     // 우승자 출력
     private void printWinner() {
+        int maxScore = getMaxScore();
+        List<String> winners = new ArrayList<>();
 
+        // 우승자를 winner에 입력
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getScore() == maxScore) {
+                winners.add(cars.get(i).getName());
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+
+        // 우승자가 1명일 때
+        if (winners.size() == 1) {
+            System.out.println(winners.getFirst());
+        }
+
+        // 우승자가 2명 이상일 때
+        else {
+            for (int i = 0; i < winners.size() - 1; i++) {
+                System.out.print(winners.get(i) + ", ");
+            }
+            // 마지막 우승자 출력 (콤마 없이 출력하기 위해 분리)
+            System.out.println(winners.getLast());
+        }
     }
-
 }
