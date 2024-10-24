@@ -21,7 +21,9 @@ public class RacingCar {
     }
 
     public static List<String> splitParticipants(String input) {
-        return Arrays.stream(input.split(",")).map(String::trim).toList();
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     public static void validInput(String[] input) {

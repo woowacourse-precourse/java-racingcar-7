@@ -16,17 +16,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
-        );
-    }
-
-    @Test
     void function() {
         assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi", "woni");
 
@@ -52,6 +41,28 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("pobi : -", "woni : -", "yong : -", "최종 우승자 : pobi, woni, yong");
                 },
                 MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi, woni, yong", "2");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : -", "yong : -",
+                            "pobi : --", "woni : --", "yong : -",
+                            "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 기능_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
