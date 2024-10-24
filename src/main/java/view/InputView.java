@@ -20,7 +20,7 @@ public class InputView {
     private static final String TRY_COUNT_NUMBER_MINUS_ERROR_MESSAGE = "시도 횟수는 양수를 입력해야 합니다.";
 
     private static final String DELIMITER = ",";
-    private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s]";
+    private static final String OTHER_DELIMITER_REGEX = "[^,\\w\\s가-힣]";
     private static final Integer MINIMUM_CAR_NUMBER = 2;
     private static final String NUMBER_REGEX = "\\d+";
 
