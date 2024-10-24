@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.ExecutionNumber;
 import racingcar.service.DataTransformService;
 import racingcar.service.GameService;
 import racingcar.view.InputView;
@@ -43,5 +44,19 @@ public class GameController {
         outputView.newline();
 
         return dataTransformService.parseToLong(input);
+    }
+
+    public List<Car> race(List<Car> cars, ExecutionNumber executionNumber) {
+        outputView.executionMessage();
+        for (long l = 0; l < executionNumber.getNumber(); l++) {
+            cars.stream().filter(c -> gameService.isMoving()).forEach(Car::move);
+            outputView.printResult(cars);
+            outputView.newline();
+        }
+        return gameService.raceResult(cars);
+    }
+
+    public void raceResult(List<Car> winners) {
+        outputView.finalWinnerMessage(winners);
     }
 }
