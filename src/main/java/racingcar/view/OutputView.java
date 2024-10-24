@@ -1,4 +1,4 @@
-package racingcar.View;
+package racingcar.view;
 
 import racingcar.dto.RacingCarDTO;
 
@@ -11,7 +11,7 @@ public class OutputView {
      * Input : RacingCarDTO
      * Return : X
      */
-    void printEachDistanceByRandomMovement(RacingCarDTO racingCarDTO){
+    public static void printEachDistanceByRandomMovement(RacingCarDTO racingCarDTO){
 
         // 1. racingCarDTO 내부의 Map 데이터를 가져온다.
         Map<String, Integer> racingCarData = racingCarDTO.getRacingCarData();

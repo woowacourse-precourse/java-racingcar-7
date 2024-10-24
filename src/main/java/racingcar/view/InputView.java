@@ -1,12 +1,6 @@
-package racingcar.View;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import camp.nextstep.edu.missionutils.Console;
+package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.*;
-import static java.lang.Integer.*;
 
 public class InputView {
 
