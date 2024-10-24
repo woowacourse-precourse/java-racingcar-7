@@ -2,6 +2,8 @@ package validator;
 
 import java.util.ArrayList;
 
+import static exception.Exception.*;
+
 /**
  * Validates user input for a game application.
  * This class handles validation of player names and game attempt counts.
@@ -21,7 +23,7 @@ public class InputValidator {
                 .orElse(null);
 
         if (invalidName != null) {
-            throw new IllegalArgumentException("이름의 길이는 5글자 이하여야합니다.");
+            throw new IllegalArgumentException(UNDER_FIVE_LETTERS.getMessage());
         }
     }
 
@@ -34,7 +36,7 @@ public class InputValidator {
     private void validateDistinct(ArrayList<String> names) {
         long distinctCount = names.stream().distinct().count();
         if (distinctCount < names.size()) {
-            throw new IllegalArgumentException("중복된 참가자가 존재합니다.");
+            throw new IllegalArgumentException(DUPLICATE_PARTICIPANTS.getMessage());
         }
     }
 
@@ -46,7 +48,7 @@ public class InputValidator {
      */
     private void validateOneSize(ArrayList<String> names) {
         if (names.size() == 1) {
-            throw new IllegalArgumentException("혼자서는 경기를 진행할 수 없습니다.");
+            throw new IllegalArgumentException(SINGLE_PARTICIPANTS.getMessage());
         }
     }
 
@@ -80,10 +82,10 @@ public class InputValidator {
         try {
             int parsedTimes = Integer.parseInt(times);
             if (parsedTimes <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 양의 정수만 입력 가능합니다.");
+                throw new IllegalArgumentException(POSITIVE_TIMES.getMessage());
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(NUMERIC_TIMES.getMessage());
         }
     }
 }
