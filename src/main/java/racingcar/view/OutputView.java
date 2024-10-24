@@ -13,20 +13,25 @@ public class OutputView {
         printName(name);
         printSeparator();
         convertDistanceToHyphen(movedDistance);
+        printEmptyLine();
     }
 
     private void printName(String name) {
-        System.out.println(name);
+        System.out.print(name);
     }
 
     private void printSeparator() {
-        System.out.println(NAME_DISTANCE_SEPARATOR);
+        System.out.print(NAME_DISTANCE_SEPARATOR);
     }
 
     private void convertDistanceToHyphen(int movedDistance) {
         for (int i = 0; i < movedDistance; i++) {
             System.out.print("-");
         }
+    }
+
+    public void printEmptyLine(){
+        System.out.println();
     }
 
 }
