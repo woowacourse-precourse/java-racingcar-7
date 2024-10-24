@@ -23,4 +23,6 @@ public class RacingCarService {
             car.moveIfPossible(randomNumber);
         }
     }
+
+
 }
