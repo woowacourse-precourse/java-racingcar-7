@@ -37,4 +37,20 @@ public class InputTest {
         assertThrows(IllegalArgumentException.class, () -> input.checkNameLength("wooooni"));
     }
 
+    @Test
+    void 라운드_입력_숫자_아닌_경우_예외(){
+        assertThrows(IllegalArgumentException.class, () -> input.checkRoundInt("a2"));
+        assertThrows(IllegalArgumentException.class, () -> input.checkRoundInt(""));
+        assertThrows(IllegalArgumentException.class, () -> input.checkRoundInt(" "));
+        assertThrows(IllegalArgumentException.class, () -> input.checkRoundInt(null));
+    }
+
+    @Test
+    void 라운드_입력_올바른_경우(){
+        assertDoesNotThrow(() -> input.checkRoundInt("123"));
+        assertDoesNotThrow(() -> input.checkRoundInt("1"));
+        assertDoesNotThrow(() -> input.checkRoundInt("12"));
+        assertDoesNotThrow(() -> input.checkRoundInt("11000000"));
+    }
+
 }
