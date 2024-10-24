@@ -16,14 +16,23 @@ public class MainController {
     }
 
     private static void racingStart(int inputTryCount, List<Car> cars) {
-        for (int i = 0; i < inputTryCount; i++) {
-            for (Car car : cars) {
-                car.randomlyMove(if60PercentChance());
-            }
-        }
+        tryMoveCars(inputTryCount, cars);
         OutputView.printTryResult(cars);
         OutputView.printWinnerResult(getWinners(cars));
     }
+
+    private static void tryMoveCars(int inputTryCount, List<Car> cars) {
+        for (int i = 0; i < inputTryCount; i++) {
+            randomlyMove(cars);
+        }
+    }
+
+    private static void randomlyMove(List<Car> cars) {
+        for (Car car : cars) {
+            car.tryMove(if60PercentChance());
+        }
+    }
+
     private static List<String> getWinners(List<Car> cars) {
         int maxPosition = cars.get(0).getPosition();
         for (int i = 0; i < cars.size(); i++) {

@@ -15,9 +15,9 @@ class CarTest {
         Car car2 = new Car("jun");
 
         //when
-        car1.randomlyMove(true);
-        car1.randomlyMove(true);
-        car2.randomlyMove(false);
+        car1.tryMove(true);
+        car1.tryMove(true);
+        car2.tryMove(false);
         int car1Position= car1.getPosition();
         int car2Position= car2.getPosition();
 
