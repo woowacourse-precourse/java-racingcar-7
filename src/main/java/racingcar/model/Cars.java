@@ -16,8 +16,9 @@ public class Cars {
 
     public void addCarFromString(String input){
         String[] names = input.split(",");
+
         for(int i=0; i< names.length; i++){
-            Car car = new Car(names[i], i);
+            Car car = new Car(names[i].trim(), i);
             addCar(car);
         }
     }
@@ -29,4 +30,5 @@ public class Cars {
     public List<Car> getCarList() {
         return this.carList;
     }
+
 }
