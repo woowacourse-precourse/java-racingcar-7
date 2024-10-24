@@ -12,6 +12,10 @@ public class Car {
         this(new Name(name), new MoveNumber(0));
     }
 
+    public Car(String name, int number) {
+        this(new Name(name), new MoveNumber(number));
+    }
+
     public Car(Name name, MoveNumber moveNumber) {
         this.name = name;
         this.moveNumber = moveNumber;

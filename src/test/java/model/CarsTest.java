@@ -2,6 +2,8 @@ package model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
@@ -17,6 +19,15 @@ public class CarsTest {
         assertThatThrownBy(() -> new Cars("phobiq,leo,jade"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageMatching("이름은 5글자 이하로 입력해주세요.");
+    }
+
+    @Test
+    void 자동차_리스트_이동() {
+        Cars cars = new Cars("phobi,leo,jade");
+
+        cars.repeatMove(3, () -> { return 5; });
+
+        assertThat(cars).isEqualTo(new Cars(List.of(new Car("phobi", 3), new Car("leo", 3), new Car("jade", 3))));
     }
 
 }

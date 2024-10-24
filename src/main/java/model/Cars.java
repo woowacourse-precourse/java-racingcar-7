@@ -1,9 +1,12 @@
 package model;
 
+import strategy.Strategy;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -25,7 +28,16 @@ public class Cars {
     }
 
     private static List<Car> parse(String[] names) {
-        return  Arrays.stream(names).map(Car::new).collect(Collectors.toList());
+        return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
+    }
+
+    public void repeatMove(int count, Strategy strategy) {
+        IntStream.range(0, count)
+                .forEach(i -> move(strategy));
+    }
+
+    private void move(Strategy strategy) {
+        cars.forEach(car -> car.move(strategy));
     }
 
     @Override

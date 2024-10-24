@@ -29,5 +29,4 @@ public class MoveNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
-
 }
