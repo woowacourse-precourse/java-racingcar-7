@@ -1,20 +1,27 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNumberGenerator;
+
 public class Car {
 
-    private final String name;
+    private static final int RANDOM_NUMBER_STANDARD = 4;
+
+    private final CarName name;
     private int position;
 
-    public Car(String name, int position) {
+    public Car(CarName name, int position) {
         this.name = name;
         this.position = position;
     }
 
     public void move() {
-        this.position++;
+        final int generatedRandomNumber = RandomNumberGenerator.generateRandomNumber();
+        if(generatedRandomNumber >= RANDOM_NUMBER_STANDARD) {
+            this.position++;
+        }
     }
 
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 
