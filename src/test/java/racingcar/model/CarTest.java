@@ -1,4 +1,4 @@
-package racingcar.model.car;
+package racingcar.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

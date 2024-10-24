@@ -1,42 +1,53 @@
 package racingcar.model;
 
 import java.util.List;
-import java.util.stream.IntStream;
-import racingcar.model.car.Car;
-import racingcar.model.car.Cars;
 
 public class Race {
 
-    private final List<Car> winners;
+    private static final int MINIMUM_CAR_COUNT = 2;
+    private final List<Car> cars;
 
-    public Race(Cars cars, AttemptCount attemptCount) {
-        winners = start(cars, attemptCount);
+    public Race(List<Car> cars) {
+        validateCars(cars);
+        this.cars = cars;
     }
 
-    private List<Car> start(Cars cars, AttemptCount attemptCount) {
-        int count = attemptCount.getAttemptCount();
-        IntStream.range(0, count).forEach(i -> moveCars(cars));
-        return findWinners(cars);
+    private void validateCars(List<Car> cars) {
+        if (hasDuplicateCar(cars) || hasNotEnoughCars(cars)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    private void moveCars(Cars cars) {
-        cars.getCars().forEach(car -> moveCar(car, RandomNumberGenerator.generateNumber()));
+    private boolean hasDuplicateCar(List<Car> cars) {
+        return cars.stream().distinct().count() != cars.size();
+    }
+
+    private boolean hasNotEnoughCars(List<Car> cars) {
+        return cars.size() < MINIMUM_CAR_COUNT;
+    }
+
+    public void moveCars() {
+        cars.forEach(car -> moveCar(car, RandomNumberGenerator.generateNumber()));
     }
 
     private void moveCar(Car car, int number) {
         car.move(number);
     }
 
-    private List<Car> findWinners(Cars cars) {
-        return cars.getCars().stream()
-                .filter(car -> car.getLocation() == findWinnerLocation(cars))
+    public List<Car> findWinners() {
+        return cars.stream()
+                .filter(car -> car.getLocation() == findWinnerLocation())
                 .toList();
     }
 
-    private int findWinnerLocation(Cars cars) {
-        return cars.getCars().stream()
+    private int findWinnerLocation() {
+        return cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()
                 .orElse(0);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
