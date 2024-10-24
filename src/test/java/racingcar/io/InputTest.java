@@ -73,4 +73,60 @@ class InputTest {
             input.carNames();
         }, "Input is Blank");
     }
+
+    @Test
+    @DisplayName("라운드 수가 숫자가 아닐 경우 예외 발생")
+    void throwErrorWhenNotNumeric() {
+        setInput("abc\n");
+        assertThrows(IllegalArgumentException.class, () -> {
+            input.rounds();
+        }, "Round number must be numeric");
+    }
+
+    @Test
+    @DisplayName("라운드 수가 0일 경우 예외 발생")
+    void throwErrorWhenZero() {
+        setInput("0\n");
+        assertThrows(IllegalArgumentException.class, () -> {
+            input.rounds();
+        }, "Round number must be positive");
+    }
+
+    @Test
+    @DisplayName("라운드 수가 음수일 경우 예외 발생")
+    void throwErrorWhenNegative() {
+        setInput("-1\n");
+        assertThrows(IllegalArgumentException.class, () -> {
+            input.rounds();
+        }, "Round number must be positive");
+    }
+
+    @Test
+    @DisplayName("라운드 수가 공백일 경우 예외 발생")
+    void throwErrorWhenBlank() {
+        setInput(" \n");
+        assertThrows(IllegalArgumentException.class, () -> {
+            input.rounds();
+        }, "Round number must be numeric");
+    }
+
+    @Test
+    @DisplayName("유효한 라운드 수 입력 시 정상 반환")
+    void acceptValidRoundNumber() {
+        setInput("3\n");
+        assertDoesNotThrow(() -> {
+            String result = input.rounds();
+            assertEquals("3", result);
+        });
+    }
+
+    @Test
+    @DisplayName("숫자와 문자가 혼합된 경우 예외 발생")
+    void throwErrorWhenMixedWithCharacters() {
+        setInput("5a\n");
+        assertThrows(IllegalArgumentException.class, () -> {
+            input.rounds();
+        }, "Round number must be numeric");
+    }
+
 }
