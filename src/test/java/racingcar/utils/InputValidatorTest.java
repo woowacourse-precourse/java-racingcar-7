@@ -1,6 +1,7 @@
 package racingcar.utils;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.enums.ErrorMessage;
@@ -18,6 +19,13 @@ public class InputValidatorTest {
         Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_CAR_NAMES.getMessage());
+    }
+
+    @Test
+    void 자동차_이름_입력_중복으로_검증_실패(){
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames("aa,bb,aa"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DUPLICATED_NAMES.getMessage());
     }
 
     @ParameterizedTest
