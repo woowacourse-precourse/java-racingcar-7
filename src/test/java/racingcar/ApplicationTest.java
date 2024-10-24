@@ -31,12 +31,18 @@ class ApplicationTest extends NsTest {
             );
         }
 
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
+        @ParameterizedTest
+        @CsvSource(value = {"pobi,woni:1:pobi, woni", "a,b:1:a, b"}, delimiter = ':')
+        void 공동_우승자(String names, String tryCnt, String winner) {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run(names, tryCnt);
+                        assertThat(output()).contains("최종 우승자 : " + winner);
+                    },
+                    MOVING_FORWARD, MOVING_FORWARD
+            );
+        }
+    }
 
     @Nested
     class ExceptionTest {
