@@ -37,12 +37,19 @@ class CounterInput{
 }
 
 //난수 생성 클래스
-class RandomNum{
+class RandomNumberGenerator{
     public int generate(){
         return Randoms.pickNumberInRange(0,9);
     }
 }
 
+//각 자동차 마다 생성된 난수 값을 부여하는 클래스
+
+class CarRandomValueAssigner{
+    public void assign(Car car int randomValue){
+        car.move(randomValue>=4);
+    }
+}
 
 
 public class Application {
@@ -63,5 +70,7 @@ public class Application {
 
         CounterInput attemptInput = new CounterInput();
         int attempts = attemptInput.getInput();
+
+
     }
 }
