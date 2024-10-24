@@ -29,10 +29,10 @@ public class Controller {
         return inputView.getAttemptCount();
     }
 
-    public void printExecutionResult(final Race race) {
+    public void printRoundResult(final Race race) {
         outputView.printEndLine();
-        outputView.printExecutionResultMessage();
-        race.getCarArrayList().forEach(outputView::printEachExecutionResult);
+        outputView.printGameResultMessage();
+        race.getCarArrayList().forEach(outputView::printRoundResult);
         outputView.printEndLine();
     }
 
@@ -51,7 +51,7 @@ public class Controller {
     public void playGame(final Race race) {
         IntStream.range(0, race.getAttemptCount()).forEach(attemptCount -> {
             service.playRound(race);
-            printExecutionResult(race);
+            printRoundResult(race);
         });
     }
 }

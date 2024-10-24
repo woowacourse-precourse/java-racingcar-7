@@ -9,11 +9,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printExecutionResultMessage() {
+    public void printGameResultMessage() {
         System.out.println("실행 결과");
     }
 
-    public void printEachExecutionResult(final Car car) {
+    public void printRoundResult(final Car car) {
         String dashString = getDashString(car.getLocation());
         System.out.println(car.getName() + " : " + dashString + " ");
     }

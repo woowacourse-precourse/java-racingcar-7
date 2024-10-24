@@ -38,10 +38,10 @@ class OutputViewTest {
 
     @DisplayName("\"실행 결과\" 메시지를 출력한다.")
     @Test
-    void printExecutionResultMessage() {
+    void printGameResultMessage() {
         String expectedMessage = "실행 결과\n";
         SystemOut();
-        outputView.printExecutionResultMessage();
+        outputView.printGameResultMessage();
 
         assertEquals(expectedMessage, getStringFromOutputStream(outputStream));
     }
@@ -49,9 +49,9 @@ class OutputViewTest {
     @DisplayName("각 자동차의 이름과 이동거리를 출력하는 기능이 잘 수행되야 한다.")
     @MethodSource("provideEachExecutionResultTestCases")
     @ParameterizedTest(name = "기대값: \"{0}\", 입력값: \"{1}\"")
-    void printEachExecutionResult(String expected, Car car) {
+    void printRoundResult(String expected, Car car) {
         SystemOut();
-        outputView.printEachExecutionResult(car);
+        outputView.printRoundResult(car);
 
         assertEquals(expected, getStringFromOutputStream(outputStream));
     }
