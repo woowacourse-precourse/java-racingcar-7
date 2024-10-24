@@ -16,4 +16,8 @@ public class DataTransformService {
     public List<Car> convertToCar(List<String> carNames) {
         return carNames.stream().map(c -> new Car(c, 0)).toList();
     }
+
+    public Long parseToLong(String input) {
+        return Long.parseLong(input);
+    }
 }

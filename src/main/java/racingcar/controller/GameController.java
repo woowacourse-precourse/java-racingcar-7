@@ -28,6 +28,7 @@ public class GameController {
     public List<Car> carRegist() {
         outputView.carRegistMessage();
         final String input = inputView.input();
+
         verificationService.containsInvalidCharacter(input);
         List<String> carNames = dataTransformService.splitInput(input);
 
@@ -35,4 +36,12 @@ public class GameController {
         return dataTransformService.convertToCar(carNames);
     }
 
+    public Long registExecutionNumber() {
+        outputView.countRegistMessage();
+        final String input = inputView.input();
+        verificationService.isNumber(input);
+        outputView.newline();
+
+        return dataTransformService.parseToLong(input);
+    }
 }

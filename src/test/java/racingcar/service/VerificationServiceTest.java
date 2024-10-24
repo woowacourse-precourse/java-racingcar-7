@@ -7,6 +7,7 @@ import racingcar.exception.InvalidLengthException;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.exception.NotNumberException;
 
 import static org.junit.jupiter.api.Assertions.*;
 class VerificationServiceTest {
@@ -47,5 +48,17 @@ class VerificationServiceTest {
     void containsInvalidCharacterException() {
         String input = "^1abc,def,*ghijk";
         assertThrows(InvalidCharacterException.class, () -> verificationService.containsInvalidCharacter(input));
+    }
+
+    @Test
+    void isNumber() {
+        String input = "123";
+        assertTrue(verificationService.isNumber(input));
+    }
+
+    @Test
+    void isNumberException() {
+        String input = "abc";
+        assertThrows(NotNumberException.class, () -> verificationService.isNumber(input));
     }
 }

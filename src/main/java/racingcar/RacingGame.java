@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.controller.GameController;
 import racingcar.model.Car;
+import racingcar.model.ExecutionNumber;
 import racingcar.service.DataTransformService;
 import racingcar.service.GameService;
 import racingcar.service.VerificationService;
@@ -23,5 +24,7 @@ public class RacingGame {
 
         // TODO : 일급 컬렉션으로
         List<Car> cars = gameController.carRegist();
+        ExecutionNumber executionNumber = new ExecutionNumber(gameController.registExecutionNumber());
+
     }
 }
