@@ -1,4 +1,7 @@
 package model;
 
-public class RacingGameService {
+import java.util.List;
+
+public interface RacingGameService {
+    void progress(List<RacingCar> cars, long round);
 }

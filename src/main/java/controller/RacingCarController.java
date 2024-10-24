@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 import model.RacingCar;
 import model.RacingGame;
+import model.RandomRacingGameService;
 import parser.RacingCarParser;
 import parser.RacingRoundParser;
 import validator.Validator;
@@ -23,6 +24,8 @@ public class RacingCarController {
         RacingRoundParser racingRoundParser = new RacingRoundParser(validator);
         long round = racingRoundParser.parseRacingRound(roundString);
 
-        RacingGame racingGame = new RacingGame(RacingCar.createRacingCars(carNameList), round);
+        RacingGame racingGame = new RacingGame(RacingCar.createRacingCars(carNameList), round,
+                new RandomRacingGameService());
+        racingGame.startRace();
     }
 }
