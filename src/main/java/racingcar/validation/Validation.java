@@ -1,6 +1,7 @@
 package racingcar.validation;
 
 import racingcar.view.ErrorView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.Set;
@@ -12,7 +13,15 @@ public class Validation {
     private static int MAX_RACINGCAR_NAME_LENGTH = 5;
 
     public static void validateRacingcarNames(List<String> racingcarNames){
+        validateRacingcarInput(racingcarNames);
         hasNameDuplicate(racingcarNames);
+    }
+
+    private static void validateRacingcarInput(List<String> racingcarNames){
+        if(racingcarNames.isEmpty()){
+            ErrorView.printRacingcarNotFoundMessage();
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void hasNameDuplicate(List<String> racingcarNames){

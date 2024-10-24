@@ -24,4 +24,6 @@ public class OutputView {
     public static void printRacingGameWinner(List<String> winner) {
         System.out.printf(RACING_GAME_WINNER_MESSAGE, String.join(WINNING_DELIMITER, winner));
     }
+
+
 }

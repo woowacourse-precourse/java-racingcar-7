@@ -5,6 +5,7 @@ public class ErrorView {
     private static final String RACINGCAR_BLANK_NAME_ERROR_MESSAGE = "[ERROR] 자동차 이름에 공백을 입력할 수 없습니다.";
     private static final String RACINGCAR_LENGTH_NAME_ERROR_MESSAGE = "[ERROR] 자동차 이름의 길이는 5자 이하만 가능합니다.";
     private static final String RACINGGAME_COUNT_ERROR_MESSAGE = "[ERROR] 시도 횟수는 양의 정수를 입력해야 합니다.";
+    private static final String RACINGCAR_NOT_FOUND_ERROR_MESSAGE = "[ERROR] 하나 이상의 자동차를 입력해야 합니다.";
 
     public static void printRacingcarDuplicateNameErrorMessage(){
         System.out.println(RACINGCAR_DUPLICATE_NAME_ERROR_MESSAGE);
@@ -22,4 +23,7 @@ public class ErrorView {
         System.out.println(RACINGGAME_COUNT_ERROR_MESSAGE);
     }
 
+    public static void printRacingcarNotFoundMessage() {
+        System.out.println(RACINGCAR_NOT_FOUND_ERROR_MESSAGE);
+    }
 }
