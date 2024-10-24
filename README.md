@@ -9,7 +9,7 @@
 
 ### 구현할 클래스 정의
 - RacingCarGame 클래스 : 프로그램의 대문역할을 할 클래스
-- InputNames 클래스 : 이름을 입력받는 클래스
+- InputNames 클래스 : 이름을 입력받고 리스트로 저장할 클래스
 - InputTry 클래스 : 시도 횟수를 입력받는 클래스
 - RacingCarService 클래스 : 게임의 주요로직을 캡슐화할 클래스
 - Car 클래스 : 생성할 차의 클래스
