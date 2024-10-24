@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Set;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -16,11 +18,16 @@ public class Application {
         if (carNames.length < 2) {
             throw new IllegalArgumentException("자동차를 2개 이상 등록하세요.");
         }
+
+        Set<String> nameSet = new HashSet<>();
         for (String carName : carNames) {
+            carName = carName.trim();
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            } else if (carName.trim().isEmpty()) {
+            } else if (carName.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 빈 문자열이 될 수 없습니다.");
+            } else if (!nameSet.add(carName)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
         }
 
