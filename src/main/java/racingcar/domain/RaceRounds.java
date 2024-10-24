@@ -3,12 +3,15 @@ package racingcar.domain;
 import racingcar.global.ErrorMessage;
 
 public record RaceRounds(int value) {
+    private static final int MINIMUM_ROUNDS = 0;
+    private static final int INITIAL_INDEX = 0;
+
     public RaceRounds {
         validate(value);
     }
 
     public void forEach(Runnable action) {
-        for (int i = 0; i < value; i++) {
+        for (int i = INITIAL_INDEX; i < value; i++) {
             action.run();
         }
     }
@@ -22,7 +25,7 @@ public record RaceRounds(int value) {
     }
 
     private void validate(int value){
-        if (value < 0) {
+        if (value < MINIMUM_ROUNDS) {
             throw new IllegalArgumentException(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
         }
     }
