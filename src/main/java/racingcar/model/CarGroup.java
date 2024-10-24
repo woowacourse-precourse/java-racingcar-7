@@ -5,6 +5,7 @@ import java.util.List;
 
 public class CarGroup {
     private final List<Car> carList = new ArrayList<>();
+    private final List<String> winnerCarList = new ArrayList<>();
     private int maxScore = 0;
 
     public CarGroup(String[] carList) {
@@ -32,5 +33,14 @@ public class CarGroup {
             }
         }
         return maxScore;
+    }
+
+    public List<String> getWinnerCarList(){
+        for(Car car: carList){
+            if(car.getScore()==maxScore){
+                winnerCarList.add(car.getName());
+            }
+        }
+        return winnerCarList;
     }
 }
