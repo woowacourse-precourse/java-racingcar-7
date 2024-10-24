@@ -1,6 +1,7 @@
 package racingcar.validationTest;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
@@ -39,8 +40,8 @@ public class ValidationTest {
 
         //when & then
         // - right input case
-        assertDoesNotThrow(() -> this.validation.validateRoundCount("5"));
-        assertDoesNotThrow(() -> this.validation.validateRoundCount("2147483647"));
+        assertEquals(this.validation.validateRoundCount("5"), 5);
+        assertEquals(this.validation.validateRoundCount("2147483647"), 2147483647);
 
         // - wrong input case
         assertThrows(IllegalArgumentException.class, () -> this.validation.validateRoundCount("0"));
