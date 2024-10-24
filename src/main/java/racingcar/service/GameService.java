@@ -14,4 +14,8 @@ public class GameService {
         return Cars.of(carNames);
     }
 
+    public Integer getGameRoundInput(String input){
+        Validator.gameRoundValidate(input);
+        return Integer.parseInt(input);
+    }
 }

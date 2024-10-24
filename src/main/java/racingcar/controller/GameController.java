@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.Cars;
+import racingcar.model.Game;
 import racingcar.service.GameService;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
@@ -18,6 +19,8 @@ public class GameController {
 
     public void run() {
         Cars cars = gameService.createCars(inputView.carNamesInput());
+        Integer gameRound = gameService.getGameRoundInput(inputView.gameRoundInput());
+        Game game = new Game(cars, gameRound);
     }
 
 }
