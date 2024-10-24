@@ -5,15 +5,11 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
-    private OutputView outputView;
-    private RacingService racingService;
+    private static final OutputView outputView = new OutputView();
 
     public RacingController() {
         InputView inputView = new InputView();
-        racingService.start(inputView.getCarNameList(), inputView.getTryNumber());
-
-        outputView = new OutputView();
-        racingService = new RacingService();
+        RacingService racingService = new RacingService(inputView.getCarList(), inputView.getTryNumber());
     }
 
 }

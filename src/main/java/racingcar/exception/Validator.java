@@ -33,4 +33,8 @@ public class Validator {
             throw new IllegalArgumentException(ErrorMessage.IS_DUPLICATED);
         }
     }
+
+    public static boolean isFourOrMore(int number) {
+        return number >= 4;
+    }
 }

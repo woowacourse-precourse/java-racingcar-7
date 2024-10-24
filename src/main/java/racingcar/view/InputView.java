@@ -7,7 +7,7 @@ import racingcar.exception.Validator;
 
 public class InputView {
 
-    public List<String> getCarNameList() {
+    public List<String> getCarList() {
         System.out.println(ConsoleMessage.ENTER_CAR_NAME);
         Splitter splitter = new Splitter(Console.readLine());
         return splitter.parsingCarName();
