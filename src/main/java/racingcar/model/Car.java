@@ -9,6 +9,7 @@ public class Car {
     public Car(String carName) {
         ValidateError.validateCarName(carName);
         this.carName = carName;
+        score = 0;
     }
 
     public String getCarName() {
@@ -17,5 +18,9 @@ public class Car {
 
     public int getScore() {
         return score;
+    }
+
+    public void increaseScore() {
+        score++;
     }
 }
