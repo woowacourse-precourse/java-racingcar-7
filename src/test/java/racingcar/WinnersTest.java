@@ -22,7 +22,7 @@ public class WinnersTest {
         cars.add(new Car("jun", 0));
         //2.When(실행): 어떤 동작을 실행하는가? - 위치를 비교 후 우승자or공동우승자를 반환하는 메서드를 실행
         //즉 List cars를 받아서 List winners를 반환하면 된다.
-        List<Car> winners = Winners.findwinner(cars);
+        List<Car> winners = Winners.findWinner(cars);
         //3.Then(검증): 기대하는 결과는 무엇인가? - 자동차들의 위치를 비교하고 우승자를 결정
         //이 경우 단일 우승자이므로 pobi만 반환되어야한다.
         //contains는 내부적으로 equals로 동작한다.

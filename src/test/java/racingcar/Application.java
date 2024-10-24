@@ -21,8 +21,12 @@ public class Application {
         int attemptCount = Integer.parseInt(attemptCountInput);
 
         RacingGame racingGame = new RacingGame();
-        racingGame.playRace(cars, attemptCount);
+        for (int i = 0; i < attemptCount; i++) {
+            racingGame.playRace(cars);
+            ResultView.printRaceResult(cars);
+        }
 
-        List<Car> winners = Winners.findwinner(cars);
+        List<Car> winners = Winners.findWinner(cars);
+        ResultView.printWinners(winners);
     }
 }

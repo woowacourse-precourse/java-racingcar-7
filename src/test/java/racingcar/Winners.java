@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-    public static List<Car> findwinner(List<Car> cars) {
+    public static List<Car> findWinner(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {

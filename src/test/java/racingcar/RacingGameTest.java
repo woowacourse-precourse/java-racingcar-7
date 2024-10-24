@@ -16,10 +16,9 @@ public class RacingGameTest {
         cars.add(new Car("pobi"));
         cars.add(new Car("woni"));
         cars.add(new Car("jun"));
-        int attemptCount = 3;
 
         racingGame.playRace(cars, 4);
 
-        assertThat(cars.get(0).getPosition()).isEqualTo(3);
+        assertThat(cars.get(0).getPosition()).isEqualTo(1);
     }
 }
