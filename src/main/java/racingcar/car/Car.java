@@ -29,4 +29,8 @@ public class Car {
 	private void moveForward() {
 		this.location ++;
 	}
+
+	public void printResult() {
+		System.out.print(name + " : " + "-".repeat(location));
+	}
 }
