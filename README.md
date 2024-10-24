@@ -1,6 +1,6 @@
 # java-racingcar-precourse
 ## 객체 구성도
-![제목 없는 다이어그램 drawio](https://github.com/user-attachments/assets/d7f9bda6-d0f5-4927-a03e-66ac1b50ba52)
+![제목 없는 다이어그램 drawio (2)](https://github.com/user-attachments/assets/06bae2e1-fdc5-47c7-8e6b-347965d6a98d)
 ## 기능 요구 사항
 ### View
 - ReaderHelper
@@ -13,9 +13,9 @@
   - [ ] 우승자 리스트를 받아 출력
 ### Model
 - RacingGame
-  - [ ] 출전 선수 이름 리스트를 받아 플레이어 세팅
-  - [ ] 게임을 진행시킴
-  - [ ] 우승자 리스트를 반환
+  - [X] 출전 선수 이름 리스트를 받아 플레이어 세팅
+  - [X] 게임을 진행시킴
+  - [X] 우승자 리스트를 반환
 - Car
   - [X] 출전 선수 이름을 받아 플레이어 생성
   - [X] 출전 선수 점수 반환
