@@ -3,6 +3,7 @@ package racingcar.game;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,6 +19,8 @@ public class RacingCar {
 
         Map<String, Integer> moveAccumulator = createCarMoveAccumulator(carNames);
         displayAccumulateForEachAttempt(attemptCount, carNames, moveAccumulator);
+
+        String winners = retrieveWinners(moveAccumulator);
     }
 
     private List<String> getCarNamesFromUser() {
@@ -81,5 +84,27 @@ public class RacingCar {
             System.out.println(formattedEachResult);
         }
         System.out.println();
+    }
+
+    private String retrieveWinners(Map<String, Integer> moveAccumulator) {
+        Integer maxProgressiveCount = findMaxMoveCount(moveAccumulator);
+        List<String> winners = getWinners(moveAccumulator, maxProgressiveCount);
+        return formatWinners(winners);
+    }
+
+    private Integer findMaxMoveCount(Map<String, Integer> moveAccumulator) {
+        return moveAccumulator.values().stream()
+                .max(Comparator.naturalOrder())
+                .orElse(0);
+    }
+
+    private List<String> getWinners(Map<String, Integer> moveAccumulator, Integer progressiveCount) {
+        return moveAccumulator.keySet().stream()
+                .filter(carName -> moveAccumulator.get(carName).equals(progressiveCount))
+                .toList();
+    }
+
+    private String formatWinners(List<String> winners) {
+        return String.join(", ", winners);
     }
 }
