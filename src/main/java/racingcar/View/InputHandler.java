@@ -15,17 +15,17 @@ public class InputHandler {
 
     public List<String> carNames() {
         String userInput = Console.readLine();
-        String[] splitCarNames = userInput.split(",");
+        List<String> splitCarNames = Arrays.asList(userInput.split(","));
         validateCarNames(splitCarNames);
-        carNames.addAll(Arrays.asList(splitCarNames));
+        carNames.addAll(splitCarNames);
         return carNames;
     }
 
-    private void validateCarNames(String[] splitCarNames) {
+    private void validateCarNames(List<String> splitCarNames) {
         checkAlphaNumericName(splitCarNames);
     }
 
-    private void checkAlphaNumericName(String[] splitCarNames) {
+    private void checkAlphaNumericName(List<String> splitCarNames) {
         for (String carName : splitCarNames) {
             if (!carName.matches(ALPHA_NUMERIC_PATTERN)) {
                 throw new IllegalArgumentException("자동차의 이름은 영어 대소문자, 숫자로만 가능합니다.: " + carName);
