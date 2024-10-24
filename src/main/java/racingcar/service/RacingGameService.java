@@ -9,6 +9,7 @@ import racingcar.enums.RandomRange;
 import racingcar.view.OutputView;
 
 public class RacingGameService {
+
     public List<Car> createCars(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
@@ -16,6 +17,8 @@ public class RacingGameService {
     }
 
     public void startGame(List<Car> cars, int rounds) {
+        OutputView.printExecutionResults();
+
         for (int i = 0; i < rounds; i++) {
             playRound(cars);
             OutputView.printRoundResults(cars);
