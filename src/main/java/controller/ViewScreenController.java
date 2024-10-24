@@ -21,8 +21,7 @@ public class ViewScreenController {
 
     private GameManager getGameManager() {
         List<String> input = this.viewScreen.getInput();
-        String carNames = this.checkNameFormat(input.get(0));
-        List<String> carNameList = Arrays.asList(carNames.split(","));
+        List<String> carNameList = this.checkNameFormat(input.get(0));
         int runTimes = this.checkRunTimesFormat(input.get(1));
         return new GameManager(carNameList, runTimes);
 
@@ -35,15 +34,28 @@ public class ViewScreenController {
     }
 
     // Todo 자동차 이름 양식 체크 & 양식 정리
-    public String checkNameFormat(String input) {
+    public List<String> checkNameFormat(String input) {
         nullCheck(input);
-        return input;
+        String inputWithoutSpace = input.replaceAll("\\s+", "");
+        List<String> nameList = Arrays.asList(inputWithoutSpace.split(","));
+        for (String name : nameList) {
+            nullCheck(name);
+            if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            if (!name.matches("[a-zA-Z가-힣]+")) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return nameList;
+
     }
 
     public int checkRunTimesFormat(String input) {
         nullCheck(input);
+        String inputWithoutSpace = input.replaceAll("\\s+", "");
         try {
-            int runTimes = parseInt(input);
+            int runTimes = parseInt(inputWithoutSpace);
 
             if (runTimes < 0) {
                 throw new IllegalArgumentException(); //음수일 때 에러
