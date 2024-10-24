@@ -27,6 +27,7 @@ public class RacingCarController {
         race(carGroup, tryNum);
 
         // 결과
+        carGroup.getMaxScore();
         view.getOutputString(getWinnerString(carGroup));
     }
 

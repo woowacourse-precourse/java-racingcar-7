@@ -25,14 +25,13 @@ public class CarGroup {
         }
     }
 
-    public int getMaxScore() {
+    public void getMaxScore() {
         for (Car car : carList) {
             int i = car.getScore();
             if (maxScore < i) {
                 maxScore = i;
             }
         }
-        return maxScore;
     }
 
     public List<String> getWinnerCarList(){
