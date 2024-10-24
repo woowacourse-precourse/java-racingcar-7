@@ -8,6 +8,9 @@ public class AttemptCountValidation {
             throw new IllegalArgumentException();
         }
     }
-
-
+    private static void validatePositiveNumber(int input) {
+        if (input <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

@@ -33,9 +33,9 @@ pobi,woni,jun
 
 [//]: # (    - [ ] 중복된 자동차 이름 입력한 경우 `IllegalArgumentException`)
 
-- [ ] 시도할 횟수
-  - [ ] 입력값이 정수가 아닐 경우 `IllegalArgumentException`
-  - [ ] isDigit(입력값)이 0 이하일 경우 `IllegalArgumentException`
+- [x] 시도할 횟수
+  - [x] 입력값이 정수가 아닐 경우 `IllegalArgumentException`
+  - [x] isDigit(입력값)이 0 이하일 경우 `IllegalArgumentException`
 
 ### 💫진행
 
