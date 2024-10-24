@@ -19,12 +19,18 @@ public class CarNameValidator {
         checkDuplicate();
     }
     private void checkNamePattern(){
-
+        if(!Constants.nameStringPattern.matcher(nameString).matches()){
+            throw new IllegalArgumentException(Constants.CAR_NAME_WRONG);
+        }
     }
     private void checkNameSize(){
-
+        if(names.stream().anyMatch(name -> name.isEmpty() || name.length() >= Constants.MAX_NAME_SIZE)){
+            throw new IllegalArgumentException(Constants.CAR_NAME_LENGTH_WRONG);
+        }
     }
     private void checkDuplicate(){
-
+        if(names.size() != names.stream().distinct().count()){
+            throw new IllegalArgumentException(Constants.CAR_NAME_DUPLICATE);
+        }
     }
 }
