@@ -14,7 +14,7 @@ public class InputValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"*&,name2,name3", " ,2,3", "::,b2,c3", "이름-,Bbb,Ccc", ",aa,bb,"})
+    @ValueSource(strings = {"*&,name2,name3", " ,2,3", "::,b2,c3", "이름-,Bbb,Ccc", ",aa,bb,", "OVERLENGTH,name2,name3"})
     void 자동차_이름_입력_검증_실패(String input){
         Assertions.assertThatThrownBy(() -> InputValidator.validateCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
