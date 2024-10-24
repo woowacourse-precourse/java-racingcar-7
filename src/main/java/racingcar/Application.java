@@ -27,8 +27,10 @@ public class Application {
         validateCount(countInput);
         int count = parseInt(countInput);
 
+        System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
             race(cars);
+            printRaceResult(cars);
         }
     }
 
@@ -109,6 +111,13 @@ public class Application {
                 car.increaseDistance();
             }
         }
+    }
+
+    private static void printRaceResult(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+        }
+        System.out.println();
     }
 
     private static class Car {
