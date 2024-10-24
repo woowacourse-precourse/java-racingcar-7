@@ -3,12 +3,15 @@ package racingcar.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.car.CarUtil;
 import racingcar.util.game.GameUtil;
 import racingcar.vo.CarVO;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -54,7 +57,28 @@ class GameUtilTest {
         });
     }
 
+    @ParameterizedTest
+    @MethodSource("provideCarNamesAndExecuteNumbers")
+    @DisplayName("게임 전체를 진행하는 함수를 구현한다.")
+    void 전체_진행_함수(String carNames, int executeNumber) {
+        assertDoesNotThrow(() -> {
+            List<CarVO> carNameAndGoCountList = CarUtil.getCarNameAndGoCountList(carNames);
+            System.out.println("실행 결과");
+            for (int i = 0; i < executeNumber; i++) {
+                GameUtil.oneTurnPrintAndUpdate(carNameAndGoCountList);
+            }
 
+            for (CarVO car : carNameAndGoCountList) {
+                System.out.println(car.toString());
+            }
+        });
+    }
 
+    // 매개변수 제공 메서드
+    static Stream<Arguments> provideCarNamesAndExecuteNumbers() {
+        return Stream.of(
+                Arguments.of("koo,sang,woo", 5) // 자동차 이름과 실행 횟수
+        );
+    }
 
 }
