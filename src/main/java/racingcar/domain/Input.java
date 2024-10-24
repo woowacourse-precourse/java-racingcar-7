@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static racingcar.utils.Constant.MAX_CAR_NAME_LEN;
+import static racingcar.utils.Constant.SEPARATOR;
 import static racingcar.utils.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
@@ -15,7 +16,7 @@ public class Input {
     }
 
     protected String[] splitInput() {
-        String[] splitInput = value.split(",");
+        String[] splitInput = value.split(SEPARATOR);
 
         if (splitInput.length == 0) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());

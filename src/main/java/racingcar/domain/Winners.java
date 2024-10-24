@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.SEPARATOR;
 import static racingcar.utils.Constant.WINNER_RESULT;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class Winners {
 
     // 최종 승자를 반환합니다.
     public String result() {
-        StringJoiner stringJoiner = new StringJoiner(", ");
+        StringJoiner stringJoiner = new StringJoiner(SEPARATOR + " ");
 
         for (Car car : winnerList) {
             String carName = car.toString();

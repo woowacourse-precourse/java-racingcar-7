@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.SEPARATOR;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -70,7 +72,7 @@ public class CarList {
 
     @Override
     public String toString() {
-        StringJoiner stringJoiner = new StringJoiner(", ");
+        StringJoiner stringJoiner = new StringJoiner(SEPARATOR + " ");
 
         for (Car car : cars) {
             stringJoiner.add(car.toString());

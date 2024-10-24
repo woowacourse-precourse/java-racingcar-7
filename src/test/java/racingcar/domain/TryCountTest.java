@@ -66,4 +66,15 @@ class TryCountTest {
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
     }
+
+    @Test
+    @DisplayName("정상 값 : 최대 입력")
+    void test6() {
+        String maxValue = String.valueOf(Long.MAX_VALUE);
+
+        TryCount result = new TryCount(maxValue);
+        TryCount except = new TryCount(Long.MAX_VALUE);
+
+        assertThat(result).isEqualTo(except);
+    }
 }

@@ -77,4 +77,5 @@ class InputTest {
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
+
 }
