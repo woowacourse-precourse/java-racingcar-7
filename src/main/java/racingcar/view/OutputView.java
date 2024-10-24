@@ -6,7 +6,7 @@ import racingcar.controller.domain.Car;
 
 public class OutputView {
 
-    public void printRoundOutput(HashMap<Car, Integer> carToRacingProgress) {
+    public void printRoundOutput(HashMap<Car, Long> carToRacingProgress) {
         StringBuilder sb = new StringBuilder();
         for (Car car : carToRacingProgress.keySet()) {
             sb.append(car.name())
@@ -29,7 +29,11 @@ public class OutputView {
         }
     }
 
-    private String changeNumberToProgressString(int progressNumber) {
-        return "-".repeat(Math.max(0, progressNumber));
+    private String changeNumberToProgressString(long progressNumber) {
+        StringBuilder sb = new StringBuilder();
+        for (long i = 0; i < progressNumber; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 }

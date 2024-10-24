@@ -1,30 +1,31 @@
 package racingcar.controller;
 
-import racingcar.service.RacingRound;
+import racingcar.service.RacingService;
 import racingcar.view.ConsoleMessage;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
-    private static final OutputView outputView = new OutputView();
-    private RacingRound racingRound;
+    private final OutputView outputView;
+    private final RacingService racingService;
 
     public RacingController() {
         InputView inputView = new InputView();
-        racingRound = new RacingRound(inputView.getCarList());
-        start(inputView.getTryNumber());
+        outputView = new OutputView();
+        racingService = new RacingService(inputView.getCarList());
 
+        start(inputView.getTryNumber());
     }
 
     private void start(long tryNumber) {
         System.out.println(ConsoleMessage.ROUND_RESULT);
+
         while (tryNumber > 0) {
-            racingRound.moveForward();
-            outputView.printRoundOutput(racingRound.getCarToRacingProgress());
+            racingService.moveForward();
+            outputView.printRoundOutput(racingService.getCarToRacingProgress());
             tryNumber--;
         }
-        outputView.printFinalWinner(racingRound.getWinner());
+
+        outputView.printFinalWinner(racingService.getWinner());
     }
-
-
 }

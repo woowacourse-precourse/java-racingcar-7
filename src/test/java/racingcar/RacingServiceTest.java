@@ -2,7 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
-public class RacingRoundTest {
+public class RacingServiceTest {
 
     @Test
     void 자동차는_랜덤_값을_갖는다() {
