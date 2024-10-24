@@ -53,7 +53,7 @@ public class RacingCar {
             printScores(participants, scores);
         }
 
-        System.out.println("최종 우승자 : " + getWinner(scores, participants));
+        System.out.println("최종 우승자 : " + String.join(", ", getWinners(scores, participants)));
     }
 
     public static void moveParticipants(int[] scores) {
@@ -70,29 +70,21 @@ public class RacingCar {
         }
     }
 
-    private static String getWinner(int[] scores, List<String> participants) {
-        List<Integer> winnerIndex = new ArrayList<>();
-        int maxScore = 0;
+    private static List<String> getWinners(int[] scores, List<String> participants) {
+        List<String> winners = new ArrayList<>();
+
+        int maxScore = -1;
         for (int i = 0; i < scores.length; i++) {
             if (scores[i] > maxScore) {
-                winnerIndex.clear();
+                winners.clear();
                 maxScore = scores[i];
             }
+
             if (scores[i] == maxScore) {
-                winnerIndex.add(i);
+                winners.add(participants.get(i));
             }
         }
 
-        StringBuilder winner = new StringBuilder();
-
-        for (int i = 0; i < winnerIndex.size(); i++) {
-            int participantsIdx = winnerIndex.get(i);
-            winner.append(participants.get(participantsIdx));
-
-            if (i == winnerIndex.size() - 1) continue;
-            winner.append(", ");
-        }
-
-        return winner.toString();
+        return winners;
     }
 }
