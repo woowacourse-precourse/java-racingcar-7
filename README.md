@@ -2,7 +2,7 @@
 
 1. 자동차 이름 입력
    - camp.nextstep.edu.missionutils.Console 사용
-   - 이름은 쉼표 기준으로 구분 (Split 사용)
+   - 이름은 쉼표 기준으로 구분 (StringTokenizer 사용)
    - 5자 이하만 가능 
    - ArrayList사용
    - car 클래스 생성
