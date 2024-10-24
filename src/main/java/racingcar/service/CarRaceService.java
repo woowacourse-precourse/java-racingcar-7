@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarRace;
 
@@ -25,7 +26,11 @@ public class CarRaceService {
     }
 
     public Map<String, String> getCarsStatus() {
-        return carRace.getCarsNameAndMovingDistance();
+        return carRace.getCars().stream()
+                .collect(Collectors.toMap(
+                        Car::getName,
+                        Car::getMovingDistance
+                ));
     }
 
     public List<String> getWinners() {
