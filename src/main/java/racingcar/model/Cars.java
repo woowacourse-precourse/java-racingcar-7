@@ -2,6 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.dto.CarStatusDto;
 
 public class Cars {
 
@@ -17,5 +18,11 @@ public class Cars {
 
     private int getRandomMove() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public List<CarStatusDto> submitCarsStatus() {
+        return cars.stream()
+                .map(car -> new CarStatusDto(car.getName(), car.getPosition()))
+                .toList();
     }
 }

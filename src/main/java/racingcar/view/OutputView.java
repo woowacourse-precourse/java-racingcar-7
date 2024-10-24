@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.dto.CarStatusDto;
+
 public class OutputView {
 
     private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -16,7 +19,16 @@ public class OutputView {
         System.out.println(INPUT_TRY_COUNT);
     }
 
-    public static void printResult() {
+    public static void printExecuteResult() {
         System.out.println(RESULT);
+    }
+
+    public static void printMoveStatus(List<CarStatusDto> carsStatus) {
+        StringBuilder result = new StringBuilder();
+        for (CarStatusDto status : carsStatus) {
+            String moveCount = MOVE.repeat(status.getPosition());
+            result.append(String.format("%s : %s\n", status.getName(), moveCount));
+        }
+        System.out.println(result);
     }
 }

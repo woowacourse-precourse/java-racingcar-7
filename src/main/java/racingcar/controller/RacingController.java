@@ -19,9 +19,11 @@ public class RacingController {
     }
 
     private void racing(Cars cars, int tryCount) {
-        OutputView.printResult();
+        OutputView.printExecuteResult();
         while (tryCount > 0) {
             cars.move();
+            OutputView.printMoveStatus(cars.submitCarsStatus());
+            tryCount--;
         }
     }
 
