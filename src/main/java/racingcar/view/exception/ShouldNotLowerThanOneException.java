@@ -1,4 +1,4 @@
-package racingcar.infra.io.exception;
+package racingcar.view.exception;
 
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_LOWER_THAN_ONE;
 

@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.infra.controller.MainController;
+import racingcar.controller.MainController;
 import racingcar.service.RaceService;
 
 public class Application {

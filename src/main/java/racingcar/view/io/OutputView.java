@@ -1,4 +1,4 @@
-package racingcar.infra.view;
+package racingcar.view.io;
 
 public class OutputView {
     private OutputView() {

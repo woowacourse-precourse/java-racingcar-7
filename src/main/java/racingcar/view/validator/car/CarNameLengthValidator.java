@@ -1,9 +1,9 @@
-package racingcar.infra.io.validator.car;
+package racingcar.view.validator.car;
 
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;
-import racingcar.infra.io.exception.CarNameLengthExceedException;
+import racingcar.view.exception.CarNameLengthExceedException;
 
 public class CarNameLengthValidator extends CarNameInputValidator {
 

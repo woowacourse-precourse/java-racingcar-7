@@ -1,9 +1,9 @@
-package racingcar.infra.io.validator;
+package racingcar.view.validator;
 
-import racingcar.infra.io.validator.car.CarCountValidator;
-import racingcar.infra.io.validator.car.CarNameLengthValidator;
-import racingcar.infra.io.validator.lap.LapRegexValidator;
-import racingcar.infra.io.validator.lap.NumberFormatValidator;
+import racingcar.view.validator.car.CarCountValidator;
+import racingcar.view.validator.car.CarNameLengthValidator;
+import racingcar.view.validator.lap.LapRegexValidator;
+import racingcar.view.validator.lap.NumberFormatValidator;
 
 public class InputValidatorFacade {
 

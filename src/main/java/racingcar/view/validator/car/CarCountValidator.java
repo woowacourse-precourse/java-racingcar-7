@@ -1,12 +1,12 @@
-package racingcar.infra.io.validator.car;
+package racingcar.view.validator.car;
 
 import static java.util.Objects.isNull;
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;
 import java.util.Objects;
-import racingcar.infra.io.exception.EmptyInputException;
-import racingcar.infra.io.exception.NotEnoughCarException;
+import racingcar.view.exception.EmptyInputException;
+import racingcar.view.exception.NotEnoughCarException;
 
 public class CarCountValidator extends CarNameInputValidator {
 

@@ -1,10 +1,10 @@
-package racingcar.infra.io.validator.lap;
+package racingcar.view.validator.lap;
 
 import static racingcar.util.PreprocessingUtil.replaceAllUnNecessaryChar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import racingcar.infra.io.exception.UnNecessaryCharIncludedException;
+import racingcar.view.exception.UnNecessaryCharIncludedException;
 
 public class LapRegexValidator extends LapCountInputValidator {
 

@@ -1,12 +1,12 @@
-package racingcar.infra.controller;
+package racingcar.controller;
 
 import java.util.List;
-import racingcar.infra.io.InputManager;
 import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Race;
 import racingcar.service.RaceService;
+import racingcar.view.io.InputManager;
 
 public class MainController {
 

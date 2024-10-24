@@ -1,10 +1,10 @@
-package racingcar.infra.io.validator.lap;
+package racingcar.view.validator.lap;
 
 import static java.math.BigInteger.ZERO;
 
 import java.math.BigInteger;
-import racingcar.infra.io.exception.ShouldNotLowerThanOneException;
 import racingcar.util.PreprocessingUtil;
+import racingcar.view.exception.ShouldNotLowerThanOneException;
 
 public class NumberFormatValidator extends LapCountInputValidator {
 

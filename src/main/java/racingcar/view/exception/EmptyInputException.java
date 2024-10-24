@@ -1,4 +1,4 @@
-package racingcar.infra.io.exception;
+package racingcar.view.exception;
 
 import static racingcar.common.message.ErrorMessage.EMPTY_INPUT;
 
