@@ -8,11 +8,11 @@ public class Position {
     }
 
     public int addPosition() {
-        return currentPosition++;
+        return ++currentPosition;
     }
 
-    public boolean isGreaterThan(Position otherPosition) {
-        return currentPosition > otherPosition.getCurrentPosition();
+    public boolean isGreaterThan(Integer otherCarPosition) {
+        return currentPosition > otherCarPosition;
     }
 
     public int getCurrentPosition() {

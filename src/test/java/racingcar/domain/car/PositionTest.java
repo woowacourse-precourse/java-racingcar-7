@@ -34,6 +34,6 @@ class PositionTest {
         poviCarPosition.addPosition();
 
         //then
-        assertTrue(poviCarPosition.isGreaterThan(minuCarPosition));
+        assertTrue(poviCarPosition.isGreaterThan(minuCarPosition.getCurrentPosition()));
     }
 }
