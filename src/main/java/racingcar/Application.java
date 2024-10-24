@@ -14,6 +14,7 @@ public class Application {
         String numberOfRaces = Console.readLine();
         int raceNumbers = Integer.parseInt(numberOfRaces);
 
+        System.out.println("실행 결과");
         for (int i = 0; i < raceNumbers; i++) {
             cars.raceStart();
         }
