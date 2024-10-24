@@ -11,6 +11,14 @@ public class CarCreateRequest {
         this.tryCount = tryCount;
     }
 
+    public String[] getNames() {
+        return names;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
     private void validateTryCount(int tryCount) {
         if (tryCount <= 0) {
             throw new IllegalArgumentException();

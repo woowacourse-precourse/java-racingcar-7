@@ -11,10 +11,11 @@ public class Race {
         this.numberStrategy = numberStrategy;
     }
 
-    public void moveAllCars() {
+    public List<Car> moveAllCars() {
         cars.forEach(car ->
                 car.move(numberStrategy.generate())
         );
+        return cars;
     }
 
     public List<Car> getWinner() {
