@@ -20,8 +20,15 @@ public class Application {
 
         List<Car> cars = createParticipant(input);
 
-        for (Car car : cars) {
-            System.out.println(car.getCarName());
+        System.out.println("실행 결과");
+        for (int i = 0; i < n; i++) {
+
+            for (Car car : cars) {
+                car.isMove();
+                System.out.println(car);
+            }
+
+            System.out.println();
         }
     }
 
