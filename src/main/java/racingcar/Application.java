@@ -11,6 +11,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
 
     private static Map<String, Integer> carGameResult;
+    private static final int MOVE_THRESHOLD = 4;
 
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -74,7 +75,7 @@ public class Application {
     public static void startRound(List<String> carNameList) {
         for (String carName : carNameList) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
-            if (randomValue >= 4) {
+            if (randomValue >= MOVE_THRESHOLD) {
                 carGameResult.put(carName, carGameResult.get(carName) + 1);
             }
         }
