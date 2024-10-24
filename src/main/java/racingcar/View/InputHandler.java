@@ -30,8 +30,8 @@ public class InputHandler {
 
     private void checkCarNameLength(List<String> splitCarNames) {
         for (String carName : splitCarNames) {
-            if (carName.length() > CAR_MAX_LENGTH) {
-                throw new IllegalArgumentException("자동차의 이름의 길이는 5글자 이하입니다.");
+            if (carName.length() > CAR_MAX_LENGTH || carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차의 이름의 길이는 1~5글자입니다.");
             }
         }
     }
