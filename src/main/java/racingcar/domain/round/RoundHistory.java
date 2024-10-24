@@ -12,17 +12,31 @@ public class RoundHistory {
         this.roundHistories = new LinkedHashMap<>();
     }
 
-    public void addRoundResult(int round, RoundSnapshot snapshot) {
+    public void addRoundSnapshot(int round, RoundSnapshot snapshot) {
         this.roundHistories.put(round, snapshot);
     }
 
     public List<RoundResult> getRoundResult(int round) {
+        return getRoundSnapShot(round).roundResult();
+    }
+
+    public List<String> getWinnersByRound(int round) {
+        RoundSnapshot roundSnapShot = getRoundSnapShot(round);
+
+        return roundSnapShot.roundResult()
+                .stream()
+                .filter(roundInfo -> roundInfo.position() == roundSnapShot.maxPosition())
+                .map(RoundResult::carName)
+                .toList();
+    }
+
+    private RoundSnapshot getRoundSnapShot(int round) {
         RoundSnapshot roundSnapshot = this.roundHistories.get(round);
         if (roundSnapshot == null) {
             throw new IllegalArgumentException();
         }
 
-        return roundSnapshot.roundResult();
+        return roundSnapshot;
     }
 
 }
