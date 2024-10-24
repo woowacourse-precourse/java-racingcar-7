@@ -6,27 +6,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
-import racingcar.domain.CarRace;
 
 public class CarRaceService {
 
-    private CarRace carRace;
+    private List<Car> cars;
 
     public void init(String carNames) {
-        List<Car> cars = Arrays.stream(carNames.split(","))
+        this.cars = Arrays.stream(carNames.split(","))
                 .map(Car::new)
                 .toList();
-        carRace = new CarRace(cars);
     }
 
     public void moveCars() {
-        carRace.getCars().stream()
+        cars.stream()
                 .filter(car -> canMove())
                 .forEach(Car::move);
     }
 
     public Map<String, String> getCarsStatus() {
-        return carRace.getCars().stream()
+        return cars.stream()
                 .collect(Collectors.toMap(
                         Car::getName,
                         Car::getMovingDistance
@@ -34,7 +32,7 @@ public class CarRaceService {
     }
 
     public List<String> getWinners() {
-        return carRace.getCars().stream()
+        return cars.stream()
                 .filter(car -> car.getMovingDistance().length() == getMaxDistance())
                 .map(Car::getName)
                 .toList();
@@ -45,7 +43,7 @@ public class CarRaceService {
     }
 
     private int getMaxDistance() {
-        return carRace.getCars().stream()
+        return cars.stream()
                 .mapToInt(car -> car.getMovingDistance().length())
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException());
