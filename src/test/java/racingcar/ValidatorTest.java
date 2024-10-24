@@ -42,8 +42,9 @@ class ValidatorTest {
         //given
         //when
         //then
-        Assertions.assertThatThrownBy(()->Validator.validateNameLength(over5wordname))
-                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> Validator.validateNameLength(over5wordname))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("5글자 이하의 이름만 입력할 수 있습니다.");
     }
 
     static Stream<Arguments> unvalidatedNameSource() {
@@ -54,14 +55,21 @@ class ValidatorTest {
         );
     }
 
-    @Test
-    @MethodSource("unvalidatedNameFormatSource")
+    @ParameterizedTest(name = "{index}번째 테스트. 이름:{0}은 5글자이상입니다. ")
+    @MethodSource("unvalidatedFormatNameSource")
     @DisplayName("이름 입력시 이름포맷(영문, 숫자, '_') 이외 문자 입력시 IllegalArgumentException() 예외처리")
-    void validateNameFormat() {
+    void validateNameFormat(String unvalidatedFormatName) {
         //given
-
         //when
-
         //then
+        Assertions.assertThatThrownBy(() -> Validator.validateNameFormat(unvalidatedFormatName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 알파벳,숫자와 언더바(_)만 사용할 수 있습니다.");
+    }
+    static Stream<Arguments> unvalidatedFormatNameSource() {
+        return Stream.of(
+                Arguments.of("abc##%"),
+                Arguments.of("한글한글")
+                );
     }
 }
