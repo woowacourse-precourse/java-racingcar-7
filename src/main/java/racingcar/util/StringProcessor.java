@@ -1,4 +1,4 @@
-package racingcar.model.util;
+package racingcar.util;
 
 import java.util.Arrays;
 
@@ -6,15 +6,15 @@ public class StringProcessor {
 
     private final static String COMMA = ",";
 
-    public String[] process(String input){
+    public static String[] process(String input){
 
         String[] tokens = split(input);
 
         return Arrays.stream(tokens)
-            .map(this::trim)
+            .map(StringProcessor::trim)
             .toArray(String[]::new);
     }
-    private String trim(String input){
+    private static String trim(String input){
         return input.trim();
     }
 

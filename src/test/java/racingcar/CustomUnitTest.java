@@ -1,14 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.Car;
+import racingcar.validator.CarNameValidator;
+import racingcar.validator.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,11 +25,10 @@ public class CustomUnitTest {
     @Test
     void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION(){
         // arrange
-        Validator validator = new CarValidator();
-        Car car = new Car();
+        Validator<String[]> validator = new CarNameValidator();
+        Car car = new Car(" ");
 
         // act
-        car.setName("");
 
         // assert
         assertThrows(IllegalArgumentException.class, () -> {

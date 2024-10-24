@@ -1,4 +1,4 @@
-package racingcar.model.validator;
+package racingcar.validator;
 
 public class TrialValidator implements Validator<String>{
 
