@@ -61,6 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("시도 횟수에 아무것도 입력하지 않았을 때")
+    void tryNumIsNothingExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
