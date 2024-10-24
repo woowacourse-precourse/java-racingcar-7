@@ -1,3 +1,12 @@
+/*
+ * RacingCars
+ *
+ * ver1
+ *
+ * 2024-10-24
+ *
+ * 저작권 주의
+ */
 package racingcar.domain;
 
 import racingcar.dto.CarDTO;

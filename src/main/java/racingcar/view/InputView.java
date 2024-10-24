@@ -1,3 +1,12 @@
+/*
+ * InputView
+ *
+ * ver1
+ *
+ * 2024-10-24
+ *
+ * 저작권 주의
+ */
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;

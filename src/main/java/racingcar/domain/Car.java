@@ -1,6 +1,14 @@
+/*
+ * Car
+ *
+ * ver1
+ *
+ * 2024-10-24
+ *
+ * 저작권 주의
+ */
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.dto.CarDTO;
 
 public class Car {

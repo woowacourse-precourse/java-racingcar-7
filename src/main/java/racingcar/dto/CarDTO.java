@@ -1,3 +1,12 @@
+/*
+ * CarDTO
+ *
+ * ver1
+ *
+ * 2024-10-24
+ *
+ * 저작권 주의
+ */
 package racingcar.dto;
 
 public class CarDTO {
