@@ -9,7 +9,7 @@
 - [x] `예외 사항` : 자동차 이름은 중복이 불가능하다.
 
 ### 무작위 값 추출 기능
-- [ ] 우아한 테크 코스 라이브러리 제공 `pickNumberInRange()` 활용
+- [x] 우아한 테크 코스 라이브러리 제공 `pickNumberInRange()` 활용
 - `ex) Randoms.pickNumberInRange(0, 9);`
 
 ### 자동차 전진 기능
