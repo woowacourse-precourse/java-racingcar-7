@@ -35,7 +35,13 @@ public class Game {
 
     // 최고 점수 산정
     private int getMaxScore() {
-
+        int maxScore = 0;
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getScore() > maxScore) {
+                maxScore = cars.get(i).getScore(); // 최고 점수 갱신
+            }
+        }
+        return maxScore;
     }
 
     // 우승자 출력
