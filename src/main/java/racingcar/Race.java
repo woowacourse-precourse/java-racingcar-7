@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Race {
     private final int totalRaceTurn;
@@ -42,5 +44,16 @@ public class Race {
                 cars.getCars().put(carName, cars.getCars().get(carName) + 1);
             }
         }
+    }
+
+    public String getWinner() {
+        List<String> winner = new ArrayList<>();
+        int total = 0;
+        for (String carName : cars.getCars().keySet()) {
+            if (cars.getCars().get(carName) >= total && cars.getCars().get(carName) != 0) {
+                winner.add(carName);
+            }
+        }
+        return winner.toString();
     }
 }
