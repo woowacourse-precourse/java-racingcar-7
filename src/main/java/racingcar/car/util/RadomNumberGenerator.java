@@ -1,2 +1,4 @@
-package racingcar.car.util;public class RadomNumberGenerator {
+package racingcar.car.util;
+
+public class RadomNumberGenerator {
 }

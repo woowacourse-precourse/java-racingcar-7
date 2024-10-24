@@ -1,2 +1,4 @@
-package racingcar.car.exception;public class CarNameException {
+package racingcar.car.exception;
+
+public class CarNameException {
 }

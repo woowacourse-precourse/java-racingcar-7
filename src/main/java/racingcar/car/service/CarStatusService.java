@@ -1,2 +1,4 @@
-package racingcar.car.service;public class CarStatusService {
+package racingcar.car.service;
+
+public class CarStatusService {
 }

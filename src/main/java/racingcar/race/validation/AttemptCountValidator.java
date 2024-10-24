@@ -1,2 +1,4 @@
-package racingcar.race.validation;public class AttemptCountValidator {
+package racingcar.race.validation;
+
+public class AttemptCountValidator {
 }

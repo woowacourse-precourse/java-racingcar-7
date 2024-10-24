@@ -1,2 +1,4 @@
-package racingcar.view;public class Input {
+package racingcar.view;
+
+public class Input {
 }

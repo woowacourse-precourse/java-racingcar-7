@@ -1,2 +1,4 @@
-package racingcar.race.exception;public class AttemptCountException {
+package racingcar.race.exception;
+
+public class AttemptCountException {
 }
