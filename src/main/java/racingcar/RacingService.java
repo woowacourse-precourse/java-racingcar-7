@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public class RacingService {
     private final String CAR_INPUT_DELIMITER = ",";
@@ -42,7 +44,8 @@ public class RacingService {
         return STOP_STEP;
     }
 
-    public void updateMovement(String carName, int movement) {
+    public void updateMovement(String carName, int randomValue) {
+        int movement = decideMovement(randomValue);
         int carPosition = CAR_MAP.get(carName);
         CAR_MAP.replace(carName, carPosition + movement);
     }

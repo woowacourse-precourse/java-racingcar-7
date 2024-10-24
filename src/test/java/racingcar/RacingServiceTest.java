@@ -61,7 +61,7 @@ class RacingServiceTest {
     @DisplayName("자동차의 위치가 올바르게 변하는지 확인")
     void 자동차_위치_테스트() {
         int beforePosition = racingService.getCarMap().get("a");
-        racingService.updateMovement("a", 1);
+        racingService.updateMovement("a", 4);
         assertThat(racingService.getCarMap().get("a")).isGreaterThan(beforePosition);
     }
 }
