@@ -16,5 +16,6 @@ public class GameController {
 		List<Car> cars = carNames.stream()
 				.map(Car::new)
 				.toList();
+		OutputView.printTrialCountInputMessage();
 	}
 }
