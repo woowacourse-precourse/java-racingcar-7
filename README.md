@@ -109,6 +109,7 @@ jun : -----
 - [x] 자동자 Model 생성
 - [x] 경기 Model 생성
 - [x] 비즈니르 로직을 위한 Service 클래스 생성
+- [ ] RandomNumberGenerator 구현제 작성
 - [ ] Model 리펙토링
 - [ ] Service 리펙토링
 - [ ] View 생성 (입력, 출력)
