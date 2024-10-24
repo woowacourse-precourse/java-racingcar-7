@@ -17,15 +17,15 @@ class RaceTest {
     }
 
     @Test
-    void 전진_정지_정하기() {
-        Assertions.assertThat(new Race(1).moveForwardOrNot())
-                .isIn(true, false);
-    }
-
-    @Test
     void 레이스_결과() {
         Assertions.assertThat(new Race(1).renderScoreBoard()
                         .matches("^pobi : -*\nwoni : -*\njun : -*$"))
                 .isEqualTo(true);
+    }
+
+    @Test
+    void 우승자_발표() {
+        Assertions.assertThat(new Race(5).getWinner())
+                .contains("pobi");
     }
 }
