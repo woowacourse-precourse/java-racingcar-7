@@ -22,22 +22,21 @@ public class Application {
         for (String car: cars) {
             carScores.put(car, 0);
         }
-        for (String car: cars) {
-            System.out.print(car+" - "+carScores.get(car)+"\n");
-        }
+        System.out.println("\n실행 결과");
+
         // 입력받은 횟수만큼 차량 전진
         while (repeat-- > 0) {
             moveCars(cars); // 차량 이동
-            showCurrentStatus(); // 현재 차수 실행 결과 출력
+            showCurrentStatus(cars); // 현재 차수 실행 결과 출력
         }
 
         // 프로그램 완료: 우승자 출력
-        showWinner();
+        getWinnerAndShow();
     }
     public static void moveCars(String[] cars) {
         for (int i=0; i<cars.length; i++) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
-            System.out.println(cars[i]+" 랜덤숫자: "+randomNum);
+            // 4 이상이면 스코어 올리기 -> checkScoreAndMove()
             if (randomNum >= 4) {
                 int curScore = carScores.get(cars[i]);
                 carScores.put(cars[i], curScore+1);
@@ -45,11 +44,22 @@ public class Application {
         }
     }
 
-    public static void showCurrentStatus() {
-
+    public static void showCurrentStatus(String cars[]) {
+        for (String carName : cars) {
+            int score = carScores.get(carName);
+            String scoreStr = makeScoreString(score);
+            System.out.println(carName + " : "+ scoreStr);
+        }
+        System.out.println();
     }
-
-    public static void showWinner() {
+    public static String makeScoreString(int score) {
+        String result = "";
+        while (score-- > 0) {
+            result += "-";
+        }
+        return result;
+    }
+    public static void getWinnerAndShow() {
 
     }
 }
