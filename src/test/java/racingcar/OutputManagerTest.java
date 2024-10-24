@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -45,6 +47,44 @@ class OutputManagerTest {
 
     private String getOutput() {
         return captor.toString().trim();
+    }
+
+    @DisplayName("최종 우승자가 한명이면 “최종 우승자 : 우승자_이름” 형태로 출력한다")
+    @Test
+    void printWinner() {
+
+        //given
+        List<String> winnerList = new ArrayList<>();
+        String winner = "winner1";
+
+        winnerList.add(winner);
+
+        //when
+        OutputManager.printWinner(winnerList);
+        String result = getOutput();
+
+        //then
+        assertThat(result).isEqualTo("최종 우승자 : " + winner);
+    }
+
+    @DisplayName("최종 우승자가 두명 이상이면 우승자 이름 사이 콤마와 공백이 포함된 문자열이 출력된다.")
+    @Test
+    void printWinners() {
+
+        //given
+        List<String> winnerList = new ArrayList<>();
+        String winner1 = "winner1";
+        String winner2 = "winner2";
+
+        winnerList.add(winner1);
+        winnerList.add(winner2);
+
+        //when
+        OutputManager.printWinner(winnerList);
+        String result = getOutput();
+
+        //then
+        assertThat(result).isEqualTo("최종 우승자 : " + winner1 + ", " + winner2);
     }
 
 }
