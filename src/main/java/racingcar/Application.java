@@ -17,7 +17,7 @@ public class Application {
         String carNames = getCarNames();
         List<String> carNameList = getCarNameList(carNames);
         RacingCars racingCars = createRacingCars(carNameList);
-        long tryCount = getTryCount();
+        int tryCount = getTryCount();
     }
 
     private static RacingCars createRacingCars(List<String> carNameList) {
@@ -33,7 +33,7 @@ public class Application {
         return inputView.getCarNames();
     }
 
-    private static long getTryCount() {
+    private static int getTryCount() {
         outputView.printInputTryCount();
         return inputView.getTryCount();
     }

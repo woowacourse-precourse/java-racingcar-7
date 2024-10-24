@@ -4,15 +4,15 @@ import racingcar.util.io.InputConsole;
 
 public class InputView {
 
-    private final long MINIMUM_TRY_COUNT = 1;
+    private final int MINIMUM_TRY_COUNT = 1;
 
     public String getCarNames() {
         return InputConsole.readLine();
     }
 
-    public long getTryCount() {
+    public int getTryCount() {
         try {
-            long tryCount = Long.parseLong(InputConsole.readLine());
+            int tryCount = Integer.parseInt(InputConsole.readLine());
             validateTryCount(tryCount);
             return tryCount;
         } catch (NumberFormatException e) {
@@ -20,7 +20,7 @@ public class InputView {
         }
     }
 
-    private void validateTryCount(long tryCount) {
+    private void validateTryCount(int tryCount) {
         if (tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
