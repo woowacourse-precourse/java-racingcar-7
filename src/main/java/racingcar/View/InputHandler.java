@@ -26,6 +26,13 @@ public class InputHandler {
     private void validateCarNames(List<String> splitCarNames) {
         checkAlphaNumericName(splitCarNames);
         checkCarNameLength(splitCarNames);
+        checkCarCount(splitCarNames);
+    }
+
+    private void checkCarCount(List<String> splitCarNames) {
+        if (splitCarNames.size() > 100 || splitCarNames.isEmpty()) {
+            throw new IllegalArgumentException("자동차 개수는 0~100개 입니다.");
+        }
     }
 
     private void checkCarNameLength(List<String> splitCarNames) {
