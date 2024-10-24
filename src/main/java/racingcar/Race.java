@@ -12,12 +12,12 @@ public class Race {
         this.totalRaceTurn = totalRaceTurn;
     }
 
-    private static int pickRandomNumber() {
+    private int pickRandomNumber() {
         int pickedNumber = Randoms.pickNumberInRange(0, 9);
         return pickedNumber;
     }
 
-    public static boolean moveForwardOrNot() {
+    public boolean moveForwardOrNot() {
         int pickedNumber = pickRandomNumber();
 
         if (pickedNumber >= 4) {
@@ -25,4 +25,8 @@ public class Race {
         }
         return false;
     }
+
+//    public static String renderScoreBoard() {
+//        for (int i = 0; i < totalRaceTurn)
+//    }
 }

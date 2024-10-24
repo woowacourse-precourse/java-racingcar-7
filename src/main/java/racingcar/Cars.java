@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Cars {
 
@@ -21,7 +22,11 @@ public class Cars {
         this.carNames = carNames;
     }
 
-    private static void validateNameLength(Map<String, Integer> carNames) {
+    public Set<String> getCarNames() {
+        return carNames.keySet();
+    }
+
+    private void validateNameLength(Map<String, Integer> carNames) {
         for (String carName : carNames.keySet()) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름이 5자를 초과했습니다.");
@@ -29,8 +34,8 @@ public class Cars {
         }
     }
 
-    private static void validateWrongValue(Map<String, Integer> carNames) {
-        if (carNames.keySet().contains("")) {
+    private void validateWrongValue(Map<String, Integer> carNames) {
+        if (carNames.containsKey("")) {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         }
     }
