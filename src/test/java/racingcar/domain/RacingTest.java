@@ -19,8 +19,8 @@ public class RacingTest {
         Racing racing = new Racing(racingCars, tryCount);
 
         //then
-        assertThat(racing.getRacingCars()).isEqualTo(racingCars);
-        assertThat(racing.getTryCount()).isEqualTo(tryCount);
+        assertThat(racing.racingCars()).isEqualTo(racingCars);
+        assertThat(racing.tryCount()).isEqualTo(tryCount);
     }
 
     @Test
@@ -33,8 +33,8 @@ public class RacingTest {
         Racing racing = Racing.of(racingCars, tryCount);
 
         //then
-        assertThat(racing.getRacingCars().getCars()).extracting(RacingCar::getName).containsExactly("pobi", "woni");
-        assertThat(racing.getTryCount().getCount()).isEqualTo(5);
+        assertThat(racing.racingCars().getCars()).extracting(RacingCar::getName).containsExactly("pobi", "woni");
+        assertThat(racing.tryCount().getCount()).isEqualTo(5);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class RacingTest {
         Racing racing = Racing.of(racingCars, tryCount);
 
         //when
-        IntStream.rangeClosed(1, racing.getTryCount().getCount())
+        IntStream.rangeClosed(1, racing.tryCount().getCount())
                 .forEach(i -> raceByStep(racing, this::isCarNamePobi));
 
         //then
@@ -63,7 +63,7 @@ public class RacingTest {
         Racing racing = Racing.of(racingCars, tryCount);
 
         //when
-        IntStream.rangeClosed(1, racing.getTryCount().getCount())
+        IntStream.rangeClosed(1, racing.tryCount().getCount())
                 .forEach(i -> raceByStep(racing, this::isTrue));
 
         //then
@@ -72,7 +72,7 @@ public class RacingTest {
     }
 
     private void raceByStep(Racing racing, Predicate<RacingCar> carNameFilter) {
-        racing.getRacingCars().getCars().stream()
+        racing.racingCars().getCars().stream()
                 .filter(carNameFilter)
                 .forEach(this::moveCar);
     }
