@@ -15,20 +15,20 @@ class RacingCarGameTest {
     @Test
     void createRacingCarGame_게임횟수그리고자동차들입력받으면_생성한다(){
         // given
-        final int loop = 3;
+        final int roundCount = 3;
 
         final Car car1 = Car.createNamedCar("kim");
         final Car car2 = Car.createNamedCar("park");
         final List<Car> cars = List.of(car1, car2);
 
         // expect
-        assertThatCode(() -> RacingCarGame.createLoopedRacingCarGame(loop,cars))
+        assertThatCode(() -> RacingCarGame.createLoopedRacingCarGame(roundCount,cars))
                 .doesNotThrowAnyException();
     }
     @Test
     void createRacingCarGame_자동차최대5대초과시_예외처리(){
         // given
-        final int loop = 3;
+        final int roundCount = 3;
 
         final Car car1 = Car.createNamedCar("kim");
         final Car car2 = Car.createNamedCar("park");
@@ -39,7 +39,7 @@ class RacingCarGameTest {
         final List<Car> fiveOverCars = List.of(car1, car2,car3,car4,car5,car6);
 
         // expect
-        assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(loop,fiveOverCars))
+        assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,fiveOverCars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 최대 5대까지 게임 가능합니다.");
     }
@@ -47,13 +47,13 @@ class RacingCarGameTest {
     @Test
     void createRacingCarGame_자동차최소2대미만시_예외처리(){
         // given
-        final int loop = 3;
+        final int roundCount = 3;
 
         final Car car1 = Car.createNamedCar("kim");
         final List<Car> oneCar = List.of(car1);
 
         // expect
-        assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(loop,oneCar))
+        assertThatThrownBy(()->RacingCarGame.createLoopedRacingCarGame(roundCount,oneCar))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 최소 2대부터 게임 가능합니다.");
     }
@@ -61,13 +61,13 @@ class RacingCarGameTest {
     @Test
     void createRacingCarGame_게임횟수1번미만시_예외처리(){
         // given
-        final int lessThanOne = 0;
+        final int lessThanGAME_MINIMUM_ROUND = 0;
         final Car car1 = Car.createNamedCar("kim");
         final Car car2 = Car.createNamedCar("park");
         final List<Car> cars = List.of(car1,car2);
 
         // expect
-        assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(lessThanOne,cars))
+        assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(lessThanGAME_MINIMUM_ROUND,cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("게임횟수 최소 1번부터 게임 가능합니다");
     }
@@ -75,13 +75,13 @@ class RacingCarGameTest {
     @Test
     void createRacingCarGame_게임횟수100번초과시_예외처리(){
         // given
-        final int overThan100 = 101;
+        final int overThanGAME_MAXIMUM_ROUND = 101;
         final Car car1 = Car.createNamedCar("kim");
         final Car car2 = Car.createNamedCar("park");
         final List<Car> cars = List.of(car1,car2);
 
         // expect
-        assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(overThan100,cars))
+        assertThatThrownBy(()-> RacingCarGame.createLoopedRacingCarGame(overThanGAME_MAXIMUM_ROUND,cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("게임횟수 최대 100번까지 게임 가능합니다");
     }
