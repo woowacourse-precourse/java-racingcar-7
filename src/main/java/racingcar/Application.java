@@ -15,7 +15,15 @@ class CarNameInput {
         return Arrays.asList(input.split(","));
     }
 }
-
+class CarNameValidator{
+    public void validate(List<String> carNames){
+        for(String name : carNames){
+            if(name.trim().length()>5){
+                throw new IllegalArgumentException("5자 이하로 입력부탁");
+            }
+        }
+    }
+}
 public class Application {
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput();
@@ -23,5 +31,8 @@ public class Application {
 
         CarNameParser parser = new CarNameParser();
         List<String> carNames = parser.parse(carNameInputStr);
+
+        CarNameValidator validator = new CarNameValidator();
+        validator.validate(carNames);
     }
 }
