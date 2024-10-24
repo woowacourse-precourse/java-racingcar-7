@@ -35,4 +35,19 @@ class InputValidatorTest {
             .hasMessageContaining("이름은 쉼표 기준으로 구분할 수 있습니다.");
     }
 
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "1", "0", "-1"})
+    void 유효한_숫자_범위라면_예외가_발생하지_않는다(String number) {
+        assertDoesNotThrow(() -> inputValidator.validateNumeric(number));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"junsu", "준수", "!!!", "34@"})
+    void 숫자가_아닌_문자는_예외가_발생한다(String number) {
+        assertThatThrownBy(() -> inputValidator.validateNumeric(number))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("유효한 숫자 범위를 입력해 주세요.");
+    }
+
 }
