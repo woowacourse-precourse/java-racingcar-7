@@ -12,8 +12,8 @@ public class CarRecord {
         this.distance = distance;
     }
 
-    public static CarRecord of(Car car){
-        return new CarRecord(car.getCarName(),car.getDistance());
+    public static CarRecord of(Car car) {
+        return new CarRecord(car.getCarName(), car.getDistance());
     }
 
     public String getCarName() {
