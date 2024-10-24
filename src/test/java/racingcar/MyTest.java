@@ -4,16 +4,13 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.car.CarFactory;
-import racingcar.car.strategy.MoveStrategy;
-import racingcar.car.strategy.RandomMoveStrategy;
+import racingcar.car.*;
+import racingcar.car.strategy.*;
 import racingcar.game.RacingGame;
 import racingcar.util.TestNumberGenerator;
 import racingcar.util.Validator;
