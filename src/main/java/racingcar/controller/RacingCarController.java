@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.CarNames;
 import racingcar.model.Cars;
+import racingcar.model.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,6 +22,7 @@ public class RacingCarController {
         String rawCarNames = receiveCarNames();
         Cars cars = createCars(rawCarNames);
         String rawTryCount = receiveTryCount();
+        TryCount tryCount = new TryCount(rawTryCount);
     }
 
     private String receiveCarNames() {
