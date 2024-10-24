@@ -50,8 +50,8 @@ public class Application {
         final int playTimes = Integer.parseInt(playTimesInput);
         for (int i = 0; i < playTimes; i++) {
             for (Car car : cars) {
-                final int randomNumber = Randoms.pickNumberInRange(0, 9);
-                car.move(randomNumber);
+                MoveStrategy moveStrategy = new RandomNumberMoveStrategy();
+                car.move(moveStrategy);
             }
 
             for (Car car : cars) {

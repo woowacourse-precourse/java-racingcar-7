@@ -12,8 +12,8 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(final int randomNumber) {
-        if (randomNumber >= 4) {
+    public void move(final MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
             position++;
         }
     }
