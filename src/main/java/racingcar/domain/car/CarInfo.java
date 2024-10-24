@@ -6,7 +6,7 @@ public class CarInfo {
 
     public CarInfo(Name name, Position currentPosition) {
         this.name = name.getName();
-        this.currentPosition = currentPosition.getCurrentPosition();
+        this.currentPosition = currentPosition.getPosition();
     }
 
     public String getName() {

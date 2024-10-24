@@ -1,21 +1,22 @@
 package racingcar.domain.car;
 
 public class Position {
-    private int currentPosition;
+    private int position;
 
     public Position() {
-        this.currentPosition = 0;
+        this.position = 0;
     }
 
     public int addPosition() {
-        return ++currentPosition;
+        return ++position;
     }
 
-    public boolean isGreaterThan(Integer otherCarPosition) {
-        return currentPosition > otherCarPosition;
+    public boolean isGreaterThanOrEqualTo(Integer otherCarCurrentPosition) {
+        return this.position >= otherCarCurrentPosition;
     }
 
-    public int getCurrentPosition() {
-        return currentPosition;
+    public int getPosition() {
+        return position;
     }
+
 }

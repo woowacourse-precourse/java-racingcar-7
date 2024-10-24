@@ -48,7 +48,7 @@ class CarTest {
         //when
         car1.accelerator();
         CarInfo carInfo = car2.getCarInfo();
-        boolean result = car1.isAheadOf(carInfo.getCurrentPosition());
+        boolean result = car1.isAtSameOrAheadOf(carInfo.getCurrentPosition());
 
         //then
         Assertions.assertTrue(result);
