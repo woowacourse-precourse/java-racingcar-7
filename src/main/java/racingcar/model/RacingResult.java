@@ -8,7 +8,7 @@ public class RacingResult {
     private final int totalTrialCount;
     private final int maxDistance;
 
-    public RacingResult(List<RacingCar> racingResult, int totalTrialCount) {
+    public RacingResult(List<RacingCar> racingResult, Integer totalTrialCount) {
         this.racingResult = racingResult;
         this.totalTrialCount = totalTrialCount;
         this.maxDistance = findMaxDistance();
@@ -16,14 +16,18 @@ public class RacingResult {
 
     public Integer findMaxDistance() {
         return racingResult.stream()
-                .map(racingCar -> racingCar.getCurrentDistance(totalTrialCount))
+                .map(racingCar -> racingCar.getDistance(totalTrialCount))
                 .reduce(maxDistance, Integer::max);
     }
 
     public List<String> findWinner() {
         return racingResult.stream()
-                .filter(racingCar -> racingCar.getCurrentDistance(totalTrialCount) == maxDistance)
+                .filter(racingCar -> racingCar.getDistance(totalTrialCount) == maxDistance)
                 .map(RacingCar::getName)
                 .toList();
+    }
+
+    public List<RacingCar> get() {
+        return racingResult;
     }
 }
