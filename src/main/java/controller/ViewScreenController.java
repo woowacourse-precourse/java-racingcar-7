@@ -33,7 +33,6 @@ public class ViewScreenController {
         }
     }
 
-    // Todo 자동차 이름 양식 체크 & 양식 정리
     public List<String> checkNameFormat(String input) {
         nullCheck(input);
         String inputWithoutSpace = input.replaceAll("\\s+", "");

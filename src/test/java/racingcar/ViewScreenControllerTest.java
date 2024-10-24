@@ -12,8 +12,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 
 public class ViewScreenControllerTest {
-    // TOdo 입력에서 이름 오류 검출
-    // TODO 입력에서 횟수가 숫자 아닌 경우
 
     private static ViewScreenController viewScreenController;
 
@@ -22,7 +20,7 @@ public class ViewScreenControllerTest {
         String input = "pobi,woni,jun\n5\n";
         ByteArrayInputStream newTestInputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(newTestInputStream);
-        // 테스트용 GameManager 객체 초기화
+        // 테스트용 viewScreenController를 더미데이터로 초기화
         viewScreenController = new ViewScreenController();
     }
 

@@ -26,7 +26,7 @@ public class Car {
         }
     }
 
-    //테스트를 위해 만들어짐.
+    //테스트에서만 사용됨
     public void setDistance(int distance) {
         this.distance = distance;
     }

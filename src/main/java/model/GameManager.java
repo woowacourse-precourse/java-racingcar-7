@@ -15,7 +15,7 @@ public class GameManager {
         }
     }
 
-    // 테스트용
+    // 테스트에서만 사용됨
     public List<Car> getCarList() {
         return this.carList;
     }
