@@ -12,8 +12,9 @@ public abstract class StringParser {
     public final static int MAX_NAME_LENGTH = 5;
 
     public static Set<String> parseCarName(final String str) {
-        validateDelimiters(str);
-        Set<String> names = Arrays.stream(str.split(NAME_DELIMITER))
+        String spaceRemoved = str.replaceAll("\\s+", "");
+        validateDelimiters(spaceRemoved);
+        Set<String> names = Arrays.stream(spaceRemoved.split(NAME_DELIMITER))
                 .map(String::trim)
                 .collect(Collectors.toSet());
 
@@ -34,10 +35,10 @@ public abstract class StringParser {
         return str.chars().allMatch(Character::isDigit);
     }
 
-    private static void validateDelimiters(final String str) {
+    private static void validateDelimiters(final String nonSpaceStr) {
         String regex = String.format("[^%s0-9a-zA-Z]+", Pattern.quote(NAME_DELIMITER));
 
-        Matcher matcher = Pattern.compile(regex).matcher(str);
+        Matcher matcher = Pattern.compile(regex).matcher(nonSpaceStr);
         if (matcher.find()) {
             throw new IllegalArgumentException("허용되지 않는 구분자가 포함되어 있습니다." + matcher.group());
         }
