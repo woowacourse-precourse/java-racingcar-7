@@ -21,6 +21,8 @@ public class GameController {
         Cars cars = gameService.createCars(inputView.carNamesInput());
         Integer gameRound = gameService.getGameRoundInput(inputView.gameRoundInput());
         Game game = new Game(cars, gameRound);
+
+        gameService.playGame(game);
     }
 
 }
