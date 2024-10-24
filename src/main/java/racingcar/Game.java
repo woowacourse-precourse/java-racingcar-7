@@ -59,4 +59,9 @@ public class Game {
         }
         return winners;
     }
+
+    public void printWinner() {
+        List<String> winners = findWinner();
+        winners.forEach(System.out::println);
+    }
 }
