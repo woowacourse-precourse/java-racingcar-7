@@ -8,6 +8,9 @@ public class Validator {
             if (carName == null || carName.isBlank()) {
                 throw new IllegalArgumentException();
             }
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
