@@ -19,7 +19,10 @@ public class InputView {
         String[] splitInput = Console.readLine().split(",");
         List<String> carNameList = Arrays.stream(splitInput).map(String::trim).toList();
 
-        inputValidator.validateCarNameList(carNameList);
+        carNameList.forEach((name) -> {
+            inputValidator.validateCarName(name);
+        });
+
 
         return carNameList;
     }
