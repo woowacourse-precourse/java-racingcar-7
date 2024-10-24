@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Car;
 import view.ConsoleView;
 
 public class Application {
@@ -7,9 +10,16 @@ public class Application {
 
         // 1. 입력 & 2. 구분
         ConsoleView consoleView = new ConsoleView();
-        String[] carNames = consoleView.getCarNames();
+        List<String> carNames = consoleView.getCarNames();
         int moveCount = consoleView.getMoveCount();
 
+        // 3. 자동차 객체 생성
+        List<Car> Cars = new ArrayList<>(carNames.size());
+        for (String name : carNames) {
+            Cars.add(new Car(name));
+        }
+
         // TODO: 입력 구조 점검 및 다음 기능들 구현
+
     }
 }
