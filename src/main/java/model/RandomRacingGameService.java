@@ -22,6 +22,8 @@ public class RandomRacingGameService implements RacingGameService {
             racingCarView.printIntermediateResult(cars);
             currentRound++;
         }
+
+        racingCarView.printWinner(findWinner(cars));
     }
 
     private List<RacingCar> findWinner(List<RacingCar> cars) {

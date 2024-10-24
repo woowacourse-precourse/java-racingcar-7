@@ -8,8 +8,10 @@ public class RacingCarView {
     private static final String INPUT_RACING_CAR_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_RACING_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String DISTANCE_OUTPUT_TEXT = "-";
+    private static final String WINNER_SEPARATOR = ", ";
     private static final String LINE_SEPARATOR = "\n";
     private static final String PRINT_INTERMEDIATE_RESULT_FORMAT = "%s : %s";
+    private static final String WINNER_RESULT_FORMAT = "최종 우승자 : %s";
 
     public String readCars() {
         System.out.println(INPUT_RACING_CAR_MESSAGE);
@@ -34,5 +36,18 @@ public class RacingCarView {
         }
 
         System.out.print(result);
+    }
+
+    public void printWinner(List<RacingCar> winners) {
+        StringBuilder result = new StringBuilder(LINE_SEPARATOR);
+        List<String> winnerNames = winners.stream()
+                .map(RacingCar::getName)
+                .toList();
+
+        result.append(String.format(
+                WINNER_RESULT_FORMAT,
+                String.join(WINNER_SEPARATOR, winnerNames)));
+
+        System.out.println(result);
     }
 }
