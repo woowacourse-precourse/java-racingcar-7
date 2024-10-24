@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -49,17 +50,19 @@ public class Application {
             int attempts = convertAttempts(attemptsInput);
             ArrayList<Car> cars = createCarObjects(convertCarNames(nameInput));
 
-            racingStart(cars, attempts);
+            ArrayList<String> winners = racingStart(cars, attempts);
+            printGameWinners(winners);
 
         }
 
+        // 자동차 이름 5자 이하
         ArrayList<String> convertCarNames(String nameInput) {
             ArrayList<String> carNames = new ArrayList<>();
 
             if (validateInput(CAR_NAME_REGEXP, nameInput)) {
                 carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
             }
-            // 자동차 이름이 하나만 입력된 경우 -> 경주를 진행할 수 없다.
+
             if (carNames.size() < 2) {
                 throw new IllegalArgumentException();
             }
@@ -100,10 +103,6 @@ public class Application {
             return determineWinner(cars);
         }
 
-        private ArrayList<String> determineWinner(ArrayList<Car> cars) {
-            return new ArrayList<String>();
-        }
-
         private void printGameStatus(ArrayList<Car> cars) {
             for (Car car : cars) {
                 System.out.println(makeMovedAmountString(car.name, car.movedAmount));
@@ -117,6 +116,37 @@ public class Application {
                 movedAmountString = "";
             }
             return String.format("%s : %s", carName, movedAmountString);
+        }
+
+        // TODO : 리팩토링해서 커밋하기
+        private ArrayList<String> determineWinner(ArrayList<Car> cars) {
+            int maxMovedAmount = 0;
+            ArrayList<Car> candidateCars = new ArrayList<>();
+
+            // 참가 자동차 배열을 순회하면서 movedAmount가 가장 큰 자동차 저장
+            for (Car car : cars) {
+                if (car.movedAmount > maxMovedAmount) {
+                    maxMovedAmount = car.movedAmount;
+                    candidateCars.clear();
+                } else if (car.movedAmount < maxMovedAmount) {
+                    continue;
+                }
+                candidateCars.add(car);
+            }
+
+            return getWinnerNames(candidateCars);
+        }
+
+        private void printGameWinners(ArrayList<String> winners) {
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
+        }
+
+        private ArrayList<String> getWinnerNames(ArrayList<Car> winners) {
+            ArrayList<String> winnerNames = new ArrayList<>();
+
+            winners.forEach(car -> winnerNames.add(car.name));
+
+            return winnerNames;
         }
 
     }
