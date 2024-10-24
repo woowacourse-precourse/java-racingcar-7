@@ -10,10 +10,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Racing {
 
+    private List<Car> carList;
 
     public void play() {
-        List<Car> carList = getCarListFromUser();
+        carList = getCarListFromUser();
         int moveCount = getMoveCountFromUser();
+        move(moveCount);
     }
 
     private List<Car> getCarListFromUser() {
@@ -28,5 +30,12 @@ public class Racing {
         String input = readLine();
         RacingValidator.isInteger(input);
         return Integer.parseInt(input);
+    }
+
+    private void move(int moveCount) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < moveCount; i++) {
+            RacingUtil.setMoveOrStop(carList);
+        }
     }
 }

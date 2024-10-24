@@ -26,4 +26,23 @@ public class RacingPlayTest {
         assertThat(expect.retainAll(carList)).isTrue();
     }
 
+    @DisplayName("자동차가 전진하는지 확인한다")
+    @Test
+    void validMoveCar(){
+        List<Car> expect = new ArrayList<>();
+        expect.add(new Car("pobi"));
+        expect.add(new Car("crong"));
+        boolean test = false;
+
+        for(int i=0;i<30;i++) {
+            RacingUtil.setMoveOrStop(expect);
+            if (expect.get(0).getPosition() > 0 || expect.get(1).getPosition() > 0) {
+                test = true;
+                break;
+            }
+        }
+
+        assertThat(test).isTrue();
+    }
+
 }
