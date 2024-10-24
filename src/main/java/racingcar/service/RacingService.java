@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import java.util.List;
+
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
@@ -29,5 +31,19 @@ public class RacingService {
 
 	public boolean canRacing(int tryCount) {
 		return !carRepository.existWinner(tryCount);
+	}
+
+	public List<Car> race() {
+		List<Car> findCars = carRepository.findAll();
+		for (Car car : findCars) {
+			moveCarIfPossible(car);
+		}
+		return findCars;
+	}
+
+	private void moveCarIfPossible(Car car) {
+		if (car.canMove()) {
+			car.move();
+		}
 	}
 }
