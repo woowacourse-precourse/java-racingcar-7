@@ -44,10 +44,10 @@ public class Car {
     }
 
     public static void specialCharValidation(String inputVal) {
-        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z].*");
+        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z가-힣].*");
 
         if(isContainAnotherSpecialChar){
-            throw new IllegalArgumentException("특수기호는 , 외에 사용하면 안됩니다.");
+            throw new IllegalArgumentException(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
         }
     }
 
