@@ -86,6 +86,23 @@ class ApplicationTest extends NsTest {
             .isLessThanOrEqualTo(9);
     }
 
+    @Test
+    void 자동차_전진_테스트(){
+        InputString inputString = new InputString("pobi");
+        CarCollection carCollection = inputString.getCarCollection();
+        carCollection.moveCar(0,4);
+        int moveCount = carCollection.getCarMoveCount().get(0);
+        assertThat(moveCount == 1).isTrue();
+    }
+
+    @Test
+    void 자동차_정지_테스트(){
+        InputString inputString = new InputString("pobi");
+        CarCollection carCollection = inputString.getCarCollection();
+        carCollection.moveCar(0,3);
+        int moveCount = carCollection.getCarMoveCount().get(0);
+        assertThat(moveCount == 0).isTrue();
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

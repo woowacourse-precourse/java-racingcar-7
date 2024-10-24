@@ -33,7 +33,17 @@ class Racing {
     public void start(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(Console.readLine());
-        // 시도한 횟수만큼 진행
+
+        while(tryCount-->0){
+
+        }
+    }
+
+    public void moveCars(){
+        for(int i=0;i< carCollection.carCount();i++){
+            int randomNum = getRandomNumber();
+            carCollection.moveCar(i,randomNum);
+        }
 
     }
 
@@ -91,6 +101,22 @@ class CarCollection {
             carNames.add(car.getName());
         return carNames;
     }
+
+    public void moveCar(int index,int randomNum){
+        if(randomNum>=4) {
+            Car car = carList.get(index);
+            car.move();
+        }
+    }
+    public int carCount(){
+        return carList.size();
+    }
+    public List<Integer> getCarMoveCount(){
+        List<Integer> carMoveCountList = new ArrayList<>();
+        for(Car car: carList)
+            carMoveCountList.add(car.getMoveCount());
+        return carMoveCountList;
+    }
 }
 
 class Car {
@@ -108,5 +134,9 @@ class Car {
 
     public String getName() {
         return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 }
