@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CarList {
     private static final String DELIMITER = ",";
-    private static final int SINGLE_WINNER = 1;
+    private static final String WINNER_FORMAT = ", ";
     private final List<Car> list;
 
     public CarList() {
@@ -38,17 +38,17 @@ public class CarList {
     }
 
     public String getWinners(List<Car> matchResult) {
-        return getWinnerNames(matchResult.stream()
+        return findWinners(matchResult.stream()
                 .filter(car -> car.getPosition() == findMaxPosition(matchResult))
                 .map(Car::getName)
                 .toList());
     }
 
-    private String getWinnerNames(List<String> winnerList) {
-        if (isSingleWinner(winnerList)) {
-            return winnerList.getFirst();
+    private String findWinners(List<String> matchResult) {
+        if (!isSingleWinner(matchResult)) {
+            return String.join(WINNER_FORMAT, matchResult);
         }
-        return String.join(WINNER_FORMAT, winnerList);
+        return matchResult.getFirst();
     }
 
     private boolean isSingleWinner(List<String> winnerList) {
