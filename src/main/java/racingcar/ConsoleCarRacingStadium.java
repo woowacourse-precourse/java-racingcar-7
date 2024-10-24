@@ -19,6 +19,15 @@ public class ConsoleCarRacingStadium {
         Console.close();
     }
 
+    public void startRace() {
+        racingGame.play();
+        List<String> namesOfWinner = racingGame.getWinners()
+                .stream()
+                .map(RacingPlayer::getPlayerName)
+                .toList();
+        System.out.println("최종 우승자 : " + String.join(", ", namesOfWinner));
+    }
+
     private int setUpMatchCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String matchCountInput = Console.readLine();

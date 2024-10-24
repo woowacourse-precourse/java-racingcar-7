@@ -37,4 +37,9 @@ public class RacingCar implements RacingPlayer<RacingCar> {
         return odometer.getTotalDistance();
     }
 
+    @Override
+    public String getPlayerName() {
+        return name;
+    }
+
 }
