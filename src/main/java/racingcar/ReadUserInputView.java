@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.TextString.NAME_SEPARATOR;
 
 public class ReadUserInputView {
-    public String[] readCarNames() {
+    public String[] readRacingCarNames() {
         var carNames = readLine().split(NAME_SEPARATOR.getValue());
         if (!UserInputValidator.isValidCarName(carNames)) {
             throw new IllegalArgumentException();
@@ -12,11 +12,11 @@ public class ReadUserInputView {
         return carNames;
     }
 
-    public int readTryCount() {
+    public long readTryCount() {
         var tryCount = readLine();
         if (!UserInputValidator.isValidTryCount(tryCount)) {
             throw new IllegalArgumentException();
         }
-        return Integer.parseInt(tryCount);
+        return Long.parseLong(tryCount);
     }
 }
