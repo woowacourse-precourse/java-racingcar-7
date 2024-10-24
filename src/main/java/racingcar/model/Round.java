@@ -19,9 +19,7 @@ public class Round {
     public static Round of(List<Car> carList) {
         LinkedHashMap<String, Integer> state = new LinkedHashMap<>();
 
-        carList.forEach(car -> {
-            state.put(car.getName(), car.getPosition());
-        });
+        carList.forEach(car -> state.put(car.getName(), car.getPosition()));
 
         return new Round(state);
     }

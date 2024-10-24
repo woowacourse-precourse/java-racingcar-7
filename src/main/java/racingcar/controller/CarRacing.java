@@ -28,9 +28,7 @@ public class CarRacing {
     private void enrollCars() {
         List<String> carNameList = inputView.inputCarNameList();
 
-        carNameList.forEach(name -> {
-            carList.add(Car.of(name));
-        });
+        carNameList.forEach(name -> carList.add(Car.of(name)));
     }
 
     private void startRounds() {
