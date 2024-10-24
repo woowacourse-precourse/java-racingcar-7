@@ -128,6 +128,16 @@ class CarTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"  koo,sa  ng,woo  ", "구  , 상  , 우  "})
+    @DisplayName("replace를 통해 중간 공백은 물론 2칸 이상의 공백도 없앤다.")
+    void 공백_제거_2차_테스트(String carNames) {
+        assertDoesNotThrow(() -> {
+            Car.specialCharValidation(carNames);
+            Car.splitAndNameValidation(carNames);
+        });
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"구상우,ksw,sang"})
     @DisplayName("자동차명 문자열을 넘기면 차명과 전진횟수 문자열을 가진 Map 리턴")
     void 자동차별_Map_생성(String carNames) {
@@ -144,6 +154,8 @@ class CarTest {
             assertThat(carNameConvertMapList.get(i).get("name")).isNotEmpty();
         }
     }
+
+
 
 
 
