@@ -24,6 +24,34 @@ public class RacingGame {
         }
     }
 
+    public void end(List<Car> cars) {
+        List<String> winners = findWinners(cars);
+        printWinners(winners);
+    }
+
+    private List<String> findWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        int max = 0;
+        for (Car car : cars) {
+            max = Math.max(car.getForwardCount(), max);
+        }
+        for (Car car : cars) {
+            if (car.getForwardCount() == max) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+    private void printWinners(List<String> winners) {
+        if (winners.size() == 1) {
+            System.out.println("최종 우승자 : " + winners.getFirst());
+        } else {
+            String join = String.join(", ", winners);
+            System.out.println("최종 우승자 : " + join);
+        }
+    }
+
     public void startRound(List<Car> cars) {
         for (Car car : cars) {
             car.goAndStop();
