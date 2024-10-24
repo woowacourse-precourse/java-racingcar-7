@@ -1,13 +1,15 @@
 package racingcar.console;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 public class ConsoleReader {
 
-    public static String readName(String input){
-        return Validator.validateName(input);
+    public static String readName(){
+        return Validator.validateName(Console.readLine());
     }
 
     private static class Validator {
