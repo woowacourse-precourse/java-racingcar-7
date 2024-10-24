@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InputTest {
@@ -22,4 +23,18 @@ public class InputTest {
     void 올바른_입력_테스트() {
         input.checkValidation("ValidName");
     }
+
+    @Test
+    void 다섯_글자_이하_입력_테스트() {
+        assertDoesNotThrow(() -> input.checkNameLength("pobi"));
+        assertDoesNotThrow(() -> input.checkNameLength("woni"));
+        assertDoesNotThrow(() -> input.checkNameLength("jun"));
+    }
+
+    @Test
+    void 다섯_글자_초과_입력_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> input.checkNameLength("pooobi"));
+        assertThrows(IllegalArgumentException.class, () -> input.checkNameLength("wooooni"));
+    }
+
 }
