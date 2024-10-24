@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputProcessor {
-    static List<Car> parseToCarNameList(String inputString) {
+    public static List<Car> parseToCarNameList(String inputString) {
         List<String> carNames = Arrays.asList(inputString.split(","));
         List<Car> cars = new ArrayList<>();
 

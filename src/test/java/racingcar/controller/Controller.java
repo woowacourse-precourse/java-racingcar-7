@@ -1,6 +1,12 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.Car;
+import racingcar.model.InputProcessor;
+import racingcar.model.RacingGame;
+import racingcar.model.Winners;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Controller {
     public void startGame() {

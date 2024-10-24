@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -12,6 +12,7 @@ public class ValidatorTest {
     void 자동차_이름이_5자_초과시_예외발생() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobiwoni"));
+
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateCarNames(cars);
         });
@@ -21,6 +22,7 @@ public class ValidatorTest {
     void 자동차_이름이_공백이면_예외발생() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car(""));
+
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateCarNames(cars);
         });
@@ -31,6 +33,7 @@ public class ValidatorTest {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
         cars.add(new Car("pobi"));
+
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateCarNames(cars);
         });

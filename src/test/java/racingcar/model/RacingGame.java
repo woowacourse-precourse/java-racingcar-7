@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.model;
 
 import java.util.List;
 
 public class RacingGame {
-    static void playRace(List<Car> cars) {
+    public static void playRace(List<Car> cars) {
         for (Car car : cars) {
             car.goForward();
         }
