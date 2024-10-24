@@ -41,12 +41,11 @@ public class Game {
                     car.move();
                 }
             }
-
             printCurrentStatus(cars);
         }
     }
 
-    private void printWinners() {
+    private List<String> getWinners() {
         // 우승자의 position 추출
         int maxPosition = cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
@@ -54,16 +53,17 @@ public class Game {
                 .getPosition();
 
         // maxPosition과 같은 값을 가지는 자동차 추출
-        List<String> winners = cars.stream()
+        return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();
+    }
 
-        //최종 우승자 출력
+    private void printWinners() {
+        List<String> winners = getWinners();
         String winnerNames = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerNames);
     }
-
 
     private void printCurrentStatus(List<Car> cars) {
         for (final Car car : cars) {
@@ -71,6 +71,4 @@ public class Game {
         }
         System.out.println();
     }
-
-
 }
