@@ -5,7 +5,7 @@
 ## 프로그램 흐름도
 초반에 요구사항을 읽고, 손으로 프로그램의 흐름도를 먼저 작성한 후 코딩을 시작했습니다. 아래는 작성한 프로그램 흐름도입니다.
 
-![프로그램 흐름도]( https://github.com/leeedongjaee/java-racingcar-7/blob/leeedongjaee/자동차경주.jpeg?raw=true)
+![프로그램 흐름도](https://github.com/leeedongjaee/java-racingcar-7/blob/leeedongjaee/자동차경주.jpeg?raw=true)
 
 ### 흐름도 설명
 1. **자동차 이름 입력**:
