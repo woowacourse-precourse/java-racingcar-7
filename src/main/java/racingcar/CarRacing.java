@@ -12,7 +12,7 @@ public class CarRacing {
         return racingCarTrace.getBiggestDistanceRacingCar();
     }
 
-    public static void forwardCarByRandomNumber(RacingCarTrace racingCarTrace) {
+    private static void forwardCarByRandomNumber(RacingCarTrace racingCarTrace) {
         IntStream.range(0, racingCarTrace.size()).forEach(index -> {
             var racingCar = racingCarTrace.getRacingCar(index);
             var randomNumber = Randoms.pickNumberInRange(0, 9);
@@ -22,7 +22,7 @@ public class CarRacing {
         });
     }
 
-    public static void carRacingByTryCount(int tryCount, RacingCarTrace racingCarTrace) {
+    private static void carRacingByTryCount(int tryCount, RacingCarTrace racingCarTrace) {
         IntStream.range(0, tryCount).forEach(index -> {
                     forwardCarByRandomNumber(racingCarTrace);
                     Prompt.tracePrint(racingCarTrace);
