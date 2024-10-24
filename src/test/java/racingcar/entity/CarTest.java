@@ -22,4 +22,11 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
     }
+
+    @Test
+    void 공백_입력_예외처리() {
+        assertThatThrownBy(() -> new Car(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+    }
 }
