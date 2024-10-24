@@ -3,6 +3,7 @@ package racingcar.object;
 import racingcar.object.carEngine.CarEngine;
 import racingcar.object.enums.DriveResult;
 import racingcar.object.value.CarName;
+import racingcar.object.value.CarRecord;
 import racingcar.object.value.Mileage;
 
 public class Car {
@@ -39,6 +40,10 @@ public class Car {
         }
         mileage = mileage.getIncreased();
         return DriveResult.SUCCESS;
+    }
+
+    public CarRecord record() {
+        return new CarRecord(carName, mileage);
     }
 
 }

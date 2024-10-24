@@ -1,6 +1,6 @@
 package racingcar.object.value;
 
-public record CarName(String name) {
+public record CarName(String name) implements Comparable<CarName> {
 
     public CarName {
         if (name == null) {
@@ -19,6 +19,14 @@ public record CarName(String name) {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(CarName other) {
+        if (other == null) {
+            throw new IllegalArgumentException("null과는 비교할 수 없습니다.");
+        }
+        return name.compareTo(other.name);
     }
 
 }
