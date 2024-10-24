@@ -9,28 +9,12 @@ import java.util.List;
 public class RacingService {
 
     private final RandomRange RANDOM_RANGE = new RandomRange(0, 9);
-    private RacingCars racingCars;
 
     public RacingResult play(RacingCars racingCars, int tryCount) {
         List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
         RacingCars winners = getWinners(racingCars);
 
         return new RacingResult(racingRoundResults, winners);
-    }
-
-    public void setRacingCars(RacingCars racingCars) {
-        this.racingCars = racingCars;
-    }
-
-    public void playRound() {
-        validateRacingCarsExistence();
-        racingCars.moveRandomly(RANDOM_RANGE);
-    }
-
-    private void validateRacingCarsExistence() {
-        if (racingCars == null) {
-            throw new IllegalStateException("게임을 시작하기 위한 자동차가 존재하지 않습니다.");
-        }
     }
 
     private RacingCars getWinners(RacingCars racingCars) {
