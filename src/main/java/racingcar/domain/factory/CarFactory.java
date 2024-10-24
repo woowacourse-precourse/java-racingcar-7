@@ -1,9 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.factory;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
 
 public class CarFactory {
     private final String delimiter;
