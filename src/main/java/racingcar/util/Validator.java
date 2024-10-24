@@ -8,7 +8,7 @@ public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
     private static final String PRINTABLE_PATTERN = "\\p{Print}+";
 
-    public void carNameValidate(List<String> carNames) {
+    public static void carNameValidate(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
 
         if (carNames.size() > 1000) {
@@ -30,6 +30,18 @@ public class Validator {
             if (!carName.matches(PRINTABLE_PATTERN)) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public static void gameRoundValidate(String input) {
+        try {
+            double number = Double.parseDouble(input);
+
+            if (number < 0 || number != (int) number) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
     }
 }
