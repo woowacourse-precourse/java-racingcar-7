@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 class RacingServiceTest {
 
 
@@ -93,6 +92,14 @@ class RacingServiceTest {
         String[] result = racingService.getWinner();
         assertThat(result).contains("a");
         assertThat(result).contains("b");
+    }
+
+    @Test
+    @DisplayName("입력받은 시도 횟수만큼 턴을 수행하는지 확인")
+    void 시도_횟수_확인_테스트() {
+        racingService.startRaceGame();
+        int result = racingService.executionCount;
+        assertThat(result).isEqualTo(4);
     }
 }
 
