@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.validator.ValidateCarName;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -19,7 +20,7 @@ public class InputValueTest {
     void ThrowExceptionIfCarNameBlank() {
         // given
         String carName = CAR_NAME_BLANK;
-        ValidateCarName validateCarName = new valicateCarName();
+        ValidateCarName validateCarName = new ValidateCarName();
 
         // when
         Throwable thrown = catchThrowable(() -> {
