@@ -1,54 +1,30 @@
 package racingcar.game;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import racingcar.game.controller.io.InputHandler;
+import racingcar.game.controller.io.OutputHandler;
 
 public class RacingCar {
+    private final OutputHandler outputHandler = new OutputHandler();
+    private final InputHandler inputHandler = new InputHandler();
 
     public void race() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        List<String> carNames = getCarNamesFromUser();
+        outputHandler.showCarNamesNavigateMessage();
+        List<String> carNames = inputHandler.getCarNamesFromUser();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int attemptCount = getAttemptCountFromUser();
+        outputHandler.showAttemptCountNavigateMessage();
+        int attemptCount = inputHandler.getAttemptCountFromUser();
 
         Map<String, Integer> moveAccumulator = createCarMoveAccumulator(carNames);
         displayAccumulateForEachAttempt(attemptCount, carNames, moveAccumulator);
 
-        String winners = retrieveWinners(moveAccumulator);
+        List<String> winners = retrieveWinners(moveAccumulator);
 
-        System.out.printf("최종 우승자 : %s\n", winners);
-    }
-
-    private List<String> getCarNamesFromUser() {
-        String carNames = Console.readLine();
-        return Arrays.stream(carNames.split(","))
-                .peek(this::validateCarNameLength)
-                .toList();
-    }
-
-    private void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름의 길이는 5를 넘을 수 없습니다.");
-        }
-    }
-
-    private int getAttemptCountFromUser() {
-        String attemptCount = Console.readLine();
-        return parseAttemptCountAsInteger(attemptCount);
-    }
-
-    private int parseAttemptCountAsInteger(String attemptCount) {
-        try {
-            return Integer.parseInt(attemptCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 문자일 수 없습니다.");
-        }
+        outputHandler.showWinners(winners);
     }
 
     private Map<String, Integer> createCarMoveAccumulator(List<String> carNames) {
@@ -60,7 +36,7 @@ public class RacingCar {
                                                  Map<String, Integer> moveAccumulator) {
         for (int attempt = 0; attempt < attemptCount; attempt++) {
             accumulateMoveCount(carNames, moveAccumulator);
-            displayCurrentAccumulation(carNames, moveAccumulator);
+            outputHandler.showCurrentAccumulation(carNames, moveAccumulator);
         }
     }
 
@@ -79,19 +55,9 @@ public class RacingCar {
         moveAccumulator.merge(carName, 1, Integer::sum);
     }
 
-    private void displayCurrentAccumulation(List<String> carNames, Map<String, Integer> moveAccumulator) {
-        for (String carName : carNames) {
-            int progressiveSum = moveAccumulator.get(carName);
-            String formattedEachResult = String.format("%s : %s", carName, "-".repeat(progressiveSum));
-            System.out.println(formattedEachResult);
-        }
-        System.out.println();
-    }
-
-    private String retrieveWinners(Map<String, Integer> moveAccumulator) {
+    private List<String> retrieveWinners(Map<String, Integer> moveAccumulator) {
         Integer maxProgressiveCount = findMaxMoveCount(moveAccumulator);
-        List<String> winners = getWinners(moveAccumulator, maxProgressiveCount);
-        return formatWinners(winners);
+        return getWinners(moveAccumulator, maxProgressiveCount);
     }
 
     private Integer findMaxMoveCount(Map<String, Integer> moveAccumulator) {
@@ -104,9 +70,5 @@ public class RacingCar {
         return moveAccumulator.keySet().stream()
                 .filter(carName -> moveAccumulator.get(carName).equals(progressiveCount))
                 .toList();
-    }
-
-    private String formatWinners(List<String> winners) {
-        return String.join(", ", winners);
     }
 }
