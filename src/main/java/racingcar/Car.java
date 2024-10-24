@@ -24,5 +24,11 @@ public class Car {
         return "-".repeat(advanceCount);
     }
 
+    public int getAdvanceCount() {
+        return advanceCount;
+    }
 
+    public String getName() {
+        return name;
+    }
 }
