@@ -15,7 +15,7 @@ public class TimesValidation {
     }
     public static void validateCharacter(final String input) {
         if (!hasOnlyDigits(input)) {
-            throw new IllegalArgumentException("구분자를 제외한 입력은 숫자만 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 구분자를 제외한 입력은 숫자만 입력해 주세요.");
         }
     }
 

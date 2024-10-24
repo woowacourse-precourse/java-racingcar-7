@@ -15,6 +15,10 @@ public class Car {
         return name;
     }
 
+    public String getPosition(){
+        return position;
+    }
+
     public void moveForward() {
         position = position+"-";
     }
