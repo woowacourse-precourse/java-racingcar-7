@@ -29,7 +29,7 @@ public class RacingCar {
         return name;
     }
 
-    public Integer getCurrentDistance(int currentTrialCount) {
+    public Integer getDistance(Integer currentTrialCount) {
         int index = currentTrialCount-1;
         return moveRecords.get(index);
     }

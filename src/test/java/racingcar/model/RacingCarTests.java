@@ -29,7 +29,7 @@ class RacingCarTests {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingCarSample.moveOrStop();
-                    Assertions.assertThat(racingCarSample.getCurrentDistance(CURRENT_TRIAL)).isEqualTo(MOVED);
+                    Assertions.assertThat(racingCarSample.getDistance(CURRENT_TRIAL)).isEqualTo(MOVED);
                 }, MOVING_FORWARD
         );
     }
@@ -40,7 +40,7 @@ class RacingCarTests {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingCarSample.moveOrStop();
-                    Assertions.assertThat(racingCarSample.getCurrentDistance(CURRENT_TRIAL)).isEqualTo(NOT_MOVED);
+                    Assertions.assertThat(racingCarSample.getDistance(CURRENT_TRIAL)).isEqualTo(NOT_MOVED);
                 }, STOP
         );
     }
