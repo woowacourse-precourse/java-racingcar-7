@@ -1,6 +1,6 @@
 # java-racingcar-precourse
 ## 입력
-- [ ] 첫번째 입력 : 사용자로부터 readline()을 통해 자동차 이름들을 문자열로 입력받는다. 예시) `pobi,woni,jun`
+- [x] 첫번째 입력 : 사용자로부터 readline()을 통해 자동차 이름들을 문자열로 입력받는다. 예시) `pobi,woni,jun`
 - [ ] 두번째 입력 : 사용자로부터 readline()을 통해 이동시도횟수를 입력받는다. 예시) `5`
 
 <br>
