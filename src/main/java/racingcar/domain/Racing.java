@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static racingcar.exception.Exception.NOT_POSITIVE_NUMBER;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
@@ -9,16 +10,13 @@ public class Racing {
     public static final int MINIMUM_TRY_COUNT = 1;
     private final RacingCars cars;
     private final int remainingTryCount;
+    private final List<String> snapshot;
 
-    private Racing(final RacingCars cars, final int tryCount) {
+    public Racing(final RacingCars cars, final int tryCount) {
+        validate(tryCount);
         this.cars = cars;
         this.remainingTryCount = tryCount;
-    }
-
-    public static Racing of(final List<String> carNames, final int tryCount) {
-        validate(tryCount);
-        RacingCars cars = RacingCars.of(carNames);
-        return new Racing(cars, tryCount);
+        this.snapshot = new ArrayList<>();
     }
 
     private static void validate(final int tryCount) {

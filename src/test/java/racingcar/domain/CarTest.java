@@ -18,7 +18,7 @@ class CarTest {
     @BeforeEach
     void setUp() {
         carName = "kyj";
-        car = new Car(carName);
+        car = new Car(carName, () -> true);
     }
 
     @Test
@@ -36,7 +36,7 @@ class CarTest {
         //given
 
         //when
-        car.move(() -> true);
+        car.move();
 
         //then
         assertThat(car).hasToString("kyj : -");

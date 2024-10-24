@@ -5,6 +5,7 @@ import static racingcar.exception.Exception.INVALID_NAME_LENGTH;
 
 import java.util.stream.IntStream;
 import racingcar.domain.strategy.CarDrivingStrategy;
+import racingcar.domain.strategy.RandomDrivingStrategy;
 
 public class Car {
 
@@ -14,12 +15,28 @@ public class Car {
     private static final String NAME_POSITION_SEPARATOR = " : ";
 
     private final String name;
+    private final CarDrivingStrategy strategy;
     private int position;
 
-    public Car(final String name) {
+    public Car(String name, CarDrivingStrategy strategy) {
         validate(name);
+        this.strategy = strategy;
         this.name = name;
         this.position = ZERO;
+    }
+
+    public Car(final String name) {
+        this(name, new RandomDrivingStrategy());
+    }
+
+    public void move() {
+        if (strategy.driving()) {
+            position++;
+        }
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void validate(final String name) {
@@ -36,12 +53,6 @@ public class Car {
     private void validateLength(String name) {
         if (name.length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_NAME_LENGTH.getMessage());
-        }
-    }
-
-    public void move(final CarDrivingStrategy strategy) {
-        if (strategy.driving()) {
-            position++;
         }
     }
 

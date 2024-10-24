@@ -11,14 +11,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingTest {
 
-    private List<String> carNames;
-    private Racing racing;
+    private RacingCars racingCars;
 
     @BeforeEach
     void setUp() {
-        carNames = List.of("pobi", "woni");
+        List<String> carNames = List.of("pobi", "woni");
+        racingCars = RacingCars.of(carNames);
         int tryCount = 2;
-        racing = Racing.of(carNames, tryCount);
     }
 
     @ParameterizedTest
@@ -27,7 +26,7 @@ class RacingTest {
         //given
 
         //when
-        Throwable thrown = catchThrowable(() -> Racing.of(carNames, tryCount));
+        Throwable thrown = catchThrowable(() -> new Racing(racingCars, tryCount));
 
         //then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)

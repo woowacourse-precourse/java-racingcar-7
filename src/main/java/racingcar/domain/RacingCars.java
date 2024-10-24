@@ -14,7 +14,7 @@ public class RacingCars {
     public static final int MINIMUM_CAR_COUNT = 2;
     private final List<Car> cars;
 
-    private RacingCars(List<Car> cars) {
+    public RacingCars(List<Car> cars) {
         this.cars = cars;
     }
 
