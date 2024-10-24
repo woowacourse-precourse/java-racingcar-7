@@ -12,6 +12,14 @@ public class Car {
         this.score = 0;
     }
 
+    // 점수 출력
+    public void printScore() {
+        for (int i = 0; i < score; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     // 점수 반환
     public int getScore() {
         return score;
