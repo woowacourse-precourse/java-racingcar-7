@@ -8,7 +8,7 @@ import java.util.Vector;
 public class RacingCar {
     private Vector<User> userList;
 
-    RacingCar(){
+    RacingCar() {
         userList = new Vector<>();
     }
 
@@ -23,10 +23,10 @@ public class RacingCar {
         setUserList(usernameArray);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        try{
+        try {
             round = Integer.valueOf(Console.readLine());
             checkRoundError(round);
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
@@ -72,19 +72,15 @@ public class RacingCar {
         while(iterator.hasNext()) {
             User user = iterator.next();
             goOrStay(user);
-            showResult(user);
+            System.out.println(user);
         }
     }
 
     private void goOrStay(User user) {
         int random = Randoms.pickNumberInRange(0, 9);
-        if(random >= 4){
+        if(random >= 4) {
             user.totalGo++;
         }
-    }
-
-    private void showResult(User user) {
-        System.out.println(user);
     }
 
     private Vector<User> getWinner() {
