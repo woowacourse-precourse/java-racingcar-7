@@ -21,4 +21,8 @@ public class PlayController {
         }
 
     }
+
+    public void findWinner(){
+        gameView.findWinnerCars();
+    }
 }
