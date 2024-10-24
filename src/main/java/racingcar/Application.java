@@ -18,6 +18,11 @@ public class Application {
 
         validateCarsName(trimmedCarsNameList);
 
+        List<Car> cars = new ArrayList<>();
+        for (String carName : trimmedCarsNameList) {
+            cars.add(createCar(carName));
+        }
+
         validateCount(countInput);
         int count = parseInt(countInput);
     }
@@ -85,6 +90,10 @@ public class Application {
         if (Integer.parseInt(countInput) < 1) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static Car createCar(String name) {
+        return new Car(name);
     }
 
     private static class Car {
