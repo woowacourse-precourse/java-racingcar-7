@@ -1,4 +1,5 @@
 package racingcar;
+import java.util.regex.*;
 
 public class CarRaceException {
     public static void validateEmptyInput(String input){
@@ -30,6 +31,25 @@ public class CarRaceException {
             return Integer.parseInt(input);
         } catch(NumberFormatException e){
             throw new IllegalArgumentException("'시도할 횟수'는 숫자로 입력해야 합니다.\n 입력값 : " + input);
+        }
+    }
+
+    public static void checkNameRedundancy(String[] names){
+        String temp = "";
+        for (String name : names) {
+            if(temp.equals(name)){
+                throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다.");
+            }
+            temp = name;
+        }
+    }
+
+    public static void noNumberStartingName(String name){
+        Pattern pattern = Pattern.compile("^[0-9!@#$%^&*]");
+        Matcher matcher = pattern.matcher(name);
+
+        if(matcher.find()){
+            throw new IllegalArgumentException("이름은 숫자 또는 특수문자로 시작할 수 없습니다.");
         }
     }
 }

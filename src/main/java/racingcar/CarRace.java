@@ -19,11 +19,15 @@ public class CarRace {
         // 입력값에 포함될 수 있는 공백 제거
         for (int i = 0; i < carNames.length; i++) {
             carNames[i] = carNames[i].strip();
-            // 자동차명이 5자를 초과하는 경우 예외 처리
-            validateNameLength(carNames[i]);
             // 공백 또는 빈 문자열 예외 처리
             validateEmptyInput(carNames[i]);
+            // 자동차명이 5자를 초과하는 경우 예외 처리
+            validateNameLength(carNames[i]);
+            // 숫자나 특수문자로 이름이 시작하는 경우 예외 처리
+            noNumberStartingName(carNames[i]);
         }
+        // 중복 이름 입력 시 예외 처리
+        checkNameRedundancy(carNames);
 
         // 자동차명과 각각의 이동거리를 Map에 보관
         Map<String, String> carMap  = new HashMap<>();
