@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -150,6 +150,5 @@ class CarTest {
         // then
         assertThat(movedCar.provideCurrentPosition()).isEqualTo(stepCount);
     }
-
 
 }
