@@ -24,11 +24,11 @@ public class RacingCarController {
         tryNum = Integer.parseInt(tryInputString);
 
         // race
-        race(carGroup, tryNum);
+        race();
 
         // 결과
         carGroup.getMaxScore();
-        view.getOutputString(getWinnerString(carGroup));
+        view.getOutputString(getWinnerString());
     }
 
     private void checkTryNumLength(String tryNum) {
@@ -37,21 +37,21 @@ public class RacingCarController {
         }
     }
 
-    private void race(CarGroup carGroup, int tryNum) {
+    private void race() {
         for (int i = 0; i < tryNum; i++) {
             carGroup.go();
-            printNow(carGroup);
+            printNow();
         }
     }
 
-    private void printNow(CarGroup carGroup) {
+    private void printNow() {
         for (Car car : carGroup.getCarList()) {
             System.out.println(car.getName() + " : " + car.scoreToDash(car.getScore()));
         }
         System.out.println();
     }
 
-    private String getWinnerString(CarGroup carGroup) {
+    private String getWinnerString() {
         return Arrays.toString(carGroup.getWinnerCarList().toArray())
                 .replace("[", "").replace("]", "");
     }
