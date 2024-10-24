@@ -109,6 +109,29 @@ class GameRepeater {
     }
 }
 
+class WinnerCalculator {
+    public List<String> calculate(List<Car> cars) {
+        int maxPosition = findMaxPosition(cars);
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+    private int findMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput();
@@ -131,6 +154,9 @@ public class Application {
 
         CounterInput attemptInput = new CounterInput();
         int attempts = attemptInput.getInput();
+
+        WinnerCalculator winnerCalculator = new WinnerCalculator();
+        List<String> winners = winnerCalculator.calculate(cars);
 
     }
 }
