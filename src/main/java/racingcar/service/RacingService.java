@@ -3,6 +3,9 @@ package racingcar.service;
 import racingcar.model.RacingCars;
 import racingcar.util.ramdom.RandomRange;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingService {
 
     private final RandomRange RANDOM_RANGE = new RandomRange(0, 9);
@@ -21,6 +24,15 @@ public class RacingService {
         if (racingCars == null) {
             throw new IllegalStateException("게임을 시작하기 위한 자동차가 존재하지 않습니다.");
         }
+    }
+
+    private List<RacingRoundResult> playRounds(RacingCars racingCars, int tryCount) {
+        List<RacingRoundResult> racingRoundResults = new ArrayList<>();
+        for (int i = 0; i < tryCount; i++) {
+            racingRoundResults.add(playRound(racingCars));
+        }
+
+        return racingRoundResults;
     }
 
     private RacingRoundResult playRound(RacingCars racingCars) {
