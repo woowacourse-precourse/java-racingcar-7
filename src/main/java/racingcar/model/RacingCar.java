@@ -1,7 +1,6 @@
 package racingcar.model;
 
-import racingcar.model.dependency.moving_strategy.MovingStrategy;
-import racingcar.model.dependency.validator.RacingCarValidator;
+import racingcar.model.dependency.RacingCarDependency;
 
 import java.util.Objects;
 
@@ -11,25 +10,23 @@ public class RacingCar {
     private final int DEFAULT_MOVE_DISTANCE = 1;
 
     private final String name;
-    private final MovingStrategy movingStrategy;
-    private final RacingCarValidator racingCarValidator;
+    private final RacingCarDependency racingCarDependency;
     private int position;
 
-    public RacingCar(String name, RacingCarValidator racingCarValidator, MovingStrategy movingStrategy) {
-        racingCarValidator.validate(name);
+    public RacingCar(String name, RacingCarDependency racingCarDependency) {
+        this.racingCarDependency = racingCarDependency;
+        this.racingCarDependency.racingCarValidator().validate(name);
         this.name = name;
         this.position = DEFAULT_POSITION;
-        this.movingStrategy = movingStrategy;
-        this.racingCarValidator = racingCarValidator;
     }
 
     public RacingCar(RacingCar other) {
-        this(other.name, other.racingCarValidator, other.movingStrategy);
+        this(other.name, other.racingCarDependency);
         this.position = other.position;
     }
 
     public void move() {
-        if (movingStrategy.isMovable()) {
+        if (racingCarDependency.movingStrategy().isMovable()) {
             position += DEFAULT_MOVE_DISTANCE;
         }
     }
