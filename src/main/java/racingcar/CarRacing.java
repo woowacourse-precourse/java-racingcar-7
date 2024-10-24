@@ -6,6 +6,7 @@ import java.util.List;
 public class CarRacing {
     public static List<RacingCar> start(RacingCarTrace racingCarTrace) {
         var tryCount = Prompt.racingTryCount();
+        System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             for (int j = 0; j < racingCarTrace.size(); j++) {
                 var racingCar = racingCarTrace.getRacingCar(j);

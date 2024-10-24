@@ -27,6 +27,7 @@ public class IOPreprocessor {
             }
             sb.append("\n");
         }
+        sb.append("\n");
         return sb.toString();
     }
 
