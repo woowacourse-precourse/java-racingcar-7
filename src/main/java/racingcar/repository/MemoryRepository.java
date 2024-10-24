@@ -1,6 +1,6 @@
 package racingcar.repository;
 
-import racingcar.model.dto.CarRacingProgress;
+import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingResult;
 import racingcar.model.dto.RacingWinners;
 import racingcar.utils.IOMessage;
@@ -23,7 +23,7 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public void saveProgress(CarRacingProgress progress) {
+    public void saveProgress(RacingProgress progress) {
         memory.add(progress.toString());
     }
 
