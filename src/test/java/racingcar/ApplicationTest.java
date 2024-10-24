@@ -37,14 +37,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_횟수로_문자가_입력될_경우_예외가_발생한다() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("mimi,jk", "f"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
     void 자동차_이름은_null이어서는_안_된다() {
         assertThatThrownBy(() -> Application.validateCarNames(null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -136,5 +128,30 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.validateCarNames("mimi,jk,mimi"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름이 중복되어서는 안 됩니다.");
+    }
+
+    @Test
+    void 시도_횟수는_정수여야_한다() {
+        assertThatThrownBy(() -> Application.validateCount("hi"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 정수여야 합니다.");
+
+        assertThatThrownBy(() -> Application.validateCount("1.54"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 정수여야 합니다.");
+    }
+
+    @Test
+    void 시도_횟수는_양수여야_한다() {
+        assertThatThrownBy(() -> Application.validateCount("-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 양수여야 합니다.");
+    }
+
+    @Test
+    void 입력_가능한_최대_시도_횟수는_100이다() {
+        assertThatThrownBy(() -> Application.validateCount("101"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 100이하여야 합니다.");
     }
 }
