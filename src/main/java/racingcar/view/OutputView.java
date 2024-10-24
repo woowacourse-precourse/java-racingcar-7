@@ -20,9 +20,13 @@ public class OutputView {
 
     public static void printResult(final Cars cars) {
         cars.getCars().stream()
-                .map(car -> car.getName() + DETAIL + getMovingDistance(car))
+                .map(car -> getCarName(car) + DETAIL + getMovingDistance(car))
                 .forEach(System.out::println);
         System.out.println();
+    }
+
+    private static String getCarName(final Car car) {
+        return car.getName().getCarName();
     }
 
     private static String getMovingDistance(final Car car) {
