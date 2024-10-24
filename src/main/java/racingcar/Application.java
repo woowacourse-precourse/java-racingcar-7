@@ -21,12 +21,12 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String countInput = readLine();
 
-        List<String> carNameList = validCarNames(carNames);
+        List<String> carNameList = validAndParseCarNames(carNames);
         int gameCount = validGameCount(countInput);
         startGame(carNameList, gameCount);
     }
 
-    public static List<String> validCarNames(String carNames) {
+    public static List<String> validAndParseCarNames(String carNames) {
         if (carNames.isBlank()) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
