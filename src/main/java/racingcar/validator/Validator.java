@@ -16,4 +16,13 @@ public class Validator {
             }
         }
     }
+
+    public void validateNoEmptyCarNames(String carNames) {
+        String[] cars = carNames.split(",", -1);
+        for (String car : cars) {
+            if (car.trim().isEmpty()) {
+                throw new IllegalArgumentException("이름이 없는 자동차가 존재 합니다.");
+            }
+        }
+    }
 }
