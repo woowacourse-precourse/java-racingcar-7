@@ -16,4 +16,8 @@ public class RacingCar {
                 .map(RacingCar::new)
                 .toList();
     }
+
+    public void increaseDistance() {
+        this.distance++;
+    }
 }
