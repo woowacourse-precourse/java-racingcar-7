@@ -2,9 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.model.Race;
-import racingcar.model.RandomNumberGenerator;
 import racingcar.model.Winner;
-import racingcar.service.WinnerService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,8 +12,7 @@ public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingCarController(InputView inputView,
-                               OutputView outputView) {
+    public RacingCarController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -23,6 +20,7 @@ public class RacingCarController {
     public void playGame(){
         Cars cars = makeCars();
         raceCars(cars);
+        printWinner(cars);
     }
 
     private Cars makeCars(){
@@ -36,13 +34,11 @@ public class RacingCarController {
         outputView.printMoveResultMessage();
 
         for(int i=0; i<tryCount; i++){
-            Race race = new Race(new RandomNumberGenerator());
+            Race race = new Race();
             Cars racingCars = race.startRace(cars);
             outputView.printMovedCars(racingCars);
             System.out.println();
         }
-
-        printWinner(cars);
     }
 
     private void printWinner(Cars cars){

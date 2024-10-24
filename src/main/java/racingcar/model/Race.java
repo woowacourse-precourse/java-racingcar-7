@@ -1,15 +1,15 @@
 package racingcar.model;
 
-public class Race {
-    private final RandomNumberGenerator randomNumberGenerator;
+import camp.nextstep.edu.missionutils.Randoms;
 
-    public Race(RandomNumberGenerator randomNumberGenerator){
-        this.randomNumberGenerator = randomNumberGenerator;
+public class Race {
+
+    public Race(){
     }
 
     public Cars startRace(Cars cars) {
         for(Car car : cars.getCars()){
-            int randomNumber = randomNumberGenerator.makeRandomNumber();
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.move(randomNumber);
         }
         return cars;
