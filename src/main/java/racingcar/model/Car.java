@@ -1,24 +1,34 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.util.randomnumber.RandomNumberStrategy;
 
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private static final int MAX_CAR_NAME_SIZE = 5;
+    public static final int ONE_MOVE = 1;
 
     private final String name;
-    private final int position;
+    private int position;
+    private final RandomNumberStrategy randomNumberStrategy;
 
-    private Car(String name) {
+    private Car(String name, RandomNumberStrategy randomNumberStrategy) {
         validateCar(name);
-
         this.name = name;
         this.position = DEFAULT_POSITION;
+        this.randomNumberStrategy = randomNumberStrategy;
     }
 
-    public static Car from(String name) {
-        return new Car(name);
+    public static Car from(String name, RandomNumberStrategy randomNumberStrategy) {
+        return new Car(name, randomNumberStrategy);
+    }
+
+    public void isMove() {
+        int randomNumber = createRandomNumber();
+        if (isRandomNumberSize(randomNumber)) {
+            moveForward();
+        }
     }
 
     public String getName() {
@@ -33,6 +43,18 @@ public class Car {
         if (name.length() > MAX_CAR_NAME_SIZE) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
+    }
+
+    private int createRandomNumber() {
+        return randomNumberStrategy.generateRandomNumber();
+    }
+
+    private boolean isRandomNumberSize(int randomNumber) {
+        return randomNumber >= 4;
+    }
+
+    private void moveForward() {
+        this.position += ONE_MOVE;
     }
 
     @Override
