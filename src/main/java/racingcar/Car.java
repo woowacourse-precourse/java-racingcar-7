@@ -11,20 +11,24 @@ public class Car {
         this.distance = 0;
     }
 
-    public void increaseDistance(){
+    public void increaseDistance() {
         this.distance++;
     }
 
-    public static void validateNameLength(String name){
-        if(name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하의 문자열만 가능합니다.");
+    public static void validateNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하의 문자열만 가능합니다.");
+        }
     }
 
-    public static String validateEmptyName(String name){
-        if(name == null || name.trim().isBlank()) throw new IllegalArgumentException("빈 이름은 사용할 수 없습니다.");
+    public static String validateEmptyName(String name) {
+        if (name == null || name.trim().isBlank()) {
+            throw new IllegalArgumentException("빈 이름은 사용할 수 없습니다.");
+        }
         return name.trim();
     }
 
-    public String toString(){
+    public String toString() {
         return this.name + " : " + "-".repeat(this.distance);
     }
 }
