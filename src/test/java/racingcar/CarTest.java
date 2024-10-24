@@ -2,16 +2,18 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.accelerator.Accelerator;
+import racingcar.accelerator.BrokenAccelerator;
 
 class CarTest {
 
-    private final Car TESTER_CAR = new Car("TEST");
+    private final Accelerator accelerator = new BrokenAccelerator();
 
     @Test
     public void 자동차_이름_주행거리_초기화_테스트() throws Exception {
         //Given
         String carName = "pobi";
-        Car car = new Car(carName);
+        Car car = new Car(carName, accelerator);
 
         //When
         String actualName = car.getName();
@@ -28,71 +30,38 @@ class CarTest {
         String carName = "pobi";
 
         //When, Then
-        Assertions.assertThatCode(() -> TESTER_CAR.validateName(carName))
+        Assertions.assertThatCode(() -> Car.validateName(carName))
                 .doesNotThrowAnyException();
     }
 
     @Test
     public void 자동차이름_5글자초과_예외테스트() throws Exception {
         //Given
-        CarRacing carRacing = new CarRacing();
         String carName = "woni:jun";
 
         //When, Then
-        Assertions.assertThatThrownBy(() -> TESTER_CAR.validateName(carName))
+        Assertions.assertThatCode(() -> Car.validateName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void 빈_자동차이름_예외테스트() throws Exception {
         //Given
-        CarRacing carRacing = new CarRacing();
         String carName = "";
 
         //When, Then
-        Assertions.assertThatThrownBy(() -> TESTER_CAR.validateName(carName))
+        Assertions.assertThatCode(() -> Car.validateName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void 자동차_전진_테스트() throws Exception {
-        //Given
-        String carName = "pobi";
-        Car car = new Car(carName);
-        int threshold = 4;
-        int expected = 1;
-
-        //When
-        car.forwardOrStop(threshold);
-
-        //When, Then
-        Assertions.assertThat(car.getMileage()).isEqualTo(expected);
-    }
-
-    @Test
-    public void 자동차_정지_테스트() throws Exception {
-        //Given
-        String carName = "pobi";
-        Car car = new Car(carName);
-        int threshold = 3;
-        int expected = 0;
-
-        //When
-        car.forwardOrStop(threshold);
-
-        //When, Then
-        Assertions.assertThat(car.getMileage()).isEqualTo(expected);
     }
 
     @Test
     public void toString_테스트() throws Exception {
         //Given
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("pobi");
-        for (int i = 0; i < 3; i++) {
-            car2.forwardOrStop(4);
-        }
+        Car car1 = new Car("pobi", accelerator);
         String expected1 = "pobi : ";
+
+        Car car2 = new Car("pobi", accelerator);
+        car2.setMileageForTest(3);
         String expected2 = "pobi : ---";
 
         //When

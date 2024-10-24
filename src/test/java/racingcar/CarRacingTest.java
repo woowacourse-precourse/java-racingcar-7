@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.accelerator.Accelerator;
+import racingcar.accelerator.BrokenAccelerator;
 
 class CarRacingTest {
 
+    private final Accelerator accelerator = new BrokenAccelerator();
+
+    private Car createCar(String carName) {
+        return new Car(carName, accelerator);
+    }
 
     @Test
     public void 자동차이름목록_쉼표기준분리_5글자이하_테스트() throws Exception {
@@ -15,9 +22,9 @@ class CarRacingTest {
         String carNames = "pobi,woni,jun";
 
         List<Car> expectedCarList = new ArrayList<>();
-        expectedCarList.add(new Car("pobi"));
-        expectedCarList.add(new Car("woni"));
-        expectedCarList.add(new Car("jun"));
+        expectedCarList.add(createCar("pobi"));
+        expectedCarList.add(createCar("woni"));
+        expectedCarList.add(createCar("jun"));
         int expectedSize = expectedCarList.size();
 
         //When, Then
@@ -44,9 +51,9 @@ class CarRacingTest {
         String carNames = "pobi,pobi,pobi";
 
         List<Car> expectedCarList = new ArrayList<>();
-        expectedCarList.add(new Car("pobi"));
-        expectedCarList.add(new Car("pobi"));
-        expectedCarList.add(new Car("pobi"));
+        expectedCarList.add(createCar("pobi"));
+        expectedCarList.add(createCar("pobi"));
+        expectedCarList.add(createCar("pobi"));
         int expectedSize = expectedCarList.size();
 
         //When, Then
@@ -93,19 +100,14 @@ class CarRacingTest {
         //Given
         CarRacing carRacing = new CarRacing();
         List<Car> carList = new ArrayList<>();
-        Car pobi = new Car("pobi");
-        Car woni = new Car("woni");
-        Car jun = new Car("jun");
+        Car pobi = new Car("pobi", accelerator);
+        Car woni = new Car("woni", accelerator);
+        Car jun = new Car("jun", accelerator);
 
-        for (int i = 0; i < 4; i++) {
-            pobi.forwardOrStop(4);
-        }
-        for (int i = 0; i < 3; i++) {
-            woni.forwardOrStop(4);
-        }
-        for (int i = 0; i < 2; i++) {
-            jun.forwardOrStop(4);
-        }
+        pobi.setMileageForTest(4);
+        woni.setMileageForTest(3);
+        jun.setMileageForTest(2);
+
         carList.add(pobi);
         carList.add(woni);
         carList.add(jun);
@@ -123,15 +125,14 @@ class CarRacingTest {
         //Given
         CarRacing carRacing = new CarRacing();
         List<Car> carList = new ArrayList<>();
-        Car pobi = new Car("pobi");
-        Car woni = new Car("woni");
-        Car jun = new Car("jun");
+        Car pobi = new Car("pobi", accelerator);
+        Car woni = new Car("woni", accelerator);
+        Car jun = new Car("jun", accelerator);
 
-        for (int i = 0; i < 4; i++) {
-            pobi.forwardOrStop(4);
-            woni.forwardOrStop(4);
-            jun.forwardOrStop(4);
-        }
+        pobi.setMileageForTest(4);
+        woni.setMileageForTest(4);
+        jun.setMileageForTest(4);
+
         carList.add(pobi);
         carList.add(woni);
         carList.add(jun);

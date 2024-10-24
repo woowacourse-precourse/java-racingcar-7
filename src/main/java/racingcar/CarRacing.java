@@ -1,8 +1,8 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.accelerator.BrokenAccelerator;
 
 public class CarRacing {
 
@@ -19,7 +19,7 @@ public class CarRacing {
 
     public void parseCarList(String carNames) {
         for (String CarName : carNames.split(",")) {
-            carList.add(new Car(CarName));
+            carList.add(new Car(CarName, new BrokenAccelerator()));
         }
     }
 
@@ -33,11 +33,6 @@ public class CarRacing {
         if (attempts < 0) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public void randomlyAccelerate(Car car) {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
-        car.forwardOrStop(randomValue);
     }
 
     public String winner(List<Car> carList) {
@@ -65,7 +60,7 @@ public class CarRacing {
         for (int i = 0; i < attempts; i++) {
             for (int j = 0; j < n; j++) {
                 Car car = carList.get(j);
-                randomlyAccelerate(car);
+                car.accelerate();
                 System.out.println(car.toString());
             }
             System.out.println();

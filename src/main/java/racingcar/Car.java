@@ -1,16 +1,19 @@
 package racingcar;
 
 import java.util.Objects;
+import racingcar.accelerator.Accelerator;
 
 public class Car {
 
     private String name;
     private int mileage;
+    private final Accelerator accelerator;
 
-    Car(String name) {
+    Car(String name, Accelerator accelerator) {
         validateName(name);
         this.name = name;
         this.mileage = 0;
+        this.accelerator = accelerator;
     }
 
     public String getName() {
@@ -21,16 +24,22 @@ public class Car {
         return mileage;
     }
 
-    public void validateName(String carName) {
+    /*
+     * Randoms.pickNumberInRange 값에 대한 mocking을 할 수 없기 때문에 테스트만을 위해 setter를 열어둔다.
+     * */
+    public void setMileageForTest(int mileage) {
+        this.mileage = mileage;
+    }
+
+    public static void validateName(String carName) {
         if (carName == null || carName.isEmpty() || carName.length() > 5) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void forwardOrStop(int threshold) {
-        if (threshold >= 4) {
-            mileage++;
-        }
+    public void accelerate() {
+        int ACCELERATION_THRESHOLD = 4;
+        mileage += accelerator.accelerate(ACCELERATION_THRESHOLD);
     }
 
     @Override
