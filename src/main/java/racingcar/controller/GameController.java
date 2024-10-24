@@ -1,26 +1,30 @@
 package racingcar.controller;
 
 import racingcar.model.util.StringProcessor;
-import racingcar.model.validator.CarNameValidator;
+import racingcar.model.validator.Validator;
 import racingcar.view.InputView;
 public class GameController {
 
     private final StringProcessor stringProcessor;
-    private final CarNameValidator carNameValidator;
-    public GameController(StringProcessor stringProcessor, CarNameValidator carNameValidator){
+    private final Validator<String[]> carValidator;
+    private final Validator<String> trialValidator;
+    public GameController(StringProcessor stringProcessor, Validator<String[]> carValidator, Validator<String> trialValidator){
         this.stringProcessor = stringProcessor;
-        this.carNameValidator = carNameValidator;
+        this.carValidator = carValidator;
+        this.trialValidator = trialValidator;
     }
     public void run(){
-        String userCarInput = InputView.userInputCar();
 
+        String userCarInput = InputView.userInputCar();
         String[] carNameArr = stringProcessor.process(userCarInput);
 
         // validate
-        carNameValidator.validateCarNames(carNameArr);
-        
-        // parse
+        carValidator.validate(carNameArr);
 
         String userTrialInput = InputView.userInputTrial();
+        trialValidator.validate(userTrialInput);
+
+        // parse
+
     }
 }

@@ -3,13 +3,15 @@ package racingcar.model.validator;
 
 import java.util.HashSet;
 
-public class CarNameValidator {
+public class CarNameValidator implements Validator<String[]>{
 
     private static final int MAX_LENGTH = 5;
     private static final String REGEX = "[a-zA-Z ]"; // 우선은 알파벳 및 공백만 허용
     private String[] input;
     private HashSet<String> nameSet;
-    public void validateCarNames(String[] input){
+
+    @Override
+    public void validate(String[] input){
 
         setInput(input);
 
