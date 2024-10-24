@@ -11,7 +11,7 @@ public class RacingCar {
         OutputView.printCarNamesPrompt();
         InputView inputView = new InputView();
 
-        String carInput = inputView.userInput();
+        String carInput = inputView.input();
         String[] carInputs = carInput.split(",");
 
         List<String> cars = new ArrayList<>();
@@ -20,6 +20,10 @@ public class RacingCar {
         }
 
         OutputView.printAttemptCountPrompt();
+
+        int tryCount = Integer.parseInt(inputView.input());
+
+
 
 
     }
