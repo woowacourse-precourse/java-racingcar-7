@@ -1,5 +1,6 @@
 package service;
 
+import error.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.List;
 import model.Car;
@@ -26,18 +27,23 @@ public class CarService {
         return false;
     }
 
-    public boolean validateCarName(String newCarName) {
+    public String validateCarName(String newCarName) {
         newCarName = newCarName.trim();
 
         if (newCarName.isBlank()) {
-            return false;
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY);
         }
 
-        if (!isCarExist(newCarName)) {
-            int carNameLength = newCarName.length();
-            return carNameLength > 0 && carNameLength <= 5;
+        if (isCarExist(newCarName)) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_ALEADY_EXIST);
         }
-        return false;
+
+        int carNameLength = newCarName.length();
+        if (carNameLength > 5) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
+        }
+
+        return newCarName;
     }
 
     public List<String> getWinners() {

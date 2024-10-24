@@ -1,7 +1,9 @@
 package racingcar.service;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import error.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.List;
 import model.CarList;
@@ -39,36 +41,38 @@ public class CarServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"JOHN", "TONY", "POLY"})
     public void CarService_자동차이름_유효성테스트_통과(String newCarName) {
-        assertThat(carService.validateCarName(newCarName)).isTrue();
+        assertThat(carService.validateCarName(newCarName)).isEqualTo(newCarName);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"JOHNYY", "TONYYY", "POLYYY"})
     public void CarService_자동차이름_유효성테스트_불통과_길이초과(String newCarName) {
-        assertThat(carService.validateCarName(newCarName)).isFalse();
-    }
-
-    @Test
-    public void CarService_자동차이름_유효성테스트_불통과_길이미만() {
-        assertThat(carService.validateCarName("")).isFalse();
+        assertThatThrownBy(() -> carService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "   ", "      "})
     public void CarService_자동차이름_유효성테스트_불통과_공백(String newCarName) {
-        assertThat(carService.validateCarName(newCarName)).isFalse();
+        assertThatThrownBy(() -> carService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_NAME_EMPTY);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {" CARR ", "CARR ", "  CARR", "   CARRR   "})
     public void CarService_자동차이름_유효성테스트_통과_이름앞뒤_공백처리(String newCarName) {
-        assertThat(carService.validateCarName(newCarName)).isTrue();
+        String expectedResult = newCarName.trim();
+        assertThat(carService.validateCarName(newCarName)).isEqualTo(expectedResult);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"carA", "carB", "carC"})
     public void CarService_자동차이름_유효성테스트_불통과_이미존재(String newCarName) {
-        assertThat(carService.validateCarName("")).isFalse();
+        assertThatThrownBy(() -> carService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_ALEADY_EXIST);
     }
 
     @Test
