@@ -16,6 +16,9 @@ public class Game {
     private Cars playRound(List<Car> cars) {
         cars.forEach(car -> {
             int randomNum = Randoms.pickNumberInRange(0, 9);
+            if (randomNum > 4) {
+                car.raiseMoveCount();  // 자동차 이동 카운트 증가
+            }
         });
         return new Cars(cars);  // Cars 객체를 반환
     }
