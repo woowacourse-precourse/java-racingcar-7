@@ -3,9 +3,11 @@ package racingcar;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 // 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 //   [x] 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
@@ -17,14 +19,26 @@ import java.util.Scanner;
 //   [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 public class Application {
 
+  private static final int NAME_MAX_LENGTH=5;
+  private static final int MOVE_RULE_NUM=4;
+
+  public static void carNameValidation (String carName,Set<String> carNamesSet){
+
+    if (carName.length() > NAME_MAX_LENGTH) {
+      throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+    }
+    if (!carNamesSet.add(carName)) {
+      throw new IllegalArgumentException("자동차 이름이 중복되었습니다: ");
+    }
+  }
   public static Car[] getCarName(String inputCars) {
 
     String[] splitCar = inputCars.split(",");
     Car[] cars = new Car[splitCar.length];
+    Set<String> carNamesSet = new HashSet<>();
+
     for (int i = 0; i < splitCar.length; i++) {
-      if (splitCar[i].length() > 5) {
-        throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
-      }
+      carNameValidation(splitCar[i],carNamesSet);
       cars[i] = new Car(splitCar[i], 0);
     }
     return cars;
@@ -49,7 +63,7 @@ public class Application {
   }
 
   public static boolean moveRule(int randomNum){
-    return randomNum>=4;
+    return randomNum>=MOVE_RULE_NUM;
   }
 
 
