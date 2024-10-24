@@ -1,5 +1,7 @@
 package racingcar.race;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,6 @@ public class RaceTest {
     void 레이스_생성_테스트() {
         List<Racer> racers = race.getRacers();
 
-        assert (racers.size() == 3);
+        assertThat(racers.size()).isEqualTo(3);
     }
 }

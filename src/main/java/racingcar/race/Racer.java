@@ -1,7 +1,5 @@
 package racingcar.race;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Racer {
     private String name;
     private int position = 0;
