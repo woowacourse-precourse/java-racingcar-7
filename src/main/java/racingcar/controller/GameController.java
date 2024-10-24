@@ -16,15 +16,8 @@ public class GameController {
 
 	public void run() {
 		Names carNames = InputView.inputCarNames();
-		Cars cars = generateCars(carNames);
+		Cars cars = Cars.from(carNames.getNames());
 	}
 
-	private Cars generateCars(Names carNames) {
-		List<Name> names = carNames.getNames();
-
-		List<Car> cars = names.stream().map(Car::new).toList();
-
-		return new Cars(cars);
-	}
 
 }
