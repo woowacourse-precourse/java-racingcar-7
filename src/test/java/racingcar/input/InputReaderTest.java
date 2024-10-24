@@ -46,6 +46,13 @@ public class InputReaderTest {
     }
 
     @Test
+    void 시도할_횟수가_0인_경우() {
+        setInput("0");
+        assertThatThrownBy(() -> inputReader.getTryCnt())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 시도할_횟수가_숫자가_아닌_경우() {
         setInput("abc");
         assertThatThrownBy(() -> inputReader.getTryCnt())
