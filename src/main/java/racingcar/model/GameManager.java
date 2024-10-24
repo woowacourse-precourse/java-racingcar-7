@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,8 @@ import racingcar.constant.ErrorMessage;
 public class GameManager {
 
     private static final String CAR_NAME_DELIMITER = ",";
+    private static final int RANDOM_START_NUMBER_FOR_MOVE_FORWARD = 0;
+    private static final int RANDOM_END_NUMBER_FOR_MOVE_FORWARD = 9;
 
     private final List<Car> racers;
 
@@ -35,5 +38,12 @@ public class GameManager {
         validateRacerNotDuplicated(racers);
 
         return new GameManager(racers);
+    }
+
+    public int generateRandomNumberForMoveForward() {
+        return Randoms.pickNumberInRange(
+                RANDOM_START_NUMBER_FOR_MOVE_FORWARD,
+                RANDOM_END_NUMBER_FOR_MOVE_FORWARD
+        );
     }
 }
