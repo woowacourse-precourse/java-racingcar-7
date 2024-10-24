@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -9,27 +11,17 @@ public class RacingGameController {
     private final RacingGameService racingGameService = new RacingGameService();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private List<Car> cars = new ArrayList<>();
+
     public void start() {
-        List<String> cars = inputView.getCarNames();
-        int moveCount = inputView.getMoveCount();
-        racingGameService.inputMoveCount();
-        racingGameService.race();
-        outputView.announceWinners();
+        cars = racingGameService.inputCars();
+//        int moveCount = inputView.getMoveCount();
+//        racingGameService.race(moveCount);
+//        outputView.printCurrentStatus(racingGameService.getCars());
+//        racingGameService.announceWinners();
     }
 
     private void announceWinners() {
     }
-
-    private void race() {
-    }
-
-    private void inputMoveCount() {
-        
-    }
-
-    private void inputCars() {
-        
-    }
-
 
 }
