@@ -9,7 +9,7 @@ public class IOHandler {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String END_MESSAGE = "최종 우승자 : ";
 
-    public static String inputName() {
+    public static String inputMessage() {
         System.out.println(START_MESSAGE);
         return Console.readLine();
     }
@@ -19,9 +19,10 @@ public class IOHandler {
         return Console.readLine();
     }
 
-    public static void printResult() {
-        System.out.println(RESULT_MESSAGE);
-
+    public static void printResult(RacingCar racingCar) {
+//        System.out.println(RESULT_MESSAGE);
+        System.out.print(racingCar.getName() + " : ");
+        System.out.println("-".repeat(racingCar.getCount()));
     }
 
     public static void printWinner() {
