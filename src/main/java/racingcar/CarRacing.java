@@ -10,17 +10,27 @@ public class CarRacing {
     private static final String ATTEMPTS_REGEXP = "\\d+";
 
     public void init() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-        String nameInput = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String attemptsInput = Console.readLine();
+        // inputStringsArr = [ 자동차 이름들, 시도횟수 ]
+        ArrayList<String> inputStringsArr = inputStrings();
 
-        int attempts = convertAttempts(attemptsInput);
-        ArrayList<Car> cars = createCarObjects(convertCarNames(nameInput));
+        int attempts = convertAttempts(inputStringsArr.get(1));
+        ArrayList<Car> cars = createCarObjects(convertCarNames(inputStringsArr.get(0)));
 
         ArrayList<String> winners = racingStart(cars, attempts);
+
         printGameWinners(winners);
 
+    }
+
+    private ArrayList<String> inputStrings() {
+        ArrayList<String> inputStringArr = new ArrayList<>();
+
+        println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+        inputStringArr.add(Console.readLine());
+        println("시도할 횟수는 몇 회인가요?");
+        inputStringArr.add(Console.readLine());
+
+        return inputStringArr;
     }
 
     ArrayList<String> convertCarNames(String nameInput) {
@@ -30,12 +40,11 @@ public class CarRacing {
             carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
         }
 
-        if (carNames.size() < 1 || !validateNameLimit(carNames)) {
+        if (carNames.isEmpty() || !validateNameLimit(carNames)) {
             throw new IllegalArgumentException();
         }
         return carNames;
     }
-
 
     int convertAttempts(String countInput) {
         if (validateInput(ATTEMPTS_REGEXP, countInput)) {
@@ -82,9 +91,9 @@ public class CarRacing {
 
     private void printGameStatus(ArrayList<Car> cars) {
         for (Car car : cars) {
-            System.out.println(makeMovedAmountString(car.name, car.movedAmount));
+            println(makeMovedAmountString(car.name, car.movedAmount));
         }
-        System.out.println("\n");
+        println("\n");
     }
 
     public String makeMovedAmountString(String carName, int movedAmount) {
@@ -114,7 +123,7 @@ public class CarRacing {
     }
 
     private void printGameWinners(ArrayList<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        println("최종 우승자 : " + String.join(", ", winners));
     }
 
     private ArrayList<String> getWinnerNames(ArrayList<Car> winners) {
@@ -123,6 +132,10 @@ public class CarRacing {
         winners.forEach(car -> winnerNames.add(car.name));
 
         return winnerNames;
+    }
+
+    private void println(String args){
+        System.out.println(args);
     }
 
 }
