@@ -8,4 +8,8 @@ public class InputHandler {
         return Console.readLine();
     }
 
+    public static String inputTryCount(){
+        return Console.readLine();
+    }
+
 }
