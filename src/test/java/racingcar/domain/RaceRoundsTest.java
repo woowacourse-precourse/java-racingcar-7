@@ -12,13 +12,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.global.ErrorMessage;
 
-class RoundsTest {
+class RaceRoundsTest {
 
     @ParameterizedTest
     @DisplayName("유효하지 않은 입력 값에 대해 IllegalArgumentException을 던진다")
     @MethodSource("provideInvalidInputs")
     void throwsIfInvalidInput(String invalidInput) {
-        assertThatThrownBy(() -> Rounds.of(invalidInput))
+        assertThatThrownBy(() -> RaceRounds.of(invalidInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NUMBER_FORMAT_REQUIRED.getMessage());
     }
@@ -36,14 +36,14 @@ class RoundsTest {
     @CsvSource({"5, 5", "0, 0"})
     @DisplayName("Rounds는 유효한 입력 값을 받아 올바르게 생성된다.")
     void construct(String input, int expectedValue) {
-        Rounds rounds = Rounds.of(input);
-        Assertions.assertThat(rounds.value()).isEqualTo(expectedValue);
+        RaceRounds raceRounds = RaceRounds.of(input);
+        Assertions.assertThat(raceRounds.value()).isEqualTo(expectedValue);
     }
 
     @Test
     @DisplayName("음수 값을 직접 입력할 경우 IllegalArgumentException을 던진다")
     void throwsIfNegativeValue() {
-        assertThatThrownBy(() -> new Rounds(-1))
+        assertThatThrownBy(() -> new RaceRounds(-1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.POSITIVE_INTEGER_ALLOWED.getMessage());
     }

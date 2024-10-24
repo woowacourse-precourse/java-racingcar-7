@@ -1,9 +1,12 @@
 package racingcar.application;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarState;
+import racingcar.domain.ScoreBoard;
 
 class RacingServiceTest {
 
@@ -15,21 +18,27 @@ class RacingServiceTest {
     }
 
     @Test
-    @DisplayName("getRacingResult 메서드를 호출하면 예상한 결과를 반환한다.")
+    @DisplayName("getRacingResult 메서드를 호출하면 예상한 결과값을 반환한다.")
     void getRacingResult() {
-        String result = racingService.getRacingResult("car1,car2", "3");
-        String expected = """
-           car1 : -
-           car2 : -
+        ScoreBoard scoreBoard = racingService.getRacingResult("car1,car2", "3");
 
-           car1 : --
-           car2 : --
+        assertSoftly(softly -> {
+            softly.assertThat(scoreBoard.roundScoresList()).hasSize(3);
+            softly.assertThat(scoreBoard.winners()).containsExactly("car1", "car2");
 
-           car1 : ---
-           car2 : ---
-
-           최종 우승자 : car1, car2""";
-
-        Assertions.assertThat(result.trim()).isEqualTo(expected);
+            // 각 라운드의 상태 검증
+            softly.assertThat(scoreBoard.roundScoresList().get(0).carStates()).containsExactly(
+                    new CarState("car1", 1),
+                    new CarState("car2", 1)
+            );
+            softly.assertThat(scoreBoard.roundScoresList().get(1).carStates()).containsExactly(
+                    new CarState("car1", 2),
+                    new CarState("car2", 2)
+            );
+            softly.assertThat(scoreBoard.roundScoresList().get(2).carStates()).containsExactly(
+                    new CarState("car1", 3),
+                    new CarState("car2", 3)
+            );
+        });
     }
 }

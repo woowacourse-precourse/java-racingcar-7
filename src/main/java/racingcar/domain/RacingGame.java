@@ -1,27 +1,39 @@
 package racingcar.domain;
 
-import racingcar.presentation.RaceResultFormatter;
+import java.util.List;
 
 public class RacingGame {
-    private final RaceResultFormatter raceResultFormatter;
     private final Cars cars;
-    private final Rounds rounds;
+    private final RaceRounds raceRounds;
+    private final ScoreBoard scoreBoard;
 
-    public RacingGame(Cars cars, Rounds rounds) {
-        this.raceResultFormatter = new RaceResultFormatter();
+    public RacingGame(Cars cars, RaceRounds raceRounds, ScoreBoard scoreBoard) {
         this.cars = cars;
-        this.rounds = rounds;
+        this.raceRounds = raceRounds;
+        this.scoreBoard = scoreBoard;
     }
 
-    public String play() {
-        StringBuilder raceResult = new StringBuilder();
+    public ScoreBoard play() {
+        moveCarsInRounds();
+        scoreBoard.recordWinners(cars.getWinnerNames());
+        return scoreBoard;
+    }
 
-        for (int i = 0; i < rounds.value(); i++) {
+    private void moveCarsInRounds() {
+        raceRounds.forEach(() -> {
             cars.moveAll();
-            raceResult.append(raceResultFormatter.formatPositions(cars));
-        }
+            scoreBoard.recordRound(createRoundScores());
+        });
+    }
 
-        raceResult.append(raceResultFormatter.formatWinnerNames(cars.getWinnerNames()));
-        return raceResult.toString();
+    private RoundScores createRoundScores() {
+        List<CarState> carStates = cars.carList().stream()
+                .map(this::getCarState)
+                .toList();
+        return new RoundScores(carStates);
+    }
+
+    private CarState getCarState(Car car) {
+        return new CarState(car.getName(), car.getPosition());
     }
 }

@@ -2,14 +2,20 @@ package racingcar.domain;
 
 import racingcar.global.ErrorMessage;
 
-public record Rounds(int value) {
-    public Rounds {
+public record RaceRounds(int value) {
+    public RaceRounds {
         validate(value);
     }
 
-    public static Rounds of(String rawInput){
+    public void forEach(Runnable action) {
+        for (int i = 0; i < value; i++) {
+            action.run();
+        }
+    }
+
+    public static RaceRounds of(String rawInput){
         try {
-            return new Rounds(Integer.parseInt(rawInput));
+            return new RaceRounds(Integer.parseInt(rawInput));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_FORMAT_REQUIRED.getMessage());
         }

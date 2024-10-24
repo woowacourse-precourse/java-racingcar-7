@@ -11,6 +11,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RaceRounds;
+import racingcar.domain.ScoreBoard;
 
 class RaceResultFormatterTest {
 
@@ -24,14 +27,16 @@ class RaceResultFormatterTest {
     @ParameterizedTest
     @MethodSource("provideTestCases")
     @DisplayName("자동차들의 위치를 올바른 형식으로 포맷한다.")
-    void formatPositions(Cars cars, String expected) {
-        cars.moveAll();
+    void formatScoreBoard(Cars cars, String expected) {
+        // given
+        RacingGame racingGame = new RacingGame(cars, new RaceRounds(1), ScoreBoard.ofEmpty());
+        ScoreBoard play = racingGame.play();
 
         // when
-        String result = raceResultFormatter.formatPositions(cars);
+        String result = raceResultFormatter.formatScoreBoard(play);
 
         // then
-        assertThat(result.strip()).isEqualTo(expected.strip());
+        assertThat(result.trim()).isEqualTo(expected.trim());
     }
 
     private static Stream<Arguments> provideTestCases() {
@@ -47,6 +52,8 @@ class RaceResultFormatterTest {
                         pobi : -
                         woni : -
                         jun : -
+                        
+                        최종 우승자 : pobi, woni, jun
                         """
                 ),
                 // 모두 움직이지 않은 케이스
@@ -60,6 +67,8 @@ class RaceResultFormatterTest {
                         pobi :\s
                         woni :\s
                         jun :\s
+                        
+                        최종 우승자 : pobi, woni, jun
                         """
                 ),
                 // 어떤 것은 움직이고, 어떤 것은 움직이지 않은 케이스
@@ -71,8 +80,11 @@ class RaceResultFormatterTest {
                         """
                         pobi : -
                         woni :\s
+                        
+                        최종 우승자 : pobi
                         """
                 )
         );
     }
 }
+
