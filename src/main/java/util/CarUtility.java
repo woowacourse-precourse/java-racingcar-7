@@ -25,4 +25,12 @@ public class CarUtility {
             car.addAdvanceCount();
         }
     }
+
+    public static int getMaxAdvanceCount(ArrayList<Car> cars) {
+        return cars
+                .stream()
+                .mapToInt(Car::getAdvanceCount)
+                .max()
+                .orElse(0);
+    }
 }
