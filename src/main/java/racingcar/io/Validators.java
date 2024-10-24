@@ -1,29 +1,33 @@
 package racingcar.io;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validators implements Validator {
 
 
     @Override
     public String validateString(String input) throws IllegalArgumentException {
-        String[] words = splitToArray(input);
+        if (input.indexOf(",") == 0 || input.lastIndexOf(",") == input.length() - 1) {
+            throw new IllegalArgumentException("잘못된 자동차 이름 입력 - 공백 이름 입력");
+        }
 
+        String[] words = splitToArray(input);
         for (String word : words) {
             if (!isLengthInRange(word)) {
-                throw new IllegalArgumentException("잘못된 자동차 이름 입력");
+                throw new IllegalArgumentException("잘못된 자동차 이름 입력 - 자동차 이름 길이 범위 벗어남");
             }
         }
 
+        if (hasDuplicateWords(words)) {
+            throw new IllegalArgumentException("잘못된 자동차 이름 입력 - 중복 이름 존재");
+        }
 
-
-
-        return "";
+        return input;
     }
 
     private String[] splitToArray(String input) {
-        if (input.indexOf(",") == 0 || input.lastIndexOf(",") == input.length() - 1) {
-            throw new IllegalArgumentException("잘못된 자동차 이름 입력");
-        }
-
         String[] words = input.split(",");
         for (int i = 0; i < words.length; i++) {
             words[i] = words[i].strip();
@@ -32,11 +36,20 @@ public class Validators implements Validator {
         return words;
     }
 
-    private boolean isLengthInRange(String s) {
-        if (s.isEmpty() || s.length() > 5) {
+    private boolean isLengthInRange(String name) {
+        if (name.isEmpty() || name.length() > 5) {
             return false;
         }
 
+        return true;
+    }
+
+    private boolean hasDuplicateWords(String[] names) {
+        Set<String> set = new HashSet<>(Arrays.asList(names));
+
+        if (names.length == set.size()) {
+            return false;
+        }
         return true;
     }
 
