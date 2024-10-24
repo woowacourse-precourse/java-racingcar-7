@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.exception.InvalidAttemptException;
 import racingcar.exception.InvalidNameException;
 
@@ -19,6 +20,10 @@ public class Application {
         long attempt = readAttempt();
 
         printResult(cars, attempt);
+
+        long maxPosition = getMaxPosition(cars);
+        String winners = getWinners(cars, maxPosition);
+        System.out.println("최종 우승자 : " + winners);
     }
 
     private static String repeatHyphen(long count) {
@@ -66,7 +71,8 @@ public class Application {
         }
     }
 
-    private static void initialize(final List<String> names, final List<Car> cars, final MovingStrategy movingStrategy) {
+    private static void initialize(final List<String> names, final List<Car> cars,
+                                   final MovingStrategy movingStrategy) {
         for (String name : names) {
             cars.add(new Car(name, movingStrategy));
         }
@@ -103,5 +109,19 @@ public class Application {
             }
             System.out.println();
         }
+    }
+
+    private static Long getMaxPosition(final List<Car> cars) {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Long::compare)
+                .get();
+    }
+
+    private static String getWinners(final List<Car> cars, final long maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 }
