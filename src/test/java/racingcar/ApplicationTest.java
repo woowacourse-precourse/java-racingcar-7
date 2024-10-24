@@ -13,6 +13,15 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 자동차_이름에_대한_예외_테스트() {
+        assertThatThrownBy(() -> {
+            cars.addCar("pobi,jjuchan");
+
+        })
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
