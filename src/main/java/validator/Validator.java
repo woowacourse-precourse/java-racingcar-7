@@ -39,5 +39,10 @@ public class Validator {
     }
 
     public void validateRound(String roundString) {
+        try {
+            long round = Long.parseLong(roundString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorCode.ROUND_PARSE_ERROR.getMessage());
+        }
     }
 }
