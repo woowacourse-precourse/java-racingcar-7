@@ -1,6 +1,6 @@
 package racingcar.car;
 
-import racingcar.utils.RandomUtils;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
@@ -11,7 +11,7 @@ public class Car {
     }
 
     public void moveForward() {
-        int randomNumber = RandomUtils.getRandomNumber(0, 9);
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (isMoveForwardPossible(randomNumber)) {
             this.currentMoveCount++;
         }
