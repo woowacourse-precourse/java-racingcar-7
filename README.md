@@ -43,19 +43,32 @@
     ├── Application.java
     ├── controller/
     ├── dto/
+    │   └─ racingCarDTO
+    │       ├─ - racingCarData : HashMap<String, Integer>
+    │       ├─ - numberOfRacing : int
+    │       ├─ + racingCarDTO(racingCarNameString : String, numberOfRacingString : String) : RacingCarDTO
+    │       ├─ + getRacingCarData() : HashMap<String, Integer>
+    │       ├─ + getNumberOfRacing() : int
+    │       └─ + updateRacingCarDistance(carName : String, distance : int)
     ├── service/
+    │   └─ RacingServiceImpl.java
+    │       ├─ + moveRacingCarByRandom(racingCarDTO : racingCarDTO) 
+    │       └─ + getRandomMovementResult() : int
     ├── view/
-    │   └─ InputView.java
-    │       ├─ getRacingCarNameFromUser() : String
-    │       └─ getNumberOfRaceFromUser() : String
+    │   ├─ InputView.java
+    │   │   ├─ + getRacingCarNameFromUser() : String
+    │   │   └─ + getNumberOfRaceFromUser() : String
+    │   └─ OutputView.java
+    │       ├─ + printEachDistanceByRandomMovement(racingCarDTO : racingCarDTO)
+    │       └─ + printWinnerOfRacing(racingCarDTO : racingCarDTO)
     └── util/
         ├─ checkRacingCarNameListIsAvailable.java
-        │   ├─ checkRacingCarNameListIsAvailable(racingCarNames : String)
-        │   ├─ validateNameLength(racingCarList : String[]) 
-        │   ├─ validateDelimiter(racingCarNames : String, numOfRacingCar : int)
-        │   └─ validateDuplicateNames(racingCarList : String[])
+        │   ├─ + checkRacingCarNameListIsAvailable(racingCarNames : String)
+        │   ├─ + validateNameLength(racingCarList : String[]) 
+        │   ├─ + validateDelimiter(racingCarNames : String, numOfRacingCar : int)
+        │   └─ + validateDuplicateNames(racingCarList : String[])
         └─ RacingNumberValidator.java
-            └─ checkNumberOfRacingIsAvailable(stringNumOfRace : String)
+            └─ + checkNumberOfRacingIsAvailable(stringNumOfRace : String)
 ```
 
 ## 2️⃣ _ 나만의 Git Convention 
@@ -126,5 +139,11 @@
 
 
     ✅ 구현 후 느낀점 / 추가 개선사항 
+    -   DTO와 Service, OutputView와 관련된 구현을 실행하였는데 구현하고 나니 많은 고민이 남았다.
+        먼저 DTO에는 어차피 이미 중복에 대한 문제는 예외처리 함수를 구현해서 현재 HashMap을 사용하도록 해놨다. 하지만 Hash를 이용하기에 나중에 출력과정에서 문제가 생길수 있지않나? 라는 고민이 있다.
+        OutputView에 현재 . 즉 Class에서 제공하는 다양한 함수들을 활용하도록 해놓았는데 이것이 더 효율적인지 한번 더 생각해보아야겠다.
+    -   Service에서 랜덤 값을 이용해서 이동하는 것에서 최대한 Service에서 직접 데이터를 수정(대입을 이용해서 수집)이 일어나지 않도록 DTO에 업데이트 함수를 만들어서 사용하였다.
+        이 부분은 그래도 조금 나름 잘 설계했다고 생각한다.
+    
 
 ```
