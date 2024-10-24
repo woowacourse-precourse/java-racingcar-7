@@ -17,10 +17,8 @@ public class CarRacing {
         return carList;
     }
 
-    public void parseCarList(String carNames) {
-        for (String CarName : carNames.split(",")) {
-            carList.add(new Car(CarName, new BrokenAccelerator()));
-        }
+    public static String[] parseCarList(String carNames) {
+        return carNames.split(",");
     }
 
     public void parseAttempts(String input) {
@@ -37,7 +35,7 @@ public class CarRacing {
 
     public String winner(List<Car> carList) {
         carList.sort(((o1, o2) -> o2.getMileage() - o1.getMileage()));
-        int maxMileage = carList.get(0).getMileage();
+        int maxMileage = carList.getFirst().getMileage();
         List<String> winnerList = new ArrayList<>();
 
         for (Car car : carList) {
@@ -60,7 +58,7 @@ public class CarRacing {
         for (int i = 0; i < attempts; i++) {
             for (int j = 0; j < n; j++) {
                 Car car = carList.get(j);
-                car.accelerate();
+                car.accelerate(new BrokenAccelerator());
                 System.out.println(car.toString());
             }
             System.out.println();

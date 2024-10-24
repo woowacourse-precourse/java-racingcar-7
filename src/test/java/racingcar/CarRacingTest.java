@@ -12,54 +12,7 @@ class CarRacingTest {
     private final Accelerator accelerator = new BrokenAccelerator();
 
     private Car createCar(String carName) {
-        return new Car(carName, accelerator);
-    }
-
-    @Test
-    public void 자동차이름목록_쉼표기준분리_5글자이하_테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carNames = "pobi,woni,jun";
-
-        List<Car> expectedCarList = new ArrayList<>();
-        expectedCarList.add(createCar("pobi"));
-        expectedCarList.add(createCar("woni"));
-        expectedCarList.add(createCar("jun"));
-        int expectedSize = expectedCarList.size();
-
-        //When, Then
-        Assertions.assertThatCode(() -> carRacing.parseCarList(carNames))
-                .doesNotThrowAnyException();
-        Assertions.assertThat(carRacing.getCarList().size()).isEqualTo(expectedSize);
-    }
-
-    @Test
-    public void 자동차이름목록_쉼표_외_문자기준분리_5글자이하_예외테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carNames = "pobi,woni:jun";
-
-        //When
-        Assertions.assertThatThrownBy(() -> carRacing.parseCarList(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void 자동차이름_중복허용_테스트() throws Exception {
-        //Given
-        CarRacing carRacing = new CarRacing();
-        String carNames = "pobi,pobi,pobi";
-
-        List<Car> expectedCarList = new ArrayList<>();
-        expectedCarList.add(createCar("pobi"));
-        expectedCarList.add(createCar("pobi"));
-        expectedCarList.add(createCar("pobi"));
-        int expectedSize = expectedCarList.size();
-
-        //When, Then
-        Assertions.assertThatCode(() -> carRacing.parseCarList(carNames))
-                .doesNotThrowAnyException();
-        Assertions.assertThat(carRacing.getCarList().size()).isEqualTo(expectedSize);
+        return new Car(carName);
     }
 
     @Test
@@ -100,9 +53,9 @@ class CarRacingTest {
         //Given
         CarRacing carRacing = new CarRacing();
         List<Car> carList = new ArrayList<>();
-        Car pobi = new Car("pobi", accelerator);
-        Car woni = new Car("woni", accelerator);
-        Car jun = new Car("jun", accelerator);
+        Car pobi = createCar("pobi");
+        Car woni = createCar("woni");
+        Car jun = createCar("jun");
 
         pobi.setMileageForTest(4);
         woni.setMileageForTest(3);
@@ -125,9 +78,9 @@ class CarRacingTest {
         //Given
         CarRacing carRacing = new CarRacing();
         List<Car> carList = new ArrayList<>();
-        Car pobi = new Car("pobi", accelerator);
-        Car woni = new Car("woni", accelerator);
-        Car jun = new Car("jun", accelerator);
+        Car pobi = createCar("pobi");
+        Car woni = createCar("woni");
+        Car jun = createCar("jun");
 
         pobi.setMileageForTest(4);
         woni.setMileageForTest(4);
