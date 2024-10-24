@@ -21,9 +21,12 @@ class ApplicationTest extends NsTest {
     class 이름_테스트 {
         @Test
         void 성공_이름_5글자이하() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("pobi,woni", "1"))
-                            .isInstanceOf(IllegalArgumentException.class)
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("pobi,woni", "1");
+                        assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                    },
+                    MOVING_FORWARD, STOP
             );
         }
 
@@ -38,10 +41,27 @@ class ApplicationTest extends NsTest {
         @Test
         void 실패_이름_비어있음() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("pobi,", "1"))
+                    assertThatThrownBy(() -> runException("", "1"))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
+
+        @Test
+        void 실패_이름_공백() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("pobi, ", "1"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        // TODO : null이 문자열로 입력되어 "null"이 되므로 다른 테스트 방법 찾기
+//        @Test
+//        void 실패_이름_null() {
+//            assertSimpleTest(() ->
+//                    assertThatThrownBy(() -> runException(null, "1"))
+//                            .isInstanceOf(IllegalArgumentException.class)
+//            );
+//        }
 
         @Test
         void 실패_이름_중복() {
@@ -100,10 +120,36 @@ class ApplicationTest extends NsTest {
         @Test
         void 실패_횟수_음수() {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("pobi,javaji", "-1"))
+                    assertThatThrownBy(() -> runException("pobi,woni", "-1"))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
+
+        // TODO : runException은 마지막 인자에 빈 문자열이 들어올 경우 입력값으로 처리되지 않으므로 다른 방법 찾기
+//        @Test
+//        void 실패_횟수_비어있음() {
+//            assertSimpleTest(() ->
+//                    assertThatThrownBy(() -> runException("pobi,woni", ""))
+//                            .isInstanceOf(IllegalArgumentException.class)
+//            );
+//        }
+
+        @Test
+        void 실패_횟수_공백() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("pobi,woni", " "))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        // TODO : null이 문자열로 입력되어 "null"이 되므로 다른 테스트 방법 찾기
+//        @Test
+//        void 실패_횟수_null() {
+//            assertSimpleTest(() ->
+//                    assertThatThrownBy(() -> runException("pobi,woni", null))
+//                            .isInstanceOf(IllegalArgumentException.class)
+//            );
+//        }
     }
 
     @Override
