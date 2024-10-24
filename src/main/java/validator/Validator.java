@@ -1,12 +1,15 @@
 package validator;
 
 import exception.ErrorCode;
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Validator {
     private static final int LIMIT_NAME_LENGTH = 5;
+    private static final int MAX_ROUND = Integer.MAX_VALUE;
+    private static final int MIN_ROUND = 0;
 
     public void validateCar(List<String> carNames) {
         checkCarNotEmpty(carNames);
@@ -40,16 +43,19 @@ public class Validator {
 
     public void validateRound(String roundString) {
         try {
-            int round = Integer.parseInt(roundString);
-            checkRoundPositive(round);
+            BigInteger round = new BigInteger(roundString);
+            validateRange(round);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorCode.ROUND_PARSE_ERROR.getMessage());
         }
     }
 
-    private void checkRoundPositive(int round) {
-        if (round < 0) {
-            throw new IllegalArgumentException(ErrorCode.ROUND_PARSE_ERROR.getMessage());
+    private void validateRange(BigInteger round) {
+        if (round.compareTo(BigInteger.valueOf(MAX_ROUND)) > 0) {
+            throw new IllegalArgumentException(ErrorCode.ROUND_RANGE_ERROR.getMessage());
+        }
+        if (round.compareTo(BigInteger.valueOf(MIN_ROUND)) < 0) {
+            throw new IllegalArgumentException(ErrorCode.ROUND_NEGATIVE_ERROR.getMessage());
         }
     }
 }
