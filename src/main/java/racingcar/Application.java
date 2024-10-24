@@ -34,6 +34,7 @@ public class Application {
     }
 
     private static void validateCarsName(List<String> trimmedCarsNameList) {
+        List<String> existCarsNameList = new ArrayList<>();
         for (String carName : trimmedCarsNameList) {
             // 공백, 빈값
             if (carName == null || carName.isBlank()) {
@@ -49,6 +50,13 @@ public class Application {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
+
+            // 중복일 때
+            if (existCarsNameList.contains(carName)) {
+                throw new IllegalArgumentException();
+            }
+
+            existCarsNameList.add(carName);
         }
     }
 }
