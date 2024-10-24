@@ -36,7 +36,7 @@ class GameUtilTest {
         assertDoesNotThrow(() -> {
             List<CarVO> carNameAndGoCountList = CarUtil.getCarNameAndGoCountList(carNames);
             for (var carAndCount : carNameAndGoCountList) {
-                int randomNumber = Randoms.pickNumberInRange(0,9);
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
                 if (randomNumber >= 4) {
                     carAndCount.goOneStep();
                 }
@@ -44,6 +44,16 @@ class GameUtilTest {
             }
         });
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"구상우,홍길동, 김천지"})
+    @DisplayName("한턴을 진행해주는 함수가 업데이트 된 값을 가져와야한다.")
+    void 한턴_진행_실제_함수_테스트(String carNames) {
+        assertDoesNotThrow(() -> {
+            GameUtil.oneTurnPrintAndUpdate(CarUtil.getCarNameAndGoCountList(carNames));
+        });
+    }
+
 
 
 
