@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.util.ramdom.RandomRange;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,8 +19,8 @@ public class RacingCars {
         this(other.values);
     }
 
-    public void moveRandomly(RandomRange randomRange) {
-        values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
+    public void move() {
+        values.forEach(RacingCar::move);
     }
 
     public String getJoinedNames(String delimiter) {
