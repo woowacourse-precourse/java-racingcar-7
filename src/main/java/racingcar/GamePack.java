@@ -11,6 +11,7 @@ public class GamePack {
         Track track = initTrack();
 
         startRacing(track, racing);
+        endRacing(racing);
     }
 
     public Racing initRacing() {
@@ -35,6 +36,10 @@ public class GamePack {
 
             outputView.printRacingStatus(racing);
         }
+    }
+
+    public void endRacing(Racing racing) {
+        outputView.printRacingWinners(racing);
     }
 
 }
