@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import racingcar.view.OutputView;
 
 public class RacingCar {
@@ -24,6 +27,18 @@ public class RacingCar {
             System.out.println();
         }
         return cars;
+    }
+
+    public String calculateFinalWinner(Cars cars) {
+        List<Car> carList = cars.getCars();
+        int maxPosition = calculateMaxPosition(carList.stream());
+
+        Stream<Car> winners = carList.stream().filter(car -> car.getPosition() == maxPosition);
+        return winners.map(Car::getName).collect(Collectors.joining(","));
+    }
+
+    private static int calculateMaxPosition(Stream<Car> carList) {
+        return carList.map(Car::getPosition).max(Integer::compareTo).orElse(0);
     }
 
     private int pickRandomNumber() {
