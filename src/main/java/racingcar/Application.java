@@ -40,5 +40,14 @@ public class Application {
             System.out.println();
         }
 
+
+        List<String> result = controllGame.returnMax();
+        if (result.size() == 1) {
+            System.out.printf("최종 우승자 : %s%n", result.get(0));
+        } else {
+            System.out.printf("최종 우승자 : %s%n", String.join(", ", result));
+        }
+
+
     }
 }

@@ -33,5 +33,20 @@ public class Game {
     this.trial = trial;
   }
 
+  public List<String> returnMax(){
+    List<String> result = new ArrayList<>();
+    int firstBig = 0;
+    for (Car car : this.carList) {
+      if (car.getStep() > firstBig) {
+        firstBig = car.getStep();
+      }
+    }
+    for (Car car : this.carList) {
+      if (car.getStep() == firstBig) {
+        result.add(car.getCarName());
+      }
+    }
+    return result;
+  }
 }
 
