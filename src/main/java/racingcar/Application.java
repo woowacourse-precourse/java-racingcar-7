@@ -10,13 +10,12 @@ public class Application {
 
 		Car[] cars = separateNames(carNames);
 
-		/*
-		 * 이동 시작 ~
-		 */
+		System.out.println("시도할 횟수는 몇 회인가요?");
+		int m = validateNumber(Console.readLine());
 
 	}
 
-	public static Car[] separateNames(String carNames) {
+	public static Car[] separateNames(String carNames) throws IllegalArgumentException {
 
 		String[] names = carNames.split(",");
 		Car[] cars = new Car[names.length];
@@ -26,5 +25,18 @@ public class Application {
 		}
 
 		return cars;
+	}
+
+	public static int validateNumber(String numStr) throws IllegalArgumentException {
+
+		try {
+			int number = Integer.parseInt(numStr);
+			if (number < 0) {
+				throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
+			}
+			return number;
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("유효한 숫자가 아닙니다.", e);
+		}
 	}
 }
