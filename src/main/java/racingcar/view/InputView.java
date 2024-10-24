@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.enums.Message;
 
 /**
@@ -16,10 +18,20 @@ import racingcar.enums.Message;
  */
 
 public class InputView {
+    //----- 싱글톤 패턴 적용 -----//
+    private static final InputView instance = new InputView();
+    private InputView(){}
+    public static InputView getInstance() {
+        return instance;
+    }
+    //------------------------//
 
-    public String[] getCarsName() {
+
+    public CarsSaveRequestDto getCarsName() {
         System.out.println(Message.INPUT_CARS_NAME);
-        return Console.readLine().split(",");
+        return new CarsSaveRequestDto(
+                List.of(Console.readLine().split(","))
+        );
     }
 
     public int getLapCount() {
