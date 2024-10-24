@@ -28,4 +28,8 @@ public class Car {
 	public boolean canMove() {
 		return Randoms.pickNumberInRange(0, 9) >= 4;
 	}
+
+	public void move() {
+		moveCount++;
+	}
 }
