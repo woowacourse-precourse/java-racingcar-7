@@ -17,7 +17,7 @@ public class OutputView {
     }
 
     public void printRacingRoundResults(List<RacingRoundResult> racingRoundResults) {
-        OutputConsole.println("");
+        OutputConsole.println();
         OutputConsole.println("실행 결과");
         printRoundResults(racingRoundResults);
     }
@@ -35,7 +35,7 @@ public class OutputView {
             OutputConsole.println(carName + " : " + getDashes(position));
         });
 
-        OutputConsole.println("");
+        OutputConsole.println();
     }
 
     private String getDashes(Integer position) {
