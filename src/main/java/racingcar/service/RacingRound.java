@@ -8,8 +8,8 @@ import racingcar.controller.domain.Car;
 import racingcar.exception.Validator;
 
 public class RacingRound {
-    private List<Car> carList = new ArrayList<>();
-    private HashMap<Car, Integer> carToRacingProgress = new HashMap<>();
+    private final List<Car> carList = new ArrayList<>();
+    private final HashMap<Car, Integer> carToRacingProgress = new HashMap<>();
 
     public RacingRound(List<String> carNameList) {
         for (String carName : carNameList) {
@@ -38,7 +38,7 @@ public class RacingRound {
         List<String> maxKeys = new ArrayList<>();
         for (Entry<Car, Integer> entry : carToRacingProgress.entrySet()) {
             if (entry.getValue() == maxValue) {
-                maxKeys.add(entry.getKey().getName());
+                maxKeys.add(entry.getKey().name());
             }
         }
         return maxKeys;
