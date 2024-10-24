@@ -32,9 +32,7 @@ public final class RacingGame {
 
     private void nextRound() {
         for (Car car : racingCars.getCars()) {
-            if (isCarAllowedToMove()) {
-                car.forward();
-            }
+            car.forward(isCarAllowedToMove());
         }
         RacingGameScoreBoard.printCurrentScore(racingCars);
     }

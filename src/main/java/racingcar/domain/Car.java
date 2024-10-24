@@ -14,8 +14,10 @@ public class Car {
         return new Car(name);
     }
 
-    protected void forward() {
-        ++distance;
+    protected void forward(boolean isAllowedToMove) {
+        if (isAllowedToMove) {
+            ++distance;
+        }
     }
 
     public String getName() {
