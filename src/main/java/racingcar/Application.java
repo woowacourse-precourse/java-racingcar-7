@@ -103,5 +103,9 @@ public class Application {
         public int getDistance() {
             return distance;
         }
+
+        public void increaseDistance() {
+            distance++;
+        }
     }
 }
