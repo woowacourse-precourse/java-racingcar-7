@@ -1,15 +1,12 @@
 package racingcar.model;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.random.FixedNumberGenerator;
 import racingcar.model.random.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
@@ -24,7 +21,7 @@ class GameTest {
         int expected = 0;
 
         //when
-        game.play();
+        game.playOneRound();
 
         //then
         Assertions.assertThat(cars.get(0).getForwardLevel()).isEqualTo(expected);
@@ -39,7 +36,7 @@ class GameTest {
         int expected = 1;
 
         //when
-        game.play();
+        game.playOneRound();
 
         //then
         Assertions.assertThat(cars.get(0).getForwardLevel()).isEqualTo(expected);
