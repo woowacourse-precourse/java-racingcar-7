@@ -6,7 +6,7 @@ public class Car {
     private final String name;
     private int goStop;
 
-    public Car(String name, int GoStop, int goStop) {
+    public Car(String name, int goStop) {
         this.name = name;
         this.goStop = goStop;
     }
