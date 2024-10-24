@@ -20,4 +20,8 @@ public class Cars {
         }
         return positions;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
