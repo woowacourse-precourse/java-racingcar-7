@@ -47,4 +47,64 @@ class CarsTest {
         assertEquals(1, carInfo.getCurrentPosition());
     }
 
+    @Test
+    @DisplayName("자동차 경주에서 우승자를 찾는다.")
+    public void 자동차_우승자_찾기() {
+        // given
+        Car car1 = new Car("povi");
+        Car car2 = new Car("min");
+
+        List<Car> carList = new ArrayList<>();
+        carList.add(car1);
+        carList.add(car2);
+
+        // when
+        Cars players = new Cars(carList);
+        players.accelerateSpecificCar(car1);
+        players.accelerateSpecificCar(car1);
+        players.accelerateSpecificCar(car1);
+
+        List<String> winner = players.getWinners();
+
+        // then
+        Assertions.assertThat(winner.size()).isEqualTo(1);
+        Assertions.assertThat(winner).contains("povi");
+    }
+
+    @Test
+    @DisplayName("자동차 경주에서 우승자가 여려명 일 때.")
+    public void 자동차_우승자_찾기_여러명() {
+        // given
+        Car car1 = new Car("povi");
+        Car car2 = new Car("min");
+
+        List<Car> carList = new ArrayList<>();
+        carList.add(car1);
+        carList.add(car2);
+
+        // when
+        Cars players = new Cars(carList);
+        players.accelerateSpecificCar(car1);
+        players.accelerateSpecificCar(car2);
+
+        List<String> winner = players.getWinners();
+
+        // then
+        Assertions.assertThat(winner.size()).isEqualTo(2);
+        Assertions.assertThat(winner).contains("povi", "min");
+    }
+
+    @Test
+    @DisplayName("게임 참가자가 없을 경우 예외가 발생한다.")
+    public void 자동차_우승자_찾기_참가자_없음() {
+        // given
+        List<Car> carList = new ArrayList<>();
+
+        // when
+        Cars players = new Cars(carList);
+
+        // then
+        Assertions.assertThatThrownBy(() -> players.getWinners())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
