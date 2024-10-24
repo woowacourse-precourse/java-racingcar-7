@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +33,7 @@ class OutputViewTest {
         SystemOut();
         outputView.printEndLine();
 
-        assertEquals(expected, outputStream.toString());
+        assertEquals(expected, getStringFromOutputStream(outputStream));
     }
 
     @DisplayName("\"실행 결과\" 메시지를 출력한다.")
@@ -41,7 +43,7 @@ class OutputViewTest {
         SystemOut();
         outputView.printExecutionResultMessage();
 
-        assertEquals(expectedMessage, outputStream.toString());
+        assertEquals(expectedMessage, getStringFromOutputStream(outputStream));
     }
 
     @DisplayName("각 자동차의 이름과 이동거리를 출력하는 기능이 잘 수행되야 한다.")
@@ -51,7 +53,7 @@ class OutputViewTest {
         SystemOut();
         outputView.printEachExecutionResult(car);
 
-        assertEquals(expected, outputStream.toString());
+        assertEquals(expected, getStringFromOutputStream(outputStream));
     }
 
     @DisplayName("최종 우승자를 형식에 맞게 출력한다.")
@@ -63,7 +65,21 @@ class OutputViewTest {
         SystemOut();
         outputView.printWinner(car);
 
-        assertEquals(expectedWinnerPrint, outputStream.toString());
+        assertEquals(expectedWinnerPrint, getStringFromOutputStream(outputStream));
+    }
+
+    @DisplayName("공동 우승자를 형식에 맞게 출력한다.")
+    @Test
+    void printWinners() {
+        Car pobi = new Car("pobi");
+        Car jun = new Car("jun");
+        ArrayList<Car> winnersList = Stream.of(pobi, jun)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        SystemOut();
+        outputView.printWinners(winnersList);
+
+        assertEquals("최종 우승자 : pobi, jun", getStringFromOutputStream(outputStream));
     }
 
     private static Stream<Arguments> provideEachExecutionResultTestCases() {
@@ -85,6 +101,10 @@ class OutputViewTest {
     private static void SystemOut() {
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
+    }
+
+    private static String getStringFromOutputStream(final OutputStream outputStream) {
+        return outputStream.toString();
     }
 
 }

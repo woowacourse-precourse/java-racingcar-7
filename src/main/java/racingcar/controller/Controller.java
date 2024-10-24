@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
@@ -40,5 +41,9 @@ public class Controller {
 
     public void printWinner(final Car car) {
         outputView.printWinner(car);
+    }
+
+    public void printWinners(final ArrayList<Car> winnerList) {
+        outputView.printWinners(winnerList);
     }
 }
