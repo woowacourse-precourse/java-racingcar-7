@@ -4,18 +4,25 @@ public class RacingTryCount {
 
     private final int count;
 
-    public RacingTryCount(String input) {
-        int count = toInt(input);
+    private RacingTryCount(String input) {
+        int count = toIntValue(input);
 
-        //TODO : 1 상수처리
-        if (count < 1) {
+        if (isNotPositiveValue(count)) {
             throw new IllegalArgumentException("시도할 횟수는 양수여야 합니다.");
         }
 
         this.count = count;
     }
 
-    private int toInt(String input) {
+    public static RacingTryCount from(String tryCount) {
+        return new RacingTryCount(tryCount);
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    private int toIntValue(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -23,7 +30,7 @@ public class RacingTryCount {
         }
     }
 
-    public int getCount() {
-        return count;
+    private boolean isNotPositiveValue(int count) {
+        return !(count > 0);
     }
 }

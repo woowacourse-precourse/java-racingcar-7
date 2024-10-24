@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.constant.RacingConstant.RACING_CAR_NAME_MAX_LENGTH;
+import static racingcar.constant.RacingConstant.RACING_CAR_MOVE_THRESHOLD;
+
 public class RacingCar {
 
     private final String name;
@@ -8,27 +11,27 @@ public class RacingCar {
     public RacingCar(String name) {
         name = name.strip();
 
-        validateName(name);
+        validateCarName(name);
 
         this.name = name;
     }
 
-    private void validateName(String name) {
-        if (name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 여야 합니다.");
+    private void validateCarName(String name) {
+        if (isCarNameBlank(name)) {
+            throw new IllegalArgumentException("자동차 이름이 비어있습니다.");
         }
 
-        //TODO : 상수 처리
-        if (name.length() > 5) {
+        if (isCarNameLengthExceeded(name)) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하 여야 합니다.");
         }
     }
 
-    public void move(int input) {
-        // TODO : 4 상수 처리
-        if (input >= 4) {
-            go();
+    public void move(int numberValue) {
+        if (isStopByNumberValue(numberValue)) {
+            return;
         }
+
+        position++;
     }
 
     public String getName() {
@@ -39,7 +42,15 @@ public class RacingCar {
         return position;
     }
 
-    private void go() {
-        position++;
+    private boolean isCarNameBlank(String name) {
+        return name.isBlank();
+    }
+
+    private boolean isCarNameLengthExceeded(String name) {
+        return name.length() > RACING_CAR_NAME_MAX_LENGTH;
+    }
+
+    private boolean isStopByNumberValue(int numberValue) {
+        return numberValue < RACING_CAR_MOVE_THRESHOLD;
     }
 }

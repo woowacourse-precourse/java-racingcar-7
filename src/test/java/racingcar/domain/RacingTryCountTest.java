@@ -13,7 +13,7 @@ public class RacingTryCountTest {
         String input = "5";
 
         //when
-        RacingTryCount racingTryCount = new RacingTryCount(input);
+        RacingTryCount racingTryCount = RacingTryCount.from(input);
 
         //then
         assertThat(racingTryCount.getCount()).isEqualTo(Integer.parseInt(input));
@@ -25,7 +25,7 @@ public class RacingTryCountTest {
         String input = "a";
 
         //when
-        assertThatThrownBy(() -> new RacingTryCount(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> RacingTryCount.from(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -34,6 +34,6 @@ public class RacingTryCountTest {
         String input = "0";
 
         //when
-        assertThatThrownBy(() -> new RacingTryCount(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> RacingTryCount.from(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

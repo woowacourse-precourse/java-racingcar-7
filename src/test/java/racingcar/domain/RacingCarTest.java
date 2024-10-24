@@ -10,7 +10,7 @@ public class RacingCarTest {
     @Test
     void TDD_자동차_이름_5자_이하_성공() {
         //given
-        String input = "spring";
+        String input = "java";
 
         //when
         RacingCar racingCar = new RacingCar(input);
@@ -22,13 +22,13 @@ public class RacingCarTest {
     @Test
     void TDD_자동차_이름_공백포함_5자_이하_성공() {
         //given
-        String input = "spring    ";
+        String input = "java    ";
 
         //when
         RacingCar racingCar = new RacingCar(input);
 
         //then
-        assertThat(racingCar.getName()).isEqualTo("spring");
+        assertThat(racingCar.getName()).isEqualTo("java");
     }
 
     @Test
