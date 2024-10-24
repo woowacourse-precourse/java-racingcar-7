@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class RacingGame {
     private int rounds;
 
+
     private void inputRounds() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         try {
@@ -16,7 +17,7 @@ public class RacingGame {
 
     }
 
-    private void validateRounds(int rounds) {
+    public void validateRounds(int rounds) {
         if (rounds <= 0) {
             throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
         }
