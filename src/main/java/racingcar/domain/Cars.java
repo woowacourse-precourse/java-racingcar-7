@@ -15,4 +15,8 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
+    public void addCar(Car car){
+        cars.add(car);
+    }
+
 }
