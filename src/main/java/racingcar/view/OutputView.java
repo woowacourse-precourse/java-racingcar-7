@@ -9,7 +9,7 @@ public class OutputView {
 
     public static void printRacingOutput(List<WinnerResponseDto> responseDtos) {
         System.out.println(RESULT_MESSAGE);
-        responseDtos.forEach(dto -> System.out.println(dto.name() + " : " + dto.positionDisplay()));
+        responseDtos.forEach(dto -> System.out.println(dto.name() + " : " + dto.position()));
         System.out.println();
     }
 
