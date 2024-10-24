@@ -6,6 +6,7 @@ public class IOMessage {
     public static final String RACE_RESULT = "실행 결과";
     public static final String FINAL_WINNER = "최종 우승자";
     public static final String COLON_SEPARATOR = " : ";
+    public static final String COMMA_SEPARATOR = ",";
     public static final String MOVEMENT_SIGN = "-";
 
     public static String buildRaceResult (String name, String movement) {
