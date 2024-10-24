@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;
 import racingcar.exception.InvalidLengthException;
 
@@ -9,8 +10,11 @@ public class VerificationService {
 
     public boolean isValidLength(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName.length() > 5 || carName.isEmpty()) {
+            if (carName.length() > 5) {
                 throw new InvalidLengthException();
+            }
+            if (carName.isEmpty()) {
+                throw new EmptyInputException();
             }
         }
         return true;
