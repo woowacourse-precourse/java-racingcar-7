@@ -22,14 +22,14 @@ public class ConsoleOutputView implements OutputView {
 
     @Override
     public String displayRoundResultString() {
-        return OUTPUT_ROUND_RESULT.getMessage();
+        return System.lineSeparator() + OUTPUT_ROUND_RESULT.getMessage();
     }
 
     @Override
     public String displayEachRoundStatus(List<CarDomain> cars) {
         return cars.stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getDistance()))
-                .collect(Collectors.joining(System.lineSeparator()));
+                .collect(Collectors.joining(System.lineSeparator())) + System.lineSeparator();
     }
 
     @Override
