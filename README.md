@@ -140,4 +140,12 @@ ErrorMessage
 - [ ] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
 
 - [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-- [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+- [x] 사용자가 입력하는 값 은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+
+## ✅ 1주차 피드백을 반영해보자
+
+- [x] 아무거나 util로 빼는 것은 지양하자
+  - 특정 코드나 기능과 연관이 없고, 어디서든 조작 없이 그대로 갖다 쓸 수 있는 메서드만 유틸로 빼자
+- [x] 무조건 상수로 처리하는 것은 가독성을 해칠 수 있다.
+- [x] 너무 작은 역할을 가지는 클래스(ex. 메서드가 하나만 있는 경우)를 만들어야 할 경우에는 다른 객체에게 위임할 수 있는 부분인지, 책임을 합칠 수 있는지 고민해보자
+- [x] 변수, 메서드명을 지을 때 조금 더 고민해보자.
