@@ -19,24 +19,30 @@ public class GameController {
     }
 
     public void start() {
-        String inputCarNames = inputView.getNameOfCars();
-        String[] carNames = inputCarNames.split(DELIMITER);
-        int attemptCount = inputView.getAttemptCount();
+        Game game = makeGame();
 
-        Game game = new Game(carNames, attemptCount);
         List<CarMovementResults> allAttemptResults = new ArrayList<>();
 
         while (game.isRunning()) {
             game.play();
-
-            SequencedMap<String, Integer> statusOfCars = game.getStatusOfCars();
-            CarMovementResults currentAttemptResults = CarMovementResults.from(statusOfCars);
-            allAttemptResults.add(currentAttemptResults);
+            allAttemptResults.add(getCurrentAttemptResults(game));
         }
-
         outputView.displayMovementResults(allAttemptResults);
 
         List<String> nameOfWinners = game.getNameOfWinner();
         outputView.displayWinners(nameOfWinners);
+    }
+
+    private Game makeGame() {
+        String inputCarNames = inputView.getNameOfCars();
+        String[] carNames = inputCarNames.split(DELIMITER);
+        int attemptCount = inputView.getAttemptCount();
+
+        return new Game(carNames, attemptCount);
+    }
+
+    private CarMovementResults getCurrentAttemptResults(Game game) {
+        SequencedMap<String, Integer> statusOfCars = game.getStatusOfCars();
+        return CarMovementResults.from(statusOfCars);
     }
 }
