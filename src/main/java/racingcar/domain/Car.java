@@ -15,6 +15,12 @@ public class Car {
         validateCarNameLength();
     }
 
+    public void moveForward() {
+        if (getNumberInRange() >= 4) {
+            this.distance++;
+        }
+    }
+
     private int getNumberInRange() {
         return Randoms.pickNumberInRange(0, 9);
     }
