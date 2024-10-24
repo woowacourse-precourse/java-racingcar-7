@@ -1,6 +1,11 @@
 package racingcar.view;
 
 import racingcar.constants.MessageConstants;
+import racingcar.model.Car;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -16,8 +21,17 @@ public class OutputView {
         System.out.print(MessageConstants.EXECUTION_RESULT);
     }
 
-    public static void printWinners(String winners) {
-        System.out.print(MessageConstants.FINAL_WINNER + winners);
+    public static void printCurrentStatus(List<Car> cars) {
+        for(Car car : cars) {
+            System.out.println(String.format(MessageConstants.PLAYER_POSITION_FORMAT, car.getName())
+                    + MessageConstants.DASH.repeat(car.getPosition()));
+        }
+    }
+
+    public static void printWinners(List<Car> winners) {
+        System.out.println(winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", ")));
     }
 
 }
