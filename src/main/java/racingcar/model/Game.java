@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.valid.NameValid;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,8 @@ public class Game {
         this.tryTimes = tryTimes;  // 생성자에서 한 번만 초기화
     }
 
-    public void addCar(Car car) {
-        if(true){// valid
-            cars.add(car);
-        }
+    public void addCar(String name) {
+        cars.add(new Car(name));
     }
 
     public void moveCars(){
