@@ -1,14 +1,10 @@
 package policy;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
-
 public class RacingCarPolicy implements RacingPolicy {
-    private final  String NAME_SEPARATOR = ",";
-    private final String MOVE_FORWARD_SYMBOL = "-";
-    private final int nameLengthPolicy= 5;
-    private final List<Integer> baseNumbers = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-    private final Integer moveCriterion = 4;
+    private static final  String NAME_SEPARATOR = ",";
+    private static final String MOVE_FORWARD_SYMBOL = "-";
+    private static final int nameLengthPolicy= 5;
+    private static final Integer moveCriterion = 4;
 
     public RacingCarPolicy() {
     }
@@ -18,9 +14,8 @@ public class RacingCarPolicy implements RacingPolicy {
      * 전진에 해당할경우 true를 리턴한다.
      */
     @Override
-    public Boolean isMoveForward() {
-        List<Integer> shuffle = Randoms.shuffle(baseNumbers);
-        return Randoms.pickNumberInList(shuffle) > moveCriterion;
+    public Boolean isMoveForward(int randomNumber) {
+        return randomNumber>= moveCriterion;
     }
 
     @Override

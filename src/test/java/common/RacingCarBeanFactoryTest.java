@@ -12,7 +12,7 @@ class RacingCarBeanFactoryTest {
     @Test
     void getRacingService() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,dodo,lala", Long.parseLong("5"));
 
         //when

@@ -1,6 +1,6 @@
 package controller;
 
-import common.BeanFactory;
+import common.RacingCarBeanFactory;
 import dto.OriginalInputDTO;
 import dto.RacingOutputDTO;
 import dto.ValidatedInputDataDTO;
@@ -8,10 +8,10 @@ import service.RacingService;
 
 public class RacingController {
 
-    private final BeanFactory beanFactory;
+    private final RacingCarBeanFactory beanFactory;
     private final OriginalInputDTO originalInput;
 
-    public RacingController(BeanFactory beanFactory, OriginalInputDTO originalInput) {
+    public RacingController(RacingCarBeanFactory beanFactory, OriginalInputDTO originalInput) {
         this.beanFactory = beanFactory;
         this.originalInput = originalInput;
     }

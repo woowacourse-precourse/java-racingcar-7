@@ -3,27 +3,20 @@ package common;
 import dto.ValidatedInputDataDTO;
 import java.util.HashMap;
 import policy.RacingCarPolicy;
-import policy.RacingPolicy;
-import repository.RacingStatusRepository;
-import repository.Repository;
+import repository.RacingCarRepository;
 import service.RacingCarService;
 import service.RacingService;
+import vehicle.Vehicle;
 
-public class RacingCarBeanFactory implements BeanFactory {
+public class RacingCarBeanFactory{
 
-    @Override
-    public RacingPolicy provideRacingPolicy() {
-        return new RacingCarPolicy();
+    public RacingCarRepository provideRacingStatusRepository() {
+        return new RacingCarRepository(new HashMap<String, Vehicle>());
     }
 
-    @Override
-    public Repository provideVehicleRepository() {
-        return new RacingStatusRepository(new HashMap<String, Long>());
-    }
 
-    @Override
     public RacingService provideRacingService(ValidatedInputDataDTO validatedInputDataDTO) {
-        return new RacingCarService(validatedInputDataDTO,provideRacingPolicy(),provideVehicleRepository());
+        return new RacingCarService(validatedInputDataDTO,new RacingCarPolicy(), provideRacingStatusRepository());
     }
 
 }

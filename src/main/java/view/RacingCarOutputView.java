@@ -13,6 +13,7 @@ public class RacingCarOutputView{
 
     public void printRacingResult(){
         System.out.println(OUTPUT_RACING_STATUS);
+        System.out.println("\n");
         System.out.println(racingOutputDTO.raceStatus());
         System.out.println(OUTPUT_WINNER + racingOutputDTO.raceWinner());
     }

@@ -1,14 +1,15 @@
 package service;
 
-import common.BeanFactory;
 import common.RacingCarBeanFactory;
 import dto.ValidatedInputDataDTO;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import repository.Repository;
+import policy.RacingCarPolicy;
+import repository.RacingCarRepository;
 
 class RacingCarServiceTest {
 
@@ -16,13 +17,14 @@ class RacingCarServiceTest {
     @Test
     void generateCar() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,lala", 3L);
-        RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
+        RacingCarService racingCarService = new RacingCarService(validatedInputDataDTO, new RacingCarPolicy(),
+                new RacingCarRepository(new HashMap<>()));
 
         //when
-        racingService.racingStart();
-        Repository repository = racingService.getRaceStatusRepository();
+        racingCarService.racingStart();
+        RacingCarRepository repository = racingCarService.getRacingCarRepository();
 
         //then
         Assertions.assertThat(repository.size()).isEqualTo(3);
@@ -32,15 +34,16 @@ class RacingCarServiceTest {
     @Test
     void isDuplicateName() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dada", 3L);
-        RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
+        RacingCarService racingCarService = new RacingCarService(validatedInputDataDTO, new RacingCarPolicy(),
+                new RacingCarRepository(new HashMap<>()));
 
         //when
-        Repository repository = racingService.getRaceStatusRepository();
+        RacingCarRepository repository = racingCarService.getRacingCarRepository();
 
         //then
-        Assertions.assertThatThrownBy(racingService::racingStart).isInstanceOf(IllegalArgumentException.class)
+        Assertions.assertThatThrownBy(racingCarService::racingStart).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복되는 이름은 사용할 수 없습니다.");
     }
 
@@ -49,7 +52,7 @@ class RacingCarServiceTest {
     @Test
     void runRace() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dodo", 10L);
         RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
         racingService.generateRacer(validatedInputDataDTO.name().split(","));
@@ -67,7 +70,7 @@ class RacingCarServiceTest {
     @Test
     void findRaceWinner() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dodo", 10L);
         RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
         List<String> status = new ArrayList<>();

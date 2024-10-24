@@ -1,10 +1,11 @@
 package service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import dto.RacingOutputDTO;
 import dto.ValidatedInputDataDTO;
 import java.util.List;
 import policy.RacingPolicy;
-import repository.Repository;
+import repository.RacingCarRepository;
 import vehicle.Car;
 
 public class RacingCarService implements RacingService {
@@ -12,18 +13,18 @@ public class RacingCarService implements RacingService {
     //TODO : 서비스가 레이싱 정책을 갖고있는게 맞을까..? car 객체가 가지고있어야 하는게 아니고..? 정책을 굳이 빈팩토리에서 주입해줘야할까? 그냥 상수모음인데..?
     private final RacingPolicy racingPolicy;
     //TODO : 서비스는 레이싱상태 레포지토리랑 카객체 레포지토리만 갖고있자. 근데 그러면 둘 다 동기화를 해줘야하는데 괜찮을까..?
-    private final Repository raceStatusRepository;
+    private final RacingCarRepository racingCarRepository;
 
     public RacingCarService(ValidatedInputDataDTO validatedInputDataDTO, RacingPolicy racingPolicy,
-                            Repository raceStatusRepository) {
+                            RacingCarRepository racingCarRepository) {
         this.validatedInputDataDTO = validatedInputDataDTO;
         this.racingPolicy = racingPolicy;
-        this.raceStatusRepository = raceStatusRepository;
+        this.racingCarRepository = racingCarRepository;
     }
 
     @Override
     public RacingOutputDTO racingStart() {
-        String[] splitNames = validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
+        String[] splitNames = splitCarName();
         generateRacer(splitNames);
         String raceStatus = runRace(splitNames);
         String raceWinner = fineRaceWinner();
@@ -31,25 +32,23 @@ public class RacingCarService implements RacingService {
         return new RacingOutputDTO(raceStatus, raceWinner);
     }
 
-    @Override
-    public Repository getRaceStatusRepository() {
-        return this.raceStatusRepository;
-    }
-
-    @Override
-    public RacingPolicy getRacingPolicy() {
-        return this.racingPolicy;
+    private String[] splitCarName() {
+        if(!validatedInputDataDTO.name().contains(racingPolicy.getNameSeparator())
+                && validatedInputDataDTO.name().length()>racingPolicy.getNameLengthPolicy()){
+            throw new IllegalArgumentException("이름 사이에는 " + racingPolicy.getNameSeparator() + " 구분자를 넣어주세요");
+        }
+        return validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
     }
 
     @Override
     public void generateRacer(String[] splitNames) {
         for (String name:splitNames) {
-            Car car = new Car(name, racingPolicy);
-            if(raceStatusRepository.isDuplicateName(car.getVehicleName())){
+            Car car = new Car(name,racingPolicy);
+            if(racingCarRepository.isDuplicateName(car.getVehicleName())){
                 //TODO : exceptionMessage Enum 만들어서 관리 하기.
                 throw new IllegalArgumentException("중복되는 이름은 사용할 수 없습니다.");
             };
-            raceStatusRepository.save(car.getVehicleName(), car.getMoveForwardCount());
+            racingCarRepository.save(car.getVehicleName(),car);
         }
     }
 
@@ -62,8 +61,13 @@ public class RacingCarService implements RacingService {
     @Override
     public String runRace(String[] splitNames){
         StringBuilder stringBuilder = new StringBuilder();
+        
         for (int i = 0; i < validatedInputDataDTO.count(); i++) {
-            stringBuilder.append(executeRaceTurn(splitNames)).append("\n");
+            if(i < validatedInputDataDTO.count()-1){
+                stringBuilder.append(executeRaceTurn(splitNames)).append("\n");
+            }else {
+                stringBuilder.append(executeRaceTurn(splitNames));
+            }
         }
 
         return stringBuilder.toString();
@@ -78,11 +82,13 @@ public class RacingCarService implements RacingService {
         //TODO: 리팩터링 필요
         StringBuilder stringBuilder = new StringBuilder();
         for (String name: splitNames) {
-            if(racingPolicy.isMoveForward()){
-                raceStatusRepository.save(name, raceStatusRepository.find(name)+1L);
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if(racingPolicy.isMoveForward(randomNumber)){
+                racingCarRepository.find(name).move();
+                racingCarRepository.save(name, racingCarRepository.find(name));
             }
             stringBuilder.append(name).append(" : ")
-                    .append(racingPolicy.getMoveForwardSymbol().repeat(raceStatusRepository.find(name).intValue())).append("\n");
+                    .append(racingPolicy.getMoveForwardSymbol().repeat(racingCarRepository.find(name).getMoveForwardCount().intValue())).append("\n");
         }
 
         return stringBuilder.toString();
@@ -90,7 +96,7 @@ public class RacingCarService implements RacingService {
 
     @Override
     public String fineRaceWinner(){
-        List<String> winners = raceStatusRepository.findWinner();
+        List<String> winners = racingCarRepository.findWinner();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < winners.size(); i++) {
             if(i< winners.size()-1){
@@ -102,4 +108,7 @@ public class RacingCarService implements RacingService {
         return stringBuilder.toString();
     }
 
+    public RacingCarRepository getRacingCarRepository() {
+        return racingCarRepository;
+    }
 }

@@ -1,15 +1,10 @@
 package controller;
 
-import common.BeanFactory;
 import common.RacingCarBeanFactory;
 import dto.OriginalInputDTO;
-import java.util.ArrayList;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import policy.RacingCarPolicy;
-import vehicle.Car;
 
 class RacingControllerTest {
 
@@ -18,7 +13,7 @@ class RacingControllerTest {
     @Test
     void provideServiceFromBeanFactory() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         OriginalInputDTO originalInput = new OriginalInputDTO("dada,ming,mong", "5");
         //when
         RacingController racingController = new RacingController(beanFactory, originalInput);
@@ -31,7 +26,7 @@ class RacingControllerTest {
     @Test
     void replaceBlankInput() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         OriginalInputDTO originalInput = new OriginalInputDTO("dada,ming,mong", "5");
         RacingController racingController = new RacingController(beanFactory, originalInput);
 
@@ -46,7 +41,7 @@ class RacingControllerTest {
     @Test
     void isEmptyInput() {
         //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         OriginalInputDTO originalInput = new OriginalInputDTO(" ", " ");
         RacingController racingController = new RacingController(beanFactory, originalInput);
         OriginalInputDTO replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
@@ -59,26 +54,5 @@ class RacingControllerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
-
-
-    @DisplayName("test")
-    @Test
-    void test() {
-        //given
-        BeanFactory beanFactory = new RacingCarBeanFactory();
-        OriginalInputDTO originalInput = new OriginalInputDTO(" ", " ");
-        RacingController racingController = new RacingController(beanFactory, originalInput);
-        OriginalInputDTO replaceBlankInputData = racingController.replaceBlankInput(originalInput.name(),originalInput.count());
-
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("dodo", new RacingCarPolicy(), Long.parseLong("2")));
-        carList.add(new Car("lala", new RacingCarPolicy(), Long.parseLong("3")));
-        carList.add(new Car("dada", new RacingCarPolicy(), Long.parseLong("1")));
-        //when
-
-        //then
-
-    }
 
 }

@@ -3,12 +3,11 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import dto.OriginalInputDTO;
 
-public class RacingCarInputView implements InputView{
+public class RacingCarInputView{
 
     private static final String INPUT_GUIDELINE_NAME = "경주할 자동차 이름을 입력해주세요 (이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_GUIDELINE_TRY_COUNT = "시도할 횟수를 입력해주세요";
 
-    @Override
     public OriginalInputDTO receiveInputData(){
         return new OriginalInputDTO(receiveName(), receiveTryCount());
     }
