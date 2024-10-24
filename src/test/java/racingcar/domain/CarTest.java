@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -18,6 +19,18 @@ public class CarTest {
 
         // then
         assertThat(car.getCars()).contains("pobi", "woni", "jun");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자 이하가 아닌 경우 예외가 발생한다.")
+    void carNameLengthValidation() {
+        // given
+        String input = "pobi,woni,jun,testCarName";
+
+        // when & then
+        assertThatThrownBy(() -> Car.from(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자 이하만 가능합니다.");
     }
 
 }
