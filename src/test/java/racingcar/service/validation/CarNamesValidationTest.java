@@ -49,6 +49,7 @@ class CarNamesValidationTest {
     @ValueSource(strings = {
             "one,,two,three",
             "ian,delta,,",
+            "one, two,",
             ",,,kevin,ian,sam"
     })
     void 구분자_사이_없음_예외(String input){
