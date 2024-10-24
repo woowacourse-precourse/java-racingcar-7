@@ -11,12 +11,35 @@ public class RacingGame {
         
         // Console로 열린 scanner를 닫아주기 위해 try/finally
         try{
-            // 경주할 자동차 이름 입력 받기
             String[] carNames = inputCarNames();
+            int gameCount = inputGameCount();
+            
+            
         } finally {
             Console.close();
         }
         
+    }
+    
+    private int inputGameCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputGameCount = Console.readLine();
+        return validateInputGameCount(inputGameCount);
+    }
+    
+    private int validateInputGameCount(String inputGameCount) {
+        // 중복 사용을 위한 메서드 화
+        inputStringIsNullOrEmpty(inputGameCount);
+        
+        try {
+            int gameCount = Integer.parseInt(inputGameCount);
+            if (gameCount <= 0) {
+                throw new IllegalArgumentException("시도할 정수는 1 이상이어야 합니다.");
+            }
+            return gameCount;
+        } catch (Exception e) { // 어떤 에러로 들어오든 받기 위해서
+            throw new IllegalArgumentException("시도할 횟수는 숫자 & 양의 정수로 입력해야합니다.");
+        }
     }
     
     // CarNames를 입력받는 메서드
@@ -27,14 +50,19 @@ public class RacingGame {
     }
     
     private String[] validateInputCarNames(String inputCarNames) {
-        if (inputCarNames == null || inputCarNames.isEmpty()) {
-            throw new IllegalArgumentException("입력받는 값이 공백일 수 없습니다.");
-        }
+        // 중복 사용을 위한 메서드 화
+        inputStringIsNullOrEmpty(inputCarNames);
         
         // 이런 것도 메서드로 빼버리면 오히려 가독성이 떨어진다고 생각해서 아래처럼 작성
         String[] names = inputCarNames.split(",");
         validateEachName(names);
         return names;
+    }
+    
+    private void inputStringIsNullOrEmpty(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            throw new IllegalArgumentException("입력받는 값이 공백일 수 없습니다.");
+        }
     }
     
     private void validateEachName(String[] names) {

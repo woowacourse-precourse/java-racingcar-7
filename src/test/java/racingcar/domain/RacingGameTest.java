@@ -1,8 +1,9 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.ByteArrayInputStream;
+import java.util.Scanner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -52,12 +53,46 @@ class RacingGameTest {
                 .hasMessage("자동차 이름은 공백일 수 없습니다.");
     }
     
-    @DisplayName("정상적인 입력의 경우 예외가 발생하지 않는다.")
+    @DisplayName("시도할 횟수 입력이 0 이하라면 예외가 발생한다.")
     @Test
-    void validateValidInput() {
+    void validateInputGameCountWithZeroOrNegativeValue() {
         // given
-        System.setIn(new ByteArrayInputStream("pobi,jun\n".getBytes()));
+        // -1 에서 -를 문자로 취급을 해서 아래 StringReader를 사용
+        Scanner scanner = new Scanner("pobi,jun\n-1\n");
+        System.setIn(new ByteArrayInputStream((scanner.nextLine() + "\n" + scanner.nextLine()).getBytes()));
+        
+        
+        // when & then
+        Assertions.assertThatThrownBy(() -> racingGame.play())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수는 숫자 & 양의 정수로 입력해야합니다.");
+    }
+    
+    @DisplayName("시도할 횟수를 문자형식으로 입력하면 예외가 발생한다.")
+    @Test
+    void validateInputGameCountWithInvalidNumberFormat() {
+        // given
+        // -1 에서 -를 문자로 취급을 해서 아래 StringReader를 사용
+        Scanner scanner = new Scanner("pobi,jun\none\n");
+        System.setIn(new ByteArrayInputStream((scanner.nextLine() + "\n" + scanner.nextLine()).getBytes()));
+        
+        
+        // when & then
+        Assertions.assertThatThrownBy(() -> racingGame.play())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수는 숫자 & 양의 정수로 입력해야합니다.");
+    }
+    
+    @DisplayName("play() 메서드에서 자동차 이름과 게임 횟수를 정상적으로 입력받을 수 있다.")
+    @Test
+    void playWithValidInput() {
+        // given
+        String input = "pobi,jun\n5\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        
         // when & then
         assertDoesNotThrow(() -> racingGame.play());
+        
     }
+    
 }

@@ -11,7 +11,7 @@
     - 쉼표(,)를 기준으로 구분하여 입력 받기
     - 이름이 5자 이하인지 검증
     - 이름이 공백인지 검증
-- [ ] 시도할 횟수 입력 받기
+- [x] 시도할 횟수 입력 받기
     - 입력받은 값이 존재하는지 검증
     - 양의 정수인지 검증
     - 입력받은 값이 정수로 변환이 가능한지 검증
@@ -37,7 +37,7 @@
 - [x] 자동차 이름 관련 예외 처리
     - 이름이 5자 초과일 경우 IllegalArgumentException 발생
     - 이름이 공백일 경우 IllegalArgumentException 발생
-- [ ] 시도 횟수 관련 예외 처리
+- [x] 시도 횟수 관련 예외 처리
     - 양의 정수가 아닌 경우 IllegalArgumentException 발생
     - 정수로 변환할 수 없는 경우 IllegalArgumentException 발생
     - 입력한 값이 null 또는 공백일 경우 IllegalArgumentException 발생
