@@ -25,4 +25,50 @@ class RacingCarInputViewTest extends InputTest {
                         "ccccc"
                 );
     }
+
+    @Test
+    @DisplayName("inputTryCount는 입력 스트링을 int 값으로 변환하여 반환한다.")
+    void inputTryCount_ReturnCorrectly() {
+        // given
+        presetInput("5");
+
+        // when
+        int tryCount = RacingCarInputView.inputTryCount();
+
+        // then
+        Assertions.assertThat(tryCount).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("inputTryCount는 Integer형으로 변환할 수 없는 수를 입력하면 IllegalArgumentException을 던진다.")
+    void inputTryCount_WhenInputCantParseInteger_ThrowIllegalArgumentException() {
+        // given
+        presetInput("a");
+
+        // when & then
+        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("inputTryCount는 Integer 범위를 벗어난 수를 입력하면 IllegalArgumentException을 던진다.")
+    void inputTryCount_WhenInputCantParseNumber_ThrowIllegalArgumentException() {
+        // given
+        presetInput("2147483648");
+
+        // when & then
+        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("inputTryCount는 0 이하의 수를 입력하면 IllegalArgumentException을 던진다.")
+    void inputTryCount_WhenInputBelow0_ThrowIllegalArgumentException() {
+        // given
+        presetInput("0");
+
+        // when & then
+        Assertions.assertThatThrownBy(RacingCarInputView::inputTryCount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
