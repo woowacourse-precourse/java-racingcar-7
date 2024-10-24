@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceController {
 
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public RaceController(InputView inputView) {
+    public RaceController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
@@ -23,23 +26,20 @@ public class RaceController {
             cars.add(Car.from(carName));
         }
 
-        System.out.println("실행 결과");
+        outputView.showExecuteMessage();
         for (int cnt = 0; cnt < attemptsNum; cnt++) {
             forwardWithRandomCondition(cars);
-            outputStatus(cars);
+            outputView.showStatus(cars);
         }
 
-        int maxStatus = findMaxStatus(cars);
-        List<String> winnersName = findWinners(cars, maxStatus);
-        outputWinners(winnersName);
+        List<String> winnersName = findWinners(cars);
+        outputView.showWinners(winnersName);
     }
 
-    private void outputWinners(List<String> winnersName) {
-        String result = String.join(", ", winnersName);
-        System.out.println("최종 우승자 : " + result);
-    }
 
-    private List<String> findWinners(List<Car> cars, int maxStatus) {
+
+    private List<String> findWinners(List<Car> cars) {
+        int maxStatus = findMaxProgress(cars);
         List<String> winnersName = new ArrayList<>();
         for (Car car : cars) {
             if (maxStatus == car.status()) {
@@ -49,12 +49,11 @@ public class RaceController {
         return winnersName;
     }
 
-    private int findMaxStatus(List<Car> cars) {
+    private int findMaxProgress(List<Car> cars) {
         int max = 0;
         for (Car car : cars) {
             max = Math.max(car.status(), max);
         }
-
         return max;
     }
 
@@ -65,16 +64,5 @@ public class RaceController {
                 car.forward();
             }
         }
-    }
-
-    private void outputStatus(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.name() + " : ");
-            for (int j = 0; j < car.status(); j++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
