@@ -30,4 +30,10 @@ public class CarRepository {
 		return findAll().stream()
 			.anyMatch(car -> car.isWinner(tryCount));
 	}
+
+	public List<Car> findWinnersByTryCount(int tryCount) {
+		return findAll().stream()
+			.filter(car -> car.isWinner(tryCount))
+			.toList();
+	}
 }

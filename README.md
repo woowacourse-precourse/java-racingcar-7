@@ -36,7 +36,7 @@
 - [X] findAll - 자동차를 전체 조회하는 메서드
 - [X] existByName - 해당 이름을 가진 데이터 있는지 조회하는 메서드
 - [X] existWinner - 우승자가 존재하는지 조회하는 메서드
-- [ ] findByWinnersByTryCount - 우승한 자동차를 조회하는 메서드
+- [X] findByWinnersByTryCount - 우승한 자동차를 조회하는 메서드
 
 ### 4. RacingService
 
