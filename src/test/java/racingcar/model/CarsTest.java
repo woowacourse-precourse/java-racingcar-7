@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -10,12 +11,12 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     @Test
-    void 자통차_리스트를_생성한다(){
+    void 자동차_리스트를_생성한다() {
         //given
         List<Car> carNames = List.of(
             new Car("pobi"),
             new Car("woni"),
-            new Car("javaji")
+            new Car("jun")
         );
 
         //when
@@ -23,5 +24,18 @@ public class CarsTest {
 
         //then
         assertThat(cars.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 자동차_목록은_중복될_수_없다() {
+        //given
+        List<Car> cars = List.of(
+            new Car("pobi"),
+            new Car("pobi"),
+            new Car("woni")
+        );
+
+        //when & then
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(cars));
     }
 }
