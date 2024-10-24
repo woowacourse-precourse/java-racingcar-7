@@ -1,8 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,15 +8,17 @@ import java.util.List;
 
 public class Model {
 
-    public static String getStep(String step, int randomNumber){
-        if (randomNumber >= 4) step += "-";
+    private String getStep(String step, int randomNumber) {
+        if (randomNumber >= 4) {
+            step += "-";
+        }
         return step;
     }
 
-    public static List<String> makeRacingHashmap(String[] listUser, int round){
+    public List<String> makeRacingHashmap(String[] listUser, int round) {
         HashMap<String, String> racingHashmap = new HashMap<>();
-        for (String name:listUser) {
-            if(name.length() > 5){
+        for (String name : listUser) {
+            if (name.length() > 5) {
                 throw new IllegalArgumentException("참가자명은 5글자 이하여야 합니다. 다시 입력하세요");
             }
             racingHashmap.put(name, "");
@@ -36,7 +36,7 @@ public class Model {
         for (String name : racingHashmap.keySet()) {
             winnerMap.put(name, racingHashmap.get(name).length());
         }
-        for (String name:winnerMap.keySet()) {
+        for (String name : winnerMap.keySet()) {
             if (winnerMap.get(name).equals(Collections.max(winnerMap.values()))) {
                 listWinners.add(name);
             }
