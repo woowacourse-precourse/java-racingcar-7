@@ -1,12 +1,10 @@
 package racingcar.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
     private final List<RacingCar> cars;
-    private static final StringBuilder stringBuilder = new StringBuilder();
 
     private RacingCars(List<RacingCar> cars) {
         this.cars = cars;
@@ -19,20 +17,8 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public void playOneRound() {
-        cars.forEach(car -> {
-            int pickedNumber = Randoms.pickNumberInRange(0, 9);
-            if (pickedNumber >= 4) {
-                car.increaseMoveCount();
-            }
-        });
-    }
-
-    public String getRacingCarsProgress() {
-        cars.forEach(car -> stringBuilder.append(String.format("%s : %s%n",car.getName(), car.getProgress())));
-        String racingCarsProgress = stringBuilder.toString();
-        stringBuilder.setLength(0);
-        return racingCarsProgress;
+    public List<RacingCar> getCars() {
+        return cars;
     }
 
     public List<String> getWinnersName() {

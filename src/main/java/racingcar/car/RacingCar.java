@@ -1,6 +1,9 @@
 package racingcar.car;
 
 public class RacingCar {
+
+    private static final int THRESHOLD = 4;
+
     private final String name;
     private int moveCount;
 
@@ -31,5 +34,11 @@ public class RacingCar {
 
     public String getProgress() {
         return "-".repeat(moveCount);
+    }
+
+    public void moveIfRandomNumberIsAbove(int number) {
+        if (number >= THRESHOLD) {
+            increaseMoveCount();
+        }
     }
 }

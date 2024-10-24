@@ -2,7 +2,7 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.car.RacingCars;
+import racingcar.car.RacingCar;
 
 public class RacingCarIOHandler {
 
@@ -22,9 +22,8 @@ public class RacingCarIOHandler {
         System.out.println("\n실행결과");
     }
 
-    public void showRacingCarsProgress(RacingCars racingCars) {
-        String racingCarsProgress = racingCars.getRacingCarsProgress();
-        System.out.println(racingCarsProgress);
+    public void showRacingCarsProgress(List<RacingCar> cars) {
+        cars.forEach(car -> System.out.printf("%s : %s%n", car.getName(), car.getProgress()));
     }
 
     public void showWinners(List<String> winners) {

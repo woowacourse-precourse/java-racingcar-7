@@ -1,7 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.car.RacingCar;
 import racingcar.car.RacingCars;
 import racingcar.io.RacingCarIOHandler;
 
@@ -9,7 +11,7 @@ public class RacingCarGame {
 
     private final RacingCarIOHandler ioHandler = new RacingCarIOHandler();
 
-    public void run(){
+    public void run() {
         // 입력에 대한 검증 필요
         String carNamesString = ioHandler.askCarNames();
         String roundString = ioHandler.askRound();
@@ -55,9 +57,17 @@ public class RacingCarGame {
     }
 
     private void playRound(int round, RacingCars racingCars) {
+        List<RacingCar> cars = racingCars.getCars();
         for (int i = 0; i < round; i++) {
-            racingCars.playOneRound();
-            ioHandler.showRacingCarsProgress(racingCars);
+            playOneRound(cars);
+            ioHandler.showRacingCarsProgress(cars);
         }
+    }
+
+    private void playOneRound(List<RacingCar> cars) {
+        cars.forEach(car -> {
+            int pickedNumber = Randoms.pickNumberInRange(0, 9);
+            car.moveIfRandomNumberIsAbove(pickedNumber);
+        });
     }
 }
