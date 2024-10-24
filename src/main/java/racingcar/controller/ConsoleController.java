@@ -17,7 +17,7 @@ public class ConsoleController {
         outputView.displayCarNameRequest();
         String inputCarNames = Console.readLine();
         filterConfig.getCarNameFilterChain().doFilter(inputCarNames);
-        return StringUtil.splitStringToList(inputCarNames).parallelStream()
+        return StringUtil.splitStringToList(inputCarNames).stream()
                 .map(name -> CarDomain.create(name, 0))
                 .toList();
     }
