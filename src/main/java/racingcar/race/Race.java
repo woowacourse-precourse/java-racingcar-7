@@ -22,10 +22,15 @@ public class Race {
     }
 
     public void startRace(int times){
+        System.out.println("실행결과");
+
         while(lap < times) {
             run();
+            progress();
             lap++;
         }
+
+        UI.showResult(getWinner().toArray(Racer[]::new));
     }
 
     public void run(){
@@ -35,6 +40,12 @@ public class Race {
             if(racer.getPosition() > bestRecord) {
                 bestRecord = racer.getPosition();
             }
+        }
+    }
+
+    public void progress(){
+        for(Racer racer : racers) {
+            UI.showProgress(racer);
         }
     }
 
