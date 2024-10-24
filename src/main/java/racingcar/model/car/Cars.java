@@ -2,6 +2,8 @@ package racingcar.model.car;
 
 import java.util.List;
 import racingcar.common.ErrorMessage;
+import racingcar.model.number.Number;
+import racingcar.model.number.RandomNumberGenerator;
 import racingcar.model.parser.CarsParser;
 
 public class Cars {
@@ -17,6 +19,17 @@ public class Cars {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
         }
+    }
+
+    public void startRacing() {
+        cars.forEach(car -> {
+            Number number = getRandomNumber();
+            car.goOrStop(number);
+        });
+    }
+
+    private Number getRandomNumber() {
+        return RandomNumberGenerator.generate();
     }
 
     public List<Car> getCars() {
