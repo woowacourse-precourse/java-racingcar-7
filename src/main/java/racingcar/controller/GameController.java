@@ -17,5 +17,6 @@ public class GameController {
 				.map(Car::new)
 				.toList();
 		OutputView.printTrialCountInputMessage();
+		String trialCount = InputView.getTrialCountInput();
 	}
 }
