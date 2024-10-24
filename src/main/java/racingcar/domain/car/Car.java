@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 
-import java.util.Map;
 import java.util.Objects;
 
 public class Car {
@@ -21,8 +20,8 @@ public class Car {
         return currentPosition.isGreaterThan(otherCarPosition);
     }
 
-    public Map<String, Integer> getCarInfo() {
-        return Map.of(name.getName(), currentPosition.getCurrentPosition());
+    public CarInfo getCarInfo() {
+        return new CarInfo(name, currentPosition);
     }
 
     @Override

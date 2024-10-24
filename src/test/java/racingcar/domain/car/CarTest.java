@@ -1,9 +1,7 @@
 package racingcar.domain.car;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,11 +16,11 @@ class CarTest {
         Car car = new Car(carName);
 
         //when
-        Map<String, Integer> carInfo = car.getCarInfo();
+        CarInfo carInfo = car.getCarInfo();
 
         //then
-        assertTrue(carInfo.containsKey(carName));
-        assertEquals(0, carInfo.get(carName));
+        assertEquals(carName, carInfo.getName());
+        assertEquals(0, carInfo.getCurrentPosition());
     }
 
     @Test
@@ -34,9 +32,10 @@ class CarTest {
 
         // when
         car.accelerator();
+        CarInfo carInfo = car.getCarInfo();
 
         // then
-        assertEquals(1, car.getCarInfo().get(carName));
+        assertEquals(1, carInfo.getCurrentPosition());
     }
 
     @Test
@@ -48,7 +47,8 @@ class CarTest {
 
         //when
         car1.accelerator();
-        boolean result = car1.isAheadOf(car2.getCarInfo().get("min"));
+        CarInfo carInfo = car2.getCarInfo();
+        boolean result = car1.isAheadOf(carInfo.getCurrentPosition());
 
         //then
         Assertions.assertTrue(result);

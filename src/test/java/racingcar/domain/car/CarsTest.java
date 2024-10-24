@@ -41,9 +41,10 @@ class CarsTest {
 
         // when
         players.accelerateSpecificCar(car1);
+        CarInfo carInfo = car1.getCarInfo();
 
         // then
-        assertEquals(1, car1.getCarInfo().get("povi")); // car1의 위치가 1로 증가했는지 확인
+        assertEquals(1, carInfo.getCurrentPosition());
     }
 
 }
