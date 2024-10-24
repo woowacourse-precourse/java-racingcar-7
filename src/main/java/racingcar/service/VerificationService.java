@@ -7,7 +7,7 @@ import static racingcar.util.ConstCharacter.NUMBER_END_WITH;
 import static racingcar.util.ConstCharacter.NUMBER_START_WITH;
 import static racingcar.util.ConstCharacter.UPPER_CASE_END_WITH;
 import static racingcar.util.ConstCharacter.UPPER_CASE_START_WITH;
-import static racingcar.util.ConstNumber.CARNAME_MAX_LENGTH;
+import static racingcar.util.ConstNumber.CAR_NAME_MAX_LENGTH;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MAX_VALUE;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MIN_VALUE;
 
@@ -23,7 +23,7 @@ public class VerificationService {
 
     public boolean isValidLength(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName.length() > CARNAME_MAX_LENGTH.getValue()) {
+            if (carName.length() > CAR_NAME_MAX_LENGTH.getValue()) {
                 throw new InvalidLengthException();
             }
             if (carName.isEmpty()) {

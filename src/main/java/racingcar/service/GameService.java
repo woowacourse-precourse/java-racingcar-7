@@ -1,6 +1,10 @@
 package racingcar.service;
 
 import static java.util.Comparator.*;
+import static racingcar.util.ConstNumber.CAR_IS_NOT_STARTED_YET;
+import static racingcar.util.ConstNumber.CAR_MOVE_CONDITION;
+import static racingcar.util.ConstNumber.RANDOM_NUMBER_END_WITH;
+import static racingcar.util.ConstNumber.RANDOM_NUMBER_START_WITH;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +17,11 @@ public class GameService {
     // TODO : 상수화 리팩토링
     public boolean isMoving() {
         int carCondition = randomNumber();
-        return carCondition >= 4;
+        return carCondition >= CAR_MOVE_CONDITION.getValue();
     }
 
     private int randomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_START_WITH.getValue(), RANDOM_NUMBER_END_WITH.getValue());
     }
 
     public List<Car> raceResult(List<Car> cars) {
@@ -31,7 +35,7 @@ public class GameService {
     }
 
     private boolean isRaceStarted(Integer winningScore) {
-        if(winningScore == 0) {
+        if(winningScore == CAR_IS_NOT_STARTED_YET.getValue()) {
             throw new TheCarDoesntStartException();
         }
         return true;
