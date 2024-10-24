@@ -235,22 +235,23 @@
     </tr><!--------------------(새로운 Class)----------------------------->
     <tr>
       <td rowspan="2" style="padding: 10px;">결과 출력 테스트<br>(ResultTest)</td>
-      <td style="padding: 10px;">진행 과정 출력 확인<br>(printOnGoingTest)</td>
+      <td style="padding: 10px;">전체 결과 출력 확인<br>(printTest)</td>
       <td style="padding: 10px;">
         <ul>
-            <li>자동차 이름, 진행 결과 저장 리스트가 올바르게 출력되는지 확인</li>
+            <li>전체 결과가 올바르게 출력되는지 확인</li>
         </ul>
       </td>
     </tr><!-------------------------------------------------><tr>
-      <td style="padding: 10px;">우승자 출력 확인<br>(printWinnerTest)</td>
+      <td style="padding: 10px;">결과 판단<br>(printResult)</td>
       <td style="padding: 10px;">
         <ul>
-            <li>자동차 이름, 진행 결과를 토대로 우승자가 올바르게 출력되는지 확인</li>
+            <li>매개변수의 값이 둘 다 true일 경우 테스트 성공</li>
         </ul>
       </td><td style="padding: 10px;">
         <ol>
-            <li>전진 횟수가 다 다를 때, 전진 횟수가 가장 큰 자동차 이름 출력</li>
-            <li>전진 횟수가 가장 큰 자동자가 여러개일 때, 동시 출력</li>
+            <li>진행 과정이 제대로 출력되는지 확인</li>
+            <li>우승자가 제대로 출력되는지 확인</li>
+            <li>둘 다 만족하면 Success 출력, 아니라면 Fail 출력</li>
         </ol>
       </td>
     </tr>
