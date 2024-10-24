@@ -17,8 +17,7 @@ public class CarMakerServiceTest {
     void makeCars(){
         // Arrange
         String[] carNames = {"car1", "car2", "car3"};
-        CarNameValidator carNameValidator = new CarNameValidator();
-        CarMakerService carMakerService = new CarMakerService(carNameValidator);
+        CarMakerService carMakerService = new CarMakerService();
 
         //Act
         List<Car> cars = carMakerService.makeCars(carNames);

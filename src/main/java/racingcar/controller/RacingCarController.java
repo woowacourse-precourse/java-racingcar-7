@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.service.CarMakerService;
+import racingcar.service.WinnerService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,15 +14,18 @@ public class RacingCarController {
     private final InputView inputView;
     private final CarMakerService carMakerService;
     private final RandomNumberGenerator randomNumberGenerator;
+    private final WinnerService winnerService;
     private final OutputView outputView;
 
     public RacingCarController(InputView inputView,
                                CarMakerService carMakerService,
                                RandomNumberGenerator randomNumberGenerator,
+                               WinnerService winnerService,
                                OutputView outputView) {
         this.inputView = inputView;
         this.carMakerService = carMakerService;
         this.randomNumberGenerator = randomNumberGenerator;
+        this.winnerService = winnerService;
         this.outputView = outputView;
     }
 
@@ -51,20 +55,7 @@ public class RacingCarController {
     }
 
     private void printWinner(List<Car> cars){
-        List<String> winners = new ArrayList<>();
-        int maxMovedNumber = -1;
-
-        for (Car car : cars) {
-            int movedNumber = car.getMovedNumber();
-            if (movedNumber > maxMovedNumber) {
-                maxMovedNumber = movedNumber;
-                winners.clear();
-                winners.add(car.getName());
-            } else if (movedNumber == maxMovedNumber) {
-                winners.add(car.getName());
-            }
-        }
-
+        List<String> winners = winnerService.findWinner(cars);
         outputView.printWinner(winners);
     }
 }
