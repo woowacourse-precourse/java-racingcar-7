@@ -25,11 +25,12 @@ public class MainController {
         outputHandler.printGuide();
         List<String> carNames = inputHandler.getCarNames();
         outputHandler.printAttemptPrompt();
-        int attempt = inputHandler.getAttemp();
+        int attempt = inputHandler.getAttemptCount();
         List<Car> cars = carFactory.createCars(carNames);
 
         racingCarService.gameStart(cars, attempt);
-
+        List<String> winners = outputHandler.findFinalWinners(cars);
+        outputHandler.printFinalWinner(winners);
         // 서비스 계층에 로직 위임
 
     }
