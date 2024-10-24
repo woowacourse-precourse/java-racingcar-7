@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputTest {
@@ -43,6 +44,17 @@ class InputTest {
         assertThatThrownBy(() -> Input.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력은 쉼표로 구분된 영어 이름만 가능합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "pobi,woni,jun",
+            "woo,wa,course",
+            "java,spring,database"})
+    @DisplayName("요구사항에 맞게 자동차 이름을 입력한 경우 테스트를 통과한다.")
+    void validCarNames(String candidate) {
+        String result = Input.from(candidate).getNames();
+        assertThat(result).isEqualTo(candidate);
     }
 
 }
