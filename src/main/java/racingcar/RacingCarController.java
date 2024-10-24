@@ -9,8 +9,16 @@ import racingcar.view.InputView;
 public class RacingCarController {
 
     public void run() {
+        inputCarNames();
+        inputTryCount();
+    }
+
+    private void inputCarNames() {
         InputView.showInputPrompt(ViewMessage.CAR_NAME_INPUT_PROMPT);
         Car.from(Input.from(read()).getNames());
+    }
+
+    private void inputTryCount() {
         InputView.showInputPrompt(ViewMessage.TRY_COUNT_INPUT_PROMPT);
     }
 
