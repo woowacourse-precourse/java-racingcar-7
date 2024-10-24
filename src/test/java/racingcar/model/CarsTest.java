@@ -27,7 +27,6 @@ class CarsTest {
         assertThat(cars).isEqualTo(Cars.from(carList));
     }
 
-
     @DisplayName("중복된 자동차가 있는 경우 예외를 발생한다.")
     @Test
     void duplicateCar() {
