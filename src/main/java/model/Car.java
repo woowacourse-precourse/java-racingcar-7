@@ -4,17 +4,16 @@ import java.util.Objects;
 
 public class Car {
     private final Name name;
+    private final int moveCount;
+
 
     public Car(String name) {
-        this(new Name(name));
+        this(new Name(name), 0);
     }
 
-    public Car(Name name) {
+    public Car(Name name, int moveCount) {
         this.name = name;
-    }
-
-    public static Name from(String name) {
-       return new Name(name);
+        this.moveCount = moveCount;
     }
 
     @Override
