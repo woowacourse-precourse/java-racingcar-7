@@ -19,8 +19,11 @@ class LapTest {
                 Car.ready(new BrokenCarEngine(), new CarName("2번폐차")))));
 
         // 씽씽이는 두번 모두 달리고, 폐차는 두번 모두 서있는다
-        LapRecord firstLapRecord = lap.launchLap();
-        LapRecord secondLapRecord = lap.launchLap();
+        lap.launchLap();
+        lap.launchLap();
+
+        LapRecord firstLapRecord = lap.submitRecords();
+        LapRecord secondLapRecord = lap.submitRecords();
 
         // 랩-기록의 결과는 CarName 오름차순이다
         // firstLap

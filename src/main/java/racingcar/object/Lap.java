@@ -10,8 +10,11 @@ public class Lap {
         this.cars = cars;
     }
 
-    public LapRecord launchLap() {
+    public void launchLap() {
         cars.raceAll();
+    }
+
+    public LapRecord submitRecords() {
         return new LapRecord(cars.submitRecords());
     }
 
