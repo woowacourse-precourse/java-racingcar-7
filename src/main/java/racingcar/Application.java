@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -9,11 +8,10 @@ import java.util.regex.Pattern;
 
 public class Application {
     private static final String START_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final int CAR_NAME_MAX_LENGTH = 5;
-    private static final int CAR_MAX_COUNT = 10;
-    private static final int CAR_MIN_COUNT = 2;
-
     private static final String GAME_TIME_TEXT = "시도할 횟수는 몇 회인가요?";
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MAX_CAR_COUNT = 10;
+    private static final int MIN_CAR_COUNT = 2;
     private static final int MAX_GAME_COUNT = 10;
 
     private static String getInput(){
@@ -35,7 +33,7 @@ public class Application {
     }
 
     private static void isValidlengthName(String carName){
-        if (carName.length() > CAR_NAME_MAX_LENGTH){
+        if (carName.length() > MAX_CAR_NAME_LENGTH){
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
@@ -47,7 +45,7 @@ public class Application {
     }
 
     private static void validCarCount(ArrayList<String> carNames){
-        if ((carNames.size() < CAR_MIN_COUNT) || (carNames.size() > CAR_MAX_COUNT)){
+        if ((carNames.size() < MIN_CAR_COUNT) || (carNames.size() > MAX_CAR_COUNT)){
             throw new IllegalArgumentException("자동차 대수는 2대 이상 10대 이하여야 합니다.");
         }
     }
