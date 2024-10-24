@@ -55,7 +55,6 @@ public class Application {
 
         }
 
-        // 자동차 이름 5자 이하
         ArrayList<String> convertCarNames(String nameInput) {
             ArrayList<String> carNames = new ArrayList<>();
 
@@ -63,11 +62,12 @@ public class Application {
                 carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
             }
 
-            if (carNames.size() < 2) {
+            if (carNames.size() < 2 || !validateNameLimit(carNames)) {
                 throw new IllegalArgumentException();
             }
             return carNames;
         }
+
 
         int convertAttempts(String countInput) {
             if (validateInput(ATTEMPTS_REGEXP, countInput)) {
@@ -79,6 +79,15 @@ public class Application {
         boolean validateInput(final String regExp, String input) {
             if (input.isEmpty() || input.isBlank() || !input.matches(regExp)) {
                 throw new IllegalArgumentException();
+            }
+            return true;
+        }
+
+        boolean validateNameLimit(ArrayList<String> carNames) {
+            for (String name : carNames) {
+                if(name.length()>5){
+                    return false;
+                }
             }
             return true;
         }
@@ -118,8 +127,7 @@ public class Application {
             return String.format("%s : %s", carName, movedAmountString);
         }
 
-        // TODO : 리팩토링해서 커밋하기
-        private ArrayList<String> determineWinner(ArrayList<Car> cars) {
+        public ArrayList<String> determineWinner(ArrayList<Car> cars) {
             int maxMovedAmount = 0;
             ArrayList<Car> candidateCars = new ArrayList<>();
 
