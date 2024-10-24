@@ -13,16 +13,24 @@ public class RacingCarService {
     }
 
     public String[] run(String[] carNames, int rounds) {
+        ArrayList<Car> cars = createCars(carNames);
+        Race race = new Race(cars);
+
+        raceStart(rounds, race);
+        return race.getWinners();
+    }
+
+    private ArrayList<Car> createCars(String[] carNames) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
+        return cars;
+    }
 
-        Race race = new Race(cars);
+    private void raceStart(int rounds, Race race) {
         for (int round = 0; round < rounds; round++) {
             race.runSingleRound(randomNumberGenerator);
         }
-
-        return race.getWinners();
     }
 }
