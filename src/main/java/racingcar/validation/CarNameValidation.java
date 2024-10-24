@@ -15,4 +15,9 @@ public class CarNameValidation {
             throw new IllegalArgumentException("자동차가 2대 이상이어야 경주할 수 있습니다.");
         }
     }
+    public void isNotEmpty(List<String> carNameList){
+        if(carNameList.contains(null)){
+            throw new IllegalArgumentException("자동차 이름이 빈 값입니다.");
+        }
+    }
 }
