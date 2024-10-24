@@ -33,4 +33,10 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
+
+    private void validateNameLength(String str) {
+        if (str.length() > 5) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
