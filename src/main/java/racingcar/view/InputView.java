@@ -14,11 +14,7 @@ public class InputView {
         System.out.println(ROUND_COUNT_INPUT_MESSAGE);
     }
 
-    public String getCarName() {
-        return Console.readLine();
-    }
-
-    public String getRoundCount() {
+    public String getInput() {
         return Console.readLine();
     }
 }
