@@ -20,16 +20,21 @@
 ---
 
 ### 상위 수준 설계
+![28fced48-4770-4b30-84df-8fe41acc1e2d](https://github.com/user-attachments/assets/c78e9534-2f6b-444c-b850-52e264b472df)
 
 ### 개별 객체 수준 설계
+![ba7f6589-28a5-4f66-a8dc-f096c22370b7](https://github.com/user-attachments/assets/cdc2d579-754d-4b4c-a1fa-65000d33595c)
 
 
 ### 애그리거트 단위
+![d832c4c0-fe30-4ecb-8a2e-70bd259bae55](https://github.com/user-attachments/assets/62cf88cd-a2d9-4ae9-a859-fcaa03685972)
+
 
 
 ## 객체 요청 흐름
 
 ---
+![image](https://github.com/user-attachments/assets/c00fe434-42d8-4321-9dbd-f5b13ae7d7a1)
 
 
 ## 구현 계획 목록
