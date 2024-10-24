@@ -61,4 +61,8 @@ public class RacingGameService {
                 .orElse(0);
     }
 
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
 }
