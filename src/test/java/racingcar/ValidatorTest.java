@@ -13,4 +13,11 @@ public class ValidatorTest {
         String name = "";
         assertThatThrownBy(() -> Validator.isEmpty(name)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("자동차의 이름이 5글자 가 넘을 경우 예외가 발생한다")
+    void check_name_range() {
+        String name = "namerangefiveover";
+        assertThatThrownBy(() -> Validator.isCarNameRange(name)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
