@@ -7,7 +7,9 @@ import java.util.function.Function;
  * @since : 24. 10. 23.
  */
 public enum ExceptionEnum {
-  RUTIME_ERROR("런타임 오류가 발생 했습니다.");
+  RUTIME_ERROR("런타임 오류가 발생 했습니다."),
+
+  INVALID_INPUT("유효하지 않은 입력 입니다.");
 
   private final String message;
 
