@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class RacingCarTest {
 
@@ -53,4 +55,20 @@ class RacingCarTest {
         // then
         assertThat(progress).isEqualTo("---");
     }
+
+    @DisplayName("랜덤 숫자에 따라 이동한다.")
+    @CsvSource({"3, 0", "4, 1"})
+    @ParameterizedTest
+    void moveIfRandomNumberIsAbove(int number, int moveCount) {
+        // given
+        RacingCar racingCar = RacingCar.of("car");
+
+        // when
+        racingCar.moveIfRandomNumberIsAbove(number);
+
+        // then
+        assertThat(racingCar.getMoveCount()).isEqualTo(moveCount);
+    }
+
+
 }

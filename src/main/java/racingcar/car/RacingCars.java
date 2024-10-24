@@ -17,15 +17,15 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
-    }
-
     public List<String> getWinnersName() {
         return new ArrayList<>(cars.stream()
                 .filter(racingCar -> racingCar.isMoveCountEqualTo(getMaxMoveCount()))
                 .map(RacingCar::getName)
                 .toList());
+    }
+
+    public List<RacingCar> getCars() {
+        return cars;
     }
 
     private int getMaxMoveCount() {

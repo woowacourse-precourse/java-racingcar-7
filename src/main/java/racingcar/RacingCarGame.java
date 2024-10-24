@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.List;
 import racingcar.car.RacingCar;
 import racingcar.car.RacingCars;
@@ -12,16 +11,8 @@ public class RacingCarGame {
     private final RacingCarIOHandler ioHandler = new RacingCarIOHandler();
 
     public void run() {
-        // 입력에 대한 검증 필요
-        String carNamesString = ioHandler.askCarNames();
-        String roundString = ioHandler.askRound();
-
-        if (carNamesString == null || roundString == null) {
-            throw new IllegalArgumentException();
-        }
-
-        List<String> carNames = extractCarNames(carNamesString);
-        int round = convertToRound(roundString);
+        List<String> carNames = ioHandler.askCarNames();
+        int round = ioHandler.askRound();
 
         ioHandler.showExecutionResultMessage();
         RacingCars racingCars = RacingCars.fromNames(carNames);
@@ -31,30 +22,6 @@ public class RacingCarGame {
         ioHandler.showWinners(winnersName);
     }
 
-    private List<String> extractCarNames(String carNamesString) {
-        // 자동차 이름에 대한 검증 로직
-        List<String> carNames = Arrays.asList(carNamesString.split(","));
-
-        carNames.stream()
-                .filter(carName -> carName.isEmpty() || carName.length() >= 5)
-                .findAny()
-                .ifPresent(carName -> {
-                    throw new IllegalArgumentException();
-                });
-
-        return carNames;
-    }
-
-    private int convertToRound(String roundString) {
-        // 시도할 횟수에 대한 검증 로직
-        int round = Integer.parseInt(roundString);
-
-        if (round <= 0) {
-            throw new IllegalArgumentException();
-        }
-
-        return round;
-    }
 
     private void playRound(int round, RacingCars racingCars) {
         List<RacingCar> cars = racingCars.getCars();
