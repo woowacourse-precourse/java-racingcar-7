@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.exception.ErrorMessage;
+import racingcar.exception.RaceException;
 
 public class Name {
 
@@ -25,7 +26,7 @@ public class Name {
 
     private static void validateEnglish(String name) {
         if (isNotEnglish(name)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_NOT_ENGLISH.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_NAME_NOT_ENGLISH);
         }
     }
 
@@ -35,7 +36,7 @@ public class Name {
 
     private static void validateLength(String name) {
         if (isOverFive(name)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_OVER_FIVE.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_NAME_OVER_FIVE);
         }
     }
 

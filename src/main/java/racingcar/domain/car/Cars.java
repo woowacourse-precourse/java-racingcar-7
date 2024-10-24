@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.exception.ErrorMessage;
+import racingcar.exception.RaceException;
 
 public class Cars {
 
@@ -50,7 +51,7 @@ public class Cars {
 
     private void validateParticipant(List<Car> cars) {
         if (isOne(cars)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RACE_LIST_SIZE.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_RACE_LIST_SIZE);
         }
     }
 
@@ -60,7 +61,7 @@ public class Cars {
 
     private void validateDuplicateName(List<Car> cars) {
         if (hasDuplicateName(cars)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_SAME_NAME.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_SAME_NAME);
         }
     }
 

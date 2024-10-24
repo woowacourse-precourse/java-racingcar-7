@@ -6,6 +6,7 @@ import racingcar.domain.Winners;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.exception.ErrorMessage;
+import racingcar.exception.RaceException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -55,7 +56,7 @@ public class UIController {
 
     private void validateBlank(String input) {
         if (isBlank(input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_BLANK.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_INPUT_BLANK);
         }
     }
 
@@ -70,7 +71,7 @@ public class UIController {
 
     private void validateEdgeSeparator(String input) {
         if (isEdgeSeparator(input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_FORMAT.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_INPUT_FORMAT);
         }
     }
 
@@ -80,7 +81,7 @@ public class UIController {
 
     private void validateContinuousSeparator(String input) {
         if (isContinuousSeparator(input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CONTINUOUS_SEPARATOR.getMessage());
+            throw new RaceException(ErrorMessage.INVALID_CONTINUOUS_SEPARATOR);
         }
     }
 
