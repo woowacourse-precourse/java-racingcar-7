@@ -13,4 +13,20 @@ public class RacingGameService {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public void startGame(List<Car> cars, int rounds) {
+        for (int i = 0; i < rounds; i++) {
+            playRound(cars);
+            OutputView.printRoundResults(cars);
+        }
+    }
+
+    private void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= RacingGameCondition.MOVE_THRESHOLD.getValue()) {
+                car.move();
+            }
+        }
+    }
 }
