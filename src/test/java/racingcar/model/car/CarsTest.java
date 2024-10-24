@@ -106,4 +106,80 @@ class CarsTest {
         // then
         assertThat(real).isInstanceOf(String.class).contains("car1", ",", "car2");
     }
+
+    @Test
+    void 같은_오브젝트인_경우_equals_가_true_를_반환한다() {
+        // given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        Cars carsOriginal = new Cars(List.of(car1, car2, car3));
+        Cars carsTarget = carsOriginal;
+
+        boolean expected = true;
+
+        // when
+        boolean real = carsOriginal.equals(carsTarget);
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
+
+    @Test
+    void 비교_대상_오브젝트가_null_인_경우_equals_가_false_를_반환한다() {
+        // given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        Cars carsOriginal = new Cars(List.of(car1, car2, car3));
+        Cars carsTarget = null;
+
+        boolean expected = false;
+
+        // when
+        boolean real = carsOriginal.equals(carsTarget);
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
+
+    @Test
+    void 비교_대상_오브젝트와_클래스가_다른_경우_equals_가_false_를_반환한다() {
+        // given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        Cars carsOriginal = new Cars(List.of(car1, car2, car3));
+        String target = "test";
+
+        boolean expected = false;
+
+        // when
+        boolean real = carsOriginal.equals(target);
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
+
+    @Test
+    void 자동차_이름이_다른_경우_equals_가_false_를_반환한다() {
+        // given
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        Cars carsOriginal = new Cars(List.of(car1, car2));
+        Cars carsTarget = new Cars(List.of(car2, car3));
+
+        boolean expected = false;
+
+        // when
+        boolean real = carsOriginal.equals(carsTarget);
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
 }
