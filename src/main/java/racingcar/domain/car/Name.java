@@ -1,4 +1,4 @@
-package racingcar.domain.player;
+package racingcar.domain.car;
 
 public class Name {
     private static final int MAX_NAME_LENGTH = 5;

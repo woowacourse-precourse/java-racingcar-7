@@ -1,4 +1,4 @@
-package racingcar.domain.player;
+package racingcar.domain.car;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
