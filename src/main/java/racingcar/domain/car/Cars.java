@@ -15,4 +15,8 @@ public class Cars {
 		List<Car> cars = names.stream().map(Car::new).toList();
 		return new Cars(cars);
 	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
 }
