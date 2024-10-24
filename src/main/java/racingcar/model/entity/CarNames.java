@@ -1,4 +1,4 @@
-package racingcar.model.io;
+package racingcar.model.entity;
 
 import racingcar.utils.ErrorMessage;
 

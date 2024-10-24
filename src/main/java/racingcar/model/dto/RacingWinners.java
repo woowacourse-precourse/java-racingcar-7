@@ -1,22 +1,22 @@
-package racingcar.model.io;
+package racingcar.model.dto;
 
-import racingcar.model.domain.Cars;
+import racingcar.model.entity.Cars;
 
 import java.util.List;
 
 /**
  * 자동차 레이스 실행 결과를 저장한 클래스
  */
-public class Winner {
+public class RacingWinners {
 
     private final List<String> winner;
 
-    private Winner(List<String> winner) {
+    private RacingWinners(List<String> winner) {
         this.winner = winner;
     }
 
-    public static Winner getFromCars(Cars cars) {
-        return new Winner(cars.getMaxProgressCarsName());
+    public static RacingWinners getFromCars(Cars cars) {
+        return new RacingWinners(cars.getMaxProgressCarsName());
     }
 
     @Override

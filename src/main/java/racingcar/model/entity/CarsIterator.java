@@ -1,4 +1,4 @@
-package racingcar.model.domain;
+package racingcar.model.entity;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
