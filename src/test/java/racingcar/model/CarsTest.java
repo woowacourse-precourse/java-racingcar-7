@@ -25,7 +25,7 @@ class CarsTest {
 
         List<Car> cars = testCars.getCars();
         assertEquals(testCarNames.size(), cars.size());
-        assertEquals(testCarNames.get(0), cars.get(0).name());
-        assertEquals(testCarNames.get(1), cars.get(1).name());
+        assertEquals(testCarNames.get(0), cars.get(0).getName());
+        assertEquals(testCarNames.get(1), cars.get(1).getName());
     }
 }

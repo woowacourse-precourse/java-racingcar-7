@@ -38,6 +38,17 @@ class CarTest {
     void createsCarObject_When_CarNameIsValid() {
         String testCarName = "pobi";
         Car testCar = new Car(testCarName);
-        assertEquals(testCar.name(), testCarName);
+        assertEquals(testCar.getName(), testCarName);
+        assertEquals(testCar.getPosition(), 0);
+    }
+
+    @Test
+    @DisplayName("자동차가 전진하면 position 값이 1 증가한다.")
+    void should_IncreasePositionByOne_When_MoveForwardIsCalled() {
+        String testCarName = "pobi";
+        Car testCar = new Car(testCarName);
+        assertEquals(testCar.getPosition(), 0);
+        testCar.moveForward();
+        assertEquals(testCar.getPosition(), 1);
     }
 }
