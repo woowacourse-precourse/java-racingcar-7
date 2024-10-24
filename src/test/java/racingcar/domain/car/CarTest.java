@@ -12,17 +12,21 @@ class CarTest {
     @Test
     @DisplayName("자동차 저장 및 조회 테스트")
     void carBasicTest() {
-        Car car = new Car("Tom");
-        assertThat(car.getCarName()).isEqualTo("Tom");
+        Car car = new Car("Car");
+        assertThat(car.getCarName()).isEqualTo("Car");
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("자동차 이동 테스트")
     void  carGoTest() {
-        Car car = new Car("Tom");
-        car.go(()-> true);
-        assertThat(car.getDistance()).isEqualTo(1);
+        Car car1 = new Car("Car1");
+        Car car2 = new Car("Car2");
+        car1.go(()-> true);
+        assertThat(car1.getDistance()).isEqualTo(1);
+
+        car2.go(()->false);
+        assertThat(car2.getDistance()).isEqualTo(0);
     }
 
 }
