@@ -1,46 +1,73 @@
 package utility;
 
-import racingcar.Application;
-
 import java.util.List;
 
 public class Result {
+    private static String ongoing;
+    private static String winner;
+    private static int idxMax = 0;
+
     // 진행 결과 출력
-    public static void printOngoing(){
+    public static void printOngoing(List<String> cars, List<Integer> currentSituation) {
         StringBuilder sb = new StringBuilder();
-        List<Integer> tmpCurrentSituation = Application.currentSituation;
 
-        for(int i=0;i<tmpCurrentSituation.size();i++){
-            sb.append(Application.cars.get(i)+" : "+"-".repeat(tmpCurrentSituation.get(i))+"\n");
+        for (int i = 0; i < currentSituation.size(); i++) {
+            sb.append(cars.get(i)).append(" : ").append("-".repeat(currentSituation.get(i))).append("\n");
         }
 
-        System.out.println(sb);
+        ongoing = sb.toString();
+        System.out.println(ongoing);
     }
+
     // 우승자 출력
-    public static void printWinner(){
-        List<String> tmpCars = Application.cars;
-        List<Integer> tmpCurrentSituation = Application.currentSituation;
-        StringBuilder sb = new StringBuilder(tmpCars.get(0));
-        int idxMax = 0;
+    public static void printWinner(List<String> cars, List<Integer> currentSituation) {
+        StringBuilder sb = new StringBuilder(cars.getFirst());
 
-        for(int i=1;i<tmpCars.size();i++){
-            String tmpCurrentCarName = tmpCars.get(i);
-            int tmpCurrentValue = tmpCurrentSituation.get(i);
-            int tmpMaxValue = tmpCurrentSituation.get(idxMax);
-
-            compareValue(tmpCurrentValue, tmpCurrentCarName, tmpMaxValue, idxMax, i, sb);
+        for (int i = 1; i < cars.size(); i++) {
+            compareValue(i, sb, currentSituation, cars);
         }
 
-        System.out.println("최종 우승자 : "+sb);
+        winner = "최종 우승자 : " + sb;
+        System.out.println(winner);
     }
+
     // 값 비교
-    public static void compareValue(int currentValue, String currentCarName, int maxValue, int maxIdx, int currentIdx, StringBuilder sb){
-        if(currentValue > maxValue){
+    private static void compareValue(int currentIdx, StringBuilder sb, List<Integer> currentSituation, List<String> cars) {
+        String tmpCurrentCarName = cars.get(currentIdx);
+        int tmpCurrentValue = currentSituation.get(currentIdx);
+        int tmpMaxValue = currentSituation.get(idxMax);
+
+        if (tmpCurrentValue > tmpMaxValue) {
             sb.setLength(0);
-            sb.append(currentCarName);
-            maxIdx = currentIdx;
-        }else if(currentValue == maxValue){
-            sb.append(", "+currentCarName);
+            sb.append(tmpCurrentCarName);
+            idxMax = currentIdx;
+        } else if (tmpCurrentValue == tmpMaxValue) {
+            sb.append(", ").append(tmpCurrentCarName);
         }
+    }
+
+    // Test
+    public static String[] test(List<String> cars, List<Integer> progress) {
+        try {
+            printOngoing(cars, progress);
+            printWinner(cars, progress);
+
+            return new String[]{ongoing, winner};
+
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Error");
+        }
+    }
+
+    public static void setOngoing(String ongoing) {
+        Result.ongoing = ongoing;
+    }
+
+    public static void setWinner(String winner) {
+        Result.winner = winner;
+    }
+
+    public static void setIdxMax(int idxMax) {
+        Result.idxMax = idxMax;
     }
 }
