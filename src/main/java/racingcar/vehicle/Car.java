@@ -5,7 +5,7 @@ public class Car {
     private int cnt;
 
     public Car(String name) {
-        if (name == null || name.isEmpty() || name.length() > 5) {
+        if (imPossibleName(name)) {
             throw new IllegalArgumentException();
         }
         this.name = name;
@@ -40,5 +40,12 @@ public class Car {
             builder.append("-");
         }
         return builder.toString();
+    }
+
+    private boolean imPossibleName(String name) {
+        if (name == null || name.isEmpty() || name.length() > 5) {
+            return true;
+        }
+        return false;
     }
 }
