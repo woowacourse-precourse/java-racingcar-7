@@ -2,15 +2,27 @@ package racingcar;
 
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
+import static racingcar.CarRaceException.*;
 
 public class CarRace {
 
     public static List<String> start(String cars, int moveAttempts){
+        // 공백 또는 빈 문자열 예외 처리
+        validateEmptyInput(cars);
+        // 하나의 이름 입력 시 예외 처리
+        ensureAtLeastTwoNames(cars);
+        // 쉼표를 사용하지 않은 경우 예외 처리
+        validateDelimiter(cars);
+
         String[] carNames = cars.split(",");
 
         // 입력값에 포함될 수 있는 공백 제거
         for (int i = 0; i < carNames.length; i++) {
             carNames[i] = carNames[i].strip();
+            // 자동차명이 5자를 초과하는 경우 예외 처리
+            validateNameLength(carNames[i]);
+            // 공백 또는 빈 문자열 예외 처리
+            validateEmptyInput(carNames[i]);
         }
 
         // 자동차명과 각각의 이동거리를 Map에 보관

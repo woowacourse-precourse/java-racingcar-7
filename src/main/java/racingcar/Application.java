@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.CarRaceException.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -9,7 +11,8 @@ public class Application {
         String carNames = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int moveAttempts = Integer.parseInt(Console.readLine());
+        // 정수로 변환 불가능한 경우 예외 처리
+        int moveAttempts = validateIntegerConversion(Console.readLine());
 
         List<String> winner = CarRace.start(carNames, moveAttempts);
         CarRace.printFinalWinners(winner);
