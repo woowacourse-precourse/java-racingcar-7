@@ -8,4 +8,11 @@ public class RacingCars {
     public RacingCars(ArrayList<String> nameList){
         nameList.forEach(car -> racingCars.add(new Car(car)));
     }
+
+    public void playRound() {
+        simulation();
+    }
+    private void simulation(){
+        racingCars.forEach(Car::go);
+    }
 }

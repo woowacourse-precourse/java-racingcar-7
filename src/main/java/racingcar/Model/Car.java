@@ -1,5 +1,8 @@
 package racingcar.Model;
 
+import racingcar.Constants;
+import racingcar.Utils;
+
 public class Car {
     private String name;
     private int position;
@@ -9,4 +12,15 @@ public class Car {
         this.position = 0;
     }
 
+    public void go(){
+        if(Utils.getRandomNum() >= Constants.MOVE){
+            this.position++;
+        }
+    }
+    public String getName(){
+        return this.name;
+    }
+    public int getPosition(){
+        return this.position;
+    }
 }
