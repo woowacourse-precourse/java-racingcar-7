@@ -38,7 +38,7 @@ public class InputHandler {
 
     private void checkAlphaNumericName(List<String> splitCarNames) {
         for (String carName : splitCarNames) {
-            if (!carName.matches(ALPHA_NUMERIC_PATTERN)) {
+            if (!carName.isEmpty() && !carName.matches(ALPHA_NUMERIC_PATTERN)) {
                 throw new IllegalArgumentException("자동차의 이름은 영어 대소문자, 숫자로만 가능합니다.: " + carName);
             }
         }
