@@ -35,6 +35,7 @@ public class RacingService {
             throw new TryCountError(TRY_COUNT_EXCEPION);
         }
     }
+
     private boolean validateNameNotNull(List<String> carNames) {
 
         return carNames.stream().allMatch(name -> name != null && !name.isEmpty());
