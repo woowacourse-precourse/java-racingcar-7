@@ -14,13 +14,14 @@ public class Controller {
 
     public void run() {
         outputView.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String racingCarNames = inputView.read();
+        String racingCarNamesRequest = inputView.read();
 
-        List<String> carNames = carArgumentResolver.parse(racingCarNames);
+        List<String> carNames = carArgumentResolver.parse(racingCarNamesRequest);
         sizeValidator.isValid(carNames);
         List<Car> cars = carConverter.to(carNames);
 
         outputView.println("시도할 횟수는 몇 회인가요?");
+        String attemptCountRequest = inputView.read();
 
     }
 

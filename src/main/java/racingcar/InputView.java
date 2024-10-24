@@ -6,7 +6,7 @@ public class InputView {
 
     public String read() {
         final String command = Console.readLine();
-        Console.close();
+        // Console.close();
 
         return command;
     }
