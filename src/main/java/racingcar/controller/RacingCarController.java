@@ -23,6 +23,11 @@ public class RacingCarController {
         Cars cars = createCars(rawCarNames);
         String rawTryCount = receiveTryCount();
         TryCount tryCount = new TryCount(rawTryCount);
+        race(cars, tryCount);
+    }
+
+    private void race(Cars cars, TryCount tryCount) {
+        outputView.printResultHeader();
     }
 
     private String receiveCarNames() {
