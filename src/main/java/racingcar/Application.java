@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Application {
 
         String[] carsNameArray = parseCarsName(carsNameInput);
         List<String> carsNameList = arrayToList(carsNameArray);
+        List<String> trimmedCarsNameList = carsNameTrim(carsNameList);
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -19,5 +21,13 @@ public class Application {
 
     private static List<String> arrayToList(String[] array) {
         return Arrays.asList(array);
+    }
+
+    private static List<String> carsNameTrim(List<String> cars) {
+        List<String> trimmedCarsName = new ArrayList<>();
+        for (String car : cars) {
+            trimmedCarsName.add(car.trim());
+        }
+        return trimmedCarsName;
     }
 }
