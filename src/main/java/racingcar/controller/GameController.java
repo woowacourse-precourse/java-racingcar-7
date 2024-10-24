@@ -7,14 +7,17 @@ import racingcar.service.GameService;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
     private final GameService gameService;
     private final InputView inputView;
+    private final OutputView outputView;
 
     public GameController() {
         this.gameService = new GameService();
         this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
     public void run() {
@@ -22,7 +25,7 @@ public class GameController {
         Integer gameRound = gameService.getGameRoundInput(inputView.gameRoundInput());
         Game game = new Game(cars, gameRound);
 
-        gameService.playGame(game);
+        gameService.playGame(game, this.outputView);
     }
 
 }

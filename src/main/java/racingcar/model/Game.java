@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
@@ -13,14 +12,16 @@ public class Game {
         this.gameRound = gameRound;
     }
 
-    private Cars playRound(List<Car> cars) {
-        cars.forEach(car -> {
+    public GameResult playRound() {
+        List<Car> carList = this.cars.getCars();
+        carList.forEach(car -> {
             int randomNum = Randoms.pickNumberInRange(0, 9);
             if (randomNum > 4) {
                 car.raiseMoveCount();  // 자동차 이동 카운트 증가
             }
         });
-        return new Cars(cars);  // Cars 객체를 반환
+
+        return new GameResult(this.cars);
     }
 
     public Integer getGameRound(){
