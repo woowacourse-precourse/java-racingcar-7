@@ -9,21 +9,24 @@ import racingcar.view.InputView;
 
 public class RacingCarController {
     private final InputView inputView = InputView.getInstance();
-    private final Race race;
     private final RacingCarService racingCarService;
 
     public RacingCarController(RacingCarService racingCarService) {
-        this.race = new Race(setCars(), setRaceCount());
         this.racingCarService = racingCarService;
     }
 
     public void run() {
+        Race race = new Race(setCars(), setRaceCount());
         racingCarService.raceStart(race);
     }
 
 
-    private Cars setCars() {
+    public Cars setCars() {
         List<String> carNames = inputView.inputCarNames();
+        return setCarsName(carNames);
+    }
+
+    public Cars setCarsName(List<String> carNames) {
         Cars cars = new Cars();
 
         for (String carName : carNames) {
