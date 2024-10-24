@@ -5,6 +5,8 @@ public class SystemConstant {
     public static String EMPTY_STRING = "";
     public static int ZERO = 0;
     public static String TEST_PROFILE = "test";
+    public static String NEW_LINE = "\n";
+    public static String WINNER_DELIMITER = ", ";
 
     private SystemConstant() {
     }

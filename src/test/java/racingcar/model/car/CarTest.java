@@ -22,7 +22,7 @@ public class CarTest {
         Car sut = Car.of("user1", myProgress);
 
         // when
-        String actual = sut.myProgress();
+        String actual = sut.myProgressSummary();
 
         // then
         assertThat(actual).isEqualTo("user1 : ---");

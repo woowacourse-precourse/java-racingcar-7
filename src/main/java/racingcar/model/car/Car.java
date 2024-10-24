@@ -20,12 +20,17 @@ public class Car {
         return myProgress.completedAllLap();
     }
 
-    public String myProgress() {
-        return format("%s : %s", name, myProgress.toString());
-    }
-
     public void updateProgress() {
         myProgress.updatePosition();
         myProgress.updateRemainingLap();
+    }
+
+    public String myProgressSummary() {
+        return format("%s : %s", name, myProgress.toString());
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

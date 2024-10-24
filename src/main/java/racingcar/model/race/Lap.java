@@ -25,6 +25,10 @@ public class Lap {
         return !this.equals(ZERO);
     }
 
+    public boolean isZero() {
+        return this.equals(ZERO);
+    }
+
     public void minus(final String value) {
         this.value = this.value.subtract(new BigInteger(value));
     }

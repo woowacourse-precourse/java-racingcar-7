@@ -20,6 +20,18 @@ public class Cars {
         cars.forEach(Car::updateProgress);
     }
 
+    public List<String> currentPositions() {
+        return cars.stream()
+                .map(Car::myProgressSummary)
+                .toList();
+    }
+
+    public List<Car> filterCompletedAllLap() {
+        return cars.stream()
+                .filter(Car::completedAllLap)
+                .toList();
+    }
+
 
     private void validateIsNotNull(final List<Car> cars) {
         boolean matched = cars.stream().anyMatch(Objects::isNull);

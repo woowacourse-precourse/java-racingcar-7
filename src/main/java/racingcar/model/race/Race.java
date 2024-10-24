@@ -24,10 +24,10 @@ public class Race {
     }
 
     public void moveToNextLap() {
-        if (remainingCount.hasRemaining()) {
-            remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
+        if (remainingCount.isZero()) {
+            throw new ShouldNotBeMinusException();
         }
-        throw new ShouldNotBeMinusException();
+        remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
     private static void validateIsNull(final Lap lap) {

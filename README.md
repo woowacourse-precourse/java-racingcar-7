@@ -82,9 +82,10 @@
 
 ### 2. Cars
 
-| Method | Parameter | Return Type | Implementation |
-|--------|-----------|-------------|----------------|
-| move   | -         | void        | DONE ✅         |
+| Method           | Parameter | Return Type  | Implementation |
+|------------------|-----------|--------------|----------------|
+| move             | -         | void         | DONE ✅         |
+| currentPositions | -         | List<String> | DONE ✅         |
 
 <br>
 
@@ -135,7 +136,7 @@
 
 ### 8. DashBoard
 
-| Method          | Parameter | Return Type | Implementation |
-|-----------------|-----------|-------------|----------------|
-| offerLapChart   | -         | String      |                |
-| offerRaceResult | -         | String      |                |
+| Method        | Parameter | Return Type | Implementation |
+|---------------|-----------|-------------|----------------|
+| offerLapChart | -         | String      | Done ✅         |
+| offerWinners  | -         | String      | Done ✅         |
