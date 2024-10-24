@@ -20,11 +20,7 @@ public class Car {
     }
 
     public String getCurrentPositionString(){
-        StringBuilder currentPosition = new StringBuilder("");
-        for (int i = 0; i < position; i++) {
-            currentPosition.append("-");
-        }
-        return currentPosition.toString();
+        return "-".repeat(position);
     }
 
     public void moveForward() {
