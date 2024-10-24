@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.movement.RandomMovement;
+import racingcar.domain.race.RaceRoundRecord;
 
 import java.security.PublicKey;
 import java.util.List;
@@ -23,4 +24,10 @@ public class Cars {
     public void playOneRound(RandomMovement randomMovement){
         cars.forEach(car -> car.go(randomMovement));
     }
+
+    public RaceRoundRecord getRaceRoundRecord(){
+        return RaceRoundRecord.from(cars);
+    }
+
+
 }
