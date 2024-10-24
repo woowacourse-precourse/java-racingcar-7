@@ -32,4 +32,15 @@ public class Validator {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
     }
+
+    public static void validateAttempts(String attempts) {
+        try {
+            int attemptCount = Integer.parseInt(attempts);
+            if (attemptCount <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+        }
+    }
 }

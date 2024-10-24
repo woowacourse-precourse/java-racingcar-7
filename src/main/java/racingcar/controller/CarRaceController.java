@@ -22,6 +22,7 @@ public class CarRaceController {
         String carNames = inputView.inputCarNames();
         Validator.validateCarNames(carNames);
         String attempts = inputView.inputAttempts();
+        Validator.validateAttempts(attempts);
         carRaceService.init(carNames);
 
         outputView.printExecutionResultHeader();
