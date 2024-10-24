@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.global.GameConstant.RANDOM_NUMBER_RANGE_OF_MAX;
+import static racingcar.global.GameConstant.RANDOM_NUMBER_RANGE_OF_MIN;
+
 public class Cars {
 
     private final List<Car> cars;
@@ -18,7 +21,7 @@ public class Cars {
     }
 
     public List<Car> move() {
-        cars.forEach(car -> car.move(Randoms.pickNumberInRange(1, 9)));
+        cars.forEach(car -> car.move(Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_OF_MIN, RANDOM_NUMBER_RANGE_OF_MAX)));
         return cars;
     }
 
