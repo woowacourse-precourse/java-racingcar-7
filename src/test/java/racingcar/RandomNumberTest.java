@@ -21,9 +21,9 @@ class RandomNumberTest {
     }
 
     @Test
-    void 시작_값과_마지막_값이_같으면_예외가_발생한다() {
+    void 시작_값이_마지막_값_보다_크면_예외가_발생한다() {
         //given
-        int start = 10;
+        int start = 11;
         int end = 10;
 
         //when & then
