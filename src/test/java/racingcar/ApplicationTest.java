@@ -31,6 +31,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복된_자동차_이름_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ford,ford"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
