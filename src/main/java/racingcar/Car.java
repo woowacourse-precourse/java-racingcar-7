@@ -19,9 +19,7 @@ public class Car {
     }
 
     public void roleDice(int min, int max) {
-        int num = pickNumberInRange(min, max);
-
-        if (isForward(num)) {
+        if (isForward(pickNumberInRange(min, max))) {
             this.position++;
         }
     }
