@@ -14,8 +14,8 @@ public class InputView {
         return new ArrayList<>(Arrays.asList(carNames.split(",")));
     }
 
-    public static String inputAttemptNumber() {
+    public static int inputAttemptNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
 }
