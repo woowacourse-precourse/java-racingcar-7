@@ -3,7 +3,10 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.Racing;
 import racingcar.model.RacingCount;
+import racingcar.util.randomnumber.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,18 +27,29 @@ public class RacingController {
     private void inputCarNames() {
         outputView.printInputCarNames();
         List<String> carNames = inputView.inputCarNames();
-        List<Car> cars = creatCars(carNames);
+        List<Car> carsList = creatCars(carNames);
+        Cars cars = Cars.from(carsList);
 
         outputView.printInputRacingCount();
         int count = inputView.inputRacingCount();
         RacingCount racingCount = RacingCount.from(count);
+
+        Racing racings = Racing.from(cars);
+        while (isPossibleRacing(racingCount)) {
+            racings.runRacing();
+            racingCount.deduct();
+        }
+    }
+
+    private boolean isPossibleRacing(RacingCount racingCount) {
+        return !racingCount.isEnd();
     }
 
     private List<Car> creatCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            cars.add(Car.from(carName));
+            cars.add(Car.from(carName, new RandomNumberGenerator()));
         }
         return cars;
     }
