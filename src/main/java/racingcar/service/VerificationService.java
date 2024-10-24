@@ -17,6 +17,7 @@ import racingcar.exception.InvalidLengthException;
 
 import java.util.List;
 import racingcar.exception.NotNumberException;
+import racingcar.exception.NumberRangeException;
 
 public class VerificationService {
 
@@ -54,5 +55,14 @@ public class VerificationService {
         } catch(NumberFormatException e) {
             throw new NotNumberException();
         }
+    }
+
+    public boolean isValidRange(String value) {
+        long valueToLong = Long.parseLong(value);
+        if (valueToLong < EXECUTION_RANGE_MIN_VALUE.getValue() ||
+                valueToLong > EXECUTION_RANGE_MAX_VALUE.getValue()) {
+            throw new NumberRangeException();
+        }
+        return true;
     }
 }

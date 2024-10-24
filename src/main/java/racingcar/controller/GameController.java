@@ -41,6 +41,7 @@ public class GameController {
         outputView.countRegistMessage();
         final String input = inputView.input();
         verificationService.isNumber(input);
+        verificationService.isValidRange(input);
         outputView.newline();
 
         return dataTransformService.parseToLong(input);
