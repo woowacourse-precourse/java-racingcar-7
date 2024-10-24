@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.moving_strategy.MovingStrategy;
 import racingcar.model.moving_strategy.random.DefaultRandomMovingStrategy;
@@ -59,7 +58,7 @@ public class Application {
 
     // helper 함수
     private static RacingCars createRacingCars(List<String> carNameList) {
-        return new RacingCars(carNameList.stream().map(carName -> new RacingCar(carName, movingStrategy)).toList());
+        return racingService.getRacingCars(carNameList);
     }
 
     private static List<String> getCarNameList(String carNames) {
