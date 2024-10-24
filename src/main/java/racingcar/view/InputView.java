@@ -2,15 +2,15 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.Splitter;
+import racingcar.StringToListParser;
 import racingcar.exception.Validator;
 
 public class InputView {
 
     public List<String> getCarList() {
         System.out.println(ConsoleMessage.ENTER_CAR_NAME);
-        Splitter splitter = new Splitter(Console.readLine());
-        return splitter.parsingCarName();
+        StringToListParser stringToListParser = new StringToListParser(Console.readLine());
+        return stringToListParser.parsingCarName();
     }
 
     public long getTryNumber() {

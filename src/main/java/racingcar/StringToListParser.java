@@ -3,10 +3,10 @@ package racingcar;
 import java.util.List;
 import racingcar.exception.Validator;
 
-public class Splitter {
+public class StringToListParser {
     private final String input;
 
-    public Splitter(String input) {
+    public StringToListParser(String input) {
         this.input = escapeSpecialRegexChars(input);
     }
 

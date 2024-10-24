@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.controller.domain.Car;
+import racingcar.domain.Car;
 import racingcar.exception.Validator;
 
 public class RacingService {
