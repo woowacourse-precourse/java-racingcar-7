@@ -4,10 +4,10 @@ import racingcar.RacingCar;
 
 public class User {
     String name;
-    Boolean result[];
+    int totalGo;
 
-    User(String name){
+    User(String name) {
         this.name = name;
-        result = null;
+        totalGo = 0;
     }
 }
