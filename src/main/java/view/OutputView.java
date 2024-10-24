@@ -1,6 +1,5 @@
 package view;
 
-import domain.Car;
 import domain.Cars;
 import java.util.List;
 

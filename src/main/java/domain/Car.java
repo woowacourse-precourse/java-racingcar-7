@@ -1,5 +1,6 @@
 package domain;
 
+import constant.Race;
 import java.util.Objects;
 import validator.CarValidator;
 
@@ -22,7 +23,7 @@ public class Car {
     }
 
     public void addScore() {
-        score += 1;
+        score += Race.MOVE_STEP.getValue();
     }
 
     @Override

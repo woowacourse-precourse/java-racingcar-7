@@ -2,11 +2,8 @@ package controller;
 
 import constant.Prompt;
 import domain.Attempt;
-import domain.Car;
 import domain.Cars;
-import java.util.List;
 import service.RacingService;
-import validator.AttemptValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -16,26 +13,24 @@ public class RacingController {
     private Attempt attempt;
 
     public void set() {
-        cars = new Cars(InputView.inputCars());
-
-        attempt = new Attempt(InputView.inputAttempt());
-
-        race();
+        inputRacingSettings();
+        startRace();
         result();
     }
 
-    public void race() {
+    private void inputRacingSettings() {
+        cars = new Cars(InputView.inputCars());
+        attempt = new Attempt(InputView.inputAttempt());
+    }
+
+    public void startRace() {
         System.out.println(Prompt.RACE_RESULT.getMessage());
-        for (int i = 0; i < attempt.getAttempt(); i++) {
-            racingService.moveCars(cars);
-            OutputView.showRoundResult(cars);
-        }
+        racingService.race(cars, attempt.getAttempt());
+
     }
 
     private void result() {
         System.out.print(Prompt.WINNER.getMessage());
-        racingService.getWinners(cars);
+        OutputView.showWinners(racingService.getWinners(cars));
     }
-
-
 }

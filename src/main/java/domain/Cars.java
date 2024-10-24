@@ -5,7 +5,7 @@ import java.util.List;
 import validator.CarValidator;
 
 public class Cars {
-    private List<Car> carsList;
+    private final List<Car> carsList;
 
     public Cars(String carNames) {
         List<String> carsNameList = splitCars(carNames);
