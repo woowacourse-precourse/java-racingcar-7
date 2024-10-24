@@ -1,16 +1,20 @@
-package racingcar.service;
-
-import racingcar.model.Car;
+package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinnerService {
-    public List<String> findWinner(List<Car> cars) {
+public class Winner {
+    private List<String> winners;
+
+    public Winner(){
+        winners = new ArrayList<>();
+    }
+
+    public List<String> getWinner(Cars cars) {
         List<String> winners = new ArrayList<>();
         int maxMovedNumber = -1;
 
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             int movedNumber = car.getMovedNumber();
             if (movedNumber > maxMovedNumber) {
                 maxMovedNumber = movedNumber;
