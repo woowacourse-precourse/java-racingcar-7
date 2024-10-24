@@ -30,6 +30,13 @@ public class Race {
         return input.split(",");
     }
 
+    // 모든 자동차를 이동하는 메서드
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
     public String getRaceResult() {
         StringBuilder roundResult = new StringBuilder();
         for (Car car : cars) {
