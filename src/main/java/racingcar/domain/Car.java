@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import static racingcar.util.InputValidator.validateNotBlank;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Car {
     private final String name;
     private Integer distance;
@@ -15,13 +13,18 @@ public class Car {
         this.distance = 0;
     }
 
-    public void moveForward() {
-        if (getNumberInRange() >= 4) {
-
-    public void moveForward(int number) {
-        if (number >= 4) {
+    public void moveForward(int randomNumber) {
+        if (randomNumber >= 4) {
             this.distance++;
         }
+    }
+
+    public String generateCarState() {
+        return this.name + " : " + generateHyphenDistance();
+    }
+
+    private String generateHyphenDistance() {
+        return "-".repeat(Math.max(0, distance));
     }
 
     private void validateCarNameLength(String name) {
