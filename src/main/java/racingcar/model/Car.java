@@ -3,11 +3,11 @@ package racingcar.model;
 public class Car {
     private final int MOVE_VALUE = 4;
     private String name;
-    private int distance = 0;
+    private int distance;
 
-    public Car(String name, int distance){
+    public Car(String name){
         this.name = name;
-        this.distance =distance;
+        this.distance = 0;
     }
 
     public String getName(){
@@ -18,7 +18,7 @@ public class Car {
         return distance;
     }
 
-    public void move(int distance){
+    public void go(int distance){
         if(canMove(distance)){
             this.distance += distance;
         }
