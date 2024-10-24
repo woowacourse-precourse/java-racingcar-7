@@ -19,8 +19,8 @@ public class Car {
     }
 
     public void move() {
-        MovementState movementState = MovementState.createMovementState();
-        if (movementState.validateMoveForward()) {
+        Status status = Status.createStatus();
+        if (status.validateMoveForward()) {
             position++;
         }
     }
