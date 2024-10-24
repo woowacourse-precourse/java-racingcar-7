@@ -22,8 +22,8 @@ public class SetUpServiceTest {
     RaceStatus raceStatus = RaceStatus.getInstance();
 
     @Test
-    @DisplayName("setUpService: 정상 입력 처리")
-    public void setUpRaceTest_normalInput() {
+    @DisplayName("정상 이름 처리")
+    void setUpRaceTest_normalInput() {
         String normalInput = "pobi,woni,jun";
 
         setUpService.setUpRace(normalInput);
@@ -37,8 +37,8 @@ public class SetUpServiceTest {
 
     @ParameterizedTest(name = "{index}: {1}")
     @MethodSource("invalidNames")
-    @DisplayName("setUpService: 유효하지 않은 입력 처리")
-    void setUpRaceTest_errorInput(String input, String message, String exceptionMessage) {
+    @DisplayName("유효하지 않은 이름 처리")
+    void setUpRaceTest_invalidInput(String input, String message, String exceptionMessage) {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> setUpService.setUpRace(input));
         assertThat(e.getMessage()).isEqualTo(exceptionMessage);
@@ -46,15 +46,16 @@ public class SetUpServiceTest {
 
     static Stream<Arguments> invalidNames() {
         return Stream.of(
-                Arguments.of("pobi,cinador", "자동차 이름 5자 초과", NAME_LENGTH_MASSAGE),
-                Arguments.of("pobi,,,", "자동차 이름 1자 미만 1", NAME_LENGTH_MASSAGE),
-                Arguments.of(",pobi", "자동차 이름 1자 미만 2", NAME_LENGTH_MASSAGE),
-                Arguments.of("pobi,", "자동차 이름 1자 미만 3", NAME_LENGTH_MASSAGE),
+                Arguments.of("pobi,cinador,jun", "자동차 이름 5자 초과", NAME_LENGTH_MASSAGE),
+                Arguments.of("pobi,,,woni,jun", "자동차 이름 1자 미만 1", NAME_LENGTH_MASSAGE),
+                Arguments.of(",pobi,woni,jun", "자동차 이름 1자 미만 2", NAME_LENGTH_MASSAGE),
+                Arguments.of("pobi,woni,jun,", "자동차 이름 1자 미만 3", NAME_LENGTH_MASSAGE),
                 Arguments.of("", "공백 입력", NAME_LENGTH_MASSAGE),
                 Arguments.of("A,B,C,D,E,F,G,H,I,J,K,L,M,N", "10개보다 많은 자동차", TOO_MANY_CARS_MASSAGE),
                 Arguments.of("pobi,woni,pobi", "자동차 이름 중복 처리", DUPLICATE_CAR_NAME_MASSAGE),
-                Arguments.of("pobi, wobi", "자동차 이름 공백 포함 1", NAME_HAVE_BLANK_MASSAGE),
-                Arguments.of("pobi,wo bi", "자동차 이름 공백 포함 2", NAME_HAVE_BLANK_MASSAGE)
+                Arguments.of("pobi, wobi,jun", "자동차 이름 공백 포함 1", NAME_HAVE_BLANK_MASSAGE),
+                Arguments.of("pobi,wo bi,jun", "자동차 이름 공백 포함 2", NAME_HAVE_BLANK_MASSAGE),
+                Arguments.of("pobi,wobi ,jun", "자동차 이름 공백 포함 3", NAME_HAVE_BLANK_MASSAGE)
         );
     }
 }
