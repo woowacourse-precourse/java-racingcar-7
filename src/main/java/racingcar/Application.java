@@ -39,4 +39,8 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
+
+    private void printRequestingRaceRound() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+    }
 }
