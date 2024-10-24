@@ -1,12 +1,12 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -28,6 +28,42 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_5자_초과_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("audi,chevrolet", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("이름은 5자를 초과할 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 잘못된_문자_포함_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("audi,#ford", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("이름은 영어와 숫자만 입력 가능합니다.")
+        );
+    }
+
+    @Test
+    void 잘못된_구분자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("audi;ford", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("구분자로 쉼표(,)를 입력해주세요")
+        );
+    }
+
+    @Test
+    void 입력값_누락_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("입력값이 존재하지 않습니다.")
         );
     }
 
