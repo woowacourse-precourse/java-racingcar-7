@@ -40,7 +40,7 @@ public class ValidationTest {
         //when & then
         // - right input case
         assertDoesNotThrow(() -> this.validation.validateRoundCount("5"));
-        assertThrows(IllegalArgumentException.class, () -> this.validation.validateRoundCount("2147483647"));
+        assertDoesNotThrow(() -> this.validation.validateRoundCount("2147483647"));
 
         // - wrong input case
         assertThrows(IllegalArgumentException.class, () -> this.validation.validateRoundCount("0"));
