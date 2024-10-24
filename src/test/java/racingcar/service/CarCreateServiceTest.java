@@ -2,7 +2,6 @@ package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,15 +9,16 @@ import racingcar.model.Cars;
 
 @DisplayName("CarCreateService 테스트")
 public class CarCreateServiceTest {
+
     private CarCreateService carCreateService;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         carCreateService = new CarCreateService();
     }
 
     @Test
-    void 문자열로_자동차_리스트를_생성한다(){
+    void 문자열로_자동차_리스트를_생성한다() {
         //given
         String carNames = "pobi,woni,jun";
 
