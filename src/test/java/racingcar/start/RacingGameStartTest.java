@@ -71,6 +71,7 @@ class RacingGameStartTest extends NsTest {
     @Test
     public void 게임시작_3라운드_출력테스트() throws Exception {
         //given
+        racingGame = new RacingGame();
         List<Car> cars = new ArrayList<>();
         //when
         for (int i = 0; i < NUM_CAR; i++) {
@@ -80,9 +81,12 @@ class RacingGameStartTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingGame.start(cars, 2);
-                    assertThat(output()).isEqualTo("car0 : --");
-                    assertThat(output()).isEqualTo("car1 : ");
-                    assertThat(output()).isEqualTo("car2 : -");
+                    assertThat(output()).contains("car0 : -");
+                    assertThat(output()).contains("car1 : ");
+                    assertThat(output()).contains("car2 : -");
+                    assertThat(output()).contains("car0 : --");
+                    assertThat(output()).contains("car1 : ");
+                    assertThat(output()).contains("car2 : -");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP
         );
