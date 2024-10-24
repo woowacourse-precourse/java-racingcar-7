@@ -22,6 +22,7 @@ public class Car { // 자동차를 관리하는 클래스
     }
 
     public void positionToString(int position){
+        positionString = "";
         for(int i=0; i<position; i++){
             positionString += "-";
         }
