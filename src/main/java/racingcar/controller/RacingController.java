@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.CarFactory;
 import racingcar.model.Cars;
+import racingcar.model.Result;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,6 +17,12 @@ public class RacingController {
         int tryCount = Integer.parseInt(InputView.inputTryCount());
 
         racing(cars, tryCount);
+        winner(cars);
+    }
+
+    private void winner(Cars cars) {
+        Result result = new Result(cars.submitCarsStatus());
+        OutputView.printWinner(result.findWinner());
     }
 
     private void racing(Cars cars, int tryCount) {
