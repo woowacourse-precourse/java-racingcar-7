@@ -81,5 +81,9 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+
+        if (Integer.parseInt(countInput) < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 }
