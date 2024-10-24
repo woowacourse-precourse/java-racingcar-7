@@ -18,8 +18,13 @@ public class RaceController {
     public void start() {
         Cars cars = initializeCars();
         TrialCounts trialCounts = initializeTrialCounts();
+
         InputView.closeConsole();
-        runRace(cars, trialCounts);
+
+        Race race = new Race(cars, trialCounts);
+        Winner winner = runRace(cars, race);
+
+        endRace(winner);
     }
 
     private Cars initializeCars() {
@@ -32,14 +37,17 @@ public class RaceController {
         return new TrialCounts(counts, trialCountsValidator);
     }
 
-    private void runRace(Cars cars, TrialCounts trialCounts) {
-        Race race = new Race(cars, trialCounts);
+    private Winner runRace(Cars cars, Race race) {
         outputView.executionResultMessage();
         while (race.isRaceOngoing()) {
             race.raceOneStep();
             outputView.currentStatusMessage(cars);
         }
-        outputView.finalWinnerMessage(race.getWinners());
+        return new Winner(cars,race);
+    }
+
+    private void endRace(Winner winner) {
+        outputView.finalWinnerMessage(winner.getWinners());
     }
 }
 
