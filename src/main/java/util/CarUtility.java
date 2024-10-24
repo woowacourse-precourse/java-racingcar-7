@@ -25,4 +25,11 @@ public class CarUtility {
         }
         return "-".repeat(advanceCount);
     }
+
+    public static void advanceIf4More(Car car) {
+        int randomInt = makeRandomInt();
+        if (randomInt >= 4) {
+            car.addAdvanceCount();
+        }
+    }
 }
