@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.Validator;
 
 public class Car {
-    String name;
-    int position;
+    private String name;
+    private int position;
 
     public Car(String name) {
         validate(name);
