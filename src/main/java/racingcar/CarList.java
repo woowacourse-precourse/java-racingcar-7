@@ -17,6 +17,7 @@ public class CarList {
     }
 
     public void add(String carNames) {
+        Validator.validateDelimiterFormatAndSingleRacer(carNames);
         Arrays.stream(carNames.split(DELIMITER))
                 .map(Validator::validateNameLength)
                 .map(Car::generateCars)
