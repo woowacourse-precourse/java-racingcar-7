@@ -15,7 +15,18 @@ public class Application {
         String input = Console.readLine();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = Integer.parseInt(Console.readLine());
+
+        int count;
+
+        try {
+            count = Integer.parseInt(Console.readLine());
+            if (count <= 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("잘못된 입력값 입니다.");
+        }
+
 
         String[] cars = input.split(",");
 
