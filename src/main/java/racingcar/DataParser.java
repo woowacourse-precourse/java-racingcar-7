@@ -12,7 +12,17 @@ public class DataParser {
         checkLenght(list);
         isAlphaNumeric(list);
 
+        int tryCount = parseCount(IOHandler.inputTryCount());
         return list;
+    }
+
+    private static int parseCount(String tryCount) {
+        for (char c : tryCount.toCharArray()) {
+            if (Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return Integer.parseInt(tryCount);
     }
 
     private static void isAlphaNumeric(List<String> list) {
