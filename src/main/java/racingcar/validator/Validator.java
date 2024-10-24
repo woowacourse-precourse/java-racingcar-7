@@ -10,4 +10,10 @@ public final class Validator {
             }
         });
     }
+
+    public static void nameCountValidate(List<String> names) {
+        if (names.size() < 2) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
