@@ -1,4 +1,4 @@
-package racingcar.object;
+package racingcar.object.value;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -18,27 +18,22 @@ class MileageTest {
         assertThatThrownBy(() -> new Mileage(-1))
                 .isInstanceOf(COMMON_EXCEPTION);
 
-        assertThatThrownBy(() -> new Mileage(RaceMaxCounts.MAX_COUNT_OF_LAP.getCount() + 1))
+        assertThatThrownBy(() ->
+                new Mileage(RaceMaxCounts.MAX_COUNT_OF_LAP.getCount() + 1))
                 .isInstanceOf(COMMON_EXCEPTION);
     }
 
     @Test
-    void 주행거리를_increase하면_1증가한다() {
-        Integer initMileage = 3;
-        Mileage mileage = new Mileage(initMileage);
-        mileage.increase();
-        assertThat(mileage.getMileage()).isEqualTo(initMileage + 1);
+    void getIncreased로_주행거리가_1증가한다() {
+        Integer initDistance = 3;
+        Mileage initMileage = new Mileage(initDistance);
+        Mileage increasedMileage = initMileage.getIncreased();
+
+        assertThat(increasedMileage.distance()).isEqualTo(initDistance + 1);
     }
 
     @Test
-    void 주행거리를_getMileage로_확인할수있다() {
-        Integer initMileage = 3;
-        Mileage mileage = new Mileage(initMileage);
-        assertThat(mileage.getMileage()).isEqualTo(initMileage);
-    }
-
-    @Test
-    void 주행거리를_compareTo로_비교할수있다() {
+    void compareTo로_주행거리_비교할수있다() {
         Mileage smaller = new Mileage(3);
         Mileage larger = new Mileage(4);
 
