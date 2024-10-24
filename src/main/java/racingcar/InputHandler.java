@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
 
-    public static String enterCarName(){
+    public static String inputCarName(){
         return Console.readLine();
     }
 
