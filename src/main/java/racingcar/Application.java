@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Application {
@@ -19,5 +20,21 @@ public class Application {
 
         // Car 객체 생성
         List<Car> carList = Car.makeCar(carNameList);
+
+        // 자동차 경주 진행
+        for (int i = 0; i < attempts; i++) {
+            race(carList);
+        }
     }
+
+    // 자동차 경주 진행
+    private static void race(List<Car> carList) {
+        for (Car car : carList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                car.move();
+            }
+        }
+    }
+
 }
