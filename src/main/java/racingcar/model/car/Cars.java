@@ -15,12 +15,6 @@ public class Cars {
         this.cars = cars;
     }
 
-    private void validateCars(final List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
-        }
-    }
-
     public void startRacing() {
         cars.forEach(car -> {
             Number number = getRandomNumber();
@@ -28,8 +22,29 @@ public class Cars {
         });
     }
 
+    public List<String> findWinner() {
+        final int maxDistance = findMaxMovingDistance();
+        return cars.stream()
+                .filter(car -> car.getPosition().calculateMovingDistance() == maxDistance)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private void validateCars(final List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
+        }
+    }
+
     private Number getRandomNumber() {
         return RandomNumberGenerator.generate();
+    }
+
+    private int findMaxMovingDistance() {
+        return cars.stream()
+                .mapToInt(car -> car.getPosition().calculateMovingDistance())
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.CAN_NOT_CALCULATE_DISTANCE.getMessage()));
     }
 
     public List<Car> getCars() {
