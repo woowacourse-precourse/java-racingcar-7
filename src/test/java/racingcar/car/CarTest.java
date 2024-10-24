@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -78,6 +77,24 @@ class CarTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"구상우,홍길동,백치"})
+    @DisplayName("한글로 값이 들어와도 예외가 발생되면 안된다")
+    void 유효성_검사_한글_테스트(String carNames) {
+        assertDoesNotThrow(() -> {
+            Car.specialCharValidation(carNames);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc,def,ghi"})
+    @DisplayName("영문 이름으로 이루어진 이름들은 예외를 발생하면 안된다.")
+    void 유효성_검사_영문_테스트(String carNames) {
+        assertDoesNotThrow(() -> {
+            Car.specialCharValidation(carNames);
+        });
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {":koo,sang,woo!", "koo ,sangL:woo", "1Skk,상우,한글"})
     @DisplayName("다른 특수기호, 숫자값에 대해 모두 예외를 리턴해야함")
     void 이름_유효성_검사_예외_테스트(String carNames) {
@@ -86,20 +103,18 @@ class CarTest {
         }).isInstanceOf(IllegalArgumentException.class).hasMessage("특수기호는 , 외에 사용하면 안됩니다.");
     }
 
+
     @ParameterizedTest
     @ValueSource(strings = {"Koo , Sang, woo", " Hong, Gil,Dong", "kim,Duk,bae"})
     @DisplayName("공백값이 있으면 잘라줘야함")
     void 공백_값을_없앤다(String containSpace) {
-        List<String> carNameList = Arrays.stream(containSpace.split(",")).map(carName -> {
-            return carName.trim();
-        }).toList();
+        var carNameList = Arrays.stream(containSpace.split(",")).map(String::trim).toList();
 
         for (int i = 0; i < carNameList.size(); i++) {
             String carName = carNameList.get(i);
             assertThat(carName).doesNotContain(" ");
         }
     }
-
 
 
 }
