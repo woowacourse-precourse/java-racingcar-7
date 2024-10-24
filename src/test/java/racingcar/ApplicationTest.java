@@ -10,6 +10,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.Utils.convertAttempts;
+import static racingcar.Utils.convertCarNames;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -38,7 +40,7 @@ class ApplicationTest extends NsTest {
     @Test
     void convertCarNamesTest() {
         assertSimpleTest(() -> {
-            ArrayList<String> resultNames = carRacing.convertCarNames("pobi,woni,jun");
+            ArrayList<String> resultNames = convertCarNames("pobi,woni,jun");
             assertThat(resultNames).contains("pobi", "woni", "jun");
         });
     }
@@ -46,14 +48,14 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_convertCarNamesTest() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> carRacing.convertCarNames("pobi;woni,jun")).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> convertCarNames("pobi;woni,jun")).isInstanceOf(IllegalArgumentException.class);
         });
     }
 
     @Test
     void convertAttemptsTest() {
         assertSimpleTest(() -> {
-            int resultCount = carRacing.convertAttempts("4");
+            int resultCount = convertAttempts("4");
             assertThat(resultCount).isEqualTo(4);
         });
     }
@@ -61,7 +63,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_convertAttemptsTest() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> carRacing.convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> convertAttempts("")).isInstanceOf(IllegalArgumentException.class);
         });
     }
 
