@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.util.MessageFormatter;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
 
-    private final static String CAR_NAME_DELIMITER = ",";
-
     private final InputView inputView;
     private final OutputView outputView;
+    private final static String DELIMITER = ",";
 
     public RacingController() {
         inputView = new InputView();
@@ -29,17 +29,14 @@ public class RacingController {
 
     private Cars getCars() {
         String carInput = getCarInput();
-        List<String> carsBeforeConvert = splitCar(carInput);
-        InputValidator.validateCarNames(carsBeforeConvert);
-        Cars cars = convertToCars(carsBeforeConvert);
-        return cars;
+        List<String> beforeConvertCars = splitInput(carInput);
+        InputValidator.validateCarNames(beforeConvertCars);
+        return convertToCars(beforeConvertCars);
     }
 
     private int getCount() {
         String countInput = getCountInput();
-        InputValidator.validateCount(countInput);
-        int count = convertToInt(countInput);
-        return count;
+        return getFormattedCount(countInput);
     }
 
     private String getCarInput() {
@@ -52,8 +49,8 @@ public class RacingController {
         return inputView.input();
     }
 
-    private List<String> splitCar(String carInput) {
-        String[] carNames = carInput.split(CAR_NAME_DELIMITER);
+    private List<String> splitInput(String carInput) {
+        String[] carNames = carInput.split(DELIMITER);
         return Arrays.stream(carNames).map(String::trim).toList();
     }
 
@@ -62,7 +59,12 @@ public class RacingController {
         return new Cars(cars);
     }
 
-    private int convertToInt(String countInput) {
+    public static int getFormattedCount(String countInput) {
+        InputValidator.validateCount(countInput);
+        return convertToInt(countInput);
+    }
+
+    private static int convertToInt(String countInput) {
         return Integer.parseInt(countInput);
     }
 
@@ -82,15 +84,7 @@ public class RacingController {
 
     private void printWinners(Cars cars) {
         List<String> winners = cars.determineWinners();
-        String winnersName = getWinnersName(winners);
+        String winnersName = MessageFormatter.getWinnersName(winners);
         outputView.printWinners(winnersName);
-    }
-
-    private String getWinnersName(List<String> winners) {
-        StringBuilder winnersString = new StringBuilder();
-        winners.forEach(winner -> {
-            winnersString.append(winner).append(", ");
-        });
-        return winnersString.substring(0, winnersString.length() - 2);
     }
 }

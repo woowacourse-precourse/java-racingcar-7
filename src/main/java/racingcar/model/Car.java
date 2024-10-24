@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.MessageFormatter;
 
 public class Car {
 
@@ -31,7 +32,7 @@ public class Car {
     }
 
     public String getInformation() {
-        return name + " : " + "-".repeat(status);
+        return MessageFormatter.getCarInformation(name, status);
     }
 
     private int pickRandomNumberFromZeroToNine() {
