@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Car;
+import domain.Winner;
 import view.InputView;
 import view.OutputView;
 
@@ -23,5 +24,7 @@ public class CarRace {
             OutputView.printOutputStatus(cars);
             tryCount--;
         }
+
+        OutputView.printOutputWinner(new Winner(cars));
     }
 }
