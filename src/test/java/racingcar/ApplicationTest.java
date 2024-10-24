@@ -26,7 +26,10 @@ class ApplicationTest extends NsTest {
     void function(){
         run("pobi,woni", "1");
         assertThat(RacingCar.input()).contains("pobi,woni","1");
+        assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi","woni");
     }
+
+
 
     @Test
     void 예외_테스트() {
