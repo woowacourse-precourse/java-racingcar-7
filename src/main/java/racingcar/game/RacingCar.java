@@ -1,8 +1,11 @@
 package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingCar {
 
@@ -12,6 +15,9 @@ public class RacingCar {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int attemptCount = getAttemptCountFromUser();
+
+        Map<String, Integer> moveAccumulator = createCarMoveAccumulator(carNames);
+        displayAccumulateForEachAttempt(attemptCount, carNames, moveAccumulator);
     }
 
     private List<String> getCarNamesFromUser() {
@@ -38,5 +44,42 @@ public class RacingCar {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도할 횟수는 문자일 수 없습니다.");
         }
+    }
+
+    private Map<String, Integer> createCarMoveAccumulator(List<String> carNames) {
+        return carNames.stream()
+                .collect(Collectors.toMap(carName -> carName, carName -> 0));
+    }
+
+    private void displayAccumulateForEachAttempt(int attemptCount, List<String> carNames,
+                                                 Map<String, Integer> moveAccumulator) {
+        for (int attempt = 0; attempt < attemptCount; attempt++) {
+            accumulateMoveCount(carNames, moveAccumulator);
+            displayCurrentAccumulation(carNames, moveAccumulator);
+        }
+    }
+
+    private void accumulateMoveCount(List<String> carNames, Map<String, Integer> moveAccumulator) {
+        for (String carName : carNames) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            accumulateIfCanMove(randomNumber, moveAccumulator, carName);
+        }
+    }
+
+    private void accumulateIfCanMove(int randomNumber, Map<String, Integer> moveAccumulator, String carName) {
+        if (randomNumber < 4) {
+            return;
+        }
+
+        moveAccumulator.merge(carName, 1, Integer::sum);
+    }
+
+    private void displayCurrentAccumulation(List<String> carNames, Map<String, Integer> moveAccumulator) {
+        for (String carName : carNames) {
+            int progressiveSum = moveAccumulator.get(carName);
+            String formattedEachResult = String.format("%s : %s", carName, "-".repeat(progressiveSum));
+            System.out.println(formattedEachResult);
+        }
+        System.out.println();
     }
 }
