@@ -11,7 +11,9 @@ public class RacingCar {
     private final Cars cars;
 
     public RacingCar(int tryNumber, Cars cars) {
-        if (tryNumber <= 0) throw new IllegalArgumentException("시도 횟수는 0보다 큰 양수여야 합니다.");
+        if (tryNumber <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 큰 양수여야 합니다.");
+        }
         this.cars = cars;
         this.tryNumber = tryNumber;
     }
@@ -21,7 +23,9 @@ public class RacingCar {
         for (int i = 0; i < tryNumber; i++) {
             this.cars.getCars().forEach(car -> {
                 int randomNumber = pickRandomNumber();
-                if (randomNumber >= 4) car.movePosition();
+                if (randomNumber >= 4) {
+                    car.movePosition();
+                }
                 OutputView.showRaceResult(car.getName(), car.getPosition());
             });
             System.out.println();

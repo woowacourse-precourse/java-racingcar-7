@@ -7,7 +7,7 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars (List<String> carNames) {
+    public Cars(List<String> carNames) {
         checkCarNameDuplicate(carNames);
         this.cars = new ArrayList<>();
         carNames.forEach(carName -> cars.add(new Car(carName)));
