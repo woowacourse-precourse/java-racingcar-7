@@ -29,6 +29,9 @@ public class Application {
             for (int j = 0; j < count; j++) {
                 int randomNum = Randoms.pickNumberInRange(0,9);
 
+                if(randomNum >= 4) {
+                    location.set(j, location.get(j) + randomNum);
+                }
             }
 
         }
