@@ -8,8 +8,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public record CarCollection(List<Car> cars) {
+
+    private static final int MAX_CAR_COUNT = 10;
+
     public CarCollection(List<Car> cars) {
         validateCarNamesAreUnique(cars);
+        validateCarCount(cars);
         this.cars = List.copyOf(cars);
     }
 
@@ -38,6 +42,13 @@ public record CarCollection(List<Car> cars) {
         Set<String> uniqueNames = extractCarNames(cars);
         if (uniqueNames.size() != cars.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+    }
+
+    private void validateCarCount(List<Car> cars) {
+        int count = cars.size();
+        if (count > MAX_CAR_COUNT) {
+            throw new IllegalArgumentException("자동차의 수는 " + MAX_CAR_COUNT + "개 이하만 가능합니다.");
         }
     }
 
