@@ -10,6 +10,10 @@ public class RaceService {
     public List<Car> carListOf(String userInput) {
         List<Car> cars = new ArrayList<>();
         for (String carName : userInput.split(",")) {
+            if (!cars.isEmpty()) {
+                validateSameNameIn(cars, carName);
+            }
+
             cars.add(Car.from(carName));
         }
 
@@ -42,5 +46,13 @@ public class RaceService {
             max = Math.max(car.status(), max);
         }
         return max;
+    }
+
+    private void validateSameNameIn(List<Car> cars, String carName) {
+        for (Car car : cars) {
+            if (car.name().equals(carName)) {
+                throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
+            }
+        }
     }
 }
