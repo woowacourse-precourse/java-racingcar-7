@@ -17,5 +17,13 @@ public class Application {
         int N = Integer.parseInt(Console.readLine());
 
 
+        String[] carNames = input.split(",");
+        List<Car> cars = new ArrayList<>();
+        for(String name : carNames)
+        {
+            Car car = new Car(name.trim() , 0);
+            cars.add(car);
+        }
+
     }
 }
