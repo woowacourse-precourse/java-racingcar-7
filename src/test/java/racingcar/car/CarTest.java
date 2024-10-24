@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
+import java.util.HashMap;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -95,16 +97,6 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {":koo,sang,woo!", "koo ,sangL:woo", "1Skk,상우,한글"})
-    @DisplayName("다른 특수기호, 숫자값에 대해 모두 예외를 리턴해야함")
-    void 이름_유효성_검사_예외_테스트(String carNames) {
-        assertThatThrownBy(() -> {
-            Car.specialCharValidation(carNames);
-        }).isInstanceOf(IllegalArgumentException.class).hasMessage("특수기호는 , 외에 사용하면 안됩니다.");
-    }
-
-
-    @ParameterizedTest
     @ValueSource(strings = {"Koo , Sang, woo", " Hong, Gil,Dong", "kim,Duk,bae"})
     @DisplayName("공백값이 있으면 잘라줘야함")
     void 공백_값을_없앤다(String containSpace) {
@@ -115,6 +107,44 @@ class CarTest {
             assertThat(carName).doesNotContain(" ");
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ,koo,sang,woo"})
+    @DisplayName("콤마의 위치로 인해 공백값이 생기면 예외를 반환해야함")
+    void 콤마_공백값_예외_발생(String carNames) {
+        assertThatThrownBy(() -> {
+            Car.splitAndNameValidation(carNames);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차명은 공백이 될 수 없습니다.\n, 의 위치를 확인하세요");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {":koo,sang,woo!", "koo ,sangL:woo", "1Skk,상우,한글","1koo,sang,woo","koo,>sang,woo","훈민,정음:,만세","한글1,산맥,동백?꽃"})
+    @DisplayName("다른 특수기호, 숫자값에 대해 모두 예외를 리턴해야함")
+    void 이름_유효성_검사_예외_테스트(String carNames) {
+        assertThatThrownBy(() -> {
+            Car.specialCharValidation(carNames);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"구상우,ksw,sang"})
+    @DisplayName("자동차명 문자열을 넘기면 차명과 전진횟수 문자열을 가진 Map 리턴")
+    void 자동차별_Map_생성(String carNames) {
+        Car.specialCharValidation(carNames);
+        var trimCarNames = Car.splitAndNameValidation(carNames);
+        var carNameConvertMapList = trimCarNames.stream().map(carName -> {
+            var nameAndGoCount = new HashMap<String, String>();
+            nameAndGoCount.put("name", carName);
+            nameAndGoCount.put("goCount", "");
+            return nameAndGoCount;
+        }).toList();
+
+        for (int i = 0; i < trimCarNames.size(); i++) {
+            assertThat(carNameConvertMapList.get(i).get("name")).isNotEmpty();
+        }
+    }
+
 
 
 }
