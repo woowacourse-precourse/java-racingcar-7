@@ -11,6 +11,8 @@ public class Application {
         String inputVehicles = Console.readLine();
 
         List<Vehicle> vehicles = Arrays.stream(inputVehicles.split(","))
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
                 .map(Vehicle::new)
                 .toList();
     }
