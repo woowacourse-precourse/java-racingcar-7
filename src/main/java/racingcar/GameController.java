@@ -5,7 +5,7 @@ public class GameController {
 
     RacingCarList racingCarList = new RacingCarList();
 
-    public GameController(String carName, String attemptCount) {
+    public GameController(String carName) {
         racingCarList.add(carName);
     }
 }

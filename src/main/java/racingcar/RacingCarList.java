@@ -3,7 +3,6 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class RacingCarList {
     private final String DELIMITER = ",";
     private final List<Car> carList;
@@ -18,10 +17,5 @@ public class RacingCarList {
             Validation.validateCarName(splitName);
             carList.add(new Car(splitName));
         }
-        System.out.println(carList);
-    }
-
-    public void moveCar(String carName, int position) {
-
     }
 }
