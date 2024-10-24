@@ -22,6 +22,7 @@ pobi,woni,jun
 - [ ] 구분자를 쉼표(,)가 아닐 경우(공백 포함), ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
 - [ ] 입력의 시작이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
 - [ ] 입력의 마지막이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
+- [ ] 아무런 값도 입력하지 않은 경우("", " "), ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
 
 - [ ] 자동차 이름 5글자를 초과할 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트)
 - [ ] 중복된 이름의 자동차를 입력할 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트, 자동차 비교)
