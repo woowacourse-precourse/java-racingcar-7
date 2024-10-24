@@ -12,4 +12,8 @@ public class Car {
     public void increaseDistance(){
         this.distance++;
     }
+
+    public String toString(){
+        return this.name + " : " + "-".repeat(this.distance);
+    }
 }
