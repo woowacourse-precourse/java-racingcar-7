@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OutputView {
 
-    public void printWinner(List<String> winners) {
+    public static void printWinner(List<String> winners) {
         System.out.print(WINNER + " ");
         System.out.print(String.join(",", winners));
     }

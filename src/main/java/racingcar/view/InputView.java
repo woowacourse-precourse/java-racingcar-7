@@ -6,12 +6,12 @@ import static racingcar.global.Message.ENTER_TRY_COUNT;
 
 public class InputView {
 
-    public String getCarName() {
+    public static String getCarName() {
         System.out.println(ENTER_CAR_NAMES.getMessage());
         return readLine();
     }
 
-    public String getTryCounts() {
+    public static String getTryCounts() {
         System.out.println(ENTER_TRY_COUNT.getMessage());
         return readLine();
     }
