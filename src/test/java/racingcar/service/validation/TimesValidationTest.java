@@ -14,7 +14,7 @@ class TimesValidationTest {
         // given
         String input = "";
         // when, then
-        Assertions.assertThatThrownBy(()->TimesValidation.validateNotEmpty(input))
+        Assertions.assertThatThrownBy(()->TimesValidation.validateEmpty(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ class TimesValidationTest {
         // given
         String input = null;
         // when, then
-        Assertions.assertThatThrownBy(()->TimesValidation.validateEmpty(input))
+        Assertions.assertThatThrownBy(()->TimesValidation.validateNull(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -35,20 +35,12 @@ class TimesValidationTest {
         Assertions.assertThatThrownBy(()->TimesValidation.validateCharacter(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    // 숫자로 변환 후 사용되는 메서드들
-
-    @DisplayName("음수 입력 시 IllegalArgumentException 발생")
-    @Test
-    void 음수_입력_예외(){
-        Assertions.assertThatThrownBy(()->TimesValidation.validateNegative(-1))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("정수 범위를 넘어가는 숫자 입력 시 IllegalArgumentException 발생")
-    @Test
-    void 정수_범위__초과_예외(){
-        Assertions.assertThatThrownBy(()->TimesValidation.validateIntegerRange(Integer.MAX_VALUE+1))
+    
+    @DisplayName("정수가 아닌 숫자 입력 시 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0})
+    void 정수_외의_숫자_입력_예외(int input){
+        Assertions.assertThatThrownBy(()->TimesValidation.validateZeroOrNegative(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
