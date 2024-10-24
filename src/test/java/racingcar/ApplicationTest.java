@@ -1,8 +1,12 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.vehicle.Car;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -38,10 +42,32 @@ class ApplicationTest extends NsTest {
     }
 
 
+    @DisplayName("자동차_생성_테스트")
     @Test
-    void 숫자_랜덤() {
-        for (int i=0; i<10; i++) {
-            System.out.println("0-9 사이에서 뽑힌 랜덤한 숫자는 " + Randoms.pickNumberInRange(0, 9));
-        }
+    void createCar() {
+        Car car = new Car("pobi");
+        int result = car.getCnt();
+        assertThat(0).isEqualTo(result);
+        assertThatThrownBy(() -> {
+            new Car("javajii");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    /*
+        TODO : 사용자 입력받기 테스트 하려고하는데, Console.readLine() 실행 시 에러 발생하는데 이유 찾아보기.
+     */
+
+    @DisplayName("자동차_다수_생성_테스트")
+    @Test
+    void createCars() {
+        ArrayList<Car> cars = new ArrayList<>();
+        String input = "pobi,woni,jun";
+        for (String name : input.split(",")) {
+            Car car = new Car(name);
+            cars.add(car);
+        }
+        assertThat(3).isEqualTo(cars.size());
+    }
+
+
 }
