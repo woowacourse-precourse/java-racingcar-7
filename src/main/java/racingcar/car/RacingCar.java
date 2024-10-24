@@ -18,8 +18,8 @@ public class RacingCar {
         return carName;
     }
 
-    public void forwardCar(int move) {
-        distance += move;
+    public void moveForwardOneStep() {
+        distance += 1;
     }
 
     public void printMoveStatus() {
