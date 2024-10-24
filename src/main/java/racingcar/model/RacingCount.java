@@ -5,6 +5,7 @@ import java.util.Objects;
 public class RacingCount {
 
     private static final int MIN_COUNT = 1;
+    private static final int END_COUNT = 0;
 
     private int count;
 
@@ -19,6 +20,10 @@ public class RacingCount {
 
     public void deduct() {
         this.count -= 1;
+    }
+
+    public boolean isEnd() {
+        return this.count == END_COUNT;
     }
 
     public int getCount() {
