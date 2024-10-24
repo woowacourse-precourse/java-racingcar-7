@@ -25,5 +25,18 @@ public class Application {
             cars.add(car);
         }
 
+        Game controllGame = new Game(cars,N);
+        for(int i = 0; i < controllGame.getTrial(); i++)
+        {
+            for(Car car : controllGame.getCarList())
+            {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if(randomNumber >= 4) {
+                    car.setStep(car.getStep() + 1);
+                }
+            }
+            System.out.println();
+        }
+
     }
 }
