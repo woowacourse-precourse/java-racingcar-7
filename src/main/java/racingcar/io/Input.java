@@ -5,18 +5,17 @@ import camp.nextstep.edu.missionutils.Console;
 public class Input {
     public String carNames() {
         String carNames = Console.readLine().trim();
-        isCarNamesInputValid(carNames);
+        validateCarNamesInput(carNames);
         return carNames;
     }
 
-
-
-    private void isCarNamesInputValid(String carNames) {
-        isCarNameInputBlank(carNames);
-        isCommaSeparated(carNames);
+    private void validateCarNamesInput(String carNames) {
+        validateCarNameInputBlank(carNames);
+        validateNotEndingWithComma(carNames);
+        validateCommaSeparated(carNames);
     }
 
-    private void isCommaSeparated(String carNames) {
+    private void validateCommaSeparated(String carNames) {
         String[] names = carNames.split(",");
         for (String name : names) {
             if(name.isEmpty()){
@@ -25,7 +24,13 @@ public class Input {
         }
     }
 
-    private void isCarNameInputBlank(String carNames) {
+    private void validateNotEndingWithComma(String carNames) {
+        if(carNames.endsWith(",")){
+            throw new IllegalArgumentException("Write valid comma between names");
+        }
+    }
+
+    private void validateCarNameInputBlank(String carNames) {
         if(carNames.trim().isEmpty()) {
             throw new IllegalArgumentException("Input is Blank");
         }
