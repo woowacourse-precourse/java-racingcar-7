@@ -30,7 +30,17 @@ public class Application {
     }
 
     public static List<String> divideMember(String input) {
-        return List.of(input.split(","));
+        String[] names = input.split(",");
+        for (String name : names) {
+            validateName(name);
+        }
+        return List.of(names);
+    }
+
+    private static void validateName(String name) {
+        if (name.length() >= 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자 이상으로 작성할수 없습니다.");
+        }
     }
 
 
@@ -61,7 +71,7 @@ public class Application {
 
     public static void printEachRaceResult(List<String> participantName, List<Integer> participantCount) {
         for (int i = 0; i < participantName.size(); i++) {
-            System.out.print(participantName.get(i) + ":");
+            System.out.print(participantName.get(i) + " : ");
             for (int i2 = 0; i2 < participantCount.get(i); i2++) {
                 System.out.print("-");
             }
@@ -89,6 +99,6 @@ public class Application {
     }
 
     public static void printWinner(List<Integer> maxCountList, List<String> participants) {
-        System.out.println("최종우승자 : " + String.join(",", getNameOfIndex(maxCountList, participants)));
+        System.out.println("최종 우승자 : " + String.join(",", getNameOfIndex(maxCountList, participants)));
     }
 }

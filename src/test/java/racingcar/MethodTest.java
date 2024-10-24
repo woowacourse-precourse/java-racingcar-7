@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,17 @@ public class MethodTest {
         List<String> result = Application.divideMember(given);
 
         assertThat(result).hasSize(3).containsOnly("pobi", "woni", "jun");
+    }
+
+    @Test
+    @DisplayName("문자열을 분리 할때 특정 이름이 5글자 이상이면 IllegalArguementException을 발생시킨다")
+    void test_21() {
+        String given = "morethanfive,woni,jun";
+
+        IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Application.divideMember(given));
+        assertEquals(illegalArgumentException.getMessage(), "자동차 이름은 5글자 이상으로 작성할수 없습니다.");
+
     }
 
     @Test
@@ -73,7 +85,7 @@ public class MethodTest {
 
         Application.printEachRaceResult(givenName, givenCount);
 
-        assertEquals("nameA:-\nnameB:---\nnameC:--\nnameD:\nnameE:----", outputStreamCaptor.toString().trim());
+        assertEquals("nameA : -\nnameB : ---\nnameC : --\nnameD : \nnameE : ----", outputStreamCaptor.toString().trim());
         System.setOut(standardOut);
     }
 
@@ -143,7 +155,7 @@ public class MethodTest {
 
         Application.printWinner(givenIndexList, givenNameList);
 
-        assertEquals("최종우승자 : lee,park,han", outputStreamCaptor.toString().trim());
+        assertEquals("최종 우승자 : lee,park,han", outputStreamCaptor.toString().trim());
         System.setOut(standardOut);
 
     }
@@ -170,10 +182,7 @@ public class MethodTest {
 
         Application.printWinner(givenIndexList, givenNameList);
 
-        assertEquals("최종우승자 : choi", outputStreamCaptor.toString().trim());
+        assertEquals("최종 우승자 : choi", outputStreamCaptor.toString().trim());
         System.setOut(standardOut);
-
     }
-
-
 }
