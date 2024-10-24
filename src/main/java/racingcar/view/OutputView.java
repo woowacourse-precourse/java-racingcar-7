@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.RacingCars;
 import racingcar.service.RacingRoundResult;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class OutputView {
         System.out.println();
         System.out.println("실행 결과");
         printRoundResults(racingRoundResults);
+    }
+
+    public void printWinners(RacingCars racingCars) {
+        System.out.println("최종 우승자 : " + racingCars.getJoinedNames(", "));
     }
 
     private void printRoundResults(List<RacingRoundResult> racingRoundResults) {
