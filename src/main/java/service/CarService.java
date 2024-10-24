@@ -27,6 +27,10 @@ public class CarService {
     }
 
     public boolean validateCarName(String newCarName) {
+        if (newCarName.isBlank()) {
+            return false;
+        }
+
         if (!isCarExist(newCarName)) {
             int carNameLength = newCarName.length();
             return carNameLength > 0 && carNameLength <= 5;
