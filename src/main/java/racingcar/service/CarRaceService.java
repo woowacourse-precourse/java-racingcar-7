@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import racingcar.domain.Car;
@@ -11,7 +12,10 @@ public class CarRaceService {
     private CarRace carRace;
 
     public void init(String carNames) {
-        carRace = new CarRace(carNames);
+        List<Car> cars = Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .toList();
+        carRace = new CarRace(cars);
     }
 
     public void moveCars() {
