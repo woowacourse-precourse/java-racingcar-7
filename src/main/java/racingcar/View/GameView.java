@@ -1,6 +1,6 @@
 package racingcar.View;
 
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import racingcar.Model.Car;
 import racingcar.Model.GameCars;
 
@@ -19,9 +19,12 @@ public class GameView {
     }
 
     public void findWinnerCars(){
-        gameCars.getCars().stream()
+
+        String winners=gameCars.getCars().stream()
                 .filter(car -> car.getOngoingCount()== gameCars.findWinnerPositions())
-                .forEach(car->System.out.println(car.getName()));
+                .map(car->car.getName())
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : "+winners);
     }
 
 
