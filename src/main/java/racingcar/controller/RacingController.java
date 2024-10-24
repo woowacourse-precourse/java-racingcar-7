@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import static racingcar.view.OutputView.*;
 import static racingcar.view.RaceMessage.*;
 import static racingcar.view.InputView.*;
 
@@ -26,4 +27,17 @@ public class RacingController {
         }
     }
 
+    private void startRace() {
+        int rounds = race.getRounds();
+        StringBuilder sb = new StringBuilder();
+
+        printMessage(PRINT_RACE_RESULT.getMessage());
+
+        while (rounds-- > 0) {
+            race.moveCars();
+            sb.append(race.getRaceResult()).append('\n');
+        }
+
+        printMessage(sb.toString());
+    }
 }
