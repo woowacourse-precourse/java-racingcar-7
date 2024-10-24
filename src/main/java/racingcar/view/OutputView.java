@@ -8,7 +8,7 @@ import java.util.List;
 public class OutputView {
 
     public static void printWinner(List<String> winners) {
-        System.out.print(WINNER.getMessage() + " ");
+        System.out.print(WINNER.getMessage());
         System.out.print(String.join(",", winners));
     }
 
