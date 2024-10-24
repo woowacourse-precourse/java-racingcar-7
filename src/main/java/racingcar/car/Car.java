@@ -7,9 +7,10 @@ public class Car {
     private final String name;
     private int position;
     private final MovingStrategy movingStrategy;
+    private static final Integer MAX_NAME_LENGTH = 5;
 
     public Car(String inputName, MovingStrategy movingStrategy) {
-        validateBlank(inputName);
+        validate(inputName);
         this.name = inputName;
         this.movingStrategy = movingStrategy;
     }
@@ -20,17 +21,21 @@ public class Car {
         }
     }
 
-    private void validateBlank(String inputName){
+    private void validate(String inputName){
         if (Objects.isNull(inputName) || inputName.isBlank()){
             throw new IllegalArgumentException(ErrorMessage.BLANK_CAR_NAME.getMessage());
+        }
+
+        if (inputName.length() > MAX_NAME_LENGTH){
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH_EXCEEDED.getMessage());
         }
     }
 
     public int getPosition() {
-        return position++;
+        return this.position;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }
