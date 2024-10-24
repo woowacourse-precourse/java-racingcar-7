@@ -5,6 +5,9 @@ import racingcar.utils.ErrorMessage;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 자동차 이름 입력값을 검증 기능 수행
+ */
 public class CarNames {
 
     public static final String ONLY_DIGIT_ALPHABET_HANGEUL = "[0-9a-zA-Z가-힣]";

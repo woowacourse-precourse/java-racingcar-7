@@ -10,8 +10,9 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 /**
- * 전체적인 진행을 맡는 클래스
- * View와 메시지를 주고 받는다.
+ * InputView로부터 자동차 이름과 주행 시도 횟수 문자열을 건네 받아서
+ * 객체 생성 후 Cars 객체를 생성한다. Service에게 Cars객체와 RacingChance를
+ * 넘겨주고 결과 값을 요청하며 OutputView에 결과를 전달한다.
  */
 public class RacingControllerImpl implements RacingController {
 

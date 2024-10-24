@@ -1,5 +1,8 @@
 package racingcar.utils;
 
+/**
+ * 예외 메시지 관련 클래스
+ */
 public enum ErrorMessage {
 
     EMPTY_INPUT("문자열이 공백입니다. 숫자를 입력하세요."),

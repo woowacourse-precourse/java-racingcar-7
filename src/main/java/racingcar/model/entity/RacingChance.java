@@ -2,6 +2,9 @@ package racingcar.model.entity;
 
 import racingcar.utils.ErrorMessage;
 
+/**
+ * 주행 시도 횟수를 담은 객체 : 입력값 검증 기능 수행
+ */
 public class RacingChance {
 
     private final int chance;

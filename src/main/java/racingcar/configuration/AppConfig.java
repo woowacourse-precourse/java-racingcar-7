@@ -10,6 +10,10 @@ import racingcar.view.ConsoleOutputView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+/**
+ * Controlller, Service, Repository, InputView, OutputView 객체를 생성하고,
+ * 클래스 인터페이스 구현체를 선택해서 의존성 주입한다.
+ */
 public class AppConfig {
 
     public InputView getInputView() {

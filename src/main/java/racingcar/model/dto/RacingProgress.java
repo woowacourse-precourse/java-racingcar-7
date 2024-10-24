@@ -3,7 +3,7 @@ package racingcar.model.dto;
 import racingcar.model.entity.Car;
 
 /**
- * 자동차 주행 과정을 전달하는 DTO
+ * 자동차 주행 과정을 담아 전달하는 DTO
  */
 public class RacingProgress {
 

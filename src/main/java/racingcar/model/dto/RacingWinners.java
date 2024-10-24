@@ -5,7 +5,7 @@ import racingcar.model.entity.Cars;
 import java.util.List;
 
 /**
- * 자동차 레이스 실행 결과를 저장한 클래스
+ * 자동차 경주 우승자 정보를 담아서 전달하는 객체
  */
 public class RacingWinners {
 

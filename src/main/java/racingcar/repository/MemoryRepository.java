@@ -8,6 +8,9 @@ import racingcar.utils.IOMessage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 자동차 경주 결과를 메모리에 저장하는 메로리 저장소
+ */
 public class MemoryRepository implements Repository {
 
     private final List<String> memory;
