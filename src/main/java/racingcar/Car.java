@@ -17,7 +17,7 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException();
         }
-        this.name = name;
+        this.name = name.trim();
         this.position = position;
     }
 
@@ -28,4 +28,9 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
