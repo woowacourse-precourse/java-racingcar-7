@@ -2,7 +2,7 @@ package racingcar.domain.movement;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class randomMovementGenerator implements randomMovement {
+public class RandomMovementGenerator implements RandomMovement {
 
     public static final Integer RANDOM_MOVE_THRESHOLD = 4;
 

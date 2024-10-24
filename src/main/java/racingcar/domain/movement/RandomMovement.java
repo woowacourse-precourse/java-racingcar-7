@@ -1,6 +1,6 @@
 package racingcar.domain.movement;
 
-public interface randomMovement {
+public interface RandomMovement {
 
     public boolean randomMove();
 
