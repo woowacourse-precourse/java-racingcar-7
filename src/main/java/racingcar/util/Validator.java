@@ -1,5 +1,13 @@
 package racingcar.util;
 
+import static racingcar.enums.ErrorMessage.ATTEMPTS_LESS_THAN_ONE;
+import static racingcar.enums.ErrorMessage.DUPLICATE_CAR_NAMES;
+import static racingcar.enums.ErrorMessage.EMPTY_CAR_NAME;
+import static racingcar.enums.ErrorMessage.EMPTY_CAR_NAMES;
+import static racingcar.enums.ErrorMessage.INVALID_ATTEMPTS_NUMBER;
+import static racingcar.enums.ErrorMessage.INVALID_CAR_NAME_LENGTH;
+import static racingcar.enums.ErrorMessage.SINGLE_CAR_NAME;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,28 +16,28 @@ public class Validator {
 
     public static void validateCarNames(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해 주세요.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAMES.getMessage());
         }
 
         String[] namesArray = carNames.split(",", -1);
         if (namesArray.length == 1) {
-            throw new IllegalArgumentException("자동차의 이름은 2개 이상 입력해 주세요.");
+            throw new IllegalArgumentException(SINGLE_CAR_NAME.getMessage());
         }
 
         Arrays.stream(namesArray).forEach(Validator::validateCarName);
 
         Set<String> uniqueNames = new HashSet<>(Arrays.asList(namesArray));
         if (uniqueNames.size() != namesArray.length) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAMES.getMessage());
         }
     }
 
     public static void validateCarName(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
         }
         if (name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAME.getMessage());
         }
     }
 
@@ -37,10 +45,10 @@ public class Validator {
         try {
             int attemptCount = Integer.parseInt(attempts);
             if (attemptCount <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
+                throw new IllegalArgumentException(ATTEMPTS_LESS_THAN_ONE.getMessage());
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_ATTEMPTS_NUMBER.getMessage());
         }
     }
 }
