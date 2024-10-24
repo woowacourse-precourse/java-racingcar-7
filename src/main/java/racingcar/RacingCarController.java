@@ -13,10 +13,15 @@ public class RacingCarController {
             String.format("자동차의 개수는 %d 이상 %d 이하여야 합니다.", MIN_CAR_LENGTH, MAX_CAR_LENGTH);
     private static final int MIN_ROUND = 1;
     private static final int MAX_ROUND = 100;
+    private static final String RACE_ROUND_LENGTH_ERROR_MESSAGE =
+            String.format("시도 횟수는 %d 이상 %d 이하여야 합니다.", MIN_CAR_LENGTH, MAX_CAR_LENGTH);
 
     public void racing(List<String> carNames, int raceRound) {
         if (carNames.size() < MIN_ROUND || carNames.size() > MAX_ROUND) {
             throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
+        }
+        if (raceRound < MIN_ROUND || raceRound > MAX_ROUND) {
+            throw new IllegalArgumentException(RACE_ROUND_LENGTH_ERROR_MESSAGE);
         }
 
         List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
