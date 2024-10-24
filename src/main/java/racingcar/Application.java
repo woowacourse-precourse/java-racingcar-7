@@ -115,13 +115,23 @@ public class Application {
 
         final String[] names = splitDelimiter(inputName);
 
+        validateCarNames(names);
+
         validateNameLength(names);
 
         return names;
     }
 
-    private static void validateInputEmpty(String inputName) {
-        if (inputName.isEmpty()) {
+    private static void validateCarNames(String[] names) {
+        for (String name : names){
+            if (name.isEmpty()){
+                throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
+            }
+        }
+    }
+
+    public static void validateInputEmpty(String inputName) {
+        if (inputName == null || inputName.isEmpty()) {
             throw new IllegalArgumentException("내용을 입력해주세요.");
         }
     }
