@@ -9,8 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.car.Car;
-import racingcar.car.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 class CarPositionsDisplayTest {
 

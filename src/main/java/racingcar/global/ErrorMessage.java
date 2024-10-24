@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.global;
 
 public enum ErrorMessage {
     // 도메인관련

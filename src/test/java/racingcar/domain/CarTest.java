@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.ErrorMessage;
+import racingcar.global.ErrorMessage;
 
 class CarTest {
 

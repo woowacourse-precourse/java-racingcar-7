@@ -1,11 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.car.Car;
-import racingcar.car.Cars;
-import racingcar.car.MovingStrategy;
-import racingcar.car.RandomMovingStrategy;
 import racingcar.presentation.CarPositionsDisplay;
 
 public class GameRound {

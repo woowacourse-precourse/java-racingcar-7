@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -8,7 +8,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     private static final int MOVABLE_THRESHOLD = 4;
 
     @Override
-    public boolean movable() {
+    public boolean shouldMove() {
         int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
         return randomNumber >= MOVABLE_THRESHOLD;
     }

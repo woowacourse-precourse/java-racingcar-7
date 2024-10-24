@@ -1,7 +1,7 @@
 package racingcar.presentation;
 
 import java.util.Objects;
-import racingcar.ErrorMessage;
+import racingcar.global.ErrorMessage;
 
 public class InputValidator {
     private static final String POSITIVE_INTEGER_REGEX = "\\d+";

@@ -1,7 +1,7 @@
-package racingcar.car;
+package racingcar.domain;
 
 import java.util.Objects;
-import racingcar.ErrorMessage;
+import racingcar.global.ErrorMessage;
 
 public class Car {
     private final String name;
@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void move() {
-        if (movingStrategy.movable()){
+        if (movingStrategy.shouldMove()){
             position++;
         }
     }

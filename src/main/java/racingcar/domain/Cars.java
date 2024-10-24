@@ -1,10 +1,10 @@
-package racingcar.car;
+package racingcar.domain;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import racingcar.ErrorMessage;
+import racingcar.global.ErrorMessage;
 
 public record Cars(List<Car> carList) {
     // 일급 컬렉션으로 사용한다.

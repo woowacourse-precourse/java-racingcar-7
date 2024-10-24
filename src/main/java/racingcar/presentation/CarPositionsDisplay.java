@@ -2,8 +2,8 @@ package racingcar.presentation;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.car.Car;
-import racingcar.car.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 // Car 도메인이 책임을 져야 하는가? 아니면 Display 클래스가 필요한가? 고민한다.
 public class CarPositionsDisplay {
