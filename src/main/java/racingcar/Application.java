@@ -12,9 +12,9 @@ public class Application {
         String carNames = readLine();
 
         System.out.println(IOMessage.INPUT_TRY_COUNT);
-        String tryCount = readLine();
+        String inputTryCount = readLine();
 
-        isValidName(carNames);
+        boolean validInput = isValidName(carNames) && isValidTryCount(inputTryCount);
     }
 
     public static boolean isValidName(String carNames) {
@@ -54,6 +54,25 @@ public class Application {
     public static void validateEmpty(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("빈 값이다.");
+        }
+    }
+
+    public static boolean isValidTryCount(String inputTryCount) {
+        validateNumberFormat(inputTryCount);
+        validateBound(inputTryCount);
+
+        return true;
+    }
+
+    public static void validateNumberFormat(String inputTryCount) {
+        if(!inputTryCount.matches("[1-9]+")) {
+            throw new IllegalArgumentException("숫자가 아닌 문자가 있다.");
+        }
+    }
+
+    public static void validateBound(String inputTryCount) {
+        if (Integer.parseInt(inputTryCount) < 0) {
+            throw new IllegalArgumentException("int 범위를 초과했다.");
         }
     }
 }
