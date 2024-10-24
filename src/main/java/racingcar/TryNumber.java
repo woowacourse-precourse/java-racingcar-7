@@ -3,7 +3,7 @@ package racingcar;
 public class TryNumber {
     private String tryNumber;
 
-    public String getTryNumber() {
+    public String getTryNumber(String as) {
         return tryNumber;
     }
 

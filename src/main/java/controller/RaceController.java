@@ -14,7 +14,7 @@ public class RaceController {
     public void start() {
         Car car = new Car();
         setCars(car);
-        set
+        setTryNumber(car);
     }
 
 
@@ -26,6 +26,13 @@ public class RaceController {
             setCars(car);
         }
     }
-
+    public void setTryNumber(Car car) {
+        try {
+            car.setTryNumber(InputView.pringGetTryNumberMessage());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
+            setTryNumber(car);
+        }
+    }
 
 }
