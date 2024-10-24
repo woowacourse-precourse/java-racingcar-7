@@ -5,6 +5,8 @@ import java.util.HashSet;
 
 public class CarNameValidator {
 
+    private static final int MAX_LENGTH = 5;
+    private static final String REGEX = "[a-zA-Z ]"; // 우선은 알파벳 및 공백만 허용
     private String[] input;
     private HashSet<String> nameSet;
     public void validateCarNames(String[] input){
@@ -12,11 +14,9 @@ public class CarNameValidator {
         setInput(input);
 
         checkNull();
+        checkEmpty();
 
-        for (String s : input) {
-            checkEmptyToken(s);
-            checkDuplicate(s);
-        }
+        validateTokens();
     }
 
     private void setInput(String[] input){
@@ -26,6 +26,21 @@ public class CarNameValidator {
     private void checkNull(){
         if(input == null){
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkEmpty(){
+        if(input.length == 0){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateTokens(){
+        for (String s : input) {
+            checkEmptyToken(s);
+            checkDuplicate(s);
+            checkLength(s);
+            checkFormat(s);
         }
     }
 
@@ -41,6 +56,18 @@ public class CarNameValidator {
             throw new IllegalArgumentException();
         }
         nameSet.add(token);
+    }
+
+    private void checkLength(String token){
+        if(token.length() > MAX_LENGTH){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkFormat(String token){
+        if(!token.matches(REGEX)){
+            throw new IllegalArgumentException();
+        }
     }
 
 
