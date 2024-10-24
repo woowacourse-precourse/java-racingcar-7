@@ -14,7 +14,7 @@ public class CarNameValidator implements ValidationStrategy {
     public void validate(String carNames) {
         validateNotNullOrEmpty(carNames);
         List<String> names = splitCarNames(carNames);
-        validateCarNames(names);
+        validateAllNames(names);
         validateMinimumCarCount(names);
     }
 
@@ -28,14 +28,15 @@ public class CarNameValidator implements ValidationStrategy {
         return Stream.of(carNames.split(",")).map(String::trim).collect(Collectors.toList());
     }
 
-    private void validateCarNames(List<String> names) {
-        Set<String> nameSet = new HashSet<>(); // 중복 확인을 위한 Set
+    private void validateAllNames(List<String> names) {
+        Set<String> nameSet = new HashSet<>();
+        names.forEach(name -> validateSingleName(nameSet, name));
+    }
 
-        for (String name : names) {
-            validateNotEmpty(name);
-            validateLength(name);
-            validateNoDuplicates(nameSet, name);
-        }
+    private void validateSingleName(Set<String> nameSet, String name) {
+        validateNotEmpty(name);
+        validateLength(name);
+        validateNoDuplicates(nameSet, name);
     }
 
     private void validateNotEmpty(String name) {
