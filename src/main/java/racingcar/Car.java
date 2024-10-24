@@ -22,6 +22,10 @@ public class Car {
         return name;
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
     public void goForward() {
         position++;
     }
