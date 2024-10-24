@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -30,6 +31,10 @@ public class Cars {
             }
         }
         return maxMovedDistance;
+    }
+
+    public List<Car> getCars(){
+        return Collections.unmodifiableList(cars);
     }
 
 }
