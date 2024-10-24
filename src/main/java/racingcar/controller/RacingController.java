@@ -11,6 +11,9 @@ public class RacingController {
         OutputView.printInputCarName();
         String carNames = InputView.inputCarName();
         Cars cars = new Cars(CarFactory.createCars(carNames));
+
+        OutputView.printInputTryCount();
+        int tryCount = Integer.parseInt(InputView.inputTryCount());
     }
 
 }

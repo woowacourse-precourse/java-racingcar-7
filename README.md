@@ -7,8 +7,8 @@
 ### 📌 자동차 생성
 
 - [x] 자동차 이름은 쉼표(,)를 기준으로 구분하며, 5자 이하로 입력한다.
-- [ ] 경주를 시도할 횟수를 입력한다.
-- [ ] 사용자가 입력하는 값은 ``camp.nextstep.edu.missionutils.Console``의 ``readLine()``을 활용한다.
+- [x] 경주를 시도할 횟수를 입력한다.
+- [x] 사용자가 입력하는 값은 ``camp.nextstep.edu.missionutils.Console``의 ``readLine()``을 활용한다.
 
 ```text
 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
