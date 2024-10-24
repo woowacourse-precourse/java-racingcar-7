@@ -1,9 +1,9 @@
-package racingcar.util;
+package racingcar.view;
 
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputUtil {
+public class InputView {
     public String userInput(){
         return Console.readLine();
     }

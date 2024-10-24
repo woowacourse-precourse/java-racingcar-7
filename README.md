@@ -35,7 +35,7 @@ pobi,woni,jun
 
 - [x] 시도할 횟수
   - [x] 입력값이 정수가 아닐 경우 `IllegalArgumentException`
-  - [x] isDigit(입력값)이 0 이하일 경우 `IllegalArgumentException`
+  - [x] 입력값이 0 이하일 경우 `IllegalArgumentException`
 
 ### 💫진행
 
