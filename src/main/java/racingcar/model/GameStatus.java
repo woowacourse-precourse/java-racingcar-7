@@ -12,7 +12,7 @@ public class GameStatus {
     private static final int ATTEMPTS_BASE = 0;
     private static final int MINIMUM_TOTAL_ATTEMPTS = 1;
 
-    private final Map<Car, Integer> racers;
+    private final Map<Car, Integer> racersMovement;
     private final int totalAttempts;
     private int currentAttempts;
 
@@ -22,13 +22,13 @@ public class GameStatus {
         this.totalAttempts = totalAttempts;
         this.currentAttempts = ATTEMPTS_BASE;
 
-        this.racers = new LinkedHashMap<>();
+        this.racersMovement = new LinkedHashMap<>();
         for (Car racer : racers) {
-            this.racers.put(racer, MOVEMENT_BASE);
+            this.racersMovement.put(racer, MOVEMENT_BASE);
         }
     }
 
-    public static GameStatus from(final int totalAttempts, final List<Car> racers) {
+    public static GameStatus of(final int totalAttempts, final List<Car> racers) {
         return new GameStatus(totalAttempts, racers);
     }
 
@@ -48,11 +48,11 @@ public class GameStatus {
 
     public void updateRacerByMovementCondition(Car racer, MovementCondition movementCondition) {
         if (movementCondition == MovementCondition.FORWARD) {
-            racers.put(racer, racers.get(racer) + Car.MOVE_FORWARD_SPEED);
+            racersMovement.put(racer, racersMovement.get(racer) + Car.MOVE_FORWARD_SPEED);
         }
     }
 
-    public Map<Car, Integer> getRacers() {
-        return Collections.unmodifiableMap(racers);
+    public Map<Car, Integer> getRacersMovement() {
+        return Collections.unmodifiableMap(racersMovement);
     }
 }
