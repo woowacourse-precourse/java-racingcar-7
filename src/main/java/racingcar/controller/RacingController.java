@@ -6,15 +6,17 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
+    private final InputView inputView;
     private final OutputView outputView;
     private final RacingService racingService;
 
     public RacingController() {
-        InputView inputView = new InputView();
+        inputView = new InputView();
         outputView = new OutputView();
         racingService = new RacingService(inputView.getCarList());
 
         start(inputView.getTryNumber());
+        end();
     }
 
     private void start(long tryNumber) {
@@ -27,5 +29,9 @@ public class RacingController {
         }
 
         outputView.printFinalWinner(racingService.getWinner());
+    }
+
+    private void end() {
+        inputView.close();
     }
 }

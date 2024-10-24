@@ -2,14 +2,14 @@ package racingcar.view;
 
 import java.util.HashMap;
 import java.util.List;
-import racingcar.ListToStringParser;
+import racingcar.converter.ListToStringConverter;
 import racingcar.domain.Car;
 
 public class OutputView {
-    private final ListToStringParser listToStringParser;
+    private final ListToStringConverter listToStringConverter;
 
     public OutputView() {
-        listToStringParser = new ListToStringParser();
+        listToStringConverter = new ListToStringConverter();
     }
 
     public void printRoundOutput(HashMap<Car, Long> carToRacingProgress) {
@@ -17,14 +17,14 @@ public class OutputView {
         for (Car car : carToRacingProgress.keySet()) {
             sb.append(car.name())
                     .append(" : ")
-                    .append(listToStringParser.changeNumberToProgressString(carToRacingProgress.get(car)))
+                    .append(listToStringConverter.changeNumberToProgressString(carToRacingProgress.get(car)))
                     .append("\n");
         }
         System.out.println(sb);
     }
 
     public void printFinalWinner(List<String> winnerList) {
-        System.out.println(ConsoleMessage.FINAL_WiNNER + listToStringParser.joinListToString(winnerList));
+        System.out.println(ConsoleMessage.FINAL_WiNNER + listToStringConverter.joinListToString(winnerList));
     }
 
 }

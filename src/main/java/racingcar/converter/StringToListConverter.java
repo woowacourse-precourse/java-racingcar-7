@@ -1,12 +1,12 @@
-package racingcar;
+package racingcar.converter;
 
 import java.util.List;
 import racingcar.exception.Validator;
 
-public class StringToListParser {
+public class StringToListConverter {
     private final String input;
 
-    public StringToListParser(String input) {
+    public StringToListConverter(String input) {
         this.input = escapeSpecialRegexChars(input);
     }
 

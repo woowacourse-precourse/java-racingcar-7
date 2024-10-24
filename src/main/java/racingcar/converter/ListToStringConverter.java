@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.converter;
 
 import java.util.List;
 
-public class ListToStringParser {
+public class ListToStringConverter {
 
     public String joinListToString(List<String> list) {
         if (list.size() == 1) {
