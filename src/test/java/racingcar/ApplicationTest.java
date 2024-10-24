@@ -18,35 +18,48 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
+
     @Test
-    void function(){
-        run("pobi,woni", "1");
-        assertThat(RacingCar.input()).contains("pobi,woni","1");
-        assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi","woni");
+    void function() {
+        assertThat(RacingCar.splitParticipants("pobi,woni")).contains("pobi", "woni");
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi","bee9827"),"1"))
+                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi", "bee9827"), "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi","woni"),"A"))
+                assertThatThrownBy(() -> RacingCar.checkValid(Arrays.asList("pobi", "woni"), "A"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "0");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, STOP
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,yong", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "yong : -", "최종 우승자 : pobi, woni, yong");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
         );
     }
-
-
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
