@@ -1,25 +1,15 @@
-package racingcar.domain;
+package racingcar.input.converter;
 
-public class RacingTryCount {
+public class InputToRacingTryCountConverter {
 
-    private final int count;
+    public int convert(String input) {
+        int tryCount = toIntValue(input);
 
-    private RacingTryCount(String input) {
-        int count = toIntValue(input);
-
-        if (isNotPositiveValue(count)) {
+        if (isNotPositiveValue(tryCount)) {
             throw new IllegalArgumentException("시도할 횟수는 양수여야 합니다.");
         }
 
-        this.count = count;
-    }
-
-    public static RacingTryCount from(String tryCount) {
-        return new RacingTryCount(tryCount);
-    }
-
-    public int getCount() {
-        return count;
+        return tryCount;
     }
 
     private int toIntValue(String input) {

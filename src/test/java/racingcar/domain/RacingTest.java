@@ -1,7 +1,11 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.input.converter.InputToRacingCarsConverter;
+import racingcar.input.converter.InputToRacingTryCountConverter;
 
+import java.util.LinkedList;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
@@ -9,45 +13,50 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
+    InputToRacingCarsConverter inputToRacingCarsConverter;
+    InputToRacingTryCountConverter inputToRacingTryCountConverter;
+
+    @BeforeEach
+    void before() {
+        inputToRacingCarsConverter = new InputToRacingCarsConverter();
+        inputToRacingTryCountConverter = new InputToRacingTryCountConverter();
+    }
+
     @Test
     void TDD_레이싱_객체_초기화() {
         //given
-        RacingCars racingCars = RacingCars.from("pobi,woni");
-        RacingTryCount tryCount = RacingTryCount.from("5");
+        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = inputToRacingTryCountConverter.convert("5");
 
         //when
-        Racing racing = new Racing(racingCars, tryCount);
+        Racing racing = new Racing(cars, tryCount);
 
         //then
-        assertThat(racing.racingCars()).isEqualTo(racingCars);
+        assertThat(racing.cars()).isEqualTo(cars);
         assertThat(racing.tryCount()).isEqualTo(tryCount);
     }
 
     @Test
     void TDD_정적_팩토리_메서드_of() {
         //given
-        String racingCars = "pobi,woni";
-        String tryCount = "5";
+        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = inputToRacingTryCountConverter.convert("5");
 
         //when
-        Racing racing = Racing.of(racingCars, tryCount);
+        Racing racing = Racing.of(cars, tryCount);
 
         //then
-        assertThat(racing.racingCars().getCars()).extracting(RacingCar::getName).containsExactly("pobi", "woni");
-        assertThat(racing.tryCount().getCount()).isEqualTo(5);
+        assertThat(racing.cars()).isEqualTo(cars);
+        assertThat(racing.tryCount()).isEqualTo(tryCount);
     }
 
     @Test
     void TDD_경주_우승자_찾기() {
         //given
-        String racingCars = "pobi,woni";
-        String tryCount = "5";
-
-        Racing racing = Racing.of(racingCars, tryCount);
+        Racing racing = initRacing();
 
         //when
-        IntStream.rangeClosed(1, racing.tryCount().getCount())
-                .forEach(i -> raceByStep(racing, this::isCarNamePobi));
+        raceStartWithCarFilter(racing, this::isCarNamePobi);
 
         //then
         assertThat(racing.getWinners()).extracting(RacingCar::getName).containsExactly("pobi");
@@ -57,23 +66,30 @@ public class RacingTest {
     @Test
     void TDD_경주_공동_우승자_찾기() {
         //given
-        String racingCars = "pobi,woni";
-        String tryCount = "5";
-
-        Racing racing = Racing.of(racingCars, tryCount);
+        Racing racing = initRacing();
 
         //when
-        IntStream.rangeClosed(1, racing.tryCount().getCount())
-                .forEach(i -> raceByStep(racing, this::isTrue));
+        raceStartWithCarFilter(racing, this::isTrue);
 
         //then
         assertThat(racing.getWinners()).extracting(RacingCar::getName).containsExactly("pobi", "woni");
         assertThat(racing.getWinners()).extracting(RacingCar::getPosition).containsExactly(5, 5);
     }
 
-    private void raceByStep(Racing racing, Predicate<RacingCar> carNameFilter) {
-        racing.racingCars().getCars().stream()
-                .filter(carNameFilter)
+    private Racing initRacing() {
+        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = inputToRacingTryCountConverter.convert("5");
+
+        return Racing.of(cars, tryCount);
+    }
+
+    private void raceStartWithCarFilter(Racing racing, Predicate<RacingCar> carFilter) {
+        IntStream.rangeClosed(1, racing.tryCount()).forEach(i -> raceByStep(racing, carFilter));
+    }
+
+    private void raceByStep(Racing racing, Predicate<RacingCar> carFilter) {
+        racing.cars().stream()
+                .filter(carFilter)
                 .forEach(this::moveCar);
     }
 

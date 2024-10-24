@@ -1,19 +1,24 @@
 package racingcar.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public record Racing(RacingCars racingCars, RacingTryCount tryCount) {
+public record Racing(LinkedList<RacingCar> cars, int tryCount) {
 
-    public static Racing of(String racingCars, String tryCount) {
-        return new Racing(RacingCars.from(racingCars), RacingTryCount.from(tryCount));
+    public static Racing of(LinkedList<RacingCar> cars, int tryCount) {
+        return new Racing(cars, tryCount);
     }
 
     public List<RacingCar> getWinners() {
-        int maxPosition = racingCars.getMaxPosition();
+        int maxPosition = getMaxPosition();
 
-        return racingCars.getCars().stream()
+        return cars.stream()
                 .filter(car -> isSameMaxPosition(car, maxPosition))
                 .toList();
+    }
+
+    private int getMaxPosition() {
+        return cars.stream().mapToInt(RacingCar::getPosition).max().orElse(Integer.MIN_VALUE);
     }
 
     private boolean isSameMaxPosition(RacingCar car, int maxPosition) {

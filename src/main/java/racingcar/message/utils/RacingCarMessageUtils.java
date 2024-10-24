@@ -1,7 +1,8 @@
 package racingcar.message.utils;
 
 import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
+
+import java.util.LinkedList;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
@@ -21,11 +22,10 @@ public class RacingCarMessageUtils {
         return CAR_NAME_POSITION.getFormatMessage(car.getName(), convertSymbolByPosition(car.getPosition()));
     }
 
-    public static String carsResultMessage(RacingCars racingCars) {
+    public static String carsResultMessage(LinkedList<RacingCar> cars) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        racingCars.getCars()
-                .stream()
+        cars.stream()
                 .map(RacingCarMessageUtils::carNamePositionMessage)
                 .forEach(message -> appendLine(stringBuilder, message));
 
@@ -34,11 +34,11 @@ public class RacingCarMessageUtils {
         return stringBuilder.toString();
     }
 
-    private static void appendLine(StringBuilder stringBuilder, String message) {
-        stringBuilder.append(message).append("\n");
-    }
-
     private static void appendLine(StringBuilder stringBuilder) {
         appendLine(stringBuilder, "");
+    }
+
+    private static void appendLine(StringBuilder stringBuilder, String message) {
+        stringBuilder.append(message).append("\n");
     }
 }

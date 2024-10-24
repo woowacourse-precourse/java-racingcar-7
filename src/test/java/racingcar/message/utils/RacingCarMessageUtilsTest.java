@@ -1,13 +1,22 @@
 package racingcar.message.utils;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
-import racingcar.message.utils.RacingCarMessageUtils;
+import racingcar.input.converter.InputToRacingCarsConverter;
+
+import java.util.LinkedList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarMessageUtilsTest {
+
+    InputToRacingCarsConverter inputToRacingCarsConverter;
+
+    @BeforeEach
+    void before() {
+        inputToRacingCarsConverter = new InputToRacingCarsConverter();
+    }
 
     @Test
     void TDD_숫자를_문자_경주_기호로_변환() {
@@ -43,15 +52,14 @@ public class RacingCarMessageUtilsTest {
     void TDD_자동차_여러대_이름_위치_메세지_변환() {
         //given
         String carName = "pobi,woni";
-        RacingCars racingCars = RacingCars.from(carName);
+        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert(carName);
 
-        racingCars.getCars()
-                .stream()
+        cars.stream()
                 .filter(car -> car.getName().equals("pobi"))
                 .forEach(car -> car.move(5));
 
         //when
-        String message = RacingCarMessageUtils.carsResultMessage(racingCars);
+        String message = RacingCarMessageUtils.carsResultMessage(cars);
 
         //then
         System.out.println(message);
