@@ -26,7 +26,7 @@
 > 검증 조건이 추가되거나 변경될 가능성이 있다.
 >
 - [ ]  입력으로 들어온 자동차 이름과 라운드 수를 검증한다. `(확장가능)`
-  - [ ]  자동차들의 이름이 1자 미만이라면 `IllegalArgumentException` 을 발생시킨다. `(판단)`
+  - [x]  자동차들의 이름이 1자 미만이라면 `IllegalArgumentException` 을 발생시킨다. `(판단)`
   - [x]  자동차들의 이름이 5자 초과라면 `IllegalArgumentException`을 발생시킨다.
   - [ ]  게임의 라운드 수가 1 미만이라면 `IllegalArgumentException` 을 발생시킨다. `(판단)`
   - [ ]  분리된 자동차들이 없다면 `IllegalArgumentException` 을 발생시킨다. `(판단)`
