@@ -1,8 +1,8 @@
 package racingcar.model;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -32,6 +32,25 @@ class InputValidatorTest {
                 "pobi", "woni", "corpi",
                 "일", "이이", "삼삼삼", "사사사사", "오오오오오",
                 "갻덄럖뱚휿", "갉랉딽깎쌌"
+        ).map(Arguments::of);
+    }
+
+    @DisplayName("자동차의 이름은 5자이하의 한글, 소문자 영어가 아니면 에러가 발생한다.")
+    @MethodSource("inputCarNameFailureList")
+    @ParameterizedTest
+    void carNameFailureTest(String input) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            inputValidator.validateCarName(input);
+        });
+    }
+
+    static Stream<Arguments> inputCarNameFailureList() {
+        return Stream.of("", " ",
+                "!", "@", "|",
+                "ㄱ", "ㅎ", "ㅏ", "ㅣ",
+                "ㄱㄴㄷㄹㅁ", "ㅏㅑㅓㅕㅗ",
+                "여섯글자문자", "sixsix",
+                "★", "😁"
         ).map(Arguments::of);
     }
 }
