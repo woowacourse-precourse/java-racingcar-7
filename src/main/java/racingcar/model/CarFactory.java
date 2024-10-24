@@ -3,24 +3,17 @@ package racingcar.model;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cars {
-
-  private final List<String> cars;
+public class CarFactory {
   private static final String regex = "(.*[.@].*|.*,,.*|.*,.[.@].*)";
 
-  public Cars(String input) {
-    this.cars = extractCarNames(input);
-  }
-
-  public List<String> getCars() {
-    return cars;
-  }
-
-  private List<String> extractCarNames(String input) {
+  public List<Car> extractCarNames(String input) {
     validateCarNameByComma(input);
-    List<String> extractedCars = Arrays.stream(input.split(","))
+    List<Car> extractedCars = Arrays.stream(input.split(","))
+            .map(String::trim)
             .peek(this::validateCarNameLength)
-            .peek(this::validateCarNameIsEmpty).toList();
+            .peek(this::validateCarNameIsEmpty)
+            .map(Car::new)
+            .toList();
     validateCarNamesCount(extractedCars);
     validateDuplicateCarNames(extractedCars);
     return extractedCars;
@@ -38,13 +31,13 @@ public class Cars {
     if (carName.isEmpty()) throw new IllegalArgumentException("자동차 이름은 빈 문자열이 될 수 없습니다.");
   }
 
-  private void validateCarNamesCount(List<String> extractedCars) {
+  private void validateCarNamesCount(List<Car> extractedCars) {
     if (extractedCars.size() < 2) throw new IllegalArgumentException("자동차는 최소 2대 이상이어야 합니다.");
   }
 
-  private void validateDuplicateCarNames(List<String> extractedCars) {
-    if (extractedCars.size() != extractedCars.stream().distinct().count()) {
-      throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+  private void validateDuplicateCarNames(List<Car> extractedCars) {
+    if (extractedCars.stream().map(Car::getCarName).distinct().count() != extractedCars.size()) {
+      throw new IllegalArgumentException("중복된 자동차 이름은 허용되지 않습니다.");
     }
   }
 }
