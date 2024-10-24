@@ -31,9 +31,9 @@
   - [X] variable : name, distance
   - [X] method : move, of(create Instance)
     - [X] TestCode
-- [ ] Validator Class
-  - [ ] method : validNameLength, validNumber, validCarNameFormat
-    - [ ] TestCode
+- [X] Validator Class
+  - [X] method : validateMinCarCount, validateCarNameLength, tryParserToInt, validatePositiveNumber
+    - [X] TestCode
 
 
 ## Game Class
