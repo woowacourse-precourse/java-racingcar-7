@@ -5,15 +5,10 @@ import racingcar.model.entity.Car;
 /**
  * 자동차 주행 과정을 담아 전달하는 DTO
  */
-public class RacingProgress {
-
-    private final String name;
-
-    private final int progress;
+public record RacingProgress(String name, int progress)  {
 
     public RacingProgress(Car car) {
-        this.name = car.getName();
-        this.progress = car.getProgress();
+        this(car.getName(), car.getProgress());
     }
 
     @Override
