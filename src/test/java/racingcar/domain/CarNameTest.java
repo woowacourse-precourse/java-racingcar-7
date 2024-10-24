@@ -16,7 +16,7 @@ class CarNameTest {
     }
 
     @Test
-    void 자동차_이름생성(){
+    void 자동차_이름생성() {
         CarName carName = new CarName("hwan2");
         assertThat(carName).isNotNull();
     }
