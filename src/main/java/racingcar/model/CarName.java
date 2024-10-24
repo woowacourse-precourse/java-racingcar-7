@@ -7,6 +7,13 @@ public class CarName {
 	private final String name;
 
 	public CarName(String name) {
+		checkNameLength(name);
 		this.name = name;
+	}
+
+	private void checkNameLength(String name) {
+		if (name.length() > CAR_NAME_MAX_LENGTH_LIMIT) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
