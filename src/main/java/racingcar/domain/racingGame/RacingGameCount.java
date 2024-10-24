@@ -10,7 +10,7 @@ public class RacingGameCount {
 	private final int count;
 
 	public RacingGameCount(final String count) {
-		validate(count);
+		validate(count.trim());
 		this.count = Integer.parseInt(count);
 	}
 
