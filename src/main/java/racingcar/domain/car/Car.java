@@ -9,6 +9,10 @@ public class Car {
         this.distance = distance;
     }
 
+    public void moveForward() {
+        distance.addDistance();
+    }
+
     public static Car createCarAtStartLine(String name) {
         return new Car(Name.from(name), Distance.createStartLine());
     }

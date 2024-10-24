@@ -11,6 +11,10 @@ public class Distance {
         return new Distance(0);
     }
 
+    public void addDistance() {
+        this.distance++;
+    }
+
     public Integer getDistance() {
         return distance;
     }
