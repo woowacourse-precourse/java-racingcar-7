@@ -37,6 +37,17 @@ class CustomApplicationTest extends NsTest{
         );
     }
 
+    @Test
+    void SIMULATE_NO_CAR_MOVE(){
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni","1");
+                assertThat(output()).contains("pobi :", "woni :", "최종 우승자 : pobi,woni");
+            },
+            0,0
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
