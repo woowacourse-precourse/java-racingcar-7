@@ -1,8 +1,8 @@
 package racingcar.car;
 
-import static racingcar.car.MovementPolicy.INITIAL_POSITION;
-import static racingcar.car.MovementPolicy.MAX_STEP;
-import static racingcar.car.MovementPolicy.MIN_STEP;
+import static racingcar.car.policy.MovementPolicy.INITIAL_POSITION;
+import static racingcar.car.policy.MovementPolicy.MAX_STEP;
+import static racingcar.car.policy.MovementPolicy.MIN_STEP;
 import static racingcar.car.exception.MovementException.*;
 
 import racingcar.car.exception.MovementException;
@@ -20,16 +20,28 @@ public class MovementDistance {
     }
 
     public MovementDistance increaseDistanceBy(int stepCount) {
-        if(stepCount < MIN_STEP){
-                throw new MinimumStepException();
-        }
-        if(stepCount > MAX_STEP){
-                throw new MovementException.MaximumStepException();
-        }
-        return new MovementDistance(this.value + stepCount);
+       validateStep(stepCount);
+       return new MovementDistance(this.value + stepCount);
     }
 
     public int getValue() {
         return this.value;
+    }
+
+    private void validateStep(int stepCount){
+       validateMinStep(stepCount);
+       validateMaxStep(stepCount);
+    }
+
+    private void validateMinStep(int stepCount){
+        if(stepCount < MIN_STEP){
+                throw new MinimumStepException();
+        }
+    }
+
+    private void validateMaxStep(int stepCount){
+        if(stepCount > MAX_STEP){
+                throw new MovementException.MaximumStepException();
+        }
     }
 }

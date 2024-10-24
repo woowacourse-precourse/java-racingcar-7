@@ -1,6 +1,7 @@
 package racingcar.car.exception;
 
-import racingcar.RacingCarException;
+import racingcar.car.exception.message.MovementExceptionMessage;
+import racingcar.common.exception.RacingCarException;
 
 public class MovementException extends RacingCarException {
     public MovementException(String message) {
@@ -9,13 +10,13 @@ public class MovementException extends RacingCarException {
 
     public static class MinimumStepException extends MovementException {
         public MinimumStepException() {
-            super("이동 거리는 최소 1스텝 이상 가능합니다.");
+            super(MovementExceptionMessage.MIN_STEP_REQUIRED);
         }
     }
 
     public static class MaximumStepException extends MovementException {
         public MaximumStepException() {
-            super("이동 거리는 최대 100스텝 까지만 가능합니다.");
+            super(MovementExceptionMessage.MAX_STEP_EXCEEDED);
         }
     }
 }

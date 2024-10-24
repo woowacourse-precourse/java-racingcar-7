@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.car.policy;
 
 public class MovementPolicy {
     public static final int INITIAL_POSITION = 0;

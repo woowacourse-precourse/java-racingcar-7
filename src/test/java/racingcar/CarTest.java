@@ -27,7 +27,7 @@ class CarTest {
         assertThatThrownBy(() -> {
                 Car.createNamedCar("");
         })
-                .isInstanceOf(CarNameException.EmptyNameException.class)
+                .isInstanceOf(CarNameException.NameLengthShortException.class)
                 .hasMessage("자동차 이름은 최소 1자부터 가능합니다.");
     }
 

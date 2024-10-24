@@ -1,6 +1,9 @@
 package racingcar.car.exception;
 
-import racingcar.RacingCarException;
+import static racingcar.car.exception.message.CarNameExceptionMessage.MAX_LENGTH_EXCEEDED;
+import static racingcar.car.exception.message.CarNameExceptionMessage.MIN_LENGTH_REQUIRED;
+
+import racingcar.common.exception.RacingCarException;
 
 public class CarNameException extends RacingCarException {
     public CarNameException(String message){
@@ -9,13 +12,13 @@ public class CarNameException extends RacingCarException {
 
     public static class NameLengthExceededException extends CarNameException {
         public NameLengthExceededException() {
-            super("자동차 이름은 최대 10자까지 가능합니다.");
+            super(MAX_LENGTH_EXCEEDED);
         }
     }
 
-    public static class EmptyNameException extends CarNameException {
-        public EmptyNameException() {
-            super("자동차 이름은 최소 1자부터 가능합니다.");
+    public static class NameLengthShortException extends CarNameException {
+        public NameLengthShortException() {
+            super(MIN_LENGTH_REQUIRED);
         }
     }
 }

@@ -8,6 +8,7 @@ public class Car {
         this.carName = carName;
         this.movementDistance = movementDistance;
     }
+
     public static Car createNamedCar(String carName){
         return new Car(
                 CarName.createCarName(carName),
