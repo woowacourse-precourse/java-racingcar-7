@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
@@ -22,8 +23,29 @@ class InputViewTest {
 
         String carName = inputView.carName();
 
-        Assertions.assertThat(carName).isEqualTo(userInput);
-        Assertions.assertThat(carName).isNotEqualTo(noInput);
+        assertThat(carName).isEqualTo(userInput);
+        assertThat(carName).isNotEqualTo(noInput);
+
+    }
+
+    @DisplayName("이동횟수는 숫자만 입력 가능하다.")
+    @Test
+    void 이동횟수_입력_테스트() {
+        InputView inputView = new InputView();
+        String validInput = "10";
+        String invalidInput = "ㄱ";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(validInput.getBytes());
+        System.setIn(in);
+
+        int tryCount = inputView.tryCount();
+
+        assertThat(tryCount).isEqualTo(10);
+
+        in = new ByteArrayInputStream(invalidInput.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(inputView::tryCount)
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 }
