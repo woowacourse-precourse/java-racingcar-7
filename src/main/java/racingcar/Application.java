@@ -51,6 +51,23 @@ public class Application {
     }
 }
 
+class Dice {
+    
+    private int number;
+
+    public Dice() {
+        
+        this.number = 0;
+    }
+
+    public void rolling() {
+        number = Randoms.pickNumberInRange(0, 9);
+    }
+    public int getNumber() {
+        return number;
+    }
+}
+
 class Car {
     private String name;
     private int position;
@@ -60,8 +77,27 @@ class Car {
             throw new IllegalArgumentException("이름은 5자 이상이여만 가능합니다.");
         }
         this.name = name;
-        this.position = 0;
+    }
+    public void move() {
+        Dice dice = new Dice();
+        dice.rolling();
+        if (dice.getNumber() > 4) {
+            position++;
+        }
+        System.out.println("");
         
+    }
+
+    public void showPosition() {
+        System.out.println(name + " : " + "-".repeat(position));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
 
@@ -79,6 +115,36 @@ class RacingGame {
     }
 
     public void play() {
-        
+        for (int i = 0; i < round; i++) {
+            playRound();
+            showResult();
+        }
+        finalResult();
+    }
+
+    public void playRound() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public void showResult() {
+        for (Car car : cars) {
+            car.showPosition();
+        }
+    }
+
+    public void finalResult() {
+        int maxPosition = 0;
+        String winner = "";
+        for (Car car : cars) {
+            if (maxPosition < car.getPosition()) {
+                maxPosition = car.getPosition();
+                winner = car.getName();
+            } else if (car.getPosition() != 0 && maxPosition == car.getPosition()) {
+                winner += ", " + car.getName();
+            }
+        }
+        System.out.println("최종 우승자 : " + winner);
     }
 }
