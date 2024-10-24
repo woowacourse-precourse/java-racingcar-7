@@ -26,7 +26,7 @@ public class Car {
 		}
 	}
 
-	public void moveForward() {
+	private void moveForward() {
 		this.location ++;
 	}
 }
