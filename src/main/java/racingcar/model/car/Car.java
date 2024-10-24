@@ -11,12 +11,12 @@ public class Car {
         this.position = new Position();
     }
 
-    public void goOrStop(final Number number) {
+    protected void goOrStop(final Number number) {
         if (number.isGreaterThanForwardThreshold()) {
             position.increasePosition();
         }
     }
-
+    
     public Position getPosition() {
         return position;
     }

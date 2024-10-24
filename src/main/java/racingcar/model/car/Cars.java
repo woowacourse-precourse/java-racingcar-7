@@ -14,18 +14,18 @@ public class Cars {
         validateCars(cars);
         this.cars = cars;
     }
-    
-    private void validateCars(final List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
-        }
-    }
 
     public void startRacing() {
         cars.forEach(car -> {
             Number number = getRandomNumber();
             car.goOrStop(number);
         });
+    }
+
+    private void validateCars(final List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_LIST.getMessage());
+        }
     }
 
     private Number getRandomNumber() {

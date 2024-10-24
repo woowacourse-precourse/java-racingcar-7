@@ -21,6 +21,13 @@ public class InputView {
         return input;
     }
 
+    public static int inputTryCount() {
+        System.out.println(TRY_COUNT_INPUT_MESSAGE);
+        final int tryCount = convertStringToInt(Console.readLine());
+        validateTryCount(tryCount);
+        return tryCount;
+    }
+
     private static void validateCarNames(final String carNames) {
         if (carNames.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
@@ -31,13 +38,6 @@ public class InputView {
         if (!carNames.contains(DELIMITER)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_COUNT.getMessage());
         }
-    }
-
-    public static int inputTryCount() {
-        System.out.println(TRY_COUNT_INPUT_MESSAGE);
-        final int tryCount = convertStringToInt(Console.readLine());
-        validateTryCount(tryCount);
-        return tryCount;
     }
 
     private static void validateTryCount(final int input) {

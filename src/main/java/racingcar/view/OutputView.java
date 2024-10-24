@@ -25,14 +25,6 @@ public class OutputView {
         System.out.println();
     }
 
-    private static String getCarName(final Car car) {
-        return car.getName().getCarName();
-    }
-
-    private static String getMovingDistance(final Car car) {
-        return car.getPosition().getDistance();
-    }
-
     public static void printWinner(final List<String> winners) {
         System.out.print(WINNER_MESSAGE);
         System.out.println(String.join(DELIMITER, winners));
@@ -40,5 +32,13 @@ public class OutputView {
 
     public static void printErrorMessage(final String message) {
         System.out.println(ERROR_MESSAGE + message);
+    }
+    
+    private static String getCarName(final Car car) {
+        return car.getName().getCarName();
+    }
+
+    private static String getMovingDistance(final Car car) {
+        return car.getPosition().getDistance();
     }
 }
