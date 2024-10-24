@@ -1,6 +1,26 @@
 package racingcar.model;
 
-public record Car(String name, Integer distance) {
+public class Car {
+
+    private String name;
+    private Integer distance;
+
+    public Car(String name, Integer distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public void move() {
+        distance++;
+    }
 
     @Override
     public String toString() {
