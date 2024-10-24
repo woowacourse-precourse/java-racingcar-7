@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 
 public class RacingGameService {
@@ -22,4 +24,17 @@ public class RacingGameService {
         return car.getDistance();
     }
 
+    public List<String> getWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+        for (Car car : cars) {
+            if (car.isWinner(maxDistance)) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
 }
