@@ -1,11 +1,9 @@
 package racingcar.Model;
 
-import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GameCars {
     public static final ArrayList<Car> cars=new ArrayList<>();
@@ -22,7 +20,7 @@ public class GameCars {
 
     public void playGame(){
         for (Car car : cars) {
-            if(Randoms.pickNumberInRange(0,9)>4){
+            if(Randoms.pickNumberInRange(0,9)>=4){
                 car.ongoing();
             }
         }
