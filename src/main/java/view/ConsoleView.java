@@ -7,6 +7,8 @@ import model.InputHandler;
 
 public class ConsoleView {
 
+    private final static char RACE_STEP = '-';
+
     private final InputHandler inputHandler = new InputHandler();
 
     public List<String> getCarNames() {
@@ -21,6 +23,10 @@ public class ConsoleView {
 
         String moveCount = readLine();
         return inputHandler.toInt(moveCount);
+    }
+
+    public void showRaceStatus() {
+
     }
 
 }

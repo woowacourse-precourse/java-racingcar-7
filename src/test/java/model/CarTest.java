@@ -16,9 +16,13 @@ class CarTest {
     void 진행정도_받기_테스트() {
         Car car1 = new Car("kng");
         assertThat(car1.getStep()).isEqualTo(0);
+    }
 
+    @Test
+    void 자동차_움직이기_테스트() {
+        Car car1 = new Car("kng");
         car1.move();
-        assertThat(car1.getStep()).isEqualTo(1);
+        assertThat(car1.getStep()).isBetween(0, 1);
     }
 
 }

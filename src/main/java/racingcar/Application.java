@@ -19,6 +19,11 @@ public class Application {
             Cars.add(new Car(name));
         }
 
+        // 4. 전진하기
+        for (Car car : Cars) {
+            car.move();
+        }
+
         // TODO: 입력 구조 점검 및 다음 기능들 구현
 
     }
