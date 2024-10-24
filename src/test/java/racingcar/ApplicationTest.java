@@ -24,10 +24,54 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 이름_5글자_초과_예외_테스트() {
+        validNameException("messi,ronaldo");
+    }
+
+    @Test
+    void 다른구분자_예외_테스트() {
+        validNameException("messi%silva");
+    }
+
+    @Test
+    void 쉼표중복_예외_테스트() {
+        validNameException("messi,,silva");
+    }
+
+    @Test
+    void 쉼표앞뒤_예외_테스트() {
+        validNameException(",messi,silva,");
+    }
+
+    @Test
+    void 동일이름_예외_테스트() {
+        validNameException("messi,messi");
+    }
+
+    @Test
+    void 이름_띄어쓰기_예외_테스트() {
+        validNameException("me ssi,sonny");
+    }
+
+    @Test
+    void 이름_특수문자_예외_테스트() {
+        validNameException("mess$,sonny");
+    }
+
+    @Test
+    void 빈값_예외_테스트() {
+        validNameException("");
+    }
+
+    @Test
+    void 공백_예외_테스트() {
+        validNameException("  ");
+    }
+
+    private void validNameException(String input) {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException(input, "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
