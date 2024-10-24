@@ -6,6 +6,10 @@ import java.util.List;
 
 public class InputUtil {
 
+    private InputUtil(){
+
+    }
+
     public static Input getInput() throws IllegalArgumentException {
 
         String input = Console.readLine();
