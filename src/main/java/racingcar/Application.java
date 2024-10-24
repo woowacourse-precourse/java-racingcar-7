@@ -133,6 +133,20 @@ class WinnerCalculator {
     }
 }
 
+//우승자 출력 클래스
+class WinnerPrinter {
+    public void print(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+}
+
+//오류 출력 클래스
+class ErrorPrinter {
+    public void print(String message) {
+        System.out.println(message);
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput();
@@ -159,5 +173,15 @@ public class Application {
         WinnerCalculator winnerCalculator = new WinnerCalculator();
         List<String> winners = winnerCalculator.calculate(cars);
 
+        WinnerPrinter winnerPrinter = new WinnerPrinter();
+        winnerPrinter.print(winners);
+
+    }catch(
+    IllegalArgumentException e)
+
+    {
+        ErrorPrinter errorPrinter = new ErrorPrinter();
+        errorPrinter.print(e.getMessage());
     }
 }
+
