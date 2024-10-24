@@ -13,4 +13,12 @@ public class Car {
         if (randomValue >= 4)
             score++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
