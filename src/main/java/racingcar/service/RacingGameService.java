@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.entity.Car;
 import racingcar.enums.RacingGameCondition;
+import racingcar.enums.RandomRange;
 import racingcar.view.OutputView;
 
 public class RacingGameService {
@@ -23,7 +24,7 @@ public class RacingGameService {
 
     private void playRound(List<Car> cars) {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = Randoms.pickNumberInRange(RandomRange.MIN.getValue(), RandomRange.MAX.getValue());
             if (randomNumber >= RacingGameCondition.MOVE_THRESHOLD.getValue()) {
                 car.move();
             }
