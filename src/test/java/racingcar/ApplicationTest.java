@@ -45,6 +45,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 숫자가_아닌_시도횟수가_입력되는_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a, b, c", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("시도 횟수는 '한 개'의 '숫자'여야 합니다. ")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
