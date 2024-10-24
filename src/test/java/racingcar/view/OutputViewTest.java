@@ -1,10 +1,11 @@
 package racingcar.view;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ class OutputViewTest {
         SystemOut();
         outputView.printEndLine();
 
-        Assertions.assertEquals(expected, outputStream.toString());
+        assertEquals(expected, outputStream.toString());
     }
 
     @DisplayName("\"실행 결과\" 메시지를 출력한다.")
@@ -40,7 +41,7 @@ class OutputViewTest {
         SystemOut();
         outputView.printExecutionResultMessage();
 
-        Assertions.assertEquals(expectedMessage, outputStream.toString());
+        assertEquals(expectedMessage, outputStream.toString());
     }
 
     @DisplayName("각 자동차의 이름과 이동거리를 출력하는 기능이 잘 수행되야 한다.")
@@ -50,7 +51,19 @@ class OutputViewTest {
         SystemOut();
         outputView.printEachExecutionResult(car);
 
-        Assertions.assertEquals(expected, outputStream.toString());
+        assertEquals(expected, outputStream.toString());
+    }
+
+    @DisplayName("최종 우승자를 형식에 맞게 출력한다.")
+    @Test
+    void printWinner() {
+        Car car = new Car("pobi");
+
+        String expectedWinnerPrint = "최종 우승자 : pobi\n";
+        SystemOut();
+        outputView.printWinner(car);
+
+        assertEquals(expectedWinnerPrint, outputStream.toString());
     }
 
     private static Stream<Arguments> provideEachExecutionResultTestCases() {

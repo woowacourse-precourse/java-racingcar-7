@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.service.Service;
 import racingcar.view.InputView;
@@ -35,5 +36,9 @@ public class Controller {
 
     public List<String> getCarNames(final String carNames) {
         return service.splitCarNames(carNames);
+    }
+
+    public void printWinner(final Car car) {
+        outputView.printWinner(car);
     }
 }

@@ -16,6 +16,10 @@ public class OutputView {
         System.out.println(car.getName() + " : " + dashString + " ");
     }
 
+    public void printWinner(final Car car) {
+        System.out.println("최종 우승자 : " + car.getName());
+    }
+
     private static String getDashString(final int dashCount) {
         return "-".repeat(Math.max(0, dashCount));
     }
