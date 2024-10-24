@@ -69,6 +69,12 @@ class RandomMoveStrategy implements MoveStrategy {
         return randomValue >= 4;
     }
 }
+//멈추는 기능
+class CarStopper {
+    public void stop(Car car) {
+        car.move(false);
+    }
+}
 
 public class Application {
     public static void main(String[] args) {
