@@ -4,7 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.Car.Car;
+import racingcar.car.Car;
+import racingcar.car.exception.CarNameException;
+import racingcar.car.exception.MovementException;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -17,16 +19,16 @@ class CarTest {
         assertThatThrownBy(() -> {
                 Car.createNamedCar("xxxxxxxxxxx");
         })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 최대 10자까지 가능 합니다.");
+                .isInstanceOf(CarNameException.NameLengthExceededException.class)
+                .hasMessage("자동차 이름은 최대 10자까지 가능합니다.");
     }
     @Test
     void createNamedCar_이름이1자미만_예외발생(){
         assertThatThrownBy(() -> {
                 Car.createNamedCar("");
         })
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 최소 1자부터 가능 합니다.");
+                .isInstanceOf(CarNameException.EmptyNameException.class)
+                .hasMessage("자동차 이름은 최소 1자부터 가능합니다.");
     }
 
     @ParameterizedTest
@@ -45,8 +47,8 @@ class CarTest {
 
         // expect
         assertThatThrownBy(() -> car.increaseDistanceBy(0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이동 거리는 최소 1스텝 이상 가능 합니다.");
+                .isInstanceOf(MovementException.MinimumStepException.class)
+                .hasMessage("이동 거리는 최소 1스텝 이상 가능합니다.");
     }
     @Test
     void increaseDistanceBy_이동횟수100초과_예외발생(){
@@ -55,8 +57,8 @@ class CarTest {
 
         // expect
         assertThatThrownBy(() -> car.increaseDistanceBy(101))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이동 거리는 최대 100스텝 까지만 가능 합니다.");
+                .isInstanceOf(MovementException.MaximumStepException.class)
+                .hasMessage("이동 거리는 최대 100스텝 까지만 가능합니다.");
 
     }
     @ParameterizedTest

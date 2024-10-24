@@ -1,14 +1,17 @@
-package racingcar.Car;
+package racingcar.car;
+
+import racingcar.car.exception.CarNameException.EmptyNameException;
+import racingcar.car.exception.CarNameException.NameLengthExceededException;
 
 public class CarName {
     private final String value;
 
     public CarName(String name) {
         if(name.length()>10){
-                throw new IllegalArgumentException("자동차 이름은 최대 10자까지 가능 합니다.");
+                throw new NameLengthExceededException();
         }
         if(name.length()<1){
-                throw new IllegalArgumentException("자동차 이름은 최소 1자부터 가능 합니다.");
+                throw new EmptyNameException();
         }
         this.value = name;
     }

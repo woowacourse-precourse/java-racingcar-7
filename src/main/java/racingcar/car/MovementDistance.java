@@ -1,4 +1,8 @@
-package racingcar.Car;
+package racingcar.car;
+
+import static racingcar.car.exception.MovementException.*;
+
+import racingcar.car.exception.MovementException;
 
 public class MovementDistance {
     private static final int INITIAL_POSITION = 0;
@@ -16,10 +20,10 @@ public class MovementDistance {
 
     public MovementDistance increaseDistanceBy(int stepCount) {
         if(stepCount < MIN_STEP){
-                throw new IllegalArgumentException("이동 거리는 최소 1스텝 이상 가능 합니다.");
+                throw new MinimumStepException();
         }
         if(stepCount > MAX_STEP){
-                throw new IllegalArgumentException("이동 거리는 최대 100스텝 까지만 가능 합니다.");
+                throw new MovementException.MaximumStepException();
         }
         return new MovementDistance(this.value + stepCount);
     }
