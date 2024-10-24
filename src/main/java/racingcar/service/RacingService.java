@@ -11,10 +11,13 @@ import java.util.stream.Collectors;
 import racingcar.domain.MoveForwardHistory;
 import racingcar.global.error.NameError;
 import racingcar.global.error.TryCountError;
+import racingcar.view.OutputView;
 
 public class RacingService {
 
     private final String COMMA = ",";
+    private final String COLON = " : ";
+    private final String BAR = "-";
     private String POSITIVE_NUMBER_REG = "\\d+";
     private List<MoveForwardHistory> moveForwardHistories;
 
@@ -56,8 +59,11 @@ public class RacingService {
     }
 
     public void go(String tryCounts) {
+
+        OutputView.printMoveForwardResult();
         for (int i = 0; i < Integer.parseInt(tryCounts); i++) {
             updateMoveForwardHistory();
+            printMoveForwardHistory();
         }
 
     }
@@ -76,5 +82,11 @@ public class RacingService {
         moveForwardHistories.stream()
                 .filter(history -> biggerThanThree(pickNumberInRange(0, 9)))
                 .forEach(history -> history.updateGoCount());
+    }
+
+    private void printMoveForwardHistory() {
+        moveForwardHistories.stream()
+                .forEach(history -> System.out.println(history.getCarName() + COLON + BAR.repeat(history.getGoCount())));
+        System.out.println();
     }
 }
