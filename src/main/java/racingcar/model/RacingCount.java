@@ -6,7 +6,7 @@ public class RacingCount {
 
     private static final int MIN_COUNT = 1;
 
-    private final int count;
+    private int count;
 
     private RacingCount(int count) {
         validateCount(count);
@@ -15,6 +15,14 @@ public class RacingCount {
 
     public static RacingCount from(int count) {
         return new RacingCount(count);
+    }
+
+    public void deduct() {
+        this.count -= 1;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     private void validateCount(int count) {
