@@ -76,6 +76,19 @@ class CarStopper {
     }
 }
 
+//현재 실행결과가 출력되는 클래스
+class RoundResultPrinter {
+    public void print(List<Car> cars) {
+        for (Car car : cars) {
+            StringBuilder result = new StringBuilder(car.getName() + " : ");
+            for (int i = 0; i < car.getPosition(); i++) {
+                result.append("-");
+            }
+            System.out.println(result.toString());
+        }
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         CarNameInput carNameInput = new CarNameInput();
