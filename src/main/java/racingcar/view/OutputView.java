@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.Car;
 import racingcar.view.messages.InteractionMessageEnum;
 
 import java.util.List;
