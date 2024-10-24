@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 // 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 // 라는 요구사항이 있어서 최대한 단일한 책임을 가지도록 만들어 봄.
@@ -10,15 +13,39 @@ public class RacingGame {
     public void play() {
         
         // Console로 열린 scanner를 닫아주기 위해 try/finally
-        try{
+        try {
             String[] carNames = inputCarNames();
             int gameCount = inputGameCount();
             
-            
+            startGame(carNames, gameCount);
         } finally {
             Console.close();
         }
         
+    }
+    
+    private void startGame(String[] carNames, int gameCount) {
+        // 이전에 carNames, gameCount 이 값들의 검증을 마쳤으므로 바로 사용
+        List<Car> carList = new ArrayList<>();
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
+        }
+        
+        for (int i = 0; i < gameCount; i++) {
+            moveCars(carList);
+//            printCars(carList);
+        }
+    }
+    
+    private void moveCars(List<Car> carList) {
+        
+        for (Car car : carList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            
+            if (randomNumber >= 4) {
+                car.plusDistance();
+            }
+        }
     }
     
     private int inputGameCount() {
@@ -75,5 +102,5 @@ public class RacingGame {
             }
         }
     }
-
+    
 }
