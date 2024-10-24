@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Register {
     // 경주 할 자동차들 리스트 등록 기능
@@ -17,5 +18,13 @@ public class Register {
         for (String name : participateCars) {
             carList.add(new Car(name));
         }
+    }
+
+    public HashMap<String, String> carsMoveCount() {
+        HashMap<String, String> moves = new HashMap<>();
+        for (Car c : carList) {
+            moves.put(c.name, "-".repeat(c.distance));
+        }
+        return moves;
     }
 }
