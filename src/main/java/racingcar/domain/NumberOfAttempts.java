@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.NumberOfAttemptsDTO;
+
 public class NumberOfAttempts {
     private static final int MIN_ATTEMPTS = 1;
     private static final int MAX_ATTEMPTS = 20;
@@ -29,8 +31,8 @@ public class NumberOfAttempts {
         }
     }
 
-    public int getNumberOfAttempts() {
-        return numberOfAttempts;
+    public NumberOfAttemptsDTO getNumberOfAttempts() {
+        return new NumberOfAttemptsDTO(numberOfAttempts);
     }
 
 }

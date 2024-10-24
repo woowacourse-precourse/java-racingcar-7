@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.NumberOfAttempts;
 import racingcar.domain.RacingCars;
+import racingcar.dto.NumberOfAttemptsDTO;
 import racingcar.view.OutputView;
 
 public class RacingCarService {
@@ -14,8 +15,9 @@ public class RacingCarService {
     }
 
     public void play(OutputView outputView) {
-        int count = this.numberOfAttempts.getNumberOfAttempts();
-        for (int i = 0; i < count; i++) {
+        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttempts();
+        int number = numberOfAttemptsDTO.getNumber();
+        for (int i = 0; i < number; i++) {
             racingCars.move();
             String states = racingCars.getStates();
             outputView.printRacingCarsState(states);

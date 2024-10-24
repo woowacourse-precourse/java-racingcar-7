@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.NumberOfAttemptsDTO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,8 +28,9 @@ class NumberOfAttemptsTest {
         String testString1 = "1";
         NumberOfAttempts numberOfAttempts = new NumberOfAttempts(testString1);
         //when
-        int count = numberOfAttempts.getNumberOfAttempts();
+        NumberOfAttemptsDTO numberOfAttemptsDTO = numberOfAttempts.getNumberOfAttempts();
+        int number = numberOfAttemptsDTO.getNumber();
         //then
-        assertEquals(count, 1);
+        assertEquals(number, 1);
     }
 }
