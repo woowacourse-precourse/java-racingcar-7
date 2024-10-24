@@ -2,7 +2,7 @@ package racingcar.enums;
 
 public enum Delimiter {
     COLON(" : "),
-    COMMA(", "),
+    COMMA(","),
     NEW_LINE("\n");
 
     private final String value;
