@@ -21,14 +21,14 @@ public class InputView {
         return getValidatedTryCount(input);
     }
 
-    private static void validateTryCountInput(final String input) {
+    private static void validateTryCount(final String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
     }
 
     private static int getValidatedTryCount(final String input) {
-        validateTryCountInput(input);
+        validateTryCount(input);
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

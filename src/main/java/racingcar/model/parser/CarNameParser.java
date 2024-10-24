@@ -7,7 +7,7 @@ import racingcar.model.car.Car;
 public class CarNameParser {
     private static final int START_POSITION = 0;
 
-    public static List<Car> parseCars(final String input) {
+    public static List<Car> parse(final String input) {
         final String[] carNames = input.split(",");
         return Arrays.stream(carNames)
                 .map(carName -> new Car(carName, START_POSITION))
