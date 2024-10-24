@@ -10,8 +10,12 @@ public class Race {
 
     private final List<Car> cars;
 
-    public Race(List<String> carnames) {
+    protected Race(List<String> carnames) {
         cars = createCars(carnames);
+    }
+
+    public static Race of(List<String> carnames) {
+        return new Race(carnames);
     }
 
     public void playOneRound() {
