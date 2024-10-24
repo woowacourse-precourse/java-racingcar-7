@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UI {
