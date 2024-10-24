@@ -17,12 +17,15 @@ public class CarDTO {
         this.carName = carName;
         this.position = position;
     }
+
     public String getCarName() {
         return carName;
     }
+
     public int getPosition() {
         return position;
     }
+
     public String getState() {
         return carName + " : " + "-".repeat(Math.max(0, position));
     }

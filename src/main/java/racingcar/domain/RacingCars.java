@@ -34,13 +34,13 @@ public class RacingCars {
 
     private void validationListSize(List<Car> tmpList) {
         if (tmpList.size() > CAR_LIST_MAX_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 경주할 자동차의 수는 " + CAR_LIST_MAX_SIZE +"이하만 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 경주할 자동차의 수는 " + CAR_LIST_MAX_SIZE + "이하만 가능합니다.");
         }
     }
 
     public void move() {
-        for(Car car : carList) {
-            if(randomNumber.isAdvance()){
+        for (Car car : carList) {
+            if (randomNumber.isAdvance()) {
                 car.advance();
             }
         }
@@ -48,7 +48,7 @@ public class RacingCars {
 
     public String getStates() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(Car car : carList) {
+        for (Car car : carList) {
             CarDTO carDTO = car.getCarDTO();
             stringBuilder.append(carDTO.getState());
             stringBuilder.append("\n");
@@ -64,16 +64,16 @@ public class RacingCars {
             stringBuilder.append(winner);
             stringBuilder.append(comma);
         }
-        stringBuilder.delete(stringBuilder.length()-comma.length(), stringBuilder.length());
+        stringBuilder.delete(stringBuilder.length() - comma.length(), stringBuilder.length());
         return stringBuilder.toString();
     }
 
     private List<String> getWinnerList() {
         List<String> winnerList = new ArrayList<>();
         int maxPosition = getMaxPosition();
-        for(Car car : carList) {
+        for (Car car : carList) {
             CarDTO carDTO = car.getCarDTO();
-            if(carDTO.getPosition() == maxPosition) {
+            if (carDTO.getPosition() == maxPosition) {
                 winnerList.add(carDTO.getCarName());
             }
         }
@@ -82,10 +82,10 @@ public class RacingCars {
 
     private int getMaxPosition() {
         int max = -1;
-        for(Car car : carList) {
+        for (Car car : carList) {
             CarDTO carDTO = car.getCarDTO();
             int position = carDTO.getPosition();
-            if(position > max){
+            if (position > max) {
                 max = position;
             }
         }
