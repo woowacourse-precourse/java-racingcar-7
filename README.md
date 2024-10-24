@@ -9,14 +9,14 @@
 ✔️입력1 예외사항
 1. 쉼표가 존재하는 경우
    - 이름들 중 중복된 이름이 존재하면 IllegalArgumentException을 발생시킨다
-   - 이름들 중 하나라도 6자리 이상인 경우 IllegalArgumentException을 발생시킨다  
+   - 이름들 중 하나라도 6자리 이상인 경우 IllegalArgumentException을 발생시킨다
+   - 이름이 공백이라면 IllegalArgumentException을 발생시킨다
    
 
 2. 쉼표가 존재하지 않는 경우
    - 이름이 6자리 이상인 경우 IllegalArgumentException을 발생시킨다
-   
+   - 공백을 입력하면 IllegalArgumentException을 발생시킨다
 
-3. 아무것도 입력하지 않으면 IllegalArgumentException을 발생시킨다
 
 ✔️입력1 고려사항
 - 한글,영어,특수문자 혼용을 허용한다  ex) 차 종류 중 K5, 포르쉐 911가 존재한다
