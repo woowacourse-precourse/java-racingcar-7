@@ -20,7 +20,7 @@ public class NameTest {
 	}
 
 	@Test
-	@DisplayName("5글자 이상의 이름은 오류를 발생시킨다.")
+	@DisplayName("5글자 초과의 이름은 오류를 발생시킨다.")
 	public void throwExceptionWhenNameLengthOver5() {
 		String value = "siiiix";
 
