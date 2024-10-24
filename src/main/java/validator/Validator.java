@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
+    private static final int LIMIT_NAME_LENGTH = 5;
 
     public void validateCar(List<String> carNames) {
         checkCarNotEmpty(carNames);
+        checkLimitLengthName(carNames);
         checkDuplicateName(carNames);
     }
 
@@ -16,6 +18,13 @@ public class Validator {
         if (carNames.stream().anyMatch(
                 String::isEmpty)) {
             throw new IllegalArgumentException(ErrorCode.EMPTY_CAR_NAME.getMessage());
+        }
+    }
+
+    private void checkLimitLengthName(List<String> carNames) {
+        if (carNames.stream().anyMatch(
+                name -> LIMIT_NAME_LENGTH < name.length())) {
+            throw new IllegalArgumentException(ErrorCode.CAR_NAME_LIMIT.getMessage());
         }
     }
 
