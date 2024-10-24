@@ -29,7 +29,15 @@ public class InputView {
         return VALID_CAR_INPUT_PATTERN.matcher(input).matches();
     }
 
-    public static boolean isValidMoveCountInput(String input) {
+    public static int getMoveCount() {
+        String input = readLine();
+        if (!isValidMoveCountInput(input)) {
+            throw new IllegalArgumentException("이동 횟수 입력이 올바르지 않습니다.");
+        }
+        return Integer.parseInt(input);
+    }
+
+    private static boolean isValidMoveCountInput(String input) {
         return VALID_MOVE_COUNT_INPUT_PATTERN.matcher(input).matches();
     }
 
