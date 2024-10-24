@@ -8,6 +8,7 @@ public class CarNameValidator {
     public static void validate(String input) {
         validateSeparatorWithoutComma(input);
         validateStartWithComma(input);
+        validateEndWithComma(input);
     }
 
     private static void validateSeparatorWithoutComma(String input) {
@@ -19,6 +20,12 @@ public class CarNameValidator {
     private static void validateStartWithComma(String input) {
         if (Pattern.compile("^,").matcher(input).find()) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_FRONT_COMMA.getMessage());
+        }
+    }
+
+    private static void validateEndWithComma(String input) {
+        if (Pattern.compile(",$").matcher(input).find()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_BACK_COMMA.getMessage());
         }
     }
 

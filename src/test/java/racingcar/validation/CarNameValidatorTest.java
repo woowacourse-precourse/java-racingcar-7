@@ -32,7 +32,7 @@ class CarNameValidatorTest {
 
     @DisplayName("입력의 마지막이 쉼표(,)인 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"pobi.woni,", ",pobi-woni-jun,"})
+    @ValueSource(strings = {"pobi.woni,", "pobi-woni-jun,"})
     void validateBackSeparator(String input) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CarNameValidator.validate(input);
