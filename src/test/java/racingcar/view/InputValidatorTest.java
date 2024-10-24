@@ -41,7 +41,7 @@ public class InputValidatorTest {
 
     @ParameterizedTest
     @DisplayName("사용자가 입력한 시도 횟수가 양의 정수가 아니면 예외를 던진다.")
-    @ValueSource(strings = {"abc", "123abc", "-1", "42.5"})
+    @ValueSource(strings = {"abc", "123abc", "-1", "42.5", "0"})
     void throwExceptionWhenAttemptCountIsNotPositiveInteger(String inputValue) {
         // when & then
         assertThatThrownBy(() -> InputValidator.validateAttemptCount(inputValue))
