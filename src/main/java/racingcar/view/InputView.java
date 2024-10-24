@@ -16,4 +16,10 @@ public class InputView {
         return carNameList;
     }
 
+    public int enterCount(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String userInput = Console.readLine();
+
+        return Integer.parseInt(userInput);
+    }
 }
