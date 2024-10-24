@@ -21,9 +21,9 @@ class CarConverterTest {
 
         // then
         assertThat(cars.size()).isEqualTo(3);
-        assertThat(cars.get(0).name()).isEqualTo("a");
-        assertThat(cars.get(1).name()).isEqualTo("b");
-        assertThat(cars.get(2).name()).isEqualTo("c");
+        assertThat(cars.get(0).getName()).isEqualTo("a");
+        assertThat(cars.get(1).getName()).isEqualTo("b");
+        assertThat(cars.get(2).getName()).isEqualTo("c");
     }
 
 }
