@@ -14,11 +14,14 @@ public class Race {
     }
 
     public List<Car> proceed() {
-        if (!round.hasNext()) {
-            throw new IllegalArgumentException();
-        }
+        // TODO: 중복호출방지
+
         moveAllCars();
-        round.next();
+
+        if (round.hasNext()) {
+            round.next();
+        }
+
         return cars;
     }
 
