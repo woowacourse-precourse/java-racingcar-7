@@ -58,5 +58,10 @@ public class Application {
 
             existCarsNameList.add(carName);
         }
+
+        // 자동차 1대 이하일 때
+        if (existCarsNameList.size() <= 1) {
+            throw new IllegalArgumentException();
+        }
     }
 }
