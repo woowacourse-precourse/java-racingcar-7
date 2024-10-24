@@ -19,6 +19,9 @@ public class RacingGameCount {
 	}
 
 	private void validate(String count) {
+		if(count.isBlank()){
+			throw new RacingGameException(RacingGameExceptionMessage.NOT_BLANK);
+		}
 		if(!Pattern.matches(NUMBER_REGEX, count)){
 			throw new RacingGameException(RacingGameExceptionMessage.NOT_NUMBER);
 		}
