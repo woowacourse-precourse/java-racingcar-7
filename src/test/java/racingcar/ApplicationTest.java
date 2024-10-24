@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.game.Game;
 import racingcar.vehicle.Car;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -20,19 +21,19 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -73,7 +74,7 @@ class ApplicationTest extends NsTest {
     @Test
     void goCarTest() {
         Car car = new Car("pobi");
-        int randomNum = Randoms.pickNumberInRange(5,9);
+        int randomNum = Randoms.pickNumberInRange(5, 9);
         car.run(randomNum);
         // TODO : byteArrayOutputStream 이용해서 출력문을 임시 저장해서 검증할 수 있으니 적용해보기
     }
@@ -85,7 +86,7 @@ class ApplicationTest extends NsTest {
         cars.add(new Car("pobi"));
         cars.add(new Car("woni"));
         cars.add(new Car("jun"));
-        int randomNum = Randoms.pickNumberInRange(5,9);
+        int randomNum = Randoms.pickNumberInRange(0, 9);
         cars.forEach(car -> car.run(randomNum));
     }
 
@@ -96,5 +97,11 @@ class ApplicationTest extends NsTest {
         cars.add(new Car("pobi"));
         cars.add(new Car("woni"));
         cars.add(new Car("jun"));
+        Game game = new Game();
+        int randomNum = Randoms.pickNumberInRange(5, 9);
+        cars.forEach(car -> car.run(randomNum));
+        game.winnerPlayer(cars);
     }
+
+
 }
