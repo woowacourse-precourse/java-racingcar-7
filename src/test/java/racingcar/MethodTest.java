@@ -45,7 +45,6 @@ public class MethodTest {
 
         Application.raceOneTime(given);
 
-        System.out.println("given = " + given);
         //TODO: 랜덤값으로 인하여 정확하게 테스트를 진행하기 어려우니 refactoring 하여, 테스트가 가능한 코드가 되도록 변경
         assertThat(given).hasSize(5);
     }
@@ -77,5 +76,104 @@ public class MethodTest {
         assertEquals("nameA:-\nnameB:---\nnameC:--\nnameD:\nnameE:----", outputStreamCaptor.toString().trim());
         System.setOut(standardOut);
     }
+
+    @DisplayName("숫자 리스트 중에서 최대의 숫자의 인덱스를 가져오기 (여러개일경우 )")
+    @Test
+    void test_5() {
+        List<Integer> given = new ArrayList<>() {{
+            add(0);
+            add(0);
+            add(13);
+            add(23);
+            add(23);
+            add(23);
+        }};
+
+        List<Integer> result = Application.getMaxIndexList(given);
+
+        assertThat(result).hasSize(3).containsExactly(3, 4, 5);
+    }
+
+    @DisplayName("숫자 리스트 중에서 최대의 숫자의 인덱스를 가져오기 (없을경우)")
+    @Test
+    void test_6() {
+        List<Integer> given = new ArrayList<>();
+
+        List<Integer> result = Application.getMaxIndexList(given);
+
+        assertThat(result).hasSize(0);
+    }
+
+    @DisplayName("숫자 리스트 중에서 최대의 숫자의 인덱스를 가져오기 (한개)")
+    @Test
+    void test_7() {
+        List<Integer> given = new ArrayList<>() {{
+            add(0);
+            add(0);
+            add(13);
+            add(23);
+        }};
+
+        List<Integer> result = Application.getMaxIndexList(given);
+
+        assertThat(result).hasSize(1).containsExactly(3);
+    }
+
+    @DisplayName("인덱스에 해당하는 우승자를 출력하기(우승자가 여러명일 경우)")
+    @Test
+    void test_8() {
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        PrintStream standardOut = System.out;
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        List<String> givenNameList = new ArrayList<>() {{
+            add("choi");
+            add("lee");
+            add("kim");
+            add("park");
+            add("ryu");
+            add("han");
+        }};
+
+        List<Integer> givenIndexList = new ArrayList<>() {{
+            add(1);
+            add(3);
+            add(5);
+        }};
+
+        Application.printWinner(givenIndexList, givenNameList);
+
+        assertEquals("최종우승자 : lee,park,han", outputStreamCaptor.toString().trim());
+        System.setOut(standardOut);
+
+    }
+
+    @DisplayName("인덱스에 해당하는 우승자를 출력하기(우승자가 한명일 경우)")
+    @Test
+    void test_9() {
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        PrintStream standardOut = System.out;
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        List<String> givenNameList = new ArrayList<>() {{
+            add("choi");
+            add("lee");
+            add("kim");
+            add("park");
+            add("ryu");
+            add("han");
+        }};
+
+        List<Integer> givenIndexList = new ArrayList<>() {{
+            add(0);
+        }};
+
+        Application.printWinner(givenIndexList, givenNameList);
+
+        assertEquals("최종우승자 : choi", outputStreamCaptor.toString().trim());
+        System.setOut(standardOut);
+
+    }
+
 
 }

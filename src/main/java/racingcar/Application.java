@@ -3,7 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,7 +18,12 @@ public class Application {
         List<Integer> countList = createParticipantCount(participants.size());
 
         raceManyTimes(raceTimes, countList, participants);
+
+        List<Integer> maxCountList = getMaxIndexList(countList);
+
+        printWinner(maxCountList, participants);
     }
+
 
     public static String getInput() {
         return Console.readLine();
@@ -60,5 +68,27 @@ public class Application {
             System.out.println();
         }
 
+    }
+
+    public static List<Integer> getMaxIndexList(List<Integer> countList) {
+
+        Optional<Integer> maxCount = countList.stream().max(Integer::compareTo);
+        return maxCount.map(integer -> IntStream.range(0, countList.size())
+                .filter(i -> countList.get(i).equals(integer))
+                .boxed()
+                .toList()).orElse(Collections.emptyList());
+    }
+
+
+    public static List<String> getNameOfIndex(List<Integer> maxCountIndexList, List<String> nameList) {
+        return new ArrayList<>() {{
+            for (Integer maxCountIndex : maxCountIndexList) {
+                add(nameList.get(maxCountIndex));
+            }
+        }};
+    }
+
+    public static void printWinner(List<Integer> maxCountList, List<String> participants) {
+        System.out.println("최종우승자 : " + String.join(",", getNameOfIndex(maxCountList, participants)));
     }
 }
