@@ -10,11 +10,11 @@ public class Application {
 
     }
 
-    private void printRequestingCarNameInput() {
+    private void printRequestingCarNamesInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
-    private String getCarNameInput() {
+    private String getCarNamesInput() {
         return Console.readLine();
     }
 
@@ -22,5 +22,9 @@ public class Application {
         if (str.isEmpty()) {
             throw new IllegalArgumentException("잘못된 입력입니다.") ;
         }
+    }
+
+    private String[] splitNamesByComma(String str) {
+        return str.split(",");
     }
 }
