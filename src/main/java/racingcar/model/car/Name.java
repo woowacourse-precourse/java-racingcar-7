@@ -18,9 +18,9 @@ public class Name {
         validateNameLength(name);
         validateNameCharacters(name);
     }
-    
+
     private void validateBlankName(final String name) {
-        if (name.isBlank() || name == null) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
         }
     }
