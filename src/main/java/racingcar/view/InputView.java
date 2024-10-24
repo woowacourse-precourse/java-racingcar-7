@@ -29,7 +29,7 @@ public class InputView {
     }
 
     private static void validateCarNames(final String carNames) {
-        if (carNames.isBlank()) {
+        if (carNames == null || carNames.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
         }
     }
