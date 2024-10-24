@@ -1,7 +1,7 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racingcar.exception.Exception.DUPLICATE_NAME;
 import static racingcar.exception.Exception.NOT_ENOUGH_CARS;
 
@@ -11,12 +11,16 @@ import org.junit.jupiter.api.Test;
 
 class RacingCarsTest {
 
-    private RacingCars racingCars;
+    List<String> names;
+    List<Car> cars;
 
     @BeforeEach
     void setUp() {
-        List<String> names = List.of("pobi", "woni");
-        racingCars = RacingCars.of(names);
+        names = List.of("pobi", "woni");
+
+        Car pobi = new Car("pobi", () -> true);
+        Car woni = new Car("woni", () -> false);
+        cars = List.of(pobi, woni);
     }
 
     @Test
@@ -24,6 +28,7 @@ class RacingCarsTest {
         //given
 
         //when
+        RacingCars racingCars = RacingCars.of(names);
 
         //then
         assertThat(racingCars).hasToString("pobi : \n" + "woni : ");
@@ -51,5 +56,18 @@ class RacingCarsTest {
         //then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NOT_ENOUGH_CARS.getMessage());
+    }
+
+    @Test
+    void 우승자_찾기() {
+        //given
+        RacingCars racingCars = new RacingCars(cars);
+        racingCars.move();
+
+        //when
+        List<Car> winners = racingCars.findWinners();
+
+        //then
+        assertThat(winners).containsExactly(cars.getFirst());
     }
 }

@@ -20,7 +20,9 @@ public class RacingCars {
 
     public static RacingCars of(List<String> names) {
         validate(names);
-        List<Car> cars = names.stream().map(Car::new).collect(Collectors.toList());
+        List<Car> cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         return new RacingCars(cars);
     }
 
@@ -43,8 +45,28 @@ public class RacingCars {
         }
     }
 
+    public List<Car> findWinners() {
+        int maxPosition = getMaxPosition(cars);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    public void move() {
+        cars.forEach(Car::move);
+    }
+
+    private int getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+    }
+
     @Override
     public String toString() {
-        return cars.stream().map(Car::toString).collect(Collectors.joining(NEW_LINE));
+        return cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining(NEW_LINE));
     }
 }

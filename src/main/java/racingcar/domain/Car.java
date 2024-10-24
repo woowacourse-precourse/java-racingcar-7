@@ -29,14 +29,18 @@ public class Car {
         this(name, new RandomDrivingStrategy());
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public void move() {
         if (strategy.driving()) {
             position++;
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     private void validate(final String name) {
