@@ -9,6 +9,14 @@ public class CarRace {
     public void play(String names, String count) {
         HashMap<String, Integer> cars = getCar(names);
         int tryCount = getCount(count);
+        for (int round = 0; round < tryCount; round++) {
+            for (String car : cars.keySet()) {
+                int random = random();
+                if (random >= 4) {
+                    cars.put(car, cars.get(car) + 1);
+                }
+            }
+        }
     }
 
     public int random() {
