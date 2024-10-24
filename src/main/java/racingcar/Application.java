@@ -18,6 +18,7 @@ public class Application {
 
         validateCarsName(trimmedCarsNameList);
 
+        validateCount(countInput);
         int count = parseInt(countInput);
     }
 
@@ -72,5 +73,13 @@ public class Application {
     // TODO: 엄청 큰 숫자가 들어왔을 때도 고려
     private static int parseInt(String string) {
         return Integer.parseInt(string);
+    }
+
+    private static void validateCount(String countInput) {
+        try {
+            Integer.parseInt(countInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
