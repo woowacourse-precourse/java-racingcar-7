@@ -61,7 +61,19 @@ public class Game {
     }
 
     public void printWinner() {
+        StringBuilder printMessage = new StringBuilder();
         List<String> winners = findWinner();
-        winners.forEach(System.out::println);
+
+        printMessage.append("최종 우승자 : ");
+        printMessage.append(winners.getFirst());
+        winners.removeFirst();
+        if (!winners.isEmpty()) {
+            winners.forEach((winner) -> {
+                printMessage.append(", ");
+                printMessage.append(winner);
+            });
+        }
+
+        System.out.println(printMessage);
     }
 }
