@@ -141,3 +141,9 @@ jun : -----
             └── service
                 └── RacingCarServiceTest.java
 ```
+
+---
+
+## 테스트 커버리지
+
+![test_coverage.png](docs/test_coverage.png)
