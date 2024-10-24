@@ -1,17 +1,20 @@
 package racingcar.controller;
 
-import racingcar.view.InputView;
+import java.util.List;
+import racingcar.dto.RacingRegisterForm;
+import racingcar.service.RegistrationService;
 
 public class RacingGameController {
 
-    private final InputView inputView;
+    private final RegistrationService registrationService;
 
     public RacingGameController() {
-        inputView = new InputView();
+        registrationService = new RegistrationService();
     }
 
     public void start() {
-        String carNames = inputView.requestCarNames();
-        String round = inputView.requestRaceRound();
+        RacingRegisterForm registerForm = registrationService.register();
+        List<String> carNames = registerForm.carNames();
+        int raceRoundCount = registerForm.raceRoundCount();
     }
 }
