@@ -1,19 +1,20 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars (List<String> carNames) {
+        checkCarNameDuplicate(carNames);
+        this.cars = new ArrayList<>();
+        carNames.forEach(carName -> cars.add(new Car(carName)));
     }
 
-    public Cars makeCars(List<String> carNames) {
-        checkCarNameDuplicate(carNames);
-        carNames.forEach(carName -> cars.add(new Car(carName)));
-        return this;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     private void checkCarNameDuplicate(List<String> carNames) {
