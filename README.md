@@ -59,6 +59,11 @@ MVC 패턴으로 입출력, 컨트롤러, 경주 기능 분리
 * InputView : 사용자 입력 처리
 * OutputView : 결과 출력
 
+### Validator
+입력값을 검증하는 패키지
+* CarValidator : 자동차 이름 입력값을 검증
+* RoundValidator : 라운드 횟수 입력값을 검증
+
 ### Controller
 Viwe와 Model을 연결
 RacingGameController : 게임 어플리케이션의 전체 흐름을 제어
