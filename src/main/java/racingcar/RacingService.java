@@ -14,8 +14,8 @@ public class RacingService {
     private final int STOP_STEP = 0;
     public int executionCount = 0;
 
-    public RacingService(String carInput, int moveCount) {
-        this.MOVE_COUNT = moveCount;
+    public RacingService(String carInput, int moveCountInput) {
+        this.MOVE_COUNT = moveCountInput;
         initializeCarMapFromInput(carInput);
     }
 
