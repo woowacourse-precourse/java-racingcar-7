@@ -1,5 +1,7 @@
 package racingcar.validation;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 import racingcar.enums.ErrorMessage;
 
@@ -38,8 +40,10 @@ public class CarNameValidator {
 
     public static void validateCar(String input) {
         String[] cars = input.split(",");
+        Set<String> carNames = new HashSet<>();
         for (String car : cars) {
             validateCarNameLength(car);
+            validateCarNameDuplication(carNames, car);
         }
     }
 
@@ -48,4 +52,12 @@ public class CarNameValidator {
             throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH_ONE_TO_FIVE.getMessage());
         }
     }
+
+    private static void validateCarNameDuplication(Set<String> carNames, String car) {
+        if (!carNames.add(car.trim())) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_NAME_DUPLICATION.getMessage());
+        }
+    }
+
+
 }
