@@ -5,6 +5,7 @@ public class OutputView {
     private static final String GAME_RESULT_MESSAGE = "실행 결과";
     private static final String NAME_DISTANCE_SEPARATOR = " : ";
     private static final String HYPHEN = "-";
+    private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     public void printGameResultMessage() {
         System.out.println(GAME_RESULT_MESSAGE);
@@ -15,6 +16,15 @@ public class OutputView {
         printSeparator();
         convertDistanceToHyphen(movedDistance);
         printEmptyLine();
+    }
+
+    public void printWinner(String winner) {
+        printWinnerMessage();
+        System.out.println(winner);
+    }
+
+    private void printWinnerMessage() {
+        System.out.print(WINNER_MESSAGE);
     }
 
     public void printEmptyLine() {
@@ -34,6 +44,4 @@ public class OutputView {
             System.out.print(HYPHEN);
         }
     }
-
-
 }
