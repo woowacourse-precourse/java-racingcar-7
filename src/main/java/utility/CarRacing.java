@@ -7,29 +7,42 @@ import java.util.List;
 
 public class CarRacing {
     // 경주 시작
-    public static void start(){
+    public static void start() {
         for (int i = 0; i < Application.numTry; i++) {
-            pickRandom();
-            Result.printOngoing();
+            pickRandom(Application.currentSituation);
+            Result.printOngoing(Application.cars, Application.currentSituation);
         }
     }
 
     // 모든 차량이 Random으로 수를 뽑음
-    public static void pickRandom() {
-        List<Integer> tmpCurrentSituation = Application.currentSituation;
-
-        for (int i = 0; i < tmpCurrentSituation.size(); i++) {
+    private static void pickRandom(List<Integer> currentSituation) {
+        for (int i = 0; i < currentSituation.size(); i++) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
-            determineMore4(randomNum, i);
+            determineMore4(randomNum, i, currentSituation);
         }
     }
 
     // 4 이상인지 판단
-    public static void determineMore4(int randomNum, int idx) {
-        List<Integer> tmpCurrentSituation = Application.currentSituation;
-
+    private static void determineMore4(int randomNum, int idx, List<Integer> currentSituation) {
         if (randomNum >= 4) {
-            tmpCurrentSituation.set(idx, tmpCurrentSituation.get(idx) + 1);
+            currentSituation.set(idx, currentSituation.get(idx) + 1);
+        }
+    }
+
+    // Test
+    public static List<Integer> test(int randomNum, List<Integer> progress) {
+        try {
+            setRandom(randomNum, progress);
+            return progress;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Error");
+        }
+    }
+
+    // Random 수 지정
+    public static void setRandom(int randomNum, List<Integer> process) {
+        for (int i = 0; i < process.size(); i++) {
+            determineMore4(randomNum, i, process);
         }
     }
 }
