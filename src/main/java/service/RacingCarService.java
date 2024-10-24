@@ -1,5 +1,6 @@
 package service;
 
+import dto.RaceOutputDTO;
 import dto.ValidatedInputDataDTO;
 import java.util.List;
 import policy.RacingPolicy;
@@ -21,13 +22,13 @@ public class RacingCarService implements RacingService {
     }
 
     @Override
-    public String racingStart() {
+    public RaceOutputDTO racingStart() {
         String[] splitNames = validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
         generateRacer(splitNames);
         String raceStatus = runRace(splitNames);
         String raceWinner = fineRaceWinner();
 
-        return raceStatus + ("\n")+raceWinner;
+        return new RaceOutputDTO(raceStatus, raceWinner);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class RacingCarService implements RacingService {
             if(racingPolicy.isMoveForward()){
                 raceStatusRepository.save(name, raceStatusRepository.find(name)+1L);
             }
-            stringBuilder.append(name).append(" :")
+            stringBuilder.append(name).append(" : ")
                     .append(racingPolicy.getMoveForwardSymbol().repeat(raceStatusRepository.find(name).intValue())).append("\n");
         }
 
@@ -91,7 +92,6 @@ public class RacingCarService implements RacingService {
     public String fineRaceWinner(){
         List<String> winners = raceStatusRepository.findWinner();
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("최종 우승자 : ");
         for (int i = 0; i < winners.size(); i++) {
             if(i< winners.size()-1){
                 stringBuilder.append(winners.get(i)).append(","); 
@@ -101,7 +101,5 @@ public class RacingCarService implements RacingService {
         }
         return stringBuilder.toString();
     }
-
-
 
 }

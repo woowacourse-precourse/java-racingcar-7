@@ -21,7 +21,7 @@ class RacingCarServiceTest {
         RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
 
         //when
-        String result = racingService.racingStart();
+        racingService.racingStart();
         Repository repository = racingService.getRaceStatusRepository();
 
         //then

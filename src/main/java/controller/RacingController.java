@@ -2,6 +2,7 @@ package controller;
 
 import common.BeanFactory;
 import dto.OriginalInputDTO;
+import dto.RaceOutputDTO;
 import dto.ValidatedInputDataDTO;
 import service.RacingService;
 
@@ -15,14 +16,14 @@ public class RacingController {
         this.originalInput = originalInput;
     }
 
-    public String run() {
+    public RaceOutputDTO run() {
         ValidatedInputDataDTO validatedInputDataDTO = validateInput();
         RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
         return racingService.racingStart();
     }
 
     public ValidatedInputDataDTO validateInput(){
-        OriginalInputDTO replaceBlankInput = replaceBlankInput(originalInput.name(), originalInput.name());
+        OriginalInputDTO replaceBlankInput = replaceBlankInput(originalInput.name(), originalInput.count());
         isEmptyInput(replaceBlankInput.name(), replaceBlankInput.count());
         return new ValidatedInputDataDTO(replaceBlankInput.name(),convertTryCount(replaceBlankInput.count()));
     }
