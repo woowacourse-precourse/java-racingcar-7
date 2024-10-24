@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.utils.RandomNumber;
 
 public class Racing {
@@ -19,15 +19,12 @@ public class Racing {
         return cars.getCars();
     }
 
-    public List<Car> findWinner(List<Car> cars) {
-        List<Car> winner = new ArrayList<>();
+    public String findWinner(List<Car> cars) {
         int maxMovedDistance = findMaxMovedDistance(cars);
-        for (Car car : cars) {
-            if (car.getMovedDistance() == maxMovedDistance) {
-                winner.add(car);
-            }
-        }
-        return winner;
+        return cars.stream()
+                .filter(car -> car.getMovedDistance() == maxMovedDistance)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private int findMaxMovedDistance(List<Car> cars) {
