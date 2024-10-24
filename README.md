@@ -3,9 +3,7 @@
 ---
 
 <details>
-    <summary>목표</summary>
-
-# 목표
+    <summary># 목표</summary>
 
 ---
 
