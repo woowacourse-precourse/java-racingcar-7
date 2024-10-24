@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.models;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;

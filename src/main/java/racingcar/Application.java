@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.models.Car;
+import racingcar.utils.Randomizer;
 import racingcar.validators.CarInputValidator;
 import racingcar.validators.RoundInputValidator;
+import racingcar.views.IOView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        View view = new View();
+        IOView view = new IOView();
         String carInput = view.getCarInput();
 
         CarInputValidator carInputValidator = new CarInputValidator();
