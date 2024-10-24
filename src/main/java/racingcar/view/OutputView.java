@@ -8,22 +8,32 @@ import java.util.List;
 
 public class OutputView {
 
+    private final String COLON = ":";
+    private final String DASH = "-";
+    private final String COMMA = ",";
+    private final String SPACE = " ";
+
     public void printInputCarNames() {
-        OutputConsole.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String message = String.format("경주할 자동차 이름을 입력하세요.(이름은 쉼표(%s) 기준으로 구분)", COMMA);
+        OutputConsole.println(message);
     }
 
     public void printInputTryCount() {
-        OutputConsole.println("시도할 회수는 몇회인가요?");
+        String message = "시도할 회수는 몇회인가요?";
+        OutputConsole.println(message);
     }
 
     public void printRacingRoundResults(List<RacingRoundResult> racingRoundResults) {
+        String message = "실행 결과";
+
         OutputConsole.println();
-        OutputConsole.println("실행 결과");
+        OutputConsole.println(message);
         printRoundResults(racingRoundResults);
     }
 
     public void printWinners(RacingCars racingCars) {
-        OutputConsole.println("최종 우승자 : " + racingCars.getJoinedNames(", "));
+        String message = String.format("최종 우승자 %s %s", COLON, racingCars.getJoinedNames(COMMA + SPACE));
+        OutputConsole.println(message);
     }
 
     private void printRoundResults(List<RacingRoundResult> racingRoundResults) {
@@ -32,13 +42,15 @@ public class OutputView {
 
     private void printRoundResult(RacingRoundResult racingRoundResult) {
         racingRoundResult.value().forEach((carName, position) -> {
-            OutputConsole.println(carName + " : " + getDashes(position));
+            String message = String.format("%s %s %s", carName, COLON, getDashes(position));
+
+            OutputConsole.println(message);
         });
 
         OutputConsole.println();
     }
 
     private String getDashes(Integer position) {
-        return "-".repeat(position);
+        return DASH.repeat(position);
     }
 }
