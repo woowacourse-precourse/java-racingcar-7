@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -49,10 +48,8 @@ public class Application {
         System.out.println("실행 결과");
         final int playTimes = Integer.parseInt(playTimesInput);
         for (int i = 0; i < playTimes; i++) {
-            for (Car car : cars) {
-                MoveStrategy moveStrategy = new RandomNumberMoveStrategy();
-                car.move(moveStrategy);
-            }
+            MoveStrategy moveStrategy = new RandomNumberMoveStrategy();
+            cars.forEach(car -> car.move(moveStrategy));
 
             for (Car car : cars) {
                 final String positionBar = "-".repeat(car.getPosition());
