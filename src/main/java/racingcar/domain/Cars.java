@@ -36,4 +36,15 @@ public class Cars {
                 .map(Car::getPosition)
                 .toList();
     }
+
+    private List<String> findWinner(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+    }
 }
