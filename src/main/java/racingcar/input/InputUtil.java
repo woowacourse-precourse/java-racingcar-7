@@ -13,10 +13,10 @@ public class InputUtil {
     public static Input getInput() throws IllegalArgumentException {
 
         String input = Console.readLine();
-        List<String> names = InputUtil.parseNames(input);
+        List<String> names = parseNames(input);
 
         input = Console.readLine();
-        int tryNumber = InputUtil.getTryNumber(input);
+        int tryNumber = getTryNumber(input);
         Console.close();
 
         return new Input(names, tryNumber);
