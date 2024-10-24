@@ -14,7 +14,7 @@ public class InputController {
     private final FilterConfig filterConfig = new FilterConfig();
 
     public List<CarDomain> getCarNameRequest() {
-        outputView.displayCarNameRequest();
+        System.out.println(outputView.displayCarNameRequest());
         String inputCarNames = Console.readLine();
         filterConfig.getCarNameFilterChain().doFilter(inputCarNames);
         return StringUtil.splitStringToList(inputCarNames).stream()
@@ -23,7 +23,7 @@ public class InputController {
     }
 
     public Integer getRoundRequest() {
-        outputView.displayRoundRequest();
+        System.out.println(outputView.displayRoundRequest());
         String inputRound = Console.readLine();
         filterConfig.getRoundFilterChain().doFilter(inputRound);
         return Integer.valueOf(inputRound);
