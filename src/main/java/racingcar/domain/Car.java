@@ -10,9 +10,9 @@ public class Car {
 
     public Car(final String name, Integer distance) {
         validateNotBlank(name);
+        validateCarNameLength(name);
         this.name = name;
         this.distance = distance;
-        validateCarNameLength();
     }
 
     public void moveForward() {
@@ -25,8 +25,8 @@ public class Car {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private void validateCarNameLength() {
-        if (this.name.length() > 5)
+    private void validateCarNameLength(String name) {
+        if (name.length() > 5)
             throw new IllegalArgumentException();
     }
 }
