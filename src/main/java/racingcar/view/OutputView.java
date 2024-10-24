@@ -12,7 +12,12 @@ public class OutputView {
         System.out.println();
     }
 
-    public void announceWinners(List<String> winners) {
-        System.out.println("우승자: " + String.join(", ", winners));
+
+    public void printWinners(List<String> winners) {
+        System.out.println("최종 우승자: " + String.join(", ", winners));
+    }
+
+    public void printResult() {
+        System.out.println("\n실행 결과");
     }
 }
