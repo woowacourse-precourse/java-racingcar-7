@@ -21,4 +21,8 @@ public class OutputView {
     public void runResult() {
         System.out.println(OutputMessage.RUN_RESULT.getMessage());
     }
+
+    public void roundResult(String carName, String progress) {
+        System.out.println(OutputMessage.ROUND_RESULT.getFormattedMessage(carName, progress));
+    }
 }
