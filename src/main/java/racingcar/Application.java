@@ -34,6 +34,8 @@ public class Application {
         }
 
         List<String> winnerList = determineWinner(cars);
+        String winnerString = parseWinner(winnerList);
+        System.out.println("최종 우승자 : " + winnerString);
     }
 
     private static String[] parseCarsName(String carInput) {
@@ -137,6 +139,18 @@ public class Application {
             }
         }
         return winner;
+    }
+
+    private static String parseWinner(List<String> winnerList) {
+        StringBuilder winnerString = new StringBuilder();
+        int size = winnerList.size();
+        for (int i = 0; i < size; i++) {
+            winnerString.append(winnerList.get(i));
+            if (i < size - 1) {
+                winnerString.append(", ");
+            }
+        }
+        return winnerString.toString();
     }
 
     private static class Car {
