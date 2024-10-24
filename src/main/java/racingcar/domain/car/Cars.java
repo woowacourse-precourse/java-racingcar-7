@@ -2,13 +2,14 @@ package racingcar.domain.car;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = validate(cars);
     }
 
     public List<Car> getCars() {
@@ -37,5 +38,39 @@ public class Cars {
 
     private boolean isSamePosition(Car car, int maxPosition) {
         return car.getPosition() == maxPosition;
+    }
+
+    private List<Car> validate(List<Car> cars) {
+        validateParticipant(cars);
+        validateDuplicateName(cars);
+
+        return cars;
+    }
+
+    private void validateParticipant(List<Car> cars) {
+        if (isOne(cars)) {
+            throw new IllegalArgumentException("[ERROR] 시합은 두명 이상부터 가능합니다.");
+        }
+    }
+
+    private boolean isOne(List<Car> cars) {
+        return cars.size() == 1;
+    }
+
+    private void validateDuplicateName(List<Car> cars) {
+        if (hasDuplicateName(cars)) {
+            throw new IllegalArgumentException("[ERROR] 동일한 이름이 있습니다.");
+        }
+    }
+
+    private boolean hasDuplicateName(List<Car> cars) {
+        return cars.size() != getUniqueNameCount(cars);
+    }
+
+    private int getUniqueNameCount(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet())
+                .size();
     }
 }
