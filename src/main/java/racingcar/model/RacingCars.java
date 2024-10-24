@@ -10,7 +10,9 @@ public class RacingCars {
 
     public RacingCars(List<RacingCar> values) {
         validate(values);
-        this.values = List.copyOf(values);
+        this.values = values.stream()
+                .map(RacingCar::new)
+                .toList();
     }
 
     public void moveRandomly(RandomRange randomRange) {
