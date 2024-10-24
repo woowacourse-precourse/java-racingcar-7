@@ -12,6 +12,8 @@ public class Application {
 
     private static Map<String, Integer> carGameResult;
     private static final int MOVE_THRESHOLD = 4;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+
 
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -30,7 +32,7 @@ public class Application {
         }
         List<String> carName = List.of(carNames.split(",", -1));
         for (String name : carName) {
-            if (name.length() > 5) {
+            if (name.length() > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름을 5자 이하로 적어주세요.");
             }
             if (name.isBlank()) {
