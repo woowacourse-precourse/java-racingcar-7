@@ -40,6 +40,7 @@ public class CarNameValidator {
 
     public static void validateCar(String input) {
         String[] cars = input.split(",");
+        validateCarCount(cars);
         Set<String> carNames = new HashSet<>();
         for (String car : cars) {
             validateCarNameLength(car);
@@ -63,6 +64,12 @@ public class CarNameValidator {
     private static void validateCarNameEmpty(String carName) {
         if (carName.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_BLANK.getMessage());
+        }
+    }
+
+    private static void validateCarCount(String[] cars) {
+        if (cars.length < 2) {
+            throw new IllegalArgumentException(ErrorMessage.MIN_CAR_COUNT.getMessage());
         }
     }
 }
