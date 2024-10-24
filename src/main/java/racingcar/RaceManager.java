@@ -16,10 +16,11 @@ public class RaceManager {
             racingCar.run(cycle);
             IO_HANDLER.printRaceState(racingCar);
         }
+        String winner = getWinner(racingCars);
+        IO_HANDLER.printWinner(winner);
     }
 
     private static String getWinner(List<RacingCar> racingCars) {
-
         int maxScore = 0;
         List<String> winners = new ArrayList<>();
         for (RacingCar racingCar : racingCars) {
@@ -32,6 +33,6 @@ public class RaceManager {
                 winners.add(racingCar.getName());
             }
         }
-        return IO_HANDLER.getWinnerList(winners);
+        return String.join(",", winners);
     }
 }
