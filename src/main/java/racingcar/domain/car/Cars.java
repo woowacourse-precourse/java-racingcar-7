@@ -12,6 +12,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public void accelerateSpecificCar(Car car) {
+        car.accelerator();
+    }
+
     private void validateDuplicateCarName(List<Car> cars) {
         Set<Car> setCar = new HashSet<>(cars);
         if (setCar.size() != cars.size()) {
