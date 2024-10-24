@@ -41,7 +41,6 @@ public class TryCount {
         }
     }
 
-    // 변환된 값이 유효한지 확인하는 메서드
     private void validateParsedCount(long count) {
         if (count < 0) {
             throw new IllegalArgumentException(INVALID_COUNT.getMessage());

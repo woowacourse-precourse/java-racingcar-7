@@ -2,10 +2,10 @@ package racingcar.service.impl;
 
 import racingcar.domain.CarList;
 import racingcar.domain.Input;
-import racingcar.utils.Output;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
+import racingcar.utils.Output;
 
 public class CarServiceImpl implements CarService {
 
@@ -17,7 +17,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarList toCarList(Input input) {
-        return input.toCarList();
+        return CarList.from(input);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CarServiceImpl implements CarService {
             output.append(status);
         }
 
-        return carList.toWinners();
+        return Winners.from(carList);
     }
 
     @Override

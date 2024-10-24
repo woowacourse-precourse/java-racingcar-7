@@ -9,7 +9,6 @@ import racingcar.viewer.Viewer;
 
 public class CarController {
 
-    // 이름을 입력받고
     private final CarService carService;
     private final Viewer viewer;
 

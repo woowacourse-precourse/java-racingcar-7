@@ -27,7 +27,7 @@ class WinnersTest {
         CarList carList = new CarList(test);
 
         // when
-        Winners winners = carList.toWinners();
+        Winners winners = Winners.from(carList);
         String result = winners.result();
 
         // then

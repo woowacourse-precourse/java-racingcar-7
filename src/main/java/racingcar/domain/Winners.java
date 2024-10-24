@@ -12,6 +12,11 @@ public class Winners {
         this.winnerList = winnerList;
     }
 
+    public static Winners from(CarList carList) {
+        List<Car> winners = carList.toWinners();
+        return new Winners(winners);
+    }
+
     // 최종 승자를 반환합니다.
     public String result() {
         StringJoiner stringJoiner = new StringJoiner(", ");
@@ -23,6 +28,6 @@ public class Winners {
         String result = stringJoiner.toString();
 
         return WINNER_RESULT + result;
-
     }
+
 }

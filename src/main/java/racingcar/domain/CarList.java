@@ -20,10 +20,21 @@ public class CarList {
         this.maxMoveCnt = 0L;
     }
 
+    public static CarList from(Input input) {
+        CarList carList = new CarList();
+        String[] splitInput = input.splitInput();
+
+        for (String name : splitInput) {
+            String validName = input.validName(name);
+            carList.add(validName);
+        }
+
+        return carList;
+    }
+
     public void add(String name) {
         cars.add(new Car(name));
     }
-
 
     // 모든 자동차들을 움직이게 합니다.
     public void moveAll() {
@@ -45,19 +56,16 @@ public class CarList {
         return stringJoiner.toString();
     }
 
+    protected List<Car> toWinners() {
+        return cars.stream()
+                .filter(car -> car.isMaxMove(this.maxMoveCnt))
+                .toList();
+    }
+
     private void changeMaxMoveCnt(Long moveCnt) {
         if (this.maxMoveCnt < moveCnt) {
             this.maxMoveCnt = moveCnt;
         }
-    }
-
-    // 제일 많이 움직인 자동차들을 반환합니다.
-    public Winners toWinners() {
-        List<Car> winnerList = cars.stream()
-                .filter(car -> car.isMaxMove(this.maxMoveCnt))
-                .toList();
-
-        return new Winners(winnerList);
     }
 
     @Override

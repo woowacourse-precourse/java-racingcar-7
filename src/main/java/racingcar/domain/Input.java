@@ -14,18 +14,7 @@ public class Input {
         this.value = invalidInput(input);
     }
 
-    public CarList toCarList() {
-        CarList carList = new CarList();
-        String[] splitInput = splitInput();
-
-        for (String name : splitInput) {
-            carList.add(validName(name));
-        }
-
-        return carList;
-    }
-
-    private String[] splitInput() {
+    protected String[] splitInput() {
         String[] splitInput = value.split(",");
 
         if (splitInput.length == 0) {
@@ -33,6 +22,14 @@ public class Input {
         }
 
         return splitInput;
+    }
+
+    protected String validName(String name) {
+        if (isInValidName(name)) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
+        }
+
+        return name;
     }
 
     private String invalidInput(String input) {
@@ -43,13 +40,6 @@ public class Input {
         return input;
     }
 
-    private String validName(String name) {
-        if (isInValidName(name)) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-        }
-
-        return name;
-    }
 
     private boolean isInValidName(String name) {
         int length = name.length();

@@ -22,19 +22,20 @@ class InputTest {
         expect.add("woni");
         expect.add("jun");
 
-        CarList result = input.toCarList();
+        CarList result = CarList.from(input);
 
         assertThat(result).isEqualTo(expect);
     }
 
     @Test
-    @DisplayName("에러 : ")
+    @DisplayName("에러 올바른 값과 빈값")
     void test2() {
-        String s = " ,woni,jun";
+        String s = ",woni,jun";
         Input input = new Input(s);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                input::toCarList);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            CarList.from(input);
+        });
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
     }
@@ -45,8 +46,9 @@ class InputTest {
         String s = "pooobi,woni,jun";
         Input input = new Input(s);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                input::toCarList);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            CarList.from(input);
+        });
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
     }
@@ -57,8 +59,9 @@ class InputTest {
         String s = ",,";
         Input input = new Input(s);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                input::toCarList);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            CarList.from(input);
+        });
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
     }
