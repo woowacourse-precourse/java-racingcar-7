@@ -18,7 +18,7 @@ public class OutputView {
     public void displayRaceResult(int totalCount, OutputDTO raceResult) {
         System.out.println(OUTPUT_RACE_RESULT);
         for (int i = 1; i <= totalCount; i++) {
-            displayRaceResult(i, raceResult.getRaceRecord());
+            displayRaceResult(i, raceResult.getRaceResult());
         }
     }
 

@@ -17,7 +17,7 @@ public class RacingController {
         List<RacingCar> raceResult = racing.getRacingRecord();
 
         RacingResult racingResult = new RacingResult(raceResult, totalTrialCount);
-        List<String> winners = racingResult.getWinner();
+        List<String> winners = racingResult.findWinner();
 
         return new OutputDTO(raceResult, winners);
     }

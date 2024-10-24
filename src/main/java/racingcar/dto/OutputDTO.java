@@ -7,16 +7,16 @@ import racingcar.model.RacingCar;
 
 public class OutputDTO {
 
-    private final List<RacingCar> raceRecord;
+    private final List<RacingCar> raceResult;
     private final List<String> winners;
 
-    public OutputDTO(List<RacingCar> raceRecord, List<String> winners) {
-        this.raceRecord = raceRecord;
+    public OutputDTO(List<RacingCar> raceResult, List<String> winners) {
+        this.raceResult = raceResult;
         this.winners = winners;
     }
 
-    public List<RacingCar> getRaceRecord() {
-        return raceRecord;
+    public List<RacingCar> getRaceResult() {
+        return raceResult;
     }
 
     public String getWinners() {
