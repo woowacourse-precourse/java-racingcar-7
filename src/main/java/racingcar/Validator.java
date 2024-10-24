@@ -13,7 +13,7 @@ public class Validator {
             throw new IllegalArgumentException("시도횟수는 양수만 입력할 수 있습니다.");
         }
     }
-    public static void validateEmptyOrZeroString(String inputString) {
+    public static void validateEmptyOrZeroTryCount(String inputString) {
         if (inputString.isBlank() || inputString =="0") {
             throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다");
         }
@@ -30,6 +30,12 @@ public class Validator {
 
         if (matcher.find()) {
             throw new IllegalArgumentException("이름은 알파벳,숫자와 언더바(_)만 사용할 수 있습니다.");
+        }
+    }
+
+    public static void validateEmptyString(String carNames) {
+        if (carNames.isBlank()) {
+            throw new IllegalArgumentException("빈값을 입력하셨습니다. 이름을 입력해주세요");
         }
     }
 }
