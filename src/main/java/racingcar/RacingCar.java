@@ -14,6 +14,10 @@ public class RacingCar {
         this.count = 0;
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
     public void rollDice() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             this.count += 1;
