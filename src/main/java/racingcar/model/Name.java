@@ -9,13 +9,13 @@ public record Name(String name) {
         validateNameLengthLongerThenMaxSize(name);
     }
 
-    private void validateNameIsBlank(String name) {
+    private void validateNameIsBlank(final String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
         }
     }
 
-    private void validateNameLengthLongerThenMaxSize(String name) {
+    private void validateNameLengthLongerThenMaxSize(final String name) {
         if (name.length() > NAME_MAX_SIZE) {
             throw new IllegalArgumentException("이름의 길이는 " + NAME_MAX_SIZE + "자 이하여야 합니다.");
         }
