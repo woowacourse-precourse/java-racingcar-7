@@ -55,4 +55,10 @@ public class GameStatus {
     public Map<Car, Integer> getRacersMovement() {
         return Collections.unmodifiableMap(racersMovement);
     }
+
+    public int getMaximumMovement() {
+        return Collections.max(
+                racersMovement.entrySet(), Map.Entry.comparingByValue()
+        ).getValue();
+    }
 }

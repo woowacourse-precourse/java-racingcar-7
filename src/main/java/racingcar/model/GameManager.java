@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map.Entry;
 import racingcar.constant.ErrorMessage;
 
 public class GameManager {
@@ -45,5 +46,14 @@ public class GameManager {
                 RANDOM_START_NUMBER_FOR_MOVE_FORWARD,
                 RANDOM_END_NUMBER_FOR_MOVE_FORWARD
         );
+    }
+
+    public List<Car> findWinners(GameStatus gameStatus) {
+        int maximumMovement = gameStatus.getMaximumMovement();
+
+        return gameStatus.getRacersMovement().entrySet().stream()
+                .filter(movement -> movement.getValue() == maximumMovement)
+                .map(Entry::getKey)
+                .toList();
     }
 }
