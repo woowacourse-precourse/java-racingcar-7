@@ -10,9 +10,6 @@ public class RandomRace {
         return random >= 4;
     }
 
-    /*
-    tryNum 만큼 전진한다.
-     */
     public List<RacingCar> start(List<RacingCar> racingCars, Long tryNums) {
         for (int i = 0; i < tryNums; i++) {
             for (RacingCar racingCar : racingCars) {
