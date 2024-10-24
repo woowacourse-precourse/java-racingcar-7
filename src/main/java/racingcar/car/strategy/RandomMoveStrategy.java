@@ -8,7 +8,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final int STOP = 0;
 
     @Override
-    public int getPossibleMoveCount() {
+    public int getPossibleMoveAmount() {
         int pickedNumber = Randoms.pickNumberInRange(0, 9);
         if (pickedNumber >= MOVE_CONDITION_NUMBER) {
             return MOVE_ONCE;

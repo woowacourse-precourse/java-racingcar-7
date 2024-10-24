@@ -13,7 +13,7 @@ public class Car {
     }
 
     public void move() {
-        int moveCount = moveStrategy.getPossibleMoveCount();
+        int moveCount = moveStrategy.getPossibleMoveAmount();
         position += moveCount;
     }
 
