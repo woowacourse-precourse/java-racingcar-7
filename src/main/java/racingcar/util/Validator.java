@@ -34,6 +34,9 @@ public class Validator {
     }
 
     public static void gameRoundValidate(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException();
+        }
         try {
             double number = Double.parseDouble(input);
 
