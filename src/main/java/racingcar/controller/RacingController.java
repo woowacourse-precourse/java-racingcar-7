@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.util.MessageFormatter;
 import racingcar.validator.InputValidator;
@@ -31,7 +30,7 @@ public class RacingController {
         String carInput = getCarInput();
         List<String> beforeConvertCars = splitInput(carInput);
         InputValidator.validateCarNames(beforeConvertCars);
-        return convertToCars(beforeConvertCars);
+        return Cars.createCars(beforeConvertCars);
     }
 
     private int getCount() {
@@ -52,11 +51,6 @@ public class RacingController {
     private List<String> splitInput(String carInput) {
         String[] carNames = carInput.split(DELIMITER);
         return Arrays.stream(carNames).map(String::trim).toList();
-    }
-
-    private Cars convertToCars(List<String> stringCars) {
-        List<Car> cars = stringCars.stream().map(Car::new).toList();
-        return new Cars(cars);
     }
 
     public static int getFormattedCount(String countInput) {

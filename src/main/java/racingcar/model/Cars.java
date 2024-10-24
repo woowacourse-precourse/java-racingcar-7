@@ -11,6 +11,11 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars createCars(List<String> carNames) {
+        List<Car> cars = carNames.stream().map(Car::new).toList();
+        return new Cars(cars);
+    }
+
     public void race() {
         cars.forEach(Car::race);
     }
