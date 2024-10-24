@@ -18,10 +18,9 @@ public class Application {
         return Console.readLine();
     }
 
-    private boolean validateNotEmpty(String str) {
+    private void validateNotEmpty(String str) {
         if (str.isEmpty()) {
-            return false;
+            throw new IllegalArgumentException("잘못된 입력입니다.") ;
         }
-        return true;
     }
 }
