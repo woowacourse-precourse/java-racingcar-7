@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
-    private final Integer distance;
+    private Integer distance;
 
-    public Car(String name, Integer distance) {
+    public Car(final String name, Integer distance) {
         validateNotBlank(name);
         this.name = name;
         this.distance = distance;
