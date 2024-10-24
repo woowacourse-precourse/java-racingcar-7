@@ -1,7 +1,4 @@
-package iohandler;
-
-import java.util.Arrays;
-import java.util.List;
+package io;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

@@ -1,12 +1,10 @@
-package iohandler;
+package io;
 
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

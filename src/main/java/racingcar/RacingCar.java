@@ -1,8 +1,8 @@
 package racingcar;
 
-import iohandler.CarNameInputHandler;
-import iohandler.InputHandler;
-import iohandler.OutputHandler;
+import io.CarNameInputHandler;
+import io.InputHandler;
+import io.OutputHandler;
 
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package iohandler;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
+package io;
 
 public class OutputHandler {
 
