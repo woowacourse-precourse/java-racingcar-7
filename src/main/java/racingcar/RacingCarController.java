@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RacingCarController {
     private final RacingCarModel model;
@@ -12,6 +14,16 @@ public class RacingCarController {
     public RacingCarController(RacingCarModel model, RacingCarView view){
         this.model = model;
         this.view = view;
+    }
+    public void isValidName(String name){
+        String replacedName = name.replaceAll("[a-z]", "");
+        try {
+            if (replacedName.length() != 0 || name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            throw e;
+        }
     }
     public void initGame(){
         setPlayersInfo();
@@ -29,7 +41,9 @@ public class RacingCarController {
         this.players = new HashMap<String, Integer>();
 
         for (String n : carName.split(",")) {
+            isValidName(n);
             this.players.put(n, 0);
+
         }
         this.times = view.getPlayTime();
     }
