@@ -23,6 +23,7 @@ public class MyTest {
     private static final int RANDOM_VALUE_THAT_STOP = 3;
     private static final int MOVE_ONCE = 1;
     private static final int STOP = 0;
+    private static final int ONE_ROUND = 1;
 
     // 출력 테스트를 위한 변수
     private ByteArrayOutputStream captor;
@@ -46,11 +47,11 @@ public class MyTest {
         return carFactory.createCars(carNames, moveStrategy);
     }
 
-    private static List<Car> generateCars(MoveStrategy moveStrategy1, MoveStrategy moveStrategy2) {
-        Car car1 = new Car(moveStrategy1, "car1");
-        Car car2 = new Car(moveStrategy2, "car2");
+    private static List<Car> generateCars(MoveStrategy firstStrategy, MoveStrategy secondStrategy) {
+        Car firstCar = new Car(firstStrategy, "car1");
+        Car secondCar = new Car(secondStrategy, "car2");
 
-        return List.of(car1, car2);
+        return List.of(firstCar, secondCar);
     }
 
     @DisplayName("자동차 이름 Validator 테스트")
@@ -227,7 +228,7 @@ public class MyTest {
         List<Car> cars = generateCars(moveStrategy);
 
         // 게임 진행 후 우승자 가져오기
-        RacingGame racingGame = new RacingGame(cars, 1);
+        RacingGame racingGame = new RacingGame(cars, ONE_ROUND);
         List<Car> winners = racingGame.getWinners();
 
         // when
