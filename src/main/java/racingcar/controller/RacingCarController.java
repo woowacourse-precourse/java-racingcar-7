@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import racingcar.domain.Car;
 import racingcar.service.RacingCarService;
 import racingcar.view.RacingCarView;
@@ -18,21 +19,20 @@ public class RacingCarController {
 
     public void run() {
 
-        //TODO
-        // 경주할 자동차 이름 입력
-        // 시도할 횟수
-        // 게임시작
-        // 실행 결과
-        // 우승자
-
-        String carNames = racingCarView.getCarNames();
-        Integer numberOfAttempts = racingCarView.getNumberOfAttempts();
+        String carNames = racingCarView.getCarNamesFromView();
+        Integer numberOfAttempts = racingCarView.getNumberOfAttemptsFromView();
 
         if (numberOfAttempts <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
 
         List<Car> racingCars = racingCarService.splitAndInitializeRacingCars(carNames);
+
+        printRaceResults(numberOfAttempts, racingCars);
+        printWinners(racingCars);
+    }
+
+    private void printRaceResults(Integer numberOfAttempts, List<Car> racingCars) {
 
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
@@ -42,23 +42,31 @@ public class RacingCarController {
                 racingCarView.printRaceResults(car.getName(), "-".repeat(car.getDistance()));
             }
         }
+    }
 
-        int maxDistance = 0;
+    private void printWinners(List<Car> racingCars) {
+        Integer maxDistance = getMaxDistance(racingCars);
+    }
+
+    private Integer getMaxDistance(List<Car> racingCars) {
+
+        Integer maxDistance = 0;
+
         for (Car car : racingCars) {
             if (car.getDistance() > maxDistance) {
                 maxDistance = car.getDistance();
             }
         }
+        return maxDistance;
+    }
 
-        List<String> winnerCars = new ArrayList<>();
+    private List<String> getWinners(List<Car> racingCars, Integer maxDistance) {
+        List<String> winners = new ArrayList<>();
         for (Car car : racingCars) {
-            if (car.getDistance() == maxDistance) {
-                winnerCars.add(car.getName());
+            if (Objects.equals(car.getDistance(), maxDistance)) {
+                winners.add(car.getName());
             }
         }
-
-        String winners = String.join(", ", winnerCars);
-        // TODO: 우승자가 한명일때는 쉽표가 없도록 구현
-        racingCarView.printWinners(winners);
+        return winners;
     }
 }
