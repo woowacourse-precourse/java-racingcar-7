@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +21,11 @@ public class Application {
 
         try {
             int raceRounds = Integer.parseInt(Console.readLine());
+            for (int i = 0; i < raceRounds; i++) {
+                vehicles.forEach(vehicle -> {
+                    Randoms.pickNumberInRange(0, 9);
+                });
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("경주 횟수는 숫자여야 합니다. 올바른 값을 입력해주세요.");
         }
