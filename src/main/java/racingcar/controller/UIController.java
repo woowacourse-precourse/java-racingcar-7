@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,7 +13,6 @@ public class UIController {
     private static final String QUESTION_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final String RACE_RESULT = "실행 결과";
     private static final String WINNER_FORMAT = "최종 우승자 : ";
-    private static final String NEXT_LINE = "\n";
     private static final String NAME_SEPARATOR_SYMBOL = ",";
 
     public List<String> receiveName() {
@@ -29,8 +29,11 @@ public class UIController {
         OutputView.print(RACE_RESULT);
     }
 
-    public void printRaceResult(Car car) {
-        OutputView.print(car.toString() + NEXT_LINE);
+    public void printRaceResult(Cars cars) {
+        for (Car car : cars.getCars()) {
+            OutputView.print(car.toString());
+        }
+        OutputView.print("");
     }
 
     public void printWinner(Car car) {

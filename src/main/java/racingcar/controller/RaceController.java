@@ -1,30 +1,40 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.Car;
-import racingcar.util.RandomValue;
+import racingcar.domain.Cars;
+import racingcar.service.RaceService;
 
 public class RaceController {
 
     private final UIController uiController;
+    private final RaceService raceService;
 
-    public RaceController(UIController uiController) {
+    public RaceController(UIController uiController, RaceService raceService) {
         this.uiController = uiController;
+        this.raceService = raceService;
     }
 
     public void run() {
-        Car car = new Car(uiController.receiveName());
+        Cars cars = new Cars(parse(uiController.receiveName()));
         int count = uiController.receiveCount();
 
         uiController.printRaceResultPhrase();
-        race(car, count);
+        race(cars, count);
 
-        uiController.printWinner(car);
+        //uiController.printWinner(car);
     }
 
-    private void race(Car car, int count) {
+    private void race(Cars cars, int count) {
         while (count-- > 0) {
-            car.process(RandomValue.generate());
-            uiController.printRaceResult(car);
+            raceService.start(cars);
+            uiController.printRaceResult(cars);
         }
+    }
+
+    private List<Car> parse(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .toList();
     }
 }
