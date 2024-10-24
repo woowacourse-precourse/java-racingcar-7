@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.entity.Car;
+import racingcar.enums.NotificationMessage;
 
 public class OutputView {
     public static void printRoundResults(List<Car> cars) {
@@ -12,6 +13,6 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        System.out.println(NotificationMessage.FINAL_WINNERS.getMessage() + String.join(", ", winners));
     }
 }
