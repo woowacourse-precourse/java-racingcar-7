@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -13,11 +14,18 @@ public record Cars(List<Car> carList) {
         this.carList = Collections.unmodifiableList(carList);
     }
 
-    public void moveAll(){
+    public static Cars of(String carNames, MovingStrategy movingStrategy) {
+        List<Car> carList = Arrays.stream(carNames.split(","))
+                .map(each -> new Car(each, movingStrategy))
+                .toList();
+        return new Cars(carList);
+    }
+
+    public void moveAll() {
         carList.forEach(Car::move);
     }
 
-    public List<String> getWinnerNames(){
+    public List<String> getWinnerNames() {
         int maxPosition = getMaxPosition();
 
         return carList.stream()

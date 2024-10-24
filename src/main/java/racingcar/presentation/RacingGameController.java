@@ -1,28 +1,26 @@
 package racingcar.presentation;
 
-import racingcar.domain.GameRound;
-import racingcar.domain.Cars;
+import racingcar.application.RacingService;
 
 public class RacingGameController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final GameRound gameRound;
+    private final RacingService racingService;
 
-    public RacingGameController() {
+    public RacingGameController(RacingService racingService) {
+        this.racingService = racingService;
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.gameRound = new GameRound();
+
     }
 
     public void run(){
         String carNames = inputView.getCarNames();
-        Cars cars = gameRound.getCars(carNames);
-
         String rawCount = inputView.getTrialCount();
-        int trialCount = Integer.parseInt(rawCount);
+
+        String result = racingService.getRacingResult(carNames, rawCount);
 
         outputView.printRunStarted();
-        String result = gameRound.runRace(cars, trialCount);
         outputView.printWinner(result);
     }
 }
