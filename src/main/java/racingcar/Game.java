@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,4 +17,12 @@ public class Game {
         carNamesList.forEach(carName -> participants.add(new Car(carName, 0)));
     }
 
+    public void moveCar() {
+        for (Car participant : participants) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                participant.move();
+            }
+        }
+    }
 }
