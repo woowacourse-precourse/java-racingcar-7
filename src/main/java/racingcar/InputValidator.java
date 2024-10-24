@@ -14,6 +14,14 @@ public class InputValidator {
         }
     }
 
+    public void validateNumeric(String lap) {
+        try {
+            Integer.parseInt(lap);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자 범위를 입력해 주세요.");
+        }
+    }
+
     private boolean isValidNameCharacter(char ch) {
         return Character.isLetterOrDigit(ch) || ch == NAME_DELIMITER;
     }
