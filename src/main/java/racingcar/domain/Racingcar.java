@@ -15,6 +15,18 @@ public class Racingcar {
         this.name = name;
     }
 
+    public int getStep(){
+        return step;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public boolean isWinner(int winningStep){
+        return step == winningStep;
+    }
+
     public void goFoward(){
         if(Utils.getRandomNumber() > 4){
             step++;

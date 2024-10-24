@@ -13,6 +13,7 @@ public class RacingcarController {
     public void run(){
         initRacingGame();
         startRacingGame();
+        afterRacingGame();
     }
 
     private void initRacingGame(){
@@ -31,4 +32,7 @@ public class RacingcarController {
         racingGame.startRacingGame(racingGameCount);
     }
 
+    public void afterRacingGame(){
+        racingGame.printWinner();
+    }
 }

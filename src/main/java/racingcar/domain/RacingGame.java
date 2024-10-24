@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.utils.Utils;
 import racingcar.validation.Validation;
 import racingcar.view.OutputView;
 
@@ -28,11 +29,30 @@ public class RacingGame {
             startGameRound();
             OutputView.printRacingGameRoundEndBlankLine();
         }
+
     }
 
     private void startGameRound(){
         racingcars.stream()
                 .forEach(Racingcar::goFoward);
+    }
+
+    public void printWinner(){
+        OutputView.printRacingGameWinner(getWinner());
+    }
+
+    public List<String> getWinner(){
+        return racingcars.stream()
+                .filter(racingcar -> racingcar.isWinner(getWinningStep()))
+                .map(Racingcar::getName)
+                .collect(Collectors.toList());
+    }
+
+    public int getWinningStep(){
+        List<Integer> steps = racingcars.stream()
+                .map(Racingcar::getStep)
+                .collect(Collectors.toList());
+        return Utils.getMaxValue(steps);
     }
 
 }
