@@ -26,6 +26,7 @@ public class SplitService {
         List<String> splitName = Arrays.stream(names.split(","))
                 .peek(NameValid::checkName)
                 .toList();
+        NameValid.checkNameDuplication(splitName);
         NameValid.checkNameCount(splitName.size());
         return splitName;
     }
