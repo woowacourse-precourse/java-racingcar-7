@@ -14,8 +14,15 @@ public class Name {
     }
 
     private void validateName(final String name) {
+        validateBlankName(name);
         validateNameLength(name);
         validateNameCharacters(name);
+    }
+    
+    private void validateBlankName(final String name) {
+        if (name.isBlank() || name == null) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+        }
     }
 
     private void validateNameLength(final String name) {
