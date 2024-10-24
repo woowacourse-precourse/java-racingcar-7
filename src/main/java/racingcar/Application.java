@@ -27,4 +27,10 @@ public class Application {
     private String[] splitNamesByComma(String str) {
         return str.split(",");
     }
+
+    private void validateMinimumTwoCars(String[] cars) {
+        if (cars.length < 2) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
