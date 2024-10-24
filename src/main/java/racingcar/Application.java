@@ -24,7 +24,10 @@ public class Application {
         // 자동차 경주 진행
         for (int i = 0; i < attempts; i++) {
             race(carList);
+            printCars(carList);
         }
+
+
     }
 
     // 자동차 경주 진행
@@ -35,6 +38,16 @@ public class Application {
                 car.move();
             }
         }
+    }
+
+    // 자동차 경주 결과 출력
+    private static void printCars(List<Car> carList) {
+        for (Car car : carList) {
+            int position = car.getPosition();
+            String carName = car.getName();
+            System.out.println(carName + " : " + "-".repeat(position));
+        }
+        System.out.println();
     }
 
 }
