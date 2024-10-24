@@ -6,7 +6,6 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarList;
-
 import java.util.List;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Winners;
