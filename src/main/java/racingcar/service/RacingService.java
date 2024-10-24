@@ -11,6 +11,13 @@ public class RacingService {
     private final RandomRange RANDOM_RANGE = new RandomRange(0, 9);
     private RacingCars racingCars;
 
+    public RacingResult play(RacingCars racingCars, int tryCount) {
+        List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
+        RacingCars winners = getWinners(racingCars);
+
+        return new RacingResult(racingRoundResults, winners);
+    }
+
     public void setRacingCars(RacingCars racingCars) {
         this.racingCars = racingCars;
     }
