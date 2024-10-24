@@ -1,10 +1,6 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Race {
 
     private final Cars cars;
@@ -19,22 +15,29 @@ public class Race {
         this.maxPosition = 0;
     }
 
-    private boolean goAndStop() {
+    private boolean go() {
         int randomNumber = Randoms.pickNumberInRange(0,9);
         return randomNumber >= 4;
     }
 
     private void moveCars() {
         for(Car car : cars.getCars()) {
-            if(goAndStop()) {
+            if(go()) {
                 car.move();
             }
+        }
+    }
+
+    private void updateMaxPosition() {
+        for(Car car : cars.getCars()) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
     }
 
+
     public void raceOneStep() {
         moveCars();
+        updateMaxPosition();
         currentCounts++;
     }
 
@@ -42,14 +45,7 @@ public class Race {
         return currentCounts < trialCounts.getTrialCounts();
     }
 
-    public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars.getCars()) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getCarName());
-            }
-        }
-        return winners;
+    public int getMaxPosition() {
+        return maxPosition;
     }
-
 }
