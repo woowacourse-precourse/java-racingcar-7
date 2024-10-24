@@ -16,3 +16,27 @@
 5. 차수별 실행 결과 출력
 6. 전진 횟수가 최대인 참가자 추출
 7. 우승자 출력
+---------------------------------------------------------
+디렉토리 구조
+```bash
+├─main
+│  └─java
+│      └─racingcar
+│              Application.java
+│              Car.java
+│              Input.java
+│              Print.java
+│              Racing.java
+│              Validate.java
+│
+└─test
+    └─java
+        └─racingcar
+                ApplicationTest.java
+                CarTest.java
+                InputTest.java
+                PrintTest.java
+                RacingTest.java
+                ValidateTest.java
+
+```
