@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class CarRace {
 
-    public void play(String names, String count) {
+    public String play(String names, String count) {
         HashMap<String, Integer> cars = getCar(names);
         int tryCount = getCount(count);
         for (int round = 0; round < tryCount; round++) {
@@ -24,6 +24,19 @@ public class CarRace {
             System.out.println();
         }
 
+        return getWinner(cars);
+
+    }
+
+    private String getWinner(HashMap<String, Integer> cars) {
+        int max = cars.values().stream().max(Integer::compare).get();
+        StringBuilder sb = new StringBuilder();
+        for (String car : cars.keySet()) {
+            if (cars.get(car) == max) {
+                sb.append(car).append(",");
+            }
+        }
+        return sb.deleteCharAt(sb.length() - 1).toString();
 
     }
 
