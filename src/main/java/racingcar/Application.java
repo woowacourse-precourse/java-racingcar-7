@@ -17,8 +17,8 @@ public class Application {
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
 
-    private final static RacingService racingService = new RacingService();
     private static final MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
+    private final static RacingService racingService = new RacingService(movingStrategy);
 
     // 필요 변수
     private static RacingCars racingCars;
