@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.dto.CarStatusDto;
 
 import java.util.HashMap;
@@ -27,12 +28,16 @@ public class RacingGame {
     }
 
     private void raceRound() {
-        racingCars.forEach(Car::move);
+        racingCars.forEach(car -> car.move(getMoveCondition()));
     }
 
     private List<CarStatusDto> getCurrentRoundStatus() {
         return racingCars.stream()
                 .map(car -> new CarStatusDto(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
+    }
+
+    private int getMoveCondition() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
