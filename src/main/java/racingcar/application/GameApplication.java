@@ -3,6 +3,7 @@ package racingcar.application;
 import java.util.List;
 import racingcar.config.AppConfig;
 import racingcar.domain.Cars;
+import racingcar.domain.GameNumber;
 import racingcar.domain.Result;
 
 public class GameApplication {
@@ -26,9 +27,9 @@ public class GameApplication {
         List<String> carNames = nameSeparator.separateNames(origin);
 
         printer.print("시도할 횟수는 몇 회인가요?");
-        int gameNumber = reader.readGameNumber();
+        String gameNumber = reader.read();
 
-        Result result = racingApplication.race(Cars.makeOriginCars(carNames), gameNumber);
+        Result result = racingApplication.race(Cars.makeOriginCars(carNames), GameNumber.findGameNumber(gameNumber));
         printer.printResultAfterGame(result);
     }
 }
