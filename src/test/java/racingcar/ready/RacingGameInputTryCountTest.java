@@ -17,7 +17,7 @@ class RacingGameInputTryCountTest {
     @Test
     public void 시도횟수입력테스트() throws Exception {
         //given
-        int tryCount = racingGame.inputTryCount("5");
+        int tryCount = racingGame.changeTryCountToInt("5");
         //when
 
         //then
@@ -27,7 +27,7 @@ class RacingGameInputTryCountTest {
     @Test
     public void 시도횟수_0이하입력_예외테스트() throws Exception {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            racingGame.inputTryCount("-1");
+            racingGame.changeTryCountToInt("-1");
                 }
         ).withMessage("시도 횟수는 1이상 이어야 합니다");
     }
@@ -37,7 +37,7 @@ class RacingGameInputTryCountTest {
         String inputOverInteger = String.valueOf(Integer.MAX_VALUE + 1);
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-                    racingGame.inputTryCount(inputOverInteger);
+                    racingGame.changeTryCountToInt(inputOverInteger);
                 }
         );
     }

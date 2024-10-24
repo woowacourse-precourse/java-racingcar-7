@@ -15,7 +15,7 @@ public class RacingGame {
         cars = createCars(createNames(inputNames));
 
         String tryCountStr = readLine();
-        tryCount = inputTryCount(tryCountStr);
+        tryCount = changeTryCountToInt(tryCountStr);
     }
 
     public String[] createNames(String inputNames) {
@@ -37,7 +37,7 @@ public class RacingGame {
         return cars;
     }
 
-    public int inputTryCount(String tryCountStr) {
+    public int changeTryCountToInt(String tryCountStr) {
         int tryCount = Integer.parseInt(tryCountStr);
         if (tryCount <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1이상 이어야 합니다");
