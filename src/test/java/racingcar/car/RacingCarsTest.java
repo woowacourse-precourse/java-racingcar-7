@@ -30,7 +30,7 @@ class RacingCarsTest {
         RacingCars racingCars = RacingCars.fromNames(carNames);
 
         // then
-        assertThat(racingCars.getCars().size()).isEqualTo(carsSize);
+        assertThat(racingCars.getCars()).hasSize(carsSize);
     }
 
     @DisplayName("")
