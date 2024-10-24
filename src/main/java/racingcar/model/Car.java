@@ -1,6 +1,8 @@
 package racingcar.model;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
     private String name;
@@ -10,4 +12,18 @@ public class Car {
         this.name = name;
     }
 
+    public void moveCar() {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        if (randomNum >= 4) {
+            moveCount++;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
 }

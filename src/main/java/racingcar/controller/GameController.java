@@ -1,34 +1,36 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.service.ClientService;
+import racingcar.model.CarHandler;
 import racingcar.validate.Validation;
 import racingcar.view.InputMessage;
 
 public class GameController {
 
-    private final ClientService clientService;
+    private final CarHandler carHandler;
     private final Validation validation;
 
-    public GameController(final ClientService clientService, final Validation validation) {
-        this.clientService = clientService;
+    public GameController(final CarHandler carHandler, final Validation validation) {
+        this.carHandler = carHandler;
         this.validation = validation;
     }
 
     public void start() {
         extractCarNames();
+        attemptGame();
     }
 
     private void extractCarNames() {
         InputMessage.inputCarNames();
         final String input = Console.readLine();
         validation.isInvalidInput(input);
-        clientService.createCar(input);
+        carHandler.createCar(input);
     }
 
     private void attemptGame() {
         InputMessage.inputGamesAttempts();
-        final int count = Integer.parseInt(Console.readLine());
+        final int num = Integer.parseInt(Console.readLine());
+        carHandler.proceedCar();
     }
 
 

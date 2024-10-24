@@ -1,16 +1,15 @@
 package racingcar;
 
 import racingcar.controller.GameController;
-import racingcar.service.ClientService;
-import racingcar.service.ClientServiceImpl;
+import racingcar.model.CarHandler;
 import racingcar.validate.Validation;
 
 public class Application {
     public static void main(String[] args) {
-        final ClientService clientService = new ClientServiceImpl();
+        final CarHandler carHandler = new CarHandler();
         final Validation validation = new Validation();
 
-        final GameController gameController = new GameController(clientService, validation);
+        final GameController gameController = new GameController(carHandler, validation);
         gameController.start();
     }
 }
