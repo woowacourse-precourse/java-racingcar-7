@@ -26,10 +26,18 @@ public class RacingController {
     private int getRoundRacing() {
         return inputView.RacingRoundCount();
     }
+    private void validateCarNames(String[] carNames) {
+        for (String name : carNames) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름의 길이는 5글자 이하여야 합니다.");
+            }
+        }
+    }
     public void RacingRun() {
         try {
             String[] carNames = finalGetCarsNames();
             int RacingRounds = getRoundRacing();
+            validateCarNames(carNames);
 
         }catch (IllegalArgumentException e) {
             System.out.println("오류" + e.getMessage());
