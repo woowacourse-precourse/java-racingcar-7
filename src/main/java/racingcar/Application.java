@@ -10,7 +10,8 @@ public class Application {
     public static final String SPLITTER = ",";
 
     public static void main(String[] args) {
-        List<RacingCar> cars = getCarInput();
+        String input = getCarInput();
+        List<RacingCar> cars = splitInput(input);
         Integer trial = getTrial();
 
         for(int i = 0; i < trial; i++){
@@ -26,12 +27,17 @@ public class Application {
     }
 
     //경주할 자동차 입력 받기
-    public static List<RacingCar> getCarInput() {
+    public static String getCarInput() {
         String input = Console.readLine();
+        return input.trim();
+    }
+
+    //자동차 이름 List에 집어넣기
+    public static List<RacingCar> splitInput(String input) {
         String[] racingCars = input.split(SPLITTER);
         //기능 분리하기
         List<RacingCar> racingCarList = new ArrayList<>();
-        int numOfCars = racingCars.length;
+        //int numOfCars = racingCars.length;
         for (String carName : racingCars) {
             if (carName.isEmpty() || carName == null || carName.length() > 5) {
                 throw new IllegalArgumentException();
