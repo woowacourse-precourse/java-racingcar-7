@@ -48,12 +48,16 @@ public class RacingGameService {
         outputView.printResult();
         for (int i = 0; i < moveCount; i++) {
             for (Car car : cars) {
-                int randomValue = Randoms.pickNumberInRange(0, 9);
-                if (randomValue >= 4) {
-                    car.move();
-                }
+                evaluateMovement(car);
             }
             outputView.printCurrentStatus(cars);
+        }
+    }
+
+    public void evaluateMovement(Car car) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
+            car.move();
         }
     }
 
