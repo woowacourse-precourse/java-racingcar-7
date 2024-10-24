@@ -9,7 +9,7 @@ import racingcar.util.randomnumber.RandomNumberGenerator;
 
 class RacingTest {
 
-    @DisplayName("Cars와 RacingCount로 경주를 생성한다.")
+    @DisplayName("경주를 생성한다.")
     @Test
     void createRacing() {
         //given
@@ -19,12 +19,10 @@ class RacingTest {
                 Car.from("jun", new RandomNumberGenerator())
         ));
 
-        RacingCount racingCount = RacingCount.from(1);
-
         //when
-        Racing racing = Racing.of(cars, racingCount);
+        Racing racing = Racing.from(cars);
 
         //then
-        assertThat(racing).isEqualTo(Racing.of(cars, racingCount));
+        assertThat(racing).isEqualTo(Racing.from(cars));
     }
 }

@@ -5,15 +5,13 @@ import java.util.Objects;
 public class Racing {
 
     private final Cars cars;
-    private final RacingCount racingCount;
 
-    private Racing(Cars cars, RacingCount racingCount) {
+    private Racing(Cars cars) {
         this.cars = cars;
-        this.racingCount = racingCount;
     }
 
-    public static Racing of(Cars cars, RacingCount racingCount) {
-        return new Racing(cars, racingCount);
+    public static Racing from(Cars cars) {
+        return new Racing(cars);
     }
 
     @Override
@@ -25,11 +23,11 @@ public class Racing {
             return false;
         }
         Racing racing = (Racing) o;
-        return Objects.equals(cars, racing.cars) && Objects.equals(racingCount, racing.racingCount);
+        return Objects.equals(cars, racing.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars, racingCount);
+        return Objects.hashCode(cars);
     }
 }
