@@ -33,13 +33,13 @@ public class ViewScreenController {
     }
 
     // Todo 자동차 이름 양식 체크 & 양식 정리
-    private String checkNameFormat(String input) {
+    public String checkNameFormat(String input) {
         nullCheck(input);
         return input;
     }
 
     // Todo runTimes 양식 체크
-    private int checkRunTimesFormat(String input) {
+    public int checkRunTimesFormat(String input) {
         nullCheck(input);
         return Integer.parseInt(input);
     }
@@ -48,14 +48,13 @@ public class ViewScreenController {
     private void startGame() {
         //경주 게임 진행
         List<List<CarDTO>> racingProgressInfo = this.gameManager.raceGameManage();
-        viewScreen.printSomething(System.lineSeparator() + "실행 결과" + System.lineSeparator());
+        viewScreen.customPrint(System.lineSeparator() + "실행 결과" + System.lineSeparator());
         for (List<CarDTO> cars : racingProgressInfo) {
             for (CarDTO car : cars) {
                 viewScreen.printRace(car.getName(), car.getDistance());
             }
-            viewScreen.printSomething(System.lineSeparator());
+            viewScreen.customPrint(System.lineSeparator());
         }
-        viewScreen.printSomething(System.lineSeparator());
 
         // 승자 구분
         List<CarDTO> winnerList = this.gameManager.getWinner();
