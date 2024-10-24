@@ -12,10 +12,7 @@ public class RacingCarService {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    public String[] run(String userCarInput, String userRoundInput) {
-        String[] carNames = userCarInput.split(",");
-        int rounds = Integer.parseInt(userRoundInput);
-
+    public String[] run(String[] carNames, int rounds) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));

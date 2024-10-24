@@ -17,11 +17,11 @@ public class RacingCarServiceTest {
         // Given
         RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(4, 3, 2));
         RacingCarService racingCarService = new RacingCarService(randomNumberGenerator);
-        String userCarInput = "a,b,c";
-        String userRoundInput = "2";
+        String[] carNames = new String[]{"a", "b", "c"};
+        int rounds = 2;
 
         // When
-        String[] raceResult = racingCarService.run(userCarInput, userRoundInput);
+        String[] raceResult = racingCarService.run(carNames, rounds);
 
         // Then
         assertArrayEquals(new String[]{"a"}, raceResult);
@@ -33,11 +33,11 @@ public class RacingCarServiceTest {
         // Given
         RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(3, 9, 2));
         RacingCarService racingCarService = new RacingCarService(randomNumberGenerator);
-        String userCarInput = "a,b,c";
-        String userRoundInput = "5";
+        String[] carNames = new String[]{"a", "b", "c"};
+        int rounds = 5;
 
         // When
-        String[] raceResult = racingCarService.run(userCarInput, userRoundInput);
+        String[] raceResult = racingCarService.run(carNames, rounds);
 
         // Then
         assertArrayEquals(new String[]{"b"}, raceResult);
@@ -49,11 +49,11 @@ public class RacingCarServiceTest {
         // Given
         RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(3, 9, 4));
         RacingCarService racingCarService = new RacingCarService(randomNumberGenerator);
-        String userCarInput = "a,b,c";
-        String userRoundInput = "5";
+        String[] carNames = new String[]{"a", "b", "c"};
+        int rounds = 5;
 
         // When
-        String[] raceResult = racingCarService.run(userCarInput, userRoundInput);
+        String[] raceResult = racingCarService.run(carNames, rounds);
 
         // Then
         assertArrayEquals(new String[]{"b", "c"}, raceResult);
