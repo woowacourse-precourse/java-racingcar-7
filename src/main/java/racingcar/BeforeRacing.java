@@ -9,10 +9,9 @@ public class BeforeRacing {
         List<String> carNameList = new ArrayList<>();
         String[] splitName = carNameString.split(",");
         for (String name : splitName) {
-            String trimName;
-            trimName = name.trim();
-            validateName(trimName);
-            carNameList.add(trimName);
+            String trimmedName = deleteBlank(name);
+            validateName(trimmedName);
+            carNameList.add(trimmedName);
         }
         return carNameList;
     }
@@ -22,6 +21,10 @@ public class BeforeRacing {
         if (length >= 6) {
             throw new IllegalArgumentException("이름이 5자 이하가 아닙니다.");
         }
+    }
+
+    public static String deleteBlank(String carName) {
+        return carName.replace(" ", "");
     }
 
 }
