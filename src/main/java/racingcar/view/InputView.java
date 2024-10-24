@@ -23,10 +23,12 @@ public class InputView {
     }
 
     private void validateCarNames(String carNames) {
-        InputValidation inputValidation = new InputValidation();
-
-        inputValidation.validateNullOrEmpty(carNames);
-        inputValidation.validateBlank(carNames);
+        if (InputValidation.validateNullOrEmpty(carNames)) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
+        if (InputValidation.validateBlank(carNames)) {
+            throw new IllegalArgumentException("공백을 입력할 수 없습니다.");
+        }
     }
 
     private String[] carNameSplit(String carNames) {
