@@ -11,4 +11,10 @@ public class InputView {
 
         return Utils.splitInputCar(Console.readLine());
     }
+
+    public static int inputTrialCount(){
+
+        return Integer.parseInt(Console.readLine());
+    }
+
 }
