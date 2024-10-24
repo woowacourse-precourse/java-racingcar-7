@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.Map;
 import racingcar.domain.Car;
 import racingcar.domain.CarRace;
 
@@ -17,6 +18,10 @@ public class CarRaceService {
         carRace.getCars().stream()
                 .filter(car -> canMove())
                 .forEach(Car::move);
+    }
+
+    public Map<String, String> getCarsStatus() {
+        return carRace.getCarsNameAndMovingDistance();
     }
 
     public List<String> getWinners() {
