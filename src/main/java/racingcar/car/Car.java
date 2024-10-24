@@ -21,8 +21,11 @@ public class Car {
 
 	public void execute() {
 		int randomNum = Randoms.pickNumberInRange(0, 9);
+		if (randomNum >= 4){
+			moveForward();
+		}
 	}
-	
+
 	public void moveForward() {
 		this.location ++;
 	}
