@@ -20,6 +20,7 @@ public class RacingCar {
         String input = Console.readLine();
         input = input.replaceAll(" ","");
         String usernameArray[] = input.split(",");
+        setUserList(usernameArray);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         try{
@@ -29,7 +30,6 @@ public class RacingCar {
             throw new IllegalArgumentException();
         }
 
-        setUserList(usernameArray);
         startRace(round);
         winnerList = getWinner();
         showWinnerList(winnerList);
@@ -45,16 +45,16 @@ public class RacingCar {
         }
     }
 
-    private void checkRoundError(int round) {
-        if(round < 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     private void checkUsernameError(String username) {
         if(username.isEmpty()) {
             throw new IllegalArgumentException();
         }else if(username.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkRoundError(int round) {
+        if(round < 0) {
             throw new IllegalArgumentException();
         }
     }
