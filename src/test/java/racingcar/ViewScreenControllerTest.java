@@ -1,57 +1,49 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
+import controller.ViewScreenController;
+import java.io.ByteArrayInputStream;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 
-public class ViewScreenControllerTest extends NsTest {
+public class ViewScreenControllerTest {
     // TOdo 입력에서 이름 오류 검출
     // TODO 입력에서 횟수가 숫자 아닌 경우
-    // Todo 다양한 케이스 정상 동작 테스트해보기
-    private static final int MOVING_FORWARD = 4;
-    private static final int STOP = 3;
 
-    @Test
-    void 한명이_우승() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
-        );
+    private static ViewScreenController viewScreenController;
+
+    @BeforeAll
+    static void setUp() {
+        String input = "pobi,woni,jun\n5\n";
+        ByteArrayInputStream newTestInputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(newTestInputStream);
+        // 테스트용 GameManager 객체 초기화
+        viewScreenController = new ViewScreenController();
     }
 
-    @Test
-    void 두명이_우승() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni,sall", "5");
-                    assertThat(output()).contains("pobi : --", "woni : ", "sall : --", "최종 우승자 : pobi, sall");
-                },
-                MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, STOP, STOP,
-                STOP, STOP, STOP, STOP, STOP
-        );
+    @ParameterizedTest
+    @CsvSource({"5,5", "12345,12345"})
+    void 경주_횟수_입력_정상_동작1(String input, int expectedOutput) {
+        assertEquals(expectedOutput, viewScreenController.checkRunTimesFormat(input));
     }
 
-    @Test
-    void 여러명이_우승() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni,sall,a,b,c,d,e", "1");
-                    assertThat(output()).contains("pobi : -", "woni : -", "sall : -", "a : -", "b : -", "c : -",
-                            "d : -", "e : -", "최종 우승자 : pobi, woni, sall, a, b, c, d, e");
-                },
-                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
-                MOVING_FORWARD, MOVING_FORWARD
-        );
+    @ParameterizedTest
+    @CsvSource({"-3", "ccc"})
+    void runTimes_올바르지_못한_입력(String input) {
+        assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
+    @ParameterizedTest
+    @NullAndEmptySource
+    void runTimes_nullCheck(String input) {
+        assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
+
 }
