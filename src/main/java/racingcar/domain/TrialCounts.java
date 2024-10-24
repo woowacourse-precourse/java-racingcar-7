@@ -6,8 +6,7 @@ public class TrialCounts {
     private final int trialCounts;
 
     public TrialCounts(String trialCounts, TrialCountsValidator trialCountsValidator) {
-        trialCountsValidator.validate(trialCounts);
-        this.trialCounts = Integer.parseInt(trialCounts);
+        this.trialCounts = trialCountsValidator.validate(trialCounts);
     }
 
     public int getTrialCounts() {
