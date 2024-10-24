@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class CarsTest {
     private ArrayList<String> convertMapToList(Cars cars) {
-        return new ArrayList<>(cars.getCarNames());
+        return new ArrayList<>(cars.getCars().keySet());
     }
 
     @Test
