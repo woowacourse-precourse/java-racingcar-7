@@ -14,6 +14,10 @@ public class Racing {
         return new Racing(cars);
     }
 
+    public void runRacing() {
+        cars.move();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
