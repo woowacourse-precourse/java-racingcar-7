@@ -1,6 +1,5 @@
 package racingcar.car.strategy;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.util.NumberGenerator;
 
 public class RandomMoveStrategy implements MoveStrategy {
