@@ -8,9 +8,6 @@ public class WtcInputDisplay implements IInputDisplay{
     public String getPromptInput(String msg) {
         System.out.print(msg);
 
-        String input = Console.readLine();
-        Console.close();
-
-        return input;
+        return Console.readLine();
     }
 }
