@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Validator {
     public static void validateNotNumber(String tryCount) {
-        String rex = "[\\D]*";
+        String rex = "[^\\d]+";
         Pattern pattern = Pattern.compile(rex);
         Matcher matcher = pattern.matcher(tryCount);
 
