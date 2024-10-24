@@ -23,6 +23,22 @@ public class RacingCars {
         values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
     }
 
+    public RacingCars getMaxPositionCars() {
+        int maxPosition = getMaxPosition();
+
+        return new RacingCars(values.stream()
+                .filter(rC -> rC.getPosition() == maxPosition)
+                .map(RacingCar::new)
+                .toList());
+    }
+
+    private int getMaxPosition() {
+        return values.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
+    }
+
     private void validate(List<RacingCar> values) {
         validateEmpty(values);
         validateDuplication(values);
