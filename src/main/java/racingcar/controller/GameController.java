@@ -36,7 +36,7 @@ public class GameController {
 
     private List<Car> createCars(List<String> carList) {
         return carList.stream()
-                .map(car -> new Car(car, 0))
+                .map(Car::new)
                 .toList();
     }
 }

@@ -8,11 +8,11 @@ public class Car {
     private final String name;
     private Integer distance;
 
-    public Car(final String name, Integer distance) {
+    public Car(final String name) {
         validateNotBlank(name);
         validateCarNameLength(name);
         this.name = name;
-        this.distance = distance;
+        this.distance = 0;
     }
 
     public void moveForward() {
