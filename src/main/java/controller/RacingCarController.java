@@ -7,5 +7,6 @@ public class RacingCarController {
     public void run() {
         RacingCarView racingCarView = new RacingCarView();
         String cars = racingCarView.readCars();
+        String round = racingCarView.readRaceRound();
     }
 }
