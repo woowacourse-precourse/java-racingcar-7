@@ -29,6 +29,7 @@ public class Application {
 
         String InputCarNames = Console.readLine();
         List<String> nameList = splitCarNameString(InputCarNames);
+        setStateMap(nameList);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         progressCount = Integer.parseInt(Console.readLine());
@@ -42,5 +43,26 @@ public class Application {
      */
     private static List<String> splitCarNameString(String inputString) {
         return new ArrayList<>(Arrays.asList(inputString.strip().split(DELIMITER)));
+    }
+
+    /**
+     * 이름 List에 있는 원소들을 stateMap의 Key로 저장합니다.
+     * 이름이 공백이거나 일정 길이를 초과한 경우, 중복된 경우 예외를 발생시킵니다.
+     *
+     * @param nameList 이름이 저장된 List입니다.
+     * @throws IllegalArgumentException 잘못된 입력이 주어진 경우 에러를 발생시킵니다.
+     */
+    private static void setStateMap(List<String> nameList) throws IllegalArgumentException {
+        stateMap = new HashMap<>();
+
+        for (String name: nameList) {
+            if(name.isBlank() || name.length() > NAME_LENGTH_LIMIT) {
+                throw new IllegalArgumentException();
+            } else if (stateMap.containsKey(name)) {
+                throw new IllegalArgumentException();
+            } else {
+                stateMap.put(name, 0);
+            }
+        }
     }
 }
