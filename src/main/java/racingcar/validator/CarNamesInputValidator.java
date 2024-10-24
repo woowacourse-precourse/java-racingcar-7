@@ -3,6 +3,7 @@ package racingcar.validator;
 import java.util.Arrays;
 
 public class CarNamesInputValidator implements BasicValidator<String> {
+    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     @Override
     public void validate(String input) {
@@ -53,7 +54,7 @@ public class CarNamesInputValidator implements BasicValidator<String> {
 
     private void isCarNameLengthValid(String carName) {
         carName = carName.trim();
-        if (carName.length() > 5 || carName.isEmpty()) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
         }
     }
