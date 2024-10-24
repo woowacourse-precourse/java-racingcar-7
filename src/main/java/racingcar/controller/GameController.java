@@ -6,19 +6,25 @@ import java.util.List;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.name.Name;
+import racingcar.domain.name.Names;
+import racingcar.view.InputView;
 
 public class GameController {
 
-	public static void run() {
-		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-		String carNames = Console.readLine();
+	public void run() {
+		Names carNames = InputView.inputCarNames();
+		Cars cars = generateCars(carNames);
 	}
 
-	public static List<String> inputName(String carNames) {
-		List<String> names = Arrays.stream(carNames.split(",")).toList();
-		Set<String> namevalid = new HashSet<>(names);
-		if (namevalid.size() == names.size())
-			return names;
-		throw new IllegalArgumentException("이름이 중복됨");
+	private Cars generateCars(Names carNames) {
+		List<Name> names = carNames.getNames();
+
+		List<Car> cars = names.stream().map(Car::new).toList();
+
+		return new Cars(cars);
 	}
+
 }
