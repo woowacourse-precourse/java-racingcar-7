@@ -42,21 +42,21 @@ public class InputValidationTest {
     @Test
     void 시도_횟수_입력이_백_초과인_경우() {
         assertThatThrownBy(
-                validation.validateRoundLimit("150")
+                () -> validation.validateRoundLimit("150")
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 시도_횟수_입력이_양의_정수가_아닌_경우() {
         assertThatThrownBy(
-                validation.validateRoundLimit("-10")
+                () -> validation.validateRoundLimit("-10")
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 시도_횟수_입력이_숫자_형태가_아닌_경우() {
         assertThatThrownBy(
-                validation.validateRoundLimit("a")
+                () -> validation.validateRoundLimit("a")
         ).isInstanceOf(IllegalArgumentException.class);
     }
 }
