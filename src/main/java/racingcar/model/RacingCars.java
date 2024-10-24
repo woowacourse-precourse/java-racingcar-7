@@ -4,6 +4,7 @@ import racingcar.util.ramdom.RandomRange;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
@@ -22,6 +23,12 @@ public class RacingCars {
 
     public void moveRandomly(RandomRange randomRange) {
         values.forEach(racingCar -> racingCar.moveRandomly(randomRange));
+    }
+
+    public String getJoinedNames(String delimiter) {
+        return values.stream()
+                .map(RacingCar::getName)
+                .collect(Collectors.joining(delimiter));
     }
 
     public LinkedHashMap<String, Integer> getCarNamesAndPositions() {
