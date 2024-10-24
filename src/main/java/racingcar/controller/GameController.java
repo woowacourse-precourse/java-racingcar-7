@@ -37,5 +37,6 @@ public class GameController {
         outputView.displayMovementResults(allAttemptResults);
 
         List<String> nameOfWinners = game.getNameOfWinner();
+        outputView.displayWinners(nameOfWinners);
     }
 }

@@ -17,6 +17,18 @@ public class OutputView {
         return instance;
     }
 
+    public void displayWinners(List<String> nameOfWinners) {
+        System.out.print("최종 우승자 : ");
+
+        if (nameOfWinners.size() == 1) {
+            System.out.println(nameOfWinners.getFirst());
+            return;
+        }
+
+        String winners = String.join(", ", nameOfWinners);
+        System.out.println(winners);
+    }
+
     public void displayMovementResults(List<CarMovementResults> resultDtos) {
 
         System.out.println("실행 결과");
