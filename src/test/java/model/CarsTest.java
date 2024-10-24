@@ -8,8 +8,8 @@ public class CarsTest {
 
     @Test
     void 자동차_이름_저장_테스트(){
-        Car car = new Car("phobi,leo,jade,bobo");
-        assertThat(car).isEqualTo(new Car(new String[]{"phobi","leo","jade","bobo"}));
+        Cars cars = new Cars("phob,leo,jade,bobo");
+        assertThat(cars).isEqualTo(new Cars(new String[]{"phob","leo","jade","bobo"}));
     }
 
 
