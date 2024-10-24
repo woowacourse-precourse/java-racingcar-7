@@ -29,5 +29,7 @@ public class RaceController {
     }
 
     public void getWinnerRequest(RaceDomain race) {
+        List<CarDomain> winners = raceService.getWinners(race);
+        System.out.println(outputView.displayCarRaceWinner(winners));
     }
 }
