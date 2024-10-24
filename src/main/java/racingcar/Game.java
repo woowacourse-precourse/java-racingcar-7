@@ -25,7 +25,12 @@ public class Game {
 
     // 게임 한 라운드 진행
     private void round() {
-
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).move();
+            System.out.print(cars.get(i).getName() + " : ");
+            cars.get(i).printScore();
+        }
+        System.out.println();
     }
 
     // 우승자 결정 및 우승자 출력

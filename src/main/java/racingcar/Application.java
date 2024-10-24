@@ -21,6 +21,10 @@ public class Application {
         // game 객체 생성, carList 전달
         Game game = new Game(carList);
 
+        // 게임 횟수를 지정하면서 게임 시작
+        System.out.println("실행 결과");
+        game.play(n);
+
     }
 
     // 콤마로 분리, 불필요한 공백 제거, 리스트에 담는 기능
