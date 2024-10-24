@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.TestUtils;
+import racingcar.util.RandomNumberGenerator;
 
 public class RaceTest {
 
     @Test
     @DisplayName("자동차 등록")
-    void shouldRegisterCarsSuccessfully() {
+    void registerCars() {
         // Given
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
@@ -28,7 +30,7 @@ public class RaceTest {
 
     @Test
     @DisplayName("자동차 등록 실패 (자동차 개수 10대 초과)")
-    void shouldFailToRegisterCarsWhenExceedingMaximumLimit() {
+    void failWhenExceedLimit() {
         // Given
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
@@ -42,7 +44,7 @@ public class RaceTest {
 
     @Test
     @DisplayName("자동차 등록 실패 (자동차 이름 중복)")
-    void shouldFailToRegisterCarsWithDuplicateNames() {
+    void failWhenDuplicateNames() {
         // Given
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
@@ -57,10 +59,77 @@ public class RaceTest {
 
     @Test
     @DisplayName("자동차 등록 실패 (자동차 배열이 null인 경우)")
-    void shouldFailToRegisterCarsWhenCarListIsNull() {
+    void failWhenCarListNull() {
         // Given & When & Then
         assertThrowsExactly(IllegalArgumentException.class,
                 () -> new Race(null));
     }
 
+    @Test
+    @DisplayName("한 라운드 진행")
+    void runSingleRound() {
+        // Given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("a"));
+        cars.add(new Car("b"));
+        cars.add(new Car("c"));
+        cars.add(new Car("d"));
+        Race race = new Race(cars);
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
+                List.of(1, 2, 3, 4)
+        );
+
+        // When
+        race.runSingleRound(randomNumberGenerator);
+
+        // Then
+        assertArrayEquals(new int[]{0, 0, 0, 1},
+                cars.stream()
+                        .mapToInt(Car::getPosition)
+                        .toArray());
+    }
+
+    @Test
+    @DisplayName("제일 먼 거리의 자동차들을 찾는다.")
+    void findWinners() {
+        // Given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("a"));
+        cars.add(new Car("b"));
+        cars.add(new Car("c"));
+        cars.add(new Car("d"));
+        Race race = new Race(cars);
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
+                List.of(1, 2, 3, 4)
+        );
+        race.runSingleRound(randomNumberGenerator);
+
+        // When
+        String[] winners = race.getWinners();
+
+        // Then
+        assertArrayEquals(new String[]{"d"}, winners);
+    }
+
+    @Test
+    @DisplayName("제일 먼 거리의 자동차들을 찾는다.")
+    void findWinnersMultiple() {
+        // Given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("a"));
+        cars.add(new Car("b"));
+        cars.add(new Car("c"));
+        cars.add(new Car("d"));
+        Race race = new Race(cars);
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
+                List.of(1, 2, 4, 4)
+        );
+        race.runSingleRound(randomNumberGenerator);
+
+        // When
+        String[] winners = race.getWinners();
+
+        // Then
+        assertArrayEquals(new String[]{"c", "d"}, winners);
+    }
 }
