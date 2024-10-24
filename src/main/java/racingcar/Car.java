@@ -5,7 +5,8 @@ public class Car {
     private int distance;
 
     public Car(String name) {
-        validateNameLength(name);
+        String nonEmptyName = validateEmptyName(name);
+        validateNameLength(nonEmptyName);
         this.name = name;
         this.distance = 0;
     }
@@ -16,6 +17,11 @@ public class Car {
 
     public static void validateNameLength(String name){
         if(name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하의 문자열만 가능합니다.");
+    }
+
+    public static String validateEmptyName(String name){
+        if(name == null || name.trim().isBlank()) throw new IllegalArgumentException("빈 이름은 사용할 수 없습니다.");
+        return name.trim();
     }
 
     public String toString(){
