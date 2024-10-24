@@ -10,7 +10,7 @@ class TryCountValidatorTest {
 
     @DisplayName("경주 시도 횟수에 1보다 작은 수를 입력한 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"0", "-1"})
+    @ValueSource(strings = {"0"})
     void validateUnderOne(String input) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             TryCountValidator.validate(input);
@@ -32,7 +32,7 @@ class TryCountValidatorTest {
 
     @DisplayName("경주 시도 횟수에 숫자가 아닌 값을 입력한 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"ae", "숫자", "1,2"})
+    @ValueSource(strings = {"ae", "숫자", "1,2", "-1"})
     void validateNotNumber(String input) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             TryCountValidator.validate(input);
