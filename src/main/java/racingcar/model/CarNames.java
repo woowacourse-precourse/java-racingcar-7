@@ -19,9 +19,10 @@ public class CarNames {
 
     private void validateStrip(final String rawCarNames) {
         String stripped = rawCarNames.strip();
-        if (!stripped.equals(rawCarNames)) {
-            throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
+        if (stripped.equals(rawCarNames)) {
+            return;
         }
+        throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
     }
 
     public List<String> splitByComma() {

@@ -1,9 +1,9 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.CarNames;
-import racingcar.model.Cars;
 import racingcar.model.TryCount;
+import racingcar.model.car.Car;
+import racingcar.model.car.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -28,6 +28,10 @@ public class RacingCarController {
 
     private void race(Cars cars, TryCount tryCount) {
         outputView.printResultHeader();
+        for (int i = 0; i < tryCount.toInteger(); i++) {
+            String result = cars.race();
+            outputView.printCarStatus(result);
+        }
     }
 
     private String receiveCarNames() {

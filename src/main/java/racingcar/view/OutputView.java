@@ -17,4 +17,8 @@ public class OutputView {
     public void printResultHeader() {
         System.out.println(LINE_BREAK + RESULT_HEADER);
     }
+
+    public void printCarStatus(String result) {
+        System.out.println(result);
+    }
 }

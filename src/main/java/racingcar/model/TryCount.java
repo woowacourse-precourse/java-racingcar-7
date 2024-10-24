@@ -6,6 +6,7 @@ import static racingcar.constants.ErrorMessage.TRY_COUNT_MUST_BE_NUMERIC;
 
 public class TryCount {
     private static final int MINIMUM_TRY_COUNT = 1;
+
     private final String rawTryCount;
 
     public TryCount(String rawTryCount) {
@@ -21,9 +22,10 @@ public class TryCount {
 
     private void validateStrip(String rawTryCount) {
         String stripped = rawTryCount.strip();
-        if (!stripped.equals(rawTryCount)) {
-            throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
+        if (stripped.equals(rawTryCount)) {
+            return;
         }
+        throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
     }
 
     private void validateNumeric(String rawTryCount) {
