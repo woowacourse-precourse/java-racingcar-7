@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,6 +13,7 @@ public class Output {
             raceGame(cars);
             System.out.println();
         }
+        printResult(cars);
     }
 
     private void raceGame(List<Car> cars) {
@@ -30,5 +32,33 @@ public class Output {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void printResult(List<Car> cars){
+        List<String> winners = printWinners(cars);
+        System.out.print("최종 우승자 : ");
+        System.out.print(String.join(", ", winners));
+
+    }
+
+    private List<String> printWinners(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+        int max = maxLocation(cars);
+        for (Car car : cars) {
+            if (car.getLocation() == max)
+                winners.add(car.getName());
+        }
+        return winners;
+    }
+
+    private int maxLocation(List<Car> cars) {
+        int max = 0;
+
+        for (Car car : cars) {
+            if(car.getLocation() > max){
+                max = car.getLocation();
+            }
+        }
+        return max;
     }
 }
