@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class Application {
     Map<String, String> carGameRecords = createCarGameRecords(cars);
     int frequency = getRepeatFrequency();
     showGame(carGameRecords, frequency);
+    showWinner(carGameRecords);
   }
 
   public static List<String> getCarInput() {
@@ -85,4 +87,22 @@ public class Application {
     }
   }
 
+  public static List<String> selectWinner(Map<String, String> carGameRecords) {
+    List<String> winnerList = new ArrayList<>();
+    int bestRecords = 0;
+    for (Map.Entry<String, String> carsRecords : carGameRecords.entrySet()) {
+      if (carsRecords.getValue().length() >= bestRecords) {
+        bestRecords = carsRecords.getValue().length();
+        winnerList.add(carsRecords.getKey());
+      }
+    }
+    return winnerList;
+  }
+
+  public static void showWinner(Map<String, String> carGameRecords) {
+    final String delimiter = ", ";
+    final String winners = String.join(delimiter, selectWinner(carGameRecords));
+    System.out.println("최종 우승자 : " + winners);
+  }
 }
+
