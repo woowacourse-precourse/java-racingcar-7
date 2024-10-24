@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.List;
 import java.util.Set;
 
 public interface Repository {
@@ -12,6 +13,8 @@ public interface Repository {
     int size();
 
     Set<String> repositoryKeyset();
+
+    List<String> findWinner();
 
 
 }
