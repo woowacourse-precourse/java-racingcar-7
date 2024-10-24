@@ -8,11 +8,7 @@ public class CarRacing {
     public static List<RacingCar> start(RacingCarTrace racingCarTrace) {
         var tryCount = Prompt.racingTryCount();
         System.out.println("실행 결과");
-        IntStream.range(0, tryCount).forEach(index -> {
-                    forwardCarByRandomNumber(racingCarTrace);
-                    Prompt.tracePrint(racingCarTrace);
-                }
-        );
+        carRacingByTryCount(tryCount, racingCarTrace);
         return racingCarTrace.getBiggestDistanceRacingCar();
     }
 
@@ -24,5 +20,13 @@ public class CarRacing {
                 racingCarTrace.forward(racingCar);
             }
         });
+    }
+
+    public static void carRacingByTryCount(int tryCount, RacingCarTrace racingCarTrace) {
+        IntStream.range(0, tryCount).forEach(index -> {
+                    forwardCarByRandomNumber(racingCarTrace);
+                    Prompt.tracePrint(racingCarTrace);
+                }
+        );
     }
 }
