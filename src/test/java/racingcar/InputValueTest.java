@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class InputValueTest {
     private static final String CAR_NAMES_BLANK = "";
+    private static final String CAR_NAMES_WHITE = " ";
 
     @DisplayName("경주할 자동차들이 빈 문자열이면 예외 발생")
     @Test
@@ -24,6 +25,23 @@ public class InputValueTest {
         // when
         Throwable thrown = catchThrowable(() -> {
             validateCarNames.isBlank(CAR_NAMES_BLANK);
+        });
+
+        //then
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 빈 값이 될 수 없습니다.");
+    }
+
+    @DisplayName("경주할 자동차들이 공백값이면 예외 발생")
+    @Test
+    void ThrowExceptionIfCarNameBlankWhite() {
+        // given
+        ValidateCarNames validateCarNames = new ValidateCarNames();
+
+        // when
+        Throwable thrown = catchThrowable(() -> {
+            validateCarNames.isBlank(CAR_NAMES_WHITE);
         });
 
         //then
