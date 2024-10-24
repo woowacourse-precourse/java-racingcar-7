@@ -44,7 +44,7 @@ public class Game {
         System.out.println();
     }
 
-    private List<String> findWinner() {
+    private List<String> findWinners() {
         List<String> winners = new ArrayList<>();
         int maxDistance = 0;
 
@@ -60,9 +60,9 @@ public class Game {
         return winners;
     }
 
-    public void printWinner() {
+    public void printWinners() {
         StringBuilder printMessage = new StringBuilder();
-        List<String> winners = findWinner();
+        List<String> winners = findWinners();
 
         printMessage.append("최종 우승자 : ");
         printMessage.append(winners.getFirst());

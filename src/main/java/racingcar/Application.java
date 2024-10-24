@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game(User.inputCarName());
-        int gameRepeats = User.inputGameRepeat();
+        Game game = new Game(User.inputCarNames());
+        int gameRepeats = User.inputGameRepeats();
 
         Console.close();
 
@@ -15,6 +15,6 @@ public class Application {
             game.moveCar();
             game.printProgress();
         }
-        game.printWinner();
+        game.printWinners();
     }
 }

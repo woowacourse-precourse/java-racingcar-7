@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
@@ -28,7 +27,7 @@ class UserTest {
         ansResult.add("test2");
         ansResult.add("test3");
 
-        List<String> result = User.inputCarName();
+        List<String> result = User.inputCarNames();
 
         Assertions.assertThat(result).isEqualTo(ansResult);
     }
@@ -42,7 +41,7 @@ class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThat(User.inputGameRepeat()).isEqualTo(5);
+        Assertions.assertThat(User.inputGameRepeats()).isEqualTo(5);
     }
 
     @Test
@@ -54,7 +53,7 @@ class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(User::inputGameRepeats).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -66,7 +65,7 @@ class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThat(User.inputGameRepeat()).isEqualTo(123);
+        Assertions.assertThat(User.inputGameRepeats()).isEqualTo(123);
     }
 
     @Test
@@ -78,7 +77,7 @@ class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(User::inputGameRepeats).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -90,6 +89,6 @@ class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(User::inputGameRepeats).isInstanceOf(IllegalArgumentException.class);
     }
 }
