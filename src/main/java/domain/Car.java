@@ -12,6 +12,10 @@ public class Car {
         this.carLocation = carLocation;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     // 자동차의 현재 위치
     public int getCarLocation() {
         return carLocation;
@@ -20,7 +24,7 @@ public class Car {
     // 값이 4 이상이라면 전진
     public void move() {
         final int value = generator.randomGenerator();
-        if(value >= MOVABLENUMBER) {
+        if (value >= MOVABLENUMBER) {
             carLocation++;
         }
     }
