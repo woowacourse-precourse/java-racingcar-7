@@ -25,4 +25,8 @@ public class GameStatus {
             throw new IllegalArgumentException(ErrorMessage.ATTEMPTS_SIGN_POSITIVE.getMessage());
         }
     }
+
+    public void attempt() {
+        ++currentAttempts;
+    }
 }
