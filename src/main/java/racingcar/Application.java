@@ -11,6 +11,6 @@ public class Application {
         // TODO: 프로그램 구현
         BeanFactory beanFactory = new RacingCarBeanFactory();
         RacingController racingController = new RacingController(beanFactory,new RacingCarInputView().receiveInputData());
-        new RacingCarOutputView(racingController.run()).raceResult();
+        new RacingCarOutputView(racingController.run()).printRacingResult();
     }
 }

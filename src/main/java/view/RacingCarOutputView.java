@@ -1,19 +1,19 @@
 package view;
 
-import dto.RaceOutputDTO;
+import dto.RacingOutputDTO;
 
 public class RacingCarOutputView{
-    private final RaceOutputDTO raceOutputDTO;
+    private final RacingOutputDTO racingOutputDTO;
     private static final String OUTPUT_RACING_STATUS = "실행결과";
     private static final String OUTPUT_WINNER = "최종 우승자 : ";
 
-    public RacingCarOutputView(RaceOutputDTO raceOutputDTO) {
-        this.raceOutputDTO = raceOutputDTO;
+    public RacingCarOutputView(RacingOutputDTO racingOutputDTO) {
+        this.racingOutputDTO = racingOutputDTO;
     }
 
-    public void raceResult(){
+    public void printRacingResult(){
         System.out.println(OUTPUT_RACING_STATUS);
-        System.out.println(raceOutputDTO.raceStatus());
-        System.out.println(OUTPUT_WINNER + raceOutputDTO.raceWinner());
+        System.out.println(racingOutputDTO.raceStatus());
+        System.out.println(OUTPUT_WINNER + racingOutputDTO.raceWinner());
     }
 }

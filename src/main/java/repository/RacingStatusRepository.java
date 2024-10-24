@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class RaceStatusRepository implements Repository {
-    private final Map<String, Long> raceStatusRepository;
+public class RacingStatusRepository implements Repository {
+    private final Map<String, Long> racingStatusRepository;
 
-    public RaceStatusRepository(Map<String, Long> raceStatusRepository) {
-        this.raceStatusRepository = raceStatusRepository;
+    public RacingStatusRepository(Map<String, Long> racingStatusRepository) {
+        this.racingStatusRepository = racingStatusRepository;
     }
 
     /**
@@ -20,38 +20,38 @@ public class RaceStatusRepository implements Repository {
      */
     @Override
     public Boolean isDuplicateName(String name) {
-        return raceStatusRepository.containsKey(name);
+        return racingStatusRepository.containsKey(name);
     }
 
     @Override
     public void save(String name, Long moveForwardCount) {
-        raceStatusRepository.put(name, moveForwardCount);
+        racingStatusRepository.put(name, moveForwardCount);
     }
 
     @Override
     public Long find(String name) {
-        return raceStatusRepository.get(name);
+        return racingStatusRepository.get(name);
     }
 
     @Override
     public int size() {
-        return raceStatusRepository.size();
+        return racingStatusRepository.size();
     }
 
     @Override
     public Set<String> repositoryKeyset() {
-        return raceStatusRepository.keySet();
+        return racingStatusRepository.keySet();
     }
 
     @Override
     public List<String> findWinner() {
-        ArrayList<String> keySet = new ArrayList<>(raceStatusRepository.keySet());
+        ArrayList<String> keySet = new ArrayList<>(racingStatusRepository.keySet());
         List<String> winnerList = new ArrayList<>();
 
-        keySet.sort((o1, o2) -> raceStatusRepository.get(o2).compareTo(raceStatusRepository.get(o1)));
+        keySet.sort((o1, o2) -> racingStatusRepository.get(o2).compareTo(racingStatusRepository.get(o1)));
         for (String key : keySet) {
-            if (!winnerList.isEmpty() && raceStatusRepository.get(winnerList.get(0))
-                    .equals(raceStatusRepository.get(key))) {
+            if (!winnerList.isEmpty() && racingStatusRepository.get(winnerList.get(0))
+                    .equals(racingStatusRepository.get(key))) {
                 winnerList.add(key);
             }
             if (winnerList.isEmpty()) {

@@ -1,11 +1,11 @@
 package service;
 
-import dto.RaceOutputDTO;
+import dto.RacingOutputDTO;
 import policy.RacingPolicy;
 import repository.Repository;
 
 public interface RacingService {
-    RaceOutputDTO racingStart();
+    RacingOutputDTO racingStart();
     Repository getRaceStatusRepository();
     RacingPolicy getRacingPolicy();
     void generateRacer(String[] splitNames);

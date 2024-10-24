@@ -4,7 +4,7 @@ import dto.ValidatedInputDataDTO;
 import java.util.HashMap;
 import policy.RacingCarPolicy;
 import policy.RacingPolicy;
-import repository.RaceStatusRepository;
+import repository.RacingStatusRepository;
 import repository.Repository;
 import service.RacingCarService;
 import service.RacingService;
@@ -18,7 +18,7 @@ public class RacingCarBeanFactory implements BeanFactory {
 
     @Override
     public Repository provideVehicleRepository() {
-        return new RaceStatusRepository(new HashMap<String, Long>());
+        return new RacingStatusRepository(new HashMap<String, Long>());
     }
 
     @Override

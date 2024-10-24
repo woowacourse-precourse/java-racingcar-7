@@ -1,6 +1,6 @@
 package service;
 
-import dto.RaceOutputDTO;
+import dto.RacingOutputDTO;
 import dto.ValidatedInputDataDTO;
 import java.util.List;
 import policy.RacingPolicy;
@@ -22,13 +22,13 @@ public class RacingCarService implements RacingService {
     }
 
     @Override
-    public RaceOutputDTO racingStart() {
+    public RacingOutputDTO racingStart() {
         String[] splitNames = validatedInputDataDTO.name().split(racingPolicy.getNameSeparator());
         generateRacer(splitNames);
         String raceStatus = runRace(splitNames);
         String raceWinner = fineRaceWinner();
 
-        return new RaceOutputDTO(raceStatus, raceWinner);
+        return new RacingOutputDTO(raceStatus, raceWinner);
     }
 
     @Override

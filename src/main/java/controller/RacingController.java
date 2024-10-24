@@ -2,7 +2,7 @@ package controller;
 
 import common.BeanFactory;
 import dto.OriginalInputDTO;
-import dto.RaceOutputDTO;
+import dto.RacingOutputDTO;
 import dto.ValidatedInputDataDTO;
 import service.RacingService;
 
@@ -16,7 +16,7 @@ public class RacingController {
         this.originalInput = originalInput;
     }
 
-    public RaceOutputDTO run() {
+    public RacingOutputDTO run() {
         ValidatedInputDataDTO validatedInputDataDTO = validateInput();
         RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
         return racingService.racingStart();

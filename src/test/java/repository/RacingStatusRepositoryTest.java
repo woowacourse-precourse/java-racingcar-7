@@ -5,13 +5,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RaceStatusRepositoryTest {
+class RacingStatusRepositoryTest {
 
     @DisplayName("name 중복검사 후 중복된 값이 있으면 true를 리턴한다.")
     @Test
     void isDuplicateName(){
     //given
-        Repository repository = new RaceStatusRepository(new HashMap<>());
+        Repository repository = new RacingStatusRepository(new HashMap<>());
         repository.save("lala",12L);
         repository.save("dodo",12L);
         repository.save("dada",12L);
@@ -26,7 +26,7 @@ class RaceStatusRepositoryTest {
     @Test
     void save(){
         //given
-        Repository repository = new RaceStatusRepository(new HashMap<>());
+        Repository repository = new RacingStatusRepository(new HashMap<>());
         //when
         repository.save("lala",12L);
         repository.save("dodo",13L);
