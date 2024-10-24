@@ -13,7 +13,8 @@ public class Application {
         InputHandler inputHandler = new InputHandler();
         OutputHandler outputHandler = new OutputHandler();
         CarFactory carFactory = new CarFactory();
-        RacingCarService racingCarService = new RacingCarService();
+        RacingCarService racingCarService = new RacingCarService(outputHandler);
+
         MainController mainController = new MainController(inputHandler, outputHandler, carFactory, racingCarService);
         mainController.run();
 
