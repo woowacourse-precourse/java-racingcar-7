@@ -4,20 +4,17 @@ import racingcar.dto.RacingResult;
 import racingcar.dto.RacingRoundResult;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
-import racingcar.model.dependency.moving_strategy.MovingStrategy;
-import racingcar.model.dependency.validator.RacingCarValidator;
+import racingcar.model.dependency.RacingCarDependency;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingService {
 
-    private final RacingCarValidator racingCarValidator;
-    private final MovingStrategy movingStrategy;
+    private final RacingCarDependency racingCarDependency;
 
-    public RacingService(RacingCarValidator racingCarValidator, MovingStrategy movingStrategy) {
-        this.racingCarValidator = racingCarValidator;
-        this.movingStrategy = movingStrategy;
+    public RacingService(RacingCarDependency racingCarDependency) {
+        this.racingCarDependency = racingCarDependency;
     }
 
     public RacingCars getRacingCars(List<String> carNames) {
@@ -35,7 +32,7 @@ public class RacingService {
 
     private List<RacingCar> createRacingCars(List<String> carNameList) {
         return carNameList.stream()
-                .map(carName -> new RacingCar(carName, racingCarValidator, movingStrategy))
+                .map(carName -> new RacingCar(carName, racingCarDependency))
                 .toList();
     }
 
