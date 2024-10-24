@@ -19,12 +19,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String inputCount = Console.readLine();
-        int count = -1;
-        try {
-            count = Integer.parseInt(inputCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 정수인 숫자여야 합니다.");
-        }
+        int count = validateCount(inputCount);
 
         Map<String, StringBuilder> result = new HashMap<>();
         for(String carName : carNames) {
@@ -90,6 +85,22 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름이 중복되어서는 안 됩니다.");
         }
         return carNames;
+    }
+
+    public static int validateCount(String inputCount) {
+        int count;
+        try {
+            count = Integer.parseInt(inputCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
+        }
+        if (count < 1) {
+            throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+        }
+        if (count > 100) {
+            throw new IllegalArgumentException("시도 횟수는 100이하여야 합니다.");
+        }
+        return count;
     }
 
     private static boolean isAsciiCode(String carName) {
