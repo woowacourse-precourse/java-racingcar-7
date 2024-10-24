@@ -4,6 +4,9 @@ public class Car {
     private final String name;
     private int distance = 0;
 
+    final int MIN_NAME_LENGTH = 1;
+    final int MAX_NAME_LENGTH = 5;
+
     public Car(String name) {
         validateNameLength(name);
         this.name = name;
@@ -22,6 +25,13 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다");
+        if (name.length() < MIN_NAME_LENGTH) throw new IllegalArgumentException("자동차 이름은 "
+            + MIN_NAME_LENGTH
+            + "자 이상만 가능합니다");
+
+        if (name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException("자동차 이름은 "
+            + MAX_NAME_LENGTH
+            + "자 이하만 가능합니다");
     }
+
 }

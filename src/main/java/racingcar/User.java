@@ -1,7 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
@@ -15,8 +17,8 @@ public class User {
         String userCarNamesInput = Console.readLine();
 
         // 분리된 문자열 (,) 앞 뒤 공백만 제거하는 정규표현식 사용
-        List<String> carNamesList  = List.of(userCarNamesInput.split("\\s*,\\s*"));
-        return carNamesList;
+        Set<String> carNamesSet = Set.of(userCarNamesInput.split("\\s*,\\s*"));
+        return new ArrayList<>(carNamesSet);
     }
 
     public static int inputGameRepeats() {
@@ -24,8 +26,7 @@ public class User {
 
         String userGameRepeatInput = Console.readLine().strip();
         validateInputGameRepeats(userGameRepeatInput);
-        int gameRepeatInteger = Integer.parseInt(userGameRepeatInput);
-        return gameRepeatInteger;
+        return Integer.parseInt(userGameRepeatInput);
     }
 
     private static void validateInputGameRepeats(String userGameRepeatInput) {
@@ -34,7 +35,6 @@ public class User {
         for (int i = 0; i < userGameRepeatInput.length(); i ++) {
             if (!Character.isDigit(userGameRepeatInput.charAt(i))) throw new IllegalArgumentException(USER_INPUT_GAME_REPEAT_ERROR_MESSAGE);
         }
-
     }
 
 }
