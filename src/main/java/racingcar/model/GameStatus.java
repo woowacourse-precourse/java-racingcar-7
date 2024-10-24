@@ -29,4 +29,8 @@ public class GameStatus {
     public void attempt() {
         ++currentAttempts;
     }
+
+    public boolean isEnd() {
+        return currentAttempts == totalAttempts;
+    }
 }
