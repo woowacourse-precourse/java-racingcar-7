@@ -9,7 +9,7 @@ public class OutputView {
         System.out.println("실행 결과");
         carList.forEach(car ->
                 System.out.println(car.getName()
-                        + " :"
+                        + " : "
                         + "-".repeat(car.getPosition())
                 )
         );
@@ -17,7 +17,7 @@ public class OutputView {
     }
 
     public void printFinalResult(List<String> winnerList) {
-        System.out.println("최종 우승자 :" + String.join(",", winnerList));
+        System.out.println("최종 우승자 : " + String.join(",", winnerList));
     }
 }
 
