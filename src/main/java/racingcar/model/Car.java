@@ -8,7 +8,7 @@ public class Car implements Player{
     private final String name;
     private int score;
 
-    Car(String name) {
+    public Car(String name) {
         this.name = name;
         this.score = 0;
     }
