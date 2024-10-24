@@ -32,4 +32,8 @@ public class Car {
 	public void move() {
 		moveCount++;
 	}
+
+	public String print() {
+		return String.format("%s : %s", name, "-".repeat(moveCount));
+	}
 }
