@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -22,15 +23,8 @@ public class MainController {
     }
 
     private static void tryMoveCars(int inputTryCount, List<Car> cars) {
-        for (int i = 0; i < inputTryCount; i++) {
-            randomlyMove(cars);
-        }
-    }
-
-    private static void randomlyMove(List<Car> cars) {
-        for (Car car : cars) {
-            car.tryMove(if60PercentChance());
-        }
+        IntStream.range(0, inputTryCount)
+                .forEach((i) -> cars.forEach(car -> car.tryMove(if60PercentChance())));
     }
 
     private static List<String> getWinners(List<Car> cars) {
