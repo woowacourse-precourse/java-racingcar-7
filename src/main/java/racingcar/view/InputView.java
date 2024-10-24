@@ -10,7 +10,8 @@ public class InputView {
 
     public static String getTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = readLine();
         System.out.println();
-        return readLine();
+        return input;
     }
 }
