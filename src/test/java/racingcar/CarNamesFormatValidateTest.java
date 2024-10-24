@@ -8,7 +8,7 @@ import racingcar.model.io.CarNames;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-public class CarNamesTest {
+public class CarNamesFormatValidateTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"ash,green,hotpink", "ash, green",

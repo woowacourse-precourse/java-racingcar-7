@@ -8,7 +8,7 @@ import racingcar.model.io.RacingChance;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-public class RacingChanceTest {
+public class RacingChanceFormatValidationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"마음껏달려봐", "111111111111111111111", "0", "\n"})
