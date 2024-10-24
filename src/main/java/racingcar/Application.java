@@ -12,6 +12,7 @@ public class Application {
   public static void main(String[] args) {
     List<String> cars = getCarInput();
     Map<String, String> carGameRecords = createCarGameRecords(cars);
+    int frequency = getRepeatFrequency();
   }
 
   public static List<String> getCarInput() {
@@ -44,5 +45,15 @@ public class Application {
     return carGameRecords;
   }
 
+  public static int getRepeatFrequency() {
+    System.out.println("시도할 횟수는 몇 회인가요");
+    String frequencyInput = Console.readLine();
+
+    if (frequencyInput.matches(".*[^0-9].*")) {
+      throw new IllegalArgumentException();
+    }
+
+    return Integer.parseInt(frequencyInput);
+  }
 
 }
