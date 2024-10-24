@@ -1,4 +1,4 @@
-package racingcar.model.moving_strategy.random;
+package racingcar.model.dependency.moving_strategy.random;
 
 import racingcar.util.ramdom.RandomRange;
 import racingcar.util.ramdom.RandomUtils;

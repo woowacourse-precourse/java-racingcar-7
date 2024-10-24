@@ -1,4 +1,4 @@
-package racingcar.model.validator.name;
+package racingcar.model.dependency.validator.name;
 
 public interface NameValidator {
 

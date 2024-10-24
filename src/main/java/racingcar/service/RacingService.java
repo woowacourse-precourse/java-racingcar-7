@@ -4,8 +4,8 @@ import racingcar.dto.RacingResult;
 import racingcar.dto.RacingRoundResult;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
-import racingcar.model.moving_strategy.MovingStrategy;
-import racingcar.model.validator.RacingCarValidator;
+import racingcar.model.dependency.moving_strategy.MovingStrategy;
+import racingcar.model.dependency.validator.RacingCarValidator;
 
 import java.util.ArrayList;
 import java.util.List;

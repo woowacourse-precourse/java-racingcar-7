@@ -1,4 +1,4 @@
-package racingcar.model.validator;
+package racingcar.model.dependency.validator;
 
 public class DefaultRacingCarValidator implements RacingCarValidator {
 

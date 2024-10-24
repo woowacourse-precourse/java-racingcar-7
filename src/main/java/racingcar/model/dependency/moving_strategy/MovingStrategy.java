@@ -1,4 +1,4 @@
-package racingcar.model.moving_strategy;
+package racingcar.model.dependency.moving_strategy;
 
 public interface MovingStrategy {
 

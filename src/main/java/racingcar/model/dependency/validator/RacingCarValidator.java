@@ -1,6 +1,6 @@
-package racingcar.model.validator;
+package racingcar.model.dependency.validator;
 
-import racingcar.model.validator.name.NameValidator;
+import racingcar.model.dependency.validator.name.NameValidator;
 
 public interface RacingCarValidator extends NameValidator {
 
