@@ -10,13 +10,11 @@ public class OutputView {
             printIntermediateScore(car.getScore());
             System.out.println();
         }
+        System.out.println();
     }
 
-    public static void printMultipleResults(List<Car> cars, int tryNum) {
+    public static void printIntermediateText() {
         System.out.println("실행 결과");
-        for (int i = 0; i < tryNum; i++) {
-            printIntermediateResults(cars);
-        }
     }
 
     public static void printIntermediateScore(int score) {
