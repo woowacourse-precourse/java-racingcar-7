@@ -13,7 +13,15 @@ public class InputView {
 
     public static String inputCarName() {
         System.out.println(NAME_INPUT_MESSAGE);
-        return Console.readLine();
+        final String input = Console.readLine();
+        validateCarNames(input);
+        return input;
+    }
+
+    private static void validateCarNames(final String carNames) {
+        if (carNames.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+        }
     }
 
     public static int inputTryCount() {
