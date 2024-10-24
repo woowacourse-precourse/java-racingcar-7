@@ -2,7 +2,7 @@ package validator;
 
 import java.util.ArrayList;
 
-import static exception.Exception.*;
+import static exception.GameException.*;
 
 /**
  * Validates user input for a game application.
