@@ -1,8 +1,8 @@
 package racingcar.io.output.impl;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarCollection;
 import racingcar.io.output.Output;
@@ -15,28 +15,44 @@ public class OutputConsole implements Output {
 
     @Override
     public void printRoundResult(CarCollection cars) {
-        cars.getCars().forEach(car -> {
-            System.out.println(formatCarStatus(car));
-        });
+        List<String> carStatuses = formatAllCarStatus(cars);
+        carStatuses.forEach(System.out::println);
         System.out.println();
     }
+    
+    private List<String> formatAllCarStatus(CarCollection cars) {
+        List<String> statuses = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            statuses.add(extractCarStatus(car));
+        }
+        return statuses;
+    }
 
-    private String formatCarStatus(Car car) {
+    private String extractCarStatus(Car car) {
         return car.getName() + " : " + "-".repeat(car.getPosition());
     }
 
     @Override
     public void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+        String winnerNames = formatWinnerNames(winners);
         System.out.println("최종 우승자 : " + winnerNames);
+    }
+
+    private String formatWinnerNames(List<Car> winners) {
+        List<String> names = extractWinnerNames(winners);
+        return String.join(", ", names);
+    }
+
+    private List<String> extractWinnerNames(List<Car> winners) {
+        List<String> names = new ArrayList<>();
+        for (Car car : winners) {
+            names.add(car.getName());
+        }
+        return names;
     }
 
     @Override
     public void close() {
         Console.close();
     }
-
-
 }
