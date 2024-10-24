@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position;
+    private final StringBuilder displayPosition = new StringBuilder(getName()).append(" : ");
 
     public Car(String name) {
         this.name = name;
@@ -16,6 +17,7 @@ public class Car {
 
         if (randomNumber >= 4) {
             this.position++;
+            updateDisplayPosition();
         }
     }
 
@@ -30,5 +32,13 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getPositionString() {
+        return displayPosition.toString();
+    }
+
+    private void updateDisplayPosition() {
+        displayPosition.append("-");
     }
 }
