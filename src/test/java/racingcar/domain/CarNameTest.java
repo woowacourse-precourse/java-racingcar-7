@@ -7,6 +7,7 @@ import static racingcar.exception.constants.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLO
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.RacingCarException;
 
@@ -23,6 +24,7 @@ class CarNameTest {
     }
 
     @ParameterizedTest(name = "입력값: {0}")
+    @NullSource
     @ValueSource(strings = {"", " "})
     void 예외_자동차_이름이_빈_값(final String input) {
         // then
