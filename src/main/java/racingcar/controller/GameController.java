@@ -20,5 +20,6 @@ public class GameController {
 		OutputView.printTrialCountInputMessage();
 		String trialCountInput = InputView.getTrialCountInput();
 		int trialCount = NumberValidator.validateTrialCountIsDigit(trialCountInput);
+		OutputView.printExecutionResultMessage();
 	}
 }
