@@ -19,4 +19,17 @@ public class CarList {
     public void moveAll() {
         carList.forEach(car -> car.move(randomGenerator.generate()));
     }
+
+    public List<Car> getWinners() {
+        return carList.stream()
+                .filter(car -> car.getPosition() == getMaxPosition())
+                .toList();
+    }
+
+    private int getMaxPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 }

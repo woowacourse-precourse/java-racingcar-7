@@ -6,6 +6,7 @@ import racingcar.domain.CarList;
 
 import java.util.List;
 import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.Winners;
 import racingcar.mock.TestRandomNumberGenerator;
 import racingcar.utils.RandomGenerator;
 
@@ -63,5 +64,35 @@ public class RacingCarTest {
 
         assertThat(car1.getPosition()).isEqualTo(1);
         assertThat(car2.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 단독_우승자_결정_테스트() {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> cars = List.of(car1, car2);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
+        CarList carList = new CarList(cars, testRandomNumberGenerator);
+        Winners winners;
+
+        carList.moveAll();
+        winners = new Winners(carList.getWinners());
+
+        assertThat(winners.getWinnersList()).isEqualTo("car1");
+    }
+
+    @Test
+    void 공동_우승자_결정_테스트() {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> cars = List.of(car1, car2);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,4));
+        CarList carList = new CarList(cars, testRandomNumberGenerator);
+        Winners winners;
+
+        carList.moveAll();
+        winners = new Winners(carList.getWinners());
+
+        assertThat(winners.getWinnersList()).isEqualTo("car1, car2");
     }
 }
