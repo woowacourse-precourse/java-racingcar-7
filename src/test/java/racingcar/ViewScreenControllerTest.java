@@ -34,14 +34,34 @@ public class ViewScreenControllerTest {
 
     @ParameterizedTest
     @CsvSource({"-3", "ccc"})
-    void runTimes_올바르지_못한_입력(String input) {
+    void 횟수_올바르지_못한_입력(String input) {
         assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
-    void runTimes_nullCheck(String input) {
+    void 횟수_널_체크(String input) {
+        assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"po,a,한글,d;[po, a, 한글, d]", "aba,sss  ,dd,Dd,S S;[aba, sss, dd, Dd, SS]"}, delimiter = ';')
+    void 차량_이름_정상_동작(String input, String expectedOutput) {
+        assertEquals(expectedOutput, viewScreenController.checkNameFormat(input).toString());
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 자동차_널_체크(String input) {
+        assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"-3", "aaa,c[c", "ab,ㅎcc", "s1s, ddd, f", "aaaaa,sssssss"})
+    void 자동차_이름_올바르지_못한_입력(String input) {
         assertThatThrownBy(() -> viewScreenController.checkRunTimesFormat(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
