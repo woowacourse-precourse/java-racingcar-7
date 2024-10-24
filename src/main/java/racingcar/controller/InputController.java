@@ -8,7 +8,7 @@ import racingcar.domain.CarDomain;
 import racingcar.view.OutputView;
 import racingcar.view.impl.ConsoleOutputView;
 
-public class ConsoleController {
+public class InputController {
 
     private final OutputView outputView = new ConsoleOutputView();
     private final FilterConfig filterConfig = new FilterConfig();
