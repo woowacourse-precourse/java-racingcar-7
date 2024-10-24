@@ -13,9 +13,7 @@ public class Car {
     }
 
     public void move() {
-        int randomNumber = generateRandomNumber();
-
-        if (randomNumber >= 4) {
+        if (generateRandomNumber() >= 4) {
             this.position++;
             updateDisplayPosition();
         }
@@ -34,7 +32,7 @@ public class Car {
         return position;
     }
 
-    public String getPositionString() {
+    public String getDisplayPosition() {
         return displayPosition.toString();
     }
 
