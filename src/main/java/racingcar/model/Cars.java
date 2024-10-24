@@ -8,8 +8,14 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
-        validate();
+        this.cars = new ArrayList<>(cars);
+    }
+
+
+    public void moveAll(){
+        for (Car car : cars) {
+            car.move();
+        }
     }
 
     private void validate() {
