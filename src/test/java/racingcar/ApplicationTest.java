@@ -31,6 +31,41 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void blankTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("alpha,,bravo", "5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void trimTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(" alpha  ,be ta", "3");
+                    assertThat(output()).contains("alpha : --", "be ta : --", "최종 우승자 : alpha, be ta");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void duplicateNameTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("alpha,beta,alpha", "3"))
+                        .isInstanceOf(Validate.DuplicateNameDetected.class)
+        );
+    }
+
+    @Test
+    void invalidRangeTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("alpha,beta", "-2"))
+                        .isInstanceOf(Validate.CannotBeNegative.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

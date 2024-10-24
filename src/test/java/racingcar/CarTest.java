@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -14,21 +13,23 @@ class CarTest extends NsTest {
 
     @Test
     void 기능_테스트() {
-        assertRandomNumberInRangeTest(
+        assertSimpleTest(
                 () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
+                    Car car = new Car("name", 2);
+                    assertThat(car.name).isEqualTo("name");
+                    assertThat(car.position).isEqualTo(2);
+                }
         );
+
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void raceTest() {
+        Car car = new Car("gamma", 0);
+        car.position += 1;
+        car.position += 1;
+
+        assertThat(car.position).isEqualTo(2);
     }
 
     @Override

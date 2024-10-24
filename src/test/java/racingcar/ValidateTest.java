@@ -13,21 +13,22 @@ class ValidateTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
+    void validNameLengthTest() {
+        assertSimpleTest(
                 () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
+                    String name = "ab1^*";
+                    Validate.checkName(name);
+                }
         );
     }
 
     @Test
-    void 예외_테스트() {
+    void validNameLengthExceptionTest() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> {
+                    String name = "q    1"; // length 6
+                    Validate.checkName(name);
+                }).isInstanceOf(IllegalArgumentException.class)
         );
     }
 
