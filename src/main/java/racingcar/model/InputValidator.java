@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.regex.Pattern;
-import racingcar.error.InputError;
+import racingcar.error.InputErrorType;
 import racingcar.error.InputException;
 
 public class InputValidator {
@@ -12,13 +12,13 @@ public class InputValidator {
 
     private void validateLowerCaseOrKorean(String carName) {
         if (!Pattern.matches("^[가-힣a-z]{1,5}$", carName)) {
-            throw new InputException(InputError.INVALID_CAR_NAME_FORMAT);
+            throw new InputException(InputErrorType.INVALID_CAR_NAME_FORMAT);
         }
     }
 
     private void validateUnderFiveLength(String carName) {
         if (carName.length() > 5) {
-            throw new InputException(InputError.INVALID_CAR_NAME_LENGTH);
+            throw new InputException(InputErrorType.INVALID_CAR_NAME_LENGTH);
         }
     }
 
@@ -31,7 +31,7 @@ public class InputValidator {
         try {
             Integer.parseInt(trialCount);
         } catch (NumberFormatException exception) {
-            throw new InputException(InputError.INVALID_TRIAL_COUNT_TYPE);
+            throw new InputException(InputErrorType.INVALID_TRIAL_COUNT_TYPE);
         }
     }
 
@@ -39,7 +39,7 @@ public class InputValidator {
         int parsedInt = Integer.parseInt(trialCount);
 
         if (parsedInt <= 0) {
-            throw new InputException(InputError.INVALID_TRIAL_COUNT_RANGE);
+            throw new InputException(InputErrorType.INVALID_TRIAL_COUNT_RANGE);
         }
     }
 }

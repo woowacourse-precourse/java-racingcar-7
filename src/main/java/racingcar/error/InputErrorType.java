@@ -1,6 +1,6 @@
 package racingcar.error;
 
-public enum InputError {
+public enum InputErrorType {
     INVALID_CAR_NAME_FORMAT("한글과 영어 소문자로 작성해주세요."),
     INVALID_CAR_NAME_LENGTH("5자 이하의 이름을 작성해주세요."),
 
@@ -9,7 +9,7 @@ public enum InputError {
 
     private final String message;
 
-    InputError(String message) {
+    InputErrorType(String message) {
         this.message = message;
     }
 

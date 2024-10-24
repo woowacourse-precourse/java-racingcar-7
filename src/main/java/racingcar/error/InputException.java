@@ -1,9 +1,9 @@
 package racingcar.error;
 
 public class InputException extends IllegalArgumentException {
-    private final InputError inputError;
+    private final InputErrorType inputError;
 
-    public InputException(InputError inputError) {
+    public InputException(InputErrorType inputError) {
         this.inputError = inputError;
     }
 
