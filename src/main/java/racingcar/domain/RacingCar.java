@@ -15,10 +15,10 @@ public class RacingCar {
     }
 
     public void playRace() {
-        if (isStop()) {
-            return;
+        if (isGo()) {
+            moveForward();
         }
-        moveForward();
+        System.out.println(getForwardedDisplay());
     }
 
     public String getForwardedDisplay() {
@@ -31,8 +31,8 @@ public class RacingCar {
         return this.driverName;
     }
 
-    private boolean isStop() {
-        return pickNumberInRange(0, 9) < 4;
+    private boolean isGo() {
+        return pickNumberInRange(0, 9) > 3;
     }
 
     private void moveForward() {

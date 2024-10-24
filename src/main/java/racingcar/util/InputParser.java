@@ -12,15 +12,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputParser {
 
-    public int takeGameLapsFromUser() {
+    public static int takeGameLapsFromUser() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String userInput = readLine();
-        final String GAME_NUMBER_REGEX = "^[1-9]\\\\d*$";
+        final String GAME_NUMBER_REGEX = "^[1-9]\\d*$";
         validateUserInput(userInput, GAME_NUMBER_REGEX, "게임 횟수는 오직 양수만 가능합니다.");
 
         return Integer.parseInt(userInput);
     }
-    public List<RacingCar> collectRacingCarAsList() {
+    public static List<RacingCar> collectRacingCarAsList() {
         final String[] racers = getRacersAsArrayFromUserInput();
         validateRacers(racers);
 
@@ -28,7 +28,7 @@ public class InputParser {
                 .collect(Collectors.toList());
     }
 
-    private String[] getRacersAsArrayFromUserInput() {
+    private static String[] getRacersAsArrayFromUserInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         final String userInput = readLine();
         final String RACERS_REGEX = "^([^,]{1,5})(,[^,]{1,5})*$";
@@ -37,14 +37,14 @@ public class InputParser {
         final String DELIMITER = ",";
         return userInput.split(DELIMITER);
     }
-    private void validateRacers(String[] racers) {
+    private static void validateRacers(String[] racers) {
         for (String racer : racers) {
             if (racer.length() > 5) {
                 throw new IllegalArgumentException("드라이버의 이름은 5글자 이하로 해주십시오.");
             }
         }
     }
-    private void validateUserInput(
+    private static void validateUserInput(
             final String userInput,
             final String regex,
             final String errorMessage) {
