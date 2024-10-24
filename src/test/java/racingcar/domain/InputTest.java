@@ -33,4 +33,16 @@ class InputTest {
                 .hasMessage("입력은 쉼표로 구분된 영어 이름만 가능합니다.");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "우아한,테크,코스",
+            "우아한.테크.코스",
+            "우아한-테크-코스"})
+    @DisplayName("자동차 이름이 영어가 아닌 경우 예외가 발생한다.")
+    void validateNonEnglishNames(String candidate) {
+        assertThatThrownBy(() -> Input.from(candidate))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 쉼표로 구분된 영어 이름만 가능합니다.");
+    }
+
 }
