@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.RacingCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,11 +24,11 @@ public class RacingController {
     private void inputCarNames() {
         outputView.printInputCarNames();
         List<String> carNames = inputView.inputCarNames();
-
         List<Car> cars = creatCars(carNames);
 
         outputView.printInputRacingCount();
-        int racingCount = inputView.inputRacingCount();
+        int count = inputView.inputRacingCount();
+        RacingCount racingCount = RacingCount.from(count);
     }
 
     private List<Car> creatCars(List<String> carNames) {
