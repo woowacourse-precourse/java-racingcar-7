@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
+    private static final int MINIMUM_NUMBER_TO_ADVANCE = 4;
+    private static final int RANDOM_NUMBER_LOWER_BOUND = 0;
+    private static final int RANDOM_NUMBER_UPPER_BOUND = 9;
+
     private String name;
     private int status;
 
@@ -21,7 +25,7 @@ public class Car {
     }
 
     public void race() {
-        if (pickRandomNumberFromZeroToNine() >= 4) {
+        if (pickRandomNumberFromZeroToNine() >= MINIMUM_NUMBER_TO_ADVANCE) {
             status++;
         }
     }
@@ -31,6 +35,6 @@ public class Car {
     }
 
     private int pickRandomNumberFromZeroToNine() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_LOWER_BOUND, RANDOM_NUMBER_UPPER_BOUND);
     }
 }

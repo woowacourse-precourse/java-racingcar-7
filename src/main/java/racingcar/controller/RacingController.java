@@ -10,6 +10,8 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
+    private final static String CAR_NAME_DELIMITER = ",";
+
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -51,7 +53,7 @@ public class RacingController {
     }
 
     private List<String> splitCar(String carInput) {
-        String[] carNames = carInput.split(",");
+        String[] carNames = carInput.split(CAR_NAME_DELIMITER);
         return Arrays.stream(carNames).map(String::trim).toList();
     }
 
@@ -65,6 +67,7 @@ public class RacingController {
     }
 
     private void raceCars(Cars cars, int count) {
+        outputView.printNewLine();
         outputView.printResultMessage();
         for (int i = 0; i < count; i++) {
             cars.race();

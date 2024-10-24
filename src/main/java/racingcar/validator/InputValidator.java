@@ -1,15 +1,16 @@
 package racingcar.validator;
 
+import java.util.List;
 import racingcar.exception.CarNameException;
 import racingcar.exception.CountException;
 
-import java.util.List;
-
 public class InputValidator {
+
+    private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public static void validateCarNames(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName == null || carName.isBlank() || carName.length() > 5) {
+            if (carName == null || carName.isBlank() || carName.length() > CAR_NAME_MAX_LENGTH) {
                 throw new CarNameException(carName);
             }
         }
