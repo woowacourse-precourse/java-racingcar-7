@@ -39,6 +39,11 @@ public class Application {
             if (carName == null || carName.isBlank()) {
                 throw new IllegalArgumentException();
             }
+
+            // 이름에 공백
+            if (carName.contains(" ")) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
