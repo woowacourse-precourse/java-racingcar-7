@@ -31,6 +31,7 @@ public class MainController {
         int trialNumber = Integer.parseInt(trialNumberInput);
 
         racingGameTrials(racing, trialNumber);
+        displayWinners(racing);
     }
 
     private List<String> convertToStrings(String carNameInput) {
@@ -49,6 +50,11 @@ public class MainController {
             List<WinnerResponseDto> result = convertToResultDtos(racing);
             OutputView.printRacingOutput(result);
         }
+    }
+
+    private void displayWinners(final Racing racing) {
+        List<String> winnerResult = racing.findWinners();
+        OutputView.printWinnerOutput(winnerResult);
     }
 
     private List<WinnerResponseDto> convertToResultDtos(final Racing racing) {
