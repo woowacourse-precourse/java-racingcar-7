@@ -16,4 +16,8 @@ public class Car {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public void moveForward() {
+		this.location ++;
+	}
 }
