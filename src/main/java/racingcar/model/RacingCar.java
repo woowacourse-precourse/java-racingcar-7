@@ -7,13 +7,13 @@ import java.util.Objects;
 
 public class RacingCar {
 
-    private final int DEFAULT_POSITION = 0;
+    private final long DEFAULT_POSITION = 0;
     private final int MAX_NAME_LENGTH = 5;
-    private final int DEFAULT_MOVE_DISTANCE = 1;
+    private final long DEFAULT_MOVE_DISTANCE = 1;
     private final int MIN_MOVEABLE_NUMBER = 4;
 
-    private final String name;
-    private int position;
+    private String name;
+    private long position;
 
     public RacingCar(String name) {
         validateName(name);
@@ -32,7 +32,7 @@ public class RacingCar {
         return name;
     }
 
-    public int getPosition() {
+    public long getPosition() {
         return position;
     }
 
