@@ -27,13 +27,13 @@ public class CarName {
 
     private void validateMinLength(String name){
         if(name.length()<MIN_LENGTH){
-            throw new NameLengthShortException();
+                throw new NameLengthShortException();
         }
     }
 
     private void validateMaxLength(String name){
         if(name.length()> MAX_LENGTH){
-            throw new NameLengthExceededException();
+                throw new NameLengthExceededException();
         }
     }
 }
