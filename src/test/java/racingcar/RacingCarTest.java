@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.CarList;
@@ -9,6 +12,7 @@ import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Winners;
 import racingcar.mock.TestRandomNumberGenerator;
 import racingcar.utils.RandomGenerator;
+import racingcar.view.OutputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -94,5 +98,22 @@ public class RacingCarTest {
         winners = new Winners(carList.getWinners());
 
         assertThat(winners.getWinnersList()).isEqualTo("car1, car2");
+    }
+
+    @Test
+    void 차수별_실행_결과_출력_테스트() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> cars = List.of(car1, car2);
+        car1.move(4);
+        car2.move(3);
+
+        new OutputView().printRoundResult(cars);
+
+        assertThat(out.toString()).isEqualTo("실행 결과" + System.lineSeparator() + "car1 : -" +
+                System.lineSeparator() + "car2 : " + System.lineSeparator());
     }
 }
