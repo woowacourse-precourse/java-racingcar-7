@@ -16,6 +16,12 @@ public class RacingController {
         this.race = race;
     }
 
+    public void run() {
+        setRace();
+        startRace();
+        raceFinished();
+    }
+
     private void setRace() {
         String carName = printInputMessage(CAR_NAME_INPUT.getMessage());
         race.setCars(carName);
@@ -39,5 +45,9 @@ public class RacingController {
         }
 
         printMessage(sb.toString());
+    }
+
+    private void raceFinished() {
+        printWinners(PRINT_WINNER_FORMAT.getMessage(), race.getRaceWinner());
     }
 }
