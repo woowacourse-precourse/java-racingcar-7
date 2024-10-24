@@ -4,15 +4,12 @@ import static racingcar.view.OutputView.*;
 import static racingcar.view.RaceMessage.*;
 import static racingcar.view.InputView.*;
 
-import racingcar.domain.Car;
 import racingcar.domain.Race;
 
 public class RacingController {
-    private final Car car;
     private final Race race;
 
-    RacingController(Car car, Race race) {
-        this.car = car;
+    public RacingController(Race race) {
         this.race = race;
     }
 
