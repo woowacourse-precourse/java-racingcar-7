@@ -18,5 +18,10 @@ public class Application {
         return Console.readLine();
     }
 
-    
+    private boolean validateNotEmpty(String str) {
+        if (str.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }
