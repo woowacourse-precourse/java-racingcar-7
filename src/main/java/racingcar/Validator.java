@@ -19,26 +19,26 @@ public class Validator {
         return cycle;
     }
 
-    private static void validateNull(String name) {
-        if (name == null || name.isEmpty())
+    private static void validateNull(String input) {
+        if (input == null || input.isEmpty())
             throw new IllegalArgumentException();
     }
 
-    private static void validateLength(String name) {
-        if (name.length()>5) {
+    private static void validateLength(String input) {
+        if (input.length()>5) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void validateNegativeNumber(int cycle) {
-        if (cycle <= 0)
+    private static void validateNegativeNumber(int inputNumber) {
+        if (inputNumber <= 0)
             throw new IllegalArgumentException();
     }
 
-    private static int validateParseInt(String cycleInput) {
+    private static int validateParseInt(String inputNumber) {
         int cycle;
         try {
-            cycle = Integer.parseInt(cycleInput);
+            cycle = Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
