@@ -1,4 +1,4 @@
-package racingcar.model.track;
+package racingcar.model;
 
 public class AttemptCount {
 
