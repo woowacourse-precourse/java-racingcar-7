@@ -12,4 +12,11 @@ public class RacingCars {
                 .map(Car::new)
                 .forEach(racingCars::add);
     }
+
+    public void updatePositionsWithRandomNumbers(List<Integer> randomNumbers) {
+        for (int i = 0; i < racingCars.size(); i++) {
+            int moveCondition = randomNumbers.get(i);
+            racingCars.get(i).move(moveCondition);
+        }
+    }
 }
