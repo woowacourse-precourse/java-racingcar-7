@@ -27,7 +27,7 @@ public class DataParser {
 
     private static int parseCount(String tryCount) {
         for (char c : tryCount.toCharArray()) {
-            if (Character.isDigit(c)) {
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -58,17 +58,14 @@ public class DataParser {
         }
     }
 
-    public static void isNonEmpty(List<String> list) {
-        List<String> trimmdlist = new ArrayList<>();
-        for (String s : list) {
-            if (s.isBlank()) {
+    private static void isNonEmpty(List<String> list) {
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).isBlank()) {
                 throw new IllegalArgumentException();
             }
-            trimmdlist.add(s.trim());
+            list.set(i, list.get(i).trim());
         }
-
-        list.clear();
-        list.addAll(trimmdlist);
     }
 
 }
