@@ -4,7 +4,6 @@ import exception.ErrorCode;
 import java.util.List;
 
 public class Validator {
-    private static final String EMPTY_STRING = "";
 
     public void validateCar(List<String> carNames) {
         checkCarNotEmpty(carNames);
