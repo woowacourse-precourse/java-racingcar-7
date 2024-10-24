@@ -25,14 +25,6 @@ public class RacingCarTrace {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public int getDistance(int index) {
-        return trace.entrySet().stream()
-                .skip(index)
-                .findFirst()
-                .map(Entry::getValue)
-                .orElse(0);
-    }
-
     public int getDistance(RacingCar racingCar) {
         return trace.get(racingCar);
     }
