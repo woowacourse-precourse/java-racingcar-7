@@ -15,7 +15,6 @@ public class RacingCar {
 
         System.out.println("경주할 자동차 이름을 입력하세요");
         String inputCarNames = Console.readLine();
-        checkLengthWithinLimits(inputCarNames);
         List<String> carNames = validateInputCarNames(inputCarNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
