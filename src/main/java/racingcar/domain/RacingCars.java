@@ -48,11 +48,12 @@ public class RacingCars {
     public String getWinners() {
         StringBuilder stringBuilder = new StringBuilder();
         List<String> winnerList = getWinnerList();
+        String comma = ", ";
         for (String winner : winnerList) {
             stringBuilder.append(winner);
-            stringBuilder.append(",");
+            stringBuilder.append(comma);
         }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.delete(stringBuilder.length()-comma.length(), stringBuilder.length());
         return stringBuilder.toString();
     }
 

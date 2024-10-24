@@ -41,6 +41,6 @@ class RacingCarsTest {
         //when
         String winners = racingCars.getWinners();
         //then
-        assertEquals("a,b,c", winners);
+        assertEquals("a, b, c", winners);
     }
 }
