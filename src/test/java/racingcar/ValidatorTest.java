@@ -15,4 +15,13 @@ class ValidatorTest {
 		assertThatThrownBy(() -> Validator.validateCarName("")).isInstanceOf(IllegalArgumentException.class);
 		assertThatThrownBy(() -> Validator.validateCarName("longer")).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	void validatePositiveNumber() {
+		Validator.validatePositiveNumber(132);
+		Validator.validatePositiveNumber(1);
+
+		assertThatThrownBy(() -> Validator.validatePositiveNumber(0)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validatePositiveNumber(-1)).isInstanceOf(IllegalArgumentException.class);
+	}
 }

@@ -10,4 +10,16 @@ public class StringParser {
 		Validator.validateCarNames(names);
 		return names;
 	}
+
+	public static long parsePositiveNumber(String input) {
+		long number;
+		try {
+			number = Long.parseLong(input);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("Invalid number input");
+		}
+
+		Validator.validatePositiveNumber(number);
+		return number;
+	}
 }

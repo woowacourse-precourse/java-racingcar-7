@@ -19,4 +19,15 @@ class StringParserTest {
 		assertThatThrownBy(() -> assertThat(StringParser.parseCarNames(",b"))).isInstanceOf(IllegalArgumentException.class);
 		assertThatThrownBy(() -> assertThat(StringParser.parseCarNames("a,,b"))).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	void parsePositiveNumber() {
+		assertThat(StringParser.parsePositiveNumber("12")).isEqualTo(12);
+		assertThat(StringParser.parsePositiveNumber("1")).isEqualTo(1);
+
+		assertThatThrownBy(() -> StringParser.parsePositiveNumber("")).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> StringParser.parsePositiveNumber("no_number")).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> StringParser.parsePositiveNumber("-1")).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> StringParser.parsePositiveNumber("0")).isInstanceOf(IllegalArgumentException.class);
+	}
 }

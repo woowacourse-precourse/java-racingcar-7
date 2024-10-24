@@ -14,4 +14,10 @@ public class Validator {
 			throw new IllegalArgumentException("Invalid name length");
 		}
 	}
+
+	public static void validatePositiveNumber(long number) {
+		if (number <= 0) {
+			throw new IllegalArgumentException("Non-positive numbers cannot be entered");
+		}
+	}
 }
