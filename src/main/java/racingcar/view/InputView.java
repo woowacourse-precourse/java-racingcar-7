@@ -34,10 +34,10 @@ public class InputView {
                         .orElse(Collections.singletonList(input));
     }
 
-    public int getMoveThreshold() {
+    public int getMoveCount() {
         System.out.println(MESSAGE_MOVE_COUNT);
         String threshold = Console.readLine();
-        inputViewValidator.validateMoveThreshold(threshold);
+        inputViewValidator.validateMoveCount(threshold);
         return Integer.parseInt(threshold);
     }
 }

@@ -39,9 +39,9 @@ public class InputViewValidator {
         }
     }
 
-    public void validateMoveThreshold(String input) {
+    public void validateMoveCount(String input) {
         if (!isNumber(input)) {
-            throw new IllegalArgumentException(ExceptionCode.INVALID_MOVE_THRESHOLD.getMessage());
+            throw new IllegalArgumentException(ExceptionCode.INVALID_MOVE_COUNT.getMessage());
         }
     }
 
