@@ -84,7 +84,7 @@ class CarTest {
 
     //
     @Test
-    void maintainCurrentPosition_생성되고안움직일떄_이전위치유지() {
+    void maintainCurrentPosition_생성되고_호출시_이전위치유지() {
         // given
         String name = "test";
         Car car = Car.createNamedCar(name);
@@ -96,7 +96,7 @@ class CarTest {
         assertThat(noMoveCar.provideCurrentPosition()).isEqualTo(0);
     }
     @Test
-    void maintainCurrentPosition_움직인이후위치유지_이전위치유지() {
+    void maintainCurrentPosition_움직이고나서_호출시_이전위치유지() {
         // given
         String name = "test";
         final int moveCount =10;
