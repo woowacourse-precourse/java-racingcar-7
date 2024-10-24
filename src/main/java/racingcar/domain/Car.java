@@ -3,13 +3,13 @@ package racingcar.domain;
 public class Car { // 자동차를 관리하는 클래스
     private String carName;
     private int position = 0;
-    private String positionString;
+    private String positionString = "";
 
     public Car(String carName) {
         this.carName = carName;
     }
 
-    public String getCar_name() {
+    public String getCarName() {
         return carName;
     }
 
