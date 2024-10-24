@@ -22,4 +22,9 @@ public class ViewScreen {
         System.out.println("최종 우승자 : " + namesString);
     }
 
+    //출력 양식 맞추기 위한 함수
+    public void customPrint(String something) {
+        System.out.print(something);
+    }
+
 }

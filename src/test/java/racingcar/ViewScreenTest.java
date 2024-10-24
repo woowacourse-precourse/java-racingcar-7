@@ -16,6 +16,7 @@ import view.ViewScreen;
 public class ViewScreenTest {
     private final ViewScreen viewScreen = new ViewScreen();
 
+
     @Test
     void 입력_정상_작동() {
         String input = "pobi,woni,jun\n5\n";
@@ -48,5 +49,16 @@ public class ViewScreenTest {
         viewScreen.printWinner(nameList);
         assertEquals(expectedOutput, outputStream.toString().trim());
         System.setOut(originalOut);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"123,123", "sds,sds", "'\n','\n'"})
+    void 커스텀_출력_테스트(String customPrint, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        viewScreen.customPrint(customPrint);
+        assertEquals(expectedOutput, outputStream.toString());
     }
 }
