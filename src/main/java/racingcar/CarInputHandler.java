@@ -8,9 +8,14 @@ public class CarInputHandler {
     public String userInputCarNames(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String userInput = Console.readLine();
-        if(userInput == null || userInput.trim().isEmpty()){
+        if (userInput == null || userInput.trim().isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 비었습니다 입력을 해야 합니다.");
         }
+        return userInput;
+    }
+    public String userInputHowManyTimes(){
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        String userInput = Console.readLine();
         return userInput;
     }
     public String[] splitCarNames(String carNames) {
