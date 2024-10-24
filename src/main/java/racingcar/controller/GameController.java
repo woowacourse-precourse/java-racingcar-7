@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import static racingcar.util.InputValidator.validateNoDuplicates;
+
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,30 +21,13 @@ public class GameController {
         String inputCarsName = inputView.inputCarsName();
         int inputPlayCount = inputView.inputPlayCount();
 
-        String[] cars = inputCarsName.split(",");
-        List<String> list = Arrays.asList(cars);
-        validateDuplicationCarName(list);
+        String[] carArray = inputCarsName.split(",");
 
-        for (String car : list) {
-            validateNull(car);
-            validateCarNameLength(car);
-        }
-    }
+        List<String> carList = Arrays.asList(carArray);
+        validateNoDuplicates(carList);
 
-    private void validateNull(String car) {
-        if (car.isBlank())
-            throw new IllegalArgumentException();
-    }
-
-    private void validateCarNameLength(String carName) {
-        if (carName.length() > 5)
-            throw new IllegalArgumentException();
-    }
-
-    private void validateDuplicationCarName(List<String> carList) {
-        for (String car : carList) {
-            if (carList.contains(car))
-                throw new IllegalArgumentException();
-        }
+        List<Car> cars = carList.stream()
+                .map(car -> new Car(car, 0))
+                .toList();
     }
 }
