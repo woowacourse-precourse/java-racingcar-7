@@ -1,12 +1,12 @@
 package racingcar.util;
 
-import static racingcar.util.ConstantData.INPUT_DELIMITER;
-import static racingcar.util.ConstantData.MINIMUM_RACING_CAR_NEEDED;
-import static racingcar.util.ConstantData.NAME_LENGTH_LIMIT;
-import static racingcar.util.Message.DELIMITER_POSITION_INCORRECT;
-import static racingcar.util.Message.NAME_LENGTH_NOT_VALID;
-import static racingcar.util.Message.NEED_MULTIPLE_RACING_CAR;
-import static racingcar.util.Message.TRIAL_COUNT_NOT_POSITIVE;
+import static racingcar.util.ConstantRacingData.INPUT_DELIMITER;
+import static racingcar.util.ConstantRacingData.MINIMUM_RACING_CAR_NEEDED;
+import static racingcar.util.ConstantRacingData.NAME_LENGTH_LIMIT;
+import static racingcar.util.message.ExceptionMessage.DELIMITER_POSITION_INCORRECT;
+import static racingcar.util.message.ExceptionMessage.NAME_LENGTH_NOT_VALID;
+import static racingcar.util.message.ExceptionMessage.NEED_MULTIPLE_RACING_CAR;
+import static racingcar.util.message.ExceptionMessage.TRIAL_COUNT_NOT_POSITIVE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,22 +15,22 @@ public class Validator {
 
     public static List<String> validateInputString(String input) {
         if (input.isBlank() || input.startsWith(INPUT_DELIMITER) || input.endsWith(INPUT_DELIMITER)) {
-            throw new IllegalArgumentException(DELIMITER_POSITION_INCORRECT);
+            throw new IllegalArgumentException(DELIMITER_POSITION_INCORRECT.get());
         }
         return Arrays.stream(input.split(INPUT_DELIMITER))
                 .map(String::strip)
                 .toList();
     }
 
-    public static void validateNameCount(int nameCount) {
+    public static void validateNameCount(Integer nameCount) {
         if (nameCount < MINIMUM_RACING_CAR_NEEDED) {
-            throw new IllegalArgumentException(NEED_MULTIPLE_RACING_CAR);
+            throw new IllegalArgumentException(NEED_MULTIPLE_RACING_CAR.get());
         }
     }
 
     public static void validateNameLength(String name) {
         if (name.isBlank() || name.length() > NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(NAME_LENGTH_NOT_VALID);
+            throw new IllegalArgumentException(NAME_LENGTH_NOT_VALID.get());
         }
     }
 
@@ -42,9 +42,9 @@ public class Validator {
         }
     }
 
-    public static int validatePositive(int trialCount) {
+    public static int validatePositive(Integer trialCount) {
         if (trialCount <= 0) {
-            throw new IllegalArgumentException(TRIAL_COUNT_NOT_POSITIVE);
+            throw new IllegalArgumentException(TRIAL_COUNT_NOT_POSITIVE.get());
         }
         return trialCount;
     }
