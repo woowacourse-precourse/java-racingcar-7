@@ -7,7 +7,7 @@ import racingcar.model.Car;
 public class ParsingCarNameService {
     private static final String DELIMITER = ",\\s*";
 
-    public List<Car> parseCarNames(String inputCarName) {
+    public static List<Car> parseCarNames(String inputCarName) {
         String[] inputStrings = inputCarName.split(DELIMITER);
         List<Car> cars = new ArrayList<>();
         for (String inputString : inputStrings) {
