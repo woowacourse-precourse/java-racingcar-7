@@ -31,6 +31,6 @@ public class Car {
 	}
 
 	public void printResult() {
-		System.out.print(name + " : " + "-".repeat(location));
+		System.out.println(name + " : " + "-".repeat(location));
 	}
 }
