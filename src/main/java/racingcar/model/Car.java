@@ -1,11 +1,12 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.regex.Pattern;
 import racingcar.constant.ErrorMessage;
 import racingcar.constant.MovementCondition;
 
 public class Car {
-    private static final String SPACE = " ";
+
+    private static final Pattern BLANK_PATTERN = Pattern.compile("[\n\t ]");
     private static final int MOVING_CRITERIA = 4;
     private static final int MAXIMUM_LENGTH_OF_NAME = 5;
 
@@ -29,7 +30,7 @@ public class Car {
     }
 
     private void validateNoSpaceBetweenName(final String name) {
-        if (name.contains(SPACE)) {
+        if (BLANK_PATTERN.matcher(name).find()) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_SPACE.getMessage());
         }
     }
