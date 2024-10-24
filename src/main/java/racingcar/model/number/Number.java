@@ -9,6 +9,6 @@ public class Number {
     }
 
     public boolean isGreaterThanForwardThreshold() {
-        return number > FORWARD_THRESHOLD;
+        return number >= FORWARD_THRESHOLD;
     }
 }
