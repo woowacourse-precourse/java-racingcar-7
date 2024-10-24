@@ -44,19 +44,25 @@ public class Application {
         }
 
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("최종 우승자 : ");
-        boolean first = true;
-        for (int i = 0; i < count; i++) {
-            if(cars.get(i).location == temp) {
-                if(first) {
-                    sb.append(", ");
+
+        List<String> winner = new ArrayList<>();
+        if(temp != 0){
+            for (int i = 0; i < count; i++) {
+                if(cars.get(i).location == temp) {
+                    winner.add(cars.get(i).name);
                 }
-                first = false;
-                sb.append(cars.get(i).name);
             }
         }
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자 : ");
+        sb.append(winner.getFirst());
+        for (int i = 1; i < winner.size(); i++) {
+            sb.append(", ");
+            sb.append(winner.get(i));
+        }
+
+        System.out.println(sb);
 
     }
 }
