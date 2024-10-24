@@ -29,4 +29,13 @@ public class Race {
     private String[] splitInput(String input) {
         return input.split(",");
     }
+
+    public String getRaceResult() {
+        StringBuilder roundResult = new StringBuilder();
+        for (Car car : cars) {
+            roundResult.append(car.getDisplayPosition()).append('\n');
+        }
+
+        return roundResult.toString();
+    }
 }
