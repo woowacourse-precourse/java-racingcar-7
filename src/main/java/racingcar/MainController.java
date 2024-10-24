@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
@@ -28,20 +29,17 @@ public class MainController {
     }
 
     private static List<String> getWinners(List<Car> cars) {
-        int maxPosition = cars.get(0).getPosition();
-        for (int i = 0; i < cars.size(); i++) {
-            int comparedPosition = cars.get(i).getPosition();
-            if (maxPosition < comparedPosition ) {
-                maxPosition = comparedPosition;
-            }
-        }
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
 
         List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car.getName());
-            }
-        }
+        cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .forEach(winners::add);
+
         return winners;
     }
     private static boolean if60PercentChance() {
