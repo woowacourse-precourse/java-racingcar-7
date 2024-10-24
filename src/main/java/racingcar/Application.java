@@ -1,7 +1,13 @@
 package racingcar;
 
+import racingcar.controller.RaceController;
+import racingcar.view.ConsoleView;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ConsoleView view = new ConsoleView();
+        RaceController raceController = new RaceController(view);
+        raceController.startRace();
     }
 }
