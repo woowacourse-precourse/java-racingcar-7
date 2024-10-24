@@ -8,6 +8,10 @@ public class Position {
         this.distance = new StringBuilder();
     }
 
+    protected void increasePosition() {
+        distance.append(ONE_STEP);
+    }
+
     protected int calculateMovingDistance() {
         return distance.toString().length();
     }
