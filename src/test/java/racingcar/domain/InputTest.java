@@ -21,4 +21,16 @@ class InputTest {
                 .hasMessage("자동차 이름은 비어있을 수 없습니다.");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "pobi:woni:jun",
+            "pobi.woni.jun",
+            "pobi+woni+jun"})
+    @DisplayName("구분자가 쉼표가 아닌 경우 예외가 발생한다.")
+    void validateDelimiter(String candidate) {
+        assertThatThrownBy(() -> Input.from(candidate))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 쉼표로 구분된 영어 이름만 가능합니다.");
+    }
+
 }
