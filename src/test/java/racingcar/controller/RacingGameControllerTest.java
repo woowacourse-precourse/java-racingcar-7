@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.RacingCar;
 import racingcar.view.ErrorMessage;
 import racingcar.view.InputView;
@@ -26,73 +27,47 @@ public class RacingGameControllerTest {
         controller = new RacingGameController(inputView, outputView);
     }
 
-    @Test
-    void testRun_WithValidInput() {
+    @ParameterizedTest
+    @CsvSource({
+            "'pobi,woni,jun\n5'",
+            "'car1,car2,car3\n3'"
+    })
+    void testRun_WithValidInput(String input) {
         // Given: 유효한 자동차 이름과 시도 횟수
-        inputView.setInput("pobi,woni,jun\n5");
+        setInputAndRun(input);
+        // Then: 출력이 발생했는지 확인
+        assertContainsResult(outputView.getPrintedOutput());
+    }
 
-        // When: 게임 실행
+    @ParameterizedTest
+    @CsvSource({
+            "'Ferrari,pobi,woni\n5', NAME_TOO_LONG",
+            "'pobi,woni,pobi\n5', DUPLICATE_NAME",
+            "' , , \n5', EMPTY_CAR_NAMES",
+            "'pobi,woni,jun\n-3', INVALID_TRY_COUNT"
+    })
+    void testRun_WithInvalidInput_ShouldThrowException(String input, String errorMessage) {
+        // Given: 잘못된 입력
+        inputView.setInput(input);
+        // When & Then: 예외 발생 확인
+        assertExceptionMessage(errorMessage);
+    }
+
+    private void setInputAndRun(String input) {
+        inputView.setInput(input);
         controller.run();
+    }
 
-        // Then: 출력이 발생했는지 확인 (구체적인 내용은 검증하지 않음)
-        String output = outputView.getPrintedOutput();
+    private void assertContainsResult(String output) {
         assertTrue(output.contains("실행 결과"));
         assertTrue(output.contains("최종 우승자"));
     }
 
-    @Test
-    void testRun_WithCarNamesExceedingFiveCharacters_ShouldThrowException() {
-        // Given: 자동차 이름이 5자를 초과할 경우
-        inputView.setInput("Ferrari,pobi,woni\n5");
-
-        // When & Then: 예외 발생 확인
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            controller.run();
-        });
-
-        assertEquals(ErrorMessage.NAME_TOO_LONG.getMessage(), exception.getMessage());
+    private void assertExceptionMessage(String errorMessage) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> controller.run());
+        assertEquals(ErrorMessage.valueOf(errorMessage).getMessage(), exception.getMessage());
     }
 
-    @Test
-    void testRun_WithDuplicateCarNames_ShouldThrowException() {
-        // Given: 중복된 자동차 이름
-        inputView.setInput("pobi,woni,pobi\n5");
-
-        // When & Then: 예외 발생 확인
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            controller.run();
-        });
-
-        assertEquals(ErrorMessage.DUPLICATE_NAME.getMessage(), exception.getMessage());
-    }
-
-    @Test
-    void testRun_WithEmptyCarNames_ShouldThrowException() {
-        // Given: 자동차 이름이 빈 경우
-        inputView.setInput(" , , \n5");
-
-        // When & Then: 예외 발생 확인
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            controller.run();
-        });
-
-        assertEquals(ErrorMessage.EMPTY_CAR_NAMES.getMessage(), exception.getMessage());
-    }
-
-    @Test
-    void testRun_WithNegativeTryCount_ShouldThrowException() {
-        // Given: 시도 횟수가 음수인 경우
-        inputView.setInput("pobi,woni,jun\n-3");
-
-        // When & Then: 예외 발생 확인
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            controller.run();
-        });
-
-        assertEquals(ErrorMessage.INVALID_TRY_COUNT.getMessage(), exception.getMessage());
-    }
-
-    // TestInputView 클래스
     static class TestInputView extends InputView {
         private String input;
 
@@ -111,9 +86,8 @@ public class RacingGameControllerTest {
         }
     }
 
-    // TestOutputView 클래스
     static class TestOutputView extends OutputView {
-        private StringBuilder printedOutput = new StringBuilder();
+        private final StringBuilder printedOutput = new StringBuilder();
 
         @Override
         public void printResultHeader() {
@@ -140,5 +114,4 @@ public class RacingGameControllerTest {
             return printedOutput.toString();
         }
     }
-
 }
