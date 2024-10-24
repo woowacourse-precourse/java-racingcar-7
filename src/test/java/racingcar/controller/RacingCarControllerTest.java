@@ -21,7 +21,7 @@ class RacingCarControllerTest {
 
     @DisplayName("이름이 4자를 넘어갈 경우 에러 발생")
     @ParameterizedTest
-    @ValueSource(strings = "pobi,woni,abcde")
+    @ValueSource(strings = "pobi,woni,abcdef")
     void validateNameLength(String names) {
         List<String> nameList = inputView.splitNames(names);
         assertThatThrownBy(() -> racingCarController.setCarsName(nameList))

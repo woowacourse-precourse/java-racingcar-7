@@ -1,7 +1,8 @@
 package racingcar.view;
 
-import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.global.enums.ErrorMessage;
 import racingcar.global.enums.PrintMessage;
 
 public class InputView {
@@ -27,9 +28,21 @@ public class InputView {
 
     public Integer inputCount() {
         outputView.printMessage(PrintMessage.COUNT_MESSAGE);
-        int count = Integer.parseInt(Console.readLine());
+        String count = Console.readLine();
         Console.close();
-        return count;
+        return stringToInt(count);
+    }
+
+    private Integer stringToInt(String count) {
+        if (count.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ALLOWED_EMPTY_SPACE.getMessage());
+        }
+
+        try {
+            return Integer.parseInt(count);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
+        }
     }
 
 

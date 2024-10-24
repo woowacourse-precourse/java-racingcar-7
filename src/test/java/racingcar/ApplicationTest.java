@@ -36,7 +36,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("입력 받은 경주 횟수가 숫자가 아닐 경우 에러 발생")
     void validateRaceCountIsNumber() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni", ""))
+                assertThatThrownBy(() -> runException("pobi,woni", " "))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
