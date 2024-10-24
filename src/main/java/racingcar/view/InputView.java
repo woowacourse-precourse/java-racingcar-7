@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputView {
@@ -12,11 +13,19 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String[] splitCarNamesByComma(String input) {
-        return input.split(",");
+    public static List<String> getCarNames() {
+        String input = readLine();
+        if (!isValidCarInput(input)) {
+            throw new IllegalArgumentException("자동차 이름 입력이 올바르지 않습니다.");
+        }
+        return splitCarNamesByComma(input);
     }
 
-    public static boolean isValidCarInput(String input) {
+    private static List<String> splitCarNamesByComma(String input) {
+        return List.of(input.split(","));
+    }
+
+    private static boolean isValidCarInput(String input) {
         return VALID_CAR_INPUT_PATTERN.matcher(input).matches();
     }
 
