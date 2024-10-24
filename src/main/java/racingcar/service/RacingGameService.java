@@ -28,21 +28,37 @@ public class RacingGameService {
 
     private void raceOnce() {
         for (RacingCar car : racingCars) {
-            int randomValue = Randoms.pickNumberInRange(0, 9);
-            if (randomValue >= RacingGameConstants.MOVE_THRESHOLD.getValue()) {
-                car.advance();
-            }
+            moveCarIfPossible(car);
         }
     }
 
+    private void moveCarIfPossible(RacingCar car) {
+        int randomValue = pickRandomNumber();
+        if (canMove(randomValue)) {
+            car.advance();
+        }
+    }
+
+    private int pickRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private boolean canMove(int randomValue) {
+        return randomValue >= RacingGameConstants.MOVE_THRESHOLD.getValue();
+    }
+
     public List<RacingCar> findWinners() {
-        int maxPosition = racingCars.stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElse(0);
+        int maxPosition = findMaxPosition();
         return racingCars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
+    }
+
+    private int findMaxPosition() {
+        return racingCars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
     }
 
 }
