@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputMaker {
-    private static final String ROUND_RESULT_START_MESSAGE = "실행 결과\n";
-    private static final String FINAL_RESULT_START_MESSAGE = "최종 우승자 : ";
+    private static final String ROUND_RESULT_START_MESSAGE = "\n실행 결과\n";
+    private static final String FINAL_RESULT_START_MESSAGE = "\n최종 우승자 : ";
 
     public static String roundResult(List<Car> cars) {
         return cars.stream()
                 .map(c -> makeCarState(c))
-                .collect(Collectors.joining("\n", ROUND_RESULT_START_MESSAGE, "\n"));
+                .collect(Collectors.joining("\n", ROUND_RESULT_START_MESSAGE, ""));
     }
 
     public static String finalResult(Winners winners) {
