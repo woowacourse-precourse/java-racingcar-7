@@ -9,14 +9,30 @@ import racingcar.exception.InvalidNameException;
 public class Application {
 
     public static final String COMMA = ",";
+    public static final String HYPHEN = "-";
 
     public static void main(String[] args) {
         List<String> names = readNames();
         List<Car> cars = new ArrayList<>(names.size());
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+        MovingStrategy movingStrategy = new RacingCarMovingStrategy();
+        initialize(names, cars, movingStrategy);
         long attempt = readAttempt();
+
+        printResult(cars, attempt);
+    }
+
+    private static String repeatHyphen(long count) {
+        if (count < 0) {
+            throw new IllegalArgumentException("count is negative: " + count);
+        }
+        if (count == 1) {
+            return HYPHEN;
+        }
+        StringBuilder repeatedValue = new StringBuilder();
+        for (long i = 0; i < count; i++) {
+            repeatedValue.append(HYPHEN);
+        }
+        return repeatedValue.toString();
     }
 
     private static List<String> readNames() {
@@ -50,6 +66,12 @@ public class Application {
         }
     }
 
+    private static void initialize(final List<String> names, final List<Car> cars, final MovingStrategy movingStrategy) {
+        for (String name : names) {
+            cars.add(new Car(name, movingStrategy));
+        }
+    }
+
     private static long readAttempt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttempt = Console.readLine();
@@ -69,6 +91,17 @@ public class Application {
     private static void validateAttempt(final long attempt) {
         if (attempt < 0) {
             throw new InvalidAttemptException("시도 횟수는 양수여야 합니다.");
+        }
+    }
+
+    private static void printResult(final List<Car> cars, final long attempt) {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < attempt; i++) {
+            for (Car car : cars) {
+                car.move();
+                System.out.println(car.getName() + " : " + repeatHyphen(car.getPosition()));
+            }
+            System.out.println();
         }
     }
 }
