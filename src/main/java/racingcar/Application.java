@@ -30,6 +30,8 @@ public class Application {
             runRace();
         }
 
+        String winnerList = createWinnerList();
+        System.out.println(PrintMessage.PRINT_FINAL_WINNER.formatWinner(winnerList));
     }
 
     private static void runRace() {
@@ -57,5 +59,27 @@ public class Application {
         for(String carName : carNames) {
             cars.put(carName, 0);
         }
+    }
+
+    private static String createWinnerList() {
+        Set<String> carNames = cars.keySet();
+        int winnerScore = getWinnerScore(carNames);
+        StringBuilder winners = new StringBuilder();
+
+        for(String carName : carNames){
+            if(cars.get(carName) == winnerScore){
+                winners.append(carName).append(", ");
+            }
+        }
+
+        return winners.delete(winners.length()-2,winners.length()).toString();
+    }
+
+    private static int getWinnerScore(Set<String> carNames) {
+        int winnerScore = 0;
+        for(String carName : carNames) {
+            winnerScore = Math.max(cars.get(carName), winnerScore);
+        }
+        return winnerScore;
     }
 }
