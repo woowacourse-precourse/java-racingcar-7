@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.service.RacingResult;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,11 +15,18 @@ public class Application {
     private final static InputView inputView = new InputView();
     private final static OutputView outputView = new OutputView();
 
+    private final static RacingService racingService = new RacingService();
+
     public static void main(String[] args) {
         String carNames = getCarNames();
+
         List<String> carNameList = getCarNameList(carNames);
+
         RacingCars racingCars = createRacingCars(carNameList);
+
         int tryCount = getTryCount();
+
+        RacingResult racingResult = racingService.play(racingCars, tryCount);
     }
 
     private static RacingCars createRacingCars(List<String> carNameList) {
