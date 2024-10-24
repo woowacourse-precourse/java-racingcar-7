@@ -4,13 +4,17 @@ public class Car {
     private final String name;
     private final Movement movement;
 
-    public Car(String name, Movement movement) {
+    public Car(String name) {
         this.name = name;
-        this.movement = movement;
+        this.movement = new Movement();
     }
 
     public void move(int number) {
         movement.advance(number);
+    }
+
+    public int getMovement(){
+        return movement.getCount();
     }
 
     @Override

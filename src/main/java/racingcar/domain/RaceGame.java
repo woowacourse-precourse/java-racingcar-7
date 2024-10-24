@@ -8,17 +8,26 @@ public class RaceGame {
     private final List<Car> cars;
     private final int totalRound;
     private int currentRound;
+    private final GenerateNumberStrategy numberStrategy;
 
-    public RaceGame(List<Car> cars, int totalRound) {
+    public RaceGame(List<Car> cars, int totalRound, GenerateNumberStrategy numberStrategy) {
         this.cars = cars;
         this.totalRound = totalRound;
         this.currentRound = 1;
+        this.numberStrategy = numberStrategy;
     }
 
-    public void race() {
+    public void run() {
+        for (int i = 0; i < totalRound; i++) {
+
+            race();
+        }
+    }
+
+    private void race() {
         for (Car car : cars) {
-            int generatedNumber = getRandomNumber();
-            car.move(generatedNumber);
+
+            car.move(numberStrategy.generate());
         }
         currentRound++;
     }
@@ -41,9 +50,5 @@ public class RaceGame {
         }
 
         return winner;
-    }
-
-    private int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 }

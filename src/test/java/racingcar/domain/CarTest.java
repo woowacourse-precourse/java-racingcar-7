@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class CarTest {
     @Test
     void 출력_시_이름과_이동을_함께_출력한다() {
-        Car car = new Car("상원", new Movement());
+        Car car = new Car("상원");
 
         car.move(4);
         car.move(4);
