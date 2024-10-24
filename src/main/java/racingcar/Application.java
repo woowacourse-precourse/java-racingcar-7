@@ -25,6 +25,7 @@ public class Application {
             cars.add(car);
         }
 
+
         Game controllGame = new Game(cars,N);
         for(int i = 0; i < controllGame.getTrial(); i++)
         {
@@ -34,6 +35,7 @@ public class Application {
                 if(randomNumber >= 4) {
                     car.setStep(car.getStep() + 1);
                 }
+                car.printStatus();
             }
             System.out.println();
         }

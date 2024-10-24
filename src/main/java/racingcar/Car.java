@@ -12,6 +12,15 @@ public class Car {
     this.step = step;
   }
 
+  public void printStatus(){
+    StringBuilder result = new StringBuilder();
+    for(int i = 0; i < this.getStep(); i++)
+    {
+      result.append("-");
+    }
+    System.out.printf("%s : %s%n", carName, result);
+  }
+
 
   public String getCarName() {
     return carName;
