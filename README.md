@@ -87,7 +87,7 @@
     </tr>
     <!--------------------(새로운 Class)----------------------------->
     <tr>
-      <td rowspan="5" style="padding: 10px;">자동차 경주<br>(CarRacing)</td>
+      <td rowspan="6" style="padding: 10px;">자동차 경주<br>(CarRacing)</td>
       <td style="padding: 10px;">경주 시작<br>(start)</td>
       <td style="padding: 10px;">
         <ul>
@@ -104,6 +104,18 @@
         <ol>
             <li>각 자동차가 0~9 사이의 랜덤 수를 뽑음</li>
             <li>랜덤 수가 4이상인지 판단</li>
+        </ol>
+      </td>
+    </tr><!-------------------------------------------------><tr>
+      <td style="padding: 10px;">랜덤 수 지정하여 진행<br>(setRandom)</td>
+      <td style="padding: 10px;">
+        <ul>
+            <li>사용자가 직접 수 지정</li>
+        </ul>
+      </td><td style="padding: 10px;">
+        <ol>
+            <li>지정된 값을 입력 받음</li>
+            <li>해당 수가 4이상인지 판단</li>
         </ol>
       </td>
     </tr><!-------------------------------------------------><tr>
@@ -228,8 +240,8 @@
         </ul>
       </td><td style="padding: 10px;">
         <ol>
-            <li>4 이상일 때 +1</li>
-            <li>4 미만일 때 변화 없음</li>
+            <li>4 이상일 때 +1,4 미만일 때 변화 없음을 모두 충족하면 Success</li>
+            <li>아니라면 Fail</li>
         </ol>
       </td>
     </tr><!--------------------(새로운 Class)----------------------------->
