@@ -1,9 +1,13 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         Game game = new Game(User.inputCarName());
         int gameRepeats = User.inputGameRepeat();
+
+        Console.close();
 
         System.out.println();
         System.out.println("실행 결과");

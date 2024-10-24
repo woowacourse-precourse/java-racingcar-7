@@ -25,10 +25,19 @@ public class User {
     public static int inputGameRepeat() {
         System.out.println(USER_INPUT_GAME_REPEAT);
 
-        String userGameRepeatInput = Console.readLine();
-
+        String userGameRepeatInput = Console.readLine().strip();
+        validateInputGameRepeat(userGameRepeatInput);
         int gameRepeatInteger = Integer.parseInt(userGameRepeatInput);
         return gameRepeatInteger;
+    }
+
+    private static void validateInputGameRepeat(String userGameRepeatInput) {
+        if (userGameRepeatInput.isBlank()) throw new IllegalArgumentException();
+        if (userGameRepeatInput.equals("0")) throw new IllegalArgumentException();
+        for (int i = 0; i < userGameRepeatInput.length(); i ++) {
+            if (!Character.isDigit(userGameRepeatInput.charAt(i))) throw new IllegalArgumentException();
+        }
+
     }
 
 }

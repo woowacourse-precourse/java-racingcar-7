@@ -8,7 +8,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 class UserTest {
 
@@ -41,5 +43,53 @@ class UserTest {
         System.setIn(in);
 
         Assertions.assertThat(User.inputGameRepeat()).isEqualTo(5);
+    }
+
+    @Test
+    void 유저_게임횟수_공백_입력() {
+        String input = " ";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 유저_게임횟수_공백포함_정수_입력() {
+        String input = " 123";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Assertions.assertThat(User.inputGameRepeat()).isEqualTo(123);
+    }
+
+    @Test
+    void 유저_게임횟수_0_입력() {
+        String input = "0";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 유저_게임횟수_정수가_아닌_값_입력() {
+        String input = "abc";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Assertions.assertThatThrownBy(User::inputGameRepeat).isInstanceOf(IllegalArgumentException.class);
     }
 }
