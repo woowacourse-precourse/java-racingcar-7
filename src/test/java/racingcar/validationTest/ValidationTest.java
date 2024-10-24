@@ -10,7 +10,7 @@ import racingcar.util.Validation;
 
 public class ValidationTest {
 
-    private Validation validation = new Validation();
+    private Validation validation = Validation.getInstance();
 
     @Test
     @DisplayName("차 이름 입력 유효성 검사 테스트")

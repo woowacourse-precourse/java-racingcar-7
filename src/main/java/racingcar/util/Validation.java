@@ -5,6 +5,19 @@ import java.util.List;
 
 public class Validation {
 
+    private static Validation instance;
+
+    private Validation() {
+
+    }
+
+    public static Validation getInstance() {
+        if (instance == null) {
+            instance = new Validation();
+        }
+        return instance;
+    }
+
     public static final String carNameDivider = ",";
 
     /**
@@ -12,7 +25,7 @@ public class Validation {
      *
      * @param input
      */
-    public void validateCarNameInput(String input) {
+    public List<String> validateCarNameInput(String input) {
 
         if (input.startsWith(carNameDivider) || input.endsWith(carNameDivider)) {
             throw new IllegalArgumentException("misplaced of comma");
@@ -23,6 +36,8 @@ public class Validation {
         for (String carName : carNameList) {
             validateCarName(carName);
         }
+
+        return carNameList;
 
     }
 
