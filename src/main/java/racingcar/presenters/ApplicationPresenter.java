@@ -40,11 +40,12 @@ public class ApplicationPresenter {
     public void runGame() {
         this.view.printResultsHeader();
         for (int i = 0; i < this.rounds; i++) {
+            StringBuilder roundResults = new StringBuilder();
             for (Car car : this.cars) {
                 car.makeMove(Randomizer.getRandomValue());
+                roundResults.append(car.printMoves());
             }
-            this.cars.forEach(car -> System.out.println(car.getName() + " : " + "-".repeat(car.getMoves())));
-            System.out.println();
+            System.out.println(roundResults);
         }
     }
 
