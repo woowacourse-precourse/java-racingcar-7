@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 import racingcar.model.CarGroup;
 import racingcar.view.RacingCarView;
 
@@ -20,11 +21,31 @@ public class RacingCarController {
         String tryInputString = Console.readLine();
         checkTryNumLength(tryInputString);
         tryNum = Integer.parseInt(tryInputString);
+
+        // race
+        race(carGroup, tryNum);
+
+        // 결과
+        view.getOutputString();
     }
 
     private void checkTryNumLength(String tryNum){
         if(tryNum.length()==0){
             throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
         }
+    }
+
+    private void race(CarGroup carGroup, int tryNum){
+        for(int i=0;i<tryNum;i++){
+            carGroup.go();
+            printNow(carGroup);
+        }
+    }
+
+    private void printNow(CarGroup carGroup){
+        for(Car car: carGroup.getCarList()){
+            System.out.println(car.getName()+" : "+car.scoreToDash(car.getScore()));
+        }
+        System.out.println();
     }
 }
