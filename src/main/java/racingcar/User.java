@@ -28,10 +28,10 @@ public class User {
     }
 
     private static void validateInputGameRepeat(String userGameRepeatInput) {
-        if (userGameRepeatInput.isBlank()) throw new IllegalArgumentException();
-        if (userGameRepeatInput.equals("0")) throw new IllegalArgumentException();
+        if (userGameRepeatInput.isBlank()) throw new IllegalArgumentException("1 이상의 정수만 입력이 가능합니다");
+        if (userGameRepeatInput.equals("0")) throw new IllegalArgumentException("1 이상의 정수만 입력이 가능합니다");
         for (int i = 0; i < userGameRepeatInput.length(); i ++) {
-            if (!Character.isDigit(userGameRepeatInput.charAt(i))) throw new IllegalArgumentException();
+            if (!Character.isDigit(userGameRepeatInput.charAt(i))) throw new IllegalArgumentException("1 이상의 정수만 입력이 가능합니다");
         }
 
     }
