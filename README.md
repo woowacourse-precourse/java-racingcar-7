@@ -97,7 +97,7 @@ jun : -----
 
 - [x] 자동차 이름 목록을 문자열 리스트로 저장하기
     - [x] 이름의 길이가 0일경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
-    - [ ] 자동차 이름의 길이가 5자가 넘는경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
+    - [x] 자동차 이름의 길이가 5자가 넘는경우 IllegalArgumentException 을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 - [x] "시도할 횟수는 몇 회인가요?" 출력
 
