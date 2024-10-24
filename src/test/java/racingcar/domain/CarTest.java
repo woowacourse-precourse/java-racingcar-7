@@ -14,7 +14,7 @@ public class CarTest {
         String input = "pobi,woni,jun";
 
         // when
-        Car car = new Car(input);
+        Car car = Car.from(input);
 
         // then
         assertThat(car.getCars()).contains("pobi", "woni", "jun");
