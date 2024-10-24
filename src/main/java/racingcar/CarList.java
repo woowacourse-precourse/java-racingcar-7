@@ -23,8 +23,6 @@ public class CarList {
                 .forEach(list::add);
     }
 
-    //전진 조건에 따라서 정책이 바뀌어
-    //그럼 4일 경우 기본 정책이다를 기준으로, movceCars, findWinnder
     public List<Car> moveCars(int count) {
         for (int i = 0; i < count; i++) {
             for (Car car : this.getList()) {
