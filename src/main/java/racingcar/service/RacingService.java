@@ -1,11 +1,18 @@
 package racingcar.service;
 
 import racingcar.model.RacingCars;
+import racingcar.model.moving_strategy.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingService {
+
+    private final MovingStrategy movingStrategy;
+
+    public RacingService(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
+    }
 
     public RacingResult play(RacingCars racingCars, int tryCount) {
         List<RacingRoundResult> racingRoundResults = playRounds(racingCars, tryCount);
