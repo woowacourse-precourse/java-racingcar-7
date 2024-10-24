@@ -28,7 +28,7 @@ public class Racingcar {
     }
 
     public void goFoward(){
-        if(Utils.getRandomNumber() > 4){
+        if(Utils.getRandomNumber() >= 4){
             step++;
         }
         printRacingcarStep();
