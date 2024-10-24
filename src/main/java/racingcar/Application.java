@@ -30,8 +30,13 @@ public class Application {
 
         void move(int value) {
             if (value >= 4) {
-                this.moveCount++;
+                moveCount++;
             }
+        }
+
+        @Override
+        public String toString() {
+            return name + " : " + "-".repeat(moveCount);
         }
     }
 }
