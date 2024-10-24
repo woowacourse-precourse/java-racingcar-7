@@ -1,8 +1,8 @@
 package racingcar.domain.car;
 
 public class Car {
-    private Name name;
-    private Distance distance;
+    private final Name name;
+    private final Distance distance;
 
     public Car(Name name, Distance distance) {
         this.name = name;
