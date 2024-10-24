@@ -49,8 +49,9 @@ public class Race {
     public List<String> getRaceWinner() {
         List<String> winners = new ArrayList<>();
 
+        int max = getMaxPosition();
         for (Car car : cars) {
-            if (car.getPosition() == getMaxPosition()) {
+            if (car.getPosition() == max) {
                 winners.add(car.getName());
             }
         }
@@ -59,10 +60,11 @@ public class Race {
     }
 
     public int getMaxPosition() {
-        cars.sort((o1, o2) -> {
+        List<Car> sortedCars = new ArrayList<>(cars);
+        sortedCars.sort((o1, o2) -> {
             return Integer.compare(o2.getPosition(), o1.getPosition());
         });
 
-        return cars.getFirst().getPosition();
+        return sortedCars.getFirst().getPosition();
     }
 }
