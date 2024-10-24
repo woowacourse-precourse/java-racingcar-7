@@ -114,3 +114,9 @@ Randoms.pickNumberInRange(0 ,9);
 > 인텔리제이에서 제공하는 코드스타일 기능으로 스타일 적용하는 방법에 대해서 듣고   
 > 구글링하여 자바 컨벤션 스타일을 적용했다. 
 
+### println 출력문을 ByteArrayOutputStream을 이용해서 출력을 임시 저장할 수 있다.
+
+
+### List와 ArrayList의 차이점
+Car 객체를 저장하는 컬렉션을 선택해야한다. 가장 간단하게 저장하고 뽑아올 수 있는 ArrayList가 생각이 났다.   
+ArrayList를 적용하기전에 List 자료구조랑 차이가 있나 궁금증이 생겼다.
