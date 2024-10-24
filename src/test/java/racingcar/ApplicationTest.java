@@ -39,6 +39,20 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("시도 횟수 문자열이 숫자가 아닌 다른 문자가 왔을 경우")
+    @Test
+    void 시도_횟수로_숫자가_안왔을_경우_에러_발생() {
+        assertThatThrownBy(() -> runException("soon,hong", "a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수가 0이하일 경우")
+    @Test
+    void 시도_횟수가_0이하일_경우_에러_발생() {
+        assertThatThrownBy(() -> runException("soon,hong", "-1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
