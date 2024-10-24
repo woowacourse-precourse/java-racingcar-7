@@ -19,16 +19,16 @@ pobi,woni,jun
 
 #### 🚫 예외처리
 
-- [ ] 구분자를 쉼표(,)가 아닐 경우(공백 포함), ``IllegalArgumentException``을 발생시킨다.
-- [ ] 입력의 시작이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다.
-- [ ] 입력의 마지막이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다.
+- [ ] 구분자를 쉼표(,)가 아닐 경우(공백 포함), ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
+- [ ] 입력의 시작이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
+- [ ] 입력의 마지막이 쉼표(,)일 경우, ``IllegalArgumentException``을 발생시킨다. (전체 테스트)
 
-- [ ] 자동차 이름 5글자를 초과할 경우, ``IllegalArgumentException``을 발생시킨다.
-- [ ] 중복된 이름의 자동차를 입력할 경우, ``IllegalArgumentException``을 발생시킨다.
-- [ ] 아무런 값을 입력하지 않았을 경우, ``IllegalArgumentException``을 발생시킨다.
-- [ ] 경주에 참가하는 자동차가 2대 이상이 아닐 경우, ``IllegalArgumentException``을 발생시킨다.
+- [ ] 자동차 이름 5글자를 초과할 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트)
+- [ ] 중복된 이름의 자동차를 입력할 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트, 자동차 비교)
+- [ ] 아무런 값을 입력하지 않았을 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트)
+- [ ] 경주에 참가하는 자동차가 2대 이상이 아닐 경우, ``IllegalArgumentException``을 발생시킨다. (자동차 별 테스트, 자동차 수)
 - [ ] 자동차 이름에 공백을 허용하되, 영어 대소문자, 숫자, 한글을 제외한 나머지 문자를 입력할 경우, - [ ] 입력의 마지막이 쉼표(,)일 경우, ``IllegalArgumentException``을
-  발생시킨다.
+  발생시킨다. (자동차 별 테스트)
   ex) ``po bi, 우니, Ju nn``
 
 - [ ] 경주를 시도할 횟수에 1보다 작은 수를 입력한 경우, ``IllegalArgumentException``을 발생시킨다.
