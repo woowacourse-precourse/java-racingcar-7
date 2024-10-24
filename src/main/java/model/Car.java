@@ -5,24 +5,20 @@ import strategy.Strategy;
 import java.util.Objects;
 
 public class Car {
-    private static final int FRONT_MOVE_NUMBER = 4;
     private final Name name;
-    private int moveCount;
-
+    private final MoveNumber moveNumber;
 
     public Car(String name) {
-        this(new Name(name), 0);
+        this(new Name(name), new MoveNumber(0));
     }
 
-    public Car(Name name, int moveCount) {
+    public Car(Name name, MoveNumber moveNumber) {
         this.name = name;
-        this.moveCount = moveCount;
+        this.moveNumber = moveNumber;
     }
 
     public void move(Strategy strategy) {
-        if(strategy.move() >= FRONT_MOVE_NUMBER) {
-            moveCount++;
-        }
+        this.moveNumber.move(strategy.random());
     }
 
     @Override
@@ -30,12 +26,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(moveNumber, car.moveNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, moveNumber);
     }
 
 }

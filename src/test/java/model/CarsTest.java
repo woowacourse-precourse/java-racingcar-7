@@ -19,6 +19,4 @@ public class CarsTest {
                 .hasMessageMatching("이름은 5글자 이하로 입력해주세요.");
     }
 
-
-
 }

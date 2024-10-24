@@ -10,6 +10,7 @@ public class CarTest {
     void 자동차_이동_테스트() {
         Car car = new Car("pobi");
         car.move(()-> {return 5;});
-        assertThat(car).isEqualTo(new Car(new Name("pobi"),1));
+        assertThat(car).isEqualTo(new Car(new Name("pobi"),new MoveNumber(1)));
     }
+
 }

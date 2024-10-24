@@ -7,7 +7,8 @@ public class MoveStrategy implements  Strategy{
     private final static Random random = new Random();
 
     @Override
-    public int move() {
+    public int random() {
         return random.nextInt();
     }
+
 }
