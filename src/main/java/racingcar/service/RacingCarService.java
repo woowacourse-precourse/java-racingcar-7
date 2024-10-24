@@ -2,7 +2,6 @@ package racingcar.service;
 
 import static racingcar.exception.ExceptionMessage.EMPTY_CARS;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,9 +16,18 @@ public class RacingCarService {
     private static final int STOP_BOUNDARY = 3;
 
     private Cars cars;
+    private TryCount tryCount;
 
-    public RacingCarService(Cars cars){
-        this.cars = cars;
+    public void createCars(List<String> carNameList){
+        this.cars = new Cars(carNameList);
+    }
+
+    public void setTryCount(int value) {
+        this.tryCount = new TryCount(value);
+    }
+
+    public boolean isAvailable() {
+        return tryCount.playOneRound();
     }
 
     public void moveCars() {

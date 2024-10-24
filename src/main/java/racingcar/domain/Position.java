@@ -16,10 +16,6 @@ public class Position {
         }
     }
 
-    public void stop(){
-
-    }
-
     public void forward(){
         value++;
     }
