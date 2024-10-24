@@ -28,17 +28,18 @@ public class RacingCarService {
 
     public List<String> getWinners(List<Car> cars) {
         int maxPosition = cars.get(0).getPosition();
+        List<String> winners = new ArrayList<>();
+
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
-            }
-        }
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+                winners.clear();
+                winners.add(car.getName());
+            } else if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
             }
         }
+
         return winners;
     }
 }
