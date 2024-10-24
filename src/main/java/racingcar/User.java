@@ -1,9 +1,5 @@
 package racingcar;
 
-//- 사용자
-//    - 게임에 참가할 자동차 결정하기
-//    - 시도할 횟수 결정하기
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
