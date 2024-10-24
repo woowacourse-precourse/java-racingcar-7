@@ -1,5 +1,6 @@
 package racingcar.car;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
@@ -26,24 +27,45 @@ class CarsTest {
     @Test
     @DisplayName("Cars 컬렉션이 불변임을 확인한다.")
     void carsAreUnmodifiable() {
-        // 수정 가능
-        List<Car> modifiableCarList = new ArrayList<>(List.of(pobi));
-        modifiableCarList.add(dk);  // 예외가 발생하지 않음
-
-        // 수정 불가능 (불변)
+        // given
+        List<Car> modifiableCarList = new ArrayList<>(List.of(pobi, dk));
         Cars cars = new Cars(modifiableCarList);
+
+        // when
         List<Car> unmodifiableCarList = cars.carList();
 
+        // then
         assertThatThrownBy(() -> unmodifiableCarList.add(foo))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
-    @DisplayName("Cars 컬렉션에는 같은 이름을 가진 Car 가 존재 할 수 없다.")
+    @DisplayName("Cars 컬렉션에는 같은 이름을 가진 Car 가 존재할 수 없다.")
     void carsCollectionIsUnique() {
-        List<Car> carList = List.of(pobi, pobi);
-        assertThatThrownBy(() -> new Cars(carList))
+        // given
+        List<Car> carListWithDuplicates = List.of(pobi, pobi);
+
+        // when, then
+        assertThatThrownBy(() -> new Cars(carListWithDuplicates))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
+    }
+
+    @Test
+    @DisplayName("우승자를 올바르게 반환한다.")
+    void getWinnerNames() {
+        String winner1Name = "win1";
+        String winner2Name = "win2";
+
+        Car winner1 = new Car(winner1Name, () -> true);
+        Car winner2 = new Car(winner2Name, () -> true);
+        Car loser = new Car("loser", () -> false);
+
+        Cars cars = new Cars(List.of(winner1, winner2, loser));
+        cars.moveAll();
+
+        List<String> winners = cars.getWinnerNames();
+
+        assertThat(winners).containsExactly(winner1Name, winner2Name);
     }
 }

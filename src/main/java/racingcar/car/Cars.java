@@ -17,6 +17,22 @@ public record Cars(List<Car> carList) {
         carList.forEach(Car::move);
     }
 
+    public List<String> getWinnerNames(){
+        int maxPosition = getMaxPosition();
+
+        return carList.stream()
+                .filter(each -> each.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int getMaxPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow();
+    }
+
     private void validateDuplicateNames(List<Car> carList) {
         Set<String> uniqueNames = carList.stream()
                 .map(Car::getName)
