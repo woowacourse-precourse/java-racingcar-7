@@ -23,6 +23,7 @@ public class Car {
     public Car(String name, int moveCount) {
         this.name = name;
         this.moveCount = moveCount;
+        this.movementStatus = CarMovement.STOPPED;
     }
 
     public void updateMovementStatus(CarMovement movementStatus) {
