@@ -6,6 +6,7 @@ import static racingcar.util.ConstantData.NAME_LENGTH_LIMIT;
 import static racingcar.util.Message.DELIMITER_POSITION_INCORRECT;
 import static racingcar.util.Message.NAME_LENGTH_NOT_VALID;
 import static racingcar.util.Message.NEED_MULTIPLE_RACING_CAR;
+import static racingcar.util.Message.TRIAL_COUNT_NOT_POSITIVE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Validator {
 
     public static int validatePositive(int trialCount) {
         if (trialCount <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(TRIAL_COUNT_NOT_POSITIVE);
         }
         return trialCount;
     }
