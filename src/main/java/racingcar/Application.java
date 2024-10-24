@@ -1,15 +1,12 @@
 package racingcar;
 
 import java.util.List;
-import racingcar.car.Car;
 import racingcar.car.strategy.MoveStrategy;
 import racingcar.car.strategy.RandomMoveStrategy;
-import racingcar.game.RacingGame;
+import racingcar.game.*;
 import racingcar.car.*;
-import racingcar.game.RacingGameController;
 import racingcar.util.*;
-import racingcar.view.InputHandler;
-import racingcar.view.OutputHandler;
+import racingcar.view.*;
 
 public class Application {
     public static void main(String[] args) {
