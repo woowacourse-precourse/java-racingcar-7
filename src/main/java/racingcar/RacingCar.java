@@ -9,7 +9,7 @@ public class RacingCar {
         this.position = 0L;
     }
 
-    public void moveCar() {
+    public void forwardRacingCarPosition() {
         position++;
     }
 
