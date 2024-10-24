@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.presentation;
 
 public class OutputView {
     private static final String RUN_START_NOTIFIER = "실행 결과";
