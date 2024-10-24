@@ -36,13 +36,24 @@ public class AcceleratorTest {
     }
 
     @Test
-    void 허용가능한_값을_벗어난_경우() {
+    void 허용가능한_값을_벗어난_경우_10이상_BusinessException() {
         // given
         Accelerator accelerator = new RandomAccelerator();
 
         // when &then
         assertThatThrownBy(() -> {
             accelerator.isMovable(10);
+        }).isInstanceOf(BusinessException.class);
+    }
+
+    @Test
+    void 허용가능한_값을_벗어난_경우_0미만_BusinessException() {
+        // given
+        Accelerator accelerator = new RandomAccelerator();
+
+        // when &then
+        assertThatThrownBy(() -> {
+            accelerator.isMovable(-1);
         }).isInstanceOf(BusinessException.class);
     }
 }

@@ -48,4 +48,12 @@ public class CarsTest {
             new Cars("kim,kim,kang");
         }).isInstanceOf(BusinessException.class);
     }
+
+//    @Test
+//    void 차량_컬렉션_생성시_쉼표로만_이루어_진_경우_BusinessException() {
+//        // given & when & then
+//        assertThatThrownBy(() -> {
+//            new Cars(",,,");
+//        }).isInstanceOf(BusinessException.class);
+//    }
 }

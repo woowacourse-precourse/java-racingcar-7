@@ -31,11 +31,11 @@ public class Cars {
     }
 
     private void validateInput(String input) {
-        if (input.isEmpty()) {
+        if (input.trim().isEmpty()) {
             throw new BusinessException(RacingCarExceptionMessage.NAME_IS_NOT_NULL);
         }
 
-        if (input.equals(",")) {
+        if (input.trim().equals(",")) {
             throw new BusinessException(RacingCarExceptionMessage.NAME_IS_NOT_NULL);
         }
     }
