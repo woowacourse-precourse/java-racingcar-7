@@ -10,3 +10,6 @@
 ## 구현 기능
 - [x] InputParser를 통하여 게임 참가자, 게임 횟수를 입력 받는다.
 - [x] RacingCar 도메인을 정의하여 게임을 진행하고, 진행상태를 관리한다.
+- [ ] 레이싱앱을 시작하는 RacingStarter를 presentation layer로 둔다.
+- [ ] RacingService를 통하여 도메인인 RacingCar를 경주시킨다. 이후 결과까지 출력하는 로직추가.
+- [ ] RacingStarter가 InputParser 유틸을 이용하여 RacingService 인스턴스를 만들어 레이싱 진행 로직 추가.
