@@ -13,10 +13,21 @@ public class Application {
     }
 
     static void validateCarNames(String carNames) {
+        checkNameExist(carNames);
         for (String carName : carNames.split(",")) {
             String stripCarName = carName.strip();
             checkEmptyName(stripCarName);
             checkCarNameLength(stripCarName);
+        }
+    }
+
+    static void checkNameExist(String carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름이 존재하지 않습니다");
+        }
+        String[] splitCarNames = carNames.split(",");
+        if (splitCarNames.length == 0) {
+            throw new IllegalArgumentException("자동차 이름이 존재하지 않습니다");
         }
     }
 
