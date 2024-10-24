@@ -11,7 +11,7 @@ public class GameController {
     public GameController(){
         set();
         play();
-        checkWinner();
+        showWinner();
     }
     public void set(){
         racingCars = InputController.setRacingCars();
@@ -21,7 +21,7 @@ public class GameController {
         OutputView.printSimulationStartMessage();
         IntStream.range(0,roundNum).forEach(i -> racingCars.playRound());
     }
-    public void checkWinner(){
+    public void showWinner(){
 
     }
 }
