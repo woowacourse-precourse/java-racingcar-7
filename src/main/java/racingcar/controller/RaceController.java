@@ -25,7 +25,7 @@ public class RaceController {
         List<Car> cars = raceService.carListOf(userInput);
 
         outputView.showExecuteMessage();
-        for (int cnt = 0; cnt < attemptsNum; cnt++) {
+        for (int attempt = 0; attempt < attemptsNum; attempt++) {
             raceService.forwardWithRandomCondition(cars);
             outputView.showStatus(cars);
         }
