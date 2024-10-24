@@ -23,6 +23,8 @@ public class CarList {
                 .forEach(list::add);
     }
 
+    //전진 조건에 따라서 정책이 바뀌어
+    //그럼 4일 경우 기본 정책이다를 기준으로, movceCars, findWinnder
     public List<Car> moveCars(int count) {
         for (int i = 0; i < count; i++) {
             for (Car car : this.getList()) {
@@ -35,18 +37,22 @@ public class CarList {
         return this.getList();
     }
 
-    public String findWinner(List<Car> matchResult) {
+    public String getWinners(List<Car> matchResult) {
         return getWinnerNames(matchResult.stream()
                 .filter(car -> car.getPosition() == findMaxPosition(matchResult))
                 .map(Car::getName)
                 .toList());
     }
 
-    private static String getWinnerNames(List<String> winnerList) {
-        if (winnerList.size() == SINGLE_WINNER) {
+    private String getWinnerNames(List<String> winnerList) {
+        if (isSingleWinner(winnerList)) {
             return winnerList.getFirst();
         }
-        return String.join(DELIMITER, winnerList);
+        return String.join(WINNER_FORMAT, winnerList);
+    }
+
+    private boolean isSingleWinner(List<String> winnerList) {
+        return winnerList.size() == 1;
     }
 
     public List<Car> getList() {
