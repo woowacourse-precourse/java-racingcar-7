@@ -7,37 +7,34 @@ import java.util.List;
 public class ConsoleReader {
 
     public static String readName(String input){
-        return Validator.validate(input);
+        return Validator.validateName(input);
     }
 
     private static class Validator {
-        public static String validate(String input){
+        public static String validateName(String input){
             List<String> nameList = Arrays.stream(input.split(",")).toList();
             for (String name : nameList) {
-                isBlank(name);
-                isOversized(name.length() > 5);
+                if(isBlank(name) || isOversized(name)){
+                    throw new IllegalArgumentException();
+                }
             }
-            isDuplicated(nameList);
+            if(isDuplicated(nameList)){
+                throw new IllegalArgumentException();
+            }
             return input;
         }
 
-        private static void isDuplicated(List<String> nameList) {
+        private static boolean isDuplicated(List<String> nameList) {
             HashSet<String> nameSet = new HashSet<>(nameList);
-            if(nameList.size() != nameSet.size()){
-                throw new IllegalArgumentException();
-            }
+            return nameList.size() != nameSet.size();
         }
 
-        private static void isOversized(boolean name) {
-            if (name) {
-                throw new IllegalArgumentException();
-            }
+        private static boolean isOversized(String name) {
+            return name.length() > 5;
         }
 
-        private static void isBlank(String name) {
-            if(name.isEmpty()){
-                throw new IllegalArgumentException();
-            }
+        private static boolean isBlank(String name) {
+            return name.isEmpty();
         }
     }
 }
