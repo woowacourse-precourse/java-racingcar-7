@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-    private static final Application.CarRacing carRacing = new Application.CarRacing();
+    private static final CarRacing carRacing = new CarRacing();
 
     @Test
     void 기능_테스트() {
@@ -70,7 +70,7 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
+        ArrayList<Car> testCars = carRacing.createCarObjects(testNames);
 
         assertSimpleTest(() -> {
             for (int i = 0; i < testCars.size(); i++) {
@@ -83,7 +83,7 @@ class ApplicationTest extends NsTest {
     void generateRandomValueTest() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    assertThat(Application.Utils.generateRandomValue()).isEqualTo(4);
+                    assertThat(Utils.generateRandomValue()).isEqualTo(4);
                 },
                 MOVING_FORWARD
         );
@@ -93,14 +93,14 @@ class ApplicationTest extends NsTest {
     void checkMoveConditionTest() {
         assertSimpleTest(
                 () -> {
-                    assertThat(Application.Utils.checkMoveCondition(4)).isEqualTo(true);
+                    assertThat(Utils.checkMoveCondition(4)).isEqualTo(true);
                 }
         );
     }
 
     @Test
     void runTest() {
-        Application.Car car = new Application.Car("testCar");
+        Car car = new Car("testCar");
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -127,12 +127,12 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Application.Car> testCars = carRacing.createCarObjects(testNames);
+        ArrayList<Car> testCars = carRacing.createCarObjects(testNames);
         testCars.get(0).movedAmount = 2;
         testCars.get(1).movedAmount = 3;
         testCars.get(2).movedAmount = 3;
 
-        assertThat(carRacing.determineWinner(testCars)).contains("woni","jun");
+        assertThat(carRacing.determineWinner(testCars)).contains("woni", "jun");
     }
 
     @Override
