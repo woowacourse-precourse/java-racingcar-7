@@ -20,7 +20,7 @@ public class Car {
 
     public void go(int distance){
         if(canMove(distance)){
-            this.distance += distance;
+            this.distance++;
         }
     }
 
