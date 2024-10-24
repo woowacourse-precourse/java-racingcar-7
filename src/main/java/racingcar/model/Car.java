@@ -9,6 +9,7 @@ public class Car {
     private static final Pattern BLANK_PATTERN = Pattern.compile("[\n\t ]");
     private static final int MOVING_CRITERIA = 4;
     private static final int MAXIMUM_LENGTH_OF_NAME = 5;
+    public static final int MOVE_FORWARD_SPEED = 1;
 
     private final String name;
 
