@@ -18,7 +18,6 @@ public class Application {
         //입력 받기 (나중에 한 메서드로 묶을 것)
         Map<String, Integer> carStepsMap = getCarMap();
         int round = getRound();
-        System.out.println();
 
         //로직 실행
         System.out.println("실행 결과");
@@ -51,7 +50,7 @@ public class Application {
         String[] splitCarName = input.carName().split(",");
         Map<String, Integer> carMap = new HashMap<>();
         for (String carName : splitCarName) {
-            if (carName.length() > 5) throw new IllegalArgumentException();
+            if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             carMap.put(carName, 0);
         }
         return carMap;
@@ -61,6 +60,7 @@ public class Application {
         int numRound;
         try {
             numRound = Integer.parseInt(input.gameRounds());
+            System.out.println();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수 이외의 값은 입력이 불가능합니다.");
         }
