@@ -13,6 +13,7 @@ public class Application {
         String inputString = Console.readLine();
         StringTokenizer stringTokenizer = new StringTokenizer(inputString, ",");
         List<Car> cars = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
         while (stringTokenizer.hasMoreTokens()) {
             cars.add(new Car(stringTokenizer.nextToken()));
         }
@@ -20,16 +21,23 @@ public class Application {
         inputString = Console.readLine();
         System.out.println("\n실행 결과");
         int playTime = Integer.parseInt(inputString);
+        int maxMoveCount = 0;
         while (playTime-- > 0) {
             for (Car car : cars) {
                 int value = Randoms.pickNumberInRange(0, 9);
                 car.move(value);
+                maxMoveCount = Math.max(maxMoveCount, car.moveCount);
             }
             StringBuilder stringBuilder = new StringBuilder();
             for (Car car : cars) {
                 stringBuilder.append(car).append("\n");
             }
             System.out.println(stringBuilder);
+        }
+        for (Car car : cars) {
+            if (car.moveCount == maxMoveCount) {
+                winners.add(car.name);
+            }
         }
     }
 
