@@ -10,21 +10,38 @@ import java.util.List;
 public class CarRace {
 
     public static void start() {
+        List<Car> cars = initCars();
+        int tryCount = getTryCount();
+        race(cars, tryCount);
+        getWinner(cars);
+    }
+
+    private static List<Car> initCars() {
         OutputView.printInputCarNames();
-        List<Car> cars = InputView.getCarNames();
+        return InputView.getCarNames();
+    }
+
+    private static int getTryCount() {
         OutputView.printInputTryCount();
-        int tryCount = InputView.getTryCount();
+        return InputView.getTryCount();
+    }
 
+    private static void race(List<Car> cars, int tryCount) {
         OutputView.printOutputResult();
-        while(tryCount > 0) {
-
-            for (Car car: cars) {
-                car.move();
-            }
+        for (int i = 0; i < tryCount; i++) {
+            moveCars(cars);
             OutputView.printOutputStatus(cars);
-            tryCount--;
         }
+    }
 
-        OutputView.printOutputWinner(new Winner(cars));
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private static void getWinner(List<Car> cars) {
+        Winner winner = new Winner(cars);
+        OutputView.printOutputWinner(winner);
     }
 }
