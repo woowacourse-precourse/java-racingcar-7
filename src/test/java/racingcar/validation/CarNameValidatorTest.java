@@ -43,7 +43,7 @@ class CarNameValidatorTest {
 
     @DisplayName("입력이 없는 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
+    @ValueSource(strings = {"", " ", "   "})
     void validateNull(String input) {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CarNameValidator.validate(input);
