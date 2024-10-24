@@ -10,6 +10,7 @@ public class GamePack {
         Racing racing = initRacing();
         Track track = initTrack();
 
+        startRacing(track, racing);
     }
 
     public Racing initRacing() {
@@ -23,6 +24,17 @@ public class GamePack {
         int lap = inputView.inputLap();
 
         return Track.from(lap);
+    }
+
+    public void startRacing(Track track, Racing racing) {
+        outputView.printStartRacing();
+
+        while (track.isLapInProgress()) {
+            racing.moveCars();
+            track.decrementLap();
+
+            outputView.printRacingStatus(racing);
+        }
     }
 
 }
