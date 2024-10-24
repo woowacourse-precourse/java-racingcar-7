@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RacingRegisterForm;
 
+@DisplayName("자동차 경주 등록 서비스 객체 테스트")
 class RegistrationServiceTest {
 
     @AfterEach
