@@ -15,5 +15,7 @@ public class Application {
                 .filter(name -> !name.isEmpty())
                 .map(Vehicle::new)
                 .toList();
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
     }
 }
