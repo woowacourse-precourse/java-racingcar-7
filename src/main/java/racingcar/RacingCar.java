@@ -12,9 +12,14 @@ public class RacingCar {
         final String carNames = Console.readLine();
 
         for (final String carName : carNames.split(",")) {
-            if(carName.length() >= 5){
+            if (carName.length() >= 5){
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
+
+            if (carNames.contains(carName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름을 입력했습니다.");
+            }
+
             hashSet.add(carName);
         }
     }
