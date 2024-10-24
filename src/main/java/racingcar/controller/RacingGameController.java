@@ -1,14 +1,20 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.service.RacingGameService;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameController {
-    private RacingGameService racingGameService = new RacingGameService();
+    private final RacingGameService racingGameService = new RacingGameService();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     public void start() {
-        racingGameService.inputCars();
+        List<String> cars = inputView.getCarNames();
+        int moveCount = inputView.getMoveCount();
         racingGameService.inputMoveCount();
         racingGameService.race();
-        racingGameService.announceWinners();
+        outputView.announceWinners();
     }
 
     private void announceWinners() {
