@@ -34,5 +34,13 @@ class CarTest {
         );
     }
 
-
+    @DisplayName("자동차 이동 테스트")
+    @Test
+    void moveCar() {
+        Car car = Car.createCarAtStartLine("fobi");
+        for (int i = 0; i < 3; i++) {
+            car.moveForward();
+        }
+        assertEquals(car.getCarDistance(), 3);
+    }
 }
