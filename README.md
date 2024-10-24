@@ -51,9 +51,9 @@ public void increaseMovedCount()
 public List\<Car> setParticipants(String[] splited)
 : \: 입력받은 자동차 이름을 바탕으로 Car 인스턴스를 생성하는 메소드.
 
-- [ ]  splited의 각 요소들에 접근
-- [ ]  자동차 이름으로 Car 인스턴스 생성한 후 리스트에 추가
-- [ ]  생성된 Car 인스턴스의 리스트를 리턴
+- [x]  splited의 각 요소들에 접근
+- [x]  자동차 이름으로 Car 인스턴스 생성한 후 리스트에 추가
+- [x]  생성된 Car 인스턴스의 리스트를 리턴
 
 public boolean canProceeded()
 : \: 랜덤 값을 추출해 4 이상인지 여부를 확인하는 메소드.
