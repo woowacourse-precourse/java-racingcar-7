@@ -9,7 +9,7 @@ import racingcar.view.OutputView;
 
 public class AppConfig {
 
-    public GameController racingGameController() {
+    public GameController gameController() {
         return new GameController(
                 new InputView(), new OutputView(), new CarMaker(), racingGame());
     }
