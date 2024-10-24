@@ -53,6 +53,13 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+    @Test
+    void 예외_테스트_양의정수아닌시도횟수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,sabin", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
