@@ -6,6 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    public static List<String> checkWinner(List<Car> carList) {
+        int maxPosition = 0;
+        List<String> winnerList = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getPosition() >= maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        for (Car car : carList) {
+            if (car.getPosition() == maxPosition) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
+    }
+
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carString = Console.readLine();
@@ -28,6 +44,15 @@ public class Application {
                 System.out.println(car.getPositionString());
             }
             System.out.println();
+        }
+
+        List<String> winnerList = checkWinner(carList);
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winnerList.size(); i++) {
+            System.out.print(winnerList.get(i));
+            if (i < winnerList.size() - 1) {
+                System.out.print(", ");
+            }
         }
     }
 }

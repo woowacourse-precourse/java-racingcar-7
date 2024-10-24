@@ -1,6 +1,9 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     String name;
     int position;
@@ -31,10 +34,3 @@ public class Car {
         return positionString;
     }
 }
-
-
-
-
-
-
-
