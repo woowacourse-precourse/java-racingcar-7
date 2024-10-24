@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.common.IncrementNumber;
+import racingcar.domain.round.RoundResult;
 
 public class Car {
 
@@ -26,6 +27,10 @@ public class Car {
 
     public String getName() {
         return this.name.value();
+    }
+
+    public RoundResult toRoundResult() {
+        return RoundResult.from(this);
     }
 
 }
