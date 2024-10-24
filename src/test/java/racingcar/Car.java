@@ -11,9 +11,9 @@ public class Car {
         this.carName = carName;
     }
 
-    public Car(String carName, int position) {
+    public Car(String carName, int positionForTest) {
         this.carName = carName;
-        this.position = position;
+        this.position = positionForTest;
     }
 
     public String getCarName() {
@@ -31,8 +31,8 @@ public class Car {
         }
     }
 
-    public void goForward(int randomNumber) {
-        if (randomNumber >= 4) {
+    public void goForward(int fixedNumberForTest) {
+        if (fixedNumberForTest >= 4) {
             position++;
         }
     }
