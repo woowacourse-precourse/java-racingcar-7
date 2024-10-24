@@ -24,13 +24,13 @@ public class RacingGame {
         int count = Integer.parseInt(readLine());
         System.out.println(GAME_RESULT);
         for (int i = 0; i < count; i++) {
-            cars = findMovingCar(cars);
+            cars = findMovingCar(cars, randomNumberPick());
             printGameResult(cars);
         }
         getWinner(cars);
     }
 
-    private void nameCheck(List<Car> cars) {
+    public void nameCheck(List<Car> cars) {
         for (Car car : cars) {
             if (car.getName().length() > 5) {
                 throw new IllegalArgumentException();
@@ -38,9 +38,9 @@ public class RacingGame {
         }
     }
 
-    private List<Car> findMovingCar(List<Car> cars) {
+    public List<Car> findMovingCar(List<Car> cars, int randomNum) {
         return cars.stream().map(car -> {
-            if (randomNumberPick() >= 4) {
+            if (randomNum >= 4) {
                 car.increaseDistance();
             }
             return car;
