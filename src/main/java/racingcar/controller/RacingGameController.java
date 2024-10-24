@@ -17,5 +17,8 @@ public class RacingGameController {
 
         List<Car> cars = racingGameService.createCars(carNames);
         racingGameService.startGame(cars, rounds);
+
+        List<String> winners = racingGameService.getWinners(cars);
+        outputView.printWinners(winners);
     }
 }
