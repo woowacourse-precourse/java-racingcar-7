@@ -25,4 +25,9 @@ public class Car {
             this.distance += 1;
         }
     }
+
+    //테스트를 위해 만들어짐.
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
 }

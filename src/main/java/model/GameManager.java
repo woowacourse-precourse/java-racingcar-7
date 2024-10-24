@@ -15,6 +15,10 @@ public class GameManager {
         }
     }
 
+    // 테스트용
+    public List<Car> getCarList() {
+        return this.carList;
+    }
 
     //한번의 레이싱
     private List<CarDTO> raceOnce() {
