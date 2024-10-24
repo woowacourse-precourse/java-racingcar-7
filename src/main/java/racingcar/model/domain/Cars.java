@@ -1,5 +1,6 @@
-package racingcar.model;
+package racingcar.model.domain;
 
+import racingcar.model.io.CarNames;
 import racingcar.strategy.Strategy;
 
 import java.util.*;

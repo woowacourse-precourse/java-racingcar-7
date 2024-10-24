@@ -1,4 +1,6 @@
-package racingcar.model;
+package racingcar.model.dto;
+
+import racingcar.model.domain.Car;
 
 /**
  * 자동차 주행 과정을 전달하는 DTO

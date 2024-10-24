@@ -1,6 +1,11 @@
 package racingcar.controller;
 
-import racingcar.model.*;
+import racingcar.model.domain.Car;
+import racingcar.model.domain.Cars;
+import racingcar.model.dto.CarRacingProgress;
+import racingcar.model.io.CarNames;
+import racingcar.model.io.RacingChance;
+import racingcar.model.io.Winner;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

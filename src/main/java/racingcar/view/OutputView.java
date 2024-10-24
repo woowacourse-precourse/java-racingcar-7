@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.CarRacingProgress;
-import racingcar.model.Winner;
+import racingcar.model.dto.CarRacingProgress;
+import racingcar.model.io.Winner;
 
 /**
  * 출력을 담당하는 인터페이스

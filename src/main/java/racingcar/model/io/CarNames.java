@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.io;
 
 import racingcar.utils.Constants;
 
@@ -39,7 +39,7 @@ public class CarNames {
      * @throws 자동차 이름이 5글자 초과하거나 이름 중간에 알파벳, 한글, 숫자 이외의 문자가
      *         있으면 IllegalArgumentException 발생
      */
-    public static racingcar.model.CarNames getAfterValidateForm (String carNames) {
+    public static CarNames getAfterValidateForm (String carNames) {
         Matcher matcher = carNamePattern.matcher(carNames);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(Constants.EXCEPTION_MESSAGE_PREFIX
