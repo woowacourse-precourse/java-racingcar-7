@@ -1,4 +1,4 @@
-package racingcar.domain.model;
+package racingcar.common.util;
 
 public enum ErrorMessage {
 
