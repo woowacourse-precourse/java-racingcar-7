@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import static racingcar.view.Constants.GET_TRIAL_MESSAGE;
+import static racingcar.view.Constants.START_MESSAGE;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
