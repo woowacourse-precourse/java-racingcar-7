@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.randomnumber.RandomNumberGenerator;
 
 class RacingTest {
 
@@ -13,9 +14,9 @@ class RacingTest {
     void createRacing() {
         //given
         Cars cars = Cars.from(List.of(
-                Car.from("pobi"),
-                Car.from("woni"),
-                Car.from("jun")
+                Car.from("pobi", new RandomNumberGenerator()),
+                Car.from("woni", new RandomNumberGenerator()),
+                Car.from("jun", new RandomNumberGenerator())
         ));
 
         RacingCount racingCount = RacingCount.from(1);

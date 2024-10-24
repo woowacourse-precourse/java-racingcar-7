@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.randomnumber.RandomNumberGenerator;
 
 class CarsTest {
 
@@ -14,9 +15,9 @@ class CarsTest {
     void createCars() {
         //given
         List<Car> carList = List.of(
-                Car.from("pobi"),
-                Car.from("woni"),
-                Car.from("jun")
+                Car.from("pobi", new RandomNumberGenerator()),
+                Car.from("woni", new RandomNumberGenerator()),
+                Car.from("jun", new RandomNumberGenerator())
         );
 
         //when
@@ -32,8 +33,8 @@ class CarsTest {
     void duplicateCar() {
         //given
         List<Car> cars = List.of(
-                Car.from("pobi"),
-                Car.from("pobi")
+                Car.from("pobi", new RandomNumberGenerator()),
+                Car.from("pobi", new RandomNumberGenerator())
         );
 
         //when //then
