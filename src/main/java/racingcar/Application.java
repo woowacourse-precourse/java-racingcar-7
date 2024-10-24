@@ -9,31 +9,31 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Application {
-    static String INVAILD_INPUT_MESSAGE = "잘못된 입력입니다. ";
-    static List<String> carNames = new ArrayList<>();
+    static String INVALID_INPUT_MESSAGE = "잘못된 입력입니다. ";
+    static List<String> carNameList = new ArrayList<>();
     static int attemptCount;
-    static Map<String, Integer> racingWin = new HashMap<>();
+    static Map<String, Integer> carWinCounts = new HashMap<>();
 
     public static void main(String[] args) {
-        input();
+        inputAndValidate();
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < attemptCount; i++) {
-            carRacing(carNames);
+            carRacing(carNameList);
         }
 
-        int maxWinCount = getWinCount();
+        int maxWinCount = getMaxWinCount();
         List<String> winners = getFinalWinners(maxWinCount);
         printFinalWinners(winners);
     }
 
-    private static void input() {
+    private static void inputAndValidate() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        List<String> carNamesInput = List.of(Console.readLine().trim().split(","));
+        List<String> carNameListInput = List.of(Console.readLine().trim().split(","));
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attemptCountInput = Console.readLine();
 
-        validateCarNamesAndAddToList(carNamesInput);
+        validatecarNameListAndAddToList(carNameListInput);
         attemptCount = validateAttemptConunt(attemptCountInput);
     }
 
@@ -41,45 +41,45 @@ public class Application {
         int attemptCount;
 
         if (attemptCountInput == null || attemptCountInput.equals("0") || attemptCountInput.contains(" ")) {
-            throw new IllegalArgumentException(INVAILD_INPUT_MESSAGE);
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
         try {
             attemptCount = Integer.parseInt(attemptCountInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVAILD_INPUT_MESSAGE);
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
 
         return attemptCount;
     }
 
-    private static void validateCarNamesAndAddToList(List<String> carNamesInput) {
+    private static void validatecarNameListAndAddToList(List<String> carNameListInput) {
         String patternStr = "^[0-9a-zA-Z]*$";
 
-        for (String carNameInput : carNamesInput) {
+        for (String carNameInput : carNameListInput) {
             if (Pattern.matches(patternStr, carNameInput) && //자동차 이름이 알파벳과 숫자로만 이루어짐
                     carNameInput.length() < 5 && //자동차 이름의 길이가 5 이하
                     carNameInput != null) { //자동차 이름이 빈 값이 아님
 
-                carNames.add(carNameInput);
+                carNameList.add(carNameInput);
             } else {
-                throw new IllegalArgumentException(INVAILD_INPUT_MESSAGE);
+                throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
             }
         }
     }
 
-    private static void carRacing(List<String> carNames) {
+    private static void carRacing(List<String> carNameList) {
         List<Integer> scores = new ArrayList<>();
         int max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < carNames.size(); i++) {
+        for (int i = 0; i < carNameList.size(); i++) {
             int score = randomScore();
             scores.add(score);
             max = Math.max(max, score);
         }
 
-        racingOutput(scores);
+        printRacingOutput(scores);
         System.out.println();
-        getWinner(scores, max);
+        recordWinners(scores, max);
     }
 
     private static Integer randomScore() {
@@ -91,42 +91,42 @@ public class Application {
         }
     }
 
-    private static void racingOutput(List<Integer> scores) {
+    private static void printRacingOutput(List<Integer> scores) {
         for (int i = 0; i < scores.size(); i++) {
-            System.out.print(carNames.get(i) + " : ");
-            scoreOutput(scores.get(i));
+            System.out.print(carNameList.get(i) + " : ");
+            printScoreOutput(scores.get(i));
         }
     }
 
-    private static void scoreOutput(int score) {
+    private static void printScoreOutput(int score) {
         for (int i = 0; i < score; i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    private static void getWinner(List<Integer> scores, int max) {
+    private static void recordWinners(List<Integer> scores, int max) {
         for (int i = 0; i < scores.size(); i++) {
             if (scores.get(i) == max) {
-                racingWin.put(carNames.get(i), racingWin.getOrDefault(carNames.get(i), 0) + 1);
+                carWinCounts.put(carNameList.get(i), carWinCounts.getOrDefault(carNameList.get(i), 0) + 1);
             }
         }
     }
 
-    private static int getWinCount() {
+    private static int getMaxWinCount() {
 
-        List<String> keySet = new ArrayList<>(racingWin.keySet());
+        List<String> keySet = new ArrayList<>(carWinCounts.keySet());
         //우승 회수 내림차순 정렬
-        keySet.sort((o1, o2) -> racingWin.get(o2).compareTo(racingWin.get(o1)));
-        return racingWin.get(keySet.get(0));
+        keySet.sort((o1, o2) -> carWinCounts.get(o2).compareTo(carWinCounts.get(o1)));
+        return carWinCounts.get(keySet.get(0));
     }
 
     private static List<String> getFinalWinners(int maxWinCount) {
-        List<String> keySet = new ArrayList<>(racingWin.keySet());
+        List<String> keySet = new ArrayList<>(carWinCounts.keySet());
         List<String> winners = new ArrayList<>();
 
         for (String key : keySet) {
-            if (racingWin.get(key) == maxWinCount) {
+            if (carWinCounts.get(key) == maxWinCount) {
                 winners.add(key);
             }
         }
