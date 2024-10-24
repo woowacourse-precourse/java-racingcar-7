@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.controller.RaceController;
+import racingcar.dto.RaceRound;
+import racingcar.model.Name;
 
 import java.util.List;
 
@@ -12,12 +15,8 @@ public class Application {
         List<Name> names = Name.createNames(input);
 
         RaceRound raceRound = RaceRound.inputRounds();
-        System.out.println("입력된 자동차 이름 : ");
-        for (Name name : names) {
-            System.out.println(name.getName());
-        }
 
-        System.out.println("시도할 횟수 : " + raceRound.getRounds());
-
+        RaceController raceController = new RaceController(names, raceRound.getRounds());
+        raceController.startRace();
     }
 }

@@ -1,8 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.NamedExecutable;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Name;
 
 import java.util.List;
 
