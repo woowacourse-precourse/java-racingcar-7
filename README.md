@@ -1,48 +1,53 @@
 # java-racingcar-precourse
 
-## Implementation Breakdown
+## 구현 세부 사항
 
-### Input Handler
-The program requires two inputs:
+### 입력 처리
+프로그램은 두 가지 입력을 요구합니다:
 
-1. **`carNames`**: A list of car names separated by commas (`,`).
-   - Each car name must be at most 5 characters long.
+1. **`carNames`**: 자동차 이름 목록(쉼표 `,`로 구분).
+   - 각 자동차 이름은 최대 5자 이내여야 합니다.
 
-2. **`N`**: The number of game rounds.
-   - In each round, a random integer between 0 and 9 is generated.
-   - The car moves forward if the value is 4 or greater.
-   - After the race ends, print the names of all cars that tied for first place. There may be multiple winners.
+2. **`N`**: 게임 라운드 수.
+   - 각 라운드에서 0부터 9 사이의 무작위 정수를 생성합니다.
+   - 해당 값이 4 이상일 경우 자동차가 전진합니다.
+   - 경주가 종료되면 우승한 자동차들을 출력합니다. 공동 우승자가 있을 수 있습니다.
 
-### Output Messages
+### 출력 메시지
 
-1. `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`
-   - This message prompts the user to enter `carNames`.  
-   - If the input is invalid, throw an `IllegalArgumentException`.
+#### `경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)`
+`carNames` 입력을 요청하는 메시지입니다.  
+입력이 유효하지 않은 경우 `IllegalArgumentException`을 발생시킵니다.
 
-2. `시도할 횟수는 몇 회인가요?`
-   - This message prompts the user to enter `N`.  
-   - If the input is invalid, throw an `IllegalArgumentException`.
+#### `시도할 횟수는 몇 회인가요?`
+`N` 입력을 요청하는 메시지입니다.  
+입력이 유효하지 않은 경우 `IllegalArgumentException`을 발생시킵니다.
 
-3. `실행 결과`
-   - For each round `i` (from `0` to `N`), print the status of each car.
+#### `실행 결과`
+각 라운드 `i` (0부터 `N`까지)에서 각 자동차의 상태를 출력합니다.
 
-4. `최종 우승자 :`
-   - After the race concludes, print the names of the winning cars. Multiple cars can share the winning position.
+#### `최종 우승자 :`
+경주가 끝난 후, 우승한 자동차의 이름을 출력합니다. 여러 대의 자동차가 공동 우승할 수 있습니다.
 
 ### Objects
+단일 책임 원칙(Single Responsibility Principle)을 준수하기 위해 입력 처리를 위한 별도의 클래스를 만들었습니다.
+#### CarNamesInputHandler
+- 자동차 이름을 입력받고 해당 입력이 유효한지 검증합니다.
+
+#### GameRoundInputHandler
+- 게임 라운드 수를 입력받는 핸들러 클래스이며, 입력이 유효한지 검증합니다.
 
 #### RacingCar
-- Each car object holds its name and current score.
+- 각 자동차 객체는 자신의 이름과 현재 점수를 저장합니다.
 
 ### Enums
-
 #### Movement Enums
-The movement of a car is determined by a randomly generated integer.
-- If the integer is 4 or greater, the car moves **FORWARD**.
-- Otherwise, the car **STOPS**.
+자동차의 이동 여부는 무작위로 생성된 정수에 의해 결정됩니다.
+- 정수가 4 이상일 경우 자동차가 **FORWARD**합니다.
+- 그렇지 않을 경우 자동차는 **STOP**합니다.
 
 #### **FORWARD**
-Indicates that the car move.
+자동차가 전진함을 나타냅니다.
 
 #### **STOP**
-Indicates that the car does not move.
+자동차가 정지함을 나타냅니다.
