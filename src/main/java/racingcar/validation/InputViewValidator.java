@@ -3,7 +3,7 @@ package racingcar.validation;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import racingcar.ExceptionCode;
+import racingcar.common.ExceptionCode;
 
 public class InputViewValidator {
     private static final String REGEX_INVALID_DELIMITER_PATTERN = ".*[^,\\w\\s].*";

@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.common.GameSettings;
 import racingcar.model.Car;
 
 public class RacingGameService {
