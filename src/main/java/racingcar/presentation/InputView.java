@@ -11,14 +11,14 @@ public class InputView {
     public String getCarNames(){
         System.out.println(INPUT_CARS_NAMES);
         String rawInput = readLine();
-        InputValidator.validateBlank(rawInput);
+        InputValidator.validateCarNamesInput(rawInput);
         return rawInput;
     }
 
     public String getTrialCount(){
         System.out.println(INPUT_TRIAL_COUNT);
         String rawInput = readLine();
-        InputValidator.validatePositiveInteger(rawInput);
+        InputValidator.validateTrialCountInput(rawInput);
         return rawInput;
     }
 

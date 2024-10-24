@@ -39,12 +39,12 @@ class OutputViewTest {
 
     @Test
     @DisplayName("주어진 문자열을 출력한다.")
-    void printOutput() {
+    void printCurrentPositions() {
         // given
         String input = "Test Output";
 
         // when
-        outputView.printOutput(input);
+        outputView.printCurrentPositions(input);
 
         // then
         String expectedOutput = "Test Output\n";
