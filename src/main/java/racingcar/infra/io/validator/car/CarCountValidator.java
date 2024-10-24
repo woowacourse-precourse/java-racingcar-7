@@ -1,7 +1,7 @@
 package racingcar.infra.io.validator.car;
 
 import static java.util.Objects.isNull;
-import static racingcar.util.ConvertingUtil.stringToStringList;
+import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +25,7 @@ public class CarCountValidator extends CarNameInputValidator {
             throw new EmptyInputException();
         }
 
-        List<String> cars = stringToStringList(source, ",");
+        List<String> cars = stringToStringList(source);
         if (cars.size() < MIN_CAR_COUNT) {
             throw new NotEnoughCarException(MIN_CAR_COUNT);
         }

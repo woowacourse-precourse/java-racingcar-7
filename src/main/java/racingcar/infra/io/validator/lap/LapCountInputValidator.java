@@ -1,12 +1,12 @@
-package racingcar.infra.io.validator.car;
+package racingcar.infra.io.validator.lap;
 
 import static java.util.Objects.nonNull;
 
-abstract class CarNameInputValidator {
+abstract class LapCountInputValidator {
 
-    private CarNameInputValidator next = null;
+    private LapCountInputValidator next = null;
 
-    public void doChain(CarNameInputValidator validator) {
+    public void doChain(LapCountInputValidator validator) {
         this.next = validator;
     }
 

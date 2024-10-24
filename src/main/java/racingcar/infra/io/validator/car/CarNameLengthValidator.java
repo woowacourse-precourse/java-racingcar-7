@@ -1,6 +1,6 @@
 package racingcar.infra.io.validator.car;
 
-import static racingcar.util.ConvertingUtil.stringToStringList;
+import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;
 import racingcar.infra.io.exception.CarNameLengthExceedException;
@@ -18,7 +18,7 @@ public class CarNameLengthValidator extends CarNameInputValidator {
 
     @Override
     public void check(final String source) {
-        List<String> cars = stringToStringList(source, ",");
+        List<String> cars = stringToStringList(source);
         cars.forEach(name -> {
             if (exceedMinLength(name)) {
                 throw new CarNameLengthExceedException(MIN_LENGTH);
