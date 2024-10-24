@@ -16,10 +16,16 @@ public class RacingController {
     public void run() {
         Cars cars;
         cars = InputCarsName();
+        Integer trialCount = inputTrialCount();
     }
 
     private Cars InputCarsName() {
         String rawCarsName = inputView.inputCarNamesMessage();
         return new Cars(rawCarsName);
+    }
+
+    private Integer inputTrialCount() {
+        String rawTrialCount = inputView.inputTrialCountMessage();
+        return Integer.parseInt(rawTrialCount); //TODO 이런식으로 했을 때 테스트 코드 작성 불가능 어떻게 refactor?
     }
 }
