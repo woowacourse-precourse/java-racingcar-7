@@ -7,7 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import racingcar.common.util.RandomNumberGenerator;
 import racingcar.domain.model.Car;
+import racingcar.util.TestRandomNumberGenerator;
 
 class CarTest {
 
@@ -15,7 +17,8 @@ class CarTest {
 	@MethodSource("provide_input_for_test_move_forward")
 	void test_move_forward(String name, int number, int position) {
 		Car car = new Car(name);
-		car.moveForward(number);
+		RandomNumberGenerator randomNumberGenerator = new TestRandomNumberGenerator(number);
+		car.moveForward(randomNumberGenerator);
 
 		Assertions.assertEquals(position, car.getPosition());
 	}
