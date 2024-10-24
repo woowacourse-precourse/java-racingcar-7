@@ -8,16 +8,23 @@ class BeforeRacingTest {
 
     @Test
     void divideCarName() {
-        String carNameString = "yo o,j in,kim";
+        String carNameString = "yoo,jin,kim ";
         List<String> names = BeforeRacing.divideCarName(carNameString);
         Assertions.assertThat(names).containsExactly("yoo", "jin", "kim");
     }
 
     @Test
     void validateName(){
-        String carNameString = "kokoko";
+        String carNameString = "kokddd";
         org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BeforeRacing.validateName(carNameString);
         });
+    }
+
+    @Test
+    void deleteBlank() {
+        String carNameString = " y o  o,ji         n,kim ";
+        List<String> names = BeforeRacing.divideCarName(carNameString);
+        Assertions.assertThat(names).containsExactly("yoo", "jin", "kim");
     }
 }
