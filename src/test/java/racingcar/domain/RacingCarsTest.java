@@ -19,7 +19,7 @@ class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("상테 가져오기 테스트")
+    @DisplayName("상태 가져오기 테스트")
     public void getStatesTest() {
         //given
         String testString = "a,b,c";
@@ -33,7 +33,7 @@ class RacingCarsTest {
     }
 
     @Test
-    @DisplayName("최종 우승자 테스트")
+    @DisplayName("최종 우승자 출력테스트")
     public void getWinners() {
         //given
         String testString = "a,b,c";
