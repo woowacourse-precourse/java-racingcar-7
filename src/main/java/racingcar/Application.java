@@ -14,11 +14,18 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int n = Integer.parseInt(Console.readLine());
+
+        // 문자열 분리 후 리스트에 저장
+        List<String> carList = splitWithComma(input);
+
+        // game 객체 생성, carList 전달
+        Game game = new Game(carList);
+
     }
 
+    // 콤마로 분리, 불필요한 공백 제거, 리스트에 담는 기능
     public static List<String> splitWithComma(String input) {
 
-        // 콤마로 분리, 불필요한 공백 제거, 리스트에 담기
         return Arrays.stream(input.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());

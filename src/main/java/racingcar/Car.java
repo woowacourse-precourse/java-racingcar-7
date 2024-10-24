@@ -7,7 +7,7 @@ public class Car {
     public int score;
 
     // Car 객체 생성
-    public Car() {
+    public Car(String name) {
         this.name = name;
         this.score = 0;
     }
