@@ -40,7 +40,7 @@ public class CarNameInput implements CarManager{
     private void validateCarNameLength(List<String> carNameList) {
         for(String carName: carNameList){
             if(carName.length() > CarNameLength)
-                new IllegalArgumentException("error: 문자열이 정해진 길이를 초과합니다");
+                throw new IllegalArgumentException("error: 문자열이 정해진 길이를 초과합니다");
         }
     }
 
