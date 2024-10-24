@@ -1,6 +1,8 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.InvalidCharacterException;
 import racingcar.exception.InvalidLengthException;
@@ -19,46 +21,62 @@ class VerificationServiceTest {
         verificationService = new VerificationService();
     }
 
-    @Test
-    void isValidLength() {
-        List<String> carNames = new ArrayList<>();
-        carNames.add("a");
-        carNames.add("bc");
-        carNames.add("def");
-        carNames.add("ghij");
-        carNames.add("klmno");
-        assertTrue(verificationService.isValidLength(carNames));
+    @Nested
+    @DisplayName("자동차 이름 길이 테스트")
+    class isValidLengthTests {
+
+        @Test
+        void 길이_테스트() {
+            List<String> carNames = new ArrayList<>();
+            carNames.add("a");
+            carNames.add("bc");
+            carNames.add("def");
+            carNames.add("ghij");
+            carNames.add("klmno");
+            assertTrue(verificationService.isValidLength(carNames));
+        }
+
+        @Test
+        void 길이_예외테스트() {
+            List<String> invalidCarNames = new ArrayList<>();
+            invalidCarNames.add("abcdef");
+            invalidCarNames.add("ghijklmnopqrstuvwxyz");
+            assertThrows(InvalidLengthException.class, () -> verificationService.isValidLength(invalidCarNames));
+        }
     }
 
-    @Test
-    void isValidLengthException() {
-        List<String> invalidCarNames = new ArrayList<>();
-        invalidCarNames.add("abcdef");
-        invalidCarNames.add("ghijklmnopqrstuvwxyz");
-        assertThrows(InvalidLengthException.class, () -> verificationService.isValidLength(invalidCarNames));
+    @Nested
+    @DisplayName("입력값에 특수문자있는지 확인하는 테스트")
+    class containsInvalidCharacterTests {
+
+        @Test
+        void 숫자_포함_테스트() {
+            String input = "1abc,def,ghijk";
+            assertTrue(verificationService.containsInvalidCharacter(input));
+        }
+
+        @Test
+        void 특수문자_포함_예외테스트() {
+            String input = "^1abc,def,*ghijk";
+            assertThrows(InvalidCharacterException.class, () -> verificationService.containsInvalidCharacter(input));
+        }
     }
 
-    @Test
-    void containsInvalidCharacter() {
-        String input = "1abc,def,ghijk";
-        assertTrue(verificationService.containsInvalidCharacter(input));
-    }
 
-    @Test
-    void containsInvalidCharacterException() {
-        String input = "^1abc,def,*ghijk";
-        assertThrows(InvalidCharacterException.class, () -> verificationService.containsInvalidCharacter(input));
-    }
+    @Nested
+    @DisplayName("숫자인지 확인하는 메소드 테스트")
+    class isNumberTests {
 
-    @Test
-    void isNumber() {
-        String input = "123";
-        assertTrue(verificationService.isNumber(input));
-    }
+        @Test
+        void 숫자_체크_테스트() {
+            String input = "123";
+            assertTrue(verificationService.isNumber(input));
+        }
 
-    @Test
-    void isNumberException() {
-        String input = "abc";
-        assertThrows(NotNumberException.class, () -> verificationService.isNumber(input));
+        @Test
+        void 숫자외_예외테스트() {
+            String input = "^abc";
+            assertThrows(NotNumberException.class, () -> verificationService.isNumber(input));
+        }
     }
 }
