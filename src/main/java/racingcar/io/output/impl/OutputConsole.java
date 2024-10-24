@@ -19,10 +19,10 @@ public class OutputConsole implements Output {
         carStatuses.forEach(System.out::println);
         System.out.println();
     }
-    
+
     private List<String> formatAllCarStatus(CarCollection cars) {
         List<String> statuses = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.cars()) {
             statuses.add(extractCarStatus(car));
         }
         return statuses;

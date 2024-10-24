@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CarCollection {
-    private final List<Car> cars;
-
+public record CarCollection(List<Car> cars) {
     public CarCollection(List<Car> cars) {
         validateCarNamesAreUnique(cars);
         this.cars = List.copyOf(cars);
@@ -23,22 +21,30 @@ public class CarCollection {
      * @throws IllegalArgumentException 유효하지 않은 자동차 이름이 포함된 경우
      */
     public static CarCollection from(String input) {
-        List<Car> carList = Arrays.stream(input.split(","))
+        List<Car> carList = parseCars(input);
+        return new CarCollection(carList);
+    }
+
+    private static List<Car> parseCars(String input) {
+        return Arrays.stream(input.split(","))
                 .map(String::trim)
                 .map(CarName::new)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return new CarCollection(carList);
     }
 
-    private void validateCarNamesAreUnique(List<Car> cars) {
-        Set<String> uniqueNames = cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toSet());
 
+    private void validateCarNamesAreUnique(List<Car> cars) {
+        Set<String> uniqueNames = extractCarNames(cars);
         if (uniqueNames.size() != cars.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
+    }
+
+    private Set<String> extractCarNames(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
     }
 
     public void moveAll() {
@@ -49,17 +55,20 @@ public class CarCollection {
     }
 
     public List<Car> getWinners() {
-        int maxPosition = cars.stream()
+        int maxPosition = getMaxPosition();
+        return findCarsWithMaxPosition(maxPosition);
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
 
+    private List<Car> findCarsWithMaxPosition(int maxPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }
