@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position;
-    private final StringBuilder displayPosition = new StringBuilder(getName()).append(" : ");
+    private final StringBuilder displayPosition;
 
     public Car(String name) {
         this.name = name;
         this.position = 0;
+        this.displayPosition = new StringBuilder(getName()).append(" : ");
     }
 
     public void move() {
