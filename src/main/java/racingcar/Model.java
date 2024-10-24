@@ -27,6 +27,32 @@ public class Model {
         }
     }
 
+    public ArrayList<String> rtnWinner(ArrayList<Car> carList) {
+        int max = getMax(carList);
+        ArrayList<String> winners = new ArrayList<String>();
+
+        for (Car car : carList) {
+            if (car.position == max) {
+                winners.add(car.name);
+            }
+        }
+
+        return winners;
+
+    }
+
+    public int getMax(ArrayList<Car> carList) {
+        int max = 0;
+
+        for (Car car : carList) {
+            if (max < car.position) {
+                max = car.position;
+            }
+        }
+
+        return max;
+
+    }
 
 
 }

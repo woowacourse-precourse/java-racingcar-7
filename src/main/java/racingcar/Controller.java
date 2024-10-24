@@ -20,6 +20,7 @@ public class Controller {
 
     public void startGame() {
         startRace();
+        output.printWinner(model.rtnWinner(carList));
     }
 
     public void startRace() {
