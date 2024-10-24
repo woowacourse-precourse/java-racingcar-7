@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Application {
     private static final String START_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -23,11 +24,9 @@ public class Application {
         return carNames;
     }
 
-    private static String isAlphabeticName(String carName){
-        for(char c : carName.toCharArray()){
-            if(!Character.isAlphabetic(c)){
-                throw new IllegalArgumentException("자동차 이름은 알파벳으로만 구성되어야 합니다.");
-            }
+    private static String isEnglishOnlyName(String carName){
+        if(!Pattern.matches("[a-zA-Z]+", carName)){
+            throw new IllegalArgumentException("자동차 이름은 알파벳으로만 구성되어야 합니다.");
         }
         return carName.toLowerCase();
     }
@@ -39,7 +38,7 @@ public class Application {
     }
     private static void validCarNames(ArrayList<String> carNames){
         for(int i=0; i<carNames.size(); i++){
-            carNames.set(i,isAlphabeticName(carNames.get(i)));
+            carNames.set(i,isEnglishOnlyName(carNames.get(i)));
             isValidlengthName(carNames.get(i));
         }
     }
