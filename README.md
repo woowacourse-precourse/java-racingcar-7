@@ -33,7 +33,7 @@
 > `Java`의 `Map`을 사용하여 관리 및 저장
 
 - [X] save - 자동차 저장 메서드
-- [ ] findAll - 자동차를 전체 조회하는 메서드
+- [X] findAll - 자동차를 전체 조회하는 메서드
 - [X] existByName - 해당 이름을 가진 데이터 있는지 조회하는 메서드
 - [ ] existWinner - 우승자가 존재하는지 조회하는 메서드
 - [ ] findByWinnersByTryCount - 우승한 자동차를 조회하는 메서드

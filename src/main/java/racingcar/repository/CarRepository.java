@@ -1,6 +1,8 @@
 package racingcar.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import racingcar.domain.Car;
@@ -18,5 +20,9 @@ public class CarRepository {
 
 	public boolean existByName(String name) {
 		return repository.containsKey(name);
+	}
+
+	public List<Car> findAll() {
+		return new ArrayList<>(repository.values());
 	}
 }
