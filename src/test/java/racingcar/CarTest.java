@@ -31,4 +31,24 @@ class CarTest {
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
+
+    @Test
+    void 빈_이름_예외() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> Car.validateEmptyName(""))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> Car.validateEmptyName("  "))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> Car.validateEmptyName("\n\n"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> Car.validateEmptyName(null))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
 }
