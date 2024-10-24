@@ -6,7 +6,7 @@ import racingcar.exception.ExceptionMessage;
 public class NumberValid {
     public static void checkNumberType(String number){
         if(!number.matches(GameConstatns.NUMBER_REGEX)){
-            throw new IllegalArgumentException(ExceptionMessage.ATTEMPT_COUNT_OVER);
+            throw new IllegalArgumentException(ExceptionMessage.ATTEMPT_COUNT);
         }
     }
 
