@@ -13,7 +13,7 @@ public class RacingCarView {
         System.out.println(tryInputString);
     }
 
-    public void getOutputString() {
-        System.out.println(outputString);
+    public void getOutputString(String carNames) {
+        System.out.println(outputString + carNames);
     }
 }
