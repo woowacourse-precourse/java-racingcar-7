@@ -5,7 +5,9 @@ import java.util.Map;
 
 public class Cars {
 
-    public static Map<String, Integer> createNameList(String str) {
+    private Map<String, Integer> carNames;
+
+    public Cars(String str) {
         Map<String, Integer> carNames = new LinkedHashMap<>();
         String[] strArr = str.split(",", -1);
 
@@ -16,7 +18,7 @@ public class Cars {
         validateWrongValue(carNames);
         validateNameLength(carNames);
 
-        return carNames;
+        this.carNames = carNames;
     }
 
     private static void validateNameLength(Map<String, Integer> carNames) {
