@@ -15,15 +15,18 @@ public class RacingCar {
         String carInput = inputView.input();
         String[] carInputs = carInput.split(",");
 
-        List<Car> cars = new ArrayList<>();
-
+        List<Car> carNames = new ArrayList<>();
         for (int i = 0; i < carInputs.length; i++) {
-            cars.add(new Car(carInputs[i]));
+            carNames.add(new Car(carInputs[i]));
         }
 
+        Cars cars = new Cars(carNames);
         OutputView.printAttemptCountPrompt();
 
         int tryCount = Integer.parseInt(inputView.input());
 
+
+
     }
+
 }
