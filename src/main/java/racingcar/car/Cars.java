@@ -25,4 +25,12 @@ public class Cars {
 			.max()
 			.orElse(0);
 	}
+
+	public void printWinner(){
+		int maxLocation = getMaxLocation();
+		cars.stream()
+			.filter(car -> car.getLocation() == maxLocation)
+			.map(Car::getName)
+			.forEach((name) -> System.out.println(name + " "));
+	}
 }
