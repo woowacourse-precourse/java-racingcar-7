@@ -14,4 +14,9 @@ public class UserInput {
     private List<String> parseCarNames(String rawCarNames) {
         return Arrays.asList(rawCarNames.split(","));
     }
+
+    public int readRaceCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
+    }
 }
