@@ -13,13 +13,25 @@ public class CarRaceView {
 
     public int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+
+        try {
+            int tryCount = Integer.parseInt(input);
+            if (tryCount <= 0) {
+                throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요."); // 예외 발생
+            }
+            return tryCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해주세요."); // 예외 발생
+        }
     }
+
 
     public void printRaceResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     public void printWinners(List<String> winners) {
