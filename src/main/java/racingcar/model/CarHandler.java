@@ -22,7 +22,13 @@ public class CarHandler {
         }
     }
 
-    public void proceedCar() {
+    public void executeRounds(int num) {
+        for(int i = 0; i< num ; i++) {
+            proceedCar();
+        }
+    }
+
+    private void proceedCar() {
         for (Car car : cars) {
             car.moveCar();
             int carMoveCount = car.getMoveCount();

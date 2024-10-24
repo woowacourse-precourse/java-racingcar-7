@@ -30,7 +30,7 @@ public class GameController {
     private void attemptGame() {
         InputMessage.inputGamesAttempts();
         final int num = Integer.parseInt(Console.readLine());
-        carHandler.proceedCar();
+        carHandler.executeRounds(num);
     }
 
 
