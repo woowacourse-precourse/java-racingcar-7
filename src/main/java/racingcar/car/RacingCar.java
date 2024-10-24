@@ -3,14 +3,19 @@ package racingcar.car;
 public class RacingCar {
 
     private String carName;
-    private Long distance;
+    private int distance;
 
-    public void forwardCar(Long move) {
+    public RacingCar(String carName, int distance) {
+        this.carName = carName;
+        this.distance = distance;
+    }
+
+    public void forwardCar(int move) {
         distance += move;
     }
 
     public void printMoveStatus() {
-        String currentCarStatus = carName + " : " + "=".repeat(Math.toIntExact(distance));
+        String currentCarStatus = carName + " : " + "=".repeat(distance);
         System.out.println(currentCarStatus);
     }
 }
