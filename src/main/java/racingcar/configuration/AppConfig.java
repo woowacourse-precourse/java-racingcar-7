@@ -1,6 +1,6 @@
 package racingcar.configuration;
 
-import racingcar.controller.RacingController;
+import racingcar.controller.RacingControllerImpl;
 import racingcar.repository.MemoryRepository;
 import racingcar.repository.Repository;
 import racingcar.service.RacingService;
@@ -28,8 +28,8 @@ public class AppConfig {
         return new RacingServiceImpl(getRepository());
     }
 
-    public RacingController getCarRacingController() {
-        return new RacingController(getInputView(), getOutputView(),
+    public RacingControllerImpl getCarRacingController() {
+        return new RacingControllerImpl(getInputView(), getOutputView(),
                 getCarRacingService());
     }
 }
