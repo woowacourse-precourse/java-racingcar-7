@@ -14,6 +14,7 @@ public class RacingCarParser {
 
     public List<String> parseRacingCar(String input) {
         List<String> carNames = Arrays.stream(input.split(carSeparator)).toList();
+        validator.validateCar(carNames);
         return carNames;
     }
 }
