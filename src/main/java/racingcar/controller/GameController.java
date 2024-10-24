@@ -19,5 +19,10 @@ public class GameController {
         roundCount = Integer.parseInt(round);
 
         Game game = new Game(carNames);
+        run(game);
+    }
+
+    public void run(Game game) {
+        OutputView.printFinalResultMessage();
     }
 }
