@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataParser {
-    public static List<String> parseName(String input) {
+    public static List<RacingCar> parseName(String input) {
         List<String> list = Arrays.asList(input.split(","));
 
         isNonEmpty(list);
@@ -13,7 +13,16 @@ public class DataParser {
         isAlphaNumeric(list);
 
         int tryCount = parseCount(IOHandler.inputTryCount());
-        return list;
+        return createRacingCar(list);
+    }
+
+    private static List<RacingCar> createRacingCar(List<String> list) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            RacingCar racingCar = new RacingCar(list.get(i));
+            racingCarList.add(racingCar);
+        }
+        return racingCarList;
     }
 
     private static int parseCount(String tryCount) {
