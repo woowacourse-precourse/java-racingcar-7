@@ -1,20 +1,25 @@
 package racingcar;
 
+import iohandler.CarNameInputHandler;
 import iohandler.InputHandler;
 import iohandler.OutputHandler;
+
+import java.util.List;
 
 public class RacingCar {
 
     private InputHandler inputHandler = new InputHandler();
     private OutputHandler outputHandler = new OutputHandler();
+    private CarNameInputHandler carNameInputHandler = new CarNameInputHandler();
 
     public void run() {
         try {
             outputHandler.showInputCarNameMessage();
             String inputCarName = inputHandler.getInputCarName();
+            List<String> separatedCarNameList = carNameInputHandler.getSeparatedCarNameList(inputCarName);
 
             outputHandler.showInputRacingCountMessage();
-            inputHandler.getInputRacingCount();
+            int inputRacingCount = inputHandler.getInputRacingCount();
 
 
         } catch (IllegalArgumentException e) {
