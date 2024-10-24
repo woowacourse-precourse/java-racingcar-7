@@ -67,7 +67,7 @@ public class RacingController {
     }
 
     private void raceCars(Cars cars, int count) {
-        outputView.printNewLine();
+        outputView.printMessage("");
         outputView.printResultMessage();
         for (int i = 0; i < count; i++) {
             cars.race();
@@ -76,12 +76,21 @@ public class RacingController {
     }
 
     private void printCarsInformation(List<String> carsInformation) {
-        carsInformation.forEach(outputView::printCarInformation);
-        outputView.printNewLine();
+        carsInformation.forEach(outputView::printMessage);
+        outputView.printMessage("");
     }
 
     private void printWinners(Cars cars) {
         List<String> winners = cars.determineWinners();
-        outputView.printWinners(winners);
+        String winnersName = getWinnersName(winners);
+        outputView.printWinners(winnersName);
+    }
+
+    private String getWinnersName(List<String> winners) {
+        StringBuilder winnersString = new StringBuilder();
+        winners.forEach(winner -> {
+            winnersString.append(winner).append(", ");
+        });
+        return winnersString.substring(0, winnersString.length() - 2);
     }
 }
