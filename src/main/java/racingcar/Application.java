@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // TODO: Print하는 부분 템플릿 메서드 패턴 적용해보기
         Printer.print(SystemMessage.START_MESSAGE);
         String carNames = Console.readLine();
 
