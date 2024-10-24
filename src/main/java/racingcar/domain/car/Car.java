@@ -18,11 +18,11 @@ public class Car {
         }
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String getCarName() {
+        return carName.getCarName();
     }
 
-    public Distance getDistance() {
-        return distance;
+    public int getDistance() {
+        return distance.getDistance();
     }
 }
