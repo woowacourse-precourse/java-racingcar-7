@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,7 +11,27 @@ public class Application {
     static String[] cars;
     static StringBuilder[] carsRaceProgress;
     public static void main(String[] args) {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        try {
+            cars = carNameSplitter(input);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
 
+        carsRaceProgress = new StringBuilder[cars.length];
+        for(int i=0; i<carsRaceProgress.length; i++) {
+            carsRaceProgress[i] = new StringBuilder();
+        }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int round;
+        try{
+            round = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 정수를 입력해주세요.");
+        }
+        doRace(round);
     }
     public static String[] carNameSplitter(String input) {
         String[] result = input.split(",");
