@@ -8,9 +8,10 @@ import java.util.Set;
 
 public class NameValidator implements InputValidator<List<String>> {
     @Override
-    public void validate(List<String> names) {
+    public int validate(List<String> names) {
         checkEmpty(names.get(0));
         checkDuplicate(names);
+        return 1; // TODO: 크아아아악 ㅜㅜㅜ
     }
 
     // TODO: try-catch로 수정?
