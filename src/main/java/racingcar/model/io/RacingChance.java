@@ -1,6 +1,6 @@
 package racingcar.model.io;
 
-import racingcar.utils.Constants;
+import racingcar.utils.ErrorMessage;
 
 public class RacingChance {
 
@@ -29,8 +29,7 @@ public class RacingChance {
 
     private static void validateNotBlank(String numberToValidate) {
         if (numberToValidate.isEmpty()) {
-            throw new IllegalArgumentException(Constants.EXCEPTION_MESSAGE_PREFIX
-                    + "문자열이 공백입니다. 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.toString());
         }
     }
 
@@ -38,16 +37,14 @@ public class RacingChance {
         try {
             Integer.parseInt(numberToValidate);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Constants.EXCEPTION_MESSAGE_PREFIX
-                    + "숫자가 아니거나 int 범위를 벗어납니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_INT.toString());
         }
     }
 
     private static void validateNotZero(String numberToValidate) {
         int number = Integer.parseInt(numberToValidate);
         if (number == 0) {
-            throw new IllegalArgumentException(Constants.EXCEPTION_MESSAGE_PREFIX
-                    + "시도할 횟수는 양수이어야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.ZERO.toString());
         }
     }
 

@@ -1,6 +1,6 @@
 package racingcar.model.io;
 
-import racingcar.utils.Constants;
+import racingcar.utils.ErrorMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,8 +42,7 @@ public class CarNames {
     public static CarNames getAfterValidateForm (String carNames) {
         Matcher matcher = carNamePattern.matcher(carNames);
         if (!matcher.matches()) {
-            throw new IllegalArgumentException(Constants.EXCEPTION_MESSAGE_PREFIX
-                    + "올바른 자동차 이름 형식이 아닙니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_FORMAT.toString());
         }
         return new CarNames(carNames);
     }
