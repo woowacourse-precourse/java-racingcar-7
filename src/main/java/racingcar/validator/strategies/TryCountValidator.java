@@ -23,7 +23,7 @@ public class TryCountValidator implements ValidationStrategy {
 
     private void validateIsPositiveInteger(String tryCount) {
         int count = parseTryCount(tryCount);
-        checkIfPositive(count);
+        checkPositive(count);
     }
 
     private int parseTryCount(String tryCount) {
@@ -34,7 +34,7 @@ public class TryCountValidator implements ValidationStrategy {
         }
     }
 
-    private void checkIfPositive(int count) {
+    private void checkPositive(int count) {
         if (count <= RacingGameConstants.INITIAL_POSITION.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
