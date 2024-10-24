@@ -5,7 +5,8 @@ import racingcar.model.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.global.GameConstant.*;
+import static racingcar.global.GameConstant.CAR_NAME_SPLIT_DELIMITER;
+import static racingcar.global.GameConstant.WINNER_NOTATION_DELIMITER;
 
 
 public class OutputHandler {
@@ -39,11 +40,7 @@ public class OutputHandler {
     }
 
     private void currentPositionFrom(final Car car) {
-        System.out.print(car.getName() + " : ");
-        for (int i = 0; i < car.getPosition(); i++) {
-            System.out.print(POSITION_NOTATION);
-        }
-        System.out.println();
+        System.out.println(car.getCurrentSituation());
     }
 
 }

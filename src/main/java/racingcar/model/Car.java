@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static racingcar.global.GameConstant.NAME_POSITION_DELIMITER;
+import static racingcar.global.GameConstant.POSITION_NOTATION;
+
 public class Car {
 
     private final String name;
@@ -29,6 +32,12 @@ public class Car {
 
     public boolean isNotSamePositionTo(final int position) {
         return this.position != position;
+    }
+
+    public String getCurrentSituation() {
+        return name +
+            NAME_POSITION_DELIMITER +
+            POSITION_NOTATION.repeat(Math.max(0, position));
     }
 
     public String getName() {
