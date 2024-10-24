@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarStatusDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,5 +20,11 @@ public class RacingCars {
             int moveCondition = randomNumbers.get(i);
             racingCars.get(i).move(moveCondition);
         }
+    }
+
+    public List<CarStatusDto> getStatus() {
+        return racingCars.stream()
+                .map(Car::toCarStatusDto)
+                .toList();
     }
 }
