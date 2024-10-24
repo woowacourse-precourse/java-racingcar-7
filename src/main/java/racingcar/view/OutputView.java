@@ -1,12 +1,15 @@
 package racingcar.view;
 
+import static racingcar.view.Instruction.FINAL_WINNER_PREFIX;
+import static racingcar.view.Instruction.ROUND_RESULT_COMMENT;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import racingcar.model.Round;
 
 public class OutputView {
     public void printRoundState(List<Round> roundList) {
-        System.out.println("\n실행 결과");
+        System.out.println(ROUND_RESULT_COMMENT);
 
         roundList.forEach(this::printCarState);
     }
@@ -24,6 +27,6 @@ public class OutputView {
     public void printWinners(Round round) {
         String winners = String.join(" ", round.findAllLeadingCars());
 
-        System.out.print("최종 우승자 : " + winners);
+        System.out.print(FINAL_WINNER_PREFIX + winners);
     }
 }
