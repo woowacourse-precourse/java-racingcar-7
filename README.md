@@ -102,13 +102,15 @@ jun : -----
 
 이번 프로젝트에서는 TDD 개발 방법론을 적용 했습니다.
 
-- [ ] 테스트 코드 작성 TDD (유닛테스트)
+- [x] 테스트 코드 작성 TDD (유닛테스트)
     - [x] 자동자 Model 관련 테스트 코드 작성
     - [x] 경기 Model 관련 테스트 코드 작성
-    - [ ] RaceService 관련 테스트 코드 작성
+    - [x] RaceService 관련 테스트 코드 작성
 - [x] 자동자 Model 생성
 - [x] 경기 Model 생성
-- [ ] 비즈니르 로직을 위한 Service 클래스 생성
+- [x] 비즈니르 로직을 위한 Service 클래스 생성
+- [ ] Model 리펙토링
+- [ ] Service 리펙토링
 - [ ] View 생성 (입력, 출력)
 - [ ] Controller 생성
 - [ ] 에러 정의 Enum 및 Exception 생성
