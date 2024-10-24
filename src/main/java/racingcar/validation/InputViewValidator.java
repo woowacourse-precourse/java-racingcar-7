@@ -40,7 +40,7 @@ public class InputViewValidator {
     }
 
     public void validateMoveCount(String input) {
-        if (!isNumber(input)) {
+        if (input.isBlank() || !isNumber(input)) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_MOVE_COUNT.getMessage());
         }
     }
