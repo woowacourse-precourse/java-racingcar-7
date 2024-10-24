@@ -26,6 +26,10 @@ public class RacingService {
         }
     }
 
+    private RacingCars getWinners(RacingCars racingCars) {
+        return racingCars.getMaxPositionCars();
+    }
+
     private List<RacingRoundResult> playRounds(RacingCars racingCars, int tryCount) {
         List<RacingRoundResult> racingRoundResults = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
