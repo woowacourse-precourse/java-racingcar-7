@@ -19,4 +19,5 @@ public final class ThresholdScoreMoveRule implements MoveRule {
     private int generateNumber() {
         return NumberGenerator.generateNumber(MIN_NUM, MAX_NUM);
     }
+    
 }

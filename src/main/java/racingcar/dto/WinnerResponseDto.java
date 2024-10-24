@@ -7,4 +7,5 @@ public record WinnerResponseDto(
     public static WinnerResponseDto of(final String name, final int position) {
         return new WinnerResponseDto(name, position);
     }
+    
 }
