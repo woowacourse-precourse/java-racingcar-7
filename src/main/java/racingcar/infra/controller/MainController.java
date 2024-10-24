@@ -1,5 +1,6 @@
 package racingcar.infra.controller;
 
+import racingcar.infra.io.InputManager;
 import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
@@ -15,9 +16,9 @@ public class MainController {
     }
 
     public void run() {
-        String input = "messi,ji-sung-park,owen";
+        String carNames = InputManager.enterCarNames();
         String count = "5";
-        Cars cars = raceService.generateCars(input, count);
+        Cars cars = raceService.generateCars(carNames, count);
         Race race = Race.of(Lap.of(count));
         DashBoard dashBoard = raceService.startRace(race, cars);
         System.out.println(dashBoard.offerWinners());
