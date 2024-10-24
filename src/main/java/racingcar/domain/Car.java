@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-class Car {
+public class Car {
     private final String name;
     private int position;
 
