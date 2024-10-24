@@ -11,7 +11,7 @@ import racingcar.model.Name;
 
 class CarTest {
 
-    final CarMovementPolicy movementPolicy = new DefaultCarMovementPolicy();
+    final CarMovementPolicy movementPolicy = DefaultCarMovementPolicy.getInstance();
 
     @Test
     @DisplayName("이름이 같다면 동일한 자동차여야 한다.")
@@ -84,5 +84,4 @@ class CarTest {
         // when, then
         assertThat(pobiCar.isSamePosition(woniCar)).isFalse();
     }
-
 }

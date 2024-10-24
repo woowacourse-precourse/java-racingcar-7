@@ -17,7 +17,7 @@ import racingcar.model.Name;
 
 class CarsTest {
 
-    final CarMovementPolicy movementPolicy = new DefaultCarMovementPolicy();
+    final CarMovementPolicy movementPolicy = DefaultCarMovementPolicy.getInstance();
 
     @Test
     @DisplayName("자동차가 1대 미만이면 예외가 발생해야 한다.")
