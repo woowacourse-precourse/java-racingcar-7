@@ -16,7 +16,7 @@ public class OutputView {
     public void printWinners(List<String> winners) {
         System.out.println(
                 NotificationMessage.FINAL_WINNERS.getMessage() +
-                        String.join(Delimiter.COMMA.getValue(), winners)
+                        String.join(Delimiter.COMMA.getValue() + " ", winners)
         );
     }
 }
