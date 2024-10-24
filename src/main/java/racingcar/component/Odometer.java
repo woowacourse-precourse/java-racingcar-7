@@ -13,4 +13,8 @@ public class Odometer {
         return this.mileage;
     }
 
+    public int getTotalDistance() {
+        return this.mileage;
+    }
+
 }

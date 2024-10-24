@@ -7,11 +7,13 @@ import java.util.List;
 public class RacingGame {
 
     private final List<RacingCar> racingCars;
+    private final MatchResolver matchResolver;
     private final int matchCount;
     private int currentRound;
 
     public RacingGame(List<RacingCar> racingCars, int matchCount) {
         this.racingCars = racingCars;
+        this.matchResolver = new MatchResolver();
         this.matchCount = matchCount;
         this.currentRound = 1;
     }
@@ -20,6 +22,10 @@ public class RacingGame {
         while (goToNextRound()) {
             playRound();
         }
+    }
+
+    public List<RacingCar> getWinners() {
+        return matchResolver.determineWinner(racingCars);
     }
 
     private void playRound() {

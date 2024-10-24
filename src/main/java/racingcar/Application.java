@@ -16,5 +16,6 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(racingCars, matchCount);
         racingGame.play();
+        List<RacingCar> winners = racingGame.getWinners();
     }
 }
