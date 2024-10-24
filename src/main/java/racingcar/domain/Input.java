@@ -1,15 +1,15 @@
-package racingcar.input;
+package racingcar.domain;
 
 import java.util.List;
 
 public class Input {
 
-    private List<String> names;
-    private int tryNumber;
+    private final List<String> names;
+    private final int tryNumber;
 
     public Input(List<String> names, int tryNumber) {
-        names = this.names;
-        tryNumber = this.tryNumber;
+        this.names = names;
+        this.tryNumber = tryNumber;
     }
 
     public List<String> getNames() {
