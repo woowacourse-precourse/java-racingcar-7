@@ -3,7 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class Model {
 
@@ -29,6 +32,20 @@ public class Model {
         }
 
         return racingHashmap;
+    }
+
+    public static List<String> fineWinner(HashMap<String, String> racingHashmap){
+        List<String> listWinners = new ArrayList<>();
+        HashMap<String, Integer> winnerMap = new HashMap<>();
+        for (String name : racingHashmap.keySet()) {
+            winnerMap.put(name, racingHashmap.get(name).length());
+        }
+        for (String name:winnerMap.keySet()) {
+            if (winnerMap.get(name).equals(Collections.max(winnerMap.values()))) {
+                listWinners.add(name);
+            }
+        }
+        return listWinners;
     }
 
 }
