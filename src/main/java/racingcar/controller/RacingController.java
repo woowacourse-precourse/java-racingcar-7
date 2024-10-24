@@ -16,7 +16,7 @@ public class RacingController {
     public void run() {
         Cars cars;
         cars = InputCarsName();
-        Integer trialCount = inputTrialCount();
+        Integer count = inputTrialCount();
     }
 
     private Cars InputCarsName() {

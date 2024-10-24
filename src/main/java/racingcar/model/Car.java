@@ -2,10 +2,16 @@ package racingcar.model;
 
 public class Car {
     private final String name;
+    private Integer distance;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
+        this.distance = 0;
+    }
+
+    public void forwardDistance() {
+        distance++;
     }
 
     private void validateName(String name) {
@@ -42,5 +48,13 @@ public class Car {
 
     private boolean isValidOnlyLetters(String name) {
         return !name.matches("[a-zA-Z]+");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getDistance() {
+        return distance;
     }
 }
