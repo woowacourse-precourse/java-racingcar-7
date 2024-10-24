@@ -38,9 +38,9 @@ public class Game {
             printMessage.append(participantName);
             printMessage.append(NAME_DISTANCE_SPLIT);
             printMessage.append(DISTANCE_INDICATOR.repeat(participantDistance));
-            printMessage.append("\n");
 
             System.out.println(printMessage);
         }
+        System.out.println();
     }
 }
