@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.regex.Pattern;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -21,13 +22,10 @@ class RaceTest {
                 .isIn(true, false);
     }
 
-//    @Test
-//    void 레이스_결과() {
-//        Assertions.assertThat(Race.renderScoreBoard())
-//                .isEqualTo("""
-//                        pobi : -
-//                        woni :
-//                        jun : -
-//                        """);
-//    }
+    @Test
+    void 레이스_결과() {
+        Assertions.assertThat(new Race(1).renderScoreBoard()
+                        .matches("^pobi : -*\nwoni : -*\njun : -*$"))
+                .isEqualTo(true);
+    }
 }
