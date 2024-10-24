@@ -24,7 +24,8 @@
     1. 음수일 경우
        - IllegalArgumentException 발생
     2. 0 일 경우
-       - 경주를 진행하지 않고 종료
+       - 경주를 진행하지 않고 바로 실행결과와 승자를 보여주며 종료
+       - 승자는 참가자 모두가 됨
     3. 입력된 값이 숫자가 아닌 경우
        - IllegalArgumentException 발생
   
