@@ -9,9 +9,16 @@ public class Application {
 		String carNames = Console.readLine();
 
 		Car[] cars = separateNames(carNames);
+		int n = cars.length;
 
 		System.out.println("시도할 횟수는 몇 회인가요?");
 		int m = validateNumber(Console.readLine());
+
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				int moveCounter = cars[j].move();
+			}
+		}
 
 	}
 
@@ -31,9 +38,11 @@ public class Application {
 
 		try {
 			int number = Integer.parseInt(numStr);
+
 			if (number < 0) {
 				throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
 			}
+
 			return number;
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("유효한 숫자가 아닙니다.", e);
