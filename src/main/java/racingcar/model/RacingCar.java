@@ -1,7 +1,6 @@
 package racingcar.model;
 
-import racingcar.util.ramdom.RandomRange;
-import racingcar.util.ramdom.RandomUtils;
+import racingcar.model.moving_strategy.MovingStrategy;
 
 import java.util.Objects;
 
@@ -10,27 +9,28 @@ public class RacingCar {
     private final int DEFAULT_POSITION = 0;
     private final int MAX_NAME_LENGTH = 5;
     private final int DEFAULT_MOVE_DISTANCE = 1;
-    private final int MIN_MOVEABLE_NUMBER = 4;
 
     private final String name;
+    private final MovingStrategy movingStrategy;
     private int position;
 
-    public RacingCar(String name) {
+    public RacingCar(String name, MovingStrategy movingStrategy) {
         validateName(name);
         this.name = name;
         this.position = DEFAULT_POSITION;
+        this.movingStrategy = movingStrategy;
     }
 
     public RacingCar(RacingCar other) {
         validateName(other.name);
         this.name = other.name;
         this.position = other.position;
+        this.movingStrategy = other.movingStrategy;
     }
 
-    public void moveRandomly(RandomRange randomRange) {
-        int randomNumber = RandomUtils.generateRandomNumber(randomRange);
-        if (isMoveable(randomNumber)) {
-            move();
+    public void moveRandomly() {
+        if (movingStrategy.isMovable()) {
+            position += DEFAULT_MOVE_DISTANCE;
         }
     }
 
@@ -40,14 +40,6 @@ public class RacingCar {
 
     public int getPosition() {
         return position;
-    }
-
-    private void move() {
-        position += DEFAULT_MOVE_DISTANCE;
-    }
-
-    private boolean isMoveable(int number) {
-        return number >= MIN_MOVEABLE_NUMBER;
     }
 
     private void validateName(String name) {
