@@ -43,4 +43,10 @@ public class Application {
     private void printRequestingRaceRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    private int getRaceRoundInput() {
+        String str = Console.readLine();
+        validateNotEmpty(str);
+        return Integer.parseInt(str);
+    }
 }
