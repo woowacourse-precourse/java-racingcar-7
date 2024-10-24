@@ -8,6 +8,7 @@ public class Application {
 
     public static void main(String[] args) {
         Racing racing = new Racing();
+        racing.start();
     }
 }
 
@@ -21,6 +22,12 @@ class Racing {
         String str = Console.readLine();
         inputString = new InputString(str);
         carCollection = inputString.getCarCollection();
+    }
+
+    public void start(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = Integer.parseInt(Console.readLine());
+        // 시도한 횟수만큼 진행
     }
 }
 
