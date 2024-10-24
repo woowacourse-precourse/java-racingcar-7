@@ -22,4 +22,8 @@ public class CarRegistry {
     private Car createCar(String name) {
         return new Car(name);
     }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
 }
