@@ -24,7 +24,7 @@ class GameServiceTest {
 
     @Nested
     @DisplayName("이동 메소드 테스트")
-    class movingMethodTests {
+    class MovingMethodTests {
 
         @Test
         void 이동_기능_테스트() {
@@ -41,7 +41,7 @@ class GameServiceTest {
 
     @Nested
     @DisplayName("자동차 경주 결과 메소드 테스트")
-    class raceResultMethodTests {
+    class RaceResultMethodTests {
 
         @Test
         void 공동_1등_테스트() {

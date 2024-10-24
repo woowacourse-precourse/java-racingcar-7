@@ -23,7 +23,7 @@ class VerificationServiceTest {
 
     @Nested
     @DisplayName("자동차 이름 길이 테스트")
-    class isValidLengthTests {
+    class IsValidLengthTests {
 
         @Test
         void 길이_테스트() {
@@ -47,7 +47,7 @@ class VerificationServiceTest {
 
     @Nested
     @DisplayName("입력값에 특수문자있는지 확인하는 테스트")
-    class containsInvalidCharacterTests {
+    class ContainsInvalidCharacterTests {
 
         @Test
         void 숫자_포함_테스트() {
@@ -65,7 +65,7 @@ class VerificationServiceTest {
 
     @Nested
     @DisplayName("숫자인지 확인하는 메소드 테스트")
-    class isNumberTests {
+    class IsNumberTests {
 
         @Test
         void 숫자_체크_테스트() {
