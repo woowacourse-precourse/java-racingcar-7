@@ -42,14 +42,12 @@ public class Validate {
     private static List<String> checkComma(String inputCarName) {
         List<String> splitCarName;
 
-        // 입력 문자열에 콤마가 있는 경우 콤마로 분리하여 리스트로 변환
         if (inputCarName.contains(",")) {
             // TODO ,, 로 끝날경우?
             splitCarName = Arrays.asList(inputCarName.split(","));
             return splitCarName;
         }
 
-        // 콤마가 없는 경우, 입력된 문자열을 그대로 리스트로 반환
         splitCarName = List.of(inputCarName);
         return splitCarName;
     }
