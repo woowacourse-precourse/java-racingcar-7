@@ -30,4 +30,10 @@ public class CarVO {
     public CarVO(String carName) {
         this.carName = carName;
     }
+
+    @Override
+    public String toString() {
+        return String.format("carName : %s, goCount : %s", carName, goCount);
+    }
+
 }
