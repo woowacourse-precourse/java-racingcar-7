@@ -29,6 +29,31 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         Integer attempt = Integer.valueOf(Console.readLine());
 
+        startGame(raceCars,attempt);
+    }
+
+    public static void startGame(List<Car> raceCars, Integer attempt) {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (int attemptNum = 0; attemptNum < attempt; attemptNum++) {
+            runRaceRound(raceCars);
+            printRaceRoundProgress(raceCars);
+        }
+
+    }
+
+    private static void runRaceRound(List<Car> raceCars) {
+        for (Car car : raceCars) {
+            if(dice.roll() >= 4)
+                car.moveOneStep();
+        }
+    }
+
+    public static void printRaceRoundProgress(List<Car> raceCars) {
+        for (Car car : raceCars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 
 }
