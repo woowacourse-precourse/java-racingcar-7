@@ -20,9 +20,7 @@ public class RacingController {
 
     public void run() {
         initializeCars();
-
-        outputView.printAttemptCountPrompt();
-        int tryCount = inputView.IntInput();
+        int tryCount = insertTryCount();
 
         outputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
@@ -32,6 +30,11 @@ public class RacingController {
 
         List<String> raceWinners = cars.findRaceWinners();
         outputView.printWinners(raceWinners);
+    }
+
+    private int insertTryCount() {
+        outputView.printAttemptCountPrompt();
+        return inputView.IntInput();
     }
 
     private void initializeCars() {
