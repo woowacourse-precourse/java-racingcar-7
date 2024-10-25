@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OutputView {
 
-    public String outputWinner(ArrayList<String> winners) {
-        return String.join(", ", winners);
+    public void outputWinner(ArrayList<String> winners) {
+        System.out.println(String.join(", ", winners));
     }
 }
