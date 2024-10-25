@@ -64,4 +64,16 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    @DisplayName("자동차 이름 유효성 검사: 자동차 1대 이하 - 예외 테스트")
+    void validateCarNames_insufficientCarCount() {
+        // given
+        List<String> carNames = Arrays.asList("pobi");
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
