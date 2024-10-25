@@ -28,11 +28,7 @@ public class CarService {
     }
 
     public void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            if (canMove()) {
-                car.goForward();
-            }
-        }
+        cars.stream().filter(car -> canMove()).forEach(Car::goForward);
     }
 
 }
