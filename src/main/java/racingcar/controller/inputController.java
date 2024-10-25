@@ -1,9 +1,9 @@
-package racingcar.view;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.InputContainer;
 
-public class InputView {
+public class inputController {
 
     public InputContainer readConsole() {
         String inputCarNames = Console.readLine();

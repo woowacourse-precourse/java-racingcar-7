@@ -1,10 +1,10 @@
-package racingcar.view;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class OutputView {
+public class outputController {
 
     public void printPerAttempt(Map<String, String> carMoveMap) {
         for (Entry<String, String> items : carMoveMap.entrySet()) {
@@ -15,7 +15,7 @@ public class OutputView {
     }
 
     public void printWinner(ArrayList<String> winners) {
-        String winnerPrint = "최종 우승자 : " + String.join(",", winners);
+        String winnerPrint = "최종 우승자 : " + String.join(", ", winners);
         System.out.println(winnerPrint);
     }
 }
