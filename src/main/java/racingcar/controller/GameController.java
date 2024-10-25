@@ -22,6 +22,14 @@ public class GameController {
     public void play() {
         Cars cars = Cars.from(inputView.inputCarnames());
         int gameTokens = inputView.inputGameTokens();
+        RaceRecord raceRecord = raceRecordMaker(cars,gameTokens);
+        outputView.printRaceRoundResults(raceRecord);
+        outputView.printWinners(cars.getWinners());
+    }
+
+    private RaceRecord raceRecordMaker(Cars cars,int gameTokens) {
+        if (gameTokens == 0)
+            return new RaceRecord(RaceRoundRecord.from(cars));
         cars.playOneRound(randomMovement);
         RaceRoundRecord raceRoundRecord = RaceRoundRecord.from(cars);
         RaceRecord raceRecord = new RaceRecord(raceRoundRecord);
@@ -29,7 +37,6 @@ public class GameController {
             cars.playOneRound(randomMovement);
             raceRecord.add(RaceRoundRecord.from(cars));
         }
-        outputView.printRaceRoundResults(raceRecord);
-        outputView.printWinners(cars.getWinners());
+        return raceRecord;
     }
 }
