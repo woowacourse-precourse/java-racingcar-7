@@ -14,15 +14,16 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String matchCount = Console.readLine();
 
-        System.out.println("실행 결과");
         RacePreparation racePreparation = new RacePreparation(input, matchCount);
-        RandomGenerator fixedRandomGenerator = new RandomNumberGenerator();
+        RandomGenerator randomGenerator = new RandomNumberGenerator();
         RacePrinter racePrinter = new RacePrinter();
-        Movement movement = new Movement(fixedRandomGenerator);
+        Movement movement = new Movement(randomGenerator);
+
+        System.out.println("실행 결과");
         Race race = new RaceCar(racePreparation, racePrinter, movement);
         RaceResult result = race.startRacingGame();
-        List<String> winners = result.getWinner();
 
+        List<String> winners = result.getWinner();
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }

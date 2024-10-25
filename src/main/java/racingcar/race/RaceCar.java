@@ -26,14 +26,14 @@ public class RaceCar implements Race {
     }
 
     @Override
-    public RaceResult startRacingGame() {
+    public RaceCarResult startRacingGame() {
         for (int i = 0; i < racePreparation.getMatchCount(); i++) {
             record.forEach((carName, moveForwardList) -> {
                 record.get(carName).add(movement.moveForward());
                 racePrinter.print(carName, moveForwardList);
             });
         }
-        return new RaceResult(record);
+        return new RaceCarResult(record);
     }
 
 }
