@@ -10,36 +10,38 @@ import org.junit.jupiter.api.Test;
 public class OutputViewTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private OutputViewer outputViewer;
 
     @BeforeEach
     void setUp() {
+        this.outputViewer = new OutputViewer();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @Test
     void 경주할_자동차_이름_안내문_출력() {
-        OutputViewer.getCarNameInputMessage();
+        outputViewer.getCarNameInputMessage();
         assertThat(outputStreamCaptor.toString())
-                .contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
+                .contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
     @Test
     void 시도할_횟수_안내문_출력() {
-        OutputViewer.getTryCountInputMessage();
+        outputViewer.getTryCountInputMessage();
         assertThat(outputStreamCaptor.toString())
                 .contains("시도할 횟수는 몇 회인가요?");
     }
 
     @Test
     void 실행_결과_안내문_출력() {
-        OutputViewer.getRacingProgressMessage();
+        outputViewer.getRacingProgressMessage();
         assertThat(outputStreamCaptor.toString())
                 .contains("실행 결과");
     }
 
     @Test
     void 최종_우승자_안내문_출력() {
-        OutputViewer.getRacingResultMessage("pobi, jun");
+        outputViewer.getRacingResultMessage("pobi, jun");
         assertThat(outputStreamCaptor.toString())
                 .contains("최종 우승자 : pobi, jun");
     }
