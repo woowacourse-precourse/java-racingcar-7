@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.car.Car;
 import racingcar.car.Cars;
 import racingcar.car.Count;
 
@@ -7,7 +9,9 @@ public class OutputView {
 
     private static final String REQUEST_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String REQUEST_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
-    public static final String RACING_RESULT_HEADER = "실행 결과";
+    public static final String RACING_RESULT_HEADER = "\n실행 결과";
+    public static final String RACING_RESULT_BODY = "%s : %s\n";
+    public static final String CAR_POSITION_SIGN = "-";
 
     public void requestCarNames() {
         System.out.println(REQUEST_CAR_NAMES_MESSAGE);
@@ -19,5 +23,20 @@ public class OutputView {
 
     public void printGameResult(Cars cars, Count tryCount) {
         System.out.println(RACING_RESULT_HEADER);
+
+        for (int currentCount = 0; currentCount < tryCount.getValue(); currentCount++) {
+            printCarsNameAndPosition(cars);
+            System.out.println();
+        }
+    }
+
+    private void printCarsNameAndPosition(Cars cars) {
+        List<Car> movedCars = cars.moves();
+        for (Car movedCar : movedCars) {
+            String name = movedCar.getName();
+            int position = movedCar.getPosition();
+
+            System.out.printf(RACING_RESULT_BODY, name, CAR_POSITION_SIGN.repeat(position));
+        }
     }
 }

@@ -14,10 +14,12 @@ public class Cars {
                 .toList();
     }
 
-    public void moves() {
+    public List<Car> moves() {
         for (Car car : cars) {
             car.move();
         }
+
+        return cars;
     }
 
     private void validateDuplicateCars(List<String> carNames) {
