@@ -6,4 +6,5 @@ package racingcar.strategy;
 public interface Strategy {
 
     int getMovingDistance();
+
 }

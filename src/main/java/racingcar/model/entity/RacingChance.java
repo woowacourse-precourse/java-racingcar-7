@@ -29,7 +29,6 @@ public class RacingChance {
         return new RacingChance(validatedChance);
     }
 
-
     private static void validateNotBlank(String numberToValidate) {
         if (numberToValidate.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.toString());
@@ -54,4 +53,5 @@ public class RacingChance {
     public int getValue() {
         return chance;
     }
+
 }

@@ -24,4 +24,5 @@ public enum ErrorMessage {
     public String toString() {
         return EXCEPTION_MESSAGE_PREFIX + message;
     }
+
 }

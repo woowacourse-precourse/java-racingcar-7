@@ -18,4 +18,5 @@ public interface Repository {
     void saveStartMessage();
 
     RacingResult getResult();
+
 }

@@ -14,4 +14,5 @@ public interface RacingService {
     void raceOfCarsAndChance(Cars cars, RacingChance racingChance);
 
     RacingResult getResult();
+
 }

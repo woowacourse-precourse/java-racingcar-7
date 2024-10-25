@@ -20,4 +20,5 @@ public class ConsoleInputView implements InputView {
         System.out.println(IOMessage.ENTER_RACING_CHANCE);
         return Console.readLine();
     }
+
 }

@@ -11,4 +11,5 @@ public class ConsoleOutputView implements OutputView {
     public void printResult(RacingResult result) {
         System.out.println(result);
     }
+
 }

@@ -36,4 +36,5 @@ public class AppConfig {
         return new RacingController(getInputView(), getOutputView(),
                 getCarRacingService());
     }
+
 }

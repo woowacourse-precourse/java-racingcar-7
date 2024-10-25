@@ -15,4 +15,5 @@ public class RandomMoveStrategy implements Strategy {
         }
         return 0;
     }
+
 }

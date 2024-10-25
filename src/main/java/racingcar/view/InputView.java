@@ -8,4 +8,5 @@ public interface InputView {
     String getCarNames();
 
     String getChanceToMove();
+
 }

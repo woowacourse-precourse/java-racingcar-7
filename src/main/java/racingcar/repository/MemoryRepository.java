@@ -44,4 +44,5 @@ public class MemoryRepository implements Repository {
     public RacingResult getResult() {
         return new RacingResult(memory);
     }
+
 }

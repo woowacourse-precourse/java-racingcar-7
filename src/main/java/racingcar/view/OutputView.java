@@ -8,4 +8,5 @@ import racingcar.model.dto.RacingResult;
 public interface OutputView {
 
     void printResult(RacingResult result);
+
 }
