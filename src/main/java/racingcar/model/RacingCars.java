@@ -10,4 +10,11 @@ public record RacingCars(List<RacingCar> racingCarList) {
                 .toList();
         return new RacingCars(initRacingCarList);
     }
+
+    public RacingCars move() {
+        List<RacingCar> movedRacingCarList = racingCarList.stream()
+                .map(RacingCar::move)
+                .toList();
+        return new RacingCars(movedRacingCarList);
+    }
 }
