@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.object.carEngine.AlwaysOnDriveCarEngine;
 import racingcar.object.carEngine.BrokenCarEngine;
 import racingcar.object.carEngine.CarEngine;
-import racingcar.object.carEngine.RandomCarEngine;
+import racingcar.object.carEngine.RegulationsCarEngine;
 import racingcar.object.enums.DriveResult;
 import racingcar.object.value.CarName;
 import racingcar.object.value.CarRecord;
@@ -19,14 +19,14 @@ class CarTest {
     @Test
     void ready로_새차를_생성가능() {
         CarName newCarName = new CarName("새차이름");
-        assertThat(Car.ready(new RandomCarEngine(), newCarName))
+        assertThat(Car.ready(new RegulationsCarEngine(), newCarName))
                 .isInstanceOf(Car.class);
     }
 
     @Test
     void getCarName로_CarName을_획득가능() {
         CarName newCarName = new CarName("새차이름");
-        Car newCar = Car.ready(new RandomCarEngine(), newCarName);
+        Car newCar = Car.ready(new RegulationsCarEngine(), newCarName);
         CarName getCarName = newCar.getCarName();
 
         assertThat(getCarName).isEqualTo(newCarName);
@@ -35,7 +35,7 @@ class CarTest {
     @Test
     void getMileage로_Mileage_획득가능() {
         CarName newCarName = new CarName("새차이름");
-        Car newCar = Car.ready(new RandomCarEngine(), newCarName);
+        Car newCar = Car.ready(new RegulationsCarEngine(), newCarName);
         Mileage newCarMileage = newCar.getMileage();
         Mileage noRunCarMileage = new Mileage(0);
         int resultOfCompareTo = newCarMileage.compareTo(noRunCarMileage);

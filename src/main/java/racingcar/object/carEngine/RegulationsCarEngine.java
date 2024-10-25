@@ -2,7 +2,7 @@ package racingcar.object.carEngine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomCarEngine implements CarEngine {
+public class RegulationsCarEngine implements CarEngine {
 
     public static final int WEIGHT_STANDARD_FOR_DRIVING = 4;
 
