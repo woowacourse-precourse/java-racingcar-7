@@ -50,6 +50,7 @@ class RacingGame {
             printStatus();
         }
         // 승자 출력
+        printWinner();
     }
 
     private void race() {
@@ -65,6 +66,15 @@ class RacingGame {
             System.out.println(car.getName() + " : " + car.getPositionString());
         }
         System.out.println();
+    }
+
+    private void printWinner() {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
 
