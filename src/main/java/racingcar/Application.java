@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.sql.Array;
 import java.util.Arrays;
 import java.util.List;
@@ -11,12 +13,15 @@ import java.util.Map;
 public class Application {
     private static final String DELIMITER = ",";
     private static final int NAME_LENGTH_LIMIT = 5;
+    private static final int START_INCLUSIVE = 0;
+    private static final int END_INCLUSIVE = 9; // endInclusive
     private static final int MOVING_FORWARD = 4;
 
     private static Map<String, Integer> stateMap = null;
     private static int progressCount = 0;
     public static void main(String[] args) {
         setArguments();
+        progressRace();
     }
 
     /**
@@ -64,5 +69,43 @@ public class Application {
                 stateMap.put(name, 0);
             }
         }
+    }
+
+    /**
+     * 입력된 값들을 활용하여 경주를 진행합니다.
+     * 각 자동차의 전진을 시도한 후, 시도 결과를 출력합니다.
+     */
+    private static void progressRace() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < progressCount; i++) {
+            moveForward();
+            printStates();
+        }
+    }
+
+    /**
+     * 각 자동차의 전진을 한 차례 시도합니다.
+     * 전진 조건은 무작위 값이 일정 수치 이상인 경우입니다.
+     */
+    private static void moveForward() {
+        for (String name: stateMap.keySet()) {
+            if(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE) >= MOVING_FORWARD) {
+                stateMap.put(name, stateMap.get(name) + 1);
+            }
+        }
+    }
+
+    /**
+     * 현재 각 자동차의 상황(전진 횟수)을 출력합니다.
+     */
+    private static void printStates() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : stateMap.entrySet()) {
+            stringBuilder.append(entry.getKey()).append(" : ");
+            stringBuilder.append("-".repeat(Math.max(0, entry.getValue())));
+            stringBuilder.append("\n");
+        }
+
+        System.out.println(stringBuilder.toString());
     }
 }
