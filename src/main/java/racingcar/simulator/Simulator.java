@@ -27,7 +27,7 @@ public class Simulator {
         }
     }
 
-    private int getRandomNumber() {
+    protected int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
@@ -57,7 +57,7 @@ public class Simulator {
         return winners;
     }
 
-    public void simulate() {
+    public List<Car> simulate() {
         for (int tryCount = 1; tryCount <= this.numberOfAttempts; tryCount++) {
             for (int carId = 0; carId < this.numberOfCars; carId++) {
                 Car currentOrderOfCar = carMap.get(carId);
@@ -67,6 +67,23 @@ public class Simulator {
         }
         List<Car> winners = this.findWinners();
         resultPrinter.printResultOfWinners(winners);
+
+        return winners;
     }
 
+    public int[] getRacingBoard() {
+        return racingBoard;
+    }
+
+    public int getNumberOfAttempts() {
+        return numberOfAttempts;
+    }
+
+    public int getNumberOfCars() {
+        return numberOfCars;
+    }
+
+    public Map<Integer, Car> getCarMap() {
+        return carMap;
+    }
 }
