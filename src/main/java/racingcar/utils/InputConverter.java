@@ -13,4 +13,8 @@ public class InputConverter {
                 .map(String::trim)
                 .collect(Collectors.toList());
     }
+
+    public static Integer convertCount(String input){
+        return Integer.parseInt(input);
+    }
 }
