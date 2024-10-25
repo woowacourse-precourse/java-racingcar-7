@@ -9,9 +9,9 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
-    private  InputView inputView;
-    private  OutputView outputView;
-    private  RandomMovement randomMovement;
+    private InputView inputView;
+    private OutputView outputView;
+    private RandomMovement randomMovement;
 
     public GameController(InputView inputView, OutputView outputView, RandomMovement randomMovement) {
         this.inputView = inputView;
@@ -22,18 +22,17 @@ public class GameController {
     public void play() {
         Cars cars = Cars.from(inputView.inputCarnames());
         int gameTokens = inputView.inputGameTokens();
-        RaceRecord raceRecord = raceRecordMaker(cars,gameTokens);
+        RaceRecord raceRecord = raceRecordMaker(cars, gameTokens);
         outputView.printRaceRoundResults(raceRecord);
         outputView.printWinners(cars.getWinners());
     }
 
-    private RaceRecord raceRecordMaker(Cars cars,int gameTokens) {
+    private RaceRecord raceRecordMaker(Cars cars, int gameTokens) {
         if (gameTokens == 0)
             return new RaceRecord(RaceRoundRecord.from(cars));
         cars.playOneRound(randomMovement);
-        RaceRoundRecord raceRoundRecord = RaceRoundRecord.from(cars);
-        RaceRecord raceRecord = new RaceRecord(raceRoundRecord);
-        for (int i=0; i<gameTokens-1; i++){
+        RaceRecord raceRecord = new RaceRecord(RaceRoundRecord.from(cars));
+        for (int i = 0; i < gameTokens - 1; i++) {
             cars.playOneRound(randomMovement);
             raceRecord.add(RaceRoundRecord.from(cars));
         }
