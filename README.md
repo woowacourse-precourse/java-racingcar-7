@@ -1,4 +1,52 @@
 # [자동차 경주] 우아한테크코스(pre) 2주차
+
+<details>
+<summary> 프로젝트 구조 </summary>
+
+Application
+- RacingGame.run()
+
+UserView()
+- readCarName()
+- readAttempNum()
+- printResultGuide()
+- printCarNameGuide()
+- printWinner()
+- printAttempResult()
+
+RacingGame()
+- run()
+  - Car.set()
+  - setAttempNum()
+  - UserView.ResultGuide()
+  - for{
+  goOrStop()
+  UserView.printAttempResult()
+  }
+  - findWinner()
+  - UserView.printWinner()
+- setAttempNum()
+  - UserView.readAttempNum()
+  - checkAttempNum()
+- checkAttempNum()
+- goOrStop()
+- findWinner()
+
+Car()
+- set()
+  - UserView.readCarName()
+  - separateName()
+  - duplication()
+  - blank()
+- get()
+- separateName()
+  - count()
+  - checkduplication()
+- count()
+- duplication()
+- blank()
+</details>
+
 ___
 ## 🐜 학습 목표
 - 여러 역할을 수행하는 **큰 함수**를 단일 역할을 수행하는 **작은 함수로 분리**한다.
@@ -41,21 +89,21 @@ jyu,yeong,jeongha
 ```
 #### 출력
 - 차수별 실행 결과
-```declarative
+```
 jyu : --
 yeong : ----
 jeongha : ---
 ```
 - 단독 우승자 안내 문구
-```declarative
+```
 최종 우승자 : jyu
 ```
 - 공동 우승자 안내 문구
-```declarative
+```
 최종 우승자 : jyu, yeong
 ```
 #### 실행 결과 예시
-```declarative
+```
 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
 jyu,yeong,jeongha
 시도할 횟수는 몇 회인가요?
