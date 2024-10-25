@@ -54,6 +54,7 @@
 - [X] 모든 자동차는 0부터 9 사이의 무작위 값을 각 시도 때 할당받는다.
     - [X] 랜덤 숫자를 생성 시에 camp.nextstep.edu.missionutils Randoms의 pickNumberInRange()를 활용한다.
 - [X] 그 값이 4 이상이면 전진한다.(객체의 상태를 변경한다.)
+- [ ] 우승자를 자동차들의 위치로 판별한다.
 
 ---
 
