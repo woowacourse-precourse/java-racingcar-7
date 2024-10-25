@@ -16,26 +16,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UnitTest extends NsTest {
 
-    private final InputStream originalIn = System.in;
-
-    @BeforeEach
-    void setUp() {
-        // 각 테스트 전에 System.in을 복구하기 위해 원본을 저장합니다.
-        System.setIn(originalIn);
-    }
-
-    @AfterEach
-    void restoreSystemIn() {
-        // 각 테스트 후에 System.in을 원본으로 복구합니다.
-        System.setIn(originalIn);
-    }
-
     @Test
-    @DisplayName("getCarInput 테스트")
-    void getCarInputTest() {
-        final String input = "car1,car2,car3\n";
+    @DisplayName("readInput 테스트")
+    void readInputTest() {
+        String input = "car1,car2,car3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        String result = Application.getCarInput();
+        String result = Application.readInput();
         assertThat(result).isEqualTo("car1,car2,car3");
     }
 
@@ -60,9 +46,8 @@ public class UnitTest extends NsTest {
     @Test
     @DisplayName("getTrial 글자수 정상 작동 테스트")
     void getTrialTest() {
-        final String input = "5\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        Integer result = Application.getTrial();
+        String input = "5";
+        Integer result = Application.parseTrial(input);
         assertThat(result).isEqualTo(5);
     }
 
@@ -71,7 +56,7 @@ public class UnitTest extends NsTest {
     void getTrialTest2() {
         final String input = "--\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-        assertThatThrownBy(() -> Application.getTrial())
+        assertThatThrownBy(() -> Application.parseTrial(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
