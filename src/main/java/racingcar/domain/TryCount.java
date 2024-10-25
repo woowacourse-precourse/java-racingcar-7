@@ -4,6 +4,8 @@ import static racingcar.constant.ExceptionMessage.TRY_COUNT_MUST_BE_POSITIVE;
 
 public class TryCount {
 
+    private static final int MINIMUM_TRY_COUNT = 0;
+
     private Integer count;
 
     public void set(int count) {
@@ -12,7 +14,7 @@ public class TryCount {
     }
 
     private void validate(int count) {
-        if (count < 0) {
+        if (count < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_MUST_BE_POSITIVE.getMessage());
         }
     }
@@ -22,6 +24,6 @@ public class TryCount {
     }
 
     public boolean remain() {
-        return count > 0;
+        return count > MINIMUM_TRY_COUNT;
     }
 }

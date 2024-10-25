@@ -14,6 +14,9 @@ public enum OutputMessage {
     NEW_LINE("%n"),
     ;
 
+    private static final String SCORE_CHARACTER = "-";
+    private static final String WINNER_NAME_DELIMITER = ", ";
+
     private String message;
 
     OutputMessage(String message) {
@@ -26,14 +29,14 @@ public enum OutputMessage {
 
     public String getMessage(CarDto car) {
         if (equals(ROUND_RESULT_CAR)) {
-            return String.format(message, car.name(), "-".repeat(car.position()));
+            return String.format(message, car.name(), SCORE_CHARACTER.repeat(car.position()));
         }
         return String.format(message);
     }
 
     public String getMessage(List<String> winnerNames) {
         if (equals(FINAL_WINNER)) {
-            return String.format(message, String.join(", ", winnerNames));
+            return String.format(message, String.join(WINNER_NAME_DELIMITER, winnerNames));
         }
         return String.format(message);
     }

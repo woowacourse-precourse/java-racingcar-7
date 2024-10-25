@@ -4,9 +4,13 @@ import racingcar.dto.CarDto;
 import racingcar.util.RandomUtil;
 
 public class Car {
+    
+    private static final int INIT_POSITION = 0;
+    private static final int MOVE_STANDARD = 4;
+    private static final int DEFAULT_MOVE_DISTANCE = 1;
 
     private final String name;
-    private int position = 0;
+    private int position = INIT_POSITION;
 
     public Car(String name) {
         this.name = name;
@@ -22,8 +26,8 @@ public class Car {
     }
 
     public void move(int carNumber) {
-        if (carNumber >= 4) {
-            position++;
+        if (carNumber >= MOVE_STANDARD) {
+            position += DEFAULT_MOVE_DISTANCE;
         }
     }
 
