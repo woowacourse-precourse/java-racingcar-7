@@ -13,6 +13,11 @@ public class Racingcar {
         return moveCount;
     }
 
+    public Racingcar(String name, int moveCount) {
+        this.name = name;
+        this.moveCount = moveCount;
+    }
+
     public Racingcar(String name) { 
         this.name = name;
         this.moveCount = 0;
