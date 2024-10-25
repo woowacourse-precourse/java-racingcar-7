@@ -6,28 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void raceCar(String[] cars, int raceNumber){
-        List<StringBuilder> raceResult = new ArrayList<>(cars.length);
+    public  static String getCarsName() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carsInput = Console.readLine();
 
-        System.out.println("실행 결과");
-
-        for (int i = 0; i < cars.length; i++) {
-            raceResult.add(new StringBuilder());
+        if (carsInput == null) {
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
         }
-
-        for (int i = 0; i < raceNumber; i++) {
-            for (int j = 0; j < cars.length; j++) {
-                System.out.print(cars[j] + " : ");
-
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber >= 4) {
-                    raceResult.get(j).append("-");
-                }
-                System.out.print(raceResult.get(j));
-                System.out.print("\n");
-            }
-            System.out.print("\n");
-        }
+        return carsInput;
     }
 
     public static String[] trimCars(String[] cars) {
@@ -44,11 +30,6 @@ public class Application {
         return cars;
     }
 
-    public  static String getCarsName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return Console.readLine();
-    }
-
     public static int getRaceNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numberInput = Console.readLine();
@@ -60,12 +41,36 @@ public class Application {
         return numberInt;
     }
 
+    public static void randomNumber(List<StringBuilder> raceResult, int j) {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+
+        if (randomNumber >= 4) {
+            raceResult.get(j).append("-");
+        }
+    }
+
+    public static void raceCar(String[] cars, int raceNumber){
+        List<StringBuilder> raceResult = new ArrayList<>(cars.length);
+
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < cars.length; i++) {
+            raceResult.add(new StringBuilder());
+        }
+
+        for (int i = 0; i < raceNumber; i++) {
+            for (int j = 0; j < cars.length; j++) {
+                System.out.print(cars[j] + " : ");
+                randomNumber(raceResult, j);
+                System.out.print(raceResult.get(j));
+                System.out.print("\n");
+            }
+            System.out.print("\n");
+        }
+    }
+
     public static void main(String[] args) {
         String carsInput = getCarsName();
-
-        if (carsInput == null) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
-        }
 
         String[] splitCars = carsInput.split(",", -1);
         String[] trimmedCars = trimCars(splitCars);
