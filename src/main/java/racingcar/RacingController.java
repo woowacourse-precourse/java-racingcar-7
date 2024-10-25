@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingController {
     public static void run(){   // 모든 함수로 조립해 통합 컨트롤러 생성
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -19,6 +21,7 @@ public class RacingController {
             System.out.println();
         }
 
-        OutputHandler.winnerOuput(racingcars, racingRound);
+        List<Racingcar> winner = RacingGame.findWinner(racingcars);
+        OutputHandler.winnerOuput(winner);
     }
 }

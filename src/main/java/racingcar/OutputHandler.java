@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class OutputHandler {
     public static void runOutput(Racingcar[] racingcars){ // 실행 결과 출력
         for (int i = 0; i < racingcars.length; i++) {
@@ -11,16 +13,13 @@ public class OutputHandler {
         }
     }
 
-    public static void winnerOuput(Racingcar[] racingcars,int racingRound){   // 최종 우승자 출력
-        int winnerCount = 0;
+    public static void winnerOuput(List<Racingcar> winner){   // 최종 우승자 출력
         System.out.print("최종 우승자 : ");
-        for (int i = 0; i < racingcars.length; i++) {
-            if (winnerCount!=0) {
+        for (int i = 0; i < winner.size(); i++) {
+            if (i!=0) {
                 System.out.print(", ");
             }
-            if (racingcars[i].getMoveCount()==racingRound) {
-                System.out.println(racingcars[i].getName());
-            }
+            System.out.print(winner.get(i).getName());
         }
     }
 }
