@@ -3,16 +3,19 @@ package racingcar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class RacingCarTrace {
     private final Map<RacingCar, Integer> trace = new LinkedHashMap<>();
 
     public void put(RacingCar racingCar) {
+        validateDuplicateName(racingCar);
+        trace.put(racingCar, 0);
+    }
+
+    private void validateDuplicateName(RacingCar racingCar) {
         if (trace.containsKey(racingCar)) {
             throw new IllegalArgumentException("중복된 이름이 존재합니다.");
         }
-        trace.put(racingCar, 0);
     }
 
     public void forwardOrStop(RacingCar racingCar) {
