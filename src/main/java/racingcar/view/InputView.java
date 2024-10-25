@@ -21,7 +21,9 @@ public class InputView {
     }
 
     protected static List<String> splitNames(String input) {
-        List<String> splitNames = Arrays.stream(input.split(DELIMITER, SPLIT_INCLUDE_LAST_SPACE)).toList();
+        List<String> splitNames = Arrays.stream(
+                input.split(DELIMITER, SPLIT_INCLUDE_LAST_SPACE))
+            .toList();
         validateNames(splitNames);
         return splitNames;
     }
