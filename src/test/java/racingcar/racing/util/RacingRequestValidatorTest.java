@@ -27,7 +27,8 @@ class RacingRequestValidatorTest {
         return Stream.of(
                 Arguments.of(List.of("pobiIsLong", "woni", "java"), 5),
                 Arguments.of(List.of(""), 4),
-                Arguments.of(List.of("", "qwer"), 4)
+                Arguments.of(List.of("", "qwer"), 4),
+                Arguments.of(List.of("java", "woni", "java"), 5)
         );
     }
 }
