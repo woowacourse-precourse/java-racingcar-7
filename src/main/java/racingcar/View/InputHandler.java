@@ -9,6 +9,8 @@ import java.util.SimpleTimeZone;
 public class InputHandler {
     static private final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";
     static private final int CAR_MAX_LENGTH = 5;
+    static private final int MOVE_ATTEMPT_COUNT_MAX = 100;
+    static private final int MOVE_ATTEMPT_COUNT_MIN = 1;
     List<String> carNames;
     int moveAttemptCount = 0;
 
@@ -55,12 +57,12 @@ public class InputHandler {
     public int moveAttemptCount() {
         String userInput = Console.readLine();
         parseToInt(userInput);
-        validateAttemptCount(userInput);
+        validateAttemptCount(moveAttemptCount);
         return moveAttemptCount;
     }
 
-    private void validateAttemptCount(String userInput) {
-        checkNumeric(userInput);
+    private void validateAttemptCount(int moveAttemptCount) {
+        checkCountRange(moveAttemptCount);
     }
 
     private void parseToInt(String userInput) {
@@ -68,6 +70,12 @@ public class InputHandler {
             moveAttemptCount = Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도횟수는 숫자여야 합니다.");
+        }
+    }
+
+    private void checkCountRange(int moveAttemptCount) {
+        if (moveAttemptCount < MOVE_ATTEMPT_COUNT_MIN || moveAttemptCount > MOVE_ATTEMPT_COUNT_MAX) {
+            throw new IllegalArgumentException("이동시도횟수 범위는 1~100 입니다.");
         }
     }
 }
