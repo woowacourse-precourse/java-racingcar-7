@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidator {
     private static final String ERROR_MESSAGE_EMPTY_INPUT = "입력값은 공백일 수 없습니다.";
     private static final String ERROR_MESSAGE_TRAILING_COMMA = "입력값의 마지막에 콤마(,)가 올 수 없습니다.";
+    private static final String ERROR_MESSAGE_INVALID_NUMBER = "시도 횟수는 숫자만 입력 가능합니다.";
     private static final String ERROR_MESSAGE_INVALID_CHARACTERS = "입력값에 콤마(,)이외의 특수문자를 허용하지 않습니다.";
     private static final Pattern TRAILING_COMMA_PATTERN = Pattern.compile(".*,$");
     private static final Pattern VALID_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z가-힣0-9,\\s]+$");
@@ -17,6 +18,7 @@ public class InputValidator {
 
     public static void validateAttemptCountInput(String input) {
         checkEmptyInput(input);
+        checkIfNumeric(input);
     }
 
     private static void checkEmptyInput(String input) {
@@ -34,6 +36,14 @@ public class InputValidator {
     private static void checkInvalidCharacters(String input) {
         if (!VALID_CHARACTERS_PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_INVALID_CHARACTERS);
+        }
+    }
+
+    private static void checkIfNumeric(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_INVALID_NUMBER);
         }
     }
 }
