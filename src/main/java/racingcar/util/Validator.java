@@ -14,6 +14,9 @@ public class Validator {
         if (carNames.size() > 1000) {
             throw new IllegalArgumentException();
         }
+        if (carNames.size() == 0){
+            throw new IllegalArgumentException();
+        }
         for (String carName : carNames) {
             if (carName == null || carName.isBlank()) {
                 throw new IllegalArgumentException();
