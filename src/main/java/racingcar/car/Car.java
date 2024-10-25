@@ -7,10 +7,12 @@ public class Car {
 
 	private int location;
 
+	private static final int START_LOCATION = 0;
+
 	public Car(String name) {
 		validateCarLength(name);
 		this.name = name;
-		this.location = 0;
+		this.location = START_LOCATION;
 	}
 
 	private static void validateCarLength(String carName) {
