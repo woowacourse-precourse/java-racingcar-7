@@ -41,11 +41,11 @@ class InputViewTest {
     public void printCarNamesRequestMessageTest() {
         //given
         InputView inputView = new InputView();
+        String printResult = outputMessage.toString().trim();
         //when
         inputView.printCarNamesRequestMessage();
         //then
-        assertEquals(outputMessage.toString().trim(),
-                NAMES_REQUEST_MESSAGE.getMessage());
+        assertEquals(printResult, NAMES_REQUEST_MESSAGE.getMessage());
     }
 
 }
