@@ -138,6 +138,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 라운드_파싱_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, hani ", "notRound"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
