@@ -4,6 +4,9 @@ import racingcar.Input.Read;
 import racingcar.Input.Split;
 import racingcar.Input.Validation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -35,9 +38,12 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
         }
 
+        // 매번 값을 수정해야 하기 때문에 조회, 수정이 많아서 Map 자료형 선택
+        Map<String, Integer> race = new HashMap<>();
+
+        // Map 안에 자동차의 이름을 key로 초기값인 0 넣기
         for (String car : carArray) {
-            System.out.println(car);
-            System.out.println(movenumber);
+            race.put(car, 0);
         }
     }
 }
