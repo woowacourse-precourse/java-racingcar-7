@@ -13,6 +13,7 @@ public class Application {
         Validator<String> trialValidator = new TrialValidator();
         CarRepository carRepository = new CarRepository();
         GameController gameController = new GameController(nameValidator, trialValidator, carRepository);
+
         gameController.run();
     }
 }

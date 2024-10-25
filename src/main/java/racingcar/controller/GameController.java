@@ -22,24 +22,38 @@ public class GameController {
         this.gameEngine = new GameEngine(carRepository);
     }
     public void run(){
+        String[] carNames = getCarNames();
+        int trialCount = getTrialCount();
 
+        carRepository.initCarRepository(carNames);
+
+        runGame(trialCount);
+
+        printWinners();
+    }
+
+    private String[] getCarNames(){
         String userCarInput = InputView.userInputCar();
         String[] carNameArr = StringProcessor.process(userCarInput);
-
         carValidator.validate(carNameArr);
 
+        return carNameArr;
+    }
+
+    private int getTrialCount(){
         String userTrialInput = InputView.userInputTrial();
         trialValidator.validate(userTrialInput);
+        return Integer.parseInt(userTrialInput);
+    }
 
-        int trial = Integer.parseInt(userTrialInput);
-
-        carRepository.initCarRepository(carNameArr);
-
+    private void runGame(int trial){
         for(int i = 0; i<trial; i++){
             gameEngine.runSingleRound();
             OutputView.printCarProgress(carRepository.getCarList());
         }
+    }
 
+    private void printWinners(){
         gameEngine.decideWinners();
 
         List<String> winners = gameEngine.getWinners();
