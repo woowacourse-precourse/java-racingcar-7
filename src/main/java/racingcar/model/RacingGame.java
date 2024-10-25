@@ -31,6 +31,18 @@ public class RacingGame {
     }
 
     public List<Car> getParticipants() {
-        return new ArrayList<>(participants);
+        return participants.stream().map(Car::new).toList();
+    }
+
+    public List<Car> getWinners() {
+        int winnerPosition = participants.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return participants.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::new)
+                .toList();
     }
 }
