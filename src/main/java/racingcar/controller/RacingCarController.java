@@ -18,7 +18,7 @@ public class RacingCarController {
     }
 
     public void start() {
-        Cars cars = new Cars(inputView.getCarNames());
+        Cars cars = new Cars(InputView.getCarNames());
         int attemptsCount = InputView.getAttempts();
 
         race(cars, attemptsCount);
@@ -29,7 +29,7 @@ public class RacingCarController {
 
 
     public void race(Cars cars, int attempsCount) {
-        outputView.printResultMessage();
+        OutputView.printResultMessage();
         for (int i = 0; i < attempsCount; i++) {
             cars.raceGame();
             outputView.printCarStatus(cars.getCarNames(), cars.getCarPositions());
