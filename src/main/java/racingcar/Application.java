@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
@@ -24,5 +25,10 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(Console.readLine());
         return count;
+    }
+
+    private static boolean determineMovement() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) return true;
+        return false;
     }
 }
