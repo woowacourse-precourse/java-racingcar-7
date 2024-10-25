@@ -3,6 +3,7 @@ package racingcar.dto;
 import static racingcar.common.exception.ErrorMessage.*;
 
 import racingcar.common.exception.RacingCarException;
+import java.util.List;
 
 public record RacingCarNames(String input) {
 
@@ -11,21 +12,19 @@ public record RacingCarNames(String input) {
     }
 
     private void validateInput(String input) {
-        String[] carNames = input.split(",");
+        List<String> carNames = List.of(input.split(","));
         validateMinimumTwoCars(carNames);
         validateEachCarName(carNames);
     }
 
-    private void validateMinimumTwoCars(String[] carNames) {
-        if (carNames.length < 2) {
+    private void validateMinimumTwoCars(List<String> carNames) {
+        if (carNames.size() < 2) {
             throw RacingCarException.from(RACING_CAR_MINIMUM_TWO_REQUIRED);
         }
     }
 
-    private void validateEachCarName(String[] carNames) {
-        for (String name : carNames) {
-            validateSingleCarName(name);
-        }
+    private void validateEachCarName(List<String> carNames) {
+        carNames.forEach(this::validateSingleCarName);
     }
 
     private void validateSingleCarName(String carName) {
