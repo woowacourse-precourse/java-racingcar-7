@@ -35,7 +35,7 @@ public class Race {
     private void updateRoundResult(List<Car> cars) {
         Map<String, Integer> roundResult = new HashMap<>();
         for (Car car : cars) {
-            roundResult.put(car.getName(), car.getState());
+            roundResult.put(car.getName(), car.getPosition());
         }
         result.add(roundResult);
     }

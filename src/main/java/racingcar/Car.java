@@ -2,15 +2,15 @@ package racingcar;
 
 public class Car {
 
-    private int state = 0;
+    private int position = 0;
     private String name;
 
     public Car(String name) {
         this.name = name;
     }
 
-    public int getState() {
-        return state;
+    public int getPosition() {
+        return position;
     }
 
     public String getName() {
@@ -18,6 +18,6 @@ public class Car {
     }
 
     public void go() {
-        state++;
+        position++;
     }
 }
