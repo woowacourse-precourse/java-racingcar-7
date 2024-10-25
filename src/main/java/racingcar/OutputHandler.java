@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public interface OutputHandler {
     void showCommentForCarNames();
 
@@ -7,9 +9,7 @@ public interface OutputHandler {
 
     void showCommentForResult();
 
-    void showCarPosition(String name, String repeatHyphen);
-
-    void showBlankLine();
+    void showCarPosition(List<String> names, List<Long> positions);
 
     void showWinners(String winners);
 }
