@@ -32,4 +32,10 @@ public class Service {
                 .filter(car -> car.getLocation() == maxDistance)
                 .collect(Collectors.toList());
     }
+
+    public List<Car> registerCar(final List<String> carNames) {
+        List<Car> carList = new ArrayList<>();
+        carNames.forEach(carName -> carList.add(new Car(carName)));
+        return carList;
+    }
 }

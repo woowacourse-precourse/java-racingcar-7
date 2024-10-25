@@ -43,6 +43,10 @@ public class Controller {
         outputView.printWinner(car);
     }
 
+    public List<Car> registerCar(final List<String> carNames) {
+        return service.registerCar(carNames);
+    }
+
     public void printWinners(final List<Car> winnerList) {
         outputView.printWinners(winnerList);
     }

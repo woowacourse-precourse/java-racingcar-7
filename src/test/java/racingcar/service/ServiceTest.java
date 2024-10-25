@@ -50,6 +50,22 @@ class ServiceTest {
         }
     }
 
+    @DisplayName("입력받은 차 이름 리스트로 차 객체를 만든다.")
+    @MethodSource("provideRegisterCarTestCases")
+    @ParameterizedTest(name = "기대 list: \"{0}\", 입력 list: \"{1}\"")
+    void registerCar(List<Car> expectedCarList, List<String> carNames) {
+        List<Car> registerCarList = service.registerCar(carNames);
+
+        assertEquals(expectedCarList.size(), registerCarList.size());
+
+        for (int idx = 0; idx < expectedCarList.size(); idx++) {
+            assertEquals(expectedCarList.get(idx).getName(), registerCarList.get(idx).getName());
+            assertEquals(expectedCarList.get(idx).getLocation(),
+                    registerCarList.get(idx).getLocation());
+        }
+    }
+
+
     private static Stream<Arguments> provideSplitCarNamesTestCases() {
         return Stream.of(
                 Arguments.of(new ArrayList<>(Arrays.asList("pobi", "woni", "jun")), "pobi,woni,jun")
@@ -84,6 +100,16 @@ class ServiceTest {
         return Stream.of(
                 Arguments.of(List.of(pobi), Arrays.asList(pobi, woni, jun), 3),
                 Arguments.of(Arrays.asList(woni, jun), Arrays.asList(woni, jun, gonagi), 2)
+        );
+    }
+
+    private static Stream<Arguments> provideRegisterCarTestCases() {
+        Car pobi = new Car("pobi");
+        Car woni = new Car("woni");
+        Car jun = new Car("jun");
+
+        return Stream.of(
+                Arguments.of(Arrays.asList(pobi, woni, jun), Arrays.asList("pobi", "woni", "jun"))
         );
     }
 }
