@@ -18,7 +18,7 @@ public class Judgment {
 	}
 
 	public boolean judgmentCarNameLength(String carName) {
-		return true;
+		return carName.length() < 6;
 	}
 
 }

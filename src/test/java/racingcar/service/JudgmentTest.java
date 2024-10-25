@@ -34,7 +34,7 @@ class JudgmentTest {
 	@Test
 	@DisplayName("이름 글자 수 제한 판정 테스트")
 	void 이름_글자수_테스트() {
-
+		assertThat(judgment.judgmentCarNameLength("pubi")).isTrue();
 	}
 
 	@Test
