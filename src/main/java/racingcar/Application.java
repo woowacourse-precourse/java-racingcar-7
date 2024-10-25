@@ -52,7 +52,7 @@ public class Application {
         return Integer.parseInt(str);
     }
 
-    private LinkedHashMap initializeCarPositions(String[] cars) {
+    private LinkedHashMap<String, Integer> initializeCarPositions(String[] cars) {
         for (String carName : cars) {
             carPositions.put(carName, 0);
         }
@@ -61,5 +61,9 @@ public class Application {
 
     private void moveCarForward(String car) {
         carPositions.put(car, carPositions.get(car) + 1);
+    }
+
+    private void printRoundResult(String car) {
+        System.out.println(car + " : " + carPositions.get(car));
     }
 }
