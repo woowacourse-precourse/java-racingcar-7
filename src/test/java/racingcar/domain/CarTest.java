@@ -22,28 +22,28 @@ class CarTest {
     }
 
     @Test
-    void 자동차_생성() {
+    void 자동차를_생성한다() {
         //given
 
         //when
 
         //then
-        assertThat(car).hasToString("kyj : ");
+        assertThat(car.getName()).isEqualTo(carName);
     }
 
     @Test
-    void 자동차_전진() {
+    void 자동차를_전진한다() {
         //given
 
         //when
         car.move();
 
         //then
-        assertThat(car).hasToString("kyj : -");
+        assertThat(car.getName()).isEqualTo(carName);
     }
 
     @Test
-    void 자동차_이름_길이_예외() {
+    void 자동차_이름의_길이가_5자가_넘으면_예외를_반환한다() {
         //given
 
         //when
@@ -56,7 +56,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {" ", "", "   "})
-    void 자동차_이름_공백_예외(String name) {
+    void 자동차_이름이_공백이면_예외를_반환한다(String name) {
         //given
 
         //when

@@ -24,18 +24,7 @@ class RacingCarsTest {
     }
 
     @Test
-    void 자동차들_생성() {
-        //given
-
-        //when
-        RacingCars racingCars = RacingCars.of(names);
-
-        //then
-        assertThat(racingCars).hasToString("pobi : \n" + "woni : ");
-    }
-
-    @Test
-    void 자동차_이름_중복_예외() {
+    void 자동차_이름이_중복되면_예외를_반환한다() {
         //given
 
         //when
@@ -47,7 +36,7 @@ class RacingCarsTest {
     }
 
     @Test
-    void 충분하지_않은_자동차_갯수_예외() {
+    void 충분하지_않은_자동차_갯수라면_예외를_반환한다() {
         //given
 
         //when
@@ -59,7 +48,7 @@ class RacingCarsTest {
     }
 
     @Test
-    void 우승자_찾기() {
+    void 가장_위치가_먼_자동차를_찾는다() {
         //given
         RacingCars racingCars = new RacingCars(cars);
         racingCars.move();

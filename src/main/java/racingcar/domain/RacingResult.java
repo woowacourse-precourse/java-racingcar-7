@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 public class RacingResult {
 
     private final List<Car> winners;
-    private final List<String> snapshot;
+    private final List<RacingSnapshot> snapshots;
 
-    public RacingResult(RacingCars cars, List<String> snapshot) {
+    public RacingResult(RacingCars cars, List<RacingSnapshot> snapshots) {
         this.winners = cars.findWinners();
-        this.snapshot = snapshot;
+        this.snapshots = snapshots;
     }
 
     public List<String> getWinner() {
@@ -19,7 +19,7 @@ public class RacingResult {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getSnapshot() {
-        return snapshot;
+    public List<RacingSnapshot> getSnapshots() {
+        return snapshots;
     }
 }

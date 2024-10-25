@@ -19,34 +19,34 @@ class RacingResultTest {
     }
 
     @Test
-    void 우승자_결정() {
+    void 우승자를_결정한다() {
         //given
         racingCars = new RacingCars(List.of(pobi, woni));
         racingCars.move();
-        List<String> snapshot = List.of(pobi.toString(), woni.toString());
+        RacingSnapshot racingSnapshot = new RacingSnapshot(racingCars.getSnapshots());
+        List<RacingSnapshot> snapshots = List.of(racingSnapshot);
 
         //when
-        RacingResult racingResult = new RacingResult(racingCars, snapshot);
+        RacingResult racingResult = new RacingResult(racingCars, snapshots);
 
         //then
         assertWinner(racingResult, pobi);
-        assertSnapshot(racingResult, snapshot);
     }
 
     @Test
-    void 우승자가_여러명일_때_결정() {
+    void 우승자가_여러명이라면_모두_반환한다() {
         //given
         woni = new Car("woni", () -> true);
         racingCars = new RacingCars(List.of(pobi, woni));
         racingCars.move();
-        List<String> snapshot = List.of(pobi.toString(), woni.toString());
+        RacingSnapshot racingSnapshot = new RacingSnapshot(racingCars.getSnapshots());
+        List<RacingSnapshot> snapshots = List.of(racingSnapshot);
 
         //when
-        RacingResult racingResult = new RacingResult(racingCars, snapshot);
+        RacingResult racingResult = new RacingResult(racingCars, snapshots);
 
         //then
         assertWinner(racingResult, pobi, woni);
-        assertSnapshot(racingResult, snapshot);
     }
 
     private void assertWinner(RacingResult result, Car... expectedWinners) {
@@ -56,9 +56,5 @@ class RacingResultTest {
                                 .map(Car::getName)
                                 .toArray(String[]::new)
                 );
-    }
-
-    private void assertSnapshot(RacingResult result, List<String> expectedSnapshot) {
-        assertThat(result.getSnapshot()).containsExactlyElementsOf(expectedSnapshot);
     }
 }

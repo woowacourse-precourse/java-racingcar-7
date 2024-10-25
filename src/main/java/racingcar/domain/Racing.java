@@ -9,7 +9,7 @@ public class Racing {
 
     public static final int MINIMUM_TRY_COUNT = 1;
     private final RacingCars cars;
-    private final List<String> snapshot;
+    private final List<RacingSnapshot> snapshot;
     private int remainingTryCount;
 
     public Racing(final RacingCars cars, final int tryCount) {
@@ -37,7 +37,6 @@ public class Racing {
 
     private void race() {
         cars.move();
-        snapshot.add(cars.toString());
+        snapshot.add(new RacingSnapshot(cars.getSnapshots()));
     }
-
 }

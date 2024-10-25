@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    public static final String NEW_LINE = "\n";
     public static final int MINIMUM_CAR_COUNT = 2;
     private final List<Car> cars;
 
@@ -56,17 +55,16 @@ public class RacingCars {
         cars.forEach(Car::move);
     }
 
+    public List<CarSnapshot> getSnapshots() {
+        return cars.stream()
+                .map(CarSnapshot::capture)
+                .collect(Collectors.toList());
+    }
+
     private int getMaxPosition(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .getAsInt();
-    }
-
-    @Override
-    public String toString() {
-        return cars.stream()
-                .map(Car::toString)
-                .collect(Collectors.joining(NEW_LINE));
     }
 }

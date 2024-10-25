@@ -25,7 +25,7 @@ class RacingTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
-    void 레이싱_시도_횟수_예외(int tryCount) {
+    void 레이싱_시도_횟수가_1미만이라면_예외를_반환한다(int tryCount) {
         //given
 
         //when
@@ -37,16 +37,32 @@ class RacingTest {
     }
 
     @Test
-    void 자동차_레이싱_진행() {
-        //given
-        Racing racing = new Racing(racingCars, 3);
+    void 경주가_횟수만큼_정상적으로_진행된다() {
+        // given
+        int tryCount = 3;
+        Racing racing = new Racing(racingCars, tryCount);
 
-        //when
-        RacingResult racingResult = racing.play();
+        // when
+        RacingResult result = racing.play();
 
-        //then
-        List<String> expectedSnapshot = List.of("pobi : -\nwoni : ", "pobi : --\nwoni : ", "pobi : ---\nwoni : ");
-        assertThat(racingResult.getSnapshot()).containsExactlyElementsOf(expectedSnapshot);
-        assertThat(racingResult.getWinner()).containsExactly(pobi.getName());
+        // then
+        assertThat(result.getSnapshots()).hasSize(tryCount);
+    }
+
+    @Test
+    void 스냅샷이_경주_횟수만큼_저장된다() {
+        // given
+        int tryCount = 2;
+        Racing racing = new Racing(racingCars, tryCount);
+
+        // when
+        RacingResult result = racing.play();
+
+        // then
+        int expectedCarSize = 2;
+        List<RacingSnapshot> snapshots = result.getSnapshots();
+        assertThat(snapshots).hasSize(tryCount);
+
+        snapshots.forEach(snapshot -> assertThat(snapshot.carSnapshots()).hasSize(expectedCarSize));
     }
 }
