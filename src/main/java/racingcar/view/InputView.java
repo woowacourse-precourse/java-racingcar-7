@@ -14,4 +14,13 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String request(String value, String strings) {
+        String request = "";
+
+        while (value.isEmpty()) {
+            System.out.println(strings + " 입력되지 않았습니다.");
+            request = Console.readLine();
+        }
+        return request;
+    }
 }
