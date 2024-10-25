@@ -8,7 +8,6 @@ public class Application {
     private static final String NUMBER_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
         Writer.writeMessage(NAME_INPUT_MESSAGE);
         List<String> carNames = Reader.readCarNames();
@@ -16,5 +15,8 @@ public class Application {
         Writer.writeMessage(NUMBER_INPUT_MESSAGE);
         int tryNumber = Reader.readNumber();
 
+        CarManager carManager = new CarManager(carNames);
+        RacingGame racingGame = new RacingGame(carManager, tryNumber);
+        racingGame.play();
     }
 }
