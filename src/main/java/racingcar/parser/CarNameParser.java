@@ -18,6 +18,7 @@ public class CarNameParser {
     private List<String> trimCarNames(List<String> carNames) {
         return carNames.stream()
                 .map(String::trim)
+                .filter(name -> !name.isEmpty())
                 .collect(Collectors.toList());
     }
 
