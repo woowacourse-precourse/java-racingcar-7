@@ -14,17 +14,13 @@ public class Race {
         this.currentCounts = 0;
         this.maxPosition = 0;
     }
-
-    private boolean go() {
-        int randomNumber = Randoms.pickNumberInRange(0,9);
-        return randomNumber >= 4;
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(0,9);
     }
 
     private void moveCars() {
         for(Car car : cars.getCars()) {
-            if(go()) {
-                car.move();
-            }
+            car.move(getRandomNumber());
         }
     }
 
@@ -33,8 +29,6 @@ public class Race {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
     }
-
-
     public void raceOneStep() {
         moveCars();
         updateMaxPosition();
