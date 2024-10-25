@@ -19,18 +19,20 @@ public class CarNameValidationTest {
         List<String> names = new ArrayList<>();
         names.add(" name ");
         names.add("name");
-        assertDoesNotThrow(() -> CarNameValidation.validate(names));
+
+        for (String name : names) {
+            assertDoesNotThrow(() -> CarNameValidation.validate(name));
+        }
     }
 
     @Test
     @DisplayName("자동차 이름이 5자를 넘는 경우")
     void 차_이름_5글자_넘음_실패() {
 
-        List<String> names = new ArrayList<>();
-        names.add("LongName");
+        String name = "LongName";
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> {
-                    CarNameValidation.validate(names);
+                    CarNameValidation.validate(name);
                 });
         assertEquals(RacingExceptionStatus.INVALID_NAME_LENGTH.getMessage(), exception.getMessage());
     }
@@ -38,11 +40,10 @@ public class CarNameValidationTest {
     @DisplayName("자동차 이름이 빈 문자열인 경우")
     void 차_이름_빈_문자열_실패() {
 
-        List<String> names = new ArrayList<>();
-        names.add("");
+        String name = "";
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> {
-                    CarNameValidation.validate(names);
+                    CarNameValidation.validate(name);
                 });
         assertEquals(RacingExceptionStatus.INVALID_NAME_BLANK.getMessage(), exception.getMessage());
     }
@@ -50,11 +51,10 @@ public class CarNameValidationTest {
     @DisplayName("자동차 이름이 공백만 포함된 경우")
     void 차_이름_공백만_실패() {
 
-        List<String> names = new ArrayList<>();
-        names.add(" ");
+        String name = " ";
         IllegalArgumentException exception =
                 assertThrows(IllegalArgumentException.class, () -> {
-                    CarNameValidation.validate(names);
+                    CarNameValidation.validate(name);
                 });
         assertEquals(RacingExceptionStatus.INVALID_NAME_BLANK.getMessage(), exception.getMessage());
     }

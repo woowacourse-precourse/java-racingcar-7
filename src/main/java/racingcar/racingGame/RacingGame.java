@@ -2,10 +2,6 @@ package racingcar.racingGame;
 
 import racingcar.domain.*;
 import racingcar.views.InputView;
-import racingcar.views.OutputView;
-
-import java.math.BigInteger;
-import java.util.List;
 
 public class RacingGame extends RacingGameTemplate {
 
