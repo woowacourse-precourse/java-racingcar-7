@@ -8,6 +8,8 @@ public class RacingGame {
     private Set<Car> cars = new HashSet<>();
 
     public void run(final String carNames, final int totalMoves) {
+        validateTotalMovesRange(totalMoves);
+
         for (String name : carNames.split(",")) {
             registerCar(new Car(name));
         }
@@ -15,6 +17,12 @@ public class RacingGame {
         for (int i = 0; i < totalMoves; i++) {
             moveCars();
             printCarStatus();
+        }
+    }
+
+    private void validateTotalMovesRange(int totalMoves) {
+        if (totalMoves > 100 || totalMoves < 1) {
+            throw new IllegalArgumentException("이동 횟수는 최소 1회, 최대 100회여야합니다.");
         }
     }
 
