@@ -5,7 +5,7 @@ import java.util.List;
 public class UserOutputView {
 
     public static void outputStartMessage() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public static void outputResult(String name, int distance) {
