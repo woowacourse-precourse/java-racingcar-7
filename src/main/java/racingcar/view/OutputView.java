@@ -20,6 +20,6 @@ public class OutputView {
     }
 
     public static void printWinners(List<String> winners) {
-        System.out.println(WINNER_MESSAGE + String.join(",", winners));
+        System.out.println(WINNER_MESSAGE + String.join(", ", winners));
     }
 }
