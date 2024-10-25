@@ -10,7 +10,7 @@ public class Car {
         location = 0;
     }
 
-    public Car of(String name) {
+    public static Car of(String name) {
         return new Car(name);
     }
 
