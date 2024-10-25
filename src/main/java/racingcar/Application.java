@@ -20,6 +20,13 @@ public class Application {
         // 자동차 이름 추출 기능
         String[] cars = input.split(",");
 
+        // 자동차 이름 유효성 검증
+        for (String car : cars) {
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 최대 5글자 입니다.");
+            }
+        }
+
         // 자동차 전진 기능
         int[] stepsForward = new int[cars.length];
 
