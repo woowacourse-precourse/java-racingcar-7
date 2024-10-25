@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.InputCarNames;
 import racingcar.util.InputTryCount;
+import racingcar.validator.NameValidiator;
 
 import java.util.List;
 
@@ -39,93 +39,63 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 자동차_목록_테스트1() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "pobi,woni,jun";
-
-        List<String> carList = inputCarNames.parsingName(input);
-
-        assertThat(carList).hasSize(3).containsExactly("pobi", "woni", "jun");
-    }
-
-    @Test
-    void 자동차_목록_테스트2() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "안녕,잘지냈니,잘가,다음에,또,보자";
-
-        List<String> carList = inputCarNames.parsingName(input);
-
-        assertThat(carList).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
-    }
-
-    @Test
-    void 자동차_목록_테스트3() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "one,일,1";
-
-        List<String> carList = inputCarNames.parsingName(input);
-
-        assertThat(carList).hasSize(3).containsExactly("one", "일", "1");
-    }
-
     @DisplayName("자동차 이름이 공백일 시 예외테스트")
     @Test
     void 자동차_목록_예외_테스트1() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "pobi,,jun";
+        NameValidiator nameValidiator = new NameValidiator();
+        List<String> carList = List.of("pobi", "", "jun");
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.nameLength(carList))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 5글자 이상일 시 예외테스트")
     @Test
     void 자동차_목록_예외_테스트2() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "pobi,woniwoni,jun";
+        NameValidiator nameValidiator = new NameValidiator();
+        List<String> carList = List.of("pobi", "woniwoni", "jun");
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.nameLength(carList))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 중복일 시 예외테스트")
     @Test
     void 자동차_목록_예외_테스트3() {
-        InputCarNames inputCarNames = new InputCarNames();
-        String input = "pobi,pobi,jun";
+        NameValidiator nameValidiator = new NameValidiator();
+        List<String> carList = List.of("pobi", "pobi", "jun");
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.nameOverlap(carList))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 예외테스트1")
     @Test
     void 자동차_목록_예외_테스트4() {
-        InputCarNames inputCarNames = new InputCarNames();
+        NameValidiator nameValidiator = new NameValidiator();
         String input = "pobi,woni,jun,";
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.rightNameList(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 예외테스트2")
     @Test
     void 자동차_목록_예외_테스트5() {
-        InputCarNames inputCarNames = new InputCarNames();
+        NameValidiator nameValidiator = new NameValidiator();
         String input = ",pobi,woni,jun";
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.rightNameList(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 예외테스트3")
     @Test
     void 자동차_목록_예외_테스트6() {
-        InputCarNames inputCarNames = new InputCarNames();
+        NameValidiator nameValidiator = new NameValidiator();
         String input = ",pobi,woni,jun,";
 
-        assertThatThrownBy(() -> inputCarNames.parsingName(input))
+        assertThatThrownBy(() -> nameValidiator.rightNameList(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
