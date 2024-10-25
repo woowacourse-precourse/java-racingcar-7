@@ -12,6 +12,12 @@ public class Application {
         int count = getCount();
 
         List<Integer> moves = new ArrayList<>(Collections.nCopies(cars.size(),0));
+
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < cars.size(); j++) {
+                if (determineMovement()) moves.set(j, moves.get(j) + 1);
+            }
+        }
     }
 
     private static List<String> getCars() {
