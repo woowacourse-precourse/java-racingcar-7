@@ -43,4 +43,8 @@ public class Utils {
         }
         return max;
     }
+
+    public String getWinnersAsString(List<String> winnerList) {
+        return String.join(",", winnerList);
+    }
 }
