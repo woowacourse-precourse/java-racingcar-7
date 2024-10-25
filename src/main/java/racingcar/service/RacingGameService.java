@@ -14,10 +14,15 @@ public class RacingGameService {
 
     public List<Car> inputCars() {
         List<String> carNames = inputView.getCarNames();
+        InputValidator.validateForDuplicates(carNames);
         List<Car> cars = new ArrayList<>();
+
         for (String name : carNames) {
             name = name.trim();
-            InputValidator.checkMaxLength5(name);
+
+            InputValidator.validateAlphaNumeric(name);
+            InputValidator.validateMaxLength5(name);
+
             cars.add(new Car(name));
         }
 
@@ -36,6 +41,7 @@ public class RacingGameService {
                 winners.add(car.getName());
             }
         }
+
         outputView.printWinners(winners);
     }
 
@@ -45,6 +51,7 @@ public class RacingGameService {
 
     public void race(List<Car> cars, int moveCount) {
         outputView.printResult();
+
         for (int i = 0; i < moveCount; i++) {
             for (Car car : cars) {
                 evaluateMovement(car);
