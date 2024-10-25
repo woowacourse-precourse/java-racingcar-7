@@ -54,4 +54,16 @@ public class Controller {
             printRoundResult(race);
         });
     }
+
+    public List<Car> getWinnerCarList(final Race race) {
+        ArrayList<Car> carArrayList = race.getCarArrayList();
+        int maxDistance = getMaxDistance(race);
+
+        return service.getCarListWithMaxDistance(carArrayList, maxDistance);
+    }
+
+    private int getMaxDistance(final Race race) {
+        List<Integer> distanceList = race.getDistanceList();
+        return service.getMaxDistance(distanceList);
+    }
 }
