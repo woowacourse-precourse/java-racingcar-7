@@ -9,23 +9,22 @@ public class Car {
         this.carName = carName;
     }
 
-    public String getCarName() {
+    public final String getCarName() {
         return carName;
     }
 
-    public int getMoveCount() {
+    public final int getMoveCount() {
         return moveCount;
     }
 
-    public void moveOrStay() {
+    public final void moveOrStay() {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         if (randomValue >= 4) {
             ++moveCount;
         }
     }
 
-public void printMoveCount() {
-
+public final void printMoveCount() {
         System.out.println(carName + " : " + getSlashesForMoveCount());
     }
 
