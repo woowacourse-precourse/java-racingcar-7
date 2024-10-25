@@ -13,6 +13,12 @@ public class CarNameValidation {
         }
     }
 
+    private static void validateIncludeComma(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void validateNameLength(Set<String> inputs) {
         if (inputs.stream().anyMatch(input -> input.length() > 5)) {
             throw new IllegalArgumentException();
