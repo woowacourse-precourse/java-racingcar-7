@@ -3,10 +3,10 @@ package racingcar;
 import racingcar.controller.RacingCarController;
 import racingcar.service.RacingCarService;
 import racingcar.service.RacingCarServiceImpl;
-import racingcar.validation.AttemptCountValidator;
-import racingcar.validation.AttemptCountValidatorImpl;
 import racingcar.validation.CarNamesValidator;
 import racingcar.validation.CarNamesValidatorImpl;
+import racingcar.validation.RaceCountValidator;
+import racingcar.validation.RaceCountValidatorImpl;
 import racingcar.view.InputView;
 import racingcar.view.InputViewImpl;
 import racingcar.view.OutputView;
@@ -26,8 +26,8 @@ public class AppConfig {
         return new CarNamesValidatorImpl();
     }
 
-    public AttemptCountValidator attemptCountValidator() {
-        return new AttemptCountValidatorImpl();
+    public RaceCountValidator attemptCountValidator() {
+        return new RaceCountValidatorImpl();
     }
 
     public InputView inputView() {

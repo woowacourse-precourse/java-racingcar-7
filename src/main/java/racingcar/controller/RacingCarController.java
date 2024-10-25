@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import racingcar.domain.Car;
 import racingcar.service.RacingCarService;
-import racingcar.validation.AttemptCountValidator;
+import racingcar.validation.RaceCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,14 +14,14 @@ public class RacingCarController {
     private final RacingCarService racingCarService;
     private final InputView inputView;
     private final OutputView outPutView;
-    private final AttemptCountValidator attemptCountValidator;
+    private final RaceCountValidator raceCountValidator;
 
-    public RacingCarController(RacingCarService racingCarService, InputView inputView, OutputView outPutView,
-                               AttemptCountValidator attemptCountValidator) {
+    public RacingCarController(RacingCarService racingCarService, InputView inputView, OutputView outputView,
+                               RaceCountValidator raceCountValidator) {
         this.racingCarService = racingCarService;
         this.inputView = inputView;
-        this.outPutView = outPutView;
-        this.attemptCountValidator = attemptCountValidator;
+        this.outPutView = outputView;
+        this.raceCountValidator = raceCountValidator;
     }
 
     public void run() {
@@ -29,18 +29,18 @@ public class RacingCarController {
         String carNames = inputView.getCarNamesFormView();
         List<Car> racingCars = racingCarService.splitAndInitializeRacingCars(carNames);
 
-        String attemptCount = inputView.getAttemptCountFormView();
-        attemptCountValidator.validate(attemptCount);
+        String raceCount = inputView.getRaceCountFormView();
+        raceCountValidator.validate(raceCount);
 
-        runCarRaceAndPrintResults(Integer.valueOf(attemptCount), racingCars);
+        runCarRaceAndPrintResults(Integer.valueOf(raceCount), racingCars);
         findWinnersAndPrintResults(racingCars);
     }
 
-    private void runCarRaceAndPrintResults(Integer numberOfAttempts, List<Car> racingCars) {
+    private void runCarRaceAndPrintResults(Integer raceCount, List<Car> racingCars) {
 
         System.out.println();
         System.out.println("실행 결과");
-        for (int i = 0; i < numberOfAttempts; i++) {
+        for (int i = 0; i < raceCount; i++) {
             racingCarService.startCarRaceGame(racingCars);
 
             for (Car car : racingCars) {
