@@ -21,6 +21,11 @@ public class RacingCar {
         return pickedNumber >= 4;
     }
 
+    void displayRoundResult() {
+        System.out.print(name + " : ");
+        System.out.println("-".repeat(forwardCount));
+    }
+
     String getName() {
         return name;
     }
