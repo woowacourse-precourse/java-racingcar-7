@@ -63,5 +63,8 @@ public class Application {
                 winners.add(cars.get(i));
             }
         }
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
     }
 }
