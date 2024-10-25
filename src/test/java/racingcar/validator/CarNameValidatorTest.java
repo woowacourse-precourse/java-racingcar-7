@@ -26,4 +26,19 @@ class CarNameValidatorTest {
     void validateEnd_throwsException(){
         assertThrows(IllegalArgumentException.class, () -> CarNameValidator.validateEnd("kim,pobi,"));
     }
+
+    @DisplayName("자동차 이름들의 구분자는 콤마(,)다.")
+    @ParameterizedTest
+    @ValueSource(strings ={"zzz4,zz3,zzz1","kim,pobi,ori-3","kim, hyun, soo"})
+    void validateDelimiter_throwsException(String input){
+        assertDoesNotThrow(() -> CarNameValidator.validateDelimiter(input));
+    }
+
+    @DisplayName("자동차 이름들의 구분자가 콤마가 아니면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"zz3;zz2;zz1","kim hyun soo", "pobi 3412; 332"})
+    void validateDelimiter_success(String input){
+        assertThrows(IllegalArgumentException.class, () -> CarNameValidator.validateDelimiter(input));
+    }
+
 }
