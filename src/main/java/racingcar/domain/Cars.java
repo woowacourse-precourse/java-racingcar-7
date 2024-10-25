@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,15 +13,22 @@ public class Cars {
     public final List<Car> cars;
 
     public Cars(String raceCarNames){
-        List<String> carNameList = StringUtility.splitStringToList(raceCarNames);
-        if(StringUtility.isDuplicateStrExists(carNameList)){
+        List<String> carNames = StringUtility.splitStringToList(raceCarNames);
+        if(!isValidCarNames(carNames)){
             throw new RaceException(DUPLICATE_CAR_NAME_MESSAGE);
         }
 
-        cars = new ArrayList<>();
-        for(String carName : carNameList){
-            cars.add(new Car(carName));
-        }
+        cars = createCars(carNames);
+    }
+
+    private boolean isValidCarNames(List<String> carNames) {
+        return StringUtility.isDuplicateStrExists(carNames);
+    }
+
+    private List<Car> createCars(List<String> carNameList) {
+        return carNameList.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public int getCarCount(){
@@ -35,13 +41,10 @@ public class Cars {
         }
     }
 
-    public String getMoveHistory(){
-        StringBuilder moveHistoryStringBuilder = new StringBuilder();
-        for(Car car : cars){
-            moveHistoryStringBuilder.append(String.format(MOVE_HISTORY_FORMAT,car.getName(),car.getMoveHistory()))
-                    .append("\n");
-        }
-        return moveHistoryStringBuilder.toString();
+    public String formatCarsMoveHistory() {
+        return cars.stream()
+                .map(car -> String.format(MOVE_HISTORY_FORMAT, car.getName(), car.getMoveHistory()))
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     public List<String> getWinners() {
