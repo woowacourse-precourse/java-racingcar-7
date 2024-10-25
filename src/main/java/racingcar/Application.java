@@ -30,13 +30,10 @@ public class Application {
         NumberComparable numberComparable = new IntegerComparable();
         MovingStrategy movingStrategy = new RacingCarMovingStrategy(randomNumberGenerator, numberComparable,
                 FORWARD_MIN_INCLUSIVE);
-        Cars cars = new Cars(new ArrayList<>());
-        for (String name : inputNames.split(COMMA)) {
-            cars.add(new Car(name, movingStrategy));
-        }
+        Cars cars = initializeCars(inputNames, movingStrategy);
         long attempt = readAttempt(outputHandler, inputHandler);
 
-        printResult(cars, attempt, outputHandler);
+        printRacingResult(cars, attempt, outputHandler);
         String winners = cars.calculateWinners();
         outputHandler.showWinners(winners);
     }
@@ -50,6 +47,18 @@ public class Application {
         if (value.endsWith(COMMA)) {
             throw new InvalidNameException("이름은 비어있을 수 없습니다.");
         }
+    }
+
+    private static Cars initializeCars(final String inputNames, final MovingStrategy movingStrategy) {
+        Cars cars = new Cars(new ArrayList<>());
+        for (String name : splitFrom(inputNames)) {
+            cars.add(new Car(name, movingStrategy));
+        }
+        return cars;
+    }
+
+    private static String[] splitFrom(final String inputNames) {
+        return inputNames.split(COMMA);
     }
 
     private static long readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
@@ -74,7 +83,7 @@ public class Application {
         }
     }
 
-    private static void printResult(final Cars cars, final long attempt, OutputHandler outputHandler) {
+    private static void printRacingResult(final Cars cars, final long attempt, OutputHandler outputHandler) {
         outputHandler.showCommentForResult();
         for (int i = 0; i < attempt; i++) {
             cars.move();
