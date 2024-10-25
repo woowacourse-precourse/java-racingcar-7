@@ -11,4 +11,15 @@ public class RacingCars {
             cars.add(new Car(name, 0));
         }
     }
+
+    public void moveAll(MoveCondition moveCondition) {
+        for (Car car : cars) {
+            if(!moveCondition.canMove()) continue;
+            car.moveForward(1);
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
