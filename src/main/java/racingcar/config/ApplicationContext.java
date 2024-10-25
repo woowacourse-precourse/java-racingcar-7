@@ -1,5 +1,6 @@
 package racingcar.config;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,10 +8,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import racingcar.config.annotation.Component;
 
+/**
+ * 어플리케이션의 빈을 생성하고 관리하는 클래스
+ */
 public class ApplicationContext {
 
     private static final Map<Class<?>, ApplicationContext> instances = new ConcurrentHashMap<>();
+    private static final Class<? extends Annotation> COMPONENT_ANNOTATION = Component.class;
 
     private final List<Class<?>> classes;
     private final Map<Class<?>, Object> beans = new HashMap<>();
@@ -41,9 +47,15 @@ public class ApplicationContext {
     }
 
     private List<Class<?>> scanComponents(Class<?> baseClass) {
-        ComponentScanner scanner = ComponentScanner.getInstance(baseClass);
+        ClassPathScanner scanner = ClassPathScanner.getInstance(baseClass);
 
-        return scanner.scan();
+        return scanner.scan(this::isComponent);
+    }
+
+    private boolean isComponent(Class<?> cls) {
+        return Arrays.stream(cls.getAnnotations())
+                .map(Annotation::annotationType)
+                .anyMatch(it -> it.isAnnotationPresent(COMPONENT_ANNOTATION));
     }
 
     /**
