@@ -34,7 +34,7 @@ class RacingCountTest {
 
     @DisplayName("경주 횟수를 1회 차감한다.")
     @Test
-    void deductCount() {
+    void deductTryCount() {
         //given
         int count = 1;
         RacingCount racingCount = RacingCount.from(count);
@@ -43,7 +43,7 @@ class RacingCountTest {
         racingCount.deduct();
 
         //then
-        assertThat(racingCount.getCount()).isEqualTo(--count);
+        assertThat(racingCount.getTryCount()).isEqualTo(--count);
     }
 
     @DisplayName("경주 횟수가 0 이라면 true를 반환한다.")

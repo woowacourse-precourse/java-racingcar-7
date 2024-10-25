@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class RacingCount {
 
-    private static final int MIN_COUNT = 1;
-    private static final int END_COUNT = 0;
+    private static final int MIN_TRY_COUNT = 1;
+    private static final int END_TRY_COUNT = 0;
 
-    private int count;
+    private int tryCount;
 
-    private RacingCount(int count) {
-        validateCount(count);
-        this.count = count;
+    private RacingCount(int tryCount) {
+        validateTryCount(tryCount);
+        this.tryCount = tryCount;
     }
 
     public static RacingCount from(int count) {
@@ -19,19 +19,23 @@ public class RacingCount {
     }
 
     public void deduct() {
-        this.count -= 1;
+        this.tryCount -= 1;
+    }
+
+    public boolean isPossible() {
+        return this.tryCount != 0;
     }
 
     public boolean isEnd() {
-        return this.count == END_COUNT;
+        return this.tryCount == END_TRY_COUNT;
     }
 
-    public int getCount() {
-        return count;
+    public int getTryCount() {
+        return tryCount;
     }
 
-    private void validateCount(int count) {
-        if (count < MIN_COUNT) {
+    private void validateTryCount(int tryCount) {
+        if (tryCount < MIN_TRY_COUNT) {
             throw new IllegalArgumentException("시도횟수는 최소 1회 이상이여아 합니다.");
         }
     }
@@ -45,11 +49,11 @@ public class RacingCount {
             return false;
         }
         RacingCount that = (RacingCount) o;
-        return count == that.count;
+        return tryCount == that.tryCount;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(count);
+        return Objects.hashCode(tryCount);
     }
 }
