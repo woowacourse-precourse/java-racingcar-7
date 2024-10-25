@@ -8,6 +8,7 @@
     - [ ] Movement
     - [x] NumberValidator
     - [x] RandomNumberGenerator
+    - [ ] ProgressResultGenerator
     - [ ] WinnerDeterminer
 - View
     - [x] InputView
@@ -19,6 +20,7 @@
     - [ ] CarNameTest
     - [ ] MovementTest
     - [ ] NumberValidatorTest
+    - [ ] ProgressResultGeneratorTest
     - [ ] WinnerDeterminerTest
 
 # 기능 동작 순서
