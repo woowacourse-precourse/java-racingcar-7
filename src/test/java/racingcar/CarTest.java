@@ -1,11 +1,16 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.accelerator.Accelerator;
 import racingcar.accelerator.BrokenAccelerator;
 
 class CarTest {
+
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     private final Accelerator accelerator = new BrokenAccelerator();
 
@@ -61,8 +66,14 @@ class CarTest {
         String expected1 = "pobi : ";
 
         Car car2 = new Car("pobi");
-        car2.setMileageForTest(3);
-        String expected2 = "pobi : ---";
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    car2.accelerate(new BrokenAccelerator());
+                },
+                MOVING_FORWARD
+        );
+        String expected2 = "pobi : -";
 
         //When
         String actual1 = car1.toString();

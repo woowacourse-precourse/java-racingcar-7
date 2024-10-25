@@ -1,5 +1,7 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racingcar.accelerator.Accelerator;
@@ -7,31 +9,38 @@ import racingcar.accelerator.BrokenAccelerator;
 
 class BrokenAcceleratorTest {
 
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
     private final Accelerator accelerator = new BrokenAccelerator();
 
     @Test
     public void 전진_테스트() throws Exception {
         //Given
-        int testThreshold = 0;
         int expected = 1;
 
-        //When
-        int actual = accelerator.accelerate(testThreshold);
-
         //When, Then
-        Assertions.assertThat(actual).isEqualTo(expected);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    int actual = accelerator.accelerate(Car.ACCELERATION_THRESHOLD);
+                    Assertions.assertThat(actual).isEqualTo(expected);
+                },
+                MOVING_FORWARD
+        );
     }
 
     @Test
     public void 정지_테스트() throws Exception {
         //Given
-        int testThreshold = 9;
         int expected = 0;
 
-        //When
-        int actual = accelerator.accelerate(testThreshold);
-
         //When, Then
-        Assertions.assertThat(actual).isEqualTo(expected);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    int actual = accelerator.accelerate(Car.ACCELERATION_THRESHOLD);
+                    Assertions.assertThat(actual).isEqualTo(expected);
+                },
+                STOP
+        );
     }
 }
