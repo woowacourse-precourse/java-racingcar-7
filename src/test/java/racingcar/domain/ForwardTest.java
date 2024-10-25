@@ -20,7 +20,7 @@ public class ForwardTest {
     @ParameterizedTest
     @ValueSource(strings= {"-1", "-10", "10"})
     @DisplayName("전진을 시도하는 횟수에 0~9가 아닌 숫자가 들어오면 예외가 발생한다.")
-    void validateNonNegativeNumber(String candidate) {
+    void validateForwardCountOutOfRange(String candidate) {
         assertThatThrownBy(() -> Forward.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("전진을 시도할 횟수는 0~9 사이의 숫자만 입력 가능합나다.");
