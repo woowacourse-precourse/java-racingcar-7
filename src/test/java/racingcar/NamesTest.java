@@ -4,6 +4,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +16,11 @@ class NamesTest {
     void Given_CorrectInput_When_NamesHasInput_Then_Success() {
         // Given
         String input = "a,bb,ccc,dddd,eeeee";
-        
         // When
         Names names = new Names(input);
-        
+
         // Then
-        assertThat(names).isEqualTo(input);
+        assertThat(names.toString()).isEqualTo(input);
     }
 
     @DisplayName("올바른 문자열과 문자 앞뒤 공백이 들어갔을 때, 정상 작동한다.")
@@ -83,5 +84,5 @@ class NamesTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 중복될 수 없습니다.");
     }
-  
+
 }
