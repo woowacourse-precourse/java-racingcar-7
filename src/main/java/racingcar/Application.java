@@ -24,7 +24,7 @@ public class Application {
         System.out.println("실행 결과");
 
         for (int i = 0; i < Integer.parseInt(gameCount); i++) {
-            startGame(racingCar, splitRacingCarName);
+            startGame(racingCar);
             printPerDegreeResult(racingCar);
             System.out.println();
         }
@@ -32,19 +32,19 @@ public class Application {
     }
 
     // 게임의 순서는 자동차 이름을 입력 받은 순서대로 진행한다.
-    public static void startGame(Map<String, Integer> racingCar, String[] splitRacingCarName) {
-        for (int i = 0; i < racingCar.size(); i++) {
+    public static void startGame(Map<String, Integer> racingCar) {
+        for (Entry<String, Integer> eachRacingCar : racingCar.entrySet()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
 
             if (randomNumber >= 4) {
-                racingCar.put(splitRacingCarName[i], racingCar.get(splitRacingCarName[i]) + 1);
+                eachRacingCar.setValue(eachRacingCar.getValue() + 1);
             }
         }
     }
 
     public static void printPerDegreeResult(Map<String, Integer> racingCar) {
-        for (Entry<String, Integer> stringIntegerEntry : racingCar.entrySet()) {
-            System.out.println(stringIntegerEntry.getKey() + " : " + ("-".repeat(stringIntegerEntry.getValue())));
+        for (Entry<String, Integer> eachRacingCar : racingCar.entrySet()) {
+            System.out.println(eachRacingCar.getKey() + " : " + ("-".repeat(eachRacingCar.getValue())));
         }
     }
 
