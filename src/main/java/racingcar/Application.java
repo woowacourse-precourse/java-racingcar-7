@@ -4,11 +4,13 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        RaceManager raceManager = new RaceManager();
+        IOHandler ioHandler = new IOHandler();
+        RaceManager raceManager = new RaceManager(ioHandler);
         CarFactory carFactory = new CarFactory();
 
-        List<String> racerList = raceManager.getRacerList();
+
+        List<String> racerList = ioHandler.setRacerList();
         List<RacingCar> racingCars = carFactory.createRacingCars(racerList);
-        raceManager.startRace(racingCars);
+        raceManager.startRace(racingCars,ioHandler.setRaceCycle());
     }
 }
