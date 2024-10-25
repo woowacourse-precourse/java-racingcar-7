@@ -4,6 +4,7 @@ import java.util.List;
 
 import racingcar.model.Car;
 import racingcar.model.NumberValidator;
+import racingcar.model.ProgressResultGenerator;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.model.TextSeparator;
 import racingcar.view.InputView;
@@ -24,6 +25,7 @@ public class GameController {
 		OutputView.printExecutionResultMessage();
 		while(trialCount-- > 0) {
 			executeRaceRound(cars);
+			String progressResult = ProgressResultGenerator.generateProgressResult(cars);
 		}
 	}
 
