@@ -23,10 +23,35 @@ public class RaceService {
         }
     }
 
+    public List<String> determineWinners(List<Car> cars) {
+        int maxDistance = getMaxDistance(cars);
+        return findWinnerNames(cars, maxDistance);
+    }
+
     private void moveConditionally(Car car) {
         int random = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
         if (random >= MOVE_THRESHOLD) {
             car.increaseDistance();
         }
+    }
+
+    private int getMaxDistance(List<Car> cars) {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            if (car.getCurrentDistance() > maxDistance) {
+                maxDistance = car.getCurrentDistance();
+            }
+        }
+        return maxDistance;
+    }
+
+    private List<String> findWinnerNames(List<Car> cars, int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getCurrentDistance() == maxDistance) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
     }
 }
