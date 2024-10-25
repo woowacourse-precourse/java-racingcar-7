@@ -3,6 +3,8 @@ package racingcar;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
@@ -43,4 +45,5 @@ public class CarTest {
         assertThatThrownBy(() -> User.isDigit("pobi"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }
