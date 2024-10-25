@@ -14,6 +14,7 @@ public class Application {
 
 class RacingGame {
     private List<String> carNames = new ArrayList<>();
+    private int moveCount;
 
     public void setupCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -22,6 +23,7 @@ class RacingGame {
         validateInput(input);
         parseCarNames(input);
     }
+
 
     private void validateInput(String input) {
         if (input == null || input.trim().isEmpty()) {
@@ -41,4 +43,28 @@ class RacingGame {
 
         System.out.println("입력된 자동차 이름: " + carNames);
     }
+
+    public void setupMoves() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        validateMoveCount(input);
+        moveCount = Integer.parseInt(input);
+    }
+
+    private void validateMoveCount(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("이동 횟수를 입력해주세요.");
+        }
+        try {
+            int count = Integer.parseInt(input);
+            if (count <= 0) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 숫자여야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("이동 횟수는 숫자여야 합니다.");
+        }
+    }
+
+
+
 }
