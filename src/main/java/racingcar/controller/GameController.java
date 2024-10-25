@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import static racingcar.util.InputValidator.validateNoDuplicates;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
@@ -21,6 +22,23 @@ public class GameController {
     public void run() {
         List<Car> cars = initGame();
         startGame(cars);
+
+        Car manyMoveCar = cars.getFirst();
+
+        for (Car car : cars) {
+            if (car.compareDistance(manyMoveCar) == 1) {
+                manyMoveCar = car;
+            }
+        }
+
+        List<String> winnerPlayers = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.compareDistance(manyMoveCar) == 0)
+                winnerPlayers.add(car.getName());
+        }
+
+        String join = String.join(", ", winnerPlayers);
+        outputView.printWinnerPlayers(join);
     }
 
     private void startGame(List<Car> cars) {
