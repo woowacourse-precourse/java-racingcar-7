@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,8 +17,6 @@ class RacingCarTests {
 
     private static final int STOP = 3;
     private static final int NOT_MOVED = 0;
-
-    private static RacingCar racingCarSample;
 
     @ParameterizedTest
     @DisplayName("자동차 이름이 5글자를 초과하거나 빈 문자열일 경우 예외 발생")
