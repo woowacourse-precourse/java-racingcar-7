@@ -68,9 +68,32 @@ class ApplicationTest extends NsTest {
         validNameException("  ");
     }
 
+    @Test
+    void 시도횟수_문자_예외_테스트() {
+        validAttemptException("a");
+        validAttemptException("abc%");
+    }
+
+    @Test
+    void 시도횟수_소수_예외_테스트() {
+        validAttemptException("1.5");
+    }
+
+    @Test
+    void 시도횟수_음수_예외_테스트() {
+        validAttemptException("-10");
+    }
+
     private void validNameException(String input) {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(input, "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    private void validAttemptException(String number) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", number))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
