@@ -2,8 +2,8 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static racingcar.model.Message.CAR_NAMES_MESSAGE;
-import static racingcar.model.Message.TRY_NUMBER_MESSAGE;
+import static racingcar.model.ViewMessage.CAR_NAMES_MESSAGE;
+import static racingcar.model.ViewMessage.TRY_NUMBER_MESSAGE;
 
 public class InputView {
 

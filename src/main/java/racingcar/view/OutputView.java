@@ -4,8 +4,8 @@ import racingcar.model.Car;
 
 import java.util.List;
 
-import static racingcar.model.Message.GET_WINNER_MESSAGE;
-import static racingcar.model.Message.RUN_RESULT_MESSAGE;
+import static racingcar.model.ViewMessage.GET_WINNER_MESSAGE;
+import static racingcar.model.ViewMessage.RUN_RESULT_MESSAGE;
 
 public class OutputView {
 
