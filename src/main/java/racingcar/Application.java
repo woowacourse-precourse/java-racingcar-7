@@ -21,7 +21,6 @@ class Car {
     private int time;
     private int[] numLst;
     private int[] forward;
-    private int cnt;
     private int[] winnerLst;
 
     public void inputCar(){
@@ -39,6 +38,7 @@ class Car {
             forward = new int[carLst.length];
     }
     private void giveRandomNumbers(){
+        this.numLst = new int[carLst.length];
         for (int i = 0; i < carLst.length; i++){
             numLst[i] = Randoms.pickNumberInRange(0, 9);
         }
@@ -69,10 +69,11 @@ class Car {
         for (int i = 0; i < lst.length; i++){
             newLst[i] = lst[i];
         }
-        newLst[lst.length + 1] = val;
+        newLst[lst.length] = val;
         return newLst;
     }
     private void findWinnerNumber(){
+        winnerLst = new int[0];
         int forwardMax = max(forward);
         for (int i = 0; i < forward.length; i++) {
             if (forward[i] == forwardMax) {
