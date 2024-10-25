@@ -1,6 +1,8 @@
 package racingcar.util;
 
 public enum ConstNumber {
+    // TODO : 상수 숫자 기능에 따라 분리하기 (인터페이스로 다형성 구현)
+    REGISTER_CARS_INPUT_MAX_LENGTH(1_000),
     CAR_NAME_MAX_LENGTH(5),
     PRIME_CAR_DISTANCE(0),
     CAR_MOVE_CONDITION(4),

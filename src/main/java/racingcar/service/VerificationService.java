@@ -4,21 +4,33 @@ import static racingcar.util.ConstCharacter.checkInvalidCharacter;
 import static racingcar.util.ConstNumber.CAR_NAME_MAX_LENGTH;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MAX_VALUE;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MIN_VALUE;
+import static racingcar.util.ConstNumber.REGISTER_CARS_INPUT_MAX_LENGTH;
 
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;
-import racingcar.exception.InvalidLengthException;
+import racingcar.exception.InvalidCarNameLengthException;
 
 import java.util.List;
+import racingcar.exception.InvalidRegisterCarsInputLength;
 import racingcar.exception.NotNumberException;
 import racingcar.exception.NumberRangeException;
 
 public class VerificationService {
 
-    public boolean isValidLength(List<String> carNames) {
+    public boolean isValidRegisterCarsInputLength(String input) {
+        if(input == null || input.isEmpty()) {
+            throw new EmptyInputException();
+        }
+        if(input.length() > REGISTER_CARS_INPUT_MAX_LENGTH.getValue()) {
+            throw new InvalidRegisterCarsInputLength();
+        }
+        return true;
+    }
+
+    public boolean isValidCarNameLength(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > CAR_NAME_MAX_LENGTH.getValue()) {
-                throw new InvalidLengthException();
+                throw new InvalidCarNameLengthException();
             }
             if (carName.isEmpty()) {
                 throw new EmptyInputException();

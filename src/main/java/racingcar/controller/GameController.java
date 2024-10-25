@@ -23,6 +23,7 @@ public class GameController {
     }
 
     public List<Car> registerCars(String input) {
+        verificationService.isValidRegisterCarsInputLength(input);
         verificationService.containsInvalidCharacter(input);
         List<String> carNames = dataTransformService.splitInput(input);
 

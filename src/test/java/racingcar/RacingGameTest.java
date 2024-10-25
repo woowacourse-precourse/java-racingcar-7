@@ -13,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;
-import racingcar.exception.InvalidLengthException;
+import racingcar.exception.InvalidCarNameLengthException;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ public class RacingGameTest extends NsTest {
         void 길이_예외_테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                            .isInstanceOf(InvalidLengthException.class)
+                            .isInstanceOf(InvalidCarNameLengthException.class)
             );
         }
 

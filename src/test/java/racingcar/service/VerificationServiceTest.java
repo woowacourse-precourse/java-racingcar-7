@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;
-import racingcar.exception.InvalidLengthException;
+import racingcar.exception.InvalidCarNameLengthException;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.exception.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.NotNumberException;
+import racingcar.exception.NumberRangeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 class VerificationServiceTest {
@@ -23,14 +25,37 @@ class VerificationServiceTest {
     }
 
     @Nested
-    @DisplayName("자동차 이름 길이 테스트")
+    @DisplayName("자동차 등록 입력값 길이 테스트")
+    class isValidRegisterCarsInputLengthTests {
+
+        @Test
+        void 빈_입력값_예외테스트() {
+            String input = "";
+            assertThrows(EmptyInputException.class, () -> verificationService.isValidRegisterCarsInputLength(input));
+        }
+
+        @Test
+        void 최대_입력값_예외테스트() {
+            String input = ".".repeat(1001);
+            assertThrows(InvalidRegisterCarsInputLengthException.class, () -> verificationService.isValidRegisterCarsInputLength(input));
+        }
+
+        @Test
+        void 최대_입력값_테스트() {
+            String input = "a".repeat(1000);
+            assertTrue(verificationService.isValidRegisterCarsInputLength(input));
+        }
+    }
+
+    @Nested
+    @DisplayName("단일 자동차 이름 입력값 길이 테스트")
     class IsValidLengthTests {
 
         @Test
         void 최소_길이_예외테스트() {
             List<String> carNames = new ArrayList<>();
             carNames.add("");
-            assertThrows(EmptyInputException.class, () -> verificationService.isValidLength(carNames));
+            assertThrows(EmptyInputException.class, () -> verificationService.isValidCarNameLength(carNames));
         }
 
         @Test
@@ -38,7 +63,7 @@ class VerificationServiceTest {
             List<String> invalidCarNames = new ArrayList<>();
             invalidCarNames.add("abcdef");
             invalidCarNames.add("ghijklmnopqrstuvwxyz");
-            assertThrows(InvalidLengthException.class, () -> verificationService.isValidLength(invalidCarNames));
+            assertThrows(InvalidCarNameLengthException.class, () -> verificationService.isValidCarNameLength(invalidCarNames));
         }
 
         @Test
@@ -49,7 +74,7 @@ class VerificationServiceTest {
             carNames.add("def");
             carNames.add("ghij");
             carNames.add("klmno");
-            assertTrue(verificationService.isValidLength(carNames));
+            assertTrue(verificationService.isValidCarNameLength(carNames));
         }
     }
 
