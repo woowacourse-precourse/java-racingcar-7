@@ -34,7 +34,7 @@ public class InputHandlerTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3", "4", "5"})
-    public void 시도_횟수가_0이_아니면_예외_없음(String attemptCount) {
+    public void 시도_횟수가_숫자면_예외_없음(String attemptCount) {
         // when & then
         assertDoesNotThrow(() -> InputHandler.validateAttemptCount(attemptCount));
     }
