@@ -90,4 +90,10 @@ class UserInput {
             isPositiveAttempts = true;
         }
     }
+
+    public void validateInput() {
+        if (!(isValidCarNames && isPositiveAttempts && isIntegerAttempts)) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
