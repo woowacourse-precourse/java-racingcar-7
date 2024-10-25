@@ -7,6 +7,8 @@ public final class Const {
 
     public static final int CRITERIA = 4;
 
+    public static final String DUPLICATE_NAME = "중복된 이름입니다";
+
     private Const() {
     }
 }

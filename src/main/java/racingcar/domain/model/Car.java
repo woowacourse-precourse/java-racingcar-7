@@ -24,7 +24,12 @@ public class Car {
         }
     }
 
+    public Name getName() {
+        return name;
+    }
+
     public Distance getDistance() {
         return distance;
     }
+
 }
