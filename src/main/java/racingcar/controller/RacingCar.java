@@ -24,14 +24,15 @@ public class RacingCar {
         int tryCount = Integer.parseInt(inputView.input());
         Cars cars = new Cars(carNames);
 
+        OutputView.printRacingResult();
+
         for (int i = 0; i < tryCount; i++) {
             cars.allMove();
             OutputView.printCarDistances(cars.getCarNames(), cars.getCarsPositions());
         }
 
-
-
-
+        List<String> raceWinners = cars.findRaceWinners();
+        OutputView.printWinners(raceWinners);
     }
 
 }
