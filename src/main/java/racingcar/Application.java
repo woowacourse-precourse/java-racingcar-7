@@ -97,3 +97,7 @@ class UserInput {
         }
     }
 }
+
+class ResultOutput {
+    
+}
