@@ -27,5 +27,9 @@ public class GameController {
 	}
 
 	private void executeRaceRound(List<Car> cars) {
+		cars.forEach(this::moveCar);
+	}
+
+	private void moveCar(Car car) {
 	}
 }
