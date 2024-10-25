@@ -134,7 +134,6 @@ public class Application {
         for (String car : trimmedCar) {
             racingCars.add(new RacingCar(car));
         }
-
         int raceNumber = getRaceNumber();
 
         raceGame(racingCars, raceNumber);
