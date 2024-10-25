@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import racingcar.service.RacingService;
-
 import java.util.List;
 
 import static racingcar.view.UserResponseView.*;
