@@ -15,7 +15,15 @@ public class Race {
         this.raceMoveStrategy = raceMoveStrategy;
     }
 
-    public void process() {
+    public void start(int gameCount) {
+        while (gameCount-- > 0) {
+            process();
+            printProgress();
+        }
+        complete();
+    }
+
+    private void process() {
         for (Car car : cars) {
             boolean canMove = raceMoveStrategy.go();
             if (canMove) {
@@ -24,7 +32,7 @@ public class Race {
         }
     }
 
-    public void complete() {
+    private void complete() {
         int winnerPosition = getWinnerPosition(cars);
 
         List<Car> winnerCars = new ArrayList<>();
