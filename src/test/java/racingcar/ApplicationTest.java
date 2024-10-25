@@ -318,6 +318,60 @@ class ApplicationTest extends NsTest {
                 .containsExactly("jun1", "j2un", "jun3");
     }
 
+    @Test
+    void 경주_자동차_입력_한글_기능_테스트() {
+        //given
+        String input = "하 나,둘1,셋\n3\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when
+        Application.inputAndValidate();
+
+        //then
+        assertThat(Application.carNameList)
+                .containsExactly("하나", "둘1", "셋");
+    }
+
+    @Test
+    void 경주_자동차_입력_동일이름은_하나만_테스트() {
+        //given
+        String input = "pobi,pobi,하나,하나\n3\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when
+        Application.inputAndValidate();
+
+        //then
+        assertThat(Application.carNameList)
+                .containsExactly("pobi", "하나");
+    }
+
+    @Test
+    void 경주_자동차_길이초과_예외_테스트() {
+        //given
+        String input = "pobipobi,woni\n3\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 경주_자동차_특수문자_포함_예외_테스트() {
+        //given
+        String input = "jun&,ju%\n3\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
