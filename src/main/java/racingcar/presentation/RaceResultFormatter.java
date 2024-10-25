@@ -2,9 +2,9 @@ package racingcar.presentation;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.car.CarState;
-import racingcar.domain.game.RoundScores;
-import racingcar.domain.game.ScoreBoard;
+import racingcar.domain.CarState;
+import racingcar.domain.RoundScores;
+import racingcar.domain.ScoreBoard;
 
 public class RaceResultFormatter {
     private static final String NAME_POSITION_SEPARATOR = " : ";

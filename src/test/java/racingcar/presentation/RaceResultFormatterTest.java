@@ -9,11 +9,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Cars;
-import racingcar.domain.game.RacingGame;
-import racingcar.domain.game.RoundCount;
-import racingcar.domain.game.ScoreBoard;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RoundCount;
+import racingcar.domain.ScoreBoard;
 
 class RaceResultFormatterTest {
 

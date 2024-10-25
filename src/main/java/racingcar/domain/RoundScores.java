@@ -1,7 +1,6 @@
-package racingcar.domain.game;
+package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.car.CarState;
 
 public record RoundScores(List<CarState> carStates) {
 }

@@ -1,4 +1,4 @@
-package racingcar.domain.game;
+package racingcar.domain;
 
 import racingcar.global.ErrorMessage;
 

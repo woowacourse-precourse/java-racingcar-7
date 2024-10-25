@@ -3,8 +3,11 @@ package racingcar.presentation;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,6 +15,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.global.ErrorMessage;
 
 class InputValidatorTest {
+
+    @Test
+    @DisplayName("InputValidator 의 생성자가 호출되면 예외가 발생한다.")
+    void testPrivateConstructor() throws Exception {
+        Constructor<InputValidator> constructor = InputValidator.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+
+        assertThatThrownBy(constructor::newInstance)
+                .isInstanceOf(InvocationTargetException.class)  // 래핑된 예외
+                .hasCauseInstanceOf(UnsupportedOperationException.class);
+    }
 
     @ParameterizedTest
     @MethodSource("provideBlankOrNullInputs")

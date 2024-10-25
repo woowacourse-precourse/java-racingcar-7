@@ -1,14 +1,13 @@
-package racingcar.domain.car;
+package racingcar.domain;
 
 import java.util.Objects;
-import racingcar.domain.strategy.MovingStrategy;
 import racingcar.global.ErrorMessage;
 
 public class Car {
     private final String name;
     private int position;
     private final MovingStrategy movingStrategy;
-    private static final Integer MAX_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public Car(String inputName, MovingStrategy movingStrategy) {
         validate(inputName);

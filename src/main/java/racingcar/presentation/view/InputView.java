@@ -1,4 +1,4 @@
-package racingcar.presentation;
+package racingcar.presentation.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
@@ -10,16 +10,12 @@ public class InputView {
 
     public String getCarNames(){
         System.out.println(INPUT_CARS_NAMES);
-        String rawInput = readLine();
-        InputValidator.validateCarNamesInput(rawInput);
-        return rawInput;
+        return readLine();
     }
 
     public String getTrialCount(){
         System.out.println(INPUT_TRIAL_COUNT);
-        String rawInput = readLine();
-        InputValidator.validateTrialCountInput(rawInput);
-        return rawInput;
+        return readLine();
     }
 
     private static String readLine(){
