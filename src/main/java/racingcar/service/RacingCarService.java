@@ -13,14 +13,8 @@ public class RacingCarService {
         this.moveStrategy = moveStrategy;
     }
 
-    public List<RacingCar> logic(List<String> carNames, int moveCount) {
-        List<RacingCar> racingCars = carNames.stream().map(name -> new RacingCar(name, 0)).toList();
-
-        runCarRacing(racingCars, moveCount);
-
-        List<RacingCar> winnerRacingCars = getWinnerRacingCars(racingCars);
-
-        return winnerRacingCars;
+    public List<RacingCar> generateRacingCarList(List<String> carNames) {
+        return carNames.stream().map(name -> new RacingCar(name, 0)).toList();
     }
 
     public void runCarRacing(List<RacingCar> racingCars, int moveCount) {

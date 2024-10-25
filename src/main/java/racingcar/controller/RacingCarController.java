@@ -18,7 +18,10 @@ public class RacingCarController {
         List<String> carNames = InputView.getCarNames();
         int moveCount = InputView.getMoveCount();
 
-        List<RacingCar> winners = racingCarService.logic(carNames, moveCount);
+        List<RacingCar> racingCars = racingCarService.generateRacingCarList(carNames);
+        racingCarService.runCarRacing(racingCars, moveCount);
+
+        List<RacingCar> winners = racingCarService.getWinnerRacingCars(racingCars);
         OutputView.printWinner(winners);
     }
 }
