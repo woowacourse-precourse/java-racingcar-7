@@ -22,14 +22,16 @@ public class InputView {
 		return InputViewHolder.INSTANCE;
 	}
 
-	public String readCarInput() {
+	public List<String> readCarInput() {
 		System.out.println(View.CAR_NAME_INPUT.getConstant());
-		return Console.readLine();
+		String input = Console.readLine();
+		return splitNames(input);
 	}
 
-	public String readCountInput() {
+	public Integer readCountInput() {
 		System.out.println(View.COUNT_INPUT.getConstant());
-		return Console.readLine();
+		String input = Console.readLine();
+		return parseCount(input);
 	}
 
 	public Integer parseCount(String input) {
@@ -37,7 +39,10 @@ public class InputView {
 			throw new IllegalArgumentException(ErrorStatus.NOT_NUMBER.getMessage());
 		}
 		try {
-			return Integer.parseInt(input);
+			int count = Integer.parseInt(input);
+			if (10000 <= count || count < 0)
+				throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
+			return count;
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException(ErrorStatus.INVALID_NUMBER_RANGE.getMessage());
 		}
