@@ -33,4 +33,34 @@ public class RaceManager {
         return cars;
     }
 
+    public ArrayList<String> selectChampion() {
+        ArrayList<String> championList = new ArrayList<>();
+        int bestScore = 0;
+        for (Car car : cars) {
+            int carForwardLevel = car.getForwardLevel();
+            if (carForwardLevel > bestScore) {
+                championList.clear();
+                championList.add(car.getCarName());
+                bestScore = carForwardLevel;
+            } else if (carForwardLevel == bestScore) {
+                championList.add(car.getCarName());
+            }
+        }
+        return championList;
+    }
+
+    public void showChampion() {
+        ArrayList<String> championList = selectChampion();
+        System.out.print("최종 우승자 : ");
+        int championListSize = championList.size();
+        for (int i = 0; i < championListSize; i++) {
+            if (i < championListSize - 1) {
+                System.out.print(championList.get(i) + ", ");
+            }
+            if (i == championListSize - 1) {
+                System.out.print(championList.get(i));
+            }
+        }
+    }
+
 }

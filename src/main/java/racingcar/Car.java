@@ -19,6 +19,10 @@ public class Car {
         return this.name;
     }
 
+    public int getForwardLevel(){
+        return this.forwardLevel;
+    }
+
     public void printForwardLevel() {
         System.out.print(this.name + " : ");
         for (int i = 0; i < this.forwardLevel; i++) {
