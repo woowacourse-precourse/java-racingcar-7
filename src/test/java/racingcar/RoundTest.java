@@ -33,6 +33,11 @@ class RoundTest {
     }
 
     @Test
+    @DisplayName("한 round의 실행 결과 문자열 반환")
     void roundResult() {
+        List<Car> cars = List.of(new Car("AAA"), new Car("BBB"));
+        Round.play(cars, List.of(4, 3));
+        String expectedResult = "AAA : -\nBBB : \n\n";
+        assertThat(Round.roundResult(cars)).isEqualTo(expectedResult);
     }
 }

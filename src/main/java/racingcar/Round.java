@@ -17,7 +17,7 @@ public class Round {
     public static String roundResult(final List<Car> cars) {
         StringBuilder builder = new StringBuilder();
         for (Car car: cars) {
-            builder.append(car);
+            builder.append(car).append("\n");
         }
         builder.append("\n");
         return builder.toString();
