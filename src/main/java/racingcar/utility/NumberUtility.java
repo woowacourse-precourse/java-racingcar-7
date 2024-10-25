@@ -21,5 +21,4 @@ public class NumberUtility {
         }
         return (int) Double.parseDouble(numberStr);
     }
-
 }
