@@ -1,10 +1,6 @@
 package racingcar.util;
 
-import camp.nextstep.edu.missionutils.Randoms;
+public interface RandomGenerator {
 
-public class RandomGenerator {
-
-    public int generate() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
+    int generate();
 }

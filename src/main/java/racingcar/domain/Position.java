@@ -9,8 +9,8 @@ public class Position {
     private final RandomGenerator randomGenerator;
     private int position;
 
-    public Position() {
-        this.randomGenerator = new RandomGenerator();
+    public Position(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
         position = 0;
     }
 
