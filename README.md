@@ -84,10 +84,12 @@ jun : -----
       - 쉼표(,)로 시작하거나 끝나는 문자열 불가능
 - isTheLengthOfStringLessThanFive
     - 쉼표(,)를 기준으로 잘려진 문자열의 길이가 5 이하인지 확인한다.
-- addCarName
-    - 자동차 이름을 ArrayList에 추가한다.
 - getCountInput
     - 시도할 횟수를 입력받는다.
+- addCarName
+    - 자동차 이름을 HashMap에 추가한다.
+    - 예외 상황
+      - 동일한 이름 저장 불가능
 - startCarGame
     - 자동차 게임을 시작한다.
 - isTheRandomNumberMoreThanFour
