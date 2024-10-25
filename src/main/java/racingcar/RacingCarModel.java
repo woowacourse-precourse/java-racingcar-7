@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import racingcar.raceDto.RacingRequest;
+import racingcar.raceDto.RacingResponse;
 
 public class RacingCarModel {
 
     static StringBuilder sb;
 
-    public void startRace(RacingRequest request) {
+    public RacingResponse startRace(RacingRequest request) {
         /* 객체, 이름, 숫자 존재여부 판단 */
         if(!validateRacingInfo(request)) {
             throw new IllegalArgumentException("입력값을 입력해주세요.");
@@ -42,8 +43,8 @@ public class RacingCarModel {
             }
         }
 
-
         System.out.println(sb);
+        return new RacingResponse();
     }
 
     private int[] race(ArrayList<String> list, int loop) {
