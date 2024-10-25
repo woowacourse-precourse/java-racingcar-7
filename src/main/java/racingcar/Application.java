@@ -30,7 +30,9 @@ public class Application {
     }
 
     private static String[] getInputName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        final String REQUEST_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+
+        System.out.println(REQUEST_NAME_MESSAGE);
         String inputName = Console.readLine();
 
         validateInputEmpty(inputName);
@@ -45,33 +47,43 @@ public class Application {
     }
 
     public static void validateInputEmpty(String inputName) {
+        final String ERROR_EMPTY_INPUT = "내용을 입력해주세요.";
+
         if (inputName == null || inputName.isEmpty()) {
-            throw new IllegalArgumentException("내용을 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
         }
     }
 
     private static String[] splitDelimiter(String inputName) {
-        return inputName.split(",");
+        final String DELIMITER = ",";
+
+        return inputName.split(DELIMITER);
     }
 
     private static void validateCarNames(String[] names) {
+        final String ERROR_BLANK_BETWEEN_DELIMITER = "이름은 공백일 수 없습니다.";
+
         for (String name : names) {
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
+            if (name.isBlank()) {
+                throw new IllegalArgumentException(ERROR_BLANK_BETWEEN_DELIMITER);
             }
         }
     }
 
     private static void validateNameLength(String[] names) {
+        final String ERROR_NAME_LENGTH = "자동차 이름은 5자 이하만 가능합니다.";
+
         for (String name : names) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+                throw new IllegalArgumentException(ERROR_NAME_LENGTH);
             }
         }
     }
 
     private static int getInputCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        final String REQUEST_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+
+        System.out.println(REQUEST_COUNT_MESSAGE);
         String input = Console.readLine();
 
         validateInputEmpty(input);
@@ -80,16 +92,19 @@ public class Application {
     }
 
     private static int validateInputInteger(String input) {
+        final String ERROR_PARSE_INT = "숫자만 입력해주세요.";
+        final String ERROR_POSITIVE_INT = "1 이상의 양의 정수만 입력해주세요.";
+
         int inputCount;
 
         try {
             inputCount = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_PARSE_INT);
         }
 
         if (inputCount <= 0) {
-            throw new IllegalArgumentException("1 이상의 양의 정수만 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_POSITIVE_INT);
         }
 
         return inputCount;
@@ -105,7 +120,9 @@ public class Application {
     }
 
     private static void runRace(int inputCount, List<Car> cars) {
-        System.out.println("실행 결과");
+        final String PRINT_RUN_RESULT_MESSAGE = "실행 결과";
+
+        System.out.println(PRINT_RUN_RESULT_MESSAGE);
         for (int i = 0; i < inputCount; i++) {
             updateCarsAdvance(cars);
 
@@ -114,8 +131,11 @@ public class Application {
     }
 
     private static void printCarsPosition(List<Car> cars) {
+        final String PRINT_SEPARATOR_FORM = " : ";
+        final String PRINT_DEFAULT_MARKER = "-";
+
         for (Car car : cars) {
-            System.out.println(car.name + " : " + "-".repeat(car.advance));
+            System.out.println(car.name + PRINT_SEPARATOR_FORM + PRINT_DEFAULT_MARKER.repeat(car.advance));
         }
         System.out.println();
     }
@@ -131,10 +151,13 @@ public class Application {
     }
 
     private static void printWinner(List<Car> cars) {
+        final String PRINT_RESULT_FORM = "최종 우승자 : ";
+        final String PRINT_DEFAULT_DELIMITER_FROM = ", ";
+
         final List<Integer> advances = getAdvances(cars);
         final List<String> winner = getWinner(cars, advances);
 
-        System.out.println("최종 우승자 : " + String.join(", ", winner));
+        System.out.println(PRINT_RESULT_FORM + String.join(PRINT_DEFAULT_DELIMITER_FROM, winner));
     }
 
     private static List<Integer> getAdvances(List<Car> cars) {
