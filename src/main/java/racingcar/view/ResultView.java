@@ -2,9 +2,6 @@ package racingcar.view;
 
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
-import racingcar.model.number.MoveNumber;
-
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -21,6 +18,7 @@ public class ResultView {
             System.out.print(car.getName() + RESULT_DELIMITER);
             IntStream.range(0, car.getMoveNumber()).forEach(number -> System.out.print(MOVE_MARKER));
             System.out.println();
-        } ;
+        }
     }
+
 }
