@@ -16,4 +16,8 @@ public class Car {
         }
         return -1;
     }
+
+    public CurrentCar createCurrentCar() {
+        return new CurrentCar(name, position);
+    }
 }
