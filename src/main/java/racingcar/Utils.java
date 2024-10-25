@@ -11,4 +11,19 @@ public final class Utils {
         text = text.replaceAll(" ", "");
         return Arrays.asList(text.split(","));
     }
+
+    public static int enterRound() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String text = Console.readLine();
+
+        try {
+            int round = Integer.parseInt(text);
+            if (round < 0) {
+                throw new IllegalArgumentException("양의 정수를 입력해주세요.");
+            }
+            return round;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자형 문자를 입력해주세요.");
+        }
+    }
 }
