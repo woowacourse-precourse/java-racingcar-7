@@ -14,4 +14,9 @@ public class DisplayConverter {
     private static String convertCarStatus(CarDto carDto) {
         return carDto.getCarName()+" : "+carDto.getCurrentPosition();
     }
+
+    public static String convertWinners(Winners winners){
+        return winners.getNames().stream().
+                collect(Collectors.joining(", "));
+    }
 }

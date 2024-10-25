@@ -27,4 +27,18 @@ class DisplayConverterTest {
         //then
         Assertions.assertThat(roundResultMessage).isEqualTo(expectedResult);
     }
+
+    @DisplayName("우승자가 알맞은 형식으로 반환")
+    @Test
+    void convertWinners() {
+        //given
+        Winners winners = new Winners(Arrays.asList("car1","car2","car3"));
+
+        //when
+        String winnersMessage = DisplayConverter.convertWinners(winners);
+        String expectedResult = "car1, car2, car3";
+
+        //then
+        Assertions.assertThat(winnersMessage).isEqualTo(expectedResult);
+    }
 }
