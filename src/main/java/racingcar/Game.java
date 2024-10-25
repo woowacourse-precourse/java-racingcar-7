@@ -19,4 +19,8 @@ public class Game {
     public Integer randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public Boolean isForward() {
+        return randomNumber() >= 4;
+    }
 }
