@@ -69,8 +69,8 @@ class CarRepositoryTest {
         }
 
         // 복사본을 움직였지만 기존 자동차는 상태는 변하지 않음
-        copiedCars.get(0).move();
-        assertThat(copiedCars.get(0).getPosition()).isEqualTo(1);
-        assertThat(newCars.get(0).getPosition()).isEqualTo(0);
+        copiedCars.getFirst().move();
+        assertThat(copiedCars.getFirst().getPosition()).isEqualTo(1);
+        assertThat(newCars.getFirst().getPosition()).isEqualTo(0);
     }
 }
