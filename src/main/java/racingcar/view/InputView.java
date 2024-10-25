@@ -10,8 +10,15 @@ public class InputView {
 
     public static String inputCarNames() {
         String input = Console.readLine();
+        validateNotBlank(input);
         validateCommaDelimitedNames(input);
         return input;
+    }
+
+    private static void validateNotBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("빈 문자열이나 공백을 입력할 수 없습니다.");
+        }
     }
 
     private static void validateCommaDelimitedNames(String input) {
