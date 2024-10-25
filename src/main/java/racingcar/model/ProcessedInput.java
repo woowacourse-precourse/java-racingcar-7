@@ -4,8 +4,8 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class ProcessedInput {
-    private List<Car> carList;
-    private BigInteger raceRounds;
+    private final List<Car> carList;
+    private final BigInteger raceRounds;
 
     public ProcessedInput(List<Car> carList, BigInteger raceRounds) {
         this.carList = carList;
@@ -14,5 +14,9 @@ public class ProcessedInput {
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public BigInteger getRaceRounds() {
+        return raceRounds;
     }
 }

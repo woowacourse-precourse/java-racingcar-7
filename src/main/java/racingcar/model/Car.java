@@ -19,9 +19,13 @@ public class Car {
         return position;
     }
 
+    public void moveForward() {
+        position = position.add(BigInteger.ONE);
+    }
+
     public void printPosition() {
         System.out.print(name + " : ");
-        for (BigInteger i = BigInteger.ZERO; i.compareTo(position) <= 0; i = i.add(BigInteger.ONE)) {
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(position) < 0; i = i.add(BigInteger.ONE)) {
             System.out.print("-");
         }
         System.out.println();

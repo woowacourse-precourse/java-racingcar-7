@@ -1,12 +1,15 @@
 package racingcar.controller;
 
 import racingcar.message.ErrorMessage;
+import racingcar.model.Car;
 import racingcar.model.ProcessedInput;
 import racingcar.model.OriginInput;
 import racingcar.util.Splitter;
 import racingcar.util.Validator;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public class RacingController {
     public void run() {
@@ -38,5 +41,30 @@ public class RacingController {
         if (validator.validNameLength(processedInput.getCarList())) {
             throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH.getMessage());
         }
+
+        // 자동차 경주 수행
+        racing(processedInput);
+    }
+
+    // 자동차 경주
+    public void racing(ProcessedInput processedInput) {
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(processedInput.getRaceRounds()) < 0; i = i.add(BigInteger.ONE)) {
+            raceSingleRound(processedInput.getCarList());
+        }
+    }
+
+    // 레이싱 한 라운드 수행
+    public void raceSingleRound(List<Car> carList) {
+        for (Car car : carList) {
+            if (getRandom() > 3) {
+                car.moveForward();
+            }
+            car.printPosition();
+        }
+    }
+
+    // 무작위 수 구하기
+    public int getRandom() {
+        return Randoms.pickNumberInRange(0,9);
     }
 }
