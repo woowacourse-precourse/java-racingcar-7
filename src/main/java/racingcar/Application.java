@@ -46,9 +46,25 @@ class RacingGame {
 
     public void start() {
         for (int i = 0; i < round; i++) {
-            // 진행 상태 출력
+            race();
+            printStatus();
         }
         // 승자 출력
+    }
+
+    private void race() {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.move();
+            }
+        }
+    }
+
+    private void printStatus() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getPositionString());
+        }
+        System.out.println();
     }
 }
 
