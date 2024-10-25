@@ -21,6 +21,7 @@ public class RecordService {
     }
 
     public int raceSetting(String tryTimes) {
+        recordValidator.blankCheck(tryTimes);
         recordValidator.numberCheck(tryTimes);
         int intTryTimes = Integer.parseInt(tryTimes);
         recordValidator.validTryTimeCheck(intTryTimes);

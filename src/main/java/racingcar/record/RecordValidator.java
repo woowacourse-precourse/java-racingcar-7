@@ -13,6 +13,12 @@ public class RecordValidator {
         return RECORD_VALIDATOR;
     }
 
+    public void blankCheck(String tryTimes){
+        if(tryTimes.isEmpty()){
+            throw new IllegalArgumentException(NOT_EXIST.getMessage());
+        }
+    }
+
     public void numberCheck(String number) {
         for (char c : number.toCharArray()) {
             if (!Character.isDigit(c)) {

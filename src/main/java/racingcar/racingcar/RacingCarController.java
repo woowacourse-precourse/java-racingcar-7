@@ -24,14 +24,8 @@ public class RacingCarController {
 
     public void run() {
         String joinedCarNames = getCarNames();
-        List<String> carNameList = splitCarNames(joinedCarNames);
-        racingCarService.removeLeftRightBlank(carNameList);
-        List<RacingCar> racingCars = racingCarService.makeCar(carNameList);
+        List<RacingCar> racingCars = racingCarService.makeRacingCarList(joinedCarNames);
         recordController.setRacingCarList(racingCars);
-    }
-
-    private List<String> splitCarNames(String joinedCarNames) {
-        return racingCarService.splitCarName(joinedCarNames);
     }
 
     private String getCarNames() {

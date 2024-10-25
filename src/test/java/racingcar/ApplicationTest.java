@@ -90,4 +90,11 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
+
+    @Test
+    void 이름_앞뒤_공백_테스트(){
+        assertSimpleTest(()->{
+            run("java  , char,  j  ","5");
+        });
+    }
 }

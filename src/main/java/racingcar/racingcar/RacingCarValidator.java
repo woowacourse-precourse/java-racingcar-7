@@ -19,14 +19,19 @@ public class RacingCarValidator {
 
     public void existCheck(String joinedCarNames) {
         if (joinedCarNames.isBlank()) {
-            throw new IllegalArgumentException(MORE_THAN_ONE.getMessage());
+            throw new IllegalArgumentException(MORE_THAN_ONE_CAR_PLZ.getMessage());
         }
+    }
+
+    public void existCheck(List<String> carNames){
+        if(carNames.isEmpty())
+            throw new IllegalArgumentException(MORE_THAN_ONE_CAR_PLZ.getMessage());
     }
 
     public void lengthCheck(List<String> carNames, int maxLength) {
         for (String name : carNames) {
             if (name.length() > maxLength) {
-                throw new IllegalArgumentException(OVER_MAX_LENGTH.getMessage());
+                throw new IllegalArgumentException(CAR_NAME_OVER_MAX_LENGTH.getMessage());
             }
         }
     }
