@@ -10,7 +10,7 @@ public class Register {
     // 자동차들의 전진 횟수 조회 기능
     // 우승자 조회 기능
 
-    ArrayList<Car> carList;
+    public ArrayList<Car> carList;
 
     public Register() {
         this.carList = new ArrayList<>();
