@@ -46,4 +46,8 @@ public class Main {
     public int createRandomNumber(){
         return Randoms.pickNumberInRange(0,9);
     }
+
+    public boolean isMove(int randomNumber) {
+        return randomNumber >= 4;
+    }
 }

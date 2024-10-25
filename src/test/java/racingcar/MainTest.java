@@ -59,6 +59,13 @@ class MainTest extends NsTest {
         assertThat(main.createRandomNumber()).isBetween(0,9);
     }
 
+    @Test
+    @DisplayName("랜덤 숫자가 4이상이면 전진한다")
+    void isMove(){
+        assertThat(main.isMove(4)).isTrue();
+        assertThat(main.isMove(3)).isFalse();
+    }
+
     @Override
     protected void runMain() {
 
