@@ -9,6 +9,12 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    public void playGames(List<Car> racingCar, int numberOfGames) {
+        for (int i = 0; i < numberOfGames; i++) {
+            printEachRound(racingCar);
+        }
+        System.out.println("최종 우승자 : " + decideWinner(racingCar));
+    }
     public static void main(String[] args) throws IllegalArgumentException {
         Application application = new Application();
         InputHandler inputHandler = new InputHandler();
