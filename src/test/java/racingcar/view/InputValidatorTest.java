@@ -17,4 +17,10 @@ public class InputValidatorTest {
         assertThatThrownBy(() ->   InputValidator.validateCarNamesInput(" "))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_이름이_마지막에_콤마가_있는_경우_예외테스트(){
+        assertThatThrownBy(() ->   InputValidator.validateCarNamesInput("raceCar1, raceCar2,"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
