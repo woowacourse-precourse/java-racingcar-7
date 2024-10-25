@@ -46,4 +46,10 @@ public class Controller {
         }
         outputView.printRaceResults(cars);
     }
+
+    private void announceWinners() {
+        List<String> winnerList = utils.getCarsWithHighestCount(cars);
+        String name = utils.getWinnersAsString(winnerList);
+        outputView.printWinners(name);
+    }
 }
