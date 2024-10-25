@@ -27,6 +27,8 @@ public class Application {
         String cars = input.inputCars();
         String attempt = input.inputAttempt();
 
+        String result;
 
+        result = race.Racing(cars, attempt);
     }
 }
