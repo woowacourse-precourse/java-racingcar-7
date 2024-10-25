@@ -23,4 +23,14 @@ public class CarManager {
             car.go(randomNumber);
         }
     }
+
+    public int getMaximumScore() {
+        int maximum = 0;
+        for (Car car : cars) {
+            if (car.getScore() > maximum)
+                maximum = car.getScore();
+        }
+
+        return maximum;
+    }
 }
