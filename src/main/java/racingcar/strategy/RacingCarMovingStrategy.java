@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.strategy;
+
+import racingcar.comparable.NumberComparable;
+import racingcar.random.RandomNumberGenerator;
 
 public class RacingCarMovingStrategy implements MovingStrategy {
 

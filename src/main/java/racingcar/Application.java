@@ -4,8 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.car.Car;
+import racingcar.comparable.IntegerComparable;
+import racingcar.comparable.NumberComparable;
 import racingcar.exception.InvalidAttemptException;
 import racingcar.exception.InvalidNameException;
+import racingcar.random.RandomIntegerGenerator;
+import racingcar.random.RandomNumberGenerator;
+import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.RacingCarMovingStrategy;
 
 public class Application {
 
