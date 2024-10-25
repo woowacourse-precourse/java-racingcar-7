@@ -57,4 +57,15 @@ class RacingCarInputHandlerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도할 횟수는 양수 이여야합니다.");
     }
+
+    @Test
+    void 시도할_횟수_숫자가_아닌_경우_에러_던지기() {
+        // given
+        String inputCount = "aa";
+
+        // when // then
+        assertThatThrownBy(() -> racingCarInputHandler.getRacingCount(inputCount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도할 횟수는 양수 이여야합니다.");
+    }
 }
