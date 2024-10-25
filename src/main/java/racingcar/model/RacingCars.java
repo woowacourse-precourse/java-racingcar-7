@@ -80,4 +80,23 @@ public class RacingCars {
             throw ExceptionFactory.createException(DUPLICATED_CARS);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        RacingCars that = (RacingCars) o;
+
+        return values.equals(that.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return values.hashCode();
+    }
 }
