@@ -24,7 +24,7 @@ public class Car {
     public int getWinStack() {
         return winStack;
     }
-    public void plusWinStack() {
+    private void plusWinStack() {
         this.winStack++;
     }
     public void goRound() {
