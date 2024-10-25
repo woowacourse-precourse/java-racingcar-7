@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Application {
@@ -14,31 +16,45 @@ public class Application {
         int tryInput = Integer.parseInt(Console.readLine());
 
         System.out.println("실행 결과");
-        List<String> carNames = delimiterCar(nameInput);
+        HashMap<String,Integer> carInfo = delimiterCar(nameInput);
 
         String character = "-";
 
+
+        // 게임 진행 상황 표현
         for (int i = 0; i < tryInput; i++) {
-            for (int j = 0; j < carNames.size(); j++) {
-                System.out.println(carNames.get(j) + " : " + character.repeat(4) );
+            for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+                carInfo.put(entry.getKey(), entry.getValue()+isForward());
+                System.out.println(entry.getKey()+ " : " + character.repeat(entry.getValue()) );
+
             }
             System.out.println();
+
         }
+
+
     }
 
-    public static List<String> delimiterCar(String nameInput) {
+
+    public static HashMap<String,Integer> delimiterCar(String nameInput) {
         StringTokenizer st = new StringTokenizer(nameInput,",");
-        List<String> carNames = new ArrayList<>();
+        HashMap<String,Integer> carInfo = new HashMap<>();
 
         while (st.hasMoreTokens()) {
-            carNames.add(st.nextToken());
+            carInfo.put(st.nextToken(),0);
         }
-        return carNames;
+        return carInfo;
     }
+    public static int isForward() {
 
-    public static boolean isForward() {
         int i = Randoms.pickNumberInRange(0,9);
-        return i >= 4;
+//        if (i>=4) return 1;
+        return 1;
+
+
+//    public static int isForward() {
+//        int i = Randoms.pickNumberInRange(0,9);
+//        return i >= 4;
     }
 
 
