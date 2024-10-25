@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -17,21 +18,15 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
-        );
+        assertRandomNumberInRangeTest(() -> {
+            run("pobi,woni", "1");
+            assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+        }, MOVING_FORWARD, STOP);
     }
 
     @Test
     void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,javaji", "1")).isInstanceOf(IllegalArgumentException.class));
     }
 
     @Override
@@ -42,37 +37,31 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStartEnd() {
         String carNames = "Karina,Winter,Giselle,Ningning,";
-        assertThatThrownBy(() -> Application.validateStartEnd(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateStartEnd(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateDuplication() {
-        String[] namesByComma = new String[] {"Karina", "Winter", "Winter", "Giselle", "Ningning"};
-        assertThatThrownBy(() -> Application.validateDuplication(namesByComma))
-                .isInstanceOf(IllegalArgumentException.class);
+        String[] namesByComma = new String[]{"Karina", "Winter", "Winter", "Giselle", "Ningning"};
+        assertThatThrownBy(() -> Application.validateDuplication(namesByComma)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateLength() {
         String name = "NingNing";
-        assertThatThrownBy(() -> Application.validateLength(name))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateLength(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateEmpty() {
         String emptyName = "";
-        assertThatThrownBy(() -> Application.validateEmpty(emptyName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateEmpty(emptyName)).isInstanceOf(IllegalArgumentException.class);
 
         String nullName = null;
-        assertThatThrownBy(() -> Application.validateEmpty(nullName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateEmpty(nullName)).isInstanceOf(IllegalArgumentException.class);
 
         String blankSpaceName = "      ";
-        assertThatThrownBy(() -> Application.validateEmpty(blankSpaceName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateEmpty(blankSpaceName)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -84,72 +73,58 @@ class ApplicationTest extends NsTest {
     @Test
     void isValidName_fail() {
         String longCarName = "Karina,Winter,Giselle,NingNing";
-        assertThatThrownBy(() -> Application.isValidName(longCarName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidName(longCarName)).isInstanceOf(IllegalArgumentException.class);
 
         String duplicateName = "Karin,Wint,Wint,Gis,Ning";
-        assertThatThrownBy(() -> Application.isValidName(duplicateName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidName(duplicateName)).isInstanceOf(IllegalArgumentException.class);
 
         String emptyName = "Karin,Win,,Gis";
-        assertThatThrownBy(() -> Application.isValidName(emptyName))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidName(emptyName)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateNumberFormat() {
         String numberWithCharacters = "a1b";
-        assertThatThrownBy(() -> Application.validateNumberFormat(numberWithCharacters))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateNumberFormat(numberWithCharacters)).isInstanceOf(IllegalArgumentException.class);
 
         String negativeNumber = "-2";
-        assertThatThrownBy(() -> Application.validateNumberFormat(negativeNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateNumberFormat(negativeNumber)).isInstanceOf(IllegalArgumentException.class);
 
         String zero = "0";
-        assertThatThrownBy(() -> Application.validateNumberFormat(zero))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateNumberFormat(zero)).isInstanceOf(IllegalArgumentException.class);
 
         String empty = "";
-        assertThatThrownBy(() -> Application.validateNumberFormat(empty))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateNumberFormat(empty)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void validateBound() {
         String bigNumber = "2147483648";
-        assertThatThrownBy(() -> Application.validateBound(bigNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateBound(bigNumber)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void isValidTryCount() {
         String inputTryCount = "42";
-        assertThat(Application.isValidTryCount(inputTryCount))
-                .isTrue();
+        assertThat(Application.isValidTryCount(inputTryCount)).isTrue();
     }
 
     @Test
     void isValidTryCount_fail() {
         String numberWithCharacters = "a1b";
-        assertThatThrownBy(() -> Application.isValidTryCount(numberWithCharacters))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidTryCount(numberWithCharacters)).isInstanceOf(IllegalArgumentException.class);
 
         String negativeNumber = "-2";
-        assertThatThrownBy(() -> Application.isValidTryCount(negativeNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidTryCount(negativeNumber)).isInstanceOf(IllegalArgumentException.class);
 
         String zero = "0";
-        assertThatThrownBy(() -> Application.isValidTryCount(zero))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidTryCount(zero)).isInstanceOf(IllegalArgumentException.class);
 
         String empty = "";
-        assertThatThrownBy(() -> Application.isValidTryCount(empty))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidTryCount(empty)).isInstanceOf(IllegalArgumentException.class);
 
         String bigNumber = "123456789123456789";
-        assertThatThrownBy(() -> Application.isValidTryCount(bigNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.isValidTryCount(bigNumber)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -168,8 +143,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void createRandomNumber() {
-        assertThat(Application.createRandomNumber())
-                .isBetween(RandomConstant.RANDOM_RANGE_START, RandomConstant.RANDOM_RANGE_END);
+        assertThat(Application.createRandomNumber()).isBetween(RandomConstant.RANDOM_RANGE_START, RandomConstant.RANDOM_RANGE_END);
     }
 
     @Test
@@ -187,5 +161,30 @@ class ApplicationTest extends NsTest {
         Application.appendMovementSignByRandom(resultMap, name, highRandomNumber);
 
         assertThat(resultMap.get(name).toString()).isEqualTo(IOMessage.MOVEMENT_SIGN);
+    }
+
+    @Test
+    void createRaceResult() {
+        Map<String, StringBuilder> resultMap = new LinkedHashMap<>();
+
+        String[] names = new String[]{"Karina", "Winter", "Giselle", "NingNing"};
+        String[] results = new String[]{"--", "----", "", "-"};
+
+        for (int i = 0; i < names.length; i++) {
+            StringBuilder result = new StringBuilder();
+
+            result.append(results[i]);
+
+            resultMap.put(names[i], result);
+        }
+
+        String raceResult = Application.createRaceResult(resultMap);
+
+        assertThat(raceResult).isEqualTo("Karina : --\n"
+                + "Winter : ----\n"
+                + "Giselle : \n"
+                + "NingNing : -\n"
+                + "\n"
+        );
     }
 }
