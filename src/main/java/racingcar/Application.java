@@ -23,6 +23,7 @@ public class Application {
         // Car이란 객체에 정보를 넣으면 좋을듯
         List<String> carNames = new ArrayList<>();
         for(String carName: carNamesInput.split(",")){
+            carName = carName.strip();
             if(carName.isBlank()) {
                 throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
             } else if (carNames.contains(carName)) {
@@ -30,7 +31,7 @@ public class Application {
             } else if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
-            carNames.add(carName.strip());
+            carNames.add(carName);
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
