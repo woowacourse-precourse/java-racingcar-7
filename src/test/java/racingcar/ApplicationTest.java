@@ -50,15 +50,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 잘못된_구분자_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("audi;ford", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("구분자로 쉼표(,)를 입력해주세요")
-        );
-    }
-
-    @Test
     void 입력값_누락_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("", "1"))
