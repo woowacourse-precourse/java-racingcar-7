@@ -13,6 +13,7 @@ public class RacingUtil {
     public static List<Car> getCarList(String input) {
         List<String> nameList = List.of(input.split(","));
         return nameList.stream()
+                .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
