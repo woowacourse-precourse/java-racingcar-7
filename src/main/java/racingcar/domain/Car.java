@@ -31,9 +31,8 @@ public class Car {
         return position;
     }
 
-    public void move(RandomNumberGenerator randomNumberGenerator) {
-        int randomNum = randomNumberGenerator.getRandomNumber();
-        if (randomNum >= MOVING_STANDARD) {
+    public void move(int movingNumber) {
+        if (movingNumber >= MOVING_STANDARD) {
             position++;
         }
     }

@@ -19,9 +19,10 @@ public class Cars {
         }
     }
 
-    public void raceGame() {
+    public void raceGame(RandomNumberGenerator randomNumberGenerator) {
         for (Car car : cars) {
-            car.move(new RandomNumberGenerator());
+            int movingNumber = randomNumberGenerator.getRandomNumber();
+            car.move(movingNumber);
         }
     }
 
