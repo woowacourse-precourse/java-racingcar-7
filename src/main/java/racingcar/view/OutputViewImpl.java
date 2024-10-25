@@ -1,6 +1,6 @@
 package racingcar.view;
 
-public class OutPutViewImpl implements OutPutView {
+public class OutputViewImpl implements OutputView {
     @Override
     public void printCarRaceGameResults(String carName, String progress) {
         System.out.println(carName + " : " + progress);
