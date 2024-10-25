@@ -29,18 +29,19 @@ public class RacingGame {
     //게임 시작
     public void start(){
         for(int i =0; i<attemptCount; i++){
-            playRound();
+            runRoundAndPrintResults();
 
         }
+    }
+    // 라운드를 진행하고 결과를 출력하는 메서드
+    private void runRoundAndPrintResults() {
+        playRound();
+//        OutputView.printRaceStatus(cars);  // 라운드 결과 출력
     }
 
     //라운드 진행
     private void playRound(){
         racingService.moveCars(cars);
-    }
-
-    public void run(){
-        int attemptCount = InputView.getAttemptCount();
     }
 }
 
