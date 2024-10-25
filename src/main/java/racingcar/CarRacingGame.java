@@ -12,6 +12,10 @@ public class CarRacingGame {
     private final int round;
 
     public CarRacingGame(IOutputDisplay outputDisplay, List<ICar> carList, int round) {
+        if (carList == null || carList.isEmpty()) {
+            throw new IllegalArgumentException("1대 이상의 자동차가 경주에 참여해야 합니다.");
+        }
+
         this.outputDisplay = outputDisplay;
         this.carList = carList;
         this.round = round;
