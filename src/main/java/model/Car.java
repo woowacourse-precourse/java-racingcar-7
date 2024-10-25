@@ -8,7 +8,6 @@ public class Car {
     private final static int MOVE_STEP = 1;
     private final static int RANDOM = 4;
 
-
     private final String name;
     private int step;
 

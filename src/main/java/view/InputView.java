@@ -5,9 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 import model.InputHandler;
 
-public class ConsoleView {
-
-    private final static char RACE_STEP = '-';
+public class InputView {
 
     private final InputHandler inputHandler = new InputHandler();
 
@@ -23,10 +21,6 @@ public class ConsoleView {
 
         String moveCount = readLine();
         return inputHandler.toInt(moveCount);
-    }
-
-    public void showRaceStatus() {
-
     }
 
 }

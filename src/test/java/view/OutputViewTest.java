@@ -1,0 +1,6 @@
+package view;
+
+class OutputViewTest {
+
+
+}
