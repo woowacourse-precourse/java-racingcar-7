@@ -1,13 +1,13 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import racingcar.view.InputView;
+import racingcar.controller.InputController;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        InputView InputView = new InputView();
+        InputController inputController = new InputController();
+        inputController.run();
     }
 
 
