@@ -1,5 +1,6 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -8,20 +9,39 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
     @Test
     void 이동거리_증가() {
-        assertSimpleTest(() -> {
-            Car car = new Car("pobi");
-            car.increaseDistance();
-            assertThat(car.toString()).isEqualTo("pobi : -");
-        });
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Car car = new Car("pobi");
+                    car.move();
+                    car.move();
+                    assertThat(car.toString()).isEqualTo("pobi : --");
+                }, MOVING_FORWARD, MOVING_FORWARD
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Car car = new Car("woni");
+                    car.move();
+                    car.move();
+                    car.move();
+                    assertThat(car.toString()).isEqualTo("woni : -");
+                }, STOP, STOP, MOVING_FORWARD
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Car car = new Car("jun");
+                    car.move();
+                    car.move();
+                    car.move();
+                    car.move();
+                    assertThat(car.toString()).isEqualTo("jun : ---");
+                }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
 
-        assertSimpleTest(() -> {
-            Car car = new Car("woni");
-            car.increaseDistance();
-            car.increaseDistance();
-            assertThat(car.toString()).isEqualTo("woni : --");
-        });
     }
 
     @Test
