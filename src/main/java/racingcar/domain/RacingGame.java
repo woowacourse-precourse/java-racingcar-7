@@ -1,12 +1,17 @@
 package racingcar.domain;
 
+import racingcar.util.RandomDigitGenerator;
+import racingcar.util.RandomGenerator;
+
 public class RacingGame {
 
     private final Cars cars;
 
     public RacingGame(String invalidCarNames) {
         CarsParser CarsParser = new CarsParser();
-        cars = new Cars(CarsParser.parse(invalidCarNames));
+        RandomGenerator randomGenerator = new RandomDigitGenerator();
+
+        cars = new Cars(CarsParser.parse(invalidCarNames), randomGenerator);
     }
 
     public String proceedRound() {

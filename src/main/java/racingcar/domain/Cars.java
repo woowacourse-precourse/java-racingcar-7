@@ -2,17 +2,20 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.util.RandomGenerator;
 
 public class Cars {
 
+    private final RandomGenerator randomGenerator;
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(List<Car> cars, RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
         this.cars = cars;
     }
 
     public void moveAll() {
-        cars.forEach(Car::moveForward);
+        cars.forEach(car -> car.moveForward(randomGenerator.generate()));
     }
 
     public String getCurrentRoundResult() {

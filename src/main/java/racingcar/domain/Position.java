@@ -1,21 +1,17 @@
 package racingcar.domain;
 
-import racingcar.util.RandomGenerator;
-
 public class Position {
 
     private static final int MOVE_FORWARD_STANDARD = 4;
 
-    private final RandomGenerator randomGenerator;
     private int position;
 
-    public Position(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
+    public Position() {
         position = 0;
     }
 
-    public void move() {
-        if (randomGenerator.generate() >= MOVE_FORWARD_STANDARD) {
+    public void move(int randomNumber) {
+        if (randomNumber >= MOVE_FORWARD_STANDARD) {
             position++;
         }
     }

@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.RandomDigitGenerator;
-
 public class Car {
 
     private final Name name;
@@ -9,11 +7,11 @@ public class Car {
 
     public Car(String carName) {
         name = new Name(carName);
-        position = new Position(new RandomDigitGenerator());
+        position = new Position();
     }
 
-    public void moveForward() {
-        position.move();
+    public void moveForward(int randomNumber) {
+        position.move(randomNumber);
     }
 
     public int getPosition() {
