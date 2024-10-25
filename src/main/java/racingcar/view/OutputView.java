@@ -18,4 +18,8 @@ public class OutputView {
         printMessage(RESULT_MESSAGE);
     }
 
+    public static void printCarStatus(Car car) {
+        printMessage(car.toString());
+    }
+
 }
