@@ -14,7 +14,13 @@ public enum ExceptionEnum {
   ROUND_COUNT_DECIMAL_NUMBER_NOT_AVAILABLE("시도할 횟수는 소수일 수 없습니다."),
   ROUND_COUNT_OUT_OF_INTEGER_RANGE("시도할 횟수가 Integer의 범위를 벗어납니다"),
 
+  //CarStrategy
+  CAR_NAME_LONGGER_THAN_FIVE("자동차 이름은 5자 이하만 가능 합니다."),
+  DUPLICATE_CAR_NAME("중복된 자동차 이름은 허용되지 않습니다."),
+
   INVALID_INPUT("유효하지 않은 입력 입니다.");
+
+
 
   private final String message;
 
