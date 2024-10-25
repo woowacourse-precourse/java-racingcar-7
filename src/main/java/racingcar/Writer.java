@@ -23,4 +23,13 @@ public class Writer {
 
         System.out.println("");
     }
+
+    public static void printWinner(List<Car> winners) {
+        System.out.print("최종 우승자 : ");
+        for (Car car : winners) {
+            System.out.print(car.getName());
+            System.out.print(", ");
+        }
+        System.out.println("\b\b ");
+    }
 }
