@@ -36,7 +36,7 @@ class OutputViewTest {
         winners.add("진용");
 
         outputView.outputWinner(winners);
-        Assertions.assertEquals("진용", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("최종 우승자 : 진용", outputStreamCaptor.toString().trim());
 
     }
 
@@ -50,7 +50,7 @@ class OutputViewTest {
         winners.add("길동");
 
         outputView.outputWinner(winners);
-        Assertions.assertEquals("진용, 순신, 길동", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("최종 우승자 : 진용, 순신, 길동", outputStreamCaptor.toString().trim());
     }
 
     @Test
