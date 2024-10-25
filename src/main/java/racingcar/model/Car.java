@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.utils.Random;
+
 public class Car {
 
     private final String name;
@@ -22,8 +24,15 @@ public class Car {
         return location;
     }
 
-    public void go() {
+    private void go() {
         this.location++;
+    }
+
+    public void startRace() {
+        int randomNumber = Random.createRandomNumber();
+        if (randomNumber >= 4) {
+            go();
+        }
     }
 
 }
