@@ -1,4 +1,4 @@
-package racingcar.generator;
+package racingcar.util.generator;
 
 import java.util.List;
 import java.util.stream.Collectors;

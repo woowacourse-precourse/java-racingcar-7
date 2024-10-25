@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.util.parser;
 
 import java.util.Arrays;
 import java.util.List;
