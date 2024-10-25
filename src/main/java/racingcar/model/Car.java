@@ -13,18 +13,14 @@ public class Car {
         this.distance = 0;
     }
 
-    public static Car of(String name){
+    public static Car of(String name) {
         return new Car(name);
     }
 
-    public void move() {
-        if (makeRandomNumber() >= 4) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.moveable()) {
             distance++;
         }
-    }
-
-    private int makeRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 
     private void validate(String name) {
