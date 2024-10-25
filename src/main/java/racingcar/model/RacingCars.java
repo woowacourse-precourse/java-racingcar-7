@@ -17,4 +17,24 @@ public record RacingCars(List<RacingCar> racingCarList) {
                 .toList();
         return new RacingCars(movedRacingCarList);
     }
+
+    public RacingCars findWinners() {
+        int maxLocation = getMaxLocation();
+        List<RacingCar> winners = racingCarList.stream()
+                .filter(car -> isWinner(car, maxLocation))
+                .toList();
+
+        return new RacingCars(winners);
+    }
+
+    private int getMaxLocation() {
+        return racingCarList.stream()
+                .mapToInt(RacingCar::currentLocationValue)
+                .max()
+                .orElse(0);
+    }
+
+    private boolean isWinner(RacingCar car, int maxLocation) {
+        return car.currentLocationValue() == maxLocation;
+    }
 }
