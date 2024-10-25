@@ -16,6 +16,9 @@ public class Application {
         Application app = new Application();
         app.init(input);
 
+        for (String name : names) {
+            app.moveCar(name);
+        }
     }
 
     public void init(String input) {
@@ -28,4 +31,12 @@ public class Application {
         }
     }
 
+    public void moveCar(String name) {
+        int tmp = Randoms.pickNumberInRange(0, 9);
+        //이동
+        if (tmp >= 4) {
+            car.put(name, car.get(name) + 1);
+        }
+
+    }
 }
