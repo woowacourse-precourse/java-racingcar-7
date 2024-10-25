@@ -25,7 +25,7 @@ public class RacingController {
 
         int tryCount = getTryCount();
 
-        raceStart(cars, tryCount);
+        startRace(cars, tryCount);
         determineWinners(cars);
     }
 
@@ -46,7 +46,7 @@ public class RacingController {
         return new Cars(carNames);
     }
 
-    private void raceStart(Cars cars, int tryCount) {
+    private void startRace(Cars cars, int tryCount) {
         outputView.printNewLine();
         outputView.printMessage(RESULT_TITLE);
 
