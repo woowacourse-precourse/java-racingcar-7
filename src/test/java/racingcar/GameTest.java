@@ -13,7 +13,7 @@ class GameTest {
     @Test
     void test1() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
-        Game game = new Game(cars);
+        Game game = new Game(cars, () -> true);
 
         List<Integer> positions = game.race();
         List<Integer> positions2 = game.race();

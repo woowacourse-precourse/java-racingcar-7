@@ -12,16 +12,12 @@ public class Cars {
     }
 
     // TODO: 함수형으로 리팩토링
-    public List<Integer> go() {
+    public List<Integer> go(MoveCondition moveCondition) {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            int position = car.go();
+            int position = car.go(moveCondition);
             positions.add(position);
         }
         return positions;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

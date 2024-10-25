@@ -30,12 +30,26 @@ class CarTest {
     void test3() {
         Car car1 = new Car("car1");
 
-        int distance1 = car1.go();
-        int distance2 = car1.go();
-        int distance3 = car1.go();
+        int distance1 = car1.go(() -> true);
+        int distance2 = car1.go(() -> true);
+        int distance3 = car1.go(() -> true);
 
         assertThat(distance1).isEqualTo(1);
         assertThat(distance2).isEqualTo(2);
         assertThat(distance3).isEqualTo(3);
+    }
+
+    @DisplayName("차가 정지하는 경우 포지션이 그대로인 것을 테스트하라")
+    @Test
+    void test4() {
+        Car car1 = new Car("car1");
+
+        int distance1 = car1.go(() -> false);
+        int distance2 = car1.go(() -> false);
+        int distance3 = car1.go(() -> false);
+
+        assertThat(distance1).isEqualTo(0);
+        assertThat(distance2).isEqualTo(0);
+        assertThat(distance3).isEqualTo(0);
     }
 }

@@ -14,9 +14,9 @@ class CarsTest {
     void test1() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
 
-        List<Integer> positions1 = cars.go();
-        List<Integer> positions2 = cars.go();
-        List<Integer> positions3 = cars.go();
+        List<Integer> positions1 = cars.go(() -> true);
+        List<Integer> positions2 = cars.go(() -> true);
+        List<Integer> positions3 = cars.go(() -> true);
 
         assertThat(positions1).isEqualTo(List.of(1, 1, 1));
         assertThat(positions2).isEqualTo(List.of(2, 2, 2));
