@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.utils.ConstantMessage;
@@ -13,8 +14,17 @@ public class OutputView {
         System.out.println(ConstantMessage.INPUT_ROUND_MESSAGE);
     }
 
-    public void printExecuteResultGuide() {
+    public void printResultMessage() {
         System.out.println(ConstantMessage.OUTPUT_RESULT_MESSAGE);
+    }
+
+    public void printExecuteResult(ArrayList<Car> winners) {
+        System.out.printf(ConstantMessage.OUTPUT_WINNER_MESSAGE);
+        ArrayList<String> nameList = new ArrayList<>();
+        for (Car car : winners) {
+            nameList.add(car.getName());
+        }
+        System.out.println(String.join(", ", nameList));
     }
 
     public void printRacingProgress(List<Car> carArrayList) {
