@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println(COUNT_INPUT_MESSAGE);
     }
 
-    public void printResultMessage() {
+    public void printResultHeader() {
         System.out.println(RESULT_MESSAGE_HEADER);
     }
 

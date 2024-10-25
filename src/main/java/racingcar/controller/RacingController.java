@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.Cars;
+import racingcar.util.InputFormatter;
 import racingcar.util.MessageFormatter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -26,13 +27,13 @@ public class RacingController {
 
     private Cars getCars() {
         String carInput = getCarInput();
-        List<String> beforeConvertCars = MessageFormatter.getFormattedCarNames(carInput);
+        List<String> beforeConvertCars = InputFormatter.getFormattedCarNames(carInput);
         return Cars.createCars(beforeConvertCars);
     }
 
     private int getCount() {
         String countInput = getCountInput();
-        return MessageFormatter.getFormattedCount(countInput);
+        return InputFormatter.getFormattedCount(countInput);
     }
 
     private String getCarInput() {
