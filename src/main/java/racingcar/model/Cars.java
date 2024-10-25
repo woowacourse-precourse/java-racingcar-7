@@ -1,14 +1,14 @@
 package racingcar.model;
 
-public class Car {
+public class Cars {
     private String carName;
     private int distance;
 
-    public Car(String carName){
+    public Cars(String carName){
         this.carName = carName;
         this.distance = 0;
     }
-    
+
     public String getCarName(){
         return this.carName;
     }
