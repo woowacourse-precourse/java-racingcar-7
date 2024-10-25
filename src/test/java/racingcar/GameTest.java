@@ -34,6 +34,19 @@ public class GameTest {
     }
 
     @Test
+    void Game_findWinner_test() {
+        List<String> carNameList = Arrays.asList("pobi", "woni");
+        Game test = new Game(carNameList, 3);
+
+        RacingCar pobi = test.racingCarList.getFirst();
+        while (pobi.getCount() < 1) {
+            pobi.rollDice();
+        }
+        assertThat(test.findWinners()).contains("pobi");
+
+    }
+
+    @Test
     void Game_generateRacingCarList_exception_test() {
         List<String> carNameList = Arrays.asList("pobi", "javaji");
         assertThatThrownBy(() -> Game.generateRacingCarList(carNameList))
