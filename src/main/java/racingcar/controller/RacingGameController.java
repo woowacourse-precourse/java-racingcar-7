@@ -28,6 +28,8 @@ public class RacingGameController {
         String tryCountInput = inputView.inputTryCount();
         int tryCount = inputValidator.validateAndParseTryCount(tryCountInput);
 
+        inputView.close(); // Console 자원 해제
+
         // 3. 게임 초기화 및 실행
         initializeGame(carNames);
         runAllRaces(tryCount);
