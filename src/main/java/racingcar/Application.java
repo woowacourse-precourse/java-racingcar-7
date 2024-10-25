@@ -4,8 +4,8 @@ import static util.Input.getInput;
 
 import dto.RacingInput;
 import java.util.ArrayList;
-import java.util.Arrays;
 import util.Car;
+import util.Output;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,39 +27,35 @@ public class Application {
 
         Car[] cars = new Car[inputCars.length];
         for (int i = 0; i < inputCars.length; i++) {
-            cars[i] = new Car(inputCars[i], 0);
+            cars[i] = new Car(inputCars[i]);
         }
 
-        // 실행 및 출력
-        System.out.println("실행 결과");
-        Integer repeatCount = Integer.parseInt(input.repeatCount());
-        for (int i = 0; i < repeatCount; i++) {
-            // 자동차 전진 기능
-            for (Car car : cars) {
-                car.moveForwardRandomly();
-            }
+        int repeatCount = Integer.parseInt(input.repeatCount());
 
-            // 출력 기능
-            for (Car car : cars) {
-                String forwardsViewer = "";
-                for (int k = 0; k < car.getForwardCount(); k++) {
-                    forwardsViewer += "-";
-                }
-                System.out.println(car.getName() + " : " + forwardsViewer);
-            }
-            System.out.println("");
+        // 실행
+        for (Car car : cars) {
+            car.startRacing(repeatCount);
+        }
+
+        // 출력
+        System.out.println("실행 결과");
+        for (int i = 1; i <= repeatCount; i++) {
+            Output.printRaceStatus(cars, i);
         }
 
         // 우승 차량 선별 기능
-        ArrayList<String> winningCars = new ArrayList<>();
-        int max = Arrays.stream(cars)
-                .mapToInt(Car::getForwardCount)
-                .max()
-                .orElse(0);
+        // extractWinningCars
+        int max = 0;
+        for (Car car : cars) {
+            if (car.getForwardCount(repeatCount) > max) {
+                max = car.getForwardCount(repeatCount);
+            }
+        }
 
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i].getForwardCount() == max) {
-                winningCars.add(cars[i].getName());
+        ArrayList<String> winningCars = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getForwardCount(repeatCount) == max) {
+                winningCars.add(car.getName());
             }
         }
 
