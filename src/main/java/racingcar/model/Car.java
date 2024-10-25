@@ -1,6 +1,8 @@
 package racingcar.model;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
+
     private String name;
     private int movedNumber;
 
@@ -20,7 +22,7 @@ public class Car {
     }
 
     private boolean canCarMove(int moveNumber){
-        return moveNumber >= 4;
+        return moveNumber >= MOVE_THRESHOLD;
     }
 
     public String getName(){

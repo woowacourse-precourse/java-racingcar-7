@@ -10,6 +10,7 @@ public class OutputView {
     private static final String FINAL_WINNER = "최종 우승자 : ";
     private static final String CAR_MOVEMENT_DELIMITER = " : "; // 차량 출력 구분자
     private static final String MOVEMENT_SYMBOL = "-";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void printMoveResultMessage() {
         System.out.println(RACE_RESULT);
@@ -36,7 +37,7 @@ public class OutputView {
     }
 
     public void printWinner(List<String> winners) {
-        String winnerNames = String.join(", ", winners);
+        String winnerNames = String.join(WINNER_DELIMITER, winners);
         System.out.println(FINAL_WINNER + winnerNames);
     }
 }
