@@ -3,28 +3,25 @@ package racingcar.validator;
 public class TrialValidator implements Validator<String>{
 
     private int trial;
-    private static final int ZERO = 0;
+    private static final int MINIMUM_TRIAL_COUNT = 0;
     private static final String REGEX = "[^0-9]";
 
     @Override
     public void validate(String input){
-        setTrial(input);
+        parseTrial(input);
         checkIfTrialIsNegative();
     }
-    private void setTrial(String trialString){
-        checkIfTrialIsInt(trialString);
-        this.trial = Integer.parseInt(trialString);
-    }
-
-    private void checkIfTrialIsInt(String trialString){
-        if(trialString.matches(REGEX)){
-            throw new IllegalArgumentException();
+    private void parseTrial(String trialString){
+        try{
+            this.trial = Integer.parseInt(trialString);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
     }
 
     private void checkIfTrialIsNegative(){
-        if(trial <= ZERO){
-            throw new IllegalArgumentException();
+        if(trial <= MINIMUM_TRIAL_COUNT){
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
 
