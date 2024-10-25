@@ -2,12 +2,12 @@ package racingcar.car;
 
 public class Car {
 
-    private final String car;
+    private final String name;
 
     private final int moveCount;
 
-    public Car(String car, int moveCount) {
-        this.car = car;
+    public Car(String name) {
+        this.name = name;
         this.moveCount = 0;
     }
 
@@ -15,8 +15,8 @@ public class Car {
         throw new UnsupportedOperationException("");
     }
 
-    public String getCar() {
-        return car;
+    public String getName() {
+        return name;
     }
 
     public int getMoveCount() {

@@ -10,6 +10,8 @@ public class Application {
         String input = Input.input();
         List<String> cars = Input.splitCar(input);
 
+        int repetitionCount = Integer.parseInt(Input.input());
+
         Input.close();
     }
 }
