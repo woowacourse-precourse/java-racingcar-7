@@ -4,30 +4,28 @@ import java.util.List;
 
 public class RacingResult {
 
-    private final List<RacingCar> racingResult;
-    private final int totalTrialCount;
-    private final int maxDistance;
+    private final List<RacingCar> racingRecords;
+    private int maxDistance;
 
-    public RacingResult(List<RacingCar> racingResult, Integer totalTrialCount) {
-        this.racingResult = racingResult;
-        this.totalTrialCount = totalTrialCount;
-        this.maxDistance = findMaxDistance();
+    public RacingResult(List<RacingCar> racingRecords) {
+        this.racingRecords = racingRecords;
     }
 
-    public Integer findMaxDistance() {
-        return racingResult.stream()
+    public Integer findMaxDistance(Integer totalTrialCount) {
+        return racingRecords.stream()
                 .map(racingCar -> racingCar.getDistance(totalTrialCount))
                 .reduce(maxDistance, Integer::max);
     }
 
-    public List<String> findWinner() {
-        return racingResult.stream()
+    public List<String> findWinner(Integer totalTrialCount) {
+        this.maxDistance = findMaxDistance(totalTrialCount);
+        return racingRecords.stream()
                 .filter(racingCar -> racingCar.getDistance(totalTrialCount) == maxDistance)
                 .map(RacingCar::getName)
                 .toList();
     }
 
     public List<RacingCar> get() {
-        return racingResult;
+        return racingRecords;
     }
 }

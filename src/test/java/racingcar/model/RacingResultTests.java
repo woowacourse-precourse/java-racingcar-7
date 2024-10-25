@@ -34,8 +34,8 @@ class RacingResultTests {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingResult = RacingController.startRace(inputNames, totalTrialCount);
-                    assertThat(racingResult.findWinner()).isEqualTo(expectedWinner);
-                    assertThat(racingResult.findMaxDistance()).isEqualTo(expectedMaxDistance);
+                    assertThat(racingResult.findMaxDistance(totalTrialCount)).isEqualTo(expectedMaxDistance);
+                    assertThat(racingResult.findWinner(totalTrialCount)).isEqualTo(expectedWinner);
                 },
                 STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
@@ -50,8 +50,8 @@ class RacingResultTests {
         assertRandomNumberInRangeTest(
                 () -> {
                     racingResult = RacingController.startRace(inputNames, totalTrialCount);
-                    assertThat(racingResult.findWinner()).isEqualTo(expectedWinner);
-                    assertThat(racingResult.findMaxDistance()).isEqualTo(expectedMaxDistance);
+                    assertThat(racingResult.findMaxDistance(totalTrialCount)).isEqualTo(expectedMaxDistance);
+                    assertThat(racingResult.findWinner(totalTrialCount)).isEqualTo(expectedWinner);
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
