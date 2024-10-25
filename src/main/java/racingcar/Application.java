@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         getCarNames();
+        int numberOfTries = getNumberOfTries();
     }
 
     // 01. 자동차 이름 입력 기능
@@ -22,7 +23,6 @@ public class Application {
 
         // 입력된 자동차 이름이 유효한지 검증
         validateCarNames(carNames);
-        System.out.println(carNames);
     }
 
     // 01-1. 자동차 이름 예외 검증
@@ -36,5 +36,30 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다: " + name);
             }
         }
+    }
+
+    // 02. 이동 횟수 입력 기능
+    public static int getNumberOfTries() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        String input = Console.readLine();
+        return validateTries(input);
+    }
+
+    // 02-1. 입력된 시도 횟수 검증
+    public static int validateTries(String input) {
+        int numberOfTries;
+
+        try {
+            numberOfTries = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
+        }
+
+        if (numberOfTries <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 큰 숫자여야 합니다.");
+        }
+
+        return numberOfTries;
     }
 }
