@@ -2,6 +2,9 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingGame {
     public void run() {
         String carNames = inputCarNames();
@@ -9,6 +12,14 @@ public class RacingGame {
 
         String tryCount = inputTryCount();
         System.out.println(tryCount);
+
+        Cars cars = new Cars();
+
+        List<String> names = Arrays.stream(splitInput(carNames)).toList();
+
+        cars.registerAll(names);
+
+        System.out.println(cars);
     }
 
     public String inputCarNames() {
@@ -22,4 +33,9 @@ public class RacingGame {
         String inputTryCount = readLine();
         return inputTryCount;
     }
+
+    public String[] splitInput(String input) {
+        return input.split(",",-1);
+    }
+
 }
