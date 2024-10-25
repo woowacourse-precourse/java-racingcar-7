@@ -13,8 +13,8 @@ public class Car {
     }
 
     public void printRacingInfo() {
-        String sb = this.name + " : " + this.makeHyphen();
-        System.out.println(sb);
+        String racingInfo = this.name + " : " + this.makeHyphen();
+        System.out.println(racingInfo);
     }
 
     public String makeHyphen() {
