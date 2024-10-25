@@ -19,21 +19,32 @@ public class GameController {
     }
 
     public void run() {
-        List<Car> cars = initGamePlay();
+        List<Car> cars = initGame();
+        startGame(cars);
+    }
 
-        int inputPlayCount = inputView.inputPlayCount();
+    private void startGame(List<Car> cars) {
+        int totalRoundCount = getTotalRoundCount();
+
         outputView.printRunResult();
-
-        for (int playCount = 0; playCount < inputPlayCount; playCount++) {
-            cars.forEach(car -> {
-                int randomNumber = RandomUtil.generateRandomNumber();
-                car.moveForward(randomNumber);
-            });
+        for (int round = 0; round < totalRoundCount; round++) {
+            playRound(cars);
             outputView.printRoundResult(cars);
         }
     }
 
-    private List<Car> initGamePlay() {
+    private int getTotalRoundCount() {
+        return inputView.inputPlayCount();
+    }
+
+    private void playRound(List<Car> cars) {
+        cars.forEach(car -> {
+            int randomNumber = RandomUtil.generateRandomNumber();
+            car.moveForward(randomNumber);
+        });
+    }
+
+    private List<Car> initGame() {
         List<String> carList = getCarNames();
         validateNoDuplicates(carList);
 
