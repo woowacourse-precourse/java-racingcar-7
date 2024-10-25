@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.dto.CarDto;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ProgressView;
@@ -43,6 +45,8 @@ public class RacingCarController {
         progressView.printFirstProgressMessage();
         for (int round = 1; round <= racingRound; round++) {
             cars.moveCars();
+            List<CarDto> carDtoList = cars.getCarDtoList();
+            progressView.printProgressMessage(carDtoList);
         }
     }
 }

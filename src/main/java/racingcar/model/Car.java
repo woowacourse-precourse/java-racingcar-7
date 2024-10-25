@@ -13,6 +13,10 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public long getPosition() {
         return position;
     }

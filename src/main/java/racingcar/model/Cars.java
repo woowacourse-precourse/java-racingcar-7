@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.dto.CarDto;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -16,6 +17,15 @@ public class Cars {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public List<CarDto> getCarDtoList() {
+        List<CarDto> carDtoList = new ArrayList<>();
+        for (Car car : cars) {
+            CarDto carDto = CarDto.from(car);
+            carDtoList.add(carDto);
+        }
+        return carDtoList;
     }
 
     public List<Car> calculateFarthestCars() {
