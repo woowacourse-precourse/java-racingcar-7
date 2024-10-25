@@ -42,13 +42,12 @@ public class Car {
     }
 
     public void showCurrentMove() {
-        if (randomMove()) {
-            System.out.printf(getName() + " : ");
-            for (int i = 0; i < getProgress(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+        progress++;
+        System.out.printf(name + " : ");
+        for (int i = 0; i < progress; i++) {
+            System.out.print("-");
         }
+        System.out.println();
     }
 
     public boolean randomMove() {
