@@ -1,8 +1,7 @@
 package racingcar.di;
 
-import racingcar.model.dependency.RacingCarDependency;
 import racingcar.model.dependency.moving_strategy.MovingStrategy;
-import racingcar.model.dependency.moving_strategy.random.DefaultRandomMovingStrategy;
+import racingcar.model.dependency.moving_strategy.random.DefaultMovingStrategy;
 import racingcar.model.dependency.validator.DefaultRacingCarValidator;
 import racingcar.model.dependency.validator.RacingCarValidator;
 import racingcar.service.RacingService;
@@ -19,7 +18,7 @@ public class DefaultRacingCarTemplate implements RacingCarTemplate {
 
     // Model
     private final RacingCarValidator racingCarValidator = new DefaultRacingCarValidator();
-    private final MovingStrategy movingStrategy = new DefaultRandomMovingStrategy();
+    private final MovingStrategy movingStrategy = new DefaultMovingStrategy();
     private final RacingCarDependency racingCarDependency = new RacingCarDependency(racingCarValidator, movingStrategy);
 
     // Model - Service

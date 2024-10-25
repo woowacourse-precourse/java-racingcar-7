@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.model.dependency.RacingCarDependency;
+import racingcar.model.dependency.validator.RacingCarValidator;
 
 import java.util.Objects;
 
@@ -10,19 +10,19 @@ public class RacingCar {
     private final int DEFAULT_MOVE_DISTANCE = 1;
     private final int MIN_MOVEABLE_NUMBER = 4;
 
+    private final RacingCarValidator racingCarValidator;
     private final String name;
-    private final RacingCarDependency racingCarDependency;
     private int position;
 
-    public RacingCar(String name, RacingCarDependency racingCarDependency) {
-        this.racingCarDependency = racingCarDependency;
-        this.racingCarDependency.racingCarValidator().validate(name);
+    public RacingCar(String name, RacingCarValidator racingCarValidator) {
+        racingCarValidator.validate(name);
+        this.racingCarValidator = racingCarValidator;
         this.name = name;
         this.position = DEFAULT_POSITION;
     }
 
     public RacingCar(RacingCar other) {
-        this(other.name, other.racingCarDependency);
+        this(other.name, other.racingCarValidator);
         this.position = other.position;
     }
 

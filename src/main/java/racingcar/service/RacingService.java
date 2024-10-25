@@ -5,7 +5,7 @@ import racingcar.dto.RacingRoundResult;
 import racingcar.exception.ExceptionFactory;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
-import racingcar.model.dependency.RacingCarDependency;
+import racingcar.model.dependency.validator.RacingCarValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,10 @@ public class RacingService {
 
     private final int MIN_TRY_COUNT = 1;
 
-    private final RacingCarDependency racingCarDependency;
+    private final RacingCarValidator racingCarValidator;
 
-    public RacingService(RacingCarDependency racingCarDependency) {
-        this.racingCarDependency = racingCarDependency;
+    public RacingService(RacingCarValidator racingCarValidator) {
+        this.racingCarValidator = racingCarValidator;
     }
 
     public RacingCars getRacingCars(List<String> carNames) {
@@ -38,7 +38,7 @@ public class RacingService {
 
     private List<RacingCar> createRacingCars(List<String> carNameList) {
         return carNameList.stream()
-                .map(carName -> new RacingCar(carName, racingCarDependency))
+                .map(carName -> new RacingCar(carName, racingCarValidator))
                 .toList();
     }
 
