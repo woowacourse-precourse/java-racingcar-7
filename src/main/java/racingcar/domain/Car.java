@@ -13,8 +13,18 @@ public class Car {
         this.position = START_POSITION;
     }
 
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
+            position++;
+        }
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     private void validateName(String name) {

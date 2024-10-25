@@ -15,6 +15,10 @@ public class Cars {
         this.cars = createCars(carNames);
     }
 
+    public void attemptCarMovements(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
+    }
+
     public List<Car> get() {
         return Collections.unmodifiableList(cars);
     }
@@ -25,16 +29,16 @@ public class Cars {
         }
     }
 
-    private List<String> parseCarNames(String carNamesInput) {
-        return Arrays.stream(carNamesInput.split(","))
-                .map(String::trim)
-                .toList();
-    }
-
     private void validateNoDuplicates(List<String> carNames) {
         if (carNames.size() != carNames.stream().distinct().count()) {
             throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
         }
+    }
+
+    private List<String> parseCarNames(String carNamesInput) {
+        return Arrays.stream(carNamesInput.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     private List<Car> createCars(List<String> carNames) {
