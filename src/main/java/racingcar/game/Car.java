@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.game;
+
+import racingcar.strategy.MoveStrategy;
 
 public class Car {
     private static final String DASH = "-";

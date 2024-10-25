@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.strategy.MoveStrategy;
+import racingcar.util.Printer;
+import racingcar.exception.Validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.exception.Validator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

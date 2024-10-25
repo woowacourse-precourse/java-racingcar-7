@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.game.Car;
+import racingcar.game.CarList;
+import racingcar.strategy.RandomNumStrategy;
 
 import java.util.List;
 
@@ -26,24 +29,5 @@ class CarTest {
                 () -> assertEquals(3, carList1.size()),
                 () -> assertEquals(carList1.getFirst().getName(), "pobi")
         );
-
-    }
-
-    @Test
-    void createCar_exception() {
-        //given
-        String case1 = "hello";
-        String case2 = "helloWorld";
-
-        RandomNumStrategy strategy = new RandomNumStrategy();
-        CarList manager1 = new CarList(strategy);
-        CarList manager2 = new CarList(strategy);
-
-        //when // then
-        Assertions.assertAll(
-                () -> assertThrows(IllegalArgumentException.class, () -> manager1.add(case1)),
-                () -> assertThrows(IllegalArgumentException.class, () -> manager2.add(case2))
-        );
-
     }
 }

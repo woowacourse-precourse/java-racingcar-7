@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.util;
+
+import racingcar.game.Car;
 
 public abstract class Printer {
 

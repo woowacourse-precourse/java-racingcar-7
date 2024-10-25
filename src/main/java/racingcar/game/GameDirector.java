@@ -1,10 +1,14 @@
-package racingcar;
+package racingcar.game;
 
 
+
+import racingcar.strategy.MoveStrategy;
+import racingcar.util.Printer;
+import racingcar.exception.Validator;
 
 import java.util.List;
 
-import static racingcar.SystemMessage.*;
+import static racingcar.util.SystemMessage.*;
 
 public class GameDirector {
     private final int count;
