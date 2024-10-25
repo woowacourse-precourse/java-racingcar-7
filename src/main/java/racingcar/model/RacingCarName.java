@@ -6,7 +6,6 @@ public class RacingCarName {
 
     private String[] list;
 
-
     public RacingCarName(final String[] carNames) {
         this.list = carNames;
     }

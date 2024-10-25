@@ -14,8 +14,6 @@ public class RacingGameController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final RacingCarList racingCarList = new RacingCarList();
-    private final Winner winner = new Winner();
 
     public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -24,7 +22,9 @@ public class RacingGameController {
 
     public void initCarName() {
         String inputCarName = inputView.inputCarName();
+        RacingCarName.validateDuplicateNames(inputView.splitCarName(inputCarName));
         RacingCarName racingCarName = new RacingCarName(inputView.splitCarName(inputCarName));
+        RacingCarList racingCarList = new RacingCarList();
 
         for (String name : racingCarName.getList()) {
             racingCarList.add(new RacingCar(name));
@@ -52,17 +52,18 @@ public class RacingGameController {
     }
 
     private void printCarPosition(RacingCarMove racingCarMove, RandomNumber randomNumber) {
-        for (RacingCar car : racingCarList.get()) {
+        for (RacingCar car : RacingCarList.get()) {
             car.move(racingCarMove, randomNumber);
             outputView.printRoundResult(car);
         }
     }
 
     private void endGame() {
+        final Winner winner = new Winner();
         outputView.printInitResult();
         printRoundResult();
 
-        String winners = winner.getList(racingCarList.get(), winner.maxPosition(racingCarList.get()));
+        String winners = winner.getList(RacingCarList.get(), winner.maxPosition(RacingCarList.get()));
         outputView.printEndResult(winners);
     }
 
