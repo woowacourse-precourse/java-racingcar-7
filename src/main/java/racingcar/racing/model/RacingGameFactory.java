@@ -3,5 +3,9 @@ package racingcar.racing.model;
 import java.util.List;
 
 public interface RacingGameFactory {
-    List<Car> createCars(List<String> carNameList, int totalCarNumber);
+    Game createGame();
+
+    List<Car> createCars(List<String> carNames);
+
+    Winner createWinner(Game game);
 }
