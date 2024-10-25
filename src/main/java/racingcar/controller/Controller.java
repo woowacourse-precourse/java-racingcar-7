@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.Game;
 import racingcar.util.Convertor;
 import racingcar.view.View;
 
@@ -26,6 +27,11 @@ public class Controller {
         validateCarNames(carNames);
         int round = Convertor.convertStringToInt(inputRound());
         validateRound(round);
+
+        Game game = Game.start(carNames, round);
+        while (!game.isGameEnd()) {
+            game.play();
+        }
     }
 
     private void validateRound(int round) {
