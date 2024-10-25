@@ -42,16 +42,18 @@ public class Race {
         }
     }
 
-    public String getRaceResult() {
-        StringBuilder raceResultBuilder = new StringBuilder();
-        raceResultBuilder
-                .append(raceHistoryStringBuilder);
-
+    private String getRaceWinner() {
         List<String> winnerList = cars.getWinners();
         String raceWinner = StringUtility.listToSplitStr(winnerList);
         if(raceWinner.isEmpty()){
             raceWinner = RACE_DRAW_MESSAGE;
         }
+        return raceWinner;
+    }
+
+    public String getRaceResult() {
+        StringBuilder raceResultBuilder = new StringBuilder(raceHistoryStringBuilder);
+        String raceWinner = getRaceWinner();
         raceResultBuilder.append(RESULT_RACE_PREFIX + raceWinner);
         return raceResultBuilder.toString();
     }
