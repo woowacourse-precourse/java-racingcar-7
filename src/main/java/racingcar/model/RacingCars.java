@@ -61,7 +61,7 @@ public class RacingCars {
 
     private void validateEmpty(List<RacingCar> values) {
         if (values.isEmpty()) {
-            throw new IllegalArgumentException("자동하는 1대 이상이어야 합니다.");
+            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
         }
     }
 
