@@ -8,7 +8,7 @@ import static racingcar.global.error.Error.TRY_COUNT_EXCEPION;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.MoveForwardHistory;
+import racingcar.domain.MoveForwardRecord;
 import racingcar.global.error.NameError;
 import racingcar.global.error.TryCountError;
 import racingcar.view.OutputView;
@@ -19,7 +19,7 @@ public class RacingService {
     private final String COLON = " : ";
     private final String BAR = "-";
     private String POSITIVE_NUMBER_REG = "\\d+";
-    private List<MoveForwardHistory> moveForwardHistories;
+    private List<MoveForwardRecord> moveForwardRecords;
 
     public List<String> splitCarName(String input) {
         return Arrays.stream(input.split(COMMA)).collect(Collectors.toList());
@@ -62,8 +62,8 @@ public class RacingService {
 
         OutputView.printMoveForwardResult();
         for (int i = 0; i < Integer.parseInt(tryCounts); i++) {
-            updateMoveForwardHistory();
-            printMoveForwardHistory();
+            updateMoveForwardRecord();
+            printMoveForwardRecord();
         }
 
     }
@@ -72,21 +72,21 @@ public class RacingService {
         return num > 3;
     }
 
-    public void setMoveForwardHistory(List<String> input) {
-        moveForwardHistories = input.stream()
-                .map(name -> new MoveForwardHistory(name, 0))
+    public void setMoveForwardRecord(List<String> input) {
+        moveForwardRecords = input.stream()
+                .map(name -> new MoveForwardRecord(name, 0))
                 .collect(Collectors.toList());
     }
 
-    private void updateMoveForwardHistory() {
-        moveForwardHistories.stream()
-                .filter(history -> biggerThanThree(pickNumberInRange(0, 9)))
-                .forEach(history -> history.updateGoCount());
+    private void updateMoveForwardRecord() {
+        moveForwardRecords.stream()
+                .filter(record -> biggerThanThree(pickNumberInRange(0, 9)))
+                .forEach(record -> record.updateGoCount());
     }
 
-    private void printMoveForwardHistory() {
-        moveForwardHistories.stream()
-                .forEach(history -> System.out.println(history.getCarName() + COLON + BAR.repeat(history.getGoCount())));
+    private void printMoveForwardRecord() {
+        moveForwardRecords.stream()
+                .forEach(record -> System.out.println(record.getCarName() + COLON + BAR.repeat(record.getGoCount())));
         System.out.println();
     }
 
@@ -97,13 +97,13 @@ public class RacingService {
     }
 
     private void countSortReverse() {
-        moveForwardHistories.stream().sorted((car1, car2) -> Integer.compare(car2.getGoCount(), car1.getGoCount()));
+        moveForwardRecords.stream().sorted((car1, car2) -> Integer.compare(car2.getGoCount(), car1.getGoCount()));
     }
 
     private List<String> getWinners() {
-        int winnerCount = moveForwardHistories.get(0).getGoCount();
+        int winnerCount = moveForwardRecords.get(0).getGoCount();
 
-        return moveForwardHistories.stream().filter(history -> history.getGoCount() == winnerCount)
-                .map(MoveForwardHistory::getCarName).collect(Collectors.toList());
+        return moveForwardRecords.stream().filter(record -> record.getGoCount() == winnerCount)
+                .map(MoveForwardRecord::getCarName).collect(Collectors.toList());
     }
 }

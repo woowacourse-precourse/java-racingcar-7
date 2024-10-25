@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-public class MoveForwardHistory {
+public class MoveForwardRecord {
 
     private String carName;
     private int goCount;
 
-    public MoveForwardHistory(String carName, int goCount) {
+    public MoveForwardRecord(String carName, int goCount) {
         this.carName = carName;
         this.goCount = goCount;
     }

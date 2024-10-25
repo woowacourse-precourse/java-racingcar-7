@@ -28,7 +28,7 @@ public class RacingController {
     }
 
     public void go(List<String> input, String tryCounts) {
-        racingService.setMoveForwardHistory(input);
+        racingService.setMoveForwardRecord(input);
         racingService.go(tryCounts);
     }
 
