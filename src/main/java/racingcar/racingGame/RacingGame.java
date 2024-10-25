@@ -7,7 +7,7 @@ import racingcar.views.InputView;
 import racingcar.views.OutputView;
 
 import java.math.BigInteger;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,11 +20,14 @@ public class RacingGame extends RacingGameTemplate {
 
     @Override
     protected void initializeGame() {
-        List<String> carNames = Arrays.stream(InputView.inputCarNames().split(",")).toList();
-        CarNameValidation.validate(carNames);
+        List<String> cars = new ArrayList<>();
+        for (String carName : InputView.inputCarNames().split(",")) {
+            CarNameValidation.validate(carName);
+            cars.add(carName);
+        }
         String inputAttempts = InputView.inputRaceAttempts();
         AttemptValidation.validate(inputAttempts);
-        data.initialize(carNames, new BigInteger(inputAttempts));
+        data.initialize(cars, new BigInteger(inputAttempts));
     }
 
     @Override

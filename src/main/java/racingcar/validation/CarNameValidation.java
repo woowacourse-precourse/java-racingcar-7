@@ -2,16 +2,12 @@ package racingcar.validation;
 
 import racingcar.exception.RacingExceptionStatus;
 
-import java.util.List;
-
 
 public class CarNameValidation {
 
-    public static void validate(List<String> carNames){
-        for(String carName : carNames){
-            checkCarNameBlank(carName);
-            checkCarNameLength(carName);
-        }
+    public static void validate(String carName) {
+        checkCarNameLength(carName);
+        checkCarNameBlank(carName);
     }
 
     private static void checkCarNameLength(String carName) {
