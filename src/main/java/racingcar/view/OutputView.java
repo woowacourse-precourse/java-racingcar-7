@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
+    public void printRaceStart() {
+        System.out.println("실행 결과");
+    }
+
     public void printRaceRound(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
