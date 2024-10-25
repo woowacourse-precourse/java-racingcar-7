@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -10,27 +12,20 @@ public class OutputView {
     public static void printRoundResultHeader() {
         System.out.println(ROUND_RESULT_HEADER);
     }
+
     public static void printRoundResult(List<Car> racingCars) {
-        StringBuilder sb = new StringBuilder();
-        for (Car racingCar : racingCars) {
-            sb.append(racingCar.getName()).append(" : ");
-            for (int i = 0; i < racingCar.getProgressCount(); i++) {
-                sb.append("-");
-            }
-            sb.append("\n");
-        }
-        sb.append("\n");
+        String result = racingCars.stream().map(racingCar -> {
+            String progressBar = Stream.generate(
+                    () -> "-").limit(racingCar.getProgressCount()).collect(Collectors.joining());
+            return racingCar.getName() + " : " + progressBar + "\n";
+        }).collect(Collectors.joining());
 
-        System.out.print(sb.toString());
+        System.out.println(result);
     }
-    public static void printWinnerResult(List<String> winnerNames) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("최종 우승자 : ");
-        for (String winnerName : winnerNames) {
-            sb.append(winnerName).append(", ");
-        }
-        sb.setLength(sb.length() - 2);
 
-        System.out.print(sb.toString());
+    public static void printWinnerResult(List<String> winnerNames) {
+        String result = "최종 우승자 : " + winnerNames.stream().collect(Collectors.joining(", "));
+        System.out.print(result);
+
     }
 }

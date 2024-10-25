@@ -1,8 +1,9 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.StringTokenizer;
+import java.util.OptionalInt;
 import racingcar.view.OutputView;
 
 
@@ -17,16 +18,16 @@ public class Race {
         setRacingCars(racingCarNames);
         setRound(roundInput);
     }
+
     private void setRacingCars(String racingCarNames) {
-        StringTokenizer st = new StringTokenizer(racingCarNames, ",");
-        while (st.hasMoreTokens()) {
-            String racingCarName = st.nextToken();
-            if (racingCarName.length() > 5) {
-                throw new IllegalArgumentException(CAR_NAME_LENGTH_EXP_MSG);
-            }
-            racingCars.add(new Car(racingCarName));
-        }
+        racingCars = Arrays.stream(racingCarNames.split(","))
+                .peek(name -> {
+                    if (name.length() > 5) {
+                        throw new IllegalArgumentException(CAR_NAME_LENGTH_EXP_MSG);
+                    }
+                }).map(Car::new).toList();
     }
+
     private void setRound(String roundInput) {
         try {
             this.round = Integer.valueOf(roundInput);
@@ -41,31 +42,26 @@ public class Race {
             runOneRound();
         }
     }
+
     private void runOneRound() {
-        for (Car racingCar : racingCars) {
-            racingCar.decideProgressByRandomNumber();
-        }
+        racingCars.forEach(Car::decideProgressByRandomNumber);
         OutputView.printRoundResult(racingCars);
 
     }
+
     public List<String> getWinnerNames() {
-        List<String> winnerNames = new ArrayList<>();
+        OptionalInt maxScore = racingCars.stream().mapToInt(Car::getProgressCount).max();
+        return racingCars.stream().filter(
+                        racingCar -> racingCar.getProgressCount() == maxScore.getAsInt())
+                .map(Car::getName).toList();
 
-        int maxScore = 0;
-        for (Car racingCar : racingCars) {
-            maxScore = Math.max(racingCar.getProgressCount(), maxScore);
-        }
-        for (Car racingCar : racingCars) {
-            if (racingCar.getProgressCount() == maxScore) {
-                winnerNames.add(racingCar.getName());
-            }
-        }
-
-        return winnerNames;
+        // TODO. OptionalInt empty check. empty일 때 예외처리.
     }
+
     public List<Car> getRacingCars() {
         return racingCars;
     }
+
     public int getRound() {
         return round;
     }
