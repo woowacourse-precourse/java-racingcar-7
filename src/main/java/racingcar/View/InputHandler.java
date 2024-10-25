@@ -10,6 +10,7 @@ public class InputHandler {
     static private final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";
     static private final int CAR_MAX_LENGTH = 5;
     List<String> carNames;
+    int moveAttemptCount = 0;
 
     public InputHandler() {
         carNames = new ArrayList<>();
@@ -49,5 +50,16 @@ public class InputHandler {
                 throw new IllegalArgumentException("자동차의 이름은 영어 대소문자, 숫자로만 가능합니다.: " + carName);
             }
         }
+    }
+
+    public int moveAttemptCount() {
+        String userInput = Console.readLine();
+        try {
+            moveAttemptCount = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+          throw new IllegalArgumentException("시도횟수는 숫자여야 합니다.");
+        }
+
+        return moveAttemptCount;
     }
 }
