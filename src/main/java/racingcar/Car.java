@@ -13,6 +13,10 @@ public class Car {
         return this.carName;
     }
 
+    public int getDistance() {
+        return this.distance;
+    }
+
     public void addDistance(final int distance) {
         this.distance += distance;
     }
