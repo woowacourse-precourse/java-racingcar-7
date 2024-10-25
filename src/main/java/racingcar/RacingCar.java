@@ -31,6 +31,7 @@ public class RacingCar {
 
             racingMachine(carList, racingCount);
 
+            racingCarOutputHandler.displayFinalResult(carList);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException(e);
@@ -51,7 +52,6 @@ public class RacingCar {
             racingCarOutputHandler.displayRaceResultsByRound(carList);
             racingCount--;
         }
-        racingCarOutputHandler.displayFinalResult(carList);
     }
 
     private void racing(List<Car> carList) {
