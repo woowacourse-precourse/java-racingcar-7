@@ -3,10 +3,18 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
+import racingcar.view.RacingCarView;
 
 public class RacingController {
 
-    void run() {
+    private final RacingCarView racingCarView;
+
+    public RacingController(RacingCarView racingCarView) {
+        this.racingCarView = racingCarView;
+    }
+
+    public void run() {
+        List<String> racingCarNames = racingCarView.getRacingCarNames();
         RacingCar racingCar1 = new RacingCar("car1");
         RacingCar racingCar2 = new RacingCar("car2");
 
