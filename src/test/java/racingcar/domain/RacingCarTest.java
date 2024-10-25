@@ -49,6 +49,6 @@ class RacingCarTest {
         racingCar.move();
 
         //then
-        assertThat(racingCar.getPosition()).isEqualTo(1);
+        assertThat(racingCar.getPosition()).isBetween(0, 1);
     }
 }

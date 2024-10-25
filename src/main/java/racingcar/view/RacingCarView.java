@@ -27,7 +27,7 @@ public class RacingCarView {
         printStringLineFeed(MAX_TRY_COUNT.value());
         String tryCount = Console.readLine();
 
-        if (CustomValidator.validateLength(carNames) || CustomValidator.validateNumber(tryCount)) {
+        if (!CustomValidator.validateNumber(tryCount)) {
             throw new IllegalArgumentException("입력값이 유효하지 않습니다.");
         }
 
