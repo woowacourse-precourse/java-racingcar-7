@@ -14,7 +14,7 @@ public class Input {
      * 0번 인덱스: 경주할 자동 이름들
      * 1번 인덱스: 경주 횟수
      */
-    public static List<String> read() {
+    public List<String> read() {
         List<String> inputs = new ArrayList<>();
 
         System.out.println(Constants.INPUT_CAR_NAME_PROMPT);
@@ -28,7 +28,7 @@ public class Input {
         return inputs;
     }
 
-    private static String createInput() {
+    private String createInput() {
         try {
             return Console.readLine();
         } catch (NoSuchElementException e) {
