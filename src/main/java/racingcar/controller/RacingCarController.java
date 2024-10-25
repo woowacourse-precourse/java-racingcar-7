@@ -12,10 +12,16 @@ public class RacingCarController {
 
     public void start() {
         List<String> names = readNames();
+        int tryCount = readTryCount();
     }
 
     private List<String> readNames() {
         outputView.printCarNameMessage();
         return inputView.readCarNames();
+    }
+
+    private int readTryCount() {
+        outputView.printTryCountMessage();
+        return inputView.readTryCount();
     }
 }

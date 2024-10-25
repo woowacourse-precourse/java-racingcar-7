@@ -13,4 +13,9 @@ public class InputView {
         String input = Console.readLine();
         return Arrays.stream(input.split(COMMA)).toList();
     }
+
+    public int readTryCount() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }
