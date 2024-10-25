@@ -1,13 +1,10 @@
 package racingcar.model.car;
 
-import racingcar.model.name.Name;
 import racingcar.strategy.Strategy;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -32,13 +29,8 @@ public class Cars {
         return Arrays.stream(names).map(Car::new).collect(Collectors.toList());
     }
 
-    public void repeatMove(int count, Strategy strategy) {
-        IntStream.range(0, count)
-                .forEach(i -> move(strategy));
-    }
-
-    private void move(Strategy strategy) {
-        cars.forEach(car -> car.move(strategy));
+    public void moves(Strategy strategy) {
+        cars.forEach(car -> car.move(strategy.random()));
     }
 
     public List<Car> getCars() {
@@ -58,4 +50,10 @@ public class Cars {
         return Objects.hash(cars);
     }
 
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
+    }
 }

@@ -1,9 +1,6 @@
 package racingcar.model.car;
 
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.Car;
-import racingcar.model.car.Cars;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -24,12 +21,18 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_리스트_이동() {
-        Cars cars = new Cars("phobi,leo,jade");
+    void 자동차_이동_테스트() {
+        Cars cars = new Cars("phobi,leo,luna");
 
-        cars.repeatMove(3, () -> { return 5; });
-
-        assertThat(cars).isEqualTo(new Cars(List.of(new Car("phobi", 3), new Car("leo", 3), new Car("jade", 3))));
+        cars.moves(()-> {return 4;});
+        assertThat(cars).isEqualTo(new Cars(List.of(new Car("phobi",1), new Car("leo", 1), new Car("luna",1))));
     }
 
+    @Test
+    void 자동차_이동_실패_테스트() {
+        Cars cars = new Cars("phobi,leo,luna");
+        cars.moves(()-> {return 3;});
+
+        assertThat(cars).isEqualTo(new Cars(List.of(new Car("phobi",0), new Car("leo", 0), new Car("luna",0))));
+    }
 }

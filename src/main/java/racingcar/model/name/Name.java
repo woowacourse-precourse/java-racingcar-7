@@ -36,4 +36,10 @@ public class Name {
         return Objects.hash(name);
     }
 
+    @Override
+    public String toString() {
+        return "Name{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

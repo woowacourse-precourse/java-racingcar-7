@@ -23,8 +23,8 @@ public class Car {
         this.moveNumber = moveNumber;
     }
 
-    public void move(Strategy strategy) {
-        this.moveNumber.move(strategy.random());
+    public void move(int number) {
+        this.moveNumber.move(number);
     }
 
     public String getName() {
@@ -48,4 +48,11 @@ public class Car {
         return Objects.hash(name, moveNumber);
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name=" + name +
+                ", moveNumber=" + moveNumber +
+                '}';
+    }
 }

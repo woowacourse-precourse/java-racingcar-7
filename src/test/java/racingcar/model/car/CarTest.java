@@ -11,7 +11,7 @@ public class CarTest {
     @Test
     void 자동차_이동_테스트() {
         Car car = new Car("pobi");
-        car.move(()-> {return 5;});
+        car.move(4);
         assertThat(car).isEqualTo(new Car(new Name("pobi"),new MoveNumber(1)));
     }
 
