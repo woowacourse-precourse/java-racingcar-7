@@ -25,9 +25,7 @@ public class RacingCarOutputHandler {
 
     public void displayFinalResult(List<Car> carList) {
         int maxPosition = findMaxPosition(carList);
-        List<String> winnerList = carList.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName).toList();
+        List<String> winnerList = getWinnerList(carList, maxPosition);
 
         System.out.println();
         String stringWinnerList = String.join(", ", winnerList);
@@ -38,5 +36,11 @@ public class RacingCarOutputHandler {
         return carList.stream()
                 .mapToInt(Car::getPosition)
                 .max().orElseThrow(IllegalArgumentException::new);
+    }
+
+    private static List<String> getWinnerList(List<Car> carList, int maxPosition) {
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName).toList();
     }
 }
