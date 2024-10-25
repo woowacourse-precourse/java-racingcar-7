@@ -17,9 +17,7 @@ public class UserResponseView {
         }
         System.out.println();
     }
-    public static void finalWinner(String winner){
-        System.out.printf("최종 우승자 : %s", winner);
-    }
+
     public static void finalWinner(List<String> winners){
         System.out.print("최종 우승자 : ");
         for(String winner : winners){

@@ -17,7 +17,9 @@ public class UserRequestController {
             saveCar(carNames);
             List<String> carList = getCarList();
             racingRepeat(carList, repeatNum);
-            
+            List<Integer> distanceList = getDistanceList();
+            List<String> winners = racingService.winnerCarList(carList, distanceList);
+            userViewController.callWinnerOutput(winners);
         }else{
             userViewController.callErrorView();
         }
@@ -30,6 +32,10 @@ public class UserRequestController {
 
     private List<String> getCarList(){
         return cars.getCarNames();
+    }
+
+    private List<Integer> getDistanceList(){
+        return cars.getDistance();
     }
 
     private void racingRepeat(List<String> carList, String repeatNum){
