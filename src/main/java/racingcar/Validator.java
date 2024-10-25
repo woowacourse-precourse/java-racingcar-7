@@ -22,6 +22,7 @@ public class Validator {
     }
 
     public static int validateAndParseInteger(String input) {
+        validateCountEmpty(input);
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -32,6 +33,12 @@ public class Validator {
     public static void validatePositive(int count) {
         if (count <= 0) {
             throw new IllegalArgumentException("int 범위의 양수만 입력 가능합니다.");
+        }
+    }
+
+    public static void validateCountEmpty(String count) {
+        if (count.isEmpty()) {
+            throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
         }
     }
 }
