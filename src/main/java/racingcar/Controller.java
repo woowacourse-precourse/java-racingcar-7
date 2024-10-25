@@ -8,7 +8,7 @@ public class Controller {
 
     public void run() {
         String[] listUser = view.getUserinfo();
-        int round = view.getRoundinfo();
+        String round = view.getRoundinfo();
         List<String> listWinners = model.makeRacingHashmap(listUser, round);
         view.displayResult(listWinners);
     }

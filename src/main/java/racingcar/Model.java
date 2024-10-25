@@ -15,14 +15,14 @@ public class Model {
         return step;
     }
 
-    public List<String> makeRacingHashmap(String[] listUser, int round) {
+    public List<String> makeRacingHashmap(String[] listUser, String strRound) {
         HashMap<String, String> racingHashmap = new HashMap<>();
         for (String name : listUser) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("참가자명은 5글자 이하여야 합니다. 다시 입력하세요");
-            }
+            InvalidException.checkNamelength(name);
             racingHashmap.put(name, "");
         }
+        InvalidException.checkRound(strRound);
+        int round = Integer.parseInt(strRound);
         for (int i = 0; i < round; i++) {
             for (String name : racingHashmap.keySet()) {
                 String step = getStep(racingHashmap.get(name), Randoms.pickNumberInRange(0, 9));

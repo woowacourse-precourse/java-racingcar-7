@@ -12,10 +12,9 @@ public class View {
         return listUser;
     }
 
-    public int getRoundinfo() {
+    public String getRoundinfo() {
         System.out.println("시도할 횟수를 정수로 입력하세요 : ");
-        String strRound = Console.readLine();
-        int round = Integer.parseInt(strRound);
+        String round = Console.readLine();
         return round;
     }
 
