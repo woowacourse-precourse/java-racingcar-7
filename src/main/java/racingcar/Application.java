@@ -18,14 +18,14 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int n = Integer.parseInt(Console.readLine());
 
-        List<Car> cars = stringToCars(",", input);
+        List<Car> cars = stringToRacingCars(",", input);
         Race race = new Race(cars, new RandomRaceMoveStrategy());
 
         System.out.println("실행 결과");
         race.start(n);
     }
 
-    private static List<Car> stringToCars(String delimiter, String carsString) {
+    private static List<Car> stringToRacingCars(String delimiter, String carsString) {
         List<String> separated = Separator.separate(delimiter, carsString);
         List<Car> cars = new ArrayList<>();
         for (String carName : separated) {
