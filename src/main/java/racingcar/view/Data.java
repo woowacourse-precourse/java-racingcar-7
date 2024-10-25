@@ -1,10 +1,10 @@
 package racingcar.view;
 
-public class InputData {
+public class Data {
     public String carNames;
     public int trialNum;
 
-    public InputData(String carNames, int trialNum) {
+    public Data(String carNames, int trialNum) {
         this.carNames = carNames;
         this.trialNum = trialNum;
     }
