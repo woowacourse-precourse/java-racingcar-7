@@ -1,9 +1,9 @@
 package racingcar.game.controller.io;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.game.model.Car;
+import racingcar.game.model.RacingCars;
 
 public class OutputHandler {
     private static final String CAR_NAMES_NAVIGATE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -20,11 +20,11 @@ public class OutputHandler {
         System.out.println(ATTEMPT_COUNT_NAVIGATE_MESSAGE);
     }
 
-    public void showCurrentAccumulation(List<Car> cars, Map<Car, Integer> moveAccumulator) {
-        for (Car car : cars) {
-            int progressiveSum = moveAccumulator.get(car);
+    public void showCurrentAccumulation(RacingCars racingCars) {
+        for (Car car : racingCars.getParticipatingCars()) {
             String carName = car.getName();
-            String movedProgressBar = "-".repeat(progressiveSum);
+            int moveCount = car.getMoveCount();
+            String movedProgressBar = "-".repeat(moveCount);
             String formattedEachResult = String.format(CAR_PROGRESS_BAR_TEMPLATE, carName, movedProgressBar);
             System.out.println(formattedEachResult);
         }
