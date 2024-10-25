@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
@@ -22,6 +23,19 @@ public class GameTest {
         names = new String[]{"pobi", "woni", "jun"};
         cars = new Cars(names);
         game = new Game(cars, totalRounds);
+    }
+
+    @Test
+    @DisplayName("출전하는 자동차가 2대보다 적은 경우에는 예외를 던진다.")
+    void throwExceptionWhenNumberOfCarsIsFewerThanMinimumNumberOfCars() {
+        // given
+        String[] nameOfCars = new String[]{"pobi"};
+        Cars invalidNumberOfCars = new Cars(nameOfCars);
+
+        // when & then
+        assertThatThrownBy(() -> new Game(invalidNumberOfCars, totalRounds))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("최소 2대 이상 출전해야 합니다.");
     }
 
     @Test

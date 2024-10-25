@@ -26,6 +26,10 @@ public class Cars {
         }
     }
 
+    public boolean hasFewerNumberOfCarsThan(int minimumNumberOfCars) {
+        return cars.size() < minimumNumberOfCars;
+    }
+
     public List<CarStatus> getStatus() {
         return cars.stream().map(car -> new CarStatus(car.getName(), car.getPosition())).toList();
     }
