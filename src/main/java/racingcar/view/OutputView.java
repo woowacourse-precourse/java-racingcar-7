@@ -7,7 +7,7 @@ import java.util.List;
 
 public class OutputView {
 
-    public void outputViewResult(List<RacingResult> racingResults) {
+    public void result(List<RacingResult> racingResults) {
         System.out.println("실행 결과 : ");
         for (RacingResult racingResult : racingResults) {
             printRacingResultOnce(racingResult);
@@ -16,7 +16,7 @@ public class OutputView {
 
     }
 
-    public void outputViewWinner(String winner) {
+    public void winner(String winner) {
         System.out.print("최종 우승자 : " + winner);
     }
 

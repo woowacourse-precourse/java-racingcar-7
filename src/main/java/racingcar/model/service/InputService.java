@@ -12,8 +12,8 @@ public class InputService {
         return Console.readLine();
     }
 
-    public List<Car> inputValidator(String carValue, String countValue) {
-        if (carValue.isEmpty() || countValue.isEmpty() || carValue == null || countValue == null) {
+    public List<Car> validator(String carValue, String countValue) {
+        if (carValue == null || countValue == null || carValue.isEmpty() || countValue.isEmpty()) {
             throw new MissingInputValueException("입력값이 누락되었습니다.");
         }
 
@@ -27,7 +27,7 @@ public class InputService {
             throw new InvalidCarCountException("자동차는 1개 일 수 없습니다.");
         }
 
-        if (DuplicateCarName(cars)) {
+        if (checkDuplicateCarName(cars)) {
             throw new DuplicateCarNameException("자동차 이름이 중복될 수 없습니다.");
         }
 
@@ -40,7 +40,7 @@ public class InputService {
             carList.add(carInfo);
         }
 
-        if (!isNumeric(countValue)) {
+        if (!isValidAttemptCount(countValue)) {
             throw new InvalidAttemptCountException("시도할 횟수는 숫자여야합니다.");
         }
 
@@ -51,7 +51,7 @@ public class InputService {
         return Arrays.asList(carValue.split(","));
     }
 
-    public boolean isNumeric(String countValue) {
+    public boolean isValidAttemptCount(String countValue) {
         try {
             Integer.parseInt(countValue);
             return true;
@@ -60,7 +60,7 @@ public class InputService {
         }
     }
 
-    public boolean DuplicateCarName(List<String> cars) {
+    public boolean checkDuplicateCarName(List<String> cars) {
         Set<String> carNameSet = new HashSet<>();
         for (String car : cars) {
             if (!carNameSet.add(car)) {

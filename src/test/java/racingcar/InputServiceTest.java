@@ -26,7 +26,7 @@ public class InputServiceTest extends NsTest {
     void 예외_테스트_횟수_입력값_누락() {
         InputService inputService = new InputService();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> inputService.inputValidator("pobi,woni", ""))
+                assertThatThrownBy(() -> inputService.validator("pobi,woni", ""))
                         .isInstanceOf(MissingInputValueException.class)
                         .hasMessageContaining("입력값이 누락되었습니다.")
         );
@@ -72,7 +72,7 @@ public class InputServiceTest extends NsTest {
     void 횟수_입력값_숫자_검증() {
         InputService inputService = new InputService();
         assertSimpleTest(() -> {
-            assertThat(inputService.isNumeric("11")).isTrue();
+            assertThat(inputService.isValidAttemptCount("11")).isTrue();
         });
     }
 

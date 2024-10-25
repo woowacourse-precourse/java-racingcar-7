@@ -23,14 +23,14 @@ public class RacingController {
     }
 
     public void run() {
-        inputView.inputViewCars();
+        inputView.printQuestion();
         String cars = inputService.inputValue();
-        inputView.inputViewCount();
+        inputView.printCount();
         String attemptCount = inputService.inputValue();
-        List<Car> carList = inputService.inputValidator(cars, attemptCount);
+        List<Car> carList = inputService.validator(cars, attemptCount);
         List<RacingResult> racingResults = racingService.play(carList, Integer.parseInt(attemptCount));
         String winner = racingService.getPlayWinner();
-        outputView.outputViewResult(racingResults);
-        outputView.outputViewWinner(winner);
+        outputView.result(racingResults);
+        outputView.winner(winner);
     }
 }
