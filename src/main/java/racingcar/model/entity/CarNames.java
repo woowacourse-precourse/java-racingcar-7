@@ -45,11 +45,13 @@ public class CarNames implements Iterable<String> {
      *         있으면 IllegalArgumentException 발생
      */
     public static CarNames getAfterValidateFormat(String namesToValidate) {
-        Matcher matcher = carNamePattern.matcher(namesToValidate);
         validateSpace(namesToValidate);
+        
+        Matcher matcher = carNamePattern.matcher(namesToValidate);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_FORMAT.toString());
         }
+        
         List<String> names = List.of(namesToValidate.split(","));
         validateDuplicate(names);
         return new CarNames(names);
