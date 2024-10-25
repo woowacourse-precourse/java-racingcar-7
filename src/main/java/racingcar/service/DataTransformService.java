@@ -17,7 +17,7 @@ public class DataTransformService {
         return carNames.stream().map(Car::new).toList();
     }
 
-    public int parseToInt(String value) {
+    public int parseToInt(final String value) {
         return Integer.parseInt(value);
     }
 }

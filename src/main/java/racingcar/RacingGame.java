@@ -28,28 +28,27 @@ public class RacingGame {
                 new DataTransformService()
         );
 
-        // TODO : 일급 컬렉션으로
         List<Car> cars = registerCar(gameController);
         ExecutionNumber executionNumber = registerExecutionNumber(gameController);
         raceResult(gameController, executionNumber, cars);
     }
 
-    private List<Car> registerCar(GameController gameController) {
-        outputView.carRegistMessage();
+    private List<Car> registerCar(final GameController gameController) {
+        outputView.registerCarMessage();
         final String input = inputView.input();
         return gameController.registerCars(input);
     }
 
-    private ExecutionNumber registerExecutionNumber(GameController gameController) {
-        outputView.countRegistMessage();
+    private ExecutionNumber registerExecutionNumber(final GameController gameController) {
+        outputView.registerExecutionNumberMessage();
         final String executionNumberInput = inputView.input();
         ExecutionNumber executionNumber = new ExecutionNumber(gameController.registerExecutionNumber(executionNumberInput));
         outputView.newline();
         return executionNumber;
     }
 
-    private void raceResult(GameController gameController, ExecutionNumber executionNumber, List<Car> cars) {
-        outputView.executionMessage();
+    private void raceResult(final GameController gameController, final ExecutionNumber executionNumber, List<Car> cars) {
+        outputView.executionResultMessage();
         for (int turn = 0; turn < executionNumber.getNumber(); turn++) {
             cars.forEach(gameController::race);
             outputView.printResult(cars);

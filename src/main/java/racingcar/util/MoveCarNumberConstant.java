@@ -11,7 +11,7 @@ public enum MoveCarNumberConstant {
 
     private final int value;
 
-    MoveCarNumberConstant(int value) {
+    MoveCarNumberConstant(final int value) {
         this.value = value;
     }
 

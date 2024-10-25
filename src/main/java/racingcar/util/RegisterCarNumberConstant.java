@@ -8,7 +8,7 @@ public enum RegisterCarNumberConstant {
 
     private final int value;
 
-    RegisterCarNumberConstant(int value) {
+    RegisterCarNumberConstant(final int value) {
         this.value = value;
     }
 

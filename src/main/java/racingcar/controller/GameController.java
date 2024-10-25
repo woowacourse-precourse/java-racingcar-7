@@ -16,13 +16,13 @@ public class GameController {
     private final VerificationService verificationService;
     private final DataTransformService dataTransformService;
 
-    public GameController(GameService gameService, VerificationService verificationService, DataTransformService dataTransformService) {
+    public GameController(final GameService gameService, final VerificationService verificationService, final DataTransformService dataTransformService) {
         this.gameService = gameService;
         this.verificationService = verificationService;
         this.dataTransformService = dataTransformService;
     }
 
-    public List<Car> registerCars(String input) {
+    public List<Car> registerCars(final String input) {
         verificationService.isValidRegisterCarsInputLength(input);
         verificationService.containsInvalidCharacter(input);
         List<String> carNames = dataTransformService.splitInput(input);
@@ -36,7 +36,7 @@ public class GameController {
         return cars;
     }
 
-    public int registerExecutionNumber(String executionNumberInput) {
+    public int registerExecutionNumber(final String executionNumberInput) {
         verificationService.isNumber(executionNumberInput);
         verificationService.isValidExecutionRange(executionNumberInput);
 

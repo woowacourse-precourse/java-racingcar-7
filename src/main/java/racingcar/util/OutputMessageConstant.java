@@ -7,9 +7,9 @@ public enum OutputMessageConstant {
     EXECUTION_RESULT("실행 결과"),
     FINAL_WINNER("최종 우승자 : ");
 
-    private String message;
+    private final String message;
 
-    OutputMessageConstant(String message) {
+    OutputMessageConstant(final String message) {
         this.message = message;
     }
 

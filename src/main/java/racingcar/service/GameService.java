@@ -16,7 +16,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class GameService {
 
     public boolean isMoving() {
-        int carCondition = randomNumber();
+        final int carCondition = randomNumber();
         return carCondition >= CAR_MOVE_CONDITION.getValue();
     }
 
@@ -28,7 +28,7 @@ public class GameService {
         List<Car> raceResult = new ArrayList<>(cars);
         sortResultsDescendingOrder(raceResult);
 
-        int winningScore = raceResult.getFirst().getDistance();
+        final int winningScore = raceResult.getFirst().getDistance();
         isValidRaceResult(winningScore);
 
         return raceResult.stream().filter(c -> c.getDistance() == winningScore).toList();
@@ -38,7 +38,7 @@ public class GameService {
         results.sort(comparingInt(Car::getDistance).reversed());
     }
 
-    private boolean isValidRaceResult(Integer winningScore) {
+    private boolean isValidRaceResult(final int winningScore) {
         if(winningScore == CAR_IS_NOT_STARTED_YET.getValue()) {
             throw new TheCarDoesntStartException();
         }

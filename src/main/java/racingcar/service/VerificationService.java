@@ -17,7 +17,7 @@ import racingcar.exception.executionNumber.NumberRangeException;
 
 public class VerificationService {
 
-    public boolean isValidRegisterCarsInputLength(String input) {
+    public boolean isValidRegisterCarsInputLength(final String input) {
         if(input == null || input.isEmpty()) {
             throw new EmptyInputException();
         }
@@ -47,7 +47,7 @@ public class VerificationService {
         return true;
     }
 
-    public boolean isNumber(String value) {
+    public boolean isNumber(final String value) {
         if (value == null || value.isEmpty()) {
             throw new EmptyInputException();
         }
@@ -60,7 +60,7 @@ public class VerificationService {
         }
     }
 
-    public boolean isValidExecutionRange(String value) {
+    public boolean isValidExecutionRange(final String value) {
         int valueToInt = Integer.parseInt(value);
         if (valueToInt < EXECUTION_RANGE_MIN_VALUE.getValue() ||
                 valueToInt > EXECUTION_RANGE_MAX_VALUE.getValue()) {
