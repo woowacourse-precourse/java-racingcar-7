@@ -10,9 +10,10 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
+    private final static String DELIMITER = ",";
+
     private final InputView inputView;
     private final OutputView outputView;
-    private final static String DELIMITER = ",";
 
     public RacingController() {
         inputView = new InputView();
