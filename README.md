@@ -27,7 +27,8 @@
 
 - 메시지를 선택한 후 메시지를 처리할 책임이 있는 객체를 할당하는 방법으로 클래스 다이어그램을 제작했습니다
 
-![자동차 경주 1차 클래스 다이어그램](https://github.com/user-attachments/assets/7e09a81a-5260-4dcd-a52c-ccec238c061d)
+![자동차 경주 1차 클래스 다이어그램 (2)](https://github.com/user-attachments/assets/29333110-3b17-4dd5-abc8-5ac9195dffd6)
+
 
 ## 패키지 설계
 
