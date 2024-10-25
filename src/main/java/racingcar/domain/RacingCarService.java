@@ -1,9 +1,8 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.controller.RacingCarOutput;
+import racingcar.view.RacingCarOutput;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarService {

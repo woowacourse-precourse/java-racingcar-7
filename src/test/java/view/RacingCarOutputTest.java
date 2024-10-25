@@ -1,7 +1,8 @@
-package racingcar.controller;
+package view;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
+import racingcar.view.RacingCarOutput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

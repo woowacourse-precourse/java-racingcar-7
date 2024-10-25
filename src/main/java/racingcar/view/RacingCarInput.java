@@ -1,7 +1,8 @@
-package racingcar.controller;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.common.ExceptionMessage;
+import racingcar.controller.Validator;
 
 import java.util.List;
 import java.util.NoSuchElementException;

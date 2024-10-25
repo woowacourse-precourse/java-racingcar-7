@@ -1,7 +1,8 @@
-package racingcar.controller;
+package view;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.view.RacingCarInput;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
