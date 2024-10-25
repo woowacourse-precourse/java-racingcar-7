@@ -23,6 +23,7 @@ public class CarValidation {
     public static Integer gameMatchesValid(final String inputGameMatches) {
         Integer gameMatches = checkOverMatches(inputGameMatches);
         checkNullOrEmptyGameMatches(gameMatches);
+        checkNegative(gameMatches);
         return gameMatches;
     }
 
@@ -64,6 +65,12 @@ public class CarValidation {
     private static void checkNullOrEmptyGameMatches(final Integer gameMatches) {
         if (gameMatches == null || gameMatches == 0) {
             throw new IllegalArgumentException(NULL_EMPTY_FOUND.getMessage());
+        }
+    }
+
+    private static void checkNegative(final Integer gameMatches) {
+        if (gameMatches < 0) {
+            throw new IllegalArgumentException(NEGATIVE_GAME_MATCHES.getMessage());
         }
     }
 
