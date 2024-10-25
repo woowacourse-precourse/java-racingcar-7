@@ -24,21 +24,25 @@ public class InputValidator {
         }
     }
 
+    // 숫자 입력 검증
+    public static void validateNumber(String input){
+        int validateInt = validateCharacter(input); // 첫 번째 검증
+        validatePositiveNumber(validateInt); // 두 번째 검증
+    }
+
     // 음수 검증
-    private static void validateMinusNumber(int inputNum) {
+    private static void validatePositiveNumber(int inputNum) {
         if (inputNum <= 0) {
             throw new IllegalArgumentException("0이하의 숫자가 입력되었습니다.");
         }
     }
 
-    // 숫자 입력 검증
-    public static void validateNumber(String input) {
-        int inputNum;
+    // 문자 입력 검증
+    private static int validateCharacter(String input) {
         try {
-            inputNum = Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닌 문자가 입력되었습니다.");
         }
-        validateMinusNumber(inputNum);
     }
 }
