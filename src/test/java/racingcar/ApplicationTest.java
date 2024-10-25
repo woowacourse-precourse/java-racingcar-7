@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -19,15 +20,16 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
+
     @Test
-    void 자동차_이름_분리_테스트(){
+    void 자동차_이름_분리_테스트() {
         String carName = "pobi,woni";
         List<String> expectedCarNames = Arrays.asList("pobi", "woni");
 
@@ -37,9 +39,23 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자동차_이름_부여_테스트() {
+        Application application = new Application();
+        List<String> carNames = Arrays.asList("pobi", "woni");
+        List<Car> cars = application.createCars(carNames);
+
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(cars.get(0).isName("pobi"))
+                    .isTrue();
+            softly.assertThat(cars.get(1).isName("woni"))
+                    .isTrue();
+        });
     }
 
     @Override

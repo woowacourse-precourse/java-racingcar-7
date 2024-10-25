@@ -22,4 +22,10 @@ public class Application {
 
         return carNames;
     }
+
+    public List<Car> createCars(List<String> carNames){
+        return carNames.stream()
+                .map(Car::new)
+                .toList();
+    }
 }
