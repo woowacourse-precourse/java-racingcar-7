@@ -17,4 +17,8 @@ public class Car {
     public int getCurrentDistance() {
         return currentDistance;
     }
+
+    public void increaseDistance() {
+        currentDistance++;
+    }
 }
