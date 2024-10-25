@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import java.util.List;
 import racingcar.exception.InvalidCarNameException;
+import racingcar.exception.InvalidInputException;
 
 public class CarNamesInputValidator implements BasicValidator<String> {
     private static final int MAX_CAR_NAME_LENGTH = 5;
@@ -18,7 +19,7 @@ public class CarNamesInputValidator implements BasicValidator<String> {
 
     private void isInputEmpty(String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
+            throw new InvalidInputException("입력값이 없습니다.");
         }
     }
 

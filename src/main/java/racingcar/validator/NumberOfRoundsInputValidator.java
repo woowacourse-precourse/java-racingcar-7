@@ -1,5 +1,7 @@
 package racingcar.validator;
 
+import racingcar.exception.InvalidInputException;
+
 public class NumberOfRoundsInputValidator implements BasicValidator<String> {
 
     @Override
@@ -12,7 +14,7 @@ public class NumberOfRoundsInputValidator implements BasicValidator<String> {
 
     private void isInputEmpty(String userInput) {
         if (userInput.isEmpty()) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
+            throw new InvalidInputException("입력값이 없습니다.");
         }
     }
 
