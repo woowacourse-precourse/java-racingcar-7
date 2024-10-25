@@ -20,7 +20,7 @@ public class Parsing {
         return player;
     }
 
-    public static String joinWinner(String[] winners) {
+    public static String joinWinner(List<String> winners) {
         return String.join(COMMA_SPACE, winners);
     }
 }
