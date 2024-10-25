@@ -1,7 +1,5 @@
 package racingcar.domain.car;
 
-import java.util.Objects;
-
 public class CarName {
 
     private final String carName;
