@@ -152,6 +152,22 @@ public class UnitTest extends NsTest {
         assertThat(Application.getWinPosition(cars)).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("getWinners 테스트")
+    void getWinnersTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+        List<String> winners = Application.getWinners(cars, 3);
+        for(RacingCar car : cars){
+            if(car.position == 3){//3은 maxPosition
+                assertThat(winners).contains(car.name);
+            }
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
