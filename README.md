@@ -54,7 +54,7 @@
 
 ## 🖥️ OutputHandler
 - [x] 입력 안내 메세지 출력
-- [ ] 각 라운드 경기 결과 출력
+- [x] 각 라운드 경기 결과 출력
 - [ ] 우승자 출력
 
 ## 🔁 DisplayConverter
