@@ -2,6 +2,7 @@ package racingcar.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 	private List<Car> cars = new ArrayList<>();
@@ -29,9 +30,10 @@ public class Cars {
 	public void printWinner(){
 		System.out.print("최종 우승자 : ");
 		int maxLocation = getMaxLocation();
-		cars.stream()
+		String winners = cars.stream()
 			.filter(car -> car.getLocation() == maxLocation)
 			.map(Car::getName)
-			.forEach((name) -> System.out.print(name + " "));
+			.collect(Collectors.joining(", "));
+		System.out.println(winners);
 	}
 }
