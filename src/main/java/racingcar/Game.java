@@ -1,9 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Game {
-
     List<RacingCar> racingCars;
 
     public void init(List<String> carNames) {
@@ -14,5 +14,9 @@ public class Game {
         for (String name : carNames) {
             racingCars.add(RacingCar.createRacingCar(name));
         }
+    }
+
+    public Integer randomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
