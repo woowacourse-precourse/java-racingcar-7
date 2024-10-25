@@ -44,6 +44,15 @@ class MainTest extends NsTest {
                 .hasSize(3);
     }
 
+    @Test
+    @DisplayName("시도할 횟수를 입력받는다")
+    void playCountInput() {
+        assertSimpleTest(() -> {
+            run("5");
+            assertThat(main.receivePlayCount()).isEqualTo(5);
+        });
+    }
+
     @Override
     protected void runMain() {
 

@@ -35,4 +35,10 @@ public class Main {
 
         return cars;
     }
+
+    public int receivePlayCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = Integer.parseInt(Console.readLine());
+        return count;
+    }
 }
