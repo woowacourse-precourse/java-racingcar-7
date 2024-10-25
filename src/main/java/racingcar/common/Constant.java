@@ -1,7 +1,8 @@
 package racingcar.common;
 
 public enum Constant {
-    DELIMITER(",");
+    DELIMITER(","),
+    CAR_NAME_LIMIT_LENGTH("5");
 
     private final String value;
 
