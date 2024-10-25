@@ -34,10 +34,13 @@ class PositionTest {
             //given
             Position position = new Position(() -> randomNumber);
             int expected = 0;
+
             //when
             position.move();
+            int actual = position.getPosition();
+
             //then
-            assertThat(position.getPosition()).isEqualTo(expected);
+            assertThat(actual).isEqualTo(expected);
         }
 
         @ParameterizedTest
@@ -47,10 +50,13 @@ class PositionTest {
             //given
             Position position = new Position(() -> randomNumber);
             int expected = 1;
+
             //when
             position.move();
+            int actual = position.getPosition();
+
             //then
-            assertThat(position.getPosition()).isEqualTo(expected);
+            assertThat(actual).isEqualTo(expected);
         }
     }
 }
