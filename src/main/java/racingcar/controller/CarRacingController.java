@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.service.CarService;
 import racingcar.service.GameService;
@@ -29,10 +30,17 @@ public class CarRacingController {
         List<Car> cars = carService.createCars(carNames.split(","));
 
         outputView.displayGameStart();
+
         for (int i = 0; i < roundCount; i++) {
             carService.moveCars(cars);
             outputView.displayRound(cars);
         }
+
+//        IntStream.range(0,roundCount)
+//                .forEach(i -> {
+//                    carService.moveCars(cars);
+//                    outputView.displayRound(cars);
+//                });
 
         List<Car> winners = gameService.selectWinners(cars);
         outputView.displayWinner(winners);
