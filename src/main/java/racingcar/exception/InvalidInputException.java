@@ -48,7 +48,7 @@ public class InvalidInputException {
 
     public static void validateAttemptCount(int attemptCount) {
         if (attemptCount < 1) {
-            throw new IllegalArgumentException(ExceptionMessage.INPUT_POSITIVE_INTEGER.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_ONLY_POSITIVE_INTEGER.getMessage());
         }
     }
 }
