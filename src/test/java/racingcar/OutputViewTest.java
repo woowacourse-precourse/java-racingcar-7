@@ -20,7 +20,7 @@ class OutputViewTest {
 
 
         // then
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자: pobi, crong, honux");
+        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi, crong, honux");
 
     }
 
@@ -36,7 +36,7 @@ class OutputViewTest {
         OutputView.printOutput(OutputView.OUTPUT_FILTER, output);
 
         // then
-        assertThat(outputStream.toString()).isEqualTo("최종 우승자: pobi");
+        assertThat(outputStream.toString()).isEqualTo("최종 우승자 : pobi");
     }
 
 }

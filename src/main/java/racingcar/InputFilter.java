@@ -9,26 +9,43 @@ public class InputFilter {
     private int moveCount;
     private String[] carNames;
 
-    public InputFilter() {
+    public InputFilter(String rawCarNames, String rawMoveCount) {
+        String[] carNames = validateCarNames(rawCarNames);
+        int moveCount = validateMoveCount(rawMoveCount);
+
+        this.carNames = carNames;
+        this.moveCount = moveCount;
     }
 
-    public void validateCarNames(String carNames) {
-        this.carNames = carNames.split(",");
-        for (String carName : this.carNames) {
+    public String[] validateCarNames(String carNames) {
+        String[] splitCarNames = carNames.split(",");
+        for (String carName : splitCarNames) {
             if (carName.length() > MAX_NAME_LENGTH || carName.length() < MIN_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
         }
+        return splitCarNames;
     }
 
-    public void validateMoveCount(String moveCount) {
+    public int validateMoveCount(String moveCount) {
+        int moveCountInt;
         try {
-            this.moveCount = Integer.parseInt(moveCount);
+            moveCountInt = Integer.parseInt(moveCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("이동 횟수는 숫자만 가능합니다.");
         }
-        if (this.moveCount < 1) {
+        if (moveCountInt < 1) {
             throw new IllegalArgumentException("이동 횟수는 1 이상만 가능합니다.");
         }
+
+        return moveCountInt;
+    }
+
+    public String[] getCarNames() {
+        return carNames;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 }
