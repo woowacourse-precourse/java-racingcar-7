@@ -1,9 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
-// 3. 시도 횟수만큼 경주를 반복하고, 횟수별 경주 결과를 출력한다.
-// 4. 경주마다 자동차별 0~9 사이 무작위 값을 구한 후, 값이 4 이상이면 전진한다.
+import java.util.*;
+
 // 5. 마지막 경주 이후 최종 우승자를 출력한다.
 //    * 단독 우승자와 공동 우승자로 내용을 구분하여 출력한다.
 //    * 공동 우승자일 경우 쉼표(,)를 이용하여 구분한다.
@@ -29,5 +30,27 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
         } // end if
         int times = Integer.parseInt(inputTimes);
+
+        System.out.println();
+        System.out.println("실행 결과");
+
+        Map<String, List<String>> cars = new HashMap<>();
+
+        for (String name : names) {
+            List<String> positions = new ArrayList<>();
+            cars.put(name, positions);
+        } // end for
+
+        for (int i = 0; i < times; i++) {
+            Set<String> carNames = cars.keySet();
+            for (String name : carNames) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber > 4) {
+                    cars.get(name).add("-");
+                } // end if
+                System.out.println(name + " : "  + cars.get(name));
+            } // end for
+            System.out.println();
+        } // end for
     } // main
 } // class
