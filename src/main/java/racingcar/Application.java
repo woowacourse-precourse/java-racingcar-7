@@ -8,6 +8,8 @@ public class Application {
 
         List<String> cars = getCars();
 
+        int count = getCount();
+
     }
 
     private static List<String> getCars() {
@@ -15,5 +17,11 @@ public class Application {
         String input = Console.readLine();
         List<String> cars = new ArrayList<String>(Arrays.asList(input.split(",")));
         return cars;
+    }
+
+    private static int getCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = Integer.parseInt(Console.readLine());
+        return count;
     }
 }
