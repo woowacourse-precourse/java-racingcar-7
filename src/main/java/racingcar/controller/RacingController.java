@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarManager;
 import racingcar.domain.Racing;
-import racingcar.utils.StringSplitter;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,20 +12,19 @@ public class RacingController {
 
     private Racing racing;
     private CarManager carManager;
-    private StringSplitter stringSplitter;
     private OutputView outputView;
+    private RacingService racingService;
 
-    public RacingController(Racing racing, CarManager carManager, StringSplitter stringSplitter,
+    public RacingController(Racing racing, CarManager carManager, RacingService racingService,
             OutputView outputView) {
         this.racing = racing;
         this.carManager = carManager;
-        this.stringSplitter = stringSplitter;
         this.outputView = outputView;
+        this.racingService = racingService;
     }
 
     public void start() {
-        List<String> carNames = stringSplitter.splitByDelimiter(InputView.getInputCarString());
-        carManager.initCars(carNames);
+        racingService.setupCarsFromUserInput(InputView.getInputCarString());
         executeRaceRounds();
         announceWinner();
     }
