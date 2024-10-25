@@ -7,6 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import racingcar.generator.Num0Generator;
+import racingcar.generator.Num4Generator;
+import racingcar.model.Car;
 
 public class CarTest extends NsTest {
 
@@ -14,7 +17,8 @@ public class CarTest extends NsTest {
     void 전진_테스트() {
         assertSimpleTest(() -> {
             Car car = new Car("junki", new Num4Generator());
-            assertThat(car.getPosition()).equals(1);
+            car.move();
+            assertThat(car.getPosition()).isEqualTo(1);
         });
     }
 
@@ -22,16 +26,23 @@ public class CarTest extends NsTest {
     void 정지_테스트() {
         assertSimpleTest(() -> {
             Car car = new Car("junki", new Num0Generator());
-            assertThat(car.getPosition()).equals(0);
+            car.move();
+            assertThat(car.getPosition()).isZero();
         });
     }
 
     @Test
     void 이름에_특수문자_예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,java@", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> {
+            Car car = new Car("jk@", new Num0Generator());
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름_5글자_초과_예외_테스트() {
+        assertThatThrownBy(() -> {
+            Car car = new Car("junkiHeo", new Num0Generator());
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
