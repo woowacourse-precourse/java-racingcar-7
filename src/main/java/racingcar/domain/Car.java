@@ -27,7 +27,7 @@ public class Car {
 
     private boolean isNameValid(String name) {
         if(StringUtility.containsSpecialCharacter(name)) return false;
-        if(name.isEmpty() || name.isBlank()) return false;
+        if(name.isEmpty()) return false;
         if(name.length() > MAX_NAME_LEN) return false;
         return true;
     }
