@@ -4,6 +4,7 @@ import racingcar.model.Car;
 import racingcar.service.RaceService;
 import racingcar.util.Converter;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -21,8 +22,10 @@ public class RaceController {
         int rounds = Integer.parseInt(InputView.getRounds());
 
         // 경주 진행
+        OutputView.printStartResult();
         for (int i = 0; i < rounds; i++) {
             raceService.playRound(cars);
+            OutputView.printRoundResult(cars);
         }
     }
 }
