@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +22,9 @@ public class Application {
     private static final String HYPHEN = "-";
 
     public static void main(String[] args) {
-        List<String> names = readNames();
+        InputHandler inputHandler = new ConsoleInputHandler();
+        OutputHandler outputHandler = new ConsoleOutputHandler();
+        List<String> names = readNames(outputHandler, inputHandler);
         List<Car> cars = new ArrayList<>(names.size());
         RandomNumberGenerator randomNumberGenerator = new RandomIntegerGenerator(RANDOM_NUMBER_START_INCLUSIVE,
                 RANDOM_NUMBER_END_INCLUSIVE);
@@ -31,13 +32,13 @@ public class Application {
         MovingStrategy movingStrategy = new RacingCarMovingStrategy(randomNumberGenerator, numberComparable,
                 FORWARD_MIN_INCLUSIVE);
         initialize(names, cars, movingStrategy);
-        long attempt = readAttempt();
+        long attempt = readAttempt(outputHandler, inputHandler);
 
-        printResult(cars, attempt);
+        printResult(cars, attempt, outputHandler);
 
         long maxPosition = getMaxPosition(cars);
         String winners = getWinners(cars, maxPosition);
-        System.out.println("최종 우승자 : " + winners);
+        outputHandler.showWinners(winners);
     }
 
     private static String repeatHyphen(long count) {
@@ -54,9 +55,9 @@ public class Application {
         return repeatedValue.toString();
     }
 
-    private static List<String> readNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputNames = Console.readLine();
+    private static List<String> readNames(OutputHandler outputHandler, InputHandler inputHandler) {
+        outputHandler.showCommentForCarNames();
+        String inputNames = inputHandler.read();
         validateInputNames(inputNames);
 
         List<String> names = new ArrayList<>();
@@ -92,9 +93,9 @@ public class Application {
         }
     }
 
-    private static long readAttempt() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputAttempt = Console.readLine();
+    private static long readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
+        outputHandler.showCommentForAttempt();
+        String inputAttempt = inputHandler.read();
         validateInputAttempt(inputAttempt);
 
         long attempt = Long.parseLong(inputAttempt);
@@ -114,14 +115,14 @@ public class Application {
         }
     }
 
-    private static void printResult(final List<Car> cars, final long attempt) {
-        System.out.println("\n실행 결과");
+    private static void printResult(final List<Car> cars, final long attempt, OutputHandler outputHandler) {
+        outputHandler.showCommentForResult();
         for (int i = 0; i < attempt; i++) {
             for (Car car : cars) {
                 car.move();
-                System.out.println(car.getName() + " : " + repeatHyphen(car.getPosition()));
+                outputHandler.showCarPosition(car.getName(), repeatHyphen(car.getPosition()));
             }
-            System.out.println();
+            outputHandler.showBlankLine();
         }
     }
 
