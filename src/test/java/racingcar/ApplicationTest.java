@@ -71,6 +71,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("getTrial 예외 테스트")
+    void getTrialTest2() {
+        String input = "--\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> Application.getTrial())
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차 이름이 5 이상일 때")
     void 예외_테스트() {
         assertSimpleTest(() ->
