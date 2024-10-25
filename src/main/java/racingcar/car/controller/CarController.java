@@ -4,6 +4,7 @@ import java.util.List;
 
 import racingcar.car.service.CarService;
 import racingcar.car.service.dto.CarCreateReqDto;
+import racingcar.car.service.dto.CarMoveRespDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -33,5 +34,13 @@ public class CarController {
 			.map(CarCreateReqDto::new)
 			.toList();
 		carService.saveCars(createReqDtos);
+	}
+
+	public void moveCars() {
+		Integer count = inputView.readCountInput();
+		while (count-- > 0) {
+			List<CarMoveRespDto> results = carService.moveCars();
+			outputView.printMoveResults(results);
+		}
 	}
 }

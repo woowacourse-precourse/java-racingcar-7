@@ -3,9 +3,11 @@ package racingcar.car.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.car.domain.Car;
 import racingcar.car.repository.CarRepository;
 import racingcar.car.service.dto.CarCreateReqDto;
+import racingcar.car.service.dto.CarMoveRespDto;
 import racingcar.constant.ErrorStatus;
 
 public class CarService {
@@ -31,6 +33,18 @@ public class CarService {
 			cars.add(Car.from(createReqDto));
 		}
 		carRepository.saveAll(cars);
+	}
+
+	public List<CarMoveRespDto> moveCars() {
+		List<Car> cars = carRepository.findAll();
+		cars.forEach(car -> {
+			if (4 <= Randoms.pickNumberInRange(0, 9)) {
+				car.move();
+			}
+		});
+		return cars.stream()
+			.map(CarMoveRespDto::from)
+			.toList();
 	}
 
 	private void isValidName(String name) {
