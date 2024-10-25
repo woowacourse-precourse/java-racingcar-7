@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class InputManager {
-    private ArrayList<Car> cars;  // 자동차 목록을 저장할 필드 추가
+    private ArrayList<Car> cars;
 
-    public void processInput(String carNamesInput, String attemptsInput) {
-        String[] names = carNamesInput.split(",");
+    public void processInput() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        String[] names = input.split(",");
 
         if (hasDuplicateNames(names)) {
             throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
@@ -27,7 +29,9 @@ public class InputManager {
             }
         }
 
-        int number = Integer.parseInt(attemptsInput);
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String numberInput = Console.readLine();
+        int number = Integer.parseInt(numberInput);
 
         if (number < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
@@ -35,7 +39,7 @@ public class InputManager {
 
         GameInitializer gameInitializer = new GameInitializer();
         gameInitializer.gameInitialize(names);
-        this.cars = gameInitializer.getCars(); // cars 필드에 자동차 목록 저장
+        this.cars = gameInitializer.getCars();
         startGame(cars, number);
         gameInitializer.longestCarName(cars);
     }
@@ -71,6 +75,6 @@ public class InputManager {
     }
 
     public ArrayList<Car> getCars() {
-        return cars; // 자동차 목록 반환
+        return cars;
     }
 }
