@@ -1,27 +1,77 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-        String carInput = Console.readLine();
+    public static void raceCar(String[] cars, int raceNumber){
+        List<StringBuilder> raceResult = new ArrayList<>(cars.length);
 
-        if (carInput == null) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < cars.length; i++) {
+            raceResult.add(new StringBuilder());
         }
 
-        String[] cars = carInput.split(",", -1);
+        for (int i = 0; i < raceNumber; i++) {
+            for (int j = 0; j < cars.length; j++) {
+                System.out.print(cars[j] + " : ");
 
-        for (String car : cars) {
-            car = car.trim();
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    raceResult.get(j).append("-");
+                }
+                System.out.print(raceResult.get(j));
+                System.out.print("\n");
+            }
+            System.out.print("\n");
+        }
+    }
 
-            if (car.length() > 5) {
+    public static String[] trimCars(String[] cars) {
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = cars[i].trim();
+
+            if (cars[i].length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요.\n");
             }
         }
         if (cars.length > 10) {
             throw new IllegalArgumentException("자동차는 10개 이하로 입력해 주세요.\n");
         }
+        return cars;
+    }
+
+    public  static String getCarsName() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return Console.readLine();
+    }
+
+    public static int getRaceNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String numberInput = Console.readLine();
+        int numberInt = Integer.parseInt(numberInput);
+
+        if (numberInt > 10) {
+            throw new IllegalArgumentException("횟수는 10회 이하로 입력해주세요\n");
+        }
+        return numberInt;
+    }
+
+    public static void main(String[] args) {
+        String carsInput = getCarsName();
+
+        if (carsInput == null) {
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
+        }
+
+        String[] splitCars = carsInput.split(",", -1);
+        String[] trimmedCars = trimCars(splitCars);
+
+        int raceNumber = getRaceNumber();
+
+        raceCar(trimmedCars, raceNumber);
     }
 }
