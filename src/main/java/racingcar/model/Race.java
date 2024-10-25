@@ -14,6 +14,10 @@ public class Race {
     private int round;
 
     public Race(String racingCarNames, String roundInput) {
+        setRacingCars(racingCarNames);
+        setRound(roundInput);
+    }
+    private void setRacingCars(String racingCarNames) {
         StringTokenizer st = new StringTokenizer(racingCarNames, ",");
         while (st.hasMoreTokens()) {
             String racingCarName = st.nextToken();
@@ -22,6 +26,8 @@ public class Race {
             }
             racingCars.add(new Car(racingCarName));
         }
+    }
+    private void setRound(String roundInput) {
         try {
             this.round = Integer.valueOf(roundInput);
         } catch (NumberFormatException e) {
