@@ -25,6 +25,12 @@ class MainTest extends NsTest {
         assertThat(main.splitCarNames("pobi,woni,jun")).isEqualTo(new String[]{"pobi","woni","jun"});
     }
 
+    @Test
+    @DisplayName("생성할 자동차의 개수를 확인한다")
+    void confirmCarCount() {
+        assertThat(main.calculateCarCount(new String[]{"pobi","woni","jun"})).isEqualTo(3);
+    }
+
     @Override
     protected void runMain() {
 

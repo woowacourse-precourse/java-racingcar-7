@@ -13,4 +13,8 @@ public class Main {
         String[] carNames = input.split(",");
         return carNames;
     }
+
+    public int calculateCarCount(String[] carNames) {
+        return carNames.length;
+    }
 }
