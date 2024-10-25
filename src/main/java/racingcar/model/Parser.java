@@ -14,6 +14,11 @@ public class Parser {
         return trimCarNames(carNamesList);
     }
 
+    // TODO: 엄청 큰 숫자가 들어왔을 때도 고려
+    public int convertStringToInt(String input) {
+        return Integer.parseInt(input);
+    }
+
     private String[] splitBySeparator(String input, String separator) {
         return input.split(separator);
     }
