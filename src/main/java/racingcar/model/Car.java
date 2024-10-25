@@ -64,7 +64,7 @@ public class Car {
     }
 
     private int createRandomNumber() {
-        return randomNumberStrategy.generateRandomNumber();
+        return randomNumberStrategy.generateNumber();
     }
 
     private boolean isRandomNumberSize(int randomNumber) {

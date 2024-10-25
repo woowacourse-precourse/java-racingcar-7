@@ -8,7 +8,7 @@ public class RandomNumberGenerator implements RandomNumberStrategy {
     private static final int MAX_RANGE = 9;
 
     @Override
-    public int generateRandomNumber() {
+    public int generateNumber() {
         return Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
     }
 }

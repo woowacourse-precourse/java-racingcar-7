@@ -9,7 +9,7 @@ public class StubRandomNumberGenerator implements RandomNumberStrategy {
     }
 
     @Override
-    public int generateRandomNumber() {
+    public int generateNumber() {
         return this.randomNumber;
     }
 }
