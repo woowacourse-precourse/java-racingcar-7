@@ -10,6 +10,7 @@ public class OutputView {
         for (Map.Entry<String, Integer> m : carMoves.entrySet()) {
             System.out.println(m.getKey() + " : " + "-".repeat(m.getValue()));
         }
+        System.out.println();
     }
 
     public void outputWinner(ArrayList<String> winners) {

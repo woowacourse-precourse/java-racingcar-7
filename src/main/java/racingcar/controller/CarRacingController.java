@@ -15,7 +15,7 @@ public class CarRacingController {
     public void run() {
         register.carListUp(divide(inputView.inputCar()));
         int count = inputView.inputRound();
-
+        System.out.println("\n실행 결과");
         while (count > 0) {
 
             for (Car c : register.carList) {
