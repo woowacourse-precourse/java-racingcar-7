@@ -11,7 +11,7 @@
 - [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
 ## 체크리스트
-- [ ] JDK 21 버전에서 실행 가능해야 한다.
-- [ ] 배열 대신 컬렉션을 사용한다.
-- [ ] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
-- [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+- [x] JDK 21 버전에서 실행 가능해야 한다.
+- [x] 배열 대신 컬렉션을 사용한다.
+- [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
+- [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.

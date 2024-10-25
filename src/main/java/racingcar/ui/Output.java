@@ -17,12 +17,12 @@ public class Output {
     public static void printCarPosition(List<Car> carList) {
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
-            barFromCarPosition(car.getPosition());
+            printBarFromCarPosition(car.getPosition());
         }
         System.out.println();
     }
 
-    public static void barFromCarPosition(int position) {
+    public static void printBarFromCarPosition(int position) {
         for (int i = 0; i < position; i++) {
             System.out.print("-");
         }

@@ -46,5 +46,4 @@ public class Racing {
         List<String> winners = RacingUtil.findWinner(carList);
         Output.printWinners(winners);
     }
-
 }
