@@ -39,7 +39,7 @@ public class InputValidator {
     }
 
     private void validateNumber(String userInput) {
-        if (!userInput.matches(Constant.POSITIVE_INTEGER_REGEX)) {
+        if (!userInput.matches(Constant.INTEGER_REGEX)) {
             throw new IllegalArgumentException(Constant.ATTEMPT_COUNT_NUMBER_ERROR_MESSAGE);
         }
     }
