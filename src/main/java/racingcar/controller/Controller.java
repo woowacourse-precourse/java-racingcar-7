@@ -20,11 +20,16 @@ public class Controller {
     }
 
     public void gameStart() {
-        String carNames = inputCarNames();
+        List<String> carNames = splitCarNames(inputCarNames());
     }
 
     private String inputCarNames() {
         view.print(CAR_NAME_INPUT_MESSAGE);
         return view.read();
+    }
+
+    private List<String> splitCarNames(String carName) {
+        return Arrays.stream(carName.split(","))
+                .collect(Collectors.toList());
     }
 }
