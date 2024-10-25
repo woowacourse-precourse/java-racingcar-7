@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constant.ExceptionMessage;
 
 public class Car {
@@ -26,8 +25,8 @@ public class Car {
         }
     }
 
-    public void move() {
-        int random = Randoms.pickNumberInRange(0, 9);
+    public void move(NumberGenerator numberGenerator) {
+        int random = numberGenerator.generateNumber();
         if (random >= RUN_NUMBER) {
             position++;
         }

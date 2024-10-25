@@ -15,8 +15,8 @@ public class Cars {
         this.elements = elements;
     }
 
-    public void moveCars() {
-        elements.forEach(Car::move);
+    public void moveCars(NumberGenerator numberGenerator) {
+        elements.forEach(value -> value.move(numberGenerator));
     }
 
     public String getResult() {
