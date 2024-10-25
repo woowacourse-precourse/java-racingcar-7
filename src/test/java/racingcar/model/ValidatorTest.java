@@ -18,6 +18,16 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("자동차 이름 유효성 검사 - 성공 테스트")
+    void validateCarNames_success() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+
+        // when & then
+        assertThatCode(() -> validator.validateCarNames(carNames)).doesNotThrowAnyException();
+    }
+
+    @Test
     @DisplayName("자동차 이름 유효성 검사: 빈 문자열 이름 - 예외 테스트")
     void validateCarNames_emptyName() {
         // given
