@@ -14,6 +14,8 @@ public class Racing {
             System.out.println();
         }
 
+        System.out.println();
+        System.out.println("최종 우승자 : " + Winner.printWinner(carList));
     }
 
     private static void printPosition(List<Car> carList){
