@@ -15,19 +15,19 @@ public class MainController {
         int tryCount = InputView.readTryCount();
 
         racingStart(tryCount, cars);
+
+        OutputView.printWinnerResult(getWinners(cars));
+
     }
 
     private static void racingStart(int inputTryCount, List<Car> cars) {
         tryMoveCars(inputTryCount, cars);
         OutputView.printTryResult(cars);
-        OutputView.printWinnerResult(getWinners(cars));
     }
-
     private static void tryMoveCars(int inputTryCount, List<Car> cars) {
         IntStream.range(0, inputTryCount)
                 .forEach((i) -> cars.forEach(car -> car.tryMove(if60PercentChance())));
     }
-
     private static List<String> getWinners(List<Car> cars) {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
