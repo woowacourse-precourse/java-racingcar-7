@@ -23,8 +23,8 @@ public class Application {
         Map<String, StringBuilder> result = initResult(carNames);
 
         for (int i = 0; i < count; i++) {
-            moveCarsIfQualified(result, carNames);
-            printStatus(result, carNames);
+            moveCarsIfQualified(result);
+            printStatus(result);
             System.out.println();
         }
 
@@ -109,8 +109,8 @@ public class Application {
         return result;
     }
 
-    public static void moveCarsIfQualified(Map<String, StringBuilder> result, String[] carNames) {
-        for(String carName : carNames) {
+    public static void moveCarsIfQualified(Map<String, StringBuilder> result) {
+        for(String carName : result.keySet()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= 4) {
                 result.put(carName, result.get(carName).append("-"));
@@ -118,8 +118,8 @@ public class Application {
         }
     }
 
-    public static void printStatus(Map<String, StringBuilder> result, String[] carNames) {
-        for (String carName : carNames) {
+    public static void printStatus(Map<String, StringBuilder> result) {
+        for (String carName : result.keySet()) {
             System.out.println(carName + " : " + result.get(carName));
         }
     }
