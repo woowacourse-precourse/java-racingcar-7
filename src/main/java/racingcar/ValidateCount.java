@@ -6,7 +6,7 @@ public class ValidateCount {
         return ParsingCount.parseInputCountToInt(userInputCount);
     }
 
-    public static int validateInputCount(String userInputCount) {
+    public static void validateInputCount(String userInputCount) {
         if (userInputCount == null || userInputCount.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
@@ -16,7 +16,6 @@ public class ValidateCount {
             if (count <= 0) {
                 throw new IllegalArgumentException("입력값은 1 이상의 자연수여야 합니다.");
             }
-            return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
         }
