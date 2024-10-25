@@ -3,21 +3,23 @@ package racingcar.player;
 import racingcar.car.Car;
 
 public class RacingCarGamePlayer {
-    private final String playerName;
+    private final PlayerName playerName;
 
-    private RacingCarGamePlayer(String playerName) {
+    private RacingCarGamePlayer(PlayerName playerName) {
         this.playerName = playerName;
     }
 
     public static RacingCarGamePlayer createRacingCarGamePlayer(String playerName) {
-        return new RacingCarGamePlayer(playerName);
+        return new RacingCarGamePlayer(
+                PlayerName.createPlayerName(playerName)
+        );
     }
 
     public String provideSelfName() {
-        return playerName;
+        return playerName.getValue();
     }
 
     public Car createRacingCar() {
-        return Car.createNamedCar(playerName);
+        return Car.createNamedCar();
     }
 }

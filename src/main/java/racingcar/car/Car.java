@@ -1,31 +1,26 @@
 package racingcar.car;
 
 public class Car {
-    private final CarName carName;
     private final MovementDistance movementDistance;
 
-    private Car(CarName carName, MovementDistance movementDistance){
-        this.carName = carName;
+    private Car(MovementDistance movementDistance){
         this.movementDistance = movementDistance;
     }
 
-    public static Car createNamedCar(String carName){
+    public static Car createNamedCar(){
         return new Car(
-                CarName.createCarName(carName),
                 MovementDistance.initializeDistance()
         );
     }
 
     public Car increaseDistanceBy(int stepCount) {
        return new Car(
-               this.carName,
                this.movementDistance.increaseDistanceBy(stepCount)
        );
     }
 
     public Car maintainCurrentPosition() {
         return new Car(
-                this.carName,
                 this.movementDistance
         );
     }
@@ -34,7 +29,4 @@ public class Car {
         return this.movementDistance.getValue();
     }
 
-    public String provideCarName() {
-        return this.carName.getValue();
-    }
 }

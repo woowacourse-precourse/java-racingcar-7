@@ -17,8 +17,8 @@ class RacingCarGameTest {
         // given
         final int roundCount = 3;
 
-        final Car car1 = Car.createNamedCar("kim");
-        final Car car2 = Car.createNamedCar("park");
+        final Car car1 = Car.createNamedCar();
+        final Car car2 = Car.createNamedCar();
         final List<Car> cars = List.of(car1, car2);
 
         // expect
@@ -30,12 +30,12 @@ class RacingCarGameTest {
         // given
         final int roundCount = 3;
 
-        final Car car1 = Car.createNamedCar("kim");
-        final Car car2 = Car.createNamedCar("park");
-        final Car car3 = Car.createNamedCar("lee");
-        final Car car4 = Car.createNamedCar("cho");
-        final Car car5 = Car.createNamedCar("go");
-        final Car car6 = Car.createNamedCar("soo");
+        final Car car1 = Car.createNamedCar();
+        final Car car2 = Car.createNamedCar();
+        final Car car3 = Car.createNamedCar();
+        final Car car4 = Car.createNamedCar();
+        final Car car5 = Car.createNamedCar();
+        final Car car6 = Car.createNamedCar();
         final List<Car> fiveOverCars = List.of(car1, car2,car3,car4,car5,car6);
 
         // expect
@@ -49,7 +49,7 @@ class RacingCarGameTest {
         // given
         final int roundCount = 3;
 
-        final Car car1 = Car.createNamedCar("kim");
+        final Car car1 = Car.createNamedCar();
         final List<Car> oneCar = List.of(car1);
 
         // expect
@@ -62,8 +62,8 @@ class RacingCarGameTest {
     void createRacingCarGame_게임횟수1번미만시_예외처리(){
         // given
         final int lessThanGAME_MINIMUM_ROUND = 0;
-        final Car car1 = Car.createNamedCar("kim");
-        final Car car2 = Car.createNamedCar("park");
+        final Car car1 = Car.createNamedCar();
+        final Car car2 = Car.createNamedCar();
         final List<Car> cars = List.of(car1,car2);
 
         // expect
@@ -76,8 +76,8 @@ class RacingCarGameTest {
     void createRacingCarGame_게임횟수100번초과시_예외처리(){
         // given
         final int overThanGAME_MAXIMUM_ROUND = 101;
-        final Car car1 = Car.createNamedCar("kim");
-        final Car car2 = Car.createNamedCar("park");
+        final Car car1 = Car.createNamedCar();
+        final Car car2 = Car.createNamedCar();
         final List<Car> cars = List.of(car1,car2);
 
         // expect
