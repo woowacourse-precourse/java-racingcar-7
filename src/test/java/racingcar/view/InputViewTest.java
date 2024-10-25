@@ -12,9 +12,8 @@ public class InputViewTest {
         assertEquals(expectedMessage, thrownException.getMessage());
     }
 
-
     @Test
-    @DisplayName("첫 번째 입력검증 테스트")
+    @DisplayName("자동차 이름 입력 검증 테스트")
     public void firstInputValidationTest(){
         assertAll(
                 () -> assertTrue(inputView.validateInput("abcd,abc")),
@@ -26,7 +25,7 @@ public class InputViewTest {
     }
 
     @Test
-    @DisplayName("첫 번째 입력 에러메시지 테스트")
+    @DisplayName("자동차 이름 입력 에러메시지 테스트")
     public void firstInputValidationExceptionTest() {
         String longTestCase = "abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc,abc";
         assertAll(
