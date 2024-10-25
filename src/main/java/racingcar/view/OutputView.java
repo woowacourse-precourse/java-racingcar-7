@@ -1,13 +1,21 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.Map;
 
 public class OutputView {
     private final String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final String TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static void resultMessage() {
+        System.out.println();
         System.out.println("실행 결과");
+    }
+
+    public static void carStatus(Map<String, Integer> carList) {
+        for (Map.Entry<String, Integer> entry : carList.entrySet()) {
+            System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+        }
+        System.out.println();
     }
 
     public void startMessagePrint() {
@@ -16,5 +24,9 @@ public class OutputView {
 
     public void tryCountMessage() {
         System.out.println(TRY_COUNT_MESSAGE);
+    }
+
+    public void resultPrint(String winner) {
+        System.out.print("최종 우승자" + " : "+ winner);
     }
 }

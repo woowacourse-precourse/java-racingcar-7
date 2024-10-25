@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RacingCarCollection {
-    private Map<String, Integer> carList;
+    private LinkedHashMap<String, Integer> carList;
     private Integer tryCount;
     private final int MAX_LENGTH = 5;
 
 
     public RacingCarCollection(String carString, String readTryCount) {
-        carList = new HashMap<>();
+        carList = new LinkedHashMap<>();
         String[] cars = carString.split(",");
         validate(cars);
         arrToMap(cars);
@@ -54,7 +55,7 @@ public class RacingCarCollection {
         }
     }
 
-    public Map<String, Integer> getCarList() {
+    public LinkedHashMap<String, Integer> getCarList() {
         return carList;
     }
 
