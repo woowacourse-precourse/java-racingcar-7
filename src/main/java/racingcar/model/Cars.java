@@ -26,9 +26,8 @@ public class Cars {
 
     public List<String> determineWinners() {
         int maxStatus = getMaximumStatus();
-        List<String> winnersName = cars.stream().filter(car -> car.getStatus() == maxStatus)
+        return cars.stream().filter(car -> car.getStatus() == maxStatus)
                 .map(Car::getName).toList();
-        return winnersName;
     }
 
     private int getMaximumStatus() {
