@@ -19,6 +19,14 @@ public class Car {
         return new Car(name, INITIAL_POSITION);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
     public void move() {
         Status status = Status.createStatus();
         if (status.validateMoveForward()) {
