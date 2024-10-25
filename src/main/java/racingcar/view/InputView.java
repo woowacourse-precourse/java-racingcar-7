@@ -6,4 +6,8 @@ public class InputView {
   public static String getCarNames() {
     return Console.readLine();
   }
+
+  public static String getTryCount() {
+    return Console.readLine();
+  }
 }
