@@ -9,4 +9,8 @@ public class Car {
 		this.name = new CarName(name);
 		this.movement = new Movement();
 	}
+
+	public void move(int number) {
+		movement.move(number);
+	}
 }
