@@ -3,6 +3,7 @@ package racingcar.view;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static racingcar.message.InputRequestMessage.NAMES_REQUEST_MESSAGE;
+import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPT_REQUEST_MESSAGE;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -68,6 +69,17 @@ class InputViewTest {
         String names = inputView.getCarNames();
         //then
         assertEquals(input, names);
+    }
 
+    @DisplayName("시도횟수_입력_요청_메세지_출력_테스트")
+    @Test
+    public void printNumberOfAttemptRequestTest() {
+        //given
+        InputView inputView = new InputView();
+        //when
+        inputView.printNumberOfAttemptRequest();
+        String printResult = outputMessage.toString().trim();
+        //then
+        assertEquals(NUMBER_OF_ATTEMPT_REQUEST_MESSAGE.getMessage(), printResult);
     }
 }
