@@ -1,9 +1,9 @@
 package racingcar.controller;
 
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.List;
 
 public class RacingCarController {
 
@@ -11,11 +11,12 @@ public class RacingCarController {
     private final InputView inputView = new InputView();
 
     public void start() {
-        List<String> names = readNames();
+        Cars cars = readNames();
         int tryCount = readTryCount();
+        startRacing(cars, tryCount);
     }
 
-    private List<String> readNames() {
+    private Cars readNames() {
         outputView.printCarNameMessage();
         return inputView.readCarNames();
     }
@@ -23,5 +24,15 @@ public class RacingCarController {
     private int readTryCount() {
         outputView.printTryCountMessage();
         return inputView.readTryCount();
+    }
+
+    private void startRacing(Cars cars, int tryCount) {
+        RacingGame game = new RacingGame(cars, tryCount);
+        outputView.printProgressGuide();
+        while (game.isProgress()) {
+            game.moveCars();
+            outputView.printResult(cars.getResult());
+        }
+        outputView.printWinner(cars.getWinner());
     }
 }
