@@ -10,9 +10,9 @@ public class Application {
         String carNamesInput = Console.readLine();
 
         // 차 이름 저장
-        Car car = carNameHandler.createCar(carNamesInput);
+        CarData carData = carNameHandler.createCar(carNamesInput);
 
         // 결과 출력
-        System.out.println("입력된 차 이름: " + car.getCarNames());
+        System.out.println("입력된 차 이름: " + carData.getCarNames());
     }
 }

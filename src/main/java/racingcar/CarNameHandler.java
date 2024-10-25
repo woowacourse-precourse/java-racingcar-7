@@ -14,10 +14,10 @@ public class CarNameHandler {
     }
 
     // Car 객체 생성 및 차 이름 설정
-    public Car createCar(String input) {
+    public CarData createCar(String input) {
         List<String> carNames = splitCarNames(input);
-        Car car = new Car();
-        car.setCarNames(carNames);
-        return car;
+        CarData carData = new CarData();
+        carData.setCarNames(carNames);
+        return carData;
     }
 }
