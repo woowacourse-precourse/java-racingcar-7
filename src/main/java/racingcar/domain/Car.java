@@ -3,38 +3,37 @@ package racingcar.domain;
 import java.util.Objects;
 import racingcar.constant.Rule;
 import racingcar.util.NumberGenerator;
-import racingcar.util.RacingCarValidator;
 
 public class Car {
 
-    private final String name;
+    private final CarName name;
+    private final Score score;
     private final NumberGenerator randomNumberGenerator;
-    private long score;
 
-    private Car(final String name, final NumberGenerator randomNumberGenerator) {
+
+    public Car(final CarName name, final Score score, final NumberGenerator randomNumberGenerator) {
         this.name = name;
+        this.score = score;
         this.randomNumberGenerator = randomNumberGenerator;
-        score = 0L;
-    }
-
-    public static Car of(final String name, final NumberGenerator randomNumberGenerator) {
-        RacingCarValidator.validateCarNameLength(name, Rule.CAR_NAME_LENGTH_MAX);
-        return new Car(name, randomNumberGenerator);
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getValue();
     }
 
     public long getScore() {
-        return this.score;
+        return this.score.getValue();
     }
 
-    public void go() {
+    public void go(final int score) {
         final int number = randomNumberGenerator.generate();
         if (isExceedForwardCondition(number)) {
-            score++;
+            this.score.addValue(score);
         }
+    }
+
+    public boolean isWinner(final long maxScore) {
+        return getScore() == maxScore;
     }
 
     private boolean isExceedForwardCondition(final int number) {
@@ -51,11 +50,11 @@ public class Car {
             return false;
         }
         final Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        return Objects.equals(name.getValue(), car.name.getValue());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name.getValue());
     }
 }
