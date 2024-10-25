@@ -23,7 +23,7 @@ public class RacingCar {
     }
 
     public void printMoveStatus() {
-        String currentCarStatus = carName + " : " + "=".repeat(distance);
+        String currentCarStatus = carName + " : " + "-".repeat(distance);
         System.out.println(currentCarStatus);
     }
 
