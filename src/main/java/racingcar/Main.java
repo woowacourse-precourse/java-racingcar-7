@@ -17,4 +17,9 @@ public class Main {
     public int calculateCarCount(String[] carNames) {
         return carNames.length;
     }
+
+    public Car createCar(String carName) {
+        Car car = new Car(carName);
+        return car;
+    }
 }
