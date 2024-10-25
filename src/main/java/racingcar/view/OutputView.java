@@ -3,16 +3,16 @@ package racingcar.view;
 import java.util.List;
 
 public class OutputView {
-    static final String MESSAGE_RACE_RESULT = "실행 결과";
-    static final String MOVE_PATTERN = "-";
-    static final String MESSAGE_WINNER = "최종 우승자 : ";
+    static final String RACE_RESULT_MESSAGE = "실행 결과";
+    static final String MOVE_SYMBOL = "-";
+    static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     public void printLine() {
         System.out.println();
     }
 
     public void printResultMessage() {
-        System.out.println(MESSAGE_RACE_RESULT);
+        System.out.println(RACE_RESULT_MESSAGE);
     }
 
     public void printCurrentDistance(String name, int distance) {
@@ -23,11 +23,11 @@ public class OutputView {
     }
 
     private String makeMovePatternFromDistance(int number) {
-        return MOVE_PATTERN.repeat(Math.max(0, number));
+        return MOVE_SYMBOL.repeat(Math.max(0, number));
     }
 
     public void printWinners(List<String> winners) {
-        System.out.print(MESSAGE_WINNER);
+        System.out.print(WINNER_MESSAGE);
         String result = String.join(", ", winners);
         System.out.println(result);
     }
