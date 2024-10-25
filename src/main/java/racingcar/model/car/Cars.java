@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.common.ErrorMessage;
-import racingcar.model.number.Number;
-import racingcar.model.number.RandomNumberGenerator;
 import racingcar.model.parser.CarsParser;
 
 public class Cars {
@@ -15,13 +13,6 @@ public class Cars {
         final List<Car> cars = createCarList(carNames);
         validateCars(cars);
         this.cars = cars;
-    }
-
-    public void startRacing() {
-        cars.forEach(car -> {
-            final Number number = getRandomNumber();
-            car.goOrStop(number);
-        });
     }
 
     private List<Car> createCarList(final String carNames) {
@@ -44,10 +35,6 @@ public class Cars {
         if (expectedCarsList.size() != cars.size()) {
             throw new IllegalArgumentException(ErrorMessage.CONFLICT_ERROR.getMessage());
         }
-    }
-
-    private Number getRandomNumber() {
-        return RandomNumberGenerator.generate();
     }
 
     public List<Car> getCars() {

@@ -1,13 +1,13 @@
-package racingcar.model.judge;
+package racingcar.model.race;
 
 import java.util.List;
 import racingcar.common.ErrorMessage;
 import racingcar.model.car.Cars;
 
-public class WinnerFinder {
+public class Winner {
     private final Cars cars;
 
-    public WinnerFinder(final Cars cars) {
+    public Winner(final Cars cars) {
         this.cars = cars;
     }
 
