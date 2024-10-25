@@ -5,25 +5,32 @@ import java.util.List;
 import racingcar.utils.Validator;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
-    }
-
-    public void allMove(int tryCount){
-        for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                car.move();
-            }
-        }
     }
 
     private void validate() {
         Validator.containDuplicate(extractCarNames(cars));
     }
 
-    private List<String> extractCarNames(List<Car> cars) {
+    public void allMove() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public List<Integer> getCarsPositions() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getDistance());
+        }
+        return positions;
+    }
+
+
+    public List<String> extractCarNames(List<Car> cars) {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
             carNames.add(car.getName());
@@ -31,7 +38,10 @@ public class Cars {
         return carNames;
     }
 
-    public List<Car> getCars() {
-        return List.copyOf(cars);
+
+    public List<String> getCarNames() {
+        return extractCarNames(cars);
     }
+
+
 }
