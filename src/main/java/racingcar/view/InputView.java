@@ -12,25 +12,49 @@ public class InputView {
         return validateCarNames(input);
     }
 
-    public int getInputCount(){
-        try {
-            String input = Console.readLine();
+    public int getInputCount() {
+        String input = Console.readLine();
+        validateWhitespace(input);
+        validateNumberFormat(input);
 
-            // 실수 여부를 확인하기 위해 float 과 int 비교
-            float floatTryCount = Float.parseFloat(input);
-            int intTryCount = (int)floatTryCount;
-            if(intTryCount != floatTryCount){
-                throw new IllegalArgumentException("입력된 횟수가 실수입니다.");
-            }
-            if(intTryCount <= 0){
-                throw new IllegalArgumentException("입력된 횟수가 0 이하 입니다.");
-            }
-            if (intTryCount > MAX_TRY_COUNT) {
-                throw new IllegalArgumentException("입력된 횟수가 비현실적으로 큽니다.");
-            }
-            return intTryCount;
+        int tryCount = parseTryCount(input);
+        validateTryCount(tryCount);
+
+        return tryCount;
+    }
+
+    private void validateWhitespace(String input) {
+        if (input.contains(" ")) {
+            throw new IllegalArgumentException("횟수에 공백이 포함되었습니다.");
+        }
+    }
+
+    private void validateNumberFormat(String input) {
+        try {
+            Float.parseFloat(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("횟수가 숫자 형식이 아닙니다.");
+        }
+    }
+
+    private int parseTryCount(String input) {
+        float floatTryCount = Float.parseFloat(input);
+        int intTryCount = (int) floatTryCount;
+
+        if (intTryCount != floatTryCount) {
+            throw new IllegalArgumentException("입력된 횟수가 실수입니다.");
+        }
+
+        return intTryCount;
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("입력된 횟수가 0 이하 입니다.");
+        }
+
+        if (tryCount > MAX_TRY_COUNT) {
+            throw new IllegalArgumentException("입력된 횟수가 비현실적으로 큽니다.");
         }
     }
 
