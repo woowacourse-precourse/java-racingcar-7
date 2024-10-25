@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.constant.OutputMessage;
+
 import java.util.List;
 
 public class Cars {
@@ -12,5 +14,11 @@ public class Cars {
 
     public void moveCars() {
         elements.forEach(Car::move);
+    }
+
+    public String getResult() {
+        StringBuilder sb = new StringBuilder();
+        elements.forEach(value -> sb.append(value.getResult()).append(OutputMessage.NEW_LINE.getMessage()));
+        return sb.toString();
     }
 }
