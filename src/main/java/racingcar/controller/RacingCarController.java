@@ -49,4 +49,10 @@ public class RacingCarController {
             progressView.printProgressMessage(carDtoList);
         }
     }
+
+    private void finalizeRace() {
+        List<CarDto> winnerList = cars.calculateFarthestCars();
+
+    }
+
 }
