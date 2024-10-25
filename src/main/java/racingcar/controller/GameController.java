@@ -84,7 +84,7 @@ public class GameController {
         for(Vehicle car : carList){
             outputView.printGameRoundResult(car.getName(), car.showMovement());
         }
-        System.out.println();
+        outputView.printGameRoundSeparator();
     }
 
     private void outputWinner(){
