@@ -28,7 +28,7 @@ class RacePreparationTest {
     @Test
     void 자동차_이름_입력_중복_케이스_예외_테스트() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new RacePreparation("test1,,test1", "5");
+            new RacePreparation("test1,test1", "5");
         });
         assertTrue(exception.getMessage().contains("Duplicated car names"));
     }
@@ -42,10 +42,19 @@ class RacePreparationTest {
     }
 
     @Test
+    void 자동차_이름_입력_길이_초과_예외_테스트() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new RacePreparation("test123,test2", "2");
+        });
+        assertTrue(exception.getMessage().contains("Exceeded characters"));
+    }
+
+    @Test
     void 경주_횟수_입력_케이스_예외_테스트() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new RacePreparation("test1,test2", "a");
         });
         assertTrue(exception.getMessage().contains("Character is not number"));
     }
+
 }
