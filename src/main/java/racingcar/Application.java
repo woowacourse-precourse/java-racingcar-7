@@ -11,11 +11,6 @@ public class Application {
         // TODO: 프로그램 구현
         String input = Console.readLine();
         String[] carNames = input.split(",");
-        /*
-        입력 예외 처리해야함
-        이름은 5자 이내
-        구분자는 ,(쉼표) 만
-         */
         String inputNum = Console.readLine();
         int count = Integer.parseInt(inputNum);
 
