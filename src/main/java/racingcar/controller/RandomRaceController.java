@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.RacingCar;
+import racingcar.view.RaceProgressView;
 
 public class RandomRaceController {
     private final RaceProgressView raceProgressView;

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public class RaceWinnerView {
     private static final String WINNER_MESSAGE = "최종 우승자 : ";

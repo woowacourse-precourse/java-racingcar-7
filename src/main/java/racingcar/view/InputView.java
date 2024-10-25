@@ -1,14 +1,16 @@
-package racingcar;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import racingcar.InputDTO;
+import racingcar.InputMessage;
 
 public class InputView {
     private final static int MAX_LENGTH = 5;
     private final static String DELIM = ",";
-    final static List<String> userNames = new ArrayList<>();
+    public final static List<String> userNames = new ArrayList<>();
 
     //todo: 예외처리
     public InputDTO getInput() {
