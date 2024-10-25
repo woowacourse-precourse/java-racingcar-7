@@ -28,5 +28,9 @@ public class RacingCarController {
             game.playRound();
             OutputView.printRoundResult(game.getCars()); // 각 라운드 결과 출력
         }
+
+        // 최종 우승자 출력
+        List<Car> winners = game.getWinners();
+        OutputView.printWinners(winners);
     }
 }
