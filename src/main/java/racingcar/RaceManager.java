@@ -13,13 +13,13 @@ public class RaceManager {
             updateRaceState(racingCars);
         }
         String winner = getWinner(racingCars);
-        IOHandler.printWinner(winner);
+        IOHandler.printRacer(winner);
     }
 
     private static void updateRaceState(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.run(getRandomNum());
-            IOHandler.printRaceState(racingCar);
+            IOHandler.printRacer(racingCar);
         }
         IOHandler.printNewLine();
     }

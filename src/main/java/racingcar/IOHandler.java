@@ -24,8 +24,12 @@ public class IOHandler {
         return Validator.validateCycle(cycleInput);
     }
 
-    public static void printRaceState(RacingCar racingCar) {
+    public static void printRacer(RacingCar racingCar) {
         System.out.println(racingCar.toString());
+    }
+    
+    public static void printRacer(String winner) {
+        System.out.println(WINNER_MESSAGE + winner);
     }
 
     public static void printNewLine() {
@@ -34,10 +38,6 @@ public class IOHandler {
 
     public static void printResult() {
         System.out.println(PROCESS_RESULT_MESSAGE);
-    }
-
-    public static void printWinner(String winner) {
-        System.out.println(WINNER_MESSAGE + winner);
     }
 
 }
