@@ -1,7 +1,25 @@
 package racingcar.validator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CarNameValidator {
     private CarNameValidator(){
+    }
+
+    public static void validateCarNames(String input){
+        validateNotBlank(input);
+        validateNoSpace(input);
+        validateDelimiter(input);
+        validateEnd(input);
+        String[] carNames = input.split(",");
+        Set<String> nameSet = new HashSet<>();
+        for(String carName : carNames){
+            validateEmptyName(carName);
+            validateCarNameLength(carName);
+            nameSet.add(carName);
+        }
+        validateDuplication(nameSet.size(), carNames.length);
     }
 
     public static void validateCarNameLength(String input){
@@ -31,7 +49,19 @@ public class CarNameValidator {
 
     public static void validateNoSpace(String input){
         if(input.contains(" ")){
-            throw new IllegalArgumentException("이름에 공백이 포함될 수 없습니다.");
+            throw new IllegalArgumentException("입력에 공백이 포함될 수 없습니다.");
+        }
+    }
+
+    public static void validateDuplication(int carSetSize, int carArrayLength){
+        if(carSetSize != carArrayLength){
+            throw new IllegalArgumentException("자동차 이름에 중복이 존재합니다.");
+        }
+    }
+
+    public static void validateEmptyName(String input){
+        if(input.isBlank()){
+            throw new IllegalArgumentException("자동차의 이름은 빈 값일 수 없습니다.");
         }
     }
 

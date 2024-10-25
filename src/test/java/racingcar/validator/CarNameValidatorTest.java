@@ -55,4 +55,17 @@ class CarNameValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("자동차 이름 검증 통합테스트")
+    @ParameterizedTest
+    @ValueSource(strings ={"pobi,june,kim","ori-4,kimm,aax2"})
+    void validateCarNames_success(String input){
+        assertDoesNotThrow(() -> CarNameValidator.validateCarNames(input));
+    }
+
+    @DisplayName("자동차 이름 검증 통합테스트 예외발생")
+    @ParameterizedTest
+    @ValueSource(strings ={"pobi, june, kim", "aa,,d3,4",""," ","ooooo3,dd3,jje","zzz34,kk32,","kim, hyye, ek2"})
+    void validateCarNames_throwsException(String input){
+        assertThrows(IllegalArgumentException.class, () -> CarNameValidator.validateCarNames(input));
+    }
 }
