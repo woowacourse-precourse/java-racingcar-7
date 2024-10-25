@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class RacingCar {
 
     private String carName;
@@ -23,4 +25,5 @@ public class RacingCar {
             this.position += "-";
         }
     }
+
 }

@@ -7,21 +7,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 
+import static racingcar.model.CarFactory.createCars;
+import static racingcar.model.GameResults.getCarStatesPerTrial;
+import static racingcar.model.GameResults.getResultOfGame;
+import static racingcar.model.TrialValidator.validateTrial;
+
 public class RacingGameModelImpl implements RacingGameModel{
     @Override
     public String play(String carNames, String trialNum) {
-        List<RacingCar> cars = CarFactory.createCars(carNames);
-        int trial = TrialValidator.validateTrial(trialNum);
+        List<RacingCar> cars = createCars(carNames);
+        int trial = validateTrial(trialNum);
 
-        String result = "\n실행 결과\n";
-        // 실행 결과 저장
-        result += resultThroughCarsAndTrial(cars, trial);
-
-        return result;
+        return resultThroughCarsAndTrial(cars, trial);
     }
 
     private String resultThroughCarsAndTrial(List<RacingCar> cars, int trial) {
         StringBuilder result = new StringBuilder();
+
+        result.append("\n실행 결과\n");
 
         // 반복 시도 마다 저장
         for(int i = 0; i < trial; i++){
@@ -30,47 +33,6 @@ public class RacingGameModelImpl implements RacingGameModel{
         }
 
         result.append(getResultOfGame(cars));
-
-        return result.toString();
-    }
-
-    private String getResultOfGame(List<RacingCar> cars) {
-        StringBuilder result = new StringBuilder();
-
-        result.append("최종 우승자 : ");
-
-        List<RacingCar> winners = new ArrayList<>();
-        RacingCar winner = cars.get(0);
-
-        for(RacingCar car : cars){
-            if(car.getPosition().length() > winner.getPosition().length()){
-                winner = car;
-                winners.clear();
-                winners.add(car);
-            } else if (car.getPosition().length() == winner.getPosition().length()) {
-                winners.add(car);
-            }
-        }
-
-        StringJoiner joiner = new StringJoiner(", ");
-        for(RacingCar car : winners){
-            joiner.add(car.getCarName());
-        }
-
-        result.append(joiner.toString());
-
-        return result.toString();
-    }
-
-    private String getCarStatesPerTrial(List<RacingCar> cars) {
-        StringBuilder result = new StringBuilder();
-
-        for(RacingCar car : cars){
-            result.append(car.getCarName())
-                    .append(" : ")
-                    .append(car.getPosition())
-                    .append("\n");
-        }
 
         return result.toString();
     }
@@ -84,6 +46,8 @@ public class RacingGameModelImpl implements RacingGameModel{
     private boolean isMovable() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
+
+
 
 
 
