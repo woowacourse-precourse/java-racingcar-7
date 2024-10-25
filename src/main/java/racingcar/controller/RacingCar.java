@@ -8,7 +8,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCar {
-    public void run(){
+    public void run() {
         OutputView.printCarNamesPrompt();
         InputView inputView = new InputView();
 
@@ -21,19 +21,12 @@ public class RacingCar {
         }
 
         OutputView.printAttemptCountPrompt();
-
         int tryCount = Integer.parseInt(inputView.input());
         Cars cars = new Cars(carNames);
 
         for (int i = 0; i < tryCount; i++) {
-            for (Car carName : carNames) {
-                carName.move();
-            }
-
-            for (Car carName : carNames) {
-                System.out.print(carName.getName() + " : ");
-                System.out.println("-".repeat(carName.getPosition()));
-            }
+            cars.allMove();
+            OutputView.printCarDistances(cars.getCarNames(), cars.getCarsPositions());
         }
 
 

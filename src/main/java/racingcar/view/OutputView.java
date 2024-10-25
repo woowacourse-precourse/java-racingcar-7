@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.model.Car;
 
 public class OutputView {
 
@@ -12,23 +13,12 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void printCarMove(List<String> carNames) {
-        for (String carName : carNames) {
-            System.out.print(carName + " : ");
-            printCarMovement(carName.length());
+    public static void printCarDistances(List<String> carNames, List<Integer> distances) {
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.print(carNames.get(i) + " : ");
+            System.out.println("-".repeat(distances.get(i)));
         }
-    }
-
-    private static String repeatString(int count){
-        StringBuilder resultBuilder = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            resultBuilder.append("-");
-        }
-        return resultBuilder.toString();
-    }
-
-    private static void printCarMovement(int count){
-        System.out.println(repeatString(count));
+        System.out.println();
     }
 
 
