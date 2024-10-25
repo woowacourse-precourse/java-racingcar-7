@@ -1,7 +1,10 @@
 package racingcar;
 
+import java.io.ByteArrayInputStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -21,7 +24,7 @@ public class InputTest {
 
     @Test
     void 올바른_입력_테스트() {
-        input.checkValidation("ValidName");
+        input.checkValidation("Valid");
     }
 
     @Test
@@ -51,6 +54,45 @@ public class InputTest {
         assertDoesNotThrow(() -> input.checkRoundInt("1"));
         assertDoesNotThrow(() -> input.checkRoundInt("12"));
         assertDoesNotThrow(() -> input.checkRoundInt("11000000"));
+    }
+
+    @Test
+    void 입력에_공백이_포함된_경우(){
+        String names = "pobi,,woni";
+        System.setIn(new ByteArrayInputStream(names.getBytes()));
+        assertThrows(IllegalArgumentException.class, () -> input.getCars());
+    }
+
+    @Test
+    void 이름이_5글자_초과인_경우(){
+        String names = "pobi,,woniiiiiii";
+        System.setIn(new ByteArrayInputStream(names.getBytes()));
+        assertThrows(IllegalArgumentException.class, () -> input.getCars());
+    }
+
+    @Test
+    void 이름_앞뒤에_공백이_포함된_경우(){
+        String names = "  pobi   ,   woni   ,    jun ";
+        System.setIn(new ByteArrayInputStream(names.getBytes()));
+
+        List<Car> cars = input.getCars();
+
+        assertThat("pobi").isEqualTo(cars.get(0).getName());
+        assertThat("woni").isEqualTo(cars.get(1).getName());
+        assertThat("jun").isEqualTo(cars.get(2).getName());
+    }
+
+    @Test
+    void 이름_입력_올바른_경우(){
+        String names = "pobi,woni,jun";
+        System.setIn(new ByteArrayInputStream(names.getBytes()));
+
+        List<Car> cars = input.getCars();
+
+        assertThat(3).isEqualTo(cars.size());
+        assertThat("pobi").isEqualTo(cars.get(0).getName());
+        assertThat("woni").isEqualTo(cars.get(1).getName());
+        assertThat("jun").isEqualTo(cars.get(2).getName());
     }
 
 }
