@@ -58,6 +58,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("이동 횟수로 음수 값 입력 테스트")
+    @Test
+    void 음수_값() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni","-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
