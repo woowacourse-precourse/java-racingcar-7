@@ -6,15 +6,13 @@ import racingcar.utils.WinnerDeterminer;
 
 import java.util.List;
 
-public class Race {
+public class Cars {
     private final List<Car> cars;
-    private final int tryCount;
-    private int currentCount;
 
-    public Race(String carNames, int tryCount) {
-        this.cars = convertToCars(carNames);
-        this.tryCount = tryCount;
-        this.currentCount = 0;
+    public Cars(String carNames) {
+        List<String> carNamesList = CarNameParser.parse(carNames);
+
+        this.cars = convertToCars(carNamesList);
     }
 
     public List<Car> getCars() {
@@ -23,11 +21,6 @@ public class Race {
 
     public void play() {
         cars.forEach(Car::move);
-        currentCount++;
-    }
-
-    public boolean isRaceOver() {
-        return currentCount >= tryCount;
     }
 
     public List<String> getRoundResults() {
@@ -38,9 +31,9 @@ public class Race {
         return WinnerDeterminer.determineWinners(cars);
     }
 
-    private static List<Car> convertToCars(String carNames) {
-        List<String> carNameList = CarNameParser.parse(carNames);
-
-        return CarFactory.createCars(carNameList);
+    private static List<Car> convertToCars(List<String> carNamesList) {
+        return carNamesList.stream()
+                .map(Car::new)
+                .toList();
     }
 }
