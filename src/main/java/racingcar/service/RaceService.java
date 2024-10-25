@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.domain.repository.RaceRepository;

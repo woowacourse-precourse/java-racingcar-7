@@ -1,9 +1,7 @@
 package racingcar;
 
-import java.util.List;
 import racingcar.controller.IndexController;
 import racingcar.controller.RaceController;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 
