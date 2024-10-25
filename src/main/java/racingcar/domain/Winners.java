@@ -6,7 +6,7 @@ import racingcar.domain.car.Cars;
 
 public class Winners {
 
-    private static final String WINNER_TITLE = "최종 우승자 : ";
+    private static final String WINNER_TITLE = "최종 우승자 : %s";
     private static final String COMMA_SEPARATOR = ", ";
 
     private final List<Name> winners;
@@ -28,10 +28,9 @@ public class Winners {
                 .map(Name::getName)
                 .toList();
 
-        return format(names);
-    }
-
-    private String format(List<String> names) {
-        return WINNER_TITLE + String.join(COMMA_SEPARATOR, names);
+        return String.format(
+                WINNER_TITLE,
+                String.join(COMMA_SEPARATOR, names)
+        );
     }
 }

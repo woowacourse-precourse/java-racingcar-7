@@ -41,6 +41,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name.getName() + COLON + RACE_SYMBOL.repeat(position);
+        return String.join(COLON, name.getName(), RACE_SYMBOL.repeat(position));
     }
 }
