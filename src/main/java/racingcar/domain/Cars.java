@@ -11,6 +11,10 @@ public class Cars {
         this.cars = makeCars(carNames);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private List<Car> makeCars(List<CarName> carNames) {
         List<Car> cars = new ArrayList<>();
         for (CarName carName : carNames) {
