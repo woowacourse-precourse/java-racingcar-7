@@ -125,8 +125,6 @@ public class Application {
             result.append(IOMessage.buildRaceResult(name, movement)).append("\n");
         }
 
-        result.append("\n");
-
         return result.toString();
     }
 }
