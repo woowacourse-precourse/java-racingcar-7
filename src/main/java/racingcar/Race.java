@@ -17,4 +17,18 @@ public class Race {
             }
         }
     }
+
+    public void findWinner(List<Car> carList) {
+        winnerList.add(carList.get(0));
+        for (int i = 1; i < carList.size(); i++) {
+            Car currentCar = carList.get(i);
+            if (currentCar.getProgress() > winnerList.get(0).getProgress()) {
+                winnerList.clear();
+                winnerList.add(currentCar);
+            }
+            if (currentCar.getProgress() == winnerList.get(0).getProgress()) {
+                winnerList.add(currentCar);
+            }
+        }
+    }
 }
