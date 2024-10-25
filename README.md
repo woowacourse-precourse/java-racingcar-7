@@ -48,14 +48,12 @@
 ### Car
 
 ---
-
 - member: Member
 - racingDistance: Long
 
 ### Race
 
 ---
-
 - cars: List<Cars>
 - times : Long
 - RaceRandomGenerator
@@ -64,47 +62,65 @@
 ### Race Result
 
 ---
-
 - raceResult: List<Cars>
-- String `result`
+- String `result()`
 
 ### Controller
 
 ---
+> 사용자와의 입/출력을 담당한다.
+
+- `executeRaceAndGetWinner()`
+
+    service를 통하여 race 로직을 실행시키고, 사용자에게 결과를 return한다.
 
 ### Validator
 
 ---
+> 주요 기능 : 입력 값의 유효성을 검사한다.
+
+- `validate()`
+
+    사용자 입력 값의 유효성을 검사한다. 
+    
+    만약, 입력값이 유효하지 않으면 `IllegalArgumentException`을 throw한다.
 
 ### Service
 
 ---
+> 주요 기능 : 도메인 로직을 실행한다
+- `performRace()`
+
+    domain logic을 실행하여 race winner를 DTO의 형태로 return한다.
+
 
 ### Util
 
 ---
-
+> domain로직에서 사용하는 random의 로직을 실행한다.
 - RaceRandomGenerator(interface)
-    - getRandomValue(default)
+    - `getRandomValue(default)`
   
       Randoms class를 활용하여 0~9까지 난수를 반환
 
 
 - RaceRandomGeneratorImpl(singleton)
-    - getInstance()
+    - `getInstance()`
 
       Instance를 반환한다.
-    - getMoveForwardTimes(long raceTimes)
+    - `getMoveForwardTimes(long raceTimes)`
 
       => Random에서 random value를 받아서 4 이상이 횟수를 count하여 return한다.
 
 ### DTO
-- RaceRequestDTO
+---
+>controller와 service 사이에서 데이터를 전달 및 변환한다.
+- `RaceRequestDTO`
 
     이름, 횟수를 controller -> service로 전달하기 위해 사용한다.
 
 
-- RaceResponseDTO
+- `RaceResponseDTO`
 
     List<Car>로 전달된 객체를 string으로 변환하여 controller에 다시 전달.
 
