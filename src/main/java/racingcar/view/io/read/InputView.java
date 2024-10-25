@@ -1,4 +1,4 @@
-package racingcar.view.io;
+package racingcar.view.io.read;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -9,9 +9,5 @@ public class InputView {
 
     public static String readInput() {
         return Console.readLine();
-    }
-
-    public static void close() {
-        Console.close();
     }
 }

@@ -14,7 +14,7 @@ public class DashBoardTest {
     void offerLapChart() {
         // given
         Cars mockCars = CarsHelper.mockWithoutWinner();
-        DashBoard sut = DashBoard.of(mockCars);
+        DashBoard sut = DashBoard.from(mockCars);
 
         // when
         String actual = sut.offerLapChart();
@@ -29,10 +29,10 @@ public class DashBoardTest {
     void noWinner() {
         // given
         Cars mockCars = CarsHelper.mockWithoutWinner();
-        DashBoard sut = DashBoard.of(mockCars);
+        DashBoard sut = DashBoard.from(mockCars);
 
         // when
-        String actual = sut.offerWinners();
+        String actual = sut.rankWinners();
 
         // then
         assertThat(actual.isBlank()).isTrue();
@@ -44,9 +44,9 @@ public class DashBoardTest {
     void singleWinner() {
         // given
         Cars mockCars = CarsHelper.mockWithSingleWinner();
-        DashBoard sut = DashBoard.of(mockCars);
+        DashBoard sut = DashBoard.from(mockCars);
         // when
-        String actual = sut.offerWinners();
+        String actual = sut.rankWinners();
         // then
         assertThat(actual).isEqualTo("c");
     }
@@ -56,9 +56,9 @@ public class DashBoardTest {
     void multiWinner() {
         // given
         Cars mockCars = CarsHelper.mockWithMultiWinner();
-        DashBoard sut = DashBoard.of(mockCars);
+        DashBoard sut = DashBoard.from(mockCars);
         // when
-        String actual = sut.offerWinners();
+        String actual = sut.rankWinners();
         // then
         assertThat(actual).isEqualTo("b, c");
     }

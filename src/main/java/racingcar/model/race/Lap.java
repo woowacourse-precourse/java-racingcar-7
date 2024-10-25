@@ -9,7 +9,7 @@ import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Lap {
-    public static Lap ZERO = Lap.of(STR_ZERO);
+    public static Lap ZERO = Lap.from(STR_ZERO);
 
     private BigInteger value;
 
@@ -17,7 +17,7 @@ public class Lap {
         this.value = value;
     }
 
-    public static Lap of(final String value) {
+    public static Lap from(final String value) {
         validateIsNull(value);
         return new Lap(new BigInteger(value));
     }

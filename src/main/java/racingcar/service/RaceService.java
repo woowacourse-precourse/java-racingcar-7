@@ -11,18 +11,18 @@ import racingcar.model.race.Race;
 
 public class RaceService {
 
-    public Cars registerCars(final List<String> carNames, final String lapCount) {
+    public Cars registerCars(final String lapCount, final List<String> carNames) {
         List<Car> cars = carNames.stream()
-                .map(name -> Car.from(name, MyProgress.from(Lap.of(lapCount), Position.initiate())))
+                .map(name -> Car.from(name, MyProgress.from(Lap.from(lapCount), Position.initiate())))
                 .toList();
         return Cars.of(cars);
     }
 
-    public DashBoard startRace(Race race, Cars cars) {
-        DashBoard dashBoard = DashBoard.of(cars);
+    public DashBoard startRace(final Lap lap, final Cars cars) {
+        Race race = Race.from(lap);
+        DashBoard dashBoard = DashBoard.from(cars);
         while (race.isUnderway()) {
             cars.move();
-            // TODO : Print out lap chart
             dashBoard.offerLapChart();
             race.moveToNextLap();
         }

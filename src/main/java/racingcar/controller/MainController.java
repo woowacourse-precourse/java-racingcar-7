@@ -4,9 +4,9 @@ import java.util.List;
 import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Race;
 import racingcar.service.RaceService;
-import racingcar.view.io.InputManager;
+import racingcar.view.io.read.InputManager;
+import racingcar.view.io.write.OutputManager;
 
 public class MainController {
 
@@ -19,10 +19,10 @@ public class MainController {
     public void run() {
         List<String> carNames = InputManager.enterCarNames();
         String lapCount = InputManager.enterLapCount();
-        Cars registeredCars = raceService.registerCars(carNames, lapCount);
 
-        Race race = Race.of(Lap.of(lapCount));
-        DashBoard dashBoard = raceService.startRace(race, registeredCars);
-        System.out.println(dashBoard.offerWinners());
+        Cars registeredCars = raceService.registerCars(lapCount, carNames);
+        DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), registeredCars);
+
+        OutputManager.showWinners(dashBoard.rankWinners());
     }
 }

@@ -14,7 +14,7 @@ public class Race {
         this.remainingCount = remainingCount;
     }
 
-    public static Race of(final Lap lap) {
+    public static Race from(final Lap lap) {
         validateIsNull(lap);
         return new Race(lap);
     }

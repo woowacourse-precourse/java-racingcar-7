@@ -14,7 +14,7 @@ public class DashBoard {
         this.cars = cars;
     }
 
-    public static DashBoard of(Cars cars) {
+    public static DashBoard from(Cars cars) {
         return new DashBoard(cars);
     }
 
@@ -23,7 +23,7 @@ public class DashBoard {
         return String.join(NEW_LINE, positions);
     }
 
-    public String offerWinners() {
+    public String rankWinners() {
         List<String> winners = cars.filterCompletedAllLap()
                 .stream()
                 .map(Car::toString)

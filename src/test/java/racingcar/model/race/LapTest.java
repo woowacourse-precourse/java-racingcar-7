@@ -12,11 +12,11 @@ public class LapTest {
     @DisplayName("남은 Lap 수 : 3 → 2")
     void test() {
         // given
-        Lap remainingLap = Lap.of("3");
+        Lap remainingLap = Lap.from("3");
         // when
         remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
         // then
-        Lap expected = Lap.of("2");
+        Lap expected = Lap.from("2");
         assertThat(remainingLap.equals(expected)).isTrue();
     }
 }

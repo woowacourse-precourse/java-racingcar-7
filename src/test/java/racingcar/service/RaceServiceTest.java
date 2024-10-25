@@ -10,7 +10,6 @@ import racingcar.helper.CarsHelper;
 import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Race;
 
 public class RaceServiceTest {
 
@@ -27,12 +26,11 @@ public class RaceServiceTest {
         // given
         AppConfig.setTestProfileWithValue("4");
         Cars cars = CarsHelper.mockInitial();
-        Race race = Race.of(Lap.of("5"));
-
+        Lap lap = Lap.from("5");
         // when
-        DashBoard dashBoard = sut.startRace(race, cars);
+        DashBoard dashBoard = sut.startRace(lap, cars);
 
         // then
-        assertThat(dashBoard.offerWinners()).isEqualTo("a, b, c");
+        assertThat(dashBoard.rankWinners()).isEqualTo("a, b, c");
     }
 }
