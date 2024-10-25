@@ -12,7 +12,7 @@ public class Application {
 
         try{
             String racingWinner = CarRace.race(input_car, input_race_count);
-
+            System.out.println("최종 우승자 : " + racingWinner);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException();
