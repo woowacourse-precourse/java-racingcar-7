@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.util.Convertor;
 import racingcar.view.View;
 
 import java.util.Arrays;
@@ -23,12 +24,19 @@ public class Controller {
     public void gameStart() {
         List<String> carNames = splitCarNames(inputCarNames());
         validateCarNames(carNames);
-        int round = inputRound();
+        int round = Convertor.convertStringToInt(inputRound());
+        validateRound(round);
     }
 
-    private int inputRound() {
+    private void validateRound(int round) {
+        if (round < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private String inputRound() {
         view.print(ROUND_INPUT_MESSAGE);
-        return Integer.parseInt(view.read());
+        return view.read();
     }
 
     private String inputCarNames() {
