@@ -1,5 +1,9 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 
 public class Controller {
@@ -10,6 +14,16 @@ public class Controller {
     }
 
     public void startGame() {
+        // 이름 입력 받기
+        String rawInputCarNames = inputView.inputCarNames();
+
+        List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name.trim()));
+        }
+
+        // 횟수 입력받기
         int repeatNumber = stringToInt();
     }
 
