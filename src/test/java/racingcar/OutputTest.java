@@ -47,4 +47,18 @@ class OutputTest {
                             "jun : --\n\n";
         assertEquals(expected, outputStream.toString().replace("\r\n", "\n"));
     }
+
+    @Test
+    void 우승자_출력_테스트() {
+        List<Car> winners = Arrays.asList(
+                new Car("pobi"),
+                new Car("woni")
+        );
+
+        output.printWinners(winners);
+
+        String expectedOutput = "최종 우승자 : pobi, woni\n";
+
+        assertEquals(expectedOutput, outputStream.toString().replace("\r\n", "\n"));
+    }
 }
