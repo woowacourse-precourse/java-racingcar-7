@@ -8,6 +8,9 @@ public class Application {
     public static void main(String[] args) {
         try {
             String[] carNames = CarInput.inputCarNames();
+
+            CarInput.validateCarNames(carNames);
+
             List<Car> cars = Arrays.stream(carNames)
                     .map(Car::new)
                     .collect(Collectors.toList());
@@ -19,6 +22,7 @@ public class Application {
 
         } catch (IllegalArgumentException e) {
             System.out.println("오류 발생: " + e.getMessage());
+            throw e;
         }
     }
 }

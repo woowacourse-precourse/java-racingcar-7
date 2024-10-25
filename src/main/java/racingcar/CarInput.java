@@ -12,12 +12,10 @@ public class CarInput {
         String input = Console.readLine();
         String[] carNames = input.split(",");
 
-        validateCarNames(carNames);
-
         return carNames;
     }
 
-    private static void validateCarNames(String[] carNames) {
+    public static void validateCarNames(String[] carNames) {
         for (String name : carNames) {
             if (name.trim().isEmpty() || name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다: " + name);
