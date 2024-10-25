@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private static final int MAX_TRY_COUNT = 100000000;
+    private static final int MAX_TRY_COUNT = 10000000;
 
     public List<String> getInputCars(){
         String input = Console.readLine();
@@ -23,13 +23,13 @@ public class InputView {
         return tryCount;
     }
 
-    private void validateWhitespace(String input) {
+    public static void validateWhitespace(String input) {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("횟수에 공백이 포함되었습니다.");
         }
     }
 
-    private void validateNumberFormat(String input) {
+    public static void validateNumberFormat(String input) {
         try {
             Float.parseFloat(input);
         } catch (NumberFormatException e) {
@@ -37,7 +37,7 @@ public class InputView {
         }
     }
 
-    private int parseTryCount(String input) {
+    public static int parseTryCount(String input) {
         float floatTryCount = Float.parseFloat(input);
         int intTryCount = (int) floatTryCount;
 
@@ -48,7 +48,7 @@ public class InputView {
         return intTryCount;
     }
 
-    private void validateTryCount(int tryCount) {
+    public static void validateTryCount(int tryCount) {
         if (tryCount <= 0) {
             throw new IllegalArgumentException("입력된 횟수가 0 이하 입니다.");
         }
