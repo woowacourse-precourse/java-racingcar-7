@@ -5,6 +5,7 @@ import car.Car;
 import io.RacingCarInputHandler;
 import io.InputHandler;
 import io.OutputHandler;
+import io.RacingCarOutputHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class RacingCar {
     private InputHandler inputHandler = new InputHandler();
     private OutputHandler outputHandler = new OutputHandler();
     private RacingCarInputHandler racingCarInputHandler = new RacingCarInputHandler();
+    private RacingCarOutputHandler racingCarOutputHandler = new RacingCarOutputHandler();
 
     public void run() {
         try {
@@ -45,6 +47,7 @@ public class RacingCar {
     public void racingMachine(List<Car> carList, int racingCount) {
         while (racingCount > 0) {
             racing(carList);
+            racingCarOutputHandler.displayRaceResultsByRound(carList);
             racingCount--;
         }
     }
