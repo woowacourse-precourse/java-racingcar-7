@@ -2,7 +2,16 @@ package racingcar;
 
 public class Racingcar {    
     private String name;
+
     private int moveCount;
+
+    public String getName() {
+        return name;
+    }
+    
+    public int getMoveCount() {
+        return moveCount;
+    }
 
     public Racingcar(String name) { 
         this.name = name;
