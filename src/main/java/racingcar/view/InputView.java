@@ -21,12 +21,12 @@ public class InputView {
         return carNames;
     }
 
-    public static String getAttempts() {
+    public static int getAttempts() {
         print(TRY_COUNT_INPUT);
         String tryCount = Console.readLine();
         validateBlankAttempts(tryCount);
         validateInvalidInput(tryCount);
-        return tryCount;
+        return Integer.parseInt(tryCount);
     }
 
     private static void validateBlankAttempts(String tryCount) {
