@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class CarsTest {
+class CarsTest {
 
     @ParameterizedTest
     @CsvSource(value = {"0,0", "0,1", "2,2", "2,3", "4,3", "100,101"})

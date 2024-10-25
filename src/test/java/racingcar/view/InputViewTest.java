@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.domain.TryCount;
 
-public class InputViewTest {
+class InputViewTest {
 
     @Test
     void 자동차_이름을_정상적으로_구분하는가() {
