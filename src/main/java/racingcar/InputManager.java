@@ -16,6 +16,8 @@ public class InputManager {
         GameInitializer gameInitializer = new GameInitializer();
         gameInitializer.gameInitialize(names);
         startGame(gameInitializer.getCars(), number);
+
+        gameInitializer.longestCarName(gameInitializer.getCars());
     }
 
 
