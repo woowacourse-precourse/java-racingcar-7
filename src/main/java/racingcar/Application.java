@@ -32,7 +32,7 @@ public class Application {
         int max = calMaxMove(cars);
         List<String> winners = findWinners(cars, max);
 
-
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
 
     }
 
