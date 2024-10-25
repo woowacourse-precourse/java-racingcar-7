@@ -28,4 +28,16 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    @DisplayName("자동차 이름 유효성 검사: 공백 포함 - 예외 테스트")
+    void validateCarNames_nameWithSpaces() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "wo ni", "jun");
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
