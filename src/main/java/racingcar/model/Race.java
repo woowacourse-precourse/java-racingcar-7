@@ -22,4 +22,8 @@ public class Race {
         }
     }
 
+    public int getMoveNumber() {
+        return moveNumber;
+    }
+
 }

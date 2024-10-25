@@ -23,7 +23,10 @@ public class RacingCarController {
         Race race = new Race(moveNumberInput);
 
         outputView.outputRaceStartLine();
-        cars.moveCars();
+        for (int i = 0; i < race.getMoveNumber(); i++) {
+            cars.moveCars();
+            outputView.outputRaceIntermediateReuslt(cars.getCars());
+        }
 
     }
 }
