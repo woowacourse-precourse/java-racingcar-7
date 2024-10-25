@@ -6,8 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import error.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.List;
-import model.Car;
-import model.CarList;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,47 +21,72 @@ public class InputServiceTest {
         inputService = new InputService();
     }
 
-    private List<String> extractCarNames(CarList carList) {
-        List<String> carNames = new ArrayList<>();
-        for (Car car : carList.getCars()) {
-            carNames.add(car.getName());
-        }
-        return carNames;
+    @ParameterizedTest
+    @ValueSource(strings = {"JOHN", "TONY", "POLY"})
+    public void InputService_자동차이름_유효성테스트_통과(String newCarName) {
+        assertThat(inputService.validateCarName(newCarName)).isEqualTo(newCarName);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"JOHNYY", "TONYYY", "POLYYY"})
+    public void InputService_자동차이름_유효성테스트_불통과_길이초과(String newCarName) {
+        Assertions.assertThatThrownBy(() -> inputService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "   ", "      "})
+    public void InputService_자동차이름_유효성테스트_불통과_공백(String newCarName) {
+        Assertions.assertThatThrownBy(() -> inputService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_NAME_EMPTY);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" CARR ", "CARR ", "  CARR", "   CARRR   "})
+    public void InputService_자동차이름_유효성테스트_통과_이름앞뒤_공백처리(String newCarName) {
+        String expectedResult = newCarName.trim();
+        assertThat(inputService.validateCarName(newCarName)).isEqualTo(expectedResult);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"carA", "carB", "carC"})
+    public void InputService_자동차이름_유효성테스트_불통과_이미존재(String newCarName) {
+        Assertions.assertThatThrownBy(() -> inputService.validateCarName(newCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionMessage.CAR_ALEADY_EXIST);
+    }
 
     @Test
     public void InputService_자동차입력문_처리_테스트_통과() {
         String cars = "pobi,woni,jun";
-        List<String> expectedCarName = new ArrayList<>();
-        expectedCarName.add("pobi");
-        expectedCarName.add("woni");
-        expectedCarName.add("jun");
+        List<String> expectedCarNameList = new ArrayList<>();
+        expectedCarNameList.add("pobi");
+        expectedCarNameList.add("woni");
+        expectedCarNameList.add("jun");
 
-        CarList actualCarList = inputService.extractValidCar(cars);
-        List<String> actualCarName = extractCarNames(actualCarList);
-        assertThat(actualCarName).isEqualTo(expectedCarName);
+        List<String> actualCarNameList = inputService.extractValidCarNames(cars);
+        assertThat(actualCarNameList).isEqualTo(expectedCarNameList);
     }
 
 
     @Test
     public void InputService_자동차입력문_처리_테스트_통과_이름앞뒤공백있을때() {
         String cars = "  pobi , woni , jun ";
-        List<String> expectedCarName = new ArrayList<>();
-        expectedCarName.add("pobi");
-        expectedCarName.add("woni");
-        expectedCarName.add("jun");
+        List<String> expectedCarNameList = new ArrayList<>();
+        expectedCarNameList.add("pobi");
+        expectedCarNameList.add("woni");
+        expectedCarNameList.add("jun");
 
-        CarList actualCarList = inputService.extractValidCar(cars);
-        List<String> actualCarName = extractCarNames(actualCarList);
-
-        assertThat(actualCarName).isEqualTo(expectedCarName);
+        List<String> actualCarNameList = inputService.extractValidCarNames(cars);
+        assertThat(actualCarNameList).isEqualTo(expectedCarNameList);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"pob,", "pob, ", "pob,jun,   "})
     public void InputService_자동차입력문_처리_테스트_불통과_쉼표로끝날떄(String cars) {
-        assertThatThrownBy(() -> inputService.extractValidCar(cars))
+        assertThatThrownBy(() -> inputService.extractValidCarNames(cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.CARS_INPUT_END_ERROR);
     }
@@ -70,7 +94,7 @@ public class InputServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"pob,,jun", " ,woni,jun", "pobi,  ,woni"})
     public void InputService_자동차입력문_처리_테스트_불통과_공백이름있을때(String cars) {
-        assertThatThrownBy(() -> inputService.extractValidCar(cars))
+        assertThatThrownBy(() -> inputService.extractValidCarNames(cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.CAR_NAME_EMPTY);
     }
@@ -78,7 +102,7 @@ public class InputServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "car"})
     public void InputService_자동차입력문_처리_테스트_불통과_자동차하나일때(String cars) {
-        assertThatThrownBy(() -> inputService.extractValidCar(cars))
+        assertThatThrownBy(() -> inputService.extractValidCarNames(cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.ONLY_ONE_CAR);
     }
