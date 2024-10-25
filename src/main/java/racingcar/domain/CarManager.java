@@ -3,11 +3,11 @@ package racingcar.domain;
 import java.util.Collections;
 import java.util.List;
 
-public class Cars {
+public class CarManager {
 
     private List<Car> cars;
 
-    public Cars(List<Car> cars){
+    public CarManager(List<Car> cars){
         this.cars = cars;
     }
 

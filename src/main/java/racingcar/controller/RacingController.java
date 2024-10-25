@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.CarManager;
 import racingcar.domain.Racing;
 import racingcar.utils.StringSplitter;
 import racingcar.view.InputView;
@@ -11,14 +11,14 @@ import racingcar.view.OutputView;
 public class RacingController {
 
     private Racing racing;
-    private Cars cars;
+    private CarManager carManager;
     private StringSplitter stringSplitter;
     private OutputView outputView;
 
-    public RacingController(Racing racing, Cars cars, StringSplitter stringSplitter,
+    public RacingController(Racing racing, CarManager carManager, StringSplitter stringSplitter,
             OutputView outputView) {
         this.racing = racing;
-        this.cars = cars;
+        this.carManager = carManager;
         this.stringSplitter = stringSplitter;
         this.outputView = outputView;
     }
@@ -34,7 +34,7 @@ public class RacingController {
         List<String> strings = stringSplitter.splitByDelimiter(inputCarString);
         for (String s : strings) {
             Car car = new Car(s);
-            cars.addCar(car);
+            carManager.addCar(car);
         }
     }
 
@@ -48,7 +48,7 @@ public class RacingController {
     }
 
     private void announceWinner() {
-        String winner = racing.findWinner(cars.getCars());
+        String winner = racing.findWinner(carManager.getCars());
         outputView.printWinner(winner);
     }
 

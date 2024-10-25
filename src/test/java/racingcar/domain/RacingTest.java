@@ -14,9 +14,9 @@ public class RacingTest {
         Car car1 = new Car("pobi");
         Car car2 = new Car("bibim");
         Car car3 = new Car("even");
-        Cars cars = new Cars(List.of(car1, car2, car3));
+        CarManager carManager = new CarManager(List.of(car1, car2, car3));
 
-        Racing racing = new Racing(cars);
+        Racing racing = new Racing(carManager);
         car1.move(9);
         car1.move(8);
         car2.move(0);
@@ -26,7 +26,7 @@ public class RacingTest {
 
         String expectedValue = "pobi";
 
-        String winner = racing.findWinner(cars.getCars());
+        String winner = racing.findWinner(carManager.getCars());
         assertThat(winner).isEqualTo(expectedValue);
     }
 
@@ -36,9 +36,9 @@ public class RacingTest {
         Car car1 = new Car("pobi");
         Car car2 = new Car("bibim");
         Car car3 = new Car("even");
-        Cars cars = new Cars(List.of(car1, car2, car3));
+        CarManager carManager = new CarManager(List.of(car1, car2, car3));
 
-        Racing racing = new Racing(cars);
+        Racing racing = new Racing(carManager);
 
         car1.move(9);
         car1.move(8);
@@ -49,7 +49,7 @@ public class RacingTest {
 
         String expectedWinner = "pobi, even";
 
-        String winner = racing.findWinner(cars.getCars());
+        String winner = racing.findWinner(carManager.getCars());
         assertThat(winner).isEqualTo(expectedWinner);
     }
 }

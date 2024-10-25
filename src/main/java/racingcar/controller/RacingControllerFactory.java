@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import racingcar.domain.Cars;
+import racingcar.domain.CarManager;
 import racingcar.domain.Racing;
 import racingcar.utils.StringSplitter;
 import racingcar.view.OutputView;
@@ -9,11 +9,11 @@ import racingcar.view.OutputView;
 public class RacingControllerFactory {
 
     public static RacingController create() {
-        Cars cars = new Cars(new ArrayList<>());
-        Racing racing = new Racing(cars);
+        CarManager carManager = new CarManager(new ArrayList<>());
+        Racing racing = new Racing(carManager);
         StringSplitter stringSplitter = new StringSplitter();
         OutputView outputView = new OutputView();
-        return new RacingController(racing, cars, stringSplitter, outputView);
+        return new RacingController(racing, carManager, stringSplitter, outputView);
     }
 
 }

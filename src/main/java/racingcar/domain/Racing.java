@@ -6,17 +6,17 @@ import racingcar.utils.RandomNumber;
 
 public class Racing {
 
-    private Cars cars;
+    private CarManager carManager;
 
-    public Racing(Cars cars) {
-        this.cars = cars;
+    public Racing(CarManager carManager) {
+        this.carManager = carManager;
     }
 
     public List<Car> startRacing() {
-        for (Car car : cars.getCars()) {
+        for (Car car : carManager.getCars()) {
             car.move(RandomNumber.generate());
         }
-        return cars.getCars();
+        return carManager.getCars();
     }
 
     public String findWinner(List<Car> cars) {
