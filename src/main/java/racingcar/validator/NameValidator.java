@@ -1,6 +1,7 @@
 package racingcar.validator;
 
 public class NameValidator implements BasicValidator<String> {
+    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     @Override
     public void validate(String carName) {
@@ -15,7 +16,7 @@ public class NameValidator implements BasicValidator<String> {
     }
 
     private void isCarNameLengthValid(String carName) {
-        if (carName.length() > 5 || carName.isEmpty()) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
         }
     }
