@@ -10,9 +10,9 @@ public class Race {
         this.cars = cars;
     }
 
-    public List<CarStatus> getRoundResult() {
+    public List<CarDto> getRoundResult() {
         return cars.stream().map(car ->
-                        new CarStatus(car.getName(), car.getCurrentPosition()))
+                        new CarDto(car.getName(), car.getCurrentPosition()))
                 .toList();
     }
 

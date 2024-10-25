@@ -1,10 +1,10 @@
 package racingcar;
 
-public class CarStatus {
+public class CarDto {
     private String carName;
     private int currentPosition;
 
-    public CarStatus(String carName, int currentPosition) {
+    public CarDto(String carName, int currentPosition) {
         this.carName = carName;
         this.currentPosition = currentPosition;
     }
@@ -16,4 +16,5 @@ public class CarStatus {
     public int getCurrentPosition() {
         return currentPosition;
     }
+
 }
