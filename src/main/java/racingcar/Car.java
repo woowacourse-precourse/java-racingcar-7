@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
     private String name;
@@ -25,7 +27,11 @@ public class Car {
         System.out.println();
     }
 
-    public void forward(){
+    public void forward() {
         this.forwardLevel += 1;
+    }
+
+    public boolean isForward() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
