@@ -10,7 +10,7 @@ public class RacingCarController {
 
     public void run() {
         inputCarNames();
-        inputTryCount();
+        inputForwardCount();
     }
 
     private void inputCarNames() {
@@ -18,8 +18,8 @@ public class RacingCarController {
         Car.from(Input.from(read()).getNames());
     }
 
-    private void inputTryCount() {
-        InputView.showInputPrompt(ViewMessage.TRY_COUNT_INPUT_PROMPT);
+    private void inputForwardCount() {
+        InputView.showInputPrompt(ViewMessage.FORWARD_COUNT_INPUT_PROMPT);
     }
 
     public static String read() {
