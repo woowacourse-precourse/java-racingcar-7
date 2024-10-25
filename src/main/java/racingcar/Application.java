@@ -10,5 +10,8 @@ public class Application {
         if (carName == null || carName.isEmpty()){
             throw new IllegalArgumentException("경주할 자동차 이름 입력 필요함.");
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String tryCount = Console.readLine();
     }
 }
