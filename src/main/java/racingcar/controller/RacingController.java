@@ -21,15 +21,18 @@ public class RacingController {
     public void run() {
         initializeCars();
         int tryCount = insertTryCount();
+        race(tryCount);
 
+        List<String> raceWinners = cars.findRaceWinners();
+        outputView.printWinners(raceWinners);
+    }
+
+    private void race(int tryCount) {
         outputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
             cars.allMove();
             outputView.printCarDistances(cars.getCarNames(), cars.getCarsPositions());
         }
-
-        List<String> raceWinners = cars.findRaceWinners();
-        outputView.printWinners(raceWinners);
     }
 
     private int insertTryCount() {
