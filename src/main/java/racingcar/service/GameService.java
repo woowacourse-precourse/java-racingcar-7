@@ -6,16 +6,12 @@ import racingcar.domain.Car;
 public class GameService {
 
     public int getMaxLocation(List<Car> cars) {
-        return cars.stream()
-                .mapToInt(Car::getPresentLocation)
-                .max()
+        return cars.stream().mapToInt(Car::getPresentLocation).max()
                 .orElseThrow(() -> new IllegalArgumentException("Cannot get max location"));
     }
 
     public List<Car> selectWinners(List<Car> cars) {
-        int maxLocation = getMaxLocation(cars);
-        return cars.stream()
-                .filter(car -> car.getPresentLocation() == maxLocation)
-                .toList();
+        final int maxLocation = getMaxLocation(cars);
+        return cars.stream().filter(car -> car.getPresentLocation() == maxLocation).toList();
     }
 }
