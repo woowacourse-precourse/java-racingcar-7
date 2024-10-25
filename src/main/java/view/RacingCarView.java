@@ -7,6 +7,7 @@ import model.RacingCar;
 public class RacingCarView {
     private static final String INPUT_RACING_CAR_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_RACING_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String RESULT_MESSAGE = "실행 결과";
     private static final String DISTANCE_OUTPUT_TEXT = "-";
     private static final String WINNER_SEPARATOR = ", ";
     private static final String LINE_SEPARATOR = "\n";
@@ -47,6 +48,15 @@ public class RacingCarView {
         result.append(String.format(
                 WINNER_RESULT_FORMAT,
                 String.join(WINNER_SEPARATOR, winnerNames)));
+
+        System.out.println(result);
+    }
+
+    public void printResultMessage() {
+        StringBuilder result = new StringBuilder();
+
+        result.append(LINE_SEPARATOR)
+                .append(RESULT_MESSAGE);
 
         System.out.println(result);
     }

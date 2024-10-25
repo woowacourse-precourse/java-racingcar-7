@@ -17,6 +17,7 @@ public class RandomRacingGameService implements RacingGameService {
     @Override
     public void progress(List<RacingCar> cars, int round) {
         int currentRound = 1;
+        racingCarView.printResultMessage();
         while (currentRound <= round) {
             race(cars);
             racingCarView.printIntermediateResult(cars);
