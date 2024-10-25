@@ -11,7 +11,7 @@ public class CarNameValidator {
     }
     private void validateEmptyList(List<String> carNames) {
         if(carNames.isEmpty()) {
-            throw new IllegalArgumentException("입력한 값은 ,만 있으면 안됩니다 : " + carNames);
+            throw new IllegalArgumentException("입력한 값은 ,만 있으면 안됩니다");
         }
     }
     private void validateLengthCarName(List<String> carNames) {
