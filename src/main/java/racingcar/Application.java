@@ -28,7 +28,6 @@ public class Application {
         if(isNameLengthOver5(racers)){
             throw new IllegalArgumentException();
         }
-        Console.close();
         return racers;
     }
 
@@ -42,9 +41,11 @@ public class Application {
     }
 
     public static List<String> startRacing(List<String> racers) {
+        List<String> winners = null;
+        int FinishLine = Integer.parseInt(Console.readLine());
 
-        List<String> winers = null;
-        return winers;
+
+        return winners;
     }
 
     public static void printWinners(List<String> winners){
