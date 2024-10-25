@@ -21,4 +21,12 @@ public class Car {
     public final void goForward() {
         forwardCount += 1;
     }
+
+    public final int getForwardCount() {
+        return forwardCount;
+    }
+
+    public final String getName() {
+        return name;
+    }
 }

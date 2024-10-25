@@ -1,5 +1,6 @@
 package racingcar.model.race;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.car.Car;
 import racingcar.model.car.InitCars;
@@ -29,6 +30,25 @@ public class Race {
             String turnResult = turnRun();
             raceResult.append(turnResult).append("\n");
         }
+        if (raceResult.length() > 0) {
+            raceResult.setLength(raceResult.length() - 1);
+        }
         return raceResult.toString();
+    }
+
+    public final List<String> getWinners() {
+        int maxForwardCount = 0;
+        List<String> winners = new ArrayList<>();
+        for (Car car : carList) {
+            int forwardCount = car.getForwardCount();
+            if (forwardCount > maxForwardCount) {
+                maxForwardCount = forwardCount;
+                winners.clear();
+                winners.add(car.getName());
+            } else if (car.getForwardCount() == maxForwardCount) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 }

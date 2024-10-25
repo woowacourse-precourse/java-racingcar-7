@@ -21,5 +21,6 @@ public class RacingCarController {
         Race race = new Race(carNameArray, attemptCountNumber);
         String executionResult = race.raceRun();
         OutputManager.printExecutionResult(executionResult);
+        System.out.println(race.getWinners());
     }
 }
