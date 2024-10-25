@@ -2,11 +2,14 @@ package racingcar.domain;
 
 public class Car {
     private CarName name;
-    private int distance;
+    private int position;
 
-    public Car(String name, int distance) {
+    public Car(String name, int position) {
         this.name = new CarName(name);
-        this.distance = distance;
+        this.position = position;
     }
 
+    public void moveForward(int distance) {
+        position += distance;
+    }
 }
