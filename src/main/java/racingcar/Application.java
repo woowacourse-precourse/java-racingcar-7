@@ -41,4 +41,9 @@ class Car {
             }
         }
     }
+    private void printAtTime(){
+        for (int i = 0; i < carLst.length; i++){
+            System.out.println(carLst[i] + " : " + "-".repeat(forward[i]));
+        }
+    }
 }
