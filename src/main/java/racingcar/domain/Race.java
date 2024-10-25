@@ -1,8 +1,10 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
+    private static final int START_ROUND = 1;
     private static final int MIN_ROUND = 1;
     private static final int MAX_ROUND = 100;
     private static final String RACE_ROUND_LENGTH_ERROR_MESSAGE =
@@ -10,10 +12,12 @@ public class Race {
 
     private final int raceRound;
     private final Cars cars;
+    private final List<RaceLog> raceLogs;
 
     private Race(int raceRound, Cars cars) {
         this.raceRound = raceRound;
         this.cars = cars;
+        this.raceLogs = new ArrayList<>();
     }
 
     public static Race from(int raceRound, Cars cars) {
@@ -28,18 +32,9 @@ public class Race {
     }
 
     public void play() {
-        for (int i = 0; i < raceRound; i++) {
+        for (int round = START_ROUND; round <= raceRound; round++) {
             cars.moveAll();
-            List<CarDetail> carStates = cars.getAllCarDetails();
-            carStates.forEach(carState -> {
-                StringBuilder sb = new StringBuilder(carState.name() + " : ");
-                int distance = carState.distance();
-                while (distance-- > 0) {
-                    sb.append("-");
-                }
-                System.out.println(sb);
-            });
-            System.out.println();
+            raceLogs.add(RaceLog.from(round, cars));
         }
     }
 }

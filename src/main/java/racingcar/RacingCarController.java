@@ -29,6 +29,15 @@ public class RacingCarController {
         outputView.printRaceStartMessage();
         race.play();
 
+        carDetails.forEach(carDetail -> {
+            StringBuilder sb = new StringBuilder(carDetail.name() + " : ");
+            int distance = carDetail.distance();
+            while (distance-- > 0) {
+                sb.append("-");
+            }
+            System.out.println(sb);
+        });
+        System.out.println();
         List<CarDetail> victoryCarDetails = cars.getVictoryCarNames();
         String result = victoryCarDetails.stream().map(CarDetail::name).collect(Collectors.joining(", "));
         System.out.print("최종 우승자 : " + result);
