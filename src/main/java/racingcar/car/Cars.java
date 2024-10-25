@@ -14,6 +14,12 @@ public class Cars {
                 .toList();
     }
 
+    public void moves() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
     private void validateDuplicateCars(List<String> carNames) {
         int count = (int) carNames.stream()
                 .distinct()

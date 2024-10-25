@@ -1,14 +1,23 @@
 package racingcar.car;
 
+import racingcar.util.RandomNumberGenerator;
+
 public class Car {
 
     private final String name;
-    private final int position;
+    private int position;
 
     public Car(String name) {
         validateNameRange(name);
         this.name = name;
         this.position = 0;
+    }
+
+    public void move() {
+        int number = RandomNumberGenerator.generateRandomNumber();
+        if (number >= 4) {
+            position++;
+        }
     }
 
     private void validateNameRange(String name) {
