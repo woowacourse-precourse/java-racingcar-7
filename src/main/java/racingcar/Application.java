@@ -13,5 +13,7 @@ public class Application {
         RaceCar raceCar = new RaceCar();
         String[] carNames = raceCar.splitNames(userInputString);
 
+        System.out.println(carNames);
+
     }
 }
