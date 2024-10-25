@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.model.dto.CarStatusDto;
 import racingcar.util.randomnumber.RandomNumberStrategy;
 
 public class Car {
@@ -29,6 +30,10 @@ public class Car {
         if (isRandomNumberSize(randomNumber)) {
             moveForward();
         }
+    }
+
+    public CarStatusDto mapStatusToDto() {
+        return CarStatusDto.of(this.name, this.position);
     }
 
     public String getName() {

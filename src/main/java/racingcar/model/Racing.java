@@ -1,6 +1,8 @@
 package racingcar.model;
 
+import java.util.List;
 import java.util.Objects;
+import racingcar.model.dto.CarStatusDto;
 
 public class Racing {
 
@@ -16,6 +18,10 @@ public class Racing {
 
     public void runRacing() {
         cars.move();
+    }
+
+    public List<CarStatusDto> getResult() {
+        return cars.getCarStatusResult();
     }
 
     @Override
