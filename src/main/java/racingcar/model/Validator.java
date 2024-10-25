@@ -20,6 +20,15 @@ public class Validator {
         validateMinCount(uniqueCarNames, MIN_CAR_COUNT);
     }
 
+    public void validateAttemptCount(String attemptCountInput) {
+        try {
+            int attemptCount = Integer.parseInt(attemptCountInput);
+            validatePositiveNumber(attemptCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validateNotEmpty(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException();
@@ -46,6 +55,12 @@ public class Validator {
 
     private void validateMinCount(List<String> names, int minCount) {
         if (names.size() < minCount) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validatePositiveNumber(int number) {
+        if (number < MIN_ATTEMPT_COUNT) {
             throw new IllegalArgumentException();
         }
     }
