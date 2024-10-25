@@ -9,6 +9,7 @@ public class InputValidator {
     public static final String COMMA = ",";
 
     public static void validateCarNames(String input) {
+        checkNull(input);
         checkInputForm(input);
         checkDuplicate(input);
     }
@@ -30,6 +31,7 @@ public class InputValidator {
     }
 
     public static void validateNumberOfTrial(String numberOfTrial) {
+        checkNull(numberOfTrial);
         checkNumberForm(numberOfTrial);
         checkNumberRange(numberOfTrial);
     }
@@ -45,6 +47,12 @@ public class InputValidator {
             Integer.parseInt(numberOfTrial);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 정수 범위를 초과했습니다.");
+        }
+    }
+
+    private static void checkNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("[ERROR] 값을 입력해주세요");
         }
     }
 }
