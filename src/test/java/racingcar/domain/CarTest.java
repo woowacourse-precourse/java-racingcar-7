@@ -74,4 +74,19 @@ class CarTest {
             assertThat(actual).isEqualTo(expected);
         }
     }
+
+    @Test
+    @DisplayName("copy() 깊은 복사 테스트")
+    void successfullyCopyCar() {
+        //given
+        String carName = "song";
+
+        //when
+        Car originalCar = new Car(carName);
+        Car copyCar = originalCar.copy();
+        copyCar.moveForward(9);
+
+        //then
+        assertThat(originalCar.getPosition()).isNotEqualTo(copyCar.getPosition());
+    }
 }
