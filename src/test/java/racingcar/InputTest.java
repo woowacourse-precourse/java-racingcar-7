@@ -13,7 +13,6 @@ import racingcar.validator.RoundValidator;
 public class InputTest {
     private static final String CAR_NAMES = "emily, tomas, gina";
     private static final String LAST_CAR_NAME = "gina";
-    private static final int NUMBER_OF_ROUNDS = 5;
 
     @Test
     void 자동차이름_입력_테스트() {
