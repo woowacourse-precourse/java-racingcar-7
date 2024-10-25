@@ -1,4 +1,4 @@
-package racingcar;
+package io;
 
 public interface InputHandler {
     String read();
