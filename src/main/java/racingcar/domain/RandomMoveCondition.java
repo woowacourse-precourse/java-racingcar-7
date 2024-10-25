@@ -6,10 +6,11 @@ public class RandomMoveCondition implements MoveCondition {
 
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 0;
+    private static final int MOVE_THRESHOLD = 4;
 
     @Override
     public boolean canMove() {
         int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-        return randomNumber >= 4;
+        return randomNumber >= MOVE_THRESHOLD;
     }
 }
