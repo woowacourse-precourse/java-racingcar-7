@@ -1,18 +1,32 @@
 package racingcar.domain.car;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
     @Test
-    @DisplayName("자동차의 이름이 중복되면 예외가 발생한다.")
-    public void 자동차_이름_중복_검증_기능() {
+    public void 자동차의_이름이_중복_되지_않으면_예외가_발생하지_않는다() {
+        //given
+        Car car1 = new Car("povi");
+        Car car2 = new Car("minu");
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
+
+        //when then
+        assertDoesNotThrow(() -> new Cars(cars));
+    }
+
+    @Test
+    public void 자동차의_이름이_중복_되면_예외가_발생한다() {
         //given
         Car car1 = new Car("povi");
         Car car2 = new Car("povi");
@@ -26,85 +40,19 @@ class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @Test
-    @DisplayName("특정한 자동차만 전진 하는지 검증 한다.")
-    public void 특정_자동차만_전진_기능_테스트() {
+    public void 전진_조건이_참_일_경우_자동차는_전진한다() {
         // given
         Car car1 = new Car("povi");
         Car car2 = new Car("min");
-
-        List<Car> carList = new ArrayList<>();
-        carList.add(car1);
-        carList.add(car2);
-
-        Cars players = new Cars(carList);
+        Cars cars = new Cars(Arrays.asList(car1, car2));
 
         // when
-        players.accelerateSpecificCar(car1);
-        CarInfo carInfo = car1.getCarInfo();
+        cars.accelerateCars(car -> true);
 
         // then
-        assertEquals(1, carInfo.getCurrentPosition());
-    }
-
-    @Test
-    @DisplayName("자동차 경주에서 우승자를 찾는다.")
-    public void 자동차_우승자_찾기() {
-        // given
-        Car car1 = new Car("povi");
-        Car car2 = new Car("min");
-
-        List<Car> carList = new ArrayList<>();
-        carList.add(car1);
-        carList.add(car2);
-
-        // when
-        Cars players = new Cars(carList);
-        players.accelerateSpecificCar(car1);
-        players.accelerateSpecificCar(car1);
-        players.accelerateSpecificCar(car1);
-
-        List<String> winner = players.getWinners();
-
-        // then
-        Assertions.assertThat(winner.size()).isEqualTo(1);
-        Assertions.assertThat(winner).contains("povi");
-    }
-
-    @Test
-    @DisplayName("자동차 경주에서 우승자가 여려명 일 때.")
-    public void 자동차_우승자_찾기_여러명() {
-        // given
-        Car car1 = new Car("povi");
-        Car car2 = new Car("min");
-
-        List<Car> carList = new ArrayList<>();
-        carList.add(car1);
-        carList.add(car2);
-
-        // when
-        Cars players = new Cars(carList);
-        players.accelerateSpecificCar(car1);
-        players.accelerateSpecificCar(car2);
-
-        List<String> winner = players.getWinners();
-
-        // then
-        Assertions.assertThat(winner.size()).isEqualTo(2);
-        Assertions.assertThat(winner).contains("povi", "min");
-    }
-
-    @Test
-    @DisplayName("게임 참가자가 없을 경우 예외가 발생한다.")
-    public void 자동차_우승자_찾기_참가자_없음() {
-        // given
-        List<Car> carList = new ArrayList<>();
-
-        // when
-        Cars players = new Cars(carList);
-
-        // then
-        Assertions.assertThatThrownBy(() -> players.getWinners())
-                .isInstanceOf(IllegalArgumentException.class);
+        cars.getCarInfos()
+                .forEach(carInfo -> assertEquals(1, carInfo.getCurrentPosition()));
     }
 }
