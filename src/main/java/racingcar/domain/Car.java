@@ -14,7 +14,7 @@ public class Car {
         this.winnerStatus = WinnerStatus.NONE;
     }
 
-    private void goForward() {
+    public void goForward() {
         this.presentLocation += 1;
     }
 
