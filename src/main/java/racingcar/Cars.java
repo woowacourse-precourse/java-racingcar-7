@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -43,6 +44,21 @@ public class Cars {
 
     public List<Car> getCars() {
         return new ArrayList<>(cars);
+    }
+
+    public List<String> getWinners() {
+        int maxPosition = findMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 
 }
