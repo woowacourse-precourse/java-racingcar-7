@@ -8,13 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Application {
-    public  static String getCarName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carInput = Console.readLine();
-        checkCarsNameProvideException(carInput);
-        return carInput;
-    }
-
     public static void checkCarsNameProvideException(String cars) {
         if (cars == null) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
@@ -25,6 +18,34 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요.\n");
         }
     }
+    public static void checkCarsNumberException(String[] cars) {
+        if (cars.length > 10 || cars.length < 2) {
+            throw new IllegalArgumentException("자동차는 2대 이상, 10대 이하로 입력해 주세요.\n");
+        }
+    }
+    public static void  checkRaceNumberException(int numberInt) {
+        if (numberInt > 10) {
+            throw new IllegalArgumentException("횟수는 10회 이하로 입력해주세요\n");
+        }
+    }
+    public static void checkDuplicateCarsException(String[] cars) {
+        Set<String> carSet = new HashSet<>();
+
+        for (String car : cars) {
+            // 중복 체크
+            if (!carSet.add(car)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.\n");
+            }
+        }
+    }
+
+    public  static String getCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carInput = Console.readLine();
+        checkCarsNameProvideException(carInput);
+        return carInput;
+    }
+
     public static String[] trimCars(String[] cars) {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = cars[i].trim();
@@ -33,18 +54,6 @@ public class Application {
         checkCarsNumberException(cars);
         checkDuplicateCarsException(cars);
         return cars;
-    }
-
-    public static void checkCarsNumberException(String[] cars) {
-        if (cars.length > 10 || cars.length < 2) {
-            throw new IllegalArgumentException("자동차는 2대 이상, 10대 이하로 입력해 주세요.\n");
-        }
-    }
-
-    public static void  checkRaceNumberException(int numberInt) {
-        if (numberInt > 10) {
-            throw new IllegalArgumentException("횟수는 10회 이하로 입력해주세요\n");
-        }
     }
 
     public static int getRaceNumber() {
@@ -107,17 +116,6 @@ public class Application {
             System.out.print("\n");
         }
         printWinners(cars, progresses);
-    }
-
-    public static void checkDuplicateCarsException(String[] cars) {
-        Set<String> carSet = new HashSet<>();
-
-        for (String car : cars) {
-            // 중복 체크
-            if (!carSet.add(car)) {
-                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.\n");
-            }
-        }
     }
 
     public static void main(String[] args) {
