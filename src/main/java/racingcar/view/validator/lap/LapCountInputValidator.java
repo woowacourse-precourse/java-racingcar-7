@@ -6,8 +6,9 @@ abstract class LapCountInputValidator {
 
     private LapCountInputValidator next = null;
 
-    public void doChain(LapCountInputValidator validator) {
+    public LapCountInputValidator doChain(LapCountInputValidator validator) {
         this.next = validator;
+        return validator;
     }
 
     public void check(String source) {

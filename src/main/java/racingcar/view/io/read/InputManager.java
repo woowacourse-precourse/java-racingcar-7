@@ -6,10 +6,10 @@ import static racingcar.util.PreprocessingUtil.replaceAllUnNecessaryChar;
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 import static racingcar.view.io.read.InputView.readInput;
 import static racingcar.view.io.write.OutputView.simplePrint;
-import static racingcar.view.validator.InputValidatorFacade.validateCarNames;
+import static racingcar.view.validator.car.CarNameFacadeValidator.validateCarNames;
+import static racingcar.view.validator.lap.LapCountFacadeValidator.validateLapCount;
 
 import java.util.List;
-import racingcar.view.validator.InputValidatorFacade;
 
 public class InputManager {
 
@@ -29,7 +29,7 @@ public class InputManager {
         simplePrint(ENTER_LAP_COUNT);
 
         String input = readInput();
-        InputValidatorFacade.validateLapCount(input);
+        validateLapCount(input);
 
         return replaceAllUnNecessaryChar(input);
     }

@@ -6,8 +6,9 @@ abstract class CarNameInputValidator {
 
     private CarNameInputValidator next = null;
 
-    public void doChain(CarNameInputValidator validator) {
+    public CarNameInputValidator doChain(CarNameInputValidator validator) {
         this.next = validator;
+        return validator;
     }
 
     public void check(String source) {
