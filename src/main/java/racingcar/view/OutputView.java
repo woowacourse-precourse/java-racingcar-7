@@ -5,26 +5,33 @@ import java.util.Map;
 
 public class OutputView {
 
-    public static final String COUNT_BAR = "-";
-    public static final String COMMA = ",";
+    private final class OutputViewConstant {
+        public static final String COUNT_BAR = "-";
+        public static final String COMMA_SPACE = ", ";
+        public static final String RESULT_MESSAGE = "실행결과";
+        public static final String ROUND_RESULT_FORMAT = "%s : %s%n";
+        public static final String WINNER_FORMAT = "%s : %s%n";
+    }
 
     public static void printResultMessage() {
-        System.out.println("실행결과");
+        System.out.println(OutputViewConstant.RESULT_MESSAGE);
     }
 
     public static void printRoundResult(Map<String, Integer> result) {
         result.forEach((name, position) -> {
-            System.out.printf("%s : %s%n",name, drawCountBar(result.get(name)));
+            System.out.printf(OutputViewConstant.ROUND_RESULT_FORMAT
+                ,name
+                ,drawCountBar(result.get(name)));
         });
         System.out.println();
     }
 
     private static String drawCountBar(Integer goCount) {
-        return COUNT_BAR.repeat(goCount);
+        return OutputViewConstant.COUNT_BAR.repeat(goCount);
     }
 
     public static void printFinalResult(List<String> finalResult) {
-        String result = String.join(COMMA, finalResult);
-        System.out.printf("최종 우승자 : %s", result);
+        String result = String.join(OutputViewConstant.COMMA_SPACE, finalResult);
+        System.out.printf(OutputViewConstant.WINNER_FORMAT, result);
     }
 }
