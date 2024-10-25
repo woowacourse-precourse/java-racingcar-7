@@ -9,7 +9,7 @@ public final class InputHandler {
     }
 
     public static String[] getCarNames() {
-        String[] rawNames = readLine().split(",");
+        final String[] rawNames = readLine().split(",");
 
         return Arrays.stream(rawNames) // 한번에 trim 함으로써 중복 제거
                 .map(String::trim)

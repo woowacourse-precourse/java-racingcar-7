@@ -6,15 +6,16 @@ public final class OutputHandler {
     private OutputHandler() {
     }
 
-    public static void printCurrentStatus(List<Car> cars) {
+    public static void printCurrentStatus(final List<Car> cars) {
         for (final Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
 
-    public static void printWinners(List<String> winners) {
-        String winnerNames = String.join(", ", winners);
+    public static void printWinners(final List<String> winners) {
+        final String winnerNames = String.join(", ", winners);
+        
         System.out.println("최종 우승자 : " + winnerNames);
     }
 

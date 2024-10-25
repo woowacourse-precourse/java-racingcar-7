@@ -41,7 +41,7 @@ public class Game {
     private void runRace() {
         OutputHandler.printRaceResultHeader();
 
-        Race race = new Race(cars, attempts);
+        final Race race = new Race(cars, attempts);
         race.start();
     }
 
@@ -55,7 +55,7 @@ public class Game {
      * @return maxPosition과 같은 값을 가지는 자동차 이름 List
      */
     private List<String> getWinners() {
-        int maxPosition = getMaxPosition();
+        final int maxPosition = getMaxPosition();
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
