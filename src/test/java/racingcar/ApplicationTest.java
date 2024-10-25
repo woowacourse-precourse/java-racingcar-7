@@ -36,30 +36,30 @@ class ApplicationTest extends NsTest {
     // 1.1) 빈 값을 입력한 경우 (자동차 이름이 빈 값인 경우 포함)
     @Test
     void 자동차_입력이_비어있을_때_예외() {
-        assertThatThrownBy(() -> Application.validateCarsInput(null))
+        assertThatThrownBy(() -> Application.validateCarNames(null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.EMPTY_INPUT_MESSAGE);
 
-        assertThatThrownBy(() -> Application.validateCarsInput(""))
+        assertThatThrownBy(() -> Application.validateCarNames(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.EMPTY_INPUT_MESSAGE);
 
-        assertThatThrownBy(() -> Application.validateCarsInput("   "))
+        assertThatThrownBy(() -> Application.validateCarNames("   "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.EMPTY_INPUT_MESSAGE);
     }
 
     @Test
     void 자동차_이름이_비어있는_경우_예외() {
-        assertThatThrownBy(() -> Application.validateCarsInput("pobi, "))
+        assertThatThrownBy(() -> Application.validateCarNames("pobi, "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.NAME_EMPTY_MESSAGE);
 
-        assertThatThrownBy(() -> Application.validateCarsInput(",pobi"))
+        assertThatThrownBy(() -> Application.validateCarNames(",pobi"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.NAME_EMPTY_MESSAGE);
 
-        assertThatThrownBy(() -> Application.validateCarsInput(" , "))
+        assertThatThrownBy(() -> Application.validateCarNames(" , "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.NAME_EMPTY_MESSAGE);
     }
@@ -67,7 +67,7 @@ class ApplicationTest extends NsTest {
     // 1.2) , 대신 다른 구분자를 사용할 경우
     @Test
     void 쉼표가_없는_경우_예외() {
-        assertThatThrownBy(() -> Application.validateCarsInput("pobi"))
+        assertThatThrownBy(() -> Application.validateCarNames("pobi"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.COMMA_REQUIRED_MESSAGE);
     }
@@ -75,7 +75,7 @@ class ApplicationTest extends NsTest {
     // 1.3) 실제 입력값이 2개 미만인 경우
     @Test
     void 자동차_이름이_하나인_경우_예외() {
-        assertThatThrownBy(() -> Application.validateCarsInput("pobi,"))
+        assertThatThrownBy(() -> Application.validateCarNames("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.MIN_CARS_REQUIRED_MESSAGE);
     }
@@ -84,10 +84,10 @@ class ApplicationTest extends NsTest {
     // 2.1) 사용자가 0 또는 음수를 입력할 경우
     @Test
     void 시도할_횟수가_0또는_음수일_경우_예외() {
-        assertThatThrownBy(() -> Application.validateTryCountInput("0"))
+        assertThatThrownBy(() -> Application.validateTryCount("0"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.MESSAGE_INVALID_TRY_COUNT);
-        assertThatThrownBy(() -> Application.validateTryCountInput("-1"))
+        assertThatThrownBy(() -> Application.validateTryCount("-1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.MESSAGE_INVALID_TRY_COUNT);
     }
@@ -95,7 +95,7 @@ class ApplicationTest extends NsTest {
     // 2.2) 입력값이 숫자가 아닐 경우
     @Test
     void 시도할_횟수_입력값이_문자일_경우_예외() {
-        assertThatThrownBy(() -> Application.validateTryCountInput("string"))
+        assertThatThrownBy(() -> Application.validateTryCount("string"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.MESSAGE_INVALID_NUMBER_FORMAT);
     }

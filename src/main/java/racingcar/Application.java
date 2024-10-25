@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,23 +15,33 @@ public class Application {
     public static final String MESSAGE_INVALID_NUMBER_FORMAT = "유효한 숫자 형식이 아닙니다.";
 
     public static void main(String[] args) {
-        Map<String, Integer> cars = new HashMap<>();
+        Map<String, Integer> carPositions = new HashMap<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carsInput = Console.readLine();
-        validateCarsInput(carsInput);
+        validateCarNames(carsInput);
 
         String[] carNames = carsInput.split(",");
         for (String name : carNames) {
-            cars.put(name.trim(), 0);
+            carPositions.put(name.trim(), 0);
         }
 
         System.out.println("시도할 횟수를 입력하세요.");
         String tryCountInput = Console.readLine();
-        Integer tryCount = validateTryCountInput(tryCountInput);
+        Integer tryCount = validateTryCount(tryCountInput);
     }
 
-    public static void validateCarsInput(String carsInput) {
+    public static void moveCars(Map<String, Integer> carPositions) {
+        for (Map.Entry<String, Integer> car : carPositions.entrySet()) {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+
+            if (randomNum >= 4) {
+                car.setValue(car.getValue() + 1); // 점수 증가
+            }
+        }
+    }
+
+    public static void validateCarNames(String carsInput) {
         if (carsInput == null || carsInput.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT_MESSAGE);
         }
@@ -52,15 +63,15 @@ public class Application {
         }
     }
 
-    public static Integer validateTryCountInput(String tryCountInput) {
+    public static Integer validateTryCount(String tryCountInput) {
         try {
-            int tryCount = Integer.parseInt(tryCountInput);
+            int attemptCount = Integer.parseInt(tryCountInput);
 
-            if (tryCount <= 0) {
+            if (attemptCount <= 0) {
                 throw new IllegalArgumentException(MESSAGE_INVALID_TRY_COUNT);
             }
 
-            return tryCount;
+            return attemptCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(MESSAGE_INVALID_NUMBER_FORMAT);
         }
