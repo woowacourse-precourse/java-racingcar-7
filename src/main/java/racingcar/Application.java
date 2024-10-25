@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.input.Input;
+import racingcar.validate.RepetitionCountValidator;
 
 public class Application {
 
@@ -10,7 +11,9 @@ public class Application {
         String input = Input.input();
         List<String> cars = Input.splitCar(input);
 
-        int repetitionCount = Integer.parseInt(Input.input());
+        String repetition = Input.input();
+        RepetitionCountValidator.validateRepetitionCount(repetition);
+        int repetitionCount = Integer.parseInt(repetition);
 
         Input.close();
     }
