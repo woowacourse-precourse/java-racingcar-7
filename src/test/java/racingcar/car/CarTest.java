@@ -13,29 +13,23 @@ class CarTest {
     @Test
     void 자동차_생성_성공() {
         final Car car = new Car("pobi", new TestNumberGenerator(1));
-
-        assertThat(car.getName()).isEqualTo("pobi");
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toString()).isEqualTo("pobi : ");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void 자동차가_멈춘_경우(int number) {
         final Car car = new Car("pobi", new TestNumberGenerator(number));
-
         car.move();
-
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toString()).isEqualTo("pobi : ");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void 자동차가_전진한_경우(int number) {
         final Car car = new Car("pobi", new TestNumberGenerator(number));
-
         car.move();
-
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toString()).isEqualTo("pobi : -");
     }
 
     @ParameterizedTest

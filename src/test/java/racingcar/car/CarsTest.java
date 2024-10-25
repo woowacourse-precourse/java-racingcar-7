@@ -9,14 +9,11 @@ import org.junit.jupiter.api.Test;
 class CarsTest {
 
     @Test
-    void 레이싱_참가_자동차_반환() {
+    void 레이싱_참가_자동차_toString_반환() {
         List<String> names = List.of("pobi","woni");
         Cars cars = new Cars(names);
 
-        assertThat(cars.getCars().get(0).getName()).isEqualTo("pobi");
-        assertThat(cars.getCars().get(0).getPosition()).isEqualTo(0);
-        assertThat(cars.getCars().get(1).getName()).isEqualTo("woni");
-        assertThat(cars.getCars().get(1).getPosition()).isEqualTo(0);
+        assertThat(cars.toString()).isEqualTo("pobi : \nwoni : ");
     }
 
     @Test
