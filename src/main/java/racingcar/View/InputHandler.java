@@ -3,7 +3,9 @@ package racingcar.View;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.SimpleTimeZone;
 
 public class InputHandler {
@@ -30,6 +32,7 @@ public class InputHandler {
         checkAlphaNumericName(splitCarNames);
         checkCarNameLength(splitCarNames);
         checkCarCount(splitCarNames);
+        checkDuplicateName(splitCarNames);
     }
 
     private void checkCarCount(List<String> splitCarNames) {
@@ -51,6 +54,16 @@ public class InputHandler {
             if (!carName.isEmpty() && !carName.matches(ALPHA_NUMERIC_PATTERN)) {
                 throw new IllegalArgumentException("자동차의 이름은 영어 대소문자, 숫자로만 가능합니다.: " + carName);
             }
+        }
+    }
+
+    private void checkDuplicateName(List<String> splitCarNames) {
+        Set<String> uniqueCarNames = new HashSet<>();
+
+        for (String carName : splitCarNames) {
+            if (!uniqueCarNames.add(carName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름은 허용하지 않습니다.");
+            };
         }
     }
 
