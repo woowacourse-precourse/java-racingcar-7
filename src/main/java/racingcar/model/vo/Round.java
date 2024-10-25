@@ -1,7 +1,7 @@
 package racingcar.model.vo;
 
 public record Round(int round) {
-    private static final int MAX_ROUND = 100;
+    private static final int MAX_ROUND = Integer.MAX_VALUE;
 
     public static Round fromString(String round) {
         validatePostiveNumber(round);
