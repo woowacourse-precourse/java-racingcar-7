@@ -117,5 +117,4 @@ class ValidatingParserTest {
 		assertThatThrownBy(() -> validatingParser.validateAttemptCount(input))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
-
 }
