@@ -6,7 +6,7 @@ import racingcar.domain.Message;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
-import racingcar.utils.Output;
+import racingcar.viewer.Output;
 
 public class CarServiceImpl implements CarService {
 

@@ -1,7 +1,6 @@
 package racingcar.viewer;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.utils.Output;
 
 public class Viewer {
 

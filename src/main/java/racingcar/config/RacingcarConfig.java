@@ -3,7 +3,7 @@ package racingcar.config;
 import racingcar.controller.CarController;
 import racingcar.service.CarService;
 import racingcar.service.impl.CarServiceImpl;
-import racingcar.utils.Output;
+import racingcar.viewer.Output;
 import racingcar.viewer.Viewer;
 
 public class RacingcarConfig {

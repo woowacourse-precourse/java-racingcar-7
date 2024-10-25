@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.viewer;
 
 import static racingcar.utils.Constant.EXEC_RESULT;
 
