@@ -46,10 +46,18 @@ public class InputView {
         return true;
     }
 
-//    public boolean validateCount(int userInput){
-//        if (userInput <= 0 || userInput > 99999){
-//            throw new IllegalArgumentException("시도할 횟수는 1이상 99999이하 입니다.");
-//        }
-//        return true;
-//    }
+    public boolean validateGameCount(String userInput){
+        long longInput;
+
+        try {
+            longInput = Long.parseLong(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+
+        if (longInput <= 0 || longInput > 99999){
+            throw new IllegalArgumentException("시도할 횟수는 1이상 99999이하의 숫자입니다.");
+        }
+        return true;
+    }
 }
