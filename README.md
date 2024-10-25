@@ -42,12 +42,17 @@
     - 시도 횟수가 숫자가 아니거나 1보다 작은 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
     - 예시: `0`, `a`
 
+- [ ] **중복된 자동차 이름 입력**
+    - 자동차 이름이 중복될 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
+    - 예시: `pobi,woni,pobu`
+
 ### 테스트 목록
 
 - [ ] **자동차 이름 유효성 검사 테스트**
-    - 이름이 5자를 초과하는지 여부를 확인하고 예외를 발생시키는지 테스트한다.
+    - 이름이 5자를 초과할 경우 예외가 발생하는지 테스트한다.
     - 이름이 비어 있을 경우 예외가 발생하는지 테스트한다.
-    - 예시: `pobi,woni,abcdef`, ` ,poni` → `IllegalArgumentException` 발생
+    - 이름이 중복될 경우 예외가 발생하는지 테스트 한다.
+    - 예시: `pobi,woni,abcdef`, ` ,poni`, `pobi,woni,pobu` → `IllegalArgumentException` 발생
 
 - [ ] **시도 횟수 유효성 검사 테스트**
     - 시도 횟수가 숫자가 아닌 경우 예외가 발생하는지 테스트한다.
