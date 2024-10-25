@@ -14,16 +14,16 @@ public class RacingController {
     }
 
     public void run() {
-        Cars cars;
-        cars = InputCarsName();
+        String rawCarsName = InputCarsName();
+        Cars cars = new Cars(rawCarsName);
         Integer count = inputTrialCount();
         startRacingGame(cars, count);
         OutputWinner(cars);
     }
 
-    private Cars InputCarsName() {
+    private String InputCarsName() {
         String rawCarsName = inputView.inputCarNamesMessage();
-        return new Cars(rawCarsName);
+        return rawCarsName;
     }
 
     private Integer inputTrialCount() {
