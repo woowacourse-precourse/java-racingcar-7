@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static racingcar.common.Constant.MAX_CAR_NAME_LENGTH;
+import static racingcar.common.Constant.MIN_CAR_NAME_LENGTH;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,13 +17,15 @@ public class InputValidator {
     }
 
     private void validateLowerCaseEnglishOrKorean(String carName) {
-        if (!Pattern.matches("^[가-힣a-z]{1,5}$", carName)) {
+        String carNameRegex = String.format("^[가-힣a-z]{%d,%d}$", MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH);
+
+        if (!Pattern.matches(carNameRegex, carName)) {
             throw new InputException(InputErrorType.INVALID_CAR_NAME_FORMAT);
         }
     }
 
     private void validateFiveCharactersOrLess(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new InputException(InputErrorType.INVALID_CAR_NAME_LENGTH);
         }
     }

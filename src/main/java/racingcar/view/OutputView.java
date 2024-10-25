@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import static racingcar.common.Constant.BLANK;
 import static racingcar.view.Instruction.FINAL_WINNER_PREFIX;
 import static racingcar.view.Instruction.ROUND_RESULT_COMMENT;
 
@@ -27,7 +28,7 @@ public class OutputView {
     }
 
     public void printWinners(Round round) {
-        String winners = String.join(" ", round.findAllLeadingCars());
+        String winners = String.join(BLANK, round.findAllLeadingCars());
 
         System.out.print(FINAL_WINNER_PREFIX + winners);
     }
