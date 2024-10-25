@@ -6,9 +6,11 @@ public class Cars {
     private List<String> carNames;
     private List<Integer> distance;
 
-    public Cars(String carName){
-        this.carNames.add(carName);
-        this.distance.add(0);
+    public Cars(List<String> carNames){
+        for(String carName: carNames){
+            this.carNames.add(carName);
+            this.distance.add(0);
+        }
     }
 
     public List<String> getCarNames(){
