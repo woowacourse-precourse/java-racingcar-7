@@ -115,9 +115,49 @@ public class RacingCarTest {
 
         cars.moveAll();
 
-        new OutputView().printRoundResultOutput(cars.toDto());
+        OutputView.printRoundResultOutput(cars.toDto());
 
-        assertThat(out.toString()).isEqualTo("실행 결과" + System.lineSeparator() + "car1 : -" +
-                System.lineSeparator() + "car2 : " + System.lineSeparator());
+        assertThat(out.toString()).isEqualTo("car1 : -" + System.lineSeparator() +
+                "car2 : " + System.lineSeparator() + System.lineSeparator());
+    }
+
+    @Test
+    void 단독_우승자_출력_테스트() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> carList = List.of(car1, car2);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
+        Winners winners;
+
+        cars.moveAll();
+        winners = new Winners(cars.getWinners());
+
+        OutputView.printWinnersOutput(winners.getWinnersList());
+
+        assertThat(out.toString().trim()).isEqualTo("최종 우승자 : car1");
+    }
+
+    @Test
+    void 공동_우승자_출력_테스트() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        List<Car> carList = List.of(car1, car2);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,4));
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
+        Winners winners;
+
+        cars.moveAll();
+        winners = new Winners(cars.getWinners());
+
+        OutputView.printWinnersOutput(winners.getWinnersList());
+
+        assertThat(out.toString().trim()).isEqualTo("최종 우승자 : car1, car2");
     }
 }
