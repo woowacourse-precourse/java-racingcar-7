@@ -21,9 +21,9 @@ public class GameController {
     private int round;
     private int max = 0;
 
-    public GameController(){
-        inputView = new InputView();
-        outputView = new OutputView();
+    public GameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void play(){
