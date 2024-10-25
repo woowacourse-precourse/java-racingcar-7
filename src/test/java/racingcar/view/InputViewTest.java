@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.common.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class InputViewTest extends ConsoleOutputTestHelper {
         assertThatThrownBy(() -> {
                     inputView.readRacingCarNames();
                 }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값이 비어 있습니다. 값을 입력해주세요.")
+                .hasMessageContaining(EMPTY_INPUT.getMessage())
         ;
     }
 }
