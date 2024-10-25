@@ -1,65 +1,44 @@
 package racingcar.model.race;
 
-import static java.util.Objects.isNull;
-import static racingcar.common.constant.SystemConstant.STR_ZERO;
-
-import java.math.BigInteger;
 import java.util.Objects;
-import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Lap {
-    public static Lap ZERO = Lap.from(STR_ZERO);
+    public static Lap ZERO = Lap.from(0L);
 
-    private BigInteger value;
+    private final long value;
 
-    private Lap(final BigInteger value) {
+    private Lap(final long value) {
         this.value = value;
     }
 
-    public static Lap from(final String source) {
-        validateIsNull(source);
-        validateIsNegative(source);
-        BigInteger value = new BigInteger(source);
-        return new Lap(value);
+    public static Lap from(final long source) {
+        validateIsMinus(source);
+        return new Lap(source);
     }
 
     public boolean hasRemaining() {
-        return !this.equals(ZERO);
+        return this.value > 0;
     }
 
     public boolean isZero() {
-        return this.equals(ZERO);
+        return this.value == 0;
     }
 
-    public void minus(final String source) {
-        BigInteger subtrahend = new BigInteger(source);
-        if (isNegative(subtrahend)) {
+    public Lap minus(final long source) {
+        if (source < 0) {
             throw new ShouldNotBeMinusException();
         }
 
-        BigInteger subtracted = this.value.subtract(subtrahend);
-        if (isNegative(subtracted)) {
+        long subtracted = this.value - source;
+        if (subtracted < 0) {
             throw new ShouldNotBeMinusException();
         }
-
-        this.value = subtracted;
+        return new Lap(subtracted);
     }
 
-    public boolean isNegative(BigInteger source) {
-        return source.compareTo(BigInteger.ZERO) < 0;
-    }
-
-    private static void validateIsNull(final String source) {
-        if (isNull(source)) {
-            throw new ShouldNotBeNullException();
-        }
-    }
-
-    public static void validateIsNegative(String source) {
-        BigInteger target = new BigInteger(source);
-        boolean isNegative = target.compareTo(BigInteger.ZERO) < 0;
-        if (isNegative) {
+    public static void validateIsMinus(long source) {
+        if (source < 0) {
             throw new ShouldNotBeMinusException();
         }
     }
@@ -73,7 +52,7 @@ public class Lap {
             return false;
         }
         Lap oLap = (Lap) obj;
-        return this.value.compareTo(oLap.value) == 0;
+        return this.value == oLap.value;
     }
 
     @Override

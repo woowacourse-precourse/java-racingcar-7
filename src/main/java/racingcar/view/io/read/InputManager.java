@@ -25,12 +25,13 @@ public class InputManager {
         return stringToStringList(input);
     }
 
-    public static String enterLapCount() {
+    public static long enterLapCount() {
         simplePrint(ENTER_LAP_COUNT);
 
         String input = readInput();
         validateLapCount(input);
 
-        return replaceAllUnNecessaryChar(input);
+        String cleanedSource = replaceAllUnNecessaryChar(input);
+        return Long.parseLong(cleanedSource);
     }
 }

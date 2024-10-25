@@ -14,22 +14,22 @@ public class LapTest {
     @DisplayName("남은 Lap 수 : 3 → 2")
     void checkRemainingLap() {
         // given
-        Lap remainingLap = Lap.from("3");
+        Lap remainingLap = Lap.from(3);
         // when
-        remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
+        Lap actual = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
         // then
-        Lap expected = Lap.from("2");
-        assertThat(remainingLap.equals(expected)).isTrue();
+        Lap expected = Lap.from(2);
+        assertThat(actual.equals(expected)).isTrue();
     }
 
     @Test
     @DisplayName("0 빼기 음수")
     void zeroMinusNegative() {
         // given
-        Lap remainingLap = Lap.from("1");
+        Lap remainingLap = Lap.from(1);
 
         // when & then
-        assertThatThrownBy(() -> remainingLap.minus("-1"))
+        assertThatThrownBy(() -> remainingLap.minus(-1))
                 .isInstanceOf(ShouldNotBeMinusException.class);
     }
 
@@ -37,10 +37,10 @@ public class LapTest {
     @DisplayName("뺏을 때 음수가 되는 경우")
     void negativeResultWhenOperateMinus() {
         // given
-        Lap remainingLap = Lap.from("0");
+        Lap remainingLap = Lap.from(0);
 
         // when & then
-        assertThatThrownBy(() -> remainingLap.minus("-1"))
+        assertThatThrownBy(() -> remainingLap.minus(-1))
                 .isInstanceOf(ShouldNotBeMinusException.class);
     }
 }

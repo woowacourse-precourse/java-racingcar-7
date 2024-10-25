@@ -22,7 +22,7 @@ public class MainController {
 
     public void run() {
         List<String> carNames = enterCarNames();
-        String lapCount = enterLapCount();
+        long lapCount = enterLapCount();
 
         Cars participatingCars = raceService.registerCars(lapCount, carNames);
         DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), participatingCars);

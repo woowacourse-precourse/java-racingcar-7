@@ -9,11 +9,10 @@ import racingcar.model.race.Lap;
 import racingcar.model.race.Position;
 
 public class MyProgress {
-    private final Lap remainingLap;
+    private Lap remainingLap;
     private final Position position;
 
     private MyProgress(final Lap remainingLap, final Position position) {
-        validateIsNull(remainingLap);
         this.remainingLap = remainingLap;
         this.position = position;
     }
@@ -33,7 +32,7 @@ public class MyProgress {
     }
 
     public void updateRemainingLap() {
-        remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
+        this.remainingLap = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
     private static void validateIsNull(Lap lap) {

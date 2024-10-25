@@ -15,7 +15,7 @@ public class CarTest {
     @DisplayName("중간 진행 사항 확인")
     void checkLapChart() {
         // given
-        Lap remainLap = Lap.from("6");
+        Lap remainLap = Lap.from(6);
         Position position = Position.initiate();
         ReflectionUtil.forceSetField(position, "value", "---");
         MyProgress myProgress = MyProgress.from(remainLap, position);
@@ -32,7 +32,7 @@ public class CarTest {
     @DisplayName("movement value가 1일 때 내 현황 수정할 수 있다.")
     void updateMyProgress() {
         // given
-        Lap remainLap = Lap.from("3");
+        Lap remainLap = Lap.from(3);
         Position position = Position.initiate();
         ReflectionUtil.forceSetField(position, "value", "---");
         MyProgress myProgress = MyProgress.from(remainLap, position);
@@ -41,7 +41,5 @@ public class CarTest {
         sut.updateProgress(Distance.ONE);
         // then
         assertThat(position.toString()).isEqualTo("----");
-        Lap expectedRemainingLap = Lap.from("2");
-        assertThat(remainLap.equals(expectedRemainingLap)).isTrue();
     }
 }

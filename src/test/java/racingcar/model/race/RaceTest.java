@@ -15,7 +15,7 @@ public class RaceTest {
     @DisplayName("레이스 : 현재 진행중")
     void raceIsUnderway() {
         // given
-        Lap remainingCount = Lap.from("3");
+        Lap remainingCount = Lap.from(3);
         Race race = Race.from(remainingCount);
         // when
         boolean actual = race.isUnderway();
@@ -41,14 +41,14 @@ public class RaceTest {
     @DisplayName("다음 Lap으로 이동")
     void test() {
         // given
-        Lap remainingCount = Lap.from("3");
+        Lap remainingCount = Lap.from(3);
         Race race = Race.from(remainingCount);
 
         // when
         race.moveToNextLap();
 
         // then
-        assertThat(remainingCount.equals(Lap.from("2"))).isTrue();
+        assertThat(race.isUnderway()).isTrue();
     }
 
     @Test

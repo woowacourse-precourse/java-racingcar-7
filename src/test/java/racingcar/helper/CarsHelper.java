@@ -9,9 +9,9 @@ import racingcar.model.race.Position;
 
 public class CarsHelper {
     public static Cars mockInitial() {
-        Lap aRemaining = Lap.from("5");
-        Lap bRemaining = Lap.from("5");
-        Lap cRemaining = Lap.from("5");
+        Lap aRemaining = Lap.from(5);
+        Lap bRemaining = Lap.from(5);
+        Lap cRemaining = Lap.from(5);
 
         Position aPosition = Position.initiate();
         ReflectionUtil.forceSetField(aPosition, "value", "");
@@ -31,7 +31,7 @@ public class CarsHelper {
     }
 
     public static Cars mockWithoutWinner() {
-        Lap remaining = Lap.from("4");
+        Lap remaining = Lap.from(4);
 
         Position aPosition = Position.initiate();
         ReflectionUtil.forceSetField(aPosition, "value", "");
@@ -52,15 +52,15 @@ public class CarsHelper {
 
     public static Cars mockWithSingleWinner() {
 
-        Lap aRemaining = Lap.from("4");
+        Lap aRemaining = Lap.from(4);
         Position aPosition = Position.initiate();
         ReflectionUtil.forceSetField(aPosition, "value", "");
 
-        Lap bRemaining = Lap.from("2");
+        Lap bRemaining = Lap.from(2);
         Position bPosition = Position.initiate();
         ReflectionUtil.forceSetField(bPosition, "value", "---");
 
-        Lap cRemaining = Lap.from("0");
+        Lap cRemaining = Lap.from(0);
         Position cPosition = Position.initiate();
         ReflectionUtil.forceSetField(cPosition, "value", "-----");
 
@@ -74,15 +74,15 @@ public class CarsHelper {
 
     public static Cars mockWithMultiWinner() {
 
-        Lap aRemaining = Lap.from("4");
+        Lap aRemaining = Lap.from(4);
         Position aPosition = Position.initiate();
         ReflectionUtil.forceSetField(aPosition, "value", "");
 
-        Lap bRemaining = Lap.from("0");
+        Lap bRemaining = Lap.from(0);
         Position bPosition = Position.initiate();
         ReflectionUtil.forceSetField(bPosition, "value", "-----");
 
-        Lap cRemaining = Lap.from("0");
+        Lap cRemaining = Lap.from(0);
         Position cPosition = Position.initiate();
         ReflectionUtil.forceSetField(cPosition, "value", "-----");
 

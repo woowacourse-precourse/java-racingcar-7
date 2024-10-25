@@ -11,7 +11,7 @@ import racingcar.model.race.Race;
 
 public class RaceService {
 
-    public Cars registerCars(final String lapCount, final List<String> carNames) {
+    public Cars registerCars(final long lapCount, final List<String> carNames) {
         List<Car> cars = carNames.stream()
                 .map(name -> Car.from(name, MyProgress.from(Lap.from(lapCount), Position.initiate())))
                 .toList();

@@ -8,7 +8,7 @@ import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Race {
 
-    private final Lap remainingCount;
+    private Lap remainingCount;
 
     private Race(final Lap remainingCount) {
         this.remainingCount = remainingCount;
@@ -27,7 +27,7 @@ public class Race {
         if (remainingCount.isZero()) {
             throw new ShouldNotBeMinusException();
         }
-        remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
+        this.remainingCount = remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
     private static void validateIsNull(final Lap lap) {
