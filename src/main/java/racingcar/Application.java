@@ -42,5 +42,6 @@ public class Application {
 
     private static void raceResult(List<Vehicle> vehicles) {
         vehicles.forEach(vehicle -> System.out.println(vehicle.getCurrentDistance()));
+        System.out.println();
     }
 }
