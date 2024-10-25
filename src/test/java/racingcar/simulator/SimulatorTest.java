@@ -1,6 +1,7 @@
 package racingcar.simulator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
@@ -8,7 +9,7 @@ import racingcar.car.Car;
 class SimulatorTest {
 
     int numberOfAttempts = 10;
-    List<String> namesOfCars = List.of("pobi", "woni", "seho", "jun");
+    String[] namesOfCars = {"pobi", "woni", "seho", "jun"};
     Simulator simulator;
 
     @Test

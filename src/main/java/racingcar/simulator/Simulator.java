@@ -10,19 +10,20 @@ import racingcar.car.Car;
 
 public class Simulator {
 
+    private static final int STD_NUMBER_OF_FORWARD = 4; // 전진하기 위해 나와야 하는 기준 수
     private final int numberOfAttempts;
     private final int numberOfCars;
     private final int[] racingBoard;    // 자동차들의 전진 상황을 저장하는 배열
     private final Map<Integer, Car> carMap = new HashMap<>();   // 자동차들의 정보를 저장하는 배열
     private final ResultPrinter resultPrinter = new ResultPrinter();    // 결과를 출력하는 서브 모듈
 
-    public Simulator(int numberOfAttempts, List<String> namesOfCars) {
+    public Simulator(int numberOfAttempts, String[] namesOfCars) {
         this.numberOfAttempts = numberOfAttempts;
-        this.numberOfCars = namesOfCars.size();
-        this.racingBoard = new int[namesOfCars.size()];
+        this.numberOfCars = namesOfCars.length;
+        this.racingBoard = new int[namesOfCars.length];
 
-        for (int carId = 0; carId < namesOfCars.size(); carId++) {
-            Car car = new Car(carId, namesOfCars.get(carId));
+        for (int carId = 0; carId < namesOfCars.length; carId++) {
+            Car car = new Car(carId, namesOfCars[carId]);
             this.carMap.put(carId, car);
         }
     }
@@ -34,7 +35,7 @@ public class Simulator {
     private void moveForwardByCondition(Car car) {
         int randomNumber = this.getRandomNumber();
 
-        if (randomNumber >= 4) {
+        if (randomNumber >= STD_NUMBER_OF_FORWARD) {
             ++this.racingBoard[car.getId()];
         }
 
