@@ -73,8 +73,15 @@ public class Application {
 
     public static int inputGameCount() {
         String gameCountStr = Console.readLine();
+        isGameCountNumber(gameCountStr);
         int gameCount = Integer.parseInt(gameCountStr);
         return gameCount;
+    }
+
+    public static void isGameCountNumber(String gameCountStr) {
+        if (!gameCountStr.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+        }
     }
 
     public static void main(String[] args) {
