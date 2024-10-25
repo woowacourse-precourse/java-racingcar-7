@@ -1,22 +1,30 @@
 package racingcar.model;
 
+import java.util.List;
+
 public class Cars {
-    private String carName;
-    private int distance;
+    private List<String> carNames;
+    private List<Integer> distance;
 
     public Cars(String carName){
-        this.carName = carName;
-        this.distance = 0;
+        this.carNames.add(carName);
+        this.distance.add(0);
     }
-
-    public String getCarName(){
-        return this.carName;
+    
+    public List<String> getCarNames(){
+        return this.carNames;
     }
-    public int getDistance(){
+    public List<Integer> getDistance(){
         return this.distance;
     }
 
-    public void setDistance(int distance){
-        this.distance += distance;
+    public void setDistance(List<Boolean> isGo){
+        for(int i=0; i<isGo.size(); i++){
+            if(isGo.get(i)){
+                int newDistance = this.distance.get(i)+1;
+                this.distance.set(i, newDistance);
+            }
+        }
     }
+
 }
