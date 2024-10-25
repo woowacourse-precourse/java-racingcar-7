@@ -8,7 +8,7 @@ public class InputValidator {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_REPEAT_TIMES = 0;
 
-    public void validateWhitespaces(String carsNames, String repeatTimes) {
+    public void validateWhiteSpaces(String carsNames, String repeatTimes) {
         if (carsNames.matches(WHITE_SPACES_REGEX)) {
             throw new IllegalArgumentException(ErrorMessages.INPUT_WHITESPACES.getMsg());
         }
