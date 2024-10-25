@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class RacingCarService {
         return mapRacingCars;
     }
 
+    //두가지 일을 하는게 아닌가?
     public List<String> listMoveCarNames(List<String> carNames) {
         List<String> listMoveCarNames = new ArrayList<>();
 
@@ -53,6 +55,11 @@ public class RacingCarService {
 
     public boolean canMove() {
         return createRandomNumber() >= 4;
+    }
+
+
+    public String findMaxMove(Map<String, String> racingResult) {
+        return Collections.max(racingResult.values());
     }
 
     private int createRandomNumber() {

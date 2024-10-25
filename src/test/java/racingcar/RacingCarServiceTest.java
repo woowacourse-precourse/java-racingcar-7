@@ -80,4 +80,22 @@ class RacingCarServiceTest extends RacingCarService {
         //then
         Assertions.assertEquals(expect, result);
     }
+
+    @Test
+    @DisplayName("넘어온 결과 map으로 부터 최대 value를 찾는 메서드")
+    public void testFindMaxMove() throws Exception {
+        //given
+        String expect = "----";
+        Map<String, String> racingResult = new HashMap<>();
+        racingResult.put("car1", "---");
+        racingResult.put("car2", "--");
+        racingResult.put("car3", "----");
+        racingResult.put("car4", "----");
+
+        //when
+        String result = racingCarService.findMaxMove(racingResult);
+
+        //then
+        Assertions.assertEquals(expect, result);
+    }
 }
