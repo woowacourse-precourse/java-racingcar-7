@@ -40,13 +40,11 @@ public class RacingCarView {
             Car car = cars.get(i);
             winners.append(car.getName());
 
-            // 마지막 요소가 아닐 경우 쉼표 추가
             if (i < cars.size() - 1) {
                 winners.append(", ");
             }
         }
 
-        // 최종 우승자 출력
         System.out.println(winners);
     }
 
