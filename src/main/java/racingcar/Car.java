@@ -32,6 +32,14 @@ public class Car {
         return name.trim();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     public String toString() {
         return this.name + " : " + "-".repeat(this.distance);
     }
