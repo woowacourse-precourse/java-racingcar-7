@@ -17,4 +17,16 @@ public class InputView {
 
         return carNames;
     }
+
+    private String readUserInput() {
+        return Console.readLine();
+    }
+
+    private void DisplayInputPrompt(String prompt) {
+        System.out.println(prompt);
+    }
+
+    private List<String> parseCarNames(String carNamePart) {
+        return List.of(carNamePart.split(DELIMITER));
+    }
 }
