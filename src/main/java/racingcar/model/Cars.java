@@ -23,17 +23,17 @@ public class Cars {
         }
     }
 
-    public List<Integer> getCarsPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getDistance());
-        }
-        return positions;
+    public List<String> findRaceWinners() {
+        int maxDistance = 0;
+        List<String> winners = new ArrayList<>();
+        findMaxDistance(maxDistance);
+        createWinners(maxDistance, winners);
+        return winners;
     }
 
     private void createWinners(int maxDistance, List<String> winners) {
         for (Car car : cars) {
-            if(maxDistance == car.getDistance()){
+            if (maxDistance == car.getDistance()) {
                 winners.add(car.getName());
             }
         }
@@ -41,7 +41,7 @@ public class Cars {
 
     private int findMaxDistance(int maxDistance) {
         for (Car car : cars) {
-            if(maxDistance < car.getDistance()){
+            if (maxDistance < car.getDistance()) {
                 maxDistance = car.getDistance();
             }
         }
@@ -56,7 +56,14 @@ public class Cars {
         }
         return carNames;
     }
-
+    
+    public List<Integer> getCarsPositions() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getDistance());
+        }
+        return positions;
+    }
 
     public List<String> getCarNames() {
         return extractCarNames(cars);
