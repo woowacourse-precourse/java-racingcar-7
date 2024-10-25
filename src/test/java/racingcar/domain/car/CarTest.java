@@ -31,7 +31,7 @@ class CarTest {
         Car car = new Car(carName);
 
         // when
-        car.accelerator();
+        car.accelerate();
         CarInfo carInfo = car.getCarInfo();
 
         // then
@@ -46,7 +46,7 @@ class CarTest {
         Car car2 = new Car("min");
 
         //when
-        car1.accelerator();
+        car1.accelerate();
         CarInfo carInfo = car2.getCarInfo();
         boolean result = car1.isAtSameOrAheadOf(carInfo.getCurrentPosition());
 

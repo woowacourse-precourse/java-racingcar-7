@@ -12,7 +12,7 @@ public class Car {
         this.currentPosition = new Position();
     }
 
-    public void accelerator() {
+    public void accelerate() {
         currentPosition.addPosition();
     }
 
