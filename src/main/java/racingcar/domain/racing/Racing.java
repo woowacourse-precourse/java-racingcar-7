@@ -1,9 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.racing;
 
 import static racingcar.exception.Exception.NOT_POSITIVE_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.car.RacingCars;
 
 public class Racing {
 

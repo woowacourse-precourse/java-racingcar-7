@@ -1,4 +1,4 @@
-package racingcar.domain.strategy;
+package racingcar.strategy;
 
 public interface CarDrivingStrategy {
     boolean driving();

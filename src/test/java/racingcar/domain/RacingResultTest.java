@@ -5,6 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.RacingCars;
+import racingcar.domain.racing.RacingResult;
+import racingcar.domain.racing.RacingSnapshot;
 
 class RacingResultTest {
 

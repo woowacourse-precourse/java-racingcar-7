@@ -1,8 +1,8 @@
 package racingcar.exception;
 
-import static racingcar.domain.Car.MAXIMUM_NAME_LENGTH;
-import static racingcar.domain.Racing.MINIMUM_TRY_COUNT;
-import static racingcar.domain.RacingCars.MINIMUM_CAR_COUNT;
+import static racingcar.domain.car.Car.MAXIMUM_NAME_LENGTH;
+import static racingcar.domain.racing.Racing.MINIMUM_TRY_COUNT;
+import static racingcar.domain.car.RacingCars.MINIMUM_CAR_COUNT;
 
 public enum Exception {
     DUPLICATE_NAME("자동차 이름은 중복될 수 없습니다."),

@@ -1,10 +1,11 @@
 package racingcar.ui;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.domain.CarSnapshot;
-import racingcar.domain.RacingResult;
-import racingcar.domain.RacingSnapshot;
+import racingcar.domain.car.CarSnapshot;
+import racingcar.domain.racing.RacingResult;
+import racingcar.domain.racing.RacingSnapshot;
 
 public class OutputView {
 
@@ -12,6 +13,7 @@ public class OutputView {
     public static final String WINNER_ANNOUNCEMENT_PROMPT = "최종 우승자 : ";
     private static final String POSITION_SYMBOL = "-";
     private static final String NAME_POSITION_SEPARATOR = " : ";
+    private static final String DELIMITER = ", ";
     private static final int ZERO = 0;
 
     public void printRacingResult(RacingResult racingResult) {
@@ -30,7 +32,7 @@ public class OutputView {
     }
 
     private void printWinners(List<String> winners) {
-        System.out.println(WINNER_ANNOUNCEMENT_PROMPT + String.join(", ", winners));
+        System.out.println(MessageFormat.format("{0}{1}", WINNER_ANNOUNCEMENT_PROMPT, String.join(DELIMITER, winners)));
     }
 
     private void printRacingSnapshot(RacingSnapshot racingSnapshot) {

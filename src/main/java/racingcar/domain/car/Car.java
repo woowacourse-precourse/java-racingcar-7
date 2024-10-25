@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import static racingcar.exception.Exception.EMPTY_NAME;
 import static racingcar.exception.Exception.INVALID_NAME_LENGTH;
 
-import racingcar.domain.strategy.CarDrivingStrategy;
-import racingcar.domain.strategy.RandomDrivingStrategy;
+import racingcar.strategy.CarDrivingStrategy;
+import racingcar.strategy.RandomDrivingStrategy;
 
 public class Car {
 

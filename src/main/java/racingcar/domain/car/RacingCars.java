@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import static racingcar.exception.Exception.DUPLICATE_NAME;
 import static racingcar.exception.Exception.NOT_ENOUGH_CARS;
@@ -30,12 +30,6 @@ public class RacingCars {
         validateEnoughCars(names);
     }
 
-    private static void validateEnoughCars(List<String> names) {
-        if (names.size() < MINIMUM_CAR_COUNT) {
-            throw new IllegalArgumentException(NOT_ENOUGH_CARS.getMessage());
-        }
-    }
-
     private static void validateDuplicateName(List<String> names) {
         Set<String> duplicateNames = new HashSet<>(names);
 
@@ -44,11 +38,10 @@ public class RacingCars {
         }
     }
 
-    public List<Car> findWinners() {
-        int maxPosition = getMaxPosition(cars);
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
+    private static void validateEnoughCars(List<String> names) {
+        if (names.size() < MINIMUM_CAR_COUNT) {
+            throw new IllegalArgumentException(NOT_ENOUGH_CARS.getMessage());
+        }
     }
 
     public void move() {
@@ -58,6 +51,13 @@ public class RacingCars {
     public List<CarSnapshot> getSnapshots() {
         return cars.stream()
                 .map(CarSnapshot::capture)
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> findWinners() {
+        int maxPosition = getMaxPosition(cars);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 

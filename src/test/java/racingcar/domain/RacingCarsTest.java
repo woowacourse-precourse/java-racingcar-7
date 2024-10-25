@@ -8,6 +8,8 @@ import static racingcar.exception.Exception.NOT_ENOUGH_CARS;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.RacingCars;
 
 class RacingCarsTest {
 
