@@ -11,13 +11,16 @@ public class User {
         List<String> cars = new ArrayList<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = inputValidate(Console.readLine());
 
-        String[] carName = inputValidate(Console.readLine()).split(",");
+        inputLastIndexValidate(input);
+
+        String[] carName = input.split(",");
 
         for (String car : carName) {
             nameLengthValidate(car);
             nameDuplicateValidate(car, cars);
-            cars.add(car);
+            cars.add(inputValidate(car));
         }
 
         tooManyCarsValidate(cars);
@@ -26,8 +29,14 @@ public class User {
     }
 
     public int moves() {
+        int moves;
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int moves = Integer.parseInt(Console.readLine());
+
+        try {
+            moves = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력해주세요. ");
+        }
 
         moveValidate(moves);
         tooManyMovesValidate(moves);
@@ -38,10 +47,17 @@ public class User {
     }
 
     private String inputValidate(String string) {
-        if (string == null || string.isEmpty()) {
+        string = string.trim();
+        if (string.isEmpty()) {
             throw new IllegalArgumentException("입력이 비어있습니다. ");
         }
         return string;
+    }
+
+    private void inputLastIndexValidate(String string) {
+        if (string.endsWith(",")) {
+            throw new IllegalArgumentException("문자열의 끝에 구분자가 위치해있습니다.");
+        }
     }
 
     private void nameLengthValidate(String string) {
@@ -63,13 +79,13 @@ public class User {
     }
 
     private void tooManyMovesValidate(int move) {
-        if(move > 10){
+        if (move > 10) {
             throw new IllegalArgumentException("이동 횟수는 10회까지 허용됩니다. ");
         }
     }
 
-    private void moveValidate(int move){
-        if(move < 1){
+    private void moveValidate(int move) {
+        if (move < 1) {
             throw new IllegalArgumentException("1회 이상 이동해야합니다. ");
         }
     }
