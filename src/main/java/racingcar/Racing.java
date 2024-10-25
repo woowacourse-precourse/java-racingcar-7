@@ -51,4 +51,12 @@ public class Racing {
 
         return winnerList;
     }
+
+    public void printWinnerName(List<Car> winnerList) {
+        System.out.print("최종 우승자 : ");
+        String result = String.join(", ", winnerList.stream()
+                .map(Car::getName)
+                .toList());
+        System.out.print(result);
+    }
 }
