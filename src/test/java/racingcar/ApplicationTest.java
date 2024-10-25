@@ -168,7 +168,7 @@ class ApplicationTest extends NsTest {
         Map<String, StringBuilder> resultMap = new LinkedHashMap<>();
 
         String[] names = new String[]{"Karina", "Winter", "Giselle", "NingNing"};
-        String[] results = new String[]{"--", "----", "", "-"};
+        String[] results = new String[]{"--", "----", "", "----"};
 
         for (int i = 0; i < names.length; i++) {
             StringBuilder result = new StringBuilder();
@@ -189,7 +189,7 @@ class ApplicationTest extends NsTest {
         assertThat(raceResult).isEqualTo("Karina : --\n"
                 + "Winter : ----\n"
                 + "Giselle : \n"
-                + "NingNing : -\n"
+                + "NingNing : ----\n"
         );
     }
 
@@ -197,7 +197,7 @@ class ApplicationTest extends NsTest {
     void createOrderedResult() {
         Map<String, StringBuilder> resultMap = createTempResultMap();
 
-        String[] expectedResult = new String[]{"Winter", "Karina", "NingNing", "Giselle"};
+        String[] expectedResult = new String[]{"Winter", "NingNing", "Karina", "Giselle"};
         PriorityQueue<String[]> orderedResult = Application.createOrderedResult(resultMap);
 
         int idx = 0;
@@ -205,5 +205,15 @@ class ApplicationTest extends NsTest {
             String[] current = orderedResult.poll();
             assertThat(current[0]).isEqualTo(expectedResult[idx++]);
         }
+    }
+
+    @Test
+    void findFinalWinner() {
+        Map<String, StringBuilder> resultMap = createTempResultMap();
+        PriorityQueue<String[]> orderedResult = Application.createOrderedResult(resultMap);
+
+        String winners = Application.findFinalWinner(orderedResult);
+
+        assertThat(winners).isEqualTo("Winter, NingNing");
     }
 }
