@@ -5,12 +5,12 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Round;
 
-public class Rounds {
+public class RoundRepository {
     private static final String ERROR_MESSAGE_RACE_NOT_STARTED = "경주를 진행하지 않았습니다.";
 
     private final List<Round> rounds;
 
-    public Rounds() {
+    public RoundRepository() {
         this.rounds = new ArrayList<>();
     }
 
