@@ -9,6 +9,7 @@ public class RacingRequestValidator {
     public static void validateRacingRequest(RacingRequestDTO racingRequestDTO) {
         validateCarNameLength(racingRequestDTO.carNames());
         validateDuplicateCarName(racingRequestDTO.carNames());
+        validateRound(racingRequestDTO.round());
     }
 
     private static void validateCarNameLength(List<String> carNames) {
@@ -24,6 +25,12 @@ public class RacingRequestValidator {
         HashSet<String> carNameSet = new HashSet<>(carNames);
         if (carNameSet.size() != carNames.size()) {
             throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+        }
+    }
+
+    private static void validateRound(Integer round) {
+        if (round <= 0) {
+            throw new IllegalArgumentException("레이싱 횟수는 0보다 커야 합니다.");
         }
     }
 }
