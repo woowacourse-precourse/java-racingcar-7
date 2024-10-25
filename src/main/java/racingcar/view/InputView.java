@@ -13,15 +13,23 @@ public class InputView {
 
     public static int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine();
-        try {
+        return validateStringToNumber(Console.readLine());
+    }
+
+    private static int validateStringToNumber(String input) {
+        try{
             int count = Integer.parseInt(input);
-            if (count <= 0) {
-                throw new InvalidCountException("시도할 횟수는 양의 정수이어야 합니다.");
-            }
+            validatePositiveNumber(count);
             return count;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 숫자이어야 합니다.");
+            throw new InvalidCountException("시도할 횟수는 숫자이어야 합니다.");
+        }
+
+    }
+
+    private static void validatePositiveNumber(int count) {
+        if (count <= 0) {
+            throw new InvalidCountException("시도할 횟수는 양의 정수이어야 합니다.");
         }
     }
 }
