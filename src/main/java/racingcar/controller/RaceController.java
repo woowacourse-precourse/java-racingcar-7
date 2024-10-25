@@ -43,7 +43,7 @@ public class RaceController {
             race.raceOneStep();
             outputView.currentStatusMessage(cars);
         }
-        return new Winner(cars,race);
+        return new Winner(cars);
     }
 
     private void endRace(Winner winner) {
