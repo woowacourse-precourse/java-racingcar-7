@@ -5,6 +5,7 @@ import racingcar.Model.Car;
 import racingcar.Model.RaceRecord;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Map;
+import racingcar.View.OutputHandler;
 
 public class CarRacingGame implements Game {
     private static final int MOVE_DISTANCE = 1;
@@ -22,6 +23,8 @@ public class CarRacingGame implements Game {
     public void start() {
         for (int i = 0; i < moveAttemptCount; i++) {
             attemptMoveAllCar();
+            OutputHandler.printAllCarDistances(raceRecord);
+            System.out.println();
         }
     }
 
