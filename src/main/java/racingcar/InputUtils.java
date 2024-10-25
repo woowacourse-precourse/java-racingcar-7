@@ -1,7 +1,6 @@
 package racingcar;
 
 import static racingcar.Constant.*;
-
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,8 @@ import java.util.List;
 public class InputUtils {
     public static List<Car> inputCarName() {
         List<Car> carList = new ArrayList<>();
+
+        System.out.println(CAR_NAME_INPUT_MESSAGE);
         String[] carNameList = Console.readLine().split(NAME_SEPARATOR);
 
         for (String carName : carNameList) {
@@ -25,6 +26,7 @@ public class InputUtils {
     }
 
     public static int inputAttempt() {
+        System.out.println(ATTEMPT_INPUT_MESSAGE);
         String attempt = Console.readLine();
         checkAttemptOK(attempt);
         return Integer.parseInt(attempt);
