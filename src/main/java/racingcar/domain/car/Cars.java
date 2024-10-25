@@ -9,6 +9,8 @@ import racingcar.util.RandomValue;
 
 public class Cars {
 
+    private static final int ONE = 1;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -63,7 +65,7 @@ public class Cars {
     }
 
     private boolean isOne(List<Car> cars) {
-        return cars.size() == 1;
+        return cars.size() == ONE;
     }
 
     private void validateDuplicateName(List<Car> cars) {

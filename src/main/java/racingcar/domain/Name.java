@@ -6,6 +6,7 @@ import racingcar.exception.RaceException;
 public class Name {
 
     private static final String PATTERN = "^[a-z|A-Z]*$";
+    private static final int FIVE = 5;
 
     private final String name;
 
@@ -41,6 +42,6 @@ public class Name {
     }
 
     private static boolean isOverFive(String name) {
-        return name.length() > 5;
+        return name.length() > FIVE;
     }
 }

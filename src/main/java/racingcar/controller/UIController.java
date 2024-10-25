@@ -16,6 +16,9 @@ public class UIController {
     private static final String QUESTION_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final String RACE_RESULT = "실행 결과";
     private static final String NAME_SEPARATOR_SYMBOL = ",";
+    private static final String EMPTY = "";
+    private static final String INTEGER_PATTERN = "^[1-9]*$";
+    private static final int TWO = 2;
 
     public List<String> receiveName() {
         OutputView.print(QUESTION_CAR_NAME);
@@ -35,7 +38,7 @@ public class UIController {
         for (Car car : cars.getCars()) {
             OutputView.print(car.toString());
         }
-        OutputView.print("");
+        OutputView.print(EMPTY);
     }
 
     public void printWinner(Winners winners) {
@@ -86,7 +89,7 @@ public class UIController {
     }
 
     private boolean isContinuousSeparator(String input) {
-        return input.contains(NAME_SEPARATOR_SYMBOL.repeat(2));
+        return input.contains(NAME_SEPARATOR_SYMBOL.repeat(TWO));
     }
 
     private int validateCount(String count) {
@@ -102,6 +105,6 @@ public class UIController {
     }
 
     private boolean isNotPositiveInteger(String count) {
-        return !count.matches("^[1-9]*$");
+        return !count.matches(INTEGER_PATTERN);
     }
 }
