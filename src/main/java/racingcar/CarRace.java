@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CarRace {
+    private static final int CAR_NAME_LENGTH_MAX = 5;
     private ArrayList<RacingCar> participants = new ArrayList<>();
     private Set<String> participantNames = new HashSet<>();
     private int numRounds;
@@ -22,7 +23,7 @@ public class CarRace {
 
     public void addParticipants(String carName)
             throws DuplicateCarNameException {
-        if (carName.length() > 5 || participantNames.contains(carName)) {
+        if (carName.length() > CAR_NAME_LENGTH_MAX || participantNames.contains(carName)) {
             throw new DuplicateCarNameException(carName);
         }
         participantNames.add(carName);
