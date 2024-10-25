@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,19 @@ public class Application {
         }
         if (turns < 0) {
             throw new IllegalArgumentException("시도 횟수는 0회 이상만 가능합니다.");
+        }
+
+        List<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            scores.add(0);
+        }
+        while (turns-- > 0) {
+            for (int i = 0; i < cars.size(); i++) {
+                int num = Randoms.pickNumberInRange(0, 9);
+                if (num > 3) {
+                    scores.set(i, scores.get(i) + num);
+                }
+            }
         }
     }
 }
