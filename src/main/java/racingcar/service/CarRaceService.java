@@ -24,7 +24,13 @@ public class CarRaceService {
         Integer gameMatches = raceGame.getGameMatches();
 
         printGameStartMessage();
+        startRace(cars, gameMatches);
     }
 
+    private static void startRace(Cars cars, Integer gameMatches) {
+        for (int round = 0; round < gameMatches; round++) {
+            cars.moveCars();
+        }
+    }
 
 }
