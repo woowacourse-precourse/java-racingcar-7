@@ -7,13 +7,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GameTest {
+class RacingGameTest {
 
     @DisplayName("주어진 횟수 동안 n대의 자동차를 모두 전진시키는 규칙을 적용하면 각 포지션은 1씩 증가함을 테스트하라")
     @Test
     void test1() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
-        Game game = new Game(cars, () -> true); // 전진시키는 규칙 적용
+        RacingGame game = new RacingGame(cars, () -> true); // 전진시키는 규칙 적용
 
         List<Integer> positions = game.race();
         List<Integer> positions2 = game.race();
@@ -28,7 +28,7 @@ class GameTest {
     @Test
     void test2() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
-        Game game = new Game(cars, () -> false); // 정지시키는 규칙 적용
+        RacingGame game = new RacingGame(cars, () -> false); // 정지시키는 규칙 적용
 
         List<Integer> positions = game.race();
         List<Integer> positions2 = game.race();

@@ -22,7 +22,7 @@ public class Application {
             cars.add(new Car(carName));
         }
 
-        Game game = new Game(new Cars(cars), new RandomMoveCondition());
+        RacingGame game = new RacingGame(new Cars(cars), new RandomMoveCondition());
         List<Integer> positions = new ArrayList<>();
         int numOfCars = 0;
         System.out.println("실행 결과");
