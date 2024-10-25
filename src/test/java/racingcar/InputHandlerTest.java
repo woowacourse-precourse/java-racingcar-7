@@ -13,8 +13,8 @@ class InputHandlerTest extends NsTest {
     private static final String EMPTY_STRING = "";
 
     @Test
-    @DisplayName("올바른 입력 테스트")
-    void 올바른입력테스트() {
+    @DisplayName("올바른 입력을 하면 예외가 발생하지 않고, 입력 값이 정상적으로 저장된다.")
+    void 올바른입력() {
         // given
         InputHandler inputHandler = new InputHandler();
 
@@ -28,8 +28,8 @@ class InputHandlerTest extends NsTest {
     }
 
     @Test
-    @DisplayName("빈 문자열 입력 테스트 - 예외는 발생하지 않음")
-    void 빈문자열입력테스트() {
+    @DisplayName("빈 문자열을 입력하면 예외가 발생하지 않고, 빈 값이 저장된다.")
+    void 빈문자열입력() {
         // given
         InputHandler inputHandler = new InputHandler();
 
