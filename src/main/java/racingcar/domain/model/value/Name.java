@@ -5,6 +5,7 @@ import java.util.Objects;
 public final class Name {
 
     private final String value;
+    private static final String INVALID_NAME_FORM = "자동차 이름은 알파뱃으로만 작성해야 합니다.";
     private static final String INVALID_NAME_LENGTH = "자동차의 이름은 5자 이하로 작성하여야 합니다.";
 
     public Name(String value) {
@@ -12,11 +13,23 @@ public final class Name {
         this.value = value;
     }
 
-    private static void validate(String value) {
-        if (value.isEmpty() || value.length() > 5) {
+    private void validate(String value) {
+        validateLength(value);
+        validateForm(value);
+    }
+
+    private void validateLength(String value) {
+        if (value == null || value.length() > 5) {
             throw new IllegalArgumentException(INVALID_NAME_LENGTH);
         }
     }
+
+    private void validateForm(String value) {
+        if (!value.matches("^[A-Za-z]+$")) {
+            throw new IllegalArgumentException(INVALID_NAME_FORM);
+        }
+    }
+
 
     public String getValue() {
         return value;
