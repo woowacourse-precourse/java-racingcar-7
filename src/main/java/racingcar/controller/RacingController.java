@@ -17,9 +17,9 @@ public class RacingController {
     }
 
     public void run() {
-        String rawCarsName = inputView.inputCarNamesMessage(); // carName을 입력 받는다.
+        String rawCarsName = inputView.inputCarNames(); // carName을 입력 받는다.
         Cars cars = new Cars(rawCarsName);
-        String count = inputView.inputTrialCountMessage(); // 시도 횟수를 입력 받는다.
+        String count = inputView.inputTrialCount(); // 시도 횟수를 입력 받는다.
         GameRound gameRound = new GameRound(count);
         startRacingGame(cars, gameRound); // 게임을 시작한다.
         outputView.printWinner(cars); // 우승자를 출력한다.
