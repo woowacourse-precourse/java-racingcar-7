@@ -113,11 +113,10 @@ jun : -----
 > 
 > [Java Calculator](https://github.com/himitery/java-calculator-7/tree/himitery)에서 아쉬웠던 부분과 부족하다고 느꼈던 부분에 대해 단계적으로 리팩터링을 진행한다.
 
-- [ ] `ApplicationContext`와 `ComponentScanner`의 역할과 기능에 대해 다시 고민해본다.
-- [ ] `ApplicationContext`에서 빈이 생성되고 등록되는 시점에 대해 다시 고민해본다.
+- [x] `ApplicationContext`와 `ComponentScanner`의 역할과 기능에 대해 다시 고민해본다.
+- [x] `ApplicationContext`에서 빈이 생성되고 등록되는 시점에 대해 다시 고민해본다.
   - 기존에는 `ApplicationContext`가 생성되는 시점에서 빈이 생성되지만, 만약 사용되지 않는 클래스가 있다면 같이 생성된다.
-- [ ] `@Component` 어노테이션 뿐만 아니라, `@Handler`, `@Service`와 같은 어노테이션의 추가를 고려한다.
-
+- [x] `@Component` 어노테이션 뿐만 아니라, `@Handler`, `@Service`와 같은 어노테이션의 추가를 고려한다.
 
 ### 2. 테스트를 설계하고 작성한다.
 
