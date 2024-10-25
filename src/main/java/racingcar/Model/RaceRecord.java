@@ -1,6 +1,7 @@
 package racingcar.Model;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class RaceRecord {
     private Map<Car,Integer> raceResult;
 
     public RaceRecord(List<String> CarNames) {
-        raceResult = new HashMap<>();
+        raceResult = new LinkedHashMap<>();
         for (String carName : CarNames) {
             Car car = new Car(carName);
             raceResult.put(car, 0);

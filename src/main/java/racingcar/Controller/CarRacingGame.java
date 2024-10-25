@@ -39,7 +39,7 @@ public class CarRacingGame implements Game {
     }
 
     private boolean isMoveAble() {
-        return Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX) > MOVE_THRESHOLD;
+        return Randoms.pickNumberInRange(RANGE_MIN, RANGE_MAX) >= MOVE_THRESHOLD;
     }
 
     private void moveForward(Car car) {
