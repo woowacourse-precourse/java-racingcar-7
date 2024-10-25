@@ -14,5 +14,6 @@ public class Application {
             Car car = new Car(nameArr[i]);
             carArr.add(car);
         }
+        int raceCount = Integer.parseInt(Console.readLine());
     }
 }
