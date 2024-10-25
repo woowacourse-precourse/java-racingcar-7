@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.NullEmptyStringException;
 import racingcar.message.IOMessage;
 
-public class InputManager implements IOManager {
+public class InputManager {
     private static final InputManager inputManager = new InputManager();
 
     private InputManager() {
@@ -22,12 +22,12 @@ public class InputManager implements IOManager {
     }
 
     public String carNameInput() {
-        printMessage(IOMessage.ENTER_CAR_NAME_INPUT);
+        OutputManager.printEnterCarNameMessage();
         return validateInput(Console.readLine());
     }
 
     public String attemptCountInput() {
-        printMessage(IOMessage.ENTER_ATTEMPT_COUNT_INPUT);
+        OutputManager.printEnterAttemptCountMessage();
         return validateInput(Console.readLine());
     }
 }
