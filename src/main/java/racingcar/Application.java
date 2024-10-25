@@ -56,5 +56,12 @@ public class Application {
                 max = scores.get(i);
             }
         }
+
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            if (scores.get(i) == max) {
+                winners.add(cars.get(i));
+            }
+        }
     }
 }
