@@ -10,27 +10,27 @@ import java.util.List;
 public class CarList {
     private static final String DELIMITER = ",";
     private static final String WINNER_FORMAT = ", ";
+
+    private final MoveStrategy moveStrategy;
     private final List<Car> list;
 
-    public CarList() {
+    public CarList(MoveStrategy moveStrategy) {
         this.list = new ArrayList<>();
+        this.moveStrategy = moveStrategy;
     }
 
     public void add(String carNames) {
         Validator.validateDelimiterFormatAndSingleRacer(carNames);
         Arrays.stream(carNames.split(DELIMITER))
                 .map(Validator::validateNameLength)
-                .map(Car::generateCars)
+                .map(name -> Car.generateCars(name,moveStrategy))
                 .forEach(list::add);
     }
 
     public List<Car> moveCars(int count) {
         for (int i = 0; i < count; i++) {
-            for (Car car : this.getList()) {
-                int randomNum = Randoms.pickNumberInRange(0, 9);
-                car.move(randomNum);
-                Printer.print(car);
-            }
+            list.forEach(Car::move);
+            list.forEach(Printer::print);
             Printer.newLine();
         }
         return this.getList();

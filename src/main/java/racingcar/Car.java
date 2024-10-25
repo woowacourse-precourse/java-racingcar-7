@@ -4,17 +4,19 @@ public class Car {
     private static final String DASH = "-";
 
     private final String name;
+    private final MoveStrategy moveStrategy;
     private int position;
 
-    private Car(String name) {
+    private Car(String name, MoveStrategy moveStrategy) {
         this.name = name;
+        this.moveStrategy = moveStrategy;
     }
-    public static Car generateCars(String carName) {
-        return new Car(carName);
+    public static Car generateCars(String carName, MoveStrategy moveStrategy) {
+        return new Car(carName, moveStrategy);
     }
 
-    public void move(int number) {
-        if (canMove(number)) {
+    public void move() {
+        if (moveStrategy.canMove()) {
             position++;
         }
     }
@@ -32,7 +34,4 @@ public class Car {
         return getName() + " : " + DASH.repeat(position);
     }
 
-    private boolean canMove(int number) {
-        return number >= 4;
-    }
 }
