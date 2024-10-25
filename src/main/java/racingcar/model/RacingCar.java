@@ -1,18 +1,18 @@
 package racingcar.model;
 
-public class Car {
+public class RacingCar {
 
     private static final int MOVING_THRESHOLD = 4;
 
     private final String name;
     private int position;
 
-    public Car(String name, int position) {
+    public RacingCar(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public Car(String name) {
+    public RacingCar(String name) {
         this(name, 0);
     }
 
@@ -20,6 +20,14 @@ public class Car {
         if (movementFactor >= MOVING_THRESHOLD) {
             position++;
         }
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
 }

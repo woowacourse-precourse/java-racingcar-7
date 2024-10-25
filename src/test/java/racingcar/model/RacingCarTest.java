@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CarTest {
+class RacingCarTest {
 
     @DisplayName("이름으로 자동차를 생성할 수 있다.")
     @Test
@@ -14,10 +14,10 @@ class CarTest {
         String name = "car1";
 
         // when
-        Car car = new Car(name);
+        RacingCar racingCar = new RacingCar(name);
 
         // then
-        assertThat(car)
+        assertThat(racingCar)
                 .extracting("name", "position")
                 .contains(name, 0);
     }
@@ -26,25 +26,40 @@ class CarTest {
     @Test
     void attemptMoveWithGraterThanOrEqual4() {
         // given
-        Car car = new Car("car1");
+        RacingCar racingCar = new RacingCar("car1");
 
         // when
-        car.attemptMove(4);
+        racingCar.attemptMove(4);
 
         // then
-        assertThat(car).extracting("position").isEqualTo(1);
+        assertThat(racingCar).extracting("position").isEqualTo(1);
     }
 
     @DisplayName("4 미만의 값은 자동차를 움직일 수 없다.")
     @Test
     void attemptMoveWithLessThan4() {
         // given
-        Car car = new Car("car1");
+        RacingCar racingCar = new RacingCar("car1");
 
         // when
-        car.attemptMove(3);
+        racingCar.attemptMove(3);
 
         // then
-        assertThat(car).extracting("position").isEqualTo(0);
+        assertThat(racingCar).extracting("position").isEqualTo(0);
     }
+
+    @DisplayName("특정 위치에 자동차가 있는지 확인할 수 있다.")
+    @Test
+    void isSamePosition() {
+        // given
+        int position = 3;
+        RacingCar racingCar = new RacingCar("car1", position);
+
+        // when
+        boolean result = racingCar.isSamePosition(position);
+
+        // then
+        assertThat(result).isTrue();
+    }
+
 }

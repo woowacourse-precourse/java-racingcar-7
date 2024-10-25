@@ -1,27 +1,23 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.model.RacingCar;
+import racingcar.model.RacingCars;
 
 public class RacingController {
 
     void run() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        List<Car> cars = List.of(car1, car2);
+        RacingCar racingCar1 = new RacingCar("car1");
+        RacingCar racingCar2 = new RacingCar("car2");
+
+        RacingCars racingCars = new RacingCars(List.of(racingCar1, racingCar2));
 
         int totalLaps = 2;
         for (int i = 0; i < totalLaps; i++) {
-            for (Car car : cars) {
-                int movementFactor = generateRandomMovementFactor();
-                car.attemptMove(movementFactor);
-            }
+            racingCars.race();
         }
-    }
 
-    private int generateRandomMovementFactor() {
-        return Randoms.pickNumberInRange(0, 9);
+        List<RacingCar> winners = racingCars.getWinners();
     }
 
 }
