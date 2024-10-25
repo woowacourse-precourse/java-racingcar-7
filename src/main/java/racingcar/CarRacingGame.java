@@ -4,17 +4,22 @@ import java.util.List;
 
 public class CarRacingGame {
 
+    private final IOutputDisplay outputDisplay;
     private final List<ICar> carList;
     private final int round;
 
-    public CarRacingGame(List<ICar> carList, int round) {
+    public CarRacingGame(IOutputDisplay outputDisplay, List<ICar> carList, int round) {
+        this.outputDisplay = outputDisplay;
         this.carList = carList;
         this.round = round;
     }
 
     public void start() {
+        outputDisplay.print("실행 결과\n");
+
         for (int i = 0; i < round; i++) {
             round();
+            outputDisplay.printRoundResult(carList);
         }
     }
 

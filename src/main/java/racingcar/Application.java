@@ -19,7 +19,8 @@ public class Application {
         String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
         int round = Integer.parseInt(roundStr);
 
-        CarRacingGame carRacingGame = new CarRacingGame(carList, round);
+        IOutputDisplay outputDisplay = new OutputDisplayImpl();
+        CarRacingGame carRacingGame = new CarRacingGame(outputDisplay, carList, round);
 
         carRacingGame.start();
     }
