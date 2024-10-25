@@ -1,5 +1,7 @@
 package racingcar.Controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.Model.Car;
 import racingcar.Model.RaceRecord;
@@ -26,6 +28,8 @@ public class CarRacingGame implements Game {
             OutputHandler.printAllCarDistances(raceRecord);
             System.out.println();
         }
+        List<Car> winners = findWinners();
+        OutputHandler.printWinner(winners);
     }
 
     private void attemptMoveSingleCar(Car car) {
@@ -48,5 +52,18 @@ public class CarRacingGame implements Game {
         for (Car car : allCarRecord.keySet()) {
             attemptMoveSingleCar(car);
         }
+    }
+
+    private List<Car> findWinners() {
+        Map<Car, Integer> allCars = raceRecord.getRaceResult();
+        List<Car> winner = new ArrayList<>();
+        int max_distance = Collections.max(allCars.values());
+
+        for (Map.Entry<Car, Integer> car : allCars.entrySet()) {
+            if (car.getValue() == max_distance) {
+                winner.add(car.getKey());
+            }
+        }
+        return winner;
     }
 }
