@@ -9,4 +9,8 @@ public class RaceCar {
         this.name = name;
         this.position = INIT_POSITION;
     }
+
+    public void move() {
+        position++;
+    }
 }
