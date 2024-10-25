@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.StringTokenizer;
 import java.util.Map;
 import java.util.HashMap;
@@ -21,4 +22,17 @@ public class Application {
             player.put(token, 0);
         }
     }
+    public static int randomNum(){
+        int randomNum = Randoms.pickNumberInRange(0,9);
+        return randomNum;
+    }
+    public static int goAndStopNum(){
+        if(randomNum() > 3) {
+            return 1;
+        } else return 0;
+    }
+
+    public static void racingByCount(int inputTryCount){
+    }
+
 }
