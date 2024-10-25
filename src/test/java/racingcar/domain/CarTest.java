@@ -59,7 +59,7 @@ class CarTest {
 
         // 테스트 결과 1410000000 정도에서 메모리 초과
         int tryCount = 1410000000;
-        int increase = 1000;
+        int increase = 10000000;
         boolean memoryExceeded = false;
 
         while (!memoryExceeded) {

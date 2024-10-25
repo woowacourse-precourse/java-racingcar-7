@@ -7,22 +7,24 @@ import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 
-class InputTest {
+class NameCollectTest {
 
     @Test
     @DisplayName("정상 입력 테스트")
     void test1() {
         String s = "pobi,woni,jun";
 
-        Input input = new Input(s);
+        NameCollect nameCollect = new NameCollect(s);
         CarList expect = new CarList();
         expect.add("pobi");
         expect.add("woni");
         expect.add("jun");
 
-        CarList result = CarList.from(input);
+        CarList result = CarList.from(nameCollect);
 
         assertThat(result).isEqualTo(expect);
     }
@@ -33,7 +35,7 @@ class InputTest {
         String s = ",woni,jun";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Input(s);
+            new NameCollect(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -43,10 +45,10 @@ class InputTest {
     @DisplayName("에러 : 5자 초과")
     void test3() {
         String s = "pooobi,woni,jun";
-        Input input = new Input(s);
+        NameCollect nameCollect = new NameCollect(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarList.from(input);
+            CarList.from(nameCollect);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_CAR_NAME.getMessage());
@@ -58,33 +60,21 @@ class InputTest {
         String s = ",,";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Input(s);
+            new NameCollect(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
-    @Test
-    @DisplayName("빈 입력")
-    void test5() {
-        String s = "";
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("null, 빈 입력")
+    void test5(String s) {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Input(s));
+                () -> new NameCollect(s));
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
-
-    @Test
-    @DisplayName("null 입력")
-    void test6() {
-        String s = null;
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Input(s));
-
-        assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
-    }
-
 
 }

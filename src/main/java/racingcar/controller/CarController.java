@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.CarList;
-import racingcar.domain.Input;
+import racingcar.domain.NameCollect;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
@@ -17,11 +17,11 @@ public class CarController {
         this.viewer = viewer;
     }
 
-    public Input toInput() {
+    public NameCollect toNameCollect() {
         viewer.printInputCarNames();
         String carNames = viewer.readCarNames();
 
-        return new Input(carNames);
+        return new NameCollect(carNames);
     }
 
     public TryCount toTryCount() {
@@ -31,8 +31,8 @@ public class CarController {
         return new TryCount(countStr);
     }
 
-    public void startRace(Input input, TryCount tryCount) {
-        CarList carList = carService.toCarList(input);
+    public void startRace(NameCollect nameCollect, TryCount tryCount) {
+        CarList carList = carService.toCarList(nameCollect);
         Winners winners = carService.process(carList, tryCount);
         carService.result(winners);
     }

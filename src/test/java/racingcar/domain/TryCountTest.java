@@ -6,6 +6,10 @@ import static racingcar.utils.ErrorMessage.INVALID_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 
 class TryCountTest {
@@ -78,13 +82,14 @@ class TryCountTest {
         assertThat(result).isEqualTo(except);
     }
 
-    @Test
-    @DisplayName("null 입력")
-    void test7() {
-        String s = null;
-
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("null, 빈 입력")
+    void test7(String s) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new TryCount(s));
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
     }
+
+
 }

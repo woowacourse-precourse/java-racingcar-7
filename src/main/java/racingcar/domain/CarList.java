@@ -23,12 +23,12 @@ public class CarList {
         this.maxMoveCnt = 0;
     }
 
-    public static CarList from(Input input) {
+    public static CarList from(NameCollect nameCollect) {
         CarList carList = new CarList();
-        String[] splitInput = input.splitInput();
+        String[] splitName = nameCollect.split();
 
-        for (String name : splitInput) {
-            String validName = input.validName(name);
+        for (String name : splitName) {
+            String validName = nameCollect.validName(name);
             carList.add(validName);
         }
 

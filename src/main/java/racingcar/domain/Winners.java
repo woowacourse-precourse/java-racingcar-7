@@ -23,10 +23,12 @@ public class Winners {
     public Message result() {
         StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
 
-        for (Car car : winnerList) {
-            String carName = car.toString();
-            stringJoiner.add(carName);
-        }
+        winnerList.forEach(
+                car -> stringJoiner.add(
+                        car.toString()
+                )
+        );
+
         String result = WINNER_RESULT + stringJoiner;
 
         return new Message(result);

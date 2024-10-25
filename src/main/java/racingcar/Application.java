@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.config.RacingcarConfig;
 import racingcar.controller.CarController;
-import racingcar.domain.Input;
+import racingcar.domain.NameCollect;
 import racingcar.domain.TryCount;
 import racingcar.viewer.Viewer;
 
@@ -13,10 +13,10 @@ public class Application {
         CarController carController = RacingcarConfig.carController();
 
         try {
-            Input input = carController.toInput();
+            NameCollect nameCollect = carController.toNameCollect();
             TryCount tryCount = carController.toTryCount();
 
-            carController.startRace(input, tryCount);
+            carController.startRace(nameCollect, tryCount);
 
             viewer.print();
         } catch (OutOfMemoryError | Exception e) {

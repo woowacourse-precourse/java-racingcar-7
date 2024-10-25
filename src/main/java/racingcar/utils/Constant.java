@@ -15,7 +15,6 @@ public class Constant {
     public static final int MOVE_THRESHOLD = 4;
     public static final int MAX_CAR_NAME_LEN = 5;
 
-
     private Constant() {
     }
 }

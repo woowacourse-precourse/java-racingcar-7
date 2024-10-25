@@ -7,15 +7,15 @@ import static racingcar.utils.ErrorMessage.INVALID_INPUT;
 
 import java.util.Objects;
 
-public class Input {
+public class NameCollect {
 
     private final String value;
 
-    public Input(String input) {
+    public NameCollect(String input) {
         this.value = validInput(input);
     }
 
-    protected String[] splitInput() {
+    protected String[] split() {
         String[] splitInput = value.split(COMMA_SEPARATOR);
 
         if (splitInput.length == 0) {
@@ -63,8 +63,8 @@ public class Input {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Input compareInput = (Input) o;
-        return Objects.equals(value, compareInput.value);
+        NameCollect compareNameCollect = (NameCollect) o;
+        return Objects.equals(value, compareNameCollect.value);
     }
 
     @Override
