@@ -4,7 +4,7 @@
 
 ## Racingcar (Controller)
 
-- [x] application()
+- [x] main()
 
   run()을 불러오는 함수
 
@@ -26,13 +26,17 @@
 
   우승자를 출력한다.
 
--[ ] Racing()
+-[ ] racing()
 
   자동차 경주에 대한 전반적인 과정을 담고 있다.
 
 -[ ] storeCars()
 
   입력된 자동차 이름들을 쉽표를 기준으로 구분하여 자동차 리스트에 저장한다.
+
+-[ ] attemptToint()
+
+  String으로 입력받은 시도 휫수를 정수형으로 변환한다.
 
 -[ ] getRandomNum()
 
