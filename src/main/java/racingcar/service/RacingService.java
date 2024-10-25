@@ -40,16 +40,18 @@ public class RacingService {
     }
 
     public static void racingResult() {
-        Car winner = null;
+        Car[] winners = new Car[carList.length];
+        int maxMoving = 0;
+        int winnerCount = 0;
         for (Car car : carList) {
-            if (winner == null) {
-                winner = car;// 각 자동차에 대해 전진 시도
-            } else {
-                if (winner.getMoving() < car.getMoving()) {
-                    winner = car;
-                }
+            if (maxMoving < car.getMoving()) {
+                winnerCount = 0;
+                winners[winnerCount++] = car;
+                maxMoving = car.getMoving();
+            } else if (car.getMoving() == maxMoving) {
+                winners[winnerCount++] = car;
             }
         }
-        RacingView.racingResult(winner);
+        RacingView.racingResult(winners, winnerCount);
     }
 }

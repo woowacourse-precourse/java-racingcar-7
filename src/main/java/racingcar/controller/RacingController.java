@@ -55,5 +55,4 @@ public class RacingController {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다. \n시도 횟수는 1이상의 정수만 입력하셔야 됩니다.");
         }
     }
-
 }
