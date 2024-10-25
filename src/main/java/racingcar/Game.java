@@ -51,6 +51,9 @@ public class Game {
         OutputHandler.printWinners(winners);
     }
 
+    /**
+     * @return maxPosition과 같은 값을 가지는 자동차 이름 List
+     */
     private List<String> getWinners() {
         int maxPosition = getMaxPosition();
 
@@ -60,6 +63,9 @@ public class Game {
                 .toList();
     }
 
+    /**
+     * @return 각각 자동차 중 최대 position 값 (= 최종 우승자의 position 값)
+     */
     private int getMaxPosition() {
         return cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
