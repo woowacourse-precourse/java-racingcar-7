@@ -40,10 +40,11 @@ Car()
 - separateName()
   - checkBlank()
   - checkDuplication()
-  - count()
-- count()
+  - checkCount()
+- checkCount()
 - checkDuplication()
 - checkBlank()
+- putCarMap()
 </details>
 
 ___
