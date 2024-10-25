@@ -12,6 +12,14 @@ public class Car {
         this.position = 0;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(){
+        position++;
+    }
+
     private void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
