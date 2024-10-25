@@ -13,10 +13,23 @@ public class RaceCar {
                 int number = randomNumber();
                 carMap.put(key,value+number);
             }
-            System.out.println(carMap.toString());
+            printRace(carMap);
         }
 
     }
+
+    private void printRace(HashMap<String, Integer> carMap) {
+        StringBuilder message = new StringBuilder();
+        for(String key : carMap.keySet()){
+            message.append(key)
+                    .append(" : ")
+                    .append("-".repeat(carMap.get(key)))
+                    .append("\n");
+        }
+        System.out.println(message);
+    }
+
+
     private HashMap<String,Integer> initCars(String[] carNames){
         HashMap<String,Integer> map = new HashMap<>();
         for(String car:carNames){
