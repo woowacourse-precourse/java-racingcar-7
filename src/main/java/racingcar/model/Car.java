@@ -14,4 +14,7 @@ public class Car {
     public int getMove(){
         return move;
     }
+    public void move(){
+        this.move++;
+    }
 }
