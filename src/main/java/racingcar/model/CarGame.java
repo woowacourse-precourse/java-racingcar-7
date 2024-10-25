@@ -40,5 +40,4 @@ public class CarGame {
     public int getMaxDistance() {
         return maxDistance;
     }
-
 }

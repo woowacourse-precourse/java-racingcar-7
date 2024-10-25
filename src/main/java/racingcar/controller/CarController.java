@@ -43,8 +43,8 @@ public class CarController {
         for (int i = 0; i < attempts; i++) {
             carService.advanceCars();
             outputView.printResult(participants);
-
         }
+
         carService.updateWinners();
     }
 }
