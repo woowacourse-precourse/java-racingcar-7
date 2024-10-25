@@ -21,4 +21,13 @@ public class carTest {
         assertThat(car.getName()).isEqualTo("testCar");
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("car객체 이동 횟수 증가 테스트")
+    void raiseMoveCountTest() {
+        car.raiseMoveCount();
+        car.raiseMoveCount();
+
+        assertThat(car.getMoveCount()).isEqualTo(2);
+    }
 }
