@@ -24,12 +24,18 @@ public class RacingCarInputHandler {
     }
 
     public int getRacingCount(String userInputCount) {
-        int intCount = Integer.parseInt(userInputCount);
+        try{
+            int intCount = Integer.parseInt(userInputCount);
+            isPositiveNumber(intCount);
+            return intCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 양수 이여야합니다.");
+        }
+    }
 
+    private static void isPositiveNumber(int intCount) {
         if (intCount <= 0) {
             throw new IllegalArgumentException("시도할 횟수는 양수 이여야합니다.");
         }
-
-        return intCount;
     }
 }

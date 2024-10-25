@@ -47,16 +47,15 @@ public class RacingCar {
 
     public void racingMachine(List<Car> carList, int racingCount) {
         while (racingCount > 0) {
-            racing(carList);
+            racing(carList, Randoms.pickNumberInRange(0, 9));
             racingCarOutputHandler.displayRaceResultsByRound(carList);
             racingCount--;
         }
         racingCarOutputHandler.displayFinalResult(carList);
     }
 
-    private void racing(List<Car> carList) {
+    private void racing(List<Car> carList, int randomResult) {
         for (Car car : carList) {
-            int randomResult = Randoms.pickNumberInRange(0, 9);
             carMove(car, randomResult);
         }
     }
