@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import static racingcar.constant.ExceptionMessage.CAR_NAME_NOT_ALLOW_SPACE;
+import static racingcar.constant.ExceptionMessage.TRY_COUNT_MUST_BE_NUMBER;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class InputView {
 
     private static void validateNames(List<String> splitNames) {
         if (splitNames.stream().anyMatch(String::isBlank)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CAR_NAME_NOT_ALLOW_SPACE.getMessage());
         }
     }
 
@@ -37,7 +40,7 @@ public class InputView {
         try {
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(TRY_COUNT_MUST_BE_NUMBER.getMessage());
         }
     }
 
