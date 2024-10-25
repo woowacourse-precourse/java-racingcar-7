@@ -16,8 +16,8 @@ public class Car {
 		this.score += 1;
 	}
 
-	public Name getName() {
-		return name;
+	public String getName() {
+		return name.getName();
 	}
 
 	public int getScore() {

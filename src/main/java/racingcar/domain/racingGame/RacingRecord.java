@@ -1,12 +1,15 @@
 package racingcar.domain.racingGame;
 
+import racingcar.domain.car.Cars;
 
 public class RacingRecord {
-	private final String carName;
-	private final int score;
+	private final Cars cars;
 
-	public RacingRecord(String carName, int score) {
-		this.carName = carName;
-		this.score = score;
+	public RacingRecord(Cars cars) {
+		this.cars = cars;
+	}
+
+	public Cars getCars() {
+		return cars;
 	}
 }
