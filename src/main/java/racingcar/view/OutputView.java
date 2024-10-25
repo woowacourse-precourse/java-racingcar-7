@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 
@@ -34,5 +35,25 @@ public class OutputView {
         String carName = racingCar.name();
         int currentLocationValue = racingCar.currentLocationValue();
         System.out.println(carName + " : " + CAR_POSITION_INDICATOR.repeat(currentLocationValue));
+    }
+
+    public void printWinners(RacingCars winners) {
+        List<RacingCar> winnersCarList = winners.racingCarList();
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winnersCarList.size(); i++) {
+            RacingCar racingCar = winnersCarList.get(i);
+            System.out.print(racingCar.name());
+            printCommaBetweenWinners(i, winnersCarList);
+        }
+    }
+
+    private void printCommaBetweenWinners(int winnerIndex, List<RacingCar> winnersCarList) {
+        if (isCommaNeededBetweenWinners(winnerIndex, winnersCarList)) {
+            System.out.print(", ");
+        }
+    }
+
+    private boolean isCommaNeededBetweenWinners(int i, List<RacingCar> winnersCarList) {
+        return i < winnersCarList.size() - 1;
     }
 }
