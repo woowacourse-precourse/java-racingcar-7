@@ -28,8 +28,10 @@ public class InputHandler {
         }
     }
 
-    public static void validateAttemptCount(int attemptCount) {
-        if (attemptCount == 0) {
+    public static void validateAttemptCount(String attemptCount) {
+        if (attemptCount.matches("[0]+")) {
+            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+        } else if (! attemptCount.matches("[0-9]+")) {
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
         }
     }

@@ -24,20 +24,21 @@ public class InputHandlerTest {
         assertDoesNotThrow(() -> InputHandler.validateCarNames(carNames));
     }
 
-    @Test
-    void 시도_횟수가_0이면_예외_발생() {
-        // given
-        int attemptCount = 0;
-
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "00", "0,0"})
+    void 시도_횟수가_0이면_예외_발생(String attemptCount) {
         // when & then
         assertThatThrownBy(() -> InputHandler.validateAttemptCount(attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
-    public void 시도_횟수가_0이_아니면_예외_없음(int attemptCount) {
+    @ValueSource(strings = {"1", "2", "3", "4", "5"})
+    public void 시도_횟수가_0이_아니면_예외_없음(String attemptCount) {
         // when & then
         assertDoesNotThrow(() -> InputHandler.validateAttemptCount(attemptCount));
     }
+
+//    @ParameterizedTest
+//    @ValueSource(strings = {"abc", "123a", ""})
 }
