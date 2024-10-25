@@ -11,6 +11,7 @@ public class WinnerResultGenerator {
 		if (winners.size() > SINGLE_WINNER_COUNT) {
 			return generateJointWinnersResult(winners);
 		}
+		return winners.getFirst();
 	}
 
 	private static String generateJointWinnersResult(List<String> winners) {
