@@ -1,4 +1,4 @@
-package racingcar.interfaces;
+package racingcar.service;
 
 @FunctionalInterface
 public interface NumberGenerator {
