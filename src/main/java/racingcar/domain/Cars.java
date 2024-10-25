@@ -22,7 +22,7 @@ public class Cars {
     }
 
     private boolean areCarNamesUnique(List<String> carNames) {
-        return StringUtility.isDuplicateStrExists(carNames);
+        return !StringUtility.isDuplicateStrExists(carNames);
     }
 
     private List<Car> createCars(List<String> carNameList) {
