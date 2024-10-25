@@ -23,6 +23,12 @@ public class Car {
     }
 
     public static Car ready(final CarEngine carEngine, final CarName carName) {
+        if (carEngine == null) {
+            throw new IllegalArgumentException("엔진은 비어있을 수 없습니다.");
+        }
+        if (carName == null) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+        }
         return new Car(carEngine, carName, 0);
     }
 

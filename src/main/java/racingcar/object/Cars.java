@@ -9,6 +9,9 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
+        if (cars == null || cars.isEmpty()) {
+            throw new IllegalArgumentException("자동차들은 비어있을 수 없습니다.");
+        }
         this.cars = List.copyOf(cars);
     }
 
