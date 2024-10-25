@@ -37,6 +37,8 @@ public class Application {
     public static void main(String[] args) {
         String[] carNames = getNameOfCars();
         RacingCar[] racingCars = createCars(carNames);
+
+        int numberOfTry = getNumberOfTry();
     }
 
     private static String[] getNameOfCars() {
@@ -55,5 +57,11 @@ public class Application {
             racingCars[i] = new RacingCar(carNames[i]);
         }
         return racingCars;
+    }
+
+    private static int getNumberOfTry() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int numberOfTry = Integer.parseInt(Console.readLine());
+        return numberOfTry;
     }
 }
