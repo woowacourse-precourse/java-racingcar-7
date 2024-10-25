@@ -13,6 +13,28 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 차_이름_trim_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,   woni   ", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 라운드_trim_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1 ");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
