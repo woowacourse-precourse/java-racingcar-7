@@ -17,5 +17,7 @@ public class RacingCarGame {
     public void run() {
         outputView.requestCarNames();
         Cars cars = inputView.getCarNames();
+
+        outputView.requestTryCount();
     }
 }
