@@ -27,12 +27,12 @@ public class RacingGame {
         this.cars = racingGameFactory.createCars(carNames);
         this.winner = racingGameFactory.createWinner(game);
 
+        OutputView.printMessage("\n실행 결과");
         for (int i = 0; i < attemptNumber; i++) {
             game.roundStart(cars);
-            OutputView.printRound(cars);
+            OutputView.printRoundResult(cars);
         }
-
-
+        winner.
     }
 
     private int inputAttemptNumber() {
@@ -40,11 +40,15 @@ public class RacingGame {
 
         String inputAttemptNumber = InputView.inputConsole(true);
         // todo: inputAttemptNumber가 숫자가 아닐 경우 예외처리
-        int attemptNumber = Integer.parseInt(inputAttemptNumber);
-        if (InputValidator.validateAttemptNumber(attemptNumber)) {
+        try {
+            int attemptNumber = Integer.parseInt(inputAttemptNumber);
+            if (!InputValidator.validateAttemptNumber(attemptNumber)) {
+                throw new IllegalArgumentException("시도할 횟수는 양의 정수로 입력해주세요.");
+            }
+            return attemptNumber;
+        } catch (Exception e) {
             throw new IllegalArgumentException("시도할 횟수는 양의 정수로 입력해주세요.");
         }
-        return attemptNumber;
     }
 
     private List<String> inputCarNames() {
@@ -52,9 +56,10 @@ public class RacingGame {
 
         String inputCar = InputView.inputConsole(false);
         List<String> carNames = InputParser.parseCarNames(inputCar);
-        if (InputValidator.validateCarNameLength(carNames)) {
+        if (!InputValidator.validateCarNameLength(carNames)) {
             throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다.");
         }
+        // todo: carNames가 비었을 때 예외처리
         return carNames;
     }
 

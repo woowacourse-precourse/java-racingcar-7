@@ -8,7 +8,18 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public static void printRound(List<Car> cars) {
+    public static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            printRoundCar(car);
+        }
+        System.out.println();
+    }
 
+    private static void printRoundCar(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getTotalDistance(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

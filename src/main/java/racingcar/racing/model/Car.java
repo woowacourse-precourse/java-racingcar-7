@@ -18,4 +18,12 @@ public class Car {
     public void updateTotalDistance() {
         this.totalDistance++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getTotalDistance() {
+        return totalDistance;
+    }
 }
