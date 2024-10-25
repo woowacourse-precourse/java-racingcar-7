@@ -22,6 +22,7 @@ public class Racing {
     public void moveCar(Car car) {
         if (isMovable()) {
             car.move();
+            car.printCurrentPosition();
         }
     }
 

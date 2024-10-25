@@ -15,4 +15,12 @@ public class Car {
     public void move() {
         positions.add("-");
     }
+
+    public void printCurrentPosition() {
+        System.out.print(name + " : ");
+        for (String position : positions) {
+            System.out.print(position);
+        }
+        System.out.println();
+    }
 }
