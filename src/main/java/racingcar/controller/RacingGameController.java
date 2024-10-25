@@ -28,6 +28,7 @@ public class RacingGameController {
     }
 
     private void playRounds(int attemptCount) {
+        outputView.displayExecutionResult();
         for (int i = 0; i < attemptCount; i++) {
             racingGame.play();
             outputView.displayRaceProgress(racingGame.getCarList());
@@ -35,8 +36,8 @@ public class RacingGameController {
     }
 
     private void displayResults() {
-        outputView.displayWinners(racingGame.getCarList());
         outputView.displayExecutionResult();
+        outputView.displayWinners(racingGame.getCarList());
     }
 
     private List<Car> initializeCars() {
