@@ -1,47 +1,32 @@
 package controller;
 
-import domain.Car;
+import domain.CarNames;
+import domain.Cars;
+import domain.TryCount;
 import domain.Winner;
 import view.InputView;
 import view.OutputView;
 
-import java.util.List;
-
 public class CarRace {
 
     public static void start() {
-        List<Car> cars = initCars();
-        int tryCount = getTryCount();
+        CarNames names = InputView.getCarNames();
+        Cars cars = Cars.fromCarNames(names);
+        TryCount tryCount = InputView.getTryCount();
         race(cars, tryCount);
         getWinner(cars);
     }
 
-    private static List<Car> initCars() {
-        OutputView.printInputCarNames();
-        return InputView.getCarNames();
-    }
-
-    private static int getTryCount() {
-        OutputView.printInputTryCount();
-        return InputView.getTryCount();
-    }
-
-    private static void race(List<Car> cars, int tryCount) {
+    private static void race(final Cars cars, final TryCount tryCount) {
         OutputView.printOutputResult();
-        for (int i = 0; i < tryCount; i++) {
-            moveCars(cars);
+        for (int i = 0; i < tryCount.getValue(); i++) {
+            cars.moveCars();
             OutputView.printOutputStatus(cars);
         }
     }
 
-    private static void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    private static void getWinner(List<Car> cars) {
-        Winner winner = new Winner(cars);
+    private static void getWinner(final Cars cars) {
+        Winner winner = new Winner(cars.getCars());
         OutputView.printOutputWinner(winner);
     }
 }

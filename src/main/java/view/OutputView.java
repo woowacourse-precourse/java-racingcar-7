@@ -1,9 +1,8 @@
 package view;
 
 import domain.Car;
+import domain.Cars;
 import domain.Winner;
-
-import java.util.List;
 
 public class OutputView {
 
@@ -26,8 +25,8 @@ public class OutputView {
         System.out.println(OUTPUT_RESULT);
     }
 
-    public static void printOutputStatus(final List<Car> cars) {
-        for (Car car : cars) {
+    public static void printOutputStatus(final Cars cars) {
+        for (Car car : cars.getCars()) {
             System.out.printf("%s : %s\n", car.getName(), convertStatus(car.getStatus()));
         }
         System.out.println();
