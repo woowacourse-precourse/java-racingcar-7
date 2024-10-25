@@ -1,6 +1,6 @@
 package racingcar;
 
-public class OutputView {
+public class RaceWinnerView {
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     public void announceWinner(String[] winners) {
