@@ -14,9 +14,9 @@ public class RacingCarController {
     }
 
     public void run() {
-        outputView.askForCarNames();
+        outputView.printAskingForCarNames();
         List<String> carNames = inputView.askForCarNames();
-        outputView.askForTryCount();
+        outputView.printAskingForNumberOfRounds();
         int rounds = inputView.askForNumberOfRounds();
     }
 }
