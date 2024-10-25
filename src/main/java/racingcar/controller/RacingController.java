@@ -17,10 +17,8 @@ public class RacingController {
         List<String> racingCarNames = racingCarView.getRacingCarNames();
         RacingCars racingCars = RacingCars.of(racingCarNames);
 
-        RacingCars racingCars = new RacingCars(List.of(racingCar1, racingCar2));
-
-        int totalLaps = 2;
-        for (int i = 0; i < totalLaps; i++) {
+        int attemptCount = racingCarView.getAttemptCount();
+        for (int i = 0; i < attemptCount; i++) {
             racingCars.race();
         }
 

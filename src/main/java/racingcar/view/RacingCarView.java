@@ -11,4 +11,18 @@ public class RacingCarView {
         return List.of(input.split(","));
     }
 
+    public int getAttemptCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        return convertToNumber(input);
+    }
+
+    private int convertToNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
+
 }
