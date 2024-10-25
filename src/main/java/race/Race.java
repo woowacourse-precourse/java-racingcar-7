@@ -101,11 +101,11 @@ public class Race {
         List<String> winners = new ArrayList<>();
         int maxNum = 0;
 
-        for(int i: cars.values()) {
+        for(int i : cars.values()) {
             maxNum = Math.max(maxNum, i);
         }
 
-        int finalMaxNum = maxNum;
+        final int finalMaxNum = maxNum;
         cars.forEach((key, value) -> {
             if (value == finalMaxNum) {
                 winners.add(key);
