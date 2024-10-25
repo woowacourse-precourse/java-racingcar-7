@@ -20,17 +20,16 @@ public class Application {
         int count = validateCount(inputCount);
 
         printResultPrompt();
-        Map<String, StringBuilder> result = initResult(carNames);
+
+        Game game = new Game(carNames);
 
         for (int i = 0; i < count; i++) {
-            moveCarsIfQualified(result);
-            printStatus(result);
+            Map<String, StringBuilder> roundResult = game.moveCarsIfQualified();
+            printStatus(roundResult);
             System.out.println();
         }
 
-        int maxMoveCount = getMaxMoveCount(result);
-        List<String> winners = getWinners(result, maxMoveCount);
-
+        List<String> winners = game.getWinners();
         printWinners(winners);
     }
 
@@ -101,41 +100,10 @@ public class Application {
         System.out.println("실행 결과");
     }
 
-    public static Map<String, StringBuilder> initResult(String[] carNames) {
-        Map<String, StringBuilder> result = new HashMap<>();
-        for(String carName : carNames) {
-            result.put(carName, new StringBuilder());
+    public static void printStatus(Map<String, StringBuilder> roundResult) {
+        for (String carName : roundResult.keySet()) {
+            System.out.println(carName + " : " + roundResult.get(carName));
         }
-        return result;
-    }
-
-    public static void moveCarsIfQualified(Map<String, StringBuilder> result) {
-        for(String carName : result.keySet()) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
-                result.put(carName, result.get(carName).append("-"));
-            }
-        }
-    }
-
-    public static void printStatus(Map<String, StringBuilder> result) {
-        for (String carName : result.keySet()) {
-            System.out.println(carName + " : " + result.get(carName));
-        }
-    }
-
-    public static int getMaxMoveCount(Map<String, StringBuilder> result) {
-        return result.values().stream()
-                .mapToInt(StringBuilder::length)
-                .max()
-                .orElse(0);
-    }
-
-    public static List<String> getWinners(Map<String, StringBuilder> result, int maxMoveCount) {
-        return result.entrySet().stream()
-                .filter(entry -> entry.getValue().length() == maxMoveCount)
-                .map(Map.Entry::getKey)
-                .toList();
     }
 
     public static void printWinners(List<String> winners) {
