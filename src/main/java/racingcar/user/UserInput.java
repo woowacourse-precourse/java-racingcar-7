@@ -1,11 +1,9 @@
 package racingcar.user;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class UserInput {
 
-    public String[] readNamesOfCars() {
-        String[] namesOfCars = Console.readLine().split(",");
+    public String[] readNamesOfCars(String namesOfCarsInput) {
+        String[] namesOfCars = namesOfCarsInput.split(",");
 
         for (String carName : namesOfCars) {
             if (!isValidCarName(carName)) {
@@ -16,13 +14,12 @@ public class UserInput {
         return namesOfCars;
     }
 
-    public int readNumberOfAttempts() {
-        String numberOfAttemptsInput = Console.readLine();
-
+    public int readNumberOfAttempts(String numberOfAttemptsInput) {
         if (!isValidNumberOfAttempts(numberOfAttemptsInput)) {
             throw new IllegalArgumentException("시도할 횟수(\"" + numberOfAttemptsInput + "\")에 대한 형식이 잘못되었습니다.");
         }
-        return Integer.parseInt(Console.readLine());
+
+        return Integer.parseInt(numberOfAttemptsInput);
     }
 
     private boolean isValidCarName(String carName) {
