@@ -15,7 +15,7 @@ class Car {
     public String[] carLst;
     public int time;
     public int[] numLst;
-
+    public int[] forward;
     public void input(){
         System.out.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String cars = Console.readLine();
@@ -26,11 +26,19 @@ class Car {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("IllegalArgumentException");
         }
+        forward = new int[carLst.length];
     }
 
     private void giveRandomNumbers(){
         for (int i = 0; i < carLst.length; i++){
             numLst[i] = Randoms.pickNumberInRange(0, 9);
+        }
+    }
+    private void move(){
+        for (int i = 0; i < numLst.length; i++){
+            if (numLst[i] >= 4){
+                forward[i] += 1;
+            }
         }
     }
 }
