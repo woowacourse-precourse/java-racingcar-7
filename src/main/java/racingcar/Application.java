@@ -3,12 +3,15 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
     private static final String SPLIT_DELIMITER = ",";
+    private static final int MOVE_THRESHOLD = 4;
     private static final int MAX_NAME_LENGTH = 5;
     private static final int INIT = 0;
+    private static final int MAX_RANDOM_NUMBER = 10;
 
     private static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -58,6 +61,33 @@ public class Application {
             carPositions.add(INIT);
         }
         return carPositions;
+    }
+
+    private static void moveCars(List<String> carNames, List<Integer> carPositions, int numberOfRounds) {
+        Random random = new Random();
+        for (int i = 0; i < numberOfRounds; i++) {
+            randomlyDecideMovement(carNames, carPositions, random);
+            printRoundResults(carNames, carPositions);
+        }
+    }
+
+    private static void randomlyDecideMovement(List<String> carNames, List<Integer> carPositions, Random random) {
+        for (int i = 0; i < carNames.size(); i++) {
+            if (random.nextInt(MAX_RANDOM_NUMBER) >= MOVE_THRESHOLD) {
+                carPositions.set(i, carPositions.get(i) + 1);
+            }
+        }
+    }
+
+    private static void showResult() {
+        System.out.println("실행 결과");
+    }
+
+    private static void printRoundResults(List<String> carNames, List<Integer> carPositions) {
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.println(carNames.get(i) + " : " + "-".repeat(carPositions.get(i)));
+        }
+        System.out.print("\n");
     }
 
     public static void main(String[] args) {
