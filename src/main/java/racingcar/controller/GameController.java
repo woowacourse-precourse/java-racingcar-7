@@ -21,7 +21,6 @@ public class GameController {
 
     private final List<Vehicle> carList = new ArrayList<>();
     private int round;
-    private int max = 0;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -68,7 +67,6 @@ public class GameController {
             if (isMovingForward()) {
                 car.moveForward();
             }
-            max = Math.max(car.getPosition(), max);
         }
     }
 
@@ -104,6 +102,9 @@ public class GameController {
     }
 
     private int getMaxPosition() {
-        return max;
+        return carList.stream()
+                .mapToInt(Vehicle::getPosition)
+                .max()
+                .orElse(0);
     }
 }
