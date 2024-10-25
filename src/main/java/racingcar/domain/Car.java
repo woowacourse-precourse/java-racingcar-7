@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 import racingcar.utils.MovingUtils;
-import racingcar.utils.validation.CarNameValidation;
-
 import java.math.BigInteger;
 
 public class Car {
@@ -11,8 +9,8 @@ public class Car {
     private final Position position;
 
     private Car(String name) {
-        this.name = new Name(name);
-        this.position = new Position();
+        this.name = Name.from(name);
+        this.position = Position.from();
     }
 
     public String getName() {
@@ -24,7 +22,7 @@ public class Car {
     }
 
     public String currentPositionFormat() {
-        return name + " : " + position;
+        return name.getName() + " : " + position.getPosition();
     }
 
     public void move() {

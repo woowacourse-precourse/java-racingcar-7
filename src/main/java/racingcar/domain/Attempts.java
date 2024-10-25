@@ -8,7 +8,7 @@ public class Attempts {
 
     private BigInteger attempt;
 
-    public Attempts(String attempt) {
+    private Attempts(String attempt) {
         AttemptValidation.validate(attempt);
         this.attempt = new BigInteger(attempt);
     }
