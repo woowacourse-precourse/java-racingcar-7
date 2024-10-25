@@ -3,7 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.constants.ViewMessage;
 import racingcar.domain.Car;
-import racingcar.domain.Forward;
+import racingcar.domain.ForwardCount;
 import racingcar.domain.Input;
 import racingcar.view.InputView;
 
@@ -21,7 +21,7 @@ public class RacingCarController {
 
     private void inputForwardCount() {
         InputView.showInputPrompt(ViewMessage.FORWARD_COUNT_INPUT_PROMPT);
-        Forward.from(read());
+        ForwardCount.from(read());
     }
 
     public static String read() {

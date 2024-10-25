@@ -2,17 +2,17 @@ package racingcar.domain;
 
 import static racingcar.constants.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_SINGLE_DIGIT;
 
-public class Forward {
+public class ForwardCount {
 
     private final int forwardCount;
 
-    private Forward(String forwardCount) {
+    private ForwardCount(String forwardCount) {
         Validator.validator(forwardCount);
         this.forwardCount = parseToInt(forwardCount);
     }
 
-    public static Forward from(String forwardCount) {
-        return new Forward(forwardCount);
+    public static ForwardCount from(String forwardCount) {
+        return new ForwardCount(forwardCount);
     }
 
     public int getForwardCount() {
