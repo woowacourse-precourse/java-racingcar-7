@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.global.ui.InputCarNames;
+import racingcar.util.InputCarNames;
 
 import java.util.List;
 
