@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.utils.Utils;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class RacingController {
     public void startRace(){
         while(tryNumber > 0){
             advanceCar();
+            runResult(cars);
             tryNumber--;
         }
     }
@@ -48,5 +50,8 @@ public class RacingController {
         if(Utils.advanceConditions()){
             car.move();
         }
+    }
+    public void runResult(List<Car> cars){
+        OutputView.printRunResult(cars);
     }
 }
