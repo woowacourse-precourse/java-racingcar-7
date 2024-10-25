@@ -40,10 +40,10 @@ public class Race {
 
     private void checkAdvance(Car car) {
         if(car.getRandomNum() >= 4) {
-            car.countAdvance ++;
-
+            car.increaseCountAdvance();
         }
     }
+
 
     public void racingResult(List<Car> cars) {
         int maxAdvanceNum = 0;

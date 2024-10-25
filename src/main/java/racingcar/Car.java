@@ -1,9 +1,9 @@
 package racingcar;
 
 public class Car {
-    String name;
-    int randomNum;
-    int countAdvance;
+    private final String name;
+    private int randomNum;
+    private int countAdvance;
 
     public Car(String name, int randomNum, int countAdvance) {
         this.name = name;
@@ -16,6 +16,11 @@ public class Car {
         return randomNum;
     }
     public int getCountAdvance() { return countAdvance; }
+
+    public void increaseCountAdvance() {
+        this.countAdvance ++;
+    }
+
 
     public void occurRandomNum(){
         this.randomNum = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0,9);
