@@ -9,4 +9,17 @@ public class OutputHandler {
             }
         }
     }
+
+    public static void winnerOuput(Racingcar[] racingcars,int racingRound){   // 최종 우승자 출력
+        int winnerCount = 0;
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < racingcars.length; i++) {
+            if (winnerCount!=0) {
+                System.out.print(", ");
+            }
+            if (racingcars[i].getMoveCount()==racingRound) {
+                System.out.println(racingcars[i].getName());
+            }
+        }
+    }
 }
