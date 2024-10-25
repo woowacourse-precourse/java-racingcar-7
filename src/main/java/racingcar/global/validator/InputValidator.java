@@ -9,11 +9,11 @@ import java.util.function.Consumer;
 public class InputValidator {
     public enum ValidationMode {
         CAR_NAME(1, 5, InputValidator::validateCarName),
-        CAR_COUNT(2, 100, InputValidator::validateCarCount),
+        CAR_COUNT(1, 100, InputValidator::validateCarCount),
         GAME_COUNT(1, 1000, InputValidator::validateGameCount);
 
-        public final int min;
-        public final int max;
+        public int min;
+        public int max;
         private final Consumer<String> validator;
 
         ValidationMode(int min, int max, Consumer<String> validator) {
