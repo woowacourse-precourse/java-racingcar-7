@@ -1,13 +1,11 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
-
     @Test
     @DisplayName("이름이 5글자 이상일 때 예외가 발생해야 한다")
     void nameTooLong() {
