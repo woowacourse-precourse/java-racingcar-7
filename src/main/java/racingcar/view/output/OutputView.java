@@ -10,6 +10,7 @@ public class OutputView {
     public static final String RESULT_TITLE = "실행 결과";
     public static final String RESULT_DETAIL = "%s : %s";
     public static final String FINAL_RESULT = "최종 우승자 : %s";
+    public static final String WINNER_DELIMITER = ", ";
 
     public void printMessage(String message) {
         System.out.println(message);
@@ -26,8 +27,9 @@ public class OutputView {
     }
 
     public void printWinners(List<String> winnerList) {
-        String winners = String.join(", ", winnerList);
+        String winners = String.join(WINNER_DELIMITER, winnerList);
         String finalResultFormat = format(FINAL_RESULT, winners);
+
         System.out.println(finalResultFormat);
     }
 }
