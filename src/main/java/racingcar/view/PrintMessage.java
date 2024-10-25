@@ -6,7 +6,7 @@ public enum PrintMessage {
     INPUT_TRY_CAR_MOVEMENT_MESSAGE("시도할 횟수는 몇 회인가요?"),
     LINE_SPACE(""),
     CAR_RACE_RESULT_MESSAGE("실행 결과"),
-    CAR_RACE_WINNER_MESSAGE("최종 우승자 :");
+    CAR_RACE_WINNER_MESSAGE("최종 우승자 : ");
 
     private final String message;
 
