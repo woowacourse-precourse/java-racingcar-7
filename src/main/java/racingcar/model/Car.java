@@ -2,15 +2,15 @@ package racingcar.model;
 
 public class Car {
     private final CarName carName;
-    private final Position position;
+    private Integer position;
 
     public Car(CarName carName) {
         this.carName = carName;
-        this.position = new Position();
+        this.position = 0;
     }
 
     public void forwardDistance() {
-        position.moveForward();
+        position++;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class Car {
     }
 
     public Integer getDistance() {
-        return position.getPosition();
+        return position;
     }
 
     public String getName() {
