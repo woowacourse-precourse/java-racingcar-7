@@ -9,13 +9,20 @@ import racingcar.exception.InvalidNameException;
 
 public class Application {
 
-    public static final String COMMA = ",";
-    public static final String HYPHEN = "-";
+    private static final int RANDOM_NUMBER_START_INCLUSIVE = 0;
+    private static final int RANDOM_NUMBER_END_INCLUSIVE = 9;
+    private static final int FORWARD_MIN_INCLUSIVE = 4;
+    private static final String COMMA = ",";
+    private static final String HYPHEN = "-";
 
     public static void main(String[] args) {
         List<String> names = readNames();
         List<Car> cars = new ArrayList<>(names.size());
-        MovingStrategy movingStrategy = new RacingCarMovingStrategy();
+        RandomNumberGenerator randomNumberGenerator = new RandomIntegerGenerator(RANDOM_NUMBER_START_INCLUSIVE,
+                RANDOM_NUMBER_END_INCLUSIVE);
+        NumberComparable numberComparable = new IntegerComparable();
+        MovingStrategy movingStrategy = new RacingCarMovingStrategy(randomNumberGenerator, numberComparable,
+                FORWARD_MIN_INCLUSIVE);
         initialize(names, cars, movingStrategy);
         long attempt = readAttempt();
 

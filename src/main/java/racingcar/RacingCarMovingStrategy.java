@@ -1,15 +1,21 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class RacingCarMovingStrategy implements MovingStrategy {
 
-    public static final int RANDOM_NUMBER_START_INCLUSIVE = 0;
-    public static final int RANDOM_NUMBER_END_INCLUSIVE = 9;
+    private final RandomNumberGenerator randomNumberGenerator;
+    private final NumberComparable<Number> numberComparable;
+    private final int forwardMinInclusive;
+
+    public RacingCarMovingStrategy(final RandomNumberGenerator randomNumberGenerator,
+                                   final NumberComparable<Number> numberComparable, final int forwardMinInclusive) {
+        this.forwardMinInclusive = forwardMinInclusive;
+        this.randomNumberGenerator = randomNumberGenerator;
+        this.numberComparable = numberComparable;
+    }
 
     @Override
     public boolean canMove() {
-        int randomValue = Randoms.pickNumberInRange(RANDOM_NUMBER_START_INCLUSIVE, RANDOM_NUMBER_END_INCLUSIVE);
-        return randomValue >= 4;
+        Number value = randomNumberGenerator.pickNumber();
+        return numberComparable.compare(value, forwardMinInclusive) >= 0;
     }
 }
