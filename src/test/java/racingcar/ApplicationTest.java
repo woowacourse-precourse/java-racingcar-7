@@ -18,7 +18,7 @@ class ApplicationTest extends NsTest {
     void 중복된_이름() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,pobi", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
+                    .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -36,6 +36,15 @@ class ApplicationTest extends NsTest {
     void 글자수_제한을_넘는_이름() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobipobi", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("이동 횟수로 숫자가 아닌 값 입력 테스트")
+    @Test
+    void 숫자가_아닌_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni","abc"))
                     .isInstanceOf(IllegalArgumentException.class)
         );
     }
