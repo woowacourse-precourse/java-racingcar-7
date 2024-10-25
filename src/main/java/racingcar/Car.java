@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int FORWARD_STANDARD = 4;
 
     private final String name;
     private int position;
@@ -28,5 +29,11 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void move(int number) {
+        if (number >= FORWARD_STANDARD) {
+            position++;
+        }
     }
 }

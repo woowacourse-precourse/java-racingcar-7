@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +32,17 @@ public class Cars {
         }
 
         return cars;
+    }
+
+    public void moveAll() {
+        for (Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            car.move(randomNumber);
+        }
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 
 }
