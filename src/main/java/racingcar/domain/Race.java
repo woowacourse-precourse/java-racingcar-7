@@ -37,8 +37,8 @@ public class Race {
         for (int i = 0; i < moveCount; i++) {
             cars.move();
             raceHistoryStringBuilder
-                    .append(cars.getMoveHistory())
-                    .append("\n");
+                    .append(cars.formatCarsMoveHistory())
+                    .append(System.lineSeparator());
         }
     }
 
