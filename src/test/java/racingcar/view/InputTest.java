@@ -66,7 +66,7 @@ class InputTest {
     }
 
     @Test
-    @DisplayName("이름이 중복된 경우")
+    @DisplayName("이름이 1개만 존재할 경우")
     void exceptionIfCountCarNameOne() {
         List<String> input = List.of("wj");
         assertThatThrownBy(() -> checkCountCarNames(input))
