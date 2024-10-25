@@ -12,6 +12,7 @@ import racingcar.view.OutputView;
 
 public class MainController {
     private final static String CAR_NAME_SPLIT_REGEX = ",";
+    private final static int TRAIL_NUMBER_MIN = 0;
     private final MoveRule moveRule;
 
     private MainController(final MoveRule moveRule) {
@@ -29,7 +30,8 @@ public class MainController {
         final Racing racing = Racing.create(cars);
 
         final String trialNumberInput = InputView.readTrialNumberInput();
-        final int trialNumber = Integer.parseInt(trialNumberInput);
+        final int trialNumber = parseTrialNumber(trialNumberInput);
+        validateTrialNumber(trialNumber);
 
         racingGameTrials(racing, trialNumber);
         displayWinners(racing);
@@ -43,6 +45,22 @@ public class MainController {
 
     private List<Car> convertToCars(final List<String> carStrings) {
         return carStrings.stream().map(Car::create).toList();
+    }
+
+    private int parseTrialNumber(final String trialNumberInput) {
+        int trialNumber;
+        try {
+            trialNumber = Integer.parseInt(trialNumberInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return trialNumber;
+    }
+
+    private void validateTrialNumber(final int trialNumber) {
+        if (trialNumber < TRAIL_NUMBER_MIN) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void racingGameTrials(final Racing racing, int trialNumber) {
