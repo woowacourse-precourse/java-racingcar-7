@@ -16,4 +16,11 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("javaji"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차는_전진_한다() {
+        Car car = new Car("pobi");
+        car.moveForward();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }
