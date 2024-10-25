@@ -12,9 +12,9 @@ public class InputView {
 
     //todo: 예외처리
     public InputDTO getInput() {
-        System.out.println(InputMessage.CAR_NAME_INPUT_MESSAGE);
+        System.out.println(InputMessage.CAR_NAME_INPUT_MESSAGE.getMessage());
         String carNames = Console.readLine();
-        System.out.println(InputMessage.TRY_NUM_INPUT_MESSAGE);
+        System.out.println(InputMessage.TRY_NUM_INPUT_MESSAGE.getMessage());
         String tryNums = Console.readLine();
         validateTryNums(tryNums);
         validateCarNames(carNames);
@@ -22,7 +22,7 @@ public class InputView {
     }
 
     private void validateTryNums(String tryNums) {
-        if (!tryNums.isBlank()) {
+        if (tryNums.isBlank()) {
             throw new IllegalArgumentException("숫자 공백 입력 값은 허용하지 않습니다.");
         }
         if (!isNumeric(tryNums)) {
@@ -34,7 +34,7 @@ public class InputView {
         StringTokenizer stringTokenizer = new StringTokenizer(carNames);
         while (stringTokenizer.hasMoreTokens()) {
             String name = stringTokenizer.nextToken(DELIM);
-            if (!isMoreThanFive(name)) {
+            if (isMoreThanFive(name)) {
                 throw new IllegalArgumentException("이름이 5자 이상일 수 없습니다.");
             }
             if (isDuplicate(carNames)) {
