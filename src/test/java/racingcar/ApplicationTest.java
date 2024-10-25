@@ -40,6 +40,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_5자_초과_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("jijiji, coco", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 공백이 될 수 없습니다.")
+        );
+    }
+
+    @Test
+    void 자동차_이름_중복_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("jiji, jiji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 중복될 수 없습니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
