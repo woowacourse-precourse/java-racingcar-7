@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
@@ -52,4 +53,22 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.carNameValidate(carNamesWithNonPrintable))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("게임라운드 횟수 입력이 비어있는 경우 예외발생")
+    void gameRoundIsEmptyTest(String input) {
+        assertThatThrownBy(() -> Validator.gameRoundValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "1.1"})
+    @DisplayName("게임라운드 횟수 입력이 양의 정수가 아닌경우")
+    void gameRoundWithNegativeNumberTest(String input) {
+        assertThatThrownBy(() -> Validator.gameRoundValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
