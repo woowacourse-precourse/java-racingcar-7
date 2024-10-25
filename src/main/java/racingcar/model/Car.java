@@ -10,6 +10,10 @@ public class Car {
 		this.movement = new Movement();
 	}
 
+	public String getName() {
+		return name.getName();
+	}
+
 	public void move(int number) {
 		movement.move(number);
 	}
