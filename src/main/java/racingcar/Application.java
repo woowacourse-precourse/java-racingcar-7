@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.GameCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,6 +15,8 @@ public class Application {
     Cars cars = new Cars(input);
     OutputView.printGameCountPrompt();
     String gameCount = InputView.getTryCount();
+    GameCount count = new GameCount(gameCount);
+
 
   }
 }

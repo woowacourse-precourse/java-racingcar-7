@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Cars {
   private final Map<String, Car> cars;
@@ -28,5 +30,9 @@ public class Cars {
 
   public int size() {
     return cars.size();
+  }
+
+  public Set<String> getCarNames() {
+    return cars.keySet();
   }
 }
