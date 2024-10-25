@@ -1,13 +1,13 @@
 package racingcar.domain;
 
 
-public class Car {
+public class RacingCar {
     private static final String MOVE_LINE = "-";
     private static final String STATE = "%s : %s";
     private String name;
     private int currentLocation;
 
-    public Car(String name) {
+    public RacingCar(String name) {
         this.name = name;
         currentLocation = 0;
     }

@@ -2,12 +2,12 @@ package racingcar.util.transporter;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
 
 public class BasicRacingCarTransporter implements RacingCarTransporter {
     @Override
-    public void transportRacingCar(List<Car> racingCars) {
-        for (Car racingCar : racingCars) {
+    public void transportRacingCar(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
             if (isMove()) {
                 racingCar.move();
             }
