@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Cars {
+    private static final int MIN_CAR_LENGTH = 1;
+    private static final int MAX_CAR_LENGTH = 100;
+    private static final String CAR_LENGTH_ERROR_MESSAGE =
+            String.format("자동차의 개수는 %d 이상 %d 이하여야 합니다.", MIN_CAR_LENGTH, MAX_CAR_LENGTH);
 
     private final Set<Car> carStore;
 
@@ -19,8 +23,15 @@ public class Cars {
     }
 
     public static Cars from(List<String> carNames) {
+        validateCarNames(carNames);
         List<Car> cars = carNames.stream().map(Car::new).toList();
         return new Cars(cars);
+    }
+
+    private static void validateCarNames(List<String> carNames) {
+        if (carNames.size() < MIN_CAR_LENGTH || carNames.size() > MAX_CAR_LENGTH) {
+            throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
+        }
     }
 
     public void moveAll() {
