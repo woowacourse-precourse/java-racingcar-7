@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static racingcar.global.error.Error.NAME_BLANK_EXCEPION;
+import static racingcar.global.error.Error.NAME_DUPLICATE_EXCEPION;
 import static racingcar.global.error.Error.NAME_LENGTH_EXCEPION;
 import static racingcar.global.error.Error.TRY_COUNT_EXCEPION;
 
@@ -25,9 +26,22 @@ public class RacingInputValidateService {
         if (!validateNameNotNull(carNames)) {
             throw new NameError(NAME_BLANK_EXCEPION);
         }
+        if (!validateNotDuplicateName(carNames)) {
+            throw new NameError(NAME_DUPLICATE_EXCEPION);
+        }
         if (!validateNameLength(carNames)) {
             throw new NameError(NAME_LENGTH_EXCEPION);
         }
+    }
+
+    private boolean validateNotDuplicateName(List<String> carNames) {
+        long carCounts = carNames.stream().count();
+        long carDistinctCounts = carNames.stream().distinct().count();
+
+        if (carCounts == carDistinctCounts) {
+            return true;
+        }
+        return false;
     }
 
     public void validateTryCount(String count) {
