@@ -1,7 +1,10 @@
 package racingcar;
+import static java.util.stream.Collectors.joining;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,6 +24,8 @@ public class Application {
             }
             printMoves(cars, moves);
         }
+
+        printWinner(cars, moves);
     }
 
     private static List<String> getCars() {
@@ -51,5 +56,22 @@ public class Application {
             roundResult.append("\n");
         }
         System.out.println(roundResult);
+    }
+
+    private static void printWinner(List<String> cars, List<Integer> moves) {
+        int maxValue = moves.stream().max(Integer::compare).orElse(0);
+
+        List<Integer> maxIndices = new ArrayList<>();
+        for (int i = 0; i < moves.size(); i++) {
+            if (moves.get(i).equals(maxValue)) {
+                maxIndices.add(i);
+            }
+        }
+
+        String result = String.join(", ", maxIndices.stream()
+                .map(index -> cars.get(index))
+                .collect(Collectors.toList()));
+
+        System.out.println("최종 우승자 : " + result);
     }
 }
