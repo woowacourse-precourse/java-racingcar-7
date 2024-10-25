@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SequencedMap;
 import racingcar.model.CarMovementResults;
+import racingcar.model.Cars;
 import racingcar.model.Game;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -29,8 +30,8 @@ public class GameController {
         }
         outputView.displayMovementResults(allAttemptResults);
 
-        List<String> nameOfWinners = game.getNameOfWinner();
-        outputView.displayWinners(nameOfWinners);
+        game.judgeWinners();
+        outputView.displayWinners(game.getNameOfWinners());
     }
 
     private Game makeGame() {

@@ -42,7 +42,7 @@ public class Cars {
         cars.get(index).move();
     }
 
-    public List<String> getNameOfMaxPositionCars() {
+    public List<Car> getMaxPositionCars() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
@@ -50,7 +50,6 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }

@@ -57,6 +57,7 @@ public class GameTest {
         cars.move(indexOfMaxPositionCar);
 
         // when
+        game.judgeWinners();
         List<String> nameOfMaxPositionCars = game.getNameOfWinners();
 
         // then
@@ -81,7 +82,8 @@ public class GameTest {
         cars.move(indexOfSecondMaxPositionCar);
 
         // when
-        List<String> nameOfMaxPositionCars = cars.getNameOfMaxPositionCars();
+        game.judgeWinners();
+        List<String> nameOfMaxPositionCars = game.getNameOfWinners();
 
         // then
         assertAll(

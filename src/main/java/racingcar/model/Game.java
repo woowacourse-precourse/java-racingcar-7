@@ -9,6 +9,7 @@ public class Game {
     private static final int RANDOM_MAX_NUMBER = 9;
     private static final int MOVEMENT_CRITERIA = 4;
     private final Cars cars;
+    private Winners winners;
     private int attemptCount;
 
     public Game(Cars cars, int attemptCount) {
@@ -39,7 +40,15 @@ public class Game {
         return cars.getStatus();
     }
 
-    public List<String> getNameOfWinner() {
-        return cars.getNameOfMaxPositionCars();
+    public List<String> getNameOfWinners() {
+        if (winners == null) {
+            throw new IllegalArgumentException("아직 우승자들이 등록되지 않았습니다.");
+        }
+        return winners.getNamesOfWinner();
+    }
+
+    public void judgeWinners() {
+        List<Car> maxPositionCars = cars.getMaxPositionCars();
+        this.winners = new Winners(maxPositionCars);
     }
 }
