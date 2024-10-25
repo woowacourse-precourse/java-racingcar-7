@@ -12,8 +12,11 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int totalMoves = Integer.parseInt(Console.readLine());
-
-        new RacingGame().run(input, totalMoves);
+        try {
+            int totalMoves = Integer.parseInt(Console.readLine());
+            new RacingGame().run(input, totalMoves);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 올바르게 입력해주세요");
+        }
     }
 }
