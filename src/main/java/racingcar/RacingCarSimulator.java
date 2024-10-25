@@ -25,11 +25,13 @@ public class RacingCarSimulator {
 	}
 
 	private List<String> inputCarName() {
+		OutputView.promptForCarName();
 		String input = Console.readLine();
 		return StringParser.parseCarNames(input);
 	}
 
 	private long inputIterationCount() {
+		OutputView.promptForIterationCount();
 		String input = Console.readLine();
 		return StringParser.parsePositiveNumber(input);
 	}
