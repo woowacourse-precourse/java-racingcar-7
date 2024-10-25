@@ -5,9 +5,19 @@ import java.util.*;
 
 public class Application {
     private List<Car> cars = new ArrayList<>();
+    private int tryCount;
 
     public void start() {
         inputCarNames();
+        inputTryCount();
+    }
+
+    private void inputTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        tryCount = Integer.parseInt(Console.readLine());
+        if (tryCount <= 0){
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
+        }
     }
 
     private void inputCarNames() {
