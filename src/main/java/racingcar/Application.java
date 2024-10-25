@@ -21,6 +21,9 @@ public class Application {
         }
 
         List<Car> carList = createCarList(carNamesInput);
+
+        Racing racing = new Racing();
+        racing.start(carList, attemptCount);
     }
 
     public static boolean isValidName(String carNamesInput) {

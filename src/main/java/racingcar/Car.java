@@ -11,4 +11,8 @@ public class Car {
         this.name = input;
         this.positions = new ArrayList<>();
     }
+
+    public void move() {
+        positions.add("-");
+    }
 }
