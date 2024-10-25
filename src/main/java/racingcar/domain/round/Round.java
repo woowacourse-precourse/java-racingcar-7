@@ -29,7 +29,7 @@ public class Round {
         return this.round.getValue();
     }
 
-    public boolean isNotGameOver() {
+    public boolean isNotFinalRound() {
         return !(this.nowRound() == finalRound);
     }
 

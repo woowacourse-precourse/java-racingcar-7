@@ -21,7 +21,7 @@ class RoundTest {
 
     @Test
     @DisplayName("1라운드 정보가 주어질 경우, 게임이 종료되지 않는다.")
-    void givenOneRoundInfo_whenCreatedRound_thenIsNotGameOver() {
+    void givenOneRoundInfo_whenCreatedRound_thenIsNotFinalRound() {
         // given
         int roundInfo = 1;
 
@@ -29,7 +29,7 @@ class RoundTest {
         Round round = new Round(roundInfo);
 
         // then
-        assertThat(round.isNotGameOver()).isTrue();
+        assertThat(round.isNotFinalRound()).isTrue();
     }
 
     @Test
@@ -43,7 +43,7 @@ class RoundTest {
         round.nextRound();
 
         // then
-        assertThat(round.isNotGameOver()).isFalse();
+        assertThat(round.isNotFinalRound()).isFalse();
     }
 
 }
