@@ -19,24 +19,22 @@ public class IO {
 
         System.out.println(Constants.INPUT_CAR_NAME);
         //첫번째 입력 처리
-        try {
-            inputs.add(Console.readLine());
-        } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException("잘못된 입력입니다");
-        } finally {
-            Console.close();
-        }
+        inputs.add(createInput());
 
         System.out.println(Constants.INPUT_RACE_ROUND);
         //두번째 입력 처리
+        inputs.add(createInput());
+
+        return inputs;
+    }
+
+    private static String createInput() {
         try {
-            inputs.add(Console.readLine());
+            return Console.readLine();
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("잘못된 입력입니다");
         } finally {
             Console.close();
         }
-
-        return inputs;
     }
 }
