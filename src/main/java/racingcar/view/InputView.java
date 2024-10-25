@@ -10,6 +10,9 @@ public class InputView {
     private static final String DELIMITER = ",";
     private static final int SPLIT_INCLUDE_LAST_SPACE = -1;
 
+    private InputView() {
+    }
+
     public static List<String> carNames() {
         return splitNames(input());
     }
