@@ -10,6 +10,11 @@ public class InputView {
 
     public static int inputNumberOfRounds(){
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        try{
+            return Integer.parseInt(Console.readLine());
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자를 입력하세요.");
+        }
     }
 }
