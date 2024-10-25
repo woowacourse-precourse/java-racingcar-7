@@ -7,12 +7,7 @@ public class CarNameValidation {
     public static void validate(String input) {
         validateNotNullOrEmpty(input);
         validateIncludeComma(input);
-
         validateCarName(input);
-        // 쉼표 기준으로 split -> size 1이면 예외처리
-        // 빈문자열이면 무시
-        // 띄어쓰기 없애고
-        // 5글자 이하인지
     }
 
     private static void validateNotNullOrEmpty(String input) {
@@ -27,11 +22,6 @@ public class CarNameValidation {
         }
     }
 
-    private static void validateCarNameLength(String input) {
-        if (input.length() > 5 || input.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     private static void validateCarName(String input) {
         String[] carNames = input.replaceAll("\\s+", "").split(","); // 공백 처리 완료
@@ -42,6 +32,21 @@ public class CarNameValidation {
             validateCarNameLength(carName);
             carNamesSet.add(carName);
         }
+        validateCarCount(carNamesSet);
+        carNamesSet.forEach(System.out::println);
+    }
+
+    private static void validateCarNameLength(String input) {
+        if (input.isEmpty() || input.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateCarCount(Set<String> inputs) {
+        if (inputs.size() < 2) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
 }
