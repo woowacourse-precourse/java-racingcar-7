@@ -56,7 +56,8 @@ class CarTest {
     @DisplayName("최대 값 테스트 : 최대 반복 횟수 확인")
     void carTestMaxCount() {
         String name = "c";
-        int tryCount = 100000000; // 시작 값
+        int tryCount = 100000000;
+        int increase = 10000000;
         boolean memoryExceeded = false;
 
         while (!memoryExceeded) {
@@ -64,7 +65,7 @@ class CarTest {
                 Car car = new Car(name, tryCount);
                 String result = car.generateStatus();
                 assertThat(result).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(tryCount));
-                tryCount += 10000000; //
+                tryCount += increase;
             } catch (OutOfMemoryError e) {
                 memoryExceeded = true;
                 System.out.println("Memory exceeded at tryCount: " + tryCount);

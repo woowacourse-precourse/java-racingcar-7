@@ -75,5 +75,16 @@ class InputTest {
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }
 
+    @Test
+    @DisplayName("null 입력")
+    void test6() {
+        String s = null;
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new Input(s));
+
+        assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
+    }
+
 
 }

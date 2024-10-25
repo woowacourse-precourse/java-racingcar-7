@@ -77,4 +77,14 @@ class TryCountTest {
 
         assertThat(result).isEqualTo(except);
     }
+
+    @Test
+    @DisplayName("null 입력")
+    void test7() {
+        String s = null;
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new TryCount(s));
+
+        assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
+    }
 }
