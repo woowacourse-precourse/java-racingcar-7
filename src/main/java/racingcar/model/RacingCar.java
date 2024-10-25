@@ -15,6 +15,11 @@ public class RacingCar {
         this.distanceCovered = 0;
     }
 
+    public RacingCar(String name, int distanceCovered) {
+        this.name = name;
+        this.distanceCovered = distanceCovered;
+    }
+
     public void tryMoveForward() {
         if (Randoms.pickNumberInRange(0, 9) >= MOVE_FORWARD_THRESHOLD) {
             moveForward();
