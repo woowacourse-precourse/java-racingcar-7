@@ -18,8 +18,8 @@
 
 ## Validator Class
 
-- [ ]  테스트 코드 작성
-    - [ ] validate 테스트 코드 작성
+- [x]  테스트 코드 작성
+    - [x] validate 테스트 코드 작성
 - [ ] 정규식 작성
 - [ ] validate 메소드 구현
 
