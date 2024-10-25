@@ -23,6 +23,7 @@ public class Race {
             cars = playRacingCar(cars);
 
             printCarForward(cars);
+            System.out.println();
         }
 
         CheckException.checkIsStart(cars);
