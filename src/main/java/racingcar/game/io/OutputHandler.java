@@ -1,4 +1,4 @@
-package racingcar.game.controller.io;
+package racingcar.game.io;
 
 import java.util.List;
 import java.util.stream.Collectors;

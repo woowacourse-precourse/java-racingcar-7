@@ -1,8 +1,8 @@
 package racingcar.game;
 
 import java.util.List;
-import racingcar.game.controller.io.InputHandler;
-import racingcar.game.controller.io.OutputHandler;
+import racingcar.game.io.InputHandler;
+import racingcar.game.io.OutputHandler;
 import racingcar.game.model.Car;
 import racingcar.game.model.RacingCars;
 
