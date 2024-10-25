@@ -6,16 +6,11 @@ import racingcar.model.vo.Round;
 public class Inputview {
 
     public String inputCarNames() {
-        String input = Console.readLine();
-        Console.close();
-
-        return input;
+        return Console.readLine();
     }
 
     public int inputRound() {
         String input = Console.readLine();
-        Console.close();
-
         Round round = Round.fromString(input);
         return round.round();
     }
