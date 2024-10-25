@@ -1,14 +1,13 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.car.RacingCar;
 import racingcar.util.RandomPicker;
 
 public class RacingCarService {
 
-    private List<RacingCar> racingCars;
     private final RandomPicker randomPicker;
 
     public RacingCarService(RandomPicker randomPicker) {
@@ -16,14 +15,26 @@ public class RacingCarService {
     }
 
     public List<RacingCar> logic(List<String> carNames, int moveCount) {
+        List<RacingCar> racingCars = carNames.stream().map(name -> new RacingCar(name, 0)).toList();
 
-        return racingCars;
+        repeatMethod(racingCars, moveCount);
+
+        List<RacingCar> winnerRacingCars = getWinnerRacingCars(racingCars);
+
+        return winnerRacingCars;
+    }
+
+    public void repeatMethod(List<RacingCar> racingCars, int moveCount) {
+        IntStream.range(0, moveCount).forEach(i -> {
+            process(racingCars);
+            racingCars.forEach(RacingCar::printMoveStatus);
+        });
+        System.out.println();
     }
 
 
     public void process(List<RacingCar> racingCars) {
-        racingCars.stream()
-                .filter(racingCar -> randomPicker.pickNumberInRange(0, 9) >= 4)
+        racingCars.stream().filter(racingCar -> randomPicker.pickNumberInRange(0, 9) >= 4)
                 .forEach(RacingCar::moveForwardOneStep);
     }
 
