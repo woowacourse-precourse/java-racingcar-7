@@ -25,6 +25,7 @@ class InputValidatorTest {
         String input2 = "john:rock";
         String input3 = "";
         String input4 = "철수,철수,영희";
+        String input5 = null;
 
         //then
         assertThrows(IllegalArgumentException.class,
@@ -35,6 +36,8 @@ class InputValidatorTest {
             () -> InputValidator.validateCarNames(input3));
         assertThrows(IllegalArgumentException.class,
             () -> InputValidator.validateCarNames(input4));
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateCarNames(input5));
     }
 
     @Test
@@ -54,6 +57,7 @@ class InputValidatorTest {
         String notNum = "three";
         String notPositive = "-2";
         String tooBigNumber = "99999999999999999";
+        String nullValue = null;
 
         //then
         assertThrows(IllegalArgumentException.class,
@@ -62,6 +66,7 @@ class InputValidatorTest {
             () -> InputValidator.validateNumberOfTrial(notPositive));
         assertThrows(IllegalArgumentException.class,
             () -> InputValidator.validateNumberOfTrial(tooBigNumber));
-
+        assertThrows(IllegalArgumentException.class,
+            () -> InputValidator.validateNumberOfTrial(nullValue));
     }
 }
