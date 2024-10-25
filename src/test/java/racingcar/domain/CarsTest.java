@@ -22,8 +22,10 @@ class CarsTest {
         }
         if (position1 > position2) {
             assertThat(cars.getWinners().get(0)).isEqualTo(car1);
+            assertThat(cars.getWinners().size()).isEqualTo(1);
             return;
         }
         assertThat(cars.getWinners().get(0)).isEqualTo(car2);
+        assertThat(cars.getWinners().size()).isEqualTo(1);
     }
 }
