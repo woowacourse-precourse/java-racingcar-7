@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Number;
 
 public class InputView {
 
@@ -11,6 +12,6 @@ public class InputView {
 
     public int attemptsNumInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        return new Number(Console.readLine()).getValue();
     }
 }
