@@ -9,4 +9,9 @@ public class InputView {
         return readLine();
     }
 
+    public Integer getAttemptCount(){
+        System.out.println("시도할 횟수를 입력해주세요");
+        return Integer.parseInt(readLine());
+    }
+
 }
