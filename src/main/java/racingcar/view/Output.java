@@ -12,7 +12,7 @@ import static racingcar.view.util.ViewMessage.라운드_결과_출력;
 import static racingcar.view.util.ViewMessage.최종_우승자_출력;
 
 public class Output {
-    private Integer FIRST_ROUND = 1;
+    private Integer FIRST_ROUND = 0;
     private String ONE_STEP = "-";
 
     protected Output() {
@@ -24,29 +24,40 @@ public class Output {
 
     public void viewOneRound(Api<RoundDto> api) {
         RoundDto roundDto = api.getData();
-        if(Objects.equals(roundDto.getRound(), FIRST_ROUND)) {
-            viewFirstRound();
-        }
+        viewFirstRound(roundDto.getRound());
+
         List<CarDto> carDtos = roundDto.getCarDtos();
         carDtos.forEach(oneCar -> {
             viewOneCar(oneCar.getCarname(), oneCar.getDistance());
         });
-        System.out.println();
+        viewEnter();
     }
 
     public void viewResult(Api<String> api) {
         System.out.println(최종_우승자_출력.getMessage() + api.getData());
     }
 
-    private void viewFirstRound() {
-        System.out.println(라운드_결과_출력.getMessage());
+    private void viewFirstRound(Integer round) {
+        if(Objects.equals(round, FIRST_ROUND)) {
+            System.out.println(라운드_결과_출력.getMessage());
+        }
     }
 
     private void viewOneCar(String carname, Integer carDistance) {
         System.out.print(carname + " : ");
+        System.out.print(countDistance(carDistance));
+        viewEnter();
+    }
+
+    private StringBuilder countDistance(Integer carDistance) {
+        StringBuilder distance = new StringBuilder();
         IntStream.range(0, carDistance).forEach(showDistance -> {
-            System.out.print(ONE_STEP);
+            distance.append(ONE_STEP);
         });
+        return distance;
+    }
+
+    private void viewEnter() {
         System.out.println();
     }
 }

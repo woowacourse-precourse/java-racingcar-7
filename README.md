@@ -12,10 +12,10 @@
 
 
 
-- [ ] Game Class
-    - [ ] variable : race, input, output
-    - [ ] method : playGame
-        - [ ] TestCode
+- [X] Game Class
+    - [X] variable : input, output
+    - [X] method : playGame
+        - [X] TestCode
 - [X] Race Class
     - [X] variable : cars
     - [X] method : playOneRound, getWinnerCars, getCars
