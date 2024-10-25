@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import static racingcar.utils.InputValidator.validateNullOrEmpty;
+import static racingcar.utils.InputValidator.validateRoundCount;
 import static racingcar.utils.StringSeparator.separate;
 import static racingcar.view.InputView.getCarNameInput;
 import static racingcar.view.InputView.getRoundCountInput;
@@ -25,9 +27,15 @@ public class RacingCarController {
     }
 
     public void run() {
-        String carNames = getCarNameInput();
-        RoundCount roundCount = getTryCount(getRoundCountInput());
-        Cars cars = createCarList(carNames);
+        String carNameInput = getCarNameInput();
+        validateNullOrEmpty(carNameInput);
+
+        String roundCountInput = getRoundCountInput();
+        validateNullOrEmpty(roundCountInput);
+        validateRoundCount(roundCountInput);
+        RoundCount roundCount = getRoundCount(roundCountInput);
+
+        Cars cars = createCarList(carNameInput);
         printStartMessage();
         playRace(cars, roundCount);
         printWinners(cars);
@@ -41,7 +49,7 @@ public class RacingCarController {
         return new Cars(carList, randomNumberGenerator);
     }
 
-    private RoundCount getTryCount(String inputCountString) {
+    private RoundCount getRoundCount(String inputCountString) {
         int inputCount = Integer.parseInt(inputCountString);
         return new RoundCount(inputCount);
     }
