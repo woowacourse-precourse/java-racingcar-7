@@ -39,11 +39,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("경기 횟수가 null 혹은 Empty인 경우")
-    void NullOrEmpty() {
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> service.init("", "5"));
-        assertEquals("Null 혹은 공백 문자가 포함되었습니다.", ex.getMessage());
+    @DisplayName("우승자가 없는 경우")
+    void NoWinner() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("최종 우승자 :");
+                },
+                STOP, STOP
+        );
     }
 
     @Test
