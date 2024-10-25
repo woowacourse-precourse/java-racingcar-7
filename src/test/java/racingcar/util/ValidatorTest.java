@@ -3,12 +3,10 @@ package racingcar.util;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
 
@@ -25,6 +23,15 @@ public class ValidatorTest {
     void carNameDuplicateTest() {
         // 5글자 이상의 이름을 포함한 리스트로 검증
         assertThatThrownBy(() -> Validator.carNameValidate(List.of("pobi", "pobi", "ihavelongname")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("자동차 이름이 빈 문자열일 경우 예외 발생")
+    void carNameIsBlankTest(String input) {
+        List<String> carNames = List.of(input);
+        assertThatThrownBy(() -> Validator.carNameValidate(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
