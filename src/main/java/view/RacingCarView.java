@@ -29,18 +29,19 @@ public class RacingCarView {
     }
 
     public void printIntermediateResult(List<RacingCar> cars) {
-        StringBuilder result = new StringBuilder(LINE_SEPARATOR);
+        StringBuilder result = new StringBuilder();
         for (RacingCar car : cars) {
             String dashes = DISTANCE_OUTPUT_TEXT.repeat(car.getDistance());
             result.append(String.format(PRINT_INTERMEDIATE_RESULT_FORMAT, car.getName(), dashes))
                     .append(LINE_SEPARATOR);
         }
 
+        result.append(LINE_SEPARATOR);
         System.out.print(result);
     }
 
     public void printWinner(List<RacingCar> winners) {
-        StringBuilder result = new StringBuilder(LINE_SEPARATOR);
+        StringBuilder result = new StringBuilder();
         List<String> winnerNames = winners.stream()
                 .map(RacingCar::getName)
                 .toList();
