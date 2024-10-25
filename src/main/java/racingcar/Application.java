@@ -25,6 +25,13 @@ public class Application {
             System.out.println();
         }
 
+        // 경주 결과 출력
+        int maxDistance = getMaxDistance(carList);
+        String winners = findWinner(carList, maxDistance);
+
+
+        System.out.println("최종 우승자 : " + winners);
+
 
 
     }
@@ -40,6 +47,28 @@ public class Application {
 
     public static int count_input(String input){
         return Integer.parseInt(input);
+    }
+
+
+    public static int getMaxDistance(List<RacingCar> carList){
+        int maxDistance = carList.stream()
+                .mapToInt(RacingCar::getDistance)
+                .max()
+                .orElse(0);
+        return maxDistance;
+    }
+
+    public static String findWinner(List<RacingCar> carList, int maxDistance){
+        StringBuilder winner = new StringBuilder();
+        for(RacingCar car : carList){
+            if(car.getDistance() == maxDistance){
+                if(winner.length() > 0){
+                    winner.append(", ");
+                }
+                winner.append(car.getName());
+            }
+        }
+        return winner.toString();
     }
 }
 

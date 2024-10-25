@@ -3,6 +3,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCar {
     private String name;
     private int distance;
@@ -33,5 +36,6 @@ public class RacingCar {
     public String getlength(int distance){
         return "-".repeat(distance);
     }
+
 
 }
