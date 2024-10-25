@@ -1,8 +1,9 @@
 package racingcar.racingcar;
 
+import static racingcar.constant.Integers.CAR_NAME_MAX_LENGTH;
+
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.constant.Integers;
 
 public class RacingCarService {
     private static final RacingCarService RACING_CAR_SERVICE = new RacingCarService();
@@ -22,7 +23,7 @@ public class RacingCarService {
     }
 
     public List<RacingCar> makeCar(List<String> carNames) {
-        racingCarValidator.lengthCheck(carNames, Integers.CAR_NAME_MAX_LENGTH.getNumber());
+        racingCarValidator.lengthCheck(carNames, CAR_NAME_MAX_LENGTH.getNumber());
         racingCarValidator.sameNameCheck(carNames);
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : carNames) {
