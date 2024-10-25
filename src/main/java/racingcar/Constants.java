@@ -11,5 +11,8 @@ public class Constants {
 
     public static final int MAX_CAR_NAME_LENGTH = 5;
 
+    public static final int RANDOM_RANGE_MIN = 0;
+    public static final int RANDOM_RANGE_MAX = 9;
 
+    public static final int CONDITION_FOR_MOVING = 4;
 }

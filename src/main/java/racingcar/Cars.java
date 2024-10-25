@@ -15,9 +15,11 @@ public class Cars {
 
     public void run() {
         cars.forEach((carName, position) -> {
-            int randomNumber = Randoms.pickNumberInRange(0,9);
+            int randomNumber = Randoms.pickNumberInRange(
+                    Constants.RANDOM_RANGE_MIN,
+                    Constants.RANDOM_RANGE_MAX);
 
-            if(randomNumber >= 4){
+            if(randomNumber >= Constants.CONDITION_FOR_MOVING) {
                 cars.put(carName, cars.get(carName) + 1);
             }
         });
