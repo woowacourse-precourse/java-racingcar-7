@@ -21,5 +21,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printRacingResult(){
+        System.out.println();
+        System.out.println("실행결과");
+    }
+
 
 }
