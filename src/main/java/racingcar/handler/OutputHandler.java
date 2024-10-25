@@ -11,7 +11,6 @@ import racingcar.dto.Winners;
 import racingcar.utils.DisplayConverter;
 
 public class OutputHandler {
-
     public static void displayCarsNameInputMessage() {
         System.out.println(CARS_NAME_INPUT_MESSAGE);
     }

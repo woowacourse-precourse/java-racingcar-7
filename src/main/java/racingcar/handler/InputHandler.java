@@ -9,7 +9,6 @@ import java.util.List;
 import racingcar.validator.InputValidator;
 
 public class InputHandler {
-
     public static List<String> requestCarNames() {
         String carNamesText = Console.readLine();
         List<String> carNames = extractCarNamesToList(carNamesText);

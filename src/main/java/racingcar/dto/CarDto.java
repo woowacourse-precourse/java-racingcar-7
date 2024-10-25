@@ -16,5 +16,4 @@ public class CarDto {
     public int getCurrentPosition() {
         return currentPosition;
     }
-
 }

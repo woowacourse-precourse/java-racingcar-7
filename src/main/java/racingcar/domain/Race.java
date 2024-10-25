@@ -44,5 +44,4 @@ public class Race {
             return car.getCurrentPosition() == winnerPosition;
         }).map(car -> car.getName()).toList();
     }
-
 }

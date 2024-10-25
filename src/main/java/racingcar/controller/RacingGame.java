@@ -7,7 +7,7 @@ import racingcar.handler.InputHandler;
 import racingcar.handler.OutputHandler;
 
 public class RacingGame {
-    public void exec(){
+    public void exec() {
         Race race = settingRace();
         playGame(race);
     }
@@ -24,11 +24,10 @@ public class RacingGame {
         int totalRounds = InputHandler.requestTotalRounds();
 
         OutputHandler.displayExecResultMessage();
-        for(int i = 0; i < totalRounds; i++){
+        for (int i = 0; i < totalRounds; i++) {
             race.start();
             OutputHandler.displayRoundResult(race.getRoundResult());
         }
         OutputHandler.displayWinners(race.getFinalWinners());
     }
-
 }

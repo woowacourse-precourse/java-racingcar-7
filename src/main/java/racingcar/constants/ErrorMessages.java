@@ -1,7 +1,8 @@
 package racingcar.constants;
 
 public class ErrorMessages {
-    private ErrorMessages() {}
+    private ErrorMessages() {
+    }
 
     public static String OVER_LENGTH_ERROR_MESSAGE = "이름은 5글자를 넘길 수 없습니다";
     public static String UNDER_LENGTH_ERROR_MESSAGE = "이름은 최소 1글자 이상이어야 합니다";

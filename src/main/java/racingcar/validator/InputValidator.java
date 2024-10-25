@@ -9,7 +9,6 @@ import static racingcar.constants.ErrorMessages.UNDER_LENGTH_ERROR_MESSAGE;
 import static racingcar.constants.FormatConstants.BLANK;
 
 public class InputValidator {
-
     public static void validateCarName(String carName) {
         checkLength(carName);
         checkBlank(carName);
@@ -32,5 +31,4 @@ public class InputValidator {
         if (!carName.matches(CAR_NAME_REGEX))
             throw new IllegalArgumentException(CONTAIN_SPECIAL_CHARACTER_ERROR_MESSAGE);
     }
-
 }
