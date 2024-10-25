@@ -33,6 +33,7 @@ public class RacingGame {
         while (this.tryCount > 0) {
             for (Car car : cars) {
                 car.moveOrStay();
+                car.printMoveCount();
             }
             System.out.println();
             --this.tryCount;

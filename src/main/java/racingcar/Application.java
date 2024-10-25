@@ -9,7 +9,7 @@ public class Application {
         game.registerCars(Console.readLine());
         System.out.println("시도할 횟수는 몇 회인가요?");
         game.setTryCount(Integer.parseInt(Console.readLine()));
-        //RacingGame::doGame();
+        game.doGame();
         Console.close();
     }
 }

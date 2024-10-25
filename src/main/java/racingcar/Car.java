@@ -23,4 +23,17 @@ public class Car {
             ++moveCount;
         }
     }
+
+public void printMoveCount() {
+
+        System.out.println(carName + " : " + getSlashesForMoveCount());
+    }
+
+    private String getSlashesForMoveCount() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < moveCount; ++i) {
+            sb.append('-');
+        }
+        return sb.toString();
+    }
 }
