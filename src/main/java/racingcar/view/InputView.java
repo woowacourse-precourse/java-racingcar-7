@@ -1,6 +1,6 @@
 package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.controller.ValidateInput;
+import racingcar.model.ValidateInput;
 
 public class InputView {
     public static String carNamesInput;
