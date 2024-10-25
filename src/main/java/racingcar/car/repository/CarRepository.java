@@ -1,16 +1,16 @@
 package racingcar.car.repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import racingcar.car.domain.Car;
 
 public class CarRepository {
-	private final Map<String, Car> cars;
+	private final List<Car> cars;
+
 	private CarRepository() {
-		this.cars = new HashMap<>();
+		this.cars = new ArrayList<>();
 	}
 
 	private static class CarRepositoryHolder {
@@ -22,12 +22,10 @@ public class CarRepository {
 	}
 
 	public void saveAll(Collection<Car> cars) {
-		cars.forEach(car -> this.cars.put(car.getName(), car));
+		this.cars.addAll(cars);
 	}
 
 	public List<Car> findAll() {
-		return this.cars.values()
-			.stream()
-			.toList();
+		return cars;
 	}
 }

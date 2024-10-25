@@ -1,6 +1,5 @@
 package racingcar.car.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -27,11 +26,12 @@ public class CarService {
 	}
 
 	public void saveCars(List<CarCreateReqDto> createReqDtos) {
-		List<Car> cars = new ArrayList<>();
-		for (CarCreateReqDto createReqDto : createReqDtos) {
-			isValidName(createReqDto.getCarName());
-			cars.add(Car.from(createReqDto));
-		}
+		List<Car> cars = createReqDtos.stream()
+			.map(carCreateReqDto -> {
+				isValidName(carCreateReqDto.getCarName());
+				return Car.from(carCreateReqDto);
+			})
+			.toList();
 		carRepository.saveAll(cars);
 	}
 
