@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.io.Input;
+import racingcar.view.io.Input;
 
 import java.util.ArrayList;
 import java.util.HashMap;

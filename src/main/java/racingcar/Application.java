@@ -2,8 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.controller.GameController;
-import racingcar.io.Input;
-import racingcar.io.Output;
+import racingcar.view.io.Input;
+import racingcar.view.io.Output;
 
 import java.util.*;
 
