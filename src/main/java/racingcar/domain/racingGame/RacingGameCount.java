@@ -6,7 +6,7 @@ import racingcar.exception.racingGame.RacingGameException;
 import racingcar.exception.racingGame.RacingGameExceptionMessage;
 
 public class RacingGameCount {
-	private final String NUMBER_REGEX = "^\\d+$";
+	private final static String NUMBER_REGEX = "^\\d+$";
 	private final int count;
 
 	public RacingGameCount(final String count) {
