@@ -7,22 +7,21 @@ import java.util.stream.IntStream;
 import racingcar.domain.car.Cars;
 import racingcar.domain.racingGame.RacingGameCount;
 import racingcar.domain.racingGame.RacingRecord;
-import racingcar.util.RandomNumberGenerator;
 
 public class RacingGameService {
 	public List<RacingRecord> processRacingGame(Cars cars, RacingGameCount gameCount) {
 		List<RacingRecord> records = new ArrayList<>();
 		IntStream.range(0, gameCount.getCount())
 			.forEach(racingGame -> {
-				RacingRecord record = processEachRacingGame(cars, RandomNumberGenerator.generateRandomNumber());
+				RacingRecord record = processEachRacingGame(cars, new RandomNumberGenerator());
 				records.add(record);
 			});
 		return records;
 	}
 
-	private RacingRecord processEachRacingGame(Cars cars, int randomNumber) {
-		cars.getCars().forEach(car -> {
-			car.processGame(randomNumber);
+	private RacingRecord processEachRacingGame(Cars cars, RandomNumberGenerator randomNumberGenerator) {
+		cars.getRacingCars().forEach(car -> {
+			car.processGame(randomNumberGenerator.generateRandomNumber());
 		});
 		return new RacingRecord(cars);
 
