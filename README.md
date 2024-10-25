@@ -13,9 +13,9 @@
     - [x] WinnerResultGenerator
 - View
     - [x] InputView
-    - [ ] OutputView
+    - [x] OutputView
 - Controller
-    - [ ] GameController
+    - [x] GameController
 - Test
     - [ ] TextSeparatorTest
     - [ ] CarNameTest
