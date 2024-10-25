@@ -14,23 +14,23 @@ public class RacingService {
     private final int STOP_STEP = 0;
     public int executionCount = 0;
 
-    public RacingService(String carInput, int moveCountInput) {
+    public RacingService(String carNameInput, int moveCountInput) {
         this.MOVE_COUNT = moveCountInput;
-        initializeCarMapFromInput(carInput);
+        initializeCarMapFromInput(carNameInput);
     }
 
-    public void setCarInput(String carInput) {
+    public void setCarNameInput(String carNameInput) {
         CAR_MAP.clear();
-        initializeCarMapFromInput(carInput);
+        initializeCarMapFromInput(carNameInput);
     }
 
     public HashMap<String, Integer> getCarMap() {
         return CAR_MAP;
     }
 
-    public void initializeCarMapFromInput(String input) {
-        for (String car : input.split(CAR_INPUT_DELIMITER)) {
-            CAR_MAP.put(car, INITIAL_POSITION);
+    private void initializeCarMapFromInput(String carNameInput) {
+        for (String carName : carNameInput.split(CAR_INPUT_DELIMITER)) {
+            CAR_MAP.put(carName, INITIAL_POSITION);
         }
     }
 
@@ -81,11 +81,10 @@ public class RacingService {
         }
     }
 
-    public String[] startRaceGame() {
+    public void startRaceGame() {
         while (executionCount < MOVE_COUNT) {
             executeTurn();
             executionCount++;
         }
-        return getWinner();
     }
 }
