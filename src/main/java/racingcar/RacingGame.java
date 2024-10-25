@@ -3,8 +3,11 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -19,6 +22,7 @@ public class RacingGame {
         String tryTime = Console.readLine();
         int tryTimeInt = parseAndValidateTryTime(tryTime);
 
+        System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < tryTimeInt; i++) {
             moveCars(carDistanceMap);
@@ -26,6 +30,8 @@ public class RacingGame {
             System.out.println();
         }
 
+        List<String> winners = getWinner(carDistanceMap);
+        printWinners(winners);
     }
 
     private String[] splitCarNames(String carNames) {
@@ -84,4 +90,24 @@ public class RacingGame {
         }
     }
 
+    private List<String> getWinner(Map<String, Integer> carDistanceMap) {
+        int maxDistance = 0;
+        List<String> winners = new ArrayList<>();
+        for (String carName : carDistanceMap.keySet()) {
+            if (maxDistance > carDistanceMap.get(carName)) {
+                continue;
+            }
+            if(maxDistance < carDistanceMap.get(carName)) {
+                maxDistance = carDistanceMap.get(carName);
+                winners.clear();
+            }
+            winners.add(carName);
+        }
+        return winners;
+    }
+
+    private void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        System.out.print(String.join(", ", winners));
+    }
 }
