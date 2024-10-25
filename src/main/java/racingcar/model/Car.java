@@ -7,17 +7,24 @@ public class Car {
     private final String name;
     private int distance;
 
-    public Car(String name) {
+    private Car(String name) {
         validate(name);
         this.name = name;
+        this.distance = 0;
     }
 
+    public static Car of(String name){
+        return new Car(name);
+    }
 
     public void move() {
-        int random = Randoms.pickNumberInRange(0, 9);
-        if (random > 4) {
+        if (makeRandomNumber() >= 4) {
             distance++;
         }
+    }
+
+    private int makeRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
     private void validate(String name) {
@@ -32,4 +39,5 @@ public class Car {
     public int getDistance() {
         return distance;
     }
+
 }
