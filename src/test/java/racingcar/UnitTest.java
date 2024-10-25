@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.*;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -125,6 +124,21 @@ public class UnitTest extends NsTest {
         assertThat(cars.get(0).position).isEqualTo(1);
         assertThat(cars.get(1).position).isEqualTo(0);
         assertThat(cars.get(2).position).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("printCarInfo 테스트")
+    void printCarInfoTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Application.printCarInfo(cars);
+        assertThat(out.toString()).contains("car1 : -", "car2 : ---", "car3 : --");
     }
 
     @Override
