@@ -15,4 +15,10 @@ public class User {
         int tryNumber = Integer.parseInt(Console.readLine());
         return tryNumber;
     }
+
+    public static String[] getCars(){
+        String carNames = getCarNames();
+        String[] cars = carNames.split(",");
+        return cars;
+    }
 }
