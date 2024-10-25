@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 
 
@@ -65,5 +66,15 @@ public class Application {
 
     private void printRoundResult(String car) {
         System.out.println(car + " : " + carPositions.get(car));
+    }
+
+    private void executeRaceRound() {
+        for (String car : carPositions.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                moveCarForward(car);
+            }
+            printRoundResult(car);
+        }
+        System.out.println();
     }
 }
