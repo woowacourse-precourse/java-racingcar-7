@@ -67,6 +67,21 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도_횟수_0_음수_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("audi,ford", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("시도 횟수는 1회 이상으로 입력해야 합니다.")
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("audi,ford", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("시도 횟수는 1회 이상으로 입력해야 합니다.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
