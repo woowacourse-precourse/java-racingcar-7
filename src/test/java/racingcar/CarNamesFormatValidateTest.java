@@ -15,7 +15,7 @@ public class CarNamesFormatValidateTest {
             "ash ,green", "ash , green", "\n", "홍길동,두루미와다람쥐", "케서린 한"})
     @DisplayName("이름 입력 검증 테스트 예외 처리")
     void carNamesValidateThrowExceptionTest(String carNameInput) {
-        assertThatThrownBy(() -> CarNames.getAfterValidateForm(carNameInput)).
+        assertThatThrownBy(() -> CarNames.getAfterValidateFormat(carNameInput)).
                 isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,6 +23,6 @@ public class CarNamesFormatValidateTest {
     @ValueSource(strings = {"ash", "ash,green"})
     @DisplayName("이름 입력 검증 테스트")
     void carNamesValidateDoesNotThrowTest(String carNameInput) {
-        assertDoesNotThrow(() -> CarNames.getAfterValidateForm(carNameInput));
+        assertDoesNotThrow(() -> CarNames.getAfterValidateFormat(carNameInput));
     }
 }

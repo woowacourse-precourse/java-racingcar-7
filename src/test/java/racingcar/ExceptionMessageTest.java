@@ -62,7 +62,7 @@ public class ExceptionMessageTest {
     void carNamesInputStringExceptionTest4() {
         String breakLengthLimit = "longnameislong,james";
         try {
-            CarNames names = CarNames.getAfterValidateForm(breakLengthLimit);
+            CarNames names = CarNames.getAfterValidateFormat(breakLengthLimit);
         } catch (IllegalArgumentException e) {
             assertEquals("[ERROR] 올바른 자동차 이름 형식이 아닙니다.",
                     e.getMessage());

@@ -31,7 +31,7 @@ public class RacingController {
     }
 
     public void run() {
-        CarNames carNames = CarNames.getAfterValidateForm(inputView.getCarNames());
+        CarNames carNames = CarNames.getAfterValidateFormat(inputView.getCarNames());
         RacingChance racingChance =
                 RacingChance.getAfterValidateForm(inputView.getChanceToMove());
         Cars cars = Cars.getOfNamesAndStrategy(carNames, new RandomMoveStrategy());
