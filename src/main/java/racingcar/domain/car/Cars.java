@@ -14,7 +14,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = validate(cars);
+        this.cars = Validator.validate(cars);
     }
 
     public List<Car> getCars() {
@@ -47,37 +47,40 @@ public class Cars {
                 .toList();
     }
 
-    private List<Car> validate(List<Car> cars) {
-        validateParticipant(cars);
-        validateDuplicateName(cars);
+    private static class Validator {
 
-        return cars;
-    }
+        private static List<Car> validate(List<Car> cars) {
+            validateParticipant(cars);
+            validateDuplicateName(cars);
 
-    private void validateParticipant(List<Car> cars) {
-        if (isOne(cars)) {
-            throw new RaceException(ErrorMessage.INVALID_RACE_LIST_SIZE);
+            return cars;
         }
-    }
 
-    private boolean isOne(List<Car> cars) {
-        return cars.size() == ONE;
-    }
-
-    private void validateDuplicateName(List<Car> cars) {
-        if (hasDuplicateName(cars)) {
-            throw new RaceException(ErrorMessage.INVALID_SAME_NAME);
+        private static void validateParticipant(List<Car> cars) {
+            if (isOne(cars)) {
+                throw new RaceException(ErrorMessage.INVALID_RACE_LIST_SIZE);
+            }
         }
-    }
 
-    private boolean hasDuplicateName(List<Car> cars) {
-        return cars.size() != getUniqueNameCount(cars);
-    }
+        private static boolean isOne(List<Car> cars) {
+            return cars.size() == ONE;
+        }
 
-    private int getUniqueNameCount(List<Car> cars) {
-        return cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toSet())
-                .size();
+        private static void validateDuplicateName(List<Car> cars) {
+            if (hasDuplicateName(cars)) {
+                throw new RaceException(ErrorMessage.INVALID_SAME_NAME);
+            }
+        }
+
+        private static boolean hasDuplicateName(List<Car> cars) {
+            return cars.size() != getUniqueNameCount(cars);
+        }
+
+        private static int getUniqueNameCount(List<Car> cars) {
+            return cars.stream()
+                    .map(Car::getName)
+                    .collect(Collectors.toSet())
+                    .size();
+        }
     }
 }

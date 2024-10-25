@@ -22,12 +22,12 @@ public class UIController {
 
     public List<String> receiveName() {
         OutputView.print(QUESTION_CAR_NAME);
-        return validateName(InputView.read());
+        return Validator.validateName(InputView.read());
     }
 
     public int receiveCount() {
         OutputView.print(QUESTION_TRY_COUNT);
-        return validateCount(InputView.read());
+        return Validator.validateCount(InputView.read());
     }
 
     public void printRaceResultPhrase() {
@@ -45,66 +45,69 @@ public class UIController {
         OutputView.print(winners.toString());
     }
 
-    private List<String> validateName(String input) {
-        validateBlank(input);
-        validateSeparator(input);
+    private static class Validator {
 
-        return split(input, NAME_SEPARATOR_SYMBOL);
-    }
+        private static List<String> validateName(String input) {
+            validateBlank(input);
+            validateSeparator(input);
 
-    private List<String> split(String input, String separator) {
-        return Arrays.stream(input.split(separator))
-                .toList();
-    }
-
-    private void validateBlank(String input) {
-        if (isBlank(input)) {
-            throw new RaceException(ErrorMessage.INVALID_INPUT_BLANK);
+            return split(input, NAME_SEPARATOR_SYMBOL);
         }
-    }
 
-    private boolean isBlank(String input) {
-        return input.isBlank();
-    }
-
-    private void validateSeparator(String input) {
-        validateEdgeSeparator(input);
-        validateContinuousSeparator(input);
-    }
-
-    private void validateEdgeSeparator(String input) {
-        if (isEdgeSeparator(input)) {
-            throw new RaceException(ErrorMessage.INVALID_INPUT_FORMAT);
+        private static List<String> split(String input, String separator) {
+            return Arrays.stream(input.split(separator))
+                    .toList();
         }
-    }
 
-    private boolean isEdgeSeparator(String input) {
-        return input.startsWith(NAME_SEPARATOR_SYMBOL) || input.endsWith(NAME_SEPARATOR_SYMBOL);
-    }
-
-    private void validateContinuousSeparator(String input) {
-        if (isContinuousSeparator(input)) {
-            throw new RaceException(ErrorMessage.INVALID_CONTINUOUS_SEPARATOR);
+        private static void validateBlank(String input) {
+            if (isBlank(input)) {
+                throw new RaceException(ErrorMessage.INVALID_INPUT_BLANK);
+            }
         }
-    }
 
-    private boolean isContinuousSeparator(String input) {
-        return input.contains(NAME_SEPARATOR_SYMBOL.repeat(TWO));
-    }
-
-    private int validateCount(String count) {
-        validateBlank(count);
-        return validateNumber(count);
-    }
-
-    private int validateNumber(String count) {
-        if (isNotPositiveInteger(count)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT_FORMAT.getMessage());
+        private static boolean isBlank(String input) {
+            return input.isBlank();
         }
-        return Integer.parseInt(count);
-    }
 
-    private boolean isNotPositiveInteger(String count) {
-        return !count.matches(INTEGER_PATTERN);
+        private static void validateSeparator(String input) {
+            validateEdgeSeparator(input);
+            validateContinuousSeparator(input);
+        }
+
+        private static void validateEdgeSeparator(String input) {
+            if (isEdgeSeparator(input)) {
+                throw new RaceException(ErrorMessage.INVALID_INPUT_FORMAT);
+            }
+        }
+
+        private static boolean isEdgeSeparator(String input) {
+            return input.startsWith(NAME_SEPARATOR_SYMBOL) || input.endsWith(NAME_SEPARATOR_SYMBOL);
+        }
+
+        private static void validateContinuousSeparator(String input) {
+            if (isContinuousSeparator(input)) {
+                throw new RaceException(ErrorMessage.INVALID_CONTINUOUS_SEPARATOR);
+            }
+        }
+
+        private static boolean isContinuousSeparator(String input) {
+            return input.contains(NAME_SEPARATOR_SYMBOL.repeat(TWO));
+        }
+
+        private static int validateCount(String count) {
+            validateBlank(count);
+            return validateNumber(count);
+        }
+
+        private static int validateNumber(String count) {
+            if (isNotPositiveInteger(count)) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT_FORMAT.getMessage());
+            }
+            return Integer.parseInt(count);
+        }
+
+        private static boolean isNotPositiveInteger(String count) {
+            return !count.matches(INTEGER_PATTERN);
+        }
     }
 }

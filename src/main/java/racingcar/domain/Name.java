@@ -11,37 +11,39 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        this.name = validate(name);
+        this.name = Validator.validate(name);
     }
 
     public String getName() {
         return name;
     }
 
-    private static String validate(String name) {
-        validateLength(name);
-        validateEnglish(name);
+    private static class Validator {
+        private static String validate(String name) {
+            validateLength(name);
+            validateEnglish(name);
 
-        return name;
-    }
-
-    private static void validateEnglish(String name) {
-        if (isNotEnglish(name)) {
-            throw new RaceException(ErrorMessage.INVALID_NAME_NOT_ENGLISH);
+            return name;
         }
-    }
 
-    private static boolean isNotEnglish(String name) {
-        return !name.matches(PATTERN);
-    }
-
-    private static void validateLength(String name) {
-        if (isOverFive(name)) {
-            throw new RaceException(ErrorMessage.INVALID_NAME_OVER_FIVE);
+        private static void validateEnglish(String name) {
+            if (isNotEnglish(name)) {
+                throw new RaceException(ErrorMessage.INVALID_NAME_NOT_ENGLISH);
+            }
         }
-    }
 
-    private static boolean isOverFive(String name) {
-        return name.length() > FIVE;
+        private static boolean isNotEnglish(String name) {
+            return !name.matches(PATTERN);
+        }
+
+        private static void validateLength(String name) {
+            if (isOverFive(name)) {
+                throw new RaceException(ErrorMessage.INVALID_NAME_OVER_FIVE);
+            }
+        }
+
+        private static boolean isOverFive(String name) {
+            return name.length() > FIVE;
+        }
     }
 }
