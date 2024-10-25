@@ -28,4 +28,25 @@ public class CarsInRace {
     public static List<Car> getCarsInRace() {
         return carsInRace;
     }
+
+    public static List<String> getWinnersName() {
+        List<String> winnersName = new ArrayList<>();
+
+        for (Car car : getWinners()) {
+            winnersName.add(car.getName());
+        }
+
+        return winnersName;
+    }
+
+    private static List<Car> getWinners() {
+        int maxWinCount = carsInRace.stream()
+                .max(Comparator.comparingInt(Car::getWinCount))
+                .get()
+                .getWinCount();
+
+        return carsInRace.stream()
+                .filter(car -> car.getWinCount() == maxWinCount)
+                .collect(Collectors.toList());
+    }
 }
