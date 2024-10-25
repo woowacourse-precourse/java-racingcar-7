@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static racingcar.exception.InvalidInputException.validateCarName;
+import static racingcar.exception.InvalidInputException.validateCarNames;
 import static racingcar.util.Parsing.convertStringArrToMap;
 import static racingcar.util.Parsing.joinWinner;
 import static racingcar.util.Parsing.splitCarName;
@@ -24,7 +24,7 @@ public class RacingcarService {
     public void runRace(String carName, int attemptCount) {
         Racingcar racingcar = new Racingcar(carName);
         String[] carNames = splitCarName(racingcar.getCarName());
-        validateCarName(carNames);
+        validateCarNames(carNames);
         Map<String, String> player = convertStringArrToMap(carNames);
         startRace(player, attemptCount);
         List<String> winner = pickWinner(player, getMaxDashLength(player));
