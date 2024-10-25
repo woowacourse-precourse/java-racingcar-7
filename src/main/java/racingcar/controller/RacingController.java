@@ -19,16 +19,7 @@ public class RacingController {
     }
 
     public void run() {
-        outputView.printCarNamesPrompt();
-        String carInput = inputView.input();
-        String[] carInputs = carInput.split(",");
-
-        List<Car> inputCars = new ArrayList<>();
-        for (String input : carInputs) {
-            inputCars.add(Car.of(input));
-        }
-
-        cars = Cars.of(inputCars);
+        initializeCars();
 
         outputView.printAttemptCountPrompt();
         int tryCount = inputView.IntInput();
@@ -41,6 +32,19 @@ public class RacingController {
 
         List<String> raceWinners = cars.findRaceWinners();
         outputView.printWinners(raceWinners);
+    }
+
+    private void initializeCars() {
+        outputView.printCarNamesPrompt();
+        String carInput = inputView.input();
+        String[] carInputs = carInput.split(",");
+
+        List<Car> inputCars = new ArrayList<>();
+        for (String input : carInputs) {
+            inputCars.add(Car.of(input));
+        }
+
+        cars = Cars.of(inputCars);
     }
 
 }
