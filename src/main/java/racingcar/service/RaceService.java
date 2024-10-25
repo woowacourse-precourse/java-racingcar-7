@@ -4,6 +4,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.domain.repository.RaceRepository;
 import racingcar.validation.CarNameValidator;
+import racingcar.validation.LapValidator;
 
 /**
  * packageName    : racingcar.service
@@ -27,7 +28,8 @@ public class RaceService {
     }
     //------------------------//
 
-    public void saveAll(Cars cars) {
+    public void saveAll(CarsSaveRequestDto requestDto) {
+        Cars cars = new Cars(requestDto.toEntity());
         raceRepository.saveAll(cars);
     }
 
