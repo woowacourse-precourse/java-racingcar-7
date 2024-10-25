@@ -92,6 +92,8 @@ jun : -----
       - 동일한 이름 저장 불가능
 - runCarGame
     - 자동차 게임을 진행한다.
+- displayGameProgress
+  - 게임의 진행 상황을 출력한다.
 - findWinner
   - 우승자를 찾는다.
 - getWinner
