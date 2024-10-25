@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -71,5 +72,34 @@ public class FunctionTest {
                 },
                 testRandomNumberForPobi, testRandomNumberForHoly
         );
+    }
+
+    @Test
+    void 우승자_1대_반환() {
+        String testWinnerName = "pobi";
+        String testLoserName = "holy";
+        Map<String, Integer> cars = new HashMap<>();
+        cars.put(testWinnerName, 5);
+        cars.put(testLoserName, 1);
+
+        List<String> winnerNames = Application.findRaceWinners(cars);
+
+        assertThat(winnerNames.size()).isEqualTo(1);
+        assertThat(winnerNames.get(0)).isEqualTo(testWinnerName);
+    }
+
+    @Test
+    void 우승자_2대_반환() {
+        String testWinnerName1 = "pobi";
+        String testWinnerName2 = "moly";
+        String testLoserName = "holy";
+        Map<String, Integer> cars = new HashMap<>();
+        cars.put(testWinnerName1, 5);
+        cars.put(testWinnerName2, 5);
+        cars.put(testLoserName, 1);
+
+        List<String> winnerNames = Application.findRaceWinners(cars);
+
+        assertThat(winnerNames.size()).isEqualTo(2);
     }
 }

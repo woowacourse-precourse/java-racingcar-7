@@ -2,7 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -19,7 +23,9 @@ public class Application {
 
         Map<String, Integer> carsAfterRace = doRaceAndPrintRaceStatus(carsBeforeRace, moveNumber);
 
+        List<String> winnerNames = findRaceWinners(carsAfterRace);
 
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
     }
 
     public static Map<String, Integer> registerCars(String carNamesInput) {
@@ -64,7 +70,20 @@ public class Application {
             for (String carName : carNames) {
                 System.out.println(carName + " : " + "-".repeat(cars.get(carName)));
             }
+            System.out.println();
         }
         return cars;
+    }
+
+    public static List<String> findRaceWinners(Map<String, Integer> cars) {
+        Collection<Integer> carMoveDistances = cars.values();
+        int maxMoveDistance = Collections.max(carMoveDistances);
+        List<String> winnerNames = new ArrayList<>();
+        for (String carName : cars.keySet()) {
+            if (cars.get(carName).equals(maxMoveDistance)) {
+                winnerNames.add(carName);
+            }
+        }
+        return winnerNames;
     }
 }
