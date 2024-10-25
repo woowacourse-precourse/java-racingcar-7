@@ -27,9 +27,9 @@ public class RacingController {
         int count = getInputRacingCount();
         RacingCount racingCount = RacingCount.from(count);
 
-        Racing racing = Racing.from(cars);
+        Racing racing = Racing.of(cars, racingCount);
 
-        runRacing(racing, racingCount);
+        runRacing(racing);
         disPlayWinner(racing);
     }
 
@@ -43,11 +43,11 @@ public class RacingController {
         return inputView.inputRacingCount();
     }
 
-    private void runRacing(Racing racing, RacingCount racingCount) {
+    private void runRacing(Racing racing) {
         outputView.printRacingResultMessage();
-        while (isPossibleRacing(racingCount)) {
-            racing.runRacing();
-            racingCount.deduct();
+        while (racing.can()) {
+            racing.run();
+            racing.deductTryCount();
 
             outputView.printRacingResult(racing.getResult());
         }
@@ -56,10 +56,6 @@ public class RacingController {
     private void disPlayWinner(Racing racing) {
         List<String> winners = racing.getWinners();
         outputView.printWinner(winners);
-    }
-
-    private boolean isPossibleRacing(RacingCount racingCount) {
-        return !racingCount.isEnd();
     }
 
     private Cars creatCars(List<String> carNames) {

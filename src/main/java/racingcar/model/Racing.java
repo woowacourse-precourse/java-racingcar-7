@@ -18,8 +18,16 @@ public class Racing {
         return new Racing(cars, racingCount);
     }
 
-    public void runRacing() {
+    public void run() {
         cars.move();
+    }
+
+    public boolean can() {
+        return racingCount.isPossible();
+    }
+
+    public void deductTryCount() {
+        racingCount.deduct();
     }
 
     public List<CarStatusDto> getResult() {
