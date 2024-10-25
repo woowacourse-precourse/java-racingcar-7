@@ -49,14 +49,8 @@ public class Application {
             System.out.println();
         }
 
-        final int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
-
-        final List<Car> winningCars = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .toList();
+        Referee referee = new Referee();
+        final List<Car> winningCars = referee.getWinningCars(cars);
 
         final StringBuilder resultBuilder = new StringBuilder("최종 우승자 : ");
         for (int i = 0; i < winningCars.size(); i++) {
