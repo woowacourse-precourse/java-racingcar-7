@@ -9,25 +9,25 @@ import org.junit.jupiter.api.Test;
 class ValidateCarTest extends NsTest {
     @Test
     void 예외_테스트_쉼표뒤에이름안들어옴() {
-        assertThatThrownBy(() -> ValidateCar.firstParsingOnComma("pobi,,java"))
+        assertThatThrownBy(() -> ValidateCar.validateInputCar("pobi,,java"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 예외_테스트_쉼표만() {
-        assertThatThrownBy(() -> ValidateCar.firstParsingOnComma(",,"))
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(",,"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 예외_테스트_빈문자열() {
-        assertThatThrownBy(() -> ValidateCar.firstParsingOnComma(""))
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 예외_테스트_이름길이초과() {
-        assertThatThrownBy(() -> ValidateCar.firstParsingOnComma("pobi,javaji"))
+        assertThatThrownBy(() -> ValidateCar.validateInputCar("pobi,javaji"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
