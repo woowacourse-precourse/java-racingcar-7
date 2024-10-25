@@ -8,12 +8,12 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     public String inputCarNames() {
-        System.out.println(INPUT_CAR_NAMES);
+        System.out.println(INPUT_CAR_NAMES.getMessage());
         return Console.readLine();
     }
 
     public String inputAttempts() {
-        System.out.println(INPUT_ATTEMPTS);
+        System.out.println(INPUT_ATTEMPTS.getMessage());
         return Console.readLine();
     }
 }

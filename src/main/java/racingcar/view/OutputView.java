@@ -19,6 +19,6 @@ public class OutputView {
 
     public void printWinners(List<String> winners) {
         String winnerNames = String.join(", ", winners);
-        System.out.print(FINAL_WINNER + winnerNames);
+        System.out.print(FINAL_WINNER.getMessage() + winnerNames);
     }
 }
