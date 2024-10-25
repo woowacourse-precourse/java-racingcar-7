@@ -23,8 +23,8 @@ public class RacingGame {
         System.out.println(GAME_COUNT_MESSAGE);
         int count = Integer.parseInt(readLine());
         System.out.println(GAME_RESULT);
+        findMovingCar(cars);
         for (int i = 0; i < count; i++) {
-            cars = findMovingCar(cars, randomNumberPick());
             printGameResult(cars);
         }
         getWinner(cars);
@@ -38,11 +38,9 @@ public class RacingGame {
         }
     }
 
-    public List<Car> findMovingCar(List<Car> cars, int randomNum) {
+    private List<Car> findMovingCar(List<Car> cars) {
         return cars.stream().map(car -> {
-            if (randomNum >= 4) {
-                car.increaseDistance();
-            }
+            car.move(randomNumberPick());
             return car;
         }).collect(Collectors.toList());
     }
