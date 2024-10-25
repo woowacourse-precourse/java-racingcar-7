@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
   private final String name;
   private int position;
+
   public Car(String name) {
     validateName(name);
     this.position = 0;
@@ -24,8 +25,12 @@ public class Car {
     this.position++;
   }
 
-  public String formatCarStatus() {
-    return name + " : " + "-".repeat(position);
+  public int getPosition() {
+    return position;
+  }
+
+  public String getName() {
+    return name;
   }
 
   @Override

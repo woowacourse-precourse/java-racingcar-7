@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.Game;
 import racingcar.domain.GameCount;
@@ -21,8 +22,10 @@ public class Application {
 
     Game game = new Game(cars, new RandomMoveCondition());
     for (int i = 0; i < count.getCount(); i++) {
-      game.playRound();
-      OutputView.printCarPositions(cars.getAllCarStatuses());
+      OutputView.printCarPositions(game.playRound());
     }
+
+    List<String> winners = game.findWinners();
+    OutputView.printWinners(winners);
   }
 }

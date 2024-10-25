@@ -94,4 +94,22 @@ public class ViewTest {
         outContent.toString()
     );
   }
+
+  @Test
+  @DisplayName("최종 우승자를 올바르게 출력한다.")
+  void 최종_우승자_출력() {
+    // Given
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(outContent));
+
+    List<String> winners = List.of("pobi", "jun");
+
+    // When
+    OutputView.printWinners(winners);
+
+    // Then
+    assertEquals("최종 우승자 : pobi, jun\n", outContent.toString());
+    
+    System.setOut(System.out);
+  }
 }

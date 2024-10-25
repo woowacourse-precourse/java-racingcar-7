@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 
+import java.util.List;
+
 public class Game {
   private final Cars cars;
   private final RandomMoveCondition randomMoveCondition;
@@ -10,11 +12,12 @@ public class Game {
     this.randomMoveCondition = randomMoveCondition;
   }
 
-  public void playRound() {
-    for (int i = 0; i < cars.size(); i++) {
-      if (randomMoveCondition.isMovable()) {
-        cars.move(i);
-      }
-    }
+  public List<String> playRound() {
+    cars.moveCars(randomMoveCondition);
+    return cars.getAllCarStatuses();
+  }
+
+  public List<String> findWinners() {
+    return cars.findWinners();
   }
 }
