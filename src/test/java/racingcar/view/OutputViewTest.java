@@ -50,9 +50,10 @@ public class OutputViewTest {
         assertEquals("""
                 pobi : --
                 woni : -
-                jun :
-                """
-            , outContent.toString());
+                jun :\s
+                
+                """.replace("\n", System.lineSeparator()),
+            outContent.toString());
     }
 
     @AfterEach
