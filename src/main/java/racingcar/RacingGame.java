@@ -19,8 +19,11 @@ public class RacingGame {
         String tryTime = Console.readLine();
         int tryTimeInt = parseAndValidateTryTime(tryTime);
 
+        System.out.println("실행 결과");
         for (int i = 0; i < tryTimeInt; i++) {
             moveCars(carDistanceMap);
+            printCarDistances(carDistanceMap);
+            System.out.println();
         }
 
     }
@@ -73,6 +76,12 @@ public class RacingGame {
 
     private boolean isMove(int number) {
         return number >= 4;
+    }
+
+    private void printCarDistances(Map<String, Integer> carDistanceMap) {
+        for (String carName : carDistanceMap.keySet()) {
+                System.out.println(carName + " : " + "-".repeat(carDistanceMap.get(carName)));
+        }
     }
 
 }
