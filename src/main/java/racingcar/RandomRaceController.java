@@ -4,6 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class RandomRaceController {
+    private final RaceProgressView raceProgressView;
+
+    public RandomRaceController(RaceProgressView raceProgressView) {
+        this.raceProgressView = raceProgressView;
+    }
 
     private boolean isAdvance() {
         int random = Randoms.pickNumberInRange(0, 9);
@@ -17,6 +22,7 @@ public class RandomRaceController {
                     racingCar.race();
                 }
             }
+            raceProgressView.displayRoundProgress(racingCars);
         }
         return racingCars;
     }

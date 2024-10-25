@@ -13,7 +13,7 @@ class RandomRaceControllerTest {
 
     @BeforeEach
     void setUp() {
-        this.randomRaceController = new RandomRaceController();
+        this.randomRaceController = new RandomRaceController(new RaceProgressView());
         this.racingCars = new ArrayList<>();
         racingCars.add(new RacingCar("pobi"));
         racingCars.add(new RacingCar("java"));
