@@ -10,6 +10,7 @@
     - [x] RandomNumberGenerator
     - [x] ProgressResultGenerator
     - [x] WinnerDeterminer
+    - [ ] WinnerResultGenerator
 - View
     - [x] InputView
     - [ ] OutputView
@@ -22,6 +23,7 @@
     - [ ] NumberValidatorTest
     - [ ] ProgressResultGeneratorTest
     - [ ] WinnerDeterminerTest
+    - [ ] WinnerResultGeneratorTest
 
 # 기능 동작 순서
 1. 입력 메세지(경주할 자동차 이름)를 출력한다. (View / OutputView)
