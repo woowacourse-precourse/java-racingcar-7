@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
-import racingcar.parser.InputParser;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -43,13 +42,11 @@ public class CarController {
     }
 
     private int getTurns() {
-        String turns = inputView.InputTurns();
-        return InputParser.parseTurns(turns);
+        return inputView.InputTurns();
     }
 
     private void initializeCars(){
-        String names = inputView.InputNames();
-        List<String> nameList = InputParser.parseNames(names);
+        List<String> nameList = inputView.InputNames();
         carService.initCars(nameList);
     }
     
