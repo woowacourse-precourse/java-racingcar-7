@@ -21,6 +21,7 @@ public class RacingController {
         int trial = new Trial(InputView.inputTrial()).getTrial();
 
         RacingGame racingGame = new RacingGame(carFactory.getCars(), trial);
+        OutputView.printResult();
         OutputView.printRacing(racingGame.getAllResult());
         OutputView.printWinner(new Winner(racingGame.getCars()).getWinners());
     }

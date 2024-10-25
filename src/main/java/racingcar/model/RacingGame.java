@@ -11,33 +11,33 @@ public class RacingGame {
     private final int trial;
     private List<Map<String, Integer>> allResult = new ArrayList<>();
 
-    public RacingGame(List<Car> cars, int trial){
+    public RacingGame(List<Car> cars, int trial) {
         this.cars = cars;
         this.trial = trial;
         moveCarsByTrial();
     }
 
-    private void moveCarsByTrial(){
-        for(int i = 0; i < trial; i++){
+    private void moveCarsByTrial() {
+        for (int i = 0; i < trial; i++) {
             allResult.add(moveCars());
         }
     }
 
-    private Map<String, Integer> moveCars(){
+    private Map<String, Integer> moveCars() {
         Map<String, Integer> roundResult = new LinkedHashMap<>();
 
-        for(Car car : cars){
+        for (Car car : cars) {
             car.move();
             roundResult.put(car.getName(), car.getPosition());
         }
         return roundResult;
     }
 
-    public List<Map<String, Integer>> getAllResult(){
+    public List<Map<String, Integer>> getAllResult() {
         return allResult;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 }
