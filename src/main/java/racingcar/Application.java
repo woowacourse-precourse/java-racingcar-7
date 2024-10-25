@@ -1,78 +1,91 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.*;
 
-// 5. 마지막 경주 이후 최종 우승자를 출력한다.
-//    * 단독 우승자와 공동 우승자로 내용을 구분하여 출력한다.
-//    * 공동 우승자일 경우 쉼표(,)를 이용하여 구분한다.
 public class Application {
-    public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        String[] names = input.split(",");
-        if (names.length == 0) {
-            throw new IllegalArgumentException("이름은 쉼표(,) 기준으로 구분하여 입력해주세요.");
-        } // end if
-
-        for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자 이하로 입력해주세요.");
-            } // end if
-        } // end for
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputTimes = Console.readLine();
-        if (!inputTimes.matches("^[0-9]+$")) {
-//            throw new NumberFormatException("숫자를 입력해주세요.");
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
-        } // end if
-        int times = Integer.parseInt(inputTimes);
-
-        System.out.println();
-        System.out.println("실행 결과");
-
+    public static Map<String, List<String>> createCars(List<String> carNames) {
         Map<String, List<String>> cars = new HashMap<>();
 
-        for (String name : names) {
+        for (String carName : carNames) {
             List<String> positions = new ArrayList<>();
-            cars.put(name, positions);
+            cars.put(carName, positions);
         } // end for
 
-        for (int i = 0; i < times; i++) {
-            Set<String> carNames = cars.keySet();
-            for (String name : carNames) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber > 4) {
-                    cars.get(name).add("-");
-                } // end if
-                System.out.println(name + " : "  + cars.get(name));
-            } // end for
+        return cars;
+    } // createCars
+
+    public static void race(int raceCount, Map<String, List<String>> cars) {
+        for (int i = 0; i < raceCount; i++) {
+            moveForward(cars);
             System.out.println();
         } // end for
+    } // race
 
+    public static void moveForward(Map<String, List<String>> cars) {
+        Set<String> carNames = cars.keySet();
+        for (String name : carNames) {
+            if (Randoms.pickNumberInRange(0, 9) > 4) {
+                cars.get(name).add("-");
+            } // end if
+            System.out.println(name + " : "  + cars.get(name));
+        } // end for
+    } // moveForward
+
+    public static Map<String, Integer> getLastPositions(Map<String, List<String>> cars) {
         Map<String, Integer> lastPositions = new HashMap<>();
         for (String name : cars.keySet()) {
             lastPositions.put(name, cars.get(name).size());
         } // end for
+        return  lastPositions;
+    } // getLastPositions
 
-        List<String> keySet = new ArrayList<>(cars.keySet());
-        keySet.sort(((o1, o2) -> lastPositions.get(o2) - lastPositions.get(o1)));
-        int maxPosition = lastPositions.get(keySet.getFirst());
+    public static void sortPositions(List<String> carNames, Map<String, Integer> lastPositions) {
+        carNames.sort(((o1, o2) -> lastPositions.get(o2) - lastPositions.get(o1)));
+    } // sortPositions
+
+    public static String judgeWinner(List<String> carNames, Map<String, Integer> lastPositions) {
+        int sortedMaxPosition = lastPositions.get(carNames.getFirst());
         StringBuilder winner = new StringBuilder();
 
-        for (String name : lastPositions.keySet()) {
-            if (lastPositions.get(name) == maxPosition) {
-                winner.append(name).append(", ");
+        for (String carName : lastPositions.keySet()) {
+            if (lastPositions.get(carName) == sortedMaxPosition) {
+                winner.append(carName).append(", ");
             } // end if
         } // end for
 
-        String winnerNames = winner.toString();
+        return removeLastComma(winner.toString());
+    } // judgeWinner
+
+    public static String removeLastComma(String winnerNames) {
         if (winnerNames.endsWith(", ")) {
             winnerNames = winnerNames.substring(0, winnerNames.length() - 2);
         } // end if
+
+        return winnerNames;
+    } // removeLastComma
+
+    public static void main(String[] args) {
+        OutputView.requestForCarNames();
+        String[] inputCarNames = InputView.responseForCarNames();
+
+        OutputView.requestForRaceCount();
+        int raceCount = InputView.responseForRaceCount();
+
+        System.out.println();
+        System.out.println("실행 결과");
+
+        Map<String, List<String>> cars = createCars(Arrays.stream(inputCarNames).toList());
+        race(raceCount, cars);
+
+        Map<String, Integer> lastPositions = getLastPositions(cars);
+        List<String> carNames = new ArrayList<>(cars.keySet());
+        sortPositions(carNames, lastPositions);
+
+        String winnerNames = judgeWinner(carNames, lastPositions);
 
         System.out.println("최종 우승자 : " + winnerNames);
     } // main
