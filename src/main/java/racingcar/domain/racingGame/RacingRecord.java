@@ -1,15 +1,16 @@
 package racingcar.domain.racingGame;
 
-import racingcar.domain.car.Cars;
+import java.util.List;
+
 
 public class RacingRecord {
-	private final Cars cars;
+	private final List<RacingSnapshot> snapshots;
 
-	public RacingRecord(Cars cars) {
-		this.cars = cars;
+	public RacingRecord(List<RacingSnapshot> snapshots) {
+		this.snapshots = snapshots;
 	}
 
-	public Cars getCars() {
-		return cars;
+	public List<RacingSnapshot> getSnapshots() {
+		return snapshots;
 	}
 }
