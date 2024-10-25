@@ -14,8 +14,6 @@ public class Reader {
         List<String> carNames = Arrays.asList(input.split(","));
         verifyCarNames(carNames);
 
-        Console.close();
-
         return carNames;
     }
 
@@ -43,13 +41,16 @@ public class Reader {
 
         verifyNumber(number);
 
-        Console.close();
-
         return number;
     }
 
     private static void verifyNumber(int number) {
         if (number <= 0)
             throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
+    }
+
+    public static void closeConsole() {
+
+        Console.close();
     }
 }
