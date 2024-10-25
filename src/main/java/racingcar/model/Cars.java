@@ -20,13 +20,6 @@ public class Cars {
         return new Cars(cars);
     }
 
-    private void validateDuplicate(List<Car> cars) {
-        Set<Car> nonDuplicateCar = new HashSet<>(cars);
-        if (nonDuplicateCar.size() != cars.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
-    }
-
     public void move() {
         for (Car car : cars) {
             car.isMove();
@@ -40,6 +33,13 @@ public class Cars {
             racingResults.add(carStatus);
         }
         return racingResults;
+    }
+
+    private void validateDuplicate(List<Car> cars) {
+        Set<Car> nonDuplicateCar = new HashSet<>(cars);
+        if (nonDuplicateCar.size() != cars.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     @Override
