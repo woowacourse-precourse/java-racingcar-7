@@ -40,11 +40,15 @@ public class RacingCarSimulator {
 	}
 
 	private void initCarPosition() {
-		carPosition = new ArrayList<>(carNames.stream().map(name -> 0L).toList());
+		carPosition = carNames.stream().map(name -> 0L).toList();
 	}
 
 	private void simulate() {
-		// TODO : 미구현
+		OutputView.printResultTitle();
+		for (int i = 0; i < iterationCount; i++) {
+			simulateOneCycle();
+			OutputView.printResultData(carNames, carPosition);
+		}
 	}
 
 	private void simulateOneCycle() {
