@@ -1,5 +1,7 @@
 package racingcar.utils;
 
+import racingcar.validator.CarNameValidator;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,15 +10,7 @@ public class CarNameParser {
 
     public static List<String> parse(String carNames) {
         return Arrays.stream(carNames.split(NAME_DELIMITER))
-                .peek(CarNameParser::validateName)
+                .peek(CarNameValidator::validateLength)
                 .toList();
-    }
-
-    private static void validateName(String name) {
-        if (!isValidLength(name)) throw new IllegalArgumentException("[ERROR] 자동차 이름은 5글자 이내여야 합니다.");
-    }
-
-    private static boolean isValidLength(String name) {
-        return name.length() <= 5;
     }
 }
