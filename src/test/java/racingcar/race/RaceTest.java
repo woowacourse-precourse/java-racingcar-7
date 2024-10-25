@@ -24,8 +24,17 @@ public class RaceTest {
     }
 
     @Test
+    void 레이스_진행횟수_테스트(){
+        assertThrows(IllegalArgumentException.class, () -> race.startRace(0));
+        assertThrows(IllegalArgumentException.class, () -> race.startRace(-1));
+        assertThrows(IllegalArgumentException.class, () -> race.startRace(-111));
+    }
+
+    @Test
     void 생성자_공백_레이서_테스트(){
         assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{""}));
+        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{"","Test"}));
+        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{"World","","Hello"}));
     }
 
     @Test
@@ -38,5 +47,6 @@ public class RaceTest {
         race = new Race();
 
         assertThrows(IllegalArgumentException.class, () -> race.startRace(5));
+        assertThrows(IllegalArgumentException.class, () -> race.startRace(3));
     }
 }
