@@ -46,4 +46,22 @@ public class CarGameServiceTest {
         assertThat(result.getCar("pobi").getPosition()).isIn(0, 1);
         assertThat(result.getCar("woni").getPosition()).isIn(0, 1);
     }
+
+    @Test
+    void 가장_멀리_간_자동차들을_찾는다(){
+        //given
+        Cars cars = new Cars(List.of(
+            new Car("pobi"),
+            new Car("woni"),
+            new Car("jun")
+        ));
+        cars.getCar("pobi").move();
+        cars.getCar("woni").move();
+
+        //when
+        Cars result = carGameService.findWinners(cars);
+
+        //then
+        assertThat(result.size()).isEqualTo(2);
+    }
 }
