@@ -6,14 +6,15 @@ import racingcar.car.Car;
 
 public class ResultPrinter {
 
+    protected ResultPrinter() {
+
+    }
+
     public void printResultOfForward(Map<Integer, Car> carMap, int[] racingBoard) {
         StringBuilder resultOfForward = new StringBuilder();
         for (int carId = 0; carId < racingBoard.length; carId++) {
             Car car = carMap.get(carId);
-            resultOfForward.append(car.getName())
-                    .append(" : ")
-                    .append("-".repeat(racingBoard[carId]))
-                    .append("\n");
+            resultOfForward.append(car.getName()).append(" : ").append("-".repeat(racingBoard[carId])).append("\n");
         }
         System.out.println(resultOfForward);
     }

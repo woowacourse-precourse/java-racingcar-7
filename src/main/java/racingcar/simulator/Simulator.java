@@ -12,9 +12,9 @@ public class Simulator {
 
     private final int numberOfAttempts;
     private final int numberOfCars;
-    private final int[] racingBoard;
-    private final Map<Integer, Car> carMap = new HashMap<>();
-    private final ResultPrinter resultPrinter = new ResultPrinter();
+    private final int[] racingBoard;    // 자동차들의 전진 상황을 저장하는 배열
+    private final Map<Integer, Car> carMap = new HashMap<>();   // 자동차들의 정보를 저장하는 배열
+    private final ResultPrinter resultPrinter = new ResultPrinter();    // 결과를 출력하는 서브 모듈
 
     public Simulator(int numberOfAttempts, List<String> namesOfCars) {
         this.numberOfAttempts = numberOfAttempts;

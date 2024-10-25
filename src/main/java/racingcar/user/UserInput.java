@@ -2,6 +2,7 @@ package racingcar.user;
 
 public class UserInput {
 
+
     public String[] readNamesOfCars(String namesOfCarsInput) {
 
         if (isInputNullOrEmpty(namesOfCarsInput)) {
