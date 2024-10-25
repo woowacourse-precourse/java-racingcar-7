@@ -11,9 +11,6 @@ public class RacingcarService {
     private final Cars cars = new Cars();
     private final TryCount tryCount = new TryCount();
 
-    public RacingcarService() {
-    }
-
     public void createCars(List<String> carNames) {
         carNames.forEach(name -> cars.add(new Car(name)));
     }
@@ -24,10 +21,15 @@ public class RacingcarService {
 
     public List<Car> playRound() {
         cars.playRound();
+        tryCount.playRound();
         return cars.getCars();
     }
 
     public Cars getResult() {
         return cars;
+    }
+
+    public boolean isPlaying() {
+        return tryCount.remain();
     }
 }

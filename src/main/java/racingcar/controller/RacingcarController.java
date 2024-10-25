@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import java.util.List;
-
 import racingcar.service.RacingcarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -14,16 +12,20 @@ public class RacingcarController {
         this.racingcarService = racingcarService;
     }
 
-    public void process() {
+    public void start() {
         OutputView.inputCarNames();
-        List<String> carNames = InputView.carNames();
-        racingcarService.createCars(carNames);
+        racingcarService.createCars(InputView.carNames());
         OutputView.inputTryCount();
-        int tryCount = InputView.tryCount();
-        racingcarService.setTryCount(tryCount);
-        for (int round = 0; round < tryCount; round++) {
+        racingcarService.setTryCount(InputView.tryCount());
+    }
+
+    public void play() {
+        while (racingcarService.isPlaying()) {
             OutputView.roundResult(racingcarService.playRound());
         }
+    }
+
+    public void result() {
         OutputView.finalResult(racingcarService.getResult());
     }
 }
