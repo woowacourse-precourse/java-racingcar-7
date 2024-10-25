@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -15,6 +13,10 @@ public class Application {
         String inputTryCount = readLine();
 
         boolean validInput = isValidName(carNames) && isValidTryCount(inputTryCount);
+
+        if (validInput) {
+            Map<String, StringBuilder> resultMap = createResultMap(carNames);
+        }
     }
 
     public static boolean isValidName(String carNames) {
@@ -74,5 +76,16 @@ public class Application {
         if (Integer.parseInt(inputTryCount) < 0) {
             throw new IllegalArgumentException("int 범위를 초과했다.");
         }
+    }
+
+    public static Map<String, StringBuilder> createResultMap(String carNames) {
+        String[] namesByComma = carNames.split(IOMessage.COMMA_SEPARATOR);
+        Map<String, StringBuilder> resultMap = new HashMap<>();
+
+        for (String name : namesByComma) {
+            resultMap.put(name, new StringBuilder());
+        }
+
+        return resultMap;
     }
 }
