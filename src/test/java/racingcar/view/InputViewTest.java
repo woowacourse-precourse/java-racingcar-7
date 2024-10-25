@@ -3,7 +3,7 @@ package racingcar.view;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static racingcar.message.InputRequestMessage.NAMES_REQUEST;
-import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPT_REQUEST;
+import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPTS_REQUEST;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -18,12 +18,18 @@ import org.junit.jupiter.api.Test;
 class InputViewTest {
 
     private ByteArrayOutputStream outputMessage;
+    private InputView inputView;
 
     @BeforeEach
     void setUpStreams() {
         // 출력 스트림을 가로채기 위해 출력 스트림을 원하는 타입의 객체로 설정
         outputMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputMessage));
+    }
+
+    @BeforeEach
+    void setUpInputView() {
+        inputView = new InputView();
     }
 
     @AfterEach
@@ -40,9 +46,7 @@ class InputViewTest {
     @Test
     public void newInputViewTest() {
         //given
-        InputView inputView = new InputView();
         //when
-
         //then
         assertNotNull(inputView);
     }
@@ -51,7 +55,6 @@ class InputViewTest {
     @Test
     public void printCarNamesRequestTest() {
         //given
-        InputView inputView = new InputView();
         //when
         inputView.printCarNamesRequest();
         String printResult = outputMessage.toString().trim();
@@ -63,7 +66,6 @@ class InputViewTest {
     @Test
     public void getCarNamesTest() {
         //given
-        InputView inputView = new InputView();
         String input = "pobi,woni,jun";
         //when
         Console.close();
@@ -75,27 +77,25 @@ class InputViewTest {
 
     @DisplayName("시도횟수_입력_요청_메세지_출력_테스트")
     @Test
-    public void printNumberOfAttemptRequestTest() {
+    public void printNumberOfAttemptsRequestTest() {
         //given
-        InputView inputView = new InputView();
         //when
-        inputView.printNumberOfAttemptRequest();
+        inputView.printNumberOfAttemptsRequest();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(NUMBER_OF_ATTEMPT_REQUEST.getMessage(), printResult);
+        assertEquals(NUMBER_OF_ATTEMPTS_REQUEST.getMessage(), printResult);
     }
 
     @DisplayName("시도횟수_입력_테스트")
     @Test
     public void getNumberOfAttemptsTest() {
         //given
-        InputView inputView = new InputView();
         String input = "5";
         //when
         Console.close();
         setInputStreamsByMyInput(input);
-        String Attempts = inputView.getNumberOfAttempts();
+        String attempts = inputView.getNumberOfAttempts();
         //then
-        assertEquals(input, Attempts);
+        assertEquals(input, attempts);
     }
 }
