@@ -19,4 +19,12 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.carNameValidate(List.of("pobi", "polar", "ihavelongname")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("자동차 이름이 중복일 경우 예외 발생")
+    void carNameDuplicateTest() {
+        // 5글자 이상의 이름을 포함한 리스트로 검증
+        assertThatThrownBy(() -> Validator.carNameValidate(List.of("pobi", "pobi", "ihavelongname")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
