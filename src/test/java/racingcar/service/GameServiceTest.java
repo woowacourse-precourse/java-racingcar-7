@@ -3,6 +3,7 @@ package racingcar.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +11,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Cars;
 
 public class GameServiceTest {
-    private final GameService gameService = new GameService();
+    private GameService gameService;
+
+
+    @BeforeEach
+    void setUp() {
+        gameService = new GameService();
+    }
 
     @Test
     @DisplayName("Cars객체 생성 테스트")
