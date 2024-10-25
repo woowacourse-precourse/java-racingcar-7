@@ -57,7 +57,7 @@ public class InputValidator {
     private static void validateGameCount(String input) {
         try {
             int n = Integer.parseInt(input);
-            if (n < 0) throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
+            if (n < ValidationMode.GAME_COUNT.min || n > ValidationMode.GAME_COUNT.max) throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
         }
