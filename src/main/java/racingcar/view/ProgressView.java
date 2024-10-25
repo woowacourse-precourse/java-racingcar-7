@@ -13,7 +13,7 @@ public class ProgressView {
     public void printProgressMessage(List<CarDto> CarDtoList) {
         for (CarDto carDto : CarDtoList) {
             String carName = carDto.name();
-            System.out.println(carName + " : ");
+            System.out.print(carName + " : ");
 
             long position = carDto.position();
             printDashesByPosition(position);
