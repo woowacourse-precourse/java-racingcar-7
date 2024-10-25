@@ -15,7 +15,7 @@ public class CarRacingController {
 
         int attemptNumber = InputView.inputAttemptNumber();
 
-        for(int i = 0; i < attemptNumber; i++) {
+        for (int i = 0; i < attemptNumber; i++) {
             Cars.raceOnce(cars);
             OutputView.resultOfEveryRace(cars);
         }
