@@ -10,21 +10,27 @@ public class RacingCarService {
     private List<RacingCar> cars = new ArrayList<>();
     private Integer number;
 
-    public RacingCarService(String nameString,Integer number) {
+    public RacingCarService(List<RacingCar> cars, Integer number) {
         this.number = number;
-        NameExtractor.extractNames(nameString).stream()
-                .forEach(name -> cars.add(new RacingCar(name)));
+        this.cars = cars;
     }
 
-    public boolean rollMoveDice(){
-        return Randoms.pickNumberInRange(0,9) >= 4;
+    public boolean rollMoveDice() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    public void moveRacingCars(){
-        for(RacingCar car : cars){
-            if(rollMoveDice()){
+    public void moveRacingCars() {
+        for (RacingCar car : cars) {
+            if (rollMoveDice()) {
                 car.moveForward();
             }
+        }
+    }
+
+    public void printCurrentScore() {
+        for (RacingCar car : cars) {
+            System.out.print(car.getName() + " : ");
+            System.out.println("-".repeat(car.getPosition()));
         }
     }
 }

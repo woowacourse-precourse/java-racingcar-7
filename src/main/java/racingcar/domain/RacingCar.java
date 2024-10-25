@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 public class RacingCar {
-    String name;
-    Integer position = 0;
+    private String name;
+    private Integer position = 0;
 
     public RacingCar(String name) {
         this.name=name;
@@ -12,4 +12,11 @@ public class RacingCar {
         position++;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
 }
