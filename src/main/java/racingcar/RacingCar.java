@@ -24,7 +24,8 @@ public class RacingCar {
         return status;
     }
 
-    public String getStatusToDash() {
-        return "-".repeat(Math.max(0, status));
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(Math.max(0, status));
     }
 }
