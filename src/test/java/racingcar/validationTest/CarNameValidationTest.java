@@ -3,7 +3,7 @@ package racingcar.validationTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.RacingExceptionStatus;
-import racingcar.validation.CarNameValidation;
+import racingcar.utils.validation.CarNameValidation;
 
 import java.util.ArrayList;
 import java.util.List;

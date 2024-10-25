@@ -1,4 +1,4 @@
-package racingcar.validation;
+package racingcar.utils.validation;
 
 import racingcar.exception.RacingExceptionStatus;
 

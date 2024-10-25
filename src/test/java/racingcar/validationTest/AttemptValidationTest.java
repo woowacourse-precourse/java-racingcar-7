@@ -3,7 +3,7 @@ package racingcar.validationTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.RacingExceptionStatus;
-import racingcar.validation.AttemptValidation;
+import racingcar.utils.validation.AttemptValidation;
 
 import static org.junit.jupiter.api.Assertions.*;
 

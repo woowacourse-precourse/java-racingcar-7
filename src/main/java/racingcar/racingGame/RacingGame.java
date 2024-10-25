@@ -1,13 +1,12 @@
 package racingcar.racingGame;
 
 import racingcar.car.Car;
-import racingcar.validation.AttemptValidation;
-import racingcar.validation.CarNameValidation;
+import racingcar.utils.validation.AttemptValidation;
+import racingcar.utils.validation.CarNameValidation;
 import racingcar.views.InputView;
 import racingcar.views.OutputView;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
