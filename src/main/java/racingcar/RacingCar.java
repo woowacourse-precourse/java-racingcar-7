@@ -21,4 +21,12 @@ public class RacingCar {
     static boolean canMoveForward(int pickedNumber) {
         return pickedNumber >= 4;
     }
+
+    String getName() {
+        return name;
+    }
+
+    int getForwardCount() {
+        return forwardCount;
+    }
 }
