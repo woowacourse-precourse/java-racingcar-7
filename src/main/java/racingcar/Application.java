@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import racingcar.domain.Car;
 import racingcar.enums.ErrorMessage;
 import racingcar.enums.ViewMessage;
 
@@ -49,25 +50,5 @@ public class Application {
         }
         String result = String.join(", ", winners);
         System.out.printf(ViewMessage.PRINT_WINNERS.getMessage(result));
-    }
-
-    static class Car {
-        String name;
-        int moveCount = 0;
-
-        Car(String name) {
-            this.name = name;
-        }
-
-        void move(int value) {
-            if (value >= 4) {
-                moveCount++;
-            }
-        }
-
-        @Override
-        public String toString() {
-            return name + " : " + "-".repeat(moveCount);
-        }
     }
 }
