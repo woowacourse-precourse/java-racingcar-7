@@ -4,8 +4,10 @@
 ### ▪️ 입력
 - [x] 자동차 이름 입력 받기
     - [x] 이름은 1~5자만 가능 / 이름 null, 0자 혹은 6자 일경우 IllegalArgumentException 발생
-    - [] 쉼표를 기준으로 이름 구분 / 이외 구분자 사용 시 IllegalArgumentException 발생
+    - [x] 쉼표를 기준으로 이름 구분 / 이외 구분자 사용 시 IllegalArgumentException 발생
     - [x] 최소 2명, 최대 10명 경주 가능 / 혼자 경주하거나 11명 이상 경주 시도할 경우 IllegalArgumentException 발생
+    - [x] 중복된 이름 사용 시 IllegalArgumentException 발생
+    - [x] 영어, 한글, 숫자 외 특수문자 사용 시 IllegalArgumentException 발생
 - [x] 시도할 횟수 입력 받기
     - [x] 최소 1번, 최대 10번까지 시도 가능  / null 혹은 0번 횟수 입력 시 IllegalArgumentException 발생
     - [x] 숫자만 가능 / 숫자가 아닐 시 IllegalArgumentException 발생

@@ -1,12 +1,17 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.CarName;
 import racingcar.dto.request.CarsRequest;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class InputView {
 
     public static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static final String TRY_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    public static final String DELIMITER = ",";
     public static final int START_TRY_COUNT = 1;
     public static final int END_TRY_COUNT = 10;
 
@@ -14,7 +19,11 @@ public class InputView {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
         String carNames = Console.readLine().strip();
         validateInput(carNames);
-        return new CarsRequest(carNames);
+        List<CarName> cars = Arrays.stream(carNames.split(DELIMITER))
+                .map(String::strip)
+                .map(CarName::new)
+                .toList();
+        return new CarsRequest(cars);
     }
 
     public int readTryCount() {
@@ -28,7 +37,7 @@ public class InputView {
 
     private static void validateRange(int tryCount) {
         if (tryCount < START_TRY_COUNT || tryCount > END_TRY_COUNT) {
-            throw new IllegalArgumentException("최소 "+START_TRY_COUNT+"번, 최대 "+END_TRY_COUNT+"번까지 시도 가능합니다.");
+            throw new IllegalArgumentException("최소 " + START_TRY_COUNT + "번, 최대 " + END_TRY_COUNT + "번까지 시도 가능합니다.");
         }
     }
 
