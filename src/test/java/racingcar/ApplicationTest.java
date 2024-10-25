@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("공백인 자동차 이름 테스트")
     @Test
-    void 공백인_이름() {
+    void 빈_이름() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("", "1"))
                     .isInstanceOf(IllegalArgumentException.class)
