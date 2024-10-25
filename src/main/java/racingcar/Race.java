@@ -45,7 +45,7 @@ public class Race {
         }
     }
 
-    private void racingResult(List<Car> cars) {
+    public void racingResult(List<Car> cars) {
         int maxAdvanceNum = 0;
         List<String> winners = new ArrayList<>();
 
