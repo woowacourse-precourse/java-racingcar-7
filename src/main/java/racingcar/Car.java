@@ -65,4 +65,10 @@ public class Car {
 
         return false;
     }
+
+    public void move(int remainingCount) {
+        if (randomMove(remainingCount)) {
+            showCurrentMove();
+        }
+    }
 }
