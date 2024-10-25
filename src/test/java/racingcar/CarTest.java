@@ -15,5 +15,13 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("차가 정지한다")
+    void stop(){
+        Car car = Car.of("kiri");
+        car.move(()-> false);
+        assertThat(car.getDistance()).isEqualTo(0);
+    }
+
 }
 
