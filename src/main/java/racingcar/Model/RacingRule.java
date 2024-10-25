@@ -1,8 +1,9 @@
 package racingcar.Model;
+import java.util.ArrayList;
 
 public interface RacingRule {
 
-  void goOrStop();
+  boolean goOrStop();
 
-  void pickWinner();
+  ArrayList<String> pickWinner();
 }

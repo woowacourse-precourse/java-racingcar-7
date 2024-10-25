@@ -25,8 +25,8 @@ public class Car {
         + IntStream.range(0, location).mapToObj(i -> "-").collect(Collectors.joining());
   }
 
-  public Map<String, Object> compareLocation(int maxNumber, ArrayList<String> winners) {
-    if (location == maxNumber) {
+  public Map<String, Object> compareLocation(int maxNumber, ArrayList<String> winners) {// 이 함수 길이를 줄여보기
+    if (location == maxNumber) { 
       winners.add(name);
     }
     if (location > maxNumber) {
