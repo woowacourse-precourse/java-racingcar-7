@@ -35,5 +35,16 @@ public class Cars {
         return getMaxPositionCarName(maxPosition);
     }
 
+    private List<String> getMaxPositionCarName(final Integer maxPosition) {
+
+        if (maxPosition == 0) {
+            return List.of(new String[]{});
+        }
+
+        return cars.stream()
+                .filter(car -> car.getCarPosition().equals(maxPosition))
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+    }
 
 }
