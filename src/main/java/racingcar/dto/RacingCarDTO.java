@@ -11,7 +11,7 @@ public class RacingCarDTO {
 
     public RacingCarDTO(String racingCarNameString, String numberOfRacingString) {
         this.racingCarData = new HashMap<>();
-        String[] racingCarNames = racingCarNameString.split(" ");
+        String[] racingCarNames = racingCarNameString.split(",");
 
         // 각 레이싱카 이름에 대해 초기 이동거리를 0으로 설정하여 HashMap에 저장
         for (String name : racingCarNames) {
