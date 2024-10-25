@@ -33,6 +33,8 @@ public class Application {
 
         int furthestNumber = findFurthestNumber(racingCar);
         List<String> winners = findWinners(racingCar, furthestNumber);
+
+        printWinners(winners);
     }
 
     // 게임의 순서는 자동차 이름을 입력 받은 순서대로 진행한다.
@@ -74,5 +76,17 @@ public class Application {
         return winners;
     }
 
+    public static void printWinners(List<String> winners) {
+        String result = winners.get(0);
+        if (winners.size() == 1) {
+            System.out.println("최종 우승자 : " + result);
+            return;
+        }
+
+        for (int i = 1; i < winners.size(); i++) {
+            result += ", " + winners.get(i);
+        }
+        System.out.println("최종 우승자 : " + result);
+    }
 
 }
