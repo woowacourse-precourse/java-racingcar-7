@@ -77,7 +77,19 @@ public class UnitTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @Test
+    @DisplayName("getRandomNumber 테스트")
+    void getRandomNumberTest() {
+        assertRandomNumberInRangeTest(
+                ()->{
+                    int result1 = Application.getRandomNumber();
+                    int result2 = Application.getRandomNumber();
+                    assertThat(result1).isEqualTo(5);
+                    assertThat(result2).isEqualTo(7);
+                },
+                5,7
+        );
+    }
 
     @Override
     public void runMain() {
