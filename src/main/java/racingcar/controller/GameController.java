@@ -15,8 +15,7 @@ public class GameController {
         InputResult input = inputView.input();
 
         OutputView outputView = new OutputView();
-        GameService gameService = new GameService();
-        gameService.initializeRacingCars(input.getCars());
+        GameService gameService = new GameService(input.getCars());
         for (int i = 0; i < input.getGameCount(); i++) {
             List<RacingCar> gamePerResult = gameService.game();
             outputView.game(gamePerResult);

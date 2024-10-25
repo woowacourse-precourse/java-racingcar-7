@@ -14,11 +14,12 @@ public class GameService {
 
     private List<RacingCar> racingCars;
 
-    public GameService() {
+    public GameService(String carNames) {
         racingCars = new ArrayList<>();
+        initializeRacingCars(carNames);
     }
 
-    public void initializeRacingCars(String carNames) {
+    private void initializeRacingCars(String carNames) {
         racingCars = Arrays.stream(carNames.split(","))
                 .map(name -> new RacingCar(name.trim()))
                 .collect(Collectors.toList());
