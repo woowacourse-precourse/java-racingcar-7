@@ -56,6 +56,19 @@ class InputManagerTest {
                 .hasMessage("시도 횟수는 1 부터 2147483647 까지의 정수값만 입력할 수 있습니다.");
     }
 
+    @DisplayName("시도 횟수는 음수를 입력받을 수 없다.")
+    @Test
+    void test() {
+        //given
+        String userInput = "-12";
+        InputStream inputStream = getInputStream(userInput);
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> InputManager.readTryCount())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 양수만 입력 가능합니다.");
+    }
+
     @DisplayName("1 부터 2147483647 까지의 입력을 받을 경우 정수형으로 형변환해 반환해야 한다.")
     @Test
     void intRangeUserInput() {
