@@ -20,8 +20,11 @@ public class RacingCarService {
     }
 
     public List<RacingCar> getCarListFromInput(String input) {
-        List<String> carNameList = List.of(input.split(","));
-        return convertRacingCarListFromNameList(carNameList);
+        return convertRacingCarListFromNameList(getCarNameList(input));
+    }
+
+    public List<String> getCarNameList(String input){
+        return List.of(input.split(","));
     }
 
     private List<RacingCar> convertRacingCarListFromNameList(List<String> carNameList){
