@@ -42,7 +42,7 @@ public class User {
         return tryNumber;
     }
 
-    public static int isTryNumberDigit() {
+    private static int isTryNumberDigit() {
         int tryNumber;
         try {
             tryNumber = isDigit(Console.readLine());
