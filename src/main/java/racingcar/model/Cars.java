@@ -31,6 +31,14 @@ public class Cars {
         return positions;
     }
 
+    private void createWinners(int maxDistance, List<String> winners) {
+        for (Car car : cars) {
+            if(maxDistance == car.getDistance()){
+                winners.add(car.getName());
+            }
+        }
+    }
+
     private int findMaxDistance(int maxDistance) {
         for (Car car : cars) {
             if(maxDistance < car.getDistance()){
