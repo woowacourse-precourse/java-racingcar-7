@@ -21,7 +21,7 @@ public class RaceController {
         try {
             List<Car> cars = inputView.getCar();
             int attempts = inputView.getNumberOfAttempt();
-            outputView.printRaceStart();
+            outputView.printRaceResultStart();
             raceService.start(cars, attempts);
             outputView.printWinners(raceService.getWinners(cars));
         } catch (IllegalArgumentException e) {
