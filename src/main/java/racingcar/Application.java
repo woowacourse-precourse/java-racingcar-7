@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.context.Car;
 import racingcar.service.CarGroup;
 import racingcar.service.CarRacing;
+import racingcar.service.CarRacingResult;
 import racingcar.util.CarNameSeparator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -35,6 +36,7 @@ public class Application {
         carRace.startCarRacing();
 
         //5. 경기 결과 판단
+        CarRacingResult carRacingResult = new CarRacingResult(carRace.getCarGroup());
         //자동차 경기 결과 출력
         OutputView.printMessage(PrintMessage.CAR_RACE_WINNER_MESSAGE);
     }

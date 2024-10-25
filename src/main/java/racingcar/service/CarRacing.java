@@ -7,7 +7,7 @@ import racingcar.view.PrintMessage;
 
 public class CarRacing {
     private final Integer totalRaceRound;
-    private List<Car> carGroup;
+    private final List<Car> carGroup;
 
     public CarRacing(String totalRaceRound, List<Car> carGroup) {
         this.totalRaceRound = Integer.parseInt(totalRaceRound); //검증, 예외 처리 필요
@@ -19,5 +19,9 @@ public class CarRacing {
             carGroup.forEach(Car::moveCar);
             OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
         }
+    }
+
+    public List<Car> getCarGroup() {
+        return carGroup;
     }
 }
