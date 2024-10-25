@@ -74,9 +74,15 @@ public class Application {
     public static int isForward() {
 
         int i = Randoms.pickNumberInRange(0,9);
-        return 1;
+        if (i>=4) return 1;
+        return 0;
+
 
     }
 
+
+//    public static String carMove(boolean input) {
+//
+//    }
 
 }
