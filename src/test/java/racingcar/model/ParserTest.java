@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -40,5 +41,18 @@ class ParserTest {
 
         // then
         assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("리스트를 구분자로 연결하여 문자열로 반환하는 테스트")
+    void joinWithJoiner() {
+        // given
+        List<String> names = Arrays.asList("pobi", "woni", "jun");
+
+        // when
+        String result = parser.joinWithJoiner(names, ", ");
+
+        // then
+        assertThat(result).isEqualTo("pobi, woni, jun");
     }
 }
