@@ -20,10 +20,10 @@ class CarTest {
 
     @Test
     @DisplayName("자동차가 정상적으로 움직인다.")
-    void moveCar() {
+    void moveForwardCar() {
         Car car = new Car("pobi");
 
-        car.move();
+        car.moveForward();
 
         assertEquals(1, car.getPosition());
     }
