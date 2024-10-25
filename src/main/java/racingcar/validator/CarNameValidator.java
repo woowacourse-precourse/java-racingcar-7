@@ -3,11 +3,9 @@ package racingcar.validator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class CarNameValidator {
+import static racingcar.constants.Constants.*;
 
-    private static final int NAME_MAX_LENGTH = 5;
-    //    private static final String CAR_LIST_PATTERN = "^([a-zA-Z0-9가-힣])(,[a-zA-Z0-9가-힣])*$";
-    private static final String CAR_LIST_PATTERN = "^[a-zA-Z0-9가-힣]+[a-zA-Z0-9가-힣" + "," + "]*[a-zA-Z0-9가-힣]";
+public class CarNameValidator {
 
     public void nameLength(List<String> carsList) {
         for (String car : carsList) {
