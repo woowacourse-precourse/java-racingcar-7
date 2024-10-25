@@ -10,6 +10,8 @@ import racingcar.view.OutputView;
 public class Race {
     private static final String CAR_NAME_LENGTH_EXP_MSG = "자동차 이름은 5자 이하만 가능합니다.";
     private static final String NUMBER_FORMAT_EXCEPTION_MSG = "정수를 입력해주세요.";
+    private static final int NAME_LENGTH_LIMIT = 5;
+    private static final String STRING_DELIMITER = ",";
 
     private List<Car> racingCars = new ArrayList<>();
     private int round;
@@ -20,9 +22,9 @@ public class Race {
     }
 
     private void setRacingCars(String racingCarNames) {
-        racingCars = Arrays.stream(racingCarNames.split(","))
+        racingCars = Arrays.stream(racingCarNames.split(STRING_DELIMITER))
                 .peek(name -> {
-                    if (name.length() > 5) {
+                    if (name.length() > NAME_LENGTH_LIMIT) {
                         throw new IllegalArgumentException(CAR_NAME_LENGTH_EXP_MSG);
                     }
                 }).map(Car::new).toList();
