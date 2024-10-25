@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import racingcar.common.exception.constant.CarsType;
+import racingcar.common.constant.CarsType;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.CarsList;
@@ -25,5 +25,9 @@ public class CarsStrategy {
   
   public Function<List<Car>, Cars> getCollection(CarsType carsType){
     return carStrategy.get(carsType);
+  }
+
+  public Function<List<Car>, Cars> getDefaultCollection() {
+    return carStrategy.get(CarsType.PRIORITY_BLOCKING_QUEUE);
   }
 }
