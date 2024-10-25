@@ -11,6 +11,10 @@ public class Car {
         this.carPosition = START;
     }
 
+    public void move() {
+        carPosition++;
+    }
+
     public String getCarName() {
         return carName;
     }
