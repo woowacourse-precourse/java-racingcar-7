@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,5 +22,15 @@ public class InputHandlerTest {
     void 올바른_입력값_예외_없음(String carNames) {
         //when & then
         assertDoesNotThrow(() -> InputHandler.validateCarNames(carNames));
+    }
+
+    @Test
+    void 시도_횟수가_0이면_예외_발생() {
+        // given
+        int attemptCount = 0;
+
+        // when & then
+        assertThatThrownBy(() -> InputHandler.validateAttemptCount(attemptCount))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
