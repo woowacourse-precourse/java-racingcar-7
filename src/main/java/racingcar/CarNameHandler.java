@@ -13,8 +13,8 @@ public class CarNameHandler {
                 .collect(Collectors.toList());
     }
 
-    // Car 객체 생성 및 차 이름 설정
-    public CarData createCar(String input) {
+    // Car 객체 생성 및 차 이름 저장
+    public CarData storeCar(String input) {
         List<String> carNames = splitCarNames(input);
         CarData carData = new CarData();
         carData.setCarNames(carNames);
