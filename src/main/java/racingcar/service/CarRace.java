@@ -2,6 +2,8 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.context.Car;
+import racingcar.view.OutputView;
+import racingcar.view.PrintMessage;
 
 public class CarRace {
     private final Integer totalRaceRound;
@@ -15,6 +17,7 @@ public class CarRace {
     public void startCarRacing() {
         for (int raceRound = 0; raceRound < totalRaceRound; raceRound++) {
             carGroup.forEach(Car::moveCar);
+            OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
         }
     }
 }

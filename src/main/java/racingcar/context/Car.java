@@ -2,6 +2,7 @@ package racingcar.context;
 
 import racingcar.strategy.CarStrategy;
 import racingcar.validation.CarNameValidation;
+import racingcar.view.OutputView;
 
 public class Car {
     private final String carName;
@@ -21,6 +22,7 @@ public class Car {
         if (carStrategy.move()) {
             carMovementDistance++;
         }
+        OutputView.printCarRacingProcess(carName, carMovementDistance);
     }
 
     public String getCarName() {
@@ -30,6 +32,4 @@ public class Car {
     public Integer getCarMovementDistance() {
         return carMovementDistance;
     }
-
-    //결과 출력 - 자동차 이름 : -
 }
