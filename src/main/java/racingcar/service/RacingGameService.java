@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -11,13 +10,9 @@ import racingcar.domain.racingGame.RacingSnapshot;
 
 public class RacingGameService {
 	public List<RacingRecord> processRacingGame(Cars cars, RacingGameCount gameCount) {
-		List<RacingRecord> records = new ArrayList<>();
-		IntStream.range(0, gameCount.getCount())
-			.forEach(racingGame -> {
-				List<RacingSnapshot> snapshots = processEachRacingGame(cars, new RandomNumberGenerator());
-				records.add(new RacingRecord(snapshots));
-			});
-		return records;
+		return IntStream.range(0, gameCount.getCount())
+			.mapToObj(racingGame -> new RacingRecord(processEachRacingGame(cars, new RandomNumberGenerator())))
+			.toList();
 	}
 
 	private List<RacingSnapshot> processEachRacingGame(Cars cars, RandomNumberGenerator randomNumberGenerator) {
