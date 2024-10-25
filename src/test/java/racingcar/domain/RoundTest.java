@@ -13,6 +13,12 @@ class RoundTest {
         assertThrows(IllegalArgumentException.class, () -> {Round.of("-4");});
     }
 
+    @DisplayName("문자열 라운드 생성 불가능")
+    @Test
+    void stringRound() {
+        assertThrows(IllegalArgumentException.class, () -> {Round.of("three");});
+    }
+
     @DisplayName("라운드 생성 성공")
     @Test
     void createRound() {
@@ -22,9 +28,9 @@ class RoundTest {
 
     @DisplayName("라운드 진행시 라운드 감소")
     @Test
-    void playRound() {
+    void reduce() {
         Round round = Round.of("1");
-        round.playRound();
+        round.reduceRound();
         assertFalse(round.hasRound());
     }
 }
