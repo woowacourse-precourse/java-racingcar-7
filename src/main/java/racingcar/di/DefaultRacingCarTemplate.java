@@ -1,10 +1,10 @@
 package racingcar.di;
 
-import racingcar.model.dependency.moving_strategy.MovingStrategy;
-import racingcar.model.dependency.moving_strategy.random.DefaultMovingStrategy;
 import racingcar.model.dependency.validator.DefaultRacingCarValidator;
 import racingcar.model.dependency.validator.RacingCarValidator;
 import racingcar.service.RacingService;
+import racingcar.service.dependency.random_maker.DefaultRandomNumberMaker;
+import racingcar.service.dependency.random_maker.RandomNumberMaker;
 import racingcar.view.input.DefaultInputView;
 import racingcar.view.input.InputView;
 import racingcar.view.output.DefaultOutputView;
@@ -18,11 +18,10 @@ public class DefaultRacingCarTemplate implements RacingCarTemplate {
 
     // Model
     private final RacingCarValidator racingCarValidator = new DefaultRacingCarValidator();
-    private final MovingStrategy movingStrategy = new DefaultMovingStrategy();
-    private final RacingCarDependency racingCarDependency = new RacingCarDependency(racingCarValidator, movingStrategy);
 
     // Model - Service
-    private final RacingService racingService = new RacingService(racingCarDependency);
+    private final RandomNumberMaker randomNumberMaker = new DefaultRandomNumberMaker();
+    private final RacingService racingService = new RacingService(randomNumberMaker, racingCarValidator);
 
     @Override
     public InputView inputView() {
