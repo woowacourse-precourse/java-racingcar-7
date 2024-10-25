@@ -22,4 +22,12 @@ public class InputView {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
     }
+
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        } else if (carNames.stream().anyMatch(name -> name.length() > 5)) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+    }
 }
