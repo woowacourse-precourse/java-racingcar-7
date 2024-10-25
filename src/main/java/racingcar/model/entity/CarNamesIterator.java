@@ -3,6 +3,7 @@ package racingcar.model.entity;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/** CarNames 클래스의 이터레이터 */
 public class CarNamesIterator implements Iterator<String> {
 
     private final CarNames names;

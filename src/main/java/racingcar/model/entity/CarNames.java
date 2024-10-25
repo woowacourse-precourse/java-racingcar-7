@@ -9,9 +9,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 자동차 이름 입력값을 검증 기능 수행
- */
+/** 자동차 이름을 저장한 일급 컬력션 입력값 검증 기능 수행 */
 public class CarNames implements Iterable<String> {
 
     public static final String ONLY_DIGIT_ALPHABET_HANGEUL = "[0-9a-zA-Z가-힣]";
@@ -42,7 +40,7 @@ public class CarNames implements Iterable<String> {
     /**
      * 자동차 이름 문자열을 받아서 형식을 검증한 후 문자열로 반환하는 메서드
      * @param 검증되지 않은 자동차 이름 문자열
-     * @return 자동차 이름 문자열(이름 사이에 쉼표(",")가 있는)
+     * @return CarNames 객체 반환
      * @throws 자동차 이름이 5글자 초과하거나 이름 중간에 알파벳, 한글, 숫자 이외의 문자가
      *         있으면 IllegalArgumentException 발생
      */
