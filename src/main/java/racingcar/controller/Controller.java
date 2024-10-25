@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.utils.Utils;
@@ -9,7 +10,7 @@ import racingcar.view.OutputView;
 
 public class Controller {
 
-    private List<Car> racingCarList;
+    private List<Car> cars;
     private final Validator validator;
     private final Utils utils;
     private final InputView inputView;
@@ -20,5 +21,18 @@ public class Controller {
         this.utils = utils;
         this.inputView = inputView;
         this.outputView = outputView;
+        this.cars = new ArrayList<>();
+    }
+
+    private void inputAndValidateCars() {
+        String s = inputView.inputCarNames();
+
+        validator.validateInputNotBlank(s);
+        validator.validateNoEmptyCarNames(s);
+
+        String[] carNames = utils.convertToCarNameArray(s);
+
+        validator.validateCarNameLength(carNames);
+        utils.saveCarNamesToList(carNames, cars);
     }
 }
