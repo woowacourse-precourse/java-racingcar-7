@@ -6,12 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Controller {
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public Controller(InputView inputView) {
+    public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void startGame() {
@@ -37,6 +40,7 @@ public class Controller {
         // 랜덤
         int randomValue;
 
+        outputView.printExecutionResult();
         for (int i = 0; i < repeatNumber; i++) {
             for (Car car : carList) {
                 randomValue = createRandomValue();
@@ -45,6 +49,7 @@ public class Controller {
                     car.setForwardCount(currentForwardCount + 1);
                 }
             }
+            outputView.printCurrentRoundRacingResult(carList);
         }
 
     }
