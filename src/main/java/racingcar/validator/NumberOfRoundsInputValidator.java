@@ -1,6 +1,7 @@
 package racingcar.validator;
 
 import racingcar.exception.InvalidInputException;
+import racingcar.exception.RoundsOutOfRangeException;
 
 public class NumberOfRoundsInputValidator implements BasicValidator<String> {
 
@@ -20,7 +21,7 @@ public class NumberOfRoundsInputValidator implements BasicValidator<String> {
 
     private void isInputPositive(String userInput) {
         if (Integer.parseInt(userInput) <= 0) {
-            throw new IllegalArgumentException("입력값이 0 이하의 숫자입니다.");
+            throw new RoundsOutOfRangeException("입력값이 0 이하의 숫자입니다.");
         }
     }
 
@@ -28,13 +29,13 @@ public class NumberOfRoundsInputValidator implements BasicValidator<String> {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 정수가 아닙니다.");
+            throw new RoundsOutOfRangeException("입력값이 정수가 아닙니다.");
         }
     }
 
     private void isInputBetweenOneAndNinetyNine(String userInput) {
         if (Integer.parseInt(userInput) > 99) {
-            throw new IllegalArgumentException("입력값이 99 초과의 숫자입니다.");
+            throw new RoundsOutOfRangeException("입력값이 99 초과의 숫자입니다.");
         }
     }
 }
