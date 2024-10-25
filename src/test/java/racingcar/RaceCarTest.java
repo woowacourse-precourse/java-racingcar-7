@@ -19,6 +19,16 @@ public class RaceCarTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @CsvSource({"'one'","''"})
+    @DisplayName("경주 횟수로 숫자 외 입력이 들어오는 경우")
+    void testRaceCount(String input){
+        RaceCar raceCar = new RaceCar();
+        assertThatThrownBy(()->{raceCar.isValidCount(input);})
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
     @Override
     public void runMain() {
         // Application 클래스의 main 메서드를 실행
