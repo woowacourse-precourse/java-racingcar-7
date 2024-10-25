@@ -11,4 +11,16 @@ public class CarRacingGame {
         this.carList = carList;
         this.round = round;
     }
+
+    public void start() {
+        for (int i = 0; i < round; i++) {
+            round();
+        }
+    }
+
+    private void round() {
+        for (ICar car : carList) {
+            car.drive();
+        }
+    }
 }

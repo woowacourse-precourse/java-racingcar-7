@@ -20,5 +20,7 @@ public class Application {
         int round = Integer.parseInt(roundStr);
 
         CarRacingGame carRacingGame = new CarRacingGame(carList, round);
+
+        carRacingGame.start();
     }
 }
