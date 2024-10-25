@@ -12,6 +12,7 @@ public class Race {
     public void run(int rounds) {
         for (int i = 0; i < rounds; i++){
             playRound();
+            Result.printRoundResult(cars);
         }
     }
 
