@@ -11,7 +11,7 @@
     - [x] 숫자만 가능 / 숫자가 아닐 시 IllegalArgumentException 발생
 
 ### ▪️ 게임
-- [] 0-9 무작위 값 구하기(`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용)
+- [x] 0-9 무작위 값 구하기(`camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용)
 - [] 무작위 값이 4이상인 경우 전진
 - [] 입력한 횟수만큼, 입력받은 인원만큼 반복
 - [] 우승자 구하기(공동 우승 가능)
