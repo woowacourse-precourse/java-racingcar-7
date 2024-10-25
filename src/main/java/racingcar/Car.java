@@ -53,4 +53,9 @@ public class Car {
         Car car = (Car) obj;
         return Objects.equals(name, car.name);
     }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(distanceMovedForward);
+    }
 }

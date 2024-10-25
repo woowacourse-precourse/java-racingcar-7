@@ -2,11 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class RacingGame {
-    Set<Car> cars = new HashSet<>();
+    private Set<Car> cars = new HashSet<>();
 
     public void run(final String carNames, final int totalMoves) {
         for (String name : carNames.split(",")) {
@@ -15,21 +14,22 @@ public class RacingGame {
 
         for (int i = 0; i < totalMoves; i++) {
             moveCars();
-        }
-    }
-
-    private void moveCars() {
-        Iterator<Car> iterator = cars.iterator();
-
-        while (iterator.hasNext()) {
-            Car car = iterator.next();
-            moveCarRandomly(car);
+            printCarStatus();
         }
     }
 
     private void registerCar(final Car car) {
         boolean isAdded = cars.add(car);
         validateNameDuplicated(isAdded);
+    }
+
+    private void moveCars() {
+        cars.forEach(this::moveCarRandomly);
+    }
+
+    private void printCarStatus() {
+        cars.forEach(System.out::println);
+        System.out.println();
     }
 
     private void validateNameDuplicated(final boolean isAdded) {
