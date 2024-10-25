@@ -1,5 +1,7 @@
 package racingcar.validation.exceptions;
 
+import static racingcar.constants.CarConstants.NAME_LENGTH_LIMIT;
+
 /**
  * packageName    : racingcar.validation
  * fileName       : ValidationException
@@ -13,8 +15,6 @@ package racingcar.validation.exceptions;
  */
 
 public class ValidationException {
-
-    private static final int NAME_LENGTH_LIMIT = 5;
 
     public static void isCarNameLengthValid(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
@@ -30,6 +30,12 @@ public class ValidationException {
 
     public static void isBlank(String value) {
         if (value.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isPositiveNumber(int value) {
+        if (value < 1) {
             throw new IllegalArgumentException();
         }
     }
