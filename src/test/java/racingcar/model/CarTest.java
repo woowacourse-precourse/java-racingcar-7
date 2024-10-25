@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
     @Test
@@ -20,6 +22,14 @@ public class CarTest {
     void nameIsEmpty() {
         String emptyName = "  ";
 
+        assertThatThrownBy(() -> new Car(emptyName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("이름에 공백이 포함될 때 예외가 발생해야 한다")
+    @ValueSource(strings = {"poby ", "p oby", " poby"})
+    void nameHasEmpty(String emptyName) {
         assertThatThrownBy(() -> new Car(emptyName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
