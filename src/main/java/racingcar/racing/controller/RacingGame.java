@@ -40,7 +40,6 @@ public class RacingGame {
     private List<String> inputCarNames() {
         OutputView.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCar = InputView.inputConsole(false);
-
         List<String> carNames = InputParser.parseCarNames(inputCar);
         if (InputValidator.validateCarNameLength(carNames)) {
             throw new IllegalArgumentException("");
