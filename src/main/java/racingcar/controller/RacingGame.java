@@ -15,6 +15,7 @@ public class RacingGame {
         this.racingService = new RacingService();
         initialize();
     }
+
     //게임 시작시 필요한 초기 설정 수행
     private void initialize(){
         String[] carNames = InputView.getCarNames();
@@ -25,10 +26,19 @@ public class RacingGame {
         }
     }
 
+    //게임 시작
+    public void start(){
+        for(int i =0; i<attemptCount; i++){
+            playRound();
+
+        }
+    }
+
     //라운드 진행
     private void playRound(){
         racingService.moveCars(cars);
     }
+
     public void run(){
         int attemptCount = InputView.getAttemptCount();
     }
