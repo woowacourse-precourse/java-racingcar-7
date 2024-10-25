@@ -20,8 +20,8 @@ class RandomRaceControllerTest {
     }
 
     @Test
-    void 랜덤하게_전진한다() {
-        List<RacingCar> newRacingCars = randomRaceController.start(racingCars);
+    void 시도횟수만큼_랜덤하게_전진한다() {
+        List<RacingCar> newRacingCars = randomRaceController.start(racingCars, 2L);
         for (RacingCar racingCar : newRacingCars) {
             int distanceLength = racingCar.getDistance().length();
             assertThat(distanceLength).isBetween(0, 2);

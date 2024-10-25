@@ -10,10 +10,12 @@ public class RandomRaceController {
         return random >= 4;
     }
 
-    public List<RacingCar> start(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
-            if (isAdvance()) {
-                racingCar.race();
+    public List<RacingCar> start(List<RacingCar> racingCars, Long tryNums) {
+        for (int i = 0; i < tryNums; i++) {
+            for (RacingCar racingCar : racingCars) {
+                if (isAdvance()) {
+                    racingCar.race();
+                }
             }
         }
         return racingCars;
