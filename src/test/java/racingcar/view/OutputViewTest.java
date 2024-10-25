@@ -56,18 +56,6 @@ class OutputViewTest {
         assertEquals(expected, getStringFromOutputStream(outputStream));
     }
 
-    @DisplayName("최종 우승자를 형식에 맞게 출력한다.")
-    @Test
-    void printWinner() {
-        Car car = new Car("pobi");
-
-        String expectedWinnerPrint = "최종 우승자 : pobi\n";
-        SystemOut();
-        outputView.printWinner(car);
-
-        assertEquals(expectedWinnerPrint, getStringFromOutputStream(outputStream));
-    }
-
     @DisplayName("공동 우승자를 형식에 맞게 출력한다.")
     @Test
     void printWinners() {

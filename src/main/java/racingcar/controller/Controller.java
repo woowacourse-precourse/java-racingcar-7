@@ -39,9 +39,6 @@ public class Controller {
         return service.splitCarNames(carNames);
     }
 
-    public void printWinner(final Car car) {
-        outputView.printWinner(car);
-    }
 
     public List<Car> registerCar(final List<String> carNames) {
         return service.registerCar(carNames);

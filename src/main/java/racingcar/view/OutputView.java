@@ -18,10 +18,6 @@ public class OutputView {
         System.out.println(car.getName() + " : " + dashString + " ");
     }
 
-    public void printWinner(final Car winnerCar) {
-        System.out.println("최종 우승자 : " + winnerCar.getName());
-    }
-
     public void printWinners(final List<Car> winnerList) {
         System.out.print("최종 우승자 : " + createWinnersString(winnerList));
     }
