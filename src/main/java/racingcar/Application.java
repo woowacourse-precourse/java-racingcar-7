@@ -9,6 +9,16 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    public void printEachRound(List<Car> racingCar) {
+        for (Car car : racingCar) {
+            if (stopOrGo()) {
+                car.advance += 1;
+            }
+            String statusBar = "-".repeat(car.advance);
+            System.out.println(car.name + " : " + statusBar);
+        }
+        System.out.println();
+    }
     public void playGames(List<Car> racingCar, int numberOfGames) {
         for (int i = 0; i < numberOfGames; i++) {
             printEachRound(racingCar);
