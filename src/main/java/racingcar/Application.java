@@ -98,4 +98,9 @@ public class Application {
 
         return winner;
     }
+
+    private void printWinner(List<String> winnerList) {
+        String result = String.join(",", winnerList);
+        System.out.println(result);
+    }
 }
