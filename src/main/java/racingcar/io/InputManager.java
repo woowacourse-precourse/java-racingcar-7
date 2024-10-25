@@ -14,7 +14,7 @@ public class InputManager implements IOManager {
     }
 
     public String carNameInput() {
-        printMessage(IOMessage.Enter_Car_Name_INPUT);
+        printMessage(IOMessage.ENTER_CAR_NAME_INPUT);
         return Console.readLine();
     }
 }
