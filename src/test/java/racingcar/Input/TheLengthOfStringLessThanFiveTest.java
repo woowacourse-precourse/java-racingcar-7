@@ -2,11 +2,12 @@ package racingcar.Input;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racingcar.Input.InputString.isTheLengthOfStringLessThanFive;
+import static racingcar.view.InputView.isTheLengthOfStringLessThanFive;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
+import racingcar.view.InputView;
 
 public class TheLengthOfStringLessThanFiveTest extends NsTest {
 
@@ -42,7 +43,7 @@ public class TheLengthOfStringLessThanFiveTest extends NsTest {
         // when
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> InputString.isTheLengthOfStringLessThanFive(input));
+        assertThrows(IllegalArgumentException.class, () -> InputView.isTheLengthOfStringLessThanFive(input));
     }
 
 

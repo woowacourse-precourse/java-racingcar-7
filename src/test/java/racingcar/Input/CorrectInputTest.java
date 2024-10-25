@@ -3,8 +3,7 @@ package racingcar.Input;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racingcar.Input.InputString.inputString;
-import static racingcar.Input.InputString.isCorrectInput;
+import static racingcar.view.InputView.isCorrectInput;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;

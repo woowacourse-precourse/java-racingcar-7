@@ -1,11 +1,10 @@
-package racingcar.Input;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InputString {
+public class InputView {
     static String regex = "^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$";
     static Pattern pattern = Pattern.compile(regex);
     static Matcher matcher;
