@@ -21,7 +21,7 @@ public class Cars {
     }
 
     public void race() {
-        cars.forEach(car -> car.race(pickRandomNumberFromZeroToNine()));
+        cars.forEach(car -> car.race(Randoms.pickNumberInRange(RANDOM_NUMBER_LOWER_BOUND, RANDOM_NUMBER_UPPER_BOUND)));
     }
 
     public List<String> getCarsInformation() {
@@ -37,9 +37,5 @@ public class Cars {
     private int getMaximumStatus() {
         return cars.stream().max(Comparator.comparingInt(Car::getStatus))
                 .get().getStatus();
-    }
-
-    private int pickRandomNumberFromZeroToNine() {
-        return Randoms.pickNumberInRange(RANDOM_NUMBER_LOWER_BOUND, RANDOM_NUMBER_UPPER_BOUND);
     }
 }
