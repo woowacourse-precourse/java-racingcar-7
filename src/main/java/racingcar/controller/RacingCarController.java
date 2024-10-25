@@ -15,5 +15,6 @@ public class RacingCarController {
 
     private void initializeRacing() {
         inputView.printCarNameInputGuide();
+        String carNames = inputView.getCarNameInput();
     }
 }
