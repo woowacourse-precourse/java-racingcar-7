@@ -24,4 +24,8 @@ public class Car {
         }
         System.out.println();
     }
+
+    public void forward(){
+        this.forwardLevel += 1;
+    }
 }
