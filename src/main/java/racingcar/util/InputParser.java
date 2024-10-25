@@ -12,7 +12,7 @@ public class InputParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 숫자가 아닙니다.\n" + "입력값: " + input);
+            throw new IllegalArgumentException(ErrorMessage.TRY_NUMBER_NOT_NUMBER.getMessage() + input);
         }
     }
 }

@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import racingcar.util.ErrorMessage;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,7 +22,7 @@ public class Cars {
         HashSet<Object> set = new HashSet<>();
         carNames.forEach(carName -> {
             if (!set.add(carName)) {
-                throw new IllegalArgumentException("자동차 이름 " + carName+ "이 중복되었습니다.");
+                throw new IllegalArgumentException(ErrorMessage.CAR_NAME_DUPLICATED.getMessage() + carName);
             }
         });
     }

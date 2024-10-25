@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.ErrorMessage;
+
 public class Car {
     // 이름, 위치
     private final String name;
@@ -7,10 +9,10 @@ public class Car {
 
     public Car(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자 이하가 되어야합니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LESS_THAN_FIVE.getMessage());
         }
         if (name.isEmpty() || name.isBlank()) {
-            throw new IllegalArgumentException("자동차의 이름은 빈칸 혹은 공백일 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CAN_NOT_BLANK_OR_EMPTY.getMessage());
         }
 
         this.name = name;
