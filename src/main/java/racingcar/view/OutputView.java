@@ -30,6 +30,10 @@ public class OutputView {
         }
     }
 
+    public void printWinner(Cars cars) {
+        List<String> winners = cars.getWinners();
+    }
+
     private void printCarsNameAndPosition(Cars cars) {
         List<Car> movedCars = cars.moves();
         for (Car movedCar : movedCars) {

@@ -23,5 +23,7 @@ public class RacingCarGame {
         Count tryCount = inputView.getTryCount();
 
         outputView.printGameResult(cars, tryCount);
+
+        outputView.printWinner(cars);
     }
 }

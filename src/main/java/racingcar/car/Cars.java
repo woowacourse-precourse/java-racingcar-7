@@ -22,6 +22,21 @@ public class Cars {
         return cars;
     }
 
+    public List<String> getWinners() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("알 수 없는 에러가 발생하였습니다."));
+    }
+
     private void validateDuplicateCars(List<String> carNames) {
         int count = (int) carNames.stream()
                 .distinct()
