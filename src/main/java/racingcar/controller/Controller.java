@@ -10,17 +10,31 @@ import racingcar.view.ResultView;
 
 public class Controller {
     public void startGame() {
+        List<Car> cars = parseCarListFromInput();
+        int attemptCount = parseAttemptCountFromInput();
+
+        playRaces(attemptCount, cars);
+        displayWinners(cars);
+    }
+
+    private List<Car> parseCarListFromInput() {
         String carNameInput = InputView.readCarNames();
-        List<Car> cars = InputProcessor.parseToCarNameList(carNameInput);
+        return InputProcessor.parseToCarNameList(carNameInput);
+    }
 
+    private int parseAttemptCountFromInput() {
         String attemptCountInput = InputView.readAttemptCount();
-        int attemptCount = InputProcessor.parseToAttemptCount(attemptCountInput);
+        return InputProcessor.parseToAttemptCount(attemptCountInput);
+    }
 
+    private void playRaces(int attemptCount, List<Car> cars) {
         for (int i = 0; i < attemptCount; i++) {
             RacingGame.playRace(cars);
             ResultView.printRaceResult(cars);
         }
+    }
 
+    private void displayWinners(List<Car> cars) {
         List<Car> winners = Winners.findWinner(cars);
         ResultView.printWinners(winners);
     }
