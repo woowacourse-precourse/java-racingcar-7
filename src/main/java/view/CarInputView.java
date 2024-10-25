@@ -2,7 +2,7 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class carInputView {
+public class CarInputView {
   private String carInput ;
 
   public void CarInput() {
