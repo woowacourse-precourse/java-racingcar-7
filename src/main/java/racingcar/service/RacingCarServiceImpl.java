@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import static racingcar.util.Constant.COMMA_DELIMITER;
 import static racingcar.util.Constant.MAX_RANDOM_VALUE;
 import static racingcar.util.Constant.MIN_RANDOM_VALUE;
 
@@ -7,21 +8,21 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.validation.NameValidator;
+import racingcar.util.CommonUtil;
+import racingcar.validation.CarNamesValidator;
 
 public class RacingCarServiceImpl implements RacingCarService {
 
-    private final NameValidator nameValidator;
+    private final CarNamesValidator carNamesValidator;
 
-    public RacingCarServiceImpl(NameValidator nameValidator) {
-        this.nameValidator = nameValidator;
+    public RacingCarServiceImpl(CarNamesValidator carNamesValidator) {
+        this.carNamesValidator = carNamesValidator;
     }
 
     @Override
     public List<Car> splitAndInitializeRacingCars(String carNames) {
-        List<String> racingCarNames = new ArrayList<>(List.of(carNames.split(",")));
-        nameValidator.validate(racingCarNames);
-
+        carNamesValidator.validate(carNames);
+        List<String> racingCarNames = new ArrayList<>(CommonUtil.splitToList(carNames, COMMA_DELIMITER));
         return getRacingCars(racingCarNames);
     }
 
