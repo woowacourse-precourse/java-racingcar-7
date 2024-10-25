@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.domain.Car;
 
 public class InputView {
     private final InputHandler inputHandler;
@@ -9,9 +11,9 @@ public class InputView {
         this.inputHandler = inputHandler;
     }
 
-    public void readCarNames() {
+    public List<Car> readCarNames() {
         final String input = Console.readLine();
         inputHandler.checkEmpty(input);
-        inputHandler.validateUniqueNames(input);
+        return inputHandler.validateUniqueNames(input);
     }
 }
