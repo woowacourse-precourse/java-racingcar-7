@@ -7,7 +7,7 @@ import racingcar.view.OutputView;
 
 public class RaceController {
 
-    private final RaceService raceService; // final 필드 먼저 선언
+    private final RaceService raceService;
 
     public RaceController(RaceService raceService) {
         this.raceService = raceService;
