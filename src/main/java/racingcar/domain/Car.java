@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.dto.CarDto;
+import racingcar.util.RandomUtil;
 
 public class Car {
 
@@ -17,8 +17,12 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int random) {
-        if (random >= 4) {
+    public void playRound() {
+        move(RandomUtil.pickCarNumber());
+    }
+
+    public void move(int carNumber) {
+        if (carNumber >= 4) {
             position++;
         }
     }
@@ -29,10 +33,6 @@ public class Car {
 
     public int getPosition() {
         return position;
-    }
-
-    public void playRound() {
-        move(Randoms.pickNumberInRange(0, 9));
     }
 
     public CarDto getDto() {
