@@ -29,6 +29,16 @@ public class RacingCarService {
         return mapCarNames;
     }
 
+    public Map<String, String> moveCar(Map<String, String> mapRacingCars, List<String> carNames) {
+        for (int i = 0; i < carNames.size(); i++) {
+            String carName = carNames.get(i);
+            String value = mapRacingCars.getOrDefault(carNames.get(i), "");
+            value += "-";
+            mapRacingCars.put(carName, value);
+        }
+        return mapRacingCars;
+    }
+
     public int createRandomNumber() {
         return (int) (Math.random() * 10);
     }
