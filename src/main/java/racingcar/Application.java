@@ -16,7 +16,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attemptCount = Console.readLine();
 
-        if(!isValidName(carNamesInput)) {
+        if (!isValidName(carNamesInput) || !isValidAttemptCount(attemptCount)) {
             throw new IllegalArgumentException();
         }
     }
@@ -47,5 +47,16 @@ public class Application {
             }
         }
         return false;
+    }
+
+    public static boolean isValidAttemptCount(String input) {
+        if (input.isBlank()) return false;
+        if (input.contains(".")) return false;
+
+        try {
+            return Integer.parseInt(input.trim()) > 0;
+        } catch (NumberFormatException e){
+            return false;
+        }
     }
 }
