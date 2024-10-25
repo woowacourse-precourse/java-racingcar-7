@@ -10,7 +10,7 @@ public class OutputView {
         public static final String COMMA_SPACE = ", ";
         public static final String RESULT_MESSAGE = "실행결과";
         public static final String ROUND_RESULT_FORMAT = "%s : %s%n";
-        public static final String WINNER_FORMAT = "%s : %s%n";
+        public static final String WINNER_FORMAT = "최종 우승자 : %s%n";
     }
 
     public static void printResultMessage() {
