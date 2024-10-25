@@ -37,8 +37,8 @@ public class RacingController {
         Cars cars = Cars.getOfNamesAndStrategy(carNames, new RandomMoveStrategy());
 
         racingService.raceOfCarsAndChance(cars, racingChance);
-        RacingRecording result = racingService.getResult();
-        outputView.printResult(result);
+        RacingRecording recording = racingService.getResult();
+        outputView.printResult(recording);
     }
 
 }
