@@ -10,6 +10,12 @@ public class CarRace {
     private int numRounds;
     private int currentRound;
 
+    private void simulateRound() {
+        for (RacingCar car : participants) {
+            car.simulateRound();
+        }
+    }
+
     public Set<String> getParticipantNames() {
         return participantNames;
     }
