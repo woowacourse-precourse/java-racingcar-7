@@ -5,6 +5,8 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+/docs/TestStudy.md
+
 ### STS ###
 .apt_generated
 .classpath
