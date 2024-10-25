@@ -72,7 +72,11 @@ public class RacingCars {
     }
 
     private void validateDuplication(List<RacingCar> values) {
-        if (values.stream().distinct().count() != values.size()) {
+        if (values.size() != values.stream()
+                .map(RacingCar::getName)
+                .distinct()
+                .count()) {
+
             throw ExceptionFactory.createException(DUPLICATED_CARS);
         }
     }
