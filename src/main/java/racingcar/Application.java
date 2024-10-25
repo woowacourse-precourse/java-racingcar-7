@@ -30,6 +30,8 @@ public class Application {
         Integer attempt = Integer.valueOf(Console.readLine());
 
         startGame(raceCars,attempt);
+        List<Car> winnerCar = findWinner(raceCars);
+        printWinner(winnerCar);
     }
 
     public static void startGame(List<Car> raceCars, Integer attempt) {
@@ -56,5 +58,25 @@ public class Application {
         System.out.println();
     }
 
+    private static List<Car> findWinner(List<Car> raceCars) {
+        int maxPosition = raceCars.stream()
+                                    .mapToInt(Car::getPosition)
+                                    .max()
+                                    .orElseThrow(() -> new IllegalArgumentException("Car list is empty"));
+
+        List<Car> winner = raceCars.stream()
+                                    .filter(car -> car.getPosition() == maxPosition)
+                                    .toList();
+
+        return winner;
+    }
+
+    private static void printWinner(List<Car> winnerCar) {
+        String winner = winnerCar.stream()
+                                    .map(Car::getName)  // Car 객체의 이름을 추출
+                                    .collect(Collectors.joining(", "));  // 쉼표로 이름을 합침
+
+        System.out.println("최종 우승자 : " + winner);
+    }
 }
 
