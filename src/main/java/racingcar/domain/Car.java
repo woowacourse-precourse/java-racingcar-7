@@ -12,7 +12,7 @@ public class Car {
         this.name = name;
     }
 
-    public Car(String name, int position) {
+    protected Car(String name, int position) {
         this.name = name;
         this.position = position;
     }

@@ -17,7 +17,7 @@ public class InputView {
         return splitNames(input());
     }
 
-    public static List<String> splitNames(String input) {
+    protected static List<String> splitNames(String input) {
         List<String> splitNames = Arrays.stream(input.split(DELIMITER, SPLIT_INCLUDE_LAST_SPACE)).toList();
         validateNames(splitNames);
         return splitNames;
@@ -33,7 +33,7 @@ public class InputView {
         return convertToInt(input());
     }
 
-    public static int convertToInt(String tryCount) {
+    protected static int convertToInt(String tryCount) {
         try {
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
