@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
@@ -17,6 +18,21 @@ public class CarService {
             cars.add(new Car(name));
         }
         return cars;
+    }
+
+    private boolean canMove() {
+        if (Randoms.pickNumberInRange(0, 9) >= FORWARD_CONDITION) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    public void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            if (canMove()) {
+                car.goForward();
+            }
+        }
     }
 
 }
