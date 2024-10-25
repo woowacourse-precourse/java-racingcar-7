@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Validator {
 
-    public void validateName(List<String> names) {
+    public static void validateName(List<String> names) {
         for (String name : names) {
             validateNull(name);
             validateLength(name);
         }
     }
 
-    public int validateCycle(String cycleInput) {
+    public static int validateCycle(String cycleInput) {
         int cycle;
         validateNull(cycleInput);
         cycle = validateParseInt(cycleInput);
