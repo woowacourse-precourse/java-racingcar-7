@@ -12,11 +12,6 @@ public class InputService {
 
     private final InputView inputView = new InputView();
 
-    public void run() {
-        InputView.getStringInput();
-        InputView.getCountInput();
-    }
-
     public static boolean isTheLengthOfStringLessThanFive(String input) {
         String[] cars = input.split(",");
 
@@ -29,7 +24,6 @@ public class InputService {
 
     public static boolean isCorrectInput(String inputString) {
         matcher = pattern.matcher(inputString);
-
         return matcher.matches();
     }
 }

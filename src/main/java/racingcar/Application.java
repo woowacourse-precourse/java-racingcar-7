@@ -9,6 +9,4 @@ public class Application {
         InputController inputController = new InputController();
         inputController.run();
     }
-
-
 }
