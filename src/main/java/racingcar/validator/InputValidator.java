@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.validator;
 
 import racingcar.exception.InputException;
 
@@ -6,32 +6,46 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class InputParser {
+public class InputValidator {
 
     public static List<String> parseNames(String names){
-        if (names == null || names.trim().isEmpty()) {
-            throw new InputException("빈 문자열입니다.");
-        }
+        checkNotEmpty(names);
+
         List<String> nameList = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(names, ",");
 
         while (st.hasMoreTokens()){
-            nameList.add(st.nextToken().trim());
+            String name = st.nextToken().trim();
+            isLengthUnderFive(name);
+            nameList.add(name);
         }
-
         return nameList;
     }
 
 
     public static int parseTurns(String number){
-        if (number == null || number.trim().isEmpty()) {
-            throw new InputException("빈 문자열입니다.");
-        }
+        checkNotEmpty(number);
+
         try{
             return Integer.parseInt(number);
         } catch(NumberFormatException e) {
             throw new InputException("숫자 변환에 실패하였습니다.");
         }
     }
+
+    private static void isLengthUnderFive(String name){
+        if (name.length() > 5) {
+            throw new InputException("이름의 길이는 5자 이하여야 합니다.");
+        }
+    }
+
+
+    private static void checkNotEmpty(String names) {
+        if (names == null || names.trim().isEmpty()) {
+            throw new InputException("빈 문자열입니다.");
+        }
+    }
+
+
 
 }
