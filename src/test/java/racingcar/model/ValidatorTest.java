@@ -88,6 +88,16 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("시도할 횟수 유효성 검사 - 성공 테스트")
+    void validateAttemptCount_success() {
+        // given
+        String attemptCountInput = "5";
+
+        // when & then
+        assertThatCode(() -> validator.validateAttemptCount(attemptCountInput)).doesNotThrowAnyException();
+    }
+
+    @Test
     @DisplayName("시도할 횟수 유효성 검사: 음수 - 예외 테스트")
     void validateAttemptCount_negativeNumber() {
         // given
