@@ -42,12 +42,28 @@ class UserInput {
     private boolean isValidCarNames = false;
     private boolean isPositiveAttempts = false;
     private boolean isIntegerAttempts = false;
-    
+
     public List<Car> getCarList() {
         return cars;
     }
 
     public int getAttempts() {
         return attempts;
+    }
+
+    public void setCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        String[] carNames = input.split(",");
+
+        for (String name : carNames) {
+            if (name.trim().length() <= 5) {
+                isValidCarNames = true;
+                cars.add(new Car(name.trim()));
+            } else {
+                isValidCarNames = false;
+                break;
+            }
+        }
     }
 }
