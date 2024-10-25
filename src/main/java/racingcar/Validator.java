@@ -29,9 +29,9 @@ public class Validator {
         }
     }
 
-    public static void validateNegative(int count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("음수 값은 허용되지 않습니다.");
+    public static void validatePositive(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("int 범위의 양수만 입력 가능합니다.");
         }
     }
 }
