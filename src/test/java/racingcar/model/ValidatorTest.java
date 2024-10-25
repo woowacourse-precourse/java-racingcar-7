@@ -86,4 +86,15 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    @DisplayName("시도할 횟수 유효성 검사: 음수 - 예외 테스트")
+    void validateAttemptCount_negativeNumber() {
+        // given
+        String attemptCountInput = "-1";
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
