@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.Validator;
 
 public class InputView {
 
@@ -16,6 +17,6 @@ public class InputView {
         System.out.println(COUNT_INPUT);
         String input = Console.readLine();
         System.out.println();
-        return Integer.parseInt(input);
+        return Validator.parseInteger(input);
     }
 }
