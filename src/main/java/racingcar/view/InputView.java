@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.validator.InputValidator;
 
 import java.util.Arrays;
 
@@ -19,6 +20,7 @@ public class InputView {
 
     public int readTryCount() {
         String input = Console.readLine();
+        InputValidator.validateNumber(input);
         return Integer.parseInt(input);
     }
 }
