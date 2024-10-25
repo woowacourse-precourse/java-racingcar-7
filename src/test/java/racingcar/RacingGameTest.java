@@ -8,12 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingGameTest {
 
     static RacingGame racingGame;
     static List<Car> cars;
-
 
 
     @BeforeEach
@@ -31,6 +32,26 @@ class RacingGameTest {
     void nameCheck() {
         cars.add(new Car("abcdef", 0));
         assertThatThrownBy(() -> racingGame.nameCheck(cars)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("랜덤값이 4 이상일 경우 전진")
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @Order(2)
+    void movingCar(int num) {
+        Car car = cars.get(0);
+        car.move(num);
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @DisplayName("랜덤값이 4 미만일 경우 전진 X")
+    @ValueSource(ints = {0, 1, 2, 3})
+    @Order(3)
+    void findMovingCar(int num) {
+        Car car = cars.get(0);
+        car.move(num);
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
 
