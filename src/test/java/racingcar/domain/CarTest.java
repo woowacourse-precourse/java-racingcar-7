@@ -24,7 +24,7 @@ class CarTest {
     class whenPositionMoveForward {
 
         @Test
-        @DisplayName("2번 모두 안움직이는 경우")
+        @DisplayName("0-3 사이 숫자가 두번 들어오면 움직이지 않는다.")
         void successfullyNoMoveCarToString() {
             //given
             String carName = "song";
@@ -41,7 +41,7 @@ class CarTest {
         }
 
         @Test
-        @DisplayName("1번 움직이고, 1번 안움직이는 경우")
+        @DisplayName("0-3 사이 숫자가 한번, 4-9 사이 숫자가 한번 들어오면 한번 움직인다.")
         void successfullyOneMoveCarToString() {
             //given
             String carName = "song";
@@ -58,7 +58,7 @@ class CarTest {
         }
 
         @Test
-        @DisplayName("2번 움직이는 경우")
+        @DisplayName("4-9 사이 숫자가 두번 들어오면 두번 움직인다.")
         void successfullyTwoMoveCarToString() {
             //given
             String carName = "song";
