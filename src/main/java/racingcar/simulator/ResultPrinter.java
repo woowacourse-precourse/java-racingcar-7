@@ -19,7 +19,8 @@ public class ResultPrinter {
 
     public void printResultOfWinners(List<Car> winners) {
         List<String> namesOfWinners = winners.stream().map(Car::getName).toList();
-        String resultOfWinners = String.join(", ", namesOfWinners);
+        String resultOfWinners = "최종 우승자 : ";
+        resultOfWinners += String.join(", ", namesOfWinners);
 
         System.out.println(resultOfWinners);
     }
