@@ -2,9 +2,9 @@ package model;
 
 import java.util.List;
 import java.util.Map;
-
+import java.util.HashMap;
 public class GameRecordsManager {
-  public Map<String, String> carGameRecords;
+  public Map<String, String> carGameRecords = new HashMap<>();
 
   public void createCarGameRecords(List<String> cars) {
 

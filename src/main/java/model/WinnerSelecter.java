@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class WinnnerSelecter {
+public class WinnerSelecter {
 
   public List<String> selectWinner(Map<String, String> carGameRecords) {
     List<String> winnerList = new ArrayList<>();

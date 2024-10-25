@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RaceCarParicipant {
 
-  private List<String> cars ;
+  public List<String> cars ;
 
   public void validateCars(String input) {
     // 허용된 문자들만 포함되어 있는지 검사 (콤마, 영어, 숫자)
@@ -16,7 +16,5 @@ public class RaceCarParicipant {
     this.cars = Arrays.asList(input.split(","));
   }
 
-  public List<String> getValidateCars() {
-    return cars;
-  }
+
 }
