@@ -5,22 +5,11 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car> {
 
-    private final String name;
+    private final CarName name;
     private int distance;
 
     public Car(String name) {
-        String trimName = name.trim();
-        validateName(trimName);
-        this.name = trimName;
-    }
-
-    private void validateName(String name) {
-        if (name.isBlank()) {
-            throw new IllegalArgumentException("자동차의 이름은 필수입니다.");
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다.");
-        }
+        this.name = new CarName(name);
     }
 
     public void move() {
@@ -30,7 +19,7 @@ public class Car implements Comparable<Car> {
     }
 
     public CarDetail getCarDetail() {
-        return new CarDetail(name, distance);
+        return new CarDetail(name.getName(), distance);
     }
 
     private static boolean canMove() {
