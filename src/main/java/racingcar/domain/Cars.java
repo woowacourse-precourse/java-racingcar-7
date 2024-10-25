@@ -24,6 +24,10 @@ public class Cars {
     }
   }
 
+  public void move(String name) {
+    cars.get(name).move();
+  }
+
   public boolean contains(Car car) {
     return cars.containsValue(car);
   }

@@ -16,7 +16,7 @@ public class Game {
 
     for (String name : carNames) {
       if (randomMoveCondition.isMovable()) {
-        //cars.move(name);
+        cars.move(name);
       }
     }
   }

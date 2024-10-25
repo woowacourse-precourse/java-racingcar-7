@@ -4,9 +4,10 @@ import java.util.Objects;
 
 public class Car {
   private final String name;
-
+  private int position;
   public Car(String name) {
     validateName(name);
+    this.position = 0;
     this.name = name;
   }
 
@@ -17,6 +18,10 @@ public class Car {
     if (name.length() > 5) {
       throw new IllegalArgumentException("Error: 자동차 이름은 5자 이하로 입력해야 합니다.");
     }
+  }
+
+  public void move() {
+    this.position++;
   }
 
   @Override
