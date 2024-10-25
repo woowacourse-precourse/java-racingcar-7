@@ -10,6 +10,7 @@ public class Car {
     public Car(final String carName, final int carLocation) {
         this.carName = carName;
         this.carLocation = carLocation;
+        this.generator = new RandomGenerator();
     }
 
     public String getCarName() {
