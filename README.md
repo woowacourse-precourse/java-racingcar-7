@@ -79,6 +79,9 @@ jun : -----
     - 문자열을 입력받는다.
 - isCorrectInput
     - 올바른 문자열인지 확인한다.
+    - 예외 상황
+      - 특수문자 사용 불가능
+      - 쉼표(,)로 시작하거나 끝나는 문자열 불가능
 - isTheLengthOfStringLessThanFive
     - 쉼표(,)를 기준으로 잘려진 문자열의 길이가 5 이하인지 확인한다.
 - addCarName
