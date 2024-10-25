@@ -1,6 +1,7 @@
 package racingcar.config;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +12,8 @@ import racingcar.config.annotation.Component;
  * Component Scan 구현
  */
 public class ComponentScanner {
+
+    private static final Class<? extends Annotation> COMPONENT_ANNOTATION = Component.class;
 
     private ComponentScanner() {
     }
@@ -30,7 +33,7 @@ public class ComponentScanner {
     }
 
     /**
-     * Component 어노테이션이 붙은 클래스를 찾아서 반환한다.
+     * Component 어노테이션이 포함된 클래스를 찾는다.
      *
      * @param packageName 기준 패키지
      * @param file        기준 파일
@@ -43,11 +46,12 @@ public class ComponentScanner {
                     .flatMap(List::stream)
                     .collect(Collectors.toList());
         }
+
         if (file.exists() && file.isFile() && file.getName().endsWith(".class")) {
             try {
                 String className = packageName + "." + file.getName().replace(".class", "");
                 Class<?> cls = Class.forName(className);
-                if (cls.isAnnotationPresent(Component.class)) {
+                if (isComponent(cls)) {
                     return List.of(cls);
                 }
             } catch (ClassNotFoundException e) {
@@ -56,5 +60,11 @@ public class ComponentScanner {
         }
 
         return List.of();
+    }
+
+    private static boolean isComponent(Class<?> cls) {
+        return Arrays.stream(cls.getAnnotations())
+                .map(Annotation::annotationType)
+                .anyMatch(it -> it.isAnnotationPresent(COMPONENT_ANNOTATION));
     }
 }
