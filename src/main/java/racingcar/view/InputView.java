@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputView {
     private static final int MAX_TRY_COUNT = 10000000;
@@ -81,8 +82,8 @@ public class InputView {
         }
     }
 
-    private static void checkCarNameException(List<String> carNames) {
-        HashSet<String> uniqueNames = new HashSet<>();
+    public static void checkCarNameException(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>();
         for (String car : carNames) {
             checkCarNameLength(car);
             checkCarNameNotEmpty(car);
@@ -110,7 +111,7 @@ public class InputView {
         }
     }
 
-    public static void checkCarNameUnique(String car, HashSet<String> uniqueNames) {
+    public static void checkCarNameUnique(String car, Set<String> uniqueNames) {
         if (uniqueNames.contains(car)) {
             throw new IllegalArgumentException("이름이 중복되었습니다.");
         }
