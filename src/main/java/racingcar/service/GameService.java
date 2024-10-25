@@ -3,45 +3,48 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Game;
 import racingcar.domain.Input;
+import racingcar.view.GameView;
 
 public class GameService {
 
+    private Input input;
     private Game game;
-    private static Input input;
 
     public GameService(Input input, Game game) {
-        GameService.input = input;
+        this.input = input;
         this.game = game;
     }
 
-    public void addCarName() {
-        String[] names = input.getNames().split(",");
+    public void run() {
+        addCarName(input.getNames());
+        GameView.displayGameProgress(input.getCount(), this);
+    }
+
+    public void addCarName(String strings) {
+        String[] names = strings.split(",");
 
         for (String name : names) {
             if (game.getCars().containsKey(name)) throw new IllegalArgumentException("중복된 이름입니다.");
-
             game.getCars().put(name, 0);
         }
-
-        runCarGame();
     }
 
-    public void runCarGame() {
+    public String runCarGame() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < input.getCount(); i++) {
-            for (String car : game.getCars().keySet()) {
-                int random = Randoms.pickNumberInRange(0, 9);
-                int distance = game.getCars().get(car);
+        for (String car : game.getCars().keySet()) {
 
-                if (random >= 4) game.getCars().put(car, distance + 1);
+            int random = Randoms.pickNumberInRange(0, 9);
+            int distance = game.getCars().get(car);
 
-                sb.append(car).append(" : ");
-                for (int j = 0; j < distance; j++) {
-                    sb.append('-');
-                }
-                sb.append('\n');
+            if (random >= 4) game.getCars().put(car, distance + 1);
+
+            sb.append(car).append(" : ");
+            for (int i = 0; i < distance; i++) {
+                sb.append('-');
             }
+            sb.append('\n');
         }
-        System.out.println(sb.toString());
+
+        return sb.toString();
     }
 }

@@ -9,7 +9,7 @@ public class InputController {
 
     private static Input input = new Input("", 0);
     private static Game game = new Game();
-    private static final GameService gameService = new GameService(input);
+    private static final GameService gameService = new GameService(input, game);
 
     public static void run() {
         InputView.getStringInput(input);
