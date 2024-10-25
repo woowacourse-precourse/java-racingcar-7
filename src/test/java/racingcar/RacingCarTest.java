@@ -15,7 +15,7 @@ class RacingCarTest {
 
     @DisplayName("List<String>에서 List<Car>로 변환")
     @Test
-    void test() {
+    void 자동차_문자열_리스트에서_객체_리스트로_변환() {
         // given
         List<String> separatedCarNameList = List.of("pobi", "woni", "jun");
 
