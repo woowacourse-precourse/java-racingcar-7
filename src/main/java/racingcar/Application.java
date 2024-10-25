@@ -11,6 +11,9 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        new RacingGame().run(input);
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int totalMoves = Integer.parseInt(Console.readLine());
+
+        new RacingGame().run(input, totalMoves);
     }
 }

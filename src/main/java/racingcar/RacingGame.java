@@ -6,7 +6,7 @@ import java.util.Set;
 public class RacingGame {
     Set<Car> cars = new HashSet<>();
 
-    public void run(final String carNames) {
+    public void run(final String carNames, final int totalMoves) {
         for (String name : carNames.split(",")) {
             registerCar(new Car(name));
         }
