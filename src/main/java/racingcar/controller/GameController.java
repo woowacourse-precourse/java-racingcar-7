@@ -33,5 +33,6 @@ public class GameController {
 
 	private void moveCar(Car car) {
 		int randomNumber = RandomNumberGenerator.generateRandomNumber();
+		car.move(randomNumber);
 	}
 }
