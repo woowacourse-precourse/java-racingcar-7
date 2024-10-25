@@ -17,11 +17,11 @@ public class Input {
     public static List<String> read() {
         List<String> inputs = new ArrayList<>();
 
-        System.out.println(Constants.INPUT_CAR_NAME);
+        System.out.println(Constants.INPUT_CAR_NAME_PROMPT);
         //첫번째 입력 처리
         inputs.add(createInput());
 
-        System.out.println(Constants.INPUT_RACE_ROUND);
+        System.out.println(Constants.INPUT_RACE_ROUND_PROMPT);
         //두번째 입력 처리
         inputs.add(createInput());
 
