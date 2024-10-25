@@ -22,4 +22,13 @@ public class CarNameValidator {
             throw new IllegalArgumentException("자동차 이름들은 콤마로 구분해야합니다.");
         }
     }
+
+    public static void validateNotBlank(String input){
+        if(input.isBlank()){
+            throw new IllegalArgumentException("빈 칸은 입력할 수 없습니다.");
+        }
+    }
+
+
+
 }
