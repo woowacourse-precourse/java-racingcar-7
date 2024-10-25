@@ -20,7 +20,9 @@ public class Game {
 
     private void inputCarNames() {
         OutputHandler.printStartMessage();
+
         String[] carNames = InputHandler.getCarNames();
+
         Validator.validateCarNames(carNames);
 
         for (String carName : carNames) {
@@ -30,6 +32,7 @@ public class Game {
 
     private void inputAttempts() {
         OutputHandler.printAttemptsMessage();
+
         attempts = InputHandler.getAttempts();
 
         Validator.validateAttempts(attempts);
@@ -40,7 +43,6 @@ public class Game {
 
         Race race = new Race(cars, attempts);
         race.start();
-
     }
 
     private void printWinners() {

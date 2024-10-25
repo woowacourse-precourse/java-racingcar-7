@@ -19,6 +19,7 @@ public class Race {
     public void start() {
         for (int i = 0; i < attempts; i++) {
             moveEachCar();
+
             OutputHandler.printCurrentStatus(cars);
         }
     }
