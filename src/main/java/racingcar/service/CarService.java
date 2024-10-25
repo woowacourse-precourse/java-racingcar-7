@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
@@ -34,10 +33,10 @@ public class CarService {
     public List<String> getWinners(){
         List<Car> cars = carRepository.findAll();
 
-        return getWinners(cars);
+        return findWinners(cars);
     }
 
-    private List<String> getWinners(List<Car> cars) {
+    private List<String> findWinners(List<Car> cars) {
         List<String> winnerNames = new ArrayList<>();
 
         int maxMoveCount = Integer.MIN_VALUE;
