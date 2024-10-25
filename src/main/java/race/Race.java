@@ -1,5 +1,7 @@
 package race;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +14,10 @@ public class Race {
 
         int attempt = attemptToInt(attempts);
 
-
+        cars.forEach((key, value) -> {
+            int newValue = playRacingCar(value);
+            cars.put(key, newValue);
+        });
 
     }
 
@@ -31,12 +36,31 @@ public class Race {
         return cars;
     }
 
-    public int attemptToInt(String input) {
+    private int attemptToInt(String input) {
 
         int attempt = Integer.parseInt(input);
 
         CheckException.checkAttempt(attempt);
 
         return attempt;
+    }
+
+    private int playRacingCar(int value) {
+
+        if (getRandomNum()) {
+            value++;
+        }
+
+        return value;
+    }
+
+    private boolean getRandomNum() {
+
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+
+        if(randomNum >= 4)
+            return true;
+        else
+            return false;
     }
 }
