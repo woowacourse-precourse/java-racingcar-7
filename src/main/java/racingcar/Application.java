@@ -29,6 +29,8 @@ public class Application {
         String totalRound = InputView.inputUser();
         //4. 라운드 수만큼 반복하면서 자동차 이동 시도
         CarRace carRace = new CarRace(totalRound, carGroup);
+
+        OutputView.printMessageWithLine(PrintMessage.CAR_RACE_RESULT_MESSAGE);
         carRace.startCarRacing();
         //자동차 경기 현황 출력
 
