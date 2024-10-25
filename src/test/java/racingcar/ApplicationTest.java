@@ -31,6 +31,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("5자가 넘는 자동차 이름 테스트")
+    @Test
+    void 글자수_제한을_넘는_이름() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobipobi", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
