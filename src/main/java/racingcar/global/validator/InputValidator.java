@@ -10,7 +10,7 @@ public class InputValidator {
     public enum ValidationMode {
         CAR_NAME(1, 5, InputValidator::validateCarName),
         CAR_COUNT(1, 100, InputValidator::validateCarCount),
-        GAME_COUNT(1, 1000, InputValidator::validateGameCount);
+        GAME_ROUND(1, 1000, InputValidator::validateGameRound);
 
         public int min;
         public int max;
@@ -54,12 +54,13 @@ public class InputValidator {
         }
     }
 
-    private static void validateGameCount(String input) {
+    private static void validateGameRound(String input) {
         try {
             int n = Integer.parseInt(input);
-            if (n < ValidationMode.GAME_COUNT.min || n > ValidationMode.GAME_COUNT.max) throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
+            if (n < ValidationMode.GAME_ROUND.min || n > ValidationMode.GAME_ROUND.max)
+                throw new IllegalArgumentException(INVALID_GAME_ROUND_MESSAGE);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
+            throw new IllegalArgumentException(INVALID_GAME_ROUND_MESSAGE);
         }
     }
 }

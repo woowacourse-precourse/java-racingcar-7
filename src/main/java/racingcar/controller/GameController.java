@@ -37,7 +37,6 @@ public class GameController {
         outputView.printInputCarNameMessage();
         inputView.saveInput();
         validate(ValidationMode.CAR_NAME, inputView.getInput());
-        validate(ValidationMode.CAR_COUNT, inputView.getInput());
         registerCar(inputView.getInput());
     }
 
@@ -50,7 +49,7 @@ public class GameController {
     private void inputGameRound(){
         outputView.printInputGameRoundMessage();
         inputView.saveInput();
-        validate(ValidationMode.GAME_COUNT, inputView.getInput());
+        validate(ValidationMode.GAME_ROUND, inputView.getInput());
         this.round = Integer.parseInt(inputView.getInput());
     }
 

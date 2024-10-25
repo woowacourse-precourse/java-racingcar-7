@@ -12,6 +12,6 @@ public class InvalidInputExceptionMessage {
     public static final String INVALID_CAR_COUNT_MESSAGE =
             String.format("자동차는 %d대 이상 %d 이하로 등록해 주세요.", ValidationMode.CAR_COUNT.min, ValidationMode.CAR_COUNT.max);
 
-    public static final String INVALID_GAME_COUNT_MESSAGE =
-            String.format("시도 횟수는 %d 이상 %d 이하의 자연수로 입력해 주세요.", ValidationMode.GAME_COUNT.min, ValidationMode.GAME_COUNT.max);
+    public static final String INVALID_GAME_ROUND_MESSAGE =
+            String.format("시도 횟수는 %d 이상 %d 이하의 자연수로 입력해 주세요.", ValidationMode.GAME_ROUND.min, ValidationMode.GAME_ROUND.max);
 }

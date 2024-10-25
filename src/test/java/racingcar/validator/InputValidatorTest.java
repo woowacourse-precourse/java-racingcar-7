@@ -68,58 +68,58 @@ public class InputValidatorTest {
 
     @Test
     void 실행_횟수를_음수로_입력한_경우() {
-        ValidationMode gameCount = ValidationMode.GAME_COUNT;
+        ValidationMode gameCount = ValidationMode.GAME_ROUND;
         String input;
 
         input = "-1";
 
         assertThatThrownBy(() -> InputValidator.validate(gameCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(INVALID_GAME_COUNT_MESSAGE);
+                IllegalArgumentException.class).hasMessage(INVALID_GAME_ROUND_MESSAGE);
     }
 
     @Test
     void 실행_횟수를_문자로_입력한_경우() {
-        ValidationMode gameCount = ValidationMode.GAME_COUNT;
+        ValidationMode gameCount = ValidationMode.GAME_ROUND;
         String input;
 
         input = "다섯번";
 
         assertThatThrownBy(() -> InputValidator.validate(gameCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(INVALID_GAME_COUNT_MESSAGE);
+                IllegalArgumentException.class).hasMessage(INVALID_GAME_ROUND_MESSAGE);
     }
 
     @Test
     void 실행_횟수를_소수로_입력한_경우() {
-        ValidationMode gameCount = ValidationMode.GAME_COUNT;
+        ValidationMode gameCount = ValidationMode.GAME_ROUND;
         String input;
 
         input = "1.4";
 
         assertThatThrownBy(() -> InputValidator.validate(gameCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(INVALID_GAME_COUNT_MESSAGE);
+                IllegalArgumentException.class).hasMessage(INVALID_GAME_ROUND_MESSAGE);
     }
 
     @Test
     void 실행_횟수가_최소로_등록해야_하는_수_미만인_경우() {
-        ValidationMode gameCount = ValidationMode.GAME_COUNT;
+        ValidationMode gameCount = ValidationMode.GAME_ROUND;
         String input;
 
         gameCount.min = 5;
         input = "4";
 
         assertThatThrownBy(() -> InputValidator.validate(gameCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(INVALID_GAME_COUNT_MESSAGE);
+                IllegalArgumentException.class).hasMessage(INVALID_GAME_ROUND_MESSAGE);
     }
 
     @Test
     void 실행_횟수가_최대로_등록_가능한_수를_초과한_경우() {
-        ValidationMode gameCount = ValidationMode.GAME_COUNT;
+        ValidationMode gameCount = ValidationMode.GAME_ROUND;
         String input;
 
         gameCount.max = 100;
         input = "101";
 
         assertThatThrownBy(() -> InputValidator.validate(gameCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(INVALID_GAME_COUNT_MESSAGE);
+                IllegalArgumentException.class).hasMessage(INVALID_GAME_ROUND_MESSAGE);
     }
 }
