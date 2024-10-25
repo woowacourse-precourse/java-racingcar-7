@@ -8,11 +8,23 @@ public class InputView {
 
     private String getCarNames() {
         System.out.println(CAR_NAMES_INPUT_MESSAGE);
-        return Console.readLine();
+        String carNames = Console.readLine();
+        if (isInputEmpty(carNames)) {
+            throw new IllegalArgumentException("사용자의 입력이 없습니다");
+        }
+        return carNames;
     }
 
     private String getRoundsToRace() {
         System.out.println(ROUND_INPUT_MESSAGE);
-        return Console.readLine();
+        String roundsToRace = Console.readLine();
+        if (isInputEmpty(roundsToRace)) {
+            throw new IllegalArgumentException("사용자의 입력이 없습니다.");
+        }
+        return roundsToRace;
+    }
+
+    private boolean isInputEmpty(String input) {
+        return (input == null || input.isEmpty());
     }
 }
