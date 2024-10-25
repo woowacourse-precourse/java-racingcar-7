@@ -1,11 +1,8 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import utility.CarRacing;
-import utility.Input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
