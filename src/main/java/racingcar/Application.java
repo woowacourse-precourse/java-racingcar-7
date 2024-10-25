@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,9 +21,12 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String gameCount = Console.readLine();
+        System.out.println("실행 결과");
 
         for (int i = 0; i < Integer.parseInt(gameCount); i++) {
             startGame(racingCar, splitRacingCarName);
+            printPerDegreeResult(racingCar);
+            System.out.println();
         }
 
     }
@@ -35,6 +39,12 @@ public class Application {
             if (randomNumber >= 4) {
                 racingCar.put(splitRacingCarName[i], racingCar.get(splitRacingCarName[i]) + 1);
             }
+        }
+    }
+
+    public static void printPerDegreeResult(Map<String, Integer> racingCar) {
+        for (Entry<String, Integer> stringIntegerEntry : racingCar.entrySet()) {
+            System.out.println(stringIntegerEntry.getKey() + " : " + ("-".repeat(stringIntegerEntry.getValue())));
         }
     }
 
