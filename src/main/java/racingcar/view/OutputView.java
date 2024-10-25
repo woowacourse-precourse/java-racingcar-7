@@ -35,7 +35,7 @@ public class OutputView {
         List<String> winners = winnedCars.getCarList().stream()
             .map(Car::getName)
             .collect(Collectors.toList());
-        System.out.println("최종 우승자 : " + String.join(", ", winners) + "가 최종 우승했습니다.");
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     public void announceResult() {
