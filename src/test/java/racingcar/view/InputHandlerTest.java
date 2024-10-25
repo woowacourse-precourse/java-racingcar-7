@@ -25,8 +25,8 @@ public class InputHandlerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0", "00", "0,0"})
-    void 시도_횟수가_0이면_예외_발생(String attemptCount) {
+    @ValueSource(strings = {"0", "00", "000", "-5"})
+    void 시도_횟수가_0_또는_이하면_예외_발생(String attemptCount) {
         // when & then
         assertThatThrownBy(() -> InputHandler.validateAttemptCount(attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -39,6 +39,11 @@ public class InputHandlerTest {
         assertDoesNotThrow(() -> InputHandler.validateAttemptCount(attemptCount));
     }
 
-//    @ParameterizedTest
-//    @ValueSource(strings = {"abc", "123a", ""})
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "123a", "0,0","#$%^*5"})
+    void 숫자_외의_값은_예외_발생(String attemptCount) {
+        // when & then
+        assertThatThrownBy(() -> InputHandler.validateAttemptCount(attemptCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
