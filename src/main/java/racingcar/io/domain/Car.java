@@ -49,7 +49,7 @@ public class Car {
 	}
 
 	private static boolean isPossibleToMove(int randomValue) {
-		return randomValue > MOVE_CONDITION;
+		return randomValue >= MOVE_CONDITION;
 	}
 
 	public boolean isFurthestIn(List<Car> others) {
