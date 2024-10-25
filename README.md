@@ -6,8 +6,8 @@
 
 ### 자동차 생성
 - [x] 자동차의 이름을 쉼표로 구분지어 생성하기
-- [ ] 구분자가 쉼표가 아닐 경우 IllegalArgumentException 발생 후 애플리케이션 종료 시키기
-- [ ] 자동차 이름 입력 시 레이서가 단 한명일 경우 경기 불가로 IllegalArgumentException 발생 후 애플리케이션 종료 시키기
+- [x] 구분자가 쉼표가 아닐 경우 IllegalArgumentException 발생 후 애플리케이션 종료 시키기
+- [x] 자동차 이름 입력 시 레이서가 단 한명일 경우 경기 불가로 IllegalArgumentException 발생 후 애플리케이션 종료 시키기
 - [x] 각 자동차의 이름은 5자 이하만 가능하며 초과 시 IllegalArgumentException 발생 후 애플리케이션 종료 시키기
 
 ### 이동 횟수 입력
