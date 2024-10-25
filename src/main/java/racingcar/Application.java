@@ -10,6 +10,6 @@ public class Application {
 
         Validator<String[]> nameValidator = new CarNameValidator();
         Validator<String> trialValidator = new TrialValidator();
-        GameController gameController = new GameController(nameValidator, trialValidator)
+        GameController gameController = new GameController(nameValidator, trialValidator);
     }
 }

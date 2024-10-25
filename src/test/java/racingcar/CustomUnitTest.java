@@ -32,7 +32,7 @@ public class CustomUnitTest {
 
         // assert
         assertThrows(IllegalArgumentException.class, () -> {
-            validator.checkEmptyOrNullCarName(car.getName());
+            validator.validate(new String[]{car.getName()});
         });
     }
 
