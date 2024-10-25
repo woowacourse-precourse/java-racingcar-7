@@ -1,6 +1,8 @@
 package racingcar.simulator;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,23 +30,41 @@ public class Simulator {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private int moveForwardByCondition(Car car) {
+    private void moveForwardByCondition(Car car) {
         int randomNumber = this.getRandomNumber();
 
         if (randomNumber >= 4) {
-            return ++this.racingBoard[car.getId()];
+            ++this.racingBoard[car.getId()];
         }
 
-        return this.racingBoard[car.getId()];
+    }
+
+    private int findMaxForwardCount() {
+        return Arrays.stream(racingBoard).max().orElseThrow();
+    }
+
+    private List<Car> findWinners() {
+        int maxForwardCount = this.findMaxForwardCount();
+        List<Car> winners = new ArrayList<>();
+
+        for (int carId = 0; carId < this.numberOfCars; carId++) {
+            if (maxForwardCount == racingBoard[carId]) {
+                winners.add(carMap.get(carId));
+            }
+        }
+
+        return winners;
     }
 
     public void simulate() {
         for (int tryCount = 1; tryCount <= this.numberOfAttempts; tryCount++) {
             for (int carId = 0; carId < this.numberOfCars; carId++) {
                 Car currentOrderOfCar = carMap.get(carId);
-                moveForwardByCondition(currentOrderOfCar);
+                this.moveForwardByCondition(currentOrderOfCar);
             }
         }
+        List<Car> winners = this.findWinners();
+
     }
 
 }
