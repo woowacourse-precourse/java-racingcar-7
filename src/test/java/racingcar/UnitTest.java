@@ -141,6 +141,17 @@ public class UnitTest extends NsTest {
         assertThat(out.toString()).contains("car1 : -", "car2 : ---", "car3 : --");
     }
 
+    @Test
+    @DisplayName("getWinPosition 테스트")
+    void getWinPositionTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+        assertThat(Application.getWinPosition(cars)).isEqualTo(3);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
