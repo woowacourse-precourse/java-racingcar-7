@@ -15,7 +15,6 @@ public class Application {
 
         List<RacingCar> racingCars = InputUtil.getRacingCars(input);
 
-        List<String> result = Race.startRace(racingCars, input.getTryNumber());
-        System.out.println("최종 우승자 : "+ String.join(", ", result) );
+        Race.startRace(racingCars, input.getTryNumber());
     }
 }

@@ -11,7 +11,7 @@ public class Race {
 
     private static int goalCnt;
 
-    public static List<String> startRace(List<RacingCar> racingCars, int tryNumber) {
+    public static void startRace(List<RacingCar> racingCars, int tryNumber) {
 
         goalCnt = tryNumber;
 
@@ -26,12 +26,7 @@ public class Race {
                 break;
         }
 
-        List<String> winner = new ArrayList<>();
-        for(RacingCar car : racingCars)
-            if(car.getCnt() == goalCnt)
-                winner.add(car.getCarName());
-
-        return winner;
+        endRace(racingCars);
     }
 
     private static void tryStepForward(RacingCar car) {
@@ -57,5 +52,15 @@ public class Race {
         for(int i = 0; i < car.getCnt(); i++)
             System.out.print("-");
         System.out.println();
+    }
+
+    private static void endRace(List<RacingCar> racingCars){
+
+        List<String> winner = new ArrayList<>();
+        for(RacingCar car : racingCars)
+            if(car.getCnt() == goalCnt)
+                winner.add(car.getCarName());
+
+        System.out.println("최종 우승자 : "+ String.join(", ", winner) );
     }
 }
