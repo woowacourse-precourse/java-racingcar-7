@@ -31,14 +31,14 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printWinners(Cars winnedCars) {
+    public void printWinners(Cars winnedCars) {
         List<String> winners = winnedCars.getCarList().stream()
             .map(Car::getName)
             .collect(Collectors.toList());
         System.out.println("최종 우승자 : " + String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
-    public static void announceResult() {
+    public void announceResult() {
         System.out.println("실행 결과");
     }
 }
