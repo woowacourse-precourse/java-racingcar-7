@@ -10,4 +10,12 @@ public class RacingRequestParser {
                 .map(String::trim)
                 .toList();
     }
+
+    public static Integer parseRound(String round) {
+        try {
+            return Integer.parseInt(round);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 }
