@@ -17,9 +17,9 @@ class RaceTest {
     @Test
     @DisplayName("한 턴당 출력이 작동하는지 확인한다")
     void 턴_출력_테스트() {
-        Race carList = new Race(new String[]{"pobi", "woni", "jun"}, 1);
+        Race race = new Race(new String[]{"pobi", "woni", "jun"}, 1);
         assertRandomNumberInRangeTest(() -> {
-                    assertThat(carList.turnRun()).isEqualTo("pobi : -\nwoni : \njun : -\n");
+                    assertThat(race.turnRun()).isEqualTo("pobi : -\nwoni : \njun : -\n");
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
@@ -27,10 +27,21 @@ class RaceTest {
     @Test
     @DisplayName("raceRun을 실행했을때 반환값 확인한다")
     void 레이스_실행_테스트() {
-        Race carList = new Race(new String[]{"pobi", "woni"}, 2);
+        Race race = new Race(new String[]{"pobi", "woni"}, 2);
         assertRandomNumberInRangeTest(() -> {
-                    assertThat(carList.raceRun()).isEqualTo("pobi : -\nwoni : \n\npobi : --\nwoni : -\n\n");
+                    assertThat(race.raceRun()).isEqualTo("pobi : -\nwoni : \n\npobi : --\nwoni : -\n");
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    @DisplayName("Winner가 제대로 구해지는지 확인한다")
+    void 우승자_테스트() {
+        Race race = new Race(new String[]{"pobi", "woni", "jun"}, 3);
+        assertRandomNumberInRangeTest(() -> {
+                    race.raceRun();
+                    assertThat(race.getWinners()).containsExactly("pobi", "woni");
+                }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, STOP
         );
     }
 }
