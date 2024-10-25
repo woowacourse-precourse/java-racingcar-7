@@ -12,7 +12,7 @@ public class RacingGame {
     public RacingGame(String invalidCarNames, RandomGenerator randomGenerator) {
         CarsParser CarsParser = new CarsParser();
 
-        carsContainer = new CarsContainer(CarsParser.parse(invalidCarNames));
+        this.carsContainer = new CarsContainer(CarsParser.parse(invalidCarNames));
         this.randomGenerator = randomGenerator;
     }
 

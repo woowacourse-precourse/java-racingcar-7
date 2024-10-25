@@ -5,6 +5,8 @@ import java.util.List;
 
 public class CarsParser {
 
+    private static final int MIN_CARS_LENGTH = 2;
+
     public List<Car> parse(String invalidCarNames) {
         List<String> splitCarNames = getSplitCarNames(invalidCarNames);
         validateCarNames(splitCarNames);
@@ -24,7 +26,7 @@ public class CarsParser {
     }
 
     private void validateCarLength(List<String> splitCarNames) {
-        if (splitCarNames.size() < 2) {
+        if (splitCarNames.size() < MIN_CARS_LENGTH) {
             throw new IllegalArgumentException("경주를 하기 위해서는 두대 이상의 자동차가 필요합니다.");
         }
     }

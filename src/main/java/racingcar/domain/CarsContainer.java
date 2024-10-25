@@ -21,7 +21,7 @@ public class CarsContainer {
 
     public List<Car> getCars() {
         return cars.stream()
-                .map(Car::copy)  // Car의 복사본 생성
+                .map(Car::copy)
                 .toList();
     }
 }
