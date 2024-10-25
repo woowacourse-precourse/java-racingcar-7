@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.viewHandler;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,15 +6,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class InputTest {
+class ApiHandlerTest {
 
-    private final Input input = Input.of();
+    private final ApiHandler apiHandler = ApiHandler.of();
 
     @Test
     void 차_이름_분리() {
         String inputData = "pobi,woni,jun";
         List<String> expect = List.of("pobi", "woni", "jun");
-        List<String> result = input.splitCarnames(inputData);
+        List<String> result = apiHandler.splitCarnames(inputData);
         assertThat(result).isEqualTo(expect);
     }
 
@@ -22,7 +22,8 @@ class InputTest {
     void 총_게임_라운드() {
         String inputData = "5";
         Integer expect = 5;
-        Integer result = input.parserTotalRound(inputData);
+        Integer result = apiHandler.parserTotalRound(inputData);
         assertThat(result).isEqualTo(expect);
     }
+
 }

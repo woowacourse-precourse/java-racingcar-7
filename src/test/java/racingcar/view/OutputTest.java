@@ -3,8 +3,8 @@ package racingcar.view;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.CarDto;
 import racingcar.dto.RoundDto;
-import racingcar.dto.api.Api;
-import racingcar.dto.api.ApiMessage;
+import racingcar.viewHandler.api.Api;
+import racingcar.viewHandler.api.message.ServerMessage;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ class OutputTest {
                 new CarDto("woni", 0),
                 new CarDto("jun", 1));
         RoundDto roundDto = new RoundDto(carDtos,1);
-        Api api = new Api<RoundDto>(ApiMessage.성공, roundDto);
+        Api api = new Api<RoundDto>(ServerMessage.서버_성공, roundDto);
         output.viewOneRound(api);
     }
 
@@ -28,14 +28,14 @@ class OutputTest {
                 new CarDto("woni", 2),
                 new CarDto("jun", 3));
         RoundDto roundDto = new RoundDto(carDtos,3);
-        Api api = new Api<RoundDto>(ApiMessage.성공, roundDto);
+        Api api = new Api<RoundDto>(ServerMessage.서버_성공, roundDto);
         output.viewOneRound(api);
     }
 
     @Test
     void 최종_우승자_성공() {
         String winner = "pobi, jun";
-        Api api = new Api<String>(ApiMessage.성공, winner);
+        Api api = new Api<String>(ServerMessage.서버_성공, winner);
         output.viewResult(api);
     }
 }

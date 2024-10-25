@@ -1,4 +1,6 @@
-package racingcar.dto.api;
+package racingcar.viewHandler.api;
+
+import racingcar.viewHandler.api.message.ApiMessage;
 
 public class Api<T> {
     private final ApiMessage apiMessage;
@@ -7,6 +9,11 @@ public class Api<T> {
     public Api(ApiMessage apiMessage , T data) {
         this.apiMessage = apiMessage;
         this.data = data;
+    }
+
+    public Api(ApiMessage apiMessage) {
+        this.apiMessage = apiMessage;
+        data = null;
     }
 
     public T getData() {

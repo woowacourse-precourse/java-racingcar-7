@@ -2,14 +2,14 @@ package racingcar.view;
 
 import racingcar.dto.CarDto;
 import racingcar.dto.RoundDto;
-import racingcar.dto.api.Api;
+import racingcar.viewHandler.api.Api;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-import static racingcar.view.util.ViewMessage.라운드_결과_출력;
-import static racingcar.view.util.ViewMessage.최종_우승자_출력;
+import static racingcar.view.ViewMessage.라운드_결과_출력;
+import static racingcar.view.ViewMessage.최종_우승자_출력;
 
 public class Output {
     private Integer FIRST_ROUND = 0;
@@ -20,6 +20,13 @@ public class Output {
 
     public static Output of() {
         return new Output();
+    }
+
+    public void viewException(Api api) {
+        System.out.println("error code : " + api.getCode());
+        System.out.println("error message : " + api.getMessage());
+
+        throw new IllegalArgumentException(api.getMessage());
     }
 
     public void viewOneRound(Api<RoundDto> api) {

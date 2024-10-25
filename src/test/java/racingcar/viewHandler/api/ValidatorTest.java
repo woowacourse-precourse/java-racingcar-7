@@ -1,14 +1,15 @@
-package racingcar.view.util;
+package racingcar.viewHandler.api;
 
 import org.junit.jupiter.api.Test;
+import racingcar.viewHandler.api.message.ExceptionMessageImpl;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.view.util.ErrorMessage.라운드_숫자_입력_에러;
-import static racingcar.view.util.ErrorMessage.라운드_양수_입력_에러;
-import static racingcar.view.util.ErrorMessage.차_이름_크기_에러;
-import static racingcar.view.util.ErrorMessage.차_입력_에러;
+import static racingcar.viewHandler.api.message.ErrorMessage.라운드_숫자_입력_에러;
+import static racingcar.viewHandler.api.message.ErrorMessage.라운드_양수_입력_에러;
+import static racingcar.viewHandler.api.message.ErrorMessage.차_이름_크기_에러;
+import static racingcar.viewHandler.api.message.ErrorMessage.차_입력_에러;
 
 class ValidatorTest {
 
@@ -19,7 +20,7 @@ class ValidatorTest {
         List<String> carnames = List.of("pobi");
         assertThatThrownBy(() -> {
             validator.validateMinCarCount(carnames);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(ExceptionMessageImpl.class)
                 .hasMessage(차_입력_에러.getMessage());
     }
 
@@ -28,7 +29,7 @@ class ValidatorTest {
         List<String> carnames = List.of("pobi", "raccoon");
         assertThatThrownBy(() -> {
             validator.validateCarNameLength(carnames);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(ExceptionMessageImpl.class)
                 .hasMessage(차_이름_크기_에러.getMessage());
     }
 
@@ -37,7 +38,7 @@ class ValidatorTest {
         String totalRound = "five";
         assertThatThrownBy(() -> {
             validator.tryParserToInt(totalRound);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(ExceptionMessageImpl.class)
                 .hasMessage(라운드_숫자_입력_에러.getMessage());
     }
 
@@ -47,7 +48,7 @@ class ValidatorTest {
         assertThatThrownBy(() -> {
             Integer number = validator.tryParserToInt(totalRound);
             validator.validatePositiveNumber(number);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(ExceptionMessageImpl.class)
                 .hasMessage(라운드_양수_입력_에러.getMessage());
     }
 
@@ -56,7 +57,7 @@ class ValidatorTest {
         String totalRound = "5.6";
         assertThatThrownBy(() -> {
             validator.tryParserToInt(totalRound);
-        }).isInstanceOf(IllegalArgumentException.class)
+        }).isInstanceOf(ExceptionMessageImpl.class)
                 .hasMessage(라운드_숫자_입력_에러.getMessage());
     }
 }

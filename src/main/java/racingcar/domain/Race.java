@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Race {
+    private final Integer RANDOM_START_NUM = 0;
+    private final Integer RANDOM_END_NUM = 9;
 
     private final List<Car> cars;
 
@@ -20,7 +22,7 @@ public class Race {
 
     public void playOneRound() {
         cars.forEach(onecar -> {
-            onecar.moveCar(Randoms.pickNumberInRange(0, 9));
+            onecar.moveCar(Randoms.pickNumberInRange(RANDOM_START_NUM, RANDOM_END_NUM));
         });
     }
 
