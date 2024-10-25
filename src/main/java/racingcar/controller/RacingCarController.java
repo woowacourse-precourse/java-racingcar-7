@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.io.InputManager;
-import racingcar.model.CarNameSplit;
+import racingcar.model.carname.CarNameSplit;
 import racingcar.model.carname.CarNameValidation;
 
 public class RacingCarController {

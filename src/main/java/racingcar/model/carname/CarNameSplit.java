@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.carname;
 
 public class CarNameSplit {
     private static final String DELIMITER = ",";
