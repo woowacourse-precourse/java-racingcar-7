@@ -134,37 +134,26 @@ jun : -----
 최종 우승자 : pobi, jun
 ```
 
-## 프로그램 흐름 및 구현할 기능 목록
+## 구현할 기능 목록
 
 ***
 
-### 프로그램 흐름
-
-* RacingcarController 객체 생성
-* racingcarController.run 자동차 경주 시작
-* Racingcar 객체 생성 new Racingcar(inputView.carName())
-    * Parsing.splitCarName()
-    * validateCarName()
-* inputView.repetitions()
-    * validateAttemptCount()
-* outputView.runResult()
-* racingcarService.runRace()
-    * movingForward()
-    * roundResult()
-* ouputView.winner()
-
-## 구현 ✅&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 미구현 ❎
+## 구현 ✅&nbsp;&nbsp;&nbsp;&nbsp; 미구현 ❎ &nbsp;&nbsp;&nbsp;&nbsp; 추가 구현 기능 ☑️
 
 ### 📦 model package
 
 #### _**Racingcar Class**_
 
-* ❎ getCarName() 자동차 이름 반환
+* ✅ getCarName() 자동차 이름 반환
 
 #### _**RacingcarService Class**_
 
-* ❎ runRace() 경주 시작
-* ❎ movingForward() 자동차 전진
+* ✅ runRace() 경주 시작
+* ✅ movingForward() 자동차 전진
+* ☑️ startRace()
+* ☑️ printRoundResult()
+* ☑️ getMaxDashLength()
+* ☑️ pickWinner()
 
 ***
 
@@ -172,22 +161,23 @@ jun : -----
 
 ##### _**InputView Class**_
 
-* ❎ getInstance() Input 인스턴스 반환
-* ❎ getCarName() 사용자로부터 자동차 이름 입력
-* ❎ getAttemptCount() 사용자로부터 시도 횟수 입력
+* ✅ getInstance() Input 인스턴스 반환
+* ✅ getCarName() 사용자로부터 자동차 이름 입력
+* ✅ getAttemptCount() 사용자로부터 시도 횟수 입력
 
 ##### _**OutputView Class**_
 
-* ❎ getInstance() Output 인스턴스 반환
-* ❎ getCarName() 자동차 이름 입력문 출력
-* ❎ getAttemptCount() 시도 횟수 입력문 출력
-* ❎ runResult() "실행 결과" 출력
-* ❎ roundResult() 라운드별 결과 출력
-* ❎ winner() 최종 우승자 출력
+* ✅ getInstance() Output 인스턴스 반환
+* ✅ getCarName() 자동차 이름 입력문 출력
+* ✅ getAttemptCount() 시도 횟수 입력문 출력
+* ✅ runResult() "실행 결과" 출력
+* ✅ roundResult() 라운드별 결과 출력
+* ✅ winner() 최종 우승자 출력
 
 ##### _**OutputMessage Enum**_
 
-* ❎ getMessage() 메세지 반환
+* ✅ getMessage() 메세지 반환
+* ☑️ getFormattedMessage() 포멧 메세지 반환
 
 ***
 
@@ -195,7 +185,7 @@ jun : -----
 
 #### _**RacingcarController Class**_
 
-* ❎ void run() 자동차 경주 시작
+* ✅ void run() 자동차 경주 시작
 
 ***
 
@@ -203,12 +193,16 @@ jun : -----
 
 #### _**InvalidInputException Class**_
 
-* ❎ validateCarName() 자동차 이름 입력에 대한 예외 처리
-* ❎ validateAttemptCount() 시도할 횟수 입력에 대한 예외 처리
+* ✅ validateCarNames() 자동차 이름 입력에 대한 예외 처리
+* ✅ validateAttemptCount() 시도할 횟수 입력에 대한 예외 처리
+* ☑️ validateCarNameSize()
+* ☑️ validateCarNameBlankInput()
+* ☑️ validateDuplicateName()
+* ☑️ validateMaxCarNameLength()
 
 ##### _**ExceptionMessage Enum**_
 
-* ❎ getMessage() 메세지 반환
+* ✅ getMessage() 메세지 반환
 
 ***
 
@@ -216,7 +210,7 @@ jun : -----
 
 #### _**Message Interface**_
 
-* ❎ getMessage() 메세지 반환
+* ✅ getMessage() 메세지 반환
 
 ***
 
@@ -224,16 +218,12 @@ jun : -----
 
 #### _**Parsing Class**_
 
-* ❎ splitCarName() 입력된 자동차 이름 분리
-* ❎ convertToMap() 분리된 자동차 이름을 Map으로 변환
-* ❎ joinWinners() 우승자가 여러 명일 경우 구분자로 구분
+* ✅ splitCarName() 입력된 자동차 이름 분리
+* ✅ convertStringArrToMap() 분리된 자동차 이름을 Map으로 변환
+* ✅ joinWinners() 우승자가 여러 명일 경우 구분자로 구분
 
 ***
 
 ### TestCase ( 코드 구현 후 수정 예정 )
-
-자동차 이름 공백 입력했을 경우 <br>
-자동차 이름 5자 초과했을 경우 <br>
-이동횟수 0이하 입력 했을 경우 <br>
 
 ***
