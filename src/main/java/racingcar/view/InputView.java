@@ -19,7 +19,6 @@ public class InputView {
     public static String inputRoundNumber() {
         String input = Console.readLine();
         validateNotBlank(input);
-        validateNotBlank(input);
         validateRoundNumber(input);
         return input;
     }
