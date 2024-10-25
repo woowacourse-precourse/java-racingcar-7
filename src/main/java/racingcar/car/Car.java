@@ -2,13 +2,21 @@ package racingcar.car;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private String name;
     private int moveCount;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public void attemptMove() {
@@ -29,6 +37,15 @@ public class Car {
         printStatus(moveStatus);
     }
 
+    public boolean isWinner(int winnerMoveCount) {
+        return winnerMoveCount == moveCount;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return other.moveCount - this.moveCount;
+    }
+
     private String moveCountToHyphen() {
         StringBuilder sb = new StringBuilder();
 
@@ -42,5 +59,4 @@ public class Car {
     private void printStatus(String moveStatus) {
         System.out.println(name + " : " + moveStatus);
     }
-
 }
