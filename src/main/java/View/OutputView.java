@@ -25,25 +25,16 @@ public class OutputView {
     // 차수별 실행 결과
     //pobi : -
     //woni :
-    public static void resultOfEveryRace(Cars cars, int inputAttemptNumber) {
-        for (int i = 0; i < inputAttemptNumber; i++) {
-            raceOnce(cars);
-            for (Car car : cars.getCars()) {
-                System.out.println(String.format("%s : %s", car.getCarName(), getCarsLocation(car.getCarLocation())));
-            }
-            System.out.println();
-        }
-    }
-
-    private static void raceOnce(Cars cars) {
+    public static void resultOfEveryRace(Cars cars) {
         for (Car car : cars.getCars()) {
-            car.move();
+            System.out.println(String.format("%s : %s", car.getCarName(), getCarsLocation(car.getCarLocation())));
         }
+        System.out.println();
     }
 
     //최종 우승자 : pobi, jun
-    public static void resultOfFinalWinner() {
-        FindWinningCar findWinningCar = new FindWinningCar();
+    public static void resultOfFinalWinner(Cars cars) {
+        FindWinningCar findWinningCar = new FindWinningCar(cars.getCars());
         List<String> winningCars = findWinningCar.getWinningCars();
 
         System.out.println("최종 우승자 : " + winningCars);
