@@ -12,7 +12,7 @@ public class RacingcarService {
     private final TryCount tryCount = new TryCount();
 
     public void createCars(List<String> carNames) {
-        carNames.forEach(name -> cars.add(new Car(name)));
+        cars.addAllByName(carNames);
     }
 
     public void setTryCount(int tryCount) {
