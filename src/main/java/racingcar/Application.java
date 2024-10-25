@@ -28,6 +28,10 @@ public class Application {
 
     private static List<ICar> settingCarList() {
         String carNameMass = inputDisplay.getPromptInput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+        if (carNameMass == null || carNameMass.isBlank()) {
+            throw new IllegalArgumentException("경주할 자동차 이름을 입력하여야 합니다");
+        }
+
         String[] carNames = carNameMass.split(",");
 
         List<ICar> carList = new ArrayList<>();
