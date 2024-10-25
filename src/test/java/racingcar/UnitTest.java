@@ -168,6 +168,19 @@ public class UnitTest extends NsTest {
         }
     }
 
+    @Test
+    @DisplayName("printWinners 테스트")
+    void printWinnersTest() {
+        List<String> winners = new ArrayList<>();
+        winners.add("car1");
+        winners.add("car2");
+        winners.add("car3");
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Application.printWinners(winners);
+        assertThat(out.toString()).contains("최종 우승자 : car1, car2, car3");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
