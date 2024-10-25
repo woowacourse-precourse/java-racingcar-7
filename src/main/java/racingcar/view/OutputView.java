@@ -6,8 +6,12 @@ import racingcar.model.Car;
 public class OutputView {
     static final String ROUND_RESULT_HEADER = "실행 결과\n";
 
+
+    public static void printRoundResultHeader() {
+        System.out.println(ROUND_RESULT_HEADER);
+    }
     public static void printRoundResult(List<Car> racingCars) {
-        StringBuilder sb = new StringBuilder(ROUND_RESULT_HEADER);
+        StringBuilder sb = new StringBuilder();
         for (Car racingCar : racingCars) {
             sb.append(racingCar.getName()).append(" : ");
             for (int i = 0; i < racingCar.getProgressCount(); i++) {
@@ -19,7 +23,6 @@ public class OutputView {
 
         System.out.print(sb.toString());
     }
-
     public static void printWinnerResult(List<String> winnerNames) {
         StringBuilder sb = new StringBuilder();
         sb.append("최종 우승자 : ");

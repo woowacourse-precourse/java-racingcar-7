@@ -30,6 +30,7 @@ public class Race {
     }
 
     public void runRace() {
+        OutputView.printRoundResultHeader();
         for (int i = 0; i < round; i++) {
             runOneRound();
         }
