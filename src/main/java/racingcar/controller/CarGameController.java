@@ -3,17 +3,18 @@ package racingcar.controller;
 import racingcar.model.Cars;
 import racingcar.service.CarCreateService;
 import racingcar.service.CarGameService;
+import racingcar.view.Inputview;
 import racingcar.view.OutputView;
 
 public class CarGameController {
 
     private final CarGameService carGameService;
     private final CarCreateService carCreateService;
-    private final InputView inputView;
+    private final Inputview inputView;
     private final OutputView outputView;
 
     public CarGameController(CarGameService carGameService, CarCreateService carCreateService,
-        InputView inputView, OutputView outputView) {
+        Inputview inputView, OutputView outputView) {
         this.carGameService = carGameService;
         this.carCreateService = carCreateService;
         this.inputView = inputView;
@@ -27,7 +28,7 @@ public class CarGameController {
 
         outputView.announceResult();
         carGameService.play(cars, rounds, (updatedCars) -> {
-            outputView.printCarPostions(updatedCars);
+            outputView.printCarPositions(updatedCars);
         });
         Cars winners = carGameService.findWinners(cars);
 
