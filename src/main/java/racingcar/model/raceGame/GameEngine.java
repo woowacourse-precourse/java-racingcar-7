@@ -5,12 +5,16 @@ import racingcar.model.car.CarRepository;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class GameEngine {
     private final CarRepository carRepository;
-    private List<String> winners;
+    private final List<String> winners;
     private static final int PROGRESS_CONDITION = 4;
+    private static final int RANDOM_MIN = 0;
+    private static final int RANDOM_MAX = 9;
 
 
     public GameEngine(CarRepository carRepository){
@@ -20,8 +24,7 @@ public class GameEngine {
 
     public void runSingleRound(){
         for(Car car: carRepository.getCarList()){
-            int random = generateRandomNumber();
-            updateCarProgress(car, random);
+            updateCarProgress(car, generateRandomNumber());
         }
     }
 
@@ -33,20 +36,18 @@ public class GameEngine {
     }
 
     public List<String> getWinners(){
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
 
     private int calculateMaxWins(){
         int maxWin = 0;
-
         for(Car car : carRepository.getCarList()){
-            maxWin = compareMaxWin(maxWin, car.getProgress());
+            maxWin = getMaxWin(maxWin, car.getProgress());
         }
-
         return maxWin;
     }
 
-    private int compareMaxWin(int maxWin, int currentProgress){
+    private int getMaxWin(int maxWin, int currentProgress){
         return Math.max(maxWin, currentProgress);
     }
 
@@ -61,7 +62,7 @@ public class GameEngine {
     }
 
     private int generateRandomNumber(){
-        return Randoms.pickNumberInRange(0,9);
+        return Randoms.pickNumberInRange(RANDOM_MIN,RANDOM_MAX);
     }
 
     private void updateCarProgress(Car car, int random){
