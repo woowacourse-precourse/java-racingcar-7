@@ -13,10 +13,13 @@ public class Application {
 
         List<Integer> moves = new ArrayList<>(Collections.nCopies(cars.size(),0));
 
+        System.out.println("실행 결과");
+
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < cars.size(); j++) {
                 if (determineMovement()) moves.set(j, moves.get(j) + 1);
             }
+            printMoves(cars, moves);
         }
     }
 
@@ -36,5 +39,17 @@ public class Application {
     private static boolean determineMovement() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) return true;
         return false;
+    }
+
+    private static void printMoves(List<String> cars, List<Integer> moves) {
+        StringBuilder roundResult = new StringBuilder();
+        for (int i = 0; i < cars.size(); i++) {
+            roundResult.append(cars.get(i)).append(" : ");
+            for (int j = 0; j < moves.get(i); j++) {
+                roundResult.append("-");
+            }
+            roundResult.append("\n");
+        }
+        System.out.println(roundResult);
     }
 }
