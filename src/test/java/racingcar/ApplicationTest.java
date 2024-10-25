@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -163,8 +164,7 @@ class ApplicationTest extends NsTest {
         assertThat(resultMap.get(name).toString()).isEqualTo(IOMessage.MOVEMENT_SIGN);
     }
 
-    @Test
-    void createRaceResult() {
+    private static Map<String, StringBuilder> createTempResultMap() {
         Map<String, StringBuilder> resultMap = new LinkedHashMap<>();
 
         String[] names = new String[]{"Karina", "Winter", "Giselle", "NingNing"};
@@ -177,6 +177,12 @@ class ApplicationTest extends NsTest {
 
             resultMap.put(names[i], result);
         }
+        return resultMap;
+    }
+
+    @Test
+    void createRaceResult() {
+        Map<String, StringBuilder> resultMap = createTempResultMap();
 
         String raceResult = Application.createRaceResult(resultMap);
 
