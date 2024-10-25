@@ -1,13 +1,15 @@
 package racingcar.view;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static racingcar.message.InputRequestMessage.NAMES_REQUEST_MESSAGE;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.message.InputRequestMessage;
 
 class InputViewTest {
     private static ByteArrayOutputStream outputMessage;
@@ -31,18 +33,19 @@ class InputViewTest {
         //when
 
         //then
-        Assertions.assertNotNull(inputView);
+        assertNotNull(inputView);
     }
 
     @DisplayName("입력_요청_메세지_출력_테스트")
     @Test
-    public void printInputRequestMessageTest() {
+    public void printCarNamesRequestMessageTest() {
         //given
         InputView inputView = new InputView();
         //when
-        inputView.printInputRequestMessage();
+        inputView.printCarNamesRequestMessage();
         //then
-        Assertions.assertEquals(outputMessage.toString().trim(), InputRequestMessage.NAME_REQUEST_MESSAGE.getMessage());
+        assertEquals(outputMessage.toString().trim(),
+                NAMES_REQUEST_MESSAGE.getMessage());
     }
 
 }

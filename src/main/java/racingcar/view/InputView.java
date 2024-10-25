@@ -1,10 +1,10 @@
 package racingcar.view;
 
-import racingcar.message.InputRequestMessage;
+import static racingcar.message.InputRequestMessage.NAMES_REQUEST_MESSAGE;
 
 public class InputView {
 
-    public void printInputRequestMessage() {
-        System.out.println(InputRequestMessage.NAME_REQUEST_MESSAGE.getMessage());
+    public void printCarNamesRequestMessage() {
+        System.out.println(NAMES_REQUEST_MESSAGE.getMessage());
     }
 }
