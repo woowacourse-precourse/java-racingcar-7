@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final String DELIMITER = ",";
+    private static final String CAR_NAME_DELIMITER = ",";
     private static final int SPLIT_INCLUDE_LAST_SPACE = -1;
 
     private InputView() {
@@ -22,7 +22,7 @@ public class InputView {
 
     protected static List<String> splitNames(String input) {
         List<String> splitNames = Arrays.stream(
-                input.split(DELIMITER, SPLIT_INCLUDE_LAST_SPACE))
+                input.split(CAR_NAME_DELIMITER, SPLIT_INCLUDE_LAST_SPACE))
             .toList();
         validateNames(splitNames);
         return splitNames;
