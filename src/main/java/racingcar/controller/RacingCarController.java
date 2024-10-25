@@ -21,10 +21,7 @@ public class RacingCarController {
     }
 
     private Cars createCars() {
-        String carNamesInput = inputView.inputCarNames();
-        Cars cars = new Cars();
-        cars.registerCars(carNamesInput);
-        return cars;
+        return new Cars(inputView.inputCarNames());
     }
 
     private MoveNumber createMoveNumber() {

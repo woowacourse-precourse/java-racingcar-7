@@ -24,8 +24,7 @@ public class FunctionWithMVCTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,holy,pobi"})
     void 중복_이름이면_예외(String testName) {
-        Cars cars = new Cars();
-        assertThatThrownBy(() -> cars.registerCars(testName))
+        assertThatThrownBy(() -> new Cars(testName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복되지 않은 이름을 입력해주세요.");
     }
@@ -41,9 +40,7 @@ public class FunctionWithMVCTest {
     @Test
     void 차_개수가_1개_이하면_예외() {
         String testName = "pobi";
-        Cars cars = new Cars();
-
-        assertThatThrownBy(() -> cars.registerCars(testName))
+        assertThatThrownBy(() -> new Cars(testName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("2개 이상의 차 이름을 입력해주세요.");
     }
@@ -69,8 +66,7 @@ public class FunctionWithMVCTest {
         String testName = "pobi,holy";
         int testRandomNumberForPobi = 4;
         int testRandomNumberForHoly = 0;
-        Cars cars = new Cars();
-        cars.registerCars(testName);
+        Cars cars = new Cars(testName);
 
         assertRandomNumberInRangeTest(
                 () -> {
@@ -88,8 +84,7 @@ public class FunctionWithMVCTest {
         String testLoserName = "holy";
         int testRandomNumberForWinner = 4;
         int testRandomNumberForLoser = 0;
-        Cars cars = new Cars();
-        cars.registerCars(testWinnerName + "," + testLoserName);
+        Cars cars = new Cars(testWinnerName + "," + testLoserName);
 
         assertRandomNumberInRangeTest(
                 () -> {

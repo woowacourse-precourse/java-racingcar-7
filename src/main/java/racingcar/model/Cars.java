@@ -1,75 +1,60 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars() {
-        this.cars = new ArrayList<>();
-    }
-
-    public void registerCars(String carNamesInput) {
-        for (String name : carNamesInput.split(",", -1)) {
-            validateDuplication(name);
-            cars.add(new Car(name));
-        }
+    public Cars(String carNamesInput) {
+        this.cars = registerCars(carNamesInput);
         validateCarsSize();
+        validateNameDuplication();
     }
 
-    public void validateDuplication(String carName) {
-        if (getCarNames().contains(carName)) {
-            throw new IllegalArgumentException("중복되지 않은 이름을 입력해주세요.");
-        }
-    }
-
-    public void validateCarsSize() {
-        if (cars.size() < 2) {
-            throw new IllegalArgumentException("2개 이상의 차 이름을 입력해주세요.");
-        }
+    private List<Car> registerCars(String carNamesInput) {
+        return Arrays.stream(carNamesInput.split(",", -1))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public List<Car> moveCars() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.forEach(Car::move);
         return cars;
+    }
+
+    public List<String> findWinnerNames() {
+        int maxMoveDistance = Collections.max(
+                cars.stream()
+                        .map(Car::getMoveDistance)
+                        .collect(Collectors.toList())
+        );
+        return cars.stream()
+                .filter(car -> car.getMoveDistance() == maxMoveDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public List<String> findWinnerNames() {
-        int maxMoveDistance = Collections.max(getCarMoveDistances());
-        return getCarNamesByMoveDistance(maxMoveDistance);
-    }
-
-    private List<String> getCarNamesByMoveDistance(int maxMoveDistance) {
-        List<String> carNames = new ArrayList<>();
+    private void validateNameDuplication() {
+        Set<String> uniqueCarNames = new HashSet<>();
         for (Car car : cars) {
-            if (car.getMoveDistance() == maxMoveDistance) {
-                carNames.add(car.getName());
+            if (!uniqueCarNames.add(car.getName())) {
+                throw new IllegalArgumentException("중복되지 않은 이름을 입력해주세요.");
             }
         }
-        return carNames;
     }
 
-    private List<String> getCarNames() {
-        List<String> carNames = new ArrayList<>();
-        for (Car car : cars) {
-            carNames.add(car.getName());
+    private void validateCarsSize() {
+        if (cars.size() < 2) {
+            throw new IllegalArgumentException("2개 이상의 차 이름을 입력해주세요.");
         }
-        return carNames;
-    }
-
-    private List<Integer> getCarMoveDistances() {
-        List<Integer> carMoveDistances = new ArrayList<>();
-        for (Car car : cars) {
-            carMoveDistances.add(car.getMoveDistance());
-        }
-        return carMoveDistances;
     }
 }

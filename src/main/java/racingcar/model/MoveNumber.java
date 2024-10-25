@@ -16,6 +16,7 @@ public class MoveNumber {
             throw new IllegalArgumentException("정수로 된 이동 횟수를 입력해주세요.");
         }
     }
+
     private void validatePositiveMoveNumber(int moveNumber) {
         if (moveNumber < 1) {
             throw new IllegalArgumentException("1회 이상의 이동 횟수를 입력해주세요.");

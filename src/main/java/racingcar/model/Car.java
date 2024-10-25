@@ -21,14 +21,14 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void move() {
         if (Randoms.pickNumberInRange(0, 9) >= 4) {
             moveDistance ++;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getMoveDistance() {
