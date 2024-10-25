@@ -29,6 +29,20 @@ public class Car {
         return count;
     }
 
+    public int getProgress() {
+        return progress;
+    }
+
+    public void showCurrentMove() {
+        if (randomMove()) {
+            System.out.printf(getName() + " : ");
+            for (int i = 0; i < getProgress(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+    }
+
     public boolean randomMove() {
         if (progress >= count) {
             return false;
