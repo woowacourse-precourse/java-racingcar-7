@@ -14,8 +14,7 @@ public class OutputView {
 
     public static void printRaceStatus(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
-        cars.stream().forEach(car ->
-                sb.append(car.getName() + " : " + MOVE_UNIT.repeat(car.getDistance()) + "\n"));
+        cars.stream().forEach(car -> sb.append(car.getName() + " : " + MOVE_UNIT.repeat(car.getDistance()) + "\n"));
         System.out.println(sb);
     }
 

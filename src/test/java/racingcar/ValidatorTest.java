@@ -35,8 +35,7 @@ class ValidatorTest {
         // Given: 유효하지 않은 자동차 이름 문자열
         // When: 자동차 이름 검증 메서드 실행
         // Then: IllegalArgumentException 발생해야 함.
-        assertThatThrownBy(() -> Validator.validateCarNames(names))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.validateCarNames(names)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("유효한 시도 횟수 테스트")
@@ -58,7 +57,6 @@ class ValidatorTest {
         // Given: 유효하지 않은 시도 횟수
         // When: 시도 횟수 검증 메서드 실행
         // Then: IllegalArgumentException 발생해야 함.
-        assertThatThrownBy(() -> Validator.validateAttemptCount(attempt))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.validateAttemptCount(attempt)).isInstanceOf(IllegalArgumentException.class);
     }
 }

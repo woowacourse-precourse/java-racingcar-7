@@ -5,6 +5,7 @@ import java.util.List;
 public class Validator {
     private static final String DELIMITER = ",";
     private static final String POSITIVE_INTEGER_REGEX = "^[1-9]\\d*$";
+
     public static List<String> validateCarNames(final String input) {
         List<String> carNames = List.of(input.split(DELIMITER));
         if (!areCarNamesValid(carNames)) {
@@ -21,7 +22,7 @@ public class Validator {
     }
 
     private static boolean areCarNamesValid(List<String> carNames) {
-        return carNames.size() > 0 &&
-                carNames.stream().allMatch(carName -> carName.length() >= 1 && carName.length() <= 5);
+        return carNames.size() > 0 && carNames.stream()
+                .allMatch(carName -> carName.length() >= 1 && carName.length() <= 5);
     }
 }
