@@ -18,4 +18,8 @@ public class InputView {
     public void printNumberOfAttemptRequest() {
         System.out.println(NUMBER_OF_ATTEMPT_REQUEST.getMessage());
     }
+
+    public String getNumberOfAttempts() {
+        return Console.readLine();
+    }
 }

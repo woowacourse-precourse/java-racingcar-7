@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static racingcar.message.InputRequestMessage.NAMES_REQUEST;
 import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPT_REQUEST;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -65,6 +66,7 @@ class InputViewTest {
         InputView inputView = new InputView();
         String input = "pobi,woni,jun";
         //when
+        Console.close();
         setInputStreamsByMyInput(input);
         String names = inputView.getCarNames();
         //then
@@ -81,5 +83,19 @@ class InputViewTest {
         String printResult = outputMessage.toString().trim();
         //then
         assertEquals(NUMBER_OF_ATTEMPT_REQUEST.getMessage(), printResult);
+    }
+
+    @DisplayName("시도횟수_입력_테스트")
+    @Test
+    public void getNumberOfAttemptsTest() {
+        //given
+        InputView inputView = new InputView();
+        String input = "5";
+        //when
+        Console.close();
+        setInputStreamsByMyInput(input);
+        String Attempts = inputView.getNumberOfAttempts();
+        //then
+        assertEquals(input, Attempts);
     }
 }
