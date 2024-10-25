@@ -9,4 +9,10 @@ public class Cars {
     public void saveCar(final Car car) {
         cars.add(car);
     }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
 }
