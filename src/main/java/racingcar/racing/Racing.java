@@ -16,6 +16,7 @@ public class Racing {
         List<String> carNameList = inputCars();
         validateCars(carNameList);
         List<Car> carList = createCars(carNameList);
+        int tryCount = inputTryCount();
     }
 
     public List<String> inputCars() {
@@ -36,6 +37,11 @@ public class Racing {
         return carNameList.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public int inputTryCount() {
+        String tryCount = Request.inputTryCount();
+        return Integer.parseInt(tryCount);
     }
 
 }
