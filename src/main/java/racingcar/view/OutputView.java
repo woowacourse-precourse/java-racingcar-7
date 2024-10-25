@@ -4,7 +4,7 @@ import java.util.List;
 
 public class OutputView {
     private static final String SHOW_RESULT = "\n실행 결과";
-    private static final String WINNER = "최종 우승자: ";
+    private static final String WINNER = "최종 우승자 : ";
 
     public void showResultMessage() {
         System.out.println(SHOW_RESULT);
