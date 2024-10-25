@@ -26,21 +26,22 @@ public class Car implements Comparable<Car> {
             throw new IllegalArgumentException(Constant.RANDOM_RANGE_VALUE_ERROR_STRING);
         }
 
-        if (randomNumber > STOP_VALUE) {
+        if (isPossible(randomNumber)) {
             this.position += 1;
         }
     }
+
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
-        return position;
+    private boolean isRange(final int number) {
+        return number < MIN || number > MAX;
     }
 
-    private static boolean isRange(final int number) {
-        return number < MIN || number > MAX;
+    private boolean isPossible(int randomNumber) {
+        return randomNumber > STOP_VALUE;
     }
 
     public boolean isSamePosition(Car car) {
@@ -52,5 +53,9 @@ public class Car implements Comparable<Car> {
         return this.position - car.position;
     }
 
+    @Override
+    public String toString() {
+        return this.name + " : " + "-".repeat(this.position);
+    }
 
 }

@@ -1,7 +1,7 @@
 package racingcar.car;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.constant.Constant;
 import racingcar.util.RandomGenerator;
 
@@ -10,24 +10,18 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> names) {
-        this.cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name, new RandomGenerator()));
-        }
+        this.cars = names.stream()
+                .map(name -> new Car(name, new RandomGenerator()))
+                .toList();
     }
 
-    public void progress() {
+    public void updateCarsMovement() {
         cars.forEach(Car::move);
     }
 
     public List<String> getRacingWinners() {
         final Car headCar = getFirstPositionCar();
         return getSamePositionCars(headCar);
-    }
-
-    public List<Car> getCars() {
-        return cars.stream()
-                .toList();
     }
 
     private List<String> getSamePositionCars(Car headCar) {
@@ -41,6 +35,13 @@ public class Cars {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(Constant.CARS_EMPTY_ERROR_STRING));
+    }
+
+    @Override
+    public String toString() {
+        return cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
     }
 
 }
