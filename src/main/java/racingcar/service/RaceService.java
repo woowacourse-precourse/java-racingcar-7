@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceService {
     private static final int MOVE_THRESHOLD = 4;
@@ -24,5 +25,18 @@ public class RaceService {
 
         // 임계값(4) 이상이면 전진 가능
         return randomNumber >= MOVE_THRESHOLD;
+    }
+
+    // 최종 우승자 계산
+    public List<String> getWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

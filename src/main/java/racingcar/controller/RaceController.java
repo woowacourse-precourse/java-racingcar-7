@@ -27,5 +27,9 @@ public class RaceController {
             raceService.playRound(cars);
             OutputView.printRoundResult(cars);
         }
+
+        // 최종 우승자 출력
+        List<String> winners = raceService.getWinners(cars);
+        OutputView.printWinners(winners);
     }
 }
