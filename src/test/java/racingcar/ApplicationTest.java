@@ -17,11 +17,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
@@ -43,11 +43,17 @@ class ApplicationTest extends NsTest {
         assertThat(Application.isValidName(carNames)).isTrue();
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {" 2", "3 ", " 4 "})
+    void 시도횟수_앞뒤_공백_제거_검증(String attemptCount) {
+        assertThat(Application.isValidAttemptCount(attemptCount)).isTrue();
+    }
+
     @Test
     void 예외_테스트_이름5자초과() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
 
         assertSimpleTest(() ->
@@ -135,6 +141,71 @@ class ApplicationTest extends NsTest {
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("*", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수가_0인경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수가_소수인경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "3.4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "0.7"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수가_음수인경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수가_입력되지않은경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도횟수가_숫자가아닌경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "two"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "*"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "  "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "3 3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,", "3*3"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
