@@ -19,6 +19,8 @@ public class Application {
         if (!isValidName(carNamesInput) || !isValidAttemptCount(attemptCount)) {
             throw new IllegalArgumentException();
         }
+
+        List<Car> carList = createCarList(carNamesInput);
     }
 
     public static boolean isValidName(String carNamesInput) {
@@ -58,5 +60,14 @@ public class Application {
         } catch (NumberFormatException e){
             return false;
         }
+    }
+
+    public static List<Car> createCarList (String carNamesInput) {
+        List<Car> carList = new ArrayList<>();
+        String[] carNameList = carNamesInput.split(",", -1);
+        for (String carName : carNameList) {
+            carList.add(new Car(carName.trim()));
+        }
+        return carList;
     }
 }
