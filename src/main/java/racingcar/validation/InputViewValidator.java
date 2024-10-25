@@ -2,14 +2,16 @@ package racingcar.validation;
 
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import racingcar.common.ExceptionCode;
 
 public class InputViewValidator {
     private static final String REGEX_INVALID_DELIMITER_PATTERN = ".*[^,\\w\\s].*";
+    private static final Pattern InvalidDelimiter = Pattern.compile(REGEX_INVALID_DELIMITER_PATTERN);
 
     public void validateDelimiter(String input) {
-        if (input.matches(REGEX_INVALID_DELIMITER_PATTERN)) {
+        if (InvalidDelimiter.matcher(input).matches()) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_DELIMITER.getMessage());
         }
     }
