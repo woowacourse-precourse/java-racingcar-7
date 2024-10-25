@@ -3,7 +3,7 @@ package racingcar.service;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.domain.Car;
+import racingcar.model.Car;
 
 public class CarService {
     private static final int BASE_DISTANCE = 0;

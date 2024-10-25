@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
+import java.util.stream.IntStream;
+import racingcar.model.Car;
 import racingcar.service.CarService;
 import racingcar.view.View;
 
@@ -31,11 +31,9 @@ public class Controller {
 
     private void playGame() {
         int times = view.inputTimes();
-        List<List<Car>> raceResults = new ArrayList<>();
-        for (int i = 0; i < times; i++) {
-            List<Car> oneRoundResult = carService.moveAllCars();
-            raceResults.add(oneRoundResult);
-        }
+        List<List<Car>> raceResults = IntStream.range(0, times)
+                .mapToObj(i -> carService.moveAllCars())
+                .toList();
         view.outputRaceResults(raceResults);
     }
 

@@ -2,7 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.model.Car;
 import racingcar.utils.Utils;
 
 public class View {
@@ -21,11 +21,9 @@ public class View {
         return Utils.parseNumber(times);
     }
 
-    public void outputRaceResults(List<List<Car>> raceResults){
+    public void outputRaceResults(List<List<Car>> raceResults) {
         System.out.println("실행 결과");
-        for(List<Car> roundResult : raceResults){
-            outputOneRoundResult(roundResult);
-        }
+        raceResults.forEach(this::outputOneRoundResult);
     }
 
     private void outputOneRoundResult(List<Car> cars) {
