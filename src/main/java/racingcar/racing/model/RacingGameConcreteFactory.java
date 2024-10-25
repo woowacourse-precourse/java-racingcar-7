@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameConcreteFactory implements RacingGameFactory {
-    private final int
 
     @Override
     public Game createGame(int allStage) {
