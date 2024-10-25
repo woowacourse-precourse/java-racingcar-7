@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars() {
         this.cars = new ArrayList<>();
@@ -36,5 +36,15 @@ public class Cars {
             carNames.add(car.getName());
         }
         return carNames;
+    }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

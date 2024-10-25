@@ -1,7 +1,10 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -59,6 +62,26 @@ public class FunctionWithMVCTest {
         assertThatThrownBy(() -> new Race(testNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수로 된 이동 횟수를 입력해주세요.");
+    }
+
+    @Test
+    void 차_전진_또는_정지() {
+        String testName1 = "pobi";
+        String testName2 = "holy";
+        int testRandomNumberForPobi = 4;
+        int testRandomNumberForHoly = 0;
+        Cars cars = new Cars();
+        cars.registerCars(testName1 + "," + testName2);
+
+
+        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
+                () -> {
+                    cars.moveCars();
+                    assertThat(cars.getCars().get(0).getMoveDistance()).isEqualTo(1);
+                    assertThat(cars.getCars().get(1).getMoveDistance()).isEqualTo(0);
+                },
+                testRandomNumberForPobi, testRandomNumberForHoly
+        );
     }
 
 }

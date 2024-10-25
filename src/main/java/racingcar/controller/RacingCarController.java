@@ -23,6 +23,7 @@ public class RacingCarController {
         Race race = new Race(moveNumberInput);
 
         outputView.outputRaceStartLine();
+        cars.moveCars();
 
     }
 }

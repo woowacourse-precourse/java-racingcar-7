@@ -21,4 +21,5 @@ public class Race {
             throw new IllegalArgumentException("1회 이상의 이동 횟수를 입력해주세요.");
         }
     }
+
 }
