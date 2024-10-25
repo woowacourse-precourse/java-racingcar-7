@@ -74,11 +74,27 @@ class InputManagerTest {
                 .hasMessage("게임 횟수는 정수 범위 안 이어야 합니다.");
     }
 
-    @DisplayName("숫자가 아닌 입력값이 들어왔을 때, 에러 메시지가 발생한다.")
+    @DisplayName("숫자가 아닌 입력값만 들어왔을 때, 에러 메시지가 발생한다.")
     @Test
-    void checkGameRoundRangeIsNotNumeric() {
+    void checkGameRoundIsNotNumeric() {
         // Given
         String input = "가나다라";
+        byte[] bytes = input.getBytes();
+        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+        System.setIn(in);
+
+        // When
+        // Then
+        assertThatThrownBy(InputManager::getGameRound)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("게임 횟수 입력값이 숫자가 아닙니다.");
+    }
+
+    @DisplayName("숫자가 아닌 입력값이 숫자와 같이 들어왔을 때, 에러 메시지가 발생한다.")
+    @Test
+    void checkGameRoundIsNotNumericAndNumeric() {
+        // Given
+        String input = "3a";
         byte[] bytes = input.getBytes();
         ByteArrayInputStream in = new ByteArrayInputStream(bytes);
         System.setIn(in);
