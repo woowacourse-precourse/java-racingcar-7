@@ -1,11 +1,12 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 게임의 전체 흐름을 관리 (입력, 레이스 실행, 결과 출력)
+ */
 public class Game {
     private final List<Car> cars = new ArrayList<>();
     private int attempts;
@@ -33,33 +34,14 @@ public class Game {
     }
 
     private void runRace() {
-        System.out.println("실행 결과");
-        for (int i = 0; i < attempts; i++) {
-            moveEachCar();
-            printCurrentStatus();
-        }
+        Race race = new Race(cars, attempts);
+        race.start();
     }
 
     private void printWinners() {
         final List<String> winners = getWinners();
         String winnerNames = String.join(", ", winners);
         System.out.println("최종 우승자 : " + winnerNames);
-    }
-
-    private void moveEachCar() {
-        for (final Car car : cars) {
-            final int number = pickNumberInRange(0, 9);
-            if (number >= 4) {
-                car.move();
-            }
-        }
-    }
-
-    private void printCurrentStatus() {
-        for (final Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-        System.out.println();
     }
 
     private List<String> getWinners() {
