@@ -22,7 +22,7 @@ public class Validator {
                 .toList();
     }
 
-    public static void validateNameCount(Integer nameCount) {
+    public static void validateRacingCarCount(Integer nameCount) {
         if (nameCount < MINIMUM_RACING_CAR_NEEDED) {
             throw new IllegalArgumentException(NEED_MULTIPLE_RACING_CAR.get());
         }

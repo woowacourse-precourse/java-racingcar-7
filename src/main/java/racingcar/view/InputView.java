@@ -4,7 +4,7 @@ import static racingcar.util.message.IOMessage.INPUT_TRIAL_COUNT;
 import static racingcar.util.message.IOMessage.INPUT_NAMES;
 import static racingcar.util.Validator.validateInputString;
 import static racingcar.util.Validator.validateInteger;
-import static racingcar.util.Validator.validateNameCount;
+import static racingcar.util.Validator.validateRacingCarCount;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
@@ -25,7 +25,7 @@ public class InputView {
         String input = Console.readLine();
 
         List<String> racingCarNames = validateInputString(input);
-        validateNameCount(racingCarNames.size());
+        validateRacingCarCount(racingCarNames.size());
 
         return racingCarNames;
     }

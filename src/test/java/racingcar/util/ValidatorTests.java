@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static racingcar.util.Validator.validateInputString;
 import static racingcar.util.Validator.validateInteger;
-import static racingcar.util.Validator.validateNameCount;
+import static racingcar.util.Validator.validateRacingCarCount;
 import static racingcar.util.Validator.validateNameLength;
 import static racingcar.util.Validator.validatePositive;
 
@@ -43,10 +43,10 @@ class ValidatorTests {
     }
 
     @Test
-    @DisplayName("참가자가 2명 미만인 경우 예외 발생")
+    @DisplayName("경주에 참가하는 자동차가 2대 미만인 경우 예외 발생")
     void exceptionIfLessThanTwo() {
         List<String> name = List.of("alice");
-        assertThatThrownBy(() -> validateNameCount(name.size()))
+        assertThatThrownBy(() -> validateRacingCarCount(name.size()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
