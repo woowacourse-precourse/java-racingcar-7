@@ -12,7 +12,7 @@ public class RacingService {
     public void moveCars(List<Car> cars){
         for(Car car: cars){
             int randomValue = RandomUtil.generateRandomNumber();
-            if(randomValue>MOVE_THRESHOLD){
+            if(randomValue>= MOVE_THRESHOLD){
                 car.move();
             }
         }
