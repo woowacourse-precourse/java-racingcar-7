@@ -1,4 +1,4 @@
-package racingcar.mvc.model;
+package racingcar.mvc.model.observer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigInteger;
@@ -10,6 +10,7 @@ public class Car implements CarObserver {
 
     public Car(String name) {
         this.name = name;
+        this.distance = BigInteger.ZERO;
     }
 
     @Override
@@ -35,17 +36,17 @@ public class Car implements CarObserver {
 
     @Override
     public String toString() {
-        return name + " : " + distance;
+        return name + " : " + printDistance();
     }
 
-    private StringBuilder printDistance() {
+    private String printDistance() {
         StringBuilder print = new StringBuilder();
 
-        for (BigInteger i = BigInteger.ZERO; i.compareTo(BigInteger.ONE) < 0; i = i.add(BigInteger.ONE)) {
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(distance) < 0; i = i.add(BigInteger.ONE)) {
             print.append("-");
         }
 
-        return print;
+        return print.toString();
     }
 
     @Override
