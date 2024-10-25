@@ -28,15 +28,19 @@ public class Cars {
         return carDtoList;
     }
 
-    public List<Car> calculateFarthestCars() {
-        List<Car> farthestCars = new ArrayList<>();
+    public List<CarDto> calculateFarthestCars() {
+        List<CarDto> farthestCarDtoList = new ArrayList<>();
         long maxPosition = Collections.max(cars).getPosition();
+
         for (Car car : cars) {
+
             long carPosition = car.getPosition();
+
             if (carPosition == maxPosition) {
-                farthestCars.add(car);
+                CarDto carDto = CarDto.from(car);
+                farthestCarDtoList.add(carDto);
             }
         }
-        return farthestCars;
+        return farthestCarDtoList;
     }
 }
