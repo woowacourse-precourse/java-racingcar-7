@@ -4,7 +4,7 @@ public class Car {
 
     private final String name;
 
-    private final int moveCount;
+    private int moveCount;
 
     public Car(String name) {
         this.name = name;
@@ -12,7 +12,7 @@ public class Car {
     }
 
     public void addMoveCount() {
-        throw new UnsupportedOperationException("");
+        this.moveCount++;
     }
 
     public String getName() {
