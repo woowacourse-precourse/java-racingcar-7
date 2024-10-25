@@ -17,6 +17,8 @@ class Racing {
 
     InputString inputString;
     CarCollection carCollection;
+    private final int RANDOM_NUMBER_START = 0;
+    private final int RANDOM_NUMBER_END = 9;
 
     Racing() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -52,7 +54,7 @@ class Racing {
 
     private void moveCars() {
         for (int i = 0; i < carCollection.carCount(); i++) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
+            int randomNum = Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END);
             carCollection.moveCar(i, randomNum);
         }
     }
@@ -70,10 +72,13 @@ class Racing {
 class InputString {
 
     private String inputString;
-
+    private final String DELIMITER=",";
+    private final String NULL_ERROR_MESSAGE="[error] 자동차의 이름이 입력되지 않았습니다.";
+    private final String OVERSIZE_NAME_ERROR_MESSAGE="[error] 자동차의 이름은 최대 5글자입니다.";
+    private final int MAX_CAR_NAME_LEN = 5;
     InputString(String string) {
         if (string == null || string.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_ERROR_MESSAGE);
         }
         inputString = string;
     }
@@ -83,8 +88,8 @@ class InputString {
     }
 
     public CarCollection getCarCollection() {
-        String names[] = inputString.split(",");
-        checkingValid(names);
+        String names[] = inputString.split(DELIMITER);
+        checkingValidation(names);
 
         List<Car> carList = new ArrayList<>();
         for (String name : names) {
@@ -93,10 +98,10 @@ class InputString {
         return new CarCollection(carList);
     }
 
-    private static void checkingValid(String[] names) {
+    private void checkingValidation(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException();
+            if (name.length() > MAX_CAR_NAME_LEN) {
+                throw new IllegalArgumentException(OVERSIZE_NAME_ERROR_MESSAGE);
             }
         }
     }
@@ -105,6 +110,7 @@ class InputString {
 class CarCollection {
 
     private List<Car> carList;
+    private final int MOVE_CRITERIA = 4;
 
     public CarCollection(List<Car> carList) {
         this.carList = carList;
@@ -119,7 +125,7 @@ class CarCollection {
     }
 
     public void moveCar(int index, int randomNum) {
-        if (randomNum >= 4) {
+        if (randomNum >= MOVE_CRITERIA) {
             Car car = carList.get(index);
             car.move();
         }
