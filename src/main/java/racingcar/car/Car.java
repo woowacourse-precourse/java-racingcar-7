@@ -3,22 +3,22 @@ package racingcar.car;
 public class Car {
 
     private final String name;
-    private String forwardNumber;
+    private String forward;
 
     public Car(String name) {
         this.name = name;
-        forwardNumber = "";
+        forward = "";
     }
 
     public String getName() {
         return this.name;
     }
 
-    public String getForwardNumber() {
-        return this.forwardNumber;
+    public String getForward() {
+        return this.forward;
     }
 
-    public void addForwardNumber() {
-        this.forwardNumber += "-";
+    public void addForward() {
+        this.forward += "-";
     }
 }

@@ -1,5 +1,6 @@
 package racingcar.racing;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ public class Racing {
 
     final String CAR_NAME_DELIMITER = ",";
     final int MAX_CAR_NAME = 5;
+    final int FORWARD_CONDITION = 4;
 
     private List<Car> carList;
 
@@ -21,6 +23,7 @@ public class Racing {
         validateCars(carNameList);
         createCars(carNameList);
         inputTryCount();
+        race();
     }
 
     public List<String> inputCars() {
@@ -29,8 +32,8 @@ public class Racing {
     }
 
     public void validateCars(List<String> carNameList) {
-        for(String name : carNameList) {
-            if(name.length() > MAX_CAR_NAME) {
+        for (String name : carNameList) {
+            if (name.length() > MAX_CAR_NAME) {
                 throw new IllegalArgumentException("자동차 이름이 5자를 넘습니다.");
             }
         }
@@ -45,6 +48,20 @@ public class Racing {
     public void inputTryCount() {
         String tryCountString = Request.inputTryCount();
         tryCount = Integer.parseInt(tryCountString);
+    }
+
+    public void race() {
+        for (int count = 0; count < tryCount; count++) {
+            forwardCars();
+        }
+    }
+
+    public void forwardCars() {
+        for (Car car : carList) {
+            if (FORWARD_CONDITION <= Randoms.pickNumberInRange(0, 9)) {
+                car.addForward();
+            }
+        }
     }
 
 }

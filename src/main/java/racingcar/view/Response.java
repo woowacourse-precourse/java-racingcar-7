@@ -12,7 +12,7 @@ public class Response {
 
     public static void outputExecute(List<Car> carList) {
         for (Car car : carList) {
-            System.out.println(car.getName() + " : " + car.getForwardNumber());
+            System.out.println(car.getName() + " : " + car.getForward());
         }
     }
 
