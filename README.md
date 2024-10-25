@@ -28,14 +28,10 @@ pobi,woni,jun
 
 - [x] 자동차 이름
     - [x] null 혹은 빈 문자열 입력한 경우 `IllegalArgumentException`
-    - [ ] 입력에 쉼표가 포함되지 않은 경우 `IllegalArgumentException`
+    - [x] 입력에 쉼표가 포함되지 않은 경우 `IllegalArgumentException`
+    - [ ] 입력의 마지막 글자가 쉼표인 경우 `IllegalArgumentException`
     - [ ] 쉼표로 구분된 자동차 이름을 2개 이상 입력하지 않은 경우 `IllegalArgumentException`
     - [x] 쉼표로 구분된 자동차 이름이 5자 초과한 입력한 경우 `IllegalArgumentException`
-
-[//]: # (      // 쉼표 기준으로 split -> size 1이면 예외처리)
-
-[//]: # (          - [ ] 중복된 자동차 이름 입력한 경우 `IllegalArgumentException`)
-
 - [x] 시도할 횟수
     - [x] 입력값이 정수가 아닐 경우 `IllegalArgumentException`
     - [x] 입력값이 0 이하일 경우 `IllegalArgumentException`
