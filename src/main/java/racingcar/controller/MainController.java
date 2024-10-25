@@ -16,6 +16,6 @@ public class MainController {
         List<String> names = NameController.getCarNames(carNames);
         String inputAttempt = inputView.inputAttempt();
         int attempt = AttemptController.getAttempt(inputAttempt);
-        // GameController.gamePlay(names, attempt);
+        GameController.gamePlay(names, attempt);
     }
 }

@@ -7,13 +7,15 @@ public class AttemptValidation {
     public static void isInteger(String inputAttempt) {
         try {
             Integer.parseInt(inputAttempt);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             Exception.exceptionAttemptInteger();
         }
     }
 
     public static void isOverZero(int attempt) {
-        if(attempt < 1) Exception.exceptionAttemptZero();
+        if (attempt < 1) {
+            Exception.exceptionAttemptZero();
+        }
     }
 
 }
