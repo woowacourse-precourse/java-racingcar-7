@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.util.Util;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static racingcar.view.OutputView.*;
 
@@ -23,6 +24,15 @@ public class Cars {
             printCarStatus(car);
         }
         lineSeparator();
+    }
+
+    public List<String> findWinner() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getCarPosition)
+                .max()
+                .orElse(0);
+
+        return getMaxPositionCarName(maxPosition);
     }
 
 
