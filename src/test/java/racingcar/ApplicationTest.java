@@ -24,10 +24,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_이름_길이_초과() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이름_공백_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_쉼표_구분_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi@java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
