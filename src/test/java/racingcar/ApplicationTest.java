@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -163,5 +164,28 @@ class ApplicationTest extends NsTest {
         assertThat(resultMap.get("Winter").toString()).isEmpty();
         assertThat(resultMap.get("Giselle").toString()).isEmpty();
         assertThat(resultMap.get("NingNing").toString()).isEmpty();
+    }
+
+    @Test
+    void createRandomNumber() {
+        assertThat(Application.createRandomNumber())
+                .isBetween(RandomConstant.RANDOM_RANGE_START, RandomConstant.RANDOM_RANGE_END);
+    }
+
+    @Test
+    void appendMovementSignByRandom() {
+        Map<String, StringBuilder> resultMap = new HashMap<>();
+        String name = "Karina";
+        resultMap.put(name, new StringBuilder());
+
+        int lowRandomNumber = 2;
+        Application.appendMovementSignByRandom(resultMap, name, lowRandomNumber);
+
+        assertThat(resultMap.get(name).toString()).isEqualTo("");
+
+        int highRandomNumber = 4;
+        Application.appendMovementSignByRandom(resultMap, name, highRandomNumber);
+
+        assertThat(resultMap.get(name).toString()).isEqualTo(IOMessage.MOVEMENT_SIGN);
     }
 }
