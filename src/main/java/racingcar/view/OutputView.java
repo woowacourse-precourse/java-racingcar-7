@@ -15,4 +15,8 @@ public class OutputView {
 	public static void printExecutionResultMessage() {
 		System.out.println(LINE_SEPARATOR + "실행 결과");
 	}
+
+	public static void printProgressResultMessage(String progressResult) {
+		System.out.println(progressResult + LINE_SEPARATOR);
+	}
 }
