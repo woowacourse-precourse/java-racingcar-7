@@ -8,12 +8,12 @@ public class InputView {
     private static final String TRY_COUNT_INPUT_PROMPT = "시도할 회수는 몇회인가요?";
     private static final String DELIMITER = ",";
 
-    public static List<String> readCarNames() {
+    public List<String> readCarNames() {
         System.out.println(CAR_NAMES_INPUT_PROMPT);
         return InputDevice.readStringListByDelimiter(DELIMITER);
     }
 
-    public static int readTryCount() {
+    public int readTryCount() {
         System.out.println(TRY_COUNT_INPUT_PROMPT);
         return InputDevice.readInt();
     }
