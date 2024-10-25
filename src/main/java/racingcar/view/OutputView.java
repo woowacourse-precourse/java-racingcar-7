@@ -8,6 +8,8 @@ import java.util.List;
 import racingcar.model.Round;
 
 public class OutputView {
+    public static final String DISTANCE_SIGN = "-";
+
     public void printRoundState(List<Round> roundList) {
         System.out.println(ROUND_RESULT_COMMENT);
 
@@ -18,7 +20,7 @@ public class OutputView {
         LinkedHashMap<String, Integer> state = round.getState();
 
         state.sequencedEntrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " : " + "-".repeat(entry.getValue()));
+            System.out.println(entry.getKey() + " : " + DISTANCE_SIGN.repeat(entry.getValue()));
         });
 
         System.out.println();
