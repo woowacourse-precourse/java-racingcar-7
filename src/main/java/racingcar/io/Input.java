@@ -17,24 +17,21 @@ public class Input {
     public List<String> read() {
         List<String> inputs = new ArrayList<>();
 
-        System.out.println(Constants.INPUT_CAR_NAME_PROMPT);
-        //첫번째 입력 처리
-        inputs.add(createInput());
-
-        System.out.println(Constants.INPUT_RACE_ROUND_PROMPT);
-        //두번째 입력 처리
-        inputs.add(createInput());
-
-        return inputs;
-    }
-
-    private String createInput() {
         try {
-            return Console.readLine();
+            //첫번째 입력 처리
+            System.out.println(Constants.INPUT_CAR_NAME_PROMPT);
+            inputs.add(Console.readLine());
+
+            //두번째 입력 처리
+            System.out.println(Constants.INPUT_RACE_ROUND_PROMPT);
+            inputs.add(Console.readLine());
+
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("잘못된 입력입니다");
         } finally {
             Console.close();
         }
+
+        return inputs;
     }
 }
