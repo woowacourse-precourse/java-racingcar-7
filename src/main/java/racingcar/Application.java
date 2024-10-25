@@ -19,7 +19,11 @@ public class Application {
         if (validInput) {
             int tryCount = Integer.parseInt(inputTryCount);
             Map<String, StringBuilder> resultMap = createResultMap(carNames);
+
             startGame(tryCount, resultMap);
+
+            String finalResult = IOMessage.buildFinalResult(getFinalWinner(resultMap));
+            System.out.println(finalResult);
         }
     }
 
@@ -130,7 +134,7 @@ public class Application {
 
     public static String getFinalWinner(Map<String, StringBuilder> resultMap) {
         PriorityQueue<String[]> orderedResult = createOrderedResult(resultMap);
-        return "";
+        return findFinalWinner(orderedResult);
     }
 
     public static PriorityQueue<String[]> createOrderedResult(Map<String, StringBuilder> resultMap) {
@@ -142,5 +146,21 @@ public class Application {
         }
 
         return orderedResult;
+    }
+
+    public static String findFinalWinner(PriorityQueue<String[]> orderedResult) {
+        if(orderedResult.isEmpty()) throw new IllegalArgumentException("정렬된 결과가 없다.");
+
+        StringBuilder finalResult = new StringBuilder();
+        String[] winnerResult = orderedResult.poll();
+        finalResult.append(winnerResult[0]);
+
+        String winnerMovement = winnerResult[1];
+
+        while (!orderedResult.isEmpty() && Objects.equals(orderedResult.peek()[1], winnerMovement)) {
+            finalResult.append(IOMessage.COMMA_SEPARATOR).append(" ").append(orderedResult.poll()[0]);
+        }
+
+        return finalResult.toString();
     }
 }
