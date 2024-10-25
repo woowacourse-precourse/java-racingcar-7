@@ -22,20 +22,20 @@ public class RacingChance {
      *              0이면 IllegalArgumentException 발생
      */
     public static RacingChance getAfterValidateForm(String chanceToValidate) {
-        validateNotBlank(chanceToValidate);
-        validateOnlyDigit(chanceToValidate);
-        validateNotZero(chanceToValidate);
+        validateBlank(chanceToValidate);
+        validateInteger(chanceToValidate);
+        validateZero(chanceToValidate);
         int validatedChance = Integer.parseInt(chanceToValidate);
         return new RacingChance(validatedChance);
     }
 
-    private static void validateNotBlank(String numberToValidate) {
+    private static void validateBlank(String numberToValidate) {
         if (numberToValidate.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.toString());
         }
     }
 
-    private static void validateOnlyDigit(String numberToValidate) {
+    private static void validateInteger(String numberToValidate) {
         try {
             Integer.parseInt(numberToValidate);
         } catch (NumberFormatException e) {
@@ -43,7 +43,7 @@ public class RacingChance {
         }
     }
 
-    private static void validateNotZero(String numberToValidate) {
+    private static void validateZero(String numberToValidate) {
         int number = Integer.parseInt(numberToValidate);
         if (number == 0) {
             throw new IllegalArgumentException(ErrorMessage.ZERO.toString());
