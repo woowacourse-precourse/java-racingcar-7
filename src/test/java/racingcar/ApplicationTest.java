@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("시도 횟수에 아무것도 입력하지 않았을 때")
     void tryNumIsNothingExceptionTest() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,java", ""))
+                assertThatThrownBy(() -> runException("pobi,java", "\n"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
