@@ -36,6 +36,7 @@ public class Application {
 
         List<String> winners = new ArrayList<>();
         winner(race, winners);
+        printWinner(winners);
     }
 
     public static void getNames(Map<String, Integer> race, String input) throws IllegalArgumentException {
@@ -108,5 +109,13 @@ public class Application {
                 winners.add(element.getKey());
             }
         }
+    }
+
+    public static void printWinner(List<String> winners) {
+        String result = "최종 우승자 : ";
+        for(String winner : winners) {
+            result += winner + ", ";
+        }
+        System.out.println(result.substring(0, result.length() - 2));
     }
 }
