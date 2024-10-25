@@ -9,8 +9,16 @@ public class Car {
 
     public Car(String name, int attemptCount) {
         this.name = name;
-        this.count = getRandomCount() % attemptCount;
+        this.count = setCount(attemptCount);
         this.progress = 0;
+    }
+
+    private int setCount(int attemptCount) {
+        int count = getRandomCount() % attemptCount;
+        if (count == 0) {
+            return attemptCount;
+        }
+        return count;
     }
 
     private int getRandomCount() {
