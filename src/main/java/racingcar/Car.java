@@ -1,5 +1,12 @@
 package racingcar;
 
+import static racingcar.Constant.MAX_RANDOM;
+import static racingcar.Constant.MIN_RANDOM;
+import static racingcar.Constant.STANDARD_FOR_MOVING;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Random;
+
 public class Car {
     private final String name;
     private int position = 0;
@@ -9,7 +16,11 @@ public class Car {
 
     // 자동자 전진함수
     public void moveForward(){
-        // 전진함수 구현
+        int movingNum = Randoms.pickNumberInRange(MIN_RANDOM,MAX_RANDOM);
+        if (movingNum >= STANDARD_FOR_MOVING){
+            position++;
+        }
+        System.out.println(name + " : " + position);
     }
 
     public String getName() {
