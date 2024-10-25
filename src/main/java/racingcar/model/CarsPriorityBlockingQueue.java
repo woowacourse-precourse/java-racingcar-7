@@ -15,6 +15,10 @@ public class CarsPriorityBlockingQueue implements Cars{
     this.cars = new PriorityBlockingQueue<>(cars);
   }
 
+  public static CarsPriorityBlockingQueue from (List<Car> cars) {
+    return new CarsPriorityBlockingQueue(cars);
+  }
+
   @Override
   public List<Car> findCarsByPosition(int position) {
     List<Car> foundCars = new ArrayList<>();
