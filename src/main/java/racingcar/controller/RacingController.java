@@ -19,6 +19,7 @@ public class RacingController {
     public void run() {
         Cars cars = getCars();
         int count = getCount();
+        printResultMessage();
         raceCars(cars, count);
         printWinners(cars);
     }
@@ -45,12 +46,15 @@ public class RacingController {
     }
 
     private void raceCars(Cars cars, int count) {
-        outputView.printMessage("");
-        outputView.printResultMessage();
         for (int i = 0; i < count; i++) {
             cars.race();
             printCarsInformation(cars.getCarsInformation());
         }
+    }
+
+    private void printResultMessage() {
+        outputView.printMessage("");
+        outputView.printResultHeader();
     }
 
     private void printCarsInformation(List<String> carsInformation) {
