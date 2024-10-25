@@ -26,6 +26,7 @@ public class Application {
             }
             System.out.println();
         }
+
     }
 
     public static String[] splitCarsName(String test) {
@@ -38,7 +39,6 @@ public class Application {
     public static int canProgressWithRandomNum() {
         // 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
         int randomNum = Randoms.pickNumberInRange(0, 9);
-        System.out.println(randomNum);
         if (randomNum >= 4) {
             return 1;
         }
