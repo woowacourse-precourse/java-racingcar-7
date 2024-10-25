@@ -5,7 +5,8 @@ public class RacingGame {
     private final Cars cars;
 
     public RacingGame(String invalidCarNames) {
-        cars = new Cars(invalidCarNames);
+        CarsParser CarsParser = new CarsParser();
+        cars = new Cars(CarsParser.parse(invalidCarNames));
     }
 
     public String proceedRound() {
