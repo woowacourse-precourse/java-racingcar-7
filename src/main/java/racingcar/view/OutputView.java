@@ -15,4 +15,13 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printFinalRacingResult(List<String> winnerNames) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winnerNames.size() - 1; i++) {
+            System.out.print(winnerNames.get(i) + ", ");
+        }
+        System.out.print(winnerNames.get(winnerNames.size() - 1));
+    }
+
 }

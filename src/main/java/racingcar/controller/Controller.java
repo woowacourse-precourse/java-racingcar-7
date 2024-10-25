@@ -52,6 +52,9 @@ public class Controller {
             outputView.printCurrentRoundRacingResult(carList);
         }
 
+        List<String> finalWinner = findFinalWinner(carList);
+        outputView.printFinalRacingResult(finalWinner);
+
     }
 
     private int stringToInt() {
@@ -95,6 +98,31 @@ public class Controller {
             }
         }
         return false;
+    }
+
+    private List<String> findFinalWinner(List<Car> cars) {
+        List<String> finalWinner = new ArrayList<>();
+        int winnerFowardCount = findWinnerForward(cars);
+
+        for (Car car : cars) {
+            if (car.getForwardCount() == winnerFowardCount) {
+                finalWinner.add(car.getName());
+            }
+        }
+
+        return finalWinner;
+    }
+
+    private int findWinnerForward(List<Car> cars) {
+        int winnerForwardCount = 0;
+
+        for (Car car : cars) {
+            if (car.getForwardCount() > winnerForwardCount) {
+                winnerForwardCount = car.getForwardCount();
+            }
+        }
+
+        return winnerForwardCount;
     }
 
 }
