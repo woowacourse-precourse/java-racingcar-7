@@ -28,6 +28,10 @@ public class RacingController {
         try {
             Splitter separator = new Splitter(originInput.getCarNames());
             ProcessedInput processedInput = new ProcessedInput(separator.splitSeparator(), new BigInteger(originInput.getRaceRound()));
+
+            if (validator.validNameLength(processedInput.getCarList())) {
+                throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH.getMessage());
+            }
         }
         // 시도할 횟수로 수가 아닌 값이 입력된 경우
         catch (NumberFormatException e) {

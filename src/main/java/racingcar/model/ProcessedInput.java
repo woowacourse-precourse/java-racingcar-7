@@ -11,4 +11,8 @@ public class ProcessedInput {
         this.carList = carList;
         this.raceRounds = raceRounds;
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 }

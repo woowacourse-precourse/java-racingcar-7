@@ -11,6 +11,14 @@ public class Car {
         this.position = BigInteger.valueOf(0);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public BigInteger getPosition() {
+        return position;
+    }
+
     public void printPosition() {
         System.out.print(name + " : ");
         for (BigInteger i = BigInteger.ZERO; i.compareTo(position) <= 0; i = i.add(BigInteger.ONE)) {
