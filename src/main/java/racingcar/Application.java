@@ -22,6 +22,14 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String turns = Console.readLine();
+        int turns;
+        try {
+            turns = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 정수형이어야 합니다.");
+        }
+        if (turns < 0) {
+            throw new IllegalArgumentException("시도 횟수는 0회 이상만 가능합니다.");
+        }
     }
 }

@@ -14,7 +14,7 @@
 ### 2. 시도 횟수 입력 및 검증
 - [X] 시도 횟수 입력받기
   - `Console.readLine()`을 통해 사용자로부터 시도 횟수를 입력받는다.
-- [ ] 시도 횟수 유효성 검사
+- [X] 시도 횟수 유효성 검사
   - 입력된 값을 정수로 변환하고 변환할 수 없으면 `IllegalArgumentException`을 발생시킨다.
   - 시도 횟수가 0 미만일 경우 `IllegalArgumentException`을 발생시킨다.
 
