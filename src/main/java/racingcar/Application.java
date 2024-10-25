@@ -67,6 +67,10 @@ public class Application {
         }
     }
 
+    public static void printInputMessageGameCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
     public static void main(String[] args) {
 
     }
