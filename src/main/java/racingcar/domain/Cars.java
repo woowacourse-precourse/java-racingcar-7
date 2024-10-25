@@ -11,6 +11,20 @@ public class Cars {
         this.carList = carList;
     }
 
+    public int maxForward() {
+        int max = 0;
+
+        for (Car car : carList) {
+            max = car.comparePosition(max);
+        }
+
+        return max;
+    }
+
+    public List<Car> maxForwardCars(int max) {
+        return carList.stream().filter(car -> car.isSameForward(max)).toList();
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -26,4 +40,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(carList);
     }
+
 }

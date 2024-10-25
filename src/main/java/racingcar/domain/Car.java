@@ -32,6 +32,13 @@ public class Car {
         return this;
     }
 
+    public int comparePosition(int max) {
+        return Math.max(max, position);
+    }
+
+    public boolean isSameForward(int max) {
+        return position == max;
+    }
 
     @Override
     public boolean equals(Object object) {
