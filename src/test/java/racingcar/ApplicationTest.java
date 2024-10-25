@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -38,6 +40,26 @@ class ApplicationTest extends NsTest {
         String result = Application.getCarInput();
         assertThat(result).isEqualTo("car1,car2,car3");
     }
+
+    @Test
+    @DisplayName("splitInput 작동테스트")
+    void splitInputTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+        List<RacingCar> resultCars = Application.splitInput("car1,car2,car3");
+        assertThat(resultCars).extracting("name").containsExactly("car1", "car2", "car3");
+    }
+
+    @Test
+    @DisplayName("splitInput 글자수 예외테스트")
+    void splitInputTest2() {
+        List<RacingCar> cars = new ArrayList<>();
+        assertThatThrownBy(() -> Application.splitInput("car1,car2,car333"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Test
     @DisplayName("자동차 이름이 5 이상일 때")
