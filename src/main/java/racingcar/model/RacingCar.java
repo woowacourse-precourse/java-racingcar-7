@@ -9,4 +9,8 @@ public class RacingCar {
         this.name = name;
         this.currentLocation = currentLocation;
     }
+
+    public static RacingCar init(String carName) {
+        return new RacingCar(Name.init(carName), Location.init());
+    }
 }

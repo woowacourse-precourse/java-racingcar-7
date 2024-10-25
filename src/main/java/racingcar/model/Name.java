@@ -10,4 +10,8 @@ public record Name(String name) {
     public Name {
         carNameValidator.validate(name);
     }
+
+    public static Name init(String carName) {
+        return new Name(carName);
+    }
 }
