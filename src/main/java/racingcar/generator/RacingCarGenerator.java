@@ -1,7 +1,8 @@
 package racingcar.generator;
 
 import java.util.List;
+import racingcar.domain.Car;
 
 public interface RacingCarGenerator {
-    public List<String> generateCar(List<String> carNames);
+    public List<Car> generateCar(List<String> carNames);
 }
