@@ -18,7 +18,7 @@ public class Race {
         this();
 
         if(racerNames.length == 0) {
-            throw new IllegalArgumentException("입력이 없습니다.");
+            throw new IllegalArgumentException("비어있는 레이서 목록입니다.");
         }
 
         for(String racerName : racerNames) {
@@ -30,6 +30,10 @@ public class Race {
     }
 
     public void startRace(int times){
+        if(racers.isEmpty()){
+            throw new IllegalArgumentException("선수가 없어 레이스를 진행할 수 없습니다.");
+        }
+
         System.out.println("실행결과");
 
         while(lap < times) {

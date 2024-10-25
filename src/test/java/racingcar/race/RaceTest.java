@@ -24,12 +24,19 @@ public class RaceTest {
     }
 
     @Test
-    void 공백_레이서_테스트(){
+    void 생성자_공백_레이서_테스트(){
         assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{""}));
     }
 
     @Test
-    void 공백_문자열_테스트(){
+    void 생성자_공백_배열_테스트(){
         assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{}));
+    }
+
+    @Test
+    void 레이서_없이_실행(){
+        race = new Race();
+
+        assertThrows(IllegalArgumentException.class, () -> race.startRace(5));
     }
 }
