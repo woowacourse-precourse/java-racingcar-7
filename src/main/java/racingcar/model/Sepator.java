@@ -9,7 +9,9 @@ public class Sepator {
         final String DELIMITER = ",";
         List<Car> cars = new ArrayList<>();
 
-        String[] splitInput =  input.split(DELIMITER);
+        // 문자열 split 시 마지막 빈 값도 배열에 저장하기 위해 limit: -1
+        // "pobi," -> ["pobi",""]
+        String[] splitInput =  input.split(DELIMITER,-1);
         for (String element : splitInput) {
             cars.add(new Car(element));
         }
