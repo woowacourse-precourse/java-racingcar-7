@@ -10,7 +10,7 @@ public class MainController {
     public static void run() {
         UserInputData userInputData = getCarNameAndTryCount();
 
-        userInputData.startRacing();
+        userInputData.tryingMoveCar();
 
         OutputView.printTryResult(userInputData.cars());
         OutputView.printWinnerResult(userInputData.getWinners());

@@ -21,7 +21,7 @@ public record UserInputData(List<Car> cars, int tryCount) {
         return winners;
     }
 
-    public void startRacing() {
+    public void tryingMoveCar() {
         for (int i = 0; i < tryCount; i++) {
             cars().stream()
                     .forEach((car)->car.tryMove(if60PercentChance()));

@@ -10,6 +10,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.Validator;
 import racingcar.domain.Car;
 
 public class InputView {
@@ -26,13 +28,14 @@ public class InputView {
         List<String> splitNames = Arrays.asList(carNames.split(","));
 
         List<Car> cars = new ArrayList<>();
-        for (String inputname : splitNames) {
-            inputname = inputname.trim();
-            validateNameFormat(inputname);
-            validateNameLength(inputname);
-            Car car = new Car(inputname);
-            cars.add(car);
-        }
+        cars.addAll(
+                splitNames.stream()
+                        .map(String::trim)
+                        .peek(Validator::validateNameFormat)
+                        .peek(Validator::validateNameLength)
+                        .map(Car::new)
+                        .collect(Collectors.toList())
+        );
         return cars;
     }
     public static int readTryCount() {
