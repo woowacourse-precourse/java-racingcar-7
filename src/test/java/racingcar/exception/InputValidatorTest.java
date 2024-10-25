@@ -62,6 +62,22 @@ class InputValidatorTest {
                 .doesNotThrowAnyException();
     }
 
+    @ParameterizedTest
+    @DisplayName("이동 횟수를 입력할 때 범위 외의 숫자가 입력될 경우 예외가 발생한다.")
+    @ValueSource(strings = {"2147483648", "-10"})
+    void outOfRangeRepeatTimesThrowException(String repeatTimes) {
+        assertThatThrownBy(() -> inputvalidator.validateOutOfRangeRepeatTimes(repeatTimes))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("이동 횟수를 입력할 때 정상 범위의 숫자가 입력될 경우 예외가 발생하지 않는다.")
+    @ValueSource(strings = {"10000", "50000"})
+    void outOfRangeRepeatTimesNotThrowException(String repeatTimes) {
+        assertThatCode(() -> inputvalidator.validateOutOfRangeRepeatTimes(repeatTimes))
+                .doesNotThrowAnyException();
+    }
+
     static Stream<Arguments> generateWhiteSpacesInput() {
         return Stream.of(
                 Arguments.of(Arrays.asList("", "")),
