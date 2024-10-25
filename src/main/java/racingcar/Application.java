@@ -4,18 +4,14 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            List<String> names = InputCar.readCarNames();
-            int tryCount = InputCar.readTryCount();
+        List<String> names = InputCar.readCarNames();
+        int tryCount = InputCar.readTryCount();
 
-            Cars cars = new Cars(names);
+        Cars cars = new Cars(names);
 
-            OutputCar.printStart();
-            playGame(cars, tryCount);
-            announceWinner(cars);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        OutputCar.printStart();
+        playGame(cars, tryCount);
+        announceWinner(cars);
     }
 
     private static void playGame(Cars cars, int tryCount) {
