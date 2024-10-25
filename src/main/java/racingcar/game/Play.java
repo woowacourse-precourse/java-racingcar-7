@@ -19,10 +19,14 @@ public class Play {
                     carArr[j] += 1;
                 }
             }
+            if (i == 0) {
+                System.out.println("실헹 결과");
+            }
             result.displayResult(carArr, cars);
-            System.out.println("\n");
+            System.out.print("\n");
         }
 
+        Result.printWinner(carArr, cars);
 
     }
 
