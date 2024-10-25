@@ -5,13 +5,15 @@ import static racingcar.common.exception.ErrorMessage.*;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingCarNames;
 import racingcar.common.exception.RacingCarException;
+import java.util.List;
 
 public class InputView {
 
     public RacingCarNames readRacingCarNames() {
         String input = Console.readLine();
         validateInput(input);
-        return new RacingCarNames(input.trim());
+        List<String> carNames = List.of(input.trim().split(","));
+        return new RacingCarNames(carNames);
     }
 
     private void validateInput(String input) {

@@ -21,7 +21,7 @@ class RacingCarNamesTest {
         })
         @DisplayName("자동차가 2대 미만일 경우 예외가 발생한다")
         void 자동차가_2대_미만일_경우_예외가_발생한다(String input) {
-            assertThatThrownBy(() -> new RacingCarNames(input))
+            assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage("경주할 자동차는 2대 이상이어야 합니다.");
         }
@@ -36,7 +36,7 @@ class RacingCarNamesTest {
         })
         @DisplayName("자동차 이름이 영어 또는 한글로만 이뤄지지 않으면 예외가 발생한다.")
         void 자동차_이름이_영어_또는_한글로만_이뤄지지_않으면_예외가_발생한다(String input) {
-            assertThatThrownBy(() -> new RacingCarNames(input))
+            assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage("자동차 이름은 영어 또는 한글로만 이루어져야 합니다.");
         }
@@ -53,7 +53,7 @@ class RacingCarNamesTest {
         })
         @DisplayName("자동차가 2대 이상일 경우 예외가 발생하지 않는다")
         void 자동차가_2대_이상일_경우_예외가_발생하지_않는다(String input) {
-            assertThatCode(() -> new RacingCarNames(input))
+            assertThatCode(() -> RacingCarNames.from(input))
                     .doesNotThrowAnyException();
         }
 
@@ -67,7 +67,7 @@ class RacingCarNamesTest {
         })
         @DisplayName("자동차 이름이 5글자 이하이며 영어, 한글로만 이루어진 경우 예외가 발생하지 않는다.")
         void 자동차_이름이_5글자_이하의_영어_또는_한글로_이루어진_경우_예외가_발생하지_않는다(String input) {
-            assertThatCode(() -> new RacingCarNames(input))
+            assertThatCode(() -> RacingCarNames.from(input))
                     .doesNotThrowAnyException();
         }
     }
