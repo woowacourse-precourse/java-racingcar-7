@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 public class InputValidator {
     public enum ValidationMode {
         CAR_NAME(1, 5, InputValidator::validateCarName),
-        CAR_NUMBER(2, 100, InputValidator::validateCarNumber),
+        CAR_COUNT(2, 100, InputValidator::validateCarCount),
         GAME_COUNT(1, 1000, InputValidator::validateGameCount);
 
         public final int min;
@@ -42,17 +42,17 @@ public class InputValidator {
         }
     }
 
-    private static void validateCarNumber(String input) {
+    private static void validateCarCount(String input) {
         String[] names = input.split(",");
 
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차를 등록해주세요.");
         }
-        if(names.length < ValidationMode.CAR_NUMBER.min) {
-            throw new IllegalArgumentException("자동차는 최소 "+ValidationMode.CAR_NUMBER.min +"개 이상 등록해야합니다.");
+        if(names.length < ValidationMode.CAR_COUNT.min) {
+            throw new IllegalArgumentException("자동차는 최소 "+ValidationMode.CAR_COUNT.min +"개 이상 등록해야합니다.");
         }
-        if(names.length > ValidationMode.CAR_NUMBER.max) {
-            throw new IllegalArgumentException("자동차는 최대 "+ValidationMode.CAR_NUMBER.max +"개 까지 등록 가능합니다.");
+        if(names.length > ValidationMode.CAR_COUNT.max) {
+            throw new IllegalArgumentException("자동차는 최대 "+ValidationMode.CAR_COUNT.max +"개 까지 등록 가능합니다.");
         }
     }
 
