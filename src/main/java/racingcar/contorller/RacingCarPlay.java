@@ -44,7 +44,7 @@ public class RacingCarPlay {
             if(car.getPlayGameScore() > 3) {
                 car.incrementGameTotalScore();
             }
-            System.out.println("car = " + car);
+            System.out.println(car.getCarName() + " : " + car.getProgressDisplay());
         }
         System.out.println();
     }

@@ -31,6 +31,10 @@ public class Car {
         return gameTotalScore;
     }
 
+    public String getProgressDisplay() {
+        return "-".repeat(getGameTotalScore());
+    }
+
     @Override
     public String toString() {
         return "Car{" +
