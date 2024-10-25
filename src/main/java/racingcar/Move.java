@@ -1,19 +1,23 @@
 package racingcar;
 
+import java.util.List;
+
 public class Move {
-    private final Car car;
+    private final List<Car> cars;
     private final NumberValidator numberValidator;
     private final NumberGenerator numberGenerator;
 
-    public Move(Car car, NumberValidator numberValidator, NumberGenerator numberGenerator) {
-        this.car = car;
+    public Move(List<Car> cars, NumberValidator numberValidator, NumberGenerator numberGenerator) {
+        this.cars = cars;
         this.numberValidator = numberValidator;
         this.numberGenerator = numberGenerator;
     }
 
     public void tryOnce() {
-        int randomNumber = numberGenerator.pickOne();
-        boolean canMove = numberValidator.isAboveLowerBound(randomNumber);
-        car.moveForwardIf(canMove);
+        for (Car car : cars) {
+            int randomNumber = numberGenerator.pickOne();
+            boolean canMove = numberValidator.isAboveLowerBound(randomNumber);
+            car.moveForwardIf(canMove);
+        }
     }
 }
