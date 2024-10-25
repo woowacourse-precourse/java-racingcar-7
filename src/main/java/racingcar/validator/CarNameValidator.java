@@ -13,5 +13,11 @@ public class CarNameValidator {
             }
         }
     }
+
+    public void nameOverlap(List<String> carsList) {
+        if (carsList.size() != carsList.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
 
