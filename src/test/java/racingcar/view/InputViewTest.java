@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -24,8 +24,7 @@ class InputViewTest {
         ByteArrayInputStream testInput = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(testInput);
 
-        assertThatThrownBy(InputView::inputCarName)
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThrows(IllegalArgumentException.class, InputView::inputCarName);
     }
 
     @Test
@@ -35,8 +34,7 @@ class InputViewTest {
         ByteArrayInputStream testInput = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(testInput);
 
-        assertThatThrownBy(InputView::inputCarName)
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThrows(IllegalArgumentException.class, InputView::inputCarName);
     }
 
     @Test
@@ -48,6 +46,6 @@ class InputViewTest {
 
         String result = InputView.inputCarName();
 
-        assertThat(result).isEqualTo(simulatedInput);
+        assertEquals(simulatedInput, result);
     }
 }

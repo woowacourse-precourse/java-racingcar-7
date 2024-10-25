@@ -1,7 +1,7 @@
 package racingcar.model.parser;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -18,8 +18,8 @@ class CarsParserTest {
     void parse() {
         List<Car> test = CarsParser.parse("phobi");
 
-        assertThat(test.size()).isEqualTo(1);
-        assertThat(test.getFirst().getName().getCarName()).isEqualTo("phobi");
+        assertEquals(test.size(), 1);
+        assertEquals(test.getFirst().getName().getCarName(), "phobi");
     }
 
     @Test
@@ -27,10 +27,10 @@ class CarsParserTest {
     void parse2() {
         List<Car> test = CarsParser.parse("phobi,wooni,kgy18");
 
-        assertThat(test.size()).isEqualTo(3);
-        assertThat(test.get(0).getName().getCarName()).isEqualTo("phobi");
-        assertThat(test.get(1).getName().getCarName()).isEqualTo("wooni");
-        assertThat(test.get(2).getName().getCarName()).isEqualTo("kgy18");
+        assertEquals(test.size(), 3);
+        assertEquals(test.get(0).getName().getCarName(), "phobi");
+        assertEquals(test.get(1).getName().getCarName(), "wooni");
+        assertEquals(test.get(2).getName().getCarName(), "kgy18");
     }
 
     @ParameterizedTest
@@ -38,7 +38,6 @@ class CarsParserTest {
     @EmptySource
     @ValueSource(strings = {"wo:df", "5자를넘어감", "$%기호"})
     void invalidInputParse(String input) {
-        assertThatThrownBy(() -> CarsParser.parse(input))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThrows(IllegalArgumentException.class, () -> CarsParser.parse(input));
     }
 }

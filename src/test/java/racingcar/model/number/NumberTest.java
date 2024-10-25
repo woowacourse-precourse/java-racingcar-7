@@ -1,6 +1,7 @@
 package racingcar.model.number;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,27 +13,21 @@ class NumberTest {
     @DisplayName("전진 테스트")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void isForward(int input) {
-        // given
         Number number = new Number(input);
 
-        // when
         boolean result = number.isGreaterThanForwardThreshold();
 
-        // then
-        assertThat(result).isTrue();
+        assertTrue(result);
     }
 
     @ParameterizedTest
-    @DisplayName("전진 테스트")
+    @DisplayName("멈춤 테스트")
     @ValueSource(ints = {0, 1, 2, 3})
     void isStop(int input) {
-        // given
         Number number = new Number(input);
 
-        // when
         boolean result = number.isGreaterThanForwardThreshold();
 
-        // then
-        assertThat(result).isFalse();
+        assertFalse(result);
     }
 }

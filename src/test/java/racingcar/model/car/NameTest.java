@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,8 +15,7 @@ class NameTest {
     @NullAndEmptySource
     @ValueSource(strings = {" ", "5자를넘어감", "$%기호"})
     void createInValidName(String name) {
-        assertThatThrownBy(() -> new Name(name))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThrows(IllegalArgumentException.class, () -> new Name(name));
     }
 
     @ParameterizedTest
@@ -24,6 +23,6 @@ class NameTest {
     @ValueSource(strings = {"phobi", "woni", "bmwM3"})
     void createValidName(String name) {
         Name createdName = new Name(name);
-        assertThat(createdName.getCarName()).isEqualTo(name);
+        assertEquals(name, createdName.getCarName());
     }
 }

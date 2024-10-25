@@ -1,6 +1,6 @@
 package racingcar.model.car;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,8 +19,8 @@ class PositionTest {
 
         final int finalPosition = position.calculateMovingDistance();
 
-        assertThat(finalPosition - initialPosition).isEqualTo(3);
-        assertThat(position.getDistance()).isEqualTo("---");
+        assertEquals(3, finalPosition - initialPosition);
+        assertEquals("---", position.getDistance());
     }
 
     @Test
@@ -29,8 +29,8 @@ class PositionTest {
         final int initialPosition = position.calculateMovingDistance();
         final int finalPosition = position.calculateMovingDistance();
 
-        assertThat(finalPosition - initialPosition).isEqualTo(0);
-        assertThat(position.getDistance()).isEqualTo("");
+        assertEquals(0, finalPosition - initialPosition);
+        assertEquals("", position.getDistance());
     }
 
     @Test
@@ -41,7 +41,7 @@ class PositionTest {
         final int initialPosition = position.calculateMovingDistance();
         final int finalPosition = position.calculateMovingDistance();
 
-        assertThat(finalPosition - initialPosition).isEqualTo(0);
-        assertThat(position.getDistance()).isEqualTo("-");
+        assertEquals(0, finalPosition - initialPosition);
+        assertEquals("-", position.getDistance());
     }
 }
