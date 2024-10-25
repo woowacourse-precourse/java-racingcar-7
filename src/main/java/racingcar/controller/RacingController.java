@@ -1,16 +1,12 @@
 package racingcar.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Cars;
 import racingcar.util.MessageFormatter;
-import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
-
-    private final static String DELIMITER = ",";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -29,15 +25,13 @@ public class RacingController {
 
     private Cars getCars() {
         String carInput = getCarInput();
-        List<String> beforeConvertCars = splitInput(carInput);
-        InputValidator.validateCarNames(beforeConvertCars);
+        List<String> beforeConvertCars = MessageFormatter.getFormattedCarNames(carInput);
         return Cars.createCars(beforeConvertCars);
     }
 
     private int getCount() {
         String countInput = getCountInput();
-        InputValidator.validateCount(countInput);
-        return convertToInt(countInput);
+        return MessageFormatter.getFormattedCount(countInput);
     }
 
     private String getCarInput() {
@@ -48,15 +42,6 @@ public class RacingController {
     private String getCountInput() {
         outputView.printCountInputMessage();
         return inputView.input();
-    }
-
-    private List<String> splitInput(String carInput) {
-        String[] carNames = carInput.split(DELIMITER);
-        return Arrays.stream(carNames).map(String::trim).toList();
-    }
-
-    private static int convertToInt(String countInput) {
-        return Integer.parseInt(countInput);
     }
 
     private void raceCars(Cars cars, int count) {
