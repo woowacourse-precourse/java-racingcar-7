@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.AttemptCount;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,6 +12,7 @@ public class RacingcarController {
         String racingcarNames = InputView.readInput();
         Cars cars = new Cars(racingcarNames);
         OutputView.printMessage("시도할 횟수는 몇 회인가요?");
-        String attemptCount = InputView.readInput();
+        String userInputAttemptCount = InputView.readInput();
+        AttemptCount attemptCount = AttemptCount.fromString(userInputAttemptCount);
     }
 }
