@@ -21,13 +21,13 @@ class ApplicationTest extends NsTest {
         String input = "car1,car2,car3";
 
         // when: car_input 메서드 실행
-        List<String> carList = Application.car_input(input);
+        List<RacingCar> carList = Application.car_input(input);
 
         // then: 결과 리스트가 예상과 일치하는지 검증
         assertEquals(3, carList.size());
-        assertEquals("car1", carList.get(0));
-        assertEquals("car2", carList.get(1));
-        assertEquals("car3", carList.get(2));
+        assertEquals("car1", carList.get(0).getName());
+        assertEquals("car2", carList.get(1).getName());
+        assertEquals("car3", carList.get(2).getName());
     }
 
     @Test
