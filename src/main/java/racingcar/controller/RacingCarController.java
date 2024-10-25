@@ -17,6 +17,17 @@ public class RacingCarController {
         this.outputView = outputView;
     }
 
+    public void start() {
+        Cars cars = new Cars(inputView.getCarNames());
+        int attemptsCount = InputView.getAttempts();
+
+        race(cars, attemptsCount);
+
+        List<String> winners = cars.findWinner();
+        outputView.printWinners(winners);
+    }
+
+
     public void race(Cars cars, int attempsCount) {
         outputView.printResultMessage();
         for (int i = 0; i < attempsCount; i++) {
