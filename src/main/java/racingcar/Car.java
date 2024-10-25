@@ -10,7 +10,6 @@ public class Car {
     public static final int ACCELERATION_THRESHOLD = 4;
 
     Car(String name) {
-        validateName(name);
         this.name = name;
         this.mileage = 0;
     }
@@ -26,12 +25,6 @@ public class Car {
 
     public int getMileage() {
         return mileage;
-    }
-
-    public static void validateName(String carName) {
-        if (carName == null || carName.isEmpty() || carName.length() > 5) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public void accelerate(Accelerator accelerator) {

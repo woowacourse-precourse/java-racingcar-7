@@ -28,37 +28,7 @@ class CarTest {
         Assertions.assertThat(actualName).isEqualTo(carName);
         Assertions.assertThat(actualMileage).isEqualTo(0);
     }
-
-    @Test
-    public void 자동차이름_5글자이하_테스트() throws Exception {
-        //Given
-        String carName = "pobi";
-
-        //When, Then
-        Assertions.assertThatCode(() -> Car.validateName(carName))
-                .doesNotThrowAnyException();
-    }
-
-    @Test
-    public void 자동차이름_5글자초과_예외테스트() throws Exception {
-        //Given
-        String carName = "woni:jun";
-
-        //When, Then
-        Assertions.assertThatCode(() -> Car.validateName(carName))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void 빈_자동차이름_예외테스트() throws Exception {
-        //Given
-        String carName = "";
-
-        //When, Then
-        Assertions.assertThatCode(() -> Car.validateName(carName))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
+    
     @Test
     public void toString_테스트() throws Exception {
         //Given

@@ -29,7 +29,8 @@ public class Application {
         HashMap<String, String> request = new HashMap<>();
 
         input(request);
-        CarRacing carRacing = new CarRacing(request.get("carNames"), request.get("attempts"));
+        CarRacing carRacing = new CarRacing(Parser.parseCarNames(request.get("carNames")),
+                Parser.parseAttempts(request.get("attempts")));
         output(carRacing.race());
     }
 }

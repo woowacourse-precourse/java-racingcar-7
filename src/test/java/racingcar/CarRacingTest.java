@@ -1,48 +1,30 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
+import java.util.Arrays;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.accelerator.Accelerator;
-import racingcar.accelerator.BrokenAccelerator;
 
 class CarRacingTest {
 
-    private final Accelerator accelerator = new BrokenAccelerator();
-
-    private Car createCar(String carName) {
-        return new Car(carName);
-    }
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
 
     @Test
-    public void 시도횟수_테스트() throws Exception {
+    public void 자동차_경주_테스트() throws Exception {
         //Given
-        String attempts = "5";
-        int expected = 5;
-
-        //When
-        int actual = CarRacing.parseAttempts(attempts);
-
-        //Then
-        Assertions.assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    public void 시도횟수_int범위초과_예외테스트() throws Exception {
-        //Given
-        String attempts = Long.toString(Long.MAX_VALUE);
+        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("pobi"), new Car("woni")));
+        CarRacing carRacing = new CarRacing(carGroup, 2);
 
         //When, Then
-        Assertions.assertThatThrownBy(() -> CarRacing.parseAttempts(attempts))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void 시도횟수_음수_예외테스트() throws Exception {
-        //Given
-        String attempts = "-1";
-
-        //When, Then
-        Assertions.assertThatThrownBy(() -> CarRacing.parseAttempts(attempts))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List<String> actual = carRacing.race();
+                    Assertions.assertThat(actual).contains("pobi : --\nwoni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+        );
     }
 }
