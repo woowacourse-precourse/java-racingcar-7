@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class InputValidator {
 
-    private static final String REGULAR_EXPRESSION = "[^\n]+(,[^\n]+)*";
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private String delimitedCarNames;
@@ -33,8 +32,8 @@ public class InputValidator {
 
     private void validateCarNamesFormat() {
         int delimitedCarNamesLength = delimitedCarNames.length();
-        if (!delimitedCarNames.matches(REGULAR_EXPRESSION)
-                || delimitedCarNames.startsWith(",")
+        if (delimitedCarNames.startsWith(",")
+                || delimitedCarNames.isEmpty()
                 || isEndWithComma(delimitedCarNamesLength)) {
             throw new IllegalArgumentException("올바른 자동차 이름 형식이 아닙니다");
         }
