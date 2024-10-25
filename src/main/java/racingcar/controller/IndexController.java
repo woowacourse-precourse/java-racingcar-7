@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.NoSuchElementException;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.view.InputView;
 
@@ -14,6 +15,18 @@ public class IndexController {
     //------------------------//
 
     public CarsSaveRequestDto displayCarsNameInputPage() {
-        return inputView.getCarsName();
+        try {
+            return inputView.getCarsName();
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public int displayRaceLapInputPage() {
+        try {
+            return inputView.getLapCount();
+        } catch (NoSuchElementException | NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
