@@ -1,5 +1,9 @@
 package racingcar.model.dependency.validator;
 
+import racingcar.exception.ExceptionFactory;
+
+import static racingcar.exception.ExceptionType.*;
+
 public class DefaultRacingCarValidator implements RacingCarValidator {
 
     private final int MAX_NAME_LENGTH = 5;
@@ -7,13 +11,13 @@ public class DefaultRacingCarValidator implements RacingCarValidator {
     @Override
     public void validateName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("이름은 null 이 될 수 없습니다.");
+            throw ExceptionFactory.createException(NAME_CANNOT_BE_NULL);
         }
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 " + MAX_NAME_LENGTH + "자 이하여야 합니다.");
+            throw ExceptionFactory.createException(NAME_TOO_LONG, MAX_NAME_LENGTH + "자 이하여야 합니다.");
         }
         if (name.isBlank()) {
-            throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
+            throw ExceptionFactory.createException(NAME_CANNOT_BE_BLANK);
         }
     }
 }

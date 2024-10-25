@@ -1,6 +1,9 @@
 package racingcar.util.ramdom;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exception.ExceptionFactory;
+
+import static racingcar.exception.ExceptionType.MIN_GREATER_THAN_MAX;
 
 public final class RandomUtils {
 
@@ -11,7 +14,7 @@ public final class RandomUtils {
 
     private static void validate(RandomRange randomRange) {
         if (randomRange.min() > randomRange.max()) {
-            throw new IllegalArgumentException("최소값이 최대값보다 클 수 없습니다.");
+            throw ExceptionFactory.createException(MIN_GREATER_THAN_MAX);
         }
     }
 }

@@ -1,8 +1,11 @@
 package racingcar.view.input;
 
+import racingcar.exception.ExceptionFactory;
 import racingcar.util.io.InputConsole;
 
 import java.util.List;
+
+import static racingcar.exception.ExceptionType.INVALID_TRY_COUNT;
 
 public class DefaultInputView implements InputView {
 
@@ -14,7 +17,7 @@ public class DefaultInputView implements InputView {
         try {
             return Integer.parseInt(InputConsole.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효하지 않은 시도 횟수입니다.");
+            throw ExceptionFactory.createException(INVALID_TRY_COUNT);
         }
     }
 }

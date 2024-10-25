@@ -2,12 +2,15 @@ package racingcar.service;
 
 import racingcar.dto.RacingResult;
 import racingcar.dto.RacingRoundResult;
+import racingcar.exception.ExceptionFactory;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.dependency.RacingCarDependency;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static racingcar.exception.ExceptionType.TRY_COUNT_TOO_SMALL;
 
 public class RacingService {
 
@@ -41,7 +44,8 @@ public class RacingService {
 
     private void validateTryCount(int tryCount) {
         if (tryCount < MIN_TRY_COUNT) {
-            throw new IllegalArgumentException("시도 횟수는 " + MIN_TRY_COUNT + " 이상이어야 합니다.");
+            throw ExceptionFactory.createException(TRY_COUNT_TOO_SMALL,
+                    MIN_TRY_COUNT + " " + "이상이어야 합니다.");
         }
     }
 

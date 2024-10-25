@@ -1,8 +1,13 @@
 package racingcar.model;
 
+import racingcar.exception.ExceptionFactory;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static racingcar.exception.ExceptionType.DUPLICATED_CARS;
+import static racingcar.exception.ExceptionType.EMPTY_CARS;
 
 public class RacingCars {
 
@@ -61,13 +66,13 @@ public class RacingCars {
 
     private void validateEmpty(List<RacingCar> values) {
         if (values.isEmpty()) {
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
+            throw ExceptionFactory.createException(EMPTY_CARS);
         }
     }
 
     private void validateDuplication(List<RacingCar> values) {
         if (values.stream().distinct().count() != values.size()) {
-            throw new IllegalArgumentException("중복된 자동차가 존재합니다.");
+            throw ExceptionFactory.createException(DUPLICATED_CARS);
         }
     }
 }
