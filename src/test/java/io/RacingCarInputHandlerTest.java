@@ -36,6 +36,17 @@ class RacingCarInputHandlerTest {
     }
 
     @Test
+    void 입력한_차_이름_공백_시_에러_던지기() {
+        // given
+        String inputCarName = "pobi,,juniara";
+
+        // when // then
+        assertThatThrownBy(() -> racingCarInputHandler.getSeparatedCarNameList(inputCarName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름을 입력해주세요.");
+    }
+
+    @Test
     void 시도할_횟수_입력하기() {
         // given
         String inputCount = "4";
