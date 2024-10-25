@@ -2,10 +2,12 @@ package racingcar.view;
 
 import racingcar.util.io.InputConsole;
 
+import java.util.List;
+
 public class InputView {
 
-    public String getCarNames() {
-        return InputConsole.readLine();
+    public List<String> getCarNames() {
+        return List.of(InputConsole.readLine().split(","));
     }
 
     public int getTryCount() {
