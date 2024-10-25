@@ -27,6 +27,10 @@ public class CarRacingController {
         String carNames = inputView.getCarsInput();
         int roundCount = inputView.getRoundInput();
 
+        if (roundCount < 1) {
+            throw new IllegalArgumentException("라운드 수는 1 이상이어야 합니다.");
+        }
+
         List<Car> cars = carService.createCars(carNames.split(","));
 
         outputView.displayGameStart();
