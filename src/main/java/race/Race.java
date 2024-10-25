@@ -16,6 +16,7 @@ public class Race {
 
         int attempt = attemptToInt(attempts);
 
+        System.out.println("실행 결과");
         cars.forEach((key, value) -> {
             int newValue = playRacingCar(value);
             cars.put(key, newValue);
@@ -74,8 +75,6 @@ public class Race {
     }
 
     private void printCarForward(Map<String, Integer> cars) {
-
-        System.out.println("실핼 결과");
 
         cars.forEach((key, value) -> {
             System.out.print(key + " : ");

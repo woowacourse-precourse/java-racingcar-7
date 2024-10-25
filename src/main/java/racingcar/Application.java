@@ -29,6 +29,8 @@ public class Application {
         String cars = input.inputCars();
         String attempt = input.inputAttempt();
 
+        System.out.println();
+
         String result;
 
         result = race.racing(cars, attempt);
