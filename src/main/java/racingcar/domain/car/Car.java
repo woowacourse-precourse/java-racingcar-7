@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.movement.RandomMovement;
+import racingcar.domain.random_number.RandomNumber;
 
 public class Car {
 
@@ -8,7 +9,7 @@ public class Car {
     private final Distance distance;
 
     //For test only
-    public Car(String carName,int distance) {
+    public Car(String carName, int distance) {
         this.carName = new CarName(carName);
         this.distance = new Distance(distance);
     }
@@ -18,8 +19,8 @@ public class Car {
         this.distance = new Distance();
     }
 
-    public void go(RandomMovement randomMovement){
-        if(randomMovement.canGo()){
+    public void go(RandomMovement randomMovement) {
+        if (randomMovement.canGo()) {
             distance.increase();
         }
     }
