@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ValidatingParser {
+	private static final int MAX_CAR_NAME_LENGTH = 5;
+	private static final int MIN_CARS_COUNT = 1;
+	private static final int MIN_ATTEMPT_COUNT = 0;
 
 	private ValidatingParser() {
 	}
@@ -19,13 +22,13 @@ public class ValidatingParser {
 	}
 
 	public int validateAttemptCount(String inputAttemptCount) {
-		int convertNumber = convertValidateAttemptNumber(inputAttemptCount);
-		validateAttemptPositiveNumber(convertNumber);
+		int convertNumber = parseAttemptNumber(inputAttemptCount);
+		validatePositiveNumber(convertNumber);
 		return convertNumber;
 	}
 
 	private void validateCarName(List<String> separateCarNames) {
-		if (separateCarNames.size() == 1) {
+		if (separateCarNames.size() == MIN_CARS_COUNT) {
 			throw new IllegalArgumentException(ValidationError.ERROR_CARS_SIZE_ONE.getMessage());
 		}
 
@@ -36,7 +39,7 @@ public class ValidatingParser {
 	}
 
 	private void validateCarNameOverLength(String carName) {
-		if (carName.length() > 5) {
+		if (carName.length() > MAX_CAR_NAME_LENGTH) {
 			throw new IllegalArgumentException(ValidationError.ERROR_CAR_NAME_OVER_LENGTH.getMessage());
 		}
 	}
@@ -47,7 +50,7 @@ public class ValidatingParser {
 		}
 	}
 
-	private int convertValidateAttemptNumber(String inputAttemptNumber) {
+	private int parseAttemptNumber(String inputAttemptNumber) {
 		int convertNumber;
 		try {
 			convertNumber = Integer.parseInt(inputAttemptNumber);
@@ -57,8 +60,8 @@ public class ValidatingParser {
 		return convertNumber;
 	}
 
-	private void validateAttemptPositiveNumber(int convertNumber) {
-		if (convertNumber <= 0) {
+	private void validatePositiveNumber(int convertNumber) {
+		if (convertNumber <= MIN_ATTEMPT_COUNT) {
 			throw new IllegalArgumentException(ValidationError.ERROR_ATTEMPT_COUNT_NOT_POSITIVE_NUMBER.getMessage());
 		}
 	}
