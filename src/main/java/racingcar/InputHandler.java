@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MIN_MOVE_COUNT = 0;
     public String[] getCarNames() {
         return Console.readLine().split(",");
     }
@@ -11,10 +13,10 @@ public class InputHandler {
     }
     public void validCarNames(String[] carNames) {
         for (String name : carNames) {
-            if (name.length() > 5) throw new IllegalArgumentException();
+            if (name.length() > MAX_CAR_NAME_LENGTH) throw new IllegalArgumentException();
         }
     }
     public void validMoveCnt(int moveCount) {
-        if (moveCount < 0) throw new IllegalArgumentException();
+        if (moveCount < MIN_MOVE_COUNT) throw new IllegalArgumentException();
     }
 }
