@@ -19,7 +19,7 @@ public class racingCarService {
             if (delimiterValidate && carNameLengthValidate) {
                 carMoveMap.put(car, "");
             } else {
-                throw new IllegalArgumentException("레이싱카의 이름의 길이는 5를 넘을 수 없습니다.");
+                throw new IllegalArgumentException();
             }
         }
     }
