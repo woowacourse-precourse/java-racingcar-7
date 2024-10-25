@@ -55,7 +55,7 @@ public class GameController {
     }
 
     private void startGame(){
-        while(round>0){
+        while(round > 0){
             playRound();
             printGameRoundResult();
             round--;
