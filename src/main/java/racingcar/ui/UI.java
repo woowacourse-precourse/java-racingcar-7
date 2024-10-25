@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.race.Racer;
 import racingcar.separator.Extractor;
 
@@ -28,11 +29,13 @@ public class UI {
         return times;
     }
 
-    public static void showProgress(Racer racer) {
-        System.out.print(racer.getName() + " : ");
-
-        for(int i = 0; i<racer.getPosition(); i++){
-            System.out.print("-");
+    public static void showProgress(List<Racer> racers) {
+        for(Racer racer : racers) {
+            System.out.print(racer.getName() + " : ");
+            for(int i = 0; i<racer.getPosition(); i++){
+                System.out.print("-");
+            }
+            System.out.println();
         }
 
         System.out.println();

@@ -26,7 +26,7 @@ public class Race {
 
         while(lap < times) {
             run();
-            progress();
+            UI.showProgress(racers);
             lap++;
         }
 
@@ -40,12 +40,6 @@ public class Race {
             if(racer.getPosition() > bestRecord) {
                 bestRecord = racer.getPosition();
             }
-        }
-    }
-
-    public void progress(){
-        for(Racer racer : racers) {
-            UI.showProgress(racer);
         }
     }
 
