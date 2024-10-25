@@ -8,7 +8,7 @@ import racingcar.view.ProgressView;
 
 public class RacingCarApplication {
     public static void run() {
-
+        initialize().start();
     }
 
     private static RacingCarController initialize() {

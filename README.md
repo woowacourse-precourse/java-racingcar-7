@@ -10,7 +10,7 @@
 
 - [x]  InputView, ProgressView, OutputView, Cars 객체를 생성한다.
 - [x]  생성한 객체를 주입하여 RacingCarController 객체를 생성한다.
-- [ ]  초간단 자동차 경주 게임을 시작한다.
+- [x]  초간단 자동차 경주 게임을 시작한다.
 
 ### **View**
 
