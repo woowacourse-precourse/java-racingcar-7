@@ -11,6 +11,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class MainController {
+    private final static String CAR_NAME_SPLIT_REGEX = ",";
     private final MoveRule moveRule;
 
     private MainController(final MoveRule moveRule) {
@@ -23,7 +24,7 @@ public class MainController {
 
     public void run() {
         final String carNameInput = InputView.readCarNameInput();
-        final List<String> carStrings = convertToStrings(carNameInput);
+        final List<String> carStrings = splitCarNameInput(carNameInput);
         final List<Car> cars = convertToCars(carStrings);
         final Racing racing = Racing.create(cars);
 
@@ -34,8 +35,8 @@ public class MainController {
         displayWinners(racing);
     }
 
-    private List<String> convertToStrings(final String carNameInput) {
-        return Arrays.stream(carNameInput.split(","))
+    private List<String> splitCarNameInput(final String carNameInput) {
+        return Arrays.stream(carNameInput.split(CAR_NAME_SPLIT_REGEX))
                 .map(String::trim)
                 .toList();
     }
