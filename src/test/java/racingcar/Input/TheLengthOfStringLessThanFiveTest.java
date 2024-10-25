@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 import racingcar.service.InputService;
-import racingcar.view.InputView;
 
 public class TheLengthOfStringLessThanFiveTest extends NsTest {
 

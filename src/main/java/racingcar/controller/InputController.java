@@ -11,7 +11,7 @@ public class InputController {
     }
 
     public static void run() {
-        InputView.getUserInput();
+        InputView.getStringInput();
 
     }
 }
