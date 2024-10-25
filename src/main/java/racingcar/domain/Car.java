@@ -3,10 +3,14 @@ package racingcar.domain;
 public class Car {
 
     private final CarName name;
-    private final Position position;
+    private final CarPosition carPosition;
 
-    public Car(CarName name, Position position) {
+    public Car(CarName name, CarPosition carPosition) {
         this.name = name;
-        this.position = position;
+        this.carPosition = carPosition;
+    }
+
+    public void move() {
+        carPosition.increasePosition();
     }
 }
