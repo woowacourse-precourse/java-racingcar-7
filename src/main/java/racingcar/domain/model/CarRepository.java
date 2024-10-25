@@ -16,8 +16,8 @@ public class CarRepository {
     public Car save(Car car) {
         try {
             return storedCars.put(car.getName(), car);
-        } catch (IllegalArgumentException e) {
-            throw new DuplicateNameException(DUPLICATE_NAME);
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException(DUPLICATE_NAME);
         }
     }
 
@@ -26,7 +26,7 @@ public class CarRepository {
         try {
             saveAllCars(carsToAdd);
         } catch (IllegalStateException e) {
-            throw new DuplicateNameException(DUPLICATE_NAME);
+            throw new IllegalArgumentException(DUPLICATE_NAME);
         }
     }
 

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.model.Car;
 import racingcar.domain.model.CarRepository;
-import racingcar.domain.model.DuplicateNameException;
 import racingcar.domain.model.value.Name;
 
 import java.util.List;
@@ -44,7 +43,7 @@ class CarRepositoryTest {
 
         // when, then
         Assertions.assertThatThrownBy(() -> carRepository.saveAll(cars))
-                .isInstanceOf(DuplicateNameException.class);
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 }
