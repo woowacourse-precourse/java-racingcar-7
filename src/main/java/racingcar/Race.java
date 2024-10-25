@@ -31,4 +31,15 @@ public class Race {
             }
         }
     }
+
+    public void getWinnerList() {
+        StringBuilder winnerNames = new StringBuilder();
+        for (int i = 0; i < winnerList.size(); i++) {
+            winnerNames.append(winnerList.get(i).getName());
+            winnerNames.append(", ");
+        }
+        winnerNames.deleteCharAt(winnerNames.length() - 2);
+        System.out.printf("최종 우승자 : ");
+        System.out.println(winnerNames);
+    }
 }
