@@ -2,8 +2,8 @@ package racingcar.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class NumberTest {
@@ -26,38 +26,21 @@ class NumberTest {
                 .hasMessage("정수만 입력하세요.");
     }
 
-    @DisplayName("시도 횟수로 null을 입력한 경우")
-    @Test
-    void 시도횟수_null_입력() {
-        Assertions.assertThatThrownBy(() -> new Number(null))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도 횟수를 입력하세요.");
-    }
-
-    @DisplayName("시도 횟수로 공백을 입력한 경우")
+    @DisplayName("시도 횟수로 null 또는 공백 입력한 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "  "})
-    void 시도횟수_공백_입력(String input) {
+    @NullAndEmptySource
+    void 시도횟수_null_입력(String input) {
         Assertions.assertThatThrownBy(() -> new Number(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수를 입력하세요.");
     }
 
-    @DisplayName("시도 횟수로 0을 입력한 경우")
-    @Test
-    void 시도횟수_0_입력() {
-        Assertions.assertThatThrownBy(() -> new Number("0"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("양수만 입력하세요.");
-    }
-
-    @DisplayName("시도 횟수로 음수를 입력한 경우")
+    @DisplayName("시도 횟수로 0 또는 음수 입력한 경우")
     @ParameterizedTest
-    @ValueSource(strings = {"-1", "-10", "-340"})
-    void 시도횟수_음수_입력(String input) {
+    @ValueSource(strings = {"0", "-1", "-10", "-340"})
+    void 시도횟수_0_이하_입력(String input) {
         Assertions.assertThatThrownBy(() -> new Number(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수만 입력하세요.");
     }
-
 }

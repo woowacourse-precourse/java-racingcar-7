@@ -3,6 +3,7 @@ package racingcar.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class NameTest {
@@ -24,10 +25,10 @@ class NameTest {
                 .hasMessage("이름의 길이는 5자 이하여야 합니다.");
     }
 
-    @DisplayName("이름 공백 입력")
+    @DisplayName("이름 공백 또는 null 입력")
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void 이름_공백_입력(String name) {
+    @NullAndEmptySource
+    void 이름_공백_null_입력(String name) {
         Assertions.assertThatThrownBy(() -> new Name(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 공백일 수 없습니다.");
