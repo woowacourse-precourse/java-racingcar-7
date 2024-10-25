@@ -1,9 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Console;
-
-import static racingcar.message.Message.INPUT_CAR_NAMES_MESSAGE;
-import static racingcar.message.Message.INPUT_RACE_ROUNDS_MESSAGE;
+import racingcar.message.InputMessage;
 
 public class OriginInput {
     private String carNames;
@@ -20,12 +18,12 @@ public class OriginInput {
     }
 
     public void inputCarNames() {
-        System.out.println(INPUT_CAR_NAMES_MESSAGE);
+        System.out.println(InputMessage.CAR_NAMES.getMessage());
         carNames = Console.readLine();
     }
 
     public void inputRaceRounds() {
-        System.out.println(INPUT_RACE_ROUNDS_MESSAGE);
+        System.out.println(InputMessage.RACE_ROUNDS.getMessage());
         raceRounds = Console.readLine();
     }
 
