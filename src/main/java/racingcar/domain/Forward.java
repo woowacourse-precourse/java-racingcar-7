@@ -30,7 +30,7 @@ public class Forward {
         }
 
         private static void validateNumeric(String number) {
-            if (!number.matches("-?\\d+")) {
+            if (!number.matches("[0-9]")) {
                 throw new IllegalArgumentException(FORWARD_COUNT_MUST_BE_NUMERIC.getMessage());
             }
         }
