@@ -8,4 +8,13 @@ public record RaceRecord(List<LapRecord> lapRecords) {
         lapRecords = List.copyOf(lapRecords);
     }
 
+    public Winners judge() {
+        LapRecord lastLapRecord = getLastLapRecord();
+        return lastLapRecord.determineFirstPlace();
+    }
+
+    private LapRecord getLastLapRecord() {
+        return lapRecords.getLast();
+    }
+
 }
