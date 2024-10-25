@@ -4,21 +4,21 @@
 
 ## Racingcar (Controller)
 
-- [ ] application()
+- [x] application()
 
-  racingCar()을 불러오는 함수
+  run()을 불러오는 함수
 
--[ ] racingCar()
+-[x] run()
 
   자동차 경주를 시작하는 함수
 
 ## Service
 
--[ ] inputCarNames()
+-[x] inputCars()
 
   자동차 이름들을 입력받는다.
 
--[ ] inputAttempt()
+-[x] inputAttempt()
 
   시도할 횟수를 입력받는다.
 
