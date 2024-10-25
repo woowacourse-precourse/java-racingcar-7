@@ -11,47 +11,35 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
-        String inputCarNames = Console.readLine();
+        printCarNamePrompt();
+        String inputCarNames = readInput();
         String[] carNames = validateCarNames(inputCarNames);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-
-        String inputCount = Console.readLine();
+        printCountPrompt();
+        String inputCount = readInput();
         int count = validateCount(inputCount);
 
-        Map<String, StringBuilder> result = new HashMap<>();
-        for(String carName : carNames) {
-            result.put(carName, new StringBuilder());
-        }
+        printResultPrompt();
+        Map<String, StringBuilder> result = initResult(carNames);
 
-        System.out.println();
-        System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
-            for(String carName : carNames) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber >= 4) {
-                    result.put(carName, result.get(carName).append("-"));
-                }
-            }
-            for (String carName : carNames) {
-                System.out.println(carName + " : " + result.get(carName));
-            }
+            moveCarsIfQualified(result, carNames);
+            printStatus(result, carNames);
             System.out.println();
         }
 
-        int maxMoveCount = result.values().stream()
-                .mapToInt(StringBuilder::length)
-                .max()
-                .orElse(0);
+        int maxMoveCount = getMaxMoveCount(result);
+        List<String> winners = getWinners(result, maxMoveCount);
 
-        List<String> winners = result.entrySet().stream()
-                .filter(entry -> entry.getValue().length() == maxMoveCount)
-                .map(Map.Entry::getKey)
-                .toList();
+        printWinners(winners);
+    }
 
-        System.out.print("최종 우승자 : " + String.join(", ", winners));
+    public static void printCarNamePrompt() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    }
+
+    public static String readInput() {
+        return Console.readLine();
     }
 
     public static String[] validateCarNames(String inputCarNames) {
@@ -62,6 +50,7 @@ public class Application {
         if (inputCarNames.endsWith(",")) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상이어야 합니다.");
         }
+        // 여기서부터 분리해야 하나? 위에는 input, 밑에는 각 이름별 유효성 검증인데
         String[] carNames = inputCarNames.split(",");
         if (carNames.length > 100) {
             throw new IllegalArgumentException("자동차 이름은 100개 이하로 입력되어야 합니다.");
@@ -87,6 +76,10 @@ public class Application {
         return carNames;
     }
 
+    public static void printCountPrompt() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
     public static int validateCount(String inputCount) {
         int count;
         try {
@@ -101,6 +94,52 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 100이하여야 합니다.");
         }
         return count;
+    }
+
+    public static void printResultPrompt() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    public static Map<String, StringBuilder> initResult(String[] carNames) {
+        Map<String, StringBuilder> result = new HashMap<>();
+        for(String carName : carNames) {
+            result.put(carName, new StringBuilder());
+        }
+        return result;
+    }
+
+    public static void moveCarsIfQualified(Map<String, StringBuilder> result, String[] carNames) {
+        for(String carName : carNames) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                result.put(carName, result.get(carName).append("-"));
+            }
+        }
+    }
+
+    public static void printStatus(Map<String, StringBuilder> result, String[] carNames) {
+        for (String carName : carNames) {
+            System.out.println(carName + " : " + result.get(carName));
+        }
+    }
+
+    public static int getMaxMoveCount(Map<String, StringBuilder> result) {
+        return result.values().stream()
+                .mapToInt(StringBuilder::length)
+                .max()
+                .orElse(0);
+    }
+
+    public static List<String> getWinners(Map<String, StringBuilder> result, int maxMoveCount) {
+        return result.entrySet().stream()
+                .filter(entry -> entry.getValue().length() == maxMoveCount)
+                .map(Map.Entry::getKey)
+                .toList();
+    }
+
+    public static void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 
     private static boolean isAsciiCode(String carName) {
