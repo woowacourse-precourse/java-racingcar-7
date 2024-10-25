@@ -14,6 +14,7 @@ public class Simulator {
     private final int numberOfCars;
     private final int[] racingBoard;
     private final Map<Integer, Car> carMap = new HashMap<>();
+    private final ResultPrinter resultPrinter = new ResultPrinter();
 
     public Simulator(int numberOfAttempts, List<String> namesOfCars) {
         this.numberOfAttempts = numberOfAttempts;
@@ -61,10 +62,11 @@ public class Simulator {
             for (int carId = 0; carId < this.numberOfCars; carId++) {
                 Car currentOrderOfCar = carMap.get(carId);
                 this.moveForwardByCondition(currentOrderOfCar);
+                resultPrinter.printResultOfForward(this.carMap, this.racingBoard);
             }
         }
         List<Car> winners = this.findWinners();
-
+        resultPrinter.printResultOfWinners(winners);
     }
 
 }
