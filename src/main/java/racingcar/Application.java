@@ -13,16 +13,17 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attemptCountString = Console.readLine();
+        int attemptCount = Integer.parseInt(attemptCountString);
 
-        List<Car> carList = splitCarNames(carNames);
+        List<Car> carList = splitCarNames(carNames, attemptCount);
     }
 
-    public static List<Car> splitCarNames(String carNames) {
+    public static List<Car> splitCarNames(String carNames, int attemptCount) {
         String[] carNamesArray = carNames.split(",");
         List<Car> carNameList = new ArrayList<>();
 
         for (String carName : carNamesArray) {
-            carNameList.add(new Car(carName));
+            carNameList.add(new Car(carName, attemptCount));
         }
 
         return carNameList;
