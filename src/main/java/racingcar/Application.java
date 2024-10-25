@@ -16,6 +16,14 @@ public class Application {
         int attemptCount = Integer.parseInt(attemptCountString);
 
         List<Car> carList = splitCarNames(carNames, attemptCount);
+
+        Race race = new Race();
+
+        race.racing(carList, attemptCount);
+        
+        race.findWinner(carList);
+
+        race.getWinnerList();
     }
 
     public static List<Car> splitCarNames(String carNames, int attemptCount) {
