@@ -1,0 +1,70 @@
+package racingcar;
+
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Race {
+
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final CarFactory carFactory;
+
+    public Race() {
+        this.inputView = new InputView();
+        this.carFactory = new CarFactory();
+        this.outputView = new OutputView();
+    }
+
+    public void startRace() {
+        List<String> carNames = inputView.getCars();
+        int attemptNum = inputView.getAttemptNum();
+        List<Car> cars = carFactory.createCars(carNames);
+
+        outputView.startOutput();
+
+        for (int i = 0; i < attemptNum; i++) {
+            for (Car car : cars) {
+                car.occurRandomNum();
+                checkAdvence(car);
+                outputView.racingProgress(car);
+            }
+            outputView.blankLine();
+        }
+
+        racingResult(cars);
+
+    }
+
+    private boolean checkAdvence(Car car) {
+        if(car.randomNum >= 4) {
+            car.countAdvence ++;
+            return true;
+        }
+        return false;
+    }
+
+    private void racingResult(List<Car> cars) {
+        int maxAdvenceNum = 0;
+        List<String> winners = new ArrayList<>();
+        // 최대 전진횟수 판단
+        for (Car car : cars) {
+            if (car.getCountAdvence() > maxAdvenceNum) {
+                maxAdvenceNum = car.getCountAdvence();
+            }
+        }
+        // 우승자 판단
+        for (Car car : cars) {
+            if (car.getCountAdvence() == maxAdvenceNum) {
+                winners.add(car.getName());
+            }
+        }
+
+        outputView.racingResult(winners);
+
+    }
+
+
+}

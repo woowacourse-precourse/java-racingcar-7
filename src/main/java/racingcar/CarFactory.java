@@ -9,7 +9,7 @@ public class CarFactory {
         List<Car> cars = new ArrayList<>();
 
         for (String name : carNames) {
-            cars.add(new Car(name,0));
+            cars.add(new Car(name,0,0));
         }
 
         return cars;
