@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Controller {
@@ -9,7 +10,9 @@ public class Controller {
     public void run() {
         String[] listUser = view.getUserinfo();
         String round = view.getRoundinfo();
-        List<String> listWinners = model.makeRacingHashmap(listUser, round);
+        HashMap<String, String> initRacingHashmap = model.initRacing(listUser);
+        HashMap<String, String> RacingHashmap = model.Racing(initRacingHashmap, round);
+        List listWinners = model.findWinner(RacingHashmap);
         view.displayResult(listWinners);
     }
 }
