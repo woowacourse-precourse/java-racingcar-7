@@ -1,16 +1,16 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Race;
+import racingcar.model.MoveNumber;
 
 public class FunctionWithMVCTest {
     @ParameterizedTest
@@ -51,7 +51,7 @@ public class FunctionWithMVCTest {
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1"})
     void 이동_횟수가_1이하면_예외(String testNumber) {
-        assertThatThrownBy(() -> new Race(testNumber))
+        assertThatThrownBy(() -> new MoveNumber(testNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1회 이상의 이동 횟수를 입력해주세요.");
     }
@@ -59,28 +59,46 @@ public class FunctionWithMVCTest {
     @ParameterizedTest
     @ValueSource(strings = {"a1", "8.8", "1.0"})
     void 이동_횟수가_정수가_아니면_예외(String testNumber) {
-        assertThatThrownBy(() -> new Race(testNumber))
+        assertThatThrownBy(() -> new MoveNumber(testNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수로 된 이동 횟수를 입력해주세요.");
     }
 
     @Test
     void 차_전진_또는_정지() {
-        String testName1 = "pobi";
-        String testName2 = "holy";
+        String testName = "pobi,holy";
         int testRandomNumberForPobi = 4;
         int testRandomNumberForHoly = 0;
         Cars cars = new Cars();
-        cars.registerCars(testName1 + "," + testName2);
+        cars.registerCars(testName);
 
-
-        camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
+        assertRandomNumberInRangeTest(
                 () -> {
                     cars.moveCars();
                     assertThat(cars.getCars().get(0).getMoveDistance()).isEqualTo(1);
                     assertThat(cars.getCars().get(1).getMoveDistance()).isEqualTo(0);
                 },
                 testRandomNumberForPobi, testRandomNumberForHoly
+        );
+    }
+
+    @Test
+    void 우승자_1대_반환() {
+        String testWinnerName = "pobi";
+        String testLoserName = "holy";
+        int testRandomNumberForWinner = 4;
+        int testRandomNumberForLoser = 0;
+        Cars cars = new Cars();
+        cars.registerCars(testWinnerName + "," + testLoserName);
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.moveCars();
+                    List<String> winnerNames = cars.findWinnerNames();
+                    assertThat(winnerNames.size()).isEqualTo(1);
+                    assertThat(winnerNames.get(0)).isEqualTo(testWinnerName);
+                },
+                testRandomNumberForWinner, testRandomNumberForLoser
         );
     }
 

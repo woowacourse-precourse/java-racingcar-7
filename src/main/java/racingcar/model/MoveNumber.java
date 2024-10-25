@@ -1,9 +1,9 @@
 package racingcar.model;
 
-public class Race {
-    private int moveNumber;
+public class MoveNumber {
+    private final int moveNumber;
 
-    public Race(String moveNumber) {
+    public MoveNumber(String moveNumber) {
         this.moveNumber = transferNumberStringToInt(moveNumber);
     }
 

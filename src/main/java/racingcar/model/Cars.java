@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -30,14 +31,6 @@ public class Cars {
         }
     }
 
-    private List<String> getCarNames() {
-        List<String> carNames = new ArrayList<>();
-        for (Car car : cars) {
-            carNames.add(car.getName());
-        }
-        return carNames;
-    }
-
     public void moveCars() {
         for (Car car : cars) {
             car.move();
@@ -46,5 +39,36 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<String> findWinnerNames() {
+        int maxMoveDistance = Collections.max(getCarMoveDistances());
+        return getCarNamesByMoveDistance(maxMoveDistance);
+    }
+
+    private List<String> getCarNamesByMoveDistance(int maxMoveDistance) {
+        List<String> carNames = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getMoveDistance() == maxMoveDistance) {
+                carNames.add(car.getName());
+            }
+        }
+        return carNames;
+    }
+
+    private List<String> getCarNames() {
+        List<String> carNames = new ArrayList<>();
+        for (Car car : cars) {
+            carNames.add(car.getName());
+        }
+        return carNames;
+    }
+
+    private List<Integer> getCarMoveDistances() {
+        List<Integer> carMoveDistances = new ArrayList<>();
+        for (Car car : cars) {
+            carMoveDistances.add(car.getMoveDistance());
+        }
+        return carMoveDistances;
     }
 }

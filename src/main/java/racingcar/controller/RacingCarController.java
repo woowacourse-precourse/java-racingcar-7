@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
-import racingcar.model.Race;
+import racingcar.model.MoveNumber;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,14 +19,14 @@ public class RacingCarController {
         Cars cars = new Cars();
         cars.registerCars(carNamesInput);
 
-        String moveNumberInput = inputView.inputMoveNumber();
-        Race race = new Race(moveNumberInput);
+        MoveNumber moveNumber = new MoveNumber(inputView.inputMoveNumber());
 
         outputView.outputRaceStartLine();
-        for (int i = 0; i < race.getMoveNumber(); i++) {
+        for (int i = 0; i < moveNumber.getMoveNumber(); i++) {
             cars.moveCars();
             outputView.outputRaceIntermediateReuslt(cars.getCars());
         }
+        outputView.outputRaceFinalResult(cars.findWinnerNames());
 
     }
 }
