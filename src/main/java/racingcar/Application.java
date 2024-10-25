@@ -2,14 +2,18 @@ package racingcar;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import service.Input;
+import service.Race;
 
 public class Application {
 
-    private final RacingCar racingCar;
+    private final Input input;
+    private final Race race;
 
     public Application() {
 
-        this.racingCar = new RacingCar();
+        this.input = new Input();
+        this.race = new Race();
     }
 
     public static void main(String[] args) {
@@ -20,14 +24,9 @@ public class Application {
 
     public void run() {
 
-        String cars;
-        String attempts;
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        cars = Console.readLine();
+        String cars = input.inputCars();
+        String attempt = input.inputAttempt();
 
-        System.out.println("시도할 횟수는 몇회인가요?");
-        attempts = Console.readLine();
 
-        racingCar.racingCars(cars, attempts);
     }
 }
