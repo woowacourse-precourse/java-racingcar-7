@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
-public class TheLengthOfStringLessThanFive extends NsTest {
+public class TheLengthOfStringLessThanFiveTest extends NsTest {
 
     @Test
     public void 이름_길이가_5자_이하이다1() {
