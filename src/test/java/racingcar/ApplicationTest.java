@@ -10,13 +10,15 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.Utils.convertAttempts;
-import static racingcar.Utils.convertCarNames;
+import static racingcar.ReadyToRace.convertAttempts;
+import static racingcar.ReadyToRace.convertCarNames;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
     private static final CarRacing carRacing = new CarRacing();
+    private static final ReadyToRace readyToRace = new ReadyToRace();
+    private static final FinishRace finishRace = new FinishRace();
 
     @Test
     void 기능_테스트() {
@@ -72,7 +74,7 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Car> testCars = carRacing.createCarObjects(testNames);
+        ArrayList<Car> testCars = readyToRace.createCarObjects(testNames);
 
         assertSimpleTest(() -> {
             for (int i = 0; i < testCars.size(); i++) {
@@ -129,12 +131,12 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Car> testCars = carRacing.createCarObjects(testNames);
+        ArrayList<Car> testCars = readyToRace.createCarObjects(testNames);
         testCars.get(0).movedAmount = 2;
         testCars.get(1).movedAmount = 3;
         testCars.get(2).movedAmount = 3;
 
-        assertThat(carRacing.determineWinner(testCars)).contains("woni", "jun");
+        assertThat(finishRace.determineWinner(testCars)).contains("woni", "jun");
     }
 
     @Test
