@@ -9,7 +9,9 @@ public class Application {
         Car car = new Car();
         car.inputCar();
         car.inputNum();
+        car.check();
         // 결과 도출
+        car.process();
         car.result();
     }
 }
@@ -98,7 +100,7 @@ class Car {
             throw new IllegalArgumentException("IllegalArgumentException");
         }
     }
-    public void result(){
+    public void process(){
         System.out.println("실행 결과");
         for (int i = 0; i < time; i++){
             giveRandomNumbers();
@@ -106,6 +108,9 @@ class Car {
             printAtTime();
             System.out.println();
         }
+    }
+    public void result(){
+        findWinnerNumber();
         System.out.println("최종 우승자 : " + findWinner());
     }
 }
