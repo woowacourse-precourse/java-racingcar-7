@@ -3,6 +3,7 @@ package racingcar.model;
 import racingcar.exception.CarException;
 
 public class Car {
+    private static final int MINIMUM_MOVE_NUMBER = 4;
     private final String name;
     private int position;
 
@@ -20,7 +21,10 @@ public class Car {
         return position;
     }
 
-    public void move(){
+    public void move(int seed) {
+        if (seed < MINIMUM_MOVE_NUMBER) {
+            return;
+        }
         position++;
     }
 

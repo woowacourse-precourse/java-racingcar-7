@@ -3,7 +3,6 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.CarException;
@@ -64,10 +63,11 @@ class CarTest {
     void moveTest() {
         //given
         final String carName = "car";
+        final int seed = 4;
         final Car car = new Car(carName);
 
         //when
-        car.move();
+        car.move(seed);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
