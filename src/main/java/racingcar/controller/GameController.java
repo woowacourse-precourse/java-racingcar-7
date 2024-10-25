@@ -1,11 +1,8 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
-import racingcar.model.ExecutionNumber;
 import racingcar.service.DataTransformService;
 import racingcar.service.GameService;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
 import racingcar.service.VerificationService;
 
 import java.util.List;
@@ -33,7 +30,7 @@ public class GameController {
 
     public int registerExecutionNumber(String executionNumberInput) {
         verificationService.isNumber(executionNumberInput);
-        verificationService.isValidRange(executionNumberInput);
+        verificationService.isValidExecutionRange(executionNumberInput);
 
         return dataTransformService.parseToInt(executionNumberInput);
     }

@@ -46,7 +46,7 @@ public class RacingGameTest extends NsTest {
     class CarRegistExceptionTests {
 
         @Test
-        void 길이_예외_테스트() {
+        void 자동차_이름_길이_예외테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                             .isInstanceOf(InvalidCarNameLengthException.class)
@@ -54,7 +54,7 @@ public class RacingGameTest extends NsTest {
         }
 
         @Test
-        void 특수문자_예외_테스트() {
+        void 특수문자_예외테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("-pobi,java", "1"))
                             .isInstanceOf(InvalidCharacterException.class)
@@ -62,7 +62,7 @@ public class RacingGameTest extends NsTest {
         }
 
         @Test
-        void 빈_입력값_예외_테스트() {
+        void 빈_입력값_예외테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("", "1"))
                             .isInstanceOf(EmptyInputException.class)
@@ -75,7 +75,7 @@ public class RacingGameTest extends NsTest {
     class ExecutionNumberRegistExceptionTests {
 
         @Test
-        void 빈_입력값_예외_테스트() {
+        void 빈_입력값_예외테스트() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc", "\n"))
                             .isInstanceOf(EmptyInputException.class)
@@ -84,7 +84,7 @@ public class RacingGameTest extends NsTest {
 
         @Test
         @DisplayName("0 범위 예외 테스트")
-        void 범위_예외_테스트1() {
+        void 범위_예외테스트1() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc", "0"))
                             .isInstanceOf(NumberRangeException.class)
@@ -93,7 +93,7 @@ public class RacingGameTest extends NsTest {
 
         @Test
         @DisplayName("최대 범위 예외 테스트")
-        void 범위_예외_테스트2() {
+        void 범위_예외테스트2() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc", "1001"))
                             .isInstanceOf(NumberRangeException.class)

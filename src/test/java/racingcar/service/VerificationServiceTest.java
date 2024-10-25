@@ -79,10 +79,8 @@ class VerificationServiceTest {
     }
 
     @Nested
-    @DisplayName("입력값에 특수문자있는지 확인하는 테스트")
+    @DisplayName("입력값 특수문자 여부 테스트")
     class ContainsInvalidCharacterTests {
-
-        // TODO : String 길이 최소치, 최대치를 정해서 테스트
 
         @Test
         void 숫자_포함_테스트() {
@@ -99,10 +97,8 @@ class VerificationServiceTest {
 
 
     @Nested
-    @DisplayName("숫자인지 확인하는 메소드 테스트")
+    @DisplayName("입력값에 숫자 여부 테스트")
     class IsNumberTests {
-
-        // TODO : 숫자 최대치 최소치 테스트
 
         @Test
         void 숫자_체크_테스트() {
@@ -114,6 +110,29 @@ class VerificationServiceTest {
         void 숫자외_예외테스트() {
             String input = "^abc";
             assertThrows(NotNumberException.class, () -> verificationService.isNumber(input));
+        }
+    }
+
+    @Nested
+    @DisplayName("시도 횟수 허용 범위 테스트")
+    class IsValidExecutionRangeTests {
+
+        @Test
+        void 최소_범위_예외테스트() {
+            String input = "0";
+            assertThrows(NumberRangeException.class, () -> verificationService.isValidExecutionRange(input));
+        }
+
+        @Test
+        void 최대_범위_예외테스트() {
+            String input = "1001";
+            assertThrows(NumberRangeException.class, () -> verificationService.isValidExecutionRange(input));
+        }
+
+        @Test
+        void 최대_범위_테스트() {
+            String input = "1000";
+            assertTrue(verificationService.isValidExecutionRange(input));
         }
     }
 }
