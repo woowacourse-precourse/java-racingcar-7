@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import racingcar.model.GameTryCount;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCarList;
@@ -13,16 +12,20 @@ import racingcar.view.OutputView;
 
 public class RacingGameController {
 
-    final InputView inputView = new InputView();
-    final RacingCarName racingCarName = new RacingCarName();
-    final RacingCarList racingCarList = new RacingCarList();
-    final GameTryCount gameTryCount = new GameTryCount();
-    final RandomNumber randomNumber = new RandomNumber();
-    final Winner winner = new Winner();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final RacingCarList racingCarList = new RacingCarList();
+    private final Winner winner = new Winner();
+
+    public RacingGameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public void initCarName() {
         String inputCarName = inputView.inputCarName();
-        racingCarName.setList(inputView.splitCarName(inputCarName));
+        RacingCarName racingCarName = new RacingCarName(inputView.splitCarName(inputCarName));
+
         for (String name : racingCarName.getList()) {
             racingCarList.add(new RacingCar(name));
         }
@@ -30,12 +33,14 @@ public class RacingGameController {
 
     public void initTryCount() {
         String inputTryCount = inputView.inputTryCount();
-        gameTryCount.set(inputView.convertStringToInt(inputTryCount));
+        new GameTryCount(inputView.convertStringToInt(inputTryCount));
     }
 
     public void printRoundResult() {
         final RacingCarMove racingCarMove = new RacingCarMove();
-        for (int i = 0; i < gameTryCount.get(); i++) {
+        final RandomNumber randomNumber = new RandomNumber();
+
+        for (int i = 0; i < GameTryCount.get(); i++) {
             printCarPosition(racingCarMove, randomNumber);
             System.out.println();
         }
@@ -49,15 +54,16 @@ public class RacingGameController {
     private void printCarPosition(RacingCarMove racingCarMove, RandomNumber randomNumber) {
         for (RacingCar car : racingCarList.get()) {
             car.move(racingCarMove, randomNumber);
-            OutputView.printRoundResult(car);
+            outputView.printRoundResult(car);
         }
     }
 
     private void endGame() {
-        OutputView.printInitResult();
+        outputView.printInitResult();
         printRoundResult();
+
         String winners = winner.getList(racingCarList.get(), winner.maxPosition(racingCarList.get()));
-        OutputView.printEndResult(winners);
+        outputView.printEndResult(winners);
     }
 
     public void run() {

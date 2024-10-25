@@ -43,6 +43,9 @@
 - Controller 의 initTryCount 기능 분리
 - 컨트롤러에서 문자열 분리하던 기능 Winner 에서 처리하도록 수정
 - 컨트롤러의 전역 변수 제거 후 GameTryCount 에서 처리하도록 수정
+- RacingCarName 클래스에서 입력을 받는 기능 분리, 입력받은 이름 관리하도록 수정
+- 컨트롤러의 전역 변수 제거 후 RacingCarList 에서 처리하도록 수정
+- 컨트롤러의 GameTryCount 생성자 제거
 
 ## 수정할 부분
 - 주석 제거

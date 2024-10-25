@@ -6,8 +6,8 @@ public class RacingCarName {
 
     private String[] list;
 
-    public void setList(final String[] carNames) {
-        validateDuplicateNames(carNames);
+
+    public RacingCarName(final String[] carNames) {
         this.list = carNames;
     }
 

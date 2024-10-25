@@ -2,13 +2,13 @@ package racingcar.model;
 
 public class GameTryCount {
 
-    private int tryCount;
+    private static int tryCount;
 
-    public void set(final int tryCount) {
+    public GameTryCount(int tryCount) {
         this.tryCount = tryCount;
     }
 
-    public int get() {
+    public static int get() {
         return tryCount;
     }
 }
