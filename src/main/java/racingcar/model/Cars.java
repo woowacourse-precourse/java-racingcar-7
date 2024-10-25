@@ -27,11 +27,11 @@ public class Cars {
         int maxDistance = 0;
         List<String> winners = new ArrayList<>();
         findMaxDistance(maxDistance);
-        createWinners(maxDistance, winners);
+        findWinners(maxDistance, winners);
         return winners;
     }
 
-    private void createWinners(int maxDistance, List<String> winners) {
+    private void findWinners(int maxDistance, List<String> winners) {
         for (Car car : cars) {
             if (maxDistance == car.getDistance()) {
                 winners.add(car.getName());
