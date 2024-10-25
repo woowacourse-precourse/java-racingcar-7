@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.domain.CarManager;
 import racingcar.domain.Racing;
 
@@ -20,5 +21,13 @@ public class RacingService {
         List<String> split = List.of(userInput.split(INPUT_DELIMITER));
         carManager.initCars(split);
     }
+
+    public List<Car> startRacing(int randomNumber) {
+        for (Car car : carManager.getCars()) {
+            car.move(randomNumber);
+        }
+        return carManager.getCars();
+    }
+
 
 }
