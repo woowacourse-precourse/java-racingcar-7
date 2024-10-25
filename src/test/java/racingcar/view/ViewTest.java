@@ -28,7 +28,24 @@ class ViewTest {
   }
 
   @Test
-  @DisplayName("사용자 입력을 정상적으로 받는다.")
+  @DisplayName("시도 횟수 입력 안내 메시지를 출력한다.")
+  void 시도_횟수_입력_안내_메시지_출력() {
+    // Given
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(outContent));
+
+    // When
+    OutPutView.printGameCountPrompt();
+
+    // Then
+    String expectedMessage = "시도할 횟수는 몇 회인가요?\n";
+    assertEquals(expectedMessage, outContent.toString());
+
+    System.setOut(System.out);
+  }
+
+  @Test
+  @DisplayName("자동차 입력을 정상적으로 받는다.")
   void 사용자_입력_정상_수신() {
     // Given
     String simulatedInput = "pobi, jun, car1\n";

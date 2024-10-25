@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutPutView;
 
@@ -11,7 +11,7 @@ public class Application {
     OutPutView.printCarNamePrompt();
     String input = InputView.getCarNames();
 
-    Car car = new Car(input);
-
+    Cars cars = new Cars(input);
+    OutPutView.printGameCountPrompt();
   }
 }
