@@ -3,6 +3,7 @@ package racingcar.game;
 import java.util.List;
 import racingcar.game.io.InputHandler;
 import racingcar.game.io.OutputHandler;
+import racingcar.game.model.AttemptCount;
 import racingcar.game.model.Car;
 import racingcar.game.model.RacingCars;
 
@@ -15,7 +16,7 @@ public class RacingCarGame {
         List<Car> cars = inputHandler.getCarNamesFromUser();
 
         outputHandler.showAttemptCountNavigateMessage();
-        int attemptCount = inputHandler.getAttemptCountFromUser();
+        AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();
 
         RacingCars racingCars = new RacingCars(cars);
         displayAccumulateForEachAttempt(attemptCount, racingCars);
@@ -25,10 +26,11 @@ public class RacingCarGame {
         outputHandler.showWinners(winners);
     }
 
-    private void displayAccumulateForEachAttempt(int attemptCount, RacingCars racingCars) {
-        for (int attempt = 0; attempt < attemptCount; attempt++) {
+    private void displayAccumulateForEachAttempt(AttemptCount attemptCount, RacingCars racingCars) {
+        while (attemptCount.isRemain()) {
             racingCars.race();
             outputHandler.showCurrentAccumulation(racingCars);
+            attemptCount.decrease();
         }
     }
 }

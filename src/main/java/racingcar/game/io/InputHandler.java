@@ -3,6 +3,7 @@ package racingcar.game.io;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.game.model.AttemptCount;
 import racingcar.game.model.Car;
 
 public class InputHandler {
@@ -17,10 +18,10 @@ public class InputHandler {
                 .toList();
     }
 
-    public int getAttemptCountFromUser() {
+    public AttemptCount getAttemptCountFromUser() {
         String attemptCount = Console.readLine();
 
-        return parseAsInteger(attemptCount);
+        return new AttemptCount(parseAsInteger(attemptCount));
     }
 
     private int parseAsInteger(String attemptCount) {
