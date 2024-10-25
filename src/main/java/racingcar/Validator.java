@@ -23,7 +23,7 @@ public class Validator {
 
     static void checkEmptyName(String carName) {
         if (carName.isEmpty()) {
-            throw new IllegalArgumentException("쉼표 이후에 자동차 이름이 존재하지 않습니다");
+            throw new IllegalArgumentException("쉼표 이전 또는 이후에 자동차 이름이 존재하지 않습니다");
         }
     }
 

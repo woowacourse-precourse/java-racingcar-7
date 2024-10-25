@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -36,7 +35,7 @@ class ApplicationTest extends NsTest {
     void 예외_테스트_다중쉼표() {
         assertThatThrownBy(() -> runException("pobi,,java", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("쉼표 이후에 자동차 이름이 존재하지 않습니다");
+                .hasMessage("쉼표 이전 또는 이후에 자동차 이름이 존재하지 않습니다");
     }
 
     @Test
