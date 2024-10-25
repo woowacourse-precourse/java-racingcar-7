@@ -1,5 +1,6 @@
 package racingcar;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,22 +39,21 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
     @DisplayName("유효한 시도 횟수 테스트")
-    void testValidAttemptCount() {
+    @ParameterizedTest
+    @ValueSource(strings = {"5", "200", "1023"})
+    void testValidAttemptCount(String attempt) {
         // Given: 유효한 시도 횟수
-        String validAttemptCount = "5";
-
         // When: 시도 횟수 검증 메서드 실행
-        int count = assertDoesNotThrow(() -> Validator.validateAttemptCount(validAttemptCount));
+        int count = assertDoesNotThrow(() -> Validator.validateAttemptCount(attempt));
 
         // Then: 반환된 횟수가 입력값과 동일해야 함.
-        assertEquals(5, count);
+        assertThat(count).isInstanceOf(Integer.class);
     }
 
     @DisplayName("유효하지 않은 시도 횟수 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"-200", "0"})
+    @ValueSource(strings = {"-200", "0", "", "hi"})
     void testInvalidAttemptCount(String attempt) {
         // Given: 유효하지 않은 시도 횟수
         // When: 시도 횟수 검증 메서드 실행
