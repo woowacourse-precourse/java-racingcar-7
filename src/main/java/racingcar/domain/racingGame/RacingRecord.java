@@ -2,7 +2,6 @@ package racingcar.domain.racingGame;
 
 import java.util.List;
 
-
 public class RacingRecord {
 	private final List<RacingSnapshot> snapshots;
 

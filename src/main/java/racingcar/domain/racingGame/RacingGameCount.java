@@ -19,13 +19,13 @@ public class RacingGameCount {
 	}
 
 	private void validate(String count) {
-		if(count.isBlank()){
+		if (count.isBlank()) {
 			throw new RacingGameException(RacingGameExceptionMessage.NOT_BLANK);
 		}
-		if(!Pattern.matches(NUMBER_REGEX, count)){
+		if (!Pattern.matches(NUMBER_REGEX, count)) {
 			throw new RacingGameException(RacingGameExceptionMessage.NOT_NUMBER);
 		}
-		if(Integer.parseInt(count) <= 0){
+		if (Integer.parseInt(count) <= 0) {
 			throw new RacingGameException(RacingGameExceptionMessage.OUT_OF_BOUND);
 		}
 	}

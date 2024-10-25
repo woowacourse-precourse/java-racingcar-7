@@ -25,7 +25,7 @@ public class Car {
 	}
 
 	public void processGame(int randomNumber) {
-		if (randomNumber >= ADD_SCORE_NUMBER){
+		if (randomNumber >= ADD_SCORE_NUMBER) {
 			addScore();
 		}
 	}

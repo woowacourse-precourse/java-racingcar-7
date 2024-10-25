@@ -29,7 +29,7 @@ public class Cars {
 			.toList();
 	}
 
-	public int getMaxScore(){
+	public int getMaxScore() {
 		return racingCars.stream()
 			.mapToInt(Car::getScore)
 			.max()
