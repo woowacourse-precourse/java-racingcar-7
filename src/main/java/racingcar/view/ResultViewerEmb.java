@@ -1,6 +1,6 @@
 package racingcar.view;
 
-public class OutputManagerEmb implements OutputManager {
+public class ResultViewerEmb implements ResultViewer {
     @Override
     public void output(String message){
         System.out.println(message);

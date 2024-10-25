@@ -1,6 +1,6 @@
 package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
-public class InputManagerEmb implements InputManager {
+public class InputHandlerEmb implements InputHandler {
     @Override
     public String carInput(){
         return Console.readLine();

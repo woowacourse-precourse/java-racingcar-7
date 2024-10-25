@@ -1,5 +1,5 @@
 package racingcar.view;
 
-public interface OutputManager {
+public interface ResultViewer {
     void output(String message);
 }

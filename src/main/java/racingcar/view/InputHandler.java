@@ -1,6 +1,6 @@
 package racingcar.view;
 
-public interface InputManager {
+public interface InputHandler {
     String carInput();
     String numberInput();
 }

@@ -1,10 +1,10 @@
 package racingcar;
 
-import racingcar.view.InputManager;
-import racingcar.view.InputManagerEmb;
+import racingcar.view.InputHandler;
+import racingcar.view.InputHandlerEmb;
 
 public class Application {
     public static void main(String[] args) {
-        InputManager inputManager = new InputManagerEmb();
+        InputHandler inputManager = new InputHandlerEmb();
     }
 }
