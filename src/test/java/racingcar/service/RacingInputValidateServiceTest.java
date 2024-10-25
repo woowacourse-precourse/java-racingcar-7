@@ -16,27 +16,27 @@ import org.junit.jupiter.api.Test;
 import racingcar.global.error.NameError;
 import racingcar.global.error.TryCountError;
 
-class RacingServiceTest {
+class RacingInputValidateServiceTest {
 
-    private RacingService racingService;
+    private RacingInputValidateService racingInputValidateService;
 
     @BeforeEach
     void setting() {
-        racingService = new RacingService();
+        racingInputValidateService = new RacingInputValidateService();
     }
 
     @DisplayName("자동차 이름이 콤마로 잘 분리가 되는지 확인")
     @Test
     void 자동차_이름_콤마로_분리() {
         String input = "car1,car2,car3";
-        assertEquals(racingService.splitCarName(input), List.of("car1", "car2", "car3"));
+        assertEquals(racingInputValidateService.splitCarName(input), List.of("car1", "car2", "car3"));
     }
 
     @DisplayName("자동차 이름에 빈칸이 들어있으면 오류 발생")
     @Test
     void 자동차_이름_빈칸_오류() {
 
-        assertThatThrownBy(() -> racingService.validateCarName(List.of("car1", "")))
+        assertThatThrownBy(() -> racingInputValidateService.validateCarName(List.of("car1", "")))
                 .isInstanceOf(NameError.class)
                 .hasMessage(NAME_BLANK_EXCEPION.getErrorMsg());
     }
@@ -45,7 +45,7 @@ class RacingServiceTest {
     @Test
     void 자동차_이름_null_오류() {
 
-        assertThatThrownBy(() -> racingService.validateCarName(Arrays.asList("car1", null)))
+        assertThatThrownBy(() -> racingInputValidateService.validateCarName(Arrays.asList("car1", null)))
                 .isInstanceOf(NameError.class)
                 .hasMessage(NAME_BLANK_EXCEPION.getErrorMsg());
     }
@@ -54,7 +54,7 @@ class RacingServiceTest {
     @Test
     void 자동차_이름_길이_5_초과_오류() {
 
-        assertThatThrownBy(() -> racingService.validateCarName(List.of("car1", "racingcar")))
+        assertThatThrownBy(() -> racingInputValidateService.validateCarName(List.of("car1", "racingcar")))
                 .isInstanceOf(NameError.class)
                 .hasMessage(NAME_LENGTH_EXCEPION.getErrorMsg());
     }
@@ -64,7 +64,7 @@ class RacingServiceTest {
     void 시도횟수_양의정수() {
 
         assertDoesNotThrow(() -> {
-            racingService.validateTryCount("1");
+            racingInputValidateService.validateTryCount("1");
         });
     }
 
@@ -72,7 +72,7 @@ class RacingServiceTest {
     @Test
     void 시도횟수_0_오류() {
 
-        assertThatThrownBy(() -> racingService.validateTryCount("0"))
+        assertThatThrownBy(() -> racingInputValidateService.validateTryCount("0"))
                 .isInstanceOf(TryCountError.class)
                 .hasMessage(TRY_COUNT_EXCEPION.getErrorMsg());
     }
@@ -81,7 +81,7 @@ class RacingServiceTest {
     @Test
     void 시도횟수_음수_오류() {
 
-        assertThatThrownBy(() -> racingService.validateTryCount("-3"))
+        assertThatThrownBy(() -> racingInputValidateService.validateTryCount("-3"))
                 .isInstanceOf(TryCountError.class)
                 .hasMessage(TRY_COUNT_EXCEPION.getErrorMsg());
     }
@@ -90,7 +90,7 @@ class RacingServiceTest {
     @Test
     void 시도횟수_실수_오류() {
 
-        assertThatThrownBy(() -> racingService.validateTryCount("1.5"))
+        assertThatThrownBy(() -> racingInputValidateService.validateTryCount("1.5"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(TRY_COUNT_EXCEPION.getErrorMsg());
     }
