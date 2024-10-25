@@ -1,7 +1,9 @@
 package racingcar;
 
 public enum TextFormat {
-    RACING_TRY_RESULT("%s : ");
+    RACING_TRY_RESULT("%s : "),
+    RACING_GAME_WINNER("%s, "),
+    RACING_GAME_RESULT("최종 우승자 : %s");
 
     private final String format;
 

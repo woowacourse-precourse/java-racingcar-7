@@ -6,17 +6,16 @@ public enum TextString {
     TRY_COUNT_TEXT("시도할 횟수는 몇 회인가요?"),
     RESULT_TEXT("실행 결과"),
     RACING_POSITION_TEXT("-"),
-    NEW_LINE("\n"),
-    FINAL_WINNERS_TEXT("최종 우승자 : ");
+    NEW_LINE("\n");
 
 
-    private final String value;
+    private final String text;
 
-    TextString(String value) {
-        this.value = value;
+    TextString(String text) {
+        this.text = text;
     }
 
-    public String getValue() {
-        return value;
+    public String getText() {
+        return text;
     }
 }
