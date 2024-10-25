@@ -4,15 +4,15 @@ import java.util.List;
 import racingcar.context.Car;
 import racingcar.strategy.MovementStrategy;
 
-public class CreateCarGroup {
+public class CarGroup {
 
     private final List<Car> carGroup;
 
-    public CreateCarGroup(List<String> carNameGroup) {
-        this.carGroup = changeCarNameToRacingCar(carNameGroup);
+    public CarGroup(List<String> carNameGroup) {
+        this.carGroup = createCarNameToRacingCar(carNameGroup);
     }
 
-    private List<Car> changeCarNameToRacingCar(List<String> carNameGroup) {
+    private List<Car> createCarNameToRacingCar(List<String> carNameGroup) {
         return carNameGroup
                 .stream()
                 .map(x -> new Car(x.trim(), new MovementStrategy()))

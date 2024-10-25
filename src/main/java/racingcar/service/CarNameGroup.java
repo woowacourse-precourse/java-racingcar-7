@@ -2,11 +2,11 @@ package racingcar.service;
 
 import java.util.List;
 
-public class CreateCarNameGroup {
+public class CarNameGroup {
     private static final String COMMA = ",";
     private final List<String> splitCarNameGroup;
 
-    public CreateCarNameGroup(String carNameGroup) {
+    public CarNameGroup(String carNameGroup) {
         this.splitCarNameGroup = splitCarNameWithComma(carNameGroup);
     }
 
