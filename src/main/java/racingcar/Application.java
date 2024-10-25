@@ -24,12 +24,11 @@ class RacingCar {
         moves++;
     }
 
-    public boolean canMove() {
+    public void moveRandomly() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
-            return true;
+            addMoves();
         }
-        return false;
     }
 }
 
@@ -39,6 +38,8 @@ public class Application {
         RacingCar[] racingCars = createCars(carNames);
 
         int numberOfTry = getNumberOfTry();
+
+        runGame(racingCars, numberOfTry);
     }
 
     private static String[] getNameOfCars() {
@@ -63,5 +64,29 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int numberOfTry = Integer.parseInt(Console.readLine());
         return numberOfTry;
+    }
+
+    private static void runGame(RacingCar[] racingCars, int numberOfTry) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < numberOfTry; i++) {
+            for (RacingCar racingCar : racingCars) {
+                racingCar.moveRandomly();
+            }
+            printResult(racingCars);
+        }
+    }
+
+    private static void printResult(RacingCar[] racingCars) {
+        for (RacingCar racingCar : racingCars) {
+
+            StringBuilder printDashes = new StringBuilder();
+            for (int i = 0; i < racingCar.getMoves(); i++) {
+                printDashes.append('-');
+            }
+
+            String printEachCars = racingCar.getName() + " : " + printDashes.toString();
+
+            System.out.println(printEachCars);
+        }
     }
 }
