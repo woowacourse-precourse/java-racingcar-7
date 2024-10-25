@@ -7,6 +7,14 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public static Cars withNames(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return new Cars(cars);
+    }
+
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
