@@ -17,12 +17,13 @@ public class Race {
         int attempt = attemptToInt(attempts);
 
         System.out.println("실행 결과");
-        cars.forEach((key, value) -> {
-            int newValue = playRacingCar(value);
-            cars.put(key, newValue);
+
+
+        for (int i = 0; i < attempt; i++) {
+            cars = playRacingCar(cars);
 
             printCarForward(cars);
-        });
+        }
 
         CheckException.checkIsStart(cars);
 
@@ -55,13 +56,17 @@ public class Race {
         return attempt;
     }
 
-    private int playRacingCar(int value) {
+    private Map<String, Integer> playRacingCar(Map<String, Integer> cars) {
 
-        if (getRandomNum()) {
-            value++;
-        }
+        int newValue;
 
-        return value;
+        cars.forEach((key, value) -> {
+            if (getRandomNum()) {
+                cars.put(key, value+1);
+            }
+        });
+
+        return cars;
     }
 
     private boolean getRandomNum() {
