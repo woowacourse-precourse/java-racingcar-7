@@ -1,8 +1,15 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
+
+    private static final int MOVE_THRESHOLD = 4; // 전진할 수 있는 최소 무작위 값
+    private static final int RANDOM_MIN = 0;
+    private static final int RANDOM_MAX = 9;
+
     private final List<Car> cars;
     private final int rounds;
 
@@ -12,11 +19,45 @@ public class Race {
     }
 
     public void start() {
-        // TODO: 실제 경주 로직을 구현
+        for (int i = 0; i < rounds; i++) {
+            raceRound();
+        }
+    }
+
+    private void raceRound() {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
+
+            if (randomValue >= MOVE_THRESHOLD) {
+                car.moveForward();
+            }
+
+            System.out.println(car.toString());
+
+        }
     }
 
     public List<String> getWinners() {
-        // TODO: 우승자 결정 로직 구현 후 결과 반환
-        return List.of("결과"); // 임시 결과 반환
+        int maxPosition = getMaxPosition();
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
     }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        return maxPosition;
+    }
+
 }
