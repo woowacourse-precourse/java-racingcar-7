@@ -40,4 +40,16 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @Test
+    @DisplayName("자동차 이름 유효성 검사: 5글자 초과 - 예외 테스트")
+    void validateCarNames_nameExceedMaxLength() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "woni", "leesoeun");
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
