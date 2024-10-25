@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import racingcar.validation.blankNameValidator;
+import racingcar.validation.nameLengthValidator;
+import racingcar.error.ErrorMessage;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -7,11 +10,7 @@ import java.util.ArrayList;
 public class GameController {
 
     public static void run() {
-        recruitParticipants();
-    }
-
-    private static void recruitParticipants() {
         ArrayList<String> carNames = InputView.getCarNames();
+        int trialTimes = InputView.getTrialTimes();
     }
-
 }
