@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Application {
     private static final String SPLIT_DELIMITER = ",";
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int INIT = 0;
 
     private static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -49,6 +50,14 @@ public class Application {
             throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
         }
         return rounds;
+    }
+
+    private static List<Integer> initializeCarPositions(int size) {
+        List<Integer> carPositions = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            carPositions.add(INIT);
+        }
+        return carPositions;
     }
 
     public static void main(String[] args) {
