@@ -1,6 +1,7 @@
 package racingcar.domain.race;
 
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,8 +14,9 @@ public class RaceRoundRecord {
         this.raceRoundRecord = raceRoundRecord;
     }
 
-    public static RaceRoundRecord from(List<Car> cars) {
-        return new RaceRoundRecord(cars.stream()
+    public static RaceRoundRecord from(Cars cars) {
+        List<Car> carList = cars.getCars();
+        return new RaceRoundRecord(carList.stream()
                 .map(CarRecord::of)
                 .collect(Collectors.toList()));
     }

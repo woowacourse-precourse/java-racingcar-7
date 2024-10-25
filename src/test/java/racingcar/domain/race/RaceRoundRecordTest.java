@@ -3,6 +3,7 @@ package racingcar.domain.race;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 import java.util.List;
 
@@ -17,9 +18,10 @@ class RaceRoundRecordTest {
         //given
         Car car1 = new Car("Car1",1);
         Car car2 = new Car("Car2",2);
+        Cars cars = new Cars(List.of(car1,car2));
 
         //when
-        RaceRoundRecord raceRoundRecord = RaceRoundRecord.from(List.of(car1,car2));
+        RaceRoundRecord raceRoundRecord = RaceRoundRecord.from(cars);
         List<CarRecord> records = raceRoundRecord.getRaceRoundRecord();
 
         //then

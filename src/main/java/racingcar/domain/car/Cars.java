@@ -30,7 +30,7 @@ public class Cars {
     }
 
     public RaceRoundRecord getRaceRoundRecord() {
-        return RaceRoundRecord.from(cars);
+        return RaceRoundRecord.from(this);
     }
 
     public List<Car> getWinners() {
