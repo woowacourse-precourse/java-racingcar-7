@@ -84,3 +84,41 @@ jun : -----
 - 시도 횟수가 Integer 최댓값을 넘어갔을 때 -> `[ERROR] 시도 횟수는 최대값을 초과할 수 없습니다.`
 
 &nbsp;
+
+# 🗂️ 패키지 구조
+
+### **view**
+- InputView
+  * readCarNames() - 사용자로부터 문자열 입력
+  * readCountOfRounds() - 사용자로부터 정수 입력
+- OutputView
+  * showResultMessage() - 실행 결과 문구 출력
+  * printCarPositions() - 실행 과정 출력
+  * printWinners() - 우승자 명단 출력
+
+### **model**
+- Car
+  * Car() - 생성자, 개별 자동차들의 이름과 초기 위치를 0 으로 저장 
+  * move() - 무작위 값을 입력받아 자동차의 전진 여부 결정
+  * getPosition() - 각각의 자동차의 위치 반환
+  * getName() - 각각의 자동차 이름 반환
+- CarStatus
+  * CarStatus() - 생성자, 각각의 자동차들을 Car 객체로 생성해 ArrayList 에 추가
+  * moveCars() - 무작위 값 생성
+  * getCarNames() - 모든 자동차들의 이름이 담긴 리스트 반환
+  * getCarPositions() - 모든 자동차들의 위치가 인덱스 값으로 담긴 리스트 반환
+  * getWinners() - 최종 우승자 명단 반환
+- WinnerFinder
+  * findWinners() - 최종 우승자가 담긴 리스트 생성
+
+#### **util**
+- CarNameValidator
+- RoundNumberValidator
+- ExceptionMessage
+
+### **controller**
+- Controller
+  * playGame() - 게임 진행
+
+- Application
+  * main() - 실행
