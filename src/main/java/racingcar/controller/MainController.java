@@ -14,8 +14,12 @@ public class MainController {
     public void run() {
         String carNames = inputView.inputCarName();
         List<String> names = NameController.getCarNames(carNames);
+        String inputAttempt = inputView.inputAttempt();
+        int attempt = AttemptController.getAttempt(inputAttempt);
+
         for(String name : names) {
             System.out.println(name);
         }
+        System.out.println(attempt);
     }
 }
