@@ -23,6 +23,6 @@ public class Application {
 
         // 우승자 결정
         List<String> winners = race.getWinners();
-        System.out.println("최종 우승자 : " + winners);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
