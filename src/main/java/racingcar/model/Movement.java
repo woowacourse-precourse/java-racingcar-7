@@ -11,4 +11,10 @@ public class Movement {
 	public Movement() {
 		this.movement = INITIAL_MOVEMENT_VALUE;
 	}
+
+	private void move(int number) {
+		if (number >= MIN_REQUIRED_VALUE_FOR_MOVEMENT) {
+			movement += MOVEMENT_VALUE;
+		}
+	}
 }
