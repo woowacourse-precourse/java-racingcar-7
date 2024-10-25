@@ -2,8 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Application {
     static Map<String, Integer> car = new HashMap<>();
@@ -34,6 +37,7 @@ public class Application {
     public static String[] seperateCarNames(String carNames) {
         String[] carName = carNames.strip().split("\\s*,\\s*");
         isCarNameFiveCharsOrLess(carName);
+        isCarNameDuplicate(carName);
         return carName;
     }
 
@@ -43,6 +47,14 @@ public class Application {
                 throw new IllegalArgumentException("이름을 5자 이하로 입력해 주세요.");
             }
         }
+    }
+
+    public static void isCarNameDuplicate(String[] carName) {
+        Set<String> chkCarName = new HashSet<>(Arrays.asList(carName));
+        if (chkCarName.size() != carName.length) {
+            throw new IllegalArgumentException("중복된 이름을 입력하였습니다.");
+        }
+
     }
 
     public static int makeRandomNumber() {
