@@ -9,7 +9,7 @@ public class DuringRacing {
     }
 
     public static boolean move(int goValue){
-        return goValue >= 4;
+        return goValue > 3;
     }
 
 }
