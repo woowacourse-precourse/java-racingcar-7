@@ -10,7 +10,7 @@ import java.util.Map;
 public class Race {
 
 
-    public String Racing(String carString, String attempts) {
+    public String racing(String carString, String attempts) {
 
         Map<String, Integer> cars = storeCars(carString);
 
@@ -23,6 +23,9 @@ public class Race {
             printCarForward(cars);
         });
 
+        String winners = findWinners(cars);
+
+        return winners;
     }
 
     private Map<String, Integer> storeCars(String input) {
@@ -31,7 +34,7 @@ public class Race {
 
         String[] tokens = input.split(",");
 
-        for(String token : tokens) {
+        for (String token : tokens) {
 
             CheckException.checkNameOfCar(token);
             cars.put(token, 0);
@@ -62,7 +65,7 @@ public class Race {
 
         int randomNum = Randoms.pickNumberInRange(0, 9);
 
-        if(randomNum >= 4)
+        if (randomNum >= 4)
             return true;
         else
             return false;
@@ -82,5 +85,24 @@ public class Race {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    private String findWinners(Map<String, Integer> cars) {
+
+        List<String> winners = new ArrayList<>();
+        int maxNum = 0;
+
+        for(int i: cars.values()) {
+            maxNum = Math.max(maxNum, i);
+        }
+
+        int finalMaxNum = maxNum;
+        cars.forEach((key, value) -> {
+            if (value == finalMaxNum) {
+                winners.add(key);
+            }
+        });
+
+        return String.join(", ", winners);
     }
 }
