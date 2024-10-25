@@ -2,19 +2,23 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.view.InputView;
+import racingcar.view.ProgressView;
 
 public class RacingCarController {
     private final InputView inputView;
+    private final ProgressView progressView;
     private final Cars cars;
 
-    public RacingCarController(InputView inputView, Cars cars) {
+    public RacingCarController(InputView inputView, ProgressView progressView, Cars cars) {
         this.inputView = inputView;
+        this.progressView = progressView;
         this.cars = cars;
     }
 
     public void start() {
         initializeCars();
         final long racingRound = settingRacingRound();
+        startRace(racingRound);
     }
 
     private void initializeCars() {
@@ -32,6 +36,13 @@ public class RacingCarController {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
             cars.saveCar(carName);
+        }
+    }
+
+    public void startRace(final long racingRound) {
+        progressView.printFirstProgressMessage();
+        for (int round = 1; round <= racingRound; round++) {
+            cars.moveCars();
         }
     }
 }
