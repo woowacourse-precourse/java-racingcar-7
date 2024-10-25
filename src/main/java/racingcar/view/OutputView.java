@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
@@ -10,6 +11,21 @@ public class OutputView {
 
     public void printGetAttemptCountGuide() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public void printResult(List<Map<String, Integer>> result) {
+        for (Map<String, Integer> round : result) {
+            printRoundResult(round);
+            System.out.println();
+        }
+    }
+
+    private void printRoundResult(Map<String, Integer> round) {
+        for (Map.Entry<String, Integer> entry : round.entrySet()) {
+            String name = entry.getKey();
+            int state = entry.getValue();
+            System.out.println(name + " : " + "-".repeat(state));
+        }
     }
 
     public void printWinner(List<String> winners) {
