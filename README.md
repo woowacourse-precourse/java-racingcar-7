@@ -107,3 +107,4 @@
 - RaceResponseDTO
 
     List<Car>로 전달된 객체를 string으로 변환하여 controller에 다시 전달.
+
