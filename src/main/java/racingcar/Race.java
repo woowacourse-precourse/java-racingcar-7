@@ -40,7 +40,7 @@ public class Race {
             winnerNames.append(", ");
         }
         winnerNames.deleteCharAt(winnerNames.length() - 2);
-        System.out.printf("최종 우승자 : ");
+        System.out.print("최종 우승자 : ");
         System.out.println(winnerNames);
     }
 }
