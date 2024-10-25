@@ -7,11 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class RacingGameModelmpl implements RacingGameModel{
+public class RacingGameModelImpl implements RacingGameModel{
     @Override
     public String play(String carNames, String trialNum) {
-        List<RacingCar> cars = parseAndGenerateCars(carNames);
-        int trial = generateTrial(trialNum);
+        List<RacingCar> cars = CarFactory.createCars(carNames);
+        int trial = TrialValidator.validateTrial(trialNum);
 
         String result = "\n실행 결과\n";
         // 실행 결과 저장
@@ -85,45 +85,7 @@ public class RacingGameModelmpl implements RacingGameModel{
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private List<RacingCar> parseAndGenerateCars(String input) {
-        if(input == null || input.isEmpty()){
-            throw new IllegalArgumentException();
-        }
 
-        String[] carNames = input.split(",");
-
-        return Arrays.stream(carNames)
-                .map(carName -> {
-                    carName = carName.trim();
-
-                    if(carName.length() > 5){
-                        throw new IllegalArgumentException();
-                    }
-
-                    return new RacingCar(carName, "");
-                })
-                .toList();
-    }
-
-    private int generateTrial(String input) {
-        int trial;
-
-        if(input == null || input.isEmpty()){
-            throw new IllegalArgumentException();
-        }
-
-        try{
-            trial = Integer.parseInt(input);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
-
-        if(trial <= 0){
-            throw new IllegalArgumentException();
-        }
-
-        return trial;
-    }
 
 
 }
