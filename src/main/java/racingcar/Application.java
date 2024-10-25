@@ -24,8 +24,8 @@ public class Application {
         }
     }
     public static void  checkRaceNumberException(int numberInt) {
-        if (numberInt > 10) {
-            throw new IllegalArgumentException("횟수는 10회 이하로 입력해주세요\n");
+        if (numberInt > 10 || numberInt < 1) {
+            throw new IllegalArgumentException("횟수는 1회 이상, 10회 이하로 입력해주세요\n");
         }
     }
     public static void checkDuplicateCarsException(String[] cars) {
