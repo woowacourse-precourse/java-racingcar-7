@@ -1,31 +1,38 @@
 package racingcar.validator;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import racingcar.validator.strategies.CarNameValidator;
 import racingcar.validator.strategies.TryCountValidator;
-import racingcar.view.InputView;
 
 public class InputValidator {
 
     private final CarNameValidator carNameValidator;
     private final TryCountValidator tryCountValidator;
-    private final InputView inputView;
 
-    public InputValidator(InputView inputView) {
+    public InputValidator() {
         this.carNameValidator = new CarNameValidator();
         this.tryCountValidator = new TryCountValidator();
-        this.inputView = inputView;
     }
 
-    public List<String> getValidatedCarNames() {
-        String carNamesInput = inputView.inputCarNames();
+    public List<String> validateAndParseCarNames(String carNamesInput) {
         carNameValidator.validate(carNamesInput);
-        return List.of(carNamesInput.split(","));
+        return parseCarNames(carNamesInput);
     }
 
-    public int getValidatedTryCount() {
-        String tryCountInput = inputView.inputTryCount();
+    public int validateAndParseTryCount(String tryCountInput) {
         tryCountValidator.validate(tryCountInput);
+        return parseTryCount(tryCountInput);
+    }
+
+    private List<String> parseCarNames(String carNamesInput) {
+        return Stream.of(carNamesInput.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
+
+    private int parseTryCount(String tryCountInput) {
         return Integer.parseInt(tryCountInput);
     }
 
