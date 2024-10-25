@@ -16,4 +16,19 @@ public class Car {
        this.isWinner = false;
       
    }
+
+
+   public void move() {
+       this.position = this.position.add(BigInteger.ONE);
+   }
+
+
+   public BigInteger getPosition() {
+       return this.position;
+   }
+
+
+   public String getName() {
+       return this.name;
+   }
 }
