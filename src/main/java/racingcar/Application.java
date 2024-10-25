@@ -1,8 +1,10 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.controller.RacingController;
 import racingcar.dto.InputDTO;
 import racingcar.dto.OutputDTO;
+import racingcar.model.RacingResult;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,7 +15,11 @@ public class Application {
 
     public static void main(String[] args) {
         InputDTO inputDTO = inputView.display();
-        OutputDTO outputDTO = RacingController.run(inputDTO);
+        List<String> racerNames = inputDTO.getRacerNames();
+        Integer totalTrialCount = inputDTO.getTotalTrialCount();
+
+        RacingResult racingResult = RacingController.startRace(racerNames, totalTrialCount);
+        OutputDTO outputDTO = RacingController.announceResult(racingResult, totalTrialCount);
         outputView.display(outputDTO);
     }
 }

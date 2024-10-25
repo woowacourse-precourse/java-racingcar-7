@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
-import racingcar.dto.InputDTO;
 import racingcar.dto.OutputDTO;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingResult;
 
 class RacingControllerTests extends NsTest {
 
@@ -25,8 +25,9 @@ class RacingControllerTests extends NsTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    OutputDTO result = RacingController.run(new InputDTO(input, inputTrialCount));
-                    List<RacingCar> racingResult = result.getResult();
+                    RacingResult result = RacingController.startRace(input, inputTrialCount);
+                    OutputDTO output = RacingController.announceResult(result, inputTrialCount);
+                    List<RacingCar> racingResult = output.getResult();
                     assertThat(racingResult).extracting(RacingCar::getName).containsSequence("alice", "bob", "john");
                 },
                 STOP, MOVING_FORWARD, STOP
@@ -59,8 +60,9 @@ class RacingControllerTests extends NsTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    OutputDTO result = RacingController.run(new InputDTO(input, inputTrialCount));
-                    assertThat(result.getWinners()).isEqualTo(expected);
+                    RacingResult result = RacingController.startRace(input, inputTrialCount);
+                    OutputDTO output = RacingController.announceResult(result, inputTrialCount);
+                    assertThat(output.getWinners()).isEqualTo(expected);
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
