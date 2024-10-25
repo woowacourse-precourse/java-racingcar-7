@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Race;
 
 public class FunctionWithMVCTest {
     @ParameterizedTest
@@ -42,6 +43,22 @@ public class FunctionWithMVCTest {
         assertThatThrownBy(() -> cars.registerCars(testName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("2개 이상의 차 이름을 입력해주세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1"})
+    void 이동_횟수가_1이하면_예외(String testNumber) {
+        assertThatThrownBy(() -> new Race(testNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1회 이상의 이동 횟수를 입력해주세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a1", "8.8", "1.0"})
+    void 이동_횟수가_정수가_아니면_예외(String testNumber) {
+        assertThatThrownBy(() -> new Race(testNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("정수로 된 이동 횟수를 입력해주세요.");
     }
 
 }

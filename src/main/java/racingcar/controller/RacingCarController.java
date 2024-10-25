@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
+import racingcar.model.Race;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,6 +18,9 @@ public class RacingCarController {
         String carNamesInput = inputView.inputCarNames();
         Cars cars = new Cars();
         cars.registerCars(carNamesInput);
+
+        String moveNumberInput = inputView.inputMoveNumber();
+        Race race = new Race(moveNumberInput);
 
     }
 }
