@@ -105,4 +105,18 @@ class ResultOutput {
         }
         System.out.println();
     }
+
+    static void declareWinner(List<Car> cars) {
+        cars.sort((car1, car2) -> car2.getMovingCount() - car1.getMovingCount());
+
+        int maxCount = cars.get(0).getMovingCount();
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getMovingCount() == maxCount) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
