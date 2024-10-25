@@ -4,9 +4,8 @@ public class Car {
     private final String name;
     public int move;
 
-    public Car(String name, int move){
+    public Car(String name){
         this.name = name;
-        this.move = move;
     }
 
     public String getName(){
