@@ -1,20 +1,18 @@
 package racingcar.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.utils.Validator;
 
 public class Cars {
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
-        validate();
         this.cars = new ArrayList<>(cars);
+        validate();
     }
 
-    public static Cars of(List<Car> cars){
+    public static Cars from(List<Car> cars){
         return new Cars(cars);
     }
 
@@ -24,7 +22,7 @@ public class Cars {
 
     public void allMove() {
         for (Car car : cars) {
-            car.move();
+            car.move(new RandomMovementStrategy());
         }
     }
 

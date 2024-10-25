@@ -11,7 +11,6 @@ public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
     private Cars cars;
-    private Car car;
 
     public RacingController() {
         this.inputView = new InputView();
@@ -50,10 +49,10 @@ public class RacingController {
 
         List<Car> inputCars = new ArrayList<>();
         for (String input : carInputs) {
-            inputCars.add(Car.of(input));
+            inputCars.add(Car.from(input));
         }
 
-        cars = Cars.of(inputCars);
+        cars = Cars.from(inputCars);
     }
 
 }

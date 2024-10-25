@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.Validator;
 
 public class Car {
@@ -13,11 +12,11 @@ public class Car {
         this.distance = 0;
     }
 
-    public static Car of(String name) {
+    public static Car from(String name) {
         return new Car(name);
     }
 
-    public void move(MovingStrategy movingStrategy) {
+    public void move(MovementStrategy movingStrategy) {
         if (movingStrategy.moveable()) {
             distance++;
         }
