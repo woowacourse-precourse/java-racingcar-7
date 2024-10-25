@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class RacingCar {
@@ -19,11 +20,18 @@ public class RacingCar {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             }
 
-            if (carNames.contains(carName)) {
+            if (hashSet.contains(carName)) {
                 throw new IllegalArgumentException("중복된 자동차 이름을 입력했습니다.");
             }
 
             hashSet.add(carName);
+        }
+
+        for (String carName : hashSet) {
+            final int randomInt = Randoms.pickNumberInRange(0, 9);
+            final String moveDistance = "-".repeat(randomInt);
+            System.out.print(carName + " : " + moveDistance);
+            System.out.println();
         }
     }
 
