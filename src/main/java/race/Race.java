@@ -1,13 +1,16 @@
-package service;
+package race;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Race {
 
-    public String Racing(String carString, String attempt) {
+
+    public String Racing(String carString, String attempts) {
 
         Map<String, Integer> cars = storeCars(carString);
+
+        int attempt = attemptToInt(attempts);
 
     }
 
@@ -23,5 +26,14 @@ public class Race {
         }
 
         return cars;
+    }
+
+    public int attemptToInt(String input) {
+
+        int attempt = Integer.parseInt(input);
+
+        CheckException.checkAttempt(attempt);
+
+        return attempt;
     }
 }

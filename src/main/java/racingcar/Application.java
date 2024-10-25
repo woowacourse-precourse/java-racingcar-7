@@ -1,9 +1,8 @@
 package racingcar;
 
 
-import camp.nextstep.edu.missionutils.Console;
-import service.Input;
-import service.Race;
+import IO.Input;
+import race.Race;
 
 public class Application {
 

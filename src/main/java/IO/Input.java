@@ -1,4 +1,4 @@
-package service;
+package IO;
 
 import camp.nextstep.edu.missionutils.Console;
 
