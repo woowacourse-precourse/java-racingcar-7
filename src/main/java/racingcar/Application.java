@@ -12,6 +12,12 @@ public class Application {
         List<String> cars = new ArrayList<>();
         for (String token : tokens) {
             String car = token.trim();
+            if (car.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 비어 있지 않아야 합니다.");
+            }
+            if (car.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
             cars.add(car);
         }
     }
