@@ -12,7 +12,8 @@ public class RacingGameController {
     }
 
     public void startGame() {
-        while (racingGame.playOneRound()) {
+        while (racingGame.hasNextRound()) {
+            racingGame.playOneRound();
             outputHandler.printStatus(racingGame.getCars());
         }
 

@@ -21,16 +21,12 @@ public class OutputHandler {
             String visualBar = STATUS_BAR.repeat(car.getPosition());
             System.out.println(car.getName() + DELIMITER_COLON + visualBar);
         }
-        printNewLine();
+        System.out.println();
     }
 
     public void printWinner(List<Car> winnerCars) {
         List<String> winnerNames = winnerCars.stream().map(Car::getName).toList();
         String winnerName = String.join(DELIMITER_COMMA, winnerNames);
         System.out.println(WINNER_NOTICE_PHRASE + DELIMITER_COLON + winnerName);
-    }
-
-    private void printNewLine() {
-        System.out.println();
     }
 }

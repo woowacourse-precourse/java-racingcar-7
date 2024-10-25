@@ -12,17 +12,14 @@ public class RacingGame {
         this.rounds = rounds;
     }
 
-    public boolean playOneRound() {
+    public void playOneRound() {
         if (hasNextRound()) {
             cars.forEach(Car::move);
             rounds--;
-            return true;
         }
-
-        return false;
     }
 
-    private boolean hasNextRound() {
+    public boolean hasNextRound() {
         return rounds > 0;
     }
 
