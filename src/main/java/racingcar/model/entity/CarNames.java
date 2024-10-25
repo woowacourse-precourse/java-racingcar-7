@@ -2,13 +2,17 @@ package racingcar.model.entity;
 
 import racingcar.utils.ErrorMessage;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * 자동차 이름 입력값을 검증 기능 수행
  */
-public class CarNames {
+public class CarNames implements Iterable<String> {
 
     public static final String ONLY_DIGIT_ALPHABET_HANGEUL = "[0-9a-zA-Z가-힣]";
 
@@ -29,10 +33,10 @@ public class CarNames {
                     CAR_NAME_LENGTH_MIN_BETWEEN_MAX +
                     ")*$");
 
-    private final String carNames;
+    private final List<String> names;
 
-    private CarNames(String carNames) {
-        this.carNames = carNames;
+    private CarNames(List<String> names) {
+        this.names = names;
     }
 
     /**
@@ -42,15 +46,41 @@ public class CarNames {
      * @throws 자동차 이름이 5글자 초과하거나 이름 중간에 알파벳, 한글, 숫자 이외의 문자가
      *         있으면 IllegalArgumentException 발생
      */
-    public static CarNames getAfterValidateForm (String carNames) {
-        Matcher matcher = carNamePattern.matcher(carNames);
+    public static CarNames getAfterValidateFormat(String namesToValidate) {
+        Matcher matcher = carNamePattern.matcher(namesToValidate);
+        validateSpace(namesToValidate);
         if (!matcher.matches()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NAME_FORMAT.toString());
         }
-        return new CarNames(carNames);
+        List<String> names = List.of(namesToValidate.split(","));
+        validateDuplicate(names);
+        return new CarNames(names);
     }
 
-    public String getString() {
-        return carNames;
+    private static void validateSpace(String namesToValidate) {
+        if (namesToValidate.contains(" ")) {
+            throw new IllegalArgumentException(ErrorMessage.IN_SPACE.toString());
+        }
     }
+
+    private static void validateDuplicate(List<String> names) {
+        Set<String> namesToCompare = new HashSet<>(names);
+        if (names.size() != namesToCompare.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAMES.toString());
+        }
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return new CarNamesIterator(this);
+    }
+
+    public int getLength() {
+        return names.size();
+    }
+
+    public String getAt(int index) {
+        return names.get(index);
+    }
+
 }
