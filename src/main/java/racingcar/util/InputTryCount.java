@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.TryCountValidiator;
 
 public class InputTryCount {
 
@@ -15,6 +16,16 @@ public class InputTryCount {
 
     public int parseNumber(String tryCount) {
 
-        return 0;
+        TryCountValidiator check = new TryCountValidiator();
+
+        try {
+            int count = Integer.parseInt(tryCount);
+
+            check.positiveNumber(count);
+
+            return count;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
