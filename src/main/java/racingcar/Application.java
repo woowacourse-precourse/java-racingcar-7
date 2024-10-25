@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Application {
@@ -26,13 +27,22 @@ public class Application {
         System.out.println("실행 결과");
         for (int i = 0; i < RaceCount; i++) {
             for (int j = 0; j < CarNames.length; j++) {
-                if (Randoms.pickNumberInRange(0, 9) > 4) {
-                    // 4이상이면 값증가 (전진)
+                if (Randoms.pickNumberInRange(0, 9) > 4) { // 4이상이면 - 추가 (전진)
                     carRaceSituation.put(CarNames[j], carRaceSituation.get(CarNames[j]).concat("-"));
                 }
                 System.out.println(CarNames[j] + " : " + carRaceSituation.get(CarNames[j]));
             }
             System.out.println();
+        }
+        System.out.print("최종 우승자 : ");
+        int winners = 0;
+        for (String key : carRaceSituation.keySet()) {
+            if (carRaceSituation.get(key).equals(Collections.max(carRaceSituation.values()))) {
+                winners++;
+                if (winners > 1) {
+                    System.out.print(", " + key);
+                } else System.out.print(key);
+            }
         }
 
     }
