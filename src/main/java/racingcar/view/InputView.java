@@ -4,6 +4,7 @@ import static racingcar.service.InputService.isCorrectInput;
 import static racingcar.service.InputService.isTheLengthOfStringLessThanFive;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Game;
 import racingcar.domain.Input;
 import racingcar.service.GameService;
 
@@ -11,6 +12,7 @@ public class InputView {
 
     private static Input input = new Input("", 0);
 
+    private static Game game = new Game();
     static GameService gameService;
 
 
@@ -30,7 +32,7 @@ public class InputView {
         int count = Integer.parseInt(Console.readLine());
         input.setCount(count);
 
-        gameService = new GameService(input);
+        gameService = new GameService(input, game);
         gameService.addCarName();
     }
 
