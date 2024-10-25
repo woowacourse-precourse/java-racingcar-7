@@ -1,6 +1,10 @@
 package racingcar.view;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class InputHandler {
 
     public static void promptForCarNames() {
@@ -9,5 +13,19 @@ public class InputHandler {
 
     public static void promptForAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public static void validateCarNames(String carNames) {
+        if (carNames == null || carNames.isEmpty() || carNames.equals(" ")) {
+            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+        }
+        List<String> carNameList = new ArrayList<>();
+        carNameList.addAll(Arrays.asList(carNames.split(",")));
+        for (String carName : carNameList) {
+            if (!carName.matches("[a-zA-Z0-9]+") || carName.length() > 5) {
+                throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+            }
+        }
+
     }
 }
