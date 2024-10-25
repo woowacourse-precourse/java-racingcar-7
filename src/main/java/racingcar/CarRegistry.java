@@ -5,12 +5,20 @@ import java.util.Set;
 
 public class CarRegistry {
     private final Set<Car> cars;
+    private static CarRegistry INSTANCE;
 
-    public CarRegistry(String input) {
-        this.cars = convertInputToCarSet(input);
+    public static CarRegistry getInstance(String carNames) {
+        if (INSTANCE == null) {
+            INSTANCE = new CarRegistry(carNames);
+        }
+        return INSTANCE;
     }
 
-    private Set<Car> convertInputToCarSet(String input) {
+    private CarRegistry(String carNames) {
+        this.cars = convertCarNamesToCarSet(carNames);
+    }
+
+    private Set<Car> convertCarNamesToCarSet(String input) {
         Set<Car> cars = new HashSet<>();
         String[] carNames = input.split(",");
         for (String carName : carNames) {
@@ -30,13 +38,13 @@ public class CarRegistry {
     public Set<String> getWinnerNames() {
         Integer max = 0;
         Set<String> winnerNames = new HashSet<>();
-        for (Car car : cars) {
-            if (car.getPosition() > max) {
-                max = car.getPosition();
-            }
-        }
-        for (Car car : cars) {
+        for(Car car : cars) {
             if (car.getPosition().equals(max)) {
+                winnerNames.add(car.getName());
+            }
+            if(car.getPosition() > max) {
+                max = car.getPosition();
+                winnerNames.clear();
                 winnerNames.add(car.getName());
             }
         }

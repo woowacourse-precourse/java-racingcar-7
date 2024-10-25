@@ -14,7 +14,7 @@ public class Application {
         view.printRoundsGuide();
         Integer rounds = Integer.parseInt(input.rounds());
 
-        CarRegistry carRegistry = new CarRegistry(carNames);
+        CarRegistry carRegistry = CarRegistry.getInstance(carNames);
         Stadium stadium = new Stadium(carRegistry, rounds);
         stadium.runGame();
 

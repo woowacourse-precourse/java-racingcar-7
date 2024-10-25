@@ -17,7 +17,7 @@ class StadiumTest {
     @DisplayName("모든 차가 4번 이동했는지 검증")
     void verifyAllCarsMoveFourTimes() {
         // Given
-        CarRegistry carRegistry = new CarRegistry("pobi,woni,jun");
+        CarRegistry carRegistry = CarRegistry.getInstance("pobi,woni,jun");
         Stadium stadium = new Stadium(carRegistry, 4);
 
         String pobiString = "pobi : ----";
@@ -40,7 +40,7 @@ class StadiumTest {
     @DisplayName("모든 차가 랜덤 숫자가 3이 나왔을 때 멈추는지 검증")
     void verifyCarsDoNotMoveWhenRandomNumberIsBelowThreshold() {
         // Given
-        CarRegistry carRegistry = new CarRegistry("pobi,woni,jun");
+        CarRegistry carRegistry = CarRegistry.getInstance("pobi,woni,jun");
         Stadium stadium = new Stadium(carRegistry, 4);
 
         String pobiString = "pobi : ";
@@ -63,7 +63,7 @@ class StadiumTest {
     @DisplayName("모든 차가 CarRegistry에 이름이 중복으로 생기는지 검증")
     void verifyAllCarsAreUniqueInCarRegistry() {
         // Given
-        CarRegistry carRegistry = new CarRegistry("pobi,woni,pobi");
+        CarRegistry carRegistry = CarRegistry.getInstance("pobi,woni,woni");
 
         // When
         Set<Car> cars = carRegistry.getCars();
@@ -80,7 +80,7 @@ class StadiumTest {
         String input = "pobi,woni,pobiMaguire"; // Name too long
 
         // When & Then
-        assertThatThrownBy(() -> new CarRegistry(input))
+        assertThatThrownBy(() -> CarRegistry.getInstance(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Car name has to be 5 or under 5.");
     }
