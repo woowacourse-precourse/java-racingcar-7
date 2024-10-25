@@ -3,6 +3,7 @@
 # 기능 목록
 
 ## ❌ 1. 각 자동차의 이름을 입력받는다.
+- [x] 사용자에게 입력을 유도하는 문구를 출력한다.
 - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 - [x] 자동차 이름은 쉼표(`,`)로 구분된다.
 - [x] 각 자동차의 이름은 5자 이하이다.
@@ -10,6 +11,7 @@
 - [x] `name1,,name2`와 같이, 자동차 이름이 `0`글자일 경우 `IllegalArgumentException`을 발생시킨다.
 
 ## ❌ 2. 시도할 횟수를 입력받는다.
+- [x] 사용자에게 입력을 유도하는 문구를 출력한다.
 - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 - [x] 시도할 횟수가 정수가 아닐 경우, `IllegalArgumentException`을 발생시킨다.
 - [x] 시도할 횟수가 `0`이하일 경우, `IllegalArgumentException`을 발생시킨다.
