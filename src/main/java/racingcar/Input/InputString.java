@@ -1,6 +1,7 @@
 package racingcar.Input;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,20 @@ public class InputString {
     public static void inputString() {
         String input = Console.readLine();
 
-        isCorrectInput(input);
+        if (isCorrectInput(input)) {
+            isTheLengthOfStringLessThanFive(input);
+        }
+        else throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
+    public static boolean isTheLengthOfStringLessThanFive(String input) {
+        String[] cars = input.split(",");
+
+        for (String car : cars) {
+            if (car.length() > 5) return false;
+        }
+
+        return true;
     }
 
     public static boolean isCorrectInput(String inputString) {
