@@ -21,10 +21,10 @@ public class InputView {
         System.out.println(CAR_MOVEMENT_COUNT_INPUT_GUIDE);
     }
 
-    public String getCarMovementCount() {
+    public long getCarMovementCount() {
         String inputString = Console.readLine();
         validateCarMovementCountOrThrow(inputString);
-        return inputString;
+        return Long.parseLong(inputString);
     }
 
     private void validateCarMovementCountOrThrow(String inputString) {
@@ -38,7 +38,7 @@ public class InputView {
 
     private boolean isNaturalNumber(String inputString) {
         try {
-            int number = Integer.parseInt(inputString);
+            long number = Long.parseLong(inputString);
             return number > 0;
         } catch (NumberFormatException e) {
             return false;
