@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
     private final String name;
 
@@ -27,5 +29,22 @@ public class Car {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Car)) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return Objects.equals(name, car.name);
     }
 }

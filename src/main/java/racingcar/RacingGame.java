@@ -8,8 +8,18 @@ public class RacingGame {
 
     public void run(final String carNames) {
         for (String name : carNames.split(",")) {
-            Car car = new Car(name);
-            cars.add(car);
+            registerCar(new Car(name));
+        }
+    }
+
+    private void registerCar(Car car) {
+        boolean isAdded = cars.add(car);
+        validateNameDuplicated(isAdded);
+    }
+
+    private void validateNameDuplicated(final boolean isAdded) {
+        if (!isAdded) {
+            throw new IllegalArgumentException("자동차의 이름은 중복될 수 없습니다");
         }
     }
 }
