@@ -35,7 +35,7 @@
 ---
 
 ## 프로젝트 구조
-![racing architecture.png](racing%20architecture.png)
+![racing_architecture.png](racing_architecture.png)
 
 ---
 
