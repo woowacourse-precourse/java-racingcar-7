@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.service.CarService;
+import racingcar.utils.Utils;
 import racingcar.view.View;
 
 public class Controller {
@@ -31,7 +32,7 @@ public class Controller {
 
     private void playGame() {
         int times = view.inputTimes();
-        List<List<Car>> raceResults = IntStream.range(0, times)
+        List<List<Car>> raceResults = IntStream.range(Utils.ZERO, times)
                 .mapToObj(i -> carService.moveAllCars())
                 .toList();
         view.outputRaceResults(raceResults);
