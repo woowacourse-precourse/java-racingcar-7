@@ -49,4 +49,22 @@ class RaceServiceTest {
         assertThat(pobiCar.getCurrentDistance()).isBetween(0, 1);
         assertThat(woniCar.getCurrentDistance()).isBetween(0, 1);
     }
+
+    @Test
+    @DisplayName("단일 우승자 이름 리스트를 반환하는 테스트")
+    void determineWinners_singleWinner() {
+        // given
+        Car pobiCar = new Car("pobi");
+        Car woniCar = new Car("woni");
+        pobiCar.increaseDistance();
+        woniCar.increaseDistance();
+        woniCar.increaseDistance();
+        List<Car> cars = Arrays.asList(pobiCar, woniCar);
+
+        // when
+        List<String> winnerNames = raceService.determineWinners(cars);
+
+        // then
+        assertThat(winnerNames).containsExactly("woni");
+    }
 }
