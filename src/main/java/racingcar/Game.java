@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    public Game(List<String> carList, int round) {
+    List<RacingCar> racingCarList;
+    int round;
 
+    public Game(List<String> carList, int round) {
+        this.racingCarList = generateRacingCarList(carList);
+        this.round = round;
     }
 
     public static List<RacingCar> generateRacingCarList(List<String> carList) {
@@ -14,5 +18,11 @@ public class Game {
             racingCarList.add(new RacingCar(car));
         }
         return racingCarList;
+    }
+
+    public void play() {
+        for (RacingCar racingCar : this.racingCarList) {
+            racingCar.rollDice();
+        }
     }
 }
