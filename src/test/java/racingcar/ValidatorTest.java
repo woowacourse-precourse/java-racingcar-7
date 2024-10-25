@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidatorTest {
 
     public static final String CAR_NAMES = "pobi,woni,jun";
+    public static final String CAR_NAMES_WITH_SPACE = "pobi,wo ni, ju n";
+    public static final String CAR_NAME_OVER_5  = "making";
     private static final String ATTEMPT_COUNT = "3";
 
 
@@ -37,6 +39,36 @@ class ValidatorTest {
         });
 
         assertEquals("자동차 이름은 1개 이상 입력해야 합니다.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 공백을 포함하면 예외 발생한다.")
+    void 자동차입력_공백() {
+        // given
+        UserInput userInput = new UserInput(CAR_NAMES_WITH_SPACE, ATTEMPT_COUNT);
+        Validator validator = new Validator();
+
+        // when & then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            validator.validateInput(userInput);
+        });
+
+        assertEquals("자동차 이름에 공백은 입력할 수 없습니다", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름을 5글자 이상 입력하면 예외 발생한다.")
+    void 자동차입력_5글자이상() {
+        // given
+        UserInput userInput = new UserInput(CAR_NAME_OVER_5,  ATTEMPT_COUNT);
+        Validator validator = new Validator();
+
+        // when & then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            validator.validateInput(userInput);
+        });
+
+        assertEquals("각 자동차 이름은 5글자 이하로 입력해야 합니다", exception.getMessage());
     }
 
     @Test
