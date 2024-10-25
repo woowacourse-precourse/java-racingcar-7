@@ -50,7 +50,11 @@ public class Car {
         System.out.println();
     }
 
-    public boolean randomMove() {
+    public boolean randomMove(int remainingCount) {
+        if (remainingCount == (count - progress)) {
+            return true;
+        }
+
         if (progress >= count) {
             return false;
         }
