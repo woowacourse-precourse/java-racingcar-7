@@ -3,6 +3,8 @@ package racingcar.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.utils.NumberGenerator.createRandomNumber;
+
 public class RaceCars {
     private final List<RaceCar> raceCars;
 
@@ -11,5 +13,11 @@ public class RaceCars {
                 .map(RaceCar::new)
                 .collect(Collectors.toList());
         this.raceCars = raceCars;
+    }
+
+    public void race() {
+        raceCars.stream()
+                .filter(car -> car.canMove(createRandomNumber()))
+                .forEach(RaceCar::move);
     }
 }

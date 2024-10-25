@@ -8,4 +8,9 @@ public class RacingGame {
         this.raceCars = raceCars;
         this.attemptCount = attemptCount;
     }
+
+    public void race(){
+        raceCars.race();
+        attemptCount.decrease();
+    }
 }
