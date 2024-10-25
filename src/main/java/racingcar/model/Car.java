@@ -2,22 +2,22 @@ package racingcar.model;
 
 public class Car {
     private String name;
-    private int forward;
+    private int moveCount;
 
     public Car(String name) {
         this.name = name;
-        this.forward = 0;
+        this.moveCount = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getForward() {
-        return forward;
+    public int getMoveCount() {
+        return moveCount;
     }
 
-    public void increaseForward() {
-        this.forward += 1;
+    public void move() {
+        this.moveCount += 1;
     }
 }
