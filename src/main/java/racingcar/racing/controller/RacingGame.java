@@ -20,6 +20,31 @@ public class RacingGame {
     }
 
     public void start() {
+        List<String> carNames = inputCarNames();
+        int attemptNumber = inputAttemptNumber();
+
+        this.game = racingGameFactory.createGame(attemptNumber);
+    }
+
+    private int inputAttemptNumber() {
+        OutputView.print("시도할 횟수는 몇 회인가요?");
+        String inputAttemptNumber = InputView.inputConsole(true);
+        // todo: inputAttemptNumber이 digit이 아닐 때 처리
+        int attemptNumber = Integer.parseInt(inputAttemptNumber);
+        if (validateAttemptNumber(attemptNumber)) {
+            // todo: 예외처리
+        }
+        return attemptNumber;
+    }
+
+    private boolean validateAttemptNumber(int attemptNumber) {
+        if (attemptNumber <= 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private List<String> inputCarNames() {
         OutputView.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCar = InputView.inputConsole(false);
 
@@ -27,12 +52,7 @@ public class RacingGame {
         if (validateCarNameLength(carNames)) {
             // todo: 예외처리
         }
-
-        OutputView.print("시도할 횟수는 몇 회인가요?");
-        String inputAttemptNumber = InputView.inputConsole(true);
-        int attemptNumber = Integer.parseInt(inputAttemptNumber);
-
-        this.game = racingGameFactory.createGame();
+        return carNames;
     }
 
     private boolean validateCarNameLength(List<String> carNames) {

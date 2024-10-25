@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameConcreteFactory implements RacingGameFactory {
+    private final int
 
     @Override
-    public Game createGame() {
-        return new Game();
+    public Game createGame(int allStage) {
+        return new Game(allStage);
     }
 
     @Override
