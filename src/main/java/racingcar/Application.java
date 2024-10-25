@@ -18,5 +18,6 @@ public class Application {
         cars.add(new Car("jun", CAR_START_POSITION));
         Move move = new Move(cars, numberValidator, numberGenerator);
         move.tryOnce();
+        outputView.printCarStatus(cars.stream().map(Car::createCurrentCar).toList());
     }
 }
