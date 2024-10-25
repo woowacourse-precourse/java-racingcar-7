@@ -42,6 +42,7 @@ public class InputHandler {
 
     public int processNumberOfRoundInput() {
         Output.printMessage(INPUT_NUMBER_OF_ROUNDS.getMessages());
+        readLine(); // TODO 버퍼비우기
         inputValidator.validateNumberOfRound(numberOfRound);
         return numberOfRound;
     }
