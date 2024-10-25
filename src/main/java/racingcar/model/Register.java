@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Register {
@@ -22,8 +22,8 @@ public class Register {
         }
     }
 
-    public HashMap<String, Integer> carsMoveCount() {
-        HashMap<String, Integer> moves = new HashMap<>();
+    public LinkedHashMap<String, Integer> carsMoveCount() {
+        LinkedHashMap<String, Integer> moves = new LinkedHashMap<>();
         for (Car c : carList) {
             moves.put(c.name, c.distance);
         }
@@ -31,7 +31,7 @@ public class Register {
     }
 
     public ArrayList<String> racingWinner() {
-        HashMap<String, Integer> carMoves = carsMoveCount();
+        LinkedHashMap<String, Integer> carMoves = carsMoveCount();
         int maxMove = Collections.max(carMoves.values());
 
         ArrayList<String> winners = new ArrayList<>();
@@ -41,7 +41,6 @@ public class Register {
                 winners.add(m.getKey());
             }
         }
-        Collections.sort(winners);
         return winners;
     }
 }

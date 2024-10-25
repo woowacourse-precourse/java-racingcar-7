@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -77,8 +76,6 @@ class RegisterTest {
         ArrayList<String> expectedWinner = new ArrayList<>();
         expectedWinner.add("진용");
         expectedWinner.add("강감찬");
-
-        Collections.sort(expectedWinner);
 
         Assertions.assertThat(register.racingWinner()).isEqualTo(expectedWinner);
     }
