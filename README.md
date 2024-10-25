@@ -152,7 +152,7 @@ Copyright 우아한테크코스. All rights reserved.
 
 -[x] 자동차 이름들을 입력받는다.
 -[x] 라운드 횟수를 입력받는다.
--[ ] 잘못된 값이 입력되면 IllegalArgumentException을 발생시킨다.
+-[x] 잘못된 값이 입력되면 IllegalArgumentException을 발생시킨다.
 -[ ] , 를 통해 자동차 이름을 구분짓는다.
 -[ ] 이름을 이용해 자동차 객체를 생성한다.
 -[ ] 라운드가 시작되면 자동차를 주어진 조건에 따라 움직인다.
