@@ -25,7 +25,11 @@ public class CarGameController {
         int rounds = getRounds();
         Cars cars = carCreateService.fromString(carNames);
 
-        Cars winners = carGameService.play(cars, rounds);
+        outputView.announceResult();
+        carGameService.play(cars, rounds, (updatedCars) -> {
+            outputView.printCarPostions(updatedCars);
+        });
+        Cars winners = carGameService.findWinners(cars);
 
         outputView.printWinners(winners);
     }
