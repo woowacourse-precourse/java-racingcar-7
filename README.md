@@ -75,7 +75,7 @@ jun : -----
 ````
 
 ## 기능 구현 목록
-- inputString
+- getUserInput
     - 문자열을 입력받는다.
 - isCorrectInput
     - 올바른 문자열인지 확인한다.
