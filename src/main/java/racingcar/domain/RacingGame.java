@@ -10,26 +10,28 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private List<Racingcar> racingcars;
+    private int racingGameCount;
 
-    public RacingGame(List<String> racingcarNames) {
-        Validation.validateRacingcarNames(racingcarNames);
-        this.racingcars = createRacingcars(racingcarNames);
+    public RacingGame(List<Racingcar> racingcars, int racingGameCount) {
+        Validation.validateRacingcarNamesDuplicate(racingcars);
+        Validation.validateRacingGameCount(racingGameCount);
+        this.racingcars = racingcars;
+        this.racingGameCount = racingGameCount;
     }
 
-    private List<Racingcar> createRacingcars(List<String> racingcarNames){
+    public static List<Racingcar> createRacingcars(List<String> racingcarNames){
         return racingcarNames.stream()
                 .map(Racingcar::new)
                 .collect(Collectors.toList());
     }
 
-    public void startRacingGame(int racingCount){
-        Validation.validateRacingGameCount(racingCount);
+    public void startRacingGame(){
         OutputView.printRacingGameExecuteResultMessage();
-        for(int i = 0;  i < racingCount; i++){
+
+        for(int i = 0;  i < racingGameCount; i++){
             startGameRound();
             OutputView.printRacingGameRoundEndBlankLine();
         }
-
     }
 
     private void startGameRound(){
