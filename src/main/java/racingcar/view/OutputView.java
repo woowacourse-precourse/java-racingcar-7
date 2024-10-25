@@ -1,15 +1,16 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.model.Car;
 
 public class OutputView {
 
     private OutputView() {
     }
 
-    public static void printRaceResult(List<String> players, List<Integer> progress) {
-        for (int i = 0; i < players.size(); i++) {
-            System.out.println(players.get(i) + " : " + "-".repeat(progress.get(i)));
+    public static void printRaceResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getProgress()));
         }
         System.out.println();
     }
