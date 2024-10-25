@@ -1,7 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.utils.StringParser.parseToInteger;
-import static racingcar.utils.StringParser.separate;
+import static racingcar.utils.StringSeparator.separate;
 import static racingcar.view.InputView.getCarNameInput;
 import static racingcar.view.InputView.getRoundCountInput;
 import static racingcar.view.OutputView.printRoundResultOutput;
@@ -43,7 +42,7 @@ public class RacingCarController {
     }
 
     private RoundCount getTryCount(String inputCountString) {
-        int inputCount = parseToInteger(inputCountString);
+        int inputCount = Integer.parseInt(inputCountString);
         return new RoundCount(inputCount);
     }
 
