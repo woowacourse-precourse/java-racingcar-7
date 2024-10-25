@@ -21,3 +21,10 @@
 2. 기능 하나를 구현했다면 커밋할 것.
 3. 이번에는 `StringTokenizer`를 활용해볼 것, `split()`과의 차이점을 공부하자. 
 4. `stream API`를 활용할 수 있는 곳이면 활용할 것.
+
+#### 우테코 -제리의 MVC 패턴 5가지 규칙
+1. `Model`은 `Controller`와 `View`에 의존하지 않아야 한다.
+2. `View`는 `Model`에만 의존해야 하고, `Controller`에는 의존하면 안된다.
+3. `View`가 `Model`로부터 데이터를 받을 때는, 사용자마다 다르게 보여주어야 하는 데이터에 대해서만 받아야 한다.
+4. `Controller`는 `Model`과 `View`에 의존해도 된다.
+5. `View`가 `Model`로부터 데이터를 받을 때, 반드시 `Controller`에서 받아야 한다.
