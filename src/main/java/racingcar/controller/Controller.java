@@ -28,7 +28,15 @@ public class Controller {
         int repeatNumber = stringToInt();
 
         // 랜덤
-        int randomValue = createRandomValue();
+        int randomValue;
+
+        for (Car car : carList) {
+            randomValue = createRandomValue();
+            if (randomValue >= 4) {
+                int currentForwardCount = car.getForwardCount();
+                car.setForwardCount(currentForwardCount + 1);
+            }
+        }
     }
 
     private int stringToInt() {
