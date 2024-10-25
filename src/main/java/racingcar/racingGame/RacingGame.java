@@ -9,17 +9,10 @@ import java.util.List;
 
 public class RacingGame extends RacingGameTemplate {
 
-    private RaceManager raceManager;
+    private final RaceManager raceManager;
 
-    public RacingGame() {
-    }
-
-    @Override
-    protected void initializeGame() {
-        raceManager = RaceManager.createRaceManager(
-                RacingCars.from(InputView.inputCarNames()),
-                Attempts.from(InputView.inputRaceAttempts())
-        );
+    private RacingGame(RaceManager raceManager) {
+        this.raceManager = raceManager;
     }
 
     @Override
@@ -29,9 +22,16 @@ public class RacingGame extends RacingGameTemplate {
 
     @Override
     protected void announceWinners() {
-        BigInteger winningPosition = raceManager.findWinningPosition();
-        List<String> winnersNames = raceManager.findWinningCarsNames(winningPosition);
-        OutputView.printWinner(winnersNames);
+        raceManager.findWinningPosition();
+        raceManager.findWinningCarsNames();
+        raceManager.announceRaceResult();
     }
 
+    public static RacingGame initGame() {
+        RaceManager manager = RaceManager.createRaceManager(
+                RacingCars.from(InputView.inputCarNames()),
+                Attempts.from(InputView.inputRaceAttempts())
+        );
+        return new RacingGame(manager);
+    }
 }
