@@ -26,7 +26,11 @@ public class InputView {
         }
 
         try {
-            return Integer.parseInt(input);
+            int count = Integer.parseInt(input);
+            if (count < 0) {
+                throw new IllegalArgumentException("0 이상의 정수가 입력되어야 합니다.");
+            }
+            return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수가 입력되지 않았습니다.");
         }
