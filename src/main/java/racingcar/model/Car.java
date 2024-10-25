@@ -28,6 +28,6 @@ public class Car {
     }
 
     private boolean canProceed(int randomNumber) {
-        return randomNumber > 4;
+        return randomNumber >= 4;
     }
 }
