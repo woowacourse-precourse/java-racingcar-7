@@ -7,11 +7,20 @@ import java.util.regex.Pattern;
 public class InputView {
 
     private static final String COMMA_DELIMITED_NAME_REGEX = "^[a-zA-Z0-9가-힣]+(,[a-zA-Z0-9가-힣]+)*$";
+    private static final String ONLY_NUMBER_REGEX = "^[0-9]+$";
 
     public static String inputCarNames() {
         String input = Console.readLine();
         validateNotBlank(input);
         validateCommaDelimitedNames(input);
+        return input;
+    }
+
+    public static String inputRoundNumber() {
+        String input = Console.readLine();
+        validateNotBlank(input);
+        validateNotBlank(input);
+        validateRoundNumber(input);
         return input;
     }
 
@@ -24,6 +33,12 @@ public class InputView {
     private static void validateCommaDelimitedNames(String input) {
         if (!Pattern.matches(COMMA_DELIMITED_NAME_REGEX, input)) {
             throw new IllegalArgumentException("입력받은 자동차 이름은 쉼표(,)로 구분되어야 하고 반드시 알파벳, 숫자 또는 한글로 이루어져야 합니다.");
+        }
+    }
+
+    private static void validateRoundNumber(String input) {
+        if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
+            throw new IllegalArgumentException("경주 횟수는 숫자만 입력 가능합니다.");
         }
     }
 }
