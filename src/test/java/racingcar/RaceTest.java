@@ -17,7 +17,7 @@ class RaceTest {
 
     @Test
     void 우승자_발표() {
-        Assertions.assertThat(new Race(2, new Cars("pobi")).getWinner())
+        Assertions.assertThat(new Race(2, new Cars("pobi")).showRaceResult())
                 .contains("pobi");
     }
 }

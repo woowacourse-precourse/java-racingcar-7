@@ -58,12 +58,12 @@ public class Race {
         }
     }
 
-    public List<String> getWinner() {
+    public List<String> showRaceResult() {
         renderScoreBoard();
-        int maxNum = racingScoreBoard.values().stream().mapToInt(x -> x).max().orElse(0);
+        int maxMovement = racingScoreBoard.values().stream().mapToInt(x -> x).max().orElse(0);
 
         for (String carName : racingScoreBoard.keySet()) {
-            if (racingScoreBoard.get(carName) == maxNum) {
+            if (racingScoreBoard.get(carName) == maxMovement) {
                 winners.add(carName);
             }
         }

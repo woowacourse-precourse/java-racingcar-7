@@ -13,6 +13,6 @@ public class Application {
         Cars cars = new Cars(carNames);
         Race race = new Race(totalTurns, cars);
 
-        race.getWinner();
+        race.showRaceResult();
     }
 }
