@@ -26,4 +26,13 @@ public final class Utils {
             throw new IllegalArgumentException("숫자형 문자를 입력해주세요.");
         }
     }
+
+    public static void printResult(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            String name = racingCar.getName();
+            int count = racingCar.getCount();
+
+            System.out.println(name + " : " + count);
+        }
+    }
 }
