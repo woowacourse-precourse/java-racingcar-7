@@ -20,6 +20,11 @@ public class CarValidation {
         checkSameCarName(carList, carName);
     }
 
+    public static Integer gameMatchesValid(final String inputGameMatches) {
+        Integer gameMatches = checkOverMatches(inputGameMatches);
+        return gameMatches;
+    }
+
     private static void checkNullOrEmptyCarNames(final String carName) {
         if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException(NULL_EMPTY_FOUND.getMessage());
@@ -47,5 +52,13 @@ public class CarValidation {
         }
     }
 
+
+    private static Integer checkOverMatches(final String InputGameMatches) {
+        int gameMatches = Integer.parseInt(InputGameMatches);
+        if (gameMatches > 10) {
+            throw new IllegalArgumentException(OVER_GAME_MATCHES.getMessage());
+        }
+        return gameMatches;
+    }
 
 }
