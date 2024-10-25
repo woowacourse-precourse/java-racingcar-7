@@ -4,6 +4,7 @@ import racingcar.message.ErrorMessage;
 import racingcar.model.Car;
 import racingcar.model.ProcessedInput;
 import racingcar.model.OriginInput;
+import racingcar.model.Winner;
 import racingcar.util.Splitter;
 import racingcar.util.Validator;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -17,11 +18,12 @@ public class RacingController {
         입력, 레이싱, 최종 우승 자동차 출력 수행
         */
         OriginInput originInput = new OriginInput();
-        Validator validator = new Validator();
 
         // 유저 입력 받기
         originInput.inputCarNames();
         originInput.inputRaceRounds();
+
+        Validator validator = new Validator();
 
         // 아무 값도 입력되지 않은 경우
         if (validator.validBlank(originInput.getCarNames(), originInput.getRaceRound())) {
@@ -44,10 +46,19 @@ public class RacingController {
 
         // 자동차 경주 수행
         racing(processedInput);
+
+        Winner winner = new Winner();
+
+        // 우승 자동차 찾기
+        findWinner(processedInput.getCarList(), winner.getWinner());
+
+        // 최종 우승자 출력
+        winner.printWinner();
     }
 
     // 자동차 경주
     public void racing(ProcessedInput processedInput) {
+        System.out.println();
         for (BigInteger i = BigInteger.ZERO; i.compareTo(processedInput.getRaceRounds()) < 0; i = i.add(BigInteger.ONE)) {
             raceSingleRound(processedInput.getCarList());
         }
@@ -61,10 +72,28 @@ public class RacingController {
             }
             car.printPosition();
         }
+        System.out.println();
     }
 
     // 무작위 수 구하기
     public int getRandom() {
         return Randoms.pickNumberInRange(0,9);
+    }
+
+    public void findWinner(List<Car> carList, List<Car> winner) {
+        BigInteger maxPosition = BigInteger.ZERO;
+
+        for (Car car : carList) {
+            BigInteger curPosition = car.getPosition();
+
+            if (curPosition.compareTo(maxPosition) > 0){
+                maxPosition = curPosition;
+                winner.clear();
+                winner.add(car);
+            }
+            else if (maxPosition.compareTo(curPosition) == 0) {
+                winner.add(car);
+            }
+        }
     }
 }
