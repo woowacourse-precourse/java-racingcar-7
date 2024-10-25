@@ -49,13 +49,13 @@ public class Race {
     private void racingResult(List<Car> cars) {
         int maxAdvenceNum = 0;
         List<String> winners = new ArrayList<>();
-        // 최대 전진횟수 판단
+
         for (Car car : cars) {
             if (car.getCountAdvence() > maxAdvenceNum) {
                 maxAdvenceNum = car.getCountAdvence();
             }
         }
-        // 우승자 판단
+
         for (Car car : cars) {
             if (car.getCountAdvence() == maxAdvenceNum) {
                 winners.add(car.getName());
