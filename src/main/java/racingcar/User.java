@@ -20,6 +20,7 @@ public class User {
     public static String[] getCars(){
         String carNames = getCarNames();
         String[] cars = carNames.split(",");
+        isEmpty(cars);
         return cars;
     }
 
@@ -32,6 +33,14 @@ public class User {
     public static void isLastStringComma(String carNames){
         if(carNames.endsWith(",")){
             throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
+    }
+
+    public static void isEmpty(String[] cars){
+        for (int i = 0; i < cars.length; i++) {
+            if(cars[i].isEmpty()){
+                throw new IllegalArgumentException("자동차 이름을 정확히 입력해주세요.");
+            }
         }
     }
 }
