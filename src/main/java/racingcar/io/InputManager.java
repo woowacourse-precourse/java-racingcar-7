@@ -17,4 +17,9 @@ public class InputManager implements IOManager {
         printMessage(IOMessage.ENTER_CAR_NAME_INPUT);
         return Console.readLine();
     }
+
+    public String attemptCountInput() {
+        printMessage(IOMessage.ENTER_ATTEMPT_COUNT_INPUT);
+        return Console.readLine();
+    }
 }

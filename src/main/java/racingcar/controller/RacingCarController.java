@@ -13,5 +13,6 @@ public class RacingCarController {
         String carName = inputManager.carNameInput();
         String[] carNameArray = CarNameSplit.nameSplit(carName);
         CarNameValidation.carNameValidate(carNameArray);
+        String attemptCount = inputManager.attemptCountInput();
     }
 }
