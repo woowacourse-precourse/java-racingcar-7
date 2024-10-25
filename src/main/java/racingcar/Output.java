@@ -11,4 +11,12 @@ public class Output {
         System.out.println();
     }
 
+    public void printWinners(List<Car> winners){
+        String winnerNames = String.join(", ",
+                            winners.stream()
+                                .map(Car::getName)
+                                .toList());
+        System.out.println("최종 우승자 : " + winnerNames);
+    }
+
 }
