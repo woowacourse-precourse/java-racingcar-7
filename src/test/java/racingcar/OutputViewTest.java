@@ -1,13 +1,12 @@
 package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
-class OutputFilterTest {
+class OutputViewTest {
     @Test
     void testPrintOutput() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -17,7 +16,7 @@ class OutputFilterTest {
         String[] output = {"pobi", "crong", "honux"};
 
         // when
-        OutputFilter.printOutput(OutputFilter.OUTPUT_FILTER, output);
+        OutputView.printOutput(OutputView.OUTPUT_FILTER, output);
 
 
         // then
@@ -34,7 +33,7 @@ class OutputFilterTest {
         String[] output = {"pobi"};
 
         // when
-        OutputFilter.printOutput(OutputFilter.OUTPUT_FILTER, output);
+        OutputView.printOutput(OutputView.OUTPUT_FILTER, output);
 
         // then
         assertThat(outputStream.toString()).isEqualTo("최종 우승자: pobi");
