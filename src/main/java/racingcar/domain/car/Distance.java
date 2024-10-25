@@ -14,8 +14,8 @@ public class Distance {
         this.distance = ZERO_DISTANCE;
     }
 
-    public void increase(){
-        distance ++;
+    public void increase() {
+        distance++;
     }
 
     public int getDistance() {
