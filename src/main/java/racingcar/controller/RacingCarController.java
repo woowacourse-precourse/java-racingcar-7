@@ -41,7 +41,7 @@ public class RacingCarController {
         Race race = new Race();
 
         for (int i = 0; i < tryCount; i++) {
-            Cars racingCars = race.startRace(cars);
+            Cars racingCars = race.raceCars(cars);
             outputView.printMovedCars(racingCars);
         }
     }

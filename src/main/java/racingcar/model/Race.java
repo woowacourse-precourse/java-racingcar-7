@@ -9,7 +9,7 @@ public class Race {
     public Race(){
     }
 
-    public Cars startRace(Cars cars) {
+    public Cars raceCars(Cars cars) {
         for(Car car : cars.getCars()){
             int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             car.move(randomNumber);
