@@ -1,6 +1,7 @@
 package racingcar.io;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -22,6 +23,16 @@ class InputManagerTest {
     @AfterEach
     void closeConsole() {
         Console.close();
+    }
+
+    @Test
+    @DisplayName("비어있는 문자열 입력시 오류를 던지는지 확인한다")
+    void 비어있는_문자열_오류_테스트() {
+        String input = "   ";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> inputManager.carNameInput())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
