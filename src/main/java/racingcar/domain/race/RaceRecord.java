@@ -1,16 +1,17 @@
 package racingcar.domain.race;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RaceRecord {
 
     private List<RaceRoundRecord> raceRoundRecords;
 
-    public RaceRecord(List<RaceRoundRecord> raceRoundRecords) {
+    public RaceRecord(RaceRoundRecord raceRoundRecords) {
         if (raceRoundRecords == null) {
             throw new IllegalArgumentException("reaceRoundRecords가 null입니다");
         }
-        this.raceRoundRecords = raceRoundRecords;
+        this.raceRoundRecords = new ArrayList<>(List.of(raceRoundRecords));
     }
 
     public void add(RaceRoundRecord raceRoundRecord) {
