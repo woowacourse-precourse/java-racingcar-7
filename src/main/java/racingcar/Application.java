@@ -47,6 +47,9 @@ public class Application {
         if (roundStr == null || roundStr.isBlank()) {
             throw new IllegalArgumentException("시도할 횟수를 입력해야 합니다");
         }
+        if (!roundStr.matches("-?\\d+")) {
+            throw new IllegalArgumentException("시도할 횟수 입력은 숫자여야 합니다");
+        }
 
         return Integer.parseInt(roundStr);
     }
