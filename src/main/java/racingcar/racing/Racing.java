@@ -10,12 +10,11 @@ import racingcar.view.Request;
 
 public class Racing {
 
-    final String CAR_NAME_DELIMITER = ",";
-    final int MAX_CAR_NAME = 5;
-    final int FORWARD_CONDITION = 4;
+    private static final String CAR_NAME_DELIMITER = ",";
+    private static final int MAX_CAR_NAME = 5;
+    private static final int FORWARD_CONDITION = 4;
 
     private List<Car> carList;
-
     private int tryCount;
 
     public void start() {
@@ -62,6 +61,27 @@ public class Racing {
                 car.addForward();
             }
         }
+    }
+
+    public List<Car> selectWinners() {
+        List<Car> winners = new ArrayList<>();
+        int winCount = 0;
+
+        for(Car car : carList) {
+            int forward = car.getForward();
+
+            if (forward == winCount) {
+                winners.add(car);
+            }
+
+            if (forward > winCount) {
+                winCount = car.getForward();
+                winners.clear();
+                winners.add(car);
+            }
+        }
+
+        return winners;
     }
 
 }
