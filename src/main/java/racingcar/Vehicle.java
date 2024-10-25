@@ -2,7 +2,7 @@ package racingcar;
 
 public class Vehicle {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final int MIN_RANDOM_FOR_MOVE = 5;
+    private static final int MIN_RANDOM_FOR_MOVE = 4;
     private static final int MIN_DISTANCE = 0;
 
     private String vehicleName;
