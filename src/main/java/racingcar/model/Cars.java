@@ -9,12 +9,17 @@ import racingcar.utils.Validator;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
+        validate();
         this.cars = new ArrayList<>(cars);
     }
 
+    public static Cars of(List<Car> cars){
+        return new Cars(cars);
+    }
+
     private void validate() {
-        Validator.containDuplicate(extractCarNames(cars));
+        Validator.containDuplicate(getCarNames());
     }
 
     public void allMove() {
@@ -48,8 +53,7 @@ public class Cars {
         return maxDistance;
     }
 
-
-    public List<String> extractCarNames(List<Car> cars) {
+    public List<String> getCarNames() {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
             carNames.add(car.getName());
@@ -63,14 +67,6 @@ public class Cars {
             positions.add(car.getDistance());
         }
         return positions;
-    }
-
-    public List<String> getCarNames() {
-        return extractCarNames(cars);
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
 }
