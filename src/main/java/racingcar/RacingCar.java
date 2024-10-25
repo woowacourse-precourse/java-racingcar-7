@@ -14,6 +14,7 @@ public class RacingCar {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String tryCount = Console.readLine();
+        final int tryCountNumber = Integer.parseInt(tryCount);
 
         for (final String carName : carNames.split(",")) {
             if (carName.length() >= 5){
@@ -27,11 +28,13 @@ public class RacingCar {
             hashSet.add(carName);
         }
 
-        for (String carName : hashSet) {
-            final int randomInt = Randoms.pickNumberInRange(0, 9);
-            final String moveDistance = "-".repeat(randomInt);
-            System.out.print(carName + " : " + moveDistance);
-            System.out.println();
+        for (int i = 0; i < tryCountNumber; i++) {
+            for (String carName : hashSet) {
+                final int randomInt = Randoms.pickNumberInRange(0, 9);
+                final String moveDistance = "-".repeat(randomInt);
+                System.out.println(carName + " : " + moveDistance);
+            }
+            System.out.println("");
         }
     }
 
