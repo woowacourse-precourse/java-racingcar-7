@@ -13,8 +13,8 @@ import java.util.List;
 
 public class RacingGame {
 
-    private OutputView outputView;
-    private InputView inputView;
+    private final OutputView outputView;
+    private final InputView inputView;
 
     public RacingGame() {
         outputView = new OutputView();
@@ -28,19 +28,30 @@ public class RacingGame {
                 new DataTransformService()
         );
 
+        // TODO : 일급 컬렉션으로
+        List<Car> cars = registerCar(gameController);
+        ExecutionNumber executionNumber = registerExecutionNumber(gameController);
+        raceResult(gameController, executionNumber, cars);
+    }
+
+    private List<Car> registerCar(GameController gameController) {
         outputView.carRegistMessage();
         final String input = inputView.input();
-        // TODO : 일급 컬렉션으로
-        List<Car> cars = gameController.registerCars(input);
+        return gameController.registerCars(input);
+    }
 
+    private ExecutionNumber registerExecutionNumber(GameController gameController) {
         outputView.countRegistMessage();
         final String executionNumberInput = inputView.input();
         ExecutionNumber executionNumber = new ExecutionNumber(gameController.registerExecutionNumber(executionNumberInput));
         outputView.newline();
+        return executionNumber;
+    }
 
+    private void raceResult(GameController gameController, ExecutionNumber executionNumber, List<Car> cars) {
         outputView.executionMessage();
         for (int turn = 0; turn < executionNumber.getNumber(); turn++) {
-            cars.forEach(car -> gameController.race(car));
+            cars.forEach(gameController::race);
             outputView.printResult(cars);
             outputView.newline();
         }
