@@ -54,4 +54,16 @@ public class CarsTest {
                 .extracting(Car::getName)
                 .containsExactly("car2", "car3");
     }
+
+    @Test
+    @DisplayName("Cars객체 car리스트 반환 테스트")
+    void getCarsTest() {
+        List<Car> carList = cars.getCars();
+
+        assertThat(carList.size())
+                .isEqualTo(3);
+        assertThat(carList)
+                .extracting(Car::getName)
+                .containsExactly("car1", "car2", "car3");
+    }
 }
