@@ -190,7 +190,6 @@ class ApplicationTest extends NsTest {
                 + "Winter : ----\n"
                 + "Giselle : \n"
                 + "NingNing : -\n"
-                + "\n"
         );
     }
 }
