@@ -1,10 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Application {
 
@@ -27,14 +24,16 @@ public class Application {
             throw new IllegalArgumentException("경주에 참가할 자동차를 최소 2개 이상 입력해주세요.");
         }
 
-        final Set<String> registeredCarNames = new HashSet<>();
-        final List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            if (!registeredCarNames.add(carName)) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-            }
-            cars.add(new Car(carName));
-        }
+        CarManager carManager = new CarManager(carNames);
+
+//        final Set<String> registeredCarNames = new HashSet<>();
+        final List<Car> cars = carManager.getCars();
+//        for (String carName : carNames) {
+//            if (!registeredCarNames.add(carName)) {
+//                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+//            }
+//            cars.add(new Car(carName));
+//        }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String playTimesInput = Console.readLine();
