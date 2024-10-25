@@ -18,4 +18,16 @@ public class CarTest {
         assertThatThrownBy(() -> Car.isCarNameLengthFive("haeseon"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 올바른_구분자인지_확인(){
+        assertThatThrownBy(() -> User.isCorrectSeparator("pobi.woni.jun"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 문자열_마지막에_구분자_입력_제한(){
+        assertThatThrownBy(() -> User.isLastStringComma("pobi,"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
