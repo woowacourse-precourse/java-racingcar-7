@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +26,9 @@ public class Controller {
 
         // 횟수 입력받기
         int repeatNumber = stringToInt();
+
+        // 랜덤
+        int randomValue = createRandomValue();
     }
 
     private int stringToInt() {
@@ -43,6 +47,10 @@ public class Controller {
         }
 
         return true;
+    }
+
+    private int createRandomValue() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
 }
