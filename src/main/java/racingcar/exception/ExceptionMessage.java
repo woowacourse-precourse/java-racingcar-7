@@ -8,7 +8,8 @@ public enum ExceptionMessage implements Message {
     INPUT_BLANK_IS_NOT_ALLOWED(INVALID_INPUT.getMessage() + " [공백은 입력이 불가능합니다.]"),
     INPUT_AT_LEAST_TWO_CAR(INVALID_INPUT.getMessage() + "[2개 이상의 자동차를 등록해주세요.]"),
     INPUT_ONLY_INTEGER(INVALID_INPUT.getMessage() + "[정수만 입력 가능합니다.]"),
-    INPUT_POSITIVE_INTEGER(INVALID_INPUT.getMessage() + " [1 이상의 정수를 입력해주세요.]");
+    INPUT_POSITIVE_INTEGER(INVALID_INPUT.getMessage() + " [1 이상의 정수를 입력해주세요.]"),
+    DUPLICATE_INPUT(INVALID_INPUT.getMessage() + " [중복 입력은 불가능합니다.]");
 
     private final String message;
 
