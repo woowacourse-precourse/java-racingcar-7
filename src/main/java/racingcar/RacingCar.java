@@ -12,10 +12,10 @@ import java.util.List;
 
 public class RacingCar {
 
-    private InputHandler inputHandler = new InputHandler();
-    private OutputHandler outputHandler = new OutputHandler();
-    private RacingCarInputHandler racingCarInputHandler = new RacingCarInputHandler();
-    private RacingCarOutputHandler racingCarOutputHandler = new RacingCarOutputHandler();
+    private final InputHandler inputHandler = new InputHandler();
+    private final OutputHandler outputHandler = new OutputHandler();
+    private final RacingCarInputHandler racingCarInputHandler = new RacingCarInputHandler();
+    private final RacingCarOutputHandler racingCarOutputHandler = new RacingCarOutputHandler();
 
     public void run() {
         try {
