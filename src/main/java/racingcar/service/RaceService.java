@@ -17,4 +17,12 @@ public class RaceService {
         }
         return carsDto;
     }
+
+    public int roundService(String round) {
+        try{
+            return Integer.parseInt(round);
+        }catch (Exception e){
+            throw new IllegalArgumentException(Message.ROUND_COUNT_SHOUL_BE_NUMBER_VALIDATION_MESSAGE.getMessage());
+        }
+    }
 }
