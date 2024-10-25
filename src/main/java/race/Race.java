@@ -23,6 +23,8 @@ public class Race {
             printCarForward(cars);
         });
 
+        CheckException.checkIsStart(cars);
+
         String winners = findWinners(cars);
 
         return winners;
