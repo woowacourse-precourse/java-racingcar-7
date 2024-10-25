@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.CarMovementResults;
-import racingcar.model.CarMovementResults.CarMovementResult;
+import racingcar.model.car.CarMovementResults;
+import racingcar.model.car.CarMovementResults.CarMovementResult;
 
 public class OutputView {
     private static OutputView instance;

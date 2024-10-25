@@ -4,7 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
+import racingcar.model.car.Car;
 
 public class CarTest {
 

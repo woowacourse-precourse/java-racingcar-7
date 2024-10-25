@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.game;
 
 public class TotalRounds {
     private final int totalRounds;

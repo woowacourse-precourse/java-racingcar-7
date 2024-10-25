@@ -1,7 +1,10 @@
-package racingcar.model;
+package racingcar.model.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.model.car.Car;
+import racingcar.model.car.CarStatus;
+import racingcar.model.car.Cars;
 
 public class Game {
     private static final int RANDOM_MIN_NUMBER = 0;

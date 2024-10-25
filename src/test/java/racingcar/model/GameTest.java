@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.Cars;
+import racingcar.model.game.Game;
 
 public class GameTest {
     private Game game;

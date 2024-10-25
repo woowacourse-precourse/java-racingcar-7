@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.CarMovementResults;
-import racingcar.model.CarStatus;
+import racingcar.model.car.CarMovementResults;
+import racingcar.model.car.CarStatus;
 
 public class OutputViewTest {
 

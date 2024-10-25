@@ -2,9 +2,9 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.model.CarMovementResults;
-import racingcar.model.Cars;
-import racingcar.model.Game;
+import racingcar.model.car.CarMovementResults;
+import racingcar.model.car.Cars;
+import racingcar.model.game.Game;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
