@@ -17,4 +17,8 @@ public class Car {
         }
         return name + " : " + progress;
     }
+
+    public final void goForward() {
+        forwardCount += 1;
+    }
 }
