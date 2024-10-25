@@ -2,20 +2,20 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.context.Car;
+import racingcar.context.RacingCar;
 
-public class CarRacingResult {
+public class RacingResult {
     private Integer carRacingWinnerDistance;
     private List<String> carRacingWinners;
 
-    public CarRacingResult(List<Car> carGroup) {
-        this.carRacingWinnerDistance = getCarRacingWinnerDistance(carGroup);
-        this.carRacingWinners = getCarRacingWinner(carGroup);
+    public RacingResult(List<RacingCar> racingCars) {
+        this.carRacingWinnerDistance = getCarRacingWinnerDistance(racingCars);
+        this.carRacingWinners = getCarRacingWinner(racingCars);
     }
 
-    private Integer getCarRacingWinnerDistance(List<Car> carGroup) {
+    private Integer getCarRacingWinnerDistance(List<RacingCar> racingCars) {
         Integer carRacingWinnerRecord = 0;
-        for (Car car : carGroup) {
+        for (RacingCar car : racingCars) {
             if (carRacingWinnerRecord < car.getCarMovementDistance()) {
                 carRacingWinnerRecord = car.getCarMovementDistance();
             } //메서드 분리 필요
@@ -23,14 +23,14 @@ public class CarRacingResult {
         return carRacingWinnerRecord;
     }
 
-    private List<String> getCarRacingWinner(List<Car> carGroup) {
-        List<String> carRacingWinnerName = new ArrayList<>();
-        for (Car car : carGroup) {
+    private List<String> getCarRacingWinner(List<RacingCar> racingCars) {
+        List<String> carRacingWinnerNames = new ArrayList<>();
+        for (RacingCar car : racingCars) {
             if (car.getCarMovementDistance().equals(carRacingWinnerDistance)) {
-                carRacingWinnerName.add(car.getCarName());
+                carRacingWinnerNames.add(car.getCarName());
             } //메서드 분리 필요
         }
-        return carRacingWinnerName;
+        return carRacingWinnerNames;
     }
 
     public List<String> getCarRacingWinners() {
