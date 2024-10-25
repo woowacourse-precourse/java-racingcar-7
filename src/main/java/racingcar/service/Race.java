@@ -16,8 +16,11 @@ public class Race {
         goalCnt = tryNumber;
 
         while(true) {
-            for(RacingCar car : racingCars)
+            for(RacingCar car : racingCars) {
                 tryStepForward(car);
+                printStep(car);
+            }
+            System.out.println();
 
             if(isRaceEnd(racingCars))
                 break;
@@ -46,5 +49,13 @@ public class Race {
                 return true;
 
         return false;
+    }
+
+    private static void printStep(RacingCar car) {
+
+        System.out.print(car.getCarName() + " : ");
+        for(int i = 0; i < car.getCnt(); i++)
+            System.out.print("-");
+        System.out.println();
     }
 }
