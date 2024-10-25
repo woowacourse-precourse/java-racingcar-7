@@ -1,8 +1,11 @@
 package racingcar.util;
 
+import racingcar.model.Car;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Splitter {
     private final String carNames;
@@ -12,10 +15,11 @@ public class Splitter {
         this.carNames = carNames;
     }
 
-    public List<String> splitSeparator() {
+    public List<Car> splitSeparator() {
         List<String> splitCarNames = Arrays.stream(carNames.split(COMMA)).toList();
         List<String> trimCarNames = trimCarNames(splitCarNames);
-        return removeEmpty(trimCarNames);
+        List<String> carNames = removeEmpty(trimCarNames);
+        return createCarList(carNames);
     }
 
     public List<String> trimCarNames(List<String> splitCarNames) {
@@ -26,7 +30,12 @@ public class Splitter {
 
     public List<String> removeEmpty(List<String> trimCarNames) {
         trimCarNames.removeIf(String::isBlank);
-
         return trimCarNames;
+    }
+
+    public List<Car> createCarList(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
