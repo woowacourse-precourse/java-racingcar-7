@@ -14,8 +14,9 @@ public class RacingCarController {
 
     public void run(){
         outputView.startMessagePrint();
-        String readCarString = inputView.readCarString(); // 추후 이 메세지와 시도 횟수는 객체에서 관리하도록 수정시도해볼 예정
+        String readCarString = inputView.readCarString();
         outputView.tryCountMessage();
         String readTryCount = inputView.readTryCount();
+        RacingCarCollection collection = new RacingCarCollection(readCarString, readTryCount);
     }
 }

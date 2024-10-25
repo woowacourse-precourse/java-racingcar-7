@@ -17,6 +17,11 @@ public class InputView {
         if (tryCount == null) {
             throw new IllegalArgumentException();
         }
+        try {
+            Integer.parseInt(tryCount);
+        }catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
         return tryCount;
     }
 }
