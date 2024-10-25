@@ -1,9 +1,5 @@
 package racingcar;
 
-import java.util.HashMap;
-
-
-
 public class Racingcar {    
     private String name;
     private int moveCount;
