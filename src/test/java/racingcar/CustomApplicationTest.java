@@ -17,12 +17,12 @@ class CustomApplicationTest extends NsTest{
                 run("pobi,woni,jun", "3");
 
                 assertThat(output()).contains("pobi : -", "woni : ", "jun : -");
-                assertThat(output()).contains("pobi : --:", "woni : -", "jun : --");
-                assertThat(output()).contains("pobi : --", "woni : --", "jun : ---", "최종 우승자 : jun");
+                assertThat(output()).contains("pobi : --", "woni : -", "jun : --");
+                assertThat(output()).contains("pobi : --", "woni : --", "jun : --", "최종 우승자 : pobi, woni, jun");
             },
             5, 3, 6,
             4, 5,7,
-            2,4,8
+            2,4,2
         );
     }
 
@@ -31,7 +31,7 @@ class CustomApplicationTest extends NsTest{
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni","1");
-                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi,woni");
+                assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
             },
             5,5
         );
@@ -42,14 +42,14 @@ class CustomApplicationTest extends NsTest{
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni","1");
-                assertThat(output()).contains("pobi :", "woni :", "최종 우승자 : pobi,woni");
+                assertThat(output()).contains("pobi :", "woni :", "최종 우승자 : pobi, woni");
             },
             0,0
         );
     }
 
     @Override
-    protected void runMain() {
+    public void runMain() {
         Application.main(new String[]{});
     }
 }

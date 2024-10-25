@@ -7,6 +7,7 @@ import racingcar.validator.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
@@ -23,6 +24,7 @@ public class GameController {
     }
     public void run(){
         String[] carNames = getCarNames();
+
         int trialCount = getTrialCount();
 
         carRepository.initCarRepository(carNames);
