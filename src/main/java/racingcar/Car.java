@@ -3,9 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    String name;
-    int count;
-    int progress;
+    private String name;
+    private int count;
+    private int progress;
 
     public Car(String name, int attemptCount) {
         this.name = name;
