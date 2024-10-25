@@ -73,7 +73,7 @@ public class Lap {
             return false;
         }
         Lap oLap = (Lap) obj;
-        return this.value.equals(oLap.value);
+        return this.value.compareTo(oLap.value) == 0;
     }
 
     @Override

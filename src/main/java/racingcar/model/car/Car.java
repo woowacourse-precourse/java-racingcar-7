@@ -6,6 +6,8 @@ import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
 
 import racingcar.common.exception.LengthExceedException;
 import racingcar.common.exception.ShouldNotBeNullException;
+import racingcar.model.race.Distance;
+import racingcar.util.RandomUtil;
 
 public class Car {
     private final String name;
@@ -26,10 +28,15 @@ public class Car {
         return myProgress.completedAllLap();
     }
 
-    public void updateProgress() {
-        MovementCondition condition = MovementCondition.getCondition();
-        if (condition.carCanMove()) {
-            myProgress.updatePosition(condition.getDistance());
+    public Distance movableDistance() {
+        int movementValue = RandomUtil.generateRandomNum();
+        MovementCondition condition = MovementCondition.getConditionBy(movementValue);
+        return condition.getDistance();
+    }
+
+    public void updateProgress(final Distance distance) {
+        if (distance.isBiggerThanZero()) {
+            myProgress.updatePosition(distance);
             myProgress.updateRemainingLap();
         }
     }

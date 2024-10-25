@@ -2,20 +2,14 @@ package racingcar.model.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.common.config.AppConfig;
 import racingcar.helper.ReflectionUtil;
+import racingcar.model.race.Distance;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Position;
 
 public class CarTest {
-
-    @AfterEach
-    void resetProfile() {
-        AppConfig.resetProfile();
-    }
 
     @Test
     @DisplayName("중간 진행 사항 확인")
@@ -35,19 +29,39 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("내 현황 수정")
-    void test() {
+    @DisplayName("movement value가 1일 때 내 현황 수정할 수 있다.")
+    void updateMyProgress() {
         // given
-        AppConfig.setTestProfileWithValue("4");
         Lap remainLap = Lap.from("3");
         Position position = Position.initiate();
         ReflectionUtil.forceSetField(position, "value", "---");
         MyProgress myProgress = MyProgress.from(remainLap, position);
         Car sut = Car.from("user1", myProgress);
         // when
-        sut.updateProgress();
+        sut.updateProgress(Distance.ONE);
         // then
         assertThat(position.toString()).isEqualTo("----");
-        assertThat(remainLap).isEqualTo(Lap.from("2"));
+        Lap expectedRemainingLap = Lap.from("2");
+        assertThat(remainLap.equals(expectedRemainingLap)).isTrue();
+    }
+
+    @Test
+    @DisplayName("movement value가 0일 때 내 현황 수정할 수 없음.")
+    void canNotUpdateMyProgress() {
+        // given
+        Lap remainLap = Lap.from("3");
+        Position position = Position.initiate();
+        ReflectionUtil.forceSetField(position, "value", "---");
+        MyProgress myProgress = MyProgress.from(remainLap, position);
+        Car sut = Car.from("user1", myProgress);
+
+        // when
+        sut.updateProgress(Distance.ZERO);
+
+        // then
+        assertThat(position.toString()).isEqualTo("---");
+        Lap expectedRemainingLap = Lap.from("3");
+        assertThat(remainLap.equals(expectedRemainingLap)).isTrue();
+
     }
 }

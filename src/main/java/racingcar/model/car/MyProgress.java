@@ -4,6 +4,7 @@ import static java.util.Objects.isNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
 import racingcar.common.exception.ShouldNotBeNullException;
+import racingcar.model.race.Distance;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Position;
 
@@ -27,8 +28,8 @@ public class MyProgress {
     }
 
 
-    public void updatePosition(int moveCondition) {
-        position.add(moveCondition);
+    public void updatePosition(Distance distance) {
+        position.add(distance);
     }
 
     public void updateRemainingLap() {

@@ -72,11 +72,12 @@
 
 ### 1. Car
 
-| Method          | Parameter | Return Type | Implementation |
-|-----------------|-----------|-------------|----------------|
-| completedAllLap | -         | boolean     | DONE ✅         |
-| myProgress      | -         | String      | DONE ✅         |
-| updateProgress  | -         | void        | DONE ✅         |
+| Method            | Parameter | Return Type | Exception                     | Implementation |
+|-------------------|-----------|-------------|-------------------------------|----------------|
+| completedAllLap   | -         | boolean     |                               | DONE ✅         |
+| updateProgress    | int       | void        | IllegalMovementValueException | DONE ✅         |
+| movableDistance   | -         | int         |                               | DONE ✅         |
+| myProgressSummary | -         | String      |                               | DONE ✅         |
 
 <br>
 

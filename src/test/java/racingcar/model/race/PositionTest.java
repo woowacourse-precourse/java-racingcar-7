@@ -16,7 +16,7 @@ public class PositionTest {
         forceSetField(position, "value", "---");
 
         // when
-        position.add(1);
+        position.add(Distance.ONE);
 
         // then
         assertThat(position.toString()).isEqualTo("----");
@@ -30,7 +30,7 @@ public class PositionTest {
         forceSetField(position, "value", "---");
 
         // when
-        position.add(0);
+        position.add(Distance.ZERO);
 
         // then
         assertThat(position.toString()).isEqualTo("---");

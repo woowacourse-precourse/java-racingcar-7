@@ -1,10 +1,7 @@
 package racingcar.model.race;
 
-import static racingcar.common.constant.RaceConstant.NO_MOVEMENT;
 import static racingcar.common.constant.RaceConstant.POSITION_ICON;
 import static racingcar.common.constant.SystemConstant.EMPTY_STRING;
-
-import java.util.stream.IntStream;
 
 public class Position {
     private String value;
@@ -17,17 +14,16 @@ public class Position {
         this.value = EMPTY_STRING;
     }
 
-    public void add(final int moveDistance) {
-        if (moveDistance == NO_MOVEMENT) {
+    public void add(final Distance distance) {
+        if (distance.isZero()) {
             return;
         }
-        this.value = generateNextPosition(moveDistance);
+        this.value = generateNextPosition(distance);
     }
 
-    // TODO : Util로 가져가야 할까?
-    private String generateNextPosition(final int moveDistance) {
+    private String generateNextPosition(final Distance distance) {
         StringBuilder positionBuilder = new StringBuilder(this.value);
-        IntStream.range(0, moveDistance)
+        distance.initiateIntStream()
                 .forEach(idx -> positionBuilder.append(POSITION_ICON));
         return positionBuilder.toString();
     }

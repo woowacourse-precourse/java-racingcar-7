@@ -46,7 +46,7 @@ public class MyProgressTest {
         MyProgress myProgress = MyProgress.from(remainingLap, position);
         // when
         myProgress.updateRemainingLap();
-        myProgress.updatePosition(1);
+        myProgress.updatePosition(Distance.ONE);
         // then
         assertThat(myProgress.toString()).isEqualTo("----");
     }

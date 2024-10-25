@@ -3,6 +3,7 @@ package racingcar.model.car;
 import java.util.List;
 import java.util.Objects;
 import racingcar.common.exception.ShouldNotBeNullException;
+import racingcar.model.race.Distance;
 
 public class Cars {
     private final List<Car> cars;
@@ -17,7 +18,10 @@ public class Cars {
     }
 
     public void move() {
-        cars.forEach(Car::updateProgress);
+        for (Car car : cars) {
+            Distance distance = car.movableDistance();
+            car.updateProgress(distance);
+        }
     }
 
     public List<String> currentPositions() {
