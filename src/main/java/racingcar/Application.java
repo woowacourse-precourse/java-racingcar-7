@@ -11,7 +11,6 @@ import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -39,9 +38,7 @@ public class Application {
     }
 
     private static void setUpRacingCars() {
-        String carNames = getCarNames();
-
-        List<String> carNameList = getCarNameList(carNames);
+        List<String> carNameList = getCarNames();
 
         racingCars = createRacingCars(carNameList);
     }
@@ -64,11 +61,7 @@ public class Application {
         return racingService.getRacingCars(carNameList);
     }
 
-    private static List<String> getCarNameList(String carNames) {
-        return Arrays.stream(carNames.split(",")).toList();
-    }
-
-    private static String getCarNames() {
+    private static List<String> getCarNames() {
         outputView.printInputCarNames();
         return inputView.getCarNames();
     }
