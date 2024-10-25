@@ -2,9 +2,9 @@ package racingcar.service;
 
 import java.util.List;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
+import racingcar.dto.CarDto;
 
 public class RacingcarService {
 
@@ -19,10 +19,10 @@ public class RacingcarService {
         this.tryCount.set(tryCount);
     }
 
-    public List<Car> playRound() {
+    public List<CarDto> playRound() {
         cars.playRound();
         tryCount.playRound();
-        return cars.getCars();
+        return cars.getDto();
     }
 
     public Cars getResult() {

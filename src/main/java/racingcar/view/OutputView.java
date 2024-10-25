@@ -4,6 +4,7 @@ import java.util.List;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.dto.CarDto;
 
 public class OutputView {
 
@@ -18,10 +19,10 @@ public class OutputView {
         print("시도할 횟수는 몇 회인가요?\n");
     }
 
-    public static void roundResult(List<Car> cars) {
+    public static void roundResult(List<CarDto> cars) {
         print("실행 결과\n");
         cars.forEach(car ->
-            print(String.format("%s : %s%n", car.getName(), "-".repeat(car.getPosition())))
+            print(String.format("%s : %s%n", car.name(), "-".repeat(car.position())))
         );
         print("\n");
     }

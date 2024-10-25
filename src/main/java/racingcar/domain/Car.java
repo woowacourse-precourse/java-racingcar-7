@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.dto.CarDto;
 
 public class Car {
 
@@ -32,5 +33,9 @@ public class Car {
 
     public void playRound() {
         move(Randoms.pickNumberInRange(0, 9));
+    }
+
+    public CarDto getDto() {
+        return new CarDto(name, position);
     }
 }
