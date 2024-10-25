@@ -15,6 +15,7 @@ public class UserResponseView {
             distance = "-".repeat(start.get(i));
             System.out.printf("%s : %s\n", carName.get(i), distance);
         }
+        System.out.println();
     }
     public static void finalWinner(String winner){
         System.out.printf("최종 우승자 : %s", winner);
