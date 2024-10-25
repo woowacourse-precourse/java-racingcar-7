@@ -12,7 +12,7 @@ public class UserRequestController {
     RacingService racingService = new RacingService();
     Cars cars;
 
-    void userInputData(String carNames, String repeatNum){
+    public void userInputData(String carNames, String repeatNum){
         if(validService.isCarNames(carNames) && validService.isRepeat(repeatNum)){
             saveCar(carNames);
             List<String> carList = getCarList();
