@@ -28,6 +28,11 @@ public class Application {
 
             System.out.println();
         }
+
+        int max = calMaxMove(cars);
+        List<String> winners = findWinners(cars, max);
+
+        
     }
 
     public static List<Car> createParticipant(String input) {
@@ -54,5 +59,35 @@ public class Application {
         if (name.isEmpty() || name.length() > 5) {
             throw new CarNameInputException();
         }
+    }
+
+    public static int calMaxMove(List<Car> cars) {
+
+        int res = 0;
+
+        for (Car item : cars) {
+
+            int value = item.getPosition();
+
+            if (value > res) {
+                res = value;
+            }
+        }
+
+        return res;
+    }
+
+    public static List<String> findWinners(List<Car> cars, int max) {
+
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+
+            if (car.getPosition() == max) {
+                winners.add(car.getCarName());
+            }
+        }
+
+        return winners;
     }
 }
