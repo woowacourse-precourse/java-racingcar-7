@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.global.enums.ErrorMessage;
 import racingcar.model.Car;
@@ -24,15 +25,16 @@ public class RacingCarController {
 
     public Cars setCars() {
         List<String> carNames = inputView.inputCarNames();
-        return setCarsName(carNames);
+        List<Car> carList = setCarsName(carNames);
+        return new Cars(carList);
     }
 
-    public Cars setCarsName(List<String> carNames) {
-        Cars cars = new Cars();
+    public List<Car> setCarsName(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
             validateName(carName);
-            cars.addCar(new Car(carName));
+            cars.add(new Car(carName));
         }
         return cars;
     }
