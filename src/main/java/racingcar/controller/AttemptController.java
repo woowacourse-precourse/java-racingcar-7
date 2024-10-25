@@ -1,14 +1,13 @@
 package racingcar.controller;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
-import racingcar.validation.ValidateAttempt;
+import racingcar.validation.AttemptValidation;
 
 public class AttemptController {
 
     public static int getAttempt(String inputAttempt) {
-        ValidateAttempt.isInteger(inputAttempt);
+        AttemptValidation.isInteger(inputAttempt);
         int attempt = Integer.parseInt(inputAttempt);
-        ValidateAttempt.isOverZero(attempt);
+        AttemptValidation.isOverZero(attempt);
         return attempt;
     }
 

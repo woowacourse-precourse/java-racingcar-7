@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.HashSet;
 import racingcar.exception.Exception;
 
-public class ValidateNames {
+public class NamesValidation {
 
     public static void isUnderOne(String carNames) {
         if(!carNames.contains(",")) Exception.exceptionUnderCars();

@@ -2,7 +2,7 @@ package racingcar.validation;
 
 import racingcar.exception.Exception;
 
-public class ValidateAttempt {
+public class AttemptValidation {
 
     public static void isInteger(String inputAttempt) {
         try {
