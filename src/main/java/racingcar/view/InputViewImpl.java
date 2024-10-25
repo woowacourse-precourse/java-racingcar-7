@@ -10,9 +10,8 @@ public class InputViewImpl implements InputView {
     }
 
     @Override
-    public Integer getCountOfAttemptsFormView() {
-        // TODO: 숫자인지 검증기능 구현
+    public String getAttemptCountFormView() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.valueOf(Console.readLine());
+        return Console.readLine();
     }
 }
