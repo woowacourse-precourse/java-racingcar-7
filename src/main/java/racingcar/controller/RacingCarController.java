@@ -5,47 +5,57 @@ import java.util.List;
 import java.util.Objects;
 import racingcar.domain.Car;
 import racingcar.service.RacingCarService;
-import racingcar.view.RacingCarView;
+import racingcar.view.InputView;
+import racingcar.view.OutPutView;
 
 public class RacingCarController {
 
     private final RacingCarService racingCarService;
-    private final RacingCarView racingCarView;
+    private final InputView inputView;
+    private final OutPutView outPutView;
 
-    public RacingCarController(RacingCarService racingCarService, RacingCarView racingCarView) {
+    public RacingCarController(RacingCarService racingCarService, InputView inputView, OutPutView outPutView) {
         this.racingCarService = racingCarService;
-        this.racingCarView = racingCarView;
+        this.inputView = inputView;
+        this.outPutView = outPutView;
     }
 
     public void run() {
 
-        String carNames = racingCarView.getCarNamesFromView();
-        Integer numberOfAttempts = racingCarView.getNumberOfAttemptsFromView();
+        String carNames = inputView.getCarNamesFormView();
+        Integer countOfAttempts = inputView.getCountOfAttemptsFormView();
 
-        if (numberOfAttempts <= 0) {
+        if (countOfAttempts <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
 
         List<Car> racingCars = racingCarService.splitAndInitializeRacingCars(carNames);
 
-        printRaceResults(numberOfAttempts, racingCars);
-        printWinners(racingCars);
+        runCarRaceAndPrintResults(countOfAttempts, racingCars);
+        findWinnersAndPrintResults(racingCars);
     }
 
-    private void printRaceResults(Integer numberOfAttempts, List<Car> racingCars) {
+    private void runCarRaceAndPrintResults(Integer numberOfAttempts, List<Car> racingCars) {
 
+        System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
-            racingCarService.startRacingCarGame(racingCars);
+            racingCarService.startCarRaceGame(racingCars);
 
             for (Car car : racingCars) {
-                racingCarView.printRaceResults(car.getName(), "-".repeat(car.getDistance()));
+                outPutView.printCarRaceGameResults(car.getName(), "-".repeat(car.getDistance()));
             }
+
+            System.out.println();
         }
     }
 
-    private void printWinners(List<Car> racingCars) {
+    private void findWinnersAndPrintResults(List<Car> racingCars) {
         Integer maxDistance = getMaxDistance(racingCars);
+
+        List<String> winnerCars = getWinners(racingCars, maxDistance);
+        String winners = String.join(", ", winnerCars);
+        outPutView.printWinners(winners);
     }
 
     private Integer getMaxDistance(List<Car> racingCars) {
