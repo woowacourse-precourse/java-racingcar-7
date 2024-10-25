@@ -14,4 +14,8 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printGameStartMessage() {
+        printMessage(RESULT_MESSAGE);
+    }
+
 }
