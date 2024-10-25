@@ -17,7 +17,7 @@ public class Constant {
     public static final int CAR_SCORE_DEFAULT_VALUE = 0;
 
     public static final String INPUT_DELIMITER = ",";
-    public static final String POSITIVE_INTEGER_REGEX = "[0-9]+";
+    public static final String INTEGER_REGEX = "[0-9]+";
     public static final String WINNER_DELIMITER = ", ";
 
     public static final String GAME_RESULT_MESSAGE = "실행 결과";
