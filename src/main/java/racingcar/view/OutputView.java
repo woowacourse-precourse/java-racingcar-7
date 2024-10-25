@@ -10,10 +10,10 @@ public class OutputView {
     }
 
     public void printRoundStatus(String status) {
-        System.err.println(status);
+        System.out.println(status);
     }
 
     public void printWinners(String result) {
-        System.out.printf(ViewMessage.PRINT_WINNERS.getMessage(result));
+        System.out.println(ViewMessage.PRINT_WINNERS.getMessage(result));
     }
 }
