@@ -3,7 +3,6 @@ package racingcar.utils;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.model.Car;
 
 public class Validator {
     public static void isEmpty(String name) {
