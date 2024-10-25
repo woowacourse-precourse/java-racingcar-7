@@ -1,4 +1,4 @@
-package racingcar.model.carname;
+package racingcar.model.carnameinput;
 
 import racingcar.exception.CarNameLengthExceedException;
 
