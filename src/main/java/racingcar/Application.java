@@ -10,6 +10,9 @@ public class Application {
     private static final RacingController racingCarController = new RacingController(racingCarTemplate);
 
     public static void main(String[] args) {
-        racingCarController.run();
+        racingCarController.setUpRacingCars();
+        racingCarController.setUpTryCount();
+        racingCarController.playRacing();
+        racingCarController.printRacingResult();
     }
 }
