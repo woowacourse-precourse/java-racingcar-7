@@ -11,9 +11,10 @@ public class User {
         return Console.readLine();
     }
 
-    public static int getTryNumber(){
+    public static int getTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNumber = Integer.parseInt(Console.readLine());
+        int tryNumber;
+        tryNumber = isTryNumberDigit();
         return tryNumber;
     }
 
@@ -34,6 +35,21 @@ public class User {
         if(carNames.endsWith(",")){
             throw new IllegalArgumentException("잘못된 입력값입니다.");
         }
+    }
+
+    public static int isDigit(String inputNumber){
+        int tryNumber = Integer.parseInt(inputNumber);
+        return tryNumber;
+    }
+
+    public static int isTryNumberDigit() {
+        int tryNumber;
+        try {
+            tryNumber = isDigit(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
+        return tryNumber;
     }
 
     public static void isEmpty(String[] cars){

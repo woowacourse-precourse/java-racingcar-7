@@ -37,4 +37,10 @@ public class CarTest {
         assertThatThrownBy(() -> User.isEmpty(cars))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 시도_횟수_숫자인지_확인(){
+        assertThatThrownBy(() -> User.isDigit("pobi"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
