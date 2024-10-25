@@ -13,5 +13,9 @@ public class InputView {
         System.out.println(ViewMessage.INPUT_TRY_COUNT.getMessage());
         return Console.readLine();
     }
+    
+    public void close() {
+        Console.close();
+    }
 
 }
