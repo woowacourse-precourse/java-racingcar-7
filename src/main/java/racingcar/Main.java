@@ -54,4 +54,21 @@ public class Main {
     public void setMoveInformation(Car car, boolean move) {
         car.setMove(move);
     }
+
+    public int repeatCreation(){
+        String userInput = receiveCarNames();
+        String[] carNames = splitCarNames(userInput);
+
+        // TODO: createSingleCar 만들기만 하고 안 쓰네
+        List<Car> cars = createAllCars(carNames);
+
+        int repeatCount = 0;
+
+        for (Car car : cars) {
+            setMoveInformation(car, isMove(createRandomNumber()));
+            repeatCount++;
+        }
+
+        return repeatCount;
+    }
 }
