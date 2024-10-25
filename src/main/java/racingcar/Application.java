@@ -113,4 +113,17 @@ public class Application {
             resultMap.get(name).append(IOMessage.MOVEMENT_SIGN);
         }
     }
+
+    public static String createRaceResult(Map<String, StringBuilder> resultMap) {
+        StringBuilder result = new StringBuilder();
+
+        for (String name : resultMap.keySet()) {
+            String movement = resultMap.get(name).toString();
+            result.append(IOMessage.buildRaceResult(name, movement)).append("\n");
+        }
+
+        result.append("\n");
+
+        return result.toString();
+    }
 }
