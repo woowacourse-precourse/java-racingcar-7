@@ -8,7 +8,7 @@ public class Number {
         try {
             this.value = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력하세요.");
+            throw new IllegalArgumentException("정수만 입력하세요.");
         }
     }
 
