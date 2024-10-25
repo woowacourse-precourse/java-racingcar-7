@@ -1,7 +1,10 @@
-package racingcar.input;
+package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Input;
+import racingcar.domain.RacingCar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InputUtil {
@@ -17,9 +20,19 @@ public class InputUtil {
 
         input = Console.readLine();
         int tryNumber = getTryNumber(input);
+
         Console.close();
 
         return new Input(names, tryNumber);
+    }
+
+    public static List<RacingCar> getRacingCars(Input input) {
+
+        List<RacingCar> racingCars = new ArrayList<>();
+        for(String name: input.getNames())
+            racingCars.add(new RacingCar(name));
+
+        return racingCars;
     }
 
     private static List<String> parseNames(String input) throws IllegalArgumentException {
