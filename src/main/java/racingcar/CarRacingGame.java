@@ -15,6 +15,9 @@ public class CarRacingGame {
         if (carList == null || carList.isEmpty()) {
             throw new IllegalArgumentException("1대 이상의 자동차가 경주에 참여해야 합니다.");
         }
+        if (round <= 0) {
+            throw new IllegalArgumentException("라운드는 1회 이상 진행되어야 합니다");
+        }
 
         this.outputDisplay = outputDisplay;
         this.carList = carList;
