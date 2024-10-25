@@ -6,7 +6,7 @@ import racingcar.game.io.OutputHandler;
 import racingcar.game.model.Car;
 import racingcar.game.model.RacingCars;
 
-public class RacingCar {
+public class RacingCarGame {
     private final OutputHandler outputHandler = new OutputHandler();
     private final InputHandler inputHandler = new InputHandler();
 
