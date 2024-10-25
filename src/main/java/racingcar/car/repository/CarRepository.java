@@ -1,5 +1,6 @@
 package racingcar.car.repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class CarRepository {
 		return CarRepository.CarRepositoryHolder.INSTANCE;
 	}
 
-	public void saveAll(List<Car> cars) {
+	public void saveAll(Collection<Car> cars) {
 		cars.forEach(car -> this.cars.put(car.getName(), car));
 	}
 
