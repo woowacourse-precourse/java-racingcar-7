@@ -62,6 +62,7 @@ public class Application {
     }
 
 
+    // 자동차 이름을 구분하는 메서드
     public static HashMap<String,Integer> delimiterCar(String nameInput) {
         StringTokenizer st = new StringTokenizer(nameInput,",");
         HashMap<String,Integer> carInfo = new HashMap<>();
@@ -71,18 +72,15 @@ public class Application {
         }
         return carInfo;
     }
+
+    // 랜덤값에 따라 전진 여부를 결정하는 메서드
     public static int isForward() {
 
         int i = Randoms.pickNumberInRange(0,9);
         if (i>=4) return 1;
         return 0;
-
-
     }
 
 
-//    public static String carMove(boolean input) {
-//
-//    }
 
 }
