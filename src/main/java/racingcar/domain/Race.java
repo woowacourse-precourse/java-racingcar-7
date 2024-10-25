@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
+import racingcar.dto.CarDto;
+import racingcar.dto.RoundResult;
+import racingcar.dto.Winners;
 
 public class Race {
     private List<Car> cars;

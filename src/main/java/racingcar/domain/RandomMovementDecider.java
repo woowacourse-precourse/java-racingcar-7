@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static racingcar.constants.Constraints.MAX_RANDOM_NUMBER;
 import static racingcar.constants.Constraints.MIN_MOVEMENT_NUMBER;

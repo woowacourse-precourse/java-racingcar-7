@@ -1,7 +1,10 @@
-package racingcar;
+package racingcar.utils;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.dto.CarDto;
+import racingcar.dto.RoundResult;
+import racingcar.dto.Winners;
 
 public class DisplayConverter {
     public static String convertRoundResult(RoundResult roundResult) {

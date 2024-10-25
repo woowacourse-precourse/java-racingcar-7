@@ -16,6 +16,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.Car;
+import racingcar.domain.Race;
+import racingcar.dto.CarDto;
+import racingcar.dto.RoundResult;
 
 class RaceTest {
     private List<Car> cars = new ArrayList<>();

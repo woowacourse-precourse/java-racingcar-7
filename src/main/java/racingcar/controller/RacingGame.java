@@ -1,6 +1,10 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Race;
+import racingcar.handler.InputHandler;
+import racingcar.handler.OutputHandler;
 
 public class RacingGame {
     public void exec(){

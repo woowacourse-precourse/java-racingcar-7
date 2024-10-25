@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validator;
 
 import static racingcar.constants.Constraints.BLANK;
 import static racingcar.constants.Constraints.CAR_NAME_REGEX;

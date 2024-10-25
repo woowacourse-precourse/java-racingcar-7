@@ -9,6 +9,7 @@ import static racingcar.constants.ErrorMessages.UNDER_LENGTH_ERROR_MESSAGE;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.validator.InputValidator;
 
 class InputValidatorTest {
 

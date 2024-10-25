@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.handler;
 
 import static racingcar.constants.Constraints.CAR_NAME_DELIMITER;
 import static racingcar.constants.ErrorMessages.NUMBER_FORMAT_ERROR_MESSAGE;
@@ -6,6 +6,7 @@ import static racingcar.constants.ErrorMessages.NUMBER_FORMAT_ERROR_MESSAGE;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.validator.InputValidator;
 
 public class InputHandler {
 
