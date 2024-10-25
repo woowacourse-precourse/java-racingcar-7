@@ -19,6 +19,10 @@ public class Parser {
         return Integer.parseInt(input);
     }
 
+    public String joinWithJoiner(List<String> list, String joiner) {
+        return String.join(joiner, list);
+    }
+
     private String[] splitBySeparator(String input, String separator) {
         return input.split(separator);
     }
