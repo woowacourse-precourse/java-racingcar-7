@@ -5,10 +5,10 @@ import java.util.List;
 import racingcar.domain.name.Name;
 
 public class Cars {
-	private final List<Car> cars;
+	private final List<Car> racingCars;
 
 	public Cars(List<Car> cars) {
-		this.cars = cars;
+		this.racingCars = cars;
 	}
 
 	public static Cars from(List<Name> names) {
@@ -16,7 +16,7 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public List<Car> getCars() {
-		return cars;
+	public List<Car> getRacingCars() {
+		return racingCars;
 	}
 }
