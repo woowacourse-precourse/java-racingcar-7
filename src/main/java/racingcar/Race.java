@@ -25,10 +25,6 @@ public class Race {
         this.racingScoreBoard = racingScoreBoard;
     }
 
-    public int getTotalRaceTurn() {
-        return totalRaceTurn;
-    }
-
     private static void validateNaturalNumber(int TOTAL_RACE_TURN) {
         if (TOTAL_RACE_TURN <= 0) {
             throw new IllegalArgumentException("자동차 경주는 1회 이상 진행되어야 합니다.");

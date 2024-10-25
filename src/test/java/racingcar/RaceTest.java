@@ -16,15 +16,6 @@ class RaceTest {
     }
 
     @Test
-    void 자동차경주_총라운드_1회_이상_점검() {
-        Assertions.assertThat(new Race(1, new Cars("pobi")).getTotalRaceTurn())
-                .isEqualTo(1);
-
-        Assertions.assertThat(new Race(30, new Cars("pobi")).getTotalRaceTurn())
-                .isEqualTo(30);
-    }
-
-    @Test
     void 우승자_발표() {
         Assertions.assertThat(new Race(2, new Cars("pobi")).getWinner())
                 .contains("pobi");
