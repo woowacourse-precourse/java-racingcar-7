@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import racingcar.view.OutputView;
 
@@ -35,5 +37,15 @@ public class RacingcarService {
             max = Math.max(entry.getValue().length(), max);
         }
         return max;
+    }
+
+    private List<String> pickWinner(Map<String, String> player, int max) {
+        List<String> winner = new LinkedList<>();
+        for (Map.Entry<String, String> entry : player.entrySet()) {
+            if (entry.getValue().length() == max) {
+                winner.add(entry.getKey());
+            }
+        }
+        return winner;
     }
 }
