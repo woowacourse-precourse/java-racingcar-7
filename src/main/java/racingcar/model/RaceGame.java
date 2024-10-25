@@ -7,8 +7,8 @@ public class RaceGame {
     private final List<Car> cars;
     private final int attempts;
 
-    public RaceGame(List<Car> cars, int attempts) {
-        this.cars = cars;
+    public RaceGame(List<String> carNames, int attempts) {
+        this.cars = createCars(carNames);
         this.attempts = attempts;
     }
 

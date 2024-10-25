@@ -11,6 +11,12 @@ public class RaceGameController {
     OutputView outputView;
     RandomNumberGenerator randomNumberGenerator;
 
+    public RaceGameController() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+        this.randomNumberGenerator = new RandomNumberGenerator();
+    }
+
     private void playGame(RaceGame game) {
         for (int i = 0; i < game.getAttempts(); i++) {
             game.moveAll(randomNumberGenerator);
