@@ -7,4 +7,8 @@ public class InputView {
     public String getCarName(){
         return Console.readLine();
     }
+
+    public String getRacingChance(){
+        return Console.readLine();
+    }
 }
