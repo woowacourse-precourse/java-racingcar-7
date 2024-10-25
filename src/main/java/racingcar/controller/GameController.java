@@ -19,7 +19,7 @@ public class GameController {
         this.outputView = outputView;
     }
 
-    public void startGame() {
+    public void run() {
         CarsRequest carsRequest = inputView.readCarNames();
         int tryCount = inputView.readTryCount();
         Cars cars = playGame(carsRequest, tryCount);
@@ -28,8 +28,8 @@ public class GameController {
     }
 
     private Cars playGame(CarsRequest carsRequest, int tryCount) {
-        System.out.println("\n실행 결과");
         Cars cars = carsRequest.toCars();
+        outputView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
             CarsResponse result = gameService.moveCars(cars);
             outputView.printMovement(result);
