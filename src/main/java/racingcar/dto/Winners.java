@@ -3,13 +3,13 @@ package racingcar.dto;
 import java.util.List;
 
 public class Winners {
-    private List<String> names;
+    private List<CarDto> cars;
 
-    public Winners(List<String> names) {
-        this.names = names;
+    public Winners(List<CarDto> cars) {
+        this.cars = cars;
     }
 
-    public List<String> getNames() {
-        return names;
+    public List<String> getWinnerNames() {
+        return cars.stream().map(CarDto::getCarName).toList();
     }
 }

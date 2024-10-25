@@ -14,7 +14,6 @@ public class Race {
     }
 
     public RoundResult getRoundResult() {
-
         List<CarDto> carDtoList = cars.stream().map(car ->
                         new CarDto(car.getName(), car.getCurrentPosition()))
                 .toList();
@@ -27,21 +26,22 @@ public class Race {
     }
 
     public Winners getFinalWinners() {
-        List<Car> sortedCars = sortByPositionDescending();
-        int winnerPosition = sortedCars.getFirst().getCurrentPosition();
-        return new Winners(findWinners(winnerPosition));
+        List<CarDto> sortedCars = sortByPositionDescending();
+        List<CarDto> winnerCarsDto = findWinners(sortedCars);
+        return new Winners(winnerCarsDto);
     }
 
-    private List<Car> sortByPositionDescending() {
-        List<Car> cars = this.cars.stream().sorted((a, b) -> {
+    private List<CarDto> sortByPositionDescending() {
+        RoundResult roundResult = getRoundResult();
+        return roundResult.getCarDtoList().stream().sorted((a, b) -> {
             return b.getCurrentPosition() - a.getCurrentPosition();
         }).toList();
-        return cars;
     }
 
-    private List<String> findWinners(int winnerPosition) {
-        return cars.stream().filter(car -> {
-            return car.getCurrentPosition() == winnerPosition;
-        }).map(car -> car.getName()).toList();
+    private List<CarDto> findWinners(List<CarDto> sortedCars) {
+        int winnerPosition = sortedCars.getFirst().getCurrentPosition();
+        return sortedCars.stream().
+                filter(carDto -> carDto.getCurrentPosition() == winnerPosition)
+                .toList();
     }
 }

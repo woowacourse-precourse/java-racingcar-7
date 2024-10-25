@@ -94,7 +94,7 @@ class RaceTest {
         }
 
         // then
-        List<String> finalWinners = race.getFinalWinners().getNames();
+        List<String> finalWinners = race.getFinalWinners().getWinnerNames();
         Assertions.assertThat(finalWinners).isEqualTo(expectedWinners);
     }
 

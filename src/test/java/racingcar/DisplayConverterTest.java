@@ -34,7 +34,10 @@ class DisplayConverterTest {
     @Test
     void convertWinners() {
         //given
-        Winners winners = new Winners(Arrays.asList("car1", "car2", "car3"));
+        CarDto carDto1 = new CarDto("car1", 4);
+        CarDto carDto2 = new CarDto("car2", 1);
+        CarDto carDto3 = new CarDto("car3", 2);
+        Winners winners = new Winners(Arrays.asList(carDto1, carDto2, carDto3));
 
         //when
         String winnersMessage = DisplayConverter.convertWinners(winners);

@@ -30,7 +30,7 @@ public class DisplayConverter {
     }
 
     public static String convertWinners(Winners winners) {
-        return winners.getNames().stream().
+        return winners.getWinnerNames().stream().
                 collect(Collectors.joining(WINNER_DELIMITER));
     }
 }
