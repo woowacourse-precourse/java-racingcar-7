@@ -1,6 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -35,6 +39,28 @@ public class Application {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
 
-        System.out.println("자동차 이름과 시도 횟수가 올바르게 입력되었습니다.");
+//        System.out.println("자동차 이름과 시도 횟수가 올바르게 입력되었습니다.");
+
+        // 각 자동차의 이동 거리를 저장할 Map
+        Map<String, Integer> carDistances = new HashMap<>();
+        for (String car : carNames) {
+            carDistances.put(car, 0);
+        }
+
+        // 시도 횟수만큼 반복
+        for (int i = 0; i < attempts; i++) {
+            for (String car : carNames) {
+                int randomValue = Randoms.pickNumberInRange(0, 9);
+                if (randomValue >= 4) {
+                    carDistances.put(car, carDistances.get(car) + 1);
+                }
+            }
+        }
+
+        // 최종 결과 출력
+        for (String car : carNames) {
+            System.out.println(car + " : " + "-".repeat(carDistances.get(car)));
+        }
+
     }
 }
