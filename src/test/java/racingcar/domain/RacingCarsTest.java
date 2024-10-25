@@ -47,4 +47,22 @@ class RacingCarsTest {
         //then
         Assertions.assertThat(expectedPositions).hasSameElementsAs(currentPositions);
     }
+
+    @Test
+    @DisplayName("경주 자동차의 위치에 따라 우승자를 선정한다.")
+    void selectWinners() {
+        //given
+        List<String> carNames = List.of("java", "go", "ruby", "react");
+        RacingCars racingCars = new RacingCars();
+        racingCars.registerCars(carNames);
+
+        //when
+        List<Integer> numbers = List.of(2, 1, 7, 8);
+        racingCars.updatePositionsWithRandomNumbers(numbers);
+        List<String> winners = racingCars.selectWinners();
+        List<String> expectedWinners = List.of("ruby", "react");
+
+        //then
+        Assertions.assertThat(expectedWinners).hasSameElementsAs(winners);
+    }
 }
