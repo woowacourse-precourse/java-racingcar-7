@@ -6,7 +6,7 @@ import static racingcar.exception.ExceptionType.*;
 
 public class DefaultRacingCarValidator implements RacingCarValidator {
 
-    private final int MAX_NAME_LENGTH = 5;
+    public final int MAX_NAME_LENGTH = 5;
 
     @Override
     public void validateName(String name) {

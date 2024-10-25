@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class RacingCar {
 
-    private final int DEFAULT_POSITION = 0;
-    private final int DEFAULT_MOVE_DISTANCE = 1;
-    private final int MIN_MOVEABLE_NUMBER = 4;
+    public final int DEFAULT_POSITION = 0;
+    public final int DEFAULT_MOVE_DISTANCE = 1;
+    public final int MIN_MOVEABLE_NUMBER = 4;
 
     private final RacingCarValidator racingCarValidator;
     private final String name;
