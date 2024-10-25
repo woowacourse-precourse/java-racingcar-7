@@ -11,8 +11,12 @@ public class Application {
         String userInputNumber = Console.readLine();
 
         CheckInput checkInput = new CheckInput();
+
         String[] carNames = checkInput.splitNames(userInputString);
         int raceCount = checkInput.isValidCount(userInputNumber);
+
+        RaceCar car = new RaceCar();
+        car.start(carNames,raceCount);
 
 
     }
