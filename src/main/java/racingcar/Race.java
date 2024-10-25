@@ -15,6 +15,7 @@ public class Race {
             for (Car car : carList) {
                 car.move(attemptCount - i);
             }
+            System.out.println();
         }
     }
 
