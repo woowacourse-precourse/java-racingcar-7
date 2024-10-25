@@ -7,6 +7,7 @@ public class OutputHandler {
             for (int k = 0; k < racingcars[i].getMoveCount(); k++) {
                 System.out.print("-");
             }
+            System.out.println();
         }
     }
 
