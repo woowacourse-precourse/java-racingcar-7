@@ -29,4 +29,12 @@ public class InputView {
     private List<String> parseCarNames(String carNamePart) {
         return List.of(carNamePart.split(DELIMITER));
     }
+
+    private void validateCarName(List<String> carNames) {
+        for (String carName : carNames) {
+            if (carName == null || carName.isBlank()) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
