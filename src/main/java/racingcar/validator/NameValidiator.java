@@ -17,6 +17,12 @@ public class NameValidiator {
         }
     }
 
+    public void nameOverlap(List<String> carsList) {
+        if (carsList.size() != carsList.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void rightNameList(String cars) {
         if (!Pattern.compile(CAR_LIST_PATTERN).matcher(cars).matches()) {
             throw new IllegalArgumentException();
