@@ -13,5 +13,4 @@ public class RacingCar {
         this.position = 0;
         this.randomNumbers = new ArrayList<>();
     }
-
 }

@@ -1,14 +1,11 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.*;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,16 +41,17 @@ public class UnitTest extends NsTest {
     }
 
     @Test
-    @DisplayName("getTrial 글자수 정상 작동 테스트")
-    void getTrialTest() {
+    @DisplayName("parseTrial 글자수 정상 작동 테스트")
+    void parseTrialTest() {
         String input = "5";
         Integer result = Application.parseTrial(input);
-        assertThat(result).isEqualTo(5);
+        assertThat(result).isEqualTo(5)
+                .isPositive();
     }
 
     @Test
-    @DisplayName("getTrial 예외 테스트")
-    void getTrialTest2() {
+    @DisplayName("parseTrial 예외 테스트")
+    void parseTrialTest2() {
         final String input = "--\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(() -> Application.parseTrial(input))
