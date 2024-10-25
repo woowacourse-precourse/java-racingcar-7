@@ -1,7 +1,6 @@
 package service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import error.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.List;
 import model.Car;
@@ -10,41 +9,8 @@ import model.CarList;
 public class CarService {
     private final CarList carList;
 
-    public CarService() {
-        carList = new CarList();
-    }
-
     public CarService(CarList carList) {
         this.carList = carList;
-    }
-
-    public boolean isCarExist(String newCarName) {
-        for (Car car : carList.getCars()) {
-            String existingName = car.getName();
-            if (existingName.equals(newCarName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public String validateCarName(String newCarName) {
-        newCarName = newCarName.trim();
-
-        if (newCarName.isBlank()) {
-            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY);
-        }
-
-        if (isCarExist(newCarName)) {
-            throw new IllegalArgumentException(ExceptionMessage.CAR_ALEADY_EXIST);
-        }
-
-        int carNameLength = newCarName.length();
-        if (carNameLength > 5) {
-            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
-        }
-
-        return newCarName;
     }
 
     public void runRoundGame() {

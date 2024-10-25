@@ -1,18 +1,31 @@
 package service;
 
 import error.ExceptionMessage;
-import model.CarList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputService {
-    private final CarList carList;
-    private final CarService carService;
-
     public InputService() {
-        this.carList = new CarList();
-        this.carService = new CarService();
     }
 
-    public CarList extractValidCar(String cars) {
+    public String validateCarName(String newCarName) {
+        newCarName = newCarName.trim();
+
+        if (newCarName.isBlank()) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY);
+        }
+
+        int carNameLength = newCarName.length();
+        if (carNameLength > 5) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
+        }
+
+        return newCarName;
+    }
+
+    public List<String> extractValidCarNames(String cars) {
+        List<String> validCarNames = new ArrayList<>();
+
         cars = cars.trim();
 
         if (cars.charAt(cars.length() - 1) == ',') {
@@ -25,11 +38,11 @@ public class InputService {
         }
 
         for (String newCarName : carNames) {
-            newCarName = carService.validateCarName(newCarName);
-            carList.addCar(newCarName);
+            newCarName = validateCarName(newCarName);
+            validCarNames.add(newCarName);
         }
 
-        return carList;
+        return validCarNames;
     }
 
     public int validateCount(int count) {
