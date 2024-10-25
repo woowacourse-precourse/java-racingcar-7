@@ -24,7 +24,7 @@ public class GameController {
 
         List<CarMovementResults> movementResultsOfRounds = new ArrayList<>();
 
-        while (game.isRunning()) {
+        while (game.isPlaying()) {
             game.play();
 
             CarMovementResults movementResultsOfCurrentRound = new CarMovementResults(game.getStatusOfCars());

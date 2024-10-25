@@ -45,7 +45,7 @@ public class Game {
         }
     }
 
-    public boolean isRunning() {
+    public boolean isPlaying() {
         return totalRounds.hasMoreRoundsThan(currentRound);
     }
 
