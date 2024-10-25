@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
     public boolean stopOrGo() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
