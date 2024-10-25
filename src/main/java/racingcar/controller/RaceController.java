@@ -3,7 +3,6 @@ package racingcar.controller;
 import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.service.RaceService;
-import racingcar.validation.CarNameValidator;
 
 /**
  * packageName    : racingcar.controller

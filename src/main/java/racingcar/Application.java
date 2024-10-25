@@ -31,8 +31,11 @@ public class Application {
         raceController.isCarNameValid(requestDto);
 
         // 3. 유효성 검사 통과 후 toEntity 로 Car 객체로 변환해서 레포에 저장
+        Cars cars = new Cars(requestDto.toEntity());
+        raceController.saveAll(cars);
 
         // 4. 시도할 횟수 입력하라는 화면 보여주고 입력받음
+
 
         // 5. 입력받은 Lap 횟수만큼 랜덤값 돌리고 나온 값에 따라 car 객체에 정보 업데이트
         //    차수별 실행 결과 출력
