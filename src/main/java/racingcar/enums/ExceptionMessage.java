@@ -1,6 +1,6 @@
 package racingcar.enums;
 
-public enum ErrorMessage {
+public enum ExceptionMessage {
     EMPTY_CAR_NAMES("자동차 이름을 입력해 주세요."),
     SINGLE_CAR_NAME("자동차의 이름은 2개 이상 입력해 주세요."),
     DUPLICATE_CAR_NAMES("자동차 이름은 중복될 수 없습니다."),
@@ -12,7 +12,7 @@ public enum ErrorMessage {
 
     private final String message;
 
-    ErrorMessage(String message) {
+    ExceptionMessage(String message) {
         this.message = message;
     }
 

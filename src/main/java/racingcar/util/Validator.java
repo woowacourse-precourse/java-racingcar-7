@@ -1,12 +1,12 @@
 package racingcar.util;
 
-import static racingcar.enums.ErrorMessage.ATTEMPTS_LESS_THAN_ONE;
-import static racingcar.enums.ErrorMessage.DUPLICATE_CAR_NAMES;
-import static racingcar.enums.ErrorMessage.EMPTY_CAR_NAME;
-import static racingcar.enums.ErrorMessage.EMPTY_CAR_NAMES;
-import static racingcar.enums.ErrorMessage.INVALID_ATTEMPTS_NUMBER;
-import static racingcar.enums.ErrorMessage.INVALID_CAR_NAME_LENGTH;
-import static racingcar.enums.ErrorMessage.SINGLE_CAR_NAME;
+import static racingcar.enums.ExceptionMessage.ATTEMPTS_LESS_THAN_ONE;
+import static racingcar.enums.ExceptionMessage.DUPLICATE_CAR_NAMES;
+import static racingcar.enums.ExceptionMessage.EMPTY_CAR_NAME;
+import static racingcar.enums.ExceptionMessage.EMPTY_CAR_NAMES;
+import static racingcar.enums.ExceptionMessage.INVALID_ATTEMPTS_NUMBER;
+import static racingcar.enums.ExceptionMessage.INVALID_CAR_NAME_LENGTH;
+import static racingcar.enums.ExceptionMessage.SINGLE_CAR_NAME;
 
 import java.util.Arrays;
 import java.util.HashSet;

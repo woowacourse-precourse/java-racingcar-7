@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import static racingcar.enums.ErrorMessage.CAR_NOT_FOUND;
+import static racingcar.enums.ExceptionMessage.CAR_NOT_FOUND;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
