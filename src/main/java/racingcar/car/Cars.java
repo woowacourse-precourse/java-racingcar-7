@@ -25,6 +25,7 @@ public class Cars {
         if (controlNumber < MOVE_CONTROL_NUMBER) {
             return;
         }
+        car.move();
     }
 
     public Car get(int index) {
