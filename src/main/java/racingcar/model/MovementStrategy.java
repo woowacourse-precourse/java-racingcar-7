@@ -1,5 +1,5 @@
 package racingcar.model;
 
-public interface MovingStrategy {
+public interface MovementStrategy {
     boolean moveable();
 }
