@@ -1,10 +1,10 @@
 package racingcar.service;
 
-import static racingcar.util.ConstCharacter.checkInvalidCharacter;
-import static racingcar.util.ConstNumber.CAR_NAME_MAX_LENGTH;
-import static racingcar.util.ConstNumber.EXECUTION_RANGE_MAX_VALUE;
-import static racingcar.util.ConstNumber.EXECUTION_RANGE_MIN_VALUE;
-import static racingcar.util.ConstNumber.REGISTER_CARS_INPUT_MAX_LENGTH;
+import static racingcar.util.CharacterConstant.checkInvalidCharacter;
+import static racingcar.util.MoveCarNumberConstant.EXECUTION_RANGE_MAX_VALUE;
+import static racingcar.util.MoveCarNumberConstant.EXECUTION_RANGE_MIN_VALUE;
+import static racingcar.util.RegisterCarNumberConstant.CAR_NAME_MAX_LENGTH;
+import static racingcar.util.RegisterCarNumberConstant.REGISTER_CARS_INPUT_MAX_LENGTH;
 
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;

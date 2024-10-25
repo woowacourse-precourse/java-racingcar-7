@@ -4,7 +4,7 @@ import racingcar.model.Car;
 
 import java.util.List;
 
-import static racingcar.util.ConstOutputMessage.*;
+import static racingcar.util.OutputMessageConstant.*;
 
 public class OutputView {
 

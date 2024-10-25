@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import static racingcar.util.ConstCharacter.CAR_DELIMITER;
+import static racingcar.util.CharacterConstant.CAR_DELIMITER;
 
 import racingcar.model.Car;
 

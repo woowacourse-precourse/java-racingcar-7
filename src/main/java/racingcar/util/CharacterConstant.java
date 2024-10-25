@@ -1,6 +1,7 @@
 package racingcar.util;
 
-public enum ConstCharacter {
+public enum CharacterConstant {
+
     CAR_DELIMITER(','),
     CAR_DISTANCE('-'),
     LOWER_CASE_START_WITH('a'),
@@ -10,10 +11,9 @@ public enum ConstCharacter {
     NUMBER_START_WITH('0'),
     NUMBER_END_WITH('9');
 
-
     private char character;
 
-    ConstCharacter(char character) {
+    CharacterConstant(char character) {
         this.character = character;
     }
 
