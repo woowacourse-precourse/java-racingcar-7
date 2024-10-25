@@ -6,7 +6,7 @@
 ### 구분자
 - [x] 자동차 이름 쉼표(,)를 기준으로 구분
 ### 예외 처리
-- [ ] 자동차 이름 5자 초과시 IllegalArgumentException 발생
+- [x] 자동차 이름 5자 초과시 IllegalArgumentException 발생
 - [ ] 입력 받은 시도할 횟수 숫자이고 0 이상이 아니라면 IllegalArgumentException 발생
 ### 자동차 클래스
 - [ ] 자동차 클래스(이름, 전진 횟수)

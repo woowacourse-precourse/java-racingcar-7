@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.io.InputManager;
 import racingcar.model.CarNameSplit;
+import racingcar.model.carname.CarNameValidation;
 
 public class RacingCarController {
     public RacingCarController() {
@@ -11,5 +12,6 @@ public class RacingCarController {
         InputManager inputManager = InputManager.getInstance();
         String carName = inputManager.carNameInput();
         String[] carNameArray = CarNameSplit.nameSplit(carName);
+        CarNameValidation.carNameValidate(carNameArray);
     }
 }
