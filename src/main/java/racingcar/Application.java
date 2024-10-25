@@ -31,6 +31,9 @@ public class Application {
         List<Car> carNameList = new ArrayList<>();
 
         for (String carName : carNamesArray) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름 5자 초과");
+            }
             carNameList.add(new Car(carName, attemptCount));
         }
 
