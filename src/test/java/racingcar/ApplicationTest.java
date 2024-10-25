@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -271,6 +273,49 @@ class ApplicationTest extends NsTest {
         //then
         assertThatThrownBy(Application::inputAndValidate)
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    //경주 자동차 이름 유효성 테스트
+    @Test
+    void 경주_자동차_입력_기능_테스트() {
+        //given
+        String input = "pobi,woni,jun\n3\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when
+        Application.inputAndValidate();
+
+        //then
+        assertThat(Application.carNameList)
+                .containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    void 경주_자동차_입력_띄어쓰기_포함_기능_테스트() {
+        //given
+        String input = "pobi, wo ni, jun \n3\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when
+        Application.inputAndValidate();
+
+        //then
+        assertThat(Application.carNameList)
+                .containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    void 경주_자동차_입력_숫자_포함_기능_테스트() {
+        //given
+        String input = "jun1,j2un,jun3\n3\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when
+        Application.inputAndValidate();
+
+        //then
+        assertThat(Application.carNameList)
+                .containsExactly("jun1", "j2un", "jun3");
     }
 
     @Override
