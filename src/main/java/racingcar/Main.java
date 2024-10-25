@@ -50,4 +50,8 @@ public class Main {
     public boolean isMove(int randomNumber) {
         return randomNumber >= 4;
     }
+
+    public void setMoveInformation(Car car, boolean move) {
+        car.setMove(move);
+    }
 }

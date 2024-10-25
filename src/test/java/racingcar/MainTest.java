@@ -66,6 +66,14 @@ class MainTest extends NsTest {
         assertThat(main.isMove(3)).isFalse();
     }
 
+    @Test
+    @DisplayName("자동차 이동 여부가 잘 변경되는지 확인한다")
+    void checkCarMoveInformation() {
+        Car car = new Car("pobi",false);
+        main.setMoveInformation(car, true);
+        assertThat(car.getMove()).isTrue();
+    }
+
     @Override
     protected void runMain() {
 
