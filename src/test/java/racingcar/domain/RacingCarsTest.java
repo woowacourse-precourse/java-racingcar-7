@@ -25,4 +25,26 @@ class RacingCarsTest {
             Assertions.assertThat(status.get(i).getName()).isEqualTo(carNames.get(i));
         }
     }
+
+    @Test
+    @DisplayName("부여받은 숫자에 따라, 경주 자동차가 전진하거나 정지 상태를 유지한다.")
+    void updatePositionsWithRandomNumbers() {
+        //given
+        List<String> carNames = List.of("one", "two", "three", "four");
+        RacingCars racingCars = new RacingCars();
+        racingCars.registerCars(carNames);
+
+        //when
+        List<Integer> numbers = List.of(1, 2, 4, 5);
+        racingCars.updatePositionsWithRandomNumbers(numbers);
+
+        List<CarStatusDto> status = racingCars.getStatus();
+        List<Integer> expectedPositions = List.of(0, 0, 1, 1);
+        List<Integer> currentPositions = status.stream()
+                .map(CarStatusDto::getPosition)
+                .toList();
+
+        //then
+        Assertions.assertThat(expectedPositions).hasSameElementsAs(currentPositions);
+    }
 }
