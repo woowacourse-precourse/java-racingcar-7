@@ -1,20 +1,19 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final ArrayList<Car> carArrayList;
+    private final List<Car> carList;
     private final int attemptCount;
 
-    public Race(final ArrayList<Car> carArrayList, final int attemptCount) {
-        this.carArrayList = carArrayList;
+    public Race(final List<Car> carList, final int attemptCount) {
+        this.carList = carList;
         this.attemptCount = attemptCount;
     }
 
-    public ArrayList<Car> getCarArrayList() {
-        return carArrayList;
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public int getAttemptCount() {
@@ -22,7 +21,7 @@ public class Race {
     }
 
     public List<Integer> getDistanceList() {
-        return getCarArrayList().stream()
+        return getCarList().stream()
                 .map(Car::getLocation)
                 .collect(Collectors.toList());
     }

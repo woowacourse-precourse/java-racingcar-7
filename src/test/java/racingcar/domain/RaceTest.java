@@ -18,23 +18,23 @@ class RaceTest {
         Car woni = new Car("woni");
         Car jun = new Car("jun");
 
-        ArrayList<Car> carArrayList = new ArrayList<>();
-        carArrayList.add(pobi);
-        carArrayList.add(woni);
-        carArrayList.add(jun);
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(pobi);
+        carList.add(woni);
+        carList.add(jun);
 
-        race = new Race(carArrayList, 5);
+        race = new Race(carList, 5);
     }
 
     @DisplayName("레이스에 참가한 차들을 반환한다.")
     @Test
-    void getCarArrayList() {
+    void getCarList() {
         ArrayList<Car> expectedCarArrayList = new ArrayList<>();
         expectedCarArrayList.add(new Car("pobi"));
         expectedCarArrayList.add(new Car("woni"));
         expectedCarArrayList.add(new Car("jun"));
 
-        ArrayList<Car> actualCarArrayList = race.getCarArrayList();
+        List<Car> actualCarArrayList = race.getCarList();
 
         assertEquals(expectedCarArrayList.size(), actualCarArrayList.size());
 

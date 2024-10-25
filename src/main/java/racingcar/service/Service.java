@@ -15,7 +15,7 @@ public class Service {
     }
 
     public void playRound(final Race race) {
-        race.getCarArrayList().stream()
+        race.getCarList().stream()
                 .filter(Car::isMove)
                 .forEach(Car::plusLocation);
     }
@@ -27,8 +27,8 @@ public class Service {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public List<Car> getCarListWithMaxDistance(final List<Car> carArrayList, int maxDistance) {
-        return carArrayList.stream()
+    public List<Car> getCarListWithMaxDistance(final List<Car> carList, int maxDistance) {
+        return carList.stream()
                 .filter(car -> car.getLocation() == maxDistance)
                 .collect(Collectors.toList());
     }

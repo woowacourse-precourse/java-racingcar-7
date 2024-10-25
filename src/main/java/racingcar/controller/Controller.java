@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.domain.Car;
@@ -32,7 +31,7 @@ public class Controller {
     public void printRoundResult(final Race race) {
         outputView.printEndLine();
         outputView.printGameResultMessage();
-        race.getCarArrayList().forEach(outputView::printRoundResult);
+        race.getCarList().forEach(outputView::printRoundResult);
         outputView.printEndLine();
     }
 
@@ -44,7 +43,7 @@ public class Controller {
         outputView.printWinner(car);
     }
 
-    public void printWinners(final ArrayList<Car> winnerList) {
+    public void printWinners(final List<Car> winnerList) {
         outputView.printWinners(winnerList);
     }
 
@@ -56,10 +55,10 @@ public class Controller {
     }
 
     public List<Car> getWinnerCarList(final Race race) {
-        ArrayList<Car> carArrayList = race.getCarArrayList();
+        List<Car> carList = race.getCarList();
         int maxDistance = getMaxDistance(race);
 
-        return service.getCarListWithMaxDistance(carArrayList, maxDistance);
+        return service.getCarListWithMaxDistance(carList, maxDistance);
     }
 
     private int getMaxDistance(final Race race) {
