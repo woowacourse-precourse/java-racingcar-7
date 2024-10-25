@@ -19,11 +19,11 @@ class CarRaceTest {
 
     @Test
     @DisplayName("MoveDecider의 canMove()가 true일시 전진하는지 확인")
-    void testExecuteMove() {
+    void testUpdateMove() {
         Car expected = DUMMY_CAR.moveForward();
         RacePosition racePosition = new RacePosition(List.of(DUMMY_CAR));
         CarRace carRace = new CarRace(ALWAYS_MOVE);
-        RacePosition afterExecution = carRace.execute(racePosition);
+        RacePosition afterExecution = carRace.update(racePosition);
 
         Car actual = afterExecution.findByCarName(expected.getName());
 
@@ -32,11 +32,11 @@ class CarRaceTest {
 
     @Test
     @DisplayName("MoveDecider의 canMove()가 false일 시 전지하지 않는지 확인")
-    void testExecuteNotMove() {
+    void testUpdateNotMove() {
         Car expected = DUMMY_CAR;
         RacePosition racePosition = new RacePosition(List.of(DUMMY_CAR));
         CarRace carRace = new CarRace(NEVER_MOVE);
-        RacePosition afterExecution = carRace.execute(racePosition);
+        RacePosition afterExecution = carRace.update(racePosition);
 
         Car actual = afterExecution.findByCarName(expected.getName());
 

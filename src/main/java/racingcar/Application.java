@@ -1,12 +1,12 @@
 package racingcar;
 
-import racingcar.io.ConsoleInputReceiver;
+import racingcar.config.ConsoleCarRaceConfig;
+import racingcar.domain.race.RandomCarRace;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        ConsoleInputReceiver console = new ConsoleInputReceiver();
-        RaceManager racingController = new RaceManager(console);
-        racingController.run();
+        RaceController randomRaceController = new RaceController(ConsoleCarRaceConfig.getInstance(), RandomCarRace.getInstance());
+        randomRaceController.run();
     }
 }

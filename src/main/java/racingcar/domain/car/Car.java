@@ -1,7 +1,5 @@
 package racingcar.domain.car;
 
-import java.util.Objects;
-
 public class Car implements Comparable<Car> {
     private static final int MOVE_FORWARD_UNIT = 1;
     private static final CarPosition DEFAULT_POSITION = CarPosition.of(0);
@@ -18,7 +16,8 @@ public class Car implements Comparable<Car> {
     }
 
     public Car moveForward() {
-        return new Car(this.name, carPosition.apply(before -> before + MOVE_FORWARD_UNIT));
+        CarPosition after = CarPosition.of(carPosition.getPosition() + MOVE_FORWARD_UNIT);
+        return new Car(this.name, after);
     }
 
     public CarName getName() {
@@ -27,19 +26,6 @@ public class Car implements Comparable<Car> {
 
     public CarPosition getCarPosition() {
         return carPosition;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(name, car.name) && Objects.equals(carPosition, car.carPosition);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, carPosition);
     }
 
     @Override

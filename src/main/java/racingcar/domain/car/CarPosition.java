@@ -18,9 +18,9 @@ public class CarPosition {
         return position;
     }
 
-    public CarPosition apply(IntUnaryOperator operator) {
-        return new CarPosition(operator.applyAsInt(position));
-    }
+//    public CarPosition apply(IntUnaryOperator operator) {
+//        return new CarPosition(operator.applyAsInt(position));
+//    }
 
     @Override
     public boolean equals(Object o) {

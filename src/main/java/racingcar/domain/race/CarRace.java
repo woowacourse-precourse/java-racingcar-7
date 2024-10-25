@@ -1,7 +1,6 @@
 package racingcar.domain.race;
 
 import racingcar.domain.car.Car;
-import racingcar.domain.move.MoveAttempt;
 import racingcar.domain.move.MoveDecider;
 
 import java.util.List;
@@ -13,15 +12,7 @@ public class CarRace {
         this.moveDecider = moveDecider;
     }
 
-    public RacePosition repeatExecution(RacePosition racePosition, MoveAttempt moveAttempt) {
-        RacePosition afterRepeat = racePosition;
-        for (int i = 0; i < moveAttempt.getCount(); i++) {
-           afterRepeat = execute(racePosition);
-        }
-        return afterRepeat;
-    }
-
-    public RacePosition execute(RacePosition racePosition) {
+    public RacePosition update(RacePosition racePosition) {
         List<Car> cars = racePosition.getCarList()
                 .stream()
                 .map(this::moveIfAllowed)
