@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.car.RacingCar;
@@ -40,9 +39,8 @@ public class RacingCarService {
 
 
     public List<RacingCar> getWinnerRacingCars(List<RacingCar> racingCars) {
-        racingCars.sort(Comparator.comparingInt(RacingCar::getDistance).reversed());
+        int maxDistance = racingCars.stream().mapToInt(RacingCar::getDistance).max().orElse(0);
 
-        int maxDistance = racingCars.getFirst().getDistance();
         List<RacingCar> winners = racingCars.stream().filter(car -> car.getDistance() == maxDistance).toList();
 
         return winners;
