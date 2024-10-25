@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.display;
 
 import java.util.List;
+import racingcar.ICar;
 
 public interface IOutputDisplay {
 

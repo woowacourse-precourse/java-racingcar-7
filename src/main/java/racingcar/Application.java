@@ -3,6 +3,10 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.display.IInputDisplay;
+import racingcar.display.IOutputDisplay;
+import racingcar.display.OutputDisplayImpl;
+import racingcar.display.WtcInputDisplay;
 
 public class Application {
 

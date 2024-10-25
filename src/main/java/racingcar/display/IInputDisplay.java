@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.display;
 
 public interface IInputDisplay {
 
