@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
