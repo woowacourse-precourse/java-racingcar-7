@@ -18,13 +18,13 @@ public class Racing {
     public void playRound(List<Car> carList) {
         for (Car car : carList) {
             moveCar(car);
+            car.printCurrentPosition();
         }
     }
 
     public void moveCar(Car car) {
         if (isMovable()) {
             car.move();
-            car.printCurrentPosition();
         }
     }
 
