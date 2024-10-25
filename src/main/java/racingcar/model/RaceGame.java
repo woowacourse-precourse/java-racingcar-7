@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGame {
@@ -11,5 +12,18 @@ public class RaceGame {
         this.attempts = attempts;
     }
 
+    private List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+
+    public void moveAll(RandomNumberGenerator randomNumberGenerator) {
+        for (Car car : cars) {
+            car.move(randomNumberGenerator.generateRandomNumber());
+        }
+    }
 
 }
