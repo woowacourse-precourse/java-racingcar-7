@@ -11,8 +11,14 @@ public class ParsingCarNameService {
         String[] inputStrings = inputCarName.split(DELIMITER);
         List<Car> cars = new ArrayList<>();
         for (String inputString : inputStrings) {
-            cars.add(new Car(inputString));
+            if (!isExistSpace(inputString)) {
+                cars.add(new Car(inputString.trim()));
+            }
         }
         return cars;
+    }
+
+    private static boolean isExistSpace(String inputString) {
+        return inputString.trim().isEmpty();
     }
 }
