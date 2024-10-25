@@ -10,9 +10,9 @@ public class Race {
     private final List<Car> cars;
     private final RaceMoveStrategy raceMoveStrategy;
 
-    public Race(RaceMoveStrategy raceMoveStrategy, List<Car> cars) {
-        this.raceMoveStrategy = raceMoveStrategy;
+    public Race(List<Car> cars, RaceMoveStrategy raceMoveStrategy) {
         this.cars = cars;
+        this.raceMoveStrategy = raceMoveStrategy;
     }
 
     public void process() {
