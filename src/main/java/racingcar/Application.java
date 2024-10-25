@@ -30,9 +30,10 @@ public class Application {
         //4. 라운드 수만큼 반복하면서 자동차 이동 시도
         CarRace carRace = new CarRace(totalRound, carGroup);
 
+        //자동차 경기 현황 출력
+        OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
         OutputView.printMessageWithLine(PrintMessage.CAR_RACE_RESULT_MESSAGE);
         carRace.startCarRacing();
-        //자동차 경기 현황 출력
 
         //5. 경기 결과 판단
         //자동차 경기 결과 출력
