@@ -1,20 +1,20 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RaceManager {
-    public static final IOHandler IO_HANDLER = new IOHandler();
-
-    public List<String> getRacerList() {
-        return IO_HANDLER.setRacerList();
+    private static IOHandler IO_HANDLER;
+    public RaceManager(IOHandler ioHandler) {
+        IO_HANDLER = ioHandler;
     }
 
-    public void startRace(List<RacingCar> racingCars) {
-        int cycle = IO_HANDLER.setRaceCycle();
-        for (RacingCar racingCar : racingCars) {
-            racingCar.run(cycle);
-            IO_HANDLER.printRaceState(racingCar);
+    public void startRace(List<RacingCar> racingCars , int cycle) {
+        IO_HANDLER.printResult();
+        for (int i = 0; i < cycle; i++) {
+            updateRaceState(racingCars);
         }
         String winner = getWinner(racingCars);
         IO_HANDLER.printWinner(winner);
