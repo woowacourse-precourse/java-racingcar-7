@@ -12,4 +12,8 @@ public class CarException extends GlobalException {
   public CarException(ExceptionEnum exceptionEnum) {
     super(exceptionEnum);
   }
+
+  public CarException(ExceptionEnum exceptionEnum, String runtimeMessage){
+    super(exceptionEnum, runtimeMessage);
+  }
 }
