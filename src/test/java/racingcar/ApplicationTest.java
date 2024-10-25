@@ -192,4 +192,18 @@ class ApplicationTest extends NsTest {
                 + "NingNing : -\n"
         );
     }
+
+    @Test
+    void createOrderedResult() {
+        Map<String, StringBuilder> resultMap = createTempResultMap();
+
+        String[] expectedResult = new String[]{"Winter", "Karina", "NingNing", "Giselle"};
+        PriorityQueue<String[]> orderedResult = Application.createOrderedResult(resultMap);
+
+        int idx = 0;
+        while (!orderedResult.isEmpty()) {
+            String[] current = orderedResult.poll();
+            assertThat(current[0]).isEqualTo(expectedResult[idx++]);
+        }
+    }
 }
