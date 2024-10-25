@@ -12,8 +12,8 @@ public class RacingService {
 
     public List<Result> startRace(List<Car> cars, int roundCount) {
         List<Result> results = new ArrayList<>();
-        for (int i = 1; i <= roundCount; i++) {
-            Result result = new Result(i);
+        for (int round = 1; round <= roundCount; round++) {
+            Result result = new Result(round);
             startRound(cars, result);
             results.add(result);
         }
