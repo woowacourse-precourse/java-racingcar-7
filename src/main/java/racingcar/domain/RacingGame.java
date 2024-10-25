@@ -28,12 +28,22 @@ public class RacingGame {
         // 이전에 carNames, gameCount 이 값들의 검증을 마쳤으므로 바로 사용
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            carList.add(new Car(carName));
+            carList.add(new Car(carName.trim()));
         }
+        
+        System.out.println("\n실행 결과");
         
         for (int i = 0; i < gameCount; i++) {
             moveCars(carList);
-//            printCars(carList);
+            printCarsInfo(carList);
+            
+            System.out.println();
+        }
+    }
+    
+    private void printCarsInfo(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getGameCurrentStatus());
         }
     }
     
@@ -94,7 +104,7 @@ public class RacingGame {
     
     private void validateEachName(String[] names) {
         for (String name : names) {
-            if (name.length() > 5) {
+            if (name.trim().length() > 5) {
                 throw new IllegalArgumentException("5자 이하의 이름만 입력할 수 있습니다. : " + name);
             }
             if (name.trim().isEmpty()) {

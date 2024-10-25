@@ -20,4 +20,15 @@ public class Car {
     public void plusDistance() {
         moveDistance++;
     }
+    
+    // 게임의 결과를 출력하기 위한 메서드
+    public String getGameCurrentStatus() {
+        String result = this.carName + " : ";
+        
+        for (int i = 0; i < moveDistance; i++) {
+            result += "-";
+        }
+        
+        return result;
+    }
 }
