@@ -23,10 +23,10 @@ public class RacingCarController {
 
         RacingGame game = new RacingGame(cars, rounds);
 
-        OutputView.printExecutionResultMessage(); // 실행 결과 메시지 출력
+        OutputView.printExecutionResultMessage();
         for (int i = 0; i < rounds; i++) {
             game.playRound();
-            OutputView.printRoundResult(game.getCars()); // 각 라운드 결과 출력
+            OutputView.printRoundResult(game.getCars());
         }
 
         // 최종 우승자 출력
