@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import racingcar.validator.Validator;
 
 public class Application {
 
@@ -14,6 +15,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Validator validator = new Validator();
 
         String inputCarNames = Console.readLine();
         int attempts = Integer.parseInt(Console.readLine());
@@ -23,7 +25,12 @@ public class Application {
 
         Map<String, String> carMoveMap = new HashMap<>();
         for(String carName : carNames) { //carName의 앞 뒤에 공백이 있을 경우 고려
-            carMoveMap.put(carName, "");
+            Boolean carNameLengthValidate = validator.carNameLengthValidate(carName);
+            if (carNameLengthValidate) {
+                carMoveMap.put(carName, "");
+            } else {
+                throw new IllegalArgumentException("레이싱카의 이름의 길이는 5를 넘을 수 없습니다.");
+            }
         }
 
 
