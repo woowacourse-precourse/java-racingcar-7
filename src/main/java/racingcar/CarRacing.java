@@ -1,7 +1,9 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.accelerator.BrokenAccelerator;
 
 public class CarRacing {
@@ -17,8 +19,10 @@ public class CarRacing {
         return carList;
     }
 
-    public static String[] parseCarList(String carNames) {
-        return carNames.split(",");
+    public static List<Car> parseCarList(String carNames) {
+        return Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void parseAttempts(String input) {
