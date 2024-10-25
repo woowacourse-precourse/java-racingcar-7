@@ -39,11 +39,11 @@ public class Racing {
             return false;
         }
         Racing racing = (Racing) o;
-        return Objects.equals(cars, racing.cars);
+        return Objects.equals(cars, racing.cars) && Objects.equals(racingCount, racing.racingCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(cars);
+        return Objects.hash(cars, racingCount);
     }
 }
