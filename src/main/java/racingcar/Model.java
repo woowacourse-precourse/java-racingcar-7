@@ -15,22 +15,30 @@ public class Model {
         return step;
     }
 
-    public List<String> makeRacingHashmap(String[] listUser, String strRound) {
-        HashMap<String, String> racingHashmap = new HashMap<>();
+    public HashMap<String, String> initRacing(String[] listUser) {
+        HashMap<String, String> initracingHashmap = new HashMap<>();
         for (String name : listUser) {
             InvalidException.checkNamelength(name);
-            racingHashmap.put(name, "");
+            initracingHashmap.put(name, "");
         }
+        return initracingHashmap;
+    }
+
+    public HashMap<String, String> Racing(HashMap<String, String> initracingHashmap, String strRound) {
         InvalidException.checkRound(strRound);
         int round = Integer.parseInt(strRound);
+        HashMap<String, String> racingHashmap = new HashMap<>();
         for (int i = 0; i < round; i++) {
-            for (String name : racingHashmap.keySet()) {
-                String step = getStep(racingHashmap.get(name), Randoms.pickNumberInRange(0, 9));
-                racingHashmap.replace(name, step);
+            for (String name : initracingHashmap.keySet()) {
+                String step = getStep(initracingHashmap.get(name), Randoms.pickNumberInRange(0, 9));
+                racingHashmap.put(name, step);
                 System.out.println(name + " : " + step);
             }
         }
+        return racingHashmap;
+    }
 
+    public List findWinner(HashMap<String, String> racingHashmap) {
         List<String> listWinners = new ArrayList<>();
         HashMap<String, Integer> winnerMap = new HashMap<>();
         for (String name : racingHashmap.keySet()) {
