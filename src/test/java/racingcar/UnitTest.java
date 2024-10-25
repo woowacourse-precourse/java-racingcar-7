@@ -106,6 +106,27 @@ public class UnitTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("checkRandomNumber 테스트")
+    void checkRandomNumberTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+
+        assertRandomNumberInRangeTest(
+                ()->{Application.assignRandomNumber(cars);
+                assertThat(cars.get(0).randomNumbers).containsExactly(5);
+                assertThat(cars.get(1).randomNumbers).containsExactly(3);
+                assertThat(cars.get(2).randomNumbers).containsExactly(1);
+                }, 5, 3, 1
+        );
+        Application.checkRandomNumber(cars);
+        assertThat(cars.get(0).position).isEqualTo(1);
+        assertThat(cars.get(1).position).isEqualTo(0);
+        assertThat(cars.get(2).position).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
