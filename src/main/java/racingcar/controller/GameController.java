@@ -25,7 +25,9 @@ public class GameController {
             gameStatus.addCar(car);
         }
 
-        Integer tryCount = gameView.getInputTryCount();
+        String tryCount = gameView.getInputTryCount();
+        Validator.isTryCountBlank(tryCount);
+        Validator.isTryCountPositive(tryCount);
 
     }
 

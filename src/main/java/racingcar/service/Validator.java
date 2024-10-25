@@ -9,7 +9,7 @@ public class Validator {
     public static boolean isCarNameBlank(String[] carNameArray) {
         for (String carName : carNameArray) {
             if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException(Message.carNameBlankError());
+                throw new IllegalArgumentException(Message.inputBlankError());
             }
         }
         return false;
@@ -44,4 +44,17 @@ public class Validator {
         return true;
     }
 
+    public static boolean isTryCountPositive(String tryCount) {
+        if (Integer.parseInt(tryCount) >= 1) {
+            return true;
+        }
+        throw new IllegalArgumentException(Message.tryCountInputError());
+    }
+
+    public static boolean isTryCountBlank(String tryCount) {
+        if (tryCount.isBlank() || tryCount == null) {
+            throw new IllegalArgumentException(Message.inputBlankError());
+        }
+        return false;
+    }
 }

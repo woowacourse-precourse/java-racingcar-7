@@ -11,10 +11,10 @@ public class GameView {
         return carNamesInput.trim();
     }
 
-    public Integer getInputTryCount() {
+    public String getInputTryCount() {
         System.out.println(Message.promptInputTryCount());
         String tryCountInput = Console.readLine();
-        return Integer.parseInt(tryCountInput);
+        return tryCountInput;
     }
 
 
