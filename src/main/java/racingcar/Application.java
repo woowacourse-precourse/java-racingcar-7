@@ -41,14 +41,37 @@ public class Application {
         return numberInt;
     }
 
-    public static void progressWhenMoreFour(List<StringBuilder> raceResult, int randomNumber, int j) {
+    // 각 자동차가 전진한 횟수 기록하는 기능도 있음
+    public static void progressWhenMoreFour(List<StringBuilder> raceResult, int randomNumber, int j, int[] progresses) {
         if (randomNumber >= 4) {
             raceResult.get(j).append("-");
+            progresses[j]++;
         }
     }
-    
+
+    public static void printWinner(String[] cars, int[] progresses) {
+        int maxProgress = -1;
+        List<String> winners = new ArrayList<>();
+
+        for (int progress : progresses) {
+            if (progress > maxProgress) {
+                maxProgress = progress;
+            }
+        }
+        for (int i = 0; i < cars.length; i++) {
+            if (progresses[i] == maxProgress) {
+                winners.add(cars[i]);
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        var result = String.join(", ", winners);
+        System.out.println(result);
+    }
+
     public static void raceCar(String[] cars, int raceNumber){
         List<StringBuilder> raceResult = new ArrayList<>();
+        int[] progresses = new int[cars.length];
 
         System.out.println("실행 결과");
 
@@ -61,13 +84,14 @@ public class Application {
                 System.out.print(cars[j] + " : ");
                 
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
-                progressWhenMoreFour(raceResult, randomNumber, j);
+                progressWhenMoreFour(raceResult, randomNumber, j, progresses);
                 
                 System.out.print(raceResult.get(j));
                 System.out.print("\n");
             }
             System.out.print("\n");
         }
+        printWinner(cars, progresses);
     }
 
     public static void main(String[] args) {
