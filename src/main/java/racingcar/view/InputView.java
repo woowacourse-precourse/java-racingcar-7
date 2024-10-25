@@ -14,4 +14,12 @@ public class InputView {
         return carNames;
     }
 
+    public int getNumberOfRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+    }
 }
