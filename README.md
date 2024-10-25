@@ -3,8 +3,8 @@
 ## 기능 구현하기
 
 :white_check_mark: 자동차명을 key로 하고 전진 횟수를 value로 하는 HashMap 선언하기 <br>
-    - 자동차는 하나의 문자열로 입력되고 ,로 구분되어 있다.
-:white_large_square: 시도할 횟수만큼 반복문 돌리기 <br>
+    - 자동차는 하나의 문자열로 입력되고 ,로 구분되어 있다. <br>
+:white_check_mark: 시도할 횟수만큼 반복문 돌리기 <br>
 :white_large_square: 각 자동차별로 전진 하기(Random API 이용) <br>
 :white_large_square: 출력하기 <br>
 :white_large_square: 반복문이 끝나면 우승자 가려내기
