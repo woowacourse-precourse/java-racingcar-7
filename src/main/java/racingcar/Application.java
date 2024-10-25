@@ -1,6 +1,10 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.controller.IndexController;
+import racingcar.controller.RaceController;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 
 /**
@@ -17,17 +21,16 @@ import racingcar.domain.dto.CarsSaveRequestDto;
 
 public class Application {
     public static void main(String[] args) {
-        IndexController indexController = IndexController.getInstance();
+        final IndexController indexController = IndexController.getInstance();
+        final RaceController raceController = RaceController.getInstance();
 
         // 1. 사용자에게 자동차 이름 입력 화면을 보여주고 입력받음
         CarsSaveRequestDto requestDto = indexController.displayCarsNameInputPage();
 
-        // 1-2. 요청받은 자동차 이름들 유효성 검사
+        // 2. 요청받은 자동차 이름들 유효성 검사
+        raceController.isCarNameValid(requestDto);
 
-
-        // 2. 입력받은 값을 Dto에 저장 후 유효성 검사
-
-        // 3. 유효성 검사 통과 후 toEntity로 Car 객체로 변환해서 레포에 저장
+        // 3. 유효성 검사 통과 후 toEntity 로 Car 객체로 변환해서 레포에 저장
 
         // 4. 시도할 횟수 입력하라는 화면 보여주고 입력받음
 
