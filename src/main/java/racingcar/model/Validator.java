@@ -10,6 +10,7 @@ public class Validator {
         for (String carName : CarNames) {
             validateNotEmpty(carName);
             validateNoSpaces(carName);
+            validateMaxLength(carName, MAX_CAR_NAME_LENGTH);
         }
     }
 
@@ -21,6 +22,12 @@ public class Validator {
 
     private void validateNoSpaces(String input) {
         if (input.contains(SPACE)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateMaxLength(String input, int maxLength) {
+        if (input.length() > maxLength) {
             throw new IllegalArgumentException();
         }
     }
