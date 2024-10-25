@@ -8,11 +8,11 @@ public class InputController {
     private static final String exceptWord = ".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*";
 
 
-    public static GameCars setCars(){
-        String[] car_names= StartView.inputCarInfo().split(",");
-        car_names= Arrays.stream(car_names)
+    public static GameCars setCars() {
+        String[] car_names = StartView.inputCarInfo().split(",");
+        car_names = Arrays.stream(car_names)
                 .map(String::trim)
-                .peek(car_name->{
+                .peek(car_name -> {
                     if (car_name.length() > 5) {
                         throw new IllegalArgumentException("자동차 이름은 5글자 이하이어야 합니다.");
                     }
@@ -24,7 +24,7 @@ public class InputController {
         return new GameCars(car_names);
     }
 
-    public static int setGameCount(){
+    public static int setGameCount() {
         return Integer.parseInt(StartView.inputNumOfMatch());
     }
 }

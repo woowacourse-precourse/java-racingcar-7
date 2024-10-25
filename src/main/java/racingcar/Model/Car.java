@@ -13,7 +13,7 @@ public class Car {
         return name;
     }
 
-    public void ongoing () {
+    public void ongoing() {
         ongoingCount++;
     }
 
@@ -21,8 +21,5 @@ public class Car {
         return ongoingCount;
     }
 
-    //VIEW로 코드 옮겨야함
-    public void showGameProgress(){
-        System.out.println(name+" : "+"-".repeat(ongoingCount));
-    }
+
 }

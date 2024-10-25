@@ -1,5 +1,7 @@
 package racingcar.Controller;
 
+import java.util.List;
+import racingcar.Model.Car;
 import racingcar.Model.GameCars;
 import racingcar.View.GameView;
 
@@ -11,18 +13,26 @@ public class PlayController {
     public PlayController() {
         gameCars = InputController.setCars();
         gameNumber = InputController.setGameCount();
-        gameView = new GameView(gameCars);
+        gameView = new GameView();
+        play();
+        findWinner();
+        showWinner();
     }
-    //여기서 gameNumber대로 돌려야할까 GameCars에 넘겨서 돌려야할까
-    public void play(){
-        for(int i=gameNumber; i>0; i--){
-            gameCars.playGame();
-            gameView.showGameProgress();
+
+
+
+    public void play() {
+        for(int i = 0; i < gameNumber; i++) {
+            gameCars.playGames();
+            gameView.showGameProgress(gameCars.getCars());
         }
-
     }
 
-    public void findWinner(){
-        gameView.findWinnerCars();
+    public List<Car> findWinner() {
+        return gameCars.findWinnerCars();
+    }
+
+    public void showWinner(){
+        gameView.showWinnerCars(findWinner());
     }
 }
