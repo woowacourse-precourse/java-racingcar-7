@@ -33,4 +33,11 @@ public class InputHandlerTest {
         assertThatThrownBy(() -> InputHandler.validateAttemptCount(attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    public void 시도_횟수가_0이_아니면_예외_없음(int attemptCount) {
+        // when & then
+        assertDoesNotThrow(() -> InputHandler.validateAttemptCount(attemptCount));
+    }
 }
