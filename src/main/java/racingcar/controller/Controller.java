@@ -35,16 +35,28 @@ public class Controller {
     }
 
     private void validateCarNames(List<String> carNames) {
-        if (carNames.size() != carNames.stream().distinct().count()) {
+        validateDuplicatedCarName(carNames);
+        for (String carName : carNames) {
+            validateCarNameLength(carName);
+            validateCarNameEmpty(carName);
+        }
+    }
+
+    private static void validateCarNameEmpty(String carName) {
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            if (carName.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
+    }
+
+    private static void validateCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateDuplicatedCarName(List<String> carNames) {
+        if (carNames.size() != carNames.stream().distinct().count()) {
+            throw new IllegalArgumentException();
         }
     }
 }
