@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.constant.ExceptionMessage;
 import racingcar.dto.CarDto;
 import racingcar.util.RandomUtil;
 
@@ -13,12 +14,20 @@ public class Car {
     private int position = INIT_POSITION;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
     }
 
     protected Car(String name, int position) {
+        validateName(name);
         this.name = name;
         this.position = position;
+    }
+
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_MUST_BE_LESS.getMessage(5));
+        }
     }
 
     public void playRound() {
