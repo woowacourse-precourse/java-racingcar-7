@@ -42,7 +42,6 @@ public class GameService {
                 sb.append('\n');
             }
         }
-
         System.out.println(sb.toString());
     }
 }
