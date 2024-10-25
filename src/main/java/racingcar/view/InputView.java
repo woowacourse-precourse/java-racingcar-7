@@ -4,23 +4,24 @@ import static racingcar.common.exception.ErrorMessage.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingCarNames;
+import racingcar.dto.AttemptCount;
 import racingcar.common.exception.RacingCarException;
-import java.util.List;
 
 public class InputView {
 
     public RacingCarNames readRacingCarNames() {
         String input = Console.readLine();
-        validateInput(input);
-        List<String> carNames = List.of(input.trim().split(","));
-        return new RacingCarNames(carNames);
+        validateNonEmptyInput(input);
+        return RacingCarNames.from(input.trim());
     }
 
-    private void validateInput(String input) {
-        validateEmptyInput(input);
+    public AttemptCount readNumberOfAttemptCount() {
+        String input = Console.readLine();
+        validateNonEmptyInput(input);
+        return AttemptCount.from(input.trim());
     }
 
-    private void validateEmptyInput(String input) {
+    private void validateNonEmptyInput(String input) {
         if (input.trim().isEmpty()) {
             throw RacingCarException.from(EMPTY_INPUT);
         }
