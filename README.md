@@ -70,7 +70,7 @@
   
  ##### util  
  	[ ] RandomGenerator  
-	[ ] InputNameParser  
+	[X] InputNameParser  
   
 ##### exceptor
 	[ ] ExceptionHandler  
