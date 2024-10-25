@@ -22,6 +22,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("자동차 이름 빈 문자열 테스트")
+    @Test
+    void 빈_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
