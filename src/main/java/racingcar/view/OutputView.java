@@ -11,4 +11,8 @@ public class OutputView {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         });
     }
+
+    public static void printWinners(List<String> winners) {
+        System.out.println("\n최종 우승자 : " + String.join(", ", winners));
+    }
 }
