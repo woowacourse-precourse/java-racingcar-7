@@ -49,5 +49,12 @@ public class Application {
             }
             System.out.println();
         }
+
+        int max = -1;
+        for (int i = 0; i < scores.size(); i++) {
+            if (scores.get(i) > max) {
+                max = scores.get(i);
+            }
+        }
     }
 }
