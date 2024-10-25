@@ -16,4 +16,10 @@ public class Cars {
     public List<Car> getCars(){
         return cars;
     }
+
+    public static void raceOnce(Cars cars) {
+        for (Car car : cars.getCars()) {
+            car.move();
+        }
+    }
 }
