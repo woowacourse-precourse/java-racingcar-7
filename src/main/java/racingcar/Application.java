@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,15 +20,14 @@ public class Application {
 class RacingGame {
     private List<String> carNames = new ArrayList<>();
     private int moveCount;
+    private Map<String, Integer> carDistances = new HashMap<>();
 
     public void setupCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-
         validateInput(input);
         parseCarNames(input);
     }
-
 
     private void validateInput(String input) {
         if (input == null || input.trim().isEmpty()) {
@@ -42,9 +43,8 @@ class RacingGame {
                 throw new IllegalArgumentException("자동차 이름은 1~5자 이내여야 합니다: " + name);
             }
             carNames.add(name);
+            carDistances.put(name, 0);
         }
-
-        System.out.println("입력된 자동차 이름: " + carNames);
     }
 
     public void setupMoves() {
@@ -72,16 +72,26 @@ class RacingGame {
         for (int i = 0; i < moveCount; i++) {
             System.out.println("차수 " + (i + 1) + " 결과:");
             moveCars();
+            printCarPositions();
         }
     }
 
     private void moveCars() {
         for (String carName : carNames) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                System.out.println(carName + " : " + "-");
-            } else {
-                System.out.println(carName + " : ");
+                carDistances.put(carName, carDistances.get(carName) + 1);
             }
+        }
+    }
+
+    private void printCarPositions() {
+        for (String carName : carNames) {
+            StringBuilder position = new StringBuilder();
+            int distance = carDistances.get(carName);
+            for (int j = 0; j < distance; j++) {
+                position.append("-");
+            }
+            System.out.println(carName + " : " + position);
         }
     }
 
