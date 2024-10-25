@@ -15,21 +15,21 @@ public class Validator {
         }
     }
 
-    private void validateUsernameLength(String name){
-        if(name.length() > 5 || name.isEmpty()){
+    private void validateUsernameLength(String name) {
+        if (name.length() > 5 || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateDuplicateUsername(String name){
-        if(usernameSet.contains(name)){
+    private void validateDuplicateUsername(String name) {
+        if (usernameSet.contains(name)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void isDigit(String string){
-        for(int i = 0; i < string.length(); i++){
-            if(!Character.isDigit(string.charAt(i))){
+    public void isDigit(String string) {
+        for (int i = 0; i < string.length(); i++) {
+            if (!Character.isDigit(string.charAt(i))) {
                 throw new IllegalArgumentException();
             }
         }

@@ -9,7 +9,6 @@ public class Application {
         String tryCount = IOController.tryCountInput();
 
         Validator validator = new Validator();
-
         validator.validateUsernames(userList);
         validator.isDigit(tryCount);
 

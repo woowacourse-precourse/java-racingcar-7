@@ -1,2 +1,5 @@
-package racingcar;public interface CarMoveCondition {
+package racingcar;
+
+public interface CarMoveCondition {
+    boolean isMovable();
 }

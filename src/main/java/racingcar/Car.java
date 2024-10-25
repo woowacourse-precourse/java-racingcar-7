@@ -4,7 +4,10 @@ public class Car {
     private String name;
     private String moveCount;
 
-    public Car(String name) {
+    private CarMoveCondition carMoveCondition;
+
+    public Car(String name, CarMoveCondition carMoveCondition) {
+        this.carMoveCondition = carMoveCondition;
         this.name = name;
         this.moveCount = "";
     }
@@ -17,7 +20,9 @@ public class Car {
         return moveCount;
     }
 
-    public void move(){
-        moveCount+="-";
+    public void move() {
+        if (carMoveCondition.isMovable()) {
+            moveCount += "-";
+        }
     }
 }

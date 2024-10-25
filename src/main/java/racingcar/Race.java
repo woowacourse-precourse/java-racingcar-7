@@ -1,8 +1,8 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -11,42 +11,34 @@ public class Race {
 
     public Race(List<String> carList, Integer tryCount) {
         for (String s : carList) {
-            this.carList.add(new Car(s));
+            this.carList.add(new Car(s, new DefaultCarMoveCondition()));
         }
         this.tryCount = tryCount;
     }
 
-    public void raceStart(){
-        for(int i=0; i<tryCount; i++){
+    public void raceStart() {
+        for (int i = 0; i < tryCount; i++) {
             executeTurn();
         }
     }
 
-    public void executeTurn(){
+    public void executeTurn() {
         for (Car car : carList) {
-            if(isMovable()){
-                car.move();
-            }
+            car.move();
         }
         IOController.printCurrentState(carList);
     }
 
-    public boolean isMovable(){
-        return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
 
-    public List<String> getRaceWinners(){
-        List<String> winnerList = new ArrayList<>();
+    public List<String> getRaceWinners() {
         Integer longestDistance = getLongestDistance(carList);
-        for (Car car : carList) {
-            if(car.getMoveCount().length() == longestDistance){
-                winnerList.add(car.getName());
-            }
-        }
-        return winnerList;
+        return carList.stream()
+                .filter(car -> car.getMoveCount().length() == longestDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
-    public static Integer getLongestDistance(List<Car> carList){
+    public static Integer getLongestDistance(List<Car> carList) {
         return carList.stream()
                 .map(Car::getMoveCount)
                 .mapToInt(String::length)
