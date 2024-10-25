@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class CarName {
@@ -28,5 +29,19 @@ public class CarName {
         if (SPECIAL_CHARACTER.matcher(name).find()) {
             throw new IllegalArgumentException("이름에 특수문자를 포함할 수 없으며, 콤마로 이름을 구분해 주세요.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarName carName = (CarName) o;
+        return Objects.equals(name, carName.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
