@@ -8,16 +8,19 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.RacingCar;
+import racingcar.view.OutputView;
 
 public class RacingGameServiceTest {
 
     private RacingGameService racingGameService;
     private List<String> carNames;
+    private OutputView outputView;
 
     @BeforeEach
     void setUp() {
         carNames = Arrays.asList("pobi", "woni", "jun");
-        racingGameService = new RacingGameService(carNames);
+        outputView = new OutputView(); // OutputView 객체 생성
+        racingGameService = new RacingGameService(carNames, outputView); // OutputView 전달
     }
 
     @Test
@@ -33,10 +36,8 @@ public class RacingGameServiceTest {
 
     @Test
     void racingGameService_ShouldMoveCarsCorrectly() {
-        // 경주가 시작된 후 자동차가 전진하는지 테스트
         racingGameService.startRace(5);
 
-        // 자동차가 전진했는지 확인 (0 이상의 위치)
         List<RacingCar> racingCars = racingGameService.getRacingCars();
         for (RacingCar car : racingCars) {
             assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
@@ -56,7 +57,6 @@ public class RacingGameServiceTest {
 
         List<RacingCar> racingCars = Arrays.asList(car1, car2, car3);
 
-        // 우승자 검증 - 2칸 전진한 pobi가 우승자
         List<RacingCar> winners = racingCars.stream()
                 .filter(car -> car.getPosition() == 2)
                 .collect(Collectors.toList());
@@ -64,5 +64,6 @@ public class RacingGameServiceTest {
         assertThat(winners).hasSize(1);
         assertThat(winners.get(0).getName()).isEqualTo("pobi");
     }
+
 
 }

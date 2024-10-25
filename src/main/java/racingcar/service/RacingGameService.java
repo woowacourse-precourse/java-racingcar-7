@@ -1,17 +1,22 @@
 package racingcar.service;
 
+
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.constants.RacingGameConstants;
 import racingcar.model.RacingCar;
+import racingcar.view.OutputView;
 
 public class RacingGameService {
 
     private final List<RacingCar> racingCars;
+    private final OutputView outputView;
 
-    public RacingGameService(List<String> carNames) {
-        this.racingCars = initializeCars(carNames);
+    public RacingGameService(List<String> carNames, OutputView outputView) {
+        this.racingCars = Collections.unmodifiableList(initializeCars(carNames));
+        this.outputView = outputView;
     }
 
     private List<RacingCar> initializeCars(List<String> carNames) {
@@ -22,29 +27,23 @@ public class RacingGameService {
 
     public void startRace(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
-            raceOnce();
+            executeSingleRaceRound();
         }
+    }
+
+    private void executeSingleRaceRound() {
+        raceOnce();
+        outputView.printRaceResults(racingCars);
     }
 
     private void raceOnce() {
-        for (RacingCar car : racingCars) {
-            moveCarIfPossible(car);
-        }
+        racingCars.forEach(this::moveCarIfPossible);
     }
 
     private void moveCarIfPossible(RacingCar car) {
-        int randomValue = pickRandomNumber();
-        if (canMove(randomValue)) {
+        if (Randoms.pickNumberInRange(0, 9) >= RacingGameConstants.MOVE_THRESHOLD.getValue()) {
             car.advance();
         }
-    }
-
-    private int pickRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
-    private boolean canMove(int randomValue) {
-        return randomValue >= RacingGameConstants.MOVE_THRESHOLD.getValue();
     }
 
     public List<RacingCar> findWinners() {
@@ -64,5 +63,4 @@ public class RacingGameService {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
-
 }
