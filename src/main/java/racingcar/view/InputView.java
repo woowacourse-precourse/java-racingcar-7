@@ -9,11 +9,15 @@ public class InputView {
         System.out.println(CAR_NAME_INPUT_GUIDE);
     }
 
-    public void getCarNameInput() {
-        Console.readLine();
+    public String getCarNameInput() {
+        return Console.readLine();
     }
 
     public void printCarMovementCountInputGuide() {
-        System.out.println();
+        System.out.println(CAR_MOVEMENT_COUNT_INPUT_GUIDE);
+    }
+
+    public String getCarMovementCount() {
+        return Console.readLine();
     }
 }
