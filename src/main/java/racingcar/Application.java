@@ -1,6 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,12 +11,26 @@ public class Application {
 
         // 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
+        String input = readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String repeatCount = Console.readLine();
+        String repeatCount = readLine();
 
         // Extract car names
         String[] cars = input.split(",");
+
+        // Create a repository to store how many times the car has times the car has advanced
+        int[] stepsForward = new int[cars.length];
+
+        // 실행 및 출력
+        for (int i = 0; i < Integer.parseInt(repeatCount); i++) {
+            for (int j = 0; j < stepsForward.length; j++) {
+                int goAndStop = pickNumberInRange(0, 9);
+                if (goAndStop >= 4) {
+                    stepsForward[j]++;
+                }
+            }
+
+        }
 
     }
 }
