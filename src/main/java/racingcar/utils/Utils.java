@@ -33,4 +33,7 @@ public class Utils {
         return Collections.max(numbers);
     }
 
+    public static String repeatString(String target, int count){
+        return target.repeat(count);
+    }
 }

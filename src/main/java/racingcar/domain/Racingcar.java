@@ -39,11 +39,7 @@ public class Racingcar {
     }
 
     private String getStepString(){
-        StringBuilder stepString = new StringBuilder();
-        for(int i = 0; i < step; i++){
-            stepString.append(RACINGCAR_STEP_STRING);
-        }
-        return stepString.toString();
+        return Utils.repeatString(RACINGCAR_STEP_STRING, step);
     }
 }
 
