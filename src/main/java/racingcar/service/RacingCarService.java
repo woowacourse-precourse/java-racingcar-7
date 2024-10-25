@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.global.enums.PrintMessage;
+import racingcar.global.util.RandomNumberGenerator;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Race;
@@ -10,6 +11,7 @@ import racingcar.view.OutputView;
 
 public class RacingCarService {
     private final OutputView outputView = OutputView.getInstance();
+    private final RandomNumberGenerator randomGenerator = RandomNumberGenerator.getInstance();
 
     public void raceStart(Race race) {
         outputView.printMessage(PrintMessage.GAME_MESSAGE);
@@ -22,22 +24,17 @@ public class RacingCarService {
         Integer raceCount = race.getRaceCount();
 
         for (int count = 0; count < raceCount; count++) {
-            move(cars);
+            moveCars(cars);
             outputView.printGameResult(cars);
         }
     }
 
-    public void move(Cars cars) {
-        cars.getCarList().forEach(
-                car -> {
-                    int random = getRandomNumber();
-                    car.increaseDistance(random);
-                }
-        );
+    public void moveCars(Cars cars) {
+        cars.getCarList().forEach(this::moveCar);
     }
 
-    public int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+    public void moveCar(Car car) {
+        car.increaseDistance(randomGenerator.generator());
     }
 
 
