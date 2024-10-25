@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +12,18 @@ public class Application {
 
         validateCarNames(carNames);
         validateTryCount(tryCount);
+
+       List<RacingCar> racingCarList = initRacingCarList(carNames);
+       int maxRoundValue = Integer.parseInt(tryCount);
+    }
+
+    static List<RacingCar> initRacingCarList(String carNames) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (String carName : carNames.split(",")) {
+            RacingCar racingCar = new RacingCar(carName);
+            racingCarList.add(racingCar);
+        }
+        return racingCarList;
     }
 
     static void validateCarNames(String carNames) {
