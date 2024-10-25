@@ -12,7 +12,7 @@ public class OutputManager {
     }
 
     public static void printExecutionResult(String executionResult) {
-        System.out.println(IOMessage.EXECUTION_RESULT);
+        System.out.println(IOMessage.EXECUTION_RESULT_OUTPUT);
         System.out.println(executionResult);
     }
 }
