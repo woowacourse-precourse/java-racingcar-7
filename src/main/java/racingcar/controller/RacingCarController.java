@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.RacingCars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,9 +15,25 @@ public class RacingCarController {
     }
 
     public void run() {
-        outputView.printAskingForCarNames();
-        List<String> carNames = inputView.askForCarNames();
+        List<String> carNames = getCarNames();
+        int rounds = getNumberOfRounds();
+
+        RacingCars racingCars = RacingCars.init(carNames);
+        outputView.printResultMessage();
+
+        for (int i = 0; i < rounds; i++) {
+            racingCars = racingCars.move();
+            outputView.printCarsLocation(racingCars);
+        }
+    }
+
+    private int getNumberOfRounds() {
         outputView.printAskingForNumberOfRounds();
-        int rounds = inputView.askForNumberOfRounds();
+        return inputView.askForNumberOfRounds();
+    }
+
+    private List<String> getCarNames() {
+        outputView.printAskingForCarNames();
+        return inputView.askForCarNames();
     }
 }
