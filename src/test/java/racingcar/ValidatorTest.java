@@ -34,7 +34,7 @@ public class ValidatorTest {
     @DisplayName("사용자 입력 값(시도 횟수) 유효성 체크")
     public void testInputCountValidate() {
         Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
-                validator.validate("pobi,woni,jun", "1"));
+                validator.validate("pobi,woni,jun", "dwdwqwqd123"));
 
         Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", "1.2"));
@@ -51,13 +51,13 @@ public class ValidatorTest {
         Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", ".123ddfgd"));
 
-        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+        Exception exception7 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", ""));
 
-        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+        Exception exception8 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", " "));
 
-        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+        Exception exception9 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", "  "));
     }
 }
