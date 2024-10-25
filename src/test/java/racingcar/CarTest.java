@@ -30,4 +30,11 @@ public class CarTest {
         assertThatThrownBy(() -> User.isLastStringComma("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 구분자_사이_공백_확인(){
+        String[] cars = {"pobi", "", "jun"};
+        assertThatThrownBy(() -> User.isEmpty(cars))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
