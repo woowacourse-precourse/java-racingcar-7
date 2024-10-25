@@ -58,6 +58,23 @@ class RacingCarListTest {
     }
 
     @Test
+    void 모든_자동자_상태_반환() {
+        //given
+        MoveStrategy moveStrategy = () -> true;
+        RacingCarList racingCarList = new RacingCarList(racingCars, moveStrategy);
+        racingCarList.addRacingCar("pobi");
+        racingCarList.moveAllCars();
+
+        //when
+        List<RacingCarStatus> racingCarsStatus = racingCarList.getRacingCarsStatus();
+        String name = racingCarsStatus.getFirst().getName();
+        int position = racingCarsStatus.getFirst().getPosition();
+        //then
+        assertThat(name).isEqualTo("pobi");
+        assertThat(position).isEqualTo(1);
+    }
+
+    @Test
     void 우승자_찾기() {
         //given
         MoveStrategy moveStrategy = () -> true;

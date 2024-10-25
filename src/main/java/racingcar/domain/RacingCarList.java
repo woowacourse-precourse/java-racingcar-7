@@ -63,4 +63,12 @@ public class RacingCarList {
 
         return maxPosition;
     }
+
+    public List<RacingCarStatus> getRacingCarsStatus() {
+        List<RacingCarStatus> racingCarsStatus = new ArrayList<>();
+        for(RacingCar racingCar:racingCars) {
+            racingCarsStatus.add(new RacingCarStatus(racingCar.getName(),racingCar.getPosition()));
+        }
+        return racingCarsStatus;
+    }
 }
