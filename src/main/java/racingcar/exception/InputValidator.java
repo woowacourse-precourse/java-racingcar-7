@@ -25,4 +25,18 @@ public class InputValidator {
             throw new IllegalArgumentException("에러: 입력된 반복 횟수에 숫자가 아닌 문자가 포함되어 있습니다!");
         }
     }
+
+    public void validateOutOfRangeRepeatTimes(String repeatTimes) {
+        int convertedRepeatTimes;
+
+        try {
+            convertedRepeatTimes = Integer.parseInt(repeatTimes);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("에러: 0 ~ 2,147.483,647 이외의 숫자는 입력하실 수 없습니다!");
+        }
+
+        if (convertedRepeatTimes < 0) {
+            throw new IllegalArgumentException("에러: 0 ~ 2,147.483,647 이외의 숫자는 입력하실 수 없습니다!");
+        }
+    }
 }
