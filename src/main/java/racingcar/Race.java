@@ -9,6 +9,8 @@ public class Race {
     private List<Car> carList = new ArrayList<>();
     private Integer tryCount;
 
+    IOController ioController = new IOController();
+
     public Race(List<String> carList, Integer tryCount) {
         for (String s : carList) {
             this.carList.add(new Car(s, new DefaultCarMoveCondition()));
@@ -26,7 +28,7 @@ public class Race {
         for (Car car : carList) {
             car.move();
         }
-        IOController.printCurrentState(carList);
+        ioController.printCurrentState(carList);
     }
 
 
@@ -38,7 +40,7 @@ public class Race {
                 .collect(Collectors.toList());
     }
 
-    public static Integer getLongestDistance(List<Car> carList) {
+    public Integer getLongestDistance(List<Car> carList) {
         return carList.stream()
                 .map(Car::getMoveCount)
                 .mapToInt(String::length)
