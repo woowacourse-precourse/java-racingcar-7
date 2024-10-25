@@ -12,7 +12,11 @@ public class RacingCar {
     }
 
     private static void validateNameRule(String name) {
-        if (name.codePoints().anyMatch(c -> (!Character.isLetter(c) && Character.isWhitespace(c)))) {
+        // 특수문자 및 숫자 필터링
+        if (name.codePoints().anyMatch(c -> (!Character.isLetter(c) && !Character.isWhitespace(c)))) {
+            throw new IllegalArgumentException("이름은 문자만 가능합니다.");
+        }
+        if (name.codePoints().anyMatch(Character::isWhitespace)) {
             throw new IllegalArgumentException("이름은 문자만 가능합니다.");
         }
     }
