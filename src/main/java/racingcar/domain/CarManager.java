@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,8 +8,8 @@ public class CarManager {
 
     private List<Car> cars;
 
-    public CarManager(List<Car> cars){
-        this.cars = cars;
+    public CarManager(){
+        this.cars = new ArrayList<>();
     }
 
     public List<Car> getCars(){
