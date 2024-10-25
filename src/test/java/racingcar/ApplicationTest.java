@@ -78,7 +78,7 @@ class ApplicationTest extends NsTest {
 
         assertSimpleTest(() -> {
             for (int i = 0; i < testCars.size(); i++) {
-                assertThat(testCars.get(i).name).isEqualTo(testNames.get(i));
+                assertThat(testCars.get(i).getName()).isEqualTo(testNames.get(i));
             }
         });
     }

@@ -27,7 +27,7 @@ public class FinishRace {
     private ArrayList<String> getWinnerNames(final ArrayList<Car> winners) {
         ArrayList<String> winnerNames = new ArrayList<>();
 
-        winners.forEach(car -> winnerNames.add(car.name));
+        winners.forEach(car -> winnerNames.add(car.getName()));
 
         return winnerNames;
     }

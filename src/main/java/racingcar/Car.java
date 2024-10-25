@@ -1,12 +1,16 @@
 package racingcar;
 
 public class Car {
-    final String name;
+    private final String name;
     int movedAmount;
 
     public Car(String name) {
         this.name = name;
         this.movedAmount = 0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void run() {

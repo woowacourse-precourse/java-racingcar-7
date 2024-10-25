@@ -20,7 +20,7 @@ public class StartRace {
 
     private void printGameStatus(final ArrayList<Car> cars) {
         for (Car car : cars) {
-            println(makeMovedAmountString(car.name, car.movedAmount));
+            println(makeMovedAmountString(car.getName(), car.movedAmount));
         }
         println("\n");
     }
