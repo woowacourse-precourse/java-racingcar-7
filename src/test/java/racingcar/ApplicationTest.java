@@ -1,6 +1,8 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -31,6 +33,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //정상 기능 테스트
     @Test
     void 기능_테스트_우승자_여러명() {
         assertRandomNumberInRangeTest(
@@ -150,6 +153,124 @@ class ApplicationTest extends NsTest {
                 },
                 STOP, STOP
         );
+    }
+
+    //시도 회수 예외 테스트
+    @Test
+    void 시도_회수_공란_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_0_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n0\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_문자_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\no\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n \n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백과_숫자_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n 1\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백과_문자_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n r\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백과_숫자들_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n 1 2\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백과_문자들_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n rr df s\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_공백과_숫자_문자_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n 1 r\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
