@@ -18,4 +18,10 @@ public class RacingGame {
     public static int createRandom(){   
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public static void moveRacingcar(Racingcar racingcar){ // 전진하는 조건이 맞으면 레이싱카를 전진시키고 아니면 멈춰있는다.
+        if (createRandom()>=4) {
+            Racingcar.moveRacingcar(racingcar);
+        }
+    }
 }
