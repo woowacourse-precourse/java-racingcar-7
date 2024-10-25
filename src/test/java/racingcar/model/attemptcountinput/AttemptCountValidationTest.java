@@ -1,4 +1,4 @@
-package racingcar.model.attempcount;
+package racingcar.model.attemptcountinput;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

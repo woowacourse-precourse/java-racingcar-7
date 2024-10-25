@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.io.InputManager;
-import racingcar.model.attempcount.AttemptCountValidation;
+import racingcar.model.attemptcountinput.AttemptCountValidation;
 import racingcar.model.carnameinput.CarNameSplit;
 import racingcar.model.carnameinput.CarNameValidation;
 

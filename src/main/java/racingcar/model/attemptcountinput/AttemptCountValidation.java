@@ -1,4 +1,4 @@
-package racingcar.model.attempcount;
+package racingcar.model.attemptcountinput;
 
 import racingcar.exception.AttemptCountNotNumberException;
 import racingcar.exception.NegativeAttemptCountException;
