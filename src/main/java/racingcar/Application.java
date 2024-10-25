@@ -13,24 +13,24 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         long attempt = Long.parseLong(Console.readLine());
 
-        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, Long> map = new HashMap<String, Long>();
         for (String name : carName.split(",")) {
-            map.put(name, 0);
+            map.put(name, 0L);
         }
 
         repeat(attempt, map);
 
     }
 
-    public static void repeat(long attempt, Map<String, Integer> map) {
+    public static void repeat(long attempt, Map<String, Long> map) {
         while (attempt-- > 0) {
-            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            for (Map.Entry<String, Long> entry : map.entrySet()) {
                 forwardDecision(map, entry);
             }
         }
     }
 
-    public static void forwardDecision(Map<String, Integer> map, Map.Entry<String, Integer> entry) {
+    public static void forwardDecision(Map<String, Long> map, Map.Entry<String, Long> entry) {
         if (randomDraw()) {
             map.put(entry.getKey(), entry.getValue() + 1);
         }
