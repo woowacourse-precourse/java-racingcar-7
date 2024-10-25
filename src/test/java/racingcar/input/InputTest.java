@@ -1,7 +1,8 @@
 package racingcar.input;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +10,15 @@ class InputTest {
 
     @Test
     @DisplayName("사용자의 입력을 ,를 기준으로 List로 분리한다.")
-    void splitCar() {
+    void splitCarNames() {
         // given
-        String input = "pobi,woni,jun";
+        ByteArrayInputStream in = new ByteArrayInputStream("pobi,woni,jun".getBytes());
+        System.setIn(in);
 
         // when
-        List<String> cars = Input.splitCar(input);
+        List<String> carNames = Input.inputCarNames();
 
         // then
-        Assertions.assertThat(cars).isEqualTo(List.of("pobi", "woni", "jun"));
+        Assertions.assertEquals(carNames, List.of("pobi", "woni", "jun"));
     }
 }
