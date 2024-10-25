@@ -11,11 +11,11 @@ import racingcar.domain.Car;
 import racingcar.util.CommonUtil;
 import racingcar.validation.CarNamesValidator;
 
-public class RacingCarServiceImpl implements RacingCarService {
+public class RacingGameServiceImpl implements RacingGameService {
 
     private final CarNamesValidator carNamesValidator;
 
-    public RacingCarServiceImpl(CarNamesValidator carNamesValidator) {
+    public RacingGameServiceImpl(CarNamesValidator carNamesValidator) {
         this.carNamesValidator = carNamesValidator;
     }
 

@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.controller.RacingCarController;
-import racingcar.service.RacingCarService;
-import racingcar.service.RacingCarServiceImpl;
+import racingcar.controller.RacingGameController;
+import racingcar.service.RacingGameService;
+import racingcar.service.RacingGameServiceImpl;
 import racingcar.validation.CarNamesValidator;
 import racingcar.validation.CarNamesValidatorImpl;
 import racingcar.validation.RaceCountValidator;
@@ -14,12 +14,12 @@ import racingcar.view.OutputViewImpl;
 
 public class AppConfig {
 
-    public RacingCarController racingCarController() {
-        return new RacingCarController(racingCarService(), inputView(), outPutView(), attemptCountValidator());
+    public RacingGameController racingCarController() {
+        return new RacingGameController(racingCarService(), inputView(), outPutView(), attemptCountValidator());
     }
 
-    public RacingCarService racingCarService() {
-        return new RacingCarServiceImpl(carNameValidator());
+    public RacingGameService racingCarService() {
+        return new RacingGameServiceImpl(carNameValidator());
     }
 
     public CarNamesValidator carNameValidator() {
