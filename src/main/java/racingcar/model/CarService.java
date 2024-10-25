@@ -10,6 +10,13 @@ public class CarService {
         return cars;
     }
 
+    public List<String> findWinner(List<Car> cars) {
+        Integer maxMovement = cars.stream().mapToInt(Car::getTotalMovement).max().orElse(0);
+        List<String> winners = cars.stream().filter(car -> car.getTotalMovement().equals(maxMovement))
+                .map(Car::getName).toList();
+        return winners;
+    }
+
     public Car moveForward(Car car) {
         if (canMove()) {
             car.totalMovement += 1;
