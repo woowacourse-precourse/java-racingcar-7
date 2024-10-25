@@ -5,7 +5,7 @@ import static racingcar.common.message.InputMessage.ENTER_LAP_COUNT;
 import static racingcar.util.PreprocessingUtil.replaceAllUnNecessaryChar;
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 import static racingcar.view.io.read.InputView.readInput;
-import static racingcar.view.io.write.OutputView.print;
+import static racingcar.view.io.write.OutputView.simplePrint;
 import static racingcar.view.validator.InputValidatorFacade.validateCarNames;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class InputManager {
     }
 
     public static List<String> enterCarNames() {
-        print(ENTER_CAR_NAMES);
+        simplePrint(ENTER_CAR_NAMES);
 
         String input = readInput();
         validateCarNames(input);
@@ -26,7 +26,7 @@ public class InputManager {
     }
 
     public static String enterLapCount() {
-        print(ENTER_LAP_COUNT);
+        simplePrint(ENTER_LAP_COUNT);
 
         String input = readInput();
         InputValidatorFacade.validateLapCount(input);

@@ -31,6 +31,6 @@ public class RaceServiceTest {
         DashBoard dashBoard = sut.startRace(lap, cars);
 
         // then
-        assertThat(dashBoard.rankWinners()).isEqualTo("a, b, c");
+        assertThat(dashBoard.offerLWinners()).isEqualTo("a, b, c");
     }
 }

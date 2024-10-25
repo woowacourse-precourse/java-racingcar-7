@@ -10,6 +10,7 @@ import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
 import racingcar.service.RaceService;
+import racingcar.view.DashBoardView;
 
 public class MainController {
 
@@ -26,7 +27,8 @@ public class MainController {
         Cars participatingCars = raceService.registerCars(lapCount, carNames);
         DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), participatingCars);
 
-        showLapCharts(dashBoard.offerLapCharts());
-        showWinners(dashBoard.offerLWinners());
+        DashBoardView raceResult = DashBoardView.from(dashBoard);
+        showLapCharts(raceResult);
+        showWinners(raceResult);
     }
 }

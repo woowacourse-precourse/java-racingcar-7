@@ -13,6 +13,7 @@ public class PreprocessingUtil {
     }
 
     public static String replaceAllUnNecessaryChar(final String source) {
-        return source.replaceAll("[\\s|(^0+)]", "");
+        String cleanedWhiteSpaceSource = source.replaceAll("\\s", "");
+        return cleanedWhiteSpaceSource.replaceAll("(^0+)", "");
     }
 }
