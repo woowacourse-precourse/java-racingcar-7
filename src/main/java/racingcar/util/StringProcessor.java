@@ -19,30 +19,21 @@ public class StringProcessor {
     }
 
     public static String formatWinner(List<String> winners){
-        if(checkIfSingleWinner(winners)){
+        if(isSingleWinner(winners)){
             return getFirstWinner(winners);
         }
+        return formatMultipleWinners(winners);
+    }
 
-        StringBuilder formattedWinnerString = new StringBuilder();
-        formattedWinnerString.append(getFirstWinner(winners));
-        for(int i = 1; i<winners.size(); i++){
-            String currentWinner = winners.get(i);
-            formattedWinnerString.append(formatSecondOrMoreWinner(currentWinner));
-        }
-
-        return formattedWinnerString.toString();
+    private static String formatMultipleWinners(List<String> winners){
+        return String.join(COMMA + SPACE, winners);
     }
 
     private static String getFirstWinner(List<String> winners){
         return winners.get(0);
     }
 
-
-    private static String formatSecondOrMoreWinner(String winner){
-        return COMMA + SPACE + winner;
-    }
-
-    private static boolean checkIfSingleWinner(List<String> winner){
+    private static boolean isSingleWinner(List<String> winner){
         return winner.size() == ONE;
     }
 

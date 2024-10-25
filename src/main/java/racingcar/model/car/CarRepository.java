@@ -1,7 +1,5 @@
 package racingcar.model.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class CarRepository {
     }
 
     private void setCarList(){
-        carList = new ArrayList<Car>();
+        carList = new ArrayList<>();
     }
 
     private void addToCarList(String[] names){
@@ -28,5 +26,4 @@ public class CarRepository {
             carList.add(car);
         }
     }
-
 }

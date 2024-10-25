@@ -2,7 +2,6 @@ package racingcar.model.raceGame;
 
 import racingcar.model.car.Car;
 import racingcar.model.car.CarRepository;
-import racingcar.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
