@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.validator.CarNameValidator;
+import racingcar.validator.RoundValidator;
 
 import java.util.List;
 
@@ -136,6 +137,83 @@ class ApplicationTest extends NsTest {
 
         assertThat(carList).hasSize(3).containsExactly("one", "일", "1");
     }
+
+    @DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트1")
+    @Test
+    void 시도_횟수_테스트1() {
+        RoundValidator check = new RoundValidator();
+
+        int number = check.parseInt("4");
+        check.positiveNumber(number);
+
+        assertThat(number).isEqualTo(4);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트2")
+    @Test
+    void 시도_횟수_테스트2() {
+        RoundValidator check = new RoundValidator();
+
+        int number = check.parseInt("13");
+        check.positiveNumber(number);
+
+        assertThat(number).isEqualTo(13);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트1")
+    @Test
+    void 시도_횟수_테스트3() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.parseInt("abc"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트2")
+    @Test
+    void 시도_횟수_테스트4() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.parseInt("가나다"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트3")
+    @Test
+    void 시도_횟수_테스트5() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.parseInt("!@#"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트4")
+    @Test
+    void 시도_횟수_테스트6() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.parseInt("a가!"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 음수일 시 예외테스트")
+    @Test
+    void 시도_횟수_테스트7() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.positiveNumber(check.parseInt("-6")))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 0 일 시 예외테스트")
+    @Test
+    void 시도_횟수_테스트8() {
+        RoundValidator check = new RoundValidator();
+
+        assertThatThrownBy(() -> check.positiveNumber(check.parseInt("0")))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
