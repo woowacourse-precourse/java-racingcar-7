@@ -53,11 +53,12 @@ public class RacingCar {
             return false;
         }
         RacingCar racingCar = (RacingCar) o;
-        return Objects.equals(name, racingCar.name);
+        return Objects.equals(name, racingCar.name) &&
+                Objects.equals(position, racingCar.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(name);
+        return Objects.hash(name, position);
     }
 }
