@@ -13,6 +13,14 @@ public class Car implements CarObserver {
         this.distance = BigInteger.ZERO;
     }
 
+    public BigInteger getDistance() {
+        return distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public void update() {
         if (goOrStop()) {

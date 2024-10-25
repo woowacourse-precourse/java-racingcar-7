@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.mvc.model.observer.Car;
+import racingcar.mvc.model.observer.CarObserver;
 import racingcar.mvc.model.subject.GameRoundSubject;
 import racingcar.mvc.model.subject.Subject;
 import racingcar.mvc.validation.input.AttemptNumberValidator;
@@ -43,12 +44,48 @@ public class RacingGameController {
         Subject gameRoundSubject = getRoundSubject(new GameRoundSubject(), names);
 
         proceedRound(attempts, gameRoundSubject);
+
+        showFinalWinner(gameRoundSubject);
+    }
+
+    private void showFinalWinner(Subject gameRoundSubject) {
+        outputView.showFinalWinnerMsg();
+
+        String winnerMsg = getWinner(gameRoundSubject);
+
+        System.out.println(winnerMsg);
+    }
+
+    private String getWinner(Subject gameRoundSubject) {
+        StringBuilder winnerMsg = new StringBuilder();
+
+        List<CarObserver> winnerObservers = gameRoundSubject.findWinnerObservers();
+
+        for (int i = 0; i < winnerObservers.size(); i++) {
+            Car car = (Car) winnerObservers.get(i);
+            winnerMsg.append(car.getName());
+
+            if (i < winnerObservers.size() - 1) {
+                winnerMsg.append(", ");
+            }
+        }
+
+//        for (CarObserver winnerObserver : winnerObservers) {
+//            Car car = (Car) winnerObserver;
+//            winnerMsg.append(car.getName());
+//
+//            if (winnerObservers.size() - 1 != winnerObservers.indexOf(winnerObserver)) {
+//                winnerMsg.append(", ");
+//            }
+//        }
+
+        return winnerMsg.toString();
     }
 
     private void proceedRound(BigInteger attempts, Subject gameRoundSubject) {
         outputView.showExecutionResultMsg();
 
-        for (BigInteger i = BigInteger.ONE; i.compareTo(attempts) < 0; i = i.add(BigInteger.ONE)) {
+        for (BigInteger i = BigInteger.ONE; i.compareTo(attempts) <= 0; i = i.add(BigInteger.ONE)) {
             gameRoundSubject.notifyObservers();
             System.out.println();
         }
