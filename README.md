@@ -7,8 +7,8 @@
 - [X] FrontController
 
 ## INPUT
-- [ ] 자동차 이름 입력
-- [ ] 시행할 횟수 입력
+- [X] 자동차 이름 입력
+- [X] 시행할 횟수 입력
 
 ## PARSING
 - [X] 자동차 이름
