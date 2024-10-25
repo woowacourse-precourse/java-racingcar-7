@@ -4,7 +4,6 @@ public class Car {
     private final String name;
     private int position = 0;
 
-
     public Car(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException();
@@ -12,7 +11,13 @@ public class Car {
         this.name = name;
     }
 
-    public void moveForward() {
+    public void move(int number) {
+        if (number >= 4) {
+            moveForward();
+        }
+    }
+
+    private void moveForward() {
         position++;
     }
 

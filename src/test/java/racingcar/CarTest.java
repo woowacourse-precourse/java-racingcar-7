@@ -23,4 +23,14 @@ public class CarTest {
         car.moveForward();
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void 자동차는_랜덤값이_4이상일때만_전진한다() {
+        Car car = new Car("pobi");
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
+
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }
