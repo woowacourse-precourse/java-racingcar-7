@@ -7,6 +7,9 @@ public class Constants {
     public static final String OUTPUT_START_PROMPT = "실행 결과";
     public static final String OUTPUT_PROCESS_PROMPT = "%s : %s";
     public static final String OUTPUT_FINAL_RESULT_PROMPT = "최종 우승자 : %s";
-
     public static final String OUTPUT_BAR = "-";
+
+    public static final int MAX_CAR_NAME_LENGTH = 5;
+
+
 }

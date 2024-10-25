@@ -42,7 +42,7 @@ public class Parser {
     }
 
     private String validateCarName(String carName) {
-        if(carName.isEmpty() || carName.length() > 5) {
+        if(carName.isEmpty() || carName.length() > Constants.MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("올바른 자동차 이름이 아닙니다.");
         }
         return carName;
