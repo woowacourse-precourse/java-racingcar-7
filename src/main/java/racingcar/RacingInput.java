@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class RacingInput {
     private static final int MIN_ROUNDS = 1;
-    private static final int MAX_ROUNDS = 200;
 
     /**
      * Receives car names separated by commas from {@code System.in} and returns them as a {@code List}. Leading and
@@ -31,7 +30,7 @@ public class RacingInput {
      * Receives the total number of rounds for the game from {@code System.in} and returns it.
      *
      * @return the total number of rounds
-     * @throws IllegalArgumentException if the total number of rounds is not a positive integer or exceeds 200
+     * @throws IllegalArgumentException if the total number of rounds is not a positive integer
      */
     public int receiveTotalRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -61,10 +60,10 @@ public class RacingInput {
         try {
             totalRounds = Integer.parseInt(rawTotalRounds);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력: 총 라운드는 1~200사이의 정수여야 합니다.");
+            throw new IllegalArgumentException("잘못된 입력: 숫자만 입력할 수 있습니다. 숫자가 지나치게 클 수 없습니다.");
         }
-        if (totalRounds < MIN_ROUNDS || totalRounds > MAX_ROUNDS) {
-            throw new IllegalArgumentException("잘못된 입력: 총 라운드는 1~200사이의 정수여야 합니다.");
+        if (totalRounds < MIN_ROUNDS) {
+            throw new IllegalArgumentException("잘못된 입력: 양의 정수만 입력할 수 있습니다.");
         }
         return totalRounds;
     }
