@@ -10,6 +10,7 @@ public class Application {
 
         int count = getCount();
 
+        List<Integer> moves = new ArrayList<>(Collections.nCopies(cars.size(),0));
     }
 
     private static List<String> getCars() {
