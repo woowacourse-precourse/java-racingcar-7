@@ -18,6 +18,7 @@ public class Application {
         RaceCar car = new RaceCar();
         car.start(carNames,raceCount);
 
+        Console.close();
 
     }
 }

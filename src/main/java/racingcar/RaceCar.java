@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
 public class RaceCar {
@@ -15,7 +16,35 @@ public class RaceCar {
             }
             printRace(carMap);
         }
+        ArrayList<String> winner = checkWinner(carMap);
+        printWinner(winner);
 
+    }
+
+    private ArrayList<String> checkWinner(HashMap<String, Integer> carMap) {
+        int maxValue = 0;
+        ArrayList<String> array = new ArrayList<>();
+        for(int value :carMap.values()){
+            maxValue = Math.max(maxValue,value);
+        }
+        for(String key:carMap.keySet()){
+            if(carMap.get(key)==maxValue){
+                array.add(key);
+            }
+        }
+        return array;
+    }
+
+    private void printWinner(ArrayList<String> winner) {
+        StringBuilder message = new StringBuilder("최종 우승자 : ");
+        if(winner.size()==1){
+            message.append(winner.get(0));
+            System.out.println(message);
+        }else{
+            String winners = String.join(", ",winner);
+            message.append(winners);
+            System.out.println(message);
+        }
     }
 
     private void printRace(HashMap<String, Integer> carMap) {
