@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.model.RaceModel;
 import racingcar.service.PlayerService;
 import racingcar.service.RaceService;
@@ -23,16 +23,15 @@ public class RaceController {
 
     public void input() {
         String input = InputView.inputPlayer();
-        List<String> players = playerService.splitPlayer(input);
-        raceModel.setPlayers(players);
+        List<String> playerNames = playerService.splitPlayer(input);
         int raceCount = InputView.inputRaceCount();
-        raceModel.setRaceCount(raceCount);
-        initData(players.size());
+        initData(playerNames, raceCount);
     }
 
-    private void initData(int count) {
-        List<Integer> progress = new ArrayList<>(Collections.nCopies(count, 0));
-        raceModel.setProgress(progress);
+    private void initData(List<String> playerNames, int raceCount) {
+        List<Car> cars = playerService.createCarList(playerNames);
+        raceModel.setCars(cars);
+        raceModel.setRaceCount(raceCount);
         raceModel.setWinners(new ArrayList<>());
     }
 
@@ -45,17 +44,17 @@ public class RaceController {
 
     private void race() {
         for (int i = 0; i < raceModel.getRaceCount(); i++) {
-            raceService.race(raceModel.getProgress());
+            raceService.race(raceModel.getCars());
             outputProgress();
         }
     }
 
     private void findWinner() {
-        raceService.findWinner(raceModel.getPlayers(), raceModel.getProgress(), raceModel.getWinners());
+        raceService.findWinner(raceModel.getCars(), raceModel.getWinners());
     }
 
     private void outputProgress() {
-        OutputView.printRaceResult(raceModel.getPlayers(), raceModel.getProgress());
+        OutputView.printRaceResult(raceModel.getCars());
     }
 
     private void outputWinner() {
