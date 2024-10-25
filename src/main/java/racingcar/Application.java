@@ -22,6 +22,7 @@ public class Application {
     Game game = new Game(cars, new RandomMoveCondition());
     for (int i = 0; i < count.getCount(); i++) {
       game.playRound();
+      OutputView.printCarPositions(cars.getAllCarStatuses());
     }
   }
 }

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Set;
 
 public class Game {
   private final Cars cars;
@@ -12,11 +11,9 @@ public class Game {
   }
 
   public void playRound() {
-    Set<String> carNames = cars.getCarNames();
-
-    for (String name : carNames) {
+    for (int i = 0; i < cars.size(); i++) {
       if (randomMoveCondition.isMovable()) {
-        cars.move(name);
+        cars.move(i);
       }
     }
   }

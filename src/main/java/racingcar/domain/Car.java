@@ -24,6 +24,10 @@ public class Car {
     this.position++;
   }
 
+  public String formatCarStatus() {
+    return name + " : " + "-".repeat(position);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
