@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RacePreparationTest {
     private RacePreparation racePreparation;
@@ -29,25 +27,25 @@ class RacePreparationTest {
 
     @Test
     void 자동차_이름_입력_중복_케이스_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new RacePreparation("test1,test1", "5"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new RacePreparation("test1,,test1", "5");
+        });
+        assertTrue(exception.getMessage().contains("Duplicated car names"));
     }
 
     @Test
     void 자동차_이름_입력_공백_케이스_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new RacePreparation("test1,,test2", "5"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new RacePreparation("test1,,test2", "5");
+        });
+        assertTrue(exception.getMessage().contains("Invalid input"));
     }
 
     @Test
     void 경주_횟수_입력_케이스_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> new RacePreparation("test1,test2", "a"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new RacePreparation("test1,test2", "a");
+        });
+        assertTrue(exception.getMessage().contains("Character is not number"));
     }
 }

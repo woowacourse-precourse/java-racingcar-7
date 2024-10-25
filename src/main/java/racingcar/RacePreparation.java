@@ -22,19 +22,19 @@ public class RacePreparation {
 
     private void validateInput(String input) {
         if (input.contains(",,")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid input: " + input);
         }
     }
 
     private void validateCarNames(List<String> carNames) {
         Set<String> checkDuplicatedCarNames = new HashSet<>(carNames);
         if (checkDuplicatedCarNames.size() < carNames.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Duplicated car names: " + checkDuplicatedCarNames);
         }
 
         for (String name : carNames) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Exceeded characters: " + name);
             }
         }
     }
@@ -43,7 +43,7 @@ public class RacePreparation {
         try {
             this.matchCount = Integer.parseInt(matchCount);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Character is not number: " + matchCount);
         }
     }
 
