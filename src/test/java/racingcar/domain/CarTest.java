@@ -1,69 +1,58 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.fake.ForwardNumberGenerator;
 import racingcar.fake.StopNumberGenerator;
+import racingcar.fake.fakeStringValidator;
 import racingcar.util.NumberGenerator;
-import racingcar.util.RandomNumberGenerator;
+import racingcar.util.StringValidator;
 
 class CarTest {
 
-    private NumberGenerator randomNumberGenerator;
     private NumberGenerator forwardNumberGenerator;
     private NumberGenerator stopNumberGenerator;
+    private StringValidator fakeStringValidator;
 
     @BeforeEach
     void setUp() {
-        randomNumberGenerator = new RandomNumberGenerator();
         forwardNumberGenerator = new ForwardNumberGenerator();
         stopNumberGenerator = new StopNumberGenerator();
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"붕붕붕 아주 작은 자동차", "붕붕붕 아주 큰 자동차"})
-    @DisplayName("자동차 이름이 최대 범위를 초과하여 예외가 발생한다.")
-    void carNameLengthTest(final String carName) throws Exception {
-        //given
-        //when
-        //then
-        assertThatThrownBy(() -> Car.of(carName, randomNumberGenerator)).isInstanceOf(IllegalArgumentException.class);
-
+        fakeStringValidator = new fakeStringValidator();
     }
 
     @Test
-    @DisplayName("무작위 값이 기준값 미만이므로 자동차가 전진하지 않는다.")
+    @DisplayName("무작위 값이 기준값 미만이므로 자동차가 전진 하지않는다.")
     void stopTest() throws Exception {
         //given
-        final Car car = Car.of("자동차", stopNumberGenerator);
-        final long score = car.getScore();
+        final CarName carName = CarName.of("전진 하지 않는 자동차", fakeStringValidator);
+        final Score score = new Score(0);
+        final Car car = new Car(carName, score, stopNumberGenerator);
 
         //when
-        car.go();
+        car.go(1);
 
         //then
-        assertThat(car.getScore()).isEqualTo(score);
+        assertThat(car.getScore()).isZero();
 
     }
 
     @Test
-    @DisplayName("무작위 값이 기준값 이상이므로 자동차가 전진한다.")
+    @DisplayName("무작위 값이 기준값 이상이므로 자동차가 전진 한다.")
     void forwardTest() throws Exception {
         //given
-        final Car car = Car.of("자동차", forwardNumberGenerator);
-        final long score = car.getScore();
+        final CarName carName = CarName.of("전진 하는 자동차", fakeStringValidator);
+        final Score score = new Score(0);
+        final Car car = new Car(carName, score, forwardNumberGenerator);
 
         //when
-        car.go();
+        car.go(2);
 
         //then
-        assertThat(car.getScore()).isEqualTo(score + 1);
+        assertThat(car.getScore()).isEqualTo(2);
 
     }
 
