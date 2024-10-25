@@ -1,10 +1,10 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.car.RacingCar;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
@@ -19,8 +19,6 @@ public class RacingCarController {
         int moveCount = InputView.getMoveCount();
 
         List<RacingCar> winners = racingCarService.logic(carNames, moveCount);
-        String winnerNames = winners.stream().map(RacingCar::getCarName).collect(Collectors.joining(", "));
-
-        System.out.println("최종 우승자 : " + winnerNames);
+        OutputView.printWinner(winners);
     }
 }
