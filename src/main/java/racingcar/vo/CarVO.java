@@ -1,4 +1,5 @@
 package racingcar.vo;
+
 /**
  * 자동차의 이름, 전진 횟수의 정보를 가지는 VO
  */
@@ -29,6 +30,11 @@ public class CarVO {
 
     public CarVO(String carName) {
         this.carName = carName;
+    }
+
+    public CarVO(String carName, int goCount) {
+        this.carName = carName;
+        this.goCount = goCount;
     }
 
     @Override
