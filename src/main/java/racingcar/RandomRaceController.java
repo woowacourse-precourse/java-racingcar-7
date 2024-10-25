@@ -6,8 +6,8 @@ import java.util.List;
 public class RandomRaceController {
     private final RaceProgressView raceProgressView;
 
-    public RandomRaceController(RaceProgressView raceProgressView) {
-        this.raceProgressView = raceProgressView;
+    public RandomRaceController() {
+        this.raceProgressView = new RaceProgressView();
     }
 
     private boolean isAdvance() {
