@@ -37,13 +37,17 @@ public class Application {
         for (int i = 0; i < cars.size(); i++) {
             scores.add(0);
         }
+        System.out.println();
+        System.out.println("실행 결과");
         while (turns-- > 0) {
             for (int i = 0; i < cars.size(); i++) {
                 int num = Randoms.pickNumberInRange(0, 9);
                 if (num > 3) {
                     scores.set(i, scores.get(i) + num);
                 }
+                System.out.printf("%s : %s%n", cars.get(i), "-".repeat(scores.get(i)));
             }
+            System.out.println();
         }
     }
 }
