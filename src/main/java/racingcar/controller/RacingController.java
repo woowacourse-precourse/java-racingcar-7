@@ -22,7 +22,10 @@ public class RacingController {
         initializeCars();
         int tryCount = insertTryCount();
         race(tryCount);
+        endRace();
+    }
 
+    private void endRace() {
         List<String> raceWinners = cars.findRaceWinners();
         outputView.printWinners(raceWinners);
     }
