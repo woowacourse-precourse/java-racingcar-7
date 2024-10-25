@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,26 @@ class RegisterTest {
         expectedMove.put("진용2", 3);
 
         Assertions.assertThat(register.carsMoveCount()).isEqualTo(expectedMove);
+    }
+
+    @Test
+    void 우승자_조회() {
+        Register register = new Register();
+        register.carList.add(new Car("진용"));
+        register.carList.add(new Car("hi"));
+        register.carList.add(new Car("강감찬"));
+
+        register.carList.get(0).distance = 3;
+        register.carList.get(1).distance = 1;
+        register.carList.get(2).distance = 3;
+
+        ArrayList<String> expectedWinner = new ArrayList<>();
+        expectedWinner.add("진용");
+        expectedWinner.add("강감찬");
+
+        Collections.sort(expectedWinner);
+
+        Assertions.assertThat(register.racingWinner()).isEqualTo(expectedWinner);
     }
 
 }

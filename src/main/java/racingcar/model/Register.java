@@ -1,7 +1,9 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Register {
     // 경주 할 자동차들 리스트 등록 기능
@@ -26,5 +28,20 @@ public class Register {
             moves.put(c.name, c.distance);
         }
         return moves;
+    }
+
+    public ArrayList<String> racingWinner() {
+        HashMap<String, Integer> carMoves = carsMoveCount();
+        int maxMove = Collections.max(carMoves.values());
+
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> m : carMoves.entrySet()) {
+            if (m.getValue() == maxMove) {
+                winners.add(m.getKey());
+            }
+        }
+        Collections.sort(winners);
+        return winners;
     }
 }
