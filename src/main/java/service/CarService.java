@@ -1,5 +1,6 @@
 package service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import error.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,7 @@ import model.Car;
 import model.CarList;
 
 public class CarService {
-    private CarList carList;
+    private final CarList carList;
 
     public CarService() {
         carList = new CarList();
@@ -70,6 +71,11 @@ public class CarService {
             }
         }
         return maxDistance;
+    }
+
+    public boolean isFastForward() {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        return randomNum >= 4;
     }
 
 }
