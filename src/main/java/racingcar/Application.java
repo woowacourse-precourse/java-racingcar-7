@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,6 +35,7 @@ public class Application {
             if (i == 0) System.out.println("결과 출력");
             raceResult(vehicles);
         }
+        raceWinner(vehicles);
     }
 
     private static void processRound(List<Vehicle> vehicles) {
@@ -41,7 +43,15 @@ public class Application {
     }
 
     private static void raceResult(List<Vehicle> vehicles) {
-        vehicles.forEach(vehicle -> System.out.println(vehicle.getCurrentDistance()));
+        vehicles.forEach(vehicle -> System.out.println(vehicle.getCurrentDistanceToSymbol()));
         System.out.println();
+    }
+
+    private static void raceWinner(List<Vehicle> vehicles) {
+        String result = vehicles.stream()
+                .filter(vehicle -> vehicle.getCurrentDistance() == Vehicle.MAX_RACE_DISTANCE)
+                .map(Vehicle::getVehicleName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + result);
     }
 }

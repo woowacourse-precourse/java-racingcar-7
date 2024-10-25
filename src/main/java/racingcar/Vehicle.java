@@ -4,6 +4,7 @@ public class Vehicle {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_RANDOM_FOR_MOVE = 4;
     private static final int MIN_DISTANCE = 0;
+    public static int MAX_RACE_DISTANCE = 0;
 
     private String vehicleName;
     private int currentDistance;
@@ -22,13 +23,18 @@ public class Vehicle {
         if (randomValue >= MIN_RANDOM_FOR_MOVE) {
             this.currentDistance++;
         }
+        MAX_RACE_DISTANCE = Math.max(MAX_RACE_DISTANCE, currentDistance);
     }
 
     public String getVehicleName() {
         return vehicleName;
     }
 
-    public String getCurrentDistance() {
+    public int getCurrentDistance() {
+        return currentDistance;
+    }
+
+    public String getCurrentDistanceToSymbol() {
         String distance = "-".repeat(Math.max(MIN_DISTANCE, currentDistance));
         return vehicleName + " : " + distance;
     }
