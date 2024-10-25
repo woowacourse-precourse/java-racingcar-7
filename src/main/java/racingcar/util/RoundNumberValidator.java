@@ -3,13 +3,10 @@ package racingcar.util;
 import static racingcar.util.ExceptionMessage.DO_NOT_OVER_MAX;
 import static racingcar.util.ExceptionMessage.MUST_BE_INT;
 
-import racingcar.view.InputView;
-
 public class RoundNumberValidator {
     private static final String DIGIT_REGEX = "\\d+";
 
-    public static int parseToInt() {
-        String value = InputView.readCountOfRounds();
+    public static int parseToInt(String value) {
         validateInput(value);
         int rounds;
         try {

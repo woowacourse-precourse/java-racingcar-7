@@ -9,8 +9,7 @@ import racingcar.util.CarNameValidator;
 import java.util.List;
 
 public class Controller {
-    private CarStatus carStatus;
-    private OutputView outputView;
+    private final OutputView outputView;
 
     public Controller() {
         this.outputView = new OutputView();
@@ -18,9 +17,9 @@ public class Controller {
 
     public void playGame() {
         List<String> carNames = CarNameValidator.getSplitCarName(InputView.readCarNames());
-        int numberOfRounds = RoundNumberValidator.parseToInt();
+        int numberOfRounds = RoundNumberValidator.parseToInt(InputView.readCountOfRounds());
 
-        carStatus = new CarStatus(carNames);
+        CarStatus carStatus = new CarStatus(carNames);
 
         outputView.showResultMessage();
         for (int i = 0; i < numberOfRounds; i++) {
