@@ -41,7 +41,7 @@ public class RacingcarService {
 
     private void movingForward(Map<String, String> player) {
         for (String key : player.keySet()) {
-            if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) > STANDARD_NUMBER) {
+            if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= STANDARD_NUMBER) {
                 player.put(key, player.get(key) + "-");
             }
         }
