@@ -50,15 +50,10 @@ class RacingCarsTest {
         ));
 
         // when
-        List<RacingCar> winners = racingCars.getWinners();
+        List<String> winners = racingCars.getWinners();
 
         // then
-        assertThat(winners).hasSize(2);
-        assertThat(winners).extracting("name", "position")
-                .containsExactlyInAnyOrder(
-                        tuple("car1", 1),
-                        tuple("car3", 1)
-                );
+        assertThat(winners).containsExactlyInAnyOrder("car1", "car3");
     }
 
 }

@@ -28,7 +28,7 @@ public class RacingCars {
         }
     }
 
-    public List<RacingCar> getWinners() {
+    public List<String> getWinners() {
         int furthestPosition = cars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()
@@ -36,6 +36,7 @@ public class RacingCars {
 
         return cars.stream()
                 .filter(c -> c.isSamePosition(furthestPosition))
+                .map(RacingCar::getName)
                 .toList();
     }
 

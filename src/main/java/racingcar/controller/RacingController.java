@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.model.RacingCarSnapShot;
-import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.view.RacingCarView;
 
@@ -26,7 +25,8 @@ public class RacingController {
             racingCarView.showRaceResult(snapShots);
         }
 
-        List<RacingCar> winners = racingCars.getWinners();
+        List<String> winners = racingCars.getWinners();
+        racingCarView.showWinners(winners);
     }
 
 }
