@@ -4,10 +4,11 @@ public class Car {
 
   private static final int MOVE_CONDITION = 4;
   private final String carName;
-  private int moveCount = 0;
+  private int moveCount;
 
   public Car(String carName) {
     this.carName = carName;
+    moveCount = 0;
   }
 
   public String getCarName() {
