@@ -1,20 +1,22 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.game.Car;
+import racingcar.game.GameDirector;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.RandomNumStrategy;
+import racingcar.util.InputHandler;
+import racingcar.util.OutputHandler;
 
 import java.util.List;
 
 
 public class Application {
     public static void main(String[] args) {
-        Printer.print(SystemMessage.START_MESSAGE);
-        String carNames = Console.readLine();
+        String carNames = InputHandler.readCarNames();
+        String count = InputHandler.readAttemptCount();
+        OutputHandler.printResultMessage();
 
-        Printer.print(SystemMessage.ATTEMPT_COUNT_MESSAGE);
-        String count = Console.readLine();
-
-        Printer.newLine();
-        Printer.print(SystemMessage.RESULT_MESSAGE);
         MoveStrategy strategy = new RandomNumStrategy();
         GameDirector gameDirector = new GameDirector(carNames, count, strategy);
         List<Car> matchResult = gameDirector.run();
