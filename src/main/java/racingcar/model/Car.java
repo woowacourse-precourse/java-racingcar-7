@@ -8,29 +8,34 @@ public class Car {
 
     public Car(String carName) {
         this.carName = carName;
+        this.gameTotalScore = 0;
     }
 
     public String getCarName() {
         return carName;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
-    public int getGameTotalScore() {
-        return gameTotalScore;
-    }
-
-    public void setGameTotalScore(int gameTotalScore) {
-        this.gameTotalScore = gameTotalScore;
+    public void setPlayGameScore(int playGameScore) {
+        this.playGameScore = playGameScore;
     }
 
     public int getPlayGameScore() {
         return playGameScore;
     }
 
-    public void setPlayGameScore(int playGameScore) {
-        this.playGameScore = playGameScore;
+    public void incrementGameTotalScore() {
+        this.gameTotalScore++;
+    }
+
+    public int getGameTotalScore() {
+        return gameTotalScore;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carName='" + carName + '\'' +
+                ", gameTotalScore=" + gameTotalScore +
+                '}';
     }
 }
