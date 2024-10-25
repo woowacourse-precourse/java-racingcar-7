@@ -2,7 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 
 public class Application {
@@ -76,5 +79,22 @@ public class Application {
             printRoundResult(car);
         }
         System.out.println();
+    }
+
+    private List<String> getWinnerList() {
+        List<String> winner = new ArrayList<>();
+        int firstPlacePosition = 0;
+
+        for (String car : carPositions.keySet()) {
+            if (carPositions.get(car) > firstPlacePosition) {
+                winner.clear();
+                winner.add(car);
+                firstPlacePosition = carPositions.get(car);
+            } else if (carPositions.get(car) == firstPlacePosition) {
+                winner.add(car);
+            }
+        }
+
+        return winner;
     }
 }
