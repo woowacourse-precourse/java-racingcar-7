@@ -23,12 +23,21 @@ public class GameService {
     }
 
     public void playGame(Game game, OutputView outputView) {
-        for (int i = 0; i < game.getGameRound(); i++) {
-            GameResult result = game.playRound();
-            if (i == 0) {
+        GameResult result = null;
+        for (int round = 0; round < game.getGameRound(); round++) {
+            result = game.playRound();
+            if (round == 0) {
                 outputView.printRoundResultMessage();
             }
             outputView.printRoundResult(result);
         }
+        Cars winners = getWinner(result);
+    }
+
+    private Cars getWinner(GameResult gameResult) {
+        Cars joinCars = gameResult.getCars();
+
+        Integer maxMoveCount = gameResult.findMaxMoveCount();
+        return joinCars.findCarsByMoveCount(maxMoveCount);
     }
 }

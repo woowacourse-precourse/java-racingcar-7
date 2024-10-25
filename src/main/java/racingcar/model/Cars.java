@@ -1,10 +1,10 @@
 package racingcar.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -15,6 +15,14 @@ public class Cars {
                 .map(Car::new)
                 .toList();
         return new Cars(cars);
+    }
+
+    public Cars findCarsByMoveCount(Integer maxMoveCount) {
+        List<Car> targetCars = this.cars
+                .stream()
+                .filter(car -> Objects.equals(maxMoveCount, car.getMoveCount()))
+                .toList();
+        return new Cars(targetCars);
     }
 
     public List<Car> getCars() {

@@ -11,4 +11,11 @@ public class GameResult {
         return this.cars;
     }
 
+    public Integer findMaxMoveCount() {
+        return cars.getCars()
+                .stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
+    }
 }
