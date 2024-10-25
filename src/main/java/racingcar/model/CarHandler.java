@@ -4,6 +4,7 @@ import racingcar.validate.Validation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarHandler {
 
@@ -23,7 +24,7 @@ public class CarHandler {
     }
 
     public void executeRounds(int num) {
-        for(int i = 0; i< num ; i++) {
+        for (int i = 0; i < num; i++) {
             proceedCar();
         }
     }
@@ -35,6 +36,17 @@ public class CarHandler {
             System.out.println(car.getName() + " : " + HYPHEN.repeat(carMoveCount));
         }
         System.out.println();
+    }
+
+    public List<Car> getWinnerList() {
+        int winnerMoveCount = cars.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.isSameMoveCount(winnerMoveCount))
+                .collect(Collectors.toList());
     }
 
 }

@@ -1,9 +1,13 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 import racingcar.model.CarHandler;
 import racingcar.validate.Validation;
 import racingcar.view.InputMessage;
+import racingcar.view.OutputMessage;
+
+import java.util.stream.Collectors;
 
 public class GameController {
 
@@ -18,6 +22,7 @@ public class GameController {
     public void start() {
         extractCarNames();
         attemptGame();
+        resultWinnerList();
     }
 
     private void extractCarNames() {
@@ -31,6 +36,14 @@ public class GameController {
         InputMessage.inputGamesAttempts();
         final int num = Integer.parseInt(Console.readLine());
         carHandler.executeRounds(num);
+    }
+
+    private void resultWinnerList() {
+
+        String carNames = carHandler.getWinnerList().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+        OutputMessage.executeResultMessage(carNames);
     }
 
 
