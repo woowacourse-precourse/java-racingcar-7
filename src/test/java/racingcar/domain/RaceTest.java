@@ -15,17 +15,15 @@ public class RaceTest {
         TrialCountsValidator trialCountsValidator = new TrialCountsValidator();
         Cars cars = new Cars("bo,wook,hi", carNameValidator);
         TrialCounts trialCounts = new TrialCounts("5", trialCountsValidator);
-        Race race = new Race(cars, trialCounts);
 
         //when
         for (int i = 0; i < trialCounts.getTrialCounts(); i ++) {
-            race.raceOneStep();
+            cars.getCars().forEach(car -> car.move(4));
         }
-        assertThat(race.isRaceOngoing()).isFalse();
-
+        Winner winner = new Winner(cars);
         //then
-        int maxPosition = race.getMaxPosition();
-        assertThat(maxPosition).isGreaterThanOrEqualTo(0);
+        int maxPosition = winner.getWinnerPosition();
+        assertThat(maxPosition).isEqualTo(5);
 
     }
 
