@@ -32,7 +32,7 @@ public class RacingController {
             List<Car> cars = racingService.playOneGame();
             racingCarView.printEachGame(cars);
         }
-        List<Car> carList = racingGame.getCarList();
+        List<Car> carList = racingGame.getWinner();
         racingCarView.printWinners(carList);
     }
 
