@@ -71,6 +71,12 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public static int inputGameCount() {
+        String gameCountStr = Console.readLine();
+        int gameCount = Integer.parseInt(gameCountStr);
+        return gameCount;
+    }
+
     public static void main(String[] args) {
 
     }
