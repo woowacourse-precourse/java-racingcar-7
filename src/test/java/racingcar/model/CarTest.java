@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +17,7 @@ class CarTest {
         final String carName = null;
 
         //when & then
-        Assertions.assertThatThrownBy(() -> new Car(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
     }
@@ -26,7 +29,7 @@ class CarTest {
         final String carName = "";
 
         //when & then
-        Assertions.assertThatThrownBy(() -> new Car(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
     }
@@ -38,7 +41,7 @@ class CarTest {
         final String carName = "abcdef";
 
         //when & then
-        Assertions.assertThatThrownBy(() -> new Car(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CarException.CAR_NAME_IS_OVER_FIVE.getMessage());
     }
@@ -53,6 +56,20 @@ class CarTest {
         final Car car = new Car(carName);
 
         //then
-        Assertions.assertThat(car).isNotNull();
+        assertThat(car).isNotNull();
+    }
+
+    @Test
+    @DisplayName("차량 이동 테스트")
+    void moveTest() {
+        //given
+        final String carName = "car";
+        final Car car = new Car(carName);
+
+        //when
+        car.move();
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
