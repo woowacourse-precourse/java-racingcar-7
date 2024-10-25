@@ -47,6 +47,10 @@ public class Controller {
         return service.registerCar(carNames);
     }
 
+    public Race registerRace(final List<Car> carList, final int attemptCount) {
+        return service.registerRace(carList, attemptCount);
+    }
+
     public void printWinners(final List<Car> winnerList) {
         outputView.printWinners(winnerList);
     }

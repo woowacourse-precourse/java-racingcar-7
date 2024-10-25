@@ -38,4 +38,8 @@ public class Service {
         carNames.forEach(carName -> carList.add(new Car(carName)));
         return carList;
     }
+
+    public Race registerRace(final List<Car> carList, final int attemptCount) {
+        return new Race(carList, attemptCount);
+    }
 }
