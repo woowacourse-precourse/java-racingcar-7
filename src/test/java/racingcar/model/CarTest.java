@@ -29,4 +29,10 @@ class CarTest {
         assertThatThrownBy(()->new Car("123"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_객체_생성_성공(){
+        Car car=new Car("pobi");
+        assertThat(car.getName()).isEqualTo("pobi");
+    }
 }
