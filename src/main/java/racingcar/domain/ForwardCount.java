@@ -30,7 +30,7 @@ public class ForwardCount {
         }
 
         private static void validateNumeric(String number) {
-            if (!number.matches("[0-9]")) {
+            if (!number.matches("^(100|[1-9][0-9]?)$")) {
                 throw new IllegalArgumentException(FORWARD_COUNT_MUST_BE_SINGLE_DIGIT.getMessage());
             }
         }
