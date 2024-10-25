@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.util.InputCarNames;
+import racingcar.util.InputTryCount;
 
 import java.util.List;
 
@@ -122,9 +123,91 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_목록_예외_테스트6() {
         InputCarNames inputCarNames = new InputCarNames();
-        String input = "pobi,woni,jun,";
+        String input = ",pobi,woni,jun,";
 
         assertThatThrownBy(() -> inputCarNames.parsingName(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자인지 테스트1")
+    @Test
+    void 시도_횟수_테스트1() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "4";
+
+        int number = inputTryCount.parseNumber(input);
+
+        assertThat(number).isEqualTo(4);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자인지 테스트2")
+    @Test
+    void 시도_횟수_테스트2() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "13";
+
+        int number = inputTryCount.parseNumber(input);
+
+        assertThat(number).isEqualTo(13);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트1")
+    @Test
+    void 시도_횟수_테스트3() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "abc";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트2")
+    @Test
+    void 시도_횟수_테스트4() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "가나다";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트3")
+    @Test
+    void 시도_횟수_테스트5() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "!@#";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트3")
+    @Test
+    void 시도_횟수_테스트6() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "a가!";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 음수일 시 예외테스트")
+    @Test
+    void 시도_횟수_테스트7() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "-6";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("시도 횟수의 입력값이 0 일 시 예외테스트")
+    @Test
+    void 시도_횟수_테스트8() {
+        InputTryCount inputTryCount = new InputTryCount();
+        String input = "0";
+
+        assertThatThrownBy(() -> inputTryCount.parseNumber(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
