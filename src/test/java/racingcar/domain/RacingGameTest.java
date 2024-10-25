@@ -3,6 +3,8 @@ package racingcar.domain;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -97,7 +99,55 @@ class RacingGameTest {
     }
     // ---------------------- input에 관련된 테스트 끝 --------------------------
     // ---------------------- startGame에 관련된 테스트 시작 --------------------------
-
+    @DisplayName("RacingGame.startGame() 메서드가 정상적으로 작동한다.")
+    @Test
+    void startGameWithValidInput() {
+        // given
+        String[] carNames = {"pobi", "jun", "honggil"};
+        int gameCount = 5;
+        
+        // when
+        assertDoesNotThrow(() -> racingGame.startGame(carNames, gameCount));
+        
+        // then
+        // startGame 메서드를 실행했을 때 예외가 발생하지 않는지 확인
+    }
+    
+    @DisplayName("경주한 자동차들의 이동 거리가 정상적으로 출력된다.")
+    @Test
+    void printGameInfoWithMovedCars() {
+        // given
+        String[] carNames = {"pobi", "jun", "honggil"};
+        int gameCount = 5;
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name));
+        }
+        
+        // when
+        racingGame.startGame(carNames, gameCount);
+        
+        // then
+        // carList의 각 Car 객체의 getMoveDistance() 메서드 호출 결과가 정상적으로 출력되는지 확인
+    }
+    
+    @DisplayName("우승자가 정상적으로 출력된다.")
+    @Test
+    void printResultWithWinners() {
+        // given
+        String[] carNames = {"pobi", "jun", "honggil"};
+        int gameCount = 5;
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name));
+        }
+        
+        // when
+        racingGame.startGame(carNames, gameCount);
+        
+        // then
+        // 우승자 정보(가장 멀리 간 자동차들)가 정상적으로 출력되는지 확인
+    }
     // ---------------------- startGame에 관련된 테스트 끝 --------------------------
     
 }

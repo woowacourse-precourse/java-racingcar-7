@@ -3,7 +3,9 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 // 라는 요구사항이 있어서 최대한 단일한 책임을 가지도록 만들어 봄.
@@ -24,7 +26,7 @@ public class RacingGame {
         
     }
     
-    private void startGame(String[] carNames, int gameCount) {
+    public void startGame(String[] carNames, int gameCount) {
         // 이전에 carNames, gameCount 이 값들의 검증을 마쳤으므로 바로 사용
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
@@ -35,13 +37,26 @@ public class RacingGame {
         
         for (int i = 0; i < gameCount; i++) {
             moveCars(carList);
-            printCarsInfo(carList);
+            printGameInfo(carList);
             
             System.out.println();
         }
+        
+        printResult(carList);
     }
     
-    private void printCarsInfo(List<Car> carList) {
+    private void printResult(List<Car> carList) {
+        
+        // 가장 멀리간 거리 계산
+        int maxDistance = carList.stream().mapToInt(car -> car.getMoveDistance()).max().orElse(0);
+        
+        // 가장 멀리간 자동차들을 추출
+        List<Car> winners = carList.stream()
+                .filter(car -> car.getMoveDistance() == maxDistance).collect(Collectors.toList());
+        
+    }
+    
+    private void printGameInfo(List<Car> carList) {
         for (Car car : carList) {
             System.out.println(car.getGameCurrentStatus());
         }
