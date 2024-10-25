@@ -7,13 +7,15 @@ import racingcar.model.dto.CarStatusDto;
 public class Racing {
 
     private final Cars cars;
+    private final RacingCount racingCount;
 
-    private Racing(Cars cars) {
+    private Racing(Cars cars, RacingCount racingCount) {
         this.cars = cars;
+        this.racingCount = racingCount;
     }
 
-    public static Racing from(Cars cars) {
-        return new Racing(cars);
+    public static Racing of(Cars cars, RacingCount racingCount) {
+        return new Racing(cars, racingCount);
     }
 
     public void runRacing() {
