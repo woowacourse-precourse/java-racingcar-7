@@ -7,7 +7,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.game.GameNumberGenerator;
 import racingcar.player.exception.PlayerNameException;
+import racingcar.player.mock.CanMoveGameNumberGenerator;
+import racingcar.player.mock.UnMoveGameNumberGenerator;
 
 class RacingCarGamePlayerTest {
 
@@ -69,4 +72,46 @@ class RacingCarGamePlayerTest {
                 .doesNotThrowAnyException();
     }
 
+    @Test
+    void pickNumberBy_메서드요청시_정상작동() {
+        // given
+        final String playerName = "kim";
+        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GameNumberGenerator canMoveGameNumberGenerator = new CanMoveGameNumberGenerator();
+
+        // expect
+        Assertions.assertThatCode(() -> racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void pickNumberBy_메서드요청시_이동가능숫뽑을수있음() {
+        // given
+        final String playerName = "kim";
+        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GameNumberGenerator canMoveGameNumberGenerator = new CanMoveGameNumberGenerator();
+
+        // when
+        int pickedNumber = racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator);
+
+        // then
+        Assertions.assertThat(pickedNumber).isBetween(4,9);
+    }
+
+    @Test
+    void pickNumberBy_메서드요청시_이동불가숫자뽑을수있음() {
+        // given
+        final String playerName = "kim";
+        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GameNumberGenerator canMoveGameNumberGenerator = new UnMoveGameNumberGenerator();
+
+        // when
+        int pickedNumber = racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator);
+
+        // then
+        Assertions.assertThat(pickedNumber).isBetween(0,3);
+    }
+
+
 }
+

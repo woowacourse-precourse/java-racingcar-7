@@ -1,6 +1,7 @@
 package racingcar.player;
 
 import racingcar.car.Car;
+import racingcar.game.GameNumberGenerator;
 
 public class RacingCarGamePlayer {
     private final PlayerName playerName;
@@ -21,5 +22,9 @@ public class RacingCarGamePlayer {
 
     public Car createRacingCar() {
         return Car.createNamedCar();
+    }
+
+    public int pickGameNumber(GameNumberGenerator gameNumberGenerator) {
+        return gameNumberGenerator.generate();
     }
 }
