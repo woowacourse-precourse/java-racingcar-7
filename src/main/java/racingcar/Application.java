@@ -5,6 +5,7 @@ import io.ConsoleOutputHandler;
 import io.InputHandler;
 import io.OutputHandler;
 import java.util.ArrayList;
+import racingcar.car.Attempt;
 import racingcar.car.Car;
 import racingcar.car.Cars;
 import racingcar.comparable.IntegerComparable;
@@ -35,7 +36,7 @@ public class Application {
         MovingStrategy movingStrategy = new RacingCarMovingStrategy(randomNumberGenerator, numberComparable,
                 FORWARD_MIN_INCLUSIVE);
         Cars cars = initializeCars(inputNames, movingStrategy);
-        long attempt = readAttempt(outputHandler, inputHandler);
+        Attempt attempt = readAttempt(outputHandler, inputHandler);
 
         printRacingResult(cars, attempt, outputHandler);
         String winners = cars.calculateWinners();
@@ -65,14 +66,12 @@ public class Application {
         return inputNames.split(COMMA);
     }
 
-    private static long readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
+    private static Attempt readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
         outputHandler.showCommentForAttempt();
         String inputAttempt = inputHandler.read();
         validateInputAttempt(inputAttempt);
 
-        long attempt = Long.parseLong(inputAttempt);
-        validateAttempt(attempt);
-        return attempt;
+        return new Attempt(Long.parseLong(inputAttempt));
     }
 
     private static void validateInputAttempt(final String inputAttempt) {
@@ -81,15 +80,9 @@ public class Application {
         }
     }
 
-    private static void validateAttempt(final long attempt) {
-        if (attempt < 0) {
-            throw new InvalidAttemptException("시도 횟수는 양수여야 합니다.");
-        }
-    }
-
-    private static void printRacingResult(final Cars cars, final long attempt, OutputHandler outputHandler) {
+    private static void printRacingResult(final Cars cars, final Attempt attempt, OutputHandler outputHandler) {
         outputHandler.showCommentForResult();
-        for (int i = 0; i < attempt; i++) {
+        for (int i = 0; i < attempt.getValue(); i++) {
             cars.move();
             outputHandler.showCarPosition(cars.getNames(), cars.getPositions());
         }
