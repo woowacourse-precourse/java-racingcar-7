@@ -15,7 +15,7 @@ public class Application {
         Integer trial = getTrial();
 
         for(int i = 0; i < trial; i++){
-            assignRandomNumber(cars, trial);
+            assignRandomNumber(cars);
             checkRandomNumber(cars);
             printCarInfo(cars);
             System.out.println("");
@@ -68,7 +68,7 @@ public class Application {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void assignRandomNumber(List<RacingCar> racingCarList, Integer trial) {
+    public static void assignRandomNumber(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
             racingCar.randomNumbers.add(getRandomNumber());
         }
@@ -124,8 +124,9 @@ public class Application {
             for (int i = 0; i < winnerList.size(); i++) {
                 notice += winnerList.get(i);
                 notice += SPLITTER;
+                notice += " ";
             }
-            notice = notice.substring(0, notice.length() - 1);
+            notice = notice.substring(0, notice.length() - 2);
             System.out.println(notice);
         }
     }
