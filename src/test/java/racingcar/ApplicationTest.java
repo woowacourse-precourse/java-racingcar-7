@@ -61,6 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 둘_이상의_자동차_이름이_중복될_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,a,b", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름에 중복이 존재합니다: ")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
