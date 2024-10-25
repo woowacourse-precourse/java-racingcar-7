@@ -7,4 +7,10 @@ public class InputHandler {
         String carsName = Console.readLine();
         return carsName.split(",");
     }
+
+    public static int InputRacingRound(){ // 사용자가 몇 번을 이동할 것인지를 입력받는다.
+        String racingRound = Console.readLine();
+        Validator.validateRacingRound(racingRound);
+        return Integer.parseInt(racingRound);
+    }
 }
