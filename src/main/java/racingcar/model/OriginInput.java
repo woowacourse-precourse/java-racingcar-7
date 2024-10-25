@@ -13,7 +13,7 @@ public class OriginInput {
         return carNames;
     }
 
-    public String getRound() {
+    public String getRaceRound() {
         return raceRounds;
     }
 
@@ -25,9 +25,5 @@ public class OriginInput {
     public void inputRaceRounds() {
         System.out.println(InputMessage.RACE_ROUNDS.getMessage());
         raceRounds = Console.readLine();
-    }
-
-    public Boolean validBlank() {
-        return carNames.isBlank() || raceRounds.isBlank();
     }
 }
