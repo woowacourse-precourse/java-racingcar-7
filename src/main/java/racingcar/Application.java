@@ -10,9 +10,10 @@ public class Application {
     public static final String SPLITTER = ",";
 
     public static void main(String[] args) {
-        String input = getCarInput();
+        String input = readInput();
         List<RacingCar> cars = splitInput(input);
-        Integer trial = getTrial();
+        String trialStr = readInput();
+        Integer trial = parseTrial(trialStr);
 
         for(int i = 0; i < trial; i++){
             assignRandomNumber(cars);
@@ -26,10 +27,8 @@ public class Application {
         printWinners(winners);
     }
 
-    //경주할 자동차 입력 받기
-    public static String getCarInput() {
-        String input = Console.readLine();
-        return input.trim();
+    public static String readInput(){
+        return Console.readLine();
     }
 
     //자동차 이름 List에 집어넣기
@@ -49,11 +48,9 @@ public class Application {
     }
 
     //시도 횟수 입력 받기
-    public static Integer getTrial() {
-        String input = Console.readLine();
-        Integer trial;
+    public static Integer parseTrial(String trialStr) {
         try {
-            trial = Integer.parseInt(input);
+            Integer trial = Integer.parseInt(trialStr);
             return trial;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
