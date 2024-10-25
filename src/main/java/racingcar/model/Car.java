@@ -14,6 +14,10 @@ public class Car {
 		return name.getName();
 	}
 
+	public int getMovement() {
+		return movement.getMovement();
+	}
+
 	public void move(int number) {
 		movement.move(number);
 	}
