@@ -7,6 +7,7 @@ public class CarDTO {
     public CarDTO(String carName, int currentPosition) {
         this.carName = carName;
         this.currentPosition = currentPosition;
+
     }
 
     public String getCarName() {
@@ -16,5 +17,4 @@ public class CarDTO {
     public int getCurrentPosition() {
         return currentPosition;
     }
-
 }
