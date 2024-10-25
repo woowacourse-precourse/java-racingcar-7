@@ -8,4 +8,12 @@ public class Validator {
             }
         }
     }
+
+    public static void validateRacingRound(String racingRound) { // 시도할 횟수 입력을 검증한다.
+        try {
+            Integer.parseInt(racingRound); 
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 정수 형태여야 합니다."); 
+        }
+    }
 }
