@@ -40,7 +40,9 @@ public class Application {
     private static int validateAttemptConunt(String attemptCountInput) {
         int attemptCount;
 
-        if (attemptCountInput == null || attemptCountInput.equals("0") || attemptCountInput.contains(" ")) {
+        if (attemptCountInput == null || attemptCountInput.isEmpty() ||
+                attemptCountInput.equals("0") || attemptCountInput.contains(" ") ||
+                attemptCountInput.contains("-")) {
             throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
         try {
