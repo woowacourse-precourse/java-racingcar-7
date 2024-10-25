@@ -34,4 +34,10 @@ public class InputHandler {
             throw new IllegalArgumentException(exception);
         }
     }
+
+    public void checkMinimumOne(final int attemptCount) {
+        if (attemptCount < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

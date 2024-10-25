@@ -30,9 +30,9 @@
     - [x] 중복된 이름이 있으면 예외처리 - InputHandler#validateUniqueNames()
     - [x] 이름이 없거나 5자초과이면 예외처리 - Car#checkNameLength()
     - [x] 알파벳이나 숫자가 아닌 문자가 입력되면 예외처리 - Car#checkNameForm()
-- [ ] 시도할 횟수 입력
+- [x] 시도할 횟수 입력 - InputView#readAttemptCount()
     - [x] 숫자가 입력되지 않은 경우 예외처리 - InputHandler#validateNumber()
-    - [ ] 1미만의 숫자가 입력되면 예외처리
+    - [x] 1미만의 숫자가 입력되면 예외처리 - InputHandler#checkMinimumOne()
 
 ### 출력
 
