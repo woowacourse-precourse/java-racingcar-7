@@ -12,4 +12,8 @@ public class Car {
     public void moveForward(int distance) {
         position += distance;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
