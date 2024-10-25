@@ -28,7 +28,7 @@ public class Car {
     }
 
     public Car copy() {
-        return new Car(this.name, this.position);
+        return new Car(this.name, new Position(position.getPosition()));
     }
 
     @Override

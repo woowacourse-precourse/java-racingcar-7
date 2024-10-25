@@ -10,6 +10,10 @@ public class Position {
         position = 0;
     }
 
+    public Position(int position) {
+        this.position = position;
+    }
+
     public void move(int randomNumber) {
         if (randomNumber >= MOVE_FORWARD_STANDARD) {
             position++;
