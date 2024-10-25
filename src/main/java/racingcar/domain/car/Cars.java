@@ -3,7 +3,6 @@ package racingcar.domain.car;
 import racingcar.domain.movement.RandomMovement;
 import racingcar.domain.race.RaceRoundRecord;
 
-import java.security.PublicKey;
 import java.util.List;
 import java.util.stream.Collectors;
 
