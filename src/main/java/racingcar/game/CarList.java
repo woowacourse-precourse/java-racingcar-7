@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CarList {
     private static final String DELIMITER = ",";
@@ -25,17 +26,17 @@ public class CarList {
         Validator.validateDelimiterFormatAndSingleRacer(carNames);
         Arrays.stream(carNames.split(DELIMITER))
                 .map(Validator::validateNameLength)
-                .map(name -> Car.generateCars(name,moveStrategy))
+                .map(name -> Car.generateCars(name, moveStrategy))
                 .forEach(list::add);
     }
 
     public List<Car> moveCars(int count) {
-        for (int i = 0; i < count; i++) {
+        IntStream.range(0, count).forEach(i -> {
             list.forEach(Car::move);
             list.forEach(Printer::print);
             Printer.newLine();
-        }
-        return this.getList();
+        });
+        return list;
     }
 
     public String getWinners(List<Car> matchResult) {
@@ -46,18 +47,10 @@ public class CarList {
     }
 
     private String findWinners(List<String> matchResult) {
-        if (!isSingleWinner(matchResult)) {
+        if (matchResult.size() != 1) {
             return String.join(WINNER_FORMAT, matchResult);
         }
         return matchResult.getFirst();
-    }
-
-    private boolean isSingleWinner(List<String> winnerList) {
-        return winnerList.size() == 1;
-    }
-
-    public List<Car> getList() {
-        return list;
     }
 
     private int findMaxPosition(List<Car> matchResult) {
