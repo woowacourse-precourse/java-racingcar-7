@@ -1,5 +1,6 @@
 package racingcar.util;
 
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -54,6 +55,14 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "1000", "500"})
+    @DisplayName("정상적인 입력으로 검증 - 예외 없음")
+    void gameRoundValidateWithValidInput(String input) {
+        assertThatNoException().isThrownBy(() -> Validator.gameRoundValidate(input));
+    }
+
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("게임라운드 횟수 입력이 비어있는 경우 예외발생")
@@ -70,5 +79,12 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"10001", "1001", "000010000"})
+    @DisplayName("게임라운드 횟수 입력이 1000보다 큰 경우")
+    void gameRoundIsBigNumberTest(String input) {
+        assertThatThrownBy(() -> Validator.gameRoundValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
