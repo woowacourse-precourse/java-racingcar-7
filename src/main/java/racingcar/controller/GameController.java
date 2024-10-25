@@ -21,5 +21,11 @@ public class GameController {
 		String trialCountInput = InputView.getTrialCountInput();
 		int trialCount = NumberValidator.validateTrialCountIsDigit(trialCountInput);
 		OutputView.printExecutionResultMessage();
+		while(trialCount-- > 0) {
+			executeRaceRound(cars);
+		}
+	}
+
+	private void executeRaceRound(List<Car> cars) {
 	}
 }
