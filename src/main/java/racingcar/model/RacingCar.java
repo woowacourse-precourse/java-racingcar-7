@@ -1,6 +1,7 @@
 package racingcar.model;
 
 public class RacingCar {
+
     private final String name;
     private int currentPosition;
 

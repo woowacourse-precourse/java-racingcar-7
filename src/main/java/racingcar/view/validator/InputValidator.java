@@ -7,7 +7,7 @@ public class InputValidator {
     private final String NOT_POSITIVE_NUMBER = "1 이상의 정수만 입력가능합니다.";
     private final String INVALID_CAR_NAME = "자동차 이름은 1글자에서 5글자 사이로 입력가능합니다.";
 
-    public void validateSingleCar(String input) { // 쉼표 있는지 확인, 없으면 차 한대이므로 예외
+    public void validateSingleCar(String input) {
         if (!input.contains(",")) {
             throw new IllegalArgumentException(NOT_MULTIPLE_CAR);
         }
@@ -17,6 +17,7 @@ public class InputValidator {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(EMPTY_STRING);
         }
+
         if (input.startsWith(",") || input.endsWith(",")) {
             throw new IllegalArgumentException(EMPTY_STRING);
         }
@@ -65,6 +66,4 @@ public class InputValidator {
         validateTryCountFormat(tryCount);
         validatePositiveNumber(Integer.parseInt(tryCount));
     }
-
-    // 이름이 같은 경우 예외 처리
 }

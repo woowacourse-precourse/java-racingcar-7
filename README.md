@@ -48,8 +48,4 @@
 - 컨트롤러의 GameTryCount 생성자 제거
 - 중복된 코드 제거
 - print 기능은 OutPutView 클래스로 이동
-
-## 수정할 부분
-- 주석 제거
-- 메서드(책임) 분리
-- 불필요한 import 제거
+- [ ] OutPutView 의 printCurrentCarPosition 메서드 수정 (라운드 별 결과는 move 클래스에 저장하고 출력)

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Winner {
+
     public int maxPosition(final ArrayList<RacingCar> racingCarList) {
         List<Integer> list = new ArrayList<>();
         for (RacingCar position : racingCarList) {
