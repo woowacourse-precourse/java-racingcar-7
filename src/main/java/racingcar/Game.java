@@ -19,6 +19,8 @@ public class Game {
                 car.moveForward();
             }
             attempt--;
+            OutputUtils.printPosition(carList);
+            System.out.println();
         }
     }
 }

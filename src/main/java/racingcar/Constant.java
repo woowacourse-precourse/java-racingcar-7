@@ -12,6 +12,4 @@ public class Constant {
     public static final String ATTEMPT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     public static final String PRINT_RESULT_MESSAGE = "실행 결과";
     public static final String PRINT_WINNER = "최종 우승자 : ";
-
-
 }

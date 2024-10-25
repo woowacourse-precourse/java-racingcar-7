@@ -5,7 +5,6 @@ import static racingcar.Constant.MIN_RANDOM;
 import static racingcar.Constant.STANDARD_FOR_MOVING;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Random;
 
 public class Car {
     private final String name;
@@ -20,7 +19,6 @@ public class Car {
         if (movingNum >= STANDARD_FOR_MOVING){
             position++;
         }
-        System.out.println(name + " : " + position);
     }
 
     public String getName() {
