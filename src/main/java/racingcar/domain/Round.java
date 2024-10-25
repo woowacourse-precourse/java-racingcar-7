@@ -17,7 +17,7 @@ public class Round {
         return number > 0;
     }
 
-    public void playRound() {
+    public void reduceRound() {
         number--;
     }
 
