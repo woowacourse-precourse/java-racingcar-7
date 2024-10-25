@@ -1,11 +1,11 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.util.RandomGenerator;
 
 public class Cars {
     private final List<Car> cars;
@@ -40,14 +40,10 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            if (canForwardCondition()) {
+            if (RandomGenerator.Movable()) {
                 car.forwardDistance();
             }
         }
-    }
-
-    private boolean canForwardCondition() {
-        return Randoms.pickNumberInRange(0, 9) >= 4; // TODO RandomGenerator 객체로 빼는 게 나을지 생각해보자.
     }
 
     public String getCarsDistance() {
@@ -73,10 +69,10 @@ public class Cars {
                 winner.add(car.getName());
             }
         }
-        return String.join(", ", winner);
+        return String.join("," + " ", winner);
     }
 
     private boolean findMaxDistance(Car car) {
-        return car.getDistance() == getMaxDistance();
+        return car.getDistance().equals(getMaxDistance());
     }
 }
