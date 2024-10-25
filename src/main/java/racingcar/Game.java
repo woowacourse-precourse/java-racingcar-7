@@ -25,4 +25,20 @@ public class Game {
             racingCar.rollDice();
         }
     }
+
+    public List<String> findWinners() {
+        int max = 0;
+        List<String> winnerList = new ArrayList<>();
+
+        for (RacingCar racingCar : this.racingCarList) {
+            if (racingCar.getCount() > max) {
+                max = racingCar.getCount();
+                winnerList.clear();
+                winnerList.add(racingCar.getName());
+            } else if (racingCar.getCount() == max) {
+                winnerList.add(racingCar.getName());
+            }
+        }
+        return winnerList;
+    }
 }
