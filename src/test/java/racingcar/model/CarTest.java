@@ -28,7 +28,7 @@ public class CarTest {
     })
     void shouldReturnCorrectLocation(int number, int location) {
         Car car = new Car("A");
-        car.move(number);
+        car.moveIfPossible(number);
 
         Assertions.assertThat(car.getLocation())
                 .isEqualTo(location);

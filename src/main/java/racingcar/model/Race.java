@@ -26,21 +26,21 @@ public class Race {
         return cars.size() < MINIMUM_CAR_COUNT;
     }
 
-    public void moveCars() {
+    public void progress() {
         cars.forEach(car -> moveCar(car, RandomNumberGenerator.generateNumber()));
     }
 
     private void moveCar(Car car, int number) {
-        car.move(number);
+        car.moveIfPossible(number);
     }
 
     public List<Car> findWinners() {
         return cars.stream()
-                .filter(car -> car.getLocation() == findWinnerLocation())
+                .filter(car -> car.getLocation() == findMaxLocation())
                 .toList();
     }
 
-    private int findWinnerLocation() {
+    private int findMaxLocation() {
         return cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()

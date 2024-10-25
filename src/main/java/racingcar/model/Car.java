@@ -29,7 +29,7 @@ public class Car {
         return name.length() > NAME_LENGTH_LIMIT;
     }
 
-    public void move(int number) {
+    public void moveIfPossible(int number) {
         if (isMoveable(number)) {
             location++;
         }
