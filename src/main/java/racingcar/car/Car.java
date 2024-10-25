@@ -8,6 +8,7 @@ public class Car {
 	private int location;
 
 	private static final int START_LOCATION = 0;
+	private static final int MAX_NAME_LENGTH = 5;
 
 	public Car(String name) {
 		validateCarLength(name);
@@ -16,7 +17,7 @@ public class Car {
 	}
 
 	private static void validateCarLength(String carName) {
-		if (carName.length() > 5) {
+		if (carName.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException();
 		}
 	}
