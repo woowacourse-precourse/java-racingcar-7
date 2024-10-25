@@ -98,6 +98,45 @@ class ApplicationTest extends NsTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 자동차_목록_테스트1() {
+        String cars = "pobi,woni,jun";
+        List<String> carList = List.of(cars.split(","));
+        CarNameValidator check = new CarNameValidator();
+
+        check.rightNamePattern(cars);
+        check.nameLength(carList);
+        check.nameOverlap(carList);
+
+        assertThat(carList).hasSize(3).containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    void 자동차_목록_테스트2() {
+        String cars = "안녕,잘지냈니,잘가,다음에,또,보자";
+        List<String> carList = List.of(cars.split(","));
+        CarNameValidator check = new CarNameValidator();
+
+        check.rightNamePattern(cars);
+        check.nameLength(carList);
+        check.nameOverlap(carList);
+
+        assertThat(carList).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
+    }
+
+    @Test
+    void 자동차_목록_테스트3() {
+        String cars = "one,일,1";
+        List<String> carList = List.of(cars.split(","));
+        CarNameValidator check = new CarNameValidator();
+
+        check.rightNamePattern(cars);
+        check.nameLength(carList);
+        check.nameOverlap(carList);
+
+        assertThat(carList).hasSize(3).containsExactly("one", "일", "1");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
