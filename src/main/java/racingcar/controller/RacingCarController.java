@@ -20,7 +20,7 @@ public class RacingCarController {
 
     public void run(){
         outputView.printCarNameRequest();
-        racingCarService.registerRacingCars(StringUtil.splitNames(inputView.getCarNames(), DELIMITER));
+        racingCarService.registerRacingCars(StringUtil.splitNames(inputView.getLine(), DELIMITER));
 
     }
 

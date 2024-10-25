@@ -3,8 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public String getCarNames(){
+    public String getLine(){
         return Console.readLine();
     }
-
 }
