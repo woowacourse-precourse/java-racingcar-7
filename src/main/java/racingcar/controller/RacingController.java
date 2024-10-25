@@ -44,6 +44,9 @@ public class RacingController {
             List<CarStatusDto> racingResults = racings.getResult();
             outputView.printRacingResult(racingResults);
         }
+
+        List<String> winners = racings.getWinners();
+        outputView.printWinner(winners);
     }
 
     private boolean isPossibleRacing(RacingCount racingCount) {
