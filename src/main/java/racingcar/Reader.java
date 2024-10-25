@@ -15,4 +15,13 @@ public class Reader {
 
         return carNames;
     }
+
+    public static int readNumber() {
+        String input = Console.readLine();
+        int number = Integer.parseInt(input);
+
+        Console.close();
+
+        return number;
+    }
 }
