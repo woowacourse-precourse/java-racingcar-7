@@ -7,7 +7,7 @@ public class FindWinningCar {
     private List<Car> cars;
     private int winnersDistance = 0;
 
-    public FindWinningCar() {
+    public FindWinningCar(List<Car> cars) {
         this.cars = cars;
     }
 
