@@ -10,6 +10,10 @@ import java.util.List;
 import static racingcar.global.validator.InputValidator.*;
 
 public class GameController {
+    private static final int RANDOM_NUMBER_MIN = 0;
+    private static final int RANDOM_NUMBER_MAX = 9;
+    private static final int MINIMUM_FORWARD_THRESHOLD = 3;
+
     private final InputView inputView;
     private final OutputView outputView;
 
@@ -68,12 +72,12 @@ public class GameController {
     }
 
     private boolean isMovingForward(){
-        return generateRandomNumber() > 3;
+        return generateRandomNumber() > MINIMUM_FORWARD_THRESHOLD;
     }
 
 
     private int generateRandomNumber(){
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
     }
 
     private void printGameRoundResult(){
