@@ -2,7 +2,8 @@ package racingcar.view;
 
 public class OutputView {
     private static final OutputView OUTPUT_VIEW = new OutputView();
-    private OutputView(){
+
+    private OutputView() {
 
     }
 
@@ -10,7 +11,7 @@ public class OutputView {
         return OUTPUT_VIEW;
     }
 
-    public void outputString(String output){
+    public void printString(String output) {
         System.out.println(output);
     }
 }

@@ -66,7 +66,7 @@ public class RecordService {
                 .append("\n");
     }
 
-    private String findWinner(Record record){
+    private String findWinner(Record record) {
         int max = record.getLatestPosition()
                 .values()
                 .stream()

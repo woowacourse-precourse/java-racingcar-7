@@ -21,7 +21,7 @@ public class Configuration {
         return racingCarController;
     }
 
-    public RecordController getRecordController(){
+    public RecordController getRecordController() {
         return recordController;
     }
 }

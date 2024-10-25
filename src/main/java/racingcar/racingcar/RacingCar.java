@@ -10,10 +10,11 @@ public class RacingCar {
         this.name = name;
     }
 
-    public int run(){
+    public int run() {
         int canGo = Randoms.pickNumberInRange(0, 9);
-        if(canGo >= YOU_CAN_GO_IF_MORE_THAN_THIS)
+        if (canGo >= YOU_CAN_GO_IF_MORE_THAN_THIS) {
             return 1;
+        }
         return 0;
     }
 
