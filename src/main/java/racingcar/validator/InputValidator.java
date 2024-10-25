@@ -1,12 +1,12 @@
 package racingcar.validator;
 
-import static racingcar.constants.Constraints.BLANK;
 import static racingcar.constants.Constraints.CAR_NAME_REGEX;
 import static racingcar.constants.Constraints.MAX_CAR_NAME_LENGTH;
 import static racingcar.constants.ErrorMessages.CONTAIN_BLANK_ERROR_MESSAGE;
 import static racingcar.constants.ErrorMessages.CONTAIN_SPECIAL_CHARACTER_ERROR_MESSAGE;
 import static racingcar.constants.ErrorMessages.OVER_LENGTH_ERROR_MESSAGE;
 import static racingcar.constants.ErrorMessages.UNDER_LENGTH_ERROR_MESSAGE;
+import static racingcar.constants.FormatConstants.BLANK;
 
 public class InputValidator {
 
