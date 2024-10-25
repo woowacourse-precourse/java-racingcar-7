@@ -13,8 +13,8 @@ public class InputUtils {
         String[] carNameList = Console.readLine().split(NAME_SEPARATOR);
 
         for (String carName : carNameList) {
-            checkNameLength(carName);
-            carList.add(new Car(carName));
+            checkNameLength(carName.trim());
+            carList.add(new Car(carName.trim()));
         }
         return carList;
     }
