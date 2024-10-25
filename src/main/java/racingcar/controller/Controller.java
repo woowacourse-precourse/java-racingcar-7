@@ -19,6 +19,10 @@ public class Controller {
         String rawInputCarNames = inputView.inputCarNames();
 
         List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
+        if (!isValidName(carNames)) {
+            throw new IllegalArgumentException("이름이 5글자가 넘습니다");
+        }
+
         List<Car> carList = new ArrayList<>();
         for (String name : carNames) {
             carList.add(new Car(name.trim()));
@@ -62,6 +66,15 @@ public class Controller {
 
     private int createRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private boolean isValidName(List<String> carNames) {
+        for (String car : carNames) {
+            if (car.length() > 5) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
