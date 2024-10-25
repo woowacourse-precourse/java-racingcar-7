@@ -27,4 +27,21 @@ public class RacingCars {
                 .map(Car::toCarStatusDto)
                 .toList();
     }
+
+    public List<String> selectWinners() {
+        List<CarStatusDto> raceResults = getStatus();
+        int maxPosition = getMaxPosition(raceResults);
+
+        return raceResults.stream()
+                .filter(raceResult -> raceResult.getPosition() == maxPosition)
+                .map(CarStatusDto::getName)
+                .toList();
+    }
+
+    private int getMaxPosition(List<CarStatusDto> raceResults) {
+        return raceResults.stream()
+                .mapToInt(CarStatusDto::getPosition)
+                .max()
+                .orElse(0);
+    }
 }
