@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.dto.RacingResult;
+import racingcar.model.dto.RacingRecording;
 
 /**
  * 콘솔을 통해 출력을 담당하는 클래스
@@ -8,7 +8,7 @@ import racingcar.model.dto.RacingResult;
 public class ConsoleOutputView implements OutputView {
 
     @Override
-    public void printResult(RacingResult result) {
+    public void printResult(RacingRecording result) {
         System.out.println(result);
     }
 

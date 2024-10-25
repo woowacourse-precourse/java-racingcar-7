@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.entity.Cars;
-import racingcar.model.dto.RacingResult;
+import racingcar.model.dto.RacingRecording;
 import racingcar.model.entity.CarNames;
 import racingcar.model.entity.RacingChance;
 import racingcar.service.RacingService;
@@ -37,7 +37,7 @@ public class RacingController {
         Cars cars = Cars.getOfNamesAndStrategy(carNames, new RandomMoveStrategy());
 
         racingService.raceOfCarsAndChance(cars, racingChance);
-        RacingResult result = racingService.getResult();
+        RacingRecording result = racingService.getResult();
         outputView.printResult(result);
     }
 

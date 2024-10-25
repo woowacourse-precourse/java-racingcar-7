@@ -1,7 +1,7 @@
 package racingcar.repository;
 
 import racingcar.model.dto.RacingProgress;
-import racingcar.model.dto.RacingResult;
+import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.RacingWinners;
 import racingcar.utils.IOMessage;
 
@@ -41,8 +41,8 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public RacingResult getResult() {
-        return new RacingResult(memory);
+    public RacingRecording getResult() {
+        return new RacingRecording(memory);
     }
 
 }

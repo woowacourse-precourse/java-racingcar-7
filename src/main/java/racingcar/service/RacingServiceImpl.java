@@ -3,7 +3,7 @@ package racingcar.service;
 import racingcar.model.entity.Car;
 import racingcar.model.entity.Cars;
 import racingcar.model.dto.RacingProgress;
-import racingcar.model.dto.RacingResult;
+import racingcar.model.dto.RacingRecording;
 import racingcar.model.entity.RacingChance;
 import racingcar.model.dto.RacingWinners;
 import racingcar.repository.Repository;
@@ -31,7 +31,7 @@ public class RacingServiceImpl implements RacingService {
     }
 
     @Override
-    public RacingResult getResult() {
+    public RacingRecording getResult() {
         return repository.getResult();
     }
 

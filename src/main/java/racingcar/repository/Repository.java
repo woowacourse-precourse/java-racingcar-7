@@ -1,7 +1,7 @@
 package racingcar.repository;
 
 import racingcar.model.dto.RacingProgress;
-import racingcar.model.dto.RacingResult;
+import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.RacingWinners;
 
 /**
@@ -17,6 +17,6 @@ public interface Repository {
 
     void saveStartMessage();
 
-    RacingResult getResult();
+    RacingRecording getResult();
 
 }
