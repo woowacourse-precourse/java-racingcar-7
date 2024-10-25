@@ -1,16 +1,21 @@
 package racingcar.controller;
 
+import racingcar.model.AttemptCount;
 import racingcar.model.RaceCars;
+import racingcar.model.RacingGame;
 import racingcar.view.InputView;
 
-import java.util.List;
 
 public class RacingGameController {
 
     public void startGame() {
-        List<String> carNames = InputView.inputCarNames();
-        int attemptCount = InputView.inputAttemptCount();
-        RaceCars raceCars = new RaceCars(carNames);
+        RacingGame racingGame = createRacingGame();
+    }
+
+    private RacingGame createRacingGame(){
+        RaceCars raceCars = new RaceCars(InputView.inputCarNames());
+        AttemptCount attemptCount = new AttemptCount(InputView.inputAttemptCount());
+        return new RacingGame(raceCars, attemptCount);
     }
 
 }
