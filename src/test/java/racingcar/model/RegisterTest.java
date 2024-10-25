@@ -54,10 +54,10 @@ class RegisterTest {
         register.carList.get(1).distance = 2;
         register.carList.get(2).distance = 3;
 
-        HashMap<String, String> expectedMove = new HashMap<>();
-        expectedMove.put("진용", "-");
-        expectedMove.put("진용1", "--");
-        expectedMove.put("진용2", "---");
+        HashMap<String, Integer> expectedMove = new HashMap<>();
+        expectedMove.put("진용", 1);
+        expectedMove.put("진용1", 2);
+        expectedMove.put("진용2", 3);
 
         Assertions.assertThat(register.carsMoveCount()).isEqualTo(expectedMove);
     }

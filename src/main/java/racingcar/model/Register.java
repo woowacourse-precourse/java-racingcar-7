@@ -20,10 +20,10 @@ public class Register {
         }
     }
 
-    public HashMap<String, String> carsMoveCount() {
-        HashMap<String, String> moves = new HashMap<>();
+    public HashMap<String, Integer> carsMoveCount() {
+        HashMap<String, Integer> moves = new HashMap<>();
         for (Car c : carList) {
-            moves.put(c.name, "-".repeat(c.distance));
+            moves.put(c.name, c.distance);
         }
         return moves;
     }
