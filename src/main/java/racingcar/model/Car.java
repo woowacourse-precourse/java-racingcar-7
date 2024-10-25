@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.utils.Validator;
 
 public class Car {
-    private String name;
-    private int position;
+    private final String name;
+    private int distance;
 
     public Car(String name) {
         validate(name);
@@ -16,7 +16,7 @@ public class Car {
     public void move() {
         int random = Randoms.pickNumberInRange(0, 9);
         if (random > 4) {
-            position++;
+            distance++;
         }
     }
 
@@ -29,7 +29,7 @@ public class Car {
         return name;
     }
 
-    public int getPosition() {
-        return position;
+    public int getDistance() {
+        return distance;
     }
 }
