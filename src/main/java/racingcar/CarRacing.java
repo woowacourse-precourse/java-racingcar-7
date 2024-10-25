@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,14 +8,15 @@ import racingcar.accelerator.BrokenAccelerator;
 public class CarRacing {
 
     private int attempts;
-    private final List<Car> carList = new ArrayList<>();
+    private final CarGroup carGroup;
+
+    CarRacing(String carNamesInput, String attemptsInput) {
+        this.carGroup = new CarGroup(parseCarList(carNamesInput));
+        this.attempts = parseAttempts(attemptsInput);
+    }
 
     public int getAttempts() {
         return attempts;
-    }
-
-    public List<Car> getCarList() {
-        return carList;
     }
 
     public static List<Car> parseCarList(String carNames) {
@@ -25,7 +25,8 @@ public class CarRacing {
                 .collect(Collectors.toList());
     }
 
-    public void parseAttempts(String input) {
+    public static int parseAttempts(String input) {
+        int attempts = 0;
         try {
             attempts = Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -35,37 +36,15 @@ public class CarRacing {
         if (attempts < 0) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public String winner(List<Car> carList) {
-        carList.sort(((o1, o2) -> o2.getMileage() - o1.getMileage()));
-        int maxMileage = carList.getFirst().getMileage();
-        List<String> winnerList = new ArrayList<>();
-
-        for (Car car : carList) {
-            if (car.getMileage() < maxMileage) {
-                break;
-            }
-            winnerList.add(car.getName());
-        }
-
-        StringBuilder sb = new StringBuilder("최종 우승자 : ");
-        for (int i = 0; i < winnerList.size() - 1; i++) {
-            sb.append(winnerList.get(i)).append(",");
-        }
-        sb.append(winnerList.getLast());
-        return sb.toString();
+        return attempts;
     }
 
     public void race() {
-        int n = carList.size();
         for (int i = 0; i < attempts; i++) {
-            for (int j = 0; j < n; j++) {
-                Car car = carList.get(j);
-                car.accelerate(new BrokenAccelerator());
-                System.out.println(car.toString());
-            }
-            System.out.println();
+            carGroup.accelerateAll(new BrokenAccelerator());
+            System.out.println(carGroup.toString() + "\n");
         }
+        CarRacingWinner winner = new CarRacingWinner(carGroup);
+        System.out.println(winner.toString());
     }
 }
