@@ -8,6 +8,7 @@ import racingcar.model.dependency.moving_strategy.random.DefaultRandomMovingStra
 import racingcar.model.dependency.validator.DefaultRacingCarValidator;
 import racingcar.model.dependency.validator.RacingCarValidator;
 import racingcar.service.RacingService;
+import racingcar.view.DefaultInputView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class Application {
 
-    private final static InputView inputView = new InputView();
+    private final static InputView inputView = new DefaultInputView();
     private final static OutputView outputView = new OutputView();
 
     private static final RacingCarDependency racingCarDependency = buildRacingCarDependency();
