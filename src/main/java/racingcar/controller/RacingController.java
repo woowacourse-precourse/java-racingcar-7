@@ -26,22 +26,18 @@ public class RacingController {
         try {
             race.setRounds(Integer.parseInt(printInputMessage(NUMBER_OF_RACE_INPUT.getMessage())));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException("2,147,483,647 이하의 양수를 입력해주세요.");
         }
     }
 
     private void startRace() {
-        int rounds = race.getRounds();
-        StringBuilder sb = new StringBuilder();
-
         printMessage(PRINT_RACE_RESULT.getMessage());
 
+        int rounds = race.getRounds();
         while (rounds-- > 0) {
             race.moveCars();
-            sb.append(race.getRaceResult()).append('\n');
+            printMessage(race.getRaceResult() + "\n");
         }
-
-        printMessage(sb.toString());
     }
 
     private void raceFinished() {
