@@ -25,15 +25,7 @@ public class Application {
         }
 
         CarManager carManager = new CarManager(carNames);
-
-//        final Set<String> registeredCarNames = new HashSet<>();
         final List<Car> cars = carManager.getCars();
-//        for (String carName : carNames) {
-//            if (!registeredCarNames.add(carName)) {
-//                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-//            }
-//            cars.add(new Car(carName));
-//        }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         final String playTimesInput = Console.readLine();
