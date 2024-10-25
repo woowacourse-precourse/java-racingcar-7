@@ -3,8 +3,8 @@ package racingcar;
 import java.util.List;
 import racingcar.context.Car;
 import racingcar.service.CarGroup;
-import racingcar.service.CarNameGroup;
 import racingcar.service.CarRace;
+import racingcar.util.CarNameSeparator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.PrintMessage;
@@ -16,8 +16,7 @@ public class Application {
 
         //컨트롤러 영역에서 해야 할 일
         //1. 이름 입력 받아 쉼표 기준 분리
-        CarNameGroup splitCarName = new CarNameGroup(carName);
-        List<String> carNameGroup = splitCarName.getSplitCarNameGroup();
+        List<String> carNameGroup = CarNameSeparator.splitCarNameWithSeparator(carName);
 
         //2. 이름 검증(공백 제거, 5자 이하 검증)
         //3. Car List 생성
