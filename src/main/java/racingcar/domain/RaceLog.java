@@ -4,17 +4,17 @@ import java.util.List;
 
 public class RaceLog {
 
-    private final List<CarDetail> carDetails;
+    private final List<CarStatus> carStatuses;
 
-    private RaceLog(List<CarDetail> carDetails) {
-        this.carDetails = carDetails;
+    private RaceLog(List<CarStatus> carStatuses) {
+        this.carStatuses = carStatuses;
     }
 
     public static RaceLog from(Cars cars) {
-        return new RaceLog(cars.getAllCarDetails());
+        return new RaceLog(cars.getAllCarStatuses());
     }
 
-    public List<CarDetail> getCarDetails() {
-        return carDetails;
+    public List<CarStatus> getCarDetails() {
+        return carStatuses;
     }
 }

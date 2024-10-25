@@ -42,17 +42,16 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    public List<CarDetail> getAllCarDetails() {
+    public List<CarStatus> getAllCarStatuses() {
         return cars.stream()
-                .map(Car::getCarDetail)
+                .map(Car::getStatus)
                 .toList();
     }
 
-    public List<CarDetail> getMaxCarDetails() {
+    public List<Car> getMaxCars() {
         Car maxCar = getMaxCar();
         return cars.stream()
                 .filter(car -> car.compareTo(maxCar) == 0)
-                .map(Car::getCarDetail)
                 .toList();
     }
 

@@ -23,12 +23,16 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public CarDetail getCarDetail() {
-        return new CarDetail(name.name(), position.position());
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private static boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    public CarStatus getStatus() {
+        return new CarStatus(name.name(), position.position());
+    }
+
+    public String getName() {
+        return name.name();
     }
 
     @Override

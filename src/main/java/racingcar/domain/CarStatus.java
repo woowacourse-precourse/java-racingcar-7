@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-public record CarDetail(
+public record CarStatus(
         String name,
-        int distance
+        int position
 ) {
 }
