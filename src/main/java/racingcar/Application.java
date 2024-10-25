@@ -12,8 +12,8 @@ public class Application {
 
         RaceCar raceCar = new RaceCar();
         String[] carNames = raceCar.splitNames(userInputString);
+        int raceCount = raceCar.isValidCount(userInputNumber);
 
-        System.out.println(carNames);
 
     }
 }
