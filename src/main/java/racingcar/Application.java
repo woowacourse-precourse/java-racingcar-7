@@ -20,7 +20,7 @@ public class Application {
         Race race = new Race();
 
         race.racing(carList, attemptCount);
-        
+
         race.findWinner(carList);
 
         race.getWinnerList();
@@ -28,6 +28,9 @@ public class Application {
 
     public static List<Car> splitCarNames(String carNames, int attemptCount) {
         String[] carNamesArray = carNames.split(",");
+        if (carNamesArray.length < 2) {
+            throw new IllegalArgumentException("자동차 1개 입력");
+        }
         List<Car> carNameList = new ArrayList<>();
 
         for (String carName : carNamesArray) {
