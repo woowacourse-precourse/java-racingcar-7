@@ -8,19 +8,19 @@ import racingcar.domain.Round;
 import racingcar.dto.RacingResult;
 import racingcar.dto.TotalRoundResult;
 import racingcar.dto.WinnerResult;
-import racingcar.repository.Cars;
-import racingcar.repository.Rounds;
+import racingcar.repository.CarRepository;
+import racingcar.repository.RoundRepository;
 import racingcar.util.converter.CarConverter;
 import racingcar.util.converter.TryCountConverter;
 
 public class Race {
-    private final Cars carRepository;
-    private final Rounds roundRepository;
+    private final CarRepository carRepository;
+    private final RoundRepository roundRepository;
 
     public Race() {
         NumberGenerator numberGenerator = new RandomNumberGenerator();
-        this.carRepository = new Cars(numberGenerator);
-        this.roundRepository = new Rounds();
+        this.carRepository = new CarRepository(numberGenerator);
+        this.roundRepository = new RoundRepository();
     }
 
     public RacingResult start(String carNames, String tryCount) {
