@@ -21,10 +21,10 @@ public class RaceTest {
             cars.getCars().forEach(car -> car.move(4));
         }
         Winner winner = new Winner(cars);
-        //then
         int maxPosition = winner.getWinnerPosition();
-        assertThat(maxPosition).isEqualTo(5);
 
+        //then
+        assertThat(maxPosition).isEqualTo(5);
     }
 
 }
