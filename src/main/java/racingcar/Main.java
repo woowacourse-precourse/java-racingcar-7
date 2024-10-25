@@ -23,7 +23,7 @@ public class Main {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName);
+        Car car = new Car(carName,false);
         return car;
     }
 
@@ -31,7 +31,7 @@ public class Main {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(carName,false));
         }
 
         return cars;
