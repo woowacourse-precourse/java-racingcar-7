@@ -1,5 +1,6 @@
 package racingcar;
 
+import static racingcar.TextFormat.RACING_GAME_WINNER;
 import static racingcar.TextFormat.RACING_TRY_RESULT;
 import static racingcar.TextString.NEW_LINE;
 import static racingcar.TextString.RACING_POSITION_TEXT;
@@ -34,7 +35,7 @@ public class RacingCars {
         return racingCarTryResult.toString();
     }
 
-    public List<String> calculateGameResult() {
+    public String calculateGameResult() {
         long fastestPosition = 0L;
         List<String> winnerNames = new ArrayList<>();
         for (RacingCar racingCar : racingCarList) {
@@ -51,6 +52,14 @@ public class RacingCars {
             }
         }
 
-        return winnerNames;
+        StringBuilder racingGameWinners = new StringBuilder();
+        for (int i = 0; i < winnerNames.size(); i++) {
+            if (i == winnerNames.size() - 1) {
+                racingGameWinners.append(winnerNames.get(i));
+                break;
+            }
+            racingGameWinners.append(RACING_GAME_WINNER.format(winnerNames.get(i)));
+        }
+        return racingGameWinners.toString();
     }
 }
