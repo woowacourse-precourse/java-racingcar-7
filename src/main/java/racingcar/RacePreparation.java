@@ -1,6 +1,9 @@
 package racingcar;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class RacePreparation {
     private List<String> carNames;
@@ -14,7 +17,7 @@ public class RacePreparation {
     private void initializeCarNames(String input) {
         validateInput(input);
         carNames = Arrays.stream(input.split(",")).map(String::trim).toList();
-        validateCarNamesDuplicated(carNames);
+        validateCarNames(carNames);
     }
 
     private void validateInput(String input) {
@@ -23,10 +26,16 @@ public class RacePreparation {
         }
     }
 
-    private void validateCarNamesDuplicated(List<String> carNames) {
+    private void validateCarNames(List<String> carNames) {
         Set<String> checkDuplicatedCarNames = new HashSet<>(carNames);
         if (checkDuplicatedCarNames.size() < carNames.size()) {
             throw new IllegalArgumentException();
+        }
+
+        for (String name : carNames) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
