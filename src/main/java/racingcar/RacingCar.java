@@ -27,6 +27,8 @@ public class RacingCar {
 
             List<Car> carList = getCarList(separatedCarNameList);
 
+            racingMachine(carList, racingCount);
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -38,5 +40,25 @@ public class RacingCar {
             carList.add(Car.of(carName));
         }
         return carList;
+    }
+
+    public void racingMachine(List<Car> carList, int racingCount) {
+        while (racingCount > 0) {
+            racing(carList);
+            racingCount--;
+        }
+    }
+
+    private void racing(List<Car> carList) {
+        for (Car car : carList) {
+            int randomResult = Randoms.pickNumberInRange(0, 9);
+            carMove(car, randomResult);
+        }
+    }
+
+    private void carMove(Car car, int randomResult) {
+        if (randomResult >= 4) {
+            car.move();
+        }
     }
 }
