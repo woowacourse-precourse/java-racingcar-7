@@ -6,8 +6,6 @@ import racingcar.util.StringUtil;
 
 public class CarFactory {
 
-    private static final String COMMA = ",";
-
     public static Cars createCars(String text) {
         List<Car> carList = Arrays.stream(StringUtil.getCarNames(text))
                 .map(Car::new).toList();

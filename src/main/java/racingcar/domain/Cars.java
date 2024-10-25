@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,13 @@ public class Cars {
         this.carList = carList;
     }
 
-    public int maxForward() {
+    public List<String> findWinners() {
+        return carList.stream().filter(car -> car.isSameForward(maxForward()))
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int maxForward() {
         int max = 0;
 
         for (Car car : carList) {
@@ -21,8 +28,11 @@ public class Cars {
         return max;
     }
 
-    public List<Car> maxForwardCars(int max) {
-        return carList.stream().filter(car -> car.isSameForward(max)).toList();
+    public Cars decideMoving() {
+        for (Car car : carList) {
+            car.move(Randoms.pickNumberInRange(0, 9));
+        }
+        return this;
     }
 
     @Override
@@ -41,4 +51,12 @@ public class Cars {
         return Objects.hash(carList);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : carList) {
+            stringBuilder.append(car.toString()).append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }
