@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.GameView;
 import racingcar.model.GameModel;
 
@@ -23,12 +24,21 @@ public class GameController {
         //로직 실행
         System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
-            gameView.output.gameResult(gameModel.startGame(carStepsMap));
+            gameView.output.gameResult(startGame(carStepsMap));
         }
 
         //우승자 출력 받기
         List<String> winnerList = gameModel.getWinner(carStepsMap);
         gameView.output.winner(winnerList);
+    }
+
+    private Map<String,Integer> startGame(Map<String,Integer> carMap) {
+        for (String key : carMap.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carMap.put(key, carMap.get(key) + 1);
+            }
+        }
+        return carMap;
     }
 
 

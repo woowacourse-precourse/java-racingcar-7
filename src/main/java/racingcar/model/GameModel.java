@@ -1,11 +1,6 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameModel {
     public Map<String, Integer> getCarMap(String[] carNames) {
@@ -45,14 +40,5 @@ public class GameModel {
             }
         }
         return winnerList;
-    }
-
-    public Map<String,Integer> startGame(Map<String,Integer> carMap) {
-        for (String key : carMap.keySet()) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                carMap.put(key, carMap.get(key) + 1);
-            }
-        }
-        return carMap;
     }
 }
