@@ -76,7 +76,7 @@ class Car {
             }
         }
     }
-    public String findWinner(){
+    private String findWinner(){
         String winner = carLst[winnerLst[0]];
         if (winnerLst.length == 1){
             return winner;
@@ -85,5 +85,15 @@ class Car {
             winner = winner + ", " + carLst[winnerLst[i]];
         }
         return winner;
+    }
+    public void check(){
+        for (String car : carLst){
+            if (car.length() > 5){
+                throw new IllegalArgumentException("IllegalArgumentException");
+            }
+        }
+        if (time < 0){
+            throw new IllegalArgumentException("IllegalArgumentException");
+        }
     }
 }
