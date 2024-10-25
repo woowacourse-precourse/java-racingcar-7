@@ -39,14 +39,18 @@ public class GameService {
     }
 
     public List<String> findWinner() {
-        int maxDistance = racingCars.stream()
-                .mapToInt(RacingCar::getDistance)
-                .max()
-                .orElseThrow();
+        int maxDistance = findMaxDistance();
 
         return racingCars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
+    }
+
+    private int findMaxDistance() {
+        return racingCars.stream()
+                .mapToInt(RacingCar::getDistance)
+                .max()
+                .orElseThrow();
     }
 }
