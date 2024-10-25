@@ -11,18 +11,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-
     public Cars(List<String> names) {
-        validateDuplicateNames(names);
         this.cars = createCars(names);
-    }
-
-    private void validateDuplicateNames(List<String> names) {
-        Set<String> uniqueNames = new HashSet<>(names);
-
-        if (uniqueNames.size() != names.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
     }
 
     private List<Car> createCars(List<String> names) {
@@ -48,6 +38,7 @@ public class Cars {
 
     public List<String> getWinners() {
         int maxPosition = findMaxPosition();
+
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
