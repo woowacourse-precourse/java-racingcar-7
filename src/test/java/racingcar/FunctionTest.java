@@ -6,41 +6,51 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class FunctionTest {
     @ParameterizedTest
-    @ValueSource(strings = {"", "pobi,", ",pobi", "pobi,,lulu", "pobi,  ,lulu"})
+    @ValueSource(strings = {"", " "})
     void 이름이_공백이거나_빈칸이면_예외(String testName) {
-        assertThatThrownBy(() -> Application.validateCarNameIsNotBlank(testName))
+        assertThatThrownBy(() -> Application.validateEachCarName(testName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름으로 공백이나 빈 칸은 허용하지 않습니다.");
     }
-    @Test
-    void 중복_이름이면_예외() {
-        String testName = "pobi,holy,pobi";
 
-        assertThatThrownBy(() -> Application.registerCars(testName))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복되지 않은 이름을 입력해주세요.");
+    @ParameterizedTest
+    @DisplayName("세 개의 이름이 주어지고 첫번째 이름과 세번째 이름이 같을 때, 세번째 이름에서 예외가 발생한다")
+    @ValueSource(strings = {"pobi,holy,pobi"})
+    void 중복_이름이면_예외(String testName) {
+        Map<String, Integer> cars = new HashMap<>();
+        for (int i = 0; i < 3; i++) {
+            String name = testName.split(",")[i];
+            if (i == 2) {
+                assertThatThrownBy(() -> Application.validateDuplication(cars, name))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("중복되지 않은 이름을 입력해주세요.");
+            }
+            cars.put(name, 0);
+        }
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", "pobiholymoly"})
-    void 이름이_1자리_미만_또는_5자리_초과면_예외(String testName) {
-        //" ", "holy," 등은 처리 x
-        assertThatThrownBy(() -> Application.registerCars(testName))
+    @ValueSource(strings = {"pobiholymoly"})
+    void 이름이_5자리_초과면_예외(String testName) {
+        assertThatThrownBy(() -> Application.validateEachCarName(testName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름은 1자리 이상 5자리 이하로 입력해주세요.");
+                .hasMessage("이름은 5자리 이하로 입력해주세요.");
     }
 
     @Test
     void 차_개수가_1개_이하면_예외() {
         String testName = "pobi";
+        Map<String, Integer> cars = new HashMap<>();
+        cars.put(testName, 0);
 
-        assertThatThrownBy(() -> Application.registerCars(testName))
+        assertThatThrownBy(() -> Application.validateCarsSize(cars))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("2개 이상의 차 이름을 입력해주세요.");
     }
