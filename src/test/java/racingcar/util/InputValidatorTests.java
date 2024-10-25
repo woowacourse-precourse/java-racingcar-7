@@ -2,11 +2,10 @@ package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static racingcar.util.Validator.validateInputString;
-import static racingcar.util.Validator.validateInteger;
-import static racingcar.util.Validator.validateRacingCarCount;
-import static racingcar.util.Validator.validateNameLength;
-import static racingcar.util.Validator.validatePositive;
+import static racingcar.util.InputValidator.validateInputString;
+import static racingcar.util.InputValidator.validateInteger;
+import static racingcar.util.InputValidator.validateRacingCarCount;
+import static racingcar.util.InputValidator.validatePositive;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ValidatorTests {
+class InputValidatorTests {
 
     @Test
     @DisplayName("입력된 문자열에서 쉼표가 문자열의 중간에 있으면 쉼표를 기준으로 문자열을 분할")
@@ -47,14 +46,6 @@ class ValidatorTests {
     void exceptionIfLessThanTwo() {
         List<String> name = List.of("alice");
         assertThatThrownBy(() -> validateRacingCarCount(name.size()))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
-    @DisplayName("자동차 이름이 5글자를 초과하거나 빈 문자열일 경우 예외 발생")
-    @ValueSource(strings = {"", "racer1"})
-    void testIfNameLengthNotInRange(String name) {
-        assertThatThrownBy(() -> validateNameLength(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

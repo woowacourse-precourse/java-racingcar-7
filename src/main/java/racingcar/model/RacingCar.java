@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import static racingcar.util.Validator.validateNameLength;
+import static racingcar.util.ConstantRacingData.NAME_LENGTH_LIMIT;
+import static racingcar.util.message.ExceptionMessage.NAME_LENGTH_NOT_VALID;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -13,8 +14,14 @@ public class RacingCar {
     private int distance;
 
     public RacingCar(String name) {
-        validateNameLength(name);
+        validate(name);
         this.name = name;
+    }
+
+    public static void validate(String name) {
+        if (name.isEmpty() || name.length() > NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException(NAME_LENGTH_NOT_VALID.get());
+        }
     }
 
     public void moveOrStop() {

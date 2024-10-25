@@ -2,9 +2,9 @@ package racingcar.view;
 
 import static racingcar.util.message.IOMessage.INPUT_TRIAL_COUNT;
 import static racingcar.util.message.IOMessage.INPUT_NAMES;
-import static racingcar.util.Validator.validateInputString;
-import static racingcar.util.Validator.validateInteger;
-import static racingcar.util.Validator.validateRacingCarCount;
+import static racingcar.util.InputValidator.validateInputString;
+import static racingcar.util.InputValidator.validateInteger;
+import static racingcar.util.InputValidator.validateRacingCarCount;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
