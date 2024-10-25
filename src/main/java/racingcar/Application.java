@@ -25,6 +25,7 @@ public class Application {
 
         //라운드 수 입력 받기
         OutputView.printMessageWithLine(PrintMessage.INPUT_TRY_CAR_MOVEMENT_MESSAGE);
+        String round = InputView.inputUser();
         //4. 라운드 수만큼 반복하면서 자동차 이동 시도
         //자동차 경기 현황 출력
 
