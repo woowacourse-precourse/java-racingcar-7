@@ -2,12 +2,12 @@
 
 # 구현할 기능 목록
 - Model
-    - [ ] TextSeparator
+    - [x] TextSeparator
     - [ ] Car
     - [ ] CarName
     - [ ] Movement
     - [x] NumberValidator
-    - [ ] RandomNumberGenerator
+    - [x] RandomNumberGenerator
     - [ ] WinnerDeterminer
 - View
     - [x] InputView
