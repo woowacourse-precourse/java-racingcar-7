@@ -13,6 +13,14 @@ public class Car {
         this.distance = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int compareDistance(Car otherCar) {
+        return this.distance.compareTo(otherCar.distance);
+    }
+
     public void moveForward(int randomNumber) {
         if (randomNumber >= 4) {
             this.distance++;
