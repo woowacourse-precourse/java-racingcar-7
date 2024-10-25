@@ -23,4 +23,10 @@ public class InputValidatorTest {
         assertThatThrownBy(() ->   InputValidator.validateCarNamesInput("raceCar1, raceCar2,"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_이름에_특수문자가_있는_경우_예외테스트(){
+        assertThatThrownBy(() ->   InputValidator.validateCarNamesInput("raceCar1* raceCar2"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
