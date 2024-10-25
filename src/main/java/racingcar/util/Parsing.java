@@ -1,13 +1,15 @@
 package racingcar.util;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Parsing {
-    private static final String DELIMITER = ",";
+    private static final String COMMA = ",";
+    private static final String COMMA_SPACE = ", ";
 
-    public String[] splitCarName(String input) {
-        return input.split(DELIMITER);
+    public static String[] splitCarName(String input) {
+        return input.split(COMMA);
     }
 
     public static Map<String, String> convertStringArrToMap(String[] carNames) {
@@ -19,6 +21,6 @@ public class Parsing {
     }
 
     public static String joinWinner(String[] winners) {
-        return String.join(DELIMITER, winners);
+        return String.join(COMMA_SPACE, winners);
     }
 }
