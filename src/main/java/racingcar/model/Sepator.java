@@ -18,10 +18,15 @@ public class Sepator {
         for (String element : splitInput) {
             cars.add(new Car(element));
         }
+
+        carNameDuplicateValidator(splitInput, cars);
+        return cars;
+    }
+
+    private static void carNameDuplicateValidator(List<String> splitInput, List<Car> cars) {
         Set<String> carsSet = Set.copyOf(splitInput);
         if (carsSet.size() != cars.size()) {
             throw new IllegalArgumentException(Message.CAR_NAME_DUPLICATE_VALIDATION_MESSAGE.getMessage());
         }
-        return cars;
     }
 }
