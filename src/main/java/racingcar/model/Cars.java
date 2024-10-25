@@ -8,13 +8,13 @@ public class Cars {
 
     private final Map<String, Car> carMap = new HashMap<>();
 
-    public Cars(List<String> carNames) {
+    public Cars(final List<String> carNames) {
         for (String name : carNames) {
             carMap.put(name, new Car(name));
         }
     }
 
-    public void updateCarPosition(String carName) {
+    public void updateCarPosition(final String carName) {
         Car car = carMap.get(carName);
         if (carName != null) {
             car.moveForward();
