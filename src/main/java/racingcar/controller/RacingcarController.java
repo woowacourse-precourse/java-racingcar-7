@@ -21,7 +21,7 @@ public class RacingcarController {
             attemptCount = Integer.parseInt(inputView.getAttemptCount());
             InvalidInputException.validateAttemptCount(attemptCount);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ExceptionMessage.INPUT_ONLY_INTEGER.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_ONLY_POSITIVE_INTEGER.getMessage());
         }
         racingcarService.runRace(carName, attemptCount);
     }
