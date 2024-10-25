@@ -26,7 +26,7 @@ public class Car {
     }
 
     private boolean canMove() {
-        
+        return getRandomNumber() >= 4;
     }
 
     private int getRandomNumber() {
