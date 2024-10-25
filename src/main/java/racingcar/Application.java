@@ -2,17 +2,20 @@ package racingcar;
 
 
 import IO.Input;
+import IO.Output;
 import race.Race;
 
 public class Application {
 
     private final Input input;
     private final Race race;
+    private final Output output;
 
     public Application() {
 
         this.input = new Input();
         this.race = new Race();
+        this.output = new Output();
     }
 
     public static void main(String[] args) {
@@ -29,5 +32,7 @@ public class Application {
         String result;
 
         result = race.racing(cars, attempt);
+
+        output.printResult(result);
     }
 }

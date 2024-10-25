@@ -73,6 +73,8 @@ public class Race {
 
     private void printCarForward(Map<String, Integer> cars) {
 
+        System.out.println("실핼 결과");
+
         cars.forEach((key, value) -> {
             System.out.print(key + " : ");
             printForward(value);
