@@ -2,9 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.SequencedMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,10 +26,8 @@ public class Cars {
         }
     }
 
-    public SequencedMap<String, Integer> getStatus() {
-        SequencedMap<String, Integer> carStatusMap = new LinkedHashMap<>();
-        cars.forEach(car -> carStatusMap.put(car.getName(), car.getPosition()));
-        return carStatusMap;
+    public List<CarStatus> getStatus() {
+        return cars.stream().map(car -> new CarStatus(car.getName(), car.getPosition())).toList();
     }
 
     public int getSize() {

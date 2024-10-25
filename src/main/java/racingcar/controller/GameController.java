@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SequencedMap;
 import racingcar.model.CarMovementResults;
 import racingcar.model.Cars;
 import racingcar.model.Game;
@@ -26,7 +25,9 @@ public class GameController {
 
         while (game.isRunning()) {
             game.play();
-            allAttemptResults.add(getCurrentAttemptResults(game));
+
+            CarMovementResults currentMovementResults = new CarMovementResults(game.getStatusOfCars());
+            allAttemptResults.add(currentMovementResults);
         }
         outputView.displayMovementResults(allAttemptResults);
 
@@ -41,10 +42,5 @@ public class GameController {
 
         Cars cars = new Cars(carNames);
         return new Game(cars, attemptCount);
-    }
-
-    private CarMovementResults getCurrentAttemptResults(Game game) {
-        SequencedMap<String, Integer> statusOfCars = game.getStatusOfCars();
-        return CarMovementResults.from(statusOfCars);
     }
 }

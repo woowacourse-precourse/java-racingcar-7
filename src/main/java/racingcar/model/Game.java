@@ -2,7 +2,6 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.SequencedMap;
 
 public class Game {
     private static final int RANDOM_MIN_NUMBER = 0;
@@ -36,7 +35,7 @@ public class Game {
         return attemptCount > 0;
     }
 
-    public SequencedMap<String, Integer> getStatusOfCars() {
+    public List<CarStatus> getStatusOfCars() {
         return cars.getStatus();
     }
 
@@ -50,5 +49,9 @@ public class Game {
     public void judgeWinners() {
         List<Car> maxPositionCars = cars.getMaxPositionCars();
         this.winners = new Winners(maxPositionCars);
+    }
+
+    public int getAttemptCount() {
+        return attemptCount;
     }
 }

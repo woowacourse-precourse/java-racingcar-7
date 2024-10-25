@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.LinkedHashMap;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.CarMovementResults;
+import racingcar.model.CarStatus;
 
 public class OutputViewTest {
 
@@ -27,15 +27,18 @@ public class OutputViewTest {
     @DisplayName("실행 결과 출력 시 의도한 형식대로 출력된다.")
     void shouldDisplayResultInExpectedFormat() {
         // given
+        CarMovementResults carStatusesOfFirstAttempt = new CarMovementResults(List.of(
+                new CarStatus("pobi", 3),
+                new CarStatus("juni", 2)
+        ));
+
+        CarMovementResults carStatusesOfSecondAttempt = new CarMovementResults(List.of(
+                new CarStatus("pobi", 4),
+                new CarStatus("juni", 3)
+        ));
+
         List<CarMovementResults> carMovementResults = List.of(
-                CarMovementResults.from(new LinkedHashMap<>() {{
-                    put("pobi", 3);
-                    put("juni", 2);
-                }}),
-                CarMovementResults.from(new LinkedHashMap<>() {{
-                    put("pobi", 4);
-                    put("juni", 3);
-                }})
+                carStatusesOfFirstAttempt, carStatusesOfSecondAttempt
         );
 
         // when
