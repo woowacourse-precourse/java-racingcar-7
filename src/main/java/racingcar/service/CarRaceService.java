@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.enums.ErrorMessage.CAR_NOT_FOUND;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +48,6 @@ public class CarRaceService {
         return cars.stream()
                 .mapToInt(car -> car.getMovingDistance().length())
                 .max()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException(CAR_NOT_FOUND.getMessage()));
     }
 }
