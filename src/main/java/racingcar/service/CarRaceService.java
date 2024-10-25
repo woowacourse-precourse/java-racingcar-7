@@ -7,6 +7,7 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 import static racingcar.validation.CarValidation.*;
+import static racingcar.view.OutputView.*;
 
 public class CarRaceService {
 
@@ -17,5 +18,13 @@ public class CarRaceService {
         Integer gameMatches = gameMatchesValid(gameMatchesInput);
         raceGame = new RacingGame(cars, gameMatches);
     }
+
+    public void playGame() {
+        Cars cars = raceGame.getCars();
+        Integer gameMatches = raceGame.getGameMatches();
+
+        printGameStartMessage();
+    }
+
 
 }
