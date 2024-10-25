@@ -15,6 +15,8 @@ public class Application {
 
        List<RacingCar> racingCarList = initRacingCarList(carNames);
        int maxRoundValue = Integer.parseInt(tryCount);
+       Race race = new Race(racingCarList, maxRoundValue);
+       race.start();
     }
 
     static List<RacingCar> initRacingCarList(String carNames) {
