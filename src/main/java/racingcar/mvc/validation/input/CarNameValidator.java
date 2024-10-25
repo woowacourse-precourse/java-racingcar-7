@@ -16,11 +16,19 @@ public class CarNameValidator {
 
             isValidLength(s);
 
-            containsWhiteSpace(s);
+            containWhiteSpace(s);
 
-            //특수문자
+            containOnlyAllowedSpecialCharacters(s);
 
             isDuplicated(names, s);
+        }
+    }
+
+    private static void containOnlyAllowedSpecialCharacters(String input) {
+        String regex = "^[\\w가-힣-.]+$";
+
+        if (!input.matches(regex)) {
+            throw new IllegalArgumentException(input + "에 허용되지 않은 특수문자가 포함되어 있습니다.");
         }
     }
 
@@ -30,7 +38,7 @@ public class CarNameValidator {
         }
     }
 
-    private static void containsWhiteSpace(String input) {
+    private static void containWhiteSpace(String input) {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("이름은 공백을 가질 수 없습니다.");
         }
@@ -38,7 +46,7 @@ public class CarNameValidator {
 
     private static void isValidLength(String input) {
         if (input.length() > 5) {
-            throw new IllegalArgumentException("이름의 길이가 5 초과 입니다.");
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
         }
     }
 
