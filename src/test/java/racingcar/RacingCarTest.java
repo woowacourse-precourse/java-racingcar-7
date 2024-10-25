@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.CarList;
+import racingcar.domain.Cars;
 import java.util.List;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Winners;
@@ -28,11 +28,11 @@ public class RacingCarTest {
         Car car = new Car("MCshin00");
         Car car2 = new Car("asdf1234");
         RandomGenerator randomNumberGenerator = new RandomNumberGenerator();
-        CarList carList = new CarList(List.of(car, car2), randomNumberGenerator);
+        Cars cars = new Cars(List.of(car, car2), randomNumberGenerator);
 
         List<String> carNames = List.of("MCshin00", "asdf1234");
 
-        assertThat(carList.getCarList().stream()
+        assertThat(cars.getCars().stream()
                 .map(Car::getName))
                 .containsExactlyElementsOf(carNames);
     }
@@ -59,11 +59,11 @@ public class RacingCarTest {
     void 자동차_전체_이동_테스트() {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
-        List<Car> cars = List.of(car1, car2);
+        List<Car> carList = List.of(car1, car2);
         RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
-        CarList carList = new CarList(cars, testRandomNumberGenerator);
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
 
-        carList.moveAll();
+        cars.moveAll();
 
         assertThat(car1.getPosition()).isEqualTo(1);
         assertThat(car2.getPosition()).isEqualTo(0);
@@ -73,13 +73,13 @@ public class RacingCarTest {
     void 단독_우승자_결정_테스트() {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
-        List<Car> cars = List.of(car1, car2);
+        List<Car> carList = List.of(car1, car2);
         RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
-        CarList carList = new CarList(cars, testRandomNumberGenerator);
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
         Winners winners;
 
-        carList.moveAll();
-        winners = new Winners(carList.getWinners());
+        cars.moveAll();
+        winners = new Winners(cars.getWinners());
 
         assertThat(winners.getWinnersList()).isEqualTo("car1");
     }
@@ -88,13 +88,13 @@ public class RacingCarTest {
     void 공동_우승자_결정_테스트() {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
-        List<Car> cars = List.of(car1, car2);
+        List<Car> carList = List.of(car1, car2);
         RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,4));
-        CarList carList = new CarList(cars, testRandomNumberGenerator);
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
         Winners winners;
 
-        carList.moveAll();
-        winners = new Winners(carList.getWinners());
+        cars.moveAll();
+        winners = new Winners(cars.getWinners());
 
         assertThat(winners.getWinnersList()).isEqualTo("car1, car2");
     }
@@ -106,11 +106,11 @@ public class RacingCarTest {
 
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
-        List<Car> cars = List.of(car1, car2);
+        List<Car> carList = List.of(car1, car2);
         car1.move(4);
         car2.move(3);
 
-        new OutputView().printRoundResult(cars);
+        new OutputView().printRoundResult(carList);
 
         assertThat(out.toString()).isEqualTo("실행 결과" + System.lineSeparator() + "car1 : -" +
                 System.lineSeparator() + "car2 : " + System.lineSeparator());
