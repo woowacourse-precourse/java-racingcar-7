@@ -19,13 +19,16 @@ class JudgmentTest {
 	@DisplayName("이름 중복 판정 테스트")
 	void 이름_중복_테스트() {
 		Car car1 = new Car("car1");
-		Car car2 = new Car("car2");
+		Car car2 = new Car("car1");
 
 		List<Car> cars = new ArrayList<>();
 		cars.add(car1);
 		cars.add(car2);
 
-		assertThat(judgment.judgmentCarNameDuplicate(cars, "car2")).isTrue();
+		assertThat(judgment.judgmentCarNameDuplicate(
+				cars.stream()
+						.map(Car::getCarName)
+						.toList())).isTrue();
 	}
 
 	@Test
