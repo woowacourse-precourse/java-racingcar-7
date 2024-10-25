@@ -5,10 +5,14 @@ import static racingcar.service.InputService.isTheLengthOfStringLessThanFive;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Input;
+import racingcar.service.GameService;
 
 public class InputView {
 
-    private static final Input input = new Input("", 0);
+    private static Input input = new Input("", 0);
+
+    static GameService gameService;
+
 
     public static void getStringInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -25,6 +29,9 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(Console.readLine());
         input.setCount(count);
+
+        gameService = new GameService(input);
+        gameService.addCarName();
     }
 
 
