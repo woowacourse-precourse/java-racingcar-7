@@ -4,11 +4,17 @@ import java.util.Objects;
 
 public class Car {
     private final String name;
+    private int distanceMovedForward;
 
     public Car(final String name) {
         validateNameLength(name);
         validateNameOnlyEnglishAndNumber(name);
         this.name = name;
+        this.distanceMovedForward = 0;
+    }
+
+    public void moveForward() {
+        distanceMovedForward++;
     }
 
     private void validateNameLength(final String name) {

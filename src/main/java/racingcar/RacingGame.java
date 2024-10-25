@@ -21,7 +21,7 @@ public class RacingGame {
     private void moveCars() {
         Iterator<Car> iterator = cars.iterator();
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Car car = iterator.next();
             moveCarRandomly(car);
         }
@@ -39,6 +39,8 @@ public class RacingGame {
     }
 
     private void moveCarRandomly(final Car car) {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            car.moveForward();
+        }
     }
 }
