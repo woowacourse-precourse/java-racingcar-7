@@ -13,22 +13,22 @@ public class OutputView {
     private static final String MOVE_DASH = "-";
     private static final String NAME_DELIMITER = ", ";
 
-    public void printInputCarNameMessage() {
+    public static void printInputCarNameMessage() {
         System.out.println(INPUT_CAR_NAME_MESSAGE);
     }
 
-    public void printInputRoundMessage() {
+    public static void printInputRoundMessage() {
         System.out.println(INPUT_ROUND_MESSAGE);
     }
 
-    public void printRoundResult(List<CarStatusDto> roundResult) {
+    public static void printRoundResult(List<CarStatusDto> roundResult) {
         for (CarStatusDto carStatusDto : roundResult) {
             System.out.println(carStatusDto.getName() + NAME_POSITION_SEPARATOR + MOVE_DASH.repeat(carStatusDto.getPosition()));
         }
         System.out.println();
     }
 
-    public void printWinnerNames(List<String> names) {
+    public static void printWinnerNames(List<String> names) {
         System.out.println(FINAL_WINNER_MESSAGE + NAME_POSITION_SEPARATOR + String.join(NAME_DELIMITER, names));
     }
 }
