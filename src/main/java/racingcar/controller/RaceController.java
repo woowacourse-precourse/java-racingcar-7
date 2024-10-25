@@ -4,28 +4,31 @@ import java.util.List;
 import racingcar.domain.Winners;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceController {
 
-    private final UIController uiController;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public RaceController(UIController uiController) {
-        this.uiController = uiController;
+    public RaceController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
-        Cars cars = new Cars(parse(uiController.receiveName()));
-        int count = uiController.receiveCount();
+        Cars cars = new Cars(parse(inputView.receiveName()));
+        int count = inputView.receiveCount();
 
-        uiController.printRaceResultPhrase();
-
-        uiController.printWinner(race(cars, count));
+        outputView.printRaceResultPhrase();
+        outputView.printWinner(race(cars, count));
     }
 
     private Winners race(Cars cars, int count) {
         while (count-- > 0) {
             cars.move();
-            uiController.printRaceResult(cars);
+            outputView.printRaceResult(cars);
         }
 
         return new Winners(cars);
