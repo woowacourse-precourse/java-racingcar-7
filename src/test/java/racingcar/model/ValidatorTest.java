@@ -97,4 +97,15 @@ class ValidatorTest {
         assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("시도할 횟수 유효성 검사: 숫자가 아닌 값 - 예외 테스트")
+    void validateAttemptCount_nonNumeric() {
+        // given
+        String attemptCountInput = "abc";
+
+        // when & then
+        assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
