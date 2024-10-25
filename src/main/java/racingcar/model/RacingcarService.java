@@ -1,5 +1,10 @@
 package racingcar.model;
 
+import static racingcar.exception.InvalidInputException.validateCarName;
+import static racingcar.util.Parsing.convertStringArrToMap;
+import static racingcar.util.Parsing.joinWinner;
+import static racingcar.util.Parsing.splitCarName;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +19,16 @@ public class RacingcarService {
 
     public RacingcarService() {
         outputView = OutputView.getInstance();
+    }
+
+    public void runRace(String carName, int attemptCount) {
+        Racingcar racingcar = new Racingcar(carName);
+        String[] carNames = splitCarName(racingcar.getCarName());
+        validateCarName(carNames);
+        Map<String, String> player = convertStringArrToMap(carNames);
+        startRace(player, attemptCount);
+        List<String> winner = pickWinner(player, getMaxDashLength(player));
+        outputView.winner(joinWinner(winner));
     }
 
     private void startRace(Map<String, String> player, int attemptCount) {
