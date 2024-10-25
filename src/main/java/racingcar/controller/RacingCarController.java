@@ -15,12 +15,18 @@ public class RacingCarController {
 
     public void start() {
         initializeCars();
+        final long racingRound = settingRacingRound();
     }
 
     private void initializeCars() {
         inputView.printCarNameInputGuide();
         String carNames = inputView.getCarNameInput();
         registerCars(carNames);
+    }
+
+    private long settingRacingRound() {
+        inputView.printCarMovementCountInputGuide();
+        return inputView.getCarMovementCount();
     }
 
     private void registerCars(String carNames) {
