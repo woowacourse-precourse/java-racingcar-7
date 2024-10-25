@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +15,12 @@ public class CarManager {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void playRound() {
+        for (Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            car.go(randomNumber);
+        }
     }
 }
