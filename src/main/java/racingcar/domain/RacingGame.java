@@ -10,18 +10,17 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private Racingcars racingcars;
-    private int racingGameCount;
+    private GameRound gameRound;
 
-    public RacingGame(Racingcars racingcars, int racingGameCount) {
-        Validation.validateRacingGameCount(racingGameCount);
+    public RacingGame(Racingcars racingcars, GameRound gameRound) {
         this.racingcars = racingcars;
-        this.racingGameCount = racingGameCount;
+        this.gameRound = gameRound;
     }
 
     public void startRacingGame(){
         OutputView.printRacingGameExecuteResultMessage();
 
-        for(int i = 0;  i < racingGameCount; i++){
+        for(int i = 0;  i < gameRound.getRoundCount(); i++){
             startGameRound();
             OutputView.printRacingGameRoundEndBlankLine();
         }

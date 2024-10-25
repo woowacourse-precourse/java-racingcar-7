@@ -1,6 +1,5 @@
 package racingcar.validation;
 
-import racingcar.domain.Racingcar;
 import racingcar.view.ErrorView;
 
 import java.util.List;
@@ -40,7 +39,7 @@ public class Validation {
         }
     }
 
-    public static void validateRacingGameCount(int racingGameCount){
+    public static void validateRacingGameRoundCount(int racingGameCount){
         if(racingGameCount <= 0){
             ErrorView.printRacingGameCountErrorMessage();
             throw new IllegalArgumentException();
