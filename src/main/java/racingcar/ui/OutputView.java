@@ -4,19 +4,9 @@ import racingcar.domain.car.Cars;
 
 import java.util.List;
 
-public class OutputView implements UserOutput {
+public interface OutputView {
 
-    @Override
-    public void printRaceStatus(Cars cars) {
-        cars.getCars().forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        });
-        System.out.println();
-    }
+    void printRaceStatus(Cars cars);
 
-    @Override
-    public void printWinners(List<String> winners) {
-        String result = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + result);
-    }
+    void printWinners(List<String> winners);
 }

@@ -3,23 +3,23 @@ package racingcar.controller;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Race;
 import racingcar.domain.random.DefaultRandomNumberGenerator;
+import racingcar.ui.ConsoleInputView;
+import racingcar.ui.ConsoleOutputView;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
-import racingcar.ui.UserInput;
-import racingcar.ui.UserOutput;
 
 import java.util.List;
 
 public class RaceController {
 
     private final Race race;
-    private final UserInput inputView;
-    private final UserOutput outputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
     public RaceController() {
         this.race = new Race(new DefaultRandomNumberGenerator());
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
+        this.inputView = new ConsoleInputView();
+        this.outputView = new ConsoleOutputView();
     }
 
     public void run() {
