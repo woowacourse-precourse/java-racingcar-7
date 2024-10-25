@@ -19,6 +19,10 @@ public class RacingcarService {
         this.tryCount.set(tryCount);
     }
 
+    public boolean isPlaying() {
+        return tryCount.remain();
+    }
+
     public List<CarDto> playRound() {
         cars.playRound();
         tryCount.playRound();
@@ -27,9 +31,5 @@ public class RacingcarService {
 
     public List<CarDto> getResult() {
         return cars.getWinners();
-    }
-
-    public boolean isPlaying() {
-        return tryCount.remain();
     }
 }
