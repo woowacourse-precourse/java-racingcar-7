@@ -23,8 +23,16 @@ public class Car {
         }
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public String getResult() {
         return name + NAME_MARK +
                 POSITION_MARK.repeat(position);
+    }
+
+    public String getName() {
+        return name;
     }
 }
