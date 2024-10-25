@@ -3,6 +3,7 @@ package racingcar.view;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,6 +51,21 @@ class OutputViewTest {
 
         outputView.outputWinner(winners);
         Assertions.assertEquals("진용, 순신, 길동", outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void 자동차_전진_횟수_출력() {
+        OutputView outputView = new OutputView();
+
+        LinkedHashMap<String, Integer> carMoves = new LinkedHashMap<>();
+        carMoves.put("진용", 3);
+        carMoves.put("순신", 4);
+        carMoves.put("길동", 1);
+
+        outputView.outputCarMoves(carMoves);
+
+        Assertions.assertEquals("진용 : ---\n순신 : ----\n길동 : -", outputStreamCaptor.toString().trim());
+
     }
 
 }
