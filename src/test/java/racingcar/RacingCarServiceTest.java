@@ -8,8 +8,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RacingCarServiceTest {
+class RacingCarServiceTest extends RacingCarService {
     private final RacingCarService racingCarService = new RacingCarService();
+
+    @Override
+    @DisplayName("난수 제어를 위한 오버라이딩")
+    public boolean canMove() {
+        return true;
+    }
 
     @Test
     @DisplayName("쉼표(,) 구분자로 문자열 자르기")
@@ -57,6 +63,21 @@ class RacingCarServiceTest {
         result = racingCarService.moveCar(result, winCarNames);
         //then
 
+        Assertions.assertEquals(expect, result);
+    }
+
+    @Test
+    @DisplayName("이동할 차 목록 반환하는 메서드")
+    public void testListMoveCarNames() throws Exception {
+        RacingCarServiceTest racingCarServiceTest = new RacingCarServiceTest();
+
+        //given
+        List<String> expect = Arrays.asList("car1", "car3");
+
+        //when
+        List<String> result = racingCarServiceTest.listMoveCarNames(expect);
+
+        //then
         Assertions.assertEquals(expect, result);
     }
 }

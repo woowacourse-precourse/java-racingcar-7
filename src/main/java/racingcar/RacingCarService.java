@@ -39,7 +39,23 @@ public class RacingCarService {
         return mapRacingCars;
     }
 
-    public int createRandomNumber() {
+    public List<String> listMoveCarNames(List<String> carNames) {
+        List<String> listMoveCarNames = new ArrayList<>();
+
+        for (int i = 0; i < carNames.size(); i++) {
+            String carName = carNames.get(i);
+            if (canMove()) {
+                listMoveCarNames.add(carName);
+            }
+        }
+        return listMoveCarNames;
+    }
+
+    public boolean canMove() {
+        return createRandomNumber() >= 4;
+    }
+
+    private int createRandomNumber() {
         return (int) (Math.random() * 10);
     }
 }
