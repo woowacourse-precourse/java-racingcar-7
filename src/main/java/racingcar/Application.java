@@ -75,4 +75,19 @@ class UserInput {
             return false;
         }
     }
+
+    public void setAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+
+        if (isInteger(input)) {
+            isIntegerAttempts = true;
+        }
+
+        attempts = Integer.parseInt(input);
+
+        if (attempts > 0) {
+            isPositiveAttempts = true;
+        }
+    }
 }
