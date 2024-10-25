@@ -19,6 +19,9 @@ public class Application {
             Validator.validateNameDuplicate(trim_name, nameList);
             nameList.add(trim_name);
         }
-
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input2 = Console.readLine();
+        int count = Validator.validateAndParseInteger(input2);
+        Validator.validateNegative(count);
     }
 }
