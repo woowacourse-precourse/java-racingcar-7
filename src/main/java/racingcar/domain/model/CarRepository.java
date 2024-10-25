@@ -3,6 +3,7 @@ package racingcar.domain.model;
 import racingcar.domain.model.value.Name;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static racingcar.Const.DUPLICATE_NAME;
@@ -24,18 +25,22 @@ public class CarRepository {
 
         try {
             saveAllCars(carsToAdd);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalStateException e) {
             throw new DuplicateNameException(DUPLICATE_NAME);
         }
     }
 
     private void saveAllCars(List<Car> carsToAdd) {
+
         Map<Name, Car> cars = carsToAdd.stream()
-                .collect(
-                        Collectors.toMap(Car::getName, car -> car)
-                );
+                .collect(Collectors.toMap(
+                                Car::getName,
+                                car -> car
+                ));
+
         storedCars.putAll(cars);
     }
+
 
     public List<Car> findAll() {
         return storedCars.values()
