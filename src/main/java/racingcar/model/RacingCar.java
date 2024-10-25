@@ -8,6 +8,7 @@ public class RacingCar {
 
     private final int DEFAULT_POSITION = 0;
     private final int DEFAULT_MOVE_DISTANCE = 1;
+    private final int MIN_MOVEABLE_NUMBER = 4;
 
     private final String name;
     private final RacingCarDependency racingCarDependency;
@@ -25,8 +26,8 @@ public class RacingCar {
         this.position = other.position;
     }
 
-    public void move() {
-        if (racingCarDependency.movingStrategy().isMovable()) {
+    public void move(int randomValue) {
+        if (isMoveable(randomValue)) {
             position += DEFAULT_MOVE_DISTANCE;
         }
     }
@@ -37,6 +38,10 @@ public class RacingCar {
 
     public int getPosition() {
         return position;
+    }
+
+    private boolean isMoveable(int condition) {
+        return condition >= MIN_MOVEABLE_NUMBER;
     }
 
     @Override
