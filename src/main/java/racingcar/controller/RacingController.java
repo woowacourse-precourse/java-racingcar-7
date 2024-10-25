@@ -6,7 +6,6 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Racing;
 import racingcar.model.RacingCount;
-import racingcar.model.dto.CarStatusDto;
 import racingcar.util.randomnumber.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -22,30 +21,40 @@ public class RacingController {
     }
 
     public void start() {
-        inputCarNames();
-    }
+        List<String> carNames = getInputCarNames();
+        Cars cars = creatCars(carNames);
 
-    private void inputCarNames() {
-        outputView.printInputCarNames();
-        List<String> carNames = inputView.inputCarNames();
-        List<Car> carsList = creatCars(carNames);
-        Cars cars = Cars.from(carsList);
-
-        outputView.printInputRacingCount();
-        int count = inputView.inputRacingCount();
+        int count = getInputRacingCount();
         RacingCount racingCount = RacingCount.from(count);
 
-        Racing racings = Racing.from(cars);
+        Racing racing = Racing.from(cars);
+
+        runRacing(racing, racingCount);
+        disPlayWinner(racing);
+    }
+
+    private List<String> getInputCarNames() {
+        outputView.printInputCarNames();
+        return inputView.inputCarNames();
+    }
+
+    private int getInputRacingCount() {
+        outputView.printInputRacingCount();
+        return inputView.inputRacingCount();
+    }
+
+    private void runRacing(Racing racing, RacingCount racingCount) {
         outputView.printRacingResultMessage();
         while (isPossibleRacing(racingCount)) {
-            racings.runRacing();
+            racing.runRacing();
             racingCount.deduct();
 
-            List<CarStatusDto> racingResults = racings.getResult();
-            outputView.printRacingResult(racingResults);
+            outputView.printRacingResult(racing.getResult());
         }
+    }
 
-        List<String> winners = racings.getWinners();
+    private void disPlayWinner(Racing racing) {
+        List<String> winners = racing.getWinners();
         outputView.printWinner(winners);
     }
 
@@ -53,12 +62,12 @@ public class RacingController {
         return !racingCount.isEnd();
     }
 
-    private List<Car> creatCars(List<String> carNames) {
+    private Cars creatCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
             cars.add(Car.from(carName, new RandomNumberGenerator()));
         }
-        return cars;
+        return Cars.from(cars);
     }
 }
