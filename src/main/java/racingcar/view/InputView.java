@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class InputView {
@@ -60,12 +61,28 @@ public class InputView {
 
     public static List<String> validateCarNames(String input) {
         if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException("이름이 비어 있을 수 없습니다.");
+            throw new IllegalArgumentException("자동차 이름이 비워져 있습니다.");
         }
 
         List<String> carNames = Arrays.stream(input.split(",")).toList();
+        HashSet<String> uniqueNames = new HashSet<>();
         if(carNames.size() <= 1) {
             throw new IllegalArgumentException("자동차 이름을 두 개 이상 입력해야 합니다.");
+        }
+        for(String car : carNames){
+            if(car.length() > 5){
+                throw new IllegalArgumentException("이름은 5글자 이하여야 합니다");
+            }
+            if(car.isEmpty()){
+                throw new IllegalArgumentException("이름이 공백입니다.");
+            }
+            if(car.contains(" ")){
+                throw new IllegalArgumentException("이름에 공백이 포함되어 있습니다.");
+            }
+            if(uniqueNames.contains(car)){
+                throw new IllegalArgumentException("이름이 중복되었습니다.");
+            }
+            uniqueNames.add(car);
         }
 
         return carNames;
