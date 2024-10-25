@@ -52,5 +52,28 @@ public class Application {
             } // end for
             System.out.println();
         } // end for
+
+        Map<String, Integer> lastPositions = new HashMap<>();
+        for (String name : cars.keySet()) {
+            lastPositions.put(name, cars.get(name).size());
+        } // end for
+
+        List<String> keySet = new ArrayList<>(cars.keySet());
+        keySet.sort(((o1, o2) -> lastPositions.get(o2) - lastPositions.get(o1)));
+        int maxPosition = lastPositions.get(keySet.getFirst());
+        StringBuilder winner = new StringBuilder();
+
+        for (String name : lastPositions.keySet()) {
+            if (lastPositions.get(name) == maxPosition) {
+                winner.append(name).append(", ");
+            } // end if
+        } // end for
+
+        String winnerNames = winner.toString();
+        if (winnerNames.endsWith(", ")) {
+            winnerNames = winnerNames.substring(0, winnerNames.length() - 2);
+        } // end if
+
+        System.out.println("최종 우승자 : " + winnerNames);
     } // main
 } // class
