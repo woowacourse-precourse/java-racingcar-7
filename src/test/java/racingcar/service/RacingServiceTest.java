@@ -17,14 +17,14 @@ class RacingServiceTest {
     @DisplayName("자동차 경주 진행")
     void startRace() {
         //given
-        List<Car> cars = new ArrayList<>();
+        final List<Car> cars = new ArrayList<>();
         cars.add(new Car("a"));
         cars.add(new Car("b"));
         cars.add(new Car("c"));
-        int roundCount = 5;
+        final int roundCount = 5;
 
         //when
-        List<Result> results = racingService.startRace(cars, roundCount);
+        final List<Result> results = racingService.startRace(cars, roundCount);
 
         //then
         assertThat(results).hasSize(roundCount);
