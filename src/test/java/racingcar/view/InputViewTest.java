@@ -2,8 +2,8 @@ package racingcar.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static racingcar.message.InputRequestMessage.NAMES_REQUEST_MESSAGE;
-import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPT_REQUEST_MESSAGE;
+import static racingcar.message.InputRequestMessage.NAMES_REQUEST;
+import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPT_REQUEST;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -48,14 +48,14 @@ class InputViewTest {
 
     @DisplayName("이름_입력_요청_메세지_출력_테스트")
     @Test
-    public void printCarNamesRequestMessageTest() {
+    public void printCarNamesRequestTest() {
         //given
         InputView inputView = new InputView();
         //when
-        inputView.printCarNamesRequestMessage();
+        inputView.printCarNamesRequest();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(NAMES_REQUEST_MESSAGE.getMessage(), printResult);
+        assertEquals(NAMES_REQUEST.getMessage(), printResult);
     }
 
     @DisplayName("이름_문자열_입력_테스트")
@@ -80,6 +80,6 @@ class InputViewTest {
         inputView.printNumberOfAttemptRequest();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(NUMBER_OF_ATTEMPT_REQUEST_MESSAGE.getMessage(), printResult);
+        assertEquals(NUMBER_OF_ATTEMPT_REQUEST.getMessage(), printResult);
     }
 }
