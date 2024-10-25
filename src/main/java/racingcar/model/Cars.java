@@ -11,9 +11,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars of(List<String> names) {
-        cars = names.stream().map(Car::of).toList();
-        return new Cars(cars);
+    public static Cars of(List<String> names) {
+        return new Cars(names.stream().map(Car::of).toList());
     }
 
     public List<Car> getCars() {
@@ -24,5 +23,9 @@ public class Cars {
         Optional<Integer> optionalInteger = cars.stream().map(Car::getLocation).reduce(Integer::max);
         int maxNumber = optionalInteger.get();
         return cars.stream().filter(car -> car.getLocation() == maxNumber).toList();
+    }
+
+    public void startRace() {
+        cars.forEach(Car::startRace);
     }
 }
