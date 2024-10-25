@@ -13,16 +13,15 @@ public class InputHandler {
 
         for (String token : tokens) {
             String carName = token.trim();
-            validateCarName(carName);
-            cars.add(new Car(carName));
+            if (!carName.isEmpty()) {
+                validateCarName(carName);
+                cars.add(new Car(carName));
+            }
         }
         return cars;
     }
 
     private static void validateCarName(String carName) {
-//        if (carName.isEmpty()) {
-//            throw new IllegalArgumentException("자동차 이름은 비어 있지 않아야 합니다.");
-//        }
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
