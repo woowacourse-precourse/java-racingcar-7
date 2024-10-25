@@ -1,5 +1,8 @@
 package racingcar.exception;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InvalidInputException {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
@@ -21,6 +24,15 @@ public class InvalidInputException {
 
             if (carName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException(ExceptionMessage.EXCEED_MAX_INPUT_LENGTH.getMessage());
+            }
+        }
+    }
+
+    public static void validateDuplicateName(String[] carNames) {
+        Set<String> test = new HashSet<>();
+        for (String carName : carNames) {
+            if (!test.add(carName)) {
+                throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_INPUT.getMessage());
             }
         }
     }
