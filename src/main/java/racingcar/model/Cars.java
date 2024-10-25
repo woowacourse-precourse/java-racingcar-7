@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -34,8 +33,9 @@ public class Cars {
     private List<Car> initCars(String carsName) {
         String[] parts = carsName.split(",");
         return Arrays.stream(parts)
+                .map(CarName::new)
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public void moveCars() {
