@@ -27,7 +27,6 @@ class CarsTest {
         //given
         List<String> names = List.of("apple", "woowa", "apple");
 
-
         assertThatThrownBy(() -> new Cars(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 이름을 입력하면 안됩니다.");
@@ -56,7 +55,6 @@ class CarsTest {
     }
 
 
-
     @DisplayName("정상적인 문자열 리스트가 들어올 경우 이름 수에 맞는 자동자 인스턴스를 가진 일급 컬렉션을 생성한다.")
     @Test
     void createCars() {
@@ -68,6 +66,23 @@ class CarsTest {
 
         //then
         assertThat(cars.carCount()).isEqualTo(names.size());
+    }
+
+    @DisplayName("경주에서 가장 많이 움직인 자동차들의 이름을 반환해야 한다.")
+    @Test
+    void getWinner() {
+        //given
+        List<String> names = List.of("apple", "woowa", "kakao");
+        Cars cars = new Cars(names);
+        List<Integer> randomNumbers = List.of(2, 4, 1);
+        cars.attemptMoveAllCars(randomNumbers);
+
+        //when
+        List<String> winnerNames = cars.getWinnerNames();
+
+        //then
+        assertThat(winnerNames.size()).isEqualTo(1);
+        assertThat(winnerNames).contains("woowa");
     }
 
 }
