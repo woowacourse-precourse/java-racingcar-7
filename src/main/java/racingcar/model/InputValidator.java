@@ -12,7 +12,7 @@ import racingcar.error.InputException;
 
 public class InputValidator {
     public void validateCarName(String carName) {
-        validateFiveCharactersOrLess(carName);
+        validateLengthUnderLimit(carName);
         validateLowerCaseEnglishOrKorean(carName);
     }
 
@@ -24,7 +24,7 @@ public class InputValidator {
         }
     }
 
-    private void validateFiveCharactersOrLess(String carName) {
+    private void validateLengthUnderLimit(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new InputException(InputErrorType.INVALID_CAR_NAME_LENGTH);
         }
