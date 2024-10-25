@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import racingcar.domain.movement.RandomMovement;
-import racingcar.domain.random_number.RandomNumber;
 
 public class Car {
 

@@ -15,9 +15,9 @@ class RaceRoundRecordTest {
     @DisplayName("RaceRoundRecord 생성 테스트")
     void raceRoundRecordCreationTest() {
         //given
-        Car car1 = new Car("Car1",1);
-        Car car2 = new Car("Car2",2);
-        Cars cars = new Cars(List.of(car1,car2));
+        Car car1 = new Car("Car1", 1);
+        Car car2 = new Car("Car2", 2);
+        Cars cars = new Cars(List.of(car1, car2));
 
         //when
         RaceRoundRecord raceRoundRecord = RaceRoundRecord.from(cars);
