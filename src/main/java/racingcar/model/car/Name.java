@@ -1,5 +1,6 @@
 package racingcar.model.car;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 import racingcar.common.ErrorMessage;
 
@@ -39,5 +40,22 @@ public class Name {
 
     public String getCarName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Name name1 = (Name) o;
+        return Objects.equals(name, name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
