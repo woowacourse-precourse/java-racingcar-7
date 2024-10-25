@@ -2,13 +2,14 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class OutputView {
     public void outputRaceStartLine() {
         System.out.println("\n실행 결과");
     }
 
-    public void outputRaceIntermediateReuslt(List<Car> cars) {
+    public void outputRaceIntermediateResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName()+ " : " + "-".repeat(car.getMoveDistance()));
         }

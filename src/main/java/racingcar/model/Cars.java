@@ -31,10 +31,11 @@ public class Cars {
         }
     }
 
-    public void moveCars() {
+    public List<Car> moveCars() {
         for (Car car : cars) {
             car.move();
         }
+        return cars;
     }
 
     public List<Car> getCars() {

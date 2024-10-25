@@ -15,18 +15,28 @@ public class RacingCarController {
     }
 
     public void run() {
+        Cars cars = createCars();
+        MoveNumber moveNumber = createMoveNumber();
+        outputRaceResult(cars, moveNumber);
+    }
+
+    private Cars createCars() {
         String carNamesInput = inputView.inputCarNames();
         Cars cars = new Cars();
         cars.registerCars(carNamesInput);
+        return cars;
+    }
 
-        MoveNumber moveNumber = new MoveNumber(inputView.inputMoveNumber());
+    private MoveNumber createMoveNumber() {
+        return new MoveNumber(inputView.inputMoveNumber());
+    }
 
+    private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
         outputView.outputRaceStartLine();
         for (int i = 0; i < moveNumber.getMoveNumber(); i++) {
-            cars.moveCars();
-            outputView.outputRaceIntermediateReuslt(cars.getCars());
+            outputView.outputRaceIntermediateResult(cars.moveCars());
         }
         outputView.outputRaceFinalResult(cars.findWinnerNames());
-
     }
+
 }
