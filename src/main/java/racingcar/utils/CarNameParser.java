@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.utils.parser;
 
 import racingcar.validator.CarNameValidator;
 
@@ -6,11 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CarNameParser {
-    private static final String NAME_DELIMITER = ",";
+    public static final String NAME_DELIMITER = ",";
 
-    public static List<String> parse(String carNames) {
-        return Arrays.stream(carNames.split(NAME_DELIMITER))
+    public static List<String> parse(String input) {
+        CarNameValidator.validateEndsWithDelimiter(input);
+
+        List<String> carNames = Arrays.stream(input.split(NAME_DELIMITER))
                 .peek(CarNameValidator::validateLength)
                 .toList();
+
+        CarNameValidator.validateDuplicate(carNames);
+
+        return carNames;
     }
 }
