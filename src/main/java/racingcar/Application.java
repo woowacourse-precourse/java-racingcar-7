@@ -1,10 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -49,5 +47,13 @@ public class Application {
         String str = Console.readLine();
         validateNotEmpty(str);
         return Integer.parseInt(str);
+    }
+
+    private LinkedHashMap initializeCarPositions(String[] cars) {
+        var positions = new LinkedHashMap<>();
+        for (String carName : cars) {
+            positions.put(carName, 0);
+        }
+        return positions;
     }
 }
