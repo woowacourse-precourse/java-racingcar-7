@@ -6,6 +6,11 @@ public class Validator {
 
     public void checkCarNamesInput(String carNames) {
         checkEmpty(carNames);
+        checkEachCarName(carNames);
+    }
+
+    private void checkEachCarName(String carNames) {
+
     }
 
     private void checkEmpty(String carNames) {

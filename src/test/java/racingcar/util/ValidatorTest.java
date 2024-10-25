@@ -18,4 +18,13 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void EmptyExceptionTest() {
+        // given
+        String input = "";
+        // when & then
+        assertThatThrownBy(() ->  validator.checkCarNamesInput(input))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

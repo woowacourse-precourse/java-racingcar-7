@@ -1,13 +1,10 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.model.RacingCar;
 import racingcar.service.RacingGameService;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
-
-import java.util.List;
 
 public class Controller {
 
@@ -19,14 +16,12 @@ public class Controller {
         getCarNamesByInput();
 //        InputView.printRequestLoopCount();
 //        String loopCount = Console.readLine();
-
-
     }
 
     public void getCarNamesByInput() {
         InputView.printRequestCarNamesMessage();
         String carNames = Console.readLine();
-        validator.checkCarNamesInput(carNames);
+        validator.checkCarNamesInput(carNames); // 중복 아닐까,
 //        List<RacingCar> carNamesList = parser.extractCarNames(carNames);
     }
 }
