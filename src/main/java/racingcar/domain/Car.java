@@ -20,7 +20,11 @@ public class Car {
         currentLocation++;
     }
 
-    public String getState(){
+    public String getState() {
         return String.format(STATE, name, MOVE_LINE.repeat(currentLocation));
+    }
+
+    public int getCurrentLocation() {
+        return currentLocation;
     }
 }
