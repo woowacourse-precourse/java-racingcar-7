@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
+import racingcar.model.GameRound;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,32 +15,19 @@ public class RacingController {
     }
 
     public void run() {
-        String rawCarsName = InputCarsName();
+        String rawCarsName = inputView.inputCarNamesMessage(); // carName을 입력 받는다.
         Cars cars = new Cars(rawCarsName);
-        Integer count = inputTrialCount();
-        startRacingGame(cars, count);
-        OutputWinner(cars);
+        String count = inputView.inputTrialCountMessage(); // 시도 횟수를 입력 받는다.
+        GameRound gameRound = new GameRound(count);
+        startRacingGame(cars, gameRound); // 게임을 시작한다.
+        outputView.printWinner(cars); // 우승자를 출력한다.
     }
 
-    private String InputCarsName() {
-        String rawCarsName = inputView.inputCarNamesMessage();
-        return rawCarsName;
-    }
-
-    private Integer inputTrialCount() {
-        String rawTrialCount = inputView.inputTrialCountMessage();
-        return Integer.parseInt(rawTrialCount); // TODO 이런식으로 했을 때 테스트 코드 작성 불가능 어떻게 refactor?
-    }
-
-    private void startRacingGame(Cars cars, Integer count) {
+    private void startRacingGame(Cars cars, GameRound gameRound) {
         outputView.printResultNotice();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < gameRound.getRound(); i++) {
             cars.moveCars();
             outputView.printOneRoundResult(cars.getCarsDistance());
         }
-    }
-
-    private void OutputWinner(Cars cars) {
-        outputView.printWinner(cars);
     }
 }
