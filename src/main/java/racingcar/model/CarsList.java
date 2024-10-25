@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,6 +13,10 @@ public class CarsList implements Cars{
 
   public CarsList(List<Car> cars) {
     this.cars = new ArrayList<>(cars);
+  }
+
+  public static CarsList from (List<Car> cars) {
+    return new CarsList(cars);
   }
 
   @Override
