@@ -35,11 +35,11 @@ public class GameController {
     private void attemptGame() {
         InputMessage.inputGamesAttempts();
         final int num = Integer.parseInt(Console.readLine());
+        OutputMessage.resultMessage();
         carHandler.executeRounds(num);
     }
 
     private void resultWinnerList() {
-
         String carNames = carHandler.getWinnerList().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
