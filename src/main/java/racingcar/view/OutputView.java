@@ -19,8 +19,11 @@ public class OutputView {
         print(INPUT_TRY_COUNT.getMessage());
     }
 
+    public static void resultMessage() {
+        print(RESULT.getMessage());
+    }
+
     public static void roundResult(List<CarDto> cars) {
-        print(ROUND_RESULT.getMessage());
         cars.forEach(car ->
             print(ROUND_RESULT_CAR.getMessage(car))
         );

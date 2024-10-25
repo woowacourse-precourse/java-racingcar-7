@@ -20,6 +20,7 @@ public class RacingcarController {
     }
 
     public void play() {
+        OutputView.resultMessage();
         while (racingcarService.isPlaying()) {
             OutputView.roundResult(racingcarService.playRound());
         }
