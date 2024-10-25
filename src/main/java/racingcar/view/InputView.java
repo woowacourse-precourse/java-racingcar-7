@@ -14,4 +14,9 @@ public class InputView {
         // 쉼표를 기준으로 분할 후 List 형태로 반환
         return Arrays.asList(input.split(","));
     }
+
+    public static String getRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
+    }
 }

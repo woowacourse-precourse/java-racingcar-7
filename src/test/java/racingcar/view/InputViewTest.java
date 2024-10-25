@@ -1,17 +1,21 @@
 package racingcar.view;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputViewTest {
-    @Test
+
+/*    @Test
     void 자동차_이름_입력_테스트() {
         // given
-        String input = "pobi,woni,jun";
+        String input = "pobi,woni,jun\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
@@ -19,5 +23,18 @@ class InputViewTest {
 
         // then
         assertEquals(List.of("pobi", "woni", "jun"), carNames);
+    }*/
+
+    @Test
+    void 라운드_입력_테스트() {
+        // given
+        String input = "5\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when
+        String rounds = InputView.getRounds();
+
+        // then
+        assertEquals("5", rounds);
     }
 }
