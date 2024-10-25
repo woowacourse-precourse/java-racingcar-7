@@ -24,4 +24,17 @@ class GameRuleTest {
         //then
         Assertions.assertTrue(isCarMove);
     }
+
+    @Test
+    public void 자동차의_위치가_최대_위치보다_크거나_같으면_우승조건을_만족한다() {
+        //given
+        int currentCarPosition = 1;
+        int maxCarPosition = 0;
+
+        //when
+        boolean result = gameRule.winCondition(currentCarPosition, maxCarPosition);
+
+        //then
+        Assertions.assertTrue(result);
+    }
 }
