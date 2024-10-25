@@ -16,7 +16,7 @@ public record Round(int round) {
     }
 
     private static void validateExceedMaxRound(String round) {
-        if (Integer.parseInt(round) > 100) {
+        if (Integer.parseInt(round) > MAX_ROUND) {
             throw new IllegalArgumentException("라운드는 100을 초과할 수 없습니다.");
         }
     }
