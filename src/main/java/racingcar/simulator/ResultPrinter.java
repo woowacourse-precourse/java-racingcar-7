@@ -6,9 +6,7 @@ import racingcar.car.Car;
 
 public class ResultPrinter {
 
-    protected ResultPrinter() {
-
-    }
+    protected ResultPrinter() {}
 
     public void printResultOfForward(Map<Integer, Car> carMap, int[] racingBoard) {
         StringBuilder resultOfForward = new StringBuilder();

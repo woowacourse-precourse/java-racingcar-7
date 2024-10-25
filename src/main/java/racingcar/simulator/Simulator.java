@@ -62,8 +62,8 @@ public class Simulator {
             for (int carId = 0; carId < this.numberOfCars; carId++) {
                 Car currentOrderOfCar = carMap.get(carId);
                 this.moveForwardByCondition(currentOrderOfCar);
-                resultPrinter.printResultOfForward(this.carMap, this.racingBoard);
             }
+            resultPrinter.printResultOfForward(this.carMap, this.racingBoard);
         }
         List<Car> winners = this.findWinners();
         resultPrinter.printResultOfWinners(winners);
