@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -10,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarNameParserTest {
 
@@ -28,5 +28,16 @@ public class CarNameParserTest {
                 Arguments.of("ian, delta, tom", Arrays.asList("ian", "delta", "tom")),
                 Arguments.of("dave,kevin, scar", Arrays.asList("dave", "kevin", "scar"))
         );
+    }
+
+    @DisplayName("추출한 자동차 이름을 이용해 Cars객체를 생성합니다")
+    @Test
+    void Cars_생성(){
+        //given
+        List<String> input= Arrays.asList("one", "two", "three");
+        //when
+        Cars createdCars = CarNameParser.createCars(input);
+        //then
+        Assertions.assertThat(createdCars).isInstanceOf(Cars.class);
     }
 }
