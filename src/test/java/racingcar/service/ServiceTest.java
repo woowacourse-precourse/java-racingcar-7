@@ -50,9 +50,9 @@ class ServiceTest {
         }
     }
 
-    @DisplayName("입력받은 차 이름 리스트로 차 객체를 만든다.")
+    @DisplayName("입력받은 차 이름 리스트로 차 객체 리스트를 만든다.")
     @MethodSource("provideRegisterCarTestCases")
-    @ParameterizedTest(name = "기대 list: \"{0}\", 입력 list: \"{1}\"")
+    @ParameterizedTest(name = "기대 자동차 list: \"{0}\", 자동차 이름 list: \"{1}\"")
     void registerCar(List<Car> expectedCarList, List<String> carNames) {
         List<Car> registerCarList = service.registerCar(carNames);
 
