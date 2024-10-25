@@ -1,6 +1,6 @@
 package racingcar.racingcar;
 
-import static racingcar.constant.Strings.*;
+import static racingcar.constant.Strings.REQUEST_RACING_CAR_NAME;
 
 import java.util.List;
 import racingcar.record.RecordController;
@@ -22,13 +22,16 @@ public class RacingCarController {
         return RACING_CAR_CONTROLLER;
     }
 
+    /**
+     * ,로 나눠진 이름 문자열을 받아서 레이싱 카 리스트로 변환받고 record로 넘긴다.
+     */
     public void run() {
-        String joinedCarNames = getCarNames();
+        String joinedCarNames = requestCarNames();
         List<RacingCar> racingCars = racingCarService.makeRacingCarList(joinedCarNames);
         recordController.setRacingCarList(racingCars);
     }
 
-    private String getCarNames() {
+    private String requestCarNames() {
         return inputView.requestString(outputView, REQUEST_RACING_CAR_NAME.getMessage());
     }
 }

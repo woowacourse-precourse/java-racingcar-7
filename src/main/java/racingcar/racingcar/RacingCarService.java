@@ -22,17 +22,23 @@ public class RacingCarService {
         List<String> carNames = splitCarName(joinedCarNames);
         carNames = removeBlank(carNames);
         validNameCheck(carNames);
-        return getRacingCarList(carNames);
+        return transRacingCarList(carNames);
     }
 
     private List<String> removeBlank(List<String> carNames) {
-        return carNames.stream().
-                filter(it->!it.isBlank())
+        return carNames.stream()
+                .filter(it -> !it.isBlank())
                 .toList();
     }
 
-    //이 메서드 이름 바꾸고 싶음. #######################################
-    private List<RacingCar> getRacingCarList(List<String> carNames) {
+
+    /**
+     * 이름을 가지고 레이싱 카 리스트를 만든다.
+     *
+     * @param carNames 레이싱 카 등록하려는 이름 리스트
+     * @return 레이싱 카 리스트
+     */
+    private List<RacingCar> transRacingCarList(List<String> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String name : carNames) {
             racingCars.add(new RacingCar(name));
@@ -44,7 +50,7 @@ public class RacingCarService {
      * 입력 받은 이름을 ,를 기준으로 나누고 나눠진 이름에 앞, 뒤 공백을 제거한다. 이름 사이의 공백은 인정한다. ex)cho g,ch og,i i i,i   i
      *
      * @param joinedCarNames ,로 구분된 문자열
-     * @return ,를 기준으로 분리된 앞 뒤 공백이 제거된 List 를 리턴
+     * @return , 를 기준으로 분리된 앞 뒤 공백이 제거된 List 를 리턴
      */
 
     private List<String> splitCarName(String joinedCarNames) {
@@ -54,6 +60,13 @@ public class RacingCarService {
                 .toList();
     }
 
+    /**
+     * 공백이 아닌 이름이 존재하는지 확인하고,
+     * 같은 이름이 있는지 확인하고,
+     * 길이가 5가 넘지 않는지 확인함.
+     *
+     * @param carNames 확인이 필요한 이름 리스트
+     */
     private void validNameCheck(List<String> carNames) {
         racingCarValidator.existCheck(carNames);
         racingCarValidator.sameNameCheck(carNames);

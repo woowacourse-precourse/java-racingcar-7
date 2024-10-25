@@ -1,6 +1,8 @@
 package racingcar.record;
 
-import static racingcar.constant.Strings.*;
+import static racingcar.constant.Strings.IS_NOT_NUMBER;
+import static racingcar.constant.Strings.NOT_EXIST;
+import static racingcar.constant.Strings.PUT_OVER_ZERO;
 
 public class RecordValidator {
     private static final RecordValidator RECORD_VALIDATOR = new RecordValidator();
@@ -13,8 +15,8 @@ public class RecordValidator {
         return RECORD_VALIDATOR;
     }
 
-    public void blankCheck(String tryTimes){
-        if(tryTimes.isEmpty()){
+    public void blankCheck(String tryTimes) {
+        if (tryTimes.isEmpty()) {
             throw new IllegalArgumentException(NOT_EXIST.getMessage());
         }
     }

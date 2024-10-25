@@ -1,6 +1,8 @@
 package racingcar.racingcar;
 
-import static racingcar.constant.Strings.*;
+import static racingcar.constant.Strings.CAR_NAME_OVER_MAX_LENGTH;
+import static racingcar.constant.Strings.EXIST_SAME_NAME;
+import static racingcar.constant.Strings.MORE_THAN_ONE_CAR_PLZ;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,9 +25,10 @@ public class RacingCarValidator {
         }
     }
 
-    public void existCheck(List<String> carNames){
-        if(carNames.isEmpty())
+    public void existCheck(List<String> carNames) {
+        if (carNames.isEmpty()) {
             throw new IllegalArgumentException(MORE_THAN_ONE_CAR_PLZ.getMessage());
+        }
     }
 
     public void lengthCheck(List<String> carNames, int maxLength) {
