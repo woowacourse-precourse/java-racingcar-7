@@ -35,13 +35,17 @@ public class Game {
     private void runRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < attempts; i++) {
-            for (final Car car : cars) {
-                final int number = pickNumberInRange(0, 9);
-                if (number >= 4) {
-                    car.move();
-                }
-            }
+            moveEachCar();
             printCurrentStatus(cars);
+        }
+    }
+
+    private void moveEachCar() {
+        for (final Car car : cars) {
+            final int number = pickNumberInRange(0, 9);
+            if (number >= 4) {
+                car.move();
+            }
         }
     }
 
