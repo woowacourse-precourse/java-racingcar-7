@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -43,5 +44,22 @@ class CarTest {
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "true, 1",
+            "false, 0"
+    })
+    @DisplayName("이동 조건에 따라 자동차가 이동하거나 멈춘다.")
+    void 모든_자동차_이동(boolean canMove, int expectedPosition) {
+        // Given
+        Car car = new Car("pobi");
+
+        // When
+        car.move(() -> canMove);
+
+        // Then
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -47,5 +48,22 @@ class CarsTest {
         assertThatThrownBy(() -> new Cars(carNamesInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 자동차 이름이 있습니다.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "true, 1",
+            "false, 0"
+    })
+    @DisplayName("모든 자동차를 이동 조건에 따라 이동시키거나 멈추게 한다.")
+    void 모든_자동차_이동(boolean canMove, int expectedPosition) {
+        // Given
+        Cars cars = new Cars("car1,car2,car3");
+
+        // When
+        cars.attemptCarMovements(() -> canMove);
+
+        // Then
+        cars.get().forEach(car -> assertThat(car.getPosition()).isEqualTo(expectedPosition));
     }
 }
