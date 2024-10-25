@@ -14,6 +14,13 @@ public class Application {
                 .map(Car::new)
                 .toList();
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int rounds = Integer.parseInt(Console.readLine());
 
+        Race race = new Race(cars);
+        race.run(rounds);
+
+        List<Car> winners = race.getWinners();
+        Result.printWinners(winners);
     }
 }
