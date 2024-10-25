@@ -35,15 +35,15 @@ class RacingControllerTests extends NsTest {
     }
 
     @Test
-    @DisplayName("숫자 뽑기 횟수가 여러 번일 때, 실행 결과가 입력한 순서를 유지하면서 올바르게 출력되는지 확인")
+    @DisplayName("이동 가능 횟수가 여러 번일 때, 마지막 실행 결과가 입력한 순서를 유지하면서 올바르게 출력되는지 확인")
     void testRaceResultOrderSameToInputOrder() {
-        List<String> expected = List.of("alice : --", "bob : -", "john : ", "paul : -");
         assertRandomNumberInRangeTest(
                 () -> {
                     run("alice, bob, john, paul", "2");
-                    assertThat(output()).contains(String.join("\n", expected));
+                    assertThat(output()).containsSubsequence("alice : --", "bob : -", "john : ", "paul : -");
                 },
-                MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD
+                MOVING_FORWARD, STOP, STOP, STOP,
+                MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
     @Override

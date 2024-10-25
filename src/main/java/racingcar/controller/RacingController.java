@@ -8,16 +8,11 @@ import racingcar.model.RacingResult;
 public class RacingController {
 
     public static RacingResult startRace(List<String> racerNames, Integer totalTrialCount) {
-        Racing racing = new Racing(racerNames);
-
-        racing.start(totalTrialCount);
-
-        return new RacingResult(racing.getRacingRecord());
+        Racing ready = new Racing(racerNames);
+        return new RacingResult(ready.start(totalTrialCount));
     }
 
     public static OutputDTO announceResult(RacingResult racingResult, Integer totalTrialCount) {
-        List<String> winners = racingResult.findWinner(totalTrialCount);
-
-        return new OutputDTO(racingResult.get(), winners, totalTrialCount);
+        return new OutputDTO(racingResult.getRecord(), racingResult.findWinner(), totalTrialCount);
     }
 }
