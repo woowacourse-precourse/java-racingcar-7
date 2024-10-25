@@ -24,6 +24,10 @@ public class Racing {
         return cars.getCarStatusResult();
     }
 
+    public List<String> getWinners() {
+        return cars.findWinnersByMaxPosition();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

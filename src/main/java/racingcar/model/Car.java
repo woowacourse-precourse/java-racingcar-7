@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.List;
 import java.util.Objects;
 import racingcar.model.dto.CarStatusDto;
 import racingcar.util.randomnumber.RandomNumberStrategy;
@@ -34,6 +35,18 @@ public class Car {
 
     public CarStatusDto mapStatusToDto() {
         return CarStatusDto.of(this.name, this.position);
+    }
+
+    public void addWinner(List<String> winners) {
+        winners.add(this.name);
+    }
+
+    public int getMaxPosition(int maxPosition) {
+        return Math.max(maxPosition, this.position);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
     }
 
     public String getName() {

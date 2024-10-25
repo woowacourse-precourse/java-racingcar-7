@@ -35,6 +35,29 @@ public class Cars {
         return racingResults;
     }
 
+    public List<String> findWinnersByMaxPosition() {
+        int maxPosition = getMaxPosition();
+        return addWinners(maxPosition);
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private List<String> addWinners(int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isMaxPosition(maxPosition)) {
+                car.addWinner(winners);
+            }
+        }
+        return winners;
+    }
+
     private void validateDuplicate(List<Car> cars) {
         Set<Car> nonDuplicateCar = new HashSet<>(cars);
         if (nonDuplicateCar.size() != cars.size()) {
