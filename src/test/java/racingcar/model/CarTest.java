@@ -12,8 +12,8 @@ public class CarTest extends NsTest {
     @ParameterizedTest
     @DisplayName("자동차가 제대로 나아가는지 확인합니다.")
     @CsvSource({
-            "4, 0",
-            "5, 1",
+            "3, 0",
+            "4, 1",
             "9, 1",
             "2, 0"
     })
