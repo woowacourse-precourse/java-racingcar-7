@@ -20,6 +20,7 @@ public class Application {
             int tryCount = Integer.parseInt(inputTryCount);
             Map<String, StringBuilder> resultMap = createResultMap(carNames);
 
+            System.out.println("\n" + IOMessage.RACE_RESULT);
             startGame(tryCount, resultMap);
 
             String finalResult = IOMessage.buildFinalResult(getFinalWinner(resultMap));
