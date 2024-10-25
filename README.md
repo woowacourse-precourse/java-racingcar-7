@@ -4,7 +4,7 @@
 - [X] bean 등록을 위한 project scan 기능
 - [X] bean 등록 대상으로 지정하기 위한 annotation
 - [X] IoC를 위한 DI 기능
-- [ ] FrontController
+- [X] FrontController
 
 ## INPUT
 - [ ] 자동차 이름 입력
