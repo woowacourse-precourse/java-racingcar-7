@@ -29,11 +29,11 @@ public class DashBoard {
         lapCharts.offer(summary);
     }
 
-    public String lapCharts() {
+    public String offerLapCharts() {
         return lapCharts.toString();
     }
 
-    public String rankWinners() {
+    public String offerLWinners() {
         List<String> winners = cars.filterCompletedAllLap()
                 .stream()
                 .map(Car::toString)

@@ -26,7 +26,7 @@ public class MainController {
         Cars participatingCars = raceService.registerCars(lapCount, carNames);
         DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), participatingCars);
 
-        showLapCharts(dashBoard.lapCharts());
-        showWinners(dashBoard.rankWinners());
+        showLapCharts(dashBoard.offerLapCharts());
+        showWinners(dashBoard.offerLWinners());
     }
 }
