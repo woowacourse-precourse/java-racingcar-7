@@ -11,4 +11,12 @@ public class OutputView {
     public void printTryCountMessage() {
         System.out.println(OutputMessage.TRY_COUNT_GUIDE.getMessage());
     }
+
+    public void printProgressGuide() {
+        System.out.println(OutputMessage.PROGRESS_MESSAGE.getMessage());
+    }
+
+    public void printResult(String result) {
+        System.out.println(result);
+    }
 }
