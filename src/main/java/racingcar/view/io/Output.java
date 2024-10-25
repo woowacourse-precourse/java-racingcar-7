@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.view.io;
 
 import java.util.List;
 import java.util.Map;
