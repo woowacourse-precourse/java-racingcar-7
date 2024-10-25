@@ -56,13 +56,13 @@ public class GameController {
 
     private void startGame(){
         while(round>0){
-            runRounds();
+            playRound();
             printGameRoundResult();
             round--;
         }
     }
 
-    private void runRounds(){
+    private void playRound(){
         for(Vehicle car : carList){
             if(isMovingForward()){
                car.moveForward();
