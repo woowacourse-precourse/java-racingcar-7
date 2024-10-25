@@ -13,4 +13,16 @@ public class RacingCar {
     public static RacingCar init(String carName) {
         return new RacingCar(Name.init(carName), Location.init());
     }
+
+    public RacingCar move() {
+        return new RacingCar(name, currentLocation.move());
+    }
+
+    public String name() {
+        return name.name();
+    }
+
+    public int currentLocationValue() {
+        return currentLocation.location();
+    }
 }
