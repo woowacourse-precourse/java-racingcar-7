@@ -32,6 +32,7 @@ public class GameService {
             outputView.printRoundResult(result);
         }
         Cars winners = getWinner(result);
+        outputView.printWinner(winners);
     }
 
     private Cars getWinner(GameResult gameResult) {
