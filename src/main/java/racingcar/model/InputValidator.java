@@ -6,17 +6,17 @@ import racingcar.error.InputException;
 
 public class InputValidator {
     public void validateCarName(String carName) {
-        validateUnderFiveLength(carName);
-        validateLowerCaseOrKorean(carName);
+        validateFiveCharactersOrLess(carName);
+        validateLowerCaseEnglishOrKorean(carName);
     }
 
-    private void validateLowerCaseOrKorean(String carName) {
+    private void validateLowerCaseEnglishOrKorean(String carName) {
         if (!Pattern.matches("^[가-힣a-z]{1,5}$", carName)) {
             throw new InputException(InputErrorType.INVALID_CAR_NAME_FORMAT);
         }
     }
 
-    private void validateUnderFiveLength(String carName) {
+    private void validateFiveCharactersOrLess(String carName) {
         if (carName.length() > 5) {
             throw new InputException(InputErrorType.INVALID_CAR_NAME_LENGTH);
         }
