@@ -9,6 +9,7 @@ public class IOHandler {
     public static final String START_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     public static final String INPUT_CYCLE_MESSAGE = "시도할 횟수는 몇 회인가요?";
     public static final String WINNER_MESSAGE = "최종 우승자 : ";
+    public static final String PROCESS_RESULT_MESSAGE = "실행결과";
     private final Validator validator = new Validator();
 
     public List<String> setRacerList() {
@@ -30,7 +31,16 @@ public class IOHandler {
         System.out.println(racingCar.getName() + " : " + racingCar.getStatusToDash());
     }
 
-    public void printWinner(String winner) {
-        System.out.println(WINNER_MESSAGE+winner);
+    public void printNewLine() {
+        System.out.println();
     }
+
+    public void printResult() {
+        System.out.println(PROCESS_RESULT_MESSAGE);
+    }
+
+    public void printWinner(String winner) {
+        System.out.println(WINNER_MESSAGE + winner);
+    }
+
 }
