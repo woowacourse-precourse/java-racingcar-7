@@ -2,9 +2,9 @@ package racingcar;
 
 public class Input {
     private final String carNames;
-    private final int rounds;
+    private final String rounds;
 
-    public Input (String carNames, int rounds) {
+    public Input (String carNames, String rounds) {
         this.carNames = carNames;
         this.rounds = rounds;
     }
@@ -13,7 +13,7 @@ public class Input {
         return carNames;
     }
 
-    public int getRounds() {
+    public String getRounds() {
         return rounds;
     }
 
