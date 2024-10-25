@@ -1,6 +1,10 @@
 package racingcar.domain;
 
+import racingcar.util.Util;
+
 import java.util.List;
+
+import static racingcar.view.OutputView.*;
 
 public class Cars {
 
@@ -10,9 +14,16 @@ public class Cars {
         this.cars = cars;
     }
 
-
-    public List<Car> getCars() {
-        return cars;
+    public void moveCars() {
+        for (Car car : cars) {
+            boolean canGo = Util.isCanGo();
+            if (canGo) {
+                car.move();
+            }
+            printCarStatus(car);
+        }
+        lineSeparator();
     }
+
 
 }
