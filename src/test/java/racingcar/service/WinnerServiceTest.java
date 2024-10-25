@@ -21,7 +21,7 @@ public class WinnerServiceTest {
         car1.moveForward();
         car2.moveForward();
         // when
-        List<String> winner = WinnerService.selectWinner();
+        List<String> winner = WinnerService.selectWinner(cars);
         // then
         Assertions.assertThat(winner).contains("one");
     }
@@ -41,7 +41,7 @@ public class WinnerServiceTest {
         car1.moveForward();
         car2.moveForward();
         // when
-        List<String> winner = WinnerService.selectWinner();
+        List<String> winner = WinnerService.selectWinner(cars);
         // then
         Assertions.assertThat(winner).contains("one","two");
     }
