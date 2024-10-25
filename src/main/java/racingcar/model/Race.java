@@ -7,11 +7,13 @@ import racingcar.view.OutputView;
 
 
 public class Race {
-    private final String CAR_NAME_LENGTH_EXP_MSG = "자동차 이름은 5자 이하만 가능합니다.";
+    private static final String CAR_NAME_LENGTH_EXP_MSG = "자동차 이름은 5자 이하만 가능합니다.";
+    private static final String NUMBER_FORMAT_EXCEPTION_MSG = "정수를 입력해주세요.";
 
     private List<Car> racingCars = new ArrayList<>();
+    private int round;
 
-    public Race(String racingCarNames) {
+    public Race(String racingCarNames, String roundInput) {
         StringTokenizer st = new StringTokenizer(racingCarNames, ",");
         while (st.hasMoreTokens()) {
             String racingCarName = st.nextToken();
@@ -20,16 +22,25 @@ public class Race {
             }
             racingCars.add(new Car(racingCarName));
         }
+        try {
+            this.round = Integer.valueOf(roundInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
+        }
     }
 
-    public void runOneRound() {
+    public void runRace() {
+        for (int i = 0; i < round; i++) {
+            runOneRound();
+        }
+    }
+    private void runOneRound() {
         for (Car racingCar : racingCars) {
             racingCar.decideProgressByRandomNumber();
         }
         OutputView.printRoundResult(racingCars);
 
     }
-
     public List<String> getWinnerNames() {
         List<String> winnerNames = new ArrayList<>();
 
@@ -47,6 +58,9 @@ public class Race {
     }
     public List<Car> getRacingCars() {
         return racingCars;
+    }
+    public int getRound() {
+        return round;
     }
 
 }

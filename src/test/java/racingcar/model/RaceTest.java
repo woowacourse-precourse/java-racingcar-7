@@ -27,7 +27,7 @@ public class RaceTest {
     void 자동차_이름이_5자_초과일_때() {
         assertThrows(IllegalArgumentException.class,
                 () -> {
-            Race race = new Race("OverFiveLength,test,수미,해건");
+            Race race = new Race("OverFiveLength,test,수미,해건", "3");
         });
     }
 
