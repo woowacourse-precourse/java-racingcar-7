@@ -8,26 +8,23 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-
         // 경주 자동차 리스트, 시도 횟수 입력
-        List<String> carList = car_input();
-        int tryCount = count_input();
-
-    }
-
-    public static List<String> car_input(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] carArray = Console.readLine().split(",");
-        List carList = Arrays.asList(carArray);
+        List<String> carList = car_input(Console.readLine());
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = count_input(Console.readLine());
 
-        return carList;
+
+
     }
 
-    public static int count_input(){
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String num = Console.readLine();
-        int count = Integer.parseInt(num);
-        return count;
+    public static List<String> car_input(String input){
+        String[] carArray = input.split(",");
+        return Arrays.asList(carArray);
+    }
+
+    public static int count_input(String input){
+        return Integer.parseInt(input);
     }
 }
 
