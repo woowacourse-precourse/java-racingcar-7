@@ -3,24 +3,8 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.validation.ValidateNames;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
 
-public class Controller {
-
-    private final InputView inputView;
-
-    public Controller() {
-        this.inputView = new InputView();
-    }
-
-    public void run() {
-        String carNames = inputView.inputCarName();
-        List<String> names = getCarNames(carNames);
-        for(String name : names) {
-            System.out.println(name);
-        }
-    }
+public class NameController {
 
     public static List<String> getCarNames(String inputCarName) {
         ValidateNames.isUnderOne(inputCarName);
@@ -35,4 +19,5 @@ public class Controller {
         ValidateNames.isDuplicateName(names);
         return names;
     }
+
 }
