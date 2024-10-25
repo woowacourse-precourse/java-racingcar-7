@@ -13,7 +13,7 @@ public class Cars {
         cars.add(car);
     }
 
-    public List<Car> getWinners() {
+    public List<CarDto> getWinners() {
         int maxPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max()
@@ -21,6 +21,7 @@ public class Cars {
 
         return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getDto)
             .toList();
     }
 

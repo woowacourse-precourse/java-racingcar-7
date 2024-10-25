@@ -25,8 +25,8 @@ public class RacingcarService {
         return cars.getDto();
     }
 
-    public Cars getResult() {
-        return cars;
+    public List<CarDto> getResult() {
+        return cars.getWinners();
     }
 
     public boolean isPlaying() {
