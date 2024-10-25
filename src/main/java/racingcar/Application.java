@@ -13,16 +13,18 @@ public class Application {
         playerNameList(inputName);
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputNum = Integer.parseInt(Console.readLine());
+        racingByInputNum(playerNameList(inputName),inputNum);
 
     }
 
-    public static void playerNameList(String inputName) {
+    public static Map<String,Integer> playerNameList(String inputName) {
         StringTokenizer tokenizer = new StringTokenizer(inputName, ",");
         Map<String, Integer> player = new HashMap<>();
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
             player.put(token, 0);
         }
+        return player;
     }
     public static int randomNum(){
         int randomNum = Randoms.pickNumberInRange(0,9);
@@ -41,6 +43,11 @@ public class Application {
 
         }
     }
-
+    public static void racingByInputNum(Map<String, Integer>playerNameList, int inputNum){
+        for(int i = 0; inputNum > i; i++){
+            racing(playerNameList);
+            System.out.println("\n");
+        }
+    }
 
 }
