@@ -20,6 +20,7 @@ public class ProgressView {
 
             System.out.println();
         }
+        System.out.println();
     }
 
     private void printDashesByPosition(long position) {
