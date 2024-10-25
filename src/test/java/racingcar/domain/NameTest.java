@@ -27,7 +27,7 @@ public class NameTest {
         }
 
         @Test
-        @DisplayName("5글자 이상의 이름이 들어오면 예외를 반환한다.")
+        @DisplayName("5글자 이상의 이름이 들어오면 예외를 발생시킨다.")
         void throwsExceptionWhenCreateNameLongerThanFive() {
             //given
             String invalidName = "SongGwanSeok";
