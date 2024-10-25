@@ -147,3 +147,15 @@
     
 
 ```
+### 2024.10.18 Fri
+``` 
+
+    - Controller 구현 및 DTO, Service, 예외처리 연결
+    - ApplicationTest 통과하기
+
+
+    ✅ 구현 후 느낀점 / 추가 개선사항 
+    
+    
+
+```
