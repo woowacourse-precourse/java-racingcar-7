@@ -1,9 +1,17 @@
 package racingcar;
 
+import java.util.List;
+
 public class ValidateCar {
+    public static List<String> manageCar(String userInputCar) {
+        validateInputCar(userInputCar);
+        return ParsingCar.parseInputCarToList(userInputCar);
+    }
+
     public static void validateInputCar(String userInput) {
         validateEmptyInput(userInput);
         validateExtraComma(userInput);
+        validateEndWithComma(userInput);
 
         for (String carName : userInput.split(",")) {
             String trimmedPart = carName.trim();
@@ -15,6 +23,12 @@ public class ValidateCar {
     private static void validateEmptyInput(String userInput) {
         if (userInput == null || userInput.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
+    private static void validateEndWithComma(String userInput) {
+        if (userInput.endsWith(",")) {
+            throw new IllegalArgumentException("쉼표로 입력이 끝났습니다.");
         }
     }
 
