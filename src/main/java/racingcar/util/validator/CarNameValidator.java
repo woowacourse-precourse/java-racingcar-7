@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.validator;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,7 +13,6 @@ import static racingcar.util.ExceptionMessage.DUPLICATE_CAR_NAME;
 public class CarNameValidator {
     private static final String SPLIT_DELIMITER = ",";
     private static final int MAX_NAME_LENGTH = 5;
-
 
     public static List<String> getSplitCarName(String carName) {
         isFinishComma(carName);

@@ -3,8 +3,8 @@ package racingcar.controller;
 import racingcar.model.CarStatus;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.util.RoundNumberValidator;
-import racingcar.util.CarNameValidator;
+import racingcar.util.validator.RoundNumberValidator;
+import racingcar.util.validator.CarNameValidator;
 
 import java.util.List;
 

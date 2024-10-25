@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.validator;
 
 import static racingcar.util.ExceptionMessage.DO_NOT_OVER_MAX;
 import static racingcar.util.ExceptionMessage.MUST_BE_INT;
