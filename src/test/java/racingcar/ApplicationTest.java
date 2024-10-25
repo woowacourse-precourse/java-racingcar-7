@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.InputCarNames;
 import racingcar.util.InputTryCount;
 import racingcar.validator.NameValidiator;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -38,6 +40,37 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 자동차_목록_테스트1() {
+        InputCarNames inputCarNames = new InputCarNames();
+        System.setIn(new ByteArrayInputStream("pobi,woni,jun".getBytes()));
+        assertThat(inputCarNames.inputNames()).hasSize(3).containsExactly("pobi", "woni", "jun");
+
+//        List<String> carList = inputCarNames.parsingName(input);
+//        assertThat(carList).hasSize(3).containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    void 자동차_목록_테스트2() {
+        InputCarNames inputCarNames = new InputCarNames();
+        System.setIn(new ByteArrayInputStream("안녕,잘지냈니,잘가,다음에,또,보자".getBytes()));
+        assertThat(inputCarNames.inputNames()).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
+        String input = "안녕,잘지냈니,잘가,다음에,또,보자";
+
+//        List<String> carList = inputCarNames.parsingName(input);
+//        assertThat(carList).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
+    }
+
+/*    @Test
+    void 자동차_목록_테스트3() {
+        InputCarNames inputCarNames = new InputCarNames();
+        String input = "one,일,1";
+
+        List<String> carList = inputCarNames.parsingName(input);
+
+        assertThat(carList).hasSize(3).containsExactly("one", "일", "1");
+    }*/
 
     @DisplayName("자동차 이름이 공백일 시 예외테스트")
     @Test

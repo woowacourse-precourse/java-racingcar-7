@@ -7,14 +7,14 @@ public class InputTryCount {
 
     private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
 
-    public int inputCount() {
+    public  inputCount() {
         System.out.println(INPUT_TRY_COUNT);
         String tryCount = Console.readLine();
 
         return parseNumber(tryCount);
     }
 
-    private int parseNumber(String tryCount) {
+    public int setRoundNumber(String tryCount) {
 
         TryCountValidiator check = new TryCountValidiator();
 
