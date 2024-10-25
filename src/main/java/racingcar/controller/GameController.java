@@ -26,7 +26,7 @@ public class GameController {
         this.outputView = outputView;
     }
 
-    public List<Car> carRegist() {
+    public List<Car> registerCars() {
         outputView.carRegistMessage();
         final String input = inputView.input();
 
@@ -37,7 +37,7 @@ public class GameController {
         return dataTransformService.convertToCar(carNames);
     }
 
-    public int registExecutionNumber() {
+    public int registerExecutionNumber() {
         outputView.countRegistMessage();
         final String executionNumberInput = inputView.input();
         verificationService.isNumber(executionNumberInput);
@@ -47,17 +47,17 @@ public class GameController {
         return dataTransformService.parseToInt(executionNumberInput);
     }
 
-    public List<Car> race(List<Car> cars, ExecutionNumber executionNumber) {
+    public void race(List<Car> cars, ExecutionNumber executionNumber) {
         outputView.executionMessage();
         for (long l = 0; l < executionNumber.getNumber(); l++) {
             cars.stream().filter(c -> gameService.isMoving()).forEach(Car::move);
             outputView.printResult(cars);
             outputView.newline();
         }
-        return gameService.raceResult(cars);
     }
 
-    public void raceResult(List<Car> winners) {
+    public void raceResult(List<Car> cars) {
+        List<Car> winners = gameService.winners(cars);
         outputView.finalWinnerMessage(winners);
     }
 }

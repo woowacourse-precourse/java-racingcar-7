@@ -24,17 +24,21 @@ public class GameService {
         return Randoms.pickNumberInRange(RANDOM_NUMBER_START_WITH.getValue(), RANDOM_NUMBER_END_WITH.getValue());
     }
 
-    public List<Car> raceResult(List<Car> cars) {
-        List<Car> winners = new ArrayList<>(cars);
-        winners.sort(comparingInt(Car::getDistance).reversed());
+    public List<Car> winners(List<Car> cars) {
+        List<Car> raceResult = new ArrayList<>(cars);
+        sortResultsDescendingOrder(raceResult);
 
-        int winningScore = winners.getFirst().getDistance();
-        isRaceStarted(winningScore);
+        int winningScore = raceResult.getFirst().getDistance();
+        isValidRaceResult(winningScore);
 
-        return winners.stream().filter(c -> c.getDistance() == winningScore).toList();
+        return raceResult.stream().filter(c -> c.getDistance() == winningScore).toList();
     }
 
-    private boolean isRaceStarted(Integer winningScore) {
+    private void sortResultsDescendingOrder(List<Car> results) {
+        results.sort(comparingInt(Car::getDistance).reversed());
+    }
+
+    private boolean isValidRaceResult(Integer winningScore) {
         if(winningScore == CAR_IS_NOT_STARTED_YET.getValue()) {
             throw new TheCarDoesntStartException();
         }

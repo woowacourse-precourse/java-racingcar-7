@@ -23,9 +23,9 @@ public class RacingGame {
         );
 
         // TODO : 일급 컬렉션으로
-        List<Car> cars = gameController.carRegist();
-        ExecutionNumber executionNumber = new ExecutionNumber(gameController.registExecutionNumber());
-        List<Car> winners = gameController.race(cars, executionNumber);
-        gameController.raceResult(winners);
+        List<Car> cars = gameController.registerCars();
+        ExecutionNumber executionNumber = new ExecutionNumber(gameController.registerExecutionNumber());
+        gameController.race(cars, executionNumber);
+        gameController.raceResult(cars);
     }
 }

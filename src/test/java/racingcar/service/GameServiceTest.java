@@ -53,7 +53,7 @@ class GameServiceTest {
             cars.add(bmw);
             cars.add(audi);
             assertSimpleTest(() ->
-                    assertEquals(cars, gameService.raceResult(cars))
+                    assertEquals(cars, gameService.winners(cars))
             );
         }
 
@@ -69,7 +69,7 @@ class GameServiceTest {
             List<Car> winner = new ArrayList<>();
             winner.add(bmw);
             assertSimpleTest(() ->
-                    assertEquals(winner, gameService.raceResult(cars))
+                    assertEquals(winner, gameService.winners(cars))
             );
         }
 
@@ -79,7 +79,7 @@ class GameServiceTest {
             cars.add(new Car("BMW"));
             cars.add(new Car("Audi"));
             assertSimpleTest(() ->
-                    assertThrows(TheCarDoesntStartException.class, () -> gameService.raceResult(cars))
+                    assertThrows(TheCarDoesntStartException.class, () -> gameService.winners(cars))
             );
         }
     }
