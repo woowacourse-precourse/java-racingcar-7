@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
@@ -19,8 +20,16 @@ public class Application {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-        for(int i=0; i<num; i++) {
 
+        System.out.println("실행 결과");
+
+        for(int i=0; i<num; i++) {
+            Iterator<Map.Entry<String, Integer>> entry = race.entrySet().iterator();
+            while(entry.hasNext()) {
+                Map.Entry<String, Integer> element = entry.next();
+                int r = randomNum();
+                move(element, goStop(r));
+            }
         }
     }
 
@@ -53,5 +62,22 @@ public class Application {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         return num;
+    }
+
+    public static int randomNum() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public static boolean goStop(int n) {
+        if(n >= 4) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void move(Map.Entry<String, Integer> element, boolean goStop) {
+        if(goStop) {
+            element.setValue(element.getValue() + 1);
+        }
     }
 }
