@@ -22,7 +22,4 @@ public class RacingCarRepository {
         return carMoveMap;
     }
 
-    public void updateCarMove(String car, String move) {
-        carMoveMap.put(car, move);
-    }
 }

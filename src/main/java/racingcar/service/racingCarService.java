@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.service;
 
 import static racingcar.RacingCarConstants.MOVING_FORWARD;
 import static racingcar.RacingCarConstants.STOP;
@@ -7,8 +7,22 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
+import racingcar.validator.Validator;
 
-public class racingCarController {
+public class racingCarService {
+
+    public static void makeCarMap(String[] cars, Validator validator, Map<String, String> carMoveMap) {
+        for(String car : cars) {
+            car = car.trim(); //앞 뒤 공백 제거
+            Boolean carNameLengthValidate = validator.carNameLengthValidate(car);
+            Boolean delimiterValidate = validator.delimiterValidate(car);
+            if (delimiterValidate && carNameLengthValidate) {
+                carMoveMap.put(car, "");
+            } else {
+                throw new IllegalArgumentException("레이싱카의 이름의 길이는 5를 넘을 수 없습니다.");
+            }
+        }
+    }
 
     public static void moveController(String[] cars, Map<String, String> carMoveMap) {
         int randomNum;
