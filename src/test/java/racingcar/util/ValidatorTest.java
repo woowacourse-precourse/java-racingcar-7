@@ -86,5 +86,4 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.gameRoundValidate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
