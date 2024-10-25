@@ -25,44 +25,44 @@ class Racing {
         carCollection = inputString.getCarCollection();
     }
 
-    Racing(String str) {
-        inputString = new InputString(str);
-        carCollection = inputString.getCarCollection();
-    }
-
     public void start() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(Console.readLine());
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         while (tryCount-- > 0) {
             moveCars();
             printCars();
         }
+        printResult();
     }
 
     private void printCars() {
         StringBuilder sb = new StringBuilder();
         List<String> carNames = carCollection.getCarNames();
         for (int i = 0; i < carCollection.carCount(); i++) {
-            sb.append(carNames + " : ");
-            sb.append(carCollection.getCarMoveStringList());
+            sb.append(carNames.get(i) + " : ");
+            List<Integer> carMoveCountList = carCollection.getCarMoveCount();
+            sb.append("-".repeat(carMoveCountList.get(i)));
             sb.append("\n");
         }
-        sb.append("\n");
         System.out.println(sb);
     }
 
 
-    public void moveCars() {
+    private void moveCars() {
         for (int i = 0; i < carCollection.carCount(); i++) {
-            int randomNum = getRandomNumber();
+            int randomNum = Randoms.pickNumberInRange(0, 9);
             carCollection.moveCar(i, randomNum);
         }
     }
 
-    public int getRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+    private void printResult() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자 : ");
+        String result = String.join(", ", carCollection.getWinnerList());
+        sb.append(result);
+        System.out.println(sb);
     }
 }
 
@@ -85,6 +85,7 @@ class InputString {
     public CarCollection getCarCollection() {
         String names[] = inputString.split(",");
         checkingValid(names);
+
         List<Car> carList = new ArrayList<>();
         for (String name : names) {
             carList.add(new Car(name));
@@ -136,41 +137,15 @@ class CarCollection {
         return carMoveCountList;
     }
 
-    public List<String> getCarMoveStringList() {
-        List<String> carMoveStringList = new ArrayList<>();
-        for (Car car : carList) {
-            carMoveStringList.add(car.getCarMoveString());
-        }
-        return carMoveStringList;
+    public List<String> getWinnerList() {
+        int maxMoveCount = carList.stream()
+            .mapToInt(car -> car.getMoveCount()).max().getAsInt();
+
+        List<String> winners = carList.stream()
+            .filter(car -> car.getMoveCount() == maxMoveCount)
+            .map(car -> car.getName()).toList();
+
+        return winners;
     }
 }
 
-class Car {
-
-    private String name;
-    private int moveCount = 0;
-
-    Car(String name) {
-        this.name = name;
-    }
-
-    public void move() {
-        this.moveCount++;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    public String getCarMoveString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < moveCount; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
-}

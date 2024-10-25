@@ -79,14 +79,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 랜덤숫자생성_테스트(){
-        Racing racing = new Racing("test");
-        assertThat(racing.getRandomNumber())
-            .isGreaterThanOrEqualTo(0)
-            .isLessThanOrEqualTo(9);
-    }
-
-    @Test
     void 자동차_전진_테스트(){
         InputString inputString = new InputString("pobi");
         CarCollection carCollection = inputString.getCarCollection();
