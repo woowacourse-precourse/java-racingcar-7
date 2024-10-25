@@ -5,7 +5,7 @@ import racingcar.domain.Car;
 import java.util.List;
 
 public class WinnerDeterminer {
-    public static List<String> getWinners(List<Car> cars) {
+    public static List<String> determineWinners(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);
 
         return cars.stream()
