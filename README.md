@@ -7,7 +7,7 @@
   - 각 자동차 이름이 5자 이하인지 체크 (아니면 `IllegalArgumentException`을 발생)
   - 자동차 이름 양 끝에 공백이 있다면 제거 (글자수 체크 이전에 제거)
 - 이동 횟수 입력받기
-  - 숫자가 입력되었는지 체크 (아니면 `IllegalArgumentException`을 발생)
+  - 정수가 입력되었는지 체크 (아니면 `IllegalArgumentException`을 발생)
 
 ## 각 이동마다 모든 자동차의 확률적 이동
 - 입력된 이동 횟수만큼 모든 자동차에 대해 반복
