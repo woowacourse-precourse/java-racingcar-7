@@ -28,6 +28,7 @@ public class OutputView {
 
     // 우승자 출력
     public static void printWinner(List<String> cars){
-
+        System.out.print(GET_WINNER_MESSAGE);
+        System.out.println(String.join(",",cars));
     }
 }

@@ -16,6 +16,7 @@ public class RacingController {
     public void run() {
         inputInfo();
         startRace();
+        endRace();
     }
 
     // 입력 기능
@@ -53,5 +54,20 @@ public class RacingController {
     }
     public void runResult(List<Car> cars){
         OutputView.printRunResult(cars);
+    }
+
+    public void endRace(){
+        List<String> winners = new ArrayList<>();
+        int max = -1;
+        for (Car car : cars) {
+            if (car.getMove() > max) {
+                max = car.getMove();
+                winners.clear();
+                winners.add(car.getName());
+            } else if (car.getMove() == max) {
+                winners.add(car.getName());
+            }
+        }
+        OutputView.printWinner(winners);
     }
 }
