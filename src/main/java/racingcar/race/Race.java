@@ -16,6 +16,11 @@ public class Race {
 
     public Race(String[] racerNames) {
         this();
+
+        if(racerNames.length == 0) {
+            throw new IllegalArgumentException("입력이 없습니다.");
+        }
+
         for(String racerName : racerNames) {
             if(racerName == null || racerName.isEmpty()) {
                 throw new IllegalArgumentException("레이서 이름이 필요합니다.");

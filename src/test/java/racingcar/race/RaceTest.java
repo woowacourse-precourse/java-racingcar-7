@@ -27,4 +27,9 @@ public class RaceTest {
     void 공백_레이서_테스트(){
         assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{""}));
     }
+
+    @Test
+    void 공백_문자열_테스트(){
+        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{}));
+    }
 }
