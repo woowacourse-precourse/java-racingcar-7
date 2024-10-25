@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
-import static racingcar.view.output.OutputView.RESULT_DETAIL;
+import static racingcar.view.OutputView.RESULT_DETAIL;
 
 public class RoundResultGenerator {
     private static final String POSITION_INDICATOR = "-";

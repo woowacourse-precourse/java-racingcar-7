@@ -2,15 +2,13 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.utils.TryCountParser;
-import racingcar.validator.CarNameValidator;
-import racingcar.validator.TryCountValidator;
-import racingcar.view.input.InputView;
-import racingcar.view.output.OutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
 import static java.util.stream.IntStream.range;
-import static racingcar.view.output.OutputView.*;
+import static racingcar.view.OutputView.*;
 
 public class RacingController {
     private final InputView inputView;
