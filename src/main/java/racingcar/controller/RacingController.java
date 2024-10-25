@@ -35,7 +35,8 @@ public class RacingController {
 
     private int getCount() {
         String countInput = getCountInput();
-        return getFormattedCount(countInput);
+        InputValidator.validateCount(countInput);
+        return convertToInt(countInput);
     }
 
     private String getCarInput() {
@@ -51,11 +52,6 @@ public class RacingController {
     private List<String> splitInput(String carInput) {
         String[] carNames = carInput.split(DELIMITER);
         return Arrays.stream(carNames).map(String::trim).toList();
-    }
-
-    public static int getFormattedCount(String countInput) {
-        InputValidator.validateCount(countInput);
-        return convertToInt(countInput);
     }
 
     private static int convertToInt(String countInput) {
