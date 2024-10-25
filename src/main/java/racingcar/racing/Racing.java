@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.car.Car;
 import racingcar.view.Request;
+import racingcar.view.Response;
 
 
 public class Racing {
@@ -22,7 +23,9 @@ public class Racing {
         validateCars(carNameList);
         createCars(carNameList);
         inputTryCount();
+        Response.outputStart();
         race();
+        Response.outputFinalWinner(selectWinners());
     }
 
     public List<String> inputCars() {
@@ -52,6 +55,7 @@ public class Racing {
     public void race() {
         for (int count = 0; count < tryCount; count++) {
             forwardCars();
+            Response.outputExecute(carList);
         }
     }
 

@@ -12,8 +12,9 @@ public class Response {
 
     public static void outputExecute(List<Car> carList) {
         for (Car car : carList) {
-            System.out.println(car.getName() + " : " + car.getForward());
+            System.out.println(car.getName() + " : " + "-".repeat(car.getForward()));
         }
+        System.out.println();
     }
 
     public static void outputFinalWinner(List<Car> carList) {
