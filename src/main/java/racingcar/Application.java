@@ -30,10 +30,12 @@ public class Application {
                 int r = randomNum();
                 move(element, goStop(r));
             }
+            Iterator<Map.Entry<String, Integer>> newEntry = race.entrySet().iterator();
+            printRace(newEntry);
         }
 
-        Iterator<Map.Entry<String, Integer>> newEntry = race.entrySet().iterator();
-        printRace(newEntry);
+        List<String> winners = new ArrayList<>();
+        winner(race, winners);
     }
 
     public static void getNames(Map<String, Integer> race, String input) throws IllegalArgumentException {
@@ -95,5 +97,16 @@ public class Application {
             System.out.println(result);
         }
         System.out.println("");
+    }
+
+    public static void winner(Map<String, Integer> race, List<String> winners) {
+        Integer max = Collections.max(race.values());
+        Iterator<Map.Entry<String, Integer>> entry = race.entrySet().iterator();
+        while(entry.hasNext()) {
+            Map.Entry<String, Integer> element = entry.next();
+            if(element.getValue() == max) {
+                winners.add(element.getKey());
+            }
+        }
     }
 }
