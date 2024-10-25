@@ -12,7 +12,7 @@ public class Input {
     private final String value;
 
     public Input(String input) {
-        this.value = invalidInput(input);
+        this.value = validInput(input);
     }
 
     protected String[] splitInput() {
@@ -33,7 +33,7 @@ public class Input {
         return name;
     }
 
-    private String invalidInput(String input) {
+    private String validInput(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }

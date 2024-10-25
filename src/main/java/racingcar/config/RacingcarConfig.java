@@ -16,6 +16,10 @@ public class RacingcarConfig {
     private RacingcarConfig() {
     }
 
+    public static CarService carService() {
+        return carService;
+    }
+
     public static Viewer viewer() {
         return viewer;
     }

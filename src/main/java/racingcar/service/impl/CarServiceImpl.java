@@ -23,7 +23,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public Winners process(CarList carList, TryCount tryCount) {
 
-        // 입력된 횟수 만큼 반복하도록 돌아가는 메소드
+        // 입력된 횟수만큼 반복하도록 돌아가는 메소드
         while (tryCount.canTry()) {
             carList.moveAll();
             String status = carList.generateStatus();

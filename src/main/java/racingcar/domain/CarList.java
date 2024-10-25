@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static racingcar.utils.Constant.COMMA_SEPARATOR;
+import static racingcar.utils.Constant.ENTER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,12 @@ public class CarList {
 
     // 모든 자동차들의 현황을 출력합니다.
     public String generateStatus() {
-        StringJoiner stringJoiner = new StringJoiner("\n");
+        StringJoiner stringJoiner = new StringJoiner(ENTER);
 
         for (Car car : cars) {
             stringJoiner.add(car.generateStatus());
         }
-        stringJoiner.add("\n");
+        stringJoiner.add(ENTER);
 
         return stringJoiner.toString();
     }

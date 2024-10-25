@@ -7,6 +7,7 @@ import racingcar.domain.TryCount;
 import racingcar.viewer.Viewer;
 
 public class Application {
+
     public static void main(String[] args) {
         Viewer viewer = RacingcarConfig.viewer();
         CarController carController = RacingcarConfig.carController();
@@ -18,10 +19,7 @@ public class Application {
             carController.startRace(input, tryCount);
 
             viewer.print();
-        } catch (OutOfMemoryError e) {
-            throw new IllegalArgumentException();
-
-        } catch (Exception e) {
+        } catch (OutOfMemoryError | Exception e) {
             throw new IllegalArgumentException();
         }
     }
