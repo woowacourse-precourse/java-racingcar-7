@@ -15,7 +15,7 @@ public class DataTransformService {
     }
 
     public List<Car> convertToCar(List<String> carNames) {
-        return carNames.stream().map(c -> new Car(c, PRIME_CAR_DISTANCE.getValue())).toList();
+        return carNames.stream().map(c -> new Car(c)).toList();
     }
 
     public int parseToInt(String input) {

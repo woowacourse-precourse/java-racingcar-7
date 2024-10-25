@@ -1,13 +1,15 @@
 package racingcar.model;
 
+import static racingcar.util.ConstNumber.PRIME_CAR_DISTANCE;
+
 public class Car {
 
     private final String name;
     private int distance;
 
-    public Car(String name, int distance) {
+    public Car(String name) {
         this.name = name;
-        this.distance = distance;
+        distance = PRIME_CAR_DISTANCE.getValue();
     }
 
     public String getName() {

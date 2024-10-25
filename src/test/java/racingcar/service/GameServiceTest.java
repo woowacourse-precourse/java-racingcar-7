@@ -46,8 +46,12 @@ class GameServiceTest {
         @Test
         void 공동_1등_테스트() {
             List<Car> cars = new ArrayList<>();
-            cars.add(new Car("BMW", 5));
-            cars.add(new Car("Audi", 5));
+            Car bmw = new Car("BMW");
+            bmw.move();
+            Car audi = new Car("Audi");
+            audi.move();
+            cars.add(bmw);
+            cars.add(audi);
             assertSimpleTest(() ->
                     assertEquals(cars, gameService.raceResult(cars))
             );
@@ -56,8 +60,9 @@ class GameServiceTest {
         @Test
         void 단일_1등_테스트() {
             List<Car> cars = new ArrayList<>();
-            Car bmw = new Car("BMW", 5);
-            Car audi = new Car("Audi", 1);
+            Car bmw = new Car("BMW");
+            bmw.move();
+            Car audi = new Car("Audi");
             cars.add(bmw);
             cars.add(audi);
 
@@ -71,8 +76,8 @@ class GameServiceTest {
         @Test
         void 출발_안한_경우_테스트() {
             List<Car> cars = new ArrayList<>();
-            cars.add(new Car("BMW", 0));
-            cars.add(new Car("Audi", 0));
+            cars.add(new Car("BMW"));
+            cars.add(new Car("Audi"));
             assertSimpleTest(() ->
                     assertThrows(TheCarDoesntStartException.class, () -> gameService.raceResult(cars))
             );
