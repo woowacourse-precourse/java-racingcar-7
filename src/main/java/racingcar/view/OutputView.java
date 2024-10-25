@@ -19,4 +19,8 @@ public class OutputView {
 	public static void printProgressResultMessage(String progressResult) {
 		System.out.println(progressResult + LINE_SEPARATOR);
 	}
+
+	public static void printWinnerResultMessage(String winnerResult) {
+		System.out.println("최종 우승자 : " + winnerResult);
+	}
 }
