@@ -16,6 +16,7 @@ import racingcar.view.OutputView;
 
 public class RacingGameControllerTest {
 
+    
     private TestInputView inputView;
     private TestOutputView outputView;
     private RacingGameController controller;
