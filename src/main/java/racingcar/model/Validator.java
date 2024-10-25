@@ -16,6 +16,8 @@ public class Validator {
             validateNoDuplicate(carName, uniqueCarNames);
             uniqueCarNames.add(carName);
         }
+
+        validateMinCount(uniqueCarNames, MIN_CAR_COUNT);
     }
 
     private void validateNotEmpty(String input) {
@@ -38,6 +40,12 @@ public class Validator {
 
     private void validateNoDuplicate(String input, List<String> uniqueNames) {
         if (uniqueNames.contains(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateMinCount(List<String> names, int minCount) {
+        if (names.size() < minCount) {
             throw new IllegalArgumentException();
         }
     }
