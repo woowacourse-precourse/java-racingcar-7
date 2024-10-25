@@ -12,15 +12,12 @@ public class Car {
     }
 
     public String getName() { return name; }
-    public int getRandomNum() {
-        return randomNum;
-    }
+
+    public int getRandomNum() { return randomNum; }
+
     public int getCountAdvance() { return countAdvance; }
 
-    public void increaseCountAdvance() {
-        this.countAdvance ++;
-    }
-
+    public void increaseCountAdvance() { this.countAdvance ++; }
 
     public void occurRandomNum(){
         this.randomNum = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0,9);
