@@ -23,7 +23,10 @@ public class CarRacingGame {
             outputDisplay.printRoundResult(carList);
         }
 
-        return findWinner();
+        List<ICar> winnerList = findWinner();
+        outputDisplay.printWinners(winnerList);
+
+        return winnerList;
     }
 
     private void round() {
