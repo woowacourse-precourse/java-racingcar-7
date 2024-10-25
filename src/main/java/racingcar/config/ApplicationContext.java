@@ -3,11 +3,11 @@ package racingcar.config;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 import racingcar.config.annotation.Component;
 
 /**
@@ -18,32 +18,19 @@ public class ApplicationContext {
     private static final Map<Class<?>, ApplicationContext> instances = new ConcurrentHashMap<>();
     private static final Class<? extends Annotation> COMPONENT_ANNOTATION = Component.class;
 
-    private final List<Class<?>> classes;
-    private final Map<Class<?>, Object> beans = new HashMap<>();
+    private final List<Class<?>> components;
+    private final Map<Class<?>, Object> beans = new ConcurrentHashMap<>();
 
-    private ApplicationContext(Class<?> cls) {
-        classes = scanComponents(cls);
-        classes.forEach(this::createBean);
+    private ApplicationContext(Class<?> baseClass) {
+        this.components = scanComponents(baseClass);
     }
 
     public static ApplicationContext getInstance(Class<?> baseClass) {
         return instances.computeIfAbsent(baseClass, ApplicationContext::new);
     }
 
-    /**
-     * 등록된 빈을 찾아 반환한다.
-     *
-     * @param cls 클래스
-     * @param <T> 클래스 타입
-     * @return 등록된 빈
-     */
     public <T> T getBean(Class<T> cls) {
-        Object bean = beans.get(cls);
-        if (bean == null) {
-            throw new RuntimeException("No bean found for class: " + cls.getName());
-        }
-
-        return cls.cast(bean);
+        return cls.cast(beans.computeIfAbsent(cls, this::createBean));
     }
 
     private List<Class<?>> scanComponents(Class<?> baseClass) {
@@ -58,36 +45,25 @@ public class ApplicationContext {
                 .anyMatch(it -> it.isAnnotationPresent(COMPONENT_ANNOTATION));
     }
 
-    /**
-     * 클래스 인스턴스를 생성하여 빈에 등록한다.
-     *
-     * @param cls 클래스
-     */
-    private void createBean(Class<?> cls) {
-        if (beans.containsKey(cls)) {
-            return;
-        }
-
+    private <T> T createBean(Class<T> cls) {
         try {
-            Constructor<?> constructor = findConstructor(cls);
-            Object[] parameters = Arrays.stream(constructor.getParameterTypes())
-                    .map(this::resolveDependency)
-                    .toArray();
+            if (cls.isInterface()) {
+                Optional<Class<?>> implementation = findImplementationClass(cls);
 
-            registerBean(cls, constructor.newInstance(parameters));
+                return implementation.map(it -> cls.cast(createBean(it)))
+                        .orElseThrow(ClassNotFoundException::new);
+            }
+
+            Constructor<?> constructor = extractConstructor(cls);
+            List<Object> parameters = createConstructorParameters(constructor);
+
+            return cls.cast(constructor.newInstance(parameters.toArray()));
         } catch (Exception e) {
-            throw new RuntimeException("Failed to create bean for class: " + cls.getName());
+            return null;
         }
     }
 
-    /**
-     * 클래스의 생성자를 찾는다.
-     *
-     * @param cls 클래스
-     * @return 클래스의 생성자
-     * @throws NoSuchMethodException 메서드를 찾을 수 없다.
-     */
-    private Constructor<?> findConstructor(Class<?> cls) throws NoSuchMethodException {
+    private Constructor<?> extractConstructor(Class<?> cls) throws NoSuchMethodException {
         Constructor<?>[] constructors = cls.getDeclaredConstructors();
         if (constructors.length == 0) {
             return cls.getDeclaredConstructor();
@@ -96,74 +72,21 @@ public class ApplicationContext {
         return constructors[0];
     }
 
-    /**
-     * 클래스의 구현체를 찾아 반환한다.
-     * - 빈으로 등록되어 있다면, 빈을 반환한다.
-     * - 인터페이스라면, 인터페이스의 구현체를 등록하고 반환한다.
-     * - 빈으로 등록되어 있지 않다면, 등록하고 반환한다.
-     *
-     * @param cls 클래스
-     * @return 등록된 빈(인스턴스)
-     */
-    private Object resolveDependency(Class<?> cls) {
-        if (beans.containsKey(cls)) {
-            return beans.get(cls);
-        }
+    private List<Object> createConstructorParameters(Constructor<?> constructor) {
+        List<Class<?>> parameterClasses = resolveConstructorParameters(constructor);
 
-        if (cls.isInterface()) {
-            Optional<Class<?>> implementation = findImplementation(cls);
-            if (implementation.isPresent()) {
-                createBean(implementation.get());
-                return beans.get(implementation.get());
-            }
-        }
-
-        Optional<Class<?>> component = findComponent(cls);
-        if (component.isPresent()) {
-            createBean(component.get());
-            return beans.get(component.get());
-        }
-
-        throw new RuntimeException("No bean or implementation found for dependency: " + cls.getName());
+        return parameterClasses.stream()
+                .map(this::createBean)
+                .collect(Collectors.toList());
     }
 
-    /**
-     * 인터페이스에 대한 구현체를 찾는다.
-     *
-     * @param interfaceType 인터페이스
-     * @return 구현체
-     */
-    private Optional<Class<?>> findImplementation(Class<?> interfaceType) {
-        return classes.stream()
+    private List<Class<?>> resolveConstructorParameters(Constructor<?> constructor) {
+        return List.of(constructor.getParameterTypes());
+    }
+
+    private Optional<Class<?>> findImplementationClass(Class<?> interfaceType) {
+        return components.stream()
                 .filter(interfaceType::isAssignableFrom)
                 .findFirst();
-    }
-
-    /**
-     * 컴포넌트에서 클래스를 찾는다.
-     *
-     * @param cls 클래스
-     * @return 컴포넌트
-     */
-    private Optional<Class<?>> findComponent(Class<?> cls) {
-        return classes.stream()
-                .filter(component -> component.equals(cls))
-                .findFirst();
-    }
-
-    /**
-     * 빈을 등록한다.
-     * - 클래스를 키로 인스턴스를 등록한다.
-     * - 클래스의 인터페이스를 키로 인스턴스를 등록한다.
-     *
-     * @param cls      클래스
-     * @param instance 인스턴스
-     */
-    private void registerBean(Class<?> cls, Object instance) {
-        beans.put(cls, instance);
-
-        Arrays.stream(cls.getInterfaces())
-                .filter(it -> !beans.containsKey(it))
-                .forEach(it -> beans.put(it, instance));
     }
 }
