@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.output;
 
 import racingcar.dto.RacingRoundResult;
 import racingcar.model.RacingCars;
@@ -7,7 +7,7 @@ import racingcar.util.io.OutputConsole;
 import java.util.List;
 
 public class DefaultOutputView implements OutputView {
-    
+
     private final String COLON = ":";
     private final String DASH = "-";
     private final String COMMA = ",";

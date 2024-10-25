@@ -8,10 +8,10 @@ import racingcar.model.dependency.moving_strategy.random.DefaultRandomMovingStra
 import racingcar.model.dependency.validator.DefaultRacingCarValidator;
 import racingcar.model.dependency.validator.RacingCarValidator;
 import racingcar.service.RacingService;
-import racingcar.view.DefaultInputView;
-import racingcar.view.DefaultOutputView;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.input.DefaultInputView;
+import racingcar.view.input.InputView;
+import racingcar.view.output.DefaultOutputView;
+import racingcar.view.output.OutputView;
 
 import java.util.List;
 
