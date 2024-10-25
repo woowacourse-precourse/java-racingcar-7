@@ -11,13 +11,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class FunctionTest {
+    @ParameterizedTest
+    @ValueSource(strings = {"", "pobi,", ",pobi", "pobi,,lulu", "pobi,  ,lulu"})
+    void 이름이_공백이거나_빈칸이면_예외(String testName) {
+        assertThatThrownBy(() -> Application.validateCarNameIsNotBlank(testName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름으로 공백이나 빈 칸은 허용하지 않습니다.");
+    }
     @Test
     void 중복_이름이면_예외() {
         String testName = "pobi,holy,pobi";
 
         assertThatThrownBy(() -> Application.registerCars(testName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복되지 않은 이름을 입력해주세요");
+                .hasMessage("중복되지 않은 이름을 입력해주세요.");
     }
 
     @ParameterizedTest
