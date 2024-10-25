@@ -67,4 +67,27 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
+
+    @Test
+    void 성공_테스트(){
+        assertSimpleTest(()->{
+            run("java,char,j","5");
+        });
+    }
+
+    @Test
+    void 콤마만_입력(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException(",","5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
+    void 이름_입력_안함(){
+        assertSimpleTest(()->{
+            assertThatThrownBy(()->runException("\n"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
 }
