@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.Cars;
 import racingcar.model.game.Game;
@@ -37,7 +38,9 @@ public class GameController {
 
     private Game makeGame() {
         String inputCarNames = inputView.getNameOfCars();
-        String[] carNames = inputCarNames.split(DELIMITER);
+        String[] carNames = Stream.of(inputCarNames.split(DELIMITER))
+                .map(String::trim)
+                .toArray(String[]::new);
         int totalRounds = inputView.getTotalRounds();
 
         Cars cars = new Cars(carNames);
