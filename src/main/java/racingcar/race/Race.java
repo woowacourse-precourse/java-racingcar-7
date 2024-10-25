@@ -17,6 +17,9 @@ public class Race {
     public Race(String[] racerNames) {
         this();
         for(String racerName : racerNames) {
+            if(racerName == null || racerName.isEmpty()) {
+                throw new IllegalArgumentException("레이서 이름이 필요합니다.");
+            }
             this.racers.add(new Racer(racerName));
         }
     }

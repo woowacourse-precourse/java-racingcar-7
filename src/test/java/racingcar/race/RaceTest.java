@@ -1,6 +1,7 @@
 package racingcar.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,5 +21,10 @@ public class RaceTest {
         List<Racer> racers = race.getRacers();
 
         assertThat(racers.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 공백_레이서_테스트(){
+        assertThrows(IllegalArgumentException.class, () -> new Race(new String[]{""}));
     }
 }
