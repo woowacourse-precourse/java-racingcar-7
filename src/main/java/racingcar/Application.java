@@ -3,6 +3,9 @@ package racingcar;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -23,6 +26,7 @@ public class Application {
 
         // 실행 및 출력
         for (int i = 0; i < Integer.parseInt(repeatCount); i++) {
+            // 자동차 전진 기능
             for (int j = 0; j < stepsForward.length; j++) {
                 int goAndStop = pickNumberInRange(0, 9);
                 if (goAndStop >= 4) {
@@ -30,6 +34,15 @@ public class Application {
                 }
             }
 
+        }
+
+        // 우승 차량 선별 기능
+        ArrayList<String> winningCars = new ArrayList<>();
+        int max = Arrays.stream(stepsForward).max().orElse(0);
+        for (int i = 0; i < stepsForward.length; i++) {
+            if (stepsForward[i] == max) {
+                winningCars.add(cars[i]);
+            }
         }
 
     }
