@@ -21,15 +21,15 @@ public class GameController {
     public void start() {
         Game game = makeGame();
 
-        List<CarMovementResults> allAttemptResults = new ArrayList<>();
+        List<CarMovementResults> movementResultsOfRounds = new ArrayList<>();
 
         while (game.isRunning()) {
             game.play();
 
-            CarMovementResults currentMovementResults = new CarMovementResults(game.getStatusOfCars());
-            allAttemptResults.add(currentMovementResults);
+            CarMovementResults movementResultsOfCurrentRound = new CarMovementResults(game.getStatusOfCars());
+            movementResultsOfRounds.add(movementResultsOfCurrentRound);
         }
-        outputView.displayMovementResults(allAttemptResults);
+        outputView.displayMovementResults(movementResultsOfRounds);
 
         game.judgeWinners();
         outputView.displayWinners(game.getNameOfWinners());
@@ -38,9 +38,9 @@ public class GameController {
     private Game makeGame() {
         String inputCarNames = inputView.getNameOfCars();
         String[] carNames = inputCarNames.split(DELIMITER);
-        int attemptCount = inputView.getAttemptCount();
+        int totalRounds = inputView.getTotalRounds();
 
         Cars cars = new Cars(carNames);
-        return new Game(cars, attemptCount);
+        return new Game(cars, totalRounds);
     }
 }

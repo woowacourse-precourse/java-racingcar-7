@@ -24,11 +24,11 @@ public class InputView {
         return input;
     }
 
-    public int getAttemptCount() {
+    public int getTotalRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
 
-        InputValidator.validateAttemptCount(input);
+        InputValidator.validateTotalRounds(input);
 
         return Integer.parseInt(input);
     }

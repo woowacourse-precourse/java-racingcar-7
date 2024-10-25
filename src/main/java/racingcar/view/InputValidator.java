@@ -18,7 +18,7 @@ public class InputValidator {
         }
     }
 
-    public static void validateAttemptCount(final String input) {
+    public static void validateTotalRounds(final String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("시도할 횟수는 빈 값을 입력하실 수 없습니다.");
         }

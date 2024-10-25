@@ -12,21 +12,21 @@ public class GameTest {
     private Game game;
     private String[] names;
     private Cars cars;
-    private int attemptCount;
+    private int totalRounds;
 
     @BeforeEach
     void setUp() {
-        attemptCount = 3;
+        totalRounds = 3;
         names = new String[]{"pobi", "woni", "jun"};
         cars = new Cars(names);
-        game = new Game(cars, attemptCount);
+        game = new Game(cars, totalRounds);
     }
 
     @Test
     @DisplayName("시도 횟수만큼 반복한 뒤에는 isRunning 이 false 를 반환한다.")
-    void shouldReturnFalseAfterAttemptCountRepetitions() {
+    void shouldReturnFalseAfterTotalRoundsRepetitions() {
         // when
-        for (int i = 0; i < attemptCount; i++) {
+        for (int i = 0; i < totalRounds; i++) {
             game.play();
         }
 
@@ -36,9 +36,9 @@ public class GameTest {
 
     @Test
     @DisplayName("시도 횟수만큼 반복하기 이전에는 isRunning 이 true 를 반환한다.")
-    void shouldReturnTrueBeforeAttemptCountRepetitions() {
+    void shouldReturnTrueBeforeTotalRoundsRepetitions() {
         // when
-        for (int i = 0; i < attemptCount - 1; i++) {
+        for (int i = 0; i < totalRounds - 1; i++) {
             game.play();
         }
 

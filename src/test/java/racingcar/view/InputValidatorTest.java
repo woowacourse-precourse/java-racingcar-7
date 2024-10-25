@@ -42,9 +42,9 @@ public class InputValidatorTest {
     @ParameterizedTest
     @DisplayName("사용자가 입력한 시도 횟수가 양의 정수가 아니면 예외를 던진다.")
     @ValueSource(strings = {"abc", "123abc", "-1", "42.5", "0"})
-    void throwExceptionWhenAttemptCountIsNotPositiveInteger(String inputValue) {
+    void throwExceptionWhenTotalRoundsIsNotPositiveInteger(String inputValue) {
         // when & then
-        assertThatThrownBy(() -> InputValidator.validateAttemptCount(inputValue))
+        assertThatThrownBy(() -> InputValidator.validateTotalRounds(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도할 횟수는 양의 정수 형태로 입력하셔야 합니다.");
     }
@@ -52,9 +52,9 @@ public class InputValidatorTest {
     @ParameterizedTest
     @DisplayName("사용자가 입력한 시도 횟수가 빈 값이면 예외를 던진다.")
     @ValueSource(strings = {"", " ", "       "})
-    void throwExceptionWhenAttemptCountIsBlank(String inputValue) {
+    void throwExceptionWhenTotalRoundsIsBlank(String inputValue) {
         // when & then
-        assertThatThrownBy(() -> InputValidator.validateAttemptCount(inputValue))
+        assertThatThrownBy(() -> InputValidator.validateTotalRounds(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도할 횟수는 빈 값을 입력하실 수 없습니다.");
     }

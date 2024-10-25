@@ -19,11 +19,11 @@ public class Game {
     }
 
     public void play() {
-        attemptToMoveCars();
+        playNextRound();
         currentRound++;
     }
 
-    private void attemptToMoveCars() {
+    private void playNextRound() {
         for (int index = 0; index < cars.getSize(); index++) {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
 

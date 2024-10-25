@@ -27,18 +27,18 @@ public class OutputViewTest {
     @DisplayName("실행 결과 출력 시 의도한 형식대로 출력된다.")
     void shouldDisplayResultInExpectedFormat() {
         // given
-        CarMovementResults carStatusesOfFirstAttempt = new CarMovementResults(List.of(
+        CarMovementResults carStatusesOfFirstRound = new CarMovementResults(List.of(
                 new CarStatus("pobi", 3),
                 new CarStatus("juni", 2)
         ));
 
-        CarMovementResults carStatusesOfSecondAttempt = new CarMovementResults(List.of(
+        CarMovementResults carStatusesOfSecondRound = new CarMovementResults(List.of(
                 new CarStatus("pobi", 4),
                 new CarStatus("juni", 3)
         ));
 
         List<CarMovementResults> carMovementResults = List.of(
-                carStatusesOfFirstAttempt, carStatusesOfSecondAttempt
+                carStatusesOfFirstRound, carStatusesOfSecondRound
         );
 
         // when
