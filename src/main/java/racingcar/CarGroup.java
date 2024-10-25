@@ -30,6 +30,7 @@ public class CarGroup {
         int longestMileage = getLongestMileage();
         return cars.stream()
                 .filter(car -> car.getMileage() == longestMileage)
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 

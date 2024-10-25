@@ -14,6 +14,11 @@ public class Car {
         this.mileage = 0;
     }
 
+    public Car(Car other) {
+        this.name = other.name;
+        this.mileage = other.mileage;
+    }
+
     public String getName() {
         return name;
     }
