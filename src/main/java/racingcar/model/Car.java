@@ -35,4 +35,8 @@ public class Car {
     public String getMovingDisplay() {
         return "-".repeat(moving); // 현재 이동 수만큼 '-' 반환
     }
+
+    public int getMoving() {
+        return this.moving;
+    }
 }

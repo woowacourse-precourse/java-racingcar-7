@@ -35,10 +35,21 @@ public class RacingService {
 
     private static void trymove() {
         for (Car car : carList) {
-            if (car != null) {
-                car.tryMoving(); // 각 자동차에 대해 전진 시도
-            }
+            car.tryMoving(); // 각 자동차에 대해 전진 시도
         }
     }
 
+    public static void racingResult() {
+        Car winner = null;
+        for (Car car : carList) {
+            if (winner == null) {
+                winner = car;// 각 자동차에 대해 전진 시도
+            } else {
+                if (winner.getMoving() < car.getMoving()) {
+                    winner = car;
+                }
+            }
+        }
+        RacingView.racingResult(winner);
+    }
 }

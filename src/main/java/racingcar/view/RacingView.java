@@ -8,4 +8,8 @@ public class RacingView {
             System.out.println(car.getName() + " : " + car.getMovingDisplay());
         }
     }
+
+    public static void racingResult(Car winner) {
+        System.out.println("최종우승자 : " + winner.getName());
+    }
 }
