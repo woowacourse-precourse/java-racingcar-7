@@ -14,9 +14,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int n = Integer.parseInt(Console.readLine());
-        if (n < 0) {
-            throw new NumberInputException();
-        }
+        countInputVerification(n);
 
         List<Car> cars = createParticipant(input);
 
@@ -39,12 +37,22 @@ public class Application {
 
         for (String name : names) {
             name = name.trim();
-            if (name.isEmpty() || name.length() > 5) {
-                throw new CarNameInputException();
-            }
+            carNameInputVerification(name);
             cars.add(new Car(name));
         }
 
         return cars;
+    }
+
+    public static void countInputVerification(int n) {
+        if (n < 0) {
+            throw new NumberInputException();
+        }
+    }
+
+    public static void carNameInputVerification(String name) {
+        if (name.isEmpty() || name.length() > 5) {
+            throw new CarNameInputException();
+        }
     }
 }
