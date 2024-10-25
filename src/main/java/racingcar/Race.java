@@ -6,27 +6,27 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Race {
-    private final int TOTAL_RACE_TURN;
+    private final int totalRaceTurn;
     private static final int DEFAULT_MOVE_POINT = 0;
     private static final int MOVE_FORWARD = 4;
 
     private final LinkedHashMap<String, Integer> racingScoreBoard;
     private final List<String> winners = new ArrayList<>();
 
-    public Race(int TOTAL_RACE_TURN, Cars cars) {
-        validateNaturalNumber(TOTAL_RACE_TURN);
+    public Race(int totalRaceTurn, Cars cars) {
+        validateNaturalNumber(totalRaceTurn);
 
         LinkedHashMap<String, Integer> racingScoreBoard = new LinkedHashMap<>();
         for (String car : cars.getNameList()) {
             racingScoreBoard.put(car, DEFAULT_MOVE_POINT);
         }
 
-        this.TOTAL_RACE_TURN = TOTAL_RACE_TURN;
+        this.totalRaceTurn = totalRaceTurn;
         this.racingScoreBoard = racingScoreBoard;
     }
 
-    public int getTOTAL_RACE_TURN() {
-        return TOTAL_RACE_TURN;
+    public int getTotalRaceTurn() {
+        return totalRaceTurn;
     }
 
     private static void validateNaturalNumber(int TOTAL_RACE_TURN) {
@@ -53,7 +53,7 @@ public class Race {
     }
 
     private void renderScoreBoard() {
-        for (int i = 0; i < TOTAL_RACE_TURN; i++) {
+        for (int i = 0; i < totalRaceTurn; i++) {
             raiseScore();
             for (String s : racingScoreBoard.keySet()) {
                 System.out.println(s + " : " + "-".repeat((racingScoreBoard.get(s))));

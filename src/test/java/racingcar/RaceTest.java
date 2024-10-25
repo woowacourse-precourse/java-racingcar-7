@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.regex.Pattern;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,10 +17,10 @@ class RaceTest {
 
     @Test
     void 자동차경주_총라운드_1회_이상_점검() {
-        Assertions.assertThat(new Race(1, new Cars("pobi")).getTOTAL_RACE_TURN())
+        Assertions.assertThat(new Race(1, new Cars("pobi")).getTotalRaceTurn())
                 .isEqualTo(1);
 
-        Assertions.assertThat(new Race(30, new Cars("pobi")).getTOTAL_RACE_TURN())
+        Assertions.assertThat(new Race(30, new Cars("pobi")).getTotalRaceTurn())
                 .isEqualTo(30);
     }
 
