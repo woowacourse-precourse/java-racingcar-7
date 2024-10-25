@@ -18,6 +18,14 @@ public class InputView {
         return carNames;
     }
 
+    public int inputRacingTurn() {
+        DisplayInputPrompt(INPUT_TURN_MESSAGE);
+        String rawTurn = readUserInput();
+        validateTurn(rawTurn);
+
+        return parseTurn(rawTurn);
+    }
+
     private String readUserInput() {
         return Console.readLine();
     }
