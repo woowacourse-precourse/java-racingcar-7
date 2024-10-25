@@ -1,11 +1,11 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-import static utils.Input.getInput;
+import static util.Input.getInput;
 
 import dto.RacingInput;
 import java.util.ArrayList;
 import java.util.Arrays;
+import util.Car;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,46 +16,50 @@ public class Application {
         RacingInput input = getInput();
 
         // 자동차 이름 추출 기능
-        String[] cars = input.cars().split(",");
+        String[] inputCars = input.cars().split(",");
 
         // 자동차 이름 유효성 검증
-        for (String car : cars) {
+        for (String car : inputCars) {
             if (car.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 최대 5글자 입니다.");
             }
         }
 
-        // 자동차 전진 기능
-        int[] stepsForward = new int[cars.length];
+        Car[] cars = new Car[inputCars.length];
+        for (int i = 0; i < inputCars.length; i++) {
+            cars[i] = new Car(inputCars[i], 0);
+        }
 
         // 실행 및 출력
         System.out.println("실행 결과");
-        for (int i = 0; i < Integer.parseInt(input.repeatCount()); i++) {
+        Integer repeatCount = Integer.parseInt(input.repeatCount());
+        for (int i = 0; i < repeatCount; i++) {
             // 자동차 전진 기능
-            for (int j = 0; j < stepsForward.length; j++) {
-                int goAndStop = pickNumberInRange(0, 9);
-                if (goAndStop >= 4) {
-                    stepsForward[j]++;
-                }
+            for (Car car : cars) {
+                car.moveForwardRandomly();
             }
 
             // 출력 기능
-            for (int j = 0; j < stepsForward.length; j++) {
+            for (Car car : cars) {
                 String forwardsViewer = "";
-                for (int k = 0; k < stepsForward[j]; k++) {
+                for (int k = 0; k < car.getForwardCount(); k++) {
                     forwardsViewer += "-";
                 }
-                System.out.println(cars[j] + " : " + forwardsViewer);
+                System.out.println(car.getName() + " : " + forwardsViewer);
             }
             System.out.println("");
         }
 
         // 우승 차량 선별 기능
         ArrayList<String> winningCars = new ArrayList<>();
-        int max = Arrays.stream(stepsForward).max().orElse(0);
-        for (int i = 0; i < stepsForward.length; i++) {
-            if (stepsForward[i] == max) {
-                winningCars.add(cars[i]);
+        int max = Arrays.stream(cars)
+                .mapToInt(Car::getForwardCount)
+                .max()
+                .orElse(0);
+
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getForwardCount() == max) {
+                winningCars.add(cars[i].getName());
             }
         }
 
