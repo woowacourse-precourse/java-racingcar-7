@@ -27,4 +27,32 @@ class RacingCarTest {
                 .extracting("name")
                 .contains("pobi", "woni", "jun");
     }
+
+    @Test
+    void 자동차_전진_테스트() {
+        // given
+        Car car = Car.of("poni");
+        int randomResult = 4;
+
+        // when
+        racingCar.carMove(car, randomResult);
+
+        // then
+        assertThat(car).extracting("name", "position")
+                .contains("poni", 1);
+    }
+
+    @Test
+    void 자동차_멈춤_테스트() {
+        // given
+        Car car = Car.of("poni");
+        int randomResult = 2;
+
+        // when
+        racingCar.carMove(car, randomResult);
+
+        // then
+        assertThat(car).extracting("name", "position")
+                .contains("poni", 0);
+    }
 }
