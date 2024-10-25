@@ -9,6 +9,8 @@ public class Application {
         Car car = new Car();
         car.inputCar();
         car.inputNum();
+        // 결과 도출
+        car.result();
     }
 }
 
@@ -95,5 +97,15 @@ class Car {
         if (time < 0){
             throw new IllegalArgumentException("IllegalArgumentException");
         }
+    }
+    public void result(){
+        System.out.println("실행 결과");
+        for (int i = 0; i < time; i++){
+            giveRandomNumbers();
+            move();
+            printAtTime();
+            System.out.println();
+        }
+        System.out.println("최종 우승자 : " + findWinner());
     }
 }
