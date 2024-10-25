@@ -53,4 +53,12 @@ public class InputView {
             }
         }
     }
+
+    private int parseTurn(String rawTurn) {
+        try {
+            return Integer.parseInt(rawTurn);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
