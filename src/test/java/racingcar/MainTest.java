@@ -32,9 +32,16 @@ class MainTest extends NsTest {
     }
 
     @Test
-    @DisplayName("자동차 객체를 생성한다")
+    @DisplayName("단일 자동차 객체를 생성한다")
     void createSingleCar() {
-        assertThat(main.createCar("pobi")).isInstanceOf(Car.class);
+        assertThat(main.createSingleCar("pobi")).isInstanceOf(Car.class);
+    }
+
+    @Test
+    @DisplayName("모든 자동차 객체를 생성한다")
+    void createAllCars() {
+        assertThat(main.createAllCars(new String[]{"pobi","woni","jun"}))
+                .hasSize(3);
     }
 
     @Override
