@@ -19,6 +19,12 @@ public class CarRacingGame implements Game {
         this.raceRecord = new RaceRecord(carNames);
     }
 
+    public void start() {
+        for (int i = 0; i < moveAttemptCount; i++) {
+            attemptMoveAllCar();
+        }
+    }
+
     private void attemptMoveSingleCar(Car car) {
         if (isMoveAble()) {
             moveForward(car);
@@ -31,5 +37,13 @@ public class CarRacingGame implements Game {
 
     private void moveForward(Car car) {
         raceRecord.updateCarRecord(car, MOVE_DISTANCE);
+    }
+
+    private void attemptMoveAllCar() {
+        Map<Car, Integer> allCarRecord = raceRecord.getRaceResult();
+
+        for (Car car : allCarRecord.keySet()) {
+            attemptMoveSingleCar(car);
+        }
     }
 }
