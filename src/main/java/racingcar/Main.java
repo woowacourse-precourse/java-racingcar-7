@@ -8,4 +8,9 @@ public class Main {
         String input = Console.readLine();
         return input;
     }
+
+    public String[] splitCarNames(String input) {
+        String[] carNames = input.split(",");
+        return carNames;
+    }
 }

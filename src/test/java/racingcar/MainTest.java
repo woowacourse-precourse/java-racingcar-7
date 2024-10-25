@@ -19,6 +19,12 @@ class MainTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("쉼표를 기준으로 자동차 이름을 분리한다")
+    void splitCarNames() {
+        assertThat(main.splitCarNames("pobi,woni,jun")).isEqualTo(new String[]{"pobi","woni","jun"});
+    }
+
     @Override
     protected void runMain() {
 
