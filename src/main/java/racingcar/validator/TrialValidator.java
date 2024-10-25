@@ -4,7 +4,6 @@ public class TrialValidator implements Validator<String>{
 
     private int trial;
     private static final int MINIMUM_TRIAL_COUNT = 0;
-    private static final String REGEX = "[^0-9]";
 
     @Override
     public void validate(String input){

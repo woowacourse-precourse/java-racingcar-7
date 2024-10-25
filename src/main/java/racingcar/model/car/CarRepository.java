@@ -1,23 +1,18 @@
 package racingcar.model.car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarRepository {
-    private List<Car> carList;
-    private static final int PROGRESS_CONDITION = 4;
+    private final List<Car> carList = new ArrayList<>();
 
     public void initCarRepository(String[] names){
-        setCarList();
         addToCarList(names);
     }
 
     public List<Car> getCarList(){
-        return carList;
-    }
-
-    private void setCarList(){
-        carList = new ArrayList<>();
+        return Collections.unmodifiableList(carList);
     }
 
     private void addToCarList(String[] names){
