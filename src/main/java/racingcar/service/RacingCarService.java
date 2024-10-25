@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.global.enums.PrintMessage;
@@ -13,16 +12,19 @@ public class RacingCarService {
     private final OutputView outputView = OutputView.getInstance();
 
     public void raceStart(Race race) {
-        Integer raceCount = race.getRaceCount();
-        Cars cars = race.getCars();
-
         outputView.printMessage(PrintMessage.GAME_MESSAGE);
+        runRace(race);
+        announceWinner(race.getCars());
+    }
+
+    public void runRace(Race race) {
+        Cars cars = race.getCars();
+        Integer raceCount = race.getRaceCount();
+
         for (int count = 0; count < raceCount; count++) {
             move(cars);
             outputView.printGameResult(cars);
         }
-
-        announceWinner(cars);
     }
 
     public void move(Cars cars) {
@@ -38,30 +40,35 @@ public class RacingCarService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+
     public void announceWinner(Cars cars) {
         List<String> winnerList = findWinner(cars);
 
-        outputView.printWinner(joinWinnerList(winnerList));
+        outputView.printWinner(formatWinners(winnerList));
     }
 
     private List<String> findWinner(Cars cars) {
-        Integer maxDistance = 0;
-        List<String> carList = new ArrayList<>();
-
-        for (Car car : cars.getCarList()) {
-            Integer distance = car.getDistance();
-            if (maxDistance < distance) {
-                carList.clear();
-                maxDistance = distance;
-            }
-            if (maxDistance.equals(distance)) {
-                carList.add(car.getName());
-            }
-        }
-        return carList;
+        Integer maxDistance = findMaxDistance(cars);
+        return filterCarsByDistance(cars, maxDistance);
     }
 
-    private String joinWinnerList(List<String> carList) {
+    private Integer findMaxDistance(Cars cars) {
+        return cars.getCarList().stream().map(Car::getDistance)
+                .max(Integer::compare).orElse(0);
+    }
+
+    private List<String> filterCarsByDistance(Cars cars, Integer maxDistance) {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars.getCarList()) {
+            if (car.getDistance().equals(maxDistance)) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+    private String formatWinners(List<String> carList) {
         return String.join(", ", carList);
     }
 
