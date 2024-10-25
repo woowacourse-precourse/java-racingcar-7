@@ -32,7 +32,7 @@ public class RacingCarController {
         return inputView.receiveString();
     }
 
-    private Cars createCars(String rawCarNames) {
+    private Cars createCars(final String rawCarNames) {
         CarNames carNames = new CarNames(rawCarNames);
         List<Car> cars = carNames.splitByComma()
                 .stream()
@@ -46,7 +46,7 @@ public class RacingCarController {
         return inputView.receiveString();
     }
 
-    private void race(Cars cars, TryCount tryCount) {
+    private void race(final Cars cars, final TryCount tryCount) {
         outputView.printResultHeader();
         for (int i = 0; i < tryCount.toInteger(); i++) {
             String result = cars.race();
@@ -54,7 +54,7 @@ public class RacingCarController {
         }
     }
 
-    private void displayWinners(Cars cars) {
+    private void displayWinners(final Cars cars) {
         String winners = cars.winners();
         outputView.printWinners(winners);
     }

@@ -9,18 +9,18 @@ public class TryCount {
 
     private final String rawTryCount;
 
-    public TryCount(String rawTryCount) {
+    public TryCount(final String rawTryCount) {
         validate(rawTryCount);
         this.rawTryCount = rawTryCount;
     }
 
-    private void validate(String rawTryCount) {
+    private void validate(final String rawTryCount) {
         validateStrip(rawTryCount);
         validateNumeric(rawTryCount);
         validateMinimum(rawTryCount);
     }
 
-    private void validateStrip(String rawTryCount) {
+    private void validateStrip(final String rawTryCount) {
         String stripped = rawTryCount.strip();
         if (stripped.equals(rawTryCount)) {
             return;
@@ -28,7 +28,7 @@ public class TryCount {
         throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
     }
 
-    private void validateNumeric(String rawTryCount) {
+    private void validateNumeric(final String rawTryCount) {
         try {
             Integer.parseInt(rawTryCount);
         } catch (NumberFormatException e) {
@@ -36,7 +36,7 @@ public class TryCount {
         }
     }
 
-    private void validateMinimum(String rawTryCount) {
+    private void validateMinimum(final String rawTryCount) {
         int tryCount = Integer.parseInt(rawTryCount);
         if (tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(NOT_ALLOWED_UNDER_MINIMUM_TRY_COUNT);

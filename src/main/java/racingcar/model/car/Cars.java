@@ -23,7 +23,7 @@ public class Cars {
         return result.toString();
     }
 
-    private void makeResult(StringBuilder result, Car car) {
+    private void makeResult(final StringBuilder result, final Car car) {
         result.append(car.getName());
         result.append(PROCESS_DELIMITER);
         result.append(car.positionToString());

@@ -19,11 +19,11 @@ public class OutputView {
         System.out.println(LINE_BREAK + RESULT_HEADER);
     }
 
-    public void printCarStatus(String result) {
+    public void printCarStatus(final String result) {
         System.out.println(result);
     }
 
-    public void printWinners(String winners) {
+    public void printWinners(final String winners) {
         System.out.println(WINNERS_PREFIX + winners);
     }
 }
