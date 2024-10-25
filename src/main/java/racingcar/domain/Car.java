@@ -2,12 +2,12 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static racingcar.constants.Constants.*;
+
 public class Car {
 
     private final String name;
     private int position = 0;
-
-    public static final int GO_NUMBER = 4;
 
     public Car(String name) {
         this.name = name;
