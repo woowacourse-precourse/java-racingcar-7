@@ -32,6 +32,32 @@ public class Application {
 
         }
 
+        int maxValue = 0;
+
+        ArrayList<String> winner = new ArrayList<>();
+
+        //최고점 구하기
+        for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+            if (maxValue < entry.getValue()) {   //maxvalue 안에 든 값이 맵 속 밸류보다 작다면 해당 맵 속 밸류 값을 maxvalue에 저장
+                maxValue = entry.getValue();
+            }
+        }
+
+        //최고점과 같은 값들을 승자 목록에 넣기
+        for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+            if (maxValue <= entry.getValue()) {
+                winner.add(entry.getKey());
+            }
+        }
+
+        //승자들을 소개하는 부분
+        for (int i = 0; i < winner.size(); i++) {
+            System.out.print(winner.get(i));
+            if (i == winner.size()-1) break;
+            System.out.print(", ");
+        }
+
+
 
     }
 
@@ -48,18 +74,9 @@ public class Application {
     public static int isForward() {
 
         int i = Randoms.pickNumberInRange(0,9);
-//        if (i>=4) return 1;
         return 1;
 
-
-//    public static int isForward() {
-//        int i = Randoms.pickNumberInRange(0,9);
-//        return i >= 4;
     }
 
-
-//    public static String carMove(boolean input) {
-//
-//    }
 
 }
