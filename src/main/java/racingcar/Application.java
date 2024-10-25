@@ -55,14 +55,17 @@ public class Application {
     }
 
     private static void validatecarNameListAndAddToList(List<String> carNameListInput) {
-        String patternStr = "^[0-9a-zA-Z]*$";
+        String patternStr = "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]*$";
 
         for (String carNameInput : carNameListInput) {
             if (Pattern.matches(patternStr, carNameInput) && //자동차 이름이 알파벳과 숫자로만 이루어짐
                     carNameInput.length() < 5 && //자동차 이름의 길이가 5 이하
-                    carNameInput != null) { //자동차 이름이 빈 값이 아님
+                    carNameInput != null && //자동차 이름이 빈 값이 아님
+                    !carNameList.contains(carNameInput)) { //리스트에 이미 있는 이름인 경우 동일한 것으로 판단
 
                 carNameList.add(carNameInput);
+            } else if (carNameList.contains(carNameInput)) {
+                continue;
             } else {
                 throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
             }
