@@ -90,10 +90,8 @@ jun : -----
     - 자동차 이름을 HashMap에 추가한다.
     - 예외 상황
       - 동일한 이름 저장 불가능
-- startCarGame
-    - 자동차 게임을 시작한다.
-- isTheRandomNumberMoreThanFour
-  - 무작위 수가 4 이상인지 확인한다.
+- runCarGame
+    - 자동차 게임을 진행한다.
 - findWinner
   - 우승자를 찾는다.
 - getWinner
