@@ -28,6 +28,12 @@ public class Cars {
     }
 
     private boolean canForwardCondition() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4; // TODO RandomGenerator 객체로 빼는 게 나을지 생각해보자.
+    }
+
+    public void printCarDistance() {
+        for(Car car : cars) {
+            System.out.println(car);
+        }
     }
 }

@@ -50,11 +50,8 @@ public class Car {
         return !name.matches("[a-zA-Z]+");
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getDistance() {
-        return distance;
+    @Override
+    public String toString(){
+        return name + " : " +  "-".repeat(distance);
     }
 }

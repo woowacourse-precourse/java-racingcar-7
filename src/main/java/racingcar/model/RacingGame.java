@@ -7,12 +7,13 @@ public class RacingGame {
     public RacingGame(Cars cars, Integer count) {
         this.cars = cars;
         this.count = count;
-        racingGameTrial(count);
     }
 
-    private void racingGameTrial(Integer count) {
+    public void startGame() {
         for (int i = 0; i < count; i++) {
             cars.moveCars();
+            cars.printCarDistance();
+            System.out.println();
         }
     }
 }
