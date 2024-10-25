@@ -4,6 +4,7 @@ import java.util.List;
 
 import racingcar.model.Car;
 import racingcar.model.NumberValidator;
+import racingcar.model.RandomNumberGenerator;
 import racingcar.model.TextSeparator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -31,5 +32,6 @@ public class GameController {
 	}
 
 	private void moveCar(Car car) {
+		int randomNumber = RandomNumberGenerator.generateRandomNumber();
 	}
 }
