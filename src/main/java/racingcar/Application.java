@@ -5,25 +5,28 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import racingcar.enums.ErrorMessage;
+import racingcar.enums.ViewMessage;
 
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(ViewMessage.PROMPT_CAR_NAMES.getMessage());
         String inputString = Console.readLine();
         StringTokenizer stringTokenizer = new StringTokenizer(inputString, ",");
         List<Car> cars = new ArrayList<>();
         List<String> winners = new ArrayList<>();
         while (stringTokenizer.hasMoreTokens()) {
             String carName = stringTokenizer.nextToken();
-            if(carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해주세요.");
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH.getMessage());
             }
             cars.add(new Car(carName));
         }
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(ViewMessage.PROMPT_PLAY_TIMES.getMessage());
         inputString = Console.readLine();
-        System.out.println("\n실행 결과");
+        System.out.println(ViewMessage.PRINT_BLANK.getMessage());
+        System.out.println(ViewMessage.PRINT_RESULT.getMessage());
         int playTime = Integer.parseInt(inputString);
         int maxMoveCount = 0;
         while (playTime-- > 0) {
@@ -34,7 +37,8 @@ public class Application {
             }
             StringBuilder stringBuilder = new StringBuilder();
             for (Car car : cars) {
-                stringBuilder.append(car).append("\n");
+                stringBuilder.append(car);
+                stringBuilder.append(ViewMessage.PRINT_BLANK.getMessage());
             }
             System.out.println(stringBuilder);
         }
@@ -44,7 +48,7 @@ public class Application {
             }
         }
         String result = String.join(", ", winners);
-        System.out.printf("최종 우승자 : %s", result);
+        System.out.printf(ViewMessage.PRINT_WINNERS.getMessage(result));
     }
 
     static class Car {
