@@ -30,6 +30,7 @@ public class Application {
     private static void raceStart(List<Vehicle> vehicles, int raceRounds) {
         for (int i = 0; i < raceRounds; i++) {
             processRound(vehicles);
+            if (i == 0) System.out.println("결과 출력");
         }
     }
 
