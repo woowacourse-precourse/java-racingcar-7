@@ -14,6 +14,8 @@ public class Application {
         String moveNumberInput = Console.readLine();
         int moveNumber = validateMoveNumber(moveNumberInput);
 
+        System.out.println("\n실행 결과");
+
 
     }
 
