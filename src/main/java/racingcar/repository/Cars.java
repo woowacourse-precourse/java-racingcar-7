@@ -15,8 +15,8 @@ public class Cars {
         this.cars = new ArrayList<>();
     }
 
-    public void saveAll(List<Car> cars) {
-        cars.addAll(cars);
+    public void saveAll(List<Car> newCars) {
+        cars.addAll(newCars);
     }
 
     public void attemptMoveAllCars() {
