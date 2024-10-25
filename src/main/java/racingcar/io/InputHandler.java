@@ -1,6 +1,8 @@
-package racingcar.input;
+package racingcar.io;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static racingcar.messages.InputMessages.INPUT_CAR_NAMES;
+import static racingcar.messages.InputMessages.INPUT_NUMBER_OF_ROUNDS;
 
 public class InputHandler {
     private final InputValidator inputValidator = new InputValidator();
@@ -9,11 +11,11 @@ public class InputHandler {
     private String[] carNames;
     private int numberOfRound;
 
-//    public String getInput() {
+    //    public String getInput() {
 //        return carNames;
 //    }
 //
-    public void inputCarNames() {
+    public void readCarNames() {
         input = readLine();
     }
 
@@ -25,19 +27,21 @@ public class InputHandler {
 //        return carNames;
 //    }
 
-    public String[] inputCarNameProcess() {
-        inputCarNames();
+    public String[] processCarNamesInput() {
+        Output.printMessage(INPUT_CAR_NAMES.getMessages());
+        readCarNames();
         carNames = inputParser.parseCarNames(input);
         inputValidator.validateCarNames(carNames);
         return carNames;
     }
 
 
-    private void inputNumberOfRound() {
+    private void readNumberOfRound() {
         numberOfRound = Integer.parseInt(readLine());
     }
 
-    public int inputNumberOfRoundProcess() {
+    public int processNumberOfRoundInput() {
+        Output.printMessage(INPUT_NUMBER_OF_ROUNDS.getMessages());
         inputValidator.validateNumberOfRound(numberOfRound);
         return numberOfRound;
     }
