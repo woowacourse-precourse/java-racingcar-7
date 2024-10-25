@@ -28,6 +28,6 @@ public class Application {
 
         String result;
 
-        result = race.Racing(cars, attempt);
+        result = race.racing(cars, attempt);
     }
 }
