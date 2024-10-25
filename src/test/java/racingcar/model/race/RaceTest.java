@@ -23,4 +23,14 @@ class RaceTest {
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD
         );
     }
+
+    @Test
+    @DisplayName("raceRun을 실행했을때 반환값 확인한다")
+    void 레이스_실행_테스트() {
+        Race carList = new Race(new String[]{"pobi", "woni"}, 2);
+        assertRandomNumberInRangeTest(() -> {
+                    assertThat(carList.raceRun()).isEqualTo("pobi : -\nwoni : \n\npobi : --\nwoni : -\n\n");
+                }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
 }
