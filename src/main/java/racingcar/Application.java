@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public  static String getCarsName() {
+    public  static String getCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carsInput = Console.readLine();
+        String carInput = Console.readLine();
 
-        if (carsInput == null) {
+        if (carInput == null) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요.\n");
         }
-        return carsInput;
+        return carInput;
     }
 
     public static String[] trimCars(String[] cars) {
@@ -50,7 +50,7 @@ public class Application {
     }
 
     public static void raceCar(String[] cars, int raceNumber){
-        List<StringBuilder> raceResult = new ArrayList<>(cars.length);
+        List<StringBuilder> raceResult = new ArrayList<>();
 
         System.out.println("실행 결과");
 
@@ -70,13 +70,13 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        String carsInput = getCarsName();
+        String carInput = getCarName();
 
-        String[] splitCars = carsInput.split(",", -1);
-        String[] trimmedCars = trimCars(splitCars);
+        String[] splitCar = carInput.split(",", -1);
+        String[] trimmedCar = trimCars(splitCar);
 
         int raceNumber = getRaceNumber();
 
-        raceCar(trimmedCars, raceNumber);
+        raceCar(trimmedCar, raceNumber);
     }
 }
