@@ -27,7 +27,7 @@ public class GameController {
         verificationService.containsInvalidCharacter(input);
         List<String> carNames = dataTransformService.splitInput(input);
 
-        verificationService.isValidLength(carNames);
+        verificationService.isValidCarNameLength(carNames);
         return dataTransformService.convertToCar(carNames);
     }
 

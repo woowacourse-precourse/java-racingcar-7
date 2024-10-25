@@ -11,7 +11,7 @@ import racingcar.exception.InvalidCharacterException;
 import racingcar.exception.InvalidCarNameLengthException;
 
 import java.util.List;
-import racingcar.exception.InvalidRegisterCarsInputLength;
+import racingcar.exception.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.NotNumberException;
 import racingcar.exception.NumberRangeException;
 
@@ -22,7 +22,7 @@ public class VerificationService {
             throw new EmptyInputException();
         }
         if(input.length() > REGISTER_CARS_INPUT_MAX_LENGTH.getValue()) {
-            throw new InvalidRegisterCarsInputLength();
+            throw new InvalidRegisterCarsInputLengthException();
         }
         return true;
     }
@@ -60,7 +60,7 @@ public class VerificationService {
         }
     }
 
-    public boolean isValidRange(String value) {
+    public boolean isValidExecutionRange(String value) {
         int valueToInt = Integer.parseInt(value);
         if (valueToInt < EXECUTION_RANGE_MIN_VALUE.getValue() ||
                 valueToInt > EXECUTION_RANGE_MAX_VALUE.getValue()) {
