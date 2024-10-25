@@ -8,4 +8,8 @@ public class DuringRacing {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    public static boolean move(int goValue){
+        return goValue >= 4;
+    }
+
 }
