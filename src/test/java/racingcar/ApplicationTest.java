@@ -77,6 +77,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("이동 횟수로 0이 들어오는 경우 테스트")
+    @Test
+    void 이동할_수_없는_경우() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
+
     @DisplayName("우승자가 한명인 경우 테스트")
     @Test
     void 단일_우승자() {
