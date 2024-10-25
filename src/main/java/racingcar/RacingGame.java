@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class RacingGame {
     public static Racingcar[] createRacingcars(){   // 입력받은 레이싱카의 이름으로 n대의 레이싱카 초기화
         String[] carsName = InputHandler.InputCarsName(); 
@@ -11,5 +13,9 @@ public class RacingGame {
         }
 
         return racingcars;
+    }
+
+    public static int createRandom(){   
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
