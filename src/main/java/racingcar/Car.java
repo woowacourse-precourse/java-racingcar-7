@@ -5,7 +5,7 @@ public class Car {
 
     public Car(final String name) {
         validateNameLength(name);
-        validateNameOnlyAlphaAndNumber(name);
+        validateNameOnlyEnglishAndNumber(name);
         this.name = name;
     }
 
@@ -15,15 +15,13 @@ public class Car {
         }
     }
 
-    private void validateNameOnlyAlphaAndNumber(final String name) {
-        char[] chars = name.toCharArray();
-
-        for (char c : chars) {
-            validateCharOnlyAlphaAndNumber(c);
+    private void validateNameOnlyEnglishAndNumber(final String name) {
+        for (char c : name.toCharArray()) {
+            validateCharOnlyEnglishAndNumber(c);
         }
     }
 
-    private void validateCharOnlyAlphaAndNumber(final char c) {
+    private void validateCharOnlyEnglishAndNumber(final char c) {
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (Character.isDigit(c))) {
             return;
         }
