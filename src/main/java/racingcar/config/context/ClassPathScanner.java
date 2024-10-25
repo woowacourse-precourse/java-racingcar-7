@@ -38,7 +38,9 @@ public class ClassPathScanner {
     }
 
     private List<File> getEntryPoint() {
-        String basePackageName = baseClass.getPackage().getName();
+        String basePackageName = baseClass.getPackage()
+                .getName()
+                .replace(".", File.separator);
 
         return getClassPath().stream()
                 .map(it -> new File(it, basePackageName))
