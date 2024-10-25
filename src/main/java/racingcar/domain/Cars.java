@@ -1,7 +1,6 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,12 +22,12 @@ public class Cars {
     }
 
     public static Cars from(List<String> carNames) {
-        validateCarNames(carNames);
+        validateCarLength(carNames);
         List<Car> cars = carNames.stream().map(Car::new).toList();
         return new Cars(cars);
     }
 
-    private static void validateCarNames(List<String> carNames) {
+    private static void validateCarLength(List<String> carNames) {
         if (carNames.size() < MIN_CAR_LENGTH || carNames.size() > MAX_CAR_LENGTH) {
             throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
         }
@@ -44,14 +43,18 @@ public class Cars {
                 .toList();
     }
 
-    public List<CarDetail> getVictoryCarNames() {
-        List<Car> cars = new ArrayList<>(carStore);
-        cars.sort(Collections.reverseOrder());
-        Car largestCar = cars.get(0); // 가장 큰 요소
-        return cars.stream()
-                .filter(car -> car.compareTo(largestCar) == 0)
+    public List<CarDetail> getMaxCarDetails() {
+        Car maxCar = getMaxCar();
+        return carStore.stream()
+                .filter(car -> car.compareTo(maxCar) == 0)
                 .map(Car::getCarDetail)
                 .toList();
-
     }
+
+    private Car getMaxCar() {
+        return carStore.stream()
+                .max(Comparator.naturalOrder())
+                .orElseThrow(() -> new IllegalArgumentException("max Car를 찾을 수 없습니다."));
+    }
+
 }

@@ -1,10 +1,10 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.CarDetail;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
+import racingcar.domain.RaceLog;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,27 +19,16 @@ public class RacingCarController {
     }
 
 
-    public void racing() {
+    public void process() {
         String[] carNames = inputView.inputCarNames().split(",");
         Cars cars = Cars.from(List.of(carNames));
 
         int raceRound = inputView.inputRaceRound();
         Race race = Race.from(raceRound, cars);
 
-        outputView.printRaceStartMessage();
-        race.play();
+        List<RaceLog> raceLogs = race.play();
+        List<CarDetail> victoryCarDetails = race.getVictoryCarDetails();
 
-        carDetails.forEach(carDetail -> {
-            StringBuilder sb = new StringBuilder(carDetail.name() + " : ");
-            int distance = carDetail.distance();
-            while (distance-- > 0) {
-                sb.append("-");
-            }
-            System.out.println(sb);
-        });
-        System.out.println();
-        List<CarDetail> victoryCarDetails = cars.getVictoryCarNames();
-        String result = victoryCarDetails.stream().map(CarDetail::name).collect(Collectors.joining(", "));
-        System.out.print("최종 우승자 : " + result);
+        outputView.printRaceResult(raceLogs, victoryCarDetails);
     }
 }

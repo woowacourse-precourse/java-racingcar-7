@@ -31,10 +31,16 @@ public class Race {
         }
     }
 
-    public void play() {
+    public List<RaceLog> play() {
         for (int round = START_ROUND; round <= raceRound; round++) {
             cars.moveAll();
-            raceLogs.add(RaceLog.from(round, cars));
+            raceLogs.add(RaceLog.from(cars));
         }
+
+        return raceLogs;
+    }
+
+    public List<CarDetail> getVictoryCarDetails() {
+        return cars.getMaxCarDetails();
     }
 }

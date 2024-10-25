@@ -4,15 +4,17 @@ import java.util.List;
 
 public class RaceLog {
 
-    private final int round;
     private final List<CarDetail> carDetails;
 
-    private RaceLog(int round, List<CarDetail> carDetails) {
-        this.round = round;
+    private RaceLog(List<CarDetail> carDetails) {
         this.carDetails = carDetails;
     }
 
-    public static RaceLog from(int round, Cars cars) {
-        return new RaceLog(round, cars.getAllCarDetails());
+    public static RaceLog from(Cars cars) {
+        return new RaceLog(cars.getAllCarDetails());
+    }
+
+    public List<CarDetail> getCarDetails() {
+        return carDetails;
     }
 }

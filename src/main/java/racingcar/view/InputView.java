@@ -12,6 +12,10 @@ public class InputView {
     public int inputRaceRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String round = Console.readLine();
-        return Integer.parseInt(round);
+        try {
+            return Integer.parseInt(round);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력하세요", e);
+        }
     }
 }

@@ -9,6 +9,6 @@ public class Application {
         OutputView outputView = new OutputView();
 
         RacingCarController racingCarController = new RacingCarController(inputView, outputView);
-        racingCarController.racing();
+        racingCarController.process();
     }
 }
