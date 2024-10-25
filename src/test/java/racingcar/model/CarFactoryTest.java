@@ -22,7 +22,7 @@ public class CarFactoryTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"pobi,yongE"})
+  @ValueSource(strings = {"pobi,yongE", "pobi, yongE"})
   void 경주에_참가하는_자동차의_갯수가_올바른지_확인한다(String input) {
     // given
     CarFactory carFactory = new CarFactory();

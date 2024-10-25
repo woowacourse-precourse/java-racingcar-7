@@ -14,6 +14,6 @@ public class CarTest {
     // when
     car.move(giveNumber);
     // then
-    Assertions.assertThat(car.getMoveCount()).isNotEqualTo(0);
+    Assertions.assertThat(car.getMoveCount()).isEqualTo(1);
   }
 }
