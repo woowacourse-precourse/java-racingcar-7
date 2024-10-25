@@ -46,6 +46,8 @@
 - RacingCarName 클래스에서 입력을 받는 기능 분리, 입력받은 이름 관리하도록 수정
 - 컨트롤러의 전역 변수 제거 후 RacingCarList 에서 처리하도록 수정
 - 컨트롤러의 GameTryCount 생성자 제거
+- 중복된 코드 제거
+- print 기능은 OutPutView 클래스로 이동
 
 ## 수정할 부분
 - 주석 제거

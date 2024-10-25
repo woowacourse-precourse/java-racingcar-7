@@ -22,7 +22,6 @@ public class RacingGameController {
 
     public void initCarName() {
         String inputCarName = inputView.inputCarName();
-        RacingCarName.validateDuplicateNames(inputView.splitCarName(inputCarName));
         RacingCarName racingCarName = new RacingCarName(inputView.splitCarName(inputCarName));
         RacingCarList racingCarList = new RacingCarList();
 
@@ -36,35 +35,20 @@ public class RacingGameController {
         new GameTryCount(inputView.convertStringToInt(inputTryCount));
     }
 
-    public void printRoundResult() {
-        final RacingCarMove racingCarMove = new RacingCarMove();
-        final RandomNumber randomNumber = new RandomNumber();
-
-        for (int i = 0; i < GameTryCount.get(); i++) {
-            printCarPosition(racingCarMove, randomNumber);
-            System.out.println();
-        }
-    }
-
     public void startGame() {
         initCarName();
         initTryCount();
     }
 
-    private void printCarPosition(RacingCarMove racingCarMove, RandomNumber randomNumber) {
-        for (RacingCar car : RacingCarList.get()) {
-            car.move(racingCarMove, randomNumber);
-            outputView.printRoundResult(car);
-        }
+    public String findWinner() {
+        final Winner winner = new Winner();
+        return winner.getList(RacingCarList.get(), winner.maxPosition(RacingCarList.get()));
     }
 
     private void endGame() {
-        final Winner winner = new Winner();
         outputView.printInitResult();
-        printRoundResult();
-
-        String winners = winner.getList(RacingCarList.get(), winner.maxPosition(RacingCarList.get()));
-        outputView.printEndResult(winners);
+        outputView.printRoundResult();
+        outputView.printEndResult(findWinner());
     }
 
     public void run() {
