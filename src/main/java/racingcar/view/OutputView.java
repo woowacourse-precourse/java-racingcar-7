@@ -19,4 +19,8 @@ public class OutputView {
     public void printResult(String result) {
         System.out.println(result);
     }
+
+    public void printWinner(String winnerName) {
+        System.out.println(OutputMessage.WINNER_MESSAGE.getMessage() + winnerName);
+    }
 }
