@@ -14,6 +14,7 @@ public class Application {
         System.out.println("실행 결과");
         RacePreparation racePreparation = new RacePreparation(input, matchCount);
         Race race = new Race(racePreparation, new RandomNumberGenerator());
+        race.startRacingGame();
 
         List<String> winners = race.getWinner();
         System.out.println("최종 우승자 : " + String.join(", ", winners));

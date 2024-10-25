@@ -8,12 +8,13 @@ import java.util.Map;
 public class Race {
     private final static int MOVING_FORWARD_POINT = 4;
     private Map<String, List<Boolean>> record;
-    private RandomGenerator randomGenerator;
+    private final RandomGenerator randomGenerator;
+    private final RacePreparation racePreparation;
 
     public Race(RacePreparation racePreparation, RandomGenerator randomGenerator) {
+        this.racePreparation = racePreparation;
         this.randomGenerator = randomGenerator;
         initialize(racePreparation.getCarNames());
-        startRacingGame(racePreparation.getMatchCount());
     }
 
     private void initialize(List<String> carNames) {
@@ -23,8 +24,8 @@ public class Race {
         }
     }
 
-    private void startRacingGame(int matchCount) {
-        for (int i = 0; i < matchCount; i++) {
+    public void startRacingGame() {
+        for (int i = 0; i < racePreparation.getMatchCount(); i++) {
             record.forEach((carName, moveForwardList) -> {
                 record.get(carName).add(moveForward());
                 print(carName, moveForwardList);

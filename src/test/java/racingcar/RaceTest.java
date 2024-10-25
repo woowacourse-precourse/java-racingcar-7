@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RaceTest {
 
@@ -16,6 +15,7 @@ public class RaceTest {
         RandomGenerator fixedRandomGenerator = new FixedRandomGenerator(Arrays.asList(5, 5, 5, 5));
 
         Race race = new Race(preparation, fixedRandomGenerator);
+        race.startRacingGame();
         List<String> winners = race.getWinner();
 
         assertEquals(2, winners.size());
