@@ -1,6 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.race.*;
+import racingcar.util.RandomGenerator;
+import racingcar.util.RandomNumberGenerator;
 
 import java.util.List;
 

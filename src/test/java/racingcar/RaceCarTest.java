@@ -1,6 +1,8 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.race.*;
+import racingcar.util.RandomGenerator;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,8 +1,10 @@
-package racingcar;
+package racingcar.race;
+
+import racingcar.util.RandomGenerator;
 
 public class Movement {
     private final static int MOVING_FORWARD_POINT = 4;
-    private RandomGenerator randomGenerator;
+    private final RandomGenerator randomGenerator;
 
     public Movement(RandomGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;

@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.race;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class RaceResult {
-    private Map<String, List<Boolean>> record;
+    private final Map<String, List<Boolean>> record;
 
     public RaceResult(Map<String, List<Boolean>> record) {
         this.record = record;
