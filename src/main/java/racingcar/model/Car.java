@@ -20,4 +20,10 @@ public class Car {
     public void addDistance(int distance) {
         this.distance += distance;
     }
+
+    public void addDistance(boolean willMove) {
+        if (willMove) {
+            this.distance += 1;
+        }
+    }
 }
