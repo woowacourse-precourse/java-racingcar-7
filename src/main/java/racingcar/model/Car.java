@@ -1,12 +1,17 @@
 package racingcar.model;
 
+import static racingcar.constants.Symbol.COLON;
+import static racingcar.constants.Symbol.HYPHEN;
+import static racingcar.constants.Symbol.SPACE;
+import static racingcar.constants.Symbol.ZERO;
+
 public class Car {
     private final CarName carName;
     private Integer position;
 
     public Car(CarName carName) {
         this.carName = carName;
-        this.position = 0;
+        this.position = ZERO;
     }
 
     public void forwardDistance() {
@@ -15,7 +20,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return getName() + " : " + "-".repeat(getDistance());
+        return getName() + SPACE + COLON + SPACE + HYPHEN.repeat(getDistance());
     }
 
     public Integer getDistance() {

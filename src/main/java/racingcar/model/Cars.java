@@ -1,5 +1,10 @@
 package racingcar.model;
 
+import static racingcar.constants.Symbol.COMMA;
+import static racingcar.constants.Symbol.NEW_LINE;
+import static racingcar.constants.Symbol.SPACE;
+import static racingcar.constants.Symbol.ZERO;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,7 +21,7 @@ public class Cars {
     }
 
     private void validateCarsName(String carsName) {
-        String[] parts = carsName.split(",");
+        String[] parts = carsName.split(COMMA);
         Set<String> uniqueNames = new HashSet<>();
 
         for (String name : parts) {
@@ -31,7 +36,7 @@ public class Cars {
     }
 
     private List<Car> initCars(String carsName) {
-        String[] parts = carsName.split(",");
+        String[] parts = carsName.split(COMMA);
         return Arrays.stream(parts)
                 .map(CarName::new)
                 .map(Car::new)
@@ -49,13 +54,13 @@ public class Cars {
     public String getCarsDistance() {
         StringBuilder result = new StringBuilder();
         for (Car car : cars) {
-            result.append(car).append("\n");
+            result.append(car).append(NEW_LINE);
         }
         return result.toString();
     }
 
     private Integer getMaxDistance() {
-        int maxDistance = 0;
+        int maxDistance = ZERO;
         for (Car car : cars) {
             maxDistance = Math.max(maxDistance, car.getDistance());
         }
@@ -69,7 +74,7 @@ public class Cars {
                 winner.add(car.getName());
             }
         }
-        return String.join("," + " ", winner);
+        return String.join(COMMA + SPACE, winner);
     }
 
     private boolean findMaxDistance(Car car) {

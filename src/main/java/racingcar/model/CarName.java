@@ -1,6 +1,8 @@
 package racingcar.model;
 
 public class CarName {
+    private static final Integer MAX_NAME_LENGTH = 5;
+    private static final String LETTER_REGEX = "[a-zA-Z]+";
     final String name;
 
     public CarName(String name) {
@@ -21,7 +23,7 @@ public class CarName {
     }
 
     private boolean IsNotValidNameLength(String name) {
-        return name.length() > 5;
+        return name.length() > MAX_NAME_LENGTH;
     }
 
     private void validateEmpty(String name) {
@@ -41,7 +43,7 @@ public class CarName {
     }
 
     private boolean isValidOnlyLetters(String name) {
-        return !name.matches("[a-zA-Z]+");
+        return !name.matches(LETTER_REGEX);
     }
 
     public String getName() {

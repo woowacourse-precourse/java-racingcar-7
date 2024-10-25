@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import static racingcar.constants.Symbol.ZERO;
+
 import racingcar.model.Cars;
 import racingcar.model.GameRound;
 import racingcar.view.InputView;
@@ -25,7 +27,7 @@ public class RacingController {
 
     private void startRacingGame(Cars cars, GameRound gameRound) {
         outputView.printResultNotice();
-        for (int i = 0; i < gameRound.getRound(); i++) {
+        for (int i = ZERO; i < gameRound.getRound(); i++) {
             cars.moveCars();
             outputView.printOneRoundResult(cars.getCarsDistance());
         }
