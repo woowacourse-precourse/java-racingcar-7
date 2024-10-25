@@ -127,4 +127,20 @@ public class Application {
 
         return result.toString();
     }
+
+    public static String getFinalWinner(Map<String, StringBuilder> resultMap) {
+        PriorityQueue<String[]> orderedResult = createOrderedResult(resultMap);
+        return "";
+    }
+
+    public static PriorityQueue<String[]> createOrderedResult(Map<String, StringBuilder> resultMap) {
+        PriorityQueue<String[]> orderedResult = new PriorityQueue<>((o1, o2) -> o2[1].length() - o1[1].length());
+
+        for (String name : resultMap.keySet()) {
+            String movement = resultMap.get(name).toString();
+            orderedResult.offer(new String[]{name, movement});
+        }
+
+        return orderedResult;
+    }
 }
