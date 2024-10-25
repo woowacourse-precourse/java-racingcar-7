@@ -23,7 +23,7 @@ public class Racing {
     }
 
     public boolean can() {
-        return racingCount.isPossible();
+        return racingCount.isTry();
     }
 
     public void deductTryCount() {

@@ -22,8 +22,8 @@ public class RacingCount {
         this.tryCount -= 1;
     }
 
-    public boolean isPossible() {
-        return this.tryCount != 0;
+    public boolean isTry() {
+        return this.tryCount != END_TRY_COUNT;
     }
 
     public int getTryCount() {
