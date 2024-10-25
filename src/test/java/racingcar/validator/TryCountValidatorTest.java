@@ -1,4 +1,4 @@
-package racingcar.validator.strategies;
+package racingcar.validator;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
