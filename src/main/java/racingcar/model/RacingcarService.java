@@ -21,4 +21,11 @@ public class RacingcarService {
             }
         }
     }
+
+    private void printRoundResult(Map<String, String> player) {
+        for (Map.Entry<String, String> entry : player.entrySet()) {
+            outputView.roundResult(entry.getKey(), entry.getValue());
+        }
+        System.out.println();
+    }
 }
