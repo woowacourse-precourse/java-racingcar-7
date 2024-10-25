@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
@@ -37,6 +38,28 @@ public class Application {
             }
         }
     }
+
+    private void race() {
+        for ( int i =0; i < tryCount; i++) {
+            moveCars();
+            printRaceStatus();
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            car.move(randomValue);
+        }
+    }
+
+    private void printRaceStatus() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.getPosition());
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         new Application().start();
