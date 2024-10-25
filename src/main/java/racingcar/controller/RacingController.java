@@ -24,24 +24,39 @@ public class RacingController {
     }
 
     public void start() {
+        initCars();
+        executeRaceRounds();
+        announceWinner();
+    }
+
+    private void initCars() {
         String inputCarString = InputView.getInputCarString();
         List<String> strings = stringSplitter.splitByDelimiter(inputCarString);
         for (String s : strings) {
             Car car = new Car(s);
             cars.addCar(car);
         }
+    }
+
+    private void executeRaceRounds() {
         int cnt = Integer.parseInt(InputView.getInputRepeatCount());
         outputView.printGameResultMessage();
         for (int i = 0; i < cnt; i++) {
-            List<Car> cars = racing.startRacing();
-            for (Car car : cars){
-                outputView.printGameResult(car.getName(), car.getMovedDistance());
-            }
+            runSingleRound();
             outputView.printEmptyLine();
         }
+    }
 
+    private void announceWinner() {
         String winner = racing.findWinner(cars.getCars());
         outputView.printWinner(winner);
+    }
+
+    private void runSingleRound() {
+        List<Car> cars = racing.startRacing();
+        for (Car car : cars) {
+            outputView.printGameResult(car.getName(), car.getMovedDistance());
+        }
     }
 
 }
