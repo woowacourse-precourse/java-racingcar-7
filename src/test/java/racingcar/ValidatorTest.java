@@ -19,6 +19,15 @@ public class ValidatorTest {
 
         Exception exception3 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobitest, jun ,pobitest ", "1"));
+
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate("", "1"));
+
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate(" ", "1"));
+
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate("  ", "1"));
     }
 
     @Test
@@ -41,5 +50,14 @@ public class ValidatorTest {
 
         Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
                 validator.validate("pobi,woni,jun", ".123ddfgd"));
+
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate("pobi,woni,jun", ""));
+
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate("pobi,woni,jun", " "));
+
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () ->
+                validator.validate("pobi,woni,jun", "  "));
     }
 }
