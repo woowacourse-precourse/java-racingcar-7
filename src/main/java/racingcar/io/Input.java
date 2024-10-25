@@ -3,14 +3,26 @@ package racingcar.io;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-    public String carNames() {
+    private static Input INSTANCE;
+    private Input() {}
+
+    public static Input getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Input();
+        }
+        return INSTANCE;
+    }
+
+    public  String carNames() {
         String carNames = Console.readLine().trim();
+        Console.close();
         validateCarNames(carNames);
         return carNames;
     }
 
     public String rounds() {
         String rounds = Console.readLine();
+        Console.close();
         validateRoundNumber(rounds);
         return rounds;
     }

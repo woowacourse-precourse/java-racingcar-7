@@ -14,7 +14,7 @@ class InputTest {
 
     @BeforeEach
     void setUp() {
-        input = new Input();
+        input = Input.getInstance();
         System.setIn(standardIn);
     }
 
