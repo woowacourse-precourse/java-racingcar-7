@@ -11,7 +11,7 @@ public class InputView {
     private static final int SPLIT_INCLUDE_LAST_SPACE = -1;
 
     public static List<String> carNames() {
-        return splitNames(Console.readLine());
+        return splitNames(input());
     }
 
     public static List<String> splitNames(String input) {
@@ -26,11 +26,19 @@ public class InputView {
         }
     }
 
+    public static int tryCount() {
+        return convertToInt(input());
+    }
+
     public static int convertToInt(String tryCount) {
         try {
             return Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static String input() {
+        return Console.readLine();
     }
 }

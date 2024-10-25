@@ -24,4 +24,12 @@ public class Cars {
             .filter(car -> car.getPosition() == maxPosition)
             .toList();
     }
+
+    public void playRound() {
+        carList.forEach(Car::playRound);
+    }
+
+    public List<Car> getCars() {
+        return carList;
+    }
 }

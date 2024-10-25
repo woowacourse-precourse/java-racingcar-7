@@ -2,9 +2,12 @@ package racingcar.domain;
 
 public class TryCount {
 
-    private int count;
+    private Integer count;
 
-    public TryCount(int count) {
+    public TryCount() {
+    }
+
+    public void set(int count) {
         validateCount(count);
         this.count = count;
     }

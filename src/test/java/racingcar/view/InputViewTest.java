@@ -43,7 +43,8 @@ public class InputViewTest {
     @ParameterizedTest
     @ValueSource(ints = {-99, -1})
     void 시도_횟수가_음수인_경우_예외(int input) {
-        assertThatThrownBy(() -> new TryCount(input))
+        TryCount tryCount = new TryCount();
+        assertThatThrownBy(() -> tryCount.set(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
