@@ -109,7 +109,7 @@ jun : -----
 - void
 
 ## getLargestProgress()
-- [ ] pregressArr에서 가장 큰 수를 찾아 반환  
+- [x] pregressArr에서 가장 큰 수를 찾아 반환  
 
 ## getWinners()
-- [ ] 우승자 판별하는 함수, getLargestProgress함수에서 받은 수를 사용해서 그 수의 인덱스를 찾아 인덱스를 활용해서 해당 차에 대한 이름을 반환 
+- [x] 우승자 판별하는 함수, getLargestProgress함수에서 받은 수를 사용해서 그 수의 인덱스를 찾아 인덱스를 활용해서 해당 차에 대한 이름을 반환 

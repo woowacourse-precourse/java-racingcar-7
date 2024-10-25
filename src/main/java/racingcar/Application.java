@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -25,7 +27,12 @@ public class Application {
                 printCarNameProgress(carNames[car_ind], carProgressArr[car_ind]);
             }
             System.out.println();
+
         }
+        // 우승자 판별
+        String winners = getWinners(carNames, carProgressArr);
+        System.out.println("최종 우승자 : " + winners);
+
     }
 
     public static String[] splitCarsName(String inputStr) {
@@ -47,4 +54,31 @@ public class Application {
         String progressBar = "-".repeat(progressNum);
         System.out.println(carName + " : " + progressBar);
     }
+
+    public static int getLargestProgress(int[] progressArr) {
+        int maxNum = 0;
+        for (int i : progressArr) {
+            if (i > maxNum) {
+                maxNum = i;
+            }
+        }
+        return maxNum;
+    }
+
+    public static String getWinners(String[] carNames, int[] progressArr) {
+        String[] winners = new String[carNames.length];
+
+        int largeProgressNum = getLargestProgress(progressArr);
+        for (int i = 0; i < carNames.length; i++) {
+            int progressNum = progressArr[i];
+            if (progressNum == largeProgressNum) {
+                winners[i] = carNames[i];
+            }
+        }
+        var members = List.of(winners);
+//        System.out.println("이긴 멤버 : "+members);
+        var result = String.join(",", winners);
+        return result;
+    }
+
 }
