@@ -25,17 +25,18 @@ public class RacingController {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_ARG.getMessage());
         }
 
-        try {
-            Splitter separator = new Splitter(originInput.getCarNames());
-            ProcessedInput processedInput = new ProcessedInput(separator.splitSeparator(), new BigInteger(originInput.getRaceRound()));
+        Splitter separator = new Splitter(originInput.getCarNames());
 
-            if (validator.validNameLength(processedInput.getCarList())) {
-                throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH.getMessage());
-            }
-        }
         // 시도할 횟수로 수가 아닌 값이 입력된 경우
-        catch (NumberFormatException e) {
+        if (validator.validNumber(originInput.getRaceRound())) {
             throw new IllegalArgumentException(ErrorMessage.NON_NUMBER.getMessage());
+        }
+
+        ProcessedInput processedInput = new ProcessedInput(separator.splitSeparator(), new BigInteger(originInput.getRaceRound()));
+
+        // 자동차 이름 길이가 5보다 큰 경우
+        if (validator.validNameLength(processedInput.getCarList())) {
+            throw new IllegalArgumentException(ErrorMessage.NAME_LENGTH.getMessage());
         }
     }
 }
