@@ -11,19 +11,19 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.TestNumberGenerator;
 
-class CarsTest {
+class CarRepositoryTest {
     private final Car pobiCar = new Car("pobi");
     private final Car woniCar = new Car("woni");
     private final Car junCar = new Car("jun");
     private final List<Car> newCars = new ArrayList<>(Arrays.asList(pobiCar, woniCar, junCar));
 
-    private Cars carRepository;
+    private CarRepository carRepository;
     private TestNumberGenerator testNumberGenerator;
 
     @BeforeEach
     void setUp() {
         testNumberGenerator = new TestNumberGenerator(4);
-        carRepository = new Cars(testNumberGenerator);
+        carRepository = new CarRepository(testNumberGenerator);
     }
 
     @Test
@@ -47,7 +47,7 @@ class CarsTest {
     @DisplayName("모든 자동차가 전진을 하지 않는다.")
     void notMoveAllTest() {
         testNumberGenerator = new TestNumberGenerator(3);
-        carRepository = new Cars(testNumberGenerator);
+        carRepository = new CarRepository(testNumberGenerator);
         carRepository.saveAll(newCars);
         carRepository.getCurrentCars().forEach(car -> assertThat(car.getPosition()).isEqualTo(0));
         carRepository.attemptMoveAllCars();

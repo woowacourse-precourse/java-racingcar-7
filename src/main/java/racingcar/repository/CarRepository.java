@@ -6,11 +6,11 @@ import racingcar.domain.Car;
 import racingcar.domain.MoveConditionChecker;
 import racingcar.domain.NumberGenerator;
 
-public class Cars {
+public class CarRepository {
     private final MoveConditionChecker moveConditionChecker;
     private final List<Car> cars;
 
-    public Cars(NumberGenerator numberGenerator) {
+    public CarRepository(NumberGenerator numberGenerator) {
         this.moveConditionChecker = new MoveConditionChecker(numberGenerator);
         this.cars = new ArrayList<>();
     }
