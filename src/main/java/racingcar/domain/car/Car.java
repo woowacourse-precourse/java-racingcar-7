@@ -35,6 +35,10 @@ public class Car {
         return value >= FOUR;
     }
 
+    public boolean isEqualPosition(int value) {
+        return position == value;
+    }
+
     @Override
     public String toString() {
         return name.getName() + COLON + RACE_SYMBOL.repeat(position);

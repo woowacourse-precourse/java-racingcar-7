@@ -43,12 +43,8 @@ public class Cars {
 
     private List<Car> findSamePositionCar(int position) {
         return cars.stream()
-                .filter(car -> isSamePosition(car, position))
+                .filter(car -> car.isEqualPosition(position))
                 .toList();
-    }
-
-    private boolean isSamePosition(Car car, int maxPosition) {
-        return car.getPosition() == maxPosition;
     }
 
     private List<Car> validate(List<Car> cars) {
