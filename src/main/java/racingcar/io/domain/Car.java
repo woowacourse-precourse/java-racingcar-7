@@ -1,5 +1,7 @@
 package racingcar.io.domain;
 
+import java.util.List;
+
 public class Car {
 
 	private static final int CAR_NAME_MAX_LENGTH = 5;
@@ -41,13 +43,24 @@ public class Car {
 	}
 
 	public void move(int randomValue) {
-		if(isPossibleToMove(randomValue)) {
+		if (isPossibleToMove(randomValue)) {
 			moveDistance++;
 		}
 	}
 
 	private static boolean isPossibleToMove(int randomValue) {
 		return randomValue > MOVE_CONDITION;
+	}
+
+	public boolean isFurthestIn(List<Car> others) {
+		return others.stream()
+			.filter(car -> car.isFurtherThan(this))
+			.findAny()
+			.isEmpty();
+	}
+
+	private boolean isFurtherThan(Car other) {
+		return moveDistance > other.moveDistance;
 	}
 
 }
