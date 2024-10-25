@@ -31,7 +31,7 @@ public class RaceController {
     }
 
     private void printWinner(final Cars cars) {
-        WinnerFinder winnerFinder = new WinnerFinder(cars);
+        final WinnerFinder winnerFinder = new WinnerFinder(cars);
         OutputView.printWinner(winnerFinder.find());
     }
 
