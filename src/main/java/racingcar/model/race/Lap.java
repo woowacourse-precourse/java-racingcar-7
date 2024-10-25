@@ -17,9 +17,11 @@ public class Lap {
         this.value = value;
     }
 
-    public static Lap from(final String value) {
-        validateIsNull(value);
-        return new Lap(new BigInteger(value));
+    public static Lap from(final String source) {
+        validateIsNull(source);
+        validateIsNegative(source);
+        BigInteger value = new BigInteger(source);
+        return new Lap(value);
     }
 
     public boolean hasRemaining() {
@@ -30,21 +32,35 @@ public class Lap {
         return this.equals(ZERO);
     }
 
-    public void minus(final String value) {
-        BigInteger subtrahend = new BigInteger(value);
-        if (isLowerThanZero()) {
+    public void minus(final String source) {
+        BigInteger subtrahend = new BigInteger(source);
+        if (isNegative(subtrahend)) {
             throw new ShouldNotBeMinusException();
         }
-        this.value = this.value.subtract(subtrahend);
+
+        BigInteger subtracted = this.value.subtract(subtrahend);
+        if (isNegative(subtracted)) {
+            throw new ShouldNotBeMinusException();
+        }
+
+        this.value = subtracted;
     }
 
-    public boolean isLowerThanZero() {
-        return this.value.compareTo(BigInteger.ZERO) < 0;
+    public boolean isNegative(BigInteger source) {
+        return source.compareTo(BigInteger.ZERO) < 0;
     }
 
-    private static void validateIsNull(final String value) {
-        if (isNull(value)) {
+    private static void validateIsNull(final String source) {
+        if (isNull(source)) {
             throw new ShouldNotBeNullException();
+        }
+    }
+
+    public static void validateIsNegative(String source) {
+        BigInteger target = new BigInteger(source);
+        boolean isNegative = target.compareTo(BigInteger.ZERO) < 0;
+        if (isNegative) {
+            throw new ShouldNotBeMinusException();
         }
     }
 

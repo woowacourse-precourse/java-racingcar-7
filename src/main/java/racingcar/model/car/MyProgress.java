@@ -1,7 +1,9 @@
 package racingcar.model.car;
 
+import static java.util.Objects.isNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
+import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Position;
 
@@ -10,11 +12,13 @@ public class MyProgress {
     private final Position position;
 
     private MyProgress(final Lap remainingLap, final Position position) {
+        validateIsNull(remainingLap);
         this.remainingLap = remainingLap;
         this.position = position;
     }
 
     public static MyProgress from(final Lap remainingLap, final Position position) {
+        validateIsNull(remainingLap);
         return new MyProgress(remainingLap, position);
     }
 
@@ -29,6 +33,12 @@ public class MyProgress {
 
     public void updateRemainingLap() {
         remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
+    }
+
+    private static void validateIsNull(Lap lap) {
+        if (isNull(lap)) {
+            throw new ShouldNotBeNullException();
+        }
     }
 
     @Override

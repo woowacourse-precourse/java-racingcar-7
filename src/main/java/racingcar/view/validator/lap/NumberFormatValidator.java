@@ -4,7 +4,7 @@ import static java.math.BigInteger.ZERO;
 
 import java.math.BigInteger;
 import racingcar.util.PreprocessingUtil;
-import racingcar.view.exception.ShouldNotLowerThanOneException;
+import racingcar.view.exception.LoeZeroException;
 
 public class NumberFormatValidator extends LapCountInputValidator {
 
@@ -21,7 +21,7 @@ public class NumberFormatValidator extends LapCountInputValidator {
         BigInteger count = new BigInteger(cleanSource);
 
         if (isLoeZero(count)) {
-            throw new ShouldNotLowerThanOneException();
+            throw new LoeZeroException();
         }
 
         super.check(source);

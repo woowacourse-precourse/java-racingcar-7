@@ -1,6 +1,11 @@
 package racingcar.model.car;
 
 import static java.lang.String.format;
+import static java.util.Objects.isNull;
+import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
+
+import racingcar.common.exception.LengthExceedException;
+import racingcar.common.exception.ShouldNotBeNullException;
 
 public class Car {
     private final String name;
@@ -12,7 +17,8 @@ public class Car {
     }
 
     public static Car from(final String name, final MyProgress myProgress) {
-        //TODO: validation
+        validateIsNull(name);
+        validateNameLength(name);
         return new Car(name, myProgress);
     }
 
@@ -30,6 +36,19 @@ public class Car {
 
     public String myProgressSummary() {
         return format("%s : %s", name, myProgress.toString());
+    }
+
+    private static void validateIsNull(final String name) {
+        if (isNull(name)) {
+            throw new ShouldNotBeNullException();
+        }
+    }
+
+    private static void validateNameLength(final String name) {
+        boolean longerThanMinLength = name.length() > CAR_NAME_MIN_LENGTH;
+        if (longerThanMinLength) {
+            throw new LengthExceedException(CAR_NAME_MIN_LENGTH);
+        }
     }
 
     @Override

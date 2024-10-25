@@ -1,10 +1,7 @@
 package racingcar.model.dashboard;
 
-import static java.util.Objects.isNull;
-
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.common.exception.ShouldNotBeNullException;
 
 public class LapCharts {
     private final List<LapChart> lapCharts;
@@ -18,14 +15,7 @@ public class LapCharts {
     }
 
     public void offer(final String lapChart) {
-        validateIsNull(lapChart);
         lapCharts.add(LapChart.from(lapChart));
-    }
-
-    private void validateIsNull(final String source) {
-        if (isNull(source)) {
-            throw new ShouldNotBeNullException();
-        }
     }
 
     @Override

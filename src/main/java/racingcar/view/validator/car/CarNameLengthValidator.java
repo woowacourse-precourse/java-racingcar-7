@@ -1,13 +1,12 @@
 package racingcar.view.validator.car;
 
+import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;
-import racingcar.view.exception.CarNameLengthExceedException;
+import racingcar.common.exception.LengthExceedException;
 
 public class CarNameLengthValidator extends CarNameInputValidator {
-
-    private static final int MIN_LENGTH = 5;
 
     private CarNameLengthValidator() {
     }
@@ -20,15 +19,15 @@ public class CarNameLengthValidator extends CarNameInputValidator {
     public void check(final String source) {
         List<String> cars = stringToStringList(source);
         cars.forEach(name -> {
-            if (exceedMinLength(name)) {
-                throw new CarNameLengthExceedException(MIN_LENGTH);
+            if (exceedMinLength(name, CAR_NAME_MIN_LENGTH)) {
+                throw new LengthExceedException(CAR_NAME_MIN_LENGTH);
             }
         });
 
         super.check(source);
     }
 
-    private boolean exceedMinLength(String name) {
-        return name.length() > MIN_LENGTH;
+    private boolean exceedMinLength(String name, int length) {
+        return name.length() > length;
     }
 }
