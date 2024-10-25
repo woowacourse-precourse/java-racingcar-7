@@ -9,8 +9,7 @@
   - Car 클래스
   - CarManager 클래스 
 - 자동차 경주
-  - Race 클래스
-  - CarMovement 클래스: 자동차의 전진 또는 멈춤 결정
+  - RacingCarGame 클래스
 - 진행 이력 출력하기
   - 자동차의 이름 출력
   - 이동 거리 출력
