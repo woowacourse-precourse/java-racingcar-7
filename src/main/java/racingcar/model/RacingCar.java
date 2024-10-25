@@ -28,6 +28,10 @@ public class RacingCar {
         return this.position == position;
     }
 
+    public RacingCarSnapShot getSnapshot() {
+        return new RacingCarSnapShot(name, position);
+    }
+
     public String getName() {
         return name;
     }
@@ -59,5 +63,4 @@ public class RacingCar {
     private boolean isOverMaxLength(String name) {
         return name.length() > NAME_MAX_LENGTH;
     }
-
 }

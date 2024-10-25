@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.model.RacingCarSnapShot;
 
 public class RacingCarView {
 
@@ -25,4 +26,15 @@ public class RacingCarView {
         }
     }
 
+    public void showRaceResultComment() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    public void showRaceResult(List<RacingCarSnapShot> snapShots) {
+        for (RacingCarSnapShot snapShot : snapShots) {
+            System.out.printf("%s : %s%n", snapShot.name(), "-".repeat(snapShot.position()));
+        }
+        System.out.println();
+    }
 }

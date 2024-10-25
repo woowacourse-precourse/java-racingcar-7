@@ -39,6 +39,12 @@ public class RacingCars {
                 .toList();
     }
 
+    public List<RacingCarSnapShot> getCarSnapShots() {
+        return cars.stream()
+                .map(RacingCar::getSnapshot)
+                .toList();
+    }
+
     public List<RacingCar> getCars() {
         return cars;
     }
@@ -55,5 +61,4 @@ public class RacingCars {
     private int generateRandomMovementFactor() {
         return Randoms.pickNumberInRange(0, 9);
     }
-
 }
