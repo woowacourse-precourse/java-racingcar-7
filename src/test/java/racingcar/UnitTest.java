@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -88,6 +87,22 @@ public class UnitTest extends NsTest {
                     assertThat(result2).isEqualTo(7);
                 },
                 5,7
+        );
+    }
+
+    @Test
+    @DisplayName("assignRandomNumber 테스트")
+    void assignRandomNumberTest() {
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("car1"));
+        cars.add(new RacingCar("car2"));
+        cars.add(new RacingCar("car3"));
+        assertRandomNumberInRangeTest(
+                ()->{Application.assignRandomNumber(cars);
+                    assertThat(cars.get(0).randomNumbers).containsExactly(5);
+                    assertThat(cars.get(1).randomNumbers).containsExactly(7);
+                    assertThat(cars.get(2).randomNumbers).containsExactly(9);
+                }, 5, 7, 9
         );
     }
 
