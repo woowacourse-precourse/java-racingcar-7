@@ -58,6 +58,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 횟수_음수_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+        );
+    }
+
+    @Test
+    void 횟수_문자열_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "one"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+        );
+    }
+
+    @Test
+    void 횟수_0_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+        );
+    }
+
+    @Test
+    void 횟수_공백_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", ""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
