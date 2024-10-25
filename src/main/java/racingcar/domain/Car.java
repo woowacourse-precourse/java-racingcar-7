@@ -4,11 +4,20 @@ public class Car {
 
     private final static Integer START = 0;
     public final String carName;
-    public final Integer carPosition;
+    public Integer carPosition;
 
     public Car(String carName) {
         this.carName = carName;
         this.carPosition = START;
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public Integer getCarPosition() {
+        return carPosition;
+    }
+
 
 }
