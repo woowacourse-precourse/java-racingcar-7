@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Result;
 import racingcar.service.CarService;
@@ -29,7 +28,7 @@ public class RacingCarController {
 
     public void run() {
         inputView.printCarNameInputMessage();
-        Set<String> carNames = InputValidator.validateCarNameInput(inputView.getInput());
+        List<String> carNames = InputValidator.validateCarNameInput(inputView.getInput());
         inputView.printRoundCountInputMessage();
         int roundCount = InputValidator.validateRoundCountInput(inputView.getInput());
 

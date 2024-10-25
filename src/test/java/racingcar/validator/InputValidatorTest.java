@@ -3,7 +3,7 @@ package racingcar.validator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Set;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ class InputValidatorTest {
         final String input = "pobi,woni, jun";
 
         //when
-        final Set<String> carNames = InputValidator.validateCarNameInput(input);
+        final List<String> carNames = InputValidator.validateCarNameInput(input);
 
         //then
         assertThat(carNames).contains("pobi").contains("woni").contains("jun");

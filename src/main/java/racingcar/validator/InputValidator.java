@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import racingcar.constant.Constant;
 
@@ -13,7 +14,7 @@ public class InputValidator {
     private static final String ROUND_COUNT_INPUT_BLANK_MESSAGE = "시도할 횟수를 입력해 주세요.";
     private static final String ROUND_COUNT_INVALID_MESSAGE = "양의 정수를 입력해 주세요.";
 
-    public static Set<String> validateCarNameInput(String input) {
+    public static List<String> validateCarNameInput(String input) {
         validateCarNameInputBlank(input);
 
         String[] names = splitCarNameInput(input);
@@ -21,11 +22,9 @@ public class InputValidator {
             validateCarNameBlank(name);
             validateCarNameTooLong(name);
         }
+        validateDuplicatedCarName(names);
 
-        Set<String> cars = new HashSet<>(Arrays.asList(names));
-        validateDuplicatedCarName(cars.size(), names.length);
-
-        return cars;
+        return Arrays.asList(names);
     }
 
     private static String[] splitCarNameInput(String input) {
@@ -52,8 +51,9 @@ public class InputValidator {
         }
     }
 
-    private static void validateDuplicatedCarName(int carSetCount, int inputCarCount) {
-        if (carSetCount != inputCarCount) {
+    private static void validateDuplicatedCarName(String[] names) {
+        Set<String> cars = new HashSet<>(Arrays.asList(names));
+        if (cars.size() != names.length) {
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_MESSAGE);
         }
     }
