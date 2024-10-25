@@ -22,4 +22,11 @@ public class InputView {
         return input;
     }
 
+    public String getAttemptCount() {
+        outputView.getAttemptCount();
+        String input = Console.readLine();
+        InvalidInputException.validateInput(input);
+        return input;
+    }
+
 }
