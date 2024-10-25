@@ -49,6 +49,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("이동 횟수로 빈 값 입력 테스트")
+    @Test
+    void 빈_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni",""))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
