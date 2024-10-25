@@ -21,7 +21,7 @@ public class Cars {
         HashSet<Object> set = new HashSet<>();
         carNames.forEach(carName -> {
             if (!set.add(carName)) {
-                throw new IllegalArgumentException("자동차 이름 ${carName}이 중복되었습니다.");
+                throw new IllegalArgumentException("자동차 이름 " + carName+ "이 중복되었습니다.");
             }
         });
     }
