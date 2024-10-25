@@ -2,12 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
     }
 
     private void printRequestingCarNamesInput() {
@@ -24,8 +25,8 @@ public class Application {
         }
     }
 
-    private String[] splitNamesByComma(String str) {
-        return str.split(",");
+    private String[] splitNamesByComma(String userInput) {
+        return userInput.split(",");
     }
 
     private void validateMinimumTwoCars(String[] cars) {
@@ -34,9 +35,9 @@ public class Application {
         }
     }
 
-    private void validateNameLength(String str) {
-        if (str.length() > 5) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+    private void validateNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
         }
     }
 
