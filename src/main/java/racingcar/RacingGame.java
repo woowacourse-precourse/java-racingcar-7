@@ -16,9 +16,11 @@ public class RacingGame {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void checkMove(Racingcar racingcar){ // 전진하는 조건이 맞으면 레이싱카를 전진시키고 아니면 멈춰있는다.
-        if (createRandom()>=4) {
-            Racingcar.moveRacingcar(racingcar);
+    public static void checkMove(Racingcar[] racingcar){ // 전진하는 조건이 맞으면 레이싱카를 전진시키고 아니면 멈춰있는다.
+        for (int i = 0; i < racingcar.length; i++) {
+            if (createRandom()>=4) {
+                Racingcar.moveRacingcar(racingcar[i]);
+            }
         }
     }
 }
