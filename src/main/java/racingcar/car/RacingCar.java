@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import racingcar.strategy.MoveStrategy;
+
 public class RacingCar {
 
     private String carName;
@@ -18,8 +20,10 @@ public class RacingCar {
         return carName;
     }
 
-    public void moveForwardOneStep() {
-        distance += 1;
+    public void moveForwardOneStep(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
+            distance += 1;
+        }
     }
 
     public void printMoveStatus() {
