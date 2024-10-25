@@ -22,6 +22,7 @@ public class CarValidation {
 
     public static Integer gameMatchesValid(final String inputGameMatches) {
         Integer gameMatches = checkOverMatches(inputGameMatches);
+        checkNullOrEmptyGameMatches(gameMatches);
         return gameMatches;
     }
 
@@ -52,13 +53,18 @@ public class CarValidation {
         }
     }
 
-
     private static Integer checkOverMatches(final String InputGameMatches) {
         int gameMatches = Integer.parseInt(InputGameMatches);
         if (gameMatches > 10) {
             throw new IllegalArgumentException(OVER_GAME_MATCHES.getMessage());
         }
         return gameMatches;
+    }
+
+    private static void checkNullOrEmptyGameMatches(final Integer gameMatches) {
+        if (gameMatches == null || gameMatches == 0) {
+            throw new IllegalArgumentException(NULL_EMPTY_FOUND.getMessage());
+        }
     }
 
 }
