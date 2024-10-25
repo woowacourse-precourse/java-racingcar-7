@@ -1,10 +1,15 @@
 package racingcar;
 
+import java.util.List;
+import racingcar.domain.Car;
+
 public class Application {
-    private UserInput userInput;
+    private UserInputManager userInputManager;
+    private Racing racing;
 
     public Application() {
-        this.userInput = new UserInput();
+        this.userInputManager = new UserInputManager();
+        this.racing = new Racing();
     }
 
     public static void main(String[] args) {
@@ -13,7 +18,11 @@ public class Application {
     }
 
     private void run() {
-        this.userInput.run();
+        List<Car> carList = this.userInputManager.createCar();
+        int repeat = this.userInputManager.createRepeat();
+        this.userInputManager.close();
+        this.racing.setting(carList, repeat);
+        this.racing.start();
     }
 
 

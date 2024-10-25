@@ -3,55 +3,50 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
-public class UserInput {
+public class UserInputManager {
     private int repeat;
     private List<String> carNameList;
 
-    public UserInput() {
+    public UserInputManager() {
         this.repeat = 0;
         this.carNameList = new ArrayList<>();
     }
 
-    public void initialize() {
-
-    }
-
-    public void run() {
-        carNameInput();
-        repeatInput();
-    }
-
-    public void finish() {
+    public void close() {
         Console.close();
     }
 
-    private void carNameInput() {
+    public List<Car> createCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
         String carNameLine = Console.readLine();
         String[] carNames = carNameLine.split(",");
         for (String carName : carNames) {
             carNameValidate(carName);
             this.carNameList.add(carName);
         }
+
+        return this.carNameList.stream()
+                .map(Car::new)
+                .toList();
     }
 
     private void carNameValidate(String carName) {
-        if (carName.length() > 6) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다.");
-        }
-
         if (carNameList.contains(carName)) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
-
     }
 
-    private void repeatInput() {
+    public int createRepeat() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+
         String userInput = Console.readLine();
         repeatValidate(userInput);
         this.repeat = Integer.parseInt(userInput);
+
+        return this.repeat;
     }
 
     private void repeatValidate(String userInput) {
