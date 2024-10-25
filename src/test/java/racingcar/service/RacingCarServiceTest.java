@@ -45,4 +45,14 @@ class RacingCarServiceTest {
         assertThat(racingCarList.get(3).getDistance()).isEqualTo(8);
     }
 
+    @Test
+    void testWinnerCars() {
+        // Given & When
+        List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCarList);
+
+        // Then
+        assertThat(winnerRacingCars).hasSize(2)
+                .extracting(RacingCar::getCarName)
+                .containsExactlyInAnyOrder("CarA", "CarD");
+    }
 }
