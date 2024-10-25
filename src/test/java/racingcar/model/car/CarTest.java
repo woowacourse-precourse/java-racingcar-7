@@ -44,24 +44,4 @@ public class CarTest {
         Lap expectedRemainingLap = Lap.from("2");
         assertThat(remainLap.equals(expectedRemainingLap)).isTrue();
     }
-
-    @Test
-    @DisplayName("movement value가 0일 때 내 현황 수정할 수 없음.")
-    void canNotUpdateMyProgress() {
-        // given
-        Lap remainLap = Lap.from("3");
-        Position position = Position.initiate();
-        ReflectionUtil.forceSetField(position, "value", "---");
-        MyProgress myProgress = MyProgress.from(remainLap, position);
-        Car sut = Car.from("user1", myProgress);
-
-        // when
-        sut.updateProgress(Distance.ZERO);
-
-        // then
-        assertThat(position.toString()).isEqualTo("---");
-        Lap expectedRemainingLap = Lap.from("3");
-        assertThat(remainLap.equals(expectedRemainingLap)).isTrue();
-
-    }
 }

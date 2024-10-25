@@ -35,10 +35,8 @@ public class Car {
     }
 
     public void updateProgress(final Distance distance) {
-        if (distance.isBiggerThanZero()) {
-            myProgress.updatePosition(distance);
-            myProgress.updateRemainingLap();
-        }
+        myProgress.updatePosition(distance);
+        myProgress.updateRemainingLap();
     }
 
     public String myProgressSummary() {

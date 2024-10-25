@@ -20,7 +20,9 @@ public class Cars {
     public void move() {
         for (Car car : cars) {
             Distance distance = car.movableDistance();
-            car.updateProgress(distance);
+            if (distance.isBiggerThanZero()) {
+                car.updateProgress(distance);
+            }
         }
     }
 

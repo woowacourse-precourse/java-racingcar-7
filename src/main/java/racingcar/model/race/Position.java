@@ -15,9 +15,6 @@ public class Position {
     }
 
     public void add(final Distance distance) {
-        if (distance.isZero()) {
-            return;
-        }
         this.value = generateNextPosition(distance);
     }
 
