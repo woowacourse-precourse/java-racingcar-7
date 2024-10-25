@@ -68,11 +68,23 @@
 ### Controller
 
 ---
-> 사용자와의 입/출력을 담당한다.
+> 사용자와의 입/출력을 바탕으로 service를 호출한다.
 
 - `executeRaceAndGetWinner()`
 
     service를 통하여 race 로직을 실행시키고, 사용자에게 결과를 return한다.
+
+### Parser
+
+---
+> 사용자의 Input를 DTO에 사용가능한 구조로 변환한다.
+
+
+### ConsoleHandler
+
+---
+> 사용자의 console input/output를 담당한다.
+
 
 ### Validator
 
