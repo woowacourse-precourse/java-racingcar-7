@@ -2,7 +2,6 @@ package racingcar.util;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.validator.InputValidator;
 
 public class InputFormatter {
 
@@ -11,12 +10,12 @@ public class InputFormatter {
     public static List<String> getFormattedCarNames(String carInput) {
         String[] carNames = carInput.split(DELIMITER);
         List<String> beforeConvertCars = Arrays.stream(carNames).map(String::trim).toList();
-        InputValidator.validateCarNames(beforeConvertCars);
+        Validator.validateCarNames(beforeConvertCars);
         return beforeConvertCars;
     }
 
     public static int getFormattedCount(String countInput) {
-        InputValidator.validateCount(countInput);
+        Validator.validateCount(countInput);
         return Integer.parseInt(countInput);
     }
 }

@@ -1,4 +1,4 @@
-package racingcar.validator;
+package racingcar.util;
 
 import java.util.List;
 import racingcar.exception.CarNameDuplicatedException;
@@ -6,7 +6,7 @@ import racingcar.exception.CarNameFormatException;
 import racingcar.exception.CountFormatException;
 import racingcar.exception.CountNegativeException;
 
-public class InputValidator {
+public class Validator {
 
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
