@@ -14,7 +14,7 @@
 ### 입력값 나누기
 - [x] 입력값을 "," 기준으로 나눈다
   - Exception
-  - [ ] 자동차 이름이 5자를 넘어설 경우, IllegalArgumentException을 발생시킨다
+  - [x] 자동차 이름이 5자를 넘어설 경우, IllegalArgumentException을 발생시킨다
 
 ### 무작위 숫자 생성
 - [x] 0~9 사이의 무작위 값을 생성한다
