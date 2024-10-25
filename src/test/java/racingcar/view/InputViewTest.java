@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.domain.TryCount;
+
 public class InputViewTest {
 
     @Test
@@ -32,9 +34,16 @@ public class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-99", "-1", "예외케이스"})
-    void 시도_횟수가_잘못된_경우(String input) {
-        assertThatThrownBy(() -> InputView.validateTryCount(input))
+    @ValueSource(strings = {"", " ", "예외케이스"})
+    void 시도_횟수가_숫자가_아닌_경우_예외(String input) {
+        assertThatThrownBy(() -> InputView.convertToInt(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-99, -1})
+    void 시도_횟수가_음수인_경우_예외(int input) {
+        assertThatThrownBy(() -> new TryCount(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
