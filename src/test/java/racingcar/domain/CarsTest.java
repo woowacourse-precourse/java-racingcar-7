@@ -66,4 +66,33 @@ class CarsTest {
         // Then
         cars.get().forEach(car -> assertThat(car.getPosition()).isEqualTo(expectedPosition));
     }
+
+    @Test
+    @DisplayName("우승자의 이름을 반환한다.")
+    void 우승자_찾기() {
+        // Given
+        Cars cars = new Cars("car1,car2,car3");
+
+        // When
+        cars.attemptCarMovements(() -> false); // 모든 자동차 멈춤
+        cars.get().get(1).move(() -> true); // 두 번째 자동차만 이동
+
+        // Then
+        assertThat(cars.getWinners()).containsExactly("car2");
+    }
+
+    @Test
+    @DisplayName("우승자가 여러 명일 경우 공동 우승자를 반환한다.")
+    void 공동_우승자_찾기() {
+        // Given
+        Cars cars = new Cars("car1,car2,car3");
+
+        // When
+        cars.attemptCarMovements(() -> false); // 모든 자동차 멈춤
+        cars.get().get(1).move(() -> true); // 두 번째 자동차만 이동
+        cars.get().get(2).move(() -> true); // 세 번째 자동차도 이동
+
+        // Then
+        assertThat(cars.getWinners()).containsExactly("car2", "car3");
+    }
 }
