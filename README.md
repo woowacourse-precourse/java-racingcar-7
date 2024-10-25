@@ -87,21 +87,45 @@ pobi : ----- woni : ---- jun : -----
 - `pobi`와 `jun`이 동일한 거리를 전진하여 공동 우승자가 되었습니다.
 
 ## 파일구조
+```bash
 src/
-- │
-- ├── controller/
-- │   ├── RaceController.java
-- │
-- ├── model/
-- │   ├── Car.java
-- │   ├── Race.java
-- │
-- ├── view/
-- │   ├── InputView.java
-- │   ├── OutputView.java
-- │
-- ├── Application.java
-- │
-- └── test/
-- ├── CarTest.java
-- ├── RaceTest.java
+ │
+ ├── controller/
+ │   ├── RaceController.java
+ │
+ ├── model/
+ │   ├── Car.java
+ │   ├── Race.java
+ │
+ ├── view/
+ │   ├── InputView.java
+ │   ├── OutputView.java
+ │
+ ├── Application.java
+```
+
+## 테스트 케이스
+
+# 1. 정상 입력에 대한 테스트
+-   입력: 경주할 자동차 이름: pobi,woni,jun, 시도할 횟수: 5
+-   기대 출력: 각 차수별 전진 결과와 최종 우승자 출력
+
+# 2. 자동차 이름이 빈 문자열인 경우
+-   입력: 경주할 자동차 이름: pobi,,jun, 시도할 횟수: 5
+-   기대 출력: IllegalArgumentException 발생
+
+# 3. 자동차 이름에 공백이 포함된 경우
+-   입력: 경주할 자동차 이름: pobi,java ,jun, 시도할 횟수: 5
+-   기대 출력: IllegalArgumentException 발생
+
+# 4. 자동차 이름이 5자를 초과한 경우
+-   입력: 경주할 자동차 이름: pobi,javascript,jun, 시도할 횟수: 5
+-   기대 출력: IllegalArgumentException 발생
+
+# 5. 시도 횟수가 0인 경우
+-   입력: 경주할 자동차 이름: pobi,jun, 시도할 횟수: 0
+-   기대 출력: IllegalArgumentException 발생
+
+# 6. 시도 횟수가 음수인 경우
+-   입력: 경주할 자동차 이름: pobi,jun, 시도할 횟수: -1
+-   기대 출력: IllegalArgumentException 발생
