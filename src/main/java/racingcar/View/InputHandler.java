@@ -54,11 +54,20 @@ public class InputHandler {
 
     public int moveAttemptCount() {
         String userInput = Console.readLine();
+        parseToInt(userInput);
         validateAttemptCount(userInput);
         return moveAttemptCount;
     }
 
     private void validateAttemptCount(String userInput) {
         checkNumeric(userInput);
+    }
+
+    private void parseToInt(String userInput) {
+        try {
+            moveAttemptCount = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도횟수는 숫자여야 합니다.");
+        }
     }
 }
