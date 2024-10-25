@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class RacingService {
     private List<Car> resultCars;
 
-    public List<RacingResult> play(List<Car> cars, int attemptCount){
+    public List<RacingResult> play(List<Car> cars, int attemptCount) {
         List<RacingResult> racingResults = new ArrayList<>();
 
         for (int i = 0; i < attemptCount; i++) {
@@ -23,7 +23,7 @@ public class RacingService {
         return racingResults;
     }
 
-    public String getPlayWinner(){
+    public String getPlayWinner() {
         int maxMoveCount = resultCars.stream()
                 .mapToInt(Car::getMoveCount)
                 .max()
@@ -36,15 +36,15 @@ public class RacingService {
 
     }
 
-    public void playAttemptCount(List<Car> cars){
+    public void playAttemptCount(List<Car> cars) {
         for (Car car : cars) {
-            if(isPossibleMove()){
+            if (isPossibleMove()) {
                 car.move();
             }
         }
     }
 
-    private boolean isPossibleMove(){
+    private boolean isPossibleMove() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         return randomNumber >= 4;
     }

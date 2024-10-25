@@ -22,7 +22,7 @@ public class RacingController {
         this.racingService = racingService;
     }
 
-    public void run(){
+    public void run() {
         inputView.inputViewCars();
         String cars = inputService.inputValue();
         inputView.inputViewCount();
