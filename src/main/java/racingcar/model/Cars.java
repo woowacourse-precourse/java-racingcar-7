@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -27,4 +28,14 @@ public class Cars {
         return cars.size();
     }
 
+    public List<Car> getCarList() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    public Car getCar(String name) {
+        return cars.stream()
+            .filter(car -> car.getName().equals(name))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("해당 이름의 자동차가 존재하지 않습니다."));
+    }
 }
