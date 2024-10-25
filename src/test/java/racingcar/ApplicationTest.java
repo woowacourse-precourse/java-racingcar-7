@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    private static final int MAX_VALUE = Integer.MAX_VALUE;
 
     @DisplayName("자동차 이름 중복 테스트")
     @Test
@@ -63,6 +64,15 @@ class ApplicationTest extends NsTest {
     void 음수_값() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,woni","-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("이동 횟수로 int 범위를 넘어서는 값 입력 테스트")
+    @Test
+    void 범위를_넘어서는_값() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("pobi,woni", String.valueOf((long)MAX_VALUE + 1)))
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
