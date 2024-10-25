@@ -38,7 +38,7 @@ public class InputValidator {
     private static void validateCountFormat(String countInput) {
         try {
             Integer.parseInt(countInput);
-        } catch (IllegalStateException e) {
+        } catch (NumberFormatException e) {
             throw new CountFormatException();
         }
     }
