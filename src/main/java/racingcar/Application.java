@@ -29,13 +29,11 @@ public class Application {
 
     private static void raceStart(List<Vehicle> vehicles, int raceRounds) {
         for (int i = 0; i < raceRounds; i++) {
-            getRandom(vehicles);
+            processRound(vehicles);
         }
     }
 
-    private static void getRandom(List<Vehicle> vehicles) {
-        vehicles.forEach(vehicle -> {
-            Randoms.pickNumberInRange(0, 9);
-        });
+    private static void processRound(List<Vehicle> vehicles) {
+        vehicles.forEach(vehicle -> vehicle.moveOrStay(Randoms.pickNumberInRange(0, 9)));
     }
 }
