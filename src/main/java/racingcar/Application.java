@@ -3,8 +3,6 @@ package racingcar;
 import racingcar.io.Input;
 import racingcar.io.Output;
 
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
         //초기화
