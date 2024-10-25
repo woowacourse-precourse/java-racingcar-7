@@ -3,12 +3,14 @@ package racingcar;
 import racingcar.controller.CarRacingController;
 import racingcar.service.CarService;
 import racingcar.service.GameService;
+import racingcar.service.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        CarService carService = new CarService();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        CarService carService = new CarService(randomNumberGenerator);
         GameService gameService = new GameService();
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();

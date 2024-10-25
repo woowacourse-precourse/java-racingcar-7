@@ -1,13 +1,18 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.interfaces.NumberGenerator;
 
 public class CarService {
 
     private static final int FORWARD_CONDITION = 4;
+    private final NumberGenerator numberGenerator;
+
+    public CarService(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     public List<Car> createCars(String[] carNames) {
         return Arrays.stream(carNames).map(String::trim).peek(name -> {
@@ -18,7 +23,7 @@ public class CarService {
     }
 
     private boolean canMove() {
-        if (Randoms.pickNumberInRange(0, 9) >= FORWARD_CONDITION) {
+        if (numberGenerator.generate() >= FORWARD_CONDITION) {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
