@@ -45,4 +45,19 @@ class SepatorTest {
 
     }
 
+    @Test
+    public void 자동차_이름이_5자보다_큰경우_테스트() throws Exception {
+        //given
+        String input1 = "Faker,Zeus,Uzi";
+        String input2 = "Kkoma,ShowMaker,";
+
+        //when
+        Sepator sepator = new Sepator();
+
+        //then
+        List<Car> cars1 = sepator.separateCars(input1);
+        assertEquals(cars1.size(), 3);
+        assertThrows(IllegalArgumentException.class, ()-> sepator.separateCars(input2), Message.CAR_NAME_LENGTH_LIMIT_VALIDATION_MESSAGE.getMessage());
+    }
+
 }
