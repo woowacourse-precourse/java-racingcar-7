@@ -36,12 +36,10 @@ public class Validator {
     }
 
     private static int validateParseInt(String inputNumber) {
-        int cycle;
         try {
-            cycle = Integer.parseInt(inputNumber);
+             return Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-        return cycle;
     }
 }
