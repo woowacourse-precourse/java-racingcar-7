@@ -16,7 +16,7 @@ public class Prompt {
         try {
             tryCount = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("반복 횟수가 너무 많습니다.");
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
         System.out.println();
         return tryCount;
