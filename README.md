@@ -8,7 +8,7 @@
 - [x]  자동차의 이름들을 받아온 후 Validation 진행
   → Validation 역할을 맡는 객체 생성
 - [x]  자동차의 이름들에 대한 Validation 진행 후 몇 번의 이동을 할 것인지를 입력 및 Validation
-- [ ]  Validation이 통과되면 자동차 객체 생성
+- [x]  Validation이 통과되면 자동차 객체 생성
   → 각각의 자동차 객체를 생성 및 관리
 - [ ]  N번에 해당하는 이동 실행
   → 각각의 이동 시 자동차 객체의 상태를 출력
