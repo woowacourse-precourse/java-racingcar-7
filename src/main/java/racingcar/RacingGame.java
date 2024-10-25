@@ -28,4 +28,15 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
+    public void doGame() {
+        System.out.println("실행 결과");
+        while (this.tryCount > 0) {
+            for (Car car : cars) {
+                car.moveOrStay();
+            }
+            System.out.println();
+            --this.tryCount;
+        }
+    }
+
 }

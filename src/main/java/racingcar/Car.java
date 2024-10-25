@@ -17,4 +17,10 @@ public class Car {
         return moveCount;
     }
 
+    public void moveOrStay() {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
+            ++moveCount;
+        }
+    }
 }
