@@ -8,7 +8,7 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private static final int MAX_CAR_NAME_SIZE = 5;
-    public static final int ONE_MOVE = 1;
+    private static final int ONE_MOVE = 1;
 
     private final String name;
     private int position;
