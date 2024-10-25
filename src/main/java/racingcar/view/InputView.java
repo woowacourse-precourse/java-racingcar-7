@@ -25,6 +25,7 @@ public class InputView {
 
     public int readAttempts(){
         String input = Console.readLine();
+        validator.checkAttemptInput(input);
         return Integer.parseInt(input);
     }
     

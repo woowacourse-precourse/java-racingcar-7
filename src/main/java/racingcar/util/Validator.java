@@ -1,7 +1,8 @@
 package racingcar.util;
 
-import static racingcar.constant.ErrorMessage.CARNAME_BLANK_EXCEPTION;
-import static racingcar.constant.ErrorMessage.CARNAME_LENGTH_EXCEPTION;
+import java.util.regex.Pattern;
+
+import static racingcar.constant.ErrorMessage.*;
 
 public class Validator {
 
@@ -17,5 +18,10 @@ public class Validator {
         }
     }
 
-
+    public void checkAttemptInput(String input) {
+        String regex = "[0-9]+";
+        if (!Pattern.matches(regex, input)) {
+            throw new IllegalArgumentException(ATTEMPTS_FORMAT_EXCEPTION.getMessage() + input);
+        }
+    }
 }
