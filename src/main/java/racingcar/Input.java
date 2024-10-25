@@ -15,6 +15,13 @@ public class Input {
                 .toList();
     }
 
+    public int getRoundInput(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String round = Console.readLine();
+        checkRoundInt(round);
+        return Integer.parseInt(round);
+    }
+
     public void checkValidation(String name) {
         checkIsEmpty(name);
         checkNameLength(name);
@@ -32,7 +39,7 @@ public class Input {
         try{
             Integer.parseInt(round);
         }catch (NumberFormatException  e){
-            throw  new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
     }
 
