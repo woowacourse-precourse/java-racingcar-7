@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ public class RacingCarController {
         List<Car> cars = makeCars(InputView.inputCarNames());
         int numberOfRounds = InputView.inputNumberOfRounds();
         playGame(cars, numberOfRounds);
-        // Todo. OutView 에서 List<String> Winners 을 형식에 맞게 출력하는 코드 구현해서 추가
+        List<String> winnersName = findWinnersName(cars);
+        OutputView.printWinners(winnersName);
     }
 
     private List<Car> makeCars(String[] carNames){
@@ -24,12 +26,14 @@ public class RacingCarController {
     }
 
     private void playOneRound(List<Car> cars){
+        List<String> roundResults = new ArrayList<>();
         for(Car car : cars){
             if(Randoms.pickNumberInRange(0, 9) >= 4){
                 car.move();
             }
+            roundResults.add(car.getName() + " : " + car.displayPosition());
         }
-        // Todo. OutputView 에서 각 라운드 종료 이후 각 car 의 position 을 형식에 맞게 출력하는 코드 구현해서 추가
+        OutputView.printRoundResults(roundResults);
     }
 
     private void playGame(List<Car> cars, int numberOfRounds){
