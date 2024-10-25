@@ -9,6 +9,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public void move(int random) {
         if (random >= 4) {
             position++;

@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -14,14 +16,14 @@ public class CarsTest {
         cars.add(car1);
         cars.add(car2);
         if (position1 == position2) {
-            assertThat(cars.getWinners().get(0).getPosition()).isEqualsTo(car1);
-            assertThat(cars.getWinners().get(1).getPosition()).isEqualsTo(car2);
+            assertThat(cars.getWinners().get(0)).isEqualTo(car1);
+            assertThat(cars.getWinners().get(1)).isEqualTo(car2);
             return;
         }
         if (position1 > position2) {
-            assertThat(cars.getWinners().get(0).getPosition()).isEqualsTo(car1);
+            assertThat(cars.getWinners().get(0)).isEqualTo(car1);
             return;
         }
-        assertThat(cars.getWinners().get(0).getPosition()).isEqualsTo(car2);
+        assertThat(cars.getWinners().get(0)).isEqualTo(car2);
     }
 }
