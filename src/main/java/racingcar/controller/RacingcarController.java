@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.RacingGame;
 import racingcar.domain.Racingcar;
+import racingcar.domain.Racingcars;
 import racingcar.utils.Utils;
 import racingcar.view.InputView;
 
@@ -18,7 +19,7 @@ public class RacingcarController {
     }
 
     private void initRacingGame(){
-        List<Racingcar> racingcars = RacingGame.createRacingcars(inputRacingcarNames());
+        Racingcars racingcars = new Racingcars(inputRacingcarNames());
         int racingGameCount = inputRacingGameCount();
         racingGame = new RacingGame(racingcars, racingGameCount);
     }

@@ -9,20 +9,13 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private List<Racingcar> racingcars;
+    private Racingcars racingcars;
     private int racingGameCount;
 
-    public RacingGame(List<Racingcar> racingcars, int racingGameCount) {
-        Validation.validateRacingcarNamesDuplicate(racingcars);
+    public RacingGame(Racingcars racingcars, int racingGameCount) {
         Validation.validateRacingGameCount(racingGameCount);
         this.racingcars = racingcars;
         this.racingGameCount = racingGameCount;
-    }
-
-    public static List<Racingcar> createRacingcars(List<String> racingcarNames){
-        return racingcarNames.stream()
-                .map(Racingcar::new)
-                .collect(Collectors.toList());
     }
 
     public void startRacingGame(){
@@ -35,7 +28,7 @@ public class RacingGame {
     }
 
     private void startGameRound(){
-        racingcars.stream()
+        racingcars.getRacingcars().stream()
                 .forEach(Racingcar::goFoward);
     }
 
@@ -44,14 +37,14 @@ public class RacingGame {
     }
 
     public List<String> getWinner(){
-        return racingcars.stream()
+        return racingcars.getRacingcars().stream()
                 .filter(racingcar -> racingcar.isWinner(getWinningStep()))
                 .map(Racingcar::getName)
                 .collect(Collectors.toList());
     }
 
     public int getWinningStep(){
-        List<Integer> steps = racingcars.stream()
+        List<Integer> steps = racingcars.getRacingcars().stream()
                 .map(Racingcar::getStep)
                 .collect(Collectors.toList());
         return Utils.getMaxValue(steps);

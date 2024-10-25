@@ -12,11 +12,10 @@ public class Validation {
 
     private static int MAX_RACINGCAR_NAME_LENGTH = 5;
 
-    public static void validateRacingcarNamesDuplicate(List<Racingcar> racingcars){
-        Set<String> setRacingcarNames = racingcars.stream()
-                .map(Racingcar::getName)
+    public static void validateRacingcarNamesDuplicate(List<String> racingcarNames){
+        Set<String> setRacingcarNames = racingcarNames.stream()
                 .collect(Collectors.toSet());
-        if(setRacingcarNames.size() != racingcars.size()){
+        if(setRacingcarNames.size() != racingcarNames.size()){
             ErrorView.printRacingcarDuplicateNameErrorMessage();
             throw new IllegalArgumentException();
         }
