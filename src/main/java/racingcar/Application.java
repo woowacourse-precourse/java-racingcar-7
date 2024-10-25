@@ -19,11 +19,8 @@ public class Application {
 
         Race race = new Race();
 
-        race.racing(carList, attemptCount);
+        race.start(carList, attemptCount);
 
-        race.findWinner(carList);
-
-        race.getWinnerList();
     }
 
     public static List<Car> splitCarNames(String carNames, int attemptCount) {

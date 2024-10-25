@@ -10,6 +10,14 @@ public class Race {
         winnerList = new ArrayList<>();
     }
 
+    public void start(List<Car> carList, int attemptCount) {
+        racing(carList, attemptCount);
+
+        findWinner(carList);
+
+        getWinnerList();
+    }
+
     public void racing(List<Car> carList, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
             for (Car car : carList) {
