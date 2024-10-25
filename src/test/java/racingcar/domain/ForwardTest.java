@@ -14,7 +14,7 @@ public class ForwardTest {
     void validateNumber(String candidate) {
         assertThatThrownBy(() -> Forward.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("전진을 시도할 횟수는 숫자만 입력 가능합나다.");
+                .hasMessage("전진을 시도할 횟수는 0~9 사이의 숫자만 입력 가능합나다.");
     }
 
     @ParameterizedTest
@@ -23,7 +23,7 @@ public class ForwardTest {
     void validateNonNegativeNumber(String candidate) {
         assertThatThrownBy(() -> Forward.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("전진을 시도할 횟수는 숫자만 입력 가능합나다.");
+                .hasMessage("전진을 시도할 횟수는 0~9 사이의 숫자만 입력 가능합나다.");
     }
 
 }

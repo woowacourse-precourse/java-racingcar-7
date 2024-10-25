@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.constans.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_NUMERIC;
+import static racingcar.constans.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_SINGLE_DIGIT;
 
 public class Forward {
 
@@ -31,7 +31,7 @@ public class Forward {
 
         private static void validateNumeric(String number) {
             if (!number.matches("[0-9]")) {
-                throw new IllegalArgumentException(FORWARD_COUNT_MUST_BE_NUMERIC.getMessage());
+                throw new IllegalArgumentException(FORWARD_COUNT_MUST_BE_SINGLE_DIGIT.getMessage());
             }
         }
 
