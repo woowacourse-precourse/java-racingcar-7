@@ -3,7 +3,6 @@ package io;
 import car.Car;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarOutputHandler {
 
@@ -23,13 +22,15 @@ public class RacingCarOutputHandler {
         return stringPosition.toString();
     }
 
-    public void displayFinalResult(List<Car> carList) {
+    public String displayFinalResult(List<Car> carList) {
         int maxPosition = findMaxPosition(carList);
         List<String> winnerList = getWinnerList(carList, maxPosition);
 
         System.out.println();
         String stringWinnerList = String.join(", ", winnerList);
         System.out.println("최종 우승자 : " + stringWinnerList);
+
+        return stringWinnerList;
     }
 
     private static int findMaxPosition(List<Car> carList) {
