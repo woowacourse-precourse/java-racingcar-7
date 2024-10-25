@@ -17,7 +17,7 @@ public class Application {
 
         System.out.println("\n실행 결과");
 
-        Map<String, Integer> carsAfterRace = doRace(carsBeforeRace, moveNumber);
+        Map<String, Integer> carsAfterRace = doRaceAndPrintRaceStatus(carsBeforeRace, moveNumber);
 
 
     }
@@ -52,7 +52,7 @@ public class Application {
         }
     }
 
-    public static Map<String, Integer> doRace(Map<String, Integer> cars, int moveNumber) {
+    public static Map<String, Integer> doRaceAndPrintRaceStatus(Map<String, Integer> cars, int moveNumber) {
         for (int i = 0; i < moveNumber; i++) {
             String[] carNames = cars.keySet().toArray(new String[0]);
             for (String carName : carNames) {
@@ -60,6 +60,9 @@ public class Application {
                 if (Randoms.pickNumberInRange(0, 9) >= 4) {
                     cars.replace(carName, moveDistance + 1);
                 }
+            }
+            for (String carName : carNames) {
+                System.out.println(carName + " : " + "-".repeat(cars.get(carName)));
             }
         }
         return cars;

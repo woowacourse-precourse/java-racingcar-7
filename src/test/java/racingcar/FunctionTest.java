@@ -65,7 +65,7 @@ public class FunctionTest {
 
         camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest(
                 () -> {
-                    Map<String, Integer> carsAfterRace = Application.doRace(cars, 1);
+                    Map<String, Integer> carsAfterRace = Application.doRaceAndPrintRaceStatus(cars, 1);
                     assertThat(carsAfterRace.get(testName1)).isEqualTo(1);
                     assertThat(carsAfterRace.get(testName2)).isEqualTo(0);
                 },
