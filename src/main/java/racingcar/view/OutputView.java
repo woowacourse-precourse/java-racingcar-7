@@ -15,6 +15,10 @@ public class OutputView {
         System.out.println(name + " : " + movement);
     }
 
+    public void printGameRoundSeparator(){
+        System.out.println();
+    }
+
     public void printGameWinner(String winner) {
         System.out.println(OUTPUT_GAME_WINNER_MESSAGE + winner);
     }
