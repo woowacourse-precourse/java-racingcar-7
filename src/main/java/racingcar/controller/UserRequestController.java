@@ -5,6 +5,7 @@ import racingcar.service.RacingService;
 import racingcar.service.ValidService;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class UserRequestController {
     UserViewController userViewController = new UserViewController();
@@ -27,6 +28,11 @@ public class UserRequestController {
 
     private void saveCar(String carNames){
         List<String> carList = List.of(carNames.split(","));
+        for(String car : carList){
+            int idx = carList.indexOf(car);
+            car = car.trim();
+            carList.set(idx, car);
+        }
         cars = new Cars(carList);
     }
 
