@@ -20,7 +20,7 @@ public class RacingCarController {
         // 시도 횟수 입력
         view.getTryInputString();
         String tryInputString = Console.readLine();
-        checkTryNumLength(tryInputString);
+        checkTryNumLength(tryInputString.trim());
         tryNum = Integer.parseInt(tryInputString);
 
         // race
