@@ -2,7 +2,16 @@ package racingcar.util;
 
 public class InputValidator {
 
-    public static void validateCarName(String input) {
+    public static void validate(String carNames, String moves) {
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            validateCarName(name);
+        }
+
+        validateMoves(moves);
+    }
+
+    private static void validateCarName(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 입력값이 없습니다.");
         }
@@ -12,7 +21,7 @@ public class InputValidator {
         }
     }
 
-    public static void validateMoves(String input) {
+    private static void validateMoves(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 입력값이 없습니다.");
         }
