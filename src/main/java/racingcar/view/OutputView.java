@@ -19,4 +19,12 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printWinners(List<Car> winners) {
+        System.out.print("최종 우승자 : ");
+        System.out.println(winners.stream()
+                .map(Car::getCarName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse(""));
+    }
 }
