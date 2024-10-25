@@ -21,10 +21,8 @@ public class IOHandler {
 
     public int setRaceCycle() {
         System.out.println(INPUT_CYCLE_MESSAGE);
-        int cycle;
         String cycleInput = Console.readLine();
-        cycle = validator.validateCycle(cycleInput);
-        return cycle;
+        return validator.validateCycle(cycleInput);
     }
 
     public void printRaceState(RacingCar racingCar) {
