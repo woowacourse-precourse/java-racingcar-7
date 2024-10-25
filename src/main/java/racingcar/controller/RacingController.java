@@ -1,12 +1,15 @@
 package racingcar.controller;
 
-import racingcar.domain.Race;
+import racingcar.domain.Cars;
+import racingcar.utils.TryCountParser;
+import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryCountValidator;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
 
 import java.util.List;
 
+import static java.util.stream.IntStream.range;
 import static racingcar.view.output.OutputView.*;
 
 public class RacingController {
@@ -20,21 +23,19 @@ public class RacingController {
 
     public void run() {
         String carNames = getCarNames();
+        Cars cars = initializeRace(carNames);
+
         int tryCount = getTryCount();
 
-        Race race = initializeRace(carNames, tryCount);
-
-        raceStart(race);
-        determineWinners(race);
+        raceStart(cars, tryCount);
+        determineWinners(cars);
     }
 
     private int getTryCount() {
         outputView.printMessage(ASK_TRY_COUNT);
-
         String input = inputView.userInput();
-        TryCountValidator.validateTryCount(input);
 
-        return Integer.parseInt(input);
+        return TryCountParser.parse(input);
     }
 
     private String getCarNames() {
@@ -43,26 +44,29 @@ public class RacingController {
         return inputView.userInput();
     }
 
-    private Race initializeRace(String carNames, int tryCount) {
-        return new Race(carNames, tryCount);
+    private Cars initializeRace(String carNames) {
+        return new Cars(carNames);
     }
 
-    private void raceStart(Race race) {
+    private void raceStart(Cars cars, int tryCount) {
         outputView.printNewLine();
         outputView.printMessage(RESULT_TITLE);
 
-       do {
-           race.play();
-
-           List<String> roundResults = race.getRoundResults();
-
-           outputView.printRound(roundResults);
-           outputView.printNewLine();
-       } while (!race.isRaceOver());
+       range(0, tryCount)
+               .forEach(round -> playRound(cars));
     }
 
-    private void determineWinners(Race race) {
-        List<String> winners = race.getWinners();
+    private void playRound(Cars cars) {
+        cars.play();
+
+        List<String> roundResults = cars.getRoundResults();
+
+        outputView.printRound(roundResults);
+        outputView.printNewLine();
+    }
+
+    private void determineWinners(Cars cars) {
+        List<String> winners = cars.getWinners();
 
         outputView.printWinners(winners);
     }
