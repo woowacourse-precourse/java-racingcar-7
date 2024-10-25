@@ -3,6 +3,11 @@ package racingcar.user;
 public class UserInput {
 
     public String[] readNamesOfCars(String namesOfCarsInput) {
+
+        if (isInputNullOrEmpty(namesOfCarsInput)) {
+            throw new IllegalArgumentException("입력이 비어있을 수 없습니다.");
+        }
+
         String[] namesOfCars = namesOfCarsInput.split(",");
 
         for (String carName : namesOfCars) {
@@ -15,6 +20,11 @@ public class UserInput {
     }
 
     public int readNumberOfAttempts(String numberOfAttemptsInput) {
+
+        if (isInputNullOrEmpty(numberOfAttemptsInput)) {
+            throw new IllegalArgumentException("입력이 비어있을 수 없습니다.");
+        }
+
         if (!isValidNumberOfAttempts(numberOfAttemptsInput)) {
             throw new IllegalArgumentException("시도할 횟수(\"" + numberOfAttemptsInput + "\")에 대한 형식이 잘못되었습니다.");
         }
@@ -22,8 +32,13 @@ public class UserInput {
         return Integer.parseInt(numberOfAttemptsInput);
     }
 
+    private boolean isInputNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
+    }
+
     private boolean isValidCarName(String carName) {
-        return carName.length() > 5;
+        int carNameLength = carName.length();
+        return 0 < carNameLength && carNameLength <= 5;
     }
 
     private boolean isValidNumberOfAttempts(String numberOfAttemptsInput) {
