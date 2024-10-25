@@ -22,6 +22,7 @@
 
 - 자동차 이름으로 "" 혹은 " "가 입력된 경우 `IllegalArgumentException`을 반환한다.
   - 구분자가 연속으로 입력된 경우도 자동차 이름이 공백으로 들어온 경우와 동일하게 처리한다.
+- 자동차 이름이 5글자를 초과한 경우 `IllegalArgumentException`을 반환한다.
 - 시도 횟수가 숫자가 아닌 경우 `IllegalArgumentException`을 반환한다.
 - 시도 횟수가 음수인 경우 `IllegalArgumentException`을 반환한다.
 
