@@ -1,5 +1,8 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.Randoms.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -37,11 +40,26 @@ public class RacingCarSimulator {
 	}
 
 	private void initCarPosition() {
-		// TODO : 미구현
+		carPosition = new ArrayList<>(carNames.stream().map(name -> 0L).toList());
 	}
 
 	private void simulate() {
 		// TODO : 미구현
+	}
+
+	private void simulateOneCycle() {
+		for (int carIndex = 0; carIndex < carNames.size(); carIndex++) {
+			if (canMoveCar())
+				moveCar(carIndex);
+		}
+	}
+
+	public boolean canMoveCar() {
+		return pickNumberInRange(0, 9) >= 4;
+	}
+
+	private void moveCar(int carIndex) {
+		carPosition.set(carIndex, carPosition.get(carIndex) + 1);
 	}
 
 	private void printWinner() {
