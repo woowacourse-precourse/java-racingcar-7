@@ -15,8 +15,7 @@ public class RacingController {
 
     public void run() {
         List<String> racingCarNames = racingCarView.getRacingCarNames();
-        RacingCar racingCar1 = new RacingCar("car1");
-        RacingCar racingCar2 = new RacingCar("car2");
+        RacingCars racingCars = RacingCars.of(racingCarNames);
 
         RacingCars racingCars = new RacingCars(List.of(racingCar1, racingCar2));
 
