@@ -4,8 +4,8 @@ import racingcar.util.RandomNumberGenerator;
 
 public class Car {
 
-    public static final int MOVE_THRESHOLD = 4;
-    public static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
     private int position;
