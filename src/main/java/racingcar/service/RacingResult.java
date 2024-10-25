@@ -15,9 +15,9 @@ public class RacingResult {
 
     private Integer getCarRacingWinnerDistance(List<RacingCar> racingCars) {
         Integer carRacingWinnerRecord = 0;
-        for (RacingCar car : racingCars) {
-            if (carRacingWinnerRecord < car.getCarMovementDistance()) {
-                carRacingWinnerRecord = car.getCarMovementDistance();
+        for (RacingCar racingCar : racingCars) {
+            if (carRacingWinnerRecord < racingCar.getCarMovementDistance()) {
+                carRacingWinnerRecord = racingCar.getCarMovementDistance();
             } //메서드 분리 필요
         }
         return carRacingWinnerRecord;
@@ -25,9 +25,9 @@ public class RacingResult {
 
     private List<String> getCarRacingWinner(List<RacingCar> racingCars) {
         List<String> carRacingWinnerNames = new ArrayList<>();
-        for (RacingCar car : racingCars) {
-            if (car.getCarMovementDistance().equals(carRacingWinnerDistance)) {
-                carRacingWinnerNames.add(car.getCarName());
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getCarMovementDistance().equals(carRacingWinnerDistance)) {
+                carRacingWinnerNames.add(racingCar.getCarName());
             } //메서드 분리 필요
         }
         return carRacingWinnerNames;
