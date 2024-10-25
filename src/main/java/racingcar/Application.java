@@ -11,6 +11,9 @@ public class Application {
         List<String> carNames = inputCarNames();
         List<Car> cars = createCars(carNames);
         int tryCount = inputTryCount();
+
+        RacingGame game = new RacingGame(cars, tryCount);
+        game.play();
     }
 
     private static List<String> inputCarNames() {
