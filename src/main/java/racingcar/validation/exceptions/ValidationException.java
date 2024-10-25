@@ -1,4 +1,4 @@
-package racingcar.validation;
+package racingcar.validation.exceptions;
 
 /**
  * packageName    : racingcar.validation

@@ -2,6 +2,7 @@ package racingcar.validation;
 
 import java.util.List;
 import racingcar.domain.dto.CarsSaveRequestDto;
+import racingcar.validation.exceptions.ValidationException;
 
 /**
  * packageName    : racingcar.validation
