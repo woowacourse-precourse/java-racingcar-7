@@ -16,7 +16,7 @@ public class InputCarNames {
         return parsingName(cars);
     }
 
-    public List<String> parsingName(String cars) {
+    private List<String> parsingName(String cars) {
         NameValidiator check = new NameValidiator();
 
         List<String> carsList = List.of(cars.split(","));
