@@ -28,9 +28,9 @@ class WinnersTest {
 
         // when
         Winners winners = Winners.from(carList);
-        String result = winners.result();
+        Message result = winners.result();
 
         // then
-        assertThat(result).isEqualTo(WINNER_RESULT + carList);
+        assertThat(result).isEqualTo(new Message(WINNER_RESULT + carList));
     }
 }

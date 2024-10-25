@@ -56,8 +56,10 @@ class CarTest {
     @DisplayName("최대 값 테스트 : 최대 반복 횟수 확인")
     void carTestMaxCount() {
         String name = "c";
-        int tryCount = 100000000;
-        int increase = 10000000;
+
+        // 테스트 결과 1410000000 정도에서 메모리 초과
+        int tryCount = 1410000000;
+        int increase = 1000;
         boolean memoryExceeded = false;
 
         while (!memoryExceeded) {

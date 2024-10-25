@@ -30,6 +30,7 @@ public class TryCount {
     private Integer parseAndValidateInput(String input) {
         Integer parsedCount = parseInput(input);
         validateParsedCount(parsedCount);
+
         return parsedCount;
     }
 

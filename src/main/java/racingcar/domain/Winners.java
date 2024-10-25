@@ -15,20 +15,21 @@ public class Winners {
 
     public static Winners from(CarList carList) {
         List<Car> winners = carList.toWinners();
+
         return new Winners(winners);
     }
 
     // 최종 승자를 반환합니다.
-    public String result() {
+    public Message result() {
         StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
 
         for (Car car : winnerList) {
             String carName = car.toString();
             stringJoiner.add(carName);
         }
-        String result = stringJoiner.toString();
+        String result = WINNER_RESULT + stringJoiner;
 
-        return WINNER_RESULT + result;
+        return new Message(result);
     }
 
 }
