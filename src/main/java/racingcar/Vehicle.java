@@ -10,7 +10,7 @@ public class Vehicle {
     private int currentDistance;
 
     public Vehicle(String vehicleName) {
-        if (vehicleName.isBlank()) {
+        if (vehicleName == null || vehicleName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
         if (vehicleName.length() > MAX_NAME_LENGTH) {
