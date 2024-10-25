@@ -97,3 +97,13 @@
     - getMoveForwardTimes(long raceTimes)
 
       => Random에서 random value를 받아서 4 이상이 횟수를 count하여 return한다.
+
+### DTO
+- RaceRequestDTO
+
+    이름, 횟수를 controller -> service로 전달하기 위해 사용한다.
+
+
+- RaceResponseDTO
+
+    List<Car>로 전달된 객체를 string으로 변환하여 controller에 다시 전달.
