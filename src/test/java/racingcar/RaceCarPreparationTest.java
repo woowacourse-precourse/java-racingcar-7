@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RacePreparationTest {
+class RaceCarPreparationTest {
     private RacePreparation racePreparation;
 
     @BeforeEach
