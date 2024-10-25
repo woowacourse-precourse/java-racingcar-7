@@ -16,4 +16,12 @@ public class Car {
     public String getCarName() {
         return this.name;
     }
+
+    public void printForwardLevel() {
+        System.out.print(this.name + " : ");
+        for (int i = 0; i < this.forwardLevel; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }

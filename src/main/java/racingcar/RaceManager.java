@@ -23,6 +23,12 @@ public class RaceManager {
         }
     }
 
+    public void showProgressOfGame() {
+        for (Car car : cars) {
+            car.printForwardLevel();
+        }
+    }
+
     public ArrayList<Car> getCarList() {
         return cars;
     }
