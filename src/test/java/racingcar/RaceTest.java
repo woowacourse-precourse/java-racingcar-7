@@ -19,7 +19,7 @@ public class RaceTest {
     private final PrintStream originalOut = new PrintStream(outputStream);
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
 
         cars.add(new Car("car4",0,4));
         cars.add(new Car("car5",0,4));
