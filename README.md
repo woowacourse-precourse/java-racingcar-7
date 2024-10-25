@@ -138,8 +138,18 @@
 
 | Method        | Parameter | Return Type | Implementation |
 |---------------|-----------|-------------|----------------|
-| offerLapChart | -         | String      | Done ✅         |
-| offerWinners  | -         | String      | Done ✅         |
+| showLapCharts | -         | String      | Done ✅         |
+| showWinners   | -         | String      | Done ✅         |
+
+<br>
+
+### 9. LapCharts
+
+> 개발 과정에서 추가
+
+| Method | Parameter | Return Type | Implementation |
+|--------|-----------|-------------|----------------|
+| offer  | String    | void        | Done ✅         |
 
 <br>
 <br>
@@ -152,5 +162,5 @@
 
 | Method       | Parameter      | Return Type | Implementation |
 |--------------|----------------|-------------|----------------|
-| generateCars | String, String | Cars        | Done ✅         |
-| startRace    | Race, Cars     | DashBoard   | Done ✅         |
+| registerCars | String, String | Cars        | Done ✅         |
+| startRace    | Lap, Cars      | DashBoard   | Done ✅         |

@@ -10,21 +10,6 @@ import racingcar.model.car.Cars;
 public class DashBoardTest {
 
     @Test
-    @DisplayName("중간 결과 확인")
-    void offerLapChart() {
-        // given
-        Cars mockCars = CarsHelper.mockWithoutWinner();
-        DashBoard sut = DashBoard.from(mockCars);
-
-        // when
-        String actual = sut.offerLapChart();
-
-        // then
-        String expected = "a : \nb : --\nc : ---";
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
     @DisplayName("우승자 없음")
     void noWinner() {
         // given

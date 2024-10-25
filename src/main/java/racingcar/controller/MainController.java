@@ -1,12 +1,15 @@
 package racingcar.controller;
 
+import static racingcar.view.io.read.InputManager.enterCarNames;
+import static racingcar.view.io.read.InputManager.enterLapCount;
+import static racingcar.view.io.write.OutputManager.showLapCharts;
+import static racingcar.view.io.write.OutputManager.showWinners;
+
 import java.util.List;
 import racingcar.model.car.Cars;
 import racingcar.model.dashboard.DashBoard;
 import racingcar.model.race.Lap;
 import racingcar.service.RaceService;
-import racingcar.view.io.read.InputManager;
-import racingcar.view.io.write.OutputManager;
 
 public class MainController {
 
@@ -17,12 +20,13 @@ public class MainController {
     }
 
     public void run() {
-        List<String> carNames = InputManager.enterCarNames();
-        String lapCount = InputManager.enterLapCount();
+        List<String> carNames = enterCarNames();
+        String lapCount = enterLapCount();
 
-        Cars registeredCars = raceService.registerCars(lapCount, carNames);
-        DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), registeredCars);
+        Cars participatingCars = raceService.registerCars(lapCount, carNames);
+        DashBoard dashBoard = raceService.startRace(Lap.from(lapCount), participatingCars);
 
-        OutputManager.showWinners(dashBoard.rankWinners());
+        showLapCharts(dashBoard.lapCharts());
+        showWinners(dashBoard.rankWinners());
     }
 }

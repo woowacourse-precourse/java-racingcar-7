@@ -9,18 +9,25 @@ import racingcar.model.car.Cars;
 
 public class DashBoard {
     private final Cars cars;
+    private final LapCharts lapCharts;
 
     private DashBoard(final Cars cars) {
         this.cars = cars;
+        lapCharts = LapCharts.initiate();
     }
 
     public static DashBoard from(Cars cars) {
         return new DashBoard(cars);
     }
 
-    public String offerLapChart() {
+    public void offerLapChart() {
         List<String> positions = cars.currentPositions();
-        return String.join(NEW_LINE, positions);
+        String summary = String.join(NEW_LINE, positions);
+        lapCharts.offer(summary);
+    }
+
+    public String lapCharts() {
+        return lapCharts.toString();
     }
 
     public String rankWinners() {
