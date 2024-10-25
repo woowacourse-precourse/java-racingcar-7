@@ -22,6 +22,19 @@ class CarTest extends NsTest {
         assertThat(car.getName()).isEqualTo(name);
     }
 
+    @Test
+    @DisplayName("Car 객체 생성 시 초기 위치는 0인지 테스트")
+    void createCar_initialPosition_shouldBeZero() {
+        // Given
+        String name = "pobi";
+
+        // When
+        Car car = new Car(name);
+
+        // Then
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         // 해당 클래스에서는 runMain을 사용하지 않습니다.
