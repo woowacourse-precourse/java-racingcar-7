@@ -14,14 +14,14 @@ public class Cars {
 
     public Cars(String raceCarNames){
         List<String> carNames = StringUtility.splitStringToList(raceCarNames);
-        if(!isValidCarNames(carNames)){
+        if(!areCarNamesUnique(carNames)){
             throw new RaceException(DUPLICATE_CAR_NAME_MESSAGE);
         }
 
         cars = createCars(carNames);
     }
 
-    private boolean isValidCarNames(List<String> carNames) {
+    private boolean areCarNamesUnique(List<String> carNames) {
         return StringUtility.isDuplicateStrExists(carNames);
     }
 
@@ -62,5 +62,4 @@ public class Cars {
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
-
 }
