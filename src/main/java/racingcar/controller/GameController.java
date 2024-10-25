@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+import racingcar.exception.DuplicateCarNameException;
 import racingcar.model.Car;
 import racingcar.service.DataTransformService;
 import racingcar.service.GameService;
@@ -25,7 +28,12 @@ public class GameController {
         List<String> carNames = dataTransformService.splitInput(input);
 
         verificationService.isValidCarNameLength(carNames);
-        return dataTransformService.convertToCar(carNames);
+        List<Car> cars = dataTransformService.convertToCar(carNames);
+        Set<Car> deduplicationCars = new HashSet<>(cars);
+        if(cars.size() != deduplicationCars.size()) {
+            throw new DuplicateCarNameException();
+        }
+        return cars;
     }
 
     public int registerExecutionNumber(String executionNumberInput) {

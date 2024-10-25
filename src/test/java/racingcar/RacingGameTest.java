@@ -11,12 +11,14 @@ import static racingcar.util.ConstOutputMessage.INPUT_TURN_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import racingcar.exception.DuplicateCarNameException;
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.InvalidCharacterException;
 import racingcar.exception.InvalidCarNameLengthException;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.NumberRangeException;
 
 public class RacingGameTest extends NsTest {
@@ -42,8 +44,24 @@ public class RacingGameTest extends NsTest {
     }
 
     @Nested
-    @DisplayName("자동차 등록중 예외 테스트")
+    @DisplayName("자동차 등록 테스트")
     class CarRegistExceptionTests {
+
+        @Test
+        void 입력값_길이_예외테스트() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("o".repeat(1001), "1"))
+                            .isInstanceOf(InvalidRegisterCarsInputLengthException.class)
+            );
+        }
+
+        @Test
+        void 자동차_이름_중복_테스트() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("oo,oo", "1"))
+                            .isInstanceOf(DuplicateCarNameException.class)
+            );
+        }
 
         @Test
         void 자동차_이름_길이_예외테스트() {
