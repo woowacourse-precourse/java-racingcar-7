@@ -21,6 +21,7 @@ public class InputView {
         String[] splitInput = Console.readLine().split(",");
         List<String> carNameList = Arrays.stream(splitInput).map(String::trim).toList();
 
+        inputValidator.validateDuplication(carNameList);
         carNameList.forEach(inputValidator::validateCarName);
 
         return carNameList;

@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import racingcar.error.InputErrorType;
 import racingcar.error.InputException;
@@ -40,6 +43,14 @@ public class InputValidator {
 
         if (parsedInt <= 0) {
             throw new InputException(InputErrorType.INVALID_TRIAL_COUNT_RANGE);
+        }
+    }
+
+    public void validateDuplication(List<String> carNameList) {
+        Set<String> carNameSet = new HashSet<>(carNameList);
+
+        if (carNameSet.size() != carNameList.size()) {
+            throw new InputException(InputErrorType.INVALID_CAR_NAME_DUPLICATION);
         }
     }
 }
