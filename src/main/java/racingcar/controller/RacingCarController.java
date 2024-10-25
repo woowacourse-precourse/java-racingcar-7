@@ -42,6 +42,7 @@ public class RacingCarController {
     }
 
     private void playGame(List<Car> cars, int numberOfRounds){
+        OutputView.printResultMessage();
         for(int i = 0; i < numberOfRounds; i++){
             playOneRound(cars);
         }
