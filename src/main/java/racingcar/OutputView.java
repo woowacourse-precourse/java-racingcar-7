@@ -11,5 +11,6 @@ public class OutputView {
             System.out.printf(CAR_STATUS_FORMAT, currentCar.carName());
             System.out.println(POSITION_MARK.repeat(currentCar.position()));
         }
+        System.out.println();
     }
 }
