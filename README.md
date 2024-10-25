@@ -1,139 +1,96 @@
-# java-racingcar-precourse
+# Java Racing Car Precourse
 
-## 기능 요구 사항
-
----
-
-> 초간단 자동차 경주 게임을 구현한다.
-
-- 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
-- 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
-- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-- 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
-- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-- 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
-
-## 도메인
+# 기능 요구 사항
 
 ---
+> 초간단 자동차 경주 게임을 구현합니다.
 
-### 상위 수준 설계
-![28fced48-4770-4b30-84df-8fe41acc1e2d](https://github.com/user-attachments/assets/c78e9534-2f6b-444c-b850-52e264b472df)
+- 여러 대의 자동차가 주어진 횟수 동안 전진 또는 멈춥니다.
+- 각 자동차는 이름을 가지며, 경주가 진행될 때 이름이 함께 출력됩니다.
+- 자동차 이름은 쉼표(,)로 구분하며 5자 이하여야 합니다.
+- 사용자는 자동차가 몇 번 이동할지 횟수를 입력할 수 있습니다.
+- 0부터 9 사이의 무작위 값이 4 이상일 때만 전진합니다.
+- 경주가 종료되면 우승자를 표시하며, 우승자는 여러 명일 수 있습니다.
+- 여러 명이 우승할 경우 이름을 쉼표(,)로 구분하여 출력합니다.
+- 잘못된 입력 값이 주어질 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료합니다.
 
-### 개별 객체 수준 설계
-![ba7f6589-28a5-4f66-a8dc-f096c22370b7](https://github.com/user-attachments/assets/cdc2d579-754d-4b4c-a1fa-65000d33595c)
-
-
-### 애그리거트 단위
-![d832c4c0-fe30-4ecb-8a2e-70bd259bae55](https://github.com/user-attachments/assets/62cf88cd-a2d9-4ae9-a859-fcaa03685972)
-
-
-
-## 객체 요청 흐름
+# 도메인 설계
 
 ---
-![image](https://github.com/user-attachments/assets/c00fe434-42d8-4321-9dbd-f5b13ae7d7a1)
+## 상위 수준 설계
+![상위 수준 설계](https://github.com/user-attachments/assets/c78e9534-2f6b-444c-b850-52e264b472df)
 
+## 개별 객체 설계
+![개별 객체 설계](https://github.com/user-attachments/assets/cdc2d579-754d-4b4c-a1fa-65000d33595c)
 
-## 구현 계획 목록
+## 애그리거트 단위
+![애그리거트 단위](https://github.com/user-attachments/assets/62cf88cd-a2d9-4ae9-a859-fcaa03685972)
 
-### Member
+# 객체 요청 흐름
+![객체 요청 흐름](https://github.com/user-attachments/assets/c00fe434-42d8-4321-9dbd-f5b13ae7d7a1)
 
----
-
-- name: String
-
-### Car
-
----
-- member: Member
-- racingDistance: Long
-
-### Race
+# 구현 계획
 
 ---
-- cars: List<Cars>
-- times : Long
-- RaceRandomGenerator
-- Race `perform`()
+## Member
+- **name** : `String`  
+  각 자동차의 이름을 관리합니다.
 
-### Race Result
+## Car
+- **member** : `Member`
+- **racingDistance** : `Long`  
+  자동차와 이동 거리를 관리합니다.
 
----
-- raceResult: List<Cars>
-- String `result()`
+## Race
+- **cars** : `List<Cars>`
+- **RaceRandomGenerator**
+- _Race `performRace`_  
+  경주를 실행하고 결과 객체를 반환합니다.
+- _`getSortedRaceResults`_ : `List<Car>`  
+  이동 거리가 많은 순서대로 결과를 반환합니다.
 
-### Controller
-
----
-> 사용자와의 입/출력을 바탕으로 service를 호출한다.
-
-- `executeRaceAndGetWinner()`
-
-    service를 통하여 race 로직을 실행시키고, 사용자에게 결과를 return한다.
-
-### Parser
-
----
-> 사용자의 Input를 DTO에 사용가능한 구조로 변환한다.
-
-
-### ConsoleHandler
+## Race Result
+- **raceResult** : `List<Race>`
+- _`performAllRaces`_ : `List<Race>`  
+  경주를 횟수만큼 실행하고 각 결과를 리스트로 반환합니다.
+- _`getRaceWinnerList`_ : `List<Car>`  
+  경주 결과에서 1등을 리스트 형태로 반환합니다.
 
 ---
-> 사용자의 console input/output를 담당한다.
+## Controller
+사용자의 입력/출력 기반으로 **Service**를 호출합니다.
+- _`executeRaceAndGetWinner()`_  
+  경주 로직을 실행하고 결과를 반환합니다.
 
+## Parser
+사용자의 **Input**을 DTO로 변환하여 사용 가능한 구조로 변경합니다.
 
-### Validator
+## ConsoleHandler
+사용자의 **콘솔 입력 및 출력**을 담당합니다.
+
+## Validator
+- _`validate()`_  
+  사용자 입력 값의 유효성을 검사하며, 유효하지 않은 경우 `IllegalArgumentException`을 발생시킵니다.
+---
+## Service
+- _`performRace()`_  
+  도메인 로직을 실행하고 우승자를 DTO 형태로 반환합니다.
 
 ---
-> 주요 기능 : 입력 값의 유효성을 검사한다.
-
-- `validate()`
-
-    사용자 입력 값의 유효성을 검사한다. 
-    
-    만약, 입력값이 유효하지 않으면 `IllegalArgumentException`을 throw한다.
-
-### Service
-
+## Util
+도메인 로직에서 **난수 생성** 로직을 수행합니다.
+- **RaceRandomGenerator (interface)**
+    - _`getRandomValue(default)`_  
+      0~9 사이의 난수를 반환합니다.
+- **RaceRandomGeneratorImpl (singleton)**
+    - _`getInstance()`_  
+      Singleton 인스턴스를 반환합니다.
+    - _`getMoveForwardTimes(long raceTimes)`_  
+      난수를 통해 4 이상이 나온 횟수를 카운트하여 반환합니다.
 ---
-> 주요 기능 : 도메인 로직을 실행한다
-- `performRace()`
-
-    domain logic을 실행하여 race winner를 DTO의 형태로 return한다.
-
-
-### Util
-
----
-> domain로직에서 사용하는 random의 로직을 실행한다.
-- RaceRandomGenerator(interface)
-    - `getRandomValue(default)`
-  
-      Randoms class를 활용하여 0~9까지 난수를 반환
-
-
-- RaceRandomGeneratorImpl(singleton)
-    - `getInstance()`
-
-      Instance를 반환한다.
-    - `getMoveForwardTimes(long raceTimes)`
-
-      => Random에서 random value를 받아서 4 이상이 횟수를 count하여 return한다.
-
-### DTO
----
->controller와 service 사이에서 데이터를 전달 및 변환한다.
-- `RaceRequestDTO`
-
-    이름, 횟수를 controller -> service로 전달하기 위해 사용한다.
-
-
-- `RaceResponseDTO`
-
-    List<Car>로 전달된 객체를 string으로 변환하여 controller에 다시 전달.
-
-
+## DTO
+컨트롤러와 서비스 간의 데이터를 전달하고 변환합니다.
+- _`RaceRequestDTO`_  
+  이름과 횟수를 컨트롤러에서 서비스로 전달합니다.
+- _`RaceResponseDTO`_  
+  `List<Car>` 형식의 데이터를 문자열로 변환하여 컨트롤러에 전달합니다.
