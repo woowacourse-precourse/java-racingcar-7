@@ -3,6 +3,7 @@ package racingcar.input;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.validate.CarNameValidator;
 import racingcar.validate.RepetitionCountValidator;
 
 public class Input {
@@ -17,7 +18,12 @@ public class Input {
 
     public static List<String> inputCarNames() {
         String input = Console.readLine();
-        return splitCarNames(input);
+        CarNameValidator.validateCarNames(input);
+
+        List<String> carNames = splitCarNames(input);
+        CarNameValidator.validateCarNames(carNames);
+
+        return carNames;
     }
 
     public static void close() {
