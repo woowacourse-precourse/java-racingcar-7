@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import racingcar.model.GameTryCount;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingCarList;
 import racingcar.model.RacingCarName;
 import racingcar.model.RacingCarMove;
 import racingcar.model.RandomNumber;
@@ -14,11 +15,10 @@ public class RacingGameController {
 
     final InputView inputView = new InputView();
     final RacingCarName racingCarName = new RacingCarName();
+    final RacingCarList racingCarList = new RacingCarList();
     final GameTryCount gameTryCount = new GameTryCount();
     final RandomNumber randomNumber = new RandomNumber();
     final Winner winner = new Winner();
-
-    private ArrayList<RacingCar> racingCarList = new ArrayList<>();
 
     public void initCarName() {
         String inputCarName = inputView.inputCarName();
@@ -47,7 +47,7 @@ public class RacingGameController {
     }
 
     private void printCarPosition(RacingCarMove racingCarMove, RandomNumber randomNumber) {
-        for (RacingCar car : racingCarList) {
+        for (RacingCar car : racingCarList.get()) {
             car.move(racingCarMove, randomNumber);
             OutputView.printRoundResult(car);
         }
@@ -56,7 +56,7 @@ public class RacingGameController {
     private void endGame() {
         OutputView.printInitResult();
         printRoundResult();
-        String winners = winner.getList(racingCarList, winner.maxPosition(racingCarList));
+        String winners = winner.getList(racingCarList.get(), winner.maxPosition(racingCarList.get()));
         OutputView.printEndResult(winners);
     }
 
