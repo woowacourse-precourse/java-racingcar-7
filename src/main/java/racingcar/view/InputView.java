@@ -10,11 +10,11 @@ public class InputView {
     // 입력
     public static String inputCarNames() {
         System.out.println(CAR_NAMES_MESSAGE);
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 
     public static String inputTryNumber() {
         System.out.println(TRY_NUMBER_MESSAGE);
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 }
