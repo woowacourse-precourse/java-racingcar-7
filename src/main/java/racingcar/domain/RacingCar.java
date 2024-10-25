@@ -8,4 +8,8 @@ public class RacingCar {
         this.name=name;
     }
 
+    public void moveForward() {
+        position++;
+    }
+
 }

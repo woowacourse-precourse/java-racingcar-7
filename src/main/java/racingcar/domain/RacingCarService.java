@@ -19,4 +19,12 @@ public class RacingCarService {
     public boolean rollMoveDice(){
         return Randoms.pickNumberInRange(0,9) >= 4;
     }
+
+    public void moveRacingCars(){
+        for(RacingCar car : cars){
+            if(rollMoveDice()){
+                car.moveForward();
+            }
+        }
+    }
 }
