@@ -6,13 +6,13 @@ import racingcar.exception.InvalidCountException;
 public class InputView {
 
     public static String[] getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        OutputView.printCarNamesInputMessage();
         String input = Console.readLine();
         return input.split(",");
     }
 
     public static int getCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        OutputView.printCountInputMessage();
         return validateStringToNumber(Console.readLine());
     }
 
