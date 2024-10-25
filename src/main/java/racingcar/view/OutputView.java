@@ -13,4 +13,8 @@ public class OutputView {
         carList.forEach(car -> System.out.println(car.generateCarState()));
         System.out.println();
     }
+
+    public void printWinnerPlayers(String players) {
+        System.out.println("최종 우승자 : " + players);
+    }
 }
