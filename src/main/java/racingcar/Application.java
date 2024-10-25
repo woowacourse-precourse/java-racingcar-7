@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 
 public class Application {
 
@@ -9,6 +10,7 @@ public class Application {
         String[] names = Console.readLine().split(",");
         int attempts = Integer.parseInt(Console.readLine());
         String[] individualCarMovements = new String[names.length];
+        Arrays.fill(individualCarMovements, ""); // 배열 생성시 빈 문자열로 초기화
         printCarMovements(individualCarMovements, names, attempts);
 
     }
