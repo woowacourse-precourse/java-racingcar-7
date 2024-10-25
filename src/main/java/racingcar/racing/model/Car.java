@@ -1,11 +1,21 @@
 package racingcar.racing.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private final String name;
-    private final int currentLocation;
+    private int totalDistance;
 
     public Car(String name) {
         this.name = name;
-        this.currentLocation = 0;
+        this.totalDistance = 0;
+    }
+
+    public int movedDistance() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public void updateTotalDistance() {
+        this.totalDistance++;
     }
 }

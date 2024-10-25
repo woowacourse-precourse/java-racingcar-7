@@ -24,28 +24,38 @@ public class RacingGame {
         int attemptNumber = inputAttemptNumber();
 
         this.game = racingGameFactory.createGame(attemptNumber);
+        this.cars = racingGameFactory.createCars(carNames);
+        this.winner = racingGameFactory.createWinner(game);
+
+        for (int i = 0; i < attemptNumber; i++) {
+            game.roundStart(cars);
+            OutputView.printRound(cars);
+        }
+
+
     }
 
     private int inputAttemptNumber() {
-        OutputView.print("시도할 횟수는 몇 회인가요?");
+        OutputView.printMessage("시도할 횟수는 몇 회인가요?");
+
         String inputAttemptNumber = InputView.inputConsole(true);
+        // todo: inputAttemptNumber가 숫자가 아닐 경우 예외처리
         int attemptNumber = Integer.parseInt(inputAttemptNumber);
         if (InputValidator.validateAttemptNumber(attemptNumber)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("시도할 횟수는 양의 정수로 입력해주세요.");
         }
         return attemptNumber;
     }
 
-
     private List<String> inputCarNames() {
-        OutputView.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        OutputView.printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
         String inputCar = InputView.inputConsole(false);
         List<String> carNames = InputParser.parseCarNames(inputCar);
         if (InputValidator.validateCarNameLength(carNames)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다.");
         }
         return carNames;
     }
-
 
 }

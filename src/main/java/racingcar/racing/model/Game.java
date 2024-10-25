@@ -1,11 +1,23 @@
 package racingcar.racing.model;
 
-public class Game {
-    private final int currentStage;
-    private final int allStage;
+import java.util.List;
 
-    public Game(int allStage) {
-        this.currentStage = 0;
-        this.allStage = allStage;
+public class Game {
+    private int currentRound;
+    private final int allRound;
+
+    public Game(int allRound) {
+        this.currentRound = 0;
+        this.allRound = allRound;
     }
+
+    public void roundStart(List<Car> cars) {
+        currentRound += 1;
+        for (Car car : cars) {
+            if (car.movedDistance() >= 4) {
+                car.updateTotalDistance();
+            }
+        }
+    }
+
 }
