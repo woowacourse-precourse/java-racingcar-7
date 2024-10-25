@@ -42,8 +42,10 @@
     │
     ├── Application.java
     ├── controller/
+    │   └─ RacingCarController.java
+    │       └─ + run()
     ├── dto/
-    │   └─ racingCarDTO
+    │   └─ RacingCarDTO.java
     │       ├─ - racingCarData : HashMap<String, Integer>
     │       ├─ - numberOfRacing : int
     │       ├─ + racingCarDTO(racingCarNameString : String, numberOfRacingString : String) : RacingCarDTO
@@ -155,6 +157,12 @@
 
 
     ✅ 구현 후 느낀점 / 추가 개선사항 
+    - 먼저 오늘은 우테코 프리코스에서 제공되는 테스트 2종 즉, 정말 돌아가는 쓰레기를 완성시켰다.
+    - 추후에 수정할 점
+        - run method 내에 현재는 절차지향적으로 구현되어있는 내용을 각각의 함수로 쪼개어 구현한다.
+            -> 단일 책임의 원칙
+        - 17에 적혔던것과 같이 HashMap에 대한 테스트를 추가해서 HashMap을 그대로 사용할지, 그냥 Map으로 바꿀지 고민
+        - 랜덤 함수를 기반으로 한 내용이라 테스트 코드와 검증이 힘들어 기존에 제공된 코드와 라이브러리를 기반으로 테스트코드 작성하기
     
     
 
