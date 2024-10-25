@@ -16,4 +16,8 @@ public class RacingCar {
     public static RacingCar createRacingCar(String name) {
         return new RacingCar(name);
     }
+
+    public String getName() {
+        return name;
+    }
 }
