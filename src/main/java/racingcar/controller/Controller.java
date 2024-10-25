@@ -35,4 +35,8 @@ public class Controller {
         validator.validateCarNameLength(carNames);
         utils.saveCarNamesToList(carNames, cars);
     }
+
+    private int inputNumberOfAttempts() {
+        return inputView.inputAttemptCount();
+    }
 }
