@@ -28,4 +28,12 @@ public class RacingcarService {
         }
         System.out.println();
     }
+
+    private int getMaxDashLength(Map<String, String> player) {
+        int max = 0;
+        for (Map.Entry<String, String> entry : player.entrySet()) {
+            max = Math.max(entry.getValue().length(), max);
+        }
+        return max;
+    }
 }
