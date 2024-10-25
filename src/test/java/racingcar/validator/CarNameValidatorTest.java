@@ -41,4 +41,12 @@ class CarNameValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> CarNameValidator.validateDelimiter(input));
     }
 
+    @DisplayName("자동차 이름이 빈칸이거나 공백일 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {" ",""})
+    void validateNotBlank_throwsException(String input){
+        assertThrows(IllegalArgumentException.class, () -> CarNameValidator.validateNotBlank(input));
+    }
+
+
 }
