@@ -61,10 +61,4 @@ public class InputHandler {
     private void validateAttemptCount(String userInput) {
         checkNumeric(userInput);
     }
-
-    private void checkNumeric(String userInput) {
-        if (!userInput.matches("\\d+")) {
-            throw new IllegalArgumentException("시도횟수는 숫자여야 합니다.");
-        }
-    }
 }
