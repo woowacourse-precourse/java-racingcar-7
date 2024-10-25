@@ -15,7 +15,7 @@ public class Racing {
     }
 
     public List<RacingCar> start(Integer totalTrialCount) {
-        for (int i = 1; i <= totalTrialCount; i++) {
+        for (int trial = 1; trial <= totalTrialCount; trial++) {
             allRacers.forEach(RacingCar::moveOrStop);
         }
         return allRacers;
