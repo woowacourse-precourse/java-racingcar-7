@@ -5,9 +5,9 @@ import racingcar.util.ramdom.RandomUtils;
 
 public class DefaultRandomMovingStrategy implements RandomMovingStrategy {
 
-    private final int DEFAULT_RANDOM_RANGE_MIN = 0;
-    private final int DEFAULT_RANDOM_RANGE_MAX = 9;
-    private final int MIN_MOVEABLE_NUMBER = 4;
+    public final int DEFAULT_RANDOM_RANGE_MIN = 0;
+    public final int DEFAULT_RANDOM_RANGE_MAX = 9;
+    public final int MIN_MOVEABLE_NUMBER = 4;
 
     @Override
     public boolean isMovable() {
