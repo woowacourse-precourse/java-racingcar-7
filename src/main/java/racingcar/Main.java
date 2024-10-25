@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +41,9 @@ public class Main {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = Integer.parseInt(Console.readLine());
         return count;
+    }
+
+    public int createRandomNumber(){
+        return Randoms.pickNumberInRange(0,9);
     }
 }

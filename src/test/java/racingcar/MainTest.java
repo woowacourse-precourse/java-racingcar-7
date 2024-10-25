@@ -53,6 +53,12 @@ class MainTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("생성된 랜덤 숫자가 범위 내인지 확인한다")
+    void checkRandomNumberRange() {
+        assertThat(main.createRandomNumber()).isBetween(0,9);
+    }
+
     @Override
     protected void runMain() {
 
