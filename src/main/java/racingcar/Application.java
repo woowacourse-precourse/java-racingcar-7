@@ -29,6 +29,8 @@ public class Application {
 
         System.out.println("\n실행 결과");
         racing.printWinnerName(winnerList);
+
+        Console.close();
     }
 
     public static boolean isValidName(String carNamesInput) {
