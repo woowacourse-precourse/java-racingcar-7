@@ -8,15 +8,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.domain.race.Race;
-import racingcar.domain.race.service.RaceService;
+import racingcar.domain.race.service.RaceHelper;
 
 public class RaceServiceTest {
 
-    private RaceService raceService;
+    private RaceHelper raceService;
 
     @BeforeEach
     void setup() {
-        raceService = new RaceService();
+        raceService = new RaceHelper();
     }
 
     @Test

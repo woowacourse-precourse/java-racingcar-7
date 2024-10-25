@@ -1,4 +1,4 @@
-package racingcar.port.output;
+package racingcar.application.port.output;
 
 import racingcar.application.dto.response.Response;
 

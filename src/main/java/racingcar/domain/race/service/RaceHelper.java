@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.domain.race.Race;
 
-public class RaceService {
+public class RaceHelper {
 
     public List<Car> findWinners(Race race) {
         List<Car> cars = race.getCars();

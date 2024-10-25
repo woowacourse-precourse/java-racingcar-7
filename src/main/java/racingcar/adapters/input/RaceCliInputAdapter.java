@@ -4,25 +4,34 @@ import static racingcar.infrastructure.constants.AnnounceMessages.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.application.dto.request.RaceRequest;
+import racingcar.application.dto.response.RaceResponse;
+import racingcar.application.usecase.RaceExecutionUseCase;
 import racingcar.application.validation.InputValidator;
-import racingcar.port.input.InputPort;
-import racingcar.port.output.OutputPort;
+import racingcar.application.port.input.RaceInputPort;
+import racingcar.application.port.output.OutputPort;
 
-public class CliInputAdapter implements InputPort {
+public class RaceCliInputAdapter implements RaceInputPort {
 
     private final OutputPort outputPort;
     private final InputValidator inputValidator;
+    private final RaceExecutionUseCase raceExecutionUseCase;
 
-    public CliInputAdapter(OutputPort outputPort, InputValidator inputValidator) {
+    public RaceCliInputAdapter(OutputPort outputPort, InputValidator inputValidator,
+        RaceExecutionUseCase raceExecutionUseCase) {
         this.outputPort = outputPort;
         this.inputValidator = inputValidator;
+        this.raceExecutionUseCase = raceExecutionUseCase;
     }
 
     @Override
+    public void initialRace() {
+        RaceRequest raceRequest = getInput();
+        RaceResponse raceResponse = raceExecutionUseCase.runRace(raceRequest);
+        outputPort.writeResponse(raceResponse);
+    }
+
     public RaceRequest getInput() {
-        String carNames = getCarNames();
-        int round = getRound();
-        return new RaceRequest(carNames, round);
+        return new RaceRequest(getCarNames(), getRound());
     }
 
     private String getCarNames() {
@@ -38,5 +47,4 @@ public class CliInputAdapter implements InputPort {
         inputValidator.validateRound(tryCountInput);
         return Integer.parseInt(tryCountInput);
     }
-
 }
