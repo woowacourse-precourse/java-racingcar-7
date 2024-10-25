@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 
@@ -32,8 +31,7 @@ public class RacingCarController {
     private void registerCars(String carNames) {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
-            Car car = new Car(carName);
-            cars.saveCar(car);
+            cars.saveCar(carName);
         }
     }
 }
