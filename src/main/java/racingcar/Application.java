@@ -5,7 +5,7 @@ import racingcar.racingGame.RacingGameTemplate;
 
 public class Application {
     public static void main(String[] args) {
-        RacingGameTemplate racingGame = new RacingGame();
+        final RacingGameTemplate racingGame = new RacingGame();
         racingGame.play();
     }
 }
