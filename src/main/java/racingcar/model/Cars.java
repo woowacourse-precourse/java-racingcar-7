@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,8 +33,26 @@ public class Cars {
     }
 
     public void printCarDistance() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             System.out.println(car);
         }
+    }
+
+    private Integer getMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+        return maxDistance;
+    }
+
+    public String getWinner() {
+        List<String> winner = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getDistance() == getMaxDistance()) {
+                winner.add(car.getName());
+            }
+        }
+        return String.join(",", winner);
     }
 }

@@ -51,7 +51,15 @@ public class Car {
     }
 
     @Override
-    public String toString(){
-        return name + " : " +  "-".repeat(distance);
+    public String toString() {
+        return name + " : " + "-".repeat(distance);
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public String getName() {
+        return name;
     }
 }
