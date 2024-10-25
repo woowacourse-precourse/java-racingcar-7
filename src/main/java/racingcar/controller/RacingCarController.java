@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
+    RacingCarService racingCarService;
 
     public void run() {
         List<String> userInputs = RacingCarInput.getUserInput();
@@ -15,8 +16,7 @@ public class RacingCarController {
         NameExtractor.extractNames(userInputs.get(0)).stream()
                 .forEach(name -> cars.add(new RacingCar(name)));
 
-        RacingCarService racingCarService =
-                new RacingCarService(cars, Integer.parseInt(userInputs.get(1)));
+        racingCarService = new RacingCarService(cars, Integer.parseInt(userInputs.get(1)));
 
         racingCarService.startRacing();
     }

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.controller.RacingCarOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class RacingCarService {
     private List<RacingCar> cars;
     private Integer number;
+    private RacingCarOutput racingCarOutput = new RacingCarOutput();
 
     public RacingCarService(List<RacingCar> cars, Integer number) {
         this.number = number;
@@ -26,18 +28,10 @@ public class RacingCarService {
         }
     }
 
-    public void printCurrentScore() {
-        for (RacingCar car : cars) {
-            System.out.print(car.getName() + " : ");
-            System.out.println("-".repeat(car.getPosition()));
-        }
-        System.out.println();
-    }
-
     public void startRacing() {
         for (int i = 0; i < number; i++) {
             moveRacingCars();
-            printCurrentScore();
+            racingCarOutput.printCurrentScore(this.cars);
         }
     }
 }

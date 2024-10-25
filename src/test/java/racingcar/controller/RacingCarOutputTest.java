@@ -1,6 +1,7 @@
-package racingcar.domain;
+package racingcar.controller;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingCar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -8,7 +9,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarServiceTest {
+class RacingCarOutputTest {
+    RacingCarOutput racingCarOutput = new RacingCarOutput();
 
     @Test
     void 현재상황_출력_테스트() {
@@ -19,14 +21,13 @@ class RacingCarServiceTest {
         RacingCar car2 = new RacingCar("Car2");
         car2.moveForward();
 
-        RacingCarService racingCarService = new RacingCarService(List.of(car1, car2), 0);
 
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
 
-        racingCarService.printCurrentScore();
+        racingCarOutput.printCurrentScore(List.of(car1,car2));
         assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("Car1 : --" + System.lineSeparator() + "Car2 : -" + System.lineSeparator());
+                .isEqualTo("Car1 : --" + System.lineSeparator() + "Car2 : -" + System.lineSeparator().repeat(2));
     }
 
 }
