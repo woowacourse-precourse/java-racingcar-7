@@ -2,35 +2,27 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 
 public class RacingCar {
 
     public void run() {
-        String[] carNames = InputView.getCarNames().split(",");
+        String carNames = InputView.getCarNames();
+        Cars cars = new Cars(carNames);
+
         int numberOfAttempts = InputView.getNumberOfAttempts();
 
-        Map<String, Integer> cars = createCar(carNames);
-
-        for (int i = 0; i < numberOfAttempts; i++) {
+/*        for (int i = 0; i < numberOfAttempts; i++) {
             playRound(cars);
             showRaceProgress(cars);
         }
 
         List<String> winners = findWinner(cars);
-        showResult(winners);
-    }
-
-    public Map<String, Integer> createCar(String[] carNames) {
-        Map<String, Integer> cars = new HashMap<>();
-        for (String name : carNames) {
-            cars.put(name, 0);
-        }
-        return cars;
+        showResult(winners);*/
     }
 
     public List<String> findWinner(Map<String, Integer> cars) {
