@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
 class CarTest {
-
     @Test
     @DisplayName("자동차가 전진했을때 위치가 1씩 증가하는지 테스트")
     void randomlyMove() {

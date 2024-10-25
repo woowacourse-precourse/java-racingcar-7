@@ -7,6 +7,7 @@ public class Car {
     public Car(String name) {
         this.name = name;
     }
+
     public void tryMove(boolean if60PercentChance) {
         if (if60PercentChance) {
             this.position++;

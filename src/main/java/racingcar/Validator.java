@@ -13,16 +13,19 @@ public class Validator {
             throw new IllegalArgumentException("시도횟수는 양수만 입력할 수 있습니다.");
         }
     }
+
     public static void validateEmptyOrZeroTryCount(String inputString) {
         if (inputString.isBlank() || inputString.equals("0")) {
             throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다.");
         }
     }
+
     public static void validateNameLength(String inputname) {
         if (inputname.length() > 5) {
             throw new IllegalArgumentException("5글자 이하의 이름만 입력할 수 있습니다.");
         }
     }
+
     public static void validateNameFormat(String inputname) {
         String rex = "[\\W]+";
         Pattern pattern = Pattern.compile(rex);

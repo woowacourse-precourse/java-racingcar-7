@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
-
     @ParameterizedTest
     @ValueSource(strings =  {"2d", "yy", "#4", "한글","   ", " "})
     @DisplayName("시도 횟수 입력시 숫자가 아닌값 입력시 IllegalArgumentException() 예외처리")
@@ -24,7 +23,6 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도횟수는 양수만 입력할 수 있습니다.");
     }
-
 
     @ParameterizedTest
     @ValueSource(strings =  {"", "0"})
@@ -66,6 +64,7 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름은 알파벳,숫자와 언더바(_)만 사용할 수 있습니다.");
     }
+
     static Stream<Arguments> unvalidatedFormatNameSource() {
         return Stream.of(
                 Arguments.of("abc##%"),
