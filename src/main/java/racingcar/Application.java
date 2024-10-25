@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -88,6 +89,22 @@ public class Application {
             System.out.println(carNames.get(i) + " : " + "-".repeat(carPositions.get(i)));
         }
         System.out.print("\n");
+    }
+
+    private static void printWinners(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static List<String> findWinners(List<String> carNames, List<Integer> carPositions) {
+        int maxDistance = Collections.max(carPositions);
+        List<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < carNames.size(); i++) {
+            if (carPositions.get(i) == maxDistance) {
+                winners.add(carNames.get(i));
+            }
+        }
+        return winners;
     }
 
     public static void main(String[] args) {
