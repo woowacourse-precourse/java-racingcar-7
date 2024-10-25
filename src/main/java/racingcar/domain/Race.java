@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.parser.CarNamesParser;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -18,6 +19,12 @@ public class Race {
 
     public static Race createRace(final String input, final Integer attemptCount) {
         return new Race(input, attemptCount);
+    }
+
+    private List<Car> createCars(final List<String> carNames) {
+        return carNames.stream()
+                .map(Car::createCar)
+                .toList();
     }
 
     public String displayRacingProgress() {
@@ -36,9 +43,16 @@ public class Race {
         }
     }
 
-    private List<Car> createCars(final List<String> carNames) {
-        return carNames.stream()
-                .map(Car::createCar)
-                .toList();
+    public List<Car> getWinners() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == getMaxPosition())
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 }
