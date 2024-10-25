@@ -29,36 +29,22 @@ public class RacingController {
         this.racingService = racingCarTemplate.racingService();
     }
 
-    public void run() {
-        setUp();
-        playRacing();
-        printRacingResult(racingResult);
-    }
-
-    // core 함수
-    private void setUp() {
-        setUpRacingCars();
-        setUpTryCount();
-    }
-
-    private void playRacing() {
-        racingResult = racingService.play(racingCars, tryCount);
-    }
-
-    private void printRacingResult(RacingResult racingResult) {
-        outputView.printRacingRoundResults(racingResult.roundResults());
-        outputView.printWinners(racingResult.winners());
-    }
-
-    // helper 함수
-    private void setUpRacingCars() {
+    public void setUpRacingCars() {
         List<String> carNameList = getCarNames();
-
         racingCars = createRacingCars(carNameList);
     }
 
-    private void setUpTryCount() {
+    public void setUpTryCount() {
         tryCount = getTryCount();
+    }
+
+    public void playRacing() {
+        racingResult = racingService.play(racingCars, tryCount);
+    }
+
+    public void printRacingResult() {
+        outputView.printRacingRoundResults(racingResult.roundResults());
+        outputView.printWinners(racingResult.winners());
     }
 
     private RacingCars createRacingCars(List<String> carNameList) {
