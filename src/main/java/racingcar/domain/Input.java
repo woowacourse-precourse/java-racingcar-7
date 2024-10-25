@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.constans.exception.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
+import static racingcar.constans.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT;
+
 public class Input {
 
     private final String names;
@@ -26,13 +29,13 @@ public class Input {
 
         private static void validateNonEmptyInput(String text) {
             if (text == null || text.isEmpty() || text.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+                throw new IllegalArgumentException(EMPTY_CAR_NAME_NOT_ALLOWED.getMessage());
             }
         }
 
         private static void validateCommaSeparatedEnglishNames(String text) {
             if (!text.matches("^[a-zA-Z,]+$")) {
-                throw new IllegalArgumentException("입력은 쉼표로 구분된 영어 이름만 가능합니다.");
+                throw new IllegalArgumentException(INVALID_CAR_NAME_FORMAT.getMessage());
             }
         }
 

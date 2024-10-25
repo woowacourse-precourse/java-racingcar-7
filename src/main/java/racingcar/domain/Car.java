@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import java.util.*;
 
+import static racingcar.constans.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
+import static racingcar.constans.exception.ErrorMessage.DUPLICATE_CAR_NAME_NOT_ALLOWED;
+
 public class Car {
 
     private final List<String> cars;
@@ -37,7 +40,7 @@ public class Car {
         private static void validateCarNames(List<String> carNames) {
             carNames.forEach(name -> {
                 if (name.length() > MAX_CAR_NAME_LENGTH) {
-                    throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+                    throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
                 }
             });
         }
@@ -46,7 +49,7 @@ public class Car {
             int validCarNameSize = validCarNames.size();
             int uniqueCarNameSize = new HashSet<>(validCarNames).size();
             if (validCarNameSize != uniqueCarNameSize) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+                throw new IllegalArgumentException(DUPLICATE_CAR_NAME_NOT_ALLOWED.getMessage());
             }
         }
 
