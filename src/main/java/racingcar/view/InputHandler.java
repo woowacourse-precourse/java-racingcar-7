@@ -26,4 +26,12 @@ public class InputHandler {
         }
         return uniqueCars;
     }
+
+    public int validateNumber(final String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException(exception);
+        }
+    }
 }

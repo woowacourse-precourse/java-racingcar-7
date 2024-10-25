@@ -16,4 +16,10 @@ public class InputView {
         inputHandler.checkEmpty(input);
         return inputHandler.validateUniqueNames(input);
     }
+
+    public int readMoveCount() {
+        final String input = Console.readLine();
+        final int moveCount = inputHandler.validateNumber(input);
+        return moveCount;
+    }
 }

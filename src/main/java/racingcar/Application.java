@@ -11,6 +11,7 @@ public class Application {
         final InputView inputView = new InputView(new InputHandler());
         final OutputView outputView = new OutputView();
         final Race race = new Race(inputView, outputView);
+
         race.start();
     }
 }

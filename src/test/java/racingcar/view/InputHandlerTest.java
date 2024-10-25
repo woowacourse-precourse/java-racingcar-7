@@ -29,4 +29,11 @@ class InputHandlerTest {
         assertThatThrownBy(() ->
                 inputHandler.validateUniqueNames(input)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @NullSource
+    @ParameterizedTest
+    @CsvSource(value = {"'     '", "''", "pobi"})
+    void 숫자가_입력되지_않은_경우_예외처리(String input) {
+        assertThatThrownBy(() -> inputHandler.validateNumber(input)).isInstanceOf(IllegalArgumentException.class);
+    }
 }

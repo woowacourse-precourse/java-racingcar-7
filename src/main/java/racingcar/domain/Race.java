@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,6 +14,6 @@ public class Race {
     }
 
     public void start() {
-
+        final List<Car> cars = inputView.readCarNames();
     }
 }
