@@ -33,6 +33,9 @@ public class RacingCar {
             for (Car car : cars) {
                 final int randomInt = Randoms.pickNumberInRange(0, 9);
                 final String moveDistance = "-".repeat(randomInt);
+                if (randomInt >= 4) {
+                    car.addDistance(randomInt);
+                }
                 System.out.println(car.getCarName() + " : " + moveDistance);
             }
             System.out.println("");
