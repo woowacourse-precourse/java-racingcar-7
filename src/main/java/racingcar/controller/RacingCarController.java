@@ -5,33 +5,34 @@ import java.util.List;
 import java.util.Objects;
 import racingcar.domain.Car;
 import racingcar.service.RacingCarService;
+import racingcar.validation.AttemptCountValidator;
 import racingcar.view.InputView;
-import racingcar.view.OutPutView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
     private final RacingCarService racingCarService;
     private final InputView inputView;
-    private final OutPutView outPutView;
+    private final OutputView outPutView;
+    private final AttemptCountValidator attemptCountValidator;
 
-    public RacingCarController(RacingCarService racingCarService, InputView inputView, OutPutView outPutView) {
+    public RacingCarController(RacingCarService racingCarService, InputView inputView, OutputView outPutView,
+                               AttemptCountValidator attemptCountValidator) {
         this.racingCarService = racingCarService;
         this.inputView = inputView;
         this.outPutView = outPutView;
+        this.attemptCountValidator = attemptCountValidator;
     }
 
     public void run() {
 
         String carNames = inputView.getCarNamesFormView();
-        Integer countOfAttempts = inputView.getCountOfAttemptsFormView();
-
-        if (countOfAttempts <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-        }
-
         List<Car> racingCars = racingCarService.splitAndInitializeRacingCars(carNames);
 
-        runCarRaceAndPrintResults(countOfAttempts, racingCars);
+        String attemptCount = inputView.getAttemptCountFormView();
+        attemptCountValidator.validate(attemptCount);
+
+        runCarRaceAndPrintResults(Integer.valueOf(attemptCount), racingCars);
         findWinnersAndPrintResults(racingCars);
     }
 
