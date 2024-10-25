@@ -19,6 +19,20 @@ public class CarGroup {
         }
     }
 
+    private int getLongestMileage() {
+        return cars.stream()
+                .mapToInt(Car::getMileage)
+                .max()
+                .orElse(0);
+    }
+
+    public List<Car> getLongestMileageCars() {
+        int longestMileage = getLongestMileage();
+        return cars.stream()
+                .filter(car -> car.getMileage() == longestMileage)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return cars.stream()
