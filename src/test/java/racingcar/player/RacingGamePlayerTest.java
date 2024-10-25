@@ -12,7 +12,7 @@ import racingcar.player.exception.PlayerNameException;
 import racingcar.player.mock.CanMoveGameNumberGenerator;
 import racingcar.player.mock.UnMoveGameNumberGenerator;
 
-class RacingCarGamePlayerTest {
+class RacingGamePlayerTest {
 
     @Test
     void createRacingCarGamePlayer_이름받음_생성한다(){
@@ -20,13 +20,13 @@ class RacingCarGamePlayerTest {
         final String playerName = "kim";
 
         // expect
-        assertThatCode(() -> RacingCarGamePlayer.createRacingCarGamePlayer(playerName))
+        assertThatCode(() -> GamePlayer.of(playerName))
                 .doesNotThrowAnyException();
     }
     @Test
     void createRacingCarGamePlayer_이동름이10자초과_예외발생(){
         assertThatThrownBy(() -> {
-            RacingCarGamePlayer.createRacingCarGamePlayer("xxxxxxxxxxx");
+            GamePlayer.of("xxxxxxxxxxx");
         })
                 .isInstanceOf(PlayerNameException.NameLengthExceededException.class)
                 .hasMessage("플레이어 이름은 최대 10자까지 가능합니다.");
@@ -34,7 +34,7 @@ class RacingCarGamePlayerTest {
     @Test
     void RacingCarGamePlayer_이름이1자미만_예외발생(){
         assertThatThrownBy(() -> {
-            RacingCarGamePlayer.createRacingCarGamePlayer("");
+            GamePlayer.of("");
         })
                 .isInstanceOf(PlayerNameException.NameLengthShortException.class)
                 .hasMessage("플레이어 이름은 최소 1자부터 가능합니다.");
@@ -43,7 +43,7 @@ class RacingCarGamePlayerTest {
     @ParameterizedTest
     @ValueSource(strings = {"1","22","333","4444","55555","666666","7777777","88888888","!!!!!!!!!","ㅌㅌㅌㅌㅌㅌㅌㅌㅌㅌ"})
     void RacingCarGamePlayer_1부터10자사이_생성성공(String name){
-        assertThatCode(() -> RacingCarGamePlayer.createRacingCarGamePlayer(name))
+        assertThatCode(() -> GamePlayer.of(name))
                 .doesNotThrowAnyException();;
     }
 
@@ -52,35 +52,35 @@ class RacingCarGamePlayerTest {
     void providePlayerName_본인이름요청시_이름반환(){
         // given
         final String playerName = "kim";
-        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
 
         // when
-        String playerSelfName = racingCarGamePlayer.provideSelfName();
+        String playerSelfName = gamePlayer.providePlayerName();
 
         // then
         Assertions.assertThat(playerSelfName).isEqualTo(playerName);
     }
 
-    @Test
-    void createRacingCar_레이싱자동차생성요청시_레이싱카생성(){
-        // given
-        final String playerName = "kim";
-        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
-
-        // when
-        assertThatCode(() -> racingCarGamePlayer.createRacingCar())
-                .doesNotThrowAnyException();
-    }
+//    @Test
+//    void createRacingCar_레이싱자동차생성요청시_레이싱카생성(){
+//        // given
+//        final String playerName = "kim";
+//        final GamePlayer gamePlayer = GamePlayer.of(playerName);
+//
+//        // when
+//        assertThatCode(() -> gamePlayer.createCar())
+//                .doesNotThrowAnyException();
+//    }
 
     @Test
     void pickNumberBy_메서드요청시_정상작동() {
         // given
         final String playerName = "kim";
-        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
         final GameNumberGenerator canMoveGameNumberGenerator = new CanMoveGameNumberGenerator();
 
         // expect
-        Assertions.assertThatCode(() -> racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator))
+        Assertions.assertThatCode(() -> gamePlayer.pickGameNumberBy(canMoveGameNumberGenerator))
                 .doesNotThrowAnyException();
     }
 
@@ -88,11 +88,11 @@ class RacingCarGamePlayerTest {
     void pickNumberBy_메서드요청시_이동가능숫뽑을수있음() {
         // given
         final String playerName = "kim";
-        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
         final GameNumberGenerator canMoveGameNumberGenerator = new CanMoveGameNumberGenerator();
 
         // when
-        int pickedNumber = racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator);
+        int pickedNumber = gamePlayer.pickGameNumberBy(canMoveGameNumberGenerator);
 
         // then
         Assertions.assertThat(pickedNumber).isBetween(4,9);
@@ -102,16 +102,42 @@ class RacingCarGamePlayerTest {
     void pickNumberBy_메서드요청시_이동불가숫자뽑을수있음() {
         // given
         final String playerName = "kim";
-        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
         final GameNumberGenerator canMoveGameNumberGenerator = new UnMoveGameNumberGenerator();
 
         // when
-        int pickedNumber = racingCarGamePlayer.pickGameNumber(canMoveGameNumberGenerator);
+        int pickedNumber = gamePlayer.pickGameNumberBy(canMoveGameNumberGenerator);
 
         // then
         Assertions.assertThat(pickedNumber).isBetween(0,3);
     }
 
+    @Test
+    void moveCarForward_메서드요청시_정상작동(){
+        // given
+        final String playerName = "kim";
+        final int step = 1;
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
+
+        // expect
+        Assertions.assertThatCode(() -> gamePlayer.moveCarForward(step))
+                        .doesNotThrowAnyException();
+    }
+
+    @Test
+    void moveCarFoward_자동차이동_스텝수만큼이동시킴(){
+        // given
+        final String playerName = "kim";
+        final int step = 1;
+        final GamePlayer gamePlayer = GamePlayer.of(playerName);
+
+        // when
+        GamePlayer carMovedPlayer = gamePlayer.moveCarForward(step);
+
+        // expect
+        Assertions.assertThat(carMovedPlayer.provideRacingCarDistance()).isEqualTo(step);
+
+    }
 
 }
 

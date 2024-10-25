@@ -3,7 +3,7 @@ package racingcar.game;
 import static racingcar.game.PlayersCar.*;
 import static racingcar.game.RoundLoopCount.*;
 import java.util.List;
-import racingcar.car.Car;
+import racingcar.car.RacingCar;
 
 
 public class RacingCarGame {
@@ -15,10 +15,10 @@ public class RacingCarGame {
         this.playersCar = playersCar;
     }
 
-    public static RacingCarGame createLoopedRacingCarGame(int roundLoopCount, List<Car> playersCar) {
+    public static RacingCarGame createLoopedRacingCarGame(int roundLoopCount, List<RacingCar> playersRacingCar) {
         return new RacingCarGame(
                 createRoundLoopCount(roundLoopCount),
-                createPlayersCar(playersCar)
+                createPlayersCar(playersRacingCar)
         );
     }
 }

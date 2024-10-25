@@ -13,7 +13,7 @@ public class PlayerName {
         validateLength(name);
         this.value = name;
     }
-    public static PlayerName createPlayerName(String name){
+    public static PlayerName create(String name){
         return new PlayerName(name);
     }
     private void validateLength(String name){

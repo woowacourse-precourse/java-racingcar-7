@@ -1,26 +1,26 @@
 package racingcar.car;
 
-public class Car {
+public class RacingCar {
     private final MovementDistance movementDistance;
 
-    private Car(MovementDistance movementDistance){
+    private RacingCar(MovementDistance movementDistance){
         this.movementDistance = movementDistance;
     }
 
-    public static Car createNamedCar(){
-        return new Car(
+    public static RacingCar create(){
+        return new RacingCar(
                 MovementDistance.initializeDistance()
         );
     }
 
-    public Car increaseDistanceBy(int stepCount) {
-       return new Car(
+    public RacingCar increaseDistanceBy(int stepCount) {
+       return new RacingCar(
                this.movementDistance.increaseDistanceBy(stepCount)
        );
     }
 
-    public Car maintainCurrentPosition() {
-        return new Car(
+    public RacingCar maintainCurrentPosition() {
+        return new RacingCar(
                 this.movementDistance
         );
     }
