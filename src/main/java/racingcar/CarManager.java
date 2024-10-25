@@ -33,4 +33,16 @@ public class CarManager {
 
         return maximum;
     }
+
+    public List<Car> getWinners() {
+        List<Car> winner = new ArrayList<>();
+        int maximum = getMaximumScore();
+
+        for (Car car : cars) {
+            if (car.getScore() == maximum)
+                winner.add(car);
+        }
+
+        return winner;
+    }
 }
