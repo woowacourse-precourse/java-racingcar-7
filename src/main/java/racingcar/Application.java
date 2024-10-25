@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.mvc.controller.RacingGameController;
+import racingcar.mvc.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingGameController racingGame = RacingGameController.getInstance();
+
+        racingGame.setInputView(new InputView());
+
+        racingGame.run();
     }
 }
