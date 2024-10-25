@@ -3,10 +3,14 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.Application.createCarNames;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -21,6 +25,13 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+    }
+    @Test
+    void 자동차_이름_분리_테스트(){
+        String carName = "pobi,woni";
+        List<String> expectedCarNames = Arrays.asList("pobi", "woni");
+
+        assertThat(createCarNames(carName)).isEqualTo(expectedCarNames);
     }
 
     @Test
