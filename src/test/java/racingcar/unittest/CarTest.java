@@ -35,6 +35,20 @@ class CarTest extends NsTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("move 메서드 호출 시 위치가 1 증가하는지 테스트")
+    void move_shouldIncreasePositionByOne() {
+        // Given
+        Car car = new Car("pobi");
+        int initialPosition = car.getPosition();
+
+        // When
+        car.move();
+
+        // Then
+        assertThat(car.getPosition()).isEqualTo(initialPosition + 1);
+    }
+    
     @Override
     public void runMain() {
         // 해당 클래스에서는 runMain을 사용하지 않습니다.
