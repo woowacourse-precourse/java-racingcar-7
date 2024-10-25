@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import racingcar.domain.name.Name;
-import racingcar.util.RandomNumberGenerator;
 
 public class Car {
 	private static final int ADD_SCORE_NUMBER = 4;
@@ -21,8 +20,11 @@ public class Car {
 		return name;
 	}
 
-	public void processGame(RandomNumberGenerator randomNumberGenerator) {
-		int randomNumber = randomNumberGenerator.generateRandomNumber();
+	public int getScore() {
+		return score;
+	}
+
+	public void processGame(int randomNumber) {
 		if (randomNumber >= ADD_SCORE_NUMBER){
 			addScore();
 		}
