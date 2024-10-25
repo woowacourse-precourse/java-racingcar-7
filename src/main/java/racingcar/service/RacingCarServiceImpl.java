@@ -26,7 +26,7 @@ public class RacingCarServiceImpl implements RacingCarService {
     }
 
     @Override
-    public void startRacingCarGame(List<Car> racingCars) {
+    public void startCarRaceGame(List<Car> racingCars) {
         for (Car racingCar : racingCars) {
             racingCar.move(Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE));
         }
