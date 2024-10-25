@@ -27,7 +27,7 @@ public class InputView {
         return inputString;
     }
 
-    public void validateCarMovementCountOrThrow(String inputString) {
+    private void validateCarMovementCountOrThrow(String inputString) {
         if (inputString.isBlank()) {
             throw new IllegalArgumentException(CAR_MOVEMENT_COUNT_BLANK_EXCEPTION);
         }
@@ -36,7 +36,7 @@ public class InputView {
         }
     }
 
-    public boolean isNaturalNumber(String inputString) {
+    private boolean isNaturalNumber(String inputString) {
         try {
             int number = Integer.parseInt(inputString);
             return number > 0;
