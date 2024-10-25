@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -37,5 +38,12 @@ public class Cars {
             .filter(car -> car.getName().equals(name))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("해당 이름의 자동차가 존재하지 않습니다."));
+    }
+
+    public Cars findCarsByPosition(int position) {
+        List<Car> carList = cars.stream()
+            .filter(car -> car.getPosition() == position)
+            .collect(Collectors.toList());
+        return new Cars(carList);
     }
 }
