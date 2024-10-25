@@ -29,4 +29,15 @@ public class InputView {
 
         return carList;
     }
+
+    public static int getTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = Integer.parseInt(Console.readLine());
+
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("1번 이상 시도해야 합니다.");
+        }
+
+        return tryCount;
+    }
 }
