@@ -24,13 +24,12 @@ public class Model {
         return initracingHashmap;
     }
 
-    public HashMap<String, String> Racing(HashMap<String, String> initracingHashmap, String strRound) {
+    public HashMap<String, String> Racing(HashMap<String, String> racingHashmap, String strRound) {
         InvalidException.checkRound(strRound);
         int round = Integer.parseInt(strRound);
-        HashMap<String, String> racingHashmap = new HashMap<>();
         for (int i = 0; i < round; i++) {
-            for (String name : initracingHashmap.keySet()) {
-                String step = getStep(initracingHashmap.get(name), Randoms.pickNumberInRange(0, 9));
+            for (String name : racingHashmap.keySet()) {
+                String step = getStep(racingHashmap.get(name), Randoms.pickNumberInRange(0, 9));
                 racingHashmap.put(name, step);
                 System.out.println(name + " : " + step);
             }
