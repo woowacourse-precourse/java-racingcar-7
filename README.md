@@ -1,7 +1,7 @@
 # Java-racingcar-precourse
 
 
-> [!NOTE] 게임규칙  
+> [!NOTE]    
 > 사용자가 정한 n대의 자동차가 경주를 할 것이다.
 각 자동차는 0~9까지 있는 주사위를 던져 4이상이 나오면 앞으로 한칸 전진할 수 있다.
 주사위를 던지는 횟수는 사용자가 정해줄 것이다.
@@ -17,27 +17,29 @@
 .
 └── racingcar
     │
-    ├── Application
     │
-    ├── controller
+    ├── controller/
     │   └── RacingGameController
     │
-    ├── model
+    ├── model/
     │   ├── CarDto
     │   ├── CarService
     │   ├── InputDto
     │   ├── InputService
     │   └── RacingGameService
     │
-    └── view
-        ├── InputView
-        └── OutputView
-
+    └── view/
+    │   ├── InputView
+    │    └── OutputView
+    │
+    └── Application
+    
 ```
 
 <br><br>
 ## 기능
-### :large_blue_circle:View
+  
+### :large_blue_circle: View
 
 <details open>
 
@@ -59,7 +61,7 @@
 
 <br>
 
-### :large_blue_circle:Model
+### :large_blue_circle: Model
 
 
 <details open>
@@ -101,7 +103,7 @@
 
 <br>
 
-### :large_blue_circle:Controller
+### :large_blue_circle: Controller
 
 <details open>
 
@@ -113,12 +115,12 @@
 
 <br>
 
----
+
 <br><br>
 
 ## 이슈
 
-### :heavy_check_mark:같은 이름이 들어올 경우
+### :heavy_check_mark: 같은 이름이 들어올 경우
 
 >이름이 같은 경우는 많다. 이름이 겹칠 경우 어떻게 처리할 것 인가?
 
@@ -130,7 +132,7 @@
 <br>
 
 
-### :heavy_check_mark:자동차 이름 검증
+### :heavy_check_mark: 자동차 이름 검증
 
 > 이름을 적지 않거나 하나만 들어 온다면?
 
@@ -148,7 +150,7 @@
 <br>
 
 
-### :heavy_check_mark:게임 횟수 돌리기
+### :heavy_check_mark: 게임 횟수 돌리기
 
  > 너무 많은 횟수를 돌려 오버플로우가 일어나면? 
 
