@@ -17,5 +17,10 @@ public class RacingController {
     public void inputInfo(){
         String input = InputView.inputCarNames();
         tryNumber = Integer.parseInt(InputView.inputTryNumber());
+        String[] carArr = Utils.splitDelimiterCars(input);
+
+        for(String name : carArr){
+            cars.add(new Car(name));
+        }
     }
 }
