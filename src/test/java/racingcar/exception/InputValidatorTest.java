@@ -46,6 +46,22 @@ class InputValidatorTest {
                 .doesNotThrowAnyException();
     }
 
+    @ParameterizedTest
+    @DisplayName("이동 횟수 입력 시 숫자가 아닌 문자가 들어오는 경우 예외가 발생한다.")
+    @ValueSource(strings = {"abc", "---", "a-b"})
+    void invalidRepeatTimesThrowException(String repeatTimes) {
+        assertThatThrownBy(() -> inputvalidator.validateRepeatTimesNotDigit(repeatTimes))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("이동 횟수 입력 시 정상적으로 숫자가 들어오는 경우 예외가 발생하지 않는다.")
+    @ValueSource(strings = {"10", "50", "100"})
+    void validRepeatTimesNotThrownException(String repeatTimes) {
+        assertThatCode(() -> inputvalidator.validateRepeatTimesNotDigit(repeatTimes))
+                .doesNotThrowAnyException();
+    }
+
     static Stream<Arguments> generateWhiteSpacesInput() {
         return Stream.of(
                 Arguments.of(Arrays.asList("", "")),
