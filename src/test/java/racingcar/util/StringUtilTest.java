@@ -13,8 +13,8 @@ public class StringUtilTest {
     }
 
     @Test
-    void 이름_strip() {
-        assertThat(StringUtil.getCarNames("pobi  ,  woni  ,  jun"))
+    void 이름_공백_strip() {
+        assertThat(StringUtil.getCarNames("  pobi, woni,  jun   "))
                 .containsExactly("pobi", "woni", "jun");
 
     }
@@ -24,5 +24,12 @@ public class StringUtilTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> StringUtil.getCarNames("pobi:woni:jun"))
                 .withMessageMatching("자동차 이름은 콤마로 구분해야 합니다");
+    }
+
+    @Test
+    void 이름_길이_5자_초과() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringUtil.getCarNames("pobi,yellow"))
+                .withMessageMatching("자동차 이름은 5자 이하로 설정해야 합니다");
     }
 }
