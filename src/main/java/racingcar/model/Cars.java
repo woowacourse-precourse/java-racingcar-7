@@ -32,10 +32,12 @@ public class Cars {
         return Randoms.pickNumberInRange(0, 9) >= 4; // TODO RandomGenerator 객체로 빼는 게 나을지 생각해보자.
     }
 
-    public void printCarDistance() {
+    public String getCarsDistance() {
+        StringBuilder result = new StringBuilder();
         for (Car car : cars) {
-            System.out.println(car);
+            result.append(car).append("\n");
         }
+        return result.toString();
     }
 
     private Integer getMaxDistance() {
@@ -53,6 +55,6 @@ public class Cars {
                 winner.add(car.getName());
             }
         }
-        return String.join(",", winner);
+        return String.join(", ", winner);
     }
 }

@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
-import racingcar.model.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,8 +17,7 @@ public class RacingController {
         Cars cars;
         cars = InputCarsName();
         Integer count = inputTrialCount();
-        RacingGame racingGame = new RacingGame(cars, count);
-        startRacingGame(racingGame);
+        startRacingGame(cars, count);
         OutputWinner(cars);
     }
 
@@ -33,8 +31,12 @@ public class RacingController {
         return Integer.parseInt(rawTrialCount); // TODO 이런식으로 했을 때 테스트 코드 작성 불가능 어떻게 refactor?
     }
 
-    private void startRacingGame(RacingGame racingGame) {
-        outputView.printDarDistance(racingGame); // TODO view에 이렇게 넘겨주는 게 맞는지 한 번 고민해보자
+    private void startRacingGame(Cars cars, Integer count) {
+        outputView.printResultNotice();
+        for (int i = 0; i < count; i++) {
+            cars.moveCars();
+            outputView.printOneRoundResult(cars.getCarsDistance());
+        }
     }
 
     private void OutputWinner(Cars cars) {
