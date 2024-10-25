@@ -25,7 +25,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("시도 횟수만큼 반복한 뒤에는 isRunning 이 false 를 반환한다.")
+    @DisplayName("라운드만큼 반복한 뒤에는 isRunning 이 false 를 반환한다.")
     void shouldReturnFalseAfterTotalRoundsRepetitions() {
         // when
         for (int i = 0; i < totalRounds; i++) {
@@ -37,7 +37,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("시도 횟수만큼 반복하기 이전에는 isRunning 이 true 를 반환한다.")
+    @DisplayName("라운드만큼 반복하기 이전에는 isRunning 이 true 를 반환한다.")
     void shouldReturnTrueBeforeTotalRoundsRepetitions() {
         // when
         for (int i = 0; i < totalRounds - 1; i++) {

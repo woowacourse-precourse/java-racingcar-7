@@ -20,11 +20,11 @@ public class InputValidator {
 
     public static void validateTotalRounds(final String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("시도할 횟수는 빈 값을 입력하실 수 없습니다.");
+            throw new IllegalArgumentException("총 라운드는 빈 값을 입력하실 수 없습니다.");
         }
 
         if (isNotPositiveInteger(input)) {
-            throw new IllegalArgumentException("시도할 횟수는 양의 정수 형태로 입력하셔야 합니다.");
+            throw new IllegalArgumentException("총 라운드는 양의 정수 형태로 입력하셔야 합니다.");
         }
     }
 
