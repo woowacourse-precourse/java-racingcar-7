@@ -18,7 +18,7 @@ class InputManagerTest {
     }
 
     @Test
-    @DisplayName("경주할 자동차 이름 입력 테스트")
+    @DisplayName("자동차 이름이 올바르게 입력되는지 확인한다")
     void 경주할_자동차_이름_입력_테스트() {
         String input = "pobi,woni,jun";
         InputStream in = new ByteArrayInputStream(input.getBytes());
