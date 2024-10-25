@@ -1,15 +1,18 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
@@ -97,6 +100,56 @@ class ApplicationTest extends NsTest {
         }
         //then
         assertThat(car.getPosition() > 0);
+    }
+
+    @Test
+    @DisplayName("자동차가 최대로 많이 이동한 값을 잘 찾아오는지 확인하는 테스트 입니다.")
+    void carMaxMoveTest() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        Car car1 = new Car("pobi");
+        car1.moveForward();
+        car1.moveForward();
+        car1.moveForward();
+        Car car2 = new Car("woni");
+        car2.moveForward();
+        car2.moveForward();
+        Car car3 = new Car("jun");
+        car3.moveForward();
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        //when
+        int maxMoveDistance = Application.calMaxMove(cars);
+        //then
+        assertEquals(3, maxMoveDistance);
+    }
+
+    @Test
+    @DisplayName("게임 결과를 잘 계산하는지 (우승자를 잘 가져오는지) 확인하는 테스트 입니다.")
+    void findWinnersTest() {
+        //given
+        List<Car> cars = new ArrayList<>();
+        Car car1 = new Car("pobi");
+        car1.moveForward();
+        car1.moveForward();
+        car1.moveForward();
+        Car car2 = new Car("woni");
+        car2.moveForward();
+        car2.moveForward();
+        car2.moveForward();
+        Car car3 = new Car("jun");
+        car3.moveForward();
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        //when
+        List<String> winners = Application.findWinners(cars, 3);
+        //then
+        List<String> expectedWinners = List.of("pobi", "woni");
+        assertEquals(expectedWinners, winners);
     }
 
     @Override

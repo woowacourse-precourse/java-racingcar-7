@@ -32,7 +32,8 @@ public class Application {
         int max = calMaxMove(cars);
         List<String> winners = findWinners(cars, max);
 
-        
+
+
     }
 
     public static List<Car> createParticipant(String input) {
