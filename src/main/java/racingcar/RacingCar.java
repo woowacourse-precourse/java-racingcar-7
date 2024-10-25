@@ -14,6 +14,10 @@ public class RacingCar {
         this.count = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+    
     public int getCount() {
         return this.count;
     }
