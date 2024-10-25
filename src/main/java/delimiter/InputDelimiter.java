@@ -7,7 +7,7 @@ public class InputDelimiter {
     public List<String> delimiterWithComma(String inputCarName) {
         List<String> delimiterWithCommaList = new ArrayList<>();
 
-        for (String carName: inputCarName.split(",")) {
+        for (String carName : inputCarName.split(",")) {
             delimiterWithCommaList.add(carName);
         }
 

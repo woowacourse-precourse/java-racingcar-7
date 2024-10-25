@@ -14,7 +14,7 @@ public class Move {
     private int isNumberOfMove(String isNumberOfMoveString) {
         int numberOfMove = -1;
 
-        try  {
+        try {
             numberOfMove = Integer.parseInt(isNumberOfMoveString);
         } catch (Exception e) {
             throw new IllegalArgumentException("입력하신 문자열은 시도 횟수 형식이 아닙니다. 숫자로 입력해주세요.");
