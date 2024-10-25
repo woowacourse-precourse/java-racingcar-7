@@ -12,25 +12,27 @@ public class CarRacingController {
     OutputView outputView = new OutputView();
     Register register = new Register();
 
+
+    public ArrayList<String> divide(String cars) {
+        return new ArrayList<>(List.of(cars.split(",")));
+    }
+
+    public void carMoves() {
+        for (Car c : register.carList) {
+            c.move();
+        }
+    }
+
     public void run() {
         register.carListUp(divide(inputView.inputCar()));
         int count = inputView.inputRound();
         System.out.println("\n실행 결과");
         while (count > 0) {
-
-            for (Car c : register.carList) {
-                c.move();
-            }
-
+            carMoves();
             outputView.outputCarMoves(register.carsMoveCount());
-
             count--;
         }
 
         outputView.outputWinner(register.racingWinner());
-    }
-
-    public ArrayList<String> divide(String cars) {
-        return new ArrayList<>(List.of(cars.split(",")));
     }
 }
