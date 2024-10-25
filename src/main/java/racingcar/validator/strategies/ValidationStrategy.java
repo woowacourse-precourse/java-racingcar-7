@@ -1,6 +1,6 @@
 package racingcar.validator.strategies;
 
-public interface ValidationStrategy {
-    void validate(String input);
-    
+public interface ValidationStrategy<T> {
+    void validate(T input);
+
 }
