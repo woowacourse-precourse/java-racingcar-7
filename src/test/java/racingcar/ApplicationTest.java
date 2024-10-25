@@ -60,6 +60,15 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("getTrial 글자수 정상 작동 테스트")
+    void getTrialTest() {
+        String input = "5\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Integer result = Application.getTrial();
+        assertThat(result).isEqualTo(5);
+    }
 
     @Test
     @DisplayName("자동차 이름이 5 이상일 때")
@@ -69,6 +78,7 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
 
     @Override
     public void runMain() {
