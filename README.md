@@ -6,13 +6,13 @@
   - [ ] 이름은 5자 이하만 가능하다.
   
 - [ ] 사용자에게 몇 번의 이동을 할 것인지 입력받는다.
-      &nbsp; (camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.)
+      <br/>(camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.)
 
 - [ ] 자동차를 입력받은 횟수만큼 이동한다.
   - [ ] 자동차는 전진 또는 멈출 수 있다.
   - [ ] 자동차의 이동 값을 출력할 때는 자동차 이름을 같이 출력한다.
   - [ ] 전진하는 조건은 0에서 9사이에서 무작위 값을 구한 후 무작위 값이 4이상일 경우이다.
-        &nbsp; (camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.)
+        <br/>(camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.)
   - [ ] 각 회차마다 결과값을 보여준다.
 
 - [ ] 자동차 경주 게임이 완료한 후 누가 우승했는지를 알려준다.
