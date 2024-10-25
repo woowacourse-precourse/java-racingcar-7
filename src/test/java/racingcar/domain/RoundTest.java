@@ -38,7 +38,7 @@ class RoundTest {
         pobiCar.move();
         List<Car> winners = round.pickWinners();
         assertThat(winners).containsOnly(pobiCar);
-        assertThat(winners.get(0).getPosition()).isEqualTo(1);
+        assertThat(winners.getFirst()).isEqualTo(1);
     }
 
     @Test
