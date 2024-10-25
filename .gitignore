@@ -4,6 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+*.class
+*.log
 
 ### STS ###
 .apt_generated
@@ -33,3 +35,4 @@ out/
 
 ### Mac OS ###
 .DS_Store
+Thumbs.db
