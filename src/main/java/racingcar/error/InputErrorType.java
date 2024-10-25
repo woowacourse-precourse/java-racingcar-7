@@ -6,6 +6,7 @@ public enum InputErrorType {
     INVALID_CAR_NAME_FORMAT("한글과 영어 소문자로 작성해주세요."),
     INVALID_CAR_NAME_LENGTH(MAX_CAR_NAME_LENGTH + "자 이하의 이름을 작성해주세요."),
     INVALID_CAR_NAME_DUPLICATION("중복되지 않은 이름을 입력해주세요."),
+    INVALID_CAR_NAME_EMPTY("이름이 비어있어요."),
 
     INVALID_TRIAL_COUNT_TYPE("정수를 입력해주세요. (1 ~ 2147483647)"),
     INVALID_TRIAL_COUNT_RANGE("1 이상의 정수를 입력해주세요.");

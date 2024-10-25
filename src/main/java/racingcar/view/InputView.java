@@ -18,11 +18,11 @@ public class InputView {
     public List<String> inputCarNameList() {
         System.out.println(INPUT_CAR_NAME_COMMENT);
 
-        String[] splitInput = Console.readLine().split(",");
+        String[] splitInput = Console.readLine().split(",", -1);
         List<String> carNameList = Arrays.stream(splitInput).map(String::trim).toList();
 
-        inputValidator.validateDuplication(carNameList);
         carNameList.forEach(inputValidator::validateCarName);
+        inputValidator.validateDuplication(carNameList);
 
         return carNameList;
     }

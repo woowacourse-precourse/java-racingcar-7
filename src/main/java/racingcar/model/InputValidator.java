@@ -12,8 +12,15 @@ import racingcar.error.InputException;
 
 public class InputValidator {
     public void validateCarName(String carName) {
+        validateEmpty(carName);
         validateLengthUnderLimit(carName);
         validateLowerCaseEnglishOrKorean(carName);
+    }
+
+    private void validateEmpty(String carName) {
+        if (carName.isEmpty() || carName.isBlank()) {
+            throw new InputException(InputErrorType.INVALID_CAR_NAME_EMPTY);
+        }
     }
 
     private void validateLowerCaseEnglishOrKorean(String carName) {
