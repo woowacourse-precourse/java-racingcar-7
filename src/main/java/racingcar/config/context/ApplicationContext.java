@@ -1,4 +1,4 @@
-package racingcar.config;
+package racingcar.config.context;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-import racingcar.config.annotation.Component;
+import racingcar.config.context.annotation.Component;
 
 /**
  * 어플리케이션의 빈을 생성하고 관리하는 클래스

@@ -1,8 +1,10 @@
-package racingcar.config.annotation;
+package racingcar.config.context.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Component {
+@Component
+public @interface Service {
+
 }

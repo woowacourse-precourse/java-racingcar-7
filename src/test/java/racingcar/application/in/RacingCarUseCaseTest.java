@@ -8,7 +8,7 @@ import java.util.List;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
-import racingcar.config.ApplicationContext;
+import racingcar.config.context.ApplicationContext;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 

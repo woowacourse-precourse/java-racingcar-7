@@ -1,4 +1,4 @@
-package racingcar.config;
+package racingcar.config.context;
 
 import java.io.File;
 import java.util.Arrays;
