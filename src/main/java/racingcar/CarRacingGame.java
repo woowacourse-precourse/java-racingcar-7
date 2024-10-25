@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
@@ -14,18 +15,42 @@ public class CarRacingGame {
         this.round = round;
     }
 
-    public void start() {
+    public List<ICar> start() {
         outputDisplay.print("실행 결과\n");
 
         for (int i = 0; i < round; i++) {
             round();
             outputDisplay.printRoundResult(carList);
         }
+
+        return findWinner();
     }
 
     private void round() {
         for (ICar car : carList) {
             car.drive();
         }
+    }
+
+    private List<ICar> findWinner() {
+        int maxPosition = 0;
+        List<ICar> winnerList = new ArrayList<>();
+
+        // TODO: 자동차의 개수가 많아진다면 정렬을 이용해 우승자를 찾는게 나을 것 같음.
+        // 가장 많이 전진한 차의 위치 찾기
+        for (ICar car : carList) {
+            if (maxPosition < car.getPosition()) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        // 우승자 찾기
+        for (ICar car : carList) {
+            if (maxPosition <= car.getPosition()) {
+                winnerList.add(car);
+            }
+        }
+
+        return winnerList;
     }
 }
