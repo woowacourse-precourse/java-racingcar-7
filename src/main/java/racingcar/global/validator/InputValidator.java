@@ -1,5 +1,7 @@
 package racingcar.global.validator;
 
+import static racingcar.global.constant.InvalidInputExceptionMessage.*;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -36,8 +38,7 @@ public class InputValidator {
         String[] names = input.split(",");
         for(String name : names) {
             if(name.length() < ValidationMode.CAR_NAME.min || name.length() > ValidationMode.CAR_NAME.max)
-                throw new IllegalArgumentException("자동차 이름은 " + ValidationMode.CAR_NAME.min + "자 이상 " +
-                        ValidationMode.CAR_NAME.max + "자 이하만 가능합니다.");
+                throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_MESSAGE);
 
         }
     }
@@ -46,22 +47,19 @@ public class InputValidator {
         String[] names = input.split(",");
 
         if (input.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차를 등록해주세요.");
+            throw new IllegalArgumentException(EMPTY_CAR_NAME_MESSAGE);
         }
-        if(names.length < ValidationMode.CAR_COUNT.min) {
-            throw new IllegalArgumentException("자동차는 최소 "+ValidationMode.CAR_COUNT.min +"개 이상 등록해야합니다.");
-        }
-        if(names.length > ValidationMode.CAR_COUNT.max) {
-            throw new IllegalArgumentException("자동차는 최대 "+ValidationMode.CAR_COUNT.max +"개 까지 등록 가능합니다.");
+        if(names.length < ValidationMode.CAR_COUNT.min || names.length > ValidationMode.CAR_COUNT.max) {
+            throw new IllegalArgumentException(INVALID_CAR_COUNT_MESSAGE);
         }
     }
 
     private static void validateGameCount(String input) {
         try {
             int n = Integer.parseInt(input);
-            if (n < 0) throw new IllegalArgumentException("양의 정수를 입력해주세요");
+            if (n < 0) throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_GAME_COUNT_MESSAGE);
         }
     }
 }
