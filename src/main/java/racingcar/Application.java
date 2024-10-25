@@ -5,7 +5,7 @@ import racingcar.io.View;
 
 public class Application {
     public static void main(String[] args) {
-        View view = new View();
+        View view = View.getInstance();
         Input input = Input.getInstance();
 
         view.printCarNamesGuide();
