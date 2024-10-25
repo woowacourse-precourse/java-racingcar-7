@@ -11,7 +11,7 @@ import racingcar.view.output.OutputView;
 
 import java.util.List;
 
-import static racingcar.constants.OutputMessages.*;
+import static racingcar.view.output.OutputView.*;
 
 public class RacingController {
     private final InputView inputView;
@@ -29,6 +29,7 @@ public class RacingController {
         List<String> carNames = CarNameParser.parse(input);
         List<Car> cars = CarFactory.createCars(carNames);
 
+
         outputView.printMessage(ASK_TRY_COUNT);
         int tryCount = Integer.parseInt(inputView.userInput());
 
@@ -42,7 +43,7 @@ public class RacingController {
         outputView.printNewLine();
         outputView.printMessage(RESULT_TITLE);
 
-        for(int round = 0; round < tryCount; round++) {
+        for (int round = 0; round < tryCount; round++) {
             race.start();
 
             List<String> roundResults = RoundResultGenerator.generate(cars);
