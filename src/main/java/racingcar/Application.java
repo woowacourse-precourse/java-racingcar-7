@@ -44,6 +44,10 @@ public class Application {
 
     private static int settingRound() {
         String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
+        if (roundStr == null || roundStr.isBlank()) {
+            throw new IllegalArgumentException("시도할 횟수를 입력해야 합니다");
+        }
+
         return Integer.parseInt(roundStr);
     }
 }
