@@ -61,5 +61,34 @@ class InputViewTest {
                 .hasMessageContaining("자동차 이름은 5자 이하만 가능합니다.");
     }
 
+    @Test
+    @DisplayName("시도 횟수가 정상적인 자연수로 반환되는지 테스트")
+    void testGetAttemptNumSuccessfully() {
+        String input = "5";
 
+        int attemptNum = testInputValidator.processAttempt(input);
+
+        assertThat(attemptNum).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("시도 횟수가 비어있을 때 IllegalArgumentException이 발생하는지 테스트")
+    void testEmptyAttemptThrowsException() {
+
+        String input = "";
+
+        assertThatThrownBy(() -> testInputValidator.processAttempt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수를 입력해 주세요.");
+    }
+
+    @Test
+    @DisplayName("입력받은 시도 횟수가 자연수가 아닐 때 IllegalArgumentException이 발생하는지 테스트")
+    void testNonNaturalAttemptThrowsException() {
+        String input = "test";
+
+        assertThatThrownBy(() -> testInputValidator.processAttempt(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("유효한 시도 횟수를 입력해 주세요(자연수).");
+    }
 }
