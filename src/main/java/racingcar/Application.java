@@ -14,6 +14,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Application race = new Application();
+
+        race.readySetGo();
     }
 
     private void printRequestingCarNamesInput() {
@@ -26,7 +29,7 @@ public class Application {
 
     private void validateNotEmpty(String str) {
         if (str.isEmpty()) {
-            throw new IllegalArgumentException("잘못된 입력입니다.") ;
+            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.") ;
         }
     }
 
@@ -36,7 +39,7 @@ public class Application {
 
     private void validateMinimumTwoCars(String[] cars) {
         if (cars.length < 2) {
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
         }
     }
 
@@ -56,11 +59,10 @@ public class Application {
         return Integer.parseInt(str);
     }
 
-    private LinkedHashMap<String, Integer> initializeCarPositions(String[] cars) {
+    private void initializeCarPositions(String[] cars) {
         for (String carName : cars) {
             carPositions.put(carName, 0);
         }
-        return carPositions;
     }
 
     private void moveCarForward(String car) {
@@ -79,6 +81,7 @@ public class Application {
             }
             printRoundResult(car);
         }
+
         System.out.println();
     }
 
@@ -100,7 +103,36 @@ public class Application {
     }
 
     private void printWinner(List<String> winnerList) {
-        String result = String.join(",", winnerList);
-        System.out.println(result);
+        String result = String.join(", ", winnerList);
+        System.out.println("최종 우승자 : " + result);
+    }
+
+    private void readySetGo() {
+        printRequestingCarNamesInput();
+        String userCarNamesInput = getCarNamesInput();
+
+        validateNotEmpty(userCarNamesInput);
+
+        String[] cars = splitNamesByComma(userCarNamesInput);
+
+        validateMinimumTwoCars(cars);
+        for (String carName : cars) {
+            validateNotEmpty(carName);
+            validateNameLength(carName);
+        }
+
+        printRequestingRaceRound();
+        int userRaceRoundInput = getRaceRoundInput();
+
+        initializeCarPositions(cars);
+
+        System.out.println("실행 결과");
+
+        for (int n=0; n<userRaceRoundInput; n++) {
+            executeRaceRound();
+        }
+
+        var result = getWinnerList();
+        printWinner(result);
     }
 }
