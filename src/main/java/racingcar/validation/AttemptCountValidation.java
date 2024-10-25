@@ -1,6 +1,11 @@
 package racingcar.validation;
 
 public class AttemptCountValidation {
+    public static void validate(String input) {
+        validateIsInteger(input);
+        validatePositiveNumber(input);
+    }
+
     private static void validateIsInteger(String input) {
         try {
             Integer.parseInt(input);
@@ -8,8 +13,9 @@ public class AttemptCountValidation {
             throw new IllegalArgumentException();
         }
     }
-    private static void validatePositiveNumber(int input) {
-        if (input <= 0) {
+
+    private static void validatePositiveNumber(String input) {
+        if (Integer.parseInt(input) <= 0) {
             throw new IllegalArgumentException();
         }
     }
