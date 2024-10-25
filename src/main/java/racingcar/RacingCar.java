@@ -54,14 +54,14 @@ public class RacingCar {
         }
     }
 
-    private void racing(List<Car> carList) {
+    public void racing(List<Car> carList) {
         for (Car car : carList) {
             int randomResult = Randoms.pickNumberInRange(0, 9);
             carMove(car, randomResult);
         }
     }
 
-    private void carMove(Car car, int randomResult) {
+    public void carMove(Car car, int randomResult) {
         if (randomResult >= 4) {
             car.move();
         }
