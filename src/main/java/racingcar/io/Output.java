@@ -21,6 +21,8 @@ public class Output {
                     String processOutput = String.format(Constants.OUTPUT_PROCESS_PROMPT, carName, bar);
                     System.out.println(processOutput);
                 });
+        //한칸 띄우기
+        System.out.println();
     }
 
     public void printResult() {
