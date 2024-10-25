@@ -44,15 +44,15 @@ public class Validator {
         return true;
     }
 
-    public static boolean isTryCountPositive(String tryCount) {
-        if (Integer.parseInt(tryCount) >= 1) {
+    public static boolean isTryCountPositive(int tryCount) {
+        if (tryCount >= 1) {
             return true;
         }
         throw new IllegalArgumentException(Message.tryCountInputError());
     }
 
-    public static boolean isTryCountBlank(String tryCount) {
-        if (tryCount.isBlank() || tryCount == null) {
+    public static boolean isTryCountBlank(String tryCountStr) {
+        if (tryCountStr.isBlank() || tryCountStr == null) {
             throw new IllegalArgumentException(Message.inputBlankError());
         }
         return false;

@@ -2,11 +2,12 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.GameStatus;
+import racingcar.service.GameService;
 import racingcar.service.Validator;
 import racingcar.view.GameView;
 
 public class GameController {
-
+    GameService gameService = new GameService();
     GameView gameView = new GameView();
     GameStatus gameStatus = new GameStatus();
 
@@ -19,17 +20,17 @@ public class GameController {
         Validator.isCarNameFormatValid(carNameArray);
         Validator.isCarNameDuplicate(carNameArray);
 
+        String tryCountStr = gameView.getInputTryCount();
+        int tryCount = Integer.parseInt(tryCountStr);
+        Validator.isTryCountBlank(tryCountStr);
+        Validator.isTryCountPositive(tryCount);
+
         for (String carName : carNameArray) {
-            Car car = new Car(carName.trim());
-            System.out.println("car = " + car);
+            Car car = new Car(carName.trim(), 0);
             gameStatus.addCar(car);
         }
 
-        String tryCount = gameView.getInputTryCount();
-        Validator.isTryCountBlank(tryCount);
-        Validator.isTryCountPositive(tryCount);
+        gameService.progressGame(gameStatus, tryCount);
 
     }
-
-
 }
