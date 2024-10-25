@@ -26,10 +26,6 @@ public class RacingCount {
         return this.tryCount != 0;
     }
 
-    public boolean isEnd() {
-        return this.tryCount == END_TRY_COUNT;
-    }
-
     public int getTryCount() {
         return tryCount;
     }
