@@ -45,4 +45,12 @@ public class InputView {
             }
         }
     }
+
+    private void validateTurn(String rawTurn) {
+        for (char digit : rawTurn.toCharArray()) {
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
