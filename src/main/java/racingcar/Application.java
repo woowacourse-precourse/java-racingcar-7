@@ -1,19 +1,35 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashMap;
+import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+
+    private static HashMap<String, String> input(HashMap<String, String> request) {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carListInput = Console.readLine();
+        request.put("carNames", Console.readLine());
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String attemptsInput = Console.readLine();
+        request.put("attempts", Console.readLine());
 
-        CarRacing carRacing = new CarRacing(carListInput, attemptsInput);
+        return request;
+    }
 
-        System.out.println("\n실행 결과");
-        carRacing.race();
+    private static void output(List<String> response) {
+        System.out.println("실행 결과");
+        for (String data : response) {
+            System.out.println(data + "\n");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        HashMap<String, String> request = new HashMap<>();
+
+        input(request);
+        CarRacing carRacing = new CarRacing(request.get("carNames"), request.get("attempts"));
+        output(carRacing.race());
     }
 }

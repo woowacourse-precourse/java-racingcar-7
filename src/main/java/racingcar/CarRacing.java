@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,12 +40,16 @@ public class CarRacing {
         return attempts;
     }
 
-    public void race() {
+    public List<String> race() {
+        List<String> data = new ArrayList<>();
+
         for (int i = 0; i < attempts; i++) {
             carGroup.accelerateAll(new BrokenAccelerator());
-            System.out.println(carGroup.toString() + "\n");
+            data.add(carGroup.toString());
         }
         CarRacingWinner winner = new CarRacingWinner(carGroup);
-        System.out.println(winner.toString());
+        data.add(winner.toString());
+
+        return data;
     }
 }
