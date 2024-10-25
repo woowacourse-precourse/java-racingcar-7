@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +33,16 @@ public class Application {
 
     public static String[] seperateCarNames(String carNames) {
         String[] carName = carNames.strip().split("\\s*,\\s*");
+        isCarNameFiveCharsOrLess(carName);
         return carName;
+    }
+
+    public static void isCarNameFiveCharsOrLess(String[] carName) {
+        for (int i = 0; i < carName.length; i++) {
+            if (carName[i].length() >= 6) {
+                throw new IllegalArgumentException("이름을 5자 이하로 입력해 주세요.");
+            }
+        }
     }
 
     public static int makeRandomNumber() {
