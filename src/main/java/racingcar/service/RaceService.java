@@ -2,13 +2,20 @@ package racingcar.service;
 
 import racingcar.model.Car;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
 public class RaceService {
+    private final OutputView outputView;
+
+    public RaceService() {
+        this.outputView = new OutputView();
+    }
     public void start(List<Car> cars, int attempts) {
         for (int i = 0; i < attempts; i++) {
             progressRound(cars);
+            outputView.printRaceRound(cars);
         }
     }
 
