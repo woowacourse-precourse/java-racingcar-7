@@ -102,6 +102,15 @@ class ApplicationTest extends NsTest {
     void validateBound() {
         String bigNumber = "2147483648";
         assertThatThrownBy(() -> Application.validateBound(bigNumber)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateBound(bigNumber)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Application.validateBound(bigNumber)).isInstanceOf(Exception.class);
+        assertThatThrownBy(() -> Application.validateBound(bigNumber)).isInstanceOf(Throwable.class);
+    }
+
+    @Test
+    void validateBoundExactly() {
+        String bigNumber = "2147483648";
+        assertThatThrownBy(() -> Application.validateBound(bigNumber)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
