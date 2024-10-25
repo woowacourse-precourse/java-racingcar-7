@@ -9,10 +9,10 @@ import java.util.Set;
 import java.util.SimpleTimeZone;
 
 public class InputHandler {
-    static private final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";
-    static private final int CAR_MAX_LENGTH = 5;
-    static private final int MOVE_ATTEMPT_COUNT_MAX = 100;
-    static private final int MOVE_ATTEMPT_COUNT_MIN = 1;
+    private static final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";
+    private static final int CAR_MAX_LENGTH = 5;
+    private static final int MOVE_ATTEMPT_COUNT_MAX = 100;
+    private static final int MOVE_ATTEMPT_COUNT_MIN = 1;
     List<String> carNames;
     int moveAttemptCount = 0;
 
