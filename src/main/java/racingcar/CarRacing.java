@@ -21,9 +21,7 @@ public class CarRacing {
     private static void forwardCarLogic(RacingCarTrace racingCarTrace, int index) {
         var racingCar = racingCarTrace.getRacingCar(index);
         var randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-            racingCarTrace.forwardOrStop(racingCar);
-        }
+        racingCarTrace.forwardOrStop(racingCar, randomNumber);
     }
 
     private static void carRacingByTryCount(int tryCount, RacingCarTrace racingCarTrace) {

@@ -18,8 +18,10 @@ public class RacingCarTrace {
         }
     }
 
-    public void forwardOrStop(RacingCar racingCar) {
-        trace.put(racingCar, trace.get(racingCar) + 1);
+    public void forwardOrStop(RacingCar racingCar, int randomNumber) {
+        if (randomNumber >= 4) {
+            trace.put(racingCar, trace.get(racingCar) + 1);
+        }
     }
 
     public RacingCar getRacingCar(int index) {
