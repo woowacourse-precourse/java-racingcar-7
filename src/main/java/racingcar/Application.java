@@ -1,7 +1,11 @@
 package racingcar;
 
+import racingcar.racingGame.RacingGame;
+import racingcar.racingGame.RacingGameTemplate;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingGameTemplate racingGame = new RacingGame();
+        racingGame.play();
     }
 }

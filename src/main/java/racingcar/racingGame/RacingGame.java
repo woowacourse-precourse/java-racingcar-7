@@ -25,7 +25,7 @@ public class RacingGame extends RacingGameTemplate {
         CarNameValidation.validate(carNames);
         String inputAttempts = InputView.inputRaceAttempts();
         AttemptValidation.validate(inputAttempts);
-        data.initialize(cars, new BigInteger(inputAttempts));
+        data.initialize(carNames, new BigInteger(inputAttempts));
     }
 
     @Override
