@@ -41,11 +41,18 @@ public class Car {
         return progress;
     }
 
-    public void showCurrentMove() {
-        progress++;
-        System.out.printf(name + " : ");
-        for (int i = 0; i < progress; i++) {
-            System.out.print("-");
+    public void showCurrentMove(boolean isMoving) {
+        System.out.print(name + " : ");
+
+        if (isMoving) {
+            progress++;
+            for (int i = 0; i < progress; i++) {
+                System.out.print("-");
+            }
+        } else {
+            for (int i = 0; i < progress; i++) {
+                System.out.print("-");
+            }
         }
         System.out.println();
     }
@@ -67,8 +74,8 @@ public class Car {
     }
 
     public void move(int remainingCount) {
-        if (randomMove(remainingCount)) {
-            showCurrentMove();
-        }
+        boolean isMoving = randomMove(remainingCount);
+
+        showCurrentMove(isMoving);
     }
 }
