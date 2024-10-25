@@ -12,11 +12,15 @@ public class Racing {
     final String CAR_NAME_DELIMITER = ",";
     final int MAX_CAR_NAME = 5;
 
+    private List<Car> carList;
+
+    private int tryCount;
+
     public void start() {
         List<String> carNameList = inputCars();
         validateCars(carNameList);
-        List<Car> carList = createCars(carNameList);
-        int tryCount = inputTryCount();
+        createCars(carNameList);
+        inputTryCount();
     }
 
     public List<String> inputCars() {
@@ -32,16 +36,15 @@ public class Racing {
         }
     }
 
-    public List<Car> createCars(List<String> carNameList) {
-
-        return carNameList.stream()
+    public void createCars(List<String> carNameList) {
+        carList = carNameList.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public int inputTryCount() {
-        String tryCount = Request.inputTryCount();
-        return Integer.parseInt(tryCount);
+    public void inputTryCount() {
+        String tryCountString = Request.inputTryCount();
+        tryCount = Integer.parseInt(tryCountString);
     }
 
 }
