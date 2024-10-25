@@ -7,16 +7,16 @@ public class Contest {
     private ArrayList<Car> cars = new ArrayList();
     private int gameCount = 0;
 
-    public Contest() {//생성자
-        System.out.println("경주할 자동차 이름을 입력하세요.");
-    }
 
     public void init() {
-      carNameInput();
+        System.out.println("경주할 자동차 이름을 입력하세요.");
+        carNameInput();
+        System.out.println("시도할 횟수는 몇 회인가요?");
       gameCountInput();
     }
 
     private void carNameInput(){
+
         String inputCars = Console.readLine();
         String[] carNames = inputCars.split(",");
         validateCarNames(carNames); //예외처리
@@ -30,8 +30,10 @@ public class Contest {
         }
     }
     private void gameCountInput(){
-        System.out.println("시도할 횟수는 몇 회인가요?");
         gameCount = Integer.valueOf(Console.readLine().trim());
+        if (gameCount <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 양수이어야 합니다.");
+        }
     }
 
     private void validateCarNames(String[] carNames) {
@@ -40,7 +42,7 @@ public class Contest {
         }
         for (String name : carNames) {
             if (name.trim().length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다: " + name);
+                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다");
             }
         }
     }
