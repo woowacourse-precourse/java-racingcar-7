@@ -1,0 +1,36 @@
+package racingcar.model;
+
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingcar.model.domain.Car;
+
+class RaceServiceTest {
+
+    private RaceService raceService;
+
+    @BeforeEach
+    void beforeEach() {
+        raceService = new RaceService();
+    }
+
+    @Test
+    @DisplayName("자동차 이름으로 Car 객체 리스트를 생성하는 테스트")
+    void createCars() {
+        // given
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+
+        // when
+        List<Car> cars = raceService.createCars(carNames);
+
+        // then
+        assertThat(cars).hasSize(3);
+        assertThat(cars.get(0).getCarName()).isEqualTo("pobi");
+        assertThat(cars.get(1).getCarName()).isEqualTo("woni");
+        assertThat(cars.get(2).getCarName()).isEqualTo("jun");
+    }
+}
