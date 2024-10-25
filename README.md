@@ -50,7 +50,11 @@
 
 -[ ] printCarForward()
 
-  자동차가 얼마나 전진 했는지 ‘-’를 이용해 프린트한다.
+  각 자동차가 얼마나 전진 했는지 ‘-’를 이용해 프린트한다.
+
+-[ ] printForward()
+
+  자동차의 전진정도를 프린트한다. printCarForward 함수 안에서 작동한다.
 
 -[ ] findWinner()
 
