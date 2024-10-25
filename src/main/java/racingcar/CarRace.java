@@ -7,6 +7,8 @@ import java.util.Set;
 public class CarRace {
     private ArrayList<RacingCar> participants = new ArrayList<>();
     private Set<String> participantNames = new HashSet<>();
+    private int numRounds;
+    private int currentRound;
 
     public Set<String> getParticipantNames() {
         return participantNames;
@@ -36,5 +38,16 @@ public class CarRace {
         }
     }
 
-    public CarRace() {}
+    public void setNumRounds(int numRound) {
+        /* int 범위 초과 or 문자열 포함 */
+        if (!NumberUtil.isPositive(numRound)) {
+            throw new IllegalArgumentException();
+        }
+        this.numRounds = numRound;
+    }
+
+    public CarRace() {
+        numRounds = 0;
+        currentRound = 0;
+    }
 }

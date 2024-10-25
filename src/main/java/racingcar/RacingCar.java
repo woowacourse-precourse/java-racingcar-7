@@ -4,7 +4,8 @@ public class RacingCar {
     private String carName;
     private int carDistance;
 
-    RacingCar(String carName) {
+    public RacingCar(String carName) {
         this.carName = carName;
+        carDistance = 0;
     }
 }

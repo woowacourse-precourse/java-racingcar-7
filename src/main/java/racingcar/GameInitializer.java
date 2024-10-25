@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.Set;
 
 /** 유저 input 을 받아 게임의 초기 세팅을 담당하는 클래스 */
@@ -16,7 +14,7 @@ public class GameInitializer {
     private static void initRacingCars(CarRace race) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
-        String input = Console.readLine();
+        String input = OhMyConsole.readLine();
         String[] carNames = input.split(",");
 
         Set<String> participantNames = race.getParticipantNames();
@@ -36,10 +34,26 @@ public class GameInitializer {
             }
         }
     }
+
+    private static void initRaceRound(CarRace race) {
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String numRoundStr = OhMyConsole.readLine();
+
+        try {
+            int numRound = Integer.parseInt(numRoundStr);
+            race.setNumRounds(numRound);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+
     /** GameInitializer 클래스의 프로시져 함수 */
     public static void initGame(CarRace race) {
 
         initRacingCars(race);
-
+        initRaceRound(race);
     }
 }
