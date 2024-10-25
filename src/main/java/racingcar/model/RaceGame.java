@@ -26,4 +26,11 @@ public class RaceGame {
         }
     }
 
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
 }
