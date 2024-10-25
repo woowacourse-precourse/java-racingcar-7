@@ -1,8 +1,8 @@
 package racingcar.service;
 
 import static racingcar.enums.ExceptionMessage.CAR_NOT_FOUND;
+import static racingcar.util.RandomUtil.getRandomNumberInRange;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class CarRaceService {
 
     public void moveCars() {
         cars.stream()
-                .filter(car -> canMove())
+                .filter(car -> canMove(getRandomNumberInRange(0, 9)))
                 .forEach(Car::move);
     }
 
@@ -40,8 +40,8 @@ public class CarRaceService {
                 .toList();
     }
 
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    private boolean canMove(int randomNumber) {
+        return randomNumber >= 4;
     }
 
     private int getMaxDistance() {
