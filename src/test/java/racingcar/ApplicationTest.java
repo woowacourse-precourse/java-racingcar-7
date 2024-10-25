@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -147,5 +149,19 @@ class ApplicationTest extends NsTest {
         String bigNumber = "123456789123456789";
         assertThatThrownBy(() -> Application.isValidTryCount(bigNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void createResultMap() {
+        String carNames = "Karina,Winter,Giselle,NingNing";
+
+        Map<String, StringBuilder> resultMap = Application.createResultMap(carNames);
+
+        assertThat(resultMap).hasSize(4);
+        assertThat(resultMap).containsKeys("Karina", "Winter", "Giselle", "NingNing");
+        assertThat(resultMap.get("Karina").toString()).isEmpty();
+        assertThat(resultMap.get("Winter").toString()).isEmpty();
+        assertThat(resultMap.get("Giselle").toString()).isEmpty();
+        assertThat(resultMap.get("NingNing").toString()).isEmpty();
     }
 }
