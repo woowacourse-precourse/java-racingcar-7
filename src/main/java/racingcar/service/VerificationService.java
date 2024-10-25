@@ -1,12 +1,5 @@
 package racingcar.service;
 
-import static racingcar.util.ConstCharacter.CAR_DELIMITER;
-import static racingcar.util.ConstCharacter.LOWER_CASE_END_WITH;
-import static racingcar.util.ConstCharacter.LOWER_CASE_START_WITH;
-import static racingcar.util.ConstCharacter.NUMBER_END_WITH;
-import static racingcar.util.ConstCharacter.NUMBER_START_WITH;
-import static racingcar.util.ConstCharacter.UPPER_CASE_END_WITH;
-import static racingcar.util.ConstCharacter.UPPER_CASE_START_WITH;
 import static racingcar.util.ConstCharacter.checkInvalidCharacter;
 import static racingcar.util.ConstNumber.CAR_NAME_MAX_LENGTH;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MAX_VALUE;

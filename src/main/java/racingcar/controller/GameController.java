@@ -15,21 +15,14 @@ public class GameController {
     private final GameService gameService;
     private final VerificationService verificationService;
     private final DataTransformService dataTransformService;
-    private final InputView inputView;
-    private final OutputView outputView;
 
-    public GameController(GameService gameService, VerificationService verificationService, DataTransformService dataTransformService, InputView inputView, OutputView outputView) {
+    public GameController(GameService gameService, VerificationService verificationService, DataTransformService dataTransformService) {
         this.gameService = gameService;
         this.verificationService = verificationService;
         this.dataTransformService = dataTransformService;
-        this.inputView = inputView;
-        this.outputView = outputView;
     }
 
-    public List<Car> registerCars() {
-        outputView.carRegistMessage();
-        final String input = inputView.input();
-
+    public List<Car> registerCars(String input) {
         verificationService.containsInvalidCharacter(input);
         List<String> carNames = dataTransformService.splitInput(input);
 
@@ -37,27 +30,20 @@ public class GameController {
         return dataTransformService.convertToCar(carNames);
     }
 
-    public int registerExecutionNumber() {
-        outputView.countRegistMessage();
-        final String executionNumberInput = inputView.input();
+    public int registerExecutionNumber(String executionNumberInput) {
         verificationService.isNumber(executionNumberInput);
         verificationService.isValidRange(executionNumberInput);
-        outputView.newline();
 
         return dataTransformService.parseToInt(executionNumberInput);
     }
 
-    public void race(List<Car> cars, ExecutionNumber executionNumber) {
-        outputView.executionMessage();
-        for (long l = 0; l < executionNumber.getNumber(); l++) {
-            cars.stream().filter(c -> gameService.isMoving()).forEach(Car::move);
-            outputView.printResult(cars);
-            outputView.newline();
+    public void race(Car racingCar) {
+        if(gameService.isMoving()) {
+            racingCar.move();
         }
     }
 
-    public void raceResult(List<Car> cars) {
-        List<Car> winners = gameService.winners(cars);
-        outputView.finalWinnerMessage(winners);
+    public List<Car> raceResult(List<Car> cars) {
+        return gameService.winners(cars);
     }
 }
