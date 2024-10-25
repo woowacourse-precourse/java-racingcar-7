@@ -32,6 +32,7 @@ public class GameController {
 		}
 		List<String> winners = WinnerDeterminer.determineWinner(cars);
 		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
+		OutputView.printWinnerResultMessage(winnerResult);
 	}
 
 	private void executeRaceRound(List<Car> cars) {
