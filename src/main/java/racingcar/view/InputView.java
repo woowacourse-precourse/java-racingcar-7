@@ -9,7 +9,6 @@ public class InputView {
     public static String readCarNames() {
         System.out.println(CAR_NAMES_INPUT_VIEW);
         String input = Console.readLine().trim();
-        Console.close();
 
         return input;
     }
