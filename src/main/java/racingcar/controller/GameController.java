@@ -1,11 +1,17 @@
 package racingcar.controller;
 
-import javax.swing.text.View;
+import java.util.List;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class GameController {
-    private final View view;
+    private final InputView inputView;
+    private final ResultView resultView;
 
-    public GameController(View view) {
-        this.view = view;
+    public GameController(InputView inputView, ResultView resultView) {
+        this.inputView = inputView;
+        this.resultView = resultView;
     }
+
+
 }
