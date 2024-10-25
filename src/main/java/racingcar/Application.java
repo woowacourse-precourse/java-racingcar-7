@@ -24,6 +24,8 @@ public class Application {
 
         Racing racing = new Racing();
         racing.start(carList, attemptCount);
+
+        List<Car> winnerList = racing.determineWinner(carList);
     }
 
     public static boolean isValidName(String carNamesInput) {

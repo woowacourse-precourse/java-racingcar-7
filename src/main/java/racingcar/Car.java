@@ -23,4 +23,8 @@ public class Car {
         }
         System.out.println();
     }
+
+    public int getDistance() {
+        return positions.size();
+    }
 }
