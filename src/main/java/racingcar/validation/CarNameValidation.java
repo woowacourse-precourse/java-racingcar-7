@@ -7,6 +7,7 @@ public class CarNameValidation {
     public static void validate(String input) {
         validateNotNullOrEmpty(input);
         validateIncludeComma(input);
+        validateNotEndWithComma(input);
         validateCarName(input);
     }
 
@@ -18,6 +19,12 @@ public class CarNameValidation {
 
     private static void validateIncludeComma(String input) {
         if (!input.contains(",")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateNotEndWithComma(String input) {
+        if (input.endsWith(",")) {
             throw new IllegalArgumentException();
         }
     }
