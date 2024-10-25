@@ -1,11 +1,13 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarStatus {
+    private final WinnerFinder winnerFinder;
     private final List<Car> cars;
 
     public CarStatus(List<String> carNames) {
@@ -13,12 +15,13 @@ public class CarStatus {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
+        this.winnerFinder = new WinnerFinder();
     }
 
     public void moveCars() {
         Random random = new Random();
         for (Car car : cars) {
-            car.move(random.nextInt(10));
+            car.move(Randoms.pickNumberInRange(0, 9));
         }
     }
 
@@ -32,5 +35,9 @@ public class CarStatus {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
+    }
+
+    public List<String> getWinners() {
+        return winnerFinder.findWinners(cars);
     }
 }
