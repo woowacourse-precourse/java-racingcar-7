@@ -8,6 +8,7 @@ import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static racingcar.global.validator.InputValidator.*;
 
@@ -31,7 +32,7 @@ public class GameController {
         inputCarName();
         inputGameRound();
         startGame();
-        outputWinner();
+        printGameWinner();
     }
 
     private void inputCarName() {
@@ -74,7 +75,6 @@ public class GameController {
         return generateRandomNumber() > MINIMUM_FORWARD_THRESHOLD;
     }
 
-
     private int generateRandomNumber() {
         return Randoms.pickNumberInRange(RANDOM_NUMBER_MIN, RANDOM_NUMBER_MAX);
     }
@@ -86,19 +86,18 @@ public class GameController {
         outputView.printGameRoundSeparator();
     }
 
-    private void outputWinner() {
-        List<String> winners = new ArrayList<>();
-        for (Vehicle car : carList) {
-            if (car.getPosition() == getMaxPosition())
-                winners.add(car.getName());
-        }
+    private void printGameWinner() {
+        List<String> winners = getWinners();
+        String result = String.join(", ", winners);
+        outputView.printGameWinner(result);
+    }
 
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < winners.size() - 1; i++) {
-            result.append(winners.get(i)).append(", ");
-        }
-        result.append(winners.getLast());
-        outputView.printGameWinner(result.toString());
+    private List<String> getWinners() {
+        int maxPosition = getMaxPosition();
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Vehicle::getName)
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
