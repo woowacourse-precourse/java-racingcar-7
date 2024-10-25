@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.controller.NameExtractor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,13 @@ public class RacingCarService {
         for (RacingCar car : cars) {
             System.out.print(car.getName() + " : ");
             System.out.println("-".repeat(car.getPosition()));
+        }
+    }
+
+    public void startRacing() {
+        for (int i = 0; i < number; i++) {
+            moveRacingCars();
+            printCurrentScore();
         }
     }
 }
