@@ -3,6 +3,8 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.car.CarImpl;
+import racingcar.car.ICar;
 import racingcar.display.IInputDisplay;
 import racingcar.display.IOutputDisplay;
 import racingcar.display.OutputDisplayImpl;

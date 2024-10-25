@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.car.ICar;
 import racingcar.display.IOutputDisplay;
 
 public class CarRacingGame {
