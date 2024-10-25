@@ -41,14 +41,12 @@ public class Application {
         return numberInt;
     }
 
-    public static void randomNumber(List<StringBuilder> raceResult, int j) {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-
+    public static void progressWhenMoreFour(List<StringBuilder> raceResult, int randomNumber, int j) {
         if (randomNumber >= 4) {
             raceResult.get(j).append("-");
         }
     }
-
+    
     public static void raceCar(String[] cars, int raceNumber){
         List<StringBuilder> raceResult = new ArrayList<>();
 
@@ -61,7 +59,10 @@ public class Application {
         for (int i = 0; i < raceNumber; i++) {
             for (int j = 0; j < cars.length; j++) {
                 System.out.print(cars[j] + " : ");
-                randomNumber(raceResult, j);
+                
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                progressWhenMoreFour(raceResult, randomNumber, j);
+                
                 System.out.print(raceResult.get(j));
                 System.out.print("\n");
             }
