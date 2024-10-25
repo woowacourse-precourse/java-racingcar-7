@@ -11,7 +11,7 @@ public class OutputView {
         return OUTPUT_VIEW;
     }
 
-    public void printString(String output) {
+    public void printLine(String output) {
         System.out.println(output);
     }
 }

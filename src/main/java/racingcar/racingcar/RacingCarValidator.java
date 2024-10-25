@@ -16,9 +16,6 @@ public class RacingCarValidator {
         return RACING_CAR_VALIDATOR;
     }
 
-    // isExist 로 하려다가 이름이 뭔가 boolean 으로 반환 해야 할 것 같기도 하고,
-    // boolean 으로 반환 해봤자 false가 갈 일이 없기도 하고,
-    // 아래에 있는 메서드들이랑 일관성이 없기도 해서 이렇게 함.
     public void existCheck(String joinedCarNames) {
         if (joinedCarNames.isBlank()) {
             throw new IllegalArgumentException(Strings.MORE_THAN_ONE.getMessage());

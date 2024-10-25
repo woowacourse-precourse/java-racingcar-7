@@ -12,9 +12,9 @@ public class InputView {
         return INPUT_VIEW;
     }
 
-    public String requestString(String message) {
+    public String requestString(OutputView outputView, String message) {
         if (!message.isBlank()) {
-            System.out.println(message);
+            outputView.printLine(message);
         }
         return Console.readLine();
     }
