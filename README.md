@@ -1,51 +1,59 @@
 # java-racingcar-precourse
 
-# 구현 요소
-## Interface
-### Player
+# 구현 요소 및 기능
+## Model
+### Car
 **필드**
 - name
 - position
 
 **메서드**
-- printPosition()
-
-## Class
-### Car : Player 상속
-**필드**
-- 자동차 이름
-- 자동차 현재 위치
-
-**메서드**
-- printPosition() : 자동차 현재 위치 출력
 - getter()
+- moveForward() : 자동차 전진
+- printPosition() : 자동차 현재 위치 출력
 
-## Model
 ### OriginInput
 **필드**
-- 자동차 이름 원본 문자열
-- 시도할 횟수 원본 문자열
+- carNames
+- raceRounds
 
 **메서드**
-- getter()
-- validEmpty()
-- validNumber()
-- validOverflow()
+- getter
+- inputCarNames() : 자동차 이름 입력 받기
+- inputRaceRounds() : 시도할 횟수 입력 받기
 
-### Input
+### ProcessedInput
 **필드**
-- 참여 자동차 리스트
-- 시도할 횟수
+- carList
+- raceRounds
 
 **메서드**
-- getter()
+- getter
 
 ### Winner
 **필드**
-- 우승 자동차 리스트
+- winnerList
 
 **메서드**
-- getter()
+- getter
+- printWinner() : 최종 우승자 출력
+
+## Util
+### Splitter
+**필드**
+- carNames
+
+**메서드**
+- splitSeparator() : 자동차 이름 문자열 -> 자동차 리스트
+- trimCarNames() : 구분자로 분리된 자동차 이름 리스트 -> 공백 제거
+- removeEmpty() : 공백 제거 후 자동차 이름 리스트 내 빈 문자열 제거
+- createCarList() : 자동차 이름 리스트 -> 자동차 리스트
+
+### Validator
+**메서드**
+- validBlank() : 비어있는지 검증
+- validNumber() : 수로 변환 가능한지 검증
+- validNameLength() : 자동차 이름 길이 검증
 
 ---
 
@@ -58,8 +66,7 @@
 ### readline() 통해 시도 횟수 입력 받기
 **예외 처리**
 - 비어있는 값
-- 숫자 여부
-- 오버플로우
+- 숫자 여부(BigInteger 사용해 오버플로우 고려X)
 
 ### 구분자 통해 자동차 이름 분리
 - ,(콤마) 기준으로 자동차 이름 분리
