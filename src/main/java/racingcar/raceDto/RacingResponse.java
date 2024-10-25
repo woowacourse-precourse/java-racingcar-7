@@ -1,4 +1,4 @@
 package racingcar.raceDto;
 
-public record RacingResponse() {
+public record RacingResponse(String res) {
 }
