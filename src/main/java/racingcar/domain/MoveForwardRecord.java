@@ -10,8 +10,10 @@ public class MoveForwardRecord {
         this.goCount = goCount;
     }
 
-    public void updateGoCount() {
-        this.goCount += 1;
+    public void updateGoCount(int num) {
+        if (biggerThanThree(num)) {
+            this.goCount += 1;
+        }
     }
 
     public String getCarName() {
@@ -20,5 +22,9 @@ public class MoveForwardRecord {
 
     public int getGoCount() {
         return goCount;
+    }
+
+    private boolean biggerThanThree(int num) {
+        return num > 3;
     }
 }
