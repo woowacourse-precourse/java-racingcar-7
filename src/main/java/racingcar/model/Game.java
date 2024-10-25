@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Game {
-    private Cars cars;
-    private Integer gameRound;
+    private final Cars cars;
+    private final Integer gameRound;
 
     public Game(Cars cars, Integer gameRound) {
         this.cars = cars;
