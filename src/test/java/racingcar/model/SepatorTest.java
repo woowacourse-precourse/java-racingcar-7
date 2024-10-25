@@ -59,5 +59,17 @@ class SepatorTest {
         assertEquals(cars1.size(), 3);
         assertThrows(IllegalArgumentException.class, ()-> sepator.separateCars(input2), Message.CAR_NAME_LENGTH_LIMIT_VALIDATION_MESSAGE.getMessage());
     }
+    @Test
+    public void 자동차_이름이_중복되는_경우_테스트() throws Exception{
+        //given
+        String input = "Faker,Uzi,Faker";
+
+        //when
+        Sepator sepator = new Sepator();
+
+        //then
+        assertThrows(IllegalArgumentException.class,()->sepator.separateCars(input), Message.CAR_NAME_DUPLICATE_VALIDATION_MESSAGE.getMessage());
+
+    }
 
 }
