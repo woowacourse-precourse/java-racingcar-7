@@ -15,7 +15,11 @@ public class Application {
         List<Car> cars = new ArrayList<>();
         List<String> winners = new ArrayList<>();
         while (stringTokenizer.hasMoreTokens()) {
-            cars.add(new Car(stringTokenizer.nextToken()));
+            String carName = stringTokenizer.nextToken();
+            if(carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해주세요.");
+            }
+            cars.add(new Car(carName));
         }
         System.out.println("시도할 횟수는 몇 회인가요?");
         inputString = Console.readLine();
