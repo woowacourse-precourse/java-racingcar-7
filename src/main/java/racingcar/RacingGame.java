@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingGame {
@@ -22,5 +25,24 @@ public class RacingGame {
                 Racingcar.moveRacingcar(racingcar[i]);
             }
         }
+    }
+
+    public static List<Racingcar> findWinner(Racingcar[] racingcars){   // 우승자를 전부 찾아서 반환
+        int maxMoveCount = -1;
+        List<Racingcar> winner = new ArrayList<>();
+
+        for (Racingcar racingcar : racingcars) {
+            if (racingcar.getMoveCount() > maxMoveCount) {
+                maxMoveCount = racingcar.getMoveCount();
+            }
+        }
+
+        for (Racingcar racingcar : racingcars) {
+            if (racingcar.getMoveCount() == maxMoveCount) {
+                winner.add(racingcar);
+            }
+        }
+
+        return winner; 
     }
 }
