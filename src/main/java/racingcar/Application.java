@@ -73,26 +73,25 @@ public class Application {
         return raceNumberInt;
     }
 
-    // 각 자동차가 전진한 횟수 기록하는 기능도 있음
-    public static void progressWhenMoreFour(int randomNumber, StringBuilder raceResult, int progresses) {
+    public static void moveWhenMoreFour(int randomNumber, RacingCar cars, StringBuilder raceResult) {
         if (randomNumber >= 4) {
             raceResult.append("-");
-            progresses++;
+            cars.setMoveCount();
         }
     }
 
-    public static void printWinners(String[] cars, int[] progresses) {
-        int maxProgress = -1;
+    public static void printWinners(List<RacingCar> cars) {
+        int maxMoveCount = -1;
         List<String> winners = new ArrayList<>();
 
-        for (int progress : progresses) {
-            if (progress > maxProgress) {
-                maxProgress = progress;
+        for (RacingCar car : cars) {
+            if (car.getMoveCount() > maxMoveCount) {
+                maxMoveCount = car.getMoveCount();
             }
         }
-        for (int i = 0; i < cars.length; i++) {
-            if (progresses[i] == maxProgress) {
-                winners.add(cars[i]);
+        for (RacingCar car : cars) {
+            if (car.getMoveCount() == maxMoveCount) {
+                winners.add(car.getName());
             }
         }
 
@@ -101,39 +100,43 @@ public class Application {
         System.out.println(result);
     }
 
-    public static void raceCars(String[] cars, int raceNumber){
+    public static void raceGame(List<RacingCar> cars, int raceNumber){
         List<StringBuilder> raceResult = new ArrayList<>();
-        int[] progresses = new int[cars.length];
 
         System.out.println("실행 결과");
 
-        for (int i = 0; i < cars.length; i++) {
+        for (int i = 0; i < cars.size(); i++) {
             raceResult.add(new StringBuilder());
         }
 
         for (int i = 0; i < raceNumber; i++) {
-            for (int j = 0; j < cars.length; j++) {
-                System.out.print(cars[j] + " : ");
+            for (int j = 0; j < cars.size(); j++) {
+                System.out.print(cars.get(j).getName() + " : ");
                 
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
-                progressWhenMoreFour(randomNumber, raceResult.get(j), progresses[j]);
+                moveWhenMoreFour(randomNumber, cars.get(j), raceResult.get(j));
                 
                 System.out.print(raceResult.get(j));
                 System.out.print("\n");
             }
             System.out.print("\n");
         }
-        printWinners(cars, progresses);
+        printWinners(cars);
     }
 
     public static void main(String[] args) {
         String carInput = getCarName();
+        List<RacingCar> racingCars = new ArrayList<>();
 
         String[] splitCar = carInput.split(",", -1);
         String[] trimmedCar = trimCars(splitCar);
 
+        for (String car : trimmedCar) {
+            racingCars.add(new RacingCar(car));
+        }
+
         int raceNumber = getRaceNumber();
 
-        raceCars(trimmedCar, raceNumber);
+        raceGame(racingCars, raceNumber);
     }
 }
