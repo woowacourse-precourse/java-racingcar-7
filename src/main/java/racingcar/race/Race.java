@@ -33,6 +33,10 @@ public class Race {
         if(racers.isEmpty()){
             throw new IllegalArgumentException("선수가 없어 레이스를 진행할 수 없습니다.");
         }
+        
+        if(times<=0){
+            throw new IllegalArgumentException(times + "만큼 진행할 수 없습니다.");
+        }
 
         System.out.println("실행결과");
 
