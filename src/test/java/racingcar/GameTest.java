@@ -23,6 +23,17 @@ public class GameTest {
     }
 
     @Test
+    void Game_play_test() {
+        List<String> carNameList = Arrays.asList("pobi", "woni");
+        Game test = new Game(carNameList, 3);
+        test.play();
+        test.play();
+        test.play();
+        RacingCar pobi = test.racingCarList.getFirst();
+        assertThat(pobi.getCount()).isBetween(0, 3);
+    }
+
+    @Test
     void Game_generateRacingCarList_exception_test() {
         List<String> carNameList = Arrays.asList("pobi", "javaji");
         assertThatThrownBy(() -> Game.generateRacingCarList(carNameList))
