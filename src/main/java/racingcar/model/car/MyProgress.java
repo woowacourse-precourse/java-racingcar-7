@@ -4,13 +4,13 @@ import static java.util.Objects.isNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
 import racingcar.common.exception.ShouldNotBeNullException;
-import racingcar.model.race.Distance;
+import racingcar.model.position.Distance;
+import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Position;
 
 public class MyProgress {
     private Lap remainingLap;
-    private final Position position;
+    private Position position;
 
     private MyProgress(final Lap remainingLap, final Position position) {
         this.remainingLap = remainingLap;
@@ -28,7 +28,7 @@ public class MyProgress {
 
 
     public void updatePosition(Distance distance) {
-        position.add(distance);
+        this.position = position.add(distance);
     }
 
     public void updateRemainingLap() {

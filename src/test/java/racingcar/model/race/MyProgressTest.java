@@ -6,6 +6,8 @@ import static racingcar.helper.ReflectionUtil.forceSetField;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.MyProgress;
+import racingcar.model.position.Distance;
+import racingcar.model.position.Position;
 
 public class MyProgressTest {
 
@@ -42,11 +44,12 @@ public class MyProgressTest {
         Lap remainingLap = Lap.from(3);
         Position position = Position.initiate();
         forceSetField(position, "value", "---");
-
         MyProgress myProgress = MyProgress.from(remainingLap, position);
+
         // when
         myProgress.updateRemainingLap();
         myProgress.updatePosition(Distance.ONE);
+
         // then
         assertThat(myProgress.toString()).isEqualTo("----");
     }

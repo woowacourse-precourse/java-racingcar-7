@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.helper.ReflectionUtil;
-import racingcar.model.race.Distance;
+import racingcar.model.position.Distance;
+import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Position;
 
 public class CarTest {
 

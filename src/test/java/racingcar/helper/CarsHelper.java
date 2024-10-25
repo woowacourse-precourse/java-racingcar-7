@@ -4,8 +4,8 @@ import java.util.List;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.car.MyProgress;
+import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Position;
 
 public class CarsHelper {
     public static Cars mockInitial() {

@@ -4,7 +4,7 @@ import static racingcar.common.constant.RaceConstant.MIN_SPEED_TO_MOVE;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
-import racingcar.model.race.Distance;
+import racingcar.model.position.Distance;
 
 public enum MovementCondition {
 

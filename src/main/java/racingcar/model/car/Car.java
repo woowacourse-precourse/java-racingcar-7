@@ -6,7 +6,7 @@ import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
 
 import racingcar.common.exception.LengthExceedException;
 import racingcar.common.exception.ShouldNotBeNullException;
-import racingcar.model.race.Distance;
+import racingcar.model.position.Distance;
 import racingcar.util.RandomUtil;
 
 public class Car {

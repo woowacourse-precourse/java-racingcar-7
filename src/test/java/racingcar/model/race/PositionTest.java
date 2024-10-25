@@ -5,6 +5,8 @@ import static racingcar.helper.ReflectionUtil.forceSetField;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.position.Distance;
+import racingcar.model.position.Position;
 
 public class PositionTest {
 
@@ -16,10 +18,11 @@ public class PositionTest {
         forceSetField(position, "value", "---");
 
         // when
-        position.add(Distance.ONE);
+        Position actual = position.add(Distance.ONE);
 
         // then
-        assertThat(position.toString()).isEqualTo("----");
+        Position expected = Position.from("----");
+        assertThat(actual.equals(expected)).isTrue();
     }
 
     @Test
@@ -30,9 +33,10 @@ public class PositionTest {
         forceSetField(position, "value", "---");
 
         // when
-        position.add(Distance.ZERO);
+        Position actual = position.add(Distance.ZERO);
 
         // then
-        assertThat(position.toString()).isEqualTo("---");
+        Position expected = Position.from("---");
+        assertThat(actual.equals(expected)).isTrue();
     }
 }

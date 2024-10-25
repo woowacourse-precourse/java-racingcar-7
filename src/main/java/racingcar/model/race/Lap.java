@@ -1,5 +1,7 @@
 package racingcar.model.race;
 
+import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
+
 import java.util.Objects;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
 
@@ -27,19 +29,19 @@ public class Lap {
 
     public Lap minus(final long source) {
         if (source < 0) {
-            throw new ShouldNotBeMinusException();
+            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
 
         long subtracted = this.value - source;
         if (subtracted < 0) {
-            throw new ShouldNotBeMinusException();
+            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
         return new Lap(subtracted);
     }
 
     public static void validateIsMinus(long source) {
         if (source < 0) {
-            throw new ShouldNotBeMinusException();
+            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
     }
 

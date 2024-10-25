@@ -2,6 +2,7 @@ package racingcar.model.race;
 
 import static java.util.Objects.isNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
+import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
 
 import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
@@ -25,7 +26,7 @@ public class Race {
 
     public void moveToNextLap() {
         if (remainingCount.isZero()) {
-            throw new ShouldNotBeMinusException();
+            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
         this.remainingCount = remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
     }

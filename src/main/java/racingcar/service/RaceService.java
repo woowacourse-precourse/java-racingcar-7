@@ -5,8 +5,8 @@ import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.car.MyProgress;
 import racingcar.model.dashboard.DashBoard;
+import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Position;
 import racingcar.model.race.Race;
 
 public class RaceService {

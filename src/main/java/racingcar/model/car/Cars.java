@@ -3,7 +3,7 @@ package racingcar.model.car;
 import java.util.List;
 import java.util.Objects;
 import racingcar.common.exception.ShouldNotBeNullException;
-import racingcar.model.race.Distance;
+import racingcar.model.position.Distance;
 
 public class Cars {
     private final List<Car> cars;
