@@ -4,6 +4,9 @@ import racingcar.util.RandomNumberGenerator;
 
 public class Car {
 
+    public static final int MOVE_THRESHOLD = 4;
+    public static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
     private int position;
 
@@ -15,13 +18,13 @@ public class Car {
 
     public void move() {
         int number = RandomNumberGenerator.generateRandomNumber();
-        if (number >= 4) {
+        if (number >= MOVE_THRESHOLD) {
             position++;
         }
     }
 
     private void validateNameRange(String name) {
-        if (name.isBlank() || name.length() > 5) {
+        if (name.isBlank() || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
         }
     }
