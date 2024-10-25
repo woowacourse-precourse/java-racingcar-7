@@ -1,18 +1,20 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        getCarNames();
+        List<String> carNames = getCarNames();
         int numberOfTries = getNumberOfTries();
+        raceCars(carNames, numberOfTries);
     }
 
     // 01. 자동차 이름 입력 기능
-    public static void getCarNames() {
+    public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
         // 사용자 입력 받기
@@ -23,6 +25,7 @@ public class Application {
 
         // 입력된 자동차 이름이 유효한지 검증
         validateCarNames(carNames);
+        return carNames;
     }
 
     // 01-1. 자동차 이름 예외 검증
@@ -61,5 +64,29 @@ public class Application {
         }
 
         return numberOfTries;
+    }
+
+    // 03. 자동차 이동 기능
+    public static void raceCars(List<String> carNames, int numberOfTries) {
+        String[] carPositions = new String[carNames.size()];
+        Arrays.fill(carPositions, "");
+
+        // 경주를 지정된 횟수만큼 진행
+        for (int i = 0; i < numberOfTries; i++) {
+            updateAndPrintCarPositions(carNames, carPositions);
+
+        }
+    }
+
+    // 자동차 위치 업데이트
+    private static void updateAndPrintCarPositions(List<String> carNames, String[] carPositions) {
+        for (int j = 0; j < carNames.size(); j++) {
+            int randomValue = Randoms.pickNumberInRange(0, 9);
+            if (randomValue >= 4) {
+                carPositions[j] += "-";
+            }
+            System.out.println(carNames.get(j) + " : " + carPositions[j]);
+        }
+        System.out.println();
     }
 }
