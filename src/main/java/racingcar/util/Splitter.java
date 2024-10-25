@@ -1,5 +1,6 @@
 package racingcar.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,14 @@ public class Splitter {
     }
 
     public List<String> splitSeparator() {
-        return Arrays.stream(carNames.split(COMMA)).toList();
+        List<String> splitCarNames = Arrays.stream(carNames.split(COMMA)).toList();
+        return trimCarNames(splitCarNames);
+
+    }
+
+    public List<String> trimCarNames(List<String> splitCarNames) {
+        return new ArrayList<>(splitCarNames.stream()
+                .map(String::trim)
+                .toList());
     }
 }
