@@ -16,8 +16,7 @@ public class InputValidator {
     public static Set<String> validateCarNameInput(String input) {
         validateCarNameInputBlank(input);
 
-        String[] names = input.split(Constant.DELIMITER);
-        Arrays.setAll(names, i -> names[i].trim());
+        String[] names = splitCarNameInput(input);
         for (String name : names) {
             validateCarNameBlank(name);
             validateCarNameTooLong(name);
@@ -27,6 +26,12 @@ public class InputValidator {
         validateDuplicatedCarName(cars.size(), names.length);
 
         return cars;
+    }
+
+    private static String[] splitCarNameInput(String input) {
+        String[] names = input.split(Constant.DELIMITER);
+        Arrays.setAll(names, i -> names[i].trim());
+        return names;
     }
 
     private static void validateCarNameInputBlank(String input) {
