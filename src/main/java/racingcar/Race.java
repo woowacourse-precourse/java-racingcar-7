@@ -17,10 +17,9 @@ public class Race {
     }
 
     public void start() {
-        System.out.println("실행 결과");
         for (int i = 0; i < attempts; i++) {
             moveEachCar();
-            printCurrentStatus();
+            OutputHandler.printCurrentStatus(cars);
         }
     }
 
@@ -31,12 +30,5 @@ public class Race {
                 car.move();
             }
         }
-    }
-
-    private void printCurrentStatus() {
-        for (final Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-        System.out.println();
     }
 }

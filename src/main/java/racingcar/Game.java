@@ -19,6 +19,7 @@ public class Game {
     }
 
     private void inputCarNames() {
+        OutputHandler.printStartMessage();
         String[] carNames = InputHandler.getCarNames();
         Validator.validateCarNames(carNames);
 
@@ -28,20 +29,24 @@ public class Game {
     }
 
     private void inputAttempts() {
+        OutputHandler.printAttemptsMessage();
         attempts = InputHandler.getAttempts();
 
         Validator.validateAttempts(attempts);
     }
 
     private void runRace() {
+        OutputHandler.printRaceResultHeader();
+
         Race race = new Race(cars, attempts);
         race.start();
+
     }
 
     private void printWinners() {
         final List<String> winners = getWinners();
-        String winnerNames = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + winnerNames);
+
+        OutputHandler.printWinners(winners);
     }
 
     private List<String> getWinners() {
