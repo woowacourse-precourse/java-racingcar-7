@@ -23,8 +23,8 @@ public class CarGameController {
 
     public void run() {
         String carNames = getCarNames();
-        int rounds = getRounds();
         Cars cars = carCreateService.fromString(carNames);
+        int rounds = getRounds();
 
         outputView.announceResult();
         carGameService.play(cars, rounds, (updatedCars) -> {
