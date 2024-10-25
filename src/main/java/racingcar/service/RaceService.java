@@ -4,7 +4,6 @@ import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.domain.repository.RaceRepository;
 import racingcar.validation.CarNameValidator;
-import racingcar.validation.LapValidator;
 
 /**
  * packageName    : racingcar.service

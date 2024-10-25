@@ -2,7 +2,6 @@ package racingcar;
 
 import racingcar.controller.IndexController;
 import racingcar.controller.RaceController;
-import racingcar.domain.Cars;
 import racingcar.domain.dto.CarsSaveRequestDto;
 
 /**
