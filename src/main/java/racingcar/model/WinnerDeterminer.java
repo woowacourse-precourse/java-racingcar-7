@@ -6,6 +6,11 @@ public class WinnerDeterminer {
 
 	private static final int MIN_MOVEMENT_VALUE = 0;
 
+	public static List<String> determineWinner(List<Car> cars) {
+		int maxMovementValue = getMaxMovementValue(cars);
+		return getWinner(cars, maxMovementValue);
+	}
+
 	private static int getMaxMovementValue(List<Car> cars) {
 		return cars.stream()
 				.mapToInt(Car::getMovement)
