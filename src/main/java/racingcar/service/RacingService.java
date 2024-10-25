@@ -6,6 +6,7 @@ import racingcar.exception.ExceptionFactory;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.model.dependency.validator.RacingCarValidator;
+import racingcar.service.dependency.random_maker.RandomNumberMaker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,11 @@ public class RacingService {
 
     private final int MIN_TRY_COUNT = 1;
 
+    private final RandomNumberMaker randomNumberMaker;
     private final RacingCarValidator racingCarValidator;
 
-    public RacingService(RacingCarValidator racingCarValidator) {
+    public RacingService(RandomNumberMaker randomNumberMaker, RacingCarValidator racingCarValidator) {
+        this.randomNumberMaker = randomNumberMaker;
         this.racingCarValidator = racingCarValidator;
     }
 
@@ -63,7 +66,7 @@ public class RacingService {
     }
 
     private RacingRoundResult playRound(RacingCars racingCars) {
-        racingCars.move();
+        racingCars.move(randomNumberMaker);
         return new RacingRoundResult(racingCars.getCarNamesAndPositions());
     }
 }
