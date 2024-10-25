@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import racingcar.domain.car.Car;
 import racingcar.dto.CarDto;
 
 public class Cars {
