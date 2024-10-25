@@ -67,6 +67,7 @@ class ApplicationTest extends NsTest {
         Car pobiCar = new Car("pobi");
         Car woniCar = new Car("woni");
         CarCollection carCollection2 = new CarCollection(List.of(pobiCar, woniCar));
+
         assertThat(carCollection1.getCarNames()).isEqualTo(carCollection2.getCarNames());
     }
 
@@ -82,8 +83,10 @@ class ApplicationTest extends NsTest {
     void 자동차_전진_테스트(){
         InputString inputString = new InputString("pobi");
         CarCollection carCollection = inputString.getCarCollection();
+
         carCollection.moveCar(0,4);
         int moveCount = carCollection.getCarMoveCount().get(0);
+
         assertThat(moveCount == 1).isTrue();
     }
 
@@ -91,8 +94,10 @@ class ApplicationTest extends NsTest {
     void 자동차_정지_테스트(){
         InputString inputString = new InputString("pobi");
         CarCollection carCollection = inputString.getCarCollection();
+
         carCollection.moveCar(0,3);
         int moveCount = carCollection.getCarMoveCount().get(0);
+
         assertThat(moveCount == 0).isTrue();
     }
     @Override
