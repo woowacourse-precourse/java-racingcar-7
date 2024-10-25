@@ -1,17 +1,21 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CarRace {
 
-    public static String race(String inputCar, String inputRaceCount){
+    public static String race(String inputCarNames, String inputRaceCount){
 
-        List<String> cars;
+        List<RacingCar> racingCars = new ArrayList<>();;
         int raceCount = 0;
 
         try {
-            cars = parseString(inputCar);
+            List<String> parseCarNames = parseString(inputCarNames);
+            parseCarNames.forEach((car -> {
+                racingCars.add(new RacingCar(car));
+            }));
             raceCount = parseInt(inputRaceCount);
 
         } catch (IllegalArgumentException e){
