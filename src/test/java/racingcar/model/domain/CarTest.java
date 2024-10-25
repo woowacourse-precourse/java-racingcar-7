@@ -19,4 +19,17 @@ class CarTest {
         // then
         assertThat(carName).isEqualTo("pobi");
     }
+
+    @Test
+    @DisplayName("자동차 객체 생성 시 초기 거리가 0인지 확인하는 테스트")
+    void initialDistanceIsZero() {
+        // given
+        Car car = new Car("pobi");
+
+        // when
+        int currentDistance = car.getCurrentDistance();
+
+        // then
+        assertThat(currentDistance).isEqualTo(0);
+    }
 }
