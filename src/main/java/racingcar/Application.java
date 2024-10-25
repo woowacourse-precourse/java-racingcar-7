@@ -12,10 +12,11 @@ public class Application {
         String inputName = Console.readLine();
         //playerNameList(inputName);
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int inputNum = Integer.parseInt(Console.readLine());
+        int inputNum = intNumCheck(Console.readLine());
         Map<String,Integer> racingResult= racingByInputNum(playerNameList(inputName),inputNum);
         List<String> winnerList = winner(racingResult,firstUserValue(racingResult));
         System.out.println("최종 우승자 : "+String.join(",",winnerList));
+
 
 
     }
@@ -25,9 +26,13 @@ public class Application {
         Map<String, Integer> player = new HashMap<>();
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
+            if(token.length()>5){
+                throw new IllegalArgumentException("5자 이하만 가능합니다. : "+token);
+            }
             player.put(token, 0);
         }
         return player;
+
     }
     public static int randomNum(){
         int randomNum = Randoms.pickNumberInRange(0,9);
@@ -48,6 +53,9 @@ public class Application {
         return playerNameList;
     }
     public static Map<String,Integer> racingByInputNum(Map<String, Integer>playerNameList, int inputNum){
+        if (inputNum<0){
+            throw new IllegalArgumentException("음수는 입력이 불가합니다 : "+inputNum);
+        }
         System.out.println("\n실행 결과");
         for(int i = 0; inputNum > i; i++){
             racing(playerNameList);
@@ -69,5 +77,15 @@ public class Application {
             }
         }
         return winner;
+    }
+    public static int intNumCheck (String stringNum){
+        int inputNum;
+        try {
+            inputNum = Integer.parseInt(stringNum);
+
+        }catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수만 입력 가능합니다.");
+        }
+        return inputNum;
     }
 }
