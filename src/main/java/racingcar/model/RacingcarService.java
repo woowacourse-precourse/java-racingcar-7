@@ -16,6 +16,14 @@ public class RacingcarService {
         outputView = OutputView.getInstance();
     }
 
+    private void startRace(Map<String, String> player, int attemptCount) {
+        outputView.runResult();
+        for (int i = 0; i < attemptCount; i++) {
+            movingForward(player);
+            printRoundResult(player);
+        }
+    }
+
     private void movingForward(Map<String, String> player) {
         for (String key : player.keySet()) {
             if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) > STANDARD_NUMBER) {
