@@ -16,6 +16,7 @@ public class Race {
         this.cars = cars;
     }
 
+    // TODO: 함수 분리하기
     public void run() {
         for (int round = 0; round < rounds; round++) {
             List<Integer> numbers = new ArrayList<>();
