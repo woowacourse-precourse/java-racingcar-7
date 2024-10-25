@@ -15,25 +15,23 @@ public class InputReader {
     }
 
     public List<String> getNames() {
-        final String input = read();
+        final String input = Console.readLine();
 
         validateInputBlank(input);
         return inputParser.toList(input);
     }
 
-
-    public int getTryCnt() {
-        final String number = read();
+    public int getTryCount() {
+        final String number = Console.readLine();
 
         validateInputBlank(number);
         validateNegative(number);
-        return Integer.parseInt(number);
-    }
 
-    private String read() {
-        final String input = Console.readLine();
-        Console.close();
-        return input;
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Constant.COUNT_ONLY_INTEGER_NUMBER_STRING);
+        }
     }
 
     private void validateNegative(final String number) {
