@@ -10,6 +10,11 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int currentMoveCount) {
+        this.name = name;
+        this.currentMoveCount = currentMoveCount;
+    }
+
     public void moveForward() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (isMoveForwardPossible(randomNumber)) {
