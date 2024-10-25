@@ -69,8 +69,6 @@ public class Application {
             }
         }
 
-
-        String winnerPrint = "최종 우승자 : " + String.join(",", winners);
-        System.out.println("winnerPrint = " + winnerPrint);
+        outputView.printWinner(winners);
     }
 }
