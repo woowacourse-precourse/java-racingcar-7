@@ -26,9 +26,32 @@ public class CarsTest {
 
         Cars cars = Cars.of(carNames);
 
-        assertThat(cars.getCars()).hasSize(3);
-        assertThat(cars.getCars().get(0).getName()).isEqualTo("carA");
-        assertThat(cars.getCars().get(1).getName()).isEqualTo("carB");
-        assertThat(cars.getCars().get(2).getName()).isEqualTo("carC");
+        assertThat(cars.getCars()
+                .size())
+                .isEqualTo(3);
+        assertThat(cars.getCars()
+                .get(0)
+                .getName())
+                .isEqualTo("carA");
+        assertThat(cars.getCars()
+                .get(1)
+                .getName())
+                .isEqualTo("carB");
+        assertThat(cars.getCars()
+                .get(2)
+                .getName())
+                .isEqualTo("carC");
+    }
+
+    @Test
+    @DisplayName("특정 이동 횟수 가진 자동차 찾기 테스트")
+    void findCarsByMoveCountTest() {
+        Cars result = cars.findCarsByMoveCount(5);
+
+        assertThat(result.getCars().size())
+                .isEqualTo(2);
+        assertThat(result.getCars())
+                .extracting(Car::getName)
+                .containsExactly("car2", "car3");
     }
 }
