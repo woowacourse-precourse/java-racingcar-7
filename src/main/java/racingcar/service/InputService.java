@@ -2,12 +2,20 @@ package racingcar.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import racingcar.view.InputView;
 
 public class InputService {
 
     static String regex = "^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$";
     static Pattern pattern = Pattern.compile(regex);
     static Matcher matcher;
+
+    private final InputView inputView = new InputView();
+
+    public void run() {
+        InputView.getStringInput();
+        InputView.getCountInput();
+    }
 
     public static boolean isTheLengthOfStringLessThanFive(String input) {
         String[] cars = input.split(",");
