@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryRound;
+import racingcar.util.RandomDigitGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,7 +17,7 @@ public class RacingGameController {
     }
 
     public void run() {
-        RacingGame racingGame = new RacingGame(inputView.readCarNames());
+        RacingGame racingGame = new RacingGame(inputView.readCarNames(), new RandomDigitGenerator());
         TryRound tryRound = new TryRound(inputView.readTryRound());
 
         outputView.printStartGame();
@@ -26,6 +27,6 @@ public class RacingGameController {
             tryRound.moveToNextRound();
         }
 
-        outputView.printWinner(racingGame.findWinner());
+        outputView.printWinner(racingGame.findWinnerCarNames());
     }
 }

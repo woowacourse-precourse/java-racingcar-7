@@ -1,26 +1,45 @@
 package racingcar.domain;
 
-import racingcar.util.RandomDigitGenerator;
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.util.RandomGenerator;
 
 public class RacingGame {
 
-    private final Cars cars;
+    private final CarsContainer carsContainer;
+    private final RandomGenerator randomGenerator;
 
-    public RacingGame(String invalidCarNames) {
+    public RacingGame(String invalidCarNames, RandomGenerator randomGenerator) {
         CarsParser CarsParser = new CarsParser();
-        RandomGenerator randomGenerator = new RandomDigitGenerator();
 
-        cars = new Cars(CarsParser.parse(invalidCarNames), randomGenerator);
+        carsContainer = new CarsContainer(CarsParser.parse(invalidCarNames));
+        this.randomGenerator = randomGenerator;
     }
 
     public String proceedRound() {
-        cars.moveAll();
+        carsContainer.moveAll(randomGenerator);
 
-        return cars.getCurrentRoundResult();
+        return String.join("", carsContainer.getCurrentRoundResult());
     }
 
-    public String findWinner() {
-        return cars.findWinnerCarNames();
+    public String findWinnerCarNames() {
+        List<Car> cars = carsContainer.getCars();
+        int maxPosition = findMaxPosition(cars);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    private int findMaxPosition(List<Car> cars) {
+        int maxPosition = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }

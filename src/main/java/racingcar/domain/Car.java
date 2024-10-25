@@ -10,6 +10,11 @@ public class Car {
         position = new Position();
     }
 
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public void moveForward(int randomNumber) {
         position.move(randomNumber);
     }
@@ -20,6 +25,10 @@ public class Car {
 
     public String getName() {
         return name.toString();
+    }
+
+    public Car copy() {
+        return new Car(this.name, this.position);
     }
 
     @Override
