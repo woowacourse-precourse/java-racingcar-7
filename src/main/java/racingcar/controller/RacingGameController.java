@@ -1,10 +1,13 @@
 package racingcar.controller;
 
+import racingcar.view.RacingGameInputView;
 import racingcar.view.RacingGameOutputView;
 
 public class RacingGameController {
-    private RacingGameOutputView racingGameOutputView = new RacingGameOutputView();
+    private final RacingGameInputView racingGameInputView = new RacingGameInputView();
+    private final RacingGameOutputView racingGameOutputView = new RacingGameOutputView();
     public void startGame(){
         racingGameOutputView.printRacingGameStartingMessage();
+        racingGameInputView.getCarNames();
     }
 }
