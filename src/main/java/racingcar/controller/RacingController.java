@@ -21,16 +21,19 @@ public class RacingController {
     }
 
     public void start() {
+        Racing racing = creatRacing();
+        runRacing(racing);
+        disPlayWinner(racing);
+    }
+
+    private Racing creatRacing() {
         List<String> carNames = getInputCarNames();
         Cars cars = creatCars(carNames);
 
         int count = getInputRacingCount();
         RacingCount racingCount = RacingCount.from(count);
 
-        Racing racing = Racing.of(cars, racingCount);
-
-        runRacing(racing);
-        disPlayWinner(racing);
+        return Racing.of(cars, racingCount);
     }
 
     private List<String> getInputCarNames() {
