@@ -30,4 +30,21 @@ class CarTest {
                 () -> assertEquals(carList1.getFirst().getName(), "pobi")
         );
     }
+    @Test
+    void createCar_exception() {
+        //given
+        String case1 = "hello";
+        String case2 = "helloworld";
+
+        RandomNumStrategy strategy = new RandomNumStrategy();
+        CarList list1 = new CarList(strategy);
+        list1.add(case1);
+        CarList list2 = new CarList(strategy);
+        //when
+
+        //then
+        Assertions.assertAll(
+                () -> assertThrows(IllegalArgumentException.class, () -> list1.add(case1)),
+                () -> assertThrows(IllegalArgumentException.class, () -> list2.add(case2)));
+    }
 }
