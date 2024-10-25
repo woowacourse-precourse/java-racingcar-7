@@ -42,7 +42,7 @@ class CarsTest {
 
 
     @Test
-    public void 전진_조건이_참_일_경우_자동차는_전진한다() {
+    public void 전진_조건이_참_일_경우_모든_자동차는_전진한다() {
         // given
         Car car1 = new Car("povi");
         Car car2 = new Car("min");
