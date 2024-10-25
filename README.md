@@ -2,7 +2,7 @@
 ---
 
 ### ▪️ 입력
-- [] 자동차 이름 입력 받기
+- [x] 자동차 이름 입력 받기
     - [] 이름은 1~5자만 가능 / 이름 null, 0자 혹은 6자 일경우 IllegalArgumentException 발생
     - [] 쉼표를 기준으로 이름 구분 / 이외 구분자 사용 시 IllegalArgumentException 발생
     - [] 최소 2명 이상 경주 가능 / 혼자 경주 시도할 경우 IllegalArgumentException 발생
