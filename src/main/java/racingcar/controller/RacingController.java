@@ -28,13 +28,12 @@ public class RacingController {
             inputCars.add(Car.of(input));
         }
 
+        cars = Cars.of(inputCars);
 
         outputView.printAttemptCountPrompt();
-        int tryCount = Integer.parseInt(inputView.input());
-        Cars cars = new Cars(carNames);
+        int tryCount = inputView.IntInput();
 
         outputView.printRacingResult();
-
         for (int i = 0; i < tryCount; i++) {
             cars.allMove();
             outputView.printCarDistances(cars.getCarNames(), cars.getCarsPositions());
