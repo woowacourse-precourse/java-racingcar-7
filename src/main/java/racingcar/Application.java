@@ -2,10 +2,15 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
+    public static List<String> winnerList = new ArrayList<>();
+
     public static void main(String[] args) {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -19,7 +24,19 @@ public class Application {
         }
 
         repeat(attempt, map);
+        winnerSelect(map);
 
+    }
+
+    public static void winnerSelect(Map<String, Long> map) {
+        long winnerNum = Collections.max(map.values());
+
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            long value = entry.getValue();
+            if (value == winnerNum) {
+                winnerList.add(entry.getKey());
+            }
+        }
     }
 
     public static void repeat(long attempt, Map<String, Long> map) {
