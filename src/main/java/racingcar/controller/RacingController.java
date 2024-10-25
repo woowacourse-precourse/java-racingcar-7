@@ -6,6 +6,7 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Racing;
 import racingcar.model.RacingCount;
+import racingcar.model.dto.CarStatusDto;
 import racingcar.util.randomnumber.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -35,9 +36,13 @@ public class RacingController {
         RacingCount racingCount = RacingCount.from(count);
 
         Racing racings = Racing.from(cars);
+        outputView.printRacingResultMessage();
         while (isPossibleRacing(racingCount)) {
             racings.runRacing();
             racingCount.deduct();
+
+            List<CarStatusDto> racingResults = racings.getResult();
+            outputView.printRacingResult(racingResults);
         }
     }
 
