@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import javax.xml.transform.Result;
 import racingcar.view.InputView;
 
 public class MainController {
@@ -16,6 +18,7 @@ public class MainController {
         List<String> names = NameController.getCarNames(carNames);
         String inputAttempt = inputView.inputAttempt();
         int attempt = AttemptController.getAttempt(inputAttempt);
-        GameController.gamePlay(names, attempt);
+        HashMap<String, Integer> gameRecord = GameController.gamePlay(names, attempt);
+        ResultController.resultGame(gameRecord);
     }
 }
