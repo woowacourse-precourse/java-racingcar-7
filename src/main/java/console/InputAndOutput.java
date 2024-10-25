@@ -15,9 +15,11 @@ public class Input {
         return Console.readLine();
     }
 
-    public static String readRacingCount() {
+    public static int readRacingCount() {
         System.out.println(INPUT_COUNT);
-        return Console.readLine();
+        String racingCount = Console.readLine();
+        return checkCountException(racingCount);
+
     }
 
     public static void closeConsole() {
@@ -27,6 +29,22 @@ public class Input {
     public static void generateExceptionIfNameAbove5(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException(NAME_LENGTH_ROLE);
+        }
+    }
+
+    public static int checkCountException(String racingCount) {
+        try {
+            boolean onlyNumber = racingCount.matches("[0-9]+");
+            if (!onlyNumber) {
+                throw new IllegalArgumentException("1이상의 정수만 출력 가능합니다.");
+            }
+            int value = Integer.parseInt(racingCount);
+            if (value == 0) {
+                throw new IllegalArgumentException("1이상의 정수만 출력 가능합니다.");
+            }
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 너무 큽니다.");
         }
     }
 
