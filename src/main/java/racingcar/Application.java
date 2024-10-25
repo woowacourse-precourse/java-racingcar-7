@@ -39,6 +39,9 @@ class RacingGame {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
+            if (name.matches(".*\\d.*")) {
+                throw new IllegalArgumentException("자동차 이름에는 숫자를 포함할 수 없습니다.");
+            }
         }
         this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
         this.round = round;
