@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarService {
-    private List<RacingCar> cars = new ArrayList<>();
+    private List<RacingCar> cars;
     private Integer number;
 
     public RacingCarService(List<RacingCar> cars, Integer number) {

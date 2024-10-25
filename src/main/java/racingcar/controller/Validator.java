@@ -2,8 +2,6 @@ package racingcar.controller;
 
 import racingcar.common.ExceptionMessage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Validator {
