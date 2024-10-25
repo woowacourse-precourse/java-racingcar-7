@@ -84,7 +84,7 @@ public class Application {
 
     public static Map<String, StringBuilder> createResultMap(String carNames) {
         String[] namesByComma = carNames.split(IOMessage.COMMA_SEPARATOR);
-        Map<String, StringBuilder> resultMap = new HashMap<>();
+        Map<String, StringBuilder> resultMap = new LinkedHashMap<>();
 
         for (String name : namesByComma) {
             resultMap.put(name, new StringBuilder());
