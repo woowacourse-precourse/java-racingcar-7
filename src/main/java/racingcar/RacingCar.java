@@ -10,14 +10,8 @@ public class RacingCar {
         this.name = name;
     }
 
-    public void run(int cycle) {
-        for (int i = 0; i < cycle; i++) {
-            attemptMove();
-        }
-    }
-
-    public void attemptMove() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+    public void run(int randomNum) {
+        if (randomNum >= 4) {
             status++;
         }
     }

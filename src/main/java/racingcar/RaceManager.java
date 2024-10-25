@@ -20,6 +20,18 @@ public class RaceManager {
         IO_HANDLER.printWinner(winner);
     }
 
+    private static void updateRaceState(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.run(getRandomNum());
+            IO_HANDLER.printRaceState(racingCar);
+        }
+        IO_HANDLER.printNewLine();
+    }
+
+    private static int getRandomNum() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
     private static String getWinner(List<RacingCar> racingCars) {
         int maxScore = 0;
         List<String> winners = new ArrayList<>();
