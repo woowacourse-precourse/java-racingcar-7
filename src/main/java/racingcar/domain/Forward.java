@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.constans.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_SINGLE_DIGIT;
+import static racingcar.constants.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_SINGLE_DIGIT;
 
 public class Forward {
 

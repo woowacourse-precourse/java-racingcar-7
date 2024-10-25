@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.constans.ViewMessage;
+import racingcar.constants.ViewMessage;
 
 public class InputView {
 

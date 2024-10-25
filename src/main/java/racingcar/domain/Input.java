@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import static racingcar.constans.exception.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
-import static racingcar.constans.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT;
+import static racingcar.constants.exception.ErrorMessage.EMPTY_CAR_NAME_NOT_ALLOWED;
+import static racingcar.constants.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT;
 
 public class Input {
 

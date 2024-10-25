@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.constans.ViewMessage;
+import racingcar.constants.ViewMessage;
 import racingcar.domain.Car;
 import racingcar.domain.Forward;
 import racingcar.domain.Input;

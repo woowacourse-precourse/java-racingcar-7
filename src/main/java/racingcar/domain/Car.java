@@ -2,8 +2,8 @@ package racingcar.domain;
 
 import java.util.*;
 
-import static racingcar.constans.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
-import static racingcar.constans.exception.ErrorMessage.DUPLICATE_CAR_NAME_NOT_ALLOWED;
+import static racingcar.constants.exception.ErrorMessage.INVALID_CAR_NAME_LENGTH;
+import static racingcar.constants.exception.ErrorMessage.DUPLICATE_CAR_NAME_NOT_ALLOWED;
 
 public class Car {
 

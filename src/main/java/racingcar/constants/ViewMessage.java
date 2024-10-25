@@ -1,4 +1,4 @@
-package racingcar.constans;
+package racingcar.constants;
 
 public enum ViewMessage {
 
