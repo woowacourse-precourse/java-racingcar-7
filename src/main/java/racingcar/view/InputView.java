@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.InputMismatchException;
 
 public class InputView {
 
@@ -11,5 +10,13 @@ public class InputView {
             throw new IllegalArgumentException();
         }
         return carString;
+    }
+
+    public String readTryCount() {
+        String tryCount = Console.readLine();
+        if (tryCount == null) {
+            throw new IllegalArgumentException();
+        }
+        return tryCount;
     }
 }
