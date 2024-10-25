@@ -9,6 +9,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    public boolean stopOrGo() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
     public void printEachRound(List<Car> racingCar) {
         for (Car car : racingCar) {
             if (stopOrGo()) {
