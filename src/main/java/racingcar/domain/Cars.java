@@ -51,7 +51,7 @@ public class Cars {
         int maxMoveCount = cars.stream()
                 .mapToInt(Car::getMoveCount)
                 .max()
-                .orElse(-1);
+                .orElse(0);
 
         if(maxMoveCount == 0){
             return Collections.emptyList();
