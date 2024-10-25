@@ -35,3 +35,19 @@ class Car {
         }
     }
 }
+
+class UserInput {
+    private final List<Car> cars = new ArrayList<>();
+    private int attempts = 0;
+    private boolean isValidCarNames = false;
+    private boolean isPositiveAttempts = false;
+    private boolean isIntegerAttempts = false;
+    
+    public List<Car> getCarList() {
+        return cars;
+    }
+
+    public int getAttempts() {
+        return attempts;
+    }
+}
