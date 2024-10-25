@@ -24,22 +24,22 @@ public class Cars {
     }
 
     public List<String> findRaceWinners() {
-        int maxDistance = 0;
-        List<String> winners = new ArrayList<>();
-        findMaxDistance(maxDistance);
-        findWinners(maxDistance, winners);
-        return winners;
+        int maxDistance = findMaxDistance();
+        return findWinners(maxDistance);
     }
 
-    private void findWinners(int maxDistance, List<String> winners) {
+    private List<String> findWinners(int maxDistance) {
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (maxDistance == car.getDistance()) {
                 winners.add(car.getName());
             }
         }
+        return winners;
     }
 
-    private int findMaxDistance(int maxDistance) {
+    private int findMaxDistance() {
+        int maxDistance = 0;
         for (Car car : cars) {
             if (maxDistance < car.getDistance()) {
                 maxDistance = car.getDistance();
