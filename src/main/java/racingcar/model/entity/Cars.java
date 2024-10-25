@@ -1,6 +1,6 @@
 package racingcar.model.entity;
 
-import racingcar.strategy.Strategy;
+import racingcar.strategy.MoveStrategy;
 
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Cars implements Iterable<Car> {
         this.cars = cars;
     }
 
-    public static Cars getOfNamesAndStrategy(CarNames names, Strategy strategy) {
+    public static Cars getOfNamesAndStrategy(CarNames names, MoveStrategy strategy) {
         List<Car> elements = StreamSupport.stream(names.spliterator(), false)
                     .map(name -> new Car(name, strategy))
                     .toList();
