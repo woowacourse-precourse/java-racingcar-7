@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.controller.RacingCarController;
 import racingcar.domain.RandomNumberGenerator;
-import racingcar.utils.RandomGenerator;
+import racingcar.domain.RandomGenerator;
 
 public class Application {
     public static void main(String[] args) {

@@ -12,7 +12,7 @@ import racingcar.domain.Winners;
 import racingcar.domain.dto.CarDto;
 import racingcar.domain.dto.CarsDto;
 import racingcar.mock.TestRandomNumberGenerator;
-import racingcar.utils.RandomGenerator;
+import racingcar.domain.RandomGenerator;
 import racingcar.view.OutputView;
 
 import static org.assertj.core.api.Assertions.assertThat;

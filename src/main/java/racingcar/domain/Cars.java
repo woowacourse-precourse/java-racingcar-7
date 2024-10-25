@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.domain.dto.CarDto;
 import racingcar.domain.dto.CarsDto;
-import racingcar.utils.RandomGenerator;
 
 public class Cars {
     private final List<Car> cars;

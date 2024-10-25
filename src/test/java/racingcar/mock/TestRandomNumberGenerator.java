@@ -1,7 +1,7 @@
 package racingcar.mock;
 
 import java.util.List;
-import racingcar.utils.RandomGenerator;
+import racingcar.domain.RandomGenerator;
 
 public class TestRandomNumberGenerator implements RandomGenerator {
     private final List<Integer> numbers;
