@@ -39,5 +39,6 @@ public class Application {
         CarRacingResult carRacingResult = new CarRacingResult(carRace.getCarGroup());
         //자동차 경기 결과 출력
         OutputView.printMessage(PrintMessage.CAR_RACE_WINNER_MESSAGE);
+        OutputView.printCarRacingResult(carRacingResult.getCarRacingWinners());
     }
 }
