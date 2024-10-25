@@ -57,7 +57,9 @@
 ---
 
 - cars: List<Cars>
-- List<Cars> `race`(Long times)
+- times : Long
+- RaceRandomGenerator
+- Race `perform`()
 
 ### Race Result
 
@@ -77,3 +79,21 @@
 ### Service
 
 ---
+
+### Util
+
+---
+
+- RaceRandomGenerator(interface)
+    - getRandomValue(default)
+  
+      Randoms class를 활용하여 0~9까지 난수를 반환
+
+
+- RaceRandomGeneratorImpl(singleton)
+    - getInstance()
+
+      Instance를 반환한다.
+    - getMoveForwardTimes(long raceTimes)
+
+      => Random에서 random value를 받아서 4 이상이 횟수를 count하여 return한다.
