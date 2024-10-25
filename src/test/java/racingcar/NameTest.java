@@ -10,9 +10,9 @@ class NameTest {
 
     @DisplayName("입력된 이름이 올바를 때, 데이터가 들어가는지 확인한다.")
     @Test
-    void checkCorrectName() {
+    void Given_CorrectInput_When_NameHasInput_Then_Success() {
         // Given
-        String input = "pobi";
+        String input = "aaa";
         Name name = new Name(input);
         // When
         // Then
@@ -21,7 +21,7 @@ class NameTest {
 
     @DisplayName("입력된 이름의 길이가 5보다 크면, 에러가 발생한다.")
     @Test
-    void checkNameLengthOverFive() {
+    void Given_OverLengthName_Then_Error() {
         // Given
         String input = "ffffff";
         // When
