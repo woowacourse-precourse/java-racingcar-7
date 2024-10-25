@@ -7,7 +7,19 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        UserInput input = new UserInput();
+        input.setCarNames();
+        input.setAttempts();
+        input.validateInput();
 
+        for (int i = 0; i < input.getAttempts(); i++) {
+            for (Car car : input.getCarList()) {
+                car.move();
+            }
+            ResultOutput.printRoundStatus(input.getCarList());
+        }
+
+        ResultOutput.declareWinner(input.getCarList());
     }
 }
 
