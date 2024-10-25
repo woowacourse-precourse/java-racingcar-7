@@ -8,7 +8,6 @@ public class RaceRound {
         this.rounds = rounds;
     }
 
-
     public int getRounds() {
         return this.rounds;
     }
