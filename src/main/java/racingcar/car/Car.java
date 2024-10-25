@@ -9,6 +9,7 @@ public class Car {
 
 	private static final int START_LOCATION = 0;
 	private static final int MAX_NAME_LENGTH = 5;
+	private static final int MOVE_THRESHOLD_VALUE = 4;
 
 	public Car(String name) {
 		validateCarLength(name);
@@ -24,7 +25,7 @@ public class Car {
 
 	public void execute() {
 		int randomNum = Randoms.pickNumberInRange(0, 9);
-		if (randomNum >= 4){
+		if (randomNum >= MOVE_THRESHOLD_VALUE){
 			moveForward();
 		}
 	}
