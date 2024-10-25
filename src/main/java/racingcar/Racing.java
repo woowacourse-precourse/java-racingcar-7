@@ -29,7 +29,7 @@ public class Racing {
         return carList.stream()
                 .filter(c -> c.getDistance() == max)
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
     }
 
     public String toString() {
