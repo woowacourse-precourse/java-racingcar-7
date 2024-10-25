@@ -43,7 +43,7 @@ public class Validator {
         try {
             double number = Double.parseDouble(input);
 
-            if (number < 0 || number != (int) number) {
+            if (number <= 0 || number != (int) number) {
                 throw new IllegalArgumentException();
             }
             if (number > 1000) {
