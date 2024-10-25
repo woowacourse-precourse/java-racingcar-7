@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.dto.CarStatusDto;
-import racingcar.util.randomnumber.RandomNumberGenerator;
 import racingcar.util.randomnumber.StubRandomNumberGenerator;
 
 class RacingTest {
@@ -15,12 +14,7 @@ class RacingTest {
     @Test
     void createRacing() {
         //given
-        Cars cars = Cars.from(List.of(
-                Car.from("pobi", new RandomNumberGenerator()),
-                Car.from("woni", new RandomNumberGenerator()),
-                Car.from("jun", new RandomNumberGenerator())
-        ));
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         //when
@@ -34,12 +28,7 @@ class RacingTest {
     @Test
     void canRacing() {
         //given
-        Cars cars = Cars.from(List.of(
-                Car.from("pobi", new RandomNumberGenerator()),
-                Car.from("woni", new RandomNumberGenerator()),
-                Car.from("jun", new RandomNumberGenerator())
-        ));
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         Racing racing = Racing.of(cars, racingCount);
@@ -55,12 +44,7 @@ class RacingTest {
     @Test
     void canNotRacing() {
         //given
-        Cars cars = Cars.from(List.of(
-                Car.from("pobi", new RandomNumberGenerator()),
-                Car.from("woni", new RandomNumberGenerator()),
-                Car.from("jun", new RandomNumberGenerator())
-        ));
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         Racing racing = Racing.of(cars, racingCount);
@@ -74,43 +58,11 @@ class RacingTest {
         assertThat(result).isFalse();
     }
 
-    @DisplayName("경주를 진행한다.")
-    @Test
-    void run() {
-        //given
-        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
-        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
-        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
-
-        Cars cars = Cars.from(
-                List.of(pobiCar, woniCar, junCar)
-        );
-
-        RacingCount racingCount = RacingCount.from(1);
-
-        Racing racing = Racing.of(cars, racingCount);
-
-        //when
-        racing.run();
-
-        //then
-        assertThat(pobiCar.getPosition()).isEqualTo(1);
-        assertThat(woniCar.getPosition()).isEqualTo(0);
-        assertThat(junCar.getPosition()).isEqualTo(0);
-    }
-
     @DisplayName("경주를 한번 진행하면 시도 횟수를 1회 차감할 수 있다.")
     @Test
     void deductTryCountByRun() {
         //given
-        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
-        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
-        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
-
-        Cars cars = Cars.from(
-                List.of(pobiCar, woniCar, junCar)
-        );
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         Racing racing = Racing.of(cars, racingCount);
@@ -128,14 +80,7 @@ class RacingTest {
     @Test
     void getResult() {
         //given
-        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
-        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
-        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
-
-        Cars cars = Cars.from(
-                List.of(pobiCar, woniCar, junCar)
-        );
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         Racing racing = Racing.of(cars, racingCount);
@@ -157,14 +102,7 @@ class RacingTest {
     @Test
     void winners() {
         //given
-        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
-        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
-        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
-
-        Cars cars = Cars.from(
-                List.of(pobiCar, woniCar, junCar)
-        );
-
+        Cars cars = createCars();
         RacingCount racingCount = RacingCount.from(1);
 
         Racing racing = Racing.of(cars, racingCount);
@@ -176,5 +114,15 @@ class RacingTest {
 
         //then
         assertThat(winners).containsExactly("pobi");
+    }
+
+    private Cars createCars() {
+        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
+        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
+        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
+
+        return Cars.from(
+                List.of(pobiCar, woniCar, junCar)
+        );
     }
 }
