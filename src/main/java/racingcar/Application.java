@@ -9,6 +9,8 @@ public class Application {
         String[] names = Console.readLine().split(",");
         int attempts = Integer.parseInt(Console.readLine());
         String[] individualCarMovements = new String[names.length];
+        printCarMovements(individualCarMovements, names, attempts);
+
     }
 
     public static void individualRandoms(String[] individualCarMovements, String[] names) { // 1회 이동 메서드
@@ -22,5 +24,11 @@ public class Application {
         }
     }
 
+    public static void printCarMovements(String[] individualCarMovements, String[] names,
+                                         int attempts) { // 시도
+        for (int i = 0; i < attempts; i++) {
+            individualRandoms(individualCarMovements, names);
+        }
+    }
 
 }
