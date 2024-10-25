@@ -18,8 +18,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 중복된_이름() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -27,8 +27,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 빈_이름() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("", "1"))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -36,8 +36,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 글자수_제한을_넘는_이름() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobipobi", "1"))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("pobipobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -45,8 +45,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 숫자가_아닌_값() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni","abc"))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("pobi,woni","abc"))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -54,8 +54,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 빈_값() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni",""))
-                    .isInstanceOf(IllegalArgumentException.class)
+            assertThatThrownBy(() -> runException("pobi,woni",""))
+                .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -77,6 +77,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("우승자가 한명인 경우 테스트")
     @Test
     void 단일_우승자() {
         assertRandomNumberInRangeTest(
@@ -88,6 +89,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("우승자가 여러 명인 경우 테스트")
     @Test
     void 다중_우승자() {
         assertRandomNumberInRangeTest(
