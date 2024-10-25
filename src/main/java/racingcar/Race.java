@@ -28,7 +28,7 @@ public class Race {
         for (int i = 0; i < attemptNum; i++) {
             for (Car car : cars) {
                 car.occurRandomNum();
-                checkAdvence(car);
+                checkAdvance(car);
                 outputView.racingProgress(car);
             }
             outputView.blankLine();
@@ -38,26 +38,25 @@ public class Race {
 
     }
 
-    private boolean checkAdvence(Car car) {
-        if(car.randomNum >= 4) {
-            car.countAdvence ++;
-            return true;
+    private void checkAdvance(Car car) {
+        if(car.getRandomNum() >= 4) {
+            car.countAdvance ++;
+
         }
-        return false;
     }
 
     private void racingResult(List<Car> cars) {
-        int maxAdvenceNum = 0;
+        int maxAdvanceNum = 0;
         List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.getCountAdvence() > maxAdvenceNum) {
-                maxAdvenceNum = car.getCountAdvence();
+            if (car.getCountAdvance() > maxAdvanceNum) {
+                maxAdvanceNum = car.getCountAdvance();
             }
         }
 
         for (Car car : cars) {
-            if (car.getCountAdvence() == maxAdvenceNum) {
+            if (car.getCountAdvance() == maxAdvanceNum) {
                 winners.add(car.getName());
             }
         }

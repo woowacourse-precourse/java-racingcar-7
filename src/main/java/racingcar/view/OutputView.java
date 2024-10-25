@@ -12,7 +12,7 @@ public class OutputView {
     }
 
     public void racingProgress(Car car) {
-        System.out.println(car.getName() + " : " + "-".repeat(car.getCountAdvence()));
+        System.out.println(car.getName() + " : " + "-".repeat(car.getCountAdvance()));
     }
 
     public void blankLine() {
