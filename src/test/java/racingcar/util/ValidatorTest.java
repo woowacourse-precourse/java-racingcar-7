@@ -46,11 +46,10 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("프린트 불가능한 문자를 포함한 자동차 이름일 경우 예외 발생")
-    void carNameWithNonPrintableCharactersShouldThrowException() {
+    void carNameWithNonPrintableTest() {
         List<String> carNamesWithNonPrintable = List.of("pobi", "car1", "bear", "\u0007");
 
         assertThatThrownBy(() -> Validator.carNameValidate(carNamesWithNonPrintable))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
