@@ -5,6 +5,7 @@ import static racingcar.util.InputValidator.validateNoDuplicates;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.util.RandomUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,7 +20,17 @@ public class GameController {
 
     public void run() {
         List<Car> cars = initGamePlay();
+
         int inputPlayCount = inputView.inputPlayCount();
+        outputView.printRunResult();
+
+        for (int playCount = 0; playCount < inputPlayCount; playCount++) {
+            cars.forEach(car -> {
+                int randomNumber = RandomUtil.generateRandomNumber();
+                car.moveForward(randomNumber);
+            });
+            outputView.printRoundResult(cars);
+        }
     }
 
     private List<Car> initGamePlay() {
