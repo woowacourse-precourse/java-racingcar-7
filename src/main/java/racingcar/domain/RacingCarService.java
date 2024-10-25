@@ -31,6 +31,7 @@ public class RacingCarService {
             System.out.print(car.getName() + " : ");
             System.out.println("-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     public void startRacing() {

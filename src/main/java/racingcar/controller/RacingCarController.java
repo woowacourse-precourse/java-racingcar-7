@@ -17,5 +17,7 @@ public class RacingCarController {
 
         RacingCarService racingCarService =
                 new RacingCarService(cars, Integer.parseInt(userInputs.get(1)));
+
+        racingCarService.startRacing();
     }
 }

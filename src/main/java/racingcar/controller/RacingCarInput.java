@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 
 public class RacingCarInput {
 
-    private static final String INPUT_NAME_MESSAGE = "자동차 이름을 입력해 주세요. 쉼표로 구분 합니다. : ";
-    private static final String INPUT_NUMBER_MESSAGE = "이동할 횟수를 입력해 주세요. : ";
+    private static final String INPUT_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String INPUT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static List<String> getUserInput() {
         try {
