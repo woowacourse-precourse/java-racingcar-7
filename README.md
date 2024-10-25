@@ -9,7 +9,7 @@
     - [x] NumberValidator
     - [x] RandomNumberGenerator
     - [x] ProgressResultGenerator
-    - [ ] WinnerDeterminer
+    - [x] WinnerDeterminer
 - View
     - [x] InputView
     - [ ] OutputView
