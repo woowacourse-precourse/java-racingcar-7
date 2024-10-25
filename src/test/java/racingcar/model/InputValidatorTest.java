@@ -27,15 +27,7 @@ class InputValidatorTest {
         });
     }
 
-    static Stream<Arguments> inputCarNameSuccessList() {
-        return Stream.of("a", "ab", "abc", "abcd", "abcde",
-                "pobi", "woni", "corpi",
-                "일", "이이", "삼삼삼", "사사사사", "오오오오오",
-                "갻덄럖뱚휿", "갉랉딽깎쌌"
-        ).map(Arguments::of);
-    }
-
-    @DisplayName("자동차의 이름은 5자이하의 한글, 소문자 영어가 아니면 에러가 발생한다.")
+    @DisplayName("자동차의 이름은 5자 이하의 한글, 소문자 영어가 아니면 에러가 발생한다.")
     @MethodSource("inputCarNameFailureList")
     @ParameterizedTest
     void carNameFailureTest(String input) {
@@ -44,7 +36,15 @@ class InputValidatorTest {
         });
     }
 
-    static Stream<Arguments> inputCarNameFailureList() {
+    private static Stream<Arguments> inputCarNameSuccessList() {
+        return Stream.of("a", "ab", "abc", "abcd", "abcde",
+                "pobi", "woni", "corpi",
+                "일", "이이", "삼삼삼", "사사사사", "오오오오오",
+                "갻덄럖뱚휿", "갉랉딽깎쌌"
+        ).map(Arguments::of);
+    }
+
+    private static Stream<Arguments> inputCarNameFailureList() {
         return Stream.of("", " ",
                 "!", "@", "|",
                 "ㄱ", "ㅎ", "ㅏ", "ㅣ",
