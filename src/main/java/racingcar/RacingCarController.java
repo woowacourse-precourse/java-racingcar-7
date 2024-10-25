@@ -18,5 +18,6 @@ public class RacingCarController {
         outputView.tryCountMessage();
         String readTryCount = inputView.readTryCount();
         RacingCarCollection collection = new RacingCarCollection(readCarString, readTryCount);
+        RacingCarService service = new RacingCarService(collection.getCarList(), collection.getTryCount());
     }
 }

@@ -2,20 +2,28 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class RacingCarCollection {
-    private ArrayList<String> carList;
+    private Map<String, Integer> carList;
     private Integer tryCount;
     private final int MAX_LENGTH = 5;
 
 
     public RacingCarCollection(String carString, String readTryCount) {
-        carList = new ArrayList<>();
+        carList = new HashMap<>();
         String[] cars = carString.split(",");
         validate(cars);
-        carList.addAll(Arrays.asList(cars));
+        arrToMap(cars);
         tryCount = Integer.parseInt(readTryCount);
+    }
+
+    private void arrToMap(String[] cars) {
+        for (String s : cars){
+            carList.put(s, 0);
+        }
     }
 
 
@@ -44,5 +52,13 @@ public class RacingCarCollection {
         for (String car : cars) {
             if (car.length() > MAX_LENGTH || car.isEmpty()) throw new IllegalArgumentException("[ERROR] : 자동차 이름은 5자 이하이거나 비어서는 안됩니다.");
         }
+    }
+
+    public Map<String, Integer> getCarList() {
+        return carList;
+    }
+
+    public Integer getTryCount() {
+        return tryCount;
     }
 }
