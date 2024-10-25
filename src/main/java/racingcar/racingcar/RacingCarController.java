@@ -23,9 +23,18 @@ public class RacingCarController {
     }
 
     public void run() {
-        String joinedCarNames = inputView.requestString(outputView, REQUEST_RACING_CAR_NAME.getMessage());
-        List<String> carNames = racingCarService.splitCarName(joinedCarNames);
-        List<RacingCar> racingCars = racingCarService.makeCar(carNames);
+        String joinedCarNames = getCarNames();
+        List<String> carNameList = splitCarNames(joinedCarNames);
+        racingCarService.removeLeftRightBlank(carNameList);
+        List<RacingCar> racingCars = racingCarService.makeCar(carNameList);
         recordController.setRacingCarList(racingCars);
+    }
+
+    private List<String> splitCarNames(String joinedCarNames) {
+        return racingCarService.splitCarName(joinedCarNames);
+    }
+
+    private String getCarNames() {
+        return inputView.requestString(outputView, REQUEST_RACING_CAR_NAME.getMessage());
     }
 }

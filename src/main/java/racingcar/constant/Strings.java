@@ -9,7 +9,7 @@ public enum Strings {
 
     // for record
     REQUEST_TRY_TIMES("시도할 횟수는 몇 회인가요?"),
-    IS_NOT_NUMBER("정수 입력이 잘못 되었습니다."),
+    IS_NOT_NUMBER("시도 횟수 입력이 잘못 되었습니다."),
     PUT_OVER_ZERO("시도 횟수는 0회 이상이 입력 되어야 합니다."),
     ;
 

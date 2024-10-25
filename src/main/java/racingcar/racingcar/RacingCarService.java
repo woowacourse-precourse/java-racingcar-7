@@ -3,6 +3,7 @@ package racingcar.racingcar;
 import static racingcar.constant.Integers.CAR_NAME_MAX_LENGTH;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarService {
@@ -19,7 +20,9 @@ public class RacingCarService {
 
     public List<String> splitCarName(String joinedCarNames) {
         racingCarValidator.existCheck(joinedCarNames);
-        return List.of(joinedCarNames.split(","));
+        return Arrays.stream(joinedCarNames.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     public List<RacingCar> makeCar(List<String> carNames) {
@@ -30,6 +33,10 @@ public class RacingCarService {
             racingCars.add(new RacingCar(name));
         }
         return racingCars;
+    }
+
+    public void removeLeftRightBlank(List<String> carNameList){
+        carNameList.forEach(String::trim);
     }
 
 }
