@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,13 +9,15 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNamesInput = Console.readLine();
-        Map<String, Integer> cars = registerCars(carNamesInput);
+        Map<String, Integer> carsBeforeRace = registerCars(carNamesInput);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String moveNumberInput = Console.readLine();
         int moveNumber = validateMoveNumber(moveNumberInput);
 
         System.out.println("\n실행 결과");
+
+        Map<String, Integer> carsAfterRace = doRace(carsBeforeRace, moveNumber);
 
 
     }
@@ -34,7 +37,6 @@ public class Application {
         if (cars.size() < 2) {
             throw new IllegalArgumentException("2개 이상의 차 이름을 입력해주세요.");
         }
-
         return cars;
     }
 
@@ -48,5 +50,18 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수로 된 이동 횟수를 입력해주세요.");
         }
+    }
+
+    public static Map<String, Integer> doRace(Map<String, Integer> cars, int moveNumber) {
+        for (int i = 0; i < moveNumber; i++) {
+            String[] carNames = cars.keySet().toArray(new String[0]);
+            for (String carName : carNames) {
+                int moveDistance = cars.get(carName);
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                    cars.replace(carName, moveDistance + 1);
+                }
+            }
+        }
+        return cars;
     }
 }
