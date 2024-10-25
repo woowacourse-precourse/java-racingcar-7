@@ -26,7 +26,7 @@ public class RaceManager {
         }
     }
 
-    public void findWinningPosition() {
+    private void findWinningPosition() {
         winningPosition =  racingCars.getCars()
                 .stream()
                 .map(Car::getPosition)
@@ -34,7 +34,7 @@ public class RaceManager {
                 .orElse(BigInteger.ZERO);
     }
 
-    public void findWinningCarsNames() {
+    private void findWinningCarsNames() {
         winnersName = racingCars.getCars()
                 .stream()
                 .filter(car -> car.getPosition().compareTo(winningPosition) == 0)
@@ -48,6 +48,8 @@ public class RaceManager {
     }
 
     public void announceRaceResult(){
+        findWinningPosition();
+        findWinningCarsNames();
         OutputView.printWinner(winnersName);
     }
 

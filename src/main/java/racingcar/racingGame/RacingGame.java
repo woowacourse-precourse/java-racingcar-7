@@ -18,8 +18,6 @@ public class RacingGame extends RacingGameTemplate {
 
     @Override
     protected void announceWinners() {
-        raceManager.findWinningPosition();
-        raceManager.findWinningCarsNames();
         raceManager.announceRaceResult();
     }
 
