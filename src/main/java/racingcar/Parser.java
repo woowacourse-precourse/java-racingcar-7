@@ -14,6 +14,9 @@ public class Parser {
         this.inputs = inputs;
     }
 
+    /**
+     * @return 구분자","를 기준으로 자동차이름을 분리하여 리스트로 리턴
+     */
     public List<String> parseCarNameInput() {
         String line = inputs.getFirst();
         List<String> carNames = Arrays.asList(line.split(","));
@@ -24,6 +27,9 @@ public class Parser {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @return 몇번 레이스 할것인지 숫자를 검증해 리턴
+     */
     public int parseRaceRoundInput() {
         String line = inputs.get(1);
         return parseRound(line);
