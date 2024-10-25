@@ -39,4 +39,11 @@ public class Controller {
     private int inputNumberOfAttempts() {
         return inputView.inputAttemptCount();
     }
+
+    private void displayRacingResults() {
+        for (Car car : cars) {
+            utils.attemptCarMove(car);
+        }
+        outputView.printRaceResults(cars);
+    }
 }
