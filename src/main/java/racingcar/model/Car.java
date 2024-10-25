@@ -12,6 +12,17 @@ public class Car {
         this.winStack = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getWinStack() {
+        return winStack;
+    }
+    public void plusWinStack() {
+        this.winStack++;
+    }
+
     private static void CarNameEmptyValidator(String name) {
         final String CAR_NAME_EMPTY_VALIDATION_MESSAGE = "자동차에 이름을 부여하지 않았습니다.";
         if (name.isEmpty()) {
