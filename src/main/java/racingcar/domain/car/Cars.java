@@ -13,8 +13,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = Validator.validate(cars);
+    public Cars(List<String> names) {
+        this.cars = Validator.validate(names);
     }
 
     public List<Car> getCars() {
@@ -49,36 +49,38 @@ public class Cars {
 
     private static class Validator {
 
-        private static List<Car> validate(List<Car> cars) {
-            validateParticipant(cars);
-            validateDuplicateName(cars);
+        private static List<Car> validate(List<String> names) {
+            validateParticipant(names);
+            validateDuplicateName(names);
 
-            return cars;
+            return names.stream()
+                    .map(Car::new)
+                    .toList();
         }
 
-        private static void validateParticipant(List<Car> cars) {
+        private static void validateParticipant(List<String> cars) {
             if (isOne(cars)) {
                 throw new RaceException(ErrorMessage.INVALID_RACE_LIST_SIZE);
             }
         }
 
-        private static boolean isOne(List<Car> cars) {
+        private static boolean isOne(List<String> cars) {
             return cars.size() == ONE;
         }
 
-        private static void validateDuplicateName(List<Car> cars) {
-            if (hasDuplicateName(cars)) {
+        private static void validateDuplicateName(List<String> names) {
+            if (hasDuplicateName(names)) {
                 throw new RaceException(ErrorMessage.INVALID_SAME_NAME);
             }
         }
 
-        private static boolean hasDuplicateName(List<Car> cars) {
-            return cars.size() != getUniqueNameCount(cars);
+        private static boolean hasDuplicateName(List<String> names) {
+            return names.size() != getUniqueNameCount(names);
         }
 
-        private static int getUniqueNameCount(List<Car> cars) {
-            return cars.stream()
-                    .map(Car::getName)
+        private static int getUniqueNameCount(List<String> names) {
+            return names.stream()
+                    .map(String::toString)
                     .collect(Collectors.toSet())
                     .size();
         }

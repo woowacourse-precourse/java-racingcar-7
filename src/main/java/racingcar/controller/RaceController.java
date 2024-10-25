@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import java.util.List;
 import racingcar.domain.Winners;
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -18,7 +16,7 @@ public class RaceController {
     }
 
     public void run() {
-        Cars cars = new Cars(parse(inputView.receiveName()));
+        Cars cars = new Cars(inputView.receiveName());
         int count = inputView.receiveCount();
 
         outputView.printRaceResultPhrase();
@@ -32,11 +30,5 @@ public class RaceController {
         }
 
         return new Winners(cars);
-    }
-
-    private List<Car> parse(List<String> names) {
-        return names.stream()
-                .map(Car::new)
-                .toList();
     }
 }

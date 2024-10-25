@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,15 +10,11 @@ import racingcar.domain.car.Cars;
 
 class CarsTest {
 
-    private List<Car> carList;
+    private List<String> carList;
 
     @BeforeEach
     void init() {
-        carList = List.of(
-                new Car("pobi"),
-                new Car("jun"),
-                new Car("Lim")
-        );
+        carList = List.of("pobi", "jun", "Lim");
     }
 
     @Test
@@ -28,7 +24,7 @@ class CarsTest {
         Cars cars = new Cars(carList);
 
         //then
-        assertThat(cars.getCars()).isEqualTo(carList);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
     @Test
