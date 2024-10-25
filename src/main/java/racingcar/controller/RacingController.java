@@ -33,6 +33,7 @@ public class RacingController {
 
   private void playGame(RacingCarGame racingCarGame, int tryCount) {
     outputView.printResult();
+    racingCarGame.isReady(tryCount);
     for (int i = 0; i < tryCount; i++) {
       racingCarGame.play();
       racingCarGame.cars()

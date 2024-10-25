@@ -9,6 +9,12 @@ public record RacingCarGame(List<Car> cars) {
     cars.forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
   }
 
+  public void isReady(int tryCount) {
+    if (tryCount <= 0) {
+      throw new IllegalArgumentException("시도 횟수는 0보다 커야합니다.");
+    }
+  }
+
   public List<String> getWinners() {
     return cars.stream()
             .filter(car -> car.getMoveCount() == getMaxPosition())
