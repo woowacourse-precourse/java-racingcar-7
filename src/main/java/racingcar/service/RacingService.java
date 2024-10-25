@@ -2,6 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
+import racingcar.util.RandomUtil;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class RacingService {
     //전진 조건 확인 후 전진
     public void moveCars(List<Car> cars){
         for(Car car: cars){
-            int randomValue = Randoms.pickNumberInRange(0,9);
+            int randomValue = RandomUtil.generateRandomNumber();
             if(randomValue>MOVE_THRESHOLD){
                 car.move();
             }
