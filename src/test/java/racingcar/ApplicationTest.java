@@ -78,7 +78,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트() {
+    void 단일_우승자() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
