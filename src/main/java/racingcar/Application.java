@@ -23,9 +23,14 @@ public class Application {
             throw new IllegalArgumentException("자동차는 2대 이상, 10대 이하로 입력해 주세요.\n");
         }
     }
-    public static void  checkRaceNumberException(int numberInt) {
+    public static void checkRaceNumberScopeException(int numberInt) {
         if (numberInt > 10 || numberInt < 1) {
-            throw new IllegalArgumentException("횟수는 1회 이상, 10회 이하로 입력해주세요\n");
+            throw new IllegalArgumentException("횟수는 1회 이상, 10회 이하로 입력해주세요.\n");
+        }
+    }
+    public static void checkRaceNumberTypeException(String numberInt) {
+        if (!numberInt.matches("\\d+")) {
+            throw new IllegalArgumentException("자동차 경주 횟수는 한 개의 숫자만 넣어주세요.\n");
         }
     }
     public static void checkDuplicateCarsException(String[] cars) {
@@ -58,11 +63,14 @@ public class Application {
 
     public static int getRaceNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String numberInput = Console.readLine();
-        int numberInt = Integer.parseInt(numberInput);
+        String raceNumberInput = Console.readLine();
+        String raceNumber = raceNumberInput.trim();
 
-        checkRaceNumberException(numberInt);
-        return numberInt;
+        checkRaceNumberTypeException(raceNumber);
+        int raceNumberInt = Integer.parseInt(raceNumber);
+
+        checkRaceNumberScopeException(raceNumberInt);
+        return raceNumberInt;
     }
 
     // 각 자동차가 전진한 횟수 기록하는 기능도 있음
