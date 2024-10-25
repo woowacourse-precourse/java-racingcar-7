@@ -7,9 +7,9 @@ public class Car {
     private int position;
     private final RandomNumberGenerator numberGenerator;
 
-    public Car(String name, RandomNumberGenerator numberGenerator) {
+    public Car(String name) {
         this.name = name;
-        this.numberGenerator = numberGenerator;
+        this.numberGenerator = new RandomNumberGenerator();
         this.position = 0;
     }
 
