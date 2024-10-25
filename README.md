@@ -42,7 +42,7 @@
     - 시도 횟수가 숫자가 아니거나 1보다 작은 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
     - 예시: `0`, `a`
 
-- [ ] **중복된 자동차 이름 입력**
+- [x] **중복된 자동차 이름 입력**
     - 자동차 이름이 중복될 경우 `IllegalArgumentException`을 발생시키고 프로그램을 종료한다.
     - 예시: `pobi,woni,pobu`
 

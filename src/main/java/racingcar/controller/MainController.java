@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 import racingcar.dto.WinnerResponseDto;
@@ -44,7 +46,15 @@ public class MainController {
     }
 
     private List<Car> convertToCars(final List<String> carStrings) {
-        return carStrings.stream().map(Car::create).toList();
+        Set<String> carNames = new LinkedHashSet<>();
+        return carStrings.stream()
+                .map(carName -> {
+                    if (!carNames.add(carName)) {
+                        throw new IllegalArgumentException();
+                    }
+                    return Car.create(carName);
+                })
+                .toList();
     }
 
     private int parseTrialNumber(final String trialNumberInput) {
