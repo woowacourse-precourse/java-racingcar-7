@@ -22,4 +22,8 @@ public class OutputView {
         printMessage(car.toString());
     }
 
+    public static void printWinner(String winner) {
+        printMessage("최종 우승자 : " + winner);
+    }
+
 }
