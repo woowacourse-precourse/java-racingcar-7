@@ -67,4 +67,25 @@ class RaceServiceTest {
         // then
         assertThat(winnerNames).containsExactly("woni");
     }
+
+    @Test
+    @DisplayName("공동 우승자 이름 리스트를 반환하는 테스트")
+    void determineWinners_jointWinners() {
+        // given
+        Car pobiCar = new Car("pobi");
+        Car woniCar = new Car("woni");
+        Car junCar = new Car("jun");
+        pobiCar.increaseDistance();
+        woniCar.increaseDistance();
+        woniCar.increaseDistance();
+        junCar.increaseDistance();
+        junCar.increaseDistance();
+        List<Car> cars = Arrays.asList(pobiCar, woniCar, junCar);
+
+        // when
+        List<String> winnerNames = raceService.determineWinners(cars);
+
+        // then
+        assertThat(winnerNames).containsExactly("woni", "jun");
+    }
 }
