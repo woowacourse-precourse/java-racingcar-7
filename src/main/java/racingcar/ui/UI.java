@@ -2,15 +2,16 @@ package racingcar.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.race.Racer;
+import racingcar.separator.Extractor;
 
 public class UI {
 
     public UI() {}
 
-    public static String getRacerName() {
+    public static String[] getRacerName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉰표(,) 기준으로 구분)");
 
-        return Console.readLine();
+        return Extractor.extract(Console.readLine());
     }
 
     public static int getRacingTimes(){

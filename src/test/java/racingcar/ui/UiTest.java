@@ -23,9 +23,9 @@ public class UiTest {
         InputStream readLine = new ByteArrayInputStream("pobi,woni,jun".getBytes());
         System.setIn(readLine);
 
-        String string = UI.getRacerName();
+        String[] string = UI.getRacerName();
 
-        assertThat("pobi,woni,jun").isEqualTo(string);
+        assertThat(new String[]{"pobi", "woni", "jun"}).isEqualTo(string);
     }
 
     @Test
