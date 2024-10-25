@@ -12,6 +12,11 @@ public class Car {
 		this.score = 0;
 	}
 
+	public Car(Name name, int score) {
+		this.name = name;
+		this.score = score;
+	}
+
 	public void addScore() {
 		this.score += 1;
 	}
