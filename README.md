@@ -22,10 +22,12 @@
 
 - **역할**: 자동차 객체를 생성하고 이동 로직을 처리합니다.
 - **주요 메서드**:
-    - `Car(String name)`: 이름 유효성 검사 후 객체 생성.
+    - `Car(String name)`: 자동차 객체 생성.
+    - `validateName(String name)`: 이름 유효성 검사.
     - `getName()`: 자동차 이름 반환.
     - `getPosition()`: 현재 위치 반환.
-    - `move()`: 조건을 충족하면 위치 이동.
+    - `move()`: 위치 이동.
+    - `canMove()`: 이동 조건 설정.
 ---
 ### **2. View**
 
