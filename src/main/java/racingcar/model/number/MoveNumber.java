@@ -1,4 +1,4 @@
-package model;
+package racingcar.model.number;
 
 import java.util.Objects;
 
@@ -17,6 +17,10 @@ public class MoveNumber {
         }
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,4 +33,5 @@ public class MoveNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
+
 }

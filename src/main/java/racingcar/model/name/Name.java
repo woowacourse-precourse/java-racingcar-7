@@ -1,4 +1,4 @@
-package model;
+package racingcar.model.name;
 
 import java.util.Objects;
 
@@ -16,6 +16,10 @@ public class Name {
         if(name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(NAME_ERROR_MESSAGE);
         }
+        return name;
+    }
+
+    public String getName() {
         return name;
     }
 

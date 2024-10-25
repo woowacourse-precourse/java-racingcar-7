@@ -1,6 +1,8 @@
-package model;
+package model.car;
 
-import org.assertj.core.api.Assertions;
+import racingcar.model.car.Car;
+import racingcar.model.number.MoveNumber;
+import racingcar.model.name.Name;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

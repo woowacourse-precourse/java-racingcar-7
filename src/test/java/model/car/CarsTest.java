@@ -1,6 +1,8 @@
-package model;
+package model.car;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.Car;
+import racingcar.model.car.Cars;
 
 import java.util.List;
 

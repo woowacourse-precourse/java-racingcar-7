@@ -1,6 +1,8 @@
-package model;
+package racingcar.model.car;
 
-import strategy.Strategy;
+import racingcar.model.number.MoveNumber;
+import racingcar.model.name.Name;
+import racingcar.strategy.Strategy;
 
 import java.util.Objects;
 
@@ -23,6 +25,14 @@ public class Car {
 
     public void move(Strategy strategy) {
         this.moveNumber.move(strategy.random());
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getMoveNumber() {
+        return moveNumber.getNumber();
     }
 
     @Override

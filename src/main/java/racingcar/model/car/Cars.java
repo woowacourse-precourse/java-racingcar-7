@@ -1,6 +1,7 @@
-package model;
+package racingcar.model.car;
 
-import strategy.Strategy;
+import racingcar.model.name.Name;
+import racingcar.strategy.Strategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +39,10 @@ public class Cars {
 
     private void move(Strategy strategy) {
         cars.forEach(car -> car.move(strategy));
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     @Override
