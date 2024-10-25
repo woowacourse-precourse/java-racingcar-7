@@ -82,7 +82,9 @@ public class Application {
     }
 
     public static void validateBound(String inputTryCount) {
-        if (Integer.parseInt(inputTryCount) < 0) {
+        try {
+            Integer.parseInt(inputTryCount);
+        } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("int 범위를 초과했다.");
         }
     }
