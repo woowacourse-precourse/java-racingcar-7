@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +32,6 @@ public class Application {
     // 01-1. 자동차 이름 예외 검증
     public static void validateCarNames(List<String> carNames) {
         for (String name : carNames) {
-            // 이름이 비어 있거나 5자를 초과할 경우 예외 발생
             if (name.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
             }
@@ -66,19 +66,19 @@ public class Application {
         return numberOfTries;
     }
 
-    // 03. 자동차 이동 기능
+    // 03. 자동차 이동
     public static void raceCars(List<String> carNames, int numberOfTries) {
         String[] carPositions = new String[carNames.size()];
         Arrays.fill(carPositions, "");
 
-        // 경주를 지정된 횟수만큼 진행
         for (int i = 0; i < numberOfTries; i++) {
             updateAndPrintCarPositions(carNames, carPositions);
-
         }
+        // 05. 경주가 끝난 후 우승자 출력
+        printWinners(carNames, carPositions);
     }
 
-    // 자동차 위치 업데이트
+    // 04. 자동차 위치 업데이트
     private static void updateAndPrintCarPositions(List<String> carNames, String[] carPositions) {
         for (int j = 0; j < carNames.size(); j++) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
@@ -89,4 +89,39 @@ public class Application {
         }
         System.out.println();
     }
+
+    // 05. 우승자 결정
+    private static void printWinners(List<String> carNames, String[] carPositions) {
+        // 1. 가장 많이 전진한 거리 찾기
+        int maxPosition = findMaxPosition(carPositions);
+
+        // 2. 가장 많이 전진한 자동차 찾기
+        List<String> winners = findWinners(carNames, carPositions, maxPosition);
+
+        // 3. 우승자 출력
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    // 05-1. 가장 많이 전진한 거리 찾기
+    private static int findMaxPosition(String[] carPositions) {
+        int maxPosition = 0;
+        for (String position : carPositions) {
+            if (position.length() > maxPosition) {
+                maxPosition = position.length();
+            }
+        }
+        return maxPosition;
+    }
+
+    // 05-2. 가장 많이 전진한 자동차 찾기
+    private static List<String> findWinners(List<String> carNames, String[] carPositions, int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carNames.size(); i++) {
+            if (carPositions[i].length() == maxPosition) {
+                winners.add(carNames.get(i));
+            }
+        }
+        return winners;
+    }
+
 }
