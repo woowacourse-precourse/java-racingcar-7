@@ -6,19 +6,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ApplicationContext {
+
+    private static final Map<Class<?>, ApplicationContext> instances = new ConcurrentHashMap<>();
 
     private final List<Class<?>> classes;
     private final Map<Class<?>, Object> beans = new HashMap<>();
 
     private ApplicationContext(Class<?> cls) {
-        classes = ComponentScanner.scan(cls);
+        classes = scanComponents(cls);
         classes.forEach(this::createBean);
     }
 
-    public static ApplicationContext fromEntry(Class<?> cls) {
-        return new ApplicationContext(cls);
+    public static ApplicationContext getInstance(Class<?> baseClass) {
+        return instances.computeIfAbsent(baseClass, ApplicationContext::new);
     }
 
     /**
@@ -35,6 +38,12 @@ public class ApplicationContext {
         }
 
         return cls.cast(bean);
+    }
+
+    private List<Class<?>> scanComponents(Class<?> baseClass) {
+        ComponentScanner scanner = ComponentScanner.getInstance(baseClass);
+
+        return scanner.scan();
     }
 
     /**
