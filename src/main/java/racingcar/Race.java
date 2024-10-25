@@ -23,11 +23,10 @@ public class Race {
         cars.forEach(car -> car.moveOrStop(movementDecider));
     }
 
-    public List<String> getFinalWinners() {
+    public Winners getFinalWinners() {
         List<Car> sortedCars = sortByPositionDescending();
         int winnerPosition = sortedCars.getFirst().getCurrentPosition();
-        List<String> winners = findWinners(winnerPosition);
-        return winners;
+        return new Winners(findWinners(winnerPosition));
     }
 
     private List<Car> sortByPositionDescending() {
