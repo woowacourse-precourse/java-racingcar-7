@@ -12,9 +12,14 @@ public class RacingCarController {
     public void run(){
         List<Car> cars = makeCars(InputView.inputCarNames());
         int numberOfRounds = InputView.inputNumberOfRounds();
+        checkIfnumberOfRoundsIsValid(numberOfRounds);
         playGame(cars, numberOfRounds);
         List<String> winnersName = findWinnersName(cars);
         OutputView.printWinners(winnersName);
+    }
+
+    private void checkIfnumberOfRoundsIsValid(int numberOfRounds){
+        if(numberOfRounds < 0) throw new IllegalArgumentException("횟수는 양수를 입력하세요.");
     }
 
     private List<Car> makeCars(String[] carNames){
