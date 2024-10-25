@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static racingcar.global.error.Error.NAME_BLANK_EXCEPION;
+import static racingcar.global.error.Error.NAME_DUPLICATE_EXCEPION;
 import static racingcar.global.error.Error.NAME_LENGTH_EXCEPION;
 import static racingcar.global.error.Error.TRY_COUNT_EXCEPION;
 
@@ -57,6 +58,15 @@ class RacingInputValidateServiceTest {
         assertThatThrownBy(() -> racingInputValidateService.validateCarName(List.of("car1", "racingcar")))
                 .isInstanceOf(NameError.class)
                 .hasMessage(NAME_LENGTH_EXCEPION.getErrorMsg());
+    }
+
+    @DisplayName("자동차 이름이 중복되면 오류")
+    @Test
+    void 자동차_이름_중복시_오류() {
+
+        assertThatThrownBy(() -> racingInputValidateService.validateCarName(List.of("car1", "car1", "car2")))
+                .isInstanceOf(NameError.class)
+                .hasMessage(NAME_DUPLICATE_EXCEPION.getErrorMsg());
     }
 
     @DisplayName("시도횟수가 양의 정수인지 확인")
