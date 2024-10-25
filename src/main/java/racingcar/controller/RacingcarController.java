@@ -39,7 +39,7 @@ public class RacingcarController {
         racingGame.startRacingGame();
     }
 
-    public void afterRacingGame(){
+    private void afterRacingGame(){
         racingGame.printWinner();
     }
 }

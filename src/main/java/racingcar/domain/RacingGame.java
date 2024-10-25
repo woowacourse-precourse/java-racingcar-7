@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-
     private Racingcars racingcars;
     private GameRound gameRound;
 

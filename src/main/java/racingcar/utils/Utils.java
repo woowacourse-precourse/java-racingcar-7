@@ -8,8 +8,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validation.Validation;
 
 public class Utils {
-
     private static final String DELIMITER = ",";
+
     public static List<String> stringToList(String input){
         return Arrays.stream(splitStringToArray(input)).toList();
     }
