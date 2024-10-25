@@ -24,6 +24,17 @@ public class Controller {
         this.cars = new ArrayList<>();
     }
 
+    public void startRace() {
+        inputAndValidateCars();
+        int attemptCount = inputNumberOfAttempts();
+        outputView.printResultMessage();
+        for (int i = 0; i < attemptCount; i++) {
+            displayRacingResults();
+        }
+        announceWinners();
+    }
+
+
     private void inputAndValidateCars() {
         String carNamesInput = inputView.inputCarNames();
 
