@@ -4,16 +4,13 @@ import java.util.List;
 import racingcar.domain.Winners;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
-import racingcar.service.RaceService;
 
 public class RaceController {
 
     private final UIController uiController;
-    private final RaceService raceService;
 
-    public RaceController(UIController uiController, RaceService raceService) {
+    public RaceController(UIController uiController) {
         this.uiController = uiController;
-        this.raceService = raceService;
     }
 
     public void run() {
@@ -27,7 +24,7 @@ public class RaceController {
 
     private Winners race(Cars cars, int count) {
         while (count-- > 0) {
-            raceService.start(cars);
+            cars.move();
             uiController.printRaceResult(cars);
         }
 

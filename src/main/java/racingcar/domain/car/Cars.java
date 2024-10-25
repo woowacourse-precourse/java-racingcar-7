@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.exception.ErrorMessage;
 import racingcar.exception.RaceException;
+import racingcar.util.RandomValue;
 
 public class Cars {
 
@@ -16,6 +17,12 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void move() {
+        for (Car car : cars) {
+            car.process(RandomValue.generate());
+        }
     }
 
     public List<Car> win() {
