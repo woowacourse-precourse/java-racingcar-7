@@ -20,10 +20,10 @@ public class OutputHandler {
     }
 
     public static void displayRoundResult(RoundResult roundResult) {
-        System.out.println(DisplayConverter.convertRoundResult(roundResult));
+        System.out.println(DisplayConverter.convertRoundResult(roundResult) + "\n");
     }
 
     public static void displayWinners(Winners winners) {
-        System.out.println(WINNER_INFO_HEADER+DisplayConverter.convertWinners(winners));
+        System.out.println(WINNER_INFO_HEADER + DisplayConverter.convertWinners(winners));
     }
 }

@@ -12,10 +12,14 @@ public class DisplayConverter {
     }
 
     private static String convertCarStatus(CarDto carDto) {
-        return carDto.getCarName()+" : "+carDto.getCurrentPosition();
+        String progressBar = "";
+        for (int i = 0; i < carDto.getCurrentPosition(); i++) {
+            progressBar += "-";
+        }
+        return carDto.getCarName() + " : " + progressBar;
     }
 
-    public static String convertWinners(Winners winners){
+    public static String convertWinners(Winners winners) {
         return winners.getNames().stream().
                 collect(Collectors.joining(", "));
     }

@@ -1,7 +1,5 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Arrays;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,16 +11,16 @@ class DisplayConverterTest {
     @Test
     void convertRoundResult() {
         //given
-        CarDto carDto1 = new CarDto("car1",4);
-        CarDto carDto2 = new CarDto("car2",1);
-        CarDto carDto3 = new CarDto("car3",2);
-        RoundResult roundResult = new RoundResult(Arrays.asList(carDto1,carDto2,carDto3));
+        CarDto carDto1 = new CarDto("car1", 4);
+        CarDto carDto2 = new CarDto("car2", 1);
+        CarDto carDto3 = new CarDto("car3", 2);
+        RoundResult roundResult = new RoundResult(Arrays.asList(carDto1, carDto2, carDto3));
 
         //when
         String roundResultMessage = DisplayConverter.convertRoundResult(roundResult);
-        String expectedResult = "car1 : 4\n" +
-                "car2 : 1\n" +
-                "car3 : 2";
+        String expectedResult = "car1 : ----\n" +
+                "car2 : -\n" +
+                "car3 : --";
 
         //then
         Assertions.assertThat(roundResultMessage).isEqualTo(expectedResult);
@@ -32,7 +30,7 @@ class DisplayConverterTest {
     @Test
     void convertWinners() {
         //given
-        Winners winners = new Winners(Arrays.asList("car1","car2","car3"));
+        Winners winners = new Winners(Arrays.asList("car1", "car2", "car3"));
 
         //when
         String winnersMessage = DisplayConverter.convertWinners(winners);
