@@ -18,7 +18,7 @@ public class Race {
             play();
             System.out.println();
         }
-        print();
+        printWinner();
     }
     private void play() {
         for (Car car : cars) {
@@ -48,18 +48,18 @@ public class Race {
         }
         return list;
     }
-    private void print() {
-        List<String> list = rank();
-        if (list.size() == 1) {
+    private void printWinner() {
+        List<String> winners = rank();
+        if (winners.size() == 1) {
             System.out.println("최종 우승자 : " + rank().get(0));
         }
         else {
             String winner = "최종 우승자 : ";
-            for (int i=0; i< list.size() - 1; i++) {
-                winner += list.get(i);
+            for (int i = 0; i < winners.size() - 1; i++) {
+                winner += winners.get(i);
                 winner += ", ";
             }
-            winner += list.get(list.size() - 1);
+            winner += winners.get(winners.size() - 1);
             System.out.println(winner);
         }
     }
