@@ -11,10 +11,11 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-
-    public void moveAll(){
-        for (Car car : cars) {
-            car.move();
+    public void allMove(int tryCount){
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                car.move();
+            }
         }
     }
 
