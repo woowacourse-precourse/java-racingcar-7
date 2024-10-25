@@ -28,4 +28,17 @@ class ParserTest {
         // then
         assertThat(carNames).containsExactly("pobi", "woni", "jun");
     }
+
+    @Test
+    @DisplayName("문자열을 정수로 변환하는 테스트")
+    void convertStringToInt() {
+        // given
+        String input = "5";
+
+        // when
+        int result = parser.convertStringToInt(input);
+
+        // then
+        assertThat(result).isEqualTo(5);
+    }
 }
