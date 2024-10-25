@@ -35,9 +35,12 @@
 
 **출력 :**
 * 차수별 실행 결과
-  * pobi : --
-    woni : ----
-    jun : ---
+
+pobi : --
+  
+woni : ----
+  
+jun : ---
 
 * 단독 우승자 안내 문구
     * 최종 우승자 : pobi
@@ -47,32 +50,50 @@
 
 **실행 결과 예시**
   * 경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
-    pobi,woni,jun
-    시도할 횟수는 몇 회인가요?
-    5
+    
+pobi,woni,jun
 
-    실행 결과
-    pobi : -
-    woni :
-    jun : -
+시도할 횟수는 몇 회인가요?
+5
 
-    pobi : --
-    woni : -
-    jun : --
+실행 결과
 
-    pobi : ---
-    woni : --
-    jun : ---
+pobi : -
 
-    pobi : ----
-    woni : ---
-    jun : ----
+woni :
 
-    pobi : -----
-    woni : ----
-    jun : -----
+jun : -
 
-    최종 우승자 : pobi, jun
+
+pobi : --
+
+woni : -
+
+jun : --
+
+
+pobi : ---
+
+woni : --
+
+jun : ---
+
+
+pobi : ----
+
+woni : ---
+
+jun : ----
+
+
+pobi : -----
+
+woni : ----
+
+jun : -----
+
+
+최종 우승자 : pobi, jun
 
 ## 프로그래밍 요구 사항 1
 
