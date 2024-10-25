@@ -35,4 +35,8 @@ public final class Utils {
             System.out.println(name + " : " + count);
         }
     }
+
+    public static void printWinner(List<String> winnerList) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
 }
