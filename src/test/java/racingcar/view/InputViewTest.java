@@ -19,13 +19,19 @@ class InputViewTest {
 
     @BeforeEach
     void setUpStreams() {
-        outputMessage = new ByteArrayOutputStream(); // OutputStream 생성
-        System.setOut(new PrintStream(outputMessage)); // 생성한 OutputStream 으로 설정
+        // 출력 스트림을 가로채기 위해 출력 스트림을 원하는 타입의 객체로 설정
+        outputMessage = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputMessage));
     }
 
     @AfterEach
     void restoresStreams() {
-        System.setOut(System.out); // 원상복귀
+        System.setOut(System.out);
+    }
+
+    void setInputStreamsByMyInput(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
     }
 
     @DisplayName("InputView_생성_테스트")
@@ -48,7 +54,7 @@ class InputViewTest {
         inputView.printCarNamesRequestMessage();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(printResult, NAMES_REQUEST_MESSAGE.getMessage());
+        assertEquals(NAMES_REQUEST_MESSAGE.getMessage(), printResult);
     }
 
     @DisplayName("이름_문자열_입력_테스트")
@@ -57,12 +63,11 @@ class InputViewTest {
         //given
         InputView inputView = new InputView();
         String input = "pobi,woni,jun";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
         //when
-
+        setInputStreamsByMyInput(input);
+        String names = inputView.getCarNames();
         //then
-        assertEquals(input, inputView.getCarNames());
+        assertEquals(input, names);
 
     }
 }
