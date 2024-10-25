@@ -9,7 +9,7 @@ import racingcar.view.output.OutputView;
 
 import java.util.List;
 
-public class RacingCarController {
+public class RacingController {
 
     // View
     private final InputView inputView;
@@ -23,7 +23,7 @@ public class RacingCarController {
     private int tryCount;
     private RacingResult racingResult;
 
-    public RacingCarController(RacingCarTemplate racingCarTemplate) {
+    public RacingController(RacingCarTemplate racingCarTemplate) {
         this.inputView = racingCarTemplate.inputView();
         this.outputView = racingCarTemplate.outputView();
         this.racingService = racingCarTemplate.racingService();
