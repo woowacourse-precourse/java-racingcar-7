@@ -21,5 +21,7 @@ public class RacingCarGame {
 
         outputView.requestTryCount();
         Count tryCount = inputView.getTryCount();
+
+        outputView.printGameResult(cars, tryCount);
     }
 }
