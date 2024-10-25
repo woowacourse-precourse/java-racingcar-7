@@ -18,12 +18,12 @@ public class OriginInput {
     }
 
     public void inputCarNames() {
-        System.out.println(InputMessage.CAR_NAMES.getMessage());
+        InputMessage.CAR_NAMES.printMessage();
         carNames = Console.readLine();
     }
 
     public void inputRaceRounds() {
-        System.out.println(InputMessage.RACE_ROUNDS.getMessage());
+        InputMessage.RACE_ROUNDS.printMessage();
         raceRounds = Console.readLine();
     }
 }

@@ -13,4 +13,8 @@ public enum InputMessage {
     public String getMessage() {
         return message;
     }
+
+    public void printMessage() {
+        System.out.println(message);
+    }
 }
