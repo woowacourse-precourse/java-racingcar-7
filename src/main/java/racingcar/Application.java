@@ -5,6 +5,9 @@ import java.util.LinkedHashMap;
 
 
 public class Application {
+
+    private final LinkedHashMap<String, Integer> carPositions = new LinkedHashMap<>();
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -50,10 +53,13 @@ public class Application {
     }
 
     private LinkedHashMap initializeCarPositions(String[] cars) {
-        var positions = new LinkedHashMap<>();
         for (String carName : cars) {
-            positions.put(carName, 0);
+            carPositions.put(carName, 0);
         }
-        return positions;
+        return carPositions;
+    }
+
+    private void moveCarForward(String car) {
+        carPositions.put(car, carPositions.get(car) + 1);
     }
 }
