@@ -24,18 +24,10 @@ public class RacingController {
     }
 
     public void start() {
-        initCars();
+        List<String> carNames = stringSplitter.splitByDelimiter(InputView.getInputCarString());
+        carManager.initCars(carNames);
         executeRaceRounds();
         announceWinner();
-    }
-
-    private void initCars() {
-        String inputCarString = InputView.getInputCarString();
-        List<String> strings = stringSplitter.splitByDelimiter(inputCarString);
-        for (String s : strings) {
-            Car car = new Car(s);
-            carManager.addCar(car);
-        }
     }
 
     private void executeRaceRounds() {
