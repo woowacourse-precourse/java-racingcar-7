@@ -23,4 +23,18 @@ public class Application {
 
         return cars;
     }
+
+    public static Integer getMovementCount() {
+        String input = Console.readLine();
+
+        if (!input.chars().allMatch(Character::isDigit))
+            throw new IllegalArgumentException();
+
+        Integer movemmetCount = Integer.parseInt(input);
+
+        if (movemmetCount <= 0)
+            throw new IllegalArgumentException();
+
+        return movemmetCount;
+    }
 }
