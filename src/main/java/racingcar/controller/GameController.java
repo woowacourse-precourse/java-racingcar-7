@@ -19,7 +19,7 @@ public class GameController {
         this.carNameValidator = new CarNameValidator();
     }
 
-    public void startGame() {
+    public void setGame() {
         outputView.startMessage();
         String carNames = inputView.userInput();
 
