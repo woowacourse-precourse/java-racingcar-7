@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.exception.ExceptionMessage;
+import racingcar.exception.InvalidInputException;
 import racingcar.model.RacingcarService;
 import racingcar.view.InputView;
 
@@ -18,6 +19,7 @@ public class RacingcarController {
         int attemptCount = 0;
         try {
             attemptCount = Integer.parseInt(inputView.getAttemptCount());
+            InvalidInputException.validateAttemptCount(attemptCount);
         } catch (Exception e) {
             throw new IllegalArgumentException(ExceptionMessage.INPUT_ONLY_INTEGER.getMessage());
         }
