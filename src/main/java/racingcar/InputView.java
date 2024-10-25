@@ -12,6 +12,21 @@ public class InputView {
             throw new IllegalArgumentException("경주할 자동차 이름이 입력되지 않았습니다.");
         }
 
-        return Arrays.asList(input.split(","));
+        String[] carNames = input.split(",");
+        Set<String> uniqueCarNames = new HashSet<>();
+        List<String> carList = new ArrayList<>();
+
+        for (String carName : carNames) {
+            carName = carName.trim();
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
+            }
+            if (!uniqueCarNames.add(carName)) {
+                throw new IllegalArgumentException(carName + "은 이미 존재하는 자동차 이름입니다.");
+            }
+            carList.add(carName);
+        }
+
+        return carList;
     }
 }
