@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import racingcar.domain.name.Name;
 import racingcar.domain.racingGame.RacingRecord;
 import racingcar.domain.racingGame.RacingSnapshot;
 
@@ -21,5 +22,14 @@ public class OutputView {
 		System.out.printf("%s : ", snapshot.getName());
 		IntStream.range(0, snapshot.getScore()).forEach(score -> System.out.print(SCORE_SIGN));
 		System.out.println();
+	}
+
+	public static void printWinner(List<Name> winners) {
+		System.out.print("최종 우승자 : ");
+		if(winners.size() == 1){
+			System.out.printf("%s", winners.getFirst().getName());
+			return;
+		}
+		winners.forEach(winner -> System.out.printf("%s ", winner.getName()));
 	}
 }

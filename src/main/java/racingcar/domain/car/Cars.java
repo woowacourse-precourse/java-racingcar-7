@@ -19,4 +19,20 @@ public class Cars {
 	public List<Car> getRacingCars() {
 		return racingCars;
 	}
+
+	public List<Name> getMaxScoreCarNames() {
+		int maxScore = getMaxScore();
+
+		return racingCars.stream()
+			.filter(car -> car.getScore() == maxScore)
+			.map(Car::getName)
+			.toList();
+	}
+
+	public int getMaxScore(){
+		return racingCars.stream()
+			.mapToInt(Car::getScore)
+			.max()
+			.orElse(0);
+	}
 }

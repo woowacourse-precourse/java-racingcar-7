@@ -23,6 +23,7 @@ public class Application {
         RacingGameCount count = InputView.inputRaceCount();
         List<RacingRecord> records = racingGameService.processRacingGame(cars, count);
         OutputView.printRecords(records);
+        OutputView.printWinner(cars.getMaxScoreCarNames());
         Console.close();
     }
 }
