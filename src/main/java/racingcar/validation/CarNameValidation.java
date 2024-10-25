@@ -13,7 +13,7 @@ public class CarNameValidation {
     }
 
     public void isNotEmpty(List<String> carNameList){
-        if(carNameList.contains(null)){
+        if(carNameList.contains(null) || carNameList.contains("")){
             throw new IllegalArgumentException("자동차 이름이 빈 값입니다.");
         }
     }
