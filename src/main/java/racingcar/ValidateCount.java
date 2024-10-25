@@ -1,7 +1,12 @@
 package racingcar;
 
 public class ValidateCount {
-    public static int parseCount(String userInputCount) {
+    public static int manageCount(String userInputCount) {
+        validateInputCount(userInputCount);
+        return ParsingCount.parseInputCountToInt(userInputCount);
+    }
+
+    public static int validateInputCount(String userInputCount) {
         if (userInputCount == null || userInputCount.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
