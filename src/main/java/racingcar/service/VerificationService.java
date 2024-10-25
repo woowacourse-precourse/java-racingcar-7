@@ -7,6 +7,7 @@ import static racingcar.util.ConstCharacter.NUMBER_END_WITH;
 import static racingcar.util.ConstCharacter.NUMBER_START_WITH;
 import static racingcar.util.ConstCharacter.UPPER_CASE_END_WITH;
 import static racingcar.util.ConstCharacter.UPPER_CASE_START_WITH;
+import static racingcar.util.ConstCharacter.checkInvalidCharacter;
 import static racingcar.util.ConstNumber.CAR_NAME_MAX_LENGTH;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MAX_VALUE;
 import static racingcar.util.ConstNumber.EXECUTION_RANGE_MIN_VALUE;
@@ -35,10 +36,7 @@ public class VerificationService {
 
     public boolean containsInvalidCharacter(final String value) {
         if (value.chars()
-                .anyMatch(c -> c != CAR_DELIMITER.getCharacter() &&
-                        (c < LOWER_CASE_START_WITH.getCharacter() || c > LOWER_CASE_END_WITH.getCharacter()) &&
-                        (c < UPPER_CASE_START_WITH.getCharacter() || c > UPPER_CASE_END_WITH.getCharacter()) &&
-                        (c < NUMBER_START_WITH.getCharacter() || c > NUMBER_END_WITH.getCharacter()))) {
+                .anyMatch(character -> checkInvalidCharacter((char) character))) {
             throw new InvalidCharacterException();
         }
         return true;

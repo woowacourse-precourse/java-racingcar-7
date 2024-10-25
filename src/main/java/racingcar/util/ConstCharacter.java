@@ -20,4 +20,11 @@ public enum ConstCharacter {
     public char getCharacter() {
         return character;
     }
+
+    public static boolean checkInvalidCharacter(char c) {
+        return c != CAR_DELIMITER.getCharacter() &&
+                (c < LOWER_CASE_START_WITH.getCharacter() || c > LOWER_CASE_END_WITH.getCharacter()) &&
+                (c < UPPER_CASE_START_WITH.getCharacter() || c > UPPER_CASE_END_WITH.getCharacter()) &&
+                (c < NUMBER_START_WITH.getCharacter() || c > NUMBER_END_WITH.getCharacter());
+    }
 }
