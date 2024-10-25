@@ -3,6 +3,7 @@ package racingcar.model.entity;
 import racingcar.strategy.Strategy;
 
 import java.util.*;
+import java.util.stream.StreamSupport;
 
 /**
  * 자동차들을 콜렉션으로 저장한 클래스
@@ -16,10 +17,9 @@ public class Cars implements Iterable<Car> {
     }
 
     public static Cars getOfNamesAndStrategy(CarNames names, Strategy strategy) {
-        String lineOfNames = names.getString();
-        List<Car> elements = Arrays.stream(lineOfNames.split(",")).
-                map(name -> new Car(name, strategy)).
-                toList();
+        List<Car> elements = StreamSupport.stream(names.spliterator(), false)
+                    .map(name -> new Car(name, strategy))
+                    .toList();
         return new Cars(elements);
     }
 
