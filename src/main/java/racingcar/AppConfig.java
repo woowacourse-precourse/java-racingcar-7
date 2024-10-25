@@ -13,4 +13,8 @@ public class AppConfig {
         return new RandomMoveStrategy();
     }
 
+    public GameClient gameClient() {
+        return new GameClient(racingCarList());
+    }
+
 }
