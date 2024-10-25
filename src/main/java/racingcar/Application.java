@@ -68,7 +68,8 @@ public class Application {
     }
 
     private void printRoundResult(String car) {
-        System.out.println(car + " : " + carPositions.get(car));
+        int position = carPositions.get(car);
+        System.out.println(car + " : " + "-".repeat(position));
     }
 
     private void executeRaceRound() {
