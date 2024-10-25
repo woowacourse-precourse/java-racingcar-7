@@ -10,4 +10,8 @@ public class RacingCarGamePlayer {
     public static RacingCarGamePlayer createRacingCarGamePlayer(String playerName) {
         return new RacingCarGamePlayer(playerName);
     }
+
+    public String provideSelfName() {
+        return playerName;
+    }
 }
