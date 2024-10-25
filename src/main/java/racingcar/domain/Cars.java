@@ -1,6 +1,9 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.dto.CarDto;
+import racingcar.domain.dto.CarsDto;
 import racingcar.utils.RandomGenerator;
 
 public class Cars {
@@ -8,12 +11,8 @@ public class Cars {
     private final RandomGenerator randomGenerator;
 
     public Cars(List<Car> cars, RandomGenerator randomGenerator) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
         this.randomGenerator = randomGenerator;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public void moveAll() {
@@ -31,5 +30,12 @@ public class Cars {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    public CarsDto toDto() {
+        List<CarDto> carDtoList = cars.stream()
+                .map(car -> new CarDto(car.getName(), car.getPosition()))
+                .toList();
+        return new CarsDto(carDtoList);
     }
 }

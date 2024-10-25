@@ -9,6 +9,8 @@ import racingcar.domain.Cars;
 import java.util.List;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Winners;
+import racingcar.domain.dto.CarDto;
+import racingcar.domain.dto.CarsDto;
 import racingcar.mock.TestRandomNumberGenerator;
 import racingcar.utils.RandomGenerator;
 import racingcar.view.OutputView;
@@ -30,10 +32,11 @@ public class RacingCarTest {
         RandomGenerator randomNumberGenerator = new RandomNumberGenerator();
         Cars cars = new Cars(List.of(car, car2), randomNumberGenerator);
 
+        CarsDto carsDto = cars.toDto();
         List<String> carNames = List.of("MCshin00", "asdf1234");
 
-        assertThat(cars.getCars().stream()
-                .map(Car::getName))
+        assertThat(carsDto.getCars().stream()
+                .map(CarDto::getName))
                 .containsExactlyElementsOf(carNames);
     }
 
@@ -107,10 +110,12 @@ public class RacingCarTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         List<Car> carList = List.of(car1, car2);
-        car1.move(4);
-        car2.move(3);
+        RandomGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(List.of(4,3));
+        Cars cars = new Cars(carList, testRandomNumberGenerator);
 
-        new OutputView().printRoundResult(carList);
+        cars.moveAll();
+
+        new OutputView().printRoundResultOutput(cars.toDto());
 
         assertThat(out.toString()).isEqualTo("실행 결과" + System.lineSeparator() + "car1 : -" +
                 System.lineSeparator() + "car2 : " + System.lineSeparator());
