@@ -19,4 +19,10 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름이 5자 이상 될 수 없습니다.");
     }
+
+    @Test
+    void 자동차_이름_빈_문자열_입력_실패(){
+        assertThatThrownBy(()->new Car(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
