@@ -8,14 +8,23 @@ import racingcar.domain.Input;
 
 public class InputView {
 
+    private static final Input input = new Input("", 0);
+
     public static void getStringInput() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        Input input = new Input(Console.readLine());
 
-        if (isCorrectInput(input.getInput())) {
-            isTheLengthOfStringLessThanFive(input.getInput());
-        }
-        else throw new IllegalArgumentException("잘못된 입력입니다.");
+        String names = Console.readLine();
+        input.setNames(names);
+
+        if (isCorrectInput(input.getNames())) {
+            isTheLengthOfStringLessThanFive(input.getNames());
+        } else throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
+    public static void getCountInput() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = Integer.parseInt(Console.readLine());
+        input.setCount(count);
     }
 
 

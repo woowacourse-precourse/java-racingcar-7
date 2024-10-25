@@ -1,13 +1,27 @@
 package racingcar.domain;
 
 public class Input {
-    private final String input;
+    private String names;
+    private int count;
 
-    public Input(String input) {
-        this.input = input;
+    public Input(String names, int count) {
+        this.names = names;
+        this.count = count;
     }
 
-    public String getInput() {
-        return input;
+    public void setNames(String names) {
+        this.names = names;
+    }
+
+    public void setCount(int number) {
+        this.count = number;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
