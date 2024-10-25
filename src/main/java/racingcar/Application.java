@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,5 +39,21 @@ public class Application {
         for (int i = 0; i < n; i++) {
             race(cars, keys);
         }
+
+        List<String> winners = new LinkedList<>();
+        int maxMove = 0;
+        for (String key : keys){
+            int move = cars.get(key);
+            if (move > maxMove){
+                maxMove = move;
+                winners.clear();
+                winners.add(key);
+            } else if (move == maxMove){
+                winners.add(key);
+            }
+        }
+
+        String result = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + result);
     }
 }
