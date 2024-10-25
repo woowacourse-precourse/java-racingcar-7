@@ -18,9 +18,4 @@ public class RacingGameConcreteFactory implements RacingGameFactory {
         }
         return cars;
     }
-
-    @Override
-    public Winner createWinner(Game game) {
-        return new Winner(game);
-    }
 }

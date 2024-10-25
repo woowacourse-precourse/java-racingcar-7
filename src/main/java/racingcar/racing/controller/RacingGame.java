@@ -25,14 +25,12 @@ public class RacingGame {
 
         this.game = racingGameFactory.createGame(attemptNumber);
         this.cars = racingGameFactory.createCars(carNames);
-        this.winner = racingGameFactory.createWinner(game);
 
         OutputView.printMessage("\n실행 결과");
         for (int i = 0; i < attemptNumber; i++) {
             game.roundStart(cars);
             OutputView.printRoundResult(cars);
         }
-        winner.
     }
 
     private int inputAttemptNumber() {
