@@ -30,13 +30,16 @@ public class Controller {
         // 랜덤
         int randomValue;
 
-        for (Car car : carList) {
-            randomValue = createRandomValue();
-            if (randomValue >= 4) {
-                int currentForwardCount = car.getForwardCount();
-                car.setForwardCount(currentForwardCount + 1);
+        for (int i = 0; i < repeatNumber; i++) {
+            for (Car car : carList) {
+                randomValue = createRandomValue();
+                if (randomValue >= 4) {
+                    int currentForwardCount = car.getForwardCount();
+                    car.setForwardCount(currentForwardCount + 1);
+                }
             }
         }
+
     }
 
     private int stringToInt() {
