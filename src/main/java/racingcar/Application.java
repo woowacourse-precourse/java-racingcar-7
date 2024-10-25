@@ -10,9 +10,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String userInputNumber = Console.readLine();
 
-        RaceCar raceCar = new RaceCar();
-        String[] carNames = raceCar.splitNames(userInputString);
-        int raceCount = raceCar.isValidCount(userInputNumber);
+        CheckInput checkInput = new CheckInput();
+        String[] carNames = checkInput.splitNames(userInputString);
+        int raceCount = checkInput.isValidCount(userInputNumber);
 
 
     }

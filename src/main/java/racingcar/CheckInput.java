@@ -1,9 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class RaceCar {
+public class CheckInput {
     public String[] splitNames(String carNameString){
         String[] cars= carNameString.split(",");
         for(String car :cars){

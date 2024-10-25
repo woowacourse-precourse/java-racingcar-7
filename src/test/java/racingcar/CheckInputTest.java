@@ -2,20 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RaceCarTest extends NsTest {
+public class CheckInputTest extends NsTest {
 
     @ParameterizedTest
     @CsvSource({"'노범석,김수한무거북이'","'java,abracadabra'","111111,222"})
     @DisplayName("한글,영문,숫자로 5글자 이상이 입력으로 주어질 때 테스트")
     void testNameLength(String input){
-        RaceCar raceCar = new RaceCar();
-        assertThatThrownBy(()->{raceCar.splitNames(input);})
+        CheckInput checkInput = new CheckInput();
+        assertThatThrownBy(()->{
+            checkInput.splitNames(input);})
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,8 +23,9 @@ public class RaceCarTest extends NsTest {
     @CsvSource({"'one'","''"})
     @DisplayName("경주 횟수로 숫자 외 입력이 들어오는 경우")
     void testRaceCount(String input){
-        RaceCar raceCar = new RaceCar();
-        assertThatThrownBy(()->{raceCar.isValidCount(input);})
+        CheckInput checkInput = new CheckInput();
+        assertThatThrownBy(()->{
+            checkInput.isValidCount(input);})
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
