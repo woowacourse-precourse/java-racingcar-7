@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.NameValidiator;
 
 import java.util.List;
 
@@ -16,7 +17,14 @@ public class InputCarNames {
     }
 
     public List<String> parsingName(String cars) {
+        NameValidiator check = new NameValidiator();
 
-        return null;
+        List<String> carsList = List.of(cars.split(","));
+
+        check.rightNameList(cars);
+        check.nameLength(carsList);
+        check.nameOverlap(carsList);
+
+        return carsList;
     }
 }
