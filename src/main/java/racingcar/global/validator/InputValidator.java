@@ -10,8 +10,8 @@ public class InputValidator {
         CAR_NUMBER(2, 100, InputValidator::validateCarNumber),
         GAME_COUNT(1, 1000, InputValidator::validateGameCount);
 
-        private final int min;
-        private final int max;
+        public final int min;
+        public final int max;
         private final Consumer<String> validator;
 
         ValidationMode(int min, int max, Consumer<String> validator) {
