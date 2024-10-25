@@ -1,5 +1,7 @@
 package racingcar.player;
 
+import racingcar.car.Car;
+
 public class RacingCarGamePlayer {
     private final String playerName;
 
@@ -13,5 +15,9 @@ public class RacingCarGamePlayer {
 
     public String provideSelfName() {
         return playerName;
+    }
+
+    public Car createRacingCar() {
+        return Car.createNamedCar(playerName);
     }
 }

@@ -1,10 +1,12 @@
 package racingcar.player;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Car;
 import racingcar.game.RacingCarGame;
 
 class RacingCarGamePlayerTest {
@@ -15,7 +17,7 @@ class RacingCarGamePlayerTest {
         final String playerName = "kim";
 
         // expect
-        Assertions.assertThatCode(() -> RacingCarGamePlayer.createRacingCarGamePlayer(playerName))
+        assertThatCode(() -> RacingCarGamePlayer.createRacingCarGamePlayer(playerName))
                 .doesNotThrowAnyException();
     }
 
@@ -30,6 +32,17 @@ class RacingCarGamePlayerTest {
 
         // then
         Assertions.assertThat(playerSelfName).isEqualTo(playerName);
+    }
+
+    @Test
+    void createRacingCar_레이싱자동차생성요청시_레이싱카생성(){
+        // given
+        final String playerName = "kim";
+        final RacingCarGamePlayer racingCarGamePlayer = RacingCarGamePlayer.createRacingCarGamePlayer(playerName);
+
+        // when
+        assertThatCode(() -> racingCarGamePlayer.createRacingCar())
+                .doesNotThrowAnyException();
     }
 
 }
