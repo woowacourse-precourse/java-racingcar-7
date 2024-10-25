@@ -1,24 +1,57 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
 public class GameResults {
-    public static String getCarStatesPerTrial(List<RacingCar> cars) {
+
+    private final List<RacingCar> cars;
+    private final int trial;
+
+    public GameResults(List<RacingCar> cars, int trial) {
+        this.cars = cars;
+        this.trial = trial;
+    }
+
+    public String getResults() {
+        return getCarStatesPerTrial() + getResultOfGame();
+    }
+
+    private void moveCars(List<RacingCar> cars) {
+        for(RacingCar car : cars){
+            car.move(isMovable());
+        }
+    }
+
+    private boolean isMovable() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    private String getCarStatesPerTrial() {
         StringBuilder result = new StringBuilder();
 
-        for(RacingCar car : cars){
-            result.append(car.getCarName())
-                    .append(" : ")
-                    .append(car.getPosition())
-                    .append("\n");
+        result.append("\n실행 결과\n");
+
+        // 반복 시도 마다 저장
+        for(int i = 0; i < trial; i++){
+            moveCars(cars);
+
+            for(RacingCar car : cars){
+                result.append(car.getCarName())
+                        .append(" : ")
+                        .append(car.getPosition())
+                        .append("\n");
+            }
         }
+
 
         return result.toString();
     }
 
-    public static String getResultOfGame(List<RacingCar> cars) {
+    private String getResultOfGame() {
         StringBuilder result = new StringBuilder();
 
         result.append("최종 우승자 : ");
