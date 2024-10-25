@@ -15,5 +15,6 @@ public class RacingCarController {
     public void run(){
         outputView.startMessagePrint();
         String readCarString = inputView.readCarString();
+        outputView.tryCountMessage();
     }
 }
