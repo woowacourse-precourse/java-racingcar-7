@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Validator {
 
+    private static final int MAX_NAME_LENGTH = 5;
+
     public static void validateName(List<String> names) {
         for (String name : names) {
             validateNull(name);
@@ -12,11 +14,9 @@ public class Validator {
     }
 
     public static int validateCycle(String cycleInput) {
-        int cycle;
         validateNull(cycleInput);
-        cycle = validateParseInt(cycleInput);
-        validateNegativeNumber(cycle);
-        return cycle;
+        validateParseInt(cycleInput);
+        return validateNegativeNumber(parseValidatedString(cycleInput));
     }
 
     private static void validateNull(String input) {
@@ -25,21 +25,26 @@ public class Validator {
     }
 
     private static void validateLength(String input) {
-        if (input.length()>5) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateNegativeNumber(int inputNumber) {
-        if (inputNumber <= 0)
+        if (input.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException();
     }
 
-    private static int validateParseInt(String inputNumber) {
+    private static void validateParseInt(String inputNumber) {
         try {
-             return Integer.parseInt(inputNumber);
+            Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
+
+    private static int validateNegativeNumber(int inputNumber) {
+        if (inputNumber <= 0)
+            throw new IllegalArgumentException();
+        return inputNumber;
+    }
+
+    private static int parseValidatedString(String cycleInput) {
+        return Integer.parseInt(cycleInput);
+    }
+
 }
