@@ -41,7 +41,7 @@ public class RacingCarController {
         }
     }
 
-    public void startRace(final long racingRound) {
+    private void startRace(final long racingRound) {
         progressView.printFirstProgressMessage();
         for (int round = 1; round <= racingRound; round++) {
             cars.moveCars();
