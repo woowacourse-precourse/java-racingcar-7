@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
     private final String name;
@@ -21,6 +23,14 @@ public class Car {
     }
     public void plusWinStack() {
         this.winStack++;
+    }
+    public void goRound() {
+        final int WIN_CONDITION = 4;
+        final int RANDOM_START_RANGE = 0;
+        final int RANDOM_END_RANGE = 9;
+        if (WIN_CONDITION < Randoms.pickNumberInRange(RANDOM_START_RANGE, RANDOM_END_RANGE)) {
+            this.plusWinStack();
+        }
     }
 
     private static void CarNameEmptyValidator(String name) {
