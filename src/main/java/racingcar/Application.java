@@ -8,11 +8,13 @@ import java.util.List;
 
 public class Application {
 
+    private static final String EMPTY_INPUT_ERROR_MESSAGE = "입력 값을 입력하지 않았습니다.";
     private static final String INPUT_CAR_NAMES_PROMPT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_ROUNDS_PROMPT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String RESULT_PREFIX = "최종 우승자 : ";
 
     public static void main(String[] args) {
+
         List<Car> cars = getCarsFromInput();
         int rounds = getRoundsFromInput();
 
@@ -25,14 +27,30 @@ public class Application {
 
     private static List<Car> getCarsFromInput() {
         System.out.println(INPUT_CAR_NAMES_PROMPT_MESSAGE);
-        String input = Console.readLine().trim();
+
+        String input = "";
+
+        try {
+            input = Console.readLine().trim();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(EMPTY_INPUT_ERROR_MESSAGE);
+        }
+
         InputValidator.validateCarNames(input);
         return Car.createCarsFromInput(input);
     }
 
     private static int getRoundsFromInput() {
         System.out.println(INPUT_ROUNDS_PROMPT_MESSAGE);
-        String input = Console.readLine().trim();
+
+        String input = "";
+
+        try {
+            input = Console.readLine().trim();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(EMPTY_INPUT_ERROR_MESSAGE);
+        }
+
         InputValidator.validateRounds(input);
         return Integer.parseInt(input);
     }
