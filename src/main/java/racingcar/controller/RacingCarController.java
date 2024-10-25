@@ -30,7 +30,6 @@ public class RacingCarController {
     public void run() {
         inputView.printCarNameInputMessage();
         Set<String> carNames = InputValidator.validateCarNameInput(inputView.getInput());
-
         inputView.printRoundCountInputMessage();
         int roundCount = InputValidator.validateRoundCountInput(inputView.getInput());
 
