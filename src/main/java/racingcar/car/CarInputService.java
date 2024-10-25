@@ -30,7 +30,7 @@ public class CarInputService {
         return userInput.split(",");
     }
 
-    private List<Car> returnValidatedCars(String[] splitUserInput) {
+    protected List<Car> returnValidatedCars(String[] splitUserInput) {
         List<Car> cars = new ArrayList<>();
         HashSet<String> carsToCheckDuplicate = new HashSet<>();
 
