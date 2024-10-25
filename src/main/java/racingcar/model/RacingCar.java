@@ -1,4 +1,4 @@
 package racingcar.model;
 
-public class RacingCar {
+public interface RacingCar {
 }
