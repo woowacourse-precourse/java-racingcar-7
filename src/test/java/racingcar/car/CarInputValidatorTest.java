@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarInputValidatorTest {
-
     private CarInputValidator carInputValidator;
     private HashSet<String> carsToCheckDuplicate;
 
