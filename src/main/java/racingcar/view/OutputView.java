@@ -1,6 +1,6 @@
 package racingcar.view;
 
-public interface OutPutView {
+public interface OutputView {
     void printCarRaceGameResults(String carName, String progress);
 
     void printWinners(String winners);
