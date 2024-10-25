@@ -7,6 +7,7 @@ import racingcar.model.NumberValidator;
 import racingcar.model.ProgressResultGenerator;
 import racingcar.model.RandomNumberGenerator;
 import racingcar.model.TextSeparator;
+import racingcar.model.WinnerDeterminer;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -28,6 +29,7 @@ public class GameController {
 			String progressResult = ProgressResultGenerator.generateProgressResult(cars);
 			OutputView.printProgressResultMessage(progressResult);
 		}
+		List<String> winners = WinnerDeterminer.determineWinner(cars);
 	}
 
 	private void executeRaceRound(List<Car> cars) {
