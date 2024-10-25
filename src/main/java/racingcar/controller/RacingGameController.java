@@ -13,6 +13,7 @@ import racingcar.view.OutputView;
 public class RacingGameController {
 
     final InputView inputView = new InputView();
+    final RacingCarName racingCarName = new RacingCarName();
     final GameTryCount gameTryCount = new GameTryCount();
     final RandomNumber randomNumber = new RandomNumber();
     final Winner winner = new Winner();
@@ -20,9 +21,10 @@ public class RacingGameController {
     private ArrayList<RacingCar> racingCarList = new ArrayList<>();
 
     public void initCarName() {
-        for (String carNames : RacingCarName.getList(inputView)) {
-            final RacingCar racingCar = new RacingCar(carNames);
-            racingCarList.add(racingCar);
+        String inputCarName = inputView.inputCarName();
+        racingCarName.setList(inputView.splitCarName(inputCarName));
+        for (String name : racingCarName.getList()) {
+            racingCarList.add(new RacingCar(name));
         }
     }
 

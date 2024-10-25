@@ -1,15 +1,18 @@
 package racingcar.model;
 
 import java.util.HashSet;
-import racingcar.view.InputView;
 
 public class RacingCarName {
 
-    // InputView 받지 않고 처리하도록 수정
-    public static String[] getList(final InputView inputView) {
-        String[] carNames = inputView.splitCarName(inputView.inputCarName());
+    private String[] list;
+
+    public void setList(final String[] carNames) {
         validateDuplicateNames(carNames);
-        return carNames;
+        this.list = carNames;
+    }
+
+    public String[] getList() {
+        return list;
     }
 
     public static void validateDuplicateNames(final String[] carNames) {
