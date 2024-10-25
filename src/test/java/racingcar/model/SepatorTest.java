@@ -15,7 +15,7 @@ class SepatorTest {
         String input = "pobi,woni, jun";
 
         //when
-        Sepator sepator = new Sepator();
+        Separator sepator = new Separator();
         List<Car> cars = sepator.separateCars(input);
 
         //then
@@ -35,7 +35,7 @@ class SepatorTest {
 
 
         //when
-        Sepator sepator = new Sepator();
+        Separator sepator = new Separator();
 
         //then
         assertThrows(IllegalArgumentException.class, () -> sepator.separateCars(input1), Message.CAR_NAME_EMPTY_VALIDATION_MESSAGE.getMessage());
@@ -52,7 +52,7 @@ class SepatorTest {
         String input2 = "Kkoma,ShowMaker,";
 
         //when
-        Sepator sepator = new Sepator();
+        Separator sepator = new Separator();
 
         //then
         List<Car> cars1 = sepator.separateCars(input1);
@@ -65,7 +65,7 @@ class SepatorTest {
         String input = "Faker,Uzi,Faker";
 
         //when
-        Sepator sepator = new Sepator();
+        Separator sepator = new Separator();
 
         //then
         assertThrows(IllegalArgumentException.class,()->sepator.separateCars(input), Message.CAR_NAME_DUPLICATE_VALIDATION_MESSAGE.getMessage());

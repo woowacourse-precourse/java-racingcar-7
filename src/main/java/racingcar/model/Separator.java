@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class Sepator {
+public class Separator {
     public List<Car> separateCars(String input) {
         final String DELIMITER = ",";
         List<Car> cars = new ArrayList<>();
