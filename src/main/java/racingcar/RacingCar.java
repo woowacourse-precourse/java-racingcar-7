@@ -11,8 +11,7 @@ public class RacingCar {
         this.name = name;
     }
 
-    void move() {
-        int pickedNumber = Randoms.pickNumberInRange(0, 9);
+    void move(int pickedNumber) {
         if (canMoveForward(pickedNumber)) {
             forwardCount++;
         }
