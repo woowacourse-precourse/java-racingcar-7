@@ -9,6 +9,7 @@ import racingcar.model.dependency.validator.DefaultRacingCarValidator;
 import racingcar.model.dependency.validator.RacingCarValidator;
 import racingcar.service.RacingService;
 import racingcar.view.DefaultInputView;
+import racingcar.view.DefaultOutputView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class Application {
 
     private final static InputView inputView = new DefaultInputView();
-    private final static OutputView outputView = new OutputView();
+    private final static OutputView outputView = new DefaultOutputView();
 
     private static final RacingCarDependency racingCarDependency = buildRacingCarDependency();
     private final static RacingService racingService = buildRacingService();
