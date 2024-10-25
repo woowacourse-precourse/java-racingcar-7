@@ -1,18 +1,15 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputProcessor {
     public static List<Car> parseToCarNameList(String inputString) {
-        List<String> carNames = Arrays.asList(inputString.split(","));
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            carName = carName.trim();
-            cars.add(new Car(carName));
-        }
+        List<Car> cars = Arrays.stream(inputString.split(","))
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
 
         Validator.validateCarNames(cars);
         return cars;
