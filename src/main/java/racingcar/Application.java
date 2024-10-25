@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -87,5 +89,28 @@ public class Application {
         }
 
         return resultMap;
+    }
+
+    public static void startGame(int tryCount, Map<String, StringBuilder> resultMap) {
+        for (int i = 0; i < tryCount; i++) {
+            saveMovementInMap(resultMap);
+        }
+    }
+
+    public static void saveMovementInMap(Map<String, StringBuilder> resultMap) {
+        for (String name : resultMap.keySet()) {
+            int randomNumber = createRandomNumber();
+            appendMovementSignByRandom(resultMap, name, randomNumber);
+        }
+    }
+
+    public static int createRandomNumber() {
+        return Randoms.pickNumberInRange(RandomConstant.RANDOM_RANGE_START, RandomConstant.RANDOM_RANGE_END);
+    }
+
+    public static void appendMovementSignByRandom(Map<String, StringBuilder> resultMap, String name, int randomNumber) {
+        if (randomNumber >= RandomConstant.MOVEMENT_START_VALUE) {
+            resultMap.get(name).append(IOMessage.MOVEMENT_SIGN);
+        }
     }
 }
