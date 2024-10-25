@@ -1,38 +1,57 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.service.RacingService;
+import racingcar.domain.MoveForwardRecord;
+import racingcar.service.MoveForwardService;
+import racingcar.service.RacingInputValidateService;
+import racingcar.service.WinnerService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
-    private RacingService racingService;
+    private RacingInputValidateService racingInputValidateService;
+    private MoveForwardService moveForwardService;
+    private WinnerService winnerService;
+    private InputView inputView;
+    private OutputView outputView;
 
-    public RacingController(RacingService racingService) {
-        this.racingService = racingService;
+    public RacingController(RacingInputValidateService racingInputValidateService,
+                            MoveForwardService moveForwardService,
+                            WinnerService winnerService,
+                            InputView inputView, OutputView outputView) {
+        this.racingInputValidateService = racingInputValidateService;
+        this.moveForwardService = moveForwardService;
+        this.winnerService = winnerService;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
-        String carName = InputView.getCarName();
+        String carName = inputView.getCarName();
         List<String> splittedCarNames = getSplittedCarNames(carName);
-        racingService.validateCarName(splittedCarNames);
+        racingInputValidateService.validateCarName(splittedCarNames);
 
-        String tryCounts = InputView.getTryCounts();
-        racingService.validateTryCount(tryCounts);
+        String tryCounts = inputView.getTryCounts();
+        racingInputValidateService.validateTryCount(tryCounts);
         go(splittedCarNames, tryCounts);
         printWinner();
     }
 
-    public List<String> getSplittedCarNames(String input) {
-        return racingService.splitCarName(input);
+    private List<String> getSplittedCarNames(String input) {
+        return racingInputValidateService.splitCarName(input);
     }
 
-    public void go(List<String> input, String tryCounts) {
-        racingService.setMoveForwardRecord(input);
-        racingService.go(tryCounts);
+    private void go(List<String> input, String tryCounts) {
+        moveForwardService.setMoveForwardRecord(input);
+        List<MoveForwardRecord> moveForwardRecords = moveForwardService.getMoveForwardRecords();
+        outputView.go(tryCounts, moveForwardRecords);
     }
 
-    public void printWinner() {
-        racingService.printWinner();
+    private void printWinner() {
+        List<MoveForwardRecord> moveForwardRecords = moveForwardService.getMoveForwardRecords();
+        winnerService.countSortReverse(moveForwardRecords);
+        List<String> winners = winnerService.getWinners(moveForwardRecords);
+        outputView.printWinner(winners);
     }
 }
