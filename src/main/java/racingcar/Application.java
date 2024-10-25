@@ -99,5 +99,10 @@ class UserInput {
 }
 
 class ResultOutput {
-    
+    static void printRoundStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getMovingCount()));
+        }
+        System.out.println();
+    }
 }
