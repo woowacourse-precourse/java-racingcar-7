@@ -2,7 +2,6 @@ package racingcar.utils.validation;
 
 import racingcar.exception.RacingExceptionStatus;
 
-
 public class AttemptValidation {
 
     public static void validate(String attempt) {

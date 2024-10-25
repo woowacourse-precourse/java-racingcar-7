@@ -11,7 +11,7 @@ public class InputView {
 
     public static List<String> inputCarNames() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
         return splitCarNames(input);
     }
 
@@ -21,6 +21,6 @@ public class InputView {
 
     public static String inputRaceAttempts() {
         System.out.println(RACE_ATTEMPTS_INPUT_MESSAGE);
-        return Console.readLine();
+        return Console.readLine().trim();
     }
 }
