@@ -16,6 +16,7 @@ public class Racing {
     }
 
     public void race() {
+        outputView.printResult();
         for (int i = 0; i < totalAttempts; i++) {
             move.tryOnce();
             List<CurrentCar> currentCars = cars.stream().map(Car::createCurrentCar).toList();
