@@ -2,10 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 import java.lang.String;
+import java.util.HashMap;
 
 
 public class Model {
@@ -13,13 +13,14 @@ public class Model {
 
 
     // 자동차 이름을 구분하는 메서드
-    public Map<String, Integer> initializeCarInfo(String carNames) {
+    public LinkedHashMap<String, Integer> initializeCarInfo(String carNames) {
         StringTokenizer st = new StringTokenizer(carNames, ",");
-        Map<String, Integer> carPositions = new HashMap<>();
+        LinkedHashMap<String, Integer> carInfo = new LinkedHashMap<>();
+
         while (st.hasMoreTokens()) {
-            carPositions.put(st.nextToken(), 0);
+            carInfo.put(st.nextToken(), 0);
         }
-        return carPositions;
+        return carInfo;
     }
 
 
@@ -35,10 +36,10 @@ public class Model {
     }
 
     // 맵 내 최대 value를 구하는 메서드
-    public int maxValue (Map<String, Integer> carInfo) {
+    public int maxValue (LinkedHashMap<String, Integer> carInfo) {
         int maxValue = 0;
 
-        for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+        for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
             if (entry.getValue() > maxValue) {
                 maxValue = entry.getValue();
             }
@@ -47,10 +48,10 @@ public class Model {
     }
 
     // 맵 내 최대 value를 지닌 값의 key를 구해서 String으로 합하는 메서드
-    public String winnerCar (Map<String, Integer> carInfo, int maxValue) {
+    public String winnerCar (LinkedHashMap<String, Integer> carInfo, int maxValue) {
         StringBuilder winner = new StringBuilder();
 
-        for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+        for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
             if (maxValue <= entry.getValue()) {
                 appendWinner(winner, entry.getKey());
             }

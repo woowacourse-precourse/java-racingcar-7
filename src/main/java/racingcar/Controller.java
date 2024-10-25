@@ -2,7 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 
 public class Controller {
@@ -20,12 +21,12 @@ public class Controller {
         View.printTryInputMessage();
         int tryInput = Integer.parseInt(Console.readLine());
 
-        Map<String, Integer> carInfo = Model.initializeCarInfo(nameInput);
+        LinkedHashMap<String, Integer> carInfo = Model.initializeCarInfo(nameInput);
 
         View.printRunResults();
 
         for (int i = 0; i < tryInput; i++) {
-            for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
+            for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
                 carInfo.put(entry.getKey(), Model.isForward(entry.getValue()));
                 System.out.println(entry.getKey()+ " : " + "-".repeat(entry.getValue()) );
 
