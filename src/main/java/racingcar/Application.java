@@ -31,6 +31,9 @@ public class Application {
                 move(element, goStop(r));
             }
         }
+
+        Iterator<Map.Entry<String, Integer>> newEntry = race.entrySet().iterator();
+        printRace(newEntry);
     }
 
     public static void getNames(Map<String, Integer> race, String input) throws IllegalArgumentException {
@@ -79,5 +82,18 @@ public class Application {
         if(goStop) {
             element.setValue(element.getValue() + 1);
         }
+    }
+
+    public static void printRace(Iterator<Map.Entry<String, Integer>> entry) {
+        while(entry.hasNext()) {
+            Map.Entry<String, Integer> element = entry.next();
+            String result = "";
+            result += element.getKey() + " : ";
+            for(int i = 0; i < element.getValue(); i++) {
+                result += "-";
+            }
+            System.out.println(result);
+        }
+        System.out.println("");
     }
 }
