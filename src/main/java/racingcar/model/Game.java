@@ -8,17 +8,19 @@ public class Game {
     private static final int RANDOM_MAX_NUMBER = 9;
     private static final int MOVEMENT_CRITERIA = 4;
     private final Cars cars;
+    private final TotalRounds totalRounds;
     private Winners winners;
-    private int attemptCount;
+    private int currentRound;
 
-    public Game(Cars cars, int attemptCount) {
+    public Game(Cars cars, int totalRounds) {
         this.cars = cars;
-        this.attemptCount = attemptCount;
+        this.totalRounds = new TotalRounds(totalRounds);
+        this.currentRound = 1;
     }
 
     public void play() {
-        attemptCount--;
         attemptToMoveCars();
+        currentRound++;
     }
 
     private void attemptToMoveCars() {
@@ -32,7 +34,12 @@ public class Game {
     }
 
     public boolean isRunning() {
-        return attemptCount > 0;
+        return totalRounds.hasMoreRoundsThan(currentRound);
+    }
+
+    public void judgeWinners() {
+        List<Car> maxPositionCars = cars.getMaxPositionCars();
+        this.winners = new Winners(maxPositionCars);
     }
 
     public List<CarStatus> getStatusOfCars() {
@@ -44,14 +51,5 @@ public class Game {
             throw new IllegalArgumentException("아직 우승자들이 등록되지 않았습니다.");
         }
         return winners.getNamesOfWinner();
-    }
-
-    public void judgeWinners() {
-        List<Car> maxPositionCars = cars.getMaxPositionCars();
-        this.winners = new Winners(maxPositionCars);
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
     }
 }
