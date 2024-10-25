@@ -36,6 +36,15 @@ class InputViewTrialCountTest extends NsTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("숫자가 아닌 값을 입력 받을 수 없다.")
+    @ValueSource(strings = {" ", "숫자", "값", "number", "---"})
+    @ParameterizedTest
+    void inputNotNumberTrialCount(String input) {
+        assertThatThrownBy(() -> {
+            run(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     protected void runMain() {
         int trialCount = inputView.inputTrialCount();
