@@ -6,26 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceManager {
-    private static IOHandler IO_HANDLER;
-    public RaceManager(IOHandler ioHandler) {
-        IO_HANDLER = ioHandler;
-    }
 
     public void startRace(List<RacingCar> racingCars , int cycle) {
-        IO_HANDLER.printResult();
+        IOHandler.printResult();
         for (int i = 0; i < cycle; i++) {
             updateRaceState(racingCars);
         }
         String winner = getWinner(racingCars);
-        IO_HANDLER.printWinner(winner);
+        IOHandler.printWinner(winner);
     }
 
     private static void updateRaceState(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             racingCar.run(getRandomNum());
-            IO_HANDLER.printRaceState(racingCar);
+            IOHandler.printRaceState(racingCar);
         }
-        IO_HANDLER.printNewLine();
+        IOHandler.printNewLine();
     }
 
     private static int getRandomNum() {
