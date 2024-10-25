@@ -7,21 +7,21 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class RandomRaceTest {
-    private RandomRace randomRace;
+class RandomRaceControllerTest {
+    private RandomRaceController randomRaceController;
     private List<RacingCar> racingCars;
 
     @BeforeEach
     void setUp() {
-        this.randomRace = new RandomRace();
+        this.randomRaceController = new RandomRaceController();
         this.racingCars = new ArrayList<>();
         racingCars.add(new RacingCar("pobi"));
         racingCars.add(new RacingCar("java"));
     }
 
     @Test
-    void 시도숫자만큼_전진한다() {
-        List<RacingCar> newRacingCars = randomRace.start(racingCars, 2L);
+    void 랜덤하게_전진한다() {
+        List<RacingCar> newRacingCars = randomRaceController.start(racingCars);
         for (RacingCar racingCar : newRacingCars) {
             int distanceLength = racingCar.getDistance().length();
             assertThat(distanceLength).isBetween(0, 2);
