@@ -22,6 +22,7 @@ public class Race {
 
         for(String token : tokens) {
 
+            CheckException.checkNameOfCar(token);
             cars.put(token, 0);
         }
 
