@@ -11,15 +11,15 @@ import static racingcar.util.OutputMessageConstant.INPUT_TURN_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import racingcar.exception.DuplicateCarNameException;
+import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.exception.EmptyInputException;
-import racingcar.exception.InvalidCharacterException;
-import racingcar.exception.InvalidCarNameLengthException;
+import racingcar.exception.carName.InvalidCharacterException;
+import racingcar.exception.carName.InvalidCarNameLengthException;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidRegisterCarsInputLengthException;
-import racingcar.exception.NumberRangeException;
+import racingcar.exception.carName.InvalidRegisterCarsInputLengthException;
+import racingcar.exception.executionNumber.NumberRangeException;
 
 public class RacingGameTest extends NsTest {
     private static final int MOVING_FORWARD = 4;

@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.carName;
 
 public class DuplicateCarNameException extends RuntimeException {
 

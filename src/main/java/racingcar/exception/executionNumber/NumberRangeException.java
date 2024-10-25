@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.executionNumber;
 
 public class NumberRangeException extends IllegalArgumentException {
 

@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.HashSet;
 import java.util.Set;
-import racingcar.exception.DuplicateCarNameException;
+import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.model.Car;
 import racingcar.service.DataTransformService;
 import racingcar.service.GameService;

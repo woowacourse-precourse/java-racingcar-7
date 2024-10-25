@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.exception.executionNumber;
 
 public class NotNumberException extends IllegalArgumentException {
 

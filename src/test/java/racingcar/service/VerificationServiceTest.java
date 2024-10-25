@@ -5,14 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.EmptyInputException;
-import racingcar.exception.InvalidCharacterException;
-import racingcar.exception.InvalidCarNameLengthException;
+import racingcar.exception.carName.InvalidCharacterException;
+import racingcar.exception.carName.InvalidCarNameLengthException;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.exception.InvalidRegisterCarsInputLengthException;
-import racingcar.exception.NotNumberException;
-import racingcar.exception.NumberRangeException;
+import racingcar.exception.carName.InvalidRegisterCarsInputLengthException;
+import racingcar.exception.executionNumber.NotNumberException;
+import racingcar.exception.executionNumber.NumberRangeException;
 
 import static org.junit.jupiter.api.Assertions.*;
 class VerificationServiceTest {
