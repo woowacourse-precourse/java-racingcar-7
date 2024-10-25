@@ -54,19 +54,15 @@ public class Application {
     }
 
     public static void printWinner(List<Integer> checkWinner, String[] names) {
-        if (checkWinner.size() == 1) {
-            System.out.print("최종 우승자는 : " + names[checkWinner.getFirst()]);
-            return;
-        }
         System.out.print("최종 우승자는 : ");
-        for (int i = 0; i < checkWinner.size(); i++) {
-            if (i == checkWinner.size() - 1) {
-                System.out.print(names[checkWinner.get(i)]);
-                break;
-            }
-            System.out.print(names[checkWinner.get(i)] + ", ");
 
+        for (int i = 0; i < checkWinner.size(); i++) {
+            System.out.print(names[checkWinner.get(i)]);
+            if (i < checkWinner.size() - 1) {
+                System.out.print(", "); // 마지막 요소일땐 쉼표 출력하지 않음
+            }
         }
     }
+
 
 }
