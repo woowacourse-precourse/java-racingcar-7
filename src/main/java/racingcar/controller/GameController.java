@@ -38,7 +38,8 @@ public class GameController {
         String[] carNames = inputCarNames.split(DELIMITER);
         int attemptCount = inputView.getAttemptCount();
 
-        return new Game(carNames, attemptCount);
+        Cars cars = new Cars(carNames);
+        return new Game(cars, attemptCount);
     }
 
     private CarMovementResults getCurrentAttemptResults(Game game) {

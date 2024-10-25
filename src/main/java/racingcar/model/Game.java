@@ -11,8 +11,8 @@ public class Game {
     private final Cars cars;
     private int attemptCount;
 
-    public Game(String[] carNames, int attemptCount) {
-        this.cars = new Cars(carNames);
+    public Game(Cars cars, int attemptCount) {
+        this.cars = cars;
         this.attemptCount = attemptCount;
     }
 
