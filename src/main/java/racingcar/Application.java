@@ -30,8 +30,19 @@ public class Application {
         System.out.println("시도할 횟수를 입력하세요.");
         String tryCountInput = Console.readLine();
         Integer tryCount = validateTryCount(tryCountInput);
+
+        for (int i = 0; i < tryCount; i++) {
+            moveCars(carPositions);
+
+            // 차수별 실행 결과 출력
+            for (Map.Entry<String, Integer> car : carPositions.entrySet()) {
+                System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
+            }
+            System.out.println();
+        }
     }
 
+    // 경주 이동 로직
     public static void moveCars(Map<String, Integer> carPositions) {
         for (Map.Entry<String, Integer> car : carPositions.entrySet()) {
             int randomNum = Randoms.pickNumberInRange(0, 9);
@@ -42,6 +53,7 @@ public class Application {
         }
     }
 
+    // 자동차 이름 값 유효성 검증
     public static void validateCarNames(String carsInput) {
         if (carsInput == null || carsInput.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT_MESSAGE);
@@ -68,6 +80,7 @@ public class Application {
         }
     }
 
+    // 시도할 횟수 입력 값 유효성 검증
     public static Integer validateTryCount(String tryCountInput) {
         try {
             int tryCount = Integer.parseInt(tryCountInput);
