@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.controller.NameExtractor;
 
 import java.util.ArrayList;
@@ -13,5 +14,9 @@ public class RacingCarService {
         this.number = number;
         NameExtractor.extractNames(nameString).stream()
                 .forEach(name -> cars.add(new RacingCar(name)));
+    }
+
+    public boolean rollMoveDice(){
+        return Randoms.pickNumberInRange(0,9) >= 4;
     }
 }

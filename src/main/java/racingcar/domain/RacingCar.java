@@ -7,4 +7,5 @@ public class RacingCar {
     public RacingCar(String name) {
         this.name=name;
     }
+
 }
