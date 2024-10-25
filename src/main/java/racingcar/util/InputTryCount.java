@@ -14,7 +14,7 @@ public class InputTryCount {
         return parseNumber(tryCount);
     }
 
-    public int parseNumber(String tryCount) {
+    private int parseNumber(String tryCount) {
 
         TryCountValidiator check = new TryCountValidiator();
 
