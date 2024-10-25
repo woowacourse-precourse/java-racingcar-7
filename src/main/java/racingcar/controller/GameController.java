@@ -26,6 +26,7 @@ public class GameController {
 		while(trialCount-- > 0) {
 			executeRaceRound(cars);
 			String progressResult = ProgressResultGenerator.generateProgressResult(cars);
+			OutputView.printProgressResultMessage(progressResult);
 		}
 	}
 
