@@ -1,7 +1,7 @@
 package racingcar.model;
 
 public class MovementTracker {
-    protected static final String DEFAULT_MOVEMENT= "";
+    protected static final String DEFAULT_MOVEMENT = "";
     protected static final String DEFAULT_MOVEMENT_MARK = "-";
 
     private String movement;

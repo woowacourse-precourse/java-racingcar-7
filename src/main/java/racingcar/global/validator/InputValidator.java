@@ -26,7 +26,7 @@ public class InputValidator {
     public static void validate(ValidationMode mode, String input) {
         Map<ValidationMode, Consumer<String>> modeMap = new HashMap<>();
 
-        for(ValidationMode validationMode : ValidationMode.values()) {
+        for (ValidationMode validationMode : ValidationMode.values()) {
             modeMap.put(validationMode, validationMode.validator);
         }
 
@@ -36,8 +36,8 @@ public class InputValidator {
 
     private static void validateCarName(String input) {
         String[] names = input.split(",");
-        for(String name : names) {
-            if(name.length() < ValidationMode.CAR_NAME.min || name.length() > ValidationMode.CAR_NAME.max)
+        for (String name : names) {
+            if (name.length() < ValidationMode.CAR_NAME.min || name.length() > ValidationMode.CAR_NAME.max)
                 throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_MESSAGE);
 
         }
@@ -49,7 +49,7 @@ public class InputValidator {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME_MESSAGE);
         }
-        if(names.length < ValidationMode.CAR_COUNT.min || names.length > ValidationMode.CAR_COUNT.max) {
+        if (names.length < ValidationMode.CAR_COUNT.min || names.length > ValidationMode.CAR_COUNT.max) {
             throw new IllegalArgumentException(INVALID_CAR_COUNT_MESSAGE);
         }
     }

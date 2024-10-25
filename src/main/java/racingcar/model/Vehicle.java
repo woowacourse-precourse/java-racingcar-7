@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public class Vehicle implements Movable{
+public class Vehicle implements Movable {
     protected static final int DEFAULT_POSITION = 0;
     protected static final int DEFAULT_SPEED = 1;
 
@@ -24,17 +24,17 @@ public class Vehicle implements Movable{
         return position;
     }
 
-    public String showMovement(){
+    public String showMovement() {
         return movementTracker.getMovement();
     }
 
     @Override
-    public void moveForward(){
+    public void moveForward() {
         position += speed;
         movementTracker.recordMovement(speed);
     }
 
     @Override
-    public void stopMoving(){
+    public void stopMoving() {
     }
 }

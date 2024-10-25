@@ -10,7 +10,7 @@ public class InputView {
         return input;
     }
 
-    public void saveInput(){
+    public void saveInput() {
         input = Console.readLine();
     }
 }

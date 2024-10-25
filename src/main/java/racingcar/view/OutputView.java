@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println(name + " : " + movement);
     }
 
-    public void printGameRoundSeparator(){
+    public void printGameRoundSeparator() {
         System.out.println();
     }
 
