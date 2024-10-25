@@ -15,12 +15,24 @@ public class Application {
 
 
         String[] CarNames = RaceCarNames.split(",");
-        HashMap<String, Integer> carRaceSituation = new HashMap<>();
+        HashMap<String, String> carRaceSituation = new HashMap<>();
         for (int i = 0; i < CarNames.length; i++) {
             if (CarNames[i].length() > 5) {
                 throw new IllegalArgumentException();
             }
-            carRaceSituation.put(CarNames[i], 0);
+            carRaceSituation.put(CarNames[i], "");
+        }
+
+        System.out.println("실행 결과");
+        for (int i = 0; i < RaceCount; i++) {
+            for (int j = 0; j < CarNames.length; j++) {
+                if (Randoms.pickNumberInRange(0, 9) > 4) {
+                    // 4이상이면 값증가 (전진)
+                    carRaceSituation.put(CarNames[j], carRaceSituation.get(CarNames[j]).concat("-"));
+                }
+                System.out.println(CarNames[j] + " : " + carRaceSituation.get(CarNames[j]));
+            }
+            System.out.println();
         }
 
     }
