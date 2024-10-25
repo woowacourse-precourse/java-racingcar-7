@@ -1,7 +1,7 @@
 package racingcar;
 
 import java.util.List;
-import racingcar.input.Input;
+import racingcar.io.input.Input;
 
 public class Application {
 
