@@ -28,7 +28,7 @@ public class Car {
     private boolean isNameValid(String name) {
         if(StringUtility.containsSpecialCharacter(name)) return false;
         if(name.isEmpty() || name.isBlank()) return false;
-        if(name.length() > 5) return false;
+        if(name.length() > MAX_NAME_LEN) return false;
         return true;
     }
 
@@ -56,6 +56,5 @@ public class Car {
 
     public String getMoveHistory(){
         return currentMoveStringBuilder.toString();
-
     }
 }
