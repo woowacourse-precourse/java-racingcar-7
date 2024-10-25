@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 
 public class RacingGame {
     private List<Car> cars = new ArrayList<>();
+    private int tryCount;
+
 
     public void registerCars(String input) {
         StringTokenizer strtok = new StringTokenizer(input, ",");
@@ -17,6 +19,13 @@ public class RacingGame {
             }
             cars.add(new Car(carName));
         }
+    }
+
+    public void setTryCount(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+        this.tryCount = tryCount;
     }
 
 }
