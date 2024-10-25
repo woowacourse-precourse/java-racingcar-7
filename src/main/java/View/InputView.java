@@ -2,7 +2,6 @@ package View;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,10 +23,20 @@ public class InputView {
 
     public static int inputAttemptNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
-    }
 
-    // 예외 처리: 입력된 숫자가 0 이하일 때
-    // 예외 처리: 숫자가 아닌 문자가 입력 되었을 때
-    // 예외 처리: 공백이 입력 되었을
+        try {
+            String input = Console.readLine().trim();
+            if (input.isEmpty()) {
+                throw new IllegalArgumentException("시도할 횟수가 빈 값일 수 없습니다.");
+            }
+
+            int attemptNumber = Integer.parseInt(input);
+            if (attemptNumber <= 0) {
+                throw new IllegalArgumentException("시도할 횟수는 1 이상의 숫자이어야 합니다.");
+            }
+            return attemptNumber;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자만 입력 가능합니다.");
+        }
+    }
 }
