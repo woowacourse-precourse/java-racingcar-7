@@ -1,7 +1,9 @@
 package racingcar.mvc.controller;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.mvc.validation.input.AttemptNumberValidator;
 import racingcar.mvc.validation.input.CarNameValidator;
 import racingcar.mvc.view.InputView;
 
@@ -26,6 +28,8 @@ public class RacingGameController {
 
     public void run() {
         List<String> names = getCarNames();
+
+        BigInteger attempts = getAttempt();
     }
 
     private List<String> getCarNames() {
@@ -43,5 +47,14 @@ public class RacingGameController {
         }
 
         return names;
+    }
+
+    private BigInteger getAttempt() {
+        inputView.showReceiveNumberMsg();
+        String attemptString = inputView.getUserInput();
+
+        AttemptNumberValidator.isValid(attemptString);
+
+        return new BigInteger(attemptString);
     }
 }
