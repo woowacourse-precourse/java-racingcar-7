@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -24,6 +25,15 @@ class InputViewTrialCountTest extends NsTest {
         assertDoesNotThrow(() -> {
             run(input);
         });
+    }
+
+    @DisplayName("0이하의 시도 횟수를 입력 받을 수 없다.")
+    @ValueSource(strings = {"0", "-1", "-100", "-9999999999999999"})
+    @ParameterizedTest
+    void inputNegativeTrialCount(String input) {
+        assertThatThrownBy(() -> {
+            run(input);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
