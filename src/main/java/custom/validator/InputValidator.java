@@ -63,4 +63,27 @@ public class InputValidator {
         validateCarNamesForSpaces(input);
         validateCarNamesForInvalidCharacters(input);
     }
+
+    public void validateAttemptCountIsNumeric(String input) {
+        for (char attemptCount : input.toCharArray()) {
+            if (!Character.isDigit(attemptCount)) {
+                throw new IllegalArgumentException("실행 횟수는 숫자를 입력해야합니다");
+            }
+        }
+    }
+
+    public void validateIntegerOverflow(String input) {
+        long number = Long.parseLong(input);
+
+        // 오버플로우 검증
+        if (number < Integer.MIN_VALUE || number > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("실행 횟수가 int 타입의 범위를 초과합니다");
+        }
+    }
+
+    public void validateAttemptCountRange(int input) {
+        if (input < 1) {
+            throw new IllegalArgumentException("실행 횟수는 1회 이상이여야 합니다");
+        }
+    }
 }

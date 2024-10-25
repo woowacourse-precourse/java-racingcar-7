@@ -4,12 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import custom.service.CarNameParser;
+import custom.service.GetAttemptCount;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ServiceTest {
     private final CarNameParser carNameParser = new CarNameParser();
+    private final GetAttemptCount getAttemptCount = new GetAttemptCount();
 
     @Test
     void 자동차이름분리기능_쉼표정리메소드_연속된쉼표제거_테스트() {
@@ -100,5 +102,54 @@ class ServiceTest {
         String input = "pobi, woni, jun";
         List<String> result = carNameParser.run(input);
         assertThat(result).containsExactly("pobi", "woni", "jun");
+    }
+
+    // 실행 횟수 변환 기능 테스트
+
+    @Test
+    void 실행횟수변환기능_정수변환메소드_숫자일경우_테스트() {
+        int result = getAttemptCount.convertStringToNumber("5");
+        assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    void 실행횟수변환기능_입력받은문자열이NULL일때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 null 일 수 없습니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_입력받은문자열이빈문자열일때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력은 빈 문자열 일 수 없습니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_실행횟수문자열이숫자가아닐때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run("xyz"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("실행 횟수는 숫자를 입력해야합니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_실행횟수가int타입의범위를초과할때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run("2147483648")) // Integer.MAX_VALUE + 1
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("실행 횟수가 int 타입의 범위를 초과합니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_실행횟수가1회미만일때_테스트() {
+        assertThatThrownBy(() -> getAttemptCount.run("0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("실행 횟수는 1회 이상이여야 합니다");
+    }
+
+    @Test
+    void 실행횟수변환기능_통과_테스트() {
+        int result = getAttemptCount.run("3");
+        assertThat(result).isEqualTo(3);
     }
 }
