@@ -1,6 +1,7 @@
 package racingcar.dto;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.common.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -23,7 +24,7 @@ class RacingCarNamesTest {
         void 자동차가_2대_미만일_경우_예외가_발생한다(String input) {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage("경주할 자동차는 2대 이상이어야 합니다.");
+                    .hasMessage(RACING_CAR_MINIMUM_TWO_REQUIRED.getMessage());
         }
 
         @ParameterizedTest
@@ -38,7 +39,7 @@ class RacingCarNamesTest {
         void 자동차_이름이_영어_또는_한글로만_이뤄지지_않으면_예외가_발생한다(String input) {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
-                    .hasMessage("자동차 이름은 영어 또는 한글로만 이루어져야 합니다.");
+                    .hasMessage(RACING_CAR_NAME_MUST_BE_ENGLISH_OR_KOREAN.getMessage());
         }
     }
 
