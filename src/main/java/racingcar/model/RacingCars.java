@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.exception.ExceptionFactory;
+import racingcar.service.dependency.random_maker.RandomNumberMaker;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,8 +25,8 @@ public class RacingCars {
         this(other.values);
     }
 
-    public void move() {
-        values.forEach(RacingCar::move);
+    public void move(RandomNumberMaker randomNumberMaker) {
+        values.forEach(racingCar -> racingCar.move(randomNumberMaker.makeRandomNumber()));
     }
 
     public String getJoinedNames(String delimiter) {
