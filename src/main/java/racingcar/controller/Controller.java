@@ -25,12 +25,12 @@ public class Controller {
     }
 
     private void inputAndValidateCars() {
-        String s = inputView.inputCarNames();
+        String carNamesInput = inputView.inputCarNames();
 
-        validator.validateInputNotBlank(s);
-        validator.validateNoEmptyCarNames(s);
+        validator.validateInputNotBlank(carNamesInput);
+        validator.validateNoEmptyCarNames(carNamesInput);
 
-        String[] carNames = utils.convertToCarNameArray(s);
+        String[] carNames = utils.convertToCarNameArray(carNamesInput);
 
         validator.validateCarNameLength(carNames);
         utils.saveCarNamesToList(carNames, cars);
