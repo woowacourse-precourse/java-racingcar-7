@@ -22,6 +22,9 @@ public class Controller {
         if (!isValidName(carNames)) {
             throw new IllegalArgumentException("이름이 5글자가 넘습니다");
         }
+        if (isNameOverlap(carNames)) {
+            throw new IllegalArgumentException("중복된 이름을 입력할 수 없습니다.");
+        }
 
         List<Car> carList = new ArrayList<>();
         for (String name : carNames) {
@@ -75,6 +78,18 @@ public class Controller {
             }
         }
         return true;
+    }
+
+    private boolean isNameOverlap(List<String> carNames) {
+        int carCount = carNames.size();
+        for (int i = 0; i < carCount - 1; i++) {
+            for (int j = i + 1; j < carCount; j++) {
+                if (carNames.get(i).equals(carNames.get(j))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

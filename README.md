@@ -10,7 +10,7 @@
 
 - [x] 사용자는 쉼표를 기준으로 구분하여 여러 가동차 이름을 입력할 수 있다.
 - [x] 이름이 5자를 초과하는 경우 `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
-- [ ] 이름을 중복하여 입력하는 경우 `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
+- [x] 이름을 중복하여 입력하는 경우 `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
 
 #### 이동 횟수 입력 기능
 
