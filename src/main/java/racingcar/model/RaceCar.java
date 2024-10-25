@@ -19,4 +19,8 @@ public class RaceCar {
     public boolean canMove(int randomValue) {
         return randomValue >= MOVE_THRESHOLD;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
