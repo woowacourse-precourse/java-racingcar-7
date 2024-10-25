@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.sql.Array;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     private static final String DELIMITER = ",";
@@ -22,6 +18,8 @@ public class Application {
     public static void main(String[] args) {
         setArguments();
         progressRace();
+        List<String> winners = searchWinner();
+        printWinners(winners);
     }
 
     /**
@@ -104,6 +102,53 @@ public class Application {
             stringBuilder.append(entry.getKey()).append(" : ");
             stringBuilder.append("-".repeat(Math.max(0, entry.getValue())));
             stringBuilder.append("\n");
+        }
+
+        System.out.println(stringBuilder.toString());
+    }
+
+    /**
+     * 경주를 모두 마친 후, 경주의 우승자를 탐색합니다.
+     */
+    private static List<String> searchWinner() {
+        List<String> winnerList = new ArrayList<>();
+
+        int winnerMoveForwardCount = getWinnerMoveForwardCount();
+        for (String name: stateMap.keySet()) {
+            if(stateMap.get(name) == winnerMoveForwardCount) {
+                winnerList.add(name);
+            }
+        }
+
+        return winnerList;
+    }
+
+    /**
+     * 경주의 우승자가 전진한 횟수를 반환합니다.
+     * @return 경주 우승자의 전진 횟수
+     */
+    private static int getWinnerMoveForwardCount() {
+        int result = 0;
+
+        for (String name: stateMap.keySet()) {
+            result = Math.max(result, stateMap.get(name));
+        }
+
+        return result;
+    }
+
+    /**
+     * 경주 우승자 명단을 통해 최종 우승자를 출력합니다.
+     * @param winners 경주 우승자 명단 List
+     */
+    private static void printWinners(List<String> winners) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("최종 우승자 : ");
+        for (int i = 0; i < winners.size(); i++) {
+            stringBuilder.append(winners.get(i));
+            if (i != winners.size() - 1) {
+                stringBuilder.append(", ");
+            }
         }
 
         System.out.println(stringBuilder.toString());
