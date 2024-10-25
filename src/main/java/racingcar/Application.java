@@ -35,15 +35,25 @@ class RacingCar {
 
 public class Application {
     public static void main(String[] args) {
-        getNameOfCars();
+        String[] carNames = getNameOfCars();
+        RacingCar[] racingCars = createCars(carNames);
     }
 
     private static String[] getNameOfCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputSequence = Console.readLine();
-        
+
         String[] carNames = inputSequence.split(",");
         return carNames;
     }
     
+    private static RacingCar[] createCars(String[] carNames) {
+        int numberOfRacingCars = carNames.length;
+        RacingCar[] racingCars = new RacingCar[numberOfRacingCars];
+
+        for (int i = 0; i < numberOfRacingCars; i++) {
+            racingCars[i] = new RacingCar(carNames[i]);
+        }
+        return racingCars;
+    }
 }
