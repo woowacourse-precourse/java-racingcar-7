@@ -9,13 +9,17 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        String[] names = Console.readLine().split(",");
-        int attempts = Integer.parseInt(Console.readLine());
-        String[] individualCarMovements = new String[names.length];
-        Arrays.fill(individualCarMovements, ""); // 배열 생성시 빈 문자열로 초기화
-        printCarMovements(individualCarMovements, names, attempts);
-        List<Integer> checkWinner = checkWinner(individualCarMovements);
-        printWinner(checkWinner, names);
+        try {
+            String[] names = validateNames();
+            int attempts = validateNumber();
+            String[] individualCarMovements = new String[names.length];
+            Arrays.fill(individualCarMovements, ""); // 배열 생성시 빈 문자열로 초기화
+            printCarMovements(individualCarMovements, names, attempts);
+            List<Integer> checkWinner = checkWinner(individualCarMovements);
+            printWinner(checkWinner, names);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void individualRandoms(String[] individualCarMovements, String[] names) { // 1회 이동 메서드
@@ -64,5 +68,25 @@ public class Application {
         }
     }
 
+    public static String[] validateNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String[] names = Console.readLine().split(",");
+        for (String name : names) {
+            if (name.trim().isEmpty() || name.length() > 5) {
+                throw new IllegalArgumentException("이름이 공백이거나, 5글자를 초과했습니다");
+            }
+        }
+        return names;
+    }
 
+    public static int validateNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
