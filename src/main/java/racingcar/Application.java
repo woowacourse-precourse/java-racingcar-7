@@ -107,7 +107,21 @@ public class Application {
         return winners;
     }
 
+    private static void playGame() {
+        try {
+            List<String> carNames = getCarNames();
+            int numberOfRounds = getNumberOfRounds();
+
+            List<Integer> carPositions = initializeCarPositions(carNames.size());
+            showResult();
+            moveCars(carNames, carPositions, numberOfRounds);
+            printWinners(findWinners(carNames, carPositions));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        playGame();
     }
 }
