@@ -23,4 +23,8 @@ public class RaceCar {
     public int getPosition() {
         return position;
     }
+
+    public String getName() {
+        return name;
+    }
 }

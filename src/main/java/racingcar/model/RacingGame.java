@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Map;
+
 public class RacingGame {
     private final RaceCars raceCars;
     private final AttemptCount attemptCount;
@@ -12,5 +14,9 @@ public class RacingGame {
     public void race(){
         raceCars.race();
         attemptCount.decrease();
+    }
+
+    public Map<String, Integer> findCurrentPosition() {
+        return raceCars.getCarPositions();
     }
 }

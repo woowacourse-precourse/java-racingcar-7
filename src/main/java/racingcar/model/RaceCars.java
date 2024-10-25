@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static racingcar.utils.NumberGenerator.createRandomNumber;
@@ -19,5 +20,10 @@ public class RaceCars {
         raceCars.stream()
                 .filter(car -> car.canMove(createRandomNumber()))
                 .forEach(RaceCar::move);
+    }
+
+    public Map<String, Integer> getCarPositions() {
+        return raceCars.stream()
+                .collect(Collectors.toMap(RaceCar::getName, RaceCar::getPosition));
     }
 }
