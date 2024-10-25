@@ -33,4 +33,20 @@ class RaceServiceTest {
         assertThat(cars.get(1).getCarName()).isEqualTo("woni");
         assertThat(cars.get(2).getCarName()).isEqualTo("jun");
     }
+
+    @Test
+    @DisplayName("자동차 이동 조건에 따른 거리 증가 테스트")
+    void raceOnce() {
+        // given
+        Car pobiCar = new Car("pobi");
+        Car woniCar = new Car("woni");
+        List<Car> cars = Arrays.asList(pobiCar, woniCar);
+
+        // when
+        raceService.raceOnce(cars);
+
+        // then
+        assertThat(pobiCar.getCurrentDistance()).isBetween(0, 1);
+        assertThat(woniCar.getCurrentDistance()).isBetween(0, 1);
+    }
 }
