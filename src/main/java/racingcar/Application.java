@@ -10,6 +10,7 @@ public class Application {
     public static final String EMPTY_INPUT_MESSAGE = "입력이 비어 있습니다. 자동차 이름을 쉼표로 구분하여 입력해주세요.";
     public static final String COMMA_REQUIRED_MESSAGE = "쉼표(,)로 구분된 이름을 입력해야 합니다.";
     public static final String NAME_EMPTY_MESSAGE = "자동차 이름이 비어 있습니다. 모든 자동차의 이름을 올바르게 입력해주세요.";
+    public static final String NAME_LENGTH_OVER_MESSAGE = "자동차 이름 길이는 5자 이하여야 합니다.";
     public static final String MIN_CARS_REQUIRED_MESSAGE = "최소 두 대의 자동차 이름을 입력해야 합니다.";
     public static final String MESSAGE_INVALID_TRY_COUNT = "시도할 횟수는 양수여야 합니다.";
     public static final String MESSAGE_INVALID_NUMBER_FORMAT = "유효한 숫자 형식이 아닙니다.";
@@ -60,18 +61,22 @@ public class Application {
             if (name.trim().isEmpty()) {
                 throw new IllegalArgumentException(NAME_EMPTY_MESSAGE);
             }
+
+            if (name.length() > 5) {
+                throw new IllegalArgumentException(NAME_LENGTH_OVER_MESSAGE);
+            }
         }
     }
 
     public static Integer validateTryCount(String tryCountInput) {
         try {
-            int attemptCount = Integer.parseInt(tryCountInput);
+            int tryCount = Integer.parseInt(tryCountInput);
 
-            if (attemptCount <= 0) {
+            if (tryCount <= 0) {
                 throw new IllegalArgumentException(MESSAGE_INVALID_TRY_COUNT);
             }
 
-            return attemptCount;
+            return tryCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(MESSAGE_INVALID_NUMBER_FORMAT);
         }

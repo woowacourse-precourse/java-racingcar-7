@@ -23,14 +23,14 @@ class ApplicationTest extends NsTest {
 //                MOVING_FORWARD, STOP
 //        );
 //    }
-//
-//    @Test
-//    void 예외_테스트() {
-//        assertSimpleTest(() ->
-//                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-//                        .isInstanceOf(IllegalArgumentException.class)
-//        );
-//    }
+
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     // 1) 자동차 이름 입력 및 처리
     // 1.1) 빈 값을 입력한 경우 (자동차 이름이 빈 값인 경우 포함)
@@ -78,6 +78,14 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.validateCarNames("pobi,"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(Application.MIN_CARS_REQUIRED_MESSAGE);
+    }
+
+    // 1.4) 자동차 이름 길이가 5자 초과인 경우
+    @Test
+    void 자동차_이름_길이_초과인_경우_예외() {
+        assertThatThrownBy(() -> Application.validateCarNames("poby,springboot"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Application.NAME_LENGTH_OVER_MESSAGE);
     }
 
     // 2) 시도할 횟수 입력
