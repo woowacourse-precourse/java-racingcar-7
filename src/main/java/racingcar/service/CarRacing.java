@@ -5,11 +5,11 @@ import racingcar.context.Car;
 import racingcar.view.OutputView;
 import racingcar.view.PrintMessage;
 
-public class CarRace {
+public class CarRacing {
     private final Integer totalRaceRound;
     private List<Car> carGroup;
 
-    public CarRace(String totalRaceRound, List<Car> carGroup) {
+    public CarRacing(String totalRaceRound, List<Car> carGroup) {
         this.totalRaceRound = Integer.parseInt(totalRaceRound); //검증, 예외 처리 필요
         this.carGroup = carGroup;
     }

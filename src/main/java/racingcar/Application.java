@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 import racingcar.context.Car;
 import racingcar.service.CarGroup;
-import racingcar.service.CarRace;
+import racingcar.service.CarRacing;
 import racingcar.util.CarNameSeparator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -27,7 +27,7 @@ public class Application {
         OutputView.printMessageWithLine(PrintMessage.INPUT_TRY_CAR_MOVEMENT_MESSAGE);
         String totalRound = InputView.inputUser();
         //4. 라운드 수만큼 반복하면서 자동차 이동 시도
-        CarRace carRace = new CarRace(totalRound, carGroup);
+        CarRacing carRace = new CarRacing(totalRound, carGroup);
 
         //자동차 경기 현황 출력
         OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
