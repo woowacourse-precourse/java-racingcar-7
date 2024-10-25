@@ -11,6 +11,8 @@ public class Application {
     public void start() {
         inputCarNames();
         inputTryCount();
+        race();
+        printWinners();
     }
 
     private void inputTryCount() {
