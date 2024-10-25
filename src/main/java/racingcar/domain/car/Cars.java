@@ -1,35 +1,31 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         validateDuplicateCarName(cars);
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
-    public void accelerateSpecificCar(Car car) {
-        car.accelerator();
+    public void accelerateCars(Predicate<Car> moveCondition) {
+        cars.forEach(car -> {
+            if (moveCondition.test(car)) {
+                car.accelerate();
+            }
+        });
     }
 
-    public List<String> getWinners() {
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.isAtSameOrAheadOf(maxPosition))
-                .map(car -> car.getCarInfo().getName())
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(car -> car.getCarInfo().getCurrentPosition())
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("참가자가 없습니다."));
+    public List<CarInfo> getCarInfos() {
+        List<CarInfo> carInfos = new ArrayList<>();
+        cars.forEach(car -> carInfos.add(car.getCarInfo()));
+        return carInfos;
     }
 
     private void validateDuplicateCarName(List<Car> cars) {
