@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,9 +17,7 @@ public class RacingGameService {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             name = name.trim();
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-            }
+            InputValidator.checkMaxLength5(name);
             cars.add(new Car(name));
         }
 
