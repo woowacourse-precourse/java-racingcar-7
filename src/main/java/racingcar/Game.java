@@ -1,21 +1,23 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Game {
-    List<RacingCar> racingCars;
 
-    public void init(List<String> carNames) {
-        initCars(carNames);
+    public List<RacingCar> init(List<String> carNames) {
+        return initCars(carNames);
     }
 
-    public void initCars(List<String> carNames) {
+    public List<RacingCar> initCars(List<String> carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for (String name : carNames) {
             racingCars.add(RacingCar.createRacingCar(name));
         }
+        return racingCars;
     }
 
     public Integer randomNumber() {
