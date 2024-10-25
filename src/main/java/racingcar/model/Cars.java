@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static racingcar.constants.ErrorMessage.INVALID_DUPLICATED_CAR_NAMES;
 import static racingcar.constants.Symbol.COMMA;
 import static racingcar.constants.Symbol.NEW_LINE;
 import static racingcar.constants.Symbol.SPACE;
@@ -26,7 +27,7 @@ public class Cars {
 
         for (String name : parts) {
             if (hasDuplicateName(uniqueNames, name)) {
-                throw new IllegalArgumentException("자동차 이름에 중복된 값이 있습니다.");
+                throw new IllegalArgumentException(INVALID_DUPLICATED_CAR_NAMES);
             }
         }
     }

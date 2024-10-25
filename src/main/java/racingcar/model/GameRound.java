@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static racingcar.constants.ErrorMessage.INVALID_NOT_NUMBER;
+import static racingcar.constants.ErrorMessage.INVALID_NOT_POSTIVE_NUMBER;
 import static racingcar.constants.Symbol.ZERO;
 
 public class GameRound {
@@ -15,13 +17,13 @@ public class GameRound {
             validatePositive(parsedRound);
             return parsedRound;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자만 입력해야 합니다.");
+            throw new IllegalArgumentException(INVALID_NOT_NUMBER);
         }
     }
 
     private void validatePositive(Integer round) {
         if (isNotPositive(round)) {
-            throw new IllegalArgumentException("시도 횟수는 음수일 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_NOT_POSTIVE_NUMBER);
         }
     }
 

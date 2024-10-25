@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import static racingcar.constants.ErrorMessage.INVALID_CAR_NAME_LENGTH;
+import static racingcar.constants.ErrorMessage.INVALID_CAR_NAME_LETTER;
+import static racingcar.constants.ErrorMessage.INVALID_CAR_NAME_SPACE;
+
 public class CarName {
     private static final Integer MAX_NAME_LENGTH = 5;
     private static final String LETTER_REGEX = "[a-zA-Z]+";
@@ -18,7 +22,7 @@ public class CarName {
 
     private void validateCarNameLength(String name) {
         if (IsNotValidNameLength(name)) {
-            throw new IllegalArgumentException("이름은 5글자 이하만 가능합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH);
         }
     }
 
@@ -28,7 +32,7 @@ public class CarName {
 
     private void validateEmpty(String name) {
         if (isEmptyName(name)) {
-            throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_SPACE);
         }
     }
 
@@ -38,7 +42,7 @@ public class CarName {
 
     private void validateOnlyLetters(String name) {
         if (isValidOnlyLetters(name)) {
-            throw new IllegalArgumentException("이름은 영문자만 포함해야 합니다.");
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LETTER);
         }
     }
 
