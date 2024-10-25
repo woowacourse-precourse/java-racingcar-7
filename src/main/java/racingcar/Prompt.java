@@ -12,7 +12,7 @@ public class Prompt {
 
     public static int racingTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryCount;
+        var tryCount = 0;
         try {
             tryCount = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IOPreprocessor {
     private static List<String> parsingInput(String input) {
-        String[] splitInput = input.split(",");
+        var splitInput = input.split(",");
         validateInput(input, splitInput);
         return Arrays.stream(splitInput).toList();
     }
