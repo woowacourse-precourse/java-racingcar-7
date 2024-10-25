@@ -10,22 +10,24 @@ import racingcar.view.input.exception.InputException;
  */
 public record RacingRequest(
     String carNames,
-    String roundCount
+    int roundCount
 ) {
-  public RacingRequest {
-    validateCarNames(carNames);
-    validateRoundCount(roundCount);
-  }
 
-  private static void validateRoundCount(String roundCount) {
+  private static int validateRoundCount(String roundCount) {
     if (roundCount == null || roundCount.trim().isEmpty()){
       throw new InputException(ExceptionEnum.INVALID_ROUND_COUNT);
     }
-    if (roundCount.contains("-")){
-      throw new InputException(ExceptionEnum.ROUND_COUNT_NEGATIVE_NUMBER_NOT_AVAILABLE);
-    }
     if (roundCount.contains(".")){
       throw new InputException(ExceptionEnum.ROUND_COUNT_DECIMAL_NUMBER_NOT_AVAILABLE);
+    }
+    try {
+      int value = Integer.parseInt(roundCount);
+      if (value <= 0){
+        throw new InputException(ExceptionEnum.ROUND_COUNT_NEGATIVE_NUMBER_NOT_AVAILABLE);
+      }
+      return value;
+    } catch (NumberFormatException e){
+      throw new InputException(ExceptionEnum.ROUND_COUNT_OUT_OF_INTEGER_RANGE);
     }
   }
 
@@ -36,6 +38,8 @@ public record RacingRequest(
   }
 
   public static RacingRequest from(String carNames, String roundCount) {
-    return new RacingRequest(carNames, roundCount);
+    validateCarNames(carNames);
+    int roundCountNumber = validateRoundCount(roundCount);
+    return new RacingRequest(carNames, roundCountNumber);
   }
 }
