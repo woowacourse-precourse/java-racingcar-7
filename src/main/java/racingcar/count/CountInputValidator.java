@@ -7,7 +7,7 @@ public class CountInputValidator {
     public void checkIsAttemptCountValid(String attemptCount) {
         checkIsEmpty(attemptCount);
         checkIsNumber(attemptCount);
-        checkIsSmallThanZero(attemptCount);
+        checkIsHaveValidRange(attemptCount);
     }
 
     private void checkIsEmpty(String attemptCount) {
@@ -16,8 +16,9 @@ public class CountInputValidator {
         }
     }
 
-    private void checkIsSmallThanZero(String attemptCount) {
-        if (StringUtils.convertStringToInteger(attemptCount) <= 0) {
+    private void checkIsHaveValidRange(String attemptCount) {
+        int count = StringUtils.convertStringToInteger(attemptCount);
+        if (count <= 0 || count > 20) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_IS_ATTEMPT_COUNT_INVALID.getMessage());
         }
     }
