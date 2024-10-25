@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import racingcar.game.controller.io.InputHandler;
 import racingcar.game.controller.io.OutputHandler;
-import racingcar.game.controller.model.Car;
-import racingcar.game.controller.model.util.RandomNumberGenerator;
+import racingcar.game.model.Car;
+import racingcar.game.model.util.RandomNumberGenerator;
 
 public class RacingCar {
     private final OutputHandler outputHandler = new OutputHandler();

@@ -3,7 +3,7 @@ package racingcar.game.controller.io;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.game.controller.model.Car;
+import racingcar.game.model.Car;
 
 public class InputHandler {
     private static final String NAME_SPLIT_DELIMITER = ",";

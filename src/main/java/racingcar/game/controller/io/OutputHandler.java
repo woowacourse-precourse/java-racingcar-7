@@ -3,7 +3,7 @@ package racingcar.game.controller.io;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import racingcar.game.controller.model.Car;
+import racingcar.game.model.Car;
 
 public class OutputHandler {
     private static final String CAR_NAMES_NAVIGATE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

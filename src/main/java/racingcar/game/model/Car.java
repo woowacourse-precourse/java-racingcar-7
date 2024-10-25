@@ -1,4 +1,4 @@
-package racingcar.game.controller.model;
+package racingcar.game.model;
 
 import java.util.Objects;
 
