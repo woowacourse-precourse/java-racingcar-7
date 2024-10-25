@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 
 public class CarsInRace {
 
-    private static List<Car> carsInRace = new ArrayList<>();
+    private static List<Car> carsList = new ArrayList<>();
     private static int carsCount = 0;
 
-    public CarsInRace(List<Car> carsInRace) {
-        this.carsInRace = carsInRace;
-        this.carsCount = carsInRace.size();
+    public CarsInRace(List<Car> carsList) {
+        this.carsList = carsList;
+        this.carsCount = carsList.size();
     }
 
     public void startRaceOnce() {
-        for (Car car : carsInRace) {
+        for (Car car : carsList) {
             car.move();
         }
     }
@@ -26,7 +26,7 @@ public class CarsInRace {
     }
 
     public static List<Car> getCarsInRace() {
-        return carsInRace;
+        return carsList;
     }
 
     public static List<String> getWinnersName() {
@@ -40,12 +40,12 @@ public class CarsInRace {
     }
 
     private static List<Car> getWinners() {
-        int maxWinCount = carsInRace.stream()
+        int maxWinCount = carsList.stream()
                 .max(Comparator.comparingInt(Car::getWinCount))
                 .get()
                 .getWinCount();
 
-        return carsInRace.stream()
+        return carsList.stream()
                 .filter(car -> car.getWinCount() == maxWinCount)
                 .collect(Collectors.toList());
     }
