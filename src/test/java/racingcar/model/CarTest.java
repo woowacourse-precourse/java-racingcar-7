@@ -59,8 +59,8 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("차량 이동 테스트")
-    void moveTest() {
+    @DisplayName("차량 이동 테스트- seed가 4 이상일 경우")
+    void moveTestWhenSeedIsMoreThanFour() {
         //given
         final String carName = "car";
         final int seed = 4;
@@ -71,5 +71,20 @@ class CarTest {
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("차량 이동 테스트 - seed가 4 미만일 경우")
+    void moveTestWhenSeedIsLessThanFour() {
+        //given
+        final String carName = "car";
+        final int seed = 3;
+        final Car car = new Car(carName);
+
+        //when
+        car.move(seed);
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
