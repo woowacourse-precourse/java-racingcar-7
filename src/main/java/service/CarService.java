@@ -47,6 +47,19 @@ public class CarService {
         return newCarName;
     }
 
+    public void runRoundGame() {
+        for (Car car : carList.getCars()) {
+            if (isFastForward()) {
+                car.addDistance();
+            }
+        }
+    }
+
+    public boolean isFastForward() {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        return randomNum >= 4;
+    }
+
     public List<String> getWinners() {
 
         int winnerDistance = getMaxDistance();
@@ -72,10 +85,4 @@ public class CarService {
         }
         return maxDistance;
     }
-
-    public boolean isFastForward() {
-        int randomNum = Randoms.pickNumberInRange(0, 9);
-        return randomNum >= 4;
-    }
-
 }
