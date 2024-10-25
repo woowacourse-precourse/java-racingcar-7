@@ -15,6 +15,8 @@ public class Application {
         Writer.writeMessage(NUMBER_INPUT_MESSAGE);
         int tryNumber = Reader.readNumber();
 
+        Reader.closeConsole();
+
         CarManager carManager = new CarManager(carNames);
         RacingGame racingGame = new RacingGame(carManager, tryNumber);
         racingGame.play();
