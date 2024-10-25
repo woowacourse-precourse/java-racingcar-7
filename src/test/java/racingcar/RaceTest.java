@@ -36,7 +36,7 @@ class RaceTest {
         race = new Race(testCars);
 
         //when
-        List<CarDto> roundResult = race.getRoundResult();
+        List<CarDto> roundResult = race.getRoundResult().getCarDtoList();
 
         //then
         roundResult.stream().forEach(carDto -> {
@@ -57,8 +57,8 @@ class RaceTest {
                     Queue<Integer> expectedPosition = new LinkedList<>();
                     expectedPosition.addAll(Arrays.asList(1, 0, 1));
                     //then
-                    List<CarDto> roundResult = race.getRoundResult();
-                    roundResult.stream().forEach(carDto -> {
+                    RoundResult roundResult = race.getRoundResult();
+                    roundResult.getCarDtoList().stream().forEach(carDto -> {
                         Assertions.assertThat(carDto.getCurrentPosition()).isEqualTo(expectedPosition.poll());
                     });
                 }

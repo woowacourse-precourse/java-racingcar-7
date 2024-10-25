@@ -10,10 +10,13 @@ public class Race {
         this.cars = cars;
     }
 
-    public List<CarDto> getRoundResult() {
-        return cars.stream().map(car ->
+    public RoundResult getRoundResult() {
+
+        List<CarDto> carDtoList = cars.stream().map(car ->
                         new CarDto(car.getName(), car.getCurrentPosition()))
                 .toList();
+
+        return new RoundResult(carDtoList);
     }
 
     public void start() {
