@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarManager;
 import racingcar.domain.Racing;
-import racingcar.service.RacingService;
+import racingcar.utils.RandomNumber;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,18 +13,16 @@ public class RacingController {
     private Racing racing;
     private CarManager carManager;
     private OutputView outputView;
-    private RacingService racingService;
 
-    public RacingController(Racing racing, CarManager carManager, RacingService racingService,
+    public RacingController(Racing racing, CarManager carManager,
             OutputView outputView) {
         this.racing = racing;
         this.carManager = carManager;
         this.outputView = outputView;
-        this.racingService = racingService;
     }
 
     public void start() {
-        racingService.setupCarsFromUserInput(InputView.getInputCarString());
+        carManager.setupCarsFromUserInput(InputView.getInputCarString());
         executeRaceRounds();
         announceWinner();
     }
@@ -44,7 +42,7 @@ public class RacingController {
     }
 
     private void runSingleRound() {
-        List<Car> cars = racing.startRacing();
+        List<Car> cars = carManager.startRacing(RandomNumber.generate());
         for (Car car : cars) {
             outputView.printGameResult(car.getName(), car.getMovedDistance());
         }
