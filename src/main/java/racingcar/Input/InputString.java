@@ -9,13 +9,19 @@ public class InputString {
     static Pattern pattern = Pattern.compile(regex);
     static Matcher matcher;
 
-    public static String inputString(String input) {
-        matcher = pattern.matcher(input);
+    public static void inputString() {
+        String input = Console.readLine();
+
+        isCorrectInput(input);
+    }
+
+    public static boolean isCorrectInput(String inputString) {
+        matcher = pattern.matcher(inputString);
 
         if (matcher.matches()) {
-            return "문자열이 정규식에 맞습니다.";
+            return true;
         } else {
-            return "문자열이 정규식에 맞지 않습니다.";
+            return false;
         }
     }
 }
