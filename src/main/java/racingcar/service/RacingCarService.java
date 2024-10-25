@@ -1,12 +1,13 @@
-package service;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import dto.RacingOutputDTO;
-import dto.ValidatedInputDataDTO;
+import java.util.ArrayList;
+import racingcar.dto.RacingOutputDTO;
+import racingcar.dto.ValidatedInputDataDTO;
 import java.util.List;
-import policy.RacingPolicy;
-import repository.RacingCarRepository;
-import vehicle.Car;
+import racingcar.domain.policy.RacingPolicy;
+import racingcar.repository.RacingCarRepository;
+import racingcar.domain.Car;
 
 public class RacingCarService implements RacingService {
     private final ValidatedInputDataDTO validatedInputDataDTO;
@@ -33,7 +34,7 @@ public class RacingCarService implements RacingService {
     @Override
     public void generateRacer(String[] splitNames) {
         for (String name:splitNames) {
-            Car car = new Car(name,racingPolicy);
+            Car car = new Car(name);
             racingCarRepository.save(car.getVehicleName(),car);
         }
     }
@@ -41,28 +42,24 @@ public class RacingCarService implements RacingService {
 
     /**
      * 전체 레이스경기가 실행된다.
-     * @param splitNames : 중복없이 구분자를 기준으로 자른 자동차 이름
-     * @return : 레이스 전체턴 진행결과
+     * @param splitNames 중복없이 구분자를 기준으로 자른 자동차 이름
+     * @return 레이스 전체턴 진행결과
      */
     @Override
     public String runRace(String[] splitNames){
         StringBuilder stringBuilder = new StringBuilder();
+        List<String> raceTurn = new ArrayList<>();
         //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
         for (int i = 0; i < validatedInputDataDTO.count(); i++) {
-            if(i < validatedInputDataDTO.count()-1){
-                stringBuilder.append(executeRaceTurn(splitNames)).append("\n");
-            }
-            if(i == validatedInputDataDTO.count()-1){
-                stringBuilder.append(executeRaceTurn(splitNames));
-            }
+            raceTurn.add(executeRaceTurn(splitNames));
         }
 
-        return stringBuilder.toString();
+        return String.join("\n", raceTurn);
     }
 
     /**
      * 한 턴만 출력된다.
-     * @param splitNames
+     * @param splitNames 자른 이름
      * @return 레이스 한턴 진행결과
      */
     public String executeRaceTurn(String[] splitNames) {
@@ -84,17 +81,7 @@ public class RacingCarService implements RacingService {
     @Override
     public String fineRaceWinner(){
         List<String> winners = racingCarRepository.findWinner();
-        StringBuilder stringBuilder = new StringBuilder();
-        //TODO : 여기 더 깔끔하게 코드 리팩터링 필요
-        for (int i = 0; i < winners.size(); i++) {
-            if(i< winners.size()-1){
-                stringBuilder.append(winners.get(i)).append(","); 
-            }
-            if(i == winners.size()-1){
-                stringBuilder.append(winners.get(i));
-            }
-        }
-        return stringBuilder.toString();
+        return String.join(",", winners);
     }
 
     public RacingCarRepository getRacingCarRepository() {

@@ -1,4 +1,4 @@
-package vehicle;
+package racingcar.domain;
 
 public interface Vehicle {
     String getVehicleName();

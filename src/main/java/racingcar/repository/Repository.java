@@ -1,7 +1,7 @@
-package repository;
+package racingcar.repository;
 
 import java.util.List;
-import vehicle.Vehicle;
+import racingcar.domain.Vehicle;
 
 public interface Repository {
 

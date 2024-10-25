@@ -1,6 +1,6 @@
-package service;
+package racingcar.service;
 
-import dto.RacingOutputDTO;
+import racingcar.dto.RacingOutputDTO;
 
 public interface RacingService {
     RacingOutputDTO racingStart();

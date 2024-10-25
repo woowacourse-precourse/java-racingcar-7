@@ -3,12 +3,13 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import policy.RacingCarPolicy;
+import racingcar.domain.policy.RacingCarPolicy;
+import racingcar.exception.ExceptionMessage;
+import racingcar.view.RacingCarInputView;
 
 class RacingCarInputViewTest {
 
@@ -27,7 +28,6 @@ class RacingCarInputViewTest {
         //given
         RacingCarInputView inputView = new RacingCarInputView();
         System.setIn(createInput("dodo,moo,haha"));
-        Scanner scanner = new Scanner(System.in);
 
         //when
         String name = inputView.receiveName(new RacingCarPolicy());
@@ -51,7 +51,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.validateNameLengthOrThrow(split, new RacingCarPolicy()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름의 길이는 5를 넘을 수 없습니다.");
+                .hasMessage(ExceptionMessage.MAX_LENGTH_EXCEEDED.getMessage());
     }
 
     @DisplayName("구분자를 바르게 입력해야 한다.")
@@ -67,7 +67,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.validateNoSeparatorOrThrow(input, new RacingCarPolicy()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("구분자를 바르게 입력해주세요.");
+                .hasMessage(ExceptionMessage.DELIMITER_NOT_VALID.getMessage());
     }
 
     @DisplayName("중복된 이름은 입력할 수 없다.")
@@ -84,7 +84,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.duplicateNameAndThrow(split))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 이름은 입력할 수 없습니다.");
+                .hasMessage(ExceptionMessage.DUPLICATE_NAME_NOT_ALLOWED.getMessage());
     }
 
     @DisplayName("공백만 입력할 수 없다.")
@@ -98,9 +98,9 @@ class RacingCarInputViewTest {
 
         //then
         Assertions.assertThatThrownBy(() ->
-                        inputView.validateBlankAndThrow("이름",input))
+                        inputView.validateBlankAndThrow(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름에는 공백만 입력할 수 없습니다.");
+                .hasMessage(ExceptionMessage.INVALID_BLANK_INPUT.getMessage());
     }
 
     @DisplayName("시도횟수를 입력받을 수 있다. inputView 를 출력한다.")
@@ -109,7 +109,6 @@ class RacingCarInputViewTest {
         //given
         RacingCarInputView inputView = new RacingCarInputView();
         System.setIn(createInput("3"));
-        Scanner scanner = new Scanner(System.in);
 
         //when
         Long count = inputView.receiveTryCount();
@@ -132,7 +131,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.validateNegativeAndThrow(-1L))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도횟수는 양수로 입력해주세요");
+                .hasMessage(ExceptionMessage.INVALID_NON_POSITIVE_COUNT.getMessage());
 
     }
 
@@ -148,7 +147,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.validateLongLengthAndThrow("12312312312312312323"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도횟수는 9,223,372,036,854,775,807를 넘을 수 없습니다.");
+                .hasMessage(ExceptionMessage.MAX_COUNT_LENGTH_EXCEEDED.getMessage());
 
     }
 
@@ -164,7 +163,7 @@ class RacingCarInputViewTest {
         Assertions.assertThatThrownBy(() ->
                         inputView.validateInputNumber("다섯"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도횟수는 숫자로 입력해 주세요.");
+                .hasMessage(ExceptionMessage.INVALID_COUNT_FORMAT.getMessage());
 
     }
 

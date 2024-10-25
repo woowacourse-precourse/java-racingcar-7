@@ -1,15 +1,14 @@
 package service;
 
-import common.RacingCarBeanFactory;
-import dto.ValidatedInputDataDTO;
-import java.util.ArrayList;
+import racingcar.dto.ValidatedInputDataDTO;
 import java.util.HashMap;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import policy.RacingCarPolicy;
-import repository.RacingCarRepository;
+import racingcar.domain.policy.RacingCarPolicy;
+import racingcar.repository.RacingCarRepository;
+import racingcar.service.RacingCarService;
+import racingcar.service.RacingService;
 
 class RacingCarServiceTest {
 
@@ -17,7 +16,6 @@ class RacingCarServiceTest {
     @Test
     void generateCar() {
         //given
-        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,lala", 3L);
         RacingCarService racingCarService = new RacingCarService(validatedInputDataDTO, new RacingCarPolicy(),
                 new RacingCarRepository(new HashMap<>()));
@@ -34,17 +32,18 @@ class RacingCarServiceTest {
     @DisplayName("레이스 진행사항을 출력한다.")
     @Test
     void runRace() {
+
         //given
-        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dodo", 10L);
-        RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
+        RacingService racingService = new RacingCarService(validatedInputDataDTO,new RacingCarPolicy(),
+                new RacingCarRepository(new HashMap<>()));
         racingService.generateRacer(validatedInputDataDTO.name().split(","));
         //when
 
         String strings = racingService.runRace(validatedInputDataDTO.name().split(","));
-        System.out.println(strings);
 
         //then
+
 
     }
 
@@ -53,10 +52,9 @@ class RacingCarServiceTest {
     @Test
     void findRaceWinner() {
         //given
-        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,toto,dodo", 10L);
-        RacingService racingService = beanFactory.provideRacingService(validatedInputDataDTO);
-        List<String> status = new ArrayList<>();
+        RacingService racingService = new RacingCarService(validatedInputDataDTO,new RacingCarPolicy(),
+                new RacingCarRepository(new HashMap<>()));
         racingService.generateRacer(validatedInputDataDTO.name().split(","));
         //when
 
@@ -67,5 +65,4 @@ class RacingCarServiceTest {
         //then
 
     }
-
 }

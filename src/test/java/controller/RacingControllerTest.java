@@ -1,9 +1,13 @@
 package controller;
 
-import common.RacingCarBeanFactory;
-import dto.ValidatedInputDataDTO;
+import java.util.HashMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.RacingController;
+import racingcar.domain.policy.RacingCarPolicy;
+import racingcar.dto.ValidatedInputDataDTO;
+import racingcar.repository.RacingCarRepository;
+import racingcar.service.RacingCarService;
 
 class RacingControllerTest {
 
@@ -12,10 +16,13 @@ class RacingControllerTest {
     @Test
     void provideServiceFromBeanFactory() {
         //given
-        RacingCarBeanFactory beanFactory = new RacingCarBeanFactory();
+        RacingCarPolicy racingCarPolicy = new RacingCarPolicy();
         ValidatedInputDataDTO validatedInputDataDTO = new ValidatedInputDataDTO("dada,ming,mong", 5L);
+        RacingCarService racingCarService = new RacingCarService(validatedInputDataDTO, racingCarPolicy,
+                new RacingCarRepository(new HashMap<>()));
+
         //when
-        RacingController racingController = new RacingController(beanFactory, validatedInputDataDTO);
+        RacingController racingController = new RacingController(racingCarService);
         //then
         org.assertj.core.api.Assertions.assertThat(racingController).isNotNull();
     }

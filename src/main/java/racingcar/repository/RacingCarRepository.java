@@ -1,9 +1,9 @@
-package repository;
+package racingcar.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import vehicle.Vehicle;
+import racingcar.domain.Vehicle;
 
 public class RacingCarRepository implements Repository{
     private final Map<String, Vehicle> racingCarRepository;
@@ -43,6 +43,5 @@ public class RacingCarRepository implements Repository{
 
         return winnerList;
     }
-
 
 }

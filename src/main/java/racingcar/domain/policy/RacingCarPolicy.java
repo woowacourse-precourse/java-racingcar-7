@@ -1,13 +1,12 @@
-package policy;
+package racingcar.domain.policy;
 
 public class RacingCarPolicy implements RacingPolicy {
     private static final  String NAME_SEPARATOR = ",";
     private static final String MOVE_FORWARD_SYMBOL = "-";
-    private static final int nameLengthPolicy= 5;
-    private static final Integer moveCriterion = 4;
 
-    public RacingCarPolicy() {
-    }
+    //TODO : 상수 컨벤션 지켜라
+    private static final int nameLengthPolicy= 5;
+    private static final int moveCriterion = 4;
 
     /**
      * 전진 정책 : 0~9사이 값 중 무작위 값 4이상일 경우 전진한다.
