@@ -1,9 +1,11 @@
 package racingcar.controller;
 
 import racingcar.io.InputManager;
+import racingcar.io.OutputManager;
 import racingcar.model.attemptcountinput.AttemptCountValidation;
 import racingcar.model.carnameinput.CarNameSplit;
 import racingcar.model.carnameinput.CarNameValidation;
+import racingcar.model.race.Race;
 
 public class RacingCarController {
     public RacingCarController() {
@@ -16,6 +18,8 @@ public class RacingCarController {
         CarNameValidation.carNameValidate(carNameArray);
         String attemptCount = inputManager.attemptCountInput();
         int attemptCountNumber = AttemptCountValidation.attemptCountValidation(attemptCount);
-        System.out.println(attemptCountNumber);
+        Race race = new Race(carNameArray, attemptCountNumber);
+        String executionResult = race.raceRun();
+        OutputManager.printExecutionResult(executionResult);
     }
 }

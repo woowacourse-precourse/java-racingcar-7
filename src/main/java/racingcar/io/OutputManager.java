@@ -10,4 +10,9 @@ public class OutputManager {
     public static void printEnterAttemptCountMessage() {
         System.out.println(IOMessage.ENTER_ATTEMPT_COUNT_INPUT);
     }
+
+    public static void printExecutionResult(String executionResult) {
+        System.out.println(IOMessage.EXECUTION_RESULT);
+        System.out.println(executionResult);
+    }
 }
