@@ -24,6 +24,7 @@ public class Application {
         for (int j = 0; j < names.length; j++) {
             System.out.println(names[j] + " : " + individualCarMovements[j]);
         }
+        System.out.println();
     }
 
     public static void printCarMovements(String[] individualCarMovements, String[] names,
