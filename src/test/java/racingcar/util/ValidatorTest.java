@@ -34,4 +34,14 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.carNameValidate(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"한글자동차", ";;;"})
+    @DisplayName("자동차 이름은 영어와 숫자만 허용")
+    void carNameMatchPatternTest(String input) {
+        List<String> carNames = List.of(input);
+        assertThatThrownBy(() -> Validator.carNameValidate(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
