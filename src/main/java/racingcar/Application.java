@@ -1,8 +1,9 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static utils.Input.getInput;
 
+import dto.RacingInput;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,13 +13,10 @@ public class Application {
         // 절차지향으로 TDD 한 뒤에 리팩토링 하면서 함수 쪼개고 TDD 하기
 
         // 입력 기능
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String repeatCount = readLine();
+        RacingInput input = getInput();
 
         // 자동차 이름 추출 기능
-        String[] cars = input.split(",");
+        String[] cars = input.cars().split(",");
 
         // 자동차 이름 유효성 검증
         for (String car : cars) {
@@ -32,7 +30,7 @@ public class Application {
 
         // 실행 및 출력
         System.out.println("실행 결과");
-        for (int i = 0; i < Integer.parseInt(repeatCount); i++) {
+        for (int i = 0; i < Integer.parseInt(input.repeatCount()); i++) {
             // 자동차 전진 기능
             for (int j = 0; j < stepsForward.length; j++) {
                 int goAndStop = pickNumberInRange(0, 9);
