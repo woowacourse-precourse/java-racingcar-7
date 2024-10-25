@@ -1,5 +1,4 @@
 # java-racingcar-precourse
-# java-racingcar-precourse
 
 1. **자동차 이름 입력 기능**<br>
    -사용자가 경주할 자동차의 이름을 입력할 수 있습니다.<br>
