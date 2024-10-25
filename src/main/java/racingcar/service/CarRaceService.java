@@ -25,6 +25,7 @@ public class CarRaceService {
 
         printGameStartMessage();
         startRace(cars, gameMatches);
+        printWinner(cars);
     }
 
     private static void startRace(Cars cars, Integer gameMatches) {
@@ -33,4 +34,13 @@ public class CarRaceService {
         }
     }
 
+    private static void printWinner(Cars cars) {
+        List<String> winnerList = cars.findWinner();
+        String winner = getJoin(winnerList);
+        OutputView.printWinner(winner);
+    }
+
+    private static String getJoin(List<String> winner) {
+        return String.join(", ", winner);
+    }
 }
