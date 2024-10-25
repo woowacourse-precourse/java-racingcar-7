@@ -22,6 +22,14 @@ public class CarRace {
             throw new IllegalArgumentException(e);
         }
 
+        // 자동차 경주 진행
+        for(int i=0; i<raceCount; i++){
+            racingCars.forEach(racingCar -> {
+                racingCar.move();
+                racingCar.printMoveState();
+            });
+        }
+
         // 최종 우승자
         String winner = "";
         return winner;
