@@ -14,6 +14,7 @@ public record CarsRequest(
 
     public static final String DELIMITER = ",";
     public static final int MINIMUM_NUMBER_OF_CARS = 2;
+    public static final int MAXIMUM_NUMBER_OF_CARS = 10;
 
     public Cars toCars() {
         List<Car> cars = parseToName(carNames).stream()
@@ -35,8 +36,8 @@ public record CarsRequest(
     }
 
     private void validateCarsSize(List<CarName> cars) {
-        if (cars.size() < MINIMUM_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("최소 2명부터 경주가 가능합니다.");
+        if (cars.size() < MINIMUM_NUMBER_OF_CARS || cars.size() > MAXIMUM_NUMBER_OF_CARS) {
+            throw new IllegalArgumentException("최소 2명부터 최대 10명까지 경주가 가능합니다.");
         }
     }
 }
