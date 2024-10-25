@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest {
+
     private static ByteArrayOutputStream outputMessage;
 
     @BeforeEach
@@ -36,14 +37,14 @@ class InputViewTest {
         assertNotNull(inputView);
     }
 
-    @DisplayName("입력_요청_메세지_출력_테스트")
+    @DisplayName("이름_입력_요청_메세지_출력_테스트")
     @Test
     public void printCarNamesRequestMessageTest() {
         //given
         InputView inputView = new InputView();
-        String printResult = outputMessage.toString().trim();
         //when
         inputView.printCarNamesRequestMessage();
+        String printResult = outputMessage.toString().trim();
         //then
         assertEquals(printResult, NAMES_REQUEST_MESSAGE.getMessage());
     }
