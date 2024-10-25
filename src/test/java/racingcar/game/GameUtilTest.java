@@ -10,6 +10,7 @@ import racingcar.util.car.CarUtil;
 import racingcar.util.game.GameUtil;
 import racingcar.vo.CarVO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -60,7 +61,7 @@ class GameUtilTest {
     @ParameterizedTest
     @MethodSource("provideCarNamesAndExecuteNumbers")
     @DisplayName("게임 전체를 진행하는 함수를 구현한다.")
-    void 전체_진행_함수(String carNames, int executeNumber) {
+    void 전체_진행_기능_테스트(String carNames, int executeNumber) {
         assertDoesNotThrow(() -> {
             List<CarVO> carNameAndGoCountList = CarUtil.getCarNameAndGoCountList(carNames);
             System.out.println("실행 결과");
@@ -74,6 +75,117 @@ class GameUtilTest {
         });
     }
 
+
+    @ParameterizedTest
+    @MethodSource("provideCarNamesAndExecuteNumbers")
+    @DisplayName("게임 전체를 진행하는 함수가 원하는 값을 출력한다..")
+    void 전체_진행_함수_테스트(String carNames, int executeNumber) {
+        assertDoesNotThrow(() -> {
+            List<CarVO> carNameAndGoCountList = CarUtil.getCarNameAndGoCountList(carNames);
+            GameUtil.oneGamePrintAndUpdate(carNameAndGoCountList, executeNumber);
+        });
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideCarVOList")
+    @DisplayName("출전자 중 제일 많은 전진 횟수를 구한다.")
+    void 우승자_추출_기능_테스트(List<CarVO> carNameAndGoCountList) {
+        var maxGoCount = 0;
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() > maxGoCount) {
+                maxGoCount = carNameAndCount.getGoCount();
+            }
+        }
+
+        assertThat(maxGoCount).isSameAs(5);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideCarVOList")
+    @DisplayName("woo 자동차 이름을 정상적으로 가져온다.")
+    void 우승자_이름_추출_기능(List<CarVO> carNameAndGoCountList) {
+        int maxGoCount = 5;
+        String winnerName = null;
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() == maxGoCount) {
+                winnerName = carNameAndCount.getCarName();
+            }
+        }
+
+        assertThat(winnerName).isEqualTo("woo");
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideCarVOList")
+    @DisplayName("우승자가 한명 일 때 이름을 정상적으로 리턴한다.")
+    void 단독_우승자_이름_리턴(List<CarVO> carNameAndGoCountList) {
+        int maxGoCount = 5;
+        List<String> winnerNameArray = new ArrayList<>();
+        String result = "";
+
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() == maxGoCount) {
+                winnerNameArray.add(carNameAndCount.getCarName());
+            }
+        }
+
+        if (winnerNameArray.size() == 1) {
+            result = winnerNameArray.getFirst();
+        } else {
+            result = winnerNameArray.toString().replaceAll("[\\[\\]]", "");
+        }
+
+        assertThat(result).isEqualTo("woo");
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideTwoWinnerList")
+    @DisplayName("우승자가 두명일 경우 이름1, 이름2 로 리턴")
+    void 우승자가_두명_일때(List<CarVO> carNameAndGoCountList) {
+        int maxGoCount = 5;
+        List<String> winnerNameArray = new ArrayList<>();
+        String result = "";
+
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() == maxGoCount) {
+                winnerNameArray.add(carNameAndCount.getCarName());
+            }
+        }
+
+        if (winnerNameArray.size() == 1) {
+            result = winnerNameArray.getFirst();
+        } else {
+            result = winnerNameArray.toString().replaceAll("[\\[\\]]", "");
+        }
+
+        assertThat(result).isEqualTo("woo, hong");
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideManyWinnerNameList")
+    @DisplayName("두 명이상의 우승자 출력 양식으로 변환하는 기능")
+    void 다수_우승자_출력양식_변환(List<String> winnerNames) {
+        String result = "";
+        // 우승자가 한명일때
+        if (winnerNames.size() == 1) {
+            result = winnerNames.getFirst();
+            // 함수에선 여기서 리턴
+        }
+
+        for (String winnerName : winnerNames) {
+            if (result.isEmpty()) {
+                result += winnerName;
+            } else {
+                result += ", " + winnerName;
+            }
+        }
+
+
+        assertThat(result).isEqualTo("koo, sang, woo");
+        assertThat(winnerNames.toString().replaceAll("[\\[\\]]", "")).isEqualTo("koo, sang, woo");
+    }
+
+
     // 매개변수 제공 메서드
     static Stream<Arguments> provideCarNamesAndExecuteNumbers() {
         return Stream.of(
@@ -81,4 +193,43 @@ class GameUtilTest {
         );
     }
 
+    // 게임 진행 후의 테스트용 데이터를 리턴한다.
+    static Stream<Arguments> provideCarVOList() {
+        List<CarVO> carNameAndGoCountList = new ArrayList<CarVO>();
+        carNameAndGoCountList.add(new CarVO("sang", 3));
+        carNameAndGoCountList.add(new CarVO("sang", 4));
+        carNameAndGoCountList.add(new CarVO("woo", 5));
+
+        return Stream.of(
+                Arguments.of(carNameAndGoCountList) // 자동차 이름과 실행 횟수
+        );
+    }
+
+    // 우승자가 2명인 경주 결과를 리턴한다.
+    static Stream<Arguments> provideTwoWinnerList() {
+        List<CarVO> carNameAndGoCountList = new ArrayList<CarVO>();
+        carNameAndGoCountList.add(new CarVO("sang", 3));
+        carNameAndGoCountList.add(new CarVO("sang", 4));
+        carNameAndGoCountList.add(new CarVO("woo", 5));
+        carNameAndGoCountList.add(new CarVO("hong", 5));
+
+        return Stream.of(
+                Arguments.of(carNameAndGoCountList) // 자동차 이름과 실행 횟수
+        );
+    }
+
+
+
+
+    // 우승자의 이름 리스트를 반환한다.
+    static Stream<Arguments> provideManyWinnerNameList() {
+        List<String> winnerNameList = new ArrayList<>();
+        winnerNameList.add("koo");
+        winnerNameList.add("sang");
+        winnerNameList.add("woo");
+
+        return Stream.of(
+                Arguments.of(winnerNameList) // 자동차 이름과 실행 횟수
+        );
+    }
 }
