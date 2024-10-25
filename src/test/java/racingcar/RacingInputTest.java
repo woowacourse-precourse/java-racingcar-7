@@ -1,12 +1,22 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RacingInputTest {
     RacingInput racingInput = new RacingInput();
+
+    @BeforeEach
+    public void resetConsole() {
+        Console.close();
+    }
 
     @Test
     void 이름문자열_공백() {
@@ -56,7 +66,7 @@ public class RacingInputTest {
     @Test
     public void 라운드_범위초과() {
         setSystemInput("-1\n");
-        
+
         Assertions.assertThatThrownBy(() -> {
             racingInput.receiveTotalRounds();
         }).isInstanceOf(IllegalArgumentException.class);
