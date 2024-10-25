@@ -11,7 +11,8 @@ class GameDirectorTest {
         //given
         String carNames = "pobi,woni,jun";
         String count = "5";
-        GameDirector gameDirector = new GameDirector(carNames,count);
+        MoveStrategy strategy = new RandomNumStrategy();
+        GameDirector gameDirector = new GameDirector(carNames,count,strategy);
         //when //then
         List<Car> matchResult = gameDirector.run();
         gameDirector.printWinner(matchResult);

@@ -8,9 +8,10 @@ import static racingcar.SystemMessage.*;
 
 public class GameDirector {
     private final int count;
-    private final CarList manager = new CarList();
+    private final CarList manager;
 
-    public GameDirector(String carNames,String count) {
+    public GameDirector(String carNames,String count, MoveStrategy moveStrategy) {
+        manager = new CarList(moveStrategy);
         manager.add(carNames);
         this.count = Validator.validateCountIfNegative(count);
     }

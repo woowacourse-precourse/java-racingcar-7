@@ -14,7 +14,8 @@ class CarTest {
         //given
         String case1 = "pobi,woni,jun";
 
-        CarList list1 = new CarList();
+        RandomNumStrategy strategy = new RandomNumStrategy();
+        CarList list1 = new CarList(strategy);
         list1.add(case1);
         //when
 
@@ -34,8 +35,9 @@ class CarTest {
         String case1 = "hello";
         String case2 = "helloWorld";
 
-        CarList manager1 = new CarList();
-        CarList manager2 = new CarList();
+        RandomNumStrategy strategy = new RandomNumStrategy();
+        CarList manager1 = new CarList(strategy);
+        CarList manager2 = new CarList(strategy);
 
         //when // then
         Assertions.assertAll(
