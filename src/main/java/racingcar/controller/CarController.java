@@ -18,12 +18,14 @@ public class CarController {
     }
 
     public Input toInput() {
+        viewer.printInputCarNames();
         String carNames = viewer.readCarNames();
 
         return new Input(carNames);
     }
 
     public TryCount toTryCount() {
+        viewer.printTryCount();
         String countStr = viewer.readTryCount();
 
         return new TryCount(countStr);
