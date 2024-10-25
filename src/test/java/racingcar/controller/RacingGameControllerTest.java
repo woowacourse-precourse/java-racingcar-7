@@ -20,6 +20,7 @@ public class RacingGameControllerTest {
     private TestOutputView outputView;
     private RacingGameController controller;
 
+
     @BeforeEach
     void setUp() {
         inputView = new TestInputView();
@@ -35,8 +36,10 @@ public class RacingGameControllerTest {
     void testRun_WithValidInput(String input) {
         // Given: 유효한 자동차 이름과 시도 횟수
         setInputAndRun(input);
-        // Then: 출력이 발생했는지 확인
-        assertContainsResult(outputView.getPrintedOutput());
+        // Then: 출력이 예상대로 발생했는지 확인
+        String output = outputView.getPrintedOutput();
+        assertTrue(output.contains("실행 결과"), "출력에 '실행 결과'가 포함되어야 합니다.");
+        assertTrue(output.contains("최종 우승자"), "출력에 '최종 우승자'가 포함되어야 합니다.");
     }
 
     @ParameterizedTest
@@ -58,10 +61,6 @@ public class RacingGameControllerTest {
         controller.run();
     }
 
-    private void assertContainsResult(String output) {
-        assertTrue(output.contains("실행 결과"));
-        assertTrue(output.contains("최종 우승자"));
-    }
 
     private void assertExceptionMessage(String errorMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> controller.run());
@@ -114,4 +113,5 @@ public class RacingGameControllerTest {
             return printedOutput.toString();
         }
     }
+
 }
