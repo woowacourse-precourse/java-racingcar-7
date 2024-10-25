@@ -32,12 +32,13 @@ public class UnitTest extends NsTest {
         List<RacingCar> resultCars = Application.splitInput("car1,car2,car3");
         assertThat(resultCars).extracting("name").containsExactly("car1", "car2", "car3");
     }
-    @Disabled
+
     @Test
     @DisplayName("splitInput 같은 이름이 있을 경우")
     void slitInputTest2() {
         assertThatThrownBy(() -> Application.splitInput("car1,car2,car1"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
     }
 
     @Test
