@@ -12,9 +12,7 @@ public class Application {
         inputDisplay = new WtcInputDisplay();
 
         List<ICar> carList = settingCarList();
-
-        String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
-        int round = Integer.parseInt(roundStr);
+        int round = settingRound();
 
         IOutputDisplay outputDisplay = new OutputDisplayImpl();
         CarRacingGame carRacingGame = new CarRacingGame(outputDisplay, carList, round);
@@ -32,5 +30,10 @@ public class Application {
         }
 
         return carList;
+    }
+
+    private static int settingRound() {
+        String roundStr = inputDisplay.getPromptInput("시도할 횟수는 몇 회인가요?\n");
+        return Integer.parseInt(roundStr);
     }
 }
