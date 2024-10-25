@@ -12,7 +12,9 @@ public class Application {
             List<Car> cars = Arrays.stream(carNames)
                     .map(Car::new)
                     .collect(Collectors.toList());
+
             int moveCount = CarInput.inputMoveCount();
+
             Race race = new Race(cars);
             race.start(moveCount);
         } catch (IllegalArgumentException e) {
