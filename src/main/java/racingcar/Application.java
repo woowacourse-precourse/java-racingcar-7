@@ -17,7 +17,9 @@ public class Application {
         boolean validInput = isValidName(carNames) && isValidTryCount(inputTryCount);
 
         if (validInput) {
+            int tryCount = Integer.parseInt(inputTryCount);
             Map<String, StringBuilder> resultMap = createResultMap(carNames);
+            startGame(tryCount, resultMap);
         }
     }
 
@@ -94,6 +96,7 @@ public class Application {
     public static void startGame(int tryCount, Map<String, StringBuilder> resultMap) {
         for (int i = 0; i < tryCount; i++) {
             saveMovementInMap(resultMap);
+            System.out.println(createRaceResult(resultMap));
         }
     }
 
