@@ -13,8 +13,9 @@ public class InputView {
         return Console.readLine().trim();
     }
 
-    public static String inputTryNumber() {
+    public static int inputTryNumber() {
         System.out.println(TRY_NUMBER_MESSAGE);
-        return Console.readLine().trim();
+        String tryNumber = Console.readLine().trim();
+        return Integer.parseInt(tryNumber);
     }
 }

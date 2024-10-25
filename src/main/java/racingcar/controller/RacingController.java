@@ -22,7 +22,7 @@ public class RacingController {
     // 입력 기능
     public void inputInfo() {
         String input = InputView.inputCarNames();
-        tryNumber = Integer.parseInt(InputView.inputTryNumber());
+        tryNumber = InputView.inputTryNumber();
         String[] carArr = Utils.splitDelimiterCars(input);
 
         for (String name : carArr) {
