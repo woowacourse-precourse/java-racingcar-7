@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputVIew {
+public class InputView {
     private final Validator validator = new Validator();
 
     public String [] getInput(){
