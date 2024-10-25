@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
     private final ArrayList<Car> carArrayList;
@@ -17,5 +19,11 @@ public class Race {
 
     public int getAttemptCount() {
         return attemptCount;
+    }
+
+    public List<Integer> getDistanceList() {
+        return getCarArrayList().stream()
+                .map(Car::getLocation)
+                .collect(Collectors.toList());
     }
 }

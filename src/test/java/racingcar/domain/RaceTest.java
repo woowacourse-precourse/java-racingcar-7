@@ -3,6 +3,8 @@ package racingcar.domain;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,4 +55,10 @@ class RaceTest {
         assertEquals(expectedAttemptCount, actualAttemptCount);
     }
 
+    @DisplayName("레이스에 참가한 차들의 현재 위치를 반환한다.")
+    @Test
+    void getDistanceList() {
+        List<Integer> expectedDistanceList = Arrays.asList(0, 0, 0);
+        assertEquals(expectedDistanceList, race.getDistanceList());
+    }
 }
