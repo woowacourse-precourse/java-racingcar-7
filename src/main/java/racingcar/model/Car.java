@@ -13,6 +13,10 @@ public class Car {
         return this.distance;
     }
 
+    public CarRacer getCarRacer() {
+        return this.carRacer;
+    }
+
     public void decideToGo(int randomNumber) {
         if (canProceed(randomNumber)) {
             goOneStep();
@@ -22,7 +26,7 @@ public class Car {
     private void goOneStep() {
         this.distance += 1;
     }
-    
+
     private boolean canProceed(int randomNumber) {
         return randomNumber > 4;
     }
