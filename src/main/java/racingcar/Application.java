@@ -11,12 +11,16 @@ public class Application {
         String[] individualCarMovements = new String[names.length];
     }
 
-    public static void individualRandoms(String[] individualCarMovements, String[] names) { // 1회 이동 함수
+    public static void individualRandoms(String[] individualCarMovements, String[] names) { // 1회 이동 메서드
         for (int i = 0; i < names.length; i++) {
             if (Randoms.pickNumberInRange(0, 9) > 4) {
                 individualCarMovements[i] += "-";
             }
         }
+        for (int j = 0; j < names.length; j++) {
+            System.out.println(names[j] + " : " + individualCarMovements[j]);
+        }
     }
+
 
 }
