@@ -34,15 +34,20 @@ public class Application {
     //자동차 이름 List에 집어넣기
     public static List<RacingCar> splitInput(String input) {
         String[] racingCars = input.split(SPLITTER);
-        //기능 분리하기
         List<RacingCar> racingCarList = new ArrayList<>();
-        //int numOfCars = racingCars.length;
         for (String carName : racingCars) {
             if (carName.isEmpty() || carName == null || carName.length() > 5) {
                 throw new IllegalArgumentException();
             }
             RacingCar racingCar = new RacingCar(carName);
             racingCarList.add(racingCar);
+        }
+        for(int i = 0; i < racingCars.length; i++){
+            for(int j = i + 1; j < racingCars.length; j++){
+                if (racingCars[i].equals(racingCars[j])) {
+                    throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
+                }
+            }
         }
         return racingCarList;
     }
@@ -55,10 +60,6 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static Integer getCarNumber(List<RacingCar> racingCarList) {
-        return racingCarList.size();
     }
 
     public static Integer getRandomNumber() {
