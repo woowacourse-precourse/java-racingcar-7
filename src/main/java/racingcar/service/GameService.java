@@ -33,7 +33,7 @@ public class GameService {
     public List<RacingCar> game() {
         racingCars.stream()
                 .filter(car -> canMove())
-                .forEach(RacingCar::move);
+                .forEach(RacingCar::moveForward);
 
         return new ArrayList<>(racingCars);
     }

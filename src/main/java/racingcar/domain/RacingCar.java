@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 public class RacingCar {
+    private static final int MOVE_DISTANCE = 1;
+
     private String name;
     private int distance;
 
@@ -17,7 +19,7 @@ public class RacingCar {
         return distance;
     }
 
-    public void move() {
-        this.distance += 1;
+    public void moveForward() {
+        this.distance += MOVE_DISTANCE;
     }
 }
