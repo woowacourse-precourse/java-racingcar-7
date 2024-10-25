@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import racingcar.domain.InputContainer;
 import racingcar.validator.Validator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
 
@@ -16,18 +19,19 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Validator validator = new Validator();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
-        String inputCarNames = Console.readLine();
-        int attempts = Integer.parseInt(Console.readLine());
-        Console.close();
-
-        String[] carNames = inputCarNames.split(",");
+        InputContainer inputContainer = inputView.readConsole();
+        String inputCars = inputContainer.getCars();
+        int attempts = inputContainer.getAttempts();
+        String[] cars = inputCars.split(",");
 
         Map<String, String> carMoveMap = new HashMap<>();
-        for(String carName : carNames) { //carName의 앞 뒤에 공백이 있을 경우 고려
-            Boolean carNameLengthValidate = validator.carNameLengthValidate(carName);
+        for(String car : cars) { //cars의 앞 뒤에 공백이 있을 경우 고려
+            Boolean carNameLengthValidate = validator.carNameLengthValidate(car);
             if (carNameLengthValidate) {
-                carMoveMap.put(carName, "");
+                carMoveMap.put(car, "");
             } else {
                 throw new IllegalArgumentException("레이싱카의 이름의 길이는 5를 넘을 수 없습니다.");
             }
@@ -36,21 +40,17 @@ public class Application {
 
         int trial = 0;
         int randomNum = 0;
-        while (trial <= attempts) {
+        while (trial < attempts) {
             trial++;
-            for (String carName: carNames) {
+            for (String car: cars) {
                 randomNum = Randoms.pickNumberInRange(0, 9);
                 if (randomNum >= MOVING_FORWARD) {
-                    carMoveMap.put(carName, carMoveMap.get(carName) + '-');
+                    carMoveMap.put(car, carMoveMap.get(car) + '-');
                 } else if (randomNum <= STOP) {
                     continue;
                 }
             }
-            for (Entry<String, String> items : carMoveMap.entrySet()) {
-                String car = items.getKey();
-                String move = items.getValue();
-                System.out.println(car + " : " + move);
-            }
+            outputView.printPerAttempt(carMoveMap);
         }
 
         int winnerPosition = 0;
