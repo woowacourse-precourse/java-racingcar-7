@@ -42,6 +42,6 @@ public class RaceCar {
         if(num<4){
             return 0;
         }
-        return num;
+        return 1;
     }
 }
