@@ -10,12 +10,12 @@ public class InputView {
 
     private final static String regex = "^[a-zA-Z0-9가-힣]+$";
 
-    public String getFirstInput(){
+    public String getCarNameInput(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
     }
 
-    public int getSecondInput(){
+    public int getCountInput(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
     }
@@ -27,7 +27,7 @@ public class InputView {
         return uniqueSet.stream().toList();
     }
 
-    public boolean validateInput(String userInput){
+    public boolean validateCarName(String userInput){
         List<String> splitedInput = getUniqueName(userInput);
 
         if (splitedInput.size() <= 1){
@@ -46,10 +46,10 @@ public class InputView {
         return true;
     }
 
-    public boolean validateInput(int userInput){
-        if (userInput <= 0 || userInput >= 99999){
-            throw new IllegalArgumentException("시도할 횟수는 1이상 99999이하 입니다.");
-        }
-        return true;
-    }
+//    public boolean validateCount(int userInput){
+//        if (userInput <= 0 || userInput > 99999){
+//            throw new IllegalArgumentException("시도할 횟수는 1이상 99999이하 입니다.");
+//        }
+//        return true;
+//    }
 }
