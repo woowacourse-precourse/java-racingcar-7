@@ -34,6 +34,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("기능_테스트 number 2")
+    void 기능_테스트2(){
+        assertRandomNumberInRangeTest(
+                ()->{
+                    run("pobi,woni,pubi", "2");
+                    assertThat(output()).contains("pobi : -", "woni : ", "pubi : ", "pobi : -", "woni : -", "pubi : -", "최종 우승자 : pobi, woni, pubi");
+                },
+                MOVING_FORWARD, STOP, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     @DisplayName("자동차 이름이 5 이상일 때")
     void 예외_테스트() {
         assertSimpleTest(() ->
