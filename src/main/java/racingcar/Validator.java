@@ -4,7 +4,7 @@ public class Validator {
 
     static void validateCarNames(String carNames) {
         checkNameExist(carNames);
-        for (String carName : carNames.split(",")) {
+        for (String carName : carNames.split(",", -1)) {
             String stripCarName = carName.strip();
             checkEmptyName(stripCarName);
             checkCarNameLength(stripCarName);
