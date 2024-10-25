@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class IO {
+public class Input {
     /**
      * @return
      * 리스트를 반환
