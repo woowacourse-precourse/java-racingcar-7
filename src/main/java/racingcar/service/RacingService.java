@@ -12,8 +12,8 @@ public class RacingService {
     public RacingService() {
     }
 
-    public RacingGame initGame(List<Car> cars, int num){
-        return new RacingGame(cars,num);
+    public void initGame(List<Car> cars, int num){
+        racingGame = new RacingGame(cars, num);
     }
 
     public List<Car> generateCars(String[] carNames){

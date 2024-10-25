@@ -31,7 +31,7 @@ public class RacingCarView {
         return "-".repeat(position);
     }
 
-    private void printWinners(List<Car> cars) {
+    public void printWinners(List<Car> cars) {
         System.out.print("최종 우승자 : ");
 
         StringBuilder winners = new StringBuilder();

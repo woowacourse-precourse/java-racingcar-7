@@ -5,7 +5,7 @@ import java.util.List;
 
 //레코드로 변환 고려
 public class RacingGame {
-    private List<Car> carList;
+    private final List<Car> carList;
     private final int num;
 
     public RacingGame(List<Car> cars, int num) {
