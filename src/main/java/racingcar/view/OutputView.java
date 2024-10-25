@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import static racingcar.util.ConstantRacingData.ONE_MOVE;
 import static racingcar.util.message.IOMessage.OUTPUT_RACE_RESULT;
 import static racingcar.util.message.IOMessage.OUTPUT_WINNER;
 
@@ -23,12 +22,7 @@ public class OutputView {
     }
 
     public void displayRaceResult(Integer currentTrial, List<RacingCar> allRacers) {
-        allRacers.forEach(racingCar -> {
-            String name = racingCar.getName();
-            String currentMoves = ONE_MOVE.repeat(racingCar.getDistance(currentTrial));
-
-            System.out.printf("%s : %s\n", name, currentMoves);
-        });
+        allRacers.forEach(racingCar -> System.out.println(racingCar.getDistance(currentTrial)));
         System.out.println();
     }
 
