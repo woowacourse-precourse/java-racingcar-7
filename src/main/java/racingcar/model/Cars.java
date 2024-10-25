@@ -1,9 +1,13 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
+
+    private static final int RANDOM_NUMBER_LOWER_BOUND = 0;
+    private static final int RANDOM_NUMBER_UPPER_BOUND = 9;
 
     private final List<Car> cars;
 
@@ -17,7 +21,7 @@ public class Cars {
     }
 
     public void race() {
-        cars.forEach(Car::race);
+        cars.forEach(car -> car.race(pickRandomNumberFromZeroToNine()));
     }
 
     public List<String> getCarsInformation() {
@@ -33,5 +37,9 @@ public class Cars {
     private int getMaximumStatus() {
         return cars.stream().max(Comparator.comparingInt(Car::getStatus))
                 .get().getStatus();
+    }
+
+    private int pickRandomNumberFromZeroToNine() {
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_LOWER_BOUND, RANDOM_NUMBER_UPPER_BOUND);
     }
 }
