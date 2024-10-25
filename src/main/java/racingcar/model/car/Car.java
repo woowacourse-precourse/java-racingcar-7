@@ -11,8 +11,8 @@ public class Car {
         this.name = name;
     }
 
-    public String getProgress(){
-        return name + SEPARATOR + PROGRESS_BAR.repeat(progress);
+    public int getProgress(){
+        return progress;
     }
 
     public String getName(){
@@ -22,9 +22,4 @@ public class Car {
     public void updateProgress(){
         progress++;
     }
-
-
-
-
-
 }

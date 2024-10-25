@@ -10,7 +10,6 @@ public class TrialValidator implements Validator<String>{
     public void validate(String input){
         setTrial(input);
         checkIfTrialIsNegative();
-
     }
     private void setTrial(String trialString){
         checkIfTrialIsInt(trialString);
