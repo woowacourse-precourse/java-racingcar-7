@@ -36,7 +36,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("audi,chevrolet", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("이름은 5자를 초과할 수 없습니다.")
+                        .hasMessage("이름은 1자 이상 5자 이하로 입력해야 합니다.")
         );
     }
 
