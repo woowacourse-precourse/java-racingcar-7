@@ -20,7 +20,7 @@ public class Car {
         return new Car(carName, engine);
     }
 
-    public void Move() {
+    public void move() {
         int value = engine.getAsInt();
         if (value >= MOVE_CRITERIA) {
             position++;
