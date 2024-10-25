@@ -2,6 +2,7 @@ package racingcar.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racingcar.enums.ExceptionMessage.CAR_NOT_FOUND;
 import static racingcar.util.RandomUtil.getRandomNumberInRange;
 
 import java.util.Arrays;
@@ -68,6 +69,41 @@ class CarRaceServiceTest {
         assertEquals("", carsStatus.get("bar"));
     }
 
+    @Test
+    @DisplayName("이동거리가 제일 긴 자동차가 우승자이다.")
+    void should_ReturnSingleWinner_When_OneCarHasLongestDistance() {
+        //given
+        List<String> carNames = List.of("foo");
+        CarRaceService mockCarRaceService = getCarRaceService(carNames);
+        mockCarRaceService.init("foo,bar");
+        mockCarRaceService.moveCars();
+
+        //when
+        List<String> winners = mockCarRaceService.getWinners();
+
+        //then
+        assertEquals(1L, winners.size());
+        assertEquals("foo", winners.get(0));
+    }
+
+    @Test
+    @DisplayName("우승자는 여러 명일 수 있다.")
+    void should_ReturnMultipleWinners_When_CarsHaveSameLongestDistance() {
+        //given
+        List<String> carNames = List.of("foo", "bar");
+        CarRaceService mockCarRaceService = getCarRaceService(carNames);
+        mockCarRaceService.init("foo,bar,baz");
+        mockCarRaceService.moveCars();
+
+        //when
+        List<String> winners = mockCarRaceService.getWinners();
+
+        //then
+        assertEquals(2L, winners.size());
+        assertTrue(winners.contains("foo"));
+        assertTrue(winners.contains("bar"));
+    }
+
     private CarRaceService getCarRaceService(int movingNumber) {
         return new CarRaceService() {
             List<Car> cars;
@@ -93,6 +129,41 @@ class CarRaceServiceTest {
                                 Car::getName,
                                 Car::getMovingDistance
                         ));
+            }
+        };
+    }
+
+    private CarRaceService getCarRaceService(List<String> carNames) {
+        return new CarRaceService() {
+            List<Car> cars;
+
+            @Override
+            public void init(String input) {
+                this.cars = Arrays.stream(input.split(","))
+                        .map(Car::new)
+                        .toList();
+            }
+
+            @Override
+            public void moveCars() {
+                cars.stream()
+                        .filter(car -> carNames.contains(car.getName()))
+                        .forEach(Car::move);
+            }
+
+            @Override
+            public List<String> getWinners() {
+                return cars.stream()
+                        .filter(car -> car.getMovingDistance().length() == getMaxDistance())
+                        .map(Car::getName)
+                        .toList();
+            }
+
+            private int getMaxDistance() {
+                return cars.stream()
+                        .mapToInt(car -> car.getMovingDistance().length())
+                        .max()
+                        .orElseThrow(() -> new IllegalArgumentException(CAR_NOT_FOUND.getMessage()));
             }
         };
     }
