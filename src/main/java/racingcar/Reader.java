@@ -33,10 +33,23 @@ public class Reader {
 
     public static int readNumber() {
         String input = Console.readLine();
-        int number = Integer.parseInt(input);
+        int number;
+
+        try {
+            number = Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("시도 횟수는 정수여야 합니다.");
+        }
+
+        verifyNumber(number);
 
         Console.close();
 
         return number;
+    }
+
+    private static void verifyNumber(int number) {
+        if (number <= 0)
+            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
     }
 }
