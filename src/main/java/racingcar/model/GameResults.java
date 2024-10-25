@@ -45,6 +45,7 @@ public class GameResults {
                         .append(car.getPosition())
                         .append("\n");
             }
+            result.append("\n");
         }
 
 
