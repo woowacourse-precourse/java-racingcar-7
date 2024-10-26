@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Arrays;
 import java.util.List;
 
-public class IOPreprocessor {
+public class IOUtils {
     public static List<String> parsingInput(String input) {
         var splitInput = input.split(",");
         validateInput(input, splitInput);
@@ -20,7 +20,7 @@ public class IOPreprocessor {
         }
     }
 
-    public static String resultPreprocessing(List<RacingCar> biggestDistanceRacingCar) {
+    public static String resultOutput(List<RacingCar> biggestDistanceRacingCar) {
         var racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
         return String.join(", ", racingCarName);
     }

@@ -7,7 +7,7 @@ public class Prompt {
     public static void input(RacingCarTrace racingCarTrace) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         var input = Console.readLine();
-        var parsingInput = IOPreprocessor.parsingInput(input);
+        var parsingInput = IOUtils.parsingInput(input);
         parsingInput.stream().map(RacingCar::new).forEach(racingCarTrace::put);
     }
 
@@ -24,7 +24,7 @@ public class Prompt {
     }
 
     public static void resultPrint(List<RacingCar> biggestDistanceRacingCar) {
-        var result = IOPreprocessor.resultPreprocessing(biggestDistanceRacingCar);
+        var result = IOUtils.resultOutput(biggestDistanceRacingCar);
         System.out.print("최종 우승자 : " + result);
         Console.close();
     }
