@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Constants.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Map;
@@ -11,25 +13,24 @@ public class View {
     }
 
     public void printCarNamePrompt() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(PROMPT_CAR_NAME);
     }
 
     public void printAttemptsPrompt() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(PROMPT_ATTEMPTS);
     }
 
     public void printResultPrompt() {
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(RESULT_HEADER);
     }
 
     public void printStatus(Map<String, StringBuilder> roundResult) {
-        for (String carName : roundResult.keySet()) {
-            System.out.println(carName + " : " + roundResult.get(carName));
-        }
+        roundResult.forEach((carName, status) ->
+                System.out.println(carName + " : " + status)
+        );
     }
 
     public void printWinners(List<String> winners) {
-        System.out.print("최종 우승자 : " + String.join(", ", winners));
+        System.out.print(FINAL_WINNERS_MESSAGE + String.join(", ", winners));
     }
 }

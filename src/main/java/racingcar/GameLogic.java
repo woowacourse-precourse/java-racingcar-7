@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Constants.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.List;
@@ -39,11 +41,12 @@ public class GameLogic {
 
     private void checkInitialized() {
         if(result.isEmpty()) {
-            throw new IllegalArgumentException("결과 Map의 초기 세팅이 이루어지지 않았습니다.");
+            throw new IllegalArgumentException(ERROR_RESULT_MAP_NOT_INITIALIZED);
         }
     }
 
     private int getMaxMoveCount() {
+        // maxMoveCount 없는 경우 처리
         return result.values().stream()
                 .mapToInt(StringBuilder::length)
                 .max()

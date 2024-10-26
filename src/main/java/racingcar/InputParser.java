@@ -1,35 +1,16 @@
 package racingcar;
 
+import static racingcar.Constants.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class InputParser {
-
-    private static final int MAX_CAR_NAME_COUNT = 100;
-    private static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final int MAX_ASCII_CODE = 127;
-
-    private static final String ERROR_NULL_INPUT = "입력값이 null이어서는 안 됩니다.";
-
-    private static final String ERROR_EMPTY_NAME = "자동차 이름은 1자 이상이어야 합니다.";
-    private static final String ERROR_TOO_MANY_CARS = "자동차 이름은 100개 이하로 입력되어야 합니다.";
-    private static final String ERROR_NAME_TOO_LONG = "자동차 이름은 5자를 초과할 수 없습니다.";
-    private static final String ERROR_NON_ASCII = "자동차 이름은 아스키 코드여야 합니다.";
-    private static final String ERROR_BLANK_NAME = "자동차 이름은 공백 문자로만 이루어져 있어서는 안 됩니다.";
-    private static final String ERROR_DUPLICATE_NAMES = "자동차 이름이 중복되어서는 안 됩니다.";
-
-    private static final int MIN_ATTEMPT = 1;
-    private static final int MAX_ATTEMPT = 100;
-
-    private static final String ERROR_NOT_INTEGER_ATTEMPTS = "시도 횟수는 정수여야 합니다.";
-    private static final String ERROR_NEGATIVE_OR_ZERO_ATTEMPTS = "시도 횟수는 양수여야 합니다.";
-    private static final String ERROR_TOO_HIGH_ATTEMPTS = "시도 횟수는 100이하여야 합니다.";
-
     public String[] executeCarNames(String input) {
         checkNull(input);
         checkEndsWithComma(input);
 
-        String[] carNames = input.split(",");
+        String[] carNames = input.split(CAR_NAME_DELIMITER);
         checkCount(carNames);
         validateEachCarName(carNames);
         checkDuplicate(carNames);
@@ -50,7 +31,7 @@ public class InputParser {
     }
 
     private void checkEndsWithComma(String input) {
-        if (input.endsWith(",")) {
+        if (input.endsWith(CAR_NAME_DELIMITER)) {
             throw new IllegalArgumentException(ERROR_EMPTY_NAME);
         }
     }
