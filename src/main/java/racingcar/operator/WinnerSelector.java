@@ -5,12 +5,12 @@ import java.util.List;
 import racingcar.user.UserObject;
 import racingcar.view.OutputView;
 
-public class FinalScore {
+public class WinnerSelector {
     List<UserObject> topScores = new ArrayList<>();
     OutputView output = new OutputView();
     int maxScore = Integer.MIN_VALUE;
 
-    public void totalScore(UserObject[] users) {
+    public void selectWinner(UserObject[] users) {
 
         for (UserObject user : users) {
             if (user.scoreNum > maxScore) {
@@ -23,18 +23,20 @@ public class FinalScore {
                 topScores.add(user);
             }
         }
-        Winner();
+        extractWinner();
     }
 
-    private void Winner() {
-        output.PrintWinnerSentence();
+    private void extractWinner() {
+        output.printWinnerSentence();
         int n = topScores.size();
         for (UserObject user : topScores) {
             n--;
-            output.PrintWinner(user.name);
+            output.printWinner(user.name);
             if (n != 0) {
-                output.PrintRest();
+                output.printWinner(user.name);
+                break;
             }
+            output.printRest();
         }
     }
 }
