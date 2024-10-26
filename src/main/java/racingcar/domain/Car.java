@@ -10,14 +10,17 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        validNameLength(name);
+        validName(name);
         this.name = name;
         this.position = 0;
     }
 
-    private void validNameLength(String name) {
+    private void validName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하로 등록 해야합니다.");
+        }
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("앞 뒤 공백 제외 1글자 이상, 5글자 이하의 자동차 이름을 입력해주세요.");
         }
     }
 

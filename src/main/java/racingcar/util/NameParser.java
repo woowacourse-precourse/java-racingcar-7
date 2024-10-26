@@ -7,9 +7,12 @@ import java.util.List;
 public class NameParser {
 
     public List<String> carNameParse(final String text) {
+        List<String> result = new ArrayList<>();
 
         String[] carNames = text.split(",");
-
-        return new ArrayList<>(Arrays.asList(carNames));
+        for (String carName : carNames) {
+            result.add(carName.trim());
+        }
+        return result;
     }
 }

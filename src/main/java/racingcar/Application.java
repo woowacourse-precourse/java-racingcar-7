@@ -21,6 +21,7 @@ public class Application {
         int tryCount = inputView.tryCount();
         RandomDigitGenerator randomDigitGenerator = new RandomDigitGenerator();
 
+        // 이름, 시도할 횟수 입력 후 controller 생성시 이름 예외처리 됨 리팩토링 필요
         RacingGameController controller = new RacingGameController(carNames, tryCount, randomDigitGenerator);
         controller.playGame();
         List<String> winner = controller.getWinner();
