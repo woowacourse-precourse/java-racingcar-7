@@ -3,6 +3,7 @@ package racingcar.model;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.Direction;
 
 class CarTest {
 
@@ -23,6 +24,14 @@ class CarTest {
         Assertions.assertThatThrownBy(() -> {
             car.splitByDelimiter("forky,eundeang");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차는 전진 상태일때 자신의 이동 현황에 -를 추가한다.")
+    void 전진_상태_일때_저장값_검증_테스트(){
+        Car car = new Car("testCar");
+        Assertions.assertThat(car.getMoveStatus(Direction.FORWARD))
+                .isEqualTo("-");
     }
 
 }
