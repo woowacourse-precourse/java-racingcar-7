@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RaceAttemptNumberInputTest {
 
     @Test
-    @DisplayName("정상적인 시도 횟수를 입력")
+    @DisplayName("정상적인 시도 횟수를 입력 테스트")
     void 정상적인_시도_횟수를_입력() {
         // given
         String input = "5";
@@ -19,7 +19,7 @@ public class RaceAttemptNumberInputTest {
     }
 
     @Test
-    @DisplayName("입력된 시도 횟수가 0이거나 음수일 경우 예외 발생")
+    @DisplayName("입력된 시도 횟수가 0이거나 음수일 경우 예외 발생 테스트")
     void 입력된_시도_횟수가_0이거나_음수일_경우_예외_발생() {
         // given
         String input = "-1";
@@ -30,7 +30,7 @@ public class RaceAttemptNumberInputTest {
     }
 
     @Test
-    @DisplayName("입력된 시도 횟수가 숫자가 아닐 경우 예외 발생")
+    @DisplayName("입력된 시도 횟수가 숫자가 아닐 경우 예외 발생 테스트")
     void 입력된_시도_횟수가_숫자가_아닐_경우_예외_발생() {
         // given
         String input = "abc";

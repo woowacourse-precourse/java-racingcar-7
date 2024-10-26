@@ -40,7 +40,7 @@ public class RaceTest {
     }
 
     @Test
-    @DisplayName("경주할 자동차가 없을 경우 예외 발생")
+    @DisplayName("경주할 자동차가 없을 경우 예외 발생 테스트")
     void 경주할_자동차가_없을_경우_예외_발생() {
         // given
         String[] carNames = {}; // 자동차가 없음
