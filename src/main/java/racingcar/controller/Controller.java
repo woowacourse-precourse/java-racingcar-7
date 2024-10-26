@@ -3,6 +3,7 @@ package racingcar.controller;
 import static java.lang.Integer.parseInt;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Racing;
@@ -47,5 +48,14 @@ public class Controller {
             outputView.printRaceResult(car.getName(), advanceMarkers);
         }
         outputView.printBlankLine();
+    }
+    
+    private void announceOfWinners(Cars cars) {
+        List<Car> allCars = cars.getCars();
+        int maxAdvanceMarkersCount = cars.getMaxAdvanceMarkerCount();
+
+        List<Car> winners = racing.findWinners(allCars, maxAdvanceMarkersCount);
+        String winnerNames = textFormatter.getWinnerNames(winners);
+        outputView.printWinners(winnerNames);
     }
 }
