@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 import racingcar.util.NumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 
