@@ -5,12 +5,12 @@ import java.util.List;
 public class Race {
     private final Round round;
     private final List<Car> cars;
-    private final GenerateNumberStrategy numberStrategy;
+    private final MoveCondition moveCondition;
 
-    public Race(Round round, List<Car> cars, GenerateNumberStrategy numberStrategy) {
+    public Race(Round round, List<Car> cars, MoveCondition moveCondition) {
         this.round = round;
         this.cars = cars;
-        this.numberStrategy = numberStrategy;
+        this.moveCondition = moveCondition;
     }
 
     public List<Car> proceed() {
@@ -26,9 +26,13 @@ public class Race {
     }
 
     private void moveAllCars() {
-        cars.forEach(car ->
-                car.move(numberStrategy.generate())
-        );
+        cars.forEach(this::moveCar);
+    }
+
+    private void moveCar(Car car) {
+        if (moveCondition.isSatisfied()) {
+            car.move();
+        }
     }
 
     public List<Car> getWinner() {

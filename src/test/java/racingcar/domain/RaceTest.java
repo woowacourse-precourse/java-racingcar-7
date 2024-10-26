@@ -17,9 +17,9 @@ class RaceTest {
         List<Car> cars = List.of(car1, car2, car3);
 
         AtomicInteger i = new AtomicInteger();
-        GenerateNumberStrategy strategy = () -> i.getAndIncrement() % 3 == 0 ? 4 : 1;
+        MoveCondition condition = () -> i.getAndIncrement() % 3 == 0 ? true : false;
         Round round = new Round(1);
-        Race race = new Race(round, cars, strategy);
+        Race race = new Race(round, cars, condition);
 
         // when
         race.proceed();
@@ -39,8 +39,8 @@ class RaceTest {
         List<Car> cars = List.of(car1, car2, car3);
         Round round = new Round(1);
         AtomicInteger i = new AtomicInteger();
-        GenerateNumberStrategy strategy = () -> i.getAndIncrement() % 3 < 2 ? 4 : 1;
-        Race race = new Race(round, cars, strategy);
+        MoveCondition condition = () -> i.getAndIncrement() % 3 < 2 ? true : false;
+        Race race = new Race(round, cars, condition);
 
         // when
         race.proceed();
