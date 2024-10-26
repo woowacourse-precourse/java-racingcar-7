@@ -8,6 +8,7 @@ public class Car {
     private final String name;
     private int position;
 
+    /* 기본 생성자 */
     public Car(final String name) {
         this.numberGenerator = new RandomNumberGenerator();
         this.name = name;
