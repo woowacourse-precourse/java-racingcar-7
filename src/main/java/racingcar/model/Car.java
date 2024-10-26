@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.util.RandomNumberGenerator;
+import racingcar.util.RandomNumberGeneratorImpl;
 
 /**
  * @author : jiffyin7@gmail.com
@@ -9,10 +10,12 @@ import racingcar.util.RandomNumberGenerator;
 public class Car implements Comparable<Car>{
   private String name;
   private int position;
+  private RandomNumberGenerator randomNumberGenerator;
 
   private Car(String carName) {
     this.name = carName;
     this.position = 0;
+    randomNumberGenerator = new RandomNumberGeneratorImpl();
   }
 
   public static Car from(String carName) {
@@ -27,7 +30,7 @@ public class Car implements Comparable<Car>{
     return this.position;
   }
 
-  private boolean canMove(RandomNumberGenerator randomNumberGenerator) {
+  private boolean canMove() {
     int randomNumber = randomNumberGenerator.generate();
     return randomNumber >= 4;
   }
@@ -36,10 +39,12 @@ public class Car implements Comparable<Car>{
     this.position++;
   }
 
-  public void moveOrStay(RandomNumberGenerator randomNumberGenerator) {
-    if (canMove(randomNumberGenerator)){
+  public HasCarMoved moveOrStay() {
+    boolean hasMoved = canMove();
+    if (hasMoved){
       move();
     }
+    return HasCarMoved.from(hasMoved);
   }
 
   @Override
