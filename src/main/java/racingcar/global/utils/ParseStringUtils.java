@@ -18,13 +18,19 @@ public class ParseStringUtils {
         String[] carNamesArray = carNamesInput.split(",");
         List<String> carNamesList = new ArrayList<>();
         for (String name : carNamesArray) {
-            String trimmedName = name.trim();
-            if (trimmedName.isBlank()) {
-                throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
-            }
-            carNamesList.add(trimmedName);
+            validateAndAddName(carNamesList, name);
         }
 
         return carNamesList;
     }
+
+    private static void validateAndAddName(List<String> carNamesList, String name) {
+        String trimmedName = name.trim();
+        if (trimmedName.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
+        }
+        carNamesList.add(trimmedName);
+    }
+
+
 }
