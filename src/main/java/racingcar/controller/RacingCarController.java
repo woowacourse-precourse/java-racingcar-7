@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
     private final InputView input;
+    private final OutputView output;
 
-    public RacingCarController(InputView input){
+    public RacingCarController(InputView input, OutputView output){
         this.input = input;
+        this.output = output;
     }
 
     public void proceed(){
@@ -18,8 +21,9 @@ public class RacingCarController {
         Cars.register(separateName(carNames));
         int tryNumber = Integer.parseInt(input.inputTryNumber());
         for(int i=0;i<tryNumber;i++){
-            Cars.moveForward(); // output 하기
+            output.printResult(Cars.moveForward());
         }
+        //winner 찾아서 출력
     }
 
     public List<String> separateName(String carNames){
