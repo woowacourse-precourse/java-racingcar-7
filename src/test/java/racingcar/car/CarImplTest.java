@@ -3,6 +3,8 @@ package racingcar.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +17,15 @@ class CarImplTest {
         CarImpl car = new CarImpl(name);
 
         Assertions.assertThat(car.getCarName()).isEqualTo(name);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"5자 이상 이름","","   "})
+    @DisplayName("자동차 이름은 1자 이상 5자 이하이다.")
+    void 자동차_이름_1자_이상_5자_이하_TEST(final String name){
+        Assertions.assertThatThrownBy(() -> new CarImpl(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
     }
 
 }
