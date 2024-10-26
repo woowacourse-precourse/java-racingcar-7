@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
-    @DisplayName("car 생성")
+    @DisplayName("car 객체 생성")
     @Nested
     class CarNameTest {
         @DisplayName("car 생성 성공")
@@ -21,7 +21,7 @@ public class CarTest {
             //when
             Car car = new Car(carName);
             //Then
-            assertThat(car.getName).isEqualTo("name");
+            assertThat(car.getName()).isEqualTo("name");
 
         }
 
