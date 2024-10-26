@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.CAR_NAME_LENGTH;
 
 class CarImplTest {
 
@@ -25,7 +26,7 @@ class CarImplTest {
     void 자동차_이름_1자_이상_5자_이하_TEST(final String name){
         Assertions.assertThatThrownBy(() -> new CarImpl(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+                .hasMessage(CAR_NAME_LENGTH);
     }
 
     @Test

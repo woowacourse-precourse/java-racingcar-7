@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static racingcar.exception.ExceptionMessage.CAR_NAME_NOT_DUPLICATION;
 import static racingcar.utils.InputSplitter.inputSplit;
 
 public class RacingGameImpl implements RacingGame{
@@ -59,7 +60,7 @@ public class RacingGameImpl implements RacingGame{
                 .anyMatch(racingCar -> racingCar.getCarName().equals(carName));
 
         if (isDuplicate) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다. 서로 다른 이름을 입력해주세요.");
+            throw new IllegalArgumentException(CAR_NAME_NOT_DUPLICATION);
         }
     }
 }

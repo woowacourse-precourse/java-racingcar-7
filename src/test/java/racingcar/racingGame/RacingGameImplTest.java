@@ -8,6 +8,7 @@ import racingcar.car.Car;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.exception.ExceptionMessage.CAR_NAME_NOT_DUPLICATION;
 
 class RacingGameImplTest {
 
@@ -27,7 +28,7 @@ class RacingGameImplTest {
         String userInput = "sumin,sumin,sumin";
         Assertions.assertThatThrownBy(() -> new RacingGameImpl(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 중복될 수 없습니다. 서로 다른 이름을 입력해주세요.");
+                .hasMessage(CAR_NAME_NOT_DUPLICATION);
     }
 
     @Test

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static racingcar.exception.ExceptionMessage.*;
 import static racingcar.utils.InputSplitter.inputSplit;
 import static racingcar.utils.InputValidator.*;
 import static racingcar.utils.RandomNumberGenerator.generateRandomNumbersForSize;
@@ -30,7 +31,7 @@ public class UtilsTest {
     void 빈_공백_자동차_이름_불가_TEST(final String carName){
         Assertions.assertThatThrownBy(() -> inputCarsNameValidation(carName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("빈 공백은 자동차 이름이 될 수 없습니다. 자동차 이름을 입력해주세요.");
+                .hasMessage(INPUT_NOT_BLANK);
     }
 
     @ParameterizedTest
@@ -39,7 +40,7 @@ public class UtilsTest {
     void 시도_횟수_양의_정수_TEST(final String carName){
         Assertions.assertThatThrownBy(() -> tryNumberValidation(carName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도할 횟수는 양의 정수입니다. 양의 정수를 입력해 주세요.");
+                .hasMessage(TRY_NUMBER_MUST_POSITIVE_INTEGER);
     }
 
     @ParameterizedTest

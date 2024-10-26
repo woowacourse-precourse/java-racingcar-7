@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import static racingcar.exception.ExceptionMessage.CAR_NAME_LENGTH;
+
 public class CarImpl implements Car{
     private final String carName;
     private int position;
@@ -29,7 +31,7 @@ public class CarImpl implements Car{
 
     private void carNameValidation() {
         if (carName.length() > 5 || carName.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(CAR_NAME_LENGTH);
         }
     }
 }
