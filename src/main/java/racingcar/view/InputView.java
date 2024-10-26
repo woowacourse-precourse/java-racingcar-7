@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.operator.Game;
+import racingcar.operator.GameEngine;
 import racingcar.user.SettingGameUser;
 
 public class InputView {
@@ -15,8 +15,8 @@ public class InputView {
         trynum = Integer.parseInt(Console.readLine());
         result = input.split(",");
         SettingGameUser settingGameUser = new SettingGameUser(result);
-        Game game = new Game();
-        game.GameProgress();
+        GameEngine game = new GameEngine();
+        game.runGame();
 
     }
 }
