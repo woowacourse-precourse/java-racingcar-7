@@ -11,7 +11,7 @@ import racingcar.io.page.SimpleTextPage;
 
 public class Race {
 
-    private List<Vehicle> vehicles;
+    private List<? extends Vehicle> vehicles;
 
     private Map<Vehicle, Integer> positions;
 
@@ -21,7 +21,7 @@ public class Race {
 
     private Race() {}
 
-    public Race(List<Vehicle> vehicles, int round) {
+    public Race(List<? extends Vehicle> vehicles, int round) {
         validateVehicleSize(vehicles);
         validateRound(round);
 
@@ -32,7 +32,7 @@ public class Race {
         this.winners = new ArrayList<>();
     }
 
-    private static void validateVehicleSize(List<Vehicle> vehicles) {
+    private static void validateVehicleSize(List<? extends Vehicle> vehicles) {
         if (vehicles.size() > 10) {
             throw new IllegalArgumentException("자동차는 최대 10대까지 생성할 수 있습니다.");
         }

@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.io.page.IntegerReaderPage;
 import racingcar.io.page.ReaderPage;
@@ -19,7 +18,7 @@ public class Application {
 
         List<String> carNames = parseCarNames(carNamesString);
 
-        List<Vehicle> vehicles = mapToVehicles(carNames);
+        List<? extends Vehicle> vehicles = mapToVehicles(carNames);
 
         startRace(vehicles, round);
     }
@@ -45,13 +44,11 @@ public class Application {
         return parser.parse(input);
     }
 
-    private static List<Vehicle> mapToVehicles(List<String> carNames) {
-        List<Vehicle> vehicles = new ArrayList<>();
-        carNames.forEach((it) -> vehicles.add(new Car(it)));
-        return vehicles;
+    private static List<? extends Vehicle> mapToVehicles(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
     }
 
-    private static void startRace(List<Vehicle> vehicles, int round) {
+    private static void startRace(List<? extends Vehicle> vehicles, int round) {
         Race race = new Race(vehicles, round);
         race.start();
     }
