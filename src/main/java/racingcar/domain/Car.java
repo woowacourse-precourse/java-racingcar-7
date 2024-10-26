@@ -18,4 +18,12 @@ public class Car {
             position++;
         }
     }
+
+    public CarName getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

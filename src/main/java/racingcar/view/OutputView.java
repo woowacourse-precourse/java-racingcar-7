@@ -9,4 +9,17 @@ public class OutputView {
     public void getRacingChance() {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    public void raceGuide() {
+        separateLine();
+        System.out.println("실행 결과");
+    }
+
+    public void raceResult(String name, int chance) {
+        System.out.println(name + " : " + "-".repeat(chance));
+    }
+
+    public void separateLine() {
+        System.out.println();
+    }
 }
