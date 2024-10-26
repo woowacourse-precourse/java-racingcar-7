@@ -3,9 +3,13 @@ package racingcar;
 public class Car {
     private int forwardNumber = 0;
     private String carName;
-    
+
     public void movingForward() {
         this.forwardNumber++;
+        printMovingResult(this.forwardNumber);
+    }
+
+    public void stop() {
         printMovingResult(this.forwardNumber);
     }
 
