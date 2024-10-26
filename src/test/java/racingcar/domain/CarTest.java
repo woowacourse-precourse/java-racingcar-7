@@ -10,7 +10,8 @@ public class CarTest {
 
     @Test
     void Car_객체_생성() {
-        assertThat(CAR_POBI).isEqualTo(new Car("pobi", 0));
+        Car car = new Car("pobi", 0);
+        assertThat(car).isEqualTo(new Car("pobi", 0));
     }
 
     @Test
