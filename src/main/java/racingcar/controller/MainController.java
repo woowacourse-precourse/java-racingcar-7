@@ -23,7 +23,6 @@ public class MainController {
 
         Output.printExecutionResultsMessage();
         runRace();
-
         printWinningCarResult(racingCarScoreMachine);
     }
 
@@ -53,11 +52,11 @@ public class MainController {
     private void runRace() {
         while (!racingCarScoreMachine.isOverRace()) {
             racingCarScoreMachine.runRace();
-            printMiddleScore();
+            printCarsMiddleDistance();
         }
     }
 
-    private void printMiddleScore() {
+    private void printCarsMiddleDistance() {
         Output.printIntermediateScore(racingCarScoreMachine.getCarsNameAndDistance());
     }
 
