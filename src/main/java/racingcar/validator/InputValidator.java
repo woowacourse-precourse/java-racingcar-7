@@ -19,7 +19,7 @@ public class InputValidator {
     }
 
     public void validateAttempts(int attempts) {
-        if (attempts <= MIN_ATTEMPTS) {
+        if (attempts < MIN_ATTEMPTS) {
             throw new IllegalArgumentException("시도할 횟수는 양수여야 합니다.");
         }
     }
