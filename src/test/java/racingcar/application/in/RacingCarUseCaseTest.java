@@ -106,7 +106,7 @@ class RacingCarUseCaseTest {
     @Test
     void 자동차_이름이_6자_이상인_경우_실패한다() {
         // Given
-        String carName = "name_is_longer_than_6";
+        String carName = "carsix";
 
         // When
         ThrowingCallable throwing = () -> Car.of(carName);
@@ -137,7 +137,7 @@ class RacingCarUseCaseTest {
                 Car.of("woni"),
                 Car.of("jun")
         );
-        int tryCount = 0;
+        int tryCount = -3;
 
         // When
         ThrowingCallable throwing = () -> racingCarUseCase.startRacing(cars, tryCount);
