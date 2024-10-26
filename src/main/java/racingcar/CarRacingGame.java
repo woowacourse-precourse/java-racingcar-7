@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CarRacingGame {
     private List<Car> carList;
     private int numberOfAttempts;
-    private final String carNameRegex = "^[ㄱ-ㅎ가-힣a-zA-Z]{1,5}";
+    private final String carNameRegex = "^[ㄱ-ㅎ가-힣a-zA-Z0-9]{1,5}";
     private final Pattern CAR_NAME_PATTERN = Pattern.compile(carNameRegex);
 
     public CarRacingGame() {
