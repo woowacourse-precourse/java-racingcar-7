@@ -14,17 +14,18 @@ public class Round {
     }
 
     private void validate(String Input) {
-        if (isNumeric(Input)) {
+        if (!isNumeric(Input)) {
+            throw new IllegalArgumentException("횟수는 숫자만 가능합니다.");
+        } else {
             int parsedInput = Integer.parseInt(Input);
             if (parsedInput <= 0 || parsedInput > 80) {
                 throw new IllegalArgumentException("횟수는 1 이상 80 이하의 숫자만 가능합니다.");
             }
         }
-        throw new IllegalArgumentException("횟수는 숫자만 가능합니다.");
     }
 
     private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) > 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public Round(String moveCountInput, List<Car> cars) {
