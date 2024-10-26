@@ -21,6 +21,7 @@ public class RacingGame {
             updateProgress(cars);
         }
         List<String> winners = cars.decideWinner();
+        outputView.printWinner(winners);
     }
 
     public Cars makeCars(String initialInput) {
