@@ -6,7 +6,7 @@ public class Race {
 
     public static void startRacing() {
         for (Car car : CarRepository.cars) {
-            car.startRacing(CarRepository.repeatCount);
+            car.startRacing();
         }
     }
 

@@ -3,6 +3,7 @@ package util;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
+import repository.CarRepository;
 
 public class Car {
     private String name;
@@ -48,8 +49,8 @@ public class Car {
         return pickNumberInRange(0, 9) >= 4;
     }
 
-    public void startRacing(int repeatCount) {
-        for (int i = 0; i < repeatCount; i++) {
+    public void startRacing() {
+        for (int i = 0; i < CarRepository.repeatCount; i++) {
             moveForwardRandomly();
         }
     }
