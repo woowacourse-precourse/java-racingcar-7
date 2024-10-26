@@ -17,8 +17,10 @@ public class Application {
         String repeatRaceNum = Console.readLine();
         int repeatRaceIntNum = Integer.parseInt(repeatRaceNum);
         System.out.println("시도할 횟수는 몇 회인가요? : " + repeatRaceIntNum);
-
         String[] carNames = splitCarsName(inputStr);
+        // Check Error
+        checkCarNameError(carNames);
+
         int[] carProgressArr = new int[carNames.length];
         for (int i = 0; i < repeatRaceIntNum; i++) {
             for (int car_ind = 0; car_ind < carNames.length; car_ind++) {
@@ -33,6 +35,13 @@ public class Application {
         String winners = getWinners(carNames, carProgressArr);
         System.out.println("최종 우승자 : " + winners);
 
+    }
+    public static void checkCarNameError(String[] carNameArr) {
+        for (String carName : carNameArr) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public static String[] splitCarsName(String inputStr) {
