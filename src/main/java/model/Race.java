@@ -37,3 +37,14 @@ public class Race {
         }
         System.out.println();
     }
+
+    private List<String> getWinner(){
+       List<String> winners = new ArrayList<>();
+       int winnerPosition = cars.stream().mapToInt(Car::getPositon).max().orElse(0);
+       for (Car car: cars) {
+           if(car.getPositon() == winnerPosition) {
+               winners.add(car.toString());
+           }
+       }
+       return winners;
+    }
