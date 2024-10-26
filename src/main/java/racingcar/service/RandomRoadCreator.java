@@ -1,15 +1,13 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.entity.Road;
 
-import java.util.Random;
-
 public class RandomRoadCreator implements RoadCreator {
-    private Random random = new Random();
 
     @Override
     public void addRandomRoad(Road road){
-        int addLength = random.nextInt(10);
+        int addLength = Randoms.pickNumberInRange(0, 9);
         road.addRoad(addLength);
     }
 }
