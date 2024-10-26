@@ -7,6 +7,8 @@ public class Controller {
     public void launchRace() {
 
         Cars cars = initRaceCar();
+        int tryCount = View.displayTryCountInputPrompt();
+        System.out.println(tryCount);
 
 
     }
