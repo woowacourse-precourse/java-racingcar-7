@@ -8,7 +8,6 @@ public class Parser {
             throw new IllegalArgumentException();
         }
         String[] cars = input.split(",");
-
         return List.of(cars);
     }
 }
