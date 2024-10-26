@@ -100,6 +100,27 @@ class ApplicationTest extends NsTest {
         assertArrayEquals(new String[]{"","pobi", "woni", "","",""}, result);
     }
 
+    @Test
+    public void 자동차_이름이_5자_초과인_경우_테스트(){
+        String[] carNamesList = {"pobiii","","jun"};
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCarNames(carNamesList);
+        });
+        assertEquals("자동차 이름은 5자 이하이어야 합니다.", exception.getMessage());
+    }
+
+
+    @Test
+    public void 자동차_이름이_공백인_경우_테스트(){
+        String[] carNamesList = {"pobi","","jun"};
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Application.validateCarNames(carNamesList);
+        });
+        assertEquals("자동차 이름이 유효하지 않습니다.", exception.getMessage());
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
