@@ -16,9 +16,6 @@ public class Application {
         String[] nameList = names.split(",");
         List<User> users = new ArrayList<>();
         for (String name : nameList) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
             User user = createUser(name);
             users.add(user);
         }
