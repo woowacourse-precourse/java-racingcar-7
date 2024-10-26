@@ -34,8 +34,7 @@ public class Race {
             if (currentCar.getProgress() > winnerList.get(0).getProgress()) {
                 winnerList.clear();
                 winnerList.add(currentCar);
-            }
-            if (currentCar.getProgress() == winnerList.get(0).getProgress()) {
+            } else if (currentCar.getProgress() == winnerList.get(0).getProgress()) {
                 winnerList.add(currentCar);
             }
         }
