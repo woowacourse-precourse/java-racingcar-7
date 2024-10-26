@@ -7,6 +7,12 @@ public class Game {
     List<RacingCar> racingCarList;
     int round;
 
+    public Game() {
+        List<String> carList = Utils.enterCarList();
+        this.racingCarList = generateRacingCarList(carList);
+        this.round = Utils.enterRound();
+    }
+
     public Game(List<String> carList, int round) {
         this.racingCarList = generateRacingCarList(carList);
         this.round = round;
