@@ -22,4 +22,12 @@ public class Car {
             position++;
         }
     }
+
+    public String getCurrentStatus() {
+        return String.format("%s : %s\n", name, convertDigitPositionToVisualizedPosition());
+    }
+
+    private String convertDigitPositionToVisualizedPosition() {
+        return POSITION_INDICATOR.repeat(position);
+    }
 }

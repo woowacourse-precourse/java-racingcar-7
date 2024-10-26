@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.enums.IOMessages;
+
 public class OutputView {
     private static OutputView instance;
 
@@ -11,5 +13,13 @@ public class OutputView {
             instance = new OutputView();
         }
         return instance;
+    }
+
+    public void roundResultHeader() {
+        System.out.println(IOMessages.ROUND_RESULT_HEADER.getMsg());
+    }
+
+    public void printRoundResult(String currentStatus) {
+        System.out.println(currentStatus);
     }
 }
