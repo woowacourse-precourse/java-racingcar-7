@@ -23,11 +23,13 @@ public class CarRacing {
 
     public void racing(){
 
+        System.out.println("실행결과");
         for(int i = 0; i < step; i++){
             for(Car car : carList){
                 roadCreator.addRandomRoad(car.getRoad());
                 printRoad(car);
             }
+            System.out.println();
         }
         winnerPrinter.printWinner(carList);
     }

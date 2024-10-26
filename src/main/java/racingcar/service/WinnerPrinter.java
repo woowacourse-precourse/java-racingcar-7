@@ -9,8 +9,8 @@ public class WinnerPrinter {
 
     public void printWinner(List<Car> carList) {
         int maxLength = 0;
+        StringBuilder winnerNames = new StringBuilder();
 
-        // 최고 길이를 가진 자동차를 저장할 리스트
         List<Car> winners = new ArrayList<>();
 
         // 모든 자동차의 도로 길이를 비교
@@ -29,8 +29,12 @@ public class WinnerPrinter {
 
         // 우승자 출력
         System.out.print("Winner(s):");
-        for (Car winner : winners) {
-            System.out.println(winner.getName()); // 각 우승자의 이름 출력
+        for (int i = 0; i < winners.size(); i++) {
+            winnerNames.append(winners.get(i).getName());
+            if (i < winners.size() - 1) { // 마지막 이름이 아닐 경우에만 쉼표 추가
+                winnerNames.append(", ");
+            }
         }
+        System.out.println(winnerNames); // 모든 우승자 이름 출력
     }
 }
