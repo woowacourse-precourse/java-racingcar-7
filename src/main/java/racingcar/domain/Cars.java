@@ -24,4 +24,12 @@ public class Cars {
             throw new IllegalArgumentException("중복된 자동차 이름은 등록이 불가능합니다.");
         }
     }
+
+    public int size() {
+        return cars.size();
+    }
+
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
 }

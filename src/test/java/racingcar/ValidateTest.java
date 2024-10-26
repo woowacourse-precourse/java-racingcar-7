@@ -1,12 +1,10 @@
 package racingcar;
 
-import java.util.List;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.controller.RacingGame;
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Rounds;
 
 class ValidateTest {
@@ -18,7 +16,7 @@ class ValidateTest {
     @ValueSource(strings = {"pobi,javajigi,minju", "pobi,pobi,minju", "pobi,,minju"})
     void 이름_예외_테스트(String input) {
         Assertions.assertThatThrownBy(() -> {
-            List<Car> cars = racingGame.makeCars(input);
+            Cars cars = racingGame.makeCars(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
