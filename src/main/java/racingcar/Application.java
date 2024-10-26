@@ -12,8 +12,10 @@ public class Application {
         List<Car> cars = createCars(carNames);
         int tryCount = inputTryCount();
 
-        RacingGame game = new RacingGame(cars, tryCount);
+        RacingGameView view = new RacingGameView();
+        RacingGame game = new RacingGame(cars, tryCount, view);
         game.play();
+        view.printWinners(game.getWinners());
     }
 
     private static List<String> inputCarNames() {
