@@ -6,10 +6,10 @@ import racingcar.domain.Car;
 
 public class Output {
 
-	public static void printCurrentCarsStatus(List<Car> cars) {
+	public static void printTotalCarCurrentStatus(List<Car> cars) {
 		System.out.println("실행 결과");
 
-		cars.forEach(Output::printCurrentCarStatus);
+		cars.forEach(Output::printCarCurrentStatus);
 		System.out.println();
 	}
 
@@ -20,7 +20,7 @@ public class Output {
 		System.out.println("최종 우승자" + winnerString);
 	}
 
-	private static void printCurrentCarStatus(Car car) {
+	private static void printCarCurrentStatus(Car car) {
 		StringBuilder positionString = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); i++) {
 			positionString.append("-");
