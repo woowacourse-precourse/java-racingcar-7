@@ -1,12 +1,11 @@
 package racingcar.view;
 
-import org.junit.jupiter.api.BeforeEach;
+import camp.nextstep.edu.missionutils.Console;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-
-
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -15,6 +14,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class InputViewTest {
 
     private InputView inputView = new InputView();
+
+    @AfterEach
+    void set() {
+        Console.close();
+    }
 
     @Test
     @DisplayName("inputCarNames 테스트")
