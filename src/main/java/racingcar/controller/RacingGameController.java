@@ -47,6 +47,7 @@ public class RacingGameController {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
     
     private void printWinners(List<Car> winners){
