@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.Game;
 import racingcar.util.Convertor;
 import racingcar.view.View;
@@ -13,6 +14,7 @@ public class Controller {
 
     private final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final String ROUND_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private final String FINAL_WINNER_MESSAGE = "최종 우승자 : ";
 
     private Controller(View view) {
         this.view = view;
@@ -32,12 +34,26 @@ public class Controller {
         while (!game.isGameEnd()) {
             game.play();
         }
+        printWinner(game.findWinners());
     }
 
     private void validateRound(int round) {
         if (round < 1) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void printWinner(List<String> winners) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(FINAL_WINNER_MESSAGE);
+        for (int idx = 0; idx < winners.size(); idx++) {
+            if (idx == winners.size() - 1) {
+                sb.append(winners.get(idx));
+                continue;
+            }
+            sb.append(winners.get(idx)).append(", ");
+        }
+        view.print(sb.toString());
     }
 
     private String inputRound() {

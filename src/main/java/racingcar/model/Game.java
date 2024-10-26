@@ -20,6 +20,10 @@ public class Game {
         round--;
     }
 
+    public List<String> findWinners() {
+        return cars.findWinner();
+    }
+
     public boolean isGameEnd() {
         if (isRoundZero()) {
             return true;
