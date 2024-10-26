@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    String name;
+    public String name;
     private final StringBuilder distance;
 
     public Car(String name) {
@@ -14,6 +14,13 @@ public class Car {
     }
 
     public String getCurrentDistance() {
-        return distance.toString();
+        return name + " : " + distance.toString();
+    }
+
+    public int getFinalDistance() {
+        if(distance.isEmpty()) {
+            return 0;
+        }
+        return distance.length();
     }
 }
