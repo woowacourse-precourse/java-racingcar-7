@@ -13,7 +13,7 @@ public class Validator {
         }
     }
 
-    void validateCarNameLength(List<String> carNames, int standard) {
+    void validateCarNamesLength(List<String> carNames, int standard) {
         for (String carName : carNames) {
             if (carName.length() > standard)
                 throw new IllegalArgumentException("자동차 이름은 기준을 넘길 수 없습니다.");
