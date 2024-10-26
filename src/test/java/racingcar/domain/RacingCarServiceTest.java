@@ -23,7 +23,7 @@ class RacingCarServiceTest {
         car3.moveForward();
 
         RacingCarService racingCarService = new RacingCarService(List.of(car1,car2,car3),0);
-        racingCarService.findWinner();
+        racingCarService.findWinners();
 
         assertThat(racingCarService.getWinners()).isEqualTo(List.of(car1,car3));
     }

@@ -26,9 +26,28 @@ class RacingCarOutputTest {
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
 
-        racingCarOutput.printCurrentScore(List.of(car1,car2));
+        racingCarOutput.printCurrentScore(List.of(car1, car2));
         assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("Car1 : --" + System.lineSeparator() + "Car2 : -" + System.lineSeparator().repeat(2));
+                .isEqualTo("Car1 : --" + System.lineSeparator() + "Car2 : -"
+                        + System.lineSeparator().repeat(2));
+    }
+
+    @Test
+    void 우승자_출력_테스트() {
+        RacingCar car1 = new RacingCar("Car1");
+        car1.moveForward();
+        car1.moveForward();
+
+        RacingCar car2 = new RacingCar("Car2");
+        car2.moveForward();
+        car2.moveForward();
+
+        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+
+        racingCarOutput.printWinners(List.of(car1, car2));
+        assertThat(byteArrayOutputStream.toString())
+                .isEqualTo("최종 우승자 : Car1, Car2");
     }
 
 }

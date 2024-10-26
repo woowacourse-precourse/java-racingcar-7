@@ -34,10 +34,11 @@ public class RacingCarService {
             moveRacingCars();
             racingCarOutput.printCurrentScore(this.cars);
         }
-        findWinner();
+        findWinners();
+        racingCarOutput.printWinners(this.winners);
     }
 
-    public void findWinner() {
+    public void findWinners() {
         winners.clear();
         for (RacingCar car : cars) {
             if (winners.isEmpty()) {
