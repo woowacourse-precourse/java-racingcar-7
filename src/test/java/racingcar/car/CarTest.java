@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
@@ -26,6 +27,28 @@ class CarTest {
     @AfterEach
     void rollback() {
         System.setOut(standardOut);
+    }
+
+    @DisplayName("차의 이름으로 빈 문자열이 들어올 수 없다.")
+    @Test
+    void emptyStringName() {
+        //given
+        String name = "";
+
+        assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름으로 빈 문자열이 들어올 수 없습니다.");
+    }
+
+    @DisplayName("")
+    @Test
+    void nameSizeOverFive() {
+        //given
+        String name = "123456";
+
+        assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름의 길이는 5글자를 초과할 수 없습니다.");
     }
 
     @DisplayName("랜덤 값이 4 이상일 경우 자동차는 전진해야 한다.")

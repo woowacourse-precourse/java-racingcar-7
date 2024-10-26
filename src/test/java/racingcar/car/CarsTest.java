@@ -32,29 +32,6 @@ class CarsTest {
                 .hasMessage("중복된 이름을 입력하면 안됩니다.");
     }
 
-    @DisplayName("리스트에 빈 문자열이 존재하면 안된다.")
-    @Test
-    void emptyStringInNameList() {
-        //given
-        List<String> names = List.of("apple", "", "woowa");
-
-        assertThatThrownBy(() -> new Cars(names))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("빈 이름을 입력할 수 없습니다.");
-    }
-
-    @DisplayName("이름의 길이는 다섯글자 이하이다.")
-    @Test
-    void validateNameLength() {
-        //given
-        List<String> names = List.of("apple", "carrot", "woowa");
-
-        assertThatThrownBy(() -> new Cars(names))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름의 길이는 5글자 이하만 가능합니다.");
-    }
-
-
     @DisplayName("정상적인 문자열 리스트가 들어올 경우 이름 수에 맞는 자동자 인스턴스를 가진 일급 컬렉션을 생성한다.")
     @Test
     void createCars() {
