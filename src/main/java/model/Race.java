@@ -1,5 +1,6 @@
 package model;
 
+import service.MoveStrategy;
 import service.RandomMoveStrategy;
 
 import java.util.ArrayList;
@@ -9,13 +10,14 @@ import java.util.Random;
 public class Race {
     private final List<Car> cars;
     private final int attempts;
-    private RandomMoveStrategy randomMoveStrategy;
-    public Race(List<String> carNames, int attempts) {
+    private final MoveStrategy moveStrategy;
+    public Race(List<String> carNames, int attempts, MoveStrategy moveStrategy) {
         if(attempts < 0) {
             throw new IllegalArgumentException("attempts can't be less than 0");
         }
         this.cars = new ArrayList<>(carNames.size());
         this.attempts = attempts;
+        this.moveStrategy = moveStrategy;
         for(String name : carNames) {
             this.cars.add(new Car(name));
         }
@@ -25,7 +27,7 @@ public class Race {
         Random rand = new Random();
         for(int i = 0; i < attempts; i++) {
             for(Car car : cars) {
-                car.move(randomMoveStrategy.canMove());
+                car.move(moveStrategy.canMove());
             }
             printRaceStatus();
         }
@@ -38,7 +40,7 @@ public class Race {
         System.out.println();
     }
 
-    private List<String> getWinner(){
+    public List<String> getWinner(){
        List<String> winners = new ArrayList<>();
        int winnerPosition = cars.stream().mapToInt(Car::getPositon).max().orElse(0);
        for (Car car: cars) {
