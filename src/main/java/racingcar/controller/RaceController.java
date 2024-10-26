@@ -13,11 +13,11 @@ public class RaceController {
     private final RaceService raceService = new RaceService();
 
     public void startRace() {
-        // 자동차 이름 입력
-        List<String> carNames = InputView.getCarNames();
+        // 자동차 이름 입력 및 좌우 공백 제거
+        List<String> trimmedNames = Converter.trimNames(InputView.getCarNames());
 
         // Car 객체 리스트 생성
-        List<Car> cars = Converter.createCars(carNames);
+        List<Car> cars = Converter.createCars(trimmedNames);
 
         // 라운드 수 입력 & 유효성 검증
         int rounds = Validator.rounds(InputView.getRounds());

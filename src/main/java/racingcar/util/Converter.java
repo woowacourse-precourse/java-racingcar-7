@@ -12,4 +12,11 @@ public class Converter {
                 .map(Car::new) // Car 객체 생성
                 .collect(Collectors.toList());
     }
+
+    // 이름 리스트의 좌우 공백을 제거
+    public static List<String> trimNames(List<String> names) {
+        return names.stream()
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
 }
