@@ -5,12 +5,11 @@ import racingcar.io.Input;
 import racingcar.io.View;
 
 public class Application {
-    private final CarRegistry carRegistry;
     private final Stadium stadium;
     private final RaceResult raceResult;
 
     private Application(String input) {
-        this.carRegistry = new CarRegistry(input);
+        CarRegistry carRegistry = new CarRegistry(input);
         this.raceResult = new RaceResult(new StringBuilder(), carRegistry);
         this.stadium = new Stadium(carRegistry, raceResult);
     }
