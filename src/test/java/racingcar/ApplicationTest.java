@@ -114,81 +114,69 @@ class ApplicationTest extends NsTest {
         assertThat(carNameValidator.getCarList()).hasSize(3).containsExactly("one", "일", "1");
     }
 
-    /*@DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트1")
+    @DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트1")
     @Test
     void 시도_횟수_테스트1() {
-        RoundValidator check = new RoundValidator();
+        RoundValidator roundValidator = new RoundValidator("4");
+        roundValidator.verify();
 
-        int number = check.parseInt("4");
-        check.positiveNumber(number);
-
-        assertThat(number).isEqualTo(4);
+        assertThat(roundValidator.getRound()).isEqualTo(4);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트2")
     @Test
     void 시도_횟수_테스트2() {
-        RoundValidator check = new RoundValidator();
+        RoundValidator roundValidator = new RoundValidator("13");
+        roundValidator.verify();
 
-        int number = check.parseInt("13");
-        check.positiveNumber(number);
-
-        assertThat(number).isEqualTo(13);
+        assertThat(roundValidator.getRound()).isEqualTo(13);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트1")
     @Test
     void 시도_횟수_테스트3() {
-        RoundValidator check = new RoundValidator();
-
-        assertThatThrownBy(() -> check.parseInt("abc"))
+        assertThatThrownBy(() -> new RoundValidator("abc"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트2")
     @Test
     void 시도_횟수_테스트4() {
-        RoundValidator check = new RoundValidator();
-
-        assertThatThrownBy(() -> check.parseInt("가나다"))
+        assertThatThrownBy(() -> new RoundValidator("가나다"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트3")
     @Test
     void 시도_횟수_테스트5() {
-        RoundValidator check = new RoundValidator();
-
-        assertThatThrownBy(() -> check.parseInt("!@#"))
+        assertThatThrownBy(() -> new RoundValidator("!@#"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트4")
     @Test
     void 시도_횟수_테스트6() {
-        RoundValidator check = new RoundValidator();
-
-        assertThatThrownBy(() -> check.parseInt("a가!"))
+        assertThatThrownBy(() -> new RoundValidator("a가!"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수의 입력값이 음수일 시 예외테스트")
     @Test
     void 시도_횟수_테스트7() {
-        RoundValidator check = new RoundValidator();
+        RoundValidator roundValidator = new RoundValidator("-6");
 
-        assertThatThrownBy(() -> check.positiveNumber(check.parseInt("-6")))
+        assertThatThrownBy(roundValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("시도 횟수의 입력값이 0 일 시 예외테스트")
     @Test
     void 시도_횟수_테스트8() {
-        RoundValidator check = new RoundValidator();
+        RoundValidator roundValidator = new RoundValidator("0");
 
-        assertThatThrownBy(() -> check.positiveNumber(check.parseInt("0")))
+        assertThatThrownBy(roundValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
-    }*/
+    }
 
 
     @Override
