@@ -1,7 +1,5 @@
 package racingcar;
 
-import org.assertj.core.api.ThrowableAssert;
-
 import java.util.regex.Pattern;
 
 public class Validation {
