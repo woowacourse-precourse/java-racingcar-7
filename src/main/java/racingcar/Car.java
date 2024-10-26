@@ -4,7 +4,8 @@ public class Car {
     private String name;
     private long moveCount;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         moveCount = 0;
     }
 
