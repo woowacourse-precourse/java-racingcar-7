@@ -8,11 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ParserTest {
+    Parser parser = new Parser();
 
     @Test
     void 구분자로_자동차_이름_파싱() {
-        Parser parser = new Parser();
-
         String testStr = "one,two,three,four,five";
         String testOperator = ",";
         List<String> expectedResult = new ArrayList<>(List.of("one", "two", "three", "four", "five"));
@@ -24,8 +23,6 @@ class ParserTest {
 
     @Test
     void parseRepeatCount() {
-        Parser parser = new Parser();
-
         String testStr = "15";
         long expected = 15;
 
