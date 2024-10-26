@@ -8,4 +8,10 @@ public class OutputView {
             System.out.println(oneCarLocation);
         }
     }
+
+    public static void printWinner(List<String> winners) {
+        for(String winner : winners) {
+            System.out.println(winner);
+        }
+    }
 }
