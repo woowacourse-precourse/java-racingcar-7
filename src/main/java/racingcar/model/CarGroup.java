@@ -8,11 +8,11 @@ public class CarGroup {
     private final List<Car> cars;
 
     public CarGroup(List<String> carNames) {
-        this.cars = getCars(carNames);
+        this.cars = initCars(carNames);
         validateSize();
     }
 
-    private List<Car> getCars(List<String> carNames) {
+    private List<Car> initCars(List<String> carNames) {
         return carNames.stream().map(Car::new).toList();
     }
 
