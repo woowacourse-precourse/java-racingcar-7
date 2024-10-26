@@ -2,11 +2,12 @@ package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.IllegalArgumentException;
 
 class InputViewTest {
 
@@ -15,6 +16,11 @@ class InputViewTest {
     @BeforeEach
     void init() {
         inputView = new InputView();
+    }
+
+    @AfterEach
+    void closeConsole() {
+        Console.close();
     }
 
     @Test
@@ -48,7 +54,7 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("시도횟수가 음수일이 예외 발생")
+    @DisplayName("시도횟수가 음수일시 예외 발생")
     void negativeTryCountThrowsException() {
         setInput("-1");
 
