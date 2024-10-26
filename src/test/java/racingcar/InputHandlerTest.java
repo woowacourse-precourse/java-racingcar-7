@@ -34,4 +34,6 @@ public class InputHandlerTest {
         assertThatThrownBy(() -> inputHandler.areAllCarNameLengthsValid(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
 }

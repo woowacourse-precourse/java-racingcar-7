@@ -44,15 +44,13 @@ public class InputHandler {
         catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력하세요.", e);
         }
+        if (!isValidMoveCount(moveCount)) {
+            throw new IllegalArgumentException("이동 횟수는 1회에서 1000회 사이 값만 가능");
+        }
         return moveCount;
     }
 
     boolean isValidMoveCount(int moveCount) {
-        if (moveCount < MIN_MOVE_COUNT || moveCount > MAX_MOVE_COUNT) {
-            throw new IllegalArgumentException("이동 횟수는 1회에서 1000회 사이 값만 가능");
-        }
-        return true;
+        return moveCount >= MIN_MOVE_COUNT && moveCount <= MAX_MOVE_COUNT;
     }
-
-
 }
