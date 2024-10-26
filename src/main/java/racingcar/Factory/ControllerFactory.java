@@ -7,7 +7,9 @@ import racingcar.View.InputView;
 import racingcar.View.OutputView;
 
 public class ControllerFactory {
-    public ControllerFactory() {
+    private final DomainFactory domainFactory;
+    public ControllerFactory(DomainFactory domainFactory) {
+        this.domainFactory = domainFactory;
     }
 
     public RaceViewController createRaceViewController() {
@@ -18,7 +20,7 @@ public class ControllerFactory {
     }
 
     public RaceProcessController createRaceProcessController(RaceViewController viewController) {
-        RaceProcessService raceProcessService = new RaceProcessService();
+        RaceProcessService raceProcessService = new RaceProcessService(domainFactory);
 
         return new RaceProcessController(viewController, raceProcessService);
     }
