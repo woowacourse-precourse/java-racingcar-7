@@ -2,6 +2,8 @@ package racingcar;
 
 import static racingcar.OutputMessage.*;
 
+import java.util.List;
+
 public class GameView {
     public void printCarNameInputMessage() {
         System.out.println(CAR_NAME_INPUT_MESSAGE.getMessage());
@@ -11,4 +13,7 @@ public class GameView {
         System.out.println(ROUND_COUNT_INPUT_MESSAGE.getMessage());
     }
 
+    public void printRoundResult(List<String> results) {
+        results.forEach(System.out::println);
+    }
 }
