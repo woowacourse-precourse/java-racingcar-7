@@ -2,35 +2,33 @@ package racingcar;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.RaceReady;
-import racingcar.domain.factory.CarFactory;
+import racingcar.ui.Input;
+import racingcar.domain.CarFactory;
 import racingcar.service.RaceManager;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import racingcar.ui.InputParser;
+import racingcar.ui.InputView;
+import racingcar.ui.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        InputView inputView = new InputView();
-        racingcar.domain.factory.CarFactory carFactory = new CarFactory(",");
+        InputView inputView = new InputView(new InputParser());
+        CarFactory carFactory = new CarFactory(",");
         RaceManager raceManager = new RaceManager();
-        ResultView resultView = new ResultView();
+        OutputView outputView = new OutputView();
 
-        RaceReady raceReady = inputView.readyForRace();
 
-        List<Car> cars = carFactory.getCars(raceReady.getNameInput());
+        Input input = inputView.getUserInput(outputView);
 
-        for (int i = 0; i < raceReady.getNumberOfTime(); i++) {
-            String raceResult = raceManager.race(cars);
-            resultView.saveResult(raceResult);
-        }
+        List<Car> cars = carFactory.getCars(input.getNames());
 
-        resultView.printRaceResult();
-
+        String raceResult = raceManager.race(cars, input.getTryCount());
         List<Car> winners = raceManager.getWinners(cars);
 
-        resultView.printWinners(winners);
+        outputView.printRaceResult(raceResult);
+        outputView.printWinners(winners);
 
     }
+
 
 }
