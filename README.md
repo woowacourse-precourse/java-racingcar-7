@@ -24,7 +24,7 @@
 ### 경주 진행 과정
   - 경주
     - 무작위 값 생성
-      - [ ] 각 자동차 별로 0에서 9까지의 정수 중 한 개의 무작위 값을 구한다.
+      - [X] 각 자동차 별로 0에서 9까지의 정수 중 한 개의 무작위 값을 구한다.
         - Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
       
     <br>
