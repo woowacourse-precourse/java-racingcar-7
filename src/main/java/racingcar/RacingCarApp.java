@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.view.input.InputValueContainer;
+import racingcar.view.input.InputView;
+
 public class RacingCarApp {
 
     private final InputView inputView = new InputView();
