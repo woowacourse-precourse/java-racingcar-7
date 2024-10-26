@@ -20,7 +20,7 @@ public record CarName(String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException(REQUIRE_NAME_MESSAGE);
         }
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(NAME_LENGTH_EXCEED_MESSAGE);
         }
     }
