@@ -6,9 +6,9 @@ import java.util.Set;
 public class CarsNameParser {
 
 
-    static Set parse(String carNamesInput) {
+    static Set<String> parse(String carNamesInput) {
         Set<String> carNames = new HashSet<>();
-        for (String carName : carNamesInput.split(",",-1)) {
+        for (String carName : carNamesInput.split(",", -1)) {
             if (carName.isEmpty()) {
                 throw new IllegalArgumentException("이름이 비어있습니다.");
             }

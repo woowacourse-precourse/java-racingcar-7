@@ -16,7 +16,7 @@ class CarsNameParserTest {
         //given
         String input ="pobi,ddot,teddy";
         //when
-        Set carsName = parse(input);
+        Set<String> carsName = parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot", "teddy"), carsName);
     }
@@ -27,7 +27,7 @@ class CarsNameParserTest {
         //given
         String input ="pobi,ddot,pobi";
         //when
-        Set carsName = parse(input);
+        Set<String> carsName = parse(input);
         //then
         assertEquals(Set.of("pobi", "ddot"), carsName);
         assertEquals(Set.of("ddot", "pobi"), carsName);
@@ -70,7 +70,7 @@ class CarsNameParserTest {
 
 
 
-    void testNameParsing( Set carsName, String input) {
+    void testNameParsing( Set<String> carsName, String input) {
         assertEquals(carsName, parse(input));
     }
 
