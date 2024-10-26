@@ -3,7 +3,7 @@ package racingcar.validation;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.constant.InputConstant;
+import racingcar.constant.io.InputConstant;
 import racingcar.constant.NumberConstant;
 import racingcar.exception.input.name.DelimiterNameException;
 import racingcar.exception.input.name.DuplicateNameException;

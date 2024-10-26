@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.constant.OutputConstant;
+import racingcar.constant.io.OutputConstant;
 import racingcar.model.Car;
 
 public class OutputView {
