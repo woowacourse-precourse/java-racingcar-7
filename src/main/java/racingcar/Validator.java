@@ -19,4 +19,15 @@ public class Validator {
                 throw new IllegalArgumentException("자동차 이름은 기준을 넘길 수 없습니다.");
         }
     }
+
+    public void isPositiveNumber(String inputStr) {
+        try {
+            long num = Long.parseLong(inputStr);
+            if (num < 0) {
+                throw new IllegalArgumentException("양수만 입력 가능합니다.");
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("양수만 입력 가능합니다.");
+        }
+    }
 }
