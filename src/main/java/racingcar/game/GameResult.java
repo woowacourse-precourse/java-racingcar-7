@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 import java.math.BigInteger;
 import java.util.List;

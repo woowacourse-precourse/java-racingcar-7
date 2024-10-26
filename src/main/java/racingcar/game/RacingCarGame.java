@@ -1,33 +1,29 @@
-package racingcar;
+package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.car.Car;
 import racingcar.car.CarManager;
-import racingcar.view.input.InputValueContainer;
-import racingcar.view.output.OutputLogRepository;
-import racingcar.view.output.OutputView;
+import racingcar.view.input.InputValue;
 
-import java.math.BigInteger;
 import java.util.List;
-import java.util.Map;
 
 
 public class RacingCarGame {
 
     private final int attemptCount;
     private final CarManager carManager = new CarManager();
-    private final OutputLogRepository outputLogRepository = new OutputLogRepository();
+    private final CarPositionLogRepository carPositionLogRepository = new CarPositionLogRepository();
 
-    public RacingCarGame(InputValueContainer inputValueContainer) {
-        List<String> carNames = inputValueContainer.getCarNames();
-        int attemptCount = inputValueContainer.getAttemptCount();
+    public RacingCarGame(InputValue inputValue) {
+        List<String> carNames = inputValue.getCarNames();
+        int attemptCount = inputValue.getAttemptCount();
 
         carManager.createCars(carNames);
         this.attemptCount = attemptCount;
     }
 
     public GameResult getGameResult() {
-        return new GameResult(attemptCount, outputLogRepository.getCarPositionLog());
+        return new GameResult(attemptCount, carPositionLogRepository.getCarPositionLog());
     }
 
     public void play() {
@@ -42,7 +38,7 @@ public class RacingCarGame {
                 if (randomNumber >= 4) {
                     car.move();
                 }
-                outputLogRepository.saveCarPositionLog(car);
+                carPositionLogRepository.saveCarPositionLog(car);
             });
         }
     }
