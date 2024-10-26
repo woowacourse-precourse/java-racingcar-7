@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,14 @@ public class Application {
         int count;
         count=Integer.parseInt(countInput);
         
+    }
 
+    public static void goOrStop(HashMap<String,Integer> player){
+        for (String s : player.keySet()) {
+            if(Randoms.pickNumberInRange(0,9)>4){
+                int steps=player.get(s);
+                player.put(s,steps+1);
+            }
+        }
     }
 }
