@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +54,22 @@ class ApplicationTest extends NsTest {
     void validateCarNameDuplicate() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("jenn,kelly,jenn", "1"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @DisplayName("실행 횟수가 숫자가 아닌 경우 예외가 발생하는지 검사")
+    @Test
+    void validateGameCountIsNumber() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("jenn, jun", "o"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @DisplayName("실행 횟수가 0보다 작거나 같은 경우 예외가 발생하는지 검사")
+    @Test
+    void validateGameCountIsOneOrMore() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("jenn, jun", "-1"))
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
