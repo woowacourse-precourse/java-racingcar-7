@@ -11,8 +11,31 @@ import racingcar.model.RacingCar;
 public class RacingGameService {
     private static final Integer NAME_LENGTH_LIMIT = 5;
 
+    public List<RacingCar> startRace(String carNames, Integer tryCount){
+        if (!validateCarNames(carNames) || !validateTryCount(tryCount)){
+            return null;
+        }
 
+        String[] parseCarName = parseCarName(carNames);
 
+        List<RacingCar> racingCars = new ArrayList<>();
+
+        for (String carName : parseCarName){
+            racingCars.add(new RacingCar(carName));
+        }
+
+        for (int i = 0; i < tryCount; i++){
+            moveRacingCars(racingCars);
+        }
+
+        return racingCars;
+    }
+
+    private static void moveRacingCars(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars){
+            racingCar.move(Randoms.pickNumberInRange(0, 9));
+        }
+    }
 
     private String[] parseCarName(String carNames){
         return carNames.split(",");
