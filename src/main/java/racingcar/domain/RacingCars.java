@@ -17,8 +17,8 @@ public class RacingCars {
 
     public void updatePositionsWithRandomNumbers(List<Integer> randomNumbers) {
         for (int i = 0; i < racingCars.size(); i++) {
-            int moveCondition = randomNumbers.get(i);
-            racingCars.get(i).move(moveCondition);
+            int randomNumber = randomNumbers.get(i);
+            racingCars.get(i).move(randomNumber);
         }
     }
 
