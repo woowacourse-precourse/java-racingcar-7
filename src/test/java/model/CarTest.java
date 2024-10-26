@@ -21,7 +21,7 @@ class CarTest {
     @Test
     void 자동차_움직이기_테스트() {
         Car car1 = new Car("kng");
-        car1.move();
+        car1.randomMove();
         assertThat(car1.getStep()).isBetween(0, 1);
     }
 
