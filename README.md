@@ -34,10 +34,9 @@
    - [x]  최종 우승자 목록을 출력한다.
 
 ### 3. Controller 구현
-
-- [ ]  ApplicationController 클래스 생성
-   - [ ]  애플리케이션을 실행하는 기능을 구현한다
-   - [ ]  racing을 시작하는 기능을 구현한다.
+- [x]  ApplicationController 클래스 생성
+   - [x]  애플리케이션을 실행하는 기능을 구현한다
+   - [x]  racing을 시작하는 기능을 구현한다.
 - [x]  CarController 구현
    - [x]  Car들 중 distance가 가장 높은 Car 반환 (결괏값이 여러 개일 경우를 대비해 List로 반환)
    - [x]  단계별로 각 Car마다 randomNumber를 구해서 4 이상인 경우, distance를 1만큼 늘려준다.
