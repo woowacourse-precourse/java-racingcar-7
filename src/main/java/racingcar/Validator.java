@@ -26,13 +26,16 @@ public class Validator {
     }
 
     public void validateRepeatCount(String inputStr) {
+        if (inputStr.isEmpty()) {
+            throw new IllegalArgumentException("반복 횟수는 비어있을 수 없습니다.");
+        }
         try {
             long num = Long.parseLong(inputStr);
             if (num < 0) {
                 throw new IllegalArgumentException("양수만 입력 가능합니다.");
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException("양수만 입력 가능합니다.");
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
     }
 }
