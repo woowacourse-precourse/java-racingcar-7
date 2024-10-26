@@ -16,7 +16,7 @@ public class RacingGameOutput {
     public void printRacingProgress(RacingGame game, Cars cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             // TODO: race() 를 output class 에서 하는게 맞는지 고려하기
-            List<Integer> positions = game.race();
+            List<Integer> positions = game.play();
             printRoundProgress(cars, positions);
             printRoundEnd();
         }

@@ -26,7 +26,7 @@ public class RacingGameController {
         output.printWinner(winners);
     }
 
-    public Cars createRacingCars() {
+    private Cars createRacingCars() {
         List<String> carNames = input.readCarNames();
         Set<String> distinctNames = new HashSet<>();
         for (String name : carNames) {
