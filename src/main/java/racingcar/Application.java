@@ -16,6 +16,7 @@ public class Application {
             List<String> inputList = new ArrayList<>(Arrays.asList(Console.readLine().split("\\s*,\\s*")));
             validateInput(inputList);
             checkRedundancy(inputList);
+            checkCarNameLength(inputList);
 
             List<Participant> participantList = new ArrayList<>();
             createParticipantList(inputList, participantList);
@@ -24,14 +25,6 @@ public class Application {
             System.out.println(inputList);
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
-        }
-    }
-
-    // 사용자 입력을 사용해 참가자 객체를 생성하고 참가자 리스트에 객체를 저장하는 메서드
-    private static void createParticipantList(List<String> inputList, List<Participant> participantList) {
-        for (String carName : inputList) {
-            Participant participant = new Participant(carName);
-            participantList.add(participant);
         }
     }
 
@@ -55,10 +48,31 @@ public class Application {
         }
     }
 
-    // 중복된 자동차 이름이 있는지 확인하는 메서드
     private static void checkRedundancy(List<String> inputList) {
         if (inputList.size() != inputList.stream().distinct().count()) {
             throw new IllegalArgumentException("중복된 이름이 존재합니다.");
         }
     }
+
+    // 자동차 이름이 6자 이상인지 확인하는 메서드
+    private static void checkCarNameLength(List<String> inputList) {
+        ListIterator<String> iterator = inputList.listIterator();
+
+        while (iterator.hasNext()) {
+            String str = iterator.next();
+
+            if (str.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
+
+    // 사용자 입력을 사용해 참가자 객체를 생성하고 참가자 리스트에 객체를 저장하는 메서드
+    private static void createParticipantList(List<String> inputList, List<Participant> participantList) {
+        for (String carName : inputList) {
+            Participant participant = new Participant(carName);
+            participantList.add(participant);
+        }
+    }
+
 }
