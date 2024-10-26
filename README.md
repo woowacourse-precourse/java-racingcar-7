@@ -177,7 +177,7 @@
 - `model`
   - `CarTest`
   - `GameTest`
-- `valid`
+- `input`
   - `InputCarNameTest`
   - `InputCountTest`
 - `service`
