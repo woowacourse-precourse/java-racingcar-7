@@ -15,6 +15,7 @@ public class InputView {
         Validator.validateCarNames(input);
 
         List<String> carList = splitCarName(input);
+        Validator.validateEachCarNames(carList);
 
         return carList;
     }
