@@ -4,40 +4,29 @@ import java.util.List;
 
 public class CarRacingGame {
 
-    private final CarRacingGameConfig gameConfig;
+    private final Cars cars;
+    private final Round round;
 
-    private Cars cars;
-    private Round round;
-
-    public CarRacingGame(final CarRacingGameConfig gameConfig) {
-        this.gameConfig = gameConfig;
-    }
-
-    public void initialize(final List<String> names, final int round) {
-        initializeCars(names);
-        initializeRound(round);
+    public CarRacingGame(final Cars cars, final Round round) {
+        this.cars = cars;
+        this.round = round;
     }
 
     public List<CarInformation> playRound() {
         cars.runRace();
-        return cars.getAllCarInformation();
+        nextRound();
+        return cars.getAllCarsInformation();
     }
 
     public boolean canPlay() {
         return round.isOnGoing();
     }
 
-    public void nextRound() {
+    public List<CarInformation> getAllWinnersInformation() {
+        return cars.calculateWinners();
+    }
+
+    private void nextRound() {
         round.advance();
-    }
-
-    private void initializeCars(final List<String> names) {
-        CarCreator carFactory = gameConfig.carFactory();
-        CarMovementPolicy movementPolicy = gameConfig.carMovementPolicy();
-        cars = carFactory.createCars(names, movementPolicy);
-    }
-
-    private void initializeRound(final int round) {
-        this.round = new Round(round);
     }
 }

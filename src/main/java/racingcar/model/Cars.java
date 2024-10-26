@@ -21,8 +21,19 @@ public class Cars {
         values.forEach(car -> car.race(RandomNumberGenerator.generate()));
     }
 
-    public List<CarInformation> getAllCarInformation() {
+    public List<CarInformation> getAllCarsInformation() {
         return values.stream()
+                .map(car -> new CarInformation(car.name(), car.position()))
+                .toList();
+    }
+
+    public List<CarInformation> calculateWinners() {
+        Car maxPositionCar = values.stream()
+                .max(Car::compareTo)
+                .orElseThrow(() -> new CarException(CarValidationError.CAR_NOT_FOUND_EXCEPTION.getMessage()));
+
+        return values.stream()
+                .filter(car -> car.isSamePosition(maxPositionCar))
                 .map(car -> new CarInformation(car.name(), car.position()))
                 .toList();
     }

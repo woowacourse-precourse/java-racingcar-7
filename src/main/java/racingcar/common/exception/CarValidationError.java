@@ -8,6 +8,7 @@ public enum CarValidationError {
     LESS_THAN_MIN_CARS_COUNT_EXCEPTION("자동차는 %d대 이상이여야 합니다."),
     EXCEEDS_MAX_CARS_COUNT_EXCEPTION("자동차는 %d대 이하여야 합니다."),
     DUPLICATED_CARS_EXISTS_EXCEPTION("자동차는 중복된 이름을 가질 수 없습니다."),
+    CAR_NOT_FOUND_EXCEPTION("해당 자동차를 찾을 수 없습니다."),
     ;
 
     private static final String ERROR_PREFIX = "[ERROR] ";
