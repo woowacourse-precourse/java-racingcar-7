@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_BLANK_EXCEPTION;
+import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION;
 import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_NOT_NATURAL_NUMBER_EXCEPTION;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -29,8 +29,8 @@ public class InputView {
     }
 
     private void validateCarMovementCountOrThrow(String inputString) {
-        if (inputString.isBlank()) {
-            throw new IllegalArgumentException(CAR_MOVEMENT_COUNT_BLANK_EXCEPTION.message());
+        if (inputString.isEmpty()) {
+            throw new IllegalArgumentException(CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION.message());
         }
         if (!isNaturalNumber(inputString)) {
             throw new IllegalArgumentException(CAR_MOVEMENT_COUNT_NOT_NATURAL_NUMBER_EXCEPTION.message());
