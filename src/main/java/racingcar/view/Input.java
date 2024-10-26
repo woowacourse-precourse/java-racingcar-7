@@ -8,15 +8,16 @@ import java.util.List;
 public class Input {
 
     public List<String> getCarNames() {
-        String[] carNamesInput = Console.readLine().split(",");
+        String input = Console.readLine();
+        if (input == null || input.contains("null")) {
+            throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
+        }
+        String[] carNamesInput = input.split(",");
         List<String> carNames = new ArrayList<>();
 
         Arrays.stream(carNamesInput).forEach(carName -> {
             carName = carName.trim();
-
-            if (carName.equals("null")) {
-                throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
-            } else if (carName.isEmpty() || carName.trim().isEmpty()) {
+            if (carName.isEmpty() || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름이 비어 있습니다.");
             } else if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
