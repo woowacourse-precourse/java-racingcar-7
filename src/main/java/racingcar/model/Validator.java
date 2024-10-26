@@ -27,24 +27,24 @@ public class Validator {
     }
 
     private void checkDelimiter(String carName) {
-        if (carName.matches(REGEXP_DELIMITER)) {
-            return;
+        if (!carName.matches(REGEXP_DELIMITER)) {
+            throw new IllegalArgumentException(WRONG_DELIMITER);
         }
-        throw new IllegalArgumentException(WRONG_DELIMITER);
     }
 
     private void checkAlphabet(String carName) {
-        if (carName.matches(REGEXP_ALPHABET)) {
-            return;
+        if (!carName.matches(REGEXP_ALPHABET)) {
+            throw new IllegalArgumentException(INVALID_CHARACTER);
         }
-        throw new IllegalArgumentException(INVALID_CHARACTER);
     }
 
     private void checkNameLength(String carName) {
-        if (carName.matches(REGEXP_LENGTH)) {
-            return;
+        String[] names = carName.split(",");
+        for (String splitName : names) {
+            if (!splitName.matches(REGEXP_LENGTH)) {
+                throw new IllegalArgumentException(LENGTH_EXCEEDED);
+            }
         }
-        throw new IllegalArgumentException(LENGTH_EXCEEDED);
     }
 
     private void validateRounds(Integer rounds) {
