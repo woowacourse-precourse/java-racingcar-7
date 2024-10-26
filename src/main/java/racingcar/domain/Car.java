@@ -17,7 +17,7 @@ public class Car {
     }
 
     public int getPositionDistance() {
-        return position.distance();
+        return position.getDistance();
     }
 
     public String currentPositionFormat() {
