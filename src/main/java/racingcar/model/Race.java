@@ -17,12 +17,12 @@ public class Race {
     private int maxPosition;
 
     public Race(String inputtedName, int count) {
-        InputValidation.validateDelimiter(inputtedName);
-
         String[] carNames = inputtedName.split(DELIMITER, -1);
         cars = Arrays.stream(carNames)
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());
+        InputValidation.validateDelimiter(inputtedName);
+        InputValidation.validateNameLength(cars);
 
         this.count = count;
     }

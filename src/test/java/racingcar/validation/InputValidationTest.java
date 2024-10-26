@@ -13,4 +13,11 @@ public class InputValidationTest {
         assertThatThrownBy(() -> new Race("abcdef", 1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("이름의 길이가 5자보다 큰 경우 예외발생")
+    void validateNameLength() {
+        assertThatThrownBy(() -> new Race("abcdef,java", 1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
