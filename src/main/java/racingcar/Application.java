@@ -30,7 +30,7 @@ public class Application {
         int countWinners = CountWinners(carScoreInt, max);
         int[] winners = new int[countWinners];
         StoreWinnerIndex(winners, carScoreInt, max);
-        System.out.println("최종 우승자");
+        System.out.print("최종 우승자 : ");
         for(int i = 0; i < countWinners; i++) {
             if(i == countWinners - 1) {
                 System.out.print(cars[winners[i]]);
