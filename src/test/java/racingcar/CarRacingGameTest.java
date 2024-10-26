@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,11 +24,19 @@ class CarRacingGameTest {
 
     @ParameterizedTest
     @MethodSource("validInputs")
-    @DisplayName("구분자를 기준으로한 자동차 이름 입력 테스트 ")
+    @DisplayName("올바른 입력에 대한 테스트")
     public void createCarsFromNames(String carNames,List<String> carNameListInput) {
         List<Car> cars = game.createCarsFromNames(carNames);
         List<String> carNameList = cars.stream().map(Car::getCarName).toList();
         assertTrue(carNameList.containsAll(carNameListInput));
+    }
+    @ParameterizedTest
+    @MethodSource("invalidInputs")
+    @DisplayName("예외 테스트")
+    public void createCarsFromNames(String carNames) {
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> game.createCarsFromNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @MethodSource
@@ -41,7 +50,13 @@ class CarRacingGameTest {
     }
     @MethodSource
     static Stream<Object[]> invalidInputs() {
-        return Stream.of(new Object[]{"pobbya","alex",List.of("pobbya","alex")},
-                new Object[]{"pobby_,alex",List.of("pobby_","alex")});
+        return Stream.of(new Object[]{"pobbya","alex"},//6글자
+                new Object[]{"pobby_,alex"},
+                new Object[]{"^@&,alex"},
+                new Object[]{"alex"},
+                new Object[]{"alex^jhon"},
+                new Object[]{""},
+                new Object[]{" "},
+                new Object[]{"alex ,hello"});
     }
 }
