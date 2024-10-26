@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import utility.Input;
+import util.Input;
 
 public class InputTest extends NsTest {
     // 기능 케이스

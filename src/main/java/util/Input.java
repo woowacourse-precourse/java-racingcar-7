@@ -1,4 +1,4 @@
-package utility;
+package util;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,26 +7,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Input {
-    public static List<String> cars;
+    public static List<String> car;
 
     // 입력부: 경주할 자동차
     public static List<String> inputCars() throws IllegalArgumentException {
         // Error : 공백 입력, (,)가 아닌 구분자 사용, 5글자 초과
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        cars = new ArrayList<>(Arrays.asList(Console.readLine().strip().split(",")));
-        noValueEntered(cars);
-        noValueDelete(cars);
-        System.out.println(cars.toString());
+        car = new ArrayList<>(Arrays.asList(Console.readLine().strip().split(",")));
+        noValueEntered(car);
+        noValueDelete(car);
+        System.out.println(car.toString());
 
-        for (int i = 0; i < cars.size(); i++) {
-            cars.set(i, cars.get(i).strip());
-            String value = cars.get(i);
+        for (int i = 0; i < car.size(); i++) {
+            car.set(i, car.get(i).strip());
+            String value = car.get(i);
 
             commaX(value);
             over5(value);
         }
 
-        return cars;
+        return car;
     }
 
     // 입력부: 시도 횟수

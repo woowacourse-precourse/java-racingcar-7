@@ -1,8 +1,8 @@
 package racingcar;
 
+import Service.RacingCarService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import utility.CarRacing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +29,6 @@ public class CarRacingTest{
     }
 
     public List<Integer> runMain(int randomNum, List<Integer> currentSituation) {
-        return CarRacing.test(randomNum, currentSituation);
+        return RacingCarService.test(randomNum, currentSituation);
     }
 }

@@ -1,7 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import utility.Result;
+import util.Result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,8 +37,6 @@ public class ResultTest {
 
                 printResult(result[0].contains(answerOngoing), result[1].contains(answerWinner));
 
-                Result.setOngoing("");
-                Result.setWinner("");
                 Result.setIdxMax(0);
             }
         });
