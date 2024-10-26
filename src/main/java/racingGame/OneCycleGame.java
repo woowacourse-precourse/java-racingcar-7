@@ -6,7 +6,8 @@ import racingcar.MoveCar;
 public class OneCycleGame {
     MoveCar moveCar = new MoveCar();
 
-    public void oneGameStart(List<String> participateCarList) {
-        List<String> carCanFowardList = moveCar.whichCarCanForward(participateCarList);
+    public List<String> oneGameResult(List<String> participateCarList) {
+        return moveCar.whichCarCanForward(participateCarList);
     }
+
 }
