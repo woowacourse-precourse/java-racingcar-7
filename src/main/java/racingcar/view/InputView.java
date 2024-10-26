@@ -11,9 +11,8 @@ public class InputView {
         return List.of(carNames.split(","));
     }
 
-    public static int getRounds() {
+    public static String getRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String rounds = Console.readLine();
-        return Integer.parseInt(rounds);
+        return Console.readLine();
     }
 }
