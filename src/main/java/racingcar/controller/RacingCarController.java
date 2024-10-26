@@ -22,9 +22,14 @@ public class RacingCarController {
         if(numberOfRounds < 0) throw new IllegalArgumentException("횟수는 양수를 입력하세요.");
     }
 
+    private void checkIfLengthOfNameIsValid(String name){
+        if(name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+    }
+
     private List<Car> makeCars(String[] carNames){
         ArrayList<Car> cars = new ArrayList<>();
         for(String name : carNames){
+            checkIfLengthOfNameIsValid(name);
             cars.add(new Car(name));
         }
         return cars;
