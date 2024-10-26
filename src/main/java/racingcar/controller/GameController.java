@@ -29,7 +29,7 @@ public class GameController {
         List<CarMovementResults> movementResultsOfRounds = new ArrayList<>();
 
         while (game.isPlaying()) {
-            game.play();
+            game.playNextRound();
 
             CarMovementResults movementResultsOfCurrentRound = new CarMovementResults(game.getStatusOfCars());
             movementResultsOfRounds.add(movementResultsOfCurrentRound);

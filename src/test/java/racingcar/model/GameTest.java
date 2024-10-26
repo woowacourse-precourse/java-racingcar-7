@@ -8,8 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.CarStatus;
 import racingcar.model.car.Cars;
 import racingcar.model.game.Game;
+import racingcar.model.game.NumberPicker;
 import racingcar.model.game.RandomNumberPicker;
 import racingcar.model.game.TotalRounds;
 
@@ -18,10 +20,12 @@ public class GameTest {
     private String[] names;
     private Cars cars;
     private TotalRounds totalRounds;
+    private int totalRoundCount;
 
     @BeforeEach
     void setUp() {
-        totalRounds = new TotalRounds(3);
+        totalRoundCount = 3;
+        totalRounds = new TotalRounds(totalRoundCount);
         names = new String[]{"pobi", "woni", "jun"};
         cars = new Cars(names);
         game = new Game(cars, totalRounds, new RandomNumberPicker());
@@ -44,10 +48,8 @@ public class GameTest {
     @DisplayName("라운드만큼 반복한 뒤에는 isPlaying 이 false 를 반환한다.")
     void shouldReturnFalseAfterTotalRoundsRepetitions() {
         // when
-        int i = 1;
-        while (totalRounds.hasMoreRoundsThan(i)) {
-            game.play();
-            i++;
+        for (int i = 0; i < totalRoundCount; i++) {
+            game.playNextRound();
         }
 
         // then
@@ -58,9 +60,8 @@ public class GameTest {
     @DisplayName("라운드만큼 반복하기 이전에는 isPlaying 이 true 를 반환한다.")
     void shouldReturnTrueBeforeTotalRoundsRepetitions() {
         // when
-        while (totalRounds.hasMoreRoundsThan(1)) {
-            game.play();
-            break;
+        for (int i = 0; i < totalRoundCount - 1; i++) {
+            game.playNextRound();
         }
 
         // then

@@ -18,6 +18,6 @@ public class TotalRounds {
     }
 
     public boolean hasMoreRoundsThan(int currentRound) {
-        return totalRounds >= currentRound;
+        return totalRounds > currentRound;
     }
 }

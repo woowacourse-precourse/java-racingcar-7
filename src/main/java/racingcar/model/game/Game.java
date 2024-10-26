@@ -22,7 +22,7 @@ public class Game {
 
         this.cars = cars;
         this.totalRounds = totalRounds;
-        this.currentRound = 1;
+        this.currentRound = 0;
         this.numberPicker = numberPicker;
     }
 
@@ -32,12 +32,7 @@ public class Game {
         }
     }
 
-    public void play() {
-        playNextRound();
-        currentRound++;
-    }
-
-    private void playNextRound() {
+    public void playNextRound() {
         for (int index = 0; index < cars.getSize(); index++) {
             int number = numberPicker.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
 
@@ -45,6 +40,7 @@ public class Game {
                 cars.move(index);
             }
         }
+        currentRound++;
     }
 
     public boolean isPlaying() {
