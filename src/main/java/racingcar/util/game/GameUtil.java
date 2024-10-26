@@ -3,6 +3,7 @@ package racingcar.util.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.vo.CarVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,11 +32,14 @@ public class GameUtil {
 
     }
 
-    public static void oneGamePrintAndUpdate(List<CarVO> carNames, int executeNumber) {
+    public static List<CarVO> oneGamePrintAndUpdate(List<CarVO> carNames, int executeNumber) {
         System.out.println("실행 결과");
+
         for (int i = 0; i < executeNumber; i++) {
             GameUtil.oneTurnPrintAndUpdate(carNames);
         }
+
+        return carNames;
     }
 
     public static int getMaxGoCount(List<CarVO> gameResultList) {
@@ -48,6 +52,26 @@ public class GameUtil {
         }
 
         return maxGoCount;
+    }
+
+    public static String getWinnerName(List<CarVO> carNameAndGoCountList) {
+        List<String> winnerNameArray = new ArrayList<>();
+        var maxCount = GameUtil.getMaxGoCount(carNameAndGoCountList);
+        String winnerPrintValue = "최종 우승자 : ";
+
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() == maxCount) {
+                winnerNameArray.add(carNameAndCount.getCarName());
+            }
+        }
+
+        if (winnerNameArray.size() == 1) {
+            winnerPrintValue += winnerNameArray.getFirst();
+        } else {
+            winnerPrintValue += winnerNameArray.toString().replaceAll("[\\[\\]]", "");
+        }
+
+        return winnerPrintValue;
     }
 
 
