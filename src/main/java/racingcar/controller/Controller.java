@@ -13,7 +13,7 @@ public class Controller {
     private OutputView outputView = new OutputView();
     private Game game=new Game();
 
-    private void runningGame() {
+    public void runningGame() {
         String racingCarNames = inputView.InputCarNames();
         Integer trialCount = inputView.InputTrialCount();
         Cars cars = new Cars(racingCarNames);
@@ -22,6 +22,7 @@ public class Controller {
             outputView.outputTrialResult(cars);
         }
         List<Car> winningCarGroup = game.findWinningCars(cars);
-
+        outputView.outputTrialResult(cars);
+        outputView.outputWinningCars(winningCarGroup);
     }
 }
