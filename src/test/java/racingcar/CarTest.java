@@ -7,6 +7,15 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     @Test
+    void 움직일_수_있는_최소거리를_충족하지_못하면_자동차는_전진하지_않는다() {
+        Car yh = new Car("yh");
+
+        yh.moveForward(3);
+
+        assertEquals(0, yh.currentLocation());
+    }
+
+    @Test
     void 자동차는_앞으로_갈_수_있다() {
         Car yh = new Car("yh");
 

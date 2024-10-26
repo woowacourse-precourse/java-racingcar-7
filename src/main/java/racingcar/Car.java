@@ -3,6 +3,8 @@ package racingcar;
 public class Car {
 
     private final int NAME_MAX_LENGTH  = 5;
+    private final int MINIMUM_DISTANCE = 4;
+
     private String name;
     private int location;
 
@@ -18,7 +20,9 @@ public class Car {
     }
 
     public void moveForward(int distance) {
-        this.location = distance;
+        if (MINIMUM_DISTANCE <= distance) {
+            this.location = distance;
+        }
     }
 
     public int currentLocation() {
