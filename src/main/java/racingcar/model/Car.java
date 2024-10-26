@@ -2,7 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car implements Player{
+public class Car implements Player {
 
     static private final int DISTANCE = 1;
     private final String name;
@@ -16,8 +16,8 @@ public class Car implements Player{
     @Override
     public void run() {
         int n = Randoms.pickNumberInRange(0, 9);
-        if (n>=4) {
-            this.score+=DISTANCE;
+        if (n >= 4) {
+            this.score += DISTANCE;
         }
     }
 
