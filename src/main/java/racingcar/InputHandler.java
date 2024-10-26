@@ -9,7 +9,7 @@ import static racingcar.User.createUser;
 
 public class InputHandler {
 
-    public List<User> getCarNameFromUser() {
+    public List<User> getCarNamesFromUser() {
         String input = Console.readLine();
         String[] names = input.split(",");
         List<User> users = new ArrayList<>();

@@ -8,14 +8,15 @@ import java.util.List;
 public class RacingGame {
 
     private final InputHandler inputHandler = new InputHandler();
+    private final OutputHandler outputHandler = new OutputHandler();
 
     public void run() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        List<User> users = inputHandler.getCarNameFromUser();
 
-        System.out.println("시도할 횟수는 몇 회 인가요?");
+        outputHandler.showCarNamesInputComments();
+        List<User> users = inputHandler.getCarNamesFromUser();
+
+        outputHandler.showMoveCountInputComments();
         int moveCount = inputHandler.getMoveCountFromUser();
-
 
         System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
@@ -23,9 +24,9 @@ public class RacingGame {
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
                 int proceedScore = user.proceed(randomNumber);
 
-                System.out.println(user.getName() + " : " + "-".repeat(proceedScore));
+                outputHandler.showCarProceedScore(user, proceedScore);
             }
-            System.out.println();
+            outputHandler.showNewLine();
         }
 
         List<String> winners = new ArrayList<>();
@@ -40,6 +41,6 @@ public class RacingGame {
                 winners.add(user.getName());
             }
         }
-        System.out.print("최종 우승자 : " + String.join(", ", winners));
+        outputHandler.showWinners(winners);
     }
 }
