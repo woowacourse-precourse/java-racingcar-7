@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import racingcar.util.NumberGenerator;
+
 public final class ThresholdScoreMoveRule implements MoveRule {
     private static final int MIN_MOVE_NUMBER = 4;
     private static final int FORWARD = 1;

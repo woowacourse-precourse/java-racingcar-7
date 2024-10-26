@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,5 +6,5 @@ public class NumberGenerator {
     public static int generateNumber(int min, int max) {
         return Randoms.pickNumberInRange(min, max);
     }
-    
+
 }
