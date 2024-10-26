@@ -15,6 +15,10 @@ public class CarRace {
     private int currentRound;
 
     private void simulateRound() {
+        /* 레이스 종료시 진행 금지 */
+        if (currentRound >= numRounds) {
+            return ;
+        }
         for (RacingCar car : participants) {
             car.simulateRound();
         }
