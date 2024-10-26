@@ -18,14 +18,14 @@ public class OutputView {
         }
 
         for (int i = 1; i < winners.size(); i++) {
-            sb.append(", ").append(winners.get(i));
+            sb.append(COMMON_WINNER_DELIMITER.getValue()).append(winners.get(i));
         }
         System.out.printf(WINNER_MESSAGE.getValue(), sb);
     }
 
     public void printPositions(List<Car> cars) {
         for (Car car : cars) {
-            System.out.printf("%s : %s%n",
+            System.out.printf(POSITION_MESSAGE.getValue(),
                     car.getName(), POSITION_MARK.getValue().repeat(car.getPosition()));
         }
         System.out.println();
