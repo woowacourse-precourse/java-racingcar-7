@@ -18,5 +18,11 @@ public class IOController {
         return repeatCount;
     }
 
+    void printResultByCar(String carName, long moveCount) {
+        System.out.print(carName + " : ");
+        for (int i = 0; i < moveCount; i++) {
+            System.out.print("-");
+        }
+    }
 
 }
