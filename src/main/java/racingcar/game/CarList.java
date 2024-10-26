@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 public class CarList {
     private static final String DELIMITER = ",";
     private static final String WINNER_FORMAT = ", ";
+    private static final int SINGLE_WINNER = 1;
 
     private final Condition condition;
     private final List<Car> list;
@@ -47,7 +48,7 @@ public class CarList {
     }
 
     private String findWinners(List<String> matchResult) {
-        if (matchResult.size() != 1) {
+        if (matchResult.size() != SINGLE_WINNER) {
             return String.join(WINNER_FORMAT, matchResult);
         }
         return matchResult.getFirst();
