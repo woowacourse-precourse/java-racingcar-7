@@ -32,7 +32,7 @@
   - [ ] Car 도메인 구현
 - [ ] 자동차 레이싱 로직 구현
   - [ ] Racing 도메인 구현
-  - [ ] Progressing 도메인 구현
+  - [x] Progress 도메인 구현
 - [ ] 랜덤 숫자 전진
   - [ ] RacingService 클래스 분리
   - [ ] 자동차별 랜덤 숫자 전진 로직 구현
