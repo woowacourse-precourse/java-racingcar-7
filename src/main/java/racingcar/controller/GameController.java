@@ -36,6 +36,7 @@ public class GameController {
         String[] carNameList = stringService.splitString(carNames);
         carNameValidator.validateCarName(carNameList);
 
+        outputView.roundMessage();
         String roundInput = inputView.userInput();
         int round = roundValidator.validateRound(roundInput);
 
