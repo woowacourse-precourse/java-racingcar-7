@@ -6,7 +6,7 @@ public class RacingCar {
     private CarName carName;
     private Position position;
 
-    public RacingCar(CarName carName) {
+    private RacingCar(CarName carName) {
         this.carName = carName;
         this.position = new Position();
     }
@@ -23,6 +23,10 @@ public class RacingCar {
 
     public CarName getCarName() {
         return carName;
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     private boolean isMoveForward() {

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarNameParser implements Parser{
+
     @Override
     public Set<CarName> getParsedCarNameList(RawInput carNameString) {
 
