@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.io.InputHandler;
+import racingcar.io.Output;
 
 public class RaceController {
     private final InputHandler inputHandler;
@@ -19,6 +21,8 @@ public class RaceController {
     public void runRace() {
         setupRace();
         race.startRace(cars.getCars(), numOfRounds);
+        List<String> winnerNames = cars.findWinner();
+        Output.printWinners(winnerNames);
     }
 
     private void setupRace() {
