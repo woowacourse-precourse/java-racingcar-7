@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.utils;
 
 import java.util.Arrays;
 import org.assertj.core.api.Assertions;
@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import racingcar.dto.CarDto;
 import racingcar.dto.RoundResult;
 import racingcar.dto.Winners;
-import racingcar.utils.DisplayConverter;
 
 class DisplayConverterTest {
 
-    @DisplayName("한 라운드의 결과가 알맞은 형식으로 반환")
+    @DisplayName("라운드 결과가 올바른 형식으로 변환된다")
     @Test
-    void convertRoundResult() {
+    void 라운드_결과_변환() {
         //given
         CarDto carDto1 = new CarDto("car1", 4);
         CarDto carDto2 = new CarDto("car2", 1);
@@ -30,9 +29,9 @@ class DisplayConverterTest {
         Assertions.assertThat(roundResultMessage).isEqualTo(expectedResult);
     }
 
-    @DisplayName("우승자가 알맞은 형식으로 반환")
+    @DisplayName("우승자가 올바른 형식으로 변환된다")
     @Test
-    void convertWinners() {
+    void 우승자_변환() {
         //given
         CarDto carDto1 = new CarDto("car1", 4);
         CarDto carDto2 = new CarDto("car2", 1);

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 
@@ -6,9 +6,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.MovementDecider;
-import racingcar.domain.RandomMovementDecider;
 
 class CarTest {
     private Car car;
@@ -18,9 +15,9 @@ class CarTest {
         car = new Car("car1");
     }
 
-    @DisplayName("자동차의 name 값 정상 반환")
+    @DisplayName("자동차의 이름을 정상적으로 반환한다")
     @Test
-    void getName() {
+    void 자동차_이름_반환() {
         //given
         Car testCar = car;
         //when
@@ -29,9 +26,9 @@ class CarTest {
         Assertions.assertThat(testCar.getName()).isEqualTo(expectedName);
     }
 
-    @DisplayName("자동차의 현재 위치 값 정상 반환")
+    @DisplayName("자동차의 현재 위치를 정상적으로 반환한다")
     @Test
-    void getCurrentPosition() {
+    void 자동차_위치_반환() {
         //given
         Car testCar = car;
         //when
@@ -40,9 +37,9 @@ class CarTest {
         Assertions.assertThat(testCar.getCurrentPosition()).isEqualTo(expectedPosition);
     }
 
-    @DisplayName("Random number 4이상 시 1만큼 이동")
+    @DisplayName("랜덤 숫자가 4 이상이면 자동차가 1만큼 이동한다")
     @Test
-    void moveOrStop_moveable() {
+    void 랜덤_숫자_4이상_이동() {
         //given
         assertRandomNumberInRangeTest(() -> {
                     //given
@@ -56,9 +53,9 @@ class CarTest {
                 , 4);
     }
 
-    @DisplayName("Random number 4미만 시 이동하지 않음")
+    @DisplayName("랜덤 숫자가 4 미만이면 자동차가 이동하지 않는다")
     @Test
-    void moveOrStop_not_moveable() {
+    void 랜덤_숫자_4미만_정지() {
         //given
         assertRandomNumberInRangeTest(() -> {
                     //given

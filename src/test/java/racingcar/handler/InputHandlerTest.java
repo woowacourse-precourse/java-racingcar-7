@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.handler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,10 +13,8 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.handler.InputHandler;
 
 class InputHandlerTest {
-
 
     private final InputStream originalSystemIn = System.in;
 
@@ -31,10 +29,9 @@ class InputHandlerTest {
         System.setIn(inputStream);
     }
 
-
-    @DisplayName("사용자가 입력한 자동차 이름들이 정상적으로 추출")
+    @DisplayName("자동차 이름을 입력받으면 정상적으로 추출한다")
     @Test
-    void requestCarNames_Returns_Correct_Car_Names() {
+    void 자동차_이름_입력_정상_추출() {
         //given
         String input = "car,car1,car12\n";
         setInput(input);
@@ -47,9 +44,9 @@ class InputHandlerTest {
         assertEquals(expectedCarNames, carNames);
     }
 
-    @DisplayName("이름의 앞이나 뒤에 공백이 있을 경우 공백을 없애고 이름 저장")
+    @DisplayName("입력한 이름에 앞뒤 공백이 있을 경우 공백을 제거한다")
     @Test
-    void requestCarNames_Trims_Whitespace() {
+    void 자동차_이름_입력_공백_제거() {
         //given
         String input = "  car,car1  ,         car12\n";
         setInput(input);
@@ -62,9 +59,9 @@ class InputHandlerTest {
         assertEquals(expectedCarNames, carNames);
     }
 
-    @DisplayName("사용자가 입력한 시도 횟수가 정상적으로 반환")
+    @DisplayName("입력한 시도 횟수를 정상적으로 반환한다")
     @Test
-    void requestTotalRounds_Return_Correct_Total_Rounds() {
+    void 시도_횟수_입력_정상_반환() {
         //given
         String input = "4\n";
         setInput(input);
@@ -76,10 +73,9 @@ class InputHandlerTest {
         assertEquals(4, totalRounds);
     }
 
-
-    @DisplayName("입력한 시도 횟수가 숫자가 아니면 예외처리")
+    @DisplayName("입력한 시도 횟수가 숫자가 아니면 예외를 발생시킨다")
     @Test
-    void requestTotalRounds_number_format_error() {
+    void 시도_횟수_입력_숫자_형식_오류() {
         //given
         String input = "a\n";
         setInput(input);

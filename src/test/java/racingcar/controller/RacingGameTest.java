@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.RacingGame;
 
 class RacingGameTest extends NsTest {
 
@@ -28,18 +27,17 @@ class RacingGameTest extends NsTest {
         System.setIn(inputStream);
     }
 
-
     @DisplayName("레이싱 게임 실행 및 결과 테스트")
     @Test
     void exec() {
         // given
-        String input = "car1,car2,car3\n4\n"; // 자동차 이름과 4라운드 수 입력
-        setInput(input); // 입력을 설정하여 표준 입력을 흉내냄x
+        String input = "car1,car2,car3\n4\n";
+        setInput(input);
 
         // when
         assertRandomNumberInRangeTest(() -> {
                     RacingGame racingGame = new RacingGame();
-                    racingGame.exec(); // 레이싱 게임 실행
+                    racingGame.exec();
                 },
                 4, 1, 5, // 라운드 1: car1=4, car2=1, car3=5
                 1, 2, 2, // 라운드 2: car1=1, car2=2, car3=2
@@ -47,12 +45,13 @@ class RacingGameTest extends NsTest {
                 8, 4, 7); // 라운드 4: car1=8, car2=4, car3=7
 
         // then
-        assertThat(output()).contains("car1 : ---","car2 : --","car3 : ---", "최종 우승자 : car1, car3");
+        assertThat(output()).contains(
+                "car1 : ---", "car2 : --", "car3 : ---",
+                "최종 우승자 : car1, car3"
+        );
     }
-
 
     @Override
     protected void runMain() {
-
     }
 }
