@@ -45,10 +45,8 @@ public class RaceController {
                 .map(String::trim)
                 .collect(Collectors.toList());
 
-        InputValidator.validateEmptyInput(carNamesInput);
-        InputValidator.validateCommaSeparator(carNamesInput);
-        InputValidator.validateSameCarName(carNames);
-        InputValidator.validateCarNameLength(carNames);
+        // 자동차 입력과 관련된 모든 검증 통합
+        InputValidator.validateCarNames(carNamesInput, carNames);
 
         return carNames;
     }

@@ -3,6 +3,14 @@ package racingcar;
 import java.util.List;
 
 public class InputValidator {
+
+    public static void validateCarNames(String carNamesInput, List<String> carNames) {
+        validateEmptyInput(carNamesInput);
+        validateCommaSeparator(carNamesInput);
+        validateSameCarName(carNames);
+        validateCarNameLength(carNames);
+    }
+
     // 빈 문자열 검증
     public static void validateEmptyInput(String inputCar) {
         if (inputCar.trim().isEmpty()) {
