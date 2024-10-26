@@ -11,16 +11,7 @@ public class InputHandler {
         String input = Console.readLine();
         String[] names = input.split(",", -1);
         LinkedHashMap<String, StringBuffer> cars = new LinkedHashMap<>();
-        for (String name : names) {
-            if (name.indexOf(COMMA) != -1) { // 이름에 ,가 포함된 경우
-                throw new IllegalArgumentException();
-            }
-            if (name.length() > 5 || name.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-
-            cars.put(name, new StringBuffer());
-        }
+        storeCarName(names, cars);
         return cars;
     }
 
@@ -35,6 +26,19 @@ public class InputHandler {
             return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private static void storeCarName(String[] names, LinkedHashMap<String, StringBuffer> cars) {
+        for (String name : names) {
+            if (name.indexOf(COMMA) != -1) { // 이름에 ,가 포함된 경우
+                throw new IllegalArgumentException();
+            }
+            if (name.length() > 5 || name.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+
+            cars.put(name, new StringBuffer());
         }
     }
 }
