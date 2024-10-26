@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 public class Race {
-
     private final Cars cars;
     private final TrialCounts trialCounts;
     private int currentCounts;
@@ -14,7 +13,7 @@ public class Race {
 
     private void moveCars() {
         for (Car car : cars.getCars()) {
-            car.move(RandomNumber.getRandomNumber());
+            car.judgeMove(RandomNumber.getRandomNumber());
         }
     }
 
