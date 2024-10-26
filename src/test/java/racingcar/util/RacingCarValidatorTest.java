@@ -37,6 +37,58 @@ class RacingCarValidatorTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("주행 횟수에는 숫자 이외의 것이 입력될 수 없다")
+    void t003() {
+
+        //given
+        String testInput = "둘";
+
+        //when, then
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingCarValidator.raceCountParsingValidate(testInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("주행 횟수에는 음수가 입력될 수 없다")
+    void t004() {
+        //given
+        String testInput = "-3";
+
+        //when, then
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingCarValidator.raceCountNegativeNumberValidate(testInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("주행 횟수에는 소수가 입력될 수 없다")
+    void t005() {
+        //given
+        String testInput = "3.3";
+
+        //when, then
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingCarValidator.raceCountDecimalValidate(testInput))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("주행 횟수에 대한 유효성 검사를 진행할 수 있다")
+    void t006() {
+        //String
+        String testInput = "5";
+
+        //when, then
+        assertThatCode(() -> {
+            racingCarValidator.validateRaceCount(testInput);
+        }).doesNotThrowAnyException();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
