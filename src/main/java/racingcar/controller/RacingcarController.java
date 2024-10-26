@@ -19,11 +19,12 @@ public class RacingcarController {
         List<Racingcar> racingcarsList = createRacingcars(racingcarNames);
         RacingGame racingGame = new RacingGame(racingcarsList, moveCount);
 
+        RunGame(racingGame, racingcarsList, moveCount);
     }
 
 
-    public void RunGame(RacingGame racingGame, int moveCount) {
-        for(int i = 0; i < moveCount; i++) {
+    public void RunGame(RacingGame racingGame, List<Racingcar> racingcarList, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
             racingGame.MoveRacingcars();
             OutputView.racingcarOutputView(racingGame.getCarsLocation());
 

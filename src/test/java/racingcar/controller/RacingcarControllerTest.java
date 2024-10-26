@@ -34,7 +34,7 @@ class RacingcarControllerTest {
 
         RacingGame racingGame = new RacingGame(cars, moveCount);
         RacingcarController racingcarController = new RacingcarController();
-        racingcarController.RunGame(racingGame, moveCount);
+        racingcarController.RunGame(racingGame, cars, moveCount);
 
     }
 }
