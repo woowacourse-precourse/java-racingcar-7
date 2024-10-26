@@ -1,7 +1,10 @@
-package racingcar;
+package racingcar.io;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.io.ErrorMessage.INVALID_TRY_COUNT_MESSAGE;
+import static racingcar.io.ErrorMessage.INVALID_USER_INPUT_MESSAGE;
+import static racingcar.io.ErrorMessage.NOT_POSITIVE_NUMBER_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -27,7 +30,7 @@ class InputManagerTest {
 
         assertThatThrownBy(() -> InputManager.readUserInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("빈 문자열을 입력할 수 없습니다.");
+                .hasMessage(INVALID_USER_INPUT_MESSAGE);
     }
 
     @DisplayName("시도 횟수를 받을 때 1 부터 2147483647 의 범위를 가지는 숫자를 받아야한다.")
@@ -40,7 +43,7 @@ class InputManagerTest {
 
         assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도 횟수는 1 부터 2147483647 까지의 정수값만 입력할 수 있습니다.");
+                .hasMessage(INVALID_TRY_COUNT_MESSAGE);
     }
 
     @DisplayName("시도 횟수를 받을 때 문자열을 입력받으면 안된다.")
@@ -53,7 +56,7 @@ class InputManagerTest {
 
         assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도 횟수는 1 부터 2147483647 까지의 정수값만 입력할 수 있습니다.");
+                .hasMessage(INVALID_TRY_COUNT_MESSAGE);
     }
 
     @DisplayName("시도 횟수는 음수를 입력받을 수 없다.")
@@ -66,7 +69,7 @@ class InputManagerTest {
 
         assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도 횟수는 양수만 입력 가능합니다.");
+                .hasMessage(NOT_POSITIVE_NUMBER_ERROR_MESSAGE);
     }
 
     @DisplayName("1 부터 2147483647 까지의 입력을 받을 경우 정수형으로 형변환해 반환해야 한다.")
