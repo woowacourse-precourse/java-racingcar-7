@@ -19,10 +19,12 @@ public class RaceService {
     }
 
     public int roundService(String round) {
+        int roundCount = 0;
         try{
-            return Integer.parseInt(round);
+            roundCount = Integer.parseInt(round);
         }catch (Exception e){
             throw new IllegalArgumentException(Message.ROUND_COUNT_SHOUL_BE_NUMBER_VALIDATION_MESSAGE.getMessage());
         }
+        return roundCount;
     }
 }
