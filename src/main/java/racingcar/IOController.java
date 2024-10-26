@@ -19,6 +19,13 @@ public class IOController {
         return repeatCount;
     }
 
+    public void printResults(List<Car> cars) {
+        for (Car car : cars) {
+            printResultByCar(car.getName(), car.getMoveCount());
+            System.out.println();
+        }
+    }
+
     public void printResultByCar(String carName, long moveCount) {
         System.out.print(carName + " : ");
         for (int i = 0; i < moveCount; i++) {
