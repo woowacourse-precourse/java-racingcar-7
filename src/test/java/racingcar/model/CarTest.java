@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -45,6 +46,17 @@ class CarTest {
         //when //then
         assertThatThrownBy(() -> Car.of(carName, new RandomNumberGenerator()))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("CarName의 크기가 5를 초괴하지 않으면 예외를 발생하지 않는다.")
+    @Test
+    void carNameLengthLessThenFive() {
+        //given
+        String carName = "pobii";
+
+        //when //then
+        assertThatCode(() -> Car.of(carName, new RandomNumberGenerator()))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("랜덤값이 4보다 크다면 전진한다.")
