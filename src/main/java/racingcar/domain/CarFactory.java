@@ -17,8 +17,8 @@ public class CarFactory {
         return carFactory;
     }
 
-    public Cars createCars(String carNames) {
-        List<Car> carList = Arrays.stream(carNames.split(","))
+    public Cars createCars(String[] carNames) {
+        List<Car> carList = Arrays.stream(carNames)
                 .map(Car::new)
                 .toList();
 
