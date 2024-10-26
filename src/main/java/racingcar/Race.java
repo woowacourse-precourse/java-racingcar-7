@@ -12,7 +12,14 @@ public class Race {
     }
 
     private List<String> getWinnerNames() {
-        // TODO
+        int winnerPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public void play(int times) {
