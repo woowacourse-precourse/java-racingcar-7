@@ -11,15 +11,13 @@ public class InputView {
     private CarNameValidation carNameValidation;
     private CountValidation countValidation;
 
-    public InputView(){
-    }
 
-    public InputView(CarNameValidation carNameValidation, CountValidation countValidation){
+    public InputView(CarNameValidation carNameValidation, CountValidation countValidation) {
         this.carNameValidation = carNameValidation;
         this.countValidation = countValidation;
     }
 
-    public List<String> enterCarNames(){
+    public List<String> enterCarNames() {
         System.out.println(Message.enterName.getMessage());
         String userInput = Console.readLine();
 
@@ -33,7 +31,7 @@ public class InputView {
         return carNameList;
     }
 
-    public int enterCount(){
+    public int enterCount() {
         System.out.println(Message.count.getMessage());
         String userInput = Console.readLine();
 

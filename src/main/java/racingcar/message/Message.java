@@ -20,5 +20,7 @@ public enum Message {
         this.message = message;
     }
 
-    public String getMessage() { return message; }
+    public String getMessage() {
+        return message;
+    }
 }

@@ -5,26 +5,26 @@ public class Car {
     private String name;
     private int distance;
 
-    public Car(String name){
+    public Car(String name) {
         this.name = name;
         this.distance = 0;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return this.distance;
     }
 
-    public void go(int distance){
-        if(canMove(distance)){
+    public void go(int distance) {
+        if (canMove(distance)) {
             this.distance++;
         }
     }
 
-    public boolean canMove(int number){
+    public boolean canMove(int number) {
         return number >= MOVE_VALUE;
     }
 

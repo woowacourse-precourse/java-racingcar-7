@@ -6,22 +6,22 @@ import racingcar.message.Message;
 
 public class CarNameValidation {
 
-    public void isNotDuplicate(List<String> carNameList){
+    public void isNotDuplicate(List<String> carNameList) {
         HashSet<String> carNameSet = new HashSet<>(carNameList);
-        if(carNameList.size() != carNameSet.size()){
+        if (carNameList.size() != carNameSet.size()) {
             throw new IllegalArgumentException(Message.duplicateName.getMessage());
         }
     }
 
-    public void isNotEmpty(List<String> carNameList){
-        if(carNameList.contains(null) || carNameList.contains("")){
+    public void isNotEmpty(List<String> carNameList) {
+        if (carNameList.contains(null) || carNameList.contains("")) {
             throw new IllegalArgumentException(Message.emptyName.getMessage());
         }
     }
 
-    public void isNameLengthValid(List<String> carNameList){
+    public void isNameLengthValid(List<String> carNameList) {
         boolean hasInvalidName = carNameList.stream().anyMatch(name -> name.length() > 5);
-        if(hasInvalidName){
+        if (hasInvalidName) {
             throw new IllegalArgumentException(Message.lengthLimit.getMessage());
         }
     }

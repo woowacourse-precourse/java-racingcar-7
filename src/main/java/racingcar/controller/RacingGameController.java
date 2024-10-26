@@ -10,12 +10,12 @@ public class RacingGameController {
     private InputView inputView;
     private OutputView outputView;
 
-    public RacingGameController(InputView inputView, OutputView outputView){
+    public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
-    public void runGame(){
+    public void runGame() {
         Cars cars = Cars.setCars(inputView.enterCarNames());
         int count = inputView.enterCount();
 
@@ -26,7 +26,7 @@ public class RacingGameController {
     }
 
 
-    public void doRacing(Cars cars, int count){
+    public void doRacing(Cars cars, int count) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(System.lineSeparator());
@@ -34,7 +34,7 @@ public class RacingGameController {
 
         System.out.println(stringBuilder);
 
-        while(count > 0){
+        while (count > 0) {
             cars.moveCars();
             outputView.printResult(cars);
             count--;

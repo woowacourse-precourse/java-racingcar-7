@@ -4,10 +4,10 @@ import racingcar.message.Message;
 
 public class CountValidation {
 
-    public int convertToNaturalNum(String stringCount){
+    public int convertToNaturalNum(String stringCount) {
         try {
             int count = Integer.parseInt(stringCount);
-            if(count <= 0){
+            if (count <= 0) {
                 throw new IllegalArgumentException(Message.naturalNumber.getMessage());
             }
             return count;
