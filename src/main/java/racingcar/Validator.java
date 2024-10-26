@@ -15,8 +15,13 @@ public class Validator {
 
     public void validateCarNamesLength(List<String> carNames, int nameLengthLimits) {
         for (String carName : carNames) {
-            if (carName.length() > nameLengthLimits)
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 비어있지 않습니다.");
+            }
+
+            if (carName.length() > nameLengthLimits) {
                 throw new IllegalArgumentException("자동차 이름은 기준을 넘길 수 없습니다.");
+            }
         }
     }
 
