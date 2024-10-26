@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.util.randomnumber.RandomNumberGenerator;
 import racingcar.util.randomnumber.StubRandomNumberGenerator;
 
@@ -59,31 +61,17 @@ class CarTest {
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("랜덤값이 4보다 크다면 전진한다.")
-    @Test
-    void moveForward() {
+    @DisplayName("랜덤값의 크기가 4이상이라면 전진할 수 있다.")
+    @ParameterizedTest
+    @CsvSource(value = {"4,1", "3,0"})
+    void isMove(int randomNumber, int expectedPosition) {
         //given
-        int randomNumber = 4;
         Car car = Car.of("pobi", new StubRandomNumberGenerator(randomNumber));
 
         //when
         car.isMove();
 
         //then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @DisplayName("랜덤값이 4보다 작다면 전진하지 않는다.")
-    @Test
-    void notMoveForward() {
-        //given
-        int randomNumber = 3;
-        Car car = Car.of("pobi", new StubRandomNumberGenerator(randomNumber));
-
-        //when
-        car.isMove();
-
-        //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 }
