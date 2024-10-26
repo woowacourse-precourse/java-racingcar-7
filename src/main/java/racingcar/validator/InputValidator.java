@@ -1,6 +1,7 @@
 package racingcar.validator;
 
 import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
+import static racingcar.View.constant.ErrorMessage.INVALID_INTEGER;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import racingcar.global.exception.RacingcarException;
@@ -10,6 +11,14 @@ public class InputValidator {
         checkStringLength(input);
         checkBlank(input);
         return input;
+    }
+
+    public int checkInteger(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new RacingcarException(INVALID_INTEGER);
+        }
     }
 
     public void checkStringLength(String input) {
