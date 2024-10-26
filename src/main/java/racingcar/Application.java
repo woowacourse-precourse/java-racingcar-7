@@ -16,6 +16,7 @@ import racingcar.random.RandomIntegerGenerator;
 import racingcar.random.RandomNumberGenerator;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.RacingCarMovingStrategy;
+import racingcar.util.Splitter;
 
 public class Application {
 
@@ -30,12 +31,13 @@ public class Application {
         String inputNames = readNames(outputHandler, inputHandler);
         validateInputNames(inputNames);
 
+        Splitter splitter = new Splitter();
         RandomNumberGenerator randomNumberGenerator = new RandomIntegerGenerator(RANDOM_NUMBER_START_INCLUSIVE,
                 RANDOM_NUMBER_END_INCLUSIVE);
         NumberComparable numberComparable = new IntegerComparable();
         MovingStrategy movingStrategy = new RacingCarMovingStrategy(randomNumberGenerator, numberComparable,
                 FORWARD_MIN_INCLUSIVE);
-        Cars cars = initializeCars(inputNames, movingStrategy);
+        Cars cars = initializeCars(splitter, inputNames, movingStrategy);
         Attempt attempt = readAttempt(outputHandler, inputHandler);
 
         printRacingResult(cars, attempt, outputHandler);
@@ -54,16 +56,13 @@ public class Application {
         }
     }
 
-    private static Cars initializeCars(final String inputNames, final MovingStrategy movingStrategy) {
+    private static Cars initializeCars(final Splitter splitter, final String inputNames,
+                                       final MovingStrategy movingStrategy) {
         Cars cars = new Cars(new ArrayList<>());
-        for (String name : splitFrom(inputNames)) {
+        for (String name : splitter.splitFrom(inputNames, COMMA)) {
             cars.add(new Car(name, movingStrategy));
         }
         return cars;
-    }
-
-    private static String[] splitFrom(final String inputNames) {
-        return inputNames.split(COMMA);
     }
 
     private static Attempt readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
