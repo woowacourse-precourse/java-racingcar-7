@@ -21,4 +21,14 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public void move() {
+        if (moveStrategy.isMovable()) {
+            position++;
+        }
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

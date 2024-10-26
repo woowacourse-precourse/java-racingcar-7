@@ -16,7 +16,7 @@ public class RacingGame {
 
     private void runRounds() {
         for (int i = 0; i < attempts; i++) {
-            // 각 라운드에서 자동차 이동은 다음 기능에서 구현
+            cars.forEach(Car::move);
             OutputView.printRoundResult(cars);
         }
     }
