@@ -19,14 +19,14 @@ public class NumberRequestHandler {
         try {
             return Integer.parseInt(rawNumber);
         } catch (NumberFormatException e) {
-            throwException(NEGATIVE_NUMBER_ERROR);
+            throwException(INVALID_NUMBER_ERROR);
             return 0;
         }
     }
 
-    private void validateNegative(int rawNumber) {
+    public void validateNegative(int rawNumber) {
         if (rawNumber < 0) {
-            throwException(INVALID_NUMBER_ERROR);
+            throwException(NEGATIVE_NUMBER_ERROR);
         }
     }
 }
