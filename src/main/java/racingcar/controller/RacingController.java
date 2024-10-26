@@ -15,6 +15,9 @@ public class RacingController {
     public void startRacing() {
         List<Car> cars = prepareRacingCar();
         int roundCount = prepareRoundCount();
+
+        processRacing(cars, roundCount);
+        List<Car> winners = determineWinner(cars);
     }
 
     private List<Car> prepareRacingCar() {
@@ -26,5 +29,21 @@ public class RacingController {
     private int prepareRoundCount() {
         String rawRoundCount = inputView.inputRoundCount();
         return Integer.parseInt(rawRoundCount);
+    }
+
+    private void processRacing(List<Car> cars, int roundCount) {
+        for (int i = 0; i < roundCount; i++) {
+            cars.forEach(Car::attemptMove);
+        }
+    }
+
+    private List<Car> determineWinner(List<Car> cars) {
+        int maxMovedDistance = cars.stream()
+                .map(Car::getMovedDistance)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("자동차 중 가장 많이 이동한 거리를 구할 수 없습니다."));
+        return cars.stream()
+                .filter(car -> car.isWinner(maxMovedDistance))
+                .toList();
     }
 }
