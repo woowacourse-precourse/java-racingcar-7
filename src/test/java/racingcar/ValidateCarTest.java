@@ -2,42 +2,33 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class ValidateCarTest extends NsTest {
-    @Test
-    void 예외_테스트_쉼표뒤에이름안들어옴() {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar("pobi,,java"))
+class ValidateCarTest {
+
+    @DisplayName("자동차 이름이 5자를 넘으면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"abcdef", "가나다라마바사아자", "pobi,javaji"})
+    void 이름길이_초과_예외_테스트(String name) {
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 예외_테스트_쉼표만() {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(",,"))
+    @DisplayName("쉼표를 기준으로 앞,뒤에 이름이 오지않을 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,,java", ",,", "pobi,", ",pobi"})
+    void 쉼표_형식_예외_테스트(String name) {
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 예외_테스트_빈문자열() {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar(""))
+    @DisplayName("빈 문자열이나 스페이스가 들어오면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void 입력이_빈문자열인_경우_예외_테스트(String name) {
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 예외_테스트_이름길이초과() {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar("pobi,javaji"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 예외_테스트_쉼표로끝날경우() {
-        assertThatThrownBy(() -> ValidateCar.validateInputCar("pobi,"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
     }
 }
