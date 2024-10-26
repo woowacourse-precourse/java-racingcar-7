@@ -29,10 +29,14 @@ public class Car implements Comparable<Car> {
     }
 
     public void tryMove() {
-        int randomNumber = numberGenerator.generate();
-        if (randomNumber >= MIN_MOVE_VALUE) {
+        if (canMove()) {
             position++;
         }
+    }
+
+    private boolean canMove() {
+        int randomNumber = numberGenerator.generate();
+        return randomNumber >= MIN_MOVE_VALUE;
     }
 
     public int getPosition() {

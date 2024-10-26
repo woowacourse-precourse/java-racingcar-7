@@ -28,7 +28,7 @@ public class RacingGameController {
     private void race(Racing racing) {
         racingGameView.printGameStartMessage();
         while (!racing.isFinish()) {
-            racing.race();
+            racing.makeAttempt();
             racingGameView.printRacingStatus(racing.status());
         }
     }

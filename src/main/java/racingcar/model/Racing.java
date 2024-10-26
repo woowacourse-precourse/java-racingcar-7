@@ -42,7 +42,7 @@ public class Racing {
         return new Racing(numberGenerator, carNames, attempt);
     }
 
-    public void race() {
+    public void makeAttempt() {
         validateAttempt(attempt);
         this.attempt--;
         cars.forEach(Car::tryMove);

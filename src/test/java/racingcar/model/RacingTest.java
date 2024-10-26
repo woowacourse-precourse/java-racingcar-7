@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import racingcar.FixedNumberGenerator;
+import racingcar.util.FixedNumberGenerator;
 import racingcar.util.NumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 
@@ -55,15 +55,15 @@ class RacingTest {
     void 레이스_성공() {
         Racing racing = Racing.of(randomGenerator, validCarNames, 1);
 
-        assertDoesNotThrow(racing::race);
+        assertDoesNotThrow(racing::makeAttempt);
     }
 
     @Test
     void 레이스_실패() {
         Racing racing = Racing.of(randomGenerator, validCarNames, 1);
-        racing.race();
+        racing.makeAttempt();
 
-        assertThatThrownBy(racing::race)
+        assertThatThrownBy(racing::makeAttempt)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -72,7 +72,7 @@ class RacingTest {
         Racing racing = Racing.of(randomGenerator, validCarNames, 1);
 
         assertThat(racing.isFinish()).isFalse();
-        racing.race();
+        racing.makeAttempt();
         assertThat(racing.isFinish()).isTrue();
     }
 
@@ -85,7 +85,7 @@ class RacingTest {
                 validCarNames.get(2), 1
         );
 
-        racing.race();
+        racing.makeAttempt();
         Map<String, Integer> status = racing.status();
 
         assertThat(status).isEqualTo(expect);
@@ -96,7 +96,7 @@ class RacingTest {
         Racing racing = Racing.of(nineGenerator, validCarNames, 2);
         List<String> expect = new ArrayList<>(validCarNames);
 
-        racing.race();
+        racing.makeAttempt();
         List<String> winnersNames = racing.winnersNames();
 
         assertThat(winnersNames).isEqualTo(expect);
