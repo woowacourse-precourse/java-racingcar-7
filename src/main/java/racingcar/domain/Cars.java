@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import racingcar.util.RandomMoveCondition;
 
 public class Cars {
   private final List<Car> cars;
@@ -28,9 +28,9 @@ public class Cars {
     }
   }
 
-  public void moveCars(RandomMoveCondition randomMoveCondition) {
+  public void moveCars() {
     for (Car car : cars) {
-      if (randomMoveCondition.isMovable()) {
+      if (RandomMoveCondition.isMovable()) {
         car.move();
       }
     }
@@ -38,16 +38,17 @@ public class Cars {
 
   public List<String> getAllCarStatuses() {
     return cars.stream()
-        .map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
-        .collect(Collectors.toList());
+        .map(car -> String.format("%s : %s", car.getName(), "-".repeat(car.getPosition())))
+        .toList();
   }
 
   public List<String> findWinners() {
     int maxPosition = findMaxPosition();
+
     return cars.stream()
         .filter(car -> car.getPosition() == maxPosition)
         .map(Car::getName)
-        .collect(Collectors.toList());
+        .toList();
   }
 
   private int findMaxPosition() {

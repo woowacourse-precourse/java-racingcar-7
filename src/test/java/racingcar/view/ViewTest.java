@@ -109,7 +109,7 @@ public class ViewTest {
 
     // Then
     assertEquals("최종 우승자 : pobi, jun\n", outContent.toString());
-    
+
     System.setOut(System.out);
   }
 }

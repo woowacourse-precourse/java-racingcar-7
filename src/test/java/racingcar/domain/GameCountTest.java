@@ -12,14 +12,18 @@ public class GameCountTest {
   @DisplayName("정상적인 1자리 숫자 입력")
   void 정상적인_1자리_숫자_입력() {
     GameCount gameCount = new GameCount("3");
-    assertEquals(3, gameCount.getCount());
+    gameCount.decrement();
+    gameCount.decrement();
+    assertEquals(true, gameCount.canPlay());
+    gameCount.decrement();
+    assertEquals(false, gameCount.canPlay());
   }
 
   @Test
   @DisplayName("정상적인 큰 숫자 입력 (int 범위 내)")
   void 정상적인_큰_숫자_입력() {
     GameCount gameCount = new GameCount("2147483647");
-    assertEquals(2147483647, gameCount.getCount());
+    assertEquals(true, gameCount.canPlay());
   }
 
   // ## Bad Case

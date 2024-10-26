@@ -1,10 +1,14 @@
-package racingcar.domain;
+package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomMoveCondition {
 
-  public boolean isMovable() {
+  private RandomMoveCondition() {
+
+  }
+
+  public static boolean isMovable() {
     int randomValue = Randoms.pickNumberInRange(0, 9);
     return randomValue >= 4;
   }

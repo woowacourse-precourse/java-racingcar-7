@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class GameCount {
-  private final int count;
+  private int count;
 
   public GameCount(String input) {
     this.count = validateAndParse(input);
@@ -26,8 +26,11 @@ public class GameCount {
     }
   }
 
-  public int getCount() {
-    return count;
+  public boolean canPlay() {
+    return count > 0;
   }
 
+  public void decrement() {
+    count--;
+  }
 }
