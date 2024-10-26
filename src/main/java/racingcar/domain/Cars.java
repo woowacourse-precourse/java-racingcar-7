@@ -7,7 +7,7 @@ import java.util.List;
 public class Cars {
     private List<Car> cars;
 
-    Cars(List<String> carNames) {
+    public Cars(List<String> carNames) {
         validate(carNames);
         this.cars = new ArrayList<>(carNames.size());
         for (int i = 0; i < carNames.size(); i++) {
