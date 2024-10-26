@@ -1,15 +1,10 @@
-package racingcar.view;
+package racingcar.service;
 
-public final class ResultStorage {
-    private static final ResultStorage instance = new ResultStorage();
+public class RaceStorage {
     private final StringBuilder storage;
 
-    private ResultStorage() {
+    public RaceStorage() {
         storage = new StringBuilder();
-    }
-
-    public static ResultStorage getInstance() {
-        return instance;
     }
 
     public void addResult(String result) {
@@ -24,7 +19,4 @@ public final class ResultStorage {
         return storage.toString();
     }
 
-    public void clear() {
-        storage.setLength(0);
-    }
 }

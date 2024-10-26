@@ -6,29 +6,41 @@ import racingcar.domain.Car;
 
 
 public class RaceManager {
+    private final RaceStorage raceStorage = new RaceStorage();
 
-    public String race(List<Car> cars) {
-        StringBuilder raceResult = new StringBuilder();
-        for (Car car : cars) {
-            int random = Randoms.pickNumberInRange(0, 9);
-
-            if (random >= 4) {
-                car.move();
-            }
-            raceResult.append(car.toString()).append("\n");
+    public String race(List<Car> cars, int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            raceACycle(cars);
         }
-        raceResult.append("\n");
-        return raceResult.toString();
+
+        return raceStorage.getResults();
     }
 
     public List<Car> getWinners(List<Car> cars) {
-        int maxLocation = cars.stream()
-                .mapToInt(Car::getLocation)
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("경주차가 존재하지 않습니다."));
-
+        int maxLocation = getMaxLocation(cars);
         return cars.stream()
                 .filter(car -> car.getLocation() == maxLocation)
                 .toList();
     }
+
+    private void raceACycle(List<Car> cars) {
+        cars.forEach(car -> {
+            int random = Randoms.pickNumberInRange(0, 9);
+            if (random >= 4) {
+                car.move();
+            }
+            raceStorage.addResult(car.toString());
+        });
+
+        raceStorage.addBlankLine();
+    }
+
+    private int getMaxLocation(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("경주차가 존재하지 않습니다."));
+    }
+
+
 }
