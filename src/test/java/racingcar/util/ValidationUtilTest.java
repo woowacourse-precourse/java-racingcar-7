@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,13 +15,13 @@ import racingcar.exception.executionNumber.NotNumberException;
 import racingcar.exception.executionNumber.NumberRangeException;
 
 import static org.junit.jupiter.api.Assertions.*;
-class VerificationServiceTest {
+class ValidationUtilTest {
 
-    private VerificationService verificationService;
+    private ValidationUtil validationUtil;
 
     @BeforeEach
     void setUp() {
-        verificationService = new VerificationService();
+        validationUtil = new ValidationUtil();
     }
 
     @Nested
@@ -31,19 +31,19 @@ class VerificationServiceTest {
         @Test
         void 빈_입력값_예외테스트() {
             String input = "";
-            assertThrows(EmptyInputException.class, () -> verificationService.isValidRegisterCarsInputLength(input));
+            assertThrows(EmptyInputException.class, () -> validationUtil.isValidRegisterCarsInputLength(input));
         }
 
         @Test
         void 최대_입력값_예외테스트() {
             String input = ".".repeat(1001);
-            assertThrows(InvalidRegisterCarsInputLengthException.class, () -> verificationService.isValidRegisterCarsInputLength(input));
+            assertThrows(InvalidRegisterCarsInputLengthException.class, () -> validationUtil.isValidRegisterCarsInputLength(input));
         }
 
         @Test
         void 최대_입력값_테스트() {
             String input = "a".repeat(1000);
-            assertTrue(verificationService.isValidRegisterCarsInputLength(input));
+            assertTrue(validationUtil.isValidRegisterCarsInputLength(input));
         }
     }
 
@@ -55,7 +55,7 @@ class VerificationServiceTest {
         void 최소_길이_예외테스트() {
             List<String> carNames = new ArrayList<>();
             carNames.add("");
-            assertThrows(EmptyInputException.class, () -> verificationService.isValidCarNameLength(carNames));
+            assertThrows(EmptyInputException.class, () -> validationUtil.isValidCarNameLength(carNames));
         }
 
         @Test
@@ -63,7 +63,7 @@ class VerificationServiceTest {
             List<String> invalidCarNames = new ArrayList<>();
             invalidCarNames.add("abcdef");
             invalidCarNames.add("ghijklmnopqrstuvwxyz");
-            assertThrows(InvalidCarNameLengthException.class, () -> verificationService.isValidCarNameLength(invalidCarNames));
+            assertThrows(InvalidCarNameLengthException.class, () -> validationUtil.isValidCarNameLength(invalidCarNames));
         }
 
         @Test
@@ -74,7 +74,7 @@ class VerificationServiceTest {
             carNames.add("def");
             carNames.add("ghij");
             carNames.add("klmno");
-            assertTrue(verificationService.isValidCarNameLength(carNames));
+            assertTrue(validationUtil.isValidCarNameLength(carNames));
         }
     }
 
@@ -85,13 +85,13 @@ class VerificationServiceTest {
         @Test
         void 숫자_포함_테스트() {
             String input = "1abc,def,ghijk";
-            assertTrue(verificationService.containsInvalidCharacter(input));
+            assertTrue(validationUtil.containsInvalidCharacter(input));
         }
 
         @Test
         void 특수문자_포함_예외테스트() {
             String input = "^1abc,def,*ghijk";
-            assertThrows(InvalidCharacterException.class, () -> verificationService.containsInvalidCharacter(input));
+            assertThrows(InvalidCharacterException.class, () -> validationUtil.containsInvalidCharacter(input));
         }
     }
 
@@ -103,13 +103,13 @@ class VerificationServiceTest {
         @Test
         void 숫자_체크_테스트() {
             String input = "123";
-            assertTrue(verificationService.isNumber(input));
+            assertTrue(validationUtil.isNumber(input));
         }
 
         @Test
         void 숫자외_예외테스트() {
             String input = "^abc";
-            assertThrows(NotNumberException.class, () -> verificationService.isNumber(input));
+            assertThrows(NotNumberException.class, () -> validationUtil.isNumber(input));
         }
     }
 
@@ -120,19 +120,19 @@ class VerificationServiceTest {
         @Test
         void 최소_범위_예외테스트() {
             String input = "0";
-            assertThrows(NumberRangeException.class, () -> verificationService.isValidExecutionRange(input));
+            assertThrows(NumberRangeException.class, () -> validationUtil.isValidExecutionRange(input));
         }
 
         @Test
         void 최대_범위_예외테스트() {
             String input = "1001";
-            assertThrows(NumberRangeException.class, () -> verificationService.isValidExecutionRange(input));
+            assertThrows(NumberRangeException.class, () -> validationUtil.isValidExecutionRange(input));
         }
 
         @Test
         void 최대_범위_테스트() {
             String input = "1000";
-            assertTrue(verificationService.isValidExecutionRange(input));
+            assertTrue(validationUtil.isValidExecutionRange(input));
         }
     }
 }

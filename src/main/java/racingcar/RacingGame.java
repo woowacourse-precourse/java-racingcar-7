@@ -3,9 +3,9 @@ package racingcar;
 import racingcar.controller.GameController;
 import racingcar.model.Car;
 import racingcar.model.ExecutionNumber;
-import racingcar.service.DataTransformService;
+import racingcar.util.DataTransformUtil;
 import racingcar.service.GameService;
-import racingcar.service.VerificationService;
+import racingcar.util.ValidationUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -24,8 +24,8 @@ public class RacingGame {
     public void run() {
         GameController gameController = new GameController(
                 new GameService(),
-                new VerificationService(),
-                new DataTransformService()
+                new ValidationUtil(),
+                new DataTransformUtil()
         );
 
         List<Car> cars = registerCar(gameController);

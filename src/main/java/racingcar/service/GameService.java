@@ -1,10 +1,10 @@
 package racingcar.service;
 
 import static java.util.Comparator.*;
-import static racingcar.util.MoveCarNumberConstant.CAR_IS_NOT_STARTED_YET;
-import static racingcar.util.MoveCarNumberConstant.CAR_MOVE_CONDITION;
-import static racingcar.util.MoveCarNumberConstant.RANDOM_NUMBER_END_WITH;
-import static racingcar.util.MoveCarNumberConstant.RANDOM_NUMBER_START_WITH;
+import static racingcar.util.constant.MoveCarNumberConstant.CAR_IS_NOT_STARTED_YET;
+import static racingcar.util.constant.MoveCarNumberConstant.CAR_MOVE_CONDITION;
+import static racingcar.util.constant.MoveCarNumberConstant.RANDOM_NUMBER_END_WITH;
+import static racingcar.util.constant.MoveCarNumberConstant.RANDOM_NUMBER_START_WITH;
 
 import java.util.ArrayList;
 import java.util.List;

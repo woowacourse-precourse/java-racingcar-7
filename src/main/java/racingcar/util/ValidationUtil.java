@@ -1,10 +1,10 @@
-package racingcar.service;
+package racingcar.util;
 
-import static racingcar.util.CharacterConstant.checkInvalidCharacter;
-import static racingcar.util.MoveCarNumberConstant.EXECUTION_RANGE_MAX_VALUE;
-import static racingcar.util.MoveCarNumberConstant.EXECUTION_RANGE_MIN_VALUE;
-import static racingcar.util.RegisterCarNumberConstant.CAR_NAME_MAX_LENGTH;
-import static racingcar.util.RegisterCarNumberConstant.REGISTER_CARS_INPUT_MAX_LENGTH;
+import static racingcar.util.constant.CharacterConstant.checkInvalidCharacter;
+import static racingcar.util.constant.MoveCarNumberConstant.EXECUTION_RANGE_MAX_VALUE;
+import static racingcar.util.constant.MoveCarNumberConstant.EXECUTION_RANGE_MIN_VALUE;
+import static racingcar.util.constant.RegisterCarNumberConstant.CAR_NAME_MAX_LENGTH;
+import static racingcar.util.constant.RegisterCarNumberConstant.REGISTER_CARS_INPUT_MAX_LENGTH;
 
 import racingcar.exception.EmptyInputException;
 import racingcar.exception.carName.InvalidCharacterException;
@@ -15,7 +15,7 @@ import racingcar.exception.carName.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.executionNumber.NotNumberException;
 import racingcar.exception.executionNumber.NumberRangeException;
 
-public class VerificationService {
+public class ValidationUtil {
 
     public boolean isValidRegisterCarsInputLength(final String input) {
         if(input == null || input.isEmpty()) {

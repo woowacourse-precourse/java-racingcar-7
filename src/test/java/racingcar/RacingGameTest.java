@@ -4,10 +4,10 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.util.OutputMessageConstant.EXECUTION_RESULT;
-import static racingcar.util.OutputMessageConstant.FINAL_WINNER;
-import static racingcar.util.OutputMessageConstant.INPUT_CAR_NAME;
-import static racingcar.util.OutputMessageConstant.INPUT_TURN_COUNT;
+import static racingcar.util.constant.OutputMessageConstant.EXECUTION_RESULT;
+import static racingcar.util.constant.OutputMessageConstant.FINAL_WINNER;
+import static racingcar.util.constant.OutputMessageConstant.INPUT_CAR_NAME;
+import static racingcar.util.constant.OutputMessageConstant.INPUT_TURN_COUNT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -22,6 +22,7 @@ import racingcar.exception.carName.InvalidRegisterCarsInputLengthException;
 import racingcar.exception.executionNumber.NumberRangeException;
 
 public class RacingGameTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 

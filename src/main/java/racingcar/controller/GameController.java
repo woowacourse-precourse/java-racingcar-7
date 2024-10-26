@@ -4,31 +4,34 @@ import java.util.HashSet;
 import java.util.Set;
 import racingcar.exception.carName.DuplicateCarNameException;
 import racingcar.model.Car;
-import racingcar.service.DataTransformService;
+import racingcar.model.factory.CarFactory;
+import racingcar.util.DataTransformUtil;
 import racingcar.service.GameService;
-import racingcar.service.VerificationService;
+import racingcar.util.ValidationUtil;
 
 import java.util.List;
+
+import static racingcar.util.constant.CharacterConstant.CAR_DELIMITER;
 
 public class GameController {
 
     private final GameService gameService;
-    private final VerificationService verificationService;
-    private final DataTransformService dataTransformService;
+    private final ValidationUtil validationUtil;
+    private final DataTransformUtil dataTransformUtil;
 
-    public GameController(final GameService gameService, final VerificationService verificationService, final DataTransformService dataTransformService) {
+    public GameController(final GameService gameService, final ValidationUtil validationUtil, final DataTransformUtil dataTransformUtil) {
         this.gameService = gameService;
-        this.verificationService = verificationService;
-        this.dataTransformService = dataTransformService;
+        this.validationUtil = validationUtil;
+        this.dataTransformUtil = dataTransformUtil;
     }
 
     public List<Car> registerCars(final String input) {
-        verificationService.isValidRegisterCarsInputLength(input);
-        verificationService.containsInvalidCharacter(input);
-        List<String> carNames = dataTransformService.splitInput(input);
+        validationUtil.isValidRegisterCarsInputLength(input);
+        validationUtil.containsInvalidCharacter(input);
+        List<String> carNames = dataTransformUtil.splitInput(input, String.valueOf(CAR_DELIMITER.getCharacter()));
 
-        verificationService.isValidCarNameLength(carNames);
-        List<Car> cars = dataTransformService.convertToCar(carNames);
+        validationUtil.isValidCarNameLength(carNames);
+        List<Car> cars = CarFactory.convertToCar(carNames);
         Set<Car> deduplicationCars = new HashSet<>(cars);
         if(cars.size() != deduplicationCars.size()) {
             throw new DuplicateCarNameException();
@@ -37,10 +40,10 @@ public class GameController {
     }
 
     public int registerExecutionNumber(final String executionNumberInput) {
-        verificationService.isNumber(executionNumberInput);
-        verificationService.isValidExecutionRange(executionNumberInput);
+        validationUtil.isNumber(executionNumberInput);
+        validationUtil.isValidExecutionRange(executionNumberInput);
 
-        return dataTransformService.parseToInt(executionNumberInput);
+        return dataTransformUtil.parseToInt(executionNumberInput);
     }
 
     public void race(Car racingCar) {

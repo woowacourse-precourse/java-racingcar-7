@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static racingcar.util.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
+import static racingcar.util.constant.RegisterCarNumberConstant.PRIME_CAR_DISTANCE;
 
 import java.util.Objects;
 
