@@ -2,7 +2,9 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.model.Race;
+import racingcar.model.TryCount;
 import racingcar.model.Winner;
+import racingcar.validator.TryCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -19,7 +21,7 @@ public class RacingCarController {
 
     public void playGame() {
         Cars cars = makeCars(scanCarNames());
-        int tryCount = scanTryCount();
+        TryCount tryCount = scanTryCount();
         raceCars(cars, tryCount);
         printWinner(cars);
     }
@@ -33,16 +35,16 @@ public class RacingCarController {
         return new Cars(carNames);
     }
 
-    private int scanTryCount(){
+    private TryCount scanTryCount(){
         outputView.printTryOutCountMessage();
-        return inputView.scanTryCount();
+        return new TryCount(inputView.scanTryCount(), new TryCountValidator());
     }
 
-    private void raceCars(Cars cars, int tryCount) {
+    private void raceCars(Cars cars, TryCount tryCount) {
         outputView.printMoveResultMessage();
         Race race = new Race();
 
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < tryCount.getTryCount(); i++) {
             Cars racingCars = race.raceCars(cars);
             outputView.printMovedCars(racingCars);
         }
