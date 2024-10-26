@@ -27,15 +27,15 @@ public class OutputView {
         System.out.println(); // TODO: 줄바꿈 이렇게?
     }
 
-    public static void printWinner(List<String> winners) {
+    public static void printWinner(List<Car> winners) {
         // TODO: 이렇게 한줄한줄 해야되나?
         System.out.print(InteractionMessageEnum.WINNERS_MESSAGE);
         System.out.print(InteractionMessageEnum.COLON);
 
         // TODO: 아래 로직 메서드 분리 할지말지?
         for (int i = 0; i < winners.size() - 1; i++) {
-            System.out.print(winners.get(i) + InteractionMessageEnum.COMMA);
+            System.out.print(winners.get(i).getName() + InteractionMessageEnum.COMMA);
         }
-        System.out.println(winners.get(winners.size() - 1));
+        System.out.println(winners.get(winners.size() - 1).getName());
     }
 }
