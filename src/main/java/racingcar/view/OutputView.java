@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class OutputView {
     private static final String MOVE_DISTANCE_SYMBOL = "-";
@@ -10,8 +11,8 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public static void outputRaceIntermediateResult(List<Car> cars) {
-        for (Car car : cars) {
+    public static void outputRaceIntermediateResult(Cars cars) {
+        for (Car car : cars.getCars()) {
             System.out.println(String.format("%s : %s"
                     , car.getName()
                     , MOVE_DISTANCE_SYMBOL.repeat(car.getMoveDistance())));

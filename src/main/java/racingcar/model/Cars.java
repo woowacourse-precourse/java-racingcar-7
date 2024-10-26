@@ -15,9 +15,9 @@ public class Cars {
         validator.validate(this);
     }
 
-    public List<Car> moveCars() {
+    public Cars moveCars() {
         cars.forEach(Car::move);
-        return cars;
+        return this;
     }
 
     public List<String> findWinnerNames() {
