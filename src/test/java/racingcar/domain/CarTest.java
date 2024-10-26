@@ -1,9 +1,9 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
@@ -19,7 +19,7 @@ public class CarTest {
         //given
         int randomNumber = 4;
         //when
-        car.move(randomNumber);
+        car.judgeMove(randomNumber);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -30,7 +30,7 @@ public class CarTest {
         //given
         int randomNumber = 1;
         //when
-        car.move(randomNumber);
+        car.judgeMove(randomNumber);
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }
