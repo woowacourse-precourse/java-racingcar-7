@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -73,6 +74,23 @@ public class RacingCarService {
     }
 
     private int createRandomNumber() {
-        return (int) (Math.random() * 10);
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public void validateCarNamesInput(String carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        if (!carNames.contains(",")) {
+            throw new IllegalArgumentException("자동차 이름은 쉼표(,)를 기준으로 구분해야 합니다.");
+        }
+
+        List<String> listCarNames = splitCarNames(carNames);
+
+        for (String carName : listCarNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            }
+        }
     }
 }

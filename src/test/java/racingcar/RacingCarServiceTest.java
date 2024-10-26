@@ -116,4 +116,31 @@ class RacingCarServiceTest extends RacingCarService {
         //then
         Assertions.assertEquals(expect, result);
     }
+
+    @Test
+    @DisplayName("입력을 검증하는 메서드")
+    public void testValidateCarNamesInput() throws Exception {
+        //given
+        //공백이 들어올 경우
+        String expect1 = "";
+        //5자 이상이 들어올 경우
+        String expect2 = "car1,car2car3";
+        //구분자로 쉼표가 없을 경우
+        String expect3 = "car1;car2;car3";
+        //공백이 들어올 경우
+
+        //when then
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                        racingCarService.validateCarNamesInput(expect1),
+                "잘못된 입력입니다");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                        racingCarService.validateCarNamesInput(expect2),
+                "자동차 이름은 쉼표(,)를 기준으로 구분해야 합니다.");
+
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                        racingCarService.validateCarNamesInput(expect3),
+                "이름은 5자 이하만 가능합니다.");
+    }
+
 }
