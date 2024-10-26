@@ -15,19 +15,41 @@ public class CarsService {
         this.cars = cars;
     }
 
-    public List<String> carsDetail(){
-        List<String> carsDetailList = new ArrayList<>();
+    public String carsDetail(){
+        StringBuilder carDetail = new StringBuilder();
         for(int i = startIndex; i < cars.getCarsSize(); i++){
             String carName = cars.getCarsName().get(i);
             int carPosition = cars.getCarsPosition().get(i);
-            carsDetailList.add(carName + " : ");
+            carDetail.append(carName + " : ");
+
             for(int j = startIndex; j < carPosition; j++){
-                carsDetailList.add("-");
+                carDetail.append("-");
             }
-            carsDetailList.add("\n");
+
+            carDetail.append("\n");
         }
 
-        return carsDetailList;
+        return carDetail.toString();
+    }
+
+    public List<String> winnerList(){
+        List<String> winner = new ArrayList<>();
+        for(int i = startIndex; i < cars.getCarsSize(); i++) {
+            if(cars.getCarsPosition().get(i) == getMaxPosition())
+                winner.add(cars.getCarsName().get(i));
+        }
+
+        return winner;
+    }
+
+    private int getMaxPosition(){
+        int max = 0;
+        for(int i = startIndex; i < cars.getCarsSize(); i++) {
+            if(max < cars.getCarsPosition().get(i))
+                max = cars.getCarsPosition().get(i);
+        }
+
+        return max;
     }
 
 }
