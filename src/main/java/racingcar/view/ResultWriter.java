@@ -1,8 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.Car;
-import racingcar.CarName;
 import racingcar.Cars;
 
 public class ResultWriter {

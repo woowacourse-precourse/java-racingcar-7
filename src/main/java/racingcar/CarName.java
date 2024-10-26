@@ -26,7 +26,7 @@ public class CarName {
 
     private void validateMinLength(final String content) {
         if (content.length() < MIN_LENGTH) {
-            throw new IllegalArgumentException("이름은ㅇ " + MIN_LENGTH + "자 이상이어야 합니다.");
+            throw new IllegalArgumentException("이름은 " + MIN_LENGTH + "자 이상이어야 합니다.");
         }
     }
 
