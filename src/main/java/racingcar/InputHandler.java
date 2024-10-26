@@ -17,8 +17,8 @@ public class InputHandler {
                 .toList();
     }
 
-    public int inputTryCount() {
+    public TryCount inputTryCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return Integer.parseInt(Console.readLine());
+        return TryCount.of(Console.readLine());
     }
 }
