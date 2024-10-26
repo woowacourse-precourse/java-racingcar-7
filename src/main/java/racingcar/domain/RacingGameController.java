@@ -12,12 +12,14 @@ public class RacingGameController {
     private RandomDigitGenerator rdg;
 
     public RacingGameController(List<String> carNames, int tryCount, RandomDigitGenerator rdg) {
+        validTryCount(tryCount);
         this.cars = createCar(carNames);
         this.tryCount = tryCount;
         this.rdg = rdg;
     }
 
     // 각 위치 출력하는 부분 OutputView로 분리해야 함
+
     public void playGame() {
 
         for (int i = 0; i < tryCount; i++) {
@@ -30,7 +32,6 @@ public class RacingGameController {
             System.out.println();
         }
     }
-
     private List<Car> createCar(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
@@ -49,5 +50,11 @@ public class RacingGameController {
         return winner.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private void validTryCount(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("1이상 2,147,483,647이하의 양수만 입력 가능합니다.");
+        }
     }
 }
