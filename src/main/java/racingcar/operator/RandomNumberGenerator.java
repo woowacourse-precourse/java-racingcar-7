@@ -2,8 +2,10 @@ package racingcar.operator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Random {
+public class ExtractRandomNumber {
     public int ExtractRandomNum() {
         return Randoms.pickNumberInRange(0, 9);
     }
 }
+
+

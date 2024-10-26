@@ -2,23 +2,23 @@ package racingcar.operator;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.user.UserInfo;
+import racingcar.user.UserObject;
 import racingcar.view.OutputView;
 
 public class FinalScore {
-    List<UserInfo> topScores = new ArrayList<>();
+    List<UserObject> topScores = new ArrayList<>();
     OutputView output = new OutputView();
     int maxScore = Integer.MIN_VALUE;
 
-    public void totalScore(UserInfo[] users) {
+    public void totalScore(UserObject[] users) {
 
-        for (UserInfo user : users) {
+        for (UserObject user : users) {
             if (user.scoreNum > maxScore) {
                 maxScore = user.scoreNum;
             }
         }
 
-        for (UserInfo user : users) {
+        for (UserObject user : users) {
             if (user.scoreNum == maxScore) {
                 topScores.add(user);
             }
@@ -29,7 +29,7 @@ public class FinalScore {
     private void Winner() {
         output.PrintWinnerSentence();
         int n = topScores.size();
-        for (UserInfo user : topScores) {
+        for (UserObject user : topScores) {
             n--;
             output.PrintWinner(user.name);
             if (n != 0) {
