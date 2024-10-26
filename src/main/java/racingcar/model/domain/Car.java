@@ -3,6 +3,8 @@ package racingcar.model.domain;
 public class Car {
 
     private static final int START_POSITION = 0;
+    private static final int MINIMUM_MOVABLE_NUMBER = 4;
+
     private final String name;
     private final int position;
 
@@ -11,6 +13,7 @@ public class Car {
         this.name = name;
         this.position = START_POSITION;
     }
+
 
     private Car(String name, int position) {
         this.name = name;
@@ -25,16 +28,25 @@ public class Car {
         return new Car(name);
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
-
     public int getPosition() {
         return this.position;
     }
 
-    public Car moveForward() {
-        return new Car(this.name, this.position + 1);
+    public Car moveForward(int number) {
+        if (canMove(number)) {
+            return new Car(this.name, this.position + 1);
+        }
+        return this;
+    }
+
+    private boolean canMove(int radomNumber) {
+        if (radomNumber < MINIMUM_MOVABLE_NUMBER) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

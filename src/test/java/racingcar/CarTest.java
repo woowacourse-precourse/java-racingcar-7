@@ -12,7 +12,7 @@ class CarTest {
     @Test
     void 이름길이가_5일시_Car_객체를_생성한다() {
         Car car = Car.from("다섯글자임");
-        assertEquals("다섯글자임", car.toString());
+        assertEquals("다섯글자임", car.getName());
     }
 
     @Test
@@ -40,10 +40,16 @@ class CarTest {
     }
 
     @Test
-    void 자동차_한_칸_전진한다() {
+    void 숫자4이상일경우_한_칸_전진한다() {
         Car car = Car.from("name");
-        Car movedCar = car.moveForward();
+        Car movedCar = car.moveForward(4);
         assertEquals(1, movedCar.getPosition());
     }
 
+    @Test
+    void 숫자4미만일경우_전진하지_못한다() {
+        Car car = Car.from("name");
+        Car movedCar = car.moveForward(3);
+        assertEquals(0, movedCar.getPosition());
+    }
 }
