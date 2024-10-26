@@ -69,5 +69,5 @@
 
 ### 경주 전진 전략 ###
 
-- <b>임계값 경주 전략 (ThresholdRaceMoveStrategy)</b>
+- <b>임계값 전진 전략 (ThresholdMoveStrategy)</b>
   - 임계값<code>threshold</code>으로 전진 여부<code>canMove</code>를 결정할 수 있다.
