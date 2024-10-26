@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.controller;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
@@ -6,22 +6,22 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class NameSplitterTest {
+class StringSplitterTest {
 
-    private NameSplitter nameSplitter;
+    private StringSplitter stringSplitter;
 
     @BeforeEach
     void setUp() {
-        nameSplitter = new NameSplitter();
+        stringSplitter = new StringSplitter();
     }
 
     @Test
-    void 쉼표로_구분된_이름을_리스트로_분리한다() {
+    void 쉼표로_구분된_문자열을_리스트로_분리한다() {
         // given
         String input = "철수,영희,짱구";
 
         // when
-        List<String> result = nameSplitter.splitNames(input);
+        List<String> result = stringSplitter.split(input);
 
         // then
         assertSoftly(softly -> {
@@ -33,12 +33,12 @@ class NameSplitterTest {
     }
 
     @Test
-    void 이름_앞뒤의_공백을_제거하고_분리한다() {
+    void 문자열_앞뒤의_공백을_제거하고_분리한다() {
         // given
         String input = "맹구 , 유리  ,  훈이";
 
         // when
-        List<String> result = nameSplitter.splitNames(input);
+        List<String> result = stringSplitter.split(input);
 
         // then
         assertSoftly(softly -> {
@@ -55,7 +55,7 @@ class NameSplitterTest {
         String input = "";
 
         // when
-        List<String> result = nameSplitter.splitNames(input);
+        List<String> result = stringSplitter.split(input);
 
         // then
         assertSoftly(softly -> {
@@ -72,7 +72,7 @@ class NameSplitterTest {
         String input = ",,";
 
         // when
-        List<String> result = nameSplitter.splitNames(input);
+        List<String> result = stringSplitter.split(input);
 
         // then
         assertSoftly(softly -> {
@@ -86,12 +86,12 @@ class NameSplitterTest {
     }
 
     @Test
-    void 단일_이름을_입력하면_하나의_요소를_가진_리스트를_반환한다() {
+    void 단일_문자열을_입력하면_하나의_요소를_가진_리스트를_반환한다() {
         // given
         String input = "둘리";
 
         // when
-        List<String> result = nameSplitter.splitNames(input);
+        List<String> result = stringSplitter.split(input);
 
         // then
         assertSoftly(softly -> {

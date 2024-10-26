@@ -1,24 +1,23 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.service.NameSplitter;
 import racingcar.view.InputView;
 
 public class RacingController {
     private final InputView inputView;
-    private final NameSplitter nameSplitter;
+    private final StringSplitter stringSplitter;
 
     public RacingController(
             InputView inputView,
-            NameSplitter nameSplitter
+            StringSplitter stringSplitter
     ) {
         this.inputView = inputView;
-        this.nameSplitter = nameSplitter;
+        this.stringSplitter = stringSplitter;
     }
 
     public void run() {
         String userInput = inputView.getCarNames();
-        List<String> splitNames = nameSplitter.splitNames(userInput);
+        List<String> splitNames = stringSplitter.split(userInput);
 
     }
 }
