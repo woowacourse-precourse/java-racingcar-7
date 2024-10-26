@@ -23,7 +23,7 @@ public class GameController {
         int playCount = inputCountProcess();
         gameService = new GameService(playCount, carList);
 
-        carsProcess(playCount);
+        carsProcess();
         resultProcess();
     }
 
@@ -39,8 +39,9 @@ public class GameController {
         return InputUtil.inputCount();
     }
 
-    public void carsProcess(int count) {
+    public void carsProcess() {
         OutputView.outputProcessResultView();
+        int count = gameService.getPlayCount();
         for (int i = 0; i < count; i++) {
             OutputView.outputProcessResultListView(gameService.carProcess());
         }
