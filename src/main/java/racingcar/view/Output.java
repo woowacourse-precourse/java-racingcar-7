@@ -7,8 +7,6 @@ import racingcar.domain.Car;
 public class Output {
 
 	public static void printTotalCarCurrentStatus(List<Car> cars) {
-		System.out.println("실행 결과");
-
 		cars.forEach(Output::printCarCurrentStatus);
 		System.out.println();
 	}
@@ -27,6 +25,10 @@ public class Output {
 		}
 
 		System.out.println(car.getName() + " : " + positionString);
+	}
+
+	public static void printExecutionResult(){
+		System.out.println("실행 결과");
 	}
 
 	public static void printRequestCarNames() {

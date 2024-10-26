@@ -28,6 +28,8 @@ public class RacingGame {
 	}
 
 	private void move(Cars cars, Turn turn) {
+		Output.printExecutionResult();
+
 		int current_turn = 1;
 
 		while (current_turn <= turn.getTurnCount()){
