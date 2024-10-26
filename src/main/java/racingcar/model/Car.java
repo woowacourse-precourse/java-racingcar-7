@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Car {
 
     private String name;
@@ -18,6 +21,13 @@ public class Car {
         return true;
     }
 
+    public List<Car> splitByDelimiter(final String userInput) {
+        final String delimiter = ",";
+        return Arrays.stream(userInput.split(delimiter))
+                .filter(name -> isValidateLength(name, 5))
+                .map(Car::new)
+                .toList();
+    }
 
     public String getName() {
         return name;
