@@ -43,7 +43,7 @@
 ### Main
 - [ ] Application
 ### Model
-- [ ] Car
+- [x] Car
 - [ ] Cars
 - [ ] Referee
 - [x] StringSplitter
