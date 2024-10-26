@@ -12,7 +12,7 @@ public class GameService {
         this.outputView = outputView;
     }
 
-    public void gameStart(int tryCount) {
+    public void gameStart(final int tryCount) {
         outputView.printBeforeMessage();
         for (int i = 0; i < tryCount; i++) {
             game.playOneRound();

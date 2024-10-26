@@ -15,7 +15,7 @@ public class CarNameValidator {
         }
     }
 
-    public void validateCarNamesUnique(List<Car> carList) {
+    public void validateCarNamesUnique(final List<Car> carList) {
         long distinctCount = carList.stream().map(Car::getName).distinct().count();
         if (distinctCount != carList.size()) {
             throw new IllegalArgumentException(GameErrorMessage.CAR_NAME_DUPLICATED.getValue());

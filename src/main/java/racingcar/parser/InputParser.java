@@ -25,12 +25,12 @@ public class InputParser {
         return carList;
     }
 
-    private List<Car> splitCarsToList(String cars) {
+    private List<Car> splitCarsToList(final String cars) {
         String[] carNames = cars.split(DELIMITER);
         return createCarList(carNames);
     }
 
-    private List<Car> createCarList(String[] carNames) {
+    private List<Car> createCarList(final String[] carNames) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             carNameValidator.validateCarNameLength(carName);
@@ -45,7 +45,7 @@ public class InputParser {
         return count;
     }
 
-    private int parseInteger(String input) {
+    private int parseInteger(final String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

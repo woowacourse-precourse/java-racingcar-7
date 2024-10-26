@@ -15,7 +15,7 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveOrNothing(int randomNum) {
+    public void moveOrNothing(final int randomNum) {
         if (randomNum >= MOVE_ABLE_NUM) {
             moveForward();
         }

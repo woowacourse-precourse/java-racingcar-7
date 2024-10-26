@@ -15,7 +15,7 @@ public class RacingGame {
     private final InputParser inputParser;
     private final OutputView outputView;
 
-    public RacingGame(InputView inputView, InputParser inputParser, OutputView outputView) {
+    public RacingGame(final InputView inputView, final InputParser inputParser, final OutputView outputView) {
         this.inputView = inputView;
         this.inputParser = inputParser;
         this.outputView = outputView;
@@ -33,11 +33,11 @@ public class RacingGame {
         gameService.announceTheWinners();
     }
 
-    private List<Car> creatCarListUsingGame(Input carNames) {
+    private List<Car> creatCarListUsingGame(final Input carNames) {
         return inputParser.parseRacingCarList(carNames);
     }
 
-    private int getTryCount(Input tryCountString) {
+    private int getTryCount(final Input tryCountString) {
         return inputParser.parseTryCount(tryCountString);
     }
 
