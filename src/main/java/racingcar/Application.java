@@ -54,7 +54,7 @@ public class Application {
         // TODO: 프로그램 구현
         Application racingGame = new Application();
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNameInput = Console.readLine();  //사용자 입력
+        String carNameInput = Console.readLine();
         String[] carNames = racingGame.setCarName(carNameInput);
         racingGame.setCar(carNames);
 
