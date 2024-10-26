@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import racingcar.exception.CarNameLengthException;
 import racingcar.strategy.Mode;
 import racingcar.validation.CarNameValidation;
 import racingcar.view.OutputView;
@@ -9,10 +10,14 @@ public class Car {
     private Mode mode;
 
     public Car(String carName) {
-        if (CarNameValidation.validateCarNameLength(carName)) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
-        }
+        validateCarName(carName);
         this.carName = carName;
+    }
+
+    private void validateCarName(String carName) {
+        if (CarNameValidation.validateCarNameLength(carName)) {
+            throw new CarNameLengthException();
+        }
     }
 
     public void tryMoving() {
