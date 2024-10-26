@@ -87,9 +87,9 @@ public class Application {
     public static void printCarInfo(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
             StringBuilder carInfo = new StringBuilder();
-            carInfo.append(racingCar.name);
-            carInfo.append(" : ");
-            carInfo.append(GO.repeat(racingCar.position));
+            carInfo.append(racingCar.name)
+                    .append(" : ")
+                    .append(GO.repeat(racingCar.position));
             System.out.println(carInfo);
         }
     }
