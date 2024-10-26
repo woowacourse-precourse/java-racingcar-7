@@ -8,9 +8,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.Record;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundRecord;
 
 class RacingServiceTest {
 
@@ -34,8 +34,8 @@ class RacingServiceTest {
         //then
         List<Result> raceResults = results.getResults();
         Result firstResult = raceResults.getFirst();
-        List<Record> firstRecords = firstResult.getRecords();
-        Record firstRecord = firstRecords.getFirst();
+        List<RoundRecord> firstRecords = firstResult.getRecords();
+        RoundRecord firstRecord = firstRecords.getFirst();
 
         assertThat(raceResults).hasSize(roundCount);
         assertThat(firstResult.getRound()).isEqualTo(1);

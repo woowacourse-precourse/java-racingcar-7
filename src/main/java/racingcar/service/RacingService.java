@@ -6,9 +6,9 @@ import java.util.List;
 import racingcar.constant.Constant;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.Record;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundRecord;
 
 public class RacingService {
 
@@ -26,7 +26,7 @@ public class RacingService {
         List<Car> raceCars = cars.getCars();
         for (Car car : raceCars) {
             moveOrStop(car);
-            Record record = new Record(car.getName(), car.getDistance());
+            RoundRecord record = new RoundRecord(car.getName(), car.getDistance());
             result.addRecord(record);
         }
     }

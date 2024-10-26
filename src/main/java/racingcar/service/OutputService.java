@@ -5,9 +5,9 @@ import java.util.List;
 import racingcar.constant.Constant;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.Record;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundRecord;
 
 public class OutputService {
 
@@ -24,7 +24,7 @@ public class OutputService {
     }
 
     private void addResult(StringBuilder sb, Result result) {
-        for (Record record : result.getRecords()) {
+        for (RoundRecord record : result.getRecords()) {
             sb.append(record.getCarName()).append(" : ");
             sb.append(convertToDash(record.getDistance()));
             sb.append(System.lineSeparator());

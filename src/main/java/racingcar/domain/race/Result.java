@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Result {
     private final int round;
-    private final List<Record> records;
+    private final List<RoundRecord> records;
 
     public Result(int round) {
         this.round = round;
-        this.records = new ArrayList<>();
+        this.records = new ArrayList<RoundRecord>();
     }
 
-    public void addRecord(racingcar.domain.race.Record record) {
+    public void addRecord(RoundRecord record) {
         this.records.add(record);
     }
 
@@ -20,7 +20,7 @@ public class Result {
         return round;
     }
 
-    public List<Record> getRecords() {
+    public List<RoundRecord> getRecords() {
         return records;
     }
 }
