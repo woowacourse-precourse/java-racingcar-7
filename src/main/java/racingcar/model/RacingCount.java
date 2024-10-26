@@ -10,7 +10,7 @@ public class RacingCount {
     private int tryCount;
 
     private RacingCount(int tryCount) {
-        validateTryCount(tryCount);
+        validate(tryCount);
         this.tryCount = tryCount;
     }
 
@@ -26,7 +26,7 @@ public class RacingCount {
         return this.tryCount != END_TRY_COUNT;
     }
 
-    private void validateTryCount(int tryCount) {
+    private void validate(int tryCount) {
         if (isTryCount(tryCount)) {
             throw new IllegalArgumentException("시도횟수는 최소 1회 이상이여아 합니다.");
         }
