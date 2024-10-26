@@ -34,7 +34,7 @@ class RandomTest {
     void shuffle() {
         List<Integer> numbers = List.of(1, 2, 3);
         List<Integer> shuffle = Randoms.shuffle(numbers);
-        assertThat(shuffle).isNotEqualTo(numbers);
+        assertThat(shuffle).containsAll(numbers);
     }
 
     @Test
