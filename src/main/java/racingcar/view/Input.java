@@ -32,6 +32,9 @@ public class Input {
 
     public int getTryNum() {
         int tryNum = Integer.parseInt(Console.readLine());
+        if (tryNum <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
         return tryNum;
     }
 
