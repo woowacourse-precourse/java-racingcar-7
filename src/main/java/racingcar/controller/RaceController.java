@@ -1,6 +1,7 @@
 package racingcar.controller;
 
-import racingcar.domain.Winners;
+import java.util.List;
+import racingcar.domain.Name;
 import racingcar.domain.car.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -20,15 +21,15 @@ public class RaceController {
         int count = inputView.receiveCount();
 
         outputView.printRaceResultPhrase();
-        outputView.printWinner(race(cars, count));
+        outputView.printWinners(race(cars, count));
     }
 
-    private Winners race(Cars cars, int count) {
+    private List<Name> race(Cars cars, int count) {
         while (count-- > 0) {
             cars.move();
             outputView.printRaceResult(cars);
         }
 
-        return new Winners(cars);
+        return cars.win();
     }
 }

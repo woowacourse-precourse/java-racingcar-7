@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 class CarsTest {
@@ -33,7 +32,7 @@ class CarsTest {
         Cars cars = new Cars(carList);
 
         //when
-        List<Car> winners = cars.win();
+        List<Name> winners = cars.win();
 
         //then
         assertThat(winners.size()).isEqualTo(3);
@@ -46,7 +45,7 @@ class CarsTest {
         cars.getCars().getFirst().process(5);
 
         //when
-        List<Car> winners = cars.win();
+        List<Name> winners = cars.win();
 
         //then
         assertThat(winners.size()).isEqualTo(1);

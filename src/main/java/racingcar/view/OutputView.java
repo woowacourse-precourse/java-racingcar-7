@@ -1,12 +1,16 @@
 package racingcar.view;
 
-import racingcar.domain.Winners;
+import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.domain.Name;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.view.console.Writer;
 
 public class OutputView {
 
+    private static final String WINNER_TITLE = "최종 우승자 : %s";
+    private static final String WINNER_SEPARATOR = ", ";
     private static final String RACE_RESULT = "실행 결과";
     private static final String EMPTY = "";
 
@@ -21,7 +25,16 @@ public class OutputView {
         Writer.print(EMPTY);
     }
 
-    public void printWinner(Winners winners) {
-        Writer.print(winners.toString());
+    public void printWinners(List<Name> winners) {
+        Writer.print(generateWinnerFormat(winners));
+    }
+
+    private String generateWinnerFormat(List<Name> winners) {
+        return String.format(
+                WINNER_TITLE,
+                winners.stream()
+                        .map(Name::getName)
+                        .collect(Collectors.joining(WINNER_SEPARATOR))
+        );
     }
 }

@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Name;
 import racingcar.exception.ErrorMessage;
 import racingcar.exception.RaceException;
 import racingcar.util.RandomValue;
@@ -27,8 +28,10 @@ public class Cars {
         }
     }
 
-    public List<Car> win() {
-        return findSamePositionCar(getMaxPosition());
+    public List<Name> win() {
+        return findSamePositionCar(getMaxPosition()).stream()
+                .map(Car::getName)
+                .toList();
     }
 
     private int getMaxPosition() {
