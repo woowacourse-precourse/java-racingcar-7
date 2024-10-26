@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.BlankInputException;
 import racingcar.exception.CarNameFormatException;
+import racingcar.exception.MaxRoundCountException;
 import racingcar.exception.RoundNumberFormatException;
 
 import java.io.ByteArrayInputStream;
@@ -103,6 +104,29 @@ class InputViewTest {
     @DisplayName("경주 횟수에 숫자를 입력한다.")
     @ValueSource(strings = {"5", "05", "005", "0005", "000005", "10", "20"})
     void validateInputNumber(String input) {
+        //given
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when & then
+        org.assertj.core.api.Assertions.assertThatCode(InputView::inputRoundNumber)
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력받은 경주 횟수가 0회이거나 50회를 초과할 경우, 예외를 발생시킨다.")
+    @ValueSource(strings = {"0", "51", "52", "53", "100", "200", "300"})
+    void validateRoundCountExceedsLimit(String input) {
+        //given
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when & then
+        Assertions.assertThrows(MaxRoundCountException.class, InputView::inputRoundNumber);
+    }
+
+    @ParameterizedTest
+    @DisplayName("경주 횟수를 50회로 설정할 수 있다.")
+    @ValueSource(strings = "50")
+    void validateRoundCountThreshold(String input) {
         //given
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
