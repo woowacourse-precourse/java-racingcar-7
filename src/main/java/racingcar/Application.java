@@ -34,6 +34,8 @@ class Car {
     }
 }
 
+
+//자동차 경주 기능
 class Racing {
     private final List<Car> cars;
     private final int trialCount;
@@ -65,6 +67,7 @@ class Racing {
     }
 }
 
+//프로그램 시작점
 public class Application {
     public static void main(String[] args) {
         try{
@@ -75,6 +78,7 @@ public class Application {
         } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
     }
 
+    //자동차 이름 기능
     private static List<String> inputCarNames() {
        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
        String carNamesInput = Console.readLine();
@@ -87,17 +91,22 @@ public class Application {
         if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
     }
 
+    //경주 시도 횟수 기능
     private static int inputTrialCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String trialCount = Console.readLine();
-        int trialCount = parseTrialCount(trialCoutInput);
+        String trialCountInput = Console.readLine();
+        int trialCount = parseTrialCount(trialCountInput);
         CheckTrialCount(trialCount);
         return trialCount;
     }
 
-    private static int parseTrialCount(String trialCoutInput) {
-        try { return Integer.parseInt(trialCoutInput); }
+    private static int parseTrialCount(String trialCountInput) {
+        try { return Integer.parseInt(trialCountInput); }
         catch (NumberFormatException e) { throw new IllegalArgumentException(); }
+    }
+
+    private static void CheckTrialCount(int trialCount) {
+        if (trialCount <= 0) { throw new IllegalArgumentException(); }
     }
 
 }
