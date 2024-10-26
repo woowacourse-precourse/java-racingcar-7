@@ -11,8 +11,8 @@ public class RacingCar {
 
     public void setCarList(List<String> inputStringList) {
         for (String inputString : inputStringList) {
-            throwErrorNameRule(inputString);
-            this.carList.add(new Car(inputString));
+            throwErrorNameRule(inputString.trim());
+            this.carList.add(new Car(inputString.trim()));
         }
     }
 
