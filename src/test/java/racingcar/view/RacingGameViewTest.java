@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -36,6 +37,7 @@ class RacingGameViewTest {
 
         assertThat(viewDto.getCarName()).isEqualTo("pobi,woni,jun");
         assertThat(viewDto.getCount()).isEqualTo(3);
+        Console.close();
     }
 
     @Test
