@@ -42,23 +42,6 @@ public class Executor {
         ioController.printWinners(winners);
     }
 
-    private List<Car> getWinners(List<Car> cars) {
-        long maxMoveCount = 0;
-        for (Car car : cars) {
-            if (maxMoveCount < car.getMoveCount()) {
-                maxMoveCount = car.getMoveCount();
-            }
-        }
-
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (maxMoveCount == car.getMoveCount()) {
-                winners.add(car);
-            }
-        }
-        return winners;
-    }
-
     private void saveCarsByName(List<String> carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
@@ -79,5 +62,22 @@ public class Executor {
                 car.move();
             }
         }
+    }
+
+    private List<Car> getWinners(List<Car> cars) {
+        long maxMoveCount = 0;
+        for (Car car : cars) {
+            if (maxMoveCount < car.getMoveCount()) {
+                maxMoveCount = car.getMoveCount();
+            }
+        }
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (maxMoveCount == car.getMoveCount()) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }
