@@ -24,6 +24,9 @@ public class RaceService {
 
     public int roundService(String round) {
         int roundCount = 0;
+        if (round.isEmpty()) {
+            throw new IllegalArgumentException(Message.ROUND_EMPTY_VALIDATION_MESSAGE.getMessage());
+        }
         try{
             roundCount = Integer.parseInt(round);
         }catch (Exception e){
