@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.game.model.util.RandomNumberGenerator;
 
 public class RacingCars {
+    private static final int MOVE_THRESHOLD = 4;
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
@@ -40,7 +41,7 @@ public class RacingCars {
     }
 
     private void moveIfCan(Car car, int randomNumber) {
-        if (randomNumber < 4) {
+        if (randomNumber < MOVE_THRESHOLD) {
             return;
         }
 
