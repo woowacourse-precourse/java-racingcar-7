@@ -6,4 +6,8 @@ public class CarNameValidation {
     public static boolean validateCarNameLength(String carName) {
         return carName.length() > CAR_NAME_LIMIT;
     }
+
+    public static boolean validateCarNameEmpty(String carName) {
+        return carName == null || carName.isEmpty();
+    }
 }

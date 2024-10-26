@@ -10,8 +10,11 @@ public class Car {
 
     public Car(String carName) {
         carName = removeCarNameSpace(carName);
+        if (CarNameValidation.validateCarNameEmpty(carName)) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름이 존재하지 않습니다.")
+        }
         if (CarNameValidation.validateCarNameLength(carName)) {
-            throw new IllegalArgumentException("자동차 이름 예외");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
         }
         this.carName = carName;
     }
