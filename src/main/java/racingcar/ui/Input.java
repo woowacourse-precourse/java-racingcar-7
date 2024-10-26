@@ -1,16 +1,18 @@
 package racingcar.ui;
 
+import java.util.List;
+
 public class Input {
-    private final String[] names;
+    private final List<String> names;
     private final int tryCount;
 
-    public Input(String[] names, int tryCount) {
+    public Input(List<String> names, int tryCount) {
         this.names = names;
         this.tryCount = tryCount;
     }
 
 
-    public String[] getNames() {
+    public List<String> getNames() {
         return names;
     }
 

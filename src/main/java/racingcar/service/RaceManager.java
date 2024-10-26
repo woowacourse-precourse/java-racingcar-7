@@ -6,6 +6,7 @@ import racingcar.service.strategy.MoveStrategy;
 
 
 public class RaceManager {
+    private static final String CAR_DOES_NOT_EXISTS = "경주차가 존재하지 않습니다.";
     private final RaceStorage raceStorage = new RaceStorage();
     private final MoveStrategy moveStrategy;
 
@@ -15,7 +16,7 @@ public class RaceManager {
 
     public String race(List<Car> cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
-            raceACycle(cars);
+            raceOneTime(cars);
         }
 
         return raceStorage.getResults();
@@ -28,7 +29,7 @@ public class RaceManager {
                 .toList();
     }
 
-    private void raceACycle(List<Car> cars) {
+    private void raceOneTime(List<Car> cars) {
         cars.forEach(car -> {
             if (moveStrategy.isCanMove()) {
                 car.move();
@@ -43,7 +44,7 @@ public class RaceManager {
         return cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()
-                .orElseThrow(() -> new IllegalArgumentException("경주차가 존재하지 않습니다."));
+                .orElseThrow(() -> new IllegalArgumentException(CAR_DOES_NOT_EXISTS));
     }
 
 
