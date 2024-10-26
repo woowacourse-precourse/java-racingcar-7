@@ -22,7 +22,7 @@ public class RacingCarMachine {
 		cars = Arrays.asList(Console.readLine().split(","));
 
 		// 1. 이름 입력 시 이름을 입력하지 않은 경우
-		if(cars.isEmpty()){
+		if(cars.get(0).equals("")){
 			throw new IllegalArgumentException("이름을 입력해 주세요.");
 		}
 
