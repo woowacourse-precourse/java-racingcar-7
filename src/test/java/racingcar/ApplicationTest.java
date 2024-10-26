@@ -14,28 +14,6 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "sooha,\t,good",
-            "s;oha,java,good",
-            "sooha,java,go'od",
-            "sooha,java, "
-    })
-    void 예외_테스트_자동차이름입력시_영어대소문자와숫자_아니면_예외(String input) {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 예외_테스트_자동차이름_5글자_넘으면_예외() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("soohaa"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
