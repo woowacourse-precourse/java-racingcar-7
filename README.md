@@ -114,9 +114,34 @@ Randoms.pickNumberInRange(0 ,9);
 > 인텔리제이에서 제공하는 코드스타일 기능으로 스타일 적용하는 방법에 대해서 듣고   
 > 구글링하여 자바 컨벤션 스타일을 적용했다. 
 
-### println 출력문을 ByteArrayOutputStream을 이용해서 출력을 임시 저장할 수 있다.
+<br />
 
+---
+<br />
+
+### println 출력문을 ByteArrayOutputStream을 이용해서 출력을 임시 저장할 수 있다.
+   
+<br />
+
+---
 
 ### List와 ArrayList의 차이점
-Car 객체를 저장하는 컬렉션을 선택해야한다. 가장 간단하게 저장하고 뽑아올 수 있는 ArrayList가 생각이 났다.   
+Car 객체를 저장하는 컬렉션을 선택해야한다.   
+가장 간단하게 저장하고 뽑아올 수 있는 ArrayList가 생각이 났다.   
 ArrayList를 적용하기전에 List 자료구조랑 차이가 있나 궁금증이 생겼다.
+
+```java
+import java.util.*;
+
+List<E> list = new ArrayList<>();
+List<E> list = new LinkedList;
+ArrayList<E> list = new ArrayList<>();
+```
+아주 간단히 정리하면, `List`는 **인터페이스**. `ArrayList`는 **구현체**이다.
+<br />
+
+---
+
+### 디버거
+우테코 프리코스 1주 차 공통 피드백으로 디버거에 대해서 언급이되었다.   
+제공된 영상 시청 후 제공되는 디버거 기능을 사용해보기.
