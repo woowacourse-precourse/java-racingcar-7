@@ -14,6 +14,6 @@ public enum IOMessage implements SystemMessage {
 
   @Override
   public String getMessage() {
-    return "[INFO] " + message;
+    return message;
   }
 }
