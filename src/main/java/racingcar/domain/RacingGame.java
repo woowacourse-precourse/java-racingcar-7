@@ -12,4 +12,17 @@ public class RacingGame {
 	public RacingGame(Random random) {
 		this.random = random;
 	}
+
+	private void move(Cars cars, Turn turn) {
+		// 문자 출력
+
+		int current_turn = 1;
+
+		while (current_turn <= turn.getTurnCount()){
+			cars.tryMove(random);
+			Output.printCurrentCarsStatus(cars.getCurrentStatus());
+
+			current_turn += 1;
+		}
+	}
 }
