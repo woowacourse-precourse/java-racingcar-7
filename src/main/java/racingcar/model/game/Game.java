@@ -2,7 +2,7 @@ package racingcar.model.game;
 
 import java.util.List;
 import racingcar.model.car.Car;
-import racingcar.model.car.CarStatus;
+import racingcar.model.car.CarSnapshot;
 import racingcar.model.car.Cars;
 
 public class Game {
@@ -52,8 +52,8 @@ public class Game {
         this.winners = new Winners(maxPositionCars);
     }
 
-    public List<CarStatus> getStatusOfCars() {
-        return cars.getStatus(currentRound);
+    public List<CarSnapshot> getCarSnapshots() {
+        return cars.getSnapshots(currentRound);
     }
 
     public List<String> getNameOfWinners() {

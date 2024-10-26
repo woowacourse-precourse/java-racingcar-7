@@ -3,8 +3,8 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.Cars;
+import racingcar.model.car.RoundSnapshot;
 import racingcar.model.car.WinnersDto;
 import racingcar.model.game.Game;
 import racingcar.model.game.NumberPicker;
@@ -26,15 +26,14 @@ public class GameController {
     public void start() {
         Game game = makeGame();
 
-        List<CarMovementResults> movementResultsOfRounds = new ArrayList<>();
+        List<RoundSnapshot> roundSnapshots = new ArrayList<>();
 
         while (game.isPlaying()) {
             game.playNextRound();
 
-            CarMovementResults movementResultsOfCurrentRound = new CarMovementResults(game.getStatusOfCars());
-            movementResultsOfRounds.add(movementResultsOfCurrentRound);
+            roundSnapshots.add(new RoundSnapshot(game.getCarSnapshots()));
         }
-        outputView.displayMovementResults(movementResultsOfRounds);
+        outputView.displayRoundSnapshots(roundSnapshots);
 
         game.judgeWinners();
         outputView.displayWinners(new WinnersDto(game));

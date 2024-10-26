@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.CarStatus;
+import racingcar.model.car.CarSnapshot;
 import racingcar.model.car.Cars;
 import racingcar.model.game.Game;
 import racingcar.model.game.NumberPicker;
@@ -131,17 +131,17 @@ public class GameTest {
         };
 
         Game game = new Game(cars, totalRounds, fixedNumberPicker);
-        List<CarStatus> expectedResult = List.of(
-                new CarStatus(names[0], 1, 1),
-                new CarStatus(names[1], 1, 1),
-                new CarStatus(names[2], 1, 1)
+        List<CarSnapshot> expectedResult = List.of(
+                new CarSnapshot(names[0], 1, 1),
+                new CarSnapshot(names[1], 1, 1),
+                new CarSnapshot(names[2], 1, 1)
         );
 
         // when
         game.playNextRound();
-        List<CarStatus> statusOfCars = game.getStatusOfCars();
+        List<CarSnapshot> carSnapshots = game.getCarSnapshots();
 
         // then
-        assertThat(statusOfCars).isEqualTo(expectedResult);
+        assertThat(carSnapshots).isEqualTo(expectedResult);
     }
 }

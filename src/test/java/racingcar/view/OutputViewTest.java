@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.CarMovementResults;
-import racingcar.model.car.CarStatus;
+import racingcar.model.car.RoundSnapshot;
+import racingcar.model.car.CarSnapshot;
 import racingcar.model.car.WinnersDto;
 
 public class OutputViewTest {
@@ -28,22 +28,22 @@ public class OutputViewTest {
     @DisplayName("실행 결과 출력 시 의도한 형식대로 출력된다.")
     void shouldDisplayResultInExpectedFormat() {
         // given
-        CarMovementResults carStatusesOfFirstRound = new CarMovementResults(List.of(
-                new CarStatus("pobi", 3, 1),
-                new CarStatus("juni", 2, 1)
+        RoundSnapshot carStatusesOfFirstRound = new RoundSnapshot(List.of(
+                new CarSnapshot("pobi", 3, 1),
+                new CarSnapshot("juni", 2, 1)
         ));
 
-        CarMovementResults carStatusesOfSecondRound = new CarMovementResults(List.of(
-                new CarStatus("pobi", 4, 2),
-                new CarStatus("juni", 3, 2)
+        RoundSnapshot carStatusesOfSecondRound = new RoundSnapshot(List.of(
+                new CarSnapshot("pobi", 4, 2),
+                new CarSnapshot("juni", 3, 2)
         ));
 
-        List<CarMovementResults> carMovementResults = List.of(
+        List<RoundSnapshot> carMovementResults = List.of(
                 carStatusesOfFirstRound, carStatusesOfSecondRound
         );
 
         // when
-        outputView.displayMovementResults(carMovementResults);
+        outputView.displayRoundSnapshots(carMovementResults);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(

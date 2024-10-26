@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.car.CarMovementResults;
-import racingcar.model.car.CarMovementResults.CarMovementResult;
+import racingcar.model.car.RoundSnapshot;
+import racingcar.model.car.RoundSnapshot.CarSnapshotDto;
 import racingcar.model.car.WinnersDto;
 
 public class OutputView {
@@ -32,20 +32,20 @@ public class OutputView {
         System.out.println(winners);
     }
 
-    public void displayMovementResults(List<CarMovementResults> resultDtos) {
+    public void displayRoundSnapshots(List<RoundSnapshot> roundSnapshots) {
 
         System.out.println("실행 결과");
 
-        for (CarMovementResults resultDto : resultDtos) {
-            resultDto.getCarMovementResults().forEach(this::displayMovementOfOneCar);
+        for (RoundSnapshot roundSnapshot : roundSnapshots) {
+            roundSnapshot.getCarSnapshotDtos().forEach(this::displayCarSnapshots);
             System.out.println();
         }
 
     }
 
-    private void displayMovementOfOneCar(CarMovementResult movementResult) {
-        String name = movementResult.name();
-        int position = movementResult.position();
+    private void displayCarSnapshots(CarSnapshotDto carSnapshotDto) {
+        String name = carSnapshotDto.name();
+        int position = carSnapshotDto.position();
 
         String result = name + " : " + "-".repeat(position);
         System.out.println(result);

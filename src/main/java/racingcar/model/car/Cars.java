@@ -30,8 +30,8 @@ public class Cars {
         return cars.size() < minimumNumberOfCars;
     }
 
-    public List<CarStatus> getStatus(int currentRound) {
-        return cars.stream().map(car -> new CarStatus(car.getName(), car.getPosition(), currentRound)).toList();
+    public List<CarSnapshot> getSnapshots(int currentRound) {
+        return cars.stream().map(car -> new CarSnapshot(car.getName(), car.getPosition(), currentRound)).toList();
     }
 
     public int getSize() {
