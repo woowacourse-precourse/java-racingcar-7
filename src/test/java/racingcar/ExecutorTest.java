@@ -18,21 +18,21 @@ class ExecutorTest {
     Executor executor = new Executor(ioController, parser, validator);
 
     Car testCar1, testCar2, testCar3;
-    List<Car> test;
+    List<Car> testCarList;
 
     @BeforeEach
     void setUp() {
         testCar1 = new Car("test1");
         testCar2 = new Car("test2");
         testCar3 = new Car("test3");
-        test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
+        testCarList = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
     }
 
     @Test
     void 특정_횟수만큼_반복해서_자동차_이동() {
         assertRandomNumberInRangeTest(
             () -> {
-                executor.executeForCount(test, 2);
+                executor.executeForCount(testCarList, 2);
                 assertThat(testCar1.getMoveCount()).isEqualTo(1);
                 assertThat(testCar2.getMoveCount()).isEqualTo(1);
                 assertThat(testCar3.getMoveCount()).isEqualTo(2);
@@ -57,7 +57,7 @@ class ExecutorTest {
     void 자동차_여러대_이동() {
         assertRandomNumberInRangeTest(
             () -> {
-                executor.moveCars(test);
+                executor.moveCars(testCarList);
                 assertThat(testCar1.getMoveCount()).isEqualTo(1);
                 assertThat(testCar2.getMoveCount()).isEqualTo(1);
                 assertThat(testCar3.getMoveCount()).isEqualTo(0);
@@ -69,11 +69,9 @@ class ExecutorTest {
     @Test
     void 우승자_반환() {
         testCar1.move();
-        List<Car> expected1 = new ArrayList<>(List.of(testCar1));
-        assertThat(executor.getWinners(test)).isEqualTo(expected1);
+        assertThat(executor.getWinners(testCarList)).isEqualTo(List.of(testCar1));
 
         testCar2.move();
-        List<Car> expected2 = new ArrayList<>(List.of(testCar1, testCar2));
-        assertThat(executor.getWinners(test)).isEqualTo(expected2);
+        assertThat(executor.getWinners(testCarList)).isEqualTo(List.of(testCar1, testCar2));
     }
 }
