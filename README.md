@@ -46,7 +46,7 @@
     * `List<String> getCarNames()` : 자동차 이름을 입력 받음
     * `List<String> parseCarNames(String input)` : 쉼표로 구분된 문자열을 자동차 이름 배열로 반환
     * `int getMoveCount()` : 이동 횟수를 입력 받음
-    * `boolean isValidCarName(String name)` : 이름 유효성 검사
+    * `boolean isValidCarNameLength(List<String> carNames)` : 이름 유효성(5자 이하) 검사
     * `boolean isValidMoveCount(int moveCount)` : 이동 횟수 유효성 검사
     * 예외 처리 : 유효성 검사 후, 잘못된 입력일 경우 `IllegalArgumentException` 발생
 
