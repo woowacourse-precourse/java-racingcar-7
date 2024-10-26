@@ -168,3 +168,17 @@
     - 입력한 횟수가 0 이하일 경우
     - 입력한 횟수가 숫자가 아닌 경우
     - 입력한 횟수가 INT_MAX인 경우
+
+#### 6. 테스트코드
+> 1주차 과제에선 테스트코드를 적용하지 않아서 이번 과제에서 적용하려고 한다.
+> 
+> 중복되는 테스트코드를 최대한 제외하고 진행했다.
+
+- `model`
+  - `CarTest`
+  - `GameTest`
+- `valid`
+  - `InputCarNameTest`
+  - `InputCountTest`
+- `service`
+  - `GameServiceTest`
