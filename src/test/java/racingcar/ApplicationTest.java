@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.*;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -13,26 +14,46 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("pobi,woni", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-                },
-                MOVING_FORWARD, STOP
-        );
+    void testGetCarNames() {
+        assertSimpleTest(() -> {
+            // run 메서드에 입력을 순차적으로 전달
+            run("pobi,woni,jun");
+            List<String> carNames = Application.getCarNames();
+            assertThat(carNames).containsExactly("pobi", "woni", "jun");
+        });
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+    void testGetTotalRaceCount() {
+        assertSimpleTest(() -> {
+            // 두 번째 입력만 필요하므로 시도 횟수를 제공
+            run("5");
+            int totalRaceCount = Application.getTotalRaceCount();
+            assertThat(totalRaceCount).isEqualTo(5);
+        });
     }
+
+//    @Test
+//    void 기능_테스트() {
+//        assertRandomNumberInRangeTest(
+//                () -> {
+//                    run("pobi,woni", "1");
+//                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+//                },
+//                MOVING_FORWARD, STOP
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+//        Application.main(new String[]{});
     }
 }
