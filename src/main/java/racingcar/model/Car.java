@@ -17,4 +17,10 @@ public class Car {
         return name;
     }
 
+    public void move(int randomValue) {
+        if (randomValue >= 4) {
+            position.append("-");
+        }
+    }
+
 }

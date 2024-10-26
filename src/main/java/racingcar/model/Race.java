@@ -20,7 +20,7 @@ public class Race {
         for (int i = 0; i <= rounds; i++) {
             for (Car car : raceParticipants) {
                 int randomValue = Randoms.pickNumberInRange(0, 9);
-                //car.move(randomValue); 미구현
+                car.move(randomValue);
 
             }
             OutputView.printRoundResult(raceParticipants);
