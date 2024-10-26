@@ -14,5 +14,9 @@ public class ValidUtil {
         return input == null || input.isEmpty();
     }
 
+    public static boolean isPositive(String input){
+        return Integer.parseInt(input) > 0;
+    }
+
 
 }
