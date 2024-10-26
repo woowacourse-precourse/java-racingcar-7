@@ -72,8 +72,8 @@ class InputValidatorTest {
         InputValidator inputValidator = new InputValidator();
 
         boolean normalInput = inputValidator.isNotInteger("1"); //정상적인 입력
-        boolean zeroInput = inputValidator.isNotInteger("0"); //정상적인 입력
-        boolean minusInput = inputValidator.isNotInteger("-1"); //정상적인 입력
+        boolean zeroInput = inputValidator.isNotInteger("0");
+        boolean minusInput = inputValidator.isNotInteger("-1");
 
         Assertions.assertThat(normalInput).isFalse();
         Assertions.assertThat(zeroInput).isTrue();

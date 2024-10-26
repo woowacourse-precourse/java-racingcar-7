@@ -83,7 +83,9 @@ public class InputValidator {
 
     //시도 횟수가 1이상의 정수가 아니면 true, 숫자면 false
     public boolean isNotInteger(String number) {
-
+        if (Integer.parseInt(number) >= 1) {
+            return false;
+        }
         return true;
     }
 }
