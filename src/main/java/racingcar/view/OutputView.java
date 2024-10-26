@@ -5,14 +5,15 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.CarStatus;
 import racingcar.domain.RaceLog;
+import racingcar.service.RaceResult;
 
 public class OutputView {
 
-    public void printRaceResult(List<RaceLog> raceLogs, List<Car> victoryCars) {
+    public void printRaceResult(RaceResult raceResult) {
         System.out.println();
         printRaceResultStartMessage();
-        printRaceLogs(raceLogs);
-        printVictoryCars(victoryCars);
+        printRaceLogs(raceResult.raceLogs());
+        printVictoryCars(raceResult.victoryCars());
     }
 
     private void printRaceResultStartMessage() {

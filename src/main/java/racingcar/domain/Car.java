@@ -5,16 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car implements Comparable<Car> {
 
     private final CarName name;
-    private Position position;
-
-    public Car(String name) {
-        this.name = new CarName(name);
-        position = Position.ZERO;
-    }
+    private Position position = Position.ZERO;
 
     public Car(CarName name) {
         this.name = name;
-        position = Position.ZERO;
     }
 
     public void move() {
