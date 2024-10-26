@@ -13,7 +13,14 @@ public class CarName {
     }
 
     public static CarName from(String carName) {
+        validate(carName);
         return new CarName(carName);
+    }
+
+    private static void validate(String carName) {
+        validateBlank(carName);
+        validateNoName(carName);
+        validateOverLength(carName);
     }
 
     private static void validateBlank(String carName) {
