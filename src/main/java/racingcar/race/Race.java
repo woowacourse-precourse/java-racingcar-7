@@ -60,7 +60,7 @@ public class Race {
         return winnerPosition;
     }
 
-    public void printProgress() {
+    private void printProgress() {
         for (Car car : cars) {
             String positionBar = getBar('-', car.getPosition());
             System.out.println(car.getName() + " : " + positionBar);
