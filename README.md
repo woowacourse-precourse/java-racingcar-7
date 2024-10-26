@@ -28,7 +28,7 @@ public playGame()
     - [ ]  playSingleRound() 호출해 라운드 진행
     - [ ]  UI.printRoundResult() 호출해 현재 라운드의 결과 출력
 - [ ]  반복이 끝나면 Utils.countWinners() 호출해 결과 집계
-- [ ]  UI.printUltimateResult() 호출해 결과 출력
+- [ ]  UI.printWinners() 호출해 결과 출력
 
 private void playSingleRound()
 : \: 하나의 라운드를 진행하는 메소드.
@@ -112,7 +112,7 @@ public void printRoundResult(boolean isFirstRound, List\<Car> participants)
 - [x]  participants의 각 요소에 하나씩 접근
     - [x]  (자동차 이름) : (전진 횟수만큼의 -) 형태로 출력
 
-public void printUltimateResult(List\<String> winners)
+public void printWinners(List\<String> winners)
 : \: 모든 라운드 종료 후 최종 우승자를 출력하는 메소드.
 
 - [ ]  `최종 우승자 :` 메시지 출력
