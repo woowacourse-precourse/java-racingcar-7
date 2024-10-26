@@ -24,6 +24,15 @@ public class InputValidator {
         }
     }
 
+    // 새로운 이름 길이 검증 메서드 추가
+    public static void validateCarNameLength(List<String> carNames) {
+        for (String name : carNames) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+        }
+    }
+
     // 숫자 입력 검증
     public static void validateNumber(String input){
         int validateInt = validateCharacter(input); // 첫 번째 검증

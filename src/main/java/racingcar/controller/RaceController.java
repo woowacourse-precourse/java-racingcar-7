@@ -48,6 +48,7 @@ public class RaceController {
         InputValidator.validateEmptyInput(carNamesInput);
         InputValidator.validateCommaSeparator(carNamesInput);
         InputValidator.validateSameCarName(carNames);
+        InputValidator.validateCarNameLength(carNames);
 
         return carNames;
     }
