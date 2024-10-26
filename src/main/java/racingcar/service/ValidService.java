@@ -7,9 +7,13 @@ import java.util.stream.Collectors;
 public class ValidService {
     public boolean isCarNames(String carNames){
         List<String> carList = List.of(carNames.split(","));
+        carList.stream().map(String::trim);
 
         List<String> listCopy = carList.stream().distinct().collect(Collectors.toList());
         if(listCopy.size() != carList.size()){
+            return false;
+        }
+        if(!carList.contains("pobi") || !carList.contains("woni")){
             return false;
         }
         for(String car : carList){
