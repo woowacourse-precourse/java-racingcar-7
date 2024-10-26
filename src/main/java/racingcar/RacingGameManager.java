@@ -39,5 +39,33 @@ class RacingGameManager implements RacingGame {
         System.out.println();
     }
 
-    private void endGame() {}
+    private void endGame() {
+        findWinners();
+        announceWinners();
+    }
+
+    private List<String> findWinners() {
+        int maxForwardNumber = 0;
+        List<String> winnerList = new ArrayList<>();
+
+        //가장 높은 전진횟수 찾기 -> 우승자의 조건
+        for (Car value : racingCarsList) {
+            int forwardNumber = value.getForwardNumber();
+            if (maxForwardNumber < forwardNumber) {
+                maxForwardNumber = forwardNumber;
+            }
+        }
+        //가장 높은 전진 횟수에 해당하는 참여자 찾기 -> 우승자들
+        for (Car car : racingCarsList) {
+            if (maxForwardNumber == car.getForwardNumber()) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
+    }
+
+    private void announceWinners() {
+        List<String> finalWinners = findWinners();
+        System.out.println("최종 우승자 : " + String.join(",", finalWinners));
+    }
 }
