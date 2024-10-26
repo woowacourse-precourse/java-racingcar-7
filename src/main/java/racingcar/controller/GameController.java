@@ -25,5 +25,11 @@ public class GameController {
         tryNum = input.getTryNum();
 
         List<Car> cars = carFactory.createCarList(carNames);
+
+        //입력받은 tryNum 수만큼 레이스 진행
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < tryNum; i++) {
+            cars = race.play(cars);
+        }
     }
 }
