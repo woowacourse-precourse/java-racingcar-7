@@ -1,5 +1,8 @@
 package racingcar.validator;
 
+import static racingcar.constant.NumberType.MAX_NAME_LENGTH;
+import static racingcar.constant.NumberType.MIN_CAR_SIZE;
+import static racingcar.constant.NumberType.MIN_COUNT;
 import static racingcar.exception.ErrorMessage.INVALID_COUNT_RANGE;
 import static racingcar.exception.ErrorMessage.INVALID_NAME_COUNT;
 import static racingcar.exception.ErrorMessage.INVALID_NAME_LENGTH;
@@ -21,7 +24,7 @@ public final class Validator {
     public static void countValidate(String count) {
         try {
             int cnt = Integer.parseInt(count);
-            if (cnt < 1) {
+            if (cnt < MIN_COUNT.getNumber()) {
                 throw new RaceException(INVALID_COUNT_RANGE);
             }
         } catch (NumberFormatException e) {
@@ -31,14 +34,14 @@ public final class Validator {
 
     private static void nameLengthValidate(List<String> names) {
         names.forEach((name) -> {
-            if (name.length() > 5) {
+            if (name.length() > MAX_NAME_LENGTH.getNumber()) {
                 throw new RaceException(INVALID_NAME_LENGTH);
             }
         });
     }
 
     private static void nameCountValidate(List<String> names) {
-        if (names.size() < 2) {
+        if (names.size() < MIN_CAR_SIZE.getNumber()) {
             throw new RaceException(INVALID_NAME_COUNT);
         }
     }
