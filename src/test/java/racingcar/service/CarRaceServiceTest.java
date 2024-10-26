@@ -104,6 +104,7 @@ class CarRaceServiceTest {
         assertTrue(winners.contains("bar"));
     }
 
+    //전진 조건에 고정값을 전달해 전진/정지를 강제하는 모킹 서비스
     private CarRaceService getCarRaceService(int movingNumber) {
         return new CarRaceService() {
             List<Car> cars;
@@ -133,6 +134,7 @@ class CarRaceServiceTest {
         };
     }
 
+    //전진 조건에 이름을 전달해 전진/정지를 강제하는 모킹 서비스
     private CarRaceService getCarRaceService(List<String> carNames) {
         return new CarRaceService() {
             List<Car> cars;
