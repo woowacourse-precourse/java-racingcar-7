@@ -29,7 +29,7 @@ public class CarRacingController {
         this.carList = new ArrayList<>();
     }
 
-    public void inputValues(){
+    public void inputNames(){
 
         outputView.printCarNameMessage();
         String input = inputView.inputCarName();
@@ -42,5 +42,9 @@ public class CarRacingController {
 
         //for(Car car: carList) car.toString();
 
+    }
+
+    public void inputCount(){
+        outputView.printCountMessage();
     }
 }
