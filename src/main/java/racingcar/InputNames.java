@@ -14,13 +14,16 @@ public class InputNames {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
 
-        List<String> namelist = tokenize(input);
-        return namelist;
+        return tokenize(input);
     }
 
     public List<String> tokenize(String input) {
         List<String> namelist = new ArrayList<>();
+        String[] templist = input.split(",");
 
+        for(int i = 0; i < templist.length; i++) {
+            namelist.add(templist[i]);
+        }
         return namelist;
     }
 }

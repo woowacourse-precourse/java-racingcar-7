@@ -7,6 +7,9 @@ public class RacingCarGame {
     InputTry inputTry;
     RacingCarService racingCarService;
 
+    List<String> carNames;
+    int tryCount;
+
     public RacingCarGame() {
         inputNames = new InputNames();
         inputTry = new InputTry();
@@ -14,6 +17,7 @@ public class RacingCarGame {
     }
 
     public void start() {
-        List<String> names = inputNames.input();
+        carNames = inputNames.input();
+
     }
 }
