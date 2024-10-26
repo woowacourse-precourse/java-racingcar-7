@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.racing.view.OutputView;
 
-public class Game {
+public class RacingGame {
     private final int allRound;
     private final List<Car> participants;
 
-    public Game(int allRound, List<Car> cars) {
+    public RacingGame(int allRound, List<Car> cars) {
         this.allRound = allRound;
         this.participants = cars;
     }
@@ -22,11 +22,12 @@ public class Game {
         }
     }
 
-    public void allRoundStart() {
+    public List<Car> start() {
         for (int i = 0; i < allRound; i++) {
             roundStart(participants);
             OutputView.printRoundResult(participants);
         }
+        return selectWinners();
     }
 
     public List<Car> selectWinners() {

@@ -7,15 +7,16 @@ import static racingcar.racing.utils.ExceptionMessages.INVALID_CAR_LENGTH_EXCEPT
 
 import java.util.List;
 import racingcar.racing.model.Car;
-import racingcar.racing.model.Game;
+import racingcar.racing.model.RacingGame;
 import racingcar.racing.model.RacingGameFactory;
 import racingcar.racing.utils.InputParser;
+import racingcar.racing.utils.InputValidator;
 import racingcar.racing.view.InputView;
 import racingcar.racing.view.OutputView;
 
 public class RacingGameManager {
     private final RacingGameFactory racingGameFactory;
-    private Game game;
+    private RacingGame game;
 
     public RacingGameManager(RacingGameFactory racingGameFactory) {
         this.racingGameFactory = racingGameFactory;
@@ -26,8 +27,7 @@ public class RacingGameManager {
         int attemptNumber = inputAttemptNumber();
         createRacingGame(carNames, attemptNumber);
         OutputView.printMessage("\n실행 결과");
-        game.allRoundStart();
-        List<Car> winners = game.selectWinners();
+        List<Car> winners = game.start();
         OutputView.printWinner(winners);
     }
 

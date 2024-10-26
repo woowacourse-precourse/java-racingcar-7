@@ -6,8 +6,8 @@ import java.util.List;
 public class RacingGameConcreteFactory implements RacingGameFactory {
 
     @Override
-    public Game createGame(int allRound, List<Car> cars) {
-        return new Game(allRound, cars);
+    public RacingGame createGame(int allRound, List<Car> cars) {
+        return new RacingGame(allRound, cars);
     }
 
     @Override
