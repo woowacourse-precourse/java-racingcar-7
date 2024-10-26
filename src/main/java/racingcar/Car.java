@@ -19,4 +19,8 @@ public class Car {
     public void move() {
         this.moveCount++;
     }
+
+    public void printMoveResult() {
+        System.out.println(name + " : " + "-".repeat(moveCount));
+    }
 }
