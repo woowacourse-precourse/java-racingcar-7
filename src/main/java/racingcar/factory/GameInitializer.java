@@ -9,8 +9,10 @@ import racingcar.domain.game.GameRound;
 
 public abstract class GameInitializer {
 
+    private static final String DELIMITER = ",";
+
     public static CarGroup createCars(String carNames) {
-        List<Car> carList = Arrays.stream(carNames.split(","))
+        List<Car> carList = Arrays.stream(carNames.split(DELIMITER))
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());

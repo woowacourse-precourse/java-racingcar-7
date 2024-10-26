@@ -1,9 +1,11 @@
 package racingcar.view;
 
+import static racingcar.utils.ExceptionConstants.EMPTY_INPUT;
+
 public class InputValidator {
     public static void validateUserInputNotEmpty(String userInput) {
         if (userInput.isEmpty()) {
-            throw new IllegalArgumentException("입력은 비어 있을 수 없습니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT.getErrorMessage());
         }
     }
 }

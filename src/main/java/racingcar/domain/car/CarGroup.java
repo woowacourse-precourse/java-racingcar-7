@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import static racingcar.utils.ExceptionConstants.DUPLICATE_CAR_NAME;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,7 +33,7 @@ public class CarGroup {
     private void validateDuplicateCarName(List<Car> cars) {
         Set<Car> setCar = new HashSet<>(cars);
         if (setCar.size() != cars.size()) {
-            throw new IllegalArgumentException("자동차의 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAME.getErrorMessage());
         }
     }
 }
