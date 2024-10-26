@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingGame;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
@@ -14,10 +15,20 @@ public class Controller {
 
     public void run() {
         List<RacingCar> carList = getCarNamesByInput();
-        InputView.printRequestLoopCount();
+        String loopCount = getLoopCountByInput();
+        startGame(carList, loopCount);
+    }
+
+    private String getLoopCountByInput() {
+        InputView.printRequestLoopCountMessage();
         String loopCount = Console.readLine();
         validator.checkLoopCount(loopCount);
-//        startGame(carList, loopCount);
+        return loopCount;
+    }
+
+    private void startGame(List<RacingCar> carList, String loopCount) {
+        RacingGame game = new RacingGame(carList, Parser.parseNumber(loopCount));
+        game.start();
     }
 
     public List<RacingCar> getCarNamesByInput() {

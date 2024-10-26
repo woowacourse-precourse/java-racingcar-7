@@ -28,6 +28,15 @@ class ValidatorTest {
     }
 
     @Test
+    void 다른구분자테스트() {
+        // given
+        String input = "class,dkdk.sdk,";
+        // when & then
+        assertThatThrownBy(() -> validator.checkCarNamesInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void lengthExceptionTest() {
         // given
         String input = "abc543";

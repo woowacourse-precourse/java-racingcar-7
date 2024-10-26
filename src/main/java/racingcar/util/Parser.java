@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public abstract class Parser {
+
     public static List<RacingCar> extractCarNames(String carNames) {
         StringTokenizer tokenizer = new StringTokenizer(carNames,",");
         List<RacingCar> cars = new ArrayList<>();
@@ -17,6 +18,10 @@ public abstract class Parser {
     }
 
     public static int parseNumber(String loopCount) {
-        return Integer.parseInt(loopCount);
+        try {
+            return Integer.parseInt(loopCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
