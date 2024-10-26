@@ -6,6 +6,11 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
+        Car[] cars = getInputCarNames();
+        int movecount = getInputMoveCount();
+        printMoveResult(movecount, cars);
+        String winner = findWinner(cars);
+        System.out.println("최종 우승자 : " + winner);
 
     }
 
@@ -81,7 +86,6 @@ public class Application {
         return winner;
     }
 
-        System.out.println("최종 우승자 : " + winner);
 
 
 
@@ -95,4 +99,4 @@ public class Application {
 
 
     }
-}
+
