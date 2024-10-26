@@ -9,9 +9,13 @@ import java.util.regex.Pattern;
 public class Application {
     public static void main(String[] args) {
         try {
-            // 사용자 입력 받는 부분
+            // 1. 자동차 이름 입력
             List<String> carNames = inputCarNames();
             System.out.println("유효한 자동차 이름 목록: " + carNames);
+
+            // 2. 이동 횟수 입력
+            int attemptCount = inputAttemptCount();
+            System.out.println("유효한 이동 횟수: " + attemptCount);
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 입력입니다: " + e.getMessage());
             throw e;
@@ -43,6 +47,29 @@ public class Application {
         }
         if (!Pattern.matches("^[a-zA-Z0-9]*$", name)) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 영문자와 숫자에 한하여 구성 가능합니다.");
+        }
+    }
+
+    // 이동 횟수 입력 및 유효성 검사
+    public static int inputAttemptCount() {
+        System.out.println("시도할 횟수를 입력하세요:");
+
+        try {
+            String input = Console.readLine();  // 사용자 입력 받기
+            int attemptCount = Integer.parseInt(input);  // 입력을 정수로 변환
+
+            validateAttemptCount(attemptCount);  // 이동 횟수 유효성 검사
+            return attemptCount;
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야 합니다.");
+        }
+    }
+
+    // 이동 횟수 유효성 검사
+    private static void validateAttemptCount(int attemptCount) {
+        if (attemptCount <= 0) {
+            throw new IllegalArgumentException("[ERROR] 이동 횟수는 양의 정수여야 합니다.");
         }
     }
 }
