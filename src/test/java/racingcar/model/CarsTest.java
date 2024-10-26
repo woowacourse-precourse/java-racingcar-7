@@ -31,6 +31,22 @@ public class CarsTest {
 
     @Test
     void 자동차들을_전진시킨다() {
+        TestCar car1 = new TestCar("poby");
+        TestCar car2 = new TestCar("jun");
+        car1.setRandomNumber(7);
+        car2.setRandomNumber(2);
 
+        cars.saveCar(car1);
+        cars.saveCar(car2);
+
+        List<CarDto> carDtoList = Arrays.asList(
+                new CarDto("poby", 1),
+                new CarDto("jun", 0)
+        );
+
+        cars.moveCars();
+
+        assertThat(cars.getCarDtoList())
+                .isEqualTo(carDtoList);
     }
 }
