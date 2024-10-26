@@ -11,15 +11,15 @@ public class Validator {
     public void checkCarNameInput(String input){
         String[] carNames = input.split(",");
         Set<String> carNameSet = new HashSet<>();
-        for(String carName : carNames){
-            if(carNameSet.contains(carName)){
-                throw new IllegalArgumentException(String.format(DUPLICATE_CARNAME_EXCCEPTION.getMessage(), carName));
+        for (String carName : carNames){
+            if (carNameSet.contains(carName)){
+                throw new IllegalArgumentException(DUPLICATE_CARNAME_EXCEPTION.getMessage() + carName);
             }
-            if(carName.isEmpty()){
+            if (carName.isEmpty()){
                 throw new IllegalArgumentException(CARNAME_BLANK_EXCEPTION.getMessage());
             }
-            if(carName.length() > 5){
-                throw new IllegalArgumentException(String.format(CARNAME_LENGTH_EXCEPTION.getMessage(), carName));
+            if (carName.length() > 5){
+                throw new IllegalArgumentException(CARNAME_LENGTH_EXCEPTION.getMessage() + carName);
             }
             carNameSet.add(carName);
         }
