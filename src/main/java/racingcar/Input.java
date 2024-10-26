@@ -8,7 +8,6 @@ public class Input {
   private static final Scanner scanner = new Scanner(System.in);
 
   public static List<String> inputCarNames() {
-    
     System.out.println("자동차들: ");
     String input = scanner.nextLine();
     return List.of(input.split(",")).stream().map(String::trim).collect(Collectors.toList());

@@ -15,23 +15,16 @@ class RacingGame {
     }
 
     public void play() {
-        moveCar();
-        showResult();
-    }
-
-    private void moveCar() {
         for (Car car : cars) {
             car.move();
         }
     }
-
-    private void showResult() {
-        for (Car car : cars) {
-            car.showPosition();
-        }
-    }
     
-    public void finalResult() {
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public String finalResult() {
         int maxPosition = 0;
         String winner = "";
         for (Car car : cars) {
@@ -42,6 +35,6 @@ class RacingGame {
                 winner += ", " + car.getName();
             }
         }
-        System.out.println("최종 우승자 : " + winner);
+        return winner;
     }
 }
