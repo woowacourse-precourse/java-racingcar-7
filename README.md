@@ -27,7 +27,7 @@
 
 ### Random
 - [x] 0-9 사이의 무작위 값을 출력하는 기능
-- [ ] RealRandom : 실제 비즈니스 로직에 사용하는 Random 구현체
+- [x] RealRandom : 실제 비즈니스 로직에 사용하는 Random 구현체
 - [ ] MockRandom : 테스트 코드 로직에 사용하는 Random 구현체
 
 ### Winners
