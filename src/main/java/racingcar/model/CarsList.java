@@ -11,7 +11,7 @@ import java.util.List;
 public class CarsList implements Cars{
   private final List<Car> cars;
 
-  public CarsList(List<Car> cars) {
+  private CarsList(List<Car> cars) {
     this.cars = new ArrayList<>(cars);
   }
 

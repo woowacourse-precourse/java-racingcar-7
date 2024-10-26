@@ -11,7 +11,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 public class CarsPriorityBlockingQueue implements Cars{
   private final PriorityBlockingQueue<Car> cars;
 
-  public CarsPriorityBlockingQueue(List<Car> cars){
+  private CarsPriorityBlockingQueue(List<Car> cars){
     this.cars = new PriorityBlockingQueue<>(cars);
   }
 

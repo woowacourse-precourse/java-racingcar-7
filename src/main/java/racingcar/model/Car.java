@@ -10,7 +10,7 @@ public class Car implements Comparable<Car>{
   private String name;
   private int position;
 
-  public Car(String carName) {
+  private Car(String carName) {
     this.name = carName;
     this.position = 0;
   }
@@ -32,9 +32,13 @@ public class Car implements Comparable<Car>{
     return randomNumber >= 4;
   }
 
+  public void move (){
+    this.position++;
+  }
+
   public void moveOrStay(RandomNumberGenerator randomNumberGenerator) {
     if (canMove(randomNumberGenerator)){
-      position++;
+      move();
     }
   }
 
