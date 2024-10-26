@@ -25,8 +25,7 @@ public class Race {
 
     private void process() {
         for (Car car : cars) {
-            boolean canMove = raceMoveStrategy.go();
-            if (canMove) {
+            if (raceMoveStrategy.canMove()) {
                 car.move();
             }
         }
