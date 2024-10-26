@@ -18,4 +18,8 @@ public class Output {
         }
         System.out.println();
     }
+
+    public void printWinner(List<String> winner) { // 하면 끗
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
 }
