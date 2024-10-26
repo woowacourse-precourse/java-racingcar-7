@@ -24,11 +24,37 @@ public class Application {
             printCar(player);
         }
 
+        int max=0;
+        for(String s:player.keySet()){
+            int playerSteps=player.get(s);
+            if(playerSteps>max){
+                max=playerSteps;
+            }
+        }
+
+        ArrayList<String> winners=new ArrayList<>();
+        for(String s:player.keySet()){
+            if(player.get(s)==max){
+                winners.add(s);
+            }
+        }
+
+        StringBuilder builder=new StringBuilder();
+        builder.append("최종 우승자 : ");
+        for(int i=0;i<winners.size();i++){
+            if(i<winners.size()-1){
+                builder.append(winners.get(i)).append(", ");
+            }else{
+                builder.append(winners.get(i));
+            }
+        }
+        System.out.println(builder);
+
     }
 
     public static void goOrStop(HashMap<String,Integer> player){
         for (String s : player.keySet()) {
-            if(Randoms.pickNumberInRange(0,9)>4){
+            if(Randoms.pickNumberInRange(0,9)>=4){
                 int steps=player.get(s);
                 player.put(s,steps+1);
             }
@@ -37,7 +63,8 @@ public class Application {
 
     public static void printCar(HashMap<String,Integer> player){
         for(String s:player.keySet()){
-            System.out.println(s+" : "+"-".repeat(player.get(s)));
+            String step="-".repeat(player.get(s));
+            System.out.println(s+" : "+step);
         }
         System.out.println();
     }
