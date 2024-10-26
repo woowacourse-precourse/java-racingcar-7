@@ -1,7 +1,6 @@
 package racingcar.client.model;
 
 import racingcar.client.view.OutputView;
-import racingcar.server.view.DashBoardView;
 
 public class OutputManager {
 
@@ -22,19 +21,18 @@ public class OutputManager {
     }
 
     // Method
-    public void showLapCharts(final DashBoardView view) {
+    public void showLapCharts(final String lapCharts) {
         OutputView instance = OutputView.getInstance();
         instance.printWithNewLineUpper(LAP_CHART_RESULT);
-        instance.printWithNewLineLower(view.getLapCharts());
+        instance.printWithNewLineLower(lapCharts);
     }
 
-    public void showWinners(final DashBoardView view) {
+    public void showWinners(final String winners) {
         OutputView instance = OutputView.getInstance();
         String resultMessage = String.format(RACE_WINNERS, NO_WINNER);
 
-        String offeredLWinners = view.getWinners();
-        if (winnerExistOn(offeredLWinners)) {
-            resultMessage = String.format(RACE_WINNERS, view.getWinners());
+        if (winnerExistOn(winners)) {
+            resultMessage = String.format(RACE_WINNERS, winners);
         }
 
         instance.simplePrint(resultMessage);
