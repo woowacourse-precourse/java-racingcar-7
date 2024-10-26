@@ -18,21 +18,26 @@ public class RacingController {
     }
 
     public void start() {
+        racingInit();
+        racingResult();
+    }
 
+    private void racingInit(){
         String userStringInput = racingService.getValidatedStringInput(
                 InputView.getInputCarString());
         racingService.setUpRacing(userStringInput);
+    }
 
+    private void racingResult(){
         int userIntegerInput = racingService.getValidateIntegerInput(
                 InputView.getInputRepeatCount());
         outputView.printGameResultMessage();
         printResult(userIntegerInput);
         outputView.printWinner(racingService.getWinners());
-
     }
 
-    private void printResult(int userInput){
-        for(int i=0; i<userInput; i++){
+    private void printResult(int userInput) {
+        for (int i = 0; i < userInput; i++) {
             List<Car> cars = racingService.startRacingOnce();
             outputView.printCarsResult(cars);
         }
