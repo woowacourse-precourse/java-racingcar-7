@@ -38,7 +38,7 @@ public class OutputView {
         List<Car> carList=cars.getClonedCars();
 
         for (Car car:carList){
-            System.out.println(car.getName()+SPACE+DELIMITER+SPACE+car.getState());
+            System.out.println(String.join(" : ",car.getName(),car.getState()));
         }
     }
 }
