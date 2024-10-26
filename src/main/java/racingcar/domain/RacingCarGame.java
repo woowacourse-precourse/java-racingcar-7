@@ -24,6 +24,8 @@ public class RacingCarGame {
             moveEachCars(generateMove(cars.size()));
             OutputView.eachAttemptsResult(cars);
         }
+        OutputView.finalWinners();
+        OutputView.finalWinnersResult(RacingCarsGroup.getFinalWinners(cars));
 
     }
 
