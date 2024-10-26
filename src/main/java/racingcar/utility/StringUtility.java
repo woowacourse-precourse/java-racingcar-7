@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class StringUtility {
     private final static String CONTAIN_SPECIAL_CHARACTER_REGEX = ".*[^가-힣a-zA-Z0-9].*";
+    private final static String SEPARATOR = ", ";
 
     public static List<String> splitStringToList(String input){
         String[] names = input.split(",");
@@ -21,7 +22,9 @@ public class StringUtility {
         if(list.isEmpty()) return "";
         StringBuilder stringBuilder = new StringBuilder();
         for(String string : list){
-            stringBuilder.append(string).append(", ");
+            stringBuilder
+                    .append(string)
+                    .append(SEPARATOR);
         }
         return stringBuilder.substring(0, stringBuilder.length() - 2);
     }
