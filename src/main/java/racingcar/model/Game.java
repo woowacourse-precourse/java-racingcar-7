@@ -14,6 +14,10 @@ public class Game {
         this.winnerList = new ArrayList<>();
     }
 
+    public int getPlayCount() {
+        return playCount;
+    }
+
     public List<Car> getCarList() {
         return carList;
     }
