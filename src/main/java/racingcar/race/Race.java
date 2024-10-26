@@ -56,7 +56,7 @@ public class Race {
 
     private void printStartPage() {
         Page<String> startPage = new SimpleTextPage();
-        startPage.setContent("실행 결과");
+        startPage.setContent("\n실행 결과");
         startPage.isNewLineAtEOF(true);
         startPage.render();
     }
