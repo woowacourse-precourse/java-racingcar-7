@@ -1,5 +1,6 @@
 package racingcar.common;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,11 +15,21 @@ public class StringUtil {
                 .toList();
     }
 
-    public static Long parseToNumeric(String secondLine) {
+    public static long parseToNumeric(String secondLine) {
         try {
-            return Long.parseLong(secondLine);
+            BigInteger bigInt = new BigInteger(secondLine);
+            validateIsLong(secondLine, bigInt);
+            return bigInt.longValue();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("invalid number format : " + secondLine);
+            throw new IllegalArgumentException("invalid number format: " + secondLine);
         }
     }
+
+    private static void validateIsLong(String secondLine, BigInteger bigInt) {
+        if (!(bigInt.compareTo(BigInteger.valueOf((Long.MIN_VALUE))) > 0
+                && bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) < 0)) {
+            throw new IllegalArgumentException("number out of range for type long: " + secondLine);
+        }
+    }
+
 }
