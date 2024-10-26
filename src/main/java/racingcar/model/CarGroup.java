@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CarGroup {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public CarGroup(List<String> carNames) {
         this.cars = carNames.stream().map(Car::new).toList();
