@@ -9,12 +9,9 @@ public class InputView {
         return Console.readLine();
     }
 
-    public int inputAttemptCount() {
+    public String inputAttemptCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("입력받은 문자가 숫자가 아닌 다른 문자입니다.");
-        }
+
+        return Console.readLine();
     }
 }

@@ -48,7 +48,7 @@ public class Controller {
     }
 
     private int inputNumberOfAttempts() {
-        int attemptCount = inputView.inputAttemptCount();
+        String attemptCount = inputView.inputAttemptCount();
         validator.validatePositiveNumber(attemptCount);
         return attemptCount;
     }
