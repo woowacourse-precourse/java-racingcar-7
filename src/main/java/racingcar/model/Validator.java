@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class Validator {
 
-    public void validateInputString(String input) {
+    public void validateIsEmpty(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다.");
         }
@@ -14,12 +14,13 @@ public class Validator {
         }
     }
 
-    public void validateRoundNumber(String number) {
+    public long validateRoundNumber(String number) {
         try {
             long l = Long.parseLong(number);
             if(l < 1) {
                 throw new IllegalArgumentException("시도 횟수는 양수를 입력해주세요.");
             }
+            return l;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수를 올바르게 입력해주세요.");
         }

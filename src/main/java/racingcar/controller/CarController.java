@@ -9,14 +9,8 @@ import racingcar.model.Cars;
 
 public class CarController {
 
-    private final List<Car> cars;
-
-    public CarController(Cars cars) {
-        this.cars = cars.getCarList();
-    }
-
-    public List<Car> getWinners() {
-        sortCarsByDistance();
+    public List<Car> getWinners(List<Car> cars) {
+        sortCarsByDistance(cars);
 
         List<Car> winners = new ArrayList<>();
         Car winner = cars.getFirst();
@@ -30,11 +24,11 @@ public class CarController {
     }
 
 
-    private void sortCarsByDistance() {
+    private void sortCarsByDistance(List<Car> cars) {
         cars.sort(Comparator.comparingLong(Car::getDistance).reversed());
     }
 
-    public List<Car> moveOrStopCarsByRandomNumber() {
+    public List<Car> moveOrStopCarsByRandomNumber(List<Car> cars) {
         cars.forEach(car -> {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if(randomNumber >= 4) {
