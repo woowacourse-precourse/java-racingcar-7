@@ -8,5 +8,5 @@ import racingcar.domain.Racing;
 
 public interface RacingCarUseCase {
 
-    Racing startRacing(List<Car> cars, @Valid @Min(0) int tryCount) throws IllegalArgumentException;
+    Racing startRacing(List<Car> cars, @Valid @Min(0) int tryCount);
 }
