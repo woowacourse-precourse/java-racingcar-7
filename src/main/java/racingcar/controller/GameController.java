@@ -18,12 +18,15 @@ public class GameController {
     }
 
     public void play() {
+        inputProcess();
+        carsProcess();
+        resultProcess();
+    }
+
+    public void inputProcess() {
         List<Car> carList = inputCarNameProcess();
         int playCount = inputCountProcess();
         gameService = new GameService(playCount, carList);
-
-        carsProcess();
-        resultProcess();
     }
 
     public List<Car> inputCarNameProcess() {
