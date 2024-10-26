@@ -19,6 +19,7 @@ public class OutputHandler {
 
     public void showRacingCarsProgress(List<RacingCar> cars) {
         cars.forEach(car -> System.out.printf("%s : %s%n", car.getName(), car.getProgress()));
+        System.out.println();
     }
 
     public void showWinners(List<String> winners) {
