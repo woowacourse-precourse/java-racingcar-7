@@ -16,4 +16,8 @@ public class Cars {
                 .map(name -> new Car(name.trim()))
                 .toList();
     }
+
+    public void moveAllCars() {
+        carList.forEach(Car::move);
+    }
 }
