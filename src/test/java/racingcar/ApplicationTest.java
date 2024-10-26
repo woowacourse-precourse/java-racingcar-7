@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
                 () -> run(inputCarNames, inputRoundCount));
 
         // then
-        assertThat(exception.getMessage()).isEqualTo(CarNameValidationError.NAME_EMPTY.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(GeneralError.EMPTY_INPUT.getMessage());
     }
 
     @Test
