@@ -23,6 +23,9 @@ public class Cars {
         if (duplicateCheck.size() != carNames.size()) {
             throw new IllegalArgumentException("중복된 자동차 이름은 등록이 불가능합니다.");
         }
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException("2대 이상의 자동차가 경주에 필요합니다.");
+        }
     }
 
     public int size() {

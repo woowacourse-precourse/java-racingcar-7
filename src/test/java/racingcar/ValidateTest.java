@@ -13,7 +13,7 @@ class ValidateTest {
     RacingGame racingGame = new RacingGame();
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,javajigi,minju", "pobi,pobi,minju", "pobi,,minju"})
+    @ValueSource(strings = {"pobi,javajigi,minju", "pobi,pobi,minju", "pobi,,minju", "", "pobi"})
     void 이름_예외_테스트(String input) {
         Assertions.assertThatThrownBy(() -> {
             Cars cars = racingGame.makeCars(input);
