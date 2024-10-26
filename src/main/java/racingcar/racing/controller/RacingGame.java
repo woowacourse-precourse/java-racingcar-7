@@ -19,7 +19,6 @@ public class RacingGame {
     public void start() {
         List<String> carNames = inputCarNames();
         int attemptNumber = inputAttemptNumber();
-
         createRacingGame(carNames, attemptNumber);
         OutputView.printMessage("\n실행 결과");
         game.allRoundStart();
