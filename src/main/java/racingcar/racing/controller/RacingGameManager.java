@@ -13,15 +13,15 @@ import racingcar.racing.utils.InputParser;
 import racingcar.racing.view.InputView;
 import racingcar.racing.view.OutputView;
 
-public class RacingGame {
+public class RacingGameManager {
     private final RacingGameFactory racingGameFactory;
     private Game game;
 
-    public RacingGame(RacingGameFactory racingGameFactory) {
+    public RacingGameManager(RacingGameFactory racingGameFactory) {
         this.racingGameFactory = racingGameFactory;
     }
 
-    public void start() {
+    public void run() {
         List<String> carNames = inputCarNames();
         int attemptNumber = inputAttemptNumber();
         createRacingGame(carNames, attemptNumber);
@@ -70,7 +70,7 @@ public class RacingGame {
     }
 
     private static void validateCarArrayNotEmpty(List<String> carNames) {
-        if (InputValidator.validateCarArrayNotEmpty(carNames)) {
+        if (!InputValidator.validateCarArrayNotEmpty(carNames)) {
             throw new IllegalArgumentException(EMPTY_CAR_EXCEPTION_MESSAGE);
         }
     }
@@ -82,7 +82,7 @@ public class RacingGame {
     }
 
     private void validateInputNotEmpty(String input) {
-        if (InputValidator.validateInputNotEmpty(input)) {
+        if (!InputValidator.validateInputNotEmpty(input)) {
             throw new IllegalArgumentException(INPUT_EMPTY_EXCEPTION_MESSAGE);
         }
     }
