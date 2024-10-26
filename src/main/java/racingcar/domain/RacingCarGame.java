@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.validate.CarNameValidation;
@@ -17,6 +18,16 @@ public class RacingCarGame {
     }
 
     public void playCarGame(int inputNumbersOfAttempts) {
+
+    }
+
+    public List<Integer> generateMove(int totalCars) {
+        List<Integer> moves = new ArrayList<>();
+        for (int i = 0; i < totalCars; i++) {
+            int move = Randoms.pickNumberInRange(0, 9);
+            moves.add(move);
+        }
+        return moves;
 
     }
 
