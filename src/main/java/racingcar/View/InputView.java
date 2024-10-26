@@ -20,7 +20,11 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         try {
-            return Integer.parseInt(input);
+            int attempts = Integer.parseInt(input);
+            if (attempts < 0) {
+                throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+            }
+            return attempts;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
         }
