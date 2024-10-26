@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarManager {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public void createCars(List<String> carNames) {
         carNames.stream()
                 .map(Car::new)
-                .forEach(carList::add);
+                .forEach(cars::add);
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 }
