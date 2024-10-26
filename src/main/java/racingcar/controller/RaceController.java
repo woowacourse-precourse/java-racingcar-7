@@ -42,7 +42,7 @@ public class RaceController {
 
     private Winner runRace(Cars cars, Race race) {
         outputView.executionResultMessage();
-        while (race.isRaceOngoing()) {
+        while (race.getRaceStatus()) {
             race.startRace();
             outputView.currentStatusMessage(cars);
         }

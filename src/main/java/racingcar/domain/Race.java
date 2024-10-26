@@ -17,6 +17,10 @@ public class Race {
         }
     }
 
+    private boolean isRaceOnGoing() {
+        return currentCounts < trialCounts.getTrialCounts();
+    }
+
     private void increaseCurrentCounts() {
         currentCounts++;
     }
@@ -26,7 +30,7 @@ public class Race {
         increaseCurrentCounts();
     }
 
-    public boolean isRaceOngoing() {
-        return currentCounts < trialCounts.getTrialCounts();
+    public boolean getRaceStatus() {
+        return isRaceOnGoing();
     }
 }
