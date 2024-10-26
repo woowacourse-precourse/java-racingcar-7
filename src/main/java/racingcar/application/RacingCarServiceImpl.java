@@ -1,6 +1,7 @@
 package racingcar.application;
 
 import racingcar.common.InputController;
+import racingcar.common.OutputController;
 import racingcar.model.CarName;
 import racingcar.model.RaceCount;
 import racingcar.model.RacingCarList;
@@ -26,6 +27,6 @@ public class RacingCarServiceImpl implements RacingCarService{
         racingCarList.gameStartPerRound(raceCount);
 
         //output
-
+        OutputController.printWinnerName(racingCarList.getWinningCars());
     }
 }
