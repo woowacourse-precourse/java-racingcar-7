@@ -29,16 +29,19 @@ public class Application {
     }
 
     private static List<String> getCars() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
+        String input = getString();
         List<String> cars = new ArrayList<String>(Arrays.asList(input.split(",")));
         return cars;
     }
 
+    private static String getString() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return Console.readLine();
+    }
+
     private static int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = Integer.parseInt(Console.readLine());
-        return count;
+        return Integer.parseInt(Console.readLine());
     }
 
     private static boolean determineMovement() {
