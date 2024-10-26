@@ -1,8 +1,10 @@
 package racingcar.io;
 
+import javax.swing.text.html.parser.Parser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -20,7 +22,13 @@ public class Input {
 
     }
 
-    public static ArrayList<String> splitCarName(String input) {
+
+    public static int inputTryNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String tryNum = readLine();
+        return tryNumberValidation(tryNum);
+    }
+    public static ArrayList<String> splitCarName (String input) {
 
         String[] str = input.split(",");
 
@@ -35,6 +43,16 @@ public class Input {
         return splitInput;
     }
 
+    public static int tryNumberValidation(String tryNum) {
+        int parserInt = 0;
+        try {
+            parserInt = Integer.parseInt(tryNum);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("시도횟수는 숫자만 입력가능합니다.");
+        }
+        return parserInt;
+
+    }
     public static boolean carNameValidation(String[] str) {
 
         if(str.length == 0) {
