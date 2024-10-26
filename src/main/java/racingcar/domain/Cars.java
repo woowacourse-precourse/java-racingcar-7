@@ -37,5 +37,8 @@ public class Cars {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("[ERROR] 차 이름은 5자 이하여야 합니다");
         }
+        else if(carName.length() <= 0) {
+            throw new IllegalArgumentException("[ERROR] 차 이름은 공백일 수 없습니다");
+        }
     }
 }
