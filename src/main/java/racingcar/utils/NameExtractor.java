@@ -8,10 +8,10 @@ public class NameExtractor {
     private static final String REGEX = ",";
 
     public static List<String> getNames(String userInput) {
-        List<String> splitNames = List.of(userInput.split(REGEX));
+        List<String> rawNames = List.of(userInput.split(REGEX));
         List<String> names = new ArrayList<>();
 
-        for (String rawName : splitNames) {
+        for (String rawName : rawNames) {
             names.add(rawName.trim());
         }
 
