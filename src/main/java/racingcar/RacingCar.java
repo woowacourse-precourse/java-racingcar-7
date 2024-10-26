@@ -10,4 +10,10 @@ public class RacingCar {
         this.name = name;
         this.moveCount = 0;
     }
+
+    public void moveForward(){
+        if(Randoms.pickNumberInRange(0, 9) >= 4){
+            this.moveCount++;
+        }
+    }
 }
