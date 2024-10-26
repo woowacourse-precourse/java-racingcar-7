@@ -21,8 +21,8 @@ class CarNameInputTest {
     }
 
     @Test
-    @DisplayName("입력된 자동차 이름이 빈 문자열이면 예외 처리")
-    void 입력된_자동차_이름이_빈_문자열이면_예외_처리() {
+    @DisplayName("입력된 자동차 이름이 빈 문자열이면 예외 발생")
+    void 입력된_자동차_이름이_빈_문자열이면_예외_발생() {
         // given
         String carName = "";
 
