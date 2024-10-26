@@ -26,7 +26,7 @@ public class RacingGame {
 
     public void tryRound() {
         if (currentTryCount >= totalTryCount) {
-            throw new IllegalArgumentException("모든 라운드를 진행하였습니다");
+            throw new IllegalStateException("모든 라운드를 진행하였습니다");
         }
         participants.forEach(movementPolicy::move);
         ++currentTryCount;
@@ -38,7 +38,7 @@ public class RacingGame {
 
     public void join(Car car) {
         if (participants.contains(car)) {
-            throw new IllegalStateException("자동차 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
         this.participants.add(car);
     }
