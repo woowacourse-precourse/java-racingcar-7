@@ -20,11 +20,19 @@ public class Application {
 
             List<Participant> participantList = new ArrayList<>();
             createParticipantList(inputList, participantList);
+            checkParticipantSize(participantList);
             System.out.println(participantList);
 
             System.out.println(inputList);
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    // 자동차(참가자) 수가 2대 미만인지 확인하는 메서드
+    private static void checkParticipantSize(List<Participant> participantList) {
+        if (participantList.size() < 2) {
+            throw new IllegalArgumentException("자동차 경주는 2대 이상부터 가능합니다.");
         }
     }
 
