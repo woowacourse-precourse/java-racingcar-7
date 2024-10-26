@@ -2,8 +2,8 @@ package racingcar.validation;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Pattern;
 import racingcar.enums.ErrorMessage;
+import racingcar.enums.RegexPattern;
 import racingcar.enums.Separator;
 
 public class CarNameValidator {
@@ -22,13 +22,13 @@ public class CarNameValidator {
     }
 
     private static void validateStartWithComma(String input) {
-        if (Pattern.compile("^,").matcher(input).find()) {
+        if (RegexPattern.STARTS_WITH_COMMA.find(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_FRONT_COMMA.getMessage());
         }
     }
 
     private static void validateEndWithComma(String input) {
-        if (Pattern.compile(",$").matcher(input).find()) {
+        if (RegexPattern.ENDS_WITH_COMMA.find(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_BACK_COMMA.getMessage());
         }
     }
@@ -76,7 +76,7 @@ public class CarNameValidator {
     }
 
     private static void validateCarNameCondition(String carName) {
-        if (!Pattern.compile("^[a-zA-Z0-9가-힣 ]+$").matcher(carName).matches()) {
+        if (!RegexPattern.VALID_NAME_FORMAT.matches(carName)) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_CONDITION.getMessage());
         }
     }

@@ -1,7 +1,7 @@
 package racingcar.validation;
 
-import java.util.regex.Pattern;
 import racingcar.enums.ErrorMessage;
+import racingcar.enums.RegexPattern;
 
 public class TryCountValidator {
     public static void validate(String input) {
@@ -25,7 +25,7 @@ public class TryCountValidator {
     }
 
     private static void validateNotNum(String input) {
-        if (Pattern.compile(".*[\\D].*").matcher(input).find()) {
+        if (RegexPattern.NO_CONTAIN_NUMBER.matches(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ALLOW_TRY_COUNT_WITHOUT_NUM.getMessage());
         }
     }
