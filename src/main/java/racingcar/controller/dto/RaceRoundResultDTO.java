@@ -3,11 +3,11 @@ package racingcar.controller.dto;
 import java.util.List;
 import racingcar.model.Car;
 
-public record RaceResultDTO(
+public record RaceRoundResultDTO(
         List<CarResult> cars
 ) {
-    public static RaceResultDTO from(List<Car> winners) {
-        return new RaceResultDTO(
+    public static RaceRoundResultDTO from(List<Car> winners) {
+        return new RaceRoundResultDTO(
                 winners.stream()
                         .map(CarResult::from)
                         .toList()
