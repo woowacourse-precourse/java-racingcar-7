@@ -118,4 +118,4 @@ jun : -----
 
 ## 순서도
 
-<img width = "500" alt = "image" src="https://github.com/user-attachments/assets/6d63abf5-dfa9-4d2a-9d0e-d194c093622a">
+<img width = "500" alt = "image" src="https://github.com/user-attachments/assets/dc3e5c02-44cf-46f4-bc15-b887363af775">
