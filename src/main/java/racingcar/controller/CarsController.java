@@ -24,12 +24,19 @@ public class CarsController {
     }
 
     public void startCarsMove(){
-        Cars cars = new Cars(inputView.inputName(), randomGenerate);
+        List<String> carNames = inputView.inputName();
+        Cars cars = new Cars(carNames, randomGenerate);
+        this.carsService = new CarsService(cars);
         int numberOfMove = inputView.integerInput();
+        outputView.printDefault();
+        
         for(int i = startIndex; i < numberOfMove; i++){
             cars.carsMove();
             outputView.printCarsMove(carsService.carsDetail());
         }
+
+        List<String> winner = carsService.winnerList();
+        outputView.printWinner(winner);
     }
 
 }
