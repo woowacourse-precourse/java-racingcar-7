@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import static racingcar.common.Constant.BLANK;
 import static racingcar.view.Instruction.FINAL_WINNER_PREFIX;
 import static racingcar.view.Instruction.ROUND_RESULT_COMMENT;
 
@@ -10,6 +9,7 @@ import racingcar.model.Round;
 
 public class OutputView {
     public static final String DISTANCE_SIGN = "-";
+    public static final String WINNER_JOIN_DELIMITER = ", ";
 
     public void printRoundState(List<Round> roundList) {
         System.out.println(ROUND_RESULT_COMMENT);
@@ -28,7 +28,7 @@ public class OutputView {
     }
 
     public void printWinners(Round round) {
-        String winners = String.join(BLANK, round.findAllLeadingCars());
+        String winners = String.join(WINNER_JOIN_DELIMITER, round.findAllLeadingCars());
 
         System.out.print(FINAL_WINNER_PREFIX + winners);
     }
