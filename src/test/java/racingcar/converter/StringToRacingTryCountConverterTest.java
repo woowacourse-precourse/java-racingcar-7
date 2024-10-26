@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringToRacingTryCountConverterTest {
 
-    StringToRacingTryCountConverter stringToRacingTryCountConverter;
+    StringToRacingTryCountConverter converter;
 
     @BeforeEach
     void before() {
-        stringToRacingTryCountConverter = new StringToRacingTryCountConverter();
+        converter = new StringToRacingTryCountConverter();
     }
 
     @Test
@@ -21,27 +21,45 @@ public class StringToRacingTryCountConverterTest {
         String input = "5";
 
         //when
-        int racingTryCount = stringToRacingTryCountConverter.convert(input);
+        int racingTryCount = converter.convert(input);
 
         //then
         assertThat(racingTryCount).isEqualTo(Integer.parseInt(input));
     }
 
     @Test
-    void TDD_시도할_횟수_숫자_검증_실패() {
+    void TDD_시도할_횟수_숫자_실패() {
         //given
         String input = "a";
 
         //when
-        assertThatThrownBy(() -> stringToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void TDD_시도할_횟수_양수_검증_실패() {
+    void TDD_시도할_횟수_정수_실패() {
         //given
         String input = "0";
 
         //when
-        assertThatThrownBy(() -> stringToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도할_횟수_실수_실패() {
+        //given
+        String input = "1.1";
+
+        //when
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도할_횟수_양수_범위_초과_실패() {
+        //given
+        String input = "9999999999999999999999999";
+
+        //when
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

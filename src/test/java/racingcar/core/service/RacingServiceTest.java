@@ -24,16 +24,16 @@ class RacingServiceTest {
         racingService = new RacingService();
     }
 
+    private RacingProperties getRacingPropertiesWithoutFilter() {
+        return getPropertiesWithCarNameFilter(car -> true);
+    }
+
     private RacingProperties getPropertiesWithCarNameFilter(CarNameFilter carNameFilter) {
         return RacingProperties.builder()
                 .carNameFilter(carNameFilter)
                 .carMoveNumberPicker(() -> RACING_CAR_MOVE_LIMIT)
                 .carPositionPrinter(cars -> racingView.printCarsPosition(cars))
                 .build();
-    }
-
-    private CarNameFilter isPobi() {
-        return car -> car.getName().equals("pobi");
     }
 
     private void assertThatWinners(List<RacingCar> winners, String ... carNames) {
@@ -49,7 +49,7 @@ class RacingServiceTest {
         //given
         String cars = " ,woni";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -60,7 +60,7 @@ class RacingServiceTest {
         //given
         String cars = "spring,woni";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -71,7 +71,7 @@ class RacingServiceTest {
         //given
         String cars = "pobi";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -82,7 +82,7 @@ class RacingServiceTest {
         //given
         String cars = "pobi,woni";
         String tryCount = "a";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -93,7 +93,7 @@ class RacingServiceTest {
         //given
         String cars = "pobi,woni";
         String tryCount = "0";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -104,7 +104,7 @@ class RacingServiceTest {
         //given
         String cars = "pobi,pobi,pobi";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         assertThatThrownBy(() -> race(properties, cars, tryCount));
@@ -115,7 +115,7 @@ class RacingServiceTest {
         //given
         String cars = "            pobi       ,woni,pobi";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(isPobi());
+        RacingProperties properties = getPropertiesWithCarNameFilter(car -> car.getName().equals("pobi"));
 
         //when
         List<RacingCar> winners = race(properties, cars, tryCount);
@@ -129,7 +129,7 @@ class RacingServiceTest {
         //given
         String cars = "pobi,woni";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         List<RacingCar> winners = race(properties, cars, tryCount);
@@ -143,7 +143,7 @@ class RacingServiceTest {
         //given
         String cars = "woni,pobi";
         String tryCount = "5";
-        RacingProperties properties = getPropertiesWithCarNameFilter(car -> true);
+        RacingProperties properties = getRacingPropertiesWithoutFilter();
 
         //when
         List<RacingCar> winners = race(properties, cars, tryCount);

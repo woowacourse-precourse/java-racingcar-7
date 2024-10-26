@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringToRacingCarsConverterTest {
 
-    StringToRacingCarsConverter stringToRacingCarsConverter;
+    StringToRacingCarsConverter converter;
 
     @BeforeEach
     void before() {
-        stringToRacingCarsConverter = new StringToRacingCarsConverter();
+        converter = new StringToRacingCarsConverter();
     }
 
     @Test
@@ -24,7 +24,7 @@ public class StringToRacingCarsConverterTest {
         String input = "pobi,woni";
 
         //when
-        LinkedHashSet<RacingCar> cars = stringToRacingCarsConverter.convert(input);
+        LinkedHashSet<RacingCar> cars = converter.convert(input);
 
         //then
         assertThat(cars).extracting(RacingCar::getName).containsExactly("pobi", "woni");
@@ -33,10 +33,10 @@ public class StringToRacingCarsConverterTest {
     @Test
     void TDD_경주_자동차_2대_이상_조건_실패() {
         //given
-        String input = "pobi";
+        String input = "pobi,    ";
 
         //when
-        assertThatThrownBy(() -> stringToRacingCarsConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -45,6 +45,6 @@ public class StringToRacingCarsConverterTest {
         String input = "pobi,pobi,pobi";
 
         //when
-        assertThatThrownBy(() -> stringToRacingCarsConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> converter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

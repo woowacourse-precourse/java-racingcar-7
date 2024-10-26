@@ -74,4 +74,14 @@ public class RacingCarTest {
         //then
         assertThat(pobi.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    void 자동차_전진_실패() {
+        //given
+        RacingCar pobi = new RacingCar("pobi");
+        int input = 10;
+
+        //when
+        assertThatThrownBy(() -> pobi.move(input)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
