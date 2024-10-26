@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Car {
@@ -11,10 +10,6 @@ public class Car {
         String inputString = UserView.readCarName();
         carMap = new HashMap<>();
         separateName(inputString);
-    }
-
-    public Map<String, Integer> get(){
-        return this.carMap;
     }
 
     private void separateName(String input){
