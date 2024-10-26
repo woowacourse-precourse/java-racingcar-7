@@ -16,4 +16,16 @@ public class InputValidator {
             }
         }
     }
+
+    public static int validateMoveCount(String moveCountInput) {
+        try {
+            int moveCount = Integer.parseInt(moveCountInput);
+            if (moveCount < ValidationConstants.MIN_MOVE_COUNT) {
+                throw new IllegalArgumentException(ErrorMessages.ERROR_MOVE_COUNT_NEGATIVE);
+            }
+            return moveCount;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_MOVE_COUNT_NOT_NUMBER);
+        }
+    }
 }

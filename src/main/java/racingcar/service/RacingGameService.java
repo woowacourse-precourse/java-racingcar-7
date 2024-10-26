@@ -11,4 +11,8 @@ public class RacingGameService {
         InputValidator.validateCarNames(carNames);
         return carNames;
     }
+
+    public int parseMoveCount(String moveCountInput) {
+        return InputValidator.validateMoveCount(moveCountInput);
+    }
 }
