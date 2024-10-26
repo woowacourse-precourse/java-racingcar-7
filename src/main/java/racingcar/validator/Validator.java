@@ -2,6 +2,8 @@ package racingcar.validator;
 
 import racingcar.domain.Car;
 
+import java.util.Optional;
+
 public class Validator {
 
     public static String validateCarNameUnderFive(String carName){
@@ -33,7 +35,10 @@ public class Validator {
                 throw new IllegalArgumentException("시도 횟수를 입력해주세요.");
             }
 
-            return Integer.parseInt(trialCount);
+            return Optional.of(Integer.parseInt(trialCount))
+                    .filter(count -> count >= 1)
+                    .orElseThrow(() -> new IllegalArgumentException("시도 횟수는 1회 이상으로 입력해 주세요."));
+
 
         }catch(NumberFormatException e){
             throw new IllegalArgumentException("숫자를 입력해 주세요.");
