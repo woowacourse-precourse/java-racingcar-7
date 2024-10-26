@@ -16,14 +16,7 @@ public class Application {
         String bar = "-";
         System.out.println("실행 결과");
         for (int i = 0; i < count; i++) {
-            nameMap.replaceAll((key, value) -> {
-                int randomNumber = Randoms.pickNumberInRange(0,9);
-                if(randomNumber >= 4){
-                    return value + 1;
-                } else {
-                    return value;
-                }
-            });
+            addDistance(nameMap);
             for (String key : nameMap.keySet()) {
                 System.out.println(key + " : " + bar.repeat(nameMap.get(key)));
             }
@@ -42,6 +35,25 @@ public class Application {
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
+    private static void addDistance(Map<String, Integer> nameMap){
+        nameMap.replaceAll((key, value) -> {
+            int randomNumber = Randoms.pickNumberInRange(0,9);
+            if(randomNumber >= 4){
+                return value + 1;
+            } else {
+                return value;
+            }
+        });
+    }
+
+    private static int randomNumberAssignment(){
+        return Randoms.pickNumberInRange(0,9);
+    }
+
+    private static boolean randomNumberCheck(int randomNumber){
+        return randomNumber >= DISTANCE_POINT;
     }
 
     private static int getCount(){
