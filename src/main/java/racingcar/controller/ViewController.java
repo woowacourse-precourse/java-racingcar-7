@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.domain.Car;
 import racingcar.service.ViewService;
 import racingcar.util.Utils;
 import racingcar.view.InputView;
@@ -29,5 +31,9 @@ public class ViewController {
         String count = inputView.readLine();
         int countNum = viewService.countValidation(count);
         Utils.setAdvaceCount(countNum);
+    }
+
+    public void printAdvance(List<Car> cars){
+        outputView.printAdvance(cars);
     }
 }

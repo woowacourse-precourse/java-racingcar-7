@@ -15,4 +15,12 @@ public class Car {
     public void advanceCar() {
         this.advanceCount += 1;
     }
+
+    public void printStatus(){
+        System.out.print(carName+" : ");
+        for (int i = 0; i < advanceCount; i++) {
+            System.out.print("-");
+        };
+        System.out.println();
+    }
 }

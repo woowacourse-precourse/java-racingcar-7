@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.domain.Car;
 import racingcar.util.Utils;
 
 public class OutputView {
@@ -18,5 +20,12 @@ public class OutputView {
 
     public void inputCountMessage(){
         System.out.println(Utils.INPUT_COUNT_MESSAGE);
+    }
+
+    public void printAdvance(List<Car> cars){
+        for (Car car : cars) {
+            car.printStatus();
+        }
+        System.out.println();
     }
 }

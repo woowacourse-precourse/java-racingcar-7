@@ -8,6 +8,7 @@ import racingcar.util.Utils;
 public class CarController {
     private static CarController carController;
     private static CarService carService = CarService.getInstance();
+    private static ViewController viewController = ViewController.getInstance();
 
     public static CarController getInstance() {
         if (carController == null) {
@@ -24,6 +25,7 @@ public class CarController {
         for (int i = 0; i < Utils.getAdvaceCount(); i++) {
             int num = Utils.getRandom();
             carService.advanceCar(cars, num);
+            viewController.printAdvance(cars);
         }
     }
 }
