@@ -6,6 +6,7 @@ import racingcar.domain.round.RoundResult;
 public class OutputView {
 
     private final StringBuilder buffer = new StringBuilder();
+    private static final String NEW_LINE = System.lineSeparator();
 
     private void newLine() {
         System.out.println();
@@ -20,18 +21,18 @@ public class OutputView {
         racingResult.forEach(roundResult -> buffer.append(roundResult.carName())
                 .append(" : ")
                 .append("-".repeat(roundResult.position()))
-                .append('\n'));
+                .append(NEW_LINE));
         bufferClear();
         newLine();
     }
 
     private void bufferClear() {
-        System.out.println(buffer);
+        System.out.print(buffer);
         buffer.setLength(0);
     }
 
     public void showFinalWinners(List<String> finalWinners) {
-        buffer.append("최종 우승자 : ").append(String.join(", ", finalWinners));
+        buffer.append("최종 우승자 : ").append(String.join(", ", finalWinners)).append(NEW_LINE);
         bufferClear();
     }
 

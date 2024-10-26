@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RacerNameTest {
+class CarNameTest {
 
     @Test
     @DisplayName("자동차 이름이 빈 값일 경우, 예외가 발생한다.")
