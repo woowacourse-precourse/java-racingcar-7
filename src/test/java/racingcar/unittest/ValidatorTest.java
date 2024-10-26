@@ -57,6 +57,18 @@ class ValidatorTest extends NsTest {
                 .hasMessageContaining("자동차 이름에 중복이 존재합니다");
     }
 
+    @Test
+    @DisplayName("자동차 이름 배열이 비어 있는 경우 예외 발생 테스트")
+    void validateCarNames_withEmptyArray_shouldThrowException() {
+        // Given
+        String[] names = {};
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateCarNames(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("적어도 한 대의 자동차 이름을 입력해야 합니다.");
+    }
+
     @Override
     public void runMain() {
     }
