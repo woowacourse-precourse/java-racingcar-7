@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -82,10 +83,9 @@ public class Application {
 
     public static void checkRandomNumber(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            int pos = 0;
-            for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
-                if (racingCar.randomNumbers.get(i) >= 4) pos++;
-            }
+            int pos = (int) racingCar.randomNumbers.stream()
+                    .filter(i -> i >= 4)
+                    .count();
             racingCar.position = pos;
         }
     }
@@ -101,11 +101,10 @@ public class Application {
     }
 
     public static Integer getWinPosition(List<RacingCar> racingCarList) {
-        int maxPosition = 0;
-        for (RacingCar racingCar : racingCarList) {
-            if (racingCar.position > maxPosition) maxPosition = racingCar.position;
-        }
-        return maxPosition;
+        return racingCarList.stream()
+                .mapToInt(racingCar -> racingCar.position)
+                .max()
+                .orElse(0);
     }
 
     public static List<String> getWinners(List<RacingCar> racingCarList, int maxPosition) {
