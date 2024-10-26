@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -29,6 +31,90 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Nested
+    class 입력_테스트 {
+
+        @Nested
+        class 자동차_이름 {
+
+            @Test
+            void 공백_입력시_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc,,d"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            void 이름_5자_초과시_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abcdefg"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+        }
+
+        @Nested
+        class 이동_횟수 {
+
+            @Test
+            void 공백_입력시_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            void 숫자가_아닐_경우_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc", "abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            void 음수일_경우_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc", "-10"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            void Long_보다_클_경우_예외() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc", "999999999999999999999999999999999999"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+        }
+    }
+
+    @Nested
+    class 기능_테스트 {
+
+        @Test
+        void 단일_우승자() {
+            assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+            );
+        }
+
+        @Test
+        void 공동_우승자() {
+
+            // TODO : 테스트 작성
+
+        }
     }
 
     @Override
