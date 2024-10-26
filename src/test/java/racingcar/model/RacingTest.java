@@ -121,7 +121,7 @@ class RacingTest {
         Car woniCar = Car.of("woni", new StubRandomNumberGenerator(3));
         Car junCar = Car.of("jun", new StubRandomNumberGenerator(1));
 
-        return Cars.from(
+        return Cars.fromCars(
                 List.of(pobiCar, woniCar, junCar)
         );
     }

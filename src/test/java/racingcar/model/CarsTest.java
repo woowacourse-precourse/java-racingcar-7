@@ -6,39 +6,29 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.randomnumber.RandomNumberGenerator;
 
 class CarsTest {
 
-    @DisplayName("자동차들을 받아서 Cars를 생성한다.")
+    @DisplayName("자동차 이름을 받아서 Cars를 생성한다.")
     @Test
     void createCars() {
         //given
-        List<Car> carList = List.of(
-                Car.of("pobi", new RandomNumberGenerator()),
-                Car.of("woni", new RandomNumberGenerator()),
-                Car.of("jun", new RandomNumberGenerator())
-        );
-
+        List<String> carNames = List.of("pobi", "woni", "jun");
         //when
-        Cars cars = Cars.from(carList);
+        Cars cars = Cars.fromNames(carNames);
 
         //then
-        assertThat(cars).isEqualTo(Cars.from(carList));
+        assertThat(cars).isEqualTo(Cars.fromNames(carNames));
     }
 
-    //TODO 예외를 반환하지 않는 테스트도 하면 좋을듯
     @DisplayName("중복된 자동차가 있는 경우 예외를 발생한다.")
     @Test
     void duplicateCar() {
         //given
-        List<Car> cars = List.of(
-                Car.of("pobi", new RandomNumberGenerator()),
-                Car.of("pobi", new RandomNumberGenerator())
-        );
+        List<String> carNames = List.of("pobi", "pobi", "jun");
 
         //when //then
-        assertThatThrownBy(() -> Cars.from(cars))
+        assertThatThrownBy(() -> Cars.fromNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

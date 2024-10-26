@@ -6,17 +6,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import racingcar.model.dto.CarStatusDto;
+import racingcar.util.randomnumber.RandomNumberGenerator;
 
 public class Cars {
 
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
-        validateDuplicate(cars);
         this.cars = cars;
     }
 
-    public static Cars from(List<Car> cars) {
+    public static Cars fromNames(List<String> carsNames) {
+        validateDuplicate(carsNames);
+        return Cars.fromCars(createCars(carsNames));
+    }
+
+    protected static Cars fromCars(List<Car> cars) {
         return new Cars(cars);
     }
 
@@ -58,11 +63,19 @@ public class Cars {
         return winners;
     }
 
-    private void validateDuplicate(List<Car> cars) {
-        Set<Car> nonDuplicateCar = new HashSet<>(cars);
-        if (nonDuplicateCar.size() != cars.size()) {
+    private static void validateDuplicate(List<String> carNames) {
+        Set<String> nonDuplicateCarNames = new HashSet<>(carNames);
+        if (nonDuplicateCarNames.size() != carNames.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
+    }
+
+    private static List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(Car.of(carName, new RandomNumberGenerator()));
+        }
+        return cars;
     }
 
     @Override
