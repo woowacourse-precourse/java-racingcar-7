@@ -11,6 +11,8 @@ public class Race {
 
     private final List<Car> cars;
     private final int tryCount;
+    private final static int MAX_CAR_NAME_LENGTH = 5;
+    private final static int VALIDATE_NEGATIVE_NUMBER = 0;
 
     public Race(List<Car> cars, int tryCount) {
         this.cars = cars;
@@ -47,5 +49,20 @@ public class Race {
         Car winner = Collections.max(cars, Comparator.comparingInt(car -> car.getPosition()));
         int winnerPosition = winner.getPosition();
         return winnerPosition;
+    }
+
+    public static boolean validateCarName(String name) {
+        int nameLength = name.length();
+        if (nameLength > MAX_CAR_NAME_LENGTH) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateTryCount(int tryCount) {
+        if (tryCount < VALIDATE_NEGATIVE_NUMBER) {
+            return false;
+        }
+        return true;
     }
 }
