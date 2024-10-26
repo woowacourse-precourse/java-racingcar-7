@@ -12,7 +12,8 @@ public class RacingGameService {
     }
 
     public List<Car> findWinner(List<Car> cars){
-
+        int max = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.stream().filter(car -> car.getPosition() == max).toList();
     }
 
     private void randomMove(Car car){
