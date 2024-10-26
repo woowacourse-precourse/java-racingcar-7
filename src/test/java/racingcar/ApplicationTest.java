@@ -24,6 +24,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("최종 우승자가 여러명일 경우 우승자 이름 사이 콤마와 공백이 포함되어야 한다.")
+    @Test
+    void manyWinner() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,woo", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ","woo : -", "최종 우승자 : pobi, woo");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
     @DisplayName("빈 문자열이 들어오면 안된다.")
     @Test
     void emptyInputTest() {
