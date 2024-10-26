@@ -9,11 +9,9 @@ public class RacingGame {
 
     private Car[] cars; // 경주 차량
     private int totalAttempts;
-    private int currentAttempts;
-
 
     public RacingGame() {
-        this.currentAttempts = 0;
+
     }
 
     public void inputCars(String carNames){
