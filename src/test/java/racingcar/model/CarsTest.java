@@ -6,15 +6,22 @@ import static racingcar.model.Cars.MAX_CAR_COUNT;
 import static racingcar.model.Cars.MIN_CAR_COUNT;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.car.Car;
+import racingcar.model.car.RandomMoveStrategy;
 
 class CarsTest {
+
+    private Cars createCars(String carNames) {
+        return new Cars(carNames, new RandomMoveStrategy());
+    }
+
     @Test
     void 양쪽_공백은_자동으로_제거처리(){
         // given
         String carNames = "    one,two,three         ";
 
         // when
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars(carNames, new RandomMoveStrategy());
 
         // then
         assertThat(cars.getAllCars())
@@ -29,7 +36,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("연속된 콤마는 허용되지 않습니다.");
     }
@@ -41,7 +48,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 자동차 이름이 있습니다.");
     }
@@ -53,7 +60,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("처음과 마지막에 구분자를 포함시킬 수 없습니다.");
 
@@ -66,7 +73,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("처음과 마지막에 구분자를 포함시킬 수 없습니다.");
     }
@@ -78,7 +85,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("처음과 마지막에 구분자를 포함시킬 수 없습니다.");
     }
@@ -90,7 +97,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차는" + MAX_CAR_COUNT + "대 이하로만 설정할 수 있습니다.");
     }
@@ -102,7 +109,7 @@ class CarsTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new Cars(carNames))
+        assertThatThrownBy(() -> createCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("레이스를 하기위해 최소" + MIN_CAR_COUNT + "대 이상의 자동차가 필요합니다.");
     }

@@ -1,18 +1,24 @@
-package racingcar.model;
+package racingcar.model.car;
 
 public class Car {
     private static final String KOREAN_ENGLISH_REGEX = "^[a-zA-Z가-힣]+$";
     private static final Integer MAX_CAR_NAME_LENGTH = 5;
+    private final MoveStrategy moveStrategy;
+
 
     private final String carName;
+    private int position = 0;
 
-    public Car(String carName) {
+    public Car(String carName, MoveStrategy moveStrategy) {
         validateCarName(carName);
         this.carName = carName;
+        this.moveStrategy = moveStrategy;
     }
 
-    public String getCarName() {
-        return carName;
+    public void move() {
+        if (moveStrategy.canMove()) {
+            position++;
+        }
     }
 
     private void validateCarName(String carName) {
@@ -37,5 +43,13 @@ public class Car {
         if(carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 }

@@ -7,24 +7,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import racingcar.model.car.Car;
+import racingcar.model.car.MoveStrategy;
+
 
 public class Cars {
     public static final int MAX_CAR_COUNT = 5;
     public static final int MIN_CAR_COUNT = 2;
     public static final String DELIMITER = ",";
-
     private static final Map<String, Car> carsCache = new HashMap<>();
 
-    public Cars(String carNames) {
+    public Cars(String carNames, MoveStrategy moveStrategy) {
         validateBasicCarNameConditions(carNames);
         validateCarNames(convertListString(carNames));
-        generateCars(carNames);
-
+        generateCars(carNames, moveStrategy);
     }
 
-    public Collection<Car> getAllCars() {
-        return carsCache.values();
+    public void moveCars() {
+        carsCache.values().forEach(Car::move);
     }
+
 
     private void validateBasicCarNameConditions(String carNames) {
         validateNoConsecutiveCommas(carNames);
@@ -74,8 +76,12 @@ public class Cars {
         }
     }
 
-    private void generateCars(String carNames) {
+    private void generateCars(String carNames, MoveStrategy moveStrategy) {
         Arrays.stream(carNames.split(DELIMITER))
-                .forEach(carName -> carsCache.put(carName.trim(), new Car(carName.trim())));
+                .forEach(carName -> carsCache.put(carName.trim(), new Car(carName.trim(), moveStrategy)));
+    }
+
+    public Collection<Car> getAllCars() {
+        return carsCache.values();
     }
 }
