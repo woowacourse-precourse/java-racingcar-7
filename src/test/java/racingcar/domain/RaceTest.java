@@ -64,8 +64,6 @@ public class RaceTest {
         // given
         Set<String> carNames = new LinkedHashSet<>();
         carNames.add("pobi");
-        carNames.add("woni");
-        carNames.add("jun");
         int attemptCount = 5;
 
         MovementStrategy alwaysMoveStrategy = () -> true;

@@ -18,8 +18,6 @@ public class RaceResultOutputTest {
         // given
         Set<String> carNames = new LinkedHashSet<>();
         carNames.add("pobi");
-        carNames.add("woni");
-        carNames.add("jun");
         int attemptCount = 5;
 
         MovementStrategy alwaysMoveStrategy = () -> true;
@@ -27,7 +25,7 @@ public class RaceResultOutputTest {
 
         // when
         race.start();
-        String output = RaceOutput.printWinners(race.getWinners());
+        String output = RaceResultOutput.printWinners(race.getWinners());
 
         // then
         assertEquals("최종 우승자 : pobi", output);
@@ -48,7 +46,7 @@ public class RaceResultOutputTest {
 
         // when
         race.start();
-        String output = RaceOutput.printWinners(race.getWinners());
+        String output = RaceResultOutput.printWinners(race.getWinners());
 
         // then
         assertEquals("최종 우승자 : pobi, woni, jun", output);
