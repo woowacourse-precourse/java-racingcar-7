@@ -1,17 +1,18 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Game;
 
 public class ProcessService {
     public ArrayList<Car> getWinnerCar(Game game) {
-        ArrayList<Car> candidates = game.getRacingCarArray();
+        List<Car> candidates = game.getRacingCarArray();
         int max = getMaxDistance(candidates);
         return getWinner(candidates, max);
     }
 
-    private int getMaxDistance(ArrayList<Car> candidates) {
+    private int getMaxDistance(List<Car> candidates) {
         int max = 0;
         for (Car car : candidates) {
             if (car.getDistance() > max) {
@@ -21,7 +22,7 @@ public class ProcessService {
         return max;
     }
 
-    private ArrayList<Car> getWinner(ArrayList<Car> candidates, int max) {
+    private ArrayList<Car> getWinner(List<Car> candidates, int max) {
         ArrayList<Car> winners = new ArrayList<>();
         for (Car car : candidates) {
             if (car.getDistance() == max) {

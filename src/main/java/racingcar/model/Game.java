@@ -1,27 +1,31 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.utils.RandomUtils;
 
 public class Game {
-    private final ArrayList<Car> racingCarArray;
-    private final RandomUtils randomUtils = new RandomUtils();
+    private final List<Car> racingCarList;
+    private final RandomUtils randomUtils;
 
-    public Game(List<String> nameArray) {
-        racingCarArray = new ArrayList<>();
-        for (String name : nameArray) {
-            racingCarArray.add(new Car(name));
-        }
+    public Game(List<String> nameList) {
+        this.randomUtils = new RandomUtils();
+        racingCarList = nameList.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public ArrayList<Car> getRacingCarArray() {
-        return racingCarArray;
+    public List<Car> getRacingCarArray() {
+        return racingCarList;
     }
 
     public void play() {
-        for (Car racingCar : racingCarArray) {
-            racingCar.addDistance(randomUtils.isProbabilityHit(9, 4));
+        for (Car racingCar : racingCarList) {
+            moveCarIfHit(racingCar);
         }
+    }
+
+    private void moveCarIfHit(Car car) {
+        car.addDistance(randomUtils.isProbabilityHit(9, 4));
     }
 }
