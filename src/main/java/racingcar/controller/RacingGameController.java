@@ -27,8 +27,12 @@ public class RacingGameController {
 
 
     public void doRacing(Cars cars, int count){
-        System.out.print(Message.newLine.getMessage());
-        System.out.println(Message.result.getMessage());
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(System.lineSeparator());
+        stringBuilder.append(Message.result.getMessage());
+
+        System.out.println(stringBuilder);
 
         while(count > 0){
             cars.moveCars();

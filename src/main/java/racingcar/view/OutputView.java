@@ -18,11 +18,7 @@ public class OutputView {
     }
 
     public void printWinner(List<String> winner){
-        System.out.print(Message.winner.getMessage());
-        System.out.print(winner.get(0));
-
-        for(int i = 1; i < winner.size(); i++){
-            System.out.print(", "+winner.get(i));
-        }
+        String winners = String.join(", ", winner);
+        System.out.print(Message.winner.getMessage() + winners);
     }
 }
