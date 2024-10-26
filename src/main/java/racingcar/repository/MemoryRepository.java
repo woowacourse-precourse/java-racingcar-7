@@ -3,7 +3,7 @@ package racingcar.repository;
 import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.RacingWinners;
-import racingcar.utils.IOMessage;
+import racingcar.utils.message.IOMessage;
 
 import java.util.ArrayList;
 import java.util.List;

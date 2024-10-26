@@ -1,6 +1,6 @@
 package racingcar.model.entity;
 
-import racingcar.utils.ErrorMessage;
+import racingcar.utils.message.ErrorMessage;
 
 /**
  * 주행 시도 횟수를 담은 객체 : 입력값 검증 기능 수행

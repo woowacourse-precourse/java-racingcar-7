@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.utils.message;
 
 /**
  * 입출력 관련 메시지 관련 클래스

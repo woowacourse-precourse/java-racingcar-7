@@ -1,6 +1,6 @@
 package racingcar.model.entity;
 
-import racingcar.utils.ErrorMessage;
+import racingcar.utils.message.ErrorMessage;
 
 import java.util.HashSet;
 import java.util.Iterator;

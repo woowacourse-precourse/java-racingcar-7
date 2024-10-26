@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.utils.IOMessage;
+import racingcar.utils.message.IOMessage;
 
 /**
  * 콘솔로 입력값을 다루는 클래스
