@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Validator {
 
-    void validateCarNamesInput(String inputStr) {
+    public void validateCarNamesInput(String inputStr) {
         if (inputStr.isEmpty()) {
             throw new IllegalArgumentException("입력은 비어있을 수 없습니다");
         }
@@ -13,7 +13,7 @@ public class Validator {
         }
     }
 
-    void validateCarNamesLength(List<String> carNames, int standard) {
+    public void validateCarNamesLength(List<String> carNames, int standard) {
         for (String carName : carNames) {
             if (carName.length() > standard)
                 throw new IllegalArgumentException("자동차 이름은 기준을 넘길 수 없습니다.");

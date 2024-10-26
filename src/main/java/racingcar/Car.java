@@ -4,15 +4,15 @@ public class Car {
     private String name;
     private long moveCount;
 
-    Car() {
+    public Car() {
         moveCount = 0;
     }
 
-    long getMoveCount() {
+    public long getMoveCount() {
         return moveCount;
     }
 
-    void move() {
+    public void move() {
         moveCount++;
     }
 }
