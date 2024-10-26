@@ -1,7 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import racingcar.domain.CarGameManager;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
@@ -17,16 +15,21 @@ public class CarController {
     public CarController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.carService = new CarService(new CarGameManager(new ArrayList<>()));
     }
 
-    public void init() {
-        try{
-            names = inputView.inputNames();
-        }catch (Exception e) {
-            new IllegalArgumentException();
-        }
-        totalTimes = inputView.inputTimes();
+    public void startGame() {
+        initializeGame();
+        playRace();
+        displayWinners();
+    }
+
+    private void initializeGame() {
+        String[] names = inputView.inputNames();
+        InputValidator.validateName(names);
+        int totalTimes = inputView.inputTimes();
+
+        carGameManager = new CarGameManager(names, totalTimes);
+        outputView.printResultMessage();
     }
 
     private void playRace() {
