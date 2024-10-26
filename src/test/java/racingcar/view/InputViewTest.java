@@ -36,4 +36,15 @@ public class InputViewTest {
 
         assertThat(result).isEqualTo(input);
     }
+
+    @Test
+    void 자동차_이동_횟수_입력_안내_문구_출력() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        inputView.printCarMovementCountInputGuide();
+
+        assertThat(outputStream.toString().trim())
+                .isEqualTo("시도할 횟수는 몇 회인가요?");
+    }
 }
