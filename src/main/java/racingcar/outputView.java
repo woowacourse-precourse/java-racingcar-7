@@ -15,8 +15,8 @@ public class outputView {
     }
     public static void printWinners(List<Car> carList) {
         System.out.print("최종 우승자 : ");
-        String output = carList.stream().map(Car::getCarName).collect(Collectors.joining(", "));
-        System.out.println(output);
+        String winners = carList.stream().map(Car::getCarName).collect(Collectors.joining(", "));
+        System.out.println(winners);
     }
 
 }
