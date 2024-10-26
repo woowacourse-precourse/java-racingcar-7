@@ -50,4 +50,12 @@ public class Input {
             }
         }
     }
+
+    public void validateInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 정수형으로 작성해야 합니다.");
+        }
+    }
 }
