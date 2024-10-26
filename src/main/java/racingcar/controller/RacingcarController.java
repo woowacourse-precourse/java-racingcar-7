@@ -32,9 +32,24 @@ public class RacingcarController {
     }
 
     public void printWinner(RacingGame racingGame , List<Racingcar> racingcarList) {
-        List<String> winners = findWinner(racingGame, racingcarList);
+        List<String> winners = findWinner(racingcarList);
         OutputView.printWinner(winners);
 
+    }
+
+    public List<String> findWinner(List<Racingcar> racingcarList) {
+        List<String> winners = new ArrayList<>();
+        int maxLocation = Integer.MIN_VALUE;
+        for (Racingcar racingcar : racingcarList) {
+            if(racingcar.getLocation() > maxLocation) {
+                winners.clear();
+                maxLocation = racingcar.getLocation();
+                winners.add(racingcar.getCarName());
+            } else if (racingcar.getLocation() == maxLocation) {
+                winners.add(racingcar.getCarName());
+            }
+        }
+        return winners;
     }
 
 
