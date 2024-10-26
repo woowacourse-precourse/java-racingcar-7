@@ -1,16 +1,14 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.RoundRaceRecord;
+import racingcar.model.move.MoveStrategy;
+import racingcar.model.move.RandomMoveStrategy;
 
 public class CarRace {
 
-    private static final int RANDOM_RANGE_START = 0;
-    private static final int RANDOM_RANGE_END = 9;
-    private static final int MOVE_THRESHOLD = 4;
-
+    private final MoveStrategy moveStrategy;
     private final Cars cars;
     private final int roundCount;
     private int currentRoundCount = 0;
@@ -18,6 +16,7 @@ public class CarRace {
     public CarRace(Cars cars, int roundCount) {
         this.cars = cars;
         this.roundCount = roundCount;
+        this.moveStrategy = new RandomMoveStrategy();
     }
 
     public List<RoundRaceRecord> startRound() {
@@ -35,7 +34,7 @@ public class CarRace {
 
     private void moveCarsIfAble() {
         for (Car car : cars.getCars()) {
-            if (canMove()) {
+            if (moveStrategy.canMove()) {
                 car.moveForward();
             }
         }
@@ -50,10 +49,6 @@ public class CarRace {
 
     private RoundRaceRecord mapToRoundRaceRecord(Car car) {
         return new RoundRaceRecord(car.getName(), car.getPosition());
-    }
-
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END) >= MOVE_THRESHOLD;
     }
 
     public boolean hasMoreRounds() {
