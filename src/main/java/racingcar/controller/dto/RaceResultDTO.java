@@ -6,7 +6,7 @@ import racingcar.model.Car;
 public record RaceResultDTO(
         List<CarResult> cars
 ) {
-    public RaceResultDTO from(List<Car> winners) {
+    public static RaceResultDTO from(List<Car> winners) {
         return new RaceResultDTO(
                 winners.stream()
                         .map(CarResult::from)
