@@ -19,8 +19,11 @@ public class Application {
         String[] carScore = new String[cars.length];
         InitializeToSpace(carScore);
         System.out.println("실행 결과");
-        StartRaceOnetime(cars, carScore);
-        PrintCurrentScore(cars, carScore);
+        for(int i = 0; i < number; i++) {
+            StartRaceOnetime(cars, carScore);
+            PrintCurrentScore(cars, carScore);
+        }
+
     }
 
     // 1. 잘못된 입력 판단 함수
