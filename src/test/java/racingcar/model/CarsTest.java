@@ -49,4 +49,26 @@ public class CarsTest {
         assertThat(cars.getCarDtoList())
                 .isEqualTo(carDtoList);
     }
+
+    @Test
+    void 우승한_자동차들의_이름을_계산한다() {
+        TestCar car1 = new TestCar("poby");
+        TestCar car2 = new TestCar("woni");
+        TestCar car3 = new TestCar("jun");
+        car1.setRandomNumber(7);
+        car2.setRandomNumber(2);
+        car3.setRandomNumber(6);
+
+        cars.saveCar(car1);
+        cars.saveCar(car2);
+        cars.saveCar(car3);
+
+        List<String> winnerNameList = Arrays.asList("poby", "jun");
+
+        cars.moveCars();
+        cars.moveCars();
+
+        assertThat(cars.getWinnerNames())
+                .isEqualTo(winnerNameList);
+    }
 }
