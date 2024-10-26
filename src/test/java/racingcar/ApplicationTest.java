@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,10 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
+
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -21,11 +24,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
@@ -61,7 +64,27 @@ class ApplicationTest extends NsTest {
         assertEquals(3, raceCount);
     }
 
+    @Test
+    public void testAssignRandomValuesForRaceCount() {
 
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("포르쉐"));
+        cars.add(new Car("페라리"));
+        cars.add(new Car("람보르기니"));
+
+        int raceCount = 3;
+        CarValueAssigner carValueAssigner = new CarValueAssigner();
+
+        for (int i = 0; i < raceCount; i++) {
+            for (Car car : cars) {
+                int randomValue = carValueAssigner.assignRandomValue(car);
+
+                assertTrue(randomValue >= 1 && randomValue <= 10);
+            }
+        }
+
+
+    }
 
 
     @Override

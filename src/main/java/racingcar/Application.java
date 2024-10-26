@@ -24,7 +24,8 @@ public class Application {
             cars.add(new Car(carName));
         }
 
-        inputRaceCount();
+        int raceCount = inputRaceCount();
+
 
 
     }
@@ -38,5 +39,7 @@ public class Application {
 
         return raceCount;
     }
+
+
 
 }
