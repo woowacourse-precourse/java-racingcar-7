@@ -29,6 +29,14 @@ public class Application {
                         racing_num[j] += 1;
                     }
                 }
+                for (int j=0; j<cars.length; j++){
+                    System.out.print(cars[j] + " : ");
+                    for (int k=0; k<racing_num[j]; k++){
+                        System.out.print("-");
+                    }
+                    System.out.println();
+                }
+                System.out.println();
             }
     }
 
