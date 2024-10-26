@@ -4,14 +4,6 @@ import java.util.List;
 
 public class OutputView {
 
-    public void printCarNamesPrompt() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    }
-
-    public void printAttemptCountPrompt() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-    }
-
     public void printCarDistances(List<String> carNames, List<Integer> distances) {
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");
