@@ -1,4 +1,4 @@
 package racingcar.Util.Message;
 
-public class ExceptionType {
+public class IOMessage {
 }
