@@ -22,4 +22,31 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(CAR_NAME_LENGTH_EXCEPTION.message());
     }
+
+    @Test
+    void 무작위_값이_4_이상이면_자동차_전진() {
+        TestCar car = new TestCar("pobi");
+        car.setRandomNumber(6);
+        car.move();
+        
+        assertThat(car.getPosition())
+                .isEqualTo(1);
+    }
+}
+
+class TestCar extends Car {
+    private int randomNumber = 0;
+
+    public TestCar(String name) {
+        super(name);
+    }
+
+    public void setRandomNumber(int randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    @Override
+    protected int getRandomNumber() {
+        return randomNumber;
+    }
 }

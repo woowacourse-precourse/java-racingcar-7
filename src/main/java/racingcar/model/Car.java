@@ -37,7 +37,7 @@ public class Car implements Comparable<Car> {
         return getRandomNumber() >= 4;
     }
 
-    private int getRandomNumber() {
+    protected int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
