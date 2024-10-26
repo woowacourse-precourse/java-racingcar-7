@@ -5,11 +5,23 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class Cars {
-    private Map<String, Integer> cars;
+    private Map<String, Integer> cars;  //String 은 자동차 이름, Integer 는 전진한 횟수이다
 
     public Cars(Map<String, Integer> cars) {
         carNameValidate(cars);
         this.cars = cars;
+    }
+
+    public Map<String, Integer> getCars() {
+        return cars;
+    }
+
+    //자동차가 전진한 거리 업데이트 하는 메소드
+    public void updateDistance(String carName, int randomNum) {
+        if(randomNum >= 4) {
+            int updatedDistance = cars.get(carName) + 1;
+            cars.replace(carName, updatedDistance);
+        }
     }
 
     private void carNameValidate(Map<String, Integer> cars) {

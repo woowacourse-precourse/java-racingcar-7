@@ -6,4 +6,8 @@ public class TryCount {
     public TryCount(int tryCount) {
         this.tryCount = tryCount;
     }
+
+    public int getTryCount() {
+        return tryCount;
+    }
 }
