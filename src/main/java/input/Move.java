@@ -3,7 +3,11 @@ package input;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Move {
-    public int howManyMove() {
+    public int inputHandler() {
+        return howManyMove();
+    }
+
+    private int howManyMove() {
         // 원시값 포장 필요
         String isNumberOfMoveString = Console.readLine();
         int numberOfMove = isNumberOfMove(isNumberOfMoveString);

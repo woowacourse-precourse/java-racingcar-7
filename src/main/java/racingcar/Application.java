@@ -8,17 +8,16 @@ import racingGame.WholeCycleGame;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         CarName carName = new CarName();
-        InputDelimiter inputDelimiter = new InputDelimiter();
         Move move = new Move();
+
+        // 게임에 필수적인 인자인 참가한 자동차 리스트, 움직이는 횟수 객체 구현
+        List<String> participateCarList = carName.inputHandler();
+        int numberOfMove = move.inputHandler();
+
         WholeCycleGame wholeCycleGame = new WholeCycleGame();
 
-        String inputCarName = carName.inputCarName();
-        // 이름 바꿔야될듯
-        List<String> delimeteWithCommaList = inputDelimiter.delimiterWithComma(inputCarName);
-        int numberOfMove = move.howManyMove();
-
-        wholeCycleGame.gameStart(delimeteWithCommaList, numberOfMove);
+        // 레이싱게임 시작
+        wholeCycleGame.gameStart(participateCarList, numberOfMove);
     }
 }
