@@ -6,7 +6,7 @@ import racingcar.view.InputView;
 
 public class ConsoleInputView implements InputView {
 	public CarNamesInput readCarNames() {
-		String CarNames = Console.readLine();
-		return new CarNamesInput(CarNames.trim());
+		String carNames = Console.readLine();
+		return new CarNamesInput(carNames.trim());
 	}
 }
