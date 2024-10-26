@@ -1,9 +1,30 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
     String carName;
-    Integer randomNumber;
+    int randomNumber;
+    List<Character> moveCount = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carName='" + carName + '\'' +
+                ", randomNumber=" + randomNumber +
+                ", moveCount=" + moveCount +
+                '}';
+    }
+
+    public List<Character> getMoveCount() {
+        return moveCount;
+    }
+
+    public void setMoveCount(List<Character> moveCount) {
+        this.moveCount = moveCount;
+    }
 
     public String getCarName() {
         return carName;
@@ -13,11 +34,11 @@ public class Car {
         this.carName = carName;
     }
 
-    public Integer getRandomNumber() {
+    public int getRandomNumber() {
         return randomNumber;
     }
 
-    public void setRandomNumber(Integer randomNumber) {
+    public void setRandomNumber(int randomNumber) {
         this.randomNumber = randomNumber;
     }
 }

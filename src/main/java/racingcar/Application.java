@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import racingcar.controller.CarController;
 import racingcar.model.Car;
@@ -13,10 +15,14 @@ public class Application {
 
         List<Car> carList = CarController.makeCarList(CarController.makeCarNameList(userInput));
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int roundNumber = Integer.valueOf(Console.readLine());
+
+        CarController.roundResult(carList, roundNumber);
+
 //        List<Integer> numbers = new ArrayList<>(carList.size());
 //        int randoms = Randoms.pickNumberInList(numbers);
 
-//        System.out.println("시도할 횟수는 몇 회인가요?");
-//        int moveNumber = Integer.valueOf(Console.readLine());
+
     }
 }
