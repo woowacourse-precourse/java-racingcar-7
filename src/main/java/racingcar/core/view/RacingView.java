@@ -2,6 +2,7 @@ package racingcar.core.view;
 
 import racingcar.domain.RacingCar;
 import racingcar.message.Message;
+import racingcar.message.RacingMessage;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -14,13 +15,11 @@ import static racingcar.message.utils.FinalWinnersMessageUtils.generateFinalWinn
 public class RacingView {
 
     public String inputCars() {
-        printMessage(INPUT_CAR_NAMES);
-        return readLine();
+        return inputUserWithMessage(INPUT_CAR_NAMES);
     }
 
     public String inputTryCount() {
-        printMessage(INPUT_TRY_COUNT);
-        return readLine();
+        return inputUserWithMessage(INPUT_TRY_COUNT);
     }
 
     public void printExcuteResult() {
@@ -33,6 +32,11 @@ public class RacingView {
 
     public void printFinalWinners(List<RacingCar> winners) {
         printMessage(generateFinalWinnersMessage(winners));
+    }
+
+    private String inputUserWithMessage(RacingMessage message) {
+        printMessage(message);
+        return readLine();
     }
 
     private void printMessage(Message message) {
