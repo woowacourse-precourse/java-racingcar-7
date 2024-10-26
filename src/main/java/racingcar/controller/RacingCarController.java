@@ -29,4 +29,8 @@ public class RacingCarController {
             OutputView.printGameStatus(service.getGameBoard().getCars());
         }
     }
+
+    public void close() {
+        service.determineWinner();
+    }
 }

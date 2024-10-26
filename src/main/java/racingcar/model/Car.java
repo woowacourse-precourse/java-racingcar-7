@@ -17,4 +17,12 @@ public class Car {
     public String toString() {
         return carName + " : " + "-".repeat(carMoved);
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getCarMoved() {
+        return carMoved;
+    }
 }

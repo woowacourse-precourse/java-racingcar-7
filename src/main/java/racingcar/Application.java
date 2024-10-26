@@ -7,5 +7,6 @@ public class Application {
         RacingCarController racingCarController = new RacingCarController();
         racingCarController.init();
         racingCarController.run();
+        racingCarController.close();
     }
 }

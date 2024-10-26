@@ -1,12 +1,14 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.GameBoard;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarService {
     private final GameBoard gameBoard = new GameBoard(new ArrayList<>());
+    private final List<String> winners = new ArrayList<>();
     private String[] carNames;
     private int moveCount;
 
@@ -50,5 +52,23 @@ public class CarService {
             throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
         }
         this.moveCount = moveCount;
+    }
+
+    public List<String> determineWinner() {
+        int maxMoved = getMaxMoved();
+        for (Car car : gameBoard.getCars()) {
+            if (car.getCarMoved() == maxMoved) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
+    }
+
+    public int getMaxMoved() {
+        int maxMoved = 0;
+        for (Car car : gameBoard.getCars()) {
+            maxMoved = Math.max(maxMoved, car.getCarMoved());
+        }
+        return maxMoved;
     }
 }
