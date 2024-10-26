@@ -29,4 +29,11 @@ public class Racing {
                 .map(Car::getName)
                 .toList();
     }
+
+    public void play(List<Car> cars, int attemptCount) {
+        for (int i = 0; i < attemptCount; i++) {
+            if(canMove()) racing(cars);
+            compareMoveCount(cars);
+        }
+    }
 }
