@@ -9,6 +9,9 @@ import racingcar.view.validator.CarNameLengthValidator;
 import racingcar.view.validator.CarNameNullValidator;
 import racingcar.view.validator.CarNameNumberValidator;
 import racingcar.view.validator.CarNameValidator;
+import racingcar.view.validator.RacingNumberFormatValidator;
+import racingcar.view.validator.RacingNumberNullValidator;
+import racingcar.view.validator.RacingNumberValidator;
 
 public class InputView {
 
@@ -28,6 +31,20 @@ public class InputView {
         carNameDuplicateValidator.validate(carNames);
 
         return carNames;
+    }
+
+    public long receiveRacingNumber() {
+        System.out.println(Message.RECEIVE_RACING_NUMBER);
+
+        String input = getInput();
+
+        RacingNumberValidator racingNumberNullValidator = new RacingNumberNullValidator();
+        RacingNumberValidator racingNumberFormatValidator = new RacingNumberFormatValidator();
+
+        racingNumberNullValidator.validate(input);
+        racingNumberFormatValidator.validate(input);
+
+        return Long.parseLong(input);
     }
 
     private static String getInput() {

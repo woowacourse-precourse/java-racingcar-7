@@ -8,5 +8,6 @@ public class Application {
 
         InputView inputView = new InputView();
         List<String> carNames = inputView.receiveCarNames();
+        long racingNumber = inputView.receiveRacingNumber();
     }
 }
