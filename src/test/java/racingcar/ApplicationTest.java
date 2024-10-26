@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void testAssignRandomValuesForRaceCount() {
+    public void CarValueAssignerTest() {
 
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("포르쉐"));
@@ -76,10 +76,11 @@ class ApplicationTest extends NsTest {
         CarValueAssigner carValueAssigner = new CarValueAssigner();
 
         for (int i = 0; i < raceCount; i++) {
-            for (Car car : cars) {
-                int randomValue = carValueAssigner.assignRandomValue(car);
+            carValueAssigner.assignRandomValue(cars); // 랜덤 값 할당
 
-                assertTrue(randomValue >= 1 && randomValue <= 10);
+            for (Car car : cars) {
+                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+                assertTrue(randomValue >= 1 && randomValue <= 10); // 범위 확인
             }
         }
 
