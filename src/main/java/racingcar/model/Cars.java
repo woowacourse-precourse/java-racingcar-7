@@ -24,9 +24,10 @@ public class Cars {
         }
     }
 
-    public List<Car> findWinner() {
+    public List<String> findWinner() {
         return cars.stream()
                 .filter(car -> car.getLocation() == findWinnerLocation())
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
