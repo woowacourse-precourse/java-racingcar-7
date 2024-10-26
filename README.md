@@ -2,7 +2,7 @@
 
 ## 🚗RacingCar
 
--[ ] RacingCar 생성자
+-[X] RacingCar 생성자
     - 자동차 이름
     - 현재 전진 기록
 -[ ] RacingCar 전진 시도
