@@ -17,10 +17,10 @@ public class RacingController {
 
     private static final String CHECK_NUMBER_REGEX = "\\d+";
 
-    private Racing racing;
-    private CarManager carManager;
-    private OutputView outputView;
-    private RandomNumber randomNumber = new RandomNumber();
+    private final Racing racing;
+    private final CarManager carManager;
+    private final OutputView outputView;
+    private final RandomNumber randomNumber = new RandomNumber();
 
     public RacingController(Racing racing, CarManager carManager,
             OutputView outputView) {

@@ -13,7 +13,7 @@ public class CarManager {
 
     private static final String INPUT_DELIMITER = ",";
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public CarManager() {
         this.cars = new ArrayList<>();

@@ -7,7 +7,7 @@ public class Car {
     private static final int MOVING_STANDARD_NUMBER = 4;
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
-    private String name;
+    private final String name;
     private int movedDistance;
 
     public Car(String name) {
