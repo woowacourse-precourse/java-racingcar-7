@@ -3,6 +3,7 @@ package racingcar.validator;
 import static racingcar.constant.NumberType.MAX_NAME_LENGTH;
 import static racingcar.constant.NumberType.MIN_CAR_SIZE;
 import static racingcar.constant.NumberType.MIN_COUNT;
+import static racingcar.constant.NumberType.MIN_NAME_LENGTH;
 import static racingcar.exception.ErrorMessage.INVALID_COUNT_RANGE;
 import static racingcar.exception.ErrorMessage.INVALID_NAME_COUNT;
 import static racingcar.exception.ErrorMessage.INVALID_NAME_LENGTH;
@@ -34,7 +35,7 @@ public final class Validator {
 
     private static void nameLengthValidate(List<String> names) {
         names.forEach((name) -> {
-            if (name.length() > MAX_NAME_LENGTH.getNumber()) {
+            if (name.length() > MAX_NAME_LENGTH.getNumber() || name.length() < MIN_NAME_LENGTH.getNumber()) {
                 throw new RaceException(INVALID_NAME_LENGTH);
             }
         });
