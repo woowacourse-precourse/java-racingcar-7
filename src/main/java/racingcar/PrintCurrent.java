@@ -12,7 +12,7 @@ public class PrintCurrent {
                 System.out.print("-");
             }
             System.out.println();
-            System.out.println();
         }
+        System.out.println();
     }
 }

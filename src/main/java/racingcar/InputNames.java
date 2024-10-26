@@ -22,7 +22,7 @@ public class InputNames {
         String[] templist = input.split(",");
 
         for(int i = 0; i < templist.length; i++) {
-            if(templist[i].length() >= 5) {
+            if(templist[i].length() > 5) {
                 throw new IllegalArgumentException();
             }
             namelist.add(templist[i]);
