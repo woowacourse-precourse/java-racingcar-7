@@ -35,7 +35,7 @@ public class NameRequestHandler {
         }
     }
 
-    private void validateNames(String[] rawNames) {
+    public void validateNames(String[] rawNames) {
         Arrays.stream(rawNames)
                 .filter(rawName -> rawName.isEmpty() || rawName.length() > 5)
                 .findFirst()
