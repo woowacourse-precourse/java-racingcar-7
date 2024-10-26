@@ -18,10 +18,10 @@ public class RacingCarController {
 
     public RacingCarController() {
         this.inputView = new InputView();
-        this.racingScoreBoard = new RacingScoreBoard();
+        this.racingScoreBoard = new RacingScoreBoard(); // 인스턴스 생성
         this.carNameParser = new CarNameParser();
         this.getAttemptCount = new GetAttemptCount();
-        this.raceExecutor = new RaceExecutor();
+        this.raceExecutor = new RaceExecutor(racingScoreBoard); // racingScoreBoard 인스턴스 주입
         this.outputView = new OutputView();
     }
 

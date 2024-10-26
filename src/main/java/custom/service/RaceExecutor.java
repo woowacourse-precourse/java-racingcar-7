@@ -6,8 +6,8 @@ import custom.model.RacingScoreBoard;
 public class RaceExecutor {
     private final RacingScoreBoard racingScoreBoard;
 
-    public RaceExecutor() {
-        this.racingScoreBoard = new RacingScoreBoard();
+    public RaceExecutor(RacingScoreBoard racingScoreBoard) {
+        this.racingScoreBoard = racingScoreBoard; // 주입된 racingScoreBoard 사용
     }
 
     private boolean isCarAllowedToMove() {
