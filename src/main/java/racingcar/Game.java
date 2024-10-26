@@ -13,6 +13,9 @@ public class Game {
         Race race = new Race(names, count);
         race.raceCars();
 
+        outputView.printStep(race.getRounds());
+        outputView.printWinner(race.getWinner());
+
     }
 
 }
