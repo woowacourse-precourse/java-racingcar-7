@@ -6,7 +6,7 @@ import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
 public class CarRepositoryImpl implements CarRepository {
-    List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     @Override
     public void save(Car car) {
