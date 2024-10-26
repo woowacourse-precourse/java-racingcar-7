@@ -23,7 +23,7 @@ public class MainController {
     }
 
     private void runRace() {
-        while (!raceService.isOverRace()) {
+        while (!raceService.isEndRace()) {
             raceService.runRace();
             printCarsMiddleDistance();
         }

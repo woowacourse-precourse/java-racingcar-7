@@ -21,7 +21,7 @@ public class RaceService {
         this.randomNumberMaker = randomNumberMaker;
     }
 
-    public boolean isOverRace() {
+    public boolean isEndRace() {
         return attemptCounter.isEndAttempt();
     }
 
