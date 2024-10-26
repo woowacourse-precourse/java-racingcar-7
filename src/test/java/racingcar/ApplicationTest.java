@@ -1,7 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
+import racingcar.service.RacingCarService;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -92,6 +94,17 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("게임 횟수는 공백이 될 수 없습니다.")
         );
+    }
+
+    @Test
+    void 문자열_분리_테스트() {
+        String carNameList = "jiji, kiki , didi";
+
+        RacingCarService racingCarService = new RacingCarService();
+        Set<String> carNames = racingCarService.splitCarName(carNameList);
+
+        assertThat(carNames).hasSize(3);
+        assertThat(carNames).containsExactlyInAnyOrder("jiji", "kiki", "didi");
     }
 
     @Override
