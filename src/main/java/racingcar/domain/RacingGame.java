@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.utils.Utils;
-import racingcar.validation.Validation;
 import racingcar.view.OutputView;
 
 import java.util.List;
