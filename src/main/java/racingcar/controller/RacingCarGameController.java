@@ -17,12 +17,14 @@ public class RacingCarGameController {
     }
 
     public void run() {
-        String racingCarNames = inputRacingCarView.inputCarName();
-        int moveCount = Integer.parseInt(inputRacingCarView.inputCarMoveCount());
+        outputRacingCarView.printCarNameInputText();
+        String racingCarNames = inputRacingCarView.getInputText();
+        outputRacingCarView.printCarMoveCountInputText();
+        int moveCount = inputRacingCarView.getInputNumber();
 
         RacingCarGameResult gameResult = racingCarGame.playRacingGame(racingCarNames, moveCount);
 
-        outputRacingCarView.outputGameResult(gameResult.getGameResult());
-        outputRacingCarView.outputGameWinners(gameResult.getGameWinnerNames());
+        outputRacingCarView.printGameResult(gameResult.getGameResult());
+        outputRacingCarView.printGameWinners(gameResult.getGameWinnerNames());
     }
 }
