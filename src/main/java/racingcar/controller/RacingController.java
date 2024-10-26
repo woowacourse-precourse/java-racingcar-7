@@ -27,23 +27,21 @@ public class RacingController {
     }
 
     private Racing creatRacing() {
-        List<String> carNames = getInputCarNames();
-        Cars cars = creatCars(carNames);
-
-        int count = getInputRacingCount();
-        RacingCount racingCount = RacingCount.from(count);
-
+        Cars cars = readyCars();
+        RacingCount racingCount = readyRacingCount();
         return Racing.of(cars, racingCount);
     }
 
-    private List<String> getInputCarNames() {
+    private Cars readyCars() {
         outputView.printInputCarNames();
-        return inputView.inputCarNames();
+        List<String> carNames = inputView.inputCarNames();
+        return creatCars(carNames);
     }
 
-    private int getInputRacingCount() {
+    private RacingCount readyRacingCount() {
         outputView.printInputRacingCount();
-        return inputView.inputRacingCount();
+        int count = inputView.inputRacingCount();
+        return RacingCount.from(count);
     }
 
     private void runRacing(Racing racing) {
