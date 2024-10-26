@@ -69,5 +69,5 @@
 
 ### 경주 전진 전략 ###
 
-- <b>랜덤 경주 전략 (RandomRaceMoveStrategy)</b>
-  - 무작위 값을 사용해서 <code>move</code>여부를 결정<code>go</code>할 수 있다.
+- <b>임계값 경주 전략 (ThresholdRaceMoveStrategy)</b>
+  - 임계값<code>threshold</code>으로 전진 여부<code>canMove</code>를 결정할 수 있다.
