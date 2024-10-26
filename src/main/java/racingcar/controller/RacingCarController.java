@@ -27,23 +27,29 @@ public class RacingCarController {
         List<String> carNames = List.of(userInput.carNames().split(","));
         int roundCount = Integer.parseInt(userInput.roundCount());
 
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        Race race = new Race(createCars(carNames));
+        startRace(roundCount, race);
+        racingView.printWinners(race.getWinners());
+    }
 
-        Race race = new Race(cars);
+    private void startRace(int roundCount, Race race) {
         for (int i = 0; i < roundCount; i++) {
             race.runSingleRound(this.randomNumberGenerator);
 
             Map<String, Integer> roundState = new HashMap<>();
-            for (Car car : cars) {
+            for (Car car : race.getCars()) {
                 roundState.put(car.getName(), car.getPosition());
             }
             racingView.printRoundResult(roundState);
         }
+    }
 
-        racingView.printWinners(race.getWinners());
+    private List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
     private UserInputDTO getUserInput() {
