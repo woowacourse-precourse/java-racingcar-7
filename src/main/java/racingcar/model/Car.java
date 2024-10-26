@@ -1,9 +1,9 @@
 package racingcar.model;
 
 public class Car {
-    static int INITPOSITION=0;
-    String name;
-    int position;
+    private static int INITPOSITION=0;
+    private String name;
+    private int position;
 
     public Car(String name){
         this.name=name;
@@ -12,5 +12,9 @@ public class Car {
 
     public void settingPosition(int position){
         this.position =position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

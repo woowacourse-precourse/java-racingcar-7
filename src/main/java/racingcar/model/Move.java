@@ -15,7 +15,11 @@ public class Move {
         return false;
     }
 
-    public void MoveFoward(Car car){
-
+    public void moveFoward(Car car){
+        int randomValue = createRandomValue();
+        boolean isMovable = checkMovable(randomValue);
+        if(isMovable){
+            car.settingPosition(car.getPosition()+1);
+        }
     }
 }
