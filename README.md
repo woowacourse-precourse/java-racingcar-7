@@ -33,7 +33,7 @@
 
 #### 1. **`Application.java`**
 - 프로그램의 진입점
-- **RaceController**와 **ConsoleView** 객체를 초기화하여 경주 게임 시작
+- **RaceController**, **RaceModel** 그리고 **ConsoleView** 객체를 초기화하여 경주 게임 시작
 
 #### 2. **Controller**
 - **`RaceController.java`**:
@@ -42,6 +42,11 @@
     - 자동차 이름 및 시도 횟수 입력을 받아 검증 후, 게임을 실행하며, 결과를 view에 전달하여 출력
 
 #### 3. **Model**
+- **`RaceModel.java`**:
+    - Model의 진입점 역할을 하여 CarRace와 Car 객체들을 관리하는 클래스 
+    - 자동차 이름 리스트를 받아 CarRace의 자동차 리스트를 초기화하고, 각 라운드를 진행하는 메서드를 제공 
+    - RaceController가 CarRace에 간접적으로 접근하도록 함
+
 - **`Car.java`**:
     - 자동차 객체를 정의 클래스
     - 자동차의 이름과 현재 위치를 관리하며, 자동차가 움직이는 로직 포함
@@ -58,13 +63,13 @@
     - 사용자와의 상호작용을 담당하는 클래스
     - 사용자로부터 자동차 이름과 시도 횟수를 입력받고, 경주 상황과 우승자 출력
     - 입력받은 값을 controller에 전달, controller로부터 전달받은 결과를 사용자에게 보여줌
-    - `requestCarNames()`, `requestNumberOfAttempts()`, `displayRaceStatus()`, `displayRaceResult()`
+    - `requestCarNames()`, `requestNumberOfAttempts()`, `displayExecutionResultHeader()`, `displayRaceStatus()`, `displayRaceResult()`
 
 #### 5. **`InputValidator.java`**
 - 입력값의 유효성을 검증하는 클래스
 - 자동차 이름이 빈 문자열인지, 중복된 이름이 있는지, 구분자가 쉼표(,)가 아닌지 등 검증
 - 시도 횟수가 음수이거나 숫자가 아닌 값이 입력된 경우 검증하여 예외를 발생
-- `validateEmptyInput()`, `validateCommaSeparator()`, `validateSameCarName()`, `validateMinusNumber()` 
+- `validateEmptyInput()`, `validateCommaSeparator()`, `validateSameCarName()`, `validateNumber()` 
 
 ---
 
@@ -102,7 +107,8 @@ racingcar/
  │    └── RaceController.java
  ├── model/
  │    ├── Car.java
- │    └── CarRace.java
+ │    ├── CarRace.java
+ │    └── RaceModel.java
  ├── view/
  │    └── ConsoleView.java
  ├── InputValidator.java
