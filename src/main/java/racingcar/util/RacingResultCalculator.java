@@ -1,6 +1,5 @@
 package racingcar.util;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 
@@ -8,20 +7,26 @@ public class RacingResultCalculator {
     public static Integer calculateCarRacingWinnerRecord(List<Car> racingCars) {
         Integer racingCarRecord = 0;
         for (Car racingCar : racingCars) {
-            if (racingCarRecord < racingCar.getMoveDistance()) {
-                racingCarRecord = racingCar.getMoveDistance();
-            } //메서드 분리 필요
+            racingCarRecord = calculateMaxRecord(racingCarRecord, racingCar.getMoveDistance());
         }
         return racingCarRecord;
     }
 
-    public static List<String> calculateCarRacingWinner(List<Car> racingCars, Integer racingCarRecord) {
-        List<String> carRacingWinnerNames = new ArrayList<>();
-        for (Car racingCar : racingCars) {
-            if (racingCar.getMoveDistance().equals(racingCarRecord)) {
-                carRacingWinnerNames.add(racingCar.getCarName());
-            } //메서드 분리 필요
+    private static Integer calculateMaxRecord(Integer maxRecord, Integer racingRecord) {
+        if (maxRecord < racingRecord) {
+            return racingRecord;
         }
-        return carRacingWinnerNames;
+        return maxRecord;
+    }
+
+    public static List<String> calculateCarRacingWinner(List<Car> racingCars, Integer racingCarRecord) {
+        return racingCars.stream()
+                .filter(car -> compareRacingCarRecordToMovementDistance(car, racingCarRecord)) //메서드 추출 필요
+                .map(Car::getCarName)
+                .toList();
+    }
+
+    private static boolean compareRacingCarRecordToMovementDistance(Car racingCar, Integer racingCarRecord) {
+        return racingCar.getMoveDistance().equals(racingCarRecord);
     }
 }
