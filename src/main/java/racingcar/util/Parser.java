@@ -2,6 +2,12 @@ package racingcar.util;
 
 public class Parser {
 
+    private static final String DELIMITERS = ",";
+
+    public static String[] parseDelimitersString(String delimitedString) {
+        return delimitedString.split(DELIMITERS);
+    }
+
     public static int parseStringToInt(String input) {
         try {
             return Integer.parseInt(input);

@@ -5,10 +5,10 @@ import racingcar.dto.GetWinnersResponse;
 import racingcar.dto.StartRaceRequest;
 import racingcar.dto.StartRaceResponse;
 import racingcar.service.RaceService;
+import racingcar.util.Parser;
 
 public class RaceController {
 
-    private static final String DELIMITERS = ",";
     private final RaceService raceService;
 
     public RaceController(RaceService raceService) {
@@ -16,7 +16,7 @@ public class RaceController {
     }
 
     public void createCars(CreateCarsRequest request) {
-        raceService.createCars(parseCarName(request.carNames()));
+        raceService.createCars(Parser.parseDelimitersString(request.carNames()));
     }
 
     public StartRaceResponse startRace(StartRaceRequest request) {
@@ -25,9 +25,5 @@ public class RaceController {
 
     public GetWinnersResponse getWinners() {
         return raceService.getWinners();
-    }
-
-    public String[] parseCarName(String carNames) {
-        return carNames.split(DELIMITERS);
     }
 }
