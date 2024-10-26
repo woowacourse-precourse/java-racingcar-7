@@ -1,7 +1,6 @@
 package racingcar.validator;
 
 import java.util.Arrays;
-import java.util.HashSet;
 
 public class InputValidator {
 
@@ -30,7 +29,7 @@ public class InputValidator {
     }
 
     private void validateCarNameDuplication(String[] names) {
-        if (Arrays.stream(names).anyMatch(new HashSet<>()::add)) {
+        if (Arrays.stream(names).distinct().count() < names.length) {
             throw new IllegalArgumentException("같은 이름의 자동차 이름은 허용되지 않습니다.");
         }
     }
