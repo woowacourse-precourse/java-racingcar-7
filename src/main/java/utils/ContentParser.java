@@ -4,21 +4,19 @@ import constant.Constants;
 import inspector.InspectName;
 
 public class ContentParser {
-    public static String[] parsingContentToGroup(String targetContent){
-        String[] parsedGroup = splitting(targetContent);
-        for(int i = 0; i < parsedGroup.length; i++){
-            parsedGroup[i] = removingWhiteSpace(parsedGroup[i]);
+    public static String[] parsingContentToGroup(String inputContent){
+        String[] splittedGroup = splitting(inputContent);
+        for(int i = 0; i < splittedGroup.length; i++){
+            splittedGroup[i] = splittedGroup[i].strip();
         }
-        inspectingPlayerName(parsedGroup);
-        return parsedGroup;
+        inspectingPlayerName(splittedGroup);
+        return splittedGroup;
     }
+
     private static String[] splitting(String targetContent){
         return targetContent.split(Constants.CONTENT_PASRE_DELIMITER);
     }
 
-    private static String removingWhiteSpace(String targetContent){
-        return targetContent.strip();
-    }
 
     private static void inspectingPlayerName(String[] playerGroup){
         InspectName inspectName = new InspectName();

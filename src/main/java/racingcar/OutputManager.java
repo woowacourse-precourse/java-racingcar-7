@@ -1,12 +1,13 @@
 package racingcar;
 
+import constant.Constants;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class OutputManager {
     public static void printCurrentResult(RacingCar[] group){
-        for(int i = 0; i < group.length; i++){
-            System.out.println(group[i]);
+        for(RacingCar racingCar : group){
+            System.out.println(racingCar);
         }
         printBlankLine();
     }
@@ -15,8 +16,8 @@ public class OutputManager {
         System.out.println();
     }
 
-    public static void printResult(ArrayList<String> winner){
-        System.out.print("최종 우승자 : ");
+    public static void printRaceResult(ArrayList<String> winner){
+        System.out.print(Constants.RACING_WINNER_MESSAGE);
         Iterator<String> iterator = winner.iterator();
         while(iterator.hasNext()){
             System.out.print(iterator.next());

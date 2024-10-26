@@ -1,7 +1,7 @@
 package racingcar;
 
 import constant.Constants;
-import inspector.InspectResult;
+import inspector.InspectRaceResult;
 import utils.ContentParser;
 
 public class GameManager {
@@ -22,29 +22,29 @@ public class GameManager {
     }
 
     private String[] playerGroupSetting(){
-        String inputContent = InputManager.inputPlayerNameGroup();
+        String inputContent = InputManager.inputPlayerGroup();
         return ContentParser.parsingContentToGroup(inputContent);
     }
 
     private int playerTurnSetting(){
-        return InputManager.inputPlayerTurn();
+        return InputManager.inputTurn();
     }
 
     private void raceSetting(){
         OutputManager.printBlankLine();
         System.out.println(Constants.RACING_START_MESSAGE);
         while(currentTurn < playerTurn){
-            groupMoving();
+            racing();
             OutputManager.printCurrentResult(racingCarGroup);
             currentTurn++;
         }
-        InspectResult inspectResult = new InspectResult();
-        inspectResult.inspecting(racingCarGroup);
+        InspectRaceResult inspectRaceResult = new InspectRaceResult();
+        inspectRaceResult.inspecting(racingCarGroup);
     }
 
-    private void groupMoving(){
-        for(int i = 0; i < racingCarGroup.length; i++){
-            racingCarGroup[i].addDistance();
+    private void racing(){
+        for(RacingCar racingCar : racingCarGroup){
+            racingCar.addDistance();
         }
     }
 }

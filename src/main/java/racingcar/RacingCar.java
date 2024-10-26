@@ -11,7 +11,7 @@ public class RacingCar {
     }
 
     protected void addDistance(){
-        if(PlayerMoving.isMoving()){
+        if(PlayerMoving.isMoveAble()){
             distance++;
         }
     }

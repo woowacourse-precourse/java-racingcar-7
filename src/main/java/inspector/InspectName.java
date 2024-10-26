@@ -1,16 +1,17 @@
 package inspector;
 
-import static exceptor.ExceptionHandler.detectBlankName;
-import static exceptor.ExceptionHandler.detectDuplicatedName;
-import static exceptor.ExceptionHandler.detectNameLengthLimit;
+import exceptor.Validator;
 
 public class InspectName {
+
     public void inspecting(String[] group){
-        detectDuplicatedName(group);
+        Validator.validateDuplicatedName(group);
+
         for (String content : group) {
-            detectNameLengthLimit(content);
-            detectBlankName(content);
+            Validator.validateNameLengthLimit(content);
+            Validator.validateBlankName(content);
         }
+
     }
 
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
-public class ExceptionHandlerTest  extends NsTest {
+public class ValidatorTest extends NsTest {
 
     @DisplayName("정상_입력_테스트")
     @Test
