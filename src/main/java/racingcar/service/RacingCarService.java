@@ -2,6 +2,7 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import racingcar.entity.RacingCar;
 import racingcar.repository.RacingCarRepositoryImpl;
 import racingcar.util.RacingCarValidator;
@@ -57,4 +58,8 @@ public class RacingCarService {
         }
     }
 
+    //FIXME : just for test??
+    public Optional<RacingCar> getByName(String name) {
+        return racingCarRepository.findByName(name);
+    }
 }
