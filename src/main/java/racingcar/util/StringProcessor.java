@@ -21,14 +21,17 @@ public class StringProcessor {
     }
 
     public static String formatWinner(List<String> winners){
+
         return String.join(", ",winners);
     }
 
     private static String trim(String input){
+
         return input.trim();
     }
 
     private static String[] split(String input){
+
         return input.split(COMMA);
     }
 }

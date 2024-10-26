@@ -7,10 +7,12 @@ public class TrialValidator implements Validator<String>{
 
     @Override
     public void validate(String input){
+
         parseTrial(input);
         checkIfTrialIsNegative();
     }
     private void parseTrial(String trialString){
+
         try{
             this.trial = Integer.parseInt(trialString);
         }catch (NumberFormatException e){
@@ -19,6 +21,7 @@ public class TrialValidator implements Validator<String>{
     }
 
     private void checkIfTrialIsNegative(){
+
         if(trial <= MINIMUM_TRIAL_COUNT){
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
