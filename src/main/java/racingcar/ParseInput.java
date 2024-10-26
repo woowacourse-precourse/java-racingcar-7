@@ -7,7 +7,7 @@ public class ParseInput {
     ParseInput(String inputCar) {
         raceMember = inputCar.split(",");
 
-        if(raceMember.length==0) {
+        if(inputCar.isEmpty()) {
             throw new IllegalArgumentException("데이터를 입력해주세요");
         }
 
@@ -16,6 +16,12 @@ public class ParseInput {
                 throw new IllegalArgumentException("차 이름의 길이가 너무 깁니다 5글자 이하로 입력해주세요");
             }
         }
+
+        System.out.println("parse input");
+        for(int i=0;i<raceMember.length;i++) {
+            System.out.print(raceMember[i] +" ");
+        }
+        System.out.println();
 
 
     }
