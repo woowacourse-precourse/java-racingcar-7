@@ -8,7 +8,14 @@ import java.util.stream.Collectors;
 public class Input {
 
     public List<String> getCarNames() {
-        String[] carNames = Console.readLine().split(",");
+        String carNamesInput = Console.readLine();
+        String[] carNames = carNamesInput.split(",");
+
+        Arrays.stream(carNames).forEach(carName -> {
+            if (carName.equals("null") || carName == null) {
+                throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
+            }
+        });
 
         return Arrays.stream(carNames)
             .map(String::trim)
@@ -19,4 +26,5 @@ public class Input {
         int tryNum = Integer.parseInt(Console.readLine());
         return tryNum;
     }
+
 }
