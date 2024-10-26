@@ -9,10 +9,20 @@ import java.util.List;
 public class OutputView {
     private static String SPLIT_SIGN = ",";
 
+    private String createCarPositionLine(int carPosition){
+        String carPositionLine = new String();
+        for(int i=0;i<carPosition;i++){
+            carPositionLine = carPositionLine.concat("-");
+        }
+        return carPositionLine;
+    }
+
     public void outputTrialResult(Cars cars) {
         List<Car> carGroup = cars.getCarGroup();
+        System.out.println("실행 결과");
         for (Car car : carGroup) {
-            System.out.println(car.getName() + " : " + car.getPosition());
+            String carPositionLine = createCarPositionLine(car.getPosition());
+            System.out.println(car.getName() + " : " + carPositionLine);
         }
         System.out.println();
     }
