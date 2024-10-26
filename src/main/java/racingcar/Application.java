@@ -10,6 +10,7 @@ public class Application {
         InputExtractor inputExtractor = new InputExtractor();
         NumCounter numCounter = new NumCounter();
         MapBuilder mapBuilder = new MapBuilder();
+        RandomPicker randomPicker = new RandomPicker();
 
         System.out.println(messagePrinter.carNameGuideMessage);
         String userInputCar = inputReader.getUserInput();
@@ -27,5 +28,11 @@ public class Application {
         mapBuilder.mapCarNamesToForwardCounts(carNames);
         // 자동차 이름과 출력할 라인 문자열을 매핑
         mapBuilder.mapCarNamesToStringForwardLines(carNames);
+
+        System.out.println(messagePrinter.resultGuideMessage);
+        // 입력된 라운드 횟수만큼 랜덤라운드 1회를 반복
+        for(int i = 0; i < totalRounds; i++){
+            randomPicker.runSingleRandomRound(carNames);
+        }
     }
 }
