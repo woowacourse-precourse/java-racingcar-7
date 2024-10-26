@@ -12,4 +12,9 @@ public class Constants {
     public static final int GO_NUMBER = 4;
 
     public static final String DELIMITER = ",";
+
+    public static final String CAR_NAME_LENGTH_ERROR = "자동차 이름길이의 범위가 맞지 않습니다.";
+    public static final String CAR_NAME_DUPLICATE_ERROR = "자동차 이름에 중복이 발생했습니다.";
+    public static final String CAR_NAME_WRONG_ERROR = "자동차 이름 입력값이 잘못되었습니다.";
+    public static final String ROUND_NUMBER_WRONG_ERROR = "시도 횟수는 1이상의 숫자여야 합니다.";
 }

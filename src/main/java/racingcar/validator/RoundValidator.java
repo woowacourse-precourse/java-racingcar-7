@@ -1,5 +1,7 @@
 package racingcar.validator;
 
+import static racingcar.constants.Constants.*;
+
 public class RoundValidator {
 
     private final int round;
@@ -16,13 +18,13 @@ public class RoundValidator {
         try {
             return Integer.parseInt(round);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ROUND_NUMBER_WRONG_ERROR);
         }
     }
 
     private void positiveNumber(int number) {
         if (number <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ROUND_NUMBER_WRONG_ERROR);
         }
     }
 

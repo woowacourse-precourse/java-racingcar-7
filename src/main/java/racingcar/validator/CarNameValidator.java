@@ -24,20 +24,20 @@ public class CarNameValidator {
     private void nameLength() {
         for (String car : carList) {
             if (car.isEmpty() || car.length() > NAME_MAX_LENGTH) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
             }
         }
     }
 
     private void nameOverlap() {
         if (carList.size() != carList.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR);
         }
     }
 
     private void rightNamePattern() {
         if (!Pattern.compile(CAR_LIST_PATTERN).matcher(cars).matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CAR_NAME_WRONG_ERROR);
         }
     }
 
