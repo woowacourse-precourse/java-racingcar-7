@@ -1,25 +1,28 @@
 package racingcar.model.race;
 
-import static java.util.Objects.isNull;
+import static java.util.Objects.requireNonNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
-import racingcar.common.exception.ShouldNotBeNullException;
+import java.util.Objects;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Race {
 
     private Lap remainingCount;
 
+    // Constructor
     private Race(final Lap remainingCount) {
         this.remainingCount = remainingCount;
     }
 
     public static Race from(final Lap lap) {
-        validateIsNull(lap);
+        requireNonNull(lap, SHOULD_NOT_BE_NULL);
         return new Race(lap);
     }
 
+    // Method
     public boolean isUnderway() {
         return remainingCount.hasRemaining();
     }
@@ -31,9 +34,20 @@ public class Race {
         this.remainingCount = remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
-    private static void validateIsNull(final Lap lap) {
-        if (isNull(lap)) {
-            throw new ShouldNotBeNullException();
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
         }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Race oRace = (Race) obj;
+        return this.remainingCount.equals(oRace.remainingCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(remainingCount);
     }
 }

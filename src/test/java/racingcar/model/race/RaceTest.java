@@ -63,4 +63,19 @@ public class RaceTest {
                 .isInstanceOf(ShouldNotBeMinusException.class)
                 .hasMessage(LAP_COUNT_SHOULD_NOT_BE_MINUS);
     }
+
+    @Test
+    @DisplayName("동등성 비교")
+    void testEquality() {
+        // given
+        Lap remainingCount = Lap.from(3L);
+        Race race = Race.from(remainingCount);
+        Race oRace = Race.from(remainingCount);
+
+        // when
+        boolean equals = race.equals(oRace);
+
+        // then
+        assertThat(equals).isTrue();
+    }
 }

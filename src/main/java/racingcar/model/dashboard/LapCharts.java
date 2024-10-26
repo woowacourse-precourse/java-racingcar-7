@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LapCharts {
+
     private final List<LapChart> lapCharts;
 
+    // Constructor
     private LapCharts() {
         this.lapCharts = new ArrayList<>();
     }
@@ -14,13 +16,17 @@ public class LapCharts {
         return new LapCharts();
     }
 
+    // Method
     public void offer(final String lapChart) {
         lapCharts.add(LapChart.from(lapChart));
     }
 
     @Override
     public String toString() {
-        List<String> summaries = lapCharts.stream().map(LapChart::toString).toList();
+        List<String> summaries = lapCharts
+                .stream()
+                .map(LapChart::toString)
+                .toList();
         return String.join("\n\n", summaries);
     }
 }

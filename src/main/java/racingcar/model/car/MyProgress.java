@@ -1,9 +1,9 @@
 package racingcar.model.car;
 
-import static java.util.Objects.isNull;
+import static java.util.Objects.requireNonNull;
 import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
-import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.position.Distance;
 import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
@@ -13,6 +13,7 @@ public class MyProgress {
     private Lap remainingLap;
     private Position position;
 
+    // Constructor
     private MyProgress(final Lap remainingLap, final Position position) {
         this.remainingLap = remainingLap;
         this.position = position;
@@ -24,6 +25,7 @@ public class MyProgress {
         return new MyProgress(remainingLap, position);
     }
 
+    // Method
     public boolean completedAllLap() {
         return remainingLap.equals(Lap.ZERO);
     }
@@ -37,14 +39,13 @@ public class MyProgress {
         this.remainingLap = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
-    private static <T> void validateIsNull(T obj) {
-        if (isNull(obj)) {
-            throw new ShouldNotBeNullException();
-        }
-    }
-
     @Override
     public String toString() {
         return position.toString();
+    }
+
+    // Validation
+    private static <T> void validateIsNull(T obj) {
+        requireNonNull(obj, SHOULD_NOT_BE_NULL);
     }
 }

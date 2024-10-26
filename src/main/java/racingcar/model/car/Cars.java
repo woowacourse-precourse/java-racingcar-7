@@ -1,22 +1,25 @@
 package racingcar.model.car;
 
+import static java.util.Objects.requireNonNull;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
+
 import java.util.List;
-import java.util.Objects;
-import racingcar.common.exception.ShouldNotBeNullException;
 import racingcar.model.position.Distance;
 
 public class Cars {
     private final List<Car> cars;
 
-    public static Cars of(final List<Car> cars) {
-        return new Cars(cars);
-    }
-
+    // Constructor
     private Cars(final List<Car> cars) {
-        validateIsNotNull(cars);
         this.cars = cars;
     }
 
+    public static Cars of(final List<Car> cars) {
+        validateIsNotNull(cars);
+        return new Cars(cars);
+    }
+
+    // Method
     public void move() {
         for (Car car : cars) {
             Distance distance = car.movableDistance();
@@ -38,11 +41,8 @@ public class Cars {
                 .toList();
     }
 
-
-    private void validateIsNotNull(final List<Car> cars) {
-        boolean matched = cars.stream().anyMatch(Objects::isNull);
-        if (matched) {
-            throw new ShouldNotBeNullException();
-        }
+    // Validation
+    private static void validateIsNotNull(final List<Car> cars) {
+        cars.forEach(car -> requireNonNull(car, SHOULD_NOT_BE_NULL));
     }
 }

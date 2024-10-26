@@ -1,12 +1,10 @@
 package racingcar.model.position;
 
-import static java.util.Objects.isNull;
-import static racingcar.common.message.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS;
+import static java.util.Objects.requireNonNull;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
 import java.util.stream.LongStream;
-import racingcar.common.exception.ShouldNotBeNullException;
-import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Distance {
 
@@ -15,6 +13,7 @@ public class Distance {
 
     private final long value;
 
+    // Constructor
     private Distance(final long source) {
         this.value = source;
     }
@@ -23,29 +22,14 @@ public class Distance {
         return new Distance(source);
     }
 
+    // Method
     public boolean isBiggerThanZero() {
         return this.value > ZERO.value;
     }
 
     public Distance add(final Distance source) {
-        validateIsNull(source);
-
-        long subtracted = this.value + source.value;
-        validateIsMinus(subtracted);
-
-        return new Distance(subtracted);
-    }
-
-    private void validateIsNull(Distance source) {
-        if (isNull(source)) {
-            throw new ShouldNotBeNullException();
-        }
-    }
-
-    private void validateIsMinus(long source) {
-        if (source < 0) {
-            throw new ShouldNotBeMinusException(DISTANCE_SHOULD_NOT_BE_MINUS);
-        }
+        requireNonNull(source, SHOULD_NOT_BE_NULL);
+        return new Distance(this.value + source.value);
     }
 
     public LongStream initiateLongStream() {

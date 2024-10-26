@@ -1,27 +1,22 @@
 package racingcar.model.dashboard;
 
-import static java.util.Objects.isNull;
-
-import racingcar.common.exception.ShouldNotBeNullException;
+import static java.util.Objects.requireNonNull;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 public class LapChart {
     private final String summary;
 
+    // Constructor
     private LapChart(final String summary) {
         this.summary = summary;
     }
 
     public static LapChart from(final String summary) {
-        validateIsNull(summary);
+        requireNonNull(summary, SHOULD_NOT_BE_NULL);
         return new LapChart(summary);
     }
 
-    private static void validateIsNull(String summary) {
-        if (isNull(summary)) {
-            throw new ShouldNotBeNullException();
-        }
-    }
-
+    // Method
     @Override
     public String toString() {
         return summary;

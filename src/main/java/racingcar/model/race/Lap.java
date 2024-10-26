@@ -10,6 +10,7 @@ public class Lap {
 
     private final long value;
 
+    // Constructor
     private Lap(final long value) {
         this.value = value;
     }
@@ -39,12 +40,6 @@ public class Lap {
         return new Lap(subtracted);
     }
 
-    public static void validateIsMinus(long source) {
-        if (source < 0) {
-            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
-        }
-    }
-
     @Override
     public boolean equals(final Object obj) {
         if (obj == this) {
@@ -60,5 +55,12 @@ public class Lap {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    // Validation
+    public static void validateIsMinus(long source) {
+        if (source < 0) {
+            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
+        }
     }
 }

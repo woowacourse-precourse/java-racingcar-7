@@ -1,6 +1,8 @@
 package racingcar.model.position;
 
+import static java.util.Objects.requireNonNull;
 import static racingcar.common.constant.SystemConstant.EMPTY_STRING;
+import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
 
@@ -10,6 +12,7 @@ public class Position {
 
     private final String value;
 
+    // Constructor
     private Position() {
         this.value = EMPTY_STRING;
     }
@@ -23,9 +26,11 @@ public class Position {
     }
 
     public static Position from(String source) {
+        requireNonNull(source, SHOULD_NOT_BE_NULL);
         return new Position(source);
     }
 
+    // Method
     public Position add(final Distance distance) {
         Distance destination = currentDistance().add(distance);
         return PositionBuilder.from(destination);

@@ -27,7 +27,7 @@ public class RaceService {
     public DashBoard startRace(final Lap lap, final Cars cars) {
         Race race = Race.from(lap);
         DashBoard dashBoard = DashBoard.from(cars);
-        while (race.isUnderway()) { // is underway : 실제 F1 경기에서 경기중을 상태를 표현하는 단어
+        while (race.isUnderway()) {
             cars.move();
             dashBoard.offerLapChart();
             race.moveToNextLap();
