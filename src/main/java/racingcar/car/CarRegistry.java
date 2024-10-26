@@ -5,9 +5,11 @@ import java.util.Set;
 
 public class CarRegistry {
     private final Set<Car> cars;
+    private final StringBuilder carStatus;
 
     public CarRegistry(String carNames) {
         this.cars = convertCarNamesToCarSet(carNames);
+        this.carStatus = new StringBuilder();
     }
 
     private Set<Car> convertCarNamesToCarSet(String input) {
@@ -49,10 +51,10 @@ public class CarRegistry {
      */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
+        carStatus.setLength(0);
         for (Car car : cars) {
-            builder.append(car.toString()).append("\n");
+            carStatus.append(car.toString()).append("\n");
         }
-        return builder.toString();
+        return carStatus.toString();
     }
 }
