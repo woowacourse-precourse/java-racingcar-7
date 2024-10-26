@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class OutputView {
     void printResultMessage(String name, Integer number) {
         System.out.print(name + " " + ":" + " ");
@@ -7,5 +9,21 @@ public class OutputView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    void printWinnerMessage(String winner) {
+        System.out.println("최종 우승자 : " + winner);
+    }
+
+    void printWinnerMessage(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+
+        for (int i = 0; i < winners.size(); i++) {
+            if (i == winners.size() - 1) {
+                System.out.print(winners.get(i));
+                break;
+            }
+            System.out.print(winners.get(i) + ", ");
+        }
     }
 }
