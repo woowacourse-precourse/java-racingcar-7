@@ -3,10 +3,13 @@ package racingcar.car;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.car.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
+import static racingcar.car.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +40,7 @@ class CarTest {
 
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름으로 빈 문자열이 들어올 수 없습니다.");
+                .hasMessage(EMPTY_STRING_NAME_ERROR_MESSAGE);
     }
 
     @DisplayName("")
@@ -48,7 +51,7 @@ class CarTest {
 
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름의 길이는 5글자를 초과할 수 없습니다.");
+                .hasMessage(NAME_LENGTH_ERROR_MESSAGE);
     }
 
     @DisplayName("랜덤 값이 4 이상일 경우 자동차는 전진해야 한다.")
@@ -57,16 +60,18 @@ class CarTest {
         //given
         String name = "car1";
         Car car = new Car(name);
-        int randomValue = 4;
+        List<Integer> randomValues = List.of(4, 3, 5 ,1);
+        int attemptCount = 3;
+
+        for(int i = 0 ; i < attemptCount; i++) {
+            car.attemptMove(randomValues.get(i));
+        }
 
         //when
-        car.attemptMove(randomValue);
-        car.attemptMove(randomValue);
-        car.showStatus();
-        String result = getOutput();
+        int moveCount = car.getMoveCount();
 
         //then
-        assertThat(result).isEqualTo(name + " : " + "--");
+        assertThat(moveCount).isEqualTo(2);
     }
 
     @DisplayName("랜덤값이 4 미만일 경우 자동차는 전진하지 않는다.")

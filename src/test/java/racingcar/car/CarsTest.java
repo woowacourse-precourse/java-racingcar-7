@@ -3,6 +3,8 @@ package racingcar.car;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static racingcar.car.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
+import static racingcar.car.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +20,7 @@ class CarsTest {
 
         assertThatThrownBy(() -> new Cars(names))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름을 2개 이상 입력해야 합니다.");
+                .hasMessage(NAME_COUNT_ERROR_MESSAGE);
     }
 
     @DisplayName("이름간 중복이 있으면 안된다.")
@@ -29,7 +31,7 @@ class CarsTest {
 
         assertThatThrownBy(() -> new Cars(names))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 이름을 입력하면 안됩니다.");
+                .hasMessage(DUPLICATED_NAME_ERROR_MESSAGE);
     }
 
     @DisplayName("정상적인 문자열 리스트가 들어올 경우 이름 수에 맞는 자동자 인스턴스를 가진 일급 컬렉션을 생성한다.")
