@@ -56,4 +56,12 @@ public class ValidatorTest {
 
         assertThrows(IllegalArgumentException.class, () -> Validator.checkDuplicateName(duplicateCarNames));
     }
+
+    @Test
+    @DisplayName("시도횟수가 숫자인지 확인하는 확인하는 테스트")
+    void checkNumeric() {
+        String invalidInput = "noNumber";
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.parseToInt(invalidInput));
+    }
 }
