@@ -3,10 +3,12 @@ package racingcar.domain;
 public class Race {
     private final static String NOT_VALIDATE_NUMBER = "유효하지 않은 숫자 형식입니다.";
     private static final String IS_NOT_TRY_COUNT = "유효한 시도횟수가 아닙니다.";
-    private int tryCount;
+    private final int tryCount;
+    private final Cars cars;
 
-    public Race(String inputTryCount) {
+    public Race(String inputTryCount, Cars cars) {
         this.tryCount = convertToInt(inputTryCount);
+        this.cars = cars;
     }
 
     private static void validateTryCount(int num) {
@@ -24,4 +26,12 @@ public class Race {
             throw new IllegalArgumentException(NOT_VALIDATE_NUMBER);
         }
     }
+
+    public void startRace() {
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveCars();
+        }
+    }
+
+
 }
