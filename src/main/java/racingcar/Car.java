@@ -24,23 +24,23 @@ public class Car {
         return position;
     }
 
-    public void move(){
+    public void move() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if(randomNumber >= FORWARD_POSSIBLE_NUMBER){
+        if (randomNumber >= FORWARD_POSSIBLE_NUMBER) {
             position++;
         }
     }
 
-    public static void isCarNameString(String carName){
+    public static void isCarNameString(String carName) {
         for (int i = 0; i < carName.length(); i++) {
-            if(Character.isDigit(carName.charAt(i))){
+            if (Character.isDigit(carName.charAt(i))) {
                 throw new IllegalArgumentException("문자 이외의 값은 입력할 수 없습니다.");
             }
         }
     }
 
-    public static void isCarNameLengthFive(String carName){
-        if(carName.length() > LENGTH_LIMIT_NUMBER){
+    public static void isCarNameLengthFive(String carName) {
+        if (carName.length() > LENGTH_LIMIT_NUMBER) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 제한됩니다.");
         }
     }

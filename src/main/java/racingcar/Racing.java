@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Racing {
 
-    public void race(){
+    public void race() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<Car> carList = Cars.getCarList();
 
@@ -21,7 +21,7 @@ public class Racing {
         System.out.println("최종 우승자 : " + Winner.printWinner(carList));
     }
 
-    private static void printPosition(List<Car> carList){
+    private static void printPosition(List<Car> carList) {
         for (Car car : carList) {
             car.move();
             String output = "-";
