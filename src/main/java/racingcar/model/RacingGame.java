@@ -28,4 +28,10 @@ public class RacingGame {
         int randomValue= Randoms.pickNumberInRange(0,9);
         return randomValue>=4;
     }
+    public int getMaxDashCount(){
+        return cars.stream()
+                .mapToInt(Car::getDashCount)
+                .max()
+                .orElse(0);
+    }
 }
