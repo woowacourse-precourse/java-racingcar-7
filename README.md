@@ -28,14 +28,17 @@
 ## Car Class
 
 - [ ] 테스트 코드 작성
-    - [ ] getRandom 테스트 코드 작성
     - [ ] move 테스트 코드 작성
     - [ ] setDistance 테스트 코드 작성
     - [ ] getDistance 테스트 코드 작성
-- [ ] getRandom 메소드 구현
 - [ ] move 메소드 구현
 - [ ] setDistance, getDistance 메소드 구현
 - [ ] setName, getName 메소드 구현
+
+## Util Class
+
+- [ ] 사용자 입력 메소드 구현
+- [ ] 랜덤 값 추출 메소드 구현
 
 ## Judge Class
 
