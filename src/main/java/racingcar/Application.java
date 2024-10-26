@@ -9,6 +9,9 @@ public class Application {
 
         String carNames = input.getCarNames();
         int numberOfAttempts = input.getNumberOfAttempts();
+
+        String[] carNamesList = splitCarNames(carNames);
+
     }
 
     public static RaceInput getInput() {
@@ -31,4 +34,14 @@ public class Application {
             throw new IllegalArgumentException("자동차 이름과 시도 횟수는 비어있을 수 없습니다.");
         }
     }
+
+    public static String[] splitCarNames(String carNames) {
+        String[] carNamesList = carNames.split(",");
+        for (int i = 0; i < carNamesList.length; i++) {
+            carNamesList[i] = carNamesList[i].trim();
+        }
+        return carNamesList;
+    }
+
+
 }
