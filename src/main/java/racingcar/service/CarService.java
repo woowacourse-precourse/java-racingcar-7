@@ -18,7 +18,4 @@ public class CarService {
         return carList;
     }
 
-
-
-
 }

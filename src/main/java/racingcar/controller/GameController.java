@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.service.CarService;
@@ -30,7 +29,7 @@ public class GameController {
     public List<Car> inputCarNameProcess() {
         InputView.inputCarNameView();
         String carNames = InputUtil.inputCarNames();
-        List<String> carNameList = InputUtil.splitCarName(carNames);
+        List<String> carNameList = InputUtil.splitCarNames(carNames);
         return carService.registerCarList(carNameList);
     }
 
