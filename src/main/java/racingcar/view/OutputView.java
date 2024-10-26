@@ -13,8 +13,11 @@ public class OutputView {
         WINNER_MESSAGE.printMessage(winners);
     }
 
-    public void printRoundResult(RaceResultDTO raceResultDTO) {
+    public void printResultTitle() {
         RESULT_TITLE_MESSAGE.printMessage();
+    }
+
+    public void printRoundResult(RaceResultDTO raceResultDTO) {
         for (CarResult result : raceResultDTO.cars()) {
             String distance = "-".repeat(result.position());
             RESULT_CAR_MESSAGE.printMessage(result.name(), distance);
