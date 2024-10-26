@@ -79,7 +79,7 @@ jun : -----
 - [ ] 자동차 리스트를 반환 하는 기능
 - [ ] 우승자를 결정하고 반환하는 기능
 #### 1.3  **MoveStrategy**
-- [ ] `camp.nextstep.edu.missionutils.Randoms`를 사용하여 자동차가 이동할수 있는지 여부 체크
+- [x] `camp.nextstep.edu.missionutils.Randoms`를 사용하여 자동차가 이동할수 있는지 여부 체크
 ---
 ### 2. **View**
 
