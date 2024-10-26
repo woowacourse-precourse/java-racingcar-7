@@ -30,7 +30,7 @@ public class Application {
     }
 
     private void validateNotEmpty(String str) {
-        if (str.isEmpty()) {
+        if (str.isEmpty() || str.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.") ;
         }
     }
