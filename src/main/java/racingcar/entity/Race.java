@@ -2,7 +2,7 @@ package racingcar.entity;
 
 import java.util.List;
 import racingcar.exception.ExceptionUtils;
-import racingcar.exception.RaceCarValidationError;
+import racingcar.exception.RaceValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class Race {
@@ -11,6 +11,10 @@ public class Race {
     public static final int RANDOM_NUMBER_END = 9;
 
     final List<Car> cars;
+
+    private Race() {
+        this.cars = null;
+    }
 
     public Race(List<Car> cars) {
         this.cars = cars;
@@ -42,11 +46,11 @@ public class Race {
 
     private void validate(List<Car> cars) {
         if (cars == null) {
-            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_NULL);
+            ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_NULL);
         } else if (NUMBER_OF_CAR_LIMIT < cars.size()) {
-            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_EXCEED_LIMIT);
+            ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_EXCEED_LIMIT);
         } else if (cars.stream().map(Car::getName).distinct().count() != cars.size()) {
-            ExceptionUtils.throwIllegalArgException(RaceCarValidationError.CARS_DUPLICATE_NAME);
+            ExceptionUtils.throwIllegalArgException(RaceValidationError.CARS_DUPLICATE_NAME);
         }
     }
 }
