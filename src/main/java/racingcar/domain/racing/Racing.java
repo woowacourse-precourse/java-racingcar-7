@@ -90,6 +90,11 @@ public class Racing {
         }
     }
 
+    public void printWinners() {
+        System.out.print(RacingConstant.DO_RACING_RESULT_PREV_MESSAGE +
+                String.join(", ", winners.stream().map(r -> r.getName()).toList()));
+    }
+
     private boolean isInvalidTryCount() {
         if (1 <= tryCnt && tryCnt <= 10) {
             return false;

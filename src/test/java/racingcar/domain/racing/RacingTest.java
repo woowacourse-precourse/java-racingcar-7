@@ -130,7 +130,6 @@ class RacingTest extends NsTest {
         assertThat(racing.getWinners().getFirst().getName()).isEqualTo("aaaaa");
     }
 
-
     private void setInputText(String text) {
         System.setIn(new ByteArrayInputStream(text.getBytes()));
     }

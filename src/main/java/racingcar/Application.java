@@ -20,5 +20,6 @@ public class Application {
 
         racing.iterateRace();
         racing.calculateWinner();
+        racing.printWinners();
     }
 }
