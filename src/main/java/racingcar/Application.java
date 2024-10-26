@@ -16,6 +16,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int totalRaceCount = 0;
         totalRaceCount = getTotalRaceCount();
+
+
     }
 
     public static List<String> getCarNames(){
@@ -29,11 +31,11 @@ public class Application {
 
     public static int getTotalRaceCount(){
         String input = Console.readLine();
+        isValidTotalRaceCount(input);
         return Integer.parseInt(input);
     }
 
     public static void isValidCarNames(List<String> carNames) {
-        // 유효한 이름이 하나도 없는 경우 예외 처리
         if (carNames == null || carNames.isEmpty() || carNames.stream().allMatch(String::isEmpty)) {
             throw new IllegalArgumentException();
         }
@@ -44,11 +46,22 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        // 각 이름에 대한 길이 검사
         for (String name : carNames) {
             if (name.length() > 5 || name.isEmpty()) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    private static void isValidTotalRaceCount(String input) {
+        if (!input.matches("-?\\d+")) {
+            throw new IllegalArgumentException();
+        }
+
+        int raceCount = Integer.parseInt(input);
+
+        if (raceCount <= 0) {
+            throw new IllegalArgumentException();
         }
     }
 
