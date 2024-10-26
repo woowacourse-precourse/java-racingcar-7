@@ -65,6 +65,28 @@ class Racing {
             System.out.println(car);
         }
     }
+
+    public List<String> Winners() {
+        int maxPlacement = getMaxPlacement();
+        return getWinners(maxPlacement);
+    }
+
+    private int getMaxPlacement() {
+        return cars.stream()
+                .mapToInt(Car::getPlacement)
+                .max()
+                .orElse(0);
+    }
+
+    private List<String> getWinners(int maxPlacement) {
+        List<String> Winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPlacement() == maxPlacement) { Winners.add(car.getName()); }
+        }
+
+        return Winners;
+    }
 }
 
 //프로그램 시작점
@@ -74,7 +96,12 @@ public class Application {
             List<String> carNames = inputCarNames();
             int trialCount = inputTrialCount();
 
-            System.out.println("최종 우승자 : ");
+            Racing Racing = new Racing(carNames, trialCount);
+            Racing.startRacing();
+
+            List<String> Winners = Racing.Winners();
+            System.out.println("최종 우승자 : " + String.join(", ", Winners));
+
         } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
     }
 
@@ -89,6 +116,9 @@ public class Application {
 
     private static void CheckCarName(List<String> carNames) {
         if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
+        for (String name : carNames) {
+            if (!name.contains(",")) { throw new IllegalArgumentException(); }
+        }
     }
 
     //경주 시도 횟수 기능
@@ -108,5 +138,4 @@ public class Application {
     private static void CheckTrialCount(int trialCount) {
         if (trialCount <= 0) { throw new IllegalArgumentException(); }
     }
-
 }
