@@ -11,6 +11,7 @@ public class InputView {
     private final int startNum = 0;
 
     public List<String> inputName(){
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         String[] inputs = input.split(splitString);
 
@@ -18,10 +19,7 @@ public class InputView {
             wrongInput(inputs[i]);
         }
 
-        List<String> inputList;
-        inputList = List.of(inputs);
-
-        return inputList;
+        return List.of(inputs);
     }
 
     public String stringInput(){
@@ -31,6 +29,7 @@ public class InputView {
     }
 
     public int integerInput(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String input = Console.readLine();
         int intInput;
         try {
