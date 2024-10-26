@@ -10,4 +10,9 @@ public class ConsoleInputHandler {
         return userInputCarNameString;
     }
 
+    public int getUserInputAttemptCount() {
+        String userInputAttemptCount = Console.readLine();
+        InputStringValidator.attemptCountIntegratedValidation(userInputAttemptCount);
+        return Integer.parseInt(userInputAttemptCount);
+    }
 }

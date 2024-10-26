@@ -16,6 +16,8 @@ public class CarRacingSimulation {
         List<String> carNameList = UserInputStringConverter.toList(userInputCarNameString); // 입력 문자열 자동치 이름 리스트로 변환
         CarNameListValidator.integratedValidation(carNameList); // 자동차 이름들 유효성 검사
         List<Car> carList = createCarList(carNameList); // 자동차 객체 리스트 생성
+        consoleOutputHandler.attemptCountMessage(); // "시도 횟수 입력 안내" 메세지 출력
+        int attemptCount = consoleInputHandler.getUserInputAttemptCount(); // 유저 입력 받기 (시도 횟수)
     }
 
     private List<Car> createCarList(List<String> carNameList) {
