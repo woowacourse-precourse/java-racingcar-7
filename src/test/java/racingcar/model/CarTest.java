@@ -13,7 +13,7 @@ class CarTest {
     void 이름_수_제한_통과_테스트() {
         Assertions.assertThat(car.splitByDelimiter("four,fivee"))
                 .hasSize(2)
-                .extracting(car -> car.getName())
+                .extracting(Car::getName)
                 .contains("four", "fivee");
     }
 
