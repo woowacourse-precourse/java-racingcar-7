@@ -1,14 +1,13 @@
 package racingcar;
 
 import static racingcar.ErrorMessage.NO_INPUT;
-import static racingcar.ErrorMessage.WRONG_TRY_COUNT;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
 public class RaceInput {
     private static final String NAMES_PROMPT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String TRY_COUNT_PROMPT = "시도할 횟수는 몇 회인가요?";
+    private static final String RACE_TIME_PROMPT = "시도할 횟수는 몇 회인가요?";
 
     private RaceInput() {
     }
@@ -18,21 +17,9 @@ public class RaceInput {
         return getLine();
     }
 
-    public static int getTryCount() {
-        System.out.println(TRY_COUNT_PROMPT);
-        String line = getLine();
-
-        // TODO: Refactoring
-        try {
-            int tryCount = Integer.parseInt(line);
-            if (tryCount < 0) {
-                throw new IllegalArgumentException(WRONG_TRY_COUNT.getMessage());
-            }
-
-            return tryCount;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(WRONG_TRY_COUNT.getMessage());
-        }
+    public static String getRaceTime() {
+        System.out.println(RACE_TIME_PROMPT);
+        return getLine();
     }
 
     private static String getLine() {

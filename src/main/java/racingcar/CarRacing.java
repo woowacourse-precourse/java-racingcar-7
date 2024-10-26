@@ -8,12 +8,11 @@ public class CarRacing {
     }
 
     static void start() {
-        String names = RaceInput.getNames();
-        Cars cars = new Cars(names);
-        int tryCount = RaceInput.getTryCount();
+        Cars cars = new Cars(RaceInput.getNames());
+        RaceTime raceTime = new RaceTime(RaceInput.getRaceTime());
 
         RaceOutput.print(RACING_START_MESSAGE);
-        while (tryCount-- > 0) {
+        while (raceTime.isRemaining()) {
             cars.move();
             RaceOutput.printProgress(cars);
             RaceOutput.print(PROGRESS_SEPARATOR);
