@@ -8,7 +8,6 @@ public class Car {
         this.name = name;
     }
 
-    // 무작위 값이 4 이상일 때 전진
     public void move(int randomValue) {
         if (randomValue >= 4) {
             position++;
