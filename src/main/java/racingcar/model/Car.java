@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.stream.IntStream;
+
 public class Car {
     private final Name name;
     private Distance distance;
@@ -26,9 +28,18 @@ public class Car {
         if (isMoveForward(random)) {
             this.distance.increase();
         }
+        print();
     }
 
     private boolean isMoveForward(int random) {
         return random >= LIMIT;
+    }
+
+    private void print() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.getName()).append(" : ");
+        IntStream.range(0, this.getDistance())
+                .forEach((i) -> stringBuilder.append("-"));
+        System.out.println(stringBuilder);
     }
 }
