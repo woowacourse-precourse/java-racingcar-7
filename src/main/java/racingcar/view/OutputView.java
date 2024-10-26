@@ -15,7 +15,7 @@ public class OutputView {
     public void printRoundOutput(HashMap<Car, Long> carToRacingProgress) {
         StringBuilder sb = new StringBuilder();
         for (Car car : carToRacingProgress.keySet()) {
-            sb.append(car.name())
+            sb.append(car.getName())
                     .append(" : ")
                     .append(listToStringConverter.changeNumberToProgressString(carToRacingProgress.get(car)))
                     .append("\n");

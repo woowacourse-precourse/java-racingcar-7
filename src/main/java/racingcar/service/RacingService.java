@@ -21,6 +21,8 @@ public class RacingService {
 
     public void moveForward() {
         for (Car car : carList) {
+            car.setRandomNumber();
+
             if (Validator.isFourOrMore(car.getRandomNumber())) {
                 carToRacingProgress.put(car, carToRacingProgress.get(car) + 1);
             }
@@ -36,11 +38,15 @@ public class RacingService {
         return carToRacingProgress.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue() == maxProgress)
-                .map(entry -> entry.getKey().name())
+                .map(entry -> entry.getKey().getName())
                 .collect(Collectors.toList());
     }
 
     public HashMap<Car, Long> getCarToRacingProgress() {
         return carToRacingProgress;
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
