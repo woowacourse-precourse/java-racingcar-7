@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-
     private List<Car> carList;
 
     public Cars(List<Car> carsInput) {
@@ -13,8 +12,8 @@ public class Cars {
     }
 
     public List<Car> getClonedCars() {
-        List<Car> clonedcarList= carList.stream()
-                .map((car)->new Car(car.getName(),car.getState()))
+        List<Car> clonedcarList = carList.stream()
+                .map((car) -> new Car(car.getName(), car.getState()))
                 .collect(Collectors.toUnmodifiableList());
 
         return clonedcarList;

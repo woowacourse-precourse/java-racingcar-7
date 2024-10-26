@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-
     private static final int LOWEST_MOVEMENT = 4;
-
     String name;
     String state;
 
@@ -31,8 +29,7 @@ public class Car {
         this.state = String.join("", this.state, "-");
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return state.length();
     }
-
 }
