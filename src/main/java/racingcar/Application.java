@@ -1,10 +1,15 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.controller.CarController;
 import racingcar.controller.Controller;
+import racingcar.controller.InputController;
+import racingcar.controller.OutputController;
+import racingcar.controller.RaceController;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
-import racingcar.service.Service;
+import racingcar.service.CarService;
+import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,20 +17,26 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        Service service = new Service();
 
-        Controller controller = new Controller(inputView, outputView, service);
+        CarService carService = new CarService();
+        RaceService raceService = new RaceService();
 
-        String inputCarNames = controller.inputCarNames();
-        int attemptCount = controller.inputAttemptCount();
+        InputController inputController = new InputController(inputView);
+        OutputController outputController = new OutputController(outputView);
+        CarController carController = new CarController(carService);
+        RaceController raceController = new RaceController(raceService);
+        Controller controller = new Controller(raceService, outputView);
 
-        List<String> carNames = controller.getCarNames(inputCarNames);
-        List<Car> carList = controller.registerCar(carNames);
+        String inputCarNames = inputController.inputCarNames();
+        int inputAttemptCount = inputController.inputAttemptCount();
 
-        Race race = controller.registerRace(carList, attemptCount);
+        List<String> carNames = carController.getCarNames(inputCarNames);
+        List<Car> carList = carController.registerCar(carNames);
+
+        Race race = raceController.registerRace(carList, inputAttemptCount);
         controller.playGame(race);
 
-        List<Car> winnerCarList = controller.getWinnerCarList(race);
-        controller.printWinners(winnerCarList);
+        List<Car> winnerCarList = raceController.getWinnerCarList(race);
+        outputController.printWinners(winnerCarList);
     }
 }
