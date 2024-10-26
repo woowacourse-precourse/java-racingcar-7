@@ -8,6 +8,10 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<String> cars = getCars();
+        Integer movementCount = getMovementCount();
+        Integer randomNumber = getRandomNumber();
+        Boolean isValidNumber = isValidNumber(randomNumber);
     }
 
     public static List<String> getCars() {
@@ -45,5 +49,9 @@ public class Application {
 
     public static Integer getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public static Boolean isValidNumber(Integer number) {
+        return number >= 4;
     }
 }
