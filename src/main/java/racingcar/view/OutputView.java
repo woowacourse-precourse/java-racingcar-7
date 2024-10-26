@@ -1,6 +1,9 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -12,7 +15,17 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void finalWinnerMessage() {
-        System.out.println("최종 우승자 : ");
+    public void showRaceStatus(List<Car> racingCars) {
+        for (Car car : racingCars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
+
+    public void finalWinnerMessage(List<Car> winnerCars) {
+        String winnerCarsName = winnerCars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winnerCarsName);
     }
 }
