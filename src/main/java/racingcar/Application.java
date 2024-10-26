@@ -35,9 +35,7 @@ public class Application {
         String[] racingCars = input.split(SPLITTER);
         List<RacingCar> racingCarList = new ArrayList<>();
         for (String carName : racingCars) {
-            if (carName.isEmpty() || carName == null || carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
+            checkCarName(carName);
             RacingCar racingCar = new RacingCar(carName);
             racingCarList.add(racingCar);
         }
@@ -50,13 +48,18 @@ public class Application {
         return racingCarList;
     }
 
+    public static void checkCarName(String carName) {
+        if (carName.isEmpty() || carName == null || carName.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void checkSameName(String car1, String car2) {
         if (car1.equals(car2)) {
             throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
     }
 
-    //시도 횟수 입력 받기
     public static Integer parseTrial(String trialStr) {
         try {
             Integer trial = Integer.parseInt(trialStr);
