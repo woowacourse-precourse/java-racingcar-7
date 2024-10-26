@@ -6,6 +6,7 @@ import racingcar.view.OutputView;
 
 public class Racingcar {
     private static final String RACINGCAR_STEP_STRING = "-";
+    private static final int MOVING_FORWARD = 4;
 
     private String name;
     private int step;
@@ -28,7 +29,7 @@ public class Racingcar {
     }
 
     public void goFoward(){
-        if(Utils.getRandomNumber() >= 4){
+        if(Utils.getRandomNumber() >= MOVING_FORWARD){
             step++;
         }
         printRacingcarStep();
