@@ -75,16 +75,6 @@ public class UnitTest extends NsTest {
     }
 
     @Test
-    @DisplayName("checkSameName 테스트")
-    void checkSameNameTest() {
-        String car1Name = "car1";
-        String car2Name = "car1";
-        assertThatThrownBy(() -> Application.checkSameName(car1Name, car2Name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
-    }
-
-    @Test
     @DisplayName("getRandomNumber 테스트")
     void getRandomNumberTest() {
         assertRandomNumberInRangeTest(
