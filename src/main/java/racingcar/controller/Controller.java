@@ -17,7 +17,7 @@ public class Controller {
     private final Validator validator = new Validator();
     private final CarRepository carRepository = new CarRepository();
 
-    private void run() {
+    public void run() {
         saveCars(parser.parseCarNames(getCarNamesByUserInput()));
         play(createGame());
     }
