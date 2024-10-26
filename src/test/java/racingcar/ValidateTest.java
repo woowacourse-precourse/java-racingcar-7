@@ -41,4 +41,13 @@ class ValidateTest {
         });
         assertEquals("유효한 숫자가 아닙니다.", exception.getMessage());
     }
+
+    @Test
+    void testCarNameTooLong() {
+        String input = "Tom,Jake,Michael";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Validate.carName(input);
+        });
+        assertEquals("자동차 이름은 5자 이하여야 합니다: Michael", exception.getMessage());
+    }
 }
