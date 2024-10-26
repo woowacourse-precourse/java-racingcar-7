@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.RacingCarInput;
 import racingcar.model.car.Car;
 import racingcar.model.car.InitCars;
 
@@ -17,7 +18,8 @@ class RaceTest {
     @Test
     @DisplayName("한 턴당 출력이 작동하는지 확인한다")
     void 턴_출력_테스트() {
-        Race race = new Race(new String[]{"pobi", "woni", "jun"}, 1);
+        RacingCarInput racingCarInput = new RacingCarInput(new String[]{"pobi", "woni", "jun"}, 1);
+        Race race = new Race(racingCarInput);
         assertRandomNumberInRangeTest(() -> {
                     assertThat(race.turnRun()).isEqualTo("pobi : -\nwoni : \njun : -\n");
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD
@@ -27,7 +29,8 @@ class RaceTest {
     @Test
     @DisplayName("raceRun을 실행했을때 반환값 확인한다")
     void 레이스_실행_테스트() {
-        Race race = new Race(new String[]{"pobi", "woni"}, 2);
+        RacingCarInput racingCarInput = new RacingCarInput(new String[]{"pobi", "woni"}, 2);
+        Race race = new Race(racingCarInput);
         assertRandomNumberInRangeTest(() -> {
                     assertThat(race.raceRun()).isEqualTo("pobi : -\nwoni : \n\npobi : --\nwoni : -\n");
                 }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
@@ -37,7 +40,8 @@ class RaceTest {
     @Test
     @DisplayName("Winner가 제대로 구해지는지 확인한다")
     void 우승자_테스트() {
-        Race race = new Race(new String[]{"pobi", "woni", "jun"}, 3);
+        RacingCarInput racingCarInput = new RacingCarInput(new String[]{"pobi", "woni", "jun"}, 3);
+        Race race = new Race(racingCarInput);
         assertRandomNumberInRangeTest(() -> {
                     race.raceRun();
                     assertThat(race.getWinners()).containsExactly("pobi", "woni");
