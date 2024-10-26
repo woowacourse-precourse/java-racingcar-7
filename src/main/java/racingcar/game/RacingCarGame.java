@@ -14,7 +14,7 @@ public class RacingCarGame {
 
     public void race() {
         outputHandler.showCarInputMessage();
-        RacingCars racingCars = inputHandler.getCarNamesFromUser();
+        RacingCars racingCars = inputHandler.getCarsFromUser();
 
         outputHandler.showAttemptCountInputMessage();
         AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();

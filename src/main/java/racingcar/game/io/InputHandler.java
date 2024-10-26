@@ -11,7 +11,7 @@ public class InputHandler {
     private static final String NAME_SPLIT_DELIMITER = ",";
     private static final String UNSUPPORTED_ATTEMPT_COUNT_TYPE = "시도할 횟수는 문자일 수 없습니다.";
 
-    public RacingCars getCarNamesFromUser() {
+    public RacingCars getCarsFromUser() {
         String carNames = Console.readLine();
         List<Car> cars = Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
                 .map(Car::create)
