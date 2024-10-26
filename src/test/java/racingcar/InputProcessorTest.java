@@ -43,6 +43,14 @@ public class InputProcessorTest {
         assertThrows(IllegalArgumentException.class, inputProcessor::splitCarNames);
     }
 
+    @DisplayName("자동차 이름이 겹치는 경우 - IllegalArgumentException 반환")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi, pobi, jun", "pobi, jun, jay, king, pobi", "gh,  pobi,gh, pobi"})
+    void testDuplicateCarNames(String input) {
+        InputProcessor inputProcessor = new InputProcessor(input);
+        assertThrows(IllegalArgumentException.class, inputProcessor::splitCarNames);
+    }
+
     @DisplayName("유효한 자동차 이름 입력 - List 반환")
     @ParameterizedTest
     @MethodSource("provideValidCarName")
