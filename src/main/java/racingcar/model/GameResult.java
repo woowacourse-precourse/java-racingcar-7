@@ -15,8 +15,8 @@ public class GameResult {
     }
 
     public Integer findMaxMoveCount() {
-        return roundResults.stream()
-                .flatMap(roundResult -> roundResult.getCars().getCars().stream())
+        List<Car> lastRoundCars = getCarsAtFinalRound().getCars();
+        return lastRoundCars.stream()
                 .mapToInt(Car::getMoveCount)
                 .max()
                 .orElse(0);
