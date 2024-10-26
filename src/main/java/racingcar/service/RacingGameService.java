@@ -79,6 +79,10 @@ public class RacingGameService {
 
         String[] splitCarNames = processCarName(carNames);
 
+        if (splitCarNames.length < 2) {
+            throw new IllegalArgumentException("자동차는 2대 이상 입력해야 합니다.");
+        }
+
         for (String carName : splitCarNames){
             if (carName.length() > NAME_LENGTH_LIMIT){
                 throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 하셔야 합니다.");
