@@ -25,4 +25,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean validateInputNotEmpty(String inputCar) {
+        if (inputCar == null || inputCar == "\n" || inputCar == "") {
+            return false;
+        }
+        return true;
+    }
 }
