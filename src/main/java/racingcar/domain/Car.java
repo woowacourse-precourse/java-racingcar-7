@@ -10,9 +10,7 @@ public class Car {
     private boolean isWinner = false;
 
     public Car(String name) {
-        if (name.length() > CarNameRule.MAX_LENGTH.getValue()) {
-            throw new IllegalArgumentException("자동차 이름은 " + CarNameRule.MAX_LENGTH.getValue() + "자를 넘을 수 없습니다.");
-        }
+        validateNameLength(name);
         this.name = name;
         this.progress = new Progress(StepSymbol.EMPTY_STRING.getValue());
     }
@@ -35,5 +33,11 @@ public class Car {
 
     public boolean isWinner() {
         return isWinner;
+    }
+
+    private static void validateNameLength(String name) {
+        if (name.length() > CarNameRule.MAX_LENGTH.getValue()) {
+            throw new IllegalArgumentException("자동차 이름은 " + CarNameRule.MAX_LENGTH.getValue() + "자를 넘을 수 없습니다.");
+        }
     }
 }
