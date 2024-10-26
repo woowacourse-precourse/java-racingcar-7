@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import repository.CarRepository;
 
 public class Car {
-    private String name;
-    private ArrayList<Integer> forwardCount;
+    private final String name;
+    private final ArrayList<Integer> forwardCount;
 
     public Car(String name) {
         this.name = name;
@@ -15,7 +15,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getForwardCount(int repeatCount) {
