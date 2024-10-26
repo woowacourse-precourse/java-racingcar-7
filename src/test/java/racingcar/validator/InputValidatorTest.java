@@ -39,4 +39,25 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름에 알파벳이나 한글 이외의 문자");
     }
+
+    @Test
+    void 횟수_없는_경우_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateRound(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력이 없는 경우");
+    }
+
+    @Test
+    void 횟수_숫자가_아닌_경우_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateRound("삼"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자가 아닌 경우");
+    }
+
+    @Test
+    void 횟수_양수가_아닌_경우_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateRound("0"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("양수가 아닌 경우");
+    }
 }
