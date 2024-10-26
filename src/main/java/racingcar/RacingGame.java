@@ -1,14 +1,9 @@
 package racingcar;
 
 import racingcar.controller.GameController;
+import racingcar.controller.GameControllerFactory;
 import racingcar.model.Car;
 import racingcar.model.ExecutionNumber;
-import racingcar.service.RaceService;
-import racingcar.service.RegisterCarService;
-import racingcar.service.RegisterExecutionNumberService;
-import racingcar.util.DataTransformUtil;
-import racingcar.service.GameService;
-import racingcar.util.ValidationUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,20 +13,15 @@ public class RacingGame {
 
     private final OutputView outputView;
     private final InputView inputView;
+    private final GameController gameController;
 
     public RacingGame() {
         outputView = new OutputView();
         inputView = new InputView();
+        gameController = GameControllerFactory.createGameController();
     }
 
     public void run() {
-        GameController gameController = new GameController(
-                new GameService(),
-                new RegisterCarService(new ValidationUtil(), new DataTransformUtil()),
-                new RegisterExecutionNumberService(new ValidationUtil(), new DataTransformUtil()),
-                new RaceService(new GameService())
-        );
-
         List<Car> cars = registerCar(gameController);
         ExecutionNumber executionNumber = registerExecutionNumber(gameController);
         raceResult(gameController, executionNumber, cars);
