@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
 
     private Car[] cars; // 경주 차량
@@ -50,18 +53,27 @@ public class RacingGame {
         System.out.println();
     }
 
-    public void printWinners(){
+    public void printWinners() {
+        int maxPosition = getMaxPosition();
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자: " + String.join(", ", winners));
+    }
+
+    // 최대 위치를 계산하는 메소드
+    private int getMaxPosition() {
         int maxPosition = 0;
-        for(Car car : cars){
-            if(car.getPosition() > maxPosition){
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
             }
         }
-        System.out.print("최종 우승자: ");
-        for(Car car : cars){
-            if(car.getPosition() == maxPosition){
-                System.out.print(car.getName() + ", ");
-            }
-        }
+        return maxPosition;
     }
 }
