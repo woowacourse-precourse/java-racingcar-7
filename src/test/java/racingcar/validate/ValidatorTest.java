@@ -39,4 +39,17 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "999"})
+    void 올바른_반복값_입력_테스트(String input) {
+        assertDoesNotThrow(() -> Validator.validateRepeatCount(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0", "1.5", "abc", "도현", "!", " "})
+    void 잘못된_반복값_입력_테스트(String input) {
+        assertThatThrownBy(() -> Validator.validateRepeatCount(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

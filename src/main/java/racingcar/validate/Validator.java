@@ -13,6 +13,12 @@ public class Validator {
         validateNamesDuplicate(carNames);
     }
 
+    public static void validateRepeatCount(String repeatCount) throws IllegalArgumentException {
+        if (!repeatCount.matches(RegexConstants.INTEGER_PATTERN)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void validateNamesPattern(String carNames) throws IllegalArgumentException {
         if (!carNames.matches(RegexConstants.INPUT_CARS_PATTERN)) {
             throw new IllegalArgumentException();

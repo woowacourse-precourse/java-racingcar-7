@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static racingcar.Util.Utils.splitNamesByComma;
 import static racingcar.validate.Validator.validateCarNames;
+import static racingcar.validate.Validator.validateRepeatCount;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -10,13 +11,21 @@ public class InputView {
 
     public ArrayList<String> readCarNames() throws IllegalArgumentException {
         System.out.println(Message.INPUT_CAR_NAME.message);
-        String input = Console.readLine();
-        validateCarNames(input);
-        return splitNamesByComma(input);
+        String carNames = Console.readLine();
+        validateCarNames(carNames);
+        return splitNamesByComma(carNames);
+    }
+
+    public int readRepeatCount(String input) {
+        System.out.println(Message.INPUT_REPEAT_COUNT.message);
+        String repeatCount = Console.readLine();
+        validateRepeatCount(repeatCount);
+        return Integer.parseInt(repeatCount);
     }
 
     private enum Message {
-        INPUT_CAR_NAME("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        INPUT_CAR_NAME("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"),
+        INPUT_REPEAT_COUNT("시도할 횟수는 몇 회인가요?");
 
         private final String message;
 

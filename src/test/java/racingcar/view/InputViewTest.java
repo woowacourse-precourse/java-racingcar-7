@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,7 @@ class InputViewTest {
 
         assertThat(carNames).isEqualTo(input);
     }
+
 
     void setInputStream(String input) {
         inputStream = new ByteArrayInputStream(input.getBytes());
