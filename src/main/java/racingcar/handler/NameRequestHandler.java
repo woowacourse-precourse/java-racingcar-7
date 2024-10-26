@@ -12,8 +12,10 @@ public class NameRequestHandler {
         String rawInput = Console.readLine();
         validateBlank(rawInput);
         validateSpace(rawInput);
+        String[] rawNames = rawInput.split(",");
         return null;
     }
+
 
     public void validateBlank(String rawInput) {
         if(rawInput == null || rawInput.isBlank()){
@@ -30,4 +32,5 @@ public class NameRequestHandler {
             throw new IllegalArgumentException(errorMessage);
         }
     }
+
 }
