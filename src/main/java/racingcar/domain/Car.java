@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.global.StepSymbol;
+
 public class Car {
 
     private final String name;
@@ -11,7 +13,7 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다.");
         }
         this.name = name;
-        this.progress = new Progress("");
+        this.progress = new Progress(StepSymbol.EMPTY_STRING.getValue());
     }
 
     public String getProgressResult() {
@@ -19,7 +21,7 @@ public class Car {
     }
 
     public void moveForward() {
-        this.progress = progress.addStep("-");
+        this.progress = progress.addStep(StepSymbol.STEP_STRING.getValue());
     }
 
     public void win() {

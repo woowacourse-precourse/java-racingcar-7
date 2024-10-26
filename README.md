@@ -45,7 +45,7 @@
 - [ ] 상수 처리
   - [x] 전진 조건을 enum으로 관리
   - [x] 랜덤 숫자 범위 enum으로 관리
-  - [ ] step 관리 문자열 enum으로 관리
+  - [x] step 관리 문자열 enum으로 관리
   - [ ] 자동차 이름 제한 enum으로 관리
 - [ ] 모든 기능들을 조합하는 runner 클래스 구현
 - [ ] runner 클래스를 호출하는 Application 클래스 구현
