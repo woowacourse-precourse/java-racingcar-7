@@ -59,4 +59,15 @@ class InputValidatorTest {
         //then
         assertEquals(CONTAIN_SPECIAL_CHARACTER_ERROR_MESSAGE, exception.getMessage());
     }
+
+    @DisplayName("중복된 이름이 있으면 예외처리")
+    @Test
+    void validateCarNames_duplicate_error() {
+        //given
+        List<String> carNames = Arrays.asList("car", "CaR", "c3@");
+        //when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> InputValidator.validateCarNames(carNames));
+        //then
+        assertEquals(NAME_DUPLICATE_ERROR_MESSAGE, exception.getMessage());
+    }
 }
