@@ -91,7 +91,9 @@
 ### 개발자 관점
 - 프로그램 동작 과정
     1. 사용자가 입력한 자동차의 이름들을 저장한다.
+       - 입력값에 대한 검증을 진행한다.
     2. 사용자가 입력한 횟수를 저장한다.
+       - 입력값에 대한 검증을 진행한다.
     3. 횟수만큼 게임을 진행한다.
         - 각 차수마다 자동차들은 랜덤으로 이동한다.
         - 이동 결과를 화면에 출력한다.
@@ -107,49 +109,49 @@
 ### 고민 사항
 #### 1. 데이터를 어디에 저장할까?
 > 1주차 과제에서는 데이터를 원시 배열에 저장하였다. 2주차 과제에선 컬렉션을 사용한다.
-- Car
-  - name
-  - moveCount
+- `Car`
+  - `name`
+  - `moveCount`
 
 
-- Game
-  - gameCount
-  - car List
-  - winner List
+- `Game`
+  - `gameCount`
+  - `car List`
+  - `winner List`
 
     
 #### 2. 사용자에게 어떻게 보여줄까?
 > 1주차의 피드백을 반영하여 고정된 문자열, 숫자는 상수화를 한다. 또한 일반 사용자가 봐도
 > 이게 무슨 역할인지 쉽게 알수 있도록 view라는 디렉토리로 구분해서 만든다.
 
-- constant
-  - InputConstant
-  - OutputConstant
+- `constant`
+  - `InputConstant`
+  - `OutputConstant`
 
 
-- view
-  - InputView
-  - OutputView
+- `view`
+  - `InputView`
+  - `OutputView`
 
 #### 3. 자동차는 어떤 기준으로 움직일까?
 > 문제 요구 사항을 보면 "전진하는 조건은 0에서 9 사이에 무작위 값을 구한 후 무작위 값이 4 이상일 경우"
 > 라고 나와있다. 따라서 전체 틀을 잡기 전에 명확한 요구 사항이 있는 움직임의 조건 부터 만든다.
 
-- constant
-  - NumberConstant
+- `constant`
+  - `NumberConstant`
 
-- util
-  - RandomUtil
+- `util`
+  - `RandomUtil`
 
 #### 4. 자동차와 게임의 역할 분리
 > 1주차의 피드백을 반영하여 서비스 클래스를 분리한다. 게임 모델과 자동차 모델의 역할을 명확히 분리한다.
 
-- GameService
+- `GameService`
     - 각 차수마다 자동차들의 동작 기능
     - 우승자를 결정하는 기능
 
-- CarService
-  - 문자열에서 자동차 이름을 추출하는 기능
+- `CarService`
+  - 자동차 이름 리스트에서 자동차 생성으로 이동하는 기능
   - 자동차 객체를 생성하는 기능
 
 #### 5. 예외처리
