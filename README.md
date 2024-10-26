@@ -12,7 +12,6 @@
 - [ ] B. IO class 구현
     - [x] inputCars()- Car 이름, 
     - [x] inputCount()- Move count 입력 받는 함수 구현
-    - [ ] 입력의 유효성 검사(입력형식, 이름길이, 자동차의 동일이름 처리 등등)
 - [x] C. Car class 함수 구현
     - 전진(moveCarFront) 기능 구현-> random 사용
 - [x] D. Challenge 클래스에서 경주 진행하기
@@ -25,4 +24,6 @@
     - Challenge객체 만들기-> 대회 생성
     - 입력에 따라 Car 객체를 생성하기-> ArrayList에 저장
     - 대회 진행후, 우승자 구하고 출력하기
-- [ ] F. Exception 처리하기
+- [x] F. Exception 처리하기
+    - [x] Car 이름 입력형식 오류
+    - [x] 시도횟수 입력오류-> 양의 Int 정수만 가능함
