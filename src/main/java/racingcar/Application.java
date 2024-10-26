@@ -17,7 +17,9 @@ public class Application {
 
             //쉼표(,) 구분자 이용해서 배열에 넣기기
             String[] cars = cars_str.split(",");
-            int [] racing_num = new int[cars.length];
+            int[] racing_num = new int[cars.length];
+            String[] winner = new String[cars.length];
+
             //0~9 사이에 랜덤한 숫자 구하기
             Random random = new Random();   
     
@@ -44,6 +46,12 @@ public class Application {
             for (int i=0; i<cars.length; i++){
                 if (racing_num[i] > max){
                     max = racing_num[i];
+                }
+            }
+            // 최종 우승자 선정하기
+            for (int i=0; i<cars.length; i++){
+                if (racing_num[i] == max){
+                    winner[i] = cars[i];
                 }
             }
     }   
