@@ -27,4 +27,8 @@ public class Car {
             position++;
         }
     }
+
+    public void print() {
+        System.out.println(name + " : " + "-".repeat(position));
+    }
 }
