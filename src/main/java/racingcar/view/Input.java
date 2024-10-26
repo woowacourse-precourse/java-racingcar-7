@@ -20,8 +20,7 @@ public class Input {
             }
         });
 
-        List<String> carNames = Arrays.stream(carNamesInput)
-            .map(String::trim)
+        List<String> carNames = Arrays.stream(carNamesInput).map(String::trim)
             .collect(Collectors.toList());
 
         if (carNames.size() != carNames.stream().distinct().count()) {
@@ -31,11 +30,16 @@ public class Input {
     }
 
     public int getTryNum() {
-        int tryNum = Integer.parseInt(Console.readLine());
-        if (tryNum <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        int tryNum = 0;
+        try {
+            tryNum = Integer.parseInt(Console.readLine());
+            if (tryNum <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.", e);
         }
+
         return tryNum;
     }
-
 }
