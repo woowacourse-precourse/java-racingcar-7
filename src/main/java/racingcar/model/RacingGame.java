@@ -28,6 +28,10 @@ public class RacingGame {
         int randomValue= Randoms.pickNumberInRange(0,9);
         return randomValue>=4;
     }
+    public List<String> findWinners() {
+        int maxDashes = getMaxDashCount();
+        return getWinnersByMaxDash(maxDashes);
+    }
     public int getMaxDashCount(){
         return cars.stream()
                 .mapToInt(Car::getDashCount)
@@ -36,5 +40,14 @@ public class RacingGame {
     }
     public boolean isWinner(Car car, int maxDashes){
         return car.getDashCount()==maxDashes;
+    }
+    public List<String> getWinnersByMaxDash(int maxDashes) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (isWinner(car, maxDashes)) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 }
