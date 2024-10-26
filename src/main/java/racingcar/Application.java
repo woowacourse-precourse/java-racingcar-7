@@ -27,7 +27,7 @@ public class Application {
         List<Car> carList = carController.registerCar(carNames);
 
         Race race = raceController.registerRace(carList, inputAttemptCount);
-        controller.playGame(race);
+        controller.playRound(race);
         
         List<Car> winnerCarList = raceController.getWinnerCarList(race);
         outputController.printWinners(winnerCarList);

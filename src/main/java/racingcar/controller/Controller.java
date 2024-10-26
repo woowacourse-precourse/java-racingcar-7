@@ -14,7 +14,7 @@ public class Controller {
         this.outputView = outputView;
     }
 
-    public void playGame(final Race race) {
+    public void playRound(final Race race) {
         IntStream.range(0, race.getAttemptCount()).forEach(attemptCount -> {
             raceService.playRound(race);
             printRoundResult(race);
