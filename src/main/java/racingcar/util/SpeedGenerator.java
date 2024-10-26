@@ -1,7 +1,7 @@
 package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.model.race.Speed;
+import racingcar.model.car.Speed;
 
 public class SpeedGenerator {
     public static Speed generateRandomSpeed() {

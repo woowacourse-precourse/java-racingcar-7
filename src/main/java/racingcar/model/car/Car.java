@@ -8,7 +8,6 @@ import static racingcar.model.car.MovementCondition.getDistanceBy;
 import racingcar.common.exception.LengthExceedException;
 import racingcar.model.position.Distance;
 import racingcar.model.race.Lap;
-import racingcar.model.race.Speed;
 import racingcar.util.SpeedGenerator;
 
 public class Car {

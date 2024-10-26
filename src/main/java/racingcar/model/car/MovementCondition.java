@@ -1,11 +1,10 @@
 package racingcar.model.car;
 
-import static racingcar.model.race.Speed.MIN_SPEED;
+import static racingcar.model.car.Speed.MIN_SPEED;
 
 import java.util.Arrays;
 import java.util.function.BiPredicate;
 import racingcar.model.position.Distance;
-import racingcar.model.race.Speed;
 
 public enum MovementCondition {
 
