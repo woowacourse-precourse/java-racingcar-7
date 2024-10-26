@@ -25,6 +25,12 @@ public class InputValidator {
         }
     }
 
+    public static void validateDuplicates(List<String> names) {
+        if (names.size() != names.stream().distinct().count()) {
+            throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
+        }
+    }
+
     public static void validateNumber(String input) {
         try {
             if (Integer.parseInt(input) <= 0) {
