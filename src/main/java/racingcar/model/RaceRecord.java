@@ -24,6 +24,15 @@ public class RaceRecord {
         raceResult.put(car, raceResult.get(car) + moveCount);
     }
 
+    public Car getOneCar(String carName) {
+        for (Car car : raceResult.keySet()) {
+            if (car.getName().equals(carName)) {
+                return car;
+            }
+        }
+        throw new NoSuchElementException(carName + " not found.");
+    }
+
     public int getOneCarRecord(String carName) {
         for (Map.Entry<Car, Integer> car : raceResult.entrySet()) {
             if (car.getKey().getName().equals(carName)) {
