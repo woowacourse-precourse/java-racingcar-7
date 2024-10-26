@@ -25,6 +25,6 @@ public class RacingCarApp {
 
     private void readInput() {
         InputValue inputValue = inputView.readInput();
-        racingCarGame = new RacingCarGame(inputValue);
+        racingCarGame = new RacingCarGame(inputValue, new RandomIntegerGenerator());
     }
 }

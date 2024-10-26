@@ -1,6 +1,6 @@
 package racingcar.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.IntegerGenerator;
 import racingcar.car.Car;
 import racingcar.car.CarManager;
 import racingcar.view.input.InputValue;
@@ -13,13 +13,16 @@ public class RacingCarGame {
     private final int attemptCount;
     private final CarManager carManager = new CarManager();
     private final CarPositionLogRepository carPositionLogRepository = new CarPositionLogRepository();
+    private final IntegerGenerator integerGenerator;
 
-    public RacingCarGame(InputValue inputValue) {
+    public RacingCarGame(InputValue inputValue, IntegerGenerator integerGenerator) {
         List<String> carNames = inputValue.getCarNames();
         int attemptCount = inputValue.getAttemptCount();
 
         carManager.createCars(carNames);
+
         this.attemptCount = attemptCount;
+        this.integerGenerator = integerGenerator;
     }
 
     public GameResult getGameResult() {
@@ -34,7 +37,7 @@ public class RacingCarGame {
         for (int i = 0; i < attemptCount; i++) {
             List<Car> cars = carManager.getCars();
             cars.forEach(car -> {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                int randomNumber = integerGenerator.generate(0, 9);
                 if (randomNumber >= 4) {
                     car.move();
                 }
