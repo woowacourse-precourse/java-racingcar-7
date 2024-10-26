@@ -15,6 +15,14 @@ public class RacingController {
         this.attempts = InputView.getAttempts();
     }
 
+    public void startRace() {
+        for (int i = 0; i < attempts; i++) {
+            playRound();
+            OutputView.showRoundResult(cars);
+        }
+        showFinalWinners();
+    }
+
     private void playRound() {
         for (ForwardController car : cars) {
             car.move();
