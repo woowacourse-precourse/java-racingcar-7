@@ -2,6 +2,7 @@ package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -29,5 +30,75 @@ public class RacingGameTest {
         assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
 
+    @DisplayName("한 라운드 진행시 자동차 리스트 이동 테스트")
+    @Nested
+    class testPlayRound {
+        @Test
+        @DisplayName("한 라운드에서 모든 자동차가 이동하지 못하는 경우")
+        public void testNoCarsMoving() {
+            //given
+            MoveStrategy moveStrategy = () -> false;
+            //when
+            racingGame.playRound(moveStrategy);
+            //then
+            for (Car car : racingGame.getCars()) {
+                assertThat(car.getPosition()).isEqualTo(0);
+            }
+        }
 
+        @Test
+        @DisplayName("한 라운드에서 한 대의 자동차만 이동하는 경우")
+        public void testOneCarMoving() {
+            //given
+            MoveStrategy testMoveStrategy = new MoveStrategy() {
+                private int count = 0;
+
+                @Override
+                public boolean canMove() {
+                    return count++ < 1;
+                }
+            };
+            //when
+            racingGame.playRound(testMoveStrategy);
+            //then
+            List<Car> cars = racingGame.getCars();
+            assertThat(cars.get(0).getPosition()).isEqualTo(1);
+            assertThat(cars.get(1).getPosition()).isEqualTo(0);
+            assertThat(cars.get(2).getPosition()).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("한 라운드에서 두 대의 자동차만 이동하는 경우")
+        public void testTwoCarsMoving() {
+            //given
+            MoveStrategy testMoveStrategy = new MoveStrategy() {
+                private int count = 0;
+
+                @Override
+                public boolean canMove() {
+                    return count++ < 2;
+                }
+            };
+            //when
+            racingGame.playRound(testMoveStrategy);
+            //then
+            List<Car> cars = racingGame.getCars();
+            assertThat(cars.get(0).getPosition()).isEqualTo(1);
+            assertThat(cars.get(1).getPosition()).isEqualTo(1);
+            assertThat(cars.get(2).getPosition()).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("한 라운드에서 모든 자동차가 이동하는 경우")
+        public void testAllCarsMoving() {
+            //given
+            MoveStrategy moveStrategy = () -> true;
+            //when
+            racingGame.playRound(moveStrategy);
+            //then
+            for (Car car : racingGame.getCars()) {
+                assertThat(car.getPosition()).isEqualTo(1);
+            }
+        }
+    }
 }
