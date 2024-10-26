@@ -6,10 +6,16 @@ public class Car {
     private int position;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        // 이름 유효성 검사는 아직 구현하지 않음
+        validateName(name);
         this.name = name;
         this.position = 0;
         this.moveStrategy = moveStrategy;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.isBlank() || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 1~5자만 가능합니다.");
+        }
     }
 
     public String getName() {
