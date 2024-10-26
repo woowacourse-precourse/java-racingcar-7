@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.domain.Racing;
 import racingcar.view.InputReader;
 
+import java.util.Set;
+
 public class RacingController {
 
     private final InputReader inputReader;
@@ -16,5 +18,7 @@ public class RacingController {
     public void startRace() {
         String racingCars = inputReader.inputRacingCarNames();
         int racingCount = inputReader.inputRacingCount();
+
+        Set<String> racingCarNames = racing.splitCarNamesByComma(racingCars);
     }
 }

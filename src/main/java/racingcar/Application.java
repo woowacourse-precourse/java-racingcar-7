@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
         Validator validator = new Validator();
-        Racing racing = new Racing();
+        Racing racing = new Racing(validator);
 
         OutputWriter outputWriter = new OutputWriter();
         InputReader inputReader = new InputReader(outputWriter, validator);
