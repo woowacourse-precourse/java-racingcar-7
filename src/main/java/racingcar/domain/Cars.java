@@ -22,7 +22,7 @@ public class Cars {
     }
 
     private void validNameSize(List<String> carNames) {
-        if (carNames.size() > 100) {
+        if (carNames.size() > NumberConstant.CAR_REG_MAX) {
             throw new IllegalArgumentException("자동차는 100대까지 등록 가능합니다.");
         }
     }

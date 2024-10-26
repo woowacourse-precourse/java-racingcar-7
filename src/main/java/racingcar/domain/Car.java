@@ -1,9 +1,9 @@
 package racingcar.domain;
 
-
 import java.util.Objects;
 
-import static racingcar.domain.StringConstant.*;
+import static racingcar.domain.NumberConstant.*;
+
 
 public class Car {
 
@@ -21,7 +21,7 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
         }
 
-        if (name.length() > 5) {
+        if (name.length() > NAME_LENGTH_MAX) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하로 등록 해야합니다.");
         }
 
@@ -31,7 +31,7 @@ public class Car {
     }
 
     public void moveForwardIfDigitAboveThreshold(int digit) {
-        if (digit < NumberConstant.MOVE_THRESHOLD) {
+        if (digit < MOVE_THRESHOLD) {
             return;
         }
         this.position++;

@@ -3,7 +3,8 @@ package racingcar.domain;
 public enum StringConstant {
 
     POSITION_MARK("-"),
-    WINNER_MESSAGE("최종 우승자 : %s");
+    WINNER_MESSAGE("최종 우승자 : %s"),
+    NAME_DELIMITER(",");
 
     private final String value;
 
