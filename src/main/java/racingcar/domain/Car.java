@@ -41,11 +41,6 @@ public class Car {
         return position;
     }
 
-    public void printPosition() {
-        System.out.printf("%s : %s", name, POSITION_MARK.getValue().repeat(position));
-        System.out.println();
-    }
-
     public String getName() {
         return name;
     }
