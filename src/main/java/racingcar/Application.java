@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -14,6 +15,8 @@ public class Application {
 
         Integer movementCount = getMovementCount();
 
+        System.out.println("\n실행 결과");
+
         for (int i = 0; i < movementCount; i++) {
             for (Car car : cars) {
                 Integer randomNumber = getRandomNumber();
@@ -23,7 +26,15 @@ public class Application {
                     car.addDistance();
                 }
             }
+
+            for (Car car : cars) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+            }
+            System.out.println();
         }
+
+        String winners = getWinners(cars);
+        System.out.println("최종 우승자 : " + winners);
     }
 
     public static List<String> getCarNames() {
@@ -72,7 +83,31 @@ public class Application {
 
         for (String carName : carNames) {
             Car car = new Car(carName);
+            cars.add(car);
         }
+
         return cars;
+    }
+
+    public static String getWinners(List<Car> cars) {
+        String winners = "";
+        List<String> winnerNames = new ArrayList<>();
+
+        List<Integer> carDistances = new ArrayList<>();
+
+        for (Car car : cars) {
+            carDistances.add(car.getDistance());
+        }
+
+        Integer maxDistance = Collections.max(carDistances);
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winnerNames.add(car.getName());
+            }
+        }
+
+        winners = String.join(",", winnerNames);
+
+        return winners;
     }
 }
