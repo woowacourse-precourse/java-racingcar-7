@@ -46,4 +46,72 @@ class VehicleTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5글자를 초과할 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("무작위 값 4 미만이면 정지")
+    void 무작위_값_4_미만이면_정지(){
+        //given
+        Vehicle vehicle = new Vehicle("pobi");
+        int distance = vehicle.getCurrentDistance();
+
+        //when
+        vehicle.moveOrStay(3);
+
+        //then
+        assertThat(vehicle.getCurrentDistance()).isEqualTo(distance);
+    }
+
+    @Test
+    @DisplayName("무작위 값 4 미만이면 심볼 수 유지")
+    void 무작위_값_4_미만이면_심볼_수_유지(){
+        //given
+        Vehicle vehicle = new Vehicle("pobi");
+        long distanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
+                .filter(ch -> ch == '-')
+                .count();
+
+        //when
+        vehicle.moveOrStay(1);
+        vehicle.moveOrStay(2);
+        vehicle.moveOrStay(3);
+        long currentDistanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
+                .filter(ch -> ch == '-')
+                .count();
+
+        //then
+        assertThat(currentDistanceToSymbolCount).isEqualTo(distanceToSymbolCount);
+    }
+
+    @Test
+    @DisplayName("무작위 값 4 이상이면 전진")
+    void 무작위_값_4_이상이면_전진(){
+        //given
+        Vehicle vehicle = new Vehicle("pobi");
+        int distance = vehicle.getCurrentDistance();
+        //when
+        vehicle.moveOrStay(4);
+        //then
+        assertThat(vehicle.getCurrentDistance()).isEqualTo(distance + 1);
+    }
+
+    @Test
+    @DisplayName("무작위 값 4 이상이면 심볼 수 증가")
+    void 무작위_값_4_이상이면_심볼_수_증가(){
+        //given
+        Vehicle vehicle = new Vehicle("pobi");
+        long distanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
+                .filter(ch -> ch == '-')
+                .count();
+
+        //when
+        vehicle.moveOrStay(4);
+        vehicle.moveOrStay(5);
+        vehicle.moveOrStay(6);
+        long currentDistanceToSymbolCount = vehicle.getCurrentDistanceToSymbol().chars()
+                .filter(ch -> ch == '-')
+                .count();
+
+        //then
+        assertThat(currentDistanceToSymbolCount).isEqualTo(distanceToSymbolCount + 3);
+    }
 }
