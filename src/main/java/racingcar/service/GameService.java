@@ -35,7 +35,7 @@ public class GameService {
                 .filter(car -> canMove())
                 .forEach(RacingCar::moveForward);
 
-        return new ArrayList<>(racingCars);
+        return racingCars;
     }
 
     public List<String> findWinner() {
