@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.global.message.ErrorMessage;
+import racingcar.global.utils.ParseStringUtils;
 
 public class Cars {
     private List<Car> carList;
@@ -14,25 +15,15 @@ public class Cars {
     }
 
     public static Cars createCarList(String carNamesInput) {
-        if (carNamesInput.contains(",,")) {
-            throw new IllegalArgumentException(ErrorMessage.CONSECUTIVE_COMMAS.getMessage());
-        }
-
-        String[] carNames = carNamesInput.split(",");
+        List<String> carNames = ParseStringUtils.splitCarNames(carNamesInput);
         List<Car> carList = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<>();
 
-        for (String name : carNames) {
-            String carName = name.trim();
-            if (carName.isBlank()) {
-                throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
-            }
-
+        for (String carName : carNames) {
             if (uniqueNames.contains(carName)) {
                 throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage() + ": " + carName);
             }
             uniqueNames.add(carName);
-
             carList.add(new Car(carName));
         }
 

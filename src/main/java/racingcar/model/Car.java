@@ -3,7 +3,7 @@ package racingcar.model;
 import racingcar.global.message.ErrorMessage;
 import racingcar.global.utils.RaceRandomUtils;
 
-i
+
 public class Car {
     private String name;
     private int position;
