@@ -65,10 +65,12 @@ public class RacingService {
 
     public void responseGameResult() {
         int maxScore = racingCars.values().stream().mapToInt(RacingCar::getScore).max().orElse(0);
-
-        List<String> winners = racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
-                .map(RacingCar::getName).collect(Collectors.toList());
-        outputView.responseGameResult(String.join(", ", winners));
+        if (maxScore != 0) {
+            List<String> winners = racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
+                    .map(RacingCar::getName).collect(Collectors.toList());
+            outputView.responseGameResult(String.join(", ", winners));
+        }
+        outputView.responseGameResult("우승자가 없습니다.");
     }
 
 
