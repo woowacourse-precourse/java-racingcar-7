@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-    private int round;
-    private List<racingcar.domain.race.Record> records;
+    private final int round;
+    private final List<Record> records;
 
     public Result(int round) {
         this.round = round;

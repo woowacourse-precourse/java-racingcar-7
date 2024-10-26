@@ -1,8 +1,8 @@
 package racingcar.domain.race;
 
 public class Record {
-    private String carName;
-    private int distance;
+    private final String carName;
+    private final int distance;
 
     public Record(String carName, int distance) {
         this.carName = carName;
