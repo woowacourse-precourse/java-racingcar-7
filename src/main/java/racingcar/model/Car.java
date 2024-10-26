@@ -1,12 +1,14 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.move.MoveStrategy;
 
 public class Car {
     private final String name;
+    private MoveStrategy moveStrategy;
     private int position;
-    public Car(String name) {
+    public Car(String name, MoveStrategy moveStrategy) {
         this.name = name;
+        this.moveStrategy = moveStrategy;
         position = 0;
     }
 
@@ -19,8 +21,7 @@ public class Car {
     }
 
     public void move(){
-        int randomInt = Randoms.pickNumberInRange(0, 9);
-        if(randomInt >= 4){
+        if(moveStrategy.canMove()){
             position ++;
         }
     }

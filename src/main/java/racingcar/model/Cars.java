@@ -3,6 +3,8 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.model.move.RandomStrategy;
+
 public class Cars {
     private List<Car> cars;
 
@@ -22,7 +24,7 @@ public class Cars {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : carNames) {
-            carList.add(new Car(carName));
+            carList.add(new Car(carName, new RandomStrategy()));
         }
 
         return carList;
