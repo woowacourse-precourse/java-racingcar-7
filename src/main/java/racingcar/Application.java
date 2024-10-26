@@ -1,7 +1,20 @@
 package racingcar;
 
+import racingcar.controller.RacingCarController;
+import racingcar.service.RacingCarGameService;
+import racingcar.service.SeperateCarNameService;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        RacingCarController racingCarController = new RacingCarController(new SeperateCarNameService(),
+                                                                          new RacingCarGameService(),
+                                                                          new OutputView(),
+                                                                          new InputView());
+
+        racingCarController.run();
+
     }
 }
