@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.Car;
 
 import java.util.ArrayList;
 import java.util.HashMap;
