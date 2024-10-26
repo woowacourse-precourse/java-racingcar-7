@@ -19,6 +19,26 @@ public class ValidatorTest {
     }
 
     @Test
+    void 자동차_이름_공백_포함(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateCarName(" ");
+        });
+    }
+    @Test
+    void 자동차_이름_공백_포함2(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateCarName("pobi, woni");
+        });
+    }
+
+    @Test
+    void 자동차_이름_빈문자열(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateCarName("");
+        });
+    }
+
+    @Test
     void 시도횟수_숫자_아님(){
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateTryNumber("CarA");
