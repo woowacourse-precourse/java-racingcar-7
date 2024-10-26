@@ -7,7 +7,7 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGroup;
 import racingcar.domain.game.GameRound;
 
-public abstract class GameSetup {
+public abstract class GameInitializer {
 
     public static CarGroup createCars(String carNames) {
         List<Car> carList = Arrays.stream(carNames.split(","))
