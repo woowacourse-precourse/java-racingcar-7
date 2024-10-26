@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.domain.ErrorMessage.CAR_QUANTITY_MAX;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,7 +43,7 @@ public class Cars {
 
     private void validateNumberOfCars(Set<Car> cars) {
         if (cars.size() > MAX_NUMBER_OF_CAR) {
-            throw new IllegalArgumentException("자동차는 최대 50대까지만 입력 가능합니다.");
+            throw new IllegalArgumentException(CAR_QUANTITY_MAX.getMessage());
         }
     }
 

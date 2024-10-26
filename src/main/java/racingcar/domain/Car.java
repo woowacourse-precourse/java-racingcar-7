@@ -1,5 +1,9 @@
 package racingcar.domain;
 
+import static racingcar.domain.ErrorMessage.CAR_NAME_BLANK;
+import static racingcar.domain.ErrorMessage.CAR_NAME_CONTAIN_SPECIAL_CHARACTER;
+import static racingcar.domain.ErrorMessage.CAR_NAME_MAX;
+
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,20 +35,20 @@ public class Car {
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하까지 입력 가능합니다.");
+            throw new IllegalArgumentException(CAR_NAME_MAX.getMessage());
         }
     }
 
     private void validateNameEmpty(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException("공백으로 입력된 이름이 있습니다.");
+            throw new IllegalArgumentException(CAR_NAME_BLANK.getMessage());
         }
     }
 
     private void validateNameSpecialCharacter(String name) {
         Matcher matcher = Pattern.compile("[ !@#$%^&*(),.?\":{}|<>]").matcher(name);
         if (matcher.find()) {
-            throw new IllegalArgumentException("자동차 이름에 특수문자는 사용 불가합니다.");
+            throw new IllegalArgumentException(CAR_NAME_CONTAIN_SPECIAL_CHARACTER.getMessage());
         }
     }
 

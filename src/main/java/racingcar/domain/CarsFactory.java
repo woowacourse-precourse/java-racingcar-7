@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import static racingcar.domain.ErrorMessage.CAR_NAME_DUPLICATE;
+import static racingcar.domain.ErrorMessage.INPUT_CAR_EMPTY;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,13 +34,13 @@ public class CarsFactory {
 
     private void validateDuplicateCarName(Car car, Set<Car> cars) {
         if (!cars.add(car)) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE.getMessage());
         }
     }
 
     private static void validateEmptyCarName(String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("입력된 자동차 이름이 없습니다. 최소 1대 이상 입력해주세요.");
+            throw new IllegalArgumentException(INPUT_CAR_EMPTY.getMessage());
         }
     }
 
