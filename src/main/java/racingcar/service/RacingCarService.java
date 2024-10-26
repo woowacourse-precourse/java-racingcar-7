@@ -14,11 +14,12 @@ public class RacingCarService {
     //자동차 별로 전진시키는 메소드
     public void race(Cars cars) {
 
-        Iterator<String> carName = cars.getCars().keySet().iterator();
+        cars.getCars().entrySet().stream()
+                .forEach(entry -> {
+                    int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+                    String carName = entry.getKey();
+                    cars.updateDistance(carName, randomNumber);
+                });
 
-        while(carName.hasNext()){
-            int randomNumber = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-            cars.updateDistance(carName.next(), randomNumber);
-        }
     }
 }
