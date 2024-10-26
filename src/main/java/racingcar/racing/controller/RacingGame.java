@@ -36,8 +36,7 @@ public class RacingGame {
 
     private int inputAttemptNumber() {
         OutputView.printMessage("시도할 횟수는 몇 회인가요?");
-
-        String inputAttemptNumber = InputView.inputConsole(true);
+        String inputAttemptNumber = InputView.inputConsole();
         try {
             int attemptNumber = Integer.parseInt(inputAttemptNumber);
             if (!InputValidator.validateAttemptNumber(attemptNumber)) {
@@ -51,8 +50,7 @@ public class RacingGame {
 
     private List<String> inputCarNames() {
         OutputView.printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
-        String inputCar = InputView.inputConsole(false);
+        String inputCar = InputView.inputConsole();
         List<String> carNames = InputParser.parseCarNames(inputCar);
         if (!InputValidator.validateCarNameLength(carNames)) {
             throw new IllegalArgumentException(INVALID_CAR_LENGTH_EXCEPTION_MESSAGE);
