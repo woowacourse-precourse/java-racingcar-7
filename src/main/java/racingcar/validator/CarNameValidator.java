@@ -11,7 +11,7 @@ public class CarNameValidator {
     }
 
     private void isNotEmpty(String name) {
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME);
         }
     }

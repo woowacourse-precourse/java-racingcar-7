@@ -11,7 +11,6 @@ public class Car {
     public Car(String name, CarNameValidator carNameValidator){
         carNameValidator.isValidCarName(name);
         this.name = name;
-
         this.movedNumber = 0;
     }
 
