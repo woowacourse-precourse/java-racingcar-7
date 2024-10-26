@@ -12,4 +12,13 @@ public class Validator {
 
         return carName;
     }
+
+    public static String validateCommaSeparator(String inputCarName){
+
+        if(!inputCarName.contains(",")){
+            throw new IllegalArgumentException("쉼표를 이용해서 자동차를 구분해 주세요.");
+        }
+
+        return inputCarName;
+    }
 }
