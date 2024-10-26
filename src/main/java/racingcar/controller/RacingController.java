@@ -2,18 +2,21 @@ package racingcar.controller;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import racingcar.model.InputParser;
 import racingcar.model.RacingModel;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 
 public class RacingController {
+    private final InputParser parser;
     private final RacingModel racingModel;
     private final InputView inputView;
     private final OutputView outputView;
 
 
-    public RacingController(RacingModel racingModel, InputView inputView, OutputView outputView) {
+    public RacingController(InputParser parser, RacingModel racingModel, InputView inputView, OutputView outputView) {
+        this.parser = parser;
         this.racingModel = racingModel;
         this.inputView = inputView;
         this.outputView = outputView;
@@ -42,18 +45,14 @@ public class RacingController {
 
     public void run() {
 
-        List<String> names = inputView.getCarNames();
+        String names = inputView.getCarNames();
 
-        validateCharacters(names);
-        validateLength(names);
+        //validateCharacters(names);
+        //validateLength(names);
+
+        LinkedHashMap<String, Integer> cars = parser.getCarsHashMap(names);
 
         int totalRounds = inputView.getTotalRounds();
-
-        LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
-
-        for (String name: names) {
-            cars.put(name, 0);
-        }
 
         outputView.printStart();
         for (int round = 0; round < totalRounds; round++) {
