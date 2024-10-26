@@ -16,7 +16,7 @@ public class RacingGame {
     public String proceedRound() {
         carContainer.moveAll();
 
-        return String.join("", carContainer.getCurrentRoundResult());
+        return carContainer.getCurrentRoundResult();
     }
 
     public String findWinnerCarNames() {

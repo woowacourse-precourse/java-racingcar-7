@@ -19,10 +19,12 @@ public class CarContainer {
         cars.forEach(car -> car.moveForward(randomGenerator));
     }
 
-    public List<String> getCurrentRoundResult() {
-        return cars.stream()
+    public String getCurrentRoundResult() {
+        List<String> currentCarResult = cars.stream()
             .map(Car::toString)
             .toList();
+
+        return String.join("", currentCarResult);
     }
 
     public List<Car> getCars() {
