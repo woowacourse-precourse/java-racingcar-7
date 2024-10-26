@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Racing;
 import racingcar.view.InputReader;
 
-import java.util.Set;
+import java.util.Map;
 
 public class RacingController {
 
@@ -19,6 +19,9 @@ public class RacingController {
         String racingCars = inputReader.inputRacingCarNames();
         int racingCount = inputReader.inputRacingCount();
 
-        Set<String> racingCarNames = racing.splitCarNamesByComma(racingCars);
+        Map<String, Integer> racingCarNames = racing.splitCarNamesByComma(racingCars);
+
+        racing.executeRace(racingCarNames, racingCount);
+
     }
 }

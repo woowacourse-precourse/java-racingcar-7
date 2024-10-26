@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -37,9 +38,16 @@ public class Validator {
         }
     }
 
-    public void validateDuplicateRacingCarNames(List<String> racingCarNamesList, Set<String> racingCarNames) {
-        if(racingCarNamesList.size() != racingCarNames.size()) {
-            throw new IllegalArgumentException("자동차 이름에 중복 값이 포함되어 있습니다.");
+    public void validateDuplicateRacingCarNames(List<String> racingCarNamesList) {
+        Set<String> racingCarNameSet = new HashSet<>();
+        for (String racingCarName : racingCarNamesList) {
+            validateDuplicateName(racingCarNameSet, racingCarName);
+        }
+    }
+
+    private void validateDuplicateName(Set<String> racingCarNameSet, String racingCarName) {
+        if(!racingCarNameSet.add(racingCarName)) {
+            throw new IllegalArgumentException(racingCarName + ": 중복된 이름이 입력되었습니다.");
         }
     }
 
