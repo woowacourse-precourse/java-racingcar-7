@@ -7,10 +7,13 @@ import java.util.List;
 
 public class RacingCars {
 
+    private static final int CAR_COUNT_THRESHOLD = 10;
+
     private final List<Car> racingCars = new ArrayList<>();
 
     public void registerCars(List<String> carNames) {
         validateUniqueName(carNames);
+        validateRacingCarCount(carNames);
         carNames.stream()
                 .map(Car::new)
                 .forEach(racingCars::add);
@@ -49,6 +52,12 @@ public class RacingCars {
     private void validateUniqueName(List<String> names) {
         if (names.size() != names.stream().distinct().count()) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
+        }
+    }
+
+    private void validateRacingCarCount(List<String> carNames) {
+        if (carNames.size() > CAR_COUNT_THRESHOLD) {
+            throw new IllegalArgumentException("경주에 참가할 수 있는 최대 자동차 수는 10대입니다.");
         }
     }
 }
