@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private String name;
     private int step;
@@ -9,6 +11,12 @@ public class Car {
 
         this.name = name;
         this.step = 0;
+    }
+
+    public void go() {
+        int random  = Randoms.pickNumberInRange(0, 9);
+        if (random >= 4)
+            this.step++;
     }
 
     private void validateName(String name) {
