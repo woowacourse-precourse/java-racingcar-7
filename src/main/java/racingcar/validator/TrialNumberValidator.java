@@ -1,13 +1,8 @@
 package racingcar.validator;
 
-import java.util.ArrayList;
+public class TrialNumberValidator {
 
-public class InputValidator {
-
-    public static void validateCarNames(ArrayList<String> CarNames) {
-    }
-
-    public static void validateTrialNumber(String rawTrialNumber) {
+    public static void validate(String rawTrialNumber) {
         validateNotEmpty(rawTrialNumber);
         validateIsNumber(rawTrialNumber);
         validateIsInteger(rawTrialNumber);
@@ -24,7 +19,7 @@ public class InputValidator {
         try {
             Float.parseFloat(rawTrialNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 숫자가 아닙니다");
+            throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
         }
     }
 
@@ -32,7 +27,7 @@ public class InputValidator {
         try {
             Integer.parseInt(rawTrialNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 정수가 아닙니다");
+            throw new IllegalArgumentException("입력값이 정수가 아닙니다.");
         }
     }
 
