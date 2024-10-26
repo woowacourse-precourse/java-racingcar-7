@@ -2,31 +2,17 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class ValidateCountTest extends NsTest {
+class ValidateCountTest {
 
-    @Test
-    void 예외_테스트_빈문자열() {
-        assertThatThrownBy(() -> ValidateCount.validateInputCount(""))
+    @DisplayName("빈 문자열이나 자연수가 아닌 값들이 들어오면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "-1", "0", "pobi"})
+    void 시도횟수_예외_테스트(String userCount) {
+        assertThatThrownBy(() -> ValidateCount.validateInputCount(userCount))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 예외_테스트_음수가들어온경우() {
-        assertThatThrownBy(() -> ValidateCount.validateInputCount("-1"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 예외_테스트_자연수가아닌값() {
-        assertThatThrownBy(() -> ValidateCount.validateInputCount("a"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Override
-    protected void runMain() {
-
     }
 }
