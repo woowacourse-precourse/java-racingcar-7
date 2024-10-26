@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_횟수_아무것도_입력_안함() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,java1", ""))
+                assertThatThrownBy(() -> runException("pobi,java1", "", ""))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }

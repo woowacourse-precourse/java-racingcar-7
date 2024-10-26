@@ -1,5 +1,8 @@
 package util;
 
+import static validator.CarNameValidator.validateInputCars;
+import static validator.RepeatCountValidator.validateInputRepeatCount;
+
 import dto.RacingInput;
 import dto.RacingParam;
 import java.util.ArrayList;
@@ -8,14 +11,14 @@ import repository.CarRepository;
 
 public class Extractor {
 
-    public static ArrayList<String> extractCarList(String input) {
+    private static ArrayList<String> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
-        Validator.validateInputDate(inputCars);
+        validateInputCars(inputCars);
         return inputCars;
     }
 
-    public static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
+    private static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String inputCar : inputCars) {
             cars.add(new Car(inputCar));
@@ -52,9 +55,14 @@ public class Extractor {
         return forwardStatus;
     }
 
+    private static int extractRepeatCount(String inputRepeatCount) {
+        validateInputRepeatCount(inputRepeatCount);
+        return Integer.parseInt(inputRepeatCount);
+    }
+
     public static RacingParam parseInput(RacingInput input) {
         ArrayList<Car> inputCars = converToCarArrayList(extractCarList(input.cars()));
-        int inputRepeatCount = Integer.parseInt(input.repeatCount());
+        int inputRepeatCount = extractRepeatCount(input.repeatCount());
         return new RacingParam(inputCars, inputRepeatCount);
     }
 }

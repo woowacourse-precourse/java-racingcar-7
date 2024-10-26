@@ -1,12 +1,12 @@
-package util;
+package validator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class Validator {
+public class CarNameValidator {
 
-    public static void validateInputDate(ArrayList<String> inputCars) {
+    public static void validateInputCars(ArrayList<String> inputCars) {
         for (String car : inputCars) {
             isCarNameLongerThanFive(car);
             containBlank(car);
