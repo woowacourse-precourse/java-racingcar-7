@@ -66,4 +66,24 @@ public class RacingCarServiceTest {
         // then
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    public void 우승자_판별_테스트() {
+        // given
+        RacingCarService service = new RacingCarService();
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi"));
+        cars.add(new Car("woni"));
+        cars.add(new Car("jun"));
+
+        cars.get(0).move();
+
+        // when
+        List<Car> winners = service.determineWinners();
+
+        // then
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.get(0).getName()).isEqualTo("pobi");
+    }
+
 }
