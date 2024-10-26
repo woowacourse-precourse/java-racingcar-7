@@ -10,6 +10,16 @@ public class GameController {
         String carNamesInput = Console.readLine();
         List<String> carNames = Arrays.stream(carNamesInput.split(",")).toList();
         validateCarNames(carNames);
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryCount = Integer.parseInt(Console.readLine());
+        validateTryCount(tryCount);
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount < 1) {
+            throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+        }
     }
 
     private void validateCarNames(List<String> carNames) {
