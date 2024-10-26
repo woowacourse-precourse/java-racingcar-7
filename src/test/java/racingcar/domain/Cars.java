@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -11,6 +12,13 @@ public class Cars {
 
     public void moveAll() {
         cars.forEach(Car::move);
+    }
+
+    private List<Car> findWinners() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
     }
 
     private int getMaxPosition() {
