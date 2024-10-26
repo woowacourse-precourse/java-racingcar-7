@@ -3,18 +3,18 @@ package controller;
 import factory.CarFactory;
 import java.util.List;
 import model.Car;
-import view.InputHandler;
+import view.InputView;
 import view.OutputHandler;
 
 public class MainController {
-    private final InputHandler inputHandler;
+    private final InputView inputView;
     private final OutputHandler outputHandler;
     private final CarFactory carFactory;
     private final RacingCarService racingCarService;
 
-    public MainController(InputHandler inputHandler, OutputHandler outputHandler, CarFactory carFactory,
+    public MainController(InputView inputView, OutputHandler outputHandler, CarFactory carFactory,
                           RacingCarService racingCarService) {
-        this.inputHandler = inputHandler;
+        this.inputView = inputView;
         this.outputHandler = outputHandler;
         this.carFactory = carFactory;
         this.racingCarService = racingCarService;
@@ -23,9 +23,9 @@ public class MainController {
     public void run() {
         // 흐름 제어 로직
         outputHandler.printGuide();
-        List<String> carNames = inputHandler.getCarNames();
+        List<String> carNames = inputView.getCarNames();
         outputHandler.printAttemptPrompt();
-        int attempt = inputHandler.getAttemptCount();
+        int attempt = inputView.getAttemptCount();
         List<Car> cars = carFactory.createCars(carNames);
 
         racingCarService.gameStart(cars, attempt);
