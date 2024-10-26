@@ -20,7 +20,7 @@ public class GameController {
         OutputView.printInputRoundMessage();
 
         String round = InputView.readInput();
-        roundCount = Integer.parseInt(round);
+        roundCount = InputValidator.validateRound(round);
 
         Game game = new Game(carNames);
         run(game);
