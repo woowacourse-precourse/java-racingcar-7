@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
+import racingcar.domain.CarRacing;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.RoundValidator;
 import racingcar.view.InputView;
@@ -10,7 +12,7 @@ public class InputController {
 
     public static final String DELIMITER = ",";
 
-    public static List<String> setCars() {
+    public static CarRacing setCars() {
         String cars = InputView.inputCar();
 
         List<String> carList = List.of(cars.split(DELIMITER));
@@ -21,7 +23,7 @@ public class InputController {
         check.nameLength(carList);
         check.nameOverlap(carList);
 
-        return carList;
+        return new CarRacing(carList);
     }
 
     public static int setRound() {
