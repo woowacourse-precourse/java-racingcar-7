@@ -1,7 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -33,5 +35,19 @@ class CarsTest {
 
         //then
         Assertions.assertThat(cars.getCars().get(0).getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    void 이동거리가_가장_많은_우승자를_반환한다() {
+        //given
+        List<String> names = List.of("pobi", "woni", "jun");
+        Cars cars = new Cars(names);
+
+        //when
+        cars.goOrStop(() -> 5);
+        final List<Car> winners = cars.findWinners();
+
+        //then
+        Assertions.assertThat(winners).hasSize(names.size());
     }
 }

@@ -29,4 +29,15 @@ public class Cars {
                 .map(car -> new Car(car.getName(), car.getDistance()))
                 .collect(Collectors.toList());
     }
+
+    public List<Car> findWinners() {
+        final int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
 }
