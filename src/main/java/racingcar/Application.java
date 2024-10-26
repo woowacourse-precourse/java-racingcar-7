@@ -23,21 +23,9 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        // 스캐너 생성
-        Scanner scanner = new Scanner(System.in);
-
-        // 자동차 이름을 출력
-        System.out.println("자동차들: ");
-        String input = scanner.nextLine();
-
-        // 자동차 이름을 ','를 기준으로 나누어 리스트에 저장
-        List<String> carNames = List.of(input.split(","));
-        
-        System.out.println(carNames);
-        // 라운드 출력
-        System.out.println("라운드: ");
-        int round = scanner.nextInt();
-
+        // scanner
+        List<String> carNames = Input.inputCarNames();
+        int round = Input.inputRound();
         
         RacingGame racingGame = new RacingGame(carNames);    
         // 레이싱 게임 생성 및 플레이

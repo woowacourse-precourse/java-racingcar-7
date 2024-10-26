@@ -15,11 +15,11 @@ class RacingGame {
     }
 
     public void play() {
-        playRound();
+        moveCar();
         showResult();
     }
 
-    private void playRound() {
+    private void moveCar() {
         for (Car car : cars) {
             car.move();
         }
