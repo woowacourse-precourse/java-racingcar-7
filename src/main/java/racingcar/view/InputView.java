@@ -8,6 +8,10 @@ public class InputView {
     }
 
     public static int inputMoveCount() {
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 자연수만 가능합니다.");
+        }
     }
 }
