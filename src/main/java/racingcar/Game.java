@@ -28,7 +28,7 @@ public class Game {
     }
 
     private void play(int attempts) {
-        view.printResultPrompt();
+        view.printResultHeader();
         for (int i = 0; i < attempts; i++) {
             playSingleRound();
         }

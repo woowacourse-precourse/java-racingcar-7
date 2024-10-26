@@ -20,7 +20,7 @@ public class View {
         System.out.println(PROMPT_ATTEMPTS);
     }
 
-    public void printResultPrompt() {
+    public void printResultHeader() {
         System.out.println(RESULT_HEADER);
     }
 
