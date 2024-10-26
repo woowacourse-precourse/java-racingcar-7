@@ -12,6 +12,11 @@ public class RoundStatus {
     ) {
         this.round = round;
         this.carStatusList = carStatusList;
+
+        var testRecord = new CarStatusRecord("a", 1, 1);
+        testRecord.name();
+        testRecord.round();
+        testRecord.position();
     }
 
     public int getRound() {
