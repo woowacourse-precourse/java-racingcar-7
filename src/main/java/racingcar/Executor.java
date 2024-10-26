@@ -16,4 +16,10 @@ public class Executor {
         this.parser = parser;
         this.validator = validator;
     }
+
+    private void saveCarsByName(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+    }
 }
