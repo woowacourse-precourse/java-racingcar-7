@@ -27,4 +27,10 @@ public class Cars {
                 .max(Integer::compareTo)
                 .orElse(0);
     }
+
+    public List<Car> findWinner(int maxPosition) {
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
 }
