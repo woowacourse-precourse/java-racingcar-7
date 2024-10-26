@@ -13,16 +13,10 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int repeatCount = Integer.parseInt(Console.readLine());
 
-        if(carNames.endsWith(",") || carNames.isEmpty() || repeatCount <= 0) {
-            throw new IllegalArgumentException();
-        }
+        inputValidate(carNames, repeatCount);
 
-        StringTokenizer st = new StringTokenizer(carNames, ",");
         List<Car> carList = new ArrayList<>();
         for (final String carName : carNames.split(",")) {
-            if(carName.length() > 5 || carName.isBlank()) {
-                throw new IllegalArgumentException();
-            }
             carList.add(new Car(carName));
         }
 
@@ -48,5 +42,17 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + winners.substring(0, winners.length() - 1));
+    }
+
+    public static void inputValidate(String carNames, int repeatCount) {
+        if(carNames.endsWith(",") || carNames.isEmpty() || repeatCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        for (final String carName : carNames.split(",")) {
+            if(carName.length() > 5 || carName.isBlank()) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
