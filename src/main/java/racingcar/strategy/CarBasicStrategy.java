@@ -9,11 +9,11 @@ import racingcar.service.car.exception.CarException;
  * @author : jiffyin7@gmail.com
  * @since : 24. 10. 25.
  */
-public class CarDefaultStrategy implements CarStrategy{
+public class CarBasicStrategy implements CarStrategy{
   private static final String DELIMITER = ",";
   private static final int MAXIMUM_NAME_LENGTH = 5;
 
-  private void CarDefaultFactory(){
+  private void CarBasicFactory(){
 
   }
 
