@@ -18,6 +18,24 @@ public class User {
         return carList;
     }
 
+    public int grantMoves() {
+        int moves;
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        try {
+            moves = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력해주세요. ");
+        }
+
+        moveValidate(moves);
+        tooManyMovesValidate(moves);
+
+        Console.close();
+
+        return moves;
+    }
+
     private List<String> inputCarName() {
         List<String> cars = new ArrayList<>();
 
@@ -39,23 +57,7 @@ public class User {
         return cars;
     }
 
-    public int grantMoves() {
-        int moves;
-        System.out.println("시도할 횟수는 몇 회인가요?");
 
-        try {
-            moves = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수를 입력해주세요. ");
-        }
-
-        moveValidate(moves);
-        tooManyMovesValidate(moves);
-
-        Console.close();
-
-        return moves;
-    }
 
     private String inputValidate(String string) {
         string = string.trim();
