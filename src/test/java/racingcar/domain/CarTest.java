@@ -24,7 +24,7 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 생성 시 초기 위치는 0이어야 한다.")
-    void Given_CarIsCreated_When_CheckingInitialPosition_Then_PositionShouldBeZero() {
+    void positionShouldBeZeroWhenCreateCar() {
         String position = car.displayPosition();
 
         assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER);
@@ -32,7 +32,7 @@ public class CarTest {
 
     @RepeatedTest(10)
     @DisplayName("자동차가 이동할 조건이 충족되면 위치가 증가해야 한다.")
-    void Given_CarMove_When_CheckingPosition_Then_PositionShouldIncrease() {
+    void increasePositionWhenCarMoved() {
         car.move();
 
         String position = car.displayPosition();
@@ -44,7 +44,7 @@ public class CarTest {
 
     @RepeatedTest(10)
     @DisplayName("자동차가 여러 번 이동하면 그에 따른 위치를 출력해야 한다.")
-    void Given_CarMovesMultipleTimes_When_CheckingPosition_Then_PositionShouldReflectMoves() {
+    void printPositionWhenCarHasMultipleMoves() {
         for (int i = 0; i < MOVE_LENGTH; i++) {
             car.move();
         }
