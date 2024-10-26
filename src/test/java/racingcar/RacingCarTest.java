@@ -7,9 +7,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RandomGenerator;
@@ -162,5 +164,20 @@ public class RacingCarTest {
         OutputView.printWinnersOutput(winners.getWinnersList());
 
         assertThat(out.toString().trim()).isEqualTo("최종 우승자 : car1, car2");
+    }
+
+    @ParameterizedTest
+    @MethodSource("stringSeparatorArguments")
+    void 문자열_분리_테스트(String input, String[] expected) {
+        assertThat(separate(input)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> stringSeparatorArguments() {
+        return Stream.of(
+                Arguments.of("a,b,c", new String[]{"a", "b", "c"}),
+                Arguments.of("a,b,c,", new String[]{"a", "b", "c", ""}),
+                Arguments.of(",a,b,c", new String[]{"", "a", "b", "c"}),
+                Arguments.of("a,,c", new String[]{"a", "", "c"})
+        );
     }
 }
