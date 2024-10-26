@@ -16,7 +16,7 @@ public class Car {
     public static Car from(final String name) {
         validateLength(name);
         validateEmpty(name);
-        return new Car(name);
+        return new Car(name.trim());
     }
 
     private static void validateLength(final String name) {
