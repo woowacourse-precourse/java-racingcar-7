@@ -30,6 +30,10 @@ public class RaceManager {
     public void announceRaceResult(){
         findWinningPosition();
         findWinningCarsNames();
+        showWinners();
+    }
+
+    private void showWinners() {
         OutputView.printWinner(winnersName);
     }
 
