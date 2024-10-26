@@ -15,4 +15,11 @@ public class Input {
 			.toList();
 	}
 
+	public static int readTurn(){
+		String turn = Console.readLine();
+
+		// 숫자 아닌 경웅 예외처리 필요.
+
+		return Integer.parseInt(turn);
+	}
 }
