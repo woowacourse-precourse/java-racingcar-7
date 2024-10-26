@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private final Cars cars;
@@ -14,17 +15,25 @@ public class OutputView {
         this.cars = cars;
     }
 
-    public void printProgress() {
-        cars.getCars().stream()
+    public String generateProgress() {
+        return cars.getCars().stream()
                 .map(car -> String.format(PROGRESS_FORMAT, car.getName(), makeDashLine(car.getPosition())))
-                .forEach(System.out::println);
+                .collect(Collectors.joining("\n"));
     }
 
-    public void printResult() {
+    public void printProgress() {
+        System.out.println(generateProgress());
+    }
+
+    public String generateWinners() {
         List<Car> winners = cars.findWinners();
         String formattedString = String.join(", ", winners.stream().map(Car::getName).toList());
 
-        System.out.printf((RESULT_FORMAT) + "%n", formattedString);
+        return String.format(RESULT_FORMAT, formattedString);
+    }
+
+    public void printWinners() {
+        System.out.println(generateWinners());
     }
 
     private String makeDashLine(int position) {
