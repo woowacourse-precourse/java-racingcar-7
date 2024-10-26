@@ -16,13 +16,16 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
+    public void showResultComment() {
+        System.out.println("실행 결과");
+    }
+
+    @Override
     public void showRaceResults(List<Car> cars) {
         System.out.println();
-        System.out.println("실행 결과");
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + car.getWin());
+            System.out.println(car.getName() + " : " + car.getMileageDisplay());
         }
-        System.out.println();
     }
 
     @Override

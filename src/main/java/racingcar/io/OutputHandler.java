@@ -9,6 +9,8 @@ public interface OutputHandler {
 
     void showRacingCarNumberComment();
 
+    void showResultComment();
+
     void showRaceResults(List<Car> cars);
 
     void showRaceWinner(List<String> winners);

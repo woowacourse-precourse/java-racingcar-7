@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 public class Car {
 
+    private static final String MILEAGE_SYMBOL = "-";
+
     private final String name;
     private int mileage;
-    private String win;
 
     private Car(String name) {
         this.name = name;
         this.mileage = 0;
-        this.win = "";
     }
 
     private static Car of(String name) {
@@ -26,34 +26,27 @@ public class Car {
                 .collect(Collectors.toList());
     }
 
-    public static int findMaxMileage(List<Car> cars) {
-        return cars.stream()
-                .mapToInt(car -> car.mileage)
-                .max()
-                .orElse(0);
-    }
-
-    public boolean hasMaxMileage(int maxMileage) {
+    public boolean matchesMaxMileage(int maxMileage) {
         return mileage == maxMileage;
     }
 
     public void drive() {
         int drive = Randoms.pickNumberInRange(0, 9);
         if (drive >= 4) {
-            this.mileage += 1;
+            mileage += 1;
         }
     }
 
+    public String getMileageDisplay() {
+        return MILEAGE_SYMBOL.repeat(Math.max(0, mileage));
+    }
+
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public String getWin() {
-        return this.win;
-    }
-
-    public void updateWin() {
-        this.win += "-";
+    public int getMileage() {
+        return mileage;
     }
 
 }

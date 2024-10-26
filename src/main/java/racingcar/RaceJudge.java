@@ -15,27 +15,24 @@ public class RaceJudge {
         return new RaceJudge(cars);
     }
 
-    public void determineWinners() {
-        int maxMileage = Car.findMaxMileage(cars);
-
-        for (Car car : cars) {
-            if (car.hasMaxMileage(maxMileage)) {
-                car.updateWin();
-            }
-        }
-    }
-
     public List<String> findFinalWinner() {
         List<String> winners = new ArrayList<>();
 
-        int maxMileage = Car.findMaxMileage(cars);
+        int maxMileage = findMaxMileage();
 
         for (Car car : cars) {
-            if (car.hasMaxMileage(maxMileage)) {
+            if (car.matchesMaxMileage(maxMileage)) {
                 winners.add(car.getName());
             }
         }
         return winners;
+    }
+
+    private int findMaxMileage() {
+        return cars.stream()
+                .mapToInt(Car::getMileage)
+                .max()
+                .orElse(0);
     }
 
 }
