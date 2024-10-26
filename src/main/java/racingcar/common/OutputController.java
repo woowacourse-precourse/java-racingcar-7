@@ -1,4 +1,4 @@
-package racingcar.presentation;
+package racingcar.common;
 
 public class OutputController {
     public static void printCarNamePromptMessage(){
