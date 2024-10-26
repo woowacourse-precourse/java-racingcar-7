@@ -31,5 +31,8 @@ public class Constants {
     public static final String ERROR_TOO_HIGH_ATTEMPTS = "시도 횟수는 100이하여야 합니다.";
 
     //GameLogic
+    public static final int THRESHOLD = 4;
+    public static final String MOVE_INDICATOR = "-";
+
     public static final String ERROR_RESULT_MAP_NOT_INITIALIZED = "결과 Map의 초기 세팅이 이루어지지 않았습니다.";
 }

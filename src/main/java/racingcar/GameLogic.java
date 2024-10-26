@@ -24,8 +24,8 @@ public class GameLogic {
         checkInitialized();
         for (String carName : result.keySet()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
-                result.put(carName, result.get(carName).append("-"));
+            if (randomNumber >= THRESHOLD) {
+                result.put(carName, result.get(carName).append(MOVE_INDICATOR));
             }
         }
         return result;
