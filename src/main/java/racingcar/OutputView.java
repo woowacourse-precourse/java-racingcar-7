@@ -8,6 +8,7 @@ public class OutputView {
         for (RacingCar racingCar : racingCars) {
             printResultMessage(racingCar.getName(), racingCar.getScore());
         }
+        System.out.println();
     }
 
     void printResultMessage(String name, Integer number) {
