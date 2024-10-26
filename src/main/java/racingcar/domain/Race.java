@@ -29,10 +29,13 @@ public class Race {
 
     public String displayRacingProgress() {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < attemptCount; i++) {
+
+        for (int i = 0; i < attemptCount-1; i++) {
             extractPosition(result);
             result.append(NEW_LINE);
         }
+        extractPosition(result);
+
         return result.toString();
     }
 
