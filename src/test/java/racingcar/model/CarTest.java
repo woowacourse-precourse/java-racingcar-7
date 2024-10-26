@@ -17,4 +17,12 @@ class CarTest {
                 .contains("four", "fivee");
     }
 
+    @Test
+    @DisplayName("자동차 이름이 5글자 초과인 경우 IllegalException 반환")
+    void 이름_수_제한_초과_테스트() {
+        Assertions.assertThatThrownBy(() -> {
+            car.splitByDelimiter("forky,eundeang");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
