@@ -41,6 +41,10 @@ public class Car {
         return distance.max(maxDistance);
     }
 
+    public boolean isSameDistance(int distanceValue) {
+        return distance.isSameDistance(distanceValue);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

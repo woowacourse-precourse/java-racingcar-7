@@ -6,6 +6,7 @@ public class Race {
     private final int tryCount;
     private final Cars cars;
     private int maxDistance;
+    private WinnerCars winnerCars;
 
     public Race(String inputTryCount, Cars cars) {
         this.tryCount = convertToInt(inputTryCount);
@@ -37,6 +38,10 @@ public class Race {
 
     public void getMaxDistance() {
         this.maxDistance = cars.getMaxDistance();
+    }
+
+    public void getWinnerCars() {
+        this.winnerCars = cars.getWinnerCars(this.maxDistance);
     }
 
 }

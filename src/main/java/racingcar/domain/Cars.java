@@ -41,6 +41,22 @@ public class Cars {
         }
     }
 
+    public int getMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = car.max(maxDistance);
+        }
+        return maxDistance;
+    }
+
+    public WinnerCars getWinnerCars(int maxDistance) {
+        WinnerCars winnerCars = new WinnerCars();
+        for (Car car : cars) {
+            winnerCars.addWinner(car, maxDistance);
+        }
+        return winnerCars;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,14 +72,6 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    public int getMaxDistance() {
-        int maxDistance = 0;
-        for (Car car : cars) {
-            maxDistance = car.max(maxDistance);
-        }
-        return maxDistance;
     }
 }
 

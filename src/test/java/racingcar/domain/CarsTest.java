@@ -22,4 +22,14 @@ class CarsTest {
                 new Car("jun", new Distance(4))));
         assertThat(cars.getMaxDistance()).isEqualTo(5);
     }
+
+    @DisplayName("우승자 구하기")
+    @Test
+    void 우승자_구하기() {
+        Cars cars = new Cars(Arrays.asList(new Car("pobi", new Distance(5))
+                , new Car("woni", new Distance(5)),
+                new Car("jun", new Distance(4))));
+        assertThat(cars.getWinnerCars(5)).isEqualTo(new WinnerCars(Arrays.asList(new Car("pobi", new Distance(5))
+                , new Car("woni", new Distance(5)))));
+    }
 }
