@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserView {
@@ -31,6 +33,13 @@ public class UserView {
         playertResult.append(" : ");
         playertResult.append("-".repeat(count));
         System.out.println(playertResult);
+    }
+
+    public static void printWinner(ArrayList<String> winners){
+        System.out.print("최종 우승자 : ");
+        for (String winner: winners){
+            System.out.print(winner);
+        }
     }
 
     public static void changeLine(){
