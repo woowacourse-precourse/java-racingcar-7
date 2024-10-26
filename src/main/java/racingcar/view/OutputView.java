@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private final int startIndex = 0;
@@ -7,13 +9,10 @@ public class OutputView {
         System.out.printf("최종 우승자 : %s\n", winner);
     }
 
-    public void printCarsMove(String carName, int position){
-        System.out.printf("%s : ");
-
-        for(int i = startIndex; i < position; i++){
-            System.out.printf("-");
+    public void printCarsMove(List<String> carDetailList){
+        for(int i = startIndex; i < carDetailList.size(); i++){
+            System.out.println(carDetailList);
         }
-        System.out.println();
-
     }
+
 }
