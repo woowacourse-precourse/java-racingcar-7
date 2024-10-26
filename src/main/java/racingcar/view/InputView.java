@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.Car;
 import racingcar.util.UserInputUtil;
+import racingcar.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,10 @@ public class InputView {
         List<Car> cars = new ArrayList<>();
         String names = Console.readLine();
 
-        List<String> nameList = UserInputUtil.splitNames(names);
-        //TODO: 이름 검증 로직 추가
+        List<String> nameList = UserInputUtil.splitCarNames(names);
 
         for(String name: nameList) {
+            Validator.validateCarName(name);
             cars.add(new Car(name));
         }
         return cars;
