@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 class ConsoleReaderTest {
     private final InputStream initialInput = System.in;
     @AfterEach
-    void resetInput(){
+    void reset(){
         Console.close();
         System.setIn(initialInput);
     }
@@ -40,6 +40,24 @@ class ConsoleReaderTest {
             String input = "abcdefg";
             System.setIn(new ByteArrayInputStream(input.getBytes()));
             ConsoleReader.readName();
+        });
+    }
+
+    @Test
+    void 경기횟수가_숫자가_아닌지_검증한다(){
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            String input = "11a";
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
+            ConsoleReader.readNum();
+        });
+    }
+
+    @Test
+    void 경기횟수가_빈_문자열인지_검증한다(){
+        Assertions.assertThrows(IllegalArgumentException.class, ()->{
+            String input = "\n";
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
+            ConsoleReader.readNum();
         });
     }
 }
