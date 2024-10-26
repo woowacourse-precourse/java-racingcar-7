@@ -18,15 +18,15 @@ public class Application {
         String cars = Read.read();
 
         // 빈 문자열일 경우 예외 발생 시키기
-        Validation.isnull(cars);
+        Validation.isNull(cars);
 
         // 입력 받은 문자열 쉼표 기준으로 나누기
-        String [] carArray = Split.splitbycomma(cars);
+        String [] carArray = Split.splitByComma(cars);
 
         // 각 자동차 이름이 유효한지 확인
         for (String car : carArray) {
-            Validation.isnull(car);
-            Validation.lengthover5(car);
+            Validation.isNull(car);
+            Validation.lengthOver5(car);
         }
 
         // 시도 횟수 입력 요청 문자열 출력
@@ -45,5 +45,6 @@ public class Application {
         for (String car : carArray) {
             race.put(car, 0);
         }
+
     }
 }

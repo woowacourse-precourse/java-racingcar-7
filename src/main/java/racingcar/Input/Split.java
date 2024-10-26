@@ -1,7 +1,7 @@
 package racingcar.Input;
 
 public class Split {
-    public static String[] splitbycomma (String target) {
+    public static String[] splitByComma(String target) {
         String [] arr = target.split(",");
         return arr;
     }
