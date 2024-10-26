@@ -8,10 +8,11 @@ public class Util {
     public static boolean isValidRoundNumber(String roundNumber) {
         try {
             Integer.parseInt(roundNumber);
-            return true;
+            return Integer.parseInt(roundNumber) > 0;
         } catch (NumberFormatException e) {
             return false;
         }
+
     }
 
     public static boolean isValidCarNamesInput(String carNames) {
