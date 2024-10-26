@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Result {
     private final Round round;
-    private final Records records;
+    private final RoundRecords roundRecords;
 
     public Result(int round) {
         this.round = new Round(round);
-        this.records = new Records();
+        this.roundRecords = new RoundRecords();
     }
 
     public void addRecord(RoundRecord record) {
-        this.records.addRecord(record);
+        this.roundRecords.addRecord(record);
     }
 
     public int getRound() {
@@ -20,6 +20,6 @@ public class Result {
     }
 
     public List<RoundRecord> getRecords() {
-        return records.getRecords();
+        return roundRecords.getRecords();
     }
 }

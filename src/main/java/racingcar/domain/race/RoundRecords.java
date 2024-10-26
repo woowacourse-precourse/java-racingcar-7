@@ -3,10 +3,10 @@ package racingcar.domain.race;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Records {
+public class RoundRecords {
     private final List<RoundRecord> records;
 
-    public Records() {
+    public RoundRecords() {
         this.records = new ArrayList<>();
     }
 
