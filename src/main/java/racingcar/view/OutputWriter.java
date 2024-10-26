@@ -23,4 +23,9 @@ public class OutputWriter {
         }
         System.out.println();
     }
+
+    public void printWinnerNames(Set<String> winnerName) {
+        String winnerNames = String.join(", ", winnerName);
+        System.out.print("최종 우승자 : " + winnerNames);
+    }
 }

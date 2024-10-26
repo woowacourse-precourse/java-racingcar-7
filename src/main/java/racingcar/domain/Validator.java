@@ -51,8 +51,8 @@ public class Validator {
         }
     }
 
-    public void checkHasWinners(int maxScore) {
-        if (maxScore == 0) {
+    public void checkHasWinners(int maxScore, Set<String> winnerName) {
+        if (maxScore == 0 || winnerName.isEmpty()) {
             throw new IllegalArgumentException("우승자가 존재하지 않습니다. 다시 레이싱을 진행해주세요");
         }
     }

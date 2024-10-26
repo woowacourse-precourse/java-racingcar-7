@@ -29,5 +29,6 @@ public class RacingController {
         racing.executeRace(racingCars, racingCount);
 
         Set<String> WinnerName = racing.determineWinners(racingCars);
+        outputWriter.printWinnerNames(WinnerName);
     }
 }

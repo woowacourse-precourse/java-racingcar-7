@@ -64,7 +64,7 @@ public class Racing {
             }
         }
 
-        validator.checkHasWinners(maxScore);
+        validator.checkHasWinners(maxScore, WinnerName);
 
         return WinnerName;
     }
