@@ -6,7 +6,10 @@ import static racingcar.exception.ExceptionMessage.USER_INPUT_NOT_NULL;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.CarCreator;
 import racingcar.domain.CarManager;
+import racingcar.domain.InputParser;
+import racingcar.domain.Racing;
 import racingcar.utils.RandomNumber;
 
 
@@ -15,18 +18,31 @@ public class RacingService {
     private static final String CHECK_NUMBER_REGEX = "\\d+";
 
     private CarManager carManager;
+    private final Racing racing;
+    private final RandomNumber randomNumber;
 
-    public RacingService(CarManager carManager){
-        this.carManager = carManager;
+    public RacingService( Racing racing, RandomNumber randomNumber){
+        this.racing = racing;
+        this.randomNumber = randomNumber;
     }
 
-    public List<Car> startRacingOnce(RandomNumber randomNumber) {
+    public void setUpRacing(String userInput) {
+        List<Car> cars = CarCreator.createCars(InputParser.parserCarNames(userInput));
+        this.carManager = new CarManager(cars);
+    }
+
+    public List<Car> startRacingOnce() {
         List<Car> cars = carManager.getCars();
         for (Car car : cars) {
             car.move(randomNumber.generate());
         }
         return cars;
     }
+
+    public String getWinners() {
+        return racing.findWinner(carManager.getCars());
+    }
+
 
     public String getValidatedStringInput(String userStringInput) {
         verifyUserInput(userStringInput);
