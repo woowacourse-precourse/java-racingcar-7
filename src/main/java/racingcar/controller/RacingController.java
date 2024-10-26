@@ -3,7 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.service.CarNameParser;
-import racingcar.service.RacingService;
+import racingcar.service.RacingRunSercie;
 import racingcar.service.TimesParser;
 import racingcar.service.WinnerService;
 import racingcar.service.validation.CarNamesValidation;
@@ -32,7 +32,7 @@ public class RacingController {
         OutputView.racingResult();
 
         for (int i = 0; i< times; i++){
-            RacingService.doRacing(cars);
+            RacingRunSercie.doRacing(cars);
             OutputView.newLine();
         }
     }
