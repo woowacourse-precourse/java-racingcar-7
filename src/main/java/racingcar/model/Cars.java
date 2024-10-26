@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,5 +25,22 @@ public class Cars {
             }
         }
         return cars;
+    }
+
+    public static List<String> findWinner(){
+        List<String> winnerList = new ArrayList<>();
+        int max = 0;
+        for(String key : cars.keySet()){
+            if(cars.get(key).length() > max){
+                max = cars.get(key).length();
+                winnerList = new ArrayList<>();
+                winnerList.add(key);
+                continue;
+            }
+            if(cars.get(key).length() == max){
+                winnerList.add(key);
+            }
+        }
+        return winnerList;
     }
 }
