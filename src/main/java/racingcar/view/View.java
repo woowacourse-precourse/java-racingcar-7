@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import static racingcar.constant.SymbolType.RESULT_DELIMITER;
+import static racingcar.constant.SymbolType.RESULT_POSITION;
+import static racingcar.constant.SymbolType.RESULT_TOKEN;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,14 +33,15 @@ public final class View {
     public static void showResult(List<Car> cars) {
         System.out.println(RESULT_MESSAGE);
         cars.forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getLocation()));
+            System.out.println(
+                    car.getName() + RESULT_TOKEN.getSymbol() + RESULT_POSITION.getSymbol().repeat(car.getLocation()));
         });
         System.out.println();
     }
 
     public static void showFinalResult(List<Car> cars) {
         System.out.print(FINAL_RESULT_MESSAGE);
-        String winners = cars.stream().map(Car::getName).collect(Collectors.joining(","));
+        String winners = cars.stream().map(Car::getName).collect(Collectors.joining(RESULT_DELIMITER.getSymbol()));
         System.out.println(winners);
     }
 }
