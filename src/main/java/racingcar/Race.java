@@ -1,13 +1,43 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Race {
 
     public void raceStart(String[] names, String count) {
         int tryCount = Integer.parseInt(count);
         checkInput(names, tryCount);
+
+        Map<String, Integer> raceMap = new HashMap<>();
+        for (String name : names) {
+            raceMap.put(name, 0);
+        }
+
+        for (int i = 0; i < tryCount; i++) {
+            moveCar(raceMap);
+        }
     }
 
-    // ============= 편의 메서드 =============
+    private void moveCar(Map<String, Integer> raceMap) {
+        for (Map.Entry<String, Integer> entry : raceMap.entrySet()) {
+            if (isMoving()) {
+                raceMap.put(entry.getKey(), entry.getValue() + 1);
+            }
+        }
+    }
+
+    private boolean isMoving() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            return true;
+        }
+        return false;
+    }
+
+    // ============= 입력값 검증 메서드 =============
 
     private void checkInput(String[] names, int count) {
         for (String name : names) {
