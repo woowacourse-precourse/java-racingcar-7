@@ -1,21 +1,21 @@
 package racingcar.validator;
 
 
-import racingcar.validator.strategies.trycount.NotNullOrEmptyTryCountValidator;
-import racingcar.validator.strategies.trycount.PositiveIntegerValidator;
+import racingcar.validator.strategies.trycount.TryCountNotNullOrEmptyValidator;
+import racingcar.validator.strategies.trycount.TryCountPositiveIntegerValidator;
 
 public class TryCountValidator {
-    private final NotNullOrEmptyTryCountValidator notNullOrEmptyValidator;
-    private final PositiveIntegerValidator positiveIntegerValidator;
+    private final TryCountNotNullOrEmptyValidator notNullOrEmptyValidator;
+    private final TryCountPositiveIntegerValidator tryCountPositiveIntegerValidator;
 
     public TryCountValidator() {
-        this.notNullOrEmptyValidator = new NotNullOrEmptyTryCountValidator();
-        this.positiveIntegerValidator = new PositiveIntegerValidator();
+        this.notNullOrEmptyValidator = new TryCountNotNullOrEmptyValidator();
+        this.tryCountPositiveIntegerValidator = new TryCountPositiveIntegerValidator();
     }
 
     public void validate(String tryCount) {
         notNullOrEmptyValidator.validate(tryCount);
-        positiveIntegerValidator.validate(tryCount);
+        tryCountPositiveIntegerValidator.validate(tryCount);
     }
 
 }

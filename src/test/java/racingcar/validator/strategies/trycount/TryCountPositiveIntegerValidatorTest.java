@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
-public class PositiveIntegerValidatorTest {
+public class TryCountPositiveIntegerValidatorTest {
 
-    private final PositiveIntegerValidator validator = new PositiveIntegerValidator();
+    private final TryCountPositiveIntegerValidator validator = new TryCountPositiveIntegerValidator();
 
 
     @Test

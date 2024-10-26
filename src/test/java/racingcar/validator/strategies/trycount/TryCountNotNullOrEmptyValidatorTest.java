@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
-public class NotNullOrEmptyTryCountValidatorTest {
+public class TryCountNotNullOrEmptyValidatorTest {
 
-    private final NotNullOrEmptyTryCountValidator validator = new NotNullOrEmptyTryCountValidator();
+    private final TryCountNotNullOrEmptyValidator validator = new TryCountNotNullOrEmptyValidator();
 
     @Test
     void validate_WhenValueIsNull_ShouldThrowException() {

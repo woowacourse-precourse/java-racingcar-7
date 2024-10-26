@@ -3,15 +3,15 @@ package racingcar.validator.strategies.trycount;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
-public class PositiveIntegerValidator implements ValidationStrategy<String> {
+public class TryCountPositiveIntegerValidator implements ValidationStrategy<String> {
 
     @Override
     public void validate(String value) {
-        int count = parseInteger(value);
-        checkIfPositive(count);
+        int count = parseTryCountToInteger(value);
+        validatePositive(count);
     }
 
-    private int parseInteger(String value) {
+    private int parseTryCountToInteger(String value) {
         try {
             return Integer.parseInt(value.trim());
         } catch (NumberFormatException e) {
@@ -19,7 +19,7 @@ public class PositiveIntegerValidator implements ValidationStrategy<String> {
         }
     }
 
-    private void checkIfPositive(int count) {
+    private void validatePositive(int count) {
         if (count <= 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
