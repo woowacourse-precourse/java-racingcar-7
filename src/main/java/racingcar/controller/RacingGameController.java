@@ -26,6 +26,7 @@ public class RacingGameController {
 
         List<RacingGameRoundResult> gameRoundResults = racingGameProgressService.executeRounds(cars, gameMaxRound);
         racingGameOutputView.printRacingRoundResultStartingMessage();
+        racingGameOutputView.printRoundResults(gameRoundResults);
 
     }
 }
