@@ -27,6 +27,9 @@ public class Application {
             }
             System.out.println("");
         }
-
+        int max = Arrays.stream(counts).max().getAsInt();
+        int[] max_indices = IntStream.range(0, counts.length).filter(i -> counts[i] == max).toArray();
+        String[] winners = IntStream.of(max_indices).mapToObj(i -> names[i]).toArray(String[]::new);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
