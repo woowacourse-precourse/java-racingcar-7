@@ -1,23 +1,14 @@
-package racingcar.service;
+package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
 import racingcar.dto.RacingRegisterForm;
-import racingcar.view.InputView;
 
-public class RegistrationService {
+public class RegistrarClerk {
 
     public static final String SEPARATOR = ",";
 
-    private final InputView inputView;
-
-    public RegistrationService() {
-        inputView = new InputView();
-    }
-
-    public RacingRegisterForm register() {
-        String inputCarNames = inputView.requestCarNames();
-        String inputRaceRoundCount = inputView.requestRaceRoundCount();
+    public RacingRegisterForm register(String inputCarNames, String inputRaceRoundCount) {
         List<String> carNames = convertCarNames(inputCarNames);
         int raceRoundCount = convertRaceRoundCount(inputRaceRoundCount);
         return new RacingRegisterForm(carNames, raceRoundCount);
