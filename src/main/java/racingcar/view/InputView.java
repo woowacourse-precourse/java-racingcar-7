@@ -11,6 +11,7 @@ public class InputView {
     private static final String EMPTY_ERROR = "[빈 값] 자동차 이름은 빈 값일 수 없습니다.";
     private static final String NAME_LENGTH_ERROR = "[길이 제한] 자동차 이름 길이는 %d를 넘을 수 없습니다.";
     private static final String TYPE_CASTING_ERROR = "[타입 변환] 숫자만 입력 가능합니다.";
+    private static final String NUMBER_SIGN_ERROR = "[양수 입력] 양수만 입력 가능합니다.";
 
     public List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -55,6 +56,13 @@ public class InputView {
             int n = Integer.parseInt(input);
         } catch (Exception e){
             throw new IllegalArgumentException(TYPE_CASTING_ERROR);
+        }
+    }
+
+    private void validatePositiveNumber(String input) {
+        int number = Integer.parseInt(input);
+        if(number <= 0) {
+            throw new IllegalArgumentException(NUMBER_SIGN_ERROR);
         }
     }
 }
