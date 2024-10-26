@@ -6,6 +6,7 @@ import racingcar.game.io.OutputHandler;
 import racingcar.game.model.AttemptCount;
 import racingcar.game.model.Car;
 import racingcar.game.model.RacingCars;
+import racingcar.game.model.Winners;
 
 public class RacingCarGame {
     private final OutputHandler outputHandler = new OutputHandler();
@@ -21,7 +22,7 @@ public class RacingCarGame {
         RacingCars racingCars = new RacingCars(cars);
         displayAccumulateForEachAttempt(attemptCount, racingCars);
 
-        List<Car> winners = racingCars.retrieveWinners();
+        Winners winners = racingCars.retrieveWinners();
 
         outputHandler.showWinners(winners);
     }

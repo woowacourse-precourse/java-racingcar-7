@@ -1,9 +1,9 @@
 package racingcar.game.io;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.game.model.Car;
 import racingcar.game.model.RacingCars;
+import racingcar.game.model.Winners;
 
 public class OutputHandler {
     private static final String CAR_NAMES_NAVIGATE_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -31,14 +31,12 @@ public class OutputHandler {
         System.out.println();
     }
 
-    public void showWinners(List<Car> winners) {
-        String formattedWinners = formatWinners(winners);
+    public void showWinners(Winners winners) {
+        String formattedWinners = formatWinners(winners.getNames());
         System.out.printf(WINNER_TEMPLATE + "\n", formattedWinners);
     }
 
-    private String formatWinners(List<Car> winners) {
-        return winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(WINNER_DELIMITER));
+    private String formatWinners(List<String> names) {
+        return String.join(WINNER_DELIMITER, names);
     }
 }

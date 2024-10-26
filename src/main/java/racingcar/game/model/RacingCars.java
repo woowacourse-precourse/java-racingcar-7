@@ -17,11 +17,13 @@ public class RacingCars {
         });
     }
 
-    public List<Car> retrieveWinners() {
+    public Winners retrieveWinners() {
         int maxMoveCount = findMaxMoveCount();
-        return cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.hasMoveCount(maxMoveCount))
                 .toList();
+
+        return new Winners(winners);
     }
 
     public List<Car> getParticipatingCars() {
