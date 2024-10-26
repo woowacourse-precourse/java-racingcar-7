@@ -3,8 +3,11 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
     private final String name;
+
     private int position;
+
 
     public Car(String name) {
         this.name = name;
@@ -12,9 +15,13 @@ public class Car {
     }
 
     public void move() {
-        if(Randoms.pickNumberInRange(0, 10) >= 4){  //무작위 값이 4 이상일때만 전진
+        if(canMove()){  //무작위 값이 4 이상일때만 전진
             position++;
         }
+    }
+
+    private boolean canMove(){
+        return Randoms.pickNumberInRange(0, 10) >= MOVE_THRESHOLD;
     }
 
     public String getName() {
