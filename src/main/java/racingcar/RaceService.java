@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceService {
-
+    private RaceView raceView = new RaceView();
     private List<CarVO> cars;
     private int round;
 
@@ -13,15 +13,16 @@ public class RaceService {
         round=userInputRound;
     }
 
-    public void raceing(){
+    public void raceing(int i){
         for (CarVO car : cars) {
             car.runing();
         }
+        raceView.raceState(cars,i);
     }
 
     public void roundStart(){
         for (int i=0;i<round;i++){
-            raceing();
+            raceing(i);
         }
     }
 

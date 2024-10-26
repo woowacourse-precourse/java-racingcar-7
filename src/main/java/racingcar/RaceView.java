@@ -7,27 +7,37 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class RaceView {
 
     public String[] userInputCarName(){
-        System.out.println("자동차 경주에 참가할 자동차 이름을 입력하시오.각 자동차는 쉼표로 구분하여 입력하여주세요.");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return readLine().split(",");
     }
 
     public int userInputRaceRound(){
-        System.out.println("자동차 경주 횟수를 입력해주세요.");
+        System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(readLine());
     }
 
-    public void raceState(List<CarVO> cars){
+    public void raceState(List<CarVO> cars,int i){
+        if(i==0){
+            System.out.println("");
+            System.out.println("실행 결과");
+        }
         for (CarVO car : cars) {
             System.out.println(car.toString());
         }
+        System.out.println("");
     }
 
     public void raceWinner(List<String> carsName){
         String result = "";
-        for (String carName : carsName) {
-            result += carName + ",";
+        for (int i = 0; i < carsName.size(); i++) {
+            if(i==carsName.size()-1){
+                result += carsName.get(i);
+            }else {
+                result += carsName.get(i) + ",";
+            }
         }
-        System.out.println(result);
+        System.out.println("최종 우승자 : "+result);
     }
+
 
 }
