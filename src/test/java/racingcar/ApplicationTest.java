@@ -15,6 +15,17 @@ class ApplicationTest extends NsTest {
   private static final int STOP = 3;
 
   @Test
+  @DisplayName("과제_실행예시")
+  void homeWorkExample() {
+
+    assertSimpleTest(() -> {
+      run("pobi,woni,jun","5");
+    });
+
+  }
+
+
+  @Test
   @DisplayName("자동차_빈문자열")
   void emptyCarString() {
     assertSimpleTest(() -> {
