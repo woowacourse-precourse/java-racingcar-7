@@ -20,4 +20,16 @@ public class RaceService {
             cars.add(new Car(name));
         }
     }
+
+    public void game(int count){
+        for(int i=0;i<count;i++){
+            race();
+        }
+    }
+
+    private void race() {
+        for (Car car : cars) {
+            car.run(Randoms.pickNumberInRange(0, 9));
+        }
+    }
 }

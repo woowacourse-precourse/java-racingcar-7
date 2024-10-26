@@ -16,4 +16,10 @@ public class Car {
     public Integer getScore() {
         return score;
     }
+
+    public void run(int number){
+        if(number >= 4){
+            score = score + 1;
+        }
+    }
 }
