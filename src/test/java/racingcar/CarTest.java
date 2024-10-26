@@ -34,8 +34,8 @@ class CarTest {
     @ParameterizedTest
     @MethodSource("wrongNameProvider")
     @DisplayName("자동차 이름 입력시 잘못된 이름이 있는 경우 예외처리 테스트")
-    void createCarsByNames(List<String> splitNames) {
-        Assertions.assertThatThrownBy(() -> Car.createCarsByNames(splitNames))
+    void createCarsByNamesFailTest(List<String> wrongNames) {
+        Assertions.assertThatThrownBy(() -> Car.createCarsByNames(wrongNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,8 +43,38 @@ class CarTest {
         return Stream.of(
                 Arguments.of(List.of("pobi","over5wordNames")),
                 Arguments.of(List.of("pobi","abc@#$")),
-                Arguments.of(List.of("pobi","sb  gk")),
+                Arguments.of(List.of("pobi","sb gk")),
                 Arguments.of(List.of("pobi","    ")),
                 Arguments.of(List.of("pobi",""))     );
     };
+    @ParameterizedTest
+    @MethodSource("rightNameProvider")
+    @DisplayName("자동차 입력시 Car생성 테스트")
+    void createCarsByNamesSuccessTest(List<String> rightNames, List<Car> expected) {
+        //given
+        //when
+        List<Car> carsByNames = Car.createCarsByNames(rightNames);
+
+        List<String> createNames = carsByNames.stream()
+                .map(Car::getName)
+                .toList();
+
+        List<String> expectedNames = expected.stream()
+                .map(Car::getName)
+                .toList();
+
+        //then
+        Assertions.assertThat(createNames).containsExactlyInAnyOrderElementsOf(expectedNames);
+
+    }
+
+    static Stream<Arguments> rightNameProvider() {
+        return Stream.of(
+                Arguments.of(List.of("pobi","dodo")
+                        , List.of(new Car("pobi"), new Car("dodo"))),
+                Arguments.of(List.of("pobi","dol44")
+                        , List.of(new Car("pobi"), new Car("dol44"))),
+                Arguments.of(List.of("pobi","ss_g","hoon")
+                        , List.of(new Car("pobi"), new Car("ss_g"), new Car("hoon"))));
+    }
 }
