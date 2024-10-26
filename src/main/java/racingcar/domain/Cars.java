@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import racingcar.domain.strategy.MoveStrategy;
@@ -53,6 +54,10 @@ public class Cars {
         if (uniqueCarNames != cars.size()) {
             throw new IllegalArgumentException(DUPLICATE_CAR_NAME);
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }
