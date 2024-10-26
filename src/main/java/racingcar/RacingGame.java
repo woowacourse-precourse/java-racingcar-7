@@ -37,4 +37,17 @@ public class RacingGame {
         String winners = cars.getWinners();
         System.out.println("최종 우승자 : " + winners);
     }
+
+    private void inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carNames = Console.readLine();
+        cars = new Cars(carNames);
+    }
+
+    public void start() {
+        inputCarNames();   // 자동차 이름 입력받기
+        inputRounds();     // 라운드 수 입력받기
+        race();           // 경주 진행
+        announceWinners(); // 우승자 발표
+    }
 }
