@@ -6,19 +6,31 @@ import racingcar.domain.car.Car;
 
 public class RaceResult {
 
-    private final Race race;
+    private final List<Race> races;
 
-    public RaceResult(Race race) {
-        this.race = race;
+    public RaceResult(List<Race> races) {
+        this.races = races;
     }
 
     public List<Car> getRaceWinnerList() {
-        List<Car> raceResult = race.getSortedRaceResults();
-        Car winnerCar = raceResult.get(0);
+        List<Car> finalRaceSortedResult = getFinalRaceSortedResult();
+        return getCoWinnerCarList(finalRaceSortedResult);
+    }
 
+    public List<Race> getRaces() {
+        return races;
+    }
+
+    private List<Car> getFinalRaceSortedResult() {
+        return new ArrayList<>(races.getLast().getSortedRaceResults());
+    }
+
+    private List<Car> getCoWinnerCarList(List<Car> sortedRaceResults) {
+        long winningDistance = sortedRaceResults.getFirst().getRacingDistance();
         List<Car> winners = new ArrayList<>();
-        for (Car car : raceResult) {
-            if (car.getRacingDistance() == winnerCar.getRacingDistance()) {
+
+        for (Car car : sortedRaceResults) {
+            if (car.getRacingDistance() == winningDistance) {
                 winners.add(car);
             } else {
                 break;
