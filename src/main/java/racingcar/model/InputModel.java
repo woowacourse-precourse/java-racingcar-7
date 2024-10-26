@@ -16,7 +16,7 @@ public class InputModel {
     }
     public int getPlayTime(){
         Parser parser = new Parser();
-        String play_times = Console.readLine(); 
+        String play_times = Console.readLine();
         return(parser.stringToInt(play_times));
     }
 
