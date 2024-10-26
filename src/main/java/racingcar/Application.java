@@ -41,13 +41,21 @@ public class Application {
 
     private static void checkDuplicateNames(String[] cars) {
         for (int i = 0; i < cars.length; i++) {
-            String currentCar = cars[i];
-            for (int j = i + 1; j < cars.length; j++) {
-                if (currentCar.equals(cars[j])) {
-                    throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + currentCar);
-                }
+            String currentCar = cars[i];  // 공백 제거
+            if (isDuplicate(cars, currentCar, i)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + currentCar);
             }
         }
+    }
+
+    // 중복 여부를 검사하는 보조 메서드
+    private static boolean isDuplicate(String[] cars, String car, int index) {
+        for (int j = index + 1; j < cars.length; j++) {
+            if (car.equals(cars[j])) {  // 공백 제거 후 비교
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void validateCarName(String[] cars) {
