@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +44,22 @@ class ValidatorTest {
         assertThatThrownBy(() -> validator.validateCarNamesLength(testLongStr, 5))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 기준을 넘길 수 없습니다.");
+    }
+
+    @Test
+    void 반복_횟수_입력_검증() {
+        Validator validator = new Validator();
+
+        assertThatThrownBy(() -> validator.validateRepeatCount(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("반복 횟수는 비어있을 수 없습니다.");
+
+        assertThatThrownBy(() -> validator.validateRepeatCount("-123"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("양수만 입력 가능합니다.");
+
+        assertThatThrownBy(() -> validator.validateRepeatCount("123abc456"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자만 입력 가능합니다.");
     }
 }
