@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -47,4 +48,15 @@ public class RacingCarTest{
         assertEquals(TestName,car.carName);
     }
 
+
+    //무작위값을 확인하여 전진 여부 확인하기
+    @Test
+    @DisplayName("무작위 값으로 전진 여부 확인하기")
+    void checkForwardConditionTest() {
+        RacingCar car = new RacingCar();
+        boolean result = car.checkForwardCondition();
+        boolean check = car.randomNumber > 3;
+        assertTrue(car.randomNumber >= 0 | car.randomNumber < 10);
+        assertEquals(result, check);
+    }
 }
