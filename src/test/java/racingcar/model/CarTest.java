@@ -41,11 +41,11 @@ class CarTest {
 
     @DisplayName("Car_이동_테스트")
     @Test
-    public void moveOrStopTest() {
+    public void canMoveUsingTest() {
         //given
         //when
-        boolean moveResult = car.moveOrStop(4);
-        boolean stopResult = car.moveOrStop(3);
+        boolean moveResult = car.canMoveUsing(4);
+        boolean stopResult = car.canMoveUsing(3);
         //then
         assertTrue(moveResult);
         assertFalse(stopResult);

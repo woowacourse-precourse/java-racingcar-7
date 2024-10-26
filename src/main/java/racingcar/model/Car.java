@@ -8,7 +8,7 @@ public class Car {
         this.name = name;
     }
 
-    public boolean moveOrStop(int randomNum) {
+    public boolean canMoveUsing(int randomNum) {
         return (randomNum >= 4);
     }
 
