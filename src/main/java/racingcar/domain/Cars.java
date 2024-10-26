@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Cars {
 
-    private static int MIN_POSITION = 0;
-    private static String COMMA = ", ";
+    private static final int MIN_POSITION = 0;
+    private static final String COMMA = ", ";
 
     private final List<Car> elements;
 
@@ -27,7 +27,7 @@ public class Cars {
 
     public String getWinner() {
         int maxPosition = getMaxPosition();
-        List<String> winnerNames= elements.stream()
+        List<String> winnerNames = elements.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .toList();

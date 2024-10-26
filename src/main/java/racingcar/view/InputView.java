@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class InputView {
 
-    private static String COMMA = ",";
+    private static final String COMMA = ",";
 
     public Cars readCarNames() {
         String input = Console.readLine();
