@@ -19,8 +19,7 @@ public class Car {
     }
 
     public void move() {
-        int randomNumber = RaceRandomUtils.generateRandomNumber();
-        if (randomNumber >= 4) {
+        if (RaceRandomUtils.generateRandomNumber() >= 4) {
             this.position++;
         }
     }
