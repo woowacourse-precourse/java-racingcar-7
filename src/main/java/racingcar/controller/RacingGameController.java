@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.car.Cars;
+import racingcar.domain.car.CarGroup;
 import racingcar.domain.game.Round;
 import racingcar.factory.GameSetup;
 import racingcar.service.RacingGameService;
@@ -21,15 +21,15 @@ public class RacingGameController {
 
     public void run() {
         // 사용자에게 자동차의 이름을 입력 받음
-        Cars cars = GameSetup.createCars((inputView.requestCarNames()));
+        CarGroup carGroup = GameSetup.createCars((inputView.requestCarNames()));
 
         // 사용자에게 라운드 횟수를 입력 받음
         Round round = GameSetup.setRound(inputView.requestNumberOfGames());
 
         // 각 라운드 출력
-        outputView.printRoundResult(racingGameService.playRound(round, cars));
+        outputView.printRoundResult(racingGameService.playRound(round, carGroup));
 
         // 게임 결과 출력
-        outputView.printWinnerList(racingGameService.getWinner(cars));
+        outputView.printWinnerList(racingGameService.getWinner(carGroup));
     }
 }

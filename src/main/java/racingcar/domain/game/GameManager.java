@@ -1,8 +1,8 @@
 package racingcar.domain.game;
 
 import java.util.List;
+import racingcar.domain.car.CarGroup;
 import racingcar.domain.car.CarInfo;
-import racingcar.domain.car.Cars;
 import racingcar.utils.NumberGenerator;
 
 public class GameManager {
@@ -17,15 +17,15 @@ public class GameManager {
         this.winnerDeterminer = winnerDeterminer;
     }
 
-    public void moveCarsBasedOnRule(Cars cars) {
-        cars.accelerateCars(car -> gameRule.moveCondition(numberGenerator.generator()));
+    public void moveCarsBasedOnRule(CarGroup carGroup) {
+        carGroup.accelerateCars(car -> gameRule.moveCondition(numberGenerator.generator()));
     }
 
-    public List<CarInfo> retrieveCarStatus(Cars cars) {
-        return cars.getCarInfos();
+    public List<CarInfo> retrieveCarStatus(CarGroup carGroup) {
+        return carGroup.getCarInfos();
     }
 
-    public List<String> determineWinners(Cars cars) {
-        return winnerDeterminer.getWinnerNames(cars.getCarInfos());
+    public List<String> determineWinners(CarGroup carGroup) {
+        return winnerDeterminer.getWinnerNames(carGroup.getCarInfos());
     }
 }

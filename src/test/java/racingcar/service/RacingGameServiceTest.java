@@ -6,8 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarGroup;
 import racingcar.domain.car.CarInfo;
-import racingcar.domain.car.Cars;
 import racingcar.domain.game.GameManager;
 import racingcar.domain.game.GameRule;
 import racingcar.domain.game.Round;
@@ -37,11 +37,11 @@ class RacingGameServiceTest {
     @Test
     void 각_라운드마다_자동차_상태를_반환한다() {
         // given
-        Cars cars = new Cars(Arrays.asList(new Car("povi"), new Car("minu")));
+        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("minu")));
         Round round = new Round("1");
 
         // when
-        List<List<CarInfo>> roundResults = service.playRound(round, cars);
+        List<List<CarInfo>> roundResults = service.playRound(round, carGroup);
 
         // then
         Assertions.assertThat(roundResults).hasSize(1);
@@ -53,10 +53,10 @@ class RacingGameServiceTest {
     @Test
     void 우승자_목록을_출력한다() {
         //given
-        Cars cars = new Cars(Arrays.asList(new Car("povi"), new Car("minu")));
+        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("minu")));
 
         // when
-        List<String> winners = service.getWinner(cars);
+        List<String> winners = service.getWinner(carGroup);
 
         // then
         Assertions.assertThat(winners).hasSize(2);

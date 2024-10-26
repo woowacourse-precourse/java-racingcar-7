@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class Cars {
+public class CarGroup {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public CarGroup(List<Car> cars) {
         validateDuplicateCarName(cars);
         this.cars = new ArrayList<>(cars);
     }

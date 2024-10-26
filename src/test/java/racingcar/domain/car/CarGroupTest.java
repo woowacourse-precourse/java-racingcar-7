@@ -9,7 +9,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CarsTest {
+class CarGroupTest {
 
     @Test
     public void 자동차의_이름이_중복_되지_않으면_예외가_발생하지_않는다() {
@@ -22,7 +22,7 @@ class CarsTest {
         cars.add(car2);
 
         //when then
-        assertDoesNotThrow(() -> new Cars(cars));
+        assertDoesNotThrow(() -> new CarGroup(cars));
     }
 
     @Test
@@ -36,7 +36,7 @@ class CarsTest {
         cars.add(car2);
 
         //when then
-        Assertions.assertThatThrownBy(() -> new Cars(cars))
+        Assertions.assertThatThrownBy(() -> new CarGroup(cars))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -46,13 +46,13 @@ class CarsTest {
         // given
         Car car1 = new Car("povi");
         Car car2 = new Car("min");
-        Cars cars = new Cars(Arrays.asList(car1, car2));
+        CarGroup carGroup = new CarGroup(Arrays.asList(car1, car2));
 
         // when
-        cars.accelerateCars(car -> true);
+        carGroup.accelerateCars(car -> true);
 
         // then
-        cars.getCarInfos()
+        carGroup.getCarInfos()
                 .forEach(carInfo -> assertEquals(1, carInfo.getCurrentPosition()));
     }
 }

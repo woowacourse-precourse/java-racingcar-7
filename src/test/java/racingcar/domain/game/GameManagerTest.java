@@ -9,8 +9,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarGroup;
 import racingcar.domain.car.CarInfo;
-import racingcar.domain.car.Cars;
 import racingcar.utils.NumberGenerator;
 import racingcar.utils.RandomNumberGenerator;
 
@@ -31,12 +31,12 @@ class GameManagerTest {
 
     @Test
     public void 무작위_숫자가_4이상_일경우_모든_자동차는_전진한다() {
-        Cars cars = new Cars(Arrays.asList(new Car("povi"), new Car("min")));
+        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("min")));
 
         Assertions.assertRandomNumberInRangeTest(
                 () -> {
-                    gameManager.moveCarsBasedOnRule(cars);
-                    List<CarInfo> carInfos = gameManager.retrieveCarStatus(cars);
+                    gameManager.moveCarsBasedOnRule(carGroup);
+                    List<CarInfo> carInfos = gameManager.retrieveCarStatus(carGroup);
                     carInfos.forEach(carInfo -> assertEquals(1, carInfo.getCurrentPosition())
                     );
                 },
@@ -46,12 +46,12 @@ class GameManagerTest {
 
     @Test
     public void 무작위_숫자가_4미만_일경우_모든_자동차는_전진하지_않는다() {
-        Cars cars = new Cars(Arrays.asList(new Car("povi"), new Car("min")));
+        CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("min")));
 
         Assertions.assertRandomNumberInRangeTest(
                 () -> {
-                    gameManager.moveCarsBasedOnRule(cars);
-                    List<CarInfo> carInfos = gameManager.retrieveCarStatus(cars);
+                    gameManager.moveCarsBasedOnRule(carGroup);
+                    List<CarInfo> carInfos = gameManager.retrieveCarStatus(carGroup);
                     carInfos.forEach(carInfo -> assertEquals(0, carInfo.getCurrentPosition())
                     );
                 },
@@ -64,10 +64,10 @@ class GameManagerTest {
         // given
         Car car1 = new Car("povi");
         Car car2 = new Car("min");
-        Cars cars = new Cars(Arrays.asList(car1, car2));
+        CarGroup carGroup = new CarGroup(Arrays.asList(car1, car2));
 
         // when
-        List<CarInfo> carInfos = gameManager.retrieveCarStatus(cars);
+        List<CarInfo> carInfos = gameManager.retrieveCarStatus(carGroup);
 
         // then
         assertThat(carInfos)
@@ -84,11 +84,11 @@ class GameManagerTest {
         //given
         Car car1 = new Car("povi");
         Car car2 = new Car("min");
-        Cars cars = new Cars(Arrays.asList(car1, car2));
+        CarGroup carGroup = new CarGroup(Arrays.asList(car1, car2));
 
         //when
         car1.accelerate();
-        List<String> winners = gameManager.determineWinners(cars);
+        List<String> winners = gameManager.determineWinners(carGroup);
 
         //then
         assertThat(winners).contains("povi");
