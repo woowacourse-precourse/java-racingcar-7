@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.Car;
+
 public class OutputView {
 
     public final void printRacingCarNameFormat() {
@@ -8,5 +11,9 @@ public class OutputView {
 
     public final void printRacingRoundRequest() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
+    public final void printMovingCarsWithPositions(List<Car> cars) {
+        cars.forEach(car -> System.out.println(car.getNameWithPosition()));
     }
 }
