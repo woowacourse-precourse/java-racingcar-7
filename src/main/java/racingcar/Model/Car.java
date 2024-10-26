@@ -10,7 +10,7 @@ public class Car {
   private String name;
   private int location;
 
-  Car(String name) {
+  public Car(String name) {
     this.name = name;
     this.location = 0;
   }
