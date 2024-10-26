@@ -23,12 +23,4 @@ public class Car {
     public void move() {
         distance++;
     }
-
-    public void printEachStep() {
-        System.out.print(name + " : ");
-        for (int i = 0; i < distance; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
 }
