@@ -2,6 +2,9 @@ package racingcar;
 
 import racingcar.io.Input;
 import racingcar.io.Output;
+import racingcar.util.RacingUtils;
+
+import java.util.List;
 
 public class Application {
 
@@ -13,5 +16,7 @@ public class Application {
         String carNames = input.getUserAnswer();
         output.printExecuteCount();
         String executeCount = input.getUserAnswer();
+
+        List<String> names = RacingUtils.divideComma(carNames);
     }
 }
