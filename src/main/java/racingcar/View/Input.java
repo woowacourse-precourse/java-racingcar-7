@@ -7,7 +7,7 @@ import java.util.List;
 public class Input {
     private Integer trialCount;
 
-    public List<String> ListRequestCarNameMessage() {
+    public List<String> RequestCarNameMessage() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
         List<String> carNameList = List.of(Console.readLine().split(","));
         return carNameList;
