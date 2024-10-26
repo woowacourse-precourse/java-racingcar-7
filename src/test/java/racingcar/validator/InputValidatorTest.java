@@ -3,9 +3,9 @@ package racingcar.validator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.CarNames;
 
 class InputValidatorTest {
 
@@ -16,10 +16,10 @@ class InputValidatorTest {
         final String input = "pobi,woni, jun";
 
         //when
-        final List<String> carNames = InputValidator.validateCarNameInput(input);
+        final CarNames carNames = InputValidator.validateCarNameInput(input);
 
         //then
-        assertThat(carNames).contains("pobi").contains("woni").contains("jun");
+        assertThat(carNames.getCarNames()).contains("pobi").contains("woni").contains("jun");
     }
 
     @Test

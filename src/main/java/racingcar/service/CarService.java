@@ -1,17 +1,11 @@
 package racingcar.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.car.CarNames;
+import racingcar.domain.car.Cars;
 
 public class CarService {
 
-    public List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            Car car = new Car(name);
-            cars.add(car);
-        }
-        return cars;
+    public Cars createCars(CarNames carNames) {
+        return Cars.from(carNames);
     }
 }

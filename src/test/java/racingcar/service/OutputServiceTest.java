@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Result;
+import racingcar.domain.car.CarNames;
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.Results;
 
 class OutputServiceTest {
 
@@ -18,13 +19,15 @@ class OutputServiceTest {
     @DisplayName("실행 결과 메시지 생성")
     void generateResultMessage() {
         //given
-        final List<Car> cars = new ArrayList<>();
-        cars.add(new Car("a"));
-        cars.add(new Car("b"));
-        cars.add(new Car("c"));
+        final List<String> names = new ArrayList<>();
+        names.add("a");
+        names.add("b");
+        names.add("c");
+        final CarNames carNames = new CarNames(names);
+        final Cars cars = Cars.from(carNames);
 
         final int roundCount = 5;
-        final List<Result> results = racingService.startRace(cars, roundCount);
+        final Results results = racingService.startRace(cars, roundCount);
 
         //when
         String resultMessage = outputService.generateResultMessage(results);
@@ -37,10 +40,12 @@ class OutputServiceTest {
     @DisplayName("우승자 출력 메시지 생성")
     void generateWinnerMessage() {
         //given
-        final List<Car> cars = new ArrayList<>();
-        cars.add(new Car("a"));
-        cars.add(new Car("b"));
-        cars.add(new Car("c"));
+        final List<String> names = new ArrayList<>();
+        names.add("a");
+        names.add("b");
+        names.add("c");
+        final CarNames carNames = new CarNames(names);
+        final Cars cars = Cars.from(carNames);
 
         final int roundCount = 5;
         racingService.startRace(cars, roundCount);

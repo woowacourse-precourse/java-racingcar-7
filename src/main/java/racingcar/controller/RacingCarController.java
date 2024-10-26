@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Result;
+import racingcar.domain.car.CarNames;
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.Results;
 import racingcar.service.CarService;
 import racingcar.service.OutputService;
 import racingcar.service.RacingService;
@@ -28,12 +28,12 @@ public class RacingCarController {
 
     public void run() {
         inputView.printCarNameInputMessage();
-        List<String> carNames = InputValidator.validateCarNameInput(inputView.getInput());
+        CarNames carNames = InputValidator.validateCarNameInput(inputView.getInput());
         inputView.printRoundCountInputMessage();
         int roundCount = InputValidator.validateRoundCountInput(inputView.getInput());
 
-        List<Car> cars = carService.createCars(carNames);
-        List<Result> results = racingService.startRace(cars, roundCount);
+        Cars cars = carService.createCars(carNames);
+        Results results = racingService.startRace(cars, roundCount);
 
         String resultMessage = outputService.generateResultMessage(results);
         String winnerMessage = outputService.generateWinnerMessage(cars);

@@ -3,16 +3,19 @@ package racingcar.service;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.constant.Constant;
-import racingcar.domain.Car;
-import racingcar.domain.Record;
-import racingcar.domain.Result;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.Record;
+import racingcar.domain.race.Result;
+import racingcar.domain.race.Results;
 
 public class OutputService {
 
-    public String generateResultMessage(List<Result> results) {
+    public String generateResultMessage(Results results) {
         StringBuilder sb = new StringBuilder();
+        List<Result> raceResults = results.getResults();
 
-        for (Result result : results) {
+        for (Result result : raceResults) {
             addResult(sb, result);
             sb.append(System.lineSeparator());
         }
@@ -32,18 +35,19 @@ public class OutputService {
         return "-".repeat(distance);
     }
 
-    public String generateWinnerMessage(List<Car> cars) {
+    public String generateWinnerMessage(Cars cars) {
         List<String> winners = getWinners(cars);
         return String.join(Constant.DELIMITER, winners);
     }
 
-    private List<String> getWinners(List<Car> cars) {
+    private List<String> getWinners(Cars cars) {
         List<String> winners = new ArrayList<>();
+        List<Car> raceCars = cars.getCars();
 
-        sortByDistanceHigh(cars);
-        Car firstCar = cars.getFirst();
+        sortByDistanceHigh(raceCars);
+        Car firstCar = raceCars.getFirst();
         int maxDistance = firstCar.getDistance();
-        for (Car car : cars) {
+        for (Car car : raceCars) {
             addWinners(winners, car, maxDistance);
         }
 

@@ -1,18 +1,18 @@
-package racingcar.domain;
+package racingcar.domain.race;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
     private int round;
-    private List<Record> records;
+    private List<racingcar.domain.race.Record> records;
 
     public Result(int round) {
         this.round = round;
         this.records = new ArrayList<>();
     }
 
-    public void addRecord(Record record) {
+    public void addRecord(racingcar.domain.race.Record record) {
         this.records.add(record);
     }
 
