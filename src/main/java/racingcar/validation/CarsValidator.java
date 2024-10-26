@@ -5,15 +5,9 @@ import java.util.Set;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
-public class CarsValidator implements Validator{
+public class CarsValidator implements Validator<Cars>{
     @Override
-    public void validate(Object requestingObject) {
-        if (requestingObject.getClass() != Cars.class) {
-            throw new IllegalStateException("Improper type requested Cars validation");
-        }
-        ValidationRequest<Cars> validationRequest = new ValidationRequest(requestingObject);
-        Cars cars = validationRequest.getObject();
-
+    public void validate(Cars cars) {
         validateNameDuplication(cars);
         validateCarsSize(cars);
     }

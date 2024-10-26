@@ -12,7 +12,7 @@ public class Cars {
     private static final int SPLIT_NO_LIMIT = -1;
 
     private final List<Car> cars;
-    private final Validator validator;
+    private final Validator<Cars> validator;
 
     public Cars(String carNamesInput) {
         this.cars = registerCars(carNamesInput);

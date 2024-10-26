@@ -1,6 +1,6 @@
 package racingcar.validation;
 
-public interface Validator {
+public interface Validator<T> {
 
-    void validate(Object object);
+    void validate(T object);
 }

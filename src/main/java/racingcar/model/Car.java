@@ -11,7 +11,7 @@ public class Car {
 
     private String name;
     private int moveDistance;
-    private final Validator validator;
+    private final Validator<Car> validator;
 
     public Car(String name) {
         this.name = name;

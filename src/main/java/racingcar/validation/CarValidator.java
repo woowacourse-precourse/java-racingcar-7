@@ -2,16 +2,9 @@ package racingcar.validation;
 
 import racingcar.model.Car;
 
-public class CarValidator implements Validator{
-    private static ValidationRequest<Car> validationRequest;
+public class CarValidator implements Validator<Car>{
     @Override
-    public void validate(Object requestingObject) {
-        if (requestingObject.getClass() != Car.class) {
-            throw new IllegalStateException("Improper type requested Cars validation");
-        }
-        validationRequest = new ValidationRequest(requestingObject);
-        Car car = validationRequest.getObject();
-
+    public void validate(Car car) {
         validateCarNameLengthAndBlank(car);
     }
 
