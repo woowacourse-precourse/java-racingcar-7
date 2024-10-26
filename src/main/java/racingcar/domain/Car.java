@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 public class Car {
-    private final String name;
+    private final CarName name;
     private int movement;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new CarName(name);
         this.movement = 0;
     }
 
