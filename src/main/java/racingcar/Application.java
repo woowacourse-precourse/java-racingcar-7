@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"); // 프로그램 시작
+        // 프로그램 시작
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> carNames = getCarNames(); // 자동차 이름 입력 및 검증
         System.out.println("입력된 자동차 이름: " + carNames); // 입력된 자동차 이름 출력 (디버깅 용도)
         
         int attempts = getAttempts(); // 시도할 횟수 입력 및 검증
         System.out.println("입력된 시도 횟수: " + attempts); // 입력된 시도 횟수 출력 (디버깅 용도)
-       
+        
         List<Car> cars = initializeCars(carNames); // 자동차 객체 생성 및 초기화
         System.out.println("초기화된 자동차: " + cars); // 초기화된 자동차 출력 (디버깅 용도)
-        
+
         race(cars, attempts); // 경주 진행
-        printWinners(cars); // 우승자 출
+        printWinners(cars); // 우승자 출력
     }
-     /**
+
     /**
      * 사용자로부터 자동차 이름을 입력받고 유효성을 검사하는 메서드
      * @return 유효성 검사를 통과한 자동차 이름 목록
@@ -30,20 +30,21 @@ public class Application {
     private static List<String> getCarNames() {
         String input = Console.readLine(); // 자동차 이름 입력
         String[] names = input.split(","); // 쉼표를 기준으로 이름 분리
-
+        
         List<String> carNames = new ArrayList<>(); // 유효성 검사
         for (String name : names) {
             name = name.trim();  // 이름 앞뒤 공백 제거
-
+            
             if (name.isEmpty() || name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 빈 값이거나 5자를 초과할 수 없습니다: " + name); // 이름이 빈 값이거나 5자를 초과할 경우 예외 발생
             }
-
+            
             carNames.add(name);
         }
-
+        
         return carNames;
     }
+
     /**
      * 사용자로부터 시도할 횟수를 입력받고 유효성을 검사하는 메서드
      * @return 유효성 검사를 통과한 시도 횟수
@@ -62,6 +63,7 @@ public class Application {
             throw new IllegalArgumentException("잘못된 숫자 형식입니다. 시도 횟수는 정수여야 합니다.");
         }
     }
+
     /**
      * 자동차 이름 목록을 이용해 Car 객체를 초기화하는 메서드
      * @param carNames 자동차 이름 목록
@@ -74,6 +76,7 @@ public class Application {
         }
         return cars;
     }
+
     /**
      * 주어진 시도 횟수만큼 경주를 진행하며 각 라운드의 결과를 출력하는 메서드
      * @param cars 경주에 참가하는 자동차 목록
@@ -86,6 +89,7 @@ public class Application {
             printRoundResult(cars); // 라운드 결과 출력
         }
     }
+
     /**
      * 각 라운드에서 자동차가 전진할지 멈출지 결정하는 메서드
      * @param cars 경주에 참가하는 자동차 목록
@@ -98,6 +102,7 @@ public class Application {
             }
         }
     }
+
     /**
      * 각 라운드가 끝난 후 자동차의 현재 상태를 출력하는 메서드
      * @param cars 경주에 참가하는 자동차 목록
@@ -108,6 +113,7 @@ public class Application {
         }
         System.out.println(); // 라운드 간 줄바꿈
     }
+
     /**
      * 경주가 끝난 후 우승자를 출력하는 메서드
      * @param cars 경주에 참가한 자동차 목록
@@ -118,28 +124,35 @@ public class Application {
                 .filter(car -> car.getPosition() == maxPosition) // 최대 위치에 있는 자동차 필터링
                 .map(Car::getName)
                 .collect(Collectors.toList());
+
         System.out.println("우승자: " + String.join(", ", winners)); // 우승자 이름 출력
     }
 }
+
 /**
  * Car 클래스는 자동차 이름과 현재 위치를 저장하는 객체를 나타낸다.
  */
 class Car {
     private final String name;
     private int position;
+
     public Car(String name) {
         this.name = name;
         this.position = 0; // 초기 위치는 0
     }
+
     public String getName() {
         return name; // 자동차의 이름을 반환
     }
+
     public int getPosition() {
         return position; // 자동차의 위치를 반환
     }
+
     public void move() {
         position++; // 자동차가 전진했을 때 위치를 증가시키는 메서드
     }
+
     @Override
     public String toString() {
         return name + " : " + "-".repeat(position); // 자동차의 현재 상태를 문자열로 반환 (디버깅 및 출력 용도)
