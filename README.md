@@ -44,7 +44,7 @@ int movedCnt: 현재까지 전진한 횟수
 public void increaseMovedCount()
 : \: 자신의 movedCnt를 1 증가하는 메소드.
 
-- [ ] 자신의 movedCnt를 1 증가
+- [x] 자신의 movedCnt를 1 증가
 
 ## Utils 클래스
 
