@@ -8,13 +8,7 @@ import repository.CarRepository;
 public class Extractor {
     public static Car[] extractCarList(String input) {
         String[] inputCars = input.split(",");
-
-        // 자동차 이름 유효성 검증
-        for (String car : inputCars) {
-            if (car.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 최대 5글자 입니다.");
-            }
-        }
+        Validator.validateInputDate(inputCars);
 
         Car[] cars = new Car[inputCars.length];
         for (int i = 0; i < inputCars.length; i++) {
