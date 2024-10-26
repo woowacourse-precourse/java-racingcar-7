@@ -2,10 +2,8 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import static racingcar.constant.RacingConstant.RACING_CAR_MOVE_LIMIT;
-import static racingcar.constant.RacingConstant.RACING_CAR_NAME_MAX_LENGTH;
-import static racingcar.message.ErrorMessage.CAR_NAME_MAX_LENGTH;
-import static racingcar.message.ErrorMessage.CAR_NAME_REQUIRED;
+import static racingcar.constant.RacingConstant.*;
+import static racingcar.message.ErrorMessage.*;
 
 public class RacingCar {
 
@@ -31,11 +29,19 @@ public class RacingCar {
     }
 
     public void move(int numberValue) {
+        if (invalidNumberValue(numberValue)) {
+            throw new IllegalArgumentException(CAR_MOVE_INVALID_NUMBER_VALUE.getMessage());
+        }
+
         if (isStopByNumberValue(numberValue)) {
             return;
         }
 
         position++;
+    }
+
+    private boolean invalidNumberValue(int numberValue) {
+        return numberValue < RACING_CAR_MOVE_MIN_NUMBER || numberValue > RACING_CAR_MOVE_MAX_NUMBER;
     }
 
     public String getName() {
