@@ -2,8 +2,7 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Race {
@@ -12,7 +11,9 @@ public class Race {
     private static final int END_RANGE = 9;
 
     private List<Car> cars;
+    private List<String> winner = new ArrayList<>();
     private int count;
+    private int maxPosition;
 
     public Race(String inputtedName, int count) {
         String[] carNames = inputtedName.split(DELIMITER, -1);
@@ -27,6 +28,10 @@ public class Race {
         return cars;
     }
 
+    public List<String> getWinner() {
+        return winner;
+    }
+
     public int getCount() {
         return count;
     }
@@ -37,5 +42,17 @@ public class Race {
                     int point = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
                     car.moveBasedOnPoint(point);
                 });
+    }
+
+    public void findMaxPosition() {
+        Optional<Car> maxCar = cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition));
+        maxPosition = maxCar.get().getPosition();
+    }
+
+    public void findWinner() {
+        cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .forEach(car -> winner.add(car.getName()));
     }
 }
