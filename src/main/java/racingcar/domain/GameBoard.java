@@ -1,18 +1,24 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameBoard {
-    private List<Car> cars;
-    public GameBoard(List<Car> cars) {
-        this.cars = cars;
+    private final List<Car> cars = new ArrayList<>();
+
+    public void setupCars(List<String> carNames) {
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
-    public List<Car> getCars() {
-        return cars;
-    }
+
     public void playRound() {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
