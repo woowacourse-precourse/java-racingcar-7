@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.dto.CarsDto;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceController {
     public void run() {
@@ -13,8 +14,10 @@ public class RaceController {
         CarsDto carsDto = raceService.raceSetting(inputCars);
 
         int round = raceService.roundService(roundCount);
+        OutputView.outputBeforeRound();
         for (int i = 0; i < round; i++) {
             carsDto = raceService.playOneRound(carsDto);
+            OutputView.outputEachRound(carsDto);
         }
 
     }
