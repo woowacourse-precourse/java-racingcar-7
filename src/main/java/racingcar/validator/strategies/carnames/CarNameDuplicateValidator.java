@@ -10,14 +10,14 @@ public class CarNameDuplicateValidator implements ValidationStrategy<List<String
 
     @Override
     public void validate(List<String> names) {
-        checkForDuplicateNames(names);
+        validateNoDuplicateNames(names);
     }
 
-    private void checkForDuplicateNames(List<String> names) {
+    private void validateNoDuplicateNames(List<String> names) {
         Set<String> nameSet = new HashSet<>(names);
         if (nameSet.size() < names.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME.getMessage());
         }
     }
-
 }
+

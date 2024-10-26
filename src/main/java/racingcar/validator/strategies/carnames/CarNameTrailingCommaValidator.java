@@ -7,10 +7,10 @@ public class CarNameTrailingCommaValidator implements ValidationStrategy<String>
 
     @Override
     public void validate(String carName) {
-        checkForTrailingComma(carName);
+        validateNoTrailingComma(carName);
     }
 
-    private void checkForTrailingComma(String carName) {
+    private void validateNoTrailingComma(String carName) {
         if (carName.endsWith(",")) {
             throw new IllegalArgumentException(ErrorMessage.TRAILING_COMMA.getMessage());
         }

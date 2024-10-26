@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
-public class MaximumCarNameLengthValidatorTest {
+public class CarNameMaxLengthValidatorTest {
 
-    private final MaximumCarNameLengthValidator validator = new MaximumCarNameLengthValidator();
+    private final CarNameMaxLengthValidator validator = new CarNameMaxLengthValidator();
 
     @Test
     void validate_WhenNameTooLong_ShouldThrowException() {
