@@ -41,4 +41,9 @@ public class InputParser {
                 .collect(Collectors.toCollection(ArrayList::new));
 
     }
+
+    public int parseAttemptCount(String input) {
+        inputValidator.validateIsEmpty(input);
+        return 0;
+    }
 }

@@ -30,6 +30,9 @@ public class RacingGameController {
         outputView.displayCarNameInput();
         String inputValue = inputView.inputCarNames();
         List<Car> CarNames = inputParser.parseCarNames(inputValue);
+
+        outputView.displayAttemptCount();
+        int count = inputParser.parseAttemptCount(inputView.inputAttemptCount());
     }
 
 

@@ -39,7 +39,7 @@ public class InputParserTest {
     @DisplayName("자동차 이름이 중복되지 않으면 정상 통과")
     public void testUniqueCarName(String input) {
         // When & then
-        assertDoesNotThrow(()-> inputParser.parseCarNames(input));
+        assertDoesNotThrow(() -> inputParser.parseCarNames(input));
     }
 
     @Test
@@ -62,5 +62,24 @@ public class InputParserTest {
 
         assertEquals("CHAN", cars.get(2).getName());
         assertEquals(0, cars.get(2).getPosition());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {""}) //given
+    @DisplayName("횟수 입력값이 공백일 경우")
+    public void testCountIsEmpty(String input) {
+        // When
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+                () -> inputParser.parseAttemptCount(input));
+        // Then
+        assertEquals("입력값은 공백이 아니어야 합니다.", thrown.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"5"}) //given
+    @DisplayName("횟수 입력값이 공백이 아닐 경우")
+    public void testCountIsNotEmpty(String input) {
+        // When
+        assertDoesNotThrow(() -> inputParser.parseAttemptCount(input));
     }
 }
