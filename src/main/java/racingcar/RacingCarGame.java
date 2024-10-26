@@ -8,10 +8,14 @@ public class RacingCarGame {
     private static final String STATUS_DELIMITER = " : ";
 
     private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
     private final RandomNumberGenerator randomNumberGenerator;
 
-    public RacingCarGame(InputHandler inputHandler, RandomNumberGenerator randomNumberGenerator) {
+    public RacingCarGame(InputHandler inputHandler,
+                         OutputHandler outputHandler,
+                         RandomNumberGenerator randomNumberGenerator) {
         this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
@@ -22,28 +26,26 @@ public class RacingCarGame {
                 .toList();
         TryCount tryCount = inputHandler.inputTryCount();
 
-        System.out.println("\n실행 결과");
+        outputHandler.printResultMessage();
         for (int i = 0; i < tryCount.getValue(); i++) {
             racingCars.forEach(racingCar -> racingCar.move(randomNumberGenerator.generate()));
-            racingCars.forEach(racingCar -> System.out.println(String.join(STATUS_DELIMITER, racingCar.getCarNameValue(),
-                    MOVEMENT_INDICATOR.repeat(racingCar.getLocation()))));
+            outputHandler.printResult(racingCars);
         }
-        findWinners(racingCars);
+        outputHandler.printWinners(findWinners(racingCars));
     }
 
-    public void findWinners(List<RacingCar> racingCars) {
+    private List<String> findWinners(List<RacingCar> racingCars) {
         int maxLocation = getMaxLocationCars(racingCars);
-        List<String> winners = racingCars.stream()
+        return racingCars.stream()
                 .filter(racingCar -> racingCar.getLocation() == maxLocation)
                 .map(RacingCar::getCarNameValue)
                 .toList();
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
-    public int getMaxLocationCars(List<RacingCar> racingCars) {
+    private int getMaxLocationCars(List<RacingCar> racingCars) {
         return racingCars.stream()
-            .mapToInt(RacingCar::getLocation)
-            .max()
-            .orElseThrow(() -> new IllegalArgumentException("최대 위치인 자동차가 없습니다."));
+                .mapToInt(RacingCar::getLocation)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("최대 위치인 자동차가 없습니다."));
     }
 }
