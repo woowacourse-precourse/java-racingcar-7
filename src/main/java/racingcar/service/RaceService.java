@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -12,10 +13,15 @@ public class RaceService {
         return splitNames;
     }
 
-    public void decisionWinners(List<Car> Cars) {
+    public List<String> decisionWinners(List<Car> Cars) {
+        List<String> winners = new ArrayList<>();
+        int winnerPosition = getWinnerPosition(Cars);
         for (Car car : Cars) {
-
+            if (car.getPosition() == winnerPosition) {
+                winners.add(car.getName());
+            }
         }
+        return winners;
     }
 
     public int getWinnerPosition(List<Car> Cars) {

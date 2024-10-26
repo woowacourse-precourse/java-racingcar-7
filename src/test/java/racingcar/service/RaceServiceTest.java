@@ -39,7 +39,7 @@ public class RaceServiceTest {
         Cars.get(1).move();
         Cars.get(2).move();
         Cars.get(2).move();
-        String[] winners = raceService.decisionWinners();
-        assertEquals(winners, "pobi,juni");
+        List<String> winners = raceService.decisionWinners(Cars);
+        assertEquals(String.join(", ",winners), "pobi, juni");
     }
 }
