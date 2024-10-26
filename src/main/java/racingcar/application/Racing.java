@@ -2,6 +2,7 @@ package racingcar.application;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -13,15 +14,15 @@ public class Racing {
         this.cars = cars;
     }
 
-    public List<Car> race(int trial) {
+    public void race(int trial) {
         for (int i = 0; i < trial; i++) {
             cars.forEach(car -> {
                 if (shouldMove()) {
                     car.moveForward();
                 }
             });
+            OutputView.printCurrentProgress(cars);
         }
-        return cars;
     }
 
     public boolean shouldMove() {
