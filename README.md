@@ -59,4 +59,6 @@
 - [x] CarNameValidator
 - [x] MoveCountValidator
 - [x] ErrorMessage
+### DTO
+- [x] CarNameDto
 
