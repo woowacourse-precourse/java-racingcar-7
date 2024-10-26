@@ -1,6 +1,7 @@
 package racingcar.model.vo;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,9 +22,9 @@ public class CarNameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", "pobi ", "12345", "포비", "pobi★"})
-    void 자동차의_이름은_영문자열_이어야_한다(String name) {
+    void 자동차의_이름의_형식은_자유롭다(String name) {
         // when & then
-        assertThatIllegalArgumentException().isThrownBy(() -> new CarName(name));
+        assertThatNoException().isThrownBy(() -> new CarName(name));
     }
 
 }

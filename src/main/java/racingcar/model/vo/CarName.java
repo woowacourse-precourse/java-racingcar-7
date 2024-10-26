@@ -6,7 +6,6 @@ public record CarName(String name) {
 
     public CarName {
         validateLessThanFiveCharacters(name);
-        validateAlphabeticString(name);
     }
 
     private void validateLessThanFiveCharacters(String name) {
@@ -14,11 +13,4 @@ public record CarName(String name) {
             throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
         }
     }
-
-    private void validateAlphabeticString(String name) {
-        if (name.isBlank() || !name.matches("^[a-zA-Z]*$")) {
-            throw new IllegalArgumentException("이름은 영문자로 이루어져야 합니다.");
-        }
-    }
-
 }
