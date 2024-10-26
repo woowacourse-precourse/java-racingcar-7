@@ -44,6 +44,14 @@ public class Extractor {
         return winningCars;
     }
 
+    public static String extractRaceStatus(int forwardCount) {
+        String forwardStatus = "";
+        for (int i = 0; i < forwardCount; i++) {
+            forwardStatus += "-";
+        }
+        return forwardStatus;
+    }
+
     public static RacingParam parseInput(RacingInput input) {
         ArrayList<Car> inputCars = converToCarArrayList(extractCarList(input.cars()));
         int inputRepeatCount = Integer.parseInt(input.repeatCount());

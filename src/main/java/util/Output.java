@@ -1,5 +1,7 @@
 package util;
 
+import static util.Extractor.extractRaceStatus;
+
 import java.util.ArrayList;
 import repository.CarRepository;
 
@@ -9,7 +11,7 @@ public class Output {
         for (Car car : CarRepository.cars) {
             String carName = car.getName();
             int forwardCount = car.getForwardCount(repeatCount);
-            String raceStatus = returnRaceStatus(forwardCount);
+            String raceStatus = extractRaceStatus(forwardCount);
             System.out.println(carName + " : " + raceStatus);
         }
         System.out.println();
@@ -20,14 +22,6 @@ public class Output {
         for (int i = 1; i <= CarRepository.repeatCount; i++) {
             Output.printRaceStatus(i);
         }
-    }
-
-    private static String returnRaceStatus(int forwardCount) {
-        String forwardStatus = "";
-        for (int i = 0; i < forwardCount; i++) {
-            forwardStatus += "-";
-        }
-        return forwardStatus;
     }
 
     public static void printWinningCars() {
