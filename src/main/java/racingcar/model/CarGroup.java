@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.exceptions.ExceptionString;
+import racingcar.exceptions.RacingCarException;
 
 public class CarGroup {
     private final List<Car> racingCarList;
@@ -19,7 +19,7 @@ public class CarGroup {
 
     private void validateCarName(String carName) {
         if (carName.length() == 0) {
-            throw new IllegalArgumentException(ExceptionString.CAR_NAME_LENGTH_CANNOT_BE_ZERO.getText());
+            throw new IllegalArgumentException(RacingCarException.CAR_NAME_LENGTH_CANNOT_BE_ZERO.getText());
         }
     }
 
