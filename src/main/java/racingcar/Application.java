@@ -48,7 +48,21 @@ public class Application {
         String inputSequence = Console.readLine();
 
         String[] carNames = inputSequence.split(",");
+
+        isInputValid(carNames);
         return carNames;
+    }
+
+    private static void isInputValid(String[] carNames) {
+        for (String carName: carNames) {
+            if (carName.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+            }
+
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요. => " + carName);
+            }
+        }
     }
     
     private static RacingCar[] createCars(String[] carNames) {
@@ -63,7 +77,16 @@ public class Application {
 
     private static int getNumberOfTry() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int numberOfTry = Integer.parseInt(Console.readLine());
+        int numberOfTry = 0;
+        try {
+            numberOfTry = Integer.parseInt(Console.readLine());
+            if (numberOfTry < 1) {
+                throw new IllegalArgumentException("양수를 입력해주세요.");
+            }
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수를 입력해주세요.");
+        }
         return numberOfTry;
     }
 
