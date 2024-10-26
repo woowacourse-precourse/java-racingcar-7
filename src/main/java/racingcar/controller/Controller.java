@@ -19,9 +19,9 @@ public class Controller {
         Cars cars = new Cars(racingCarNames);
         for(int i=0;i<trialCount;i++){
             game.oneRoundGame(cars);
-            outputView.printTrialResult(cars);
+            outputView.outputTrialResult(cars);
         }
-        List<Car> carGroup = game.findWinningCars(cars);
+        List<Car> winningCarGroup = game.findWinningCars(cars);
 
     }
 }

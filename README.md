@@ -1,10 +1,10 @@
 # java-racingcar-precourse
 
-# controller
+# < controller >
 ## 1) Controller 
 * runningGame //게임 실행하기
 ---
-# model
+# < model >
 ## 1) Car
 * settingCarPosition // 자동차 위치 정하기
 * checkCarNameAvailable // 자동차 이름 길이 확인
@@ -24,10 +24,10 @@
 * moveFoward //자동차 위치 변경하기
 
 ---
-# view
+# < view >
 ## 1)  InputView
 * inputCarsName //차 이름들 입력받기
 * inputTrialCount //시도횟수 입력받기
 ## 2) OutputView
-* printTrialResult //시도결과 출력
-* printWinningCars //최종 우승자 출력
+* outputTrialResult //시도결과 출력
+* outputWinningCars //최종 우승자 출력
