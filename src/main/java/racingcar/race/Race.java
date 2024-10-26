@@ -42,15 +42,14 @@ public class Race {
             }
         }
 
-        printCars(winnerCars, ", ");
+        String winners = carsToString(winnerCars, ", ");
+        System.out.println("최종 우승자 : " + winners);
     }
 
-    private void printCars(List<Car> cars, String delimiter) {
-        String result = cars.stream()
+    private String carsToString(List<Car> cars, String delimiter) {
+        return cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(delimiter));
-
-        System.out.println("최종 우승자 : " + result);
     }
 
     private int getWinnerPosition(List<Car> cars) {
