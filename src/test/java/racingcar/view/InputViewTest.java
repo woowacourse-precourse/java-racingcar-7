@@ -11,9 +11,10 @@ public class InputViewTest {
         //given
         String input = "pobi,woni";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        InputView inputView = new InputView();
 
         //when
-        String carNames = InputView.getInput();
+        String carNames = inputView.getInput();
 
         //then
         assertThat(carNames).isEqualTo("pobi,woni");
@@ -24,9 +25,10 @@ public class InputViewTest {
         //given
         String input = "3";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        InputView inputView = new InputView();
 
         //when
-        String count = InputView.getInput();
+        String count = inputView.getInput();
 
         //then
         assertThat(count).isEqualTo("3");
