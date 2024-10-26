@@ -35,8 +35,8 @@ public class CarsTest extends NsTest {
     @DisplayName("우승자를 제대로 반환하는지 확인합니다.")
     void cars_우승자_테스트() {
         List<CarName> testWinners = testCars.getFinalWinners();
-        List<String> testWinnersName = testWinners.stream().map(CarName::getRacerName).toList();
-        List<String> answerWinnerName = answerWinner.stream().map(CarName::getRacerName).toList();
+        List<String> testWinnersName = testWinners.stream().map(CarName::getName).toList();
+        List<String> answerWinnerName = answerWinner.stream().map(CarName::getName).toList();
         assertThat(testWinnersName).isEqualTo(answerWinnerName);
     }
 
