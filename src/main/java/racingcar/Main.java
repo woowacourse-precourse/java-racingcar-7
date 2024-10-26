@@ -7,6 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public void prepareGame(){
+        String carNameInput = receiveCarNames();
+        String[] carNames = splitCarNames(carNameInput);
+        int carCount = calculateCarCount(carNames);
+        List<Car> cars = createAllCars(carNames);
+    }
+
+    public void playGame(){
+
+    }
+
+    public void finishGame(){
+
+    }
+
     public String receiveCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
@@ -31,7 +46,7 @@ public class Main {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            cars.add(new Car(carName,false,0));
+            cars.add(createSingleCar(carName));
         }
 
         return cars;
