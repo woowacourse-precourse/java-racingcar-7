@@ -16,18 +16,18 @@ public class CarRacingGame {
 
     public void run() {
         String carNames = InputView.inputCarNames();
-        createCarsFromNames(carNames);
+        carList = createCarsFromNames(carNames);
         numberOfAttempts = InputView.inputNumberOfAttempts();
         startRace(numberOfAttempts);
     }
 
-    void createCarsFromNames(String carNameInput) {
+    List<Car> createCarsFromNames(String carNameInput) {
         if(carNameInput==null || carNameInput.isEmpty()) { // 빈문자열 처리
             throw new IllegalArgumentException("빈 문자열 입니다.");
         }
         List<String> carNames = splitCarNames(carNameInput);
         List<String> uniqueCarNames = addIdentifierToDuplicates(carNames);
-        carList = uniqueCarNames.stream().map(Car::new).toList();
+        return uniqueCarNames.stream().map(Car::new).toList();
     }
     private List<String> splitCarNames(String carNameInput) {
         String[] carNames = carNameInput.split(",");
