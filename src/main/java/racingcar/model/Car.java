@@ -32,9 +32,13 @@ public class Car implements Comparable<Car>{
     return randomNumber >= 4;
   }
 
+  public void move (){
+    this.position++;
+  }
+
   public void moveOrStay(RandomNumberGenerator randomNumberGenerator) {
     if (canMove(randomNumberGenerator)){
-      position++;
+      move();
     }
   }
 
