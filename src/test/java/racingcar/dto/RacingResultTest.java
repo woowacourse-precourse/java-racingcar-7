@@ -15,10 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("RacingResult 테스트")
 public class RacingResultTest {
 
-    // Mock
     private static final MockedRacingCarValidator racingCarValidator = new MockedRacingCarValidator();
 
-    // Variables
     private static RacingCars racingCars;
 
 
