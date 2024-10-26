@@ -3,6 +3,7 @@ package service;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.CarValidator;
 
 public class CarService {
 
@@ -10,7 +11,11 @@ public class CarService {
 
     public List<Car> createCarList(String carNames) {
         List<String> carNameList = parseCarNames(carNames);
-        return carNameList.stream().map(Car::new).toList();
+        List<Car> carList = carNameList.stream().map(Car::new).toList();
+
+        CarValidator.validate(carList);
+
+        return carList;
     }
 
     private List<String> parseCarNames(String carNames) {
