@@ -23,9 +23,27 @@ public class Application {
         return carNames;
     }
 
+    private static int getMoveCount() {
+        System.out.println("시도할 횟수");
+        int moveCount = 0;
+
+        try {
+            moveCount = Integer.parseInt(Console.readLine());
+            if (moveCount < 1) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        return moveCount;
+    }
+
     public static void main(String[] args) {
         // 자동차 입력받기
         List<String> carNames = registerCars();
         System.out.println(carNames);
+        // 횟수 입력받기
+        int moveCount = getMoveCount();
+        System.out.println(moveCount);
     }
 }
