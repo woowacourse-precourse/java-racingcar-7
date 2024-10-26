@@ -1,8 +1,11 @@
 package racingcar.model;
 
 public class RaceCar {
-    private static final int INIT_POSITION = 0;
+    private static final String ERROR_CAR_NAME_RANGE = "자동차 이름은 1~5자까지 허용합니다.";
+    private static final int MIN_NAME_LENGTH = 1;
+    private static final int MAX_NAME_LENGTH = 5;
     private static final int MOVE_THRESHOLD = 4;
+    private static final int INIT_POSITION = 0;
 
     private final String name;
     private int position;
@@ -13,7 +16,14 @@ public class RaceCar {
     }
 
     public static RaceCar fromName(String name) {
+        validateNameRange(name);
         return new RaceCar(name, INIT_POSITION);
+    }
+
+    private static void validateNameRange(String name) {
+        if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ERROR_CAR_NAME_RANGE);
+        }
     }
 
     public void move() {
