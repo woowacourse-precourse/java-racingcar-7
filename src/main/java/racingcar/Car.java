@@ -14,12 +14,16 @@ public class Car {
 
     public void go() {
         int randomResult = Randoms.pickNumberInRange(0, 9);
-        if (randomResult > 4) {
+        if (randomResult >= 4) {
             location++;
         }
     }
 
-    public String getLocation() {
+    public int getLocation() {
+        return location;
+    }
+
+    public String getLocationToString() {
         StringBuilder location = new StringBuilder();
         for (int i = 0; i < this.location; i++) {
             location.append("-");

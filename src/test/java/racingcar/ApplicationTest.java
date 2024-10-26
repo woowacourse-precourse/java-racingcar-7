@@ -31,6 +31,38 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차_마지막_이름이_공백으로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_중간_이름이_공백으로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,aasd", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_처음_이름이_공백으로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",aasd", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_반복_횟수가_0으로_입력되었을_때() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
