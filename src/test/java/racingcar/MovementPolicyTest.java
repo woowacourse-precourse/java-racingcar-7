@@ -1,7 +1,6 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static util.Utils.MOVING_FORWARD;
 import static util.Utils.STOP;
