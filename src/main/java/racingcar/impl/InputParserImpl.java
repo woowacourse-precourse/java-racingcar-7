@@ -8,6 +8,9 @@ import racingcar.model.InputParser;
 public class InputParserImpl implements InputParser {
     @Override
     public List<String> parseCars(String input) {
+        if (input.equals("")) {
+            throw new IllegalArgumentException();
+        }
         String[] st = input.split(",");
         if (!validLength(st)) {
             throw new IllegalArgumentException();
@@ -28,7 +31,7 @@ public class InputParserImpl implements InputParser {
 
     public boolean validLength(String[] str){
         for (String s: str) {
-            if (s.length() > 5 || s.equals("")) {
+            if (s.length() > 5 || s.equals("") || s.contains(" ")) {
                 return false;
             }
         }
