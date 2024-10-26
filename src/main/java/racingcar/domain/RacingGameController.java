@@ -13,10 +13,9 @@ public class RacingGameController {
     private int tryCount;
     private RandomDigitGenerator rdg;
 
-    public RacingGameController(List<String> carNames, int tryCount, RandomDigitGenerator rdg) {
+    public RacingGameController(Cars cars, int tryCount, RandomDigitGenerator rdg) {
         validTryCount(tryCount);
-        validNameSize(carNames);
-        this.cars = createCar(carNames);
+        this.cars = cars.getCars();
         this.tryCount = tryCount;
         this.rdg = rdg;
     }
@@ -37,7 +36,7 @@ public class RacingGameController {
     }
 
     private List<Car> createCar(List<String> carNames) {
-        List<Car> result =  carNames.stream()
+        List<Car> result = carNames.stream()
                 .map(Car::new)
                 .toList();
 

@@ -26,6 +26,18 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("자동차 이름은 공백, 스페이스, null이 불가능하다.")
+    @Test
+    void 자동차_이름_규칙_확인1() {
+        assertThatThrownBy(() -> new Car(""))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car(" "))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car(null))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
     @DisplayName("자동차는 전진할 수 있다.")
     @Test
     void 자동차_전진_테스트() {
