@@ -31,7 +31,7 @@ public class Executor {
         List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, operator);
 
         validator.validateCarNamesLength(carNames, nameLengthLimit);
-        saveCarsByName(carNames);
+        createCarsByName(carNames);
 
         String inputRepeatCountStr = ioController.enterRepeatCount();
         validator.validateRepeatCount(inputRepeatCountStr);
@@ -42,7 +42,7 @@ public class Executor {
         ioController.printWinners(winners);
     }
 
-    private void saveCarsByName(List<String> carNames) {
+    private void createCarsByName(List<String> carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
