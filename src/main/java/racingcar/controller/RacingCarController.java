@@ -6,6 +6,8 @@ import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingCarController {
 
     private final InputView inputView = new InputView();
@@ -17,8 +19,7 @@ public class RacingCarController {
             Cars cars = new Cars(inputView.readCarsName());
             TryCount tryCount = new TryCount(inputView.readTryCount());
             startRace(cars, tryCount);
-
-
+            printWinner(cars);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             throw e;
@@ -31,6 +32,10 @@ public class RacingCarController {
             racingCarService.race(cars);
             outputView.printStatus(cars);
         }
+    }
 
+    private void printWinner(Cars cars) {
+        List<String> winners = racingCarService.getWinners(cars);
+        outputView.printResult(winners);
     }
 }

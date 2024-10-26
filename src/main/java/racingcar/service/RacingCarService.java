@@ -1,10 +1,14 @@
 package racingcar.service;
 
 import racingcar.domain.Cars;
-import racingcar.domain.TryCount;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 
 public class RacingCarService {
 
@@ -21,5 +25,18 @@ public class RacingCarService {
                     cars.updateDistance(carName, randomNumber);
                 });
 
+    }
+
+    //우승자를 구하는 메소드
+    public List<String> getWinners(Cars cars) {
+        List<String> winners = new ArrayList<>();
+        int maxValue = Collections.max(cars.getCars().values());
+
+        cars.getCars().entrySet().stream()
+                .filter(entry -> entry.getValue() == maxValue)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        return winners;
     }
 }
