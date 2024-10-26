@@ -1,11 +1,14 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 import java.util.Objects;
 
 public class RacingCar {
     String carName;
     String currentLocation;
     int currentDistance;
+    int randomNumber;
 
     RacingCar(){
         this.carName = "";
@@ -22,6 +25,10 @@ public class RacingCar {
         else{
             throw new IllegalArgumentException("이름은 5글자 이하의 한글 또는 영어로 구성되어야 합니다.");
         }
+    }
 
+    boolean checkForwardCondition(){
+        this.randomNumber = pickNumberInRange(0,9);
+        return this.randomNumber > 3;
     }
 }
