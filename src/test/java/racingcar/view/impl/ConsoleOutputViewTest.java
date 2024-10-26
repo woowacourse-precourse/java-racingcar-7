@@ -1,5 +1,6 @@
 package racingcar.view.impl;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.common.constant.OutputMessage.OUTPUT_ROUND_RESULT;
 import static racingcar.common.constant.OutputMessage.OUTPUT_WINNER;
@@ -25,34 +26,40 @@ class ConsoleOutputViewTest {
 
     @Test
     void testDisplayRoundResultString() {
-        consoleOutputView.displayRoundResultString();
+        assertSimpleTest(() -> {
+            consoleOutputView.displayRoundResultString();
 
-        String expectedOutput = System.lineSeparator() + OUTPUT_ROUND_RESULT.getMessage();
-        assertEquals(expectedOutput.trim(), outputStream.toString().trim());
+            String expectedOutput = System.lineSeparator() + OUTPUT_ROUND_RESULT.getMessage();
+            assertEquals(expectedOutput.trim(), outputStream.toString().trim());
+        });
     }
 
     @Test
     void testDisplayEachRoundStatus() {
-        CarDomain car1 = CarDomain.create("Car1", 2);
-        CarDomain car2 = CarDomain.create("Car2", 3);
-        CarDomains carDomains = CarDomains.create(Arrays.asList(car1, car2));
+        assertSimpleTest(() -> {
+            CarDomain car1 = CarDomain.create("Car1", 2);
+            CarDomain car2 = CarDomain.create("Car2", 3);
+            CarDomains carDomains = CarDomains.create(Arrays.asList(car1, car2));
 
-        consoleOutputView.displayEachRoundStatus(carDomains);
+            consoleOutputView.displayEachRoundStatus(carDomains);
 
-        String expectedOutput = "Car1 : --" + System.lineSeparator() +
-                "Car2 : ---" + System.lineSeparator();
-        assertEquals(expectedOutput.trim(), outputStream.toString().trim());
+            String expectedOutput = "Car1 : --" + System.lineSeparator() +
+                    "Car2 : ---" + System.lineSeparator();
+            assertEquals(expectedOutput.trim(), outputStream.toString().trim());
+        });
     }
 
     @Test
     void testDisplayCarRaceWinner() {
-        CarDomain winner1 = CarDomain.create("Car1", 5);
-        CarDomain winner2 = CarDomain.create("Car2", 5);
-        CarDomains winners = CarDomains.create(Arrays.asList(winner1, winner2));
+        assertSimpleTest(() -> {
+            CarDomain winner1 = CarDomain.create("Car1", 5);
+            CarDomain winner2 = CarDomain.create("Car2", 5);
+            CarDomains winners = CarDomains.create(Arrays.asList(winner1, winner2));
 
-        consoleOutputView.displayCarRaceWinner(winners);
+            consoleOutputView.displayCarRaceWinner(winners);
 
-        String expectedOutput = OUTPUT_WINNER.getMessage() + "Car1, Car2";
-        assertEquals(expectedOutput, outputStream.toString().trim());
+            String expectedOutput = OUTPUT_WINNER.getMessage() + "Car1, Car2";
+            assertEquals(expectedOutput, outputStream.toString().trim());
+        });
     }
 }
