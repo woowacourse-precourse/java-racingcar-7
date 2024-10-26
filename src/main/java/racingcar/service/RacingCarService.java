@@ -3,6 +3,7 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Race;
 
@@ -40,8 +41,13 @@ public class RacingCarService {
     }
 
     public List<Car> determineWinners(List<Car> cars) {
-        List<Car> winners = new ArrayList<>();
-        winners.add(cars.get(0));
-        return winners;
+        int maxPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
