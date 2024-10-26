@@ -29,6 +29,8 @@ public class RacingController {
 
     public void run() {
 
+        /* 자동차 이름 입력 */
+
         outputView.askCarName();//상수 데이터 출력
 
         String carNames = inputView.askCarName();//자동차 이름 입력
@@ -44,5 +46,12 @@ public class RacingController {
         racingcarNameValidate.isDuplicate(carList);//중복 입력 검증
 
         racingService.saveCarName(carList);//검증을 마친 자동차 이름 리스트 저장
+
+        /* 시도 횟수 입력 */
+
+        outputView.askAttempt();//상수 데이터 출력
+
+        String attempt = inputView.askAttempt();//시도 횟수 입력
+
     }
 }

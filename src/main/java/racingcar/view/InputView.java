@@ -6,4 +6,8 @@ public class InputView {
     public String askCarName() {
         return Console.readLine();
     }
+
+    public String askAttempt() {
+        return Console.readLine();
+    }
 }
