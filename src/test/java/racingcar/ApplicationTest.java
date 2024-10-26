@@ -47,6 +47,14 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
+        void 실패_이름_구분자뒤비어있음() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("pobi,", "1"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
         void 실패_이름_공백() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("pobi, ", "1"))
