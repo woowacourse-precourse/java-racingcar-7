@@ -20,7 +20,7 @@ public class Cars {
 
 	public List<Car> getWinners(){
 		int maxPosition = cars.stream()
-			.mapToInt(car -> car.getPosition())
+			.mapToInt(Car::getPosition)
 			.max()
 			.orElse(0);
 
