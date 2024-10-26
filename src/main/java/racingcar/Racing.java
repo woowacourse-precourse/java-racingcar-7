@@ -34,8 +34,7 @@ public class Racing {
 
     public void play(List<Car> cars, int attemptCount) {
         for (int i = 0; i < attemptCount; i++) {
-            if(canMove()) racing(cars);
-            compareMoveCount(cars);
+            racing(cars);
             output.printRacingResult(cars);
         }
     }
