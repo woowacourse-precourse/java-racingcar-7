@@ -32,6 +32,17 @@ class RacingCarTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름이_5자면_정상적으로_경주가_진행된다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("ABCDE", "1");
+                    assertThat(output()).contains("ABCDE : -", "최종 우승자 : ABCDE");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});

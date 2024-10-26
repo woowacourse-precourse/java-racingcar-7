@@ -3,7 +3,7 @@ package racingcar.io;
 import java.util.List;
 import racingcar.Car;
 
-public class ConsoleOutPutHandler implements OutputHandler {
+public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void showRacingCarNameComment() {

@@ -9,11 +9,6 @@ public class ConsoleInputHandler implements InputHandler {
     private final RacingCarInputConverter racingCarInputConverter = new RacingCarInputConverter();
 
     @Override
-    public String getUserInput() {
-        return Console.readLine();
-    }
-
-    @Override
     public List<String> getCarNamesFromUser() {
         String userInput = Console.readLine();
         return racingCarInputConverter.getUserCarName(userInput);
