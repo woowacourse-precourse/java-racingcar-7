@@ -15,6 +15,19 @@ public class InputView {
     }
 
     private List<String> parseCarNames(String input) {
-        return Arrays.asList(input.split(DELIMITER));
+        List<String> carNames = Arrays.asList(input.split(DELIMITER));
+        validateCarNames(carNames);
+        return carNames;
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        for(String name: carNames) {
+            if(name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
+            }
+            if(name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5를 넘을 수 없습니다.");
+            }
+        }
     }
 }
