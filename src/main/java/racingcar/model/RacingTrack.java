@@ -48,4 +48,8 @@ public class RacingTrack {
                 .max()
                 .orElse(0);
     }
+
+    public List<Car> getCarsForTest() {
+        return cars;
+    }
 }
