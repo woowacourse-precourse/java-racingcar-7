@@ -16,6 +16,9 @@ import racingcar.model.game.RandomNumberPicker;
 import racingcar.model.game.TotalRounds;
 
 public class GameTest {
+
+    private static final int MOVEMENT_CRITERIA = 4;
+
     private Game game;
     private String[] names;
     private Cars cars;
@@ -113,5 +116,32 @@ public class GameTest {
                 () -> assertThat(nameOfMaxPositionCars).isEqualTo(
                         List.of(names[indexOfFirstMaxPositionCar], names[indexOfSecondMaxPositionCar]))
         );
+    }
+
+    @Test
+    @DisplayName("뽑힌 숫자가 이동 기준 이상일 때 자동차가 움직인다.")
+    void shouldMoveCarsWhenNumberExceedsMoveCriteria() {
+
+        // given
+        NumberPicker fixedNumberPicker = new NumberPicker() {
+            @Override
+            public int pickNumberInRange(int startInclusive, int endInclusive) {
+                return MOVEMENT_CRITERIA;
+            }
+        };
+
+        Game game = new Game(cars, totalRounds, fixedNumberPicker);
+        List<CarStatus> expectedResult = List.of(
+                new CarStatus(names[0], 1, 1),
+                new CarStatus(names[1], 1, 1),
+                new CarStatus(names[2], 1, 1)
+        );
+
+        // when
+        game.playNextRound();
+        List<CarStatus> statusOfCars = game.getStatusOfCars();
+
+        // then
+        assertThat(statusOfCars).isEqualTo(expectedResult);
     }
 }
