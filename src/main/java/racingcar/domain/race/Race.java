@@ -1,6 +1,8 @@
 package racingcar.domain.race;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.domain.car.Car;
 import racingcar.domain.result.RaceResult;
 import racingcar.domain.result.WinnerDecider;
@@ -11,8 +13,20 @@ public class Race {
     private final Integer totalRounds;
 
     public Race(List<Car> cars, int totalRounds) {
+        validateCarsDuplicate(cars);
         this.cars = cars;
         this.totalRounds = totalRounds;
+    }
+
+    private void validateCarsDuplicate(List<Car> cars) {
+        Set<String> carNameSet = new HashSet<>();
+
+        for (Car car : cars) {
+            if (!carNameSet.add(car.getName())) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + car.getName());
+            }
+        }
+
     }
 
     public RaceResult raceStart() {
@@ -22,6 +36,7 @@ public class Race {
         }
 
         List<Car> winners = WinnerDecider.decideWinners(cars);
+
         return new RaceResult(winners);
     }
 
@@ -34,4 +49,5 @@ public class Race {
     public List<Car> getCars() {
         return cars;
     }
+
 }

@@ -1,6 +1,7 @@
 package racingcar.domain.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +68,22 @@ class RaceTest {
         assertThat(race.getCars().get(0).getPosition()).isEqualTo(3);
         assertThat(race.getCars().get(1).getPosition()).isEqualTo(3);
         assertThat(race.getCars().get(2).getPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("중복된 차 이름이 있으면 예외를 발생시킨다.")
+    @Test
+    void errorDuplicateCars() {
+        // given
+        Car car1 = new Car("Car", () -> true);
+        Car car2 = new Car("Car", () -> true);
+        Car car3 = new Car("Car2", () -> true);
+        List<Car> carsWithDuplicateNames = List.of(car1, car2, car3);
+
+        int totalRounds = 5;
+
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> new Race(carsWithDuplicateNames, totalRounds),
+                "자동차 이름은 중복될 수 없습니다.");
     }
 
 }
