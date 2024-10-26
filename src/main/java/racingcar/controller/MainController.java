@@ -14,6 +14,7 @@ import racingcar.dto.WinnerResponseDto;
 import racingcar.service.MoveRule;
 import racingcar.service.ThresholdScoreMoveRule;
 import racingcar.util.NumberGenerator;
+import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -36,7 +37,7 @@ public class MainController {
     }
 
     public static NumberGenerator createNumberGenerator() {
-        return NumberGenerator.getInstance();
+        return RandomNumberGenerator.getInstance();
     }
 
     public void run() {

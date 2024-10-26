@@ -10,8 +10,8 @@ public final class ThresholdScoreMoveRule implements MoveRule {
     private static final int MAX_NUM = 9;
     private final NumberGenerator numberGenerator;
 
-    public ThresholdScoreMoveRule(final NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    public ThresholdScoreMoveRule(final NumberGenerator randomNumberGenerator) {
+        this.numberGenerator = randomNumberGenerator;
     }
 
     @Override
