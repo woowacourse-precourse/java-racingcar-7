@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class RacingTest {
 
-    private static final RacingCars racingCars = new RacingCars();
-    private final Racing racing = new Racing(racingCars);
+    private static final Cars cars = new Cars();
+    private final Racing racing = new Racing(cars);
 
     @BeforeAll
     static void setUp() {
         IntStream.range(0, 3)
-            .forEach(i -> racingCars.add(new RacingCar("name" + i, 0)));
+            .forEach(i -> cars.add(new RacingCar("name" + i, 0)));
     }
 
     @Test
-    void 레이싱카들이_경주하여_우승자를_반환한다() {
+    void 자동차들이_경주하여_우승자를_반환한다() {
         //given & when
         racing.moveCars();
 
@@ -27,7 +27,7 @@ class RacingTest {
     }
 
     @Test
-    void 레이싱카들의_이름과_위치_표시를_출력한다() {
+    void 자동차들의_이름과_위치_표시를_출력한다() {
         //given
         racing.moveCars();
 

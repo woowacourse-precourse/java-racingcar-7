@@ -3,15 +3,15 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCars {
+public class Cars {
 
-    private final List<RacingCar> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
-    public void add(RacingCar car) {
+    public void add(Car car) {
         cars.add(car);
     }
 
-    public List<RacingCar> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
@@ -20,13 +20,13 @@ public class RacingCars {
 
         return cars.stream()
             .filter(car -> car.isWinner(maxPosition))
-            .map(RacingCar::getName)
+            .map(Car::getName)
             .toList();
     }
 
     private int getMaxPosition() {
         return cars.stream()
-            .mapToInt(RacingCar::getPosition)
+            .mapToInt(Car::getPosition)
             .max()
             .orElse(0);
     }

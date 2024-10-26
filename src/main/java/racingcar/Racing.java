@@ -4,24 +4,24 @@ import java.util.List;
 
 public class Racing {
 
-    private final RacingCars racingCars;
+    private final Cars cars;
 
-    public Racing(RacingCars racingCars) {
-        this.racingCars = racingCars;
+    public Racing(Cars cars) {
+        this.cars = cars;
     }
 
-    public static Racing from(RacingCars racingCars) {
-        return new Racing(racingCars);
+    public static Racing from(Cars cars) {
+        return new Racing(cars);
     }
 
     public List<String> getWinnerCarNames() {
-        return racingCars.getWinners();
+        return cars.getWinners();
     }
 
     public void moveCars() {
-        for (RacingCar racingCar : racingCars.getCars()) {
+        for (Car car : cars.getCars()) {
             if (canMove()) {
-                racingCar.move();
+                car.move();
             }
         }
     }
@@ -37,21 +37,21 @@ public class Racing {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (RacingCar racingCar : racingCars.getCars()) {
-            builder.append(getRacingCarData(racingCar));
+        for (Car car : cars.getCars()) {
+            builder.append(getCarsData(car));
         }
         builder.append("\n");
 
         return builder.toString();
     }
 
-    private String getRacingCarData(RacingCar racingCar) {
+    private String getCarsData(Car car) {
         String positionMark = "-";
 
         return String.format(
             "%s : %s\n",
-            racingCar.getName(),
-            positionMark.repeat(racingCar.getPosition())
+            car.getName(),
+            positionMark.repeat(car.getPosition())
         );
     }
 }

@@ -15,10 +15,10 @@ public class GamePack {
     }
 
     public Racing initRacing() {
-        String names = inputView.inputRacingCarNames();
-        RacingCars racingCars = carRegisterManager.registerRacingCars(names);
+        String names = inputView.inputCarNames();
+        Cars cars = carRegisterManager.register(names);
 
-        return Racing.from(racingCars);
+        return Racing.from(cars);
     }
 
     public Track initTrack() {

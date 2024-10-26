@@ -3,14 +3,14 @@ package racingcar;
 public class CarRegisterManager {
 
     private static final String NAME_DELIMITER = ",";
-    private final RacingCars racingCars = new RacingCars();
+    private final Cars cars = new Cars();
 
-    public RacingCars registerRacingCars(String names) {
+    public Cars register(String names) {
         for(String name : names.split(NAME_DELIMITER)) {
-            racingCars.add(RacingCar.from(name));
+            cars.add(RacingCar.from(name));
         }
 
-        return racingCars;
+        return cars;
     }
 
 }

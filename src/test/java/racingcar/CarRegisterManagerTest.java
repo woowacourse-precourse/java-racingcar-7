@@ -9,26 +9,26 @@ class CarRegisterManagerTest {
     private final CarRegisterManager carRegisterManager = new CarRegisterManager();
 
     @Test
-    void 구분자로_분리된_이름으로_레이싱카를_등록한다() {
+    void 구분자로_분리된_이름으로_경주할_차를_등록한다() {
         //given
-        String cars = "pobi,woni,jun";
+        String carNames = "pobi,woni,jun";
 
         //when
-        RacingCars racingCars = carRegisterManager.registerRacingCars(cars);
+        Cars cars = carRegisterManager.register(carNames);
 
         //then
-        assertThat(racingCars.getCars()).hasSize(3);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
     @Test
-    void 구분자_없이_하나의_레이싱카를_등록한다() {
+    void 구분자_없이_하나의_자동차를_등록한다() {
         //given
-        String cars = "pobi";
+        String carNames = "pobi";
 
         //when
-        RacingCars racingCars = carRegisterManager.registerRacingCars(cars);
+        Cars cars = carRegisterManager.register(carNames);
 
         //then
-        assertThat(racingCars.getCars()).hasSize(1);
+        assertThat(cars.getCars()).hasSize(1);
     }
 }

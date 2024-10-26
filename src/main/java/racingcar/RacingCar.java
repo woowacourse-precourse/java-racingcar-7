@@ -1,14 +1,10 @@
 package racingcar;
 
 
-public class RacingCar {
-
-    private final String name;
-    private int position;
+public class RacingCar extends Car {
 
     public RacingCar(String name, int position) {
-        this.name = name;
-        this.position = position;
+        super(name, position);
     }
 
     public static RacingCar from(String name) {
@@ -23,20 +19,13 @@ public class RacingCar {
         }
     }
 
+    @Override
     public void move() {
         position += 1;
     }
 
+    @Override
     public boolean isWinner(int maxPosition) {
         return position == maxPosition;
     }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
 }
