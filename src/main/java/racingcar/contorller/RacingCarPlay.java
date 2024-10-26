@@ -27,6 +27,26 @@ public class RacingCarPlay {
         for (int i = 0; i < attempts; i++) {
             currentGamePlay(cars);
         }
+
+        String winners = determineWinners(cars);
+        message.printEndGameMessage(winners);
+    }
+
+    private static String determineWinners(List<Car> cars) {
+        int maxScore = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            int score = car.getGameTotalScore();
+            if(score > maxScore) {
+                maxScore = score;
+                winners.clear();
+                winners.add(car.getCarName());
+            } else if(score == maxScore) {
+                winners.add(car.getCarName());
+            }
+        }
+        return String.join(", ",winners);
     }
 
 

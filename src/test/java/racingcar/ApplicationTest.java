@@ -34,7 +34,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 자동차_이름_길이_검사() {
-        // 자동차 개수가 5개 미만인 경우 테스트
+        // 자동차 이름의 길이가 5 미만인 경우 테스트
         String[] carNames = {"Car1","racingCar1"};
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 자동차_중복_검사() {
-        // 자동차 개수가 5개 미만인 경우 테스트
+        // 자동차의 이름이 같은 경우 중복 테스트
         String[] carNames = {"Car1", "Car1"};
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
