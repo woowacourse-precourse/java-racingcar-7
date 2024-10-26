@@ -15,5 +15,6 @@ public class GameView {
 
     public void printRoundResult(List<String> results) {
         results.forEach(System.out::println);
+        System.out.println();
     }
 }
