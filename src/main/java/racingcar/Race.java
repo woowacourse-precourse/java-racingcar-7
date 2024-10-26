@@ -22,6 +22,7 @@ public class Race {
             executeRound();
         }
         findWinner();
+        displayWinner();
     }
 
     private void executeRound() {
@@ -31,6 +32,11 @@ public class Race {
             car.displayRoundResult();
         }
         System.out.println();
+    }
+
+    private void displayWinner() {
+        String winner = String.join(", ", winnerList);
+        System.out.println("최종 우승자 : " + winner);
     }
 
     private void findWinner() {
