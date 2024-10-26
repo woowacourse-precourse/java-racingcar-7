@@ -7,20 +7,24 @@ import racingcar.domain.Race;
 import racingcar.domain.RoundProgress;
 import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 import racingcar.vo.Name;
 import racingcar.vo.Round;
 
 public class RacingController {
     private final InputView inputView;
+    private final OutputView outputView;
     private final StringSplitter stringSplitter;
     private final NumberParser numberParser;
 
     public RacingController(
             InputView inputView,
+            OutputView outputView,
             StringSplitter stringSplitter,
             NumberParser numberParser
     ) {
         this.inputView = inputView;
+        this.outputView = outputView;
         this.stringSplitter = stringSplitter;
         this.numberParser = numberParser;
     }
@@ -37,12 +41,12 @@ public class RacingController {
 
         Round round = Round.from(parsedNumber);
 
-        Race race = Race.of(
+        Race race = Race.initializeRace(
                 Cars.from(cars),
                 RoundProgress.createFromTotalRounds(round)
         );
 
         race.execute(RandomMovingStrategy.getInstance());
-        
+        outputView.printRoundResults(race.getEntireHistory());
     }
 }

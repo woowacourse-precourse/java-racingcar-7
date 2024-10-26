@@ -5,6 +5,7 @@ import static racingcar.constant.ExceptionMessage.NO_CARS;
 import java.util.List;
 import racingcar.strategy.MovingStrategy;
 import racingcar.util.EnhancedList;
+import racingcar.vo.CarsPositionSnapshot;
 
 public class Cars {
     private final EnhancedList<Car> value;
@@ -32,5 +33,9 @@ public class Cars {
 
     public List<Car> getCarsWithMaxStep() {
         return value.maxAll();
+    }
+
+    public CarsPositionSnapshot createSnapshot() {
+        return CarsPositionSnapshot.from(value);
     }
 }

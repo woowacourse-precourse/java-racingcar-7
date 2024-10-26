@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
     private static final int INITIAL_POSITION = 0;
-    private final int position;
+    private final int value;
 
-    private Position(int position) {
-        this.position = position;
+    private Position(int value) {
+        this.value = value;
     }
 
     public static Position initial() {
@@ -15,12 +15,16 @@ public class Position implements Comparable<Position> {
     }
 
     public Position forward() {
-        return new Position(position + 1);
+        return new Position(value + 1);
+    }
+    
+    public int getValue() {
+        return value;
     }
 
     @Override
     public int compareTo(Position other) {
-        return Integer.compare(this.position, other.position);
+        return Integer.compare(this.value, other.value);
     }
 
     @Override
@@ -31,11 +35,11 @@ public class Position implements Comparable<Position> {
         if (!(o instanceof Position other)) {
             return false;
         }
-        return position == other.position;
+        return value == other.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(position);
+        return Objects.hashCode(value);
     }
 }

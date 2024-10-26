@@ -18,7 +18,7 @@ public class RoundProgress {
     }
 
     public boolean hasNext() {
-        return currentRound.getCount() < totalRounds.getCount();
+        return currentRound.getCount() <= totalRounds.getCount();
     }
 
     public void progress() {

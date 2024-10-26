@@ -24,4 +24,8 @@ public class Name {
             throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.format(MIN_LENGTH, MAX_LENGTH));
         }
     }
+
+    public String getValue() {
+        return value;
+    }
 }
