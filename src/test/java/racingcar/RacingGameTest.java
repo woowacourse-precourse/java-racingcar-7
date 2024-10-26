@@ -48,4 +48,23 @@ public class RacingGameTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("우승자 결정 테스트")
+    class GetWinnersTest {
+
+        @Test
+        @DisplayName("가장 멀리 간 자동차는 우승자로 선정된다.")
+        void getWinnersReturnsCorrectWinners() {
+            List<String> names = Arrays.asList("pobi", "crong", "honux");
+            int moveCount = 3;
+            MoveStrategy moveStrategy = new RandomMoveStrategy(new FixedRandomGenerator(4));
+
+            RacingGame racingGame = new RacingGame(names, moveCount, moveStrategy);
+            racingGame.startRace();
+
+            List<Car> winners = racingGame.getWinners();
+            assertThat(winners).hasSize(3);
+        }
+    }
 }

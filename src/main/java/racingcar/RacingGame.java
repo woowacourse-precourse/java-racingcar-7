@@ -44,4 +44,25 @@ public class RacingGame {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        int max = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > max) {
+                max = car.getPosition();
+            }
+        }
+        return max;
+    }
 }
