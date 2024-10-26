@@ -1,10 +1,5 @@
 package racingcar.model;
 
-import static racingcar.exception.InvalidInputException.validateCarNames;
-import static racingcar.util.Parsing.convertStringArrToMap;
-import static racingcar.util.Parsing.joinWinner;
-import static racingcar.util.Parsing.splitCarName;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedList;
 import java.util.List;
