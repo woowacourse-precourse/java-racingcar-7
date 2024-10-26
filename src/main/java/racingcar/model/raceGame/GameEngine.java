@@ -3,18 +3,17 @@ package racingcar.model.raceGame;
 import racingcar.model.car.Car;
 import racingcar.model.car.CarRepository;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class GameEngine {
-    private final CarRepository carRepository;
-    private final List<String> winners;
+
     private static final int PROGRESS_CONDITION = 4;
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
-
+    private final CarRepository carRepository;
+    private final List<String> winners;
 
     public GameEngine(CarRepository carRepository){
         this.carRepository = carRepository;

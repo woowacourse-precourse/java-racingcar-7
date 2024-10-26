@@ -10,7 +10,6 @@ import racingcar.model.car.Car;
 public class OutputView {
 
     public static void printCarProgress(List<Car> carList){
-
         for(Car car : carList){
             printSingleCarProgress(car);
         }

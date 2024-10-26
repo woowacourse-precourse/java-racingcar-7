@@ -12,7 +12,6 @@ public class CarNameValidator implements Validator<String[]>{
 
     @Override
     public void validate(String[] input){
-
         setInput(input);
         nameSet = new HashSet<>();
 

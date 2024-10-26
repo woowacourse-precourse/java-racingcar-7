@@ -6,8 +6,6 @@ import racingcar.util.StringProcessor;
 import racingcar.validator.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-
 import java.util.List;
 
 public class GameController {
@@ -16,6 +14,7 @@ public class GameController {
     private final Validator<String> trialValidator;
     private final CarRepository carRepository;
     private final GameEngine gameEngine;
+
     public GameController(Validator<String[]> carValidator, Validator<String> trialValidator, CarRepository carRepository){
         this.carValidator = carValidator;
         this.trialValidator = trialValidator;
@@ -36,7 +35,6 @@ public class GameController {
 
     private String[] getCarNames(){
         String userCarInput = InputView.userInputCar();
-
 
         String[] carNameArr = StringProcessor.process(userCarInput);
         carValidator.validate(carNameArr);

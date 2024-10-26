@@ -7,7 +7,6 @@ import static racingcar.constant.InputOutputConstants.INPUT_TRIAL_MESSAGE;
 import static racingcar.constant.InputOutputConstants.RUN_MESSAGE;
 import static racingcar.constant.InputOutputConstants.END_LINE;
 
-
 public class InputView {
     public static String userInputCar(){
         System.out.println(INPUT_CAR_MESSAGE);

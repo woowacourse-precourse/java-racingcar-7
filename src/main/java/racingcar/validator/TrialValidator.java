@@ -2,8 +2,8 @@ package racingcar.validator;
 
 public class TrialValidator implements Validator<String>{
 
-    private int trial;
     private static final int MINIMUM_TRIAL_COUNT = 0;
+    private int trial;
 
     @Override
     public void validate(String input){
