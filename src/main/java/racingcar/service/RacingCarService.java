@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
@@ -22,5 +23,19 @@ public class RacingCarService {
         }
 
         return cars;
+    }
+
+    protected void updateLocation(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNumber = getRandomNumber();
+
+            if (randomNumber >= 4) {
+                car.move();
+            }
+        }
+    }
+
+    protected int getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
