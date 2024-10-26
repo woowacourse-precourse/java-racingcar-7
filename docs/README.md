@@ -9,9 +9,9 @@
 3.2. 시도 횟수 관련   
 > 4. 비즈니스 로직   
 4.1. Car (Model)   
-4.2. 🤔🤔🤔 AllCars (Model)   
-4.3. 전진orNot   
-4.4. 우승자 판별   
+4.2. CarManager (Model)   
+4.3. 이동 로직   
+
 
 
 ### 1. 입출력
@@ -43,16 +43,17 @@
 ### 4. 비즈니스 로직
 #### 4.1. Car (Model)
 - 이름(String) , 전진 칸 수(int)
-- 이름 getter, setter
+- 이름 getter
 - 전진 칸수 getter, setter
-#### 4.2. 🤔🤔🤔 AllCars (Model)
-- 🤔🤔🤔 List<Car> allCars
-#### 4.2. 전진orNot
+- 전진 칸수 1 add
+#### 4.2. CarManager (Model)
+- cars getter
+- List<Car> 초기화
+- List<Boolean>에 따라 cars 전진 칸수 증가
+- 제일 전진 칸 수가 큰 자동차들 반환
+#### 4.3. 이동 로직
 - `시도 횟수 * 자동차 수` 만큼 랜덤 정수 뽑기 (List<Integer>)
 - 4이상이냐 아니냐에 따라, boolean 타입으로 변환 (List<Boolean>)
 - 시도 횟수 만큼 아래 로직 반복
   - 자동차 수 만큼(ex: 3대의 자동차 -> 0,1,2) List<Boolean> 결과에 따라 Car 전진 칸 수 add
-  - add 이후 실행 결과 출력   
-🤔🤔🤔 클래스 분리 필요, 로직 재검토
-#### 4.3. 우승자 판별
-- 제일 전진 칸 수가 큰 자동차들 반환
+  - add 이후 실행 결과 출력
