@@ -3,10 +3,10 @@ package racingcar.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputProcessor {
+public class CarNameInputProcessor {
     private final String carNames;
 
-    public InputProcessor(String carNames) {
+    public CarNameInputProcessor(String carNames) {
         this.carNames = carNames;
         validateInput();
     }

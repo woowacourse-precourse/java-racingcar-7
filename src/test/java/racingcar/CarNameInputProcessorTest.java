@@ -7,23 +7,23 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-import racingcar.utils.InputProcessor;
+import racingcar.utils.CarNameInputProcessor;
 
-public class InputProcessorTest {
+public class CarNameInputProcessorTest {
 
     @DisplayName("빈 문자열 또는 공백인 경우 - IllegalArgumentException 반환")
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"  ", "\t", "\n"})
     void testEmptyOrBlankInput(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new InputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> new CarNameInputProcessor(input));
     }
 
     @DisplayName("입력 값의 맨 앞이나 맨 뒤에 쉼표가 오는 경우 - IllegalArgumentException 반환")
     @ParameterizedTest
     @ValueSource(strings = {", pobi, woni", "pobi, woni,"})
     void testInputWithComma(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new InputProcessor(input));
+        assertThrows(IllegalArgumentException.class, () -> new CarNameInputProcessor(input));
     }
 
 
@@ -31,7 +31,7 @@ public class InputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,, woni", "jun, pobi, ,pobi "})
     void testEmptyOrBlankCarName(String input) {
-        InputProcessor inputProcessor = new InputProcessor(input);
+        CarNameInputProcessor inputProcessor = new CarNameInputProcessor(input);
         assertThrows(IllegalArgumentException.class, inputProcessor::splitCarNames);
     }
 
@@ -39,7 +39,7 @@ public class InputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi123, woni, jun", "pobi, 123456, jun", "pobi, woni, won123"})
     void testCarNameLengthExceedsLimit(String input) {
-        InputProcessor inputProcessor = new InputProcessor(input);
+        CarNameInputProcessor inputProcessor = new CarNameInputProcessor(input);
         assertThrows(IllegalArgumentException.class, inputProcessor::splitCarNames);
     }
 
@@ -47,7 +47,7 @@ public class InputProcessorTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi, pobi, jun", "pobi, jun, jay, king, pobi", "gh,  pobi,gh, pobi"})
     void testDuplicateCarNames(String input) {
-        InputProcessor inputProcessor = new InputProcessor(input);
+        CarNameInputProcessor inputProcessor = new CarNameInputProcessor(input);
         assertThrows(IllegalArgumentException.class, inputProcessor::splitCarNames);
     }
 
@@ -55,7 +55,7 @@ public class InputProcessorTest {
     @ParameterizedTest
     @MethodSource("provideValidCarName")
     void testValidCarName(String input, List<String> expected) {
-        InputProcessor inputProcessor = new InputProcessor(input);
+        CarNameInputProcessor inputProcessor = new CarNameInputProcessor(input);
         List<String> result = inputProcessor.splitCarNames();
         assertEquals(expected, result);
     }
