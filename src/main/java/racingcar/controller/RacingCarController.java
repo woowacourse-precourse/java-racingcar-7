@@ -3,7 +3,6 @@ package racingcar.controller;
 import java.util.ArrayList;
 import racingcar.RacingCar;
 import racingcar.exception.InvalidAttemptException;
-import racingcar.exception.InvalidNameException;
 import racingcar.model.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
@@ -15,8 +14,6 @@ import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
 
 public class RacingCarController {
-
-    private static final String COMMA = ",";
 
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
@@ -44,21 +41,13 @@ public class RacingCarController {
 
     private String readNames(OutputHandler outputHandler, InputHandler inputHandler) {
         outputHandler.showCommentForCarNames();
-        String inputNames = inputHandler.read();
-        validateInputNames(inputNames);
-        return inputNames;
-    }
-
-    private void validateInputNames(final String value) {
-        if (value.endsWith(COMMA)) {
-            throw new InvalidNameException("이름은 비어있을 수 없습니다.");
-        }
+        return inputHandler.read();
     }
 
     private Cars initializeCars(final Splitter splitter, final String inputNames,
                                 final MovingStrategy movingStrategy) {
         Cars cars = new Cars(new ArrayList<>());
-        for (String name : splitter.splitFrom(inputNames, COMMA)) {
+        for (String name : splitter.splitFrom(inputNames)) {
             cars.add(new Car(name, movingStrategy));
         }
         return cars;

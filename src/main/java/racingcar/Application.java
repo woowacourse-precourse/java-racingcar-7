@@ -15,6 +15,7 @@ import racingcar.view.OutputHandler;
 
 public class Application {
 
+    private static final String DELIMITER = ",";
     private static final int RANDOM_NUMBER_START_INCLUSIVE = 0;
     private static final int RANDOM_NUMBER_END_INCLUSIVE = 9;
     private static final int FORWARD_MIN_INCLUSIVE = 4;
@@ -22,7 +23,7 @@ public class Application {
     public static void main(String[] args) {
         InputHandler inputHandler = new ConsoleInputHandler();
         OutputHandler outputHandler = new ConsoleOutputHandler();
-        Splitter splitter = new Splitter();
+        Splitter splitter = new Splitter(DELIMITER);
         RandomNumberGenerator randomNumberGenerator = new RandomIntegerGenerator(RANDOM_NUMBER_START_INCLUSIVE,
                 RANDOM_NUMBER_END_INCLUSIVE);
         NumberComparable numberComparable = new IntegerComparable();
