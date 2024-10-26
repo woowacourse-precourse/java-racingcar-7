@@ -1,7 +1,9 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
     private List<Car> carList;
@@ -13,9 +15,16 @@ public class Cars {
     public static Cars createCarList(String carNamesInput) {
         String[] carNames = carNamesInput.split(",");
         List<Car> carList = new ArrayList<>();
+        Set<String> uniqueNames = new HashSet<>();
 
         for (String name : carNames) {
             String carName = name.trim();
+
+            if (uniqueNames.contains(carName)) {
+                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + carName);
+            }
+            uniqueNames.add(carName);
+
             carList.add(new Car(carName));
         }
 
