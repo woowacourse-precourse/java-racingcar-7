@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Name;
+import racingcar.model.CarName;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -39,18 +39,15 @@ public class RacingController {
     }
 
     private int insertTryCount() {
-        outputView.printAttemptCountPrompt();
-        return inputView.IntInput();
+        return inputView.promptForAttemptCount();
     }
 
     private void initializeCars() {
-        outputView.printCarNamesPrompt();
-        String carInput = inputView.input();
-        String[] carInputs = carInput.split(",");
-
+        String input = inputView.promptForCarNames();
+        String[] carInputs = input.split(",");
         List<Car> inputCars = new ArrayList<>();
-        for (String input : carInputs) {
-            Name carName = Name.from(input);
+        for (String car : carInputs) {
+            CarName carName = CarName.from(car);
             inputCars.add(Car.from(carName));
         }
         cars = Cars.from(inputCars);
