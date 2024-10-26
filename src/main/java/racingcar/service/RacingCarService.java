@@ -10,7 +10,7 @@ public class RacingCarService {
         String[] carNameArray = carNameList.split(",");
 
         for(String name: carNameArray){
-            carNames.add(name.trim());
+            name = name.trim();
 
             if (!carNames.add(name)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
