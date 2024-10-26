@@ -11,13 +11,12 @@ class Car {
     private int placement;
 
     public Car(String name) {
-       CheckCarName(name);
+       checkCarName(name);
         this.name = name;
         this.placement = 0;
     }
 
-    //이름 확인하기 -> 예외상황 생각해둬야함
-    private void CheckCarName(String name) {
+    private void checkCarName(String name) {
         if (name.length() > 5) { throw new IllegalArgumentException();}
     }
 
@@ -66,9 +65,9 @@ class Racing {
         }
     }
 
-    public List<String> Winners() {
+    public List<String> winners() {
         int maxPlacement = getMaxPlacement();
-        return getWinners(maxPlacement);
+        return getwinners(maxPlacement);
     }
 
     private int getMaxPlacement() {
@@ -78,14 +77,14 @@ class Racing {
                 .orElse(0);
     }
 
-    private List<String> getWinners(int maxPlacement) {
-        List<String> Winners = new ArrayList<>();
+    private List<String> getwinners(int maxPlacement) {
+        List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.getPlacement() == maxPlacement) { Winners.add(car.getName()); }
+            if (car.getPlacement() == maxPlacement) { winners.add(car.getName()); }
         }
 
-        return Winners;
+        return winners;
     }
 }
 
@@ -96,13 +95,13 @@ public class Application {
             List<String> carNames = inputCarNames();
             int trialCount = inputTrialCount();
 
-            Racing Racing = new Racing(carNames, trialCount);
-            Racing.startRacing();
+            Racing racing = new Racing(carNames, trialCount);
+            racing.startRacing();
 
-            List<String> Winners = Racing.Winners();
-            System.out.println("최종 우승자 : " + String.join(", ", Winners));
+            List<String> winners = racing.winners();
+            System.out.println("최종 우승자 : " + String.join(", ", winners));
 
-        } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
+        } catch (IllegalArgumentException e) { throw new IllegalArgumentException(); }
     }
 
     //자동차 이름 기능
@@ -110,14 +109,14 @@ public class Application {
        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
        String carNamesInput = Console.readLine();
        List<String> carNames = List.of(carNamesInput.split(","));
-       CheckCarName(carNames);
+       checkCarName(carNames);
        return carNames;
     }
 
-    private static void CheckCarName(List<String> carNames) {
+    private static void checkCarName(List<String> carNames) {
         if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
         for (String name : carNames) {
-            if (!name.contains(",")) { throw new IllegalArgumentException(); }
+            if (name.isBlank()) { throw new IllegalArgumentException(); }
         }
     }
 
@@ -126,7 +125,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String trialCountInput = Console.readLine();
         int trialCount = parseTrialCount(trialCountInput);
-        CheckTrialCount(trialCount);
+        checkTrialCount(trialCount);
         return trialCount;
     }
 
@@ -135,7 +134,7 @@ public class Application {
         catch (NumberFormatException e) { throw new IllegalArgumentException(); }
     }
 
-    private static void CheckTrialCount(int trialCount) {
+    private static void checkTrialCount(int trialCount) {
         if (trialCount <= 0) { throw new IllegalArgumentException(); }
     }
 }
