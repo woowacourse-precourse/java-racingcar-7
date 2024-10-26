@@ -16,18 +16,25 @@ public class RaceController {
     private final InputParser inputParser = new InputParser();
 
     public void start() {
-        outputView.printGetCarsNameGuide();
-        String carNames = inputView.getCarsName();
-        outputView.printGetAttemptCountGuide();
-        int attemptCount = inputView.getAttemptCount();
-        inputValidator.validateAttempts(attemptCount);
-        inputValidator.isStringNull(carNames);
-        List<String> cars = inputParser.parseInput(carNames);
-        inputValidator.validateCarNames(cars);
-
-        RaceService raceService = new RaceService(attemptCount, cars);
+        RaceService raceService = new RaceService(getCars(), getAttemptCount());
         raceService.raceStart();
         outputView.printResult(raceService.getResult());
         outputView.printWinner(raceService.getWinners());
+    }
+
+    private int getAttemptCount() {
+        outputView.printGetAttemptCountGuide();
+        int attemptCount = inputView.getAttemptCount();
+        inputValidator.validateAttempts(attemptCount);
+        return attemptCount;
+    }
+
+    private List<String> getCars() {
+        outputView.printGetCarsNameGuide();
+        String carNames = inputView.getCarsName();
+        inputValidator.isStringNull(carNames);
+        List<String> cars = inputParser.parseInput(carNames);
+        inputValidator.validateCarNames(cars);
+        return cars;
     }
 }

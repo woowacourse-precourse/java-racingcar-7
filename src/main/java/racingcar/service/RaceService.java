@@ -11,7 +11,7 @@ public class RaceService {
     private int attemptCount;
     private List<String> carNames;
 
-    public RaceService(int attemptCount, List<String> carNames) {
+    public RaceService(List<String> carNames, int attemptCount) {
          this.attemptCount = attemptCount;
          this.carNames = carNames;
     }
