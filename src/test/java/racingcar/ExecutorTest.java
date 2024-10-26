@@ -18,12 +18,14 @@ class ExecutorTest {
     Executor executor = new Executor(ioController, parser, validator);
 
     Car testCar1, testCar2, testCar3;
+    List<Car> test;
 
     @BeforeEach
     void setUp() {
         testCar1 = new Car("test1");
         testCar2 = new Car("test2");
         testCar3 = new Car("test3");
+        test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
     }
 
     @Test
@@ -40,8 +42,6 @@ class ExecutorTest {
 
     @Test
     void 자동차_여러대_이동() {
-        List<Car> test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
-
         assertRandomNumberInRangeTest(
                 () -> {
                     executor.moveCars(test);
@@ -55,8 +55,6 @@ class ExecutorTest {
 
     @Test
     void 우승자_반환() {
-        List<Car> test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
-
         testCar1.move();
         List<Car> expected1 = new ArrayList<>(List.of(testCar1));
         assertThat(executor.getWinners(test)).isEqualTo(expected1);
