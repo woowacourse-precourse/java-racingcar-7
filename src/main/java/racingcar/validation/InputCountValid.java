@@ -19,7 +19,7 @@ public class InputCountValid {
     }
 
     public static void validMoreCount(int count) {
-        if (count > Integer.MAX_VALUE) {
+        if (count == Integer.MAX_VALUE) {
             throw new MoreCountException();
         }
     }
