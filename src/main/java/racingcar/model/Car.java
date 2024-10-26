@@ -1,7 +1,7 @@
 package racingcar.model;
 public class Car {
     private final Name name;
-    private final Distance distance;
+    private Distance distance;
 
     private Car(Name name) {
         this.name = name;
