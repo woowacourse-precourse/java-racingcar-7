@@ -11,6 +11,10 @@ class Car {
     public Car(String name) {
         this.name = name;
     }
+
+    public void moveOnePosition() {
+        position++;
+    }
 }
 
 public class Application {
@@ -27,6 +31,8 @@ public class Application {
         totalRaceCount = getTotalRaceCount();
 
         List<Car> cars = createCars(carNames);
+
+        playRaceInTotalCounts(cars, totalRaceCount);
 
     }
 
@@ -83,5 +89,26 @@ public class Application {
         }
         return cars;
     }
+
+    public static void playRaceInTotalCounts(List<Car> cars, int totalRaceCount) {
+        for (int i = 0; i < totalRaceCount; i++) {
+            moveAllOfCars(cars);
+        }
+    }
+
+    public static void moveAllOfCars(List<Car> cars) {
+        for (Car car : cars) {
+            moveCar(car);
+        }
+    }
+
+    public static void moveCar(Car car) {
+        int randomValue = Randoms.pickNumberInRange(0, 9);
+        if (randomValue >= 4) {
+            car.moveOnePosition();
+        }
+    }
+
+
 
 }
