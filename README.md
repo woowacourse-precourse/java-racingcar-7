@@ -94,8 +94,6 @@ jun : -----
     - 자동차 게임을 진행한다.
 - displayGameProgress
   - 게임의 진행 상황을 출력한다.
-- findWinner
-  - 우승자를 찾는다.
 - getWinner
   - 최종 우승자 목록을 출력한다.
 
