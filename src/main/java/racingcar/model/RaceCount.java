@@ -9,7 +9,7 @@ public record RaceCount(int raceCount) {
         int parsedRaceCount;
 
         try{
-            parsedRaceCount = Integer.getInteger(raceCount);
+            parsedRaceCount = Integer.parseInt(raceCount);
         }catch(Exception e){
             throw new IllegalArgumentException(PARSE_ERROR_STRING_TO_INT.getMessage());
         }
