@@ -9,7 +9,7 @@ public class ValidateError {
     private static final String EXCEED_CAR_NAME_LIMIT = "자동차의 이름은 5자 이하만 가능합니다.";
 
     public static void validateCarName(String carName) {
-        if (carName == null || carName.isEmpty()) {
+        if (carName == null || carName.trim().isEmpty()) {
             throw new IllegalArgumentException(NO_EXIST_CAR_NAME);
         }
         if (carName.length() > 5) {
