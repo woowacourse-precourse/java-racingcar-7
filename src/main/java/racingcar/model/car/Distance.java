@@ -4,7 +4,7 @@ public class Distance {
 
   private final String distanceShape = "-";
 
-  private StringBuilder distance;
+  private final StringBuilder distance;
 
   public Distance() {
     distance = new StringBuilder();

@@ -4,7 +4,7 @@ import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 
 public class OutputView {
-    private static String StartOutputMessage = "실행 결과";
+    private static final String StartOutputMessage = "실행 결과";
 
     public static void startOutput(){
       System.out.println(StartOutputMessage);
