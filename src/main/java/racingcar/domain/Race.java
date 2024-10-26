@@ -5,12 +5,12 @@ import java.util.List;
 public class Race {
     private final Round round;
     private final List<Car> cars;
-    private final MoveCondition moveCondition;
+    private final RaceRule raceRule;
 
-    public Race(Round round, List<Car> cars, MoveCondition moveCondition) {
+    public Race(Round round, List<Car> cars, RaceRule raceRule) {
         this.round = round;
         this.cars = cars;
-        this.moveCondition = moveCondition;
+        this.raceRule = raceRule;
     }
 
     public List<Car> proceed() {
@@ -30,7 +30,7 @@ public class Race {
     }
 
     private void moveCar(Car car) {
-        if (moveCondition.isSatisfied()) {
+        if (raceRule.canMove()) {
             car.move();
         }
     }
@@ -40,20 +40,10 @@ public class Race {
             throw new IllegalArgumentException();
         }
 
-        int maxMovement = getMaxMovement();
-        return cars.stream()
-                .filter(car -> car.getMovement() == maxMovement)
-                .toList();
+        return raceRule.determineWinners(cars);
     }
 
     public boolean isGameEnd() {
         return !round.hasNext();
-    }
-
-    private int getMaxMovement() {
-        return cars.stream()
-                .mapToInt(Car::getMovement)
-                .max()
-                .orElse(0);
     }
 }
