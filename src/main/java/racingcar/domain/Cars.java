@@ -2,12 +2,17 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void moveForRounds(int count) {
+        IntStream.range(0, count).forEach(i -> moveAll());
     }
 
     public void moveAll() {
