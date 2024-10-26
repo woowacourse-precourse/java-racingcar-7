@@ -12,10 +12,12 @@ import racingcar.domain.error.ErrorMessage;
 public class Racing {
 
     private List<RacingCar> racingCars = new ArrayList<>();
+    private int tryCnt;
 
 
     public void doRacing() {
         setRacingCars();
+        setTryCount();
     }
 
     private void setRacingCars() {
@@ -50,6 +52,19 @@ public class Racing {
         racingCars.stream().forEach(r -> System.out.println(r.getName()));
     }
 
+    private void setTryCount() {
+        System.out.println(RacingConstant.INPUT_TRY_COUNT_MESSAGE);
+        try {
+            tryCnt = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT);
+        }
+
+        if (isInvalidTryCount()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT);
+        }
+    }
+
     private boolean isInvalidInputTextForRacingCars(String inputText) {
         if (inputText == null || inputText.isBlank()) {
             return true;
@@ -64,6 +79,13 @@ public class Racing {
         }
 
         return false;
+    }
+
+    private boolean isInvalidTryCount() {
+        if (1 <= tryCnt && tryCnt <= 10) {
+            return false;
+        }
+        return true;
     }
 
     public List<RacingCar> getRacingCars() {
