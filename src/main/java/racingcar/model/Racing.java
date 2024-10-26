@@ -43,6 +43,7 @@ public class Racing {
     }
 
     public void race() {
+        validateAttempt(attempt);
         this.attempt--;
         cars.forEach(Car::tryMove);
     }
