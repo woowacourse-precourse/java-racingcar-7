@@ -23,15 +23,30 @@ public class Application {
         LinkedList<Car> carList = new LinkedList<>();
         carList = parsingCarName(carNames);
 
+        System.out.println(carList);
+
     }
 
-    public static LinkedList<Car> parsingCarName(String carNames){
+    static LinkedList<Car> parsingCarName(String carNames){
         LinkedList<Car> carList = new LinkedList<>();
 
+        if(carNames == null || carNames.isBlank())
+            throw new IllegalArgumentException();
+
+
         for(String name : carNames.split(",")){
-            carList.add(new Car(name, 0));
+            checkCarName(name);
+            carList.add(new Car(name.trim(), 0));
         }
 
         return carList;
+    }
+
+    static void checkCarName(String name){
+        if(name == null || name.isBlank())
+            throw new IllegalArgumentException();
+
+        if(name.length() > 5)
+            throw new IllegalArgumentException();
     }
 }
