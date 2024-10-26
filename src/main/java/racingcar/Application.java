@@ -31,10 +31,8 @@ public class Application {
         int lap = indexController.displayRaceLapInputPage();
 
         // 4. 레이스 시작 후 차수별 실행결과 출력
+        raceController.raceStart(lap);
 
-
-
-
-        // 6. 우승자 보여주기
+        // 5. 우승자 보여주기
     }
 }

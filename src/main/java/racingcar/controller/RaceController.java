@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
+import racingcar.domain.Race;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.service.RaceService;
 
@@ -27,12 +27,17 @@ public class RaceController {
     }
     //------------------------//
 
-    public void saveAll(Cars cars) {
-        raceService.saveAll(cars);
-    }
-
-    public void isCarNameValid(CarsSaveRequestDto requestDto) {
+    public void saveAll(CarsSaveRequestDto requestDto) {
         raceService.isCarNameValid(requestDto);
+        raceService.saveAll(requestDto);
     }
 
+    public void raceStart(int lap) {
+        raceService.isLapValid(lap);
+        Race race = raceService.createRace(lap);
+        raceService.getCarMovementByLap(race);
+        // 회원마다 랜덤값에 따라 상태 변경 및 전진 추가
+        // lap 1회당 결과 출력
+
+    }
 }

@@ -27,6 +27,10 @@ public class RaceRepository {
         carRepository.add(car);
     }
 
+    public Cars findAll() {
+        return new Cars(carRepository);
+    }
+
     public Car findByCarName(String name) {
         return carRepository.stream().filter(c -> c.getName().equals(name))
                 .findFirst()

@@ -1,9 +1,14 @@
 package racingcar.service;
 
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 import racingcar.domain.Cars;
+import racingcar.domain.Race;
 import racingcar.domain.dto.CarsSaveRequestDto;
 import racingcar.domain.repository.RaceRepository;
 import racingcar.validation.CarNameValidator;
+import racingcar.validation.LapValidator;
+import racingcar.view.OutputView;
 
 /**
  * packageName    : racingcar.service
@@ -21,6 +26,7 @@ public class RaceService {
     //----- 싱글톤 패턴 적용 -----//
     private static final RaceService instance = new RaceService();
     private final RaceRepository raceRepository = RaceRepository.getInstance();
+    private final OutputView outputView = OutputView.getInstance();
     private RaceService(){}
     public static RaceService getInstance() {
         return instance;
@@ -36,4 +42,23 @@ public class RaceService {
         CarNameValidator.run(requestDto);
     }
 
+    public void isLapValid(int lap) {
+        LapValidator.run(lap);
+    }
+
+    public void getCarMovementByLap(Race race) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+            for (int i = 0; i < race.getLap(); i++) {
+                race.updateCarDataByLap();
+                outputView.displayResultByLap(race,bw);
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public Race createRace(int lap) {
+        Cars cars = raceRepository.findAll();
+        return new Race(cars, lap);
+    }
 }
