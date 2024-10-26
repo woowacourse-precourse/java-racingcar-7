@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Validator {
     private static final int CAR_MAX_LENGTH = 5;
-    private static final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";
+    private static final String ALPHA_NUMERIC_REGEX = "[a-zA-Z0-9]+";
     private static final int MOVE_ATTEMPT_COUNT_MAX = 100;
     private static final int MOVE_ATTEMPT_COUNT_MIN = 1;
 
@@ -33,7 +33,7 @@ public class Validator {
 
     public static void checkAlphaNumericName(List<String> splitCarNames) {
         for (String carName : splitCarNames) {
-            if (!carName.isEmpty() && !carName.matches(ALPHA_NUMERIC_PATTERN)) {
+            if (!carName.isEmpty() && !carName.matches(ALPHA_NUMERIC_REGEX)) {
                 throw new IllegalArgumentException("자동차의 이름은 영어 대소문자, 숫자로만 가능합니다.: " + carName);
             }
         }
