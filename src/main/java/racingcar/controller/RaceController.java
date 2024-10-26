@@ -29,8 +29,5 @@ public class RaceController {
 
         System.out.println();
         outputView.outputResultMessage();
-
-        List<String> winners = raceService.decisionWinners(cars);
-        outputView.outputWinners(winners);
     }
 }

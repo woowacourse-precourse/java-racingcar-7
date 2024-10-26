@@ -10,4 +10,11 @@ public class RandomNumber {
     public static int generateRandomNumber() {
         return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
+
+    public static boolean isMoreFour(int randomNumber) {
+        if (randomNumber >= 4) {
+            return true;
+        }
+        return false;
+    }
 }
