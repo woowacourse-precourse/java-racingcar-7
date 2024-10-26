@@ -1,6 +1,8 @@
 package racingcar.domain.validator;
 
 public class TrialCountsValidator {
+    private final static String EXCEPTION_MESSAGE_NOT_NUMBER = "숫자가 아닌 값을 입력하시면 안 됩니다.";
+    private final static String EXCEPTION_MESSAGE_NOT_MINUS_NUMBER = "음수와 0을 입력하시면 안 됩니다.";
 
     public int validate(String trialCounts) {
         int counts = validateIsNumber(trialCounts);
@@ -13,14 +15,14 @@ public class TrialCountsValidator {
         try {
             tempCounts = Integer.parseInt(trialCounts);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력한 값은 숫자가 아닙니다 : " + trialCounts);
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_NOT_NUMBER);
         }
         return tempCounts;
     }
 
     private void validateIsZero(int counts) {
-        if(counts <= 0) {
-            throw new IllegalArgumentException("입력한 값은 0보다 커야 합니다 : " + counts);
+        if (counts <= 0) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_NOT_MINUS_NUMBER);
         }
     }
 }

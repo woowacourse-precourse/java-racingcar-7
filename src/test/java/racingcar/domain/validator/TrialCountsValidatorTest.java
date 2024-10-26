@@ -1,11 +1,11 @@
 package racingcar.domain.validator;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TrialCountsValidatorTest {
     private TrialCountsValidator trialCountsValidator;
@@ -23,7 +23,7 @@ public class TrialCountsValidatorTest {
         try {
             trialCountsValidator.validate(invalidInput);
         } catch (IllegalArgumentException e) {
-            assertThat("입력한 값은 숫자가 아닙니다 : " + invalidInput).isEqualTo(e.getMessage());
+            assertThat("숫자가 아닌 값을 입력하시면 안 됩니다.").isEqualTo(e.getMessage());
         }
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -39,7 +39,7 @@ public class TrialCountsValidatorTest {
         try {
             trialCountsValidator.validate(zeroInput);
         } catch (IllegalArgumentException e) {
-            assertThat("입력한 값은 0보다 커야 합니다 : " + zeroInput).isEqualTo(e.getMessage());
+            assertThat("음수와 0을 입력하시면 안 됩니다.").isEqualTo(e.getMessage());
         }
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -55,7 +55,7 @@ public class TrialCountsValidatorTest {
         try {
             trialCountsValidator.validate(minusInput);
         } catch (IllegalArgumentException e) {
-            assertThat("입력한 값은 0보다 커야 합니다 : " + minusInput).isEqualTo(e.getMessage());
+            assertThat("음수와 0을 입력하시면 안 됩니다.").isEqualTo(e.getMessage());
         }
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> {
