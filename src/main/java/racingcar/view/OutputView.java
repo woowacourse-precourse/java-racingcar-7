@@ -29,7 +29,7 @@ public class OutputView {
         }
     }
 
-    public void printRoundResultMessage() {
+    public void printResultNoticeMessage() {
         System.out.println("\n실행결과");
     }
 
