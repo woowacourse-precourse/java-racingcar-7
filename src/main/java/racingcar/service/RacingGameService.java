@@ -43,12 +43,6 @@ public class RacingGameService {
         return parseCarName;
     }
 
-    private void moveRacingCars(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars){
-            racingCar.move(Randoms.pickNumberInRange(0, 9));
-        }
-    }
-
 
     private boolean validateTryCount(Integer tryCount){
         if (tryCount == 0){
@@ -56,6 +50,7 @@ public class RacingGameService {
         }
         return true;
     }
+
     private boolean validateCarNames(String carNames){
         if (carNames == null || carNames.isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
