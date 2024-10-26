@@ -31,4 +31,12 @@ class ValidateCarTest {
         assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("중복된 이름이 들어오면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,pobi", "pobi, java,pobi "})
+    void 중복된_이름이_들어올경우_예외_테스트(String name) {
+        assertThatThrownBy(() -> ValidateCar.validateInputCar(name))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
