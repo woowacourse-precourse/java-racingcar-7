@@ -11,10 +11,7 @@ public class Application {
     public static void main(String[] args) {
         String[] nameArray = getStrings();
         Map<String, Integer> nameMap = getNameMap(nameArray);
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputCount = Console.readLine();
-        int count = Integer.parseInt(inputCount);
+        int count = getCount();
 
         String bar = "-";
         System.out.println("실행 결과");
@@ -45,6 +42,13 @@ public class Application {
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
+    private static int getCount(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputCount = Console.readLine();
+        int count = Integer.parseInt(inputCount);
+        return count;
     }
 
     private static Map<String, Integer> getNameMap(String[] nameArray){
