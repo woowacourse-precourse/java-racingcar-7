@@ -22,7 +22,22 @@ public class Cars {
         cars.add(car);
     }
 
-//    public int sizeOfCars() {
-//        return cars.size();
-//    }
+    public List<String> findWinner() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = findMaxDistance();
+        for (Car car : cars) {
+            if (car.getPosition() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+    private int findMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = Math.max(maxDistance, car.getPosition());
+        }
+        return maxDistance;
+    }
 }
