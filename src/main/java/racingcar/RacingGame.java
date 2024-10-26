@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class RacingGame {
     private int rounds;
+    private Cars cars;
 
 
     private void inputRounds() {
@@ -26,8 +27,8 @@ public class RacingGame {
     private void race() {
         System.out.println("\n실행 결과");
         for (int i = 0; i < rounds; i++) {
-            Cars.moveAll();
-            Cars.printStatus();
+            cars.moveAll();
+            cars.printStatus();
             System.out.println();
         }
     }
