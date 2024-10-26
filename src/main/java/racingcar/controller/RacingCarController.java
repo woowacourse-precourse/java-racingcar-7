@@ -19,5 +19,6 @@ public class RacingCarController {
 
     public void handleInputMoveCount() {
         OutputView.printMoveCountInputGuide();
+        service.setMoveCount(InputView.inputMoveCount());
     }
 }
