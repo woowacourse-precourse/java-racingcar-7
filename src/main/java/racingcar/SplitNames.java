@@ -25,6 +25,9 @@ public class SplitNames {
     }
 
     public static void checkNameLength(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름 없음");
+        }
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름 5자 초과");
         }

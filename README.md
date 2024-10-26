@@ -50,3 +50,7 @@
 5. 사용자가 잘못된 값 입력 시 IllegalArgumentException 발생 후 애플리케이션 종료
     - [o] 자동차가 1개일 경우
     - [o] 자동차 이름이 5자 초과일 경우
+
+## 자가 판단 목록
+
+* 자동차 이름이 빈칸일 경우 IllegalArgumentException 발생 후 애플리케이션 종료
