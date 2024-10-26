@@ -28,9 +28,19 @@ public class CarTest {
         TestCar car = new TestCar("pobi");
         car.setRandomNumber(6);
         car.move();
-        
+
         assertThat(car.getPosition())
                 .isEqualTo(1);
+    }
+
+    @Test
+    void 무작위_값이_4_미만이면_자동차_정지() {
+        TestCar car = new TestCar("pobi");
+        car.setRandomNumber(3);
+        car.move();
+
+        assertThat(car.getPosition())
+                .isEqualTo(0);
     }
 }
 
