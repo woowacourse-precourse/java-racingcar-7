@@ -23,5 +23,4 @@ public class CarsTest {
                 .extracting(Car::getPosition)
                 .containsAnyOf(0, 1);
     }
-
 }
