@@ -44,7 +44,9 @@ public class RacingGameController {
 
     private static int validateRound(String round) {
         checkIsNumeric(round);
-        checkRoundPositive(parseRound(round));
+        int roundNum = parseRound(round);
+        checkRoundPositive(roundNum);
+        return roundNum;
     }
     private static void checkIsNumeric(String round) {
         if (!round.matches("[0-9]+")) {
