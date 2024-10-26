@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Model.Car;
+import racingcar.Service.CarService;
 import racingcar.Service.GameService;
 import racingcar.View.InputView;
 
@@ -16,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
+    CarService carService = new CarService();
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
@@ -39,12 +41,9 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 자동차_이름_분리_테스트(){
-        //given
         GameService gameService=new GameService();
         String carNames="pobi,woni,jun";
-        //when
         ArrayList<Car> carList=gameService.Separate_Carnames(carNames);
-        //then
         assertThat(carList).hasSize(3);
         assertThat(carList.get(0).getCarName()).isEqualTo("pobi");
         assertThat(carList.get(1).getCarName()).isEqualTo("woni");

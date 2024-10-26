@@ -16,7 +16,4 @@ public class GameService {
         }
         return carList;
     }
-    public int Generate_RandomValue(){
-        return Randoms.pickNumberInRange(0,9);
-    }
 }
