@@ -14,9 +14,12 @@ public class RaceController {
         int round = userView.inputRoundCount();
 
         race = new Race(carNames);
-        race.proceedRace(round);
 
-        userView.displayRace(race.getCars());
+        for (int i = 0; i < round; i++) {
+            race.proceedRace(1);
+            userView.displayRace(race.getCars());
+        }
+
         userView.displayWinner(race.getWinners());
     }
 }
