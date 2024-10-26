@@ -53,6 +53,38 @@ public class InputViewTest {
         assertEquals("자동차 이름은 중복될 수 없습니다.", exception.getMessage());
     }
 
+    @Test
+    void 경주_횟수_공백_불가() {
+        setInput("pobi,woni,jun\n");
+        setInput("\n");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveRacingNumber());
+        assertEquals("경주 횟수는 빈 문자열일 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    void 경주_횟수_문자_불가() {
+        setInput("pobi,woni,jun\n");
+        setInput("char");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveRacingNumber());
+        assertEquals("경주 횟수는 숫자이어야 합니다.", exception.getMessage());
+    }
+
+    @Test
+    void 경주_횟수_0_불가() {
+        setInput("pobi,woni,jun\n");
+        setInput("0");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveRacingNumber());
+        assertEquals("경주 횟수는 1 이상의 숫자이어야 합니다.", exception.getMessage());
+    }
+
+    @Test
+    void 경주_횟수_음수_불가() {
+        setInput("pobi,woni,jun\n");
+        setInput("-1");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> inputView.receiveRacingNumber());
+        assertEquals("경주 횟수는 1 이상의 숫자이어야 합니다.", exception.getMessage());
+    }
+
     @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
