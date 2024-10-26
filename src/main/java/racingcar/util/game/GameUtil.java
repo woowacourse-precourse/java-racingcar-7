@@ -38,7 +38,19 @@ public class GameUtil {
         }
     }
 
-    // TODO : 우승한 자동차를 추출하고 출력하는 함수
+    public static int getMaxGoCount(List<CarVO> gameResultList) {
+        var maxGoCount = 0;
+
+        for (CarVO carNameAndCount : gameResultList) {
+            if (carNameAndCount.getGoCount() > maxGoCount) {
+                maxGoCount = carNameAndCount.getGoCount();
+            }
+        }
+
+        return maxGoCount;
+    }
+
+
 
 
     private GameUtil() {
