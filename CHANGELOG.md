@@ -3,11 +3,33 @@
 <br>
 <br>
 
-## v1.0 (2024.10.25)
+## v1.1 (2024.10.26)
 
 ---
 
 > 주요 작업 : 리팩토링 및 TC 보강
+>
+> 작업 시간 : 1d
+
+- [[b5450d7] refactor: Random 생성하는 수를 Speed라는 값 타입으로 관리하도록 개선](https://github.com/Gilbert9172/java-racingcar-7/commit/b5450d7)
+- [[378763a] refactor: Constant 분리하여 보다 의미있는 도메인과 결합](https://github.com/Gilbert9172/java-racingcar-7/commit/378763a)
+- [[22e9cdf] refactor: 생성자 NPE 체크하는 부분은 Objects를 사용하도록 변경](https://github.com/Gilbert9172/java-racingcar-7/commit/22e9cdf)
+- [[6409e62] refactor: MyProgress 생성자에 Position 파라미터 복구 및 TC 리팩토링](https://github.com/Gilbert9172/java-racingcar-7/commit/6409e62)
+- [[74169d5] refactor: MyProgress 팩토리 메소드의 파라미터에서 Position을 제거](https://github.com/Gilbert9172/java-racingcar-7/commit/74169d5)
+- [[f7fdc08] refactor: 이동 후 새로운 Postion을 생성하는 부분을 별도의 클래스로 추출](https://github.com/Gilbert9172/java-racingcar-7/commit/f7fdc08)
+- [[bf1059b] refactor: Lap의 필드 타입을 long으로 변경](https://github.com/Gilbert9172/java-racingcar-7/commit/bf1059b)
+- [[566a2fc] refactor: 입력 값 예외처리에 사용하던 Facade 클래스를 두개로 분리](https://github.com/Gilbert9172/java-racingcar-7/commit/566a2fc)
+- [[24d7181] refactor: 오류를 숨기는 코드 개선](https://github.com/Gilbert9172/java-racingcar-7/commit/24d7181)
+- [[e62c164] refactor: 랜덤 값을 생성 후 이동하는 로직 리팩토링](https://github.com/Gilbert9172/java-racingcar-7/commit/e62c164)
+
+<br>
+<br>
+
+## v1.0 (2024.10.25)
+
+---
+
+> 주요 작업 : 주요 기능 개발 및 로직 수정
 >
 > 작업 시간 : 2d
 
