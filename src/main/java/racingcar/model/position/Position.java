@@ -1,6 +1,7 @@
 package racingcar.model.position;
 
 import static java.util.Objects.requireNonNull;
+import static racingcar.common.Constant.EMPYT_STRING;
 import static racingcar.common.message.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
@@ -19,7 +20,7 @@ public class Position {
     }
 
     private static Position initiate() {
-        return new Position("");
+        return new Position(EMPYT_STRING);
     }
 
     public static Position from(String source) {
