@@ -10,6 +10,7 @@ public class Application {
         ConsoleView view = new ConsoleView();
         RaceModel raceModel = new RaceModel();
         RaceController raceController = new RaceController(view, raceModel);
+
         raceController.startRace();
     }
 }

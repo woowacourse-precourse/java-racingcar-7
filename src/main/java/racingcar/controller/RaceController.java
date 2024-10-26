@@ -41,6 +41,7 @@ public class RaceController {
      */
     private List<String> getCarNamesFromUser() {
         String carNamesInput = view.requestCarNames();
+
         List<String> carNames = Arrays.stream(carNamesInput.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());

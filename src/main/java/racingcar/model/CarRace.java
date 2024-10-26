@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRace {
+
     private final List<Car> cars;
 
     public CarRace(List<Car> cars) {
@@ -24,7 +25,9 @@ public class CarRace {
 
     public List<String> findWinners() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+
         List<String> winners = new ArrayList<>();
+
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
