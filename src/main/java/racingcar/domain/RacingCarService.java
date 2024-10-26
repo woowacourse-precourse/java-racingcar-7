@@ -5,6 +5,7 @@ import racingcar.view.RacingCarOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingCarService {
     private List<RacingCar> cars;
@@ -45,7 +46,7 @@ public class RacingCarService {
                 winners.add(car);
                 continue;
             }
-            if (car.getPosition() == winners.getFirst().getPosition()) {
+            if (Objects.equals(car.getPosition(), winners.getFirst().getPosition())) {
                 winners.add(car);
                 continue;
             }
