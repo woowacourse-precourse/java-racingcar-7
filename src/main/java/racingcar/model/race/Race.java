@@ -2,6 +2,7 @@ package racingcar.model.race;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.RacingCarInput;
 import racingcar.model.car.Car;
 import racingcar.model.car.InitCars;
 import racingcar.model.random.Random;
@@ -10,9 +11,9 @@ public class Race {
     List<Car> carList;
     public int attemptCountNumber;
 
-    public Race(String[] carNameArray, int attemptCountNumber) {
-        carList = InitCars.initCars(carNameArray);
-        this.attemptCountNumber = attemptCountNumber;
+    public Race(RacingCarInput racingCarInput) {
+        carList = InitCars.initCars(racingCarInput.carNameArray());
+        this.attemptCountNumber = racingCarInput.attemptCountNumber();
     }
 
     public final String turnRun() {
