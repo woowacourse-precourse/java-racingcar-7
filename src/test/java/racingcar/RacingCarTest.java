@@ -1,39 +1,42 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.utils.StringSeparator.separate;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import java.util.List;
+import racingcar.domain.RandomGenerator;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.Winners;
 import racingcar.domain.dto.CarDto;
 import racingcar.domain.dto.CarsDto;
 import racingcar.mock.TestRandomNumberGenerator;
-import racingcar.domain.RandomGenerator;
 import racingcar.view.OutputView;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     @Test
     void 자동차_생성_테스트() {
-        Car car = new Car("MCshin00");
+        Car car = new Car("MCs");
 
-        assertThat(car.getName()).isEqualTo("MCshin00");
+        assertThat(car.getName()).isEqualTo("MCs");
     }
 
     @Test
     void 자동차_리스트_생성_테스트() {
-        Car car = new Car("MCshin00");
-        Car car2 = new Car("asdf1234");
+        Car car = new Car("MCs");
+        Car car2 = new Car("asdf");
         RandomGenerator randomNumberGenerator = new RandomNumberGenerator();
         Cars cars = new Cars(List.of(car, car2), randomNumberGenerator);
 
         CarsDto carsDto = cars.toDto();
-        List<String> carNames = List.of("MCshin00", "asdf1234");
+        List<String> carNames = List.of("MCs", "asdf");
 
         assertThat(carsDto.getCars().stream()
                 .map(CarDto::getName))
@@ -42,7 +45,7 @@ public class RacingCarTest {
 
     @Test
     void 자동차_전진_테스트() {
-        Car car = new Car("MCshin00");
+        Car car = new Car("MCs");
 
         car.move(4);
 
@@ -51,7 +54,7 @@ public class RacingCarTest {
 
     @Test
     void 자동차_멈춤_테스트() {
-        Car car = new Car("MCshin00");
+        Car car = new Car("MCs");
 
         car.move(3);
 
