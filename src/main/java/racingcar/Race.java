@@ -52,10 +52,7 @@ public class Race {
     private String saveLog(StringBuilder sb, Map.Entry<String, Integer> entry) {
         sb.append(entry.getKey());
         sb.append(" : ");
-        if (entry.getValue() == 0) {
-            return sb.toString();
-        }
-        for (int i = 0; i < entry.getValue() - 1; i++) {
+        for (int i = 0; i < entry.getValue(); i++) {
             sb.append("-");
         }
         return sb.toString();
