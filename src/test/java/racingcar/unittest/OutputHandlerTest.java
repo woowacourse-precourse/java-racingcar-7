@@ -64,6 +64,19 @@ class OutputHandlerTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("printWinners 메서드 테스트")
+    void printWinners_shouldPrintWinners() {
+        // Given
+        List<String> winners = Arrays.asList("pobi", "crong");
+
+        // When
+        OutputHandler.printWinners(winners);
+
+        // Then
+        assertThat(output()).contains("최종 우승자 : pobi, crong");
+    }
+
     @Override
     public void runMain() {
     }
