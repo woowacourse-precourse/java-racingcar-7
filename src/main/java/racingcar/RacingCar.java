@@ -1,10 +1,12 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
     private List<Car> carList = new ArrayList<>();
+    private List<String> winnerList = new ArrayList<>();
     private int count = 0;
 
     public void setCarList(List<String> inputStringList) {
@@ -20,11 +22,36 @@ public class RacingCar {
         }
     }
 
+    public void repeatRacing(){
+        Output.printExecuteResult();
+        for (int i = 0; i<count; i++){
+            playRacing();
+            Output.printSpace();
+        }
+    }
+
+    public void playRacing(){
+        for (int index = 0; index < carList.size(); index++) {
+            moveCar(index);
+            Output.printCarPosition(carList.get(index));
+        }
+    }
+
+    public void moveCar(int index){
+        int number = Randoms.pickNumberInRange(0, 9);
+        if (4<=number){
+            carList.get(index).addPosition();
+        }
+    }
+
     public void run() {
         List<String> inputStringList = Input.getNameList();
         this.count = Input.inputNumber();
         setCarList(inputStringList);
+        repeatRacing();
     }
+
+
 
     public List<Car> getCarList() {
         return carList;
