@@ -49,5 +49,5 @@
   - [x] step 관리 문자열 enum으로 관리
   - [x] 자동차 이름 제한 enum으로 관리
 - [x] 모든 기능들을 조합하는 runner 클래스 구현
-- [ ] runner 클래스를 호출하는 Application 클래스 구현
+- [x] runner 클래스를 호출하는 Application 클래스 구현
 - [ ] 테스트코드 작성
