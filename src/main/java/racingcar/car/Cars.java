@@ -9,10 +9,25 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(final List<String> names) {
-        names.stream()
+        final List<CarName> carNames = names.stream()
                 .map(CarName::new)
+                .toList();
+        validateDuplicatedCar(carNames);
+
+        carNames.stream()
                 .map(Car::new)
                 .forEach(cars::add);
+    }
+
+    private void validateDuplicatedCar(final List<CarName> names) {
+        final long pureCount = names.stream()
+                .map(CarName::getContent)
+                .map(String::toLowerCase)
+                .distinct()
+                .count();
+        if (names.size() != (int) pureCount) {
+            throw new IllegalArgumentException("중복된 이름이 존재하면 안됩니다.");
+        }
     }
 
     public void goOrStop(InputGenerator generator) {
