@@ -9,7 +9,6 @@ public class OutputView {
     private ArrayList<RoundRecord> gameResult = new ArrayList<>();
     private ArrayList<String> gameWinner = new ArrayList<>();
     private int gameRound;
-    private String winnerResult = "";
 
     public void setGameResult(ArrayList<RoundRecord> result) {
         gameResult = result;
@@ -32,12 +31,6 @@ public class OutputView {
         }
 
         System.out.print(Constant.WINNER_PROMPT);
-
-        for(int i=0; i<gameWinner.size(); i++) {
-            winnerResult += gameWinner.get(i);
-        }
-
-        System.out.println(winnerResult);
-
+        System.out.print(String.join(",", gameWinner));
     }
 }
