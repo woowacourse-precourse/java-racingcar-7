@@ -156,15 +156,15 @@ Randoms.pickNumberInRange(0, 9);
 - [x]  입력한 문자열에서 쉼표(,)를 기준으로 구분하여 자동차 이름(5자 이하) 분리
 - [x]  이동 횟수 입력
 
+## 설계 `design`
+
+- [x]  자동차 클래스 구현
+
 ## 경주 진행 `progress`
 
 - [x]  `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 랜덤값 추출
 - [x]  추출한 랜덤값이 4 이상일 경우 전진
 
-## 설계 `design`
-
-- [ ]  자동차 클래스 구현
-- 
 ## 결과 출력  `output`
 
 - [ ]  경주 진행을 완료한 후 우승자 출력
