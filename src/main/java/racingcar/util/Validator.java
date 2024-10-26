@@ -3,6 +3,7 @@ package racingcar.util;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.model.Cars;
 
 public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
@@ -11,7 +12,7 @@ public class Validator {
     public static void carNameValidate(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>();
 
-        if (carNames.size() > 1000) {
+        if (carNames.size() > Cars.MAX_CAR_COUNT) {
             throw new IllegalArgumentException();
         }
         if (carNames.size() == 0) {

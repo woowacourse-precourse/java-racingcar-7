@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cars {
+
+    public final static Integer MAX_CAR_COUNT = 1000;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
