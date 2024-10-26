@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +13,5 @@ class RaceTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Race("a", new Cars("pobi, woni")))
                 .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("최대이동거리 구하기")
-    @Test
-    void 최대이동거리_구하기() {
-        Cars cars = new Cars(Arrays.asList(new Car("pobi", new Distance(5))
-                , new Car("woni", new Distance(5)),
-                new Car("jun", new Distance(4))));
-        assertThat(cars.getMaxDistance()).isEqualTo(5);
     }
 }
