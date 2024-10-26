@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model;
 
 import racingcar.utils.Utils;
 import racingcar.validation.Validation;

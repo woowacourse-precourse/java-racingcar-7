@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model;
 
 import racingcar.utils.Utils;
 import racingcar.view.OutputView;
@@ -19,12 +19,12 @@ public class RacingGame {
         OutputView.printRacingGameExecuteResultMessage();
 
         for(int i = 0;  i < gameRound.getRoundCount(); i++){
-            startGameRound();
+            startOneRound();
             OutputView.printRacingGameRoundEndBlankLine();
         }
     }
 
-    private void startGameRound(){
+    private void startOneRound(){
         racingcars.getRacingcars().stream()
                 .forEach(Racingcar::goForward);
     }
