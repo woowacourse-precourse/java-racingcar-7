@@ -23,12 +23,18 @@ public class CarRacing {
         int attempts = inputHandler.inputAttempt();
 
         for(int i = 0 ; i<attempts; i++){
-            for(Car car: cars){
-                car.move(moveStrategy.isPossibleToMove());
-            }
+            carMove(cars);
             outputHandler.printResult(cars);
         }
 
         outputHandler.printWinners(cars);
     }
+
+    private void carMove(List<Car> cars){
+        for (Car car : cars) {
+            car.move(moveStrategy.isPossibleToMove());
+        }
+    }
+
+
 }
