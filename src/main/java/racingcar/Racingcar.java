@@ -1,13 +1,17 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.*;
 
+import java.util.Arrays;
+
 
 public class Racingcar {
     private String[] carNames;
     private int count;
+    private String[] moveResults;
 
     public void start(){
         input();
+        racingDisplay();
     }
 
     public void input(){
@@ -51,11 +55,27 @@ public class Racingcar {
         if(this.count == 0) throw new IllegalArgumentException("시도 횟수가 0이 될 수는 없습니다.");
     }
 
-    public void output(){
-        for(String carName : carNames){
-            System.out.print(carName + " ");
+    public void initMoveResults(){
+        moveResults = new String[carNames.length];
+        Arrays.fill(moveResults, "");
+    }
+
+
+    public boolean move(){
+        return 4 < Randoms.pickNumberInRange(0, 9);
+    }
+
+    public void racingDisplay(){
+        initMoveResults();
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < carNames.length; j++){
+                if(move()){
+                    moveResults[j] +="-";
+                }
+                System.out.println(carNames[j] + " : "+ moveResults[j]);
+            }
+            System.out.println();
         }
-        System.out.print(count);
     }
 
 
