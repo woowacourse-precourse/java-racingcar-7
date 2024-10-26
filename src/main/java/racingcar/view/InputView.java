@@ -8,6 +8,11 @@ import java.util.ArrayList;
 public class InputView {
     private String players;
     private int trial;
+    private final Validation validation;
+
+    public InputView() {
+        this.validation = new Validation();
+    }
 
     public void inputGameInfo() {
         System.out.println(Constant.INPUT_PLAYERS_PROMPT);
@@ -20,7 +25,11 @@ public class InputView {
         if(inputStr == null) {
             return null;
         }
-        return new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
+        ArrayList<String> nameArray = new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
+        for (String name : nameArray) {
+            validation.isNameValid(name);
+        }
+        return nameArray;
     }
 
     public ArrayList<String> getPlayersList(){
