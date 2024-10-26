@@ -6,6 +6,10 @@ import racingcar.domain.Car;
 import racingcar.domain.Race;
 
 public class RaceService {
+    public Race registerRace(final List<Car> carList, final int attemptCount) {
+        return new Race(carList, attemptCount);
+    }
+
     public void playRound(final Race race) {
         race.getCarList().stream()
                 .filter(Car::isMove)
@@ -23,9 +27,5 @@ public class RaceService {
         return carList.stream()
                 .filter(car -> car.getLocation() == maxDistance)
                 .collect(Collectors.toList());
-    }
-
-    public Race registerRace(final List<Car> carList, final int attemptCount) {
-        return new Race(carList, attemptCount);
     }
 }
