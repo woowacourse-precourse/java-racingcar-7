@@ -31,7 +31,7 @@ public class Race {
             String turnResult = turnRun();
             raceResult.append(turnResult).append("\n");
         }
-        if (raceResult.length() > 0) {
+        if (!raceResult.isEmpty()) {
             raceResult.setLength(raceResult.length() - 1);
         }
         return raceResult.toString();
