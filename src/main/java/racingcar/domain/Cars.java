@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import java.util.List;
 
+import static racingcar.validator.CarCountValidator.validateCarCount;
+
 public class Cars {
     private final List<Car> cars;
 
@@ -10,6 +12,7 @@ public class Cars {
     }
 
     public static Cars create(List<String> carNames) {
+        validateCarCount(carNames.size());
         return new Cars(carNames);
     }
 
