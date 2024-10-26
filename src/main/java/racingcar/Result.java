@@ -12,15 +12,9 @@ public class Result {
     }
 
     public static void printWinners(List<Car> winners) {
-        StringBuilder winnerNames = new StringBuilder();
-        winners.forEach(winner ->
-            winnerNames.append(winner.getName()).append(", ")
+        String winnerNames = String.join(", ",
+                winners.stream().map(Car::getName).toList()
         );
-
-        if (!winnerNames.isEmpty()) {
-            winnerNames.setLength(winnerNames.length() - 2);
-        }
-
         System.out.println("최종 우승자 : " + winnerNames);
     }
 }
