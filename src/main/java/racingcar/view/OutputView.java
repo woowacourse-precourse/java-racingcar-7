@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
 
 public class OutputView {
 
@@ -9,8 +8,8 @@ public class OutputView {
         System.out.println("\n" + "실행 결과");
     }
 
-    public void printRoundResult(List<Car> carList) {
-        carList.forEach(car -> System.out.println(car.generateCarState()));
+    public void printRoundResult(List<String> carStates) {
+        carStates.forEach(System.out::println);
         System.out.println();
     }
 
