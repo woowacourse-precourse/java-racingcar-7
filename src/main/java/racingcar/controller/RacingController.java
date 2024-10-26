@@ -23,7 +23,7 @@ public class RacingController {
 
     public void run() {
         final List<String> carNames = getCarNames();
-        final Cars cars = Cars.create(carNames);
+        final Cars cars = Cars.createFromCarNames(carNames);
 
         final int tryCount = getTryCount();
 
