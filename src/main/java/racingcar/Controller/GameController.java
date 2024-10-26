@@ -1,13 +1,12 @@
 package racingcar.Controller;
 
-import static racingcar.view.OutputView.*;
 import static racingcar.view.OutputView.printNewLine;
+import static racingcar.view.OutputView.printWinners;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarGroup;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
@@ -26,6 +25,9 @@ public class GameController {
                     .forEach(OutputView::printProgress);
             printNewLine();
         }
+
+        List<Car> winners = carGroup.getWinners();
+        printWinners(winners);
     }
 
     private void validateTryCount(int tryCount) {
