@@ -19,11 +19,7 @@ public class Racing {
 
     public void race(int trial) {
         for (int i = 0; i < trial; i++) {
-            cars.forEach(car -> {
-                if (shouldMove()) {
-                    car.moveForward();
-                }
-            });
+            moveForwardIfShouldMove();
             OutputView.printCurrentProgress(cars);
         }
     }
@@ -44,6 +40,14 @@ public class Racing {
                 .filter(Car::isWinner)  // 우승자로 설정된 자동차 필터링
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private void moveForwardIfShouldMove() {
+        cars.forEach(car -> {
+            if (shouldMove()) {
+                car.moveForward();
+            }
+        });
     }
 
     public boolean shouldMove() {
