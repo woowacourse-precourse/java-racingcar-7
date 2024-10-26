@@ -4,23 +4,23 @@ import racingcar.dto.CreateCarsRequest;
 import racingcar.dto.GetWinnersResponse;
 import racingcar.dto.StartRaceRequest;
 import racingcar.dto.StartRaceResponse;
-import racingcar.service.RacingService;
+import racingcar.service.RaceService;
 
 public class RacingController {
 
     private static final String DELIMITERS = ",";
-    private final RacingService racingService = new RacingService();
+    private final RaceService raceService = new RaceService();
 
     public void createCars(CreateCarsRequest request) {
-        racingService.createCars(parseCarName(request.carNames()));
+        raceService.createCars(parseCarName(request.carNames()));
     }
 
     public StartRaceResponse startRace(StartRaceRequest request) {
-        return racingService.startRace(request.attemptCount());
+        return raceService.startRace(request.attemptCount());
     }
 
     public GetWinnersResponse getWinners() {
-        return racingService.getWinners();
+        return raceService.getWinners();
     }
 
     public String[] parseCarName(String carNames) {

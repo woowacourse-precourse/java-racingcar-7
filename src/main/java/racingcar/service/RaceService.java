@@ -7,7 +7,7 @@ import racingcar.repository.CarRepository;
 
 import java.util.*;
 
-public class RacingService {
+public class RaceService {
 
     private final CarRepository carRepository = new CarRepository();
 
