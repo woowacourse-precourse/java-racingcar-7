@@ -1,4 +1,4 @@
-package racingcar.comparable;
+package racingcar.util.comparable;
 
 public class IntegerComparable implements NumberComparable<Integer> {
     @Override

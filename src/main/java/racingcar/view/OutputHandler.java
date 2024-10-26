@@ -1,7 +1,7 @@
-package racingcar.io;
+package racingcar.view;
 
 import java.util.List;
-import racingcar.car.Position;
+import racingcar.model.position.Position;
 
 public interface OutputHandler {
     void showCommentForCarNames();

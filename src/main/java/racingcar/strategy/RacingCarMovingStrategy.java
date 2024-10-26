@@ -1,7 +1,7 @@
 package racingcar.strategy;
 
-import racingcar.comparable.NumberComparable;
-import racingcar.random.RandomNumberGenerator;
+import racingcar.util.comparable.NumberComparable;
+import racingcar.util.random.RandomNumberGenerator;
 
 public class RacingCarMovingStrategy implements MovingStrategy {
 

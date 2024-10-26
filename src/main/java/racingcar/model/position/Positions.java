@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.model.position;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,8 +1,12 @@
-package racingcar.car;
+package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.model.attempt.Attempt;
+import racingcar.model.car.Cars;
+import racingcar.model.position.History;
+import racingcar.model.position.Positions;
 
 public class RacingGame {
 

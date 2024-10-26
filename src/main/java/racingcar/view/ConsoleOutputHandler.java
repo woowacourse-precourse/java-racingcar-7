@@ -1,8 +1,8 @@
-package racingcar.io;
+package racingcar.view;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.car.Position;
+import racingcar.model.position.Position;
 
 public class ConsoleOutputHandler implements OutputHandler {
 

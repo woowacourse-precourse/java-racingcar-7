@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.model.attempt;
 
 import racingcar.exception.InvalidAttemptException;
 

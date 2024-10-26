@@ -1,25 +1,24 @@
 package racingcar;
 
 import java.util.ArrayList;
-import racingcar.car.Attempt;
-import racingcar.car.Car;
-import racingcar.car.Cars;
-import racingcar.car.History;
-import racingcar.car.Positions;
-import racingcar.car.RacingGame;
-import racingcar.comparable.IntegerComparable;
-import racingcar.comparable.NumberComparable;
+import racingcar.model.attempt.Attempt;
+import racingcar.model.car.Car;
+import racingcar.model.car.Cars;
+import racingcar.model.position.History;
+import racingcar.model.position.Positions;
+import racingcar.util.comparable.IntegerComparable;
+import racingcar.util.comparable.NumberComparable;
 import racingcar.exception.InvalidAttemptException;
 import racingcar.exception.InvalidNameException;
-import racingcar.io.ConsoleInputHandler;
-import racingcar.io.ConsoleOutputHandler;
-import racingcar.io.InputHandler;
-import racingcar.io.OutputHandler;
-import racingcar.random.RandomIntegerGenerator;
-import racingcar.random.RandomNumberGenerator;
+import racingcar.view.ConsoleInputHandler;
+import racingcar.view.ConsoleOutputHandler;
+import racingcar.view.InputHandler;
+import racingcar.view.OutputHandler;
+import racingcar.util.random.RandomIntegerGenerator;
+import racingcar.util.random.RandomNumberGenerator;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.RacingCarMovingStrategy;
-import racingcar.util.Splitter;
+import racingcar.util.splitter.Splitter;
 
 public class Application {
 
