@@ -54,7 +54,7 @@
 ### InputViewValidator
 
 -[X] 사용자 입력이 빈 문자열이거나 공백일 경우
--[ ] 사용자 입력에 문자가 포함됐을 경우
+-[X] 사용자 입력이 숫자가 아닐 경우
 - 사용자 입력이 유효하지 않을 경우 `IllegalArgumentException` 발생
 
 ## OutputView
