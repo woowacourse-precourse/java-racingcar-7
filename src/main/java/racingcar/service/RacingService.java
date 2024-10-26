@@ -4,11 +4,29 @@ import static racingcar.exception.ExceptionMessage.INVALID_INPUT_NUMBER;
 import static racingcar.exception.ExceptionMessage.MINIMUM_RACING_TIME;
 import static racingcar.exception.ExceptionMessage.USER_INPUT_NOT_NULL;
 
+import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.CarManager;
+import racingcar.utils.RandomNumber;
+
 
 public class RacingService {
 
     private static final String CHECK_NUMBER_REGEX = "\\d+";
 
+    private CarManager carManager;
+
+    public RacingService(CarManager carManager){
+        this.carManager = carManager;
+    }
+
+    public List<Car> startRacingOnce(RandomNumber randomNumber) {
+        List<Car> cars = carManager.getCars();
+        for (Car car : cars) {
+            car.move(randomNumber.generate());
+        }
+        return cars;
+    }
 
     public String getValidatedStringInput(String userStringInput) {
         verifyUserInput(userStringInput);

@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.utils.RandomNumber;
 
 public class CarManager {
 
@@ -20,13 +19,6 @@ public class CarManager {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public List<Car> startRacing(RandomNumber randomNumber) {
-        for (Car car : cars) {
-            car.move(randomNumber.generate());
-        }
-        return cars;
     }
 
     private void verifyDuplicateCar(List<Car> cars) {
