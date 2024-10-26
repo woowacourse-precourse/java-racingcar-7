@@ -9,7 +9,7 @@ public class RacingGameOutput {
     private static final String POSITION_UNIT = "-";
     private static final String WINNER_PROMPT = "최종 우승자 : ";
 
-    public void gameStart() {
+    public void printGameStart() {
         System.out.println(GAME_START_PROMPT);
     }
 
