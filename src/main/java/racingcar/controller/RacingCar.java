@@ -8,6 +8,9 @@ import racingcar.model.SplitCar;
 import racingcar.model.Turn;
 import racingcar.view.InputCarName;
 import racingcar.view.InputTurn;
+import racingcar.view.Output;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
     final int MAX_NAME_LENGTH = 5;
@@ -33,5 +36,21 @@ public class RacingCar {
         }
 
         this.playTurn = turn.getTurn();
+    }
+
+    private void carMoving() {
+        for (Car car : carList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            car.move(randomNumber);
+        }
+    }
+
+    public void playRacing() {
+        Output output = new Output();
+
+        for (int nowTurn = 0; nowTurn < playTurn; nowTurn++) {
+            carMoving();
+            output.printCarLocation(carList);
+        }
     }
 }
