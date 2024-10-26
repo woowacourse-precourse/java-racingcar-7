@@ -15,6 +15,12 @@ public class Validator {
         if (carNamesInput.contains(" ")) {
             throw new IllegalArgumentException("자동차 이름에 공백은 입력할 수 없습니다");
         }
+
+        for (String carName : StringSplitter.splitByComma(carNamesInput)) {
+            if (carName.length() >= 5) {
+                throw new IllegalArgumentException("각 자동차 이름은 5글자 이하로 입력해야 합니다");
+            }
+        }
     }
 
     private void validateAttemptCount(String attemptCountInput) {
