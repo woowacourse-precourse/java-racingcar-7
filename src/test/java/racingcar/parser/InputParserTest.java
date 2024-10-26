@@ -1,12 +1,14 @@
 package racingcar.parser;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.car.Car;
 import racingcar.validator.InputValidator;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,5 +40,27 @@ public class InputParserTest {
     public void testUniqueCarName(String input) {
         // When & then
         assertDoesNotThrow(()-> inputParser.parseCarNames(input));
+    }
+
+    @Test
+    @DisplayName("입력값이 Car 객체 리스트로 변환되는지 검증 테스트")
+    void testParseCarNames() {
+        // given
+        String input = "YOON,WOONG,CHAN";
+
+        // when
+        List<Car> cars = inputParser.parseCarNames(input);
+
+        // then
+        assertEquals(3, cars.size());
+
+        assertEquals("YOON", cars.get(0).getName());
+        assertEquals(0, cars.get(0).getPosition());
+
+        assertEquals("WOONG", cars.get(1).getName());
+        assertEquals(0, cars.get(1).getPosition());
+
+        assertEquals("CHAN", cars.get(2).getName());
+        assertEquals(0, cars.get(2).getPosition());
     }
 }
