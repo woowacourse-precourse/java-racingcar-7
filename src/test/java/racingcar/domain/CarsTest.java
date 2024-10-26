@@ -35,4 +35,16 @@ public class CarsTest {
         List<String> winners = List.of("pobi", "jun");
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
+
+    @Test
+    void to_string() {
+        List<Car> carList = List.of(CAR_POBI, CAR_NANA, CAR_JUN);
+        Cars cars = new Cars(carList);
+
+        String result = "pobi : ---"
+                + "nana : -"
+                + "jun : ---";
+
+        assertThat(cars.toString()).isEqualTo(result);
+    }
 }

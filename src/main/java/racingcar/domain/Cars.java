@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -45,4 +46,10 @@ public class Cars {
         return Objects.hash(carList);
     }
 
+    @Override
+    public String toString() {
+        return carList.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining());
+    }
 }

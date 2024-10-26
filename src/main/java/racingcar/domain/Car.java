@@ -4,7 +4,9 @@ import java.util.Objects;
 
 public class Car {
 
-    private final int MOVE_STANDARD = 4;
+    private static final int MOVE_STANDARD = 4;
+    private static final String NAME_POSITION_SEPARATOR = " : ";
+    private static final String POSITION_SIGN = "-";
 
     private final String name;
     private int position;
@@ -54,4 +56,8 @@ public class Car {
         return Objects.hash(name);
     }
 
+    @Override
+    public String toString() {
+        return name + NAME_POSITION_SEPARATOR + POSITION_SIGN.repeat(position);
+    }
 }
