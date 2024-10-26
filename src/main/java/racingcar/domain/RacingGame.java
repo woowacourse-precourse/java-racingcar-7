@@ -23,6 +23,8 @@ public class RacingGame {
 
             OutputView.printOneGameResult(playRacingCarList);
         }
+
+        OutputView.printWinner(findWinner());
     }
 
     public String findWinner() {
