@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.constants.Constants;
 import racingcar.domain.Car;
 import racingcar.service.RacingGameService;
 
@@ -29,11 +30,11 @@ public class RacingGameController {
     }
 
     private static void roundInput() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(Constants.INPUT_ATTEMPTS_MESSAGE);
     }
 
     private static void carNameInput() {
-        System.out.println("경주할 자동차 이름(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(Constants.INPUT_CAR_NAMES_MESSAGE);
     }
 
     private void playRound(int playRound, List<Car> cars) {
@@ -51,6 +52,6 @@ public class RacingGameController {
     }
     
     private void printWinners(List<Car> winners){
-        System.out.println("최종 우승자 : " + String.join(", ", winners.stream().map(Car::getName).toList()));
+        System.out.println(Constants.WINNER_ANNOUNCEMENT_MESSAGE + String.join(", ", winners.stream().map(Car::getName).toList()));
     }
 }

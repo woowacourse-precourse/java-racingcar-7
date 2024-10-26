@@ -1,25 +1,26 @@
 package racingcar.domain;
 
+import static racingcar.constants.Constants;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.constants.Constants;
 
 public class Car {
 
-    private static final int MOVE_THRESHOLD = 4;
-    private static final int MAX_NAME_LENGTH = 5;
     private final String name;
 
     private int position;
 
     public Car(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        if (name.length() > Constants.MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(Constants.NAME_LENGTH_ERROR);
         }
         this.name = name;
         this.position = 0;
     }
 
     public void move(){
-        if (Randoms.pickNumberInRange(0, 9) >= MOVE_THRESHOLD) {
+        if (Randoms.pickNumberInRange(0, 9) >= Constants.MOVE_THRESHOLD) {
             position++;
         }
     }
@@ -31,5 +32,5 @@ public class Car {
     public String getName(){
         return name;
     }
-    
+
 }
