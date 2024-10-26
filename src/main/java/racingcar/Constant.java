@@ -6,7 +6,7 @@ public class Constant {
     public static final String NAME_NO_INPUT_ERROR = "자동차 이름은 빈 칸일 수 없습니다.";
     public static final String NAME_INPUT_BLANK_ERROR = "자동차 이름에 공백이 포함되어있습니다. 공백없이 입력해주세요.";
     public static final String NAME_INPUT_INVALID_COMMA = "자동자 이름에 유효하지않은 쉼표가 입력되었습니다.";
-    public static final String ATTEMPT_INPUT_ERROR_MESSAGE = "시도 횟수는 정수만 입력 가능합니다.";
+    public static final String ATTEMPT_INPUT_ERROR_MESSAGE = "시도 횟수는 공백없는 정수만 입력 가능합니다.";
     public static final int CAR_NAME_LENGTH_LIMIT = 5;
     public static final int MIN_RANDOM = 0;
     public static final int MAX_RANDOM = 9;

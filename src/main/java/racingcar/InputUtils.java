@@ -59,10 +59,14 @@ public class InputUtils {
     }
 
     public static int inputAttempt() {
-        System.out.println(ATTEMPT_INPUT_MESSAGE);
-        String attempt = Console.readLine();
-        checkAttemptOK(attempt);
-        return Integer.parseInt(attempt);
+        try {
+            System.out.println(ATTEMPT_INPUT_MESSAGE);
+            String attempt = Console.readLine();
+            checkAttemptOK(attempt);
+            return Integer.parseInt(attempt);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException(ATTEMPT_INPUT_ERROR_MESSAGE);
+        }
     }
 
     private static void checkAttemptOK(String attempt){
