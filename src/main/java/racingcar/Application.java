@@ -5,12 +5,12 @@ import racingcar.view.console.ConsoleInputView;
 import racingcar.view.console.ConsoleOutputView;
 
 public class Application {
-	public static void main(String[] args) {
-		RacingCarGameController racingCarGameController = new RacingCarGameController(
-			new ConsoleInputView(),
-			new ConsoleOutputView()
-		);
+    public static void main(String[] args) {
+        RacingCarGameController racingCarGameController = new RacingCarGameController(
+                new ConsoleInputView(),
+                new ConsoleOutputView()
+        );
 
-		racingCarGameController.startGame();
-	}
+        racingCarGameController.startGame();
+    }
 }

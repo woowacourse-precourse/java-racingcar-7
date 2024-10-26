@@ -4,22 +4,22 @@ import racingcar.exception.ErrorMessage;
 import racingcar.exception.RacingCarGameException;
 
 public record CarNamesInput(
-	String carNames
+        String carNames
 ) {
-	public CarNamesInput {
-		validateCarNamesNotNull(carNames);
-		validateCarNamesEmpty(carNames);
-	}
+    public CarNamesInput {
+        validateCarNamesNotNull(carNames);
+        validateCarNamesEmpty(carNames);
+    }
 
-	private void validateCarNamesNotNull(String carNames) {
-		if (carNames == null) {
-			throw RacingCarGameException.from(ErrorMessage.NULL_INPUT_ERROR);
-		}
-	}
+    private void validateCarNamesNotNull(String carNames) {
+        if (carNames == null) {
+            throw RacingCarGameException.from(ErrorMessage.NULL_INPUT_ERROR);
+        }
+    }
 
-	private void validateCarNamesEmpty(String carNames) {
-		if (carNames.isEmpty()) {
-			throw RacingCarGameException.from(ErrorMessage.EMPTY_INPUT_ERROR);
-		}
-	}
+    private void validateCarNamesEmpty(String carNames) {
+        if (carNames.isEmpty()) {
+            throw RacingCarGameException.from(ErrorMessage.EMPTY_INPUT_ERROR);
+        }
+    }
 }
