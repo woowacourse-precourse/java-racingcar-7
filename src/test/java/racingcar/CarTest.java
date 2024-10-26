@@ -10,55 +10,59 @@ import racingcar.util.NumberGenerator;
 import racingcar.util.RandomNumberGenerator;
 
 class CarTest {
-    private NumberGenerator fixedNumberGenerator;
-
-    @Test
-    void 이동_성공() {
-        // given
-        fixedNumberGenerator = new FixedNumberGenerator(4);
-        Car car = Car.of(fixedNumberGenerator, "test");
-
-        // when
-        car.tryMove();
-
-        // then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    void 이동_실패() {
-        // given
-        fixedNumberGenerator = new FixedNumberGenerator(3);
-        Car car = Car.of(fixedNumberGenerator, "test");
-
-        // when
-        car.tryMove();
-
-        // then
-        assertThat(car.getPosition()).isEqualTo(0);
-    }
+    private final NumberGenerator randomGenerator = new RandomNumberGenerator();
+    private final NumberGenerator nineGenerator = FixedNumberGenerator.nineGenerator();
+    private final NumberGenerator zeroGenerator = FixedNumberGenerator.zeroGenerator();
+    private final String validCarName = "car";
 
     @Test
     void 이름_생성_성공() {
-        // given
-        String name = "car";
-
-        // when then
         assertDoesNotThrow(() -> {
-            Car.of(new RandomNumberGenerator(), name);
+            Car.of(randomGenerator, validCarName);
         });
     }
 
     @Test
     void 이름_생성_실패() {
-        // given
-        String longName = "car";
+        String longName = "hantol";
         String emptyName = "";
 
-        // when then
         assertThatThrownBy(() -> {
-            Car.of(new RandomNumberGenerator(), longName);
-            Car.of(new RandomNumberGenerator(), emptyName);
+            Car.of(randomGenerator, longName);
         }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            Car.of(randomGenerator, emptyName);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이동_성공() {
+        Car car = Car.of(nineGenerator, validCarName);
+
+        car.tryMove();
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 이동_실패() {
+        Car car = Car.of(zeroGenerator, validCarName);
+
+        car.tryMove();
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 거리_비교() {
+
+        Car car1 = Car.of(nineGenerator, validCarName);
+        Car car2 = Car.of(zeroGenerator, validCarName);
+        int expected = 1;
+
+        car1.tryMove();
+        car2.tryMove();
+
+        assertThat(car1.compareTo(car2)).isEqualTo(expected);
     }
 }
