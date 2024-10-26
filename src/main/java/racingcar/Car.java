@@ -18,10 +18,10 @@ public class Car {
     private void separateName(String input){
         checkDoubleSeparator(input);
         checkLastBlank(input);
+        checkBlank(input);
         String[] splitInput = input.split(",");
         checkCount(splitInput.length);
         for (String s : splitInput) {
-            checkBlank(s);
             checkDuplication(s);
             putCarMap(s);
         }
@@ -52,8 +52,8 @@ public class Car {
         }
     }
 
-    private void checkBlank(String name){
-        if (!Objects.equals(name, name.replaceAll("\\s", ""))){
+    private void checkBlank(String input){
+        if (!Objects.equals(input, input.replaceAll("\\s", ""))){
             throwArgumentException("공백은 자동차의 이름에 포함될 수 없습니다.");
         }
     }
