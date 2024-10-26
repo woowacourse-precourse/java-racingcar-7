@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,5 +22,18 @@ public class Cars {
                 car.moveForward();
             }
         }
+    }
+
+    public List<Car> findWinner() {
+        return cars.stream()
+                .filter(car -> car.getLocation() == findWinnerLocation())
+                .collect(Collectors.toList());
+    }
+
+    private int findWinnerLocation() {
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

@@ -22,4 +22,8 @@ public class Car {
     public int pickRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public int getLocation() {
+        return location;
+    }
 }
