@@ -30,8 +30,17 @@ public class RacingServiceTest extends NsTest {
         Assertions.assertDoesNotThrow(() -> racingGameService.initializeRacingGame(carNames, tryCount));
     }
     @Test
-    void 자동차_이름이_비어_있는_입력된_경우(){
+    void 자동차_이름이_비어_있는_입력된_경우_1(){
         String carNames = "";
+        Integer tryCount = 3;
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingGameService.initializeRacingGame(carNames, tryCount))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 자동차_이름이_비어_있는_입력된_경우_2(){
+        String carNames = "woni, ";
         Integer tryCount = 3;
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> racingGameService.initializeRacingGame(carNames, tryCount))
