@@ -1,12 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 /**
  * 자동차 경주 게임을 진행하는 클래스
@@ -36,115 +31,21 @@ public class Application {
         String input = scanner.nextLine();
 
         // 자동차 이름을 ','를 기준으로 나누어 리스트에 저장
-        List<String> carNames = List.of(input.split("\\s*,"));
-        // for(int i = 0; i < carNames.length; i++) {
-        //     System.out.println(test[i]);
-        // }
+        List<String> carNames = List.of(input.split(","));
+        
         System.out.println(carNames);
         // 라운드 출력
         System.out.println("라운드: ");
         int round = scanner.nextInt();
 
+        
+        RacingGame racingGame = new RacingGame(carNames);    
         // 레이싱 게임 생성 및 플레이
-        RacingGame racingGame = new RacingGame(carNames, round);
-        racingGame.play();
-    }
-}
-
-class Dice {
-    
-    private int number;
-
-    public Dice() {
-        
-        this.number = 0;
-    }
-
-    public void rolling() {
-        number = Randoms.pickNumberInRange(0, 9);
-    }
-    public int getNumber() {
-        return number;
-    }
-}
-
-class Car {
-    private String name;
-    private int position;
-
-    public Car(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이상이여만 가능합니다.");
-        }
-        this.name = name;
-    }
-    public void move() {
-        Dice dice = new Dice();
-        dice.rolling();
-        if (dice.getNumber() > 4) {
-            position++;
-        }
-        System.out.println("");
-        
-    }
-
-    public void showPosition() {
-        System.out.println(name + " : " + "-".repeat(position));
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-}
-
-class RacingGame {
-    private List<Car> cars;
-    private int round;
-
-    public RacingGame(List<String> names, int round) {
-        // stream은 names를 차례로 처리 -> "name1", "name2" ...
-        // map은 Car 객체로 변환 -> Car("name1"), Car("name2") ...
-        // collect는 List로 변환 -> [Car("name1"), Car("name2"), ...]
-        // 최종적으로 this.cars에 리스트로 된 객체 Car들을 저장
-        this.cars = names.stream().map(Car::new).collect(Collectors.toList());
-        this.round = round;
-    }
-
-    public void play() {
         for (int i = 0; i < round; i++) {
-            playRound();
-            showResult();
+            System.out.println("라운드 " + (i + 1));
+            racingGame.play();    
         }
-        finalResult();
-    }
-
-    public void playRound() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    public void showResult() {
-        for (Car car : cars) {
-            car.showPosition();
-        }
-    }
-
-    public void finalResult() {
-        int maxPosition = 0;
-        String winner = "";
-        for (Car car : cars) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
-                winner = car.getName();
-            } else if (car.getPosition() != 0 && maxPosition == car.getPosition()) {
-                winner += ", " + car.getName();
-            }
-        }
-        System.out.println("최종 우승자 : " + winner);
+        
+        
     }
 }
