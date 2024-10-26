@@ -3,6 +3,9 @@ package racingcar.view;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TryCountValidator;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
@@ -17,10 +20,10 @@ public class InputView {
         this.carNameValidator = carNameValidator;
     }
 
-    public String[] scanCarNames(){
+    public List<String> scanCarNames(){
         String carNameString = readLine();
 
-        String[] carNames = carNameString.split(CAR_NAME_DELIMITER);
+        List<String> carNames = Arrays.asList(carNameString.split(CAR_NAME_DELIMITER));
 
         carNameValidator.isLengthUnderFive(carNames);
         carNameValidator.isNotEmpty(carNames);

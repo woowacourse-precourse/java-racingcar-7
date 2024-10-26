@@ -6,6 +6,8 @@ import racingcar.model.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -22,12 +24,12 @@ public class RacingCarController {
         printWinner(cars);
     }
 
-    private String[] scanCarNames(){
+    private List<String> scanCarNames(){
         outputView.printScanCarsMessage();
         return inputView.scanCarNames();
     }
 
-    private Cars makeCars(String[] carNames) {
+    private Cars makeCars(List<String> carNames) {
         return new Cars(carNames);
     }
 

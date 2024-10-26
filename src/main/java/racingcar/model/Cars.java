@@ -6,7 +6,7 @@ import java.util.List;
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] carNames){
+    public Cars(List<String> carNames){
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
