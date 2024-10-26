@@ -67,22 +67,26 @@ public class RacingGame {
 
     public void printWinners() {
         int maxPosition = getMaxPosition();
+        List<String> winners = getWinners(maxPosition);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 
+    private List<String> getWinners(int maxPosition) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
             }
         }
-
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        return winners;
     }
+
 
     // 최대 위치를 계산하는 메소드
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            Math.max(maxPosition, car.getPosition());
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
