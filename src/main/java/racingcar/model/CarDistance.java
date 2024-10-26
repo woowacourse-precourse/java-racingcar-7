@@ -2,11 +2,11 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Distance {
+public class CarDistance {
     private int distance;
 
 
-    public Distance() {
+    public CarDistance() {
         this.distance = 0;
     }
 
@@ -26,7 +26,7 @@ public class Distance {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Distance distance1 = (Distance) o;
+        CarDistance distance1 = (CarDistance) o;
         return distance == distance1.distance;
     }
 
