@@ -19,4 +19,8 @@ public class GameService {
         }
     }
 
+    public Car createCar(String name) {
+        return new Car(name);
+    }
+
 }

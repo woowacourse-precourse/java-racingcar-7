@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.service.GameService;
 import racingcar.view.InputView;
 
@@ -20,5 +22,13 @@ public class GameController {
         String gameCountString = Console.readLine();
         int gameCount = Integer.parseInt(gameCountString);
         return validator.validateGameCount(gameCount);
+    }
+
+    public List<Car> createCars(){
+        List<Car> cars = new ArrayList<>();
+        for(String name : getCarNames()){
+            cars.add(gameService.createCar(name));
+        }
+        return cars;
     }
 }
