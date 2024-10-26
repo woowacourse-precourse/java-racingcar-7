@@ -47,17 +47,20 @@ public class Application {
         return moveCount;
     }
 
+
+    private static void printMoveResult(int moveCount, Car[] cars) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < moveCount; i++) {
 
             System.out.println((i + 1) + "회차 결과");
 
-            for (int c = 0; c < countCars; c++) {
+            for (int c = 0; c < cars.length; c++) {
                 cars[c].move(pickNumberInRange(0, 9));
                 System.out.println(cars[c].getPosition());
             }
         }
+    }
 
         String winner = "";
         int maxPosition = 0;
