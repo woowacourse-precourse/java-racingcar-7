@@ -5,6 +5,7 @@ import static racingcar.common.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.common.exception.RacingCarException;
@@ -67,6 +68,16 @@ class RacingCarNamesTest {
         void 자동차_이름이_5글자_이하의_영어_또는_한글로_이루어진_경우_예외가_발생하지_않는다(String input) {
             assertThatCode(() -> RacingCarNames.from(input))
                     .doesNotThrowAnyException();
+        }
+
+        @Test
+        @DisplayName("자동차 이름에 공백이 포함되어 있을 경우 공백을 제거하고 저장한다")
+        void 자동차_이름에_공백이_포함되어_있을_경우_공백을_제거하고_저장한다() {
+            String input = " 레드불 , 페라리 , 벤츠 ";
+            RacingCarNames racingCarNames = RacingCarNames.from(input);
+
+            assertThat(racingCarNames.carNames())
+                    .containsExactly("레드불", "페라리", "벤츠");
         }
     }
 }

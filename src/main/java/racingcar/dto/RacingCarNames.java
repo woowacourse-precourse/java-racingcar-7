@@ -4,11 +4,14 @@ import static racingcar.common.exception.ErrorMessage.*;
 
 import racingcar.common.exception.RacingCarException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public record RacingCarNames(List<String> carNames) {
 
     public static RacingCarNames from(String input) {
-        List<String> carNames = List.of(input.split(","));
+        List<String> carNames = List.of(input.split(",")).stream()
+                .map(String::trim)
+                .collect(Collectors.toList());
         validateInput(carNames);
         return new RacingCarNames(carNames);
     }
