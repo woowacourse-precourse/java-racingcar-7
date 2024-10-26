@@ -30,7 +30,7 @@ public class Car {
     public void moveForward() {
         int randNum = Randoms.pickNumberInRange(0,9);
         if (randNum >= 4) {
-            this.position += "-";
+            position += "-";
         }
     }
 }
