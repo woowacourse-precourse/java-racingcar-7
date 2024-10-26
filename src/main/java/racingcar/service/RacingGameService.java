@@ -66,7 +66,7 @@ public class RacingGameService {
 
 
     private boolean validateTryCount(Integer tryCount){
-        if (tryCount == 0){
+        if (tryCount <= 0){
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
         return true;
