@@ -22,7 +22,7 @@ class CarTest {
                 .hasMessage(EMPTY_STRING_NAME_ERROR_MESSAGE);
     }
 
-    @DisplayName("")
+    @DisplayName("차의 이름은 5글자 이하만 가능핟.")
     @Test
     void nameSizeOverFive() {
         //given
