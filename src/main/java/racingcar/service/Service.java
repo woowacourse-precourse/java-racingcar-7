@@ -14,7 +14,7 @@ public class Service { // TODO: 이름 더 명확하게 개선
 
     public void operate(List<String> names, int attemptNumber) {
         List<Boolean> initialRandoms = getRandom(names.size() * attemptNumber);
-        List<List<Boolean>> randoms = cutRandom(initialRandoms, attemptNumber)
+        List<List<Boolean>> randoms = cutRandom(initialRandoms, attemptNumber);
         initialize(names);
         move(randoms);
     }
