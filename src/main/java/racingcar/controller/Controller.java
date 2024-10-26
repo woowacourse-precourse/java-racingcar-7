@@ -23,7 +23,7 @@ public class Controller {
     public void startGame() {
         String rawInputCarNames = inputView.inputCarNames();
         List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
-        if (!isValidName(carNames)) {
+        if (!areValidName(carNames)) {
             throw new IllegalArgumentException("이름이 5글자가 넘습니다");
         }
         if (isNameOverlap(carNames)) {
@@ -31,15 +31,15 @@ public class Controller {
         }
         List<Car> carList = createCarByName(carNames);
 
-        int repeatNumber = -1;
-        String gameCountString = inputView.inputRoundNumber();
-        if (isPositiveOrZeroInteger(gameCountString)) {
-            repeatNumber = Integer.parseInt(gameCountString);
+        int roundCount = -1;
+        String rawRoundInput = inputView.inputRoundNumber();
+        if (isValidRoundCount(rawRoundInput)) {
+            roundCount = Integer.parseInt(rawRoundInput);
         }
 
         outputView.printExecutionResult();
 
-        runGameForRounds(repeatNumber, carList);
+        runGameForRounds(roundCount, carList);
 
         List<String> finalWinner = findFinalWinner(carList);
         outputView.printFinalRacingResult(finalWinner);
@@ -67,8 +67,8 @@ public class Controller {
         return carList;
     }
 
-    private boolean isPositiveOrZeroInteger(String gameCountString) {
-        if (!gameCountString.matches("\\d+")) {
+    private boolean isValidRoundCount(String rawRoundInput) {
+        if (!rawRoundInput.matches("\\d+")) {
             throw new IllegalArgumentException("0 이상의 정수를 입력해주세요.");
         }
         return true;
@@ -78,7 +78,7 @@ public class Controller {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private boolean isValidName(List<String> carNames) {
+    private boolean areValidName(List<String> carNames) {
         return carNames.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH);
     }
 
