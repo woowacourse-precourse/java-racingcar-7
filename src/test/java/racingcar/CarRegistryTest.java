@@ -2,8 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.car.CarRegistry;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.CarRegistry;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +20,8 @@ class CarRegistryTest {
         String input = "pobi,woni,jun";
 
         // When
-        CarRegistry carRegistry = new CarRegistry(input);
+        CarFactory carFactory = new CarFactory();
+        CarRegistry carRegistry = new CarRegistry(carFactory.createCars(input));
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
@@ -37,7 +39,8 @@ class CarRegistryTest {
         String input = "pobi,woni,pobi";
 
         // When
-        CarRegistry carRegistry = new CarRegistry(input);
+        CarFactory carFactory = new CarFactory();
+        CarRegistry carRegistry = new CarRegistry(carFactory.createCars(input));
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
@@ -52,9 +55,10 @@ class CarRegistryTest {
     void testInvalidCarNameTooLong() {
         // Given
         String input = "pobi,woni,pobi Maguire"; // One name too long
+        CarFactory carFactory = new CarFactory();
 
         // When
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> new CarRegistry(input));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> carFactory.createCars(input));
 
         // Then
         assertEquals("Car name has to be 5 or under 5.", exception.getMessage());

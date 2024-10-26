@@ -1,18 +1,17 @@
-package racingcar;
-
-import racingcar.car.Car;
-import racingcar.car.CarRegistry;
+package racingcar.domain;
 
 
 public class Stadium {
     private final CarRegistry carRegistry;
     private final RaceResult raceResult;
+    private final CarStatusFormatter carStatusFormatter;
 
     private static final String LINE_SEPARATOR = "\n";
 
     public Stadium(CarRegistry carRegistry, RaceResult result) {
         this.carRegistry = carRegistry;
         this.raceResult = result;
+        this.carStatusFormatter = new CarStatusFormatter();
     }
 
     public void runGame(Integer rounds) {
@@ -25,6 +24,6 @@ public class Stadium {
         for(Car car : carRegistry.getCars()){
             car.moveIfPossible();
         }
-        this.raceResult.add(carRegistry.toString()).add(LINE_SEPARATOR);
+        this.raceResult.add(carStatusFormatter.format(carRegistry.getCars())).add(LINE_SEPARATOR);
     }
 }

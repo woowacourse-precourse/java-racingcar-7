@@ -1,16 +1,16 @@
-package racingcar;
-
-import racingcar.car.CarRegistry;
+package racingcar.domain;
 
 import java.util.Set;
 
 public class RaceResult {
     private final CarRegistry carRegistry;
     private final StringBuilder result;
+    private final WinnerDecider winnerDecider;
 
     public RaceResult(StringBuilder result, CarRegistry registry) {
         this.result = result;
         this.carRegistry = registry;
+        this.winnerDecider = new WinnerDecider();
     }
 
     public RaceResult add(String result) {
@@ -19,7 +19,7 @@ public class RaceResult {
     }
 
     public String winnersToString() {
-        Set<String> winners = carRegistry.getWinnerNames();
+        Set<String> winners = winnerDecider.getWinners(carRegistry.getCars());
         String winnersString = "최종 우승자 : " + String.join(", ", winners);
         return winnersString;
     }
