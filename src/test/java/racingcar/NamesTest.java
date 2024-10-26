@@ -2,9 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,25 +14,28 @@ class NamesTest {
     @Test
     void Given_CorrectInput_When_NamesHasInput_Then_Success() {
         // Given
-        String input = "a,bb,ccc,dddd,eeeee";
+        List<Name> inputList = Arrays.asList(new Name("aa"), new Name("bb"), new Name("cc"));
+        String input = "aa,bb,cc";
+
         // When
         Names names = new Names(input);
 
         // Then
-        assertThat(names.toString()).isEqualTo(input);
+        assertThat(names.getNames()).isEqualTo(inputList);
     }
 
     @DisplayName("올바른 문자열과 문자 앞뒤 공백이 들어갔을 때, 정상 작동한다.")
     @Test
     void Given_CorrectInputWithBlank_When_NamesHasInput_Then_Success() {
         // Given
+        List<Name> inputList = Arrays.asList(new Name("a"), new Name("bb"), new Name("ccc"), new Name("dddd"),new Name("eeeee"));
         String input = "a, bb , ccc , dddd , eeeee";
 
         // When
         Names names = new Names(input);
 
         // Then
-        assertThat(names).isEqualTo(input);
+        assertThat(names.getNames()).isEqualTo(inputList);
     }
 
     @DisplayName("입력값이 하나만 존재할 경우, 에러 메세지를 출력한다.")
