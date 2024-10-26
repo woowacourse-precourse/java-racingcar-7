@@ -1,7 +1,9 @@
 package racingcar.factory;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -44,6 +46,21 @@ class NamingProcessorTest {
                 Arguments.of("one, two", List.of("one", "two")),
                 Arguments.of(" one  , t wo  ", List.of("one", "t wo"))
         );
+    }
+
+    @Test
+    @DisplayName("중복되는 이름이 있으면 예외를 던진다.")
+    public void throwExceptionWhenHasDuplicatedName() {
+        List<String> names = List.of("name", "name", "another");
+        assertThatThrownBy(() -> namingProcessor.checkDuplication(names))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("중복되는 이름이 없으면 예외를 던지지 않는다.")
+    public void doNotThrowExceptionWhenHasNoDuplicatedName() {
+        List<String> names = List.of("one", "two", "three");
+        Assertions.assertDoesNotThrow(() -> namingProcessor.checkDuplication(names));
     }
 
 }
