@@ -63,7 +63,7 @@ public class Racingcar {
 
 
     public boolean move(){
-        return 4 < Randoms.pickNumberInRange(0, 9);
+        return 4 <= Randoms.pickNumberInRange(0, 9);
     }
 
     public void racingDisplay(){
