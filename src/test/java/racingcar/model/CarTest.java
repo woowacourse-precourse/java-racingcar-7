@@ -21,6 +21,6 @@ class CarTest {
 
     @Test
     void 생성자_거리_초기화_테스트() {
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getMoveDistance()).isEqualTo(0);
     }
 }

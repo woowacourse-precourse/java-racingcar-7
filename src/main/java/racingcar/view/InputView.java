@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 public class InputView {
 
-    public ArrayList<String> readCarNames() throws IllegalArgumentException {
+    public static ArrayList<String> readCarNames() throws IllegalArgumentException {
         System.out.println(Message.INPUT_CAR_NAME.message);
         String carNames = Console.readLine();
         validateCarNames(carNames);
         return splitNamesByComma(carNames);
     }
 
-    public int readRepeatCount(String input) {
+    public static int readRepeatCount() {
         System.out.println(Message.INPUT_REPEAT_COUNT.message);
         String repeatCount = Console.readLine();
         validateRepeatCount(repeatCount);

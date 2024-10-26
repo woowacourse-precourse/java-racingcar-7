@@ -2,10 +2,10 @@ package racingcar.model;
 
 public class Car {
 
-    private String name;
-    private int distance = 0;
+    private final String name;
+    private int moveDistance = 0;
 
-    public Car(String name) {
+    public Car(final String name) {
         this.name = name;
     }
 
@@ -13,7 +13,11 @@ public class Car {
         return name;
     }
 
-    public int getDistance() {
-        return distance;
+    public int getMoveDistance() {
+        return moveDistance;
+    }
+
+    public void increaseDistance() {
+        this.moveDistance++;
     }
 }
