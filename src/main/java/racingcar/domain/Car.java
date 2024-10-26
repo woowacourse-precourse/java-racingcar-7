@@ -24,6 +24,10 @@ public class Car {
 		}
 	}
 
+	public int getPosition(){
+		return position;
+	}
+
 	private void move() {
 		position += MOVE_AMOUNT;
 	}
