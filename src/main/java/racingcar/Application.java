@@ -34,11 +34,13 @@ public class Application {
         }
     }
 
-    public static String[] seperateCarNames(String carNames) {
+    public static void seperateCarNames(String carNames) {
         String[] carName = carNames.strip().split("\\s*,\\s*");
         isCarNameFiveCharsOrLess(carName);
         isCarNameDuplicate(carName);
-        return carName;
+        for (int i = 0; i < carName.length; i++) {
+            car.put(carName[i], 0);
+        }
     }
 
     public static void isCarNameFiveCharsOrLess(String[] carName) {
