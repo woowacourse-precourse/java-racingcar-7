@@ -12,6 +12,18 @@ public class RacingGameService {
     private static final Integer NAME_LENGTH_LIMIT = 5;
 
 
+
+
+    private String[] parseCarName(String carNames){
+        return carNames.split(",");
+    }
+
+    private boolean validateTryCount(Integer tryCount){
+        if (tryCount == 0){
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        }
+        return true;
+    }
     private boolean validateCarNames(String carNames){
         if (carNames == null || carNames.isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
