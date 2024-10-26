@@ -1,6 +1,6 @@
 package racingcar.game;
 
-import racingcar.IntegerGenerator;
+import racingcar.integer_generator.IntegerGenerator;
 import racingcar.car.Car;
 import racingcar.car.CarManager;
 import racingcar.view.input.InputValue;
