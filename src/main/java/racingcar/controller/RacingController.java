@@ -3,13 +3,16 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
     private InputView inputView;
+    private OutputView outputView;
 
-    public RacingController(InputView inputView) {
+    public RacingController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void startRacing() {
@@ -18,6 +21,8 @@ public class RacingController {
 
         processRacing(cars, roundCount);
         List<Car> winners = determineWinner(cars);
+
+        printWinners(winners);
     }
 
     private List<Car> prepareRacingCar() {
@@ -45,5 +50,9 @@ public class RacingController {
         return cars.stream()
                 .filter(car -> car.isWinner(maxMovedDistance))
                 .toList();
+    }
+
+    private void printWinners(List<Car> winners) {
+        outputView.outputWinners(winners);
     }
 }
