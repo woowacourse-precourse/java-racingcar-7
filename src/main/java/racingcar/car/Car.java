@@ -10,6 +10,10 @@ public class Car {
     private final String name;
     private final Supplier<Integer> randomSupplier;
 
+    private static final String SEPARATOR = " : ";
+    private static final char DASH = '-';
+    private final StringBuilder dashBuilder;
+
     public Car(String name) {
         this(name, ()-> Randoms.pickNumberInRange(0, 9));
     }
@@ -19,6 +23,7 @@ public class Car {
         this.name = name;
         this.position = 0;
         this.randomSupplier = randomSupplier;
+        this.dashBuilder = new StringBuilder();
     }
 
     private void validateCarNameLength(String carName) {
@@ -55,7 +60,12 @@ public class Car {
      */
     @Override
     public String toString() {
-        return name + " : " + "-".repeat(Math.max(0, position));
+        dashBuilder.setLength(0);
+        dashBuilder.append(name).append(SEPARATOR);
+        for (int i = 0; i < position; i++) {
+            dashBuilder.append(DASH);
+        }
+        return dashBuilder.toString();
     }
 
     @Override
