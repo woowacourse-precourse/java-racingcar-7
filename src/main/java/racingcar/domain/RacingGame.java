@@ -29,13 +29,8 @@ public class RacingGame {
 
     public String findWinner() {
 
-        int maxMoveCount = playRacingCarList.stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElse(0);
-
         return playRacingCarList.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .filter(car -> car.getMoveCount() == getMaxMoveCount())
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
 
@@ -57,5 +52,13 @@ public class RacingGame {
     private int generateRandomNumberZeroToNine(){
 
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private int getMaxMoveCount(){
+
+        return playRacingCarList.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
     }
 }
