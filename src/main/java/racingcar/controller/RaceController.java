@@ -8,6 +8,7 @@ public class RaceController {
 
     public void run() {
         Race race = setupRace();
+        racing(race, getAttemptCount());
     }
 
     private Race setupRace() {
@@ -18,6 +19,14 @@ public class RaceController {
     private int getAttemptCount() {
         OutputView.renderAttemptCountInput();
         return InputView.getAttemptCount();
+    }
+
+    private void racing(Race race, int attemptCount) {
+        OutputView.preRenderResult();
+        for (int i = 0; i < attemptCount; i++) {
+            race.doRace();
+            OutputView.renderResult(race);
+        }
     }
 
 }
