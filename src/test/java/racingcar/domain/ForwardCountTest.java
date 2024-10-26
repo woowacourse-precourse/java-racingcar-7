@@ -15,21 +15,21 @@ public class ForwardCountTest {
     void validateNumber(String candidate) {
         assertThatThrownBy(() -> ForwardCount.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("전진을 시도할 횟수는 0~9 사이의 숫자만 입력 가능합나다.");
+                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합나다.");
     }
 
     @ParameterizedTest
-    @ValueSource(strings= {"-1", "-10", "10"})
-    @DisplayName("전진을 시도하는 횟수에 0~9가 아닌 숫자가 들어오면 예외가 발생한다.")
+    @ValueSource(strings= {"-1", "-10", "101"})
+    @DisplayName("전진을 시도하는 횟수에 1~100 사이가 아닌 숫자가 들어오면 예외가 발생한다.")
     void validateForwardCountOutOfRange(String candidate) {
         assertThatThrownBy(() -> ForwardCount.from(candidate))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("전진을 시도할 횟수는 0~9 사이의 숫자만 입력 가능합나다.");
+                .hasMessage("시도할 횟수는 1~100 사이의 숫자만 입력 가능합나다.");
     }
 
     @ParameterizedTest
-    @ValueSource(strings= {"0", "1", "5", "9"})
-    @DisplayName("전진을 시도하는 횟수에 0~9 사이의 숫자가 입력되면 테스트는 통과한다.")
+    @ValueSource(strings= {"1", "10", "55", "100"})
+    @DisplayName("전진을 시도하는 횟수에 1~100 사이의 숫자가 입력되면 테스트는 통과한다.")
     void validateSingleDigitForwardCount(String candidate) {
         ForwardCount saveForwardCountCount = ForwardCount.from(candidate);
         int parseInt = Integer.parseInt(candidate);
