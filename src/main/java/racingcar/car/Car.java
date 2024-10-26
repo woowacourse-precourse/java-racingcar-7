@@ -2,6 +2,8 @@ package racingcar.car;
 
 import racingcar.validator.CarNameValidator;
 
+import java.util.Objects;
+
 public class Car {
     private final String name;
     private int position;
@@ -27,5 +29,18 @@ public class Car {
     // 테스트시 tearDown을 위한 메서드
     public void clearPosition(){
         this.position = 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
