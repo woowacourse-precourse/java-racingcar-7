@@ -20,12 +20,16 @@ public class View {
 
         try {
             int tryCount = Integer.parseInt(tryCountInput);
-            if (tryCount <= 0) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_VALUE.getMessage());
-            }
+            validateTryCount(tryCount);
             return tryCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_FORMAT.getMessage());
+        }
+    }
+
+    private static void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_VALUE.getMessage());
         }
     }
 
