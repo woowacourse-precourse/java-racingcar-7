@@ -8,7 +8,8 @@ public class Application {
         AppConfig appConfig = new AppConfig();
         Racing racing = new Racing(
                 appConfig.inputView(),
-                appConfig.outputView()
+                appConfig.outputView(),
+                appConfig.racingManager()
         );
         racing.start();
     }
