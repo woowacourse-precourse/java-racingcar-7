@@ -24,8 +24,8 @@ public class Cars {
         return cars.get(index).getName();
     }
 
-    public int movedCountAt(int index) {
-        return cars.get(index).getMovedCount();
+    public int countMoveAt(int index) {
+        return cars.get(index).countMove();
     }
 
     public void move() {
@@ -34,18 +34,17 @@ public class Cars {
         }
     }
 
-    // TODO: 스트림 사용 고려 혹은 리팩토링
     public ArrayList<String> winnerNames() {
         int maxMovedCount = -1;
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>(cars.size()); // 오버헤드를 방지하기 위해, 최대 사이즈만큼 미리 할당
 
         for (Car car : cars) {
-            if (maxMovedCount > car.getMovedCount()) {
+            if (maxMovedCount > car.countMove()) {
                 continue;
             }
 
-            if (maxMovedCount < car.getMovedCount()) {
-                maxMovedCount = car.getMovedCount();
+            if (maxMovedCount < car.countMove()) {
+                maxMovedCount = car.countMove();
                 names.clear();
             }
 

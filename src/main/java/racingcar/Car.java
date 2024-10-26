@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
-    private static final int MOVE_FORWARD = 4;
+    private static final int MOVING_FORWARD = 4;
     private static final int MAX_NAME_LENGTH = 5;
     private static final String VALID_NAME_REGEX = "[a-zA-Zㄱ-ㅣ가-힣]+";
 
@@ -37,8 +37,8 @@ public class Car {
 
     public void move() {
         int fate = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
-        if (fate >= MOVE_FORWARD) {
-            ++this.movedCount;
+        if (fate >= MOVING_FORWARD) {
+            this.movedCount++;
         }
     }
 
@@ -46,7 +46,7 @@ public class Car {
         return this.name;
     }
 
-    public int getMovedCount() {
+    public int countMove() {
         return this.movedCount;
     }
 }
