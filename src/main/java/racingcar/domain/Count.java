@@ -1,9 +1,8 @@
 package racingcar.domain;
 
-import racingcar.constant.Rule;
-import racingcar.util.RacingCarValidator;
+import racingcar.util.NumberValidator;
 
-public class Count<T extends Number> {
+public class Count<T extends Number>{
 
     private final T value;
 
@@ -11,8 +10,10 @@ public class Count<T extends Number> {
         this.value = value;
     }
 
-    public static Count<Integer> of(final int value) {
-        RacingCarValidator.validateCountValueRange(value, Rule.COUNT_INTEGER_MAX);
+    public static Count<Integer> of(final String input, final NumberValidator<Integer> numberValidator) {
+        numberValidator.validateFormat(input);
+        final int value = Integer.parseInt(input);
+        numberValidator.validateRange(value, Integer.MAX_VALUE);
         return new Count<>(value);
     }
 
