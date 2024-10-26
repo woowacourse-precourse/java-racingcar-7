@@ -13,5 +13,10 @@ public class Validator {
         return carNameList;
     }
 
-
+    public int validateGameCount(int input){
+        if(input <= 0){
+            throw new IllegalArgumentException("게임횟수는 1부터 입력 가능합니다");
+        }
+        return input;
+    }
 }
