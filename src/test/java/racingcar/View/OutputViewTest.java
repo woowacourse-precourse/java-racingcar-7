@@ -5,11 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.Model.Car;
 
 class OutputViewTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -34,12 +34,12 @@ class OutputViewTest {
 
     @Test
     void printExecutionStatus() {
-        LinkedHashMap<String, String> carStatus = new LinkedHashMap<>();
-        carStatus.put("pobi", "--");
-        carStatus.put("woni", "-");
-        carStatus.put("jun", "--");
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi", 2));
+        cars.add(new Car("woni", 1));
+        cars.add(new Car("jun", 2));
 
-        outputView.printExecutionStatus(carStatus);
+        outputView.printExecutionStatus(cars);
         assertThat(output.toString()).isEqualTo(
                 "pobi : --\n"
                         + "woni : -\n"

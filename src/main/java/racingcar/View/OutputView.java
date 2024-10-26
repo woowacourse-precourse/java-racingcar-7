@@ -1,7 +1,7 @@
 package racingcar.View;
 
-import java.util.LinkedHashMap;
 import java.util.List;
+import racingcar.Model.Car;
 
 public class OutputView {
     public static final String EXECUTION_RESULT_HEADER = "실행 결과";
@@ -11,8 +11,8 @@ public class OutputView {
         System.out.println("\n"+EXECUTION_RESULT_HEADER);
     }
 
-    public void printExecutionStatus(LinkedHashMap<String, String> raceStatus) {
-        raceStatus.forEach((carName, status) -> System.out.println(carName + " : " + status));
+    public void printExecutionStatus(List<Car> cars) {
+        cars.forEach((car) -> System.out.println(car.getName() + " : " + "-".repeat(car.getStatus())));
         System.out.println();
     }
 
