@@ -14,7 +14,7 @@ public class User {
     @Override
     public String toString() {
         String information = name + " : ";
-        for(int i = 0; i < totalGo; i++) {
+        for (int i = 0; i < totalGo; i++) {
             information += "-";
         }
         return information;
