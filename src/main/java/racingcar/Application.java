@@ -42,9 +42,9 @@ public class Application {
         Cars cars = initializeCars(splitter, inputNames, movingStrategy);
         Attempt attempt = readAttempt(outputHandler, inputHandler);
 
-        RacingGame racingGame = new RacingGame(cars, attempt);
-        showRacingResult(racingGame, outputHandler);
-        String winners = racingGame.calculateWinners();
+        RacingCar racingCar = new RacingCar(cars, attempt);
+        showRacingResult(racingCar, outputHandler);
+        String winners = racingCar.calculateWinners();
         outputHandler.showWinners(winners);
     }
 
@@ -82,11 +82,11 @@ public class Application {
         }
     }
 
-    private static void showRacingResult(final RacingGame racingGame, OutputHandler outputHandler) {
+    private static void showRacingResult(final RacingCar racingCar, OutputHandler outputHandler) {
         outputHandler.showCommentForResult();
-        racingGame.start();
-        Cars cars = racingGame.getCars();
-        History history = racingGame.getHistory();
+        racingCar.start();
+        Cars cars = racingCar.getCars();
+        History history = racingCar.getHistory();
         for (Positions positions : history.values()) {
             outputHandler.showCarPosition(cars.names(), positions.getValues());
         }

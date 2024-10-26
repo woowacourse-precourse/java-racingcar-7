@@ -8,14 +8,14 @@ import racingcar.model.car.Cars;
 import racingcar.model.position.History;
 import racingcar.model.position.Positions;
 
-public class RacingGame {
+public class RacingCar {
 
     private final Cars cars;
     private final Positions positions;
     private final History history;
     private final Attempt attempt;
 
-    public RacingGame(final Cars cars, final Attempt attempt) {
+    public RacingCar(final Cars cars, final Attempt attempt) {
         this.cars = cars;
         this.positions = Positions.initialize(cars.size());
         this.history = new History(new ArrayList<>());
