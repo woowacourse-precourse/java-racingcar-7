@@ -34,7 +34,6 @@ public class UI {
     }
 
     public void printWinners(List<String> winners) {
-        System.out.println(PRINT_WINNERS_STATEMENT);
-        System.out.println(String.join(", ", winners));
+        System.out.println(PRINT_WINNERS_STATEMENT + String.join(", ", winners));
     }
 }
