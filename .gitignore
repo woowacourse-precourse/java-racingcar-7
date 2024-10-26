@@ -36,3 +36,6 @@ out/
 
 ### JAVA ###
 *.class
+
+### Git ###
+.gitmessage.txt
