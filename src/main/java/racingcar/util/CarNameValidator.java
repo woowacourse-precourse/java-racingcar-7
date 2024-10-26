@@ -60,6 +60,5 @@ public class CarNameValidator {
     private static boolean isSpace(String input) {
         return Pattern.matches("^\\s+$", input);
     }
-
 }
 
