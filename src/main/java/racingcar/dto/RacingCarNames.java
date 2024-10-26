@@ -34,10 +34,19 @@ public record RacingCarNames(List<String> carNames) {
     }
 
     private static void validateCarNameCharacters(String carName) {
-        if (!carName.matches("^[a-zA-Z가-힣]+$")) {
+        if (!isEnglishOnly(carName) && !isKoreanOnly(carName)) {
             throw RacingCarException.from(RACING_CAR_NAME_MUST_BE_ENGLISH_OR_KOREAN);
         }
     }
+
+    private static boolean isEnglishOnly(String carName) {
+        return carName.matches("^[a-zA-Z]+$");
+    }
+
+    private static boolean isKoreanOnly(String carName) {
+        return carName.matches("^[가-힣]+$");
+    }
+
 
     private static void validateCarNameLength(String carName) {
         if (carName.length() > 5) {

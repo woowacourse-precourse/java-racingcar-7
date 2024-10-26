@@ -29,14 +29,11 @@ class RacingCarNamesTest {
 
         @ParameterizedTest
         @ValueSource(strings = {
-                "페라리,1234",
-                "max,#$@",
-                "1234,5678",
-                "Car23,Ca456",
-                "가나다사,123"
+                "페라리,제네nr",
+                "max,레드불nr",
         })
-        @DisplayName("자동차 이름이 영어 또는 한글로만 이뤄지지 않으면 예외가 발생한다.")
-        void 자동차_이름이_영어_또는_한글로만_이뤄지지_않으면_예외가_발생한다(String input) {
+        @DisplayName("자동차 이름이 한글 또는 영어로만 이루어지지 않으면 예외가 발생한다.")
+        void 자동차_이름이_영어_또는_한글로만_이루어지지_않으면_예외가_발생한다(String input) {
             assertThatThrownBy(() -> RacingCarNames.from(input))
                     .isInstanceOf(RacingCarException.class)
                     .hasMessage(RACING_CAR_NAME_MUST_BE_ENGLISH_OR_KOREAN.getMessage());
