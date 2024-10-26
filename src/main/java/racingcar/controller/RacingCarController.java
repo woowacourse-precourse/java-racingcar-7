@@ -19,10 +19,15 @@ public class RacingCarController {
         String carNames = input.inputCarsName();
         Cars.register(separateName(carNames));
         int tryNumber = Integer.parseInt(input.inputTryNumber());
+        move(tryNumber);
+        output.printWinner(Cars.findWinner());
+    }
+
+    public void move(int tryNumber){
+        System.out.println("실행 결과");
         for(int i=0;i<tryNumber;i++){
             output.printResult(Cars.moveForward());
         }
-        output.printWinner(Cars.findWinner());
     }
 
     public List<String> separateName(String carNames){

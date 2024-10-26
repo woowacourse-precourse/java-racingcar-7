@@ -8,6 +8,7 @@ public class OutputView {
         for(String key:cars.keySet()){
             System.out.println(key + " : " + cars.get(key));
         }
+        System.out.println();
     }
 
     public void printWinner(List<String> winner){
