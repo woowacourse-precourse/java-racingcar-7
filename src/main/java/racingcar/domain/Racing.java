@@ -58,11 +58,13 @@ public class Racing {
         Set<String> WinnerName = new HashSet<>();
 
         for (Map.Entry<String, Integer> entry : racingCars.entrySet()) {
-            if(entry.getValue() > maxScore) {
+            if(entry.getValue() >= maxScore) {
                 maxScore = entry.getValue();
                 WinnerName.add(entry.getKey());
             }
         }
+
+        validator.checkHasWinners(maxScore);
 
         return WinnerName;
     }

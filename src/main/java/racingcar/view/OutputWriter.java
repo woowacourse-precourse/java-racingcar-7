@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Set;
+
 public class OutputWriter {
 
     public void printCarNamesInputMessage() {
