@@ -24,9 +24,41 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 차_이름_5글자_초과() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 차_이름_비어있음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 차_이름_중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수_숫자_아님() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수_비어있음() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", " "))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
