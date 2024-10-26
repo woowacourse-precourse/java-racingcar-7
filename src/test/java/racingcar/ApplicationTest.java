@@ -1,10 +1,13 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedHashMap;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -64,12 +67,20 @@ class ApplicationTest extends NsTest {
                 .doesNotThrowAnyException();
     }
 
-
     @Test
     void validateUniqueCarName_예외_테스트() {
-        String[] carNames = {"twin", "twin"};
+        String[] carNames = {"Car-1", "Car-1", "Car-2"};
+        application.initializeCarPositions(carNames);
         assertThatThrownBy(() -> application.validateUniqueCarName(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void validateUniqueCarName_정상_입력_테스트() {
+        String[] carNames = {"Car-1", "Car-2", "Car-3"};
+        application.initializeCarPositions(carNames);
+        assertThatCode(() -> application.validateUniqueCarName(carNames))
+                .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
