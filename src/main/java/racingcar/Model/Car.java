@@ -8,7 +8,7 @@ public class Car {
     public Car(String carName){
         this.carName=carName;
     }
-    public void setPosition(String position){
+    public void setPosition(){
         this.position+=movement;
     }
     public String getPosition(){return position;}
