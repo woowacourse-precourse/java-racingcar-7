@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.dto.InputDto;
 import racingcar.utils.moving.MovingStrategy;
-import racingcar.utils.moving.MovingByRandomNumber;
 import racingcar.views.OutputView;
 
 import java.util.List;

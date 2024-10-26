@@ -16,7 +16,7 @@ public class InputView {
         return splitCarNames(input);
     }
 
-    public static List<String> splitCarNames(String input) {
+    private static List<String> splitCarNames(String input) {
         return Arrays.stream(input.split(",")).toList();
     }
 
