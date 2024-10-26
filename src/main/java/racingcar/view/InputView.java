@@ -18,4 +18,11 @@ public class InputView {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public static int getTrialCount() {
+
+        System.out.println("시도할 횟수는 몇회인가요?");
+
+        return Integer.parseInt(Console.readLine());
+    }
 }
