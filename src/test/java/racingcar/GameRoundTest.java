@@ -3,13 +3,12 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.GameRound;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.*;
 
 public class GameRoundTest {
 
     @Test
-    void 시행_횟수가_1보다_작을_때(){
+    void 시행_횟수가_1보다_작을_때_테스트(){
         //given
         int count = -1;
 
@@ -21,5 +20,6 @@ public class GameRoundTest {
         //then
         assertThat(result).isInstanceOf(IllegalArgumentException.class);
     }
+
 
 }
