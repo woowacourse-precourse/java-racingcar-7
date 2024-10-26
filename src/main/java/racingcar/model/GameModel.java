@@ -1,25 +1,31 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GameModel {
-    public Map<String, Integer> getCarMap(String[] carNames) {
-        Map<String, Integer> carMap = new LinkedHashMap<>();
-
+    private Map<String, Integer> carMap;
+    public void setCarMap(String[] carNames) {
         trimCarNames(carNames);
-
         List<String> validCarNames = Arrays.stream(carNames)
-                                            .filter(name -> !name.isEmpty())
-                                            .toList();
-
+                .filter(name -> !name.isEmpty())
+                .toList();
         validateCarNames(validCarNames);
+        initializeCarMap(validCarNames);
+    }
 
-        for (String carName : validCarNames) {
-            carMap.put(carName, 0);
+    public void moveCars() {
+        for (String key : carMap.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                carMap.put(key, carMap.get(key) + 1);
+            }
         }
+    }
 
+    public Map<String, Integer> getCarMap() {
         return carMap;
     }
 
@@ -35,6 +41,13 @@ public class GameModel {
         if (carNames.size() < 2) throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
     }
 
+    private void initializeCarMap(List<String> carNames) {
+        carMap = new LinkedHashMap<>();
+        for (String carName : carNames) {
+            carMap.put(carName, 0);
+        }
+    }
+
     private void trimCarNames(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
             carNames[i] = carNames[i].strip();
@@ -42,11 +55,11 @@ public class GameModel {
     }
 
     public int getRound(String gameRound) {
-        getNumRound(gameRound);
+        validateRound(gameRound);
         return Integer.parseInt(gameRound);
     }
 
-    private void getNumRound(String gameRound) {
+    private void validateRound(String gameRound) {
         try {
             long numRound = Long.parseLong(gameRound);
             if (numRound < 1) throw new IllegalArgumentException("게임 횟수는 최소 한번입니다.");

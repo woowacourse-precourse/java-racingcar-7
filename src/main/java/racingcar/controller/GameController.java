@@ -1,11 +1,9 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.GameView;
 import racingcar.model.GameModel;
 
 import java.util.List;
-import java.util.Map;
 
 public class GameController {
     private final GameModel gameModel;
@@ -17,24 +15,20 @@ public class GameController {
     }
 
     public void runFullGame() {
-        Map<String, Integer> carStepsMap = gameModel.getCarMap(gameView.input.carName().split(","));
+        String[] carNames = gameView.input.carName().split(",");
         int round = gameModel.getRound(gameView.input.gameRound());
+        gameModel.setCarMap(carNames);
 
         System.out.println("실행 결과");
+
         for (int i = 0; i < round; i++) {
-            gameView.output.gameResult(startGame(carStepsMap));
+            gameModel.moveCars();
+            gameView.output.gameResult(gameModel.getCarMap());
         }
 
-        List<String> winnerList = gameModel.getWinner(carStepsMap);
+        List<String> winnerList = gameModel.getWinner(gameModel.getCarMap());
         gameView.output.winner(winnerList);
     }
 
-    private Map<String,Integer> startGame(Map<String,Integer> carMap) {
-        for (String key : carMap.keySet()) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                carMap.put(key, carMap.get(key) + 1);
-            }
-        }
-        return carMap;
-    }
+
 }
