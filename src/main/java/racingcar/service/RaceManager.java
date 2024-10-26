@@ -6,8 +6,8 @@ import java.util.List;
 import racingcar.domain.Car;
 
 public class RaceManager {
-    public List<Car> cars;
-    public int totalTimes;
+    private final List<Car> cars;
+    private final int totalTimes;
 
     public RaceManager(String[] names, int totalTimes) {
         this.cars = new ArrayList<>();
