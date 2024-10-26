@@ -11,7 +11,7 @@ import racingcar.model.RacingCar;
 public class RacingGameService {
     private static final Integer NAME_LENGTH_LIMIT = 5;
 
-    public List<RacingCar> startRace(String carNames, Integer tryCount){
+    public List<RacingCar> initializeRacingGame(String carNames, Integer tryCount){
         if (!validateCarNames(carNames) || !validateTryCount(tryCount)){
             return null;
         }
@@ -22,10 +22,6 @@ public class RacingGameService {
 
         for (String carName : parseCarName){
             racingCars.add(new RacingCar(carName));
-        }
-
-        for (int i = 0; i < tryCount; i++){
-            moveRacingCars(racingCars);
         }
 
         return racingCars;
