@@ -15,7 +15,7 @@ public class Output {
 		List<String> winnerNames = cars.stream().map(Car::getName).toList();
 		String winnerString = String.join(", ", winnerNames);
 
-		System.out.println("최종 우승자" + winnerString);
+		System.out.println("최종 우승자 : " + winnerString);
 	}
 
 	private static void printCarCurrentStatus(Car car) {
@@ -32,7 +32,7 @@ public class Output {
 	}
 
 	public static void printRequestCarNames() {
-		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
+		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 	}
 
 	public static void printRequestTurnCount() {
