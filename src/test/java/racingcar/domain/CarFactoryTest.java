@@ -6,12 +6,12 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CarFactoryTest {
-    private final CarFactory carFactory = new CarFactory(",");
+    private final CarFactory carFactory = new CarFactory();
 
     @Test
     void 차_목록_생성() {
         //given
-        String[] carNames = {"benz", "audi", "bmw", "kia", "tesla"};
+        List<String> carNames = List.of("benz", "audi", "bmw", "kia", "tesla");
 
         //when
         List<Car> cars = carFactory.getCars(carNames);

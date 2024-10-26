@@ -5,9 +5,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.service.strategy.MoveStrategy;
+import racingcar.service.strategy.RandomMoveStrategy;
 
 class RaceManagerTest {
-    private final RaceManager raceManager = new RaceManager();
+    private final MoveStrategy moveStrategy = new RandomMoveStrategy();
+    private final RaceManager raceManager = new RaceManager(moveStrategy);
 
     @Test
     void 경주_시작() {

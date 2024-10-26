@@ -13,8 +13,8 @@ import racingcar.ui.ResultView;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        InputView inputView = new InputView(new InputParser());
-        CarFactory carFactory = new CarFactory(",");
+        InputView inputView = new InputView(new InputParser(","));
+        CarFactory carFactory = new CarFactory();
         RaceManager raceManager = new RaceManager(new RandomMoveStrategy());
         ResultView resultView = new ResultView();
 

@@ -3,20 +3,21 @@ package racingcar.ui;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class InputParserTest {
-    private final InputParser inputParser = new InputParser();
+    private final InputParser inputParser = new InputParser(",");
     @Test
     void 이름_추출_성공() {
         //given
         String names = "audi,benz,bmw,kia";
 
         //when
-        String[] carNames = inputParser.parseNames(names);
+        List<String> carNames = inputParser.parseNames(names);
 
         //then
-        assertThat(carNames.length).isEqualTo(4);
+        assertThat(carNames.size()).isEqualTo(4);
         assertThat(carNames).containsExactly("audi", "benz", "bmw", "kia");
     }
 
