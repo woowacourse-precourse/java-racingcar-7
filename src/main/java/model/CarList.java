@@ -23,7 +23,7 @@ public class CarList {
     public void setCarList(List<String> carNames) {
         for (String carName : carNames) {
             if (isCarExist(carName)) {
-                throw new IllegalArgumentException(ExceptionMessage.CAR_ALEADY_EXIST);
+                throw new IllegalArgumentException(ExceptionMessage.CAR_ALREADY_EXIST);
             }
             Car car = new Car(carName);
             carList.add(car);

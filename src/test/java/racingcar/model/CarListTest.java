@@ -47,7 +47,7 @@ public class CarListTest {
 
         assertThatThrownBy(() -> carList.setCarList(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.CAR_ALEADY_EXIST);
+                .hasMessage(ExceptionMessage.CAR_ALREADY_EXIST);
     }
 
     @ParameterizedTest
