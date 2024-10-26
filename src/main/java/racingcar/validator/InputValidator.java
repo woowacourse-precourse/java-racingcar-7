@@ -72,12 +72,18 @@ public class InputValidator {
     }
 
     //시도 횟수가 숫자가 아니면 true, 숫자면 false
-    public boolean IsNotNumber(String number) {
+    public boolean isNotNumber(String number) {
         for (char tryNumber : number.toCharArray()) {
             if (Character.isDigit(tryNumber)) {
                 return false;
             }
         }
+        return true;
+    }
+
+    //시도 횟수가 1이상의 정수가 아니면 true, 숫자면 false
+    public boolean isNotInteger(String number) {
+
         return true;
     }
 }

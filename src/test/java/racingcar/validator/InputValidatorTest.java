@@ -60,12 +60,24 @@ class InputValidatorTest {
     public void 시도횟수가_숫자가_아닌경우() {
         InputValidator inputValidator = new InputValidator();
 
-        boolean normalInput = inputValidator.IsNotNumber("5"); //정상적인 입력
-        boolean stringInput = inputValidator.IsNotNumber("A");//숫자가 아닌 문자인 경우
+        boolean normalInput = inputValidator.isNotNumber("5"); //정상적인 입력
+        boolean stringInput = inputValidator.isNotNumber("A");//숫자가 아닌 문자인 경우
 
         Assertions.assertThat(normalInput).isFalse();
         Assertions.assertThat(stringInput).isTrue();
-
-
     }
+
+    @Test
+    public void 시도횟수가_1이상의_정수가_아닌경우() {
+        InputValidator inputValidator = new InputValidator();
+
+        boolean normalInput = inputValidator.isNotInteger("1"); //정상적인 입력
+        boolean zeroInput = inputValidator.isNotInteger("0"); //정상적인 입력
+        boolean minusInput = inputValidator.isNotInteger("-1"); //정상적인 입력
+
+        Assertions.assertThat(normalInput).isFalse();
+        Assertions.assertThat(zeroInput).isTrue();
+        Assertions.assertThat(minusInput).isTrue();
+    }
+
 }
