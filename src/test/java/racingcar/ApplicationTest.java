@@ -18,7 +18,6 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
 
-
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
@@ -39,7 +38,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void 자동차_이름_입력_테스트() {
+    public void testInputCarNames() {
         String carNamesInput = "포르쉐,페라리,람보르기니";
         List<Car> cars = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(carNamesInput, ",");
@@ -54,6 +53,15 @@ class ApplicationTest extends NsTest {
         assertEquals("페라리", cars.get(1).getName());
         assertEquals("람보르기니", cars.get(2).getName());
     }
+
+    @Test
+    public void inputRaceCountTest() {
+        String NumberOfRace = "3";
+        int raceCount = Integer.parseInt(NumberOfRace);
+        assertEquals(3, raceCount);
+    }
+
+
 
 
     @Override
