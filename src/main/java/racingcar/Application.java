@@ -1,12 +1,17 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<String> cars = getCars();
+        Integer movementCount = getMovementCount();
+        Integer randomNumber = getRandomNumber();
+        Boolean isValidNumber = isValidNumber(randomNumber);
     }
 
     public static List<String> getCars() {
@@ -40,5 +45,13 @@ public class Application {
             throw new IllegalArgumentException();
 
         return movemmetCount;
+    }
+
+    public static Integer getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public static Boolean isValidNumber(Integer number) {
+        return number >= 4;
     }
 }
