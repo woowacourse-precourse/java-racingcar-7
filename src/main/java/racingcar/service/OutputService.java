@@ -40,8 +40,9 @@ public class OutputService {
     private List<String> getWinners(List<Car> cars) {
         List<String> winners = new ArrayList<>();
 
-        sortCars(cars);
-        int maxDistance = cars.getFirst().getDistance();
+        sortByDistanceHigh(cars);
+        Car firstCar = cars.getFirst();
+        int maxDistance = firstCar.getDistance();
         for (Car car : cars) {
             addWinners(winners, car, maxDistance);
         }
@@ -49,7 +50,7 @@ public class OutputService {
         return winners;
     }
 
-    private void sortCars(List<Car> cars) {
+    private void sortByDistanceHigh(List<Car> cars) {
         cars.sort((o1, o2) -> o2.getDistance() - o1.getDistance());
     }
 
