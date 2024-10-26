@@ -17,7 +17,7 @@ public class Validate {
         }
     }
 
-    public static void validateNameNotEmpty(String name) { 
+    public static void validateNameNotEmpty(String name) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException(INVALID_CAR_NUMBER.format());
         }
