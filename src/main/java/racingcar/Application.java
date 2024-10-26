@@ -34,17 +34,27 @@ public class Application {
     }
 
     public static boolean isValidName(String carNamesInput) {
-        if (carNamesInput.isEmpty()) return false;
+        if (carNamesInput.isEmpty()) {
+            return false;
+        }
 
-        if (!carNamesInput.contains(",")) return false;
+        if (!carNamesInput.contains(",")) {
+            return false;
+        }
 
         String[] carNameList = carNamesInput.split(",", -1);
-        if (carNameList.length == 1) return false;
+        if (carNameList.length == 1) {
+            return false;
+        }
 
-        if (hasDuplicates(carNameList)) return false;
+        if (hasDuplicates(carNameList)) {
+            return false;
+        }
 
         for (String carName : carNameList) {
-            if (carName.isBlank() || carName.trim().length() > 5) return false;
+            if (carName.isBlank() || carName.trim().length() > 5) {
+                return false;
+            }
         }
 
         return true;
@@ -62,22 +72,29 @@ public class Application {
     }
 
     public static boolean isValidAttemptCount(String input) {
-        if (input.isBlank()) return false;
-        if (input.contains(".")) return false;
+        if (input.isBlank()) {
+            return false;
+        }
+
+        if (input.contains(".")) {
+            return false;
+        }
 
         try {
             return Integer.parseInt(input.trim()) > 0;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public static List<Car> createCarList (String carNamesInput) {
+    public static List<Car> createCarList(String carNamesInput) {
         List<Car> carList = new ArrayList<>();
         String[] carNameList = carNamesInput.split(",", -1);
+
         for (String carName : carNameList) {
             carList.add(new Car(carName.trim()));
         }
+
         return carList;
     }
 }

@@ -40,7 +40,6 @@ public class Racing {
         Collections.sort(carList, (car1, car2) -> Integer.compare(car2.getDistance(), car1.getDistance()));
 
         int maxDistance = carList.get(0).getDistance();
-
         List<Car> winnerList = new ArrayList<>();
 
         for (Car car : carList) {
@@ -54,9 +53,12 @@ public class Racing {
 
     public void printWinnerName(List<Car> winnerList) {
         System.out.print("최종 우승자 : ");
-        String result = String.join(", ", winnerList.stream()
-                .map(Car::getName)
-                .toList());
+
+        String result = String.join(", ",
+                winnerList.stream()
+                        .map(Car::getName)
+                        .toList());
+
         System.out.print(result);
     }
 }
