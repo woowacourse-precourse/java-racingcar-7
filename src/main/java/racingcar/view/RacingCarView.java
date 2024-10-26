@@ -21,7 +21,7 @@ public class RacingCarView {
         this.racingCarController = Container.getInstance(RacingCarController.class);
     }
 
-    public List<Car> getCarNames() {
+    public List<Car> setCarNames() {
         String carNames = Console.readLine();
         RacingCarResponse response = racingCarController.setRacingCars(RacingCarRequest.from(carNames));
 

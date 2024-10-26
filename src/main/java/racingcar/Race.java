@@ -28,7 +28,7 @@ public class Race {
 
     private static void set() {
         outputView.printStartMessage();
-        racingCars = racingCarView.getCarNames();
+        racingCars = racingCarView.setCarNames();
 
         outputView.printRoundMessage();
         roundNum = racingCarView.setRound();
