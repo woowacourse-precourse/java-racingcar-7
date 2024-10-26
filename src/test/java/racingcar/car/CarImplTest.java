@@ -28,4 +28,17 @@ class CarImplTest {
                 .hasMessage("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
     }
 
+    @Test
+    @DisplayName("자동차는 4이상의 값을 받으면 전진한다.")
+    void 자동차_4이상값_전진_테스트(){
+        String name = "테스트이름";
+        CarImpl car = new CarImpl(name);
+
+        car.move(1);
+        car.move(2);
+        car.move(4);
+
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
+    }
+
 }

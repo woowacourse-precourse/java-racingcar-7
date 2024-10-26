@@ -2,14 +2,19 @@ package racingcar.car;
 
 public class CarImpl implements Car{
     private final String carName;
+    private int position;
+
     public CarImpl(String carName) {
         this.carName = carName;
         carNameValidation();
+        position = 0;
     }
 
     @Override
     public void move(int randomNumber) {
-
+        if (randomNumber >= 4) {
+            this.position += 1;
+        }
     }
 
     @Override
@@ -19,7 +24,7 @@ public class CarImpl implements Car{
 
     @Override
     public int getPosition() {
-        return 0;
+        return position;
     }
 
     private void carNameValidation() {
