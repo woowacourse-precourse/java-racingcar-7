@@ -42,8 +42,6 @@ class ValidatorTest {
 
     @Test
     void 반복_횟수_입력_검증() {
-        Validator validator = new Validator();
-
         assertThatThrownBy(() -> validator.validateRepeatCount(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("반복 횟수는 비어있을 수 없습니다.");
