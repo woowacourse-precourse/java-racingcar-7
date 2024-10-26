@@ -1,13 +1,29 @@
 package racingcar.domain;
 
-import jdk.jshell.spi.ExecutionControl.NotImplementedException;
+import racingcar.config.validation.FieldValidation;
+import racingcar.config.validation.annotation.Length;
 
-public class Car {
+public class Car extends FieldValidation {
 
-    private Car() {
+    @Length(min = 1, max = 5)
+    private final String name;
+
+    private Car(String name) {
+        this.name = name;
+
+        super.valid();
     }
 
-    public static Car of(String name) throws NotImplementedException {
-        throw new NotImplementedException("아직 구현되지 않았습니다.");
+    public static Car of(String name) {
+        return new Car(name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
