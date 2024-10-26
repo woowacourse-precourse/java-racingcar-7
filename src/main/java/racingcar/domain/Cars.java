@@ -8,6 +8,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Cars {
+    final static int GO = 1;
+    final static int GO_NUM = 4;
+
     static Map<String, Integer> cars = new LinkedHashMap<>();
 
     public static Map<String, Integer> registerCars() {
@@ -29,8 +32,8 @@ public class Cars {
 
     public static void moveCar(Map<String, Integer> cars) {
         for (String name : cars.keySet()) {
-            if (RandomGenerator.randomNumber() >= 4) {
-                cars.put(name, cars.get(name) + 1);
+            if (RandomGenerator.randomNumber() >= GO_NUM) {
+                cars.put(name, cars.get(name) + GO);
             }
         }
     }

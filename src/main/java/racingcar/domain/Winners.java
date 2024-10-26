@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Winners {
-
     public static List<String> winner(Map<String, Integer> cars) {
         List<String> winners = new ArrayList<>();
         int first = Collections.max(cars.values());
