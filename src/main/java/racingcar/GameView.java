@@ -13,6 +13,11 @@ public class GameView {
         System.out.println(ROUND_COUNT_INPUT_MESSAGE.getMessage());
     }
 
+    public void printResultMessage() {
+        System.out.println();
+        System.out.println(RESULT_MESSAGE.getMessage());
+    }
+
     public void printRoundResult(List<String> results) {
         results.forEach(System.out::println);
         System.out.println();
