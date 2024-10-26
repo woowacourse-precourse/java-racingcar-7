@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -14,11 +15,7 @@ public class Application {
         int repeatCount = Integer.parseInt(Console.readLine());
 
         inputValidate(carNames, repeatCount);
-
-        List<Car> carList = new ArrayList<>();
-        for (final String carName : carNames.split(",")) {
-            carList.add(new Car(carName));
-        }
+        List<Car> carList = toCarList(carNames);
 
         System.out.println("실행 결과");
         int winnerLocation = 0;
@@ -54,5 +51,11 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public static List<Car> toCarList(String carNames) {
+        return Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .toList();
     }
 }
