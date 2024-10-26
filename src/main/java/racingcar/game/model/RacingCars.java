@@ -32,11 +32,6 @@ public class RacingCars {
         return new Winners(winners);
     }
 
-    public List<Car> getParticipatingCars() {
-        return cars.stream()
-                .toList();
-    }
-
     private int findMaxMoveCount() {
         return cars.stream()
                 .mapToInt(Car::getMoveCount)
