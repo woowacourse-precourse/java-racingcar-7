@@ -1,9 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +15,7 @@ class ParserTest {
     }
 
     @Test
-    void parseRepeatCount() {
+    void 반복횟수_파싱() {
         assertThat(parser.parseRepeatCount("15"))
             .isEqualTo(15);
     }
