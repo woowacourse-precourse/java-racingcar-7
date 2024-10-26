@@ -9,8 +9,11 @@ import racingcar.service.RaceResult;
 
 public class OutputView {
 
-    private static final String RESULT_NOTICE_MESSAGE = "실행결과";
+    private static final String RESULT_NOTICE_MESSAGE = "실행 결과";
+    private static final String CAR_STATUS_OUTPUT_FORMAT = "%s : %s";
+    private static final String CAR_POSITION_BAR = "-";
     private static final String VICTOR_DELIMITER = ", ";
+    private static final String RACE_RESULT_FORMAT = "최종 우승자 : %s";
 
     public void printRaceResult(RaceResult raceResult) {
         printEmptyLine();
@@ -36,12 +39,12 @@ public class OutputView {
     }
 
     private static String createCarStatusOutput(CarStatus carStatus) {
-        return carStatus.name() + " : " + "-".repeat(carStatus.position());
+        return String.format(CAR_STATUS_OUTPUT_FORMAT, carStatus.name(), CAR_POSITION_BAR.repeat(carStatus.position()));
     }
 
     public void printVictoryCars(List<Car> victoryCars) {
         String result = createVictoryCarsOutput(victoryCars);
-        System.out.print("최종 우승자 : " + result);
+        System.out.printf(RACE_RESULT_FORMAT, result);
     }
 
     private static String createVictoryCarsOutput(List<Car> victoryCars) {
