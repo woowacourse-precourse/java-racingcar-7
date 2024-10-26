@@ -1,5 +1,9 @@
 package racingcar.controller;
 
+import static racingcar.error.ErrorType.CAR_NAME_DUPLICATE_ERROR;
+import static racingcar.error.ErrorType.INVALID_FORMAT_TRAIL_NUMBER_ERROR;
+import static racingcar.error.ErrorType.MIN_TRAIL_NUMBER;
+
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -50,7 +54,7 @@ public class MainController {
         return carStrings.stream()
                 .map(carName -> {
                     if (!carNames.add(carName)) {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR.getMessage());
                     }
                     return Car.create(carName);
                 })
@@ -62,14 +66,14 @@ public class MainController {
         try {
             trialNumber = Integer.parseInt(trialNumberInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_FORMAT_TRAIL_NUMBER_ERROR.getMessage());
         }
         return trialNumber;
     }
 
     private void validateTrialNumber(final int trialNumber) {
         if (trialNumber < TRAIL_NUMBER_MIN) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MIN_TRAIL_NUMBER.getMessage());
         }
     }
 

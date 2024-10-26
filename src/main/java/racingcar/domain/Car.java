@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.error.ErrorType.CAR_NAME_LENGTH_ERROR;
+
 public class Car {
     private final static int CAR_NAME_MAX_LENGTH = 5;
     private final static int CAR_NAME_MIN_LENGTH = 1;
@@ -30,7 +32,9 @@ public class Car {
 
     private void validateCarName(String name) {
         if (name.length() > CAR_NAME_MAX_LENGTH || name.length() < CAR_NAME_MIN_LENGTH) {
-            throw new IllegalArgumentException();
+            String message = String.format(CAR_NAME_LENGTH_ERROR.getMessage(), CAR_NAME_MIN_LENGTH,
+                    CAR_NAME_MAX_LENGTH);
+            throw new IllegalArgumentException(message);
         }
     }
 
