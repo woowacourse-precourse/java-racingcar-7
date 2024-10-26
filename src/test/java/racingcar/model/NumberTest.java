@@ -43,4 +43,13 @@ class NumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수만 입력하세요.");
     }
+
+    @DisplayName("시도 횟수로 최대 범위 초과 입력한 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"101", "1545", "3300000", "231203"})
+    void 시도횟수_100_초과_입력(String input) {
+        Assertions.assertThatThrownBy(() -> new Number(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 최대 100번까지 가능합니다.");
+    }
 }
