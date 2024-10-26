@@ -1,7 +1,7 @@
 package racingcar.car;
 
 public class RacingCar {
-    private static final int THRESHOLD = 4;
+    public static final int THRESHOLD = 4;
 
     private final String name;
     private int moveCount;
@@ -13,10 +13,6 @@ public class RacingCar {
 
     public static RacingCar of(String name) {
         return new RacingCar(name, 0);
-    }
-
-    public void increaseMoveCount() {
-        moveCount += 1;
     }
 
     public boolean isMoveCountEqualTo(int count) {
@@ -39,6 +35,10 @@ public class RacingCar {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    private void increaseMoveCount() {
+        moveCount += 1;
     }
 
 }

@@ -20,7 +20,6 @@ public class InputHandler {
         if (carNamesString == null || carNamesString.isEmpty()) {
             throw new IllegalArgumentException("입력 값이 없습니다.");
         }
-
         List<String> carNames = Arrays.asList(carNamesString.split(","));
 
         carNames.stream()
@@ -29,7 +28,6 @@ public class InputHandler {
                 .ifPresent(carName -> {
                     throw new IllegalArgumentException("올바르지 않은 형식의 값이 존재합니다.");
                 });
-
         return carNames;
     }
 
@@ -37,7 +35,6 @@ public class InputHandler {
         if (roundString == null || roundString.isEmpty()) {
             throw new IllegalArgumentException("입력 값이 없습니다.");
         }
-
         int round = Integer.parseInt(roundString);
 
         if (round <= 0) {

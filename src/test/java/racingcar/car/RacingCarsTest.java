@@ -53,7 +53,7 @@ class RacingCarsTest {
                     List<RacingCar> cars = racingCars.getCars();
                     cars.forEach(car -> {
                         if (car.getName().equals("car1")) {
-                            car.increaseMoveCount();
+                            car.moveIfRandomNumberIsAbove(RacingCar.THRESHOLD);
                         }
                     });
 
