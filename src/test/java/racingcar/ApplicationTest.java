@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.error.ErrorMessage;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -85,6 +84,26 @@ class ApplicationTest extends NsTest {
 
     });
 
+  }
+
+  @Test
+  @DisplayName("자동차 이름 5이상 예외처리")
+  public void CarNameGreaterFive(){
+    assertSimpleTest(() ->
+        assertThatThrownBy(() -> runException("kim,dongg", "2"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.CARNAME_GREATER_THAN_EQUAL_FIVE.getMessage())
+    );
+  }
+
+  @Test
+  @DisplayName("자동차 이름 숫자일 경우 예외처리")
+  public void CarNameNotString(){
+    assertSimpleTest(() ->
+        assertThatThrownBy(() -> runException("kim,12", "2"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.CARNAME_NOT_STRING.getMessage())
+    );
   }
 
 
