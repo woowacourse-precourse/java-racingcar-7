@@ -65,4 +65,16 @@ class RacingCarsTest {
         //then
         Assertions.assertThat(expectedWinners).hasSameElementsAs(winners);
     }
+
+    @Test
+    @DisplayName("중복된 자동차 이름을 입력받지 않았는지 테스트한다.")
+    void validateUniqueName() {
+        //given
+        List<String> carNames = List.of("messi", "messi", "james");
+        RacingCars racingCars = new RacingCars();
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> racingCars.registerCars(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
