@@ -7,9 +7,11 @@ import racingcar.model.Car;
 public class RacingGameService {
 
     private final MoveService moveService;
+    private final WinnerService winnerService;
 
-    public RacingGameService(MoveService moveService) {
+    public RacingGameService(MoveService moveService, WinnerService winnerService) {
         this.moveService = moveService;
+        this.winnerService = winnerService;
     }
 
     public List<Car> initialize(List<String> carNames, int attempt) {
@@ -28,5 +30,9 @@ public class RacingGameService {
         if (moveHistory.get(stage)) {
             car.increaseDistance();
         }
+    }
+
+    public List<String> getWinnerNames(List<Car> cars) {
+        return winnerService.getWinnerNames(cars);
     }
 }
