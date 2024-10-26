@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Executor {
     public void run() {
         String inputCarNamesStr = ioController.enterCarNames();
         String inputRepeatCountStr = ioController.enterRepeatCount();
+        Console.close();
 
         validator.validateCarNamesInput(inputCarNamesStr);
         List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, OPERATOR);
