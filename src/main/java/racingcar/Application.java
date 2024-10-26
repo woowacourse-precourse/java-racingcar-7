@@ -15,7 +15,7 @@ public class Application {
         output.printInputName();
         String carNames = input.getUserAnswer();
         output.printExecuteCount();
-        String executeCount = input.getUserAnswer();
+        int execute = RacingUtils.parseInt(input.getUserAnswer());
 
         List<String> names = RacingUtils.divideComma(carNames);
     }

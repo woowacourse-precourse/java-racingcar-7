@@ -36,4 +36,22 @@ public class RacingUtils {
         return set.size() != list.size(); // 중복일 경우 true
     }
 
+    public static int parseInt(String input) {
+        int result = 0;
+
+        try {
+            result = Integer.parseInt(input);
+
+            RacingException.throwIllegalArgumentException("잘못된 입력입니다.", isNotPositive(result));
+        } catch (NumberFormatException e) {
+            RacingException.throwIllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        return result;
+    }
+
+    public static boolean isNotPositive(int number) {
+        return number <= 0;
+    }
+
 }
