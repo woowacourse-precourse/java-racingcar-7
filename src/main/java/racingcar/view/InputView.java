@@ -20,13 +20,7 @@ public class InputView {
 
         String userInput = Console.readLine();
 
-        String[] carNames = userInput.split(",");
-
-        if (!validateCarName(carNames)) {
-            throw new IllegalArgumentException("입력된 자동차 이름이 올바르지 않습니다.");
-        }
-
-        return carNames;
+        return userInput.split(",");
     }
 
     public int getMoveCount() {
@@ -44,17 +38,6 @@ public class InputView {
         if (userInput.isBlank() || !userInput.matches("\\d+")) {
             return false;
         }
-        return true;
-    }
-
-
-    private boolean validateCarName(String[] carNames) {
-        for (String carName : carNames) {
-            if (carName.isBlank() || carName.length() > 5) {
-                return false;
-            }
-        }
-
         return true;
     }
 }
