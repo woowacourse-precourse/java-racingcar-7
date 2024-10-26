@@ -6,24 +6,18 @@ public class InputView {
 
     public String requestCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return getValidatedUserInput();
+        return getUserInput();
     }
 
     public String requestNumberOfGames() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return getValidatedUserInput();
+        return getUserInput();
     }
 
-    public String getValidatedUserInput() {
+    public String getUserInput() {
         String userInput = Console.readLine();
-        validateUserInputNotEmpty(userInput);
+        InputValidator.validateUserInputNotEmpty(userInput);
         return userInput;
-    }
-
-    private void validateUserInputNotEmpty(String userInput) {
-        if (userInput.isEmpty()) {
-            throw new IllegalArgumentException("입력은 비어 있을 수 없습니다.");
-        }
     }
 
 }
