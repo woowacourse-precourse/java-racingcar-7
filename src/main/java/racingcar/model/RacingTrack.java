@@ -33,4 +33,12 @@ public class RacingTrack {
             car.move(seed);
         }
     }
+
+
+    public int getWinnerPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 }
