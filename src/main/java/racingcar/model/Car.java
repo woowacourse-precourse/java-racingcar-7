@@ -9,10 +9,11 @@ public class Car {
     private Mode mode;
 
     public Car(String carName) {
+        carName = removeCarNameSpace(carName);
         if (CarNameValidation.validateCarNameLength(carName)) {
             throw new IllegalArgumentException("자동차 이름 예외");
         }
-        this.carName = removeCarNameSpace(carName);
+        this.carName = carName;
     }
 
     private String removeCarNameSpace(String carName) {
