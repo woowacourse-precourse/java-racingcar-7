@@ -3,10 +3,19 @@ package racingcar.model;
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
+    private int location = 0;
     public Car(String name) {
         this.name = name;
         validateName();
     }
+    public void move(){
+        location++;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
     public String getName() {
         return name;
     }
