@@ -12,16 +12,8 @@ public class Application {
         String[] nameArray = getStrings();
         Map<String, Integer> nameMap = getNameMap(nameArray);
         int count = getCount();
+        printRacing(count, nameMap);
 
-        String bar = "-";
-        System.out.println("실행 결과");
-        for (int i = 0; i < count; i++) {
-            addDistance(nameMap);
-            for (String key : nameMap.keySet()) {
-                System.out.println(key + " : " + bar.repeat(nameMap.get(key)));
-            }
-            System.out.println();
-        }
         int maxRecord = 0;
         for (String key : nameMap.keySet()) {
             if(nameMap.get(key) > maxRecord){
@@ -35,6 +27,18 @@ public class Application {
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
+    private static void printRacing(int count, Map<String, Integer> nameMap){
+        String bar = "-";
+        System.out.println("실행 결과");
+        for (int i = 0; i < count; i++) {
+            addDistance(nameMap);
+            for (String key : nameMap.keySet()) {
+                System.out.println(key + " : " + bar.repeat(nameMap.get(key)));
+            }
+            System.out.println();
+        }
     }
 
     private static void addDistance(Map<String, Integer> nameMap){
