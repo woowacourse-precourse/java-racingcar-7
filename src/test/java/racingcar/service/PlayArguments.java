@@ -18,6 +18,19 @@ public class PlayArguments {
     public PlayArguments(
             List<String> carNames,
             int tryCount,
+            List<Integer> randomNumbers,
+            List<RacingRoundResult> racingRoundResults,
+            List<String> expectedWinnersNames) {
+        this.carNames = carNames;
+        this.tryCount = tryCount;
+        this.randomNumbers = randomNumbers;
+        this.racingRoundResults = racingRoundResults;
+        this.expectedWinnersNames = expectedWinnersNames;
+    }
+
+    public PlayArguments(
+            List<String> carNames,
+            int tryCount,
             List<Integer> randomNumbers) {
         this.carNames = carNames;
         this.tryCount = tryCount;
