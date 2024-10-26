@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static racingcar.view.OutputView.printCurrentResult;
 
+import java.util.Comparator;
 import java.util.List;
 import racingcar.util.RandomGeneratorUtil;
 
@@ -24,6 +25,14 @@ public class Cars {
             }
         }
         printCurrentResult(cars);
+
+    }
+
+    private int findMaxMovement() {
+        return cars.stream()
+                .max(Comparator.comparingInt(car -> car.movementOfNumber)).map(car -> car.movementOfNumber).orElse(0);
+    }
+
 
     }
 }
