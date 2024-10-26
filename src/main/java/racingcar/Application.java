@@ -8,6 +8,7 @@ public class Application {
 
         Game game = new Game(input.getCarList().split(","), input.getCount());
         game.inputLane();
+        game.play();
 
     }
 }
