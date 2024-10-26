@@ -16,6 +16,7 @@ public class InputView {
         return parseCarsName(buffer);
     }
 
+    //자동차 이름을 분리하는 메소드
     private Map<String, Integer> parseCarsName(String buffer) {
         Map<String, Integer> cars = new LinkedHashMap<>();
 
@@ -28,12 +29,13 @@ public class InputView {
         return cars;
     }
 
+    //경주 횟수 입력 받는 메소드
     public int readTryCount() {
         System.out.println(READ_TRY_COUNT_MESSAGE);
         String buffer = readInput();
         return Integer.parseInt(buffer);
     }
-
+    
     private String readInput() {
         String buffer = Console.readLine();
         validateInput(buffer);
