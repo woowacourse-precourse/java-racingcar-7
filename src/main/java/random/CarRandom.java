@@ -2,7 +2,7 @@ package random;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class carRandom implements RandomGenerate{
+public class CarRandom implements RandomGenerate{
 
     @Override
     public int generateRandomNumber(){
