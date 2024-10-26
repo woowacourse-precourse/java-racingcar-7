@@ -4,7 +4,10 @@ import racingcar.car.Car;
 import racingcar.car.CarImpl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static racingcar.utils.InputSplitter.inputSplit;
@@ -30,12 +33,25 @@ public class RacingGameImpl implements RacingGame{
 
     @Override
     public List<Car> getWinners() {
-        return null;
+        int firstPosition = getFirstPosition();
+
+        List<Car> winners = racingCars.stream()
+                .filter(car -> car.getPosition() == firstPosition)
+                .collect(Collectors.toList());
+
+        return winners;
     }
 
     @Override
     public int getNumberOfRacingCars() {
         return racingCars.size();
+    }
+
+    private int getFirstPosition() {
+        Optional<Car> frontCar = racingCars.stream()
+                .max(Comparator.comparingInt(Car::getPosition));
+
+        return frontCar.map(Car::getPosition).orElse(0);
     }
 
     private void checkDuplicationCarName(String carName) {

@@ -45,4 +45,26 @@ class RacingGameImplTest {
         Assertions.assertThat(cars.get(1).getPosition()).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("우승자를 알 수 있다.")
+    void 레이싱_게임_우승자_조회_TEST(){
+        String userInput = "kang,su,min";
+
+        RacingGame racingGame = new RacingGameImpl(userInput);
+
+        List<Integer> try1 = List.of(5,3,3);
+        List<Integer> try2 = List.of(5,5,3);
+        List<Integer> try3 = List.of(3,5,3);
+
+        racingGame.moveRacingCars(try1);
+        racingGame.moveRacingCars(try2);
+        racingGame.moveRacingCars(try3);
+
+        List<Car> winners = racingGame.getWinners();
+
+        Assertions.assertThat(winners.size()).isEqualTo(2);
+        Assertions.assertThat(winners.get(0).getCarName()).isEqualTo("kang");
+        Assertions.assertThat(winners.get(1).getCarName()).isEqualTo("su");
+    }
+
 }
