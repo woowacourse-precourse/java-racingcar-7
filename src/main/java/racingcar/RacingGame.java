@@ -2,11 +2,15 @@ package racingcar;
 
 import racingcar.io.InputHandler;
 import racingcar.io.OutputHandler;
+import racingcar.io.request.CarsRequest;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.provider.NumberProvider;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static racingcar.io.request.CarsRequest.CAR_NAME_SPLIT_DELIMITER;
 
 public class RacingGame {
 
@@ -32,7 +36,15 @@ public class RacingGame {
 
     private Cars getCarsFromUser() {
         outputHandler.showGameStartComment();
-        return inputHandler.getCarNamesFromUser();
+        CarsRequest request = inputHandler.getCarNamesFromUser();
+        return generateCarsFrom(request);
+    }
+
+    private Cars generateCarsFrom(CarsRequest request) {
+        String[] candidateCarNames = request.nameOfCars().split(CAR_NAME_SPLIT_DELIMITER);
+        return Cars.from(Arrays.stream(candidateCarNames)
+            .map(Car::from)
+            .toList());
     }
 
     private int getTryCountFromUser() {
