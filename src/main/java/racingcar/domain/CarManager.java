@@ -11,21 +11,15 @@ import racingcar.utils.RandomNumber;
 
 public class CarManager {
 
-    private static final String INPUT_DELIMITER = ",";
-
     private final List<Car> cars;
 
-    public CarManager() {
-        this.cars = new ArrayList<>();
+    public CarManager(List<Car> cars) {
+        verifyDuplicateCar(cars);
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public void setupCarsFromUserInput(String userInput) {
-        List<String> split = List.of(userInput.split(INPUT_DELIMITER));
-        initCars(split);
     }
 
     public List<Car> startRacing(RandomNumber randomNumber) {
@@ -35,17 +29,12 @@ public class CarManager {
         return cars;
     }
 
-    private void initCars(List<String> carNames) {
-        verifyDuplicateCar(carNames);
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            cars.add(car);
+    private void verifyDuplicateCar(List<Car> cars) {
+        Set<String> carNames = new HashSet<>();
+        for (Car car : cars) {
+            carNames.add(car.getName());
         }
-    }
-
-    private void verifyDuplicateCar(List<String> carNames) {
-        Set<String> verifyCarNames = new HashSet<>(carNames);
-        if(carNames.size() != verifyCarNames.size()) {
+        if (cars.size() != carNames.size()) {
             throw new IllegalArgumentException(NOT_PERMIT_SAME_CAR.getMessage());
         }
     }
