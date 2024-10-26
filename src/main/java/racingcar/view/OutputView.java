@@ -9,14 +9,14 @@ public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String FINAL_RESULT_MESSAGE = "최종 우승자 : ";
 
-    public static void printGame(List<RacingCar> racingCars){
+    public static void printGame(List<RacingCar> racingCars) {
         for (RacingCar car : racingCars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
 
-    public static void printWinners(List<RacingCar> winners){
+    public static void printWinners(List<RacingCar> winners) {
         StringBuilder winnerNames = new StringBuilder();
 
         for (int i = 0; i < winners.size(); i++) {
@@ -29,7 +29,7 @@ public class OutputView {
         System.out.println(FINAL_RESULT_MESSAGE + winnerNames);
     }
 
-    public static void printResultMessage(){
+    public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
     }
 

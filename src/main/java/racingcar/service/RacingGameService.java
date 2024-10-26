@@ -11,7 +11,7 @@ public class RacingGameService {
     private static final Integer NAME_LENGTH_LIMIT = 5;
     private static final int MIN_CAR_COUNT = 2;
 
-    public List<RacingCar> initializeRacingGame(String carNames){
+    public List<RacingCar> initializeRacingGame(String carNames) {
         validateCarNames(carNames);
 
         String[] parseCarName = processCarName(carNames);
@@ -19,7 +19,7 @@ public class RacingGameService {
         return createRacingCars(parseCarName);
     }
 
-    public Integer convertTryCountToInt(String tryCountInString){
+    public Integer convertTryCountToInt(String tryCountInString) {
 
         validateNumericInput(tryCountInString);
 
@@ -55,7 +55,7 @@ public class RacingGameService {
     private static List<RacingCar> createRacingCars(String[] parseCarName) {
         List<RacingCar> racingCars = new ArrayList<>();
 
-        for (String carName : parseCarName){
+        for (String carName : parseCarName) {
             racingCars.add(new RacingCar(carName));
         }
         return racingCars;
@@ -81,22 +81,22 @@ public class RacingGameService {
         }
     }
 
-    private void validateTryCount(Integer tryCount){
-        if (tryCount <= 0){
+    private void validateTryCount(Integer tryCount) {
+        if (tryCount <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
 
     /* -------------------------------------- 자동차 이름 검증 로직 ----------------------------------------------*/
 
-    private void validateCarNames(String carNames){
+    private void validateCarNames(String carNames) {
         checkCarNameisEmpty(carNames);
 
         String[] splitCarNames = processCarName(carNames);
 
         checkCarCount(splitCarNames);
 
-        for (String carName : splitCarNames){
+        for (String carName : splitCarNames) {
             checkNameLength(carName);
         }
 
@@ -106,10 +106,11 @@ public class RacingGameService {
     }
 
     private void checkNameIsBlankOrEmpty(String[] parseCarName, int i) {
-        if (parseCarName[i].isBlank() || parseCarName[i].isEmpty()){
+        if (parseCarName[i].isBlank() || parseCarName[i].isEmpty()) {
             throw new IllegalArgumentException(i + "번 사용자의 자동차 이름이 입력 되지 않았습니다.");
         }
     }
+
     private void checkDuplicateCarName(String[] splitCarNames, Set<String> carNameSet) {
         // 배열의 길이와 Set의 크기를 비교하여 중복된 이름이 있는지 확인
         if (splitCarNames.length != carNameSet.size()) {
@@ -124,13 +125,13 @@ public class RacingGameService {
     }
 
     private void checkCarNameisEmpty(String carNames) {
-        if (carNames == null || carNames.isEmpty()){
+        if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
     }
 
     private void checkNameLength(String carName) {
-        if (carName.length() > NAME_LENGTH_LIMIT){
+        if (carName.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 하셔야 합니다.");
         }
     }

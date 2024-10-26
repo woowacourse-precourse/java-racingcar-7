@@ -7,13 +7,13 @@ public class RacingCar {
     private final String name;
     private Integer position;
 
-    public RacingCar(String name){
+    public RacingCar(String name) {
         this.name = name;
         this.position = 0;
     }
 
-    public Integer move(Integer randomNumber){
-        if (randomNumber >= MOVING_FORWARD){
+    public Integer move(Integer randomNumber) {
+        if (randomNumber >= MOVING_FORWARD) {
             position++;
         }
         return position;
@@ -23,7 +23,7 @@ public class RacingCar {
         return name;
     }
 
-    public Integer getPosition(){
+    public Integer getPosition() {
         return position;
     }
 }

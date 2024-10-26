@@ -10,11 +10,11 @@ import racingcar.view.OutputView;
 public class RacingController {
     private final RacingGameService racingGameService;
 
-    public RacingController(RacingGameService racingGameService){
+    public RacingController(RacingGameService racingGameService) {
         this.racingGameService = racingGameService;
     }
 
-    public void startRacingGame(){
+    public void startRacingGame() {
         try {
             String carNames = getCarNames();
             Integer tryCount = getTryCountByInteger();
@@ -22,7 +22,7 @@ public class RacingController {
             playRacingGame(tryCount, racingCars);
             printWinners(racingCars);
 
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
         }
@@ -36,7 +36,7 @@ public class RacingController {
     private void playRacingGame(Integer tryCount, List<RacingCar> racingCars) {
         OutputView.printResultMessage();
 
-        for (int i = 0; i < tryCount; i++){
+        for (int i = 0; i < tryCount; i++) {
             moveRacingCars(racingCars);
             OutputView.printGame(racingCars);
         }
@@ -48,17 +48,19 @@ public class RacingController {
     }
 
     private void moveRacingCars(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars){
+        for (RacingCar racingCar : racingCars) {
             racingCar.move(Randoms.pickNumberInRange(0, 9));
         }
     }
-    public String getCarNames(){
+
+    public String getCarNames() {
         InputView.printNameInputMessage();
         return InputView.getInput();
     }
 
-    public String getTryCount(){
-        InputView.printTimeInputMessage();;
+    public String getTryCount() {
+        InputView.printTimeInputMessage();
+        ;
         return InputView.getInput();
     }
 }
