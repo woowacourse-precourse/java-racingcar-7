@@ -22,7 +22,7 @@ public class RacingcarController {
     }
 
 
-    public void RunGame(RacingGame racingGame, List<Racingcar> racingcarList, int moveCount) {
+    public void RunGame(RacingGame racingGame, int moveCount) {
         for(int i = 0; i < moveCount; i++) {
             racingGame.MoveRacingcars();
             OutputView.racingcarOutputView(racingGame.getCarsLocation());
