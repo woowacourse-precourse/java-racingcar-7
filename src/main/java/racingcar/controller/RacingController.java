@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.model.RacingCar;
 
 public class RacingController {
     private final InputHandler inputHandler;
@@ -8,7 +10,10 @@ public class RacingController {
         this.inputHandler = inputHandler;
     }
     public void run() {
-        List<String> racingCars = inputHandler.getCarInput();
+        List<String> racingCarsName = inputHandler.getCarInput();
         Integer iteration = inputHandler.getIterationInput();
+
+        List<RacingCar> racingCarList = racingCarsName.stream()
+                .map(RacingCar::new).toList();
     }
 }
