@@ -12,10 +12,10 @@ class InputValidatorTest {
 
     @Test
     void 다섯글자_넘을경우_예외처리() {
-        List<String> testList = List.of("다섯글자예외","세글자","두글");
+        String fiveLetters = "다섯글자 예외";
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> inputValidator.check(testList)
+                () -> inputValidator.check(fiveLetters)
         );
         assertEquals(TOO_LONG_VALUE.getMessage(), exception.getMessage());
     }
