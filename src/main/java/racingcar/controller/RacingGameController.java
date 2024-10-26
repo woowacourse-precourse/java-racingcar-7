@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.RacingGameMaxRound;
+import racingcar.model.RacingGameRoundResult;
 import racingcar.service.RacingGameProgressService;
 import racingcar.service.RacingGameSettingService;
 import racingcar.view.RacingGameInputView;
@@ -23,6 +24,8 @@ public class RacingGameController {
         String roundInput = racingGameInputView.getUserInput();
         RacingGameMaxRound gameMaxRound = racingGameSettingService.createGameRound(roundInput);
 
-        racingGameProgressService.executeRounds(cars, gameMaxRound);
+        List<RacingGameRoundResult> gameRoundResults = racingGameProgressService.executeRounds(cars, gameMaxRound);
+        racingGameOutputView.printRacingRoundResultStartingMessage();
+
     }
 }
