@@ -1,6 +1,10 @@
 package racingcar.domain.racing;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -8,8 +12,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.Application;
 
-class RacingTest {
+class RacingTest extends NsTest {
 
     @AfterEach
     void tearDown() {
@@ -22,11 +27,11 @@ class RacingTest {
     void 경주할_자동차의_입력값_검증_빈문자열_테스트() {
         //given
         Racing racing = new Racing();
-        setInputText("");
+        String inputText = "   ";
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -36,14 +41,14 @@ class RacingTest {
     void 경주할_자동차의_입력값_검증_문자열_길이_테스트() {
         //given
         Racing racing = new Racing();
-        setInputText("aaaaa,aaaab,aaaac,aaaad,aaaae,"
+        String inputText = "aaaaa,aaaab,aaaac,aaaad,aaaae,"
                 + "aaaaf,aaaag,aaaah,aaaai,aaaaj,"
                 + "aaaak,aaaal,aaaam,aaaan,aaaao,"
-                + "aaaap,aaaaq,aaaar,aaaas,aaaat,b");
+                + "aaaap,aaaaq,aaaar,aaaas,aaaat,b";
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -53,11 +58,11 @@ class RacingTest {
     void 경주할_자동차의_입력값_검증_적절하지_않은_문자_입력_테스트() {
         //given
         Racing racing = new Racing();
-        setInputText("aaaa2");
+        String inputText = "aaaa2";
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -67,11 +72,11 @@ class RacingTest {
     void 경주할_자동차의_입력값_검증_자동차_이름_중복_테스트() {
         //given
         Racing racing = new Racing();
-        setInputText("aaaaa,aaaaa");
+        String inputText = "aaaaa,aaaaa";
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -81,11 +86,11 @@ class RacingTest {
     void 경주할_자동차의_입력값_검증_자동차_이름_길이_테스트() {
         //given
         Racing racing = new Racing();
-        setInputText("aaaaaa");
+        String inputText = "aaaaaa";
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -97,11 +102,11 @@ class RacingTest {
     void 경주_시도횟수_입력값_경계값_예외_테스트(String tryCnt) {
         //given
         Racing racing = new Racing();
-        setInputText("aaaaa,aaaab\n" + tryCnt);
+        String inputText = "aaaaa,aaaab\n" + tryCnt;
 
         //when //then
         Assertions.assertThatThrownBy(() -> {
-                    racing.doRacing();
+                    racing.setRacingCars(inputText);
                 })
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -111,11 +116,27 @@ class RacingTest {
     void 우승자_계산_테스트() {
         //given
         Racing racing = new Racing();
-        racing.setRacingCars();
+        racing.setRacingCars("aaaaa,bbbbb");
+        racing.setTryCount("1");
+
+        //when //then
+        assertRandomNumberInRangeTest(
+                () -> {
+                    racing.iterateRace();
+                },
+                4, 3
+        );
+        racing.calculateWinner();
+        assertThat(racing.getWinners().getFirst().getName()).isEqualTo("aaaaa");
     }
 
 
     private void setInputText(String text) {
         System.setIn(new ByteArrayInputStream(text.getBytes()));
+    }
+
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
     }
 }

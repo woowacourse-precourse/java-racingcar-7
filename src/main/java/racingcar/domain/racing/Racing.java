@@ -1,6 +1,5 @@
 package racingcar.domain.racing;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,23 +16,7 @@ public class Racing {
     private List<RacingCar> winners = new ArrayList<>();
 
 
-    public void doRacing() {
-        setRacingCars();
-        setTryCount();
-        doRace();
-        calculateWinner();
-    }
-
-    private void setRacingCars() {
-        System.out.println(RacingConstant.INPUT_CAR_NAMES_MESSAGE);
-
-        String inputTextForRacingCars;
-        try {
-            inputTextForRacingCars = Console.readLine();
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
-
+    public void setRacingCars(String inputTextForRacingCars) {
         //빈문자열, 최대 글자수, 비허용 문자 검증
         if (isInvalidInputTextForRacingCars(inputTextForRacingCars)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_TEXT);
@@ -52,14 +35,11 @@ public class Racing {
             set.add(name);
             racingCars.add(new RacingCar(name));
         }
-
-        racingCars.stream().forEach(r -> System.out.println(r.getName()));
     }
 
-    private void setTryCount() {
-        System.out.println(RacingConstant.INPUT_TRY_COUNT_MESSAGE);
+    public void setTryCount(String inputTextForTryCount) {
         try {
-            tryCnt = Integer.parseInt(Console.readLine());
+            tryCnt = Integer.parseInt(inputTextForTryCount);
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT);
         }
@@ -85,8 +65,9 @@ public class Racing {
         return false;
     }
 
-    private void doRace() {
-        System.out.println("\n실행 결과");
+    public void iterateRace() {
+        System.out.println();
+        System.out.println(RacingConstant.DO_RACING_PREV_MESSAGE);
         for (int i = 0; i < tryCnt; i++) {
             for (RacingCar racingCar : racingCars) {
                 racingCar.forwardCar(Randoms.pickNumberInRange(0, 9));
@@ -96,7 +77,7 @@ public class Racing {
         }
     }
 
-    private void calculateWinner() {
+    public void calculateWinner() {
         int maxScore = 0;
         for (RacingCar racingCar : racingCars) {
             if (racingCar.getForwardCount() >= maxScore) {
@@ -118,5 +99,9 @@ public class Racing {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public List<RacingCar> getWinners() {
+        return winners;
     }
 }
