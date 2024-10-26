@@ -40,7 +40,7 @@ public class Cars {
         int maxMoveDistance = Collections.max(
                 cars.stream()
                         .map(Car::getMoveDistance)
-                        .collect(Collectors.toList())
+                        .toList()
         );
         return cars.stream()
                 .filter(car -> car.getMoveDistance() == maxMoveDistance)

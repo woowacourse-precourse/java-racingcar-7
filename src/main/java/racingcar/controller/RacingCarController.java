@@ -9,6 +9,12 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarController {
+    private final CarsOutputView carsOutputView;
+
+    public RacingCarController(CarsOutputView carsOutputView) {
+        this.carsOutputView = carsOutputView;
+    }
+
     public void run() {
         Cars cars = createCars();
         MoveNumber moveNumber = createMoveNumber();
@@ -24,8 +30,8 @@ public class RacingCarController {
     }
 
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
-        cars.registerObserver(new CarsOutputView());
         OutputView.outputRaceStartLine();
+        cars.registerObserver(carsOutputView);
         cars.moveCars(moveNumber.getMoveNumber());
         OutputView.outputRaceFinalResult(cars.findWinnerNames());
     }
