@@ -2,9 +2,11 @@ package racingcar.model.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racingcar.model.domain.Car;
 import racingcar.model.domain.GameEnvironment;
+import racingcar.model.dto.RoundResult;
 import racingcar.model.repository.RacingcarRepository;
 import racingcar.model.service.converter.RacingcarConverter;
 
@@ -34,15 +36,26 @@ public class RacingcarService {
         return 1;
     }
 
-    public int proceedRacingGame() {
+    public List<RoundResult> proceedRacingGame() {
         List<Car> cars = racingcarRepository.findAll();
         Integer attemptCount = gameEnvironment.getAttemptCount();
 
-        IntStream.range(0, attemptCount).forEach(i -> {
-            cars.forEach(car -> car.modifyStatusFromRandomNumber(Randoms.pickNumberInRange(0, 9)));
-            cars.forEach(Car::moveBasedOnStatus);
-        });
+        return IntStream.range(0, attemptCount)
+                .mapToObj(i -> {
+                    cars.forEach(car -> car.modifyStatusFromRandomNumber(getRandomNumber()));
+                    cars.forEach(Car::moveBasedOnStatus);
+                    return new RoundResult(getCurrentRoundResult(cars));
+                })
+                .toList();
+    }
 
-        return 1;
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private String getCurrentRoundResult(List<Car> cars) {
+        return cars.stream()
+                .map(car -> car.getName() + " : " + "-".repeat(car.getMovingForwardCount()))
+                .collect(Collectors.joining("\n"));
     }
 }
