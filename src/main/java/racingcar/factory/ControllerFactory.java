@@ -4,8 +4,11 @@ import racingcar.controller.RacingCarController;
 import racingcar.view.CarsOutputView;
 
 public class ControllerFactory {
-
     public static RacingCarController createController() {
-        return new RacingCarController(new CarsOutputView());
+        return new RacingCarController();
+    }
+
+    public static CarsOutputView createCarsOutputView() {
+        return new CarsOutputView();
     }
 }

@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarsOutputView implements Observer{
     private static final String MOVE_DISTANCE_SYMBOL = "-";

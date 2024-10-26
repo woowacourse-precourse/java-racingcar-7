@@ -1,4 +1,7 @@
-package racingcar.model;
+package racingcar.domain;
+
+import static racingcar.validation.Exceptions.BLANK_CAR_NAME;
+import static racingcar.validation.Exceptions.INSUFFICIENT_CAR_NAME_LENGTH;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -25,10 +28,10 @@ public class Car {
 
     private void validateCarNameLengthAndBlank(String carName) {
         if (carName.isBlank()) {
-            throw new IllegalArgumentException("이름으로 공백이나 빈 칸은 허용하지 않습니다.");
+            throw new IllegalArgumentException(BLANK_CAR_NAME.getMsg());
         }
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 5자리 이하로 입력해주세요.");
+            throw new IllegalArgumentException(INSUFFICIENT_CAR_NAME_LENGTH.getMsg());
         }
     }
 

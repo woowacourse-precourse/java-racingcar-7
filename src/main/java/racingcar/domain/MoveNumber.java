@@ -1,6 +1,9 @@
-package racingcar.model;
+package racingcar.domain;
+
+import static racingcar.validation.Exceptions.INSUFFICIENT_MOVE_NUMBER;
 
 public class MoveNumber {
+    private static final int MIN_MOVE_NUMBER = 1;
     private final int moveNumber;
 
     public MoveNumber(int moveNumber) {
@@ -9,8 +12,8 @@ public class MoveNumber {
     }
 
     private void validatePositiveMoveNumber(int moveNumber) {
-        if (moveNumber < 1) {
-            throw new IllegalArgumentException("1회 이상의 이동 횟수를 입력해주세요.");
+        if (moveNumber < MIN_MOVE_NUMBER) {
+            throw new IllegalArgumentException(INSUFFICIENT_MOVE_NUMBER.getMsg());
         }
     }
 

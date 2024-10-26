@@ -1,9 +1,12 @@
 package racingcar.validation;
 
+import static racingcar.validation.Exceptions.DUPLICATED_CAR_NAME;
+import static racingcar.validation.Exceptions.INSUFFICIENT_CARS;
+
 import java.util.HashSet;
 import java.util.Set;
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarsValidator implements Validator<Cars>{
     private static final int MIN_CARS_AMOUNT = 2;
@@ -18,14 +21,14 @@ public class CarsValidator implements Validator<Cars>{
         Set<String> uniqueCarNames = new HashSet<>();
         for (Car car : cars.getCars()) {
             if (!uniqueCarNames.add(car.getName())) {
-                throw new IllegalArgumentException("중복되지 않은 이름을 입력해주세요.");
+                throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMsg());
             }
         }
     }
 
     private void validateCarsSize(Cars cars) {
         if (cars.getCars().size() < MIN_CARS_AMOUNT) {
-            throw new IllegalArgumentException("2개 이상의 차 이름을 입력해주세요.");
+            throw new IllegalArgumentException(INSUFFICIENT_CARS.getMsg());
         }
     }
 }

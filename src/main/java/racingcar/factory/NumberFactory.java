@@ -1,6 +1,8 @@
 package racingcar.factory;
 
-import racingcar.model.MoveNumber;
+import static racingcar.validation.Exceptions.MOVE_NUMBER_NOT_INTEGER;
+
+import racingcar.domain.MoveNumber;
 
 public class NumberFactory {
     public static MoveNumber createMoveNumber(String moveNumberInput) {
@@ -12,7 +14,7 @@ public class NumberFactory {
         try {
             return Integer.parseInt(moveNumberString);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수로 된 이동 횟수를 입력해주세요.");
+            throw new IllegalArgumentException(MOVE_NUMBER_NOT_INTEGER.getMsg());
         }
     }
 }

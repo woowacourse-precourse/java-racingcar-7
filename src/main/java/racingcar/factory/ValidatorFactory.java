@@ -1,6 +1,6 @@
 package racingcar.factory;
 
-import racingcar.model.Cars;
+import racingcar.domain.Cars;
 import racingcar.validation.CarsValidator;
 import racingcar.validation.Validator;
 

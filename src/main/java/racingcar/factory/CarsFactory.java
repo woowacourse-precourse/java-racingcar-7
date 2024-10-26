@@ -3,8 +3,8 @@ package racingcar.factory;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class CarsFactory {
     private static final String CAR_NAMES_DELIMITER = ",";

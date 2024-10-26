@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,9 +31,7 @@ public class Cars {
     }
 
     private void notifyObserver() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
+        observers.forEach(observer -> observer.update(this));
     }
 
     public List<String> findWinnerNames() {

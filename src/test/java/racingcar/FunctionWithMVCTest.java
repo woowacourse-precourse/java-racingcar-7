@@ -10,8 +10,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.factory.CarsFactory;
 import racingcar.factory.NumberFactory;
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class FunctionWithMVCTest {
     @ParameterizedTest
@@ -97,5 +97,4 @@ public class FunctionWithMVCTest {
                 testRandomNumberForWinner, testRandomNumberForLoser
         );
     }
-
 }
