@@ -39,6 +39,8 @@ public class ConsoleInputView implements InputView {
             return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수가 입력되지 않았습니다.");
+        } finally {
+            Console.close();
         }
     }
 
