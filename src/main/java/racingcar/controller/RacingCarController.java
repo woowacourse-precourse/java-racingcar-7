@@ -1,12 +1,13 @@
 package racingcar.controller;
 
+import racingcar.domain.Message;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundCount;
 import racingcar.service.CarService;
-import racingcar.service.OutputService;
+import racingcar.service.MessageService;
 import racingcar.service.RacingService;
-import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,28 +16,28 @@ public class RacingCarController {
     private final OutputView outputView;
     private final CarService carService;
     private final RacingService racingService;
-    private final OutputService outputService;
+    private final MessageService messageService;
 
     public RacingCarController(InputView inputView, OutputView outputView, CarService carService,
-                               RacingService racingService, OutputService outputService) {
+                               RacingService racingService, MessageService messageService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carService = carService;
         this.racingService = racingService;
-        this.outputService = outputService;
+        this.messageService = messageService;
     }
 
     public void run() {
         inputView.printCarNameInputMessage();
-        CarNames carNames = InputValidator.validateCarNameInput(inputView.getInput());
+        CarNames carNames = CarNames.from(inputView.getInput());
         inputView.printRoundCountInputMessage();
-        int roundCount = InputValidator.validateRoundCountInput(inputView.getInput());
+        RoundCount roundCount = RoundCount.from(inputView.getInput());
 
         Cars cars = carService.createCars(carNames);
         Results results = racingService.startRace(cars, roundCount);
 
-        String resultMessage = outputService.generateResultMessage(results);
-        String winnerMessage = outputService.generateWinnerMessage(cars);
+        Message resultMessage = messageService.generateResultMessage(results);
+        Message winnerMessage = messageService.generateWinnerMessage(cars);
 
         outputView.printResult(resultMessage);
         outputView.printWinner(winnerMessage);

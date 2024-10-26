@@ -8,13 +8,15 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundCount;
 import racingcar.domain.race.RoundRecord;
 
 public class RacingService {
 
-    public Results startRace(Cars cars, int roundCount) {
+    public Results startRace(Cars cars, RoundCount roundCount) {
         List<Result> results = new ArrayList<>();
-        for (int round = 1; round <= roundCount; round++) {
+        int count = roundCount.getRoundCount();
+        for (int round = 1; round <= count; round++) {
             Result result = new Result(round);
             startRound(cars, result);
             results.add(result);

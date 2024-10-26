@@ -1,14 +1,15 @@
 package racingcar.domain.race;
 
 import racingcar.domain.car.CarName;
+import racingcar.domain.car.Distance;
 
 public class RoundRecord {
     private final CarName carName;
-    private final int distance;
+    private final Distance distance;
 
     public RoundRecord(String carName, int distance) {
         this.carName = new CarName(carName);
-        this.distance = distance;
+        this.distance = new Distance(distance);
     }
 
     public String getCarName() {
@@ -16,6 +17,6 @@ public class RoundRecord {
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 }

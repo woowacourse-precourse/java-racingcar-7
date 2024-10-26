@@ -2,15 +2,15 @@ package racingcar.domain.car;
 
 public class Car {
     private final CarName name;
-    private int distance;
+    private final Distance distance;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.distance = 0;
+        this.distance = new Distance(0);
     }
 
     public void moveForward() {
-        this.distance++;
+        this.distance.moveForward();
     }
 
     public String getName() {
@@ -18,6 +18,6 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 }

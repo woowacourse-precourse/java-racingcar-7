@@ -9,7 +9,7 @@ class CarNameTest {
 
     @Test
     @DisplayName("경주할 자동차 이름 - 이름을 공백으로 입력")
-    void blackCarName() {
+    void blankCarName() {
         //given
         final String name = "";
 

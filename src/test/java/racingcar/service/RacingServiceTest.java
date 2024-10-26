@@ -10,6 +10,7 @@ import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundCount;
 import racingcar.domain.race.RoundRecord;
 
 class RacingServiceTest {
@@ -26,7 +27,7 @@ class RacingServiceTest {
         names.add("c");
         final CarNames carNames = new CarNames(names);
         final Cars cars = Cars.from(carNames);
-        final int roundCount = 5;
+        final RoundCount roundCount = RoundCount.from("5");
 
         //when
         final Results results = racingService.startRace(cars, roundCount);
@@ -37,7 +38,7 @@ class RacingServiceTest {
         List<RoundRecord> firstRecords = firstResult.getRecords();
         RoundRecord firstRecord = firstRecords.getFirst();
 
-        assertThat(raceResults).hasSize(roundCount);
+        assertThat(raceResults).hasSize(5);
         assertThat(firstResult.getRound()).isEqualTo(1);
         assertThat(firstRecord.getCarName()).isEqualTo("a");
     }

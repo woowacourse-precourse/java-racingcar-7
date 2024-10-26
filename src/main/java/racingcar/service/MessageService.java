@@ -3,15 +3,16 @@ package racingcar.service;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.constant.Constant;
+import racingcar.domain.Message;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Result;
 import racingcar.domain.race.Results;
 import racingcar.domain.race.RoundRecord;
 
-public class OutputService {
+public class MessageService {
 
-    public String generateResultMessage(Results results) {
+    public Message generateResultMessage(Results results) {
         StringBuilder sb = new StringBuilder();
         List<Result> raceResults = results.getResults();
 
@@ -20,7 +21,7 @@ public class OutputService {
             sb.append(System.lineSeparator());
         }
 
-        return sb.toString();
+        return new Message(sb.toString());
     }
 
     private void addResult(StringBuilder sb, Result result) {
@@ -35,9 +36,9 @@ public class OutputService {
         return "-".repeat(distance);
     }
 
-    public String generateWinnerMessage(Cars cars) {
+    public Message generateWinnerMessage(Cars cars) {
         List<String> winners = getWinners(cars);
-        return String.join(Constant.DELIMITER, winners);
+        return new Message(String.join(Constant.DELIMITER, winners));
     }
 
     private List<String> getWinners(Cars cars) {

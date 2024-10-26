@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Message;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Results;
+import racingcar.domain.race.RoundCount;
 
-class OutputServiceTest {
+class MessageServiceTest {
 
     private final RacingService racingService = new RacingService();
-    private final OutputService outputService = new OutputService();
+    private final MessageService messageService = new MessageService();
 
     @Test
     @DisplayName("실행 결과 메시지 생성")
@@ -25,15 +27,14 @@ class OutputServiceTest {
         names.add("c");
         final CarNames carNames = new CarNames(names);
         final Cars cars = Cars.from(carNames);
-
-        final int roundCount = 5;
+        final RoundCount roundCount = RoundCount.from("5");
         final Results results = racingService.startRace(cars, roundCount);
 
         //when
-        String resultMessage = outputService.generateResultMessage(results);
+        Message resultMessage = messageService.generateResultMessage(results);
 
         //then
-        assertThat(resultMessage).contains("a : ", "b : ", "c : ");
+        assertThat(resultMessage.getMessage()).contains("a : ", "b : ", "c : ");
     }
 
     @Test
@@ -46,14 +47,13 @@ class OutputServiceTest {
         names.add("c");
         final CarNames carNames = new CarNames(names);
         final Cars cars = Cars.from(carNames);
-
-        final int roundCount = 5;
+        final RoundCount roundCount = RoundCount.from("5");
         racingService.startRace(cars, roundCount);
 
         //when
-        String winnerMessage = outputService.generateWinnerMessage(cars);
+        Message winnerMessage = messageService.generateWinnerMessage(cars);
 
         //then
-        assertThat(winnerMessage).isNotEmpty();
+        assertThat(winnerMessage.getMessage()).isNotEmpty();
     }
 }
