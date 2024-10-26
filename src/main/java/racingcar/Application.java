@@ -10,21 +10,21 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        List<String> cars = getCars();
+        List<String> carNames = getcarNames();
 
         int count = getCount();
 
-        List<Integer> moves = new ArrayList<>(Collections.nCopies(cars.size(),0));
+        List<Integer> moves = new ArrayList<>(Collections.nCopies(carNames.size(),0));
 
-        runRace(count, cars, moves);
+        runRace(count, carNames, moves);
 
-        printWinner(cars, moves);
+        printWinner(carNames, moves);
     }
 
-    private static List<String> getCars() {
+    private static List<String> getcarNames() {
         String input = getString();
-        List<String> cars = parseCarList(input);
-        return cars;
+        List<String> carNames = parseCarList(input);
+        return carNames;
     }
 
     private static String getString() {
@@ -33,8 +33,8 @@ public class Application {
     }
 
     private static List<String> parseCarList(String input) {
-        List<String> cars = new ArrayList<String>(Arrays.asList(input.split(",")));
-        return cars;
+        List<String> carNames = new ArrayList<String>(Arrays.asList(input.split(",")));
+        return carNames;
     }
 
     private static int getCount() {
@@ -42,14 +42,14 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void runRace(int count, List<String> cars, List<Integer> moves) {
+    private static void runRace(int count, List<String> carNames, List<Integer> moves) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < count; i++) {
-            for (int j = 0; j < cars.size(); j++) {
+            for (int j = 0; j < carNames.size(); j++) {
                 moveForward(moves, j);
             }
-            printMoves(cars, moves);
+            printMoves(carNames, moves);
         }
     }
 
@@ -61,22 +61,22 @@ public class Application {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    private static void printMoves(List<String> cars, List<Integer> moves) {
+    private static void printMoves(List<String> carNames, List<Integer> moves) {
         StringBuilder roundResult = new StringBuilder();
-        for (int i = 0; i < cars.size(); i++) {
-            roundResult.append(cars.get(i)).append(" : ");
+        for (int i = 0; i < carNames.size(); i++) {
+            roundResult.append(carNames.get(i)).append(" : ");
             roundResult.append("-".repeat(moves.get(i)));
             roundResult.append("\n");
         }
         System.out.println(roundResult);
     }
 
-    private static void printWinner(List<String> cars, List<Integer> moves) {
+    private static void printWinner(List<String> carNames, List<Integer> moves) {
         int maxValue = getMaxValue(moves);
 
         List<Integer> maxIndices = getMaxIndices(moves, maxValue);
 
-        String result = getResult(cars, maxIndices);
+        String result = getResult(carNames, maxIndices);
 
         System.out.println("최종 우승자 : " + result);
     }
@@ -95,9 +95,9 @@ public class Application {
         return maxIndices;
     }
 
-    private static String getResult(List<String> cars, List<Integer> maxIndices) {
+    private static String getResult(List<String> carNames, List<Integer> maxIndices) {
         String result = String.join(", ", maxIndices.stream()
-                .map(index -> cars.get(index))
+                .map(index -> carNames.get(index))
                 .collect(Collectors.toList()));
         return result;
     }
