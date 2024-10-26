@@ -11,14 +11,18 @@ public class Car {
         advance = 0;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void doAdvance() {
         int random = Randoms.pickNumberInRange(0, 9);
         if(random >= 4) {
             advance++;
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAdvance() {
+        return advance;
     }
 }

@@ -20,6 +20,6 @@ public class RacingCarGame {
         carNames = inputNames.input();
         tryCount = inputTry.input();
 
-        racingCarService.play(carNames, tryCount);
+        racingCarService.set(carNames, tryCount);
     }
 }

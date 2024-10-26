@@ -16,7 +16,7 @@ public class RacingCarService {
         printWinner = new PrintWinner();
     }
 
-    public void play(List<String> carNames, int trycount) {
+    public void set(List<String> carNames, int trycount) {
         this.carNames = carNames;
         this.trycount = trycount;
 
@@ -24,5 +24,7 @@ public class RacingCarService {
             Car newCar = createCar.create(carNames.get(i));
             cars.add(newCar);
         }
+
+        playGame.play(cars, trycount);
     }
 }
