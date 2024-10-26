@@ -3,20 +3,17 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.game.Game;
 import racingcar.vehicle.Car;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -68,6 +65,18 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() ->
                 new Car(null))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차 이름 공백 테스트")
+    @Test
+    void createCarBlankTest() {
+        try {
+            Car car = new Car("");
+            fail();
+            Assertions.assertEquals("", car.getName());
+        } catch (IllegalArgumentException e) {
+
+        }
     }
 
     @DisplayName("자동차_다수_생성_테스트")

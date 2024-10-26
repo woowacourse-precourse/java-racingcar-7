@@ -46,7 +46,7 @@ public class Car {
         return builder.toString();
     }
 
-    private void imPossibleName(String name) {
+    private void imPossibleName(String name) throws IllegalArgumentException {
         if (name == null || name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException();
         }

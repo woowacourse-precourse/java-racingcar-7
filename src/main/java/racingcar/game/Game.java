@@ -45,7 +45,7 @@ public class Game {
                 .orElseThrow();
     }
 
-    private int parseCntNumber(String cnt) {
+    private int parseCntNumber(String cnt) throws IllegalArgumentException {
         try {
             return Integer.parseInt(cnt);
         } catch (NumberFormatException e) {
