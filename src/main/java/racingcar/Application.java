@@ -72,7 +72,9 @@ public class Application {
 
         for (String carName : carNames) {
             Car car = new Car(carName);
+            cars.add(car);
         }
+
         return cars;
     }
 }
