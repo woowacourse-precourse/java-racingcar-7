@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
     @Test
     void emptyNameTest() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("java, woowa,, java", "1"))
+                assertThatThrownBy(() -> runException("java, woowa,,      ,java", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
