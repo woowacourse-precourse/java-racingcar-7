@@ -5,9 +5,6 @@ import java.util.Set;
 import racingcar.domain.Car;
 
 public class Output {
-    public static void printError(String error) {
-        System.out.print("[ERROR] " + error);
-    }
 
     public static void printIntermediateScore(Set<Car> cars) {
         for (Car car : cars) {
