@@ -30,7 +30,7 @@ public class Race {
         List<String> winners = cars.entrySet().stream().filter(entry -> entry.getValue().length() == winnerDistance)
                 .map(Map.Entry::getKey)
                 .toList();
-        String result = String.join(",", winners);
+        String result = String.join(", ", winners);
         System.out.println("최종 우승자 : " + result);
     }
 }
