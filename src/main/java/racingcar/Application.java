@@ -18,7 +18,12 @@ public class Application {
         String countInput=Console.readLine();
         int count;
         count=Integer.parseInt(countInput);
-        
+
+        for(int i=0;i<count;i++){
+            goOrStop(player);
+            printCar(player);
+        }
+
     }
 
     public static void goOrStop(HashMap<String,Integer> player){
@@ -28,5 +33,12 @@ public class Application {
                 player.put(s,steps+1);
             }
         }
+    }
+
+    public static void printCar(HashMap<String,Integer> player){
+        for(String s:player.keySet()){
+            System.out.println(s+" : "+"-".repeat(player.get(s)));
+        }
+        System.out.println();
     }
 }
