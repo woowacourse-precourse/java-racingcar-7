@@ -37,9 +37,8 @@ public class RacingCars {
 
     public LinkedHashMap<String, Integer> getCarNamesAndPositions() {
         LinkedHashMap<String, Integer> carNameAndPosition = new LinkedHashMap<>();
-        values.forEach(racingCar ->
-                carNameAndPosition.put(racingCar.getName(), racingCar.getPosition())
-        );
+
+        values.forEach(rC -> carNameAndPosition.putAll(rC.getCarNameAndPosition()));
 
         return carNameAndPosition;
     }
