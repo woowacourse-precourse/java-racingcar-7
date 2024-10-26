@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import racingcar.io.InputView;
+
 
 public class Game {
     //TODO:
@@ -29,6 +29,13 @@ public class Game {
         for (String player:splitted){
             playerScoreBoard.put(player,0);
         }
+    }
+
+    private Integer getTurnFromInput() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String userInput=Console.readLine();
+        //TODO: 추후 예외처리 필요
+        return Integer.parseInt(userInput);
     }
 
 
