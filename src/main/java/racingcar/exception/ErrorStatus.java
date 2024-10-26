@@ -8,8 +8,8 @@ public enum ErrorStatus {
     INVALID_CAR_NAME("자동차 이름은 1자 이상 5자 이하만 가능합니다."),
 
     // round
-    INVALID_ROUND("라운드는 1 이상의 숫자만 가능합니다."),
-    TOO_MANY_ROUNDS("라운드는 100 이하의 숫자만 가능합니다."),
+    INVALID_ROUND_INPUT("라운드는 1 이상의 숫자만 가능합니다."),
+    ROUND_OUT_OF_BOUND("라운드는 100 이하의 숫자만 가능합니다."),
     ;
 
     private final String message;
