@@ -23,4 +23,9 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    // 테스트시 tearDown을 위한 메서드
+    public void clearPosition(){
+        this.position = 0;
+    }
 }
