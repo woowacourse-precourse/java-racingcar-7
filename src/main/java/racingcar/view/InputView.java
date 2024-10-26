@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.util.MoveCountValidator.validate;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -11,8 +13,11 @@ public class InputView {
     }
 
     public String getNumberOfRound() {
-        System.out.println("시도할 회수는 몇회인가요?");
+        System.out.println("시도할 회수는 몇 회인가요?");
 
-        return Console.readLine();
+        String input = Console.readLine();
+        validate(input);
+
+        return input;
     }
 }
