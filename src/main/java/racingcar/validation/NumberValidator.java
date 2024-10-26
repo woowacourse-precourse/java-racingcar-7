@@ -14,7 +14,7 @@ public class NumberValidator {
 
     public static void validateIsPositive(String attempt) {
         int number = Integer.parseInt(attempt);
-        if (number < 0 || number > 100) {
+        if (number < 1 || number > 100) {
             throw new IllegalArgumentException(NOT_POSITIVE_NUMBER_ERROR);
         }
     }
