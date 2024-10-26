@@ -13,4 +13,10 @@ public class OutputView {
             System.out.println();
         }
     }
+
+    public void printWinningCars(Cars winningCars){
+        List<Car> winningCarGroup = winningCars.getCarGroup();
+        //String
+        //System.out.println("최종 우승자 : ",);
+    }
 }
