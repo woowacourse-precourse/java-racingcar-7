@@ -74,4 +74,22 @@ class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
+
+    @DisplayName("주어진 전진값과 현재 자동차의 전진값을 비교하여 더 큰 전진값을 반환한다.")
+    @Test
+    void calculateMaxPosition() {
+        //given
+        Car car = Car.of("pobi", new StubRandomNumberGenerator(4));
+        int position = 2;
+
+        car.isMove();
+        car.isMove();
+        car.isMove();
+
+        //when
+        int maxPosition = car.calculateMaxPosition(position);
+
+        //then
+        assertThat(maxPosition).isEqualTo(car.getPosition());
+    }
 }
