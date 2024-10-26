@@ -1,4 +1,31 @@
 # java-racingcar-precourse
+### 패키지 구조
+```
+src
+ ├── main
+     ├── java
+         ├── racingcar
+             ├── controller
+                 ├── RacingCarController.java
+             ├── domain
+                 ├── Car.java
+                 ├── RacingGame.java
+                 ├── RaceRound.java
+                 ├── RacingResult.java
+             ├── service
+                 ├── RacingCarService.java
+                 ├── RacingCarServiceImpl.java
+             ├── utils
+                 ├── InputValidator.java
+                 ├── RandomNumberGenerator.java
+                 ├── RandomNumberGeneratorImpl.java
+             ├── view
+                 ├── InputView.java
+                 ├── OutputView.java
+             ├── config
+                 ├── AppConfig.java
+             ├── Application.java
+```
 ### 기능 구현 목록
 
 - [ ]  경주할 자동차들 의 이름과 시도할 횟수를 입력받아 저장한다.
