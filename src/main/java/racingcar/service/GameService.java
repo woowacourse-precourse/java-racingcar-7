@@ -5,16 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 
-public class GameService {
-    private final List<Car> cars;
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public GameService(List<Car> cars) {
-        this.cars = cars;
-    }
+public record GameService(List<Car> cars) {
 
     public void progress() {
         for (Car car : cars) {
@@ -33,5 +24,4 @@ public class GameService {
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
-
 }
