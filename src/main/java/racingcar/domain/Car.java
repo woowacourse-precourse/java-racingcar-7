@@ -5,8 +5,12 @@ public class Car {
     private int movement;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    Car(String name, int movement) {
         this.name = new CarName(name);
-        this.movement = 0;
+        this.movement = movement;
     }
 
     public void move() {
