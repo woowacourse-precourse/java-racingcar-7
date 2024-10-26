@@ -35,4 +35,11 @@ public class InputValidationTest {
         assertThatThrownBy(() -> new Race("abcd,java", "a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("0이하의 숫자를 이동횟수로 입력받은 경우 예외발생")
+    void validatePositiveNumber() {
+        assertThatThrownBy(() -> new Race("abcd,java", "0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

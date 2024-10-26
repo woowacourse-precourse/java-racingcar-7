@@ -37,4 +37,10 @@ public class InputValidation {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER.getMessage());
         }
     }
+
+    public static void validatePositiveNumber(String number){
+        if(Integer.parseInt(number) <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.NON_POSITIVE_INTEGER.getMessage());
+        }
+    }
 }

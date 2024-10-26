@@ -26,6 +26,7 @@ public class Race {
 
         InputValidation.validateIntRange(count);
         InputValidation.validateNumberFormat(count);
+        InputValidation.validatePositiveNumber(count);
         this.count = Integer.parseInt(count);
     }
 
