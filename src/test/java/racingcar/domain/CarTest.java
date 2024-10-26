@@ -20,6 +20,13 @@ class CarTest extends NsTest {
         });
     }
 
+    @Test
+    void 자동차_이름은_공백을_포함할_수_없다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Car("종경 차");
+        });
+    }
+
     @Override
     protected void runMain() {
 

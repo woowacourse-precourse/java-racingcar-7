@@ -13,6 +13,9 @@ public class Car {
         if (name.length() > CAR_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
+        if (name.contains(" ")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getName() {
