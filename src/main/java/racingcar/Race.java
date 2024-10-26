@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class Race {
 
+    private StringBuilder result = new StringBuilder();
+
     public void raceStart(String[] names, String count) {
         int tryCount = Integer.parseInt(count);
         checkInput(names, tryCount);
@@ -19,10 +21,11 @@ public class Race {
 
         for (int i = 0; i < tryCount; i++) {
             moveCar(raceMap);
-            printResult(raceMap);
+            saveResult(raceMap);
         }
 
-        printWinner(raceMap);
+        saveWinner(raceMap);
+        System.out.println(result);
     }
 
     private void moveCar(Map<String, Integer> raceMap) {
@@ -41,12 +44,12 @@ public class Race {
         return false;
     }
 
-    private void printResult(Map<String, Integer> raceMap) {
+    private void saveResult(Map<String, Integer> raceMap) {
         for (Map.Entry<String, Integer> entry : raceMap.entrySet()) {
             StringBuilder sb = new StringBuilder();
-            System.out.println(saveLog(sb, entry));
+            result.append(saveLog(sb, entry)).append("\n");
         }
-        System.out.println();
+        result.append("\n");
     }
 
     private String saveLog(StringBuilder sb, Map.Entry<String, Integer> entry) {
@@ -58,10 +61,10 @@ public class Race {
         return sb.toString();
     }
 
-    private void printWinner(Map<String, Integer> raceMap) {
+    private void saveWinner(Map<String, Integer> raceMap) {
         int maxMove = Collections.max(raceMap.values());
-
         StringBuilder sb = new StringBuilder();
+
         for (Map.Entry<String, Integer> entry : raceMap.entrySet()) {
             if (entry.getValue() == maxMove) {
                 sb.append(entry.getKey());
@@ -69,7 +72,7 @@ public class Race {
             }
         }
 
-        System.out.println("최종 우승자: " + sb.substring(0, sb.length() - 2));
+        result.append("최종 우승자 : ").append(sb.substring(0, sb.length() - 2)).append("\n");
     }
 
     // ============= 입력값 검증 메서드 =============
