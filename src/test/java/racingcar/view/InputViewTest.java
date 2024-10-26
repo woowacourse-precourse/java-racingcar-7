@@ -30,4 +30,24 @@ public class InputViewTest {
 		// then
 		assertThat(split).isEqualTo(carNames);
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"Quatro", "six", "다섯"})
+	void 시도_횟수_입력이_숫자가_아닌_경우(String input) {
+		InputView inputView = new InputView(() -> input);
+
+		assertThatThrownBy(inputView::getTryCounts)
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(InputView.INPUT_MUST_BE_POSITIVE_NUMBER);
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"-100", "-12.34", "1.5387"})
+	void 양의_정수가_아닐_때(String input) {
+		InputView inputView = new InputView(() -> input);
+
+		assertThatThrownBy(inputView::getTryCounts)
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(InputView.INPUT_MUST_BE_POSITIVE_NUMBER);
+	}
 }
