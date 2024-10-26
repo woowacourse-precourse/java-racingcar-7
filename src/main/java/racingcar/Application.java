@@ -6,7 +6,8 @@ public class Application {
         Input input = new Input();
         input.nameAndCurrentCount();
 
-        System.out.println("carList : " + input.getCarList() + ", count : " + input.getCount());
+        Game game = new Game(input.getCarList().split(","), input.getCount());
+        game.inputLane();
 
     }
 }
