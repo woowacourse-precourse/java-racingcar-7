@@ -32,6 +32,10 @@ public class RacingGame {
         ++currentTryCount;
     }
 
+    public void join(List<Car> cars) {
+        cars.forEach(this::join);
+    }
+
     public void join(Car car) {
         if (participants.contains(car)) {
             throw new IllegalStateException("자동차 이름은 중복될 수 없습니다.");
