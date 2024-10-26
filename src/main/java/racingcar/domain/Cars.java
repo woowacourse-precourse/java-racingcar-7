@@ -17,6 +17,14 @@ public class Cars {
         }
     }
 
+    public Cars(List<String> carNames, List<Integer> progresses) {
+        validate(carNames);
+        this.cars = new ArrayList<>(carNames.size());
+        for (int i = 0; i < carNames.size(); i++) {
+            this.cars.add(new Car(carNames.get(i), progresses.get(i)));
+        }
+    }
+
     private void validate(List<String> carNames) {
         HashSet<String> duplicateCheck = new HashSet<>();
         for (int i = 0; i < carNames.size(); i++) {
