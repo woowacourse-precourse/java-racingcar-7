@@ -4,23 +4,31 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CarNameValidator {
+    private final static String EXCEPTION_MESSAGE_ONLY_COMMA = "입력한 값은, 만 있으면 안 됩니다.";
+    private final static String EXCEPTION_MESSAGE_EMPTY_CAR = "자동차 이름은 비어있거나 공백이면 안 됩니다.";
+    private final static String EXCEPTION_MESSAGE_LENGTH_CAR = "자동차 이름의 길이는 5자를 초과하면 안 됩니다.";
+    private final static String EXCEPTION_MESSAGE_DUPLICATE_CAR_NAME = "같은 자동차의 이름을 입력하면 안 됩니다.";
+    private final static int CAR__NAME_LENGTH_STANDARD = 5;
+
     public void validate(List<String> carNames) {
         validateEmptyList(carNames);
         validateLengthCarName(carNames);
         validateDuplicationCarName(carNames);
     }
+
     private void validateEmptyList(List<String> carNames) {
-        if(carNames.isEmpty()) {
-            throw new IllegalArgumentException("입력한 값은 ,만 있으면 안됩니다");
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_ONLY_COMMA);
         }
     }
+
     private void validateLengthCarName(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.isEmpty() || carName.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름은 비어있거나 공백이어서는 안됩니다 : " + carName);
+                throw new IllegalArgumentException(EXCEPTION_MESSAGE_EMPTY_CAR);
             }
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다 : " + carName.length());
+            if (carName.length() > CAR__NAME_LENGTH_STANDARD) {
+                throw new IllegalArgumentException(EXCEPTION_MESSAGE_LENGTH_CAR);
             }
         }
     }
@@ -32,7 +40,7 @@ public class CarNameValidator {
         }
         for (int count : carsMap.values()) {
             if (count > 1) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다 : " + count);
+                throw new IllegalArgumentException(EXCEPTION_MESSAGE_DUPLICATE_CAR_NAME);
             }
         }
     }
