@@ -28,6 +28,13 @@ public class Distance {
         return maxDistance;
     }
 
+    public boolean isSameDistance(int distance) {
+        if (this.distanceValue == distance) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

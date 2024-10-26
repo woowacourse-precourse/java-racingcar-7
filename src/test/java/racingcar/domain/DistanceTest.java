@@ -24,4 +24,14 @@ class DistanceTest {
                 () -> assertThat(distance.max(4)).isEqualTo(5)
         );
     }
+
+    @DisplayName("같은 값 구하기")
+    @Test
+    void 같은값() {
+        Distance distance = new Distance(5);
+        assertAll(
+                () -> assertThat(distance.isSameDistance(5)).isTrue(),
+                () -> assertThat(distance.isSameDistance(6)).isFalse()
+        );
+    }
 }
