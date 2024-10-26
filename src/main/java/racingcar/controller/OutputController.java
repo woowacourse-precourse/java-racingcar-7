@@ -12,11 +12,16 @@ public class OutputController {
         this.outputView = outputView;
     }
 
-    public void printRoundResult(final Race race) {
+    public void printEndLine() {
         outputView.printEndLine();
+    }
+
+    public void printGameResultMessage() {
         outputView.printGameResultMessage();
+    }
+
+    public void printRoundResult(final Race race) {
         race.getCarList().forEach(outputView::printRoundResult);
-        outputView.printEndLine();
     }
 
     public void printWinners(final List<Car> winnerList) {
