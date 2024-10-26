@@ -2,15 +2,18 @@ package racingcar.model;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.util.Direction;
 
 public class Car {
 
     private String name;
+    private StringBuffer moveStatus;
 
     public Car() {
     }
 
-    private Car(String name) {
+    public Car(String name) {
+        this.moveStatus = new StringBuffer();
         this.name = name;
     }
 
@@ -31,5 +34,17 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public String getMoveStatus(Direction direction) {
+        final String moved = "-";
+        if (direction == Direction.FORWARD) {
+            moveStatus.append(moved);
+        }
+        return moveStatus.toString();
+    }
+
+    public StringBuffer getMoveStatus() {
+        return moveStatus;
     }
 }
