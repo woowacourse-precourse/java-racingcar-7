@@ -6,14 +6,18 @@ import racingcar.model.Cars;
 
 public class OutputView {
 
-    private static final String FINAL_WINNERS = "최종 우승 : ";
+    private static final String FINAL_WINNERS = "최종 우승자 : ";
     private static final String RESULT = "실행 결과";
     private final StringBuilder sb = new StringBuilder();
 
-    public String printResultOfRound(Cars cars) {
+    public void printEachRound(Cars cars) {
         sb.setLength(0); // 초기화
-
         sb.append(RESULT).append("\n");
+        makeResultOfRound(cars);
+        System.out.println(sb);
+    }
+
+    private void makeResultOfRound(Cars cars) {
         for (Car car : cars.getCarList()) {
             sb.append(car.getName()).append(" : ");
             for (long i = 0; i < car.getDistance(); i++) {
@@ -22,10 +26,9 @@ public class OutputView {
             sb.append("\n");
         }
 
-        return sb.toString();
     }
 
-    public String printWinnersName(Cars cars) {
+    public void printWinnersName(Cars cars) {
         sb.setLength(0);
 
         sb.append(FINAL_WINNERS);
@@ -35,6 +38,6 @@ public class OutputView {
         }
         sb.append(carList.getLast().getName());
 
-        return sb.toString();
+        System.out.println(sb);
     }
 }
