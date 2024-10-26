@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 import racingcar.domain.Car;
 
-public class WinnersView {
+public class WinnersOutputView {
     public void print(List<Car> winners) {
         String[] winnerArr = winners.stream()
                 .map(Car::getName)

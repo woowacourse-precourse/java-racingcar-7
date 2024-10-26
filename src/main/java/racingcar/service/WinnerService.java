@@ -5,16 +5,16 @@ import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
 public class WinnerService {
-    CarRepository carRepository;
+    private final CarRepository carRepository;
 
     public WinnerService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
     public List<Car> getWinners() {
-        int maxDistance = getMaxDistance();
-
         List<Car> carsResult = carRepository.findAll();
+
+        int maxDistance = getMaxDistance(carsResult);
         List<Car> winners = carsResult.stream()
                 .filter((car) -> car.getDistance() == maxDistance)
                 .toList();
@@ -22,14 +22,10 @@ public class WinnerService {
         return winners;
     }
 
-    private int getMaxDistance() {
-        List<Car> carsResult = carRepository.findAll();
-
-        int maxDistance = carsResult.stream()
+    private int getMaxDistance(List<Car> cars) {
+        return cars.stream()
                 .map(Car::getDistance)
                 .max(Integer::compareTo)
                 .orElse(0);
-
-        return maxDistance;
     }
 }

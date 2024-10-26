@@ -2,45 +2,51 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.repository.CarRepository;
 import racingcar.service.CarService;
 import racingcar.service.RacingService;
 import racingcar.service.WinnerService;
-import racingcar.view.CarView;
-import racingcar.view.NumberView;
-import racingcar.view.WinnersView;
+import racingcar.view.CarInputView;
+import racingcar.view.RaceOutputView;
+import racingcar.view.NumberInputView;
+import racingcar.view.WinnersOutputView;
 
 public class RacingController {
-    CarRepository carRepository;
+    private final CarService carService;
+    private final RacingService racingService;
+    private final WinnerService winnerService;
 
-    CarService carService;
-    RacingService racingService;
-    WinnerService winnerService;
+    private final CarInputView carInputView;
+    private final NumberInputView numberInputView;
+    private final RaceOutputView raceOutputView;
+    private final WinnersOutputView winnersOutputView;
 
-    CarView carView;
-    NumberView numberView;
-    WinnersView winnersView;
+    public RacingController(
+            CarService carService,
+            RacingService racingService,
+            WinnerService winnerService,
+            CarInputView carInputView,
+            NumberInputView numberInputView,
+            RaceOutputView raceOutputView,
+            WinnersOutputView winnersOutputView) {
+        this.carService = carService;
+        this.racingService = racingService;
+        this.winnerService = winnerService;
 
-    public RacingController(CarRepository carRepository) {
-        this.carRepository = carRepository;
-
-        this.carService = new CarService(this.carRepository);
-        this.racingService = new RacingService(this.carRepository);
-        this.winnerService = new WinnerService(this.carRepository);
-
-        this.carView = new CarView();
-        this.numberView = new NumberView();
-        this.winnersView = new WinnersView();
+        this.carInputView = carInputView;
+        this.numberInputView = numberInputView;
+        this.raceOutputView = raceOutputView;
+        this.winnersOutputView = winnersOutputView;
     }
 
     public void run() {
-        String rawNames = carView.inputNames();
-        carService.saveAllByString(rawNames);
+        String inputNames = carInputView.inputNames();
+        carService.saveAllByInput(inputNames);
 
-        String rawNumber = numberView.input();
+        String rawNumber = numberInputView.input();
+        raceOutputView.printExecutionPrompt();
         racingService.race(rawNumber);
 
         List<Car> winners = winnerService.getWinners();
-        winnersView.print(winners);
+        winnersOutputView.print(winners);
     }
 }

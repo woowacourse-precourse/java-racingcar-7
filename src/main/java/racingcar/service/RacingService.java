@@ -4,18 +4,17 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 import racingcar.validator.Validator;
-import racingcar.validator.impl.NumberValidator;
-import racingcar.view.ExecutionView;
+import racingcar.view.RaceOutputView;
 
 public class RacingService {
-    CarRepository carRepository;
-    Validator validator;
-    ExecutionView executionView;
+    private final CarRepository carRepository;
+    private final Validator validator;
+    private final RaceOutputView raceOutputView;
 
-    public RacingService(CarRepository carRepository) {
+    public RacingService(CarRepository carRepository, Validator validator, RaceOutputView raceOutputView) {
         this.carRepository = carRepository;
-        this.validator = new NumberValidator();
-        this.executionView = new ExecutionView();
+        this.validator = validator;
+        this.raceOutputView = raceOutputView;
     }
 
     public void race(String rawNumber) {
@@ -23,12 +22,11 @@ public class RacingService {
 
         List<Car> cars = carRepository.findAll();
 
-        executionView.printExecutionPrompt();
         for (int i = 0; i < count; i++) {
             for (Car car : cars) {
                 car.moveOrStop();
             }
-            executionView.printResult(cars);
+            raceOutputView.printResult(cars);
         }
     }
 
