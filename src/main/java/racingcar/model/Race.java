@@ -16,7 +16,7 @@ public class Race {
     private int count;
     private int maxPosition;
 
-    public Race(String inputtedName, int count) {
+    public Race(String inputtedName, String count) {
         String[] carNames = inputtedName.split(DELIMITER, -1);
         cars = Arrays.stream(carNames)
                 .map(name -> new Car(name))
@@ -24,7 +24,7 @@ public class Race {
         InputValidation.validateDelimiter(inputtedName);
         InputValidation.validateNameLength(cars);
 
-        this.count = count;
+        this.count = Integer.parseInt(count);
     }
 
     public List<Car> getCars() {

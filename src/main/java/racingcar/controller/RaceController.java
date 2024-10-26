@@ -19,7 +19,7 @@ public class RaceController {
         String carNames = inputView.inputStringWithoutSpaces();
 
         outputView.printInputCountMessage();
-        int count = Integer.parseInt(inputView.inputStringWithoutSpaces());
+        String count = inputView.inputStringWithoutSpaces();
         return new Race(carNames, count);
     }
 

@@ -10,14 +10,14 @@ public class InputValidationTest {
     @Test
     @DisplayName("이름을 입력받을 때 구분자가 없는 경우 예외발생")
     void validateDelimiter() {
-        assertThatThrownBy(() -> new Race("abcdef", 1))
+        assertThatThrownBy(() -> new Race("abcdef", "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("이름의 길이가 5자보다 큰 경우 예외발생")
     void validateNameLength() {
-        assertThatThrownBy(() -> new Race("abcdef,java", 1))
+        assertThatThrownBy(() -> new Race("abcdef,java", "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -28,7 +28,7 @@ public class OutputViewTest {
     @Test
     @DisplayName("최종 우승자를 출력할 수 있다")
     public void printWinner() {
-        Race race = new Race("abc,def", 1);
+        Race race = new Race("abc,def", "1");
         OutputView outputView = new OutputView();
 
         race.getCars().get(0).moveBasedOnPoint(3);
