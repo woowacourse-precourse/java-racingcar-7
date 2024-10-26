@@ -19,8 +19,7 @@ public class Racingcar {
     public void startGames(int game_count) {
         System.out.println(Contants.OUTPUT_NOTICE_GAME_RESULT);
         for (int i = 0; i < game_count; i++) {
-            Game game = new Game(carList);
-            game.play();
+            new Game(carList).play();
             printGameResult();
         }
     }
@@ -35,10 +34,34 @@ public class Racingcar {
         System.out.println();
     }
 
-    public void findWinner(){
-        String result = Contants.OUTPUT_NOTICE_WINNER_RESULT
-                +Contants.OUTPUT_COLON_CAHR;
-        System.out.println(result);
+    public int findMaxDistance(){
+        int maxDistance = 0;
+        for (Car car : carList){
+            if(car.getDistance() > maxDistance){
+                maxDistance = car.getDistance();
+            }
+        }
+        return maxDistance;
+    }
+
+    public List<Car> findWinner(){
+        List<Car> winnerList = new ArrayList<>();
+        int maxDistance = findMaxDistance();
+        for (Car car : carList){
+            if(car.getDistance() == maxDistance){
+                winnerList.add(car);
+            }
+        }
+        return winnerList;
+    }
+
+    public void printWinner(List<Car> winnerList){
+        List<String> str_winnerList = new ArrayList<>();
+        for(Car cars: winnerList){
+            str_winnerList.add(cars.getName());
+        }
+        String winners_name = String.join(", ",str_winnerList);
+        System.out.println(winners_name);
     }
 
     public void play() {
@@ -53,7 +76,10 @@ public class Racingcar {
         int game_count = Integer.parseInt(input_value2);
         startGames(game_count);
 
-        findWinner();
+        List<Car> winnerList = findWinner();
+        System.out.print(Contants.OUTPUT_NOTICE_WINNER_RESULT
+                +Contants.OUTPUT_COLON_CAHR);
+        printWinner(winnerList);
     }
 
 
