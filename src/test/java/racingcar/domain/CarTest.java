@@ -25,4 +25,17 @@ class CarTest {
         assertThatThrownBy(() -> new Car("자동차이름은"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("자동차는 전진 할 수 있다.")
+    @Test
+    void 자동차_전진_테스트() {
+        Car car = new Car("전진");
+        car.forward();
+
+        assertThat(car.getPosition()).isEqualTo(1);
+        car.forward();
+        car.forward();
+
+        assertThat(car.getPosition()).isEqualTo(3);
+    }
 }
