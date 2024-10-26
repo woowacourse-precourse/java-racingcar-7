@@ -44,6 +44,7 @@ jun : --
 - 자동차 이름 검증
     - 자동차 이름이 5자를 초과하는 경우, IllegalArgumentException 발생
 - 시도 횟수 정수로 형변환
+    - 입력받은 시도 횟수가 정수가 아닌 경우, IllegalArgumentException 발생 
 
 ### 3. 자동차 전진
 
