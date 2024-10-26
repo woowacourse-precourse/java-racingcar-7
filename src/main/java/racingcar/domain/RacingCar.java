@@ -17,4 +17,8 @@ public class RacingCar {
     public int getScore() {
         return score;
     }
+
+    public void addScore() {
+        score++;
+    }
 }
