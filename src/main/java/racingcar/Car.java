@@ -3,7 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    private String name;
+    private final String name;
     private int position;
 
     public Car (String name) {
@@ -17,6 +17,10 @@ public class Car {
         if(randomNumber >= 4) {
             position++;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
