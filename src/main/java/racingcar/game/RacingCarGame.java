@@ -5,6 +5,7 @@ import racingcar.game.io.InputHandler;
 import racingcar.game.io.OutputHandler;
 import racingcar.game.model.AttemptCount;
 import racingcar.game.model.Car;
+import racingcar.game.model.RaceSnapshot;
 import racingcar.game.model.RacingCars;
 import racingcar.game.model.Winners;
 
@@ -30,7 +31,8 @@ public class RacingCarGame {
     private void displayAccumulateForEachAttempt(AttemptCount attemptCount, RacingCars racingCars) {
         while (attemptCount.isRemain()) {
             racingCars.race();
-            outputHandler.showCurrentAccumulation(racingCars);
+            List<RaceSnapshot> snapShots = racingCars.getCurrentSnapshots();
+            outputHandler.showCurrentAccumulation(snapShots);
             attemptCount.decrease();
         }
     }

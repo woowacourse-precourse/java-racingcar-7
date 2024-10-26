@@ -17,6 +17,12 @@ public class RacingCars {
         });
     }
 
+    public List<RaceSnapshot> getCurrentSnapshots() {
+        return this.cars.stream()
+                .map(RaceSnapshot::new)
+                .toList();
+    }
+
     public Winners retrieveWinners() {
         int maxMoveCount = findMaxMoveCount();
         List<Car> winners = cars.stream()
