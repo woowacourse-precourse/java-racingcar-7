@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class CarTest {
 
-    @DisplayName("자동차를 전략에 따라 움직일 수 있다.")
+    @DisplayName("자동차를 이동 전략에 따라 움직일 수 있다.")
     @CsvSource({
             "false, 0",
             "true, 1"
@@ -17,7 +17,8 @@ class CarTest {
     void move(boolean isMovable, int expected) {
         //given
         CarName carName = new CarName("lee");
-        Car car = new Car(carName, () -> isMovable);
+        MovementStrategy movementStrategy = () -> isMovable;
+        Car car = new Car(carName, movementStrategy);
 
         //when
         car.move();

@@ -4,11 +4,16 @@ public class Car implements Comparable<Car> {
 
     private final CarName name;
     private final MovementStrategy movementStrategy;
-    private Position position = Position.ZERO;
+    private Position position;
 
     public Car(CarName name, MovementStrategy movementStrategy) {
+        this(name, movementStrategy, Position.ZERO);
+    }
+
+    public Car(CarName name, MovementStrategy movementStrategy, Position position) {
         this.name = name;
         this.movementStrategy = movementStrategy;
+        this.position = position;
     }
 
     public void move() {

@@ -13,20 +13,25 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<CarName> carNames, MovementStrategy movementStrategy) {
-        validateCarLength(carNames);
-        this.cars = carNames.stream().map(carName -> new Car(carName, movementStrategy)).toList();
+    private Cars(List<Car> cars) {
+        validateCarLength(cars);
+        this.cars = cars;
     }
 
     public static Cars from(List<String> names, MovementStrategy movementStrategy) {
         List<CarName> carNames = names.stream().map(CarName::new).toList();
         validateDuplicatedName(names, carNames);
+        List<Car> cars = carNames.stream().map(carName -> new Car(carName, movementStrategy)).toList();
 
-        return new Cars(carNames, movementStrategy);
+        return new Cars(cars);
     }
 
-    private void validateCarLength(List<CarName> carNames) {
-        if (carNames.size() < MIN_CAR_LENGTH || carNames.size() > MAX_CAR_LENGTH) {
+    public static Cars from(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    private void validateCarLength(List<Car> cars) {
+        if (cars.size() < MIN_CAR_LENGTH || cars.size() > MAX_CAR_LENGTH) {
             throw new IllegalArgumentException(CAR_LENGTH_ERROR_MESSAGE);
         }
     }
