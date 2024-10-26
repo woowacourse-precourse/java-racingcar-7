@@ -14,7 +14,10 @@ public enum ErrorMessage {
     RACING_CAR_NAME_MAX_LENGTH_EXCEEDED("자동차 이름은 5자 이하이어야 합니다."),
 
     ATTEMPT_COUNT_MUST_BE_NUMERIC("시도할 횟수는 숫자를 입력하셔야 합니다."),
-    ATTEMPT_COUNT_OUT_OF_RANGE("시도할 횟수는 1 이상 20 이하의 정수를 입력하셔야 합니다.")
+    ATTEMPT_COUNT_OUT_OF_RANGE("시도할 횟수는 1 이상 20 이하의 정수를 입력하셔야 합니다."),
+
+    RACE_PROGRESS_MANAGER_CAR_NOT_FOUND("해당 자동차를 찾을 수 없습니다."),
+    RACE_PROGRESS_MANAGER_DUPLICATE_CAR_NAME("자동차 이름은 중복될 수 없습니다.")
     ;
 
     private final String message;
