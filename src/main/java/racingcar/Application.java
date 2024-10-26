@@ -12,6 +12,7 @@ public class Application {
 
         String[] carNamesList = splitCarNames(carNames);
 
+        validateCarNames(carNamesList);
     }
 
     public static RaceInput getInput() {
@@ -43,5 +44,15 @@ public class Application {
         return carNamesList;
     }
 
-
+    public static void validateCarNames(String[] carNamesList) {
+        for (String carName : carNamesList) {
+            if (carName == null || carName.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
+            }
+            if (carName.length() >= 6) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
+            }
+        }
+    }
 }
+
