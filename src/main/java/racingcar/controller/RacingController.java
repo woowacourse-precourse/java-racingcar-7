@@ -16,5 +16,7 @@ public class RacingController {
 
         racingcarService.addRacingCar(inputCarNames);
         racingcarService.playGame(inputTotalRound);
+
+        racingcarService.responseGameResult();
     }
 }

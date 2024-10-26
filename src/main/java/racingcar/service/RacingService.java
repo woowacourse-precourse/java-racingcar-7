@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import racingcar.constant.InputType;
 import racingcar.domain.RacingCar;
 import racingcar.util.StringSplitter;
@@ -56,6 +57,15 @@ public class RacingService {
         }
         outputView.responseRoundResult(roundResultsBuilder);
     }
+
+    public void responseGameResult() {
+        int maxScore = racingCars.values().stream().mapToInt(RacingCar::getScore).max().orElse(0);
+
+        List<String> winners = racingCars.values().stream().filter(racingCar -> racingCar.getScore() == maxScore)
+                .map(RacingCar::getName).collect(Collectors.toList());
+        outputView.responseGameResult(String.join(", ", winners));
+    }
+
 
     private void playRound() {
         racingCars.values().forEach(racingCar -> {
