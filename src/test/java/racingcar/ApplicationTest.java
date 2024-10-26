@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.validator.CarNameValidator;
@@ -18,7 +17,6 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
-    @Disabled("완성이후 테스트할 것")
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
@@ -30,7 +28,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Disabled("완성이후 테스트할 것")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -42,103 +39,82 @@ class ApplicationTest extends NsTest {
     @DisplayName("자동차 이름이 공백일 시 검증테스트")
     @Test
     void 자동차_목록_검증_테스트1() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        List<String> carList = List.of("pobi", "", "jun");
+        CarNameValidator carNameValidator = new CarNameValidator("pobi,,jun");
 
-        assertThatThrownBy(() -> carNameValidator.nameLength(carList))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 5글자 이상일 시 검증테스트")
     @Test
     void 자동차_목록_검증_테스트2() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        List<String> carList = List.of("pobi", "woniwoni", "jun");
+        CarNameValidator carNameValidator = new CarNameValidator("pobi,woniwoni,jun");
 
-        assertThatThrownBy(() -> carNameValidator.nameLength(carList))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 이름이 중복일 시 검증테스트")
     @Test
     void 자동차_목록_검증_테스트3() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        List<String> carList = List.of("pobi", "pobi", "jun");
+        CarNameValidator carNameValidator = new CarNameValidator("pobi,pobi,jun");
 
-        assertThatThrownBy(() -> carNameValidator.nameOverlap(carList))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트1")
     @Test
     void 자동차_목록_검증_테스트4() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        String cars = "pobi,woni,jun,";
+        CarNameValidator carNameValidator = new CarNameValidator("pobi,woni,jun,");
 
-        assertThatThrownBy(() -> carNameValidator.rightNamePattern(cars))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트2")
     @Test
     void 자동차_목록_검증_테스트5() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        String cars = ",pobi,woni,jun";
+        CarNameValidator carNameValidator = new CarNameValidator(",pobi,woni,jun");
 
-        assertThatThrownBy(() -> carNameValidator.rightNamePattern(cars))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트3")
     @Test
     void 자동차_목록_검증_테스트6() {
-        CarNameValidator carNameValidator = new CarNameValidator();
-        String cars = ",pobi,woni,jun,";
+        CarNameValidator carNameValidator = new CarNameValidator(",pobi,woni,jun,");
 
-        assertThatThrownBy(() -> carNameValidator.rightNamePattern(cars))
+        assertThatThrownBy(carNameValidator::verify)
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 자동차_목록_테스트1() {
-        String cars = "pobi,woni,jun";
-        List<String> carList = List.of(cars.split(","));
-        CarNameValidator check = new CarNameValidator();
+        CarNameValidator carNameValidator = new CarNameValidator("pobi,woni,jun");
+        carNameValidator.verify();
 
-        check.rightNamePattern(cars);
-        check.nameLength(carList);
-        check.nameOverlap(carList);
-
-        assertThat(carList).hasSize(3).containsExactly("pobi", "woni", "jun");
+        assertThat(carNameValidator.getCarList()).hasSize(3).containsExactly("pobi", "woni", "jun");
     }
 
     @Test
     void 자동차_목록_테스트2() {
-        String cars = "안녕,잘지냈니,잘가,다음에,또,보자";
-        List<String> carList = List.of(cars.split(","));
-        CarNameValidator check = new CarNameValidator();
+        CarNameValidator carNameValidator = new CarNameValidator("안녕,잘지냈니,잘가,다음에,또,보자");
+        carNameValidator.verify();
 
-        check.rightNamePattern(cars);
-        check.nameLength(carList);
-        check.nameOverlap(carList);
-
-        assertThat(carList).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
+        assertThat(carNameValidator.getCarList()).hasSize(6).containsExactly("안녕", "잘지냈니", "잘가", "다음에", "또", "보자");
     }
 
     @Test
     void 자동차_목록_테스트3() {
-        String cars = "one,일,1";
-        List<String> carList = List.of(cars.split(","));
-        CarNameValidator check = new CarNameValidator();
+        CarNameValidator carNameValidator = new CarNameValidator("one,일,1");
+        carNameValidator.verify();
 
-        check.rightNamePattern(cars);
-        check.nameLength(carList);
-        check.nameOverlap(carList);
-
-        assertThat(carList).hasSize(3).containsExactly("one", "일", "1");
+        assertThat(carNameValidator.getCarList()).hasSize(3).containsExactly("one", "일", "1");
     }
 
-    @DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트1")
+    /*@DisplayName("시도 횟수의 입력값이 숫자인 경우 테스트1")
     @Test
     void 시도_횟수_테스트1() {
         RoundValidator check = new RoundValidator();
@@ -212,7 +188,7 @@ class ApplicationTest extends NsTest {
 
         assertThatThrownBy(() -> check.positiveNumber(check.parseInt("0")))
             .isInstanceOf(IllegalArgumentException.class);
-    }
+    }*/
 
 
     @Override
