@@ -10,6 +10,10 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public void printCarNameAndMoveDistance(final String carName, final String moveDistance) {
+        System.out.println(carName + " : " + moveDistance);
+    }
+
     public void printFinalWinners(final String delimitedWinners){
         System.out.println("최종 우승자 : " + delimitedWinners);
     }

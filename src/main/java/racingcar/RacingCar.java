@@ -5,16 +5,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCar {
 
     static HashSet<Car> cars = new HashSet<>();
     static List<String> winnerNames = new ArrayList<>();
+
     private final OutputView outputView;
+    private final InputView inputView;
 
     public RacingCar() {
         this.outputView = new OutputView();
+        this.inputView = new InputView();
     }
 
     public void startRacing() {
@@ -22,8 +26,7 @@ public class RacingCar {
         final String carNames = Console.readLine();
 
         outputView.printInputRacingTryCount();
-        final String tryCount = Console.readLine();
-        final int tryCountNumber = Integer.parseInt(tryCount);
+        final int tryCountNumber = inputView.readRacingTryCount();
 
         for (final String carName : carNames.split(",")) {
             if (carName.length() >= 5){
@@ -45,7 +48,7 @@ public class RacingCar {
                 if (randomInt >= 4) {
                     car.addDistance(randomInt);
                 }
-                System.out.println(car.getCarName() + " : " + moveDistance);
+                outputView.printCarNameAndMoveDistance(car.getCarName(), moveDistance);
             }
             System.out.println("");
         }
