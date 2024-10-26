@@ -3,9 +3,9 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.message.Message;
 
 public class Cars {
     private List<Car> carList;
@@ -46,7 +46,7 @@ public class Cars {
     public int getMaxDistance(){
         return carList.stream()
                 .max(Comparator.comparingInt(Car::getDistance))
-                .orElseThrow(() -> new IllegalArgumentException("자동차 리스트가 비어 있습니다."))
+                .orElseThrow(() -> new IllegalArgumentException(Message.emptyCarList.getMessage()))
                 .getDistance();
     }
 }

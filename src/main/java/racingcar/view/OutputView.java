@@ -1,28 +1,24 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.message.Message;
 import racingcar.model.Cars;
 
 public class OutputView {
-    private static final String NEW_LINE = "\n";
-    private static final String BAR = "-";
-    private static final String WINNER_ALERT = "최종 우승자 : ";
-
     public void printResult(Cars cars){
         StringBuilder stringBuilder = new StringBuilder();
 
         cars.getCars().forEach(car ->{
-            stringBuilder.append(car.getName()+" : ");
-            stringBuilder.append(BAR.repeat(car.getDistance()));
-            stringBuilder.append(NEW_LINE);
+            stringBuilder.append(car.getName()+Message.colon.getMessage());
+            stringBuilder.append(Message.bar.getMessage().repeat(car.getDistance()));
+            stringBuilder.append(Message.newLine.getMessage());
         });
 
         System.out.println(stringBuilder);
     }
 
     public void printWinner(List<String> winner){
-        System.out.print(WINNER_ALERT);
+        System.out.print(Message.winner.getMessage());
         System.out.print(winner.get(0));
 
         for(int i = 1; i < winner.size(); i++){

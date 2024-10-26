@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
-import racingcar.model.Cars;
 import racingcar.validation.CarNameValidation;
 import racingcar.validation.CountValidation;
 import racingcar.view.InputView;
