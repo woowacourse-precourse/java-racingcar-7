@@ -16,12 +16,12 @@ public class CarRacing {
     RandomRoadCreator roadCreator = new RandomRoadCreator();
     WinnerPrinter winnerPrinter = new WinnerPrinter();
 
-    public CarRacing(String cars, int step) {
-        this.step = step;
+    public CarRacing(String cars, String step) {
+        this.step = parseStep(step);
         this.carList = addCar(cars);
     }
 
-    private void racing(){
+    public void racing(){
 
         for(int i = 0; i < step; i++){
             for(Car car : carList){
@@ -41,7 +41,7 @@ public class CarRacing {
                 .collect(Collectors.toList()); // List<Car>로 수집
     }
 
-
-
-
+    private int parseStep(String step){
+        return Integer.parseInt(step);
+    }
 }
