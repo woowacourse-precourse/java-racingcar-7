@@ -21,7 +21,7 @@ public class OutputView {
 
     public void printCarPostion(ArrayList<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getCarName() + " : " + "-".repeat(car.getPostion()));
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }

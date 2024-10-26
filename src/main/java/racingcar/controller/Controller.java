@@ -34,7 +34,7 @@ public class Controller {
     public int isMaxPosition(ArrayList<Car> carList) {
         int maxPosition = 0;
         for (Car car : carList) {
-            maxPosition = Math.max(maxPosition, car.getPostion());
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
@@ -42,7 +42,7 @@ public class Controller {
     public ArrayList<String> isEqual(ArrayList<Car> carList, int maxPosition) {
         ArrayList<String> winnerList = new ArrayList<>();
         for (Car car : carList) {
-            if (maxPosition == car.getPostion()) {
+            if (maxPosition == car.getPosition()) {
                 winnerList.add(car.getCarName());
             }
         }
@@ -78,7 +78,7 @@ public class Controller {
 
     public static void processTurnOfNumber(ArrayList<Car> carList) {
         for (Car car : carList) {
-            car.movePostion();
+            car.movePosition();
         }
     }
 

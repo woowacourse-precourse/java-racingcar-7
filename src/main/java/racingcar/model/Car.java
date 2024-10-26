@@ -6,25 +6,25 @@ public class Car {
     private static final int START_POSITION = 0;
 
     private String carName;
-    private int postion;
+    private int position;
 
     public Car(String carName) {
         this.carName = carName;
-        this.postion = START_POSITION;
+        this.position = START_POSITION;
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public int getPostion() {
-        return this.postion;
+    public int getPosition() {
+        return this.position;
     }
 
-    public void movePostion() {
-        int randomNumber = generateRandomNumber();
-        if (isSatisfy(randomNumber)) {
-            this.postion++;
+
+    public void movePosition() {
+        if (isSatisfy(generateRandomNumber())) {
+            this.position++;
         }
     }
 
