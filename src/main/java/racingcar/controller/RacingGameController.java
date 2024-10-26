@@ -3,7 +3,7 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.controller.dto.RaceResultDTO;
+import racingcar.controller.dto.RaceRoundResultDTO;
 import racingcar.model.Car;
 import racingcar.model.DefaultRandomNumberGenerator;
 import racingcar.model.RacingGame;
@@ -33,7 +33,7 @@ public class RacingGameController {
         IntStream.range(0, tryCount).forEach(i -> {
             racingGame.tryRound();
             List<Car> cars = racingGame.getCurrentCarState();
-            outputView.printRoundResult(RaceResultDTO.from(cars));
+            outputView.printRoundResult(RaceRoundResultDTO.from(cars));
         });
     }
 
