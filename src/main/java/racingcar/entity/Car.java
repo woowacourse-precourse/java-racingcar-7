@@ -3,7 +3,7 @@ package racingcar.entity;
 public class Car {
 
     private final String name;
-    private final Road road;
+    private Road road;
 
     private Car(String name){
         this.name=name;
