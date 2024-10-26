@@ -19,24 +19,30 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
+        //given
         car = Car.createCar(CAR_NAME);
     }
 
     @Test
     @DisplayName("자동차 생성 시 초기 위치는 0이어야 한다.")
     void positionShouldBeZeroWhenCreateCar() {
+        //when
         String position = car.displayPosition();
 
+        //then
         assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER);
     }
 
     @RepeatedTest(10)
     @DisplayName("자동차가 이동할 조건이 충족되면 위치가 증가해야 한다.")
     void increasePositionWhenCarMoved() {
+        //given
         car.move();
 
+        //when
         String position = car.displayPosition();
 
+        //then
         if (!position.equals(CAR_NAME + EXECUTE_RESULT_DELIMITER)) {
             assertThat(position).isEqualTo(CAR_NAME + EXECUTE_RESULT_DELIMITER + CURRENT_CAR_POSITION);
         }
@@ -45,12 +51,15 @@ public class CarTest {
     @RepeatedTest(10)
     @DisplayName("자동차가 여러 번 이동하면 그에 따른 위치를 출력해야 한다.")
     void printPositionWhenCarHasMultipleMoves() {
+        //given
         for (int i = 0; i < MOVE_LENGTH; i++) {
             car.move();
         }
 
+        //when
         String actualPosition = car.displayPosition();
 
+        //then
         if (!actualPosition.equals(CAR_NAME + EXECUTE_RESULT_DELIMITER)) {
             assertThat(actualPosition.length())
                     .isGreaterThan(CAR_NAME.length() + MINIMUM_MOVE_LENGTH);
