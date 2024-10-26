@@ -6,6 +6,10 @@ import racingcar.view.RacingGameView;
 
 public class Application {
     public static void main(String[] args) {
-        new RacingGameController(new RandomNumberGenerator(), new RacingGameView()).start();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RacingGameView racingGameView = new RacingGameView();
+        RacingGameController racingGameController = new RacingGameController(randomNumberGenerator, racingGameView);
+
+        racingGameController.startGame();
     }
 }

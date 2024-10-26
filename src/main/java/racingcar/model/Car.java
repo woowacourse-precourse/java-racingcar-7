@@ -8,12 +8,8 @@ public class Car implements Comparable<Car> {
     public static final int MIN_MOVE_VALUE = 4;
 
     private final NumberGenerator numberGenerator;
-    private final String name;
+    public final String name;
     private int position;
-
-    public static Car of(NumberGenerator numberGenerator, String name) {
-        return new Car(numberGenerator, name);
-    }
 
     private Car(NumberGenerator numberGenerator, String name) {
         validateName(name);
@@ -28,15 +24,15 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public static Car of(NumberGenerator numberGenerator, String name) {
+        return new Car(numberGenerator, name);
+    }
+
     public void tryMove() {
         int randomNumber = numberGenerator.generate();
         if (randomNumber >= MIN_MOVE_VALUE) {
             position++;
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getPosition() {

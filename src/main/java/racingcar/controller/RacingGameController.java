@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Map;
 import racingcar.model.Racing;
 import racingcar.util.NumberGenerator;
 import racingcar.view.RacingGameView;
@@ -15,24 +14,22 @@ public class RacingGameController {
         this.racingGameView = racingGameView;
     }
 
-    public void start() {
-        List<String> carNames = racingGameView.getCarNames();
-        int attempt = racingGameView.getAttemptCount();
-        Racing racing = Racing.of(numberGenerator, attempt, carNames);
+    public void startGame() {
+        List<String> carNames = racingGameView.inputCarNames();
+        int attempt = racingGameView.inputAttempt();
+        Racing racing = Racing.of(numberGenerator, carNames, attempt);
 
-        racingGameView.printGameStartMessage();
         race(racing);
 
-        List<String> winnersNames = racing.getWinnersNames();
+        List<String> winnersNames = racing.winnersNames();
         racingGameView.printWinner(winnersNames);
     }
 
-
     private void race(Racing racing) {
-        while (!racing.isFinished()) {
+        racingGameView.printGameStartMessage();
+        while (!racing.isFinish()) {
             racing.race();
-            Map<String, Integer> status = racing.getStatus();
-            racingGameView.printRacingStatus(status);
+            racingGameView.printRacingStatus(racing.status());
         }
     }
 }
