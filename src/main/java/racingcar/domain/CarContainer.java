@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.util.RandomDigitGenerator;
 import racingcar.util.RandomGenerator;
 
@@ -27,7 +27,19 @@ public class CarContainer {
         return String.join("", currentCarResult);
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+    public String findWinnerCarNames() {
+        int maxPosition = findMaxPosition();
+
+        return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(Integer.MIN_VALUE);
     }
 }
