@@ -27,4 +27,7 @@ public class Car {
         }
     }
 
+    public void isMovable() {
+        move(Util.getRandom() >= 4);
+    }
 }

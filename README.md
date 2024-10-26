@@ -34,7 +34,7 @@
 - [x] move 메소드 구현
 - [x] increaseDistance, getDistance 메소드 구현
 - [x] getName 메소드 구현
-- [ ] isMovable 메소드 구현
+- [x] isMovable 메소드 구현
 
 ## Util Class
 
