@@ -1,13 +1,14 @@
 package racingcar.domain.car;
 
 public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
     private Integer position = 0;
     private final MovingStrategy movingStrategy;
 
     public Car(String carName, MovingStrategy movingStrategy) {
         validateCarName(carName);
-
         this.name = carName;
         this.movingStrategy = movingStrategy;
     }
@@ -19,7 +20,7 @@ public class Car {
         if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }
