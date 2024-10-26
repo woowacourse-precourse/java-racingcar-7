@@ -13,4 +13,5 @@ public class RacingOutputView {
         }
         System.out.println();
     }
+
 }

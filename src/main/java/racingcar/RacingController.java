@@ -52,6 +52,8 @@ public class RacingController {
                 cars.add(new Car(name, 0));
             }
             runRace(cars, RacingRounds);
+
+            MaxRace(cars);
         }catch (IllegalArgumentException e) {
             System.out.println("오류" + e.getMessage());
         }
@@ -62,6 +64,15 @@ public class RacingController {
                 car.canMove();
             }
             outputView.printStatus(cars);
+        }
+    }
+
+    private void MaxRace(List<Car> cars) {
+        int maxDistance = -1;
+        for (Car car : cars) {
+            if (car.getGoStop() > maxDistance) {
+                maxDistance = car.getGoStop();
+            }
         }
     }
 }
