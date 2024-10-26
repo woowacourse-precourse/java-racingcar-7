@@ -7,6 +7,8 @@ import java.util.List;
 import racingcar.validation.Validator;
 
 public class InputHandler {
+    private static final String DELIMITER = ",";
+
     List<String> carNames;
     int moveAttemptCount = 0;
 
@@ -16,7 +18,7 @@ public class InputHandler {
 
     public List<String> carNames() {
         String userInput = Console.readLine();
-        List<String> splitCarNames = Arrays.asList(userInput.split(","));
+        List<String> splitCarNames = Arrays.asList(userInput.split(DELIMITER));
         Validator.validateCarNames(splitCarNames);
         carNames.addAll(splitCarNames);
         return carNames;
