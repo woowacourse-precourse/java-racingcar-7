@@ -8,6 +8,9 @@ public class Validator {
         if(name.isEmpty()){
             throw new IllegalArgumentException("빈문자열입니다.");
         }
+        if (name.contains(" ")) {
+            throw new IllegalArgumentException("이름에 공백이 포함될 수 없습니다.");
+        }
     }
 
     public static void validateTryNumber(String tryNumber){
