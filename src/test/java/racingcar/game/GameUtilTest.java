@@ -172,12 +172,10 @@ class GameUtilTest {
             // 함수에선 여기서 리턴
         }
 
-        for (String winnerName : winnerNames) {
-            if (result.isEmpty()) {
-                result += winnerName;
-            } else {
-                result += winnerNames.toString().replaceAll("[\\[\\]]", "");
-            }
+        if (winnerNames.isEmpty()) {
+            result += winnerNames.getFirst();
+        } else {
+            result += winnerNames.toString().replaceAll("[\\[\\]]", "");
         }
 
 
