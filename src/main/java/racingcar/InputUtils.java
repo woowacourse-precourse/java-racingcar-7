@@ -10,18 +10,51 @@ public class InputUtils {
         List<Car> carList = new ArrayList<>();
 
         System.out.println(CAR_NAME_INPUT_MESSAGE);
-        String[] carNameList = Console.readLine().split(NAME_SEPARATOR);
+        String carNameInput = Console.readLine();
+        checkWithString(carNameInput);
+        String[] carNameList = carNameInput.split(NAME_SEPARATOR);
 
         for (String carName : carNameList) {
-            checkNameLength(carName.trim());
-            carList.add(new Car(carName.trim()));
+            checkWithWord(carName);
+            carList.add(new Car(carName));
         }
         return carList;
     }
 
+    private static void checkWithString(String carNameInput){
+        checkNoInput(carNameInput);
+        checkComma(carNameInput);
+    }
+
+    private static void checkWithWord(String carName){
+        checkNameLength(carName);
+        checkNameBlank(carName);
+    }
+
     private static void checkNameLength(String carName) {
         if (carName.length() > CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(NAME_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(NAME_INPUT_LENGTH_ERROR);
+        }
+    }
+
+    private static void checkNoInput(String carNameInput) {
+        if (carNameInput.trim().isEmpty()) {
+            throw new IllegalArgumentException(NAME_NO_INPUT_ERROR);
+        }
+    }
+
+    private static void checkNameBlank(String carNameInput) {
+        if (carNameInput.charAt(0) == ' '
+                || carNameInput.charAt(carNameInput.length()-1) == ' ') {
+            throw new IllegalArgumentException(NAME_INPUT_BLANK_ERROR);
+        }
+    }
+
+    private static void checkComma(String carNameInput) {
+        if (carNameInput.contains(",,")
+                || carNameInput.charAt(0) == NAME_SEPARATOR.charAt(0)
+                || carNameInput.charAt(carNameInput.length()-1) == NAME_SEPARATOR.charAt(0)) {
+            throw new IllegalArgumentException(NAME_INPUT_INVALID_COMMA);
         }
     }
 
