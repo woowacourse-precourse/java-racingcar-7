@@ -7,6 +7,7 @@ public class Application {
         InputView inputView = new InputView();
 
         inputView.getCarName();
+        inputView.getAttemptCount();
 
     }
 }
