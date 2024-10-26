@@ -1,4 +1,6 @@
-package racingcar;
+package View;
+
+import VO.CarVO;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class RaceView {
         return Integer.parseInt(readLine());
     }
 
-    public void raceState(List<CarVO> cars,int i){
+    public void raceState(List<CarVO> cars, int i){
         if(i==0){
             System.out.println("");
             System.out.println("실행 결과");

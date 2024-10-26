@@ -1,4 +1,6 @@
-package racingcar;
+package DAO;
+
+import VO.CarVO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
