@@ -14,4 +14,11 @@ public class Racing {
             if (canMove()) car.move();
         }
     }
+
+    public int compareMoveCount(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
+    }
 }
