@@ -28,8 +28,6 @@ public class GameService {
         printWinners(result, outputView);
     }
 
-
-
     private void printRoundResult(GameResult result, OutputView outputView) {
         outputView.printResultNoticeMessage();
         outputView.printRoundResult(result);
