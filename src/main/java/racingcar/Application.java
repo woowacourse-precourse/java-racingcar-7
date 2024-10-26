@@ -2,15 +2,16 @@ package racingcar;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
-
             String[] cars = getCars();
             int attempts = getAttempts();
             int[] racingNum = race(cars, attempts);
-            
+            printWinners(cars, racingNum);
     }   
+
     // 자동차 이름 입력받기
     private static String[] getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -72,5 +73,19 @@ public class Application {
             System.out.println();
         }
         System.out.println();
+    }
+
+    // 우승자 출력
+    private static void printWinners(String[] cars, int[] racingNum) {
+        int maxDistance = Arrays.stream(racingNum).max().orElse(-1);
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < cars.length; i++) {
+            if (racingNum[i] == maxDistance) {
+                winners.add(cars[i]);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
