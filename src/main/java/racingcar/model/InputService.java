@@ -11,7 +11,6 @@ public class InputService {
 
 
     public List<String> carNamesValidation(String carNames) {
-
         if (carNames.isEmpty()) {
             String request = InputView.request(carNames, InputView.CAR_NAME);
             carNamesValidation(request);
@@ -19,7 +18,7 @@ public class InputService {
 
         splitCarNames(carNames);
 
-        return this.carNameLengthCheck().removeNumber();
+        return this.carNameLengthCheck();
     }
 
 
@@ -28,7 +27,7 @@ public class InputService {
             return overflowCheck(parseInt(gameRounds));
         }
 
-        return gameRoundsRequest("");
+        return gameRoundsRequest();
     }
 
 
@@ -37,18 +36,12 @@ public class InputService {
     }
 
 
-    private InputService carNameLengthCheck() {
+    private List<String> carNameLengthCheck() {
         for (String carName : carNameList) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("이름이 5글자가 넘었습니다.");
             }
         }
-        return this;
-    }
-
-
-    private List<String> removeNumber() {
-        carNameList.removeIf(carName -> carName.matches("-?\\d+(\\.\\d+)?"));
         return carNameList;
     }
 
@@ -57,21 +50,21 @@ public class InputService {
         return Integer.parseInt(str);
     }
 
-
     private Boolean isAllNumeric(String gameRounds) {
         return gameRounds.matches("\\d+");
     }
 
 
-    private int gameRoundsRequest(String gameRounds) {
-        String request = InputView.request(gameRounds, "1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
+    private int gameRoundsRequest() {
+        String request = InputView.request("",
+                "1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
         return gameRoundsValidation(request);
     }
 
 
     private int overflowCheck(int gameRounds) {
         if (gameRounds < 1 || gameRounds > 5000) {
-            return gameRoundsRequest("");
+            return gameRoundsRequest();
         }
         return gameRounds;
     }
