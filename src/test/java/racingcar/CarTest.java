@@ -28,6 +28,12 @@ class CarTest {
     }
 
     @Test
+    void 자동차의_초기_위치는_0이다() {
+        Car yh = new Car("yh");
+        assertEquals(0, yh.currentLocation());
+    }
+
+    @Test
     void 자동차_이름이_5자를_초과하면_IllegalArgumentException이_발생한다() {
         assertThrows(IllegalArgumentException.class, () -> new Car("javaji"));
     }
