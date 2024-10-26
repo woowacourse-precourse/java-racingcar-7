@@ -6,17 +6,27 @@ import racingcar.model.Car;
 
 public class OutputView {
 
+    private static final String PROMPT1 = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String PROMPT2 = "시도할 횟수는 몇 회인가요?";
+    private static final String OUTPUT_HEADER  = "실행 결과";
+    private static final String WINNER_HEADER = "최종 우승자 : ";
+    private static Boolean check = false;
+
     public static void displayPrompt(int num) {
         if (num == 1) {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            System.out.println(PROMPT1);
         } else {
-            System.out.println("시도할 횟수는 몇 회인가요?");
+            System.out.println(PROMPT2);
         }
     }
 
     public static void displayRacing(List<Car> cars) {
         String result = "";
-        result += "실행 결과" + "\n";
+
+        if (!check) {
+            result += OUTPUT_HEADER + "\n";
+            check = true;
+        }
 
         for (Car car : cars) {
             result += car.getName() + " : " + "-".repeat(car.getPosition()) + "\n";
@@ -27,7 +37,7 @@ public class OutputView {
 
     public static void displayWinners(List<Car> winners) {
         String result = "";
-        result += "최종 우승자 : ";
+        result += WINNER_HEADER;
 
         if (winners.size() == 1) {
             result += winners.get(0).getName();
