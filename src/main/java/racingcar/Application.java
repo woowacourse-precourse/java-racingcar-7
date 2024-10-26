@@ -38,12 +38,12 @@ public class Application {
 
         Arrays.stream(racingCars)
                 .forEach(name -> {
-                        checkCarName(name);
-                        racingCarList.add(new RacingCar(name));
+                    checkCarName(name);
+                    racingCarList.add(new RacingCar(name));
                 });
 
         Set<String> hashCars = new HashSet<>(Arrays.asList(racingCars));
-        if(hashCars.size() != racingCarList.size()) {
+        if (hashCars.size() != racingCarList.size()) {
             throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
 
