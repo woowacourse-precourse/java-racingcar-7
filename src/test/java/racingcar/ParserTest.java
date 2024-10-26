@@ -19,5 +19,4 @@ class ParserTest {
         assertThat(parser.parseRepeatCount("15"))
             .isEqualTo(15);
     }
-
 }
