@@ -56,7 +56,7 @@
 ### Enum
 - [x] Separator
 ### Util
-- [ ] CarNameValidator
-- [ ] MoveCountValidator
+- [x] CarNameValidator
+- [x] MoveCountValidator
 - [x] ErrorMessage
 
