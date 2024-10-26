@@ -32,18 +32,9 @@ public class RacingCarCollection {
 
 
     private void validateCarName(String[] cars) {
-        validateCarNmaeBlank(cars);
         validateCarNameLength(cars);
         validateDuplicateName(cars);
         validateNotAllowedCharacter(cars);
-    }
-
-    private void validateCarNmaeBlank(String[] cars) {
-        for (String car : cars) {
-            if (car.matches(" ")) {
-                throw new IllegalArgumentException("[ERROR] : 자동차 이름에 공백은 포함하지 않습니다.");
-            }
-        }
     }
 
     private void validateNotAllowedCharacter(String[] cars) {
