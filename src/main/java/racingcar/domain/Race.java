@@ -12,19 +12,9 @@ public class Race {
     private final List<Car> cars;
     private final int tryCount;
 
-    public Race(List<Car> Cars, int tryCount) {
-        this.cars = new ArrayList<>();
+    public Race(List<Car> cars, int tryCount) {
+        this.cars = cars;
         this.tryCount = tryCount;
-    }
-
-    public int getTryCount() {
-        return this.tryCount;
-    }
-
-    public int getWinnerPosition(List<Car> cars) {
-        Car winner = Collections.max(cars, Comparator.comparingInt(car -> car.getPosition()));
-        int winnerPosition = winner.getPosition();
-        return winnerPosition;
     }
 
     public List<String> getWinners() {
@@ -53,6 +43,9 @@ public class Race {
         }
     }
 
-
-
+    private int getWinnerPosition(List<Car> cars) {
+        Car winner = Collections.max(cars, Comparator.comparingInt(car -> car.getPosition()));
+        int winnerPosition = winner.getPosition();
+        return winnerPosition;
+    }
 }
