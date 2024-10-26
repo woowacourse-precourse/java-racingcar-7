@@ -10,7 +10,7 @@ public class WootecoRule implements GameRule {
     }
 
     @Override
-    public boolean winCondition(int value1, int value2) {
-        return value1 >= value2;
+    public boolean winCondition(int carPosition, int maxPosition) {
+        return carPosition >= maxPosition;
     }
 }
