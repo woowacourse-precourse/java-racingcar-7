@@ -17,6 +17,7 @@ public class Racing {
     }
 
     public void race() {
+
         int count = 0;
         RacingRoundService racingRoundService = new RacingRoundService();
         OutputView outputView = new OutputView();
@@ -30,7 +31,9 @@ public class Racing {
         WinnerService winnerService = new WinnerService();
         List<String> winners = winnerService.judgeWinner(racingCars);
         outputView.printWinnerView(winners);
+
     }
 
+    //예외 메시지 출력하도록 기능 더하기
 
 }

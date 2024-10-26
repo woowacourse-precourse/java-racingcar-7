@@ -7,9 +7,6 @@ import racingcar.view.InputView;
 
 public class RacingController {
 
-    public RacingController() {
-    }
-
     public void run() {
         InputView inputView = new InputView();
         inputView.printInputView();
@@ -17,6 +14,7 @@ public class RacingController {
         InputService inputService = new InputService();
         Map<String, Integer> racingCars = inputService.splitAndSaveCarName(inputView.getCarNames());
         Integer racingTotalRound = inputView.getTotalRacingRound();
+
         Racing racing = new Racing(racingCars, racingTotalRound);
         racing.race();
     }
