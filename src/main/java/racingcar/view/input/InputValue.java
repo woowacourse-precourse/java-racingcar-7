@@ -4,8 +4,8 @@ import java.util.List;
 
 public class InputValue {
 
-    private List<String> carNames;
-    private int attemptCount;
+    private final List<String> carNames;
+    private final int attemptCount;
 
     public InputValue(List<String> carNames, int attemptCount) {
         this.carNames = carNames;
