@@ -16,10 +16,6 @@ public class Car {
         currentCarPosition.addPosition();
     }
 
-    public boolean isAtSameOrAheadOf(Integer otherCarPosition) {
-        return currentCarPosition.isGreaterThanOrEqualTo(otherCarPosition);
-    }
-
     public CarInfo getCarInfo() {
         return new CarInfo(carName, currentCarPosition);
     }
