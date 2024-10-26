@@ -1,7 +1,7 @@
 package racingcar;
 
+import static racingcar.ErrorMessage.EMPTY_NAME;
 import static racingcar.ErrorMessage.INVALID_CAR_NAME;
-import static racingcar.ErrorMessage.NO_NAME;
 import static racingcar.ErrorMessage.TOO_LONG_CAR_NAME;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -23,7 +23,7 @@ public class Car {
 
     private static void validateName(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException(NO_NAME.getMessage());
+            throw new IllegalArgumentException(EMPTY_NAME.getMessage());
         }
 
         if (!name.matches(VALID_NAME_REGEX)) {
