@@ -11,8 +11,9 @@ import racingcar.racing.view.OutputView;
 public class RacingGame {
     private final RacingGameConcreteFactory racingGameFactory;
     private Game game;
-    private static final String INVALID_ATTEMPT_MESSAGE = "시도할 횟수는 양의 정수로 입력해주세요.";
-    private static final String INVALID_CAR_LENGTH_MESSAGE = "자동차의 이름은 5글자 이하만 가능합니다.";
+    private static final String INVALID_ATTEMPT_EXCEPTION_MESSAGE = "시도할 횟수는 양의 정수로 입력해주세요.";
+    private static final String INVALID_CAR_LENGTH_EXCEPTION_MESSAGE = "자동차의 이름은 5글자 이하만 가능합니다.";
+    private static final String EMPTY_CAR_EXCEPTION_MESSAGE = "자동차를 하나 이상 입력해주세요.";
 
     public RacingGame(RacingGameConcreteFactory racingGameFactory) {
         this.racingGameFactory = racingGameFactory;
@@ -40,11 +41,11 @@ public class RacingGame {
         try {
             int attemptNumber = Integer.parseInt(inputAttemptNumber);
             if (!InputValidator.validateAttemptNumber(attemptNumber)) {
-                throw new IllegalArgumentException(INVALID_ATTEMPT_MESSAGE);
+                throw new IllegalArgumentException(INVALID_ATTEMPT_EXCEPTION_MESSAGE);
             }
             return attemptNumber;
         } catch (Exception e) {
-            throw new IllegalArgumentException(INVALID_ATTEMPT_MESSAGE);
+            throw new IllegalArgumentException(INVALID_ATTEMPT_EXCEPTION_MESSAGE);
         }
     }
 
@@ -54,9 +55,11 @@ public class RacingGame {
         String inputCar = InputView.inputConsole(false);
         List<String> carNames = InputParser.parseCarNames(inputCar);
         if (!InputValidator.validateCarNameLength(carNames)) {
-            throw new IllegalArgumentException(INVALID_CAR_LENGTH_MESSAGE);
+            throw new IllegalArgumentException(INVALID_CAR_LENGTH_EXCEPTION_MESSAGE);
         }
-        // todo: carNames가 비었을 때 예외처리
+        if (carNames.isEmpty() || carNames == null) {
+            throw new IllegalArgumentException(EMPTY_CAR_EXCEPTION_MESSAGE);
+        }
         return carNames;
     }
 }
