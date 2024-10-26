@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * trim
  */
-public class CarsRegistrar {
+public class CarsFactory {
 
     public Cars registerCars(String input) {
         Set<Car> cars = new HashSet<>();
