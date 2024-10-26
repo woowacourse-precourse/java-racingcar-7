@@ -7,7 +7,7 @@ import java.util.Map;
 import racingcar.validator.Validator;
 
 public class Cars {
-    private static Map<String,String> cars = new HashMap<>();
+    static Map<String,String> cars = new HashMap<>();
 
     public static void register(List<String> names){
         for(String name : names){
