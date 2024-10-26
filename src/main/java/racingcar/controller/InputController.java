@@ -1,29 +1,17 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
 import racingcar.domain.CarRacing;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.RoundValidator;
 import racingcar.view.InputView;
 
-import java.util.List;
-
 public class InputController {
 
-    public static final String DELIMITER = ",";
-
     public static CarRacing setCars() {
-        String cars = InputView.inputCar();
+        CarNameValidator validator = new CarNameValidator(InputView.inputCar());
+        validator.verify();
 
-        List<String> carList = List.of(cars.split(DELIMITER));
-
-        CarNameValidator check = new CarNameValidator();
-
-        check.rightNamePattern(cars);
-        check.nameLength(carList);
-        check.nameOverlap(carList);
-
-        return new CarRacing(carList);
+        return new CarRacing(validator.getCarList());
     }
 
     public static int setRound() {
