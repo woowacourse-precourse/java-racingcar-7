@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import racingcar.validator.Validator;
 
 public class Cars {
     private static Map<String,String> cars = new HashMap<>();
 
     public static void register(List<String> names){
         for(String name : names){
+            Validator.validateCarName(name);
             cars.put(name,"");
         }
     }
