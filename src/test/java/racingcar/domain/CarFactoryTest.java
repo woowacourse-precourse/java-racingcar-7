@@ -16,7 +16,7 @@ public class CarFactoryTest {
 
     @Test
     void Cars_생성() {
-        String[] carNames = new String[]{"pobi", "nana"};
+        List<String> carNames = List.of("pobi", "nana");
         List<Car> carList = List.of(new Car("pobi"), new Car("nana"));
         assertThat(carFactory.createCars(carNames)).isEqualTo(new Cars(carList));
     }

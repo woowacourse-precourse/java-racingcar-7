@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CarFactory {
@@ -17,8 +16,8 @@ public class CarFactory {
         return carFactory;
     }
 
-    public Cars createCars(String[] carNames) {
-        List<Car> carList = Arrays.stream(carNames)
+    public Cars createCars(List<String> carNames) {
+        List<Car> carList = carNames.stream()
                 .map(Car::new)
                 .toList();
 
