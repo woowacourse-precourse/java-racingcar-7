@@ -1,9 +1,9 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.exception.TotalRacingRoundException;
 import racingcar.service.Racing;
 import racingcar.strategy.ModeType;
-import racingcar.validation.RacingRoundValidation;
 import racingcar.view.OutputView;
 import racingcar.view.PrintMessage;
 
@@ -21,14 +21,14 @@ public class RacingController {
     }
 
     public void setTotalRacingRound(String totalRacingRound) {
-        if (RacingRoundValidation.validateRacingRoundType(totalRacingRound)) {
-            throw new IllegalArgumentException("ERROR] 자동차 이동 시도 횟수는 숫자로만 이루어져야 합니다.");
-        }
+        this.totalRacingRound = validate(totalRacingRound);
+    }
+
+    private Integer validate(String totalRacingRound) {
+        TotalRacingRoundException.racingRoundTypeException(totalRacingRound);
         Integer racingRound = Integer.parseInt(totalRacingRound);
-        if (RacingRoundValidation.validateRacingRoundNumberRange(racingRound)) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이동 시도 횟수는 1이상 양수여야 합니다.");
-        }
-        this.totalRacingRound = racingRound;
+        TotalRacingRoundException.racingRoundNumberRangeException(racingRound);
+        return racingRound;
     }
 
     public void startRacing() {
