@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import racingcar.car.ICar;
 import racingcar.display.IOutputDisplay;
@@ -45,24 +45,15 @@ public class CarRacingGame {
     }
 
     private List<ICar> findWinner() {
-        int maxPosition = 0;
-        List<ICar> winnerList = new ArrayList<>();
-
-        // TODO: 자동차의 개수가 많아진다면 정렬을 이용해 우승자를 찾는게 나을 것 같음.
-        // 가장 많이 전진한 차의 위치 찾기
-        for (ICar car : carList) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
-            }
-        }
 
         // 우승자 찾기
-        for (ICar car : carList) {
-            if (maxPosition <= car.getPosition()) {
-                winnerList.add(car);
-            }
-        }
+        ICar winnerCar = carList.stream()
+                .max(Comparator.comparingInt(ICar::getPosition))
+                .orElseThrow(() -> new NullPointerException("우승자를 찾을 수 없음"));
 
-        return winnerList;
+        // 공동 우승자 찾기
+        return carList.stream()
+                .filter(car -> winnerCar.getPosition() == car.getPosition())
+                .toList();
     }
 }
