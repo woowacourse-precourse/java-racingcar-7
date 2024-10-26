@@ -18,10 +18,6 @@ public class GameController {
         validateTryCount(tryCount);
     }
 
-    private Integer generateRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
     private void validateTryCount(int tryCount) {
         if (tryCount < 1) {
             throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
