@@ -1,10 +1,12 @@
 package racingcar;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
-            int max = -999;
+            int max = -999,winner_cnt=0;
+            ArrayList<String> winner = new ArrayList<>();
 
             //경주할 자동차 이름 받기
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -18,7 +20,6 @@ public class Application {
             //쉼표(,) 구분자 이용해서 배열에 넣기기
             String[] cars = cars_str.split(",");
             int[] racing_num = new int[cars.length];
-            String[] winner = new String[cars.length];
 
             //0~9 사이에 랜덤한 숫자 구하기
             Random random = new Random();   
@@ -47,12 +48,18 @@ public class Application {
                 if (racing_num[i] > max){
                     max = racing_num[i];
                 }
-            }
+            }   
             // 최종 우승자 선정하기
             for (int i=0; i<cars.length; i++){
                 if (racing_num[i] == max){
-                    winner[i] = cars[i];
+                    winner.add(cars[i]);
+                    winner_cnt += 1;
                 }
             }
+
+            // 최종 우승자 출력하기
+            String winner_str = String.join(", ", winner);
+            System.out.println("최중 우승자 : " + winner_str);
+            
     }   
 }
