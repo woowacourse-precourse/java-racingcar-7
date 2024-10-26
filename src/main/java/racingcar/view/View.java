@@ -17,5 +17,9 @@ public class View {
 
     }
 
+    public static void printlnRaceResult() {
+        System.out.println("실행 결과");
+    }
+
 
 }

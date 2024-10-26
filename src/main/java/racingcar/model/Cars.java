@@ -22,6 +22,15 @@ public class Cars {
         return new Cars(carList);
     }
 
+    public void moveCars() {
+        for (Car car : carList) {
+            car.move();
+
+        }
+
+    }
+
+
     public List<Car> getCarList() {
         return carList;
     }

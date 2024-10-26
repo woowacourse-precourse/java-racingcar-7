@@ -8,7 +8,8 @@ public class Controller {
 
         Cars cars = initRaceCar();
         int tryCount = View.displayTryCountInputPrompt();
-        System.out.println(tryCount);
+
+        startRace(cars, tryCount);
 
 
     }
@@ -18,6 +19,15 @@ public class Controller {
         String CarNamesInput = View.displayCarNameInputPrompt();
         return Cars.createCarList(CarNamesInput);
 
+
+    }
+
+    private void startRace(Cars cars, int tryCount) {
+        View.printlnRaceResult();
+        for (int count = 0; count < tryCount; count++) {
+            cars.moveCars();
+
+        }
 
     }
 
