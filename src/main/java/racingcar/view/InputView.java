@@ -2,7 +2,9 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputView {
     public List<String> readNameList() {
@@ -13,9 +15,13 @@ public class InputView {
         }
 
         List<String> nameList = List.of(input.split(","));
-        return nameList.stream()
+        List<String> result = nameList.stream()
                 .map(String::trim)
                 .toList();
+
+        checkDuplicate(result);
+
+        return result;
     }
 
     public int readCount() {
@@ -33,6 +39,13 @@ public class InputView {
             return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수가 입력되지 않았습니다.");
+        }
+    }
+
+    private void checkDuplicate(List<String> nameList) {
+        Set<String> nameSet = new HashSet<>(nameList);
+        if (nameSet.size() != nameList.size()) {
+            throw new IllegalArgumentException("자동차 이름을 중복해서 입력할 수 없습니다.");
         }
     }
 }
