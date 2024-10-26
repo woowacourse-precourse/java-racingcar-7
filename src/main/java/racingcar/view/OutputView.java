@@ -20,6 +20,13 @@ public class OutputView {
                 .forEach(System.out::println);
     }
 
+    public void printResult() {
+        List<Car> winners = cars.findWinners();
+        String formattedString = String.join(", ", winners.stream().map(Car::getName).toList());
+
+        System.out.printf((RESULT_FORMAT) + "%n", formattedString);
+    }
+
     private String makeDashLine(int position) {
         return "-".repeat(position);
     }
