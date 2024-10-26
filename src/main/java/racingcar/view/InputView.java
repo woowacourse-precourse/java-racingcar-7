@@ -6,11 +6,15 @@ import java.util.List;
 
 public class InputView {
 
+    private final int limitNumber = 6;
+    private final String splitString = ",";
+    private final int startNum = 0;
+
     public List<String> inputName(){
         String input = Console.readLine();
-        String[] inputs = input.split(",");
+        String[] inputs = input.split(splitString);
 
-        for(int i = 0; i < inputs.length; i++){
+        for(int i = startNum; i < inputs.length; i++){
             wrongInput(inputs[i]);
         }
 
@@ -40,7 +44,7 @@ public class InputView {
     }
 
     private void wrongInput(String input){
-        if(input.length() >= 6)
+        if(input.length() >= limitNumber)
             throw new IllegalArgumentException();
     }
 
