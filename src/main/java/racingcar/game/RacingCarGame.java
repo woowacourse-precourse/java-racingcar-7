@@ -13,10 +13,10 @@ public class RacingCarGame {
     private final InputHandler inputHandler = new InputHandler();
 
     public void race() {
-        outputHandler.showCarNamesNavigateMessage();
+        outputHandler.showCarInputMessage();
         RacingCars racingCars = inputHandler.getCarNamesFromUser();
 
-        outputHandler.showAttemptCountNavigateMessage();
+        outputHandler.showAttemptCountInputMessage();
         AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();
 
         displayAccumulateForEachAttempt(attemptCount, racingCars);
@@ -30,7 +30,7 @@ public class RacingCarGame {
         while (attemptCount.isRemain()) {
             racingCars.race();
             List<RaceSnapshot> snapShots = racingCars.getCurrentSnapshots();
-            outputHandler.showCurrentAccumulation(snapShots);
+            outputHandler.showCurrentRaceSnapshot(snapShots);
             attemptCount.decrease();
         }
     }

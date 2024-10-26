@@ -12,15 +12,15 @@ public class OutputHandler {
     private static final String WINNER_DELIMITER = ", ";
     private static final String PROGRESS_SIGN = "-";
 
-    public void showCarNamesNavigateMessage() {
+    public void showCarInputMessage() {
         System.out.println(CAR_NAMES_NAVIGATE_MESSAGE);
     }
 
-    public void showAttemptCountNavigateMessage() {
+    public void showAttemptCountInputMessage() {
         System.out.println(ATTEMPT_COUNT_NAVIGATE_MESSAGE);
     }
 
-    public void showCurrentAccumulation(List<RaceSnapshot> snapShots) {
+    public void showCurrentRaceSnapshot(List<RaceSnapshot> snapShots) {
         snapShots.stream()
                 .map(this::formatSnapshot)
                 .forEach(System.out::println);
