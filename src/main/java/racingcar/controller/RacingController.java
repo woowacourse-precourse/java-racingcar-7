@@ -15,23 +15,26 @@ public class RacingController {
     }
 
     public void startRacingGame(){
-        String carNames = getCarNames();
-        String tryCountInString = getTryCount();
-        Integer tryCount = racingGameService.convertTryCountToInt(tryCountInString);
+        try {
+            String carNames = getCarNames();
+            String tryCountInString = getTryCount();
+            Integer tryCount = racingGameService.convertTryCountToInt(tryCountInString);
 
-        List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames, tryCount);
+            List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames, tryCount);
 
-        OutputView.printResultMessage();
+            OutputView.printResultMessage();
 
-        for (int i = 0; i < tryCount; i++){
-            moveRacingCars(racingCars);
-            OutputView.printGame(racingCars);
+            for (int i = 0; i < tryCount; i++){
+                moveRacingCars(racingCars);
+                OutputView.printGame(racingCars);
+            }
+
+            List<RacingCar> winners = racingGameService.getWinners(racingCars);
+
+            OutputView.printWinners(winners);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
-
-        List<RacingCar> winners = racingGameService.getWinners(racingCars);
-        OutputView.printFinalResultMessage();
-
-        OutputView.printWinners(winners);
     }
 
     private void moveRacingCars(List<RacingCar> racingCars) {

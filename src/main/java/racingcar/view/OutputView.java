@@ -26,15 +26,12 @@ public class OutputView {
             }
         }
 
-        System.out.println("최종 우승자 : " + winnerNames);
+        System.out.println(FINAL_RESULT_MESSAGE + winnerNames);
     }
 
     public static void printResultMessage(){
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printFinalResultMessage(){
-        System.out.println(FINAL_RESULT_MESSAGE);
-    }
 }
 
