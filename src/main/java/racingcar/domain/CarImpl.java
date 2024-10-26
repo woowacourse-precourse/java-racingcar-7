@@ -24,4 +24,8 @@ public class CarImpl implements Car{
     public void run() {
         this.score += 1;
     }
+
+    public String toScoreSymbol() {
+        return "-".repeat(this.getScore());
+    }
 }
