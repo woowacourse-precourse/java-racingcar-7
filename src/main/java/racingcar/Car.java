@@ -11,5 +11,6 @@ public class Car {
 
     public void increaseMoveCount() { moveCount++; }
 
+    public String getName() { return name; }
     public int getMoveCount() { return moveCount; }
 }

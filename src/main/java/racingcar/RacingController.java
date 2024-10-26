@@ -14,18 +14,21 @@ public class RacingController {
     private static void loopForEachCar() {
         ArrayList<Car> cars = Data.getCars();
 
-        for (int turn = 0; turn < Data.getCarCount(); turn++) {
+        for (Car curCar : cars) {
             int randomNum = NumberMaker.makeRandomNumber();
-            applyNumberToCar(randomNum, cars.get(turn));
+            applyNumberToCar(randomNum, curCar);
 
-            System.out.println("turn: " + turn);
             System.out.println("random number: " + randomNum);
-            System.out.println("move count: " + cars.get(turn).getMoveCount());
+            System.out.println("move count: " + curCar.getMoveCount());
+
+            Printer.printRaceResult(curCar);
         }
+        System.out.print("\n");
     }
 
     private static void applyNumberToCar(int randomNumber, Car curCar) {
-        if (randomNumber <= 4)
+        if (randomNumber >= 4) {
             curCar.increaseMoveCount();
+        }
     }
 }
