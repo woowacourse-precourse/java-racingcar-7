@@ -1,9 +1,11 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class TryCount {
     private static final String IS_NOT_TRY_COUNT = "유효한 시도횟수가 아닙니다.";
     private final static String NOT_VALIDATE_NUMBER = "유효하지 않은 숫자 형식입니다.";
-    private final int tryCount;
+    private int tryCount;
 
     public TryCount(String inputTryCount) {
         this(convertToInt(inputTryCount));
@@ -29,5 +31,28 @@ public class TryCount {
         }
     }
 
+    public int getTryCount() {
+        return tryCount;
+    }
 
+    public void decrease() {
+        this.tryCount--;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TryCount tryCount = (TryCount) o;
+        return Objects.equals(this.tryCount, tryCount.tryCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tryCount);
+    }
 }
