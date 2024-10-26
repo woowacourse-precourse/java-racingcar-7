@@ -28,25 +28,21 @@ public class RacingController {
     }
 
     public void run() {
-        /*
-         * 상수 데이터 출력
-         */
-        outputView.askCarName();
-        /*
-         * 자동차 이름 입력 받기
-         */
-        String carNames = inputView.askCarName();
-        racingcarNameValidate.isBlank(carNames);
-        carNames = stringReplacer.removeSpaces(carNames);
-        /*
-         * 구분자 기분으로 문자열 리스트로 변환
-         */
-        List<String> carList = stringSplitter.split(carNames);
-        racingcarNameValidate.isMoreThanFiveLetters(carList);
-        racingcarNameValidate.isDuplicate(carList);
-        /*
-         * Racingcar 객체를 Racingcars 객체 리스트에 저장
-         */
-        racingService.saveCarName(carList);
+
+        outputView.askCarName();//상수 데이터 출력
+
+        String carNames = inputView.askCarName();//자동차 이름 입력
+
+        racingcarNameValidate.isBlank(carNames);//Null 및 공백 입력 검증
+
+        carNames = stringReplacer.removeSpaces(carNames);//문자열 내부 공백 제거
+
+        List<String> carList = stringSplitter.split(carNames);//구분자 기준으로 문자열 리스트 반환
+
+        racingcarNameValidate.isMoreThanFiveLetters(carList);//5글자 초과 검증
+
+        racingcarNameValidate.isDuplicate(carList);//중복 입력 검증
+
+        racingService.saveCarName(carList);//검증을 마친 자동차 이름 리스트 저장
     }
 }
