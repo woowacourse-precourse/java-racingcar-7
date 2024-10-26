@@ -10,7 +10,7 @@ public class InputValidator {
             throw new IllegalArgumentException("시도할 횟수는 양의 정수만 입력할 수 있습니다.");
         }
     }
-    
+
     public static void validateNullOrEmpty(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("빈 값을 입력할 수 없습니다.");

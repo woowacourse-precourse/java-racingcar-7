@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class RoundCount {
-    private static final int ENDCOUNT = 0;
+    private static final int END_COUNT = 0;
     private int count;
 
     public RoundCount(int count) {
@@ -13,6 +13,6 @@ public class RoundCount {
     }
 
     public boolean isEnd() {
-        return count == ENDCOUNT;
+        return count == END_COUNT;
     }
 }

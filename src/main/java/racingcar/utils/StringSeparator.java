@@ -1,10 +1,10 @@
 package racingcar.utils;
 
 public class StringSeparator {
-    private static final String DELEMETER = ",";
+    private static final String DELIMITER = ",";
 
     public static String[] separate(String text) {
-        return text.split(DELEMETER, -1);
+        return text.split(DELIMITER, -1);
     }
 
 }

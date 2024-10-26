@@ -3,8 +3,11 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberGenerator implements RandomGenerator {
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 0;
+
     @Override
     public int generate() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
     }
 }

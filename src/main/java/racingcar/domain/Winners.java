@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
+    private final static String WINNER_NAME_DELIMITER = ", ";
     private final List<Car> winnerList;
 
     public Winners(List<Car> winnerList) {
@@ -17,6 +18,6 @@ public class Winners {
         }
         return winnerList.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(WINNER_NAME_DELIMITER));
     }
 }
