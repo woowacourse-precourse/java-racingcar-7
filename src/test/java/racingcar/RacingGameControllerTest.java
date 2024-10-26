@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class RacingGameTest {
+class RacingGameControllerTest {
     private Cars cars;
 
     @BeforeEach

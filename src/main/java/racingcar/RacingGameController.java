@@ -5,19 +5,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.Arrays;
 import java.util.List;
 
-public class RacingGame {
+public class RacingGameController {
     public void run() {
         String carNames = inputCarNames();
-        System.out.println(carNames);
-
-        String inputTryCount = inputTryCount();
-        TryCountDto tryCountDto = new TryCountDto(inputTryCount);
-
-        int count = Integer.parseInt(tryCountDto.input());
-
-        TryCount tryCount = TryCount.from(count);
-
-        System.out.println(tryCount);
 
         Cars cars = new Cars();
 
@@ -26,6 +16,16 @@ public class RacingGame {
         cars.registerAll(names);
 
         System.out.println(cars);
+
+        String inputTryCount = inputTryCount();
+
+        TryCountDto tryCountDto = new TryCountDto(inputTryCount);
+
+        int count = Integer.parseInt(tryCountDto.input());
+
+        TryCount tryCount = TryCount.from(count);
+
+        System.out.println(tryCount);
     }
 
     public String inputCarNames() {
