@@ -22,6 +22,10 @@ public class CarPlayer {
                 >= Constant.RANDOM_NUMBER_FOR_MOVE;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

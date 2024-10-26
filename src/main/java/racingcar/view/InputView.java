@@ -20,11 +20,10 @@ public class InputView {
         if(inputStr == null) {
             return null;
         }
-        ArrayList<String> carNames = new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
-        return carNames;
+        return new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
     }
 
-    public ArrayList<String> getPlayers(){
+    public ArrayList<String> getPlayersList(){
         return parseCarNames(players);
     }
 

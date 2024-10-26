@@ -18,10 +18,18 @@ public class RacingGameController {
     }
 
     private void setVariables() {
-        if(inputView.getPlayers() != null) {
-            playerCount = inputView.getPlayers().size();
+        if(inputView.getPlayersList() != null) {
+            playerCount = inputView.getPlayersList().size();
         }
         roundCount = inputView.getTrial();
+    }
+
+    private void setCarPlayersList() {
+        for(int i=0; i<playerCount; i++) {
+            CarPlayer carPlayer = new CarPlayer();
+            carPlayer.setName(inputView.getPlayersList().get(i));
+            carPlayers.add(carPlayer);
+        }
     }
 
     private void moveCarPlayers() {
@@ -31,7 +39,7 @@ public class RacingGameController {
     public void start() {
         inputView.inputGameInfo();
         setVariables();
-        moveCarPlayers();
+        setCarPlayersList();
     }
 
 }
