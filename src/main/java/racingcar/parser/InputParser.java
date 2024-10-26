@@ -43,7 +43,9 @@ public class InputParser {
     }
 
     public int parseAttemptCount(String input) {
-        inputValidator.validateIsEmpty(input);
-        return 0;
+        inputValidator.validateAttemptCount(input);
+        int attemptCount = Integer.parseInt(input);
+
+        return attemptCount;
     }
 }
