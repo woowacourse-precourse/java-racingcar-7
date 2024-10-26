@@ -1,21 +1,29 @@
 package racingcar.model;
 
-public class Car implements Comparable{
+public class Car implements Comparable {
 
+    public static final int CAR_NAME_LENGTH_LIMIT = 5;
     private Long mileage = 0L;
 
     private String name;
 
     public Car(String name) {
-        this.name = name;
+        if (validate(name)) {
+            this.name = name;
+        }
     }
 
     public Car(String name, Long mileage) {
-        this.name = name;
-        this.mileage = mileage;
+        if (validate(name)) {
+            this.name = name;
+            this.mileage = mileage;
+        }
     }
 
-    public boolean validate(String name) {
+    private boolean validate(String name) {
+        if (name.isEmpty() || name.length() > CAR_NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException();
+        }
         return true;
     }
 
