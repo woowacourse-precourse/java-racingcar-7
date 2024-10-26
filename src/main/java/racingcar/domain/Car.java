@@ -17,7 +17,7 @@ public class Car {
         return name;
     }
 
-    public String getProgress() {
+    public String getProgressResult() {
         return progress.getValue();
     }
 
