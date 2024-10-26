@@ -35,4 +35,22 @@ public class Cars {
         return carList.size();
     }
 
+    public List<String> getCarsName(){
+        List<String> carsName = new ArrayList<>();
+        for(int i = startIndex; i < carList.size(); i++){
+            carsName.add(carList.get(i).getName());
+        }
+
+        return carsName;
+    }
+
+    public List<Integer> getCarsPosition(){
+        List<Integer> carsPosition = new ArrayList<>();
+        for(int i = startIndex; i < carList.size(); i++){
+            carsPosition.add(carList.get(i).getPosition());
+        }
+
+        return carsPosition;
+    }
+
 }
