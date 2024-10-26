@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +9,12 @@ public class CarService {
 
 
     public static List<Car> convertToCarList(String[] carNames) {
-        return Arrays.stream(carNames)
+
+        List<Car> participants = Arrays.stream(carNames)
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList());
+
+        return participants;
     }
 }
