@@ -71,13 +71,7 @@ public class Car {
     }
 
     private String moveCountToHyphen() {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < moveCount; i++) {
-            sb.append("-");
-        }
-
-        return sb.toString();
+        return "-".repeat(moveCount);
     }
 
     private void printStatus(String moveStatus) {
