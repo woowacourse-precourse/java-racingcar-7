@@ -23,6 +23,10 @@ public class RacingCarController {
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             throw e;
+        }catch(Exception e){
+            System.out.println("[ERROR] 예상하지 못한 오류가 났습니다");
+            e.getStackTrace();
+            throw e;
         }
     }
 
