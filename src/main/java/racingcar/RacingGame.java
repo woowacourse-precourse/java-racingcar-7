@@ -4,12 +4,12 @@ public class RacingGame {
     private final RacingInputView inputView;
     private final RacingOutputView outputView;
 
-    RacingGame(RacingInputView inputView, RacingOutputView outputView) {
+    public RacingGame(RacingInputView inputView, RacingOutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
-    void play() {
+    public void play() {
         String carNamesInput = inputView.getCarNamesInput();
         CompeteCars competeCars = new CompeteCars(carNamesInput);
 
