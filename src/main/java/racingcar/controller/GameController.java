@@ -17,17 +17,14 @@ public class GameController {
     }
 
     public void runFullGame() {
-        //입력 받기 (나중에 한 메서드로 묶을 것)
         Map<String, Integer> carStepsMap = gameModel.getCarMap(gameView.input.carName().split(","));
         int round = gameModel.getRound(gameView.input.gameRound());
 
-        //로직 실행
         System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
             gameView.output.gameResult(startGame(carStepsMap));
         }
 
-        //우승자 출력 받기
         List<String> winnerList = gameModel.getWinner(carStepsMap);
         gameView.output.winner(winnerList);
     }
@@ -40,6 +37,4 @@ public class GameController {
         }
         return carMap;
     }
-
-
 }
