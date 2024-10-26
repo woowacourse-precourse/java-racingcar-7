@@ -1,7 +1,7 @@
 package racingcar.config;
 
 import racingcar.controller.RacingGameController;
-import racingcar.parser.InputParser;
+import racingcar.service.CarSetupService;
 import racingcar.service.RacingGameService;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
@@ -9,7 +9,7 @@ import racingcar.view.OutputView;
 
 public class AppConfig {
     public RacingGameController racingGameController() {
-        return new RacingGameController(racingGameService(), inputView(), outputView(), inputParser());
+        return new RacingGameController(racingGameService(), inputView(), outputView(), carSetupService());
     }
 
     private RacingGameService racingGameService() {
@@ -28,8 +28,8 @@ public class AppConfig {
         return new InputValidator();
     }
 
-    private InputParser inputParser() {
-        return new InputParser(inputValidator());
+    private CarSetupService carSetupService() {
+        return new CarSetupService(inputValidator());
     }
 }
 

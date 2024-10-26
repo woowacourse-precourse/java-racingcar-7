@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CarNameValidatorTest {
 
-
     InputValidator inputValidator = new InputValidator();
 
     @Test
@@ -18,7 +17,6 @@ public class CarNameValidatorTest {
     void testCarNameIsEmpty() {
         //given
         String emptyInput = "";
-
         //when & then
         assertThrows(IllegalArgumentException.class, () -> {
             inputValidator.validateIsEmpty(emptyInput);
@@ -40,10 +38,7 @@ public class CarNameValidatorTest {
         // When
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
                 () -> inputValidator.validateCarNameLength(input));
-
         // Then
         assertEquals("자동차 이름은 6자를 초과할 수 없습니다.", thrown.getMessage());
     }
-
-
 }

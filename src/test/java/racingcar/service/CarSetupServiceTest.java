@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,15 +12,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InputParserTest {
+public class CarSetupServiceTest {
 
-    private InputParser inputParser;
+    private CarSetupService carSetupService;
     private InputValidator inputValidator;
 
     @BeforeEach
     public void setUp() {
         inputValidator = new InputValidator();
-        inputParser = new InputParser(inputValidator);
+        carSetupService = new CarSetupService(inputValidator);
     }
 
     @ParameterizedTest
@@ -29,7 +29,7 @@ public class InputParserTest {
     public void testDuplicateCarName(String input) {
         // When
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-                () -> inputParser.parseCarNames(input));
+                () -> carSetupService.parseCarNames(input));
         // Then
         assertEquals("중복된 자동차 이름이 있습니다", thrown.getMessage());
     }
@@ -39,7 +39,7 @@ public class InputParserTest {
     @DisplayName("자동차 이름이 중복되지 않으면 정상 통과")
     public void testUniqueCarName(String input) {
         // When & then
-        assertDoesNotThrow(() -> inputParser.parseCarNames(input));
+        assertDoesNotThrow(() -> carSetupService.parseCarNames(input));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class InputParserTest {
         String input = "YOON,WOONG,CHAN";
 
         // when
-        List<Car> cars = inputParser.parseCarNames(input);
+        List<Car> cars = carSetupService.parseCarNames(input);
 
         // then
         assertEquals(3, cars.size());

@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.service;
 
 import racingcar.domain.car.Car;
 import racingcar.exception.ErrorMessage;
@@ -10,10 +10,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputParser {
+public class CarSetupService {
     private final InputValidator inputValidator;
 
-    public InputParser(InputValidator inputValidator) {
+    public CarSetupService(InputValidator inputValidator) {
         this.inputValidator = inputValidator;
     }
 
@@ -44,8 +44,7 @@ public class InputParser {
 
     public int parseAttemptCount(String input) {
         inputValidator.validateAttemptCount(input);
-        int attemptCount = Integer.parseInt(input);
 
-        return attemptCount;
+        return Integer.parseInt(input);
     }
 }
