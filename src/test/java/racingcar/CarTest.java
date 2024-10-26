@@ -11,4 +11,11 @@ class CarTest {
         Car car = new Car("test");
         assertThat(car.getMoveCount()).isEqualTo(0);
     }
+
+    @Test
+    void 자동차_이름_확인() {
+        Car car = new Car("test");
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
 }
