@@ -10,6 +10,10 @@ public class OutputView {
         System.out.println(OUTPUT_RESULT_MESSAGE);
     }
 
+    public void printNewLine() {
+        System.out.println();
+    }
+
     public void printResult(Car car) {
         System.out.println("car.getName() = " + car.getName());
     }

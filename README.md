@@ -41,6 +41,6 @@
 
 - [x] 실행 결과 메시지 출력 - OutputView#printResultMessage()
 - [ ] 실핼 결과 출력
-- [ ] 개행 출력
+- [x] 개행 출력 - OutputView#printNewLine()
 - [ ] 우승자 출력
 
