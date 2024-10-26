@@ -19,6 +19,10 @@ public class Service { // TODO: 이름 더 명확하게 개선
         move(randoms);
     }
 
+    public List<Car> getWinner() {
+        return carManager.findWinners();
+    }
+
     private List<Boolean> getRandom(int randomSize){
         List<Boolean> moveOrNot = new ArrayList<>(); // TODO: 이름 개선
         for (int i = 0; i < randomSize; i++) {
