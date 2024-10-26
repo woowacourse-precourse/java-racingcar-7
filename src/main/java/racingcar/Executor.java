@@ -13,9 +13,9 @@ public class Executor {
     private List<Car> cars = new ArrayList<>();
     private List<Car> winners = new ArrayList<>();
 
-    private IOController ioController;
-    private Parser parser;
-    private Validator validator;
+    private final IOController ioController;
+    private final Parser parser;
+    private final Validator validator;
 
 
     Executor(IOController ioController, Parser parser, Validator validator) {
