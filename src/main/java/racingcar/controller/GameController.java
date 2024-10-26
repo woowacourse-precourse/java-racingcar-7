@@ -30,6 +30,7 @@ public class GameController {
         System.out.println("\n실행 결과");
         for (int i = 0; i < tryNum; i++) {
             cars = race.play(cars);
+            output.printRaceResult(cars);
         }
     }
 }
