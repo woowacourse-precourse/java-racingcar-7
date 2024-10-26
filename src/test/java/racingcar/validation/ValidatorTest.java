@@ -59,9 +59,19 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("시도횟수가 숫자인지 확인하는 확인하는 테스트")
-    void checkNumeric() {
+    void checkNumericTest() {
         String invalidInput = "noNumber";
 
         assertThrows(IllegalArgumentException.class, () -> Validator.parseToInt(invalidInput));
+    }
+
+    @Test
+    @DisplayName("시도횟수 범위가 1~100인지 확인하는 테스트")
+    void checkCountRangeTest() {
+        int tooManyCount = 101;
+        int noCount = 0;
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkCountRange(tooManyCount));
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkCountRange(noCount));
     }
 }
