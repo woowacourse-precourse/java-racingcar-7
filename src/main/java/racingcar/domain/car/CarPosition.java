@@ -3,10 +3,6 @@ package racingcar.domain.car;
 public class CarPosition {
     private int position;
 
-    public CarPosition() {
-        this.position = 0;
-    }
-
     public int addPosition() {
         return ++position;
     }
