@@ -54,4 +54,12 @@ public class ValidatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> validator.validateNoEmptyCarNames(carNames));
     }
+
+    @DisplayName("입력된 숫자가 음수인 경우 예외 발생")
+    @Test
+    void validatePositiveNumber_ShouldThrowException_WhenNumberIsNegative() {
+        int negativeAttemptCount = -1;
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validatePositiveNumber(negativeAttemptCount));
+    }
 }
