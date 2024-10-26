@@ -32,7 +32,7 @@
     - [x] increaseDistance 테스트 코드 작성
     - [x] getName 테스트 코드 작성
 - [ ] move 메소드 구현
-- [ ] increaseDistance, getDistance 메소드 구현
+- [x] increaseDistance, getDistance 메소드 구현
 - [ ] getName 메소드 구현
 
 ## Util Class

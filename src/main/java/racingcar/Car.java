@@ -9,4 +9,11 @@ public class Car {
         this.distance = "";
     }
 
+    public void increaseDistance() {
+        this.distance = this.distance.concat("-");
+    }
+
+    public String getDistance() {
+        return this.distance;
+    }
 }
