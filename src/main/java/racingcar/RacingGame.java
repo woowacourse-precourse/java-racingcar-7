@@ -40,20 +40,29 @@ public class RacingGame {
 
     public void start(){
         for(int i = 0; i < totalAttempts; i++){
-            for(Car car : cars){
-                car.move();
-            }
-            printResult();
+            playRound();
         }
     }
 
+    private void playRound(){
+        for(Car car : cars){
+            car.move();
+        }
+        printResult();
+    }
+
+
     public void printResult(){
         for(Car car : cars){
-            System.out.print(car.getName() + " : ");
-            for(int i = 0; i < car.getPosition(); i++){
-                System.out.print("-");
-            }
-            System.out.println();
+            printCarPosition(car);
+        }
+        System.out.println();
+    }
+
+    private void printCarPosition(Car car){
+        System.out.print(car.getName() + " : ");
+        for(int i = 0; i < car.getPosition(); i++){
+            System.out.print("-");
         }
         System.out.println();
     }
