@@ -1,5 +1,6 @@
 package racingcar.io;
 
+import static racingcar.messages.ExceptionMessages.EMPTY_NAME;
 import static racingcar.messages.ExceptionMessages.INVALID_CAR_NAME_FORMAT;
 import static racingcar.messages.ExceptionMessages.INVALID_ROUNDS_INPUT;
 import static racingcar.messages.ExceptionMessages.NAME_TOO_LONG;
@@ -12,6 +13,9 @@ public class InputValidator {
             }
             if (containsWhiteSpace(carName)) {
                 throw new IllegalArgumentException(INVALID_CAR_NAME_FORMAT.getMessage());
+            }
+            if (isEmptyName(carName)) {
+                throw new IllegalArgumentException(EMPTY_NAME.getMessage());
             }
         }
     }
@@ -32,5 +36,9 @@ public class InputValidator {
 
     private boolean isPositiveRoundNumber(int roundLength) {
         return roundLength > 0;
+    }
+
+    private boolean isEmptyName(String carName) {
+        return carName == null || carName.isEmpty();
     }
 }
