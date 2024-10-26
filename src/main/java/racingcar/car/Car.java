@@ -1,9 +1,10 @@
 package racingcar.car;
 
+import static racingcar.car.ConditionChecker.canMove;
+
 import java.util.Objects;
 
 public class Car {
-    private static final int MOVING_CRITERION = 4;
 
     private final String name;
     private int position = 0;
@@ -25,11 +26,12 @@ public class Car {
     }
 
     public void tryMoveForward(int value, int positionDelta) {
+
         if (canMove(value)) {
             position += positionDelta;
         }
-    }
 
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -45,10 +47,6 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
-    }
-
-    private boolean canMove(int value) {
-        return value >= MOVING_CRITERION;
     }
 
 }
