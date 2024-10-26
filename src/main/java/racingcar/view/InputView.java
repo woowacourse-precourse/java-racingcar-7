@@ -7,6 +7,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
     private static final String DELIMITER = ",";
+    private static final Integer NAME_LENGTH_LIMIT = 5;
+    private static final String EMPTY_ERROR = "[빈 값] 자동차 이름은 빈 값일 수 없습니다.";
+    private static final String NAME_LENGTH_ERROR = "[길이 제한] 자동차 이름 길이는 %d를 넘을 수 없습니다.";
 
     public List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -21,17 +24,21 @@ public class InputView {
     }
 
     private void validateCarNames(List<String> carNames) {
-        for(String name: carNames) {
-            validateCarName(name);
+        for (String name : carNames) {
+            validateEmpty(name);
+            validateNameLength(name);
         }
     }
 
-    private void validateCarName(String name) {
-        if(name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
+    private void validateEmpty(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(EMPTY_ERROR);
         }
-        if(name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5를 넘을 수 없습니다.");
+    }
+
+    private void validateNameLength(String name) {
+        if (name.length() > NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException(String.format(NAME_LENGTH_ERROR, NAME_LENGTH_LIMIT));
         }
     }
 }
