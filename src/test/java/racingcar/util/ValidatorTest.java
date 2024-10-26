@@ -27,4 +27,13 @@ class ValidatorTest {
         .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void lengthExceptionTest() {
+        // given
+        String input = "abc543";
+        // when & then
+        assertThatThrownBy(() ->  validator.checkCarNamesInput(input))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
