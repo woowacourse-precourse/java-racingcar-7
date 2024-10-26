@@ -10,7 +10,22 @@ public class Application {
         String rawCarNames = Console.readLine();
         List<String> racingCarNames = List.of(rawCarNames.split(","));
 
+        for (String racingCarName : racingCarNames) {
+            if (racingCarName.length() > 5) {
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+            }
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCount = Console.readLine();
+        String rawTryCount = Console.readLine();
+
+        if (!rawTryCount.matches("[0-9]+")) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+
+        int tryNum = Integer.parseInt(rawTryCount);
+        if (tryNum < 1) {
+            throw new IllegalArgumentException("1 이상의 양수만 입력 가능합니다.");
+        }
     }
 }
