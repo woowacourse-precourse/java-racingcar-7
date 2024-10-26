@@ -28,5 +28,7 @@ public class RacingGameController {
         racingGameOutputView.printRacingRoundResultStartingMessage();
         racingGameOutputView.printRoundResults(gameRoundResults);
 
+        List<String> gameWinners = gameRoundResults.getLast().calculateWinners();
+        racingGameOutputView.printRoundWinner(gameWinners);
     }
 }

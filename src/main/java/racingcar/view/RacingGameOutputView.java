@@ -20,6 +20,15 @@ public class RacingGameOutputView {
             printRoundResult(roundResult);
         }
     }
+
+    public void printRoundWinner(List<String> winners){
+        System.out.print("최종 우승자 : ");
+        if (winners.size() == 1){
+            System.out.println(winners.getFirst());
+            return;
+        }
+        System.out.println(String.join(",",winners));
+    }
     private void printRoundResult(RacingGameRoundResult roundResult){
         StringBuilder resultBuilder = new StringBuilder();
 
