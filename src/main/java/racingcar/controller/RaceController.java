@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Race;
+import racingcar.util.ParseStringUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,12 +15,12 @@ public class RaceController {
 
     private Race setupRace() {
         OutputView.renderFirstRun();
-        return Race.setupRace(InputView.getCarNames());
+        return Race.setupRace(InputView.getInput());
     }
 
     private int getAttemptCount() {
         OutputView.renderAttemptCountInput();
-        return InputView.getAttemptCount();
+        return ParseStringUtil.parseAttemptCount(InputView.getInput());
     }
 
     private void racing(Race race, int attemptCount) {
