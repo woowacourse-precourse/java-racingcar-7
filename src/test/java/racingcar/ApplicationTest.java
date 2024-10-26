@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -23,13 +24,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("빈 문자열이 들어오면 안된다.")
     @Test
-    void 예외_테스트() {
+    void emptyInputTest() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @DisplayName("중복된 이름이 들어오면 안된다.")
+    @Test
+    void duplicateNameTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("java, woowa, java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("이름의 길이는 5 이하만 가능하다.")
+    @Test
+    void nameLengthTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("java, woowa, 123456", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("이름은 빈 문자열이 될 수 없다.")
+    @Test
+    void emptyNameTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("java, woowa,, java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
