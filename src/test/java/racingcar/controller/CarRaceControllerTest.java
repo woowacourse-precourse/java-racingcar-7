@@ -105,4 +105,30 @@ class CarRaceControllerTest {
                 () -> carRaceController.run());
         assertEquals(EMPTY_CAR_NAME.getMessage(), exception.getMessage());
     }
+
+    @ParameterizedTest
+    @DisplayName("시도 횟수는 1회 이상이어야 한다.")
+    @ValueSource(strings = {"0", "-3"})
+    void should_ThrowException_When_AttemptsAreLessThanOne(String input) {
+        //given
+        System.setIn(getInputStream("foo,bar\n" + input));
+
+        //expected
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> carRaceController.run());
+        assertEquals(ATTEMPTS_LESS_THAN_ONE.getMessage(), exception.getMessage());
+    }
+
+    @ParameterizedTest
+    @DisplayName("시도 횟수는 양의 정수여야 한다.")
+    @ValueSource(strings = {"abc", " ", "1.23"})
+    void should_ThrowException_When_AttemptsAreNotPositiveInteger(String input) {
+        //given
+        System.setIn(getInputStream("foo,bar\n" + input));
+
+        //expected
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> carRaceController.run());
+        assertEquals(INVALID_ATTEMPTS_NUMBER.getMessage(), exception.getMessage());
+    }
 }
