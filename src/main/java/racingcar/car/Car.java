@@ -1,13 +1,12 @@
 package racingcar.car;
 
-import static racingcar.car.Constants.EMPTY_STRING;
 import static racingcar.car.Constants.MAX_LENGTH_OF_NAME;
 import static racingcar.car.Constants.MOVEABLE_MIN_NUMBER;
 import static racingcar.car.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
 import static racingcar.car.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
 import static racingcar.utils.RandomUtils.getRandomValue;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private final String name;
     private int moveCount;
@@ -49,13 +48,8 @@ public class Car implements Comparable<Car> {
         return winnerMoveCount == moveCount;
     }
 
-    @Override
-    public int compareTo(Car other) {
-        return other.moveCount - this.moveCount;
-    }
-
     private void validateEmptyStringName(String name) {
-        if (name.equals(EMPTY_STRING)) {
+        if (name.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_STRING_NAME_ERROR_MESSAGE);
         }
     }
@@ -73,7 +67,6 @@ public class Car implements Comparable<Car> {
     private void move() {
         moveCount++;
     }
-
 
     private String moveCountToHyphen() {
         StringBuilder sb = new StringBuilder();

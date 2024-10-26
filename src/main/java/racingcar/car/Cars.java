@@ -5,7 +5,6 @@ import static racingcar.car.ErrorMessage.ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE;
 import static racingcar.car.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -87,12 +86,15 @@ public class Cars {
     }
 
     private int getWinnerMoveCount() {
-        sortCarsDescByMoveCount();
-        Car winner = cars.getFirst();
-        return winner.getMoveCount();
-    }
+        int maxMoveCount = 0;
 
-    private void sortCarsDescByMoveCount() {
-        Collections.sort(cars);
+        for (Car car : cars) {
+            int moveCount = car.getMoveCount();
+            if (maxMoveCount < moveCount) {
+                maxMoveCount = moveCount;
+            }
+        }
+
+        return maxMoveCount;
     }
 }
