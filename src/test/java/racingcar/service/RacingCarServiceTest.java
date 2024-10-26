@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
-import racingcar.model.Race;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -17,12 +16,12 @@ public class RacingCarServiceTest {
         RacingCarService service = new RacingCarService();
 
         // when
-        Race race = service.createRace(carNamesInput);
+        List<Car> cars = service.separateCarNames(carNamesInput);
 
         // then
-        assertThat(race.getCars().get(0).getName()).isEqualTo("pobi");
-        assertThat(race.getCars().get(1).getName()).isEqualTo("woni");
-        assertThat(race.getCars().get(2).getName()).isEqualTo("jun");
+        assertThat(cars.get(0).getName()).isEqualTo("pobi");
+        assertThat(cars.get(1).getName()).isEqualTo("woni");
+        assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
 
     @Test

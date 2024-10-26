@@ -5,17 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
-import racingcar.model.Race;
 
 public class RacingCarService {
 
-    public Race createRace(String carNamesInput) {
-        List<Car> cars = separateCarNames(carNamesInput);
-
-        return new Race(cars);
-    }
-
-    private List<Car> separateCarNames(String carNamesInput) {
+    public List<Car> separateCarNames(String carNamesInput) {
         List<Car> cars = new ArrayList<>();
         String[] carNames = carNamesInput.split(",");
 
@@ -26,7 +19,7 @@ public class RacingCarService {
         return cars;
     }
 
-    protected void updateLocation(List<Car> cars) {
+    public void updateLocation(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = getRandomNumber();
 
