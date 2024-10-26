@@ -7,7 +7,11 @@ public class CarValidator {
 
     private CarValidator() {}
 
-    public static void validateCarName(String name) {
+    public static void validateCar(String name) {
+        if (name.isEmpty() || name.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MUST_BE_FILLED);
+        } // end if
+
         if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MAX_LENGTH_IS_FIVE);
         } // end if
