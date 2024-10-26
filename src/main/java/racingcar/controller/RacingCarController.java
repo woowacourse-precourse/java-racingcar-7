@@ -21,6 +21,8 @@ public class RacingCarController {
     public void run(){
         outputView.printCarNameRequest();
         racingCarService.registerRacingCars(StringUtil.splitNames(inputView.getLine(), DELIMITER));
+        outputView.printRaceCountRequest();
+        int tryCount = StringUtil.parsePositiveNumber(inputView.getLine());
 
     }
 

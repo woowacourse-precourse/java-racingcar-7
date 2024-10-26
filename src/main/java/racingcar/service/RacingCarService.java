@@ -16,4 +16,6 @@ public class RacingCarService {
     public void registerRacingCars(Collection<String> carNames){
         carNames.forEach(carName -> racingCarRepository.save(RacingCar.createRacingCar(carName)));
     }
+
+
 }
