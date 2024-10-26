@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class View {
     public static String displayCarNameInputPrompt() {
@@ -21,5 +23,12 @@ public class View {
         System.out.println("실행 결과");
     }
 
+    public static void printMoveResult(Cars cars) {
+        for (Car car : cars.getCarList()) {
+            System.out.print(car.getName() + " : ");
+            System.out.println("-".repeat(car.getPosition()));
+        }
+        System.out.println();
+    }
 
 }

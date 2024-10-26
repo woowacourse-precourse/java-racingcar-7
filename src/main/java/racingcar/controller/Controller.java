@@ -26,6 +26,8 @@ public class Controller {
         View.printlnRaceResult();
         for (int count = 0; count < tryCount; count++) {
             cars.moveCars();
+            View.printMoveResult(cars);
+
 
         }
 
