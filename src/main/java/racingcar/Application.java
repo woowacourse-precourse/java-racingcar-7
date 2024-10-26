@@ -13,5 +13,6 @@ public class Application {
         race = Race.insertEnteredCarNamesIntoMap();
         Output.roundPrint();
         int count = Input.numberOfRounds();
+        Output.raceResult(count, race);
     }
 }
