@@ -5,7 +5,6 @@
 ### View
 - ReaderHelper
   - [ ] 입력을 받아 쉼표(,)를 기준으로 선수 이름을 반환
-    - [ ] 공백을 입력 받는 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
   - [ ] 입력을 받아 게임을 진행할 횟수를 반환
 - PrintHelper
   - [ ] 플레이어 객체 리스트를 받아 게임 상황 출력
