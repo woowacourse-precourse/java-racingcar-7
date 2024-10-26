@@ -2,18 +2,18 @@ package racingcar.entity;
 
 public class Road {
 
-    private int road;
+    private int length;
 
-    public Road(int road){
-        this.road = road;
+    public Road(int length) {
+        this.length = length;
     }
 
-    public int getRoad() {
-        return road;
+    public int getLength() {
+        return length;
     }
 
     public void addRoad(int addLength){
-        this.road+=addLength;
+        this.length+=addLength;
     }
 
 }
