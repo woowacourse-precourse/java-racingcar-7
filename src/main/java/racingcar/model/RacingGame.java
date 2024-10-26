@@ -3,9 +3,11 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.view.OutputView;
 
 public class RacingGame {
     private final List<Car> cars=new ArrayList<>();
+    private static final OutputView outputview=new OutputView();
 
     public void initializeCars(List<String>carNames){
         for(String name:carNames){
@@ -15,6 +17,7 @@ public class RacingGame {
     public void race(int count){
         for(int i=0;i<count;i++){
             moveCars();
+            outputview.printCarList(cars);
         }
     }
     public void moveCars(){

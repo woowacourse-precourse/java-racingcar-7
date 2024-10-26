@@ -17,7 +17,7 @@ public class RacingController {
     }
 
     public void run() {
-        // 사용자 입력 받기
+
         List<String> carNames = inputView.getCarNames();
         int count = inputView.getRaceCount();
 
