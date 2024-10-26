@@ -1,5 +1,9 @@
 package racingcar.domain.game;
 
+import static racingcar.utils.ExceptionConstants.EXCEEDS_MAX_ROUNDS;
+import static racingcar.utils.ExceptionConstants.INVALID_ROUND_COUNT;
+import static racingcar.utils.ExceptionConstants.INVALID_ROUND_NUMBER;
+
 public class GameRound {
     private final int MAX_ROUNDS = 100;
     private final int MIN_ROUNDS = 1;
@@ -21,11 +25,11 @@ public class GameRound {
 
     private void validateRound(int round) {
         if (round > MAX_ROUNDS) {
-            throw new IllegalArgumentException("시도할 횟수는 100을 넘을 수 없습니다.");
+            throw new IllegalArgumentException(EXCEEDS_MAX_ROUNDS.getErrorMessage());
         }
 
         if (round < MIN_ROUNDS) {
-            throw new IllegalArgumentException("시도할 횟수는 1이상이어야 합니다.");
+            throw new IllegalArgumentException(INVALID_ROUND_COUNT.getErrorMessage());
         }
     }
 
@@ -33,7 +37,7 @@ public class GameRound {
         try {
             return Integer.parseInt(roundInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 숫자로 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_ROUND_NUMBER.getErrorMessage());
         }
     }
 

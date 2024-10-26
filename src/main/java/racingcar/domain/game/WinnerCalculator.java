@@ -1,5 +1,7 @@
 package racingcar.domain.game;
 
+import static racingcar.utils.ExceptionConstants.NO_PARTICIPANTS;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.CarInfo;
@@ -24,6 +26,6 @@ public class WinnerCalculator {
         return carInfos.stream()
                 .mapToInt(CarInfo::getCurrentPosition)
                 .max()
-                .orElseThrow(() -> new IllegalArgumentException("참가자가 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException(NO_PARTICIPANTS.getErrorMessage()));
     }
 }

@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import static racingcar.utils.ExceptionConstants.CAR_NAME_TOO_LONG;
+
 import java.util.Objects;
 
 public class CarName {
@@ -13,7 +15,7 @@ public class CarName {
 
     private void validateUserNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 5글자 이하만 가능합니다.");
+            throw new IllegalArgumentException(CAR_NAME_TOO_LONG.getErrorMessage());
         }
     }
 
