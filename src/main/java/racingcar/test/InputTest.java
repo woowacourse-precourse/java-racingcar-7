@@ -28,4 +28,11 @@ public class InputTest {
         String name = "짱구";
         assertThat(name).isNotEmpty();
     }
+
+    @Test
+    @DisplayName("차 이름 5자 이하 검증 테스트")
+    void validateNameLength() {
+        String name = "짱구짱구짱구";
+        assertThrows(IllegalArgumentException.class, () -> input.validateNameLength(name));
+    }
 }
