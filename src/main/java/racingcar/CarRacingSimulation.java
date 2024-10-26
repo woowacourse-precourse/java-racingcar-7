@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.io.ConsoleInputHandler;
 import racingcar.io.ConsoleOutputHandler;
+import racingcar.validator.CarNameListValidator;
 
 import java.util.List;
 
@@ -12,5 +13,6 @@ public class CarRacingSimulation {
         consoleOutputHandler.racingCarNamingMessage(); // "자동차 이름 입력 안내" 메세지 출력
         String userInputString = consoleInputHandler.getUserInput(); // 유저 입력 받기
         List<String> carNameList = UserInputStringConverter.toList(userInputString); // 입력 문자열 자동치 이름 리스트로 변환
+        CarNameListValidator.integratedValidation(carNameList); // 자동차 이름들 유효성 검사
     }
 }
