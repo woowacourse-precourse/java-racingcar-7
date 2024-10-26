@@ -55,4 +55,9 @@ public class Car {
     public boolean isPosition(int givenPosition) {
         return this.currentPosition == givenPosition;
     }
+
+    @Override
+    public String toString() {
+        return this.name + " : " + "-".repeat(this.currentPosition);
+    }
 }
