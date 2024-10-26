@@ -28,7 +28,6 @@ public class InputView {
     private static class Validator {
 
         private static List<String> validateName(String input) {
-            validateBlank(input);
             validateSeparator(input);
 
             return split(input, NAME_SEPARATOR_SYMBOL);
@@ -37,16 +36,6 @@ public class InputView {
         private static List<String> split(String input, String separator) {
             return Arrays.stream(input.split(separator))
                     .toList();
-        }
-
-        private static void validateBlank(String input) {
-            if (isBlank(input)) {
-                throw new RaceException(ErrorMessage.INVALID_INPUT_BLANK);
-            }
-        }
-
-        private static boolean isBlank(String input) {
-            return input.isBlank();
         }
 
         private static void validateSeparator(String input) {
@@ -75,7 +64,6 @@ public class InputView {
         }
 
         private static int validateCount(String count) {
-            validateBlank(count);
             return validateNumber(count);
         }
 
