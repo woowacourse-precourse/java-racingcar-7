@@ -8,5 +8,18 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int numberOfMoves = Input.readNumberOfMoves();
+
+        System.out.println();
+        System.out.println("실행 결과");
+
+        int[] carLocations = new int[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            carLocations[i] = 0;
+        }
+
+        for (int i = 0; i < numberOfMoves; i++) {
+            CarRacing.moveCar(carLocations);
+            CarRacing.printCarLocation(carNames, carLocations);
+        }
     }
 }
