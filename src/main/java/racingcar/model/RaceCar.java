@@ -16,8 +16,14 @@ public class RaceCar {
     }
 
     public static RaceCar fromName(String name) {
-        validateNameRange(name);
-        return new RaceCar(name, INIT_POSITION);
+        String trimmedName = trimAndValidateName(name);
+        return new RaceCar(trimmedName, INIT_POSITION);
+    }
+
+    private static String trimAndValidateName(String name) {
+        String trimmedName = name.trim();
+        validateNameRange(trimmedName);
+        return trimmedName;
     }
 
     private static void validateNameRange(String name) {
