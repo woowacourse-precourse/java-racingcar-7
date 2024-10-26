@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.view.ConsoleView;
 import camp.nextstep.edu.missionutils.Console;
 
-public class ConsoleInputHandler implements InputHandler{
+public class ConsoleInputHandler{
     private final ConsoleView consoleView = new ConsoleView();
 
     public List<String> getCarInput() {
