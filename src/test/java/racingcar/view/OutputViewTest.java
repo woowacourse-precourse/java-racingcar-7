@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.RoundSnapshot;
+import racingcar.dto.RoundSnapshot;
 import racingcar.model.car.CarSnapshot;
-import racingcar.model.car.WinnersDto;
+import racingcar.dto.WinnersDto;
 
 public class OutputViewTest {
 

@@ -1,9 +1,9 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.car.RoundSnapshot;
-import racingcar.model.car.RoundSnapshot.CarSnapshotDto;
-import racingcar.model.car.WinnersDto;
+import racingcar.dto.RoundSnapshot;
+import racingcar.dto.RoundSnapshot.CarSnapshotDto;
+import racingcar.dto.WinnersDto;
 
 public class OutputView {
     private static OutputView instance;
