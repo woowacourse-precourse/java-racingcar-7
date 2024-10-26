@@ -2,32 +2,34 @@ package racingcar.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import racingcar.controller.io.InputHandler;
+import racingcar.controller.io.OutputHandler;
 import racingcar.model.Race;
 
 public class RacingController {
-    private final ConsoleInputHandler consoleInputHandler;
-    private final ConsoleOutputHandler consoleOutputHandler;
+    private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
 
-    public RacingController(ConsoleInputHandler consoleInputHandler, ConsoleOutputHandler consoleOutputHandler) {
-        this.consoleInputHandler = consoleInputHandler;
-        this.consoleOutputHandler = consoleOutputHandler;
+    public RacingController(InputHandler inputHandler, OutputHandler outputHandler) {
+        this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
     }
 
     public void run() {
-        List<String> racingCarsName = consoleInputHandler.getCarInput();
-        Integer iterationInput = consoleInputHandler.getIterationInput();
+        List<String> racingCarsName = inputHandler.getCarInput();
+        Integer iterationInput = inputHandler.getIterationInput();
 
         Race race = new Race(racingCarsName);
 
         int iteration = 0;
-        consoleOutputHandler.displayResultMessage();
+        outputHandler.displayResultMessage();
 
         while (iteration < iterationInput) {
             HashMap<String, Integer> raceResults = race.retrieveRaceResults();
-            consoleOutputHandler.printRaceResult(raceResults);
+            outputHandler.printRaceResult(raceResults);
             iteration++;
         }
         List<String> winnersName = race.findWinners();
-        consoleOutputHandler.printRaceWinner(winnersName);
+        outputHandler.printRaceWinner(winnersName);
     }
 }

@@ -1,9 +1,8 @@
 package racingcar;
 
-import racingcar.controller.ConsoleInputHandler;
-import racingcar.controller.ConsoleOutputHandler;
+import racingcar.controller.io.ConsoleInputHandler;
+import racingcar.controller.io.ConsoleOutputHandler;
 import racingcar.controller.RacingController;
-import racingcar.view.ConsoleView;
 
 public class Application {
     public static void main(String[] args) {

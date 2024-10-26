@@ -1,18 +1,18 @@
-package racingcar.controller;
+package racingcar.controller.io;
 
 import java.util.List;
 import racingcar.view.ConsoleView;
 import camp.nextstep.edu.missionutils.Console;
 
-public class ConsoleInputHandler {
+public class ConsoleInputHandler implements InputHandler{
     private final ConsoleView consoleView = new ConsoleView();
-
+    @Override
     public List<String> getCarInput() {
         consoleView.printCarInputMessage();
         String carInput = Console.readLine();
         return parseCarInput(carInput);
     }
-
+    @Override
     public Integer getIterationInput() {
         consoleView.printIterationInputMessage();
         return Integer.parseInt(Console.readLine());
