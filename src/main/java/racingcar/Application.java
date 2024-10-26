@@ -11,7 +11,7 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            carName = Input.inputCars();
+            carName = Input.inputCar();
             numTry = Input.inputNumTry();
 
             RacingCarController racingCar = new RacingCarController(carName, numTry);

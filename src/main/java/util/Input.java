@@ -10,7 +10,7 @@ public class Input {
     public static List<String> car;
 
     // 입력부: 경주할 자동차
-    public static List<String> inputCars() throws IllegalArgumentException {
+    public static List<String> inputCar() throws IllegalArgumentException {
         // Error : 공백 입력, (,)가 아닌 구분자 사용, 5글자 초과
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         car = new ArrayList<>(Arrays.asList(Console.readLine().strip().split(",")));
@@ -75,7 +75,7 @@ public class Input {
     // Test
     public static void test(String[] args) {
         try {
-            List<String> testNameCars = inputCars();
+            List<String> testNameCars = inputCar();
             System.out.printf("Successful: 자동차 이름 %s\n", testNameCars);
 
             int testNumTry = inputNumTry();
