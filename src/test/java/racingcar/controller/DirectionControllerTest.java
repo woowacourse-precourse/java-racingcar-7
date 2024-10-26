@@ -17,10 +17,10 @@ public class DirectionControllerTest {
     }
 
     @Test
-    @DisplayName("무작위 값이 4이하 일 경우 방향 없음을 반환한다.")
+    @DisplayName("무작위 값이 4미만 일 경우 방향 없음을 반환한다.")
     void 랜덤값이_4이하이면_NO_DIRECTION을_반환한다() {
-        Assertions.assertThat(directionController.determineDirectionUsingThreshold(5))
-                .isEqualTo(Direction.NO_DIRECTION);
+        Assertions.assertThat(directionController.determineDirectionUsingThreshold(2))
+                .isEqualTo(Direction.STOP);
     }
 
 }
