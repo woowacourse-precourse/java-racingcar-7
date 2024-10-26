@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.util.ParseStringUtil;
+import racingcar.util.RandomNumUtil;
 
 import java.util.List;
 
@@ -28,6 +29,19 @@ public class Race {
 
     private static Car createCar(String carName) {
         return new Car(carName, 0);
+    }
+
+    public void doRace() {
+        raceCars.forEach(this::moveForward);
+    }
+
+    private void moveForward(Car car) {
+        if (getRandomNum() >= 4)
+            car.moveForward();
+    }
+
+    private int getRandomNum() {
+        return RandomNumUtil.getRandomNum();
     }
 
 }
