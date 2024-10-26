@@ -9,7 +9,7 @@ public class RacingController {
     private static final String DELIMITERS = ",";
     private final RacingService racingService = new RacingService();
 
-    public RacingResponse racing(RacingRequest request){
+    public RacingResponse startRace(RacingRequest request){
         String[] carName = parseCarName(request.carNames());
         int attemptCount = request.attemptCount();
 
