@@ -29,15 +29,22 @@ public class CarGameManager {
         }
     }
 
-    public List<Integer> getEachCarResultDistance() {
-        ArrayList<Integer> carsDistance = new ArrayList<>();
+    public List<String> getWinners() {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            carsDistance.add(car.getDistance());
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
         }
-        return carsDistance;
+        return winners;
     }
 
-    public ArrayList<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
+    }
+
+    public int getTotalTimes() {
+        return totalTimes;
     }
 }

@@ -36,8 +36,7 @@ public class CarController {
         }
     }
 
-    public void printWinners() {
-        List<String> winners = carService.getWinners();
-        outputView.printWinners(winners);
+    private void displayWinners() {
+        outputView.printWinners(carGameManager.getWinners());
     }
 }
