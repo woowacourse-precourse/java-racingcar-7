@@ -54,8 +54,9 @@ public class RacingController {
             runRace(cars, RacingRounds);
 
             MaxRace(cars);
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("오류" + e.getMessage());
+            throw e;
         }
     }
     private void runRace(List<Car> cars, int rounds) {
