@@ -1,13 +1,14 @@
 package racingcar.domain.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.RandomNumberGenerator;
 
 public class RandomMovingStrategy implements MovingStrategy {
+    private static final int CAN_MOVE_CONDITION = 4;
 
     @Override
     public boolean canMove() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
-        return randomValue >= 4;
+        int randomValue = RandomNumberGenerator.generate();
+        return randomValue >= CAN_MOVE_CONDITION;
     }
 
 }
