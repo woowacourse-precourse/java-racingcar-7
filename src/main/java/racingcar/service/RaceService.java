@@ -16,8 +16,8 @@ public class RaceService {
     }
 
     public CarsDto playOneRound(CarsDto carsDto) {
-        for (int i = 0; i < carsDto.getCars().size(); i++) {
-            carsDto.getCars().get(i).goRound();
+        for (Car car : carsDto.getCars()) {
+            car.goRound();
         }
         return carsDto;
     }
