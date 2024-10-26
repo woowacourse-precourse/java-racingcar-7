@@ -26,6 +26,10 @@ public class Application {
             cars[i] = new Car(carNames[i].trim());
         }
 
+        System.out.println("이동횟수를 정수로 입력해주세요");
+        int moveCount = Integer.parseInt(Console.readLine());
+
+
 
 
 
