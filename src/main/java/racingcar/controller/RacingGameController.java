@@ -18,18 +18,29 @@ public class RacingGameController {
 
     public void startGame() {
         racingGameOutputView.printRacingGameStartingMessage();
-        String carNames = racingGameInputView.getUserInput();
-        List<Car> cars = racingGameSettingService.createCars(carNames);
-
-        racingGameOutputView.printRacingGameRoundInputMessage();
-        String roundInput = racingGameInputView.getUserInput();
-        RacingGameMaxRound gameMaxRound = racingGameSettingService.createGameRound(roundInput);
+        List<Car> cars = initializeCars();
+        RacingGameMaxRound gameMaxRound = initializeGameRound();
 
         List<RacingGameRoundResult> gameRoundResults = racingGameProgressService.executeRounds(cars, gameMaxRound);
+        displayRoundResults(gameRoundResults);
+    }
+
+    private List<Car> initializeCars() {
+        String carNames = racingGameInputView.getUserInput();
+        return racingGameSettingService.createCars(carNames);
+    }
+
+    private RacingGameMaxRound initializeGameRound() {
+        racingGameOutputView.printRacingGameRoundInputMessage();
+        String roundInput = racingGameInputView.getUserInput();
+        return racingGameSettingService.createGameRound(roundInput);
+    }
+
+    private void displayRoundResults(List<RacingGameRoundResult> gameRoundResults) {
         racingGameOutputView.printRacingRoundResultStartingMessage();
         racingGameOutputView.printRoundResults(gameRoundResults);
 
-        List<String> gameWinners = gameRoundResults.getLast().calculateWinners();
+        List<String> gameWinners = gameRoundResults.get(gameRoundResults.size() - 1).calculateWinners();
         racingGameOutputView.printRoundWinner(gameWinners);
     }
 }
