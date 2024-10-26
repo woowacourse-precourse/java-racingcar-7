@@ -14,9 +14,7 @@ public class CarDto {
 
     public static CarDto of(List<Car> cars) {
         Map<String, Integer> carDto = new LinkedHashMap<>();
-        for (Car car : cars) {
-            carDto.put(car.getCarName(), car.getCarDistance());
-        }
+        cars.forEach(car -> carDto.put(car.getCarName(), car.getCarDistance()));
         return new CarDto(carDto);
     }
 

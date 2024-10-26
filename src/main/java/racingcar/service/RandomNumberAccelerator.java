@@ -14,7 +14,6 @@ public class RandomNumberAccelerator implements Accelerator {
 
     @Override
     public void move(Car car) {
-
         if (canMove(numberGenerator.generate())) {
             car.moveForward();
         }
