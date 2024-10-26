@@ -6,17 +6,17 @@ import java.util.List;
 
 public class History {
 
-    private final List<Positions> value;
+    private final List<Positions> values;
 
-    public History(final List<Positions> value) {
-        this.value = new ArrayList<>(value);
+    public History(final List<Positions> values) {
+        this.values = new ArrayList<>(values);
     }
 
     public void add(Positions positions) {
-        value.add(positions.deepCopy());
+        values.add(positions.deepCopy());
     }
 
-    public List<Positions> value() {
-        return Collections.unmodifiableList(value);
+    public List<Positions> values() {
+        return Collections.unmodifiableList(values);
     }
 }

@@ -6,19 +6,19 @@ import racingcar.exception.InvalidNameException;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> values;
 
-    public Cars(final List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
+    public Cars(final List<Car> values) {
+        this.values = new ArrayList<>(values);
     }
 
     public void add(Car car) {
         validate(car);
-        cars.add(car);
+        values.add(car);
     }
 
     public List<Boolean> doMove() {
-        return cars.stream()
+        return values.stream()
                 .map(Car::doesMove)
                 .toList();
     }
@@ -30,21 +30,21 @@ public class Cars {
     }
 
     private boolean isDuplicateName(String name) {
-        return cars.stream()
+        return values.stream()
                 .anyMatch(car -> car.name().equals(name));
     }
 
     public int size() {
-        return cars.size();
+        return values.size();
     }
 
     public List<String> names() {
-        return cars.stream()
+        return values.stream()
                 .map(Car::name)
                 .toList();
     }
 
     public String name(final Integer index) {
-        return cars.get(index).name();
+        return values.get(index).name();
     }
 }

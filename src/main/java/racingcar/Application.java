@@ -88,7 +88,7 @@ public class Application {
         racingGame.start();
         Cars cars = racingGame.getCars();
         History history = racingGame.getHistory();
-        for (Positions positions : history.value()) {
+        for (Positions positions : history.values()) {
             outputHandler.showCarPosition(cars.names(), positions.getValues());
         }
     }
