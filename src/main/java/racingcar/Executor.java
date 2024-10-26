@@ -24,6 +24,24 @@ public class Executor {
         this.validator = validator;
     }
 
+    public void run() {
+        String inputcarNamesStr = ioController.enterCarNames();
+
+        validator.validateCarNamesInput(inputcarNamesStr);
+        List<String> carNames = parser.parseCarNamesByOperator(inputcarNamesStr, operator);
+
+        validator.validateCarNamesLength(carNames, nameLengthLimit);
+        saveCarsByName(carNames);
+
+        String inputRepeatCountStr = ioController.enterRepeatCount();
+        validator.isPositiveNumber(inputRepeatCountStr);
+        repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
+
+        executeForCount(cars, repeatCount);
+        winners = getWinners(cars);
+        ioController.printWinners(winners);
+    }
+
     private List<Car> getWinners(List<Car> cars) {
         long maxMoveCount = 0;
         for (Car car : cars) {
