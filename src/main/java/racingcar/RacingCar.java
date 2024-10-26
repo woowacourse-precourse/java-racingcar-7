@@ -21,4 +21,8 @@ public class RacingCar {
     public int getLocation() {
         return location;
     }
+
+    public String getCarNameValue() {
+        return carName.getName();
+    }
 }
