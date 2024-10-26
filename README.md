@@ -32,7 +32,7 @@
 - [X] 게임 횟수에 음수, 0, 문자열을 입력할 시 "게임 횟수는 양수를 입력해 주세요." 메시지와 함께 IllegalArgumentException가 발생한다.
 - [X] 게임 횟수에 공백이 들어가면 "게임 횟수는 공백이 될 수 없습니다." 메시지와 함께 IllegalArgumentException가 발생한다.
 - [X] 자동차 이름이 5자를 초과하면 "자동차 이름은 5자 이하로 입력해 주세요." 메시지와 함께 IllegalArgumentException가 발생한다.
-- [ ] 자동차 이름이 중복되면 "자동차 이름은 중복될 수 없습니다." 메시지와 함께 IllegalArgumentException가 발생한다.
+- [X] 자동차 이름이 중복되면 "자동차 이름은 중복될 수 없습니다." 메시지와 함께 IllegalArgumentException가 발생한다.
 
 ### **테스트**
 - #### 입력
