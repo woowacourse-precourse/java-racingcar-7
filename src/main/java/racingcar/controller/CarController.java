@@ -1,16 +1,14 @@
 package racingcar.controller;
 
 import racingcar.domain.CarGameManager;
-import racingcar.service.CarService;
+import racingcar.validation.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class CarController {
-    public InputView inputView;
-    public OutputView outputView;
-    public String[] names;
-    public int totalTimes;
-    public CarService carService;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private CarGameManager carGameManager;
 
     public CarController() {
         this.inputView = new InputView();
