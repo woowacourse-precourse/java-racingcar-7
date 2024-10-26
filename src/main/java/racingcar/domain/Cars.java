@@ -26,6 +26,13 @@ public record Cars(List<Car> carList) {
         carList.forEach(Car::move);
     }
 
+    public RoundScores createRoundScores() {
+        List<CarState> carStates = carList.stream()
+                .map(each -> new CarState(each.getName(), each.getPosition()))
+                .toList();
+        return new RoundScores(carStates);
+    }
+
     public List<String> getWinnerNames() {
         int maxPosition = getMaxPosition();
         return carList.stream()

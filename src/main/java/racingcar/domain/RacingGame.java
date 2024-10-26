@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
-
 public class RacingGame {
     private final Cars participants;
     private final RoundCount roundCount;
@@ -22,14 +20,8 @@ public class RacingGame {
     private void runAllRounds() {
         roundCount.iterate(() -> {
             participants.moveAll();
-            scoreBoard.recordRound(createRoundScores());
+            RoundScores roundScores = participants.createRoundScores();
+            scoreBoard.recordRound(roundScores);
         });
-    }
-
-    private RoundScores createRoundScores() {
-        List<CarState> carStates = participants.carList().stream()
-                .map(each -> new CarState(each.getName(), each.getPosition()))
-                .toList();
-        return new RoundScores(carStates);
     }
 }

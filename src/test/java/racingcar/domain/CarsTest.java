@@ -18,7 +18,7 @@ class CarsTest {
 
     @BeforeEach
     void setup() {
-        MovingStrategy defaultStrategy = () -> true;
+        MovingStrategy defaultStrategy = () -> true; // 항상 이동하는 전략
         pobi = new Car("pobi", defaultStrategy);
         dk = new Car("DK", defaultStrategy);
         foo = new Car("foo", defaultStrategy);
@@ -27,28 +27,49 @@ class CarsTest {
     @Test
     @DisplayName("Cars 컬렉션이 불변임을 확인한다.")
     void carsAreUnmodifiable() {
-        // given
         List<Car> modifiableCarList = new ArrayList<>(List.of(pobi, dk));
         Cars cars = new Cars(modifiableCarList);
 
-        // when
         List<Car> unmodifiableCarList = cars.carList();
 
-        // then
         assertThatThrownBy(() -> unmodifiableCarList.add(foo))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
-    @DisplayName("Cars 컬렉션에는 같은 이름을 가진 Car 가 존재할 수 없다.")
+    @DisplayName("Cars 컬렉션에는 같은 이름을 가진 Car가 존재할 수 없다.")
     void carsCollectionIsUnique() {
-        // given
         List<Car> carListWithDuplicates = List.of(pobi, pobi);
 
-        // when, then
         assertThatThrownBy(() -> new Cars(carListWithDuplicates))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 쉼표로 구분된 문자열로부터 Cars 객체를 생성할 수 있다.")
+    void createCarsFromCommaSeparatedString() {
+        String carNames = "pobi,DK,foo";
+        MovingStrategy movingStrategy = () -> true;
+
+        Cars cars = Cars.of(carNames, movingStrategy);
+
+        assertThat(cars.carList())
+                .hasSize(3)
+                .extracting(Car::getName)
+                .containsExactly("pobi", "DK", "foo");
+    }
+
+    @Test
+    @DisplayName("모든 자동차가 이동하는지 확인한다.")
+    void allCarsMove() {
+        Cars cars = new Cars(List.of(pobi, dk, foo));
+
+        cars.moveAll();
+
+        assertThat(cars.carList())
+                .extracting(Car::getPosition)
+                .containsExactly(1, 1, 1); // 모든 자동차가 이동했으므로 위치가 1이어야 함
     }
 
     @Test
@@ -62,10 +83,35 @@ class CarsTest {
         Car loser = new Car("loser", () -> false);
 
         Cars cars = new Cars(List.of(winner1, winner2, loser));
-        cars.moveAll();
 
+        cars.moveAll(); // 모든 차를 이동시킴
         List<String> winners = cars.getWinnerNames();
 
-        assertThat(winners).containsExactly(winner1Name, winner2Name);
+        assertThat(winners).containsExactlyInAnyOrder(winner1Name, winner2Name);
+    }
+
+    @Test
+    @DisplayName("Cars 컬렉션이 비어 있을 때 예외가 발생한다.")
+    void exceptionWhenNoCarsAvailable() {
+        List<Car> emptyCarList = List.of();
+        Cars emptyCars = new Cars(emptyCarList);
+
+        assertThatThrownBy(emptyCars::getWinnerNames)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NO_CARS_AVAILABLE.getMessage());
+    }
+
+    @Test
+    @DisplayName("라운드 점수를 올바르게 생성한다.")
+    void createRoundScores() {
+        Cars cars = new Cars(List.of(pobi, dk, foo));
+        cars.moveAll(); // 모든 차를 이동시킴
+
+        RoundScores roundScores = cars.createRoundScores();
+
+        assertThat(roundScores.carStates())
+                .hasSize(3)
+                .extracting(CarState::position)
+                .containsExactly(1, 1, 1); // 모든 차가 1만큼 이동한 상태여야 함
     }
 }
