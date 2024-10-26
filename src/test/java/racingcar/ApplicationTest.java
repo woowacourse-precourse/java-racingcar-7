@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_회수_음수_예외_테스트() {
+    void 시도_횟수_음수_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(CARS, "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -83,7 +83,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 시도_회수_문자_예외_테스트() {
+    void 시도_횟수_문자_예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(CARS, "a"))
                         .isInstanceOf(IllegalArgumentException.class)
