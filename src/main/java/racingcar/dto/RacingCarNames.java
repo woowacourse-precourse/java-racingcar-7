@@ -1,8 +1,8 @@
 package racingcar.dto;
 
-import static racingcar.common.exception.ErrorMessage.*;
+import static racingcar.exception.ErrorMessage.*;
 
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 import java.util.List;
 import java.util.stream.Collectors;
 

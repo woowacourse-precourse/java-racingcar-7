@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.common.exception.ErrorMessage.*;
+import static racingcar.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

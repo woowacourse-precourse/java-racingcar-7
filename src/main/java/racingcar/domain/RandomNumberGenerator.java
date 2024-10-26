@@ -1,9 +1,9 @@
 package racingcar.domain;
 
-import static racingcar.common.exception.ErrorMessage.*;
+import static racingcar.exception.ErrorMessage.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 import racingcar.dto.MovementNumber;
 
 public class RandomNumberGenerator {

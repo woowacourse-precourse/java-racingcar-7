@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.common.exception.ErrorMessage.*;
+import static racingcar.exception.ErrorMessage.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 import racingcar.dto.MovementNumber;
 
 class RandomNumberGeneratorTest {

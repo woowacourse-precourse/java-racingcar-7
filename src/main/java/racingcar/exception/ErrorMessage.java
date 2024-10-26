@@ -1,4 +1,4 @@
-package racingcar.common.exception;
+package racingcar.exception;
 
 public enum ErrorMessage {
     EMPTY_INPUT("입력값이 비어 있습니다."),

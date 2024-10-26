@@ -1,11 +1,11 @@
 package racingcar.view;
 
-import static racingcar.common.exception.ErrorMessage.*;
+import static racingcar.exception.ErrorMessage.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.dto.RacingCarNames;
 import racingcar.dto.AttemptCount;
-import racingcar.common.exception.RacingCarException;
+import racingcar.exception.RacingCarException;
 
 public class InputView {
 
