@@ -3,14 +3,12 @@ public class ValidatorForCount implements Validater {
     @Override
     public void checkValidation(String input) {
         checkValidFormat(input);
-        System.out.println("count: " + input);
     }
 
     private void checkValidFormat(String input) {
         if (isValidCharacters(input) == false ||
                 isValidNumber(input) == false) {
-            Printer.printMessage(Constants.INPUT_ERROR_INVALID);
-            throw new IllegalArgumentException();
+            ErrorHandler.printAndThrow(Constants.INPUT_ERROR_COUNT);
         }
     }
 

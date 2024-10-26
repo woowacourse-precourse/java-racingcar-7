@@ -5,7 +5,6 @@ public class Parser {
         ValidatorForNames validator = new ValidatorForNames();
         String[] names = input.split(",");
 
-
         for (String name : names) {
             validator.checkValidation(name);
             Data.addCarToCarsByName(name);

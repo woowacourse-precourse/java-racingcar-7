@@ -20,7 +20,6 @@ public class ValidatorForNames implements Validater {
 
         Data.setCarCount(++nameCount);
         parsedNames.put(input, true);
-        System.out.println(input + ": " + parsedNames.get(input));
     }
 
     private void checkValidFormat() {
@@ -28,8 +27,7 @@ public class ValidatorForNames implements Validater {
                 isValidNumOfName() == false ||
                 isNotOverlapped() == false ||
                 isValidCharacters() == false) {
-            Printer.printMessage(Constants.INPUT_ERROR_INVALID);
-            throw new IllegalArgumentException();
+            ErrorHandler.printAndThrow(Constants.INPUT_ERROR_NAMES);
         }
     }
 

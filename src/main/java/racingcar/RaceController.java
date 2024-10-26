@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 
-public class RacingController {
+public class RaceController {
     private static int mostMove;
 
     public static void startRacing() {
@@ -21,10 +21,6 @@ public class RacingController {
         for (Car curCar : cars) {
             int randomNum = NumberMaker.makeRandomNumber();
             applyNumberToCar(randomNum, curCar);
-
-            System.out.println("random number: " + randomNum);
-            System.out.println("move count: " + curCar.getMoveCount());
-
             Printer.printRaceResult(curCar);
         }
         System.out.print("\n");
