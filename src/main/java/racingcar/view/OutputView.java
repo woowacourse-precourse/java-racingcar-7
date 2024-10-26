@@ -2,6 +2,8 @@ package racingcar.view;
 
 import racingcar.model.Car;
 
+import java.util.List;
+
 public class OutputView {
 
     public void startMessage() {
@@ -22,5 +24,16 @@ public class OutputView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void endGameMessage(List<String> winnerCars) {
+        System.out.print("\n최종 우승자 : ");
+
+        for (int i = 0; i < winnerCars.size(); i++) {
+            System.out.print(winnerCars.get(i));
+            if (i < winnerCars.size() - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 }
