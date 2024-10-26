@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.strategy.move;
 
 import java.util.Random;
 

@@ -1,7 +1,8 @@
 package racingcar.domain;
 
 import racingcar.exception.domain.RaceErrorMessage;
-import racingcar.strategy.MovementStrategy;
+import racingcar.strategy.move.MovementStrategy;
+import racingcar.strategy.winner.WinnerStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,13 @@ public class Race {
     private final List<Car> cars;
     private final int attemptCount;
     private final MovementStrategy movementStrategy;
+    private final WinnerStrategy winnerStrategy;
 
-    public Race(Set<String> carNames, int attemptCount, MovementStrategy movementStrategy) {
+    public Race(Set<String> carNames, int attemptCount, MovementStrategy movementStrategy, WinnerStrategy winnerStrategy) {
         this.cars = createCars(carNames);
         this.attemptCount = attemptCount;
         this.movementStrategy = movementStrategy;
+        this.winnerStrategy = winnerStrategy;
     }
 
     private List<Car> createCars(Set<String> carNames) {
@@ -34,6 +37,14 @@ public class Race {
         }
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getAttemptCount() {
+        return attemptCount;
+    }
+
     public int getCarPosition(String carName) {
         for (Car car : cars) {
             if (car.getName().equals(carName)) {
@@ -43,26 +54,7 @@ public class Race {
         throw new IllegalArgumentException(RaceErrorMessage.CAR_NOT_FOUND.getMessage());
     }
 
-    public int getAttemptCount() {
-        return attemptCount;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<Car> getWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(() -> new IllegalStateException(RaceErrorMessage.RACE_NOT_START.getMessage()));
-
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car);
-            }
-        }
-        return winners;
+        return winnerStrategy.determineWinners(cars);
     }
 }

@@ -2,9 +2,10 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.MovementStrategy;
-
-import java.util.HashSet;
+import racingcar.strategy.move.MovementStrategy;
+import racingcar.strategy.move.RandomMovementStrategy;
+import racingcar.strategy.winner.MaxPositionWinnerStrategy;
+import racingcar.strategy.winner.WinnerStrategy;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,16 +17,17 @@ public class RaceTest {
     @DisplayName("주어진 횟수만큼 경주가 진행되는지 테스트")
     void 주어진_횟수만큼_경주_진행() {
         // given
-        Set<String> carNames = new HashSet<>();
+        Set<String> carNames = new LinkedHashSet<>();
         carNames.add("pobi");
         carNames.add("woni");
         carNames.add("jun");
         int attemptCount = 5;
 
         MovementStrategy alwaysMoveStrategy = () -> true;
+        WinnerStrategy maxPositionWinnerStrategy = new MaxPositionWinnerStrategy();
 
         // when
-        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy);
+        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy, maxPositionWinnerStrategy);
         race.start();
 
         // then
@@ -36,16 +38,17 @@ public class RaceTest {
     @DisplayName("자동차가 무작위로 전진하거나 멈추는지 테스트")
     void 자동차가_무작위로_전진하거나_멈춤() {
         // given
-        Set<String> carNames = new HashSet<>();
+        Set<String> carNames = new LinkedHashSet<>();
         carNames.add("pobi");
         carNames.add("woni");
         carNames.add("jun");
         int attemptCount = 5;
 
-        MovementStrategy randomMoveStrategy = new racingcar.strategy.RandomMovementStrategy();
+        MovementStrategy randomMoveStrategy = new RandomMovementStrategy();
+        WinnerStrategy maxPositionWinnerStrategy = new MaxPositionWinnerStrategy();
 
         // when
-        Race race = new Race(carNames, attemptCount, randomMoveStrategy);
+        Race race = new Race(carNames, attemptCount, randomMoveStrategy, maxPositionWinnerStrategy);
         race.start();
 
         // then
@@ -66,13 +69,14 @@ public class RaceTest {
         int attemptCount = 5;
 
         MovementStrategy alwaysMoveStrategy = () -> true;
-        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy);
+        WinnerStrategy maxPositionWinnerStrategy = new MaxPositionWinnerStrategy();
 
         // when
+        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy, maxPositionWinnerStrategy);
         race.start();
-        Car winner = race.getWinners().get(0);
 
         // then
+        Car winner = race.getWinners().get(0);
         assertEquals("pobi", winner.getName());
     }
 
@@ -87,13 +91,15 @@ public class RaceTest {
         int attemptCount = 5;
 
         MovementStrategy alwaysMoveStrategy = () -> true;
-        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy);
+        WinnerStrategy maxPositionWinnerStrategy = new MaxPositionWinnerStrategy();
 
         // when
+        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy, maxPositionWinnerStrategy);
         race.start();
-        Set<Car> winners = new LinkedHashSet<>(race.getWinners());
 
         // then
+        Set<Car> winners = new LinkedHashSet<>(race.getWinners());
+
         assertEquals(3, winners.size());
         assertTrue(winners.stream().anyMatch(car -> car.getName().equals("pobi")));
         assertTrue(winners.stream().anyMatch(car -> car.getName().equals("woni")));

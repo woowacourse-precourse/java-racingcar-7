@@ -3,9 +3,10 @@ package racingcar.view.output;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Race;
-import racingcar.strategy.MovementStrategy;
+import racingcar.strategy.move.MovementStrategy;
+import racingcar.strategy.winner.MaxPositionWinnerStrategy;
+import racingcar.strategy.winner.WinnerStrategy;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -23,8 +24,9 @@ public class RaceOutputTest {
         int attemptCount = 3;
 
         MovementStrategy alwaysMoveStrategy = () -> true;
+        WinnerStrategy maxPositionWinnerStrategy = new MaxPositionWinnerStrategy();
 
-        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy);
+        Race race = new Race(carNames, attemptCount, alwaysMoveStrategy, maxPositionWinnerStrategy);
 
         // when
         race.start();
