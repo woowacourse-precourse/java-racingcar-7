@@ -3,9 +3,9 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.validation.Parser;
 
-public class InputModel {
+public class UserInputHandler {
     String carNames ;
-    public InputModel(){
+    public UserInputHandler(){
     }
     public String getName(){
         this.carNames = Console.readLine();

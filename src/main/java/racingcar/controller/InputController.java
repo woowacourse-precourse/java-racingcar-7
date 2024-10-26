@@ -1,35 +1,35 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
-import racingcar.model.InputModel;
+import racingcar.model.UserInputHandler;
 import racingcar.validation.NameValidator;
 import racingcar.view.InputView;
 
 public class InputController {
     private String userInput;
-    private final InputModel inputModel = new InputModel();
+    private final UserInputHandler userInputHandler = new UserInputHandler();
     private final InputView inputView = new InputView();
     public InputController(){
     }
 
     public void validateInputFormat(){
         inputView.printCarNameInputPrompt();
-        this.userInput = inputModel.getName();
+        this.userInput = userInputHandler.getName();
         NameValidator.validateTrailingComma(userInput);
     }
 
     public void validateNameLength(){
-        for(String i : inputModel.splitCarNames()){
+        for(String i : userInputHandler.splitCarNames()){
             NameValidator.validateNameLengthWithinLimit(i);
         }
     }
     public void validateNonEmptyNames(){
-        for(String i : inputModel.splitCarNames()){
+        for(String i : userInputHandler.splitCarNames()){
             NameValidator.validateNameNotEmpty(i);
         }
     }
     public void addCarsFromInput(Cars cars){
-        for(String i : inputModel.splitCarNames()){
+        for(String i : userInputHandler.splitCarNames()){
             cars.addCarByName(i);
         }
     }
