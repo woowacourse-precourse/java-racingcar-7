@@ -1,18 +1,18 @@
 package racingcar.service;
 
 public class CarService {
-    String[] cars;
-    int moveCount;
+    private String[] carNames;
+    private int moveCount;
 
     public void createGame(String carNames) {
         splitCarNames(carNames);
-        for (String car: cars) {
-            validateCarNames(car);
+        for (String carName: this.carNames) {
+            validateCarNames(carName);
         }
     }
 
     public void splitCarNames(String carNames) {
-        cars = carNames.split(",");
+        this.carNames = carNames.split(",");
     }
 
     public void validateCarNames(String carName) {
