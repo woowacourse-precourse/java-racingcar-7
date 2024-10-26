@@ -16,14 +16,18 @@ public class RacingController {
     }
 
     public void runRacingGame() {
-        String[] names = getInputNames();
-        int tryCount = getInputTryCount();
-        racingGame.ready(names, tryCount);
+        int tryCount = gameReady();
 
         gameStart(tryCount);
 
-        List<String> winners = racingGame.end();
-        racingGameView.printWinners(winners);
+        gameEnd();
+    }
+
+    private int gameReady() {
+        String[] names = getInputNames();
+        int tryCount = getInputTryCount();
+        racingGame.ready(names, tryCount);
+        return tryCount;
     }
 
     private void gameStart(int tryCount) {
@@ -31,6 +35,11 @@ public class RacingController {
             List<Car> cars = racingGame.startRound();
             racingGameView.printCurForward(cars);
         }
+    }
+
+    private void gameEnd() {
+        List<String> winners = racingGame.end();
+        racingGameView.printWinners(winners);
     }
 
     private String[] getInputNames() {
@@ -44,6 +53,5 @@ public class RacingController {
         int tryCount = racingGame.changeTryCountToInt(strTryCount);
         return tryCount;
     }
-
 
 }
