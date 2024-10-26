@@ -8,4 +8,9 @@ public class InputView {
         String names = readLine();
         return names;
     }
+
+    public String inputCount(){
+        String count = readLine();
+        return count;
+    }
 }

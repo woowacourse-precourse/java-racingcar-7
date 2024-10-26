@@ -19,6 +19,8 @@ public class CarRacingController {
 
     private List<Car> carList;
 
+    private Integer count;
+
     public CarRacingController(){
         this.outputView = new OutputView();
         this.inputView = new InputView();
@@ -27,6 +29,7 @@ public class CarRacingController {
         this.validator = new Validator();
 
         this.carList = new ArrayList<>();
+        this.count = 0;
     }
 
     public void inputNames(){
@@ -46,5 +49,7 @@ public class CarRacingController {
 
     public void inputCount(){
         outputView.printCountMessage();
+        String countString  = inputView.inputCount();
+        count = validator.isValidCount(countString);
     }
 }
