@@ -1,25 +1,15 @@
 package racingcar.view;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
 
-    InputView inputView = new InputView();
-
-    @Test
-    @DisplayName("사용자가 빈 문자열을 입력하면 예외가 발생한다.")
-    public void 사용자_입력_기능_예외() {
-        //given
-        String userInput = "\n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
-
-        //when then
-        Assertions.assertThatThrownBy(() -> inputView.getValidatedUserInput())
+    @ParameterizedTest
+    @ValueSource(strings = {""})
+    public void 사용자_입력_기능_예외(String userInput) {
+        Assertions.assertThatThrownBy(() -> InputValidator.validateUserInputNotEmpty(userInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
