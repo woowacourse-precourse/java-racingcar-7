@@ -32,5 +32,6 @@ public class RacingCarController {
 
     public void close() {
         service.determineWinner();
+        OutputView.printGameResult(service.getWinners());
     }
 }

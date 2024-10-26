@@ -71,4 +71,8 @@ public class CarService {
         }
         return maxMoved;
     }
+
+    public List<String> getWinners() {
+        return winners;
+    }
 }
