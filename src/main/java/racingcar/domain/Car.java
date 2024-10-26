@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNumberGenerator;
+
 public class Car {
     private final String name;
     private int position;
@@ -24,8 +26,9 @@ public class Car {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber > 3) {
+    public void move() {
+        int randomValue = RandomNumberGenerator.generate(0, 9);
+        if (randomValue >= 4) {
             position++;
         }
 
