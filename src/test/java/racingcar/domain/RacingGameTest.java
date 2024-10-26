@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CarContainerTest {
+class RacingGameTest {
 
     @Test
     @DisplayName("한명이 우승하는 경우 테스트")
@@ -17,7 +17,7 @@ class CarContainerTest {
         Car car3 = settingMoveCar("park", 2);
         Car car4 = settingMoveCar("kim", 1);
         List<Car> cars = List.of(car1, car2, car3, car4);
-        CarContainer carContainer = new CarContainer(cars);
+        RacingGame carContainer = new RacingGame(cars);
 
         String expected = "song";
 
@@ -37,7 +37,7 @@ class CarContainerTest {
         Car car3 = settingMoveCar("park", 4);
         Car car4 = settingMoveCar("kim", 1);
         List<Car> cars = List.of(car1, car2, car3, car4);
-        CarContainer carContainer = new CarContainer(cars);
+        RacingGame carContainer = new RacingGame(cars);
 
         String expected = "song, park";
 
@@ -57,7 +57,7 @@ class CarContainerTest {
         Car car3 = settingMoveCar("park", 4);
         Car car4 = settingMoveCar("kim", 4);
         List<Car> cars = List.of(car1, car2, car3, car4);
-        CarContainer carContainer = new CarContainer(cars);
+        RacingGame carContainer = new RacingGame(cars);
 
         String expected = "song, park, kim";
 
@@ -77,7 +77,7 @@ class CarContainerTest {
         Car car3 = settingMoveCar("park", 4);
         Car car4 = settingMoveCar("kim", 4);
         List<Car> cars = List.of(car1, car2, car3, car4);
-        CarContainer carContainer = new CarContainer(cars);
+        RacingGame carContainer = new RacingGame(cars);
 
         String expected = "song, lee, park, kim";
 
