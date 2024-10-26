@@ -2,22 +2,11 @@ package racingcar.service;
 
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.Cars;
 
-public class RaceService {
-    private Cars cars;
+public interface RaceService {
+    void makeCars(List<String> names);
 
-    public void makeCars(List<String> names) {
-        cars = Cars.of(names);
-    }
+    List<Car> startRace();
 
-    public List<Car> startRace() {
-        cars.startRace();
-        return cars.getCars();
-    }
-
-    public List<Car> getWinner() {
-        return cars.getWinners();
-    }
-
+    List<Car> getWinner();
 }
