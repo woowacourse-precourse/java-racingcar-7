@@ -16,9 +16,14 @@ public class RacingCarCollection {
     public RacingCarCollection(String carString, String readTryCount) {
         carList = new LinkedHashMap<>();
         String[] cars = carString.split(",");
-        validate(cars);
+        validateCarName(cars);
         arrToMap(cars);
-        tryCount = Integer.parseInt(readTryCount);
+        tryCount = validateTryCount(readTryCount);
+    }
+
+    private Integer validateTryCount(String readTryCount) {
+        if(Integer.parseInt(readTryCount) > 0) return Integer.parseInt(readTryCount);
+        throw new IllegalArgumentException("[ERROR] : 시도 횟수는 양수를 입력해주세요.");
     }
 
     private void arrToMap(String[] cars) {
@@ -28,7 +33,7 @@ public class RacingCarCollection {
     }
 
 
-    private void validate(String[] cars) {
+    private void validateCarName(String[] cars) {
         validateCarNmaeBlank(cars);
         validateCarNameLength(cars);
         validateDuplicateName(cars);
