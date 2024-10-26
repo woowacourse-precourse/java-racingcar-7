@@ -5,23 +5,23 @@ import java.util.Objects;
 
 public class Car {
     private final CarName carName;
-    private final Position currentPosition;
+    private final CarPosition currentCarPosition;
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.currentPosition = new Position();
+        this.currentCarPosition = new CarPosition();
     }
 
     public void accelerate() {
-        currentPosition.addPosition();
+        currentCarPosition.addPosition();
     }
 
     public boolean isAtSameOrAheadOf(Integer otherCarPosition) {
-        return currentPosition.isGreaterThanOrEqualTo(otherCarPosition);
+        return currentCarPosition.isGreaterThanOrEqualTo(otherCarPosition);
     }
 
     public CarInfo getCarInfo() {
-        return new CarInfo(carName, currentPosition);
+        return new CarInfo(carName, currentCarPosition);
     }
 
     @Override

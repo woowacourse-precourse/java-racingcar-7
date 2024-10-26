@@ -6,18 +6,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PositionTest {
+class CarPositionTest {
 
-    Position position;
+    CarPosition carPosition;
 
     @Test
     @DisplayName("자동차의 현재 위치를 증가 시킨다.")
     void 현재_위치를_증가시키는_기능() {
         //given
-        position = new Position();
+        carPosition = new CarPosition();
 
         //when
-        int currentPosition = position.addPosition();
+        int currentPosition = carPosition.addPosition();
 
         //then
         Assertions.assertThat(currentPosition).isEqualTo(1);
@@ -27,13 +27,13 @@ class PositionTest {
     @DisplayName("자동차의 위치를 비교 하여 더 클 경우 True를 반환 한다.")
     void 자동차의_현재_위치를_비교하는_기능() {
         //given
-        Position poviCarPosition = new Position();
-        Position minuCarPosition = new Position();
+        CarPosition poviCarCarPosition = new CarPosition();
+        CarPosition minuCarCarPosition = new CarPosition();
 
         //when
-        poviCarPosition.addPosition();
+        poviCarCarPosition.addPosition();
 
         //then
-        assertTrue(poviCarPosition.isGreaterThanOrEqualTo(minuCarPosition.getPosition()));
+        assertTrue(poviCarCarPosition.isGreaterThanOrEqualTo(minuCarCarPosition.getPosition()));
     }
 }

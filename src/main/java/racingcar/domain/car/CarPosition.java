@@ -1,9 +1,9 @@
 package racingcar.domain.car;
 
-public class Position {
+public class CarPosition {
     private int position;
 
-    public Position() {
+    public CarPosition() {
         this.position = 0;
     }
 
