@@ -22,7 +22,6 @@ public class Controller {
             outputView.outputTrialResult(cars);
         }
         List<Car> winningCarGroup = game.findWinningCars(cars);
-        outputView.outputTrialResult(cars);
         outputView.outputWinningCars(winningCarGroup);
     }
 }
