@@ -83,3 +83,8 @@
 
 - - 이름 길이나 시도 횟수 등에 대한 입력을 받을 때 유효성 검사를 수행하고, 조건을 만족하지 못할 경우 `IllegalArgumentException`을 발생시킨다.
 - - 예외 발생 시 프로그램을 종료하도록 try-catch 문으로 예외를 처리한다.
+
+
+
+## AppicationTest 
+- 예외 테스트 실패로 `Car` 클래스에서 `move` 의 랜덤 변수를 분리 하여 `Game` 클래스에서 StartRace 에 다시 만들어서 추가 
