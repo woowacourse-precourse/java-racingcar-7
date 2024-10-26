@@ -6,9 +6,17 @@ public class TryCount {
 
     private final int value;
 
-    public TryCount(int value) {
+    private TryCount(int value) {
         validateMinimumTryCount(value);
         this.value = value;
+    }
+
+    public static TryCount of(String value) {
+        try {
+            return new TryCount(Integer.parseInt(value));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
     }
 
     private void validateMinimumTryCount(int value) {
