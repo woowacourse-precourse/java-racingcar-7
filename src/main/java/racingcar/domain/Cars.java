@@ -14,6 +14,14 @@ public class Cars {
 
     private List<Car> cars;
 
+    public List<Car> getClonedCars() {
+        List<Car> clonedCars=cars.stream()
+                .map((car)->new Car(car.getName(),car.getState()))
+                .collect(Collectors.toUnmodifiableList());
+
+        return clonedCars;
+    }
+
     public Cars(String carsInput) {
         carsInput=CarsFactory.validateInput(carsInput);
         this.cars = makeCarList(carsInput);
@@ -27,9 +35,9 @@ public class Cars {
         return carList;
     }
 
-    public void race() {
+    public void race(NumberGenerator numberGenerator) {
         cars.stream()
-                .forEach(car -> car.act(RandomNumberGenerator.createRandomNumber()));
+                .forEach(car -> car.act(numberGenerator.generateNumber()));
     }
 
     public void printState() {

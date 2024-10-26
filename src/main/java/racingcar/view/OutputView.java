@@ -3,7 +3,6 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class OutputView {
@@ -35,14 +34,11 @@ public class OutputView {
         System.out.printf(RACING_WINNER,result);
     }
 
-    public static void printState(Cars cars) {
-        List<Car> carList=cars.getCars();
+    public void printState(Cars cars) {
+        List<Car> carList=cars.getClonedCars();
 
-        carList.
-                stream()
-                .forEach(car -> {
-                    System.out.println(car.getName() + SPACE + DELIMITER + SPACE + car.getState());
-                });
-        System.out.println(BLANK);
+        for (Car car:carList){
+            System.out.println(car.getName()+SPACE+DELIMITER+SPACE+car.getState());
+        }
     }
 }
