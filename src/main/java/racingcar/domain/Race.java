@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.util.ParseStringUtil;
 import racingcar.util.RandomNumUtil;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Race {
@@ -42,6 +43,13 @@ public class Race {
 
     private int getRandomNum() {
         return RandomNumUtil.getRandomNum();
+    }
+
+    private int getHighestPosition() {
+        return raceCars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow()
+                .getPosition();
     }
 
 }
