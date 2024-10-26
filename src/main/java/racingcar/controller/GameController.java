@@ -36,8 +36,7 @@ public class GameController {
 
     public int inputCountProcess() {
         InputView.inputCountView();
-        String inputCount = Console.readLine();
-        return Integer.parseInt(inputCount);
+        return InputUtil.inputCount();
     }
 
     public void carsProcess(int count) {
