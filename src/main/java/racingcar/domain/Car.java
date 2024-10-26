@@ -28,6 +28,10 @@ public class Car {
 		return position;
 	}
 
+	public String getName(){
+		return name;
+	}
+
 	private void move() {
 		position += MOVE_AMOUNT;
 	}
