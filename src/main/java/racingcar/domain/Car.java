@@ -14,4 +14,12 @@ public class Car {
             movedCnt++;
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMovedCnt() {
+        return movedCnt;
+    }
 }

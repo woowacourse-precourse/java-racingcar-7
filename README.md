@@ -108,9 +108,9 @@ public int getRoundLimit()
 public void printRoundResult(boolean isFirstRound, List\<Car> participants)
 : \: 각 라운드의 결과를 출력하는 메소드.
 
-- [ ]  isFirstRound가 true이면 `실행 결과` 메시지 출력
-- [ ]  participants의 각 요소에 하나씩 접근
-    - [ ]  (자동차 이름) : (전진 횟수만큼의 -) 형태로 출력
+- [x]  isFirstRound가 true이면 `실행 결과` 메시지 출력
+- [x]  participants의 각 요소에 하나씩 접근
+    - [x]  (자동차 이름) : (전진 횟수만큼의 -) 형태로 출력
 
 public void printUltimateResult(List\<String> winners)
 : \: 모든 라운드 종료 후 최종 우승자를 출력하는 메소드.
