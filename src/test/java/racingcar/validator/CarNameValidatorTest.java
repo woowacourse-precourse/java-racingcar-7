@@ -30,7 +30,6 @@ public class CarNameValidatorTest {
     @DisplayName("입력값이 1~5자면 정상 통과")
     void testSuccessInputLength(String input) {
         assertDoesNotThrow(() -> inputValidator.validateCarNameLength(input));
-
     }
 
     @ParameterizedTest
@@ -42,7 +41,7 @@ public class CarNameValidatorTest {
                 () -> inputValidator.validateCarNameLength(input));
 
         // Then
-        assertEquals("자동차 이름은 1자에서 5자 사이여야 합니다.", thrown.getMessage());
+        assertEquals("자동차 이름은 6자를 초과할 수 없습니다.", thrown.getMessage());
     }
 
 
