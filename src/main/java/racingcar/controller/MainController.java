@@ -19,6 +19,7 @@ import racingcar.view.OutputView;
 public class MainController {
     private final static String CAR_NAME_SPLIT_REGEX = ",";
     private final static int TRAIL_NUMBER_MIN = 0;
+    private final static int CAR_POSITION_MIN = 0;
     private final MoveRule moveRule;
 
     private MainController(final MoveRule moveRule) {
@@ -56,7 +57,7 @@ public class MainController {
                     if (!carNames.add(carName)) {
                         throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR.getMessage());
                     }
-                    return Car.create(carName);
+                    return Car.create(carName, CAR_POSITION_MIN);
                 })
                 .toList();
     }

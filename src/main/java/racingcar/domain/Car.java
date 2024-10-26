@@ -14,8 +14,8 @@ public class Car {
         this.position = position;
     }
 
-    public static Car create(final String name) {
-        return new Car(name, 0);
+    public static Car create(final String name, final int position) {
+        return new Car(name, position);
     }
 
     public String getName() {
