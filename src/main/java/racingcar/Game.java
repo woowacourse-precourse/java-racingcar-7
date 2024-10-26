@@ -42,7 +42,16 @@ public class Game {
         return result;
     }
 
-    private List<Car> determineWinners() {
-        return new ArrayList<>(cars);
+    private List<String> determineWinners() {
+        List<String> winners = new ArrayList<>();
+
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max().orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName).toList();
     }
+
 }
