@@ -15,7 +15,7 @@ public class Cars {
         return new Cars(cars);
     }
 
-    private Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -26,18 +26,8 @@ public class Cars {
     }
 
     public List<String> findWinners(List<Integer> positions) {
-        int winnerPosition = determineWinnerPosition(positions);
-        return cars.stream()
-                .filter(car -> car.isWinnerPosition(winnerPosition))
-                .map(Car::getName)
-                .toList();
-    }
-
-    private int determineWinnerPosition(List<Integer> positions) {
-        return positions.stream()
-                .mapToInt(Integer::intValue)
-                .max()
-                .orElse(0);
+        Winners winners = new Winners(cars);
+        return winners.findWinners(positions);
     }
 
     public List<Integer> getPositions() {
