@@ -1,6 +1,11 @@
 package racingcar.service;
 
+import java.util.ArrayList;
+import racingcar.model.Car;
+import racingcar.model.GameBoard;
+
 public class CarService {
+    private final GameBoard gameBoard = new GameBoard(new ArrayList<>());
     private String[] carNames;
     private int moveCount;
 
@@ -8,6 +13,7 @@ public class CarService {
         splitCarNames(carNames);
         for (String carName: this.carNames) {
             validateCarNames(carName);
+            gameBoard.addCar(new Car(carName, 0));
         }
     }
 
