@@ -11,6 +11,13 @@ public class Application {
     private static Integer round;
     public static void main(String[] args) {
         readUserInput();
+        RacingCarGame game = new RacingCarGame(carNames, round);
+
+        game.start();
+
+        List<String> winnerNames = game.selectWinners();
+
+        System.out.println(Arrays.toString(winnerNames.toArray()));
     }
 
     private static void readUserInput(){
@@ -24,6 +31,7 @@ public class Application {
 
         input = Console.readLine();
         round = Integer.parseInt(input);
+
         Console.close();
     }
 }
