@@ -10,6 +10,8 @@ import java.util.List;
 
 public class RacingCarGame {
 
+    private static final int MIN_VALUE_TO_MOVE = 4;
+
     private final int attemptCount;
     private final CarManager carManager = new CarManager();
     private final CarPositionLogRepository carPositionLogRepository = new CarPositionLogRepository();
@@ -36,13 +38,17 @@ public class RacingCarGame {
     private void moveCars() {
         for (int i = 0; i < attemptCount; i++) {
             List<Car> cars = carManager.getCars();
-            cars.forEach(car -> {
-                int randomNumber = integerGenerator.generate(0, 9);
-                if (randomNumber >= 4) {
-                    car.move();
-                }
-                carPositionLogRepository.saveCarPositionLog(car);
-            });
+            moveCar(cars);
         }
+    }
+
+    private void moveCar(List<Car> cars) {
+        cars.forEach(car -> {
+            int randomNumber = integerGenerator.generate();
+            if (randomNumber >= MIN_VALUE_TO_MOVE) {
+                car.move();
+            }
+            carPositionLogRepository.saveCarPositionLog(car);
+        });
     }
 }
