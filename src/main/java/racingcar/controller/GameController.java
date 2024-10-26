@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Game;
 import racingcar.model.RacingCar;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,6 +15,7 @@ public class GameController {
         OutputView.printInputNamesMessage();
 
         carNames = InputView.readInput();
+        InputValidator.validateCarNames(carNames);
 
         OutputView.printInputRoundMessage();
 
