@@ -26,17 +26,36 @@ class CarTest {
     }
 
     @Test
+    void 자동차_비교_테스트() {
+        // given
+        Car car1 = new Car("testCar1", 100L);
+        Car car2 = new Car("testCar2", 100L);
+        Car car3 = new Car("testCar3", 101L);
+        Car car4 = new Car("testCar4", 99L);
+
+        // when
+        int result1 = car1.compareTo(car2);
+        int result2 = car1.compareTo(car3);
+        int result3 = car1.compareTo(car4);
+
+        // then
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(-1);
+        assertThat(result3).isEqualTo(1);
+
+    }
+
+    @Test
     void 자동차_전진_테스트() {
         // given
         Car car = new Car("testCar1");
         Car expect = new Car("testCar2", 1L);
-        final int SAME = 0;
 
         // when
         car.forward();
 
         // then
-        assertThat(car.compareTo(expect)).isEqualTo(SAME);
+        assertThat(car.compareTo(expect)).isEqualTo(0);
     }
 
 }
