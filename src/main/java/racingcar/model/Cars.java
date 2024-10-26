@@ -13,6 +13,10 @@ public class Cars {
     }
 
     public static Cars createCarList(String carNamesInput) {
+        if (carNamesInput.contains(",,")) {
+            throw new IllegalArgumentException("자동차 이름 사이에 연속된 쉼표가 있습니다.");
+        }
+
         String[] carNames = carNamesInput.split(",");
         List<Car> carList = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<>();
