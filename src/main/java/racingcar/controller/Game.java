@@ -17,7 +17,7 @@ public class Game {
         int numberOfTrials = Integer.parseInt(rawNumberOfTrials);
 
         proceedRacing(cars, numberOfTrials);
-
+        OutputView.printWinner(cars.getWinner());
     }
 
     public void proceedRacing(Cars cars , int numberOfTrials ) {

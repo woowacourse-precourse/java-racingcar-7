@@ -38,4 +38,22 @@ public class Cars {
 
         return currentStates;
     }
+
+    public ArrayList<String> getWinner(){
+        ArrayList<String> winners = new ArrayList<>();
+        int highestPosition = 0;
+        for (Car car : cars) {
+            if (highestPosition < car.getPosition()) {
+                highestPosition = car.getPosition();
+            }
+        }
+
+        for (Car car : cars) {
+            if (car.getPosition() == highestPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
 }
