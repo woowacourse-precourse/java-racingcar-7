@@ -11,6 +11,10 @@ public class RacingGameService {
         }
     }
 
+    public List<Car> findWinner(List<Car> cars){
+
+    }
+
     private void randomMove(Car car){
         car.move(Randoms.pickNumberInRange(0, 9) >= 4);
     }
