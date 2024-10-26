@@ -20,4 +20,10 @@ public class InputConsoleHandler {
         System.out.println(NUN_OF_TRIAL_GUIDE_MESSAGE);
     }
 
+    public int askNumOfTrial() {
+        String input = Console.readLine();
+
+        return Integer.parseInt(input);
+    }
+
 }
