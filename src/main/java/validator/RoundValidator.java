@@ -1,4 +1,5 @@
-package racingcar.util;
+package validator;
 
 public class RoundValidator {
+
 }
