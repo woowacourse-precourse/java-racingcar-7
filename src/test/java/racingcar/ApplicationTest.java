@@ -1,12 +1,17 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.TestClassOrder;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -29,6 +34,51 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+
+    @Test
+    public void 유효한_입력_테스트() {
+        String simulatedInput = "pobi,woni,jun\n5\n";
+        System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+
+        RaceInput result = Application.getInput();
+        assertEquals("pobi,woni,jun", result.getCarNames());
+        assertEquals(5, result.getNumberOfAttempts());
+    }
+
+    @Test
+    public void 빈_자동차이름_입력_테스트() {
+        String simulatedInput = "\n5\n";
+        System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Application.getInput();
+        });
+        assertEquals("자동차 이름과 시도 횟수는 비어있을 수 없습니다.", exception.getMessage());
+
+    }
+
+    @Test
+    public void 빈_시도횟수_입력_테스트() {
+        String simulatedInput = "pobi,woni,jun\n\n";
+        System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Application.getInput();
+        });
+        assertEquals("자동차 이름과 시도 횟수는 비어있을 수 없습니다.", exception.getMessage());
+    }
+
+    @Test
+    public void 음수_시도횟수_입력_테스트() {
+        String simulatedInput = "pobi,woni,jun\n-1\n";
+        System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Application.getInput();
+        });
+        assertEquals("시도 횟수는 0보다 작을 수 없습니다.", exception.getMessage());
     }
 
     @Override
