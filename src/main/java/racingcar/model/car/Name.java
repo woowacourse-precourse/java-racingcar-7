@@ -21,7 +21,7 @@ public class Name {
   }
 
   private boolean validateNameLength(String name) {
-    if (name.length() <= 5) {
+    if (name.length() >= 5) {
       return false;
     } else {
       return true;
