@@ -46,10 +46,24 @@ public class Racing {
         for (String name : racingCars.keySet()) {
             int randomValue = pickNumberInRange(0, 10);
             outputWriter.getRaceResults(name, randomValue);
+
             if (randomValue >= 4) {
                 racingCars.put(name, racingCars.get(name) + randomValue);
             }
         }
     }
 
+    public Set<String> determineWinners(Map<String, Integer> racingCars) {
+        int maxScore = 0;
+        Set<String> WinnerName = new HashSet<>();
+
+        for (Map.Entry<String, Integer> entry : racingCars.entrySet()) {
+            if(entry.getValue() > maxScore) {
+                maxScore = entry.getValue();
+                WinnerName.add(entry.getKey());
+            }
+        }
+
+        return WinnerName;
+    }
 }

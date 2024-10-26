@@ -5,6 +5,7 @@ import racingcar.view.InputReader;
 import racingcar.view.OutputWriter;
 
 import java.util.Map;
+import java.util.Set;
 
 public class RacingController {
 
@@ -27,5 +28,6 @@ public class RacingController {
         outputWriter.printRaceResultsMessage();
         racing.executeRace(racingCars, racingCount);
 
+        Set<String> WinnerName = racing.determineWinners(racingCars);
     }
 }
