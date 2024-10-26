@@ -24,7 +24,9 @@ public class Application {
     }
 
     private String getCarNamesInput() {
-        return Console.readLine();
+        String userInput = Console.readLine();
+        validateNotEmpty(userInput);
+        return userInput;
     }
 
     private void validateNotEmpty(String str) {
@@ -53,6 +55,14 @@ public class Application {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
         }
+    }
+
+    private void validateCarNames(String[] carNames) {
+        for (String carName : carNames) {
+            validateNotEmpty(carName);
+            validateNameLength(carName);
+        }
+        validateMinimumTwoCars(carNames);
     }
 
     private void printRequestingRaceRound() {
@@ -116,25 +126,19 @@ public class Application {
     private void readySetGo() {
         printRequestingCarNamesInput();
         String userCarNamesInput = getCarNamesInput();
+        String[] carNames = splitNamesByComma(userCarNamesInput);
 
-        validateNotEmpty(userCarNamesInput);
-
-        String[] cars = splitNamesByComma(userCarNamesInput);
-
-        validateMinimumTwoCars(cars);
-        for (String carName : cars) {
-            validateNotEmpty(carName);
-            validateNameLength(carName);
-        }
+        validateCarNames(carNames);
 
         printRequestingRaceRound();
         int userRaceRoundInput = getRaceRoundInput();
 
-        initializeCarPositions(cars);
+        initializeCarPositions(carNames);
 
-        validateUniqueCarNames(cars);
+        validateUniqueCarNames(carNames);
 
         System.out.println("실행 결과");
+
         for (int n=0; n<userRaceRoundInput; n++) {
             executeRaceRound();
         }
