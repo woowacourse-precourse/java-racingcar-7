@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.RacingRequestDto;
+import racingcar.model.Racing;
 import racingcar.util.CarNameParser;
 import racingcar.util.CarNameValidator;
 import racingcar.util.RaceRoundValidator;
@@ -20,5 +21,6 @@ public class RacingController {
         CarNameValidator.validateCarNames(carNames);
         RaceRoundValidator.validateRaceRound(racingRequest.rawRoundsToRace());
         int raceRound = Integer.parseInt(racingRequest.rawRoundsToRace());
+        Racing racing = Racing.from(carNames, raceRound);
     }
 }
