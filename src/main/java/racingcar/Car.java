@@ -28,4 +28,12 @@ public class Car {
         }
         System.out.println();
     }
+
+    public int getForwardNumber() {
+        return this.forwardNumber;
+    }
+
+    public String getName() {
+        return this.carName;
+    }
 }
