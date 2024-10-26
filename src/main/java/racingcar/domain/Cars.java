@@ -20,6 +20,7 @@ public class Cars {
         return cars;
     }
 
+    //todo 더 좋은 방법 없을까?
     public List<Car> getWinningCar() {
         List<Car> winningCars = new ArrayList<>();
         int winningDistanceScore = getHighestDistance();
