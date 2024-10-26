@@ -12,7 +12,7 @@ public class RacingCarService {
     public static String run(List<String> car, List<Integer> process, int numTry) {
         for (int i = 0; i < numTry; i++) {
             pickRandom(process);
-            sb.append(Result.printOngoing(car,process)).append("\n");
+            sb.append(Result.printOngoing(car, process)).append("\n");
         }
 
         return sb.toString();
