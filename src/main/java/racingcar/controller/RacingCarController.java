@@ -4,10 +4,12 @@ import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private final RacingCarService racingCarService = new RacingCarService();
 
     public void run() {
@@ -27,6 +29,7 @@ public class RacingCarController {
         System.out.println("실행 결과");
         for(int i = 0 ; i < tryCount.getTryCount() ; i++){
             racingCarService.race(cars);
+            outputView.printStatus(cars);
         }
 
     }
