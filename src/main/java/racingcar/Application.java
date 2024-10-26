@@ -4,18 +4,18 @@ import controller.MainController;
 import controller.RacingCarService;
 import factory.CarFactory;
 import view.InputView;
-import view.OutputHandler;
+import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         InputView inputView = new InputView();
-        OutputHandler outputHandler = new OutputHandler();
+        OutputView outputView = new OutputView();
         CarFactory carFactory = new CarFactory();
-        RacingCarService racingCarService = new RacingCarService(outputHandler);
+        RacingCarService racingCarService = new RacingCarService(outputView);
 
-        MainController mainController = new MainController(inputView, outputHandler, carFactory, racingCarService);
+        MainController mainController = new MainController(inputView, outputView, carFactory, racingCarService);
         mainController.run();
 
     }
