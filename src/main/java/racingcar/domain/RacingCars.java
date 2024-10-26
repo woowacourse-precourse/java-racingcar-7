@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import racingcar.dto.CarStatusDto;
+import racingcar.exception.DuplicateNameException;
+import racingcar.exception.MaxRacingCarCountException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,13 +53,13 @@ public class RacingCars {
 
     private void validateUniqueName(List<String> names) {
         if (names.size() != names.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
+            throw new DuplicateNameException();
         }
     }
 
     private void validateRacingCarCount(List<String> carNames) {
         if (carNames.size() > CAR_COUNT_THRESHOLD) {
-            throw new IllegalArgumentException("경주에 참가할 수 있는 최대 자동차 수는 10대입니다.");
+            throw new MaxRacingCarCountException();
         }
     }
 }

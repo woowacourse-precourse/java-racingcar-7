@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.CarStatusDto;
+import racingcar.exception.DuplicateNameException;
+import racingcar.exception.MaxRacingCarCountException;
 
 import java.util.List;
 
@@ -75,7 +77,7 @@ class RacingCarsTest {
 
         //when & then
         Assertions.assertThatThrownBy(() -> racingCars.registerCars(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(DuplicateNameException.class);
     }
 
     @Test
@@ -87,7 +89,7 @@ class RacingCarsTest {
 
         //when & then
         Assertions.assertThatThrownBy(() -> racingCars.registerCars(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(MaxRacingCarCountException.class);
     }
 
     @Test
