@@ -7,7 +7,6 @@ import racingcar.validation.InputValidator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameService {
     public List<Car> createCars(String carNamesInput) {
@@ -30,25 +29,11 @@ public class RacingGameService {
         return InputValidator.validateMoveCount(moveCountInput);
     }
 
-    public void startRace(List<Car> cars, int moveCount) {
-        for (int i = 0; i < moveCount; i++) {
-            raceOneRound(cars);
-            printRoundResult(cars);
-        }
-    }
-
-    private void raceOneRound(List<Car> cars) {
+    public void raceOneRound(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.decideToMove(randomNumber);
         }
-    }
-
-    private void printRoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        }
-        System.out.println();
     }
 
     public List<Car> findWinners(List<Car> cars) {
@@ -64,13 +49,5 @@ public class RacingGameService {
             }
         }
         return winners;
-    }
-
-    public void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        System.out.println("최종 우승자 : " + winnerNames);
     }
 }
