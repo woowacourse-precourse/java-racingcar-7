@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.RacingRequestDto;
+import racingcar.model.Car;
 import racingcar.model.Racing;
 import racingcar.util.CarNameParser;
 import racingcar.util.CarNameValidator;
@@ -31,5 +32,7 @@ public class RacingController {
             racing.executeRound();
             outputView.printRoundResult(racing.getCars());
         }
+        List<Car> winners = racing.getWinners();
+        outputView.printWinners(winners);
     }
 }

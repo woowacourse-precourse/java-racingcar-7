@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 
 public class OutputView {
@@ -10,6 +11,13 @@ public class OutputView {
 
     public void initPrintRoundResult() {
         System.out.println(ROUND_RESULT_START_MESSAGE);
+    }
+
+    public void printWinners(List<Car> winners) {
+        String winCarNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winCarNames);
     }
 
     public void printRoundResult(List<Car> cars) {

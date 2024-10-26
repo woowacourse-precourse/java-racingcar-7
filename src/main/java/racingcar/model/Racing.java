@@ -33,6 +33,17 @@ public class Racing {
         return (currentRound < totalRounds);
     }
 
+    public List<Car> getWinners() {
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getMovedDistance() == maxDistance)
+                .toList();
+    }
+
     public static Racing from(List<String> carNames, int totalRounds) {
         List<Car> cars = carNames.stream().map(Car::new).toList();
         return new Racing(cars, totalRounds);
