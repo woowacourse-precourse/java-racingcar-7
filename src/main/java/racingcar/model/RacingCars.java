@@ -48,7 +48,6 @@ public class RacingCars {
 
         return new RacingCars(values.stream()
                 .filter(rC -> rC.getPosition() == maxPosition)
-                .map(RacingCar::new)
                 .toList());
     }
 
