@@ -54,7 +54,7 @@
 ### Controller
 - [ ] RacingCarGameController
 ### Enum
-- [ ] Separator
+- [x] Separator
 ### Util
 - [ ] CarNameValidator
 - [ ] MoveCountValidator
