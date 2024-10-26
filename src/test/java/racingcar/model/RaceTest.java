@@ -16,4 +16,17 @@ public class RaceTest {
             softly.assertThat(race.getCount()).isEqualTo(2);
         });
     }
+
+    @Test
+    @DisplayName("무작위로 전진할 수 있다")
+    public void moveRandomly() {
+        Race race = new Race("abc,def", 2);
+        race.getCars().get(0).moveBasedOnPoint(3);
+        race.getCars().get(1).moveBasedOnPoint(4);
+
+        assertSoftly(softly -> {
+            softly.assertThat(race.getCars().get(0).getPosition()).isEqualTo(0);
+            softly.assertThat(race.getCars().get(1).getPosition()).isEqualTo(1);
+        });
+    }
 }

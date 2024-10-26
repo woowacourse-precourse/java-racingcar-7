@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,5 +29,13 @@ public class Race {
 
     public int getCount() {
         return count;
+    }
+
+    public void moveCars() {
+        cars.stream()
+                .forEach(car -> {
+                    int point = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+                    car.moveBasedOnPoint(point);
+                });
     }
 }
