@@ -29,4 +29,10 @@ public class InputHandler {
     public String[] devideNames(String names) {
         return names.split(",");
     }
+
+    public int getNumberOfGames() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int numberOfGames = Integer.parseInt(Console.readLine());
+        return numberOfGames;
+    }
 }
