@@ -1,6 +1,8 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.Test;
 
 class CarTest {
@@ -19,9 +21,14 @@ class CarTest {
 
     @Test
     void 자동차_검증_테스트() {
-        String carName = "test";
+        String carName1 = "test";
+        String carName2 = "";
+
         assertThatThrownBy(() -> {
-            new Car(carName);
+            new Car(carName1);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            new Car(carName2);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
