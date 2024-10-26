@@ -13,7 +13,11 @@ public class Validator {
         return carName;
     }
 
-    public static String validateCommaSeparator(String inputCarName){
+    public static String validateCommaSeparatorOrNull(String inputCarName){
+
+        if(inputCarName.isBlank()){
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+        }
 
         if(!inputCarName.contains(",")){
             throw new IllegalArgumentException("쉼표를 이용해서 자동차를 구분해 주세요.");
@@ -22,12 +26,18 @@ public class Validator {
         return inputCarName;
     }
 
-    public static Integer validateNotNumber(String trialCount){
+    public static Integer validateNotNumberOrNull(String trialCount){
 
         try{
+            if(trialCount.isBlank()){
+                throw new IllegalArgumentException("시도 횟수를 입력해주세요.");
+            }
+
             return Integer.parseInt(trialCount);
+
         }catch(NumberFormatException e){
             throw new IllegalArgumentException("숫자를 입력해 주세요.");
         }
     }
+
 }

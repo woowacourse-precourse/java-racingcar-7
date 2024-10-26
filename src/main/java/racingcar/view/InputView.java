@@ -10,12 +10,12 @@ public class InputView {
 
     public static List<String> inputCarName(){
 
-        return Utils.splitInputCar(Validator.validateCommaSeparator(Console.readLine()));
+        return Utils.splitInputCar(Validator.validateCommaSeparatorOrNull(Console.readLine()));
     }
 
     public static int inputTrialCount(){
 
-        return Validator.validateNotNumber(Console.readLine());
+        return Validator.validateNotNumberOrNull(Console.readLine());
     }
 
 }
