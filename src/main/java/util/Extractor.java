@@ -7,14 +7,14 @@ import java.util.Arrays;
 import repository.CarRepository;
 
 public class Extractor {
-    public static ArrayList<Car> extractCarList(String input) {
+    public static ArrayList<String> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
         Validator.validateInputDate(inputCars);
-        return converToCarArrayList(inputCars);
+        return inputCars;
     }
 
-    private static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
+    public static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String inputCar : inputCars) {
             cars.add(new Car(inputCar));
@@ -47,10 +47,8 @@ public class Extractor {
     }
 
     public static RacingParam parseInput(RacingInput input) {
-
-        ArrayList<Car> inputCars = Extractor.extractCarList(input.cars());
+        ArrayList<Car> inputCars = converToCarArrayList(extractCarList(input.cars()));
         int inputRepeatCount = Integer.parseInt(input.repeatCount());
-
         return new RacingParam(inputCars, inputRepeatCount);
     }
 }
