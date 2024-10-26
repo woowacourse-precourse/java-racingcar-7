@@ -19,3 +19,18 @@
 
 - [x] **5. 출력 기능**
     - 각 실행별 결과와 최종 우승자 출력
+
+### 프로젝트 구조
+```
+├── Application.java
+├── controller
+│   └── CarController.java
+├── domain
+│   ├── Car.java
+│   └── RaceRecord.java
+├── service
+│   └── CarService.java
+└── view
+    ├── InputView.java
+    └── OutputView.java
+```

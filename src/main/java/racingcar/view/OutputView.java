@@ -2,68 +2,65 @@ package racingcar.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import racingcar.domain.Car;
 
 public class OutputView {
 
-    public void printReportCards(Map<String, boolean[]> carReportCards, int tryTimes) {
+    public void printRace(List<Car> carReportCards) {
+        int tryTimes = carReportCards.getFirst().getReportCard().size();
         for (int i = 0; i < tryTimes; i++) {
-            for (Map.Entry<String, boolean[]> entry : carReportCards.entrySet()) {
-                String carName = entry.getKey();
-                boolean[] reportCard = entry.getValue();
-
-                System.out.print(carName + " : ");
-                printProgress(reportCard, i);
-                System.out.println();
-            }
+            printEachRound(carReportCards, i);
             System.out.println();
         }
     }
 
-    private void printProgress(boolean[] reportCard, int currentTry) {
-        for (int i = 0; i <= currentTry; i++) {
-            if (reportCard[i]) {
+    private void printEachRound(List<Car> carReportCards, int round) {
+        for (Car car : carReportCards) {
+            System.out.print(car.getName() + " : ");
+            printProgress(car.getReportCard(), round);
+            System.out.println();
+        }
+    }
+
+    private void printProgress(List<Boolean> reportCard, int currentRound) {
+        for (int i = 0; i <= currentRound; i++) {
+            if (reportCard.get(i)) {
                 System.out.print("-");
             }
         }
     }
 
-    public List<String> calculateWinners(Map<String, boolean[]> carReportCards) {
+    public List<String> calculateWinners(List<Car> carReportCards) {
         List<String> winners = new ArrayList<>();
-        int maxSuccessCount = -1;
+        int maxMovementCount = -1;
 
-        for (Map.Entry<String, boolean[]> entry : carReportCards.entrySet()) {
-            String carName = entry.getKey();
-            boolean[] reportCard = entry.getValue();
+        for (Car car : carReportCards) {
+            int movementCount = calculateMovementCount(car.getReportCard());
 
-            int successCount = calculateSuccessCount(reportCard);
-
-            if (successCount > maxSuccessCount) {
-                maxSuccessCount = successCount;
+            if (movementCount > maxMovementCount) {
+                maxMovementCount = movementCount;
                 winners.clear();
-                winners.add(carName);
-            } else if (successCount == maxSuccessCount) {
-                winners.add(carName);
+                winners.add(car.getName());
+            } else if (movementCount == maxMovementCount) {
+                winners.add(car.getName());
             }
         }
 
         return winners;
     }
 
-    private int calculateSuccessCount(boolean[] reportCard) {
-        int successCount = 0;
+    private int calculateMovementCount(List<Boolean> reportCard) {
+        int movementCount = 0;
         for (boolean result : reportCard) {
             if (result) {
-                successCount++;
+                movementCount++;
             }
         }
-        return successCount;
+        return movementCount;
     }
 
     public void printWinners(List<String> winners) {
-        if (!winners.isEmpty()) {
-            System.out.print("최종 우승자 : ");
-            System.out.print(String.join(", ", winners));
-        }
+        System.out.print("최종 우승자 : ");
+        System.out.print(String.join(", ", winners));
     }
 }
