@@ -14,6 +14,7 @@ public class CarRacing {
     private final int step;
     private final List<Car> carList;
     RandomRoadCreator roadCreator = new RandomRoadCreator();
+    WinnerPrinter winnerPrinter = new WinnerPrinter();
 
     public CarRacing(String cars, int step) {
         this.step = step;
@@ -28,6 +29,9 @@ public class CarRacing {
                 printRoad(car);
             }
         }
+
+        winnerPrinter.printWinner(carList);
+
     }
 
     private List<Car> addCar(String cars){
@@ -36,5 +40,8 @@ public class CarRacing {
                 .map(name -> new Car(name.trim())) // Car 객체 생성
                 .collect(Collectors.toList()); // List<Car>로 수집
     }
+
+
+
 
 }

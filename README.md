@@ -11,4 +11,6 @@
 
 - [ ] 직접 경기를 진행해주는 CarRacing 객체
 
-- [ ] 레이싱에서 현재 상황을 출력하는 Situation 객체
+- [ ] 레이싱에서 현재 거리를 출력하는 RoadPrinter 객체
+
+- [ ] 레이싱의 승자를 출력하는 WinnerPrinter 객체
