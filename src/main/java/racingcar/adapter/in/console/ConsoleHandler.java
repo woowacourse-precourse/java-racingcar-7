@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import racingcar.application.in.RacingCarUseCase;
 import racingcar.config.context.annotation.Handler;
 import racingcar.domain.Car;
+import racingcar.domain.Racing;
 import racingcar.domain.exception.InvalidCarInputException;
 import racingcar.domain.exception.InvalidTryCountInput;
 
@@ -24,7 +25,8 @@ public class ConsoleHandler {
         List<Car> cars = readCarsFromConsole();
         int tryCount = readTryCountFromConsole();
 
-        racingCarUseCase.startRacing(cars, tryCount);
+        Racing racingResult = racingCarUseCase.startRacing(cars, tryCount);
+        printWinners(racingResult);
     }
 
     private List<Car> readCarsFromConsole() {
@@ -56,5 +58,20 @@ public class ConsoleHandler {
         } catch (NoSuchElementException | NumberFormatException e) {
             throw new InvalidTryCountInput();
         }
+    }
+
+    private void printWinners(Racing racingResult) {
+        System.out.println();
+
+        System.out.println("실행 결과");
+        racingResult.printHistory();
+
+        System.out.println();
+
+        String winners = racingResult.getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println("최종 우승자 : " + winners);
     }
 }

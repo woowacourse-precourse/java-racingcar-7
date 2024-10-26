@@ -39,6 +39,6 @@ public class Car extends FieldValidation {
 
     @Override
     public String toString() {
-        return name;
+        return String.format("%s : %s", name, "-".repeat(distance));
     }
 }
