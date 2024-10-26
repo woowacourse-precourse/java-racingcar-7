@@ -1,10 +1,12 @@
 package racingcar.model;
 
 import java.util.List;
+import racingcar.constants.Constants;
 import racingcar.utils.RandomNumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
+    private final StringBuilder gameResult = new StringBuilder();
 
     public Cars(List<Car> cars) {
         validateCars(cars);
@@ -14,18 +16,27 @@ public class Cars {
     public List<CarName> getFinalWinners() {
         return this.cars.stream()
                 .filter(car -> car.getDistance() == findMaxDistance())
-                .map(Car::getCarRacer)
+                .map(Car::getCarName)
                 .toList();
     }
 
-    public void doOneCycle() {
+    public void moveAllCars() {
         for (Car car : cars) {
             car.decideToGo(RandomNumberGenerator.getRandomNumber());
         }
+        saveGameResult();
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public String getGameResult() {
+        return gameResult.toString();
+    }
+
+    private void saveGameResult() {
+        for (Car car : cars) {
+            gameResult.append(car.getCurrentState());
+            gameResult.append(Constants.ENTER);
+        }
+        gameResult.append(Constants.ENTER);
     }
 
     private int findMaxDistance() {
