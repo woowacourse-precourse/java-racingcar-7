@@ -3,6 +3,7 @@ package racingcar.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Racingcar;
 import racingcar.model.Racingcars;
 import racingcar.service.RacingService;
 import racingcar.utils.StringReplacer;
@@ -23,6 +24,7 @@ class RacingControllerTest {
     private Racingcars racingcars;
     private RacingcarNameValidate racingcarNameValidate;
     private RacingcarAttemptValidate racingcarAttemptValidate;
+    private StringBuilder middleResult;
 
     @BeforeEach
     void setUp() {
@@ -32,6 +34,7 @@ class RacingControllerTest {
         this.racingService = new RacingService(racingcars);
         this.racingcarNameValidate = new RacingcarNameValidate();
         this.racingcarAttemptValidate = new RacingcarAttemptValidate();
+        this.middleResult = new StringBuilder();
     }
 
     @Test
@@ -133,5 +136,21 @@ class RacingControllerTest {
         assertThatThrownBy(()->racingcarAttemptValidate.isParsable(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 정수 이외 데이터 입력");
+    }
+
+    @Test
+    @DisplayName("동시 우승자 출력 테스트")
+    void duplecateWinner(){
+        /* Given*/
+        racingcars.addCar(new Racingcar("녹차","---"));
+        racingcars.addCar(new Racingcar("말차","---"));
+        racingcars.addCar(new Racingcar("마차","---"));
+        racingcars.addCar(new Racingcar("주차","---"));
+
+        /* When */
+        String winners = racingService.makeFinalResult();
+
+        /* Then */
+        assertThat(winners).isEqualTo("녹차, 말차, 마차, 주차");
     }
 }

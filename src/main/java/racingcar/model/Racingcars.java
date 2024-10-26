@@ -25,4 +25,21 @@ public class Racingcars {
         }
         middleResult.append("\n");
     }
+
+    public String makeFinalResult() {
+        int max = 0;
+        String winner = "";
+        for (Racingcar racingcar : racingcarList) {
+            int compareDistance = racingcar.getDistanceLength();
+            if (max < compareDistance) {
+                max = compareDistance;
+                winner = racingcar.getName();
+                continue;
+            }
+            if (max == compareDistance) {
+                winner += ", " + racingcar.getName();
+            }
+        }
+        return winner;
+    }
 }

@@ -15,4 +15,8 @@ public class OutputView {
     public void printMiddleResult(StringBuilder middleResult) {
         System.out.println(middleResult);
     }
+
+    public void printFinalResult(String winners) {
+        System.out.println("최종 우승자 : " + winners);
+    }
 }

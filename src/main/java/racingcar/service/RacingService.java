@@ -26,4 +26,8 @@ public class RacingService {
             racingcars.makeMiddleResult(middleResult);
         }
     }
+
+    public String makeFinalResult() {
+        return racingcars.makeFinalResult();
+    }
 }

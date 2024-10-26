@@ -68,5 +68,11 @@ public class RacingController {
         racingService.makeMiddleResult(attempt, middleResult);//middleResult에 차수별 실행 결과 저장
 
         outputView.printMiddleResult(middleResult);//차수별 실행 결과 출력
+
+        /* 최대 기록과 동일한 자동차 이름 출력 */
+
+        String finalResult = racingService.makeFinalResult();//우승자 반환
+
+        outputView.printFinalResult(finalResult);//최종 우승자 출력
     }
 }

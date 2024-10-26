@@ -12,9 +12,22 @@ public class Racingcar {
         this.distance = "";
     }
 
+    public Racingcar(String name, String distance){
+        this.name = name;
+        this.distance = distance;
+    }
+
     public void move(StringBuilder middleResult) {
         randomMove();
-        middleResult.append(this.name).append(" : ").append(this.distance).append("\n");
+        middleResult.append("\n").append(this.name).append(" : ").append(this.distance);
+    }
+
+    public int getDistanceLength() {
+        return distance.length();
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     private void randomMove() {
