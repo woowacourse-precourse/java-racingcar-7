@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class CarRacing {
-    public static List<RacingCar> start(RacingCarTrace racingCarTrace) {
-        var tryCount = Prompt.racingTryCount();
+    public static List<RacingCar> start(RacingCarTrace racingCarTrace, int tryCount) {
         System.out.println("실행 결과");
         carRacingByTryCount(tryCount, racingCarTrace);
         return racingCarTrace.getBiggestDistanceRacingCar();
