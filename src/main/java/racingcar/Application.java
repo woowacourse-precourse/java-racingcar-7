@@ -24,7 +24,6 @@ public class Application {
             carRaceSituation.put(CarNames[i], ""); // 0 -> 시작지점
         }
 
-        // indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
         System.out.println("실행 결과");
         for (int i = 0; i < RaceCount; i++) {
             for (int j = 0; j < CarNames.length; j++) {
@@ -35,7 +34,6 @@ public class Application {
         }
 
 
-        // indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
         System.out.print("최종 우승자 : ");
         int winners = 0;
         for (String key : carRaceSituation.keySet()) {
@@ -49,7 +47,7 @@ public class Application {
 
     public static String movement(String CarNames) {
         String movement = "";
-        if (Randoms.pickNumberInRange(0, 9) > 4) { // 4이상이면 - 추가 (전진)
+        if (Randoms.pickNumberInRange(0, 9) >= 4) { // 4이상이면 - 추가 (전진)
             movement = movement.concat("-");
         }
         return movement;
