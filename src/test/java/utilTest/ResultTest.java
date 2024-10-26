@@ -10,7 +10,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
 public class ResultTest {
-    private static final List<String> CARS = new ArrayList<>(Arrays.asList("Hi", "Hello", "Woowa"));
+    private static final List<String> CAR = new ArrayList<>(Arrays.asList("Hi", "Hello", "Woowa"));
     private static final List[] PROGRESS = {
             new ArrayList<>(Arrays.asList(1, 3, 7)),
             new ArrayList<>(Arrays.asList(1, 3, 3)),
@@ -31,7 +31,7 @@ public class ResultTest {
     void printTest() {
         assertSimpleTest(() -> {
             for (int i = 0; i < PROGRESS.length; i++) {
-                String[] result = runMain(CARS, PROGRESS[i]);
+                String[] result = runMain(CAR, PROGRESS[i]);
                 String answerOngoing = ANSWER_ONGOING[i];
                 String answerWinner = ANSWER_WINNER[i];
 
