@@ -10,5 +10,8 @@ public class OutputView {
         System.out.println("시도할 횟수");
     }
 
+    public void printExecutionResult() {
+        System.out.println("실행 결과");
+    }
 
 }
