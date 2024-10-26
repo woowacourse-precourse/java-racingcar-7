@@ -50,7 +50,7 @@ public class RacingController {
         outputView.printPlayMessage();
 
         while (rounds > 0) {
-            gameEntry = gameManager.gameProgress(gameEntry, rounds);
+            gameEntry = gameManager.gameProgress(gameEntry);
             rounds--;
             outputView.printRoundResult(gameEntry);
         }
