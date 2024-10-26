@@ -28,7 +28,7 @@ public class RacingCarMachine {
 
 		// 2. 이름 입력 시 5자 이상인 경우
 		for (String car : cars) {
-			if (car.length() > 5){
+			if (car.length() > 4){
 				throw new IllegalArgumentException("5자 미만의 이름을 입력해 주세요.");
 			}
 		}
