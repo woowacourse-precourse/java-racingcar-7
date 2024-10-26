@@ -11,8 +11,13 @@ public class Car {
         this.name = name;
     }
 
-    public void move() {
-        this.currentPosition += updateCurrentPosition();
+    public Car(String name, int currentPosition) {
+        this.name = name;
+        this.currentPosition = currentPosition;
+    }
+
+    public Car move() {
+        return new Car(this.name, this.currentPosition + updateCurrentPosition());
     }
 
     public int updateCurrentPosition() {
