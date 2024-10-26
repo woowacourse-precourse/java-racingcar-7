@@ -30,15 +30,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printWinner(List<Car> cars){
-        int min = -1;
-        List<String> winnerNames = new ArrayList<>();
-        for (Car car : cars) {
-            if(car.getAdvanceCount()>=min){
-                min= car.getAdvanceCount();
-                winnerNames.add(car.getCarName());
-            }
-        }
+    public void printWinner(List<String> winnerNames){
         System.out.print("최종 우승자 : ");
         System.out.print(String.join(", ", winnerNames));
     }

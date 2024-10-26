@@ -27,4 +27,8 @@ public class CarController {
             viewController.printAdvance(cars);
         }
     }
+
+    public List<String> findWinner(List<Car> cars) {
+        return carService.findWinner(cars);
+    }
 }

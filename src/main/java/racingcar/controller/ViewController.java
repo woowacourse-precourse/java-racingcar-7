@@ -37,7 +37,7 @@ public class ViewController {
         outputView.printAdvance(cars);
     }
 
-    public void printWinner(List<Car> cars){
-        outputView.printWinner(cars);
+    public void printWinner(List<String> winnnerNames){
+        outputView.printWinner(winnnerNames);
     }
 }
