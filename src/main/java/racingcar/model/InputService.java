@@ -12,7 +12,7 @@ public class InputService {
 
     public List<String> carNamesValidation(String carNames) {
         if (carNames.isEmpty()) {
-            String request = InputView.request(carNames, InputView.CAR_NAME);
+            String request = InputView.request(InputView.CAR_NAME);
             carNamesValidation(request);
         }
 
@@ -37,11 +37,11 @@ public class InputService {
 
 
     private List<String> carNameLengthCheck() {
-        for (String carName : carNameList) {
-            if (carName.length() > 5) {
+        carNameList.forEach(name -> {
+            if (name.length() > 5) {
                 throw new IllegalArgumentException("이름이 5글자가 넘었습니다.");
             }
-        }
+        });
         return carNameList;
     }
 
@@ -50,14 +50,14 @@ public class InputService {
         return Integer.parseInt(str);
     }
 
+
     private Boolean isAllNumeric(String gameRounds) {
         return gameRounds.matches("\\d+");
     }
 
 
     private int gameRoundsRequest() {
-        String request = InputView.request("",
-                "1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
+        String request = InputView.request("1 ~ 5000 정수 입력만 가능합니다." + InputView.ROUNDS);
         return gameRoundsValidation(request);
     }
 

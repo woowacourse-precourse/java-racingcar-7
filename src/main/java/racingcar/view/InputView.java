@@ -16,8 +16,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String request(String empty, String outputStrings) {
-        String request = empty;
+    public static String request(String outputStrings) {
+        String request = "";
 
         while (request.isEmpty()) {
             System.out.println(outputStrings);
