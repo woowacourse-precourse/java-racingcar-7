@@ -18,8 +18,8 @@ public class CarsTest {
 
     @Test
     void 자동차를_저장한다() {
-        cars.saveCar("pobi");
-        cars.saveCar("jun");
+        cars.saveCar(new Car("pobi"));
+        cars.saveCar(new Car("jun"));
         List<CarDto> carDtoList = Arrays.asList(
                 new CarDto("pobi", 0),
                 new CarDto("jun", 0)
@@ -27,5 +27,10 @@ public class CarsTest {
 
         assertThat(cars.getCarDtoList())
                 .isEqualTo(carDtoList);
+    }
+
+    @Test
+    void 자동차들을_전진시킨다() {
+
     }
 }

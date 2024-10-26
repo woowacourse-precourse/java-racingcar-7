@@ -8,8 +8,7 @@ import racingcar.dto.CarDto;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public void saveCar(final String carName) {
-        Car car = new Car(carName);
+    public void saveCar(final Car car) {
         cars.add(car);
     }
 

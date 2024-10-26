@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.CarDto;
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -41,7 +42,8 @@ public class RacingCarController {
     private void registerCars(String carNames) {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
-            cars.saveCar(carName);
+            Car car = new Car(carName);
+            cars.saveCar(car);
         }
     }
 
