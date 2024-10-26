@@ -8,7 +8,7 @@ public class GameValidator {
     }
 
     public static void validateMoveCount(int count) {
-        if (count <= -1) {
+        if (count <= 0) {
             throw new IllegalArgumentException("유효한 횟수를 입력해주세요");
         }
     }
