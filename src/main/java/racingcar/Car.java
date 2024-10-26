@@ -13,15 +13,16 @@ public class Car {
     }
 
     public String getPosition() {
-        return name + "의 현재위치: " + position;
+        return name + " : " + position;
 
     }
+
 
     public void move(int randomInt) {
         if (randomInt >= 4) {
             position += "-";
         } else {
-            System.out.println(randomInt + "가 나와 이동하지 못했습니다.");
+            System.out.println(name + " : " + randomInt + "이(가) 나와 이동하지 못했습니다.");
         }
 
     }
