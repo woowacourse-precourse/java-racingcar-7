@@ -2,10 +2,10 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.input.converter.InputToRacingCarsConverter;
-import racingcar.input.converter.InputToRacingTryCountConverter;
+import racingcar.converter.StringToRacingCarsConverter;
+import racingcar.converter.StringToRacingTryCountConverter;
 
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
@@ -13,20 +13,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
-    InputToRacingCarsConverter inputToRacingCarsConverter;
-    InputToRacingTryCountConverter inputToRacingTryCountConverter;
+    StringToRacingCarsConverter stringToRacingCarsConverter;
+    StringToRacingTryCountConverter stringToRacingTryCountConverter;
 
     @BeforeEach
     void before() {
-        inputToRacingCarsConverter = new InputToRacingCarsConverter();
-        inputToRacingTryCountConverter = new InputToRacingTryCountConverter();
+        stringToRacingCarsConverter = new StringToRacingCarsConverter();
+        stringToRacingTryCountConverter = new StringToRacingTryCountConverter();
     }
 
     @Test
     void TDD_레이싱_객체_초기화() {
         //given
-        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
-        int tryCount = inputToRacingTryCountConverter.convert("5");
+        LinkedHashSet<RacingCar> cars = stringToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = stringToRacingTryCountConverter.convert("5");
 
         //when
         Racing racing = new Racing(cars, tryCount);
@@ -39,8 +39,8 @@ public class RacingTest {
     @Test
     void TDD_정적_팩토리_메서드_of() {
         //given
-        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
-        int tryCount = inputToRacingTryCountConverter.convert("5");
+        LinkedHashSet<RacingCar> cars = stringToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = stringToRacingTryCountConverter.convert("5");
 
         //when
         Racing racing = Racing.of(cars, tryCount);
@@ -77,8 +77,8 @@ public class RacingTest {
     }
 
     private Racing initRacing() {
-        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
-        int tryCount = inputToRacingTryCountConverter.convert("5");
+        LinkedHashSet<RacingCar> cars = stringToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = stringToRacingTryCountConverter.convert("5");
 
         return Racing.of(cars, tryCount);
     }

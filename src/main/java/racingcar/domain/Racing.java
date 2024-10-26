@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
-public record Racing(LinkedList<RacingCar> cars, int tryCount) {
+public record Racing(LinkedHashSet<RacingCar> cars, int tryCount) {
 
-    public static Racing of(LinkedList<RacingCar> cars, int tryCount) {
+    public static Racing of(LinkedHashSet<RacingCar> cars, int tryCount) {
         return new Racing(cars, tryCount);
     }
 

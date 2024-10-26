@@ -1,7 +1,11 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 import static racingcar.constant.RacingConstant.RACING_CAR_NAME_MAX_LENGTH;
-import static racingcar.constant.RacingConstant.RACING_CAR_MOVE_THRESHOLD;
+import static racingcar.constant.RacingConstant.RACING_CAR_MOVE_LIMIT;
+import static racingcar.message.ErrorMessage.CAR_NAME_REQUIRED;
+import static racingcar.message.ErrorMessage.CAR_NAME_MAX_LENGTH;
 
 public class RacingCar {
 
@@ -18,11 +22,11 @@ public class RacingCar {
 
     private void validateCarName(String name) {
         if (isCarNameBlank(name)) {
-            throw new IllegalArgumentException("자동차 이름이 비어있습니다.");
+            throw new IllegalArgumentException(CAR_NAME_REQUIRED.getMessage());
         }
 
         if (isCarNameLengthExceeded(name)) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하 여야 합니다.");
+            throw new IllegalArgumentException(CAR_NAME_MAX_LENGTH.getMessage());
         }
     }
 
@@ -51,6 +55,19 @@ public class RacingCar {
     }
 
     private boolean isStopByNumberValue(int numberValue) {
-        return numberValue < RACING_CAR_MOVE_THRESHOLD;
+        return numberValue < RACING_CAR_MOVE_LIMIT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(getName(), racingCar.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getName());
     }
 }
