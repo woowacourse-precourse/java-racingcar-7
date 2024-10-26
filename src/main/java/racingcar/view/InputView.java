@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validate.InputNumberValidation;
 import racingcar.view.enums.ViewMessages;
 
 public class InputView {
@@ -12,6 +13,6 @@ public class InputView {
     public static int enterNumberOfAttempts() {
         System.out.println(ViewMessages.ENTER_NUMBER_OF_ATTEMPTS.getViewMessages());
         String inputNumber = Console.readLine();
-        return Integer.parseInt(inputNumber);
+        return InputNumberValidation.validateInputNumber(inputNumber);
     }
 }
