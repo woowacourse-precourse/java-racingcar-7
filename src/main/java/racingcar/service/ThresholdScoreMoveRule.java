@@ -8,6 +8,11 @@ public final class ThresholdScoreMoveRule implements MoveRule {
     private static final int STOP = 0;
     private static final int MIN_NUM = 0;
     private static final int MAX_NUM = 9;
+    private final NumberGenerator numberGenerator;
+
+    public ThresholdScoreMoveRule(final NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     @Override
     public int tryMove() {
@@ -19,7 +24,7 @@ public final class ThresholdScoreMoveRule implements MoveRule {
     }
 
     private int generateNumber() {
-        return NumberGenerator.generateNumber(MIN_NUM, MAX_NUM);
+        return numberGenerator.generateNumber(MIN_NUM, MAX_NUM);
     }
 
 }

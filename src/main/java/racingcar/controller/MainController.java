@@ -13,6 +13,7 @@ import racingcar.domain.Racing;
 import racingcar.dto.WinnerResponseDto;
 import racingcar.service.MoveRule;
 import racingcar.service.ThresholdScoreMoveRule;
+import racingcar.util.NumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -27,7 +28,15 @@ public class MainController {
     }
 
     public static MainController create() {
-        return new MainController(new ThresholdScoreMoveRule());
+        return new MainController(createThresholdScoreMoveRule());
+    }
+
+    public static ThresholdScoreMoveRule createThresholdScoreMoveRule() {
+        return new ThresholdScoreMoveRule(createNumberGenerator());
+    }
+
+    public static NumberGenerator createNumberGenerator() {
+        return NumberGenerator.getInstance();
     }
 
     public void run() {
