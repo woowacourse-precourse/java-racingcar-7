@@ -1,5 +1,9 @@
 package racingcar.controller;
 
+import static java.lang.Integer.parseInt;
+
+import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Racing;
 import racingcar.model.TextFormatter;
@@ -24,5 +28,24 @@ public class Controller {
         String carNames = inputView.readCarNames();
         String[] carNameArr = textFormatter.splitCarNamesByComma(carNames);
         return Cars.from(carNameArr);
+    }
+
+    private void runRaceRounds(Cars cars) {
+        int totalRounds = parseInt(inputView.readTotalRounds());
+        Console.close();
+
+        outputView.printRaceResultMessage();
+        for (int round = 0; round < totalRounds; round++) {
+            racing.advance(cars);
+            showRoundResults(cars);
+        }
+    }
+
+    private void showRoundResults(Cars cars) {
+        for (Car car : cars.getCars()) {
+            String advanceMarkers = String.join("", car.getAdvanceMarkers());
+            outputView.printRaceResult(car.getName(), advanceMarkers);
+        }
+        outputView.printBlankLine();
     }
 }
