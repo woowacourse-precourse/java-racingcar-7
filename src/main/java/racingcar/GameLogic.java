@@ -46,7 +46,6 @@ public class GameLogic {
     }
 
     private int getMaxMoveCount() {
-        // maxMoveCount 없는 경우 처리
         return result.values().stream()
                 .mapToInt(StringBuilder::length)
                 .max()
