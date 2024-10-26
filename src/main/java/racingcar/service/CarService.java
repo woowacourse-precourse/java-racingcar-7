@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.ArrayList;
 import racingcar.model.Car;
 import racingcar.model.GameBoard;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarService {
     private final GameBoard gameBoard = new GameBoard(new ArrayList<>());
@@ -28,6 +29,7 @@ public class CarService {
     }
 
     public void playGame(int carNumber) {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
     }
 
     public int getMoveCount() {
