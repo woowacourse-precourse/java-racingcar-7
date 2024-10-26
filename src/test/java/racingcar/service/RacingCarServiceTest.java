@@ -1,11 +1,15 @@
 package racingcar.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 import racingcar.model.Race;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarServiceTest {
+
     @Test
     public void 자동차_이름_구분() {
         // given
@@ -19,5 +23,47 @@ public class RacingCarServiceTest {
         assertThat(race.getCars().get(0).getName()).isEqualTo("pobi");
         assertThat(race.getCars().get(1).getName()).isEqualTo("woni");
         assertThat(race.getCars().get(2).getName()).isEqualTo("jun");
+    }
+
+    @Test
+    public void 자동차_랜덤_전진_테스트() {
+        // given
+        RacingCarService service = new RacingCarService() {
+            @Override
+            protected int getRandomNumber() {
+                return 4;
+            }
+        };
+
+        Car car = new Car("pobi");
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+
+        // when
+        service.updateLocation(cars);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    public void 자동차_랜덤_멈춤_테스트() {
+        // given
+        RacingCarService service = new RacingCarService() {
+            @Override
+            protected int getRandomNumber() {
+                return 3;
+            }
+        };
+
+        Car car = new Car("pobi");
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+
+        // when
+        service.updateLocation(cars);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
