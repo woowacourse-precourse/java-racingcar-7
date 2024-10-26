@@ -1,8 +1,9 @@
 package racingcar.game.model;
 
+import racingcar.game.error.ErrorMessage;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final String INVALID_CAR_NAME_LENGTH = "자동차 이름의 길이는 5를 넘을 수 없습니다.";
     private final String name;
     private final Counter counter;
 
@@ -30,7 +31,7 @@ public class Car {
 
     private void validateLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH);
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH.getDescription());
         }
     }
 }
