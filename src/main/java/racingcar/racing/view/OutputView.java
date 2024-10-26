@@ -2,7 +2,6 @@ package racingcar.racing.view;
 
 import java.util.List;
 import racingcar.racing.model.Car;
-import racingcar.racing.model.Winner;
 
 public class OutputView {
     public static void printMessage(String message) {
@@ -29,6 +28,5 @@ public class OutputView {
         for (Car winner : winners) {
 
         }
-
     }
 }
