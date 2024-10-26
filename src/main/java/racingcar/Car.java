@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
@@ -12,8 +12,7 @@ public class Car {
     }
 
     public void move() {
-        Random random = new Random();
-        if(random.nextInt(10) >= 4){  //무작위 값이 4 이상일때만 전진
+        if(Randoms.pickNumberInRange(0, 10) >= 4){  //무작위 값이 4 이상일때만 전진
             position++;
         }
     }
