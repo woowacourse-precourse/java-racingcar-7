@@ -15,7 +15,7 @@ public class Application {
         String trialStr = readInput();
         Integer trial = parseTrial(trialStr);
 
-        for(int i = 0; i < trial; i++){
+        for (int i = 0; i < trial; i++) {
             assignRandomNumber(cars);
             checkRandomNumber(cars);
             printCarInfo(cars);
@@ -27,7 +27,7 @@ public class Application {
         printWinners(winners);
     }
 
-    public static String readInput(){
+    public static String readInput() {
         return Console.readLine();
     }
 
@@ -42,16 +42,16 @@ public class Application {
             racingCarList.add(racingCar);
         }
 
-        for(int i = 0; i < racingCars.length; i++){
-            for(int j = i + 1; j < racingCars.length; j++){
+        for (int i = 0; i < racingCars.length; i++) {
+            for (int j = i + 1; j < racingCars.length; j++) {
                 checkSameName(racingCars[i], racingCars[j]);
             }
         }
         return racingCarList;
     }
 
-    public static void checkSameName(String car1, String car2){
-        if(car1.equals(car2)){
+    public static void checkSameName(String car1, String car2) {
+        if (car1.equals(car2)) {
             throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
     }
@@ -77,7 +77,6 @@ public class Application {
     }
 
     public static void checkRandomNumber(List<RacingCar> racingCarList) {
-        //indent 수정
         for (RacingCar racingCar : racingCarList) {
             int pos = 0;
             for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
@@ -119,19 +118,12 @@ public class Application {
 
     public static void printWinners(List<String> winnerList) {
         String notice = "최종 우승자 : ";
-        if (winnerList.size() == 1) {
-            notice += winnerList.get(0);
-            System.out.println(notice);
-            return;
+        for (int i = 0; i < winnerList.size(); i++) {
+            notice += winnerList.get(i);
+            notice += SPLITTER;
+            notice += " ";
         }
-        else if (winnerList.size() > 1) {
-            for (int i = 0; i < winnerList.size(); i++) {
-                notice += winnerList.get(i);
-                notice += SPLITTER;
-                notice += " ";
-            }
-            notice = notice.substring(0, notice.length() - 2);
-            System.out.println(notice);
-        }
+        notice = notice.substring(0, notice.length() - 2);
+        System.out.println(notice);
     }
 }
