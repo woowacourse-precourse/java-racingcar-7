@@ -4,8 +4,8 @@
 
 ### 1. RequestView
 
-- [ ] inputCarsNames: 자동차 이름 입력 메서드
-- [ ] inputTryCount: 시도 횟수 입력 메서드
+- [X] inputCarsNames: 자동차 이름 입력 메서드
+- [X] inputTryCount: 시도 횟수 입력 메서드
 
 ### 2. StringUtils
 
