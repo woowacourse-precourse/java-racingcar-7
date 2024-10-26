@@ -75,9 +75,9 @@ public class InputValidator {
     public boolean IsNotNumber(String number) {
         for (char tryNumber : number.toCharArray()) {
             if (Character.isDigit(tryNumber)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }

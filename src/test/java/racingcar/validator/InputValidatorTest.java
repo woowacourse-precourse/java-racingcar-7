@@ -61,6 +61,10 @@ class InputValidatorTest {
         InputValidator inputValidator = new InputValidator();
 
         boolean normalInput = inputValidator.IsNotNumber("5"); //정상적인 입력
+        boolean stringInput = inputValidator.IsNotNumber("A");//숫자가 아닌 문자인 경우
+
+        Assertions.assertThat(normalInput).isFalse();
+        Assertions.assertThat(stringInput).isTrue();
 
 
     }
