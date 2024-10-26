@@ -1,11 +1,12 @@
 package racingcar.common;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.model.RawInput;
 
 public class InputController {
 
-    public static String getCarNamesInput(){
+    public static RawInput getCarNamesInput(){
         OutputController.printCarNamePromptMessage();
-        return Console.readLine();
+        return RawInput.of(Console.readLine());
     }
 }
