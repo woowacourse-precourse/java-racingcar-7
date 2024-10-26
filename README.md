@@ -49,7 +49,7 @@
 - [x] StringSplitter
 - [x] RandomNumberGenerator
 ### View
-- [ ] InputView
+- [x] InputView
 - [ ] OutputView
 ### Controller
 - [ ] RacingCarGameController
