@@ -8,6 +8,6 @@ public class Dice {
 
     public int roll() {
         // 1부터 6까지의 무작위 값 생성
-        return Randoms.pickNumberInRange(1, 6);
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
