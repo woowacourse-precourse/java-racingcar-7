@@ -4,22 +4,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 class RacingcarControllerTest {
 
-    RacingcarController controller;
+    private RacingcarController racingcarController;
 
     @BeforeEach
     void setUp() {
-        controller = new RacingcarController();
-    }
-
-    @AfterEach
-    void tearDown() {
         Console.close();
+        racingcarController = new RacingcarController();
     }
 
     @Test
@@ -28,7 +24,7 @@ class RacingcarControllerTest {
         setSystemInput("pobi,woni,jun");
 
         // when
-        String result = controller.getCarNames();
+        String result = racingcarController.getCarNames();
 
         // then
         assertThat(result).isEqualTo("success");
@@ -40,7 +36,24 @@ class RacingcarControllerTest {
         setSystemInput("5");
 
         // when
-        String result = controller.getAttemptCount();
+        String result = racingcarController.getAttemptCount();
+
+        // then
+        assertThat(result).isEqualTo("success");
+    }
+
+    @Test
+    void 게임_진행_테스트() {
+        // given
+        setSystemInput("pobi,woni,jun");
+        racingcarController.getCarNames();
+
+        Console.close();
+        setSystemInput("5");
+        racingcarController.getAttemptCount();
+
+        // when
+        String result = racingcarController.proceedRacingGame();
 
         // then
         assertThat(result).isEqualTo("success");

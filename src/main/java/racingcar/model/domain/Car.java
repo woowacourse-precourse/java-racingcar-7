@@ -28,7 +28,17 @@ public class Car {
         return movingForwardCount;
     }
 
-    public void modifyMovingForwardCount(Integer movingForwardCount) {
-        this.movingForwardCount = movingForwardCount;
+    public void modifyStatusFromRandomNumber(int randomNumber) {
+        if (randomNumber >= 4) {
+            this.status = CarStatus.MOVING_FORWARD;
+        } else {
+            this.status = CarStatus.STOP;
+        }
+    }
+
+    public void moveBasedOnStatus() {
+        if (this.status == CarStatus.MOVING_FORWARD) {
+            this.movingForwardCount++;
+        }
     }
 }

@@ -1,6 +1,8 @@
 package racingcar.model.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.model.domain.Car;
 import racingcar.model.domain.GameEnvironment;
 import racingcar.model.repository.RacingcarRepository;
@@ -28,6 +30,18 @@ public class RacingcarService {
     public int saveAttemptCount(String attemptCountInput) {
         Integer attemptCount = racingcarParser.convertToNumber(attemptCountInput);
         gameEnvironment.modifyAttemptCount(attemptCount);
+
+        return 1;
+    }
+
+    public int proceedRacingGame() {
+        List<Car> cars = racingcarRepository.findAll();
+        Integer attemptCount = gameEnvironment.getAttemptCount();
+
+        IntStream.range(0, attemptCount).forEach(i -> {
+            cars.forEach(car -> car.modifyStatusFromRandomNumber(Randoms.pickNumberInRange(0, 9)));
+            cars.forEach(Car::moveBasedOnStatus);
+        });
 
         return 1;
     }

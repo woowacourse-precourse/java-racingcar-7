@@ -31,4 +31,10 @@ public class RacingcarController {
 
         return "success";
     }
+
+    public String proceedRacingGame() {
+        racingcarService.proceedRacingGame();
+
+        return "success";
+    }
 }
