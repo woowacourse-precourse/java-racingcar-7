@@ -25,6 +25,7 @@ public class Race {
         InputValidation.validateNameLength(cars);
 
         InputValidation.validateIntRange(count);
+        InputValidation.validateNumberFormat(count);
         this.count = Integer.parseInt(count);
     }
 

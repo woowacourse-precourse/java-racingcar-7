@@ -2,6 +2,7 @@ package racingcar.validation;
 
 import racingcar.error.ErrorMessage;
 import racingcar.model.Car;
+import racingcar.utils.Utils;
 
 import java.util.List;
 
@@ -28,6 +29,12 @@ public class InputValidation {
     public static void validateIntRange(String number){
         if(number.length() > MAX_INTEGER_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.OVERFLOW_NUMBER.getMessage());
+        }
+    }
+
+    public static void validateNumberFormat(String number){
+        if(!Utils.isNumeric(number)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER.getMessage());
         }
     }
 }

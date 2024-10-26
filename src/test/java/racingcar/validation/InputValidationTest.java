@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Race;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class InputValidationTest {
     @Test
@@ -25,6 +26,13 @@ public class InputValidationTest {
     @DisplayName("이동횟수가 정수의 최대 값보다 큰 경우 예외발생")
     void validateIntRange() {
         assertThatThrownBy(() -> new Race("abcd,java", "10000000000"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 값을 이동횟수로 입력받은 경우 예외발생")
+    void validateNumberFormat() {
+        assertThatThrownBy(() -> new Race("abcd,java", "a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
