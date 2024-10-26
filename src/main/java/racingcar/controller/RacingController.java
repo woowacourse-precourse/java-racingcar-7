@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.utils.CarNameParser;
 import racingcar.utils.TryCountParser;
+import racingcar.utils.WinnerDeterminer;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -20,8 +22,8 @@ public class RacingController {
     }
 
     public void run() {
-        String carNames = getCarNames();
-        Cars cars = initializeRace(carNames);
+        List<String> carNames = getCarNames();
+        Cars cars = Cars.create(carNames);
 
         int tryCount = getTryCount();
 
@@ -36,14 +38,11 @@ public class RacingController {
         return TryCountParser.parse(input);
     }
 
-    private String getCarNames() {
+    private List<String> getCarNames() {
         outputView.printMessage(ASK_CAR_NAMES);
+        String input = inputView.userInput();
 
-        return inputView.userInput();
-    }
-
-    private Cars initializeRace(String carNames) {
-        return new Cars(carNames);
+        return CarNameParser.parse(input);
     }
 
     private void startRace(Cars cars, int tryCount) {
@@ -57,15 +56,13 @@ public class RacingController {
     private void playRound(Cars cars) {
         cars.play();
 
-        List<String> roundResults = cars.getRoundResults();
-
-        outputView.printRound(roundResults);
+        outputView.printRound(cars.getCars());
         outputView.printNewLine();
     }
 
     private void determineWinners(Cars cars) {
-        List<String> winners = cars.getWinners();
+        List<String> winnerList = WinnerDeterminer.determineWinners(cars.getCars());
 
-        outputView.printWinners(winners);
+        outputView.printWinners(winnerList);
     }
 }
