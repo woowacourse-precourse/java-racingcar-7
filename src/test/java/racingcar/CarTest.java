@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
@@ -13,7 +12,7 @@ class CarTest extends NsTest {
     @Test
     void 자동차가_앞으로_한칸_이동한다() {
         assertSimpleTest(() -> {
-                    Car car = new Car("car");
+                    Car car = new Car("car", 1);
                     car.move(1);
                     assertThat(car.getPosition()).isEqualTo(1);
                 }
