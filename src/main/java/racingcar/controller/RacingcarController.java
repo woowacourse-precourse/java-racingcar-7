@@ -18,5 +18,7 @@ public class RacingcarController {
 
         RacingGame racingGame = new RacingGame(cars, attemptCount);
         racingGame.play();
+
+        OutputView.printRacingResult(racingGame.getRoundResults(), racingGame.getWinnerNames());
     }
 }

@@ -31,4 +31,20 @@ public class RacingGame {
     public List<List<CarSnapshot>> getRoundResults() {
         return roundResults;
     }
+
+    public List<String> getWinnerNames() {
+        final Integer maxPosition = getMaxPosition(roundResults);
+
+        return roundResults.getLast().stream()
+                .filter(carSnapshot -> carSnapshot.position() == maxPosition)
+                .map(CarSnapshot::carName)
+                .toList();
+    }
+
+    private static Integer getMaxPosition(List<List<CarSnapshot>> roundResults) {
+        return roundResults.getLast().stream()
+                .map(CarSnapshot::position)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("라운드 최종 결과가 비어있습니다."));
+    }
 }
