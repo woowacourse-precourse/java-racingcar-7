@@ -2,12 +2,13 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 
 public class CarRacingController {
 
     public static final String CAR_NAME_DELIMITER = ",";
-    
+
     private final InputView inputView;
 
     public CarRacingController(InputView inputView) {
@@ -16,10 +17,12 @@ public class CarRacingController {
 
     public void run() {
         String carNames = inputView.inputCarNames();
-        List<String> carList = makeCarList(carNames);
+        List<Car> carList = makeCarList(carNames);
     }
 
-    private List<String> makeCarList(String carNames) {
-        return Arrays.stream(carNames.split(CAR_NAME_DELIMITER)).toList();
+    private List<Car> makeCarList(String carNames) {
+        return Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+                .map(Car::new)
+                .toList();
     }
 }
