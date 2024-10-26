@@ -5,8 +5,8 @@ class Car {
   private int position;
 
   public Car(String name) {
-    this.name = name;
     validateName(name);
+    this.name = name;
   }
 
   private void validateName(String name) {

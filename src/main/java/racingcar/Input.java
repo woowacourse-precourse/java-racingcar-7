@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Input {
   private static final Scanner scanner = new Scanner(System.in);
@@ -10,7 +11,7 @@ public class Input {
   public static List<String> inputCarNames() {
     System.out.println("자동차들: ");
     String input = scanner.nextLine();
-    return List.of(input.split(",")).stream().map(String::trim).collect(Collectors.toList());
+    return Stream.of(input.split(",")).map(String::trim).toList();
   }
     
   public static int inputRound() {
