@@ -69,4 +69,21 @@ class InputConsoleHandlerTest {
 
     }
 
+    @Test
+    @DisplayName("사용자는 전진 시도 횟수를 입력한다")
+    void numOfTrialInputTest() {
+        // given
+        String input = "5";
+        InputConsoleHandler inputConsoleHandler = new InputConsoleHandler();
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when
+        int numOfTrial = inputConsoleHandler.askNumOfTrial();
+
+        // then
+        assertThat(numOfTrial).isEqualTo(5);
+        System.setIn(System.in);
+        Console.close();
+    }
+
 }
