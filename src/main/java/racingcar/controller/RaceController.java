@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import java.util.List;
-import racingcar.domain.CarDomain;
+import java.util.stream.IntStream;
+import racingcar.domain.CarDomains;
 import racingcar.domain.RaceDomain;
 import racingcar.service.RaceService;
 import racingcar.service.impl.RaceServiceImpl;
@@ -13,23 +13,20 @@ public class RaceController {
     RaceService raceService = new RaceServiceImpl();
     OutputView outputView = new ConsoleOutputView();
 
-    public RaceDomain getRaceRequest(List<CarDomain> cars, Integer lastRound) {
+    public RaceDomain getRaceRequest(CarDomains cars, Integer lastRound) {
         return RaceDomain.create(cars, lastRound);
     }
 
     public void executeRaceRequest(RaceDomain race) {
         System.out.println(outputView.displayRoundResultString());
-        race.getCars().stream()
-                .limit(race.getLastRound())
-                .forEach(round -> {
-                    raceService.runRoundRace(race);
-                    System.out.println(outputView.displayEachRoundStatus(race.getCars()));
-                    race.incrementCurrentRound();
-                });
+        IntStream.range(0, race.getLastRound()).forEach(round -> {
+            raceService.runOneRound(race);
+            System.out.println(outputView.displayEachRoundStatus(race.getCars()));
+        });
     }
 
     public void getWinnerRequest(RaceDomain race) {
-        List<CarDomain> winners = raceService.getWinners(race);
+        CarDomains winners = raceService.getWinners(race);
         System.out.println(outputView.displayCarRaceWinner(winners));
     }
 }

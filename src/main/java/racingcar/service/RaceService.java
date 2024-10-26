@@ -1,10 +1,10 @@
 package racingcar.service;
 
-import java.util.List;
-import racingcar.domain.CarDomain;
+import racingcar.domain.CarDomains;
 import racingcar.domain.RaceDomain;
 
 public interface RaceService {
-    void runRoundRace(RaceDomain race);
-    List<CarDomain> getWinners(RaceDomain race);
+    void runOneRound(RaceDomain race);
+
+    CarDomains getWinners(RaceDomain race);
 }

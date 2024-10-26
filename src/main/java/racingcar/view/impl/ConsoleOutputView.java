@@ -4,9 +4,9 @@ import static racingcar.common.constant.OutputMessage.INPUT_CAR_NAMES;
 import static racingcar.common.constant.OutputMessage.INPUT_ROUND;
 import static racingcar.common.constant.OutputMessage.OUTPUT_ROUND_RESULT;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.CarDomain;
+import racingcar.domain.CarDomains;
 import racingcar.view.OutputView;
 
 public class ConsoleOutputView implements OutputView {
@@ -26,15 +26,15 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public String displayEachRoundStatus(List<CarDomain> cars) {
-        return cars.stream()
+    public String displayEachRoundStatus(CarDomains cars) {
+        return cars.getCars().stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getDistance()))
                 .collect(Collectors.joining(System.lineSeparator())) + System.lineSeparator();
     }
 
     @Override
-    public String displayCarRaceWinner(List<CarDomain> winners) {
-        return "최종 우승자 : " + winners.stream()
+    public String displayCarRaceWinner(CarDomains winners) {
+        return "최종 우승자 : " + winners.getCars().stream()
                 .map(CarDomain::getName)
                 .collect(Collectors.joining(", "));
     }

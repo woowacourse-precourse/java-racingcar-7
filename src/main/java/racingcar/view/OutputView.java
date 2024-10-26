@@ -1,7 +1,6 @@
 package racingcar.view;
 
-import java.util.List;
-import racingcar.domain.CarDomain;
+import racingcar.domain.CarDomains;
 
 public interface OutputView {
     String displayCarNameRequest();
@@ -10,7 +9,7 @@ public interface OutputView {
 
     String displayRoundResultString();
 
-    String displayEachRoundStatus(List<CarDomain> cars);
+    String displayEachRoundStatus(CarDomains cars);
 
-    String displayCarRaceWinner(List<CarDomain> winners);
+    String displayCarRaceWinner(CarDomains winners);
 }

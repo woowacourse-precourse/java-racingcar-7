@@ -1,23 +1,20 @@
 package racingcar.domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class RaceDomain {
-    private final List<CarDomain> cars;
+    private final CarDomains cars;
     private final Integer lastRound;
     private Integer currentRound = 0;
 
-    private RaceDomain(List<CarDomain> cars, Integer lastRound) {
+    private RaceDomain(CarDomains cars, Integer lastRound) {
         this.cars = cars;
         this.lastRound = lastRound;
     }
 
-    public static RaceDomain create(List<CarDomain> cars, Integer lastRound) {
+    public static RaceDomain create(CarDomains cars, Integer lastRound) {
         return new RaceDomain(cars, lastRound);
     }
 
-    public List<CarDomain> getCars() {
+    public CarDomains getCars() {
         return cars;
     }
 
@@ -29,18 +26,16 @@ public class RaceDomain {
         return lastRound;
     }
 
-    public void incrementCurrentRound() {
-        this.currentRound++;
+    public void executeOneRound() {
+        incrementCurrentRound();
+        cars.executeOneRound();
     }
 
-    public List<CarDomain> getWinnersInstance() {
-        int maxDistance = cars.stream()
-                .map(CarDomain::getDistance)
-                .max(Integer::compare)
-                .orElse(0);
+    public CarDomains getWinnersInstance() {
+        return cars.getWinnersInstance();
+    }
 
-        return cars.stream()
-                .filter(car -> car.getDistance().equals(maxDistance))
-                .collect(Collectors.toList());
+    private void incrementCurrentRound() {
+        this.currentRound++;
     }
 }

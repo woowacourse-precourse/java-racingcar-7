@@ -1,18 +1,17 @@
 package racingcar.service.impl;
 
-import java.util.List;
-import racingcar.domain.CarDomain;
+import racingcar.domain.CarDomains;
 import racingcar.domain.RaceDomain;
 import racingcar.service.RaceService;
 
 public class RaceServiceImpl implements RaceService {
     @Override
-    public void runRoundRace(RaceDomain race) {
-        race.getCars().forEach(CarDomain::attemptMove);
+    public void runOneRound(RaceDomain race) {
+        race.executeOneRound();
     }
 
     @Override
-    public List<CarDomain> getWinners(RaceDomain race) {
+    public CarDomains getWinners(RaceDomain race) {
         return race.getWinnersInstance();
     }
 }
