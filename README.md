@@ -57,7 +57,7 @@ public List\<Car> setParticipants(String[] splited)
 - [x]  자동차 이름으로 Car 인스턴스 생성한 후 리스트에 추가
 - [x]  생성된 Car 인스턴스의 리스트를 리턴
 
-public int canMove()
+public boolean canMove()
 : \: 랜덤 값을 추출해 반환하는 메소드.
 
 - [x]  `amp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()` 을 활용해 0에서 9 사이의 랜덤 값 추출
