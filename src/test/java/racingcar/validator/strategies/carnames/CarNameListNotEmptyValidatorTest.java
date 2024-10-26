@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.util.CarNameUtils;
 import racingcar.view.ErrorMessage;
 
-public class CarNameNotEmptyInListValidatorTest {
+public class CarNameListNotEmptyValidatorTest {
 
-    private final CarNameNotEmptyInListValidator validator = new CarNameNotEmptyInListValidator();
+    private final CarNameListNotEmptyValidator validator = new CarNameListNotEmptyValidator();
 
     @ParameterizedTest
     @CsvSource({

@@ -3,7 +3,7 @@ package racingcar.validator;
 import java.util.List;
 import racingcar.util.CarNameUtils;
 import racingcar.validator.strategies.carnames.CarNameDuplicateValidator;
-import racingcar.validator.strategies.carnames.CarNameNotEmptyInListValidator;
+import racingcar.validator.strategies.carnames.CarNameListNotEmptyValidator;
 import racingcar.validator.strategies.carnames.CarNameNotEmptyValidator;
 import racingcar.validator.strategies.carnames.CarNameTrailingCommaValidator;
 import racingcar.validator.strategies.carnames.MaximumCarNameLengthValidator;
@@ -13,7 +13,7 @@ public class CarNameValidator {
 
     private final CarNameNotEmptyValidator carNameNotEmptyValidator;
     private final CarNameTrailingCommaValidator carNameTrailingCommaValidator;
-    private final CarNameNotEmptyInListValidator carNameNotEmptyInListValidator;
+    private final CarNameListNotEmptyValidator carNameListNotEmptyValidator;
     private final MaximumCarNameLengthValidator maximumCarNameLengthValidator;
     private final MinimumNumberOfCarsValidator minimumNumberOfCarsValidator;
     private final CarNameDuplicateValidator carNameDuplicateValidator;
@@ -21,7 +21,7 @@ public class CarNameValidator {
     public CarNameValidator() {
         this.carNameNotEmptyValidator = new CarNameNotEmptyValidator();
         this.carNameTrailingCommaValidator = new CarNameTrailingCommaValidator();
-        this.carNameNotEmptyInListValidator = new CarNameNotEmptyInListValidator();
+        this.carNameListNotEmptyValidator = new CarNameListNotEmptyValidator();
         this.maximumCarNameLengthValidator = new MaximumCarNameLengthValidator();
         this.minimumNumberOfCarsValidator = new MinimumNumberOfCarsValidator();
         this.carNameDuplicateValidator = new CarNameDuplicateValidator();
@@ -38,7 +38,7 @@ public class CarNameValidator {
         List<String> nameList = CarNameUtils.splitCarNames(carNames);
 
         // 4. 빈 항목을 포함하지 않는지 검증
-        carNameNotEmptyInListValidator.validate(nameList);
+        carNameListNotEmptyValidator.validate(nameList);
 
         // 5. 각 자동차 이름 길이 검증
         maximumCarNameLengthValidator.validate(nameList);
