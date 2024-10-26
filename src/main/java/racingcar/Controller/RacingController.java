@@ -15,6 +15,12 @@ public class RacingController {
         this.attempts = InputView.getAttempts();
     }
 
+    private void playRound() {
+        for (ForwardController car : cars) {
+            car.move();
+        }
+    }
+
     private void showFinalWinners() {
         List<String> winners = WinGenerator.findWinners(cars);
         OutputView.showWinners(winners);
