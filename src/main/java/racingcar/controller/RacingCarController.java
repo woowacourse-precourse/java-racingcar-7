@@ -31,7 +31,6 @@ public class RacingCarController {
     }
 
     public List<String> separateName(String carNames){
-        List<String> nameList = Arrays.asList(carNames.split(","));
-        return nameList;
+        return Arrays.asList(carNames.split(","));
     }
 }
