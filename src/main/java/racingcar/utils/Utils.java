@@ -12,6 +12,9 @@ import racingcar.validation.Validation;
 public class Utils {
     private static final String DELIMITER = ",";
 
+    private static int MIN_RANDOM_VALUE = 0;
+    private static int MAX_RANDOM_VALUE = 9;
+
     public static List<String> stringToList(String input){
         return Arrays.stream(splitStringToArray(input)).toList();
     }
@@ -23,7 +26,7 @@ public class Utils {
     }
 
     public static int getRandomNumber(){
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
     }
 
     public static int stringToInt(String input){

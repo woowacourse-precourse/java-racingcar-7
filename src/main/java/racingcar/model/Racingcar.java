@@ -32,10 +32,10 @@ public class Racingcar {
         if(Utils.getRandomNumber() >= MOVING_FORWARD){
             step++;
         }
-        printRacingcarStep();
+        showRacingcarStep();
     }
 
-    private void printRacingcarStep(){
+    private void showRacingcarStep(){
         OutputView.printRacingCarStepResultMessage(name, getStepString());
     }
 
