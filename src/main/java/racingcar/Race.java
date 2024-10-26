@@ -18,6 +18,7 @@ public class Race {
 
         for (int i = 0; i < tryCount; i++) {
             moveCar(raceMap);
+            printResult(raceMap);
         }
     }
 
@@ -35,6 +36,26 @@ public class Race {
             return true;
         }
         return false;
+    }
+
+    private void printResult(Map<String, Integer> raceMap) {
+        for (Map.Entry<String, Integer> entry : raceMap.entrySet()) {
+            StringBuilder sb = new StringBuilder();
+            System.out.println(saveLog(sb, entry));
+        }
+        System.out.println();
+    }
+
+    private String saveLog(StringBuilder sb, Map.Entry<String, Integer> entry) {
+        sb.append(entry.getKey());
+        sb.append(" : ");
+        if (entry.getValue() == 0) {
+            return sb.toString();
+        }
+        for (int i = 0; i < entry.getValue() - 1; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 
     // ============= 입력값 검증 메서드 =============
