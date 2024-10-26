@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.controller.dto.RaceRoundResultDTO;
 import racingcar.model.Car;
-import racingcar.model.DefaultRandomNumberGenerator;
+import racingcar.model.policy.RandomMoveCondition;
 import racingcar.model.RacingGame;
-import racingcar.model.policy.RandomForwardMovementPolicy;
+import racingcar.model.policy.CarMovePolicy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -20,7 +20,7 @@ public class RacingGameController {
         List<Car> cars = parseCar(inputCarNames());
         int tryCount = inputTryCount();
         RacingGame racingGame = new RacingGame(
-                new RandomForwardMovementPolicy(new DefaultRandomNumberGenerator()),
+                new CarMovePolicy(new RandomMoveCondition()),
                 tryCount
         );
         racingGame.join(cars);

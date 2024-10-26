@@ -2,27 +2,28 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static util.Utils.MOVE_FORWARD;
+import static util.Utils.STOP;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
-import mock.ManualMockRandomNumberGenerator;
+import mock.MockMoveConditionPolicy;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
-import racingcar.model.RandomNumberGenerator;
+import racingcar.model.policy.MoveConditionPolicy;
 import racingcar.model.policy.MovementPolicy;
-import racingcar.model.policy.RandomForwardMovementPolicy;
+import racingcar.model.policy.CarMovePolicy;
+import util.Utils;
 
 class RacingGameTest extends NsTest {
 
-    private static final RandomNumberGenerator mockRandomGenerator = new ManualMockRandomNumberGenerator(
-            2,
-            9,
-            5
+    private static final MoveConditionPolicy moveConditionPolicy = new MockMoveConditionPolicy(
+            STOP, MOVE_FORWARD, MOVE_FORWARD
     );
 
-    private static MovementPolicy movementPolicy = new RandomForwardMovementPolicy(
-            mockRandomGenerator
+    private static MovementPolicy movementPolicy = new CarMovePolicy(
+            moveConditionPolicy
     );
 
     @Test
