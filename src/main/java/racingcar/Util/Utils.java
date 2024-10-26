@@ -11,5 +11,11 @@ public class Utils {
         return new ArrayList<>(Arrays.asList(carNames.split(",")));
     }
 
-
+    public static StringBuilder getTotalMoveDistance(int moveDistance) {
+        StringBuilder total = new StringBuilder();
+        for (int i = 0; i < moveDistance; i++) {
+            total.append("-");
+        }
+        return total;
+    }
 }
