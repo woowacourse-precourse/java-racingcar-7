@@ -1,7 +1,17 @@
 package racingcar.domain;
 
 public class GameRule {
-    public boolean moveForward(int randomNumber){
+    private final int gameLimit;
+
+    public GameRule(int gameLimit) {
+        this.gameLimit = gameLimit;
+    }
+
+    public int getGameLimit() {
+        return gameLimit;
+    }
+
+    public boolean moveForward(int randomNumber) {
         return randomNumber > 4;
     }
 }
