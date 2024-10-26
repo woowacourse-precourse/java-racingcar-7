@@ -27,6 +27,7 @@ public class RacingGameController {
 
         //승자를 구함
         List<Car> winner = race.getWinner();
+        OutputView.printWinners(winner);
 
 
     }
