@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,5 +25,14 @@ class TryCountTest {
         assertThat(tryCount.getTryCount()).isEqualTo(0);
     }
 
-
+    @DisplayName("시도횟수 여부")
+    @Test
+    public void 시도횟수_여부() {
+        TryCount zeroCount = new TryCount(1);
+        zeroCount.decrease();
+        assertAll(
+                () -> assertThat(new TryCount(1).isZero()).isFalse(),
+                () -> assertThat(zeroCount.isZero()).isTrue()
+        );
+    }
 }

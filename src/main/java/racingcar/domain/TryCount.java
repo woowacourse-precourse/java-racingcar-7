@@ -39,6 +39,10 @@ public class TryCount {
         this.tryCount--;
     }
 
+    public boolean isZero() {
+        return this.tryCount == 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
