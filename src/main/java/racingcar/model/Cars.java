@@ -45,8 +45,8 @@ public class Cars {
 
     public int getMaxDistance(){
         return carList.stream()
-                .max(Comparator.comparingInt(Car::getDistance))
-                .orElseThrow(() -> new IllegalArgumentException(Message.emptyCarList.getMessage()))
-                .getDistance();
+                .mapToInt(Car::getDistance)
+                .max()
+                .getAsInt();
     }
 }
