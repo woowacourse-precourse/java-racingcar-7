@@ -31,6 +31,15 @@ public class InputTest extends NsTest {
         assertEquals(5, result);
     }
 
+    @Test
+    void 잘못된_입력을_받으면_IllegalArgumentException을_발생시켜야한다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            String input = "잘못된 입력\n";
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
+            new Input().readTryNumber();
+        });
+    }
+
     @Override
     protected void runMain() {
 
