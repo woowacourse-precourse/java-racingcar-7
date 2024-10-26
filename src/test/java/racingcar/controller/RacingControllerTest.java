@@ -49,19 +49,19 @@ class RacingControllerTest {
 
     @Test
     @DisplayName("자동차 이름 공백 입력 테스트")
-    void isBlank(){
+    void isBlank() {
         /* Given */
         String input = " ";
 
         /* When, Then */
-        assertThatThrownBy(()->racingcarNameValidate.isBlank(input))
+        assertThatThrownBy(() -> racingcarNameValidate.isBlank(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름 공백");
     }
 
     @Test
     @DisplayName("자동차 이름 공백 제거 테스트")
-    void removeSpaces(){
+    void removeSpaces() {
         /* Given */
         String input = "녹차, 녹차,     녹차";
 
@@ -71,24 +71,24 @@ class RacingControllerTest {
 
     @Test
     @DisplayName("자동차 이름 5글자 초과 입력 예외 테스트")
-    void isMoreThanFiveLetters(){
+    void isMoreThanFiveLetters() {
         /* Given */
-        List<String> inputList = List.of("녹차3456","녹차34567");
+        List<String> inputList = List.of("녹차3456", "녹차34567");
 
         /* When, Then */
-        assertThatThrownBy(()->racingcarNameValidate.isMoreThanFiveLetters(inputList))
+        assertThatThrownBy(() -> racingcarNameValidate.isMoreThanFiveLetters(inputList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름 글자수 초과");
     }
 
     @Test
     @DisplayName("자동차 이름 중복 입력 예외 테스트")
-    void isDuplicate(){
+    void isDuplicate() {
         /* Given */
-        List<String> inputList = List.of("녹차","녹차");
+        List<String> inputList = List.of("녹차", "녹차");
 
         /* When, Then */
-        assertThatThrownBy(()->racingcarNameValidate.isDuplicate(inputList))
+        assertThatThrownBy(() -> racingcarNameValidate.isDuplicate(inputList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름 중복");
     }

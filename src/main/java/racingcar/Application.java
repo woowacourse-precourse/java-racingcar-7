@@ -19,7 +19,7 @@ public class Application {
         Racingcars racingcars = new Racingcars();
         RacingService racingService = new RacingService(racingcars);
 
-        RacingController racingController = new RacingController(inputView, outputView, stringSplitter, racingService, racingcarNameValidate,stringReplacer);
+        RacingController racingController = new RacingController(inputView, outputView, stringSplitter, racingService, racingcarNameValidate, stringReplacer);
         racingController.run();
     }
 }
