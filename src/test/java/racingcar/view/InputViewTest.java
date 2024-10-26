@@ -45,4 +45,13 @@ class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[타입 변환]");
     }
+
+    @Test
+    void 시도할_횟수에_양이아닌_정수_입력() {
+        String input = "0";
+
+        assertThatThrownBy(() -> inputView.parseMoveCount(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[부호]");
+    }
 }
