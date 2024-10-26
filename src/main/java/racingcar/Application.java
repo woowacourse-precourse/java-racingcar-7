@@ -52,6 +52,7 @@ public class Application {
                     racingNum[j]++;
                 }
             }
+            printRaceStatus(cars, racingNum);
         }
         return racingNum;
     }
@@ -59,5 +60,17 @@ public class Application {
     // 전진 조건 체크
     private static boolean shouldAdvance(Random random) {
         return random.nextInt(10) >= 4;
+    }
+
+    // 경주 상태 출력
+    private static void printRaceStatus(String[] cars, int[] racingNum) {
+        for (int j = 0; j < cars.length; j++) {
+            System.out.print(cars[j] + " : ");
+            for (int k = 0; k < racingNum[j]; k++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
