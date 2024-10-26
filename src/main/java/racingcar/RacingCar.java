@@ -24,6 +24,10 @@ public class RacingCar {
         System.out.println("-".repeat(forwardCount));
     }
 
+    boolean isWinner(int maxForwardCount) {
+        return maxForwardCount == forwardCount;
+    }
+
     String getName() {
         return name;
     }
