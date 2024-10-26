@@ -34,18 +34,21 @@ public class RacingGame {
         OutputView.printRacingGameWinner(getWinner());
     }
 
-    public List<String> getWinner(){
+    private List<String> getWinner(){
         return racingcars.getRacingcars().stream()
                 .filter(racingcar -> racingcar.isWinner(getWinningStep()))
                 .map(Racingcar::getName)
                 .collect(Collectors.toList());
     }
 
-    public int getWinningStep(){
-        List<Integer> steps = racingcars.getRacingcars().stream()
+    private int getWinningStep(){
+        return Utils.getMaxValue(getSteps());
+    }
+
+    private List<Integer> getSteps(){
+        return racingcars.getRacingcars().stream()
                 .map(Racingcar::getStep)
                 .collect(Collectors.toList());
-        return Utils.getMaxValue(steps);
     }
 
 }
