@@ -10,6 +10,7 @@ public class OutputRender {
     private BigInteger totalMaxPosition = BigInteger.ZERO;
 
     public void renderResult(int attemptCount, Map<String, List<BigInteger>> carMovementData) {
+        System.out.println("\n실행 결과");
         renderCarMovement(attemptCount, carMovementData);
         renderWinner(carMovementData);
     }
@@ -17,20 +18,8 @@ public class OutputRender {
     public void renderCarMovement(int attemptCount, Map<String, List<BigInteger>> carMovementData) {
         for (int step = 0; step < attemptCount; step++) {
             printStepResult(step, carMovementData);
+            System.out.println();
         }
-    }
-
-    public void renderWinner(Map<String, List<BigInteger>> carMovementData) {
-        List<String> winners = new ArrayList<>();
-        for (String name : carMovementData.keySet()) {
-            List<BigInteger> resultPositions = carMovementData.get(name);
-            BigInteger resultPosition = resultPositions.getLast();
-            if (totalMaxPosition.compareTo(resultPosition) == 0) {
-                winners.add(name);
-            }
-        }
-        System.out.print("최종 우승자 : ");
-        System.out.println(String.join(", ", winners));
     }
 
     private void printStepResult(int step, Map<String, List<BigInteger>> carMovementData) {
@@ -52,9 +41,22 @@ public class OutputRender {
     }
 
     private void printStepPosition(BigInteger stepPosition) {
-        for (BigInteger i = BigInteger.ZERO; i.compareTo(stepPosition) < 0; i = i.add(BigInteger.ONE)){
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(stepPosition) < 0; i = i.add(BigInteger.ONE)) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void renderWinner(Map<String, List<BigInteger>> carMovementData) {
+        List<String> winners = new ArrayList<>();
+        for (String name : carMovementData.keySet()) {
+            List<BigInteger> resultPositions = carMovementData.get(name);
+            BigInteger resultPosition = resultPositions.getLast();
+            if (totalMaxPosition.compareTo(resultPosition) == 0) {
+                winners.add(name);
+            }
+        }
+        System.out.print("최종 우승자 : ");
+        System.out.println(String.join(", ", winners));
     }
 }
