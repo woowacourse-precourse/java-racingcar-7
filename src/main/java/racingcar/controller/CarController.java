@@ -29,8 +29,11 @@ public class CarController {
         totalTimes = inputView.inputTimes();
     }
 
-    public void start() {
-        carService.start(names, totalTimes);
+    private void playRace() {
+        for (int i = 0; i < carGameManager.getTotalTimes(); i++) {
+            carGameManager.startEachStep();
+            outputView.printEachStep(carGameManager.getCars());
+        }
     }
 
     public void printWinners() {

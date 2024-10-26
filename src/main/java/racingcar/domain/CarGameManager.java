@@ -16,23 +16,17 @@ public class CarGameManager {
         this.totalTimes = totalTimes;
     }
 
-        for (int i = 0; i < totalTimes; i++) {
-            startEachStep();
-            System.out.println();
-        }
+    public void startEachStep() {
+        moveCars();
     }
 
-    private void startEachStep() {
+    private void moveCars() {
         for (Car car : cars) {
-            if (car.isMoved(Randoms.pickNumberInRange(0, 9))) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (car.isMoved(randomNumber)) {
                 car.move();
             }
-            car.printEachStep();
         }
-    }
-
-    public int getTotalCars() {
-        return cars.size();
     }
 
     public List<Integer> getEachCarResultDistance() {
