@@ -12,10 +12,12 @@ public class CarNameValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "'Ferrari',NAME_TOO_LONG", // 5자 초과
-            "', , ,',EMPTY_CAR_NAMES", // 공백으로만 이루어진 이름
-            "'pobi,woni,pobi',DUPLICATE_NAME", // 중복된 이름
-            "'pobi',MINIMUM_CARS", // 1대 이하
+            "'Ferrari', NAME_TOO_LONG", // 5자 초과
+            "'pobi,,woni', EMPTY_NAME_IN_LIST", // 빈 이름 포함
+            "'pobi,woni,', TRAILING_COMMA", // 끝에 쉼표 포함
+            "'pobi,woni,pobi', DUPLICATE_NAME", // 중복된 이름
+            "'pobi', MINIMUM_CARS", // 1대 이하
+            "'', EMPTY_CAR_NAMES" // 전체 빈 문자열
     })
     void validate_WhenInvalidCarNames_ShouldThrowException(String carNames, String errorMessage) {
         // 주어진 자동차 이름이 잘못된 경우 예외가 발생해야 함
@@ -23,6 +25,7 @@ public class CarNameValidatorTest {
                 .isThrownBy(() -> validator.validate(carNames))
                 .withMessage(ErrorMessage.valueOf(errorMessage).getMessage());
     }
+
 
     @ParameterizedTest
     @CsvSource({
