@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class OutputView {
 
@@ -21,9 +21,9 @@ public class OutputView {
         System.out.println(PLAY_MESSAGE);
     }
 
-    public void printGameResult(HashMap<String, String> gameResult) {
-        for (String key : gameResult.keySet()) {
-            System.out.println(key + " : " + gameResult.get(key));
+    public void printRoundResult(LinkedHashMap<String, String> roundResult) {
+        for (String key : roundResult.keySet()) {
+            System.out.println(key + " : " + roundResult.get(key));
         }
         System.out.println('\n');
     }
