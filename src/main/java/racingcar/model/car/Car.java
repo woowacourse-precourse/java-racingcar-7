@@ -31,11 +31,15 @@ public class Car {
 
   }
 
+  public void endRacing(){
+    distance.resetDistance();
+  }
+
   private int GenerateDecisionNum() {
     return DecisionNum.GenerateDecisionNum();
   }
 
-  private boolean isGo(int decisionNum){
+  private boolean isGo(int decisionNum) {
     return DecisionNum.isGo(decisionNum);
   }
 
@@ -45,6 +49,10 @@ public class Car {
 
   public Distance getDistance() {
     return distance;
+  }
+
+  public Integer getTotalForwordCount() {
+    return totalForwordCount;
   }
 
 }

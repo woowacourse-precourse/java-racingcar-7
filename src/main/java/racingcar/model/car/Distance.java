@@ -14,6 +14,9 @@ public class Distance {
     distance.append(distanceShape);
   }
 
+  public void resetDistance(){
+    distance.setLength(0);
+  }
 
   public String toString(){
     return distance.toString();
