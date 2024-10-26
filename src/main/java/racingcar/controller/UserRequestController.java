@@ -5,7 +5,6 @@ import racingcar.service.RacingService;
 import racingcar.service.ValidService;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 public class UserRequestController {
     UserViewController userViewController = new UserViewController();
@@ -26,25 +25,21 @@ public class UserRequestController {
         }
     }
 
-    private void saveCar(String carNames){
+    protected void saveCar(String carNames){
         List<String> carList = List.of(carNames.split(","));
-        for(String car : carList){
-            int idx = carList.indexOf(car);
-            car = car.trim();
-            carList.set(idx, car);
-        }
+        carList = carList.stream().map(String::trim).toList();
         cars = new Cars(carList);
     }
 
-    private List<String> getCarList(){
+    protected List<String> getCarList(){
         return cars.getCarNames();
     }
 
-    private List<Integer> getDistanceList(){
+    protected List<Integer> getDistanceList(){
         return cars.getDistance();
     }
 
-    private void racingRepeat(List<String> carList, String repeatNum){
+    protected void racingRepeat(List<String> carList, String repeatNum){
         int repeat = Integer.parseInt(repeatNum);
         for(int i=0; i<repeat; i++){
             List<Boolean> carGoList = racingService.carGoList(carList);

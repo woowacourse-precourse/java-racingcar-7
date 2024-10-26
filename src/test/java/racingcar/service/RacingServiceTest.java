@@ -61,9 +61,37 @@ class RacingServiceTest {
         //given
         List<String> carList = List.of("k,k1,k2".split(","));
         List<Integer> distance = List.of(3,3,1);
+        List<String> res = new ArrayList<>();
+
         //when
-        List<String> res = racingService.winnerCarList(carList, distance);
+        int bestScore = 0;
+        int carIdx = 0;
+        for(int i=0; i<distance.size(); i++){
+            if(distance.get(i) > bestScore){
+                carIdx = i;
+                bestScore = distance.get(i);
+            }
+        }
+        res.add(carList.get(carIdx));
+
+        for(int i=0; i<distance.size(); i++){
+            if((distance.get(i) == bestScore) && (i != carIdx)){
+                res.add(carList.get(i));
+            }
+        }
+
         //then
         assertThat(res).contains("k").contains("k1");
+    }
+
+    @Test
+    void winnerCarListTest3(){
+        //given
+        List<String> carList = List.of("k1,k2,k3".split(","));
+        List<Integer> distance = List.of(1,2,3);
+        //when
+        List<String> winner = racingService.winnerCarList(carList, distance);
+        //then
+        assertThat(winner).contains("k3");
     }
 }
