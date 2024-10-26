@@ -1,10 +1,10 @@
 package racingcar.io;
 
 public class Input {
-    public static void CarName() {
+    public static void carName() {
 
     }
-    public static void TryNum() {
+    public static void tryNum() {
 
     }
 }

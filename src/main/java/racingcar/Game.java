@@ -6,10 +6,14 @@ import racingcar.io.Output;
 public class Game {
     public void start() {
         try {
-            Output.CarName();
+            input();
         } catch(IllegalArgumentException e) {
-            Output.Error();
+            Output.error();
             throw new IllegalArgumentException();
         }
+    }
+
+    public void input() {
+        Output.carName();
     }
 }
