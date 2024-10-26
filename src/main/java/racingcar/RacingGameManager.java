@@ -27,7 +27,17 @@ class RacingGameManager implements RacingGame {
         endGame();
     }
 
-    private void progressGame() {}
+    private void progressGame() {
+        for (Car car : racingCarsList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                car.movingForward();
+            } else {
+                car.stop();
+            }
+        }
+        System.out.println();
+    }
 
     private void endGame() {}
 }
