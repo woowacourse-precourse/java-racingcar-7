@@ -28,6 +28,13 @@ public class Application {
         }
     }
 
+    public void printProgressOfGame(){
+        for(var car : cars){
+            System.out.println(car.carName + "-".repeat(car.length));
+        }
+        System.out.print('\n');
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application racingGame = new Application();
@@ -40,5 +47,10 @@ public class Application {
         String numberOfGames = Console.readLine();
         int gameCount = Integer.parseInt(numberOfGames);
 
+        System.out.println("\n실행 결과");
+        for(int i = 0; i<gameCount; ++i){
+            racingGame.startGame();
+            racingGame.printProgressOfGame();
+        }
     }
 }
