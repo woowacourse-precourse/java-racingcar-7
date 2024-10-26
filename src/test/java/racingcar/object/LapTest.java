@@ -13,17 +13,18 @@ import racingcar.object.value.Mileage;
 class LapTest {
 
     @Test
-    void doLap으로_랩을수행하고_랩의결과를받는다() {
+    void launchLap으로_랩을수행하고_랩의결과를받는다() {
         Lap lap = new Lap(new Cars(List.of(
                 Car.ready(new AlwaysOnDriveCarEngine(), new CarName("1번씽씽이")),
                 Car.ready(new BrokenCarEngine(), new CarName("2번폐차")))));
 
-        // 씽씽이는 두번 모두 달리고, 폐차는 두번 모두 서있는다
+        // 두 번 달리는데, 씽씽이는 두번 모두 달리고, 폐차는 두번 모두 서있는다
         lap.launchLap();
-        lap.launchLap();
-
         LapRecord firstLapRecord = lap.submitRecords();
+        System.out.println(firstLapRecord);
+        lap.launchLap();
         LapRecord secondLapRecord = lap.submitRecords();
+        System.out.println(secondLapRecord);
 
         // 랩-기록의 결과는 CarName 오름차순이다
         // firstLap
