@@ -50,6 +50,7 @@ public class RacingCar {
         setCarList(inputStringList);
         repeatRacing();
         getWinnerList();
+        Output.printWinner(winnerList);
     }
 
     public void getWinnerList(){
