@@ -38,7 +38,7 @@ public class GameController {
 
         for (int count=0;count<gameCounts.getGameCounts();count++){
             cars.race(numberGenerator);
-            OutputView.printState(cars);
+            outputView.printState(cars);
         }
         printWinner(cars);
     }
