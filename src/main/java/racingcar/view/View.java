@@ -16,7 +16,13 @@ public class View {
     public static int displayTryCountInputPrompt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountInput = Console.readLine().trim();
-        return Integer.parseInt(tryCountInput);
+
+        try {
+            return Integer.parseInt(tryCountInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
 
     }
 
