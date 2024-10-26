@@ -18,7 +18,7 @@ public class InputValidator {
         return true;
     }
 
-    //숫자가 있으면 true, 없으면 false
+    //숫자가 있는 이름이 있으면 true, 없으면 false
     public boolean includeNumber(String input) {
         String[] splitInput = input.split(",");
         for (String name : splitInput) {
@@ -39,5 +39,14 @@ public class InputValidator {
         return false;
     }
 
-
+    //쉼표뒤에 이름이 없으면 true, 있으면 false
+    public boolean NoNameBehindComma(String input) {
+        String[] splitInput = input.split(",");
+        for (String name : splitInput) {
+            if (name.isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

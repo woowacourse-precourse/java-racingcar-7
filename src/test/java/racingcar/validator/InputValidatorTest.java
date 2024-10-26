@@ -40,4 +40,16 @@ class InputValidatorTest {
         Assertions.assertThat(includeNumber).isTrue();
     }
 
+    @Test
+    public void 쉼표뒤에_이름이_없는_경우() {
+        InputValidator inputValidator = new InputValidator();
+
+        boolean normalInput = inputValidator.NoNameBehindComma("pobi,woni,jun"); //정상적인 입력
+        boolean NoNameBehindCommaInput = inputValidator.NoNameBehindComma("pobi,woni,");//쉼표 뒤 이름이 없는 경우
+
+        Assertions.assertThat(normalInput).isFalse();
+        Assertions.assertThat(NoNameBehindCommaInput).isTrue();
+
+    }
+
 }
