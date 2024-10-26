@@ -16,4 +16,10 @@ public class OutputView {
     public final void printMovingCarsWithPositions(List<Car> cars) {
         cars.forEach(car -> System.out.println(car.getNameWithPosition()));
     }
+
+    public final void printRacingWinners(List<Car> cars) {
+        List<String> carNames = cars.stream().map(Car::getName).toList();
+        String winners = String.join(", ", carNames);
+        System.out.println(winners);
+    }
 }
