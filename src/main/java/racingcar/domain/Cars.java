@@ -1,12 +1,11 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private ArrayList<Car> cars;
 
-    public Cars(List<String> carNames) {
+    public Cars(ArrayList<String> carNames) {
         this.cars = createCars(carNames);
     }
 
@@ -14,11 +13,13 @@ public class Cars {
         return new Car(carName);
     }
 
-    public List<Car> createCars(List<String> carNames){
+    public ArrayList<Car> createCars(ArrayList<String> carNames){
 
-        return carNames.stream()
-                .map(Cars::createCar)
-                .toList();
+        return new ArrayList<>
+                (carNames.stream()
+                        .map(Cars::createCar)
+                        .toList());
+
     }
 
     public void proceedOneRound(){
@@ -29,8 +30,8 @@ public class Cars {
         }
     }
 
-    public List<String> getCurrentStates(){
-        List<String> currentStates = new ArrayList<>();
+    public ArrayList<String> getCurrentStates(){
+        ArrayList<String> currentStates = new ArrayList<>();
         for (Car car : cars) {
             currentStates.add(car.getCurrentState());
         }

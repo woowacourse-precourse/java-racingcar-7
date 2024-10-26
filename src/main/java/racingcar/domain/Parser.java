@@ -1,11 +1,12 @@
 package racingcar.domain;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Parser {
-    public static List<String> parse(String rawCarNames) {
-
-        List<String> carNames = List.of(rawCarNames.split(","));
+    public static ArrayList<String> parse(String rawCarNames) {
+        String[] carNamesArray = rawCarNames.split(",");
+        ArrayList<String> carNames = new ArrayList<>(Arrays.asList(carNamesArray));
 
         return carNames;
     }
