@@ -18,12 +18,17 @@ public class RacingGameController {
     }
 
     public void startGame() {
-        List<Car> cars = createCars();
+        try {
+            List<Car> cars = createCars();
+            int moveCount = inputView.getMoveCount();
 
-        int moveCount = inputView.getMoveCount();
-        runRace(moveCount, cars);
+            printResultHeader();
 
-        announceWinners(cars);
+            runRace(moveCount, cars);
+            announceWinners(cars);
+        } finally {
+            finishGame();
+        }
     }
 
     private List<Car> createCars() {
@@ -33,10 +38,12 @@ public class RacingGameController {
                 .toList();
     }
 
-    private void runRace(int moveCount, List<Car> cars) {
+    private void printResultHeader() {
         outputView.printLine();
         outputView.printResultMessage();
+    }
 
+    private void runRace(int moveCount, List<Car> cars) {
         for (int i = 0; i < moveCount; i++) {
             raceCars(cars);
             System.out.println();
@@ -54,5 +61,9 @@ public class RacingGameController {
     private void announceWinners(List<Car> cars) {
         List<String> winners = racingGameService.getWinners(cars);
         outputView.printWinners(winners);
+    }
+
+    private void finishGame() {
+        inputView.closeScanner();
     }
 }

@@ -40,4 +40,8 @@ public class InputView {
         inputViewValidator.validateMoveCount(threshold);
         return Integer.parseInt(threshold);
     }
+
+    public void closeScanner() {
+        Console.close();
+    }
 }
