@@ -9,7 +9,9 @@ public class Car {
         this.movedCnt = 0;
     }
 
-    public void increaseMovedCount() {
-        movedCnt++;
+    public void moveOrStop(boolean canMove) {
+        if (canMove) {
+            movedCnt++;
+        }
     }
 }
