@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.domain.Car;
+
 public class OutputView {
 
     private static final String GAME_RESULT_MESSAGE = "실행 결과";
@@ -11,7 +14,13 @@ public class OutputView {
         System.out.println(GAME_RESULT_MESSAGE);
     }
 
-    public void printGameResult(String name, int movedDistance) {
+    public void printCarsResult(List<Car> cars) {
+        for (Car car : cars) {
+            printCarResult(car.getName(), car.getMovedDistance());
+        }
+    }
+
+    private void printCarResult(String name, int movedDistance) {
         printName(name);
         printSeparator();
         convertDistanceToHyphen(movedDistance);

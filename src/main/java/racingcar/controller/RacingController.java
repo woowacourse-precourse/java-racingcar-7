@@ -35,21 +35,10 @@ public class RacingController {
 
     private void executeRaceRounds() {
         outputView.printGameResultMessage();
-        for (int i = 0; i < cnt; i++) {
-            runSingleRound();
-            outputView.printEmptyLine();
-        }
     }
 
     private void announceWinner() {
         outputView.printWinner(racing.findWinner(carManager.getCars()));
-    }
-
-    private void runSingleRound() {
-        List<Car> cars = carManager.startRacing(randomNumber);
-        for (Car car : cars) {
-            outputView.printGameResult(car.getName(), car.getMovedDistance());
-        }
     }
 
 }
