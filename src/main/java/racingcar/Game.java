@@ -12,7 +12,7 @@ public class Game {
         int count = inputView.getCount();
         Race race = new Race(names, count);
         race.raceCars();
-        race.awardWinner();
+
     }
 
 }

@@ -4,35 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
+    private List<Round> rounds = new ArrayList<>();
     private List<Car> cars = new ArrayList<>();
-    OutputView outputView = new OutputView();
-    private int round;
+    private int count;
 
-    public Race(String [] names, int round) {
+    public Race(String[] names, int count) {
         addCars(names);
-        this.round = round;
+        this.count = count;
     }
 
-    public void raceCars(){
-        System.out.println("실행 결과");
-        while (round > 0) {
+    public void raceCars() {
+        while (count > 0) {
+            Round round = new Round();
             for (Car car : cars) {
                 car.move();
-                outputView.printStep(car.getName(), car.getLocation());
+                round.addCarLocation(car.getName(),car.getLocation());
             }
-            System.out.println();
-            round --;
+            rounds.add(round);
+            count--;
         }
     }
 
-    public void awardWinner(){
+    //시행한 모든 라운드
+    public List<Round> getRounds() {
+        return rounds;
+    }
+
+
+    //우승자
+    public List<String> getWinner() {
         List<String> names = new ArrayList<>();
         for (Car car : cars) {
-            if(car.getLocation() == getMaxLocation() ){
+            if (car.getLocation() == getMaxLocation()) {
                 names.add(car.getName());
             }
         }
-        outputView.printWinner(names);
+        return names;
     }
 
     private int getMaxLocation() {
@@ -44,8 +51,6 @@ public class Race {
         }
         return max;
     }
-
-
 
 
     private void addCars(String[] names) {
