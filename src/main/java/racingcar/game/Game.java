@@ -2,40 +2,45 @@ package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import racingcar.vehicle.Car;
 
 public class Game {
-    ArrayList<Car> player = new ArrayList<>();
 
-    public ArrayList<Car> gameStart(String carNames, String cnt) {
-        for (String carName : carNames.split(",")) {
-            Car car = new Car(carName);
-            player.add(car);
-        }
+    public List<Car> gameStart(String carNames, String cnt) {
+        List<Car> playerCars = assignPlayer(carNames);
+
         System.out.println("실행 결과");
 
         for (int i = 0; i < Integer.parseInt(cnt); i++) {
-            player.forEach(car -> car.run(Randoms.pickNumberInRange(0, 9)));
+            playerCars.forEach(car ->
+                    car.run(Randoms.pickNumberInRange(0, 9))
+            );
             System.out.println();
         }
-        return this.player;
+        return playerCars;
     }
 
-    public void winnerPlayer(ArrayList<Car> player) {
+    public void winnerPlayer(List<Car> player) {
         int max = Integer.MIN_VALUE;
         for (Car car : player) {
             if (car.getCnt() > max) {
                 max = car.getCnt();
             }
         }
-        ArrayList<String> arr = new ArrayList<>();
-        int i = 0;
+        List<String> winner = new ArrayList<>();
         for (Car car : player) {
             if (car.getCnt() == max) {
-                arr.add(car.getName());
+                winner.add(car.getName());
             }
         }
-        String answer = String.join(", ", arr);
-        System.out.println("최종 우승자 : " + answer);
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
+    }
+
+    private List<Car> assignPlayer(String carName) {
+        return Arrays.stream(carName.split(","))
+                .map(Car::new)
+                .toList();
     }
 }
