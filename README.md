@@ -59,3 +59,5 @@
 - https://stackoverflow.com/questions/38345372/why-does-a-string-containing-a-single-emoji-like-have-a-length-of-2
 - https://blog.hoseung.me/2022-08-25-emoji-and-unicode
 - https://namu.wiki/w/%ED%98%84%EB%8C%80%20%ED%95%9C%EA%B8%80%EC%9D%98%20%EB%AA%A8%EB%93%A0%20%EA%B8%80%EC%9E%90/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C
+- https://stuffdrawers.tistory.com/16
+- https://stackoverflow.com/questions/1883345/whats-up-with-javas-n-in-printf
