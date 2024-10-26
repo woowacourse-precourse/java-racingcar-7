@@ -68,6 +68,14 @@ public class InputParserTest {
     }
 
     @Test
+    void 리스트_중간에_이름이_공백인_경우() {
+        assertSimpleTest(() ->
+                assertThatExceptionOfType(IllegalArgumentException.class)
+                        .isThrownBy(() -> inputParser.toList("pobi,,woni"))
+        );
+    }
+
+    @Test
     void 이름은_5자_이하만_가능() {
         assertThatThrownBy(() -> inputParser.toList("pobiden,woni"))
                 .isInstanceOf(IllegalArgumentException.class);
