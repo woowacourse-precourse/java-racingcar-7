@@ -26,5 +26,6 @@ public class RacingCarService {
         }
 
         playGame.play(cars, trycount);
+        printWinner.finishGame(cars);
     }
 }
