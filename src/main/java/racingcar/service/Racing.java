@@ -12,11 +12,15 @@ public class Racing {
     private final List<Car> racingCars;
 
     public Racing(String carNames) {
+        this.racingCars = createCar(validate(carNames));
+    }
+
+    private List<String> validate(String carNames) {
         RacingException.separatorException(carNames);
         List<String> carNameList = CarNameSeparator.splitCarNameWithoutSpace(carNames);
         RacingException.emptyException(carNameList);
         RacingException.duplicationException(carNameList);
-        this.racingCars = createCar(carNameList);
+        return carNameList;
     }
 
     private List<Car> createCar(List<String> carNamesList) {
