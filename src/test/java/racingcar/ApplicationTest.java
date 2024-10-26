@@ -54,6 +54,27 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void testIsValidTotalRaceCount() {
+        assertSimpleTest(() -> {
+            // 숫자가 아닌 입력 테스트
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount("abc"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount(" "))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount("!@#"))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+            // 음수 또는 0 입력 테스트
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount("-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount("0"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidTotalRaceCount("1.1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
 //    @Test
 //    void 기능_테스트() {
 //        assertRandomNumberInRangeTest(

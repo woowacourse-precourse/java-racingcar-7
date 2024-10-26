@@ -53,7 +53,7 @@ public class Application {
         }
     }
 
-    private static void isValidTotalRaceCount(String input) {
+    public static void isValidTotalRaceCount(String input) {
         if (!input.matches("-?\\d+")) {
             throw new IllegalArgumentException();
         }
