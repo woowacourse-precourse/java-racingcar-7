@@ -1,7 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class CompetitionProgress {
 
@@ -58,8 +58,8 @@ public class CompetitionProgress {
 
     static void updateRaceMember() {
 
-        Random random = new Random();
-        int randomValue=random.nextInt(10);
+
+        int randomValue=Randoms.pickNumberInRange(0, 9);
 
         for(Car member :raceMember) {
             if(randomValue >=4) {
