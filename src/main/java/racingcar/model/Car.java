@@ -2,8 +2,8 @@ package racingcar.model;
 
 public class Car {
 
-    private String name;
-    private Integer distance;
+    public String name;
+    public Integer distance;
 
     public Car(String name){
         this.name = name;

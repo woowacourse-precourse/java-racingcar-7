@@ -9,15 +9,17 @@ import racingcar.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class CarRacingController {
 
-    private OutputView outputView;
-    private InputView inputView;
+    private final OutputView outputView;
+    private final InputView inputView;
 
-    private Parser parser;
-    private Validator validator;
+    private final Parser parser;
+    private final Validator validator;
 
-    private List<Car> carList;
+    private final List<Car> carList;
 
     private Integer count;
 
@@ -52,4 +54,25 @@ public class CarRacingController {
         String countString  = inputView.inputCount();
         count = validator.isValidCount(countString);
     }
+
+    public void racingStart(){
+        System.out.println();
+        System.out.println("실행 결과");
+
+        for(int i=0; i<count; i++){
+            moveOrStop();
+            printResult();
+        }
+    }
+
+    public void moveOrStop(){
+        for(Car car: carList){
+            if(pickNumberInRange(0, 9)>=4) car.distance++;
+        }
+    }
+
+    public void printResult(){
+        outputView.printResult(carList);
+    }
+
 }

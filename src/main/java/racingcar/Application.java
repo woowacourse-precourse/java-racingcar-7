@@ -8,5 +8,7 @@ public class Application {
         CarRacingController carRacingController = new CarRacingController();
         carRacingController.inputNames();
         carRacingController.inputCount();
+
+        carRacingController.racingStart();
     }
 }
