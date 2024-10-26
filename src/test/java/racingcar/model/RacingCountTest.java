@@ -36,14 +36,14 @@ class RacingCountTest {
     @Test
     void deductTryCount() {
         //given
-        int count = 1;
+        int count = 2;
         RacingCount racingCount = RacingCount.from(count);
 
         //when
         racingCount.deduct();
 
         //then
-        assertThat(racingCount.getTryCount()).isEqualTo(--count);
+        assertThat(racingCount).isEqualTo(RacingCount.from(1));
     }
 
     @DisplayName("경주 횟수가 0이 아니라면 true를 반환한다.")
