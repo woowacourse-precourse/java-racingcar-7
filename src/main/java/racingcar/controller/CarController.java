@@ -8,7 +8,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class CarController {
-
     private final Validator validator;
     private final InputView inputView;
     private final OutputView outputView;
