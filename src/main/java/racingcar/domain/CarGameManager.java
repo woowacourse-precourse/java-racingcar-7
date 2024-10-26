@@ -5,18 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarGameManager {
-    public ArrayList<Car> cars;
+    public List<Car> cars;
     public int totalTimes;
 
-    public CarGameManager(ArrayList<Car> cars) {
-        this.cars = cars;
-    }
-
-    public void start(String[] names, int totalTimes) {
+    public CarGameManager(String[] names, int totalTimes) {
+        this.cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
         }
         this.totalTimes = totalTimes;
+    }
 
         for (int i = 0; i < totalTimes; i++) {
             startEachStep();
