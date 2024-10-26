@@ -17,5 +17,8 @@ public class Application {
         int carCount = numCounter.countCars(carNames);
         numCounter.validateCarCount(carCount);
         numCounter.validateCarNames(carNames);
+
+        System.out.println(messagePrinter.roundNumGuideMessage);
+        String userInputRound = inputReader.getUserInput();
     }
 }
