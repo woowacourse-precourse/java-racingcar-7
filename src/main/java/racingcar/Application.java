@@ -91,7 +91,7 @@ class GameResultCalculator {
     public void printWinners() {
         int maxWins = findMaxWins();
         String[] winners = findWinners(maxWins);
-        System.out.println("최종 우승자 : " + String.join(",",winners ));
+        System.out.println("최종 우승자 : " + String.join(",", winners));
     }
 
     private int findMaxWins() {
