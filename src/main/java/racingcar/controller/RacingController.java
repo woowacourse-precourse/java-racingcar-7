@@ -1,8 +1,8 @@
 package racingcar.controller;
 
-import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.service.RacingService;
 
 public class RacingController {
     private final InputView inputView;
@@ -18,14 +18,24 @@ public class RacingController {
     public void run() {
         initializeCars();
         int count = insertTryCount();
-        racingService.race(count);
-        endRace();
+        startRace(count);
+        displayWinners();
     }
 
-    private void endRace() {
+    private void startRace(int count) {
         outputView.printRacingResult();
+        race(count);
+    }
+
+    private void displayWinners() {
         outputView.printWinners(racingService.findWinners());
-        outputView.printCarDistances(racingService.fetchCarNames(), racingService.fetchCarsPositions());
+    }
+
+    private void race(int count) {
+        for (int i = 0; i < count; i++) {
+            racingService.moveCars();
+            outputView.printCarDistances(racingService.fetchCarNames(), racingService.fetchCarsPositions());
+        }
     }
 
     private void initializeCars() {
@@ -35,9 +45,6 @@ public class RacingController {
 
     private int insertTryCount() {
         String attemptCountInput = inputView.promptForAttemptCount();
-        return racingService.insertTryCount(attemptCountInput); // int형으로 반환
+        return racingService.insertTryCount(attemptCountInput);
     }
-
-
-
 }
