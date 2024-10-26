@@ -22,20 +22,25 @@ public class GameController {
         this.gameInputValidator = gameInputValidator;
     }
 
-    public void start() {
+    public void executeGame() {
         Game game = createGame();
 
-        List<RoundSnapshotDto> roundSnapshotDtos = new ArrayList<>();
-
-        while (game.isPlaying()) {
-            game.playNextRound();
-
-            roundSnapshotDtos.add(new RoundSnapshotDto(game.getCarSnapshots()));
-        }
+        List<RoundSnapshotDto> roundSnapshotDtos = playRounds(game);
         outputView.displayRoundSnapshots(roundSnapshotDtos);
 
         game.judgeWinners();
         outputView.displayWinners(new WinnersDto(game));
+    }
+
+    private List<RoundSnapshotDto> playRounds(Game game) {
+        List<RoundSnapshotDto> roundSnapshotDtos = new ArrayList<>();
+
+        while (game.isPlaying()) {
+            game.playNextRound();
+            roundSnapshotDtos.add(new RoundSnapshotDto(game.getCarSnapshots()));
+        }
+
+        return roundSnapshotDtos;
     }
 
     private Game createGame() {
