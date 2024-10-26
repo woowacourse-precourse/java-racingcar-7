@@ -45,8 +45,7 @@ public class Application {
     }
 
     private static boolean determineMovement() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) return true;
-        return false;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     private static void printMoves(List<String> cars, List<Integer> moves) {
