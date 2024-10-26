@@ -42,4 +42,19 @@ public class RaceRecordTest {
         int afterMoveCount = raceRecord.getOneCarRecord(updateCar.getName());
         assertEquals(afterMoveCount, moveCount, "raceResult가 올바르게 업데이트 되지 않았습니다.");
     }
+
+    @Test
+    @DisplayName("RaceRecord 생성시 자동차 기록이 0으로 초기화 되는지 확인하는 테스트")
+    void raceRecordInitTest() {
+        List<String> beforeCarNames = new ArrayList<>();
+        beforeCarNames.add("benz");
+        beforeCarNames.add("hyd");
+        beforeCarNames.add("kia");
+        RaceRecord raceRecord = new RaceRecord(beforeCarNames);
+
+        final int INIT_VALUE = 0;
+        assertEquals(raceRecord.getOneCarRecord("benz"), INIT_VALUE, "자동차 리스트가 0으로 초기화되지 않았슴니다.");
+        assertEquals(raceRecord.getOneCarRecord("hyd"), INIT_VALUE, "자동차 리스트가 0으로 초기화되지 않았슴니다.");
+        assertEquals(raceRecord.getOneCarRecord("hyd"), INIT_VALUE, "자동차 리스트가 0으로 초기화되지 않았슴니다.");
+    }
 }
