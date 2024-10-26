@@ -23,7 +23,7 @@ public class CarRacingGame implements Game {
     }
 
     public void start() {
-        for (int i = 0; i < moveAttemptCount; i++) {
+        for (int count = 0; count < moveAttemptCount; count++) {
             attemptMoveAllCar();
             OutputHandler.printAllCarDistances(raceRecord);
             System.out.println();
