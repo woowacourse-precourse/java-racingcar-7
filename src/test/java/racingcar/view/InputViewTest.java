@@ -57,6 +57,18 @@ class InputViewTest {
         assertThatThrownBy(inputView::inputCount)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 실행횟수가_음수_예외() {
+        InputView inputView = new InputView() {
+            @Override
+            protected String readInput() {
+                return "-1";
+            }
+        };
+        assertThatThrownBy(inputView::inputCount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @Test
     void 실행횟수가_int범위_보다_큰_예외() {
         InputView inputView = new InputView() {
