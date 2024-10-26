@@ -4,10 +4,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.view.InputView;
 
 public class RacingGameController {
+
+    private final InputView inputView;
+
+    public RacingGameController(InputView inputView) {
+        this.inputView = inputView;
+    }
+
     public void run() {
-        String carNames = inputCarNames();
+        String carNames = inputView.inputCarNames();
 
         Cars cars = new Cars();
 
@@ -17,7 +25,7 @@ public class RacingGameController {
 
         System.out.println(cars);
 
-        String inputTryCount = inputTryCount();
+        String inputTryCount = inputView.inputTryCount();
 
         TryCountDto tryCountDto = new TryCountDto(inputTryCount);
 
@@ -31,17 +39,6 @@ public class RacingGameController {
         racingGame.play();
     }
 
-    public String inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputCarNames = readLine();
-        return inputCarNames;
-    }
-
-    public String inputTryCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputTryCount = readLine();
-        return inputTryCount;
-    }
 
     public String[] splitInput(String input) {
         return input.split(",",-1);
