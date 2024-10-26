@@ -19,17 +19,10 @@ public class RacingGameController {
         this.outputView = outputView;
     }
 
-    public void run() {
-        // 사용자에게 자동차의 이름을 입력 받음
+    public void startGame() {
         CarGroup carGroup = GameInitializer.createCars((inputView.requestCarNames()));
-
-        // 사용자에게 라운드 횟수를 입력 받음
         GameRound gameRound = GameInitializer.setRound(inputView.requestNumberOfGames());
-
-        // 각 라운드 출력
         outputView.printRoundResult(racingGameService.playRound(gameRound, carGroup));
-
-        // 게임 결과 출력
         outputView.printWinnerList(racingGameService.getWinner(carGroup));
     }
 }
