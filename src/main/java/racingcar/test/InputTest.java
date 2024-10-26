@@ -21,4 +21,11 @@ public class InputTest {
         String name = "짱구, 포비,준";
         assertThrows(IllegalArgumentException.class, () -> input.validateBlank(name));
     }
+
+    @Test
+    @DisplayName("빈 문자열 검증 테스트")
+    void validateEmpty() {
+        String name = "짱구";
+        assertThat(name).isNotEmpty();
+    }
 }
