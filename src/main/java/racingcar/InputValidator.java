@@ -12,28 +12,28 @@ public class InputValidator {
     }
 
     // 빈 문자열 검증
-    public static void validateEmptyInput(String inputCar) {
+    private static void validateEmptyInput(String inputCar) {
         if (inputCar.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 문자열이 입력되었습니다.");
         }
     }
 
     // 구분자 검증
-    public static void validateCommaSeparator(String inputCar) {
+    private static void validateCommaSeparator(String inputCar) {
         if (!inputCar.contains(",")) {
             throw new IllegalArgumentException("자동차 이름은 쉼표(,)로 구분해야 합니다.");
         }
     }
 
     // 중복 이름 검증
-    public static void validateSameCarName(List<String> carNames) {
+    private static void validateSameCarName(List<String> carNames) {
         if(carNames.size() != carNames.stream().distinct().count()){
             throw new IllegalArgumentException("중복된 이름의 차가 존재합니다.");
         }
     }
 
     // 새로운 이름 길이 검증 메서드 추가
-    public static void validateCarNameLength(List<String> carNames) {
+    private static void validateCarNameLength(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
