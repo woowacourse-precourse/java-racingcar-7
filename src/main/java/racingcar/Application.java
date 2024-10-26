@@ -14,6 +14,8 @@ public class Application {
 
         Integer movementCount = getMovementCount();
 
+        System.out.println("실행 결과");
+
         for (int i = 0; i < movementCount; i++) {
             for (Car car : cars) {
                 Integer randomNumber = getRandomNumber();
@@ -23,6 +25,11 @@ public class Application {
                     car.addDistance();
                 }
             }
+
+            for (Car car : cars) {
+                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+            }
+            System.out.println();
         }
     }
 
