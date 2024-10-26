@@ -1,30 +1,29 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String inputCarName = Console.readLine();
-
+        String inputCarName = Input.carName();
         List<String> carNameList = Validate.carName(inputCarName);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputAttempts = Console.readLine();
+        String inputAttempts = Input.attempts();
         int attempts = Validate.attempts(inputAttempts);
 
         List<Car> carList = Car.makeCar(carNameList);
+        playRacing(attempts, carList);
 
+        List<String> winners = selectWinners(carList);
+        Output.result(winners);
+    }
+
+    private static void playRacing(int attempts, List<Car> carList) {
         for (int i = 0; i < attempts; i++) {
             race(carList);
             printCars(carList);
         }
-
-        List<String> winners = selectWinners(carList);
-        System.out.println("최종 우승자 : " + String.join(",", winners));
     }
 
     private static void race(List<Car> carList) {
