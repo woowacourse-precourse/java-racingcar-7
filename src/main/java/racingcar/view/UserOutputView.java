@@ -13,7 +13,7 @@ public class UserOutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void RacingRoundMessage(List<Map<String, Integer>> roundMoveData) {
+    public static void RaceRoundResultMessage(List<Map<String, Integer>> roundMoveData) {
         System.out.println("\n실행 결과");
         for (Map<String, Integer> moveData : roundMoveData) {
             moveData.forEach((key, value) ->
@@ -22,7 +22,7 @@ public class UserOutputView {
         }
     }
 
-    public static void RacingResultMessage(List<String> winnersName) {
+    public static void RaceWinnersMessage(List<String> winnersName) {
         System.out.println("최종 우승자 : " + String.join(", ", winnersName));
     }
 }

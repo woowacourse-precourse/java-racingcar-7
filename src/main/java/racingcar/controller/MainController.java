@@ -23,9 +23,9 @@ public class MainController {
         int attemptCount = Parser.parseStringToInt(UserInputView.readUserInput());
 
         StartRaceResponse startRaceresponse = raceController.startRace(new StartRaceRequest(attemptCount));
-        UserOutputView.RacingRoundMessage(startRaceresponse.roundMoveData());
+        UserOutputView.RaceRoundResultMessage(startRaceresponse.roundMoveData());
 
         GetWinnersResponse getWinnersResponse = raceController.getWinners();
-        UserOutputView.RacingResultMessage(getWinnersResponse.winnersName());
+        UserOutputView.RaceWinnersMessage(getWinnersResponse.winnersName());
     }
 }
