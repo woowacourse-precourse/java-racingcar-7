@@ -1,3 +1,16 @@
+#### 2024-10-26
+
+##### Documentation Changes
+
+* **README:**
+  *  add architecture (a8bed540)
+
+##### Refactors
+
+* **RacingMachine, Cars:**  add Cars as a first-class collection (d5dd7258)
+
+---
+
 #### 2024-10-25
 
 ##### Documentation Changes
