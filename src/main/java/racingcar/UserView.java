@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class UserInput {
+public class UserView {
 
     public String inputCarName() {
         return Console.readLine();
