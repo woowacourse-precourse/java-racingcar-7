@@ -5,4 +5,5 @@ public class Constants {
     public static final String INPUT_COUNT = "시도할 횟수는 몇 회인가요?";
     public static final String INPUT_ERROR_EMPTY = "입력값이 없습니다.";
     public static final String INPUT_ERROR_INVALID = "형식이 올바르지 않습니다.";
+    public static final String RESULT = "\n실행 결과";
 }

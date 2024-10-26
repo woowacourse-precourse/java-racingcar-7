@@ -2,10 +2,14 @@ package racingcar;
 
 public class Car {
     private String name;
-    private int move;
+    private int moveCount;
 
     Car(String _name) {
         name = _name;
-        move = 0;
+        moveCount = 0;
     }
+
+    public void increaseMoveCount() { moveCount++; }
+
+    public int getMoveCount() { return moveCount; }
 }

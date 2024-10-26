@@ -18,7 +18,7 @@ public class ValidatorForNames implements Validater {
         curName = input;
         checkValidFormat();
 
-        nameCount++;
+        Data.setCarCount(++nameCount);
         parsedNames.put(input, true);
         System.out.println(input + ": " + parsedNames.get(input));
     }

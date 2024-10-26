@@ -3,7 +3,6 @@ package racingcar;
 public class Initializer {
     public static void initData() {
         initNames();
-        System.out.println("hello");
         initCount();
     }
 
