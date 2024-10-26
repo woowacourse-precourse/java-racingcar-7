@@ -24,6 +24,14 @@ public class NameValidatorTest {
     }
 
     @Test
+    @DisplayName("중복된 이름 예외")
+    public void testDuplicateName() {
+        assertThrows(IllegalArgumentException.class, () ->
+                NameValidator.validateNameString(List.of("pobi","pobi"))
+        );
+    }
+
+    @Test
     @DisplayName("비어있는 이름 예외")
     public void testEmptyName() {
         assertThrows(IllegalArgumentException.class, () ->
