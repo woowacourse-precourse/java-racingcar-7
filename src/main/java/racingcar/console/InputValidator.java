@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.console;
 
 public class InputValidator {
 

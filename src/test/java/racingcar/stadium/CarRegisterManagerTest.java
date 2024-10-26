@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.stadium;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racingcar.car.Cars;
 
 class CarRegisterManagerTest {
 

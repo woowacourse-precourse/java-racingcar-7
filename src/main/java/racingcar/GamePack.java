@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.stadium.CarRegisterManager;
+import racingcar.car.Cars;
+import racingcar.stadium.Track;
+import racingcar.stadium.Racing;
+import racingcar.console.InputView;
+import racingcar.console.OutputView;
+
 public class GamePack {
 
     InputView inputView = new InputView();

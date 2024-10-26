@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.stadium;
 
 import java.util.List;
+import racingcar.util.RandomNumber;
+import racingcar.car.Car;
+import racingcar.car.Cars;
 
 public class Racing {
 

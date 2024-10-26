@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.stadium;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Cars;
+import racingcar.car.RacingCar;
 
 class RacingTest {
 

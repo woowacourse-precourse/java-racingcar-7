@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.stadium;
+
+import racingcar.car.Cars;
+import racingcar.car.RacingCar;
 
 public class CarRegisterManager {
 

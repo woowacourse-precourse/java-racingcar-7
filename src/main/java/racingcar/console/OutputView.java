@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.console;
+
+import racingcar.stadium.Racing;
 
 public class OutputView {
 
