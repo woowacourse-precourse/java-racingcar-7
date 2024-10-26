@@ -7,9 +7,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
     private static final String DELIMITER = ",";
-    private static final Integer NAME_LENGTH_LIMIT = 5;
+    private static final int NAME_LENGTH_LIMIT = 5;
     private static final String EMPTY_ERROR = "[빈 값] 자동차 이름은 빈 값일 수 없습니다.";
     private static final String NAME_LENGTH_ERROR = "[길이 제한] 자동차 이름 길이는 %d를 넘을 수 없습니다.";
+    private static final String TYPE_CASTING_ERROR = "[타입 변환] 숫자만 입력 가능합니다.";
 
     public List<String> readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -17,7 +18,7 @@ public class InputView {
         return parseCarNames(input);
     }
 
-    public Integer readMoveCount() {
+    public int readMoveCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String input = readLine();
 
@@ -46,6 +47,14 @@ public class InputView {
     private void validateNameLength(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(String.format(NAME_LENGTH_ERROR, NAME_LENGTH_LIMIT));
+        }
+    }
+
+    private void validateNumber(String input) {
+        try {
+            int n = Integer.parseInt(input);
+        } catch (Exception e){
+            throw new IllegalArgumentException(TYPE_CASTING_ERROR);
         }
     }
 }
