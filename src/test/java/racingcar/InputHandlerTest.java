@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputHandlerTest {
     private final InputHandler inputHandler = new InputHandler();
@@ -20,7 +21,8 @@ public class InputHandlerTest {
     @Test
     @DisplayName("공백 문자 또는 빈 문자열을 입력받으면 예외 처리한다")
     void parseCarNames_Test2() {
-        List<String> result = inputHandler.parseCarNames("");  // when
-        assertThat(result).containsExactly("pobi", "woni", "jun");  // then
+        String blankInput = " ";
+        assertThatThrownBy(() -> inputHandler.parseCarNames(blankInput))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
