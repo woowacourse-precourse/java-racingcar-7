@@ -23,7 +23,7 @@ public class CarRacingService {
         this.carEngine = carEngine;
     }
 
-    public CarRacingResult performCarRacing(TotalLapCount totalLapCount, CarNames carNames) {
+    public CarRacingResult performCarRacing(CarNames carNames, TotalLapCount totalLapCount) {
         carRacing = prepareForRacing(totalLapCount, carNames);
 
         CarRacingResult raceInformation = doRace();

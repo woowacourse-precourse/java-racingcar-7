@@ -29,7 +29,7 @@ class RegulationsCarRacingServiceTest {
     @BeforeEach
     void setUp() {
         CarRacingService regulationsCarRacingService = new CarRacingService(new RegulationsCarEngine());
-        carRacingResult = regulationsCarRacingService.performCarRacing(LAP_COUNT_FOR_RACING, CAR_NAMES_OF_PARTICIPANTS);
+        carRacingResult = regulationsCarRacingService.performCarRacing(CAR_NAMES_OF_PARTICIPANTS, LAP_COUNT_FOR_RACING);
     }
 
     @Test
