@@ -11,7 +11,7 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    private static void printScore(List<Car> cars) {
+    public static void printScore(List<Car> cars) {
         for (Car car : cars) {
             printCarScore(car);
         }

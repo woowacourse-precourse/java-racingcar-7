@@ -16,8 +16,10 @@ public class Controller {
     private void play(Game game) {
         OutputView.printHead();
         while (!gameService.isEnd(game)) {
-
+            gameService.play(game);
+            OutputView.printScore(game.getCars());
         }
+        OutputView.printWinners(gameService.getWinners(game));
     }
 
 }
