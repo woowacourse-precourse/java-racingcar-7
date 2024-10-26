@@ -1,9 +1,9 @@
 package racingcar.model;
 
-public class RacingGameRound {
+public class RacingGameMaxRound {
     private int round;
 
-    public RacingGameRound(String input) {
+    public RacingGameMaxRound(String input) {
         this.round = parseGameRound(input);
         validateRound();
     }

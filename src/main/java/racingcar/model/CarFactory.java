@@ -13,7 +13,7 @@ public class CarFactory {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
-    private static void validateInput(String names) {
+    private void validateInput(String names) {
         if (names == null || names.isBlank()) {
             throw new IllegalArgumentException("자동차 이름 입력이 잘못되었습니다.");
         }
