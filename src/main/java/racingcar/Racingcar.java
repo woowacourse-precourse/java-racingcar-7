@@ -11,7 +11,8 @@ public class Racingcar {
 
     public void start(){
         input();
-        racingDisplay();
+        //racingDisplay();
+        testRacingDisplay();
     }
 
     public void input(){
@@ -70,6 +71,19 @@ public class Racingcar {
         for(int i = 0; i < count; i++){
             for(int j = 0; j < carNames.length; j++){
                 if(move()){
+                    moveResults[j] +="-";
+                }
+                System.out.println(carNames[j] + " : "+ moveResults[j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void testRacingDisplay(){
+        initMoveResults();
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < carNames.length; j++){
+                if(true){
                     moveResults[j] +="-";
                 }
                 System.out.println(carNames[j] + " : "+ moveResults[j]);
