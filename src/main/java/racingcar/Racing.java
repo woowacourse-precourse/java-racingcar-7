@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Racing {
     private static Car[] cars;
 
@@ -31,4 +34,22 @@ public class Racing {
             runRound();
         }
     }
+
+    public List<String> findLongestDistance(Car[] cars) {
+        List<String> longestDistanceCar = new ArrayList<>();
+        int maxDistance = 0;
+
+        for (Car car : cars) {
+            int dist = car.getDist().length();
+            if (dist > maxDistance) {
+                maxDistance = dist;
+                longestDistanceCar.clear();
+                longestDistanceCar.add(car.getName());
+            } else if (dist == maxDistance) {
+                longestDistanceCar.add(car.getName());
+            }
+        }
+        return longestDistanceCar;
+    }
+
 }
