@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +22,7 @@ public class CarRacing {
 
     private void go() {
         for (Car car : carList) {
-            car.go();
+            car.moveForward();
         }
     }
 
