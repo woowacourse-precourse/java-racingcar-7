@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private String name;
+    private final String name;
     private long moveCount;
 
     public Car(String name) {
