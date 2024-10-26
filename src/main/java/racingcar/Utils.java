@@ -32,7 +32,7 @@ public final class Utils {
             String name = racingCar.getName();
             int count = racingCar.getCount();
 
-            System.out.println(name + " : " + count);
+            System.out.println(name + " : " + "-".repeat(count));
         }
     }
 
