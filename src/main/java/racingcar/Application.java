@@ -11,10 +11,22 @@ public class Application {
         List<Car> cars = new ArrayList<>();
         String[] carNames = input.split(",");
         for (String name : carNames) {
-            cars.add(new Car(name.trim()));
+            String trimmedName = name.trim();
+            if (trimmedName.isEmpty() || trimmedName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+            cars.add(new Car(trimmedName));
         }
 
-        int T = Integer.parseInt(Console.readLine());
+        int T;
+        try {
+            T = Integer.parseInt(Console.readLine());
+            if (T <= 0) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
         for (int i = 0; i < T; i++) {
             for (Car car : cars) {
                 car.move();
