@@ -50,6 +50,23 @@ class StringSplitterTest {
     }
 
     @Test
+    void 일부_문자열이_빈_경우_정상적으로_분리한다() {
+        // given
+        String input = "철수,,짱구";
+
+        // when
+        List<String> result = stringSplitter.split(input);
+
+        // then
+        assertSoftly(softly -> {
+            softly.assertThat(result)
+                    .containsExactly("철수", "짱구");
+            softly.assertThat(result)
+                    .hasSize(2);
+        });
+    }
+
+    @Test
     void 빈_문자열을_입력하면_빈_리스트를_반환한다() {
         // given
         String input = "";
