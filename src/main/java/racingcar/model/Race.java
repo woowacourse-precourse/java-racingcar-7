@@ -14,7 +14,7 @@ public class Race {
     private List<Car> cars;
     private int count;
 
-    Race(String inputtedName, int count) {
+    public Race(String inputtedName, int count) {
         String[] carNames = inputtedName.split(DELIMITER, -1);
         cars = Arrays.stream(carNames)
                 .map(name -> new Car(name))
