@@ -95,8 +95,6 @@
     - [ ] Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
     - [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
-## 구현 순서
-
 ## 테스트 케이스
 
 ### 주어진 예시
@@ -109,4 +107,171 @@
 
 ## 클래스 역할
 
+### - car
+
+#### Car
+
+#### CarFactory
+
+#### Cars
+
+#### Position
+
+### - io
+
+#### InputHandler
+
+#### InputParser
+
+#### InputValidator
+
+#### Output
+
+### - race
+
+#### Race
+
+#### RaceController
+
+#### RandomNumber
+
+#### Rule
+
+#### ExceptionMessages
+
+#### InputMessages
+
+## 디렉토리 구조
+
 ## 클래스 다이어그램
+
+```mermaid
+classDiagram
+    direction BT
+    class Application {
+        + main(String[]) void
+    }
+    class Car {
+        - Rule rule
+        - Position position
+        - String name
+        + getPositionAsString() String
+        + move(int) void
+        + getName() String
+        + getPosition() int
+    }
+    class CarFactory {
+        + createCar(String) Car
+    }
+    class Cars {
+        - List~Car~ cars
+        - findMaxDistance() int
+        + addCar(Car) void
+        + findWinners() List~String~
+        + getCars() List~Car~
+    }
+    class ExceptionMessages {
+        <<enumeration>>
+        - String message
+        +  INVALID_CAR_NAME_FORMAT
+        +  INVALID_ROUNDS_INPUT
+        +  NAME_TOO_LONG
+        +  EMPTY_NAME
+        + valueOf(String) ExceptionMessages
+        + values() ExceptionMessages[]
+        + getMessage() String
+    }
+    class InputHandler {
+        - int numberOfRound
+        - String[] carNames
+        - InputParser inputParser
+        - InputValidator inputValidator
+        - String input
+        - readCarNames() void
+        + processCarNamesInput() String[]
+        - readNumberOfRound() void
+        + closeConsole() void
+        + processNumberOfRoundInput() int
+    }
+    class InputMessages {
+        <<enumeration>>
+        +  INPUT_NUMBER_OF_ROUNDS
+        - String messages
+        +  INPUT_CAR_NAMES
+        + valueOf(String) InputMessages
+        + getMessages() String
+        + values() InputMessages[]
+    }
+    class InputParser {
+        - String NAME_DELIMITER
+        + parseCarNames(String) String[]
+    }
+    class InputValidator {
+        + validateNumberOfRound(int) void
+        - isEmptyName(String) boolean
+        - containsWhiteSpace(String) boolean
+        - isPositiveRoundNumber(int) boolean
+        + validateCarNames(String[]) void
+        - isValidNameLength(String) boolean
+    }
+    class Output {
+        - String WINNER_PREFIX
+        - String NEW_LINE
+        - String RACE_RESULT
+        - String NAME_POSITION_DELIMITER
+        - String WINNER_DELIMITER
+        + printRoundResult(List~Car~) void
+        + printMessage(String) void
+        + printRoundResultMessage() void
+        + printWinners(List~String~) void
+    }
+    class Position {
+        - int position
+        - int DISTANCE
+        + moveForward() void
+        + getPosition() int
+        + toString() String
+    }
+    class Race {
+        - playRound(List~Car~) void
+        + startRace(List~Car~, int) void
+    }
+    class RaceController {
+        - CarFactory carFactory
+        - int numOfRounds
+        - Cars cars
+        - InputHandler inputHandler
+        - Race race
+        - setupRace() void
+        - createCars(String[]) void
+        + runRace() void
+    }
+    class RandomNumber {
+        + createRandomNumber() int
+    }
+    class Rule {
+        - int MOVING_THRESHOLD
+        + canMove(int) boolean
+    }
+
+    Application ..> CarFactory: «create»
+    Application ..> InputHandler: «create»
+    Application ..> RaceController: «create»
+    Car "1" *--> "position 1" Position
+    Car ..> Position: «create»
+    Car "1" *--> "rule 1" Rule
+    Car ..> Rule: «create»
+    CarFactory ..> Car: «create»
+    Cars "1" *--> "cars *" Car
+    InputHandler ..> InputParser: «create»
+    InputHandler "1" *--> "inputParser 1" InputParser
+    InputHandler "1" *--> "inputValidator 1" InputValidator
+    InputHandler ..> InputValidator: «create»
+    RaceController "1" *--> "carFactory 1" CarFactory
+    RaceController "1" *--> "cars 1" Cars
+    RaceController ..> Cars: «create»
+    RaceController "1" *--> "inputHandler 1" InputHandler
+    RaceController ..> Race: «create»
+    RaceController "1" *--> "race 1" Race
+
+```
