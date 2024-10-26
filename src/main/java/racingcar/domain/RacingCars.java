@@ -10,6 +10,7 @@ public class RacingCars {
     private final List<Car> racingCars = new ArrayList<>();
 
     public void registerCars(List<String> carNames) {
+        validateUniqueName(carNames);
         carNames.stream()
                 .map(Car::new)
                 .forEach(racingCars::add);
@@ -43,5 +44,11 @@ public class RacingCars {
                 .mapToInt(CarStatusDto::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    private void validateUniqueName(List<String> names) {
+        if (names.size() != names.stream().distinct().count()) {
+            throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
+        }
     }
 }
