@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Game {
     private final InputView inputView = new InputView();
@@ -10,6 +10,7 @@ public class Game {
     public void startGame() {
         String[] names = inputView.getInput();
         int count = inputView.getCount();
+
         Race race = new Race(names, count);
         race.raceCars();
 
