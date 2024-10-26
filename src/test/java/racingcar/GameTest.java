@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class GameTest {
@@ -31,6 +32,18 @@ class GameTest {
         assertThatThrownBy(() -> validator.inputSting(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름을 입력해주세요.");
+    }
+
+    @Test
+    void 자동차목록을_구분자로_나눈다() {
+        InputParser inputParser = new InputParser();
+
+        String carNames = "pobi,woni,jun";
+        List<Car> carList = inputParser.stringToCarList(carNames);
+
+        assertThat(carList)
+                .extracting(Car::getName)
+                .containsExactly("pobi", "woni", "jun");
     }
 
 }
