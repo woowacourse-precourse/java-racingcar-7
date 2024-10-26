@@ -18,14 +18,14 @@ public class InputHandler {
 
     private List<String> extractCarNames(String carNamesString) {
         // 자동차 이름에 대한 검증 로직
-        if (carNamesString == null) {
+        if (carNamesString == null || carNamesString.isEmpty()) {
             throw new IllegalArgumentException();
         }
 
         List<String> carNames = Arrays.asList(carNamesString.split(","));
 
         carNames.stream()
-                .filter(carName -> carName.isEmpty() || carName.length() >= 5)
+                .filter(carName -> carName.isEmpty() || carName.length() > 5)
                 .findAny()
                 .ifPresent(carName -> {
                     throw new IllegalArgumentException();
@@ -36,7 +36,7 @@ public class InputHandler {
 
     private int convertToRound(String roundString) {
         // 시도할 횟수에 대한 검증 로직
-        if (roundString == null) {
+        if (roundString == null || roundString.isEmpty()) {
             throw new IllegalArgumentException();
         }
 
