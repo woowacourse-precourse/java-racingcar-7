@@ -6,7 +6,7 @@ import java.util.Set;
 import racingcar.domain.AttemptCounter;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.NumberMaker;
+import racingcar.domain.number.NumberMaker;
 
 public class RaceService {
     private final static int CAN_MOVE_MIN_RANDOM_CRITERIA = 4;

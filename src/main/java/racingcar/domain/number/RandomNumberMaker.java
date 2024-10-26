@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.number;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,5 +10,5 @@ public class RandomNumberMaker implements NumberMaker {
     public int make() {
         return Randoms.pickNumberInRange(MIN, MAX);
     }
-    
+
 }
