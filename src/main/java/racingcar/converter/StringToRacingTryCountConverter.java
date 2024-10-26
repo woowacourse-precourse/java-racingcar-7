@@ -1,6 +1,6 @@
 package racingcar.converter;
 
-import static racingcar.message.ErrorMessage.NUMERIC_TRY_COUNT_REQUIRED;
+import static racingcar.message.ErrorMessage.INTEGER_TRY_COUNT_REQUIRED;
 import static racingcar.message.ErrorMessage.POSITIVE_TRY_COUNT_REQUIRED;
 
 public class StringToRacingTryCountConverter {
@@ -19,7 +19,7 @@ public class StringToRacingTryCountConverter {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NUMERIC_TRY_COUNT_REQUIRED.getMessage());
+            throw new IllegalArgumentException(INTEGER_TRY_COUNT_REQUIRED.getMessage());
         }
     }
 
