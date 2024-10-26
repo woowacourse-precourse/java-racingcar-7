@@ -2,11 +2,12 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 
 public class Racingcar {
-    private String[] carNames;
+    private List<String> carNames;
     private int count;
     private String[] moveResults;
 
@@ -24,8 +25,6 @@ public class Racingcar {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String count = Console.readLine();
         inputExCount(count);
-
-
     }
 
     public boolean invCarNameLen() {
@@ -43,9 +42,9 @@ public class Racingcar {
     public void inputExCarName(String rawCarName) {
         if (rawCarName.isEmpty()) throw new IllegalArgumentException("자동차 입력이 없습니다.");
         if (rawCarName.endsWith(",")) throw new IllegalArgumentException("자동차 입력시 ','로 끝날 수는 없습니다.");
-        carNames = rawCarName.split(",");
-        if (carNames.length == 0) throw new IllegalArgumentException("쉼표만 입력될 수는 없습니다.");
-        if (carNames.length == 1) throw new IllegalArgumentException("자동차 1대로 경주를 진행 할 수 없습니다.");
+        if (rawCarName.startsWith(",")) throw new IllegalArgumentException("자동차 입력시 ','로 시작 할 수는 없습니다.");
+        carNames = new ArrayList<>(Arrays.asList(rawCarName.split(",")));
+        if (carNames.size() == 1) throw new IllegalArgumentException("자동차 1대로 경주를 진행 할 수 없습니다.");
         if (invCarNameLen()) throw new IllegalArgumentException("자동차의 이름은 5자 이하만 가능합니다.");
         if (hasBlankCarName()) throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수는 없습니다.");
     }
@@ -58,7 +57,7 @@ public class Racingcar {
     }
 
     public void initMoveResults() {
-        moveResults = new String[carNames.length];
+        moveResults = new String[carNames.size()];
         Arrays.fill(moveResults, "");
     }
 
@@ -70,9 +69,9 @@ public class Racingcar {
     public void racingDisplay() {
         initMoveResults();
         for (int i = 0; i < count; i++) {
-            for (int j = 0; j < carNames.length; j++) {
+            for (int j = 0; j < carNames.size(); j++) {
                 moveForward(j);
-                System.out.println(carNames[j] + " : " + moveResults[j]);
+                System.out.println(carNames.get(j) + " : " + moveResults[j]);
             }
             System.out.println();
         }
@@ -96,9 +95,8 @@ public class Racingcar {
         StringBuilder winners = new StringBuilder();
 
         for (int i = 0; i < moveResults.length; i++) {
-            if (moveResults[i].length() == maxDistance) addWinner(winners, carNames[i]);
+            if (moveResults[i].length() == maxDistance) addWinner(winners, carNames.get(i));
         }
-
         System.out.println("최종 우승자 : " + winners);
     }
 
