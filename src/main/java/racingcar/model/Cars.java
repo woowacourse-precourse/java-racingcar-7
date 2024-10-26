@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String CAR_NAMES_DELIMITER = ",";
+    private static final int SPLIT_NO_LIMIT = -1;
+
     private final List<Car> cars;
 
     public Cars(String carNamesInput) {
@@ -17,7 +20,7 @@ public class Cars {
     }
 
     private List<Car> registerCars(String carNamesInput) {
-        return Arrays.stream(carNamesInput.split(",", -1))
+        return Arrays.stream(carNamesInput.split(CAR_NAMES_DELIMITER, SPLIT_NO_LIMIT))
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
