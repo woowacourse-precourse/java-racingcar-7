@@ -14,4 +14,8 @@ public class Car {
         this.name = name;
         this.progress = progress;
     }
+
+    public String name() {
+        return name;
+    }
 }

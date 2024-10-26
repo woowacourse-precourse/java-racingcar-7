@@ -16,7 +16,7 @@ public class RacingGame {
         Rounds rounds = new Rounds(inputView.askNumberOfRounds());
     }
 
-    private List<Car> makeCars(String initialInput) {
+    public List<Car> makeCars(String initialInput) {
         List<Car> cars = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(initialInput, ",");
         while (st.hasMoreTokens()) {

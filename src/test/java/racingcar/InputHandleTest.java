@@ -1,0 +1,39 @@
+package racingcar;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.controller.RacingGame;
+import racingcar.domain.Car;
+import racingcar.domain.Rounds;
+import racingcar.view.InputView;
+
+class NsTestInputHandleTest {
+    RacingGame racingGame = new RacingGame();
+
+    @DisplayName("입력받은 자동차 이름들을 (,)로 구분해서 리스트에 저장한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,javaj,minju"})
+    void 자동차_라인업_만들기_테스트(String input) {
+        List<Car> cars = racingGame.makeCars(input);
+        List<String> expected = List.of("pobi", "javaj", "minju");
+
+        for(int i = 0; i < cars.size(); i++) {
+            Assertions.assertEquals(expected.get(i), cars.get(i).name());
+        }
+    }
+
+    @DisplayName("입력받은 경주 횟수를 저장한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1","2","3"})
+    void 경주_횟수_입력처리_테스트(String input) {
+        Rounds rounds = new Rounds(input);
+        Assertions.assertEquals(Integer.parseInt(input), rounds.rounds());
+    }
+}
