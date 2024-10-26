@@ -23,7 +23,7 @@ public class RacingCarController {
         for(int i=0;i<tryNumber;i++){
             output.printResult(Cars.moveForward());
         }
-        //winner 찾아서 출력
+        output.printWinner(Cars.findWinner());
     }
 
     public List<String> separateName(String carNames){
