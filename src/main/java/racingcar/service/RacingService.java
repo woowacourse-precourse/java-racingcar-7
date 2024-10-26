@@ -11,13 +11,21 @@ public class RacingService {
     private Cars cars;
 
     public void initializeCars(String input) {
-        String[] carInputs = input.split(",");
-        List<Car> inputCars = new ArrayList<>();
-        for (String car : carInputs) {
-            CarName carName = CarName.from(car.trim());
-            inputCars.add(Car.from(carName));
-        }
+        List<Car> inputCars = createCarsFromInput(input);
         cars = Cars.from(inputCars);
+    }
+
+    public int insertTryCount(String input) {
+        Validator.validateNumericInput(input);
+        int attemptCount = Integer.parseInt(input);
+        Validator.validateAttemptCount(attemptCount);
+        return attemptCount;
+    }
+
+    public void race(int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            cars.allMove();
+        }
     }
 
     public List<String> findWinners() {
@@ -31,5 +39,20 @@ public class RacingService {
     public List<Integer> fetchCarsPositions() {
         return cars.fetchCarsPositions();
     }
+    private List<Car> createCarsFromInput(String input) {
+        String[] carInputs = input.split(",");
+        List<Car> inputCars = new ArrayList<>();
+        for (String car : carInputs) {
+            CarName carName = createCarName(car.trim());
+            inputCars.add(Car.from(carName));
+        }
+        return inputCars;
+    }
+
+    private CarName createCarName(String name) {
+        return CarName.from(name);
+    }
+
+
 
 }
