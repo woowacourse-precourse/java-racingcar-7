@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.constants.Constants;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constants.Constants;
@@ -19,7 +18,7 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(){
+    public void moveTry(){
         if (Randoms.pickNumberInRange(0, 9) >= Constants.MOVE_THRESHOLD) {
             position++;
         }

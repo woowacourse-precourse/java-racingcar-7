@@ -7,7 +7,7 @@ import racingcar.domain.Car;
 public class RacingGameService {
     public void play(List<Car> cars){
         for (Car car : cars) {
-            randomMove(car);
+            car.moveTry();
         }
     }
 
@@ -16,7 +16,5 @@ public class RacingGameService {
         return cars.stream().filter(car -> car.getPosition() == max).toList();
     }
 
-    private void randomMove(Car car){
-        car.move(Randoms.pickNumberInRange(0, 9) >= 4);
-    }
+
 }
