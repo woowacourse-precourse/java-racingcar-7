@@ -47,7 +47,6 @@ class Racingcar {
             if (move >= 4) {
                 curCar.setValue(curCar.getValue() + move);
             }
-             // 10까지 범위인지를 모르겠음.
         }
         raceResultPrint();
     }
@@ -59,7 +58,6 @@ class Racingcar {
     }
 
     void raceResultPrint() {
-//        System.out.println("실행 결과");
         for(Map.Entry<String, Integer> curCar : carMove.entrySet()) {
             String carName = curCar.getKey();
             int move = curCar.getValue();
@@ -84,14 +82,13 @@ class Racingcar {
 
         for (String key : keySet) {
             if(winners.size() == 0) {
-                winners.add(key);
                 maxMove = carMove.get(key);
+            }
+
+            if (carMove.get(key) == maxMove) {
+                winners.add(key);
             } else {
-                if (carMove.get(key) == maxMove) {
-                    winners.add(key);
-                } else {
-                    break;
-                }
+                break;
             }
         }
 
@@ -100,19 +97,7 @@ class Racingcar {
 
     void winnersPrint() {
         ArrayList<String> winners = getWinners();
-
-        String res = "";
-        for(String car : winners) {
-            res += car;
-        }
-
-        System.out.println("최종 우승자 : " + res);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
-
-
-    // sort 하고 뒤에꺼랑 앞에꺼랑 같으면 걔도 출력 while 문 써서 우승자 출력.
-    // 우승자 출력시 오름차순으로 해야하나? 그러면 key 정렬 조건으로 오름차순 쓰면 됨.
-    // value는 큰 값이 우선, 값이 같을 경우 key는 오름차순으로 정렬
-    // 우승자 출력시 값이 같으면 계속 출력.
 
 }
