@@ -35,10 +35,6 @@ public class User {
         }
     }
 
-    public static int isDigit(String inputNumber) {
-        return Integer.parseInt(inputNumber);
-    }
-
     private static int isTryNumberDigit() {
         int tryNumber;
         try {
@@ -47,6 +43,10 @@ public class User {
             throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
         }
         return tryNumber;
+    }
+
+    public static int isDigit(String inputNumber) {
+        return Integer.parseInt(inputNumber);
     }
 
     public static void isEmpty(String[] cars) {
