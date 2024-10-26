@@ -1,15 +1,15 @@
-package racingcar.validation;
+package racingcar.helper.validation;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.constant.io.InputConstant;
-import racingcar.constant.NumberConstant;
-import racingcar.exception.input.name.DelimiterNameException;
-import racingcar.exception.input.name.DuplicateNameException;
-import racingcar.exception.input.name.EmptyNameException;
-import racingcar.exception.input.name.LengthNameException;
-import racingcar.exception.input.name.MultipleNameException;
+import racingcar.config.constant.io.InputConstant;
+import racingcar.config.constant.NumberConstant;
+import racingcar.config.exception.input.name.DelimiterNameException;
+import racingcar.config.exception.input.name.DuplicateNameException;
+import racingcar.config.exception.input.name.EmptyNameException;
+import racingcar.config.exception.input.name.LengthNameException;
+import racingcar.config.exception.input.name.MultipleNameException;
 
 
 public class InputNameValid {

@@ -3,10 +3,10 @@ package racingcar.input;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import racingcar.exception.input.count.LessCountException;
-import racingcar.exception.input.count.MoreCountException;
-import racingcar.exception.input.count.TypeMissCountException;
-import racingcar.validation.InputCountValid;
+import racingcar.config.exception.input.count.LessCountException;
+import racingcar.config.exception.input.count.MoreCountException;
+import racingcar.config.exception.input.count.TypeMissCountException;
+import racingcar.helper.validation.InputCountValid;
 
 public class InputCountTest {
 

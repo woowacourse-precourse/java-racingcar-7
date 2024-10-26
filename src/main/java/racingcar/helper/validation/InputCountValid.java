@@ -1,9 +1,9 @@
-package racingcar.validation;
+package racingcar.helper.validation;
 
-import racingcar.constant.NumberConstant;
-import racingcar.exception.input.count.LessCountException;
-import racingcar.exception.input.count.MoreCountException;
-import racingcar.exception.input.count.TypeMissCountException;
+import racingcar.config.constant.NumberConstant;
+import racingcar.config.exception.input.count.LessCountException;
+import racingcar.config.exception.input.count.MoreCountException;
+import racingcar.config.exception.input.count.TypeMissCountException;
 
 public class InputCountValid {
     public static void validTypeMissCount(String count) {

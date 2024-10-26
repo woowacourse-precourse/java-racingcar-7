@@ -1,6 +1,6 @@
-package racingcar.validation;
+package racingcar.helper.validation;
 
-import racingcar.constant.NumberConstant;
+import racingcar.config.constant.NumberConstant;
 
 public class ProcessValid {
 

@@ -1,7 +1,7 @@
-package racingcar.util;
+package racingcar.helper.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.constant.NumberConstant;
+import racingcar.config.constant.NumberConstant;
 
 public class RandomUtil {
     public static int getRandomNumber() {

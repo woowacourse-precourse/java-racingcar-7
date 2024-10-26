@@ -3,8 +3,8 @@ package racingcar.service;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Game;
-import racingcar.util.RandomUtil;
-import racingcar.validation.ProcessValid;
+import racingcar.helper.util.RandomUtil;
+import racingcar.helper.validation.ProcessValid;
 
 public class GameService {
 

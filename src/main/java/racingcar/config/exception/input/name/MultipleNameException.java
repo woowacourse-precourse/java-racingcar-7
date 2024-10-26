@@ -1,7 +1,7 @@
-package racingcar.exception.input.name;
+package racingcar.config.exception.input.name;
 
 
-import racingcar.constant.error.ErrorNameConstant;
+import racingcar.config.constant.error.ErrorNameConstant;
 
 public class MultipleNameException extends IllegalArgumentException {
     public MultipleNameException() {

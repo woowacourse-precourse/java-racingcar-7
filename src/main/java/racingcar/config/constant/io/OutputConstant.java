@@ -1,4 +1,4 @@
-package racingcar.constant.io;
+package racingcar.config.constant.io;
 
 public class OutputConstant {
     public static final String OUTPUT_PROCESS_RESULT_VIEW = "실행 결과";

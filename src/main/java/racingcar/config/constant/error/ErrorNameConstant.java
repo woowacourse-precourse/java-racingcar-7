@@ -1,4 +1,4 @@
-package racingcar.constant.error;
+package racingcar.config.constant.error;
 
 public class ErrorNameConstant {
     public static final String ERROR_DUPLICATE_NAME = "중복된 자동차 이름이 존재합니다.";

@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.constant.io.InputConstant;
+import racingcar.config.constant.io.InputConstant;
 
 public class InputView {
 

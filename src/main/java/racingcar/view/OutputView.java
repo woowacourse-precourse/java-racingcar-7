@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.constant.io.OutputConstant;
+import racingcar.config.constant.io.OutputConstant;
 import racingcar.model.Car;
 
 public class OutputView {

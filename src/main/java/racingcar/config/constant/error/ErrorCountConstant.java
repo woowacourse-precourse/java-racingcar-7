@@ -1,4 +1,4 @@
-package racingcar.constant.error;
+package racingcar.config.constant.error;
 
 public class ErrorCountConstant {
     public static final String ERROR_LESS_COUNT = "횟수는 1 이상이어야 합니다.";

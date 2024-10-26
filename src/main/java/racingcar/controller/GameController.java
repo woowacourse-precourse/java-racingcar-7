@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.service.CarService;
 import racingcar.service.GameService;
-import racingcar.util.InputUtil;
+import racingcar.helper.util.InputUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

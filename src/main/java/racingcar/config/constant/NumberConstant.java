@@ -1,4 +1,4 @@
-package racingcar.constant;
+package racingcar.config.constant;
 
 public class NumberConstant {
     public static final int MIN_NUMBER = 0;

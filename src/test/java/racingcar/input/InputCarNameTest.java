@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.input.name.DelimiterNameException;
-import racingcar.exception.input.name.DuplicateNameException;
-import racingcar.exception.input.name.EmptyNameException;
-import racingcar.exception.input.name.LengthNameException;
-import racingcar.exception.input.name.MultipleNameException;
-import racingcar.validation.InputNameValid;
+import racingcar.config.exception.input.name.DelimiterNameException;
+import racingcar.config.exception.input.name.DuplicateNameException;
+import racingcar.config.exception.input.name.EmptyNameException;
+import racingcar.config.exception.input.name.LengthNameException;
+import racingcar.config.exception.input.name.MultipleNameException;
+import racingcar.helper.validation.InputNameValid;
 
 public class InputCarNameTest {
 
