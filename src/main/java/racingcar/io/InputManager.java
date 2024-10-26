@@ -19,7 +19,9 @@ public class InputManager {
 
     public static int readAttemptCount() {
         OutputManager.printTryCountMessage();
+
         int attemptCount = 0;
+
         try {
             String userInput = Console.readLine();
             attemptCount = Integer.parseInt(userInput);
@@ -27,10 +29,14 @@ public class InputManager {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_MESSAGE);
         }
 
+        validatePositiveNumber(attemptCount);
+        return attemptCount;
+    }
+
+    private static void validatePositiveNumber(int attemptCount) {
         if (attemptCount <= 0) {
             throw new IllegalArgumentException(NOT_POSITIVE_NUMBER_ERROR_MESSAGE);
         }
-        return attemptCount;
     }
 
     public static void close() {
