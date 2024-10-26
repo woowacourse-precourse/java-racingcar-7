@@ -43,6 +43,12 @@ public class Application {
         }
     }
 
+    private void validateUniqueCarNames(String[] carNames) {
+        if (carNames.length != carPositions.size()) {
+            throw new IllegalArgumentException("자동차 이름에는 중복이 없어야 합니다.");
+        }
+    }
+
     private void validateNameLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
@@ -126,8 +132,9 @@ public class Application {
 
         initializeCarPositions(cars);
 
-        System.out.println("실행 결과");
+        validateUniqueCarNames(cars);
 
+        System.out.println("실행 결과");
         for (int n=0; n<userRaceRoundInput; n++) {
             executeRaceRound();
         }
