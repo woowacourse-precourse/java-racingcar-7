@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Car {
 
     private static final String ERROR_EMPTY_NAME_MESSAGE = "자동차 이름이 공백으로 입력되었습니다.";
@@ -38,5 +40,22 @@ public class Car {
             return;
         }
         position++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
