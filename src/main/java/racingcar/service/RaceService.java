@@ -12,18 +12,17 @@ public class RaceService {
     private List<String> carNames;
 
     public RaceService(List<String> carNames, int attemptCount) {
-         this.attemptCount = attemptCount;
-         this.carNames = carNames;
+        this.attemptCount = attemptCount;
+        this.carNames = carNames;
     }
 
-    public void raceStart(){
+    public void start() {
         carManager.createCars(carNames);
-        race.play(attemptCount,carManager.getCarList());
-        winnerFinder.findWinner(carManager.getCarList());
+        race.play(attemptCount, carManager.getCars());
     }
 
-    public List<String> getWinners(){
-        return winnerFinder.getWinners();
+    public List<String> getWinners() {
+        return winnerFinder.getWinners(carManager.getCars());
     }
 
     public List<Map<String, Integer>> getResult() {

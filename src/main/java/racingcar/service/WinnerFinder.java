@@ -7,18 +7,22 @@ import java.util.List;
 
 public class WinnerFinder {
 
-    private List<String> winners = new ArrayList<>();
+    public List<String> getWinners(List<Car> cars) {
+        return findWinner(cars);
+    }
 
-    public void findWinner(List<Car> cars) {
+    private List<String> findWinner(List<Car> cars) {
         int maxPosition = findMaxPosition(cars);
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getName());
             }
         }
+        return winners;
     }
 
-    private static int findMaxPosition(List<Car> cars) {
+    private int findMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
@@ -26,9 +30,5 @@ public class WinnerFinder {
             }
         }
         return maxPosition;
-    }
-
-    public List<String> getWinners() {
-        return winners;
     }
 }
