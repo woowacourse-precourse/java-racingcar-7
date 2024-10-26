@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import racingcar.validator.ValidatingParser;
 
 class CarsTest {
 
@@ -20,6 +24,21 @@ class CarsTest {
 
 		//then
 		assertThat(cars).isNotNull();
+	}
+
+	@DisplayName("자동차 이름이 5자를 초과하면 IllegalArgumentException 예외가 발생한다.")
+	@ParameterizedTest
+	@CsvSource({
+		"roy123,hana123,frod123",
+		"roy,hana12,frod"
+	})
+	void parseValidatedCarNamesOverLength(String input) {
+		//given
+		ValidatingParser validatingParser = ValidatingParser.create();
+
+		//when & then
+		assertThatThrownBy(() -> validatingParser.parseValidatedCarNames(input))
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName("중복된 차 이름이 있으면 IllegalArgumentException 예외가 발생한다.")
