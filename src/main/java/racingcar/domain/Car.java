@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int MINIMUM_NAME_LENGTH = 1;
+    private static final int MAXIMUM_NAME_LENGTH = 5;
     private static final int MOVE_STANDARD = 4;
     private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String POSITION_SIGN = "-";
@@ -16,8 +18,17 @@ public class Car {
     }
 
     public Car(String name, int position) {
+        validateNameLength(name);
         this.name = name;
         this.position = position;
+    }
+
+    public void validateNameLength(String name) {
+        int nameLength = name.length();
+
+        if (nameLength < MINIMUM_NAME_LENGTH || nameLength > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하여야 합니다");
+        }
     }
 
     public Car move(int random) {
