@@ -8,6 +8,7 @@ public class InputView {
 
     private static final String COMMA_DELIMITED_NAME_REGEX = "^[a-zA-Z0-9가-힣]+(,[a-zA-Z0-9가-힣]+)*$";
     private static final String ONLY_NUMBER_REGEX = "^[0-9]+$";
+    private static final int ROUND_COUNT_THRESHOLD = 50;
 
     public static String inputCarNames() {
         String input = Console.readLine();
@@ -20,6 +21,7 @@ public class InputView {
         String input = Console.readLine();
         validateNotBlank(input);
         validateRoundNumber(input);
+        validateRoundCount(input);
         return input;
     }
 
@@ -38,6 +40,12 @@ public class InputView {
     private static void validateRoundNumber(String input) {
         if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
             throw new IllegalArgumentException("경주 횟수는 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private static void validateRoundCount(String input) {
+        if (Integer.parseInt(input) > ROUND_COUNT_THRESHOLD) {
+            throw new IllegalArgumentException("경주 횟수는 최대 50회까지 입력 가능합니다.");
         }
     }
 }
