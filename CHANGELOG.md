@@ -3,6 +3,17 @@
 <br>
 <br>
 
+## v1.2 (2024.10.27)
+
+> 기타 변동 사항
+
+- [[refactor]: 빈 문자열 상수화](https://github.com/Gilbert9172/java-racingcar-7/commit/f937742)
+- [[fix]: 거리가 음수인 경우 예외처리와 중복되는 예외처리 제거](https://github.com/Gilbert9172/java-racingcar-7/commit/e4fe89e)
+- [[refactor]: Speed 클래스의 패키지 위치 변경](https://github.com/Gilbert9172/java-racingcar-7/commit/d7f2733)
+
+<br>
+<br>
+
 ## v1.1 (2024.10.26)
 
 ---
