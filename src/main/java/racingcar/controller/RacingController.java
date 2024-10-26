@@ -32,6 +32,7 @@ public class RacingController {
     }
 
     public void run() {
+
         // 주요 모델 생성
         CarNames names = CarNames.getAfterValidateFormat(inputView.getCarNames());
         RacingChance chance =
@@ -48,6 +49,7 @@ public class RacingController {
         // 레이싱 기록 불러와서 출력
         RacingRecording recording = racingService.getRecord();
         outputView.printResult(recording);
+
     }
 
 }

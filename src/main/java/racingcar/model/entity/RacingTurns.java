@@ -27,20 +27,24 @@ public final class RacingTurns implements Iterable<RacingTurn> {
                     getTurn(names, strategiesWithCarNames, i);
             turns.add(turn);
         }
+
         return new RacingTurns(turns);
+
     }
 
     private static RacingTurn getTurn(CarNames names,
-                                     StrategiesAtCarNames strategiesWithNames,
+                                     StrategiesAtCarNames strategiesAtNames,
                                      int index) {
 
-        LinkedHashMap<String, Supplier<Integer>> strategyWithCar =
+        LinkedHashMap<String, Supplier<Integer>> strategyAtCarName =
                 new LinkedHashMap<>();
+
         for (String name : names) {
-            List<Supplier<Integer>> strategies = strategiesWithNames.get(name);
-            strategyWithCar.put(name, strategies.get(index));
+            List<Supplier<Integer>> strategies = strategiesAtNames.get(name);
+            strategyAtCarName.put(name, strategies.get(index));
         }
-        return new RacingTurn(strategyWithCar);
+
+        return new RacingTurn(strategyAtCarName);
 
     }
 
@@ -67,5 +71,7 @@ public final class RacingTurns implements Iterable<RacingTurn> {
             index++;
             return turn;
         }
+
     }
+
 }

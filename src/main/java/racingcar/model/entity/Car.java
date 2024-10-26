@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 /**
  * 자동차를 구현한 클래스, 움직이는 것은 전략 클래스에 위임한다.
  */
-public final class Car {
+public class Car {
 
     private final String name;
 
@@ -41,4 +41,5 @@ public final class Car {
     public int hashCode() {
         return Objects.hashCode(name);
     }
+
 }

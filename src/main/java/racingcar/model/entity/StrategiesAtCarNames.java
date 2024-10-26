@@ -32,4 +32,5 @@ public record StrategiesAtCarNames(Map<String, List<Supplier<Integer>>> strategi
     public List<Supplier<Integer>> get(String name) {
         return strategies.get(name);
     }
+
 }
