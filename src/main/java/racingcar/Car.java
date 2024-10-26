@@ -11,8 +11,9 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car other) {
-        return Integer.compare(other.pos, this.pos);
+        return Integer.compare(this.pos, other.pos);
     }
+
     public void goAhead() {
         pos ++;
     }

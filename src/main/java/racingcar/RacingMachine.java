@@ -1,13 +1,9 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 
 public class RacingMachine {
-    List<Car> cars;
+    Cars players;
     int round;
 
     public RacingMachine() {}
@@ -32,16 +28,16 @@ public class RacingMachine {
     }
 
     private void printResult() {
-        List<Car> winners = getResult();
+        Cars winners = players.getWinners();
 
         StringBuilder racingResult = new StringBuilder("최종 우승자 : ");
         boolean isFirst = true;
-        for (Car car : winners) {
+        for ( int i = 0; i < winners.getSize(); i ++ ) {
             if (isFirst) {
-                racingResult.append(car.getName());
+                racingResult.append(winners.getCar(i).getName());
                 isFirst = false;
             } else {
-                racingResult.append(", ").append(car.getName());
+                racingResult.append(", ").append(winners.getCar(i).getName());
             }
         }
 
@@ -49,12 +45,11 @@ public class RacingMachine {
     }
 
     private void initCars() {
+        players = new Cars();
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-
-        cars = new ArrayList<>();
         String[] names = InputHandler.readInputName();
         for ( String name : names ) {
-            this.cars.add(new Car(name));
+            players.addCar(new Car(name));
         }
     }
 
@@ -65,32 +60,19 @@ public class RacingMachine {
     }
 
     private void rollTheDice() {
-        for ( Car car : cars ) {
+        for ( int i = 0; i < players.getSize(); i++ ) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.goAhead();
+                players.getCar(i).goAhead();
             }
         }
     }
 
     private void printScore() {
-        for ( Car car : cars ) {
-            StringBuilder roundResult = new StringBuilder(car.getName()).append(" : ");
-            roundResult.append("-".repeat(car.getPos()));
+        for ( int i = 0; i < players.getSize(); i++ ) {
+            StringBuilder roundResult = new StringBuilder(players.getCar(i).getName()).append(" : ");
+            roundResult.append("-".repeat(players.getCar(i).getPos()));
             System.out.println(roundResult);
         }
         System.out.println();
-    }
-
-    private List<Car> getResult() {
-        int winnerPos = Collections.max(cars, Comparator.comparingInt(Car::getPos)).getPos();
-        List<Car> winners = new ArrayList<>();
-
-        for ( Car car : cars ) {
-            if ( car.getPos() == winnerPos ) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
     }
 }
