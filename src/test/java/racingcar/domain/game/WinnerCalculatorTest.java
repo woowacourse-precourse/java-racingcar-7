@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGroup;
 
-class WinnerDeterminerTest {
+class WinnerCalculatorTest {
 
     GameRule gameRule = new WootecoRule();
-    WinnerDeterminer winnerDeterminer = new WinnerDeterminer(gameRule);
+    WinnerCalculator winnerCalculator = new WinnerCalculator(gameRule);
 
     @Test
     public void 레이싱_게임의_우승자_목록을_반환한다() {
@@ -18,7 +18,7 @@ class WinnerDeterminerTest {
         CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("minu")));
 
         //when
-        List<String> winnerNames = winnerDeterminer.getWinnerNames(carGroup.getCarInfos());
+        List<String> winnerNames = winnerCalculator.getWinnerNames(carGroup.getCarInfos());
 
         //then
         Assertions.assertThat(winnerNames).contains("povi", "minu");
@@ -33,7 +33,7 @@ class WinnerDeterminerTest {
 
         //when
         car.accelerate();
-        List<String> winnerNames = winnerDeterminer.getWinnerNames(carGroup.getCarInfos());
+        List<String> winnerNames = winnerCalculator.getWinnerNames(carGroup.getCarInfos());
 
         //then
         Assertions.assertThat(winnerNames).contains("povi");
@@ -45,7 +45,7 @@ class WinnerDeterminerTest {
         CarGroup carGroup = new CarGroup(List.of());
 
         //then when
-        Assertions.assertThatThrownBy(() -> winnerDeterminer.getWinnerNames(carGroup.getCarInfos()))
+        Assertions.assertThatThrownBy(() -> winnerCalculator.getWinnerNames(carGroup.getCarInfos()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

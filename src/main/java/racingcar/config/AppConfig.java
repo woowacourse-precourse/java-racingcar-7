@@ -3,7 +3,7 @@ package racingcar.config;
 import racingcar.controller.RacingGameController;
 import racingcar.domain.game.GameManager;
 import racingcar.domain.game.GameRule;
-import racingcar.domain.game.WinnerDeterminer;
+import racingcar.domain.game.WinnerCalculator;
 import racingcar.domain.game.WootecoRule;
 import racingcar.service.RacingGameService;
 import racingcar.utils.NumberGenerator;
@@ -21,8 +21,8 @@ public class AppConfig {
         return new RandomNumberGenerator();
     }
 
-    public WinnerDeterminer winnerDeterminer() {
-        return new WinnerDeterminer(gameRule());
+    public WinnerCalculator winnerDeterminer() {
+        return new WinnerCalculator(gameRule());
     }
 
     public GameManager gameManager() {

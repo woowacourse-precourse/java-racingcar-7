@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.CarInfo;
 
-public class WinnerDeterminer {
+public class WinnerCalculator {
     private final GameRule gameRule;
 
-    public WinnerDeterminer(GameRule gameRule) {
+    public WinnerCalculator(GameRule gameRule) {
         this.gameRule = gameRule;
     }
 

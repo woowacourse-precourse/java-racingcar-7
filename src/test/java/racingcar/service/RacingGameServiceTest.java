@@ -11,7 +11,7 @@ import racingcar.domain.car.CarInfo;
 import racingcar.domain.game.GameManager;
 import racingcar.domain.game.GameRound;
 import racingcar.domain.game.GameRule;
-import racingcar.domain.game.WinnerDeterminer;
+import racingcar.domain.game.WinnerCalculator;
 import racingcar.domain.game.WootecoRule;
 import racingcar.utils.NumberGenerator;
 import racingcar.utils.RandomNumberGenerator;
@@ -20,7 +20,7 @@ class RacingGameServiceTest {
 
     GameRule gameRule;
     NumberGenerator numberGenerator;
-    WinnerDeterminer winnerDeterminer;
+    WinnerCalculator winnerCalculator;
     GameManager gameManager;
     RacingGameService service;
 
@@ -28,8 +28,8 @@ class RacingGameServiceTest {
     void setUp() {
         gameRule = new WootecoRule();
         numberGenerator = new RandomNumberGenerator();
-        winnerDeterminer = new WinnerDeterminer(gameRule);
-        gameManager = new GameManager(gameRule, numberGenerator, winnerDeterminer);
+        winnerCalculator = new WinnerCalculator(gameRule);
+        gameManager = new GameManager(gameRule, numberGenerator, winnerCalculator);
         service = new RacingGameService(gameManager);
     }
 

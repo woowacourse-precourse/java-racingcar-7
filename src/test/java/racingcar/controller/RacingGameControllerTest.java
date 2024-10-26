@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.game.GameManager;
-import racingcar.domain.game.WinnerDeterminer;
+import racingcar.domain.game.WinnerCalculator;
 import racingcar.domain.game.WootecoRule;
 import racingcar.service.RacingGameService;
 import racingcar.utils.RandomNumberGenerator;
@@ -24,7 +24,7 @@ class RacingGameControllerTest {
     @BeforeEach
     void setUp() {
         GameManager gameManager = new GameManager(new WootecoRule(), new RandomNumberGenerator(),
-                new WinnerDeterminer(new WootecoRule()));
+                new WinnerCalculator(new WootecoRule()));
         racingGameService = new RacingGameService(gameManager);
 
         InputView inputView = new InputView();

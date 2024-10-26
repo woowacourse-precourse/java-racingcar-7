@@ -18,15 +18,15 @@ class GameManagerTest {
 
     GameRule gameRule;
     NumberGenerator numberGenerator;
-    WinnerDeterminer winnerDeterminer;
+    WinnerCalculator winnerCalculator;
     GameManager gameManager;
 
     @BeforeEach
     void beforeEach() {
         gameRule = new WootecoRule();
         numberGenerator = new RandomNumberGenerator();
-        winnerDeterminer = new WinnerDeterminer(gameRule);
-        gameManager = new GameManager(gameRule, numberGenerator, winnerDeterminer);
+        winnerCalculator = new WinnerCalculator(gameRule);
+        gameManager = new GameManager(gameRule, numberGenerator, winnerCalculator);
     }
 
     @Test

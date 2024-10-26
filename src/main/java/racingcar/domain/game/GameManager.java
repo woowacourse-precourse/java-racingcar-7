@@ -9,12 +9,12 @@ public class GameManager {
 
     private final GameRule gameRule;
     private final NumberGenerator numberGenerator;
-    private final WinnerDeterminer winnerDeterminer;
+    private final WinnerCalculator winnerCalculator;
 
-    public GameManager(GameRule gameRule, NumberGenerator numberGenerator, WinnerDeterminer winnerDeterminer) {
+    public GameManager(GameRule gameRule, NumberGenerator numberGenerator, WinnerCalculator winnerCalculator) {
         this.gameRule = gameRule;
         this.numberGenerator = numberGenerator;
-        this.winnerDeterminer = winnerDeterminer;
+        this.winnerCalculator = winnerCalculator;
     }
 
     public void moveCarsBasedOnRule(CarGroup carGroup) {
@@ -26,6 +26,6 @@ public class GameManager {
     }
 
     public List<String> determineWinners(CarGroup carGroup) {
-        return winnerDeterminer.getWinnerNames(carGroup.getCarInfos());
+        return winnerCalculator.getWinnerNames(carGroup.getCarInfos());
     }
 }
