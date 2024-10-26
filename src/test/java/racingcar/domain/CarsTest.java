@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,13 +14,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarsTest {
 
     @ParameterizedTest
-    @MethodSource("findWinners")
+    @MethodSource("findWinnerNames")
     void 우숭자를_구한다(Cars cars,String result){
 
-        assertThat(cars.findWinners()).isEqualTo(result);
+        assertThat(cars.findWinnerNames()).isEqualTo(result);
     }
 
-    static Stream<Arguments> findWinners(){
+    static Stream<Arguments> findWinnerNames(){
 
         return Stream.of(
                 Arguments.arguments(new Cars(List.of(
