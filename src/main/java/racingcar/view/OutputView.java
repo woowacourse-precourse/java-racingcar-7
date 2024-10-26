@@ -17,6 +17,7 @@ public class OutputView {
     }
 
     public static void printGameResultMessage() {
+        System.out.println();
         System.out.println(OutputMessages.RACING_RESULT);
     }
 
@@ -32,10 +33,6 @@ public class OutputView {
     }
 
     public static void printRacingResult(String racingResult) {
-        System.out.println(racingResult);
-    }
-
-    public static void printEmptyLine() {
-        System.out.println();
+        System.out.print(racingResult);
     }
 }
