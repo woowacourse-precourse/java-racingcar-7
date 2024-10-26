@@ -26,11 +26,12 @@ public class IOController {
         }
     }
 
-    public void printWinner(List<String> winners) {
+    public void printWinners(List<Car> winners) {
         System.out.print("최종 우승자 : ");
 
         for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.indexOf(i));
+            Car winner = winners.get(i);
+            System.out.print(winner.getName());
 
             if (i != winners.size()) {
                 System.out.print(", ");
