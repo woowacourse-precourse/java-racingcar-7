@@ -12,6 +12,8 @@ import racingcar.view.OutputView;
 public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_MOVE_CONDITION = 4;
 
     public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -48,7 +50,7 @@ public class Controller {
         for (int i = 0; i < repeatNumber; i++) {
             for (Car car : carList) {
                 randomValue = createRandomValue();
-                if (randomValue >= 4) {
+                if (randomValue >= MIN_MOVE_CONDITION) {
                     int currentForwardCount = car.getForwardCount();
                     car.setForwardCount(currentForwardCount + 1);
                 }
@@ -77,7 +79,7 @@ public class Controller {
     }
 
     private boolean isValidName(List<String> carNames) {
-        return carNames.stream().allMatch(name -> name.length() <= 5);
+        return carNames.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH);
     }
 
     private boolean isNameOverlap(List<String> carNames) {
