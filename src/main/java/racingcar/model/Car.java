@@ -3,6 +3,7 @@ package racingcar.model;
 public class Car {
     private final String name;
     private int location;
+    final int MIN_MOVE_NUMBER = 4;
 
     public Car(String name) {
         this.name = name;
@@ -17,7 +18,9 @@ public class Car {
         return location;
     }
 
-    public void move() {
-        location++;
+    public void move(int randomNumber) {
+        if (randomNumber >= MIN_MOVE_NUMBER) {
+            location++;
+        }
     }
 }
