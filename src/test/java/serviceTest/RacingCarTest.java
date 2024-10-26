@@ -1,4 +1,4 @@
-package racingcar;
+package serviceTest;
 
 import Service.RacingCarService;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CarRacingTest{
+public class RacingCarTest {
     private static int idx = 0;
     private static final List<Integer> currentSituation = new ArrayList<>(Arrays.asList(0,0,1,3));
     private static List<Integer>[] answer = new List[]{

@@ -1,4 +1,4 @@
-package racingcar;
+package utilTest;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
