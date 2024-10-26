@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -10,10 +11,11 @@ public class GameController {
     private InputView inputView = new InputView();
     static private String SPLIT_SIGN=",";
 
-    private void runningGame(){
+    public void runningGame(){
         String racingCarNames = inputView.InputCarNames();
         Integer trialCount = inputView.InputTrialCount();
-        createCars(racingCarNames);
+        List<Car> carGroup = createCars(racingCarNames);
+        Cars cars = new Cars(carGroup);
     }
 
     private String[] splitCarNames(String racingCarNames) {
@@ -24,7 +26,7 @@ public class GameController {
         return carNames;
     }
 
-    public List<Car> createCars(String racingCarNames){
+    private List<Car> createCars(String racingCarNames){
         String[] carNames = splitCarNames(racingCarNames);
         List<Car> carGroup = new ArrayList<>();
         for (String carName : carNames) {

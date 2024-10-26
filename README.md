@@ -20,7 +20,7 @@
 ## 4) Move
 * createRandomValue //랜덤 값 생성하기
 * checkMovable //n 이상 나오면 true 반환하기
-* moveCar //자동차 위치 변경하기
+* moveFoward //자동차 위치 변경하기
 
 ---
 # view

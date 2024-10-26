@@ -9,4 +9,8 @@ public class Car {
         this.name=name;
         this.position=INITPOSITION;
     }
+
+    public void settingPosition(int position){
+        this.position =position;
+    }
 }
