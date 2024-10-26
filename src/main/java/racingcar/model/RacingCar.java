@@ -2,6 +2,7 @@ package racingcar.model;
 
 import racingcar.model.dependency.validator.RacingCarValidator;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class RacingCar {
@@ -30,6 +31,10 @@ public class RacingCar {
         if (isMoveable(randomValue)) {
             position += DEFAULT_MOVE_DISTANCE;
         }
+    }
+
+    public Map<String, Integer> getCarNameAndPosition() {
+        return Map.of(name, position);
     }
 
     public String getName() {
