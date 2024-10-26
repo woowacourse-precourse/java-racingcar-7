@@ -7,7 +7,8 @@ public enum ExceptionMessage {
     INVALID_CAR_NAME_LENGTH("자동차 이름은 %d자 이상 %d자 이하만 가능합니다"),
     INVALID_ROUND_MIN("라운드는 %d 이상이어야 합니다."),
     NO_CARS("자동차가 없습니다."),
-    NO_MORE_ROUNDS("더 이상 진행할 라운드가 없습니다.");
+    NO_MORE_ROUNDS("더 이상 진행할 라운드가 없습니다."),
+    RACE_NOT_FINISHED("경주가 아직 종료되지 않았습니다.");  // 추가된 항목
 
     private final String message;
 

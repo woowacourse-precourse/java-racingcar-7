@@ -2,11 +2,14 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.dto.CarsPositionDto;
+import racingcar.dto.WinnersNameDto;
 
 public class OutputView {
     private static final String RESULT_MESSAGE = "\n실행 결과:";
+    private static final String WINNER_PREFIX = "최종 우승자 : ";
     private static final String POSITION_MARKER = "-";
     private static final String NAME_POSITION_SEPARATOR = " : ";
+    private static final String DELIMITER = ", ";
     private static final String NEW_LINE = "\n";
 
     public void printRoundResults(List<CarsPositionDto> carsPositionDtoList) {
@@ -28,5 +31,12 @@ public class OutputView {
         );
 
         fullResult.append(NEW_LINE);
+    }
+
+    public void printWinners(WinnersNameDto winnersNameDto) {
+        String formattedWinners = WINNER_PREFIX +
+                String.join(DELIMITER, winnersNameDto.winners());
+        
+        System.out.println(formattedWinners);
     }
 }

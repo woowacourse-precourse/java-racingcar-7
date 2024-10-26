@@ -48,5 +48,6 @@ public class RacingController {
 
         race.execute(RandomMovingStrategy.getInstance());
         outputView.printRoundResults(race.getEntireHistory());
+        outputView.printWinners(race.getWinners());
     }
 }

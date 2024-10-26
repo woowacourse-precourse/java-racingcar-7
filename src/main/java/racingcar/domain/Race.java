@@ -1,7 +1,10 @@
 package racingcar.domain;
 
+import static racingcar.constant.ExceptionMessage.RACE_NOT_FINISHED;
+
 import java.util.List;
 import racingcar.dto.CarsPositionDto;
+import racingcar.dto.WinnersNameDto;
 import racingcar.strategy.MovingStrategy;
 import racingcar.vo.CarsPositionSnapshot;
 
@@ -37,5 +40,14 @@ public class Race {
 
     public List<CarsPositionDto> getEntireHistory() {
         return raceHistory.toPositionDtos();
+    }
+
+    public WinnersNameDto getWinners() {
+        if (roundProgress.hasNext()) {
+            throw new IllegalStateException(RACE_NOT_FINISHED.message());
+        }
+
+        List<Car> winningCars = cars.getCarsWithMaxStep();
+        return WinnersNameDto.from(winningCars);
     }
 }
