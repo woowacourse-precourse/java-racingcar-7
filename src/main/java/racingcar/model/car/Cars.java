@@ -5,6 +5,7 @@ import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.List;
 import racingcar.model.position.Distance;
+import racingcar.model.race.Lap;
 
 public class Cars {
     private final List<Car> cars;
@@ -23,8 +24,9 @@ public class Cars {
     public void move() {
         for (Car car : cars) {
             Distance distance = car.movableDistance();
+            Lap countDownAmount = Lap.ONE;
             if (distance.isBiggerThanZero()) {
-                car.updateProgress(distance);
+                car.updateProgress(distance, countDownAmount);
             }
         }
     }

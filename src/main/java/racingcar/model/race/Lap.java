@@ -6,7 +6,10 @@ import java.util.Objects;
 import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Lap {
+
     public static Lap ZERO = Lap.from(0L);
+    public static Lap ONE = Lap.from(1);
+
 
     private final long value;
 
@@ -28,12 +31,16 @@ public class Lap {
         return this.value == 0;
     }
 
-    public Lap minus(final long source) {
-        if (source < 0) {
+    private boolean isLowerThanZero() {
+        return this.value < 0;
+    }
+
+    public Lap minus(final Lap source) {
+        if (source.isLowerThanZero()) {
             throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
 
-        long subtracted = this.value - source;
+        long subtracted = this.value - source.value;
         if (subtracted < 0) {
             throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }

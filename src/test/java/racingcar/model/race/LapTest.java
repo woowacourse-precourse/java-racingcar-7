@@ -2,7 +2,6 @@ package racingcar.model.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,7 @@ public class LapTest {
         // given
         Lap remainingLap = Lap.from(3);
         // when
-        Lap actual = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
+        Lap actual = remainingLap.minus(Lap.ONE);
         // then
         Lap expected = Lap.from(2);
         assertThat(actual.equals(expected)).isTrue();
@@ -29,7 +28,7 @@ public class LapTest {
         Lap remainingLap = Lap.from(1);
 
         // when & then
-        assertThatThrownBy(() -> remainingLap.minus(-1))
+        assertThatThrownBy(() -> remainingLap.minus(Lap.from(-1)))
                 .isInstanceOf(ShouldNotBeMinusException.class);
     }
 
@@ -40,7 +39,7 @@ public class LapTest {
         Lap remainingLap = Lap.from(0);
 
         // when & then
-        assertThatThrownBy(() -> remainingLap.minus(-1))
+        assertThatThrownBy(() -> remainingLap.minus(Lap.from(-1)))
                 .isInstanceOf(ShouldNotBeMinusException.class);
     }
 }

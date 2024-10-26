@@ -43,9 +43,10 @@ public class RaceTest {
         // given
         Lap remainingCount = Lap.from(3);
         Race race = Race.from(remainingCount);
+        Lap countDown = Lap.ONE;
 
         // when
-        race.moveToNextLap();
+        race.countDownRemainingLapCount(countDown);
 
         // then
         assertThat(race.isUnderway()).isTrue();
@@ -57,9 +58,9 @@ public class RaceTest {
         // given
         Lap remainingCount = ZERO;
         Race race = Race.from(remainingCount);
-
+        Lap countDown = Lap.ONE;
         // when & then
-        assertThatThrownBy(race::moveToNextLap)
+        assertThatThrownBy(() -> race.countDownRemainingLapCount(countDown))
                 .isInstanceOf(ShouldNotBeMinusException.class)
                 .hasMessage(LAP_COUNT_SHOULD_NOT_BE_MINUS);
     }

@@ -43,7 +43,7 @@ public class MyProgressTest {
         MyProgress myProgress = MyProgressHelper.mock(3, "---");
 
         // when
-        myProgress.updateRemainingLap();
+        myProgress.countDownRemainingLap(Lap.ONE);
         myProgress.updatePosition(Distance.ONE);
 
         // then

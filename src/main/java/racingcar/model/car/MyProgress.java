@@ -1,7 +1,6 @@
 package racingcar.model.car;
 
 import static java.util.Objects.requireNonNull;
-import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import racingcar.model.position.Distance;
@@ -35,8 +34,8 @@ public class MyProgress {
         this.position = position.add(distance);
     }
 
-    public void updateRemainingLap() {
-        this.remainingLap = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
+    public void countDownRemainingLap(final Lap countDownAmount) {
+        this.remainingLap = remainingLap.minus(countDownAmount);
     }
 
     @Override

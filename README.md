@@ -100,12 +100,12 @@
 
 ### 4. MyProgress
 
-| Method             | Parameter | Return Type | Implementation |
-|--------------------|-----------|-------------|----------------|
-| completedAllLap    | -         | boolean     | Done ✅         |
-| toString           | -         | toString    | Done ✅         |
-| updateRemainingLap | -         | void        | Done ✅         |
-| updatePositionBy   | int       | void        | Done ✅         |
+| Method          | Parameter | Return Type | Implementation |
+|-----------------|-----------|-------------|----------------|
+| completedAllLap | -         | boolean     | Done ✅         |
+| toString        | -         | toString    | Done ✅         |
+| countDownAmount | -         | void        | Done ✅         |
+| updatePosition  | int       | void        | Done ✅         |
 
 <br>
 

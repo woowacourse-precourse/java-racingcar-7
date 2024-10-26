@@ -2,14 +2,16 @@ package racingcar.model.car;
 
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
-import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import racingcar.common.exception.LengthExceedException;
 import racingcar.model.position.Distance;
+import racingcar.model.race.Lap;
 import racingcar.util.RandomUtil;
 
 public class Car {
+
+    public static int CAR_NAME_MIN_LENGTH = 5;
 
     private final String name;
     private final MyProgress myProgress;
@@ -38,9 +40,9 @@ public class Car {
         return condition.getDistance();
     }
 
-    public void updateProgress(final Distance distance) {
+    public void updateProgress(final Distance distance, Lap countDownAmount) {
         myProgress.updatePosition(distance);
-        myProgress.updateRemainingLap();
+        myProgress.countDownRemainingLap(countDownAmount);
     }
 
     public String myProgressSummary() {

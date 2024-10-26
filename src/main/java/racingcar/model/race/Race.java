@@ -1,7 +1,6 @@
 package racingcar.model.race;
 
 import static java.util.Objects.requireNonNull;
-import static racingcar.common.constant.RaceConstant.DEFAULT_LAP_COUNTING_POLICY;
 import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
@@ -27,11 +26,11 @@ public class Race {
         return remainingCount.hasRemaining();
     }
 
-    public void moveToNextLap() {
+    public void countDownRemainingLapCount(Lap countDownAmount) {
         if (remainingCount.isZero()) {
             throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
-        this.remainingCount = remainingCount.minus(DEFAULT_LAP_COUNTING_POLICY);
+        this.remainingCount = remainingCount.minus(countDownAmount);
     }
 
     @Override

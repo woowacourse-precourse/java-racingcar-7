@@ -1,8 +1,6 @@
 package racingcar.model.dashboard;
 
 import static java.util.Objects.requireNonNull;
-import static racingcar.common.constant.SystemConstant.NEW_LINE;
-import static racingcar.common.constant.SystemConstant.WINNER_DELIMITER;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.List;
@@ -28,7 +26,7 @@ public class DashBoard {
     // Method
     public void offerLapChart() {
         List<String> positions = cars.currentPositions();
-        String summary = String.join(NEW_LINE, positions);
+        String summary = String.join("\n", positions);
         lapCharts.offer(summary);
     }
 
@@ -41,6 +39,6 @@ public class DashBoard {
                 .stream()
                 .map(Car::toString)
                 .toList();
-        return String.join(WINNER_DELIMITER, winners);
+        return String.join(", ", winners);
     }
 }

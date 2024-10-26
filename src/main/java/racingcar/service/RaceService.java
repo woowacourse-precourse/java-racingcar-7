@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import static racingcar.model.position.Position.ON_START_LINE;
+import static racingcar.model.race.Lap.ONE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class RaceService {
         while (race.isUnderway()) {
             cars.move();
             dashBoard.offerLapChart();
-            race.moveToNextLap();
+            race.countDownRemainingLapCount(ONE);
         }
         return dashBoard;
     }

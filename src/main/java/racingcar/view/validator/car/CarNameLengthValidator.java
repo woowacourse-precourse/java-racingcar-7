@@ -1,6 +1,6 @@
 package racingcar.view.validator.car;
 
-import static racingcar.common.constant.SystemConstant.CAR_NAME_MIN_LENGTH;
+import static racingcar.model.car.Car.CAR_NAME_MIN_LENGTH;
 import static racingcar.util.PreprocessingUtil.stringToStringList;
 
 import java.util.List;

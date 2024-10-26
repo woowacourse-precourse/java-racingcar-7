@@ -1,8 +1,8 @@
 package racingcar.model.position;
 
-import static racingcar.common.constant.RaceConstant.POSITION_ICON;
-
 public class PositionBuilder {
+
+    private static final String POSITION_ICON = "-";
 
     // Constructor
     private PositionBuilder() {
