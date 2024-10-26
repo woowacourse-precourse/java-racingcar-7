@@ -1,5 +1,6 @@
 package racingcar;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,5 +23,12 @@ public class ValidatorTest {
         String blankInput = "   ";
         assertThrows(IllegalArgumentException.class,
                 () -> validator.validateInputNotBlank(blankInput));
+    }
+
+    @DisplayName("유효한 문자열일 경우 예외를 발생하지 않는다.")
+    @Test
+    void validateInputNotBlank_ShouldNotThrowException_WhenInputIsNotBlank() {
+        String validInput = "Ferrari";
+        assertDoesNotThrow(() -> validator.validateInputNotBlank(validInput));
     }
 }
