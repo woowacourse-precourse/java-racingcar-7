@@ -46,17 +46,21 @@ public class Executor {
 
     private void executeForCount(List<Car> cars, long repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
-            executeForAllCars(cars);
+            moveCars(cars);
             ioController.printResults(cars);
         }
     }
 
-    private void executeForAllCars(List<Car> cars) {
+    private void moveCars(List<Car> cars) {
         for (Car car : cars) {
-            int randomVal = Randoms.pickNumberInRange(0, 9);
-            if (moveStandard <= randomVal) {
-                car.move();
-            }
+            moveCar(car);
+        }
+    }
+
+    private void moveCar(Car car) {
+        int randomVal = Randoms.pickNumberInRange(0, 9);
+        if (moveStandard <= randomVal) {
+            car.move();
         }
     }
 
