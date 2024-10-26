@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
+import racingcar.domain.random.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,11 @@ public class CarRaceController {
         }
     }
     private final List<Car> playCars;
+    private final RandomGenerator randomGenerator;
 
 
-    public CarRaceController(List<String> carsName){
+    public CarRaceController(List<String> carsName, RandomGenerator randomGenerator){
+        this.randomGenerator = randomGenerator;
         checkDuplicateCarsName(carsName);
         playCars = setCars(carsName);
         checkMinMAXCarCount();
@@ -45,9 +48,6 @@ public class CarRaceController {
     private void checkDuplicateCarsName(List<String> carsName){
         if(carsName.stream().distinct().count() != carsName.size()) throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
     }
-    private int getRandomSingleDigit(){
-        return Randoms.pickNumberInRange(0, 9);
-    }
     private boolean checkStepForward(int randomDigit){
         if(randomDigit >= 4) return true;
         return false;
@@ -62,7 +62,7 @@ public class CarRaceController {
 
     public void playRaceOnce(){
         for (Car car : playCars) {
-            if(checkStepForward(getRandomSingleDigit())){
+            if(checkStepForward(randomGenerator.getRandomSingleDigit())){
                 car.nextStep();
             }
         }
