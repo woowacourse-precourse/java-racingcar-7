@@ -11,9 +11,14 @@ class Car {
     public Car(String name) {
         this.name = name;
     }
-
     public void moveOnePosition() {
         position++;
+    }
+    public String getCarName() {
+        return name;
+    }
+    public int getCarPosition() {
+        return position;
     }
 }
 
@@ -22,7 +27,6 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> carNames = new ArrayList<>();
         carNames = getCarNames();
-        System.out.println(carNames.toString());
 
         isValidCarNames(carNames);
 
@@ -91,8 +95,11 @@ public class Application {
     }
 
     public static void playRaceInTotalCounts(List<Car> cars, int totalRaceCount) {
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < totalRaceCount; i++) {
             moveAllOfCars(cars);
+            printEachRaceResult(cars);
         }
     }
 
@@ -109,6 +116,14 @@ public class Application {
         }
     }
 
-
-
+    private static void printEachRaceResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getCarName() + " : ");
+            for (int i = 0; i < car.getCarPosition(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
