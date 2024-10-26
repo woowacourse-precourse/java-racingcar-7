@@ -7,6 +7,7 @@ public class Game {
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
     private static final int MOVE_THRESHOLD = 4;
+    private static final int FIRST_ROUND = 1;
 
     private final List<Car> players;
     private final int totalRound;
@@ -17,7 +18,7 @@ public class Game {
 
         this.players = players;
         this.totalRound = Integer.parseInt(totalRound);
-        this.currentRound = 1;
+        this.currentRound = FIRST_ROUND;
     }
 
     public List<Car> getPlayers() {
@@ -38,8 +39,10 @@ public class Game {
                 player.move();
             }
         }
+    }
 
-        currentRound += 1;
+    public void incrementRound() {
+        this.currentRound += 1;
     }
 
     private boolean canMove() {
@@ -48,5 +51,9 @@ public class Game {
 
     public boolean isNotFinished() {
         return currentRound <= totalRound;
+    }
+
+    public boolean isFirstRound() {
+        return currentRound == FIRST_ROUND;
     }
 }
