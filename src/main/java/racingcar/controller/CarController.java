@@ -33,4 +33,8 @@ public class CarController {
         carService.start(names, totalTimes);
     }
 
+    public void printWinners() {
+        List<String> winners = carService.getWinners();
+        outputView.printWinners(winners);
+    }
 }
