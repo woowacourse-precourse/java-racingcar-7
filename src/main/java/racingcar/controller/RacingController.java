@@ -49,7 +49,6 @@ public class RacingController {
         while (racing.can()) {
             racing.run();
             racing.deductTryCount();
-
             outputView.printRacingResult(racing.getResult());
         }
     }
@@ -61,7 +60,6 @@ public class RacingController {
 
     private Cars creatCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-
         for (String carName : carNames) {
             cars.add(Car.from(carName, new RandomNumberGenerator()));
         }
