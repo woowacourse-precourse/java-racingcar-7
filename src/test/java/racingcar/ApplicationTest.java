@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     @Test
     void carNameIsEmpty() {
         assertThatThrownBy(()-> {
-            run("");
+            run("\n");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("참여하는 자동차가 없습니다.");
     }
