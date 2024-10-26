@@ -20,10 +20,13 @@ public class RacingService {
 
     private void loopEachCycle(Long count) {
         OutputInterface.printMessage(OutputInterface.EXECUTION_RESULT);
+        StringBuilder stringBuffer = new StringBuilder();
         for (int i = 0; i < count; i++) {
             cars.progressRace();
-            OutputInterface.printMessage(cars.toPrettyString());
+            String carsPositionDisplay = cars.toPrettyString();
+            stringBuffer.append(carsPositionDisplay).append("\n");
         }
+        OutputInterface.printMessage(stringBuffer.toString());
     }
 
     private void validatePositive(Long count) {
