@@ -38,8 +38,26 @@ public class RacingCarController {
 
         Cars cars = seperateCarNameService.seperate(carNamesWithDelimeter);
 
+        outputView.printCountOfTry();
+        int countOfTry = inputView.countOfTry();
+
+        outputView.printResult();
+        playRacingGame(cars,countOfTry);
 
 
+
+
+    }
+
+    private void playRacingGame(final Cars cars, int countOfTry){
+
+        for(int i=0;i<countOfTry;i++){
+
+            racingCarGameService.moveCars(cars);
+            cars.getCars().forEach(car -> outputView.printCarsMove(car.getName(),car.getMoveCount()));
+            System.out.println();
+
+        }
 
 
 

@@ -4,23 +4,23 @@ public class Car {
 
     private String name;
 
-    private int score;
+    private int moveCount;
 
     public Car(final String name){
         this.name = name;
-        this.score = 0;
+        this.moveCount = 0;
     }
 
-    public void plusCount(){
-        this.score++;
+    public void moveForward(){
+        this.moveCount++;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public int getScore(){
-        return this.score;
+    public int getMoveCount(){
+        return this.moveCount;
     }
 
 }
