@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Race;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class InputValidationTest {
     @Test
