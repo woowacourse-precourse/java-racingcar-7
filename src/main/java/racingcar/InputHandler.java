@@ -36,7 +36,18 @@ public class InputHandler {
     int getMoveCount() {
         int moveCount;
         System.out.println("시도할 횟수는 몇 회인가요?");
-        moveCount = Integer.parseInt(Console.readLine());
+        try {
+            moveCount = Integer.parseInt(Console.readLine());
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력하세요.", e);
+        }
         return moveCount;
     }
+
+    boolean isValidMoveCount(int moveCount) {
+
+    }
+
+
 }
