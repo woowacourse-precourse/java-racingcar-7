@@ -31,3 +31,4 @@
 ## 2) OutputView
 * outputTrialResult //시도결과 출력
 * outputWinningCars //최종 우승자 출력
+* createCarPositionLine //자동차 위치 선으로 만들기

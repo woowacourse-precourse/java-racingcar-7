@@ -1,21 +1,21 @@
 package racingcar.model;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Move {
     private static int MOVE_RATE=1;
+    private static int RANDOM_VALUE_MINIMUM=0;
     private static int RANDOM_VALUE_MAXIMUM=9;
-    private static int RANDOM_VALUE_STANDARD=4;
+    private static int MOVE_STANDARD_VALUE=4;
 
 
     private int createRandomValue(){
-        Random random = new Random();
-        int randomValue = random.nextInt(RANDOM_VALUE_MAXIMUM+1);
+        int randomValue = Randoms.pickNumberInRange(RANDOM_VALUE_MINIMUM, RANDOM_VALUE_MAXIMUM);
         return randomValue;
     }
 
     private boolean checkMovable(int randomValue){
-        if(randomValue>=RANDOM_VALUE_STANDARD) return true;
+        if(randomValue>=MOVE_STANDARD_VALUE) return true;
         return false;
     }
 
