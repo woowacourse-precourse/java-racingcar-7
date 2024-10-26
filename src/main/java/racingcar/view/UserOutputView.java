@@ -22,7 +22,7 @@ public class UserOutputView {
         }
     }
 
-    public static void RacingResultMessage(List<String> winners) {
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    public static void RacingResultMessage(List<String> winnersName) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnersName));
     }
 }

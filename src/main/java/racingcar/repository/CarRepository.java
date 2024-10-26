@@ -16,4 +16,19 @@ public class CarRepository {
     public List<Car> getCars() {
         return this.cars;
     }
+
+    public List<Car> getMaxDistanceCars() {
+        int maxDistance = getMaxDistance();
+
+        return this.cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
+    }
+
+    private int getMaxDistance() {
+        return this.cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+    }
 }

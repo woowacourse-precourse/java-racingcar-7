@@ -24,6 +24,6 @@ public class MainController {
         UserOutputView.RacingRoundMessage(startRaceresponse.roundMoveData());
 
         GetWinnersResponse getWinnersResponse = racingController.getWinners();
-        UserOutputView.RacingResultMessage(getWinnersResponse.winners());
+        UserOutputView.RacingResultMessage(getWinnersResponse.winnersName());
     }
 }

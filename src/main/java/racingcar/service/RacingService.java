@@ -25,14 +25,12 @@ public class RacingService {
     }
 
     public GetWinnersResponse getWinners() {
-        List<Car> cars = carRepository.getCars();
-        int maxDistance = getMaxDistance(cars);
-        List<String> winners = cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
+        List<Car> cars = carRepository.getMaxDistanceCars();
+        List<String> winnersName = cars.stream()
                 .map(Car::getName)
                 .toList();
-
-        return new GetWinnersResponse(winners);
+        
+        return new GetWinnersResponse(winnersName);
     }
 
     private List<Map<String, Integer>> getMoveData(int attemptCount, List<Car> cars) {
@@ -53,12 +51,5 @@ public class RacingService {
         }
 
         return moveSnapshot;
-    }
-
-    private int getMaxDistance(List<Car> cars) {
-        return cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
     }
 }
