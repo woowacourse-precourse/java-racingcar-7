@@ -22,12 +22,16 @@ public class InputView {
 
     private void validateCarNames(List<String> carNames) {
         for(String name: carNames) {
-            if(name.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
-            }
-            if(name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5를 넘을 수 없습니다.");
-            }
+            validateCarName(name);
+        }
+    }
+
+    private void validateCarName(String name) {
+        if(name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
+        }
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5를 넘을 수 없습니다.");
         }
     }
 }
