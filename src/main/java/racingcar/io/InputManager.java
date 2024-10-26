@@ -2,7 +2,6 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.NullEmptyStringException;
-import racingcar.message.IOMessage;
 
 public class InputManager {
     private static final InputManager inputManager = new InputManager();

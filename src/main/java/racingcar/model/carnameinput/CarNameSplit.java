@@ -6,5 +6,4 @@ public class CarNameSplit {
     public static String[] nameSplit(String str) {
         return str.split(DELIMITER);
     }
-
 }
