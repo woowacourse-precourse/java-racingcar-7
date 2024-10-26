@@ -18,9 +18,9 @@ public class Application {
 
         String[] carScore = new String[cars.length];
         InitializeToSpace(carScore);
+        System.out.println("실행 결과");
         StartRaceOnetime(cars, carScore);
-        System.out.println(cars[0]+":"+carScore[0]);
-        System.out.println(cars[1]+":"+carScore[1]);
+        PrintCurrentScore(cars, carScore);
     }
 
     // 1. 잘못된 입력 판단 함수
@@ -58,6 +58,13 @@ public class Application {
     private static void InitializeToSpace(String[] str) {
         for(int i = 0; i < str.length; i++) {
             str[i] = "";
+        }
+    }
+
+    // 5. 현재 자동차들의 상황을 출력하는 함수
+    private static void PrintCurrentScore(String[] cars, String[] carScore) {
+        for(int i = 0; i < cars.length; i++) {
+            System.out.println(cars[i]+" : "+carScore[i]);
         }
     }
 
