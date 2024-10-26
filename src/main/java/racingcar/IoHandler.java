@@ -19,10 +19,22 @@ public class IoHandler {
 		return new IoHandler(inputHandler, outputHandler, validatingParser);
 	}
 
-	public GameInfo handleGameInfoForIo() {
+	public RaceInfo handleRaceInfoForIo() {
 		List<String> parsedCarNames = handleCarNames();
 		int attemptCount = handleAttemptCount();
-		return GameInfo.of(parsedCarNames, attemptCount);
+		return RaceInfo.of(parsedCarNames, attemptCount);
+	}
+
+	public void showResult() {
+		outputHandler.promptGameResult();
+	}
+
+	public void showGameStatus(Cars cars) {
+		outputHandler.promptGameStatus(cars);
+	}
+
+	public void showWinners(List<String> winners) {
+		outputHandler.promptGameWinners(winners);
 	}
 
 	private List<String> handleCarNames() {
