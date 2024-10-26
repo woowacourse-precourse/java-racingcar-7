@@ -44,5 +44,5 @@
 
 ### 5. ResponseView
 
-- [ ] printRaceResult - 레이스 결과 출력 메서드
-- [ ] printWinnerNames - 우승한 사용자의 이름 출력 메서드
+- [X] printRaceResult - 레이스 결과 출력 메서드
+- [X] printWinnerNames - 우승한 사용자의 이름 출력 메서드
