@@ -2,12 +2,12 @@ package racingcar;
 
 public class ApplicationContext {
     private final View view;
-    private final Validator validator;
+    private final InputParser inputParser;
     private final GameLogic gameLogic;
 
     public ApplicationContext() {
         this.view = new View();
-        this.validator = new Validator();
+        this.inputParser = new InputParser();
         this.gameLogic = new GameLogic();
     }
 
@@ -15,8 +15,8 @@ public class ApplicationContext {
         return view;
     }
 
-    public Validator getValidator() {
-        return validator;
+    public InputParser getInputParser() {
+        return inputParser;
     }
 
     public GameLogic getGameLogic() {

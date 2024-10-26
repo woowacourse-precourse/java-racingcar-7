@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class Game {
     private final View view;
-    private final Validator validator;
+    private final InputParser inputParser;
     private final GameLogic gameLogic;
 
     public Game(ApplicationContext applicationContext) {
         this.view = applicationContext.getView();
-        this.validator = applicationContext.getValidator();
+        this.inputParser = applicationContext.getInputParser();
         this.gameLogic = applicationContext.getGameLogic();
     }
 
@@ -42,13 +42,13 @@ public class Game {
     private String[] getCarNames() {
         view.printCarNamePrompt();
         String input = view.readInput();
-        return validator.validateCarNames(input);
+        return inputParser.executeCarNames(input);
     }
 
     private int getCount() {
         view.printCountPrompt();
         String input = view.readInput();
-        return validator.validateCount(input);
+        return inputParser.executeAttempts(input);
     }
 
     private void playSingleRound() {
