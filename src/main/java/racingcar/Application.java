@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,5 +41,9 @@ public class Application {
             throw new IllegalArgumentException();
 
         return movemmetCount;
+    }
+
+    public static Integer getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }
