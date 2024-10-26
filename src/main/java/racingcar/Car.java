@@ -3,16 +3,20 @@ package racingcar;
 class Car {
   private String name;
   private int position;
+
   public Car(String name) {
-      if (name.length() > 5) {
-          throw new IllegalArgumentException("이름은 5자 이상이여만 가능합니다.");
-      }
-      this.name = name;
+    this.name = name;
+    validateName(name);
   }
+
+  private void validateName(String name) {
+    if (name.length() > 5) {
+      throw new IllegalArgumentException("이름은 5자 이상이여만 가능합니다.");
+    }
+  }
+
   public void move() {
-      Dice dice = new Dice();
-      dice.rolling();
-      if (dice.getNumber() >= 4) {
+      if (Dice.rolling() >= 4) {
           position++;
       }
       System.out.println("");
