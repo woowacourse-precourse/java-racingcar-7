@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -26,5 +27,14 @@ public class Cars {
                 car.move();
             }
         }
+    }
+
+    public List<String> getCurrentStates(){
+        List<String> currentStates = new ArrayList<>();
+        for (Car car : cars) {
+            currentStates.add(car.getCurrentState());
+        }
+
+        return currentStates;
     }
 }

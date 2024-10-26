@@ -18,4 +18,9 @@ public class Car {
         position++;
     }
 
+    public String getCurrentState(){
+        String positionBar = "-".repeat(position);
+        return name + " : " + positionBar;
+    }
+
 }
