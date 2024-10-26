@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validate {
     private static final int MAX_NAME_LENGTH = 5;
@@ -18,7 +19,7 @@ public class Validate {
         }
     }
 
-    private static List<String> checkCarNameList(List<String> carNameList) {
+    static List<String> checkCarNameList(List<String> carNameList) {
         for (String carName : carNameList) {
             if (carName == null || carName.trim().isEmpty()) {
                 System.out.println(carNameList);
@@ -39,12 +40,17 @@ public class Validate {
     }
 
 
-    private static List<String> checkComma(String inputCarName) {
+    static List<String> checkComma(String inputCarName) {
+        Pattern startCommaOrEndComma = Pattern.compile("^,|,$");
         List<String> splitCarName;
 
+        if (startCommaOrEndComma.matcher(inputCarName).find()) {
+            throw new IllegalArgumentException("자동차 이름의 시작이나 끝에 콤마가 올 수 없습니다.");
+        }
+
         if (inputCarName.contains(",")) {
-            // TODO ,, 로 끝날경우?
             splitCarName = Arrays.asList(inputCarName.split(","));
+            System.out.println(splitCarName);
             return splitCarName;
         }
 
