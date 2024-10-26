@@ -45,4 +45,29 @@ public class CarsTest {
             assertTrue(movedCars.get(car).equals("") || movedCars.get(car).contains("-"));
         }
     }
+
+    @Test
+    void 우승자_한명(){
+        Cars.cars.put("CarA", "---");
+        Cars.cars.put("CarB", "--");
+        Cars.cars.put("CarC", "-----");
+
+        List<String> winners = Cars.findWinner();
+
+        assertEquals(1, winners.size());
+        assertTrue(winners.contains("CarC"));
+    }
+
+    @Test
+    void 우승자_여러명(){
+        Cars.cars.put("CarA", "---");
+        Cars.cars.put("CarB", "---");
+        Cars.cars.put("CarC", "-");
+
+        List<String> winners = Cars.findWinner();
+
+        assertEquals(2, winners.size());
+        assertTrue(winners.contains("CarA"));
+        assertTrue(winners.contains("CarB"));
+    }
 }
