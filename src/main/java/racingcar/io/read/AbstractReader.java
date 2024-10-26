@@ -1,9 +1,8 @@
 package racingcar.io.read;
 
-public class SingleLineReader implements Reader<String> {
+public abstract class AbstractReader<T> implements Reader<T> {
 
-    @Override
-    public String read() {
+    protected String readString() {
         String read = camp.nextstep.edu.missionutils.Console.readLine();
         camp.nextstep.edu.missionutils.Console.close();
         return read;

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-class SingleLineReaderTest extends NsTest {
+class StringReaderTest extends NsTest {
 
     @Override
     protected void runMain() {}
@@ -16,7 +16,7 @@ class SingleLineReaderTest extends NsTest {
         // given
         String input = "this is input value";
         // when
-        SingleLineReader reader = new SingleLineReader();
+        StringReader reader = new StringReader();
         // then
         assertSimpleTest(() -> {
             run(input+"\n");

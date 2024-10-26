@@ -1,7 +1,7 @@
 package racingcar.io.page;
 
 import racingcar.io.read.Reader;
-import racingcar.io.read.SingleLineReader;
+import racingcar.io.read.StringReader;
 
 public class SimpleTextReaderPage implements ReaderPage<String, String> {
 
@@ -12,13 +12,13 @@ public class SimpleTextReaderPage implements ReaderPage<String, String> {
     private String output;
 
     public SimpleTextReaderPage() {
-        this.reader = new SingleLineReader();
+        this.reader = new StringReader();
         this.page = new SimpleTextPage();
         this.output = null;
     }
 
     public SimpleTextReaderPage(String content) {
-        this.reader = new SingleLineReader();
+        this.reader = new StringReader();
         this.page = new SimpleTextPage(content);
         this.output = null;
     }
@@ -30,7 +30,7 @@ public class SimpleTextReaderPage implements ReaderPage<String, String> {
     }
 
     public SimpleTextReaderPage(Page<String> page) {
-        this.reader = new SingleLineReader();
+        this.reader = new StringReader();
         this.page = page;
         this.output = null;
     }
