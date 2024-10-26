@@ -16,7 +16,7 @@ public class RacingCars {
 
     public static RacingCars from(List<String> carNames) {
         List<Car> cars = carNames.stream()
-                .map(car -> Car.from(Name.from(car)))
+                .map(Car::from)
                 .toList();
         return new RacingCars(cars);
     }

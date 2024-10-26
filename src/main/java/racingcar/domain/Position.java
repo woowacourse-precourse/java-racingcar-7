@@ -12,7 +12,7 @@ public class Position {
         position += "-";
     }
 
-    public int positionDistance(){
+    public int distance(){
         return position.length();
     }
 
