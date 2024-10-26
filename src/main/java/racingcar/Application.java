@@ -22,6 +22,7 @@ public class Application {
         for(int i = 0; i < number; i++) {
             StartRaceOnetime(cars, carScore);
             PrintCurrentScore(cars, carScore);
+            System.out.println();
         }
         int[] carScoreInt = new int[cars.length];
         StringtoIntArray(carScore, carScoreInt);
@@ -29,7 +30,15 @@ public class Application {
         int countWinners = CountWinners(carScoreInt, max);
         int[] winners = new int[countWinners];
         StoreWinnerIndex(winners, carScoreInt, max);
-
+        System.out.println("최종 우승자");
+        for(int i = 0; i < countWinners; i++) {
+            if(i == countWinners - 1) {
+                System.out.print(cars[winners[i]]);
+            }
+            else {
+                System.out.print(cars[winners[i]]+", ");
+            }
+        }
     }
 
     // 1. 잘못된 입력 판단 함수
