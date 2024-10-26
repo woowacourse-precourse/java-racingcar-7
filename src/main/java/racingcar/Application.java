@@ -21,7 +21,9 @@ public class Application {
             }
 
             //  게임 객체에서 가져온후 경주
-
+            Game game = new Game(carNames, attempts);
+            game.startRace(); // 경주 진행
+            game.printWinners(); // 우승자 출력
 
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());

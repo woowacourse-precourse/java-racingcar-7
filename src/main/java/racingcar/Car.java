@@ -26,7 +26,7 @@ public class Car {
     }
 
     // 현재 자동차의 위치를 "-"  로 표현한다
-    public String getposition(){
+    public String getPosition(){
         return "-".repeat(position); // position 값만큼 "-" 를 출력한다
     }
 
