@@ -12,11 +12,10 @@ public class Application {
         ResultWriter writer = new ResultWriter();
 
         final List<String> carNames = reader.readCarNames();
-        final int tryCount = reader.readTryCount();
-
         Cars cars = new Cars(carNames);
         RacingCarService service = new RacingCarService(cars);
 
+        final int tryCount = reader.readTryCount();
         writer.writeResultStart();
         for (int i = 0; i < tryCount; i++) {
             final Cars racedCars = service.race();
