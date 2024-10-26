@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Racing {
+public class Winner {
 
     public String findWinner(List<Car> cars) {
         int maxMovedDistance = findMaxMovedDistance(cars);

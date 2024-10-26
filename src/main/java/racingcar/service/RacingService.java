@@ -5,20 +5,20 @@ import racingcar.domain.Car;
 import racingcar.domain.CarCreator;
 import racingcar.domain.CarManager;
 import racingcar.domain.InputParser;
-import racingcar.domain.Racing;
+import racingcar.domain.Winner;
 import racingcar.utils.RandomNumber;
 import racingcar.validation.Validator;
 
 
 public class RacingService {
 
-    private final Racing racing;
+    private final Winner winner;
     private final RandomNumber randomNumber;
     private final Validator validation;
     private CarManager carManager;
 
-    public RacingService(Racing racing, RandomNumber randomNumber, Validator validation) {
-        this.racing = racing;
+    public RacingService(Winner winner, RandomNumber randomNumber, Validator validation) {
+        this.winner = winner;
         this.randomNumber = randomNumber;
         this.validation = validation;
     }
@@ -37,7 +37,7 @@ public class RacingService {
     }
 
     public String getWinners() {
-        return racing.findWinner(carManager.getCars());
+        return winner.findWinner(carManager.getCars());
     }
 
     public String getValidatedStringInput(String userStringInput) {

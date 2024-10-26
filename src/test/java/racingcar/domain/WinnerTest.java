@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RacingTest {
+public class WinnerTest {
 
     @DisplayName("Cars가 주어졌을 때, 가장 많이 움직인 자동차를 우승자로 뽑는다 - 단독 우승의 경우")
     @Test
@@ -16,7 +16,7 @@ public class RacingTest {
         Car car3 = new Car("even");
         CarManager carManager = new CarManager(List.of(car1, car2, car3));
 
-        Racing racing = new Racing(carManager);
+        Winner racing = new Winner(carManager);
         car1.move(9);
         car1.move(8);
         car2.move(0);
@@ -38,7 +38,7 @@ public class RacingTest {
         Car car3 = new Car("even");
         CarManager carManager = new CarManager(List.of(car1, car2, car3));
 
-        Racing racing = new Racing(carManager);
+        Winner racing = new Winner(carManager);
 
         car1.move(9);
         car1.move(8);
