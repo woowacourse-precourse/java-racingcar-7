@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class Application {
     // TODO: 사용자가 잘못된 값을 입력했을 때 상황들 생각해보기
@@ -12,33 +13,40 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int repeatCount = Integer.parseInt(Console.readLine());
 
+        if(carNames.endsWith(",") || carNames.isEmpty() || repeatCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        StringTokenizer st = new StringTokenizer(carNames, ",");
         List<Car> carList = new ArrayList<>();
         for (final String carName : carNames.split(",")) {
-            if(carName.length() > 5) {
+            if(carName.length() > 5 || carName.isBlank()) {
                 throw new IllegalArgumentException();
             }
             carList.add(new Car(carName));
         }
 
         System.out.println("실행 결과");
-        String winners = "";
+        int winnerLocation = 0;
         while(repeatCount > 0) {
             for(final Car car : carList) {
                 car.go();
-                System.out.println(car.getName() + ": " + car.getLocation());
-
-                if(car.getLocation().equals("-----")) {
-                    winners += car.getName();
-                    repeatCount = 0;
-                }
+                winnerLocation = Math.max(winnerLocation, car.getLocation());
+                System.out.println(car.getName() + " : " + car.getLocationToString());
             }
 
             System.out.println();
             repeatCount--;
         }
 
-        System.out.println("최종 우승자: " + winners);
+        StringBuilder winners = new StringBuilder();
+        for(final Car car : carList) {
+            if(winnerLocation == car.getLocation()) {
+                winners.append(car.getName());
+                winners.append(",");
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winners.substring(0, winners.length() - 1));
     }
-
 }
-
