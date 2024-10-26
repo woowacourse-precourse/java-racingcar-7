@@ -1,5 +1,6 @@
 package racingcar.Service;
 
+import racingcar.model.Game;
 import racingcar.repository.GameRepository;
 
 public class GameService {
@@ -10,8 +11,15 @@ public class GameService {
     private final GameRepository gameRepository =new GameRepository();
 
 
-
-
-
-
+    public Boolean isEnd(Game game) {
+        return gameRepository.isEnd(game);
     }
+
+    public Long save(Game game) {
+        return gameRepository.save(game);
+    }
+
+    
+
+
+}
