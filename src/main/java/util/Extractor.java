@@ -3,16 +3,20 @@ package util;
 import dto.RacingInput;
 import dto.RacingParam;
 import java.util.ArrayList;
+import java.util.Arrays;
 import repository.CarRepository;
 
 public class Extractor {
     public static ArrayList<Car> extractCarList(String input) {
-        String[] inputCars = input.split(",");
+        String[] splitInput = input.split(",");
+        ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
+
         Validator.validateInputDate(inputCars);
 
+        // convertCarArrayList
         ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < inputCars.length; i++) {
-            cars.add(new Car(inputCars[i]));
+        for (String inputCar : inputCars) {
+            cars.add(new Car(inputCar));
         }
 
         return cars;
