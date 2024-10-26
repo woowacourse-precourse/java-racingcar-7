@@ -12,7 +12,7 @@ class InputConsoleHandlerTest {
 
     @Test
     @DisplayName("콘솔에 자동차 이름을 입력하라는 안내 메시지를 출력한다")
-    void test() {
+    void showCarNameInputGuideMessageTest() {
         // given
         InputConsoleHandler inputConsoleHandler = new InputConsoleHandler();
 
@@ -29,4 +29,5 @@ class InputConsoleHandlerTest {
         System.setOut(System.out);
 
     }
+
 }
