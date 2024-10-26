@@ -31,7 +31,7 @@ public class CarDomains {
     }
 
     public void executeOneRound() {
-        cars.parallelStream().forEach(CarDomain::attemptMove);
+        cars.forEach(CarDomain::attemptMove);
     }
 
     private int getMaxDistance() {
