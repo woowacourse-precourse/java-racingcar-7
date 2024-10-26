@@ -15,6 +15,16 @@ public class RacingCarsGroup {
         return cars;
     }
 
+    public static List<Car> getFinalWinners(List<Car> cars) {
+        List<Car> finalWinners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == getMaxPositionIdx(cars)) {
+                finalWinners.add(car);
+            }
+        }
+        return finalWinners;
+    }
+
     private static int getMaxPositionIdx(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
