@@ -1,18 +1,11 @@
 package racingcar.view;
 
-import static racingcar.Validator.validateEmptyOrZeroTryCount;
-import static racingcar.Validator.validateEmptyString;
-import static racingcar.Validator.validateNameFormat;
-import static racingcar.Validator.validateNameLength;
-import static racingcar.Validator.validateNotNumber;
-
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.Validator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import racingcar.domain.Car;
+import racingcar.domain.UserInputData;
 
 public class InputView {
     public static List<Car> readCarNames() {
@@ -20,24 +13,10 @@ public class InputView {
         String carNames = Console.readLine();
         validateEmptyString(carNames);
 
-        List<Car> cars = splitCarNames(carNames);
+        List<Car> cars = UserInputData.splitCarNames(carNames);
         return cars;
     }
 
-    private static List<Car> splitCarNames(String carNames) {
-        List<String> splitNames = Arrays.asList(carNames.split(","));
-
-        List<Car> cars = new ArrayList<>();
-        cars.addAll(
-                splitNames.stream()
-                        .map(String::trim)
-                        .peek(Validator::validateNameFormat)
-                        .peek(Validator::validateNameLength)
-                        .map(Car::new)
-                        .collect(Collectors.toList())
-        );
-        return cars;
-    }
     public static int readTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCount = Console.readLine();
@@ -46,5 +25,27 @@ public class InputView {
 
         int inputTryCount = Integer.parseInt(tryCount);
         return inputTryCount;
+    }
+
+    private static void validateEmptyString(String carNames) {
+        if (carNames.isBlank()) {
+            throw new IllegalArgumentException("빈값을 입력하셨습니다. 이름을 입력해주세요");
+        }
+    }
+
+    private static void validateNotNumber(String tryCount) {
+        String rex = "[^\\d]+";
+        Pattern pattern = Pattern.compile(rex);
+        Matcher matcher = pattern.matcher(tryCount);
+
+        if (matcher.find()) {
+            throw new IllegalArgumentException("시도횟수는 양수만 입력할 수 있습니다.");
+        }
+    }
+
+    private static void validateEmptyOrZeroTryCount(String inputString) {
+        if (inputString.isBlank() || inputString.equals("0")) {
+            throw new IllegalArgumentException("0또는 빈 값을 입력하셨습니다.");
+        }
     }
 }

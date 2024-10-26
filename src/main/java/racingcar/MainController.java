@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.dto.UserInputData;
+import racingcar.domain.UserInputData;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
