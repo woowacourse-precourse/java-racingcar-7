@@ -1,9 +1,13 @@
 package racingcar.model;
 
-import static racingcar.global.GameConstant.NAME_POSITION_DELIMITER;
-import static racingcar.global.GameConstant.POSITION_NOTATION;
 
 public class Car {
+
+    private static final int DEFAULT_POSITION_VALUE = 0;
+    private static final int MOVABLE_NUMBER_OF_CRITERIA = 4;
+    private static final int MOVE_DISTANCE = 1;
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final String NOTATION_OF_POSITION = "-";
 
     private final String name;
     private int position;
@@ -11,7 +15,7 @@ public class Car {
     private Car(final String name) {
         checkNameLength(name);
         this.name = name;
-        this.position = 0;
+        this.position = DEFAULT_POSITION_VALUE;
     }
 
     public static Car from(final String name) {
@@ -19,14 +23,14 @@ public class Car {
     }
 
     private void checkNameLength(final String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 %s자 이하여야 합니다.".formatted(MAX_NAME_LENGTH));
         }
     }
 
     public void move(final int number) {
-        if (number >= 4) {
-            position++;
+        if (number >= MOVABLE_NUMBER_OF_CRITERIA) {
+            position += MOVE_DISTANCE;
         }
     }
 
@@ -35,9 +39,7 @@ public class Car {
     }
 
     public String getCurrentSituation() {
-        return name +
-            NAME_POSITION_DELIMITER +
-            POSITION_NOTATION.repeat(Math.max(0, position));
+        return String.format("%s : %s", name, NOTATION_OF_POSITION.repeat(position));
     }
 
     public String getName() {
@@ -47,4 +49,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
 }

@@ -8,10 +8,9 @@ import racingcar.model.Cars;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import static racingcar.global.GameConstant.CAR_NAME_SPLIT_DELIMITER;
-
 public class InputHandler {
 
+    private static final String CAR_NAME_SPLIT_DELIMITER = ",";
     private static final Pattern CAR_NAME_PATTERN = Pattern.compile("^[^\\s]+(" + CAR_NAME_SPLIT_DELIMITER + "[^\\s])*$");
 
     public Cars getCarNamesFromUser() {

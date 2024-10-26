@@ -5,14 +5,12 @@ import racingcar.model.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.global.GameConstant.CAR_NAME_SPLIT_DELIMITER;
-import static racingcar.global.GameConstant.WINNER_NOTATION_DELIMITER;
-
-
 public class OutputHandler {
 
+    private static final String WINNER_NOTATION_DELIMITER = ", ";
+
     public void showGameStartComment() {
-        System.out.printf("경주할 자동차 이름을 입력하세요.(이름은 쉼표(%s) 기준으로 구분)\n", CAR_NAME_SPLIT_DELIMITER);
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
     public void showTryCountComment() {
