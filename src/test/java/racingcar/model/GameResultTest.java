@@ -15,7 +15,11 @@ public class GameResultTest {
         Car car2 = new Car("car2", 5);
         Car car3 = new Car("car3", 3);
         Cars cars = new Cars(List.of(car1, car2, car3));
-        GameResult gameResult = new GameResult(cars);
+
+        GameRoundResult gameRoundResult = new GameRoundResult(cars);
+
+        GameResult gameResult = new GameResult();
+        gameResult.saveRoundResult(gameRoundResult);
 
         Integer maxMoveCount = gameResult.findMaxMoveCount();
 
@@ -28,10 +32,12 @@ public class GameResultTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         Cars cars = new Cars(List.of(car1, car2));
-        GameResult gameResult = new GameResult(cars);
+        GameRoundResult gameRoundResult = new GameRoundResult(cars);
 
-        Cars resultCars = gameResult.getCars();
+        GameResult gameResult = new GameResult();
+        gameResult.saveRoundResult(gameRoundResult);
 
+        Cars resultCars = gameResult.getCarsAtFinalRound();
         assertThat(resultCars).isEqualTo(cars);
     }
 
