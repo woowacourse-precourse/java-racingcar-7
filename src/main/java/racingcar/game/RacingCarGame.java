@@ -22,7 +22,6 @@ public class RacingCarGame {
         raceUntilAttemptIsConsumed(attemptCount, racingCars);
 
         Winners winners = racingCars.retrieveWinners();
-
         outputHandler.showWinners(winners);
     }
 
