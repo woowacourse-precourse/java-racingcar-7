@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.dto.RacingRegisterForm;
+import racingcar.dto.RoundRaceRecord;
 import racingcar.model.CarRace;
 import racingcar.model.Cars;
 import racingcar.model.RegistrarClerk;
@@ -18,17 +19,17 @@ public class RacingGameController {
         outputView = new OutputView();
     }
 
-    public void start() {
-        CarRace carRace = createCarRaceFromInput();
-        carRace.start();
-        displayWinners(carRace);
-    }
-
-    private CarRace createCarRaceFromInput() {
+    public void startRace() {
         RacingRegisterForm registerForm = getRacingRegisterForm();
         Cars cars = getCars(registerForm);
         int raceRoundCount = registerForm.raceRoundCount();
-        return new CarRace(cars, raceRoundCount);
+        CarRace carRace = new CarRace(cars);
+        outputView.printRaceStart();
+        for (int i = 1; i <= raceRoundCount; i++) {
+            List<RoundRaceRecord> roundResult = carRace.startRound();
+            outputView.printRoundResult(roundResult);
+        }
+        displayWinners(carRace);
     }
 
     private RacingRegisterForm getRacingRegisterForm() {

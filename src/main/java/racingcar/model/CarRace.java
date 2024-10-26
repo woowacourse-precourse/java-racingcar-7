@@ -3,29 +3,23 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.RoundRaceRecord;
 
 public class CarRace {
 
-    private static final String RACE_PROCESS_MESSAGE = "\n실행 결과";
-    private static final String CAR_CURRENT_POSITION_MESSAGE = "%s : %s\n";
     private static final int RANDOM_RANGE_START = 0;
     private static final int RANDOM_RANGE_END = 9;
     private static final int MOVE_THRESHOLD = 4;
 
     private final Cars cars;
-    private final int roundCount;
 
-    public CarRace(Cars cars, int roundCount) {
+    public CarRace(Cars cars) {
         this.cars = cars;
-        this.roundCount = roundCount;
     }
 
-    public void start() {
-        System.out.println(RACE_PROCESS_MESSAGE);
-        for (int i = 0; i < roundCount; i++) {
-            moveCarsIfAble();
-            displayCarsPositions();
-        }
+    public List<RoundRaceRecord> startRound() {
+        moveCarsIfAble();
+        return getRoundRaceRecord();
     }
 
     private void moveCarsIfAble() {
@@ -36,11 +30,15 @@ public class CarRace {
         }
     }
 
-    private void displayCarsPositions() {
-        for (Car car : cars.getCars()) {
-            System.out.printf((CAR_CURRENT_POSITION_MESSAGE), car.getName(), car.displayPosition());
-        }
-        System.out.println();
+    private List<RoundRaceRecord> getRoundRaceRecord() {
+        return cars.getCars()
+                .stream()
+                .map(this::mapToRoundRaceRecord)
+                .toList();
+    }
+
+    private RoundRaceRecord mapToRoundRaceRecord(Car car) {
+        return new RoundRaceRecord(car.getName(), car.getPosition());
     }
 
     private boolean canMove() {
