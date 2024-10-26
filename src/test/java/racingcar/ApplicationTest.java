@@ -27,8 +27,8 @@ class ApplicationTest extends NsTest {
     void 기능_테스트2() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni", "3");
-                    assertThat(output()).contains("pobi : ---", "woni : ", "최종 우승자 : pobi");
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP
         );
@@ -38,8 +38,8 @@ class ApplicationTest extends NsTest {
     void 기능_테스트3() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni", "3");
-                    assertThat(output()).contains("pobi : ---", "woni : ", "최종 우승자 : pobi");
+                    run("pobi,woni", "10");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP
         );
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("a,b,c,d,e", "3");
-                    assertThat(output()).contains("pobi : ---", "woni : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains("a : -", "b : ", "c : ", "d : ", "e : ", "최종 우승자 : a");
                 },
                 MOVING_FORWARD, STOP
         );
