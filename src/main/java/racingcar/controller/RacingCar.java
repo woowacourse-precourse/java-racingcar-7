@@ -6,6 +6,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.SplitCar;
 import racingcar.model.Turn;
+import racingcar.model.FindWinner;
 import racingcar.view.InputCarName;
 import racingcar.view.InputTurn;
 import racingcar.view.Output;
@@ -47,10 +48,13 @@ public class RacingCar {
 
     public void playRacing() {
         Output output = new Output();
+        FindWinner findWinner = new FindWinner();
 
         for (int nowTurn = 0; nowTurn < playTurn; nowTurn++) {
             carMoving();
             output.printCarLocation(carList);
         }
+
+        output.printWinner(findWinner.winnersMember(carList));
     }
 }
