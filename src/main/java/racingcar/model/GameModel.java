@@ -48,11 +48,12 @@ public class GameModel {
 
     private void getNumRound(String gameRound) {
         try {
-            int numRound = Integer.parseInt(gameRound);
+            long numRound = Long.parseLong(gameRound);
             if (numRound < 1) throw new IllegalArgumentException("게임 횟수는 최소 한번입니다.");
-
+            if (numRound > Integer.MAX_VALUE) {
+                throw new IllegalArgumentException("정수 최대 범위를 초과했습니다.");
+            }
             System.out.println();
-
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수 이외의 값은 입력이 불가능합니다.");
         }
