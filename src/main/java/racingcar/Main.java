@@ -72,9 +72,20 @@ public class Main {
         return repeatCount;
     }
 
-    public void printResult(List<Car> cars) {
+    public void printSingleResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + (car.getMove()?"-":""));
         }
+    }
+
+    public int repeatGame(int count){
+        int game = 0;
+        repeatCreation();
+
+        for (int i = 0; i < count; i++) {
+            game++;
+        }
+
+        return game;
     }
 }

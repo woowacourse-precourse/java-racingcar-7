@@ -95,9 +95,18 @@ class MainTest extends NsTest {
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
-        main.printResult(cars);
+        main.printSingleResult(cars);
         assertThat(output()).contains("pobi :");
         assertThat(output()).contains("jun : -");
+    }
+
+    @Test
+    @DisplayName("시도 횟수만큼 반복한다")
+    void repeatGame(){
+        assertSimpleTest(()->{
+            run("pobi,woni,jun");
+            assertThat(main.repeatGame(5)).isEqualTo(5);
+        });
     }
 
     @Override
