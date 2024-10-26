@@ -33,7 +33,7 @@ public class RacingGame {
     }
 
     private void printRoundResult() {
-        OutputView.printCarStatus(cars);
-        OutputView.printBlankLine();
+        OutputView.printCarsStatus(cars);
+        OutputView.printLineBreaking();
     }
 }
