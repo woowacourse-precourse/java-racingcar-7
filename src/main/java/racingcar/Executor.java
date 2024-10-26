@@ -34,7 +34,7 @@ public class Executor {
         saveCarsByName(carNames);
 
         String inputRepeatCountStr = ioController.enterRepeatCount();
-        validator.isPositiveNumber(inputRepeatCountStr);
+        validator.validateRepeatCount(inputRepeatCountStr);
         repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
 
         executeForCount(cars, repeatCount);

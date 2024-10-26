@@ -25,7 +25,7 @@ public class Validator {
         }
     }
 
-    public void isPositiveNumber(String inputStr) {
+    public void validateRepeatCount(String inputStr) {
         try {
             long num = Long.parseLong(inputStr);
             if (num < 0) {
