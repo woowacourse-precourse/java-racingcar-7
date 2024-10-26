@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.List;
 import java.util.Random;
 
 public class Move {

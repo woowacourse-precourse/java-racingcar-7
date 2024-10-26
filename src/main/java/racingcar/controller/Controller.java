@@ -1,9 +1,12 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Game;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class Controller {
     private InputView inputView = new InputView();
@@ -18,5 +21,7 @@ public class Controller {
             game.oneRoundGame(cars);
             outputView.printTrialResult(cars);
         }
+        List<Car> carGroup = game.findWinningCars(cars);
+
     }
 }

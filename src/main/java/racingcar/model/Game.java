@@ -22,15 +22,15 @@ public class Game {
         return maximumPositon;
     }
 
-    public Cars findWinningCars(Cars cars) {
+    public List<Car> findWinningCars(Cars cars) {
         List<Car> carGroup = cars.getCarGroup();
         List<Car> winningCarGroup = new ArrayList<>();
         int maximumPosition = findWinningCarPosition(carGroup);
         for (Car car : carGroup) {
-            int carPosition = car.getPosition();
-            if (maximumPosition == carPosition) {
-
+            if (maximumPosition == car.getPosition()) {
+                winningCarGroup.add(car);
             }
         }
+        return winningCarGroup;
     }
 }
