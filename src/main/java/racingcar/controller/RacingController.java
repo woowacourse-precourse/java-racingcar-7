@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.LinkedHashMap;
 import racingcar.model.CarNameExtractor;
+import racingcar.model.GameManager;
 import racingcar.model.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -21,6 +22,7 @@ public class RacingController {
         Integer rounds = getRounds();
         validateInput(carName, rounds);
         LinkedHashMap<String, Integer> gameEntry = getGameEntry(carName);
+        gameEntry = playGame(gameEntry, rounds);
     }
 
     private String getCarName() {
@@ -43,4 +45,15 @@ public class RacingController {
         return carNameExtractor.setGameEntry(carName);
     }
 
+    private LinkedHashMap<String, Integer> playGame(LinkedHashMap<String, Integer> gameEntry, Integer rounds) {
+        GameManager gameManager = new GameManager();
+        outputView.printPlayMessage();
+
+        while (rounds > 0) {
+            gameEntry = gameManager.gameProgress(gameEntry, rounds);
+            rounds--;
+            outputView.printRoundResult(gameEntry);
+        }
+        return gameEntry;
+    }
 }
