@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -30,5 +31,16 @@ class CarsTest {
         //when //then
         assertThatThrownBy(() -> Cars.fromNames(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복된 자동차가 없는 경우 예외를 발생하지 않는다.")
+    @Test
+    void nonDuplicateCar() {
+        //given
+        List<String> carNames = List.of("pobi", "woni", "jun");
+
+        //when //then
+        assertThatCode(() -> Cars.fromNames(carNames))
+                .doesNotThrowAnyException();
     }
 }
