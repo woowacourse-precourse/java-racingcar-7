@@ -1,6 +1,8 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -29,6 +31,22 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    public void 자동차_이름_입력받는_기능(){
+        assertSimpleTest(() -> {
+            run("창의", "1");
+            assertThat(output()).contains("시도할 횟수는 몇 회인가요?");
+        });
+    }
+
+    @Test
+    public void 자동차_이동횟수_입력받는_기능(){
+        assertSimpleTest(() -> {
+            run("창의", "1");
+            assertThat(output()).contains("시도할 횟수는 몇 회인가요?");
+        });
     }
 
     @Override
