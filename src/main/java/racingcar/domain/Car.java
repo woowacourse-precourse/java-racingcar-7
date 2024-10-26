@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private static final String INPUT_LENGTH_EXCEEDED_ERROR = "5자 초과하였습니다.";
     private static final String EMPTY_NAME_ERROR = "이름이 없습니다.";
@@ -35,4 +37,20 @@ public class Car {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(carName, car.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
+    }
 }
