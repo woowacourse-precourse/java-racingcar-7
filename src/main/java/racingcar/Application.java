@@ -8,5 +8,6 @@ public class Application {
         CarFactory carFactory = new CarFactory();
         RaceController raceController = new RaceController(inputHandler, carFactory);
         raceController.runRace();
+        inputHandler.closeConsole(); // TODO
     }
 }

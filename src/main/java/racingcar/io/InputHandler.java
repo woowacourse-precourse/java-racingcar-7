@@ -1,8 +1,9 @@
 package racingcar.io;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.messages.InputMessages.INPUT_CAR_NAMES;
 import static racingcar.messages.InputMessages.INPUT_NUMBER_OF_ROUNDS;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
     private final InputValidator inputValidator = new InputValidator();
@@ -10,22 +11,6 @@ public class InputHandler {
     private String input; // TODO 변수명 변경
     private String[] carNames;
     private int numberOfRound;
-
-    //    public String getInput() {
-//        return carNames;
-//    }
-//
-    public void readCarNames() {
-        input = readLine();
-    }
-
-//    private static String inputCarNames() {
-//        return readLine();
-//    }
-
-//    public String[] getCarNames() {
-//        return carNames;
-//    }
 
     public String[] processCarNamesInput() {
         Output.printMessage(INPUT_CAR_NAMES.getMessages());
@@ -35,15 +20,22 @@ public class InputHandler {
         return carNames;
     }
 
-
-    private void readNumberOfRound() {
-        numberOfRound = Integer.parseInt(readLine());
-    }
-
     public int processNumberOfRoundInput() {
         Output.printMessage(INPUT_NUMBER_OF_ROUNDS.getMessages());
-        readLine(); // TODO 버퍼비우기
+        readNumberOfRound();
         inputValidator.validateNumberOfRound(numberOfRound);
         return numberOfRound;
+    }
+
+    private void readCarNames() {
+        input = Console.readLine();
+    }
+
+    private void readNumberOfRound() {
+        numberOfRound = Integer.parseInt(Console.readLine());
+    }
+
+    public void closeConsole() {
+        Console.close();
     }
 }
