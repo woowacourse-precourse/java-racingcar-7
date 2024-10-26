@@ -5,7 +5,6 @@ import service.RaceStatusCallback;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
     private final List<Car> cars;
@@ -32,19 +31,13 @@ public class Race {
         }
     }
 
+    public void startRace(RaceStatusCallback callback){
         for(int i = 0; i < attempts; i++) {
-            for(Car car : cars) {
-                car.move(moveStrategy.canMove());
+            attemptOnce();
+            if(callback != null) {
+                callback.onAttept(new ArrayList<>(cars));
             }
-            printRaceStatus();
         }
-    }
-
-    private void printRaceStatus() {
-        for(Car car : cars) {
-            System.out.println(car.toString());
-        }
-        System.out.println();
     }
 
     public List<String> getWinners(){
@@ -52,7 +45,6 @@ public class Race {
         for (Car car: cars) {
            if(checkWinner(car, winnerPosition)) {
                addWinner(car);
-               winners.add(car.toString());
            }
        }
        return winners;
