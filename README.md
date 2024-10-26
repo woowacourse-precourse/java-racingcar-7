@@ -1,8 +1,41 @@
 # java-racingcar-precourse
+#
 # [구현할 기능목록]
-1. 자동차 이름 입력 : 자동차 경주에 참여할 자동차들의 이름을 일괄로 입력하는 기능 
-2. 이동 할 횟수 입력 : 자동차들이 몇번 이동할것인지 사용자에게 입력받는기능 
-3. 자동차 정보 출력 (매 자동차 상태출력(이름+이동상태)) : 매 턴마다 각자동차의 이름과 얼만큼 전진했는지의 상태를 출력해주는 기능 
-4. 자동차 이동판별(무작위출력으로 전진 or 멈춤) : 매 턴마다 각 자동차가 랜덤숫자에 의해 전진할지 멈출지 정하는 기능 
-5. 자동차 정보 업데이트 : 매턴마다 자동차의 전진상태를 업데이트하는 기능 
-6. 우승자 출력 : 턴이 다 끝난후 우승자를 출력하는 기능
+#
+### Car class
+name: 자동차 이름
+position: 자동차의 현재 위치
+#
+car(): 자동차 이름으로 객체생성
+move(): 무작위 숫자를 확인하여 전진할지 멈출지 결정하는 메소드
+getPosition(): 현재 자동차의 위치반환 메소드
+getName(): 자동차의 이름 반환 메소드
+#
+### Race class
+cars: Car의 객체 리스트
+moveCount: 자동차들 총 이동 횟수
+#
+addCar(Car car): 자동차를 경주에 추가하는 메소드
+setMoveCount(): 이동 횟수를 설정하는 메소드
+getMoveCount(): 이동 횟수를 반환하는 메소드
+playTurn(): 각 자동차의 move() 메서드를 호출하여 위치를 업데이트하는 메소드
+getCarsStatus(): 현재 모든 자동차의 상태를 반환하는 메소드 
+getWinners(): 최종 위치에 따라 우승자를 계산하는 메소드
+#
+## RaceController class
+race: Race 인스턴스
+inputHandler: InputHandler 인스턴스
+#
+startRace(): 경주를 초기화하고 자동차를 추가한 후 이동 횟수를 설정하는 메소드
+executeRace(): 턴을 실행하고 각 턴의 상태를 출력하는 메소드
+endRace(): 경주가 끝난 후 우승자를 출력하는 메소드
+printRaceStatus(): 각 턴에서 자동차들의 위치를 출력
+#
+## InputHandler class
+inputCarNames(): 자동차 이름을 사용자로부터 입력받는 메소드
+inputMoveCount(): 이동할 횟수를 사용자로부터 입력받는 메소드
+#
+## InputValidator class
+validateCarNames(): 자동차이름 길이 검증 메소드
+validateMoveCount: 이동 횟수가 1 이상인지 검증하는 메소드
+#
