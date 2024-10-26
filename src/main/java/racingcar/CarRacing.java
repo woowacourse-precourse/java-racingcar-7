@@ -9,8 +9,7 @@ public class CarRacing {
 
     static void start() {
         String names = RaceInput.getNames();
-        CarNameParser parser = new CarNameParser(names);
-        Cars cars = new Cars(parser);
+        Cars cars = new Cars(names);
         int tryCount = RaceInput.getTryCount();
 
         RaceOutput.print(RACING_START_MESSAGE);

@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 // TODO: 일급 컬렉션에 부합하는지 좀 더 고려
 public class Cars {
+    private static final int SPLIT_ALL = -1;
+    private static final String DELIMITER = ",";
+
     private final ArrayList<Car> cars;
 
-    // TODO: String 받을지 고려
-    // TODO: 이름이 0자일 때 고려
-    public Cars(CarNameParser parser) {
+    public Cars(String names) {
         cars = new ArrayList<>();
-        while (parser.hasMoreName()) {
-            cars.add(new Car(parser.nextName()));
+        for (String name : names.split(DELIMITER, SPLIT_ALL)) {
+            cars.add(new Car(name));
         }
     }
 
