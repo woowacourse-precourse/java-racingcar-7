@@ -8,6 +8,7 @@ import racingcar.util.Direction;
 class CarTest {
 
     private final Car car = new Car();
+    private final Car testCar = new Car("testCar");
 
     @Test
     @DisplayName("자동차 이름이 5글자 이하인 경우 이름 리스트 반환")
@@ -29,8 +30,7 @@ class CarTest {
     @Test
     @DisplayName("자동차는 전진 상태일때 자신의 이동 현황에 -를 추가한다.")
     void 전진_상태_일때_저장값_검증_테스트(){
-        Car car = new Car("testCar");
-        Assertions.assertThat(car.getMoveStatus(Direction.FORWARD))
+        Assertions.assertThat(testCar.getMoveStatus(Direction.FORWARD))
                 .isEqualTo("-");
     }
 
