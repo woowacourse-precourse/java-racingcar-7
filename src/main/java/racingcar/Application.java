@@ -52,9 +52,7 @@ public class Application {
         StringBuilder roundResult = new StringBuilder();
         for (int i = 0; i < cars.size(); i++) {
             roundResult.append(cars.get(i)).append(" : ");
-            for (int j = 0; j < moves.get(i); j++) {
-                roundResult.append("-");
-            }
+            roundResult.append("-".repeat(moves.get(i)));
             roundResult.append("\n");
         }
         System.out.println(roundResult);
