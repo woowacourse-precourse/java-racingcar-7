@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -67,11 +68,8 @@ public class Application {
     }
 
     public static Map<String, Integer> initResult(List<String> carNameList) {
-        Map<String, Integer> carGameResult = new LinkedHashMap<>();
-        for (String carName : carNameList) {
-            carGameResult.put(carName, 0);
-        }
-        return carGameResult;
+        return carNameList.stream()
+                .collect(Collectors.toMap(name -> name, name -> 0, (a, b) -> a, LinkedHashMap::new));
     }
 
     public static void startRound(List<String> carNameList) {
