@@ -5,9 +5,7 @@ public class CarDto {
     private int id = 1;
     private int forward = 0;
 
-    public CarDto() {
-        this("");
-    }
+    public CarDto() {}
 
     public CarDto(String name) {
         if (!name.isEmpty()) {
@@ -25,6 +23,8 @@ public class CarDto {
         this.id = id;
         this.forward = forward;
     }
+
+
 
     public String getName() {
         return name;
