@@ -18,7 +18,7 @@ public class GameCarProcess {
             gameCarProgress();
             System.out.println();
         }
-        findWinner();
+        winnerPrint(findWinner());
     }
 
     void gameCarProgress() {
@@ -29,7 +29,7 @@ public class GameCarProcess {
         }
     }
 
-    void findWinner() {
+    public List<String> findWinner() {
         int maxWinner = 0;
         for (GameCar gameCar : gameCarList) {
             int current = gameCar.getForwardMarksSize();
@@ -43,6 +43,10 @@ public class GameCarProcess {
                 winners.add(gameCar.getCarName());
             }
         }
+        return winners;
+    }
+
+    void winnerPrint(List<String> winners) {
         System.out.print("최종 우승자 : ");
         System.out.println(String.join(", ", winners));
     }
