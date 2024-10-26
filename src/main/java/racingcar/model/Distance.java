@@ -10,4 +10,9 @@ public class Distance {
     public Integer getDistance() {
         return distance;
     }
+
+    public void increase() {
+        this.distance += 1;
+    }
+
 }
