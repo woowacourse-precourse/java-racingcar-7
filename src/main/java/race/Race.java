@@ -13,7 +13,7 @@ public class Race {
         }
     }
 
-    void updateProgress(String carName) {
+    public void updateProgress(String carName) {
         try {
             progress.put(carName, progress.get(carName) + 1);
         } catch (NullPointerException e) {
@@ -21,7 +21,7 @@ public class Race {
         }
     }
 
-    Map<String, Integer> getAllProgress() {
+    public Map<String, Integer> getAllProgress() {
         return progress;
     }
 }
