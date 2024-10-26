@@ -30,6 +30,9 @@ public class RacingGame {
     }
 
     public void playRound() {
+        if (currentRound >= totalRound) {
+            throw new IllegalArgumentException("모든 라운드를 진행하였습니다");
+        }
         participants.forEach(movementPolicy::move);
         ++currentRound;
     }
