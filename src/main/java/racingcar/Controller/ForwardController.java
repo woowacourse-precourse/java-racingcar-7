@@ -1,13 +1,14 @@
 package racingcar.Controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.Model.Name;
 
 public class ForwardController {
-    private final String name;
+    private final Name name;
     private int position;
 
     public ForwardController(String name) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = 0;
     }
 
@@ -20,7 +21,7 @@ public class ForwardController {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
     public int getPosition() {
         return position;
