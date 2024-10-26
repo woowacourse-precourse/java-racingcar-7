@@ -23,4 +23,14 @@ class ValidateTest {
         });
         assertEquals("자동차 이름이 비어있습니다.", exception.getMessage());
     }
+
+    @Test
+    void testAttemptsNegative() {
+        String input = "-3";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Validate.attempts(input);
+        });
+        assertEquals("숫자는 양의 정수여야 합니다.", exception.getMessage());
+    }
+    
 }
