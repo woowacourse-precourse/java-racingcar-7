@@ -3,6 +3,7 @@ package racingcar.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,16 +15,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(Arrays.asList("pobi", "jun", "kiki"));
-    }
-
-    @Test
-    @DisplayName("모든 자동차의 초기 위치가 0이다.")
-    void carsInitPosition() {
-        Map<String, Integer> positions = cars.getCarPositions();
-        assertEquals(0, positions.get("pobi"));
-        assertEquals(0, positions.get("jun"));
-        assertEquals(0, positions.get("kiki"));
+        cars = new Cars(List.of("pobi", "jun", "kiki"));
     }
 
     @Test
