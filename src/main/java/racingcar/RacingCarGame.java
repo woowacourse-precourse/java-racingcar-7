@@ -1,6 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.car.Car;
+import racingcar.car.CarManager;
+import racingcar.view.input.InputValueContainer;
+import racingcar.view.output.OutputView;
 
 import java.util.List;
 
@@ -21,7 +25,7 @@ public class RacingCarGame {
 
     public void play() {
         moveCars();
-        outputView.renderResult(attemptCount);
+        outputView.printResult(attemptCount);
     }
 
     private void moveCars() {

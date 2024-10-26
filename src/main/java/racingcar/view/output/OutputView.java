@@ -8,15 +8,15 @@ import java.util.Map;
 
 public class OutputView {
 
-    private final OutputDataRepository outputDataRepository = new OutputDataRepository();
+    private final OutputLogRepository outputLogRepository = new OutputLogRepository();
     private final OutputPrinter outputPrinter = new OutputPrinter();
 
     public void saveCarPosition(Car car) {
-        outputDataRepository.saveCarPosition(car);
+        outputLogRepository.saveCarPositionLog(car);
     }
 
-    public void renderResult(int attemptCount) {
-        Map<String, List<BigInteger>> carMovementData = outputDataRepository.getCarMovementData();
+    public void printResult(int attemptCount) {
+        Map<String, List<BigInteger>> carMovementData = outputLogRepository.getCarPositionLog();
         outputPrinter.printResult(attemptCount, carMovementData);
     }
 }

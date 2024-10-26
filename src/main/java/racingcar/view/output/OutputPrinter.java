@@ -9,16 +9,16 @@ public class OutputPrinter {
 
     private BigInteger totalMaxPosition = BigInteger.ZERO;
 
-    public void printResult(int attemptCount, Map<String, List<BigInteger>> carMovementData) {
+    public void printResult(int attemptCount, Map<String, List<BigInteger>> carMovementLog) {
         System.out.println("\n실행 결과");
-        printCarMovement(attemptCount, carMovementData);
-        printWinner(carMovementData);
+        printCarMovement(attemptCount, carMovementLog);
+        printWinner(carMovementLog);
     }
 
-    public void printWinner(Map<String, List<BigInteger>> carMovementData) {
+    public void printWinner(Map<String, List<BigInteger>> carMovementLog) {
         List<String> winners = new ArrayList<>();
-        for (String name : carMovementData.keySet()) {
-            List<BigInteger> resultPositions = carMovementData.get(name);
+        for (String name : carMovementLog.keySet()) {
+            List<BigInteger> resultPositions = carMovementLog.get(name);
             BigInteger resultPosition = resultPositions.getLast();
             if (totalMaxPosition.compareTo(resultPosition) == 0) {
                 winners.add(name);
@@ -28,16 +28,16 @@ public class OutputPrinter {
         System.out.println(String.join(", ", winners));
     }
 
-    public void printCarMovement(int attemptCount, Map<String, List<BigInteger>> carMovementData) {
+    public void printCarMovement(int attemptCount, Map<String, List<BigInteger>> carMovementLog) {
         for (int step = 0; step < attemptCount; step++) {
-            printStepResult(step, carMovementData);
+            printStepResult(step, carMovementLog);
             System.out.println();
         }
     }
 
-    private void printStepResult(int step, Map<String, List<BigInteger>> carMovementData) {
-        for (String name : carMovementData.keySet()) {
-            List<BigInteger> positions = carMovementData.get(name);
+    private void printStepResult(int step, Map<String, List<BigInteger>> carMovementLog) {
+        for (String name : carMovementLog.keySet()) {
+            List<BigInteger> positions = carMovementLog.get(name);
             BigInteger stepPosition = positions.get(step);
 
             printCarName(name);
