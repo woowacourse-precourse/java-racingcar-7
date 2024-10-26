@@ -27,6 +27,13 @@ public class RacingGameService {
         return racingCars;
     }
 
+    public Integer convertTryCountToInt(String tryCount){
+        if (tryCount.matches(".*[a-zA-Z]+.*")) {
+            throw new IllegalArgumentException("숫자 이외의 문자는 입력할 수 없습니다.");
+        }
+        return Integer.parseInt(tryCount);
+    }
+
     private String[] processCarName(String carNames) {
         String[] parseCarName = carNames.split(",");
         // 이름에서 공백 제거

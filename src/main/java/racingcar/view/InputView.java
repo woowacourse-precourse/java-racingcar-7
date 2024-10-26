@@ -14,8 +14,8 @@ public class InputView {
         System.out.println(TIME_INPUT_MESSAGE);
     }
 
-    public static void getInput(){
-        Console.readLine();
+    public static String getInput() {
+        return Console.readLine();
     }
 
 
