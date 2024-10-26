@@ -5,7 +5,9 @@ import java.util.stream.Collectors;
 
 public class Parser {
 
-    private static final int CAR_NAME_MAX_LENGTH = 5;
+    public static final int CAR_NAME_MAX_LENGTH = 5;
+    public static final String CAR_NAME_LENGTH_EXCEPTION_MSG = "자동차 이름은 한 글자 이상, 5자 이하여야 합니다.";
+    public static final String ATTEMPTS_RANGE_EXCEPTION_MSG = "유효한 숫자 범위를 벗어났습니다.";
 
     private static boolean validateCarName(String carName) {
         return carName != null && !carName.isEmpty() && carName.length() <= CAR_NAME_MAX_LENGTH;
@@ -16,7 +18,7 @@ public class Parser {
                 .map(String::trim)
                 .map(carName -> {
                     if (!validateCarName(carName)) {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION_MSG);
                     }
                     return new Car(carName);
                 })
@@ -28,11 +30,11 @@ public class Parser {
         try {
             attempts = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ATTEMPTS_RANGE_EXCEPTION_MSG);
         }
 
         if (attempts < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ATTEMPTS_RANGE_EXCEPTION_MSG);
         }
         return attempts;
     }

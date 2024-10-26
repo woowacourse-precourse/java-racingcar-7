@@ -22,7 +22,8 @@ class ParserTest {
 
         //When
         Assertions.assertThatCode(() -> Parser.parseCarNames(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Parser.CAR_NAME_LENGTH_EXCEPTION_MSG);
     }
 
     @Test
@@ -55,7 +56,8 @@ class ParserTest {
 
         //When, Then
         Assertions.assertThatThrownBy(() -> Parser.parseAttempts(attempts))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Parser.ATTEMPTS_RANGE_EXCEPTION_MSG);
     }
 
     @Test
@@ -65,6 +67,7 @@ class ParserTest {
 
         //When, Then
         Assertions.assertThatThrownBy(() -> Parser.parseAttempts(attempts))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(Parser.ATTEMPTS_RANGE_EXCEPTION_MSG);
     }
 }
