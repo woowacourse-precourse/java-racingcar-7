@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,7 +14,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class RaceCarTest {
 
     @Test
-    void 자동차_이동_테스트(){
+    void 자동차_이동_테스트() {
         RaceCar raceCar = RaceCar.fromName("car");
         raceCar.move();
 
@@ -31,7 +30,7 @@ public class RaceCarTest {
 
     @ParameterizedTest
     @MethodSource("provideRaceCarNames")
-    void 자동차_이름_생성_테스트(String inputName, String expectedName){
+    void 자동차_이름_생성_테스트(String inputName, String expectedName) {
         RaceCar raceCar = RaceCar.fromName(inputName);
         assertThat(raceCar.getName()).isEqualTo(expectedName);
     }

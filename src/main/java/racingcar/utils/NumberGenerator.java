@@ -6,7 +6,7 @@ public class NumberGenerator {
     private static final int MIN_RANDOM_NUMBER_RANGE = 0;
     private static final int MAX_RANDOM_NUMBER_RANGE = 9;
 
-    private NumberGenerator(){
+    private NumberGenerator() {
     }
 
     public static int createRandomNumber() {

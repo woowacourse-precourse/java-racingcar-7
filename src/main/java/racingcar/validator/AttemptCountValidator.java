@@ -5,7 +5,7 @@ public class AttemptCountValidator {
     private static final String ERROR_NEGATIVE_OR_ZERO_COUNT = "시도 횟수는 0 이상이어야 합니다.";
     private static final int MIN_ATTEMPT_COUNT = 1;
 
-    private AttemptCountValidator(){
+    private AttemptCountValidator() {
     }
 
     public static void validateCountRange(int count) {

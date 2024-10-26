@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import racingcar.validator.RaceCarsValidator;
+
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
 import static racingcar.utils.NumberGenerator.createRandomNumber;
-import racingcar.validator.RaceCarsValidator;
 
 public class RaceCars {
     private final List<RaceCar> raceCars;

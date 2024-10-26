@@ -1,6 +1,5 @@
 package racingcar.view;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class OutputView {
     private static final String MOVE_EXPRESS = "-";
     private static final String CAR_POSITION_FORMAT = "%s : %s";
 
-    private OutputView(){
+    private OutputView() {
     }
 
 

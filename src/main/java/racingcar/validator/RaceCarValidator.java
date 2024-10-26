@@ -5,7 +5,7 @@ public class RaceCarValidator {
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
 
-    private RaceCarValidator(){
+    private RaceCarValidator() {
     }
 
     public static void validate(String name) {

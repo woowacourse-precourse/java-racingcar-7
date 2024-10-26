@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class InputConverter {
     private static final String COMMA = ",";
 
-    private InputConverter(){
+    private InputConverter() {
     }
 
 
@@ -18,7 +18,7 @@ public class InputConverter {
                 .collect(Collectors.toList());
     }
 
-    public static Integer convertCount(String input){
+    public static Integer convertCount(String input) {
         return Integer.parseInt(input);
     }
 }

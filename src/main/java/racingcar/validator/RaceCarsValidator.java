@@ -8,10 +8,10 @@ public class RaceCarsValidator {
     private static final String ERROR_CAR_COUNT = "자동차는 최소 1개 이어야 합니다.";
     private static final int MIN_CAR_COUNT = 1;
 
-    private RaceCarsValidator(){
+    private RaceCarsValidator() {
     }
 
-    public static void validate(List<String> names){
+    public static void validate(List<String> names) {
         validateDuplicateNames(names);
         validateRaceCarCount(names);
     }

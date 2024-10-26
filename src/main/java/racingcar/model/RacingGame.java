@@ -12,12 +12,12 @@ public class RacingGame {
         this.attemptCount = attemptCount;
     }
 
-    public void race(){
+    public void race() {
         raceCars.race();
         attemptCount.decrease();
     }
 
-    public boolean canRace(){
+    public boolean canRace() {
         return attemptCount.canRace();
     }
 
