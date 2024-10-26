@@ -32,6 +32,7 @@ public class RacingcarController {
     public String getAttemptCount() {
         inputView.printGetAttemptCountMessage();
         String attemptCountInput = inputView.getInput();
+        inputView.closeConsole();
 
         racingcarService.saveAttemptCount(attemptCountInput);
 
