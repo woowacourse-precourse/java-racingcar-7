@@ -5,6 +5,9 @@ import racingcar.utils.RandomNumberGenerator;
 
 public class CarGroup {
 
+    private static final String ERROR_MIN_CARS_MESSAGE = "자동차 이름은 적어도 두 개 입력해야 합니다.";
+    private static final int MIN_CARS_SIZE = 2;
+
     private final List<Car> cars;
 
     public CarGroup(List<String> carNames) {
@@ -17,8 +20,8 @@ public class CarGroup {
     }
 
     private void validateSize() {
-        if (this.cars.size() < 2) {
-            throw new IllegalArgumentException("자동차 이름은 적어도 두 개 입력해야 합니다.");
+        if (this.cars.size() < MIN_CARS_SIZE) {
+            throw new IllegalArgumentException(ERROR_MIN_CARS_MESSAGE);
         }
     }
 

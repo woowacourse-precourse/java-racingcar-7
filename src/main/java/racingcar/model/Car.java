@@ -2,6 +2,11 @@ package racingcar.model;
 
 public class Car {
 
+    private static final String ERROR_EMPTY_NAME_MESSAGE = "자동차 이름이 공백으로 입력되었습니다.";
+    private static final String ERROR_NAME_LENGTH_MESSAGE = "자동차 이름 입력 길이를 초과하였습니다. (최대 5자)";
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_FORWARD_THRESHOLD = 4;
+
     private final String name;
     private Integer position;
 
@@ -13,10 +18,10 @@ public class Car {
 
     private void validateName() {
         if (this.name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름이 공백으로 입력되었습니다.");
+            throw new IllegalArgumentException(ERROR_EMPTY_NAME_MESSAGE);
         }
-        if (this.name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름 입력 길이를 초과하였습니다. (최대 5자)");
+        if (this.name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(ERROR_NAME_LENGTH_MESSAGE);
         }
     }
 
@@ -28,9 +33,8 @@ public class Car {
         return position;
     }
 
-
     public void moveFront(int randomNumber) {
-        if (randomNumber < 4) {
+        if (randomNumber < MOVE_FORWARD_THRESHOLD) {
             return;
         }
         position++;
