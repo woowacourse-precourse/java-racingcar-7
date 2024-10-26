@@ -81,6 +81,25 @@ class ApplicationTest extends NsTest {
         assertEquals("시도 횟수는 0보다 작을 수 없습니다.", exception.getMessage());
     }
 
+    @Test
+    public void 자동차_이름에_공백이_있는_경우_테스트() {
+        String carNames = "  pobi ,  woni ,  jun  ";
+
+        String[] result = Application.splitCarNames(carNames);
+
+        assertArrayEquals(new String[]{"pobi", "woni", "jun"}, result);
+    }
+
+
+    @Test
+    public void 자동차_이름에_쉼표가_있는_경우_테스트() {
+        String carNames = ",pobi,woni,,, ";
+
+        String[] result = Application.splitCarNames(carNames);
+
+        assertArrayEquals(new String[]{"","pobi", "woni", "","",""}, result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
