@@ -15,4 +15,10 @@ public class Race {
         this(List.of(input.split(",")));
     }
 
+    public void run(){
+        for(Car car : cars){
+            car.move();
+        }
+    }
+
 }
