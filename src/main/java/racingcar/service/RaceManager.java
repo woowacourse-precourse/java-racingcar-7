@@ -1,14 +1,15 @@
-package racingcar.domain;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
-public class CarGameManager {
+public class RaceManager {
     public List<Car> cars;
     public int totalTimes;
 
-    public CarGameManager(String[] names, int totalTimes) {
+    public RaceManager(String[] names, int totalTimes) {
         this.cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
