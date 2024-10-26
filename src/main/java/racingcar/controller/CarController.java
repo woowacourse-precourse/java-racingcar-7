@@ -23,8 +23,8 @@ public class CarController {
     public void addCars() {
         String inputNames = inputView.getInputNames();
         List<String> names = List.of(inputNames.split(Constants.COMMA));
+        validator.validateNames(names);
         for (String name : names) {
-            validator.validateName(name);
             cars.addCar(name);
         }
     }

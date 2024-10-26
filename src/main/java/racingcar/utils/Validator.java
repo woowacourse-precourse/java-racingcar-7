@@ -1,7 +1,22 @@
 package racingcar.utils;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+
 public class Validator {
-    public void validateName(String name) {
+
+    public void validateNames(List<String> names) {
+        Set<String> set = new HashSet<>();
+        for (String name : names) {
+            if (!set.add(name)) {
+                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME.getMessage());
+            }
+            validateName(name);
+        }
+    }
+
+    private void validateName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.NAME_OVER_LIMIT.getMessage());
         }
