@@ -16,7 +16,7 @@ public class RacingGameService {
             return null;
         }
 
-        String[] parseCarName = parseCarName(carNames);
+        String[] parseCarName = processCarName(carNames);
 
         List<RacingCar> racingCars = new ArrayList<>();
 
@@ -31,15 +31,21 @@ public class RacingGameService {
         return racingCars;
     }
 
-    private static void moveRacingCars(List<RacingCar> racingCars) {
+    private String[] processCarName(String carNames) {
+        String[] parseCarName = carNames.split(",");
+        // 이름에서 공백 제거
+        for (int i = 0; i < parseCarName.length; i++) {
+            parseCarName[i] = parseCarName[i].trim();
+        }
+        return parseCarName;
+    }
+
+    private void moveRacingCars(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars){
             racingCar.move(Randoms.pickNumberInRange(0, 9));
         }
     }
 
-    private String[] parseCarName(String carNames){
-        return carNames.split(",");
-    }
 
     private boolean validateTryCount(Integer tryCount){
         if (tryCount == 0){
@@ -52,7 +58,7 @@ public class RacingGameService {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
         }
 
-        String[] splitCarNames = parseCarName(carNames);
+        String[] splitCarNames = processCarName(carNames);
 
         for (String carName : splitCarNames){
             if (carName.length() > NAME_LENGTH_LIMIT){

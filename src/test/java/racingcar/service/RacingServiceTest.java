@@ -25,7 +25,7 @@ public class RacingServiceTest extends NsTest {
 
     @Test
     void 자동차_이름이_정상적으로_입력된_경우_2(){
-        String carNames = "pobi, woni";
+        String carNames = "pobi,   woni";
         Integer tryCount = 3;
         Assertions.assertDoesNotThrow(() -> racingGameService.startRace(carNames, tryCount));
     }
