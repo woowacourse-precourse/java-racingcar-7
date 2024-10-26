@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,15 @@ class GameTest {
 
         assertThat(carNames)
                 .isEqualTo("pobi,woni,jun");
+    }
+
+    @Test
+    void 빈_문자열을_입력받으면_예외발생() {
+        Validator validator = new Validator();
+
+        assertThatThrownBy(() -> validator.inputSting(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름을 입력해주세요.");
     }
 
 }
