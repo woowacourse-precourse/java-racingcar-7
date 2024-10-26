@@ -20,8 +20,7 @@ public class Cars {
     }
 
     public Cars(String carsInput) {
-        carsInput=CarsFactory.validateInput(carsInput);
-        this.cars = makeCarList(carsInput);
+        this.cars = CarsFactory.makeCarList(carsInput);
     }
 
     private List<Car> makeCarList(String carsInput) {

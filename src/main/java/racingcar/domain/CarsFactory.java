@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class CarsFactory {
 
@@ -11,13 +12,18 @@ public class CarsFactory {
     private static final String SPLITOR = ",";
     private static final Integer HIGHEST_NAME_LENGTH = 5;
 
-    public static String validateInput(String carsInput){
+    public static List<Car> makeCarList(String carsInput) {
         carsInput= removeBlank(carsInput);
+
         validateBlankName(carsInput);
         validateDuplicatedName(carsInput);
         validateOutOfRangeName(carsInput);
 
-        return carsInput;
+        List<Car> carList = Arrays.stream(carsInput.split(SPLITOR))
+                .map(carName -> new Car(carName, ""))
+                .toList();
+
+        return carList;
     }
 
     private static void validateBlankName(String carsInput) {
