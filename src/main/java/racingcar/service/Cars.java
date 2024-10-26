@@ -1,7 +1,10 @@
 package racingcar.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -15,6 +18,10 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Map<String, Integer> getCarInfo() {
+        return cars.stream().collect(Collectors.toMap(Car::getName, Car::getScore));
     }
 
     // cars 리스트에 있는 모든 car 객체에 대해 move를 호출 & 시도 횟수 1 감소
