@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 
-public class ViewTest {
+class ViewTest {
 
   @Test
   @DisplayName("자동차 이름과 시도 횟수 입력을 정상적으로 받는다.")

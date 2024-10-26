@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
 
@@ -12,9 +13,13 @@ public class Game {
     this.gameCount = new GameCount(gameCountInput);
   }
 
-  public void playRound() {
+  public Optional<List<String>> playRound() {
+    if (!canPlay()) {
+      return Optional.empty();
+    }
     cars.moveCars();
     gameCount.decrement();
+    return Optional.of(getCurrentStatuses());
   }
 
   public List<String> getCurrentStatuses() {

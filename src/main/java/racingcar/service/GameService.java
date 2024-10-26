@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.domain.Game;
 
 public class GameService {
+
   private Game game;
 
 
@@ -13,15 +14,8 @@ public class GameService {
   }
 
   public List<String> playRound() {
-    if (game.canPlay()) {
-      game.playRound();
-      return game.getCurrentStatuses();
-    }
-    return Collections.emptyList();
-  }
-
-  public boolean isGameOver() {
-    return !game.canPlay();
+    return game.playRound()
+        .orElseGet(Collections::emptyList);
   }
 
   public List<String> getWinners() {

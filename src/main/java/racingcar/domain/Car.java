@@ -1,8 +1,10 @@
 package racingcar.domain;
 
-import java.util.Objects;
+import racingcar.error.ErrorMessages;
 
 public class Car {
+
+  private static final int MAX_NAME_LENGTH = 5;
   private final String name;
   private int position;
 
@@ -14,10 +16,10 @@ public class Car {
 
   private void validateName(String name) {
     if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Error: 자동차 이름은 비어있을 수 없습니다.");
+      throw new IllegalArgumentException(ErrorMessages.CAR_NAME_EMPTY);
     }
-    if (name.length() > 5) {
-      throw new IllegalArgumentException("Error: 자동차 이름은 5자 이하로 입력해야 합니다.");
+    if (name.length() > MAX_NAME_LENGTH) {
+      throw new IllegalArgumentException(ErrorMessages.CAR_NAME_TOO_LONG);
     }
   }
 
@@ -30,24 +32,6 @@ public class Car {
   }
 
   public String getName() {
-    return name;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Car car = (Car) o;
-    return Objects.equals(name, car.name);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name);
-  }
-
-  @Override
-  public String toString() {
     return name;
   }
 }

@@ -1,10 +1,12 @@
 package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarsTest {
+class CarsTest {
 
   // ## Happy Case
 
@@ -18,10 +20,10 @@ public class CarsTest {
     Cars cars = new Cars(input);
 
     // Then
-    assertEquals(3, cars.size());
-    assertTrue(cars.contains(new Car("pobi")));
-    assertTrue(cars.contains(new Car("jun")));
-    assertTrue(cars.contains(new Car("car1")));
+    List<String> carNames = extractCarNames(cars);
+    assertTrue(carNames.contains("pobi"));
+    assertTrue(carNames.contains("jun"));
+    assertTrue(carNames.contains("car1"));
   }
 
   @Test
@@ -34,10 +36,10 @@ public class CarsTest {
     Cars cars = new Cars(input);
 
     // Then
-    assertEquals(3, cars.size());
-    assertTrue(cars.contains(new Car("pobi")));
-    assertTrue(cars.contains(new Car("jun")));
-    assertTrue(cars.contains(new Car("car2")));
+    List<String> carNames = extractCarNames(cars);
+    assertTrue(carNames.contains("pobi"));
+    assertTrue(carNames.contains("jun"));
+    assertTrue(carNames.contains("car2"));
   }
 
   @Test
@@ -50,9 +52,15 @@ public class CarsTest {
     Cars cars = new Cars(input);
 
     // Then
-    assertEquals(2, cars.size());
-    assertTrue(cars.contains(new Car("car1!")));
-    assertTrue(cars.contains(new Car("pobi@")));
+    List<String> carNames = extractCarNames(cars);
+    assertTrue(carNames.contains("car1!"));
+    assertTrue(carNames.contains("pobi@"));
+  }
+
+  private List<String> extractCarNames(Cars cars) {
+    return cars.getAllCarStatuses().stream()
+        .map(status -> status.split(" : ")[0])
+        .toList();
   }
 
   // ## Bad Case

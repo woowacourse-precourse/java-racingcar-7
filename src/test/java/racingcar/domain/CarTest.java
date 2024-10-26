@@ -34,8 +34,8 @@ class CarTest {
     Car car = new Car(name.trim());
 
     // Then
-    Car expectedCar = new Car("pobi");
-    assertEquals(expectedCar, car);
+    String expectedCarName = "pobi";
+    assertEquals(expectedCarName, car.getName());
   }
 
   @Test
@@ -48,8 +48,8 @@ class CarTest {
     Car car = new Car(name);
 
     // Then
-    Car expectedCar = new Car("car1!");
-    assertEquals(expectedCar, car);
+    String expectedCarName = "car1!";
+    assertEquals(expectedCarName, car.getName());
   }
 
   @Test
@@ -62,8 +62,8 @@ class CarTest {
     Car car = new Car(name);
 
     // Then
-    Car expectedCar = new Car("abcde");
-    assertEquals(expectedCar, car);
+    String expectedCarName = "abcde";
+    assertEquals(expectedCarName, car.getName());
   }
 
   // ## Bad Case

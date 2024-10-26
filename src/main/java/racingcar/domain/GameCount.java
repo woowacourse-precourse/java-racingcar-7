@@ -1,6 +1,10 @@
 package racingcar.domain;
 
+import racingcar.error.ErrorMessages;
+
 public class GameCount {
+
+  private static final int MIN_COUNT = 1;
   private int count;
 
   public GameCount(String input) {
@@ -9,20 +13,20 @@ public class GameCount {
 
   private int validateAndParse(String input) {
     if (input == null) {
-      throw new IllegalArgumentException("Error: 입력값이 null일 수 없습니다.");
+      throw new IllegalArgumentException(ErrorMessages.INPUT_NULL);
     }
     if (input.trim().isEmpty()) {
-      throw new IllegalArgumentException("Error: 시도 횟수는 비어있을 수 없습니다.");
+      throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_EMPTY);
     }
 
     try {
       int parsedValue = Integer.parseInt(input);
-      if (parsedValue < 1) {
-        throw new IllegalArgumentException("Error: 시도 횟수는 1 이상의 값이어야 합니다.");
+      if (parsedValue < MIN_COUNT) {
+        throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_INVALID);
       }
       return parsedValue;
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("Error: 시도 횟수는 1 이상 2,147,483,647 이하의 정수여야 합니다.");
+      throw new IllegalArgumentException(ErrorMessages.GAME_COUNT_FORMAT_ERROR);
     }
   }
 
