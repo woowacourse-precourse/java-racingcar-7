@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validator;
 
 public enum ValidationError {
 	ERROR_CARS_SIZE_ONE("두명 이상의 참가자를 입력해 주세요."),

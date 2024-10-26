@@ -2,6 +2,11 @@ package racingcar;
 
 import java.util.List;
 
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.RaceInfo;
+import racingcar.random.RandomNumberProvider;
+import racingcar.io.IoHandler;
+
 public class RaceManager {
 	private final IoHandler ioHandler;
 	private final RandomNumberProvider randomNumberProvider;

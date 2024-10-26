@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 

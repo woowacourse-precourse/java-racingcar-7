@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.io;
 
 import java.util.List;
+
+import racingcar.domain.car.CarStatus;
+import racingcar.domain.car.Cars;
 
 public class OutputHandler {
 	private static final String PROMPT_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";

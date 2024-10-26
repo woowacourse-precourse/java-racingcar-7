@@ -1,6 +1,10 @@
-package racingcar;
+package racingcar.io;
 
 import java.util.List;
+
+import racingcar.domain.car.Cars;
+import racingcar.domain.race.RaceInfo;
+import racingcar.validator.ValidatingParser;
 
 public class IoHandler {
 	private final InputHandler inputHandler;

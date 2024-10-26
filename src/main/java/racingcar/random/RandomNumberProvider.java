@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.random;
 
 import java.util.List;
 import java.util.stream.Stream;
