@@ -1,12 +1,12 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import racingcar.Utils;
 
 public class Car {
     private String name;
@@ -22,19 +22,17 @@ public class Car {
         }
     }
 
-    public static List<Car> createCarsByNames(List<String> splitNames) {
-        List<Car> cars = new ArrayList<>();
-        cars.addAll(
-                splitNames.stream()
-                        .map(String::trim)
-                        .peek(Car::validateNameFormat)
-                        .peek(Car::validateNameLength)
-                        .map(Car::new)
-                        .collect(Collectors.toList())
-        );
+    public static List<Car> createByStrings(String inputString) {
+        List<Car> cars = Utils.splitInputStringsByComma(inputString).stream()
+                .map(String::trim)
+                .peek(Car::validateNameFormat)
+                .peek(Car::validateNameLength)
+                .peek(Car::validateEmptyName)
+                .map(Car::new)
+                .collect(Collectors.toList());
+
         return cars;
     }
-
     public String getName() {
         return name;
     }
@@ -46,6 +44,12 @@ public class Car {
     public static void validateNameLength(String inputname) {
         if (inputname.length() > 5) {
             throw new IllegalArgumentException("5글자 이하의 이름만 입력할 수 있습니다.");
+        }
+    }
+
+    public static void validateEmptyName(String inputname) {
+        if (inputname == null || inputname.isBlank()) {
+            throw new IllegalArgumentException("빈 이름이 있습니다.");
         }
     }
 

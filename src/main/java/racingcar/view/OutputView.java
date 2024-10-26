@@ -15,6 +15,4 @@ public class OutputView {
         String winnerResult = "최종 우승자" + " : " + String.join(", ", winners);
         System.out.println(winnerResult);
     }
-
-
 }
