@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,7 +16,7 @@ class CarNameTest {
         CarName carName = new CarName(name);
 
         // when & then
-        assertEquals(name, carName.getCarName());
+        assertThat(carName.getCarName()).isEqualTo(name);
     }
 
     @ParameterizedTest
@@ -25,10 +26,11 @@ class CarNameTest {
         String expected = "자동차 이름은 5글자를 넘을 수 없습니다.";
 
         // when
-        IllegalArgumentException actual = assertThrows(IllegalArgumentException.class,
-                () -> new CarName(name));
+        Throwable thrown = catchThrowable(() -> new CarName(name));
 
         // then
-        assertEquals(expected, actual.getMessage());
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expected);
     }
 }
