@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.io.InputManager;
 import racingcar.io.OutputManager;
 import racingcar.model.attemptcountinput.AttemptCountValidation;
@@ -21,6 +22,7 @@ public class RacingCarController {
         Race race = new Race(carNameArray, attemptCountNumber);
         String executionResult = race.raceRun();
         OutputManager.printExecutionResult(executionResult);
-        System.out.println(race.getWinners());
+        List<String> winnersList = race.getWinners();
+        OutputManager.printWinnerResult(winnersList);
     }
 }
