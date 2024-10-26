@@ -18,6 +18,8 @@ public class Application {
             printCarInfo(game.getCarInfo());
             System.out.println();
         }
+        
+        System.out.print("최종 우승자 : " + toStringCarNames(game.getFrontRunners()));
     }
     
     private static List<String> getCarNames() {
@@ -51,5 +53,16 @@ public class Application {
                     + " : "
                     + "-".repeat(cars.get(i).distance));
         }
+    }
+    
+    private static String toStringCarNames(List<Car> cars) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < cars.size(); i++) {
+            result.append(cars.get(i).name);
+            if (i != cars.size() - 1) {
+                result.append(", ");
+            }
+        }
+        return result.toString();
     }
 }

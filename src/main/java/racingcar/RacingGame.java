@@ -55,4 +55,30 @@ public class RacingGame {
     public List<Car> getCarInfo() {
         return cars;
     }
+    
+    /**
+     * 현재 상태의 가장 선두 자동차(들)을 반환합니다.
+     * @return 선두 자동차 정보가 담긴 리스트
+     */
+    public List<Car> getFrontRunners() {
+        if (cars.size() == 0) {
+            return new ArrayList<Car>(0);
+        }
+        
+        int maxDistance = 0;
+        for (Car c : cars) {
+            if (maxDistance < c.distance) {
+                maxDistance = c.distance;
+            }
+        }
+
+        List<Car> result = new ArrayList<Car>(cars.size());
+        for (Car c : cars) {
+            if (c.distance == maxDistance) {
+                result.add(c);
+            }
+        }
+        
+        return result;
+    }
 }
