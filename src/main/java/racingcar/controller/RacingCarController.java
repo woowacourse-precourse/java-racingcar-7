@@ -29,13 +29,13 @@ public class RacingCarController {
     public void run() {
         String carNameInput = getCarNameInput();
         validateNullOrEmpty(carNameInput);
+        Cars cars = createCarList(carNameInput);
 
         String roundCountInput = getRoundCountInput();
         validateNullOrEmpty(roundCountInput);
         validateRoundCount(roundCountInput);
         RoundCount roundCount = getRoundCount(roundCountInput);
 
-        Cars cars = createCarList(carNameInput);
         printStartMessage();
         playRace(cars, roundCount);
         printWinners(cars);
