@@ -1,10 +1,20 @@
 package racingcar;
 
-import racingcar.view.InputHandler;
-import racingcar.view.InputHandlerEmb;
+
+import racingcar.controller.RaceController;
+import racingcar.controller.RaceControllerEmb;
+import racingcar.service.RaceControllerFactory;
+import racingcar.service.RaceControllerFactoryEmb;
 
 public class Application {
     public static void main(String[] args) {
-        InputHandler inputManager = new InputHandlerEmb();
+        RaceControllerFactory raceControllerFactory = new RaceControllerFactoryEmb();
+        RaceController raceController = raceControllerFactory.createRaceController();
+
+        raceController.readyForRace();
+        while (!raceController.isFinished()) {
+            raceController.advanceCars();
+        }
+        raceController.presentAward();
     }
 }

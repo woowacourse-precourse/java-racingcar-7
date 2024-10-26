@@ -1,18 +1,18 @@
 package racingcar.controller;
 
+import racingcar.model.RacingCar;
 import racingcar.model.RacingCarEmb;
+import racingcar.service.ForwardOrNot;
 import racingcar.service.ForwardOrNotEmb;
 
 public class RacingCarControllerEmb implements RacingCarController {
-    private final RacingCarEmb racingCar;
-    private final ForwardOrNotEmb forwardOrNot;
-    public RacingCarControllerEmb(RacingCarEmb racingCar, ForwardOrNotEmb forwardOrNot) {
-        this.racingCar = racingCar;
-        this.forwardOrNot = forwardOrNot;
+    private final ForwardOrNot forwardOrNot;
+    public RacingCarControllerEmb() {
+        this.forwardOrNot = new ForwardOrNotEmb();
     }
 
     @Override
-    public void moveForward() {
+    public void moveForward(RacingCar racingCar) {
         if(forwardOrNot.isBiggerOrEqualFour())
             racingCar.increaseDistance();
     }
