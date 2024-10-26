@@ -17,4 +17,9 @@ public class InputHandler {
         return Arrays.stream(input.split(","))
                 .map(InputValidator::validateCarName).toList();
     }
+
+    public Integer getRoundCount() {
+        String input = Console.readLine();
+        return InputValidator.validateRoundCount(input);
+    }
 }
