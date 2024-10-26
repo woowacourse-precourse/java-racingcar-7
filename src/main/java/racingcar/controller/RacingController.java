@@ -7,30 +7,36 @@ import racingcar.strategy.ModeType;
 import racingcar.util.CarNameSeparator;
 import racingcar.util.CarsCreator;
 import racingcar.util.RacingResultCalculator;
+import racingcar.view.OutputView;
+import racingcar.view.PrintMessage;
 
 public class RacingController {
-    private final List<Car> cars;
+    private Integer totalRacingRound;
     private Racing racing;
 
     public RacingController(String carNames) {
-        this.cars = createCar(carNames);
+        this.racing = new Racing(createCar(carNames));
     }
 
-    public List<Car> createCar(String carNames) {
+    private List<Car> createCar(String carNames) {
         List<String> carNamesList = CarNameSeparator.splitCarNameWithSeparator(carNames);
         return CarsCreator.createCarNameToCar(carNamesList);
     }
 
     public void setCarMode(ModeType modeType) {
-        cars.forEach(car -> car.setMode(ModeType.createCarMode(modeType)));
+        racing.setRacingCarMode(modeType);
     }
 
-    public void createRacing(String totalRound) {
-        racing = new Racing(totalRound, cars);
+    public void setTotalRacingRound(String totalRacingRound) {
+        //검증 로직 적용
+        this.totalRacingRound = Integer.parseInt(totalRacingRound);
     }
 
     public void startRacing() {
-        racing.startRacing();
+        for (int racingRound = 0; racingRound < totalRacingRound; racingRound++) {
+            racing.tryMovingCars();
+            OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
+        }
     }
 
     public List<String> endRacing() {

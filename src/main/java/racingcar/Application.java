@@ -14,7 +14,7 @@ public class Application {
         racingController.setCarMode(ModeType.RACING_CAR);
 
         OutputView.printMessageWithLine(PrintMessage.INPUT_TRY_CAR_MOVEMENT_MESSAGE);
-        racingController.createRacing(InputView.inputUser());
+        racingController.setTotalRacingRound(InputView.inputUser());
 
         OutputView.printMessageWithLine(PrintMessage.LINE_SPACE);
         OutputView.printMessageWithLine(PrintMessage.CAR_RACE_RESULT_MESSAGE);
