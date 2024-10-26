@@ -12,6 +12,9 @@ public class Car {
     }
 
     private void validateName() {
+        if (this.name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름이 공백으로 입력되었습니다.");
+        }
         if (this.name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름 입력 길이를 초과하였습니다. (최대 5자)");
         }
