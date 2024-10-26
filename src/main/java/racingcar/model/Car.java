@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -17,13 +17,15 @@ public class Car {
         if (randomResult >= 4) {
             location++;
         }
+
+        System.out.println(getName() + " : " + locationToString());
     }
 
     public int getLocation() {
         return location;
     }
 
-    public String getLocationToString() {
+    public String locationToString() {
         StringBuilder location = new StringBuilder();
         for (int i = 0; i < this.location; i++) {
             location.append("-");
