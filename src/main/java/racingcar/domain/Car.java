@@ -15,16 +15,15 @@ public class Car {
     private Integer cnt;
 
     public Car(String name) {
-        this.name = name;
+        this.name = NameCollect.validName(name);
         this.cnt = 0;
     }
 
     public Car(String name, Integer cnt) {
-        this.name = name;
+        this.name = NameCollect.validName(name);
         this.cnt = cnt;
     }
 
-    // 랜덤값에 따라 전진하는지 멈추는 기능
     public Integer move() {
         if (isMoveable()) {
             this.cnt += 1;
@@ -34,7 +33,7 @@ public class Car {
     }
 
     // 현재 현황을 스트링으로 표현하는 기능
-    public String generateStatus() {
+    protected String generateStatus() {
         String repeatStr = MOVING.repeat(this.cnt);
 
         return this.name + COLON_SEPARATOR + repeatStr;

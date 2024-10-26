@@ -18,7 +18,7 @@ class NameCollectTest {
     void test1() {
         String s = "pobi,woni,jun";
 
-        NameCollect nameCollect = new NameCollect(s);
+        NameCollect nameCollect = NameCollect.create(s);
         CarList expect = new CarList();
         expect.add("pobi");
         expect.add("woni");
@@ -35,7 +35,7 @@ class NameCollectTest {
         String s = ",woni,jun";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new NameCollect(s);
+            NameCollect.create(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -45,7 +45,7 @@ class NameCollectTest {
     @DisplayName("에러 : 5자 초과")
     void test3() {
         String s = "pooobi,woni,jun";
-        NameCollect nameCollect = new NameCollect(s);
+        NameCollect nameCollect =NameCollect.create(s);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             CarList.from(nameCollect);
@@ -60,7 +60,7 @@ class NameCollectTest {
         String s = ",,";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            new NameCollect(s);
+           NameCollect.create(s);
         });
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
@@ -72,7 +72,7 @@ class NameCollectTest {
     void test5(String s) {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new NameCollect(s));
+                () ->NameCollect.create(s));
 
         assertThat(exception.getMessage()).contains(INVALID_INPUT.getMessage());
     }

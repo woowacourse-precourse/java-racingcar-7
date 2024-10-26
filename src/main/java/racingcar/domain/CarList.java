@@ -28,7 +28,7 @@ public class CarList {
         String[] splitName = nameCollect.split();
 
         for (String name : splitName) {
-            String validName = nameCollect.validName(name);
+            String validName = NameCollect.validName(name);
             carList.add(validName);
         }
 
@@ -47,16 +47,16 @@ public class CarList {
     }
 
     // 모든 자동차들의 현황을 출력합니다.
-    public Message generateStatus() {
+    public Message generateAllStatus() {
         StringJoiner stringJoiner = new StringJoiner(ENTER);
 
         for (Car car : cars) {
             stringJoiner.add(car.generateStatus());
         }
         stringJoiner.add(ENTER);
-        String message = stringJoiner.toString();
+        String allStatus = stringJoiner.toString();
 
-        return new Message(message);
+        return Message.create(allStatus);
     }
 
     protected List<Car> toWinners() {

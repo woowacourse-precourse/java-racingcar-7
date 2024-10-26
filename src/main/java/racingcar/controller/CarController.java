@@ -21,7 +21,7 @@ public class CarController {
         viewer.printInputCarNames();
         String carNames = viewer.readCarNames();
 
-        return new NameCollect(carNames);
+        return NameCollect.create(carNames);
     }
 
     public TryCount toTryCount() {

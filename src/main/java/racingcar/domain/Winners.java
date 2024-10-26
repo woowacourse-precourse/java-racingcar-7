@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static racingcar.utils.Constant.COMMA_SEPARATOR;
-import static racingcar.utils.Constant.WINNER_RESULT;
 
 import java.util.List;
 import java.util.StringJoiner;
@@ -29,9 +28,9 @@ public class Winners {
                 )
         );
 
-        String result = WINNER_RESULT + stringJoiner;
+        String result = stringJoiner.toString();
 
-        return new Message(result);
+        return Message.createWinner(result);
     }
 
 }

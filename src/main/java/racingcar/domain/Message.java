@@ -1,13 +1,23 @@
 package racingcar.domain;
 
+import static racingcar.utils.Constant.WINNER_RESULT;
+
 import java.util.Objects;
 
 public class Message {
 
     private final String value;
 
-    public Message(String value) {
+    private Message(String value) {
         this.value = value;
+    }
+
+    public static Message create(String value) {
+        return new Message(value);
+    }
+
+    public static Message createWinner(String value) {
+        return new Message(WINNER_RESULT + value);
     }
 
     @Override

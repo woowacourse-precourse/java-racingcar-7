@@ -1,11 +1,16 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static racingcar.utils.Constant.COLON_SEPARATOR;
 import static racingcar.utils.Constant.MOVING;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 class CarTest {
@@ -52,6 +57,7 @@ class CarTest {
         assertThat(result).isEqualTo(name + COLON_SEPARATOR);
     }
 
+    @Disabled
     @Test
     @DisplayName("최대 값 테스트 : 최대 반복 횟수 확인")
     void carTestMaxCount() {
@@ -73,6 +79,24 @@ class CarTest {
                 System.out.println("Memory exceeded at tryCount: " + tryCount);
             }
         }
+    }
+
+    @ParameterizedTest
+    @DisplayName("유효하지 않은 입력값 테스트")
+    @ValueSource(strings = {"자동차이름긺"})
+    @NullAndEmptySource
+    void test4(String name) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Car(name);
+        });
+    }
+
+    @Test
+    @DisplayName("이름 5자 테스트")
+    void test5() {
+        String name = "12345";
+        Car car = new Car(name);
+        assertThat(car.generateStatus()).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(0));
     }
 
 

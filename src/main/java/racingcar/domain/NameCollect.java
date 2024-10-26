@@ -11,29 +11,29 @@ public class NameCollect {
 
     private final String value;
 
-    public NameCollect(String input) {
-        this.value = validInput(input);
+    protected NameCollect(String input) {
+        this.value = input;
     }
 
-    protected String[] split() {
-        String[] splitInput = value.split(COMMA_SEPARATOR);
-
-        if (splitInput.length == 0) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-        }
-
-        return splitInput;
+    public static NameCollect create(String carNames) {
+        return new NameCollect(validInput(carNames));
     }
 
-    protected String validName(String name) {
-        if (isInvalidName(name)) {
+    protected static String validName(String name) {
+        if (name == null || isInvalidName(name)) {
             throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
         }
 
         return name;
     }
 
-    private String validInput(String input) {
+    private static boolean isInvalidName(String name) {
+        int length = name.length();
+
+        return length == 0 || length > MAX_CAR_NAME_LEN;
+    }
+
+    private static String validInput(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
@@ -48,11 +48,14 @@ public class NameCollect {
         return input;
     }
 
+    protected String[] split() {
+        String[] splitInput = value.split(COMMA_SEPARATOR);
 
-    private boolean isInvalidName(String name) {
-        int length = name.length();
+        if (splitInput.length == 0) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
+        }
 
-        return length == 0 || length > MAX_CAR_NAME_LEN;
+        return splitInput;
     }
 
     @Override

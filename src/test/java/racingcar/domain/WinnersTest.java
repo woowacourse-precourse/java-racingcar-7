@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.utils.Constant.WINNER_RESULT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,6 @@ class WinnersTest {
         Message result = winners.result();
 
         // then
-        assertThat(result).isEqualTo(new Message(WINNER_RESULT + carList));
+        assertThat(result).isEqualTo(Message.createWinner(carList.toString()));
     }
 }
