@@ -50,7 +50,7 @@
 - [x] RandomNumberGenerator
 ### View
 - [x] InputView
-- [ ] OutputView
+- [x] OutputView
 ### Controller
 - [ ] RacingCarGameController
 ### Enum
