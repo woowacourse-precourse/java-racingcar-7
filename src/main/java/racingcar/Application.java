@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +25,10 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<String> keys = List.of(Console.readLine().split(","));
+        // 예외처리: 입력한 자동차 이름이 올바르지 않은 경우
+        if (!InputValidation.isValidKeys(keys)) {
+            throw new IllegalArgumentException();
+        }
 
         Map<String, Integer> cars = new HashMap<>();
         for (String key : keys) {
@@ -33,27 +36,35 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int n = Integer.parseInt(Console.readLine());
-        System.out.println("\n실행 결과");
+        String numInput = Console.readLine();
+        if (!InputValidation.isValidNumber(numInput)){
+            throw new IllegalArgumentException();
+        }
+        int num = Integer.parseInt(numInput);
 
-        for (int i = 0; i < n; i++) {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < num; i++) {
             race(cars, keys);
         }
 
         List<String> winners = new LinkedList<>();
         int maxMove = 0;
-        for (String key : keys){
+        for (String key : keys) {
             int move = cars.get(key);
-            if (move > maxMove){
+            if (move > maxMove) {
                 maxMove = move;
                 winners.clear();
                 winners.add(key);
-            } else if (move == maxMove){
+            } else if (move == maxMove) {
                 winners.add(key);
             }
         }
 
         String result = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + result);
+        if (maxMove == 0) {
+            System.out.println("최종 우승자 : 없음");
+        }else{
+            System.out.println("최종 우승자 : " + result);
+        }
     }
 }
