@@ -18,22 +18,33 @@ public class RacingView {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)");
         String[] carName = Console.readLine().trim().split(",");
         Pattern pattern = Pattern.compile(regex);
-        for(String car : carName){
+
+        for (String car : carName) {
             Matcher matcher = pattern.matcher(car);
-            if(!matcher.find()){
-                if(car.length() > 5){
-                    throw new IllegalArgumentException("자동차 이름이 5자가 넘습니다 : " + car);
-                }
+
+            if (car.contains(" ")) { // 이름에 공백이 포함된 경우
+                System.out.println("공백이 포함된 이름 : " + car);
+                throw new IllegalArgumentException("공백은 허용하지 않습니다. : " + car);
+            }else if (matcher.find()) { // 특수 문자가 있는 경우
+                System.out.println("한국어, 영어가 아닐 때 : " + car);
+                throw new IllegalArgumentException("한글 또는 영어만 허용합니다. : " + car);
+            } else if (car.length() > 5) { // 길이가 5 초과인 경우
+                System.out.println("차 이름 글자 수 5 이상 : " + car.length());
+                throw new IllegalArgumentException("자동차 이름이 5자가 넘습니다 : " + car + " : " + car.length());
             }
-            throw new IllegalArgumentException("한글 또는 영어만 헝용 합니다. : " + car);
         }
         return carName;
     }
 
+
     // 시도 횟수 입력 받기
     public int getRoundCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int parseInt = Integer.parseInt(Console.readLine());
+        if (parseInt < 0){
+            throw new IllegalArgumentException("음수는 허용 하지 않습니다 : " + parseInt);
+        }
+        return parseInt;
     }
 
     // 각 차수별로 자동차 상태 출력
@@ -53,3 +64,5 @@ public class RacingView {
         printCarStates(response.getCarStates());
     }
 }
+
+
