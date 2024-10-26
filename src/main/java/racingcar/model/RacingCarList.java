@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.common.OutputController;
+
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +20,8 @@ public class RacingCarList {
     }
 
     public void gameStartPerRound(RaceCount raceCount) {
+        OutputController.printExecutionResultPromptMessage();
+
         int rounds = raceCount.raceCount();
         for (int i = 0; i < rounds; i++) {
             gameStartOneRound();
@@ -38,5 +42,6 @@ public class RacingCarList {
 
     private void gameStartOneRound() {
         racingCars.forEach(RacingCar::operatingMoveOrStop);
+        OutputController.printRacingCarsPosition(racingCars);
     }
 }

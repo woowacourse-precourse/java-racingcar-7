@@ -32,4 +32,14 @@ public class RacingCar {
     private boolean isMoveForward() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
+
+    public String toString(){
+        String result ="";
+        result += carName.carName();
+        result += " : ";
+        for(int i=0;i<position.getPosition();i++){
+            result += "-";
+        }
+        return result;
+    }
 }

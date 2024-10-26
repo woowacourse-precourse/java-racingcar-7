@@ -1,6 +1,7 @@
 package racingcar.common;
 
 import racingcar.model.CarName;
+import racingcar.model.RacingCar;
 
 import java.util.List;
 
@@ -18,6 +19,16 @@ public class OutputController {
                 .map(CarName::carName)
                 .toList();
 
-        System.out.println(String.join(", ", carNameStringList));
+
+        System.out.println("최종 우승자 : " + String.join(", ", carNameStringList));
+    }
+
+    public static void printExecutionResultPromptMessage(){
+        System.out.println("실행 결과");
+    }
+
+    public static void printRacingCarsPosition(List<RacingCar> racingCarList){
+        racingCarList.forEach(car -> System.out.println(car.toString()));
+        System.out.println();
     }
 }
