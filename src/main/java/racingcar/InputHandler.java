@@ -21,11 +21,11 @@ public class InputHandler {
         return Arrays.asList(carNames.split(","));
     }
 
-    boolean isValidCarNameLengthValid(String carName) {
-
+    boolean isCarNameLengthValid(String carName) {
+        return carName != null && carName.length() <= MAX_LENGTH;
     }
 
-    boolean areAllCarNamesValidLength(List<String> carNames) {
+    boolean areAllCarNameLengthsValid(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() >= MAX_LENGTH) {
                 return false;
