@@ -10,6 +10,8 @@ public class Cars {
     private static final int MAX_CAR_LENGTH = 100;
     private static final String CAR_LENGTH_ERROR_MESSAGE =
             String.format("자동차의 개수는 %d 이상 %d 이하여야 합니다.", MIN_CAR_LENGTH, MAX_CAR_LENGTH);
+    private static final String DUPLICATED_CAR_NAME_MESSAGE = "중복된 자동차가 존재합니다.";
+    private static final String NOT_FOUND_MAX_CARS_MESSAGE = "max Car를 찾을 수 없습니다.";
 
     private final List<Car> cars;
 
@@ -39,7 +41,7 @@ public class Cars {
     private static void validateDuplicatedName(List<String> names, List<CarName> carNames) {
         Set<CarName> uniqueCarNames = new HashSet<>(carNames);
         if (names.size() != uniqueCarNames.size()) {
-            throw new IllegalArgumentException("중복된 자동차가 존재합니다.");
+            throw new IllegalArgumentException(DUPLICATED_CAR_NAME_MESSAGE);
         }
     }
 
@@ -63,7 +65,7 @@ public class Cars {
     private Car getMaxCar() {
         return cars.stream()
                 .max(Comparator.naturalOrder())
-                .orElseThrow(() -> new IllegalArgumentException("max Car를 찾을 수 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MAX_CARS_MESSAGE));
     }
 
 }

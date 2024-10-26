@@ -9,6 +9,8 @@ import racingcar.view.OutputView;
 
 public class RacingCarController {
 
+    private static final String CAR_NAME_DELIMITER = ",";
+
     private final InputView inputView;
     private final OutputView outputView;
     private final RacingCarService racingCarService;
@@ -23,7 +25,7 @@ public class RacingCarController {
 
 
     public void process() {
-        String[] carNames = inputView.inputCarNames().split(",");
+        String[] carNames = inputView.inputCarNames().split(CAR_NAME_DELIMITER);
         int raceRound = inputView.inputRaceRound();
 
         RaceResult raceResult = racingCarService.race(List.of(carNames), raceRound, new RandomMovementStrategy());

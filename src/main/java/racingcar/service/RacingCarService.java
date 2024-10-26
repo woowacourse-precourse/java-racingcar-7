@@ -11,8 +11,8 @@ public class RacingCarService {
 
     public RaceResult race(List<String> carNames, int raceRound, MovementStrategy movementStrategy) {
         Cars cars = Cars.from(carNames, movementStrategy);
-
         Race race = Race.from(raceRound, cars);
+
         race.play();
 
         List<RaceLog> raceLogs = race.getRaceLogs();
