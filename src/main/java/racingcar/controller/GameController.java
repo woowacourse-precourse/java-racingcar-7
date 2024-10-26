@@ -15,5 +15,6 @@ public class GameController {
     public void run() {
         String carRegistrationRequest = inputView.readCarRegistrationRequest();
         List<String> cars = Arrays.asList(carRegistrationRequest.split(","));
+        int roundCount = inputView.readRoundCount();
     }
 }
