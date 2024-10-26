@@ -26,11 +26,6 @@ public class InputHandler {
     }
 
     boolean areAllCarNameLengthsValid(List<String> carNames) {
-        for (String carName : carNames) {
-            if (carName.length() >= MAX_LENGTH) {
-                return false;
-            }
-        }
-        return true;
+        return carNames.stream().allMatch(this::isCarNameLengthValid);
     }
 }
