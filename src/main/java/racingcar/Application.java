@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.platform.commons.util.StringUtils;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,7 +15,7 @@ public class Application {
 
         Integer movementCount = getMovementCount();
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
 
         for (int i = 0; i < movementCount; i++) {
             for (Car car : cars) {
@@ -111,6 +110,4 @@ public class Application {
 
         return winners;
     }
-
-
 }
