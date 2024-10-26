@@ -2,14 +2,27 @@ package racingcar.car;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class CarRegistry {
     private final Set<Car> cars;
     private final StringBuilder carStatus;
 
+    private static final Pattern VALID_CAR_NAMES_PATTERN = Pattern.compile("^[^,]+(,[^,]+)*$");
+
     public CarRegistry(String carNames) {
+        validateCarNames(carNames);
         this.cars = convertCarNamesToCarSet(carNames);
         this.carStatus = new StringBuilder();
+    }
+
+    private void validateCarNames(String carNames) {
+        if (carNames.trim().isEmpty()) {
+            throw new IllegalArgumentException("Input is Blank");
+        }
+        if (!VALID_CAR_NAMES_PATTERN.matcher(carNames).matches()) {
+            throw new IllegalArgumentException("Write valid comma between names");
+        }
     }
 
     private Set<Car> convertCarNamesToCarSet(String input) {

@@ -2,8 +2,12 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.regex.Pattern;
+
 public class Input {
     private static Input INSTANCE;
+
+    private static final Pattern VALID_CAR_NAMES_PATTERN = Pattern.compile("^[^,]+(,[^,]+)*$");
 
     private Input() {}
 
@@ -42,29 +46,11 @@ public class Input {
     }
 
     private void validateCarNames(String carNames) {
-        validateCarNameInputBlank(carNames);
-        validateNotEndingWithComma(carNames);
-        validateCommaSeparated(carNames);
-    }
-
-    private void validateCarNameInputBlank(String carNames) {
-        if(carNames.trim().isEmpty()) {
+        if (carNames.trim().isEmpty()) {
             throw new IllegalArgumentException("Input is Blank");
         }
-    }
-
-    private void validateNotEndingWithComma(String carNames) {
-        if(carNames.endsWith(",")){
+        if (!VALID_CAR_NAMES_PATTERN.matcher(carNames).matches()) {
             throw new IllegalArgumentException("Write valid comma between names");
-        }
-    }
-
-    private void validateCommaSeparated(String carNames) {
-        String[] names = carNames.split(",");
-        for (String name : names) {
-            if(name.isEmpty()){
-                throw new IllegalArgumentException("Write valid comma between names");
-            }
         }
     }
 }
