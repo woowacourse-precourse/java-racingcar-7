@@ -2,9 +2,10 @@ package racingcar.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Message.ExceptionMessages;
+import racingcar.Message.ExceptionMessage;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.Message.ExceptionMessage.*;
 
 public class InputValidatorTest {
 
@@ -15,7 +16,7 @@ public class InputValidatorTest {
         assertThatThrownBy(() -> {
             im.validateNameInput();
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessages.EMPTY_NAME_EXCEPTION.getMessage());
+                .hasMessage(EMPTY_NAME_EXCEPTION.getMessage());
     }
 
     @DisplayName("양수가 아닌 값을 시도횟수로 입력하면 예외가 발상핸다")
@@ -25,6 +26,6 @@ public class InputValidatorTest {
         assertThatThrownBy(() -> {
             im.validateNumberInput();
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessages.NEGATIVE_ATTEMPT_EXCEPTION.getMessage());
+                .hasMessage(NEGATIVE_ATTEMPT_EXCEPTION.getMessage());
     }
 }
