@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.utils.Utils;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,13 +22,15 @@ public class RacingController {
 
     // 입력 기능
     public void inputInfo() {
-        String input = InputView.inputCarNames();
-        tryNumber = InputView.inputTryNumber();
-        String[] carArr = Utils.splitDelimiterCars(input);
+        String input = InputView.inputCarNames(); // 자동차 이름 입력
+        String[] carArr = Utils.splitDelimiterCars(input); // 쉼표 기준으로 자동차 이름 나누기
 
         for (String name : carArr) {
+            InputValidator.validateNameLength(name);
             cars.add(new Car(name));
         }
+
+        tryNumber = InputView.inputTryNumber(); // 시도 횟수 입력
     }
 
     // 경주 시작
