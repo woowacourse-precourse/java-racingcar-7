@@ -1,16 +1,40 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameController {
-
     public static void game() {
+        start();
+    }
+    public static void start() {
         List<String> carNames = InputView.getCars();
         validateName(carNames);
 
         int round = validateRound(InputView.getRounds());
+        Cars cars = createCars(carNames);
 
+        OutputView.printResultText();
+        for (int i = 0; i < round; i++) {
+            moveCars(cars);
+            OutputView.printResult(cars);
+        }
+    }
+    public static Cars createCars(List<String> carNames) {
+        return new Cars(carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
+    }
+    public static void moveCars(Cars cars) {
+        List<Car> carList = cars.getCarList();
+        for (Car car : carList) {
+            car.move();
+        }
     }
 
     private static void validateName(List<String> carNames) {
