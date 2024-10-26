@@ -1,9 +1,11 @@
 package racingcar.util;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.constant.ErrorMessage.*;
 
@@ -22,12 +24,10 @@ public class ValidatorTest {
         //given
         String carNames = "abc,abcd,abcde,abcdef";
 
-        // when
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> validator.checkCarNameInput(carNames));
-
-        // then
-        assertEquals(CARNAME_LENGTH_EXCEPTION.getMessage() + "abcdef", exception.getMessage());
+        // when & then
+        assertThatThrownBy(() -> validator.checkCarNameInput(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CARNAME_LENGTH_EXCEPTION.getMessage() + "abcdef");
     }
 
 
@@ -37,12 +37,10 @@ public class ValidatorTest {
         //given
         String carNames = ",abc,abcd,abcde";
 
-        // when
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> validator.checkCarNameInput(carNames));
-
-        // then
-        assertEquals(CARNAME_BLANK_EXCEPTION.getMessage(), exception.getMessage());
+        // when & then
+        assertThatThrownBy(() -> validator.checkCarNameInput(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(CARNAME_BLANK_EXCEPTION.getMessage());
     }
 
     @Test
@@ -51,11 +49,21 @@ public class ValidatorTest {
         //given
         String carNames = "abc,abc,abcd,abcde";
 
-        // when
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> validator.checkCarNameInput(carNames));
+        // when & then
+        assertThatThrownBy(() -> validator.checkCarNameInput(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATE_CARNAME_EXCEPTION.getMessage() + "abc");
+    }
 
-        // then
-        assertEquals(DUPLICATE_CARNAME_EXCEPTION.getMessage() + "abc", exception.getMessage());
+    @Test
+    @DisplayName("시도할 횟수 입력이 양의 정수가 아닌 경우에 예외가 발생한다")
+    void 시도횟수_입력_테스트() throws Exception{
+        //given
+        String attempts = "-10";
+
+        // when & then
+        assertThatThrownBy(() -> validator.checkAttemptInput(attempts))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ATTEMPTS_FORMAT_EXCEPTION.getMessage() + attempts);
     }
 }
