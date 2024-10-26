@@ -77,7 +77,7 @@ public class RacingGame {
             }
         }
 
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
     // 최대 위치를 계산하는 메소드
