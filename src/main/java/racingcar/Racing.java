@@ -23,4 +23,12 @@ public class Racing {
         Output.printRoundResult(cars);
         System.out.println();
     }
+
+    public void runAllRound(int round) {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (int i = 0; i < round; i++) {
+            runRound();
+        }
+    }
 }
