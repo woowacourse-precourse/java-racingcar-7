@@ -23,12 +23,8 @@ public class Game {
     }
 
     public void winnerPlayer(List<Car> player) {
-        int max = Integer.MIN_VALUE;
-        for (Car car : player) {
-            if (car.getCnt() > max) {
-                max = car.getCnt();
-            }
-        }
+        int max = playerMaxCnt(player);
+
         List<String> winner = new ArrayList<>();
         for (Car car : player) {
             if (car.getCnt() == max) {
@@ -42,5 +38,12 @@ public class Game {
         return Arrays.stream(carName.split(","))
                 .map(Car::new)
                 .toList();
+    }
+
+    private int playerMaxCnt(List<Car> player) {
+        return player.stream()
+                .mapToInt(Car::getCnt)
+                .max()
+                .getAsInt();
     }
 }
