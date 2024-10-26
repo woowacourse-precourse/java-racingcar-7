@@ -21,6 +21,9 @@ public class RacingController {
     }
 
     public void setTotalRacingRound(String totalRacingRound) {
+        if (RacingRoundValidation.validateRacingRoundType(totalRacingRound)) {
+            throw new IllegalArgumentException("ERROR] 자동차 이동 시도 횟수는 숫자로만 이루어져야 합니다.");
+        }
         Integer racingRound = Integer.parseInt(totalRacingRound);
         if (RacingRoundValidation.validateRacingRoundNumberRange(racingRound)) {
             throw new IllegalArgumentException("[ERROR] 자동차 이동 시도 횟수는 1이상 양수여야 합니다.");
