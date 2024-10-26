@@ -2,7 +2,10 @@ package racingcar.validator;
 
 import racingcar.domain.Car;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class Validator {
 
@@ -43,6 +46,21 @@ public class Validator {
         }catch(NumberFormatException e){
             throw new IllegalArgumentException("숫자를 입력해 주세요.");
         }
+    }
+
+    public static List<Car> validateSameCarName(List<Car> carList){
+
+        Set<String> carNames = new HashSet<>();
+
+        carList.stream()
+                .map(Car::getName)
+                .forEach(name -> {
+                    if (!carNames.add(name)) {
+                        throw new IllegalArgumentException("중복된 이름을 구분해 주세요.");
+                    }}
+                );
+
+        return carList;
     }
 
 }
