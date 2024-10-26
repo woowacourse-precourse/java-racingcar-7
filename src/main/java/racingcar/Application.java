@@ -10,9 +10,9 @@ public class Application {
 
         final InputView inputView = new InputView();
         final OutputView outputView = new OutputView();
-        final RacingService racingcarService = new RacingService(inputView, outputView);
-        final RacingController racingcarController = new RacingController(racingcarService);
+        final RacingService racingService = new RacingService(inputView, outputView);
+        final RacingController racingController = new RacingController(racingService);
 
-        racingcarController.play();
+        racingController.play();
     }
 }
