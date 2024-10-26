@@ -1,21 +1,18 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
-import racingcar.model.Car;
-import racingcar.service.CarService;
-import racingcar.service.RaceService;
 
 public class InputView {
 
-    public static List<Car> getCarNames() {
+    public static String[] getCarNames() {
         String[] value = Console.readLine().split(",");
-        return CarService.convertToCarList(value);
+
+        return value;
     }
 
-    public static int getRound() {
+    public static String getRound() {
         String value = Console.readLine();
-        return RaceService.converToIntRound(value);
+        return value;
     }
 
 
