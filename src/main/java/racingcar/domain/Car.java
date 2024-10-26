@@ -9,6 +9,7 @@ public class Car {
     private static final int MOVE_STANDARD = 4;
     private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String POSITION_SIGN = "-";
+    private static final String LINE_CHANGE = "\n";
 
     private final String name;
     private int position;
@@ -69,6 +70,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return name + NAME_POSITION_SEPARATOR + POSITION_SIGN.repeat(position);
+        return name + NAME_POSITION_SEPARATOR + POSITION_SIGN.repeat(position) + LINE_CHANGE;
     }
 }
