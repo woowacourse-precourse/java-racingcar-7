@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 import racingcar.domain.Car;
@@ -18,11 +19,7 @@ public class RacingGame {
     }
 
     public Cars makeCars(String initialInput) {
-        List<String> carNames = new ArrayList<>();
-        StringTokenizer st = new StringTokenizer(initialInput, ",");
-        while (st.hasMoreTokens()) {
-            carNames.add(st.nextToken());
-        }
+        List<String> carNames = Arrays.asList(initialInput.split(","));
         Cars cars = new Cars(carNames);
         return cars;
     }
