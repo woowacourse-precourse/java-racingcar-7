@@ -18,6 +18,7 @@ public class RacingGame {
         outputView.startRacePhase();
         for (int i = 0; i < rounds.rounds(); i++) {
             doRace(cars);
+            updateProgress(cars);
         }
     }
 
@@ -31,6 +32,12 @@ public class RacingGame {
         for (int i = 0; i < cars.size(); i++) {
             Car racer = cars.getCar(i);
             racer.randomGo();
+        }
+    }
+
+    public void updateProgress(Cars cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            Car racer = cars.getCar(i);
             outputView.printProgress(racer.name(), racer.progress());
         }
         outputView.printBlank();
