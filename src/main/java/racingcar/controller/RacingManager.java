@@ -7,7 +7,7 @@ import racingcar.output.OutputViewer;
 
 public class RacingManager {
 
-    private final InputReader  inputReader;
+    private final InputReader inputReader;
     private final OutputViewer outputViewer;
 
     public RacingManager(InputReader inputReader, OutputViewer outputViewer) {
@@ -17,27 +17,26 @@ public class RacingManager {
 
     public void run() {
         outputViewer.getCarNameInputMessage();
-        Cars cars = new Cars(inputReader.getNames());
+        final Cars cars = Cars.createCars(inputReader.getNames());
 
         outputViewer.getTryCountInputMessage();
-        int tryCnt = inputReader.getTryCount();
+        final int tryCount = inputReader.getTryCount();
 
         outputViewer.getRacingProgressMessage();
-        outputViewer.getSystemOutPrint(progress(cars, tryCnt));
-
+        outputViewer.getSystemOutPrint(progress(cars, tryCount));
         outputViewer.getRacingResultMessage(joinWinners(cars));
     }
 
-    private String joinWinners(Cars cars) {
+    private String joinWinners(final Cars cars) {
         List<String> winners = cars.getRacingWinners();
         return String.join(", ", winners);
     }
 
-    private String progress(Cars cars, int count) {
+    private String progress(final Cars cars, final int tryCount) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            cars.updateCarsMovement();
-            sb.append(cars).append("\n\n");
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveAll();
+            sb.append(cars).append("\n");
         }
         return sb.toString();
     }
