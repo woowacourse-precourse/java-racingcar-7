@@ -6,8 +6,19 @@ public class InputView {
 
     public String inputCar() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return Console.readLine();
+        String str = Console.readLine();
+        return carValidation(str);
     }
+
+    public String carValidation(String str) {
+        for (String s : str.split(",")) {
+            if (s.length() > 5) {
+                throw new IllegalArgumentException("올바르지 않은 문자열 입력입니다. (5자 이하 입력)");
+            }
+        }
+        return str;
+    }
+
 
     public int inputRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");

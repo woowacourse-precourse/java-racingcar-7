@@ -10,6 +10,22 @@ import org.junit.jupiter.params.provider.ValueSource;
 class InputViewTest {
 
     @Test
+    void 경주할_자동차_이름_문자열_올바른_입력() {
+        InputView inputView = new InputView();
+        String actual = inputView.carValidation("진용,순신,길동,감찬");
+        Assertions.assertThat(actual).isEqualTo("진용,순신,길동,감찬");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"마르쿠스 아우렐리우스,노스트라다무스,비디치,퍼디난드", "진용,유비빔,다섯글자임,다섯글자임 "})
+    void 경주할_자동차_이름_문자열_입력_예외(String str) {
+        InputView inputView = new InputView();
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> inputView.carValidation(str));
+
+    }
+
+    @Test
     void 시도_횟수_입력_검증_올바른_입력() {
         InputView inputView = new InputView();
         int actual = inputView.roundValidation(5);
