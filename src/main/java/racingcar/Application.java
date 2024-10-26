@@ -13,11 +13,23 @@ public class Application {
     private static final Dice dice = new Dice();
 
     public static void main(String[] args) {
+        List<Car> raceCars = getCarNames();
+        Integer attempt = getAttempt();
+
+        startGame(raceCars,attempt);
+        List<Car> winnerCar = findWinner(raceCars);
+        printWinner(winnerCar);
+    }
+
+    private static List<Car> getCarNames() {
         List<Car> raceCars = new ArrayList<>();
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String allMembers = Console.readLine();
         String[] carNames = allMembers.split(",");
 
+        if (allMembers == "" || allMembers.trim().isEmpty()) {
+            throw new IllegalArgumentException("참여하는 자동차가 없습니다.");
+        }
         // 각 이름에 대해 Car 객체를 생성하여 리스트에 추가
         for (String name : carNames) {
             if(name.trim().length() > 5) {
@@ -25,13 +37,18 @@ public class Application {
             }
             raceCars.add(new Car(name.trim()));
         }
+        return raceCars;
+    }
 
+    private static Integer getAttempt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         Integer attempt = Integer.valueOf(Console.readLine());
 
-        startGame(raceCars,attempt);
-        List<Car> winnerCar = findWinner(raceCars);
-        printWinner(winnerCar);
+        if(attempt <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1이상으로 설정해야 합니다.");
+        }
+
+        return attempt;
     }
 
     public static void startGame(List<Car> raceCars, Integer attempt) {
