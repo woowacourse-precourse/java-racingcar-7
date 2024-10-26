@@ -7,6 +7,7 @@ import racingcar.validation.InputValidator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameService {
     public List<Car> createCars(String carNamesInput) {
@@ -63,5 +64,13 @@ public class RacingGameService {
             }
         }
         return winners;
+    }
+
+    public void printWinners(List<Car> winners) {
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 }
