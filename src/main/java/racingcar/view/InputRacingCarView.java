@@ -8,24 +8,14 @@ public class InputRacingCarView {
 
     public String inputCarName() {
         System.out.println(CAR_NAME_INPUT);
-        try{
-            String input = Console.readLine();
-            return input;
-        }
-        finally {
-            Console.close();
-        }
+        String input = Console.readLine();
+        return input;
     }
 
     public String inputCarMoveCount() {
         System.out.println(CAR_MOVE_COUNT_INPUT);
-        try {
-            String input = Console.readLine();
-            return input;
-        }
-        finally {
-            Console.close();
-        }
+        String input = Console.readLine();
+        return input;
     }
 
 }
