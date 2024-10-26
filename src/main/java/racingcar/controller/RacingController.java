@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.service.RacingService;
 import racingcar.utils.StringReplacer;
 import racingcar.utils.StringSplitter;
+import racingcar.validate.RacingcarAttemptValidate;
 import racingcar.validate.RacingcarNameValidate;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,14 +18,16 @@ public class RacingController {
     private final StringSplitter stringSplitter;
     private final RacingService racingService;
     private final RacingcarNameValidate racingcarNameValidate;
+    private final RacingcarAttemptValidate racingcarAttemptValidate;
 
-    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter, RacingService racingService, RacingcarNameValidate racingcarNameValidate, StringReplacer stringReplacer) {
+    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter,StringReplacer stringReplacer, RacingService racingService, RacingcarNameValidate racingcarNameValidate,  RacingcarAttemptValidate racingcarAttemptValidate) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.stringReplacer = stringReplacer;
         this.stringSplitter = stringSplitter;
         this.racingService = racingService;
         this.racingcarNameValidate = racingcarNameValidate;
+        this.racingcarAttemptValidate = racingcarAttemptValidate;
     }
 
     public void run() {
@@ -52,6 +55,10 @@ public class RacingController {
         outputView.askAttempt();//상수 데이터 출력
 
         String attempt = inputView.askAttempt();//시도 횟수 입력
+
+        racingcarAttemptValidate.isBlank(attempt);//공백 입력 검증
+
+        racingcarAttemptValidate.isParsable(attempt);//정수로 변환 가능 여부 검증, 자료형 범위 내
 
     }
 }

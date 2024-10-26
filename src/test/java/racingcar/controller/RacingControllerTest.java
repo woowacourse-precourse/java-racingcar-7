@@ -7,6 +7,7 @@ import racingcar.model.Racingcars;
 import racingcar.service.RacingService;
 import racingcar.utils.StringReplacer;
 import racingcar.utils.StringSplitter;
+import racingcar.validate.RacingcarAttemptValidate;
 import racingcar.validate.RacingcarNameValidate;
 
 import java.util.List;
@@ -21,6 +22,7 @@ class RacingControllerTest {
     private RacingService racingService;
     private Racingcars racingcars;
     private RacingcarNameValidate racingcarNameValidate;
+    private RacingcarAttemptValidate racingcarAttemptValidate;
 
     @BeforeEach
     void setUp() {
@@ -29,11 +31,12 @@ class RacingControllerTest {
         this.racingcars = new Racingcars();
         this.racingService = new RacingService(racingcars);
         this.racingcarNameValidate = new RacingcarNameValidate();
+        this.racingcarAttemptValidate = new RacingcarAttemptValidate();
     }
 
     @Test
     @DisplayName("자동차 이름 입력 테스트")
-    void run() {
+    void inputCarName() {
         /* Given */
         String input = "녹차,말차,유자차,차차차";
         /* When */
@@ -49,7 +52,7 @@ class RacingControllerTest {
 
     @Test
     @DisplayName("자동차 이름 공백 입력 테스트")
-    void isBlank() {
+    void isCarNameBlank() {
         /* Given */
         String input = " ";
 
@@ -91,5 +94,44 @@ class RacingControllerTest {
         assertThatThrownBy(() -> racingcarNameValidate.isDuplicate(inputList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름 중복");
+    }
+
+    @Test
+    @DisplayName("시도 횟수 입력 테스트")
+    void inputAttempt() {
+        /* Given */
+        String input = "5";
+
+        /* When */
+        racingcarAttemptValidate.isBlank(input);
+        racingcarAttemptValidate.isParsable(input);
+        int attempt = Integer.parseInt(input);
+
+        /* Then */
+        assertThat(attempt).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("시도 횟수 공백 입력 예외 테스트")
+    void isAttemptBlank() {
+        /* Given */
+        String input = "    ";
+
+        /* When, Then */
+        assertThatThrownBy(()->racingcarAttemptValidate.isBlank(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 시도 횟수 공백");
+    }
+
+    @Test
+    @DisplayName("정수 이외 입력 예외 처리")
+    void isAttemptParsable() {
+        /* Given */
+        String input = " 1  5 ";
+
+        /* When, Then */
+        assertThatThrownBy(()->racingcarAttemptValidate.isParsable(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 정수 이외 데이터 입력");
     }
 }
