@@ -4,7 +4,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import org.assertj.core.internal.IterableElementComparisonStrategy;
 
 public class Input {
 
@@ -34,7 +33,10 @@ public class Input {
     }
 
     public int getAttemptedNumber() {
-        return Integer.parseInt(readLine());
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못 입력되었습니다.");
+        }
     }
-
 }
