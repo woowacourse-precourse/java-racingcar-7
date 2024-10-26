@@ -17,7 +17,12 @@ public class InputHandler {
 
     public static int getTimes() {
         String input = Console.readLine();
-        return Integer.parseInt(input);
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void checkNameIsAvailable(String carName) {
