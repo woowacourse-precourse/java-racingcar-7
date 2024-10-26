@@ -1,8 +1,9 @@
 package racingcar.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -25,9 +26,9 @@ class CarServiceTest {
 
         //then
         Car firstCar = cars.getFirst();
-        Assertions.assertThat(cars).hasSize(3);
-        Assertions.assertThat(firstCar.getName()).isEqualTo("a");
-        Assertions.assertThat(firstCar.getDistance()).isEqualTo(0);
+        assertThat(cars).hasSize(3);
+        assertThat(firstCar.getName()).isEqualTo("a");
+        assertThat(firstCar.getDistance()).isEqualTo(0);
     }
 
 }
