@@ -20,11 +20,13 @@ public class RacingGameProgressService {
         return gameRoundResults;
     }
     private RacingGameRoundResult executeRound(List<Car> cars, int currentRound){
+        List<Car> roundResult = new ArrayList<>();
         for (Car car : cars){
             if (randomNumberGenerator.generateNumber() >= MINIMUM_MOVE_VALUE){
                 car.move();
             }
+            roundResult.add(car.clone());
         }
-        return new RacingGameRoundResult(cars, currentRound);
+        return new RacingGameRoundResult(roundResult, currentRound);
     }
 }
