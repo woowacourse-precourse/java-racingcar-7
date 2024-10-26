@@ -33,9 +33,9 @@ public playGame()
 private void playSingleRound()
 : \: 하나의 라운드를 진행하는 메소드.
 
-- [ ]  participants의 각 요소들에 접근
-- [ ]  Utils.canMove() 호출해 전진 가능 여부 확인
-- [ ]  Car.moveOrStop()를 호출하고, 매개변수로 전진 가능 여부를 넘겨 줌으로써 전진 혹은 멈춤 수행
+- [x]  participants의 각 요소들에 접근
+- [x]  Utils.canMove() 호출해 전진 가능 여부 확인
+- [x]  Car.moveOrStop()를 호출하고, 매개변수로 전진 가능 여부를 넘겨 줌으로써 전진 혹은 멈춤 수행
 
 ## Car 클래스
 
