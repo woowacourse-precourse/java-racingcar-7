@@ -7,7 +7,6 @@ import racingcar.car.RacingCars;
 import racingcar.io.RacingCarIOHandler;
 
 public class RacingCarGame {
-
     private final RacingCarIOHandler ioHandler = new RacingCarIOHandler();
 
     public void run() {
@@ -21,7 +20,6 @@ public class RacingCarGame {
         List<String> winnersName = racingCars.getWinnersName();
         ioHandler.showWinners(winnersName);
     }
-
 
     private void playRound(int round, RacingCars racingCars) {
         List<RacingCar> cars = racingCars.getCars();

@@ -24,14 +24,14 @@ public class RacingCars {
                 .toList());
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
-    }
-
     private int getMaxMoveCount() {
         return cars.stream()
                 .mapToInt(RacingCar::getMoveCount)
                 .max().orElseThrow(() -> new RuntimeException("최대값을 찾을 수 없습니다."));
 
+    }
+
+    public List<RacingCar> getCars() {
+        return cars;
     }
 }

@@ -17,9 +17,8 @@ public class InputHandler {
     }
 
     private List<String> extractCarNames(String carNamesString) {
-        // 자동차 이름에 대한 검증 로직
         if (carNamesString == null || carNamesString.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값이 없습니다.");
         }
 
         List<String> carNames = Arrays.asList(carNamesString.split(","));
@@ -28,22 +27,21 @@ public class InputHandler {
                 .filter(carName -> carName.isEmpty() || carName.length() > 5)
                 .findAny()
                 .ifPresent(carName -> {
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("올바르지 않은 형식의 값이 존재합니다.");
                 });
 
         return carNames;
     }
 
     private int convertToRound(String roundString) {
-        // 시도할 횟수에 대한 검증 로직
         if (roundString == null || roundString.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 값이 없습니다.");
         }
 
         int round = Integer.parseInt(roundString);
 
         if (round <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("라운드 실행 횟수는 0 이상이어야 합니다.");
         }
         return round;
     }

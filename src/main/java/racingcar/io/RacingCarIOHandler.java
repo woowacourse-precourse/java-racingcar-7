@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.car.RacingCar;
 
 public class RacingCarIOHandler {
-
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
