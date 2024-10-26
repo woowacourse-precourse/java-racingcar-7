@@ -8,10 +8,10 @@ class CarTest {
     @Test
     void car_moving_forward() {
         Car car = new Car("test");
-        assertThat(car.toString()).isEqualTo("test : ");
+        assertThat(car.getPosition()).isEqualTo(0);
         car.go();
-        assertThat(car.toString()).isEqualTo("test : -");
+        assertThat(car.getPosition()).isEqualTo(1);
         car.go();
-        assertThat(car.toString()).isEqualTo("test : --");
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }
