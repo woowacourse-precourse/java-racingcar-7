@@ -11,7 +11,7 @@ public class CarNamesValidator {
     public void validateCarNamesInput(String carNames) {
 
         if (carNames.isEmpty()) {
-            throw new CustomException(ErrorMessage.EMPTY_INPUT);
+            throw new CustomException(ErrorMessage.EMPTY_CAR_NAMES);
         }
         if (!carNames.contains(",")) {
             throw new CustomException(ErrorMessage.COMMA_NOT_EXIST);
