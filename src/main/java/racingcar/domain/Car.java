@@ -7,11 +7,17 @@ public class Car {
     private static final int MAX_BOUND = 9;
     private static final int MOVE_BOUND = 4;
     private final CarName carName;
-    private final int position;
+    private int position;
 
     public Car(CarName carName) {
         this.carName = carName;
         position = 0;
+    }
+
+    private void move() {
+        if (canMove()) {
+            position++;
+        }
     }
 
     private boolean canMove() {
