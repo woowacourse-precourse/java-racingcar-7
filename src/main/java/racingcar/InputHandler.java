@@ -13,6 +13,11 @@ public class InputHandler {
     }
 
     List<String> parseCarNames(String carNames) {
+        if (carNames.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야합니다.");
+        }
         return Arrays.asList(carNames.split(","));
     }
+
+
 }
