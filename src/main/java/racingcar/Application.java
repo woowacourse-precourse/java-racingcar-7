@@ -30,9 +30,24 @@ public class Application {
 
     public void printProgressOfGame(){
         for(var car : cars){
-            System.out.println(car.carName + "-".repeat(car.length));
+            System.out.println(car.carName + " : " + "-".repeat(car.length));
         }
         System.out.print('\n');
+    }
+
+    public void printResultOfGame(ArrayList<String> winners){
+        int max = 0;
+        
+        for(var car : cars){
+            if(car.length > max){
+                winners.clear();
+                winners.add(car.carName);
+                max = car.length;
+            }
+            else if(car.length == max){
+                winners.add(car.carName);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -52,5 +67,8 @@ public class Application {
             racingGame.startGame();
             racingGame.printProgressOfGame();
         }
+        ArrayList<String> winners = new ArrayList<>();
+        racingGame.printResultOfGame(winners);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
