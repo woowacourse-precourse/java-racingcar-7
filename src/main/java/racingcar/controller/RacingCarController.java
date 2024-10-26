@@ -27,8 +27,7 @@ public class RacingCarController {
     }
 
     public List<String> separateName(String carNames){
-        List<String> nameList = new ArrayList<>();
-        nameList.add(Arrays.toString(carNames.split(",")));
+        List<String> nameList = Arrays.asList(carNames.split(","));
         return nameList;
     }
 }
