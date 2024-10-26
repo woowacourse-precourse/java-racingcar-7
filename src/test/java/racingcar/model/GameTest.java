@@ -48,27 +48,27 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("라운드만큼 반복한 뒤에는 isPlaying 이 false 를 반환한다.")
-    void shouldReturnFalseAfterTotalRoundsRepetitions() {
+    @DisplayName("전체 라운드 진행 후 더 이상 남은 라운드가 없음을 확인한다")
+    void returnFalseWhenAllRoundsAreCompleted() {
         // when
         for (int i = 0; i < totalRoundCount; i++) {
             game.playNextRound();
         }
 
         // then
-        assertThat(game.isPlaying()).isFalse();
+        assertThat(game.hasMoreRounds()).isFalse();
     }
 
     @Test
-    @DisplayName("라운드만큼 반복하기 이전에는 isPlaying 이 true 를 반환한다.")
-    void shouldReturnTrueBeforeTotalRoundsRepetitions() {
+    @DisplayName("전체 라운드 진행되지 않은 상태에서 남은 라운드가 있음을 확인한다")
+    void returnTrueWhenRoundsAreNotCompleted() {
         // when
         for (int i = 0; i < totalRoundCount - 1; i++) {
             game.playNextRound();
         }
 
         // then
-        assertThat(game.isPlaying()).isTrue();
+        assertThat(game.hasMoreRounds()).isTrue();
     }
 
     @Test

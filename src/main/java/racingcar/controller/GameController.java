@@ -35,7 +35,7 @@ public class GameController {
     private List<RoundSnapshotDto> playRounds(Game game) {
         List<RoundSnapshotDto> roundSnapshotDtos = new ArrayList<>();
 
-        while (game.isPlaying()) {
+        while (game.hasMoreRounds()) {
             game.playNextRound();
             roundSnapshotDtos.add(new RoundSnapshotDto(game.getCarSnapshots()));
         }

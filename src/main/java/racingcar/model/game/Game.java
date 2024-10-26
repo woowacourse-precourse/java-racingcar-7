@@ -43,7 +43,7 @@ public class Game {
         currentRound++;
     }
 
-    public boolean isPlaying() {
+    public boolean hasMoreRounds() {
         return totalRounds.hasMoreRoundsThan(currentRound);
     }
 
