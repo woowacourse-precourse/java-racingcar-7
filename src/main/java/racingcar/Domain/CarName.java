@@ -7,7 +7,7 @@ public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
 
     private CarName(String value) {
-        validatName(value);
+        validateName(value);
         this.value = value;
     }
 
@@ -26,7 +26,7 @@ public class CarName {
        }
     }
 
-    private void validatName(String name) {
+    private void validateName(String name) {
         validateLength(name);
         validateBlank(name);
     }
