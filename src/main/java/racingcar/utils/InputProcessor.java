@@ -13,9 +13,11 @@ public class InputProcessor {
 
     public List<String> splitCarNames() {
         List<String> result = new ArrayList<>();
-
         for (String carName : carNames.split(",")) {
             carName = carName.trim();
+            if (result.contains(carName)) {
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
             validateCarName(carName);
             result.add(carName);
         }
