@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
+import racingcar.Utilities.Random;
+import racingcar.Utilities.Splitter;
+
 public class Racing implements RacingRule {
     private ArrayList<Car> cars;
 

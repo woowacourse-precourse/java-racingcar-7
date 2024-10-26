@@ -8,7 +8,8 @@ public enum ErrorMessage implements SystemMessage {
   INVALID_CAR_NAME_INCLUDE_SPECIAL_CHAR("자동차 이름에 특수문자가 포함될 수 없습니다."),
   INVALID_CAR_NUMBER("경기에 최소 2대 자동차가 참여할 수 있습니다."),
   INVALID_TURN_NUMBER("자연수가 아닌 숫자입니다."),
-  INVALID_DUPLICATE_CAR_NAME("중복된 자동차 이름 있습니다.");
+  INVALID_DUPLICATE_CAR_NAME("중복된 자동차 이름 있습니다."),
+  INVALID_INT_NUMBER("숫자가 아닌 것이 입력 되었습니다..");
 
   private final String message;
 
