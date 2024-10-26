@@ -41,13 +41,13 @@ public class RacingCarService {
                 .toList();
     }
 
-    public Count<Integer> generateCount(final String value) {
+    public Count generateCount(final String value) {
         return Count.of(value, numberValidator);
     }
 
-    public List<RacingCarResult> getRacingCarResult(final Racing racing, final Count<Integer> count) {
+    public List<RacingCarResult> getRacingCarResult(final Racing racing, final Count count) {
         final List<RacingCarResult> racingCarResult = new ArrayList<>();
-        final Integer value = count.getValue();
+        final int value = count.getValue();
         for (int turn = 0; turn < value; turn++) {
             final List<Car> cars = racing.move();
             racingCarResult.add(RacingCarResult.of(mapToRacingCarProgresses(cars)));
@@ -73,7 +73,7 @@ public class RacingCarService {
     }
 
     private List<String> parseToList(final String values) {
-        final String[] carNames = values.split(",");
+        final String[] carNames = values.split(",", -1);
         return Arrays.stream(carNames)
                 .toList();
     }
