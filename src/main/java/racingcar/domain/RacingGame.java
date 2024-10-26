@@ -26,7 +26,7 @@ public class RacingGame {
 
     private void startGameRound(){
         racingcars.getRacingcars().stream()
-                .forEach(Racingcar::goFoward);
+                .forEach(Racingcar::goForward);
     }
 
     public void printWinner(){

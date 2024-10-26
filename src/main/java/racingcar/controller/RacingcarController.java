@@ -26,8 +26,7 @@ public class RacingcarController {
 
     private List<String> inputRacingcarNames(){
         InputView.printInputRacingcarsMessage();
-        String racingcarNamesString = readLine().trim();
-        return Utils.stringToList(racingcarNamesString);
+        return Utils.stringToList(readLine().trim());
     }
 
     private int inputGameRoundCount(){

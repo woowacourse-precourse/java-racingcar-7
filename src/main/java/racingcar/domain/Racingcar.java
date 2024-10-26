@@ -28,7 +28,7 @@ public class Racingcar {
         return step == winningStep;
     }
 
-    public void goFoward(){
+    public void goForward(){
         if(Utils.getRandomNumber() >= MOVING_FORWARD){
             step++;
         }
