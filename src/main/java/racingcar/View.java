@@ -6,12 +6,29 @@ import java.util.Arrays;
 import java.util.List;
 
 public class View {
-    private List<String> inputCarNames() {
-        String input = Console.readLine().trim();
+    /*
+    클래스 변수, 상수
+
+    인스턴스 변수
+
+    생성자
+     */
+    static final int MAX_NAME = 5;
+
+    private String userInput(){
+        return Console.readLine().trim();
+    }
+    public List<String> inputCarNames(String input) {
         String[] names = input.split(",");
         for (String name : names) {
             // TODO: 자동차 이름 예외처리 5자리 이하
+            isVaildNameMax(name);
         }
         return Arrays.asList(names);
+    }
+    private void isVaildNameMax(String name){
+        if(name.length()>MAX_NAME || name.isEmpty()){
+            throw new IllegalArgumentException("이름은 1글자 이상 5글자 이하로 입력해주세요.");
+        }
     }
 }
