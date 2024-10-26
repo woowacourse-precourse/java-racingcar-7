@@ -21,16 +21,9 @@ public class RacingCar {
         List<Car> cars = Car.toList(carNames);
         RaceJudge raceJudge = RaceJudge.of(cars);
 
-        for (int i = 0; i < racingCount; i++) {
-            cars.forEach(Car::drive);
+        performRace(racingCount, cars);
 
-            raceJudge.determineWinners();
-
-            outputHandler.showRaceResults(cars);
-        }
-
-        List<String> winners = raceJudge.findFinalWinner();
-        outputHandler.showRaceWinner(winners);
+        judgeFinalWinner(raceJudge);
     }
 
     private List<String> getCarNameInputFromUser() {
@@ -41,6 +34,21 @@ public class RacingCar {
     private int getCarNumberInputFromUser() {
         outputHandler.showRacingCarNumberComment();
         return inputHandler.getCarNumberFromUser();
+    }
+
+    private void performRace(int racingCount, List<Car> participants) {
+        outputHandler.showResultComment();
+
+        for (int i = 0; i < racingCount; i++) {
+            participants.forEach(Car::drive);
+
+            outputHandler.showRaceResults(participants);
+        }
+    }
+
+    private void judgeFinalWinner(RaceJudge raceJudge) {
+        List<String> winners = raceJudge.findFinalWinner();
+        outputHandler.showRaceWinner(winners);
     }
 
 }
