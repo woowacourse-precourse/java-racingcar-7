@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import racingcar.utils.RandomNumberGenerator;
 
 public class CarGroup {
 
@@ -15,5 +16,11 @@ public class CarGroup {
         if (this.cars.size() < 2) {
             throw new IllegalArgumentException("자동차 이름은 적어도 두 개 입력해야 합니다.");
         }
+    }
+
+    public void move() {
+        cars.forEach(car -> {
+            car.moveFront(RandomNumberGenerator.generate());
+        });
     }
 }

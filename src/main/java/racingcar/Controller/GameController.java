@@ -1,7 +1,6 @@
 package racingcar.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.CarGroup;
@@ -16,6 +15,10 @@ public class GameController {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(Console.readLine());
         validateTryCount(tryCount);
+
+        for (int i = 0; i < tryCount; i++) {
+            cars.move();
+        }
     }
 
     private void validateTryCount(int tryCount) {
