@@ -162,8 +162,10 @@ Randoms.pickNumberInRange(0, 9);
 
 ## 경주 진행 `progress`
 
-- [x]  `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 랜덤값 추출
+- [x]  `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 랜덤값 추출
 - [x]  추출한 랜덤값이 4 이상일 경우 전진
+- [x]  자동차 객체 생성 기능 추가
+- [ ]  자동차 전진 기능 추가
 
 ## 결과 출력  `output`
 
