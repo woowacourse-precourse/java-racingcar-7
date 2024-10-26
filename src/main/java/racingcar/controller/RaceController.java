@@ -21,9 +21,6 @@ public class RaceController {
     public void start() {
         Cars cars = initializeCars();
         TrialCounts trialCounts = initializeTrialCounts();
-
-        InputView.closeConsole();
-
         Race race = new Race(cars, trialCounts);
         Winner winner = runRace(cars, race);
 

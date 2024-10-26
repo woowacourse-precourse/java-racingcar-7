@@ -10,10 +10,12 @@ public class InputView {
 
     public static String inputTrialCounts() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        String trialCounts = Console.readLine();
+        closeConsole();
+        return trialCounts;
     }
 
-    public static void closeConsole() {
+    private static void closeConsole() {
         Console.close();
     }
 }
