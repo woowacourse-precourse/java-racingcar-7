@@ -23,4 +23,16 @@ public class CarTest {
     void 정지() {
         assertThat(CAR_POBI.move(3)).isEqualTo(new Car("pobi", 0));
     }
+
+    @Test
+    void 더_큰_위치값_구하기() {
+        int position = 4;
+        assertThat(CAR_POBI.getLargerMove(position)).isEqualTo(4);
+    }
+
+    @Test
+    void 같은_위치값인지_판단하기() {
+        assertThat(CAR_POBI.isSameMaxMove(0)).isTrue();
+        assertThat(CAR_POBI.isSameMaxMove(1)).isFalse();
+    }
 }

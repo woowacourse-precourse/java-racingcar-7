@@ -26,6 +26,14 @@ public class Car {
         return this;
     }
 
+    public int getLargerMove(int move) {
+        return Math.max(position, move);
+    }
+
+    public boolean isSameMaxMove(int maxMove) {
+        return position == maxMove;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {

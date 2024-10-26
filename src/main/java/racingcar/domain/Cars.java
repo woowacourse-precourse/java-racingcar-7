@@ -11,6 +11,23 @@ public class Cars {
         this.carList = carList;
     }
 
+    public List<Car> findWinners() {
+        int maxMove = calculateMaxMove();
+        return carList.stream()
+                .filter(car -> car.isSameMaxMove(maxMove))
+                .toList();
+    }
+
+    private int calculateMaxMove() {
+        int maxMove = 0;
+
+        for (Car car : carList) {
+            maxMove = car.getLargerMove(maxMove);
+        }
+
+        return maxMove;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -26,4 +43,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(carList);
     }
+
 }
