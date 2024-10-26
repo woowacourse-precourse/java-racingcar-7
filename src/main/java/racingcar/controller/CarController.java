@@ -37,4 +37,15 @@ public class CarController {
             outputView.printRaceMessage(cars.getRaceInfos());
         }
     }
+
+    public void determineWinner() {
+        String name = cars.getRaceWinner();
+        outputView.printWinnerMessage(name);
+    }
+
+    public void run() {
+        addCars();
+        raceCars();
+        determineWinner();
+    }
 }
