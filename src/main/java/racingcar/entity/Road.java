@@ -4,7 +4,7 @@ public class Road {
 
     private int road;
 
-    private Road (int road){
+    public Road(int road){
         this.road = road;
     }
 

@@ -5,9 +5,9 @@ public class Car {
     private final String name;
     private Road road;
 
-    private Car(String name){
+    public Car(String name){
         this.name=name;
-        this.road=null;
+        this.road=new Road(0);
     }
 
     public String getName() {
