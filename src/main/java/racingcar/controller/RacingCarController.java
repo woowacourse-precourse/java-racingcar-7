@@ -27,7 +27,7 @@ public class RacingCarController {
     }
 
     private void startRace(Cars cars, TryCount tryCount) {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for(int i = 0 ; i < tryCount.getTryCount() ; i++){
             racingCarService.race(cars);
             outputView.printStatus(cars);

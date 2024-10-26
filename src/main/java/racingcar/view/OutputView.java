@@ -16,8 +16,8 @@ public class OutputView {
                     String carName = entry.getKey();
                     Integer distance = entry.getValue();
                     System.out.println(carName + " : " + "-".repeat(distance));
-                    System.out.println();
                 });
+        System.out.println();
     }
 
     //우승자 결과 출력
