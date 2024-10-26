@@ -28,4 +28,21 @@ public class RacingCarGame {
         carList.forEach(c -> System.out.println(c.getName() + ": " + c.getMoveCount()));
         System.out.println();
     }
+
+    public List<String> selectWinners(){
+        int maxMoveCount = 0;
+
+        for(RacingCar car: carList){
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (RacingCar car: carList){
+            if(car.getMoveCount() == maxMoveCount){
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
 }
