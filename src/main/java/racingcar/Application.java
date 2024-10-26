@@ -35,6 +35,9 @@ public class Application {
     }
 
     private static void validateInput(String[] cars) {
+        if (cars.length <= 1) {
+            throw new IllegalArgumentException("자동차 이름을 최소 2개 입력해주세요.");
+        }
         validateCarName(cars);
         checkDuplicateNames(cars);
     }
