@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.validator.GameValidator;
 
 
@@ -19,5 +21,14 @@ public class RacingGame {
         GameValidator.validateName(inputCars);
         GameValidator.validateMoveCount(inputRounds);
 
+        cars = splitCars(inputCars);
+    }
+
+    private List<Car> splitCars(String input) {
+        String[] carNames = input.split(",");
+        return Arrays.stream(carNames)
+                .map(String::trim)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
