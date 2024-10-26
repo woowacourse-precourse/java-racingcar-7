@@ -16,14 +16,7 @@ public class Application {
 
         List<Integer> moves = new ArrayList<>(Collections.nCopies(cars.size(),0));
 
-        System.out.println("실행 결과");
-
-        for (int i = 0; i < count; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                if (determineMovement()) moves.set(j, moves.get(j) + 1);
-            }
-            printMoves(cars, moves);
-        }
+        runRace(count, cars, moves);
 
         printWinner(cars, moves);
     }
@@ -47,6 +40,17 @@ public class Application {
     private static int getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
+    }
+
+    private static void runRace(int count, List<String> cars, List<Integer> moves) {
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < cars.size(); j++) {
+                if (determineMovement()) moves.set(j, moves.get(j) + 1);
+            }
+            printMoves(cars, moves);
+        }
     }
 
     private static boolean determineMovement() {
