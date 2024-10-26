@@ -5,6 +5,7 @@ import static racingcar.exception.ExceptionMessage.CAR_NAME_LENGTH;
 public class CarImpl implements Car{
     private final String carName;
     private int position;
+    public static Integer MOVE_THRESHOLD = 4;
 
     public CarImpl(String carName) {
         this.carName = carName;
@@ -14,7 +15,7 @@ public class CarImpl implements Car{
 
     @Override
     public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             this.position += 1;
         }
     }
@@ -30,8 +31,12 @@ public class CarImpl implements Car{
     }
 
     private void carNameValidation() {
-        if (carName.length() > 5 || carName.isBlank()) {
+        if (isNameSizeOneToFive()) {
             throw new IllegalArgumentException(CAR_NAME_LENGTH);
         }
+    }
+
+    private boolean isNameSizeOneToFive() {
+        return carName.length() > 5 || carName.isBlank();
     }
 }
