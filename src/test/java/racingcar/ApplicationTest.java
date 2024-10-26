@@ -4,11 +4,12 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.ErrorMessage.EMPTY_NAME;
 import static racingcar.ErrorMessage.INVALID_CAR_NAME;
+import static racingcar.ErrorMessage.INVALID_RACE_TIME;
+import static racingcar.ErrorMessage.NEGATIVE_RACE_TIME;
 import static racingcar.ErrorMessage.NO_INPUT;
-import static racingcar.ErrorMessage.NO_NAME;
 import static racingcar.ErrorMessage.TOO_LONG_CAR_NAME;
-import static racingcar.ErrorMessage.WRONG_TRY_COUNT;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -39,12 +40,13 @@ class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @DisplayName("공동 우승자")
-        @CsvSource(value = {"pobi,woni:1:pobi, woni", "a,b,c:1:a, b, c"}, delimiter = ':')
-        void 공동_우승자(String names, String tryCnt, String winner) {
+        @CsvSource(value = {"pobi,woni;1;pobi, woni", "a,b,c;1;a, b, c"}, delimiter = ';')
+        void 공동_우승자(String names, String raceTime, String winners) {
             assertRandomNumberInRangeTest(
                     () -> {
-                        run(names, tryCnt);
-                        assertThat(output()).contains("최종 우승자 : " + winner);
+                        run(names, raceTime);
+                        assertThat(output()).contains(
+                                "최종 우승자 : " + winners); // TODO: RaceOutput에서 "최종 우승자 : " 상수화해서 가져오기
                     },
                     MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
             );
@@ -77,12 +79,12 @@ class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @DisplayName("이름 없음")
-        @ValueSource(strings = {",", "woni,,pobi", "포비,우니,,,"})
+        @ValueSource(strings = {",", "woni,,pobi", "포비,우니,"})
         void 이름_없음(String names) {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(names))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(NO_NAME.getMessage())
+                            .hasMessage(EMPTY_NAME.getMessage())
             );
         }
 
@@ -109,13 +111,24 @@ class ApplicationTest extends NsTest {
         }
 
         @ParameterizedTest
-        @DisplayName("잘못된 횟수")
-        @CsvSource(value = {"no,음수:-1", "names:숫자아님"}, delimiter = ':')
-        void 잘못된_횟수(String names, String tryCount) {
+        @DisplayName("횟수가 숫자 아님")
+        @CsvSource(value = {"문자;숫자가_아님", "names;?!!"}, delimiter = ';')
+        void 횟수가_숫자_아님(String names, String raceTime) {
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(names, tryCount))
+                    assertThatThrownBy(() -> runException(names, raceTime))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(WRONG_TRY_COUNT.getMessage())
+                            .hasMessage(INVALID_RACE_TIME.getMessage())
+            );
+        }
+
+        @ParameterizedTest
+        @DisplayName("음수 횟수")
+        @CsvSource(value = {"음수;-1", "names;-777"}, delimiter = ';')
+        void 음수_횟수(String names, String raceTime) {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(names, raceTime))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(NEGATIVE_RACE_TIME.getMessage())
             );
         }
     }
