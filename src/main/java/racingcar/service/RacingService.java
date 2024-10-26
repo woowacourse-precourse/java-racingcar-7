@@ -33,13 +33,13 @@ public class RacingService {
     }
 
     private Map<String, Integer> getCarMoveSnapshot(List<Car> cars) {
-        Map<String, Integer> move = new HashMap<>();
+        Map<String, Integer> moveSnapshot = new HashMap<>();
         for (Car car : cars) {
             car.move();
-            move.put(car.getName(), car.getDistance());
+            moveSnapshot.put(car.getName(), car.getDistance());
         }
 
-        return move;
+        return moveSnapshot;
     }
 
     private List<String> getWinners(List<Car> cars) {
