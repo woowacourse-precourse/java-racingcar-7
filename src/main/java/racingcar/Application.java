@@ -22,6 +22,10 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
             }
 
+            if (name.length() > 5) {
+            	throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            }
+            
             if (carNames.contains(name)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
