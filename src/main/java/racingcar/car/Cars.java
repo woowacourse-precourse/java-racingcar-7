@@ -108,7 +108,7 @@ public class Cars {
         return String.join(DELIMITER, winnerNames);
     }
 
-    private static void printWinner(String joinedWinnerName) {
+    private void printWinner(String joinedWinnerName) {
         OutputManager.printMessage(WINNER_RESULT_MESSAGE + joinedWinnerName);
     }
 }
