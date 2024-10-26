@@ -23,7 +23,7 @@ public class User {
 
     public static void isCorrectSeparator(String carNames) {
         if (!carNames.contains(",")) {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
+            throw new IllegalArgumentException("이름은 쉼표로 구분되며, 2대 이상부터 경주 가능합니다.");
         }
     }
 
