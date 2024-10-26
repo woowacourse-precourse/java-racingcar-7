@@ -6,22 +6,22 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class NameTest {
+class CarNameTest {
 
-    Name userName;
+    CarName userCarName;
 
     @Test
     @DisplayName("사용자가 정상적인 자동차 이름을 입력했을 경우 예외가 발생하지 않는다.")
     public void 정상적인_자동차_이름을_입력했을_경우() {
         //given
         String name = "povi";
-        userName = new Name(name);
+        userCarName = new CarName(name);
 
         //when
-        String carName = userName.getName();
+        String carName = userCarName.getName();
 
         //then
-        assertThat(carName).isEqualTo(userName.getName());
+        assertThat(carName).isEqualTo(userCarName.getName());
     }
 
     @Test
@@ -31,7 +31,7 @@ class NameTest {
         String name = "povieeee";
 
         //then when
-        Assertions.assertThatThrownBy(() -> new Name(name))
+        Assertions.assertThatThrownBy(() -> new CarName(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

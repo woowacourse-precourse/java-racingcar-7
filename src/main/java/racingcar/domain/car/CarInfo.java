@@ -4,8 +4,8 @@ public class CarInfo {
     private final String name;
     private final int currentPosition;
 
-    public CarInfo(Name name, Position currentPosition) {
-        this.name = name.getName();
+    public CarInfo(CarName carName, Position currentPosition) {
+        this.name = carName.getName();
         this.currentPosition = currentPosition.getPosition();
     }
 
