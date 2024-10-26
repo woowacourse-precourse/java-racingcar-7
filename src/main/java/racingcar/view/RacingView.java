@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import java.util.Map;
 
 public class RacingView {
@@ -22,7 +23,7 @@ public class RacingView {
         System.out.println();
     }
 
-    public void printWinners(String[] winners) {
+    public void printWinners(List<String> winners) {
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
