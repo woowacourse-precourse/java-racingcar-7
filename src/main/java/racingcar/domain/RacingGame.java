@@ -24,15 +24,24 @@ public class RacingGame {
     }
 
     public void run() {
-        String carName = inputView.carName();
-        List<String> carNames = nameParser.carNameParse(carName);
-        cars = new Cars(carNames);
+        createCars();
 
         tryCount = inputView.tryCount();
 
-        RacingGameController controller = new RacingGameController(cars, tryCount, randomDigitGenerator, outputView);
+        RacingGameController controller =
+                new RacingGameController(cars, tryCount, randomDigitGenerator, outputView);
         controller.playGame();
 
+        calculateWinner(controller);
+    }
+
+    private void createCars() {
+        String carName = inputView.carName();
+        List<String> carNames = nameParser.parseCarNames(carName);
+        cars = new Cars(carNames);
+    }
+
+    private void calculateWinner(RacingGameController controller) {
         List<String> winner = controller.getWinner();
         outputView.printWinners(winner);
     }

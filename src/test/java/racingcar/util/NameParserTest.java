@@ -14,7 +14,7 @@ class NameParserTest {
     void 자동차_이름_구분() {
         String text = "pobi,jun,star";
         NameParser nameParser = new NameParser();
-        List<String> carNames = nameParser.carNameParse(text);
+        List<String> carNames = nameParser.parseCarNames(text);
 
         Assertions.assertThat(carNames).contains("pobi");
         Assertions.assertThat(carNames).contains("jun");

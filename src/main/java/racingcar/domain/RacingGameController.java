@@ -25,11 +25,15 @@ public class RacingGameController {
     public void playGame() {
 
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                int digit = rdg.generateDigit();
-                car.moveForwardIfDigitAboveThreshold(digit);
-            }
+            moveCarsForCurrentTry();
             outputView.printPositions(cars);
+        }
+    }
+
+    private void moveCarsForCurrentTry() {
+        for (Car car : cars) {
+            int digit = rdg.generateDigit();
+            car.moveForwardIfDigitAboveThreshold(digit);
         }
     }
 
