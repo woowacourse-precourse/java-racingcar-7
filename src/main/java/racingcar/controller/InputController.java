@@ -19,17 +19,17 @@ public class InputController {
     }
 
     public void validateNameLength(){
-        for(String i : inputModel.getInput()){
+        for(String i : inputModel.splitCarNames()){
             Validate.validateNameLengthWithinLimit(i);
         }
     }
     public void validateNonEmptyNames(){
-        for(String i : inputModel.getInput()){
+        for(String i : inputModel.splitCarNames()){
             Validate.validateNameNotEmpty(i);
         }
     }
     public void addCarsFromInput(Cars cars){
-        for(String i : inputModel.getInput()){
+        for(String i : inputModel.splitCarNames()){
             cars.addCarByName(i);
         }
     }

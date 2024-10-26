@@ -11,7 +11,7 @@ public class InputModel {
         this.carNames = Console.readLine();
         return carNames;
     }
-    public String [] getInput(){
+    public String [] splitCarNames(){
         return carNames.split(",");
     }
     public int getPlayTime(){
