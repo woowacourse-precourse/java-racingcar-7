@@ -1,14 +1,20 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
     private String name;
     private int currentPosition;
 
-    public void moveForward() {
-        currentPosition += 1;
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public void moveForward(int distance) {
+        currentPosition += distance;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCurrentPosition() {
