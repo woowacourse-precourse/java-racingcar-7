@@ -1,8 +1,6 @@
 package racingcar;
 
-public class Car {
-    private final String name;
-
+public record Car(String name) {
     private void validateName(String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
@@ -11,13 +9,8 @@ public class Car {
         }
     }
 
-    public Car(String name) {
+    public Car {
         name = name.strip();
         validateName(name);
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 }

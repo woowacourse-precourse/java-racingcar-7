@@ -13,7 +13,7 @@ public class RacingOutputView {
         for (int i = 0; i < round.getMoveCount(); i++) {
             for (Car car : roundResult.keySet()) {
                 int movedCount = roundResult.get(car);
-                System.out.println(car.getName() + " : " + "-".repeat(movedCount));
+                System.out.println(car.name() + " : " + "-".repeat(movedCount));
             }
         }
     }
@@ -25,7 +25,7 @@ public class RacingOutputView {
         List<String> winners = new ArrayList<>();
         for (Car car : roundResult.keySet()) {
             if (roundResult.get(car).equals(maxMovedCount)) {
-                winners.add(car.getName());
+                winners.add(car.name());
             }
         }
 
