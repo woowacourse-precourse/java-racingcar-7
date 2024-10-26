@@ -13,10 +13,10 @@ public class GameCarProcess {
     }
 
     void gameProgress() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
             gameCarProgress();
-            System.out.println("\n");
+            System.out.println();
         }
         findWinner();
     }
