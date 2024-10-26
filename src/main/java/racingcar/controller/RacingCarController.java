@@ -15,5 +15,6 @@ public class RacingCarController {
         OutputView.requestCarNames();
         String inputCarNames = InputView.readCarNames();
         carService.createCarList(inputCarNames);
+        int inputAttemptCount = InputView.readAttemptCount();
     }
 }
