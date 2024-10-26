@@ -25,4 +25,21 @@ public class RaceRecordTest {
 
         assertEquals(afterCarNames, beforeCarNames, "RaceRecord에 자동차 리스트가 올바르게 저장되지 않았슴니다.");
     }
+
+    @Test
+    @DisplayName("자동차의 전진기록이 올바르게 저장되는 확인하는 테스트")
+    void updateCarRecordTest() {
+        List<String> carNames = new ArrayList<>();
+        carNames.add("benz");
+        carNames.add("hyd");
+        carNames.add("kia");
+        RaceRecord raceRecord = new RaceRecord(carNames);
+
+        int moveCount = 1;
+        Car updateCar = raceRecord.getOneCar("benz");
+        raceRecord.updateCarRecord(updateCar, moveCount);
+
+        int afterMoveCount = raceRecord.getOneCarRecord(updateCar.getName());
+        assertEquals(afterMoveCount, moveCount, "raceResult가 올바르게 업데이트 되지 않았습니다.");
+    }
 }
