@@ -2,6 +2,7 @@ package racingcar.controller;
 
 
 import static racingcar.exception.ExceptionMessage.INVALID_INPUT_NUMBER;
+import static racingcar.exception.ExceptionMessage.USER_INPUT_NOT_NULL;
 
 import java.util.List;
 import racingcar.domain.Car;
@@ -27,7 +28,9 @@ public class RacingController {
     }
 
     public void start() {
-        carManager.setupCarsFromUserInput(InputView.getInputCarString());
+        String userInput = InputView.getInputCarString();
+        verifyUserInput(userInput);
+        carManager.setupCarsFromUserInput(userInput);
         executeRaceRounds();
         announceWinner();
     }
@@ -58,6 +61,12 @@ public class RacingController {
     private void verifyRepeatCount(String userInput) {
         if (!userInput.matches(CHECK_NUMBER_REGEX)) {
             throw new IllegalArgumentException(INVALID_INPUT_NUMBER.getMessage());
+        }
+    }
+
+    private void verifyUserInput(String userInput){
+        if (userInput.isBlank() || userInput == null) {
+            throw new IllegalArgumentException(USER_INPUT_NOT_NULL.getMessage());
         }
     }
 
