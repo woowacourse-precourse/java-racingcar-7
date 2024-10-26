@@ -24,6 +24,15 @@ public class RacingGame {
         this.totalAttempts = totalAttempts;
     }
 
+    public void start(){
+        for(int i = 0; i < totalAttempts; i++){
+            for(Car car : cars){
+                car.move();
+            }
+            printResult();
+        }
+    }
+
     public void printResult(){
         for(Car car : cars){
             System.out.println(car.getName() +": "+ car.getPosition());
