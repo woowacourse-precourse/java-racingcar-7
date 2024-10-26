@@ -14,8 +14,12 @@ public class Application {
 
         // 시도 횟수 입력
         System.out.println("시도할 회수는 몇회인가요?");
-        int attempts = Integer.parseInt(Console.readLine());
-        racingGame.inputAttempts(attempts);
+        try {
+            int attempts = Integer.parseInt(Console.readLine());
+            racingGame.inputAttempts(attempts);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
 
         // 경주 시작
         racingGame.start();
