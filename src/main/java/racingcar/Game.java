@@ -2,8 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,7 +56,7 @@ public class Game {
         //TODO: 최종 결과
         //map 안의 value 체크
         //value가 제일 높은거 저장, 출력
-        Set<String> winners=new HashSet<>();
+        List<String> winners=new ArrayList<>();
         playerScoreBoard.forEach((player,score)->{
             int maxScore=0;
             //최고점 갱신
@@ -68,7 +70,8 @@ public class Game {
                 winners.add(player);
             }
         });
-        System.out.println();
+
+        System.out.println("최종 우승자 : "+String.join(", ",winners));
     }
 
     private void printCurResult() {
