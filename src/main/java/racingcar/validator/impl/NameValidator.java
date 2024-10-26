@@ -12,25 +12,25 @@ public class NameValidator implements Validator {
             throw new IllegalArgumentException("자동차의 이름을 입력해주십시오.");
         }
 
-        if (!checkDuplicate(names)) {
+        if (hasDuplicate(names)) {
             throw new IllegalArgumentException("중복된 이름이 입력되었습니다. 서로 다른 이름을 입력해주십시오.");
         }
 
-        if (!checkLength(names)) {
+        if (isMoreThan5Letters(names)) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하로 입력해주십시오.");
         }
     }
 
-    private boolean checkDuplicate(List<String> names) {
+    private boolean hasDuplicate(List<String> names) {
         long before = names.size();
         long after = names.stream().distinct().count();
 
-        return before == after;
+        return before != after;
     }
 
-    private boolean checkLength(List<String> names) {
+    private boolean isMoreThan5Letters(List<String> names) {
         boolean isValid = names.stream()
-                .allMatch(name -> name.length() <= 5);
+                .anyMatch(name -> name.length() > 5);
 
         return isValid;
     }
