@@ -28,4 +28,13 @@ class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[빈 값]");
     }
+
+    @Test
+    void 길이_제한_초과_자동차_이름_입력() {
+        String input = "pobi,ckdhkdwns,jun";
+
+        assertThatThrownBy(() -> inputView.parseCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[길이 제한]");
+    }
 }
