@@ -1,7 +1,6 @@
 package racingcar.io;
 
 import java.util.List;
-import racingcar.car.RacingCar;
 
 public class RacingCarIOHandler {
     private final InputHandler inputHandler = new InputHandler();
@@ -17,16 +16,8 @@ public class RacingCarIOHandler {
         return inputHandler.getRound();
     }
 
-    public void showExecutionResultMessage() {
-        outputHandler.showExecutionResultMessage();
-    }
-
-    public void showRacingCarsProgress(List<RacingCar> cars) {
-        outputHandler.showRacingCarsProgress(cars);
-    }
-
-    public void showWinners(List<String> winners) {
-        outputHandler.showWinners(winners);
+    public void showGameResult(String gameResult) {
+        outputHandler.showGameResult(gameResult);
     }
 
 }
