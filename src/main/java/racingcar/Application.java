@@ -13,7 +13,11 @@ public class Application {
         return input.split(",");
     }
 
-
+    public void setCar(String[] carNames) {
+        for (String name : carNames) {
+            cars.add(new RacingCar(name.trim())); // trim()으로 공백 제거
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -22,5 +26,6 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();  //사용자 입력
         String[] carNames = racingGame.setCarName(carNameInput);
+        racingGame.setCar(carNames);
     }
 }
