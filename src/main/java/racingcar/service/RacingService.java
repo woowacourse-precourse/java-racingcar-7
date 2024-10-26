@@ -31,11 +31,11 @@ public class RacingService {
                 bestScore = distance.get(i);
             }
         }
+        winners.add(carList.get(carIdx));
 
-        for(int cavity : distance){
-            int idx = distance.indexOf(cavity);
-            if(cavity == bestScore){
-                winners.add(carList.get(idx));
+        for(int i=0; i<distance.size(); i++){
+            if((distance.get(i) == bestScore) && (i != carIdx)){
+                winners.add(carList.get(i));
             }
         }
         return winners;
