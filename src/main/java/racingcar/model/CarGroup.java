@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import java.util.Arrays;
 import java.util.List;
 import racingcar.utils.RandomNumberGenerator;
 
@@ -8,7 +7,7 @@ public class CarGroup {
 
     private final List<Car> cars;
 
-    public CarGroup(String carNames) {
+    public CarGroup(List<String> carNames) {
         this.cars = getCars(carNames);
         validateSize();
     }
@@ -39,9 +38,8 @@ public class CarGroup {
         });
     }
 
-    private List<Car> getCars(String carNames) {
-        return Arrays.stream(carNames.split(",")).toList()
-                .stream().map(Car::new).toList();
+    private List<Car> getCars(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
     }
 
     private void validateSize() {
