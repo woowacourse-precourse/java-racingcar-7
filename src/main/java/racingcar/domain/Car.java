@@ -44,4 +44,8 @@ public class Car {
     public String name() {
         return name;
     }
+
+    public int progress() {
+        return progress;
+    }
 }

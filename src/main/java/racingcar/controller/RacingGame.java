@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Rounds;
 import racingcar.view.InputView;
@@ -14,6 +15,7 @@ public class RacingGame {
     public void doGame() {
         Cars cars = makeCars(inputView.askCarName());
         Rounds rounds = new Rounds(inputView.askNumberOfRounds());
+        outputView.startRacePhase();
         for (int i = 0; i < rounds.rounds(); i++) {
             doRace(cars);
         }
@@ -27,9 +29,11 @@ public class RacingGame {
 
     public void doRace(Cars cars) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.getCar(i).randomGo();
-            outputView.printProgress();
+            Car racer = cars.getCar(i);
+            racer.randomGo();
+            outputView.printProgress(racer.name(), racer.progress());
         }
+        outputView.printBlank();
     }
 }
 
