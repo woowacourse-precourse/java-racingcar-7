@@ -1,6 +1,7 @@
 package racingcar.unittest;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +21,18 @@ class ValidatorTest extends NsTest {
                 .doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("자동차 이름이 빈 문자열인 경우 예외 발생 테스트")
+    void validateCarNames_withEmptyName_shouldThrowException() {
+        // Given
+        String[] names = {""};
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateCarNames(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
+    }
+    
     @Override
     public void runMain() {
     }
