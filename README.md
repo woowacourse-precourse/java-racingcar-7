@@ -2,7 +2,7 @@
 
 # controller
 ## 1) GameController 
-* splitCarNames //자동차 이름 String을 list로 바꾸기
+* splitCarNames //자동차 이름 문자열 자르기
 * createCars //Car 객체 생성하기, Car객체를 Cars로 묶기
 * RunningGame //n번 게임 실행시키기
 * outputResult //결과 출력하기
