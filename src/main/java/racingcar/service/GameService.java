@@ -8,8 +8,8 @@ import racingcar.view.GameView;
 public class GameService {
 
     private Input input;
-    private Game game;
-    private int max;
+    private static Game game;
+    private static int max;
 
     public GameService(Input input, Game game) {
         this.input = input;
@@ -30,7 +30,7 @@ public class GameService {
         }
     }
 
-    public String[] runCarGame() {
+    public String runCarGame() {
         StringBuilder sb = new StringBuilder();
         for (String car : game.getCars().keySet()) {
 
@@ -49,6 +49,17 @@ public class GameService {
             sb.append('\n');
         }
 
-        return new String[]{sb.toString(), String.valueOf(max)};
+        return sb.toString();
+    }
+
+    public static String getWinner() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자 : ");
+        for (String car : game.getCars().keySet()) {
+            if (game.getCars().get(car) == max) {
+                sb.append(car).append(", ");
+            }
+        }
+        return sb.substring(0, sb.toString().length() - 2);
     }
 }

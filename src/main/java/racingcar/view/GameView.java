@@ -17,10 +17,9 @@ public class GameView {
         System.out.println("실행 결과");
 
         for (int i = 0; i < count; i++) {
-            System.out.println(gameService.runCarGame()[0]);
+            System.out.println(gameService.runCarGame());
         }
 
-        max = Integer.parseInt(gameService.runCarGame()[1]);
-        System.out.println(max);
+        System.out.println(gameService.getWinner());
     }
 }
