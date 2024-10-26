@@ -33,7 +33,7 @@
     - [x] getName 테스트 코드 작성
 - [ ] move 메소드 구현
 - [x] increaseDistance, getDistance 메소드 구현
-- [ ] getName 메소드 구현
+- [x] getName 메소드 구현
 
 ## Util Class
 
