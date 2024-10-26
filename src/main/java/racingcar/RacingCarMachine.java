@@ -14,15 +14,48 @@ public class RacingCarMachine {
 	private Map<String, String> carForward = new LinkedHashMap<>();
 	private List<String> cars = new ArrayList<>();
 	private List<String> winner = new ArrayList<>();
+	private int tryNumber;
 
 	public void run() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
 		cars = Arrays.asList(Console.readLine().split(","));
 
+		// 1. 이름 입력 시 이름을 입력하지 않은 경우
+		if(cars.isEmpty()){
+			throw new IllegalArgumentException("이름을 입력해 주세요.");
+		}
+
+		// 2. 이름 입력 시 5자 이상인 경우
+		for (String car : cars) {
+			if (car.length() > 5){
+				throw new IllegalArgumentException("5자 미만의 이름을 입력해 주세요.");
+			}
+		}
+
+		// 3. 이름 입력 시 쉼표(,)가 맨 앞에 있거나 맨 뒤에 존재하는 경우
+		if(cars.get(0).startsWith(",") || cars.get(cars.size()-1).endsWith(",")){
+			throw new IllegalArgumentException("쉼표(,)로 시작하거나 끝날 수 없습니다.");
+		}
+
 		System.out.println("시도할 횟수는 몇 회인가요?");
 
-		int tryNumber = Integer.parseInt(Console.readLine());
+		try {
+			tryNumber = Integer.parseInt(Console.readLine());
+
+			// 6. 시도 횟수로 0이 입력된 경우
+			if(tryNumber == 0){
+				throw new IllegalArgumentException("게임을 실행할 수 없습니다.");
+			}
+
+			// 4. 시도 횟수로 음수가 입력된 경우
+			if (tryNumber < 0){
+				throw new IllegalArgumentException("시도 횟수는 양수를 입력해주세요.");
+			}
+		// 5. 시도 횟수로 숫자가 아닌 값이 입력된 경우
+		}catch (NumberFormatException e){
+			throw new IllegalArgumentException("시도 횟수는 문자를 입력할 수 없습니다.");
+		}
 
 		// 1명이 입력된 경우 바로 최종 우승자 출력
 		if (cars.size() == 1){
@@ -48,6 +81,11 @@ public class RacingCarMachine {
 			}
 
 			System.out.println();
+		}
+
+		// 7. 시도 횟수로 1이 입력 되었을 때 모든 차가 출발하지 않은 경우
+		if(tryNumber == 1 && carForward.values().stream().allMatch(length -> length.equals(""))){
+			throw new IllegalArgumentException("전진한 차가 없어서 우승자가 없습니다.");
 		}
 
 		// 가장 멀리간 자동차의 길이 구함
