@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     String name;
     int mileage;
@@ -12,4 +14,11 @@ public class Car {
     public int getMileage() {
         return mileage;
     }
+
+    public void move(){
+        if(Randoms.pickNumberInRange(0,9) >= 4){
+            mileage++;
+        }
+    }
+
 }
