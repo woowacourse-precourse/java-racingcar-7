@@ -17,7 +17,8 @@ public class CarRacingGame {
     public void run() {
         String carNames = InputView.inputCarNames();
         createCarsFromNames(carNames);
-        String numberOfAttempts = InputView.inputNumberOfAttempts();
+        numberOfAttempts = InputView.inputNumberOfAttempts();
+        startRace(numberOfAttempts);
     }
 
     private void createCarsFromNames(String carNameInput) {
@@ -44,17 +45,33 @@ public class CarRacingGame {
                 carName = carName + "(" + count + ")";
         }).toList();
     }
+    private void startRace(int numberOfAttempts) {
+        System.out.println("실행 결과");
+        for(int i=0; i<numberOfAttempts; i++) {
+            performRound();
+        }
+        List<Car> winners = findWinners(carList);
+        outputView.printWinners(winners);
+    }
+
+    private void performRound() {
+        for(Car car : carList) {
+            car.move();
+            outputView.printResult(car);
+        }
+        System.out.println();
+    }
+    private List<Car> findWinners(List<Car> carList) {
+        int maxPosition = carList.stream().mapToInt(Car::getPosition).max().getAsInt();
+        List<Car> winners = carList.stream().filter(car -> car.getPosition()==maxPosition)
+                .collect(Collectors.toList());
+        return winners;
+    }
 
     private void validateCarName(String carName) {
         if(!CAR_NAME_PATTERN.matcher(carName).matches()) {
             throw new IllegalArgumentException("자동차 이름 형식이 일치하지 않습니다.");
         }
     }
-
-    private void validateNumberOfAttempts(String numberOfAttempts) {
-
-
-    }
-
 
 }
