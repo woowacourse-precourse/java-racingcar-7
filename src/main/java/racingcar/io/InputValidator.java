@@ -21,7 +21,7 @@ public class InputValidator {
     }
 
     public void validateNumberOfRound(int numberOfRounds) {
-        if (isPositiveRoundNumber(numberOfRounds)) {
+        if (!isPositiveRoundNumber(numberOfRounds)) {
             throw new IllegalArgumentException(INVALID_ROUNDS_INPUT.getMessage());
         }
     }
