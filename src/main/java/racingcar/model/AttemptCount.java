@@ -24,4 +24,8 @@ public class AttemptCount {
     public void decrease() {
         count--;
     }
+
+    public boolean canRace() {
+        return count >= MIN_ATTEMPT_COUNT;
+    }
 }

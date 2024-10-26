@@ -16,6 +16,10 @@ public class RacingGame {
         attemptCount.decrease();
     }
 
+    public boolean canRace(){
+        return attemptCount.canRace();
+    }
+
     public Map<String, Integer> findCurrentPosition() {
         return raceCars.getCarPositions();
     }
