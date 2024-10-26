@@ -206,6 +206,15 @@ class GameUtilTest {
 
     }
 
+    @ParameterizedTest
+    @MethodSource("provideTwoWinnerList")
+    @DisplayName("우승자 명단 리턴 함수가 기존 테스트 코드처럼 원하는 우승자 양식을 리턴해야함")
+    void 우승자_함수_적용_테스트(List<CarVO> carList) {
+        String winnerName = GameUtil.getWinnerName(carList);
+
+        assertThat(winnerName).isEqualTo("최종 우승자 : woo, hong");
+    }
+
 
     // 매개변수 제공 메서드
     static Stream<Arguments> provideCarNamesAndExecuteNumbers() {
