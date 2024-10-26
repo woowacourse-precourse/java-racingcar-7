@@ -3,15 +3,13 @@ package racingcar.domain.car;
 public class Car {
 
     private final String name;
-    private final ForwardPolicy policy;
     private int position = 0;
 
-    public Car(String name, ForwardPolicy policy) {
+    public Car(String name) {
         this.name = name;
-        this.policy = policy;
     }
 
-    public void tryForward() {
+    public void forward(ForwardPolicy policy) {
         if (policy.forward()) {
             position++;
         }

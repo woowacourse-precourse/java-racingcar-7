@@ -10,10 +10,10 @@ class CarTest {
     public void 전진하기로_결정되면_전진한다() throws Exception {
         //given
         ForwardPolicy testPolicy = () -> true;
-        Car car = new Car("A", testPolicy);
+        Car car = new Car("A");
 
         //when
-        car.tryForward();
+        car.forward(testPolicy);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -23,10 +23,10 @@ class CarTest {
     public void 전진하지_않기로_결정되면_전진하지_않는다() throws Exception {
         //given
         ForwardPolicy testPolicy = () -> false;
-        Car car = new Car("A", testPolicy);
+        Car car = new Car("A");
 
         //when
-        car.tryForward();
+        car.forward(testPolicy);
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
