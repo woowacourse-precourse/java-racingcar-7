@@ -34,6 +34,47 @@ public class Application {
         }
     }
 
+    // 시도할 횟수가 숫자 형식, 양수인지 확인하는 메서드
+    private static void checkAttemptCount(String input2) {
+        if (!input2.matches("^[1-9]\\d*$")) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
+
+    // 자동차(참가자) 수가 2대 미만인지 확인하는 메서드
+    private static void checkParticipantSize(List<Participant> participantList) {
+        if (participantList.size() < 2) {
+            throw new IllegalArgumentException("자동차 경주는 2대 이상부터 가능합니다.");
+        }
+    }
+
+    // 사용자 입력을 사용해 참가자 객체를 생성하고 참가자 리스트에 객체를 저장하는 메서드
+    private static void createParticipantList(List<String> inputList, List<Participant> participantList) {
+        for (String carName : inputList) {
+            Participant participant = new Participant(carName);
+            participantList.add(participant);
+        }
+    }
+
+    // 자동차 이름이 6자 이상인지 확인하는 메서드
+    private static void checkCarNameLength(List<String> inputList) {
+        ListIterator<String> iterator = inputList.listIterator();
+
+        while (iterator.hasNext()) {
+            String str = iterator.next();
+
+            if (str.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+        }
+    }
+
+    private static void checkRedundancy(List<String> inputList) {
+        if (inputList.size() != inputList.stream().distinct().count()) {
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+        }
+    }
+
     // 사용자 입력에서 빈 문자열을 제거 하고 특수 문자가 있는지 확인하는 메서드
     private static void validateInput(List inputList) {
         ListIterator<String> iterator = inputList.listIterator();
@@ -51,47 +92,6 @@ public class Application {
             if (str.matches(".*[`~!@#$%^&*()\\-_=+{}\\[\\];:'\",.<>/?|\\\\].*")) {
                 throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
             }
-        }
-    }
-
-    private static void checkRedundancy(List<String> inputList) {
-        if (inputList.size() != inputList.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
-        }
-    }
-
-    // 자동차 이름이 6자 이상인지 확인하는 메서드
-    private static void checkCarNameLength(List<String> inputList) {
-        ListIterator<String> iterator = inputList.listIterator();
-
-        while (iterator.hasNext()) {
-            String str = iterator.next();
-
-            if (str.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            }
-        }
-    }
-
-    // 사용자 입력을 사용해 참가자 객체를 생성하고 참가자 리스트에 객체를 저장하는 메서드
-    private static void createParticipantList(List<String> inputList, List<Participant> participantList) {
-        for (String carName : inputList) {
-            Participant participant = new Participant(carName);
-            participantList.add(participant);
-        }
-    }
-
-    // 자동차(참가자) 수가 2대 미만인지 확인하는 메서드
-    private static void checkParticipantSize(List<Participant> participantList) {
-        if (participantList.size() < 2) {
-            throw new IllegalArgumentException("자동차 경주는 2대 이상부터 가능합니다.");
-        }
-    }
-
-    // 시도할 횟수가 숫자 형식, 양수인지 확인하는 메서드
-    private static void checkAttemptCount(String input2) {
-        if (!input2.matches("^[1-9]\\d*$")) {
-            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
     }
 }
