@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public class RaceCar {
+class RaceCar {
     private static final String ERROR_CAR_NAME_RANGE = "자동차 이름은 1~5자까지 허용합니다.";
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
