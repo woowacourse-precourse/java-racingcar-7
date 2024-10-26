@@ -4,6 +4,7 @@ import racingcar.io.ConsoleInputHandler;
 import racingcar.io.ConsoleOutputHandler;
 import racingcar.validator.CarNameListValidator;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -22,6 +23,11 @@ public class CarRacingSimulation {
         consoleOutputHandler.attemptCountMessage(); // "시도 횟수 입력 안내" 메세지 출력
         int attemptCount = consoleInputHandler.getUserInputAttemptCount(); // 유저 입력 받기 (시도 횟수)
         racingStart(carList,attemptCount);
+
+        //TODO 우승자(가장 많이 전진한 자동차) 찾아서 List<String> 으로 이름 받기
+        List<String> winnerList = new ArrayList<>(Arrays.asList("John","Mike")); // winnerList 목업 데이터로 선언
+
+        consoleOutputHandler.finalWinnerMessage(winnerList); // 최종 우승자 출력
     }
 
     private List<Car> createCarList(List<String> carNameList) {
