@@ -17,17 +17,23 @@ public class RacingGame {
 
     public void start() {
         OutputView.printResult();
-        int currentCount = 0;
-        while (loopCount > currentCount) {
-            cars.forEach(car -> {
-                int random = Randoms.pickNumberInRange(0, 9);
-                if (random > 3) {
-                    car.move();
-                }
-            });
-            OutputView.printCarStatus(cars);
-            OutputView.printBlankLine();
-            currentCount++;
+        for (int currentCount = 0; currentCount < loopCount; currentCount++) {
+            playRound();
+            printRoundResult();
         }
+    }
+
+    private void playRound() {
+        cars.forEach(car -> {
+            int random = Randoms.pickNumberInRange(0, 9);
+            if (random > 3) {
+                car.move();
+            }
+        });
+    }
+
+    private void printRoundResult() {
+        OutputView.printCarStatus(cars);
+        OutputView.printBlankLine();
     }
 }

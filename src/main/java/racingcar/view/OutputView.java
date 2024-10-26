@@ -7,9 +7,7 @@ import java.util.List;
 public abstract class OutputView {
 
     public static void printCarStatus(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.toString());
-        }
+        cars.forEach(System.out::println);
     }
 
     public static void printResult() {
