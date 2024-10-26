@@ -19,6 +19,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@DisplayName("경주 테스트")
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
@@ -38,10 +39,29 @@ class ApplicationTest extends NsTest {
             );
         }
 
+        @Test
+        @DisplayName("과정 확인")
+        void 과정_확인() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("fox,russ,jokic", "3");
+                        assertThat(output()).contains(
+                                "fox : -", "russ : ", "jokic : ",
+                                "fox : --", "russ : -", "jokic : ",
+                                "fox : ---", "russ : --", "jokic : -",
+                                "최종 우승자 : fox"
+                        );
+                    },
+                    MOVING_FORWARD, STOP, STOP,
+                    MOVING_FORWARD, MOVING_FORWARD, STOP,
+                    MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            );
+        }
+
         @ParameterizedTest
-        @DisplayName("공동 우승자")
-        @CsvSource(value = {"pobi,woni;1;pobi, woni", "a,b,c;1;a, b, c"}, delimiter = ';')
-        void 공동_우승자(String names, String raceTime, String winners) {
+        @DisplayName("공동 우승")
+        @CsvSource(value = {"pobi,woni#1#pobi, woni", "a,b,c#1#a, b, c"}, delimiter = '#')
+        void 공동_우승(String names, String raceTime, String winners) {
             assertRandomNumberInRangeTest(
                     () -> {
                         run(names, raceTime);
@@ -49,6 +69,32 @@ class ApplicationTest extends NsTest {
                                 "최종 우승자 : " + winners); // TODO: RaceOutput에서 "최종 우승자 : " 상수화해서 가져오기
                     },
                     MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            );
+        }
+
+        @ParameterizedTest
+        @DisplayName("모두 우승")
+        @CsvSource(value = {"every,body#0#every, body", "a,b,c#3#a, b, c"}, delimiter = '#')
+        void 모두_우승(String names, String raceTime, String winners) {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run(names, raceTime);
+                        assertThat(output()).contains("최종 우승자 : " + winners);
+                    },
+                    MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+            );
+        }
+
+        @ParameterizedTest
+        @DisplayName("단독_우승")
+        @CsvSource(value = {"씨비스킷,제독#1#씨비스킷", "맥퀸,킹,힉스#2#맥퀸"}, delimiter = '#')
+        void 단독_우승(String names, String raceTime, String winners) {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run(names, raceTime);
+                        assertThat(output()).contains("최종 우승자 : " + winners);
+                    },
+                    MOVING_FORWARD, STOP, STOP, STOP, STOP, STOP
             );
         }
     }
@@ -112,7 +158,7 @@ class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @DisplayName("횟수가 숫자 아님")
-        @CsvSource(value = {"문자;숫자가_아님", "names;?!!"}, delimiter = ';')
+        @CsvSource(value = {"문자#숫자가_아님", "names#?!!"}, delimiter = '#')
         void 횟수가_숫자_아님(String names, String raceTime) {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(names, raceTime))
@@ -123,7 +169,7 @@ class ApplicationTest extends NsTest {
 
         @ParameterizedTest
         @DisplayName("음수 횟수")
-        @CsvSource(value = {"음수;-1", "names;-777"}, delimiter = ';')
+        @CsvSource(value = {"음수#-1", "names#-777"}, delimiter = '#')
         void 음수_횟수(String names, String raceTime) {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(names, raceTime))
