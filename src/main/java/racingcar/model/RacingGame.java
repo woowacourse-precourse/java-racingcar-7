@@ -34,4 +34,7 @@ public class RacingGame {
                 .max()
                 .orElse(0);
     }
+    public boolean isWinner(Car car, int maxDashes){
+        return car.getDashCount()==maxDashes;
+    }
 }
