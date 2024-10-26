@@ -120,13 +120,7 @@ public class Application {
     }
 
     public static void printWinners(List<String> winnerList) {
-        String notice = "최종 우승자 : ";
-        for (int i = 0; i < winnerList.size(); i++) {
-            notice += winnerList.get(i);
-            notice += SPLITTER;
-            notice += " ";
-        }
-        notice = notice.substring(0, notice.length() - 2);
+        String notice = "최종 우승자 : " + String.join(SPLITTER + " ", winnerList);
         System.out.println(notice);
     }
 }
