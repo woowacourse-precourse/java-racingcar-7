@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.generator.NumberGenerator;
+import racingcar.utils.generator.NumberGenerator;
 
 public class RaceRule {
-    private final NumberGenerator numberGenerator;
     private static final int THRESHOLD = 4;
+    private final NumberGenerator numberGenerator;
 
     public RaceRule(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;

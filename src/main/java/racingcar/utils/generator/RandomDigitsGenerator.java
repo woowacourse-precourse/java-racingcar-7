@@ -1,8 +1,8 @@
-package racingcar.domain.generator;
+package racingcar.utils.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGenerator implements NumberGenerator {
+public class RandomDigitsGenerator implements NumberGenerator {
     static final int MIN = 0;
     static final int MAX = 9;
 
