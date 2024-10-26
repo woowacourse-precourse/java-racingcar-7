@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.view.View;
 
@@ -10,6 +12,7 @@ public class Controller {
         int tryCount = View.displayTryCountInputPrompt();
 
         startRace(cars, tryCount);
+        endRace(cars);
 
 
     }
@@ -27,9 +30,12 @@ public class Controller {
         for (int count = 0; count < tryCount; count++) {
             cars.moveCars();
             View.printMoveResult(cars);
-
-
         }
+    }
+
+
+    private void endRace(Cars cars) {
+        List<Car> winners = cars.findWinnerCars();
 
     }
 

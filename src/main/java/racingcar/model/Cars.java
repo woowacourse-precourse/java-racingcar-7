@@ -25,9 +25,22 @@ public class Cars {
     public void moveCars() {
         for (Car car : carList) {
             car.move();
-
         }
+    }
 
+    public void findWinnerCars() {
+        int topPosition = findTopPosition();
+
+    }
+
+    private int findTopPosition() {
+        int maxPosition = 0;
+        for (Car car : carList) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 
 
