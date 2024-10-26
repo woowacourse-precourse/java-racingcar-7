@@ -16,6 +16,14 @@ public class Cars {
 
     public void racing(int moveNum) {
         IntStream.range(0, moveNum)
-                .forEach(i -> cars.forEach(Car::moveOrStop));
+                .forEach(i -> {
+                    cars.forEach(Car::moveOrStop);
+                    printStatus();
+                });
+    }
+
+    private void printStatus() {
+        cars.forEach(Car::getStatus);
+        System.out.println();
     }
 }

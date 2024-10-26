@@ -16,4 +16,8 @@ public class Car {
             advanceNum++;
         }
     }
+
+    public void getStatus() {
+        System.out.println(name + " : " + "-".repeat(advanceNum));
+    }
 }

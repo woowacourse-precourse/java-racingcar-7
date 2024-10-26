@@ -18,6 +18,7 @@ public class RacingController {
         String[] names = nameRequestHandler.getNames();
         int moveNum = numberRequestHandler.getNumber();
         Cars cars = new Cars(names);
+        System.out.println("\n실행결과");
         cars.racing(moveNum);
     }
 }
