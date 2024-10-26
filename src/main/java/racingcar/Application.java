@@ -1,10 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.car.Car;
 import racingcar.car.RacingCar;
 import racingcar.race.Race;
-import racingcar.race.RandomRaceMoveStrategy;
+import racingcar.race.ThresholdMoveStrategy;
 import racingcar.separator.Separator;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Application {
         int n = Integer.parseInt(Console.readLine());
 
         List<Car> cars = stringToRacingCars(",", input);
-        Race race = new Race(cars, new RandomRaceMoveStrategy());
+        Race race = new Race(cars, new ThresholdMoveStrategy(() -> Randoms.pickNumberInRange(0, 9), 4));
 
         System.out.println("실행 결과");
         race.start(n);
