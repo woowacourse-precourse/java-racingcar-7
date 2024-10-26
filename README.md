@@ -6,7 +6,7 @@
     확장성을 생각하면 (현 미션에서는 과하다고 생각이 들긴 하는데) '대회' Class를 만들어 참가 자동차를 필드로 가지는 구조로 만들면 좋을것 같다고 생각한다.
 
 ## 🚀기능구현 목록
-- [ ] Car, IO, Challenge 클래스 만들고 필드 작성하기
+- [O] Car, IO, Challenge 클래스 만들고 필드 작성하기
     - Car : name, distance
     - Challenge : Car을 ArrayList로 저장-> 대회에 참가한 자동차들
 - [ ] IO class 구현
@@ -15,6 +15,7 @@
 - [ ] Car class 함수 구현
     - 전진(moveCarFront) 기능 구현
 - [ ] Challenge 클래스에서 경주 진행하기
+    - [ ] 자동차 등록하기
     - [ ] Random 기능 추가
     - [ ] 우승자 선정하기
 - [ ] main 에서 경주 구현하기
