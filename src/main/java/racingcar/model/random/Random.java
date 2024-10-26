@@ -13,9 +13,6 @@ public class Random {
 
     public static boolean randomBoolean() {
         final int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-            return true;
-        }
-        return false;
+        return randomNumber >= 4;
     }
 }
