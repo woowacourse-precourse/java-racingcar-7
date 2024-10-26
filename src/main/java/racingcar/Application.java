@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 //자동차 이름 및 위치 관리
 class Car {
@@ -9,13 +11,13 @@ class Car {
     private int placement;
 
     public Car(String name) {
-       CheckName(name);
+       CheckCarName(name);
         this.name = name;
         this.placement = 0;
     }
 
     //이름 확인하기 -> 예외상황 생각해둬야함
-    private void CheckName(String name) {
+    private void CheckCarName(String name) {
         if (name.length() > 5) { throw new IllegalArgumentException();}
     }
 
@@ -34,11 +36,23 @@ class Car {
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String Car_Name = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        try{
+            List<String> carNames = inputCarNames();
 
-        System.out.println("실행 결과");
-        System.out.println("최종 우승자 : ");
+            System.out.println("최종 우승자 : ");
+        } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
     }
+
+    private static List<String> inputCarNames() {
+       System.out.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+       String carNamesInput = Console.readLine();
+       List<String> carNames = List.of(carNamesInput.split(","));
+       CheckCarName(carNames);
+       return carNames;
+    }
+
+    private static void CheckCarName(List<String> carNames) {
+        if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
+    }
+
 }
