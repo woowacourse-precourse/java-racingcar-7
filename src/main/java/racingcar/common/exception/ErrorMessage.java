@@ -3,8 +3,8 @@ package racingcar.common.exception;
 public enum ErrorMessage {
     EMPTY_INPUT("입력값이 비어 있습니다."),
 
-    RANDOM_VALUE_GENERATOR_NULL_VALUE("생성된 값은 null일 수 없습니다."),
-    RANDOM_VALUE_GENERATOR_OUT_OF_RANGE("생성된 값은 0에서 9 사이의 정수여야 합니다."),
+    RANDOM_NUMBER_GENERATOR_NULL_VALUE("생성된 값은 null일 수 없습니다."),
+    RANDOM_NUMBER_GENERATOR_OUT_OF_RANGE("생성된 값은 0에서 9 사이의 정수여야 합니다."),
 
     MOVEMENT_VALUE_NULL("값이 null일 수 없습니다."),
     MOVEMENT_VALUE_OUT_OF_RANGE("값은 0에서 9 사이의 정수여야 합니다."),

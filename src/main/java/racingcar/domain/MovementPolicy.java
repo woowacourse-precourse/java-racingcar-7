@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import racingcar.dto.MovementValue;
+import racingcar.dto.MovementNumber;
 
 public class MovementPolicy {
     private final int number;
 
-    public MovementPolicy(MovementValue number) {
+    public MovementPolicy(MovementNumber number) {
         this.number = number.value();
     }
 
