@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -37,6 +38,24 @@ class CarsTest {
                 Arguments.arguments(new Cars(List.of(
                         new Car("포비","")))
                         ,"포비")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("proveUnmodifiableList")
+    @DisplayName("복사한 객체가 기존과 다른 객체임을 입증한다")
+    void 불변리스트_검증(Car clonedCar,Car originCar){
+        assertThat(clonedCar).isNotEqualTo(originCar);
+    }
+
+    private static Stream<Arguments> proveUnmodifiableList() {
+        List<Car> originList = List.of(new Car("지우", ""), new Car("제이", ""));
+        Cars cars = new Cars(originList);
+        List<Car> clonedList = cars.getClonedCars();
+
+        return Stream.of(
+                Arguments.of(clonedList.get(0), originList.get(0)),
+                Arguments.of(clonedList.get(1), originList.get(1))
         );
     }
 }
