@@ -33,4 +33,19 @@ public class CarGameManager {
         }
     }
 
+    public int getTotalCars() {
+        return cars.size();
+    }
+
+    public List<Integer> getEachCarResultDistance() {
+        ArrayList<Integer> carsDistance = new ArrayList<>();
+        for (Car car : cars) {
+            carsDistance.add(car.getDistance());
+        }
+        return carsDistance;
+    }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
 }

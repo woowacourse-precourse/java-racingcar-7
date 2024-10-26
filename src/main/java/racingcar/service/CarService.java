@@ -17,5 +17,22 @@ public class CarService {
         carGameManager.start(names, times);
     }
 
+    public List<String> getWinners() {
+        ArrayList<String> winners = new ArrayList<>();
+        int max = 0;
+        List<Integer> eachCarResultDistance = carGameManager.getEachCarResultDistance();
 
+        for (Integer distance : eachCarResultDistance) {
+            if (distance >= max) {
+                max = distance;
+            }
+        }
+
+        for (int i = 0; i < carGameManager.getTotalCars(); i++) {
+            if(eachCarResultDistance.get(i) == max) {
+                winners.add(carGameManager.getCars().get(i).getName());
+            }
+        }
+        return winners;
+    }
 }
