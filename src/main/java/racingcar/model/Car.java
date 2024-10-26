@@ -12,10 +12,14 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_TOO_LONG.getMessage() + ": " + name);
         }
-        if (!name.matches("^[a-zA-Z]+$")) {
+        if (!isValidCarName(name)) {
             throw new IllegalArgumentException(ErrorMessage.CAR_NAME_INVALID_CHARACTERS.getMessage() + ": " + name);
         }
         this.name = name;
+    }
+
+    private boolean isValidCarName(String name) {
+        return name.matches("^[a-zA-Z]+$");
     }
 
     public void move() {
