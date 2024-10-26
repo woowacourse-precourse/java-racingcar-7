@@ -15,7 +15,7 @@ public class InputController {
     }
 
     public static synchronized InputController getInstance(InputView inputView) {
-        if (INSTANCE == null) {
+        if (INSTANCE == null || INSTANCE.inputView != inputView) {
             INSTANCE = new InputController(inputView);
         }
         return INSTANCE;

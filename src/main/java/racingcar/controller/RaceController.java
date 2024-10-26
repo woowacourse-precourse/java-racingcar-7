@@ -18,7 +18,7 @@ public class RaceController {
     }
 
     public static synchronized RaceController getInstance(RaceService raceService, OutputView outputView) {
-        if (INSTANCE == null) {
+        if (INSTANCE == null || INSTANCE.raceService != raceService || INSTANCE.outputView != outputView) {
             INSTANCE = new RaceController(raceService, outputView);
         }
         return INSTANCE;
