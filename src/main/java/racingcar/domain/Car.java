@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.exception.InputValidator;
+import racingcar.utils.RandNumGenerator;
 
 public class Car {
     private static final int FIRST_POSITION = 0;
@@ -14,5 +15,11 @@ public class Car {
 
         this.name = name;
         this.position = FIRST_POSITION;
+    }
+
+    public void updatePositionComparedToRandNum(RandNumGenerator randNumGenerator) {
+        if (randNumGenerator.isRandNumGreaterThanOrEqualToCriterion()) {
+            position++;
+        }
     }
 }
