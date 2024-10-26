@@ -15,4 +15,9 @@ public class RaceController {
         return Race.setupRace(InputView.getCarNames());
     }
 
+    private int getAttemptCount() {
+        OutputView.renderAttemptCountInput();
+        return InputView.getAttemptCount();
+    }
+
 }
