@@ -58,7 +58,7 @@ public class InputValidatorTest {
         // when & then
         assertThatThrownBy(() -> validator.validateAttemptCount(count))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.INVALID_ATTEMPT_COUNT.getMessage());
+                .hasMessage(ExceptionMessage.OUT_OF_BOUNDS_ATTEMPT_COUNT.getMessage());
     }
 
     @Test

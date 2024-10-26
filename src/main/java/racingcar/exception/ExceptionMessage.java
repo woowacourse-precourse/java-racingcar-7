@@ -8,7 +8,7 @@ public enum ExceptionMessage {
     INSUFFICIENT_CARS("자동차는 2대 이상 필요합니다."),
 
     EMPTY_ATTEMPT_COUNT("시도할 횟수가 입력되지 않았습니다."),
-    INVALID_ATTEMPT_COUNT("1 이상의 자연수만 입력할 수 있습니다."),
+    INVALID_ATTEMPT_COUNT("잘못된 형식입니다. 양의 자연수만 입력할 수 있습니다."),
     OUT_OF_BOUNDS_ATTEMPT_COUNT("횟수는 1 이상 1000 이하이어야 합니다.");
 
     private final String message;
