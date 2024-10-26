@@ -21,8 +21,18 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String userInput = Console.readLine();
+        if (!validateMoveCountString(userInput)) {
+            throw new IllegalArgumentException("이동 횟수 입력이 올바르지 않습니다.");
+        }
 
         return Integer.parseInt(userInput);
+    }
+
+    private boolean validateMoveCountString(String userInput) {
+        if (userInput.isBlank() || !userInput.matches("\\d+")) {
+            return false;
+        }
+        return true;
     }
 
 
