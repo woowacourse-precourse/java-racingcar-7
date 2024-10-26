@@ -1,8 +1,10 @@
 package racingcar.controller;
 
+import java.math.BigInteger;
 import java.util.List;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
@@ -16,12 +18,11 @@ public class RacingCarController {
         List<String> carNames = racingCarService.processingInputToList(inputView.inputCarNames());
         racingCarService.checkCarNamesValid(carNames);
         racingCarService.saveAll(carNames);
-
-        racingCarService.printAllNames();   //TODO : remove it
     }
 
-    public void startRacingGame() {
-        //TODO : 본격적으로 자동차 경주 게임을 진행하는 일련의 과정
+    public void openingRacingGame(InputView inputView, OutputView outputView) {
+        BigInteger raceCount = racingCarService.checkRaceCount(inputView.inputRaceCount());
+        racingCarService.startRacing(raceCount, outputView);
     }
 
     public void finalAward() {

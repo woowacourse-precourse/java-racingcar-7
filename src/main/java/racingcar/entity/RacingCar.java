@@ -1,6 +1,7 @@
 package racingcar.entity;
 
 import static racingcar.constant.RacingCarStatic.DEFAULT_MOVE_RANGE;
+import static racingcar.constant.RacingCarStatic.DISTANCE_TRACKING_FORMAT;
 
 import java.math.BigInteger;
 
@@ -25,5 +26,17 @@ public class RacingCar {
 
     public void move() {
         this.distance = distance.add(BigInteger.valueOf(DEFAULT_MOVE_RANGE));
+    }
+
+    public String getFormattedDistance() {
+
+        //FIXME: BIGINTEGER 방식?
+        StringBuilder sb = new StringBuilder();
+
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(distance) < 0; i = i.add(BigInteger.ONE)) {
+            sb.append(DISTANCE_TRACKING_FORMAT);
+        }
+
+        return sb.toString();
     }
 }
