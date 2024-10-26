@@ -3,8 +3,8 @@ package racingcar.model;
 public class RacingGameMaxRound {
     private int round;
 
-    public RacingGameMaxRound(String input) {
-        this.round = parseGameRound(input);
+    public RacingGameMaxRound(String roundInput) {
+        this.round = parseGameRound(roundInput);
         validateRound();
     }
 
@@ -18,9 +18,9 @@ public class RacingGameMaxRound {
         }
     }
 
-    private int parseGameRound(String input) {
+    private int parseGameRound(String roundInput) {
         try {
-            return Integer.parseInt(input);
+            return Integer.parseInt(roundInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력입니다. 숫자가 아닙니다.");
         }
