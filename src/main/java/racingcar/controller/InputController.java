@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.model.InputModel;
-import racingcar.validation.Validate;
+import racingcar.validation.NameValidator;
 import racingcar.view.InputView;
 
 public class InputController {
@@ -15,17 +15,17 @@ public class InputController {
     public void validateInputFormat(){
         inputView.printCarNameInputPrompt();
         this.userInput = inputModel.getName();
-        Validate.validateTrailingComma(userInput);
+        NameValidator.validateTrailingComma(userInput);
     }
 
     public void validateNameLength(){
         for(String i : inputModel.splitCarNames()){
-            Validate.validateNameLengthWithinLimit(i);
+            NameValidator.validateNameLengthWithinLimit(i);
         }
     }
     public void validateNonEmptyNames(){
         for(String i : inputModel.splitCarNames()){
-            Validate.validateNameNotEmpty(i);
+            NameValidator.validateNameNotEmpty(i);
         }
     }
     public void addCarsFromInput(Cars cars){

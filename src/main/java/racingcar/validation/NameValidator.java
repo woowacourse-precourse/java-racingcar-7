@@ -2,7 +2,7 @@ package racingcar.validation;
 
 import static racingcar.view.ErrorMessage.INVALID_CAR_NUMBER;
 
-public class Validate {
+public class NameValidator {
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
     public static void validateNameLengthWithinLimit(String name) {
