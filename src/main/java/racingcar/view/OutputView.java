@@ -22,7 +22,7 @@ public class OutputView {
 
     private void printRaceLogs(List<RaceLog> raceLogs) {
         raceLogs.forEach(raceLog -> {
-            List<CarStatus> carStatuses = raceLog.getCarDetails();
+            List<CarStatus> carStatuses = raceLog.getCarStatuses();
             carStatuses.forEach(carStatus -> {
                 StringBuilder sb = new StringBuilder(carStatus.name() + " : ");
                 int distance = carStatus.position();

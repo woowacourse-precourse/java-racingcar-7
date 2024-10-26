@@ -28,7 +28,7 @@ public class Race {
     }
 
     public List<RaceLog> getRaceLogs() {
-        return raceLogs;
+        return List.copyOf(raceLogs);
     }
 
     public List<Car> getVictoryCars() {

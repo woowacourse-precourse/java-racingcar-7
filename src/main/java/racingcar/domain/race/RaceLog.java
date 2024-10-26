@@ -16,7 +16,7 @@ public class RaceLog {
         return new RaceLog(cars.getAllCarStatuses());
     }
 
-    public List<CarStatus> getCarDetails() {
+    public List<CarStatus> getCarStatuses() {
         return carStatuses;
     }
 }
