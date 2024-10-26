@@ -1,7 +1,6 @@
 package racingcar.racingapp.model.car;
 
 import racingcar.racingapp.model.car.carEngine.CarEngine;
-import racingcar.racingapp.model.value.enums.DriveResult;
 import racingcar.racingapp.model.value.vo.CarName;
 import racingcar.racingapp.model.value.vo.CarRecord;
 import racingcar.racingapp.model.value.vo.Mileage;
@@ -40,12 +39,11 @@ public class Car {
         return mileage;
     }
 
-    public DriveResult tryDrive() {
+    public void tryDrive() {
         if (!carEngine.attemptDriveEngine()) {
-            return DriveResult.FAILURE;
+            return;
         }
         mileage = mileage.getIncreased();
-        return DriveResult.SUCCESS;
     }
 
     public CarRecord record() {

@@ -8,7 +8,6 @@ import racingcar.object.carEngine.BrokenCarEngine;
 import racingcar.racingapp.model.car.Car;
 import racingcar.racingapp.model.car.carEngine.CarEngine;
 import racingcar.racingapp.model.car.carEngine.RegulationsCarEngine;
-import racingcar.racingapp.model.value.enums.DriveResult;
 import racingcar.racingapp.model.value.vo.CarName;
 import racingcar.racingapp.model.value.vo.CarRecord;
 import racingcar.racingapp.model.value.vo.Mileage;
@@ -51,10 +50,9 @@ class CarTest {
         Car newCar = Car.ready(carEngineForSuccess, newCarName);
         Mileage mileageBeforeDriving = newCar.getMileage();
 
-        DriveResult driveResult = newCar.tryDrive();
+        newCar.tryDrive();
         Mileage mileageAfterDriving = newCar.getMileage();
 
-        assertThat(driveResult).isEqualTo(DriveResult.SUCCESS);
         assertThat(mileageAfterDriving.compareTo(mileageBeforeDriving))
                 .isGreaterThan(0);
         assertThat(mileageAfterDriving.distance())
@@ -68,10 +66,9 @@ class CarTest {
         Car newCar = Car.ready(carEngineForSuccess, newCarName);
         Mileage mileageBeforeDriving = newCar.getMileage();
 
-        DriveResult driveResult = newCar.tryDrive();
+        newCar.tryDrive();
         Mileage mileageAfterDriving = newCar.getMileage();
 
-        assertThat(driveResult).isEqualTo(DriveResult.FAILURE);
         assertThat(mileageAfterDriving.compareTo(mileageBeforeDriving))
                 .isEqualTo(0);
         assertThat(mileageAfterDriving.distance())
