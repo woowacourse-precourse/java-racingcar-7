@@ -13,5 +13,8 @@ public class Race {
         this.tryCount = tryCount;
     }
 
+    public int getTryCount() {
+        return this.tryCount;
+    }
 
 }
