@@ -8,16 +8,8 @@ import static racingcar.util.constant.OutputMessageConstant.*;
 
 public class OutputView {
 
-    public void registerCarMessage() {
-        System.out.println(INPUT_CAR_NAME.getMessage());
-    }
-
     public void newline() {
         System.out.println();
-    }
-
-    public void registerExecutionNumberMessage() {
-        System.out.println(INPUT_TURN_COUNT.getMessage());
     }
 
     public void executionResultMessage() {
@@ -26,6 +18,7 @@ public class OutputView {
 
     public void printResult(List<Car> cars) {
         cars.forEach(System.out::println);
+        newline();
     }
 
     public void finalWinnerMessage(List<Car> winners) {

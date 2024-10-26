@@ -38,14 +38,12 @@ public class RacingGame {
     }
 
     private List<Car> registerCar(final GameController gameController) {
-        outputView.registerCarMessage();
-        final String input = inputView.input();
+        final String input = inputView.registerCarInputView();
         return gameController.registerCars(input);
     }
 
     private ExecutionNumber registerExecutionNumber(final GameController gameController) {
-        outputView.registerExecutionNumberMessage();
-        final String executionNumberInput = inputView.input();
+        final String executionNumberInput = inputView.registerExecutionNumberInputView();
         ExecutionNumber executionNumber = new ExecutionNumber(gameController.registerExecutionNumber(executionNumberInput));
         outputView.newline();
         return executionNumber;
@@ -56,7 +54,6 @@ public class RacingGame {
         for (int turn = 0; turn < executionNumber.getNumber(); turn++) {
             cars.forEach(gameController::race);
             outputView.printResult(cars);
-            outputView.newline();
         }
         outputView.finalWinnerMessage(gameController.raceResult(cars));
     }
