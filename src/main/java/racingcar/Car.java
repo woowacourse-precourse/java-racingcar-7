@@ -24,8 +24,4 @@ public class Car {
         return distance;
     }
 
-    public String getDistanceAsDash() {
-        return "-".repeat(this.distance);
-    }
-
 }

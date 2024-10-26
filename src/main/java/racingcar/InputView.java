@@ -7,14 +7,22 @@ public class InputView {
     public Car[] getCars(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
+
         String[] names = input.split(",");
 
         Car[] cars = new Car[names.length];
 
         for(int i = 0; i < names.length; i++){
-            if(names[i].length() > 5 || !isAlphabetic(names[i])){
+            String name = names[i];
+
+            if(name.isEmpty() || name.length() > 5 || !isAlphabetic(name)){
                 throw new IllegalArgumentException("잘못 입력 하셨습니다.");
             }
+
+            if (isDuplicateName(names, i, names[i])) {
+                throw new IllegalArgumentException("중복된 이름이 있습니다.");
+            }
+
             cars[i] = new Car(names[i]);
         }
 
@@ -46,6 +54,15 @@ public class InputView {
             }
         }
         return true;
+    }
+
+    private boolean isDuplicateName(String[] names, int currentIndex, String name) {
+        for (int j = 0; j < currentIndex; j++) {
+            if (name.equals(names[j])) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
