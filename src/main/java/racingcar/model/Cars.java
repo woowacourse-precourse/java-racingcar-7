@@ -45,7 +45,7 @@ public class Cars {
             }
 
             if (sb.length() > 0) {
-                sb.append(Constants.COMMA).append(" ");
+                sb.append(Constants.COMMA).append(Constants.WHITESPACE);
             }
             sb.append(car.getName());
         }

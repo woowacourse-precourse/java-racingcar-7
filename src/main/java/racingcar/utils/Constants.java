@@ -8,4 +8,5 @@ public final class Constants {
     public static final String DISTANCE_DASH = "-";
     public static final String RESULT_COLON = " : ";
     public static final String COMMA = ",";
+    public static final String WHITESPACE = " ";
 }
