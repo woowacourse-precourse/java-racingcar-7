@@ -13,20 +13,32 @@ public class Application {
         Map<String, Integer> nameMap = getNameMap(nameArray);
         int count = getCount();
         printRacing(count, nameMap);
+        printWinner(nameMap);
+    }
 
-        int maxRecord = 0;
-        for (String key : nameMap.keySet()) {
-            if(nameMap.get(key) > maxRecord){
-                maxRecord = nameMap.get(key);
-            }
-        }
+    private static void printWinner(Map<String, Integer> nameMap){
+        System.out.println("최종 우승자 : " + String.join(", ", getWinner(nameMap)));
+    }
+
+    private static List<String> getWinner(Map<String, Integer> nameMap){
+        int maxRecord = maxRecord(nameMap);
         List<String> winnerList = new ArrayList<>();
         for (String key : nameMap.keySet()) {
             if(nameMap.get(key) == maxRecord){
                 winnerList.add(key);
             }
         }
-        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+        return winnerList;
+    }
+
+    private static int maxRecord(Map<String, Integer> nameMap){
+        int maxNumber = 0;
+        for (String key : nameMap.keySet()) {
+            if(nameMap.get(key) > maxNumber){
+                maxNumber = nameMap.get(key);
+            }
+        }
+        return maxNumber;
     }
 
     private static void printRacing(int count, Map<String, Integer> nameMap){
