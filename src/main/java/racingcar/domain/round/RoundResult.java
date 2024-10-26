@@ -1,11 +1,11 @@
 package racingcar.domain.round;
 
-import racingcar.domain.car.Car;
+import racingcar.domain.racer.Racer;
 
 public record RoundResult(String carName, int position) {
 
-    public static RoundResult from(Car car) {
-        return new RoundResult(car.getName(), car.getPosition());
+    public static RoundResult from(Racer racer) {
+        return new RoundResult(racer.getName(), racer.getPosition());
     }
 
 }

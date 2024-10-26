@@ -1,4 +1,4 @@
-package racingcar.domain.car;
+package racingcar.domain.racer.utils;
 
 public class Condition {
 

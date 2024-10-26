@@ -1,9 +1,10 @@
-package racingcar.domain.car;
+package racingcar.domain.racer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.racer.utils.Condition;
 
 class ConditionTest {
 

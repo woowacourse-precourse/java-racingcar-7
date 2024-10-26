@@ -2,9 +2,11 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.RacingGame;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Condition;
-import racingcar.domain.car.RandomNumberGenerator;
+import racingcar.domain.racer.utils.NumberGenerator;
+import racingcar.domain.racer.Racer;
+import racingcar.domain.racer.Racers;
+import racingcar.domain.racer.utils.impl.RandomNumberGenerator;
+import racingcar.domain.round.Round;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
@@ -12,10 +14,12 @@ public class RacingController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final NumberGenerator numberGenerator;
 
     public RacingController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.numberGenerator = new RandomNumberGenerator();
     }
 
     public void run() {
@@ -25,21 +29,32 @@ public class RacingController {
     }
 
     private RacingGame organizeRace() {
-        List<String> carNames = inputView.showGetCarNamesInput();
-        List<Car> cars = carNames.stream()
-                .map(carName -> new Car(carName, new Condition(new RandomNumberGenerator())))
-                .toList();
+        Racers racers = createRacers();
+        Round round = prepareRound();
 
-        int finalRound = inputView.showGetFinalRoundInput();
-        return new RacingGame(cars, finalRound);
+        return new RacingGame(racers, round);
+    }
+    private Racers createRacers() {
+        List<String> carNames = this.inputView.showGetCarNamesInput();
+
+        Racers racers = new Racers();
+        carNames.forEach(carName -> racers.register(Racer.of(carName, this.numberGenerator)));
+
+        return racers;
     }
 
+    private Round prepareRound() {
+        return new Round(this.inputView.showGetFinalRoundInput());
+    }
+
+
     private void endRacingGame(RacingGame racingGame) {
-        outputView.showFinalWinners(racingGame.getFinalWinners());
+        this.outputView.showFinalWinners(racingGame.getFinalWinners());
     }
 
     private void playRacingGame(RacingGame racingGame) {
-        outputView.showPlayGame();
+        this.outputView.showPlayGame();
+
         while (racingGame.isNotGameOver()) {
             playNextRound(racingGame);
         }
@@ -47,7 +62,7 @@ public class RacingController {
 
     private void playNextRound(RacingGame racingGame) {
         racingGame.playNextRound();
-        outputView.showRacingResult(racingGame.getRacingResult());
+        this.outputView.showRacingResult(racingGame.getRacingResult());
     }
 
 }

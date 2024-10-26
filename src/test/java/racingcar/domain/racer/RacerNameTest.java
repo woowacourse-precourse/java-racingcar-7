@@ -1,4 +1,4 @@
-package racingcar.domain.car;
+package racingcar.domain.racer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CarNameTest {
+class RacerNameTest {
 
     @Test
     @DisplayName("자동차 이름이 빈 값일 경우, 예외가 발생한다.")

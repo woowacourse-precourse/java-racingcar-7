@@ -1,13 +1,13 @@
 package racingcar.domain.round;
 
 import java.util.List;
-import racingcar.domain.car.Car;
+import racingcar.domain.racer.Racer;
 
 public record RoundSnapshot(List<RoundResult> roundResult, int maxPosition) {
 
-    public static RoundSnapshot from(List<Car> cars) {
-        List<RoundResult> roundResult = cars.stream()
-                .map(Car::toRoundResult)
+    public static RoundSnapshot from(List<Racer> racers) {
+        List<RoundResult> roundResult = racers.stream()
+                .map(Racer::toRoundResult)
                 .toList();
 
         return new RoundSnapshot(roundResult, extractMaxPosition(roundResult));

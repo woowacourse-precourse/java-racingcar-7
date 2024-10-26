@@ -1,7 +1,8 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.car.Car;
+import racingcar.domain.racer.Racer;
+import racingcar.domain.racer.Racers;
 import racingcar.domain.round.Round;
 import racingcar.domain.round.RoundHistory;
 import racingcar.domain.round.RoundResult;
@@ -9,28 +10,24 @@ import racingcar.domain.round.RoundSnapshot;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private final Racers racers;
     private final Round round;
     private final RoundHistory roundHistory;
 
-    public RacingGame(List<Car> cars, int finalRound) {
-        this.cars = cars;
-        this.round = new Round(finalRound);
+    public RacingGame(Racers racers, Round round) {
+        this.racers = racers;
+        this.round = round;
         this.roundHistory = new RoundHistory();
     }
 
     public void playNextRound() {
-       this.round.nextRound();
-        moveCars();
+        this.round.nextRound();
+        this.racers.moveCars();
         recordCurrentRound();
     }
 
-    private void moveCars() {
-        this.cars.forEach(Car::forward);
-    }
-
     private void recordCurrentRound() {
-        this.roundHistory.addRoundSnapshot(round.nowRound(), RoundSnapshot.from(this.cars));
+        this.roundHistory.addRoundSnapshot(round.nowRound(), RoundSnapshot.from(getRacers()));
     }
 
     public List<RoundResult> getRacingResult() {
@@ -47,6 +44,10 @@ public class RacingGame {
         }
 
         return this.roundHistory.getWinnersByRound(this.round.nowRound());
+    }
+
+    private List<Racer> getRacers() {
+        return this.racers.getRacers();
     }
 
 }
