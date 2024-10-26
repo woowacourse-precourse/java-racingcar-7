@@ -2,9 +2,10 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static racingcar.WinnerCalculator.calculateWinners;
 
 public class Application {
     public static void main(String[] args) {
@@ -39,25 +40,5 @@ public class Application {
         }
 
         return carNames;
-    }
-
-    public static List<String> calculateWinners(List<Car> lastRacingRecord) {
-        List<String> winners = new ArrayList<>();
-
-        int max = calculateMaxPosition(lastRacingRecord);
-        for (Car car : lastRacingRecord) {
-            winners.addAll(car.addIfWinner(max));
-        }
-
-        return winners;
-    }
-
-    public static int calculateMaxPosition(List<Car> lastRacingRecord) {
-        int max = Integer.MIN_VALUE;
-        for (Car lastRacingRecordCar : lastRacingRecord) {
-            max = lastRacingRecordCar.calculateMaxPosition(max);
-        }
-
-        return max;
     }
 }

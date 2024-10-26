@@ -13,6 +13,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.Application.createCarNames;
+import static racingcar.WinnerCalculator.calculateMaxPosition;
+import static racingcar.WinnerCalculator.calculateWinners;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -141,7 +143,6 @@ class ApplicationTest extends NsTest {
     @Test
     void 최대_우선_반환_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            Application application = new Application();
             List<String> carNames = Arrays.asList("pobi", "woni");
             Cars cars = new Cars(carNames);
             int raceTime = 1;
@@ -150,14 +151,13 @@ class ApplicationTest extends NsTest {
             List<Car> lastRacingRecord = racingRecords.getLast();
             int expectedMax = 1;
 
-            assertThat(application.calculateMaxPosition(lastRacingRecord)).isEqualTo(expectedMax);
+            assertThat(calculateMaxPosition(lastRacingRecord)).isEqualTo(expectedMax);
         }, MOVING_FORWARD, STOP);
     }
 
     @Test
     void 단독_우승자_계산_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            Application application = new Application();
             List<String> carNames = Arrays.asList("pobi", "woni");
             Cars cars = new Cars(carNames);
             int raceTime = 3;
@@ -167,14 +167,13 @@ class ApplicationTest extends NsTest {
 
             List<String> expectedWinners = Arrays.asList("pobi");
 
-            assertThat(application.calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
+            assertThat(calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
     }
 
     @Test
     void 공동_우승자_계산_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            Application application = new Application();
             List<String> carNames = Arrays.asList("pobi", "woni");
             Cars cars = new Cars(carNames);
             int raceTime = 1;
@@ -184,7 +183,7 @@ class ApplicationTest extends NsTest {
 
             List<String> expectedWinners = Arrays.asList("pobi", "woni");
 
-            assertThat(application.calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
+            assertThat(calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
         }, MOVING_FORWARD, MOVING_FORWARD);
     }
 
