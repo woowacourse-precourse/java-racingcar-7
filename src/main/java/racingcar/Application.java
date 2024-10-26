@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -21,5 +24,20 @@ public class Application {
             CarRacing.moveCar(carLocations);
             CarRacing.printCarLocation(carNames, carLocations);
         }
+
+        int max = 0;
+        for (int i = 0; i < carNames.length; i++) {
+            max = Math.max(max, carLocations[i]);
+        }
+
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            if (carLocations[i] == max) {
+                winners.add(carNames[i]);
+            }
+        }
+        String result = String.join(",", winners);
+
+        System.out.println("최종 우승자 : " + result);
     }
 }
