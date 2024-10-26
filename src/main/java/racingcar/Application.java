@@ -9,6 +9,11 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int loop = Integer.parseInt(Console.readLine());
 
+        System.out.println("\n실행 결과");
+        for(int i=0; i<loop; i++){
+            race.run();
+            System.out.println(race.toString());
+        }
 
     }
 }
