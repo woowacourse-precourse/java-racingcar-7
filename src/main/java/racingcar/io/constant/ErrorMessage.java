@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.io.constant;
 
 public final class ErrorMessage {
 

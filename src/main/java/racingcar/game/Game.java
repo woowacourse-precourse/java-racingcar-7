@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.game;
 
 import java.util.List;
 import racingcar.car.Cars;
@@ -38,10 +38,10 @@ public class Game {
     }
 
     private static void printStartMessage() {
-        System.out.println(START_MESSAGE);
+        OutputManager.printMessage(START_MESSAGE);
     }
 
     private static void printNewLine() {
-        System.out.println();
+        OutputManager.printMessage();
     }
 }

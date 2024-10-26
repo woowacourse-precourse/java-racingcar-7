@@ -35,7 +35,7 @@ class OutputManagerTest {
     public void printGuidMessage() {
 
         //given
-        OutputManager.printGuideMessage();
+        OutputManager.printMessage(GUIDE_MESSAGE);
 
         //when
         String printMessage = getOutput();

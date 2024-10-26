@@ -2,9 +2,8 @@ package racingcar.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static racingcar.car.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
-import static racingcar.car.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;

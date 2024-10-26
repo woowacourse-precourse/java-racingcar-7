@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.car.constant;
 
 public final class Constants {
 

@@ -2,9 +2,9 @@ package racingcar.io;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.io.ErrorMessage.INVALID_TRY_COUNT_MESSAGE;
-import static racingcar.io.ErrorMessage.INVALID_USER_INPUT_MESSAGE;
-import static racingcar.io.ErrorMessage.NOT_POSITIVE_NUMBER_ERROR_MESSAGE;
+import static racingcar.io.constant.ErrorMessage.INVALID_TRY_COUNT_MESSAGE;
+import static racingcar.io.constant.ErrorMessage.INVALID_USER_INPUT_MESSAGE;
+import static racingcar.io.constant.ErrorMessage.NOT_POSITIVE_NUMBER_ERROR_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;

@@ -1,8 +1,8 @@
 package racingcar.car;
 
-import static racingcar.car.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
-import static racingcar.car.ErrorMessage.ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE;
-import static racingcar.car.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.HashSet;
