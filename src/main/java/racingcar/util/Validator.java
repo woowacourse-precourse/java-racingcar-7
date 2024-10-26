@@ -14,7 +14,7 @@ public class Validator {
 
     public static boolean validateCarName(String name) {
         int nameLength = name.length();
-        if (nameLength > MAX_CAR_NAME_LENGTH){
+        if (nameLength > MAX_CAR_NAME_LENGTH) {
             return false;
         }
         return true;
