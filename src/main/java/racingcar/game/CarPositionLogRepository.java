@@ -1,11 +1,11 @@
-package racingcar.view.output;
+package racingcar.game;
 
 import racingcar.car.Car;
 
 import java.math.BigInteger;
 import java.util.*;
 
-public class OutputLogRepository {
+public class CarPositionLogRepository {
 
     private final Map<String, List<BigInteger>> carMovementLog = new HashMap<>();
 
