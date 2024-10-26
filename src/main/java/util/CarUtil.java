@@ -1,7 +1,6 @@
 package util;
 
-import static console.Input.OUTPUT_WINNERS;
-import static console.Input.generateExceptionIfNameAbove5;
+import static console.Message.WINNER_ANNOUNCEMENT_PREFIX;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ public class CarUtil {
         String[] carNames = carsWithComma.split(",");
         ArrayList<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            generateExceptionIfNameAbove5(carName);
             cars.add(new Car(carName));
         }
         return cars;
@@ -49,6 +47,6 @@ public class CarUtil {
 
     public static void printWinners(ArrayList<Car> cars) {
         String winners = getWinnerNames(cars);
-        System.out.println(OUTPUT_WINNERS + winners);
+        System.out.println(WINNER_ANNOUNCEMENT_PREFIX + winners);
     }
 }
