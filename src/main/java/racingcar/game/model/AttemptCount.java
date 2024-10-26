@@ -8,13 +8,13 @@ public class AttemptCount {
         this.count = count;
     }
 
-    public boolean isRemain() {
-        return this.count > MIN_INCLUSIVE;
-    }
-
     public void decrease() {
         if (isRemain()) {
             this.count--;
         }
+    }
+
+    public boolean isRemain() {
+        return this.count > MIN_INCLUSIVE;
     }
 }

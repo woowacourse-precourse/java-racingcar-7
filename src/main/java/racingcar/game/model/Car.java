@@ -13,12 +13,12 @@ public class Car {
         this.counter = new Counter();
     }
 
-    public boolean hasMoveCount(int count) {
-        return counter.matchesCount(count);
-    }
-
     public void increaseMoveCount() {
         counter.increase();
+    }
+
+    public boolean hasMoveCount(int count) {
+        return counter.matchesCount(count);
     }
 
     public String getName() {
