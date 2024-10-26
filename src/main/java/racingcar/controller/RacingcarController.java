@@ -27,10 +27,15 @@ public class RacingcarController {
         for (int i = 0; i < moveCount; i++) {
             racingGame.MoveRacingcars();
             OutputView.racingcarOutputView(racingGame.getCarsLocation());
-
         }
+        printWinner(racingGame, racingcarList);
     }
 
+    public void printWinner(RacingGame racingGame , List<Racingcar> racingcarList) {
+        List<String> winners = findWinner(racingGame, racingcarList);
+        OutputView.printWinner(winners);
+
+    }
 
 
 
