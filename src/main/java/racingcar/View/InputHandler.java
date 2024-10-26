@@ -37,7 +37,7 @@ public class InputHandler {
 
     private void checkCarCount(List<String> splitCarNames) {
         if (splitCarNames.size() > 100 || splitCarNames.isEmpty()) {
-            throw new IllegalArgumentException("자동차 개수는 0~100개 입니다.");
+            throw new IllegalArgumentException("유효한 자동차 개수는 1~100개 입니다.");
         }
     }
 
