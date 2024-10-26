@@ -69,6 +69,19 @@ public class BasicRacingCarValidatorTest {
     }
 
     @Test
+    public void 경주_자동차_이름_중복_테스트(){
+        assertSimpleTest(() -> {
+            // given
+            List<String> names = List.of("창의", "창의");
+
+            // when
+            assertThatThrownBy(() -> basicRacingCarValidator.validateCarNames(names))
+                    // then
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
+    @Test
     public void 경주_자동차_이름_1자이상_5자이하_테스트() {
         assertSimpleTest(() -> {
             // given
