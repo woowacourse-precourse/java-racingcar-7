@@ -1,9 +1,11 @@
 package racingcar;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ExecutorTest {
@@ -15,22 +17,25 @@ class ExecutorTest {
     Validator validator = new Validator();
     Executor executor = new Executor(ioController, parser, validator);
 
+    Car testCar1, testCar2, testCar3;
+
+    @BeforeEach
+    void setUp() {
+        testCar1 = new Car("test1");
+        testCar2 = new Car("test2");
+        testCar3 = new Car("test3");
+    }
+
     @Test
     void 우승자_반환() {
-        Car t1 = new Car("t1");
-        Car t2 = new Car("t2");
-        Car t3 = new Car("t3");
+        List<Car> test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
 
-        t1.move();
-
-        List<Car> test = new ArrayList<>(List.of(t1, t2, t3));
-        List<Car> expected1 = new ArrayList<>(List.of(t1));
-
+        testCar1.move();
+        List<Car> expected1 = new ArrayList<>(List.of(testCar1));
         assertThat(executor.getWinners(test)).isEqualTo(expected1);
 
-        t2.move();
-
-        List<Car> expected2 = new ArrayList<>(List.of(t1, t2));
+        testCar2.move();
+        List<Car> expected2 = new ArrayList<>(List.of(testCar1, testCar2));
         assertThat(executor.getWinners(test)).isEqualTo(expected2);
     }
 }
