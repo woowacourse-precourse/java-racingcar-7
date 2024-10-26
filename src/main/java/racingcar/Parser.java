@@ -10,4 +10,8 @@ public class Parser {
 
         return carNames;
     }
+
+    long parseRepeatCount(String inputStr) {
+        return Long.parseLong(inputStr);
+    }
 }
