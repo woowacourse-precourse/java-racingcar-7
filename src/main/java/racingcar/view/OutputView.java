@@ -7,7 +7,7 @@ import racingcar.model.Car;
 
 public class OutputView {
     private void printLineFeed() {
-        System.out.println(SystemMessage.LINE_FEED);
+        System.out.println();
     }
 
     public void printInputCarNamesMessage() {
