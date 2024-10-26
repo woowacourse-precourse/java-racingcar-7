@@ -3,14 +3,18 @@ package racingcar.ready;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.RacingGame;
+import racingcar.controller.RacingController;
+import racingcar.model.RacingGame;
+import racingcar.view.RacingGameView;
 
 class RacingGameCreateNameTest {
     public RacingGame racingGame;
+    public RacingController racingController;
 
     @BeforeEach
     public void init() {
         racingGame = new RacingGame();
+        racingController = new RacingController(new RacingGameView(),new RacingGame());
     }
 
     @Test

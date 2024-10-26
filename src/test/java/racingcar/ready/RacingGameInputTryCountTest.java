@@ -4,14 +4,18 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.RacingGame;
+import racingcar.controller.RacingController;
+import racingcar.model.RacingGame;
+import racingcar.view.RacingGameView;
 
 class RacingGameInputTryCountTest {
     public RacingGame racingGame;
+    public RacingController racingController;
 
     @BeforeEach
     public void init() {
         racingGame = new RacingGame();
+        racingController = new RacingController(new RacingGameView(),new RacingGame());
     }
 
     @Test
@@ -37,7 +41,7 @@ class RacingGameInputTryCountTest {
         String inputOverInteger = String.valueOf(Integer.MAX_VALUE + 1);
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-                    racingGame.changeTryCountToInt(inputOverInteger);
+            racingGame.changeTryCountToInt(inputOverInteger);
                 }
         );
     }

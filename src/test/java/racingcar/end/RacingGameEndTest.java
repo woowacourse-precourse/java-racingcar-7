@@ -4,12 +4,11 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
-import racingcar.Car;
-import racingcar.RacingGame;
+import racingcar.model.RacingGame;
+import racingcar.view.RacingGameView;
 
 public class RacingGameEndTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -25,17 +24,22 @@ public class RacingGameEndTest extends NsTest {
     @Test
     public void 게임종료_단독우승_출력테스트() throws Exception {
         //given
+        RacingGameView racingGameView = new RacingGameView();
         racingGame = new RacingGame();
-        List<Car> cars = new ArrayList<>();
-        //when
+        String[] names = new String[NUM_CAR];
         for (int i = 0; i < NUM_CAR; i++) {
-            cars.add(new Car("car" + i));
+            names[i] = ("car" + i);
         }
+        //when
+        racingGame.ready(names,2);
         //then
         assertRandomNumberInRangeTest(
                 () -> {
-                    racingGame.start(cars, 2);
-                    racingGame.end(cars);
+                    for (int i = 0; i < 2; i++) {
+                        racingGame.startRound();
+                    }
+                    List<String> winners = racingGame.end();
+                    racingGameView.printWinners(winners);
                     assertThat(output()).contains("최종 우승자 : car0");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP
@@ -46,17 +50,22 @@ public class RacingGameEndTest extends NsTest {
     @Test
     public void 게임종료_2명이상우승_출력테스트() throws Exception {
         //given
+        RacingGameView racingGameView = new RacingGameView();
         racingGame = new RacingGame();
-        List<Car> cars = new ArrayList<>();
-        //when
+        String[] names = new String[NUM_CAR];
         for (int i = 0; i < NUM_CAR; i++) {
-            cars.add(new Car("car" + i));
+            names[i] = ("car" + i);
         }
+        //when
+        racingGame.ready(names,2);
         //then
         assertRandomNumberInRangeTest(
                 () -> {
-                    racingGame.start(cars, 2);
-                    racingGame.end(cars);
+                    for (int i = 0; i < 2; i++) {
+                        racingGame.startRound();
+                    }
+                    List<String> winners = racingGame.end();
+                    racingGameView.printWinners(winners);
                     assertThat(output()).contains("최종 우승자 : car0, car2");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD

@@ -2,9 +2,9 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 
 class CarTest {
     private static final int MOVING_FORWARD = 4;

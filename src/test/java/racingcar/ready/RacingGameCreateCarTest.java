@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.RacingGame;
+import racingcar.model.Car;
+import racingcar.controller.RacingController;
+import racingcar.model.RacingGame;
+import racingcar.view.RacingGameView;
 
 class RacingGameCreateCarTest {
     public RacingGame racingGame;
+    public RacingController racingController;
 
     @BeforeEach
     public void init() {
         racingGame = new RacingGame();
+        racingController = new RacingController(new RacingGameView(),new RacingGame());
     }
 
     @Test
