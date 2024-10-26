@@ -3,6 +3,7 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.dto.CarStatusDto;
+import racingcar.enums.Move;
 
 public class Cars {
 
@@ -17,7 +18,7 @@ public class Cars {
     }
 
     private int getRandomMove() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(Move.MIN_MOVING_RANGE.getMovement(), Move.MAX_MOVING_RANGE.getMovement());
     }
 
     public List<CarStatusDto> submitCarsStatus() {

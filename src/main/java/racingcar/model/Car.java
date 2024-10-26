@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.enums.Move;
+
 public class Car {
 
     private final String name;
@@ -18,7 +20,7 @@ public class Car {
     }
 
     public void move(int randomMove) {
-        if (randomMove >= 4) {
+        if (randomMove >= Move.MOVING_STANDARD.getMovement()) {
             position++;
         }
     }
