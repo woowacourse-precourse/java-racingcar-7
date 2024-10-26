@@ -16,9 +16,8 @@ public class UserOutputView {
     public static void RacingRoundMessage(List<Map<String, Integer>> m){
         System.out.println("\n실행 결과");
         for (Map<String, Integer> moveData : m) {
-            moveData.forEach((key, value) -> {
-                System.out.println(key + " : " + "-".repeat(value));
-            });
+            moveData.forEach((key, value) ->
+                    System.out.println(key + " : " + "-".repeat(value)));
             System.out.println();
         }
     }
