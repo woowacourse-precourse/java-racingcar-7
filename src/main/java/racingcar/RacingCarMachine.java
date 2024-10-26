@@ -33,11 +33,6 @@ public class RacingCarMachine {
 			}
 		}
 
-		// 3. 이름 입력 시 쉼표(,)가 맨 앞에 있거나 맨 뒤에 존재하는 경우
-		if(cars.get(0).startsWith(",") || cars.get(cars.size()-1).endsWith(",")){
-			throw new IllegalArgumentException("쉼표(,)로 시작하거나 끝날 수 없습니다.");
-		}
-
 		System.out.println("시도할 횟수는 몇 회인가요?");
 
 		try {
