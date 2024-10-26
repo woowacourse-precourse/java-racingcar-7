@@ -65,6 +65,7 @@ public class RaceController {
      * 경주를 진행하고 상태를 출력하는 메서드.
      */
     public void runRace(String numberOfAttempts) {
+        view.displayExecutionResultHeader();
         int repeat = Integer.parseInt(numberOfAttempts);
         for (int i = 0; i < repeat; i++) {
             raceModel.executeRaceRound();

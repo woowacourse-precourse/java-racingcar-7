@@ -21,6 +21,10 @@ public class ConsoleView {
         return Console.readLine();
     }
 
+    public void displayExecutionResultHeader() {
+        System.out.println("\n실행 결과");
+    }
+
     public void displayRaceStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + ": " + "-".repeat(car.getPosition()));
