@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.model.Car;
-import racingcar.model.Cars;
 
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class OutputView {
         System.out.println(RACE_RESULT);
     }
 
-    public void printMovedCars(Cars cars) {
-        for (Car car : cars.getCars()) {
+    public void printMovedCars(List<Car> cars) {
+        for (Car car : cars) {
             printCarMovement(car);
         }
         System.out.println();
