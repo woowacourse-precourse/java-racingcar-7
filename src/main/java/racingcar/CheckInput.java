@@ -15,8 +15,17 @@ public class CheckInput {
     public String[] splitNames(String carNameString) {
         validateNameString(carNameString);
         String[] carNames = splitByDelimiter(carNameString);
-        validateCarNames(carNames);
-        return checkAlreadyExist(carNames);
+        String[] trimmedCarNames = trimCarNames(carNames);
+        validateCarNames(trimmedCarNames);
+        return checkAlreadyExist(trimmedCarNames);
+    }
+
+    private String[] trimCarNames(String[] carNames) {
+        String[] trimmedCarNames = new String[carNames.length];
+        for (int i = 0; i < carNames.length; i++) {
+            trimmedCarNames[i] = carNames[i].trim();
+        }
+        return trimmedCarNames;
     }
 
     private void validateNameString(String carNameString) {
@@ -25,19 +34,18 @@ public class CheckInput {
         }
     }
 
-    private String[] checkAlreadyExist(String[] carNames) {
+    private String[] checkAlreadyExist(String[] trimmedCarNames) {
         Set<String> nameSet = new HashSet<>();
-        for (String carName : carNames) {
+        for (String carName : trimmedCarNames) {
             if (!nameSet.add(carName)) {
                 throw new IllegalArgumentException(ERROR_NAME_ALREADY_EXIST);
             }
         }
-        return nameSet.toArray(new String[0]);
+        return trimmedCarNames;
     }
 
-    private void validateCarNames(String[] carNames) {
-        for (String car : carNames) {
-            String trimmedCarName = trimCarName(car);
+    private void validateCarNames(String[] trimmedCarNames) {
+        for (String trimmedCarName : trimmedCarNames) {
             checkLength(trimmedCarName);
         }
     }
@@ -46,9 +54,6 @@ public class CheckInput {
         return carNameString.split(DELIMITER);
     }
 
-    private String trimCarName(String car) {
-        return car.trim();
-    }
 
     private void checkLength(String trimmedCarName) {
         if (trimmedCarName.length() > MAX_NAME_LENGTH) {
