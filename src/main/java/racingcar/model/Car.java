@@ -2,13 +2,15 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
+    private int id;
     private int position = 0;
     private final String name;
 
-    public Car(String name) {
+    public Car(String name, int id) {
         this.name = name;
+        this.id = id;
     }
 
     public Car(Car car) {
@@ -42,5 +44,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return this.id - other.id;
     }
 }

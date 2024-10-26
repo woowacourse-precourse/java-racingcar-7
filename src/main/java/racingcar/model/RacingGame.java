@@ -1,20 +1,28 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import racingcar.model.policy.MovementPolicy;
 
 public class RacingGame {
 
-    private final List<Car> participants = new ArrayList<>();
+    private final Set<Car> participants = new TreeSet<>();
     private int currentRound = 0;
     private final int totalRound;
 
     private MovementPolicy movementPolicy;
 
-    public RacingGame(MovementPolicy movementPolicy, int totalRound) {
+    public RacingGame(
+            MovementPolicy movementPolicy,
+            int totalRound
+    ) {
         this.movementPolicy = movementPolicy;
         this.totalRound = totalRound;
+    }
+
+    public int getCarId() {
+        return participants.size() + 1;
     }
 
     public void setMovementPolicy(MovementPolicy movementPolicy) {
@@ -27,10 +35,13 @@ public class RacingGame {
     }
 
     public void join(Car car) {
+        if (participants.contains(car)) {
+            throw new IllegalStateException("자동차 이름은 중복될 수 없습니다.");
+        }
         this.participants.add(car);
     }
 
-    public List<Car> getParticipants() {
+    public List<Car> getCurrentCarState() {
         return participants.stream().map(Car::new).toList();
     }
 
