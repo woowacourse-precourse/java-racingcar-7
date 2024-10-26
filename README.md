@@ -5,7 +5,7 @@
 -[X] RacingCar 생성자
     - 자동차 이름
     - 현재 전진 기록
--[ ] RacingCar 전진 시도
+-[X] RacingCar 전진 시도
     - `camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()` 사용하여 전진 여부 결정
 
 ### RacingCarValidator
