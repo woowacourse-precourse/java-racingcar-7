@@ -67,16 +67,26 @@ public class UnitTest extends NsTest {
     }
 
     @Test
+    @DisplayName("checkSameName 테스트")
+    void checkSameNameTest() {
+        String car1Name = "car1";
+        String car2Name = "car1";
+        assertThatThrownBy(() -> Application.checkSameName(car1Name, car2Name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
+    }
+
+    @Test
     @DisplayName("getRandomNumber 테스트")
     void getRandomNumberTest() {
         assertRandomNumberInRangeTest(
-                ()->{
+                () -> {
                     int result1 = Application.getRandomNumber();
                     int result2 = Application.getRandomNumber();
                     assertThat(result1).isEqualTo(5);
                     assertThat(result2).isEqualTo(7);
                 },
-                5,7
+                5, 7
         );
     }
 
@@ -88,7 +98,8 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car2"));
         cars.add(new RacingCar("car3"));
         assertRandomNumberInRangeTest(
-                ()->{Application.assignRandomNumber(cars);
+                () -> {
+                    Application.assignRandomNumber(cars);
                     assertThat(cars.get(0).randomNumbers).containsExactly(5);
                     assertThat(cars.get(1).randomNumbers).containsExactly(7);
                     assertThat(cars.get(2).randomNumbers).containsExactly(9);
@@ -105,10 +116,11 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car3"));
 
         assertRandomNumberInRangeTest(
-                ()->{Application.assignRandomNumber(cars);
-                assertThat(cars.get(0).randomNumbers).containsExactly(5);
-                assertThat(cars.get(1).randomNumbers).containsExactly(3);
-                assertThat(cars.get(2).randomNumbers).containsExactly(1);
+                () -> {
+                    Application.assignRandomNumber(cars);
+                    assertThat(cars.get(0).randomNumbers).containsExactly(5);
+                    assertThat(cars.get(1).randomNumbers).containsExactly(3);
+                    assertThat(cars.get(2).randomNumbers).containsExactly(1);
                 }, 5, 3, 1
         );
         Application.checkRandomNumber(cars);
@@ -124,7 +136,9 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car1"));
         cars.add(new RacingCar("car2"));
         cars.add(new RacingCar("car3"));
-        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+        cars.get(0).position = 1;
+        cars.get(1).position = 3;
+        cars.get(2).position = 2;
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -139,7 +153,9 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car1"));
         cars.add(new RacingCar("car2"));
         cars.add(new RacingCar("car3"));
-        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+        cars.get(0).position = 1;
+        cars.get(1).position = 3;
+        cars.get(2).position = 2;
         assertThat(Application.getWinPosition(cars)).isEqualTo(3);
     }
 
@@ -150,10 +166,12 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car1"));
         cars.add(new RacingCar("car2"));
         cars.add(new RacingCar("car3"));
-        cars.get(0).position = 1; cars.get(1).position = 3; cars.get(2).position = 2;
+        cars.get(0).position = 1;
+        cars.get(1).position = 3;
+        cars.get(2).position = 2;
         List<String> winners = Application.getWinners(cars, 3);
-        for(RacingCar car : cars){
-            if(car.position == 3){//3은 maxPosition
+        for (RacingCar car : cars) {
+            if (car.position == 3) {//3은 maxPosition
                 assertThat(winners).contains(car.name);
             }
         }
