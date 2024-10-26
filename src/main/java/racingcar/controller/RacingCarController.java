@@ -22,7 +22,7 @@ public class RacingCarController {
         String inputCarNames = this.racingView.inputCarNames();
         String inputRoundCount = this.racingView.inputRoundCount();
 
-        String[] carNames = inputCarNames.split(",");
+        List<String> carNames = List.of(inputCarNames.split(","));
         int roundCount = Integer.parseInt(inputRoundCount);
 
         List<Car> cars = new ArrayList<>();
@@ -43,4 +43,6 @@ public class RacingCarController {
 
         racingView.printWinners(race.getWinners());
     }
+
+
 }
