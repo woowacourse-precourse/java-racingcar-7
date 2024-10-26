@@ -28,7 +28,7 @@ class RaceTest {
         });
     }
 
-    @DisplayName("자동차 현재 위치 확인")
+    @DisplayName("자동차 경주시 현재 위치 확인")
     @Test
     void SuccessCars() {
         Race cars = Race.of("car1,car2,car3");
@@ -44,7 +44,7 @@ class RaceTest {
         assertEquals(expected, carDto);
     }
 
-    @DisplayName("중복 우승자 선별 확인")
+    @DisplayName("자동차 경주시 중복 우승자 선별 확인")
     @Test
     void getWinners() {
         Race cars = Race.of("car1,car2,car3");
