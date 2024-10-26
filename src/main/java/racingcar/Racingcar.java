@@ -11,8 +11,8 @@ public class Racingcar {
 
     public void start(){
         input();
-        //racingDisplay();
-        testRacingDisplay();
+        racingDisplay();
+        winnerDisplay();
     }
 
     public void input(){
@@ -79,17 +79,31 @@ public class Racingcar {
         }
     }
 
-    public void testRacingDisplay(){
-        initMoveResults();
-        for(int i = 0; i < count; i++){
-            for(int j = 0; j < carNames.length; j++){
-                if(true){
-                    moveResults[j] +="-";
-                }
-                System.out.println(carNames[j] + " : "+ moveResults[j]);
+    public int findMaxDistance(){
+        int maxDistance = 0;
+        for (String result : moveResults) {
+            if (result.length() > maxDistance) {
+                maxDistance = result.length();
             }
-            System.out.println();
         }
+        return maxDistance;
+    }
+
+    public void winnerDisplay(){
+        int maxDistance = findMaxDistance();
+        StringBuilder winners = new StringBuilder();
+
+
+        for (int i = 0; i < moveResults.length; i++) {
+            if (moveResults[i].length() == maxDistance) {
+                if (!winners.isEmpty()) {
+                    winners.append(", ");
+                }
+                winners.append(carNames[i]);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winners);
     }
 
 
