@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.car.service.CarService;
 import racingcar.car.service.dto.CarCreateReqDto;
 import racingcar.car.service.dto.CarMoveRespDto;
+import racingcar.car.service.dto.WinnerRespDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -42,5 +43,10 @@ public class CarController {
 			List<CarMoveRespDto> results = carService.moveCars();
 			outputView.printMoveResults(results);
 		}
+	}
+
+	public void getWinners() {
+		List<WinnerRespDto> winners = carService.calculateWinners();
+		outputView.printWinners(winners);
 	}
 }

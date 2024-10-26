@@ -28,4 +28,19 @@ public class CarRepository {
 	public List<Car> findAll() {
 		return cars;
 	}
+
+	public List<Car> findTopOrderByPosition() {
+		Integer top = cars.stream()
+			.map(Car::getPosition)
+			.max(Integer::compareTo)
+			.orElseThrow(() -> new RuntimeException("위치 값이 존재하지 않습니다."));
+
+		return cars.stream()
+			.filter(car -> car.getPosition().equals(top))
+			.toList();
+	}
+
+	public void clear() {
+		cars.clear();
+	}
 }

@@ -7,6 +7,7 @@ import racingcar.car.domain.Car;
 import racingcar.car.repository.CarRepository;
 import racingcar.car.service.dto.CarCreateReqDto;
 import racingcar.car.service.dto.CarMoveRespDto;
+import racingcar.car.service.dto.WinnerRespDto;
 import racingcar.constant.ErrorStatus;
 
 public class CarService {
@@ -44,6 +45,13 @@ public class CarService {
 		});
 		return cars.stream()
 			.map(CarMoveRespDto::from)
+			.toList();
+	}
+
+	public List<WinnerRespDto> calculateWinners() {
+		return carRepository.findTopOrderByPosition()
+			.stream()
+			.map(WinnerRespDto::from)
 			.toList();
 	}
 
