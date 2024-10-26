@@ -1,6 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.LinkedList;
+import java.util.Random;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -13,6 +16,10 @@ public class Application {
         public Car(String name, int moveDistance) {
             this.name = name;
             this.moveDistance = moveDistance;
+        }
+
+        public void moveOneStep(){
+            this.moveDistance += 1;
         }
     }
 
@@ -27,6 +34,12 @@ public class Application {
         int tryNum = Integer.parseInt(readLine());
         if(tryNum <= 0)
             throw new IllegalArgumentException();
+
+        for(int i = 0; i < tryNum; i++){
+            moveForward(carList);
+            outPutConsole(carList);
+            System.out.println();
+        }
 
     }
 
@@ -53,8 +66,27 @@ public class Application {
             throw new IllegalArgumentException();
     }
 
-    static void moveForward(int tryNum, LinkedList<Car> carList){
+    static void moveForward(LinkedList<Car> carList){
+        for (Car car : carList) {
+            int tmpMoveDistance = Randoms.pickNumberInRange(0, 9);
 
+            if(tmpMoveDistance >= 4){
+                car.moveOneStep();
+            }
+        }
 
+    }
+
+    static void outPutConsole(LinkedList<Car> carList){
+        System.out.println("실행 결과");
+        for (Car car : carList) {
+            System.out.print(car.name + " : ");
+            int distance = car.moveDistance;
+
+            for(int i = 0; i < distance; i++){
+                System.out.print("-");
+            }
+            System.out.print("\n");
+        }
     }
 }
