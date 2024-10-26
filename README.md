@@ -41,7 +41,53 @@
   - [x] `StringBuilder`를 필드로 선언하여 사용하고 있는데, 이건 객체지향적인 프로그래밍이 맞는지, 검토 / 수정
   - [x] 랜덤 숫자 생성을 이 클래스에서 맡는게 맞는지, 아니라면 다른 클래스를 만들어서 사용해야 할지 검토 / 수정
 
-- [ ] **전역**
-  - [ ] Application.main에서 객체 생성의 책임을 지는 게 맞을 지, 따로 AppConfig를 빼야할지
-  - [ ] 각 클래스(객체)의 역할과 책임이 과중되진 않았는지, 객체지향적인 설계가 맞는지 검토
+- [x] **전역**
+  - [x] Application.main에서 객체 생성의 책임을 지는 게 맞을 지, 따로 AppConfig를 빼야할지
+  - [x] 각 클래스(객체)의 역할과 책임이 과중되진 않았는지, 객체지향적인 설계가 맞는지 검토
 
+## 최적화
+
+### 테스트 환경 설정
+- Warm-up Iterations: 10회
+- Main Test Iterations: 2,000회
+- 자동차 이동 조건: 랜덤값이 4일 때 전진 (MOVING_FORWARD = 4)
+
+### 측정 케이스
+1. 기본 케이스
+  - Case 1: 2대의 자동차(pobi,woni), 1라운드
+  - Case 2: 3대의 자동차(pobi,woni,jun), 3라운드
+  - Case 3: 4대의 자동차(car1,car2,car3,car4), 5라운드
+
+2. 극단적인 케이스
+  - 10대의 자동차
+  - 30라운드
+  - 최대 부하 상황 테스트
+
+### 측정 방법
+```java
+long startTime = System.nanoTime();
+executeTestRun(carNames, rounds, expectedCars);
+long endTime = System.nanoTime();
+totalElapsedTime += (endTime - startTime) / 1_000_000.0;
+```
+- System.nanoTime()을 사용하여 나노초 단위로 측정
+- 밀리초(ms) 단위로 변환하여 결과 표시
+
+### 리팩토링 후, 최적화 전 측정
+- 기본 케이스
+```text
+Case: pobi,woni, Rounds: 1
+Average Execution time over 2000 runs: 0.57 ms
+
+Case: pobi,woni,jun, Rounds: 3
+Average Execution time over 2000 runs: 0.91 ms
+
+Case: car1,car2,car3,car4, Rounds: 5
+Average Execution time over 2000 runs: 1.80 ms
+```
+
+- 극단적인 케이스
+```text
+Extreme Case - Many cars and rounds
+Average Execution time over 2000 runs: 31.24 ms
+```
