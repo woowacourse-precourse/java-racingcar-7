@@ -20,4 +20,20 @@ public class UserView {
     private static void printAttemptNumGuide(){
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    public static void printResultGuide(){
+        System.out.println("실행 결과");
+    }
+
+    public static void printPlayerAttemptResult(String name, int count){
+        StringBuilder playertResult = new StringBuilder();
+        playertResult.append(name);
+        playertResult.append(" : ");
+        playertResult.append("-".repeat(count));
+        System.out.println(playertResult);
+    }
+
+    public static void changeLine(){
+        System.out.println();
+    }
 }
