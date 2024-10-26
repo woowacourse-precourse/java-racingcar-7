@@ -14,8 +14,9 @@ public class NameRequestHandler {
     }
 
     private void ValidateBlank(String rawInput) {
-        if(rawInput.isBlank()){
-            throw new IllegalArgumentException(BLANK_INPUT_ERROR.getMessage());
+        if(rawInput == null || rawInput.isBlank()){
+            System.out.println(BLANK_INPUT_ERROR.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 }

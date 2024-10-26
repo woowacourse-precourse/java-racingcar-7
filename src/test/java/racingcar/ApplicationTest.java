@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -28,6 +29,22 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("입력 문자열이 빈 문자열이면 예외를 발생시킨다")
+    @Test
+    void blankInputException() {
+        assertThatThrownBy(() -> runException("\n"))
+                        .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력 문자열이 빈 문자열이면 예외를 발생시킨다")
+    @Test
+    void emptyInputException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
