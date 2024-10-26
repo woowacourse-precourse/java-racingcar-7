@@ -13,6 +13,7 @@ public class OutputView {
         for (RacingCar car : racingCars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     public static void printWinners(List<RacingCar> winners){

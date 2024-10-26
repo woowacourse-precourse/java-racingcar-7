@@ -32,8 +32,6 @@ public class RacingController {
         OutputView.printFinalResultMessage();
 
         OutputView.printWinners(winners);
-
-        return;
     }
 
     private void moveRacingCars(List<RacingCar> racingCars) {
