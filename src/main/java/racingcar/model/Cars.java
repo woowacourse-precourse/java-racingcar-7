@@ -29,10 +29,6 @@ public class Cars {
         return Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
     } // getPower
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
-    } // getCars
-
     public void descendingByPosition() {
         Collections.sort(cars);
     } // sortCars
@@ -54,4 +50,8 @@ public class Cars {
     private String removeLastComma(String input) {
         return input.substring(START_INDEX, input.length() - TRIM_END_INDEX);
     } // applyWinnerPrintForm
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
+    } // getCars
 } // class
