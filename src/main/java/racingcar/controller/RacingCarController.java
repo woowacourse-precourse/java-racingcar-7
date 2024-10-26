@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import racingcar.dto.UserInputDTO;
 import racingcar.entity.Car;
 import racingcar.entity.Race;
+import racingcar.exception.ExceptionUtils;
+import racingcar.exception.GeneralError;
 import racingcar.util.RandomNumberGenerator;
 import racingcar.view.RacingView;
 
@@ -19,11 +22,10 @@ public class RacingCarController {
     }
 
     public void run() {
-        String inputCarNames = this.racingView.inputCarNames();
-        String inputRoundCount = this.racingView.inputRoundCount();
+        UserInputDTO userInput = getUserInput();
 
-        List<String> carNames = List.of(inputCarNames.split(","));
-        int roundCount = Integer.parseInt(inputRoundCount);
+        List<String> carNames = List.of(userInput.carNames().split(","));
+        int roundCount = Integer.parseInt(userInput.roundCount());
 
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -34,14 +36,22 @@ public class RacingCarController {
         for (int i = 0; i < roundCount; i++) {
             race.runSingleRound(this.randomNumberGenerator);
 
-            Map<String, Integer> results = new HashMap<>();
+            Map<String, Integer> roundState = new HashMap<>();
             for (Car car : cars) {
-                results.put(car.getName(), car.getPosition());
+                roundState.put(car.getName(), car.getPosition());
             }
-            racingView.printRoundResult(results);
+            racingView.printRoundResult(roundState);
         }
 
         racingView.printWinners(race.getWinners());
+    }
+
+    private UserInputDTO getUserInput() {
+        UserInputDTO userInputDTO = new UserInputDTO(racingView.inputCarNames(), racingView.inputRoundCount());
+        if (!userInputDTO.isValid()) {
+            ExceptionUtils.throwIllegalArgException(GeneralError.EMPTY_INPUT);
+        }
+        return userInputDTO;
     }
 
 
