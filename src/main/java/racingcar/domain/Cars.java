@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import racingcar.util.RandomUtil;
 
 public class Cars {
 
@@ -10,6 +11,10 @@ public class Cars {
 
     public Cars(final List<Car> carList) {
         this.carList = carList;
+    }
+
+    public void takeTurn() {
+        carList.forEach(car -> car.move(RandomUtil.pickRandom()));
     }
 
     public List<String> findWinners() {
@@ -52,4 +57,5 @@ public class Cars {
                 .map(Car::toString)
                 .collect(Collectors.joining());
     }
+
 }

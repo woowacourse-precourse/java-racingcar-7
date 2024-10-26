@@ -8,11 +8,11 @@ public class ResultView {
     private static final String WINNER_SEPARATOR = ", ";
 
     public static void promptExecutionResult() {
-        System.out.print("실행 결과\n");
+        System.out.println("\n실행 결과");
     }
 
     public static void showTurnResult(Cars cars) {
-        System.out.println(cars + "\n");
+        System.out.println(cars);
     }
 
     public static void showWinners(List<String> winners) {
