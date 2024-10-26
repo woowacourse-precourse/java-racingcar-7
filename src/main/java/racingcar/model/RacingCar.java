@@ -20,4 +20,8 @@ public class RacingCar {
     public String getName() {
         return name;
     }
+
+    public Integer getPosition(){
+        return position;
+    }
 }
