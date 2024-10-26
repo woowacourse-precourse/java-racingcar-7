@@ -51,6 +51,12 @@ public class Racingcar {
         if(this.count == 0) throw new IllegalArgumentException("시도 횟수가 0이 될 수는 없습니다.");
     }
 
+    public void output(){
+        for(String carName : carNames){
+            System.out.print(carName + " ");
+        }
+        System.out.print(count);
+    }
 
 
 }
