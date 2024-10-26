@@ -13,12 +13,17 @@ import racingcar.view.OutputView;
 
 public class RacingcarService {
     private final OutputView outputView;
+    private static final RacingcarService racingcarService = new RacingcarService();
     private static final int START_NUMBER = 0;
     private static final int END_NUMBER = 9;
     private static final int STANDARD_NUMBER = 4;
 
     public RacingcarService() {
         outputView = OutputView.getInstance();
+    }
+
+    public static RacingcarService getInstance() {
+        return racingcarService;
     }
 
     public void startRace(Map<String, String> player, int attemptCount) {
