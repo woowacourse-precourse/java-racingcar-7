@@ -3,8 +3,11 @@ package racingcar.unittest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
 import racingcar.OutputHandler;
 
 class OutputHandlerTest extends NsTest {
@@ -37,6 +40,28 @@ class OutputHandlerTest extends NsTest {
 
         // Then
         assertThat(output()).contains("실행 결과");
+    }
+
+    @Test
+    @DisplayName("printCurrentStatus 메서드 테스트")
+    void printCurrentStatus_shouldPrintCarPositions() {
+        // Given
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("crong");
+        car1.move();
+        car1.move();
+        car2.move();
+        List<Car> cars = Arrays.asList(car1, car2);
+
+        // When
+        OutputHandler.printCurrentStatus(cars);
+
+        // Then
+        String[] outputs = output().split(System.lineSeparator());
+        assertThat(outputs).contains(
+                "pobi : --",
+                "crong : -"
+        );
     }
 
     @Override
