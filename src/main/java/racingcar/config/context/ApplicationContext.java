@@ -50,7 +50,7 @@ public class ApplicationContext {
             if (cls.isInterface()) {
                 Optional<Class<?>> implementation = findImplementationClass(cls);
 
-                return implementation.map(it -> cls.cast(createBean(it)))
+                return implementation.map(it -> createBeanWithProxy(it, cls))
                         .orElseThrow(ClassNotFoundException::new);
             }
 
@@ -58,6 +58,16 @@ public class ApplicationContext {
             List<Object> parameters = createConstructorParameters(constructor);
 
             return cls.cast(constructor.newInstance(parameters.toArray()));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private <T> T createBeanWithProxy(Class<?> implementation, Class<T> interfaceType) {
+        try {
+            T instance = interfaceType.cast(createBean(implementation));
+
+            return ContextProxy.createProxy(instance, interfaceType);
         } catch (Exception e) {
             return null;
         }
