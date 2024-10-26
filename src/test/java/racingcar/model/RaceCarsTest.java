@@ -14,4 +14,11 @@ public class RaceCarsTest {
         assertThatThrownBy(() -> RaceCars.fromNames(names))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 자동차_개수가_1개_미만일_경우_예외테스트(){
+        List<String> names = List.of();
+        assertThatThrownBy(() -> RaceCars.fromNames(names))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
