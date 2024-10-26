@@ -11,11 +11,7 @@ public class Car {
 
     @Override
     public String toString() {
-        StringBuilder progress = new StringBuilder();
-        for (int i = 0; i < forwardCount; i++) {
-            progress.append("-");
-        }
-        return name + " : " + progress;
+        return name + " : " + "-".repeat(forwardCount);
     }
 
     public final void goForward() {
