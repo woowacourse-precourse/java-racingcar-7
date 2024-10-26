@@ -7,7 +7,6 @@ public class ValidationUtils {
         for (String name : carNames) {
             checkCarNameLength(name);
             checkCarNameNotEmpty(name);
-            checkCarNameWhitespaceValues(name);
         }
     }
 
@@ -23,11 +22,6 @@ public class ValidationUtils {
         }
     }
 
-    private void checkCarNameWhitespaceValues(String name){
-        if(name.contains(" ")){
-            throw new IllegalArgumentException("이름에 공백이 포함되어 있습니다.");
-        }
-    }
     public void validateRaceCount(String input) {
         try {
             int raceCount = Integer.parseInt(input);
