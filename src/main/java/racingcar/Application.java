@@ -7,7 +7,9 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Application {
     public static void main(String[] args) {
 
+    }
 
+    private static Car[] getInputCarNames() {
         System.out.println("자동차의 이름을 쉼표(,)로 구분해 입력해주세요 (5자 이하)");
         String[] carNames = (Console.readLine()).split(",");
 
@@ -15,7 +17,7 @@ public class Application {
 
         Car[] cars = new Car[countCars];
 
-        for (int i=0; i < countCars; i++) {
+        for (int i = 0; i < countCars; i++) {
 
             if (carNames[i].length() > 5) {
                 throw new IllegalArgumentException(carNames[i] + ": 5자 이하여야 합니다");
@@ -23,6 +25,8 @@ public class Application {
 
             cars[i] = new Car(carNames[i].trim());
         }
+        return cars;
+    }
 
         System.out.println("이동횟수를 정수로 입력해주세요");
         int moveCount;
