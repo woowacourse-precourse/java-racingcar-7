@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.Name;
 import racingcar.view.InputView;
+import racingcar.vo.Name;
 
 public class RacingController {
     private final InputView inputView;
