@@ -15,7 +15,7 @@ public class ParserTest {
     @MethodSource("provideCarNames")
     @DisplayName("사용자 입력 콤마로 split")
     void parseCarsTest(String input, List<String> expected) {
-        assertThat(Parser.parseCars(input)).isEqualTo(expected);
+        assertThat(Parser.parseCarName(input)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideCarNames() {

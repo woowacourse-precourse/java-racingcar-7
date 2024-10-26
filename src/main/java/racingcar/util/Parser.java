@@ -3,7 +3,7 @@ package racingcar.util;
 import java.util.List;
 
 public class Parser {
-    public static List<String> parseCars(String input) {
+    public static List<String> parseCarName(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException();
         }

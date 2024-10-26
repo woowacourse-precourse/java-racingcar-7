@@ -11,7 +11,7 @@ import racingcar.view.OutputView;
 public class GameService {
 
     public Cars createCars(String input) {
-        List<String> carNames = Parser.parseCars(input);
+        List<String> carNames = Parser.parseCarName(input);
         Validator.carNameValidate(carNames);
 
         return Cars.of(carNames);
