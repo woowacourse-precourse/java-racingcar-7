@@ -17,22 +17,24 @@ public class RacingGameController {
     private final TryCountValidator tryCountValidator;
     private RacingGameService racingGameService;
 
-    public RacingGameController(InputView inputView, OutputView outputView) {
+    public RacingGameController(InputView inputView, OutputView outputView,
+                                CarNameValidator carNameValidator,
+                                TryCountValidator tryCountValidator) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.carNameValidator = new CarNameValidator();
-        this.tryCountValidator = new TryCountValidator();
+        this.carNameValidator = carNameValidator;
+        this.tryCountValidator = tryCountValidator;
     }
 
     public void run() {
         List<String> carNames = getCarNames();
         int tryCount = getTryCount();
 
-        inputView.close(); // Console 자원 해제
-
         initializeGame(carNames);
         runAllRaces(tryCount);
         printFinalWinners();
+
+        inputView.close(); // 콘솔 자원 해제
     }
 
     private List<String> getCarNames() {

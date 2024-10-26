@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.RacingCar;
+import racingcar.validator.CarNameValidator;
+import racingcar.validator.TryCountValidator;
 import racingcar.view.ErrorMessage;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -26,7 +28,10 @@ public class RacingGameControllerTest {
     void setUp() {
         inputView = new TestInputView();
         outputView = new TestOutputView();
-        controller = new RacingGameController(inputView, outputView);
+        CarNameValidator carNameValidator = new CarNameValidator();
+        TryCountValidator tryCountValidator = new TryCountValidator();
+
+        controller = new RacingGameController(inputView, outputView, carNameValidator, tryCountValidator);
     }
 
     @ParameterizedTest
