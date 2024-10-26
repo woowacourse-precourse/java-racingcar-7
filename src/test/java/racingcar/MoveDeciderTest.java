@@ -12,4 +12,16 @@ class MoveDeciderTest {
 
     }
 
+    @Test
+    void isMovable() {
+        int randomNum = MoveDecider.pickRandomNum();
+        String moved = MoveDecider.isMovable(randomNum);
+
+        if (randomNum > 3) {
+            assertThat(moved).isEqualTo("-");
+        } else {
+            assertThat(moved).isEqualTo("");
+        }
+
+    }
 }

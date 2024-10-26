@@ -10,6 +10,14 @@ public class MoveDecider {
         return randomNum;
     }
 
+    public static String isMovable(int randomNum) {
+        String moved = "";
+        if (randomNum > 3) {
+            moved = moved + "-";
+        }
+        System.out.println(moved);
+        return moved;
+    }
 
 
 }
