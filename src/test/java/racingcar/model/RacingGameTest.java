@@ -101,4 +101,63 @@ public class RacingGameTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("우승자 결정 테스트")
+    class testWinner{
+        @Test
+        @DisplayName("단일 우승자 테스트")
+        public void testSingleWinner(){
+            //given
+            MoveStrategy testMoveStrategy = new MoveStrategy() {
+                private int count = 0;
+
+                @Override
+                public boolean canMove() {
+                    return count++ < 1;
+                }
+            };
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            //when
+            List<String> winners = racingGame.getWinners();
+            //then
+            assertThat(winners).containsExactly("pobi");
+        }
+
+        @Test
+        @DisplayName("공동 우승자 테스트")
+        public void testMultipleWinner(){
+            //given
+            MoveStrategy testMoveStrategy = new MoveStrategy() {
+                private int count = 0;
+
+                @Override
+                public boolean canMove() {
+                    return count++ < 2;
+                }
+            };
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            //when
+            List<String> winners = racingGame.getWinners();
+            //then
+            assertThat(winners).containsExactlyInAnyOrder("pobi","woni");
+        }
+        @Test
+        @DisplayName("모든 자동차 이동 x 테스트")
+        public void testAllWinner(){
+            //given
+            MoveStrategy testMoveStrategy = () -> false;
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(testMoveStrategy);
+            //when
+            List<String> winners = racingGame.getWinners();
+            //then
+            assertThat(winners).containsExactlyInAnyOrder("pobi","woni","jun");
+        }
+    }
 }
