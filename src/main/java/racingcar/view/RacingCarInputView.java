@@ -26,7 +26,7 @@ public class RacingCarInputView {
 
         try {
             tryCount = Integer.parseInt(input);
-            validatePositiveNumber(tryCount);
+            Validator.validatePositiveNumber(tryCount);
         } catch (IllegalArgumentException | NonPositiveNumberException e) {
             throw new IllegalArgumentException("int형 범위의 양수를 입력해주세요.");
         }
@@ -34,9 +34,12 @@ public class RacingCarInputView {
         return tryCount;
     }
 
-    private static void validatePositiveNumber(int number) {
-        if (number <= 0) {
-            throw new NonPositiveNumberException();
+    private static class Validator {
+
+        private static void validatePositiveNumber(int number) {
+            if (number <= 0) {
+                throw new NonPositiveNumberException();
+            }
         }
     }
 }
