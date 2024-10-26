@@ -9,6 +9,7 @@ import java.util.List;
 import racingcar.racing.model.Car;
 import racingcar.racing.model.RacingGame;
 import racingcar.racing.model.RacingGameFactory;
+import racingcar.racing.model.dto.RoundResult;
 import racingcar.racing.utils.InputParser;
 import racingcar.racing.utils.InputValidator;
 import racingcar.racing.view.InputView;
@@ -27,7 +28,8 @@ public class RacingGameManager {
         int attemptNumber = inputAttemptNumber();
         createRacingGame(carNames, attemptNumber);
         OutputView.printMessage("\n실행 결과");
-        List<Car> winners = game.start();
+        List<List<RoundResult>> allRoundResult = game.start();
+
         OutputView.printWinner(winners);
     }
 

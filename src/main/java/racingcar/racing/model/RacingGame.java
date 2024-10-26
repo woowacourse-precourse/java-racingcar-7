@@ -1,8 +1,10 @@
 package racingcar.racing.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.racing.model.dto.RoundResult;
 import racingcar.racing.view.OutputView;
 
 public class RacingGame {
@@ -22,12 +24,16 @@ public class RacingGame {
         }
     }
 
-    public List<Car> start() {
+    public List<List<RoundResult>> start() {
+        List<List<RoundResult>> allRoundResult = new ArrayList<>();
         for (int i = 0; i < allRound; i++) {
             roundStart(participants);
-            OutputView.printRoundResult(participants);
+            List<RoundResult> roundResults = participants.stream()
+                    .map(car -> RoundResult.from(car))
+                    .collect(Collectors.toList());
+            allRoundResult.add(roundResults);
         }
-        return selectWinners();
+        return allRoundResult;
     }
 
     public List<Car> selectWinners() {
