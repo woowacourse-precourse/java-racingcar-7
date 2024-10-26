@@ -29,4 +29,17 @@ public class OutputViewTest {
         assertThat(outputStream.toString().trim())
                 .isEqualTo("최종 우승자 : pobi");
     }
+
+    @Test
+    void 공동_우승자_안내_문구_출력() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        List<String> winnerList = Arrays.asList(new String[]{"pobi", "woni"});
+
+        outputView.printWinnerMessage(winnerList);
+
+        assertThat(outputStream.toString().trim())
+                .isEqualTo("최종 우승자 : pobi, woni");
+    }
 }
