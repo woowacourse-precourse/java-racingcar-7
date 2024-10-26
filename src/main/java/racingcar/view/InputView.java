@@ -2,7 +2,6 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.constant.ErrorMessage;
-import racingcar.constant.Limit;
 import racingcar.constant.Message;
 
 import java.util.regex.Pattern;
@@ -20,12 +19,6 @@ public class InputView {
         if (splitByComma(input)) {
             throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MUST_BE_SPLIT_BY_COMMA);
         } // end if
-
-        for (String carName : inputCarNames) {
-            if (carName.length() > Limit.CAR_NAME_MAX_LENGTH) {
-                throw new IllegalArgumentException(ErrorMessage.PREFIX + ErrorMessage.CAR_NAME_MAX_LENGTH_IS_FIVE);
-            } // end if
-        } // end for
 
         return inputCarNames;
     } // responseForCarNames
