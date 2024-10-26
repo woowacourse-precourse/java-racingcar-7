@@ -79,7 +79,7 @@ totalElapsedTime += (endTime - startTime) / 1_000_000.0;
 - [x] 입력 검증 정규표현식 활용
 - [x] 상수 문자열 분리
 
-### 리팩토링 후, 최적화 전 측정
+### 최적화 전 측정
 - 기본 케이스
 ```text
 Case: pobi,woni, Rounds: 1
@@ -97,3 +97,29 @@ Average Execution time over 2000 runs: 1.80 ms
 Extreme Case - Many cars and rounds
 Average Execution time over 2000 runs: 31.24 ms
 ```
+
+### 최적화 후 측정
+- 기본 케이스
+```text
+Case: pobi,woni, Rounds: 1
+Average Execution time over 2000 runs: 0.56 ms
+
+Case: pobi,woni,jun, Rounds: 3
+Average Execution time over 2000 runs: 0.93 ms
+
+
+Case: car1,car2,car3,car4, Rounds: 5
+Average Execution time over 2000 runs: 1.87 ms
+```
+- 극단적인 케이스
+```text
+Extreme Case - Many cars and rounds
+Average Execution time over 2000 runs: 30.82 ms
+```
+
+
+### 결과
+- 기본적인 경우는 큰 성능 향상은 없음 
+- 현재 컴퓨터의 메모리 상황에 따라 달라질 수 있음을 확인. 최대한 비슷한 상황에서 실행할 수 있게 함
+- 극단적인 경우에는 0.42ms만큼의 성능 향상이 있었음. 하지만 이것도 컴퓨터의 상황에 따라 달라질 여지가 있어 정확하진 않음
+- 하지만, 기존 경우에 예외처리 로직을 하나 더 추가했는데도 성능 향상이 있는걸 확인. 리팩토링이 어느정도는 유효함을 볼 수 있음
