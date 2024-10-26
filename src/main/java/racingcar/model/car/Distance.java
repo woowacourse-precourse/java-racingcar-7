@@ -15,4 +15,8 @@ public class Distance {
   }
 
 
+  public String toString(){
+    return distance.toString();
+  }
+
 }

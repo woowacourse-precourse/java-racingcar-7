@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-  private List<Car> cars;
+  private final List<Car> cars;
 
   public Cars(List<String> carNames) {
     cars = new ArrayList<>();
@@ -18,6 +18,10 @@ public class Cars {
     for (Car car : cars) {
       car.moveCar();
     }
+  }
+
+  public List<Car> getCars() {
+    return cars;
   }
 
 

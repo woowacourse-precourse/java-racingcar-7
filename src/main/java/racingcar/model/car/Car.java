@@ -39,4 +39,12 @@ public class Car {
     return DecisionNum.isGo(decisionNum);
   }
 
+  public Name getName() {
+    return name;
+  }
+
+  public Distance getDistance() {
+    return distance;
+  }
+
 }
