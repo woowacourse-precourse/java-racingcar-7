@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Car {
     private final String name;
 
@@ -28,6 +30,22 @@ public class Car {
         }
 
         return forwardDistance;
+    }
+
+    public int calculateMaxPosition(int max) {
+        if (this.currentPosition > max) {
+            max = this.currentPosition;
+        }
+
+        return max;
+    }
+
+    public List<String> addIfWinner(int max) {
+        if (this.currentPosition == max) {
+            return List.of(this.name);
+        }
+
+        return List.of();
     }
 
     public boolean isName(String givenName) {

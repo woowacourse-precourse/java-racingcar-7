@@ -129,6 +129,56 @@ class ApplicationTest extends NsTest {
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
     }
 
+    @Test
+    void 최대_우선_반환_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            Application application = new Application();
+            List<String> carNames = Arrays.asList("pobi", "woni");
+            Cars cars = new Cars(carNames);
+            int raceTime = 1;
+
+            List<List<Car>> racingRecords = cars.race(raceTime);
+            List<Car> lastRacingRecord = racingRecords.getLast();
+            int expectedMax = 1;
+
+            assertThat(application.calculateMaxPosition(lastRacingRecord)).isEqualTo(expectedMax);
+        }, MOVING_FORWARD, STOP);
+    }
+
+    @Test
+    void 단독_우승자_계산_기능_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            Application application = new Application();
+            List<String> carNames = Arrays.asList("pobi", "woni");
+            Cars cars = new Cars(carNames);
+            int raceTime = 3;
+
+            List<List<Car>> racingRecords = cars.race(raceTime);
+            List<Car> lastRacingRecord = racingRecords.getLast();
+
+            List<String> expectedWinners = Arrays.asList("pobi");
+
+            assertThat(application.calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
+        }, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP);
+    }
+
+    @Test
+    void 공동_우승자_계산_기능_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            Application application = new Application();
+            List<String> carNames = Arrays.asList("pobi", "woni");
+            Cars cars = new Cars(carNames);
+            int raceTime = 1;
+
+            List<List<Car>> racingRecords = cars.race(raceTime);
+            List<Car> lastRacingRecord = racingRecords.getLast();
+
+            List<String> expectedWinners = Arrays.asList("pobi", "woni");
+
+            assertThat(application.calculateWinners(lastRacingRecord)).isEqualTo(expectedWinners);
+        }, MOVING_FORWARD, MOVING_FORWARD);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
