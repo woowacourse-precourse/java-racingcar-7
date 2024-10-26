@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.dto.RacingRegisterForm;
 import racingcar.dto.RoundRaceRecord;
 import racingcar.model.CarRace;
-import racingcar.model.Cars;
+import racingcar.model.RacingRegisterFormFactory;
 import racingcar.model.RegistrarClerk;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -21,27 +21,27 @@ public class RacingGameController {
 
     public void startRace() {
         RacingRegisterForm registerForm = getRacingRegisterForm();
-        Cars cars = getCars(registerForm);
-        int raceRoundCount = registerForm.raceRoundCount();
-        CarRace carRace = new CarRace(cars);
+        CarRace carRace = createCarRace(registerForm);
         outputView.printRaceStart();
-        for (int i = 1; i <= raceRoundCount; i++) {
-            List<RoundRaceRecord> roundResult = carRace.startRound();
-            outputView.printRoundResult(roundResult);
+        while (carRace.hasMoreRounds()) {
+            executeRaceRound(carRace);
         }
         displayWinners(carRace);
+    }
+
+    private void executeRaceRound(CarRace carRace) {
+        List<RoundRaceRecord> roundResult = carRace.startRound();
+        outputView.printRoundResult(roundResult);
     }
 
     private RacingRegisterForm getRacingRegisterForm() {
         String inputCarNames = inputView.requestCarNames();
         String inputRaceRoundCount = inputView.requestRaceRoundCount();
-        RegistrarClerk registrarClerk = new RegistrarClerk();
-        return registrarClerk.register(inputCarNames, inputRaceRoundCount);
+        return RacingRegisterFormFactory.createFrom(inputCarNames, inputRaceRoundCount);
     }
 
-    private Cars getCars(RacingRegisterForm registerForm) {
-        List<String> carNames = registerForm.carNames();
-        return new Cars(carNames);
+    private CarRace createCarRace(RacingRegisterForm registerForm) {
+        return new RegistrarClerk().register(registerForm);
     }
 
     private void displayWinners(CarRace carRace) {

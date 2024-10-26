@@ -1,34 +1,19 @@
 package racingcar.model;
 
-import java.util.Arrays;
-import java.util.List;
 import racingcar.dto.RacingRegisterForm;
 
 public class RegistrarClerk {
 
-    public static final String SEPARATOR = ",";
-
-    public RacingRegisterForm register(String inputCarNames, String inputRaceRoundCount) {
-        List<String> carNames = convertCarNames(inputCarNames);
-        int raceRoundCount = convertRaceRoundCount(inputRaceRoundCount);
-        return new RacingRegisterForm(carNames, raceRoundCount);
+    public CarRace register(RacingRegisterForm registerForm) {
+        validateRegisterForm(registerForm);
+        Cars cars = new Cars(registerForm.carNames());
+        int raceRoundCount = registerForm.raceRoundCount();
+        return new CarRace(cars, raceRoundCount);
     }
 
-    private List<String> convertCarNames(String input) {
-        return Arrays.stream(input.split(SEPARATOR))
-                .map(String::trim)
-                .toList();
-    }
-
-    private int convertRaceRoundCount(String input) {
-        try {
-            int roundCount = Integer.parseInt(input.trim());
-            if (roundCount < 1) {
-                throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 해요.");
-            }
-            return roundCount;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수에 숫자가 아닌 값을 입력했어요. 1 이상의 숫자를 입력해주세요.");
+    private void validateRegisterForm(RacingRegisterForm registerForm) {
+        if (registerForm == null) {
+            throw new IllegalArgumentException("신청서가 유효하지 않아요. 다시 작성해주세요.");
         }
     }
 }

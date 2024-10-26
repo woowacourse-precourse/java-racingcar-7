@@ -7,41 +7,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RacingRegisterForm;
 
-@DisplayName("등록 사무원 테스트")
+@DisplayName("자동차 경주 등록원 테스트")
 class RegistrarClerkTest {
 
     @Test
-    @DisplayName("시도할 횟수가 1보다 작은 경우 예외 테스트")
+    @DisplayName("신청 폼 객체가 잘못된 경우 예외 테스트")
     void should_ThrowException_When_RaceRoundCountLessThan1() {
-        RegistrarClerk registrarClerk = new RegistrarClerk();
-        String inputCarNames = "pobi,woni";
-        String inputRaceRoundCount = "0";
-
-        assertThatThrownBy(() -> registrarClerk.register(inputCarNames, inputRaceRoundCount))
+        assertThatThrownBy(() ->  new RegistrarClerk().register(null))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("시도할 횟수가 숫자가 아닌 경우 예외 테스트")
-    void should_ThrowException_When_RaceRoundCountIsNotNumeric() {
-        RegistrarClerk registrarClerk = new RegistrarClerk();
-        String inputCarNames = "pobi,woni";
-        String inputRaceRoundCount = "가";
-
-        assertThatThrownBy(() -> registrarClerk.register(inputCarNames, inputRaceRoundCount))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("정상적인 입력인 경우 신청서 객체를 반환한다.")
-    public void should_ReturnRacingRegisterForm_When_ValidInputGiven() {
-        RegistrarClerk registrarClerk = new RegistrarClerk();
+    @DisplayName("정상적인 신청인 경우 자동차 경주 객체를 반환한다.")
+    public void should_ReturnCarRace_When_ValidInputGiven() {
         String inputCarNames = "pobi,woni";
         String inputRaceRoundCount = "3";
+        RacingRegisterForm registerForm = RacingRegisterFormFactory.createFrom(inputCarNames, inputRaceRoundCount);
+        RegistrarClerk registrarClerk = new RegistrarClerk();
+        CarRace carRace = registrarClerk.register(registerForm);
 
-        RacingRegisterForm result = registrarClerk.register(inputCarNames, inputRaceRoundCount);
-        assertThat(result).isNotNull();
-        assertThat(result.carNames()).containsExactly("pobi", "woni");
-        assertThat(result.raceRoundCount()).isEqualTo(3);
+        assertThat(carRace).isNotNull();
     }
 }
