@@ -1,16 +1,16 @@
 package racingcar.controller;
 
-import racingcar.domain.CarGameManager;
+import racingcar.service.RaceManager;
 import racingcar.validation.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class CarController {
+public class RaceController {
     private final InputView inputView;
     private final OutputView outputView;
-    private CarGameManager carGameManager;
+    private RaceManager raceManager;
 
-    public CarController() {
+    public RaceController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
@@ -26,18 +26,18 @@ public class CarController {
         InputValidator.validateName(names);
         int totalTimes = inputView.inputTimes();
 
-        carGameManager = new CarGameManager(names, totalTimes);
+        raceManager = new RaceManager(names, totalTimes);
         outputView.printResultMessage();
     }
 
     private void playRace() {
-        for (int i = 0; i < carGameManager.getTotalTimes(); i++) {
-            carGameManager.startEachStep();
-            outputView.printEachStep(carGameManager.getCars());
+        for (int i = 0; i < raceManager.getTotalTimes(); i++) {
+            raceManager.startEachStep();
+            outputView.printEachStep(raceManager.getCars());
         }
     }
 
     private void displayWinners() {
-        outputView.printWinners(carGameManager.getWinners());
+        outputView.printWinners(raceManager.getWinners());
     }
 }
