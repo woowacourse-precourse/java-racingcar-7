@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.validation.InputValidation;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ public class Race {
     private int maxPosition;
 
     public Race(String inputtedName, int count) {
+        InputValidation.validateDelimiter(inputtedName);
+
         String[] carNames = inputtedName.split(DELIMITER, -1);
         cars = Arrays.stream(carNames)
                 .map(name -> new Car(name))
