@@ -10,9 +10,9 @@ public abstract class Car {
         this.position = position;
     }
 
-    abstract void move();
+    abstract public void move();
 
-    abstract boolean isWinner(int maxPosition);
+    abstract public boolean isWinner(int maxPosition);
 
     public int getPosition() {
         return position;
