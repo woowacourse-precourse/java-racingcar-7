@@ -1,10 +1,8 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
-import racingcar.repository.impl.CarRepositoryImpl;
 import racingcar.validator.Validator;
 import racingcar.validator.impl.NameValidator;
 
@@ -12,17 +10,14 @@ public class CarService {
     CarRepository carRepository;
     Validator validator;
 
-    public CarService() {
-        this.carRepository = new CarRepositoryImpl();
+    public CarService(CarRepository carRepository) {
+        this.carRepository = carRepository;
         this.validator = new NameValidator();
     }
 
-    public void inputRacingCar() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNameInput = Console.readLine();
-
-        carNameInput = carNameInput.replaceAll(" ", "");
-        List<String> carNames = List.of(carNameInput.split(","));
+    public void saveAllByString(String rawNames) {
+        rawNames = rawNames.replaceAll(" ", "");
+        List<String> carNames = List.of(rawNames.split(","));
         validator.validate(carNames);
 
         List<Car> cars = carNames.stream()
@@ -30,7 +25,5 @@ public class CarService {
                 .toList();
 
         carRepository.saveAll(cars);
-
-        Console.close();
     }
 }

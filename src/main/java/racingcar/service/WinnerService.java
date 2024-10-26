@@ -3,27 +3,15 @@ package racingcar.service;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
-import racingcar.repository.impl.CarRepositoryImpl;
 
 public class WinnerService {
     CarRepository carRepository;
 
-    public WinnerService() {
-        this.carRepository = new CarRepositoryImpl();
+    public WinnerService(CarRepository carRepository) {
+        this.carRepository = carRepository;
     }
 
-    public void printWinners() {
-        List<Car> winners = decisionWinners();
-
-        String[] winnerArr = winners.stream()
-                .map(Car::getName)
-                .toArray(String[]::new);
-
-        String winnersStr = String.join(", ", winnerArr);
-        System.out.print("최종 우승자 : " + winnersStr);
-    }
-
-    private List<Car> decisionWinners() {
+    public List<Car> getWinners() {
         int maxDistance = getMaxDistance();
 
         List<Car> carsResult = carRepository.findAll();

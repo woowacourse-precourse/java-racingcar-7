@@ -6,7 +6,7 @@ import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
 public class CarRepositoryImpl implements CarRepository {
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     @Override
     public void save(Car car) {
@@ -14,8 +14,8 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void saveAll(List<Car> cars) {
-        for (Car car : cars) {
+    public void saveAll(List<Car> carsInput) {
+        for (Car car : carsInput) {
             this.save(car);
         }
     }
