@@ -1,4 +1,5 @@
 package racingcar.util;
+import java.util.List;
 
 public class ValidUtil {
     public static boolean isNumeric(String input){
@@ -18,5 +19,7 @@ public class ValidUtil {
         return Integer.parseInt(input) > 0;
     }
 
-
+    public static boolean isDuplicate(List<String> inputs){
+        return inputs.stream().distinct().count() != inputs.size();
+    }
 }

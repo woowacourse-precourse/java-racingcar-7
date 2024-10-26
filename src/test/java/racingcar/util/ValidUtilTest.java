@@ -2,6 +2,10 @@ package racingcar.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,5 +28,11 @@ class ValidUtilTest {
     public void 이동_횟수는_1_이상이어야_한다_음수인_경우(){
         String moveCount = "-1";
         assertThat(isPositive(moveCount)).isEqualTo(false);
+    }
+
+    @Test
+    public void 자동차_이름은_중복될_수_없다_중복인_경우(){
+        List<String> carNames = Arrays.asList("a","b","a");
+        assertThat(isDuplicate(carNames)).isEqualTo(true);
     }
 }
