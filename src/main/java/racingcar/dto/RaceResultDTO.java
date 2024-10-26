@@ -1,24 +1,16 @@
 package racingcar.dto;
 
-import java.util.List;
-import racingcar.domain.car.Car;
-import racingcar.domain.race.Race;
+import racingcar.domain.race.RaceResult;
 
 public class RaceResultDTO {
 
-    private final List<Race> races;
-    private final List<Car> raceWinners;
+    private final RaceResult raceResult;
 
-    public RaceResultDTO(List<Race> races, List<Car> raceWinners) {
-        this.races = races;
-        this.raceWinners = raceWinners;
+    public RaceResultDTO(RaceResult raceResult) {
+        this.raceResult = raceResult;
     }
 
-    public List<Car> getRaceWinners() {
-        return raceWinners;
-    }
-
-    public List<Race> getRaces() {
-        return races;
+    public RaceResult getRaceResult() {
+        return raceResult;
     }
 }
