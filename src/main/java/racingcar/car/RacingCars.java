@@ -24,6 +24,10 @@ public class RacingCars {
                 .toList());
     }
 
+    public List<RacingCar> getCars() {
+        return cars;
+    }
+
     private int getMaxMoveCount() {
         return cars.stream()
                 .mapToInt(RacingCar::getMoveCount)
@@ -31,7 +35,4 @@ public class RacingCars {
 
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
-    }
 }

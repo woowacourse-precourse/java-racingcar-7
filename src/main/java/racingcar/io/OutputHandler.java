@@ -1,5 +1,7 @@
 package racingcar.io;
 
+import racingcar.car.RacingCars;
+
 public class OutputHandler {
 
     public void showCarNameInputMessage() {
@@ -10,9 +12,12 @@ public class OutputHandler {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-
     public void showGameResult(String gameResult) {
-        System.out.println(gameResult);
+        System.out.print("\n실행결과\n" + gameResult);
     }
 
+    public void showWinners(RacingCars racingCars) {
+        String winnersName = String.join(", ", racingCars.getWinnersName());
+        System.out.println("최종 우승자 : " + winnersName);
+    }
 }
