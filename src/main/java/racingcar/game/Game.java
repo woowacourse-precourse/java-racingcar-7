@@ -20,8 +20,7 @@ public class Game {
             int attemptCount = InputManager.readAttemptCount();
             race(cars, attemptCount);
 
-            List<String> winnerNames = cars.getWinnerNames();
-            OutputManager.printWinner(winnerNames);
+            cars.showWinner();
         } finally {
             InputManager.close();
         }

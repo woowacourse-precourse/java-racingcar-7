@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import static racingcar.car.constant.Constants.DELIMITER;
+import static racingcar.car.constant.Constants.WINNER_RESULT_MESSAGE;
 import static racingcar.car.constant.ErrorMessage.DUPLICATED_NAME_ERROR_MESSAGE;
 import static racingcar.car.constant.ErrorMessage.ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE;
 import static racingcar.car.constant.ErrorMessage.NAME_COUNT_ERROR_MESSAGE;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.io.OutputManager;
 
 public class Cars {
 
@@ -42,7 +45,13 @@ public class Cars {
         }
     }
 
-    public List<String> getWinnerNames() {
+    public void showWinner() {
+        List<String> winnerNames = getWinnerNames();
+        String joinedWinnerName = getJoinedWinnerName(winnerNames);
+        OutputManager.printMessage(WINNER_RESULT_MESSAGE + joinedWinnerName);
+    }
+
+    private List<String> getWinnerNames() {
         List<String> winnerNames = new ArrayList<>();
 
         int winnerMoveCount = getWinnerMoveCount();
@@ -96,5 +105,9 @@ public class Cars {
         }
 
         return maxMoveCount;
+    }
+
+    private String getJoinedWinnerName(List<String> winnerNames) {
+        return String.join(DELIMITER, winnerNames);
     }
 }
