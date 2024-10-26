@@ -19,9 +19,9 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printCarPostion(ArrayList<String> cars) {
-        for (String car : cars) {
-            System.out.println(car + " : " + "-".repeat(1));
+    public void printCarPostion(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getCarName() + " : " + "-".repeat(car.getPostion()));
         }
         System.out.println();
     }
