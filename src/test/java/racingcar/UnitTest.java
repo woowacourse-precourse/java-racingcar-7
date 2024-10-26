@@ -3,12 +3,16 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -92,13 +96,10 @@ public class UnitTest extends NsTest {
         );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("generateData")
     @DisplayName("assignRandomNumber 테스트")
-    void assignRandomNumberTest() {
-        List<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("car1"));
-        cars.add(new RacingCar("car2"));
-        cars.add(new RacingCar("car3"));
+    void assignRandomNumberTest(List<RacingCar> cars) {
         assertRandomNumberInRangeTest(
                 () -> {
                     Application.assignRandomNumber(cars);
@@ -109,14 +110,10 @@ public class UnitTest extends NsTest {
         );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("generateData")
     @DisplayName("checkRandomNumber 테스트")
-    void checkRandomNumberTest() {
-        List<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("car1"));
-        cars.add(new RacingCar("car2"));
-        cars.add(new RacingCar("car3"));
-
+    void checkRandomNumberTest(List<RacingCar> cars) {
         assertRandomNumberInRangeTest(
                 () -> {
                     Application.assignRandomNumber(cars);
@@ -131,13 +128,10 @@ public class UnitTest extends NsTest {
         assertThat(cars.get(2).position).isEqualTo(0);
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("generateData")
     @DisplayName("printCarInfo 테스트")
-    void printCarInfoTest() {
-        List<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("car1"));
-        cars.add(new RacingCar("car2"));
-        cars.add(new RacingCar("car3"));
+    void printCarInfoTest(List<RacingCar> cars) {
         cars.get(0).position = 1;
         cars.get(1).position = 3;
         cars.get(2).position = 2;
@@ -145,29 +139,24 @@ public class UnitTest extends NsTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Application.printCarInfo(cars);
-        assertThat(out.toString()).contains("car1 : -", "car2 : ---", "car3 : --");
+        assertThat(out.toString()).contains(cars.get(0).name+" : -",
+                cars.get(1).name+" : ---", cars.get(2).name+" : --");
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("generateData")
     @DisplayName("getWinPosition 테스트")
-    void getWinPositionTest() {
-        List<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("car1"));
-        cars.add(new RacingCar("car2"));
-        cars.add(new RacingCar("car3"));
+    void getWinPositionTest(List<RacingCar> cars) {
         cars.get(0).position = 1;
         cars.get(1).position = 3;
         cars.get(2).position = 2;
         assertThat(Application.getWinPosition(cars)).isEqualTo(3);
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("generateData")
     @DisplayName("getWinners 테스트")
-    void getWinnersTest() {
-        List<RacingCar> cars = new ArrayList<>();
-        cars.add(new RacingCar("car1"));
-        cars.add(new RacingCar("car2"));
-        cars.add(new RacingCar("car3"));
+    void getWinnersTest(List<RacingCar> cars) {
         cars.get(0).position = 1;
         cars.get(1).position = 3;
         cars.get(2).position = 2;
@@ -190,6 +179,15 @@ public class UnitTest extends NsTest {
         System.setOut(new PrintStream(out));
         Application.printWinners(winners);
         assertThat(out.toString()).contains("최종 우승자 : car1, car2, car3");
+    }
+
+    static Stream<Arguments> generateData() {
+        List<RacingCar> cars1 = List.of(new RacingCar("car1"), new RacingCar("car2"), new RacingCar("car3"));
+        List<RacingCar> cars2 = List.of(new RacingCar("carA"), new RacingCar("carB"), new RacingCar("carC"));
+        return Stream.of(
+                Arguments.of(cars1),
+                Arguments.of(cars2)
+        );
     }
 
     @Override
