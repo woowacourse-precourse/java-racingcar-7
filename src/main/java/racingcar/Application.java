@@ -62,10 +62,12 @@ public class Application {
         }
     }
 
+
+    private static String findWinner(Car[] cars) {
         String winner = "";
         int maxPosition = 0;
 
-        for (int i = 0; i < countCars; i++) {
+        for (int i = 0; i < cars.length; i++) {
 
             if (cars[i].getPosition().length() > maxPosition) {
                 maxPosition = cars[i].getPosition().length();
@@ -76,6 +78,8 @@ public class Application {
 
             }
         }
+        return winner;
+    }
 
         System.out.println("최종 우승자 : " + winner);
 
