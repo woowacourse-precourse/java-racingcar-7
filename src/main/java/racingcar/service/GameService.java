@@ -9,6 +9,7 @@ public class GameService {
 
     private Input input;
     private Game game;
+    private int max;
 
     public GameService(Input input, Game game) {
         this.input = input;
@@ -29,22 +30,25 @@ public class GameService {
         }
     }
 
-    public String runCarGame() {
+    public String[] runCarGame() {
         StringBuilder sb = new StringBuilder();
         for (String car : game.getCars().keySet()) {
 
             int random = Randoms.pickNumberInRange(0, 9);
             int distance = game.getCars().get(car);
 
-            if (random >= 4) game.getCars().put(car, distance + 1);
+            if (random >= 4) {
+                game.getCars().put(car, distance + 1);
+                max = Math.max(max, game.getCars().get(car));
+            }
 
             sb.append(car).append(" : ");
-            for (int i = 0; i < distance; i++) {
+            for (int i = 0; i < game.getCars().get(car); i++) {
                 sb.append('-');
             }
             sb.append('\n');
         }
 
-        return sb.toString();
+        return new String[]{sb.toString(), String.valueOf(max)};
     }
 }
