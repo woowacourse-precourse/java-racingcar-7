@@ -15,8 +15,4 @@ public class Progress {
     public String getValue() {
         return value;
     }
-
-    public int length() {
-        return value.length();
-    }
 }
