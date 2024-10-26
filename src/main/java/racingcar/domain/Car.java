@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.constant.DomainConstant.MOVE_THRESHOLD;
+import static racingcar.constant.DomainConstants.MOVE_THRESHOLD;
 import static racingcar.constant.ErrorMessages.NAME_LENGTH_ERROR_MESSAGE;
 
 public class Car {
