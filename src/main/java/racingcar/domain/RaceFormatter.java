@@ -16,7 +16,8 @@ public class RaceFormatter {
     }
 
     public static String formatCarsMoveHistory(List<Car> cars){
-        return cars.stream()
+        return cars
+                .stream()
                 .map(Car::toMoveHistoryDto)
                 .map(RaceFormatter::formatCarMoveHistory)
                 .collect(Collectors.joining(System.lineSeparator()));

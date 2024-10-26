@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import racingcar.dto.CarMoveCountDto;
 import racingcar.dto.CarMoveHistoryDto;
@@ -36,14 +35,15 @@ public class Race {
     public void doRace(){
         for (int i = 0; i < moveCount; i++) {
             cars.moveCars();
-            addHistory();
+            addMoveHistory();
         }
     }
 
-    private void addHistory() {
+    private void addMoveHistory() {
         List<CarMoveHistoryDto> carMoveHistoryDtoList = cars.getCarMoveHistoryDtoList();
         for(CarMoveHistoryDto carMoveHistoryDto : carMoveHistoryDtoList){
-            raceHistoryStringBuilder.append(carMoveHistoryDto.toString())
+            raceHistoryStringBuilder
+                    .append(carMoveHistoryDto.toString())
                     .append(System.lineSeparator());
         }
     }
@@ -55,19 +55,8 @@ public class Race {
     public List<String> getRaceWinners() {
         List<CarMoveCountDto> carMoveCountDtoList = cars.getCarMoveCountDtoList();
         int maxCount = CarMoveCountDto.getMaxMoveCount(carMoveCountDtoList);
-        List<String> winnerList = getCollectNameByMoveCount(carMoveCountDtoList, maxCount);
+        List<String> winnerList = CarMoveCountDto.getCollectNameWithSameMoveCount(carMoveCountDtoList, maxCount);
         return winnerList;
     }
 
-    private static List<String> getCollectNameByMoveCount(List<CarMoveCountDto> carMoveCountDtoList, int maxCount) {
-        if(maxCount == 0) {
-            return Collections.emptyList();
-        }
-        List<String> winnerList = carMoveCountDtoList
-                .stream()
-                .filter(carMoveCountDto -> carMoveCountDto.moveCount() == maxCount)
-                .map(carMoveCountDto -> carMoveCountDto.name())
-                .toList();
-        return winnerList;
-    }
 }

@@ -27,7 +27,8 @@ public class Cars {
     }
 
     private List<Car> createCars(List<String> carNameList) {
-        return carNameList.stream()
+        return carNameList
+                .stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
@@ -39,13 +40,15 @@ public class Cars {
     }
 
     public List<CarMoveHistoryDto> getCarMoveHistoryDtoList(){
-        return cars.stream()
+        return cars
+                .stream()
                 .map(Car :: toMoveHistoryDto)
                 .toList();
     }
 
     public List<CarMoveCountDto> getCarMoveCountDtoList() {
-        return cars.stream()
+        return cars
+                .stream()
                 .map(Car :: toMoveCountDto)
                 .toList();
     }
