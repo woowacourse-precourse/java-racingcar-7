@@ -47,8 +47,7 @@ public class Validate {
 
         if (inputCarName.contains(",")) {
             splitCarName = Arrays.asList(inputCarName.split(","));
-            System.out.println(splitCarName);
-
+            
             return splitCarName;
         }
 
