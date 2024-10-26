@@ -11,6 +11,12 @@ public class Validator {
         // 인스턴스화 방지
     }
 
+    private static void validateCarNameFormat(String name) {
+        if (name.startsWith(" ") || name.endsWith(" ")) {
+            throw new IllegalArgumentException("차량 이름 앞뒤에 공백이 포함될 수 없습니다.");
+        }
+    }
+
     public static void validateCarName(String name) {
         if (name == null || name.isEmpty()) {
             // 텍스트를 enum으로 처리하기
@@ -28,10 +34,7 @@ public class Validator {
 
         String[] splitNames = input.split(",");
         for (String name : splitNames) {
-            //depth가 깊음 조절 필요.
-            if (name.startsWith(" ") || name.endsWith(" ")) {
-                throw new IllegalArgumentException("차량 이름 앞뒤에 공백이 포함될 수 없습니다.");
-            }
+            validateCarNameFormat(name);
         }
     }
 
@@ -56,14 +59,16 @@ public class Validator {
         if (trialNumber == null || trialNumber.isEmpty()) {
             throw new IllegalArgumentException("시도 횟수는 비어 있을 수 없습니다.");
         }
-        //depth 정리 필요
+        
+        int trialCount;
         try {
-            int trialCount = Integer.parseInt(trialNumber);
-            if (trialCount <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자이여야 합니다.");
-            }
+            trialCount = Integer.parseInt(trialNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도횟수는 숫자로 입력해야 합니다.");
+        }
+
+        if (trialCount <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자이여야 합니다.");
         }
     }
 }
