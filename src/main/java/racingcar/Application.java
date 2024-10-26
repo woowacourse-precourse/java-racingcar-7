@@ -1,7 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -19,18 +20,13 @@ public class Application {
 
 		int maxMoveCounter = 0;
 		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				int moveCounter = cars[j].move();
-
-				maxMoveCounter = Math.max(moveCounter, maxMoveCounter);
-			}
+			maxMoveCounter = findMaxCounter(cars);
 
 			System.out.println("\n실행 결과");
-			printResult(n, cars);
+			printResult(cars);
 		}
 
-		printWinner(maxMoveCounter, n, cars);
-
+		printWinner(maxMoveCounter, cars);
 	}
 
 	public static Car[] separateNames(String carNames) throws IllegalArgumentException {
@@ -47,39 +43,45 @@ public class Application {
 
 	public static int validateNumber(String numStr) throws IllegalArgumentException {
 
-		try {
-			int number = Integer.parseInt(numStr);
-
-			if (number < 0) {
-				throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
-			}
-			return number;
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("유효한 숫자가 아닙니다.", e);
+		if (!numStr.matches("\\d+")) {
+			throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
 		}
+
+		int number = Integer.parseInt(numStr);
+		if (number < 0) {
+			throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
+		}
+
+		return number;
 	}
 
-	public static void printResult(int numCars, Car[] cars) {
+	public static int findMaxCounter(Car[] cars) {
 
-		for (int i = 0; i < numCars; i++) {
-			System.out.printf("%s : ", cars[i].getName());
+		int maxMoveCounter = 0;
 
-			for (int j = 0; j < cars[i].getMoveCounter(); j++) {
-				System.out.print("-");
-			}
+		for (Car car : cars) {
+			int moveCounter = car.move();
+			maxMoveCounter = Math.max(moveCounter, maxMoveCounter);
+		}
+
+		return maxMoveCounter;
+	}
+
+	public static void printResult(Car[] cars) {
+
+		for (Car car : cars) {
+			System.out.printf("%s : ", car.getName());
+			System.out.printf("%s", "-".repeat(car.getMoveCounter()));
 			System.out.println();
 		}
 	}
 
-	public static void printWinner(int maxMove, int numCars, Car[] cars) {
+	public static void printWinner(int maxMove, Car[] cars) {
 
-		List<String> winners = new ArrayList<>();
-
-		for (int i = 0; i < numCars; i++) {
-			if (cars[i].getMoveCounter() == maxMove) {
-				winners.add(cars[i].getName());
-			}
-		}
+		List<String> winners = Arrays.stream(cars)
+			.filter(car -> car.getMoveCounter() == maxMove)
+			.map(Car::getName)
+			.collect(Collectors.toList());
 
 		System.out.printf("최종 우승자 : %s", String.join(",", winners));
 	}
