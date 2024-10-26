@@ -1,6 +1,7 @@
 package racingcar.racing.model;
 
 import java.util.List;
+import racingcar.racing.view.OutputView;
 
 public class Game {
     private int currentRound;
@@ -11,7 +12,7 @@ public class Game {
         this.allRound = allRound;
     }
 
-    public void roundStart(List<Car> cars) {
+    private void roundStart(List<Car> cars) {
         currentRound += 1;
         for (Car car : cars) {
             if (car.movedDistance() >= 4) {
@@ -20,4 +21,10 @@ public class Game {
         }
     }
 
+    public void allRoundStart() {
+        for (int i = 0; i < allRound; i++) {
+            roundStart(cars);
+            OutputView.printRoundResult(cars);
+        }
+    }
 }

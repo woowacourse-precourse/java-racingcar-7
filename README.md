@@ -8,6 +8,7 @@
     - [x]  5자 초과 시 → IllegalArgumentException 발생
     - [x]  `“a,,b”` 와 같이 값이 빈 경우 건너뜀
     - [ ] 자동차의 개수가 너무 많다면 → IllegalArgumentException 발생
+    - [ ] 자동차가 없다면 → IllegalArgumentException 발생
 - [x]  시도 횟수 입력 화면 출력
 - [x]  시도 횟수 입력
     - [ ]  시도 횟수가 숫자인지 확인
@@ -26,6 +27,7 @@
 - exception
   - 자동차 이름 5글자 초과 시 
   - 자동차의 개수가 너무 많을 시
+  - 자동차가 없을 시
   - 시도 횟수가 숫자가 아닐 시
   - 시도 횟수가 양의 정수가 아닐 시
   - 시도 횟수의 값이 너무 클 시

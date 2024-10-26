@@ -18,4 +18,8 @@ public class RacingGameConcreteFactory implements RacingGameFactory {
         }
         return cars;
     }
+
+    public Winner createWinner(List<Car> cars) {
+        return new Winner(cars);
+    }
 }

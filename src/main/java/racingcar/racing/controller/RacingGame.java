@@ -22,15 +22,19 @@ public class RacingGame {
     public void start() {
         List<String> carNames = inputCarNames();
         int attemptNumber = inputAttemptNumber();
-
-        this.game = racingGameFactory.createGame(attemptNumber);
-        this.cars = racingGameFactory.createCars(carNames);
+        createRacingGame(carNames, attemptNumber);
 
         OutputView.printMessage("\n실행 결과");
-        for (int i = 0; i < attemptNumber; i++) {
-            game.roundStart(cars);
-            OutputView.printRoundResult(cars);
-        }
+        game.allRoundStart();
+
+        winner.selectWinners();
+        OutputView.printWinner(winner.getWinners());
+    }
+
+    private void createRacingGame(List<String> carNames, int attemptNumber) {
+        this.cars = racingGameFactory.createCars(carNames);
+        this.game = racingGameFactory.createGame(attemptNumber);
+        this.winner = racingGameFactory.createWinner(cars);
     }
 
     private int inputAttemptNumber() {
