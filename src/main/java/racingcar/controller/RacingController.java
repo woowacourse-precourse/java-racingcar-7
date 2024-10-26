@@ -21,7 +21,7 @@ public class RacingController {
 
     public void run() {
         LinkedHashMap<String, Integer> cars = parser.parseCarNames(inputView.getCarNames());
-        int totalRounds = InputParser.parseTotalRounds(inputView.getTotalRounds());
+        int totalRounds = parser.parseTotalRounds(inputView.getTotalRounds());
 
         outputView.printStart();
         for (int round = 0; round < totalRounds; round++) {
