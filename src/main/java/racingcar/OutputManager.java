@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class OutputManager {
     public static void printCurrentResult(RacingCar[] group){
@@ -15,6 +16,13 @@ public class OutputManager {
     }
 
     public static void printResult(ArrayList<String> winner){
-        System.out.println("최종 결과 : " + winner.toString());
+        System.out.print("최종 우승자 : ");
+        Iterator<String> iterator = winner.iterator();
+        while(iterator.hasNext()){
+            System.out.print(iterator.next());
+            if(iterator.hasNext()){
+                System.out.println(", ");
+            }
+        }
     }
 }
