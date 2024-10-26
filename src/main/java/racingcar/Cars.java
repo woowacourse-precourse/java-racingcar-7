@@ -20,4 +20,11 @@ public class Cars {
     public void moveAllCars() {
         carList.forEach(Car::move);
     }
+
+    public int findMaxPosition() {
+        return carList.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
+    }
 }
