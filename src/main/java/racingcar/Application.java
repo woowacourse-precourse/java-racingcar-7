@@ -15,5 +15,6 @@ public class Application {
 
         List<String> carNames = inputExtractor.extractCarNames(userInputCar);
         int carCount = numCounter.countCars(carNames);
+        numCounter.validateCarCount(carCount);
     }
 }
