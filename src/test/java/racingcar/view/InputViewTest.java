@@ -1,11 +1,14 @@
 package racingcar.view;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +18,11 @@ public class InputViewTest {
     @BeforeEach
     void init() {
         inputView = new InputView();
+    }
+
+    @AfterEach
+    void after() {
+        Console.close();
     }
 
     @Test
@@ -36,8 +44,6 @@ public class InputViewTest {
         String result = inputView.getCarNameInput();
 
         assertThat(result).isEqualTo(input);
-
-        Console.close();
     }
 
     @Test
@@ -59,5 +65,16 @@ public class InputViewTest {
         long result = inputView.getCarMovementCount();
 
         assertThat(result).isEqualTo(5L);
+    }
+
+    @Test
+    void 자동차_이동_횟수가_공백이면_예외() {
+        String input = "\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        assertThatThrownBy(() ->
+                inputView.getCarMovementCount())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION.message());
     }
 }
