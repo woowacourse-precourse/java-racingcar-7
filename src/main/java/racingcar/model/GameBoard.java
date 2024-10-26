@@ -12,4 +12,8 @@ public class GameBoard {
     public void addCar(Car car) {
         cars.add(car);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
