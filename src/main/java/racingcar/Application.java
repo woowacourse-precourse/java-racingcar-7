@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
 
     public static final String SPLITTER = ",";
+    public static final String GO = "-";
 
     public static void main(String[] args) {
         String input = readInput();
@@ -91,12 +92,10 @@ public class Application {
 
     public static void printCarInfo(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            String carInfo = "";
-            carInfo += racingCar.name;
-            carInfo += " : ";
-            for (int i = 0; i < racingCar.position; i++) {
-                carInfo += "-";
-            }
+            StringBuilder carInfo = new StringBuilder();
+            carInfo.append(racingCar.name);
+            carInfo.append(" : ");
+            carInfo.append(GO.repeat(racingCar.position));
             System.out.println(carInfo);
         }
     }
