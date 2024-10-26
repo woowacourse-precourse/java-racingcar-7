@@ -37,7 +37,8 @@
 
 ## **구현할 기능 목록 정리**
 
-- [x] 1. 입력기 (InputView)
+- [x] 
+    1. **입력기 (InputView)**
 
     - **역할**: 사용자에게 자동차 이름과 시도 횟수를 메시지로 보여주고, 입력을 받습니다. 콘솔을 통해 입력 및 출력을 관리합니다.
     - **구현 기능**:
@@ -54,7 +55,7 @@
         - `FINAL_WINNER`: 최종 우승자 출력 메시지 ("최종 우승자 : ")
 
 - [x] 
-    2. 검증기 (Validator)
+    2. **검증기 (Validator)**
 
     - **역할**: 입력값에 대한 검증 처리.
     - **구현 기능**:
@@ -62,7 +63,7 @@
             - **입력값 예시**: `pobi, woni, pobi`
             - **예외 메시지**: `자동차 이름은 중복될 수 없습니다.`
 
-        - `CarNameNotEmptyInListValidator`: 목록에 빈 자동차 이름이 포함된 경우 검증하여, 비어 있는 경우 `IllegalArgumentException` 발생
+        - `CarNameListNotEmptyValidator`: 목록에 빈 자동차 이름이 포함된 경우 검증하여, 비어 있는 경우 `IllegalArgumentException` 발생
             - **입력값 예시**: `, , ,`
             - **예외 메시지**: `자동차 이름은 비어 있을 수 없으며, 쉼표(,)로 구분되어야 합니다.`
 
@@ -74,24 +75,24 @@
             - **입력값 예시**: `pobi, woni, `
             - **예외 메시지**: `자동차 이름 끝에 불필요한 쉼표가 포함될 수 없습니다.`
 
-        - `MaximumCarNameLengthValidator`: 자동차 이름이 5자를 초과하는 경우 검증하여, 초과 시 `IllegalArgumentException` 발생
+        - `CarNameMaxLengthValidator`: 자동차 이름이 5자를 초과하는 경우 검증하여, 초과 시 `IllegalArgumentException` 발생
             - **입력값 예시**: `Ferrari, Lamborghini`
             - **예외 메시지**: `자동차 이름은 5자를 초과할 수 없습니다.`
 
-        - `MinimumNumberOfCarsValidator`: 자동차 이름이 1대 이하인 경우 검증하여, 부족 시 `IllegalArgumentException` 발생
+        - `CarMinimumCountValidator`: 자동차 이름이 1대 이하인 경우 검증하여, 부족 시 `IllegalArgumentException` 발생
             - **입력값 예시**: `pobi`
             - **예외 메시지**: `경주할 자동차는 최소 2대 이상이어야 합니다.`
 
-        - `TryCountValidator`: 시도 횟수가 음수이거나 숫자가 아닌 경우 검증하여, 잘못된 입력 시 `IllegalArgumentException` 발생
+        - `TryCountPositiveIntegerValidator`: 시도 횟수가 음수이거나 숫자가 아닌 경우 검증하여, 잘못된 입력 시 `IllegalArgumentException` 발생
             - **입력값 예시 1**: `-3`
             - **입력값 예시 2**: `abc`
             - **예외 메시지**: `시도 횟수는 양의 정수여야 합니다.`
 
-        - **시도 횟수가 비어 있는 경우**: `IllegalArgumentException` 발생
+        - `TryCountNotNullOrEmptyValidator`: 시도 횟수가 비어 있는 경우 `IllegalArgumentException` 발생
             - **입력값 예시**: 시도 횟수 입력 없음 (빈 문자열)
             - **예외 메시지**: `시도 횟수는 비어 있을 수 없습니다.`
 
-- [ ] 
+- [x] 
     3. **Service (RacingGameService)**
 
     - **역할**: 경주의 비즈니스 로직을 관리하고 경주의 전체 흐름을 제어합니다.
@@ -114,7 +115,8 @@
             - `findMaxPosition`: 경주가 끝난 후 가장 멀리 전진한 위치를 찾기 위해 모든 자동차의 위치를 비교합니다.
 
         - **보조 기능**:
-            - `getRacingCars`: 현재 `racingCars` 리스트를 반환합니다.
+            - `getRacingCars`: 현재 `racingCars` 리스트를 반환하여 외부에서 자동차 목록 및 상태를 확인할 수 있도록 합니다.
+            - 테스트에 활용
 
 - [x] 
     4. **Model (RacingCar)**
@@ -137,7 +139,7 @@
         - **자동차 이름 반환**:
             - `getName` 메서드를 통해 자동차의 이름을 반환합니다.
 
-- [ ] 
+- [x] 
     5. **출력기 (OutputView)**
 
     - **역할**: 게임의 진행 상황 및 최종 결과를 출력합니다.
