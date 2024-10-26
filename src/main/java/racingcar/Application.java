@@ -9,12 +9,11 @@ import java.util.StringTokenizer;
 public class Application {
     // TODO: 사용자가 잘못된 값을 입력했을 때 상황들 생각해보기
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int repeatCount = Integer.parseInt(Console.readLine());
+        String carNames = inputCarNames();
+        int repeatCount = inputRepeatCount();
 
         inputValidate(carNames, repeatCount);
+
         List<Car> carList = toCarList(carNames);
 
         System.out.println("실행 결과");
@@ -39,6 +38,16 @@ public class Application {
         }
 
         System.out.println("최종 우승자 : " + winners.substring(0, winners.length() - 1));
+    }
+
+    public static String inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return Console.readLine();
+    }
+
+    public static int inputRepeatCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
     }
 
     public static void inputValidate(String carNames, int repeatCount) {
