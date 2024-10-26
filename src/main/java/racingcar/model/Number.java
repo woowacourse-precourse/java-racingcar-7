@@ -2,6 +2,8 @@ package racingcar.model;
 
 public class Number {
 
+    public static final int MAX_VALUE = 100;
+
     private final int value;
 
     public Number(String value) {
@@ -9,6 +11,7 @@ public class Number {
 
         this.value = validateValueIsInteger(value);
         validateValueIsPositiveNumber();
+        validateValueLessThenMaxValue();
     }
 
     private static void validateValueIsNotEmpty(String value) {
@@ -28,6 +31,12 @@ public class Number {
     private void validateValueIsPositiveNumber() {
         if (this.value <= 0) {
             throw new IllegalArgumentException("양수만 입력하세요.");
+        }
+    }
+
+    private void validateValueLessThenMaxValue() {
+        if (this.value > MAX_VALUE) {
+            throw new IllegalArgumentException("시도 횟수는 최대 " + MAX_VALUE + "번까지 가능합니다.");
         }
     }
 

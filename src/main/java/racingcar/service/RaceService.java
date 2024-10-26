@@ -8,6 +8,7 @@ import racingcar.model.Car;
 public class RaceService {
 
     public static final int CAR_MAX_SCOPE = 100;
+    public static final int CAR_FORWARD_CONDITION = 4;
 
     public List<Car> carListOf(String userInput) {
         List<Car> cars = new ArrayList<>();
@@ -38,7 +39,7 @@ public class RaceService {
     public void forwardWithRandomCondition(List<Car> cars) {
         for (Car car : cars) {
             int random = Randoms.pickNumberInRange(0, 9);
-            if (random >= 4) {
+            if (random >= CAR_FORWARD_CONDITION) {
                 car.forward();
             }
         }
