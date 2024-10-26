@@ -1,6 +1,10 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.domain.Race;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class OutputView {
     private static final String GAME_START_OUTPUT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -36,6 +40,20 @@ public class OutputView {
     private static void renderCurrentPosition(int position) {
         for (int i = 0; i < position; i++)
             System.out.print(POSITION_COUNT_PREFIX);
+    }
+
+    public static void renderWinners(List<Car> cars) {
+        System.out.print(WINNER_OUTPUT);
+        Iterator<Car> carIterator = cars.iterator();
+        while (carIterator.hasNext()) {
+            System.out.print(carIterator.next().getName());
+            checkIfHasNext(carIterator);
+        }
+    }
+
+    public static void checkIfHasNext(Iterator<Car> carIterator) {
+        if (carIterator.hasNext())
+            System.out.print(WINNER_DELIMITER);
     }
 
 }
