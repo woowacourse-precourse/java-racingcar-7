@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Map;
 
 public class RacingCarController {
 
@@ -12,13 +13,22 @@ public class RacingCarController {
 
         racingCarViewer.promptCarNamesInput();
         String carNames = Console.readLine();
-        //여기도 입력 에러처리
-
-        List<String> splitCarNames = racingCarService.splitCarNames(carNames);
-
         racingCarViewer.promptTryNumber();
         int tryNumber = Integer.parseInt(Console.readLine());
-        //문자 입력시 오류처리
-    }
 
+        List<String> splitCarNames = racingCarService.splitCarNames(carNames);
+        Map<String, String> racingResult = racingCarService.mapCarNames(splitCarNames);
+
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryNumber; i++) {
+            List<String> canMoveCarList = racingCarService.listMoveCarNames(splitCarNames);
+            racingResult = racingCarService.moveCar(racingResult, canMoveCarList);
+            racingCarViewer.showRacingResult(racingResult);
+        }
+
+        String maxMove = racingCarService.findMaxMove(racingResult);
+        List<String> winners = racingCarService.listRacingWinners(racingResult, maxMove);
+
+        racingCarViewer.showWinners(winners);
+    }
 }
