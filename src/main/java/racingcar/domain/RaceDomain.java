@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.common.constant.ExceptionMessage;
+import racingcar.common.exception.RaceExecuteException;
+
 public class RaceDomain {
     private final CarDomains cars;
     private final Integer lastRound;
@@ -27,6 +30,9 @@ public class RaceDomain {
     }
 
     public void executeOneRound() {
+        if (currentRound >= lastRound) {
+            throw new RaceExecuteException(ExceptionMessage.CURRENT_ROUND_CANT_OVER_LASTROUND);
+        }
         incrementCurrentRound();
         cars.executeOneRound();
     }
