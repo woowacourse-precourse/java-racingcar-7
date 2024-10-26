@@ -5,31 +5,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.car.constant.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
 import static racingcar.car.constant.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
-
-    private PrintStream standardOut;
-    private OutputStream captor;
-
-    @BeforeEach
-    void init() {
-        standardOut = System.out;
-        captor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(captor));
-    }
-
-    @AfterEach
-    void rollback() {
-        System.setOut(standardOut);
-    }
 
     @DisplayName("차의 이름으로 빈 문자열이 들어올 수 없다.")
     @Test
@@ -81,17 +61,14 @@ class CarTest {
         Car car = new Car(name);
         int randomValue = 3;
 
+        car.attemptMoving(randomValue);
+        car.attemptMoving(randomValue);
+
         //when
-        car.attemptMoving(randomValue);
-        car.attemptMoving(randomValue);
-        car.showStatus();
-        String result = getOutput();
+        int moveCount = car.getMoveCount();
 
         //then
-        assertThat(result).isEqualTo(name + " :");
+        assertThat(moveCount).isEqualTo(0);
     }
 
-    private String getOutput() {
-        return captor.toString().trim();
-    }
 }
