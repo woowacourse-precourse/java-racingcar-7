@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.utils.RandomMoveUtils;
 
+import static racingcar.utils.RandomMoveUtils.createRandomNumber;
+
 public class Car {
     private final String name;
     private int advanceNum;
@@ -12,7 +14,7 @@ public class Car {
     }
 
     public void moveOrStop() {
-        if (RandomMoveUtils.isMoving()) {
+        if (RandomMoveUtils.isMoving(createRandomNumber())) {
             advanceNum++;
         }
     }
