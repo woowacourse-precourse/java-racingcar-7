@@ -3,8 +3,8 @@ package racingcar.view;
 import static racingcar.view.Message.*;
 
 import java.util.List;
-import racingcar.controller.dto.RaceResultDTO;
-import racingcar.controller.dto.RaceResultDTO.CarResult;
+import racingcar.controller.dto.RaceRoundResultDTO;
+import racingcar.controller.dto.RaceRoundResultDTO.CarResult;
 
 public class OutputView {
 
@@ -17,7 +17,7 @@ public class OutputView {
         RESULT_TITLE_MESSAGE.printMessage();
     }
 
-    public void printRoundResult(RaceResultDTO raceResultDTO) {
+    public void printRoundResult(RaceRoundResultDTO raceResultDTO) {
         for (CarResult result : raceResultDTO.cars()) {
             String distance = "-".repeat(result.position());
             RESULT_CAR_MESSAGE.printMessage(result.name(), distance);
