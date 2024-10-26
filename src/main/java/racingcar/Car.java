@@ -25,11 +25,7 @@ public class Car {
     public int updateCurrentPosition() {
         int forwardDistance = Randoms.pickNumberInRange(0, 9) - 3;
 
-        if (forwardDistance <= 0) {
-            return 0;
-        }
-
-        return forwardDistance;
+        return Math.max(0, forwardDistance);
     }
 
     public int calculateMaxPosition(int max) {
