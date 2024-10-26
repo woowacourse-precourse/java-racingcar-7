@@ -2,7 +2,6 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,34 +22,5 @@ public class Application {
         }
 
         return carNames;
-    }
-
-    public List<Car> createCars(List<String> carNames) {
-        return carNames.stream()
-                .map(Car::new)
-                .toList();
-    }
-
-    public List<Car> moveCars(List<Car> cars) {
-        List<Car> movingCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            movingCars.add(car.move());
-        }
-
-        return movingCars;
-    }
-
-    public List<List<Car>> race(List<Car> cars, int raceTime) {
-        List<List<Car>> racingRecords = new ArrayList<>();
-        racingRecords.add(cars);
-
-        for (int i = 0; i < raceTime; i++) {
-            List<Car> racingCars = moveCars(racingRecords.get(i));
-            racingRecords.add(racingCars);
-        }
-        racingRecords.remove(0);
-
-        return racingRecords;
     }
 }
