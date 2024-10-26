@@ -41,4 +41,14 @@ public class Game {
         }
         return winnerList;
     }
+
+    public void start() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < this.round; i++) {
+            play();
+            Utils.printResult(this.racingCarList);
+            System.out.println();
+        }
+        Utils.printWinner(findWinners());
+    }
 }
