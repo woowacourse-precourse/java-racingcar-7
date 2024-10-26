@@ -15,6 +15,7 @@ public class RacingCarGame {
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
     private final RacingCarWinnerGenerator racingCarWinnerGenerator;
+    private static final String WINNER_NAME_DELIMITER = ", ";
 
     public RacingCarGame(
             RacingCarNameParser racingCarNameParser,
@@ -46,7 +47,7 @@ public class RacingCarGame {
         String[] winners = gameWinners.stream()
                 .map(winner -> winner.getName())
                 .toArray(String[]::new);
-        return String.join(", ", winners);
+        return String.join(WINNER_NAME_DELIMITER, winners);
     }
 
     private String startRacingGame(List<RacingCar> racingCars, int gameRound) {
