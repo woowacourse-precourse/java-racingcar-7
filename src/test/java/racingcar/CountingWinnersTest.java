@@ -47,7 +47,7 @@ public class CountingWinnersTest {
         testCars.add(car5);
 
         // When
-        List<Car> result = utils.countWinners();
+        List<Car> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(1);
@@ -94,7 +94,7 @@ public class CountingWinnersTest {
         testCars.add(car6);
 
         // When
-        List<Car> result = utils.countWinners();
+        List<Car> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(3);
@@ -143,7 +143,7 @@ public class CountingWinnersTest {
         testCars.add(car6);
 
         // When
-        List<Car> result = utils.countWinners();
+        List<Car> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(6);
