@@ -4,14 +4,25 @@ import java.util.stream.IntStream;
 import racingcar.domain.CarDomains;
 import racingcar.domain.RaceDomain;
 import racingcar.service.RaceService;
-import racingcar.service.impl.RaceServiceImpl;
 import racingcar.view.OutputView;
-import racingcar.view.impl.ConsoleOutputView;
 
 public class RaceController {
+    private static RaceController INSTANCE;
 
-    RaceService raceService = new RaceServiceImpl();
-    OutputView outputView = new ConsoleOutputView();
+    private final RaceService raceService;
+    private final OutputView outputView;
+
+    private RaceController(RaceService raceService, OutputView outputView) {
+        this.raceService = raceService;
+        this.outputView = outputView;
+    }
+
+    public static synchronized RaceController getInstance(RaceService raceService, OutputView outputView) {
+        if (INSTANCE == null) {
+            INSTANCE = new RaceController(raceService, outputView);
+        }
+        return INSTANCE;
+    }
 
     public RaceDomain getRaceRequest(CarDomains cars, Integer lastRound) {
         return RaceDomain.create(cars, lastRound);

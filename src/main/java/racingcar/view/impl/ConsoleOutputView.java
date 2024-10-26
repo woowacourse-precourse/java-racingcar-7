@@ -8,6 +8,17 @@ import racingcar.domain.CarDomains;
 import racingcar.view.OutputView;
 
 public class ConsoleOutputView implements OutputView {
+    private static ConsoleOutputView INSTANCE;
+
+    private ConsoleOutputView() {}
+
+    public static synchronized ConsoleOutputView getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ConsoleOutputView();
+        }
+        return INSTANCE;
+    }
+
     @Override
     public void displayRoundResultString() {
         System.out.println(

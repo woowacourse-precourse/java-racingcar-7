@@ -8,7 +8,18 @@ import racingcar.config.FilterConfig;
 import racingcar.view.InputView;
 
 public class ConsoleInputView implements InputView {
-    private final FilterConfig filterConfig = new FilterConfig();
+    private static ConsoleInputView INSTANCE;
+
+    private final FilterConfig filterConfig = FilterConfig.getInstance();
+
+    private ConsoleInputView() {}
+
+    public static synchronized ConsoleInputView getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ConsoleInputView();
+        }
+        return INSTANCE;
+    }
 
     @Override
     public String displayCarNameRequest() {
