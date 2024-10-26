@@ -9,4 +9,12 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME.getMessage());
         }
     }
+
+    public void validateCarNameLength(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException(ErrorMessage.OVER_LENGTH_NAME.getMessage());
+        }
+    }
+
+
 }
