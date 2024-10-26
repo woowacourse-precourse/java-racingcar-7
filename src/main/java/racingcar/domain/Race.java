@@ -1,16 +1,16 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.List;
+import racingcar.dto.CarMoveCountDto;
+import racingcar.dto.CarMoveHistoryDto;
 import racingcar.exception.RaceException;
 import racingcar.utility.NumberUtility;
-import racingcar.utility.StringUtility;
 
 public class Race {
 
     private final Cars cars;
     private final String INVALID_MOVE_COUNT_MESSAGE = "유효하지 않은 시도 횟수입니다";
-    private final String RACE_DRAW_MESSAGE = "무승부";
-    private final String RESULT_RACE_PREFIX = "최종 우승자 : ";
     private final int moveCount;
     private final StringBuilder raceHistoryStringBuilder = new StringBuilder();
 
@@ -35,26 +35,39 @@ public class Race {
 
     public void doRace(){
         for (int i = 0; i < moveCount; i++) {
-            cars.move();
-            raceHistoryStringBuilder
-                    .append(cars.formatCarsMoveHistory())
+            cars.moveCars();
+            addHistory();
+        }
+    }
+
+    private void addHistory() {
+        List<CarMoveHistoryDto> carMoveHistoryDtoList = cars.getCarMoveHistoryDtoList();
+        for(CarMoveHistoryDto carMoveHistoryDto : carMoveHistoryDtoList){
+            raceHistoryStringBuilder.append(carMoveHistoryDto.toString())
                     .append(System.lineSeparator());
         }
     }
 
-    private String getRaceWinner() {
-        List<String> winnerList = cars.getWinners();
-        String raceWinner = StringUtility.listToSplitStr(winnerList);
-        if(raceWinner.isEmpty()){
-            raceWinner = RACE_DRAW_MESSAGE;
-        }
-        return raceWinner;
+    public String getRaceHistory(){
+        return raceHistoryStringBuilder.toString();
     }
 
-    public String getRaceResult() {
-        StringBuilder raceResultBuilder = new StringBuilder(raceHistoryStringBuilder);
-        String raceWinner = getRaceWinner();
-        raceResultBuilder.append(RESULT_RACE_PREFIX + raceWinner);
-        return raceResultBuilder.toString();
+    public List<String> getRaceWinners() {
+        List<CarMoveCountDto> carMoveCountDtoList = cars.getCarMoveCountDtoList();
+        int maxCount = CarMoveCountDto.getMaxMoveCount(carMoveCountDtoList);
+        List<String> winnerList = getCollectNameByMoveCount(carMoveCountDtoList, maxCount);
+        return winnerList;
+    }
+
+    private static List<String> getCollectNameByMoveCount(List<CarMoveCountDto> carMoveCountDtoList, int maxCount) {
+        if(maxCount == 0) {
+            return Collections.emptyList();
+        }
+        List<String> winnerList = carMoveCountDtoList
+                .stream()
+                .filter(carMoveCountDto -> carMoveCountDto.moveCount() == maxCount)
+                .map(carMoveCountDto -> carMoveCountDto.name())
+                .toList();
+        return winnerList;
     }
 }
