@@ -58,4 +58,13 @@ public class Input {
             throw new IllegalArgumentException("시도할 횟수는 정수형으로 작성해야 합니다.");
         }
     }
+
+    public void validateInput(String input) {
+        validateBlank(input);
+        validateEmpty(input);
+        validateNameLength(input);
+        validateDuplicate(input);
+        validateSeparator(input);
+        validateSeparatorSplit(input);
+    }
 }
