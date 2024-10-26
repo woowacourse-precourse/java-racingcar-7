@@ -15,7 +15,8 @@ public class RacingGameController {
     private final RacingGameOutputView racingGameOutputView = new RacingGameOutputView();
     private final RacingGameSettingService racingGameSettingService = new RacingGameSettingService();
     private final RacingGameProgressService racingGameProgressService = new RacingGameProgressService();
-    public void startGame(){
+
+    public void startGame() {
         racingGameOutputView.printRacingGameStartingMessage();
         String carNames = racingGameInputView.getUserInput();
         List<Car> cars = racingGameSettingService.createCars(carNames);
