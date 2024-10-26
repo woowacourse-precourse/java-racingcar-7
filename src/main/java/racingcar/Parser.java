@@ -1,24 +1,21 @@
 package racingcar;
 
-import java.util.ArrayList;
-
 public class Parser {
-    private String input;
-    private ArrayList<Car> cars;
-    private Validator validator;
+    public static void parseNames(String input) {
+        ValidatorForNames validator = new ValidatorForNames();
+        String[] names = input.split(",");
 
-    Parser(String _input) {
-        input = _input;
-        cars = new ArrayList<>(10);
-        validator = new Validator();
+
+        for (String name : names) {
+            validator.checkValidation(name);
+            Data.addCarToCarsByName(name);
+        }
     }
 
-    public void parseInput() {
-        String[] splitedNames = input.split(",");
+    public static void parseCount(String input) {
+        ValidatorForCount validator = new ValidatorForCount();
 
-        for (String name : splitedNames) {
-            validator.checkValidName(name);
-            cars.add(new Car(name));
-        }
+        validator.checkValidation(input);
+        Data.setRacingCount(Integer.parseInt(input));
     }
 }

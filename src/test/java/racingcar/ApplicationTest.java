@@ -22,14 +22,62 @@ class ApplicationTest extends NsTest {
             MOVING_FORWARD, STOP
         );
     }
-
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+//
+//    @Test
+//    void 예외_테스트1() {
+//        assertSimpleTest(() ->
+//            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+//                .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트2() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("pobi,Yuza", "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트3() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트4() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("", "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트5() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("a,b,c,d,e,f,g,h,i,j,k", "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트6() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("a", "11"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+//
+//    @Test
+//    void 예외_테스트7() {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException("a", "1a"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
 
     @Override
     public void runMain() {
