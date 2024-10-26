@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
     private static Input INSTANCE;
+
     private Input() {}
 
     public static Input getInstance() {

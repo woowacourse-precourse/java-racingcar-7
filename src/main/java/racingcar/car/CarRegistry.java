@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class CarRegistry {
     private final Set<Car> cars;
+
     public CarRegistry(String carNames) {
         this.cars = convertCarNamesToCarSet(carNames);
     }
@@ -17,8 +18,6 @@ public class CarRegistry {
         }
         return cars;
     }
-
-
 
     public Set<Car> getCars() {
         return cars;

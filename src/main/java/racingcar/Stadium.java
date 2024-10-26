@@ -25,5 +25,4 @@ public class Stadium {
         }
         this.raceResult.add(carRegistry.toString()).add("\n");
     }
-
 }

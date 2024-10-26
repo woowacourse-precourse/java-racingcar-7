@@ -4,6 +4,7 @@ public class View {
     private static View INSTANCE;
 
     private View() {}
+
     public static View getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new View();
@@ -27,5 +28,4 @@ public class View {
     public void printWinner(String winnerNames) {
         System.out.println(winnerNames);
     }
-
 }
