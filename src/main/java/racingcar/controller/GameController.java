@@ -7,6 +7,7 @@ import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.Cars;
 import racingcar.model.car.WinnersDto;
 import racingcar.model.game.Game;
+import racingcar.model.game.TotalRounds;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -38,13 +39,13 @@ public class GameController {
     }
 
     private Game makeGame() {
-        String inputCarNames = inputView.getNameOfCars();
-        String[] carNames = Stream.of(inputCarNames.split(DELIMITER))
+        String[] carNames = Stream.of(inputView.getNameOfCars().split(DELIMITER))
                 .map(String::trim)
                 .toArray(String[]::new);
-        int totalRounds = inputView.getTotalRounds();
 
         Cars cars = new Cars(carNames);
+        TotalRounds totalRounds = new TotalRounds(inputView.getTotalRounds());
+
         return new Game(cars, totalRounds);
     }
 }

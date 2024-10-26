@@ -10,16 +10,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Cars;
 import racingcar.model.game.Game;
+import racingcar.model.game.TotalRounds;
 
 public class GameTest {
     private Game game;
     private String[] names;
     private Cars cars;
-    private int totalRounds;
+    private TotalRounds totalRounds;
 
     @BeforeEach
     void setUp() {
-        totalRounds = 3;
+        totalRounds = new TotalRounds(3);
         names = new String[]{"pobi", "woni", "jun"};
         cars = new Cars(names);
         game = new Game(cars, totalRounds);
@@ -42,8 +43,10 @@ public class GameTest {
     @DisplayName("라운드만큼 반복한 뒤에는 isPlaying 이 false 를 반환한다.")
     void shouldReturnFalseAfterTotalRoundsRepetitions() {
         // when
-        for (int i = 0; i < totalRounds; i++) {
+        int i = 1;
+        while (totalRounds.hasMoreRoundsThan(i)) {
             game.play();
+            i++;
         }
 
         // then
@@ -54,8 +57,9 @@ public class GameTest {
     @DisplayName("라운드만큼 반복하기 이전에는 isPlaying 이 true 를 반환한다.")
     void shouldReturnTrueBeforeTotalRoundsRepetitions() {
         // when
-        for (int i = 0; i < totalRounds - 1; i++) {
+        while (totalRounds.hasMoreRoundsThan(1)) {
             game.play();
+            break;
         }
 
         // then

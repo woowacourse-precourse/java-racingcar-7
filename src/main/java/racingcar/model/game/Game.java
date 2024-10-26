@@ -16,11 +16,11 @@ public class Game {
     private Winners winners;
     private int currentRound;
 
-    public Game(Cars cars, int totalRounds) {
+    public Game(Cars cars, TotalRounds totalRounds) {
         validate(cars);
 
         this.cars = cars;
-        this.totalRounds = new TotalRounds(totalRounds);
+        this.totalRounds = totalRounds;
         this.currentRound = 1;
     }
 
