@@ -6,6 +6,8 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 
 public class CarsValidator implements Validator<Cars>{
+    private static final int MIN_CARS_AMOUNT = 2;
+
     @Override
     public void validate(Cars cars) {
         validateNameDuplication(cars);
@@ -22,7 +24,7 @@ public class CarsValidator implements Validator<Cars>{
     }
 
     private void validateCarsSize(Cars cars) {
-        if (cars.getCars().size() < 2) {
+        if (cars.getCars().size() < MIN_CARS_AMOUNT) {
             throw new IllegalArgumentException("2개 이상의 차 이름을 입력해주세요.");
         }
     }

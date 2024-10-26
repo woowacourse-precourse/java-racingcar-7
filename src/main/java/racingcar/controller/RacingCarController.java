@@ -1,19 +1,13 @@
 package racingcar.controller;
 
+import racingcar.factory.CarsFactory;
+import racingcar.factory.NumberFactory;
 import racingcar.model.Cars;
 import racingcar.model.MoveNumber;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarController {
-    private final InputView inputView;
-    private final OutputView outputView;
-
-    public RacingCarController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-    }
-
     public void run() {
         Cars cars = createCars();
         MoveNumber moveNumber = createMoveNumber();
@@ -21,19 +15,19 @@ public class RacingCarController {
     }
 
     private Cars createCars() {
-        return new Cars(inputView.inputCarNames());
+        return CarsFactory.createCars(InputView.inputCarNames());
     }
 
     private MoveNumber createMoveNumber() {
-        return new MoveNumber(inputView.inputMoveNumber());
+        return NumberFactory.createMoveNumber(InputView.inputMoveNumber());
     }
 
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
-        outputView.outputRaceStartLine();
+        OutputView.outputRaceStartLine();
         for (int i = 0; i < moveNumber.getMoveNumber(); i++) {
-            outputView.outputRaceIntermediateResult(cars.moveCars());
+            OutputView.outputRaceIntermediateResult(cars.moveCars());
         }
-        outputView.outputRaceFinalResult(cars.findWinnerNames());
+        OutputView.outputRaceFinalResult(cars.findWinnerNames());
     }
 
 }

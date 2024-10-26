@@ -6,11 +6,11 @@ import racingcar.model.Car;
 public class OutputView {
     private static final String MOVE_DISTANCE_SYMBOL = "-";
 
-    public void outputRaceStartLine() {
+    public static void outputRaceStartLine() {
         System.out.println("\n실행 결과");
     }
 
-    public void outputRaceIntermediateResult(List<Car> cars) {
+    public static void outputRaceIntermediateResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(String.format("%s : %s"
                     , car.getName()
@@ -19,7 +19,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void outputRaceFinalResult(List<String> winnerNames) {
+    public static void outputRaceFinalResult(List<String> winnerNames) {
         System.out.println(String.format("최종 우승자 : %s"
                 , String.join(", ", winnerNames)));
     }
