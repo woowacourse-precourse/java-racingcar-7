@@ -30,4 +30,10 @@ public class Race {
             printRaceStatus();
         }
     }
-}
+
+    private void printRaceStatus() {
+        for(Car car : cars) {
+            System.out.println(car.toString());
+        }
+        System.out.println();
+    }
