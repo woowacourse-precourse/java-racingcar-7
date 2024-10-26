@@ -10,7 +10,13 @@ public class InputHandler {
     }
 
     private String[] getCarNamesArray(String inputString) {
-        String[] carNames = inputString.split(",");
-        return carNames;
+        return inputString.split(",");
+    }
+
+    public int getTryNum() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        String tryNum = Console.readLine();
+        return Integer.parseInt(tryNum);
     }
 }
