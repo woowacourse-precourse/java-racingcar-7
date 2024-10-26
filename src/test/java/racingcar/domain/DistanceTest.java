@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,5 +13,15 @@ class DistanceTest {
         Distance distance = new Distance(0);
         Distance increaseDistance = distance.increaseDistance();
         assertThat(increaseDistance.getDistanceValue()).isEqualTo(1);
+    }
+
+    @DisplayName("최대값 구하기")
+    @Test
+    void 최대값() {
+        Distance distance = new Distance(5);
+        assertAll(
+                () -> assertThat(distance.max(6)).isEqualTo(6),
+                () -> assertThat(distance.max(4)).isEqualTo(5)
+        );
     }
 }

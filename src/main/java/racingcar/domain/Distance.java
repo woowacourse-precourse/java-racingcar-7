@@ -21,6 +21,13 @@ public class Distance {
         return distanceValue;
     }
 
+    public int max(int maxDistance) {
+        if (this.distanceValue > maxDistance) {
+            return this.distanceValue;
+        }
+        return maxDistance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
