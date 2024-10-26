@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class IOPreprocessor {
-    private static List<String> parsingInput(String input) {
+    public static List<String> parsingInput(String input) {
         var splitInput = input.split(",");
         validateInput(input, splitInput);
         return Arrays.stream(splitInput).toList();
@@ -18,15 +18,6 @@ public class IOPreprocessor {
         if (input.charAt(input.length() - 1) == ',' || Arrays.stream(splitInput).anyMatch(String::isBlank)) {
             throw new IllegalArgumentException("입력된 이름 중 빈 문자가 존재합니다.");
         }
-    }
-
-    private static void setRacingCarTrace(List<String> parsingInput, RacingCarTrace racingCarTrace) {
-        parsingInput.stream().map(RacingCar::new).forEach(racingCarTrace::put);
-    }
-
-    public static void inputPreprocessing(String input, RacingCarTrace racingCarTrace) {
-        var parsingInput = parsingInput(input);
-        setRacingCarTrace(parsingInput, racingCarTrace);
     }
 
     public static String tracePreprocessing(RacingCarTrace racingCarTrace) {
