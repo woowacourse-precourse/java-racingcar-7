@@ -34,17 +34,49 @@ class Car {
     }
 }
 
+class Racing {
+    private final List<Car> cars;
+    private final int trialCount;
+
+    public Racing(List<String> carNames, int trialCount) {
+        this.cars = createCars(carNames);
+        this.trialCount = trialCount;
+    }
+
+    private List<Car> createCars(List<String> carNames) {
+        List<Car> carList  = new ArrayList<>();
+        for (String name : carNames) { carList.add(new Car(name)); }
+        return carList;
+    }
+
+    public void startRacing() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < trialCount; i++) {
+            runTrial();
+            System.out.println();
+        }
+    }
+
+    private void runTrial() {
+        for (Car car : cars) {
+            car.move();
+            System.out.println(car);
+        }
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         try{
             List<String> carNames = inputCarNames();
+            int trialCount = inputTrialCount();
 
             System.out.println("최종 우승자 : ");
         } catch (IllegalArgumentException e) { System.out.println(e.getMessage()); }
     }
 
     private static List<String> inputCarNames() {
-       System.out.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+       System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
        String carNamesInput = Console.readLine();
        List<String> carNames = List.of(carNamesInput.split(","));
        CheckCarName(carNames);
@@ -53,6 +85,19 @@ public class Application {
 
     private static void CheckCarName(List<String> carNames) {
         if (carNames.isEmpty()) { throw new IllegalArgumentException(); }
+    }
+
+    private static int inputTrialCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String trialCount = Console.readLine();
+        int trialCount = parseTrialCount(trialCoutInput);
+        CheckTrialCount(trialCount);
+        return trialCount;
+    }
+
+    private static int parseTrialCount(String trialCoutInput) {
+        try { return Integer.parseInt(trialCoutInput); }
+        catch (NumberFormatException e) { throw new IllegalArgumentException(); }
     }
 
 }
