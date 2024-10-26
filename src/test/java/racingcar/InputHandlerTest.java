@@ -27,7 +27,7 @@ public class InputHandlerTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("자동차 이름이 6자 이상이면 예외 처리한다")
     void areAllCarNameLengthsValid_Test() {
         String input = "pobi,javabi";
         List<String> carNames = inputHandler.parseCarNames(input);
