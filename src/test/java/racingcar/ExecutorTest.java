@@ -27,6 +27,25 @@ class ExecutorTest {
     }
 
     @Test
+    void 자동차_이동() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    executor.moveCar(testCar1);
+                    assertThat(testCar1.getMoveCount()).isEqualTo(1);
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    executor.moveCar(testCar2);
+                    assertThat(testCar2.getMoveCount()).isEqualTo(0);
+                },
+                STOP, STOP
+        );
+    }
+
+    @Test
     void 우승자_반환() {
         List<Car> test = new ArrayList<>(List.of(testCar1, testCar2, testCar3));
 
