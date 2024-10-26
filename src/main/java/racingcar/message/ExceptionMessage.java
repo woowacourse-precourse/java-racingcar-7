@@ -1,4 +1,4 @@
-package racingcar.Message;
+package racingcar.message;
 
 public enum ExceptionMessage {
 

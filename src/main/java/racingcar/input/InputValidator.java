@@ -1,6 +1,6 @@
 package racingcar.input;
 
-import static racingcar.Message.ExceptionMessage.*;
+import static racingcar.message.ExceptionMessage.*;
 
 public class InputValidator {
     public void validateNameInput(String name) {
