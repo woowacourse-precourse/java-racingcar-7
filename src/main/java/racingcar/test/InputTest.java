@@ -42,4 +42,11 @@ public class InputTest {
         String name = "짱구,짱구";
         assertThrows(IllegalArgumentException.class, () -> input.validateDuplicate(name));
     }
+
+    @Test
+    @DisplayName("마지막 입력 문자열 검증 테스트")
+    void validateSeparatorSplit() {
+        String name = "짱구,";
+        assertThrows(IllegalArgumentException.class, () -> input.validateSeparatorSplit(name));
+    }
 }
