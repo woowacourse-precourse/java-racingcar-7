@@ -23,5 +23,16 @@ public class ValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> Validator.checkCarCount(emptyCars));
     }
 
+    @Test
+    @DisplayName("자동차들의 이름이 1~5개인지 확인하는 테스트")
+    void checkCarNameLength() {
+        List<String> overLengthCarName = new ArrayList<>();
+        List<String> noCarName = new ArrayList<>();
 
+        overLengthCarName.add("tooLongCar");
+        noCarName.add("");
+
+        assertThrows(IllegalArgumentException.class, ()-> Validator.checkCarNameLength(overLengthCarName));
+        assertThrows(IllegalArgumentException.class, ()-> Validator.checkCarNameLength(noCarName));
+    }
 }
