@@ -22,5 +22,6 @@ public class OutputView {
         carList.forEach(Car -> {
             System.out.println(Car.getName() + " : " + "-".repeat(Car.getPosition()));
         });
+        System.out.println();
     }
 }

@@ -15,17 +15,15 @@ public class CarRacingGameService {
                 .toList();
 
         OutputView.printRacingResultMessage();
-
-        for(int i=0; i<round; i++) {
-            playRound(carList);
-            OutputView.printRacingResult(carList);
-        }
-
+        playRound(carList, round);
 
     }
 
-    private void playRound(List<Car> carList) {
-        carList.forEach(Car::move);
+    private void playRound(List<Car> carList, int round) {
+        for(int i=0; i<round; i++) {
+            carList.forEach(Car::move);
+            OutputView.printRacingResult(carList);
+        }
     }
 
 }
