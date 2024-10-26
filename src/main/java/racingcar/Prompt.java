@@ -30,6 +30,6 @@ public class Prompt {
     }
 
     public static void tracePrint(RacingCarTrace racingCarTrace) {
-        System.out.print(IOPreprocessor.tracePreprocessing(racingCarTrace));
+        System.out.print(racingCarTrace.traceToString());
     }
 }

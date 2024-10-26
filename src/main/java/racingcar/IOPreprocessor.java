@@ -20,20 +20,6 @@ public class IOPreprocessor {
         }
     }
 
-    public static String tracePreprocessing(RacingCarTrace racingCarTrace) {
-        var sb = new StringBuilder();
-        for (int i = 0; i < racingCarTrace.size(); i++) {
-            var racingCar = racingCarTrace.getRacingCar(i);
-            sb.append(racingCar.name()).append(" : ");
-            for (int j = 0; j < racingCarTrace.getDistance(racingCar); j++) {
-                sb.append("-");
-            }
-            sb.append("\n");
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
     public static String resultPreprocessing(List<RacingCar> biggestDistanceRacingCar) {
         var racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
         return String.join(", ", racingCarName);

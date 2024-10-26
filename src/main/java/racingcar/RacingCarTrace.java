@@ -3,6 +3,7 @@ package racingcar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class RacingCarTrace {
     private final Map<RacingCar, Integer> trace = new LinkedHashMap<>();
@@ -29,6 +30,18 @@ public class RacingCarTrace {
                 .skip(index)
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public String traceToString() {
+        var sb = new StringBuilder();
+        IntStream.range(0, trace.size()).forEach(index -> {
+            var racingCar = this.getRacingCar(index);
+            sb.append(racingCar.name()).append(" : ");
+            sb.append("-".repeat(this.getDistance(racingCar)));
+            sb.append("\n");
+        });
+        sb.append("\n");
+        return sb.toString();
     }
 
     public int getDistance(RacingCar racingCar) {
