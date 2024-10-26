@@ -6,7 +6,6 @@ import racingcar.utils.RandNumGenerator;
 
 public class Cars {
     private final List<Car> cars;
-    private final RandNumGenerator randNumGenerator = new RandNumGenerator();
 
     public Cars(String carsNames) {
         String[] splitNames = carsNames.split(",");
@@ -15,9 +14,11 @@ public class Cars {
                 .toList();
     }
 
-    public void roundProcess() {
+    public void roundProcess(RandNumGenerator randNumGenerator) {
         for (Car car : cars) {
-            car.updatePositionComparedToRandNum(randNumGenerator);
+            if (randNumGenerator.isRandNumGreaterThanOrEqualToCriterion()) {
+                car.moveForward();
+            }
         }
     }
 }
