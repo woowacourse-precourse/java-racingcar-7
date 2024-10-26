@@ -2,6 +2,8 @@ package racingcar.model;
 
 public class RacingCar {
 
+    private static final int MOVING_FORWARD = 4;
+
     private final String name;
     private Integer position;
 
@@ -11,7 +13,7 @@ public class RacingCar {
     }
 
     public Integer move(Integer randomNumber){
-        if (randomNumber >= 4){
+        if (randomNumber >= MOVING_FORWARD){
             position++;
         }
         return position;
