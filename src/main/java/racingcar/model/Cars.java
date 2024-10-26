@@ -1,12 +1,9 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.provider.NumberProvider;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static racingcar.global.GameConstant.RANDOM_NUMBER_RANGE_OF_MAX;
-import static racingcar.global.GameConstant.RANDOM_NUMBER_RANGE_OF_MIN;
 
 public class Cars {
 
@@ -20,8 +17,8 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public List<Car> move() {
-        cars.forEach(car -> car.move(Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_OF_MIN, RANDOM_NUMBER_RANGE_OF_MAX)));
+    public List<Car> move(NumberProvider numberProvider) {
+        cars.forEach(car -> car.move(numberProvider.getNumber()));
         return cars;
     }
 
