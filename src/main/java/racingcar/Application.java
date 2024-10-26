@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = InputHandler.getCarNames();
-        int tryCount = InputHandler.getTryCount();
+        String[] carNames = InputHandler.inputCarNames();
+        int tryCount = InputHandler.inputTryCount();
 
         Car[] cars = createCars(carNames);
 
@@ -27,7 +27,7 @@ public class Application {
 }
 
 class InputHandler {
-    public static String[] getCarNames() {
+    public static String[] inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
         if (input.trim().isEmpty()) {
@@ -43,7 +43,7 @@ class InputHandler {
         return carNames;
     }
 
-    public static int getTryCount() {
+    public static int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
             int tryCount = Integer.parseInt(Console.readLine());
@@ -104,9 +104,9 @@ class GameResultCalculator {
 
     private String[] findWinners(int maxWins) {
         int count = countWinners(maxWins);
-        String[] winList = new String[count];
-        fillWinnersList(winList, maxWins);
-        return winList;
+        String[] winnerList = new String[count];
+        fillWinnersList(winnerList, maxWins);
+        return winnerList;
     }
 
     private int countWinners(int maxWins) {
