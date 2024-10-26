@@ -1,9 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.validator.CarNameValidator;
+import racingcar.util.RaceResultStringGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -11,20 +10,29 @@ public class Race {
     private static final int MAX_VALUE = 9;
 
     private List<Car> cars;
+    private TryCount tryCount;
     private Winner winner;
 
-    public Race(){
-        cars = new ArrayList<>();
-        winner = new Winner();
+    private RaceResultStringGenerator raceResultStringGenerator;
+
+    public Race(List<Car> cars, TryCount tryCount, Winner winner, RaceResultStringGenerator raceResultStringGenerator){
+        this.cars = cars;
+        this.tryCount = tryCount;
+        this.winner = winner;
+        this.raceResultStringGenerator = raceResultStringGenerator;
     }
 
-    public void makeCars(List<String> carNames){
-        for (String carName : carNames) {
-            cars.add(new Car(carName, new CarNameValidator()));
+    public String startRace(){
+        StringBuilder resultString = new StringBuilder();
+        while (tryCount.isNotZero()) {
+            moveCars();
+            resultString.append(raceResultStringGenerator.generateRaceResultString(cars));
+            tryCount.reduceTryCount();
         }
+        return resultString.toString();
     }
 
-    public void raceCars() {
+    public void moveCars() {
         for(Car car : this.cars){
             int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             car.move(randomNumber);
@@ -33,9 +41,5 @@ public class Race {
 
     public List<String> findWinner(){
         return this.winner.findWinner(this.cars);
-    }
-
-    public List<Car> getCars(){
-        return this.cars;
     }
 }
