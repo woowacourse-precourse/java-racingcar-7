@@ -43,7 +43,6 @@ public class RacingService {
     }
 
     private List<String> getWinners(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
         int maxDistance = getMaxDistance(cars);
 
         return cars.stream()

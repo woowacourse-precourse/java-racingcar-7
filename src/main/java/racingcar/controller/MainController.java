@@ -16,7 +16,7 @@ public class MainController {
         UserOutputView.InputAttemptCountMessage();
         int attemptCount = Parser.parseStringToInt(UserInputView.readUserInput());
         RacingResponse racing = racingController.racing(new RacingRequest(carNames, attemptCount));
-        UserOutputView.RacingRoundMessage(racing.race(), attemptCount);
+        UserOutputView.RacingRoundMessage(racing.race());
         UserOutputView.RacingResultMessage(racing.winner());
     }
 }

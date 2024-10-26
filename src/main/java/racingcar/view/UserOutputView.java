@@ -13,7 +13,7 @@ public class UserOutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void RacingRoundMessage(List<Map<String, Integer>> m, int attemptCount){
+    public static void RacingRoundMessage(List<Map<String, Integer>> m){
         System.out.println("실행 결과");
 
         for (Map<String, Integer> stringIntegerMap : m) {
