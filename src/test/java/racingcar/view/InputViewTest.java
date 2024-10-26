@@ -3,6 +3,7 @@ package racingcar.view;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION;
+import static racingcar.ExceptionMessage.CAR_MOVEMENT_COUNT_NOT_NATURAL_NUMBER_EXCEPTION;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -76,5 +77,16 @@ public class InputViewTest {
                 inputView.getCarMovementCount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(CAR_MOVEMENT_COUNT_EMPTY_EXCEPTION.message());
+    }
+
+    @Test
+    void 자동차_이동_횟수가_자연수가_아니면_예외() {
+        String input = "abc";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        assertThatThrownBy(() ->
+                inputView.getCarMovementCount())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(CAR_MOVEMENT_COUNT_NOT_NATURAL_NUMBER_EXCEPTION.message());
     }
 }
