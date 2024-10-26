@@ -15,7 +15,13 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> names) {
-        this.cars = Validator.validate(names);
+        this.cars = generateCars(Validator.validate(names));
+    }
+
+    private List<Car> generateCars(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .toList();
     }
 
     public List<Car> getCars() {
@@ -52,13 +58,11 @@ public class Cars {
 
     private static class Validator {
 
-        private static List<Car> validate(List<String> names) {
+        private static List<String> validate(List<String> names) {
             validateParticipant(names);
             validateDuplicateName(names);
 
-            return names.stream()
-                    .map(Car::new)
-                    .toList();
+            return names;
         }
 
         private static void validateParticipant(List<String> cars) {
