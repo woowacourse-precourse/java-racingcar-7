@@ -22,25 +22,27 @@ public class Car implements Comparable<Car> {
     public void move() {
         final int randomNumber = randomGenerator.generator();
 
-        if (isRange(randomNumber)) {
-            throw new IllegalArgumentException(Constant.RANDOM_RANGE_VALUE_ERROR_STRING);
-        }
-
+        validateRange(randomNumber);
         if (isPossible(randomNumber)) {
             this.position += 1;
         }
     }
 
-
-    public String getName() {
-        return name;
+    private void validateRange(int randomNumber) {
+        if (isRangeOut(randomNumber)) {
+            throw new IllegalArgumentException(Constant.RANDOM_RANGE_VALUE_ERROR_STRING);
+        }
     }
 
-    private boolean isRange(final int number) {
+    public String getName() {
+        return this.name;
+    }
+
+    private boolean isRangeOut(final int number) {
         return number < MIN || number > MAX;
     }
 
-    private boolean isPossible(int randomNumber) {
+    private boolean isPossible(final int randomNumber) {
         return randomNumber > STOP_VALUE;
     }
 
@@ -49,7 +51,7 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo (Car car) {
+    public int compareTo(Car car) {
         return this.position - car.position;
     }
 
@@ -57,5 +59,4 @@ public class Car implements Comparable<Car> {
     public String toString() {
         return this.name + " : " + "-".repeat(this.position);
     }
-
 }

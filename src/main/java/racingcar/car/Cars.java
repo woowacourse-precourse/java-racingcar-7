@@ -9,29 +9,37 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> names) {
-        this.cars = names.stream()
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars createCars(List<String> names) {
+        return new Cars(toCars(names));
+    }
+
+    public List<String> getRacingWinners() {
+        final Car headCar = findFirstPositionCar();
+        return findSamePositionCars(headCar);
+    }
+
+    public void moveAll() {
+        cars.forEach(Car::move);
+    }
+
+    private static List<Car> toCars(List<String> names) {
+        return names.stream()
                 .map(name -> new Car(name, new RandomGenerator()))
                 .toList();
     }
 
-    public void updateCarsMovement() {
-        cars.forEach(Car::move);
-    }
-
-    public List<String> getRacingWinners() {
-        final Car headCar = getFirstPositionCar();
-        return getSamePositionCars(headCar);
-    }
-
-    private List<String> getSamePositionCars(Car headCar) {
+    private List<String> findSamePositionCars(Car headCar) {
         return cars.stream()
                 .filter(headCar::isSamePosition)
                 .map(Car::getName)
                 .toList();
     }
 
-    private Car getFirstPositionCar() {
+    private Car findFirstPositionCar() {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(Constant.CARS_EMPTY_ERROR_STRING));
@@ -41,7 +49,7 @@ public class Cars {
     public String toString() {
         return cars.stream()
                 .map(Car::toString)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n")) + "\n";
     }
 
 }
