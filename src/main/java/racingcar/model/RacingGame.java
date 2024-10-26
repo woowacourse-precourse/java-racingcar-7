@@ -21,6 +21,7 @@ public class RacingGame {
             playRound();
             printRoundResult();
         }
+        findAndPrintWinners();
     }
 
     private void playRound() {
@@ -35,5 +36,18 @@ public class RacingGame {
     private void printRoundResult() {
         OutputView.printCarsStatus(cars);
         OutputView.printLineBreaking();
+    }
+
+    private void findAndPrintWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .getAsInt();
+
+        List<RacingCar> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+
+        OutputView.printWinners(winners);
     }
 }
