@@ -1,12 +1,10 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 import racingcar.domain.Car;
-import racingcar.enums.ErrorMessage;
 import racingcar.enums.ViewMessage;
+import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,19 +12,11 @@ public class RacingCarController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
+    private final RacingCarService racingCarService = new RacingCarService();
 
     public void play() {
         String inputString = inputView.promptCarNames();
-        StringTokenizer stringTokenizer = new StringTokenizer(inputString, ",");
-        List<Car> cars = new ArrayList<>();
-        List<String> winners = new ArrayList<>();
-        while (stringTokenizer.hasMoreTokens()) {
-            String carName = stringTokenizer.nextToken();
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH.getMessage());
-            }
-            cars.add(new Car(carName));
-        }
+        List<Car> cars = racingCarService.makeCarList(inputString);
         int rounds = Integer.parseInt(inputView.promptRounds());
         outputView.printResult();
         int maxMoveCount = 0;
@@ -43,11 +33,7 @@ public class RacingCarController {
             }
             outputView.printRoundStatus(stringBuilder.toString());
         }
-        for (Car car : cars) {
-            if (car.moveCount == maxMoveCount) {
-                winners.add(car.name);
-            }
-        }
+        List<String> winners = racingCarService.findWinners(cars, maxMoveCount);
         String result = String.join(", ", winners);
         outputView.printWinners(result);
     }
