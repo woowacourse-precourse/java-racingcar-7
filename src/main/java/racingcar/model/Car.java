@@ -7,14 +7,24 @@ import static racingcar.common.exception.ErrorMessage.CAR_NAME_NULL_ERROR;
 public class Car {
 
     private final String name;
+    private int position;
 
     public Car(String name) {
         Validator.validateName(name);
         this.name = name;
+        this.position = 0;
+    }
+
+    public void drive(DriveStrategy driveStrategy) {
+        position = driveStrategy.drive(position);
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     private static class Validator {
