@@ -7,18 +7,14 @@ public class Application {
     public static void main(String[] args) {
             int max = -999,winner_cnt=0;
             ArrayList<String> winner = new ArrayList<>();
-
-            //경주할 자동차 이름 받기
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             Scanner sc = new Scanner(System.in);
-            String cars_str = sc.nextLine();
+
+            String[] cars = getCars();
 
             //시도할 횟수 입력 받기
             System.out.println("시도할 횟수는 몇 회인가요?");
             int cnt = sc.nextInt();
 
-            //쉼표(,) 구분자 이용해서 배열에 넣기기
-            String[] cars = cars_str.split(",");
             int[] racing_num = new int[cars.length];
 
             //0~9 사이에 랜덤한 숫자 구하기
@@ -62,4 +58,11 @@ public class Application {
             System.out.println("최중 우승자 : " + winner_str);
             
     }   
+    // 자동차 이름 입력받기
+    private static String[] getCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        Scanner sc = new Scanner(System.in);
+        String[] cars = sc.nextLine().split(",");
+        return cars;
+    }
 }
