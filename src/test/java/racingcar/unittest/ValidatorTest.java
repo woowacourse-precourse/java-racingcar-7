@@ -80,6 +80,18 @@ class ValidatorTest extends NsTest {
                 .doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("시도 횟수가 0 이하인 경우 예외 발생 테스트")
+    void validateAttempts_withNonPositiveInteger_shouldThrowException() {
+        // Given
+        int attempts = 0;
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateAttempts(attempts))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수는 양의 정수여야 합니다");
+    }
+
     @Override
     public void runMain() {
     }
