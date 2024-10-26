@@ -19,7 +19,7 @@ public class RacingCarMachine {
 	public void run() {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
-		cars = Arrays.asList(Console.readLine().split(","));
+		cars = Arrays.asList(Console.readLine().trim().split(","));
 
 		// 1. 이름 입력 시 이름을 입력하지 않은 경우
 		if(cars.get(0).equals("")){
