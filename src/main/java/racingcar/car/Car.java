@@ -30,8 +30,13 @@ public class Car {
         if (canMove(value)) {
             position += positionDelta;
         }
-
     }
+
+    public String changeCurrentPositionalStatusToVisual(String symbol) {
+        String positionalAppearance = symbol.repeat(position);
+        return name + " : " + positionalAppearance;
+    }
+
 
     @Override
     public boolean equals(Object o) {
