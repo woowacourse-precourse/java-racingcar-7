@@ -17,9 +17,21 @@ public class Application {
             validateInput(inputList);
             checkRedundancy(inputList);
 
+            List<Participant> participantList = new ArrayList<>();
+            createParticipantList(inputList, participantList);
+            System.out.println(participantList);
+
             System.out.println(inputList);
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    // 사용자 입력을 사용해 참가자 객체를 생성하고 참가자 리스트에 객체를 저장하는 메서드
+    private static void createParticipantList(List<String> inputList, List<Participant> participantList) {
+        for (String carName : inputList) {
+            Participant participant = new Participant(carName);
+            participantList.add(participant);
         }
     }
 
