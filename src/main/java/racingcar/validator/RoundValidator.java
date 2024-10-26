@@ -2,7 +2,17 @@ package racingcar.validator;
 
 public class RoundValidator {
 
-    public int parseInt(String round) {
+    private final int round;
+
+    public RoundValidator(String round) {
+        this.round = parseInt(round);
+    }
+
+    public void verify() {
+        positiveNumber(round);
+    }
+
+    private int parseInt(String round) {
         try {
             return Integer.parseInt(round);
         } catch (NumberFormatException e) {
@@ -10,9 +20,13 @@ public class RoundValidator {
         }
     }
 
-    public void positiveNumber(int number) {
+    private void positiveNumber(int number) {
         if (number <= 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getRound() {
+        return round;
     }
 }

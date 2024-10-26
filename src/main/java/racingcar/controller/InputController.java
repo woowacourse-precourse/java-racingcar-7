@@ -15,13 +15,9 @@ public class InputController {
     }
 
     public static int setRound() {
-        String round = InputView.inputRound();
+        RoundValidator validator = new RoundValidator(InputView.inputRound());
+        validator.verify();
 
-        RoundValidator check = new RoundValidator();
-
-        int number = check.parseInt(round);
-        check.positiveNumber(number);
-
-        return number;
+        return validator.getRound();
     }
 }
