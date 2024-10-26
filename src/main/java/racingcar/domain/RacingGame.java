@@ -3,17 +3,23 @@ package racingcar.domain;
 import racingcar.UI;
 import racingcar.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
     private final int limit;
-    private final List<Car> participants;
+    private final List<Car> participants = new ArrayList<>();
     private final Utils utils = new Utils();
     private final UI ui = new UI();
 
-    public RacingGame(int limit, List<Car> participants) {
+    public RacingGame(int limit) {
         this.limit = limit;
-        this.participants = participants;
+    }
+
+    public void setParticipants(String[] splited) {
+        for (String carName : splited) {
+            participants.add(new Car(carName));
+        }
     }
 
     public void playGame() {

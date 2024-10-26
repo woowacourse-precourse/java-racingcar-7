@@ -21,6 +21,12 @@
 int limit: 시도되어야 할 전체 횟수<br>
 List\<Car> participants: 경주에 참가한 자동차의 목록
 
+public void setParticipants(String[] splited)
+: \: 입력받은 자동차 이름을 바탕으로 Car 인스턴스를 생성하는 메소드.
+
+- [x]  splited의 각 요소들에 접근
+- [x]  자동차 이름으로 Car 인스턴스 생성한 후 participants 추가
+
 public playGame()
 : \: 자동차 경주 게임 전체를 진행하는 메소드
 
@@ -49,13 +55,6 @@ public void moveOrStop(boolean canMove)
    - [x] true라면 자신의 movedCnt를 1 증가
 
 ## Utils 클래스
-
-public List\<Car> setParticipants(String[] splited)
-: \: 입력받은 자동차 이름을 바탕으로 Car 인스턴스를 생성하는 메소드.
-
-- [x]  splited의 각 요소들에 접근
-- [x]  자동차 이름으로 Car 인스턴스 생성한 후 리스트에 추가
-- [x]  생성된 Car 인스턴스의 리스트를 리턴
 
 public boolean canMove()
 : \: 랜덤 값을 추출해 반환하는 메소드.
