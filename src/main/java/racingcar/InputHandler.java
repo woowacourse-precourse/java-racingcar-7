@@ -48,10 +48,10 @@ public class InputHandler {
     }
 
     boolean isValidMoveCount(int moveCount) {
-        if (moveCount >= MIN_MOVE_COUNT && moveCount <= MAX_MOVE_COUNT) {
-            return true;
+        if (moveCount < MIN_MOVE_COUNT || moveCount > MAX_MOVE_COUNT) {
+            throw new IllegalArgumentException("이동 횟수는 1회에서 1000회 사이 값만 가능");
         }
-        else throw new IllegalArgumentException("이동 횟수는 1회에서 1000회 사이 값만 가능");
+        return true;
     }
 
 
