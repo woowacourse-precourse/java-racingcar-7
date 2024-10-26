@@ -13,8 +13,14 @@ public class User {
         return new User(name);
     }
 
-    public int proceed() {
-        score += 1;
+    public int proceed(int num) {
+        if (num >= 4) {
+            score += 1;
+        }
         return score;
+    }
+
+    public String getName() {
+        return name;
     }
 }

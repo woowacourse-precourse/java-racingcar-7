@@ -26,12 +26,20 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         String times = Console.readLine();
         boolean isNumeric = times.chars().allMatch(Character::isDigit);
-        if (isNumeric) {
+        if (!isNumeric) {
             throw new IllegalArgumentException("숫자만 입력 해 주세요.");
         }
         long time = Long.parseLong(times);
 
+        System.out.println("실행 결과");
+        for (int i = 0; i < time; i++) {
+            for (User user : users) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                int proceedScore = user.proceed(randomNumber);
 
-
+                System.out.println(user.getName() + " : " + "-".repeat(proceedScore));
+            }
+            System.out.println();
+        }
     }
 }
