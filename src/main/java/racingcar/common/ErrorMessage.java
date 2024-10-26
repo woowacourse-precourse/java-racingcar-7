@@ -4,7 +4,9 @@ public enum ErrorMessage {
     TOO_LONG_CAR_NAME("길이가 5 초과인 자동차 이름이 있습니다."),
     NO_CAR_NAME("자동차 이름이 입력되지 않았습니다."),
     TOO_MANY_CAR_NAME("자동차 이름이 100개 넘게 입력되었습니다."),
-    THERE_IS_NEW_LINE_CHARACTER("자동차 이름에는 개행문자가 포함될 수 없습니다.");
+    THERE_IS_NEW_LINE_CHARACTER("자동차 이름에는 개행문자가 포함될 수 없습니다."),
+    RACE_COUNT_SIZE("경주횟수는 100 이하 양의 정수여야 합니다."),
+    PARSE_ERROR_STRING_TO_INT("경주 횟수를 INT로 변환할 수 없습니다.");
 
     private final String message;
 

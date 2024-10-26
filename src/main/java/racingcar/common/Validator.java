@@ -29,4 +29,10 @@ public class Validator {
         }
     }
 
+    public static void validateRaceCountSize(int raceCount){
+        if(raceCount < 0 || raceCount > 100){
+            throw new IllegalArgumentException(RACE_COUNT_SIZE.getMessage());
+        }
+    }
+
 }
