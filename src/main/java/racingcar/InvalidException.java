@@ -2,6 +2,7 @@ package racingcar;
 
 public class InvalidException {
     public static void checkNamelength(String name) {
+        name = name.replaceAll("\\s", "");
         if (name.length() > 5) {
             throw new IllegalArgumentException("5글자 이하의 이름을 입력하세요.");
         }
