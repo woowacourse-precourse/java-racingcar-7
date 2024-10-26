@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RacingGameController {
 
@@ -26,6 +28,16 @@ public class RacingGameController {
 
     public Cars createRacingCars() {
         List<String> carNames = input.readCarNames();
+        Set<String> distinctNames = new HashSet<>();
+        for (String name : carNames) {
+            if (isDuplicate(name, distinctNames)) {
+                throw new IllegalArgumentException(String.format("(%s)은 중복된 참가자입니다. 다시 입력해주세요.", name));
+            }
+        }
         return Cars.withNames(carNames);
+    }
+
+    private boolean isDuplicate(String name, Set<String> distinctNames) {
+        return !distinctNames.add(name);
     }
 }
