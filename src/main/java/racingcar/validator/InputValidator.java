@@ -74,10 +74,17 @@ public class InputValidator {
 
         try {
             roundCount = Integer.parseInt(input);
+            validateRoundCountNegative(roundCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ROUND_COUNT_INVALID_MESSAGE);
         }
 
         return roundCount;
+    }
+
+    private static void validateRoundCountNegative(int roundCount) {
+        if (roundCount < 0) {
+            throw new IllegalArgumentException(ROUND_COUNT_INVALID_MESSAGE);
+        }
     }
 }

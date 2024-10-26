@@ -107,4 +107,16 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양의 정수를 입력해 주세요.");
     }
+
+    @Test
+    @DisplayName("시도할 횟수 - 음수")
+    void NegativeRoundCount() {
+        //given
+        final String input = "-5";
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRoundCountInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("양의 정수를 입력해 주세요.");
+    }
 }
