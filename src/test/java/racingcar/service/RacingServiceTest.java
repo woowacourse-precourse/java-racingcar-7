@@ -69,6 +69,25 @@ public class RacingServiceTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 시도_횟수가_음수인_경우(){
+        String tryCount = "-11";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingGameService.convertTryCountToInt(tryCount))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도_횟수에_정수를_입력하지_않은_경우(){
+        String tryCount = "ab";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> racingGameService.convertTryCountToInt(tryCount))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
 
     @Override
     protected void runMain() {
