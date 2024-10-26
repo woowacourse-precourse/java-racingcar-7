@@ -29,9 +29,9 @@ class RacingGameTest extends NsTest {
     void 자동차를_게임에_참여시킨다() {
         assertSimpleTest(() -> {
                     RacingGame racingGame = new RacingGame(movementPolicy, 1);
-                    racingGame.join(new Car("car1", 1));
-                    racingGame.join(new Car("car2", 2));
-                    racingGame.join(new Car("car3", 3));
+                    racingGame.join(new Car("car1"));
+                    racingGame.join(new Car("car2"));
+                    racingGame.join(new Car("car3"));
                     assertThat(racingGame.getCurrentCarState()).hasSize(3);
                 }
         );
@@ -41,9 +41,9 @@ class RacingGameTest extends NsTest {
     void 게임의_라운드를_진행한다() {
         assertSimpleTest(() -> {
                     RacingGame racingGame = new RacingGame(movementPolicy, 1);
-                    racingGame.join(new Car("car1", 1));
-                    racingGame.join(new Car("car2", 2));
-                    racingGame.join(new Car("car3", 3));
+                    racingGame.join(new Car("car1"));
+                    racingGame.join(new Car("car2"));
+                    racingGame.join(new Car("car3"));
                     racingGame.playRound();
                     List<Car> cars = racingGame.getCurrentCarState();
                     assertThat(cars.get(0).getPosition()).isZero();
@@ -56,9 +56,9 @@ class RacingGameTest extends NsTest {
     @Test
     void 게임의_우승자를_조회한다() {
         RacingGame racingGame = new RacingGame(movementPolicy, 1);
-        Car car1 = new Car("car1", 1);
-        Car car2 = new Car("car2", 2);
-        Car car3 = new Car("car3", 3);
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
         racingGame.join(car1);
         racingGame.join(car2);
         racingGame.join(car3);

@@ -25,7 +25,7 @@ public class RacingGameController {
                 tryCount
         );
         parsedCarNames.forEach(carName -> {
-            Car car = new Car(carName, racingGame.getCarId());
+            Car car = new Car(carName);
             racingGame.join(car);
         });
         outputView.printResultTitle();

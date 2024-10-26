@@ -1,13 +1,12 @@
 package racingcar.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import racingcar.model.policy.MovementPolicy;
 
 public class RacingGame {
 
-    private final Set<Car> participants = new TreeSet<>();
+    private final List<Car> participants = new ArrayList<>();
     private int currentRound = 0;
     private final int totalRound;
 
@@ -19,10 +18,6 @@ public class RacingGame {
     ) {
         this.movementPolicy = movementPolicy;
         this.totalRound = totalRound;
-    }
-
-    public int getCarId() {
-        return participants.size() + 1;
     }
 
     public void setMovementPolicy(MovementPolicy movementPolicy) {

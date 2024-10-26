@@ -20,7 +20,7 @@ class MovementPolicyTest extends NsTest {
         assertSimpleTest(() -> {
                     RandomNumberGenerator mockRandomGenerator = new ManualMockRandomNumberGenerator(2);
                     MovementPolicy movementPolicy = new RandomForwardMovementPolicy(mockRandomGenerator);
-                    Car car = new Car("car", 1);
+                    Car car = new Car("car");
                     movementPolicy.move(car);
                     assertThat(car.getPosition()).isZero();
                 }
@@ -33,7 +33,7 @@ class MovementPolicyTest extends NsTest {
         assertSimpleTest(() -> {
                     RandomNumberGenerator mockRandomGenerator = new ManualMockRandomNumberGenerator(5);
                     MovementPolicy movementPolicy = new RandomForwardMovementPolicy(mockRandomGenerator);
-                    Car car = new Car("car", 1);
+                    Car car = new Car("car");
                     movementPolicy.move(car);
                     assertThat(car.getPosition()).isEqualTo(1);
                 }
