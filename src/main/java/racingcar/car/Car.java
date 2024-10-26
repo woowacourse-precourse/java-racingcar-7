@@ -5,7 +5,6 @@ import static racingcar.car.ConditionChecker.canMove;
 import java.util.Objects;
 
 public class Car {
-
     private final String name;
     private int position = 0;
 
@@ -15,14 +14,6 @@ public class Car {
 
     public static Car from(String name) {
         return new Car(name);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     public void tryMoveForward(int value, int positionDelta) {
@@ -36,7 +27,6 @@ public class Car {
         String positionalAppearance = symbol.repeat(position);
         return name + " : " + positionalAppearance;
     }
-
 
     @Override
     public boolean equals(Object o) {
