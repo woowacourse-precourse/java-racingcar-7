@@ -31,7 +31,7 @@ public class OutputView {
     }
 
     public void showFinalWinners(List<String> finalWinners) {
-        buffer.append("최종 우승자 : ").append(String.join(",", finalWinners));
+        buffer.append("최종 우승자 : ").append(String.join(", ", finalWinners));
         bufferClear();
     }
 
