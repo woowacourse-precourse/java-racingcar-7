@@ -23,7 +23,10 @@ public class Application {
         LinkedList<Car> carList = new LinkedList<>();
         carList = parsingCarName(carNames);
 
-        System.out.println(carList);
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNum = Integer.parseInt(readLine());
+        if(tryNum <= 0)
+            throw new IllegalArgumentException();
 
     }
 
@@ -48,5 +51,10 @@ public class Application {
 
         if(name.length() > 5)
             throw new IllegalArgumentException();
+    }
+
+    static void moveForward(int tryNum, LinkedList<Car> carList){
+
+
     }
 }
