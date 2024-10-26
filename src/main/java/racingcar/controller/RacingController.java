@@ -17,25 +17,34 @@ public class RacingController {
     public void startRacingGame(){
         try {
             String carNames = getCarNames();
-            String tryCountInString = getTryCount();
-            Integer tryCount = racingGameService.convertTryCountToInt(tryCountInString);
-
+            Integer tryCount = getTryCountByInteger();
             List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames);
+            playRacingGame(tryCount, racingCars);
+            printWinners(racingCars);
 
-            OutputView.printResultMessage();
-
-            for (int i = 0; i < tryCount; i++){
-                moveRacingCars(racingCars);
-                OutputView.printGame(racingCars);
-            }
-
-            List<RacingCar> winners = racingGameService.getWinners(racingCars);
-
-            OutputView.printWinners(winners);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
             throw e;
         }
+    }
+
+    private Integer getTryCountByInteger() {
+        String tryCountInString = getTryCount();
+        return racingGameService.convertTryCountToInt(tryCountInString);
+    }
+
+    private void playRacingGame(Integer tryCount, List<RacingCar> racingCars) {
+        OutputView.printResultMessage();
+
+        for (int i = 0; i < tryCount; i++){
+            moveRacingCars(racingCars);
+            OutputView.printGame(racingCars);
+        }
+    }
+
+    private void printWinners(List<RacingCar> racingCars) {
+        List<RacingCar> winners = racingGameService.getWinners(racingCars);
+        OutputView.printWinners(winners);
     }
 
     private void moveRacingCars(List<RacingCar> racingCars) {
