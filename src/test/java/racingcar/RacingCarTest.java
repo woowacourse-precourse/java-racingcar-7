@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingCarTest {
@@ -33,5 +34,19 @@ class RacingCarTest {
 
         // then
         assertThat(racingCar.getLocation()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2, true", "6, false"})
+    void 위치가_같은지_확인한다(int location, boolean expected) {
+        // given
+        CarName pobi = new CarName("pobi");
+        RacingCar racingCar = new RacingCar(pobi, 2);
+
+        // when
+        boolean actual = racingCar.isSameLocation(location);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 }

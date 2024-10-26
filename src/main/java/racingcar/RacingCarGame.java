@@ -37,7 +37,7 @@ public class RacingCarGame {
     private List<String> findWinners(List<RacingCar> racingCars) {
         int maxLocation = getMaxLocationCars(racingCars);
         return racingCars.stream()
-                .filter(racingCar -> racingCar.getLocation() == maxLocation)
+                .filter(racingCar -> racingCar.isSameLocation(maxLocation))
                 .map(RacingCar::getCarNameValue)
                 .toList();
     }

@@ -18,6 +18,10 @@ public class RacingCar {
         }
     }
 
+    public boolean isSameLocation(int location) {
+        return this.location == location;
+    }
+
     public int getLocation() {
         return location;
     }
