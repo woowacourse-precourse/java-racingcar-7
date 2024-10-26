@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Scanner;
 
 public class InputView {
     private static final String INPUT_CAR_NAMES = "자동차 이름을 쉼표(,)로 구분해 입력하세요.";
