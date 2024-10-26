@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.validator.GameValidator;
 
 
 public class RacingGame {
@@ -14,6 +15,9 @@ public class RacingGame {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int inputRounds = Integer.parseInt(Console.readLine());
+
+        GameValidator.validateName(inputCars);
+        GameValidator.validateMoveCount(inputRounds);
 
     }
 }
