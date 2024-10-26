@@ -6,7 +6,7 @@ import racingcar.model.RacingCars;
 import java.lang.reflect.Field;
 import java.util.List;
 
-public class RacingCarsValueParser {
+public class RacingCarsUtil {
 
     /*
         RacingCars 객체의 values 필드에 접근하여 값을 가져온다.

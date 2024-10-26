@@ -12,7 +12,7 @@ import racingcar.mock.service.dependency.random_maker.MockedRandomNumberMaker;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.service.dependency.random_maker.RandomNumberMaker;
-import racingcar.util.RacingCarsValueParser;
+import racingcar.util.RacingCarsUtil;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -86,7 +86,7 @@ public class RacingServiceTest {
         RacingResult actual = racingService.play(racingCars, playArgument.getTryCount());
         List<RacingRoundResult> racingRoundResults = actual.roundResults();
         RacingCars winners = actual.winners();
-        List<RacingCar> winnerCars = RacingCarsValueParser.parseValues(winners);
+        List<RacingCar> winnerCars = RacingCarsUtil.parseValues(winners);
 
         // then
         verifyRoundResults(racingRoundResults, playArgument.getTryCount(), playArgument.getRacingRoundResults());
