@@ -20,6 +20,14 @@ public class InputView {
 
     public static int getTrialCount() {
         System.out.println("시도할 횟수는 몇회인가요?");
-        return Integer.parseInt(Console.readLine());
+        try {
+            int trial = Integer.parseInt(Console.readLine());
+            if (trial <= 0) {
+               throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+            }
+            return trial;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+        }
     }
 }
