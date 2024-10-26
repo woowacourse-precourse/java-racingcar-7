@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,13 @@ public class Application {
             // 2. 이동 횟수 입력
             int attemptCount = inputAttemptCount();
             System.out.println("유효한 이동 횟수: " + attemptCount);
+
+            // 3. 자동차 경주 진행 및 결과 출력
+            List<String> raceResults = raceCars(carNames, attemptCount);
+            System.out.println("경주 결과:");
+            for (String result : raceResults) {
+                System.out.println(result);
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 입력입니다: " + e.getMessage());
             throw e;
@@ -71,5 +79,28 @@ public class Application {
         if (attemptCount <= 0) {
             throw new IllegalArgumentException("[ERROR] 이동 횟수는 양의 정수여야 합니다.");
         }
+    }
+
+    // 자동차 경주 진행 및 결과 저장
+    public static List<String> raceCars(List<String> carNames, int attemptCount) {
+        List<String> raceResults = new ArrayList<>();
+
+        // 각 자동차에 대해 시도 횟수만큼 전진 여부 판단
+        for (String carName : carNames) {
+            int progress = 0;
+            for (int i = 0; i < attemptCount; i++) {
+                if (isMovable()) {
+                    progress++;
+                }
+            }
+            raceResults.add(carName + " : " + "-".repeat(progress));
+        }
+        return raceResults;
+    }
+
+    // 0에서 9 사이의 무작위 숫자가 4 이상인지 여부 확인
+    private static boolean isMovable() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        return randomNumber >= 4;
     }
 }
