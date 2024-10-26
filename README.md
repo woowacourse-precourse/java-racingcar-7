@@ -1,6 +1,11 @@
 # java-racingcar-precourse
 
 --- 
+> 패키지 구조
+<p align="center">
+    <img src="img/package.png" alt="package.png" width="350px">
+</p>
+
 ## 제약 조건
 1. 길이 5초과 문자열 불가능
 2. 이름, 쉼표 이외의 입력 불가능
@@ -47,4 +52,6 @@ name1,name2
 ---
 
 ## 실행 결과 예시
-![racingcar.png](racingcar.png)
+<p align="center">
+    <img src="img/racingcar.png" alt="racingcar.png" width="500px">
+</p>
