@@ -1,4 +1,4 @@
-package racingcar.validation;
+package racingcar.io.validation;
 
 public class CarNameValidator implements InputStringValidator {
 
