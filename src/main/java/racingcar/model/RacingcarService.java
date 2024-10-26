@@ -21,17 +21,7 @@ public class RacingcarService {
         outputView = OutputView.getInstance();
     }
 
-    public void runRace(String carName, int attemptCount) {
-        Racingcar racingcar = new Racingcar(carName);
-        String[] carNames = splitCarName(racingcar.getCarName());
-        validateCarNames(carNames);
-        Map<String, String> player = convertStringArrToMap(carNames);
-        startRace(player, attemptCount);
-        List<String> winner = pickWinner(player, getMaxDashLength(player));
-        outputView.winner(joinWinner(winner));
-    }
-
-    private void startRace(Map<String, String> player, int attemptCount) {
+    public void startRace(Map<String, String> player, int attemptCount) {
         outputView.runResult();
         for (int i = 0; i < attemptCount; i++) {
             movingForward(player);
@@ -39,7 +29,7 @@ public class RacingcarService {
         }
     }
 
-    private void movingForward(Map<String, String> player) {
+    public void movingForward(Map<String, String> player) {
         for (String key : player.keySet()) {
             if (Randoms.pickNumberInRange(START_NUMBER, END_NUMBER) >= STANDARD_NUMBER) {
                 player.put(key, player.get(key) + "-");
@@ -47,14 +37,14 @@ public class RacingcarService {
         }
     }
 
-    private void printRoundResult(Map<String, String> player) {
+    public void printRoundResult(Map<String, String> player) {
         for (Map.Entry<String, String> entry : player.entrySet()) {
             outputView.roundResult(entry.getKey(), entry.getValue());
         }
         System.out.println();
     }
 
-    private int getMaxDashLength(Map<String, String> player) {
+    public int getMaxDashLength(Map<String, String> player) {
         int max = 0;
         for (Map.Entry<String, String> entry : player.entrySet()) {
             max = Math.max(entry.getValue().length(), max);
@@ -62,7 +52,7 @@ public class RacingcarService {
         return max;
     }
 
-    private List<String> pickWinner(Map<String, String> player, int max) {
+    public List<String> pickWinner(Map<String, String> player, int max) {
         List<String> winner = new LinkedList<>();
         for (Map.Entry<String, String> entry : player.entrySet()) {
             if (entry.getValue().length() == max) {
