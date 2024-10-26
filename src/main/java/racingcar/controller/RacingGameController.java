@@ -13,7 +13,9 @@ public class RacingGameController {
     private final CarFactory carFactory = new CarFactory();
     public void startGame(){
         racingGameOutputView.printRacingGameStartingMessage();
-        String carNames = racingGameInputView.getCarNames();
+        String carNames = racingGameInputView.getUserInput();
         List<Car> cars = carFactory.createCars(carNames);
+
+        racingGameOutputView.printRacingGameRoundInputMessage();
     }
 }
