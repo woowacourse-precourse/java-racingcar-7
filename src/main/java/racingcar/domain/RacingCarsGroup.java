@@ -15,4 +15,14 @@ public class RacingCarsGroup {
         return cars;
     }
 
+    private static int getMaxPositionIdx(List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+
 }
