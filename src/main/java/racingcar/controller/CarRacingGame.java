@@ -1,13 +1,13 @@
-package racingcar.Controller;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racingcar.Model.Car;
-import racingcar.Model.RaceRecord;
+import racingcar.model.Car;
+import racingcar.model.RaceRecord;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Map;
-import racingcar.View.OutputHandler;
+import racingcar.view.OutputHandler;
 
 public class CarRacingGame implements Game {
     private static final int MOVE_DISTANCE = 1;

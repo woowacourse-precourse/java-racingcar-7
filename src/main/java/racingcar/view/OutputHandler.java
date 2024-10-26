@@ -1,12 +1,9 @@
-package racingcar.View;
+package racingcar.view;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import racingcar.Model.Car;
-import racingcar.Model.RaceRecord;
+import racingcar.model.Car;
+import racingcar.model.RaceRecord;
 
 public class OutputHandler {
     public static void printAllCarDistances(RaceRecord raceRecord) {

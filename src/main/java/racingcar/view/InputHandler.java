@@ -1,4 +1,4 @@
-package racingcar.View;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.SimpleTimeZone;
 
 public class InputHandler {
     private static final String ALPHA_NUMERIC_PATTERN = "[a-zA-Z0-9]+";

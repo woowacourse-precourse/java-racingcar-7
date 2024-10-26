@@ -1,8 +1,8 @@
 package racingcar;
 
 import java.util.List;
-import racingcar.Controller.CarRacingGame;
-import racingcar.View.InputHandler;
+import racingcar.controller.CarRacingGame;
+import racingcar.view.InputHandler;
 
 public class Application {
     public static void main(String[] args) {
