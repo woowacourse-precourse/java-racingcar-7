@@ -14,7 +14,7 @@ public class Validator {
         if (carNames.size() > 1000) {
             throw new IllegalArgumentException();
         }
-        if (carNames.size() == 0){
+        if (carNames.size() == 0) {
             throw new IllegalArgumentException();
         }
         for (String carName : carNames) {
@@ -37,20 +37,35 @@ public class Validator {
     }
 
     public static void gameRoundValidate(String input) {
-        if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException();
-        }
-        try {
-            double number = Double.parseDouble(input);
+        validateNullOrBlank(input);
+        double number = parseToDouble(input);
+        validatePositiveInteger(number);
+        validateWithinMaxLimit(number);
+    }
 
-            if (number <= 0 || number != (int) number) {
-                throw new IllegalArgumentException();
-            }
-            if (number > 1000) {
-                throw new IllegalArgumentException();
-            }
+    private static void validateNullOrBlank(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("Input cannot be null or blank.");
+        }
+    }
+
+    private static double parseToDouble(String input) {
+        try {
+            return Double.parseDouble(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input must be a valid number.");
+        }
+    }
+
+    private static void validatePositiveInteger(double number) {
+        if (number <= 0 || number != (int) number) {
+            throw new IllegalArgumentException("Input must be a positive integer.");
+        }
+    }
+
+    private static void validateWithinMaxLimit(double number) {
+        if (number > 1000) {
+            throw new IllegalArgumentException("Input must be less than or equal to 1000.");
         }
     }
 }
