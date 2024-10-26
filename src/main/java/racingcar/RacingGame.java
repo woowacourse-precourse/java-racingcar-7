@@ -82,9 +82,7 @@ public class RacingGame {
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
+            Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
