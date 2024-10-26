@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
+import racingcar.constants.Constants;
 
 public class Car {
     private final CarName carName;
@@ -11,18 +12,22 @@ public class Car {
         this.distance = 0;
     }
 
-    public int getDistance() {
-        return this.distance;
-    }
-
-    public CarName getCarRacer() {
-        return this.carName;
-    }
-
     public void decideToGo(int randomNumber) {
         if (canProceed(randomNumber)) {
             goOneStep();
         }
+    }
+
+    public CarName getCarName() {
+        return carName;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public String getCurrentState() {
+        return carName.getName() + Constants.COLON + Constants.DASH.repeat(distance);
     }
 
     @Override
