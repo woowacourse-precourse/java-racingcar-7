@@ -181,3 +181,104 @@
   - `InputCountTest`
 - `service`
   - `GameServiceTest`
+
+
+## 설계 구조
+
+---
+
+```text
+├── main
+│   └── java
+│       └── racingcar
+│           ├── Application.java
+│           ├── config
+│           │   ├── constant
+│           │   │   ├── NumberConstant.java
+│           │   │   ├── error
+│           │   │   │   ├── ErrorCountConstant.java
+│           │   │   │   └── ErrorNameConstant.java
+│           │   │   └── io
+│           │   │       ├── InputConstant.java
+│           │   │       └── OutputConstant.java
+│           │   └── exception
+│           │       └── input
+│           │           ├── count
+│           │           │   ├── LessCountException.java
+│           │           │   ├── MoreCountException.java
+│           │           │   └── TypeMissCountException.java
+│           │           └── name
+│           │               ├── DelimiterNameException.java
+│           │               ├── DuplicateNameException.java
+│           │               ├── EmptyNameException.java
+│           │               ├── LengthNameException.java
+│           │               └── MultipleNameException.java
+│           ├── controller
+│           │   └── GameController.java
+│           ├── helper
+│           │   ├── util
+│           │   │   ├── InputUtil.java
+│           │   │   └── RandomUtil.java
+│           │   └── validation
+│           │       ├── InputCountValid.java
+│           │       ├── InputNameValid.java
+│           │       └── ProcessValid.java
+│           ├── model
+│           │   ├── Car.java
+│           │   └── Game.java
+│           ├── service
+│           │   ├── CarService.java
+│           │   └── GameService.java
+│           └── view
+│               ├── InputView.java
+│               └── OutputView.java
+└── test
+    └── java
+        └── racingcar
+            ├── ApplicationTest.java
+            ├── input
+            │   ├── InputCarNameTest.java
+            │   └── InputCountTest.java
+            ├── model
+            │   ├── CarTest.java
+            │   └── GameTest.java
+            └── service
+                └── GameServiceTest.java
+```
+### GameController
+- 프로그램의 흐름을 제어하는 컨트롤러 클래스이다.
+- 입력, 게임 진행, 결과 처리를 관리한다.
+
+### Car
+- 자동차의 이름과 이동 횟수를 저장하고 관리하는 엔티티 클래스이다.
+
+### Game
+- 전체 게임 정보를 관리하는 엔티티 클래스이다.
+- 게임 횟수, 자동차 리스트, 우승자 리스트를 저장하고 관리한다.
+
+### CarService
+- 사용자 입력으로 생성된 차량 목록을 등록한다.
+
+### GameService
+- 게임의 핵심 로직을 수행하는 클래스이다.
+- 자동차 이동, 우승자 결정 등 게임의 주요 기능을 처리한다.
+
+### InputUtil
+- 입력과 관련된 유틸리티 기능을 제공하는 클래스이다.
+- 입력 값을 파싱하거나 구분자로 나누는 작업을 수행한다.
+
+### RandomUtil
+- 게임에서 랜덤한 숫자를 생성하기 위한 유틸리티 클래스이다.
+- 생성된 숫자는 자동차의 이동 여부를 결정하는데 사용한다.
+
+### InputNameValid & InputCountValid
+- 입력된 이름과 횟수의 유효성을 검증하는 클래스이다.
+
+### ProcessValid
+- 게임 로직에서 특정 조건이 충족되는지 확인하는 클래스이다.
+
+### OutputView & InputView
+- 사용자와의 입출력 문구를 보여준다.
+
+### Exception
+- 특정 오류 상황에서 발생하는 커스텀 예외 클래스이다.
