@@ -117,9 +117,9 @@ class RacingTest {
     }
 
     private Cars createCars() {
-        Car pobiCar = Car.from("pobi", new StubRandomNumberGenerator(4));
-        Car woniCar = Car.from("woni", new StubRandomNumberGenerator(3));
-        Car junCar = Car.from("jun", new StubRandomNumberGenerator(1));
+        Car pobiCar = Car.of("pobi", new StubRandomNumberGenerator(4));
+        Car woniCar = Car.of("woni", new StubRandomNumberGenerator(3));
+        Car junCar = Car.of("jun", new StubRandomNumberGenerator(1));
 
         return Cars.from(
                 List.of(pobiCar, woniCar, junCar)

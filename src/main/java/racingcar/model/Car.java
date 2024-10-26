@@ -22,7 +22,7 @@ public class Car {
         this.randomNumberStrategy = randomNumberStrategy;
     }
 
-    public static Car from(String name, RandomNumberStrategy randomNumberStrategy) {
+    public static Car of(String name, RandomNumberStrategy randomNumberStrategy) {
         return new Car(name, randomNumberStrategy);
     }
 

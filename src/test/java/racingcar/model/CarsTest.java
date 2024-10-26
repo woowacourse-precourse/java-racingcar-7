@@ -15,9 +15,9 @@ class CarsTest {
     void createCars() {
         //given
         List<Car> carList = List.of(
-                Car.from("pobi", new RandomNumberGenerator()),
-                Car.from("woni", new RandomNumberGenerator()),
-                Car.from("jun", new RandomNumberGenerator())
+                Car.of("pobi", new RandomNumberGenerator()),
+                Car.of("woni", new RandomNumberGenerator()),
+                Car.of("jun", new RandomNumberGenerator())
         );
 
         //when
@@ -27,13 +27,14 @@ class CarsTest {
         assertThat(cars).isEqualTo(Cars.from(carList));
     }
 
+    //TODO 예외를 반환하지 않는 테스트도 하면 좋을듯
     @DisplayName("중복된 자동차가 있는 경우 예외를 발생한다.")
     @Test
     void duplicateCar() {
         //given
         List<Car> cars = List.of(
-                Car.from("pobi", new RandomNumberGenerator()),
-                Car.from("pobi", new RandomNumberGenerator())
+                Car.of("pobi", new RandomNumberGenerator()),
+                Car.of("pobi", new RandomNumberGenerator())
         );
 
         //when //then

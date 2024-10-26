@@ -61,7 +61,7 @@ public class RacingController {
     private Cars creatCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(Car.from(carName, new RandomNumberGenerator()));
+            cars.add(Car.of(carName, new RandomNumberGenerator()));
         }
         return Cars.from(cars);
     }

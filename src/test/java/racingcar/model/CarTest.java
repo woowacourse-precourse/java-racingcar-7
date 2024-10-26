@@ -17,7 +17,7 @@ class CarTest {
         String carName = "pobi";
 
         //when
-        Car car = Car.from(carName, new RandomNumberGenerator());
+        Car car = Car.of(carName, new RandomNumberGenerator());
 
         //then
         assertThat(car.getName()).isEqualTo(carName);
@@ -30,7 +30,7 @@ class CarTest {
         String carName = "woni";
 
         //when
-        Car car = Car.from(carName, new RandomNumberGenerator());
+        Car car = Car.of(carName, new RandomNumberGenerator());
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
@@ -43,7 +43,7 @@ class CarTest {
         String carName = "javaji";
 
         //when //then
-        assertThatThrownBy(() -> Car.from(carName, new RandomNumberGenerator()))
+        assertThatThrownBy(() -> Car.of(carName, new RandomNumberGenerator()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +52,7 @@ class CarTest {
     void moveForward() {
         //given
         int randomNumber = 4;
-        Car car = Car.from("pobi", new StubRandomNumberGenerator(randomNumber));
+        Car car = Car.of("pobi", new StubRandomNumberGenerator(randomNumber));
 
         //when
         car.isMove();
@@ -66,7 +66,7 @@ class CarTest {
     void notMoveForward() {
         //given
         int randomNumber = 3;
-        Car car = Car.from("pobi", new StubRandomNumberGenerator(randomNumber));
+        Car car = Car.of("pobi", new StubRandomNumberGenerator(randomNumber));
 
         //when
         car.isMove();
