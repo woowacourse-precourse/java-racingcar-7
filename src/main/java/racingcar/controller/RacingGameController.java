@@ -14,11 +14,13 @@ public class RacingGameController {
         playRace(racingGame);
     }
 
-    private void playRace(RacingGame racingGame) {
-        while (racingGame.canRace()){
+    private void playRace(final RacingGame racingGame) {
+        OutputView.printExecutionResultMessage();
+        while (racingGame.canRace()) {
             racingGame.race();
             OutputView.printRaceResult(racingGame.findCurrentPosition());
         }
+        OutputView.printWinners(racingGame.findWinnerNames());
     }
 
     private RacingGame createRacingGame(){
