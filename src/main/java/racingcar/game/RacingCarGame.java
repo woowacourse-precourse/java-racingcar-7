@@ -19,14 +19,14 @@ public class RacingCarGame {
         outputHandler.showAttemptCountInputMessage();
         AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();
 
-        displayAccumulateForEachAttempt(attemptCount, racingCars);
+        raceUntilAttemptIsConsumed(attemptCount, racingCars);
 
         Winners winners = racingCars.retrieveWinners();
 
         outputHandler.showWinners(winners);
     }
 
-    private void displayAccumulateForEachAttempt(AttemptCount attemptCount, RacingCars racingCars) {
+    private void raceUntilAttemptIsConsumed(AttemptCount attemptCount, RacingCars racingCars) {
         while (attemptCount.isRemain()) {
             racingCars.race();
             List<RaceSnapshot> snapShots = racingCars.getCurrentSnapshots();
