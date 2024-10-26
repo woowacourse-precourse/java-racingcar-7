@@ -27,8 +27,7 @@
     - RacingGame: 자동차 리스트와 경주 상태를 관리
     - RacingRule: 자동차가 어떻게 움직이는지에 대한 규칙을 정의
 - util: 유틸리티 클래스들을 포함하는 패키지
-    - RandomGenerator: 무작위 수를 생성하는 인터페이스
-    - RandomGeneratorImpl: 무작위 수 생성 로직의 구현체
+    - RandomGeneratorImpl: 무작위 수 생성
 - view: 사용자 입력과 출력을 관리하는 패키지
     - InputView: 자동차 이름과 시도횟수를 입력
     - OutPutView: 게임 진행 상황과 결과를 출력
