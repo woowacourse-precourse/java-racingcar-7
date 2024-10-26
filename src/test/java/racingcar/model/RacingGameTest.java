@@ -31,5 +31,16 @@ class RacingGameTest {
 
     @Test
     void getCarsLocation() {
+        Racingcar car01 = new Racingcar("pobi");
+        Racingcar car02 = new Racingcar("woni");
+        List<Racingcar> cars = new ArrayList<>();
+        cars.add(car01);
+        cars.add(car02);
+        RacingGame racingGame = new RacingGame(cars, 3);
+        racingGame.MoveRacingcars();
+        List<String> result = racingGame.getCarsLocation();
+        for(String carLocation : result) {
+            System.out.println(carLocation);
+        }
     }
 }
