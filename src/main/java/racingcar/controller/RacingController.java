@@ -13,5 +13,7 @@ public class RacingController {
     public void play() {
         String inputCarNames = racingcarService.getInputCarName();
         int inputTotalRound = Integer.parseInt(racingcarService.getInputTotalRound());
+
+        racingcarService.addRacingCar(inputCarNames);
     }
 }
