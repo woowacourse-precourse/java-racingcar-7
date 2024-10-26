@@ -43,7 +43,7 @@ public class Cars {
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = car.getMaxPosition(maxPosition);
+            maxPosition = car.calculateMaxPosition(maxPosition);
         }
         return maxPosition;
     }

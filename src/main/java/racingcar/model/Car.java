@@ -41,7 +41,7 @@ public class Car {
         winners.add(this.name);
     }
 
-    public int getMaxPosition(int maxPosition) {
+    public int calculateMaxPosition(int maxPosition) {
         return Math.max(maxPosition, this.position);
     }
 
