@@ -15,7 +15,7 @@ public class InputUtils {
         String[] carNameList = carNameInput.split(NAME_SEPARATOR);
 
         for (String carName : carNameList) {
-            checkWithWord(carName);
+            checkWithWord(carName,carList);
             carList.add(new Car(carName));
         }
         return carList;
@@ -23,12 +23,13 @@ public class InputUtils {
 
     private static void checkWithString(String carNameInput){
         checkNoInput(carNameInput);
-        checkComma(carNameInput);
+        checkInvalidComma(carNameInput);
     }
 
-    private static void checkWithWord(String carName){
+    private static void checkWithWord(String carName, List<Car> carList){
         checkNameLength(carName);
-        checkNameBlank(carName);
+        checkBlankName(carName);
+        checkDuplicateName(carName,carList);
     }
 
     private static void checkNameLength(String carName) {
@@ -43,18 +44,26 @@ public class InputUtils {
         }
     }
 
-    private static void checkNameBlank(String carNameInput) {
+    private static void checkBlankName(String carNameInput) {
         if (carNameInput.charAt(0) == ' '
                 || carNameInput.charAt(carNameInput.length()-1) == ' ') {
             throw new IllegalArgumentException(NAME_INPUT_BLANK_ERROR);
         }
     }
 
-    private static void checkComma(String carNameInput) {
+    private static void checkInvalidComma(String carNameInput) {
         if (carNameInput.contains(",,")
                 || carNameInput.charAt(0) == NAME_SEPARATOR.charAt(0)
                 || carNameInput.charAt(carNameInput.length()-1) == NAME_SEPARATOR.charAt(0)) {
             throw new IllegalArgumentException(NAME_INPUT_INVALID_COMMA);
+        }
+    }
+
+    private static void checkDuplicateName(String carName, List<Car> carList) {
+        for (Car car:carList){
+            if(car.getName().equals(carName)){
+                throw new IllegalArgumentException(NAME_INPUT_DUPLICATE_ERROR);
+            }
         }
     }
 
