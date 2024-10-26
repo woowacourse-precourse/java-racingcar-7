@@ -14,6 +14,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttemptCount = Console.readLine();
 
+        System.out.println();
+        System.out.println("실행 결과");
+
         long attemptCount = Long.parseLong(inputAttemptCount);
 
         String[] carList = inputCars.split(",");
@@ -28,6 +31,7 @@ public class Application {
             moveOrStop(cars);
         }
 
+        printWinners(cars);
 
     }
 
@@ -40,6 +44,21 @@ public class Application {
             System.out.println(car.name + " : " + "-".repeat(car.moveCount));
         }
         System.out.println();
+    }
+
+    public static void printWinners(List<Car> cars) {
+        cars.sort((o1, o2) -> o2.moveCount - o1.moveCount);
+
+        System.out.print("최종 우승자 : ");
+
+        System.out.print(cars.getFirst().name);
+
+        for (int i = 1; i < cars.size(); i++) {
+            if (cars.getFirst().moveCount != cars.get(i).moveCount) {
+                break;
+            }
+            System.out.print(", " + cars.get(i).name);
+        }
     }
 
 }
