@@ -1,7 +1,5 @@
 package racingcar.validator;
 
-import racingcar.message.ExceptionMessage;
-
 import static racingcar.message.ExceptionMessage.*;
 
 public class CarNameValidator {
