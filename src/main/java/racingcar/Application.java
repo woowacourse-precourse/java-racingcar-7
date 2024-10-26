@@ -21,6 +21,6 @@ public class Application {
                 throw new IllegalArgumentException("5자 이하로 이름을 정하시오.");
             }
         }
-
+        System.out.println("몇 번의 이동을 할 것인가요?");
     }
 }
