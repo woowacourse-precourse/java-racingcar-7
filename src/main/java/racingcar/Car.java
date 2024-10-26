@@ -7,6 +7,9 @@ public class Car {
     private final String carName;
     private int position;
 
+    private static final int FORWARD_POSSIBLE_NUMBER = 4;
+    private static final int LENGTH_LIMIT_NUMBER = 5;
+
     public Car(String carName) {
         isCarNameString(carName);
         isCarNameLengthFive(carName);
@@ -23,7 +26,7 @@ public class Car {
 
     public void move(){
         int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if(randomNumber >= 4){
+        if(randomNumber >= FORWARD_POSSIBLE_NUMBER){
             position++;
         }
     }
@@ -37,7 +40,7 @@ public class Car {
     }
 
     public static void isCarNameLengthFive(String carName){
-        if(carName.length() > 5){
+        if(carName.length() > LENGTH_LIMIT_NUMBER){
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 제한됩니다.");
         }
     }
