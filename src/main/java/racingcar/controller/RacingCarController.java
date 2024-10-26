@@ -9,6 +9,6 @@ public class RacingCarController {
 
     public void run() {
         String inputCarNames = InputView.enterCarNames();
-
+        int inputNumberOfAttempts = InputView.enterNumberOfAttempts();
     }
 }
