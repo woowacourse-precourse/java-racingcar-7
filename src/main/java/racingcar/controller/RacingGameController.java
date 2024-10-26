@@ -13,6 +13,7 @@ public class RacingGameController {
     private final OutputView outputView;
     private ArrayList<CarPlayer> carPlayers = new ArrayList<>();
     private ArrayList<RoundRecord> roundRecords = new ArrayList<>();
+    private ArrayList<String> winnerList = new ArrayList<>();
 
     public RacingGameController() {
         this.inputView = new InputView();
@@ -50,14 +51,31 @@ public class RacingGameController {
         }
     }
 
+    private void selectWinner() {
+        int max = 0;
+        for(int i=0; i<playerCount; i++) {
+            int stepCount = carPlayers.get(i).getStepCount();
+            if (stepCount > max) {
+                max = stepCount;
+            }
+        }
+        for(int i=0; i<playerCount; i++) {
+            if(carPlayers.get(i).getStepCount()==max) {
+                winnerList.add(carPlayers.get(i).getName());
+            }
+        }
+    }
+
     public void start() {
         inputView.inputGameInfo();
         setVariables();
         setCarPlayersList();
         setRoundRecordsList();
         moveCarPlayers();
+        selectWinner();
         outputView.setGameResult(roundRecords);
         outputView.setGameRound(roundCount);
+        outputView.setGameWinner(winnerList);
         outputView.printGameResult();
     }
 

@@ -8,9 +8,11 @@ import racingcar.constant.Constant;
 public class CarPlayer {
     private String name;
     private String steps = "";
+    private int stepCount;
 
     public void move() {
         if (canMove()) {
+            stepCount++;
             steps += Constant.STEP_UNIT;
         }
         steps += "";
@@ -33,6 +35,10 @@ public class CarPlayer {
 
     public String getSteps() {
         return steps;
+    }
+
+    public int getStepCount() {
+        return stepCount;
     }
 
 }
