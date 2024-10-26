@@ -21,7 +21,7 @@ public class RaceController {
     public void runRace() {
         setupRace();
         race.startRace(cars.getCars(), numOfRounds);
-        List<String> winnerNames = cars.findWinner();
+        List<String> winnerNames = cars.findWinners();
         Output.printWinners(winnerNames);
     }
 
