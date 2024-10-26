@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.constants.Constants;
 import racingcar.constants.OutputMessages;
 
 public class OutputView {
@@ -32,8 +31,8 @@ public class OutputView {
         System.out.println(result.substring(0, result.length() - 2));
     }
 
-    public static void printGameResult(String racerName, int distance) {
-        System.out.println(racerName + Constants.COLON + Constants.DASH.repeat(distance));
+    public static void printRacingResult(String racingResult) {
+        System.out.println(racingResult);
     }
 
     public static void printEmptyLine() {
