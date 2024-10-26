@@ -20,6 +20,10 @@ public class Cars {
         return this.carList;
     }
 
+    public static Cars setCars(List<String> carNameList){
+        return new Cars(carNameList);
+    }
+
     public void moveCars(){
         for(Car car:carList){
             int randomNumber = Randoms.pickNumberInRange(0, 9);

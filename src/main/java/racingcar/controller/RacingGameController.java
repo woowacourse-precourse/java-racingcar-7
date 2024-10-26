@@ -19,7 +19,7 @@ public class RacingGameController {
     }
 
     public void runGame(){
-        Cars cars = setCars(inputView.enterCarNames());
+        Cars cars = Cars.setCars(inputView.enterCarNames());
         int count = inputView.enterCount();
 
         doRacing(cars, count);
@@ -28,9 +28,6 @@ public class RacingGameController {
         outputView.printWinner(winner);
     }
 
-    public Cars setCars(List<String> carList){
-        return new Cars(carList);
-    }
 
     public void doRacing(Cars cars, int count){
         System.out.print(NEW_LINE);
