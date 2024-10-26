@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +17,10 @@ public class Game {
         return racingCars;
     }
 
-    public Integer randomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
-    public Boolean isForward(Integer number) {
-        return number >= 4;
-    }
-
     public List<RacingCar> executeLogic(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            Integer randomNumber = randomNumber();
-            if (isForward(randomNumber)) {
+            Integer randomNumber = GameUtil.randomNumber();
+            if (GameUtil.isForward(randomNumber)) {
                 racingCar.addScore();
             }
         }
