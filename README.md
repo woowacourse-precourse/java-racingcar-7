@@ -12,9 +12,10 @@ src/
 │       │   ├───controller
 │       │   │   └───RacingCarController.java // 컨트롤러
 │       │   ├───model
-│       │   │   ├───RacingData.java          // 경주 데이터
 │       │   │   └───RacingScoreData.java     // 경주 점수 데이터
 │       │   ├───service
+│       │       ├───CarNameParser.java       // 자동차 이름 분리 기능
+│       │       ├───GetAttemptCount.java     // 실행 횟수 변환 기능
 │       │   │   └───RacingCarService.java    // 서비스
 │       │   ├───validator
 │       │   │   └───InputValidator.java      // 유효성 검사
@@ -109,13 +110,13 @@ pobi,woni,jun
 - 프로그래밍 요구사항) Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
 > 메소드 1) 자동차 점수판 생성
->> 자동차의 대수만큼 숫자 0을 넣은 점수판을 생성한다.
+>> 자동차의 이름과 초기 점수 0을 넣은 점수판을 생성한다.
 >
 > 메소드 2) 자동차 전진 여부 판정
->> 생성된 랜덤값이 4 이상일 때는 1(전진), 생성된 랜덤 값이 4 미만일 때는 0(멈춤)을 반환한다.
+>> 생성된 랜덤값이 4 이상일 때는 true(전진), 생성된 랜덤 값이 4 미만일 때는 false(멈춤)을 반환한다.
 >
-> 메소드 3) 전진 여부 판정에 따라 점수판 변경
->> 메소드 2의 반환값을 점수판에 더한다.
+> 메소드 3) 전진 여부 판정에 따라 점수 상승
+>> 전진 판정이 난 차량의 점수를 1점 추가한다.
 
 ---
 

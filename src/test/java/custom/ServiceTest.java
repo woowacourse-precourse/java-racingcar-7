@@ -13,6 +13,8 @@ class ServiceTest {
     private final CarNameParser carNameParser = new CarNameParser();
     private final GetAttemptCount getAttemptCount = new GetAttemptCount();
 
+    // 자동차 이름 분리 기능 테스트
+
     @Test
     void 자동차이름분리기능_쉼표정리메소드_연속된쉼표제거_테스트() {
         String input = "pobi,,,woni,,,javaji";
