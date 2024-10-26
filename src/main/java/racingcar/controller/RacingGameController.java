@@ -38,20 +38,21 @@ public class RacingGameController {
     }
 
     private void playRound(int playRound, List<Car> cars) {
-        for (int i = 0; i < playRound; i++){
+        for (int i = 0; i < playRound; i++) {
             racingGameService.play(cars);
             printResult(cars);
         }
     }
 
-    private void printResult(List<Car> cars){
+    private void printResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println();
     }
-    
-    private void printWinners(List<Car> winners){
-        System.out.println(Constants.WINNER_ANNOUNCEMENT_MESSAGE + String.join(", ", winners.stream().map(Car::getName).toList()));
+
+    private void printWinners(List<Car> winners) {
+        System.out.println(Constants.WINNER_ANNOUNCEMENT_MESSAGE + String.join(", ",
+            winners.stream().map(Car::getName).toList()));
     }
 }

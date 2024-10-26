@@ -17,17 +17,17 @@ public class Car {
         this.position = 0;
     }
 
-    public void moveTry(){
+    public void moveTry() {
         if (Randoms.pickNumberInRange(0, 9) >= Constants.MOVE_THRESHOLD) {
             position++;
         }
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
