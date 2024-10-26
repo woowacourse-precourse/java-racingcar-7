@@ -2,10 +2,9 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static racingcar.model.CarConstants.*;
+
 public class Car {
-    private static final int CAN_MOVE_NUM = 4;
-    private static final int RANDOM_START_NUM = 0;
-    private static final int RANDOM_END_NUM = 9;
 
     private String name;
     private int position = 0;
@@ -15,13 +14,13 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= CAN_MOVE_NUM) {
+        if (number >= CAN_MOVE_NUM.getValue()) {
             this.position++;
         }
     }
 
     public int createRandomNumber() {
-        return Randoms.pickNumberInRange(RANDOM_START_NUM,RANDOM_END_NUM);
+        return Randoms.pickNumberInRange(RANDOM_START_NUM.getValue(),RANDOM_END_NUM.getValue());
     }
 
     public String getName() {
