@@ -1,26 +1,23 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map.Entry;
+import racingcar.model.RacingModel;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 
 public class RacingController {
-    private InputView inputView;
-    private OutputView outputView;
+    private final RacingModel racingModel;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public RacingController(InputView inputView, OutputView outputView) {
+
+    public RacingController(RacingModel racingModel, InputView inputView, OutputView outputView) {
+        this.racingModel = racingModel;
         this.inputView = inputView;
         this.outputView = outputView;
     }
-
 
     public static void validateCharacters(List<String> names) {
         final String englishRegex = "a-zA-Z";
@@ -43,24 +40,6 @@ public class RacingController {
         }
     }
 
-
-
-    public static void moveCars(LinkedHashMap<String, Integer> cars) {
-        for (Entry<String, Integer> car : cars.entrySet()) {
-            if (canMove()) {
-                cars.put(car.getKey(), car.getValue() + 1);
-            }
-            System.out.println(car.getKey() + " : " + "-".repeat(car.getValue()));
-        }
-        System.out.println();
-    }
-
-    public static boolean canMove() {
-        return Randoms.pickNumberInRange(0,9) >= 4;
-    }
-
-
-
     public void run() {
 
         List<String> names = inputView.getCarNames();
@@ -70,16 +49,16 @@ public class RacingController {
 
         int totalRounds = inputView.getTotalRounds();
 
-        System.out.println("실행 결과");
-
         LinkedHashMap<String,Integer> cars = new LinkedHashMap<>();
 
         for (String name: names) {
             cars.put(name, 0);
         }
 
+        outputView.printStart();
         for (int round = 0; round < totalRounds; round++) {
-            moveCars(cars);
+            cars = racingModel.moveCars(cars);
+            outputView.printRound(cars);
         }
 
         outputView.printWinners(cars);
