@@ -18,4 +18,13 @@ class CarTest {
         assertThat(car.getName()).isEqualTo("test");
     }
 
+    @Test
+    void 자동차_이동() {
+        Car car = new Car("test");
+
+        for (int i = 0; i < 5; i++) {
+            car.move();
+        }
+        assertThat(car.getMoveCount()).isEqualTo(5);
+    }
 }
