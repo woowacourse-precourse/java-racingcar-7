@@ -40,21 +40,6 @@ public class InputRacingCarViewTest {
         Console.close();
     }
 
-    @Test
-    public void 자동차_이름_입력_문자열_테스트() {
-        assertSimpleTest(() -> {
-            // given
-            String inputString = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-            ByteArrayOutputStream output = output();
-            input("창의");
-
-            // when
-            inputRacingCarView.inputCarName();
-
-            // then
-            assertThat(output.toString()).contains(inputString);
-        });
-    }
 
     @Test
     public void 자동차_이름_입력_테스트() {
@@ -64,38 +49,24 @@ public class InputRacingCarViewTest {
             input(input);
 
             // when
-            String result = inputRacingCarView.inputCarName();
+            String result = inputRacingCarView.getInputText();
 
             // then
             assertThat(result).isEqualTo(input);
         });
     }
 
-    @Test
-    public void 자동차_이동횟수_입력_문자열_테스트() {
-        assertSimpleTest(() -> {
-            // given
-            String inputString = "시도할 횟수는 몇 회인가요?";
-            ByteArrayOutputStream output = output();
-            input("창의");
 
-            // when
-            inputRacingCarView.inputCarMoveCount();
-
-            // then
-            assertThat(output.toString()).contains(inputString);
-        });
-    }
 
     @Test
     public void 자동차_이동횟수_입력_테스트() {
         assertSimpleTest(() -> {
             // given
-            String input = "3";
-            input(input);
+            int input = 3;
+            input(String.valueOf(input));
 
             // when
-            String result = inputRacingCarView.inputCarMoveCount();
+            int result = inputRacingCarView.getInputNumber();
 
             // then
             assertThat(result).isEqualTo(input);

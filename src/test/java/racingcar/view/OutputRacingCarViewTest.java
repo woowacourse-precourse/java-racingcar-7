@@ -34,7 +34,7 @@ public class OutputRacingCarViewTest {
             ByteArrayOutputStream output = output();
 
             // when
-            this.outputRacingCarView.outputGameResult("");
+            this.outputRacingCarView.printGameResult("");
 
             // then
             assertThat(output.toString())
@@ -50,7 +50,7 @@ public class OutputRacingCarViewTest {
             ByteArrayOutputStream output = output();
 
             // when
-            this.outputRacingCarView.outputGameResult(gameResult);
+            this.outputRacingCarView.printGameResult(gameResult);
 
             // then
             assertThat(output.toString())
@@ -66,7 +66,7 @@ public class OutputRacingCarViewTest {
             ByteArrayOutputStream output = output();
 
             // when
-            this.outputRacingCarView.outputGameWinners("");
+            this.outputRacingCarView.printGameWinners("");
 
             // then
             assertThat(output.toString())
@@ -82,12 +82,43 @@ public class OutputRacingCarViewTest {
             ByteArrayOutputStream output = output();
 
             // when
-            this.outputRacingCarView.outputGameWinners(winnerNames);
+            this.outputRacingCarView.printGameWinners(winnerNames);
 
             // then
             assertThat(output.toString())
                     .contains(winnerNames);
         });
     }
+
+    @Test
+    public void 자동차_이름_입력_문자열_테스트() {
+        assertSimpleTest(() -> {
+            // given
+            String inputString = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+            ByteArrayOutputStream output = output();
+
+            // when
+            outputRacingCarView.printCarNameInputText();
+
+            // then
+            assertThat(output.toString()).contains(inputString);
+        });
+    }
+
+    @Test
+    public void 자동차_이동횟수_입력_문자열_테스트() {
+        assertSimpleTest(() -> {
+            // given
+            String inputString = "시도할 횟수는 몇 회인가요?";
+            ByteArrayOutputStream output = output();
+
+            // when
+            outputRacingCarView.printCarMoveCountInputText();
+
+            // then
+            assertThat(output.toString()).contains(inputString);
+        });
+    }
+
 
 }
