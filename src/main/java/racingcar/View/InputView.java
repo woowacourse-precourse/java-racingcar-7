@@ -12,7 +12,7 @@ public class InputView {
         System.out.println("경주할 자동차 이름을 입력하세요");
         return Arrays.stream(Console.readLine().strip().split(SPLIT_DELIMETER))
                 .map(String::strip) //앞뒤 공백 제거
-                .toList(); // List<String> cars = Arrays.asList("car1","car2","car3")
+                .toList(); // ex -> List<String> cars = Arrays.asList("car1","car2","car3")
     }
     public String readRoundCount(){
         System.out.println("시도할 횟수는 몇번인가요?");
