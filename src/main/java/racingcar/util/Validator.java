@@ -36,7 +36,7 @@ public class Validator {
         if (name.length() > 5) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
         }
-        if (name.isEmpty()) {
+        if (name.trim().isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CAR_NAME.getMessage());
         }
     }
