@@ -10,7 +10,7 @@ public class CarNameValidator {
     private static final int CAR_NAME_LIMIT_LENGTH = 5;
 
     public void validateCarNameLength(final String name) {
-        if (name == null || name.isBlank() || name.length() > CAR_NAME_LIMIT_LENGTH) {
+        if (name.length() > CAR_NAME_LIMIT_LENGTH) {
             throw new IllegalArgumentException(GameErrorMessage.CAR_NAME_EXISTS_AND_LIMIT_ERROR.getValue());
         }
     }
