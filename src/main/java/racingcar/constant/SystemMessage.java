@@ -7,4 +7,5 @@ public class SystemMessage {
     public static final String RESULT_PREFIX = "실행 결과";
 
     public static final String MOVEMENT_STATE_FORMAT = "%s : %s";
+    public static final String WINNER_RESULT_FORMAT = "최종 우승자 : %s";
 }

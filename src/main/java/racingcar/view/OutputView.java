@@ -33,13 +33,13 @@ public class OutputView {
     }
 
     public void printWinners(List<Car> racers) {
-        String winnersMessage = String.join(
+        String winners = String.join(
                 SystemMessage.WINNER_DELIMITER,
                 racers.stream()
                         .map(Car::getName)
                         .toList()
         );
 
-        System.out.println(winnersMessage);
+        System.out.println(String.format(SystemMessage.WINNER_RESULT_FORMAT, winners));
     }
 }
