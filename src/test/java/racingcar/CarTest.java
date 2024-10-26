@@ -22,22 +22,22 @@ public class CarTest {
         assertEquals("----", car.getDistance());
     }
 
-    //    @Test
-//    @DisplayName("자동차 이동 테스트")
-//    public void testCarMove() {
-//        car.move(true);
-//        assertEquals("-", car.getDistance());
-//
-//        car.move(false);
-//        assertEquals("-", car.getDistance());
-//
-//        car.move(true);
-//        car.move(true);
-//        car.move(true);
-//        car.move(true);
-//        assertEquals("-----", car.getDistance());
-//    }
-//
+    @Test
+    @DisplayName("자동차 이동 테스트")
+    public void testCarMove() {
+        car.move(true);
+        assertEquals("-", car.getDistance());
+
+        car.move(false);
+        assertEquals("-", car.getDistance());
+
+        car.move(true);
+        car.move(true);
+        car.move(true);
+        car.move(true);
+        assertEquals("-----", car.getDistance());
+    }
+
     @Test
     @DisplayName("자동차 이름 테스트")
     public void testGetCarName() {
