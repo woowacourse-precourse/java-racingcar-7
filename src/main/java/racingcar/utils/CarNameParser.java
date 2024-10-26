@@ -5,20 +5,20 @@ import racingcar.validator.CarNameValidator;
 import java.util.Arrays;
 import java.util.List;
 
-import static racingcar.validator.CarNameValidator.validateDuplicate;
-import static racingcar.validator.CarNameValidator.validateEndsWithDelimiter;
+import static racingcar.validator.CarNameValidator.validateCarNamesList;
+import static racingcar.validator.CarNameValidator.validateInput;
 
 public class CarNameParser {
     public static final String NAME_DELIMITER = ",";
 
     public static List<String> parse(final String input) {
-        validateEndsWithDelimiter(input);
+        validateInput(input);
 
         List<String> carNames = Arrays.stream(input.split(NAME_DELIMITER))
-                .peek(CarNameValidator::validateLength)
+                .peek(CarNameValidator::validateCarName)
                 .toList();
 
-        validateDuplicate(carNames);
+        validateCarNamesList(carNames);
 
         return carNames;
     }
