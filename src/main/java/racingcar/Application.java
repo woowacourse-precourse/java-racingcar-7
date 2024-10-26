@@ -28,9 +28,11 @@ public class Application {
         return cars;
     }
 
+
+    private static int getInputMoveCount() {
         System.out.println("이동횟수를 정수로 입력해주세요");
         int moveCount;
-        
+
         try {
             moveCount = Integer.parseInt(Console.readLine());
 
@@ -42,6 +44,8 @@ public class Application {
             throw new IllegalArgumentException("정수값을 입력해주세요");
 
         }
+        return moveCount;
+    }
 
         System.out.println("실행 결과");
 
