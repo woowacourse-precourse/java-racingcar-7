@@ -3,13 +3,16 @@ package racingcar;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameController {
 
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public RacingGameController(InputView inputView) {
+    public RacingGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
@@ -23,11 +26,14 @@ public class RacingGameController {
 
         RacingGame racingGame = new RacingGame(cars);
 
+        outputView.printRoundHeader();
         for (int i = 0; i < tryCount.getCount(); i++) {
             racingGame.round();
+            outputView.printRoundResult(cars.getCars());
         }
 
-        racingGame.checkWinner();
+        List<Car> winners = racingGame.checkWinner();
+        outputView.printWinner(winners);
     }
 
 
