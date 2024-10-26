@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import static racingcar.car.constant.Constants.COLON_WITH_SPACE;
+import static racingcar.car.constant.Constants.HYPHEN;
 import static racingcar.car.constant.Constants.MAX_LENGTH_OF_NAME;
 import static racingcar.car.constant.Constants.MOVEABLE_MIN_NUMBER;
 import static racingcar.car.constant.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
@@ -71,10 +73,10 @@ public class Car {
     }
 
     private String moveCountToHyphen() {
-        return "-".repeat(moveCount);
+        return HYPHEN.repeat(moveCount);
     }
 
     private void printStatus(String moveStatus) {
-        OutputManager.printMessage(name + " : " + moveStatus);
+        OutputManager.printMessage(name + COLON_WITH_SPACE + moveStatus);
     }
 }
