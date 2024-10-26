@@ -4,11 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
+
+    private static Car testCar = Car.from("pobi");
 
     @Test
     @DisplayName("자동차의 이름은 5자를 넘지 않는다")
@@ -43,5 +47,20 @@ class CarTest {
 
         //then
         assertThat(position).isEqualTo(Car.NOT_MOVED);
+    }
+
+    @DisplayName("자동차의 이름과 위치를 함께 가진다")
+    @RepeatedTest(value = 5, name = RepeatedTest.SHORT_DISPLAY_NAME)
+    public void when(RepetitionInfo repetitionInfo) {
+        //given
+        String carName = "pobi";
+        int position = repetitionInfo.getCurrentRepetition();
+        int moveRole = 4;
+
+        //when
+        testCar.move(moveRole);
+
+        //then
+        assertThat(testCar.getNameWithPosition()).isEqualTo(carName + " : " + "-".repeat(position));
     }
 }
