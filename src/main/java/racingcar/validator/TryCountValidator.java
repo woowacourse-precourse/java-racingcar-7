@@ -3,8 +3,8 @@ package racingcar.validator;
 public class TryCountValidator {
     public static void validateTryCount(String input) {
         validateOnlyDigits(input);
-        validatePositive(input);
         validateNotOverflow(input);
+        validatePositive(input);
     }
 
     private static void validateOnlyDigits(String input) {
@@ -14,7 +14,7 @@ public class TryCountValidator {
     }
 
     private static void validatePositive(String input) {
-        if (isPositive(input)) {
+        if (!isPositive(input)) {
             throw new IllegalArgumentException("[ERROR] 1이상의 숫자만 입력 가능합니다.");
         }
     }
