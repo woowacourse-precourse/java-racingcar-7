@@ -10,7 +10,7 @@ public class CarsFactory {
     private static final String BLANK_NAME="차 이름은 공백일 수 없습니다";
 
     private static final String SPLITOR = ",";
-    private static final Integer HIGHEST_NAME_LENGTH = 5;
+    private static final Integer LONGEST_NAME_LENGTH = 5;
 
     public static List<Car> makeCarList(String carsInput) {
         carsInput= removeBlank(carsInput);
@@ -52,10 +52,10 @@ public class CarsFactory {
     }
 
     private static void validateOutOfRangeName(String carsInput) {
-        boolean result = Arrays.stream(carsInput.split(SPLITOR))
-                .anyMatch((car) -> car.length() > HIGHEST_NAME_LENGTH);
+        boolean hasOutOfRangeName = Arrays.stream(carsInput.split(SPLITOR))
+                .anyMatch((car) -> car.length() > LONGEST_NAME_LENGTH);
 
-        if (result) {
+        if (hasOutOfRangeName) {
             throw new IllegalArgumentException(OUT_OF_RANGE_NAME);
         }
     }
