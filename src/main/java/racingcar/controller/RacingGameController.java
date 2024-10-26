@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import racingcar.model.CarPlayer;
 import racingcar.view.InputView;
@@ -11,6 +12,7 @@ public class RacingGameController {
     private InputView inputView;
     private OutputView outputView;
     private ArrayList<CarPlayer> carPlayers;
+    private ArrayList<String> gameResult;
 
 
     public RacingGameController() {
@@ -34,10 +36,18 @@ public class RacingGameController {
                 carPlayers.get(i).move();
             }
         }
+        for(int k=0; k<playerNum; k++) {
+            gameResult.add(carPlayers.get(k).getSteps());
+        }
+    }
+
+    public ArrayList<String> getGameResult() {
+        return gameResult;
     }
 
     public void start() {
         inputView.inputGameInfo();
         innerGameLogic();
     }
+
 }
