@@ -26,8 +26,9 @@ public class CarService {
         return cars;
     }
 
-    public void advanceCar(List<Car> cars, int num) {
+    public void advanceCar(List<Car> cars){
         for (Car car : cars) {
+            int num = Utils.getRandom();
             if(num >= Utils.ADVANCE_STANDARD){
                 car.advanceCar();
             }
