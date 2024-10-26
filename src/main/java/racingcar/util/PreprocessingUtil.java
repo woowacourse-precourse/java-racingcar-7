@@ -7,6 +7,9 @@ import java.util.List;
 
 public class PreprocessingUtil {
 
+    private PreprocessingUtil() {
+    }
+
     public static List<String> stringToStringList(final String source) {
         return Arrays.stream(source.split(","))
                 .map(String::strip)
