@@ -10,7 +10,13 @@ public class RacingGame {
         String carNames = inputCarNames();
         System.out.println(carNames);
 
-        String tryCount = inputTryCount();
+        String inputTryCount = inputTryCount();
+        TryCountDto tryCountDto = new TryCountDto(inputTryCount);
+
+        int count = Integer.parseInt(tryCountDto.input());
+
+        TryCount tryCount = TryCount.from(count);
+
         System.out.println(tryCount);
 
         Cars cars = new Cars();
