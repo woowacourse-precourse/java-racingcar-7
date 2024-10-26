@@ -23,16 +23,14 @@ public class Application {
             checkParticipantSize(participantList);
             System.out.println(participantList);
 
-            System.out.println(inputList);
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            String input2 = Console.readLine();
+            checkAttemptCount(input2);
+            int attemptCount = Integer.parseInt(input2);
+            System.out.println(attemptCount);
+
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
-        }
-    }
-
-    // 자동차(참가자) 수가 2대 미만인지 확인하는 메서드
-    private static void checkParticipantSize(List<Participant> participantList) {
-        if (participantList.size() < 2) {
-            throw new IllegalArgumentException("자동차 경주는 2대 이상부터 가능합니다.");
         }
     }
 
@@ -83,4 +81,17 @@ public class Application {
         }
     }
 
+    // 자동차(참가자) 수가 2대 미만인지 확인하는 메서드
+    private static void checkParticipantSize(List<Participant> participantList) {
+        if (participantList.size() < 2) {
+            throw new IllegalArgumentException("자동차 경주는 2대 이상부터 가능합니다.");
+        }
+    }
+
+    // 시도할 횟수가 숫자 형식, 양수인지 확인하는 메서드
+    private static void checkAttemptCount(String input2) {
+        if (!input2.matches("^[1-9]\\d*$")) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
 }
