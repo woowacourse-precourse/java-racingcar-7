@@ -20,4 +20,8 @@ public class Input {
 
         return carNames;
     }
+
+    public static int readNumberOfMoves(){
+        return Integer.parseInt(Console.readLine());
+    }
 }
