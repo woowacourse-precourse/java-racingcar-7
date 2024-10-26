@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Utils {
 
-    public static String[] splitDelimiterCars(String inputCarNames) {
-        return inputCarNames.split(",");
+    public static String[] splitDelimiterCars(String input) {
+        return input.split(",");
     }
 
     public static boolean advanceConditions() {
