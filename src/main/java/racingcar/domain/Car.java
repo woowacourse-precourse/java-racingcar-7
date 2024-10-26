@@ -12,4 +12,9 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getFinalPosition(int position) {
+        return "-".repeat(position);
+    }
+
 }
