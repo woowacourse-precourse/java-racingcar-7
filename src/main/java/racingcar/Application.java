@@ -35,8 +35,16 @@ public class Application {
     }
 
     private static void validateInput(String[] cars) {
-        for (String car : cars) {
-            validateCarName(car);
+        for (int i = 0; i < cars.length; i++) {
+            String currentCar = cars[i];
+            validateCarName(currentCar);
+
+            // 중복 검사: 현재 인덱스(i) 이후의 값들과 비교
+            for (int j = i + 1; j < cars.length; j++) {
+                if (currentCar.equals(cars[j])) {
+                    throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + currentCar);
+                }
+            }
         }
 
     }
