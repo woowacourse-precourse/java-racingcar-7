@@ -1,6 +1,6 @@
 package racingcar;
 
-import static racingcar.ErrorMessage.EOF;
+import static racingcar.ErrorMessage.NO_INPUT;
 import static racingcar.ErrorMessage.WRONG_TRY_COUNT;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -39,7 +39,7 @@ public class RaceInput {
         try {
             return Console.readLine();
         } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException(EOF.getMessage());
+            throw new IllegalArgumentException(NO_INPUT.getMessage());
         }
     }
 }
