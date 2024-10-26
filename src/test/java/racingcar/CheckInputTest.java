@@ -4,28 +4,31 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CheckInputTest extends NsTest {
 
     @ParameterizedTest
-    @CsvSource({"'노범석,김수한무거북이'","'java,abracadabra'","111111,222"})
+    @CsvSource({"'노범석,김수한무거북이'", "'java,abracadabra'", "111111,222"})
     @DisplayName("한글,영문,숫자로 5글자 이상이 입력으로 주어질 때 테스트")
-    void testNameLength(String input){
+    void testNameLength(String input) {
         CheckInput checkInput = new CheckInput();
-        assertThatThrownBy(()->{
-            checkInput.splitNames(input);})
+        assertThatThrownBy(() -> {
+            checkInput.splitNames(input);
+        })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @CsvSource({"'one'","''"})
+    @CsvSource({"'one'", "''"})
     @DisplayName("경주 횟수로 숫자 외 입력이 들어오는 경우")
-    void testRaceCount(String input){
+    void testRaceCount(String input) {
         CheckInput checkInput = new CheckInput();
-        assertThatThrownBy(()->{
-            checkInput.isValidCount(input);})
+        assertThatThrownBy(() -> {
+            checkInput.isValidCount(input);
+        })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,14 +39,6 @@ public class CheckInputTest extends NsTest {
         Application.main(new String[]{});
     }
 }
-
-
-
-
-
-
-
-
 
 
 //import camp.nextstep.edu.missionutils.test.NsTest;
