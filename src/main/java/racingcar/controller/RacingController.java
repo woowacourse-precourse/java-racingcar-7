@@ -20,7 +20,7 @@ public class RacingController {
             String tryCountInString = getTryCount();
             Integer tryCount = racingGameService.convertTryCountToInt(tryCountInString);
 
-            List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames, tryCount);
+            List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames);
 
             OutputView.printResultMessage();
 

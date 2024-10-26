@@ -11,9 +11,9 @@ import racingcar.model.RacingCar;
 public class RacingGameService {
     private static final Integer NAME_LENGTH_LIMIT = 5;
 
-    public List<RacingCar> initializeRacingGame(String carNames, Integer tryCount){
-        if (!validateCarNames(carNames) || !validateTryCount(tryCount)){
-            return null;
+    public List<RacingCar> initializeRacingGame(String carNames){
+        if (!validateCarNames(carNames)){
+            throw new IllegalArgumentException("입력하신 자동차의 이름이 유효하지 않습니다.");
         }
 
         String[] parseCarName = processCarName(carNames);
@@ -27,11 +27,16 @@ public class RacingGameService {
         return racingCars;
     }
 
-    public Integer convertTryCountToInt(String tryCount){
-        if (tryCount.matches(".*[a-zA-Z]+.*")) {
+    public Integer convertTryCountToInt(String tryCountInString){
+
+        if (tryCountInString.matches(".*[a-zA-Z]+.*")) {
             throw new IllegalArgumentException("숫자 이외의 문자는 입력할 수 없습니다.");
         }
-        return Integer.parseInt(tryCount);
+        int tryCount = Integer.parseInt(tryCountInString);
+        if (!validateTryCount(tryCount)){
+            throw new IllegalArgumentException("입력하신 시도 횟수가 유효하지 않습니다.");
+        }
+        return tryCount;
     }
 
     public List<RacingCar> getWinners(List<RacingCar> racingCars) {
