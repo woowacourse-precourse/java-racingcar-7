@@ -144,4 +144,31 @@ public class GameTest {
         // then
         assertThat(carSnapshots).isEqualTo(expectedResult);
     }
+
+    @Test
+    @DisplayName("뽑힌 숫자가 이동 기준보다 작을 때 자동차가 움직이지 않는다.")
+    void shouldNotMoveCarsWhenNumberIsLessThanMoveCriteria() {
+
+        // given
+        NumberPicker fixedNumberPicker = new NumberPicker() {
+            @Override
+            public int pickNumberInRange(int startInclusive, int endInclusive) {
+                return MOVEMENT_CRITERIA - 1;
+            }
+        };
+
+        Game game = new Game(cars, totalRounds, fixedNumberPicker);
+        List<CarSnapshot> expectedResult = List.of(
+                new CarSnapshot(names[0], 0, 1),
+                new CarSnapshot(names[1], 0, 1),
+                new CarSnapshot(names[2], 0, 1)
+        );
+
+        // when
+        game.playNextRound();
+        List<CarSnapshot> carSnapshots = game.getCarSnapshots();
+
+        // then
+        assertThat(carSnapshots).isEqualTo(expectedResult);
+    }
 }
