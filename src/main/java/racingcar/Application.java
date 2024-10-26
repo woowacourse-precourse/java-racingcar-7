@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 
 import static java.lang.Integer.*;
 
@@ -47,6 +48,19 @@ public class Application {
             }
             System.out.println();
         }
+        List<Integer> positions = cars.stream().map(Car::getPosition).toList();
+
+        OptionalInt maxOptional = positions.stream().mapToInt(Integer::intValue).max();
+
+        int maxPosition = maxOptional.orElse(0);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getCarName());
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
    }
 
     private static List<Car> initializeCars(List<String> carNameList) {
