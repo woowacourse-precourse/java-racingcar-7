@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import racingcar.exceptions.ExceptionString;
 import racingcar.model.Car;
 import racingcar.model.CarGroup;
 import racingcar.view.RacingCarView;
@@ -33,9 +34,9 @@ public class RacingCarController {
 
     private void checkTryNumLength(String tryNum) {
         if (tryNum.isEmpty()) {
-            throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
+            throw new IllegalArgumentException(ExceptionString.NO_TRY_NUM.getText());
         } else if (tryNum.equals("0")) {
-            throw new IllegalArgumentException("시도 횟수는 0이 될 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionString.TRY_NUM_CANNOT_BE_ZERO.getText());
         }
     }
 
