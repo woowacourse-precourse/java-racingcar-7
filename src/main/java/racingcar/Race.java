@@ -16,7 +16,7 @@ public class Race {
         for (int i = 0; i < moveCnt; i++) {
             for (Car car : cars) {
                 car.move();
-                System.out.println(car.getName() + " : " + car.getDistance());
+                System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
             }
             System.out.println();
         }
