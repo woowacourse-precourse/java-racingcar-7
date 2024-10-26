@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     private String name;
     private long moveCount;
@@ -19,5 +22,14 @@ public class Car {
 
     public void move() {
         moveCount++;
+    }
+
+    public static List<Car> createCarsByName(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 }

@@ -26,27 +26,23 @@ public class Executor {
 
     public void run() {
         String inputCarNamesStr = ioController.enterCarNames();
+        String inputRepeatCountStr = ioController.enterRepeatCount();
 
         validator.validateCarNamesInput(inputCarNamesStr);
         List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, operator);
 
         validator.validateCarNamesLength(carNames, nameLengthLimit);
-        createCarsByName(carNames);
+        cars = Car.createCarsByName(carNames);
 
-        String inputRepeatCountStr = ioController.enterRepeatCount();
         validator.validateRepeatCount(inputRepeatCountStr);
         repeatCount = parser.parseRepeatCount(inputRepeatCountStr);
 
         executeForCount(cars, repeatCount);
+
         winners = getWinners(cars);
         ioController.printWinners(winners);
     }
 
-    private void createCarsByName(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-    }
 
     private void executeForCount(List<Car> cars, long repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
