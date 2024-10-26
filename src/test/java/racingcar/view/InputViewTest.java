@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.*;
 
 class InputViewTest {
     private final InputView inputView = new InputView();
-
     @Test
     void 자동차_이름_분리() {
         String input = "pobi,woni,jun";
@@ -36,5 +35,14 @@ class InputViewTest {
         assertThatThrownBy(() -> inputView.parseCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[길이 제한]");
+    }
+
+    @Test
+    void 시도할_횟수에_문자_입력() {
+        String input = "i";
+
+        assertThatThrownBy(() -> inputView.parseMoveCount(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[타입 변환]");
     }
 }
