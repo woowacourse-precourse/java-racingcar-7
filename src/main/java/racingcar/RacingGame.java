@@ -17,23 +17,10 @@ public class RacingGame {
     }
 
     public List<String> getWinners(List<Integer> positions) {
-        return cars.getCars().stream()
-                .filter(car -> car.getPosition() == getMaxPosition(positions))
-                .map(Car::getName)
-                .toList();
-    }
-
-    private int getMaxPosition(List<Integer> positions) {
-        return positions.stream()
-                .mapToInt(Integer::intValue)
-                .max()
-                .orElse(0);
+        return cars.getWinners(positions);
     }
 
     public List<Integer> getPositions() {
-        return cars.getCars()
-                .stream()
-                .map(Car::getPosition)
-                .toList();
+        return cars.getPositions();
     }
 }

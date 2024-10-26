@@ -25,15 +25,24 @@ public class Cars {
                 .toList();
     }
 
+    public List<String> getWinners(List<Integer> positions) {
+        return cars.stream()
+                .filter(car -> car.isWinnerPosition(positions))
+                .map(Car::getName)
+                .toList();
+    }
+
+    public List<Integer> getPositions() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .toList();
+    }
+
     public String getCarName(int i) {
         return cars.get(i).getName();
     }
 
     public int getSize() {
         return cars.size();
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Car {
 
     private final String name;
@@ -25,6 +27,17 @@ public class Car {
             return ++this.position;
         }
         return this.position;
+    }
+
+    public boolean isWinnerPosition(List<Integer> positions) {
+        return position == getMaxPosition(positions);
+    }
+
+    private int getMaxPosition(List<Integer> positions) {
+        return positions.stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
     }
 
     public String getName() {

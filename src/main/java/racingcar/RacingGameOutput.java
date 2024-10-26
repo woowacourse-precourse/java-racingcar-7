@@ -29,8 +29,8 @@ public class RacingGameOutput {
 
     private void printRoundProgress(Cars cars, List<Integer> positions) {
         int numOfCars = cars.getSize();
-        for (int num = 0; num < numOfCars; num++) {
-            printRaceProgress(cars.getCarName(num), positions.get(num));
+        for (int index = 0; index < numOfCars; index++) {
+            printRaceProgress(cars.getCarName(index), positions.get(index));
         }
     }
 
