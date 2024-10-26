@@ -9,15 +9,21 @@ import racingcar.view.OutputView;
 public class RacingController {
 
     public void startGame() {
-        OutputView.printInputCarName();
-        String carNames = InputView.inputCarName();
-        Cars cars = new Cars(CarFactory.createCars(carNames));
-
-        OutputView.printInputTryCount();
-        int tryCount = Integer.parseInt(InputView.inputTryCount());
-
+        Cars cars = getParticipateRacingCars();
+        int tryCount = getRacingTryCount();
         racing(cars, tryCount);
         winner(cars);
+    }
+
+    private static int getRacingTryCount() {
+        OutputView.printInputTryCount();
+        return Integer.parseInt(InputView.inputTryCount());
+    }
+
+    private static Cars getParticipateRacingCars() {
+        OutputView.printInputCarName();
+        String carNames = InputView.inputCarName();
+        return new Cars(CarFactory.createCars(carNames));
     }
 
     private void winner(Cars cars) {
@@ -33,5 +39,4 @@ public class RacingController {
             tryCount--;
         }
     }
-
 }
