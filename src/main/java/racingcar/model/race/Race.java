@@ -5,7 +5,7 @@ import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINU
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
-import racingcar.model.race.exception.ShouldNotBeMinusException;
+import racingcar.common.exception.ShouldNotBeMinusException;
 
 public class Race {
 

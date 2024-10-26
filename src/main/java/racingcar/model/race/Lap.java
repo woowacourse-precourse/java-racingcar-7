@@ -3,7 +3,7 @@ package racingcar.model.race;
 import static racingcar.common.message.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
 
 import java.util.Objects;
-import racingcar.model.race.exception.ShouldNotBeMinusException;
+import racingcar.common.exception.ShouldNotBeMinusException;
 
 public class Lap {
 

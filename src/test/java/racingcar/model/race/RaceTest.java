@@ -7,7 +7,7 @@ import static racingcar.model.race.Lap.ZERO;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.race.exception.ShouldNotBeMinusException;
+import racingcar.common.exception.ShouldNotBeMinusException;
 
 public class RaceTest {
 

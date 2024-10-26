@@ -6,7 +6,7 @@ import static racingcar.common.message.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
-import racingcar.model.race.exception.ShouldNotBeMinusException;
+import racingcar.common.exception.ShouldNotBeMinusException;
 
 public class Position {
 

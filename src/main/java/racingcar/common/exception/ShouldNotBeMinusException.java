@@ -1,6 +1,4 @@
-package racingcar.model.race.exception;
-
-import racingcar.common.exception.BusinessException;
+package racingcar.common.exception;
 
 public class ShouldNotBeMinusException extends BusinessException {
     public ShouldNotBeMinusException(String message) {
