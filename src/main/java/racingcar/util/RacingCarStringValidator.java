@@ -11,7 +11,7 @@ public class RacingCarStringValidator implements StringValidator {
 
     @Override
     public void validateFormat(final String value) {
-        if (value.isEmpty()) {
+        if (value.isBlank() || value.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
