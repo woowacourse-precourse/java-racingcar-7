@@ -6,31 +6,37 @@ import java.util.List;
 public class Winner {
     private final Cars cars;
     private final List<Car> winners;
-    private final int winnerPosition;
+    private final int maxPosition;
+
     public Winner(Cars cars) {
         this.cars = cars;
-        this.winners = new ArrayList<>();
-        this.winnerPosition = updateMaxPosition();
+        this.maxPosition = findMaxPosition();
+        this.winners = findWinners();
     }
 
-    private int updateMaxPosition() {
+    private int findMaxPosition() {
         int maxPosition = 0;
-        for(Car car : cars.getCars()) {
+        for (Car car : cars.getCars()) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
     }
 
-    public int getWinnerPosition() {
-        return winnerPosition;
-    }
-
-    public List<Car> getWinners() {
+    private List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
         for (Car car : cars.getCars()) {
-            if (car.getPosition() == winnerPosition) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }
+        return winners;
+    }
+
+    public int getWinnerPosition() {
+        return maxPosition;
+    }
+
+    public List<Car> getWinners() {
         return winners;
     }
 }
