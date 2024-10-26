@@ -44,6 +44,7 @@ public class RacingCarController {
         outputView.printResult();
         playRacingGame(cars,countOfTry);
 
+        outputView.rankResult(cars.getTopRankCarName());
 
 
 
