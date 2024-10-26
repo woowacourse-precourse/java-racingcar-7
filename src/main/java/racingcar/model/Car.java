@@ -2,7 +2,7 @@ package racingcar.model;
 
 import racingcar.util.NumberGenerator;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int INITIAL_POSITION = 0;
     public static final int MAX_NAME_LENGTH = 5;
     public static final int MIN_MOVE_VALUE = 4;
@@ -11,7 +11,11 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(NumberGenerator numberGenerator, String name) {
+    public static Car of(NumberGenerator numberGenerator, String name) {
+        return new Car(numberGenerator, name);
+    }
+
+    private Car(NumberGenerator numberGenerator, String name) {
         validateName(name);
         this.numberGenerator = numberGenerator;
         this.name = name;
@@ -37,5 +41,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return Integer.compare(this.position, other.position);
     }
 }

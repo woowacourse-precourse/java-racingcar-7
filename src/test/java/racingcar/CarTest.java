@@ -16,7 +16,7 @@ class CarTest {
     void 이동_성공() {
         // given
         fixedNumberGenerator = new FixedNumberGenerator(4);
-        Car car = new Car(fixedNumberGenerator, "test");
+        Car car = Car.of(fixedNumberGenerator, "test");
 
         // when
         car.tryMove();
@@ -29,7 +29,7 @@ class CarTest {
     void 이동_실패() {
         // given
         fixedNumberGenerator = new FixedNumberGenerator(3);
-        Car car = new Car(fixedNumberGenerator, "test");
+        Car car = Car.of(fixedNumberGenerator, "test");
 
         // when
         car.tryMove();
@@ -45,7 +45,7 @@ class CarTest {
 
         // when then
         assertDoesNotThrow(() -> {
-            new Car(new RandomNumberGenerator(), name);
+            Car.of(new RandomNumberGenerator(), name);
         });
     }
 
@@ -57,8 +57,8 @@ class CarTest {
 
         // when then
         assertThatThrownBy(() -> {
-            new Car(new RandomNumberGenerator(), longName);
-            new Car(new RandomNumberGenerator(), emptyName);
+            Car.of(new RandomNumberGenerator(), longName);
+            Car.of(new RandomNumberGenerator(), emptyName);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

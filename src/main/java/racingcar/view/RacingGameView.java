@@ -2,7 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.model.Car;
+import java.util.Map;
 
 public class RacingGameView {
     public List<String> getCarNames() {
@@ -19,9 +19,9 @@ public class RacingGameView {
         System.out.println("\n실행 결과");
     }
 
-    public void printCarPositions(List<Car> cars) {
-        cars.forEach(car ->
-                System.out.printf("%s : %s\n", car.getName(), "-".repeat(car.getPosition()))
+    public void printRacingStatus(Map<String, Integer> status) {
+        status.forEach((name, position) ->
+                System.out.printf("%s : %s\n", name, "-".repeat(position))
         );
         System.out.println();
     }
