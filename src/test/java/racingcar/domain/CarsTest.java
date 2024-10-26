@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import static java.util.stream.IntStream.range;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -58,6 +59,31 @@ public class CarsTest {
             final List<Car> expected = List.of(
                     new Car("pobi", 1), new Car("woni", 0)
             );
+
+            // then
+            assertThat(actual)
+                    .usingRecursiveFieldByFieldElementComparatorIgnoringFields("numberGenerator")
+                    .containsExactlyInAnyOrderElementsOf(expected);
+        }
+
+        @Test
+        void 시도횟수만큼_라운드_진행() {
+            // given
+            final int tryCount = 4;
+
+            final List<Car> carsList = List.of(
+                    new Car("pobi", new FixedNumberGenerator(List.of(1,2,3,4))),
+                    new Car("woni", new FixedNumberGenerator(List.of(5,6,7,8)))
+            );
+
+            final Cars cars = Cars.createFromCarsList(carsList);
+
+            // when
+            range(0, tryCount)
+                    .forEach(round -> cars.play());
+
+            final List<Car> actual = cars.getCars();
+            final List<Car> expected = List.of(new Car("pobi", 1), new Car("woni", 4));
 
             // then
             assertThat(actual)
