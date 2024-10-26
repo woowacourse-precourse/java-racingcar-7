@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CarPositionLogRepository {
 
-    private final Map<String, List<BigInteger>> carMovementLog = new HashMap<>();
+    private final Map<String, List<BigInteger>> carMovementLog = new LinkedHashMap<>();
 
     public void saveCarPositionLog(Car car) {
         BigInteger currentPosition = car.getCurrentPosition();
