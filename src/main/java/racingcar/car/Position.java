@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 public class Position {
     private static final int DISTANCE = 1;

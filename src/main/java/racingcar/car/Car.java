@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.car;
+
+import racingcar.race.Rule;
 
 public class Car {
     private final Rule rule;

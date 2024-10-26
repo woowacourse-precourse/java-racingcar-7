@@ -1,7 +1,7 @@
 package racingcar.io;
 
 import java.util.List;
-import racingcar.Car;
+import racingcar.car.Car;
 
 public class Output {
     private static final String RACE_RESULT = "실행 결과";

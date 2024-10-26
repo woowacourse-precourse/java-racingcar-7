@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.race;
 
 public class Rule {
     private static final int MOVING_THRESHOLD = 4;
