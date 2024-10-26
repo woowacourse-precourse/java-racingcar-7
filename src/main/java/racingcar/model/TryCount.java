@@ -10,7 +10,11 @@ public class TryCount {
         this.tryCount = tryCount;
     }
 
-    public int getTryCount(){
-        return this.tryCount;
+    public boolean isNotZero(){
+        return this.tryCount != 0;
+    }
+
+    public void reduceTryCount(){
+        this.tryCount--;
     }
 }
