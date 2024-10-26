@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Name;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -33,7 +34,7 @@ public class RacingController {
         outputView.printRacingResult();
         for (int i = 0; i < tryCount; i++) {
             cars.allMove();
-            outputView.printCarDistances(cars.getCarNames(), cars.getCarsPositions());
+            outputView.printCarDistances(cars.fetchCarNames(), cars.fetchCarsPositions());
         }
     }
 
@@ -49,9 +50,9 @@ public class RacingController {
 
         List<Car> inputCars = new ArrayList<>();
         for (String input : carInputs) {
-            inputCars.add(Car.from(input));
+            Name carName = Name.from(input);
+            inputCars.add(Car.from(carName));
         }
-
         cars = Cars.from(inputCars);
     }
 
