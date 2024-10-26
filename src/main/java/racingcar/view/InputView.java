@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
     private static InputView instance;
 
-    private InputView() {}
+    private InputView() {
+    }
 
-    public static synchronized InputView getInstance(){
-        if(instance == null){
+    public static synchronized InputView getInstance() {
+        if (instance == null) {
             instance = new InputView();
         }
 

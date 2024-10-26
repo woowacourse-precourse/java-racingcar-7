@@ -9,7 +9,7 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String[] carNames) {
-        if(!validateCarName(carNames)){
+        if (!validateCarName(carNames)) {
             throw new IllegalArgumentException("자동차의 이름이 올바르지 않습니다.");
         }
 

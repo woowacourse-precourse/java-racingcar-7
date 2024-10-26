@@ -6,6 +6,7 @@ public class Car {
     private final String name;
     private MoveStrategy moveStrategy;
     private int position;
+
     public Car(String name, MoveStrategy moveStrategy) {
         this.name = name;
         this.moveStrategy = moveStrategy;
@@ -20,9 +21,9 @@ public class Car {
         return name;
     }
 
-    public void move(){
-        if(moveStrategy.canMove()){
-            position ++;
+    public void move() {
+        if (moveStrategy.canMove()) {
+            position++;
         }
     }
 
