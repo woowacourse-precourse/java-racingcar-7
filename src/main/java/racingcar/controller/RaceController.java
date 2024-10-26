@@ -6,12 +6,12 @@ import racingcar.dto.StartRaceRequest;
 import racingcar.dto.StartRaceResponse;
 import racingcar.service.RaceService;
 
-public class RacingController {
+public class RaceController {
 
     private static final String DELIMITERS = ",";
     private final RaceService raceService;
 
-    public RacingController(RaceService raceService) {
+    public RaceController(RaceService raceService) {
         this.raceService = raceService;
     }
 

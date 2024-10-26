@@ -12,20 +12,20 @@ import racingcar.view.UserOutputView;
 
 public class MainController {
 
-    private final RacingController racingController = new RacingController(new RaceService(new CarRepository()));
+    private final RaceController raceController = new RaceController(new RaceService(new CarRepository()));
 
     public void start() {
         UserOutputView.InputCarNameMessage();
         String carNames = UserInputView.readUserInput();
-        racingController.createCars(new CreateCarsRequest(carNames));
+        raceController.createCars(new CreateCarsRequest(carNames));
 
         UserOutputView.InputAttemptCountMessage();
         int attemptCount = Parser.parseStringToInt(UserInputView.readUserInput());
 
-        StartRaceResponse startRaceresponse = racingController.startRace(new StartRaceRequest(attemptCount));
+        StartRaceResponse startRaceresponse = raceController.startRace(new StartRaceRequest(attemptCount));
         UserOutputView.RacingRoundMessage(startRaceresponse.roundMoveData());
 
-        GetWinnersResponse getWinnersResponse = racingController.getWinners();
+        GetWinnersResponse getWinnersResponse = raceController.getWinners();
         UserOutputView.RacingResultMessage(getWinnersResponse.winnersName());
     }
 }
