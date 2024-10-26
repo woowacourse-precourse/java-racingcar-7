@@ -10,14 +10,30 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String playerInput=Console.readLine();
+        if(playerInput==null || playerInput.isEmpty()){
+            throw new IllegalArgumentException();
+        }
+        if(playerInput.matches("[^a-zA-Z,]")){
+            throw new IllegalArgumentException();
+        }
         HashMap<String,Integer> player=new HashMap<>();
         for (String s : playerInput.split(",")) {
+            if(s.isEmpty()|| s.length()>5){
+                throw new IllegalArgumentException();
+            }
             player.put(s,0);
         }
 
         String countInput=Console.readLine();
         int count;
-        count=Integer.parseInt(countInput);
+        try {
+            count = Integer.parseInt(countInput);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if(count<=0){
+            throw new IllegalArgumentException();
+        }
 
         for(int i=0;i<count;i++){
             goOrStop(player);
