@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.CarMovementResults.CarMovementResult;
+import racingcar.model.car.WinnersDto;
 
 public class OutputView {
     private static OutputView instance;
@@ -17,8 +18,10 @@ public class OutputView {
         return instance;
     }
 
-    public void displayWinners(List<String> nameOfWinners) {
+    public void displayWinners(WinnersDto winnersDto) {
         System.out.print("최종 우승자 : ");
+
+        List<String> nameOfWinners = winnersDto.nameOfWinners();
 
         if (nameOfWinners.size() == 1) {
             System.out.println(nameOfWinners.getFirst());

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Stream;
 import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.Cars;
+import racingcar.model.car.WinnersDto;
 import racingcar.model.game.Game;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -33,7 +34,7 @@ public class GameController {
         outputView.displayMovementResults(movementResultsOfRounds);
 
         game.judgeWinners();
-        outputView.displayWinners(game.getNameOfWinners());
+        outputView.displayWinners(new WinnersDto(game));
     }
 
     private Game makeGame() {

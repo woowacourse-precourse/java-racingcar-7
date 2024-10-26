@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.CarStatus;
+import racingcar.model.car.WinnersDto;
 
 public class OutputViewTest {
 
@@ -54,9 +55,10 @@ public class OutputViewTest {
     void shouldDisplaySingleWinnerInExpectedFormat() {
         // given
         List<String> nameOfSingleWinner = List.of("pobi");
+        WinnersDto winnersDtoOfSingleWinner = new WinnersDto(nameOfSingleWinner);
 
         // when
-        outputView.displayWinners(nameOfSingleWinner);
+        outputView.displayWinners(winnersDtoOfSingleWinner);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(
@@ -68,9 +70,10 @@ public class OutputViewTest {
     void shouldDisplayWinnersInExpectedFormat() {
         // given
         List<String> nameOfWinners = List.of("pobi", "jun");
+        WinnersDto winnersDto = new WinnersDto(nameOfWinners);
 
         // when
-        outputView.displayWinners(nameOfWinners);
+        outputView.displayWinners(winnersDto);
 
         // then
         assertThat(outputStream.toString()).isEqualTo(
