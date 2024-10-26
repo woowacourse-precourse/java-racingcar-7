@@ -40,7 +40,7 @@ public class IOController {
             Car winner = winners.get(i);
             System.out.print(winner.getName());
 
-            if (i != winners.size()) {
+            if (i != winners.size() - 1) {
                 System.out.print(", ");
             }
         }
