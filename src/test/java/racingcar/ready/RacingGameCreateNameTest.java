@@ -9,16 +9,14 @@ import racingcar.view.RacingGameView;
 
 class RacingGameCreateNameTest {
     public RacingGame racingGame;
-    public RacingController racingController;
 
     @BeforeEach
     public void init() {
         racingGame = new RacingGame();
-        racingController = new RacingController(new RacingGameView(),new RacingGame());
     }
 
     @Test
-    public void 이름입력테스트() throws Exception {
+    public void 이름생성테스트() throws Exception {
         //given
         String input = "pobi,woni";
         //when
@@ -29,7 +27,7 @@ class RacingGameCreateNameTest {
     }
 
     @Test
-    public void 이름입력_5글자예외테스트() throws Exception {
+    public void 이름생성_6글자예외테스트() throws Exception {
         //given
         String input = "pobi,javaji";
         //when

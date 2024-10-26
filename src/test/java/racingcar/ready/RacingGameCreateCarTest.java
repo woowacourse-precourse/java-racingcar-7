@@ -11,12 +11,10 @@ import racingcar.view.RacingGameView;
 
 class RacingGameCreateCarTest {
     public RacingGame racingGame;
-    public RacingController racingController;
 
     @BeforeEach
     public void init() {
         racingGame = new RacingGame();
-        racingController = new RacingController(new RacingGameView(),new RacingGame());
     }
 
     @Test
