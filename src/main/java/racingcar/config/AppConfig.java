@@ -40,6 +40,7 @@ public class AppConfig {
     }
 
     public Controller createController() {
-        return new Controller();
+        return new Controller(createInputController(), createOutputController(), createCarController(),
+                createRaceController());
     }
 }
