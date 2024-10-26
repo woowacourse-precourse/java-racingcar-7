@@ -1,16 +1,18 @@
 package racingcar;
 
 public class IO {
-    public String[] InputCars(){
+    public String[] inputCars(){
         String inputCarData = camp.nextstep.edu.missionutils.Console.readLine();
         String[] carNames = inputCarData.split(",");
         return carNames;
     }
 
-    public int InputCount()
+    public int inputCount()
     {
         String inputMoveCnt = camp.nextstep.edu.missionutils.Console.readLine();
         int cnt = Integer.parseInt(inputMoveCnt);
         return cnt;
     }
+
+
 }
