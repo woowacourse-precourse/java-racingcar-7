@@ -19,11 +19,12 @@ public class Car {
     }
 
     public int getScore() {
-        return score;
+        return this.score;
     }
 
-    public void addScore() {
-        score += Race.MOVE_STEP.getValue();
+    public void moveOrStop(int value) {
+        if (value >= Race.MOVE_THRESHOLD.getValue())
+            this.score += Race.MOVE_STEP.getValue();
     }
 
     @Override

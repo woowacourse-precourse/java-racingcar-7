@@ -27,10 +27,7 @@ public class RacingService {
 
     private void moveCars(Cars cars) {
         for (Car car : cars.getCarsList()) {
-            int randomNumber = getRandomNumber();
-            if (randomNumber >= Race.MOVE_THRESHOLD.getValue()) {
-                car.addScore();
-            }
+            car.moveOrStop(getRandomNumber());
         }
     }
 

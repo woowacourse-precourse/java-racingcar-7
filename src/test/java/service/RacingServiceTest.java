@@ -32,8 +32,17 @@ class RacingServiceTest {
     }
 
     @Test
-    @DisplayName("자동차가 전진을 성공했는지 확인")
+    @DisplayName("자동차가 랜덤 값에 따라 전진을 성공했는지 확인")
     void checkCarsMovement() {
+        Car car = new Car("c1");
+
+        int randomValue1 = 4;
+        int randomValue2 = 3;
+
+        car.moveOrStop(randomValue1);
+        assertThat(car.getScore()).isEqualTo(1);
+        car.moveOrStop(randomValue2);
+        assertThat(car.getScore()).isEqualTo(1);
     }
 
 }
