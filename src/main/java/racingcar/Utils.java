@@ -25,14 +25,14 @@ public class Utils {
         return false;
     }
 
-    public List<Car> countWinners(List<Car> participants) {
+    public List<String> countWinners(List<Car> participants) {
         participants.sort(new CarMoveCntComparator());
-        List<Car> winners = new ArrayList<>();
-        winners.add(participants.getFirst());
+        List<String> winners = new ArrayList<>();
+        winners.add(participants.getFirst().getName());
         int winningMoves = participants.getFirst().getMovedCnt();
         for (int i = 1; i < participants.size(); i++) {
             if ((participants.get(i).getMovedCnt() == winningMoves)) {
-                winners.add(participants.get(i));
+                winners.add(participants.get(i).getName());
                 continue;
             }
             break;

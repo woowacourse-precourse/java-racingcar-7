@@ -47,11 +47,11 @@ public class CountingWinnersTest {
         testCars.add(car5);
 
         // When
-        List<Car> result = utils.countWinners(testCars);
+        List<String> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(1);
-        assertThat(result.getFirst()).isEqualTo(car2);
+        assertThat(result.getFirst()).isEqualTo(car2.getName());
     }
 
     @Test
@@ -94,13 +94,13 @@ public class CountingWinnersTest {
         testCars.add(car6);
 
         // When
-        List<Car> result = utils.countWinners(testCars);
+        List<String> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(3);
-        assertThat(car2).isIn(result);
-        assertThat(car5).isIn(result);
-        assertThat(car6).isIn(result);
+        assertThat(car2.getName()).isIn(result);
+        assertThat(car5.getName()).isIn(result);
+        assertThat(car6.getName()).isIn(result);
     }
 
     @Test
@@ -143,16 +143,16 @@ public class CountingWinnersTest {
         testCars.add(car6);
 
         // When
-        List<Car> result = utils.countWinners(testCars);
+        List<String> result = utils.countWinners(testCars);
 
         // Then
         assertThat(result.size()).isEqualTo(6);
-        assertThat(car1).isIn(result);
-        assertThat(car2).isIn(result);
-        assertThat(car3).isIn(result);
-        assertThat(car4).isIn(result);
-        assertThat(car5).isIn(result);
-        assertThat(car6).isIn(result);
+        assertThat(car1.getName()).isIn(result);
+        assertThat(car2.getName()).isIn(result);
+        assertThat(car3.getName()).isIn(result);
+        assertThat(car4.getName()).isIn(result);
+        assertThat(car5.getName()).isIn(result);
+        assertThat(car6.getName()).isIn(result);
     }
 
     @AfterEach
