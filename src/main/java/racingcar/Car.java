@@ -3,7 +3,7 @@ package racingcar;
 public class Car {
 
     String name;
-    long moveCount;
+    int moveCount;
 
     public String getName() {
         return name;
@@ -17,11 +17,11 @@ public class Car {
         return moveCount;
     }
 
-    public void setMoveCount(long moveCount) {
+    public void setMoveCount(int moveCount) {
         this.moveCount = moveCount;
     }
 
-    public Car(String name, long moveCount) {
+    public Car(String name, int moveCount) {
         this.name = name;
         this.moveCount = moveCount;
     }
