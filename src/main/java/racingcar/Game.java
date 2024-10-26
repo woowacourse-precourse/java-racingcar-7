@@ -28,15 +28,13 @@ public class Game {
         return number >= 4;
     }
 
-    public Map<String, Integer> executeLogic(List<RacingCar> racingCars) {
-        Map<String, Integer> result = new HashMap<>();
+    public List<RacingCar> executeLogic(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             Integer randomNumber = randomNumber();
             if (isForward(randomNumber)) {
                 racingCar.addScore();
             }
-            result.put(racingCar.getName(), randomNumber);
         }
-        return result;
+        return  racingCars;
     }
 }
