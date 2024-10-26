@@ -14,10 +14,6 @@ public enum Message {
         this.format = format;
     }
 
-    public String getFormat() {
-        return format;
-    }
-
     public void printMessage(String... values) {
         System.out.println(formatWith(values));
     }
