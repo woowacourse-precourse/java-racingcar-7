@@ -4,7 +4,7 @@ import racingcar.strategy.MovingStrategy;
 import racingcar.vo.Name;
 import racingcar.vo.Position;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final Name name;
     private final Position position;
 
@@ -18,11 +18,15 @@ public class Car {
     }
 
     public void attemptMove(MovingStrategy movingStrategy) {
-
         boolean canMove = movingStrategy.shouldMove();
 
         if (canMove) {
             position.forward();
         }
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return this.position.compareTo(other.position);
     }
 }

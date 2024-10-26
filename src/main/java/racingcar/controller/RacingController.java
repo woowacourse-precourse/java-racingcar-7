@@ -1,6 +1,11 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Race;
+import racingcar.domain.RoundProgress;
+import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.vo.Name;
 import racingcar.vo.Round;
@@ -23,10 +28,21 @@ public class RacingController {
     public void run() {
         String userInput = inputView.getCarNames();
         List<String> splitString = stringSplitter.split(userInput);
-        List<Name> names = splitString.stream().map(Name::from).toList();
 
         userInput = inputView.getTotalRace();
         Integer parsedNumber = numberParser.parse(userInput);
+
+        List<Name> names = splitString.stream().map(Name::from).toList();
+        List<Car> cars = names.stream().map(Car::withName).toList();
+
         Round round = Round.from(parsedNumber);
+
+        Race race = Race.of(
+                Cars.from(cars),
+                RoundProgress.createFromTotalRounds(round)
+        );
+
+        race.execute(RandomMovingStrategy.getInstance());
+        
     }
 }
