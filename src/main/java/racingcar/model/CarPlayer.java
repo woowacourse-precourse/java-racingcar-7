@@ -7,19 +7,20 @@ import racingcar.constant.Constant;
 
 public class CarPlayer {
     private String name;
-    private String steps;
-    private int moveCount;
+    private String steps = "";
 
     public void move() {
         if (canMove()) {
             steps += Constant.STEP_UNIT;
-            System.out.println("steps: " + steps);
         }
+        steps += "";
     }
 
     private boolean canMove() {
-        return Randoms.pickNumberInRange(Constant.RANDOM_RANGE_MIN, Constant.RANDOM_RANGE_MAX)
-                >= Constant.RANDOM_NUMBER_FOR_MOVE;
+        if (Randoms.pickNumberInRange(Constant.RANDOM_RANGE_MIN, Constant.RANDOM_RANGE_MAX) >= Constant.RANDOM_NUMBER_FOR_MOVE) {
+            return true;
+        }
+        return false;
     }
 
     public void setName(String name) {

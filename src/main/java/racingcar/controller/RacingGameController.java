@@ -33,13 +33,18 @@ public class RacingGameController {
     }
 
     private void moveCarPlayers() {
-
+        for(int i=0; i<roundCount; i++) {
+            for(int j=0; j<playerCount; j++) {
+                carPlayers.get(i).move();
+            }
+        }
     }
 
     public void start() {
         inputView.inputGameInfo();
         setVariables();
         setCarPlayersList();
+        moveCarPlayers();
     }
 
 }
