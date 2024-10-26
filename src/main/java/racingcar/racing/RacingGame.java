@@ -1,7 +1,7 @@
-package racingcar.racingGame;
+package racingcar.racing;
 
 import racingcar.domain.*;
-import racingcar.views.InputView;
+import racingcar.dto.InputDto;
 
 public class RacingGame extends RacingGameTemplate {
 
@@ -21,11 +21,8 @@ public class RacingGame extends RacingGameTemplate {
         raceManager.announceRaceResult();
     }
 
-    public static RacingGame initGame() {
-        RaceManager manager = RaceManager.createRaceManager(
-                RacingCars.from(InputView.inputCarNames()),
-                Attempts.from(InputView.inputRaceAttempts())
-        );
+    public static RacingGame initGame(InputDto dto) {
+        RaceManager manager = RaceManager.createRaceManager(dto);
         return new RacingGame(manager);
     }
 }

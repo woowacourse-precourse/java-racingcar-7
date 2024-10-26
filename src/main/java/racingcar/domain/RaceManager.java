@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.dto.InputDto;
 import racingcar.views.OutputView;
 
 import java.math.BigInteger;
@@ -22,8 +23,18 @@ public class RaceManager {
         while (attempts.isLeft()) {
             moveOrStop();
             attempts.decrease();
-            OutputView.printResultPerAttempts(racingCars.getCars());
+            showResultPerAttempt();
         }
+    }
+
+    public void announceRaceResult(){
+        findWinningPosition();
+        findWinningCarsNames();
+        OutputView.printWinner(winnersName);
+    }
+
+    private void showResultPerAttempt() {
+        OutputView.printResultPerAttempts(racingCars.getCars());
     }
 
     private void findWinningPosition() {
@@ -42,18 +53,15 @@ public class RaceManager {
                 .collect(Collectors.toList());
     }
 
-    public void moveOrStop() {
+    private void moveOrStop() {
         racingCars.getCars()
                 .forEach(Car::move);
     }
 
-    public void announceRaceResult(){
-        findWinningPosition();
-        findWinningCarsNames();
-        OutputView.printWinner(winnersName);
-    }
-
-    public static RaceManager createRaceManager(RacingCars racingCars, Attempts attempts) {
-        return new RaceManager(racingCars, attempts);
+    public static RaceManager createRaceManager(InputDto dto) {
+        return new RaceManager(
+                RacingCars.from(dto.inputCarNames()),
+                Attempts.from(dto.inputAttempts())
+        );
     }
 }

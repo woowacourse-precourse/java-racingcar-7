@@ -1,4 +1,4 @@
-package racingcar.racingGame;
+package racingcar.racing;
 
 public abstract class RacingGameTemplate {
 
