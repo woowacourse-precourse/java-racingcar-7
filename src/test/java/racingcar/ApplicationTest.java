@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -11,6 +12,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+
+    @Test
+    @DisplayName("자동차 이름 입력 받아 저장하는 기능 테스트")
+    void saveCarNamesTest(){
+        assertSimpleTest(() -> {
+            run("pobi,jun,woni");
+            String expectedOutput = "car name: pobi" + System.lineSeparator() +
+                    "car name: jun" + System.lineSeparator() +
+                    "car name: woni";
+            assertThat(output()).contains(expectedOutput);
+        });
+    }
 
     @Test
     void 기능_테스트() {
