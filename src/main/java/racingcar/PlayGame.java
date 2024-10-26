@@ -12,6 +12,7 @@ public class PlayGame {
 
     public void play(List<Car> cars, int tryCount) {
         this.cars = cars;
+        System.out.println("실행 결과");
 
         while(tryCount > 0) {
             for(int i = 0; i < cars.size(); i++) {
