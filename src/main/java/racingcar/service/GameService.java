@@ -22,20 +22,14 @@ public class GameService {
     }
 
     public void playGame(Game game, OutputView outputView) {
-        GameResult result = playRounds(game, outputView);
+        GameResult result = game.playGame();
+
+        printRoundResult(result, outputView);
         printWinners(result, outputView);
     }
 
-
-    private GameResult playRounds(Game game, OutputView outputView) {
-        GameResult result = null;
-
-        outputView.printRoundResultMessage();
-        for (int round = 0; round < game.getGameRound(); round++) {
-            result = game.playRound();
-            outputView.printRoundResult(result);
-        }
-        return result;
+    private void printRoundResult(GameResult result, OutputView outputView) {
+        outputView.printRoundResult(result);
     }
 
     private void printWinners(GameResult result, OutputView outputView) {
@@ -44,9 +38,9 @@ public class GameService {
     }
 
     private Cars getWinner(GameResult gameResult) {
-        Cars joinCars = gameResult.getCars();
-
+        Cars lastRoundCars = gameResult.getCarsAtFinalRound();
         Integer maxMoveCount = gameResult.findMaxMoveCount();
-        return joinCars.findCarsByMoveCount(maxMoveCount);
+
+        return lastRoundCars.findCarsByMoveCount(maxMoveCount);
     }
 }
