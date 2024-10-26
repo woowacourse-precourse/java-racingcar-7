@@ -18,13 +18,7 @@ public class Application {
         String input_times = readLine();
         int times = Integer.parseInt(input_times);
         System.out.println("실행 결과");
-        for (int i=0; i<times; i++){
-            for (int j=0; j<names.length; j++) {
-                RacingCar.randomlyProceed(counts, j);
-                System.out.println(names[j] + " : " + "-".repeat(counts[j]));
-            }
-            System.out.println("");
-        }
+        RacingCar.printProcess(times,names,counts);
         int max = Arrays.stream(counts).max().getAsInt();
         int[] max_indices = IntStream.range(0, counts.length).filter(i -> counts[i] == max).toArray();
         String[] winners = IntStream.of(max_indices).mapToObj(i -> names[i]).toArray(String[]::new);
