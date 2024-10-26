@@ -16,22 +16,17 @@ public class RacingService {
     private final StringToRacingCarsConverter racingCarsConverter;
     private final StringToRacingTryCountConverter tryCountConverter;
 
+    private RacingProperties properties;
+
     public RacingService() {
         this.racingCarsConverter = new StringToRacingCarsConverter();
         this.tryCountConverter = new StringToRacingTryCountConverter();
     }
 
-    private RacingProperties properties;
-
     public List<RacingCar> raceStartAndGetWinners(String cars, String tryCount) {
-        return raceStartAndGetWinners(createRacing(cars, tryCount));
-    }
+        Racing racing = createRacing(cars, tryCount);
 
-    private List<RacingCar> raceStartAndGetWinners(Racing racing) {
-        rangeClosed(1, racing.tryCount())
-                .mapToObj(i -> racing.cars())
-                .peek(this::moveAll)
-                .forEach(this::printCarsPostion);
+        raceStart(racing);
 
         return racing.getWinners();
     }
@@ -41,16 +36,25 @@ public class RacingService {
         return this;
     }
 
+    private void raceStart(Racing racing) {
+        rangeClosed(1, racing.tryCount()).forEach(i -> race(racing.cars()));
+    }
+
+    private void race(LinkedHashSet<RacingCar> cars) {
+        moveAllCars(cars);
+        printCarsPostion(cars);
+    }
+
     private Racing createRacing(String cars, String tryCount) {
         return Racing.of(racingCarsConverter.convert(cars), tryCountConverter.convert(tryCount));
     }
 
-    private void moveAll(LinkedHashSet<RacingCar> cars) {
-        cars.stream().filter(this::carNameFilter).forEach(this::move);
+    private void moveAllCars(LinkedHashSet<RacingCar> cars) {
+        cars.stream().filter(this::carNameFilter).forEach(this::moveCar);
     }
 
-    private void move(RacingCar car) {
-        car.move(properties.getCarMoveNumberPicker().pickNumberValue());
+    private void moveCar(RacingCar car) {
+        car.move(properties.getCarMoveNumberPicker().pick());
     }
 
     private boolean carNameFilter(RacingCar car) {
