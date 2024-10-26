@@ -81,7 +81,7 @@ public class InputView {
 
         private static int validateNumber(String count) {
             if (isNotPositiveInteger(count)) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT_FORMAT.getMessage());
+                throw new RaceException(ErrorMessage.INVALID_COUNT_FORMAT);
             }
             return Integer.parseInt(count);
         }
