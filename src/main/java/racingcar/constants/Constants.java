@@ -6,8 +6,10 @@ public class Constants {
     public static final String INPUT_TRY_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static final int NAME_MAX_LENGTH = 5;
-    //    public static final String CAR_LIST_PATTERN = "^([a-zA-Z0-9가-힣])(,[a-zA-Z0-9가-힣])*$";
+//    public static final String CAR_LIST_PATTERN = "^([a-zA-Z0-9가-힣])(,[a-zA-Z0-9가-힣])*$";
     public static final String CAR_LIST_PATTERN = "^[a-zA-Z0-9가-힣]+[a-zA-Z0-9가-힣" + "," + "]*[a-zA-Z0-9가-힣]";
 
     public static final int GO_NUMBER = 4;
+
+    public static final String DELIMITER = ",";
 }
