@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
