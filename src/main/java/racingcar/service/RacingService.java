@@ -18,11 +18,8 @@ public class RacingService {
         return result;
     }
 
-    private boolean isGo(int randomNum){
-        if(randomNum >= 4){
-            return true;
-        }
-        return false;
+    boolean isGo(int randomNum){
+        return randomNum >= 4;
     }
 
     public List<String> winnerCarList(List<String> carList, List<Integer> distance){
@@ -34,12 +31,12 @@ public class RacingService {
                 bestScore = distance.get(i);
             }
         }
-        winners.add(carList.get(carIdx));
-        distance.remove(carIdx);
-        carList.remove(carIdx);
 
-        if(distance.contains(bestScore)){
-            winnerCarList(carList, distance);
+        for(int cavity : distance){
+            int idx = distance.indexOf(cavity);
+            if(cavity == bestScore){
+                winners.add(carList.get(idx));
+            }
         }
         return winners;
     }
