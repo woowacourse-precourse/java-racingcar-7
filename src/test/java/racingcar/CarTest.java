@@ -33,4 +33,9 @@ class CarTest {
         car.move(value);
         assertThat(car.getDistance()).isEqualTo(2);
     }
+
+    @Test
+    void 자동차의_이름과_현재_위치를_반환한다() {
+        assertThat(car.getInfo()).isEqualTo("pobi : --");
+    }
 }
