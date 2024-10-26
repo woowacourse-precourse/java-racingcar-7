@@ -1,13 +1,15 @@
 package racingcar;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Car {
-    Map<String, Integer> carMap;
+    HashMap<String, Integer> carMap;
 
     public void set(){
         String inputString = UserView.readCarName();
+        carMap = new HashMap<>();
         separateName(inputString);
     }
 
@@ -33,10 +35,6 @@ public class Car {
         }
     }
 
-    private void checkDuplication(String name){
-
-    }
-
     // "a,b,c,,"이면 3개까지만 저장.
     // "a,b,,c"이면 공백 포함 4개로 저장되므로 이러한 오류 방지.
     private void checkDoubleSeparator(String input){
@@ -58,8 +56,14 @@ public class Car {
         }
     }
 
-    private void putCarMap(String name){
+    private void checkDuplication(String name){
+        if (carMap.containsKey(name)){
+            throwArgumentException("자동차의 이름은 중복될 수 없습니다.");
+        }
+    }
 
+    private void putCarMap(String name){
+        carMap.put(name, 0);
     }
 
     private void throwArgumentException(String errorContext){
