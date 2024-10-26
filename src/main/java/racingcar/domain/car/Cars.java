@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -13,16 +13,16 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<CarName> carNames) {
+    private Cars(List<CarName> carNames, MovementStrategy movementStrategy) {
         validateCarLength(carNames);
-        this.cars = carNames.stream().map(Car::new).toList();
+        this.cars = carNames.stream().map(carName -> new Car(carName, movementStrategy)).toList();
     }
 
-    public static Cars from(List<String> names) {
+    public static Cars from(List<String> names, MovementStrategy movementStrategy) {
         List<CarName> carNames = names.stream().map(CarName::new).toList();
         validateDuplicatedName(names, carNames);
 
-        return new Cars(carNames);
+        return new Cars(carNames, movementStrategy);
     }
 
     private void validateCarLength(List<CarName> carNames) {

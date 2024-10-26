@@ -1,7 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.race;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 public class Race {
 

@@ -2,9 +2,9 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.Car;
-import racingcar.domain.CarStatus;
-import racingcar.domain.RaceLog;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarStatus;
+import racingcar.domain.race.RaceLog;
 import racingcar.service.RaceResult;
 
 public class OutputView {

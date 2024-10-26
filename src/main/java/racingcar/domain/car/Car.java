@@ -1,24 +1,20 @@
-package racingcar.domain;
-
-import camp.nextstep.edu.missionutils.Randoms;
+package racingcar.domain.car;
 
 public class Car implements Comparable<Car> {
 
     private final CarName name;
     private Position position = Position.ZERO;
+    private final MovementStrategy movementStrategy;
 
-    public Car(CarName name) {
+    public Car(CarName name, MovementStrategy movementStrategy) {
         this.name = name;
+        this.movementStrategy = movementStrategy;
     }
 
     public void move() {
-        if (canMove()) {
+        if (movementStrategy.isMovable()) {
             position = position.move();
         }
-    }
-
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public CarStatus getStatus() {

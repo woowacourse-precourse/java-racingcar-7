@@ -1,6 +1,8 @@
-package racingcar.domain;
+package racingcar.domain.race;
 
 import java.util.List;
+import racingcar.domain.car.CarStatus;
+import racingcar.domain.car.Cars;
 
 public class RaceLog {
 

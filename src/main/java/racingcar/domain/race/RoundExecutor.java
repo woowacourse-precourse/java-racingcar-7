@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.race;
 
 public class RoundExecutor {
     private static final int MIN_ROUND = 1;

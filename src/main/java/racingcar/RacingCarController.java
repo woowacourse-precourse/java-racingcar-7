@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import racingcar.domain.car.RandomMovementStrategy;
 import racingcar.service.RaceResult;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
@@ -25,7 +26,7 @@ public class RacingCarController {
         String[] carNames = inputView.inputCarNames().split(",");
         int raceRound = inputView.inputRaceRound();
 
-        RaceResult raceResult = racingCarService.race(List.of(carNames), raceRound);
+        RaceResult raceResult = racingCarService.race(List.of(carNames), raceRound, new RandomMovementStrategy());
 
         outputView.printRaceResult(raceResult);
     }

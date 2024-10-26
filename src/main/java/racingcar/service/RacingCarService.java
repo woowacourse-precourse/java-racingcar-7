@@ -1,15 +1,16 @@
 package racingcar.service;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Race;
-import racingcar.domain.RaceLog;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.car.MovementStrategy;
+import racingcar.domain.race.Race;
+import racingcar.domain.race.RaceLog;
 
 public class RacingCarService {
 
-    public RaceResult race(List<String> carNames, int raceRound) {
-        Cars cars = Cars.from(carNames);
+    public RaceResult race(List<String> carNames, int raceRound, MovementStrategy movementStrategy) {
+        Cars cars = Cars.from(carNames, movementStrategy);
 
         Race race = Race.from(raceRound, cars);
         race.play();

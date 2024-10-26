@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 public record Position(int position) implements Comparable<Position> {
 
