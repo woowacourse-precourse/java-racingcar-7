@@ -56,7 +56,7 @@ public class Application {
     private static void isInputValid(String[] carNames) {
         for (String carName: carNames) {
             if (carName.isEmpty()) {
-                throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+                throw new IllegalArgumentException("입력이 없습니다.");
             }
 
             if (carName.length() > 5) {
