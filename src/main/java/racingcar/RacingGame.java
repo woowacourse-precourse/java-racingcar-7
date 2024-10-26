@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_ATTEMPTS = 1;
 
     private Car[] cars; // 경주 차량
     private int totalAttempts;
     private int currentAttempts;
-
 
 
     public RacingGame() {
@@ -19,15 +20,19 @@ public class RacingGame {
         String[] carNameArray = carNames.split(",");
         cars = new Car[carNameArray.length];
         for(int i = 0; i < carNameArray.length; i++){
-            if (carNameArray[i].isEmpty() || carNameArray[i].length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하이어야 합니다.");
-            }
+            validateCarName(carNameArray[i]);
             cars[i] = new Car(carNameArray[i]);
         }
     }
 
+    private void validateCarName(String carName){
+        if (carName.isEmpty() || carName.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하이어야 합니다.");
+        }
+    }
+
     public void inputAttempts(int totalAttempts){
-        if (totalAttempts <= 0) {
+        if (totalAttempts < MIN_ATTEMPTS) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
         this.totalAttempts = totalAttempts;
