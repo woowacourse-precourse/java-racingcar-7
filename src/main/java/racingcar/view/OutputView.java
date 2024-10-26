@@ -21,14 +21,23 @@ public class OutputView {
         System.out.println(PLAY_MESSAGE);
     }
 
-    public void printRoundResult(LinkedHashMap<String, String> roundResult) {
-        for (String key : roundResult.keySet()) {
-            System.out.println(key + " : " + roundResult.get(key));
+    public void printRoundResult(LinkedHashMap<String, Integer> gameEntry) {
+        for (String carName : gameEntry.keySet()) {
+            String result = getResult(gameEntry.get(carName));
+            System.out.println(carName + " : " + result);
         }
         System.out.println('\n');
     }
 
-    public void printResultMessage(String winner) {
+    private String getResult(Integer value) {
+        String result = "";
+        for (int i = 0; i < value; i++) {
+            result = result + "-";
+        }
+        return result;
+    }
+
+    public void printWinnerMessage(String winner) {
         System.out.println(WINNER_MESSAGE + winner);
     }
 }
