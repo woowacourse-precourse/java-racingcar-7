@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameModel {
     public Map<String, Integer> getCarMap(String[] carNames) {
@@ -22,8 +24,13 @@ public class GameModel {
     }
 
     private static void validateCarNames(List<String> carNames) {
+        Pattern pattern = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]");
         for (String carName : carNames) {
             if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            Matcher matcher = pattern.matcher(carName);
+            if (matcher.find()) {
+                throw new IllegalArgumentException("특수문자는 사용 불가능 합니다.");
+            }
         }
         if (carNames.size() < 2) throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
     }
