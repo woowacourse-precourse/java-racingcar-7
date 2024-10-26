@@ -31,4 +31,13 @@ public class RacingCar {
         this.randomNumber = pickNumberInRange(0,9);
         return this.randomNumber > 3;
     }
+
+    void moveForward() throws Exception{
+        this.currentLocation += "_";
+        this.currentDistance += 1;
+
+        if (this.currentLocation.length() != this.currentDistance){
+            throw new ArithmeticException();
+        }
+    }
 }
