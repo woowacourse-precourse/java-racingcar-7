@@ -68,12 +68,14 @@ public class Game {
                 winners.add(player);
             }
         });
+        System.out.println();
     }
 
     private void printCurResult() {
         playerScoreBoard.forEach((player,score)->{
-            System.out.print(player+" : "+"-".repeat(score));
+            System.out.println(player+" : "+"-".repeat(score));
         });
+        System.out.println();
     }
 
     private void moveCarsByRandomVal() {
