@@ -16,14 +16,24 @@ public class RacingCarGame {
     }
 
     public void run() {
-        outputView.requestCarNames();
-        Cars cars = inputView.getCarNames();
+        Cars cars = getCars();
+        Count tryCount = getTryCount();
+        printResult(cars, tryCount);
+    }
 
-        outputView.requestTryCount();
-        Count tryCount = inputView.getTryCount();
-
+    private void printResult(Cars cars, Count tryCount) {
         outputView.printGameResult(cars, tryCount);
 
         outputView.printWinner(cars);
+    }
+
+    private Count getTryCount() {
+        outputView.requestTryCount();
+        return inputView.getTryCount();
+    }
+
+    private Cars getCars() {
+        outputView.requestCarNames();
+        return inputView.getCarNames();
     }
 }
