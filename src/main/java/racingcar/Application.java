@@ -27,7 +27,18 @@ public class Application {
         }
 
         System.out.println("이동횟수를 정수로 입력해주세요");
-        int moveCount = Integer.parseInt(Console.readLine());
+        try {
+            int moveCount = Integer.parseInt(Console.readLine());
+
+            if (moveCount < 0) {
+                throw new IllegalArgumentException("0이상의 값을 입력해주세요");
+            }
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수값을 입력해주세요");
+
+        }
+
 
 
 
