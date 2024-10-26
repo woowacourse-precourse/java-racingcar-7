@@ -15,7 +15,7 @@ class InvalidInputExceptionTest {
     class carNameInput {
 
         @Test
-        @DisplayName("초기 입력이 공백일 때")
+        @DisplayName("공백 입력 시 예외 발생")
         void testValidateInput_BlankInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateInput(" "))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -23,7 +23,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("초기 입력이 null일 때")
+        @DisplayName("null 입력 시 예외 발생")
         void testValidateInput_NullInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateInput(null))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -35,7 +35,7 @@ class InvalidInputExceptionTest {
     @DisplayName("자동차 이름 파싱 후 예외 테스트")
     class afterParsingInput {
         @Test
-        @DisplayName("자동차 이름을 하나만 입력 했을 때")
+        @DisplayName("자동차 이름이 하나일 때 예외 발생")
         void testValidateCarNames_SingleCarName_ShouldThrowException() {
             assertThatThrownBy(() -> validateCarNames(new String[]{"test"}))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -43,7 +43,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("자동차 이름에 공백이 있을 때")
+        @DisplayName("자동차 이름에 공백 포함 시 예외 발생")
         void testValidateCarNameBlankInput_BlankInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateCarNames(new String[]{"test", ""}))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -51,7 +51,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("자동차 이름에 null이 있을 때")
+        @DisplayName("자동차 이름에 null 포함 시 예외 발생")
         void testValidateCarNameBlankInput_NullIInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateCarNames(new String[]{"test", null}))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -59,7 +59,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("자동차 이름에 중복이 있을 때")
+        @DisplayName("자동차 이름 중복 시 예외 발생")
         void testValidateDuplicateName_DuplicateInput_ShouldThrowException() {
             assertThatThrownBy(() -> validateCarNames(new String[]{"test", "test"}))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -67,7 +67,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("자동차 이름이 5글자를 초과했을 때")
+        @DisplayName("자동차 이름이 5글자 초과 시 예외 발생")
         void testValidateCarNames_ExceedMaxCarNameLength_ShouldThrowException() {
             assertThatThrownBy(() -> validateCarNames(new String[]{"test", "testString"}))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -79,7 +79,7 @@ class InvalidInputExceptionTest {
     @DisplayName("시도 횟수 입력 예외 테스트")
     class attemptCountInput {
         @Test
-        @DisplayName("0 입력했을 때")
+        @DisplayName("0 입력 시 예외 발생")
         void testValidateAttemptCount_ZeroAttempt_ShouldThrowException() {
             assertThatThrownBy(() -> validateAttemptCount(0))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -87,7 +87,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("음수 입력했을 때")
+        @DisplayName("음수 입력 시 예외 발생")
         void testValidateAttemptCount_NegativeAttempt_ShouldThrowException() {
             assertThatThrownBy(() -> validateAttemptCount(-1))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -95,7 +95,7 @@ class InvalidInputExceptionTest {
         }
 
         @Test
-        @DisplayName("3 입력했을 때")
+        @DisplayName("양수 입력 시 예외 발생하지 않음")
         void testValidateAttemptCount_ValidAttempt_ShouldNotThrowException() {
             validateAttemptCount(3);
         }
