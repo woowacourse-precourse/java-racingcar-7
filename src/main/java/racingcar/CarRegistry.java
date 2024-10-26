@@ -5,16 +5,7 @@ import java.util.Set;
 
 public class CarRegistry {
     private final Set<Car> cars;
-    private static CarRegistry INSTANCE;
-
-    public static CarRegistry getInstance(String carNames) {
-        if (INSTANCE == null) {
-            INSTANCE = new CarRegistry(carNames);
-        }
-        return INSTANCE;
-    }
-
-    private CarRegistry(String carNames) {
+    public CarRegistry(String carNames) {
         this.cars = convertCarNamesToCarSet(carNames);
     }
 
@@ -22,14 +13,12 @@ public class CarRegistry {
         Set<Car> cars = new HashSet<>();
         String[] carNames = input.split(",");
         for (String carName : carNames) {
-            cars.add(createCar(carName));
+            cars.add(CarSimpleFactory.createCar(carName));
         }
         return cars;
     }
 
-    private Car createCar(String name) {
-        return new Car(name);
-    }
+
 
     public Set<Car> getCars() {
         return cars;

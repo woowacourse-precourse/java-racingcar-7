@@ -17,7 +17,7 @@ class CarRegistryTest {
         String input = "pobi,woni,jun";
 
         // When
-        CarRegistry carRegistry = CarRegistry.getInstance(input);
+        CarRegistry carRegistry = new CarRegistry(input);
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
@@ -35,7 +35,7 @@ class CarRegistryTest {
         String input = "pobi,woni,pobi";
 
         // When
-        CarRegistry carRegistry = CarRegistry.getInstance(input);
+        CarRegistry carRegistry = new CarRegistry(input);
         Set<Car> expectedCars = new HashSet<>();
         expectedCars.add(new Car("pobi"));
         expectedCars.add(new Car("woni"));
@@ -52,7 +52,7 @@ class CarRegistryTest {
         String input = "pobi,woni,pobi Maguire"; // One name too long
 
         // When
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> CarRegistry.getInstance(input));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new CarRegistry(input));
 
         // Then
         assertEquals("Car name has to be 5 or under 5.", exception.getMessage());
