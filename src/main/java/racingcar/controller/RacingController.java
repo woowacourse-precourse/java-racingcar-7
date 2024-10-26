@@ -22,10 +22,10 @@ public class RacingController {
     }
 
     public void run() {
-        List<String> carNames = getCarNames();
-        Cars cars = Cars.create(carNames);
+        final List<String> carNames = getCarNames();
+        final Cars cars = Cars.create(carNames);
 
-        int tryCount = getTryCount();
+        final int tryCount = getTryCount();
 
         startRace(cars, tryCount);
         determineWinners(cars);
@@ -33,19 +33,19 @@ public class RacingController {
 
     private int getTryCount() {
         outputView.printMessage(ASK_TRY_COUNT);
-        String input = inputView.userInput();
+        final String input = inputView.userInput();
 
         return TryCountParser.parse(input);
     }
 
     private List<String> getCarNames() {
         outputView.printMessage(ASK_CAR_NAMES);
-        String input = inputView.userInput();
+        final String input = inputView.userInput();
 
         return CarNameParser.parse(input);
     }
 
-    private void startRace(Cars cars, int tryCount) {
+    private void startRace(final Cars cars, final int tryCount) {
         outputView.printNewLine();
         outputView.printMessage(RESULT_TITLE);
 
@@ -53,14 +53,14 @@ public class RacingController {
                 .forEach(round -> playRound(cars));
     }
 
-    private void playRound(Cars cars) {
+    private void playRound(final Cars cars) {
         cars.play();
 
         outputView.printRound(cars.getCars());
         outputView.printNewLine();
     }
 
-    private void determineWinners(Cars cars) {
+    private void determineWinners(final Cars cars) {
         List<String> winnerList = WinnerDeterminer.determineWinners(cars.getCars());
 
         outputView.printWinners(winnerList);

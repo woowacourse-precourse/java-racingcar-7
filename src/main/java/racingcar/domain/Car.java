@@ -8,7 +8,7 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(String name) {
+    public Car(final String name) {
         this.numberGenerator = new RandomNumberGenerator();
         this.name = name;
         this.position = 0;
@@ -16,7 +16,7 @@ public class Car {
 
     /* 자동차 움직임 테스트에 사용되는 생성자
        고정된 값으로 테스트 하기 위함 */
-    public Car(String name, NumberGenerator numberGenerator) {
+    public Car(final String name, final NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
         this.name = name;
         this.position = 0;
@@ -24,7 +24,7 @@ public class Car {
 
     /* 자동차 움직임 테스트에 사용되는 생성자
        올바른 position 값을 갖는지 확인용 */
-    public Car(String name, int position) {
+    public Car(final String name, final int position) {
         this.numberGenerator = new RandomNumberGenerator();
         this.name = name;
         this.position = position;

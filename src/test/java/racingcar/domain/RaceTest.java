@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.Race;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class RaceTest {
                 new Car("pobi"), new Car("woni"), new Car("jun"));
 
         // when
-        final Race race = new Race(cars);
+        final Cars race = new Cars(cars);
 
         // then
         assertThat(race.getCars())
@@ -32,7 +32,7 @@ public class RaceTest {
                 new Car("pobi", new FixedNumberGenerator(4)), new Car("woni", new FixedNumberGenerator(0)));
 
         // when
-        final Race race = new Race(cars);
+        final Cars race = new Cars(cars);
 
         race.start();
 

@@ -24,16 +24,16 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printRound(List<Car> carsList) {
+    public void printRound(final List<Car> carsList) {
         for (Car car : carsList) {
-            String carName = car.getName();
-            int position = car.getPosition();
+            final String carName = car.getName();
+            final int position = car.getPosition();
 
             System.out.printf(RESULT_DETAIL, carName, POSITION_INDICATOR.repeat(position));
         }
     }
 
-    public void printWinners(List<String> winnersList) {
+    public void printWinners(final List<String> winnersList) {
         String winners = String.join(WINNER_DELIMITER, winnersList);
 
         System.out.printf(FINAL_RESULT, winners);

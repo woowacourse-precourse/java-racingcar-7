@@ -7,11 +7,11 @@ import static racingcar.validator.CarCountValidator.validateCarCount;
 public class Cars {
     private final List<Car> cars;
 
-    private Cars(List<String> carNames) {
+    private Cars(final List<String> carNames) {
         this.cars = convertToCars(carNames);
     }
 
-    public static Cars create(List<String> carNames) {
+    public static Cars create(final List<String> carNames) {
         validateCarCount(carNames.size());
         return new Cars(carNames);
     }
@@ -24,7 +24,7 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    private static List<Car> convertToCars(List<String> carNames) {
+    private static List<Car> convertToCars(final List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
                 .toList();
