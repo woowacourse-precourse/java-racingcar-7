@@ -6,14 +6,10 @@ public class Car {
     private final String name;
     private final Counter counter;
 
-    private Car(String name) {
+    public Car(String name) {
         validateLength(name);
         this.name = name;
         this.counter = new Counter();
-    }
-
-    public static Car create(String name) {
-        return new Car(name);
     }
 
     public boolean hasMoveCount(int count) {

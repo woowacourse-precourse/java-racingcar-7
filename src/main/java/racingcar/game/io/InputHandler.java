@@ -14,7 +14,7 @@ public class InputHandler {
     public RacingCars getCarsFromUser() {
         String carNames = Console.readLine();
         List<Car> cars = Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
-                .map(Car::create)
+                .map(Car::new)
                 .toList();
 
         return new RacingCars(cars);
