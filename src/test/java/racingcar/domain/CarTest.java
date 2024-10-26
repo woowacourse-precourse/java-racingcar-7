@@ -17,7 +17,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("aaa")
+    @DisplayName("랜덤 숫자 전진 조건 true 시 앞으로 한칸 전진")
     void 전진_성공(){
         //given
         MovingStrategy movingStrategy = () -> true;
@@ -31,7 +31,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("asd")
+    @DisplayName("랜덤 숫자 전진 조건 false 시 앞으로 정지")
     void 전진_실패(){
         //given
         MovingStrategy movingStrategy = () -> false;
