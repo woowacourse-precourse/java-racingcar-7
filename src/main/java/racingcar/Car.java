@@ -26,4 +26,8 @@ public class Car {
         return name+" : "+ "-".repeat(mileage) + "\n";
     }
 
+    public String getName(){
+        return this.name;
+    }
+
 }

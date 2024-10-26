@@ -26,4 +26,17 @@ public class Race {
         return cars.stream().map(Car::toString).collect(Collectors.joining());
     }
 
+    public int getMaxMileage(){
+        return cars.stream().mapToInt(Car::getMileage).max().orElse(0);
+    }
+
+    public List<String> getWinnerList(){
+        int maxMileage = getMaxMileage();
+        return cars.stream().filter(car -> car.getMileage() == maxMileage).map(Car::getName).toList();
+    }
+
+    public String getWinners(){
+        return "최종 우승자 : " + getWinnerList().stream().collect(Collectors.joining(", "));
+    }
+
 }

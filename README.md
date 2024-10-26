@@ -62,6 +62,13 @@
   - 최종 우승자를 정리한 문자열을 반환
 
 
+- `int getMaxMileage()`
+  - race에 참여중인 car중 가징 긴 주행 거리를 반환
+
+
+- `List<String> getWinnerList()`
+  - race에 참여중인 car중 가장 긴 주행거리를 가진 car의 이름을 리스트로 반환
+
 ### Car.class
 
 - `Car(string name)`
@@ -79,3 +86,7 @@
 
 - `int getMileage()`
   - 현재까지의 주행거리를 반환
+
+
+- `String getName()`
+  - 차량의 이름을 반환
