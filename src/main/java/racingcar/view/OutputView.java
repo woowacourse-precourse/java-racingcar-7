@@ -19,4 +19,18 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printWinner(List<Car> carList){
+        int maxDistance = carList.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        List<String> winners = carList.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .toList();
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }

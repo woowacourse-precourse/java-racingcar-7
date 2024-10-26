@@ -75,4 +75,8 @@ public class CarRacingController {
         outputView.printResult(carList);
     }
 
+    public void printWinner(){
+        outputView.printWinner(carList);
+    }
+
 }

@@ -10,5 +10,7 @@ public class Application {
         carRacingController.inputCount();
 
         carRacingController.racingStart();
+
+        carRacingController.printWinner();
     }
 }

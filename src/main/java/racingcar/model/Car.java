@@ -15,4 +15,12 @@ public class Car {
         System.out.println("car name: "+ this.name);
         return this.name;
     }
+
+    public Integer getDistance() {
+        return this.distance;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }
