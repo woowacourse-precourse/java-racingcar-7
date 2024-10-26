@@ -191,6 +191,22 @@ public class RacingCarsTest {
                 .containsExactlyInAnyOrder(car1, car2);
     }
 
+    @Test
+    @DisplayName("getMaxPositionCars() : 최대_위치에_있는_자동차가_없으면_예외가_발생한다")
+    void 최대_위치의_자동차들_탐색_시_자동차들이_비어있으면_예외가_발생한다() {
+
+        // given
+        RacingCar car1 = new RacingCar("abc", mockedRacingCarValidator);
+
+        RacingCars racingCars = new RacingCars(List.of(car1));
+
+        RacingCarsUtil.setValues(racingCars, List.of());
+
+        // when & then
+        assertThatThrownBy(racingCars::getMaxPositionCars)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private List<RacingCar> makeRacingCarList() {
         RacingCar car1 = new RacingCar("abc", mockedRacingCarValidator);
         RacingCar car2 = new RacingCar("abc1", mockedRacingCarValidator);
