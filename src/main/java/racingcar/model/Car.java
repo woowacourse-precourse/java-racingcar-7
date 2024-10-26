@@ -11,6 +11,12 @@ public class Car {
         validateName();
     }
 
+    private void validateName() {
+        if (this.name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름 입력 길이를 초과하였습니다. (최대 5자)");
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -19,11 +25,6 @@ public class Car {
         return position;
     }
 
-    private void validateName() {
-        if (this.name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름 입력 길이를 초과하였습니다. (최대 5자)");
-        }
-    }
 
     public void moveFront(int randomNumber) {
         if (randomNumber < 4) {

@@ -12,6 +12,16 @@ public class CarGroup {
         validateSize();
     }
 
+    private List<Car> getCars(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
+    }
+
+    private void validateSize() {
+        if (this.cars.size() < 2) {
+            throw new IllegalArgumentException("자동차 이름은 적어도 두 개 입력해야 합니다.");
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
     }
@@ -36,15 +46,5 @@ public class CarGroup {
         cars.forEach(car -> {
             car.moveFront(RandomNumberGenerator.generate());
         });
-    }
-
-    private List<Car> getCars(List<String> carNames) {
-        return carNames.stream().map(Car::new).toList();
-    }
-
-    private void validateSize() {
-        if (this.cars.size() < 2) {
-            throw new IllegalArgumentException("자동차 이름은 적어도 두 개 입력해야 합니다.");
-        }
     }
 }
