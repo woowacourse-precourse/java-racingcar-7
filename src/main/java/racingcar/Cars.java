@@ -27,4 +27,10 @@ public class Cars {
             throw new IllegalArgumentException("이름은 중복이 불가합니다.");
         }
     }
+
+    private void validateCarCount(List<Car> cars) {
+        if (cars.size() <= 1) {
+            throw new IllegalArgumentException("2대 미만은 경기가 성립되지 않습니다.");
+        }
+    }
 }
