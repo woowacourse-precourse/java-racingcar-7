@@ -36,10 +36,10 @@ public class AppConfig {
     }
 
     public RaceController createRaceController() {
-        return new RaceController(raceService);
+        return new RaceController(raceService, outputView);
     }
 
     public Controller createController() {
-        return new Controller(raceService, outputView);
+        return new Controller();
     }
 }
