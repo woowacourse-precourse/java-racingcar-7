@@ -64,6 +64,8 @@ IllegalArgumentException("시도 횟수는 양수를 입력해주세요.")을 �
 IllegalArgumentException("시도 횟수는 문자를 입력할 수 없습니다.")을 터트린다.
 ### - 시도 횟수로 0이 입력 된 경우
 IllegalArgumentException("게임을 실행할 수 없습니다.")을 터트린다.
+### - 시도 횟수로 1이 입력되었을 때 모든 차가 출발하지 않은 경우
+IllegalArgumentException("전진한 차가 없어서 우승자가 없습니다.")을 터트린다.
 
 ## 사용 예제
 
