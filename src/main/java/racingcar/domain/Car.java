@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 
+import java.util.Objects;
+
 import static racingcar.domain.StringConstant.*;
 
 public class Car {
@@ -42,5 +44,18 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

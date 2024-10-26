@@ -2,7 +2,9 @@ package racingcar.domain;
 
 import racingcar.util.RandomDigitGenerator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingGameController {
@@ -35,10 +37,15 @@ public class RacingGameController {
     }
 
     private List<Car> createCar(List<String> carNames) {
-        return carNames.stream()
+        List<Car> result =  carNames.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .toList();
+
+        validDuplicateName(result);
+
+        return result;
     }
+
     public List<String> getWinner() {
         int max = cars.stream()
                 .map(Car::getPosition)
@@ -62,6 +69,13 @@ public class RacingGameController {
     private void validNameSize(List<String> carNames) {
         if (carNames.size() > 100) {
             throw new IllegalArgumentException("자동차는 100대까지 등록 가능합니다.");
+        }
+    }
+
+    private static void validDuplicateName(List<Car> result) {
+        Set<Car> carHashSet = new HashSet<>(result);
+        if (result.size() != carHashSet.size()) {
+            throw new IllegalArgumentException("중복되는 자동차 이름이 있습니다.");
         }
     }
 }
