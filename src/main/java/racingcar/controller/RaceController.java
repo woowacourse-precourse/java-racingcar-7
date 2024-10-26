@@ -18,15 +18,15 @@ public class RaceController {
     }
 
     public void executeRaceRequest(RaceDomain race) {
-        System.out.println(outputView.displayRoundResultString());
+        outputView.displayRoundResultString();
         IntStream.range(0, race.getLastRound()).forEach(round -> {
             raceService.runOneRound(race);
-            System.out.println(outputView.displayEachRoundStatus(race.getCars()));
+            outputView.displayEachRoundStatus(race.getCars());
         });
     }
 
     public void getWinnerRequest(RaceDomain race) {
         CarDomains winners = raceService.getWinners(race);
-        System.out.println(outputView.displayCarRaceWinner(winners));
+        outputView.displayCarRaceWinner(winners);
     }
 }

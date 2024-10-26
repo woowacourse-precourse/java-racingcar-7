@@ -3,13 +3,9 @@ package racingcar.view;
 import racingcar.domain.CarDomains;
 
 public interface OutputView {
-    String displayCarNameRequest();
+    void displayRoundResultString();
 
-    String displayRoundRequest();
+    void displayEachRoundStatus(CarDomains cars);
 
-    String displayRoundResultString();
-
-    String displayEachRoundStatus(CarDomains cars);
-
-    String displayCarRaceWinner(CarDomains winners);
+    void displayCarRaceWinner(CarDomains winners);
 }
