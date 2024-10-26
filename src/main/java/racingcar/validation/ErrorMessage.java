@@ -1,6 +1,6 @@
-package racingcar.exception;
+package racingcar.validation;
 
-public enum ExceptionMessage {
+public enum ErrorMessage {
     OVER_MAX_CAR_NAME("자동차의 이름은 최대 5자 입니다."),
     INVALID_INPUT_NUMBER("유효하지 않은 입력입니다. 정수를 입력해주세요."),
     USER_INPUT_NOT_NULL("입력은 공백일 수 없습니다."),
@@ -9,7 +9,7 @@ public enum ExceptionMessage {
 
     private final String message;
 
-    ExceptionMessage(String message) {
+    ErrorMessage(String message) {
         this.message = message;
     }
 

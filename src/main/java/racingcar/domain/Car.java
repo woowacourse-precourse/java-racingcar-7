@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.exception.ExceptionMessage.OVER_MAX_CAR_NAME;
+import static racingcar.validation.ErrorMessage.OVER_MAX_CAR_NAME;
 
 public class Car {
 

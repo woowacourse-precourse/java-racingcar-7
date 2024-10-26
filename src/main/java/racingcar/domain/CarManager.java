@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.exception.ExceptionMessage.NOT_PERMIT_SAME_CAR;
+import static racingcar.validation.ErrorMessage.NOT_PERMIT_SAME_CAR;
 
 import java.util.ArrayList;
 import java.util.Collections;
