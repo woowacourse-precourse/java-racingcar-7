@@ -2,6 +2,7 @@ package racingcar.application;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
+import racingcar.global.ProgressRule;
 import racingcar.view.OutputView;
 
 import java.util.List;
@@ -46,6 +47,6 @@ public class Racing {
 
     public boolean shouldMove() {
         int randomNumber = Randoms.pickNumberInRange(0, 9);
-        return randomNumber >= 4;
+        return randomNumber >= ProgressRule.FORWARD_CONDITION.getValue();
     }
 }
