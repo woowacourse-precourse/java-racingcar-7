@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.service.ViewService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,8 +18,12 @@ public class ViewController {
 
     public void printGuide(){
         outputView.inputMessage();
-        inputView.readLine();
+        String carName = inputView.readLine();
+    }
+
+    public void printCountGuide(){
         outputView.inputCountMessage();
         inputView.readLine();
+
     }
 }

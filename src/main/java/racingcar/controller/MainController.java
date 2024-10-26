@@ -5,5 +5,6 @@ public class MainController {
 
     public static void run(){
         viewController.printGuide();
+        viewController.printCountGuide();
     }
 }
