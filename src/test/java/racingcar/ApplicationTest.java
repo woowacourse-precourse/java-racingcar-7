@@ -190,6 +190,36 @@ class ApplicationTest extends NsTest {
             .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
+    @DisplayName("전체 경기 작동 테스트1")
+    @Test
+    void 전체_테스트1() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun", "4");
+                assertThat(output()).contains("pobi : ---", "woni : -", "jun : ---", "최종 우승자 : pobi,jun");
+            },
+            MOVING_FORWARD, STOP,           MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP,           STOP,           STOP,
+            MOVING_FORWARD, STOP,           MOVING_FORWARD
+        );
+    }
+
+    @DisplayName("전체 경기 작동 테스트2")
+    @Test
+    void 전체_테스트2() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,jun,chris", "5");
+                assertThat(output()).contains("pobi : ", "woni : ---", "jun : --", "chris : ----", "최종 우승자 : chris");
+            },
+            STOP, MOVING_FORWARD, STOP,           MOVING_FORWARD,
+            STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, MOVING_FORWARD, STOP,           MOVING_FORWARD,
+            STOP, STOP,           MOVING_FORWARD, STOP,
+            STOP, STOP,           STOP,           MOVING_FORWARD
+        );
+    }
 
     @Override
     public void runMain() {
