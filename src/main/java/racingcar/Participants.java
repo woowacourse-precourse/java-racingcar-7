@@ -26,9 +26,16 @@ public class Participants {
     }
 
     public void raceManyTimes(int raceTimes) {
+        validate(raceTimes);
         for (int i = 0; i < raceTimes; i++) {
             raceOneTime();
             printRaceResult();
+        }
+    }
+
+    private void validate(int raceTimes) {
+        if (raceTimes < 1) {
+            throw new IllegalArgumentException("시행 횟수는 1회 이상이여야 합니다.");
         }
     }
 

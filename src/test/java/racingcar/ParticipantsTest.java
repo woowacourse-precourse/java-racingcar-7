@@ -50,7 +50,16 @@ class ParticipantsTest {
     }
 
     @Test
+    @DisplayName("시행이 1번 이상이지 않으면 에외를 던진다. ")
     void raceManyTimes() {
+        int givenRaceTimes = 0;
+        String givenName = "choi,kim,ryu";
+        Participants participants = new Participants(givenName);
+
+        IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class,
+                () -> participants.raceManyTimes(givenRaceTimes));
+
+        assertEquals(illegalArgumentException.getMessage(), "시행 횟수는 1회 이상이여야 합니다.");
     }
 
     @Test
