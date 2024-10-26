@@ -3,16 +3,16 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.util.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
-    private static final int MAX_NAME_LENGTH = 5;
+
     private static final int MIN_MOVE_CONDITION = 4;
 
     public Controller(InputView inputView, OutputView outputView) {
@@ -23,22 +23,15 @@ public class Controller {
     public void startGame() {
         String rawInputCarNames = inputView.inputCarNames();
         List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
-        if (!areValidName(carNames)) {
-            throw new IllegalArgumentException("이름이 5글자가 넘습니다");
-        }
-        if (isNameOverlap(carNames)) {
-            throw new IllegalArgumentException("중복된 이름을 입력할 수 없습니다.");
-        }
+        Validator.validateCarNames(carNames);
+
         List<Car> carList = createCarByName(carNames);
 
-        int roundCount = -1;
         String rawRoundInput = inputView.inputRoundNumber();
-        if (isValidRoundCount(rawRoundInput)) {
-            roundCount = Integer.parseInt(rawRoundInput);
-        }
+        Validator.validateRoundCount(rawRoundInput);
+        int roundCount = Integer.parseInt(rawRoundInput);
 
         outputView.printExecutionResult();
-
         runGameForRounds(roundCount, carList);
 
         List<String> finalWinner = findFinalWinner(carList);
@@ -67,23 +60,8 @@ public class Controller {
         return carList;
     }
 
-    private boolean isValidRoundCount(String rawRoundInput) {
-        if (!rawRoundInput.matches("\\d+")) {
-            throw new IllegalArgumentException("0 이상의 정수를 입력해주세요.");
-        }
-        return true;
-    }
-
     private int createRandomValue() {
         return Randoms.pickNumberInRange(0, 9);
-    }
-
-    private boolean areValidName(List<String> carNames) {
-        return carNames.stream().allMatch(name -> name.length() <= MAX_NAME_LENGTH);
-    }
-
-    private boolean isNameOverlap(List<String> carNames) {
-        return carNames.size() != new HashSet<>(carNames).size();
     }
 
     private List<String> findFinalWinner(List<Car> cars) {
