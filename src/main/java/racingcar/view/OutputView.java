@@ -4,7 +4,12 @@ import java.util.Map;
 
 public class OutputView {
 
-    public static void print(Map<String, Integer> racingCar) {
+    public void printOutputView() {
+        System.out.println("실행 결과");
+        //printRound();
+    }
+
+    private void printRound(Map<String, Integer> racingCar) {
         for (String carName : racingCar.keySet()) {
             int go = racingCar.get(carName);
 

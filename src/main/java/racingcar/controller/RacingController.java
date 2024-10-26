@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import java.util.Map;
 import racingcar.model.Racing;
+import racingcar.service.InputService;
 import racingcar.view.InputView;
 
 public class RacingController {
@@ -12,6 +14,8 @@ public class RacingController {
         InputView inputView = new InputView();
         inputView.printInputView();
 
-        Racing racing = new Racing();
+        InputService inputService = new InputService();
+        Map<String, Integer> racingCars = inputService.splitAndSaveCarName(inputView.getCarNames());
+        Racing racing = new Racing(racingCars);
     }
 }
