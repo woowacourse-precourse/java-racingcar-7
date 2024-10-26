@@ -73,6 +73,28 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이동_조건_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("audi,ford", "5");
+                    assertThat(output()).contains("audi : -", "ford : -");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 공동_우승자_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("audi,ford", "3");
+                    assertThat(output()).contains("최종 우승자 : audi, ford");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
