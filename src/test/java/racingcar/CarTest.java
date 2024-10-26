@@ -19,5 +19,21 @@ public class CarTest {
             Car car = new Car("pobi");
             assertThat(car.getName()).isEqualTo("pobi");
         }
+
+        @Test
+        @DisplayName("자동차 이름이 5자를 초과하는 경우 예외가 발생한다.")
+        void createCarWithNameExceedingLengthShouldThrowException() {
+            assertThatThrownBy(() -> new Car("abcdef"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        }
+
+        @Test
+        @DisplayName("자동차 이름이 빈 문자열인 경우 예외가 발생한다.")
+        void createCarWithEmptyNameShouldThrowException() {
+            assertThatThrownBy(() -> new Car(""))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
+        }
     }
 }
