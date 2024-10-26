@@ -39,8 +39,9 @@ public class CarNameValidation {
             validateCarNameLength(carName);
             carNamesSet.add(carName);
         }
+        validateDuplicateName(carNames.length, carNamesSet.size());
         validateCarCount(carNamesSet);
-        carNamesSet.forEach(System.out::println);
+//        carNamesSet.forEach(System.out::println);
     }
 
     private static void validateCarNameLength(String input) {
@@ -48,6 +49,13 @@ public class CarNameValidation {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void validateDuplicateName(int arraySize, int setSize) {
+        if (arraySize != setSize) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     private static void validateCarCount(Set<String> inputs) {
         if (inputs.size() < 2) {
