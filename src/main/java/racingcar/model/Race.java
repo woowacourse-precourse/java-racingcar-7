@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.view.OutputView;
 
@@ -26,6 +27,24 @@ public class Race {
             OutputView.printRoundResult(raceParticipants);
 
         }
+    }
+
+    public List<Car> getWinner() {
+        int maxLength = 0;
+        for (Car car : raceParticipants) {
+            int positionLength = car.getPosition().length();
+            if (positionLength > maxLength) {
+                maxLength = positionLength;
+            }
+        }
+
+        List<Car> result = new ArrayList<>();
+        for (Car car : raceParticipants) {
+            if (car.getPosition().length() == maxLength) {
+                result.add(car);
+            }
+        }
+        return result;
     }
 
 
