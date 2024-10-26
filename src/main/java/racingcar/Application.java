@@ -60,6 +60,9 @@ public class Application {
 
     private static void validateCarName(String[] cars) {
         for (String car : cars) {
+            if (car.contains(" ")) {
+                throw new IllegalArgumentException("차량 이름에 공백이 포함될 수 없습니다.");
+            }
             if (car.length() > VALID_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
