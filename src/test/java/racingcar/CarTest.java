@@ -25,7 +25,6 @@ class CarTest {
 
     @Test
     void 자동차_이동() {
-
         for (int i = 0; i < 5; i++) {
             car.move();
         }

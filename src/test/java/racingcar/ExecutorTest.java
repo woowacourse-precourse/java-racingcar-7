@@ -31,39 +31,38 @@ class ExecutorTest {
     @Test
     void 특정_횟수만큼_반복해서_자동차_이동() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    executor.executeForCount(test, 2);
-                    assertThat(testCar1.getMoveCount()).isEqualTo(1);
-                    assertThat(testCar2.getMoveCount()).isEqualTo(1);
-                    assertThat(testCar3.getMoveCount()).isEqualTo(2);
-                },
-                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
-                STOP, STOP, MOVING_FORWARD
+            () -> {
+                executor.executeForCount(test, 2);
+                assertThat(testCar1.getMoveCount()).isEqualTo(1);
+                assertThat(testCar2.getMoveCount()).isEqualTo(1);
+                assertThat(testCar3.getMoveCount()).isEqualTo(2);
+            },
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            STOP, STOP, MOVING_FORWARD
         );
     }
 
     @Test
     void 자동차_이동() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    executor.moveCar(testCar1);
-                    assertThat(testCar1.getMoveCount()).isEqualTo(1);
-                },
-                MOVING_FORWARD, MOVING_FORWARD
+            () -> {
+                executor.moveCar(testCar1);
+                assertThat(testCar1.getMoveCount()).isEqualTo(1);
+            },
+            MOVING_FORWARD, MOVING_FORWARD
         );
-
     }
 
     @Test
     void 자동차_여러대_이동() {
         assertRandomNumberInRangeTest(
-                () -> {
-                    executor.moveCars(test);
-                    assertThat(testCar1.getMoveCount()).isEqualTo(1);
-                    assertThat(testCar2.getMoveCount()).isEqualTo(1);
-                    assertThat(testCar3.getMoveCount()).isEqualTo(0);
-                },
-                MOVING_FORWARD, MOVING_FORWARD, STOP
+            () -> {
+                executor.moveCars(test);
+                assertThat(testCar1.getMoveCount()).isEqualTo(1);
+                assertThat(testCar2.getMoveCount()).isEqualTo(1);
+                assertThat(testCar3.getMoveCount()).isEqualTo(0);
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP
         );
     }
 

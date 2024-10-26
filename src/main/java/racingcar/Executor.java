@@ -43,7 +43,6 @@ public class Executor {
         ioController.printWinners(winners);
     }
 
-
     public void executeForCount(List<Car> cars, long repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
             moveCars(cars);
