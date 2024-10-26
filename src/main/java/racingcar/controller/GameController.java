@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import racingcar.model.car.Cars;
-import racingcar.dto.RoundSnapshot;
+import racingcar.dto.RoundSnapshotDto;
 import racingcar.dto.WinnersDto;
 import racingcar.model.game.Game;
 import racingcar.model.game.NumberPicker;
@@ -28,14 +28,14 @@ public class GameController {
     public void start() {
         Game game = makeGame();
 
-        List<RoundSnapshot> roundSnapshots = new ArrayList<>();
+        List<RoundSnapshotDto> roundSnapshotDtos = new ArrayList<>();
 
         while (game.isPlaying()) {
             game.playNextRound();
 
-            roundSnapshots.add(new RoundSnapshot(game.getCarSnapshots()));
+            roundSnapshotDtos.add(new RoundSnapshotDto(game.getCarSnapshots()));
         }
-        outputView.displayRoundSnapshots(roundSnapshots);
+        outputView.displayRoundSnapshots(roundSnapshotDtos);
 
         game.judgeWinners();
         outputView.displayWinners(new WinnersDto(game));

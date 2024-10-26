@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.dto.RoundSnapshot;
-import racingcar.dto.RoundSnapshot.CarSnapshotDto;
+import racingcar.dto.RoundSnapshotDto;
+import racingcar.dto.RoundSnapshotDto.CarSnapshotDto;
 import racingcar.dto.WinnersDto;
 
 public class OutputView {
@@ -32,12 +32,12 @@ public class OutputView {
         System.out.println(winners);
     }
 
-    public void displayRoundSnapshots(List<RoundSnapshot> roundSnapshots) {
+    public void displayRoundSnapshots(List<RoundSnapshotDto> roundSnapshotDtos) {
 
         System.out.println("실행 결과");
 
-        for (RoundSnapshot roundSnapshot : roundSnapshots) {
-            roundSnapshot.getCarSnapshotDtos().forEach(this::displayCarSnapshots);
+        for (RoundSnapshotDto roundSnapshotDto : roundSnapshotDtos) {
+            roundSnapshotDto.getCarSnapshotDtos().forEach(this::displayCarSnapshots);
             System.out.println();
         }
 
