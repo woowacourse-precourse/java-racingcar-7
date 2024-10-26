@@ -7,7 +7,7 @@ import java.util.Map;
 public class OutputView {
 
     private final OutputDataRepository outputDataRepository = new OutputDataRepository();
-    private final OutputRender outputRender = new OutputRender();
+    private final OutputPrinter outputPrinter = new OutputPrinter();
 
     public void saveCarPosition(Car car) {
         outputDataRepository.saveCarPosition(car);
@@ -15,6 +15,6 @@ public class OutputView {
 
     public void renderResult(int attemptCount) {
         Map<String, List<BigInteger>> carMovementData = outputDataRepository.getCarMovementData();
-        outputRender.renderResult(attemptCount, carMovementData);
+        outputPrinter.printResult(attemptCount, carMovementData);
     }
 }
