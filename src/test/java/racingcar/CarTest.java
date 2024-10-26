@@ -32,10 +32,8 @@ public class CarTest {
         Car car = new Car("test");
         int initialPosition = car.getPosition();
 
-        for (int i = 0; i < 10; i++) {
-            car.moveTry();
-        }
-        assertTrue(car.getPosition() > initialPosition);
+        car.moveTry(5);
+        assertEquals(initialPosition + 1, car.getPosition());
     }
 
     @Test
@@ -44,11 +42,8 @@ public class CarTest {
         Car car = new Car("test");
         int initialPosition = car.getPosition();
 
-        // 임계값 미만일 경우 이동하지 않음을 확인 (단순 테스트 위해 MOVE_THRESHOLD를 임시로 변경하거나 주석화 가능)
-        for (int i = 0; i < 10; i++) {
-            car.moveTry();
-        }
-        assertTrue(car.getPosition() >= initialPosition);
+        car.moveTry(3);
+        assertEquals(initialPosition, car.getPosition());
     }
 
     @Test
