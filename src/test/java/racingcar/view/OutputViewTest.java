@@ -7,7 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 class OutputViewTest {
 
@@ -45,11 +45,13 @@ class OutputViewTest {
     @Test
     void 라운드_결과_문구를_출력한다() {
         // given
+        Cars cars = new Cars("pobi");
+        List<String> carStates = cars.getCarStates();
+
         String successResult = "pobi : \n\n";
-        List<Car> carList = List.of(new Car("pobi"));
 
         // when
-        outputView.printRoundResult(carList);
+        outputView.printRoundResult(carStates);
 
         // then
         Assertions.assertEquals(outputStream.toString(), successResult);

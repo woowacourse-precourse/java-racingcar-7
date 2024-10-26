@@ -30,7 +30,7 @@ class InputViewTest {
         provideSetInputStream(input);
 
         // when
-        String inputCarsName = inputView.inputCarsName();
+        String inputCarsName = inputView.inputCarNames();
 
         // then
         Assertions.assertEquals(input, inputCarsName);
@@ -57,7 +57,7 @@ class InputViewTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-                inputView::inputCarsName
+                inputView::inputCarNames
         );
     }
 
