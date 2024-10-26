@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,10 +20,25 @@ public class CarRace {
         }
     }
 
-    public Set<String> getParticipantNames() {
-        return participantNames;
+    public static class DuplicateCarNameException extends Exception {
+        private final String carName;
+
+        public DuplicateCarNameException(String carName) {
+            super("Duplicate car name: " + carName);
+            this.carName = carName;
+        }
+
+        public String getCarName() {
+            return carName;
+        }
     }
 
+    /**
+     * CarRace 에 참가하는 차를 추가
+     *
+     * @param carName
+     * @throws DuplicateCarNameException
+     */
     public void addParticipants(String carName)
             throws DuplicateCarNameException {
         if (carName.length() > CAR_NAME_LENGTH_MAX || participantNames.contains(carName)) {
@@ -32,16 +50,15 @@ public class CarRace {
         participants.add(car);
     }
 
-    public static class DuplicateCarNameException extends Exception {
-        private final String carName;
-
-        public DuplicateCarNameException(String carName) {
-            super("Duplicate car name: " + carName);
-            this.carName = carName;
-        }
-
-        public String getCarName() {
-            return carName;
+    /**
+     * 레이싱 경주를 시작하는 프로시져 함수
+     *
+     * @throws IOException
+     */
+    public void run() throws IOException {
+        while (currentRound < numRounds) {
+            simulateRound();
+            RaceDisplay.displayCurrentState(this);
         }
     }
 
@@ -57,4 +74,13 @@ public class CarRace {
         numRounds = 0;
         currentRound = 0;
     }
+
+    public Set<String> getParticipantNames() {
+        return participantNames;
+    }
+
+    public ArrayList<RacingCar> getParticipants() {
+        return participants;
+    }
+
 }
