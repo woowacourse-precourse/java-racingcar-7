@@ -21,4 +21,8 @@ public class RacingCarController {
         OutputView.printMoveCountInputGuide();
         service.setMoveCount(InputView.inputMoveCount());
     }
+
+    public void run() {
+        OutputView.printRunMessage();
+    }
 }
