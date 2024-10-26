@@ -51,9 +51,11 @@ public class Application {
         }
 
         for (String carName : carNameList) {
+
             if (carName.isBlank() || carName.trim().length() > 5) {
                 return false;
             }
+
         }
 
         return true;
@@ -63,9 +65,11 @@ public class Application {
         Set<String> verifiedList = new HashSet<>();
 
         for (String name : nameList) {
+
             if (!verifiedList.add(name)) {
                 return true;
             }
+
         }
         return false;
     }

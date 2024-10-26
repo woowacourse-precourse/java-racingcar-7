@@ -43,9 +43,11 @@ public class Racing {
         List<Car> winnerList = new ArrayList<>();
 
         for (Car car : carList) {
+
             if (car.getDistance() == maxDistance) {
                 winnerList.add(car);
             }
+
         }
 
         return winnerList;
