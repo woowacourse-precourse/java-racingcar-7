@@ -48,7 +48,7 @@ public class Cars {
     public void showWinner() {
         List<String> winnerNames = getWinnerNames();
         String joinedWinnerName = getJoinedWinnerName(winnerNames);
-        OutputManager.printMessage(WINNER_RESULT_MESSAGE + joinedWinnerName);
+        printWinner(joinedWinnerName);
     }
 
     private List<String> getWinnerNames() {
@@ -109,5 +109,9 @@ public class Cars {
 
     private String getJoinedWinnerName(List<String> winnerNames) {
         return String.join(DELIMITER, winnerNames);
+    }
+
+    private static void printWinner(String joinedWinnerName) {
+        OutputManager.printMessage(WINNER_RESULT_MESSAGE + joinedWinnerName);
     }
 }
