@@ -14,16 +14,12 @@ public class RacingCarController {
         inputView = new InputView();
     }
 
-    public void run(){
+    public void run() {
         outputView.startMessagePrint();
-        try{
-            String readCarString = inputView.readCarString();
-            outputView.tryCountMessage();
-            String readTryCount = inputView.readTryCount();
-            collection = new RacingCarCollection(readCarString, readTryCount);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        String readCarString = inputView.readCarString();
+        outputView.tryCountMessage();
+        String readTryCount = inputView.readTryCount();
+        collection = new RacingCarCollection(readCarString, readTryCount);
         service = new RacingCarService(collection.getCarList(), collection.getTryCount());
         outputView.resultPrint(service.winner());
     }

@@ -7,7 +7,7 @@ public class InputView {
     public String readCarString() {
         String carString = Console.readLine();
         if (carString.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] : 자동차 이름이 입력되지 않았습니다.");
+            throw new IllegalArgumentException("[ERROR] : 값이 입력되지 않았습니다.");
         }
         return carString;
     }
@@ -15,7 +15,7 @@ public class InputView {
     public String readTryCount() {
         String tryCount = Console.readLine();
         if (tryCount.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] : 시도횟수가 입력되지 않았습니다.");
+            throw new IllegalArgumentException("[ERROR] : 값이 입력되지 않았습니다.");
         }
         try {
             Integer.parseInt(tryCount);
