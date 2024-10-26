@@ -26,10 +26,10 @@ class ApplicationTest extends NsTest {
     void 기능_테스트_복수우승자() {
         assertRandomNumberInRangeTest(
             () -> {
-                run("pobi,woni, june", "3");
+                run("pobi,woni, june", "2");
                 assertThat(output()).contains("pobi : -", "woni : --", "june : --", "최종 우승자 : woni, june");
             },
-            MOVING_FORWARD, STOP
+            MOVING_FORWARD, MOVING_FORWARD,MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD
         );
     }
 

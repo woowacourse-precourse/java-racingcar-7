@@ -16,19 +16,21 @@ class Car {
   }
 
   public void move() {
-      if (Dice.rolling() >= 4) {
-          position++;
-      }
-      System.out.println("");
-      
+    if (Dice.rolling() >= 4) {
+      position++;
+    }
   }
+  
   public void showPosition() {
-      System.out.println(name + " : " + "-".repeat(position));
+    System.out.println(name + " : " + "-".repeat(position));
   }
+  
   public String getName() {
-      return name;
+    return name;
   }
+  
   public int getPosition() {
-      return position;
+    return position;
   }
+  
 }

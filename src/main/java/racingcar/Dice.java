@@ -7,6 +7,6 @@ public class Dice {
   }
 
   public static int rolling() {
-      return Randoms.pickNumberInRange(0, 9);
+    return Randoms.pickNumberInRange(0, 9);
   }
 }
