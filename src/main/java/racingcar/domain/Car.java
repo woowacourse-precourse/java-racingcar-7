@@ -3,6 +3,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.constants.Constants;
+import racingcar.vaildation.Vaild;
 
 public class Car {
 
@@ -11,9 +12,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        if (name.length() > Constants.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(Constants.NAME_LENGTH_ERROR);
-        }
+        Vaild.validateCarName(name);
         this.name = name;
         this.position = 0;
     }
