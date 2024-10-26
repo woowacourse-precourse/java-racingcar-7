@@ -52,7 +52,7 @@
 - [x] InputView
 - [x] OutputView
 ### Controller
-- [ ] RacingCarGameController
+- [x] RacingCarGameController
 ### Enum
 - [x] Separator
 ### Util
