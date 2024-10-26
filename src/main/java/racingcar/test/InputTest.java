@@ -49,4 +49,11 @@ public class InputTest {
         String name = "짱구,";
         assertThrows(IllegalArgumentException.class, () -> input.validateSeparatorSplit(name));
     }
+
+    @Test
+    @DisplayName("쉼표 연속이거나 이름 사이에 존재하는지 검증 테스트")
+    void validateSeparator() {
+        String name = "짱구,,짱구";
+        assertThrows(IllegalArgumentException.class, () -> input.validateSeparator(name));
+    }
 }
