@@ -68,7 +68,7 @@ public class RacingController {
         validateCharacters(names);
         validateLength(names);
 
-        int totalMoves = inputView.getTotalRounds();
+        int totalRounds = inputView.getTotalRounds();
 
         System.out.println("실행 결과");
 
@@ -78,7 +78,7 @@ public class RacingController {
             cars.put(name, 0);
         }
 
-        for (int indexMoves = 0; indexMoves < totalMoves; indexMoves++) {
+        for (int round = 0; round < totalRounds; round++) {
             moveCars(cars);
         }
 
