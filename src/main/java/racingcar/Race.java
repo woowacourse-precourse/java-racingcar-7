@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class Race {
             moveCar(raceMap);
             printResult(raceMap);
         }
+
+        printWinner(raceMap);
     }
 
     private void moveCar(Map<String, Integer> raceMap) {
@@ -56,6 +59,20 @@ public class Race {
             sb.append("-");
         }
         return sb.toString();
+    }
+
+    private void printWinner(Map<String, Integer> raceMap) {
+        int maxMove = Collections.max(raceMap.values());
+
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : raceMap.entrySet()) {
+            if (entry.getValue() == maxMove) {
+                sb.append(entry.getKey());
+                sb.append(", ");
+            }
+        }
+
+        System.out.println("최송 우승자: " + sb.substring(0, sb.length() - 2));
     }
 
     // ============= 입력값 검증 메서드 =============
