@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
+import racingcar.model.RacingGameRound;
 import racingcar.view.RacingGameInputView;
 import racingcar.view.RacingGameOutputView;
 
@@ -17,6 +18,6 @@ public class RacingGameController {
         List<Car> cars = carFactory.createCars(carNames);
 
         racingGameOutputView.printRacingGameRoundInputMessage();
-        String gameRound = racingGameInputView.getUserInput();
+        RacingGameRound gameRound = new RacingGameRound(racingGameInputView.getUserInput());
     }
 }
