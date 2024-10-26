@@ -11,6 +11,7 @@ public class NameParser {
 
     public NameParser(String inputName) {
         this.names = splitName(inputName);
+        validateDuplicate();
     }
 
     private List<String> splitName(String inputName) {
@@ -23,6 +24,12 @@ public class NameParser {
         Matcher matcher = pattern.matcher(inputName);
         if (matcher.find()) {
             throw new IllegalArgumentException("알파벳과 구분자 , 를 제외한 문자가 들어가있습니다!");
+        }
+    }
+
+    private void validateDuplicate(){
+        if(names.size() != names.stream().distinct().count()){
+            throw new IllegalArgumentException("중복되는 이름이 있습니다!");
         }
     }
 
