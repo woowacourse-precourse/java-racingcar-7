@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+
+import static racingcar.domain.StringConstant.*;
+
 public class Car {
 
     public static final int THRESHOLD = 4;
@@ -27,5 +30,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void printPosition() {
+        System.out.printf("%s : %s", name, POSITION_MARK.getValue().repeat(position));
+        System.out.println();
     }
 }
