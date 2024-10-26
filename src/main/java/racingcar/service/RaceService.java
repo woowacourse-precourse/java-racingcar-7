@@ -39,13 +39,4 @@ public class RaceService {
         }
         return Cars;
     }
-
-    public void playOneRound(List<Car> cars) {
-        for (Car car : cars) {
-            int randomNumber = RandomNumber.generateRandomNumber();
-            if (Validator.isMoreFour(randomNumber)) {
-                car.move();
-            }
-        }
-    }
 }

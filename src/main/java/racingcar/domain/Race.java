@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.util.RandomNumber;
+import racingcar.util.Validator;
 
 public class Race {
 
@@ -15,6 +17,15 @@ public class Race {
 
     public int getTryCount() {
         return this.tryCount;
+    }
+
+    public void playOneRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNumber = RandomNumber.generateRandomNumber();
+            if (Validator.isMoreFour(randomNumber)) {
+                car.move();
+            }
+        }
     }
 
 }
