@@ -19,5 +19,13 @@ public class Application {
             cars.goOrStop(() -> Randoms.pickNumberInRange(0, 9));
             writer.writeResult(cars);
         }
+
+        final List<String> winnerNames = cars.findWinners()
+                .stream()
+                .map(Car::getName)
+                .map(CarName::getContent)
+                .toList();
+
+        writer.writeWinners(winnerNames);
     }
 }

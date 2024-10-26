@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import java.util.List;
+import racingcar.Car;
+import racingcar.CarName;
 import racingcar.Cars;
 
 public class ResultWriter {
@@ -11,5 +14,9 @@ public class ResultWriter {
     public void writeResult(Cars cars) {
         cars.getCars().forEach(System.out::println);
         System.out.println();
+    }
+
+    public void writeWinners(final List<String> names) {
+        System.out.println("최종 우승자 : " + String.join(", ", names));
     }
 }
