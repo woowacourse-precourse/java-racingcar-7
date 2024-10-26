@@ -9,9 +9,8 @@ public class RacingCar {
     }
 
     public void run(int randomNum) {
-        if (randomNum >= 4) {
+        if (randomNum >= 4)
             status++;
-        }
     }
 
     public String getName() {
