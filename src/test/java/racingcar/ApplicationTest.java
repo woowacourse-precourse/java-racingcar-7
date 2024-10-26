@@ -16,7 +16,6 @@ import static racingcar.ReadyToRace.convertCarNames;
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-    private static final CarRacing carRacing = new CarRacing();
     private static final ReadyToRace readyToRace = new ReadyToRace();
     private static final FinishRace finishRace = new FinishRace();
 
@@ -177,6 +176,23 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains("최종 우승자 : 해은");
         });
     }
+
+    @Test
+    void 공백_포함_입력_테스트() {
+        assertSimpleTest(() -> {
+            run("해은, 해은2", "5");
+            assertThat(output()).contains("해은 : ", "해은2 : ");
+        });
+    }
+
+    @Test
+    void 예외_공백_이름() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
