@@ -1,7 +1,6 @@
 package racingcar.racing.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.io.IOException;
 
 public class InputView {
     public static String inputConsole() {

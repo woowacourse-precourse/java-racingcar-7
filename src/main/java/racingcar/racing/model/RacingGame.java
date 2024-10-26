@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.racing.model.dto.RoundResult;
-import racingcar.racing.view.OutputView;
 
 public class RacingGame {
     private final int allRound;
