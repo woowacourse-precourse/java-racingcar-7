@@ -41,7 +41,7 @@
 # MVC 패턴 구조
 
 ### Main
-- [ ] Application
+- [x] Application
 ### Model
 - [x] Car
 - [x] Cars
