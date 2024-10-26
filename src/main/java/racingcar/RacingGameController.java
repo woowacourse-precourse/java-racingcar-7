@@ -26,6 +26,9 @@ public class RacingGameController {
         TryCount tryCount = TryCount.from(count);
 
         System.out.println(tryCount);
+
+        RacingGame racingGame = new RacingGame(cars, tryCount);
+        racingGame.play();
     }
 
     public String inputCarNames() {

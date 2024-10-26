@@ -17,6 +17,10 @@ public class TryCount {
         return new TryCount(count);
     }
 
+    public int getCount() {
+        return count;
+    }
+
     private void validate(int count) {
         validateRange(count);
     }

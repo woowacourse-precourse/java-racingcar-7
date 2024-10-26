@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
 
     private final String name;
+    private int position = 0;
 
     private Car(String name) {
         validate(name);
@@ -15,9 +16,17 @@ public class Car {
         return new Car(name);
     }
 
+    public void move() {
+        position++;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return "name: " + name +", position : " + position;
     }
 
     @Override

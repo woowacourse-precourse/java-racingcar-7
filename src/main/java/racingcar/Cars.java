@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -14,6 +15,18 @@ public class Cars {
             validate(car);
             cars.add(car);
         });
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<Car> getWinner() {
+        Integer winnerPosition = cars.stream().map(Car::getPosition)
+                .max(Comparator.comparing(x -> x))
+                .orElseThrow(IllegalArgumentException::new);
+
+        return cars.stream().filter(car -> car.getPosition() == winnerPosition).toList();
     }
 
     private void validate(Car car) {
@@ -38,5 +51,12 @@ public class Cars {
         if (cars.size() >= 10) {
             throw new IllegalArgumentException("등록 가능한 자동차 이름은 최대 10개입니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
     }
 }
