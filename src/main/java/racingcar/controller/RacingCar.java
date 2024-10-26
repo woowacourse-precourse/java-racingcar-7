@@ -50,6 +50,7 @@ public class RacingCar {
         Output output = new Output();
         FindWinner findWinner = new FindWinner();
 
+        System.out.println("\n실행 결과");
         for (int nowTurn = 0; nowTurn < playTurn; nowTurn++) {
             carMoving();
             output.printCarLocation(carList);
