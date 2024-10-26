@@ -10,7 +10,6 @@ public class Output {
             String carName = car.getName();
             int forwardCount = car.getForwardCount(repeatCount);
             String raceStatus = returnRaceStatus(forwardCount);
-
             System.out.println(carName + " : " + raceStatus);
         }
         System.out.println();
@@ -28,7 +27,6 @@ public class Output {
         for (int i = 0; i < forwardCount; i++) {
             forwardStatus += "-";
         }
-
         return forwardStatus;
     }
 

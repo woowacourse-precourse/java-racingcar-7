@@ -3,6 +3,7 @@ package util;
 import java.util.ArrayList;
 
 public class Validator {
+    
     public static void validateInputDate(ArrayList<String> inputCars) {
         for (String car : inputCars) {
             isCarNameLongerThanFive(car);

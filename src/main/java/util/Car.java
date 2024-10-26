@@ -24,7 +24,6 @@ public class Car {
             int number = this.forwardCount.get(i);
             forwardCount += number;
         }
-
         return forwardCount;
     }
 
@@ -41,7 +40,6 @@ public class Car {
             moveForward();
             return;
         }
-
         doNotMoveForward();
     }
 

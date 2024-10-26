@@ -7,6 +7,7 @@ import java.util.Arrays;
 import repository.CarRepository;
 
 public class Extractor {
+    
     public static ArrayList<String> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
@@ -29,20 +30,17 @@ public class Extractor {
                 max = car.getForwardCount(CarRepository.repeatCount);
             }
         }
-
         return max;
     }
 
     public static ArrayList<String> extractWinningCarList() {
         int max = returnMax();
         ArrayList<String> winningCars = new ArrayList<>();
-
         for (Car car : CarRepository.cars) {
             if (car.getForwardCount(CarRepository.repeatCount) == max) {
                 winningCars.add(car.getName());
             }
         }
-
         return winningCars;
     }
 

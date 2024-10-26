@@ -13,9 +13,7 @@ public class RacingcarController {
     public void run() {
         RacingParam racingParam = parseInput(getInput());
         CarRepository.saveCarsAndRepeatCount(racingParam);
-
         startRacingAllCars();
-
         Output.printRacingResult();
         Output.printWinningCars();
     }
