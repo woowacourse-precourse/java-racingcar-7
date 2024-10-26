@@ -14,9 +14,9 @@ class CarsTest {
     void test1() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
 
-        List<Integer> positions1 = cars.go(() -> true);
-        List<Integer> positions2 = cars.go(() -> true);
-        List<Integer> positions3 = cars.go(() -> true);
+        List<Integer> positions1 = cars.move(() -> true);
+        List<Integer> positions2 = cars.move(() -> true);
+        List<Integer> positions3 = cars.move(() -> true);
 
         assertThat(positions1).isEqualTo(List.of(1, 1, 1));
         assertThat(positions2).isEqualTo(List.of(2, 2, 2));
@@ -28,9 +28,9 @@ class CarsTest {
     void test2() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
 
-        List<Integer> positions1 = cars.go(() -> true);
-        List<Integer> positions2 = cars.go(() -> true);
-        List<Integer> positions3 = cars.go(() -> true);
+        List<Integer> positions1 = cars.move(() -> true);
+        List<Integer> positions2 = cars.move(() -> true);
+        List<Integer> positions3 = cars.move(() -> true);
 
         assertThat(positions1).isEqualTo(List.of(1, 1, 1));
         assertThat(positions2).isEqualTo(List.of(2, 2, 2));
@@ -42,10 +42,10 @@ class CarsTest {
     void test3() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
 
-        List<Integer> positions1 = cars.go(() -> false);
-        List<Integer> positions2 = cars.go(() -> false);
+        List<Integer> positions1 = cars.move(() -> false);
+        List<Integer> positions2 = cars.move(() -> false);
 
-        List<Integer> positions3 = cars.go(() -> true);
+        List<Integer> positions3 = cars.move(() -> true);
 
         assertThat(positions1).isEqualTo(List.of(0, 0, 0));
         assertThat(positions2).isEqualTo(List.of(0, 0, 0));
@@ -57,10 +57,10 @@ class CarsTest {
     void test4() {
         Cars cars = new Cars(List.of(new Car("A"), new Car("B"), new Car("C")));
 
-        List<Integer> positions1 = cars.go(() -> false);
+        List<Integer> positions1 = cars.move(() -> false);
 
-        List<Integer> positions2 = cars.go(() -> true);
-        List<Integer> positions3 = cars.go(() -> true);
+        List<Integer> positions2 = cars.move(() -> true);
+        List<Integer> positions3 = cars.move(() -> true);
 
         assertThat(positions1).isEqualTo(List.of(0, 0, 0));
         assertThat(positions2).isEqualTo(List.of(1, 1, 1));

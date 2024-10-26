@@ -19,17 +19,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    // TODO: 함수형으로 리팩토링
-    public List<Integer> go(MoveCondition moveCondition) {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            int position = car.go(moveCondition);
-            positions.add(position);
-        }
-        return positions;
-        // return cars.stream()
-        //         .map(car -> car.go(moveCondition))
-        //         .toList();
+    public List<Integer> move(MoveCondition moveCondition) {
+        return cars.stream()
+                .map(car -> car.move(moveCondition))
+                .toList();
     }
 
     public String getCarName(int i) {

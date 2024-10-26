@@ -20,7 +20,7 @@ public class Car {
         this.position = position;
     }
 
-    public int go(MoveCondition moveCondition) {
+    public int move(MoveCondition moveCondition) {
         if (moveCondition.canMove()) {
             return ++this.position;
         }

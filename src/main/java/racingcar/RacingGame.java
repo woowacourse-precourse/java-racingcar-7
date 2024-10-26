@@ -13,7 +13,7 @@ public class RacingGame {
     }
 
     public List<Integer> race() {
-        return cars.go(moveCondition);
+        return cars.move(moveCondition);
     }
 
     public List<String> getWinners(List<Integer> positions) {
