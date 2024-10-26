@@ -38,6 +38,12 @@ class IOControllerTest extends NsTest{
         assertEquals("test1 : --", output());
     }
 
+    @Test
+    void 우승자_출력() {
+        ioController.printWinners(List.of(testCar3));
+        assertEquals("최종 우승자 : test3", output());
+    }
+
     @Override
     protected void runMain() {
     }
