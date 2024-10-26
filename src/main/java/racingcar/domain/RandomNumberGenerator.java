@@ -2,12 +2,18 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements CarForwardCondition {
 
-    private final int MIN_RANDOM_NUMBER = 0;
-    private final int MAX_RANDOM_NUMBER = 9;
+    private static final int MIN_RANDOM_NUMBER = 0;
+    private static final int MAX_RANDOM_NUMBER = 9;
+    private static final int MIN_RANDOM_NUMBER_TO_MOVE_CAR = 4;
 
-    public int makeRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+    @Override
+    public boolean determineCarToForward() {
+        return makeRandomNumber()>=MIN_RANDOM_NUMBER_TO_MOVE_CAR;
+    }
+
+    private int makeRandomNumber() {
+        return Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
     }
 }
