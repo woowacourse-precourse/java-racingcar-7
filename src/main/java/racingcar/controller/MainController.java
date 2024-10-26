@@ -44,6 +44,7 @@ public class MainController {
         return new AttemptCounter(Input.inputAttemptNumber());
     }
 
+    
     private void printCarsMiddleDistance() {
         Output.printIntermediateScore(raceService.getCarsNameAndDistance());
     }
