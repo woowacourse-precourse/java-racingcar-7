@@ -12,4 +12,15 @@ public class ScoreBoard {
     public static ScoreBoard from(List<Car> carList) {
         return new ScoreBoard(carList);
     }
+
+    public List<String> returnRoundResult() {
+        return carList.stream()
+                .map(car -> (CarImpl) car)
+                .map(this::createRoundResultForm)
+                .toList();
+    }
+
+    private String createRoundResultForm(CarImpl car) {
+        return car.getName() + " : " + car.toScoreSymbol();
+    }
 }
