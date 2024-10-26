@@ -19,6 +19,7 @@ public class Model {
         HashMap<String, String> initracingHashmap = new HashMap<>();
         for (String name : listUser) {
             InvalidException.checkNamelength(name);
+            name = name.replaceAll("\\s", "");
             initracingHashmap.put(name, "");
         }
         return initracingHashmap;
