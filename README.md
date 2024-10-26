@@ -1,11 +1,11 @@
 # java-racingcar-precourse
-#
+
 # [구현할 기능목록]
-#
+##
 ### Car class
 name: 자동차 이름
 position: 자동차의 현재 위치
-#
+##
 car(): 자동차 이름으로 객체생성
 move(): 무작위 숫자를 확인하여 전진할지 멈출지 결정하는 메소드
 getPosition(): 현재 자동차의 위치반환 메소드
