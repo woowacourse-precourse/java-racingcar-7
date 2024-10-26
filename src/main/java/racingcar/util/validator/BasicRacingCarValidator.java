@@ -9,14 +9,18 @@ public class BasicRacingCarValidator implements RacingCarValidator {
     private static final int CAR_NAME_NUMBER_MIN = 1;
 
     @Override
-    public void validateCarNamesAndMoveCount(List<String> carNames, int moveCount) {
+    public void validateCarNames(List<String> carNames) {
         validateCarNameNumberMoreThanMin(carNames);
-        validateMoveCountMoreThanMin(moveCount);
 
         carNames.stream().forEach((carName) -> {
             validateCarNameLengthLessThanMax(carName);
             validateCarNameLengthMoreThanMin(carName);
         });
+    }
+
+    @Override
+    public void validateMoveCount(int moveCount) {
+        validateMoveCountMoreThanMin(moveCount);
     }
 
     private void validateCarNameLengthLessThanMax(String carName) {

@@ -31,11 +31,12 @@ public class RacingCarGame {
         this.racingCarWinnerGenerator = racingCarWinnerGenerator;
     }
 
-    public RacingCarGameResult playRacingGame(String carNames, int gameRound) {
+    public RacingCarGameResult playRacingGame(String carNames, int moveCount) {
         List<String> racingCarNames = racingCarNameParser.parseNamesStringToList(carNames);
-        racingCarValidator.validateCarNamesAndMoveCount(racingCarNames, gameRound);
+        racingCarValidator.validateCarNames(racingCarNames);
+        racingCarValidator.validateMoveCount(moveCount);
         List<RacingCar> racingCars = racingCarGenerator.generateCar(racingCarNames);
-        String gameResult = startRacingGame(racingCars, gameRound);
+        String gameResult = startRacingGame(racingCars, moveCount);
 
         List<RacingCar> gameWinners = racingCarWinnerGenerator.generateWinner(racingCars);
         String gameWinnerNames = getGameWinnersToWinnerNames(gameWinners);
@@ -50,10 +51,10 @@ public class RacingCarGame {
         return String.join(WINNER_NAME_DELIMITER, winners);
     }
 
-    private String startRacingGame(List<RacingCar> racingCars, int gameRound) {
+    private String startRacingGame(List<RacingCar> racingCars, int moveCount) {
         StringBuilder gameState = new StringBuilder();
 
-        for (int i = 0; i < gameRound; i++) {
+        for (int i = 0; i < moveCount; i++) {
             racingCarTransporter.transportRacingCar(racingCars);
             gameState.append(recordRacingCarState(racingCars)).append("\n");
         }
