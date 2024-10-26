@@ -63,6 +63,16 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         Scanner sc = new Scanner(System.in);
         String[] cars = sc.nextLine().split(",");
+        validateCarNames(cars);
         return cars;
+    }
+
+    // 자동차 이름 유효성 검사
+    private static void validateCarNames(String[] cars) {
+        for (String car : cars) {
+            if (car.length() > 5 || car.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하로 설정해야 합니다.");
+            }
+        }
     }
 }
