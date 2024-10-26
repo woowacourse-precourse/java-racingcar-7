@@ -10,6 +10,9 @@ public class Application {
         try {
             List<String> carNames = getCarNames();
             System.out.println("입력한 자동차 이름: " + carNames);
+
+            int tryCount = getTryCount();
+            System.out.println("시도 횟수: " + tryCount);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -31,6 +34,18 @@ public class Application {
         }
 
         return carNames;
+    }
+
+    private static int getTryCount(){
+        System.out.println("시도할 횟수를 입력해주세요.");
+        String userInput = Console.readLine();
+        int tryCount = Integer.parseInt(userInput);
+
+        if(tryCount<=0){
+            throw new IllegalArgumentException("1번 이상은 시도해야합니다.");
+        }
+
+        return tryCount;
     }
 
 }
