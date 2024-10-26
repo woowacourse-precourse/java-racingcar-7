@@ -15,5 +15,6 @@ public class Application {
             System.out.println(race.toString());
         }
 
+        System.out.println(race.getWinners());
     }
 }
