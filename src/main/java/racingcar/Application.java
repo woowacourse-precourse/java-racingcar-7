@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Race;
+import racingcar.domain.Rule;
 import racingcar.view.InputHandler;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

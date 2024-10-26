@@ -8,12 +8,13 @@ public class Race {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public Race(final InputView inputView, final OutputView outputView) {
+    public Race(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void start() {
-        final List<Car> cars = inputView.readCarNames();
+        final List<String> carNames = inputView.readCarNames();
+        final int attemptCount = inputView.readAttemptCount();
     }
 }
