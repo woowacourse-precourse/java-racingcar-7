@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -19,6 +20,10 @@ public class Race {
         for(Car car : cars){
             car.move();
         }
+    }
+
+    public String toString(){
+        return cars.stream().map(Car::toString).collect(Collectors.joining());
     }
 
 }

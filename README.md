@@ -52,7 +52,7 @@
   - 각 차량에 move를 호출
 
 
-- `List<string> toString()`
+- `String toString()`
   - 각 차량의 현재 운행 정보를 문자열로 반환
 
 
