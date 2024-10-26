@@ -27,8 +27,6 @@ public class View {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_FORMAT.getMessage());
         }
-
-
     }
 
     public static void printlnRaceResult() {
