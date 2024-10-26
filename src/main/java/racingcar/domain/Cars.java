@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final String BLANK = "";
-    private static final String SPACE = " ";
-    private static final String DELIMITER = ":";
     private static final String SPLITOR = ",";
 
     private List<Car> cars;
@@ -38,14 +35,6 @@ public class Cars {
     public void race(NumberGenerator numberGenerator) {
         cars.stream()
                 .forEach(car -> car.act(numberGenerator.generateNumber()));
-    }
-
-    public void printState() {
-        cars.stream()
-                .forEach(car -> {
-                    System.out.println(car.name + SPACE + DELIMITER + SPACE + car.state);
-                });
-        System.out.println(BLANK);
     }
 
     public String findWinners() {

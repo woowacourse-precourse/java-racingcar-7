@@ -7,11 +7,6 @@ import java.util.List;
 
 public class OutputView {
 
-    private static final String BLANK = "";
-    private static final String SPACE = " ";
-    private static final String DELIMITER = ":";
-    private static final String SPLITOR = ",";
-
     private static final String START_COMMAND="경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String RACING_COUNTS="시도할 횟수는 몇 회인가요?";
     private static final String RACING_PROCESS="실행 결과";
