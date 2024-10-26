@@ -31,6 +31,6 @@ public class OutputView {
         }
 
         System.out.print(Constant.WINNER_PROMPT);
-        System.out.print(String.join(",", gameWinner));
+        System.out.print(String.join(", ", gameWinner));
     }
 }

@@ -31,6 +31,35 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차_2대_미만() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("povi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_플레이어_공백() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_플레이어_null() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException(null, "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_다른_구분자() {
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("povi.siyun", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
