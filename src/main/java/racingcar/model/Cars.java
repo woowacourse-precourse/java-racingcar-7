@@ -20,15 +20,20 @@ public class Cars {
         Set<String> uniqueNames = new HashSet<>();
 
         for (String carName : carNames) {
-            if (uniqueNames.contains(carName)) {
-                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage() + ": " + carName);
-            }
-            uniqueNames.add(carName);
-            carList.add(new Car(carName));
+            addUniqueCarToList(carList, uniqueNames, carName);
         }
 
         return new Cars(carList);
     }
+
+    private static void addUniqueCarToList(List<Car> carList, Set<String> uniqueNames, String carName) {
+        if (uniqueNames.contains(carName)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage() + ": " + carName);
+        }
+        uniqueNames.add(carName);
+        carList.add(new Car(carName));
+    }
+
 
     public void moveCars() {
         for (Car car : carList) {
@@ -45,7 +50,6 @@ public class Cars {
             }
         }
         return winners;
-
 
     }
 
