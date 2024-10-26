@@ -1,5 +1,8 @@
 package racingcar.domain.car;
 
+import static racingcar.message.ErrorMessage.*;
+
+
 public class Name {
     private static final Integer MAX_NAME_LENGTH = 5;
     private static final String NAME_REGEX = "^[a-zA-Z가-힣0-9\\s]+$";
@@ -27,19 +30,19 @@ public class Name {
 
     private void validateBlank(String name) {
         if (name.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NAME_IS_BLANK.getMessage());
         }
     }
 
     private void validateLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NAME_TOO_LONG.getMessage());
         }
     }
 
     private void validateRegex(String name) {
         if (!name.matches(NAME_REGEX)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_CHARACTER_IN_NAME.getMessage());
         }
     }
 

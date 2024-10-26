@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import static racingcar.message.ErrorMessage.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import racingcar.domain.car.Car;
 import racingcar.dto.CarDto;
+import racingcar.message.ErrorMessage;
 import racingcar.service.Accelerator;
 
 public class Race {
@@ -42,13 +45,13 @@ public class Race {
 
     private void validateBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EMPTY_NAME.getMessage());
         }
     }
 
     private void validateDuplicate(List<Car> cars) {
         if (cars.size() != cars.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DUPLICATE_NAME.getMessage());
         }
     }
 
