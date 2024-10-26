@@ -31,6 +31,28 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 과정_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,javaji", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "javaji : -");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 기능_테스트_우승자_둘_이상() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,jun", "1");
+                    assertThat(output()).contains("pobi : -", "jun : -", "최종 우승자 : pobi, jun");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
