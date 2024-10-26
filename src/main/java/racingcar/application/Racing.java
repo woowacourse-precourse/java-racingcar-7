@@ -11,10 +11,18 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
+    private static Racing instance;
     private final List<Car> cars;
 
-    public Racing(List<Car> cars) {
+    private Racing(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public static Racing getInstance(List<Car> cars) {
+        if (instance == null) {
+            instance = new Racing(cars);
+        }
+        return instance;
     }
 
     public void race(int trial) {
@@ -24,7 +32,7 @@ public class Racing {
         }
     }
 
-    public void determineWinners() {
+    public List<String> determineWinners() {
         int maxProgress = cars.stream()
                 .mapToInt(car -> car.getProgressResult().length())
                 .max()
@@ -33,9 +41,11 @@ public class Racing {
         cars.stream()
                 .filter(car -> car.getProgressResult().length() == maxProgress)
                 .forEach(Car::win);
+
+        return getWinners();
     }
 
-    public List<String> getWinners() {
+    private List<String> getWinners() {
         return cars.stream()
                 .filter(Car::isWinner)  // 우승자로 설정된 자동차 필터링
                 .map(Car::getName)
