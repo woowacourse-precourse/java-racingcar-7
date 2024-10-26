@@ -77,4 +77,28 @@ class RacingCarsTest {
         Assertions.assertThatThrownBy(() -> racingCars.registerCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("경주 참여 자동차가 10대 초과인 경우, 예외를 발생시킨다.")
+    void validateRacingCarCountExceedsLimit() {
+        //given
+        List<String> carNames = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11");
+        RacingCars racingCars = new RacingCars();
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> racingCars.registerCars(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("경주 참여 자동차가 최대 10대일 때 통과하는지 테스트한다.")
+    void validateRacingCarCountWithinLimit() {
+        //given
+        List<String> carNames = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+        RacingCars racingCars = new RacingCars();
+
+        //when & then
+        Assertions.assertThatCode(() -> racingCars.registerCars(carNames))
+                .doesNotThrowAnyException();
+    }
 }
