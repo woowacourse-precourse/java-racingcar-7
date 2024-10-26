@@ -1,4 +1,6 @@
 # java-racingcar-precourse
+<br>
+<br>
 
 # 기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.
@@ -13,6 +15,7 @@
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 <br>
 <br>
+
 ## 구현할 기능 목록
 
 ### IOController
