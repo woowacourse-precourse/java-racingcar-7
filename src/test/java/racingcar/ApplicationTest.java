@@ -31,6 +31,62 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 한_대_이하의_이름_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_5자초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdef,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_빈값으로_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,,","1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_1미만_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_1미만_숫자2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수입력_숫자외의_문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,rob","a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
