@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import java.util.List;
-
 public class Validator {
 
     public void validateInputString(String input) {
@@ -11,7 +9,7 @@ public class Validator {
     }
 
     public void validateCountOfCars(Cars cars) {
-        if(cars.getCars().size() < 2) {
+        if(cars.getCarList().size() < 2) {
             throw new IllegalArgumentException("최소 2개 이상의 자동차가 필요합니다.");
         }
     }
