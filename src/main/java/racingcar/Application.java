@@ -16,6 +16,9 @@ public class Application {
             if (Util.hasDuplicates(input.splitCarNameInput())) {
                 throw new IllegalArgumentException("입력한 자동차 이름에 중복이 있습니다.");
             }
+            racing = new Racing(input.splitCarNameInput());
+            racing.runAllRound(Integer.parseInt(input.getRounds()));
+            racing.getWinner();
         } else {
             throw new IllegalArgumentException("입력이 유효하지 않습니다.");
         }
