@@ -17,7 +17,9 @@ public class Car {
         this.position = FIRST_POSITION;
     }
 
-    public void moveForward() {
-        position++;
+    public void moveForward(boolean isCarMovable) {
+        if (isCarMovable) {
+            position++;
+        }
     }
 }

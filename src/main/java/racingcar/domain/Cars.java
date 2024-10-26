@@ -16,9 +16,7 @@ public class Cars {
 
     public void roundProcess(RandNumGenerator randNumGenerator) {
         for (Car car : cars) {
-            if (randNumGenerator.isRandNumGreaterThanOrEqualToCriterion()) {
-                car.moveForward();
-            }
+            car.moveForward(randNumGenerator.isRandNumGreaterThanOrEqualToCriterion());
         }
     }
 }
