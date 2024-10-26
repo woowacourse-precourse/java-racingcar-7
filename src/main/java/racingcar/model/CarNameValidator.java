@@ -13,7 +13,7 @@ public class CarNameValidator {
     public static List<Car> validate(String inputNames) {
 
         if (inputNames == null || inputNames.isEmpty()) {
-            throw new IllegalArgumentException("경주할 자동차 이름이 공백이 되어서는 안 됩니다.");
+            throw new IllegalArgumentException("[ERROR] 경주할 자동차 이름이 공백이 되어서는 안 됩니다.");
         }
 
         List<String> cars_temp = new ArrayList<>();
