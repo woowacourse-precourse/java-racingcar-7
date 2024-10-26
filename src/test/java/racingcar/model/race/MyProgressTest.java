@@ -1,10 +1,10 @@
 package racingcar.model.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.helper.ReflectionUtil.forceSetField;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.helper.ReflectionUtil;
 import racingcar.model.car.MyProgress;
 import racingcar.model.position.Distance;
 import racingcar.model.position.Position;
@@ -12,12 +12,13 @@ import racingcar.model.position.Position;
 public class MyProgressTest {
 
     @Test
-    @DisplayName("Lap을 모두 완주한 경우")
+    @DisplayName("Lap 5개 모두 완주한 경우")
     void completeAllLap() {
         // given
         Lap lap = Lap.ZERO;
-        Position position = Position.initiate();
-        MyProgress myProgress = MyProgress.from(lap, position);
+        Position position = Position.from("-----");
+        MyProgress myProgress = MyProgress.from(lap);
+        ReflectionUtil.forceSetField(myProgress, "position", position);
         // when
         boolean actual = myProgress.completedAllLap();
         // then
@@ -28,9 +29,8 @@ public class MyProgressTest {
     @DisplayName("Lap을 모두 완주하지 못한 경우")
     void failedToCompleteAllLap() {
         // given
-        Lap lap = Lap.from(1);
-        Position position = Position.initiate();
-        MyProgress myProgress = MyProgress.from(lap, position);
+        Lap remainingLap = Lap.from(1);
+        MyProgress myProgress = MyProgress.from(remainingLap);
         // when
         boolean actual = myProgress.completedAllLap();
         // then
@@ -42,9 +42,9 @@ public class MyProgressTest {
     void test() {
         // given
         Lap remainingLap = Lap.from(3);
-        Position position = Position.initiate();
-        forceSetField(position, "value", "---");
-        MyProgress myProgress = MyProgress.from(remainingLap, position);
+        Position position = Position.from("---");
+        MyProgress myProgress = MyProgress.from(remainingLap);
+        ReflectionUtil.forceSetField(myProgress, "position", position);
 
         // when
         myProgress.updateRemainingLap();

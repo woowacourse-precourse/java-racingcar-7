@@ -1,20 +1,24 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.car.MyProgress;
 import racingcar.model.dashboard.DashBoard;
-import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
 import racingcar.model.race.Race;
 
 public class RaceService {
 
     public Cars registerCars(final long lapCount, final List<String> carNames) {
-        List<Car> cars = carNames.stream()
-                .map(name -> Car.from(name, MyProgress.from(Lap.from(lapCount), Position.initiate())))
-                .toList();
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            Lap lap = Lap.from(lapCount);
+            MyProgress myProgress = MyProgress.from(lap);
+            Car car = Car.from(carName, myProgress);
+            cars.add(car);
+        }
         return Cars.of(cars);
     }
 

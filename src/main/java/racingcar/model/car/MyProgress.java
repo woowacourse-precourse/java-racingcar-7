@@ -17,9 +17,9 @@ public class MyProgress {
         this.position = position;
     }
 
-    public static MyProgress from(final Lap remainingLap, final Position position) {
+    public static MyProgress from(final Lap remainingLap) {
         validateIsNull(remainingLap);
-        return new MyProgress(remainingLap, position);
+        return new MyProgress(remainingLap, Position.initiate());
     }
 
     public boolean completedAllLap() {

@@ -8,66 +8,53 @@ import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
 
 public class CarsHelper {
-    public static Cars mockInitial() {
+
+    public static Cars mockWithoutWinner() {
         Lap aRemaining = Lap.from(5);
         Lap bRemaining = Lap.from(5);
         Lap cRemaining = Lap.from(5);
 
-        Position aPosition = Position.initiate();
-        ReflectionUtil.forceSetField(aPosition, "value", "");
+        Position aPosition = Position.from("");
+        Position bPosition = Position.from("--");
+        Position cPosition = Position.from("---");
 
-        Position bPosition = Position.initiate();
-        ReflectionUtil.forceSetField(bPosition, "value", "");
+        MyProgress aProgress = MyProgress.from(aRemaining);
+        MyProgress bProgress = MyProgress.from(bRemaining);
+        MyProgress cProgress = MyProgress.from(cRemaining);
 
-        Position cPosition = Position.initiate();
-        ReflectionUtil.forceSetField(cPosition, "value", "");
+        ReflectionUtil.forceSetField(aProgress, "position", aPosition);
+        ReflectionUtil.forceSetField(bProgress, "position", bPosition);
+        ReflectionUtil.forceSetField(cProgress, "position", cPosition);
 
-        List<Car> cars = List.of(
-                Car.from("a", MyProgress.from(aRemaining, aPosition)),
-                Car.from("b", MyProgress.from(bRemaining, bPosition)),
-                Car.from("c", MyProgress.from(cRemaining, cPosition))
-        );
-        return Cars.of(cars);
-    }
+        Car aCar = Car.from("a", aProgress);
+        Car bCar = Car.from("b", bProgress);
+        Car cCar = Car.from("c", cProgress);
 
-    public static Cars mockWithoutWinner() {
-        Lap remaining = Lap.from(4);
-
-        Position aPosition = Position.initiate();
-        ReflectionUtil.forceSetField(aPosition, "value", "");
-
-        Position bPosition = Position.initiate();
-        ReflectionUtil.forceSetField(bPosition, "value", "--");
-
-        Position cPosition = Position.initiate();
-        ReflectionUtil.forceSetField(cPosition, "value", "---");
-
-        List<Car> cars = List.of(
-                Car.from("a", MyProgress.from(remaining, aPosition)),
-                Car.from("b", MyProgress.from(remaining, bPosition)),
-                Car.from("c", MyProgress.from(remaining, cPosition))
-        );
-        return Cars.of(cars);
+        return Cars.of(List.of(aCar, bCar, cCar));
     }
 
     public static Cars mockWithSingleWinner() {
 
         Lap aRemaining = Lap.from(4);
-        Position aPosition = Position.initiate();
-        ReflectionUtil.forceSetField(aPosition, "value", "");
-
         Lap bRemaining = Lap.from(2);
-        Position bPosition = Position.initiate();
-        ReflectionUtil.forceSetField(bPosition, "value", "---");
-
         Lap cRemaining = Lap.from(0);
-        Position cPosition = Position.initiate();
-        ReflectionUtil.forceSetField(cPosition, "value", "-----");
+
+        Position aPosition = Position.from("");
+        Position bPosition = Position.from("---");
+        Position cPosition = Position.from("-----");
+
+        MyProgress aProgress = MyProgress.from(aRemaining);
+        MyProgress bProgress = MyProgress.from(bRemaining);
+        MyProgress cProgress = MyProgress.from(cRemaining);
+
+        ReflectionUtil.forceSetField(aProgress, "position", aPosition);
+        ReflectionUtil.forceSetField(bProgress, "position", bPosition);
+        ReflectionUtil.forceSetField(cProgress, "position", cPosition);
 
         List<Car> cars = List.of(
-                Car.from("a", MyProgress.from(aRemaining, aPosition)),
-                Car.from("b", MyProgress.from(bRemaining, bPosition)),
-                Car.from("c", MyProgress.from(cRemaining, cPosition))
+                Car.from("a", aProgress),
+                Car.from("b", bProgress),
+                Car.from("c", cProgress)
         );
         return Cars.of(cars);
     }
@@ -75,21 +62,25 @@ public class CarsHelper {
     public static Cars mockWithMultiWinner() {
 
         Lap aRemaining = Lap.from(4);
-        Position aPosition = Position.initiate();
-        ReflectionUtil.forceSetField(aPosition, "value", "");
-
         Lap bRemaining = Lap.from(0);
-        Position bPosition = Position.initiate();
-        ReflectionUtil.forceSetField(bPosition, "value", "-----");
-
         Lap cRemaining = Lap.from(0);
-        Position cPosition = Position.initiate();
-        ReflectionUtil.forceSetField(cPosition, "value", "-----");
+
+        Position aPosition = Position.from("");
+        Position bPosition = Position.from("-----");
+        Position cPosition = Position.from("-----");
+
+        MyProgress aProgress = MyProgress.from(aRemaining);
+        MyProgress bProgress = MyProgress.from(bRemaining);
+        MyProgress cProgress = MyProgress.from(cRemaining);
+
+        ReflectionUtil.forceSetField(aProgress, "position", aPosition);
+        ReflectionUtil.forceSetField(bProgress, "position", bPosition);
+        ReflectionUtil.forceSetField(cProgress, "position", cPosition);
 
         List<Car> cars = List.of(
-                Car.from("a", MyProgress.from(aRemaining, aPosition)),
-                Car.from("b", MyProgress.from(bRemaining, bPosition)),
-                Car.from("c", MyProgress.from(cRemaining, cPosition))
+                Car.from("a", aProgress),
+                Car.from("b", bProgress),
+                Car.from("c", cProgress)
         );
         return Cars.of(cars);
     }

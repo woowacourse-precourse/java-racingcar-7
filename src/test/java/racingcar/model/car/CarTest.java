@@ -16,9 +16,9 @@ public class CarTest {
     void checkLapChart() {
         // given
         Lap remainLap = Lap.from(6);
-        Position position = Position.initiate();
-        ReflectionUtil.forceSetField(position, "value", "---");
-        MyProgress myProgress = MyProgress.from(remainLap, position);
+        Position position = Position.from("---");
+        MyProgress myProgress = MyProgress.from(remainLap);
+        ReflectionUtil.forceSetField(myProgress, "position", position);
         Car sut = Car.from("user1", myProgress);
 
         // when
@@ -33,13 +33,13 @@ public class CarTest {
     void updateMyProgress() {
         // given
         Lap remainLap = Lap.from(3);
-        Position position = Position.initiate();
-        ReflectionUtil.forceSetField(position, "value", "---");
-        MyProgress myProgress = MyProgress.from(remainLap, position);
+        Position position = Position.from("---");
+        MyProgress myProgress = MyProgress.from(remainLap);
+        ReflectionUtil.forceSetField(myProgress, "position", position);
         Car sut = Car.from("user1", myProgress);
         // when
         sut.updateProgress(Distance.ONE);
         // then
-        assertThat(position.toString()).isEqualTo("----");
+        assertThat(myProgress.toString()).isEqualTo("----");
     }
 }
