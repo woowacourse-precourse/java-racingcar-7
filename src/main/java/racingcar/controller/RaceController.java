@@ -31,13 +31,6 @@ public class RaceController {
         return raceService.getCarListWithMaxDistance(carList, maxDistance);
     }
 
-//    private void printRoundResult(final Race race) {
-//        outputView.printEndLine();
-//        outputView.printGameResultMessage();
-//        race.getCarList().forEach(outputView::printRoundResult);
-//        outputView.printEndLine();
-//    }
-
     private int getMaxDistance(final Race race) {
         List<Integer> distanceList = race.getDistanceList();
         return raceService.getMaxDistance(distanceList);
