@@ -19,7 +19,7 @@ class InMemoryCarRepositoryTest {
         Car car = new Car(carName);
         carRepository.save(car);
 
-        assertEquals(carRepository.findAll().get(0).name(), carName);
-        assertEquals(carRepository.findAll().get(0).progress(), 0);
+        assertEquals(carRepository.findAll().get(0).getName(), carName);
+        assertEquals(carRepository.findAll().get(0).getProgress(), 0);
     }
 }
