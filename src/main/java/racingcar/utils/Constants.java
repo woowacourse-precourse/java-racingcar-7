@@ -7,4 +7,5 @@ public final class Constants {
     public static final String OUTPUT_WINNER_MESSAGE = "최종 우승자 : ";
     public static final String DISTANCE_DASH = "-";
     public static final String RESULT_COLON = " : ";
+    public static final String COMMA = ",";
 }
