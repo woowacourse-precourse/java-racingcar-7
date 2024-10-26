@@ -18,9 +18,13 @@ public class View {
         String tryCountInput = Console.readLine().trim();
 
         try {
-            return Integer.parseInt(tryCountInput);
+            int tryCount = Integer.parseInt(tryCountInput);
+            if (tryCount < 0) {
+                throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+            }
+            return tryCount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
         }
 
 
