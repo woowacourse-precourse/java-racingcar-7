@@ -15,4 +15,9 @@ public class RacingController {
         this.attempts = InputView.getAttempts();
     }
 
+    private void showFinalWinners() {
+        List<String> winners = WinGenerator.findWinners(cars);
+        OutputView.showWinners(winners);
+    }
+
 }
