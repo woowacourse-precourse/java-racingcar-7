@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -24,14 +25,21 @@ public class Application {
         int countCars = carNames.length;
 
         List<Car> cars = new ArrayList<>();
+        HashSet<String> carNamesSet = new HashSet<>();
 
         for (int i = 0; i < countCars; i++) {
+            String trimName = carNames[i].trim();
 
-            if (carNames[i].length() > 5) {
-                throw new IllegalArgumentException(carNames[i] + ": 5자 이하여야 합니다");
+            if (!carNamesSet.add(trimName)) {
+                throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다: " + trimName);
+
             }
 
-            cars.add(new Car(carNames[i].trim()));
+            if (trimName.length() > 5) {
+                throw new IllegalArgumentException("5자 이하여야 합니다: " + trimName);
+            }
+
+            cars.add(new Car(trimName));
         }
         return cars;
     }
