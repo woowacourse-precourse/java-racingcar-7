@@ -31,7 +31,6 @@ public class Application {
         return Console.readLine();
     }
 
-    //자동차 이름 List에 집어넣기
     public static List<RacingCar> splitInput(String input) {
         String[] racingCars = input.split(SPLITTER);
         List<RacingCar> racingCarList = new ArrayList<>();
@@ -42,14 +41,19 @@ public class Application {
             RacingCar racingCar = new RacingCar(carName);
             racingCarList.add(racingCar);
         }
+
         for(int i = 0; i < racingCars.length; i++){
             for(int j = i + 1; j < racingCars.length; j++){
-                if (racingCars[i].equals(racingCars[j])) {
-                    throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
-                }
+                checkSameName(racingCars[i], racingCars[j]);
             }
         }
         return racingCarList;
+    }
+
+    public static void checkSameName(String car1, String car2){
+        if(car1.equals(car2)){
+            throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
+        }
     }
 
     //시도 횟수 입력 받기
@@ -73,6 +77,7 @@ public class Application {
     }
 
     public static void checkRandomNumber(List<RacingCar> racingCarList) {
+        //indent 수정
         for (RacingCar racingCar : racingCarList) {
             int pos = 0;
             for (int i = 0; i < racingCar.randomNumbers.size(); i++) {
@@ -118,7 +123,8 @@ public class Application {
             notice += winnerList.get(0);
             System.out.println(notice);
             return;
-        } else if (winnerList.size() > 1) {
+        }
+        else if (winnerList.size() > 1) {
             for (int i = 0; i < winnerList.size(); i++) {
                 notice += winnerList.get(i);
                 notice += SPLITTER;
