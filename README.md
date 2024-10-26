@@ -6,11 +6,11 @@
     - 경주할 자동차 이름 입력 - Console.readLine 활용
     - 시도 횟수 입력
 
-- 자동차 이름 바탕으로 자동차 객체 및 리스트 생성
+- 자동차 이름 바탕으로 자동차 객체 및 리스트 생성 **(Done)**
 
 - 경주 진행
     - 자동차마다 0 ~ 9 사이 무작위 값 추출 후 4 이상이면 전진
-    - Randoms.pickNumberInRange 활용
+    - Randoms.pickNumberInRange 활용 **(Done)**
 
 - 우승자 찾기
     - 자동차의 전진 횟수 중 최댓값 구하기
@@ -25,7 +25,6 @@
 - 메시지를 선택한 후 메시지를 처리할 책임이 있는 객체를 할당하는 방법으로 클래스 다이어그램을 제작했습니다
 
 ![자동차 경주 1차 클래스 다이어그램 (3)](https://github.com/user-attachments/assets/69c51d52-ed68-4dd9-81bb-7fb7ba1dbdd5)
-
 
 ## 패키지 설계
 
