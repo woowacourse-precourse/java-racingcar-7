@@ -22,16 +22,6 @@ public class InputView {
             throw new IllegalArgumentException("게임 횟수는 공백이 될 수 없습니다.");
         }
 
-        int attemptCount;
-        try {
-            attemptCount = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("게임 횟수는 양수를 입력해 주세요.");
-        }
-        if (attemptCount <= 0) {
-            throw new IllegalArgumentException("게임 횟수는 양수를 입력해 주세요.");
-        }
-
         return input;
     }
  }

@@ -25,8 +25,8 @@ public class RacingCarController {
     }
 
     public int parseAttemptCount() {
-
-        return 0;
+        String attemptCount = inputView.getAttemptCount();
+        return racingCarService.parseAttemptCount(attemptCount);
     }
 
     public void startGame(Set<String> carNames, int attemptCount){

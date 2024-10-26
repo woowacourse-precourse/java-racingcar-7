@@ -23,4 +23,19 @@ public class RacingCarService {
 
         return carNames;
     }
+
+    public int parseAttemptCount(String input) {
+        int attemptCount;
+
+        try {
+            attemptCount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("게임 횟수는 양수를 입력해 주세요.");
+        }
+        if (attemptCount <= 0) {
+            throw new IllegalArgumentException("게임 횟수는 양수를 입력해 주세요.");
+        }
+
+        return attemptCount;
+    }
 }
