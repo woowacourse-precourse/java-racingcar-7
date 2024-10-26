@@ -27,4 +27,11 @@ class RoundTest {
         round.next();
         assertThat(round.getCurrent()).isEqualTo(3);
     }
+
+    @Test
+    void 최종_라운드는_1_이하를_가질_수_없다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Round(0);
+        });
+    }
 }
