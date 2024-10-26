@@ -10,15 +10,10 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Game {
-    private InputView inputView;
-
-    public Game(InputView inputView) {
-        this.inputView = inputView;
-    }
 
     public void run() {
-        String[] carNames = inputView.getCarNames();
-        int moveCount = inputView.getMoveCount();
+        String[] carNames = InputView.getInstance().getCarNames();
+        int moveCount = InputView.getInstance().getMoveCount();
 
         List<Car> carList = createCar(carNames);
 
