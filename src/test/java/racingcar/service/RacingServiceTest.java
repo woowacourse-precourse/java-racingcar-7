@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Record;
 import racingcar.domain.Result;
 
 class RacingServiceTest {
@@ -27,8 +28,12 @@ class RacingServiceTest {
         final List<Result> results = racingService.startRace(cars, roundCount);
 
         //then
+        Result firstResult = results.getFirst();
+        List<Record> firstRecords = firstResult.getRecords();
+        Record firstRecord = firstRecords.getFirst();
+
         assertThat(results).hasSize(roundCount);
-        assertThat(results.getFirst().getRound()).isEqualTo(1);
-        assertThat(results.getFirst().getRecords().getFirst().getCarName()).isEqualTo("a");
+        assertThat(firstResult.getRound()).isEqualTo(1);
+        assertThat(firstRecord.getCarName()).isEqualTo("a");
     }
 }

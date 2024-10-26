@@ -25,9 +25,10 @@ class CarServiceTest {
         final List<Car> cars = carService.createCars(carNames);
 
         //then
+        Car firstCar = cars.getFirst();
         assertThat(cars).hasSize(3);
-        assertThat(cars.getFirst().getName()).isEqualTo("a");
-        assertThat(cars.getFirst().getDistance()).isEqualTo(0);
+        assertThat(firstCar.getName()).isEqualTo("a");
+        assertThat(firstCar.getDistance()).isEqualTo(0);
     }
 
 }
