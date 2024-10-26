@@ -8,4 +8,8 @@ public class Car {
         this.name = name;
         this.mileage = 0;
     }
+
+    public int getMileage() {
+        return mileage;
+    }
 }
