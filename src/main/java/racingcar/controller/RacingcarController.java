@@ -9,10 +9,22 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingcarController {
-    private final InputView inputView = new InputView();
-    private final OutputView outputView = new OutputView();
-    private final PresetService presetService = new PresetService();
-    private final ProcessService processService = new ProcessService();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final PresetService presetService;
+    private final ProcessService processService;
+
+    public RacingcarController(
+            InputView inputView,
+            OutputView outputView,
+            PresetService presetService,
+            ProcessService processService
+    ) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.presetService = presetService;
+        this.processService = processService;
+    }
 
     public void play() {
         Game game = gamePreset();
@@ -21,12 +33,10 @@ public class RacingcarController {
     }
 
     private Game gamePreset() {
-        outputView.printNameGuide();
         return presetService.setGame(inputView.inputName());
     }
 
     private int getRound() {
-        outputView.printRoundGuide();
         return inputView.inputRound();
     }
 

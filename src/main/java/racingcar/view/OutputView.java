@@ -1,39 +1,29 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.utils.ConstantMessage;
 
 public class OutputView {
-    public void printNameGuide() {
-        System.out.println(ConstantMessage.INPUT_NAME_MESSAGE);
-    }
-
-    public void printRoundGuide() {
-        System.out.println(ConstantMessage.INPUT_ROUND_MESSAGE);
-    }
-
     public void printResultMessage() {
         System.out.println(ConstantMessage.OUTPUT_RESULT_MESSAGE);
     }
 
-    public void printExecuteResult(ArrayList<Car> winners) {
+    public void printExecuteResult(List<Car> winners) {
         System.out.printf(ConstantMessage.OUTPUT_WINNER_MESSAGE);
-        ArrayList<String> nameList = new ArrayList<>();
-        for (Car car : winners) {
-            nameList.add(car.getName());
-        }
-        System.out.println(String.join(", ", nameList));
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(ConstantMessage.COMMA_SEPARATOR));
+        System.out.println(winnerNames);
     }
 
-    public void printRacingProgress(List<Car> carArrayList) {
-        for (Car car : carArrayList) {
-            printCarInfo(car);
-        }
+    public void printRacingProgress(List<Car> carList) {
+        carList.forEach(this::printCarInfo);
     }
 
-    public void printCarInfo(Car car) {
-        System.out.printf("%s : %s%n", car.getName(), "-".repeat(car.getDistance()));
+    private void printCarInfo(Car car) {
+        String carInfo = ConstantMessage.DISTANCE_MARKER.repeat(car.getDistance());
+        System.out.printf("%s : %s%n", car.getName(), carInfo);
     }
 }
