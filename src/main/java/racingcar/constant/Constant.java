@@ -5,7 +5,9 @@ public class Constant {
     public static final String INPUT_TRIAL_PROMPT = "시도할 횟수는 몇 회인가요?";
     public static final String WINNER_PROMPT = "최종 우승자 : ";
     public static final String DELIMITER = ",";
-    public static final int MAX_CAR_NAME = 5;
-    public static final int NUMBER_FOR_MOVE = 4;
+    public static final int RANDOM_RANGE_MIN = 0;
+    public static final int RANDOM_RANGE_MAX = 9;
+    public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final int RANDOM_NUMBER_FOR_MOVE = 4;
     public static final String STEP_UNIT = "-";
 }
