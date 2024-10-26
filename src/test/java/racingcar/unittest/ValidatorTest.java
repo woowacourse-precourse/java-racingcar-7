@@ -69,6 +69,17 @@ class ValidatorTest extends NsTest {
                 .hasMessageContaining("적어도 한 대의 자동차 이름을 입력해야 합니다.");
     }
 
+    @Test
+    @DisplayName("시도 횟수가 양의 정수인 경우 검증 통과 테스트")
+    void validateAttempts_withPositiveInteger_shouldPass() {
+        // Given
+        int attempts = 5;
+
+        // When & Then
+        assertThatCode(() -> Validator.validateAttempts(attempts))
+                .doesNotThrowAnyException();
+    }
+
     @Override
     public void runMain() {
     }
