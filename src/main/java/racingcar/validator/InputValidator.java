@@ -6,9 +6,10 @@ import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 import racingcar.global.exception.RacingcarException;
 
 public class InputValidator {
-    public void check(String input) {
+    public String check(String input) {
         checkStringLength(input);
         checkBlank(input);
+        return input;
     }
 
     public void checkStringLength(String input) {
