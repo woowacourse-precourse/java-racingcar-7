@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.HashSet;
 
 public class Racingcar {
     private List<String> carNames;
@@ -39,6 +40,13 @@ public class Racingcar {
         return false;
     }
 
+    public boolean checkForDuplicate() {
+        HashSet<String> set = new HashSet<>();
+        for (String carName : carNames)
+            if (!set.add(carName)) return true;
+        return false;
+    }
+    
     public void inputExCarName(String rawCarName) {
         if (rawCarName.isEmpty()) throw new IllegalArgumentException("자동차 입력이 없습니다.");
         if (rawCarName.endsWith(",")) throw new IllegalArgumentException("자동차 입력시 ','로 끝날 수는 없습니다.");
@@ -47,6 +55,7 @@ public class Racingcar {
         if (carNames.size() == 1) throw new IllegalArgumentException("자동차 1대로 경주를 진행 할 수 없습니다.");
         if (invCarNameLen()) throw new IllegalArgumentException("자동차의 이름은 5자 이하만 가능합니다.");
         if (hasBlankCarName()) throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수는 없습니다.");
+        if (checkForDuplicate()) throw new IllegalArgumentException("자동차 이름이 중복될 수는 없습니다.");
     }
 
     public void inputExCount(String count) {
