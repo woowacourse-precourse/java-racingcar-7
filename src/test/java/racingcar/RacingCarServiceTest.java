@@ -122,25 +122,27 @@ class RacingCarServiceTest extends RacingCarService {
     public void testValidateCarNamesInput() throws Exception {
         //given
         //공백이 들어올 경우
-        String expect1 = "";
+        String carNames1 = "";
         //5자 이상이 들어올 경우
-        String expect2 = "car1,car2car3";
+        String carNames2 = "car1,car2car3";
         //구분자로 쉼표가 없을 경우
-        String expect3 = "car1;car2;car3";
-        //공백이 들어올 경우
+        String carNames3 = "car1;car2;car3";
+        //차 이름 중복입력했을 경우
+        String carNames4 = "car1,car2,car2";
 
         //when then
         Assertions.assertThrows(IllegalArgumentException.class, () ->
-                        racingCarService.validateCarNamesInput(expect1),
+                        racingCarService.validateCarNamesInput(carNames1),
                 "잘못된 입력입니다");
-
         Assertions.assertThrows(IllegalArgumentException.class, () ->
-                        racingCarService.validateCarNamesInput(expect2),
+                        racingCarService.validateCarNamesInput(carNames2),
                 "자동차 이름은 쉼표(,)를 기준으로 구분해야 합니다.");
-
         Assertions.assertThrows(IllegalArgumentException.class, () ->
-                        racingCarService.validateCarNamesInput(expect3),
+                        racingCarService.validateCarNamesInput(carNames3),
                 "이름은 5자 이하만 가능합니다.");
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                        racingCarService.validateCarNamesInput(carNames4),
+                "자동차 이름이 중복입니다.");
     }
 
     @Test
