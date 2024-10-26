@@ -6,11 +6,14 @@ import java.util.List;
 
 public class OutputView {
 
+    private final static String EXECUTION_RESULT = "실행 결과";
+    private final static String FINAL_WINNER = "최종 우승자 : ";
+
     private boolean isFirst = true;
 
     public final void game(List<RacingCar> carNames) {
         if (isFirst) {
-            System.out.println("실행 결과");
+            System.out.println(EXECUTION_RESULT);
             isFirst = false;
         }
 
@@ -21,7 +24,7 @@ public class OutputView {
     }
 
     public final void printWinner(List<String> winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(FINAL_WINNER);
         System.out.println(String.join(", ", winners));
     }
 }
