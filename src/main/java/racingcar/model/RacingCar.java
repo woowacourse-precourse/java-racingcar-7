@@ -2,7 +2,8 @@ package racingcar.model;
 
 public class RacingCar {
 
-    private String name;
+    private final String name;
+    private int position = 0;
 
     public RacingCar(String name) {
         this.name = name;
@@ -10,5 +11,9 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

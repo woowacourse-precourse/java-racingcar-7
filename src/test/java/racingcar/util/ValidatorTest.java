@@ -36,4 +36,13 @@ class ValidatorTest {
         .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void checkPositiveCountExceptionTest() {
+        // given
+        String count = "-100";
+        // when & then
+        assertThatThrownBy(() ->  validator.checkLoopCount(count))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

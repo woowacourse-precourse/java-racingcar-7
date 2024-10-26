@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.RacingCar;
-import racingcar.service.RacingGameService;
 import racingcar.util.Parser;
 import racingcar.util.Validator;
 import racingcar.view.InputView;
@@ -11,19 +10,20 @@ import java.util.List;
 
 public class Controller {
 
-    private final RacingGameService service = new RacingGameService();
     private final Validator validator = new Validator();
 
     public void run() {
-        getCarNamesByInput();
-//        InputView.printRequestLoopCount();
-//        String loopCount = Console.readLine();
+        List<RacingCar> carList = getCarNamesByInput();
+        InputView.printRequestLoopCount();
+        String loopCount = Console.readLine();
+        validator.checkLoopCount(loopCount);
+//        startGame(carList, loopCount);
     }
 
-    public void getCarNamesByInput() {
+    public List<RacingCar> getCarNamesByInput() {
         InputView.printRequestCarNamesMessage();
         String carNames = Console.readLine();
         validator.checkCarNamesInput(carNames);
-        List<RacingCar> carNamesList = Parser.extractCarNames(carNames);
+        return Parser.extractCarNames(carNames);
     }
 }

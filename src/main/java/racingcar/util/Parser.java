@@ -15,4 +15,8 @@ public abstract class Parser {
         }
         return cars;
     }
+
+    public static int parseNumber(String loopCount) {
+        return Integer.parseInt(loopCount);
+    }
 }

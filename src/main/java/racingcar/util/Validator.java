@@ -11,6 +11,12 @@ public class Validator {
         checkLengthEachCarName(carNames);
     }
 
+    private void checkEmpty(String carNames) {
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException(ERROR + ", 빈 값입니다.");
+        }
+    }
+
     private void checkLengthEachCarName(String carNames) {
         StringTokenizer tokenizer = new StringTokenizer(carNames, ",");
         while (tokenizer.hasMoreTokens()) {
@@ -20,9 +26,14 @@ public class Validator {
         }
     }
 
-    private void checkEmpty(String carNames) {
-        if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException(ERROR + ", 빈 값입니다.");
+    public void checkLoopCount(String loopCount) {
+        checkPositiveCount(loopCount);
+    }
+
+    private void checkPositiveCount(String loopCount) {
+        int count = Parser.parseNumber(loopCount);
+        if (count <= 0) {
+            throw new IllegalArgumentException(ERROR + ", 시도할 횟수는 1 이상 이어야 합니다.");
         }
     }
 }
