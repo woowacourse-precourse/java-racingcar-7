@@ -11,15 +11,22 @@ public class Race {
         this.trialCounts = trialCounts;
         this.currentCounts = 0;
     }
+
     private void moveCars() {
-        for(Car car : cars.getCars()) {
+        for (Car car : cars.getCars()) {
             car.move(RandomNumber.getRandomNumber());
         }
     }
-    public void raceOneStep() {
-        moveCars();
+
+    private void increaseCurrentCounts() {
         currentCounts++;
     }
+
+    public void startRace() {
+        moveCars();
+        increaseCurrentCounts();
+    }
+
     public boolean isRaceOngoing() {
         return currentCounts < trialCounts.getTrialCounts();
     }

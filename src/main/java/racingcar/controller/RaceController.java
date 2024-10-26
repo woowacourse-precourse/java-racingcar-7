@@ -1,6 +1,9 @@
 package racingcar.controller;
 
-import racingcar.domain.*;
+import racingcar.domain.Cars;
+import racingcar.domain.Race;
+import racingcar.domain.TrialCounts;
+import racingcar.domain.Winner;
 import racingcar.domain.validator.CarNameValidator;
 import racingcar.domain.validator.TrialCountsValidator;
 import racingcar.view.InputView;
@@ -40,7 +43,7 @@ public class RaceController {
     private Winner runRace(Cars cars, Race race) {
         outputView.executionResultMessage();
         while (race.isRaceOngoing()) {
-            race.raceOneStep();
+            race.startRace();
             outputView.currentStatusMessage(cars);
         }
         return new Winner(cars);
