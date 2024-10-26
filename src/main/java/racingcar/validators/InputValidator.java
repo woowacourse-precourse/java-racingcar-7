@@ -24,4 +24,14 @@ public class InputValidator {
             throw new IllegalArgumentException("빈 이름이 존재합니다.");
         }
     }
+
+    public static void validateNumber(String input) {
+        try {
+            if (Integer.parseInt(input) <= 0) {
+                throw new IllegalArgumentException("양수를 입력해주세요.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효하지 않은 숫자입니다.");
+        }
+    }
 }

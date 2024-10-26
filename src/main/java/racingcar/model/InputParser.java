@@ -20,4 +20,9 @@ public class InputParser {
 
         return cars_parsed;
     }
+
+    public static int parseTotalRounds(String rounds) {
+        InputValidator.validateNumber(rounds);
+        return Integer.parseInt(rounds);
+    }
 }
