@@ -7,6 +7,7 @@ import racingcar.view.View;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
@@ -33,6 +34,7 @@ public class Controller {
         Game game = Game.start(carNames, round);
         while (!game.isGameEnd()) {
             game.play();
+            printStatus(game.getCarStatus());
         }
         printWinner(game.findWinners());
     }
@@ -41,6 +43,18 @@ public class Controller {
         if (round < 1) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void printStatus(Map<String, Integer> carStatus) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String carName : carStatus.keySet()) {
+            stringBuilder.append(carName).append(" : ");
+            for (int idx = 0; idx < carStatus.get(carName); idx++) {
+                stringBuilder.append("-");
+            }
+            stringBuilder.append("\n");
+        }
+        view.print(stringBuilder.toString());
     }
 
     private void printWinner(List<String> winners) {

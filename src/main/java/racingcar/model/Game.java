@@ -1,6 +1,8 @@
 package racingcar.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
     private final Cars cars;
@@ -33,5 +35,9 @@ public class Game {
 
     private boolean isRoundZero() {
         return round == 0;
+    }
+
+    public Map<String, Integer> getCarStatus() {
+        return cars.getCarStatus();
     }
 }
