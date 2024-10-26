@@ -23,4 +23,8 @@ public class PrintMessage {
         System.out.println(END_GAME_MESSAGE + winners);
     }
 
+    public void printCarProgress(String carName, String progress) {
+        System.out.println(carName + " : " + progress);
+    }
+
 }

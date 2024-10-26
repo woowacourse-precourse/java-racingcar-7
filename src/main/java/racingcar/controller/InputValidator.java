@@ -1,4 +1,4 @@
-package racingcar.contorller;
+package racingcar.controller;
 
 import java.util.HashSet;
 import java.util.Set;

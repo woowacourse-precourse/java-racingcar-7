@@ -1,4 +1,4 @@
-package racingcar.contorller;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -64,7 +64,7 @@ public class RacingCarPlay {
             if(car.getPlayGameScore() > 3) {
                 car.incrementGameTotalScore();
             }
-            System.out.println(car.getCarName() + " : " + car.getProgressDisplay());
+            message.printCarProgress(car.getCarName(), car.getProgressDisplay());
         }
         System.out.println();
     }
