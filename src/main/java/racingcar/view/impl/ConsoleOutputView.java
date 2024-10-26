@@ -1,6 +1,7 @@
 package racingcar.view.impl;
 
 import static racingcar.common.constant.OutputMessage.OUTPUT_ROUND_RESULT;
+import static racingcar.common.constant.OutputMessage.OUTPUT_WINNER;
 
 import java.util.stream.Collectors;
 import racingcar.domain.CarDomain;
@@ -38,7 +39,7 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void displayCarRaceWinner(CarDomains winners) {
         System.out.println(
-                "최종 우승자 : " + winners.getCarDomainList().stream()
+                OUTPUT_WINNER + winners.getCarDomainList().stream()
                         .map(CarDomain::getName)
                         .collect(Collectors.joining(", "))
         );
