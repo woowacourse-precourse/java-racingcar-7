@@ -32,8 +32,13 @@ public class RacingService {
         return requestInputString(InputType.CAR_NAME);
     }
 
-    public String getInputTotalRound() {
-        return requestInputString(InputType.TOTAL_ROUND);
+    public int getInputTotalRound() {
+        String totalRound = requestInputString(InputType.TOTAL_ROUND);
+        System.out.println(totalRound);
+        if (isBlank(totalRound)) {
+            throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
+        }
+        return Integer.parseInt(totalRound);
     }
 
     public void addRacingCar(String inputCarNames) {
@@ -105,7 +110,7 @@ public class RacingService {
     private boolean carNameValidate(String carName) {
         if (carName.length() >= 5) {
             throw new IllegalArgumentException((CAR_NAME_TOO_LONG.getMessage()));
-        } else if (carName.isEmpty()) {
+        } else if (isBlank(carName)) {
             throw new IllegalArgumentException((EMPTY_INPUT.getMessage()));
         }
         return true;
@@ -113,5 +118,9 @@ public class RacingService {
 
     private boolean isLastRound(int round, int inputPlayCount) {
         return round == inputPlayCount - 1;
+    }
+
+    private boolean isBlank(String input) {
+        return input == null || input.trim().isEmpty();
     }
 }
