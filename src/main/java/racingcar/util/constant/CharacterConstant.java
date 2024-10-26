@@ -21,6 +21,10 @@ public enum CharacterConstant {
         return character;
     }
 
+    public String getStringValue() {
+        return Character.toString(character);
+    }
+
     public static boolean checkInvalidCharacter(final char c) {
         return c != CAR_DELIMITER.getCharacter() &&
                 (c < LOWER_CASE_START_WITH.getCharacter() || c > LOWER_CASE_END_WITH.getCharacter()) &&
