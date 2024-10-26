@@ -11,6 +11,8 @@ import java.util.List;
 
 public class RacingController {
 
+    private static RacingController instance;
+
     private final RacingView racingView;
     private final RacingService racingService;
 
@@ -20,7 +22,11 @@ public class RacingController {
     }
 
     public static RacingController getInstance() {
-        return new RacingController();
+        if (instance == null) {
+            instance = new RacingController();
+        }
+
+        return instance;
     }
 
     public void run() {
