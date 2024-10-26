@@ -14,4 +14,8 @@ public class Parser {
                 .toList();
     }
 
+    public int parseInt(String input) {
+        return inputValidator.checkInteger(input);
+    }
+
 }
