@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 import static racingcar.message.ErrorMessage.*;
+import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NameRequestHandler {
 
@@ -25,17 +26,13 @@ public class NameRequestHandler {
 
     public void validateBlank(String rawInput) {
         if (rawInput == null || rawInput.isBlank()) {
-            String errorMessage = BLANK_INPUT_ERROR.getMessage();
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            throwException(BLANK_INPUT_ERROR);
         }
     }
 
     public void validateSpace(String rawInput) {
         if (rawInput.contains(" ")) {
-            String errorMessage = CONTAINS_SPACE_ERROR.getMessage();
-            System.out.println(errorMessage);
-            throw new IllegalArgumentException(errorMessage);
+            throwException(CONTAINS_SPACE_ERROR);
         }
     }
 
@@ -44,9 +41,7 @@ public class NameRequestHandler {
                 .filter(rawName -> rawName.isEmpty() || rawName.length() > 5)
                 .findFirst()
                 .ifPresent(invalidName -> {
-                    String errorMessage = NAME_LENGTH_ERROR.getMessage();
-                    System.out.println(errorMessage);
-                    throw new IllegalArgumentException(errorMessage);
+                    throwException(NAME_LENGTH_ERROR);
                 });
     }
 
