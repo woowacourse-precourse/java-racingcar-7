@@ -27,9 +27,13 @@ public class RacingCount {
     }
 
     private void validateTryCount(int tryCount) {
-        if (tryCount < MIN_TRY_COUNT) {
+        if (isTryCount(tryCount)) {
             throw new IllegalArgumentException("시도횟수는 최소 1회 이상이여아 합니다.");
         }
+    }
+
+    private boolean isTryCount(int tryCount) {
+        return tryCount < MIN_TRY_COUNT;
     }
 
     @Override
