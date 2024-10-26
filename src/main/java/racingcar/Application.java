@@ -47,10 +47,14 @@ public class Application {
 
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < cars.size(); j++) {
-                if (determineMovement()) moves.set(j, moves.get(j) + 1);
+                moveForward(moves, j);
             }
             printMoves(cars, moves);
         }
+    }
+
+    private static void moveForward(List<Integer> moves, int j) {
+        if (determineMovement()) moves.set(j, moves.get(j) + 1);
     }
 
     private static boolean determineMovement() {
