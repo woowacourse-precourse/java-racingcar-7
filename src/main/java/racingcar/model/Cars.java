@@ -29,7 +29,7 @@ public class Cars {
         return raceInfos;
     }
 
-    public int getMaxDistance() {
+    private int getMaxDistance() {
         return carList.stream()
                 .mapToInt(Car::getDistance)
                 .max()
@@ -37,18 +37,17 @@ public class Cars {
     }
 
     public String getRaceWinner() {
-        int maxDistance = getMaxDistance();
-
         StringBuilder sb = new StringBuilder();
 
         for (Car car : carList) {
-            if (car.getDistance() == maxDistance) {
-                if (sb.length() > 0) {
-                    sb.append(Constants.COMMA);
-                    sb.append(" ");
-                }
-                sb.append(car.getName());
+            if (car.getDistance() != getMaxDistance()) {
+                continue;
             }
+
+            if (sb.length() > 0) {
+                sb.append(Constants.COMMA).append(" ");
+            }
+            sb.append(car.getName());
         }
         return sb.toString();
     }
