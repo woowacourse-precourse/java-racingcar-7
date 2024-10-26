@@ -6,6 +6,7 @@ import racingcar.domain.Race;
 import racingcar.strategy.MovementStrategy;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +16,7 @@ public class RaceOutputTest {
     @DisplayName("경주 진행 사항이 정상적으로 출력되는지 테스트")
     void 경주_진행_사항_출력() {
         // given
-        Set<String> carNames = new HashSet<>();
+        Set<String> carNames = new LinkedHashSet<>();
         carNames.add("pobi");
         carNames.add("woni");
         carNames.add("jun");

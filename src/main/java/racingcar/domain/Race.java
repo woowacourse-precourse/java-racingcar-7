@@ -46,4 +46,8 @@ public class Race {
     public int getAttemptCount() {
         return attemptCount;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
