@@ -29,7 +29,7 @@ public class Application {
         return userInput;
     }
 
-    private void validateNotEmpty(String str) {
+    public void validateNotEmpty(String str) {
         if (str.isEmpty() || str.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.") ;
         }
@@ -39,19 +39,19 @@ public class Application {
         return userInput.split(",", -1);
     }
 
-    private void validateMinimumTwoCars(String[] cars) {
+    public void validateMinimumTwoCars(String[] cars) {
         if (cars.length < 2) {
             throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
         }
     }
 
-    private void validateUniqueCarNames(String[] carNames) {
+    public void validateUniqueCarNames(String[] carNames) {
         if (carNames.length != carPositions.size()) {
             throw new IllegalArgumentException("자동차 이름에는 중복이 없어야 합니다.");
         }
     }
 
-    private void validateNameLength(String carName) {
+    public void validateNameLength(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
         }
@@ -81,7 +81,7 @@ public class Application {
         }
     }
 
-    private void moveCarForward(String car) {
+    public void moveCarForward(String car) {
         carPositions.put(car, carPositions.get(car) + 1);
     }
 
@@ -90,7 +90,7 @@ public class Application {
         System.out.println(car + " : " + "-".repeat(position));
     }
 
-    private void executeRaceRound() {
+    public void executeRaceRound() {
         for (String car : carPositions.keySet()) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 moveCarForward(car);
@@ -101,7 +101,7 @@ public class Application {
         System.out.println();
     }
 
-    private List<String> getWinnerList() {
+    public List<String> getWinnerList() {
         List<String> winner = new ArrayList<>();
         int firstPlacePosition = 0;
 
