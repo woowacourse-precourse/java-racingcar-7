@@ -5,12 +5,12 @@ import static racingcar.view.InputMessage.*;
 
 public class InputView {
     public String[] inputNames() {
-        System.out.println(INPUT_NAMES.getMessage());
+        System.out.println(NAMES.getMessage());
         return readLine().split(",");
     }
 
     public int inputTimes() {
-        System.out.println(INPUT_TIMES.getMessage());
+        System.out.println(TIMES.getMessage());
         return Integer.parseInt(readLine());
     }
 }

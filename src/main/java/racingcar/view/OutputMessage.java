@@ -1,9 +1,7 @@
 package racingcar.view;
 
-
 public enum OutputMessage {
-    RESULT_MESSAGE("\n실행 결과"),
-    CAR_POSITION("%s : %s"),
+    RESULT("\n실행 결과"),
     WINNERS("최종 우승자 : %s");
 
     private final String message;
