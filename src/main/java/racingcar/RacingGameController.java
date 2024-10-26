@@ -16,11 +16,11 @@ public class RacingGameController {
 
     public void run() {
         Cars cars = createRacingCars();
-        RacingGame game = new RacingGame(cars, new RandomMoveCondition());
-
         int tryCount = input.readTryCount();
+        RacingGame game = new RacingGame(cars, new RandomMoveCondition(), tryCount);
+
         output.printGameStart();
-        output.printRacingProgress(game, cars, tryCount);
+        output.printRacingProgress(game, cars);
 
         List<String> winners = game.determineWinners(game.getPositions());
         output.printWinner(winners);
