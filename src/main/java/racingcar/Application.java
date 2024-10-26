@@ -13,8 +13,17 @@ public class Application {
         List<Car> cars = createCars(carNames);
 
         Integer movementCount = getMovementCount();
-        Integer randomNumber = getRandomNumber();
-        Boolean isValidNumber = isValidNumber(randomNumber);
+
+        for (int i = 0; i < movementCount; i++) {
+            for (Car car : cars) {
+                Integer randomNumber = getRandomNumber();
+                Boolean isValidNumber = isValidNumber(randomNumber);
+
+                if (isValidNumber) {
+                    car.addDistance();
+                }
+            }
+        }
     }
 
     public static List<String> getCarNames() {
