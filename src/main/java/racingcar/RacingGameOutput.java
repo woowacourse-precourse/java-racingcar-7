@@ -9,6 +9,8 @@ public class RacingGameOutput {
     private static final String POSITION_UNIT = "-";
     private static final String WINNER_PROMPT = "최종 우승자 : ";
 
+    private static final StringBuilder sb = new StringBuilder();
+
     public void printGameStart() {
         System.out.println(GAME_START_PROMPT);
     }
@@ -39,6 +41,10 @@ public class RacingGameOutput {
     }
 
     private void printRaceProgress(String carName, int position) {
-        System.out.println(carName + NAME_POSITION_SEPARATOR + POSITION_UNIT.repeat(position));
+        sb.setLength(0);  // StringBuilder 초기화
+        sb.append(carName)
+                .append(NAME_POSITION_SEPARATOR)
+                .append(POSITION_UNIT.repeat(position));
+        System.out.println(sb);
     }
 }
