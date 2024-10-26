@@ -12,7 +12,7 @@ public class CarNameValidator {
 
     public static List<Car> validate(String inputNames) {
 
-        if (inputNames == null || inputNames.isEmpty()) {
+        if (inputNames == null || inputNames.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 경주할 자동차 이름이 공백이 되어서는 안 됩니다.");
         }
 
@@ -21,7 +21,7 @@ public class CarNameValidator {
                 .map(token -> {
                     String trimmed = token.trim();
                     System.out.println(trimmed);
-                    if (trimmed.isEmpty() || trimmed.isBlank()) {
+                    if (trimmed.isBlank()) {
                         throw new IllegalArgumentException("[ERROR] 경주할 자동차 이름이 공백이 되어서는 안 됩니다.");
                     } else if (trimmed.length() > 5) {
                         throw new IllegalArgumentException("[ERROR] 경주할 자동차 이름을 5자 이하로 입력해 주세요.");
