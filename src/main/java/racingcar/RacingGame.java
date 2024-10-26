@@ -16,8 +16,8 @@ public class RacingGame {
         return cars.move(moveCondition);
     }
 
-    public List<String> getWinners(List<Integer> positions) {
-        return cars.getWinners(positions);
+    public List<String> determineWinners(List<Integer> positions) {
+        return cars.findWinners(positions);
     }
 
     public List<Integer> getPositions() {

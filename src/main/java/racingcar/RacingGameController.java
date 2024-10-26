@@ -22,7 +22,7 @@ public class RacingGameController {
         output.printGameStart();
         output.printRacingProgress(game, cars, tryCount);
 
-        List<String> winners = game.getWinners(game.getPositions());
+        List<String> winners = game.determineWinners(game.getPositions());
         output.printWinner(winners);
     }
 
