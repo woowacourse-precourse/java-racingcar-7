@@ -16,6 +16,7 @@ public class Racing {
                 System.out.println(strings[j]+":"+str.repeat(sum[j]));
             }
         }
-        //racing 후 우승자 출력 class 로 이동
+        Winner winner=new Winner();
+        winner.win(sum,strings);
     }
 }
