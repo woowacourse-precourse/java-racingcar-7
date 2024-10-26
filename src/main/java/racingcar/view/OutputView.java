@@ -16,10 +16,8 @@ public class OutputView {
     }
 
     public void printCurrentDistance(String name, int distance) {
-        String stringBuilder = name
-                + " : "
-                + makeMovePatternFromDistance(distance);
-        System.out.println(stringBuilder);
+        String distanceOutput = name + " : " + makeMovePatternFromDistance(distance);
+        System.out.println(distanceOutput);
     }
 
     private String makeMovePatternFromDistance(int number) {

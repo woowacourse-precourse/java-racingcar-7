@@ -20,14 +20,13 @@ public class InputView {
 
     public List<String> getCarNames() {
         System.out.println(CAR_NAMES_PROMPT);
-        String inputNames = Console.readLine();
-        List<String> carNames = splitCarNames(inputNames);
-        inputViewValidator.validateCarNames(carNames);
-        return carNames;
+        String input = Console.readLine();
+        String trimmedInput = input.replaceAll(" ", "");
+        inputViewValidator.validateDelimiter(trimmedInput);
+        return splitCarNames(trimmedInput);
     }
 
     private List<String> splitCarNames(String input) {
-        inputViewValidator.validateDelimiter(input);
         return Optional.of(input)
                         .filter(name -> name.contains(CAR_NAME_DELIMITER))
                         .map(names -> Arrays.asList(input.split(CAR_NAME_DELIMITER)))

@@ -1,9 +1,6 @@
 package racingcar.validation;
 
-import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import racingcar.common.ExceptionCode;
 
 public class InputViewValidator {
@@ -13,31 +10,6 @@ public class InputViewValidator {
     public void validateDelimiter(String input) {
         if (InvalidDelimiter.matcher(input).matches()) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_DELIMITER.getMessage());
-        }
-    }
-
-    public void validateCarNames(List<String> carNames) {
-        Set<String> uniqueNames = carNames.stream()
-                .map(name -> name.replaceAll(" ", ""))
-                .collect(Collectors.toSet());
-        validateUniqueName(carNames, uniqueNames);
-        for (String name : uniqueNames) {
-            if (name.isBlank()) {
-                throw new IllegalArgumentException(ExceptionCode.INVALID_CAR_NAME.getMessage());
-            }
-            validateCarNameLength(name);
-        }
-    }
-
-    private void validateUniqueName(List<String> carNames, Set<String> uniqueNames) {
-        if (carNames.size() != uniqueNames.size()) {
-            throw new IllegalArgumentException(ExceptionCode.INVALID_CAR_NAME_DUPLICATE.getMessage());
-        }
-    }
-
-    private void validateCarNameLength(String carName) {
-        if (carName.length() > 6) {
-            throw new IllegalArgumentException(ExceptionCode.INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
 
