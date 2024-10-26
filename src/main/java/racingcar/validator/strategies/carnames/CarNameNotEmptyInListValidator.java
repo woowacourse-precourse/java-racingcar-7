@@ -8,6 +8,10 @@ public class CarNameNotEmptyInListValidator implements ValidationStrategy<List<S
 
     @Override
     public void validate(List<String> carNames) {
+        checkForEmptyCarNames(carNames);
+    }
+
+    private void checkForEmptyCarNames(List<String> carNames) {
         for (String carName : carNames) {
             if (carName == null || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME_IN_LIST.getMessage());

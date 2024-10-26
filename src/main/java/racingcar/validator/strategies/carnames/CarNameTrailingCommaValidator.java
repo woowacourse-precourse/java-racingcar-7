@@ -3,11 +3,15 @@ package racingcar.validator.strategies.carnames;
 import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
-public class TrailingCommaValidator implements ValidationStrategy<String> {
+public class CarNameTrailingCommaValidator implements ValidationStrategy<String> {
 
     @Override
-    public void validate(String carNames) {
-        if (carNames.endsWith(",")) {
+    public void validate(String carName) {
+        checkForTrailingComma(carName);
+    }
+
+    private void checkForTrailingComma(String carName) {
+        if (carName.endsWith(",")) {
             throw new IllegalArgumentException(ErrorMessage.TRAILING_COMMA.getMessage());
         }
     }

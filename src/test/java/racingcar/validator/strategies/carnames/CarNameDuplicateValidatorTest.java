@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
-public class DuplicateNameValidatorTest {
+public class CarNameDuplicateValidatorTest {
 
-    private final DuplicateNameValidator validator = new DuplicateNameValidator();
+    private final CarNameDuplicateValidator validator = new CarNameDuplicateValidator();
 
     @Test
     void validate_WhenDuplicateNames_ShouldThrowException() {

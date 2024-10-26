@@ -7,9 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.view.ErrorMessage;
 
-public class TrailingCommaValidatorTest {
+public class CarNameTrailingCommaValidatorTest {
 
-    private final TrailingCommaValidator validator = new TrailingCommaValidator();
+    private final CarNameTrailingCommaValidator validator = new CarNameTrailingCommaValidator();
 
     @ParameterizedTest
     @CsvSource({

@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
-public class MinimumCarCountValidatorTest {
+public class MinimumNumberOfCarsValidatorTest {
 
-    private final MinimumCarCountValidator validator = new MinimumCarCountValidator();
+    private final MinimumNumberOfCarsValidator validator = new MinimumNumberOfCarsValidator();
 
     @Test
     void validate_WhenCarCountLessThanMinimum_ShouldThrowException() {

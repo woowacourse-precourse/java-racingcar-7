@@ -2,29 +2,29 @@ package racingcar.validator;
 
 import java.util.List;
 import racingcar.util.CarNameUtils;
+import racingcar.validator.strategies.carnames.CarNameDuplicateValidator;
 import racingcar.validator.strategies.carnames.CarNameNotEmptyInListValidator;
 import racingcar.validator.strategies.carnames.CarNameNotEmptyValidator;
-import racingcar.validator.strategies.carnames.DuplicateNameValidator;
-import racingcar.validator.strategies.carnames.MinimumCarCountValidator;
-import racingcar.validator.strategies.carnames.NameLengthValidator;
-import racingcar.validator.strategies.carnames.TrailingCommaValidator;
+import racingcar.validator.strategies.carnames.CarNameTrailingCommaValidator;
+import racingcar.validator.strategies.carnames.MaximumCarNameLengthValidator;
+import racingcar.validator.strategies.carnames.MinimumNumberOfCarsValidator;
 
 public class CarNameValidator {
 
     private final CarNameNotEmptyValidator carNameNotEmptyValidator;
-    private final TrailingCommaValidator trailingCommaValidator;
+    private final CarNameTrailingCommaValidator carNameTrailingCommaValidator;
     private final CarNameNotEmptyInListValidator carNameNotEmptyInListValidator;
-    private final NameLengthValidator nameLengthValidator;
-    private final MinimumCarCountValidator minimumCarCountValidator;
-    private final DuplicateNameValidator duplicateNameValidator;
+    private final MaximumCarNameLengthValidator maximumCarNameLengthValidator;
+    private final MinimumNumberOfCarsValidator minimumNumberOfCarsValidator;
+    private final CarNameDuplicateValidator carNameDuplicateValidator;
 
     public CarNameValidator() {
         this.carNameNotEmptyValidator = new CarNameNotEmptyValidator();
-        this.trailingCommaValidator = new TrailingCommaValidator();
+        this.carNameTrailingCommaValidator = new CarNameTrailingCommaValidator();
         this.carNameNotEmptyInListValidator = new CarNameNotEmptyInListValidator();
-        this.nameLengthValidator = new NameLengthValidator();
-        this.minimumCarCountValidator = new MinimumCarCountValidator();
-        this.duplicateNameValidator = new DuplicateNameValidator();
+        this.maximumCarNameLengthValidator = new MaximumCarNameLengthValidator();
+        this.minimumNumberOfCarsValidator = new MinimumNumberOfCarsValidator();
+        this.carNameDuplicateValidator = new CarNameDuplicateValidator();
     }
 
     public void validate(String carNames) {
@@ -32,7 +32,7 @@ public class CarNameValidator {
         carNameNotEmptyValidator.validate(carNames);
 
         // 2. 마지막에 쉼표가 있는지 확인
-        trailingCommaValidator.validate(carNames);
+        carNameTrailingCommaValidator.validate(carNames);
 
         // 3. carNames를 리스트로 분리하여 모든 Validator에 전달
         List<String> nameList = CarNameUtils.splitCarNames(carNames);
@@ -41,13 +41,13 @@ public class CarNameValidator {
         carNameNotEmptyInListValidator.validate(nameList);
 
         // 5. 각 자동차 이름 길이 검증
-        nameLengthValidator.validate(nameList);
+        maximumCarNameLengthValidator.validate(nameList);
 
         // 6. 최소 자동차 수 검증
-        minimumCarCountValidator.validate(nameList);
+        minimumNumberOfCarsValidator.validate(nameList);
 
         // 7. 중복 이름 검증
-        duplicateNameValidator.validate(nameList);
+        carNameDuplicateValidator.validate(nameList);
     }
 
 }

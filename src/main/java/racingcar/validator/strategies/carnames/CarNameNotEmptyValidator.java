@@ -6,8 +6,12 @@ import racingcar.view.ErrorMessage;
 public class CarNameNotEmptyValidator implements ValidationStrategy<String> {
 
     @Override
-    public void validate(String carNames) {
-        if (carNames == null || carNames.trim().isEmpty()) {
+    public void validate(String carName) {
+        checkForEmptyCarName(carName);
+    }
+
+    private void checkForEmptyCarName(String carName) {
+        if (carName == null || carName.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAMES.getMessage());
         }
     }
