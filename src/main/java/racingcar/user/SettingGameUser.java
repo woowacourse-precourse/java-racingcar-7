@@ -1,12 +1,13 @@
 package racingcar.user;
 
 public class SettingGameUser {
-    public static UserInfo[] user;
+    public static UserObject[] user;
 
     public SettingGameUser(String[] result) {
-        user = new UserInfo[result.length];
+        user = new UserObject[result.length];
         for (int i = 0; i < result.length; i++) {
-            user[i] = new UserInfo(result[i]);
+            user[i] = new UserObject(result[i]);
         }
     }
 }
+
