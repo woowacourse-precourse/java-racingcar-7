@@ -5,7 +5,20 @@ import java.util.List;
 import racingcar.model.Car;
 
 public class InMemoryCarRepository implements CarRepository{
-    private static final List<Car> carStore = new ArrayList<>();
+    private static InMemoryCarRepository instance;
+    private final List<Car> carStore;
+
+    private InMemoryCarRepository() {
+        carStore = new ArrayList<>();
+    }
+
+    private static class Holder {
+        private static final InMemoryCarRepository INSTANCE = new InMemoryCarRepository();
+    }
+
+    public static InMemoryCarRepository getInstance() {
+        return Holder.INSTANCE;
+    }
 
     @Override
     public void save(Car car) {
