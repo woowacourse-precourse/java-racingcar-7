@@ -15,7 +15,22 @@ public class Application {
         inputValidate(carNames, repeatCount);
 
         List<Car> carList = toCarList(carNames);
+        String winners = runRace(carList, repeatCount);
 
+        System.out.println("최종 우승자 : " + winners);
+    }
+
+    public static String inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return Console.readLine();
+    }
+
+    public static int inputRepeatCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
+    }
+
+    public static String runRace(List<Car> carList, int repeatCount) {
         System.out.println("실행 결과");
         int winnerLocation = 0;
         while(repeatCount > 0) {
@@ -37,17 +52,7 @@ public class Application {
             }
         }
 
-        System.out.println("최종 우승자 : " + winners.substring(0, winners.length() - 1));
-    }
-
-    public static String inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return Console.readLine();
-    }
-
-    public static int inputRepeatCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        return winners.substring(0, winners.length() - 1);
     }
 
     public static void inputValidate(String carNames, int repeatCount) {
