@@ -21,9 +21,13 @@ public class Game {
     }
 
     public boolean isGameEnd() {
-        if (round == 0) {
+        if (isRoundZero()) {
             return true;
         }
         return false;
+    }
+
+    private boolean isRoundZero() {
+        return round == 0;
     }
 }
