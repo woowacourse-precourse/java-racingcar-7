@@ -32,4 +32,9 @@ public class RacingGame {
             System.out.println();
         }
     }
+
+    private void announceWinners() {
+        String winners = cars.getWinners();
+        System.out.println("최종 우승자 : " + winners);
+    }
 }
