@@ -44,9 +44,15 @@ public class Game {
     // 현재 경주하는 차들의 상태 값 출력
     private void printCarState() {
         for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ", " + carList.get(i).getPosition());
+            System.out.print(carList.get(i).getName() + " : ");
+            for (int j = 0; j < carList.get(i).getPosition(); j++) {
+                System.out.print("-");
+            }
+            System.out.println();
         }
+        System.out.print("\n");
     }
+
 
 
 }
