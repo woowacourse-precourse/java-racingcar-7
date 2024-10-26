@@ -1,18 +1,13 @@
-package racingcar.model.entity;
+package racingcar.model.dto;
 
 import racingcar.utils.validator.CarNamesValidator;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /** 자동차 이름을 저장한 일급 컬력션 입력값 검증 기능 수행 */
-public class CarNames implements Iterable<String> {
-
-    private final List<String> names;
-
-    private CarNames(List<String> names) {
-        this.names = names;
-    }
+public record CarNames(List<String> names) implements Iterable<String> {
 
     /**
      * 자동차 이름 문자열을 받아서 형식을 검증한 후 문자열로 반환하는 메서드
@@ -33,15 +28,30 @@ public class CarNames implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        return new CarNamesIterator(this);
+        return new CarNamesIterator();
     }
 
-    public int getLength() {
-        return names.size();
-    }
+    private final class CarNamesIterator implements Iterator<String> {
 
-    public String getAt(int index) {
-        return names.get(index);
-    }
+        private int index;
 
+        private CarNamesIterator() {
+            this.index = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < names.size();
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            String name = names.get(index);
+            index++;
+            return name;
+        }
+    }
 }

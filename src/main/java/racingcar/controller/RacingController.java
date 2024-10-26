@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.entity.Cars;
 import racingcar.model.dto.RacingRecording;
-import racingcar.model.entity.CarNames;
+import racingcar.model.dto.CarNames;
 import racingcar.model.entity.RacingChance;
 import racingcar.service.RacingService;
 import racingcar.strategy.RandomMoveStrategy;

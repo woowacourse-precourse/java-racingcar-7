@@ -5,13 +5,7 @@ import racingcar.utils.message.ErrorMessage;
 /**
  * 주행 시도 횟수를 담은 객체 : 입력값 검증 기능 수행
  */
-public class RacingChance {
-
-    private final int chance;
-
-    private RacingChance(int chance) {
-        this.chance = chance;
-    }
+public record RacingChance(int chance) {
 
     /**
      * 콘솔로부터 자동차 주행 시도 횟수를 입력받아서 올바른 형식인지 검증한 다음
