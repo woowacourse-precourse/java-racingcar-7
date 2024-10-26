@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.Test;
+import racingcar.model.Race;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
