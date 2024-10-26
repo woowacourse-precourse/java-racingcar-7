@@ -23,7 +23,7 @@ public class Application {
         }
     }
 
-    static void carForward(List members, int playNum) {
+    static List carForward(List members, int playNum) {
         List<Integer> carForawardList = new ArrayList<>();
         for (int i = 0; i < members.size(); i++) {
             carForawardList.add(0);
@@ -33,6 +33,7 @@ public class Application {
             carForawardList = forwardCount(carForawardList);
             printEachPlayResult(members, carForawardList);
         }
+        return carForawardList;
     }
 
     static int getRandomInt() {
@@ -60,15 +61,41 @@ public class Application {
         System.out.println();
     }
 
+    static void printWinner(List members, List carForwardList) {
+        int mx = getMaxForward(carForwardList);
+        List<String> winnerList = new ArrayList<>();
+        System.out.printf("최종 우승자 : ");
+        for (int i = 0; i < carForwardList.size(); i++) {
+            int forwardNum = Integer.parseInt(carForwardList.get(i).toString());
+            if (mx == forwardNum) {
+                winnerList.add(members.get(i).toString());
+            }
+        }
+        System.out.println(String.join(",", winnerList));
+    }
+
+    static int getMaxForward(List carForwardList) {
+        int mx = 0;
+        for (int i = 0; i < carForwardList.size(); i++) {
+            int forwardNum = Integer.parseInt(carForwardList.get(i).toString());
+            if (mx < forwardNum) {
+                mx = forwardNum;
+            }
+        }
+        return mx;
+    }
+
 
     public static void main(String[] args) {
         List<String> members = new ArrayList<>();
+        List<String> carForwardList = new ArrayList<>();
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
         members = splitCarInput(carNameInput);
         chkCarName(members);
         System.out.println("시도할 횟수는 몇 회인가요?");
         int playNum = Integer.parseInt(Console.readLine());
-        carForward(members, playNum);
+        carForwardList = carForward(members, playNum);
+        printWinner(members, carForwardList);
     }
 }
