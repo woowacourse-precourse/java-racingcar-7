@@ -33,16 +33,22 @@ public class Racing {
     }
 
     public List<String> determineWinners() {
-        int maxProgress = cars.stream()
-                .mapToInt(car -> car.getProgressResult().length())
-                .max()
-                .orElse(0);
+        int maxProgress = getMaxProgress();
+        pickWinner(maxProgress);
+        return getWinners();
+    }
 
+    private void pickWinner(int maxProgress) {
         cars.stream()
                 .filter(car -> car.getProgressResult().length() == maxProgress)
                 .forEach(Car::win);
+    }
 
-        return getWinners();
+    private int getMaxProgress() {
+        return cars.stream()
+                .mapToInt(car -> car.getProgressResult().length())
+                .max()
+                .orElse(0);
     }
 
     private List<String> getWinners() {
