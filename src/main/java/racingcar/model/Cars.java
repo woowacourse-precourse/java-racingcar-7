@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import racingcar.utils.Validator;
 
 public class Cars {
@@ -17,7 +18,7 @@ public class Cars {
     }
 
     private void validate() {
-        Validator.containDuplicate(getCarNames());
+        Validator.containDuplicate(fetchCarNames());
     }
 
     public void allMove() {
@@ -51,20 +52,36 @@ public class Cars {
         return maxDistance;
     }
 
-    public List<String> getCarNames() {
+    public List<String> fetchCarNames() {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
             carNames.add(car.getName());
         }
-        return carNames;
+        return List.copyOf(carNames);
     }
     
-    public List<Integer> getCarsPositions() {
+    public List<Integer> fetchCarsPositions() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
             positions.add(car.getDistance());
         }
-        return positions;
+        return List.copyOf(positions);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cars);
+    }
 }

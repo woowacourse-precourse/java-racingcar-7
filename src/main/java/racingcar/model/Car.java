@@ -1,18 +1,17 @@
 package racingcar.model;
 
 import java.util.Objects;
-import racingcar.utils.Validator;
 
 public class Car {
-    private final Name name;
-    private Distance distance;
+    private final CarName name;
+    private CarDistance distance;
 
-    public Car(Name name) {
+    public Car(CarName name) {
         this.name = name;
-        this.distance = new Distance();
+        this.distance = new CarDistance();
     }
 
-    public static Car from(Name name) {
+    public static Car from(CarName name) {
         return new Car(name);
     }
 
