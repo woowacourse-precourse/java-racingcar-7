@@ -17,15 +17,17 @@ public class NameRequestHandler {
 
     public void validateBlank(String rawInput) {
         if(rawInput == null || rawInput.isBlank()){
-            System.out.println(BLANK_INPUT_ERROR.getMessage());
-            throw new IllegalArgumentException();
+            String errorMessage = BLANK_INPUT_ERROR.getMessage();
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 
     public void validateSpace(String rawInput) {
         if(rawInput.contains(" ")){
-            System.out.println(CONTAINS_SPACE_ERROR.getMessage());
-            throw new IllegalArgumentException();
+            String errorMessage = CONTAINS_SPACE_ERROR.getMessage();
+            System.out.println(errorMessage);
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 }
