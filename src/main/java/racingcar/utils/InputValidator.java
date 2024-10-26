@@ -13,7 +13,7 @@ public class InputValidator {
     }
 
     public static void validateNullOrEmpty(String input) {
-        if (input == null || input.trim().isEmpty()) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("빈 값을 입력할 수 없습니다.");
         }
     }
