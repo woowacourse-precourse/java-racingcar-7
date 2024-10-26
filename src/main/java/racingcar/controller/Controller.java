@@ -16,11 +16,10 @@ public class Controller {
     public void run(){
 
         List<Car> carList = Validator.validateSameCarName(inputCarNameToList());
-        int trialCount = InputView.inputTrialCount();
 
         racingGame = new RacingGame(carList);
 
-        racingGame.runGame(trialCount);
+        racingGame.runGame(InputView.inputTrialCount());
     }
 
     private List<Car> inputCarNameToList(){
