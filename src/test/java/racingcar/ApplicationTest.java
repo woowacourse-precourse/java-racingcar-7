@@ -51,6 +51,13 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateUniqueCarName_예외_테스트() {
+        String[] carNames = {"twin", "twin"};
+        assertThatThrownBy(() -> application.validateUniqueCarName(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
