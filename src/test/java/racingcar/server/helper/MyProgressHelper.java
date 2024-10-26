@@ -1,8 +1,8 @@
 package racingcar.server.helper;
 
-import racingcar.server.model.car.MyProgress;
-import racingcar.server.model.position.Position;
-import racingcar.server.model.race.Lap;
+import racingcar.app.server.model.car.MyProgress;
+import racingcar.app.server.model.position.Position;
+import racingcar.app.server.model.race.Lap;
 
 public class MyProgressHelper {
     private MyProgressHelper() {

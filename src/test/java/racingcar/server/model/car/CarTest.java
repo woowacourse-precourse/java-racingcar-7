@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.app.server.model.car.Car;
 import racingcar.server.helper.CarHelper;
 
 public class CarTest {

@@ -2,12 +2,14 @@ package racingcar.server.model.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.server.error.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
-import static racingcar.server.model.race.Lap.ZERO;
+import static racingcar.app.server.error.ErrorMessage.LAP_COUNT_SHOULD_NOT_BE_MINUS;
+import static racingcar.app.server.model.race.Lap.ZERO;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.server.exception.ShouldNotBeMinusException;
+import racingcar.app.server.exception.ShouldNotBeMinusException;
+import racingcar.app.server.model.race.Lap;
+import racingcar.app.server.model.race.Race;
 
 public class RaceTest {
 

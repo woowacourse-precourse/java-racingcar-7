@@ -1,8 +1,8 @@
 package racingcar.server.helper;
 
 import java.util.List;
-import racingcar.server.model.car.Car;
-import racingcar.server.model.car.Cars;
+import racingcar.app.server.model.car.Car;
+import racingcar.app.server.model.car.Cars;
 
 public class CarsHelper {
 

@@ -1,16 +1,16 @@
 package racingcar;
 
-import racingcar.client.controller.FrontController;
-import racingcar.config.SystemConfig;
-import racingcar.middleware.dto.InputDTO;
-import racingcar.middleware.dto.OutputDTO;
-import racingcar.server.controller.ServerController;
+import racingcar.app.front.controller.FrontController;
+import racingcar.app.middleware.dto.InputDTO;
+import racingcar.app.middleware.dto.OutputDTO;
+import racingcar.app.server.controller.ServerController;
+import racingcar.config.AppConfig;
 
 public class Application {
     public static void main(String[] args) {
-        SystemConfig systemConfig = SystemConfig.getInstance();
-        FrontController frontController = systemConfig.initializeFrontController();
-        ServerController serverController = systemConfig.initializeMainController();
+        AppConfig appConfig = AppConfig.getInstance();
+        FrontController frontController = appConfig.initializeFrontController();
+        ServerController serverController = appConfig.initializeServerController();
 
         InputDTO inputs = frontController.readInputs();
         OutputDTO outputs = serverController.run(inputs);

@@ -5,7 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.server.exception.ShouldNotBeMinusException;
+import racingcar.app.server.exception.ShouldNotBeMinusException;
+import racingcar.app.server.model.race.Lap;
 
 public class LapTest {
 

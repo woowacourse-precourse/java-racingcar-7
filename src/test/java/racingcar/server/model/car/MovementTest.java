@@ -4,7 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.server.model.position.Distance;
+import racingcar.app.server.model.car.MovementCondition;
+import racingcar.app.server.model.car.Speed;
+import racingcar.app.server.model.position.Distance;
 
 public class MovementTest {
 

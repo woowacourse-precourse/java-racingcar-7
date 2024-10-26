@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.app.server.model.race.Lap;
 import racingcar.server.helper.MyProgressHelper;
-import racingcar.server.model.car.MyProgress;
-import racingcar.server.model.position.Distance;
+import racingcar.app.server.model.car.MyProgress;
+import racingcar.app.server.model.position.Distance;
 
 public class MyProgressTest {
 

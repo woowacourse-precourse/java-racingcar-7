@@ -7,7 +7,8 @@ import static racingcar.server.helper.CarsHelper.mockSingleWinner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.server.model.car.Cars;
+import racingcar.app.server.model.car.Cars;
+import racingcar.app.server.model.dashboard.DashBoard;
 
 public class DashBoardTest {
 
