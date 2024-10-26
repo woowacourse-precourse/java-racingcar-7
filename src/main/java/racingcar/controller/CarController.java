@@ -29,4 +29,12 @@ public class CarController {
             cars.addCar(name);
         }
     }
+
+    public void raceCars() {
+        int inputCount = validator.validateCount(inputView.getInputCount());
+        for (int i = 0; i < inputCount; i++) {
+            cars.raceCars();
+            outputView.printRaceMessage(cars.getRaceInfos());
+        }
+    }
 }
