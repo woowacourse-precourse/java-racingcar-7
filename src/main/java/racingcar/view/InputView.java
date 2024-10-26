@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import static racingcar.util.MoveCountValidator.validateMoveCount;
+import static racingcar.util.validator.MoveCountValidator.validateMoveCount;
 
 import camp.nextstep.edu.missionutils.Console;
 

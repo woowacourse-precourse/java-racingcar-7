@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.validator;
 
 public enum ErrorMessage {
     INPUT_STRING_DUPLICATE("입력 값이 중복되었습니다."),

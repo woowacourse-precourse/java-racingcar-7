@@ -1,6 +1,7 @@
-package racingcar.util;
+package racingcar.util.validator;
 
 import java.util.regex.Pattern;
+import racingcar.util.validator.ErrorMessage;
 
 public class MoveCountValidator {
 

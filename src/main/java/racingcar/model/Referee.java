@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static racingcar.util.CarNameValidator.checkEmpty;
+import static racingcar.util.validator.CarNameValidator.checkEmpty;
 
 import java.util.List;
 import java.util.stream.Collectors;

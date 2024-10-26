@@ -1,12 +1,11 @@
 package racingcar.model;
 
-import static racingcar.util.CarNameValidator.checkDuplicate;
-import static racingcar.util.CarNameValidator.checkEmpty;
+import static racingcar.util.validator.CarNameValidator.checkDuplicate;
+import static racingcar.util.validator.CarNameValidator.checkEmpty;
 import static racingcar.util.RandomNumberGenerator.generateRandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.util.CarNameValidator;
 
 public class Cars {
     

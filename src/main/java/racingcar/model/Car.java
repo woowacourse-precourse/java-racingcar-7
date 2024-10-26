@@ -1,7 +1,7 @@
 package racingcar.model;
 
-import static racingcar.util.CarNameValidator.checkOverRange;
-import static racingcar.util.CarNameValidator.checkSpace;
+import static racingcar.util.validator.CarNameValidator.checkOverRange;
+import static racingcar.util.validator.CarNameValidator.checkSpace;
 
 public class Car {
 

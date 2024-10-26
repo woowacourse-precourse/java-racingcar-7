@@ -1,9 +1,9 @@
-package racingcar.util;
+package racingcar.util.validator;
 
-import static racingcar.util.ErrorMessage.INPUT_CAR_NAME_BLANK;
-import static racingcar.util.ErrorMessage.INPUT_CAR_NAME_IS_INCORRECT;
-import static racingcar.util.ErrorMessage.INPUT_STRING_DUPLICATE;
-import static racingcar.util.ErrorMessage.INPUT_STRING_NOT_NULL;
+import static racingcar.util.validator.ErrorMessage.INPUT_CAR_NAME_BLANK;
+import static racingcar.util.validator.ErrorMessage.INPUT_CAR_NAME_IS_INCORRECT;
+import static racingcar.util.validator.ErrorMessage.INPUT_STRING_DUPLICATE;
+import static racingcar.util.validator.ErrorMessage.INPUT_STRING_NOT_NULL;
 
 import java.util.HashSet;
 import java.util.List;
