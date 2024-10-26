@@ -12,7 +12,8 @@ public class RacingCarController {
 
     public void start() {
         String inputCarNames = inputView.inputCarNames();
-        
+
+        String inputTryCount = inputView.inputTryCount();
     }
 
 }
