@@ -9,11 +9,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
+    Validator validator = new Validator();
 
     @Test
     void 자동차_이름_입력시_빈_문자열_검증() {
-        Validator validator = new Validator();
-
         assertThatThrownBy(() -> validator.validateCarNamesInput(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력은 비어있을 수 없습니다");
@@ -22,8 +21,6 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {",one,two", "one,two,"})
     void 자동차_이름_입력시_구분자_위치_검증(String testStr) {
-        Validator validator = new Validator();
-
         assertThatThrownBy(() -> validator.validateCarNamesInput(testStr))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("구분자는 차 이름 사이에 위치할 수 있습니다.");
@@ -31,8 +28,6 @@ class ValidatorTest {
 
     @Test
     void 자동차_이름_기준_검증() {
-        Validator validator = new Validator();
-
         List<String> testEmptyStr = new ArrayList<>(List.of(""));
         List<String> testLongStr = new ArrayList<>(List.of("onetwo"));
 
