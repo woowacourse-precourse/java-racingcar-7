@@ -46,12 +46,16 @@ public class View {
 
         for (int i = 0; i < winners.size(); i++) {
             winnerNames.append(winners.get(i).getName());
-            if (i < winners.size() - 1) {
-                winnerNames.append(", ");
-            }
+            appendCommaIfNeeded(winnerNames, i, winners.size());
         }
 
         System.out.println("최종 우승자 : " + winnerNames.toString());
+    }
+
+    private static void appendCommaIfNeeded(StringBuilder winnerNames, int index, int size) {
+        if (index < size - 1) {
+            winnerNames.append(", ");
+        }
     }
 
 }
