@@ -6,7 +6,8 @@ import racingcar.common.exception.CarPositionOutOfRangeException;
 public class Car {
 
     private static final int CAR_POSITION_INIT = 0;
-    private static final int CAR_POSITION_MAX_CRITERIA = Integer.MAX_VALUE-2;
+    private static final int CAR_POSITION_MAX_CRITERIA = Integer.MAX_VALUE - 2;
+    private static final int MIN_RANDOM_NUMBER_TO_FORWARD = 4;
 
     private final String carName;
     private int carPosition;
@@ -17,10 +18,14 @@ public class Car {
     }
 
     public void forward() {
-        if(carPosition > CAR_POSITION_MAX_CRITERIA) {
+        validateCarPositionToForward();
+        this.carPosition++;
+    }
+
+    private void validateCarPositionToForward() {
+        if (carPosition > CAR_POSITION_MAX_CRITERIA) {
             throw new CarPositionOutOfRangeException(carName, carPosition);
         }
-        this.carPosition++;
     }
 
     public String getCarName() {
