@@ -9,4 +9,10 @@ public class ValidUtil {
         }
         return true;
     }
+
+    public static boolean isEmpty(String input){
+        return input == null || input.isEmpty();
+    }
+
+
 }
