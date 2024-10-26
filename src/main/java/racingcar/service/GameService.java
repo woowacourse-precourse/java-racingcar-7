@@ -14,12 +14,16 @@ public class GameService {
         this.game = new Game(playCount, carList);
     }
 
+    public int getPlayCount() {
+        return game.getPlayCount();
+    }
+
     public List<Car> carProcess() {
         List<Car> carList = game.getCarList();
         for (Car car : carList) {
             increaseMove(car, RandomUtil.getRandomNumber());
         }
-        return carList;
+        return game.getCarList();
     }
 
     public void increaseMove(Car car, int randomNum) {
@@ -29,16 +33,20 @@ public class GameService {
     }
 
     public List<Car> determineWinners() {
-        int maxDistance = game.getCarList().stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElse(0);
+        int maxDistance = getMaxDistance();
         for (Car car : game.getCarList()) {
             if (car.getMoveCount() == maxDistance) {
                 game.addWinner(car);
             }
         }
         return game.getWinnerList();
+    }
+
+    public int getMaxDistance() {
+        return game.getCarList().stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
     }
 
 }
