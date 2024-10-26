@@ -17,10 +17,12 @@ public class GameController {
     private static final String DELIMITER = ",";
     private final InputView inputView;
     private final OutputView outputView;
+    private final GameInputValidator gameInputValidator;
 
-    public GameController(InputView inputView, OutputView outputView) {
+    public GameController(InputView inputView, OutputView outputView, GameInputValidator gameInputValidator) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.gameInputValidator = gameInputValidator;
     }
 
     public void start() {
@@ -40,12 +42,18 @@ public class GameController {
     }
 
     private Game makeGame() {
-        String[] carNames = Stream.of(inputView.getNameOfCars().split(DELIMITER))
+        String carNamesInput = inputView.getNameOfCars();
+        gameInputValidator.validateNameOfCars(carNamesInput);
+
+        String totalRoundsInput = inputView.getTotalRounds();
+        gameInputValidator.validateTotalRounds(totalRoundsInput);
+
+        String[] carNames = Stream.of(carNamesInput.split(DELIMITER))
                 .map(String::trim)
                 .toArray(String[]::new);
 
         Cars cars = new Cars(carNames);
-        TotalRounds totalRounds = new TotalRounds(inputView.getTotalRounds());
+        TotalRounds totalRounds = new TotalRounds(Integer.parseInt(totalRoundsInput));
         NumberPicker numberPicker = new RandomNumberPicker();
 
         return new Game(cars, totalRounds, numberPicker);

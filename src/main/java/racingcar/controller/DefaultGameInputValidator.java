@@ -1,6 +1,8 @@
-package racingcar.view;
+package racingcar.controller;
 
-public class InputValidator {
+public class DefaultGameInputValidator implements GameInputValidator {
+
+    private static DefaultGameInputValidator instance;
 
     private static final String DELIMITER = ",";
     private static final String KOREAN_RANGE_OF_REGEX = "가-힣";
@@ -8,7 +10,18 @@ public class InputValidator {
     private static final String NUMBER_RANGE_OF_REGEX = "0-9";
     private static final String WHITESPACE_REGEX = "\\s";
 
-    public static void validateNameOfCars(String input) {
+    private DefaultGameInputValidator() {
+    }
+
+    public static DefaultGameInputValidator getInstance() {
+        if (instance == null) {
+            instance = new DefaultGameInputValidator();
+        }
+        return instance;
+    }
+
+    @Override
+    public void validateNameOfCars(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("자동차의 이름은 빈 문자열이어서는 안됩니다.");
         }
@@ -26,7 +39,8 @@ public class InputValidator {
         }
     }
 
-    public static void validateTotalRounds(final String input) {
+    @Override
+    public void validateTotalRounds(String input) {
         if (input.isBlank()) {
             throw new IllegalArgumentException("총 라운드는 빈 값을 입력하실 수 없습니다.");
         }
@@ -36,17 +50,17 @@ public class InputValidator {
         }
     }
 
-    private static boolean containsOnlyDelimiter(String input) {
+    private boolean containsOnlyDelimiter(String input) {
         return input.replace(DELIMITER, "").isBlank();
     }
 
-    private static boolean containsInvalidCharactersForNameOfCars(String input) {
+    private boolean containsInvalidCharactersForNameOfCars(String input) {
         String pattern = "[" + KOREAN_RANGE_OF_REGEX + ENGLISH_RANGE_OF_REGEX + NUMBER_RANGE_OF_REGEX + DELIMITER
                 + WHITESPACE_REGEX + "]*";
         return !input.matches(pattern);
     }
 
-    private static boolean isNotPositiveInteger(String input) {
+    private boolean isNotPositiveInteger(String input) {
         return !input.matches("^[1-9]\\d*$");
     }
 }

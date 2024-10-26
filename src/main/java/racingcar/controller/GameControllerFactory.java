@@ -5,6 +5,7 @@ import racingcar.view.OutputView;
 
 public class GameControllerFactory {
     public static GameController create() {
-        return new GameController(InputView.getInstance(), OutputView.getInstance());
+        return new GameController(InputView.getInstance(), OutputView.getInstance(),
+                DefaultGameInputValidator.getInstance());
     }
 }
