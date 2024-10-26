@@ -10,7 +10,7 @@ class CarTest {
     @Test
     void 자동차_생성_테스트() {
         // given
-        String carName = "testCar";
+        String carName = "test";
 
         // when
         Car car = new Car(carName);
@@ -21,7 +21,7 @@ class CarTest {
 
     @Test
     void 자동차_검증_테스트() {
-        String carName1 = "test";
+        String carName1 = "test10";
         String carName2 = "";
 
         assertThatThrownBy(() -> {
@@ -35,10 +35,10 @@ class CarTest {
     @Test
     void 자동차_비교_테스트() {
         // given
-        Car car1 = new Car("testCar1", 100L);
-        Car car2 = new Car("testCar2", 100L);
-        Car car3 = new Car("testCar3", 101L);
-        Car car4 = new Car("testCar4", 99L);
+        Car car1 = new Car("test1", 100L);
+        Car car2 = new Car("test2", 100L);
+        Car car3 = new Car("test3", 101L);
+        Car car4 = new Car("test4", 99L);
 
         // when
         int result1 = car1.compareTo(car2);
@@ -55,8 +55,8 @@ class CarTest {
     @Test
     void 자동차_전진_테스트() {
         // given
-        Car car = new Car("testCar1");
-        Car expect = new Car("testCar2", 1L);
+        Car car = new Car("test1");
+        Car expect = new Car("test2", 1L);
 
         // when
         car.forward();
