@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +11,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputHandlerTest {
     private final InputHandler inputHandler = new InputHandler();
+    @AfterEach
+    void closeConsole() {
+        Console.close();
+    }
 
     @Test
     @DisplayName("올바른 입력을 받았을 때 자동차 이름 리스트를 반환한다")
@@ -27,13 +33,24 @@ public class InputHandlerTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 6자 이상이면 예외 처리한다")
-    void areAllCarNameLengthsValid_Test() {
-        String input = "pobi,javabi";
-        List<String> carNames = inputHandler.parseCarNames(input);
-        assertThatThrownBy(() -> inputHandler.areAllCarNameLengthsValid(carNames))
-                .isInstanceOf(IllegalArgumentException.class);
+    @DisplayName("이동 횟수가 1 이상 1000 이하가 아니면 예외 처리한다")
+    void getMoveCount_Test() {
+        String outOfRangeInput = "1004";
+
+        assertThatThrownBy( () -> {
+            System.setIn(new java.io.ByteArrayInputStream(outOfRangeInput.getBytes()));
+            inputHandler.getMoveCount();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("이동 횟수로 숫자가 아닌 값을 받으면 예외 처리한다")
+    void getMoveCount_Test2() {
+        String nonNumberInput = "pobi";
 
+        assertThatThrownBy( () -> {
+            System.setIn(new java.io.ByteArrayInputStream(nonNumberInput.getBytes()));
+            inputHandler.getMoveCount();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
