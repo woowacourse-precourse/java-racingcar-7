@@ -1,5 +1,6 @@
 # java-racingcar-precourse
-
+by. hmlssghm
+***
 > 1. 입출력   
 1.1. 입력   
 1.2. 출력
