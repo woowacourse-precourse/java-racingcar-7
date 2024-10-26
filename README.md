@@ -4,7 +4,8 @@
 ## 1) GameController 
 * splitCarNames //자동차 이름 문자열 자르기
 * createCars //Car 객체 생성하기, Car객체를 Cars로 묶기
-* RunningGame //n번 게임 실행시키기
+* oneRoundGame // 게임 한 바퀴 실행하기
+* RunningGame //게임 n번 실행하기
 * outputResult //결과 출력하기
 ---
 # model
