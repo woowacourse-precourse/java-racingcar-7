@@ -12,16 +12,19 @@ import racingcar.domain.strategy.AlwaysStopStrategy;
 public class CarTest {
 
     private Car car;
+    private MoveStrategy alwaysMoveStrategy;
+    private MoveStrategy alwaysStopStrategy;
 
     @BeforeEach
     void setUp() {
         car = new Car("pobi");
+        alwaysMoveStrategy = new AlwaysMoveStrategy();
+        alwaysStopStrategy = new AlwaysStopStrategy();
     }
 
     @Test
     void 자동차_전진_테스트() {
         int position = car.getPosition();
-        MoveStrategy alwaysMoveStrategy = new AlwaysMoveStrategy();
 
         car.move(alwaysMoveStrategy);
 
@@ -31,7 +34,6 @@ public class CarTest {
     @Test
     void 자동차_정지_테스트() {
         int position = car.getPosition();
-        MoveStrategy alwaysStopStrategy = new AlwaysStopStrategy();
 
         car.move(alwaysStopStrategy);
 
