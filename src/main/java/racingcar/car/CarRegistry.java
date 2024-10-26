@@ -9,6 +9,7 @@ public class CarRegistry {
     private final StringBuilder carStatus;
 
     private static final Pattern VALID_CAR_NAMES_PATTERN = Pattern.compile("^[^,]+(,[^,]+)*$");
+    private static final String LINE_SEPARATOR = "\n";
 
     public CarRegistry(String carNames) {
         validateCarNames(carNames);
@@ -66,7 +67,7 @@ public class CarRegistry {
     public String toString() {
         carStatus.setLength(0);
         for (Car car : cars) {
-            carStatus.append(car.toString()).append("\n");
+            carStatus.append(car.toString()).append(LINE_SEPARATOR);
         }
         return carStatus.toString();
     }

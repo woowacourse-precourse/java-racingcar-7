@@ -9,10 +9,12 @@ public class Car {
     private Integer position;
     private final String name;
     private final Supplier<Integer> randomSupplier;
+    private final StringBuilder dashBuilder;
 
     private static final String SEPARATOR = " : ";
     private static final char DASH = '-';
-    private final StringBuilder dashBuilder;
+    private static final Integer MAXIMUM_CAR_NAME_LENGTH = 5;
+    private static final Integer MINIMUM_NUMBER_TO_GO_FORWARD = 4;
 
     public Car(String name) {
         this(name, ()-> Randoms.pickNumberInRange(0, 9));
@@ -27,7 +29,7 @@ public class Car {
     }
 
     private void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("Car name has to be 5 or under 5.");
         }
     }
@@ -41,7 +43,7 @@ public class Car {
     }
 
     public void moveIfPossible() {
-        if (randomSupplier.get() >= 4) {
+        if (randomSupplier.get() >= MINIMUM_NUMBER_TO_GO_FORWARD) {
             goForward();
         }
     }

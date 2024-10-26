@@ -8,6 +8,8 @@ public class Stadium {
     private final CarRegistry carRegistry;
     private final RaceResult raceResult;
 
+    private static final String LINE_SEPARATOR = "\n";
+
     public Stadium(CarRegistry carRegistry, RaceResult result) {
         this.carRegistry = carRegistry;
         this.raceResult = result;
@@ -23,6 +25,6 @@ public class Stadium {
         for(Car car : carRegistry.getCars()){
             car.moveIfPossible();
         }
-        this.raceResult.add(carRegistry.toString()).add("\n");
+        this.raceResult.add(carRegistry.toString()).add(LINE_SEPARATOR);
     }
 }
