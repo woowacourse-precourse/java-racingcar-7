@@ -45,9 +45,9 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_이름_5자_초과_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("jijiji, coco", "1"))
+                assertThatThrownBy(() -> runException("jijijiji, coco", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("자동차 이름은 공백이 될 수 없습니다.")
+                        .hasMessageContaining("자동차 이름은 5자 이하로 입력해 주세요.")
         );
     }
 
