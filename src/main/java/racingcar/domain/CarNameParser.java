@@ -5,6 +5,7 @@ import java.util.List;
 
 public class CarNameParser {
 
+    private static final String EXCEPTION_EMPTY_CAR_NAME = "자동차 이름을 입력해주세요.";
     private static final String INPUT_DELIMITER = ",";
 
     public static List<CarName> parseCarNames(String carNames) {
@@ -22,7 +23,7 @@ public class CarNameParser {
 
     private static void validateEmptyCarNames(String carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+            throw new IllegalArgumentException(EXCEPTION_EMPTY_CAR_NAME);
         }
     }
 }

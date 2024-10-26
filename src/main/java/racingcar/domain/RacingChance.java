@@ -2,6 +2,8 @@ package racingcar.domain;
 
 public class RacingChance {
 
+    private static final String EXCEPTION_RIGHT_CHANCE = "올바른 시도 횟수를 입력해주세요.";
+
     private final int chance;
 
     public RacingChance(String racingChance) {
@@ -17,7 +19,7 @@ public class RacingChance {
         try {
             Integer.parseInt(racingChance);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("올바른 시도 횟수를 입력해주세요.");
+            throw new IllegalArgumentException(EXCEPTION_RIGHT_CHANCE);
         }
     }
 }
