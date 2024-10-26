@@ -10,12 +10,13 @@ public class Output {
         return "test";
     }
 
-    public static void printWinner() {
 
+    public static void printWinner() {
+        System.out.println();
         System.out.print("최종 우승자 : ");
         ArrayList<String> strings = judgementWhoIsWin();
         for (int i = 0; i < strings.size(); i++) {
-            System.out.println(strings.get(i));
+            System.out.print(strings.get(i));
             if(strings.size()-1>i) {
                 System.out.print(", ");
             }
