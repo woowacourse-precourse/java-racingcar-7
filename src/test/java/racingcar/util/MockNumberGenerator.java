@@ -1,14 +1,25 @@
 package racingcar.util;
 
-public class MockNumberGenerator implements NumberGenerator {
-    private final int number;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
-    public MockNumberGenerator(int number) {
-        this.number = number;
+public class MockNumberGenerator implements NumberGenerator {
+    private final Queue<Integer> numbers = new LinkedList<>();
+
+    public MockNumberGenerator(Integer ... numbers) {
+        this.numbers.addAll(Arrays.asList(numbers));
     }
 
     @Override
     public int generate() {
-        return number;
+        validateEmpty();
+        return numbers.poll();
+    }
+
+    private void validateEmpty(){
+        if(numbers.isEmpty()){
+            throw new IllegalArgumentException();
+        }
     }
 }
