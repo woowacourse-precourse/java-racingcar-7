@@ -1,4 +1,4 @@
 package racingcar.model.car;
 
-public record CarStatus(String name, int position) {
+public record CarStatus(String name, int position, int round) {
 }

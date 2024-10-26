@@ -29,13 +29,13 @@ public class OutputViewTest {
     void shouldDisplayResultInExpectedFormat() {
         // given
         CarMovementResults carStatusesOfFirstRound = new CarMovementResults(List.of(
-                new CarStatus("pobi", 3),
-                new CarStatus("juni", 2)
+                new CarStatus("pobi", 3, 1),
+                new CarStatus("juni", 2, 1)
         ));
 
         CarMovementResults carStatusesOfSecondRound = new CarMovementResults(List.of(
-                new CarStatus("pobi", 4),
-                new CarStatus("juni", 3)
+                new CarStatus("pobi", 4, 2),
+                new CarStatus("juni", 3, 2)
         ));
 
         List<CarMovementResults> carMovementResults = List.of(

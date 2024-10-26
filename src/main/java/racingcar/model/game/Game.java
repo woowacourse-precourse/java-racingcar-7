@@ -55,7 +55,7 @@ public class Game {
     }
 
     public List<CarStatus> getStatusOfCars() {
-        return cars.getStatus();
+        return cars.getStatus(currentRound);
     }
 
     public List<String> getNameOfWinners() {
