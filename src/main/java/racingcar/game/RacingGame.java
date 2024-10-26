@@ -7,5 +7,9 @@ public class RacingGame {
     public void run() {
         String[] carNames = inputHandler.getCarNames();
         int tryNum = inputHandler.getTryNum();
+
+        RacingGameManager racingGameManager = new RacingGameManager();
+        racingGameManager.prepareGameRounds(tryNum, carNames);
+        racingGameManager.startGame();
     }
 }
