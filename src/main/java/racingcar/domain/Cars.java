@@ -24,4 +24,8 @@ public class Cars {
                 .map(Car::getPosition)
                 .toList();
     }
+
+    public boolean isEmpty() {
+        return carList.isEmpty();
+    }
 }
