@@ -15,7 +15,7 @@ public class Utils {
         return cars;
     }
 
-    public boolean canProceeded() {
+    public boolean canMove() {
         int n = Randoms.pickNumberInRange(0, 9);
         if (n >= 4) {
             return true;
