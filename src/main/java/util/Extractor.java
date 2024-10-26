@@ -7,7 +7,7 @@ import java.util.Arrays;
 import repository.CarRepository;
 
 public class Extractor {
-    
+
     public static ArrayList<String> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
@@ -23,21 +23,21 @@ public class Extractor {
         return cars;
     }
 
-    private static int returnMax() {
-        int max = 0;
+    private static int extractMaxDistance() {
+        int maxDistance = 0;
         for (Car car : CarRepository.cars) {
-            if (car.getForwardCount(CarRepository.repeatCount) > max) {
-                max = car.getForwardCount(CarRepository.repeatCount);
+            if (car.getForwardCount(CarRepository.repeatCount) > maxDistance) {
+                maxDistance = car.getForwardCount(CarRepository.repeatCount);
             }
         }
-        return max;
+        return maxDistance;
     }
 
     public static ArrayList<String> extractWinningCarList() {
-        int max = returnMax();
+        int maxDistance = extractMaxDistance();
         ArrayList<String> winningCars = new ArrayList<>();
         for (Car car : CarRepository.cars) {
-            if (car.getForwardCount(CarRepository.repeatCount) == max) {
+            if (car.getForwardCount(CarRepository.repeatCount) == maxDistance) {
                 winningCars.add(car.getName());
             }
         }
