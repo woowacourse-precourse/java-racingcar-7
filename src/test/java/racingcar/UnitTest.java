@@ -67,6 +67,14 @@ public class UnitTest extends NsTest {
     }
 
     @Test
+    @DisplayName("checkCarName 테스트")
+    void checkCarNameTest() {
+        String carName = "car123";
+        assertThatThrownBy(() -> Application.checkCarName(carName))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("checkSameName 테스트")
     void checkSameNameTest() {
         String car1Name = "car1";
