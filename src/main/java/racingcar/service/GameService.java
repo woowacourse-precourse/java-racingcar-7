@@ -22,10 +22,19 @@ public class GameService {
     }
 
     public void playGame(Game game, OutputView outputView) {
-        GameResult result = game.playGame();
+        try {
+            GameResult result = game.playGame();
 
-        printRoundResult(result, outputView);
-        printWinners(result, outputView);
+            printRoundResult(result, outputView);
+            printWinners(result, outputView);
+        } catch (IllegalArgumentException e){
+            printErrorMessage(e, outputView);
+            throw e;
+        }
+    }
+
+    private void printErrorMessage(IllegalArgumentException e, OutputView outputView) {
+        outputView.printErrorMessage(e.getMessage());
     }
 
     private void printRoundResult(GameResult result, OutputView outputView) {

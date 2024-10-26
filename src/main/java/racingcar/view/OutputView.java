@@ -41,4 +41,8 @@ public class OutputView {
         }
         System.out.println("최종 우승자 : " + winnerNames);
     }
+
+    public void printErrorMessage(String message) {
+        System.err.println(message);
+    }
 }
