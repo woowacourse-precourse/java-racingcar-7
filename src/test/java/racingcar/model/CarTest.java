@@ -7,8 +7,12 @@ class CarTest {
 
     @Test
     void 자동차_생성시_기본_거리는_0이다(){
-        String carName = "sun";
-        Car car = Car.getInstance(carName);
+        Car car = getCar();
         assertEquals(0,car.getDistance());
+    }
+
+    private Car getCar() {
+        String carName = "sun";
+        return Car.getInstance(carName);
     }
 }
