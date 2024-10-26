@@ -19,9 +19,7 @@ public class Application {
         int times = Integer.parseInt(input_times);
         System.out.println("실행 결과");
         RacingCar.printProcess(times,names,counts);
-        int max = Arrays.stream(counts).max().getAsInt();
-        int[] max_indices = IntStream.range(0, counts.length).filter(i -> counts[i] == max).toArray();
-        String[] winners = IntStream.of(max_indices).mapToObj(i -> names[i]).toArray(String[]::new);
+        String[] winners = RacingCar.getWinners(names, counts);
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
