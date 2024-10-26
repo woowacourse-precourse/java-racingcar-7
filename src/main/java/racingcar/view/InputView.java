@@ -11,5 +11,10 @@ public class InputView {
         OutputView.printInputCarNames();
         return Console.readLine();
     }
-    
+
+    public static String readAttempts() {
+        OutputView.printInputAttempts();
+        return Console.readLine();
+    }
+
 }
