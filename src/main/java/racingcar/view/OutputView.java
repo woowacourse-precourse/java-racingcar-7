@@ -18,6 +18,7 @@ public class OutputView {
         for (Car car : cars) {
             printCarResult(car.getName(), car.getMovedDistance());
         }
+        printEmptyLine();
     }
 
     private void printCarResult(String name, int movedDistance) {

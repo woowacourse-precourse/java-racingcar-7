@@ -35,7 +35,6 @@ public class RacingController {
         for(int i=0; i<userInput; i++){
             List<Car> cars = racingService.startRacingOnce();
             outputView.printCarsResult(cars);
-            outputView.printEmptyLine();
         }
     }
 
