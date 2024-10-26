@@ -11,11 +11,13 @@ public class InputView {
 
     //자동차 이름을 입력 받는 메소드
     public Map<String, Integer> readCarsName() {
-
-        Map<String, Integer> cars = new LinkedHashMap<>();
-
         System.out.println(READ_CAR_NAME_MESSAGE);
         String buffer = readInput();
+        return parseCarsName(buffer);
+    }
+
+    private Map<String, Integer> parseCarsName(String buffer) {
+        Map<String, Integer> cars = new LinkedHashMap<>();
 
         String[] carNames = buffer.split(",");
 
