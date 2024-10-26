@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.model.Cars;
+import racingcar.model.Game;
 
 public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
@@ -65,7 +66,7 @@ public class Validator {
     }
 
     private static void validateWithinMaxLimit(double number) {
-        if (number > 1000) {
+        if (number > Game.MAX_GAME_ROUND) {
             throw new IllegalArgumentException("Input must be less than or equal to 1000.");
         }
     }

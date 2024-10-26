@@ -7,6 +7,8 @@ public class Game {
     private final Cars cars;
     private final Integer gameRound;
 
+    public final static Integer MAX_GAME_ROUND = 1000;
+
     public Game(Cars cars, Integer gameRound) {
         this.cars = cars;
         this.gameRound = gameRound;
