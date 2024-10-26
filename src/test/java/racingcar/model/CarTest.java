@@ -57,4 +57,22 @@ class CarTest {
         //then
         assertThat(maxPosition).isEqualTo(car.findMaxPosition(position));
     }
+
+    @DisplayName("주어진 최대 전진값과 현재 자동차의 전진값을 비교하여 참, 거짓을 반환한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"3, true", "2, false"})
+    void isMaxPosition(int maxPosition, boolean expectedValue) {
+        //given
+        Car car = Car.of("pobi", new StubRandomNumberGenerator(4));
+
+        car.isMove();
+        car.isMove();
+        car.isMove();
+
+        //when
+        boolean result = car.isMaxPosition(maxPosition);
+
+        //then
+        assertThat(result).isEqualTo(expectedValue);
+    }
 }
