@@ -10,4 +10,9 @@ public class UserInput {
         return Arrays.stream(Console.readLine().split(","))
                 .toList();
     }
+
+    public static int inputNumberOfExecutions() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Integer.parseInt(Console.readLine());
+    }
 }
