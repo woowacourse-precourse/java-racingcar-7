@@ -37,4 +37,10 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public void printStatus() {
+        System.out.print(name + " : ");
+        System.out.println("-".repeat(position));
+    }
+
 }

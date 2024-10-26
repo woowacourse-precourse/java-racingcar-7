@@ -25,7 +25,11 @@ public class Cars {
         }
     }
 
-    public void moveAll() {
+    public static void moveAll() {
         cars.forEach(Car::tryMove);
+    }
+
+    public static void printStatus() {
+        cars.forEach(Car::printStatus);
     }
 }

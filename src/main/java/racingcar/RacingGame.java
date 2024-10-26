@@ -22,4 +22,13 @@ public class RacingGame {
             throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
         }
     }
+
+    private void race() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < rounds; i++) {
+            Cars.moveAll();
+            Cars.printStatus();
+            System.out.println();
+        }
+    }
 }
