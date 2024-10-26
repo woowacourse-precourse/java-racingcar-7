@@ -24,7 +24,9 @@ public class RaceController {
 
     private int getAttemptCount() {
         outputView.printGetAttemptCountGuide();
-        int attemptCount = inputView.getAttemptCount();
+        String inputViewAttemptCount = inputView.getAttemptCount();
+        inputValidator.isStringNull(inputViewAttemptCount);
+        int attemptCount = Integer.parseInt(inputViewAttemptCount);
         inputValidator.validateAttempts(attemptCount);
         return attemptCount;
     }

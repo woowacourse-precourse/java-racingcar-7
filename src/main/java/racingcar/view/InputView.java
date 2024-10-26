@@ -8,7 +8,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public int getAttemptCount() {
-        return Integer.parseInt(Console.readLine());
+    public String getAttemptCount() {
+        return Console.readLine();
     }
 }
