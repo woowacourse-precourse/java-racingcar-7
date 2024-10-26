@@ -8,7 +8,7 @@ public class CarNameValidator {
     private final static String EXCEPTION_MESSAGE_EMPTY_CAR = "자동차 이름은 비어있거나 공백이면 안 됩니다.";
     private final static String EXCEPTION_MESSAGE_LENGTH_CAR = "자동차 이름의 길이는 5자를 초과하면 안 됩니다.";
     private final static String EXCEPTION_MESSAGE_DUPLICATE_CAR_NAME = "같은 자동차의 이름을 입력하면 안 됩니다.";
-    private final static int CAR__NAME_LENGTH_STANDARD = 5;
+    private final static int CAR_NAME_LENGTH_STANDARD = 5;
 
     public void validate(List<String> carNames) {
         validateEmptyList(carNames);
@@ -27,7 +27,7 @@ public class CarNameValidator {
             if (carName.isEmpty() || carName.isBlank()) {
                 throw new IllegalArgumentException(EXCEPTION_MESSAGE_EMPTY_CAR);
             }
-            if (carName.length() > CAR__NAME_LENGTH_STANDARD) {
+            if (carName.length() > CAR_NAME_LENGTH_STANDARD) {
                 throw new IllegalArgumentException(EXCEPTION_MESSAGE_LENGTH_CAR);
             }
         }
