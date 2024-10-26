@@ -21,4 +21,13 @@ public class Validator {
 
         return inputCarName;
     }
+
+    public static Integer validateNotNumber(String trialCount){
+
+        try{
+            return Integer.parseInt(trialCount);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+        }
+    }
 }

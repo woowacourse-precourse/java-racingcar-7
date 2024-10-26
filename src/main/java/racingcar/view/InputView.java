@@ -15,7 +15,7 @@ public class InputView {
 
     public static int inputTrialCount(){
 
-        return Integer.parseInt(Console.readLine());
+        return Validator.validateNotNumber(Console.readLine());
     }
 
 }
