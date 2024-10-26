@@ -1,12 +1,14 @@
 package racingcar.model;
 
 public class AttemptCount {
-    private static final int MIN_ATTEMPT_COUNT = 0;
-
     private int count;
 
-    public AttemptCount(int count) {
+    private AttemptCount(int count) {
         this.count = count;
+    }
+
+    public static AttemptCount from(int count) {
+        return new AttemptCount(count);
     }
 
     public void decrease() {

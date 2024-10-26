@@ -10,8 +10,8 @@ public class RacingGameTest {
 
     @Test
     void 현재_자동차_위치_조회_테스트() {
-        RaceCars raceCars = new RaceCars(List.of("raceCar1", "raceCar2", "raceCar3"));
-        AttemptCount attemptCount = new AttemptCount(3);
+        RaceCars raceCars = RaceCars.fromNames(List.of("raceCar1", "raceCar2", "raceCar3"));
+        AttemptCount attemptCount = AttemptCount.from(3);
         RacingGame racingGame = new RacingGame(raceCars, attemptCount);
 
         Map<String, Integer> currentPosition = racingGame.findCurrentPosition();

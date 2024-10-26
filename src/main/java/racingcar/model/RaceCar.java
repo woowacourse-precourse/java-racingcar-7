@@ -7,9 +7,13 @@ public class RaceCar {
     private final String name;
     private int position;
 
-    public RaceCar(String name) {
+    private RaceCar(String name, Integer position) {
         this.name = name;
-        this.position = INIT_POSITION;
+        this.position = position;
+    }
+
+    public static RaceCar fromName(String name) {
+        return new RaceCar(name, INIT_POSITION);
     }
 
     public void move() {

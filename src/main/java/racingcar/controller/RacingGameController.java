@@ -13,8 +13,8 @@ public class RacingGameController {
     }
 
     private RacingGame createRacingGame(){
-        RaceCars raceCars = new RaceCars(InputView.inputCarNames());
-        AttemptCount attemptCount = new AttemptCount(InputView.inputAttemptCount());
+        RaceCars raceCars = RaceCars.fromNames(InputView.inputCarNames());
+        AttemptCount attemptCount = AttemptCount.from(InputView.inputAttemptCount());
         return new RacingGame(raceCars, attemptCount);
     }
 
