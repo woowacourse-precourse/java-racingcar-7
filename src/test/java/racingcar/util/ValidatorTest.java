@@ -23,4 +23,19 @@ public class ValidatorTest {
         });
     }
 
+
+    @Test
+    @DisplayName("자동차의 이름이 공백인 경우 예외가 발생한다")
+    void 자동차_이름_입력_테스트2() throws Exception {
+        //given
+        Validator validator = new Validator();
+
+        // when
+        String carNames = ",abcd,abcde,abcdef";
+
+        // then
+        assertThrows(IllegalArgumentException.class, () -> {
+            validator.checkCarNameInput(carNames);
+        });
+    }
 }
