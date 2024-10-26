@@ -23,6 +23,7 @@ public class InputView {
 
     public long getCarMovementCount() {
         String inputString = Console.readLine();
+        Console.close();
         validateCarMovementCountOrThrow(inputString);
         return Long.parseLong(inputString);
     }
