@@ -1,12 +1,17 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.config.validation.FieldValidation;
 import racingcar.config.validation.annotation.Length;
 
 public class Car extends FieldValidation {
 
+    private final int MOVING_FORWARD = 4;
+
     @Length(min = 1, max = 5)
     private final String name;
+
+    private int distance = 0;
 
     private Car(String name) {
         this.name = name;
@@ -20,6 +25,16 @@ public class Car extends FieldValidation {
 
     public String getName() {
         return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void moveForward() {
+        if (Randoms.pickNumberInRange(0, 9) >= MOVING_FORWARD) {
+            distance += 1;
+        }
     }
 
     @Override
