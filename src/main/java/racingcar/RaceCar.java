@@ -7,35 +7,46 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RaceCar {
     private final RaceCarPrinter printer = new RaceCarPrinter();
+    private HashMap<String, Integer> carMap;
 
     public void start(String[] carNames, int raceTimes) {
-        int carNums = carNames.length;
-        HashMap<String, Integer> carMap = initCars(carNames);
-
-        for (int i = 0; i < raceTimes; i++) {
-            for (String key : carMap.keySet()) {
-                int value = carMap.get(key);
-                int number = randomNumber();
-                carMap.put(key, value + number);
-            }
-            printer.printRace(carMap);
-        }
-        ArrayList<String> winner = checkWinner(carMap);
-        printer.printWinner(winner);
+        carMap = initCars(carNames);
+        runRace(raceTimes);
+        printer.printWinner(checkWinner());
     }
 
-    private ArrayList<String> checkWinner(HashMap<String, Integer> carMap) {
+    private void runRace(int raceTimes) {
+        for (int i = 0; i < raceTimes; i++) {
+            moveAllCars();
+            printer.printRace(carMap);
+        }
+    }
+
+    private void moveAllCars() {
+        for (String key : carMap.keySet()) {
+            int value = carMap.get(key);
+            int number = randomNumber();
+            carMap.put(key, value + number);
+        }
+    }
+
+    private ArrayList<String> checkWinner() {
+        ArrayList<String> winners = new ArrayList<>();
+        int maxValue = findMaxValue();
+        for (String key : carMap.keySet()) {
+            if (carMap.get(key) == maxValue) {
+                winners.add(key);
+            }
+        }
+        return winners;
+    }
+
+    private int findMaxValue() {
         int maxValue = 0;
-        ArrayList<String> array = new ArrayList<>();
         for (int value : carMap.values()) {
             maxValue = Math.max(maxValue, value);
         }
-        for (String key : carMap.keySet()) {
-            if (carMap.get(key) == maxValue) {
-                array.add(key);
-            }
-        }
-        return array;
+        return maxValue;
     }
 
     private HashMap<String, Integer> initCars(String[] carNames) {
