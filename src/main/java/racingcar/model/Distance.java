@@ -10,9 +10,12 @@ public class Distance {
         this.distance = 0;
     }
 
-    public Distance move() {
-        distance = distance+1;
-        return this;
+    public void stepForward() {
+        distance += 1;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     @Override

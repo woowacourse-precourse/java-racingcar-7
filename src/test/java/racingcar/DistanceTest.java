@@ -10,10 +10,11 @@ import racingcar.model.Distance;
 public class DistanceTest {
 
     @Test
-    @DisplayName("차의 이동 거리를 테스트한다")
+    @DisplayName("차의 이동을 테스트한다")
     void create(){
-        Distance distance = new Distance(3);
-        assertThat(distance).isEqualTo(new Distance(3));
+        Distance distance = new Distance();
+        assertThat(distance).isEqualTo(new Distance());
     }
+
 
 }
