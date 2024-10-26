@@ -3,10 +3,12 @@ package racingcar;
 public class Car {
     private String name;
     private boolean move;
+    private int position;
 
-    public Car(String name, boolean move) {
+    public Car(String name, boolean move, int position) {
         this.name = name;
         this.move = move;
+        this.position = position;
     }
 
     public void setMove(boolean move){
@@ -19,5 +21,13 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

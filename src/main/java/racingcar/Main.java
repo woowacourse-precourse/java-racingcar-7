@@ -23,7 +23,7 @@ public class Main {
     }
 
     public Car createSingleCar(String carName) {
-        Car car = new Car(carName,false);
+        Car car = new Car(carName,false,0);
         return car;
     }
 
@@ -31,7 +31,7 @@ public class Main {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            cars.add(new Car(carName,false));
+            cars.add(new Car(carName,false,0));
         }
 
         return cars;
@@ -87,5 +87,22 @@ public class Main {
         }
 
         return game;
+    }
+
+    public void printWinners(List<Car> cars) {
+        int maxPosition = -1;
+        StringBuilder winner = new StringBuilder();
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                winner.setLength(0);
+                winner.append(car.getName());
+                maxPosition = car.getPosition();
+            }else if (car.getPosition() == maxPosition) {
+                winner.append(", ").append(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winner);
     }
 }

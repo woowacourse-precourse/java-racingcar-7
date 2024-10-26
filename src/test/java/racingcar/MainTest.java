@@ -73,7 +73,7 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("자동차 이동 여부가 잘 변경되는지 확인한다")
     void checkCarMoveInformation() {
-        Car car = new Car("pobi", false);
+        Car car = new Car("pobi", false,0);
         main.setMoveInformation(car, true);
         assertThat(car.getMove()).isTrue();
     }
@@ -89,9 +89,9 @@ class MainTest extends NsTest {
 
     @Test
     @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
-    void PrintCarNameAndSingleMove() {
-        Car car = new Car("pobi", false);
-        Car car2 = new Car("jun", true);
+    void printCarNameAndSingleMove() {
+        Car car = new Car("pobi", false,0);
+        Car car2 = new Car("jun", true,0);
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         cars.add(car2);
@@ -107,6 +107,30 @@ class MainTest extends NsTest {
             run("pobi,woni,jun");
             assertThat(main.repeatGame(5)).isEqualTo(5);
         });
+    }
+
+    @Test
+    @DisplayName("단독 우승자를 출력한다")
+    void printSingleWinners() {
+        Car car = new Car("pobi", false,0);
+        Car car2 = new Car("jun", true,1);
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+        cars.add(car2);
+        main.printWinners(cars);
+        assertThat(output()).isEqualTo("최종 우승자 : jun");
+    }
+
+    @Test
+    @DisplayName("단독 우승자를 출력한다")
+    void printMultiWinners() {
+        Car car = new Car("pobi", true,1);
+        Car car2 = new Car("jun", true,1);
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+        cars.add(car2);
+        main.printWinners(cars);
+        assertThat(output()).isEqualTo("최종 우승자 : pobi, jun");
     }
 
     @Override
