@@ -22,4 +22,8 @@ public class GameView {
         results.forEach(System.out::println);
         System.out.println();
     }
+
+    public void printWinner(List<String> winners) {
+        System.out.println(WINNER_NOTICE_PREFIX.getMessage() + String.join(", ", winners));
+    }
 }
