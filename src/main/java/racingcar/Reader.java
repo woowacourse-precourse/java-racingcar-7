@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Reader implements ReaderInterface{
@@ -25,8 +28,11 @@ public class Reader implements ReaderInterface{
     }
 
     private boolean validNameInput(List<String> names) {
+        if (names.isEmpty() || new HashSet<>(names).size() != names.size()) {
+            return false;
+        }
         for (String name : names) {
-            if (name.length() > MAX_NAME_LENGTH){
+            if (name.isBlank() || name.length() > MAX_NAME_LENGTH){
                 return false;
             }
         }
@@ -35,20 +41,19 @@ public class Reader implements ReaderInterface{
 
     @Override
     public int getTryInput() {
-        String tryInput = readLine();
         try {
-            int raps = Integer.parseInt(tryInput);
-            if (validTryInput(raps)) {
-                return raps;
+            String tryInput = readLine();
+            if (validTryInput(tryInput)) {
+                return Integer.parseInt(tryInput);
             } else {
                 throw new IllegalArgumentException("must try more than once");
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("not an positive integer input");
         }
     }
 
-    private boolean validTryInput(int raps) {
-        return raps >= MIN_RAPS;
+    private boolean validTryInput(String raps) {
+        return !raps.isBlank() && Integer.parseInt(raps) >= MIN_RAPS;
     }
 }
