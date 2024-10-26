@@ -3,22 +3,30 @@ package racingcar.racing.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.racing.model.Car;
+import racingcar.racing.model.dto.RoundResult;
 
 public class OutputView {
     public static void printMessage(String message) {
         System.out.println(message);
     }
 
-    public static void printRoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            printRoundCar(car);
+    public static void printAllRoundResult(List<List<RoundResult>> allRoundResult) {
+        for (List<RoundResult> roundResults : allRoundResult) {
+            printRoundResult(roundResults);
+        }
+    }
+
+    private static void printRoundResult(List<RoundResult> roundResults) {
+        System.out.println("\n실행결과");
+        for (RoundResult roundResult : roundResults) {
+            printRoundCar(roundResult.carName(), roundResult.currentDistance());
         }
         System.out.println();
     }
 
-    private static void printRoundCar(Car car) {
-        System.out.print(car.getName() + " : ");
-        for (int i = 0; i < car.getTotalDistance(); i++) {
+    private static void printRoundCar(String carName, int currentDistance) {
+        System.out.print(carName + " : ");
+        for (int i = 0; i < currentDistance; i++) {
             System.out.print("-");
         }
         System.out.println();

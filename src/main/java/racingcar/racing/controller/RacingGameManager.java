@@ -27,9 +27,9 @@ public class RacingGameManager {
         List<String> carNames = inputCarNames();
         int attemptNumber = inputAttemptNumber();
         createRacingGame(carNames, attemptNumber);
-        OutputView.printMessage("\n실행 결과");
         List<List<RoundResult>> allRoundResult = game.start();
-
+        OutputView.printAllRoundResult(allRoundResult);
+        List<Car> winners = game.selectWinners();
         OutputView.printWinner(winners);
     }
 
