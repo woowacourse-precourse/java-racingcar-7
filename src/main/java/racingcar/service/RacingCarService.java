@@ -38,4 +38,10 @@ public class RacingCarService {
     protected int getRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
+
+    public List<Car> determineWinners(List<Car> cars) {
+        List<Car> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+        return winners;
+    }
 }

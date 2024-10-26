@@ -79,7 +79,7 @@ public class RacingCarServiceTest {
         cars.get(0).move();
 
         // when
-        List<Car> winners = service.determineWinners();
+        List<Car> winners = service.determineWinners(cars);
 
         // then
         assertThat(winners.size()).isEqualTo(1);
