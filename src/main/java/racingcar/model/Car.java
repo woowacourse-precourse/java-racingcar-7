@@ -23,6 +23,15 @@ public class Car {
         return this.movedDistance == winnerMovedDistance;
     }
 
+    public String makeDetail() {
+        StringBuilder carDetail = new StringBuilder();
+        carDetail.append(this.name).append(" : ");
+        for (int i = 0; i < this.movedDistance; i++) {
+            carDetail.append("-");
+        }
+        return carDetail.toString();
+    }
+
     public String getName() {
         return name;
     }

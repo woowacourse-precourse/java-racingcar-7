@@ -5,6 +5,15 @@ import racingcar.model.Car;
 
 public class OutputView {
 
+    public void outputRacingProcessingStart() {
+        System.out.println("실행 결과");
+    }
+
+    public void outputCarDetails(List<Car> cars) {
+        cars.forEach(car -> System.out.println(car.makeDetail()));
+        System.out.print("\n");
+    }
+
     public void outputWinners(List<Car> winners) {
         List<String> winnerNames = winners.stream().map(Car::getName).toList();
         String content = String.join(",", winnerNames);

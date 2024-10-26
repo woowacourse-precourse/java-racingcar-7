@@ -37,8 +37,10 @@ public class RacingController {
     }
 
     private void processRacing(List<Car> cars, int roundCount) {
+        outputView.outputRacingProcessingStart();
         for (int i = 0; i < roundCount; i++) {
             cars.forEach(Car::attemptMove);
+            outputView.outputCarDetails(cars);
         }
     }
 
