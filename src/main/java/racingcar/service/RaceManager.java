@@ -1,12 +1,17 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.service.strategy.MoveStrategy;
 
 
 public class RaceManager {
     private final RaceStorage raceStorage = new RaceStorage();
+    private final MoveStrategy moveStrategy;
+
+    public RaceManager(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+    }
 
     public String race(List<Car> cars, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
@@ -25,8 +30,7 @@ public class RaceManager {
 
     private void raceACycle(List<Car> cars) {
         cars.forEach(car -> {
-            int random = Randoms.pickNumberInRange(0, 9);
-            if (random >= 4) {
+            if (moveStrategy.isCanMove()) {
                 car.move();
             }
             raceStorage.addResult(car.toString());
