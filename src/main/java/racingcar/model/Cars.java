@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.global.message.ErrorMessage;
 
 public class Cars {
     private List<Car> carList;
@@ -14,7 +15,7 @@ public class Cars {
 
     public static Cars createCarList(String carNamesInput) {
         if (carNamesInput.contains(",,")) {
-            throw new IllegalArgumentException("자동차 이름 사이에 연속된 쉼표가 있습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CONSECUTIVE_COMMAS.getMessage());
         }
 
         String[] carNames = carNamesInput.split(",");
@@ -24,11 +25,11 @@ public class Cars {
         for (String name : carNames) {
             String carName = name.trim();
             if (carName.isBlank()) {
-                throw new IllegalArgumentException("자동차 이름이 빈 문자열일 수 없습니다.");
+                throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
             }
 
             if (uniqueNames.contains(carName)) {
-                throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + carName);
+                throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME.getMessage() + ": " + carName);
             }
             uniqueNames.add(carName);
 

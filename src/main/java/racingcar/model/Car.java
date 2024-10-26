@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.global.message.ErrorMessage;
 
 public class Car {
     private String name;
@@ -8,10 +9,10 @@ public class Car {
 
     public Car(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다: " + name);
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_TOO_LONG.getMessage() + ": " + name);
         }
         if (!name.matches("^[a-zA-Z]+$")) {
-            throw new IllegalArgumentException("자동차 이름은 영어 알파벳으로만 구성되어야 합니다: " + name);
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_INVALID_CHARACTERS.getMessage() + ": " + name);
         }
         this.name = name;
     }

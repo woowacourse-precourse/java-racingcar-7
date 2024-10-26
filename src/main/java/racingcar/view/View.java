@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.global.message.ErrorMessage;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
@@ -19,12 +20,12 @@ public class View {
 
         try {
             int tryCount = Integer.parseInt(tryCountInput);
-            if (tryCount < 0) {
-                throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+            if (tryCount <= 0) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_VALUE.getMessage());
             }
             return tryCount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_FORMAT.getMessage());
         }
 
 

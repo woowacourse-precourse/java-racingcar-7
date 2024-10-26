@@ -10,10 +10,8 @@ public class Controller {
 
         Cars cars = initRaceCar();
         int tryCount = View.displayTryCountInputPrompt();
-
         startRace(cars, tryCount);
         endRace(cars);
-
 
     }
 
@@ -21,8 +19,6 @@ public class Controller {
     private Cars initRaceCar() {
         String CarNamesInput = View.displayCarNameInputPrompt();
         return Cars.createCarList(CarNamesInput);
-
-
     }
 
     private void startRace(Cars cars, int tryCount) {
@@ -32,7 +28,6 @@ public class Controller {
             View.printMoveResult(cars);
         }
     }
-
 
     private void endRace(Cars cars) {
         List<Car> winners = cars.findWinnerCars();
