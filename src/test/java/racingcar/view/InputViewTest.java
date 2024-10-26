@@ -49,4 +49,13 @@ class InputViewTest {
                 .hasMessage(INPUT_BLANK_ERROR);
 
     }
+
+    @Test
+    void 사용자는_콘솔을_통해_경주를_시도할_횟수를_입력할_수_있다() {
+        // given
+        command("5");
+
+        // when & then
+        assertDoesNotThrow(inputView::inputTrialCount);
+    }
 }
