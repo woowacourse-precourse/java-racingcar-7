@@ -44,15 +44,21 @@ public class RacingController {
 
     private String[] getInputNames() {
         String strNames = racingGameView.printInputNames();
+        if (strNames.trim().isEmpty()) {
+            throw new IllegalArgumentException("이름 입력이 비어있습니다. 하나 이상의 차 이름을 입력하세요.");
+        }
         String[] names = racingGame.createNames(strNames);
         return names;
     }
 
     private int getInputTryCount() {
         String strTryCount = racingGameView.printInputTryCount();
+        if (strTryCount.trim().isEmpty()) {
+            throw new IllegalArgumentException("시도횟수를 입력하세요");
+        }
         int tryCount = Integer.parseInt(strTryCount);
-        if (tryCount <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1이상 이어야 합니다");
+        if (tryCount < 0) {
+            throw new IllegalArgumentException("시도 횟수는 0이상 이어야 합니다");
         }
         return tryCount;
     }

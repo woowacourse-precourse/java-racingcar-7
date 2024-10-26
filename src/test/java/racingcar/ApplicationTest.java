@@ -31,6 +31,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 시도횟수_0이하입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj","-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("시도 횟수는 0이상 이어야 합니다")
+        );
+    }
+
+    @Test
+    void 시도횟수_인트최대값초과_예외테스트() {
+        String inputOverInteger = String.valueOf(Integer.MAX_VALUE + 1);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji",inputOverInteger))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 차량이름입력없음_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("",""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("이름 입력이 비어있습니다. 하나 이상의 차 이름을 입력하세요.")
+        );
+    }
+
+    @Test
+    void 시도횟수입력없음_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaj","",""))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("시도횟수를 입력하세요")
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
