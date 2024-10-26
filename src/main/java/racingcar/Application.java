@@ -4,6 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
+class Car {
+    private String name;
+    private int position = 0;
+
+    public Car(String name) {
+        this.name = name;
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -17,6 +26,7 @@ public class Application {
         int totalRaceCount = 0;
         totalRaceCount = getTotalRaceCount();
 
+        List<Car> cars = createCars(carNames);
 
     }
 
@@ -63,6 +73,15 @@ public class Application {
         if (raceCount <= 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    // 자동차 생성
+    public static List<Car> createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
 }
