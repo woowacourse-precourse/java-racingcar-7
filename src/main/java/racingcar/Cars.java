@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -10,10 +12,14 @@ public class Cars {
     }
 
     public static Cars createCarsFrom(String names) {
-        return null;
+        List<Car> carList = Arrays.stream(names.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
+
+        return new Cars(carList);
     }
 
     public int size() {
-        return 0;
+        return cars.size();
     }
 }

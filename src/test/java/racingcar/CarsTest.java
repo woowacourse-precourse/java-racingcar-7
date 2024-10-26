@@ -12,7 +12,7 @@ public class CarsTest {
     @DisplayName("쉼표로 구분된 이름으로 자동차들을 생성한다.")
     void 생성_자동차들() {
         // given
-        String names = "pobi,woni,jun";
+        String names = "yoon,yoo,biny";
 
         // when
         Cars cars = Cars.createCarsFrom(names);
