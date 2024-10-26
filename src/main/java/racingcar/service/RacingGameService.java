@@ -59,6 +59,10 @@ public class RacingGameService {
         String[] parseCarName = carNames.split(",");
         // 이름에서 공백 제거
         for (int i = 0; i < parseCarName.length; i++) {
+            if (parseCarName[i].isBlank() || parseCarName[i].isEmpty()){
+                throw new IllegalArgumentException(i + "번 사용자의 자동차 이름이 입력 되지 않았습니다.");
+            }
+
             parseCarName[i] = parseCarName[i].trim();
         }
         return parseCarName;
