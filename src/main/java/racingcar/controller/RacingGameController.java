@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import racingcar.model.CarPlayer;
+import racingcar.model.RoundRecord;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,6 +12,7 @@ public class RacingGameController {
     private final InputView inputView;
     private final OutputView outputView;
     private ArrayList<CarPlayer> carPlayers = new ArrayList<>();
+    private ArrayList<RoundRecord> roundRecords = new ArrayList<RoundRecord>();
 
     public RacingGameController() {
         this.inputView = new InputView();
@@ -32,10 +34,18 @@ public class RacingGameController {
         }
     }
 
+    private void setRoundRecordsList() {
+        for(int i=0; i<roundCount; i++) {
+            RoundRecord roundRecord = new RoundRecord();
+            roundRecords.add(roundRecord);
+        }
+    }
+
     private void moveCarPlayers() {
         for(int i=0; i<roundCount; i++) {
             for(int j=0; j<playerCount; j++) {
-                carPlayers.get(i).move();
+                carPlayers.get(j).move();
+                roundRecords.get(i).saveRoundRecord(carPlayers.get(j));
             }
         }
     }
@@ -44,6 +54,7 @@ public class RacingGameController {
         inputView.inputGameInfo();
         setVariables();
         setCarPlayersList();
+        setRoundRecordsList();
         moveCarPlayers();
     }
 
