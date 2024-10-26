@@ -66,6 +66,10 @@
 - 우승자가 여러 명일 경우 쉼표(,)를 이용하여 이름을 구분하고 출력한다.
 
 ## 업데이트 노트
+### v.1.1.0 Application에서 입/출력 관리 및 게임 진행을 담당하도록 구조 개선
+- Racing 클래스의 printWinnerName 메서드를 Application으로 이동
+- 실행 결과 출력문을 printWinnerName 메서드 내부로 이동
+
 ### v.1.0.2 Racing 클래스 메서드 접근 제어자 변경
 - Racing 클래스에서 내부 동작 메서드(playRound, moveCar, isMovable, generateRandomNumber)를 private으로 변경하여 외부 접근 제한
 

@@ -27,8 +27,7 @@ public class Application {
 
         List<Car> winnerList = racing.determineWinner(carList);
 
-        System.out.println("\n실행 결과");
-        racing.printWinnerName(winnerList);
+        printWinnerName(winnerList);
 
         Console.close();
     }
@@ -96,5 +95,17 @@ public class Application {
         }
 
         return carList;
+    }
+
+    public static void printWinnerName(List<Car> winnerList) {
+        System.out.println("\n실행 결과");
+        System.out.print("최종 우승자 : ");
+
+        String result = String.join(", ",
+                winnerList.stream()
+                        .map(Car::getName)
+                        .toList());
+
+        System.out.print(result);
     }
 }
