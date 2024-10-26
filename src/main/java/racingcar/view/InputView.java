@@ -4,17 +4,15 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import racingcar.domain.Car;
 import racingcar.domain.UserInputData;
 
 public class InputView {
-    public static List<Car> readCarNames() {
+    public static String readStrings() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = Console.readLine();
-        validateEmptyString(carNames);
+        String inputStrings = Console.readLine();
+        validateEmptyString(inputStrings);
 
-        List<Car> cars = UserInputData.splitCarNames(carNames);
-        return cars;
+        return inputStrings;
     }
 
     public static int readTryCount() {
@@ -23,8 +21,7 @@ public class InputView {
         validateEmptyOrZeroTryCount(tryCount);
         validateNotNumber(tryCount);
 
-        int inputTryCount = Integer.parseInt(tryCount);
-        return inputTryCount;
+        return Integer.parseInt(tryCount);
     }
 
     private static void validateEmptyString(String carNames) {

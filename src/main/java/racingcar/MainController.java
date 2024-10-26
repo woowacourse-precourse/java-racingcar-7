@@ -1,6 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import racingcar.domain.Car;
 import racingcar.domain.UserInputData;
 import racingcar.view.InputView;
@@ -8,20 +11,13 @@ import racingcar.view.OutputView;
 
 public class MainController {
     public static void run() {
-        UserInputData userInputData = getCarNameAndTryCount();
-
-        userInputData.tryingMoveCar();
-
-        OutputView.printTryResult(userInputData.cars());
-        OutputView.printWinnerResult(userInputData.getWinners());
-
-    }
-
-    private static UserInputData getCarNameAndTryCount() {
-        List<Car> cars = InputView.readCarNames();
+        List<Car> cars = UserInputData.createCarByString(InputView.readStrings());
         int tryCount = InputView.readTryCount();
 
-        UserInputData userInputData = new UserInputData(cars, tryCount);
-        return userInputData;
+        UserInputData.tryingMoveCars(tryCount, cars);
+
+        OutputView.printTryResult(cars);
+        OutputView.printWinnerResult(UserInputData.getWinners(cars));
+
     }
 }
