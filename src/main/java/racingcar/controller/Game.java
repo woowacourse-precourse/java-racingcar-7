@@ -30,7 +30,7 @@ public class Game {
         OutputView.getInstance().printWinnerName(winnerList);
     }
 
-    private void printCarPositions(List<Car> carList) {
+    private void printCarPositions(final List<Car> carList) {
         List<CarPositionDTO> carPositionDTOList = carList.stream().
                 map(CarConvertor::toCarPosition).collect(Collectors.toList());
 

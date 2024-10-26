@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println(output);
     }
 
-    public void printWinnerName(List<String> winnerList){
+    public void printWinnerName(final List<String> winnerList){
         StringBuilder output = new StringBuilder().append("최종 우승자 : ");
 
         output.append(winnerList.get(0));

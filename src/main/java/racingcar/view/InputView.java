@@ -34,7 +34,7 @@ public class InputView {
         return Integer.parseInt(userInput);
     }
 
-    private boolean validateMoveCountString(String userInput) {
+    private boolean validateMoveCountString(final String userInput) {
         if (userInput.isBlank() || !userInput.matches("\\d+")) {
             return false;
         }

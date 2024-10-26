@@ -20,7 +20,7 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    private List<Car> createCar(String[] carNames) {
+    private List<Car> createCar(final String[] carNames) {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : carNames) {
@@ -30,7 +30,7 @@ public class Cars {
         return carList;
     }
 
-    private boolean validateCarName(String[] carNames) {
+    private boolean validateCarName(final String[] carNames) {
         for (String carName : carNames) {
             if (carName.isBlank() || carName.length() > 5) {
                 return false;
