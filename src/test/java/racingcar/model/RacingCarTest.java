@@ -14,15 +14,15 @@ public class RacingCarTest extends NsTest {
     @Test
     void 랜덤_값이_4_이상인_경우_전진한다(){
         RacingCar racingCar = new RacingCar(NAME);
-        racingCar.move(MOVING_FORWARD);
-        Assertions.assertEquals(racingCar.getForward(), 1);
+        Integer move = racingCar.move(MOVING_FORWARD);
+        Assertions.assertEquals(move, 1);
     }
 
     @Test
     void 랜덤_값이_4_미만인_경우_정지한다(){
         RacingCar racingCar = new RacingCar(NAME);
-        racingCar.move(STOP);
-        Assertions.assertEquals(racingCar.getForward(), 0);
+        Integer move = racingCar.move(STOP);
+        Assertions.assertEquals(move, 0);
     }
 
 
