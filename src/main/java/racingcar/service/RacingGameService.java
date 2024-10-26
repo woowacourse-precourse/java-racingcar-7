@@ -19,7 +19,7 @@ public class RacingGameService {
         return cars;
     }
 
-    public List<String> parseCarNames(String input) {
+    private List<String> parseCarNames(String input) {
         List<String> carNames = Arrays.asList(input.split(","));
         InputValidator.validateCarNames(carNames);
         return carNames;
@@ -29,10 +29,24 @@ public class RacingGameService {
         return InputValidator.validateMoveCount(moveCountInput);
     }
 
+    public void startRace(List<Car> cars, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            raceOneRound(cars);
+            printRoundResult(cars);
+        }
+    }
+
     private void raceOneRound(List<Car> cars) {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.decideToMove(randomNumber);
         }
+    }
+
+    private void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 }

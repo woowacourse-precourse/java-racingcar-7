@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int INITIAL_POSITION = 0;
     private static final int MOVE_THRESHOLD = 4;
 
     private final String name;
@@ -8,7 +9,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
+        this.position = INITIAL_POSITION;
     }
 
     public String getName() {
