@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Name;
 import racingcar.view.InputView;
 
 public class RacingController {
@@ -21,6 +22,7 @@ public class RacingController {
     public void run() {
         String userInput = inputView.getCarNames();
         List<String> splitNames = stringSplitter.split(userInput);
+        List<Name> names = splitNames.stream().map(Name::from).toList();
 
         userInput = inputView.getTotalRace();
         Integer parsedNumber = numberParser.parse(userInput);
