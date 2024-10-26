@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.util.MockRandomGenerator;
+import racingcar.mock.MockRandomGenerator;
 import racingcar.util.RandomGenerator;
 
 class CarsContainerTest {

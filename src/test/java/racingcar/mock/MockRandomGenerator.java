@@ -1,6 +1,7 @@
-package racingcar.util;
+package racingcar.mock;
 
 import java.util.List;
+import racingcar.util.RandomGenerator;
 
 public class MockRandomGenerator implements RandomGenerator {
 
