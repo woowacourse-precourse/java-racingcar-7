@@ -27,4 +27,17 @@ class InputValidatorTest {
         Assertions.assertThat(length6).isFalse();
     }
 
+    @Test
+    public void 이름에_숫자가_포함된_경우() {
+        InputValidator inputValidator = new InputValidator();
+
+        boolean noNumber = inputValidator.includeNumber("pobi,woni,jun"); //정상적인 입력
+        boolean hasNumber = inputValidator.includeNumber("pobi,woni,1");//이름이 숫자인 경우
+        boolean includeNumber = inputValidator.includeNumber("pobi,wondi,jun1");//숫자가 포함된 경우
+
+        Assertions.assertThat(noNumber).isFalse();
+        Assertions.assertThat(hasNumber).isTrue();
+        Assertions.assertThat(includeNumber).isTrue();
+    }
+
 }

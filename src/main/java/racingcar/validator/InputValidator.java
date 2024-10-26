@@ -17,4 +17,27 @@ public class InputValidator {
         }
         return true;
     }
+
+    //숫자가 있으면 true, 없으면 false
+    public boolean includeNumber(String input) {
+        String[] splitInput = input.split(",");
+        for (String name : splitInput) {
+            if (checkHasNumber(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //이름에 숫자가 있는지 확인
+    private static boolean checkHasNumber(String name) {
+        for (char c : name.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
