@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+
+import static racingcar.exception.ExceptionMessage.INVALID_INPUT_NUMBER;
+
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarManager;
@@ -10,7 +13,7 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
-    private static final String CHECK_NUMBER_REGEX = "\\d";
+    private static final String CHECK_NUMBER_REGEX = "\\d+";
 
     private Racing racing;
     private CarManager carManager;
@@ -54,7 +57,7 @@ public class RacingController {
 
     private void verifyRepeatCount(String userInput) {
         if (!userInput.matches(CHECK_NUMBER_REGEX)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_INPUT_NUMBER.getMessage());
         }
     }
 
