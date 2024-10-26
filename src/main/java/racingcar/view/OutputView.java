@@ -16,15 +16,16 @@ public class OutputView {
     }
 
     public static void printResultMessage() {
+        System.out.print("\n");
         System.out.println(InteractionMessageEnum.RESULT_MESSAGE.getInteractionMessage());
     }
 
     public static void printResult(List<Car> cars) { // TODO: 이거 static 맞나??
         for (Car car: cars) {
-            System.out.print(car.getName() + InteractionMessageEnum.COLON.getInteractionMessage() +
+            System.out.println(car.getName() + InteractionMessageEnum.COLON.getInteractionMessage() +
                     InteractionMessageEnum.HYPHEN.getInteractionMessage().repeat(car.getMove())); // TODO: 넘 길다.
         }
-        System.out.println(); // TODO: 줄바꿈 이렇게?
+        System.out.print("\n"); // TODO: 줄바꿈 이렇게?
     }
 
     public static void printWinner(List<Car> winners) {
