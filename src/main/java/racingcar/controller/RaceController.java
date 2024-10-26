@@ -27,7 +27,7 @@ public class RaceController {
     private List<Name> race(Cars cars, int count) {
         while (count-- > 0) {
             cars.move();
-            outputView.printRaceResult(cars);
+            outputView.printCars(cars);
         }
 
         return cars.win();

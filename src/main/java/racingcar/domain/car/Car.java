@@ -3,9 +3,6 @@ package racingcar.domain.car;
 import racingcar.domain.Name;
 
 public class Car {
-
-    private static final String COLON = " : ";
-    private static final String RACE_SYMBOL = "-";
     private static final int ZERO = 0;
     private static final int FOUR = 4;
 
@@ -17,7 +14,7 @@ public class Car {
         this.position = ZERO;
     }
 
-    public Name getName() {
+    public Name name() {
         return name;
     }
 
@@ -37,10 +34,5 @@ public class Car {
 
     public boolean isEqualPosition(int value) {
         return position == value;
-    }
-
-    @Override
-    public String toString() {
-        return String.join(COLON, name.getName(), RACE_SYMBOL.repeat(position));
     }
 }

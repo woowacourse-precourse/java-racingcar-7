@@ -30,7 +30,7 @@ public class Cars {
 
     public List<Name> win() {
         return findSamePositionCar(getMaxPosition()).stream()
-                .map(Car::getName)
+                .map(Car::name)
                 .toList();
     }
 
