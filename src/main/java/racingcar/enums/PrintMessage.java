@@ -16,7 +16,7 @@ public enum PrintMessage {
         return message;
     }
 
-    public String formatWinner(String winners){
+    public String formatWinner(String winners) {
         return PRINT_FINAL_WINNER.getMessage().formatted(winners);
     }
 }
