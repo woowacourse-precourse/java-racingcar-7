@@ -1,5 +1,7 @@
-package racingcar.controller;
+package racingcar.config;
 
+import racingcar.controller.DefaultGameInputValidator;
+import racingcar.controller.GameController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

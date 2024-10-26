@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.controller.GameController;
-import racingcar.controller.GameControllerFactory;
+import racingcar.config.GameControllerFactory;
 
 public class Application {
     public static void main(String[] args) {
