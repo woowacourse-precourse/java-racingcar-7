@@ -3,18 +3,18 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Random;
-
 public class Application {
     public static void main(String[] args) {
         String[] carNames = InputHandler.getCarNames();
         int tryCount = InputHandler.getTryCount();
 
-        int carNum = carNames.length;
         Car[] cars = createCars(carNames);
 
-        whoWin(cars, tryCount, carNum);
-        finalWin(whoMaxWin(cars, carNum));
+        PlayGame game = new PlayGame(cars, tryCount);
+        game.start(); //apt apt apt apt apt apt uh
+
+        GameResultCalculator calculator = new GameResultCalculator(cars);
+        calculator.printWinners();
     }
 
     private static Car[] createCars(String[] carNames) {
@@ -23,41 +23,6 @@ public class Application {
             cars[i] = new Car(carNames[i]);
         }
         return cars;
-    }
-
-    //실행 결과 출력 메서드
-    static void whoWin(Car[] carNames, int num, int carNum) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < num; i++) {
-            for (int j = 0; j < carNum; j++) {
-                System.out.println(carNames[j].name+" : "+carNames[j].isWin());
-            }
-            System.out.println();
-        }
-    }
-
-    //최종 우승자 결과 출력 메서드
-    static void finalWin(String[] whoMaxWin) {
-        String result = String.join(", ", whoMaxWin);
-        System.out.println("최종 우승자 : " + result);
-    }
-
-    //최종 우승자가 누군지 가리는 메서드
-    static String[] whoMaxWin(Car[] carNames,int carNum) {
-        for (int i = 0; i < carNum; i++) {
-            if (Car.maxWin == carNames[i].win) {
-                Car.winNum += 1;
-            }
-        }
-        String[] winList = new String[Car.winNum];
-        int index = 0;
-        for (int i = 0; i < carNum; i++) {
-            if (Car.maxWin == carNames[i].win) {
-                winList[index] = carNames[i].name;
-                index += 1;
-            }
-        }
-        return winList;
     }
 }
 
@@ -88,28 +53,102 @@ class InputHandler {
     }
 }
 
-class Car{ //car 객체 생성
-    static int maxWin;
-    static int winNum;
-    Random random = new Random();
-    int randomNumber;
+class PlayGame {
+    private final Car[] cars;
+    private final int tryCount;
 
-    int win = 0;
-    String strWin = "";
-    String name;
-    Car(String name) {
+    public PlayGame(Car[] cars, int tryCount) {
+        this.cars = cars;
+        this.tryCount = tryCount;
+    }
+
+    public void start() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            printCarStatuses();
+            System.out.println();
+        }
+    }
+
+    private void printCarStatuses() {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + car.move());
+        }
+    }
+}
+
+class GameResultCalculator {
+    private final Car[] cars;
+
+    public GameResultCalculator(Car[] cars) {
+        this.cars = cars;
+    }
+
+    public void printWinners() {
+        int maxWins = findMaxWins();
+        String[] winners = findWinners(maxWins);
+        System.out.println("최종 우승자 : " + String.join(",",winners ));
+    }
+
+    private int findMaxWins() {
+        int maxWins = 0;
+        for (Car car : cars) {
+            maxWins = Math.max(maxWins, car.getWinCount());
+        }
+        return maxWins;
+    }
+
+    private String[] findWinners(int maxWins) {
+        int count = countWinners(maxWins);
+        String[] winList = new String[count];
+        fillWinnersList(winList, maxWins);
+        return winList;
+    }
+
+    private int countWinners(int maxWins) {
+        int count = 0;
+        for (Car car : cars) {
+            if (car.getWinCount() == maxWins) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private void fillWinnersList(String[] winList, int maxWins) {
+        int index = 0;
+        for (Car car : cars) {
+            if (car.getWinCount() == maxWins) {
+                winList[index++] = car.getName();
+            }
+        }
+    }
+}
+
+class Car {
+    private final String name;
+    private int winCount = 0;
+    private String track = "";
+
+    public Car(String name) {
         this.name = name;
     }
 
-    String isWin(){
-        randomNumber = Randoms.pickNumberInRange(0, 9);
+    public String getName() {
+        return name;
+    }
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public String move() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
-            win += 1;
-            strWin += "-";
+            winCount++;
+            track += "-";
         }
-        if (win >= maxWin) {
-            maxWin = win;
-        }
-        return strWin;
+        return track;
     }
 }
+
