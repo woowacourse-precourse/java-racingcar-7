@@ -39,7 +39,7 @@ class RaceTest {
             cars.play(accelerator);
         }
         CarDto currentCars = cars.getCurrentDistances();
-        Map<String, Integer> carDto = currentCars.getCarDto();
+        Map<String, Integer> carDto = currentCars.carDto();
         Map<String, Integer> expected = Map.of("car1", 0, "car2", 2, "car3", 1);
         assertEquals(expected, carDto);
     }
@@ -55,7 +55,7 @@ class RaceTest {
             cars.play(accelerator);
         }
         CarDto winnersCarDto = cars.getWinners();
-        Map<String, Integer> winners = winnersCarDto.getCarDto();
+        Map<String, Integer> winners = winnersCarDto.carDto();
         Map<String, Integer> expected = Map.of("car2", 2, "car3", 2);
         assertEquals(expected, winners);
     }
