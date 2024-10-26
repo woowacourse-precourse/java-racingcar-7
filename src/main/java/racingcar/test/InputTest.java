@@ -35,4 +35,11 @@ public class InputTest {
         String name = "짱구짱구짱구";
         assertThrows(IllegalArgumentException.class, () -> input.validateNameLength(name));
     }
+
+    @Test
+    @DisplayName("차 이름 중복 검증 테스트")
+    void validateDuplicate() {
+        String name = "짱구,짱구";
+        assertThrows(IllegalArgumentException.class, () -> input.validateDuplicate(name));
+    }
 }
