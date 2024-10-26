@@ -20,15 +20,12 @@ public class Game {
     }
 
     public GameRoundResult playRound() {
-        this.cars
-                .getCars()
-                .forEach(Car::moveIfPossible);
+        cars.getCars()
+            .forEach(Car::moveIfPossible);
         return new GameRoundResult(this.cars);
     }
 
     public Integer getGameRound() {
         return this.gameRound;
     }
-
-
 }
