@@ -52,4 +52,11 @@ public class Race {
                 .getPosition();
     }
 
+    public List<Car> getWinners() {
+        int highestPosition = getHighestPosition();
+        return raceCars.stream()
+                .filter(car -> car.getPosition() == highestPosition)
+                .toList();
+    }
+
 }
