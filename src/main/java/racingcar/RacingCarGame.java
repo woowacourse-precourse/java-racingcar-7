@@ -25,7 +25,7 @@ public class RacingCarGame {
 
     public void round(){
         carList.forEach(RacingCar::moveForward);
-        carList.forEach(c -> System.out.println(c.getName() + ": " + c.getMoveCount()));
+        carList.forEach(c -> System.out.println(c.getName() + ": " + String.valueOf("-").repeat(c.getMoveCount())));
         System.out.println();
     }
 
