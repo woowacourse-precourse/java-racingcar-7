@@ -1,4 +1,4 @@
-package racingcar.application.port.in;
+package racingcar.application.port.inbound;
 
 public interface GameUseCase {
     void execute();
