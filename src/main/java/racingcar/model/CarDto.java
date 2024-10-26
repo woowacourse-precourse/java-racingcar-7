@@ -1,9 +1,19 @@
 package racingcar.model;
 
 public class CarDto {
-    private String name;
-    private int id;
+    private String name="car";
+    private int id = 1;
     private int forward = 0;
+
+    public CarDto() {
+        this("");
+    }
+
+    public CarDto(String name) {
+        if (!name.isEmpty()) {
+            this.name = name;
+        }
+    }
 
     public CarDto(String name, int id) {
         this.name = name;
@@ -23,7 +33,6 @@ public class CarDto {
     public int getId() {
         return id;
     }
-
 
     public int getForward() {
         return forward;
