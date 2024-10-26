@@ -21,6 +21,7 @@ public class RacingGame {
             this.cars.add(new Car(name));
         }
         this.gameCount = gameCount;
+        this.tryCount = 0;
     }
     
     /**
