@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.BlankInputException;
 import racingcar.exception.CarNameFormatException;
+import racingcar.exception.RoundNumberFormatException;
 
 import java.io.ByteArrayInputStream;
 
@@ -84,6 +85,29 @@ class InputViewTest {
 
         //when & then
         org.assertj.core.api.Assertions.assertThatCode(InputView::inputCarNames)
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력받은 경주 횟수가 숫자가 아닌 경우, 예외를 발생한다.")
+    @ValueSource(strings = {"가", ".", "%", "+", "^"})
+    void validateOnlyNumberRound(String input) {
+        //given
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when & then
+        Assertions.assertThrows(RoundNumberFormatException.class, InputView::inputRoundNumber);
+    }
+
+    @ParameterizedTest
+    @DisplayName("경주 횟수에 숫자를 입력한다.")
+    @ValueSource(strings = {"5", "05", "005", "0005", "000005", "10", "20"})
+    void validateInputNumber(String input) {
+        //given
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //when & then
+        org.assertj.core.api.Assertions.assertThatCode(InputView::inputRoundNumber)
                 .doesNotThrowAnyException();
     }
 }
