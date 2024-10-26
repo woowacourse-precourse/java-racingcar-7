@@ -12,7 +12,7 @@ public class RacingGame {
         this.moveCondition = moveCondition;
     }
 
-    public List<Integer> play() {
+    public List<Integer> raceRound() {
         return cars.move(moveCondition);
     }
 

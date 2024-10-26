@@ -15,9 +15,9 @@ class RacingGameTest {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
         RacingGame game = new RacingGame(cars, () -> true); // 전진시키는 규칙 적용
 
-        List<Integer> positions = game.play();
-        List<Integer> positions2 = game.play();
-        List<Integer> positions3 = game.play();
+        List<Integer> positions = game.raceRound();
+        List<Integer> positions2 = game.raceRound();
+        List<Integer> positions3 = game.raceRound();
 
         assertThat(positions).isEqualTo(List.of(1, 1, 1));
         assertThat(positions2).isEqualTo(List.of(2, 2, 2));
@@ -30,9 +30,9 @@ class RacingGameTest {
         Cars cars = Cars.withNames(List.of("A", "B", "C"));
         RacingGame game = new RacingGame(cars, () -> false); // 정지시키는 규칙 적용
 
-        List<Integer> positions = game.play();
-        List<Integer> positions2 = game.play();
-        List<Integer> positions3 = game.play();
+        List<Integer> positions = game.raceRound();
+        List<Integer> positions2 = game.raceRound();
+        List<Integer> positions3 = game.raceRound();
 
         assertThat(positions).isEqualTo(List.of(0, 0, 0));
         assertThat(positions2).isEqualTo(List.of(0, 0, 0));
