@@ -1,4 +1,4 @@
-package racingcar.input.converter;
+package racingcar.converter;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class InputToRacingTryCountConverterTest {
+public class StringToRacingTryCountConverterTest {
 
-    InputToRacingTryCountConverter inputToRacingTryCountConverter;
+    StringToRacingTryCountConverter stringToRacingTryCountConverter;
 
     @BeforeEach
     void before() {
-        inputToRacingTryCountConverter = new InputToRacingTryCountConverter();
+        stringToRacingTryCountConverter = new StringToRacingTryCountConverter();
     }
 
     @Test
@@ -21,7 +21,7 @@ public class InputToRacingTryCountConverterTest {
         String input = "5";
 
         //when
-        int racingTryCount = inputToRacingTryCountConverter.convert(input);
+        int racingTryCount = stringToRacingTryCountConverter.convert(input);
 
         //then
         assertThat(racingTryCount).isEqualTo(Integer.parseInt(input));
@@ -33,7 +33,7 @@ public class InputToRacingTryCountConverterTest {
         String input = "a";
 
         //when
-        assertThatThrownBy(() -> inputToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> stringToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -42,6 +42,6 @@ public class InputToRacingTryCountConverterTest {
         String input = "0";
 
         //when
-        assertThatThrownBy(() -> inputToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> stringToRacingTryCountConverter.convert(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

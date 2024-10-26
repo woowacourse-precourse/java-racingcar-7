@@ -6,12 +6,11 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 import static racingcar.message.RacingMessage.FINAL_WINNERS;
+import static racingcar.message.RacingMessage.FINAL_WINNERS_DELIMITER;
 
 public class FinalWinnersMessageUtils {
 
-    private static final CharSequence FINAL_WINNERS_DELIMITER = ", ";
-
-    public static String winnersMessage(List<RacingCar> winners) {
+    public static String generateFinalWinnersMessage(List<RacingCar> winners) {
         return FINAL_WINNERS.getFormatMessage(winners.stream()
                 .map(RacingCar::getName)
                 .collect(joining(FINAL_WINNERS_DELIMITER)));

@@ -1,12 +1,15 @@
-package racingcar.input.converter;
+package racingcar.converter;
 
-public class InputToRacingTryCountConverter {
+import static racingcar.message.ErrorMessage.NUMERIC_TRY_COUNT_REQUIRED;
+import static racingcar.message.ErrorMessage.POSITIVE_TRY_COUNT_REQUIRED;
+
+public class StringToRacingTryCountConverter {
 
     public int convert(String input) {
         int tryCount = toIntValue(input);
 
         if (isNotPositiveValue(tryCount)) {
-            throw new IllegalArgumentException("시도할 횟수는 양수여야 합니다.");
+            throw new IllegalArgumentException(POSITIVE_TRY_COUNT_REQUIRED.getMessage());
         }
 
         return tryCount;
@@ -16,7 +19,7 @@ public class InputToRacingTryCountConverter {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 숫자여야 합니다.");
+            throw new IllegalArgumentException(NUMERIC_TRY_COUNT_REQUIRED.getMessage());
         }
     }
 

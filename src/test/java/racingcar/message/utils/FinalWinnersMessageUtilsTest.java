@@ -2,12 +2,12 @@ package racingcar.message.utils;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.converter.StringToRacingCarsConverter;
+import racingcar.converter.StringToRacingTryCountConverter;
 import racingcar.domain.Racing;
 import racingcar.domain.RacingCar;
-import racingcar.input.converter.InputToRacingCarsConverter;
-import racingcar.input.converter.InputToRacingTryCountConverter;
 
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
@@ -15,13 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FinalWinnersMessageUtilsTest {
 
-    InputToRacingCarsConverter inputToRacingCarsConverter;
-    InputToRacingTryCountConverter inputToRacingTryCountConverter;
+    StringToRacingCarsConverter stringToRacingCarsConverter;
+    StringToRacingTryCountConverter stringToRacingTryCountConverter;
 
     @BeforeEach
     void before() {
-        inputToRacingCarsConverter = new InputToRacingCarsConverter();
-        inputToRacingTryCountConverter = new InputToRacingTryCountConverter();
+        stringToRacingCarsConverter = new StringToRacingCarsConverter();
+        stringToRacingTryCountConverter = new StringToRacingTryCountConverter();
     }
 
     @Test
@@ -31,10 +31,10 @@ public class FinalWinnersMessageUtilsTest {
         raceStartWithCarFilter(racing, this::isCarNamePobi);
 
         //when
-        String message = FinalWinnersMessageUtils.winnersMessage(racing.getWinners());
+        String message = FinalWinnersMessageUtils.generateFinalWinnersMessage(racing.getWinners());
 
         //then
-        assertThat(message).isEqualTo("최종 우승자: pobi");
+        assertThat(message).isEqualTo("최종 우승자 : pobi");
     }
 
     @Test
@@ -45,15 +45,15 @@ public class FinalWinnersMessageUtilsTest {
         raceStartWithCarFilter(racing, this::isTrue);
 
         //when
-        String message = FinalWinnersMessageUtils.winnersMessage(racing.getWinners());
+        String message = FinalWinnersMessageUtils.generateFinalWinnersMessage(racing.getWinners());
 
         //then
-        assertThat(message).isEqualTo("최종 우승자: pobi, woni");
+        assertThat(message).isEqualTo("최종 우승자 : pobi, woni");
     }
 
     private Racing initRacing() {
-        LinkedList<RacingCar> cars = inputToRacingCarsConverter.convert("pobi,woni");
-        int tryCount = inputToRacingTryCountConverter.convert("5");
+        LinkedHashSet<RacingCar> cars = stringToRacingCarsConverter.convert("pobi,woni");
+        int tryCount = stringToRacingTryCountConverter.convert("5");
 
         return Racing.of(cars, tryCount);
     }
