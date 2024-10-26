@@ -24,6 +24,7 @@ public class Car implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return 0;
+        Car compareCar = (Car) o;
+        return this.mileage.compareTo(compareCar.mileage);
     }
 }
