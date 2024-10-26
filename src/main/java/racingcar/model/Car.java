@@ -1,8 +1,7 @@
 package racingcar.model;
 
-import racingcar.exception.CarNameLengthException;
+import racingcar.exception.CarException;
 import racingcar.strategy.Mode;
-import racingcar.validation.CarNameValidation;
 import racingcar.view.OutputView;
 
 public class Car {
@@ -10,14 +9,12 @@ public class Car {
     private Mode mode;
 
     public Car(String carName) {
-        validateCarName(carName);
+        validate(carName);
         this.carName = carName;
     }
 
-    private void validateCarName(String carName) {
-        if (CarNameValidation.validateCarNameLength(carName)) {
-            throw new CarNameLengthException();
-        }
+    private void validate(String carName) {
+        CarException.nameException(carName);
     }
 
     public void tryMoving() {
