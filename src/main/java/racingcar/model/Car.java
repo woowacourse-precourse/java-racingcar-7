@@ -14,6 +14,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void move(){
         int randomInt = Randoms.pickNumberInRange(0, 9);
         if(randomInt >= 4){
