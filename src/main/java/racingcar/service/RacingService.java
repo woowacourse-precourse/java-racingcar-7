@@ -16,16 +16,18 @@ public class RacingService {
     }
 
     public int insertTryCount(String input) {
-        Validator.validateNumericInput(input);
-        int attemptCount = Integer.parseInt(input);
-        Validator.validateAttemptCount(attemptCount);
-        return attemptCount;
+        try {
+            Validator.validateNumericInput(input);
+            int attemptCount = Integer.parseInt(input);
+            Validator.validateAttemptCount(attemptCount);
+            return attemptCount;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
-    public void race(int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            cars.allMove();
-        }
+    public void moveCars() {
+        cars.allMove();
     }
 
     public List<String> findWinners() {
@@ -39,6 +41,7 @@ public class RacingService {
     public List<Integer> fetchCarsPositions() {
         return cars.fetchCarsPositions();
     }
+
     private List<Car> createCarsFromInput(String input) {
         String[] carInputs = input.split(",");
         List<Car> inputCars = new ArrayList<>();
@@ -52,7 +55,4 @@ public class RacingService {
     private CarName createCarName(String name) {
         return CarName.from(name);
     }
-
-
-
 }
