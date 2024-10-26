@@ -6,8 +6,8 @@ import racingcar.constant.Constant;
 import java.util.ArrayList;
 
 public class InputView {
-    private String players;
-    private int trial;
+    private static String players;
+    private static int trial;
 
     public void inputGameInfo() {
         System.out.println(Constant.INPUT_PLAYERS_PROMPT);
@@ -17,6 +17,9 @@ public class InputView {
     }
 
     private ArrayList<String> parseCarNames(String inputStr){
+        if(inputStr == null) {
+            return null;
+        }
         ArrayList<String> carNames = new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
         return carNames;
     }
