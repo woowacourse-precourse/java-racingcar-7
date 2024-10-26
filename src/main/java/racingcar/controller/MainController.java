@@ -1,9 +1,6 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import racingcar.domain.AttemptCounter;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.CarsRegistrar;
 import racingcar.domain.NumberMaker;
@@ -60,14 +57,8 @@ public class MainController {
         Output.printIntermediateScore(racingCarScoreMachine.getCarsNameAndDistance());
     }
 
-    //todo 아예 cars에서 이름으로 받아오는게 나을래나?, 그렇다기에는 출력에 필요한 데이터를 위해서 너무 객체 내부에서 가공해서? 보내는 느낌안데
-    //todo 아 RacingCarScoreMachine 에서 하자.!
     private void printWinningCarResult(RacingCarScoreMachine racingCarScoreMachine) {
-        List<String> winningCarNames = new ArrayList<>();
-        for (Car car : racingCarScoreMachine.getWinningCarS()) {
-            winningCarNames.add(car.getName());
-        }
-        Output.printWinningCars(winningCarNames);
+        Output.printWinningCars(racingCarScoreMachine.getWinningCarsNames());
     }
 
 }

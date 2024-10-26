@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.AttemptCounter;
@@ -18,8 +19,6 @@ public class RacingCarScoreMachine {
     private final static int FORWARD_DISTANCE = 1;
 
 
-    private int attemptCounterValue = 0;
-
     public RacingCarScoreMachine(Cars cars, AttemptCounter attemptManager, NumberMaker randomNumberMaker) {
         this.cars = cars;
         this.attemptCounter = attemptManager;
@@ -27,7 +26,7 @@ public class RacingCarScoreMachine {
     }
 
     public boolean isOverRace() {
-        return attemptCounter.isEndAttempt(attemptCounterValue);
+        return attemptCounter.isEndAttempt();
     }
 
     public void runRace() {
@@ -37,7 +36,7 @@ public class RacingCarScoreMachine {
                 car.updateDistance(FORWARD_DISTANCE);
             }
         }
-        attemptCounterValue++;
+        attemptCounter.decrease();
     }
 
     public Set<Car> getCarsNameAndDistance() {
@@ -45,9 +44,12 @@ public class RacingCarScoreMachine {
     }
 
 
-    //todo 이름으로 넘기기
-    public List<Car> getWinningCarS() {
-        return cars.getWinningCar();
+    public List<String> getWinningCarsNames() {
+        List<String> result = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            result.add(car.getName());
+        }
+        return result;
     }
 
 }
