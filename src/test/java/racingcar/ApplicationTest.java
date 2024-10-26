@@ -12,7 +12,14 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+
     @Test
+    void 콘솔_파라미터_테스트() {
+        assertSimpleTest(() -> {
+            run("koo,sang,woo","3");
+        });
+    }
+
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
