@@ -13,7 +13,6 @@ class IOControllerTest extends NsTest{
     IOController ioController = new IOController();
     Car testCar1, testCar2, testCar3;
     List<Car> testCarList;
-    NsTest nsTest;
 
     @BeforeEach
     void setUp() {
