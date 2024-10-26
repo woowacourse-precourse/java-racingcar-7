@@ -1,8 +1,7 @@
 package exceptor;
 
-import static inspector.InspectName.letterCounter;
-
 import constant.Constants;
+import static utils.LetterCounter.letterCounter;
 
 public class ExceptionHandler {
     public static void detectInvalidPlayerTurn(String inputTurn){
