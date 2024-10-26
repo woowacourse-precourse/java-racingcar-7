@@ -11,7 +11,13 @@ public class Input {
         validateInput(carNames);
         return addCar(carNames);
     }
-    
+
+    public int getAttemptCount() {
+        String attemptCount = Console.readLine();
+        validateInteger(attemptCount);
+        return Integer.parseInt(attemptCount);
+    }
+
     public List<Car> addCar(String name) {
         List<Car> cars = new ArrayList<>();
         for (String s : name.split(",")) {
