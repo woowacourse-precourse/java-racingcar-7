@@ -63,7 +63,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+                        .hasMessageContaining("게임 횟수는 양수를 입력해 주세요.")
         );
     }
 
@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "one"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+                        .hasMessageContaining("게임 횟수는 양수를 입력해 주세요.")
         );
     }
 
@@ -81,16 +81,16 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+                        .hasMessageContaining("게임 횟수는 양수를 입력해 주세요.")
         );
     }
 
     @Test
     void 횟수_공백_입력_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni", ""))
+                assertThatThrownBy(() -> runException("pobi,woni", " "))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("횟수는 양수를 입력해 주세요.")
+                        .hasMessageContaining("게임 횟수는 공백이 될 수 없습니다.")
         );
     }
 
