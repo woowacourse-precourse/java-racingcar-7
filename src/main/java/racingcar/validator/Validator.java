@@ -25,4 +25,10 @@ public class Validator {
             }
         }
     }
+
+    public void validatePositiveNumber(int attemptCount) {
+        if (attemptCount < 0) {
+            throw new IllegalArgumentException("음수가 아닌 양수를 입력 해야합니다.");
+        }
+    }
 }

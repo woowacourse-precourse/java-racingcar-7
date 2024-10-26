@@ -48,7 +48,9 @@ public class Controller {
     }
 
     private int inputNumberOfAttempts() {
-        return inputView.inputAttemptCount();
+        int attemptCount = inputView.inputAttemptCount();
+        validator.validatePositiveNumber(attemptCount);
+        return attemptCount;
     }
 
     private void displayRacingResults() {
