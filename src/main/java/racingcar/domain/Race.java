@@ -50,4 +50,19 @@ public class Race {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalStateException(RaceErrorMessage.RACE_NOT_START.getMessage()));
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
 }
