@@ -22,9 +22,21 @@ public class RacingController {
     }
 
     public void run() {
+        /*
+         * 상수 데이터 출력
+         */
         outputView.askCarName();
+        /*
+         * 자동차 이름 입력 받기
+         */
         String carNames = inputView.askCarName();
+        /*
+         * 구분자 기분으로 문자열 리스트로 변환
+         */
         List<String> carList = stringSplitter.split(carNames);
+        /*
+         * Racingcar 객체를 Racingcars 객체 리스트에 저장
+         */
         racingService.saveCarName(carList);
     }
 }
