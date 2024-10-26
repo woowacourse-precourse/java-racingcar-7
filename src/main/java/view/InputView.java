@@ -20,7 +20,14 @@ public class InputView {
         if (countString.isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.COUNTS_INPUT_EMPTY);
         }
+        if (!isNumeric(countString)) {
+            throw new IllegalArgumentException(ExceptionMessage.COUNTS_INPUT_IS_NOT_NUMBER);
+        }
         return Integer.parseInt(countString);
+    }
+
+    public boolean isNumeric(String countString) {
+        return countString.matches("-?\\d+");
     }
 
 }

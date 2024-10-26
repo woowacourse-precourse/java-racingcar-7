@@ -10,4 +10,5 @@ public class ExceptionMessage {
     public static final String COUNTS_VALUE_INVALID = "시도할 횟수가 0이하 입니다";
     public static final String CARS_INPUT_END_ERROR = "자동차 입력 문자열 마지막이 쉼표로 끝납니다";
     public static final String CAR_NAME_HAVE_WHITESPACE = "자동차 이름 중간에 띄어쓰기가 있습니다";
+    public static final String COUNTS_INPUT_IS_NOT_NUMBER = "시도할 횟수에 숫자가 아닌 값이 들어왔습니다";
 }
