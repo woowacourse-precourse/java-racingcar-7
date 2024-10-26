@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.model.Car;
+
 public class OutputView {
 
     public void startMessage() {
@@ -8,5 +10,17 @@ public class OutputView {
 
     public void roundMessage() {
         System.out.println("시도할 회수는 몇 회인가요?");
+    }
+
+    public void executeMessage() {
+        System.out.println("실행 결과");
+    }
+
+    public void roundEndMessage(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getForwardCount(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
