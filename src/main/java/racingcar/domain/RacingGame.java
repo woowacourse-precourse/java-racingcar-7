@@ -24,7 +24,7 @@ public class RacingGame {
 		move(cars, turn);
 
 		Winners winners = new Winners(cars.getWinners());
-
+		Output.printWinners(winners.getWinners());
 	}
 
 	private void move(Cars cars, Turn turn) {
