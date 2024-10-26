@@ -37,21 +37,12 @@ public class MainController {
 
     private Cars createCars() {
         CarsFactory carsRegistrar = new CarsFactory();
-        return carsRegistrar.registerCars(inputCarNames());
+        return carsRegistrar.registerCars(Input.inputCarNames());
     }
 
     private AttemptCounter createAttemptManager() {
-        return new AttemptCounter(inputAttemptNumber());
+        return new AttemptCounter(Input.inputAttemptNumber());
     }
-
-    private String inputCarNames() {
-        return Input.inputCarNames();
-    }
-
-    private int inputAttemptNumber() {
-        return Input.inputAttemptNumber();
-    }
-
 
     private void printCarsMiddleDistance() {
         Output.printIntermediateScore(raceService.getCarsNameAndDistance());
