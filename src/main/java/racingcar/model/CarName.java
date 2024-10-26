@@ -40,4 +40,5 @@ public class CarName {
     public String getName() {
         return name;
     }
+
 }

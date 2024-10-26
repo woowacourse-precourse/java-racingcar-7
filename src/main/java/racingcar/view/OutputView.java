@@ -3,7 +3,6 @@ package racingcar.view;
 import java.util.List;
 
 public class OutputView {
-
     public void printCarDistances(List<String> carNames, List<Integer> distances) {
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " : ");

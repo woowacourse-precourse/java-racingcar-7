@@ -21,7 +21,7 @@ public class RacingService {
             int attemptCount = Integer.parseInt(input);
             Validator.validateAttemptCount(attemptCount);
             return attemptCount;
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }

@@ -13,7 +13,7 @@ public class Cars {
         validate();
     }
 
-    public static Cars from(List<Car> cars){
+    public static Cars from(List<Car> cars) {
         return new Cars(cars);
     }
 
@@ -59,7 +59,7 @@ public class Cars {
         }
         return List.copyOf(carNames);
     }
-    
+
     public List<Integer> fetchCarsPositions() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
@@ -84,4 +84,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hashCode(cars);
     }
+
 }

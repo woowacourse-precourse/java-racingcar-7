@@ -47,4 +47,5 @@ public class RacingController {
         String attemptCountInput = inputView.promptForAttemptCount();
         return racingService.insertTryCount(attemptCountInput);
     }
+
 }

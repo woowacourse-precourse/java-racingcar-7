@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
     private final CarName name;
-    private CarDistance distance;
+    private final CarDistance distance;
 
     public Car(CarName name) {
         this.name = name;
@@ -45,4 +45,5 @@ public class Car {
     public String getName() {
         return name.getName();
     }
+
 }

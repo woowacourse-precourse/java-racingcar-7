@@ -5,7 +5,6 @@ import java.util.Objects;
 public class CarDistance {
     private int distance;
 
-
     public CarDistance() {
         this.distance = 0;
     }
