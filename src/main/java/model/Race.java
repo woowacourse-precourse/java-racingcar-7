@@ -48,3 +48,9 @@ public class Race {
        }
        return winners;
     }
+
+    public void printWinner(){
+        List<String> winners = getWinner();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+}
