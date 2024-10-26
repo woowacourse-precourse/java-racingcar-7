@@ -6,19 +6,28 @@ import java.util.Comparator;
 public class Challenge {
 
     private ArrayList<Car> partCars;
-    ArrayList<String> winners;
+    private ArrayList<String> winners;
+    private int totalStep;
 
-    public Challenge() {
+    public Challenge(int totalStep) {
         partCars = new ArrayList<>();
         winners = new ArrayList<>();
+        this.totalStep= totalStep;
     }
 
     public void addCar(Car car) {
         partCars.add(car);
     }
 
-    public void makeWinnerList()
-    {
+    public void runChallenge() {
+        for(int i=0; i<totalStep; i++) {
+            for(Car tmpcar: partCars) {
+                tmpcar.moveDistance();
+            }
+        }
+    }
+
+    public void makeWinnerList() {
         partCars.sort(Comparator.comparingInt(Car::getDistance).reversed());
         int tmp = partCars.get(0).getDistance(); // 가장 앞에 있는(가장 큰 distance)
 

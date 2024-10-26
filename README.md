@@ -10,14 +10,16 @@
     - Car : name, distance
     - Challenge : Car을 ArrayList로 저장-> 대회에 참가한 자동차들
 - [ ] B. IO class 구현
-    - [x] Car정보, Move count 입력 받는 함수 구현
+    - [x] inputCars()- Car 이름, 
+    - [x] inputCount()- Move count 입력 받는 함수 구현
     - [ ] 입력의 유효성 검사(입력형식, 이름길이, 자동차의 동일이름 처리 등등)
 - [x] C. Car class 함수 구현
     - 전진(moveCarFront) 기능 구현-> random 사용
 - [x] D. Challenge 클래스에서 경주 진행하기
-    - [x] 자동차 등록하기
-    - [x] 우승자 선정하기
-    - [x] 중간과정 출력, 최종출력 함수 구현
+    - [x] addCar()- 자동차 등록하기
+    - [x] makeWinnerList()- 우승자 선정하기
+    - [x] printStep()- 중간과정 출력, printWinner()- 최종출력 함수 구현
+    - [x] runChallenge()- 입력한 숫자만큼 car move 수행하는 함수 구현
 - [ ] E. main 에서 경주 구현하기
     - 입력객체 생성후 입력받기
     - 입력에 따라 Car 객체를 생성하기-> ArrayList에 저장
