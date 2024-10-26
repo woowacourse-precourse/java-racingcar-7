@@ -16,4 +16,7 @@ public class OutputView {
         System.out.println(Utils.INPUT_MESSAGE);
     }
 
+    public void inputCountMessage(){
+        System.out.println(Utils.INPUT_COUNT_MESSAGE);
+    }
 }

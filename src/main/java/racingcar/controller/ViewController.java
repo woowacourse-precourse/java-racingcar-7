@@ -18,5 +18,7 @@ public class ViewController {
     public void printGuide(){
         outputView.inputMessage();
         inputView.readLine();
+        outputView.inputCountMessage();
+        inputView.readLine();
     }
 }
