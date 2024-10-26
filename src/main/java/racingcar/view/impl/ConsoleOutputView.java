@@ -29,7 +29,7 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void displayEachRoundStatus(CarDomains cars) {
         System.out.println(
-                cars.getCars().stream()
+                cars.getCarDomainList().stream()
                         .map(car -> car.getName() + " : " + "-".repeat(car.getDistance()))
                         .collect(Collectors.joining(System.lineSeparator())) + System.lineSeparator()
         );
@@ -38,7 +38,7 @@ public class ConsoleOutputView implements OutputView {
     @Override
     public void displayCarRaceWinner(CarDomains winners) {
         System.out.println(
-                "최종 우승자 : " + winners.getCars().stream()
+                "최종 우승자 : " + winners.getCarDomainList().stream()
                         .map(CarDomain::getName)
                         .collect(Collectors.joining(", "))
         );
