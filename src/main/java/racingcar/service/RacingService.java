@@ -7,9 +7,12 @@ public class RacingService {
     public void separateCarNames (String namesOfCars) {
         List<String> nameOfCar = new ArrayList<>();
         nameOfCar = List.of(namesOfCars.split(","));
+    }
 
-        for (String a : nameOfCar) {
-            System.out.println(a);
+    public void race (int numberOfRaces) {
+        while (numberOfRaces > 0) {
+
+            numberOfRaces--;
         }
     }
 }
