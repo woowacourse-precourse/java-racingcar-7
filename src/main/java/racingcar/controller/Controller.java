@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
+import racingcar.validator.Validator;
 import racingcar.view.InputView;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ public class Controller {
 
     public void run(){
 
-        List<Car> carList = inputCarNameToList();
+        List<Car> carList = Validator.validateSameCarName(inputCarNameToList());
         int trialCount = InputView.inputTrialCount();
 
         racingGame = new RacingGame(carList);
