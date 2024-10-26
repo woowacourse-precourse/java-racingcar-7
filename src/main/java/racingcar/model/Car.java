@@ -17,10 +17,6 @@ public class Car {
         return distance;
     }
 
-    public void addDistance(int distance) {
-        this.distance += distance;
-    }
-
     public void addDistance(boolean willMove) {
         if (willMove) {
             this.distance += 1;
