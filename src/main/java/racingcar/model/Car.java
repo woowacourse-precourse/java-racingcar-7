@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.CarNameValidator;
+
 public class Car {
 
     private int position;
@@ -7,6 +9,9 @@ public class Car {
     private static final int MIN_FORWARD_REQUIREMENT = 4;
 
     public Car(String name) {
+        CarNameValidator.checkOverRange(name);
+        CarNameValidator.checkSpace(name);
+
         this.name = name;
     }
 
