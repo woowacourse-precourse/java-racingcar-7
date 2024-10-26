@@ -7,9 +7,11 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final String SPLITOR = ",";
-
     private List<Car> cars;
+
+    public Cars(String carsInput) {
+        this.cars = CarsFactory.makeCarList(carsInput);
+    }
 
     public List<Car> getClonedCars() {
         List<Car> clonedCars=cars.stream()
@@ -17,18 +19,6 @@ public class Cars {
                 .collect(Collectors.toUnmodifiableList());
 
         return clonedCars;
-    }
-
-    public Cars(String carsInput) {
-        this.cars = CarsFactory.makeCarList(carsInput);
-    }
-
-    private List<Car> makeCarList(String carsInput) {
-        List<Car> carList = Arrays.stream(carsInput.split(SPLITOR))
-                .map(carName -> new Car(carName, ""))
-                .toList();
-
-        return carList;
     }
 
     public void race(NumberGenerator numberGenerator) {
