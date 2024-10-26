@@ -5,6 +5,8 @@ import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RaceController {
     public void run() {
         String inputCars = InputView.inputCars();
@@ -19,6 +21,7 @@ public class RaceController {
             carsDto = raceService.playOneRound(carsDto);
             OutputView.outputEachRound(carsDto);
         }
-
+        List<String> result =  raceService.raceResult(carsDto);
+        OutputView.outputRaceResult(result);
     }
 }
