@@ -7,22 +7,14 @@ import racingcar.validation.InputValidator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameService {
     public List<Car> createCars(String carNamesInput) {
-        List<String> carNames = parseCarNames(carNamesInput);
-
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-        return cars;
-    }
-
-    private List<String> parseCarNames(String input) {
-        List<String> carNames = Arrays.asList(input.split(","));
-        InputValidator.validateCarNames(carNames);
-        return carNames;
+        List<String> carNames = parseAndValidateCarNames(carNamesInput);
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public int parseMoveCount(String moveCountInput) {
@@ -37,17 +29,22 @@ public class RacingGameService {
     }
 
     public List<Car> findWinners(List<Car> cars) {
-        int maxPosition = cars.stream()
+        int maxPosition = getMaxPosition(cars);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition(List<Car> cars) {
+        return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
+    }
 
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winners.add(car);
-            }
-        }
-        return winners;
+    private List<String> parseAndValidateCarNames(String input) {
+        List<String> carNames = Arrays.asList(input.split(","));
+        InputValidator.validateCarNames(carNames);
+        return carNames;
     }
 }
