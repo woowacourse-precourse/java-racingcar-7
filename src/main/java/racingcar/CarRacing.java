@@ -1,8 +1,8 @@
 package racingcar;
 
 public class CarRacing {
-    private static final String RACING_START_MESSAGE = "\n실행 결과\n";
-    private static final String PROGRESS_SEPARATOR = "\n";
+    private static final String RACING_START_MESSAGE = "%n실행 결과%n";
+    private static final String PROGRESS_SEPARATOR = "%n";
 
     private CarRacing() {
     }

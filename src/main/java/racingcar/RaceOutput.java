@@ -1,17 +1,17 @@
 package racingcar;
 
 public class RaceOutput {
-    private static final String PROGRESS_FORMAT = "%s : %s\n";
+    private static final String PROGRESS_FORMAT = "%s : %s%n";
     private static final String PROGRESS = "-";
     private static final String WINNER_SEPARATOR = ", ";
-    private static final String WINNER_FORMAT = "최종 우승자 : %s\n";
+    private static final String WINNER_FORMAT = "최종 우승자 : %s%n";
 
     private RaceOutput() {
     }
 
     // TODO: 함수 리팩토링 고려
     public static void print(String message) {
-        System.out.print(message);
+        System.out.printf(message);
     }
 
     public static void printProgress(Cars cars) {
