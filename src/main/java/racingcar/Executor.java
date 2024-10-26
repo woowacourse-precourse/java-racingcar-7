@@ -25,10 +25,10 @@ public class Executor {
     }
 
     public void run() {
-        String inputcarNamesStr = ioController.enterCarNames();
+        String inputCarNamesStr = ioController.enterCarNames();
 
-        validator.validateCarNamesInput(inputcarNamesStr);
-        List<String> carNames = parser.parseCarNamesByOperator(inputcarNamesStr, operator);
+        validator.validateCarNamesInput(inputCarNamesStr);
+        List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, operator);
 
         validator.validateCarNamesLength(carNames, nameLengthLimit);
         saveCarsByName(carNames);
