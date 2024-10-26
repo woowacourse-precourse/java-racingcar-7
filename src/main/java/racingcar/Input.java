@@ -42,4 +42,12 @@ public class Input {
             throw new IllegalArgumentException("입력은 문자열로 끝나야 합니다.");
         }
     }
+
+    public void validateSeparator(String input) {
+        for (String s : input.split(",")) {
+            if (s == null || s.isEmpty()) {
+                throw new IllegalArgumentException("쉼표가 연속이거나 이름 사이에 존재하지 않습니다.");
+            }
+        }
+    }
 }
