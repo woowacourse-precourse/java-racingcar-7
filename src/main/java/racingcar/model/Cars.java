@@ -6,16 +6,15 @@ import java.util.List;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
-    public Cars(List<Car> cars, String[] carNames) {
-        makeCarListWithNames(cars, carNames);
-        this.cars = cars;
+    public Cars(String[] carNames) {
+        makeCarListWithNames(carNames);
     }
 
-    private void makeCarListWithNames(List<Car> cars, String[] carNames) {
+    private void makeCarListWithNames(String[] carNames) {
         for (String carName : carNames) {
-            cars.add(makeCar(carName));
+            this.cars.add(makeCar(carName));
         }
     }
 

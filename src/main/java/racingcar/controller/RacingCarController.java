@@ -33,6 +33,15 @@ public class RacingCarController {
 
     public void run(){
 
+        outputView.printInsertRacingCarName();
+        String carNamesWithDelimeter = inputView.racingCarNamesWithDelimeter();
+
+        Cars cars = seperateCarNameService.seperate(carNamesWithDelimeter);
+
+
+
+
+
 
     }
 
