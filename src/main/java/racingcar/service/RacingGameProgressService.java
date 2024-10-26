@@ -27,6 +27,6 @@ public class RacingGameProgressService {
             }
             roundResult.add(car.clone());
         }
-        return new RacingGameRoundResult(roundResult, currentRound);
+        return new RacingGameRoundResult(roundResult);
     }
 }

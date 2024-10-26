@@ -1,7 +1,7 @@
 package racingcar.model;
 
 public class RacingGameMaxRound {
-    private int round;
+    private final int round;
 
     public RacingGameMaxRound(String roundInput) {
         this.round = parseGameRound(roundInput);

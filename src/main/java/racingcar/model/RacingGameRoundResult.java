@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameRoundResult {
-    private List<Car> cars;
-    private int round;
+    private final List<Car> cars;
 
-    public RacingGameRoundResult(List<Car> cars, int round) {
-        this.round = round;
+    public RacingGameRoundResult(List<Car> cars) {
         this.cars = cars;
     }
 
