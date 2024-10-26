@@ -28,7 +28,7 @@ public class CarListTest {
     }
 
     @Test
-    public void CarList_자동차목록세팅_테스트_통과() {
+    public void CarList_자동차목록세팅_테스트() {
         List<String> carNames = new ArrayList<>();
         carNames.add("carA");
         carNames.add("carB");
@@ -39,7 +39,7 @@ public class CarListTest {
     }
 
     @Test
-    public void CarList_자동차목록세팅_테스트_불통과_중복된차() {
+    public void CarList_자동차목록세팅_예외처리_테스트_중복된차() {
         List<String> carNames = new ArrayList<>();
         carNames.add("carA");
         carNames.add("carB");
