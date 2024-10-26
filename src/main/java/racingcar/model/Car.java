@@ -36,15 +36,15 @@ public class Car {
         return name;
     }
 
-    public String getMoveStatus(Direction direction) {
+    public void moveToOrientedDirection(Direction direction) {
         final String moved = "-";
         if (direction == Direction.FORWARD) {
             moveStatus.append(moved);
         }
+    }
+
+    public String getMoveStatus() {
         return moveStatus.toString();
     }
 
-    public StringBuffer getMoveStatus() {
-        return moveStatus;
-    }
 }
