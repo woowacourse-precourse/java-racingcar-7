@@ -50,11 +50,11 @@ public class Car {
     }
 
     public static void validateNameFormat(String inputname) {
-        String rex = "[\\W]+";
+        String rex = "^[\\w]+$";
         Pattern pattern = Pattern.compile(rex);
         Matcher matcher = pattern.matcher(inputname);
 
-        if (matcher.find()) {
+        if (!matcher.matches()) {
             throw new IllegalArgumentException("이름은 알파벳,숫자와 언더바(_)만 사용할 수 있습니다.");
         }
     }
