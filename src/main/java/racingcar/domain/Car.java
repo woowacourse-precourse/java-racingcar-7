@@ -1,7 +1,6 @@
 package racingcar.domain;
 
-import racingcar.utils.MovingUtils;
-import java.math.BigInteger;
+import racingcar.utils.moving.MovingStrategy;
 
 public class Car {
 
@@ -17,21 +16,21 @@ public class Car {
         return name.getName();
     }
 
-    public int getPosition() {
-        return position.positionDistance();
+    public int getPositionDistance() {
+        return position.distance();
     }
 
     public String currentPositionFormat() {
         return name.getName() + " : " + position.getPosition();
     }
 
-    public void move() {
-        if (MovingUtils.isMovable()) {
+    public void move(MovingStrategy strategy) {
+        if (strategy.isMovable()) {
             position.forward();
         }
     }
 
-    public static Car from(Name name) {
-        return new Car(name.getName());
+    public static Car from(String name) {
+        return new Car(name);
     }
 }

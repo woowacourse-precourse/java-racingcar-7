@@ -2,6 +2,7 @@ package racingcar.racing;
 
 import racingcar.domain.*;
 import racingcar.dto.InputDto;
+import racingcar.utils.moving.MovingByRandomNumber;
 
 public class RacingGame extends RacingGameTemplate {
 
@@ -22,7 +23,7 @@ public class RacingGame extends RacingGameTemplate {
     }
 
     public static RacingGame initGame(InputDto dto) {
-        RaceManager manager = RaceManager.createRaceManager(dto);
+        RaceManager manager = RaceManager.createRaceManager(dto, new MovingByRandomNumber());
         return new RacingGame(manager);
     }
 }
