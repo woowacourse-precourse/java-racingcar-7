@@ -28,7 +28,16 @@ public class RacingGameController {
         }
     }
 
+    private void innerGameLogic() {
+        for(int i=0; i<roundCount; i++) {
+            for(int j=0; j<playerNum; j++) {
+                carPlayers.get(i).move();
+            }
+        }
+    }
+
     public void start() {
         inputView.inputGameInfo();
+        innerGameLogic();
     }
 }

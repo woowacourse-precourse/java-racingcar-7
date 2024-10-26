@@ -7,11 +7,12 @@ import racingcar.constant.Constant;
 
 public class CarPlayer {
     private String name;
-    private ArrayList<String> steps;
+    private String steps;
+    private int moveCount;
 
     public void move() {
         if (canMove()) {
-            steps.add(Constant.STEP_UNIT);
+            steps += Constant.STEP_UNIT;
         }
     }
 
@@ -20,7 +21,11 @@ public class CarPlayer {
                 >= Constant.RANDOM_NUMBER_FOR_MOVE;
     }
 
-    public ArrayList<String> getSteps() {
+    public int getMoveCount() {
+        return steps.length();
+    }
+
+    public String getSteps() {
         return steps;
     }
 
