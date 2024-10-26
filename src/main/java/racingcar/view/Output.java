@@ -13,6 +13,13 @@ public class Output {
 		System.out.println();
 	}
 
+	public static void printWinners(List<Car> cars) {
+		List<String> winnerNames = cars.stream().map(Car::getName).toList();
+		String winnerString = String.join(", ", winnerNames);
+
+		System.out.println("최종 우승자" + winnerString);
+	}
+
 	private static void printCurrentCarStatus(Car car) {
 		StringBuilder positionString = new StringBuilder();
 		for (int i = 0; i < car.getPosition(); i++) {
