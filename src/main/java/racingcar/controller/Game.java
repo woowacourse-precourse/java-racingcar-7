@@ -22,14 +22,16 @@ public class Game {
 
         List<Car> carList = createCar(carNames);
 
-        OutputView.getInstance().println("실행 결과");
+        OutputView.getInstance().println("\n실행 결과");
 
         while (moveCount-- > 0) {
             moveCars(carList);
             printCarPositions(carList);
         }
 
+        List<String> winnerList = findWinner(carList);
 
+        OutputView.getInstance().printWinnerName(winnerList);
     }
 
     private List<Car> createCar(String[] carNames) {
@@ -54,5 +56,24 @@ public class Game {
 
         OutputView.getInstance().printCarPositions(carPositionDTOList);
     }
+
+    private List<String> findWinner(List<Car> carList) {
+        int maxPosition = -1;
+        List<String> nameList = new ArrayList<>();
+
+        for (Car car : carList) {
+            int curPosition = car.getPosition();
+            if (curPosition > maxPosition) {
+                maxPosition = curPosition;
+                nameList.clear();
+                nameList.add(car.getName());
+            } else if (curPosition == maxPosition) {
+                nameList.add(car.getName());
+            }
+        }
+
+        return nameList;
+    }
+
 
 }
