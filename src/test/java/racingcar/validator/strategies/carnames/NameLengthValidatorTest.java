@@ -1,7 +1,9 @@
 package racingcar.validator.strategies.carnames;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.view.ErrorMessage;
 
@@ -11,15 +13,16 @@ public class NameLengthValidatorTest {
 
     @Test
     void validate_WhenNameTooLong_ShouldThrowException() {
-        String name = "Ferrari"; // 예를 들어, 최대 길이가 5라고 가정
+        List<String> names = List.of("Ferrari"); // 최대 길이 5라고 가정
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> validator.validate(name))
+                .isThrownBy(() -> validator.validate(names))
                 .withMessage(ErrorMessage.NAME_TOO_LONG.getMessage());
     }
 
     @Test
     void validate_WhenNameLengthValid_ShouldNotThrowException() {
-        String name = "Pobi"; // 길이가 유효해야 함
-        validator.validate(name); // 예외가 발생하지 않아야 함
+        List<String> names = List.of("Pobi", "Woni"); // 유효한 이름 길이
+        assertThatNoException().isThrownBy(() -> validator.validate(names));
     }
+
 }
