@@ -10,6 +10,9 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다: " + name);
         }
+        if (!name.matches("^[a-zA-Z]+$")) {
+            throw new IllegalArgumentException("자동차 이름은 영어 알파벳으로만 구성되어야 합니다: " + name);
+        }
         this.name = name;
     }
 
