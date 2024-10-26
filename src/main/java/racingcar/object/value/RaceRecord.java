@@ -1,6 +1,7 @@
 package racingcar.object.value;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public record RaceRecord(List<LapRecord> lapRecords) {
 
@@ -11,6 +12,10 @@ public record RaceRecord(List<LapRecord> lapRecords) {
     public Winners judge() {
         LapRecord lastLapRecord = getLastLapRecord();
         return lastLapRecord.determineFirstPlace();
+    }
+
+    public Stream<LapRecord> stream() {
+        return lapRecords.stream();
     }
 
     private LapRecord getLastLapRecord() {

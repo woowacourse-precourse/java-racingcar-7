@@ -1,6 +1,7 @@
 package racingcar.object.value;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public record LapRecord(List<CarRecord> carRecords) {
 
@@ -18,6 +19,10 @@ public record LapRecord(List<CarRecord> carRecords) {
                 .filter(carRecord -> highestMileage.equals(carRecord.mileage()))
                 .map(CarRecord::carName)
                 .toList()));
+    }
+
+    public Stream<CarRecord> stream() {
+        return carRecords.stream();
     }
 
 }
