@@ -21,4 +21,12 @@ public class Racing {
                 .max()
                 .orElse(0);
     }
+
+    public List<String> getWinner(List<Car> cars) {
+        int max = compareMoveCount(cars);
+        return cars.stream()
+                .filter(car -> car.getMoveCount() == max)
+                .map(Car::getName)
+                .toList();
+    }
 }
