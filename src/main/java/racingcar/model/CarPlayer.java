@@ -13,6 +13,7 @@ public class CarPlayer {
     public void move() {
         if (canMove()) {
             steps += Constant.STEP_UNIT;
+            System.out.println("steps: " + steps);
         }
     }
 
@@ -21,8 +22,8 @@ public class CarPlayer {
                 >= Constant.RANDOM_NUMBER_FOR_MOVE;
     }
 
-    public int getMoveCount() {
-        return steps.length();
+    public String getName() {
+        return name;
     }
 
     public String getSteps() {

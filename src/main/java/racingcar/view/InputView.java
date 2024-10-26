@@ -6,8 +6,8 @@ import racingcar.constant.Constant;
 import java.util.ArrayList;
 
 public class InputView {
-    private static String players;
-    private static int trial;
+    private String players;
+    private int trial;
 
     public void inputGameInfo() {
         System.out.println(Constant.INPUT_PLAYERS_PROMPT);
