@@ -12,7 +12,7 @@ public class RacingGameController {
     private final InputView inputView;
     private final OutputView outputView;
     private ArrayList<CarPlayer> carPlayers = new ArrayList<>();
-    private ArrayList<RoundRecord> roundRecords = new ArrayList<RoundRecord>();
+    private ArrayList<RoundRecord> roundRecords = new ArrayList<>();
 
     public RacingGameController() {
         this.inputView = new InputView();
@@ -56,6 +56,9 @@ public class RacingGameController {
         setCarPlayersList();
         setRoundRecordsList();
         moveCarPlayers();
+        outputView.setGameResult(roundRecords);
+        outputView.setGameRound(roundCount);
+        outputView.printGameResult();
     }
 
 }

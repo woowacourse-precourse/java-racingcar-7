@@ -9,4 +9,10 @@ public class RoundRecord {
         String playerRecord = carPlayer.getName() + " : " + carPlayer.getSteps();
         playersRecordByRound.add(playerRecord);
     }
+
+    public void getRoundResult() {
+        for (String playerRecord : playersRecordByRound) {
+            System.out.println(playerRecord);
+        }
+    }
 }
