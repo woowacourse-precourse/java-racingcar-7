@@ -25,4 +25,13 @@ public class InputHandlerTest {
         assertThatThrownBy(() -> inputHandler.parseCarNames(blankInput))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("")
+    void areAllCarNameLengthsValid_Test() {
+        String input = "pobi,javabi";
+        List<String> carNames = inputHandler.parseCarNames(input);
+        assertThatThrownBy(() -> inputHandler.areAllCarNameLengthsValid(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

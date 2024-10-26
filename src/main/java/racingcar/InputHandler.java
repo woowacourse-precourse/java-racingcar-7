@@ -26,6 +26,10 @@ public class InputHandler {
     }
 
     boolean areAllCarNameLengthsValid(List<String> carNames) {
-        return carNames.stream().allMatch(this::isCarNameLengthValid);
+        boolean areValid = carNames.stream().allMatch(this::isCarNameLengthValid);
+        if (!areValid) {
+            throw new IllegalArgumentException("자동차 이름은 최대 " + MAX_LENGTH + "자까지 가능");
+        }
+        return true;
     }
 }
