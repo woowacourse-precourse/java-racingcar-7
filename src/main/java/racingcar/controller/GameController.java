@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.model.CarFactory;
 import racingcar.model.Race;
 import racingcar.model.Winner;
@@ -22,5 +23,7 @@ public class GameController {
         carNames = input.getCarNames();
         System.out.println("시도할 회수는 몇 회인가요?");
         tryNum = input.getTryNum();
+
+        List<Car> cars = carFactory.createCarList(carNames);
     }
 }
