@@ -13,6 +13,6 @@ public interface RacingService {
     
     void raceOfCarsAndChance(Cars cars, RacingChance racingChance);
 
-    RacingRecording getResult();
+    RacingRecording getRecord();
 
 }

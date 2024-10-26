@@ -31,8 +31,8 @@ public class RacingServiceImpl implements RacingService {
     }
 
     @Override
-    public RacingRecording getResult() {
-        return repository.getResult();
+    public RacingRecording getRecord() {
+        return repository.getRecord();
     }
 
     private void raceAndSaveProgress(Cars cars, RacingChance racingChance) {

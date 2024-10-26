@@ -41,7 +41,7 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public RacingRecording getResult() {
+    public RacingRecording getRecord() {
         return new RacingRecording(memory);
     }
 
