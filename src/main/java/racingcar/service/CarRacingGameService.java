@@ -17,7 +17,7 @@ public class CarRacingGameService {
 
         OutputView.printRacingResultMessage();
         playRound(carList, round);
-        String winner = getWinner(carList);
+        printWinner(carList);
 
     }
 
@@ -28,17 +28,18 @@ public class CarRacingGameService {
         }
     }
 
-    private String getWinner(List<Car> carList) {
+    private void printWinner(List<Car> carList) {
         int maxPosition = carList.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
 
-        return carList.stream()
+        String winner = carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
 
+        OutputView.printResultWinner(winner);
     }
 
 }

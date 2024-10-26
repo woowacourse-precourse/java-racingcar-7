@@ -24,4 +24,8 @@ public class OutputView {
         });
         System.out.println();
     }
+
+    public static void printResultWinner(String winner) {
+        System.out.println(SystemMessage.OUTPUT_WINNER_MESSAGE.getMessage() + winner);
+    }
 }
