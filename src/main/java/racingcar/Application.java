@@ -20,6 +20,7 @@ public class Application {
     }
 
     private static void playRacing(int attempts, List<Car> carList) {
+        System.out.println("\n실행 결과");
         for (int i = 0; i < attempts; i++) {
             race(carList);
             printCars(carList);
