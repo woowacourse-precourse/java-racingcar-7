@@ -1,7 +1,10 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -13,6 +16,8 @@ public class Application {
         String[] carNamesList = splitCarNames(carNames);
 
         validateCarNames(carNamesList);
+
+        List<Car> cars = createCars(carNamesList);
     }
 
     public static RaceInput getInput() {
@@ -53,6 +58,16 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
             }
         }
+    }
+
+    public static List<Car> createCars(String[] carNamesList) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNamesList) {
+            cars.add(new Car(carName));
+        }
+
+        return cars;
     }
 }
 
