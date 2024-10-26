@@ -5,6 +5,7 @@ import racingcar.car.CarImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static racingcar.utils.InputSplitter.inputSplit;
 
@@ -22,7 +23,9 @@ public class RacingGameImpl implements RacingGame{
 
     @Override
     public List<Car> moveRacingCars(List<Integer> randomNumbers) {
-        return null;
+        IntStream.range(0, racingCars.size())
+                .forEach(i -> racingCars.get(i).move(randomNumbers.get(i)));
+        return List.copyOf(racingCars);
     }
 
     @Override
