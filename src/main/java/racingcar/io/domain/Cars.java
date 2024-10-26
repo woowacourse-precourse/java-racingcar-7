@@ -1,24 +1,35 @@
 package racingcar.io.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
 
+	private static final String DUPLICATION_CAR_NAME_ERROR_MESSAGE = "중복된 자동차 이름이 존재합니다.";
 	private static final String NOT_EQUALS_CARS_COUNT_AND_RANDOM_VALUES_COUNT_ERROR_MESSAGE = "랜덤 값과 자동차의 개수가 일치하지 않습니다.";
 
 	private final List<Car> cars;
 
-	private Cars(List<Car> cars) {
-		this.cars = cars;
+	private Cars(List<String> carNames) {
+
+		validateDuplicateCarName(carNames);
+
+		this.cars = carNames.stream()
+			.map(Car::create)
+			.toList();
 	}
 
 	public static Cars create(List<String> carNames) {
+		return new Cars(carNames);
+	}
 
-		List<Car> cars = carNames.stream()
-			.map(Car::create)
-			.toList();
+	private void validateDuplicateCarName(List<String> carNames) {
+		Set<String> carNamesSet = new HashSet<>(carNames);
 
-		return new Cars(cars);
+		if (carNamesSet.size() != carNames.size()) {
+			throw new IllegalArgumentException(DUPLICATION_CAR_NAME_ERROR_MESSAGE);
+		}
 	}
 
 	public void moveAll(List<Integer> randomValues) {
