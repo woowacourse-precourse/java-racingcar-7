@@ -15,6 +15,11 @@ public class InputHandler {
         return carNames;
     }
 
+    public static int getTimes() {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
+
     public static void checkNameIsAvailable(String carName) {
         if (carName.length() >= 6) {
             throw new IllegalArgumentException();
