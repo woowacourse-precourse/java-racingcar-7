@@ -16,7 +16,6 @@ public class InputViewTest {
     private static final String GAMECOUNT_ERROR_MESSAGE_LENGTH = "시도할 횟수는 1이상 99999이하의 숫자입니다.";
     private static final String GAMECOUNT_ERROR_MESSAGE_FORMAT = "숫자를 입력해주세요.";
 
-
     private final InputView inputView = new InputView();
 
     private static Stream<Arguments> provideCarNameCases() {
@@ -79,14 +78,14 @@ public class InputViewTest {
     @ParameterizedTest
     @MethodSource("provideGameCountCases")
     @DisplayName("시도할 횟수 입력 검증 테스트")
-    public void validateGameCount(String test){
+    public void validateGameCountTest(String test){
         assertTrue(inputView.validateGameCount(test));
     }
 
     @ParameterizedTest
     @MethodSource("provideGameCountExceptionCases")
     @DisplayName("시도할 횟수 입력 에러메시지 테스트")
-    public void provideGameCountExceptionCases(String test, String expected) {
+    public void validateGameCountExceptionTest(String test, String expected) {
         IllegalArgumentException thrownException = assertThrows(IllegalArgumentException.class, () -> inputView.validateGameCount(test));
         assertEquals(expected, thrownException.getMessage());
     }
