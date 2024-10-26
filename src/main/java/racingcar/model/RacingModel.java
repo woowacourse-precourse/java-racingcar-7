@@ -15,7 +15,7 @@ public class RacingModel {
         return cars;
     }
 
-    public boolean canMove() {
+    private boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 }
