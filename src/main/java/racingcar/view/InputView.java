@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 /*
  - [ ] 사용자는 몇 번의 이동을 할 것인지를 입력
- - [ ] 이름은 5자 이하만 가능하다.
- - [ ] 사용자가 잘못된 값을 입력할 경우 IlleagalArgumentException을 발생 시킨 후 애플리케이션 종료
  */
 public class InputView {
     public String[] getCarNames() {
@@ -13,6 +11,22 @@ public class InputView {
 
         String userInput = Console.readLine();
 
-        return userInput.split(",");
+        String[] carNames = userInput.split(",");
+
+        if(!validateCarName(carNames)) {
+            throw new IllegalArgumentException("입력된 자동차 이름이 올바르지 않습니다.");
+        }
+
+        return carNames;
+    }
+
+    private boolean validateCarName(String[] carNames){
+        for (String carName : carNames) {
+            if(carName.isBlank() || carName.length() > 5){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
