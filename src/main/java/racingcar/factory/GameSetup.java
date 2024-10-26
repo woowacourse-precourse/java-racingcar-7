@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGroup;
-import racingcar.domain.game.Round;
+import racingcar.domain.game.GameRound;
 
 public abstract class GameSetup {
 
@@ -17,7 +17,7 @@ public abstract class GameSetup {
         return new CarGroup(carList);
     }
 
-    public static Round setRound(String roundInput) {
-        return new Round(roundInput);
+    public static GameRound setRound(String roundInput) {
+        return new GameRound(roundInput);
     }
 }

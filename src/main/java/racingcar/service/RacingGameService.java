@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.domain.car.CarGroup;
 import racingcar.domain.car.CarInfo;
 import racingcar.domain.game.GameManager;
-import racingcar.domain.game.Round;
+import racingcar.domain.game.GameRound;
 
 public class RacingGameService {
     private final GameManager gameManager;
@@ -14,10 +14,10 @@ public class RacingGameService {
         this.gameManager = gameManager;
     }
 
-    public List<List<CarInfo>> playRound(Round round, CarGroup carGroup) {
+    public List<List<CarInfo>> playRound(GameRound gameRound, CarGroup carGroup) {
         List<List<CarInfo>> roundResult = new ArrayList<>();
 
-        for (int i = 0; i < round.getRound(); i++) {
+        for (int i = 0; i < gameRound.getRound(); i++) {
             gameManager.moveCarsBasedOnRule(carGroup);
             roundResult.add(gameManager.retrieveCarStatus(carGroup));
         }

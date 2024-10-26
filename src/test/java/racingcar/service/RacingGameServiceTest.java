@@ -9,8 +9,8 @@ import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGroup;
 import racingcar.domain.car.CarInfo;
 import racingcar.domain.game.GameManager;
+import racingcar.domain.game.GameRound;
 import racingcar.domain.game.GameRule;
-import racingcar.domain.game.Round;
 import racingcar.domain.game.WinnerDeterminer;
 import racingcar.domain.game.WootecoRule;
 import racingcar.utils.NumberGenerator;
@@ -38,10 +38,10 @@ class RacingGameServiceTest {
     void 각_라운드마다_자동차_상태를_반환한다() {
         // given
         CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("minu")));
-        Round round = new Round("1");
+        GameRound gameRound = new GameRound("1");
 
         // when
-        List<List<CarInfo>> roundResults = service.playRound(round, carGroup);
+        List<List<CarInfo>> roundResults = service.playRound(gameRound, carGroup);
 
         // then
         Assertions.assertThat(roundResults).hasSize(1);

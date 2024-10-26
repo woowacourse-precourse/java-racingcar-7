@@ -1,11 +1,11 @@
 package racingcar.domain.game;
 
-public class Round {
+public class GameRound {
     private final int MAX_ROUNDS = 100;
     private final int MIN_ROUNDS = 1;
     private final int round;
 
-    public Round(String roundInput) {
+    public GameRound(String roundInput) {
         this.round = parseAndValidateRound(roundInput);
     }
 
