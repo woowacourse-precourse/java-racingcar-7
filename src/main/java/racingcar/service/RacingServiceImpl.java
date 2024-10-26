@@ -1,12 +1,16 @@
 package racingcar.service;
 
-import racingcar.model.entity.Car;
-import racingcar.model.entity.Cars;
 import racingcar.model.dto.RacingProgress;
 import racingcar.model.dto.RacingRecording;
-import racingcar.model.entity.RacingChance;
 import racingcar.model.dto.RacingWinners;
+import racingcar.model.entity.Car;
+import racingcar.model.entity.Cars;
+import racingcar.model.entity.RacingTurn;
+import racingcar.model.entity.RacingTurns;
 import racingcar.repository.Repository;
+
+import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * 자동차들 객체를 RacingController로부터 전달 받아서 경주 기능을 수행
@@ -22,27 +26,31 @@ public class RacingServiceImpl implements RacingService {
     }
 
     @Override
-    public void raceOfCarsAndChance(Cars cars, RacingChance racingChance) {
+    public void raceOfCarsAndTurns(Cars cars, RacingTurns turns) {
         repository.saveStartMessage();
-        raceAndSaveProgress(cars, racingChance);
+
+        raceAndRecordOfCarsAndTurns(cars, turns);
 
         RacingWinners racingWinners = RacingWinners.getFromCars(cars);
         repository.saveResult(racingWinners);
     }
 
-    @Override
-    public RacingRecording getRecord() {
-        return repository.getRecord();
-    }
-
-    private void raceAndSaveProgress(Cars cars, RacingChance racingChance) {
-        for (int i = 0; i < racingChance.getValue(); i++) {
-            for (Car car : cars) {
-                car.move();
+    private void raceAndRecordOfCarsAndTurns(Cars cars, RacingTurns turns) {
+        for (RacingTurn turn : turns) {
+            for (Map.Entry<String, Supplier<Integer>> entry : turn.getEntrySet()) {
+                String name = entry.getKey();
+                Supplier<Integer> strategy = entry.getValue();
+                Car car = cars.get(name);
+                car.moveBy(strategy);
                 repository.saveProgress(new RacingProgress(car));
             }
             repository.saveBreakingLine();
         }
+    }
+
+    @Override
+    public RacingRecording getRecord() {
+        return repository.getRecord();
     }
 
 }

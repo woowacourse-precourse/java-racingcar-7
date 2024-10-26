@@ -1,10 +1,20 @@
 package racingcar.strategy;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 /**
  * 자동차가 전진할지 멈출지 전략을 제공하는 클래스
  */
-public interface MoveStrategy {
+public final class MoveStrategy {
 
-    int getMovingDistance();
+    private MoveStrategy() {}
+
+    public static int random() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            return 1;
+        }
+        return 0;
+    }
 
 }

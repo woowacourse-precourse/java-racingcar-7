@@ -4,8 +4,9 @@ import racingcar.model.entity.Cars;
 import racingcar.model.dto.RacingRecording;
 import racingcar.model.dto.CarNames;
 import racingcar.model.entity.RacingChance;
+import racingcar.model.entity.RacingTurns;
+import racingcar.model.entity.StrategiesAtCarNames;
 import racingcar.service.RacingService;
-import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -31,12 +32,20 @@ public class RacingController {
     }
 
     public void run() {
-        CarNames carNames = CarNames.getAfterValidateFormat(inputView.getCarNames());
-        RacingChance racingChance =
+        // 주요 모델 생성
+        CarNames names = CarNames.getAfterValidateFormat(inputView.getCarNames());
+        RacingChance chance =
                 RacingChance.getAfterValidateForm(inputView.getChanceToMove());
-        Cars cars = Cars.getOfNamesAndStrategy(carNames, new RandomMoveStrategy());
+        Cars cars = Cars.getInstance(names);
+        StrategiesAtCarNames strategies =
+                StrategiesAtCarNames.getAllRandomMove(names, chance);
+        RacingTurns turns =
+                RacingTurns.getInstance(names, strategies, chance);
 
-        racingService.raceOfCarsAndChance(cars, racingChance);
+        // 레이싱 서비스 호출
+        racingService.raceOfCarsAndTurns(cars, turns);
+
+        // 레이싱 기록 불러와서 출력
         RacingRecording recording = racingService.getRecord();
         outputView.printResult(recording);
     }

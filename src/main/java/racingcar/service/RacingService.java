@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.model.entity.Cars;
 import racingcar.model.dto.RacingRecording;
-import racingcar.model.entity.RacingChance;
+import racingcar.model.entity.RacingTurns;
 
 /**
  * 자동차들 객체를 RacingController로부터 전달 받아서 경주 기능을 수행
@@ -11,7 +11,7 @@ import racingcar.model.entity.RacingChance;
  */
 public interface RacingService {
     
-    void raceOfCarsAndChance(Cars cars, RacingChance racingChance);
+    void raceOfCarsAndTurns(Cars cars, RacingTurns turns);
 
     RacingRecording getRecord();
 
