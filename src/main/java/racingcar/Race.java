@@ -1,15 +1,18 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
     private List<RacingCar> racingCarList;
+    private List<String> winnerList;
     private int maxRoundValue;
 
     public Race(List<RacingCar> racingCarList, int maxRoundValue) {
         this.racingCarList = racingCarList;
+        this.winnerList = new ArrayList<>();
         this.maxRoundValue = maxRoundValue;
     }
 
@@ -18,6 +21,7 @@ public class Race {
         for (int i = 0; i < maxRoundValue; i++) {
             executeRound();
         }
+        findWinner();
     }
 
     private void executeRound() {
@@ -27,6 +31,16 @@ public class Race {
             car.displayRoundResult();
         }
         System.out.println();
+    }
+
+    private void findWinner() {
+        int maxForwardCount = findMaxForwardCount();
+        for (RacingCar racingCar : racingCarList) {
+            if (racingCar.isWinner(maxForwardCount)) {
+                String winnerCarName = racingCar.getName();
+                winnerList.add(winnerCarName);
+            }
+        }
     }
 
     private int findMaxForwardCount() {
