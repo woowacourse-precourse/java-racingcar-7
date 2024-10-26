@@ -61,4 +61,16 @@ class RaceServiceImplTest {
                         .mapToObj(i -> MOVE_FORWARD_RANGE.min())
                         .toArray(Integer[]::new));
     }
+
+    @Test
+    void testCurrentRoundCannotExceedLastRound() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> {
+                    raceService.runOneRound(raceDomain);
+                    raceService.runOneRound(raceDomain);
+                    raceService.runOneRound(raceDomain);
+                    raceService.runOneRound(raceDomain);
+                }).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
