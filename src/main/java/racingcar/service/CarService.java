@@ -27,6 +27,13 @@ public class CarService {
         }
     }
 
+    public void playGame(int carNumber) {
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
     public void setMoveCount(int moveCount) {
         if (moveCount < 1) {
             throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
