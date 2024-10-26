@@ -12,6 +12,8 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
+    private static final int START_NUMBER = 0;
+
     private final InputView inputView;
     private final OutputView outputView;
     private final RandomNumberGenerator randomNumberGenerator;
@@ -35,7 +37,7 @@ public class RacingController {
     }
 
     private void raceRoundsByChance(Cars cars, RacingChance racingChance) {
-        for (int i = 0; i < racingChance.getRacingChance(); i++) {
+        for (int i = START_NUMBER; i < racingChance.getRacingChance(); i++) {
             raceOneRound(cars);
         }
     }
@@ -45,6 +47,7 @@ public class RacingController {
             car.moveCar(randomNumberGenerator.generateRandomNumber());
             outputView.raceResult(car.getCarName().getCarName(), car.getPosition());
         }
+
         outputView.separateLine();
     }
 

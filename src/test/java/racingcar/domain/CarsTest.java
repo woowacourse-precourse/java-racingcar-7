@@ -55,6 +55,5 @@ class CarsTest {
         // then
         assertThat(actual).contains("pobi","woni", "jun");
         assertThat(actual).isEqualTo(expected); // 반환 형식 자체가 똑같은지 검증한다
-
     }
 }

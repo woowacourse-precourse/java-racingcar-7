@@ -33,7 +33,7 @@ public class RacingChance {
     }
 
     private void validateMinusChance(String racingChance) {
-        if(Integer.parseInt(racingChance) < CHECK_MINUS_POINT) {
+        if (Integer.parseInt(racingChance) < CHECK_MINUS_POINT) {
             throw new IllegalArgumentException(EXCEPTION_RIGHT_CHANCE);
         }
     }

@@ -23,7 +23,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void findWinner(String winner){
+    public void findWinner(String winner) {
         System.out.println("최종 우승자 : " + winner);
     }
 }

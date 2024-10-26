@@ -14,9 +14,11 @@ public class CarNameParser {
         validateEmptyCarNames(carNames);
         validateDelimiter(carNames);
         List<CarName> names = new ArrayList<>();
+
         for (String carName : splitCarNames(carNames)) {
             names.add(new CarName(carName));
         }
+
         return names;
     }
 

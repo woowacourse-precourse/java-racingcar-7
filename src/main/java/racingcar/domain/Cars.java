@@ -21,9 +21,11 @@ public class Cars {
     public String getWinner() {
         List<String> winners = new ArrayList<>();
         int maxPosition = getMaxPosition();
+
         for (Car car : cars) {
             findWinner(winners, car.getCarName().getCarName(), car.getPosition(), maxPosition);
         }
+
         return String.join(WINNER_DELIMITER, winners);
     }
 
@@ -35,17 +37,21 @@ public class Cars {
 
     private int getMaxPosition() {
         int maxPosition = INITIAL_MAX_POSITION;
+
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
+
         return maxPosition;
     }
 
     private List<Car> makeCars(List<CarName> carNames) {
         List<Car> cars = new ArrayList<>();
+
         for (CarName carName : carNames) {
             cars.add(new Car(carName));
         }
+
         return cars;
     }
 }
