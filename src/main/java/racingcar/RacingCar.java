@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
-    private List<String> inputStringList = new ArrayList<>();
     private List<Car> carList = new ArrayList<>();
     private int count = 0;
-    RacingCar(){
-        this.inputStringList = Input.getNameList();
-        this.count = Input.inputNumber();
-    }
 
-    private void setCarList() {
+    public void setCarList(List<String> inputStringList) {
         for (String inputString : inputStringList) {
             throwErrorNameRule(inputString);
             this.carList.add(new Car(inputString));
@@ -26,6 +21,12 @@ public class RacingCar {
     }
 
     public void run() {
-        setCarList();
+        List<String> inputStringList = Input.getNameList();
+        this.count = Input.inputNumber();
+        setCarList(inputStringList);
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
