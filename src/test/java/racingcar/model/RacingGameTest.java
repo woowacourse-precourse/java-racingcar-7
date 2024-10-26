@@ -28,4 +28,6 @@ public class RacingGameTest {
         assertThat(cars.get(1).getName()).isEqualTo("woni");
         assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
+
+
 }
