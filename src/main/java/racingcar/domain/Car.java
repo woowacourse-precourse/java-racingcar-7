@@ -27,8 +27,16 @@ public class Car {
         }
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     public Distance getDistance() {
         return distance;
+    }
+
+    public int getDistanceValue() {
+        return distance.getDistanceValue();
     }
 
     public void moveCar(int randomNumber) {

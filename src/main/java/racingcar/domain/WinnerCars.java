@@ -21,6 +21,14 @@ public class WinnerCars {
         }
     }
 
+    public List<String> getWinnerCarNames() {
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : winners) {
+            winnerNames.add(car.getCarName());
+        }
+        return winnerNames;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

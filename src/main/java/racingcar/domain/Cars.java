@@ -35,6 +35,10 @@ public class Cars {
         return carList;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void moveCars() {
         for (Car car : cars) {
             car.moveCar(Randoms.pickNumberInRange(0, 9));

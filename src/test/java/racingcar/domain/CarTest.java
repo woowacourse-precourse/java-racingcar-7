@@ -22,7 +22,7 @@ class CarTest {
     public void 전진_하는지() {
         Car car = new Car("pobi");
         car.moveCar(4);
-        assertThat(car.getDistance()).isEqualTo(new Distance(1));
+        assertThat(car.getDistanceValue()).isEqualTo(1);
     }
 
     @DisplayName("숫자가 3이하인 경우 전진할 수 없다.")
@@ -30,7 +30,7 @@ class CarTest {
     public void 전진_안하는지() {
         Car car = new Car("pobi");
         car.moveCar(1);
-        assertThat(car.getDistance()).isEqualTo(new Distance(0));
+        assertThat(car.getDistanceValue()).isEqualTo(0);
     }
 
 }
