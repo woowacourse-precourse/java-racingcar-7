@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.List;
+
 public class CarRacingGame {
     private final Cars cars;
     private final NumberGenerator numberGenerator;
@@ -11,10 +13,10 @@ public class CarRacingGame {
         this.rounds = rounds;
     }
 
-    public Cars start() {
+    public List<Car> start() {
         cars.move(numberGenerator);
         rounds--;
-        return cars;
+        return cars.getCarList();
     }
 
     public boolean canPlay() {

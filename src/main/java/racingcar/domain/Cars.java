@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -23,6 +24,10 @@ public class Cars {
         return carList.stream()
                 .map(Car::getPosition)
                 .toList();
+    }
+
+    public List<Car> getCarList() {
+        return new ArrayList<>(carList);
     }
 
     public boolean isEmpty() {
