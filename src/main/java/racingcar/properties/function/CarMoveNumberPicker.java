@@ -3,5 +3,5 @@ package racingcar.properties.function;
 @FunctionalInterface
 public interface CarMoveNumberPicker {
 
-    Integer pickNumberValue();
+    Integer pick();
 }
