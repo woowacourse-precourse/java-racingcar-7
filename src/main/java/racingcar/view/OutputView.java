@@ -22,7 +22,7 @@ public class OutputView {
 
     private String getAttemptResult(RacingCar car) {
         return car.getCarName() + ATTEMPT_RESULT_MESSAGE_SEPARATOR
-                + ATTEMPT_RESULT_MESSAGE_ADVANCE_INDICATOR.repeat(car.getAdvanceRecord());
+                + ATTEMPT_RESULT_MESSAGE_ADVANCE_INDICATOR.repeat(car.getAdvanceCount());
     }
 
     public void printWinner(List<String> winners) {
