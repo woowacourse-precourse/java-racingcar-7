@@ -58,16 +58,7 @@ public class Controller {
     }
 
     private void printWinner(List<String> winners) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(FINAL_WINNER_MESSAGE);
-        for (int idx = 0; idx < winners.size(); idx++) {
-            if (idx == winners.size() - 1) {
-                sb.append(winners.get(idx));
-                continue;
-            }
-            sb.append(winners.get(idx)).append(", ");
-        }
-        view.print(sb.toString());
+        view.print(FINAL_WINNER_MESSAGE + String.join(", ", winners));
     }
 
     private String inputRound() {
