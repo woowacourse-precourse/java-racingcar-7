@@ -25,8 +25,8 @@ public class Validator {
     }
 
     public void checkNumberOfTrialInput(String input) throws IllegalArgumentException {
-        checkCharAndThrowException(input);
         checkEmptyAndThrowException(input);
+        checkCharAndThrowException(input);
     }
 
     private void checkCharAndThrowException(String input) {
