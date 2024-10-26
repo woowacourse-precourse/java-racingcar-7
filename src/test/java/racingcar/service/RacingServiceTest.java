@@ -27,19 +27,19 @@ public class RacingServiceTest {
     private final MockedRacingCarValidator racingCarValidator = new MockedRacingCarValidator();
     private final RacingService racingService = new RacingService(randomNumberMaker, racingCarValidator);
 
-    static Stream<PlayArguments> providePlayArguments() {
+    static Stream<PlayArgument> providePlayArguments() {
         return Stream.of(
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b", "c"),
                         3,
                         List.of(1, 2, 6, 3, 5, 6, 3, 3, 4)),
 
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b"),
                         2,
                         List.of(1, 4, 5, 2)),
 
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b", "c"),
                         1,
                         List.of(1, 2, 3))
@@ -73,24 +73,24 @@ public class RacingServiceTest {
     @ParameterizedTest(name = "playArguments: {0}")
     @MethodSource("providePlayArguments")
     @DisplayName("play() : 레이싱_게임을_수행한다.")
-    void 레이싱_게임을_수행한다(PlayArguments playArguments) {
+    void 레이싱_게임을_수행한다(PlayArgument playArgument) {
 
         // given
         MockedRandomNumberMaker mockedRandomNumberMaker =
-                new MockedRandomNumberMaker(playArguments.getRandomNumbers());
+                new MockedRandomNumberMaker(playArgument.getRandomNumbers());
 
         RacingService racingService = new RacingService(mockedRandomNumberMaker, racingCarValidator);
-        RacingCars racingCars = racingService.getRacingCars(playArguments.getCarNames());
+        RacingCars racingCars = racingService.getRacingCars(playArgument.getCarNames());
 
         // when
-        RacingResult actual = racingService.play(racingCars, playArguments.getTryCount());
+        RacingResult actual = racingService.play(racingCars, playArgument.getTryCount());
         List<RacingRoundResult> racingRoundResults = actual.roundResults();
         RacingCars winners = actual.winners();
         List<RacingCar> winnerCars = RacingCarsValueParser.parseValues(winners);
 
         // then
-        verifyRoundResults(racingRoundResults, playArguments.getTryCount(), playArguments.getRacingRoundResults());
-        verifyWinners(winnerCars, playArguments.getExpectedWinnersNames());
+        verifyRoundResults(racingRoundResults, playArgument.getTryCount(), playArgument.getRacingRoundResults());
+        verifyWinners(winnerCars, playArgument.getExpectedWinnersNames());
     }
 
     // 각 라운드 별 position 이 올바르게 저장되었는지 확인.

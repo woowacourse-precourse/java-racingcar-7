@@ -7,7 +7,7 @@ import java.util.*;
 import static racingcar.constant.Constants.RACING_CAR_DEFAULT_POSITION;
 import static racingcar.constant.Constants.RACING_CAR_MIN_MOVABLE_NUMBER;
 
-public class PlayArguments {
+public class PlayArgument {
 
     private final List<String> carNames;
     private final int tryCount;
@@ -15,7 +15,7 @@ public class PlayArguments {
     private final List<RacingRoundResult> racingRoundResults;
     private final List<String> expectedWinnersNames;
 
-    public PlayArguments(
+    public PlayArgument(
             List<String> carNames,
             int tryCount,
             List<Integer> randomNumbers,
@@ -28,7 +28,7 @@ public class PlayArguments {
         this.expectedWinnersNames = expectedWinnersNames;
     }
 
-    public PlayArguments(
+    public PlayArgument(
             List<String> carNames,
             int tryCount,
             List<Integer> randomNumbers) {

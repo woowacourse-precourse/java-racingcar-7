@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.dto.RacingRoundResult;
-import racingcar.service.PlayArguments;
+import racingcar.service.PlayArgument;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -22,19 +22,19 @@ class ApplicationTest extends NsTest {
     private final int MOVING_FORWARD = RACING_CAR_MIN_MOVABLE_NUMBER;
     private final int STOP = RACING_CAR_MIN_MOVABLE_NUMBER - 1;
 
-    static Stream<PlayArguments> providePlayArguments() {
+    static Stream<PlayArgument> providePlayArguments() {
         return Stream.of(
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b", "c"),
                         3,
                         List.of(1, 2, 6, 3, 5, 6, 3, 3, 4)),
 
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b"),
                         2,
                         List.of(1, 4, 5, 2)),
 
-                new PlayArguments(
+                new PlayArgument(
                         List.of("a", "b", "c"),
                         1,
                         List.of(1, 2, 3))
@@ -44,17 +44,17 @@ class ApplicationTest extends NsTest {
     @ParameterizedTest(name = "playArguments: {0}")
     @MethodSource("providePlayArguments")
     @DisplayName("main() : 게임_결과_테스트")
-    void 게임_결과_테스트(PlayArguments playArguments) {
+    void 게임_결과_테스트(PlayArgument playArgument) {
 
         // given
-        String carNamesInput = String.join(",", playArguments.getCarNames());
-        String tryCountInput = String.valueOf(playArguments.getTryCount());
+        String carNamesInput = String.join(",", playArgument.getCarNames());
+        String tryCountInput = String.valueOf(playArgument.getTryCount());
 
-        Integer firstRandomNumber = playArguments.getRandomNumbers().getFirst();
-        Integer[] remainRandomNumbers = playArguments.getRandomNumbers().stream().skip(1).toArray(Integer[]::new);
-        String expectedWinnersNames = String.join(", ", playArguments.getExpectedWinnersNames());
+        Integer firstRandomNumber = playArgument.getRandomNumbers().getFirst();
+        Integer[] remainRandomNumbers = playArgument.getRandomNumbers().stream().skip(1).toArray(Integer[]::new);
+        String expectedWinnersNames = String.join(", ", playArgument.getExpectedWinnersNames());
 
-        List<RacingRoundResult> racingRoundResults = playArguments.getRacingRoundResults();
+        List<RacingRoundResult> racingRoundResults = playArgument.getRacingRoundResults();
 
         // when & then
         assertRandomNumberInRangeTest(
