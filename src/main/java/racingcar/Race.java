@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.lang.StringBuilder;
 import java.util.List;
 
 public class Race {
