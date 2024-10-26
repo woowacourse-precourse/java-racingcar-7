@@ -11,4 +11,13 @@ public class InputExtractor {
 
         return carNames;
     }
+
+    public static int extractRound(String userInputRound) {
+        try{
+            int totalRounds = Integer.parseInt(userInputRound);
+            return totalRounds;
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+    }
 }

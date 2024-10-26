@@ -20,5 +20,7 @@ public class Application {
 
         System.out.println(messagePrinter.roundNumGuideMessage);
         String userInputRound = inputReader.getUserInput();
+        int totalRounds = inputExtractor.extractRound(userInputRound);
+
     }
 }
