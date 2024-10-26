@@ -25,7 +25,7 @@ public class RacingCarController {
     public void run() {
         OutputView.printRunMessage();
         for (int i = 0; i < service.getMoveCount(); i++) {
-            service.playGame(i);
+            service.playGame();
         }
     }
 }

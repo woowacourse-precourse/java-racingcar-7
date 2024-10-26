@@ -28,10 +28,12 @@ public class CarService {
         }
     }
 
-    public void playGame(int carNumber) {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-            gameBoard.getCars().get(carNumber).move();
+    public void playGame() {
+        for (Car car : gameBoard.getCars()) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (randomNumber >= 4) {
+                car.move();
+            }
         }
     }
 
