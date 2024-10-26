@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import org.junit.platform.commons.util.StringUtils;
 
 public class Application {
     public static void main(String[] args) {
@@ -31,6 +33,9 @@ public class Application {
             }
             System.out.println();
         }
+
+        String winners = getWinners(cars);
+        System.out.println("최종 우승자 : " + winners);
     }
 
     public static List<String> getCarNames() {
@@ -84,4 +89,28 @@ public class Application {
 
         return cars;
     }
+
+    public static String getWinners(List<Car> cars) {
+        String winners = "";
+        List<String> winnerNames = new ArrayList<>();
+
+        List<Integer> carDistances = new ArrayList<>();
+
+        for (Car car : cars) {
+            carDistances.add(car.getDistance());
+        }
+
+        Integer maxDistance = Collections.max(carDistances);
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winnerNames.add(car.getName());
+            }
+        }
+
+        winners = String.join(",", winnerNames);
+
+        return winners;
+    }
+
+
 }
