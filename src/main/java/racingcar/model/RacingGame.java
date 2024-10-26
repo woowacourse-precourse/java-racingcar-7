@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.util.List;
 import java.util.Map;
 
 public class RacingGame {
@@ -22,5 +23,9 @@ public class RacingGame {
 
     public Map<String, Integer> findCurrentPosition() {
         return raceCars.getCarPositions();
+    }
+
+    public List<String> findWinnerNames() {
+        return raceCars.findWinnerNames();
     }
 }

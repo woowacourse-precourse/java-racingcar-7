@@ -30,6 +30,10 @@ public class RaceCar {
         position++;
     }
 
+    public boolean isWinner(int winPosition) {
+        return this.position == winPosition;
+    }
+
     public boolean canMove(int randomValue) {
         return randomValue >= MOVE_THRESHOLD;
     }

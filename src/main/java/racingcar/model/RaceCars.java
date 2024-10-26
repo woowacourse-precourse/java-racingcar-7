@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toUnmodifiableList;
 import static racingcar.utils.NumberGenerator.createRandomNumber;
 
 public class RaceCars {
@@ -38,6 +39,21 @@ public class RaceCars {
         if(names.size() < MIN_CAR_COUNT){
             throw new IllegalArgumentException(ERROR_CAR_COUNT);
         }
+    }
+
+    public List<String> findWinnerNames() {
+        int winPosition = findWinPosition();
+        return raceCars.stream()
+                .filter(car -> car.isWinner(winPosition))
+                .map(RaceCar::getName)
+                .collect(toUnmodifiableList());
+    }
+
+    private int findWinPosition() {
+        return raceCars.stream()
+                .mapToInt(RaceCar::getPosition)
+                .max()
+                .orElse(0);
     }
 
     public void race() {
