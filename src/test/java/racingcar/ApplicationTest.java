@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,woni", "abc"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("숫자를 입력해야 합니다.")
+                .hasMessageContaining("올바르지 않은 숫자가 입력되었습니다.")
         );
     }
 

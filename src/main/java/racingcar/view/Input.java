@@ -14,7 +14,7 @@ public class Input {
         Arrays.stream(carNamesInput).forEach(carName -> {
             carName = carName.trim();
 
-            if (carName.equals("null") || carName == null) {
+            if (carName.equals("null")) {
                 throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
             } else if (carName.isEmpty() || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름이 비어 있습니다.");
@@ -39,7 +39,7 @@ public class Input {
                 throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해야 합니다.", e);
+            throw new IllegalArgumentException("올바르지 않은 숫자가 입력되었습니다.", e);
         }
 
         return tryNum;
