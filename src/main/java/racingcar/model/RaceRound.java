@@ -11,4 +11,10 @@ public class RaceRound {
     public int getRounds() {
         return this.rounds;
     }
+
+    public void roundStart(Cars cars){
+        for(Car car : cars.getCarList()) {
+            car.moveIfTrue(car.getRandomValue());
+        }
+    }
 }

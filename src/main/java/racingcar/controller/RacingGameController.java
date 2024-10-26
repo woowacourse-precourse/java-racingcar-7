@@ -36,6 +36,9 @@ public class RacingGameController {
     public void roundStart(Cars cars, RaceRound rounds){
         racingGame = new RacingGame(cars, rounds);
         OutputView.gameStart();
+
         racingGame.RoundsStart();
+
+        //TODO : 게임 완료 후 진행상황 및 결과 출력
     }
 }
