@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 
 import java.util.ArrayList;
@@ -12,5 +13,13 @@ public class Utils {
             cars.add(new Car(carName));
         }
         return cars;
+    }
+
+    public boolean canProceeded() {
+        int n = Randoms.pickNumberInRange(0, 9);
+        if (n >= 4) {
+            return true;
+        }
+        return false;
     }
 }

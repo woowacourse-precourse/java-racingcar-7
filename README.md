@@ -58,8 +58,8 @@ public List\<Car> setParticipants(String[] splited)
 public boolean canProceeded()
 : \: 랜덤 값을 추출해 4 이상인지 여부를 확인하는 메소드.
 
-- [ ]  `amp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()` 을 활용해 0에서 9 사이의 랜덤 값 추출
-- [ ]  랜덤 값이 4 이상인 경우 true, 3 이하면 false 리턴
+- [x]  `amp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()` 을 활용해 0에서 9 사이의 랜덤 값 추출
+- [x]  랜덤 값이 4 이상인 경우 true, 3 이하면 false 리턴
 
 public List\<String> countWinners(List\<Car> participants)
 : \: 우승자를 집계하는 메소드.
