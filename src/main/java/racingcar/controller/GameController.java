@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.service.CarService;
 import racingcar.service.GameService;
-import racingcar.util.StringUtil;
+import racingcar.util.InputUtil;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -29,8 +29,8 @@ public class GameController {
 
     public List<Car> inputCarNameProcess() {
         InputView.inputCarNameView();
-        String carNames = Console.readLine();
-        List<String> carNameList = StringUtil.splitCarName(carNames);
+        String carNames = InputUtil.inputCarNames();
+        List<String> carNameList = InputUtil.splitCarName(carNames);
         return carService.registerCarList(carNameList);
     }
 
