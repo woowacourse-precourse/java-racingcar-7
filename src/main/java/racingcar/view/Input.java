@@ -15,15 +15,14 @@ public class Input {
     }
 
     public String[] checkCarNamesError(String readLine) {
-        String inputCarNames = readLine;
-        if (inputCarNames == null) {
-            throw new IllegalArgumentException("입력값이 null입니다.");
+        if (readLine == null) {
+            throw new IllegalArgumentException("입력값이 null 입니다.");
         }
-        String[] carNameList = inputCarNames.split(",");
+        String[] carNameList = readLine.split(",");
         Arrays.stream(carNameList).forEach(name -> {
             name = name.trim();
             if (name.length() > 5) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("이름이 5글자를 넘었습니다.");
             }
             if (name.isEmpty()) {
                 throw new IllegalArgumentException("이름을 공백으로 할 수 없습니다.");
