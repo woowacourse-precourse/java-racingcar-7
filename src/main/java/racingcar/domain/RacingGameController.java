@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.exception.ExceptionMessage;
 import racingcar.util.RandomDigitGenerator;
 import racingcar.view.OutputView;
 
@@ -48,7 +49,7 @@ public class RacingGameController {
 
     private void validTryCount(int tryCount) {
         if (tryCount <= 0) {
-            throw new IllegalArgumentException("1이상 2,147,483,647이하의 양수만 입력 가능합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_TRY_COUNT);
         }
     }
 }

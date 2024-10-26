@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 import static racingcar.domain.NumberConstant.*;
+import static racingcar.exception.ExceptionMessage.*;
 
 
 public class Car {
@@ -18,15 +19,15 @@ public class Car {
 
     private void validName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
+            throw new IllegalArgumentException(CAR_NAME_INPUT_REQUIRED);
         }
 
         if (name.length() > NAME_LENGTH_MAX) {
-            throw new IllegalArgumentException("자동차 이름은 5글자 이하로 등록 해야합니다.");
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_LIMIT);
         }
 
         if (name.isBlank()) {
-            throw new IllegalArgumentException("앞 뒤 공백 제외 1글자 이상, 5글자 이하의 자동차 이름을 입력해주세요.");
+            throw new IllegalArgumentException(CAR_NAME_VALIDATION);
         }
     }
 

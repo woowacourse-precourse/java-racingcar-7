@@ -1,7 +1,6 @@
 package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.domain.NumberConstant;
 
 import static racingcar.domain.NumberConstant.*;
 

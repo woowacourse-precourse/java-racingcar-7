@@ -2,6 +2,8 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static racingcar.exception.ExceptionMessage.*;
+
 public class InputView {
 
     public String carName() {
@@ -16,7 +18,7 @@ public class InputView {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다. ", e);
+            throw new IllegalArgumentException(INVALID_NUMBER_INPUT, e);
         }
     }
 }
