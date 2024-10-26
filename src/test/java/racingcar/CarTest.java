@@ -15,4 +15,12 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하로 설정해주세요.");
     }
+
+    @Test
+    @DisplayName("자동차 이름이 공백이면 예외가 발생한다.")
+    void 자동차_이름_공백_테스트(){
+        assertThatThrownBy(() -> new Car(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 공백일 수 없습니다.");
+    }
 }
