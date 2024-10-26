@@ -17,7 +17,7 @@ public class InputView {
      *
      * @param outputView 메시지를 보여줄 outputView
      * @param message    input 요청에 필요한 메시지
-     * @return
+     * @return 읽은 문자열
      */
     public String requestString(OutputView outputView, String message) {
         if (!message.isBlank()) {
