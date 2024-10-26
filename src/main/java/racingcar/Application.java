@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.controller.RaceController;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
 
@@ -11,6 +12,6 @@ public class Application {
         String moveCount = InputView.inputMoveCount();
 
         RaceController raceController = new RaceController(new RaceService());
-        System.out.println(raceController.doRace(raceCarNames,moveCount));
+        OutputView.printStr(raceController.doRace(raceCarNames,moveCount));
     }
 }
