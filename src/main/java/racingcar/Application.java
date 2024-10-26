@@ -2,9 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Application {
@@ -44,23 +42,17 @@ public class Application {
                         racingCarList.add(new RacingCar(name));
                 });
 
-        for (int i = 0; i < racingCars.length; i++) {
-            for (int j = i + 1; j < racingCars.length; j++) {
-                checkSameName(racingCars[i], racingCars[j]);
-            }
+        Set<String> hashCars = new HashSet<>(Arrays.asList(racingCars));
+        if(hashCars.size() != racingCarList.size()) {
+            throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
+
         return racingCarList;
     }
 
     public static void checkCarName(String carName) {
         if (carName.isEmpty() || carName == null || carName.length() > 5) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    public static void checkSameName(String car1, String car2) {
-        if (car1.equals(car2)) {
-            throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
     }
 
