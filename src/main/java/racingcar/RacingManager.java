@@ -7,16 +7,18 @@ import java.util.stream.Collectors;
 public class RacingManager {
 
     private static final String DELIM = ",";
-    private int trials;
+    private final List<Car> cars;
+    private final int trials;
 
-    public List<Car> assignCars(String input) {
-        return Arrays.stream(input.split(DELIM))
+    public RacingManager(String rawName, String rawTrials) {
+        this.cars = Arrays.stream(rawName.split(DELIM))
                 .map(Car::new)
                 .collect(Collectors.toList());
+        this.trials = Integer.parseInt(rawTrials);
     }
 
-    public void assignTrials(int trials) {
-        this.trials = trials;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getTrials() {
