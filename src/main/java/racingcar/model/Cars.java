@@ -28,8 +28,16 @@ public class Cars {
         }
     }
 
-    public void findWinnerCars() {
+    public List<Car> findWinnerCars() {
         int topPosition = findTopPosition();
+        List<Car> winners = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getPosition() == topPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+
 
     }
 
