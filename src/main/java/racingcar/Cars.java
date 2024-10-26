@@ -15,7 +15,7 @@ public class Cars {
         validateInput(input);
         return Arrays.stream(input.split(","))
                 .map(String::trim)
-                .map(Car::new)
+                .map(Car::new)//
                 .collect(Collectors.toList());
     }
 
@@ -23,5 +23,9 @@ public class Cars {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
         }
+    }
+
+    public void moveAll() {
+        cars.forEach(Car::tryMove);
     }
 }

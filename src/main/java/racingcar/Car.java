@@ -1,8 +1,13 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
+    private static final int FORWARD_THRESHOLD = 4;
+    private int position = 0;
+
 
     public Car(String name) {
         validateName(name);
@@ -21,6 +26,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void tryMove() {
+        if (Randoms.pickNumberInRange(0, 9) >= FORWARD_THRESHOLD) {
+            position++;
+        }
     }
 
 }
