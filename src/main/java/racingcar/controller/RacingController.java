@@ -13,7 +13,7 @@ public class RacingController {
         String[] carName = parseCarName(request.carNames());
         int attemptCount = request.attemptCount();
 
-        return racingService.racing(carName, attemptCount);
+        return racingService.startRace(carName, attemptCount);
     }
 
     public String[] parseCarName(String carNames){
