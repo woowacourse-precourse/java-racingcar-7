@@ -3,15 +3,15 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.constants.Constants;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.RoundValidator;
-
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.constants.Constants.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -42,7 +42,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator("pobi,,jun");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_LENGTH_ERROR);
     }
 
     @DisplayName("자동차 이름이 5글자 이상일 시 검증테스트")
@@ -51,7 +52,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator("pobi,woniwoni,jun");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_LENGTH_ERROR);
     }
 
     @DisplayName("자동차 이름이 중복일 시 검증테스트")
@@ -60,7 +62,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator("pobi,pobi,jun");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_DUPLICATE_ERROR);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트1")
@@ -69,7 +72,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator("pobi,woni,jun,");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_WRONG_ERROR);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트2")
@@ -78,7 +82,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator(",pobi,woni,jun");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_WRONG_ERROR);
     }
 
     @DisplayName("자동차리스트 값이 잘못된 패턴일 시 검증테스트3")
@@ -87,7 +92,8 @@ class ApplicationTest extends NsTest {
         CarNameValidator carNameValidator = new CarNameValidator(",pobi,woni,jun,");
 
         assertThatThrownBy(carNameValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(CAR_NAME_WRONG_ERROR);
     }
 
     @Test
@@ -136,28 +142,32 @@ class ApplicationTest extends NsTest {
     @Test
     void 시도_횟수_테스트3() {
         assertThatThrownBy(() -> new RoundValidator("abc"))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트2")
     @Test
     void 시도_횟수_테스트4() {
         assertThatThrownBy(() -> new RoundValidator("가나다"))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트3")
     @Test
     void 시도_횟수_테스트5() {
         assertThatThrownBy(() -> new RoundValidator("!@#"))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
     @DisplayName("시도 횟수의 입력값이 숫자가 아닐 시 예외테스트4")
     @Test
     void 시도_횟수_테스트6() {
         assertThatThrownBy(() -> new RoundValidator("a가!"))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
     @DisplayName("시도 횟수의 입력값이 음수일 시 예외테스트")
@@ -166,7 +176,8 @@ class ApplicationTest extends NsTest {
         RoundValidator roundValidator = new RoundValidator("-6");
 
         assertThatThrownBy(roundValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
     @DisplayName("시도 횟수의 입력값이 0 일 시 예외테스트")
@@ -175,7 +186,8 @@ class ApplicationTest extends NsTest {
         RoundValidator roundValidator = new RoundValidator("0");
 
         assertThatThrownBy(roundValidator::verify)
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ROUND_NUMBER_WRONG_ERROR);
     }
 
 
