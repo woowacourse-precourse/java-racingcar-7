@@ -34,18 +34,18 @@ private void playSingleRound()
 : \: 하나의 라운드를 진행하는 메소드.
 
 - [ ]  participants의 각 요소들에 접근
-- [ ]  Utils.canProceeded() 호출해 전진 가능 여부 확인
-- [ ]  Car.increaseMovedCount()를 호출하고, 매개변수로 전진 가능 여부를 넘겨 줌으로써 전진 혹은 멈춤 수행
+- [ ]  Utils.canMove() 호출해 전진 가능 여부 확인
+- [ ]  Car.moveOrStop()를 호출하고, 매개변수로 전진 가능 여부를 넘겨 줌으로써 전진 혹은 멈춤 수행
 
 ## Car 클래스
 
 String name: 자동차의 이름<br>
 int movedCnt: 현재까지 전진한 횟수
 
-public void moveOrStop(boolean canProceed)
-: \: canProceed 값에 따라 자신을 전진 혹은 멈춤시키는 메소드.
+public void moveOrStop(boolean canMove)
+: \: canMove 값에 따라 자신을 전진 혹은 멈춤시키는 메소드.
 
-- [x] canProceed가 true인지 확인
+- [x] canMove true인지 확인
    - [x] true라면 자신의 movedCnt를 1 증가
 
 ## Utils 클래스
@@ -57,7 +57,7 @@ public List\<Car> setParticipants(String[] splited)
 - [x]  자동차 이름으로 Car 인스턴스 생성한 후 리스트에 추가
 - [x]  생성된 Car 인스턴스의 리스트를 리턴
 
-public int canProceeded()
+public int canMove()
 : \: 랜덤 값을 추출해 반환하는 메소드.
 
 - [x]  `amp.nextstep.edu.missionutils.Randoms`의`pickNumberInRange()` 을 활용해 0에서 9 사이의 랜덤 값 추출
