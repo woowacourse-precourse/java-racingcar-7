@@ -31,4 +31,12 @@ public class Validator {
             throw new IllegalArgumentException("음수가 아닌 양수를 입력 해야합니다.");
         }
     }
+
+    public int convertToInteger(String attemptString) {
+        try {
+            return Integer.parseInt(attemptString);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
