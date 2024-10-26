@@ -35,23 +35,26 @@ public class Application {
     }
 
     private static void validateInput(String[] cars) {
+        validateCarName(cars);
+        checkDuplicateNames(cars);
+    }
+
+    private static void checkDuplicateNames(String[] cars) {
         for (int i = 0; i < cars.length; i++) {
             String currentCar = cars[i];
-            validateCarName(currentCar);
-
-            // 중복 검사: 현재 인덱스(i) 이후의 값들과 비교
             for (int j = i + 1; j < cars.length; j++) {
                 if (currentCar.equals(cars[j])) {
                     throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + currentCar);
                 }
             }
         }
-
     }
 
-    private static void validateCarName(String car) {
-        if (car.length() > VALID_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+    private static void validateCarName(String[] cars) {
+        for (String car : cars) {
+            if (car.length() > VALID_NAME_LENGTH) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
         }
     }
 }
