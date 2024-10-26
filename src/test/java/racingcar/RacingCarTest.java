@@ -13,13 +13,13 @@ class RacingCarTest {
     void 랜덤_숫자가_4이상인_경우_전진한다(int randomNumber) {
         // given
         CarName pobi = new CarName("pobi");
-        RacingCar racingCar = new RacingCar(pobi, 0);
+        RacingCar racingCar = new RacingCar(pobi);
 
         // when
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(1);
+        assertThat(racingCar.getLocation()).isEqualTo(new RacingCar(pobi, 1));
     }
 
     @ParameterizedTest
@@ -27,13 +27,13 @@ class RacingCarTest {
     void 랜덤_숫자가_4미만인_경우_전진하지_않는다(int randomNumber) {
         // given
         CarName pobi = new CarName("pobi");
-        RacingCar racingCar = new RacingCar(pobi, 0);
+        RacingCar racingCar = new RacingCar(pobi);
 
         // when
         racingCar.move(randomNumber);
 
         // then
-        assertThat(racingCar.getLocation()).isEqualTo(0);
+        assertThat(racingCar.getLocation()).isEqualTo(new RacingCar(pobi, 0));
     }
 
     @ParameterizedTest
