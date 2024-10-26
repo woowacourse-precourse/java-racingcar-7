@@ -29,7 +29,6 @@
 
 ![자동차 경주 1차 클래스 다이어그램 (2)](https://github.com/user-attachments/assets/29333110-3b17-4dd5-abc8-5ac9195dffd6)
 
-
 ## 패키지 설계
 
 - view
@@ -40,13 +39,9 @@
     - CarFactory : 자동차 이름을 기준으로 Cars 생성
     - Cars : 생성된 여러 Car을 관리
     - Car : 각 자동차를 의미. 이동/정지 결정
-    - WinnerFinder : Cars 중 우승자를 찾음
 
 - controller
     - RacingGame : 자동차 경주 게임을 실행
-
-- util
-    - StringUtil : split, trim, 구분자 아닐 때 예외 처리를 담당
 
 ## 프로그래밍 요구사항
 
