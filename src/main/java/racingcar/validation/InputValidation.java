@@ -8,6 +8,7 @@ import java.util.List;
 public class InputValidation {
     private static final String DELIMITER = ",";
     private static final int MAX_CHARACTER_LENGTH = 5;
+    private static final int MAX_INTEGER_LENGTH = 10;
 
     public static void validateDelimiter(String input){
         if(!input.contains(DELIMITER)){
@@ -22,5 +23,11 @@ public class InputValidation {
                 .ifPresent(car -> {
                     throw new IllegalArgumentException(ErrorMessage.LONG_NAME_LENGTH.getMessage());
                 });
+    }
+
+    public static void validateIntRange(String number){
+        if(number.length() > MAX_INTEGER_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.OVERFLOW_NUMBER.getMessage());
+        }
     }
 }

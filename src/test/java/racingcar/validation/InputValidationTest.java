@@ -20,4 +20,11 @@ public class InputValidationTest {
         assertThatThrownBy(() -> new Race("abcdef,java", "1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("이동횟수가 정수의 최대 값보다 큰 경우 예외발생")
+    void validateIntRange() {
+        assertThatThrownBy(() -> new Race("abcd,java", "10000000000"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

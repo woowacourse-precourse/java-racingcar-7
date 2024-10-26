@@ -24,6 +24,7 @@ public class Race {
         InputValidation.validateDelimiter(inputtedName);
         InputValidation.validateNameLength(cars);
 
+        InputValidation.validateIntRange(count);
         this.count = Integer.parseInt(count);
     }
 
