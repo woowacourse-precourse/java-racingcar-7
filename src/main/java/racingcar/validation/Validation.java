@@ -1,5 +1,6 @@
 package racingcar.validation;
 
+import racingcar.utils.Utils;
 import racingcar.view.ErrorView;
 
 import java.util.List;
@@ -12,8 +13,7 @@ public class Validation {
     private static int MAX_RACINGCAR_NAME_LENGTH = 5;
 
     public static void validateRacingcarNamesDuplicate(List<String> racingcarNames){
-        Set<String> setRacingcarNames = racingcarNames.stream()
-                .collect(Collectors.toSet());
+        Set<String> setRacingcarNames = Utils.listToSet(racingcarNames);
         if(setRacingcarNames.size() != racingcarNames.size()){
             ErrorView.printRacingcarDuplicateNameErrorMessage();
             throw new IllegalArgumentException();

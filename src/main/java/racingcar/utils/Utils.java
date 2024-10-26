@@ -3,6 +3,8 @@ package racingcar.utils;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validation.Validation;
@@ -36,4 +38,9 @@ public class Utils {
     public static String repeatString(String target, int count){
         return target.repeat(count);
     }
+
+    public static <T> Set<T> listToSet(List<T> list){
+        return list.stream().collect(Collectors.toSet());
+    }
+
 }
