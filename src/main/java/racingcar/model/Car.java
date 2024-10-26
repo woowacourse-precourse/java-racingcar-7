@@ -20,7 +20,7 @@ public class Car {
     }
 
     public int createRandomNumber() {
-        return Randoms.pickNumberInRange(RANDOM_START_NUM.getValue(),RANDOM_END_NUM.getValue());
+        return Randoms.pickNumberInRange(RANDOM_START_NUM.getValue(), RANDOM_END_NUM.getValue());
     }
 
     public String getName() {
