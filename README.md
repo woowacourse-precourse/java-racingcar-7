@@ -7,12 +7,14 @@
 - 코드 포매팅 사용
   - Ctrl + Alt + L
 # 👷기능 요구사항 정의
+-
 ## Utils
 - InputValidator
   - 사용자 입력을 검증
     - 자동차 이름
+      - 적절한 입력을 제외하고 모두 에러처리 - 적절한 입력을 찾는 정규식 찾고 그 외의 경우 IllegalArgumentException
     - 횟수
-
+      - 잘못된 입력을 받았을 때 IllegalArgumentException 이 나오게 문자열을 입력으로 받고 정수인지 검증
 ## Domain
 - Car
   - 이름, 위치
