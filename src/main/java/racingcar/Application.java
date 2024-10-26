@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class Application {
         System.out.println("초기화된 자동차: " + cars); // 초기화된 자동차 출력 (디버깅 용도)
         
         race(cars, attempts); // 경주 진행
+        printWinners(cars); // 우승자 출
     }
      /**
     /**
@@ -105,6 +107,18 @@ public class Application {
             System.out.println(car); // 각 자동차의 현재 상태 출력
         }
         System.out.println(); // 라운드 간 줄바꿈
+    }
+    /**
+     * 경주가 끝난 후 우승자를 출력하는 메서드
+     * @param cars 경주에 참가한 자동차 목록
+     */
+    private static void printWinners(List<Car> cars) {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0); // 최대 위치 확인
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition) // 최대 위치에 있는 자동차 필터링
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        System.out.println("우승자: " + String.join(", ", winners)); // 우승자 이름 출력
     }
 }
 /**
