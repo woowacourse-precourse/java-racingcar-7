@@ -27,6 +27,10 @@ public class Race {
         }
     }
 
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
     public List<String> getWinners() {
         int maxPosition = this.cars
                 .stream()
