@@ -8,15 +8,11 @@ public class Validate {
     private static final int MAX_NAME_LENGTH = 5;
 
     public static List<String> carName(String inputCarName) {
-        try {
-            List<String> splitComma = checkComma(inputCarName);
-            List<String> carNameList = checkLength(splitComma);
-            List<String> finalCarNameList = checkCarNameList(carNameList);
+        List<String> splitComma = checkComma(inputCarName);
+        List<String> carNameList = checkLength(splitComma);
+        List<String> finalCarNameList = checkCarNameList(carNameList);
 
-            return finalCarNameList;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e);
-        }
+        return finalCarNameList;
     }
 
     static List<String> checkCarNameList(List<String> carNameList) {
@@ -36,6 +32,7 @@ public class Validate {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다: " + name);
             }
         }
+
         return splitComma;
     }
 
@@ -51,20 +48,18 @@ public class Validate {
         if (inputCarName.contains(",")) {
             splitCarName = Arrays.asList(inputCarName.split(","));
             System.out.println(splitCarName);
+
             return splitCarName;
         }
 
         splitCarName = List.of(inputCarName);
+
         return splitCarName;
     }
 
     public static int attempts(String inputAttempts) {
-        try {
-            int resultAttempts = numberCheck(inputAttempts);
-            return resultAttempts;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e);
-        }
+        int resultAttempts = numberCheck(inputAttempts);
+        return resultAttempts;
     }
 
     private static int numberCheck(String inputAttempts) {
