@@ -1,19 +1,24 @@
 package racingcar.utils;
 
+import static racingcar.constant.ExecptionMessage.INPUT_ROUND_COUNT_TYPE_MESSAGE;
+import static racingcar.constant.ExecptionMessage.INPUT_NULL_OR_EMPTY_MESSAGE;
+
 import java.util.regex.Pattern;
+import racingcar.exception.NullInputException;
+import racingcar.exception.RoundCountTypeException;
 
 public class InputValidator {
     private static final String NUMBER_REGEX = "^[1-9][0-9]*$";
 
     public static void validateRoundCount(String roundCountInput) {
         if (!Pattern.matches(NUMBER_REGEX, roundCountInput)) {
-            throw new IllegalArgumentException("시도할 횟수는 양의 정수만 입력할 수 있습니다.");
+            throw new RoundCountTypeException(INPUT_ROUND_COUNT_TYPE_MESSAGE.getMessage());
         }
     }
 
     public static void validateNullOrEmpty(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("빈 값을 입력할 수 없습니다.");
+            throw new NullInputException(INPUT_NULL_OR_EMPTY_MESSAGE.getMessage());
         }
     }
 }

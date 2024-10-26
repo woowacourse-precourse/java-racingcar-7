@@ -1,11 +1,14 @@
 package racingcar.domain;
 
+import static racingcar.constant.ExecptionMessage.CARS_NAME_DUPLICATED_MESSAGE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.domain.dto.CarDto;
 import racingcar.domain.dto.CarsDto;
+import racingcar.exception.CarsNameDuplicatedException;
 
 public class Cars {
     private final List<Car> cars;
@@ -23,7 +26,7 @@ public class Cars {
                 .collect(Collectors.toSet());
 
         if (uniqueNames.size() != cars.size()) {
-            throw new IllegalArgumentException("중복되는 자동차 이름이 있습니다.");
+            throw new CarsNameDuplicatedException(CARS_NAME_DUPLICATED_MESSAGE.getMessage());
         }
     }
 

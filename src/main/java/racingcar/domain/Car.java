@@ -1,5 +1,13 @@
 package racingcar.domain;
 
+import static racingcar.constant.ExecptionMessage.CAR_NAME_CONTAIN_EMPTY_MESSAGE;
+import static racingcar.constant.ExecptionMessage.CAR_NAME_LENGTH_MESSAGE;
+import static racingcar.constant.ExecptionMessage.CAR_NAME_NULL_OR_EMPTY_MESSAGE;
+
+import racingcar.exception.CarNameContainEmptyException;
+import racingcar.exception.CarNameLengthExeption;
+import racingcar.exception.CarNameNullExeption;
+
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
@@ -13,13 +21,13 @@ public class Car {
 
     private void validateName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+            throw new CarNameNullExeption(CAR_NAME_NULL_OR_EMPTY_MESSAGE.getMessage());
         }
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.");
+            throw new CarNameLengthExeption(CAR_NAME_LENGTH_MESSAGE.getMessage());
         }
         if (name.contains(" ")) {
-            throw new IllegalArgumentException("자동차 이름에 공백이 포함되어 있습니다.");
+            throw new CarNameContainEmptyException(CAR_NAME_CONTAIN_EMPTY_MESSAGE.getMessage());
         }
     }
 
