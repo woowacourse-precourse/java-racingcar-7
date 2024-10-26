@@ -29,10 +29,9 @@ public class RacingCarService {
 
     //우승자를 구하는 메소드
     public List<String> getWinners(Cars cars) {
-        List<String> winners = new ArrayList<>();
         int maxValue = Collections.max(cars.getCars().values());
 
-        cars.getCars().entrySet().stream()
+        List<String> winners = cars.getCars().entrySet().stream()
                 .filter(entry -> entry.getValue() == maxValue)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
