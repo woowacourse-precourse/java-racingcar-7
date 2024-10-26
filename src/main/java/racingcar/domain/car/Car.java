@@ -3,15 +3,15 @@ package racingcar.domain.car;
 import racingcar.domain.Name;
 
 public class Car {
-    private static final int ZERO = 0;
-    private static final int FOUR = 4;
+    private static final int INITIAL_VALUE = 0;
+    private static final int STOP_THRESHOLD = 4;
 
     private final Name name;
     private int position;
 
     public Car(String name) {
         this.name = new Name(name);
-        this.position = ZERO;
+        this.position = INITIAL_VALUE;
     }
 
     public Name name() {
@@ -29,7 +29,7 @@ public class Car {
     }
 
     private boolean isFourOrMore(int value) {
-        return value >= FOUR;
+        return value >= STOP_THRESHOLD;
     }
 
     public boolean isEqualPosition(int value) {

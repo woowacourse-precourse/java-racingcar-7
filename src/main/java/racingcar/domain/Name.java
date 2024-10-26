@@ -5,8 +5,8 @@ import racingcar.exception.RaceException;
 
 public class Name {
 
-    private static final String PATTERN = "^[a-z|A-Z]*$";
-    private static final int FIVE = 5;
+    private static final String ENGLISH_PATTERN = "^[a-z|A-Z]*$";
+    private static final int NAME_THRESHOLD = 5;
 
     private final String name;
 
@@ -33,7 +33,7 @@ public class Name {
         }
 
         private static boolean isNotEnglish(String name) {
-            return !name.matches(PATTERN);
+            return !name.matches(ENGLISH_PATTERN);
         }
 
         private static void validateLength(String name) {
@@ -43,7 +43,7 @@ public class Name {
         }
 
         private static boolean isOverFive(String name) {
-            return name.length() > FIVE;
+            return name.length() > NAME_THRESHOLD;
         }
     }
 }

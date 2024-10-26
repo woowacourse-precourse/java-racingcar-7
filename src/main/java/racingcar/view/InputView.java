@@ -13,7 +13,7 @@ public class InputView {
     private static final String QUESTION_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final String NAME_SEPARATOR_SYMBOL = ",";
     private static final String INTEGER_PATTERN = "^[1-9]*$";
-    private static final int TWO = 2;
+    private static final int CONTINUOUS_THRESHOLD = 2;
 
     public List<String> receiveName() {
         Writer.print(QUESTION_CAR_NAME);
@@ -71,7 +71,7 @@ public class InputView {
         }
 
         private static boolean isContinuousSeparator(String input) {
-            return input.contains(NAME_SEPARATOR_SYMBOL.repeat(TWO));
+            return input.contains(NAME_SEPARATOR_SYMBOL.repeat(CONTINUOUS_THRESHOLD));
         }
 
         private static int validateCount(String count) {

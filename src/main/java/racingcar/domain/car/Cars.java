@@ -10,7 +10,7 @@ import racingcar.util.RandomValue;
 
 public class Cars {
 
-    private static final int ONE = 1;
+    private static final int RACE_THRESHOLD = 1;
 
     private final List<Car> cars;
 
@@ -72,7 +72,7 @@ public class Cars {
         }
 
         private static boolean isOne(List<String> cars) {
-            return cars.size() == ONE;
+            return cars.size() == RACE_THRESHOLD;
         }
 
         private static void validateDuplicateName(List<String> names) {
