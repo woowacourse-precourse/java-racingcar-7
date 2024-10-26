@@ -7,6 +7,9 @@ public class Car {
     int mileage;
 
     public Car(String name){
+        if(name.length() > 5){
+            throw new IllegalArgumentException("자동차의 이름은 5자 이하여야 합니다.");
+        }
         this.name = name;
         this.mileage = 0;
     }
