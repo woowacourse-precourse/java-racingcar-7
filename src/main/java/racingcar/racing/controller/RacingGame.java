@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.racing.model.Car;
 import racingcar.racing.model.Game;
 import racingcar.racing.model.RacingGameConcreteFactory;
-import racingcar.racing.model.Winner;
 import racingcar.racing.utils.InputParser;
 import racingcar.racing.view.InputView;
 import racingcar.racing.view.OutputView;
@@ -12,8 +11,6 @@ import racingcar.racing.view.OutputView;
 public class RacingGame {
     private final RacingGameConcreteFactory racingGameFactory;
     private Game game;
-    private List<Car> cars;
-    private Winner winner;
 
     public RacingGame(RacingGameConcreteFactory racingGameFactory) {
         this.racingGameFactory = racingGameFactory;
@@ -22,19 +19,17 @@ public class RacingGame {
     public void start() {
         List<String> carNames = inputCarNames();
         int attemptNumber = inputAttemptNumber();
-        createRacingGame(carNames, attemptNumber);
 
+        createRacingGame(carNames, attemptNumber);
         OutputView.printMessage("\n실행 결과");
         game.allRoundStart();
-
-        winner.selectWinners();
-        OutputView.printWinner(winner.getWinners());
+        List<Car> winners = game.selectWinners();
+        OutputView.printWinner(winners);
     }
 
     private void createRacingGame(List<String> carNames, int attemptNumber) {
-        this.cars = racingGameFactory.createCars(carNames);
-        this.game = racingGameFactory.createGame(attemptNumber);
-        this.winner = racingGameFactory.createWinner(cars);
+        List<Car> cars = racingGameFactory.createCars(carNames);
+        this.game = racingGameFactory.createGame(attemptNumber, cars);
     }
 
     private int inputAttemptNumber() {
