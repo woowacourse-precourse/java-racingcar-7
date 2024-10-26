@@ -6,7 +6,9 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RacingCarController {
     public void run(){
@@ -28,10 +30,17 @@ public class RacingCarController {
     }
 
     private List<Car> makeCars(String[] carNames){
-        ArrayList<Car> cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
+        Set<String> uniqueNames = new HashSet<>();
+
         for(String name : carNames){
             name = name.trim();
             checkIfLengthOfNameIsValid(name);
+
+            if(!uniqueNames.add(name)){
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            }
+
             cars.add(new Car(name));
         }
         return cars;
