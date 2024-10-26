@@ -106,6 +106,14 @@ class RacingTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("우승자 계산 테스트")
+    @Test
+    void 우승자_계산_테스트() {
+        //given
+        Racing racing = new Racing();
+        racing.setRacingCars();
+    }
+
 
     private void setInputText(String text) {
         System.setIn(new ByteArrayInputStream(text.getBytes()));

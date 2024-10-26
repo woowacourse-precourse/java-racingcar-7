@@ -14,12 +14,14 @@ public class Racing {
 
     private List<RacingCar> racingCars = new ArrayList<>();
     private int tryCnt;
+    private List<RacingCar> winners = new ArrayList<>();
 
 
     public void doRacing() {
         setRacingCars();
         setTryCount();
         doRace();
+        calculateWinner();
     }
 
     private void setRacingCars() {
@@ -91,6 +93,19 @@ public class Racing {
                 racingCar.printCurrentResult();
             }
             System.out.println();
+        }
+    }
+
+    private void calculateWinner() {
+        int maxScore = 0;
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getForwardCount() >= maxScore) {
+                if (racingCar.getForwardCount() > maxScore) {
+                    winners.clear();
+                }
+                maxScore = racingCar.getForwardCount();
+                winners.add(racingCar);
+            }
         }
     }
 
