@@ -11,9 +11,16 @@ public class DataParser {
         isNonEmpty(list);
         checkLenght(list);
         isAlphaNumeric(list);
-
-        int tryCount = parseCount(IOHandler.inputTryCount());
         return createRacingCar(list);
+    }
+
+    public static int parseCount(String tryCount) {
+        for (char c : tryCount.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return Integer.parseInt(tryCount);
     }
 
     private static List<RacingCar> createRacingCar(List<String> list) {
@@ -25,15 +32,6 @@ public class DataParser {
         return racingCarList;
     }
 
-    private static int parseCount(String tryCount) {
-        for (char c : tryCount.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException();
-            }
-        }
-        return Integer.parseInt(tryCount);
-    }
-
     private static void isAlphaNumeric(List<String> list) {
         for (String input : list) {
             isLetterOrDigit(input);
@@ -42,7 +40,7 @@ public class DataParser {
 
     private static void isLetterOrDigit(String input) {
         for (char c : input.toCharArray()) {
-            if ((!Character.isLetter(c) || Character.isDigit(c))) {
+            if (!(Character.isLetter(c) || Character.isDigit(c))) {
                 throw new IllegalArgumentException();
             }
         }
