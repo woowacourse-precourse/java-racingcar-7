@@ -2,7 +2,11 @@ package racingcar;
 
 public class Car {
     private int forwardNumber = 0;
-    private String carName;
+    private final String carName;
+
+    private Car(String carName) {
+        this.carName = carName;
+    }
 
     public void movingForward() {
         this.forwardNumber++;
@@ -11,6 +15,10 @@ public class Car {
 
     public void stop() {
         printMovingResult(this.forwardNumber);
+    }
+
+    static public Car create(String carName) {
+        return new Car(carName);
     }
 
     private void printMovingResult(int forwardNumber) {
