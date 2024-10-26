@@ -1,6 +1,5 @@
 package racingcar;
 
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Racingcar;
 
