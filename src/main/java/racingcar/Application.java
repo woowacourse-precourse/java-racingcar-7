@@ -17,6 +17,7 @@ public class Application {
         int number = Integer.parseInt(stringNumber);
 
         String[] carScore = new String[cars.length];
+        InitializeToSpace(carScore);
         StartRaceOnetime(cars, carScore);
         System.out.println(cars[0]+":"+carScore[0]);
         System.out.println(cars[1]+":"+carScore[1]);
@@ -50,6 +51,13 @@ public class Application {
             if (DecideStopOrNot(random)) {
                 carScore[i] += "-";
             }
+        }
+    }
+
+    // Additionally, 공백으로 문자열 배열 초기화.
+    private static void InitializeToSpace(String[] str) {
+        for(int i = 0; i < str.length; i++) {
+            str[i] = "";
         }
     }
 
