@@ -50,6 +50,7 @@ public class RacingGame {
     
     /**
      * 현재 상태의 각 자동차 정보를 반환합니다.
+     * 처음 입력된 자동차 이름 순서대로 반환합니다.
      * @return 현재 각 자동차별 정보가 담긴 리스트
      */
     public List<Car> getCarInfo() {
@@ -58,6 +59,7 @@ public class RacingGame {
     
     /**
      * 현재 상태의 가장 선두 자동차(들)을 반환합니다.
+     * 처음 입력된 자동차 이름 순서대로 반환합니다.
      * @return 선두 자동차 정보가 담긴 리스트
      */
     public List<Car> getFrontRunners() {
