@@ -8,7 +8,7 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(String[] cars) {
-        Arrays.asList(cars).stream()
+        Arrays.stream(cars)
                 .map(Car::new)
                 .forEach(this.cars::add);
     }
