@@ -1,8 +1,7 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomMoveUtils;
-
 import static racingcar.utils.RandomMoveUtils.createRandomNumber;
+import static racingcar.utils.RandomMoveUtils.isMoving;
 
 public class Car {
     private final String name;
@@ -14,12 +13,17 @@ public class Car {
     }
 
     public void moveOrStop() {
-        if (RandomMoveUtils.isMoving(createRandomNumber())) {
+        if (isMoving(createRandomNumber())) {
             advanceNum++;
         }
     }
 
     public void getStatus() {
         System.out.println(name + " : " + "-".repeat(advanceNum));
+    }
+
+    // 테스트용
+    public int getAdvanceNum() {
+        return advanceNum;
     }
 }
