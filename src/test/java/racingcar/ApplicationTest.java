@@ -82,6 +82,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("round에 소수를 입력할 경우 예외처리")
+    void 예외_테스트_case6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "1.5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
