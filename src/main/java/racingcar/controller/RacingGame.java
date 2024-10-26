@@ -20,6 +20,7 @@ public class RacingGame {
             doRace(cars);
             updateProgress(cars);
         }
+        List<String> winners = cars.decideWinner();
     }
 
     public Cars makeCars(String initialInput) {

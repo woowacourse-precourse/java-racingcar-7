@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Cars {
+    private final int MIN_VALUE_PROGRESS = 0;
+
     private List<Car> cars;
 
     public Cars(List<String> carNames) {
@@ -26,6 +28,27 @@ public class Cars {
         if (carNames.size() < 2) {
             throw new IllegalArgumentException("2대 이상의 자동차가 경주에 필요합니다.");
         }
+    }
+
+    public List<String> decideWinner() {
+        int winnersProgress = this.findWinnersProgress();
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < this.size(); i++) {
+            if (this.getCar(i).progress() == winnersProgress) {
+                winners.add(this.getCar(i).name());
+            }
+        }
+        return winners;
+    }
+
+    private int findWinnersProgress() {
+        int winnersProgress = MIN_VALUE_PROGRESS;
+        for (int i = 0; i < this.size(); i++) {
+            if (this.getCar(i).progress() > winnersProgress) {
+                winnersProgress = this.getCar(i).progress();
+            }
+        }
+        return winnersProgress;
     }
 
     public int size() {
