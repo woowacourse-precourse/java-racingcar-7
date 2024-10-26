@@ -52,8 +52,23 @@ public class Application {
                 cars[c].move(pickNumberInRange(0, 9));
                 System.out.println(cars[c].getPosition());
             }
-
         }
+        String winner = "";
+        int maxPosition = 0;
+
+        for (int i = 0; i < countCars; i++) {
+
+            if (cars[i].getPosition().length() > maxPosition) {
+                maxPosition = cars[i].getPosition().length();
+                winner = cars[i].getName();
+
+            } else if (cars[i].getPosition().length() == maxPosition) {
+                winner += ", " + cars[i].getName();
+
+            }
+        }
+
+        System.out.println("우승자는 " + winner + " 입니다");
 
 
 
