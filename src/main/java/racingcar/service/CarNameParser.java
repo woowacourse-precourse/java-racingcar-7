@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.service.validation.CarNamesValidation;
 
 public class CarNameParser {
 
@@ -15,6 +16,7 @@ public class CarNameParser {
     public static Cars createCars(List<String> carNames){
         Cars cars = new Cars();
         for (String car: carNames){
+            CarNamesValidation.validateCarName(car);
             cars.addCar(createCar(car));
         }
         return cars;
