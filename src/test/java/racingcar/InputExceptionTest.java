@@ -43,6 +43,14 @@ public class InputExceptionTest extends NsTest {
         );
     }
 
+    @Test
+    void 이름_공백_예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[] {});
