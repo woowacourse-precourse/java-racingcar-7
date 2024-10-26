@@ -31,7 +31,7 @@ public class Car {
         final int WIN_CONDITION = 4;
         final int RANDOM_START_RANGE = 0;
         final int RANDOM_END_RANGE = 9;
-        if (WIN_CONDITION < Randoms.pickNumberInRange(RANDOM_START_RANGE, RANDOM_END_RANGE)) {
+        if (WIN_CONDITION <= Randoms.pickNumberInRange(RANDOM_START_RANGE, RANDOM_END_RANGE)) {
             this.plusWinStack();
         }
     }
