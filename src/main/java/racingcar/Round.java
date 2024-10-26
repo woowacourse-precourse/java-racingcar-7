@@ -52,4 +52,8 @@ public class Round {
     public Map<Car, Integer> getRoundResult() {
         return roundResult;
     }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
 }
