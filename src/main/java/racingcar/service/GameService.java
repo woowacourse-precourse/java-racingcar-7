@@ -22,14 +22,23 @@ public class GameService {
     }
 
     public void playGame(Game game, OutputView outputView) {
+        GameResult result = playRounds(game, outputView);
+        printWinners(result, outputView);
+    }
+
+
+    private GameResult playRounds(Game game, OutputView outputView) {
         GameResult result = null;
+
+        outputView.printRoundResultMessage();
         for (int round = 0; round < game.getGameRound(); round++) {
             result = game.playRound();
-            if (round == 0) {
-                outputView.printRoundResultMessage();
-            }
             outputView.printRoundResult(result);
         }
+        return result;
+    }
+
+    private void printWinners(GameResult result, OutputView outputView) {
         Cars winners = getWinner(result);
         outputView.printWinner(winners);
     }
