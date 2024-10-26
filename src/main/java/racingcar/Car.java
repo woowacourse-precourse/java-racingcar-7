@@ -24,6 +24,7 @@ public class Car {
         String[] splitInput = input.split(",");
         checkCount(splitInput.length);
         for (String s : splitInput) {
+            checkNameLen(s);
             checkDuplication(s);
             putCarMap(s);
         }
@@ -53,6 +54,12 @@ public class Car {
     private void checkBlank(String input){
         if (!Objects.equals(input, input.replaceAll("\\s", ""))){
             throwArgumentException("공백은 자동차의 이름에 포함될 수 없습니다.");
+        }
+    }
+
+    private void checkNameLen(String input){
+        if (input.length() > 5){
+            throwArgumentException("자동차의 이름은 최대 5자입니다.");
         }
     }
 
