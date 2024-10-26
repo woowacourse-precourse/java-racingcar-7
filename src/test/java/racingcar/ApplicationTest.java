@@ -58,6 +58,13 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"carName", "여섯글자이름"})
+    void validateNameLength_예외_테스트(String name) {
+        assertThatThrownBy(() -> application.validateNameLength(name))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
