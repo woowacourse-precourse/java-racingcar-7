@@ -5,7 +5,7 @@ import java.util.List;
 public class Output {
 
     public static void printResult(List<Car> cars, int tryCounts) {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for (int i = 0; i < tryCounts; i++) {
             printMovement(cars);
         }
