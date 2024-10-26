@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.validator.CarNameValidator;
-import racingcar.domain.validator.TrialCountsValidator;
 
 public class RaceTest {
 
@@ -12,19 +11,19 @@ public class RaceTest {
     void 최대_이동_거리_변경_테스트() {
         //given
         CarNameValidator carNameValidator = new CarNameValidator();
-        TrialCountsValidator trialCountsValidator = new TrialCountsValidator();
-        Cars cars = new Cars("bo,wook,hi", carNameValidator);
-        TrialCounts trialCounts = new TrialCounts("5", trialCountsValidator);
+        Cars cars = new Cars("I'm,bo,wook,hi,^^", carNameValidator);
 
         //when
-        for (int i = 0; i < trialCounts.getTrialCounts(); i++) {
-            cars.getCars().forEach(car -> car.judgeMove(4));
+        int randomNumber = 0;
+        for (Car car : cars.getCars()) {
+            car.judgeMove(randomNumber++);
         }
         Winner winner = new Winner(cars);
         int maxPosition = winner.getWinnerPosition();
 
         //then
-        assertThat(maxPosition).isEqualTo(5);
+        assertThat(maxPosition).isEqualTo(1);
+        assertThat(winner.getWinners().get(0).getCarName()).isEqualTo("^^");
     }
 
 }
