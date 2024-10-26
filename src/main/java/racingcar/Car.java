@@ -26,12 +26,12 @@ public class Car {
             throw new IllegalArgumentException(EMPTY_NAME.getMessage());
         }
 
-        if (!name.matches(VALID_NAME_REGEX)) {
-            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
-        }
-
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(TOO_LONG_CAR_NAME.getMessage());
+        }
+
+        if (!name.matches(VALID_NAME_REGEX)) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME.getMessage());
         }
     }
 
