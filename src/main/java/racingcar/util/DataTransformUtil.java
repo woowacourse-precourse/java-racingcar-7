@@ -1,9 +1,5 @@
 package racingcar.util;
 
-import static racingcar.util.constant.CharacterConstant.CAR_DELIMITER;
-
-import racingcar.model.Car;
-
 import java.util.Arrays;
 import java.util.List;
 

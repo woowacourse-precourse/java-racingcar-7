@@ -4,7 +4,7 @@ import racingcar.model.Car;
 
 public class RaceService {
 
-    private GameService gameService;
+    private final GameService gameService;
 
     public RaceService(GameService gameService) {
         this.gameService = gameService;
