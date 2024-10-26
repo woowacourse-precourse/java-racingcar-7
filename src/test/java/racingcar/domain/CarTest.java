@@ -27,6 +27,13 @@ class CarTest extends NsTest {
         });
     }
 
+    @Test
+    void 자동차는_전진_또는_멈출_수_있다() {
+        Car car = new Car("김종경");
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
     @Override
     protected void runMain() {
 
