@@ -5,21 +5,10 @@ public class Car {
     private int position;
 
 
-    public Car(String name, int position) {
-        validateName(name);
+    public Car(String name) {
         this.name = name;
-        this.position = position;
+        this.position = 0;
     }
-
-    private void validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-        }
-    }
-
 
     public String getName() {
         return name;
