@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.dto.CarNameRequest;
 import racingcar.dto.TryNumberRequest;
 import racingcar.model.Car;
@@ -16,6 +17,7 @@ public class CarRacingGameService {
 
         OutputView.printRacingResultMessage();
         playRound(carList, round);
+        String winner = getWinner(carList);
 
     }
 
@@ -24,6 +26,19 @@ public class CarRacingGameService {
             carList.forEach(Car::move);
             OutputView.printRacingResult(carList);
         }
+    }
+
+    private String getWinner(List<Car> carList) {
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+
     }
 
 }
