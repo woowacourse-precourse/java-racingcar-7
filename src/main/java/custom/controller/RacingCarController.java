@@ -5,6 +5,7 @@ import custom.service.CarNameParser;
 import custom.service.GetAttemptCount;
 import custom.service.RaceExecutor;
 import custom.view.InputView;
+import custom.view.OutputView;
 import java.util.List;
 
 public class RacingCarController {
@@ -13,6 +14,7 @@ public class RacingCarController {
     private final CarNameParser carNameParser;
     private final GetAttemptCount getAttemptCount;
     private final RaceExecutor raceExecutor;
+    private final OutputView outputView;
 
     public RacingCarController() {
         this.inputView = new InputView();
@@ -20,6 +22,7 @@ public class RacingCarController {
         this.carNameParser = new CarNameParser();
         this.getAttemptCount = new GetAttemptCount();
         this.raceExecutor = new RaceExecutor();
+        this.outputView = new OutputView();
     }
 
     public void run() {
@@ -30,11 +33,12 @@ public class RacingCarController {
         int attemptCount = getAttemptCount.run(attemptCountInput);
 
         racingScoreBoard.registerCars(carList);
+        outputView.displayRaceResultPrompt();
 
         for (int round = 1; round <= attemptCount; round++) {
             raceExecutor.run();
-            // 시도 횟수별 출력 코드 추가
+            outputView.displayRaceResultsByRound(racingScoreBoard.getAllScores());
         }
-        // 우승자 출력 코드 추가
+        outputView.displayRaceWinners(racingScoreBoard.getWinners());
     }
 }

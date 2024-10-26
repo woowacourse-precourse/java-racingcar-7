@@ -42,4 +42,8 @@ public class RacingScoreBoard {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
+
+    public Map<String, Integer> getAllScores() {
+        return new HashMap<>(carScores);  // 외부에서 수정할 수 없도록 복사본 반환
+    }
 }
