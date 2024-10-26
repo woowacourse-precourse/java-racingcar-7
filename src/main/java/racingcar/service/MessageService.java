@@ -2,7 +2,6 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.constant.Constant;
 import racingcar.domain.Message;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
@@ -38,7 +37,7 @@ public class MessageService {
 
     public Message generateWinnerMessage(Cars cars) {
         List<String> winners = getWinners(cars);
-        return new Message(String.join(Constant.DELIMITER, winners));
+        return new Message(String.join(", ", winners));
     }
 
     private List<String> getWinners(Cars cars) {
