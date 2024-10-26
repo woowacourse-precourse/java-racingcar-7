@@ -1,9 +1,11 @@
 package racingcar.model.position;
 
 import static java.util.Objects.requireNonNull;
+import static racingcar.common.message.ErrorMessage.DISTANCE_SHOULD_NOT_BE_MINUS;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
 
 import java.util.Objects;
+import racingcar.model.race.exception.ShouldNotBeMinusException;
 
 public class Position {
 
@@ -22,16 +24,19 @@ public class Position {
 
     public static Position from(String source) {
         requireNonNull(source, SHOULD_NOT_BE_NULL);
-        return new Position(source);
+        return new Position(source.strip());
     }
 
     // Method
     public Position add(final Distance distance) {
         Distance destination = currentDistance().add(distance);
+        if (destination.isLowerThanZero()) {
+            throw new ShouldNotBeMinusException(DISTANCE_SHOULD_NOT_BE_MINUS);
+        }
         return PositionBuilder.from(destination);
     }
 
-    private Distance currentDistance() {
+    public Distance currentDistance() {
         return Distance.from(value.length());
     }
 

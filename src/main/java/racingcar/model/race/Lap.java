@@ -39,12 +39,7 @@ public class Lap {
         if (source.isLowerThanZero()) {
             throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
         }
-
-        long subtracted = this.value - source.value;
-        if (subtracted < 0) {
-            throw new ShouldNotBeMinusException(LAP_COUNT_SHOULD_NOT_BE_MINUS);
-        }
-        return new Lap(subtracted);
+        return Lap.from(this.value - source.value);
     }
 
     @Override

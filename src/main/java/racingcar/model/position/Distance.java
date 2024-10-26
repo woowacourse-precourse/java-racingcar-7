@@ -36,6 +36,10 @@ public class Distance {
         return LongStream.range(ZERO.value, this.value);
     }
 
+    public boolean isLowerThanZero() {
+        return this.value < ZERO.value;
+    }
+
     @Override
     public boolean equals(final Object obj) {
         if (obj == this) {
