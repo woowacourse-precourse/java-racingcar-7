@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberProvider {
@@ -13,7 +16,9 @@ public class RandomNumberProvider {
 		return new RandomNumberProvider();
 	}
 
-	public int generateRandomNumber() {
-		return Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
+	public List<Integer> generateRandomNumbers(int carsCount) {
+		return Stream.generate(() -> Randoms.pickNumberInRange(START_NUMBER, END_NUMBER))
+			.limit(carsCount)
+			.toList();
 	}
 }
