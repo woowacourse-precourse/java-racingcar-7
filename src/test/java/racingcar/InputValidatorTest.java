@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import static racingcar.ExceptionMessage.*;
 import static racingcar.InputValidator.MAX_CAR_NAME_LENGTH;
 import static racingcar.InputValidator.MIN_CAR_NAME_LENGTH;
+import static racingcar.InputValidator.MIN_ROUND_COUNT;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,5 +40,28 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format(INVALID_LENGTH_RANGE_CAR_NAME.getMessage(),
                         MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH, carName));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "1", "10", "100"})
+    void 시도_횟수가_1_이상의_정수이면_예외가_발생하지_않는다(String count) {
+        assertThatCode(() -> InputValidator.validateRoundCount(count))
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "0", "-1", "-10"})
+    void 시도_횟수가_1_미만의_정수이면_예외가_발생한다(String count) {
+        assertThatThrownBy(() -> InputValidator.validateRoundCount(count))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(String.format(INVALID_RANGE_ROUND_COUNT.getMessage(), MIN_ROUND_COUNT));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "a", "ab", "-1.5", "1.0"})
+    void 시도_횟수가_정수_외_타입이면_예외가_발생한다(String count) {
+        assertThatThrownBy(() -> InputValidator.validateRoundCount(count))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_TYPE_ROUND_COUNT.getMessage());
     }
 }
