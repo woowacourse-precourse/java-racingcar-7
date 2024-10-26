@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class OutputView {
-    
+
     void resultMessageLoop(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             printResultMessage(racingCar.getName(), racingCar.getScore());

@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
 
@@ -24,6 +27,25 @@ public class Game {
                 racingCar.addScore();
             }
         }
-        return  racingCars;
+        return racingCars;
+    }
+
+    public List<String> selectWinner(List<RacingCar> racingCars) {
+        Optional<RacingCar> firstWinner = racingCars.stream().max(Comparator.comparing(RacingCar::getScore));
+
+        if (firstWinner.isEmpty()) {
+            throw new IllegalArgumentException("승자가 없습니다.");
+        }
+
+        Integer maxScore = firstWinner.get().getScore();
+
+        List<String> winners = new ArrayList<>();
+
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getScore().equals(maxScore)) {
+                winners.add(racingCar.getName());
+            }
+        }
+        return winners;
     }
 }
