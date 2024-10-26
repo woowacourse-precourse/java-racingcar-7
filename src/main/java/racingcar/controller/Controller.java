@@ -14,12 +14,13 @@ public class Controller {
         String inputCarList = inputView.inputCarList();
         String inputTryCnt = inputView.inputTryCnt();
         List<String> carList = converter.parseCarList(inputCarList);
+        int tryCnt = converter.convertTryCnt(inputTryCnt);
 
         // 테스트용
         for (String car : carList) {
             System.out.println(car);
         }
 
-        System.out.println("시도할 횟수: " + inputTryCnt);
+        System.out.println("시도할 횟수: " + tryCnt);
     }
 }
