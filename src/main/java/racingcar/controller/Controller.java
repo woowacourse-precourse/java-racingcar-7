@@ -18,9 +18,7 @@ public class Controller {
     }
 
     public void startGame() {
-        // 이름 입력 받기
         String rawInputCarNames = inputView.inputCarNames();
-
         List<String> carNames = Arrays.asList(rawInputCarNames.split(","));
         if (!isValidName(carNames)) {
             throw new IllegalArgumentException("이름이 5글자가 넘습니다");
@@ -28,19 +26,24 @@ public class Controller {
         if (isNameOverlap(carNames)) {
             throw new IllegalArgumentException("중복된 이름을 입력할 수 없습니다.");
         }
+        List<Car> carList = createCarByName(carNames);
 
-        List<Car> carList = new ArrayList<>();
-        for (String name : carNames) {
-            carList.add(new Car(name.trim()));
+        int repeatNumber = -1;
+        String gameCountString = inputView.inputRoundNumber();
+        if (isPositiveOrZeroInteger(gameCountString)) {
+            repeatNumber = Integer.parseInt(gameCountString);
         }
 
-        // 횟수 입력받기
-        int repeatNumber = stringToInt();
-
-        // 랜덤
-        int randomValue;
-
         outputView.printExecutionResult();
+
+        runGameForRounds(repeatNumber, carList);
+
+        List<String> finalWinner = findFinalWinner(carList);
+        outputView.printFinalRacingResult(finalWinner);
+    }
+
+    private void runGameForRounds(int repeatNumber, List<Car> carList) {
+        int randomValue;
         for (int i = 0; i < repeatNumber; i++) {
             for (Car car : carList) {
                 randomValue = createRandomValue();
@@ -51,27 +54,20 @@ public class Controller {
             }
             outputView.printCurrentRoundRacingResult(carList);
         }
-
-        List<String> finalWinner = findFinalWinner(carList);
-        outputView.printFinalRacingResult(finalWinner);
-
     }
 
-    private int stringToInt() {
-        int gameCountInt = -1;
-        String gameCountString = inputView.inputRoundNumber();
-        if (isPositiveOrZeroInteger(gameCountString)) {
-            gameCountInt = Integer.parseInt(gameCountString);
+    private List<Car> createCarByName(List<String> carNames) {
+        List<Car> carList = new ArrayList<>();
+        for (String name : carNames) {
+            carList.add(new Car(name.trim()));
         }
-
-        return gameCountInt;
+        return carList;
     }
 
     private boolean isPositiveOrZeroInteger(String gameCountString) {
         if (!gameCountString.matches("\\d+")) {
             throw new IllegalArgumentException("0 이상의 정수를 입력해주세요.");
         }
-
         return true;
     }
 
@@ -102,26 +98,22 @@ public class Controller {
 
     private List<String> findFinalWinner(List<Car> cars) {
         List<String> finalWinner = new ArrayList<>();
-        int winnerFowardCount = findWinnerForward(cars);
-
+        int winnerForwardCount = findWinnerForward(cars);
         for (Car car : cars) {
-            if (car.getForwardCount() == winnerFowardCount) {
+            if (car.getForwardCount() == winnerForwardCount) {
                 finalWinner.add(car.getName());
             }
         }
-
         return finalWinner;
     }
 
     private int findWinnerForward(List<Car> cars) {
         int winnerForwardCount = 0;
-
         for (Car car : cars) {
             if (car.getForwardCount() > winnerForwardCount) {
                 winnerForwardCount = car.getForwardCount();
             }
         }
-
         return winnerForwardCount;
     }
 
