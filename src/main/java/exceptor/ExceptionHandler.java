@@ -35,4 +35,10 @@ public class ExceptionHandler {
             throw new IllegalArgumentException("중복된 이름이 들어갔음");
         }
     }
+
+    public static void detectBlankName(String name){
+        if(name.isBlank()){
+            throw new IllegalArgumentException("이름이 비어있음");
+        }
+    }
 }

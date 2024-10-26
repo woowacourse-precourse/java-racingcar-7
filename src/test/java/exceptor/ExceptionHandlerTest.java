@@ -79,6 +79,16 @@ public class ExceptionHandlerTest  extends NsTest {
         );
     }
 
+    @DisplayName("공백_입력_예외_테스트")
+    @Test
+    void blank_test() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ","3"))
+                        .isInstanceOf(IllegalArgumentException.class) // 약 200만개 이상의 배열을 처리할 때 limit 초과
+        );
+    }
+
+
 
     @Override
     protected void runMain() {
