@@ -8,6 +8,7 @@ public class RacingChance {
     private final int chance;
 
     public RacingChance(String racingChance) {
+        validateEmptyChance(racingChance);
         validateNumberFormat(racingChance);
         validateMinusChance(racingChance);
         this.chance = Integer.parseInt(racingChance);
@@ -21,6 +22,12 @@ public class RacingChance {
         try {
             Integer.parseInt(racingChance);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(EXCEPTION_RIGHT_CHANCE);
+        }
+    }
+
+    private void validateEmptyChance(String racingChance) {
+        if (racingChance == null || racingChance.isBlank()) {
             throw new IllegalArgumentException(EXCEPTION_RIGHT_CHANCE);
         }
     }

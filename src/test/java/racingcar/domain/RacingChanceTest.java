@@ -48,4 +48,19 @@ class RacingChanceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expected);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void 경기_횟수가_빈_값일_경우_예외가_발생한다(String chance) {
+        // given
+        String expected = "올바른 시도 횟수를 입력해주세요.";
+
+        // when
+        Throwable thrown = catchThrowable(() -> new RacingChance(chance));
+
+        // then
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expected);
+    }
 }
