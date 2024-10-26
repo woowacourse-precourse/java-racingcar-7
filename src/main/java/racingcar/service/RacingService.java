@@ -19,4 +19,11 @@ public class RacingService {
             racingcars.addCar(racingcar);
         }
     }
+
+    public void makeMiddleResult(String attempt, StringBuilder middleResult) {
+        int count = Integer.parseInt(attempt);
+        for (int index = 0; index < count; index++) {
+            racingcars.makeMiddleResult(middleResult);
+        }
+    }
 }

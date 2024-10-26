@@ -20,7 +20,9 @@ public class RacingController {
     private final RacingcarNameValidate racingcarNameValidate;
     private final RacingcarAttemptValidate racingcarAttemptValidate;
 
-    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter,StringReplacer stringReplacer, RacingService racingService, RacingcarNameValidate racingcarNameValidate,  RacingcarAttemptValidate racingcarAttemptValidate) {
+    private final StringBuilder middleResult;
+
+    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter, StringReplacer stringReplacer, RacingService racingService, RacingcarNameValidate racingcarNameValidate, RacingcarAttemptValidate racingcarAttemptValidate, StringBuilder middleResult) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.stringReplacer = stringReplacer;
@@ -28,6 +30,7 @@ public class RacingController {
         this.racingService = racingService;
         this.racingcarNameValidate = racingcarNameValidate;
         this.racingcarAttemptValidate = racingcarAttemptValidate;
+        this.middleResult = middleResult;
     }
 
     public void run() {
@@ -60,5 +63,10 @@ public class RacingController {
 
         racingcarAttemptValidate.isParsable(attempt);//정수로 변환 가능 여부 검증, 자료형 범위 내
 
+        /* 차수별 실행 결과 출력 */
+
+        racingService.makeMiddleResult(attempt, middleResult);//middleResult에 차수별 실행 결과 저장
+
+        outputView.printMiddleResult(middleResult);//차수별 실행 결과 출력
     }
 }

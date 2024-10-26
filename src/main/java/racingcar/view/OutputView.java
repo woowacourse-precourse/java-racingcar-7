@@ -5,14 +5,14 @@ public class OutputView {
     private static final String ASK_ATTEMPT = "시도할 횟수는 몃 회인가요?";
 
     public void askCarName() {
-        printMessage(ASK_CAR_NAME);
+        System.out.println(ASK_CAR_NAME);
     }
 
     public void askAttempt() {
-        printMessage(ASK_ATTEMPT);
+        System.out.println(ASK_ATTEMPT);
     }
 
-    private void printMessage(String message) {
-        System.out.println(message);
+    public void printMiddleResult(StringBuilder middleResult) {
+        System.out.println(middleResult);
     }
 }

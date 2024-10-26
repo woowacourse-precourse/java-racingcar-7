@@ -24,8 +24,14 @@ public class Application {
         RacingcarAttemptValidate racingcarAttemptValidate = new RacingcarAttemptValidate();
         RacingcarNameValidate racingcarNameValidate = new RacingcarNameValidate();
 
+        StringBuilder middleResult = new StringBuilder();
+
         RacingController racingController = new RacingController(inputView, outputView,
-                stringSplitter,stringReplacer, racingService, racingcarNameValidate, racingcarAttemptValidate);
+                stringSplitter, stringReplacer,
+                racingService,
+                racingcarNameValidate, racingcarAttemptValidate,
+                middleResult
+        );
         racingController.run();
     }
 }

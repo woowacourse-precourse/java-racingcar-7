@@ -17,4 +17,12 @@ public class Racingcars {
     public List<Racingcar> getRacingcarList() {
         return racingcarList;
     }
+
+    public void makeMiddleResult(StringBuilder middleResult) {
+
+        for (Racingcar racingcar : racingcarList) {
+            racingcar.move(middleResult);
+        }
+        middleResult.append("\n");
+    }
 }
