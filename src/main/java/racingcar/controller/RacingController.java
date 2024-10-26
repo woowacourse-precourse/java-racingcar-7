@@ -22,13 +22,13 @@ public class RacingController {
         racingResult();
     }
 
-    private void racingInit(){
+    private void racingInit() {
         String userStringInput = racingService.getValidatedStringInput(
                 InputView.getInputCarString());
         racingService.setUpRacing(userStringInput);
     }
 
-    private void racingResult(){
+    private void racingResult() {
         int userIntegerInput = racingService.getValidateIntegerInput(
                 InputView.getInputRepeatCount());
         outputView.printGameResultMessage();
@@ -37,8 +37,8 @@ public class RacingController {
     }
 
     private void printResult(int userInput) {
-        for (int i = 0; i < userInput; i++) {
-            List<Car> cars = racingService.startRacingOnce();
+        List<List<Car>> racingResult = racingService.fullRacing(userInput);
+        for (List<Car> cars : racingResult) {
             outputView.printCarsResult(cars);
         }
     }
