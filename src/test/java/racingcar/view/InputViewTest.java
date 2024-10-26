@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -35,6 +36,8 @@ public class InputViewTest {
         String result = inputView.getCarNameInput();
 
         assertThat(result).isEqualTo(input);
+
+        Console.close();
     }
 
     @Test
@@ -46,5 +49,15 @@ public class InputViewTest {
 
         assertThat(outputStream.toString().trim())
                 .isEqualTo("시도할 횟수는 몇 회인가요?");
+    }
+
+    @Test
+    void 자동차_이동_횟수_입력() {
+        String input = "5";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        long result = inputView.getCarMovementCount();
+
+        assertThat(result).isEqualTo(5L);
     }
 }
