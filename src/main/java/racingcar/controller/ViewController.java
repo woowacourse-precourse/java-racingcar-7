@@ -1,11 +1,13 @@
 package racingcar.controller;
 
 import racingcar.service.ViewService;
+import racingcar.util.Utils;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class ViewController {
     private static ViewController viewController;
+    private static ViewService viewService = ViewService.getInstance();
     private static InputView inputView=InputView.getInstance();
     private static OutputView outputView=OutputView.getInstance();
 
@@ -16,14 +18,16 @@ public class ViewController {
         return viewController;
     }
 
-    public void printGuide(){
+    public String[] printGuide(){
         outputView.inputMessage();
         String carName = inputView.readLine();
+        return(viewService.inputValidation(carName));
     }
 
     public void printCountGuide(){
         outputView.inputCountMessage();
-        inputView.readLine();
-
+        String count = inputView.readLine();
+        int countNum = viewService.countValidation(count);
+        Utils.setAdvanceCount(countNum);
     }
 }
