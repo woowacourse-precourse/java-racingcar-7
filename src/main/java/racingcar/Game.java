@@ -48,6 +48,12 @@ public class Game {
         printFinalResult();
     }
 
+    private void printCurResult() {
+        playerScoreBoard.forEach((player,score)->{
+            System.out.print(player+" : "+"-".repeat(score));
+        });
+    }
+
     private void moveCarsByRandomVal() {
         playerScoreBoard.forEach((player,score)->{
             int randomVal= Randoms.pickNumberInRange(0,9);
