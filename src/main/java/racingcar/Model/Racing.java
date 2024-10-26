@@ -7,6 +7,7 @@ import java.util.Map;
 
 import racingcar.Utilities.Random;
 import racingcar.Utilities.Splitter;
+import racingcar.Validation.CarValidator;
 
 public class Racing implements RacingRule {
     private ArrayList<Car> cars;
@@ -15,14 +16,15 @@ public class Racing implements RacingRule {
         this.cars = cars;
     }
 
-    public Racing setCars(String carNames){ //이 메서드의 길이 수정하기
+    public static Racing setCars(String carNames){ //이 메서드의 길이 수정하기
         ArrayList<Car> cars = new ArrayList<>();
         List<String> splittedNames = Splitter.splitNames(carNames);
 
-        //validateCarNumber(splittedNames);
+        CarValidator.validateCarNumber(splittedNames);
+        CarValidator.validateDuplicateCarName(splittedNames);
 
         for (String name : splittedNames) {
-            //validateCarName(name);
+            CarValidator.validateCarName(name);
             Car car = new Car(name);
             cars.add(car);
         }
