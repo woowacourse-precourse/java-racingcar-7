@@ -4,6 +4,8 @@ package racingcar.controller;
 import static racingcar.view.InputView.UserInput;
 import static racingcar.view.OutputView.printAttemptCountInputMessage;
 import static racingcar.view.OutputView.printCarNamesInputMessage;
+import static racingcar.view.OutputView.printExecutionResult;
+import static racingcar.view.OutputView.printFinalWinner;
 
 import racingcar.domain.CarGenerator;
 import racingcar.domain.Cars;
@@ -14,8 +16,10 @@ public class RacingCarController {
     public void run() {
         Cars cars = getCars();
         int attemptCount = getAttemptCount();
-
+        racing(cars, attemptCount);
+        showWinner(cars);
     }
+
 
     private Cars getCars() {
         printCarNamesInputMessage();
@@ -29,5 +33,18 @@ public class RacingCarController {
         String attemptCount = UserInput();
         AttemptCountValidation.validate(attemptCount);
         return Integer.parseInt(attemptCount);
+    }
+
+    private void racing(Cars cars, int attemptCount) {
+        printExecutionResult();
+//        i 이름 변경
+        for (int i = 0; i < attemptCount; i++) {
+            cars.move();
+        }
+    }
+
+    private void showWinner(Cars cars) {
+        cars.calculateFinalWinner();
+        printFinalWinner();
     }
 }
