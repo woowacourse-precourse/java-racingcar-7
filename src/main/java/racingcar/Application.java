@@ -11,9 +11,7 @@ public class Application {
 
             String[] cars = getCars();
 
-            //시도할 횟수 입력 받기
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            int cnt = sc.nextInt();
+            int attempts = getAttempts();
 
             int[] racing_num = new int[cars.length];
 
@@ -22,7 +20,7 @@ public class Application {
     
             System.out.println("실행 결과");
             // 경주 하기
-            for (int i=0; i<cnt; i++){
+            for (int i=0; i<attempts; i++){
                 for (int j=0; j<cars.length; j++){
                     int advance_number = random.nextInt(10);
                     if (advance_number > 4){
@@ -74,5 +72,16 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하로 설정해야 합니다.");
             }
         }
+    }
+
+     // 이동 횟수 입력받기
+     private static int getAttempts() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        Scanner sc = new Scanner(System.in);
+        int attempts = sc.nextInt();
+        if (attempts <= 0) {
+            throw new IllegalArgumentException("이동 횟수는 1 이상이어야 합니다.");
+        }
+        return attempts;
     }
 }
