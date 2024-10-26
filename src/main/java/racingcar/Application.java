@@ -25,6 +25,8 @@ public class Application {
             }
             System.out.println();
         }
+        Game.printWinner(Game.findWinner(carArr));
+
 
     }
 }
