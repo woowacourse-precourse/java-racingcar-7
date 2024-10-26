@@ -42,22 +42,29 @@ public class RacingCar {
             cars.add(car);
         }
 
-        for (int i = 0; i < tryCountNumber; i++) {
-            for (Car car : cars) {
-                final int randomInt = Randoms.pickNumberInRange(0, 9);
-                final String moveDistance = "-".repeat(randomInt);
-                if (randomInt >= 4) {
-                    car.addDistance(randomInt);
-                }
-                outputView.printCarNameAndMoveDistance(car.getCarName(), moveDistance);
-            }
-            System.out.println("");
-        }
-
+        runTotalRoundRacing(tryCountNumber);
         findRacingWinner();
     }
 
-    public void findRacingWinner() {
+    private void runTotalRoundRacing(final int tryCountNumber) {
+        for (int i = 0; i < tryCountNumber; i++) {
+            runOneRoundRacing();
+        }
+        System.out.println("");
+    }
+
+    private void runOneRoundRacing() {
+        for (Car car : cars) {
+            final int randomInt = Randoms.pickNumberInRange(0, 9);
+            final String moveDistance = "-".repeat(randomInt);
+            if (randomInt >= 4) {
+                car.addDistance(randomInt);
+            }
+            outputView.printCarNameAndMoveDistance(car.getCarName(), moveDistance);
+        }
+    }
+
+    private void findRacingWinner() {
         int winnerDistance = 0;
 
         for (Car car : cars) {
