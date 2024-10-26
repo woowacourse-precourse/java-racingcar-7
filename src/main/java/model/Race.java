@@ -35,7 +35,7 @@ public class Race {
         for(int i = 0; i < attempts; i++) {
             attemptOnce();
             if(callback != null) {
-                callback.onAttept(new ArrayList<>(cars));
+                callback.onAttempt(new ArrayList<>(cars));
             }
         }
     }
