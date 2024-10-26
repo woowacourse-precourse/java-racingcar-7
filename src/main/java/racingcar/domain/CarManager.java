@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.utils.RandomNumber;
 
 public class CarManager {
 
@@ -23,9 +24,9 @@ public class CarManager {
         initCars(split);
     }
 
-    public List<Car> startRacing(int randomNumber) {
+    public List<Car> startRacing(RandomNumber randomNumber) {
         for (Car car : cars) {
-            car.move(randomNumber);
+            car.move(randomNumber.generate());
         }
         return cars;
     }

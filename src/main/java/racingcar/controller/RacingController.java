@@ -20,6 +20,7 @@ public class RacingController {
     private Racing racing;
     private CarManager carManager;
     private OutputView outputView;
+    private RandomNumber randomNumber = new RandomNumber();
 
     public RacingController(Racing racing, CarManager carManager,
             OutputView outputView) {
@@ -53,7 +54,7 @@ public class RacingController {
     }
 
     private void runSingleRound() {
-        List<Car> cars = carManager.startRacing(RandomNumber.generate());
+        List<Car> cars = carManager.startRacing(randomNumber);
         for (Car car : cars) {
             outputView.printGameResult(car.getName(), car.getMovedDistance());
         }
