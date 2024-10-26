@@ -1,7 +1,15 @@
 package racingcar;
 
+import racingcar.adapter.in.console.ConsoleHandler;
+import racingcar.config.context.ApplicationContext;
+
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ApplicationContext context = ApplicationContext.getInstance(Application.class);
+
+        ConsoleHandler handler = context.getBean(ConsoleHandler.class);
+        handler.startRacing();
     }
 }
