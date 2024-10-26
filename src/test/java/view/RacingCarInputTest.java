@@ -26,12 +26,12 @@ class RacingCarInputTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Car1 2", "\n2", "Car1,Car2\n three", "Car1,,Car2\n3,", ",Car1,Car2\n3", "Car1,Car2,\n3"})
+    @ValueSource(strings = {"Car1 2", "\n2", "Car1,Car2\n three", "Car1,,Car2\n3,", ",Car1,Car2\n3"
+            , "Car1,Car2,\n3","Car1,Car1\n2","LongLetters,Car2\n2"})
     void 잘못된입력_테스트(String string) {
         System.setIn(new ByteArrayInputStream(string.getBytes()));
         assertThatThrownBy(() ->
                 racingCarInput.getUserInput()
         ).isInstanceOf(IllegalArgumentException.class);
-
     }
 }
