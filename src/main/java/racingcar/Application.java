@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.validation.AttemptCountValidator;
 import racingcar.validation.CarNamesValidator;
 import racingcar.view.RacingGameView;
 
@@ -8,10 +9,12 @@ public class Application {
     public static void main(String[] args) {
         RacingGameView racingGameView = new RacingGameView();
         CarNamesValidator carNamesValidator = new CarNamesValidator();
+        AttemptCountValidator attemptCountValidator = new AttemptCountValidator();
 
         new RacingGameController(
             racingGameView,
-            carNamesValidator
+            carNamesValidator,
+            attemptCountValidator
         ).play();
     }
 }

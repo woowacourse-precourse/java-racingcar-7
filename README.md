@@ -21,8 +21,8 @@
 
 ### GameControl
 
-- [ ] 몇 번의 이동을 할 것인지를 입력 받는다.
-  - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [X] 몇 번의 이동을 할 것인지를 입력 받는다.
+  - [X] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 - [ ] 입력한 이동 횟수 만큼 반복한다.
   - [ ] 자동차들을 전진시키거나 멈추도록 한다.
   - [ ] 이동 결과를 자동차 이름과 함께 출력한다.

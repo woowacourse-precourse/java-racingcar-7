@@ -10,13 +10,16 @@ public class RacingGameController {
 
     private final RacingGameView view;
     private final Validator carNamesValidator;
+    private final Validator attemptCountValidator;
 
     public RacingGameController(
         RacingGameView view,
-        Validator carNamesValidator
+        Validator carNamesValidator,
+        Validator attemptCountValidator
     ) {
         this.view = view;
         this.carNamesValidator = carNamesValidator;
+        this.attemptCountValidator = attemptCountValidator;
     }
 
     public void play() {
@@ -24,11 +27,21 @@ public class RacingGameController {
         String carNames = view.getInput();
 
         List<String> names = getNames(carNames);
+
+        view.printAttemptCountInputMessage();
+
+        Long attemptCount = getAttemptCount(view.getInput());
     }
 
     private List<String> getNames(String carNames) {
         carNamesValidator.validate(carNames);
 
         return Arrays.asList(carNames.split(","));
+    }
+
+    private Long getAttemptCount(String attemptCount) {
+        attemptCountValidator.validate(attemptCount);
+
+        return Long.valueOf(attemptCount);
     }
 }
