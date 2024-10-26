@@ -1,12 +1,13 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static racingcar.Constants.RESULT_NOTICE;
 import static racingcar.Utils.println;
 
 public class StartRace {
-    protected ArrayList<Car> racingStart(final ArrayList<Car> cars, final int attempts) {
+    protected List<Car> racingStart(final List<Car> cars, final int attempts) {
         println(RESULT_NOTICE);
         for (int i = 0; i < attempts; i++) {
             // 랜덤 값 생성하고 자동차 전진
@@ -18,7 +19,7 @@ public class StartRace {
         return cars;
     }
 
-    private void printGameStatus(final ArrayList<Car> cars) {
+    private void printGameStatus(final List<Car> cars) {
         for (Car car : cars) {
             println(makeMovedAmountString(car.getName(), car.movedAmount));
         }

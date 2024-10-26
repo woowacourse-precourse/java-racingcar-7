@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -41,7 +42,7 @@ class ApplicationTest extends NsTest {
     @Test
     void convertCarNamesTest() {
         assertSimpleTest(() -> {
-            ArrayList<String> resultNames = convertCarNames("pobi,woni,jun");
+            List<String> resultNames = convertCarNames("pobi,woni,jun");
             assertThat(resultNames).contains("pobi", "woni", "jun");
         });
     }
@@ -73,7 +74,7 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Car> testCars = readyToRace.createCarObjects(testNames);
+        List<Car> testCars = readyToRace.createCarObjects(testNames);
 
         assertSimpleTest(() -> {
             for (int i = 0; i < testCars.size(); i++) {
@@ -130,7 +131,7 @@ class ApplicationTest extends NsTest {
         ArrayList<String> testNames = new ArrayList<>();
         testNames.addAll(Arrays.asList("pobi", "woni", "jun"));
 
-        ArrayList<Car> testCars = readyToRace.createCarObjects(testNames);
+        List<Car> testCars = readyToRace.createCarObjects(testNames);
         testCars.get(0).movedAmount = 2;
         testCars.get(1).movedAmount = 3;
         testCars.get(2).movedAmount = 3;

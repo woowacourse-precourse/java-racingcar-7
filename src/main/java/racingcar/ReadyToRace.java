@@ -2,18 +2,15 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static racingcar.Constants.*;
 import static racingcar.Constants.ATTEMPTS_REGEXP;
 import static racingcar.Utils.println;
 
 public class ReadyToRace {
-    protected ArrayList<String> inputStrings() {
-        ArrayList<String> inputStringArr = new ArrayList<>();
+    protected List<String> inputStrings() {
+        List<String> inputStringArr = new ArrayList<>();
 
         println(INPUT_CAR_NAMES);
         inputStringArr.add(Console.readLine());
@@ -23,8 +20,8 @@ public class ReadyToRace {
         return inputStringArr;
     }
 
-    protected ArrayList<Car> createCarObjects(final ArrayList<String> carNames) {
-        ArrayList<Car> cars = new ArrayList<>();
+    protected List<Car> createCarObjects(final List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name));
         }
@@ -38,7 +35,7 @@ public class ReadyToRace {
         return true;
     }
 
-    private static boolean validateNameLimit(final ArrayList<String> carNames) {
+    private static boolean validateNameLimit(final List<String> carNames) {
         for (String name : carNames) {
             if (name.length() > 5) {
                 return false;
@@ -47,7 +44,7 @@ public class ReadyToRace {
         return true;
     }
 
-    private static boolean isUniqueName(ArrayList<String> carNames) {
+    private static boolean isUniqueName(List<String> carNames) {
         Set<String> carNameSet = new HashSet<>();
         for (String name : carNames) {
             if (!carNameSet.add(name)) {
@@ -57,8 +54,8 @@ public class ReadyToRace {
         return true;
     }
 
-    protected static ArrayList<String> convertCarNames(final String nameInput) {
-        ArrayList<String> carNames = new ArrayList<>();
+    protected static List<String> convertCarNames(final String nameInput) {
+        List<String> carNames = new ArrayList<>();
 
         if (validateInput(CAR_NAME_REGEXP, nameInput)) {
             carNames = new ArrayList<>(Arrays.asList(nameInput.split(",")));
