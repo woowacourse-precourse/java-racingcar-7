@@ -66,8 +66,8 @@ public boolean canMove()
 public List\<String> countWinners(List\<Car> participants)
 : \: 우승자를 집계하는 메소드.
 
-- [ ]  participants를 movedCnt 값을 기준으로 내림차순 정렬
-- [ ]  가장 movedCnt 값이 높은 자동차(들)를 리스트에 저장해 리턴
+- [x]  participants를 movedCnt 값을 기준으로 내림차순 정렬
+- [x]  가장 movedCnt 값이 높은 자동차(들)를 리스트에 저장해 리턴
 
 ## Validation 클래스
 
