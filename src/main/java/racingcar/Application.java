@@ -23,8 +23,8 @@ public class Application {
         }
     }
 
-
     public static List<String> inputRacers(){
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String racerNames = Console.readLine();
         List<String> racers = List.of(racerNames.split(","));
         if(isNameLengthOver5(racers)){
@@ -44,6 +44,7 @@ public class Application {
 
 
     public static String startRacing(List<String> racers) {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         int finishLine = Integer.parseInt(Console.readLine());
         int frontRacerLocation = 0;
 
