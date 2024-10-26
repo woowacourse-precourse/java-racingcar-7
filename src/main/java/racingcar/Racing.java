@@ -52,4 +52,8 @@ public class Racing {
         return longestDistanceCar;
     }
 
+    public void getWinner() {
+        String winners = String.join(", ", findLongestDistance(cars));
+        Output.printWinner(winners);
+    }
 }
