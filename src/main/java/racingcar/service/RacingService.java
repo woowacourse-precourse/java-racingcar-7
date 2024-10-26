@@ -1,35 +1,48 @@
 package racingcar.service;
 
 import racingcar.domain.Car;
-import racingcar.dto.RacingResponse;
+import racingcar.dto.GetWinnersResponse;
+import racingcar.dto.StartRaceResponse;
+import racingcar.repository.CarRepository;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingService {
 
-    public RacingResponse startRace(String[] carName, int attemptCount) {
-        List<Car> cars = getCars(carName);
-        List<Map<String, Integer>> moveData = getMoveData(attemptCount, cars);
-        List<String> winners = getWinners(cars);
+    private final CarRepository carRepository = new CarRepository();
 
-        return new RacingResponse(moveData, winners);
+    public void createCars(String[] carName) {
+        Arrays.stream(carName)
+                .map(Car::new)
+                .forEach(carRepository::save);
     }
 
-    private List<Car> getCars(String[] carName) {
-        return Arrays.stream(carName)
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public StartRaceResponse startRace(int attemptCount) {
+        List<Car> cars = carRepository.getCars();
+        List<Map<String, Integer>> moveData = getMoveData(attemptCount, cars);
+
+        return new StartRaceResponse(moveData);
+    }
+
+    public GetWinnersResponse getWinners() {
+        List<Car> cars = carRepository.getCars();
+        int maxDistance = getMaxDistance(cars);
+        List<String> winners = cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .toList();
+
+        return new GetWinnersResponse(winners);
     }
 
     private List<Map<String, Integer>> getMoveData(int attemptCount, List<Car> cars) {
-        List<Map<String, Integer>> moveData = new ArrayList<>();
-        while(attemptCount-- > 0) {
-            Map<String, Integer> moveSnapshot = getCarMoveSnapshot(cars);
-            moveData.add(moveSnapshot);
+        List<Map<String, Integer>> roundMoveData = new ArrayList<>();
+        while (attemptCount-- > 0) {
+            Map<String, Integer> moveData = getCarMoveSnapshot(cars);
+            roundMoveData.add(moveData);
         }
 
-        return moveData;
+        return roundMoveData;
     }
 
     private Map<String, Integer> getCarMoveSnapshot(List<Car> cars) {
@@ -40,15 +53,6 @@ public class RacingService {
         }
 
         return moveSnapshot;
-    }
-
-    private List<String> getWinners(List<Car> cars) {
-        int maxDistance = getMaxDistance(cars);
-
-        return cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
-                .collect(Collectors.toList());
     }
 
     private int getMaxDistance(List<Car> cars) {

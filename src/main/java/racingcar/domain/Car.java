@@ -17,13 +17,13 @@ public class Car {
         this.name = name;
     }
 
-    public void move(){
-        if(Randoms.pickNumberInRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX) >= LIMIT ){
+    public void move() {
+        if (Randoms.pickNumberInRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX) >= LIMIT) {
             distance++;
         }
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -31,11 +31,11 @@ public class Car {
         return distance;
     }
 
-    private void validateName(String name){
-        if(name == null || name.isBlank()){
+    private void validateName(String name) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("이름은 빈 문자열이 불가능합니다.");
         }
-        if(name.length() > MAX_NAME_LENGTH){
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자 이하로 작성해야합니다.");
         }
     }

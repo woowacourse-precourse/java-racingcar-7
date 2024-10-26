@@ -1,7 +1,6 @@
 package racingcar.dto;
 
-public record RacingRequest(
-        String carNames,
+public record StartRaceRequest(
         int attemptCount
 ) {
 }
