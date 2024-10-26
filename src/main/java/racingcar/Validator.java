@@ -20,7 +20,7 @@ public class Validator {
     }
 
     private static void validateNull(String input) {
-        if (input == null || input.isEmpty())
+        if (input == null || input.trim().isEmpty())
             throw new IllegalArgumentException();
     }
 
