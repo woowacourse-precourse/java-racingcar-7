@@ -19,11 +19,12 @@ public class Racing {
                 .toList();
 
         for(String racingCarNames : racingCarNamesList) {
-            //예외 처리
+            validator.validateWhitespaceOrEmptyInCarNames(racingCarNames);
+            validator.validateCarNameLength(racingCarNames);
         }
 
         Set<String> racingCarNames = new HashSet<>(racingCarNamesList);
-        //예외 처리
+        validator.validateDuplicateRacingCarNames(racingCarNamesList, racingCarNames);
 
         return racingCarNames;
     }

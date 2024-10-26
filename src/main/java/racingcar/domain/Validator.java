@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import java.util.List;
+import java.util.Set;
+
 public class Validator {
 
     public void validateEmptyRacingCarNames(String racingCarNames) {
@@ -21,4 +24,23 @@ public class Validator {
             throw new IllegalArgumentException(racingCount + ": 숫자만 입력할 수 있습니다.");
         }
     }
+
+    public void validateWhitespaceOrEmptyInCarNames(String racingCarNames) {
+        if (racingCarNames == null || racingCarNames.isEmpty()) {
+            throw new IllegalArgumentException("이름이 입력되지 않았습니다.");
+        }
+    }
+
+    public void validateCarNameLength(String racingCarNames) {
+        if (racingCarNames.length() > 5) {
+            throw new IllegalArgumentException(racingCarNames + ": 이름은 5자를 초과할 수 없습니다");
+        }
+    }
+
+    public void validateDuplicateRacingCarNames(List<String> racingCarNamesList, Set<String> racingCarNames) {
+        if(racingCarNamesList.size() != racingCarNames.size()) {
+            throw new IllegalArgumentException("자동차 이름에 중복 값이 포함되어 있습니다.");
+        }
+    }
+
 }
