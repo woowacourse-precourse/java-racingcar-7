@@ -46,7 +46,7 @@
 - [ ] Car
 - [ ] Cars
 - [ ] Referee
-- [ ] DelimiterManager
+- [x] StringSplitter
 - [ ] RandomNumberGenerator
 ### View
 - [ ] InputView
