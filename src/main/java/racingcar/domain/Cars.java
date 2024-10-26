@@ -25,15 +25,14 @@ public class Cars {
     }
 
     private void carNameValidate(Map<String, Integer> cars) {
-
-        Iterator<String> keys = cars.keySet().iterator();
-
-        while (keys.hasNext()) {
-            String key = keys.next();
-            lengthValidate(key);
-        }
+        cars.entrySet().stream()
+                .forEach( entry -> {
+                    String key = entry.getKey();;
+                    lengthValidate(key);    //자동차 이름 유효성 검사
+                });
     }
 
+    //자동차 이름 길이 유효성 검사 메소드
     private void lengthValidate(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("[ERROR] 차 이름은 5자 이하여야 합니다");
