@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
@@ -76,24 +77,11 @@ public class Controller {
     }
 
     private boolean isValidName(List<String> carNames) {
-        for (String car : carNames) {
-            if (car.length() > 5) {
-                return false;
-            }
-        }
-        return true;
+        return carNames.stream().allMatch(name -> name.length() <= 5);
     }
 
     private boolean isNameOverlap(List<String> carNames) {
-        int carCount = carNames.size();
-        for (int i = 0; i < carCount - 1; i++) {
-            for (int j = i + 1; j < carCount; j++) {
-                if (carNames.get(i).equals(carNames.get(j))) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return carNames.size() != new HashSet<>(carNames).size();
     }
 
     private List<String> findFinalWinner(List<Car> cars) {
@@ -108,13 +96,7 @@ public class Controller {
     }
 
     private int findWinnerForward(List<Car> cars) {
-        int winnerForwardCount = 0;
-        for (Car car : cars) {
-            if (car.getForwardCount() > winnerForwardCount) {
-                winnerForwardCount = car.getForwardCount();
-            }
-        }
-        return winnerForwardCount;
+        return cars.stream().mapToInt(Car::getForwardCount).max().orElse(0);
     }
 
 }
