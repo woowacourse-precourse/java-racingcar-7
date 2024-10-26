@@ -8,13 +8,30 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public record CarCollection(List<Car> cars) {
-
-    private static final int MAX_CAR_COUNT = 10;
-
     public CarCollection(List<Car> cars) {
         validateCarNamesAreUnique(cars);
         validateCarCount(cars);
         this.cars = List.copyOf(cars);
+    }
+
+    private void validateCarNamesAreUnique(List<Car> cars) {
+        Set<String> uniqueNames = extractCarNames(cars);
+        if (uniqueNames.size() != cars.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+    }
+
+    private Set<String> extractCarNames(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
+    }
+
+    private void validateCarCount(List<Car> cars) {
+        int count = cars.size();
+        if (count > 10) {
+            throw new IllegalArgumentException("자동차의 수는 10개 이하만 가능합니다.");
+        }
     }
 
     /**
@@ -36,26 +53,6 @@ public record CarCollection(List<Car> cars) {
                 .map(CarName::new)
                 .map(Car::new)
                 .collect(Collectors.toList());
-    }
-
-    private void validateCarNamesAreUnique(List<Car> cars) {
-        Set<String> uniqueNames = extractCarNames(cars);
-        if (uniqueNames.size() != cars.size()) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
-    }
-
-    private void validateCarCount(List<Car> cars) {
-        int count = cars.size();
-        if (count > MAX_CAR_COUNT) {
-            throw new IllegalArgumentException("자동차의 수는 " + MAX_CAR_COUNT + "개 이하만 가능합니다.");
-        }
-    }
-
-    private Set<String> extractCarNames(List<Car> cars) {
-        return cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toSet());
     }
 
     public void moveAll() {
