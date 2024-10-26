@@ -36,10 +36,14 @@ public class Validator {
     static void validateTryCount(String tryCount) {
         try {
             int tryCountNum = Integer.parseInt(tryCount);
-            if (tryCountNum <= 0) {
-                throw new IllegalArgumentException("시도할 횟수가 자연수가 아닙니다");
-            }
+            checkNotPositiveValue(tryCountNum);
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수가 자연수가 아닙니다");
+        }
+    }
+
+    static void checkNotPositiveValue(int tryCountNum) {
+        if (tryCountNum <= 0) {
             throw new IllegalArgumentException("시도할 횟수가 자연수가 아닙니다");
         }
     }
