@@ -29,8 +29,8 @@ public class UnitTest extends NsTest {
         cars.add(new RacingCar("car1"));
         cars.add(new RacingCar("car2"));
         cars.add(new RacingCar("car3"));
-        List<RacingCar> resultCars = Application.splitInput("car1,car2,car3");
-        assertThat(resultCars).extracting("name").containsExactly("car1", "car2", "car3");
+        List<RacingCar> resultCars = Application.splitInput("car1,car2, car3");
+        assertThat(resultCars).extracting("name").containsExactly("car1", "car2","car3");
     }
 
     @Test

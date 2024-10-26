@@ -39,7 +39,7 @@ public class Application {
         Arrays.stream(racingCars)
                 .forEach(name -> {
                     checkCarName(name);
-                    racingCarList.add(new RacingCar(name));
+                    racingCarList.add(new RacingCar(name.trim()));
                 });
 
         Set<String> hashCars = new HashSet<>(Arrays.asList(racingCars));
