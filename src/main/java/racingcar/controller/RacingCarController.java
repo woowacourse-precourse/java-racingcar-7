@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.dto.CarDto;
 import racingcar.model.Cars;
@@ -56,17 +55,8 @@ public class RacingCarController {
     }
 
     private void finalizeRace() {
-        List<CarDto> winnerList = cars.calculateFarthestCars();
-        List<String> winnerNameList = getCarNameList(winnerList);
+        List<String> winnerNameList = cars.getWinnerNames();
         outputView.printWinnerMessage(winnerNameList);
     }
 
-    private List<String> getCarNameList(List<CarDto> carDtoList) {
-        List<String> carNameList = new ArrayList<>();
-        for (CarDto carDto : carDtoList) {
-            String carName = carDto.name();
-            carNameList.add(carName);
-        }
-        return carNameList;
-    }
 }
