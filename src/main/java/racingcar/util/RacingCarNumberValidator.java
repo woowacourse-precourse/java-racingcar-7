@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import java.util.regex.Pattern;
+import racingcar.constant.ErrorType;
 
 public class RacingCarNumberValidator implements NumberValidator<Integer> {
 
@@ -9,14 +10,14 @@ public class RacingCarNumberValidator implements NumberValidator<Integer> {
     @Override
     public void validateFormat(final String value) {
         if (isNotNumber(value)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.INVALID_COUNT);
         }
     }
 
     @Override
     public void validateRange(final Integer value, final Integer maxValue) {
         if (isExceedMaxValueRange(value, maxValue)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.EXCEEDED_MAX_COUNT);
         }
     }
 
