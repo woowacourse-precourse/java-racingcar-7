@@ -4,17 +4,22 @@ import racingcar.dto.CarStatusDto;
 
 public class Car {
 
+    private static final int INITIAL_POSITION = 0;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int NAME_LENGTH_THRESHOLD = 5;
+    private static final String WHITE_SPACE = " ";
+
     private final String name;
     private int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
-        this.position = 0;
+        this.position = INITIAL_POSITION;
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             position++;
         }
     }
@@ -26,7 +31,7 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_LENGTH_THRESHOLD) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
     }
@@ -38,7 +43,7 @@ public class Car {
     }
 
     private void validateNameWithoutWhiteSpace(String name) {
-        if (name.contains(" ")) {
+        if (name.contains(WHITE_SPACE)) {
             throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
         }
     }
