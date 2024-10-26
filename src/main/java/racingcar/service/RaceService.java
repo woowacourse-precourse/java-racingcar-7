@@ -2,7 +2,11 @@ package racingcar.service;
 
 import racingcar.constant.Message;
 import racingcar.dto.CarsDto;
+import racingcar.model.Car;
 import racingcar.model.Separator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RaceService {
 
@@ -26,5 +30,20 @@ public class RaceService {
             throw new IllegalArgumentException(Message.ROUND_COUNT_SHOUL_BE_NUMBER_VALIDATION_MESSAGE.getMessage());
         }
         return roundCount;
+    }
+    public List<String> raceResult(CarsDto carsDto) {
+        int maxWin = 0;
+        List<String> winCars = new ArrayList<>();
+        for (Car car : carsDto.getCars()) {
+            if (car.getWinStack() > maxWin) {
+                maxWin = car.getWinStack();
+            }
+        }
+        for(Car car : carsDto.getCars()) {
+            if(car.getWinStack() == maxWin) {
+                winCars.add(car.getName());
+            }
+        }
+        return winCars;
     }
 }
