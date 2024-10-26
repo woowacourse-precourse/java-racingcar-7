@@ -33,5 +33,15 @@ class CarNameParserTest {
         // null 입력
         assertThatThrownBy(()->CarNameParser.parse(null, 5))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        // 중복 이름 입력
+        assertThatThrownBy(()->CarNameParser.parse("john, apple, john", 5))
+        .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->CarNameParser.parse("apple, apple, apple", 5))
+        .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->CarNameParser.parse("john, eleph, eleph", 5))
+        .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->CarNameParser.parse("john, apple, eleph, banana, kiwi, apple, orange, apple", 5))
+        .isInstanceOf(IllegalArgumentException.class);
     }
 }

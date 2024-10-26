@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -27,16 +28,20 @@ public class CarNameParser {
         }
         
         List<String> names = new ArrayList<String>();
+        HashSet<String> nameCheckingSet = new HashSet<String>(); 
         
         String[] rawNames = carNames.split(",", -1);
         for (int i = 0; i < rawNames.length; i++) {
             String rawName = rawNames[i].trim();
             
-            if (rawName.length() == 0 || rawName.length() > maxNameLen) {
+            if (rawName.length() == 0
+                    || rawName.length() > maxNameLen
+                    || nameCheckingSet.contains(rawName)) {
                 throw new IllegalArgumentException();
             }
             else {
                 names.add(rawName);
+                nameCheckingSet.add(rawName);
             }
         }
         
