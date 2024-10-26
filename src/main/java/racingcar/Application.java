@@ -9,6 +9,7 @@ public class Application {
         InputReader inputReader = new InputReader();
         InputExtractor inputExtractor = new InputExtractor();
         NumCounter numCounter = new NumCounter();
+        MapBuilder mapBuilder = new MapBuilder();
 
         System.out.println(messagePrinter.carNameGuideMessage);
         String userInputCar = inputReader.getUserInput();
@@ -22,5 +23,9 @@ public class Application {
         String userInputRound = inputReader.getUserInput();
         int totalRounds = inputExtractor.extractRound(userInputRound);
 
+        // 자동차 이름과 전진횟수를 매핑
+        mapBuilder.mapCarNamesToForwardCounts(carNames);
+        // 자동차 이름과 출력할 라인 문자열을 매핑
+        mapBuilder.mapCarNamesToStringForwardLines(carNames);
     }
 }
