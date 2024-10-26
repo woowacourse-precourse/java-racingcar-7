@@ -27,5 +27,20 @@ public class Cars {
             positions.add(position);
         }
         return positions;
+        // return cars.stream()
+        //         .map(car -> car.go(moveCondition))
+        //         .toList();
+    }
+
+    public String getCarName(int i) {
+        return cars.get(i).getName();
+    }
+
+    public int getSize() {
+        return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
