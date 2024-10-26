@@ -16,18 +16,24 @@ public class Game {
         this.attempts = attempts; // 시도 횟수 저장
     }
 
-    // 경주를 시작하는 메서드
+    // 경주를 시작하는 메소드
     public void startRace() {
         for (int i = 0; i < attempts; i++) { // 시도 횟수만큼 반복
             for (Car car : cars) {
-                car.move(); // 각 자동차를 한 번씩 전진시킴
+                int randomValue = getRandomNumber(); // 무작위 값 생성
+                car.move(randomValue); // 각 자동차에 무작위 값 주입하여 전진 여부 결정
                 System.out.println(car.getName() + " : " + car.getPosition()); // 각 자동차의 이름과 위치 출력
             }
             System.out.println(); // 차수별 결과를 구분하기 위한 줄바꿈
         }
     }
 
-    // 가장 멀리 간 자동차의 위치를 반환하는 메서드
+    private int getRandomNumber() {
+        return (int) (Math.random() * 10);
+    }
+
+
+    // 가장 멀리 간 자동차의 위치를 반환하는 메소드
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
@@ -38,7 +44,7 @@ public class Game {
         return maxPosition; // 최대 위치 반환
     }
 
-    // 경주가 끝난 후 우승자를 출력하는 메서드
+    // 경주가 끝난 후 우승자를 출력하는 메소드
     public void printWinners() {
         int maxPosition = getMaxPosition(); // 가장 멀리 간 자동차의 위치를 구함
         List<String> winners = new ArrayList<>(); // 우승자들을 저장할 리스트

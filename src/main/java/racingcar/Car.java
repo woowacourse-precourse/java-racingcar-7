@@ -17,12 +17,10 @@ public class Car {
     }
 
     // 전진 여부를 결정하는 메서드 ,  무작위 값으로 4이상 일때만 전진
-    public void move(){
-        int randomValue = (int) (Math.random() * 10); // 0~9 사이의 값을 랜덤으로 생성
-        if(randomValue >= 4 ){  // 4 이상이면 전진
+    public void move(int randomValue) {
+        if (randomValue >= 4) {  // 4 이상이면 전진
             position++;
         }
-
     }
 
     // 현재 자동차의 위치를 "-"  로 표현한다
