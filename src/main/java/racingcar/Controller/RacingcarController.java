@@ -1,6 +1,7 @@
 package racingcar.Controller;
 
 import racingcar.Domain.Car;
+import racingcar.Domain.Round;
 import racingcar.View.InputView;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public class RacingcarController {
         // 인스턴스 메서드 참조 : instance::method
         // 특정 객체의 메서드 참조 : ClassName::instanceMethod (객체 인스턴스 -> 매개변수)
         // 생성자 참조: ClassName::new (객체를 새로 생성할 때)
-
+        Round round = new Round(inputView.readRoundCount());
     }
 }
