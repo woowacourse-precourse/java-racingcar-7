@@ -3,13 +3,10 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
-import racingcar.model.car.Cars;
+import racingcar.config.GameFactory;
 import racingcar.dto.RoundSnapshotDto;
 import racingcar.dto.WinnersDto;
 import racingcar.model.game.Game;
-import racingcar.model.game.NumberPicker;
-import racingcar.model.game.RandomNumberPicker;
-import racingcar.model.game.TotalRounds;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -26,7 +23,7 @@ public class GameController {
     }
 
     public void start() {
-        Game game = makeGame();
+        Game game = createGame();
 
         List<RoundSnapshotDto> roundSnapshotDtos = new ArrayList<>();
 
@@ -41,7 +38,7 @@ public class GameController {
         outputView.displayWinners(new WinnersDto(game));
     }
 
-    private Game makeGame() {
+    private Game createGame() {
         String carNamesInput = inputView.getNameOfCars();
         gameInputValidator.validateNameOfCars(carNamesInput);
 
@@ -52,10 +49,6 @@ public class GameController {
                 .map(String::trim)
                 .toArray(String[]::new);
 
-        Cars cars = new Cars(carNames);
-        TotalRounds totalRounds = new TotalRounds(Integer.parseInt(totalRoundsInput));
-        NumberPicker numberPicker = new RandomNumberPicker();
-
-        return new Game(cars, totalRounds, numberPicker);
+        return GameFactory.create(carNames, Integer.parseInt(totalRoundsInput));
     }
 }
