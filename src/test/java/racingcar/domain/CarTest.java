@@ -13,6 +13,13 @@ class CarTest extends NsTest {
         assertThat(car.getName()).isEqualTo("김종경");
     }
 
+    @Test
+    void 자동차_이름은_5자를_초과할_수_없다() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Car("김종경자동차");
+        });
+    }
+
     @Override
     protected void runMain() {
 
