@@ -1,10 +1,9 @@
-package racingcar.domain.car;
+package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.AlwaysMoveStrategy;
 import racingcar.domain.strategy.AlwaysStopStrategy;
