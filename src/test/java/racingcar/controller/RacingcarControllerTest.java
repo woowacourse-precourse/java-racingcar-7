@@ -59,6 +59,24 @@ class RacingcarControllerTest {
         assertThat(result).isEqualTo("success");
     }
 
+    @Test
+    void 승자_확인_테스트() {
+        // given
+        setSystemInput("pobi,woni,jun");
+        racingcarController.getCarNames();
+        Console.close();
+
+        setSystemInput("5");
+        racingcarController.getAttemptCount();
+        racingcarController.proceedRacingGame();
+
+        // when
+        String result = racingcarController.getWinners();
+
+        // then
+        assertThat(result).isEqualTo("success");
+    }
+
     private void setSystemInput(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }

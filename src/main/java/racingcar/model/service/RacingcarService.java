@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import racingcar.model.domain.Car;
 import racingcar.model.domain.GameEnvironment;
 import racingcar.model.dto.RoundResult;
+import racingcar.model.dto.Winners;
 import racingcar.model.repository.RacingcarRepository;
 import racingcar.model.service.converter.RacingcarConverter;
 
@@ -57,5 +58,21 @@ public class RacingcarService {
         return cars.stream()
                 .map(car -> car.getName() + " : " + "-".repeat(car.getMovingForwardCount()))
                 .collect(Collectors.joining("\n"));
+    }
+
+    public Winners determineWinners() {
+        List<Car> cars = racingcarRepository.findAll();
+
+        int maxForwardCount = cars.stream()
+                .mapToInt(Car::getMovingForwardCount)
+                .max()
+                .orElse(0);
+
+        List<String> winnerNames = cars.stream()
+                .filter(car -> car.getMovingForwardCount() == maxForwardCount)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        return new Winners(winnerNames);
     }
 }

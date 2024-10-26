@@ -10,5 +10,6 @@ public class Application {
         controller.getCarNames();
         controller.getAttemptCount();
         controller.proceedRacingGame();
+        controller.getWinners();
     }
 }
