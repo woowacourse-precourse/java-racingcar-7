@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import static racingcar.constant.InputOutputConstants.INPUT_CAR_MESSAGE;
 import static racingcar.constant.InputOutputConstants.INPUT_TRIAL_MESSAGE;
+import static racingcar.constant.InputOutputConstants.RUN_MESSAGE;
+import static racingcar.constant.InputOutputConstants.END_LINE;
+
 
 public class InputView {
     public static String userInputCar(){
@@ -13,7 +16,9 @@ public class InputView {
 
     public static String userInputTrial(){
         System.out.println(INPUT_TRIAL_MESSAGE);
-        return Console.readLine();
+        String tmp = Console.readLine();
+        System.out.println(RUN_MESSAGE + END_LINE);
+        return tmp;
     }
 
 }

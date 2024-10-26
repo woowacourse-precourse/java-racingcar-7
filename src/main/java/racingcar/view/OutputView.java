@@ -2,13 +2,13 @@ package racingcar.view;
 
 import racingcar.model.car.Car;
 
+import static racingcar.constant.InputOutputConstants.SEPARATOR;
+import static racingcar.constant.InputOutputConstants.PROGRESS_BAR;
+import static racingcar.constant.InputOutputConstants.RESULT_MESSAGE;
+
 import java.util.List;
 
 public class OutputView {
-    private static final String SEPARATOR = " : ";
-    private static final String PROGRESS_BAR = "-";
-    private static final String END_LINE = "\n";
-    private static final String FINAL_WINNER = "최종 우승자 : ";
 
     public static void printCarProgress(List<Car> carList){
 
@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public static void printWinner(String winners){
-        System.out.println(FINAL_WINNER + winners);
+        System.out.println(RESULT_MESSAGE + winners);
     }
 
     private static void printSingleCarProgress(Car car){
@@ -27,6 +27,6 @@ public class OutputView {
     }
 
     private static void printEndLine(){
-        System.out.println(END_LINE);
+        System.out.println();
     }
 }

@@ -36,6 +36,8 @@ public class GameController {
 
     private String[] getCarNames(){
         String userCarInput = InputView.userInputCar();
+
+
         String[] carNameArr = StringProcessor.process(userCarInput);
         carValidator.validate(carNameArr);
 

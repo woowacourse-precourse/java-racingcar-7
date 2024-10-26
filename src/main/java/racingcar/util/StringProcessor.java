@@ -9,6 +9,10 @@ public class StringProcessor {
 
     public static String[] process(String input){
 
+        if(input.endsWith(COMMA)){
+            throw new IllegalArgumentException();
+        }
+
         String[] tokens = split(input);
 
         return Arrays.stream(tokens)
@@ -17,7 +21,7 @@ public class StringProcessor {
     }
 
     public static String formatWinner(List<String> winners){
-        return String.join(",",winners);
+        return String.join(", ",winners);
     }
 
     private static String trim(String input){

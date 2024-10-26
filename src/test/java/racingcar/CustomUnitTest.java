@@ -28,13 +28,8 @@ public class CustomUnitTest {
 
     @Test
     void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION(){
-        // arrange
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car(" ");
-
-        // act
-
-        // assert
         assertThrows(IllegalArgumentException.class, () -> {
             validator.validate(new String[]{car.getName()});
         });
@@ -42,11 +37,8 @@ public class CustomUnitTest {
 
     @Test
     void CHECK_CAR_NAME_OVER_FIVE_LETTERS_EXCEPTION(){
-        // arrange
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car("ABCDEF");
-
-        // assert
         assertThrows(IllegalArgumentException.class, () -> {
             validator.validate(new String[]{car.getName()});
         });
@@ -54,11 +46,8 @@ public class CustomUnitTest {
 
     @Test
     void CHECK_CAR_NAME_HAS_SPACE_IN_BETWEEN_EXCEPTION(){
-        //arrange
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car("A B");
-
-        // assert
         assertThrows(IllegalArgumentException.class, () -> {
             validator.validate(new String[]{car.getName()});
         });
@@ -75,10 +64,8 @@ public class CustomUnitTest {
 
     @Test
     void CHECK_TRIAL_NUMBER_IS_NUMBER_EXCEPTION(){
-        //arrange
         String trial = "a";
         Validator<String> validator = new TrialValidator();
-
         assertThrows(IllegalArgumentException.class, () -> {
             validator.validate(trial);
         });
@@ -88,7 +75,6 @@ public class CustomUnitTest {
     void CHECK_TRIAL_NUMBER_IS_NEGATIVE(){
         String trial = "-1";
         Validator<String> validator = new TrialValidator();
-
         assertThrows(IllegalArgumentException.class, () -> {
             validator.validate(trial);
         });
@@ -105,8 +91,9 @@ public class CustomUnitTest {
     @Test
     void INPUT_ENDS_IN_COMMA(){
         String input = "pobi,woni,";
-        String[] output = StringProcessor.process(input);
 
-        assertThat(output).containsExactly("pobi","woni");
+        assertThrows(IllegalArgumentException.class, () -> {
+            StringProcessor.process(input);
+        });
     }
 }

@@ -8,6 +8,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
 class CustomApplicationTest extends NsTest{
 
     @Test
@@ -17,12 +18,12 @@ class CustomApplicationTest extends NsTest{
                 run("pobi,woni,jun", "3");
 
                 assertThat(output()).contains("pobi : -", "woni : ", "jun : -");
-                assertThat(output()).contains("pobi : --", "woni : -", "jun : --");
-                assertThat(output()).contains("pobi : --", "woni : --", "jun : --", "최종 우승자 : pobi, woni, jun");
+                assertThat(output()).contains("pobi : --", "woni : ", "jun : --");
+                assertThat(output()).contains("pobi : --", "woni : -", "jun : --", "최종 우승자 : jun");
             },
             5, 3, 6,
-            4, 5,7,
-            2,4,2
+            4, 1,7,
+            2,4,4
         );
     }
 
@@ -93,7 +94,37 @@ class CustomApplicationTest extends NsTest{
     void SIMULATE_SPECIAL_CHARACTER_CAR_NAME(){
         assertSimpleTest(
             () -> {
-                assertThatThrownBy(() -> run("pobi, wo@ni"), "1")
+                assertThatThrownBy(() -> run("pobi, wo@ni","1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_TWO_COMMAS_BETWEEN_NAMES(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi,,woni","1") )
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_TRIAL_NUMBER_ZERO(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi,woni","0") )
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_CAR_NAME_OVER_FIVE(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi,wonnni","0") )
                     .isInstanceOf(IllegalArgumentException.class);
             }
         );
