@@ -1,56 +1,43 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.model.Car;
-import racingcar.model.Cars;
-import racingcar.model.CarName;
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
-    private Cars cars;
+    private final RacingService racingService;
 
     public RacingController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.racingService = new RacingService();
     }
 
     public void run() {
         initializeCars();
-        int tryCount = insertTryCount();
-        race(tryCount);
+        int count = insertTryCount();
+        racingService.race(count);
         endRace();
     }
 
     private void endRace() {
-        List<String> raceWinners = cars.findRaceWinners();
-        outputView.printWinners(raceWinners);
-    }
-
-    private void race(int tryCount) {
         outputView.printRacingResult();
-        for (int i = 0; i < tryCount; i++) {
-            cars.allMove();
-            outputView.printCarDistances(cars.fetchCarNames(), cars.fetchCarsPositions());
-        }
-    }
-
-    private int insertTryCount() {
-        return inputView.promptForAttemptCount();
+        outputView.printWinners(racingService.findWinners());
+        outputView.printCarDistances(racingService.fetchCarNames(), racingService.fetchCarsPositions());
     }
 
     private void initializeCars() {
         String input = inputView.promptForCarNames();
-        String[] carInputs = input.split(",");
-        List<Car> inputCars = new ArrayList<>();
-        for (String car : carInputs) {
-            CarName carName = CarName.from(car);
-            inputCars.add(Car.from(carName));
-        }
-        cars = Cars.from(inputCars);
+        racingService.initializeCars(input);
     }
+
+    private int insertTryCount() {
+        String attemptCountInput = inputView.promptForAttemptCount();
+        return racingService.insertTryCount(attemptCountInput); // int형으로 반환
+    }
+
+
 
 }
