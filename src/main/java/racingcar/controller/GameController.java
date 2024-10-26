@@ -39,7 +39,7 @@ public class GameController {
     }
 
     private void startGame(Cars cars) {
-        int totalRoundCount = inputView.inputPlayCount();
+        int totalRoundCount = inputView.inputTryCount();
 
         outputView.printRunResult();
         for (int round = 0; round < totalRoundCount; round++) {

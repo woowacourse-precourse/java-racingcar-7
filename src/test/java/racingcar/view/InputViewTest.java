@@ -43,7 +43,7 @@ class InputViewTest {
         provideSetInputStream(input);
 
         // when
-        int inputPlayCount = inputView.inputPlayCount();
+        int inputPlayCount = inputView.inputTryCount();
 
         // then
         Assertions.assertEquals(input, String.valueOf(inputPlayCount));
@@ -69,7 +69,7 @@ class InputViewTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-                inputView::inputPlayCount
+                inputView::inputTryCount
         );
     }
 

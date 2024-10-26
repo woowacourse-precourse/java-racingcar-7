@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private static final String INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String INPUT_PLAY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String COMMA = ",";
     private static final int MIN_PLAY_COUNT = 1;
     private static final int MAX_PLAY_COUNT = 1000000;
@@ -22,15 +22,16 @@ public class InputView {
         return input;
     }
 
-    public int inputPlayCount() {
-        System.out.println(INPUT_PLAY_COUNT_MESSAGE);
+    public int inputTryCount() {
+        System.out.println(INPUT_TRY_COUNT_MESSAGE);
         String input = Console.readLine();
-        int inputNumber = Integer.parseInt(input);
 
         validateNotBlank(input);
-        validatePlayCount(inputNumber);
 
-        return inputNumber;
+        int tryCount = Integer.parseInt(input);
+        validateTryCount(tryCount);
+
+        return tryCount;
     }
 
     private void validateSingleComma(String input) {
@@ -39,7 +40,7 @@ public class InputView {
         }
     }
 
-    private void validatePlayCount(int input) {
+    private void validateTryCount(int input) {
         if (input < MIN_PLAY_COUNT || input > MAX_PLAY_COUNT)
             throw new IllegalArgumentException();
     }
