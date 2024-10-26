@@ -5,11 +5,19 @@ import java.util.*;
 public class GameModel {
     public Map<String, Integer> getCarMap(String[] carNames) {
         Map<String, Integer> carMap = new LinkedHashMap<>();
+        trimCarNames(carNames);
+
         for (String carName : carNames) {
             if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-            carMap.put(carName, 0);
+            if (!carName.isEmpty()) carMap.put(carName, 0);
         }
         return carMap;
+    }
+
+    private static void trimCarNames(String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            carNames[i] = carNames[i].strip();
+        }
     }
 
     public int getRound(String gameRound) {
