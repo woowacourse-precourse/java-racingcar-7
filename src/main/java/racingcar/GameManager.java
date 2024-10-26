@@ -1,5 +1,6 @@
 package racingcar;
 
+import constant.Constants;
 import inspector.InspectResult;
 import utils.ContentParser;
 
@@ -31,7 +32,7 @@ public class GameManager {
 
     private void raceSetting(){
         OutputManager.printBlankLine();
-        System.out.println("실행 결과");
+        System.out.println(Constants.RACING_START_MESSAGE);
         while(currentTurn < playerTurn){
             groupMoving();
             OutputManager.printCurrentResult(racingCarGroup);
