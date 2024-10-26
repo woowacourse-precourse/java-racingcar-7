@@ -37,7 +37,7 @@ public class CarNameValidator {
 
     private static void validateCarNameLength(List<String> carNames) {
         for (String carName : carNames) {
-            if (carName.length() >= CAR_NAME_MAX_LENGTH) {
+            if (carName.length() > CAR_NAME_MAX_LENGTH) {
                 throw new InvalidNameLengthException();
             }
         }
