@@ -74,7 +74,7 @@ class Car{ //car 객체 생성
     }
 
     String isWin(){
-        randomNumber = random.nextInt(10);
+        randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
             win += 1;
             strWin += "-";
