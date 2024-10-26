@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Executor {
-    private final String operator = ",";
-    private final int nameLengthLimit = 5;
-    private final int moveStandard = 4;
+    private static final String OPERATOR = ",";
+    private static final int NAME_LENGTH_LIMIT = 5;
+    private static final int MOVE_STANDARD = 4;
 
     private long repeatCount;
     private List<Car> cars = new ArrayList<>();
@@ -29,9 +29,9 @@ public class Executor {
         String inputRepeatCountStr = ioController.enterRepeatCount();
 
         validator.validateCarNamesInput(inputCarNamesStr);
-        List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, operator);
+        List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, OPERATOR);
 
-        validator.validateCarNamesLength(carNames, nameLengthLimit);
+        validator.validateCarNamesLength(carNames, NAME_LENGTH_LIMIT);
         cars = Car.createCarsByName(carNames);
 
         validator.validateRepeatCount(inputRepeatCountStr);
@@ -58,7 +58,7 @@ public class Executor {
 
     public void moveCar(Car car) {
         int randomVal = Randoms.pickNumberInRange(0, 9);
-        if (moveStandard <= randomVal) {
+        if (MOVE_STANDARD <= randomVal) {
             car.move();
         }
     }
