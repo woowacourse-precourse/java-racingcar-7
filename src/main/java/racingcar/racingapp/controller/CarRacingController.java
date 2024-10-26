@@ -16,19 +16,19 @@ public class CarRacingController {
     }
 
     public void doHandleCarRacing() {
-        RaceInputData raceInputData = prepareRaceData();
+        DataForCarRacing requiredDataForRacing = prepareRaceData();
 
         CarRacingResult carRacingResult = carRacingService.performCarRacing(
-                raceInputData.carNamesForParticipants(),
-                raceInputData.lapCountForRace());
+                requiredDataForRacing.carNamesForParticipants(),
+                requiredDataForRacing.lapCountForRace());
 
         followUpForRace(carRacingResult);
     }
 
-    private static RaceInputData prepareRaceData() {
+    private static DataForCarRacing prepareRaceData() {
         CarNames carNamesForParticipants = RacingInput.askCarNamesForParticipants();
         TotalLapCount lapCountForRace = RacingInput.askTotalLapCount();
-        return new RaceInputData(carNamesForParticipants, lapCountForRace);
+        return new DataForCarRacing(carNamesForParticipants, lapCountForRace);
     }
 
     private static void followUpForRace(CarRacingResult carRacingResult) {
@@ -36,7 +36,7 @@ public class CarRacingController {
         RacingOutput.announceRaceWinners(carRacingResult.winners());
     }
 
-    private record RaceInputData(CarNames carNamesForParticipants, TotalLapCount lapCountForRace) {
+    private record DataForCarRacing(CarNames carNamesForParticipants, TotalLapCount lapCountForRace) {
 
     }
 

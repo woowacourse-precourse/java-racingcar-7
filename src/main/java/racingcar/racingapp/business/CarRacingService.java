@@ -25,10 +25,7 @@ public class CarRacingService {
 
     public CarRacingResult performCarRacing(CarNames carNames, TotalLapCount totalLapCount) {
         carRacing = prepareForRacing(totalLapCount, carNames);
-
-        CarRacingResult raceInformation = doRace();
-
-        return raceInformation;
+        return doRace();
     }
 
     private CarRacing prepareForRacing(TotalLapCount totalLapCount, CarNames carNames) {
@@ -36,16 +33,16 @@ public class CarRacingService {
         return CarRacing.standBy(readyCars, totalLapCount);
     }
 
+    private Cars standByCars(CarNames carNames) {
+        return new Cars(carNames.stream()
+                .map(carName -> Car.ready(carEngine, carName))
+                .toList());
+    }
+
     private CarRacingResult doRace() {
         RaceRecord raceRecord = carRacing.race();
         Winners winners = raceRecord.judge();
         return new CarRacingResult(raceRecord, winners);
-    }
-
-    private Cars standByCars(CarNames carNames) {
-        return new Cars(carNames.carNames().stream()
-                .map(carName -> Car.ready(carEngine, carName))
-                .toList());
     }
 
 }

@@ -2,6 +2,7 @@ package racingcar.racingapp.model.value.vo;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import racingcar.racingapp.model.value.enums.RaceMaxCounts;
 
 public record CarNames(List<CarName> carNames) {
@@ -9,7 +10,7 @@ public record CarNames(List<CarName> carNames) {
     private static final Integer LIMIT_OF_PARTICIPANTS = RaceMaxCounts.MAX_COUNT_OF_CAR.getCount();
 
     public CarNames {
-        if (carNames == null) {
+        if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException("참가자 이름들이 지정되지 않았습니다.");
         }
         if (carNames.stream()
@@ -23,6 +24,10 @@ public record CarNames(List<CarName> carNames) {
         }
 
         carNames = List.copyOf(carNames);
+    }
+
+    public Stream<CarName> stream() {
+        return carNames.stream();
     }
 
 }
