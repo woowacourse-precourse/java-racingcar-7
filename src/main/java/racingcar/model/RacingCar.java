@@ -10,7 +10,7 @@ public class RacingCar {
     private int distanceCovered;
 
     public RacingCar(String name) {
-        validateName(name);
+        Validator.validateName(name);
         this.name = name;
         this.distanceCovered = 0;
     }
@@ -26,17 +26,6 @@ public class RacingCar {
         }
     }
 
-    private static void validateName(String name) {
-        final int MAX_NAME_LENGTH = 5;
-
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
-        }
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.: " + name);
-        }
-    }
-
     private void moveForward() {
         distanceCovered++;
     }
@@ -47,5 +36,20 @@ public class RacingCar {
 
     public int getDistanceCovered() {
         return distanceCovered;
+    }
+
+    private static class Validator {
+
+        private static final int MAX_NAME_LENGTH = 5;
+
+        private static void validateName(String name) {
+
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
+            }
+            if (name.length() > MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.: " + name);
+            }
+        }
     }
 }
