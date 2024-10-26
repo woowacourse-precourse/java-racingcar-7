@@ -98,4 +98,22 @@ class RacingCarServiceTest extends RacingCarService {
         //then
         Assertions.assertEquals(expect, result);
     }
+
+    @Test
+    @DisplayName("결과와 최대 이동거리를 받아 우승자 리스트를 반환하는 메서드")
+    public void testListRacingWinners() throws Exception {
+        //given
+        List<String> expect = Arrays.asList("car3", "car4");
+        Map<String, String> racingResult = new HashMap<>();
+        racingResult.put("car1", "---");
+        racingResult.put("car2", "--");
+        racingResult.put("car3", "----");
+        racingResult.put("car4", "----");
+        String maxMove = racingCarService.findMaxMove(racingResult);
+
+        //when
+        List<String> result = racingCarService.listRacingWinners(racingResult, maxMove);
+        //then
+        Assertions.assertEquals(expect, result);
+    }
 }

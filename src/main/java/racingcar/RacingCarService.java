@@ -57,6 +57,16 @@ public class RacingCarService {
         return createRandomNumber() >= 4;
     }
 
+    public List<String> listRacingWinners(Map<String, String> racingResult, String maxMove) {
+        List<String> listRacingWinners = new ArrayList<>();
+
+        for (String key : racingResult.keySet()) {
+            if (racingResult.get(key).equals(maxMove)) {
+                listRacingWinners.add(key);
+            }
+        }
+        return listRacingWinners;
+    }
 
     public String findMaxMove(Map<String, String> racingResult) {
         return Collections.max(racingResult.values());
