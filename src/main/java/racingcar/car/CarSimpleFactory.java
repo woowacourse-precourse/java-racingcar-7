@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 public class CarSimpleFactory {
     public static Car createCar(String name) {

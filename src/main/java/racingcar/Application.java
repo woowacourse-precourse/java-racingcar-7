@@ -1,9 +1,20 @@
 package racingcar;
 
+import racingcar.car.CarRegistry;
 import racingcar.io.Input;
 import racingcar.io.View;
 
 public class Application {
+    private final CarRegistry carRegistry;
+    private final Stadium stadium;
+    private final RaceResult raceResult;
+
+    private Application(String input) {
+        this.carRegistry = new CarRegistry(input);
+        this.raceResult = new RaceResult(new StringBuilder(), carRegistry);
+        this.stadium = new Stadium(carRegistry, raceResult);
+    }
+
     public static void main(String[] args) {
         View view = View.getInstance();
         Input input = Input.getInstance();
@@ -14,13 +25,14 @@ public class Application {
         view.printRoundsGuide();
         Integer rounds = Integer.parseInt(input.rounds());
 
-        CarRegistry carRegistry = new CarRegistry(carNames);
-        RaceResult result = new RaceResult(new StringBuilder(), carRegistry);
-        Stadium stadium = new Stadium(carRegistry, result);
+        Application application = new Application(carNames);
+        application.run(view, rounds);
+    }
 
+    private void run(View view, Integer rounds) {
         stadium.runGame(rounds);
 
-        view.printExecutionOutput(result.toString());
-        view.printWinner(result.winnersToString());
+        view.printExecutionOutput(raceResult.toString());
+        view.printWinner(raceResult.winnersToString());
     }
 }

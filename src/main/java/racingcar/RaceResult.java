@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.car.CarRegistry;
+
 import java.util.Set;
 
 public class RaceResult {

@@ -2,8 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.function.Supplier;
+import racingcar.car.Car;
 
 import static org.junit.jupiter.api.Assertions.*;
 

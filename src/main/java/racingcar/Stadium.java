@@ -1,6 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.car.Car;
+import racingcar.car.CarRegistry;
 
 
 public class Stadium {
