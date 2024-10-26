@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 public class ModelTest {
     private final RacingScoreBoard racingScoreBoard = new RacingScoreBoard();
 
+    // 이동 실행 기능 테스트
+
     @Test
     public void 이동실행기능_점수판생성메소드_테스트() {
         List<String> carNames = Arrays.asList("pobi", "jun", "ann");
@@ -34,5 +36,39 @@ public class ModelTest {
         racingScoreBoard.addScore("pobi");
 
         assertEquals(2, racingScoreBoard.getScore("pobi"));
+    }
+
+    // 우승자 판별 기능 테스트
+
+    @Test
+    public void 우승자판별기능_우승자가1명일때_테스트() {
+        racingScoreBoard.registerCars(Arrays.asList("pobi", "jun", "ann"));
+        racingScoreBoard.addScore("pobi");
+        racingScoreBoard.addScore("ann");
+        racingScoreBoard.addScore("ann");
+        racingScoreBoard.addScore("ann");
+        racingScoreBoard.addScore("jun");
+        racingScoreBoard.addScore("ann");
+
+        List<String> winners = racingScoreBoard.getWinners();
+
+        assertEquals(1, winners.size());
+        assertTrue(winners.contains("ann"));
+    }
+
+    @Test
+    public void 우승자판별기능_우승자가여러명일때_테스트() {
+        racingScoreBoard.registerCars(Arrays.asList("pobi", "jun", "ann"));
+        racingScoreBoard.addScore("pobi");
+        racingScoreBoard.addScore("pobi");
+        racingScoreBoard.addScore("ann");
+        racingScoreBoard.addScore("ann");
+        racingScoreBoard.addScore("jun");
+
+        List<String> winners = racingScoreBoard.getWinners();
+
+        assertEquals(2, winners.size());
+        assertTrue(winners.contains("pobi"));
+        assertTrue(winners.contains("ann"));
     }
 }

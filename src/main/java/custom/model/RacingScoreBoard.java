@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingScoreBoard {
     private final Map<String, Integer> carScores;
@@ -28,5 +29,17 @@ public class RacingScoreBoard {
 
     public int getScore(String carName) {
         return carScores.get(carName);
+    }
+
+    private int getHighestScore() {
+        return carScores.values().stream().max(Integer::compare).orElse(0);
+    }
+
+    public List<String> getWinners() {
+        int highestScore = getHighestScore();
+        return carScores.entrySet().stream()
+                .filter(entry -> entry.getValue() == highestScore)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
