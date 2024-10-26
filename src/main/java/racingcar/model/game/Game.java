@@ -1,27 +1,29 @@
 package racingcar.model.game;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.model.car.Car;
 import racingcar.model.car.CarStatus;
 import racingcar.model.car.Cars;
 
 public class Game {
-    private static final int RANDOM_MIN_NUMBER = 0;
-    private static final int RANDOM_MAX_NUMBER = 9;
+    private static final int START_INCLUSIVE = 0;
+    private static final int END_INCLUSIVE = 9;
     private static final int MOVEMENT_CRITERIA = 4;
     private static final int MINIMUM_NUMBER_OF_CARS = 2;
+
     private final Cars cars;
     private final TotalRounds totalRounds;
+    private final NumberPicker numberPicker;
     private Winners winners;
     private int currentRound;
 
-    public Game(Cars cars, TotalRounds totalRounds) {
+    public Game(Cars cars, TotalRounds totalRounds, NumberPicker numberPicker) {
         validate(cars);
 
         this.cars = cars;
         this.totalRounds = totalRounds;
         this.currentRound = 1;
+        this.numberPicker = numberPicker;
     }
 
     private void validate(Cars cars) {
@@ -37,9 +39,9 @@ public class Game {
 
     private void playNextRound() {
         for (int index = 0; index < cars.getSize(); index++) {
-            int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+            int number = numberPicker.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
 
-            if (randomNumber >= MOVEMENT_CRITERIA) {
+            if (number >= MOVEMENT_CRITERIA) {
                 cars.move(index);
             }
         }

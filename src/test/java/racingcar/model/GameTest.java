@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Cars;
 import racingcar.model.game.Game;
+import racingcar.model.game.RandomNumberPicker;
 import racingcar.model.game.TotalRounds;
 
 public class GameTest {
@@ -23,7 +24,7 @@ public class GameTest {
         totalRounds = new TotalRounds(3);
         names = new String[]{"pobi", "woni", "jun"};
         cars = new Cars(names);
-        game = new Game(cars, totalRounds);
+        game = new Game(cars, totalRounds, new RandomNumberPicker());
     }
 
     @Test
@@ -34,7 +35,7 @@ public class GameTest {
         Cars invalidNumberOfCars = new Cars(nameOfCars);
 
         // when & then
-        assertThatThrownBy(() -> new Game(invalidNumberOfCars, totalRounds))
+        assertThatThrownBy(() -> new Game(invalidNumberOfCars, totalRounds, new RandomNumberPicker()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("최소 2대 이상 출전해야 합니다.");
     }

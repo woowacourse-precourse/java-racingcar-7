@@ -7,6 +7,8 @@ import racingcar.model.car.CarMovementResults;
 import racingcar.model.car.Cars;
 import racingcar.model.car.WinnersDto;
 import racingcar.model.game.Game;
+import racingcar.model.game.NumberPicker;
+import racingcar.model.game.RandomNumberPicker;
 import racingcar.model.game.TotalRounds;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -45,7 +47,8 @@ public class GameController {
 
         Cars cars = new Cars(carNames);
         TotalRounds totalRounds = new TotalRounds(inputView.getTotalRounds());
+        NumberPicker numberPicker = new RandomNumberPicker();
 
-        return new Game(cars, totalRounds);
+        return new Game(cars, totalRounds, numberPicker);
     }
 }
