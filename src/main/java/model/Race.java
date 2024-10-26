@@ -1,7 +1,7 @@
 package model;
 
 import service.MoveStrategy;
-import service.RandomMoveStrategy;
+import service.RaceStatusCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.Random;
 public class Race {
     private final List<Car> cars;
     private final int attempts;
+    private final List<String> winners;
     private final MoveStrategy moveStrategy;
     public Race(List<String> carNames, int attempts, MoveStrategy moveStrategy) {
         if(attempts < 0) {
@@ -18,13 +19,19 @@ public class Race {
         this.cars = new ArrayList<>(carNames.size());
         this.attempts = attempts;
         this.moveStrategy = moveStrategy;
+        this.winners = new ArrayList<>();
+
         for(String name : carNames) {
             this.cars.add(new Car(name));
         }
     }
 
-    public void startRace(){
-        Random rand = new Random();
+    public void attemptOnce(){
+        for(Car car : cars) {
+            car.move(moveStrategy);
+        }
+    }
+
         for(int i = 0; i < attempts; i++) {
             for(Car car : cars) {
                 car.move(moveStrategy.canMove());
@@ -40,19 +47,28 @@ public class Race {
         System.out.println();
     }
 
-    public List<String> getWinner(){
-       List<String> winners = new ArrayList<>();
-       int winnerPosition = cars.stream().mapToInt(Car::getPositon).max().orElse(0);
-       for (Car car: cars) {
-           if(car.getPositon() == winnerPosition) {
+    public List<String> getWinners(){
+        int winnerPosition = getWinnerPosition();
+        for (Car car: cars) {
+           if(checkWinner(car, winnerPosition)) {
+               addWinner(car);
                winners.add(car.toString());
            }
        }
        return winners;
     }
 
-    public void printWinner(){
-        List<String> winners = getWinner();
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    private boolean checkWinner(Car car, int winnerPosition){
+        return (car.getPosition() == winnerPosition);
+    }
+
+    private void addWinner(Car car){
+        if(checkWinner(car, getWinnerPosition())) {
+            winners.add(car.getName());
+        }
+    }
+
+    public int getWinnerPosition(){
+        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
     }
 }
