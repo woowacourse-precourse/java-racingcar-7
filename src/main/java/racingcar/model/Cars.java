@@ -61,11 +61,16 @@ public class Cars {
     private int findTopPosition() {
         int maxPosition = 0;
         for (Car car : carList) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
+            maxPosition = updateMaxPosition(maxPosition, car);
         }
         return maxPosition;
+    }
+
+    private int updateMaxPosition(int currentMax, Car car) {
+        if (car.getPosition() > currentMax) {
+            return car.getPosition();
+        }
+        return currentMax;
     }
 
 
