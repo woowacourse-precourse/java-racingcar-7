@@ -22,7 +22,7 @@ class CarNameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobiii", "??????", "111111", "가가가가가가", "\\n\\n\\n"})
-    void 여섯_글자_이상의_이름이_전달된다(String name) {
+    void 여섯_글자_이상의_이름이_전달된면_예외가_발생한다(String name) {
         // given
         String expected = "자동차 이름은 5글자를 넘을 수 없습니다.";
 
@@ -36,7 +36,7 @@ class CarNameTest {
     }
 
     @Test
-    void 입력으로_공백이_들어온다() {
+    void 입력으로_공백이_들어오면_예외가_발생한다() {
         // given
         String expected = "자동차 이름을 입력해주세요.";
 

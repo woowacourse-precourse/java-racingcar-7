@@ -14,7 +14,7 @@ class CarNameParserTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void 빈_문자열과_null_값이_입력된다(String name) {
+    void 빈_문자열과_null_값이_입력되면_예외가_발생한다(String name) {
         // given
         String expected = "자동차 이름을 입력해주세요.";
 
@@ -29,7 +29,7 @@ class CarNameParserTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi.woni,jun", "poni/woni/jun"})
-    void 구분자로_온점과_슬래시가_입력된다(String name) {
+    void 구분자로_온점과_슬래시가_입력되면_예외가_발생한다(String name) {
         // given
         String expected = "올바른 구분자를 입력해주세요.";
 
@@ -44,7 +44,7 @@ class CarNameParserTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun", "가가,나나,다다", "11,22,33", "??,nn,**"})
-    void 여러_값이_입력된다(String name) {
+    void 올바른_여러_값이_입력된다(String name) {
         // given
         List<CarName> names = CarNameParser.parseCarNames(name);
 
@@ -56,7 +56,7 @@ class CarNameParserTest {
     }
 
     @Test
-    void 단일_값이_입력된다() {
+    void 올바른_단일_값이_입력된다() {
         // given
         List<CarName> name = CarNameParser.parseCarNames("pobi");
 
