@@ -58,4 +58,31 @@ public class CarTest {
             });
         }
     }
+
+    @DisplayName("car move 로직")
+    @Nested
+    class CarMoveTest {
+        @DisplayName("car 이동 조건 만족")
+        @Test
+        public void carMoveOnePoint() {
+            //given
+            Car car = new Car("test");
+            MoveStrategy moveStrategy = () -> true;
+            //when
+            car.move(moveStrategy);
+            //then
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
+        @DisplayName("car 이동 조건 만족x")
+        @Test
+        public void carMoveZeroPoint() {
+            //given
+            Car car = new Car("test");
+            MoveStrategy moveStrategy = () -> false;
+            //when
+            car.move(moveStrategy);
+            //then
+            assertThat(car.getPosition()).isEqualTo(0);
+        }
+    }
 }
