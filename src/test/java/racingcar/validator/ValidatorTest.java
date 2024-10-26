@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.exception.IllegalArgumentException;
 
 class ValidatorTest {
 
@@ -21,7 +20,7 @@ class ValidatorTest {
 
         assertThatThrownBy(() -> Validator.validateCarNames(cars))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(CAR_NAME_TOO_LONG.getMessage());
+                .hasMessage(CAR_NAME_TOO_LONG);
     }
 
     @Test
@@ -29,7 +28,7 @@ class ValidatorTest {
     void validateNegativeNumber() {
         assertThatThrownBy(() -> Validator.parseInteger("-1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ATTEMPT_COUNT_CANNOT_BE_ZERO.getMessage());
+                .hasMessage(ATTEMPT_COUNT_CANNOT_BE_ZERO);
     }
 
     @Test
@@ -37,7 +36,7 @@ class ValidatorTest {
     void validateInvalidString() {
         assertThatThrownBy(() -> Validator.parseInteger("one"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_ATTEMPT_COUNT.getMessage());
+                .hasMessage(INVALID_ATTEMPT_COUNT);
     }
 
 }
