@@ -36,7 +36,7 @@ public class Application {
     }
 
     private String[] splitNamesByComma(String userInput) {
-        return userInput.split(",");
+        return userInput.split(",", -1);
     }
 
     private void validateMinimumTwoCars(String[] cars) {
@@ -130,12 +130,12 @@ public class Application {
 
         validateCarNames(carNames);
 
-        printRequestingRaceRound();
-        int userRaceRoundInput = getRaceRoundInput();
-
         initializeCarPositions(carNames);
 
         validateUniqueCarNames(carNames);
+
+        printRequestingRaceRound();
+        int userRaceRoundInput = getRaceRoundInput();
 
         System.out.println("실행 결과");
 
