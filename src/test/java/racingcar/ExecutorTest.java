@@ -74,4 +74,25 @@ class ExecutorTest {
         testCar2.move();
         assertThat(executor.getWinners(testCarList)).isEqualTo(List.of(testCar1, testCar2));
     }
+
+    @Test
+    void 실행() {
+        long repeatCount;
+        List<Car> cars = new ArrayList<>();
+        List<Car> winners = new ArrayList<>();
+
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("car1,car2,car3", "1");
+                Assertions.assertThat(output())
+                    .contains("car1 : -", "car2 : ", "car3 : -", "최종 우승자 : car1, car3");
+            },
+            MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
+    @Override
+    public void runMain() {
+        executor.run();
+    }
 }
