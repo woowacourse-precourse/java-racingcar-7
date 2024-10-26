@@ -16,5 +16,12 @@ public class Race {
     public void start() {
         final List<String> carNames = inputView.readCarNames();
         final int attemptCount = inputView.readAttemptCount();
+        final Cars cars = new Cars(carNames);
+
+        outputView.printResultMessage();
+        for (int count = 0; count < attemptCount; ++count) {
+            cars.move();
+            cars.get().forEach(outputView::printResult);
+        }
     }
 }
