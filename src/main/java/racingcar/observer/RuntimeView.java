@@ -1,29 +1,37 @@
-package racingcar.view;
+package racingcar.observer;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.view.View;
 
-public class RuntimeView implements View {
+public class RuntimeView implements View, Observer {
+
+    private static final String RUNTIME_MESSAGE = "실행 결과";
 
     @Override
     public void print() {
-        System.out.println("실행 결과");
+        System.out.println(RUNTIME_MESSAGE);
     }
 
-    public void printCarAdvances(List<Car> carList) {
+    @Override
+    public void update(List<Car> carList) {
+        printCurrentRacingStatus(carList);
+    }
+
+    private void printCurrentRacingStatus(List<Car> carList) {
+        StringBuilder currentRacingStatus = new StringBuilder();
         for (Car car : carList) {
-            String advancedCount = convertAdvanceCount(car.getAdvanceCount());
-            System.out.println(car.getName() + " : " + advancedCount);
+            String advanceStatus = convertAdvanceCount(car.getAdvanceCount());
+            appendCarRacingStatus(currentRacingStatus, car, advanceStatus);
         }
-        System.out.println();
+        System.out.println(currentRacingStatus);
     }
 
     private String convertAdvanceCount(int advanceCount) {
-        StringBuilder advancedCount = new StringBuilder();
-        for (int i = 0; i < advanceCount; i++) {
-            advancedCount.append("-");
-        }
+        return "-".repeat(advanceCount);
+    }
 
-        return advancedCount.toString();
+    private void appendCarRacingStatus(StringBuilder currentRacingStatus, Car car, String advanceStatus) {
+        currentRacingStatus.append(car.getName()).append(" : ").append(advanceStatus).append("\n");
     }
 }
