@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view.output;
+
+import racingcar.car.Car;
 
 import java.math.BigInteger;
 import java.util.List;
