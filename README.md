@@ -72,12 +72,12 @@
 
 ### 1. Car
 
-| Method            | Parameter | Return Type | Exception                     | Implementation |
-|-------------------|-----------|-------------|-------------------------------|----------------|
-| completedAllLap   | -         | boolean     |                               | DONE ✅         |
-| updateProgress    | int       | void        | IllegalMovementValueException | DONE ✅         |
-| movableDistance   | -         | int         |                               | DONE ✅         |
-| myProgressSummary | -         | String      |                               | DONE ✅         |
+| Method            | Parameter     | Return Type | Exception | Implementation |
+|-------------------|---------------|-------------|-----------|----------------|
+| completedAllLap   | -             | boolean     |           | DONE ✅         |
+| updateProgress    | Distance, Lap | void        |           | DONE ✅         |
+| movableDistance   | -             | int         |           | DONE ✅         |
+| myProgressSummary | -             | String      |           | DONE ✅         |
 
 <br>
 
@@ -92,20 +92,20 @@
 
 ### 3. MovementCondition : Enum
 
-| Method      | Parameter | Return Type | Implementation |
-|-------------|-----------|-------------|----------------|
-| getDistance | -         | int         | Done ✅         |
+| Method        | Parameter | Return Type | Implementation |
+|---------------|-----------|-------------|----------------|
+| getDistanceBy | Speed     | Distance    | Done ✅         |
 
 <br>
 
 ### 4. MyProgress
 
-| Method          | Parameter | Return Type | Implementation |
-|-----------------|-----------|-------------|----------------|
-| completedAllLap | -         | boolean     | Done ✅         |
-| toString        | -         | toString    | Done ✅         |
-| countDownAmount | -         | void        | Done ✅         |
-| updatePosition  | int       | void        | Done ✅         |
+| Method                | Parameter | Return Type | Implementation |
+|-----------------------|-----------|-------------|----------------|
+| completedAllLap       | -         | boolean     | Done ✅         |
+| toString              | -         | toString    | Done ✅         |
+| countDownRemainingLap | -         | void        | Done ✅         |
+| updatePosition        | int       | void        | Done ✅         |
 
 <br>
 
@@ -113,25 +113,25 @@
 
 | Method | Parameter | Return Type | Exception                 | Implementation |
 |--------|-----------|-------------|---------------------------|----------------|
-| minus  | int       | void        | ShouldNotBeMinusException | Done ✅         |
+| minus  | Lap       | void        | ShouldNotBeMinusException | Done ✅         |
 
 <br>
 
 ### 6. Position
 
-| Method               | Parameter | Return Type | Implementation |
-|----------------------|-----------|-------------|----------------|
-| add                  | int       | void        | Done ✅         |
-| generateNextPosition | int       | void        | Done ✅         |
+| Method          | Parameter | Return Type | Implementation |
+|-----------------|-----------|-------------|----------------|
+| add             | Distance  | Position    | Done ✅         |
+| currentDistance | -         | Distance    | Done ✅         |
 
 <br>
 
 ### 7. Race
 
-| Method        | Parameter | Return Type | Exception                 | Implementation |
-|---------------|-----------|-------------|---------------------------|----------------|
-| isUnderway    | -         | boolean     |                           | Done ✅         |
-| moveToNextLap | -         | void        | ShouldNotBeMinusException | Done ✅         |
+| Method                     | Parameter | Return Type | Exception                 | Implementation |
+|----------------------------|-----------|-------------|---------------------------|----------------|
+| isUnderway                 | -         | boolean     |                           | Done ✅         |
+| countDownRemainingLapCount | -         | void        | ShouldNotBeMinusException | Done ✅         |
 
 <br>
 
@@ -151,6 +151,16 @@
 | Method | Parameter | Return Type | Implementation |
 |--------|-----------|-------------|----------------|
 | offer  | String    | void        | Done ✅         |
+
+<br>
+
+### 10. PositionBuilder
+
+> 개발 과정에서 추가
+
+| Method | Parameter | Return Type | Implementation |
+|--------|-----------|-------------|----------------|
+| from   | Distance  | Position    | Done ✅         |
 
 <br>
 <br>
