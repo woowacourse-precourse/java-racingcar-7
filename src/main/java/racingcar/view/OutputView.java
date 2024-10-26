@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.CarRacing;
 
 import java.util.List;
 
@@ -11,8 +10,7 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public static void roundResult(CarRacing carRacing) {
-        List<Car> carList = carRacing.getCars();
+    public static void roundResult(List<Car> carList) {
         for (Car car : carList) {
             System.out.println(car.getName() + " : " + car.getCurrentPosition());
         }

@@ -1,8 +1,12 @@
 package racingcar.domain;
 
+import racingcar.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static racingcar.view.OutputView.*;
 
 public class CarRacing {
 
@@ -18,9 +22,16 @@ public class CarRacing {
         return carList;
     }
 
-    public void go() {
+    private void go() {
         for (Car car : carList) {
             car.go();
+        }
+    }
+
+    public void raceRound(int round) {
+        for (int i = 0; i < round; i++) {
+            go();
+            roundResult(carList);
         }
     }
 

@@ -22,10 +22,7 @@ public class RaceController {
 
     private void play() {
         resultMessage();
-        for (int i = 0; i < round; i++) {
-            carRacing.go();
-            roundResult(carRacing);
-        }
+        carRacing.raceRound(round);
         winnerMessage(carRacing.winnerList());
     }
 }
