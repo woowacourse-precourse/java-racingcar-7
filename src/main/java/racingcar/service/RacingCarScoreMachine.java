@@ -8,7 +8,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.NumberMaker;
 
-//fixme RaceMachine
+//fixme RaceService
 public class RacingCarScoreMachine {
     private final Cars cars;
     private final AttemptCounter attemptCounter;
@@ -46,7 +46,7 @@ public class RacingCarScoreMachine {
 
     public List<String> getWinningCarsNames() {
         List<String> result = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.getWinningCar()) {
             result.add(car.getName());
         }
         return result;
