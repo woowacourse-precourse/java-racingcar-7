@@ -1,12 +1,8 @@
 # java-racingcar-precourse
 
 # controller
-## 1) GameController 
-* splitCarNames //자동차 이름 문자열 자르기
-* createCars //Car 객체 생성하기, Car객체를 Cars로 묶기
-* oneRoundGame // 게임 한 바퀴 실행하기
-* RunningGame //게임 n번 실행하기
-* outputResult //결과 출력하기
+## 1) Controller 
+* runningGame //게임 실행하기
 ---
 # model
 ## 1) Car
@@ -14,11 +10,15 @@
 * checkCarNameAvailable // 자동차 이름 길이 확인
 
 ## 2) Cars
-* chooseWinningCars // 우승차들 고르기
+* splitCarNames // 자동차이름 문자열 나누기
+* createCars // 자동차그룹 만들기
 
 ## 3) WinningCars
 
-## 4) Move
+## 4) Game
+* chooseWinningCars // 우승차들 고르기
+
+## 5) Move
 * createRandomValue //랜덤 값 생성하기
 * checkMovable //n 이상 나오면 true 반환하기
 * moveFoward //자동차 위치 변경하기
