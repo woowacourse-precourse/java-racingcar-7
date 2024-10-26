@@ -2,10 +2,10 @@ package racingcar.strategy;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RacingCar implements Mode {
+public class SportCar implements Mode {
     private static final Integer START_RANDOM_NUMBER = 0;
     private static final Integer END_RANDOM_NUMBER = 9;
-    private static final Integer MOVEMENT_CRITERION_NUMBER = 4;
+    private static final Integer MOVEMENT_CRITERION_NUMBER = 6;
 
     private Integer racingCarMovementDistance = 0;
 
