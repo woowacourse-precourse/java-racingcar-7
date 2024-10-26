@@ -12,5 +12,4 @@ public class GameValidator {
             throw new IllegalArgumentException("유효한 횟수를 입력해주세요");
         }
     }
-
 }
