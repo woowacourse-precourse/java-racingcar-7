@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputAttemptCount = Console.readLine();
 
-        Integer attemptCount = Integer.parseInt(inputAttemptCount);
+        long attemptCount = Long.parseLong(inputAttemptCount);
 
         String[] carList = inputCars.split(",");
 
@@ -23,5 +24,23 @@ public class Application {
             cars.add(new Car(s, 0));
         }
 
+        for (int i = 0; i < attemptCount; i++) {
+            moveOrStop(cars);
+        }
+
+
     }
+
+    public static void moveOrStop(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+            if (randomNum >= 4) {
+                car.moveCount++;
+            }
+            System.out.println(car.name + " : " + "-".repeat(car.moveCount));
+        }
+        System.out.println();
+    }
+
 }
+
