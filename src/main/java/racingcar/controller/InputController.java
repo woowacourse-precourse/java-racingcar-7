@@ -7,7 +7,6 @@ import racingcar.view.InputView;
 
 public class InputController {
     private String userInput;
-    private String [] carNames;
     private final InputModel inputModel = new InputModel();
     private final InputView inputView = new InputView();
     public InputController(){
