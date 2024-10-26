@@ -35,6 +35,14 @@
 - Enum 클래스 활용하여 출력 문구 관리
     - 출력 문구 반환하는 메서드 구현
 
+### 테스트 코드 작성
+
+- Car 클래스
+- 자동차 게임 진행 관리 클래스(RacingCarGame)
+- 자동차 그룹 관리 클래스(RacingCarsGroup)
+- 자동차 이름 유효성 검증 클래스(CarNameValidation)
+- 시도할 횟수 값 유효성 검증 클래스(InputNumberValidation)
+
 ## 📝구현 기능들 점검 리스트
 
 ### 프로그램 실행
@@ -71,3 +79,11 @@
 
 - [X]  Enum 클래스 활용하여 출력 문구 관리
     - [X]  출력 문구 반환하는 메서드 구현
+
+### 테스트 코드 작성
+
+- [ ]  Car 클래스
+- [ ]  자동차 게임 진행 관리 클래스(RacingCarGame)
+- [ ]  자동차 그룹 관리 클래스(RacingCarsGroup)
+- [ ]  자동차 이름 유효성 검증 클래스(CarNameValidation)
+- [ ]  시도할 횟수 값 유효성 검증 클래스(InputNumberValidation)
