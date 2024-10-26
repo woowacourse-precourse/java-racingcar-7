@@ -6,9 +6,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ConsoleInputViewTest {
+class InputViewTest {
 
-    ConsoleInputView inputView = new ConsoleInputView();
+    InputView inputView = new InputView();
 
     @Test
     @DisplayName("사용자가 빈 문자열을 입력하면 예외가 발생한다.")
