@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.validation.CarNameValidator;
+import racingcar.validation.NumberValidator;
 
 public class Input {
     public static List<Car> carNames() {
@@ -12,7 +14,7 @@ public class Input {
         String carNames = Console.readLine();
         validateCarNames(carNames);
         return Arrays.stream(carNames.split(","))
-                .map(name -> new Car(name, 0))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
@@ -20,14 +22,17 @@ public class Input {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attempt = Console.readLine();
         validateAttempt(attempt);
+        System.out.println();
         return Integer.parseInt(attempt);
     }
 
     private static void validateCarNames(String carNames) {
-        throw new IllegalArgumentException("자동차 이름 입력이 잘못되었습니다.");
+        CarNameValidator.validateCarNameLength(carNames);
+        CarNameValidator.ValidateCarNameDuplication(carNames);
     }
 
     private static void validateAttempt(String attempt) {
-        throw new IllegalArgumentException("시도할 횟수는 양수만 입력 가능합니다.");
+        NumberValidator.validateIsNumber(attempt);
+        NumberValidator.validateIsPositive(attempt);
     }
 }
