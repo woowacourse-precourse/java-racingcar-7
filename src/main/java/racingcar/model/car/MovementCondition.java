@@ -1,32 +1,30 @@
 package racingcar.model.car;
 
-import static racingcar.common.constant.RaceConstant.MIN_SPEED_TO_MOVE;
+import static racingcar.model.race.Speed.MIN_SPEED;
 
 import java.util.Arrays;
 import java.util.function.BiPredicate;
 import racingcar.model.position.Distance;
+import racingcar.model.race.Speed;
 
 public enum MovementCondition {
 
-    FORWARD(Distance.ONE, (speed, minSpeed) -> speed >= minSpeed),
-    NONE(Distance.ZERO, (speed, minSpeed) -> speed < minSpeed);
+    FORWARD(Distance.ONE, Speed::foeThan),
+    NONE(Distance.ZERO, Speed::slowerThan);
 
     private final Distance distance;
-    private final BiPredicate<Integer, Integer> predicate;
+    private final BiPredicate<Speed, Speed> predicate;
 
-    MovementCondition(final Distance distance, final BiPredicate<Integer, Integer> predicate) {
+    MovementCondition(final Distance distance, final BiPredicate<Speed, Speed> predicate) {
         this.distance = distance;
         this.predicate = predicate;
     }
 
-    public Distance getDistance() {
-        return distance;
-    }
-
-    public static MovementCondition getConditionBy(int movementValue) {
-        return Arrays.stream(MovementCondition.values())
-                .filter(val -> val.predicate.test(movementValue, MIN_SPEED_TO_MOVE))
+    public static Distance getDistanceBy(final Speed speed) {
+        MovementCondition movementCondition = Arrays.stream(MovementCondition.values())
+                .filter(condition -> condition.predicate.test(speed, MIN_SPEED))
                 .findFirst()
                 .orElse(NONE);
+        return movementCondition.distance;
     }
 }

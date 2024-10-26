@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.position.Distance;
+import racingcar.model.race.Speed;
 
 public class MovementTest {
 
@@ -12,10 +13,10 @@ public class MovementTest {
     @DisplayName("random 값 4 : 전진")
     void moveForwardV2() {
         // given
-        int movementValue = 4;
+        Speed speed = Speed.from(4);
 
         // when
-        Distance actual = MovementCondition.getConditionBy(movementValue).getDistance();
+        Distance actual = MovementCondition.getDistanceBy(speed);
 
         // then
         assertThat(actual.equals(Distance.ONE)).isTrue();
@@ -26,10 +27,10 @@ public class MovementTest {
     @DisplayName("random 값 3 : 이동 하지 않음")
     void doNotMove() {
         // given
-        int movementValue = 3;
+        Speed speed = Speed.from(3);
 
         // when
-        Distance actual = MovementCondition.getConditionBy(movementValue).getDistance();
+        Distance actual = MovementCondition.getDistanceBy(speed);
 
         // then
         assertThat(actual.equals(Distance.ZERO)).isTrue();

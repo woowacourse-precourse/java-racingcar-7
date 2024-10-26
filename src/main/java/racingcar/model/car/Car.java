@@ -3,11 +3,13 @@ package racingcar.model.car;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 import static racingcar.common.message.ErrorMessage.SHOULD_NOT_BE_NULL;
+import static racingcar.model.car.MovementCondition.getDistanceBy;
 
 import racingcar.common.exception.LengthExceedException;
 import racingcar.model.position.Distance;
 import racingcar.model.race.Lap;
-import racingcar.util.RandomUtil;
+import racingcar.model.race.Speed;
+import racingcar.util.SpeedGenerator;
 
 public class Car {
 
@@ -35,9 +37,8 @@ public class Car {
     }
 
     public Distance movableDistance() {
-        int movementValue = RandomUtil.generateRandomNum();
-        MovementCondition condition = MovementCondition.getConditionBy(movementValue);
-        return condition.getDistance();
+        Speed randomSpeed = SpeedGenerator.generateRandomSpeed();
+        return getDistanceBy(randomSpeed);
     }
 
     public void updateProgress(final Distance distance, Lap countDownAmount) {
