@@ -5,13 +5,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.Utils.enterCarList;
 import static racingcar.Utils.enterRound;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class UtilsTest {
+    private final InputStream originalSystemIn = System.in;
+
     void dummyInput(String input) {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
+    }
+
+    @AfterEach
+    void tearDown() {
+        Console.close();
+        System.setIn(originalSystemIn);
     }
 
     @Test
