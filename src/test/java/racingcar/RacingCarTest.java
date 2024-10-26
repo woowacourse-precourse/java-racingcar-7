@@ -59,4 +59,15 @@ public class RacingCarTest{
         assertTrue(car.randomNumber >= 0 | car.randomNumber < 10);
         assertEquals(result, check);
     }
+
+    //moveForward 기능 체크
+    @Test
+    @DisplayName("moveForward 예외 처리(거리와 현재 위치 표현에 차이가 있는 경우")
+    void moveForwardTest() {
+        RacingCar car = new RacingCar();
+        car.currentDistance = 3;
+        car.currentLocation = "__";
+
+        assertThrows(ArithmeticException.class, () -> car.moveForward());
+    }
 }
