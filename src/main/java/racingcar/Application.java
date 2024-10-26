@@ -17,9 +17,5 @@ public class Application {
             cars.add(car);
         }
 
-        // 디버깅 용
-        for (Car car : cars) {
-            System.out.println(car.getName());
-        }
     }
 }
