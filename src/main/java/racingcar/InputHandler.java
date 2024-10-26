@@ -5,7 +5,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
-    private static final int MAX_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
 
     List<String> getCarNames() {
         String carNames;
@@ -22,13 +22,13 @@ public class InputHandler {
     }
 
     boolean isCarNameLengthValid(String carName) {
-        return carName != null && carName.length() <= MAX_LENGTH;
+        return carName != null && carName.length() <= MAX_NAME_LENGTH;
     }
 
     boolean areAllCarNameLengthsValid(List<String> carNames) {
         boolean areValid = carNames.stream().allMatch(this::isCarNameLengthValid);
         if (!areValid) {
-            throw new IllegalArgumentException("자동차 이름은 최대 " + MAX_LENGTH + "자까지 가능");
+            throw new IllegalArgumentException("자동차 이름은 최대 " + MAX_NAME_LENGTH + "자까지 가능");
         }
         return true;
     }
@@ -46,7 +46,7 @@ public class InputHandler {
     }
 
     boolean isValidMoveCount(int moveCount) {
-
+        return moveCount >= 1 && moveCount <= 1000;
     }
 
 
