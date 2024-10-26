@@ -9,27 +9,27 @@ public class InputView {
     private String carNames;
     private String tryCount;
 
-    private InputView(){
+    private InputView() {
     }
 
-    public static InputView getInstance(){
+    public static InputView getInstance() {
         if (inputView == null) {
             inputView = new InputView();
         }
         return inputView;
     }
 
-    public void readCarRacingSetup(){
+    public void readCarRacingSetup() {
         readCarNames();
         readTryCount();
     }
 
-    private void readCarNames(){
+    private void readCarNames() {
         System.out.println(CAR_NAME_MESSAGE);
         setCarNames(Console.readLine());
     }
 
-    private void readTryCount(){
+    private void readTryCount() {
         System.out.println(TRY_COUNT_MESSAGE);
         setTryCount(Console.readLine());
     }
@@ -50,8 +50,8 @@ public class InputView {
         return tryCount;
     }
 
-    public void close(){
-        if (inputView != null){
+    public void close() {
+        if (inputView != null) {
             inputView = null;
         }
         Console.close();
