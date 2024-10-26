@@ -32,7 +32,19 @@ class ValidatorTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
     }
-    
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하는 경우 예외 발생 테스트")
+    void validateCarNames_withNameLongerThanFive_shouldThrowException() {
+        // Given
+        String[] names = {"pobi123"};
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateCarNames(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자 이하여야 합니다");
+    }
+
     @Override
     public void runMain() {
     }
