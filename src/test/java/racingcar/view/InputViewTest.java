@@ -18,8 +18,8 @@ public class InputViewTest{
         inputView = InputView.getInstance();
     }
 
-    @DisplayName("자동차 이름과 시도 횟수 입력받기")
     @Test
+    @DisplayName("자동차 이름과 시도 횟수 입력받기")
     void readCarRacingSetup_메서드_테스트() {
         String simulationSetup = "car1,car2,car3\n5\n";
         System.setIn(new ByteArrayInputStream(simulationSetup.getBytes()));

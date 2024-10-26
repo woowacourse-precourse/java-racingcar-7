@@ -13,7 +13,7 @@ public class InputView {
     }
 
     public static InputView getInstance(){
-        if(inputView == null) {
+        if (inputView == null) {
             inputView = new InputView();
         }
         return inputView;
@@ -41,6 +41,7 @@ public class InputView {
     public String getCarNames() {
         return carNames;
     }
+
     private void setTryCount(String tryCount) {
         this.tryCount = tryCount;
     }
@@ -50,7 +51,7 @@ public class InputView {
     }
 
     public void close(){
-        if(inputView != null){
+        if (inputView != null){
             inputView = null;
         }
         Console.close();
