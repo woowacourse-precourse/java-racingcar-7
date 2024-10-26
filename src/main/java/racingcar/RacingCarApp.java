@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.game.GameResult;
 import racingcar.game.RacingCarGame;
+import racingcar.integer_generator.RandomDigitGenerator;
 import racingcar.view.input.InputValue;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
@@ -19,12 +20,8 @@ public class RacingCarApp {
         outputView.printResult(gameResult);
     }
 
-    private void init() {
-
-    }
-
     private void readInput() {
         InputValue inputValue = inputView.readInput();
-        racingCarGame = new RacingCarGame(inputValue, new RandomIntegerGenerator());
+        racingCarGame = new RacingCarGame(inputValue, new RandomDigitGenerator());
     }
 }
