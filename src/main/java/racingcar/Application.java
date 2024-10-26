@@ -14,16 +14,27 @@ public class Application {
         if(playerInput==null || playerInput.isEmpty()){
             throw new IllegalArgumentException();
         }
-        if(playerInput.matches("[^a-zA-Z,]")){
-            throw new IllegalArgumentException();
-        }
+
         HashMap<String,Integer> player=new HashMap<>();
         for (String s : playerInput.split(",")) {
-            if(s.isEmpty()|| s.length()>5){
+            if(s.isEmpty()|| s.length()>5 || !s.matches("^[A-z]+$")){
                 throw new IllegalArgumentException();
             }
             player.put(s,0);
         }
+
+        //플레이어 입력 테스트용
+//        StringBuilder playerInputTest=new StringBuilder();
+//        playerInputTest.append("players: ");
+//        int playerCount=0;
+//        for(String s: player.keySet()){
+//            if(playerCount<player.size()-1) {
+//                playerInputTest.append(s).append(", ");
+//            }else {
+//                playerInputTest.append(s);
+//            }
+//        }
+//        System.out.println(playerInputTest);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String countInput=Console.readLine();
@@ -36,6 +47,9 @@ public class Application {
         if(count<=0){
             throw new IllegalArgumentException();
         }
+
+        //횟수 입력 테스트용
+//        System.out.println("count: "+count);
 
         for(int i=0;i<count;i++){
             goOrStop(player);
