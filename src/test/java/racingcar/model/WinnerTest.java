@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 class WinnerTest {
 
     @Test
-    @DisplayName("test")
+    @DisplayName("이동횟수 pobi: 2, woni: 1, jun: 1으로 pobi가 우승한다")
     void test() {
         //given
         Car pobi = new Car("pobi");
