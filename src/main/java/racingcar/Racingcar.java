@@ -62,17 +62,15 @@ public class Racingcar {
     }
 
 
-    public boolean move(){
-        return 4 <= Randoms.pickNumberInRange(0, 9);
+    public void moveForward(int carNameIndex){
+        if(4 <= Randoms.pickNumberInRange(0, 9)) moveResults[carNameIndex] +="-";
     }
 
     public void racingDisplay(){
         initMoveResults();
         for(int i = 0; i < count; i++){
             for(int j = 0; j < carNames.length; j++){
-                if(move()){
-                    moveResults[j] +="-";
-                }
+                moveForward(j);
                 System.out.println(carNames[j] + " : "+ moveResults[j]);
             }
             System.out.println();
@@ -89,17 +87,20 @@ public class Racingcar {
         return maxDistance;
     }
 
+    public void addWinner(StringBuilder winners, String carName){
+        if (!winners.isEmpty()) {
+            winners.append(", ");
+        }
+        winners.append(carName);
+    }
+
     public void winnerDisplay(){
         int maxDistance = findMaxDistance();
         StringBuilder winners = new StringBuilder();
 
-
         for (int i = 0; i < moveResults.length; i++) {
             if (moveResults[i].length() == maxDistance) {
-                if (!winners.isEmpty()) {
-                    winners.append(", ");
-                }
-                winners.append(carNames[i]);
+                addWinner(winners,carNames[i]);
             }
         }
 
