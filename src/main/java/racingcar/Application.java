@@ -25,7 +25,7 @@ public class Application {
     static List<RacingCar> initRacingCarList(String carNames) {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (String carName : carNames.split(",")) {
-            RacingCar racingCar = new RacingCar(carName);
+            RacingCar racingCar = new RacingCar(carName.strip());
             racingCarList.add(racingCar);
         }
         return racingCarList;
