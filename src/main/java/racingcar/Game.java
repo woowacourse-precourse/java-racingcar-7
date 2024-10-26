@@ -15,21 +15,21 @@ public class Game {
     }
 
     public void run() {
-        int count = start();
-        play(count);
+        int attempts = start();
+        play(attempts);
         end();
     }
 
     private int start() {
         String[] carNames = getCarNames();
-        int count = getCount();
+        int attempts = getAttempts();
         gameLogic.initialize(carNames);
-        return count;
+        return attempts;
     }
 
-    private void play(int count) {
+    private void play(int attempts) {
         view.printResultPrompt();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < attempts; i++) {
             playSingleRound();
         }
     }
@@ -45,8 +45,8 @@ public class Game {
         return inputParser.executeCarNames(input);
     }
 
-    private int getCount() {
-        view.printCountPrompt();
+    private int getAttempts() {
+        view.printAttemptsPrompt();
         String input = view.readInput();
         return inputParser.executeAttempts(input);
     }
