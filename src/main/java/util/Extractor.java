@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import repository.CarRepository;
 
 public class Extractor {
-    public static Car[] extractCarList(String input) {
+    public static ArrayList<Car> extractCarList(String input) {
         String[] inputCars = input.split(",");
         Validator.validateInputDate(inputCars);
 
-        Car[] cars = new Car[inputCars.length];
+        ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < inputCars.length; i++) {
-            cars[i] = new Car(inputCars[i]);
+            cars.add(new Car(inputCars[i]));
         }
 
         return cars;
@@ -44,7 +44,7 @@ public class Extractor {
 
     public static RacingParam parseInput(RacingInput input) {
 
-        Car[] inputCars = Extractor.extractCarList(input.cars());
+        ArrayList<Car> inputCars = Extractor.extractCarList(input.cars());
         int inputRepeatCount = Integer.parseInt(input.repeatCount());
 
         return new RacingParam(inputCars, inputRepeatCount);

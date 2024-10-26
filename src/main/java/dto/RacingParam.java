@@ -1,6 +1,7 @@
 package dto;
 
+import java.util.ArrayList;
 import util.Car;
 
-public record RacingParam(Car[] cars, int repeatCount) {
+public record RacingParam(ArrayList<Car> cars, int repeatCount) {
 }
