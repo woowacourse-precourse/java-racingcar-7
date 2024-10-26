@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UI {
     private final Validation validation = new Validation();
