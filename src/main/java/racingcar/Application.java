@@ -117,12 +117,7 @@ public class Application {
 
     private static void printFinalWinner(RacingCar[] racingCars) {
         // Find Max Moves
-        int maxMoves = 0;
-        for (RacingCar racingCar : racingCars) {
-            if (racingCar.getMoves() > maxMoves) {
-                maxMoves = racingCar.getMoves();
-            }
-        }
+        int maxMoves = findMaxMoves(racingCars);
         
         // Build Strings
         StringBuilder finalWinner = new StringBuilder();
@@ -138,5 +133,15 @@ public class Application {
         finalWinner.delete(lengthOfFinalWinner - 2, lengthOfFinalWinner);
 
         System.out.println(finalWinner);
+    }
+
+    private static int findMaxMoves(RacingCar[] racingCars) {
+        int maxMoves = 0;
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getMoves() > maxMoves) {
+                maxMoves = racingCar.getMoves();
+            }
+        }
+        return maxMoves;
     }
 }
