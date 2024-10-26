@@ -2,7 +2,7 @@ package controller;
 
 import static util.Extractor.parseInput;
 import static util.Input.getInput;
-import static util.Race.startRacing;
+import static util.Race.startRacingAllCars;
 
 import dto.RacingParam;
 import repository.CarRepository;
@@ -14,7 +14,7 @@ public class RacingcarController {
         RacingParam racingParam = parseInput(getInput());
         CarRepository.saveCarsAndRepeatCount(racingParam);
 
-        startRacing();
+        startRacingAllCars();
 
         Output.printRacingResult();
         Output.printWinningCars();
