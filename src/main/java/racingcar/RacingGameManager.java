@@ -66,6 +66,6 @@ class RacingGameManager implements RacingGame {
 
     private void announceWinners() {
         List<String> finalWinners = findWinners();
-        System.out.println("최종 우승자 : " + String.join(",", finalWinners));
+        System.out.println("최종 우승자 : " + String.join(", ", finalWinners));
     }
 }
