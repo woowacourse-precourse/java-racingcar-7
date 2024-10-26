@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import racingcar.data.GameData;
 import racingcar.dto.Car;
 import racingcar.util.NumberGenerator;
 import racingcar.util.Random;
@@ -20,11 +21,12 @@ public class RacingGameRound {
         this.numberGenerator = new Random();
     }
 
-    public void racing() {
+    public void racing(GameData gameData) {
         for (int indexOfCar = 0; indexOfCar < cars.size(); indexOfCar++) {
             Car car = cars.get(indexOfCar);
             checkConditionAndMove(car);
         }
+        gameData.save(cars);
     }
 
     private void checkConditionAndMove(Car car) {

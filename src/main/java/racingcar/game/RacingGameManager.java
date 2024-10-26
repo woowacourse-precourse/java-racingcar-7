@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import racingcar.data.GameData;
 import racingcar.dto.Car;
 
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class RacingGameManager {
         }
     }
 
-    public void startGame() {
+    public void startGame(GameData gameData) {
         for (RacingGameRound racingGameRound : racingGameRounds) {
-            racingGameRound.racing();
+            racingGameRound.racing(gameData);
         }
     }
 }
