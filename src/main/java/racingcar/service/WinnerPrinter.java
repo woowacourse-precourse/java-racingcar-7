@@ -17,7 +17,7 @@ public class WinnerPrinter {
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winner.getWinningCars().size(); i++) {
             winnerNames.append(winner.getWinningCars().get(i).getName());
-            if (isMoreWinner(i, winner)) { // 마지막 이름이 아닐 경우에만 쉼표 추가
+            if (isMoreWinner(i, winner)) {
                 winnerNames.append(", ");
             }
         }

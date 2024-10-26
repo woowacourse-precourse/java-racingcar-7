@@ -16,3 +16,7 @@
 - [ ] 레이싱의 승자를 출력하는 WinnerPrinter 객체
 
 - [ ] 우승자를 저장하는 Winner 객체
+
+- [ ] 우승자를 계산하는 WinnerCalculator 객체
+
+- [ ] 차의 이름을 검증하는 CarNameValidator

@@ -18,7 +18,7 @@ public class CarRacing {
 
     public CarRacing(String cars, String step) {
         this.step = parseStep(step);
-        this.carList = addCar(cars);
+        this.carList = createCar(cars);
     }
 
     public void racing(){
@@ -34,9 +34,10 @@ public class CarRacing {
         winnerPrinter.printWinner(carList);
     }
 
-    private List<Car> addCar(String cars){
+    private List<Car> createCar(String cars){
         return Arrays.stream(cars.split(",")) // 문자열을 쉼표로 나누어 Stream 생성
                 .filter(name -> !name.trim().isEmpty()) // 빈 문자열 필터링
+                .peek(CarNameValidator::validate)
                 .map(name -> new Car(name.trim())) // Car 객체 생성
                 .collect(Collectors.toList()); // List<Car>로 수집
     }
