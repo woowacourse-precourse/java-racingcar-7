@@ -14,15 +14,23 @@ public class RacingGame {
     }
 
     public List<String> getFinalWinner() {
-        return this.cars.getFinalWinners().stream()
-                .map(CarName::getRacerName)
+        return cars.getFinalWinners().stream()
+                .map(CarName::getName)
                 .toList();
     }
 
-    public List<Car> getOneCycleResult() {
-        cars.doOneCycle();
+    public String getRacingResult() {
+        return cars.getGameResult();
+    }
 
-        return cars.getCars();
+    public void runAllCycle() {
+        for (int i = 0; i < tryCount; i++) {
+            runOneCycle();
+        }
+    }
+
+    private void runOneCycle() {
+        cars.moveAllCars();
     }
 
     private void validateTryCount(String tryCount) {
