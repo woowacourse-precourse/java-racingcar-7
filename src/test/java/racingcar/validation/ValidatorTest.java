@@ -45,4 +45,15 @@ public class ValidatorTest {
 
         assertThrows(IllegalArgumentException.class, () -> Validator.checkAlphaNumericName(invalidCarNames));
     }
+
+    @Test
+    @DisplayName("중복된 자동차 이름이 있는지 확인하는 테스트")
+    void checkDuplicateNameTest() {
+        List<String> duplicateCarNames = new ArrayList<>();
+
+        duplicateCarNames.add("car1");
+        duplicateCarNames.add("car1");
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkDuplicateName(duplicateCarNames));
+    }
 }
