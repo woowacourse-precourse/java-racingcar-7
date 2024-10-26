@@ -1,11 +1,7 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class RacingCarCollection {
     private LinkedHashMap<String, Integer> carList;
@@ -22,12 +18,14 @@ public class RacingCarCollection {
     }
 
     private Integer validateTryCount(String readTryCount) {
-        if(Integer.parseInt(readTryCount) > 0) return Integer.parseInt(readTryCount);
+        if (Integer.parseInt(readTryCount) > 0) {
+            return Integer.parseInt(readTryCount);
+        }
         throw new IllegalArgumentException("[ERROR] : 시도 횟수는 양수를 입력해주세요.");
     }
 
     private void arrToMap(String[] cars) {
-        for (String s : cars){
+        for (String s : cars) {
             carList.put(s, 0);
         }
     }
@@ -41,14 +39,18 @@ public class RacingCarCollection {
     }
 
     private void validateCarNmaeBlank(String[] cars) {
-        for (String car : cars){
-            if (car.matches(" "))throw  new IllegalArgumentException("[ERROR] : 자동차 이름에 공백은 포함하지 않습니다.");
+        for (String car : cars) {
+            if (car.matches(" ")) {
+                throw new IllegalArgumentException("[ERROR] : 자동차 이름에 공백은 포함하지 않습니다.");
+            }
         }
     }
 
     private void validateNotAllowedCharacter(String[] cars) {
         for (String car : cars) {
-            if (!car.matches("[a-zA-Z]+")) throw new IllegalArgumentException("[ERROR] : 허용되지 않은 문자가 포함되어있습니다.");
+            if (!car.matches("[a-zA-Z]+")) {
+                throw new IllegalArgumentException("[ERROR] : 허용되지 않은 문자가 포함되어있습니다.");
+            }
         }
     }
 
@@ -58,12 +60,16 @@ public class RacingCarCollection {
         for (String car : cars) {
             duplicateNameSet.add(car);
         }
-        if (carsLength != duplicateNameSet.size()) throw new IllegalArgumentException("[ERROR] : 자동차의 이름이 중복되어서는 안됩니다.");
+        if (carsLength != duplicateNameSet.size()) {
+            throw new IllegalArgumentException("[ERROR] : 자동차의 이름이 중복되어서는 안됩니다.");
+        }
     }
 
     private void validateCarNameLength(String[] cars) {
         for (String car : cars) {
-            if (car.length() > MAX_LENGTH || car.isEmpty()) throw new IllegalArgumentException("[ERROR] : 자동차 이름은 5자 이하이거나 비어서는 안됩니다.");
+            if (car.length() > MAX_LENGTH || car.isEmpty()) {
+                throw new IllegalArgumentException("[ERROR] : 자동차 이름은 5자 이하이거나 비어서는 안됩니다.");
+            }
         }
     }
 
