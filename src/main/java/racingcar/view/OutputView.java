@@ -39,7 +39,7 @@ public class OutputView {
         for (Car winner : winners.getCars()) {
             winnerNames.add(winner.getName());
         }
-        System.out.println("최종 우승자 : " + winnerNames);
+        System.out.print("최종 우승자 : " + winnerNames);
     }
 
     public void printErrorMessage(String message) {
