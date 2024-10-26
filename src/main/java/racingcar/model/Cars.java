@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.validator.CarNameValidator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class Cars {
 
     public Cars(List<String> carNames){
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(carName, new CarNameValidator()));
         }
     }
 

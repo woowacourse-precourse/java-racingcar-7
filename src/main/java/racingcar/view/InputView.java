@@ -12,23 +12,14 @@ public class InputView {
     private static final String CAR_NAME_DELIMITER = ",";
 
     private final TryCountValidator tryCountValidator;
-    private final CarNameValidator carNameValidator;
 
-    public InputView(TryCountValidator tryCountValidator,
-                     CarNameValidator carNameValidator) {
+    public InputView(TryCountValidator tryCountValidator) {
         this.tryCountValidator = tryCountValidator;
-        this.carNameValidator = carNameValidator;
     }
 
     public List<String> scanCarNames(){
         String carNameString = readLine();
-
-        List<String> carNames = Arrays.asList(carNameString.split(CAR_NAME_DELIMITER));
-
-        carNameValidator.isLengthUnderFive(carNames);
-        carNameValidator.isNotEmpty(carNames);
-
-        return carNames;
+        return Arrays.asList(carNameString.split(CAR_NAME_DELIMITER));
     }
 
     public int scanTryCount() {
