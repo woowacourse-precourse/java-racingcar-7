@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class RaceRecord {
     private Map<Car,Integer> raceResult;
@@ -23,4 +24,12 @@ public class RaceRecord {
         raceResult.put(car, raceResult.get(car) + moveCount);
     }
 
+    public int getOneCarRecord(String carName) {
+        for (Map.Entry<Car, Integer> car : raceResult.entrySet()) {
+            if (car.getKey().getName().equals(carName)) {
+                return car.getValue();
+            }
+        }
+        throw new NoSuchElementException(carName + " not found.");
+    }
 }
