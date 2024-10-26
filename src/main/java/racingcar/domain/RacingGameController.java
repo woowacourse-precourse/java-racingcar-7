@@ -36,4 +36,18 @@ public class RacingGameController {
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
+
+    public List<String> getWinner() {
+        int max = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
+
+        List<Car> winner = cars.stream().filter(car -> car.getPosition() == max)
+                .toList();
+
+        return winner.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
 }
