@@ -1,15 +1,17 @@
 package racingcar.model;
 
+import static racingcar.constant.NumberType.NUMBER_THRESHOLD;
+import static racingcar.constant.NumberType.START_LOCATION;
+
 import racingcar.utils.Random;
 
 public class Car {
-
     private final String name;
     private int location;
 
     private Car(String name) {
         this.name = name;
-        location = 0;
+        location = START_LOCATION.getNumber();
     }
 
     public static Car of(String name) {
@@ -30,7 +32,7 @@ public class Car {
 
     public void startRace() {
         int randomNumber = Random.createRandomNumber();
-        if (randomNumber >= 4) {
+        if (randomNumber >= NUMBER_THRESHOLD.getNumber()) {
             go();
         }
     }
