@@ -9,6 +9,10 @@ public class RacingCar {
     private final CarName carName;
     private int location;
 
+    public RacingCar(CarName carName) {
+        this(carName, 0);
+    }
+
     public RacingCar(CarName carName, int location) {
         this.carName = carName;
         this.location = location;

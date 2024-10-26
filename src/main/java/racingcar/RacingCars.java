@@ -13,7 +13,7 @@ public class RacingCars {
 
     public static RacingCars of(List<CarName> carNames) {
         return new RacingCars(carNames.stream()
-                .map(carName -> new RacingCar(carName, 0))
+                .map(RacingCar::new)
                 .toList());
     }
 
