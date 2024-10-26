@@ -23,6 +23,9 @@ public class Application {
             StartRaceOnetime(cars, carScore);
             PrintCurrentScore(cars, carScore);
         }
+        int[] ary = new int[cars.length];
+        StringtoIntArray(carScore, ary);
+        System.out.println(ary[0]);
 
     }
 
@@ -71,5 +74,15 @@ public class Application {
         }
     }
 
+    // Additionally, 문자열 배열을 해당 문자열 길이의 정수 배열로 변환하는 함수
+    private static void StringtoIntArray(String[] str, int[] ary) {
+        for(int i = 0; i < str.length; i++) {
+            ary[i] = str[i].length();
+        }
+    }
 
+    // 6. 배열에서 가장 큰 값(들)의 위치를 찾는 함수
+    private static void FindIndexLargestScore(int[] carScoreInt) {
+
+    }
 }
