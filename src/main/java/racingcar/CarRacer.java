@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class CarRacer {
 
     private final String[] carNames;
-    private int[] carPositions;
+    private final int[] carPositions;
 
     public CarRacer(String[] carNames) {
         this.carNames = carNames;
