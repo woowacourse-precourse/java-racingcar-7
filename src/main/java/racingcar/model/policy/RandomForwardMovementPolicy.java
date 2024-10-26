@@ -14,8 +14,7 @@ public class RandomForwardMovementPolicy implements MovementPolicy {
     @Override
     public void move(Car car) {
         if (isMovable()) {
-            int currentPosition = car.getPosition();
-            car.move(currentPosition + 1);
+            car.move(1);
         }
     }
 
