@@ -8,7 +8,7 @@ public class Rule {
     public static final int CAR_FORWARD_CONDITION = 4;
     public static final int CAR_MAX_SIZE = 1_000;
     public static final int CAR_NAME_LENGTH_MAX = 5;
-    public static final int COUNT_INTEGER_MAX = Integer.MAX_VALUE;
+    public static final int COUNT_MAX = 10_000_000;
 
     private Rule() {
 
