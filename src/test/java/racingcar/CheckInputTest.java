@@ -12,11 +12,11 @@ public class CheckInputTest extends NsTest {
 
     @Test
     @DisplayName("입력에 공백이 포함된 경우 트림 후 올바르게 파싱하는지 테스트")
-    void testTrimAndSplitNames(){
+    void testTrimAndSplitNames() {
         CheckInput checkInput = new CheckInput();
         String input = "노범석,         김수한무";
         String[] result = checkInput.splitNames(input);
-        String[] expected = {"노범석","김수한무"};
+        String[] expected = {"노범석", "김수한무"};
 
         assertThat(result).containsExactly(expected);
     }
@@ -42,6 +42,7 @@ public class CheckInputTest extends NsTest {
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @ParameterizedTest
     @ValueSource(strings = {"노범석, 노범석, 김수한무"})
     @DisplayName("공백 제거시 중복되는 이름이 주어질 때 테스트")

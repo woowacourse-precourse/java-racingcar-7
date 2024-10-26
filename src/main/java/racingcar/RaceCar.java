@@ -6,6 +6,8 @@ import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RaceCar {
+    private final RaceCarPrinter printer = new RaceCarPrinter();
+
     public void start(String[] carNames, int raceTimes) {
         int carNums = carNames.length;
         HashMap<String, Integer> carMap = initCars(carNames);
@@ -16,10 +18,10 @@ public class RaceCar {
                 int number = randomNumber();
                 carMap.put(key, value + number);
             }
-            printRace(carMap);
+            printer.printRace(carMap);
         }
         ArrayList<String> winner = checkWinner(carMap);
-        printWinner(winner);
+        printer.printWinner(winner);
     }
 
     private ArrayList<String> checkWinner(HashMap<String, Integer> carMap) {
@@ -35,30 +37,6 @@ public class RaceCar {
         }
         return array;
     }
-
-    private void printWinner(ArrayList<String> winner) {
-        StringBuilder message = new StringBuilder("최종 우승자 : ");
-        if (winner.size() == 1) {
-            message.append(winner.get(0));
-            System.out.println(message);
-        } else {
-            String winners = String.join(", ", winner);
-            message.append(winners);
-            System.out.println(message);
-        }
-    }
-
-    private void printRace(HashMap<String, Integer> carMap) {
-        StringBuilder message = new StringBuilder();
-        for (String key : carMap.keySet()) {
-            message.append(key)
-                    .append(" : ")
-                    .append("-".repeat(carMap.get(key)))
-                    .append("\n");
-        }
-        System.out.println(message);
-    }
-
 
     private HashMap<String, Integer> initCars(String[] carNames) {
         HashMap<String, Integer> map = new HashMap<>();
