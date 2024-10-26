@@ -20,4 +20,11 @@ public class Car {
     public String getName() {
         return this.name;
     }
+
+    public void move(Boolean isMove) {
+        if (isMove) {
+            increaseDistance();
+        }
+    }
+
 }
