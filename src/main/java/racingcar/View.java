@@ -21,8 +21,9 @@ public class View {
 
     public List<String> inputCarNames(String input) {
         String[] names = input.split(",");
-        for (String name : names) {
-            isVaildNameMax(name);
+        for (int i =0 ; i<names.length; i++) {
+            names[i] = names[i].trim();
+            isVaildNameMax(names[i]);
         }
         return Arrays.asList(names);
     }
