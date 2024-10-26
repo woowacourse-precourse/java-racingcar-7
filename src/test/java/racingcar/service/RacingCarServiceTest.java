@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.service;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ class RacingCarServiceTest extends RacingCarService {
 
     @Test
     @DisplayName("차 이름을 맵의 키로 매핑하는 메서드 테스트")
-    public void testMapCarNames() {
+    public void testInitializeCarPositions() {
         //given
         List<String> carNames = Arrays.asList("car1", "car2", "car3");
         Map<String, String> expect = new HashMap<>();
@@ -39,14 +39,14 @@ class RacingCarServiceTest extends RacingCarService {
         expect.put("car3", "");
 
         //when
-        Map<String, String> result = racingCarService.mapCarNames(carNames);
+        Map<String, String> result = racingCarService.initializeCarPositions(carNames);
         //then
         Assertions.assertEquals(expect, result);
     }
 
     @Test
     @DisplayName("이동 시 -를 값으로 추가한 후 다시 map으로 반환하는 메서드")
-    public void testMoveCar() {
+    public void testUpdateCarPositions() {
         //given
         List<String> winCarNames = Arrays.asList("car1", "car3");
         Map<String, String> expect = new HashMap<>();
@@ -60,7 +60,7 @@ class RacingCarServiceTest extends RacingCarService {
         result.put("car3", "");
 
         //when
-        result = racingCarService.moveCar(result, winCarNames);
+        result = racingCarService.updateCarPositions(result, winCarNames);
         //then
 
         Assertions.assertEquals(expect, result);
@@ -68,14 +68,14 @@ class RacingCarServiceTest extends RacingCarService {
 
     @Test
     @DisplayName("이동할 차 목록 반환하는 메서드")
-    public void testListMoveCarNames() {
+    public void testListUpdateCarPositionsNames() {
         RacingCarServiceTest racingCarServiceTest = new RacingCarServiceTest();
 
         //given
         List<String> expect = Arrays.asList("car1", "car3");
 
         //when
-        List<String> result = racingCarServiceTest.listMoveCarNames(expect);
+        List<String> result = racingCarServiceTest.getListCanMoveCarNames(expect);
 
         //then
         Assertions.assertEquals(expect, result);
@@ -101,7 +101,7 @@ class RacingCarServiceTest extends RacingCarService {
 
     @Test
     @DisplayName("결과와 최대 이동거리를 받아 우승자 리스트를 반환하는 메서드")
-    public void testListRacingWinners() {
+    public void testGetListRacingWinners() {
         //given
         List<String> expect = Arrays.asList("car3", "car4");
         Map<String, String> racingResult = new HashMap<>();
@@ -112,7 +112,7 @@ class RacingCarServiceTest extends RacingCarService {
         String maxMove = racingCarService.findMaxMove(racingResult);
 
         //when
-        List<String> result = racingCarService.listRacingWinners(racingResult, maxMove);
+        List<String> result = racingCarService.getListRacingWinners(racingResult, maxMove);
         //then
         Assertions.assertEquals(expect, result);
     }

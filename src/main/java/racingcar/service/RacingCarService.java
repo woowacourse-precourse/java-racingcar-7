@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class RacingCarService {
         return listCarNames;
     }
 
-    public Map<String, String> mapCarNames(List<String> carNames) {
+    public Map<String, String> initializeCarPositions(List<String> carNames) {
         Map<String, String> mapCarNames = new LinkedHashMap<>();
 
         for (int i = 0; i < carNames.size(); i++) {
@@ -31,7 +31,7 @@ public class RacingCarService {
         return mapCarNames;
     }
 
-    public Map<String, String> moveCar(Map<String, String> mapRacingCars, List<String> carNames) {
+    public Map<String, String> updateCarPositions(Map<String, String> mapRacingCars, List<String> carNames) {
         for (int i = 0; i < carNames.size(); i++) {
             String carName = carNames.get(i);
             String value = mapRacingCars.getOrDefault(carNames.get(i), "");
@@ -41,8 +41,7 @@ public class RacingCarService {
         return mapRacingCars;
     }
 
-    //두가지 일을 하는게 아닌가?
-    public List<String> listMoveCarNames(List<String> carNames) {
+    public List<String> getListCanMoveCarNames(List<String> carNames) {
         List<String> listMoveCarNames = new ArrayList<>();
 
         for (int i = 0; i < carNames.size(); i++) {
@@ -58,7 +57,7 @@ public class RacingCarService {
         return createRandomNumber() >= 4;
     }
 
-    public List<String> listRacingWinners(Map<String, String> racingResult, String maxMove) {
+    public List<String> getListRacingWinners(Map<String, String> racingResult, String maxMove) {
         List<String> listRacingWinners = new ArrayList<>();
 
         for (String key : racingResult.keySet()) {
