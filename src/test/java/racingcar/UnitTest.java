@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
@@ -76,17 +77,18 @@ public class UnitTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("getRandomNumber 테스트")
-    void getRandomNumberTest() {
+    @CsvSource({"5, 7", "1, 2"})
+    void getRandomNumberTest(int randomNumber1, int randomNumber2) {
         assertRandomNumberInRangeTest(
                 () -> {
                     int result1 = Application.getRandomNumber();
                     int result2 = Application.getRandomNumber();
-                    assertThat(result1).isEqualTo(5);
-                    assertThat(result2).isEqualTo(7);
+                    assertThat(result1).isEqualTo(randomNumber1);
+                    assertThat(result2).isEqualTo(randomNumber2);
                 },
-                5, 7
+                randomNumber1, randomNumber2
         );
     }
 
