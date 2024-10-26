@@ -3,12 +3,10 @@ package racingcar.view;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class InputRacingCarViewTest {
@@ -18,12 +16,12 @@ public class InputRacingCarViewTest {
         this.inputRacingCarView = new InputRacingCarView();
     }
 
-    public void input(String input) {
+    private void input(String input) {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
     }
 
-    public ByteArrayOutputStream output() {
+    private ByteArrayOutputStream output() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         return output;
