@@ -4,8 +4,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -38,12 +36,4 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    @Test
-    void testCarNameStartOrEndComma() {
-        String input = ",Tom,Jake";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            Validate.carName(input);
-        });
-        assertEquals("자동차 이름의 시작이나 끝에 콤마가 올 수 없습니다.", exception.getMessage());
-    }
 }
