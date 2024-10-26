@@ -10,7 +10,7 @@
 
 ### RacingCarValidator
 
--[ ] 자동차 이름 글자 수(5자 이하) 검증
+-[X] 자동차 이름 글자 수(1 이상 5 이하) 검증
 - 유효하지 않을 경우 `IllegalArgumentException` 발생
 
 ## 🚖RacingCars🚘
