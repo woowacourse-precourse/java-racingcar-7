@@ -29,8 +29,17 @@ class OutputHandlerTest extends NsTest {
         assertThat(output()).contains("시도할 횟수는 몇 회인가요?");
     }
 
+    @Test
+    @DisplayName("printRaceResultHeader 메서드 테스트")
+    void printRaceResultHeader_shouldPrintCorrectMessage() {
+        // When
+        OutputHandler.printRaceResultHeader();
+
+        // Then
+        assertThat(output()).contains("실행 결과");
+    }
+
     @Override
     public void runMain() {
-        // 해당 클래스에서는 runMain을 사용하지 않습니다.
     }
 }
