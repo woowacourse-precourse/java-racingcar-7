@@ -4,6 +4,7 @@ public class Vehicle {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MIN_RANDOM_FOR_MOVE = 4;
     private static final int MIN_DISTANCE = 0;
+    private static final String MOVE_SYMBOL = "-";
     public static int MAX_RACE_DISTANCE = 0;
 
     private String vehicleName;
@@ -35,7 +36,7 @@ public class Vehicle {
     }
 
     public String getCurrentDistanceToSymbol() {
-        String distance = "-".repeat(Math.max(MIN_DISTANCE, currentDistance));
+        String distance = MOVE_SYMBOL.repeat(Math.max(MIN_DISTANCE, currentDistance));
         return vehicleName + " : " + distance;
     }
 }
