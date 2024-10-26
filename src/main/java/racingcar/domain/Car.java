@@ -16,7 +16,7 @@ public class Car {
         }
     }
 
-    private boolean isMovable() {
+    protected boolean isMovable() {
         return pickNumberInRange(0, 9) >= 4;
     }
 
