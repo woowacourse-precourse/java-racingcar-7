@@ -8,10 +8,9 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.NumberMaker;
 
-//fixme RaceService
-public class RacingCarScoreMachine {
-    private final Cars cars;
+public class RaceService {
     private final AttemptCounter attemptCounter;
+    private final Cars cars;
 
 
     private final NumberMaker randomNumberMaker;
@@ -19,7 +18,7 @@ public class RacingCarScoreMachine {
     private final static int FORWARD_DISTANCE = 1;
 
 
-    public RacingCarScoreMachine(Cars cars, AttemptCounter attemptManager, NumberMaker randomNumberMaker) {
+    public RaceService(Cars cars, AttemptCounter attemptManager, NumberMaker randomNumberMaker) {
         this.cars = cars;
         this.attemptCounter = attemptManager;
         this.randomNumberMaker = randomNumberMaker;
@@ -42,7 +41,6 @@ public class RacingCarScoreMachine {
     public Set<Car> getCarsNameAndDistance() {
         return cars.getCars();
     }
-
 
     public List<String> getWinningCarsNames() {
         List<String> result = new ArrayList<>();
