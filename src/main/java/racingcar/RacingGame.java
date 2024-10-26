@@ -2,8 +2,15 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.util.NumberGenerator;
 
 public class RacingGame {
+    private final NumberGenerator numberGenerator;
+
+    public RacingGame(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
+
     void start() {
         List<String> carNames = getCarNames();
         int attemptCount = getAttemptCount();
@@ -26,7 +33,7 @@ public class RacingGame {
 
     private List<Car> createCars(List<String> carNames) {
         return carNames.stream()
-                .map(Car::new)
+                .map(carName -> new Car(numberGenerator, carName))
                 .toList();
     }
 
