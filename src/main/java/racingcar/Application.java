@@ -9,16 +9,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"); // 프로그램 시작
-        List<String> carNames = getCarNames(); // 1번 기능: 자동차 이름 입력 및 검증
+        List<String> carNames = getCarNames(); // 자동차 이름 입력 및 검증
         System.out.println("입력된 자동차 이름: " + carNames); // 입력된 자동차 이름 출력 (디버깅 용도)
         
-        int attempts = getAttempts(); // 2번 기능: 시도할 횟수 입력 및 검증
+        int attempts = getAttempts(); // 시도할 횟수 입력 및 검증
         System.out.println("입력된 시도 횟수: " + attempts); // 입력된 시도 횟수 출력 (디버깅 용도)
    
-        List<Car> cars = initializeCars(carNames); // 3번 기능: 자동차 객체 생성 및 초기화
+        List<Car> cars = initializeCars(carNames); // 자동차 객체 생성 및 초기화
         System.out.println("초기화된 자동차: " + cars); // 초기화된 자동차 출력 (디버깅 용도)
         
-        race(cars, attempts); // 4번 기능: 경주 진행
+        race(cars, attempts); // 경주 진행
     }
      /**
     /**
