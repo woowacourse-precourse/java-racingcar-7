@@ -13,6 +13,7 @@ public class CarNameValidator {
         validateSeparatorWithoutComma(input);
         validateStartWithComma(input);
         validateEndWithComma(input);
+        validateCar(input);
     }
 
     private static void validateSeparatorWithoutComma(String input) {
