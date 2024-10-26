@@ -19,8 +19,14 @@ public class Game {
 
     }
 
-    private List<Car> createCar(List<String> names) {
-        return new ArrayList<>();
+    private List<Car> createCars(List<String> names) {
+        List<Car> result = new ArrayList<>();
+
+        for (String name : names) {
+            result.add(new Car(name));
+        }
+
+        return result;
     }
 
     private List<String> processRound() {
