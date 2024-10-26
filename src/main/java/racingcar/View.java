@@ -26,10 +26,37 @@ public class View {
         input = inputCars();
         carNames =inputCarNames(input); //이름 리스트 생성
         count = inputCount();
+        cars = addCars(carNames);
+        play(count,cars);
 
 
     }
-
+    /*
+    실행 결과
+    wo: -
+    po:
+    메소드 구분
+     */
+    public void play(int count,List<Car> cars){
+        System.out.println("실행결과");
+        for(int i =0; i<count ; i++){
+            //여기부터
+            for(Car car : cars) {
+                printGame(car);
+            }
+            System.out.println();
+            //여기 구분
+        }
+    }
+    private void printGame(Car car){
+        car.move();
+        car.getPosition();
+        System.out.print(car.name + " : ");
+        for(int i = 0; i< car.getPosition(); i++){
+            System.out.print("-");
+        }
+        System.out.println();
+    }
     public String inputCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         return Console.readLine();
