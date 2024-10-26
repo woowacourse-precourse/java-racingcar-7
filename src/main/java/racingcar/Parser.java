@@ -6,9 +6,7 @@ import java.util.List;
 public class Parser {
 
     public List<String> parseCarNamesByOperator(String inputStr, String operator) {
-        List<String> carNames = Arrays.stream(inputStr.split(operator)).toList();
-
-        return carNames;
+        return Arrays.stream(inputStr.split(operator)).toList();
     }
 
     public long parseRepeatCount(String inputStr) {
