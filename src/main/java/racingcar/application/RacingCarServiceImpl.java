@@ -1,5 +1,6 @@
 package racingcar.application;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.common.InputController;
 import racingcar.common.OutputController;
 import racingcar.model.CarName;
@@ -18,6 +19,7 @@ public class RacingCarServiceImpl implements RacingCarService {
         //input
         RawInput rawInput = InputController.getCarNamesInput();
         RaceCount raceCount = InputController.getRaceCountInput();
+        Console.close();
 
         //parsing
         Set<CarName> carNameSet = parser.getParsedCarNameList(rawInput);
