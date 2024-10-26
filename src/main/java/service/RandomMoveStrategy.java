@@ -1,17 +1,17 @@
 package service;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_THRESHOLD = 5;
-    private final Random random;
+    private final int random;
 
     public RandomMoveStrategy() {
-        this.random = new Random();
+        this.random = Randoms.pickNumberInRange(0,9);
     }
 
     @Override
     public boolean canMove() {
-        return random.nextInt(10) >= MOVE_THRESHOLD;
+        return random >= MOVE_THRESHOLD;
     }
 }
