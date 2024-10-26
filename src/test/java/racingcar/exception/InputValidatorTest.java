@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputValidatorTest {
-    private static final InputValidator inputvalidator = new InputValidator();
+    private static final InputValidator inputvalidator = InputValidator.getInstance();
 
     @ParameterizedTest
     @DisplayName("공백이 입력될 경우 에러가 발생한다.")
