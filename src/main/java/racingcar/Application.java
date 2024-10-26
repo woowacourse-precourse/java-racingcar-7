@@ -13,6 +13,7 @@ public class Application {
         int attempts = Validate.attempts(inputAttempts);
 
         List<Car> carList = Car.makeCar(carNameList);
+        Output.playRacing();
         playRacing(attempts, carList);
 
         List<String> winners = selectWinners(carList);
@@ -20,7 +21,6 @@ public class Application {
     }
 
     private static void playRacing(int attempts, List<Car> carList) {
-        System.out.println("\n실행 결과");
         for (int i = 0; i < attempts; i++) {
             race(carList);
             printCars(carList);
