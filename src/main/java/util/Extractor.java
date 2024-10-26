@@ -36,7 +36,7 @@ public class Extractor {
     public static ArrayList<String> extractWinningCarList() {
         int max = returnMax();
         ArrayList<String> winningCars = new ArrayList<>();
-        
+
         for (Car car : CarRepository.cars) {
             if (car.getForwardCount(CarRepository.repeatCount) == max) {
                 winningCars.add(car.getName());
@@ -44,5 +44,13 @@ public class Extractor {
         }
 
         return winningCars;
+    }
+
+    public static RacingParam parseInput(RacingInput input) {
+
+        Car[] inputCars = Extractor.extractCarList(input.cars());
+        int inputRepeatCount = Integer.parseInt(input.repeatCount());
+
+        return new RacingParam(inputCars, inputRepeatCount);
     }
 }

@@ -1,10 +1,11 @@
 package racingcar;
 
-import static util.Extractor.extractCarList;
+import static util.Extractor.parseInput;
 import static util.Input.getInput;
 import static util.Race.startRacing;
 
 import dto.RacingInput;
+import dto.RacingParam;
 import repository.CarRepository;
 import util.Output;
 
@@ -15,11 +16,10 @@ public class Application {
 
         // 입력 기능
         RacingInput input = getInput();
+        RacingParam racingParam = parseInput(input);
 
-        CarRepository.cars = extractCarList(input.cars());
-        CarRepository.repeatCount = Integer.parseInt(input.repeatCount());
+        CarRepository.saveCarsAndRepeatCount(racingParam);
 
-        // 입출력 기능 리팩토링중
         startRacing(CarRepository.repeatCount);
 
         Output.printRacingResult();
