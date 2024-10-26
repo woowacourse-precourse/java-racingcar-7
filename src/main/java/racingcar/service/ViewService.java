@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.controller.ViewController;
+import racingcar.util.Utils;
 
 public class ViewService {
     private static ViewService viewService;
@@ -12,6 +13,11 @@ public class ViewService {
     }
     public String[] inputValidation(String carName){
         String[] carNames = carName.split(",");
+        for (String name : carNames) {
+            if(name.length() > Utils.MAX_NAME_SIZE){
+                throw new IllegalArgumentException();
+            }
+        }
         return carNames;
     }
 
