@@ -15,4 +15,12 @@ public class Racing {
             i++;
         }
     }
+
+    public void runRound() {
+        for (Car car : cars) {
+            car.addDist();
+        }
+        Output.printRoundResult(cars);
+        System.out.println();
+    }
 }
