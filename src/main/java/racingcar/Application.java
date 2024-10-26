@@ -34,13 +34,14 @@ public class Application {
         }
     }
 
-    public static void seperateCarNames(String carNames) {
+    public static String[] seperateCarNames(String carNames) {
         String[] carName = carNames.strip().split("\\s*,\\s*");
         isCarNameFiveCharsOrLess(carName);
         isCarNameDuplicate(carName);
         for (int i = 0; i < carName.length; i++) {
             car.put(carName[i], 0);
         }
+        return carName;
     }
 
     public static void isCarNameFiveCharsOrLess(String[] carName) {
@@ -93,7 +94,21 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
+    public static void runGame(String[] carName, int gameCount) {
+        for (int i = 0; i < gameCount; i++) {
+            for (int j = 0; j < carName.length; j++) {
+                int randomNumber = makeRandomNumber();
+                moveOrStop(carName[j], randomNumber);
+            }
+        }
+    }
 
+    public static void main(String[] args) {
+        printInputMessageCarName();
+        String carNames = inputCarName();
+        String[] carName = seperateCarNames(carNames);
+        printInputMessageGameCount();
+        int gameCount = inputGameCount();
+        runGame(carName, gameCount);
     }
 }
