@@ -46,6 +46,18 @@ class RacingCarTraceTest {
     }
 
     @Test
+    void traceToString_테스트() {
+        String trace = racingCarTrace.traceToString();
+
+        assertEquals("abc : \nbcd : \n\n", trace);
+
+        racingCarTrace.forwardOrStop(rc1, 4);
+        trace = racingCarTrace.traceToString();
+
+        assertEquals("abc : -\nbcd : \n\n", trace);
+    }
+
+    @Test
     void 레이싱카_넣은순서대로_나오는지_확인() {
         RacingCar rc3 = new RacingCar("dfdf");
         RacingCar rc4 = new RacingCar("bc");
