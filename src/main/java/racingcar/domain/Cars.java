@@ -24,11 +24,15 @@ public class Cars {
         carList = List.of(carArray);
     }
 
-    private void carsMove(){
+    public void carsMove(){
         for(int i = startIndex; i < carList.size(); i++){
             Car car = carList.get(i);
             car.carMove();
         }
+    }
+
+    public int getCarsSize(){
+        return carList.size();
     }
 
 }
