@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -10,14 +11,15 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class RacingGame {
     private static final int TRY_THRESHOLD = 4;
     
-    private List<String> cars;
-    private int[] positions;
+    private List<Car> cars;
     private int gameCount;
     private int tryCount;
     
     public RacingGame(List<String> cars, int gameCount) {
-        this.cars = cars;
-        this.positions = new int[cars.size()];
+        this.cars = new ArrayList<Car>(cars.size());
+        for (String name : cars) {
+            this.cars.add(new Car(name));
+        }
         this.gameCount = gameCount;
     }
     
@@ -38,19 +40,19 @@ public class RacingGame {
             throw new RuntimeException("이미 게임이 끝났으나 다음 단계를 시도하려 했습니다!");
         }
         
-        for (int i = 0; i < positions.length; i++) {
+        for (int i = 0; i < cars.size(); i++) {
             if (pickNumberInRange(0, 9) >= TRY_THRESHOLD) {
-                positions[i]++;
+                cars.get(i).distance++;
             }
         }
         tryCount++;
     }
     
     /**
-     * 현재 상태의 각 자동차별 위치를 반환합니다.
-     * @return 각 자동차별 위치가 기록된 정수 리스트
+     * 현재 상태의 각 자동차 정보를 반환합니다.
+     * @return 현재 각 자동차별 정보가 담긴 리스트
      */
-    public int[] getPositions() {
-        return positions.clone();
+    public List<Car> getCarInfo() {
+        return cars;
     }
 }
