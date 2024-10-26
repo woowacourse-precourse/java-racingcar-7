@@ -2,11 +2,10 @@ package racingcar.car;
 
 import static racingcar.car.Constants.EMPTY_STRING;
 import static racingcar.car.Constants.MAX_LENGTH_OF_NAME;
+import static racingcar.car.Constants.MOVEABLE_MIN_NUMBER;
 import static racingcar.car.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
 import static racingcar.car.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
-
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
+import static racingcar.utils.RandomUtils.getRandomValue;
 
 public class Car implements Comparable<Car> {
 
@@ -28,15 +27,16 @@ public class Car implements Comparable<Car> {
     }
 
     public void attemptMove() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
-            moveCount++;
+        int randomNumber = getRandomValue();
+
+        if (isMoveableNumber(randomNumber)) {
+            move();
         }
     }
 
     public void attemptMove(int randomNumber) {
-        if (randomNumber >= 4) {
-            moveCount++;
+        if (isMoveableNumber(randomNumber)) {
+            move();
         }
     }
 
@@ -64,6 +64,14 @@ public class Car implements Comparable<Car> {
         if (name.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
+    }
+
+    private static boolean isMoveableNumber(int randomNumber) {
+        return randomNumber >= MOVEABLE_MIN_NUMBER;
+    }
+
+    private void move() {
+        moveCount++;
     }
 
 
