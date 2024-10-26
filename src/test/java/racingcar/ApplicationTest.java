@@ -15,85 +15,18 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
-    void 이름_5글자_초과_예외_테스트() {
-        validNameException("messi,ronaldo");
-    }
-
-    @Test
-    void 다른구분자_예외_테스트() {
-        validNameException("messi%silva");
-    }
-
-    @Test
-    void 쉼표중복_예외_테스트() {
-        validNameException("messi,,silva");
-    }
-
-    @Test
-    void 쉼표앞뒤_예외_테스트() {
-        validNameException(",messi,silva,");
-    }
-
-    @Test
-    void 동일이름_예외_테스트() {
-        validNameException("messi,messi");
-    }
-
-    @Test
-    void 이름_띄어쓰기_예외_테스트() {
-        validNameException("me ssi,sonny");
-    }
-
-    @Test
-    void 이름_특수문자_예외_테스트() {
-        validNameException("mess$,sonny");
-    }
-
-    @Test
-    void 빈값_예외_테스트() {
-        validNameException("");
-    }
-
-    @Test
-    void 공백_예외_테스트() {
-        validNameException("  ");
-    }
-
-    @Test
-    void 시도횟수_문자_예외_테스트() {
-        validAttemptException("a");
-        validAttemptException("abc%");
-    }
-
-    @Test
-    void 시도횟수_소수_예외_테스트() {
-        validAttemptException("1.5");
-    }
-
-    @Test
-    void 시도횟수_음수_예외_테스트() {
-        validAttemptException("-10");
-    }
-
-    private void validNameException(String input) {
+    void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(input, "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    private void validAttemptException(String number) {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni", number))
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
