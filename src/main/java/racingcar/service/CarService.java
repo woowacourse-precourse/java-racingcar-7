@@ -27,5 +27,10 @@ public class CarService {
     }
 
     public void advanceCar(List<Car> cars, int num) {
+        for (Car car : cars) {
+            if(num >= Utils.ADVANCE_STANDARD){
+                car.advanceCar();
+            }
+        }
     }
 }

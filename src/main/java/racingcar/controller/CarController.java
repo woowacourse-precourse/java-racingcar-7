@@ -23,7 +23,7 @@ public class CarController {
     public void advanceCar(List<Car> cars) {
         for (int i = 0; i < Utils.getAdvaceCount(); i++) {
             int num = Utils.getRandom();
-            carService.advanceCar(cars,num);
+            carService.advanceCar(cars, num);
         }
     }
 }
