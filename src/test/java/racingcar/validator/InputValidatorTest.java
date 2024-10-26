@@ -1,9 +1,7 @@
 package racingcar.validator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +17,7 @@ class InputValidatorTest {
         final List<String> carNames = InputValidator.validateCarNameInput(input);
 
         //then
-        assertThat(carNames).contains("pobi").contains("woni").contains("jun");
+        Assertions.assertThat(carNames).contains("pobi").contains("woni").contains("jun");
     }
 
     @Test
@@ -29,11 +27,12 @@ class InputValidatorTest {
         final String input = "";
 
         //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        final IllegalArgumentException exception = org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class,
                 () -> InputValidator.validateCarNameInput(input));
 
         //then
-        assertThat(exception.getMessage()).isEqualTo("경주할 자동차의 이름을 입력해 주세요.");
+        Assertions.assertThat(exception.getMessage()).isEqualTo("경주할 자동차의 이름을 입력해 주세요.");
     }
 
     @Test
@@ -42,12 +41,10 @@ class InputValidatorTest {
         //given
         final String input = "a, ,c";
 
-        //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateCarNameInput(input));
-
-        //then
-        assertThat(exception.getMessage()).isEqualTo("이름을 지정하지 않은 자동차가 있습니다.");
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNameInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("이름을 지정하지 않은 자동차가 있습니다.");
     }
 
     @Test
@@ -56,12 +53,10 @@ class InputValidatorTest {
         //given
         final String input = "abcdef, i, j";
 
-        //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateCarNameInput(input));
-
-        //then
-        assertThat(exception.getMessage()).isEqualTo("자동차의 이름은 5자 이하로 설정해 주세요.");
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNameInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차의 이름은 5자 이하로 설정해 주세요.");
     }
 
     @Test
@@ -70,12 +65,10 @@ class InputValidatorTest {
         //given
         final String input = "jo,jo,ha";
 
-        //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateCarNameInput(input));
-
-        //then
-        assertThat(exception.getMessage()).isEqualTo("중복된 자동차 이름이 존재합니다.");
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateCarNameInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 자동차 이름이 존재합니다.");
     }
 
     @Test
@@ -88,7 +81,7 @@ class InputValidatorTest {
         final int roundCount = InputValidator.validateRoundCountInput(input);
 
         //then
-        assertThat(roundCount).isEqualTo(5);
+        Assertions.assertThat(roundCount).isEqualTo(5);
     }
 
     @Test
@@ -97,12 +90,10 @@ class InputValidatorTest {
         //given
         final String input = "";
 
-        //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateRoundCountInput(input));
-
-        //then
-        assertThat(exception.getMessage()).isEqualTo("시도할 횟수를 입력해 주세요.");
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRoundCountInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도할 횟수를 입력해 주세요.");
     }
 
     @Test
@@ -111,11 +102,9 @@ class InputValidatorTest {
         //given
         final String input = "a";
 
-        //when
-        final IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateRoundCountInput(input));
-
-        //then
-        assertThat(exception.getMessage()).isEqualTo("양의 정수를 입력해 주세요.");
+        //when & then
+        Assertions.assertThatThrownBy(() -> InputValidator.validateRoundCountInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("양의 정수를 입력해 주세요.");
     }
 }

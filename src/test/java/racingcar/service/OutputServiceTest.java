@@ -1,9 +1,8 @@
 package racingcar.service;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -30,7 +29,7 @@ class OutputServiceTest {
         String resultMessage = outputService.generateResultMessage(results);
 
         //then
-        assertThat(resultMessage).contains("a : ", "b : ", "c : ");
+        Assertions.assertThat(resultMessage).contains("a : ", "b : ", "c : ");
     }
 
     @Test
@@ -49,6 +48,6 @@ class OutputServiceTest {
         String winnerMessage = outputService.generateWinnerMessage(cars);
 
         //then
-        assertThat(winnerMessage).isNotEmpty();
+        Assertions.assertThat(winnerMessage).isNotEmpty();
     }
 }

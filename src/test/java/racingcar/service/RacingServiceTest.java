@@ -1,9 +1,8 @@
 package racingcar.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -32,8 +31,8 @@ class RacingServiceTest {
         List<Record> firstRecords = firstResult.getRecords();
         Record firstRecord = firstRecords.getFirst();
 
-        assertThat(results).hasSize(roundCount);
-        assertThat(firstResult.getRound()).isEqualTo(1);
-        assertThat(firstRecord.getCarName()).isEqualTo("a");
+        Assertions.assertThat(results).hasSize(roundCount);
+        Assertions.assertThat(firstResult.getRound()).isEqualTo(1);
+        Assertions.assertThat(firstRecord.getCarName()).isEqualTo("a");
     }
 }
