@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import java.util.List;
+import java.util.Map;
 import racingcar.domain.Car;
 import racingcar.domain.GameStatus;
+import racingcar.domain.Message;
 import racingcar.service.GameService;
 import racingcar.service.Validator;
 import racingcar.view.GameView;
@@ -25,12 +28,15 @@ public class GameController {
         Validator.isTryCountBlank(tryCountStr);
         Validator.isTryCountPositive(tryCount);
 
-        for (String carName : carNameArray) {
-            Car car = new Car(carName.trim(), 0);
-            gameStatus.addCar(car);
+        gameService.saveCarName(gameStatus, carNameArray);
+
+        List<Map<String, String>> updatedCarsNameAndPosition = gameService.progressGame(gameStatus, tryCount);
+
+        System.out.println(Message.resultMessage());
+        for (Map<String, String> updatedPosition : updatedCarsNameAndPosition) {
+            gameView.displayCarPosition(updatedPosition);
+            System.out.println();
         }
-
-        gameService.progressGame(gameStatus, tryCount);
-
     }
 }
+

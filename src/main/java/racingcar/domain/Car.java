@@ -21,5 +21,8 @@ public class Car {
         return position;
     }
 
+    public String positionToString() {
+        return "-".repeat(position);
+    }
 }
 

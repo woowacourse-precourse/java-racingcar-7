@@ -4,6 +4,7 @@ public class Message {
 
     private static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
+    private static final String RESULT_MESSAGE = "실행 결과";
 
     private static final String INPUT_BLANK_ERROR = "입력값이 존재하지 않습니다.";
     private static final String CAR_NAME_LENGTH_ERROR = "이름은 1자 이상 5자 이하로 입력해야 합니다.";
@@ -38,6 +39,10 @@ public class Message {
 
     public static String tryCountInputError() {
         return TRY_COUNT_INPUT_ERROR;
+    }
+
+    public static String resultMessage() {
+        return RESULT_MESSAGE;
     }
 
 }
