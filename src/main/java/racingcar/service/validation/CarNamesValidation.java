@@ -2,6 +2,13 @@ package racingcar.service.validation;
 
 public class CarNamesValidation {
 
+    public static void validateAllInput(String input){
+        validateEmpty(input);
+        validateNull(input);
+        validateDelimiter(input);
+        validateBetweenDelimiter(input);
+    }
+
     public static void validateEmpty(String input) {
         if (input.isEmpty()){
             throw new IllegalArgumentException("[ERROR] 자동차 이름들이 입력되지 않았습니다");
@@ -11,6 +18,13 @@ public class CarNamesValidation {
     public static void validateNull(String input) {
         if (input == null) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름들이 입력되지 않았습니다");
+        }
+    }
+
+    public static void validateDelimiter(String input) {
+        // 쉼표(,)로 나누었을 때, 쉼표 이외의 문자가 포함되어 있으면 예외 처리
+        if (!input.replaceAll(" ","").matches("[a-zA-Z,]+")) {
+            throw new IllegalArgumentException("[ERROR] 구분자는 쉼표(,)만 사용 가능합니다");
         }
     }
 
@@ -27,11 +41,9 @@ public class CarNamesValidation {
         }
     }
 
-    public static void validateDelimiter(String input) {
-        // 쉼표(,)로 나누었을 때, 쉼표 이외의 문자가 포함되어 있으면 예외 처리
-        if (!input.matches("[a-zA-Z,]+")) {
-            throw new IllegalArgumentException("[ERROR] 구분자는 쉼표(,)만 사용 가능합니다");
-        }
+    public static void validateCarName(String carName){
+        validateOver(carName);
+        validateEng(carName);
     }
 
     public static void validateOver(String carName) {

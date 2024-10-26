@@ -2,6 +2,12 @@ package racingcar.service.validation;
 
 public class TimesValidation {
 
+    public static void validateAllInput(final String input){
+        validateEmpty(input);
+        validateNull(input);
+        validateCharacter(input);
+    }
+
     public static void validateEmpty(final String input) {
         if (input.isEmpty()){
             throw new IllegalArgumentException("[ERROR] 시도 횟수가 입력되지 않았습니다");
