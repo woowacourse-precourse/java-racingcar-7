@@ -5,6 +5,9 @@ public class Validator {
         if(name.length()>5){
             throw new IllegalArgumentException("이름은 5자 이하입니다.");
         }
+        if(name.isEmpty()){
+            throw new IllegalArgumentException("빈문자열입니다.");
+        }
     }
 
     public static void validateTryNumber(String tryNumber){

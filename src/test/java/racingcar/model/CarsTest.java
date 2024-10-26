@@ -16,8 +16,17 @@ public class CarsTest {
     }
 
     @Test
-    void 자동차_등록_실페(){
+    void 자동차_등록_실패(){
         List<String> carNames = Arrays.asList("CarA", "CarB", "CarCDE");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Cars.register(carNames);
+        });
+    }
+
+    @Test
+    void 자동차_등록_실패2(){
+        List<String> carNames = Arrays.asList("");
 
         assertThrows(IllegalArgumentException.class, () -> {
             Cars.register(carNames);
