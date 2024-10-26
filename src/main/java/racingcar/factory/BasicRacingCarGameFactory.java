@@ -3,6 +3,7 @@ package racingcar.factory;
 
 import racingcar.service.RacingCarGame;
 import racingcar.util.generator.BasicRacingCarGenerator;
+import racingcar.util.generator.BasicRacingCarRandomGenerator;
 import racingcar.util.generator.BasicRacingCarWinnerGenerator;
 import racingcar.util.parser.BasicRacingCarNameParser;
 import racingcar.util.transporter.BasicRacingCarTransporter;
@@ -15,7 +16,8 @@ public class BasicRacingCarGameFactory {
                 new BasicRacingCarValidator(),
                 new BasicRacingCarGenerator(),
                 new BasicRacingCarTransporter(),
-                new BasicRacingCarWinnerGenerator()
+                new BasicRacingCarWinnerGenerator(),
+                new BasicRacingCarRandomGenerator()
         );
     }
 }
