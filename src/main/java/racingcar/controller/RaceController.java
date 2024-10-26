@@ -26,5 +26,6 @@ public class RaceController {
             carRacing.go();
             roundResult(carRacing);
         }
+        winnerMessage(carRacing.winnerList());
     }
 }

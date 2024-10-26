@@ -18,4 +18,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void winnerMessage(String winnerList) {
+        System.out.println("최종 우승자 : " + winnerList);
+    }
 }
