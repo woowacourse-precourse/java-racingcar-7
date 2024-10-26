@@ -34,6 +34,27 @@ public class RacingGameService {
         return Integer.parseInt(tryCount);
     }
 
+    public List<RacingCar> getWinners(List<RacingCar> racingCars) {
+        List<RacingCar> winners = new ArrayList<>();
+
+        // 가장 높은 위치를 찾기
+        int maxPosition = 0;
+        for (RacingCar car : racingCars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+
+        // 가장 높은 위치에 있는 자동차들 찾기
+        for (RacingCar car : racingCars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
+
     private String[] processCarName(String carNames) {
         String[] parseCarName = carNames.split(",");
         // 이름에서 공백 제거
