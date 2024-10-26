@@ -4,12 +4,12 @@ import racingcar.model.generator.NumberGenerator;
 
 public class Car {
 
-    private final String name;
+    private final CarName carName;
     private int position = 0;
     private final NumberGenerator numberGenerator;
 
     public Car(String name, NumberGenerator numberGenerator) {
-        this.name = new CarName(name).getName();
+        this.carName = new CarName(name);
         this.numberGenerator = numberGenerator;
     }
 
@@ -24,6 +24,6 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 }

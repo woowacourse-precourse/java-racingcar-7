@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class CarName {
 
     private final String name;
-    private final int NAME_LIMIT_LENGTH = 5;
-    private final String regex = "[^a-zA-Z]";
+    private static final int NAME_LIMIT_LENGTH = 5;
+    private static final String engilshRegex = "[^a-zA-Z]";
 
     public CarName(String name) {
         this.name = name;
@@ -26,7 +26,7 @@ public class CarName {
     }
 
     private void validateNameNonEnglish() {
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(engilshRegex);
         Matcher matcher = pattern.matcher(name);
         if (matcher.find()) {
             throw new IllegalArgumentException("이름에는 영어를 제외한 다른 문자가 들어갈 수 없습니다!");
