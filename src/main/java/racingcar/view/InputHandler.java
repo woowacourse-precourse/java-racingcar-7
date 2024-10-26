@@ -22,7 +22,10 @@ public class InputHandler {
         List<String> carNameList = new ArrayList<>();
         carNameList.addAll(Arrays.asList(carNames.split(",")));
         for (String carName : carNameList) {
-            if (!carName.matches("[a-zA-Z0-9]+") || carName.length() > 5) {
+            if (carName.isEmpty() || !carName.matches("[a-zA-Z0-9]+")) {
+                throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+            }
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
             }
         }

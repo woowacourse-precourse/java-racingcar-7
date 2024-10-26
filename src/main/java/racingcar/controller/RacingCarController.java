@@ -22,6 +22,7 @@ public class RacingCarController {
         String carNames = Console.readLine();
         InputHandler.promptForAttemptCount();
         String countString = Console.readLine();
+        InputHandler.validateCarNames(carNames);
         InputHandler.validateAttemptCount(countString);
         int attemptCount = Integer.parseInt(countString);
 
