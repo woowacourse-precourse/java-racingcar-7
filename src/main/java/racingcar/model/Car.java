@@ -13,15 +13,15 @@ public class Car {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getMove() {
         return move;
     }
 
-    public void setMove(int move) {
+    private void setMove(int move) {
         this.move = move;
+    }
+
+    public void addMove(Car car) {
+        car.setMove(car.getMove() + 1);
     }
 }
