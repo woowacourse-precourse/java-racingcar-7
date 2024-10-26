@@ -8,10 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static view.message.ErrorMessage.SHAPE_MESSAGE;
-
 public class InputView {
-
     private static final String CARS_REGEX = "^(\\s*[a-zA-Z]+\\s*)(,\\s*[a-zA-Z]+\\s*)*$";
     private static final String COUNT_REGEX = "^[0-9]+$";
 

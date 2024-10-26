@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameService {
-
     private static final int MOVE_NUMBER = 4;
 
     private List<RacingCar> racingCars;

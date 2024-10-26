@@ -5,7 +5,6 @@ import racingcar.domain.RacingCar;
 import java.util.List;
 
 public class OutputView {
-
     private final static String EXECUTION_RESULT = "실행 결과";
     private final static String FINAL_WINNER = "최종 우승자 : ";
 
