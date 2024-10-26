@@ -3,16 +3,22 @@ package racingcar;
 import java.util.List;
 import model.Car;
 import model.CarsHandler;
+import model.InputHandler;
 import view.InputView;
 import view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
 
-        // 1. 입력 & 2. 구분
+        // 1. 입력
         InputView inputView = new InputView();
-        List<String> carNames = inputView.getCarNames();
-        int moveCount = inputView.getMoveCount();
+        String inputCarNames = inputView.getCarNames();
+        String inputMoveCount = inputView.getMoveCount();
+
+        // 2. 구분 및 에러 처리
+        InputHandler inputHandler = new InputHandler();
+        String[] carNames = inputHandler.splitCarNames(inputCarNames);
+        int moveCount = inputHandler.toInt(inputMoveCount);
 
         // 3. 자동차 객체 생성
         CarsHandler carsHandler = new CarsHandler(carNames);

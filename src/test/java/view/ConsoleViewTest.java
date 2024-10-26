@@ -1,6 +1,0 @@
-package view;
-
-class ConsoleViewTest {
-
-
-}

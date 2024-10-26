@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public class CarsHandler {
 
     private final List<Car> cars;
-    private final List<String> carNames;
+    private final String[] carNames;
 
-    public CarsHandler(List<String> carNames) {
-        this.cars = new ArrayList<>(carNames.size());
-        this.carNames = new ArrayList<>(carNames);
+    public CarsHandler(String[] carNames) {
+        this.cars = new ArrayList<>(carNames.length);
+        this.carNames = carNames;
 
         setCars();
     }

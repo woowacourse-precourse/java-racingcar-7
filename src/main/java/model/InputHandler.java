@@ -1,21 +1,25 @@
 package model;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class InputHandler {
 
-    public List<String> splitCarNames(String input) {
-        // TODO: 에러 처리
-        return Arrays.asList(input.split(","));
+    public String[] splitCarNames(String input) {
+        String regex = "^([a-zA-Z0-9]{1,5})(,[a-zA-Z0-9]{1,5})*$";
+        checkInput(input, regex);
+
+        return input.split(",");
     }
 
     public int toInt(String input) {
-        // TODO: 양수만 받아야하는 등의 추가적인 에러처리
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid input");
+        String regex = "^([0-9]+)$";
+        checkInput(input, regex);
+
+        return Integer.parseInt(input);
+    }
+
+    private void checkInput(String input, String regex) {
+        boolean isMatch = input.matches(regex);
+        if (!isMatch) {
+            throw new IllegalArgumentException();
         }
     }
 
