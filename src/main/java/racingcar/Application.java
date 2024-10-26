@@ -14,7 +14,7 @@ public class Application {
         
         int attempts = getAttempts(); // 시도할 횟수 입력 및 검증
         System.out.println("입력된 시도 횟수: " + attempts); // 입력된 시도 횟수 출력 (디버깅 용도)
-   
+       
         List<Car> cars = initializeCars(carNames); // 자동차 객체 생성 및 초기화
         System.out.println("초기화된 자동차: " + cars); // 초기화된 자동차 출력 (디버깅 용도)
         
