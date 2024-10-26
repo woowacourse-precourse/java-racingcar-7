@@ -63,9 +63,7 @@ public class Application {
 
         List<Integer> maxIndices = getMaxIndices(moves, maxValue);
 
-        String result = String.join(", ", maxIndices.stream()
-                .map(index -> cars.get(index))
-                .collect(Collectors.toList()));
+        String result = getResult(cars, maxIndices);
 
         System.out.println("최종 우승자 : " + result);
     }
@@ -78,5 +76,12 @@ public class Application {
             }
         }
         return maxIndices;
+    }
+
+    private static String getResult(List<String> cars, List<Integer> maxIndices) {
+        String result = String.join(", ", maxIndices.stream()
+                .map(index -> cars.get(index))
+                .collect(Collectors.toList()));
+        return result;
     }
 }
