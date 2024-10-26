@@ -26,6 +26,6 @@ public class GameRepository {
     }
 
     public List<Game> findAll() {
-        return new ArrayList<>(games.values()); 
+        return new ArrayList<>(games.values());
     }
 }
