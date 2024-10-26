@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import java.util.List;
@@ -25,5 +26,15 @@ class ParserTest {
                 () -> parser.parse(input)
         );
         assertEquals(TOO_LONG_VALUE.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    void 빈_문자열_예외처리() {
+        String input = "자동차1,, 자동차3";
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parse(input)
+        );
+        assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
     }
 }
