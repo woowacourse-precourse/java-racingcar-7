@@ -15,10 +15,18 @@ public class Application {
 
     public void setCar(String[] carNames) {
         for (String name : carNames) {
-            cars.add(new RacingCar(name.trim())); 
+            cars.add(new RacingCar(name.trim()));
         }
     }
 
+    public void startGame(){
+        for(var car : cars) {
+            int canGo = Randoms.pickNumberInRange(0, 9);
+            if (canGo >= 4) {
+                ++car.length;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -27,5 +35,10 @@ public class Application {
         String carNameInput = Console.readLine();  //사용자 입력
         String[] carNames = racingGame.setCarName(carNameInput);
         racingGame.setCar(carNames);
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String numberOfGames = Console.readLine();
+        int gameCount = Integer.parseInt(numberOfGames);
+
     }
 }
