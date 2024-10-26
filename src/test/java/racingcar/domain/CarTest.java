@@ -26,16 +26,28 @@ class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("자동차는 전진 할 수 있다.")
+    @DisplayName("자동차는 전진할 수 있다.")
     @Test
     void 자동차_전진_테스트() {
         Car car = new Car("전진");
-        car.forward();
+        car.moveForwardIfDigitAboveThreshold(10);
 
         assertThat(car.getPosition()).isEqualTo(1);
-        car.forward();
-        car.forward();
+        car.moveForwardIfDigitAboveThreshold(10);
+        car.moveForwardIfDigitAboveThreshold(10);
 
         assertThat(car.getPosition()).isEqualTo(3);
+    }
+
+    @DisplayName("자동차는 기준 이상의 값이 나왔을 때 전진할 수 있다.")
+    @Test
+    void 자동차_전진_테스트1() {
+        Car car = new Car("랜덤");
+
+        car.moveForwardIfDigitAboveThreshold(10);
+        assertThat(car.getPosition()).isEqualTo(1);
+
+        car.moveForwardIfDigitAboveThreshold(0);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
