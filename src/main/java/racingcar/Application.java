@@ -2,16 +2,18 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Application {
     public static void main(String[] args) {
 
         System.out.println("자동차의 수를 입력해주세요");
         int countCars = Integer.parseInt(Console.readLine());
 
-        System.out.println("자동차의 이름을 쉼표(.)로 구분해 입력해주세요 (5자 이하)");
+        System.out.println("자동차의 이름을 쉼표(,)로 구분해 입력해주세요 (5자 이하)");
         String[] carNames = (Console.readLine()).split(",");
 
-        if (carNames.length() != countCars) {
+        if (carNames.length != countCars) {
             throw new IllegalArgumentException("자동차의 수와 이름의 개수가 일치하지 않습니다");
         }
 
@@ -27,8 +29,9 @@ public class Application {
         }
 
         System.out.println("이동횟수를 정수로 입력해주세요");
+        int moveCount;
         try {
-            int moveCount = Integer.parseInt(Console.readLine());
+            moveCount = Integer.parseInt(Console.readLine());
 
             if (moveCount < 0) {
                 throw new IllegalArgumentException("0이상의 값을 입력해주세요");
@@ -36,6 +39,19 @@ public class Application {
 
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수값을 입력해주세요");
+
+        }
+
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < moveCount; i++) {
+
+            System.out.println((i + 1) + "회차 결과");
+
+            for (int c = 0; c < countCars; c++) {
+                cars[c].move(pickNumberInRange(0, 9));
+                System.out.println(cars[c].getPosition());
+            }
 
         }
 
