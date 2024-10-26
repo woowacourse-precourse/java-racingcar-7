@@ -1,11 +1,11 @@
-package racingcar.controller;
+package racingcar.racingapp.controller;
 
-import racingcar.business.CarRacingService;
-import racingcar.object.value.CarNames;
-import racingcar.object.value.CarRacingResult;
-import racingcar.object.value.TotalLapCount;
-import racingcar.view.RacingInput;
-import racingcar.view.RacingOutput;
+import racingcar.racingapp.business.CarRacingService;
+import racingcar.racingapp.model.value.vo.CarNames;
+import racingcar.racingapp.model.value.vo.CarRacingResult;
+import racingcar.racingapp.model.value.vo.TotalLapCount;
+import racingcar.racingapp.view.RacingInput;
+import racingcar.racingapp.view.RacingOutput;
 
 public class CarRacingController {
 

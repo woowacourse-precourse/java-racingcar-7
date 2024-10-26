@@ -1,6 +1,6 @@
-package racingcar.object.value;
+package racingcar.racingapp.model.value.vo;
 
-import racingcar.object.enums.RaceMaxCounts;
+import racingcar.racingapp.model.value.enums.RaceMaxCounts;
 
 public record Mileage(Integer distance) implements Comparable<Mileage> {
 

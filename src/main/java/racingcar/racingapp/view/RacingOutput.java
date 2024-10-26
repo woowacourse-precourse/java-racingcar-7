@@ -1,9 +1,9 @@
-package racingcar.view;
+package racingcar.racingapp.view;
 
 import java.util.stream.Collectors;
-import racingcar.object.value.CarName;
-import racingcar.object.value.RaceRecord;
-import racingcar.object.value.Winners;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.RaceRecord;
+import racingcar.racingapp.model.value.vo.Winners;
 
 public class RacingOutput {
 

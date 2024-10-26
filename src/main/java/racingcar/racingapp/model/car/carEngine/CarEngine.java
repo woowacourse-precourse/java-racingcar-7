@@ -1,4 +1,4 @@
-package racingcar.object.carEngine;
+package racingcar.racingapp.model.car.carEngine;
 
 public interface CarEngine {
 

@@ -1,8 +1,8 @@
-package racingcar.object;
+package racingcar.racingapp.model.car;
 
 import java.util.Comparator;
 import java.util.List;
-import racingcar.object.value.CarRecord;
+import racingcar.racingapp.model.value.vo.CarRecord;
 
 public class Cars {
 

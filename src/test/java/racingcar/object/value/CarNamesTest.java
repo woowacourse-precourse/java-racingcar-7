@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.CarNames;
 
 class CarNamesTest {
 

@@ -5,12 +5,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import racingcar.object.carEngine.AlwaysOnDriveCarEngine;
 import racingcar.object.carEngine.BrokenCarEngine;
-import racingcar.object.carEngine.CarEngine;
-import racingcar.object.carEngine.RegulationsCarEngine;
-import racingcar.object.enums.DriveResult;
-import racingcar.object.value.CarName;
-import racingcar.object.value.CarRecord;
-import racingcar.object.value.Mileage;
+import racingcar.racingapp.model.car.Car;
+import racingcar.racingapp.model.car.carEngine.CarEngine;
+import racingcar.racingapp.model.car.carEngine.RegulationsCarEngine;
+import racingcar.racingapp.model.value.enums.DriveResult;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.CarRecord;
+import racingcar.racingapp.model.value.vo.Mileage;
 
 class CarTest {
 

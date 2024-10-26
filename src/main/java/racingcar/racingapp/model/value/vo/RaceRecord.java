@@ -1,4 +1,4 @@
-package racingcar.object.value;
+package racingcar.racingapp.model.value.vo;
 
 import java.util.List;
 import java.util.stream.Stream;

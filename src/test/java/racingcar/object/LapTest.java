@@ -6,9 +6,12 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.object.carEngine.AlwaysOnDriveCarEngine;
 import racingcar.object.carEngine.BrokenCarEngine;
-import racingcar.object.value.CarName;
-import racingcar.object.value.LapRecord;
-import racingcar.object.value.Mileage;
+import racingcar.racingapp.model.car.Car;
+import racingcar.racingapp.model.car.Cars;
+import racingcar.racingapp.model.race.Lap;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.LapRecord;
+import racingcar.racingapp.model.value.vo.Mileage;
 
 class LapTest {
 

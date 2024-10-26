@@ -1,7 +1,7 @@
-package racingcar.object.value;
+package racingcar.racingapp.model.value.vo;
 
 import java.util.List;
-import racingcar.object.enums.RaceMaxCounts;
+import racingcar.racingapp.model.value.enums.RaceMaxCounts;
 
 public record CarNames(List<CarName> carNames) {
 

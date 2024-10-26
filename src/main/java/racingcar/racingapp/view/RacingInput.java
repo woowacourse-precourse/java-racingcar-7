@@ -1,9 +1,9 @@
-package racingcar.view;
+package racingcar.racingapp.view;
 
 import racingcar.common.view.ConsoleInput;
-import racingcar.object.value.CarName;
-import racingcar.object.value.CarNames;
-import racingcar.object.value.TotalLapCount;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.CarNames;
+import racingcar.racingapp.model.value.vo.TotalLapCount;
 
 public class RacingInput {
 

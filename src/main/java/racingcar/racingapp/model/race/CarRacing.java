@@ -1,10 +1,11 @@
-package racingcar.object;
+package racingcar.racingapp.model.race;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.object.value.LapRecord;
-import racingcar.object.value.RaceRecord;
-import racingcar.object.value.TotalLapCount;
+import racingcar.racingapp.model.car.Cars;
+import racingcar.racingapp.model.value.vo.LapRecord;
+import racingcar.racingapp.model.value.vo.RaceRecord;
+import racingcar.racingapp.model.value.vo.TotalLapCount;
 
 public class CarRacing {
 

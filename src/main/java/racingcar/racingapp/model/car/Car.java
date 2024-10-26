@@ -1,10 +1,10 @@
-package racingcar.object;
+package racingcar.racingapp.model.car;
 
-import racingcar.object.carEngine.CarEngine;
-import racingcar.object.enums.DriveResult;
-import racingcar.object.value.CarName;
-import racingcar.object.value.CarRecord;
-import racingcar.object.value.Mileage;
+import racingcar.racingapp.model.car.carEngine.CarEngine;
+import racingcar.racingapp.model.value.enums.DriveResult;
+import racingcar.racingapp.model.value.vo.CarName;
+import racingcar.racingapp.model.value.vo.CarRecord;
+import racingcar.racingapp.model.value.vo.Mileage;
 
 public class Car {
 

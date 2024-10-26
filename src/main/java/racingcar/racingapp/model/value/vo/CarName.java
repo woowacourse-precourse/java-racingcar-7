@@ -1,4 +1,4 @@
-package racingcar.object.value;
+package racingcar.racingapp.model.value.vo;
 
 public record CarName(String name) implements Comparable<CarName> {
 

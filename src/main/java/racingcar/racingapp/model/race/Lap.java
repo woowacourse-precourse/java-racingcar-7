@@ -1,6 +1,7 @@
-package racingcar.object;
+package racingcar.racingapp.model.race;
 
-import racingcar.object.value.LapRecord;
+import racingcar.racingapp.model.car.Cars;
+import racingcar.racingapp.model.value.vo.LapRecord;
 
 public class Lap {
 

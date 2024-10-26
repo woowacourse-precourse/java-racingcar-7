@@ -3,6 +3,7 @@ package racingcar.object.value;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import racingcar.racingapp.model.value.vo.CarName;
 
 class CarNameTest {
 
