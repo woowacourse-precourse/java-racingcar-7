@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class IOUtils {
-    public static List<String> parsingInput(String input) {
+    public static List<String> splitInput(String input) {
         var splitInput = input.split(",");
         validateInput(input, splitInput);
         return Arrays.stream(splitInput).toList();
