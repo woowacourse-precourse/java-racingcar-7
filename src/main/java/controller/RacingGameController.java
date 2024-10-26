@@ -1,5 +1,6 @@
 package controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import model.CarList;
 import service.CarService;
@@ -40,5 +41,6 @@ public class RacingGameController {
 
         List<String> winnerList = carService.getWinners();
         outputView.displayWinnerList(winnerList);
+        Console.close();
     }
 }
