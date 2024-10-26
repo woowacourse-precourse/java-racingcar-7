@@ -56,12 +56,11 @@ public class Cars {
 
         int winnerMoveCount = getWinnerMoveCount();
 
-        for (Car car : cars) {
-            if (car.isWinner(winnerMoveCount)) {
-                String winnerName = car.getName();
-                winnerNames.add(winnerName);
-            }
-        }
+        cars.stream()
+                .filter(car -> car.isWinner(winnerMoveCount))
+                .map(Car::getName)
+                .forEach(winnerNames::add);
+
         return winnerNames;
     }
 
@@ -99,9 +98,7 @@ public class Cars {
 
         for (Car car : cars) {
             int moveCount = car.getMoveCount();
-            if (maxMoveCount < moveCount) {
-                maxMoveCount = moveCount;
-            }
+            maxMoveCount = Math.max(maxMoveCount, moveCount);
         }
 
         return maxMoveCount;
