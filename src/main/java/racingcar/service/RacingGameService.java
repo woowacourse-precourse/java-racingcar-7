@@ -13,20 +13,14 @@ public class RacingGameService {
 
     public List<RacingCar> initializeRacingGame(String carNames) {
         validateCarNames(carNames);
-
         String[] parseCarName = processCarName(carNames);
-
         return createRacingCars(parseCarName);
     }
 
     public Integer convertTryCountToInt(String tryCountInString) {
-
         validateNumericInput(tryCountInString);
-
         int tryCount = Integer.parseInt(tryCountInString);
-
         validateTryCount(tryCount);
-
         return tryCount;
     }
 
