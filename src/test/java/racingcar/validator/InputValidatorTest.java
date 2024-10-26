@@ -46,9 +46,13 @@ class InputValidatorTest {
 
         boolean normalInput = inputValidator.NoNameBehindComma("pobi,woni,jun"); //정상적인 입력
         boolean NoNameBehindCommaInput = inputValidator.NoNameBehindComma("pobi,woni,");//쉼표 뒤 이름이 없는 경우
+        boolean NoNameBetweenCommaInput = inputValidator.NoNameBehindComma("pobi,woni,,jun");//쉼표 사이 이름이 없는 경우
+        boolean OnlyCommaInput = inputValidator.NoNameBehindComma(",,,");//쉼표 사이 이름이 없는 경우
 
         Assertions.assertThat(normalInput).isFalse();
         Assertions.assertThat(NoNameBehindCommaInput).isTrue();
+        Assertions.assertThat(NoNameBetweenCommaInput).isTrue();
+        Assertions.assertThat(OnlyCommaInput).isTrue();
 
     }
 

@@ -41,12 +41,33 @@ public class InputValidator {
 
     //쉼표뒤에 이름이 없으면 true, 있으면 false
     public boolean NoNameBehindComma(String input) {
+        int commaCount = countComma(input);
         String[] splitInput = input.split(",");
+        //쉼표 갯수가 이름 갯수보다 많으면 쉼표뒤에 이름이 없음
+        if (commaCount >= splitInput.length || checkEmptyName(splitInput)) {
+            return true;
+        }
+        return false;
+    }
+
+    //이름 배열에 비어있는 이름이 있는지 확인
+    private static boolean checkEmptyName(String[] splitInput) {
         for (String name : splitInput) {
             if (name.isEmpty()) {
                 return true;
             }
         }
         return false;
+    }
+
+    //쉼표 갯수를 세는 메소드
+    private static int countComma(String input) {
+        int commaCount = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ',') {
+                commaCount++;
+            }
+        }
+        return commaCount;
     }
 }
