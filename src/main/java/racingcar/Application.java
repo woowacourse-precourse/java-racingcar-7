@@ -1,7 +1,8 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import racingcar.car.Cars;
+import racingcar.car.RacingCarService;
 import racingcar.view.InputReader;
 import racingcar.view.ResultWriter;
 
@@ -14,18 +15,15 @@ public class Application {
         final int tryCount = reader.readTryCount();
 
         Cars cars = new Cars(carNames);
+        RacingCarService service = new RacingCarService(cars);
+
         writer.writeResultStart();
         for (int i = 0; i < tryCount; i++) {
-            cars.goOrStop(() -> Randoms.pickNumberInRange(0, 9));
-            writer.writeResult(cars);
+            final Cars racedCars = service.race();
+            writer.writeResult(racedCars);
         }
 
-        final List<String> winnerNames = cars.findWinners()
-                .stream()
-                .map(Car::getName)
-                .map(CarName::getContent)
-                .toList();
-
-        writer.writeWinners(winnerNames);
+        final List<String> winners = service.findWinners();
+        writer.writeWinners(winners);
     }
 }
