@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,9 +9,9 @@ import static org.assertj.core.api.Assertions.*;
 public class CarsTest {
     @Test
     void 전체_자동차_이동 () {
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("woni");
-        Car car3 = new Car("jun");
+        Car car1 = new TestCar("pobi", true);
+        Car car2 = new TestCar("woni", false);
+        Car car3 = new TestCar("jun", true);
 
         Cars cars = new Cars(Arrays.asList(car1, car2, car3));
         cars.moveAll();
@@ -21,6 +20,6 @@ public class CarsTest {
 
         assertThat(movedCars)
                 .extracting(Car::getPosition)
-                .containsAnyOf(0, 1);
+                .containsExactly(1, 0, 1);
     }
 }
