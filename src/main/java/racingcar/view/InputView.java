@@ -15,8 +15,7 @@ public class InputView {
         Map<String, Integer> cars = new LinkedHashMap<>();
 
         System.out.println(READ_CAR_NAME_MESSAGE);
-        String buffer = Console.readLine();
-        validateInput(buffer);
+        String buffer = readInput();
 
         String[] carNames = buffer.split(",");
 
@@ -28,13 +27,15 @@ public class InputView {
     }
 
     public int readTryCount() {
-
         System.out.println(READ_TRY_COUNT_MESSAGE);
+        String buffer = readInput();
+        return Integer.parseInt(buffer);
+    }
+
+    private String readInput() {
         String buffer = Console.readLine();
         validateInput(buffer);
-
-        return Integer.parseInt(buffer);
-
+        return buffer;
     }
 
     //공백 입력인지 확인하는 메소드
