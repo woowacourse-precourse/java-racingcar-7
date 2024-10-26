@@ -72,7 +72,7 @@ public class Race {
             }
         }
 
-        System.out.println("최송 우승자: " + sb.substring(0, sb.length() - 2));
+        System.out.println("최종 우승자: " + sb.substring(0, sb.length() - 2));
     }
 
     // ============= 입력값 검증 메서드 =============
