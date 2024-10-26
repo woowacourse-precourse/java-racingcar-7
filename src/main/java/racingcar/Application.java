@@ -12,5 +12,5 @@ public class Application {
         // 실행 결과
         // ...
         // 최종 우승자 : 봉진 님
-
+    }
 }
