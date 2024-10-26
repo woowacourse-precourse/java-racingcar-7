@@ -1,6 +1,11 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -23,11 +28,19 @@ class CarsTest {
                 hasMessageContaining("차는 다섯글자 이하이어야 합니다");
     }
 
-    @Test
-    void 올바른_입력값일때_객체_검증(){
-        String carsInput="임지우,이지우,박지우,신지우";
+    @ParameterizedTest
+    @MethodSource("generateCars")
+    void 올바르게_입력하면_객체를_반환한다(Cars actual,Cars expected){
+        assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
 
-        Cars actualCars=new Cars(carsInput);
-        assertThat(new Cars(carsInput)).usingRecursiveComparison().isEqualTo(actualCars);
+    }
+
+    static Stream<Arguments> generateCars(){
+        Cars actualCars=new Cars("임지우,이지우,박지우");
+        return Stream.of(
+                Arguments.arguments(new Cars("임지우,이지우,박지우"),actualCars),
+                Arguments.arguments(new Cars("임지우    ,이지우  , 박지우   "),actualCars),
+                Arguments.arguments(new Cars("임지우,임 -지:"),new Cars("임지우,임-지:"))
+                );
     }
 }
