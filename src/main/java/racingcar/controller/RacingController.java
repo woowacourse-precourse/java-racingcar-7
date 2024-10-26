@@ -50,7 +50,10 @@ public class RacingController {
 
     private int getInputTryCount() {
         String strTryCount = racingGameView.printInputTryCount();
-        int tryCount = racingGame.changeTryCountToInt(strTryCount);
+        int tryCount = Integer.parseInt(strTryCount);
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1이상 이어야 합니다");
+        }
         return tryCount;
     }
 

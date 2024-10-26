@@ -57,14 +57,6 @@ public class RacingGame {
         return names;
     }
 
-    public int changeTryCountToInt(String tryCountStr) {
-        int tryCount = Integer.parseInt(tryCountStr);
-        if (tryCount <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1이상 이어야 합니다");
-        }
-        return tryCount;
-    }
-
     public List<Car> getCars() {
         return cars;
     }
