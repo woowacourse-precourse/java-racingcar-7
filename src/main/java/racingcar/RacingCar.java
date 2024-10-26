@@ -49,9 +49,28 @@ public class RacingCar {
         this.count = Input.inputNumber();
         setCarList(inputStringList);
         repeatRacing();
+        getWinnerList();
     }
 
+    public void getWinnerList(){
+        int maxPosition = 0;
+        for (Car car : carList) {
+            maxPosition = judgeWinner(car, maxPosition);
+        }
+    }
 
+    public int judgeWinner(Car car, int maxPosition){
+        if (car.getPosition() > maxPosition) {
+            winnerList = new ArrayList<>();
+            winnerList.add(car.getName());
+            return car.getPosition();
+        }else if(car.getPosition() == maxPosition){
+            winnerList.add(car.getName());
+            return maxPosition;
+        }else{
+            return maxPosition;
+        }
+    }
 
     public List<Car> getCarList() {
         return carList;
