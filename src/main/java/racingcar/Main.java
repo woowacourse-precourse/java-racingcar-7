@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public void prepareGame(){
+    public List<Car> prepareGame(){
         String carNameInput = receiveCarNames();
         String[] carNames = splitCarNames(carNameInput);
-        int carCount = calculateCarCount(carNames);
         List<Car> cars = createAllCars(carNames);
+
+        return cars;
     }
 
     public void playGame(){
@@ -31,10 +32,6 @@ public class Main {
     public String[] splitCarNames(String input) {
         String[] carNames = input.split(",");
         return carNames;
-    }
-
-    public int calculateCarCount(String[] carNames) {
-        return carNames.length;
     }
 
     public Car createSingleCar(String carName) {

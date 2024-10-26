@@ -30,12 +30,6 @@ class MainTest extends NsTest {
     }
 
     @Test
-    @DisplayName("생성할 자동차의 개수를 확인한다")
-    void confirmCarCount() {
-        assertThat(main.calculateCarCount(new String[]{"pobi", "woni", "jun"})).isEqualTo(3);
-    }
-
-    @Test
     @DisplayName("단일 자동차 객체를 생성한다")
     void createSingleCar() {
         assertThat(main.createSingleCar("pobi")).isInstanceOf(Car.class);
