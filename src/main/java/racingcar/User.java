@@ -2,7 +2,7 @@ package racingcar;
 
 public class User {
 
-    private String name;
+    private final String name;
     private int score = 0;
 
     private User(String name) {
@@ -22,5 +22,9 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

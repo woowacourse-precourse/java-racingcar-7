@@ -41,5 +41,19 @@ public class Application {
             }
             System.out.println();
         }
+
+        List<String > winners = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+        for (User user : users) {
+            int score = user.getScore();
+            if (score > max) {
+                max = score;
+                winners.clear();
+                winners.add(user.getName());
+            } else if (score == max) {
+                winners.add(user.getName());
+            }
+        }
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
 }
