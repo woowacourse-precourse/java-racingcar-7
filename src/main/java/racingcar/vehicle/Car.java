@@ -1,13 +1,14 @@
 package racingcar.vehicle;
 
+import racingcar.io.OutputManager;
+
 public class Car {
     private String name;
     private int cnt;
 
     public Car(String name) {
-        if (imPossibleName(name)) {
-            throw new IllegalArgumentException();
-        }
+        imPossibleName(name);
+
         this.name = name;
         cnt = 0;
     }
@@ -21,12 +22,15 @@ public class Car {
     }
 
     public void run(int randomNum) {
+        if (randomNum < 0) {
+            throw new IllegalArgumentException("랜덤값은 음수가 들어올 수 없습니다.");
+        }
         if (randomNum < 4) {
-            System.out.println(toString());
+            OutputManager.getInstance().print(toString());
             return;
         }
         cnt++;
-        System.out.println(toString());
+        OutputManager.getInstance().print(toString());
     }
 
     @Override
@@ -42,10 +46,9 @@ public class Car {
         return builder.toString();
     }
 
-    private boolean imPossibleName(String name) {
+    private void imPossibleName(String name) {
         if (name == null || name.isEmpty() || name.length() > 5) {
-            return true;
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 }

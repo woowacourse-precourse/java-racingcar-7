@@ -1,15 +1,19 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.game.Game;
 import racingcar.vehicle.Car;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -42,21 +46,29 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-
     @DisplayName("자동차_생성_테스트")
     @Test
     void createCarTest() {
         Car car = new Car("pobi");
         int result = car.getCnt();
         assertThat(0).isEqualTo(result);
+    }
+
+    @DisplayName("자동차 생성 이름 길이 테스트")
+    @Test
+    void createCarValidationTest() {
         assertThatThrownBy(() -> {
             new Car("javajii");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    /*
-        TODO : 사용자 입력받기 테스트 하려고하는데, Console.readLine() 실행 시 에러 발생하는데 이유 찾아보기.
-     */
+    @DisplayName("자동차 이름 Null 입력 테스트")
+    @Test
+    void createCarNullTest() {
+        assertThatThrownBy(() ->
+                new Car(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("자동차_다수_생성_테스트")
     @Test
@@ -74,9 +86,16 @@ class ApplicationTest extends NsTest {
     @Test
     void goCarTest() {
         Car car = new Car("pobi");
-        int randomNum = Randoms.pickNumberInRange(5, 9);
-        car.run(randomNum);
-        // TODO : byteArrayOutputStream 이용해서 출력문을 임시 저장해서 검증할 수 있으니 적용해보기
+        car.run(MOVING_FORWARD);
+        assertThat(1).isEqualTo(car.getCnt());
+    }
+
+    @DisplayName("랜덤 음수 값 테스트")
+    @Test
+    void negativeRandomNumberTest() {
+        Car car = new Car("pobi");
+        assertThatThrownBy(() -> car.run(-1))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차_여러대_전진_출력_테스트")
@@ -103,5 +122,13 @@ class ApplicationTest extends NsTest {
         game.winnerPlayer(cars);
     }
 
+    @DisplayName("assertRandomNumberInRangeTest 테스트")
+    @Test
+    void pickNumberInListTest() {
+        assertRandomNumberInRangeTest(() -> {
+            run("pobi,woni,jun", "1");
+            assertThat(output()).contains("최종 우승자 : jun");
+        }, STOP, STOP, MOVING_FORWARD);
+    }
 
 }

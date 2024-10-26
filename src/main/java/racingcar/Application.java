@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 import racingcar.game.Game;
 import racingcar.io.Input;
 import racingcar.vehicle.Car;
@@ -15,7 +15,7 @@ public class Application {
         String cnt = in.nextLine();
         System.out.println();
         Game game = new Game();
-        ArrayList<Car> result = game.gameStart(carName, cnt);
+        List<Car> result = game.gameStart(carName, cnt);
         game.winnerPlayer(result);
     }
 }

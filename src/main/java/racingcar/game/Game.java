@@ -1,9 +1,9 @@
 package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.io.OutputManager;
 import racingcar.vehicle.Car;
 
 public class Game {
@@ -11,13 +11,13 @@ public class Game {
     public List<Car> gameStart(String carNames, String cnt) {
         List<Car> playerCars = assignPlayer(carNames);
 
-        System.out.println("실행 결과");
+        OutputManager.getInstance().print("실행 결과");
 
-        for (int i = 0; i < Integer.parseInt(cnt); i++) {
+        for (int i = 0; i < parseCntNumber(cnt); i++) {
             playerCars.forEach(car ->
                     car.run(Randoms.pickNumberInRange(0, 9))
             );
-            System.out.println();
+            OutputManager.getInstance().print("");
         }
         return playerCars;
     }
@@ -25,13 +25,11 @@ public class Game {
     public void winnerPlayer(List<Car> player) {
         int max = playerMaxCnt(player);
 
-        List<String> winner = new ArrayList<>();
-        for (Car car : player) {
-            if (car.getCnt() == max) {
-                winner.add(car.getName());
-            }
-        }
-        System.out.println("최종 우승자 : " + String.join(", ", winner));
+        List<String> winner = player.stream()
+                .filter(car -> car.getCnt() == max)
+                .map(Car::getName)
+                .toList();
+        OutputManager.getInstance().print("최종 우승자 : " + String.join(", ", winner));
     }
 
     private List<Car> assignPlayer(String carName) {
@@ -44,6 +42,14 @@ public class Game {
         return player.stream()
                 .mapToInt(Car::getCnt)
                 .max()
-                .getAsInt();
+                .orElseThrow();
+    }
+
+    private int parseCntNumber(String cnt) {
+        try {
+            return Integer.parseInt(cnt);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
+        }
     }
 }
