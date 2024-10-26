@@ -6,21 +6,21 @@ public class InputView {
 
     public String readCarString() {
         String carString = Console.readLine();
-        if (carString == null) {
-            throw new IllegalArgumentException();
+        if (carString.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] : 자동차 이름이 입력되지 않았습니다.");
         }
         return carString;
     }
 
     public String readTryCount() {
         String tryCount = Console.readLine();
-        if (tryCount == null) {
-            throw new IllegalArgumentException();
+        if (tryCount.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] : 시도횟수가 입력되지 않았습니다.");
         }
         try {
             Integer.parseInt(tryCount);
-        }catch (Exception e) {
-            throw new IllegalArgumentException();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] : 숫자를 입력해주세요.");
         }
         return tryCount;
     }
