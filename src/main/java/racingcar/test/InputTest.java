@@ -56,4 +56,11 @@ public class InputTest {
         String name = "짱구,,짱구";
         assertThrows(IllegalArgumentException.class, () -> input.validateSeparator(name));
     }
+
+    @Test
+    @DisplayName("시도할 횟수 정수형 검증 테스트")
+    void validateInteger() {
+        String attemptCount = "";
+        assertThrows(IllegalArgumentException.class, () -> input.validateInteger(attemptCount));
+    }
 }
