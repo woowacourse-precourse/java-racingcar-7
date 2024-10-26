@@ -34,10 +34,10 @@ public class Application {
     public static List<RacingCar> splitInput(String input) {
         String[] racingCars = input.split(SPLITTER);
         List<RacingCar> racingCarList = new ArrayList<>();
+
         for (String carName : racingCars) {
             checkCarName(carName);
-            RacingCar racingCar = new RacingCar(carName);
-            racingCarList.add(racingCar);
+            racingCarList.add(new RacingCar(carName));
         }
 
         for (int i = 0; i < racingCars.length; i++) {
