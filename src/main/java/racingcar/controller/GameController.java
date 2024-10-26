@@ -33,5 +33,6 @@ public class GameController {
             output.printRaceResult(cars);
         }
         String winners = winner.getWinners(cars);
+        output.printWinners(winners);
     }
 }
