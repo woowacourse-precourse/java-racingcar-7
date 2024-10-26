@@ -36,9 +36,9 @@ public class RacingCarTrace {
         var sb = new StringBuilder();
         IntStream.range(0, trace.size()).forEach(index -> {
             var racingCar = this.getRacingCar(index);
-            sb.append(racingCar.name()).append(" : ");
-            sb.append("-".repeat(this.getDistance(racingCar)));
-            sb.append("\n");
+            sb.append(racingCar.name()).append(" : ")
+                    .append("-".repeat(this.getDistance(racingCar)))
+                    .append("\n");
         });
         sb.append("\n");
         return sb.toString();
