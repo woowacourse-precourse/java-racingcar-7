@@ -16,7 +16,20 @@ public class Cars {
                 .map(Car::new)
                 .collect(Collectors.toList());
 
+        validateDuplicate(carList);
+
         return new Cars(carList);
+    }
+
+    private static void validateDuplicate(List<Car> cars) {
+        long distinctCarNameCount = cars.stream()
+                .map(Car::getName)
+                .distinct()
+                .count();
+
+        if (distinctCarNameCount != cars.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     public int size() {
