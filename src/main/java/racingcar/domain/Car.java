@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private String name;
+    private final String name;
     private int movedCnt;
 
     public Car(String name) {
