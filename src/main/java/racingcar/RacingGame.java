@@ -21,9 +21,7 @@ public class RacingGame {
         System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
             for (User user : users) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                int proceedScore = user.proceed(randomNumber);
-
+                int proceedScore = user.proceed();
                 outputHandler.showCarProceedScore(user, proceedScore);
             }
             outputHandler.showNewLine();
