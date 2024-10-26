@@ -2,22 +2,19 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.util.RandomGenerator;
 
 public class RacingGame {
 
     private final CarContainer carContainer;
-    private final RandomGenerator randomGenerator;
 
-    public RacingGame(String invalidCarNames, RandomGenerator randomGenerator) {
+    public RacingGame(String invalidCarNames) {
         CarsParser CarsParser = new CarsParser();
 
         this.carContainer = new CarContainer(CarsParser.parse(invalidCarNames));
-        this.randomGenerator = randomGenerator;
     }
 
     public String proceedRound() {
-        carContainer.moveAll(randomGenerator);
+        carContainer.moveAll();
 
         return String.join("", carContainer.getCurrentRoundResult());
     }
@@ -27,9 +24,9 @@ public class RacingGame {
         int maxPosition = findMaxPosition(cars);
 
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(Car::getName)
+            .collect(Collectors.joining(", "));
     }
 
     private int findMaxPosition(List<Car> cars) {
