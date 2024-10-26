@@ -34,4 +34,12 @@ public class Input {
             }
         }
     }
+
+    public void validateSeparatorSplit(String input) {
+        long commaCount = input.chars().filter(c -> c == ',').count();
+        int splitInput = input.split(",").length - 1;
+        if (commaCount != splitInput) {
+            throw new IllegalArgumentException("입력은 문자열로 끝나야 합니다.");
+        }
+    }
 }
