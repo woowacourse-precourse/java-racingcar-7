@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.validation.ErrorMessage.OVER_MAX_CAR_NAME;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -60,5 +62,20 @@ public class CarTest {
         }
         //then
         assertThat(car.getMovedDistance()).isEqualTo(0);
+    }
+
+    @DisplayName("길이가 5인 carName이 주어졌을 때, 성공적으로 car객체가 만들어진다")
+    @Test
+    void length_5_car_name_then_pass() {
+        Car car = new Car("bibim");
+    }
+
+    @DisplayName("길이가 6이상인 carName이 주어졌을 때, 예외를 발생시킨다")
+    @Test
+    void over_6_car_name_then_throw_exception() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Car car = new Car("bbibim");
+        });
+        assertThat(exception.getMessage()).isEqualTo(OVER_MAX_CAR_NAME.getMessage());
     }
 }
