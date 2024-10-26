@@ -6,7 +6,7 @@ public class Car {
 
     public int score=0;
 
-    public int  randomValue;
+    public int randomValue;
 
     public Car(String name) {
         this.name = name;

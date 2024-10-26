@@ -12,6 +12,7 @@ public class Application {
         String carNamesInput = Console.readLine();
 
         List<Car> cars = new ArrayList<>();
+        CarValueAssigner carValueAssigner = new CarValueAssigner();
         StringTokenizer tokenizer = new StringTokenizer(carNamesInput, ",");
 
         while (tokenizer.hasMoreTokens()) {
@@ -26,7 +27,9 @@ public class Application {
 
         int raceCount = inputRaceCount();
 
-
+        for(int i=0; i<=raceCount; i++) {
+            carValueAssigner.assignRandomValue(cars);
+        }
 
     }
 
@@ -39,7 +42,6 @@ public class Application {
 
         return raceCount;
     }
-
 
 
 }
