@@ -37,7 +37,7 @@ public class Racing {
     }
 
     public List<Car> determineWinner(List<Car> carList) {
-        Collections.sort(carList, (car1, car2) -> Integer.compare(car2.getDistance(), car1.getDistance()));
+        carList.sort((car1, car2) -> Integer.compare(car2.getDistance(), car1.getDistance()));
 
         int maxDistance = carList.get(0).getDistance();
         List<Car> winnerList = new ArrayList<>();
