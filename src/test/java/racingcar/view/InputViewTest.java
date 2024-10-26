@@ -19,4 +19,13 @@ class InputViewTest {
                 .hasSize(3)
                 .containsExactly("pobi", "woni", "jun");
     }
+
+    @Test
+    void 빈_자동차_이름_입력() {
+        String input = "pobi,,jun";
+
+        assertThatThrownBy(() -> inputView.parseCarNames(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[빈 값]");
+    }
 }
