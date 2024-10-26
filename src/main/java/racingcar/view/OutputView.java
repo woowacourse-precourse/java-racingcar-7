@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class OutputView {
 
-    private static String RESULT = "실행 결과";
-    private static String WINNER = "최종 우승자 : ";
+    private static final String RESULT = "실행 결과";
+    private static final String WINNER = "최종 우승자 : ";
 
     public static void printResult() {
         System.out.println();

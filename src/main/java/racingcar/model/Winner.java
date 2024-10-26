@@ -6,7 +6,7 @@ import java.util.List;
 public class Winner {
 
     private final List<Car> cars;
-    private List<String> winners;
+    private final List<String> winners;
     private int maxPosition = 0;
 
     public Winner(List<Car> cars) {
