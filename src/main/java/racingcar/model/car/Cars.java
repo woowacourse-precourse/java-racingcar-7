@@ -34,17 +34,17 @@ public class Cars {
                 .anyMatch(car -> car.name().equals(name));
     }
 
-    public int size() {
-        return values.size();
-    }
-
     public List<String> names() {
         return values.stream()
                 .map(Car::name)
                 .toList();
     }
 
-    public String name(final Integer index) {
-        return values.get(index).name();
+    public int size() {
+        return values.size();
+    }
+
+    public Car car(final int index){
+        return values.get(index);
     }
 }

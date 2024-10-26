@@ -72,7 +72,7 @@ public class RacingCarController {
         Cars cars = racingCar.getCars();
         History history = racingCar.getHistory();
         for (Positions positions : history.values()) {
-            outputHandler.showCarPosition(cars.names(), positions.getValues());
+            outputHandler.showCarPosition(cars.names(), positions);
         }
     }
 

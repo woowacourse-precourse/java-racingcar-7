@@ -1,7 +1,6 @@
 package racingcar.model.position;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -53,11 +52,8 @@ public class Positions {
                 .get();
     }
 
-    private long getValue(final int index) {
-        return values.get(index).value();
-    }
-
-    public List<Position> getValues() {
-        return Collections.unmodifiableList(values);
+    public long getValue(final int index) {
+        return values.get(index)
+                .value();
     }
 }

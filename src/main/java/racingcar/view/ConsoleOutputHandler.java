@@ -2,11 +2,12 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.model.position.Position;
+import racingcar.model.position.Positions;
 
 public class ConsoleOutputHandler implements OutputHandler {
 
     private static final String HYPHEN = "-";
+    public static final String COLON = " : ";
 
     @Override
     public void showCommentForCarNames() {
@@ -24,9 +25,9 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
-    public void showCarPosition(final List<String> names, final List<Position> positions) {
+    public void showCarPosition(final List<String> names, final Positions positions) {
         IntStream.range(0, names.size())
-                .mapToObj(number -> names.get(number) + " : " + repeatHyphen(positions.get(number).value()))
+                .mapToObj(number -> names.get(number) + COLON + repeatHyphen(positions.getValue(number)))
                 .forEach(System.out::println);
         System.out.println();
     }

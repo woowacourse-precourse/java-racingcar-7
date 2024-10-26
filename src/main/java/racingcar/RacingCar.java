@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.attempt.Attempt;
+import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 import racingcar.model.position.History;
 import racingcar.model.position.Positions;
@@ -32,7 +33,8 @@ public class RacingCar {
     public String calculateWinners() {
         return positions.calculateWinners()
                 .stream()
-                .map(cars::name)
+                .map(cars::car)
+                .map(Car::name)
                 .collect(Collectors.joining(", "));
     }
 
