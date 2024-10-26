@@ -11,12 +11,11 @@ public class RacingGame {
 
     /**
      * RacingGame 생성자
-     * @param carNames 자동차 이름 리스트
-     * @param round 라운드 수
+     * @param inputDTO 게임 입력 데이터 DTO, 자동차 이름 리스트와 라운드 수를 포함
      */
-    public RacingGame(List<String> carNames, int round) {
-        this.round = round;
-        createCar(carNames);
+    public RacingGame(InputDTO inputDTO) {
+        createCar(inputDTO.carNames());
+        this.round = inputDTO.round();
     }
 
     /**
@@ -65,9 +64,9 @@ public class RacingGame {
         System.out.println("실행 결과");
 
         cars.forEach(car -> {
-            CarDTO dto = car.toDTO();
-            System.out.print(dto.getCarName() + " : ");
-            System.out.print("-".repeat(dto.getCurrentPosition())+"\n");
+            CarDTO carDTO = car.toDTO();
+            System.out.print(carDTO.carName() + " : ");
+            System.out.print("-".repeat(carDTO.currentPosition())+"\n");
         });
     }
 
@@ -78,7 +77,7 @@ public class RacingGame {
         List<CarDTO> winners = findWinners();
         System.out.print("최종 우승자 : ");
         System.out.println(String.join(", ", winners.stream()
-                .map(CarDTO::getCarName)
+                .map(CarDTO::carName)
                 .toList()));
     }
 
@@ -92,12 +91,12 @@ public class RacingGame {
                 .toList();
 
         int maxPosition = carDTOs.stream()
-                .mapToInt(CarDTO::getCurrentPosition)
+                .mapToInt(CarDTO::currentPosition)
                 .max()
                 .orElse(0);
 
         return carDTOs.stream()
-                .filter(dto -> dto.getCurrentPosition() == maxPosition)
+                .filter(carDTO -> carDTO.currentPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 

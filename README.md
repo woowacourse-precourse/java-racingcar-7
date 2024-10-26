@@ -93,3 +93,12 @@
 - DTO
   - 객체를 통한 직접 참조 삭제
   - getter 메서드를 DTO 객체에 정의하고, DTO객체를 이용해 각 Car객체의 값을 조회할 수 있도록 변경한다.
+
+**24.10.27.(일요일)**
+
+- 입력 클래스 분리
+    - InputHandler : 해당 클래스에서 콘솔 입력을 받아 유효한 입력인지 검증한 후, 입력을 분리하여 전달하도록 합니다.
+    - CheckValidInput : InputHandler에서 받은 콘솔 입력에 대해 유효한 입력인지 검증하여 결과를 반환합니다.
+    - InputDTO : DTO record 객체를 사용하여 Main 클래스와 InputHandler, CheckValidInput 간 입력값을 전달받습니다.
+- DTO
+  - InputDTO/CarDTO : DTO가 데이터 저장 및 전송 역할만 수행하고 있으므로, record 로 변경하여 기본 생성 메소드를 사용하도록 변경합니다.
