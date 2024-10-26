@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -70,6 +71,20 @@ public class InputRacingCarViewTest {
 
             // then
             assertThat(result).isEqualTo(input);
+        });
+    }
+
+    @Test
+    public void 자동차_숫자가아닌_이동횟수_입력_테스트(){
+        assertSimpleTest(() -> {
+            // given
+            String input = "xxx";
+            input(input);
+
+            // when
+            assertThatThrownBy(() -> inputRacingCarView.getInputNumber())
+                    // then
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 }
