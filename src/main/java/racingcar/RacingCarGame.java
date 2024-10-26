@@ -18,6 +18,6 @@ public class RacingCarGame {
 
     public void start() {
         carNames = inputNames.input();
-
+        tryCount = inputTry.input();
     }
 }
