@@ -11,7 +11,8 @@ public class InputRacingCarView {
         String input = Console.readLine();
         return input;
     }
-    public String inputCarMoveCount(){
+
+    public String inputCarMoveCount() {
         System.out.println(CAR_MOVE_COUNT_INPUT);
         String input = Console.readLine();
         return input;
