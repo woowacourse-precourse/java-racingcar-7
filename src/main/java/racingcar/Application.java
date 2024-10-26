@@ -14,9 +14,7 @@ public class Application {
         RacingGame game = new RacingGame(carNames, tryCount);
         while (!game.isDone()) {
             game.startOneStep();
-            
-            printCarInfo(game.getCarInfo());
-            System.out.println();
+            System.out.println(toStringCarInfo(game.getCarInfo()));
         }
         
         System.out.print("최종 우승자 : " + toStringCarNames(game.getFrontRunners()));
@@ -46,13 +44,15 @@ public class Application {
         return tryCount;
     }
     
-    private static void printCarInfo(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            System.out.println(
-                    cars.get(i).name
-                    + " : "
-                    + "-".repeat(cars.get(i).distance));
+    private static String toStringCarInfo(List<Car> cars) {
+        StringBuilder result = new StringBuilder();
+        for (Car car : cars) {
+            result.append(car.name)
+                    .append(" : ")
+                    .append("-".repeat(car.distance))
+                    .append('\n');
         }
+        return result.toString();
     }
     
     private static String toStringCarNames(List<Car> cars) {
