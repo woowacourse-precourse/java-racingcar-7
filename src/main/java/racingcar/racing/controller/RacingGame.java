@@ -4,18 +4,19 @@ import java.util.List;
 import racingcar.racing.model.Car;
 import racingcar.racing.model.Game;
 import racingcar.racing.model.RacingGameConcreteFactory;
+import racingcar.racing.model.RacingGameFactory;
 import racingcar.racing.utils.InputParser;
 import racingcar.racing.view.InputView;
 import racingcar.racing.view.OutputView;
 
 public class RacingGame {
-    private final RacingGameConcreteFactory racingGameFactory;
+    private final RacingGameFactory racingGameFactory;
     private Game game;
     private static final String INVALID_ATTEMPT_EXCEPTION_MESSAGE = "시도할 횟수는 양의 정수로 입력해주세요.";
     private static final String INVALID_CAR_LENGTH_EXCEPTION_MESSAGE = "자동차의 이름은 5글자 이하만 가능합니다.";
     private static final String EMPTY_CAR_EXCEPTION_MESSAGE = "자동차를 하나 이상 입력해주세요.";
 
-    public RacingGame(RacingGameConcreteFactory racingGameFactory) {
+    public RacingGame(RacingGameFactory racingGameFactory) {
         this.racingGameFactory = racingGameFactory;
     }
 
@@ -55,7 +56,7 @@ public class RacingGame {
         if (!InputValidator.validateCarNameLength(carNames)) {
             throw new IllegalArgumentException(INVALID_CAR_LENGTH_EXCEPTION_MESSAGE);
         }
-        if (carNames.isEmpty() || carNames == null) {
+        if (InputValidator.validateCarArrayNotEmpty(carNames)) {
             throw new IllegalArgumentException(EMPTY_CAR_EXCEPTION_MESSAGE);
         }
         return carNames;

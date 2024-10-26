@@ -18,4 +18,11 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean validateCarArrayNotEmpty(List<String> carNames) {
+        if (carNames.isEmpty() || carNames == null) {
+            return false;
+        }
+        return true;
+    }
 }
