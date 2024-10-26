@@ -16,7 +16,24 @@ public class Game {
     }
 
     public void start() {
+        gameView.printCarNameInputMessage();
+        List<String> carNames = inputHandler.getCarNames();
+        cars = createCars(carNames);
 
+        gameView.printRoundCountInputMessage();
+        roundCount = inputHandler.getRoundCount();
+
+        gameView.printResultMessage();
+
+        while (roundCount > 0) {
+            List<String> roundResult = processRound();
+            gameView.printRoundResult(roundResult);
+
+            roundCount--;
+        }
+
+        List<String> winners = determineWinners();
+        gameView.printWinner(winners);
     }
 
     private List<Car> createCars(List<String> names) {
