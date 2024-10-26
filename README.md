@@ -29,6 +29,9 @@
 
 - [x] 자동차 이름이 `""`(빈 문자열)이라면?<br>
   -> 빈 문자열의 경우는 이름이 없다고 판단하는 게 맞는 거 같다.<br>
+  입력이 `pobi,,woni,,`일 경우<br>
+  `StringTokenizer`는 빈 토큰은 무시하기 때문에, 예외 처리가 불가능하다.<br>
+  이로 인해서, `String.split`으로 코드를 다시 짜게 되었다...<br>
 - [x] 자동차 이름이 공백 문자로만 이루어져 있거나 이모지라면?<br>
   -> `String`은 내부적으로 UTF-16으로 저장된다고 한다.<br>
   Java의 `char`가 2바이트를 차지하는 이유이기도 하다.<br>
@@ -50,6 +53,7 @@
 
 ### Reference
 
+- https://stackoverflow.com/questions/25500489/java-stringtokenizer-with-empty-tokens
 - https://stackoverflow.com/questions/9699071/what-is-the-javas-internal-represention-for-string-modified-utf-8-utf-16
 - https://stackoverflow.com/questions/64213394/string-encoding-with-emoji-in-java
 - https://stackoverflow.com/questions/38345372/why-does-a-string-containing-a-single-emoji-like-have-a-length-of-2
