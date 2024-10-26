@@ -10,12 +10,11 @@ public class Application {
     public static void main(String[] args) {
 
         Validator validator = new Validator();
-        Racing racing = new Racing(validator);
-
         OutputWriter outputWriter = new OutputWriter();
+        Racing racing = new Racing(validator, outputWriter);
         InputReader inputReader = new InputReader(outputWriter, validator);
 
-        RacingController racingController = new RacingController(inputReader, racing);
+        RacingController racingController = new RacingController(inputReader, racing, outputWriter);
         racingController.startRace();
     }
 }

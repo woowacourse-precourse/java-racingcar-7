@@ -9,4 +9,16 @@ public class OutputWriter {
     public void printRaceCountInputMessage() {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    public void printRaceResultsMessage() {
+        System.out.println("실행 결과");
+    }
+
+    public void getRaceResults(String name, int randomValue) {
+        System.out.print(name + " : ");
+        for (int i = 0; i < randomValue; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
