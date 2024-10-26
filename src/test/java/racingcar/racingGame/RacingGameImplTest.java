@@ -18,4 +18,15 @@ class RacingGameImplTest {
         Assertions.assertThat(racingGame.getNumberOfRacingCars()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("자동차 이름은 중복되면 안된다.")
+    void 자동차_이름_중복_테스트(){
+        String userInput = "sumin,sumin,sumin";
+        Assertions.assertThatThrownBy(() -> new RacingGameImpl(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 중복될 수 없습니다. 서로 다른 이름을 입력해주세요.");
+    }
+
+
+
 }
