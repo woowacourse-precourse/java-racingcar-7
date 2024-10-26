@@ -23,6 +23,9 @@ public class Race {
     }
 
     public void play(int times) {
+        if (times < 1) {
+            throw new IllegalArgumentException("Times should be at least 1.");
+        }
         System.out.println("실행 결과");
         while (times > 0) {
             cars.forEach(Car::randomGo);
