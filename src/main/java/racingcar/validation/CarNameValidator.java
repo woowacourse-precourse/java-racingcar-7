@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 import racingcar.enums.ErrorMessage;
+import racingcar.enums.Separator;
 
 public class CarNameValidator {
 
@@ -15,7 +16,7 @@ public class CarNameValidator {
     }
 
     private static void validateSeparatorWithoutComma(String input) {
-        if (!input.contains(",")) {
+        if (!input.contains(Separator.COMMA.getSeparator())) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_COMMA.getMessage());
         }
     }
@@ -39,7 +40,7 @@ public class CarNameValidator {
     }
 
     public static void validateCar(String input) {
-        String[] cars = input.split(",");
+        String[] cars = input.split(Separator.COMMA.getSeparator());
         validateCarCount(cars);
         Set<String> carNames = new HashSet<>();
         for (String car : cars) {

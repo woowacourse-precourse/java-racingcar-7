@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.dto.CarStatusDto;
+import racingcar.enums.Separator;
 
 public class Result {
 
@@ -16,7 +17,7 @@ public class Result {
         return carsStatus.stream()
                 .filter(car -> car.getPosition() == getMaxPosition())
                 .map(CarStatusDto::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(Separator.COMMA_SPACE.getSeparator()));
     }
 
     private int getMaxPosition() {
