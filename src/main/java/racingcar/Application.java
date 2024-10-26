@@ -7,6 +7,17 @@ public class Application {
     public static void main(String[] args) {
         List<String> carNames = getCarNames();
         int tryCount = getTryCount();
+        
+        System.out.println();
+        System.out.println("실행 결과");
+        
+        RacingGame game = new RacingGame(carNames, tryCount);
+        while (!game.isDone()) {
+            game.startOneStep();
+            
+            printCarInfo(game.getCarInfo());
+            System.out.println();
+        }
     }
     
     private static List<String> getCarNames() {
@@ -31,5 +42,14 @@ public class Application {
         }
         
         return tryCount;
+    }
+    
+    private static void printCarInfo(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(
+                    cars.get(i).name
+                    + " : "
+                    + "-".repeat(cars.get(i).distance));
+        }
     }
 }
