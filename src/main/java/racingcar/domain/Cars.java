@@ -1,18 +1,16 @@
 package racingcar.domain;
 
-import racingcar.utils.CarNameParser;
-import racingcar.utils.RoundResultGenerator;
-import racingcar.utils.WinnerDeterminer;
-
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(String carNames) {
-        List<String> carNamesList = CarNameParser.parse(carNames);
+    private Cars(List<String> carNames) {
+        this.cars = convertToCars(carNames);
+    }
 
-        this.cars = convertToCars(carNamesList);
+    public static Cars create(List<String> carNames) {
+        return new Cars(carNames);
     }
 
     public List<Car> getCars() {
@@ -23,16 +21,8 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    public List<String> getRoundResults() {
-        return RoundResultGenerator.generate(cars);
-    }
-
-    public List<String> getWinners() {
-        return WinnerDeterminer.determineWinners(cars);
-    }
-
-    private static List<Car> convertToCars(List<String> carNamesList) {
-        return carNamesList.stream()
+    private static List<Car> convertToCars(List<String> carNames) {
+        return carNames.stream()
                 .map(Car::new)
                 .toList();
     }
