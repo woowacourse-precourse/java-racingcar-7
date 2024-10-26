@@ -23,6 +23,9 @@ public class Cars {
 
         for (String name : carNames) {
             String carName = name.trim();
+            if (carName.isBlank()) {
+                throw new IllegalArgumentException("자동차 이름이 빈 문자열일 수 없습니다.");
+            }
 
             if (uniqueNames.contains(carName)) {
                 throw new IllegalArgumentException("중복된 자동차 이름이 있습니다: " + carName);
