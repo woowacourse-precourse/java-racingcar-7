@@ -2,6 +2,13 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        IOController ioController = new IOController();
+        Parser parser = new Parser();
+        Validator validator = new Validator();
+
+        Executor executor = new Executor(ioController, parser, validator);
+
+        executor.run();
     }
 }
