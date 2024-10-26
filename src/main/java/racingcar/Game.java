@@ -20,7 +20,7 @@ public class Game {
         System.out.println("\n실행 결과");
         while (attemptCount-- > 0) {
             for (int i = 0; i < carList.size(); i++) {
-                if (Randoms.pickNumberInRange(1, 9) > 4) {
+                if (Randoms.pickNumberInRange(0, 9) >= 4) {
                     carList.set(i, new Car(carList.get(i).getName(), carList.get(i).getPosition() + 1));
                 }
             }
@@ -33,6 +33,10 @@ public class Game {
     // 경주에 참여하는 차를 리스트에 넣음
     public void inputLane() {
         for (int i = 0; i < carArray.length; i++) {
+            if(carArray[i].length() > 5) {
+                throw new IllegalArgumentException();
+            }
+
             carList.add(new Car(carArray[i], 0));
         }
 
