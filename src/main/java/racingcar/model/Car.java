@@ -1,10 +1,10 @@
 package racingcar.model;
 
+import static racingcar.ExceptionMessage.CAR_NAME_LENGTH_EXCEPTION;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car implements Comparable<Car> {
-    private static final String CAR_NAME_LENGTH_EXCEPTION = "자동차 이름은 5자 이하이어야 합니다.";
-
     private final String name;
     private long position = 0;
 
@@ -23,7 +23,7 @@ public class Car implements Comparable<Car> {
 
     private void validateCarNameLength(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION);
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_EXCEPTION.message());
         }
     }
 
