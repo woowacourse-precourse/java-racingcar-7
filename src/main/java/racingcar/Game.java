@@ -4,13 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Game {
-    Setting setting = new Setting();
+    User user = new User();
     Winner winner = new Winner();
+
     private List<Car> cars;
 
     public void run() {
-        cars = setting.grantCarName();
-        game(setting.grantMoveCount());
+        cars = user.grantCarName();
+        game(user.grantMoves());
         winner.result(cars);
     }
 

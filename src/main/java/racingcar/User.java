@@ -7,7 +7,18 @@ import java.util.List;
 public class User {
 
 
-    public List<String> grantCarName() {
+    public List<Car> grantCarName() {
+        List<String> carNames = inputCarName();
+        List<Car> carList = new ArrayList<>();
+
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
+        }
+
+        return carList;
+    }
+
+    private List<String> inputCarName() {
         List<String> cars = new ArrayList<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -28,7 +39,7 @@ public class User {
         return cars;
     }
 
-    public int moves() {
+    public int grantMoves() {
         int moves;
         System.out.println("시도할 횟수는 몇 회인가요?");
 
