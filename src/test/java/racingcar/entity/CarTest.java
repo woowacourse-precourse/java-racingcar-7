@@ -27,41 +27,43 @@ public class CarTest {
     @Test
     @DisplayName("자동차 생성 실패 (이름 길이 5 초과)")
     void failWhenNameTooLong() {
-        // Given & When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car("123456"),
-                CarNameValidationError.NAME_TOO_LONG.getMessage()
-        );
+        // Given & When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class,
+                () -> new Car("123456"));
+
+        // Then
+        assertEquals(CarNameValidationError.NAME_TOO_LONG.getMessage(), exception.getMessage());
     }
 
     @Test
     @DisplayName("자동차 생성 실패 (입력이 빈 문자열인 경우)")
     void failWhenNameEmpty() {
-        // Given & When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car(""),
-                CarNameValidationError.NAME_EMPTY.getMessage()
-        );
+        // Given & When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class, () -> new Car(""));
+
+        // Then
+        assertEquals(CarNameValidationError.NAME_EMPTY.getMessage(), exception.getMessage());
     }
 
     @Test
     @DisplayName("자동차 생성 실패 (공백이 포함된 이름)")
     void failWhenNameHasSpace() {
-        // Given & When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car("pobi "),
-                CarNameValidationError.NAME_CONTAINS_SPACE.getMessage()
-        );
+        // Given & When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class,
+                () -> new Car("pobi "));
+
+        // Then
+        assertEquals(CarNameValidationError.NAME_CONTAINS_SPACE.getMessage(), exception.getMessage());
     }
 
     @Test
     @DisplayName("자동차 생성 실패 (입력이 null인 경우)")
     void failWhenNameNull() {
-        // Given & When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Car(null),
-                CarNameValidationError.NAME_NULL.getMessage()
-        );
+        // Given & When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class, () -> new Car(null));
+
+        // Then
+        assertEquals(CarNameValidationError.NAME_NULL.getMessage(), exception.getMessage());
     }
 
     @Test

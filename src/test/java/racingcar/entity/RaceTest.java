@@ -1,6 +1,7 @@
 package racingcar.entity;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.TestUtils;
-import racingcar.exception.RaceCarValidationError;
+import racingcar.exception.RaceValidationError;
 import racingcar.util.RandomNumberGenerator;
 
 public class RaceTest {
@@ -38,10 +39,11 @@ public class RaceTest {
             cars.add(new Car("na" + i));
         }
 
-        // When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(cars),
-                RaceCarValidationError.CARS_EXCEED_LIMIT.getMessage());
+        // When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class, () -> new Race(cars));
+
+        // Then
+        assertEquals(RaceValidationError.CARS_EXCEED_LIMIT.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -54,19 +56,19 @@ public class RaceTest {
         cars.add(new Car("pobi2"));
         cars.add(new Car("pobi3"));
 
-        // When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(cars),
-                RaceCarValidationError.CARS_DUPLICATE_NAME.getMessage());
+        // When
+        IllegalArgumentException exception = assertThrowsExactly(IllegalArgumentException.class, () -> new Race(cars));
+
+        // Then
+        assertEquals(RaceValidationError.CARS_DUPLICATE_NAME.getMessage(), exception.getMessage());
     }
 
     @Test
     @DisplayName("자동차 등록 실패 (자동차 배열이 null인 경우)")
     void failWhenCarListNull() {
         // Given & When & Then
-        assertThrowsExactly(IllegalArgumentException.class,
-                () -> new Race(null),
-                RaceCarValidationError.CARS_NULL.getMessage());
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Race(null),
+                RaceValidationError.CARS_NULL.getMessage());
     }
 
     @Test
@@ -79,18 +81,13 @@ public class RaceTest {
         cars.add(new Car("c"));
         cars.add(new Car("d"));
         Race race = new Race(cars);
-        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
-                List.of(1, 2, 3, 4)
-        );
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(1, 2, 3, 4));
 
         // When
         race.runSingleRound(randomNumberGenerator);
 
         // Then
-        assertArrayEquals(new int[]{0, 0, 0, 1},
-                cars.stream()
-                        .mapToInt(Car::getPosition)
-                        .toArray());
+        assertArrayEquals(new int[]{0, 0, 0, 1}, cars.stream().mapToInt(Car::getPosition).toArray());
     }
 
     @Test
@@ -103,9 +100,7 @@ public class RaceTest {
         cars.add(new Car("c"));
         cars.add(new Car("d"));
         Race race = new Race(cars);
-        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
-                List.of(1, 2, 3, 4)
-        );
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(1, 2, 3, 4));
         race.runSingleRound(randomNumberGenerator);
 
         // When
@@ -125,9 +120,7 @@ public class RaceTest {
         cars.add(new Car("c"));
         cars.add(new Car("d"));
         Race race = new Race(cars);
-        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(
-                List.of(1, 2, 4, 4)
-        );
+        RandomNumberGenerator randomNumberGenerator = TestUtils.mockRandomNumberGenerator(List.of(1, 2, 4, 4));
         race.runSingleRound(randomNumberGenerator);
 
         // When
