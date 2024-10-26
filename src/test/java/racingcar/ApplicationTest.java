@@ -44,6 +44,13 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateMinimumTwoCars_예외_테스트() {
+        String[] onlyOneCar = {"onlyMe"};
+        assertThatThrownBy(() -> application.validateMinimumTwoCars(onlyOneCar))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
