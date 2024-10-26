@@ -1,6 +1,6 @@
 package racingcar.io.validation;
 
-public class CountValidator implements InputStringValidator {
+public class CountValidator implements Validator {
 
     @Override
     public void validate(String string) {

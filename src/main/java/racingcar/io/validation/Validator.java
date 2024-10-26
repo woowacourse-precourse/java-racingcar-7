@@ -1,6 +1,6 @@
 package racingcar.io.validation;
 
-public interface InputStringValidator {
+public interface Validator {
 
     void validate(String string);
 }
