@@ -34,6 +34,13 @@ public class RacingTrack {
         }
     }
 
+    public List<String> getWinnerNames() {
+        int winnerPosition = getWinnerPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .toList();
+    }
 
     public int getWinnerPosition() {
         return cars.stream()
