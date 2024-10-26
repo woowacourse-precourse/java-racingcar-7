@@ -23,8 +23,7 @@ public class RaceManager {  // raceCount만큼 반복
     }
 
     private boolean isCarMoving() {
-        int randomNumber = generateRandomNumber();
-        return randomNumber >= 4;
+        return generateRandomNumber() >= 4;
     }
 
     private int generateRandomNumber() {
