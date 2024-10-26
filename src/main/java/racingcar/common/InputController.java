@@ -6,12 +6,12 @@ import racingcar.model.RawInput;
 
 public class InputController {
 
-    public static RawInput getCarNamesInput(){
+    public static RawInput getCarNamesInput() {
         OutputController.printCarNamePromptMessage();
         return RawInput.of(Console.readLine());
     }
 
-    public static RaceCount getRaceCountInput(){
+    public static RaceCount getRaceCountInput() {
         OutputController.printRaceCountPromptMessage();
         return RaceCount.of(Console.readLine());
     }

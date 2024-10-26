@@ -9,7 +9,7 @@ import racingcar.model.RawInput;
 
 import java.util.Set;
 
-public class RacingCarServiceImpl implements RacingCarService{
+public class RacingCarServiceImpl implements RacingCarService {
 
     private final Parser parser = new CarNameParser();
 

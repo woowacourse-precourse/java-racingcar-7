@@ -8,9 +8,9 @@ public record RaceCount(int raceCount) {
     public static RaceCount of(String raceCount) {
         int parsedRaceCount;
 
-        try{
+        try {
             parsedRaceCount = Integer.parseInt(raceCount);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException(PARSE_ERROR_STRING_TO_INT.getMessage());
         }
 

@@ -4,11 +4,11 @@ public class Position {
 
     private int position;
 
-    public Position(){
+    public Position() {
         this.position = 0;
     }
 
-    public void moveForward(){
+    public void moveForward() {
         this.position++;
     }
 
