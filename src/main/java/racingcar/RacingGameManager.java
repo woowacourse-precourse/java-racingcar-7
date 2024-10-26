@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,5 +18,16 @@ class RacingGameManager implements RacingGame {
 
     @Override
     public void start(int tryNumber) {
+        InputValidator.tryNumberValidation(tryNumber);
+
+        for (int i = 0; i < tryNumber; i++) {
+            progressGame();
+        }
+
+        endGame();
     }
+
+    private void progressGame() {}
+
+    private void endGame() {}
 }
