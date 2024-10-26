@@ -7,11 +7,11 @@ import racingcar.util.Validator;
 
 public class Race {
 
-    private final List<Car> Cars;
+    private final List<Car> cars;
     private final int tryCount;
 
     public Race(List<Car> Cars, int tryCount) {
-        this.Cars = new ArrayList<>();
+        this.cars = new ArrayList<>();
         this.tryCount = tryCount;
     }
 
@@ -25,6 +25,12 @@ public class Race {
             if (Validator.isMoreFour(randomNumber)) {
                 car.move();
             }
+        }
+    }
+
+    public void playRace() {
+        for (int i = 0; i < tryCount; i++) {
+            playOneRound(cars);
         }
     }
 

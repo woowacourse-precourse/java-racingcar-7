@@ -29,11 +29,6 @@ public class RaceController {
 
         System.out.println();
         outputView.outputResultMessage();
-        for (int i = 0; i < tryCount; i++) {
-            raceService.playOneRound(cars);
-            outputView.outputOneRoundResult(cars);
-            System.out.println();
-        }
 
         List<String> winners = raceService.decisionWinners(cars);
         outputView.outputWinners(winners);
