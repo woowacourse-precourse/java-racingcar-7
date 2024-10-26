@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.GameService;
+import racingcar.Service.GameService;
 import racingcar.repository.CarRepository;
 
 public class Controller {

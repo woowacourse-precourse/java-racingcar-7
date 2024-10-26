@@ -1,8 +1,5 @@
-package racingcar;
+package racingcar.Service;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.model.Car;
-import racingcar.model.Game;
 import racingcar.repository.GameRepository;
 
 public class GameService {
