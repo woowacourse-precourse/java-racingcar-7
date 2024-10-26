@@ -44,13 +44,18 @@ public class Cars {
     public List<Car> findWinnerCars() {
         int topPosition = findTopPosition();
         List<Car> winners = new ArrayList<>();
-        for (Car car : carList) {
-            if (car.getPosition() == topPosition) {
-                winners.add(car);
-            }
-        }
-        return winners;
 
+        for (Car car : carList) {
+            addCarIfTopPosition(winners, car, topPosition);
+        }
+
+        return winners;
+    }
+
+    private void addCarIfTopPosition(List<Car> winners, Car car, int topPosition) {
+        if (car.getPosition() == topPosition) {
+            winners.add(car);
+        }
     }
 
     private int findTopPosition() {
