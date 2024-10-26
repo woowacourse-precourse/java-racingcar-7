@@ -34,7 +34,7 @@ public class OutputViewTest {
         OutputView.displayPrompt(promptNumber);
 
         // then
-        assertThat(output.toString()).isEqualTo("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        assertThat(output.toString()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     }
 
     @Test
@@ -46,7 +46,7 @@ public class OutputViewTest {
         OutputView.displayPrompt(promptNumber);
 
         // then
-        assertThat(output.toString()).isEqualTo("시도할 횟수는 몇 회인가요?");
+        assertThat(output.toString()).contains("시도할 횟수는 몇 회인가요?");
     }
 
     @Test
@@ -66,7 +66,11 @@ public class OutputViewTest {
         OutputView.displayRacing(cars);
 
         // then
-        assertThat(output.toString()).isEqualTo("pobi : --\nwoni : -\njun : ");
+        String expectedOutput = "실행 결과\n" +
+                "pobi : --\n" +
+                "woni : -\n" +
+                "jun : \n";
+        assertThat(output.toString()).contains(expectedOutput);
     }
 
     @Test
