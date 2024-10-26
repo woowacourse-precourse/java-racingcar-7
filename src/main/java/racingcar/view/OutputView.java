@@ -7,6 +7,8 @@ public class OutputView {
     private static final String OUTPUT_FORMAT_OF_RACE = "%s : %s\n";
     private static final String OUTPUT_FORMAT_OF_WINNER = "최종 우승자 : %s\n";
     private static final String DELIMITER = ", ";
+    private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String INPUT_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public void printRace(Race race) {
         race.getCars().stream().forEach(car -> {
@@ -19,5 +21,13 @@ public class OutputView {
 
     public void printWinner(Race race) {
         System.out.printf(OUTPUT_FORMAT_OF_WINNER, String.join(DELIMITER, race.getWinner()));
+    }
+
+    public void printInputCarNameMessage(){
+        System.out.println(INPUT_CAR_NAME_MESSAGE);
+    }
+
+    public void printInputCountMessage(){
+        System.out.println(INPUT_COUNT_MESSAGE);
     }
 }
