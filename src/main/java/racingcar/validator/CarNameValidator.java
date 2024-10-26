@@ -7,7 +7,7 @@ public class CarNameValidator implements Validator<String[]>{
 
     private static final int MAX_LENGTH = 5;
     private static final int ZERO = 0;
-    private static final String REGEX = "^[a-zA-Z]+$";
+    private static final String REGEX = "^[a-zA-Z가-힣]+$";
     private String[] input;
     private HashSet<String> nameSet;
 

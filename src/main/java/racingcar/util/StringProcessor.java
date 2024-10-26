@@ -6,8 +6,6 @@ import java.util.List;
 public class StringProcessor {
 
     private final static String COMMA = ",";
-    private final static String SPACE = " ";
-    private final static int ONE = 1;
 
     public static String[] process(String input){
 
@@ -21,7 +19,7 @@ public class StringProcessor {
     public static String formatWinner(List<String> winners){
         return String.join(",",winners);
     }
-    
+
     private static String trim(String input){
         return input.trim();
     }

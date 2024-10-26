@@ -70,10 +70,30 @@ class CustomApplicationTest extends NsTest{
     }
 
     @Test
-    void SIMULATE_SINGLE_NAME_TWO_COMMAS(){
+    void SIMULATE_NEGATIVE_TRIAL_NUMBER(){
         assertSimpleTest(
             () -> {
-                assertThatThrownBy(() -> run("pobi,,", "3"))
+                assertThatThrownBy(() -> run("pobi", "-1"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_NON_NUMBER_TRIAL(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi", "a"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_SPECIAL_CHARACTER_CAR_NAME(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi, wo@ni"), "1")
                     .isInstanceOf(IllegalArgumentException.class);
             }
         );
