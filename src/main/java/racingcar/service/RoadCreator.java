@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import racingcar.entity.Road;
+
 public interface RoadCreator {
-    void createRoad();
+    void addRandomRoad(Road road);
 }

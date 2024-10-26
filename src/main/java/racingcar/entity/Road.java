@@ -11,4 +11,9 @@ public class Road {
     public int getRoad() {
         return road;
     }
+
+    public void addRoad(int addLength){
+        this.road+=addLength;
+    }
+
 }
