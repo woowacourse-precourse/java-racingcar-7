@@ -21,16 +21,6 @@ public class Car {
         this.position = INITIAL_POSITION_VALUE;
     }
 
-    private void validate(final String name) {
-        validateLength(name);
-    }
-
-    private void validateLength(final String name) {
-        if (MAX_CAR_NAME_LENGTH < name.length()) {
-            throw new IllegalArgumentException(NOT_ALLOWED_CAR_NAME_LENGTH);
-        }
-    }
-
     public void tryForward() {
         if (canMove()) {
             position++;
@@ -45,6 +35,16 @@ public class Car {
         return POSITION_STRING_VALUE.repeat(position);
     }
 
+    private void validate(final String name) {
+        validateLength(name);
+    }
+
+    private void validateLength(final String name) {
+        if (MAX_CAR_NAME_LENGTH < name.length()) {
+            throw new IllegalArgumentException(NOT_ALLOWED_CAR_NAME_LENGTH);
+        }
+    }
+
     private boolean canMove() {
         return MIN_VALID_NUMBER <= pickRandomNumber();
     }
@@ -53,4 +53,3 @@ public class Car {
         return Randoms.pickNumberInRange(MIN_RANDOM_RANGE, MAX_RANDOM_RANGE);
     }
 }
-

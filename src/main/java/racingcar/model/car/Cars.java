@@ -23,6 +23,25 @@ public class Cars {
         return result.toString();
     }
 
+    public String winners() {
+        List<String> winners = new ArrayList<>();
+        int max = 0;
+        for (Car car : cars) {
+            int position = car.positionToString().length();
+            if (max < position) {
+                max = position;
+            }
+        }
+
+        for (Car car : cars) {
+            int position = car.positionToString().length();
+            if (max == position) {
+                winners.add(car.getName());
+            }
+        }
+        return String.join(RESULT_DELIMITER, winners);
+    }
+
     private void makeResult(final StringBuilder result, final Car car) {
         result.append(car.getName());
         result.append(PROCESS_DELIMITER);
@@ -50,24 +69,5 @@ public class Cars {
             return false;
         }
         return true;
-    }
-
-    public String winners() {
-        List<String> winners = new ArrayList<>();
-        int max = 0;
-        for (Car car : cars) {
-            int position = car.positionToString().length();
-            if (max < position) {
-                max = position;
-            }
-        }
-
-        for (Car car : cars) {
-            int position = car.positionToString().length();
-            if (max == position) {
-                winners.add(car.getName());
-            }
-        }
-        return String.join(RESULT_DELIMITER, winners);
     }
 }

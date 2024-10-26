@@ -14,6 +14,10 @@ public class TryCount {
         this.rawTryCount = rawTryCount;
     }
 
+    public int toInteger() {
+        return Integer.parseInt(rawTryCount);
+    }
+
     private void validate(final String rawTryCount) {
         validateStrip(rawTryCount);
         validateNumeric(rawTryCount);
@@ -41,9 +45,5 @@ public class TryCount {
         if (tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(NOT_ALLOWED_UNDER_MINIMUM_TRY_COUNT);
         }
-    }
-
-    public int toInteger() {
-        return Integer.parseInt(rawTryCount);
     }
 }

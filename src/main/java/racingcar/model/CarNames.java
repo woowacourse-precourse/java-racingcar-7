@@ -13,6 +13,11 @@ public class CarNames {
         this.rawCarNames = rawCarNames;
     }
 
+    public List<String> splitByComma() {
+        return Arrays.stream(rawCarNames.split(","))
+                .toList();
+    }
+
     private void validate(final String rawCarNames) {
         validateStrip(rawCarNames);
     }
@@ -23,10 +28,5 @@ public class CarNames {
             return;
         }
         throw new IllegalArgumentException(NOT_ALLOWED_FIRST_LAST_BLANK);
-    }
-
-    public List<String> splitByComma() {
-        return Arrays.stream(rawCarNames.split(","))
-                .toList();
     }
 }
