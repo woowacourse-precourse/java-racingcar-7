@@ -5,6 +5,7 @@ public class Car {
     private static final int MIN_NAME_LENGTH = 1;
 
     private final String name;
+    private int position = 0;
 
     public Car(String name) {
         validateName(name);
@@ -19,5 +20,15 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            position++;
+        }
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

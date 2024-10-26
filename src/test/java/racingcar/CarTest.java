@@ -36,4 +36,25 @@ public class CarTest {
                     .hasMessageContaining("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
         }
     }
+
+    @Nested
+    @DisplayName("자동차 이동 테스트")
+    class MoveCarTest {
+
+        @Test
+        @DisplayName("MoveStrategy가 참일 때 자동차는 전진한다.")
+        void moveWhenMoveStrategyReturnsTrue() {
+            Car car = new Car("pobi");
+            car.move(() -> true);
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("MoveStrategy가 거짓일 때 자동차는 정지한다.")
+        void stopWhenMoveStrategyReturnsFalse() {
+            Car car = new Car("pobi");
+            car.move(() -> false);
+            assertThat(car.getPosition()).isEqualTo(0);
+        }
+    }
 }
