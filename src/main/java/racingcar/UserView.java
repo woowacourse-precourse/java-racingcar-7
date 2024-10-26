@@ -19,7 +19,20 @@ public class UserView {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
 
-        return Integer.parseInt(Console.readLine());
+        int round;
+
+        try {
+            round = Integer.parseInt(Console.readLine());
+            if (round < 1) {
+                throw new IllegalArgumentException("시도할 횟수는 1이상의 자연수이어야 합니다.");
+            }
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException("시도할 횟수는 숫자로 입력되어야 합니다.");
+        }
+
+
+        return round;
     }
 
     public void displayRace(List<Car> cars) {
