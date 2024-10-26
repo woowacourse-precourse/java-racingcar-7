@@ -12,7 +12,7 @@ public class InputHandler {
     public static List<String> requestCarNames() {
         String carNamesText = Console.readLine();
         List<String> carNames = extractCarNamesToList(carNamesText);
-        validateCarNames(carNames);
+        InputValidator.validateCarNames(carNames);
         return carNames;
     }
 
@@ -23,21 +23,14 @@ public class InputHandler {
         return carNames;
     }
 
-    private static void validateCarNames(List<String> carNames) {
-        carNames.stream()
-                .forEach(carName -> {
-                    InputValidator.validateCarName(carName);
-                });
-    }
-
-    public static int requestTotalRounds(){
+    public static int requestTotalRounds() {
         return convertTotalRoundToInt(Console.readLine());
     }
 
     private static int convertTotalRoundToInt(String input) {
-        try{
+        try {
             return Integer.parseInt(input);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new NumberFormatException(NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }

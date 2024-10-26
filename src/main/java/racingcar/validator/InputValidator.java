@@ -8,11 +8,15 @@ import static racingcar.constants.ErrorMessages.OVER_LENGTH_ERROR_MESSAGE;
 import static racingcar.constants.ErrorMessages.UNDER_LENGTH_ERROR_MESSAGE;
 import static racingcar.constants.FormatConstants.BLANK;
 
+import java.util.List;
+
 public class InputValidator {
-    public static void validateCarName(String carName) {
-        checkLength(carName);
-        checkBlank(carName);
-        checkFormat(carName);
+    public static void validateCarNames(List<String> carNames) {
+        carNames.stream().forEach(carName -> {
+            checkLength(carName);
+            checkBlank(carName);
+            checkFormat(carName);
+        });
     }
 
     private static void checkLength(String carName) {
