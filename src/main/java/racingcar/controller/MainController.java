@@ -34,7 +34,7 @@ public class MainController {
         final String carNameInput = InputView.readCarNameInput();
         final List<String> carStrings = splitCarNameInput(carNameInput);
         final List<Car> cars = convertToCars(carStrings);
-        final Racing racing = Racing.create(cars);
+        final Racing racing = new Racing(cars);
 
         final String trialNumberInput = InputView.readTrialNumberInput();
         final int trialNumber = parseTrialNumber(trialNumberInput);
