@@ -5,33 +5,48 @@ import java.util.*;
 public class GameModel {
     public Map<String, Integer> getCarMap(String[] carNames) {
         Map<String, Integer> carMap = new LinkedHashMap<>();
+
         trimCarNames(carNames);
 
-        for (String carName : carNames) {
-            if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-            if (!carName.isEmpty()) carMap.put(carName, 0);
+        List<String> validCarNames = Arrays.stream(carNames)
+                                            .filter(name -> !name.isEmpty())
+                                            .toList();
+
+        validateCarNames(validCarNames);
+
+        for (String carName : validCarNames) {
+            carMap.put(carName, 0);
         }
+
         return carMap;
     }
 
-    private static void trimCarNames(String[] carNames) {
+    private static void validateCarNames(List<String> carNames) {
+        for (String carName : carNames) {
+            if (carName.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+        if (carNames.size() < 2) throw new IllegalArgumentException("자동차는 2대 이상이어야 합니다.");
+    }
+
+    private void trimCarNames(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
             carNames[i] = carNames[i].strip();
         }
     }
 
     public int getRound(String gameRound) {
-        int numRound;
+        getNumRound(gameRound);
+        return Integer.parseInt(gameRound);
+    }
+
+    private void getNumRound(String gameRound) {
         try {
-            numRound = Integer.parseInt(gameRound);
+            int numRound = Integer.parseInt(gameRound);
+            if (numRound < 0) throw new IllegalArgumentException("음수는 입력이 불가능합니다.");
             System.out.println();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("정수 이외의 값은 입력이 불가능합니다.");
         }
-        if (numRound < 0) {
-            throw new IllegalArgumentException("음수는 입력이 불가능합니다.");
-        }
-        return numRound;
     }
 
     public List<String> getWinner(Map<String, Integer> carMap) {
