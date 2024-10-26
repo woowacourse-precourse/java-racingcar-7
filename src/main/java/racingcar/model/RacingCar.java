@@ -1,0 +1,31 @@
+package racingcar.model;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+public class RacingCar {
+    private CarName carName;
+    private Position position;
+
+    public RacingCar(CarName carName) {
+        this.carName = carName;
+        this.position = new Position();
+    }
+
+    public static RacingCar of(CarName carName) {
+        return new RacingCar(carName);
+    }
+
+    public void operatingMoveOrStop() {
+        if (isMoveForward()) {
+            position.moveForward();
+        }
+    }
+
+    public CarName getCarName() {
+        return carName;
+    }
+
+    private boolean isMoveForward() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+}
