@@ -17,8 +17,7 @@ public class RacingRoundService {
     }
 
     private boolean canGo() {
-        int randomDecisionNumber = pickNumberInRange(0,9);
-        return randomDecisionNumber > 3;
+        return pickNumberInRange(0,9) > 3;
     }
 
 }

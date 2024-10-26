@@ -21,7 +21,7 @@ public class InputView {
         return inputCarNames;
     }
 
-    public Integer getTotalRacingRound(String inputTotalRound) {
+    public Integer getTotalRacingRound() {
         return totalRacingRound;
     }
 
