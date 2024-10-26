@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 import racingcar.mock.MockRandomGenerator;
 import racingcar.util.RandomGenerator;
 
-class CarsContainerTest {
+class CarContainerTest {
 
-    private CarsContainer carsContainer;
+    private CarContainer carContainer;
 
     @BeforeEach
     void setUp() {
-        carsContainer = new CarsContainer(
+        carContainer = new CarContainer(
                 List.of(
                         new Car("song"),
                         new Car("park"),
@@ -37,10 +37,10 @@ class CarsContainerTest {
                 new Car("lee"),
                 new Car("kim")
         );
-        CarsContainer carsContainer = new CarsContainer(originalCars);
+        CarContainer carContainer = new CarContainer(originalCars);
 
         //when
-        List<Car> copyCars = carsContainer.getCars();
+        List<Car> copyCars = carContainer.getCars();
 
         //then
         assertAll(
@@ -68,8 +68,8 @@ class CarsContainerTest {
             );
 
             //when
-            carsContainer.moveAll(randomGenerator);
-            List<String> actual = carsContainer.getCurrentRoundResult();
+            carContainer.moveAll(randomGenerator);
+            List<String> actual = carContainer.getCurrentRoundResult();
 
             //then
             assertThat(actual).isEqualTo(expected);
@@ -88,8 +88,8 @@ class CarsContainerTest {
             );
 
             //when
-            carsContainer.moveAll(randomGenerator);
-            List<String> actual = carsContainer.getCurrentRoundResult();
+            carContainer.moveAll(randomGenerator);
+            List<String> actual = carContainer.getCurrentRoundResult();
 
             //then
             assertThat(actual).isEqualTo(expected);

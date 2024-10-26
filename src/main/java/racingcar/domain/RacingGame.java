@@ -6,24 +6,24 @@ import racingcar.util.RandomGenerator;
 
 public class RacingGame {
 
-    private final CarsContainer carsContainer;
+    private final CarContainer carContainer;
     private final RandomGenerator randomGenerator;
 
     public RacingGame(String invalidCarNames, RandomGenerator randomGenerator) {
         CarsParser CarsParser = new CarsParser();
 
-        this.carsContainer = new CarsContainer(CarsParser.parse(invalidCarNames));
+        this.carContainer = new CarContainer(CarsParser.parse(invalidCarNames));
         this.randomGenerator = randomGenerator;
     }
 
     public String proceedRound() {
-        carsContainer.moveAll(randomGenerator);
+        carContainer.moveAll(randomGenerator);
 
-        return String.join("", carsContainer.getCurrentRoundResult());
+        return String.join("", carContainer.getCurrentRoundResult());
     }
 
     public String findWinnerCarNames() {
-        List<Car> cars = carsContainer.getCars();
+        List<Car> cars = carContainer.getCars();
         int maxPosition = findMaxPosition(cars);
 
         return cars.stream()

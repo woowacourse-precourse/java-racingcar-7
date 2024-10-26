@@ -3,11 +3,11 @@ package racingcar.domain;
 import java.util.List;
 import racingcar.util.RandomGenerator;
 
-public class CarsContainer {
+public class CarContainer {
 
     private final List<Car> cars;
 
-    public CarsContainer(List<Car> cars) {
+    public CarContainer(List<Car> cars) {
         this.cars = cars;
     }
 
