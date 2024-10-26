@@ -25,4 +25,10 @@ public class Car {
         this.name = name;
         this.moveCount = moveCount;
     }
+
+    @Override
+    public String toString() {
+        return name + ", " + moveCount;
+    }
+
 }
