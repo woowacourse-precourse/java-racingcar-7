@@ -17,7 +17,7 @@ public class Cars {
         this.randomGenerator = randomGenerator;
     }
 
-    private void validateDuplicatedNames(List<Car> car) {
+    private void validateDuplicatedNames(List<Car> cars) {
         Set<String> uniqueNames = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toSet());
