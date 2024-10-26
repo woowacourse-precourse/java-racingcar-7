@@ -31,4 +31,13 @@ public class ValidatorTest {
         String validInput = "Ferrari";
         assertDoesNotThrow(() -> validator.validateInputNotBlank(validInput));
     }
+
+    @DisplayName("자동차 이름 길이가 6이 넘어가면 예외 발생")
+    @Test
+    void validateCarNameLength_ShouldThrowException_WhenCarNameIsTooLong() {
+        String[] cars = {"Ferrari", "Porsche"};
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validateCarNameLength(cars));
+    }
+
 }
