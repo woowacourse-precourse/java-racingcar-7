@@ -4,14 +4,17 @@ public class Car {
     private final String name; // 이름을 변경할 일은 없음.
     private int positon;
 
+    public int getPositon() { // alt + insert 를 통한 getter 생성
+        return positon;
+    }
 
     public Car(String name) {
         this.name = name;
         this.positon = 0;
     }
 
-    public void move(boolean con) {
-        if(con) positon++;
+    public void move(boolean canMove) {
+        if(canMove) positon++;
     }
 
     // Object 클래스의 toString함수를 오버라이드
