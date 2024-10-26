@@ -71,4 +71,10 @@ public class Main {
 
         return repeatCount;
     }
+
+    public void printResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + (car.getMove()?"-":""));
+        }
+    }
 }

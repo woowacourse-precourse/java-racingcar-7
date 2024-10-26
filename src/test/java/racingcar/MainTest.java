@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -81,6 +85,19 @@ class MainTest extends NsTest {
             run("pobi,woni,jun");
             assertThat(main.repeatCreation()).isEqualTo(3);
         });
+    }
+
+    @Test
+    @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
+    void PrintCarNameAndSingleMove() {
+        Car car = new Car("pobi", false);
+        Car car2 = new Car("jun", true);
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+        cars.add(car2);
+        main.printResult(cars);
+        assertThat(output()).contains("pobi :");
+        assertThat(output()).contains("jun : -");
     }
 
     @Override

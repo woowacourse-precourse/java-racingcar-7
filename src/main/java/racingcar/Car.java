@@ -16,4 +16,8 @@ public class Car {
     public boolean getMove() {
         return move;
     }
+
+    public String getName() {
+        return name;
+    }
 }
