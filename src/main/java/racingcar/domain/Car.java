@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    private final static int MOVE_STANDARD = 4;
     private final String carName;
     private int position;
 
@@ -8,9 +9,13 @@ public class Car {
         this.carName = carName;
     }
 
-    public void move(int randomNumber) {
-        if(randomNumber >= 4) {
-            position++;
+    private void move() {
+        position++;
+    }
+
+    public void judgeMove(int randomNumber) {
+        if (randomNumber >= MOVE_STANDARD) {
+            move();
         }
     }
 
