@@ -42,14 +42,14 @@
 
 ## 기능 구현 | 예외 상황 정리
 
-- [ ] 자동차 이름 입력에 공백이 들어가면 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 자동차 이름의 길이가 5자를 초과하게 되면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 자동차 이름을 입력할 때, 쉼표(,)가 연속 두 번 입력되면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 자동차 이름을 아무것도 입력하지 않으면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 입력한 자동차 이름이 중복된다면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 자동차 이름이 공백이거나 , `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 시도할 횟수에를 입력할 때 너무 큰 값이 들어가면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
-- [ ] 시도할 횟수에 정수가 아닌 실수나 음수 또는 문자가 들어가면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 자동차 이름 입력에 공백이 들어가면 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 자동차 이름의 길이가 5자를 초과하게 되면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 자동차 이름을 입력할 때, 쉼표(,)가 연속 두 번 입력되면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 자동차 이름을 아무것도 입력하지 않으면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 입력한 자동차 이름이 중복된다면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 자동차 이름이 공백이거나 , `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 시도할 횟수에를 입력할 때 너무 큰 값이 들어가면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
+- [x] 시도할 횟수에 정수가 아닌 실수나 음수 또는 문자가 들어가면, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료하여야 한다.
 
 ***
 
