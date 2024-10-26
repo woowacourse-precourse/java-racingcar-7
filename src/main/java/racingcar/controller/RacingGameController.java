@@ -30,7 +30,7 @@ public class RacingGameController {
         });
         outputView.printResultTitle();
         IntStream.range(0, tryCount).forEach(i -> {
-            racingGame.playRound();
+            racingGame.tryRound();
             List<Car> cars = racingGame.getCurrentCarState();
             outputView.printRoundResult(RaceResultDTO.from(cars));
         });
@@ -46,9 +46,9 @@ public class RacingGameController {
     }
 
     public int inputTryCount() {
-        outputView.requestTotalRound();
+        outputView.requestTotalTryRound();
         try {
-            return Integer.parseInt(inputView.readTotalRound());
+            return Integer.parseInt(inputView.readTryCount());
         }catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자로 입력해주세요.");
         }

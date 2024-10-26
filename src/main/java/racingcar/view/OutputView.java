@@ -29,7 +29,7 @@ public class OutputView {
         REQUEST_NAME_MESSAGE.printMessage();
     }
 
-    public void requestTotalRound() {
-        REQUEST_TRY_COUNT_MESSAGE.printMessage();
+    public void requestTotalTryRound() {
+        REQUEST_TOTAL_TRY_COUNT_MESSAGE.printMessage();
     }
 }

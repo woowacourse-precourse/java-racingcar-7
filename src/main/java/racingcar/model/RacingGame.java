@@ -7,29 +7,29 @@ import racingcar.model.policy.MovementPolicy;
 public class RacingGame {
 
     private final List<Car> participants = new ArrayList<>();
-    private int currentRound = 0;
-    private final int totalRound;
+    private int currentTryCount = 0;
+    private final int totalTryCount;
 
     private MovementPolicy movementPolicy;
 
     public RacingGame(
             MovementPolicy movementPolicy,
-            int totalRound
+            int totalTryCount
     ) {
         this.movementPolicy = movementPolicy;
-        this.totalRound = totalRound;
+        this.totalTryCount = totalTryCount;
     }
 
     public void setMovementPolicy(MovementPolicy movementPolicy) {
         this.movementPolicy = movementPolicy;
     }
 
-    public void playRound() {
-        if (currentRound >= totalRound) {
+    public void tryRound() {
+        if (currentTryCount >= totalTryCount) {
             throw new IllegalArgumentException("모든 라운드를 진행하였습니다");
         }
         participants.forEach(movementPolicy::move);
-        ++currentRound;
+        ++currentTryCount;
     }
 
     public void join(Car car) {

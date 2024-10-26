@@ -44,7 +44,7 @@ class RacingGameTest extends NsTest {
                     racingGame.join(new Car("car1"));
                     racingGame.join(new Car("car2"));
                     racingGame.join(new Car("car3"));
-                    racingGame.playRound();
+                    racingGame.tryRound();
                     List<Car> cars = racingGame.getCurrentCarState();
                     assertThat(cars.get(0).getPosition()).isZero();
                     assertThat(cars.get(1).getPosition()).isEqualTo(1);
@@ -62,7 +62,7 @@ class RacingGameTest extends NsTest {
         racingGame.join(car1);
         racingGame.join(car2);
         racingGame.join(car3);
-        racingGame.playRound();
+        racingGame.tryRound();
         List<Car> winners = racingGame.getWinners();
         assertThat(winners).contains(car2, car3);
     }

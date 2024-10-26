@@ -8,7 +8,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String readTotalRound() {
+    public String readTryCount() {
         return Console.readLine();
     }
 }
