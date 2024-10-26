@@ -23,10 +23,10 @@ public class RaceTest {
         Race race = new Race(cars);
 
         // When
-        String[] carNames = race.getCarNames();
+        List<String> carNames = race.getCarNames();
 
         // Then
-        assertArrayEquals(new String[]{"pobi", "woni"}, carNames);
+        assertArrayEquals(new String[]{"pobi", "woni"}, carNames.toArray());
     }
 
     @Test
@@ -109,10 +109,10 @@ public class RaceTest {
         race.runSingleRound(randomNumberGenerator);
 
         // When
-        String[] winners = race.getWinners();
+        List<String> winners = race.getWinners();
 
         // Then
-        assertArrayEquals(new String[]{"d"}, winners);
+        assertArrayEquals(new String[]{"d"}, winners.toArray());
     }
 
     @Test
@@ -131,10 +131,10 @@ public class RaceTest {
         race.runSingleRound(randomNumberGenerator);
 
         // When
-        String[] winners = race.getWinners();
+        List<String> winners = race.getWinners();
 
         // Then
-        assertArrayEquals(new String[]{"c", "d"}, winners);
+        assertArrayEquals(new String[]{"c", "d"}, winners.toArray());
     }
 
 }
