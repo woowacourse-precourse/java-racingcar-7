@@ -14,7 +14,7 @@ public class InputView {
         return parseCarNames(input);
     }
 
-    private List<String> parseCarNames(String input) {
+    public List<String> parseCarNames(String input) {
         List<String> carNames = Arrays.asList(input.split(DELIMITER));
         validateCarNames(carNames);
         return carNames;
