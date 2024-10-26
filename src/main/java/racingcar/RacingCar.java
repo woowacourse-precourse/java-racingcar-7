@@ -2,18 +2,16 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedWriter;
-
 /**
  * carRace 에 참가하는 개별 자동차객체
  */
 public class RacingCar {
     private static final String DISTANCE_CHAR = "-";
-    private final String carName;
-    private int carDistance;
+    private final String name;
+    private int traveledDistance;
 
     private void move() {
-        carDistance++;
+        traveledDistance++;
     }
 
     /**
@@ -32,14 +30,21 @@ public class RacingCar {
      * @return 출력해야되는 현재상태
      */
     public String getCurrentState() {
-        return carName
+        return name
                 + " : "
-                + DISTANCE_CHAR.repeat(carDistance);
+                + DISTANCE_CHAR.repeat(traveledDistance);
     }
 
+    public int getTraveledDistance() {
+        return traveledDistance;
+    }
 
-    public RacingCar(String carName) {
-        this.carName = carName;
-        carDistance = 0;
+    public String getName() {
+        return name;
+    }
+
+    public RacingCar(String name) {
+        this.name = name;
+        traveledDistance = 0;
     }
 }

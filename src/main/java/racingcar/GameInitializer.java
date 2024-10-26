@@ -39,6 +39,7 @@ public class GameInitializer {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String numRoundStr = OhMyConsole.readLine();
+        OhMyConsole.close();
 
         try {
             int numRound = Integer.parseInt(numRoundStr);
@@ -52,7 +53,6 @@ public class GameInitializer {
 
     /** GameInitializer 클래스의 프로시져 함수 */
     public static void initGame(CarRace race) {
-
         initRacingCars(race);
         initRaceRound(race);
     }
