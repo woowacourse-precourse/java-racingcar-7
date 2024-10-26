@@ -6,7 +6,7 @@ public class Winner {
 
     public static String printWinner(List<Car> carList){
         String winner = "";
-        int maxPosition = getMasPosition(carList);
+        int maxPosition = getMaxPosition(carList);
         for (Car car : carList) {
             if(car.getPosition() == maxPosition){
                 winner += car.getCarName() + ", ";
@@ -15,7 +15,7 @@ public class Winner {
         return winner.replaceAll(", $", "");
     }
 
-    public static int getMasPosition(List<Car> carList){
+    public static int getMaxPosition(List<Car> carList){
         int maxPosition = 0;
         for (Car car : carList) {
             if(car.getPosition() > maxPosition){
