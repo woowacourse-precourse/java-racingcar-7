@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Cars;
 import racingcar.handler.NameRequestHandler;
 import racingcar.handler.NumberRequestHandler;
 
@@ -16,5 +17,6 @@ public class RacingController {
     public void run() {
         String[] names = nameRequestHandler.getNames();
         int number = numberRequestHandler.getNumber();
+        Cars cars = new Cars(names);
     }
 }
