@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 public class InputConverter {
     private static final String COMMA = ",";
 
+    private InputConverter(){
+    }
+
+
     public static List<String> convertNames(String input) {
         String trimmedInput = input.trim();
         return Arrays.stream(trimmedInput.split(COMMA))

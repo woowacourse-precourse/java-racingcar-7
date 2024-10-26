@@ -11,6 +11,9 @@ public class InputValidator {
     private static final Pattern TRAILING_COMMA_PATTERN = Pattern.compile(".*,$");
     private static final Pattern VALID_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z가-힣0-9,\\s]+$");
 
+    private InputValidator() {
+    }
+
     public static void validateCarNamesInput(String input) {
         checkEmptyInput(input);
         checkTrailingComma(input);

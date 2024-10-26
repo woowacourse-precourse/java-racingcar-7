@@ -11,6 +11,10 @@ public class OutputView {
     private static final String MOVE_EXPRESS = "-";
     private static final String CAR_POSITION_FORMAT = "%s : %s";
 
+    private OutputView(){
+    }
+
+
     public static void printRaceResult(Map<String, Integer> raceResult) {
         raceResult.forEach(OutputView::printCarPosition);
         System.out.println();
