@@ -45,6 +45,18 @@ class ValidatorTest extends NsTest {
                 .hasMessageContaining("자동차 이름은 5자 이하여야 합니다");
     }
 
+    @Test
+    @DisplayName("자동차 이름에 중복이 있는 경우 예외 발생 테스트 (대소문자 구분 없이)")
+    void validateCarNames_withDuplicateNames_shouldThrowException() {
+        // Given
+        String[] names = {"pobi", "crong", "Pobi"};
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateCarNames(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름에 중복이 존재합니다");
+    }
+
     @Override
     public void runMain() {
     }
