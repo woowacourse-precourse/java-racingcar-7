@@ -15,24 +15,24 @@ public class Racing {
         }
     }
 
-    public void playRound(List<Car> carList) {
+    private void playRound(List<Car> carList) {
         for (Car car : carList) {
             moveCar(car);
             car.printCurrentPosition();
         }
     }
 
-    public void moveCar(Car car) {
+    private void moveCar(Car car) {
         if (isMovable()) {
             car.move();
         }
     }
 
-    public boolean isMovable() {
+    private boolean isMovable() {
         return generateRandomNumber() >= 4;
     }
 
-    public int generateRandomNumber() {
+    private int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
