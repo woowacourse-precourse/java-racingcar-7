@@ -15,7 +15,7 @@ public class Input {
     }
 
     public int getAttemptedNumber() {
-
+        return Integer.parseInt(readLine());
     }
 
 }
