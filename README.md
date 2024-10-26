@@ -12,11 +12,11 @@ src/
 │       │   ├───controller
 │       │   │   └───RacingCarController.java // 컨트롤러
 │       │   ├───model
-│       │   │   └───RacingScoreData.java     // 경주 점수 데이터
+│       │   │   └───RacingScoreBoard.java     // 자동차 경주 점수판
 │       │   ├───service
-│       │       ├───CarNameParser.java       // 자동차 이름 분리 기능
-│       │       ├───GetAttemptCount.java     // 실행 횟수 변환 기능
-│       │   │   └───RacingCarService.java    // 서비스
+│       │   │   ├───CarNameParser.java       // 자동차 이름 분리 기능
+│       │   │   ├───GetAttemptCount.java     // 실행 횟수 변환 기능
+│       │   │   └───RaceExecutor.java        // 자동차 경주 진행 기능
 │       │   ├───validator
 │       │   │   └───InputValidator.java      // 유효성 검사
 │       │   └───view
@@ -28,6 +28,7 @@ src/
     └───java
         ├───custom
         │   ├───ApplicationCustomTest.java    // 커스텀 테스트
+        │   ├───ModelTest                     // 모델 테스트       
         │   ├───ServiceTest.java              // 서비스 테스트
         │   └───ValidatorTest                 // 유효성 검사 테스트
         └───racingcar 
