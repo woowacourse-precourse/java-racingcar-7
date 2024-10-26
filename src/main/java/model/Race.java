@@ -11,8 +11,9 @@ public class Race {
     private final int attempts;
     private final List<String> winners;
     private final MoveStrategy moveStrategy;
+
     public Race(List<String> carNames, int attempts, MoveStrategy moveStrategy) {
-        if(attempts < 0) {
+        if (attempts < 0) {
             throw new IllegalArgumentException("attempts can't be less than 0");
         }
         this.cars = new ArrayList<>(carNames.size());
@@ -20,48 +21,48 @@ public class Race {
         this.moveStrategy = moveStrategy;
         this.winners = new ArrayList<>();
 
-        for(String name : carNames) {
+        for (String name : carNames) {
             this.cars.add(new Car(name));
         }
     }
 
-    public void attemptOnce(){
-        for(Car car : cars) {
+    public void attemptOnce() {
+        for (Car car : cars) {
             car.move(moveStrategy);
         }
     }
 
     public void startRace(RaceStatusCallback callback) {
-        for(int i = 0; i < attempts; i++) {
+        for (int i = 0; i < attempts; i++) {
             attemptOnce();
-            if(callback != null) {
+            if (callback != null) {
                 callback.onAttempt(new ArrayList<>(cars));
             }
         }
     }
 
 
-    public List<String> getWinners(){
+    public List<String> getWinners() {
         int winnerPosition = getWinnerPosition();
-        for (Car car: cars) {
-           if(checkWinner(car, winnerPosition)) {
-               addWinner(car);
-           }
-       }
-       return winners;
+        for (Car car : cars) {
+            if (checkWinner(car, winnerPosition)) {
+                addWinner(car);
+            }
+        }
+        return winners;
     }
 
-    private boolean checkWinner(Car car, int winnerPosition){
+    private boolean checkWinner(Car car, int winnerPosition) {
         return (car.getPosition() == winnerPosition);
     }
 
-    private void addWinner(Car car){
-        if(checkWinner(car, getWinnerPosition())) {
+    private void addWinner(Car car) {
+        if (checkWinner(car, getWinnerPosition())) {
             winners.add(car.getName());
         }
     }
 
-    public int getWinnerPosition(){
+    public int getWinnerPosition() {
         return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
     }
 }

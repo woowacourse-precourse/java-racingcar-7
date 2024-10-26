@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Output {
 
-    public static void printRaceStart(){
+    public static void printRaceStart() {
         System.out.println("\n실행 결과");
     }
 
     public static void printRaceStatus(List<Car> cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             System.out.println(car);
         }
         System.out.println();

@@ -20,7 +20,7 @@ public class Car {
     }
 
     public void move(MoveStrategy moveStrategy) {
-        if(moveStrategy.canMove()) {
+        if (moveStrategy.canMove()) {
             this.position++;
         }
     }

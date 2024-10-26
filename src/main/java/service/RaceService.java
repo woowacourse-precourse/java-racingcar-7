@@ -15,7 +15,7 @@ public class RaceService {
         race.startRace(callback);
     }
 
-    public List<String> getWinners(){
+    public List<String> getWinners() {
         return race.getWinners();
     }
 }

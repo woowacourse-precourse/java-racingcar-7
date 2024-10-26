@@ -9,7 +9,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean canMove() {
-        int random = Randoms.pickNumberInRange(0,9);
+        int random = Randoms.pickNumberInRange(0, 9);
         return random >= MOVE_THRESHOLD;
     }
 }
