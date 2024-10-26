@@ -14,7 +14,7 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
-    private List<Car> findWinners() {
+    public List<Car> findWinners() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
