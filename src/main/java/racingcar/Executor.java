@@ -44,27 +44,27 @@ public class Executor {
     }
 
 
-    private void executeForCount(List<Car> cars, long repeatCount) {
+    public void executeForCount(List<Car> cars, long repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
             moveCars(cars);
             ioController.printResults(cars);
         }
     }
 
-    private void moveCars(List<Car> cars) {
+    public void moveCars(List<Car> cars) {
         for (Car car : cars) {
             moveCar(car);
         }
     }
 
-    private void moveCar(Car car) {
+    public void moveCar(Car car) {
         int randomVal = Randoms.pickNumberInRange(0, 9);
         if (moveStandard <= randomVal) {
             car.move();
         }
     }
 
-    private List<Car> getWinners(List<Car> cars) {
+    public List<Car> getWinners(List<Car> cars) {
         long maxMoveCount = 0;
         for (Car car : cars) {
             if (maxMoveCount < car.getMoveCount()) {
