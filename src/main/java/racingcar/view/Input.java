@@ -15,6 +15,8 @@ public class Input {
                 throw new IllegalArgumentException("자동차 이름에 null이 포함되어 있습니다.");
             } else if (carName.isEmpty() || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름이 비어 있습니다.");
+            } else if (carName.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
             }
         });
 
