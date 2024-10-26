@@ -12,6 +12,9 @@ import static java.lang.Integer.*;
 public class Application {
 
     public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final int MIN_RANDOM_VALUE = 0;
+    public static final int MAX_RANDOM_VALUE = 9;
+    public static final int ADVANCE_THRESHOLD = 4;
 
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -31,8 +34,19 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountInput = Console.readLine();
+        int tryCount = Integer.parseInt(tryCountInput);
 
         List<Car> cars = initializeCars(carNameList);
+        for(int i = 0; tryCount > i; i++){
+            for (Car car : cars) {
+                int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
+                if (randomValue >= ADVANCE_THRESHOLD) {
+                    car.advance();
+                }
+                System.out.println(car.getCarName() + " : " + "-".repeat(car.getPosition()));
+            }
+            System.out.println();
+        }
    }
 
     private static List<Car> initializeCars(List<String> carNameList) {
