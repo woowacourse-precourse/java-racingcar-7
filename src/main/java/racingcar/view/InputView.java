@@ -17,6 +17,13 @@ public class InputView {
         return parseCarNames(input);
     }
 
+    public Integer readMoveCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = readLine();
+
+        return Integer.parseInt(input);
+    }
+
     public List<String> parseCarNames(String input) {
         List<String> carNames = Arrays.asList(input.split(DELIMITER));
         validateCarNames(carNames);
