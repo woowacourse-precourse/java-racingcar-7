@@ -24,4 +24,10 @@ public class Validator {
             throw new IllegalArgumentException("시도 횟수를 올바르게 입력해주세요.");
         }
     }
+
+    public void validateCarNameLength(Cars cars) {
+        for (Car car : cars.getCarList()) {
+            if(car.getName().length() > 4) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능하다.");
+        }
+    }
 }
