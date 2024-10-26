@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class Application {
    
         List<Car> cars = initializeCars(carNames); // 3번 기능: 자동차 객체 생성 및 초기화
         System.out.println("초기화된 자동차: " + cars); // 초기화된 자동차 출력 (디버깅 용도)
-        // 이후 기능 구현 예정
+        
+        race(cars, attempts); // 4번 기능: 경주 진행
     }
      /**
     /**
@@ -69,6 +71,40 @@ public class Application {
             cars.add(new Car(name)); // 각 자동차 이름을 사용하여 Car 객체 생성
         }
         return cars;
+    }
+    /**
+     * 주어진 시도 횟수만큼 경주를 진행하며 각 라운드의 결과를 출력하는 메서드
+     * @param cars 경주에 참가하는 자동차 목록
+     * @param attempts 경주 시도 횟수
+     */
+    private static void race(List<Car> cars, int attempts) {
+        System.out.println("실행 결과"); // 경주 시작 알림
+        for (int i = 0; i < attempts; i++) {
+            playRound(cars); // 각 라운드마다 자동차를 움직임
+            printRoundResult(cars); // 라운드 결과 출력
+        }
+    }
+    /**
+     * 각 라운드에서 자동차가 전진할지 멈출지 결정하는 메서드
+     * @param cars 경주에 참가하는 자동차 목록
+     */
+    private static void playRound(List<Car> cars) {
+        for (Car car : cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9); // 0에서 9 사이의 무작위 값 생성
+            if (randomNumber >= 4) {
+                car.move(); // 무작위 값이 4 이상일 경우 자동차 전진
+            }
+        }
+    }
+    /**
+     * 각 라운드가 끝난 후 자동차의 현재 상태를 출력하는 메서드
+     * @param cars 경주에 참가하는 자동차 목록
+     */
+    private static void printRoundResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car); // 각 자동차의 현재 상태 출력
+        }
+        System.out.println(); // 라운드 간 줄바꿈
     }
 }
 /**
