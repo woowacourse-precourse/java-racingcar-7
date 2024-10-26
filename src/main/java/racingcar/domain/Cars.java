@@ -11,6 +11,7 @@ public class Cars {
         this.cars = cars;
     }
 
+    /* 기본 생성자 */
     public static Cars createFromCarNames(final List<String> carNames) {
         validateCarCount(carNames.size());
         List<Car> cars = convertToCars(carNames);
