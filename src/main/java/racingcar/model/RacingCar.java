@@ -16,6 +16,7 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int distanceCovered) {
+        Validator.validateName(name);
         this.name = name;
         this.distanceCovered = distanceCovered;
     }
