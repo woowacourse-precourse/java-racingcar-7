@@ -8,7 +8,7 @@ public class RaceStorage {
     }
 
     public void addResult(String result) {
-        storage.append(result).append("\n");  // 줄바꿈 포함해 저장
+        storage.append(result).append("\n");
     }
 
     public void addBlankLine() {
