@@ -17,6 +17,10 @@ public class Car {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
 
     public void move(int randomInt) {
         if (randomInt >= 4) {
