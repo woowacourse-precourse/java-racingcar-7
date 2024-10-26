@@ -61,17 +61,22 @@ public class Application {
     private static void printWinner(List<String> cars, List<Integer> moves) {
         int maxValue = moves.stream().max(Integer::compare).orElse(0);
 
-        List<Integer> maxIndices = new ArrayList<>();
-        for (int i = 0; i < moves.size(); i++) {
-            if (moves.get(i).equals(maxValue)) {
-                maxIndices.add(i);
-            }
-        }
+        List<Integer> maxIndices = getMaxIndices(moves, maxValue);
 
         String result = String.join(", ", maxIndices.stream()
                 .map(index -> cars.get(index))
                 .collect(Collectors.toList()));
 
         System.out.println("최종 우승자 : " + result);
+    }
+
+    private static List<Integer> getMaxIndices(List<Integer> moves, int maxValue) {
+        List<Integer> maxIndices = new ArrayList<>();
+        for (int i = 0; i < moves.size(); i++) {
+            if (moves.get(i).equals(maxValue)) {
+                maxIndices.add(i);
+            }
+        }
+        return maxIndices;
     }
 }
