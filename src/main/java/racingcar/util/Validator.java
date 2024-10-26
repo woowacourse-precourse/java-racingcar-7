@@ -10,33 +10,43 @@ public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
     private static final String PRINTABLE_PATTERN = "\\p{Print}+";
 
-    public static void carNameValidate(List<String> carNames) {
-        Set<String> uniqueCarNames = new HashSet<>();
+    public static void carNamesValidate(List<String> carNames) {
+        validateCarListSize(carNames);
+        validateCarNames(carNames);
+        checkForDuplicateNames(carNames);
+    }
 
-        if (carNames.size() > Cars.MAX_CAR_COUNT) {
-            throw new IllegalArgumentException();
-        }
-        if (carNames.size() == 0) {
-            throw new IllegalArgumentException();
-        }
-        for (String carName : carNames) {
-            if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException();
-            }
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-            if (!uniqueCarNames.add(carName)) {
-                throw new IllegalArgumentException();
-            }
-            if (!carName.matches(VALID_NAME_PATTERN)) {
-                throw new IllegalArgumentException();
-            }
-            if (!carName.matches(PRINTABLE_PATTERN)) {
-                throw new IllegalArgumentException();
-            }
+    private static void validateCarListSize(List<String> carNames) {
+        if (carNames.isEmpty() || carNames.size() > Cars.MAX_CAR_COUNT) {
+            throw new IllegalArgumentException("Car list size is invalid");
         }
     }
+
+    private static void validateCarNames(List<String> carNames) {
+        for (String carName : carNames) {
+            validateCarName(carName);
+        }
+    }
+
+    private static void validateCarName(String carName) {
+        if (carName == null || carName.isBlank()) {
+            throw new IllegalArgumentException("Car name cannot be null or blank");
+        }
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("Car name cannot exceed 5 characters");
+        }
+        if (!carName.matches(VALID_NAME_PATTERN) || !carName.matches(PRINTABLE_PATTERN)) {
+            throw new IllegalArgumentException("Car name contains invalid characters");
+        }
+    }
+
+    private static void checkForDuplicateNames(List<String> carNames) {
+        Set<String> uniqueCarNames = new HashSet<>(carNames);
+        if (uniqueCarNames.size() < carNames.size()) {
+            throw new IllegalArgumentException("Car names must be unique");
+        }
+    }
+
 
     public static void gameRoundValidate(String input) {
         validateNullOrBlank(input);

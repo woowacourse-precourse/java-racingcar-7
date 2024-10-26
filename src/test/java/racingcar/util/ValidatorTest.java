@@ -16,7 +16,7 @@ public class ValidatorTest {
     @DisplayName("자동차 이름이 5글자를 넘으면 예외 발생")
     void carNameLengthTest() {
         // 5글자 이상의 이름을 포함한 리스트로 검증
-        assertThatThrownBy(() -> Validator.carNameValidate(List.of("pobi", "polar", "ihavelongname")))
+        assertThatThrownBy(() -> Validator.carNamesValidate(List.of("pobi", "polar", "ihavelongname")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,7 +24,7 @@ public class ValidatorTest {
     @DisplayName("자동차 이름이 중복일 경우 예외 발생")
     void carNameDuplicateTest() {
         // 5글자 이상의 이름을 포함한 리스트로 검증
-        assertThatThrownBy(() -> Validator.carNameValidate(List.of("pobi", "pobi", "ihavelongname")))
+        assertThatThrownBy(() -> Validator.carNamesValidate(List.of("pobi", "pobi", "ihavelongname")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -33,7 +33,7 @@ public class ValidatorTest {
     @DisplayName("자동차 이름이 빈 문자열일 경우 예외 발생")
     void carNameIsBlankTest(String input) {
         List<String> carNames = List.of(input);
-        assertThatThrownBy(() -> Validator.carNameValidate(carNames))
+        assertThatThrownBy(() -> Validator.carNamesValidate(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,7 +42,7 @@ public class ValidatorTest {
     @DisplayName("자동차 이름은 영어와 숫자만 허용")
     void carNameMatchPatternTest(String input) {
         List<String> carNames = List.of(input);
-        assertThatThrownBy(() -> Validator.carNameValidate(carNames))
+        assertThatThrownBy(() -> Validator.carNamesValidate(carNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -51,7 +51,7 @@ public class ValidatorTest {
     void carNameWithNonPrintableTest() {
         List<String> carNamesWithNonPrintable = List.of("pobi", "car1", "bear", "\u0007");
 
-        assertThatThrownBy(() -> Validator.carNameValidate(carNamesWithNonPrintable))
+        assertThatThrownBy(() -> Validator.carNamesValidate(carNamesWithNonPrintable))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
