@@ -115,6 +115,6 @@ public void printRoundResult(boolean isFirstRound, List\<Car> participants)
 public void printWinners(List\<String> winners)
 : \: 모든 라운드 종료 후 최종 우승자를 출력하는 메소드.
 
-- [ ]  `최종 우승자 :` 메시지 출력
-- [ ]  winners의 각 요소를 하나씩 출력
-    - [ ]  현재 출력하고자 하는 자동차의 이름이 winners의 마지막 요소가 아니라면 뒤에 ‘, ‘를 추가로 출력
+- [x]  `최종 우승자 :` 메시지 출력
+- [x]  winners의 각 요소를 하나씩 출력
+    - [x]  현재 출력하고자 하는 자동차의 이름이 winners의 마지막 요소가 아니라면 뒤에 ‘, ‘를 추가로 출력
