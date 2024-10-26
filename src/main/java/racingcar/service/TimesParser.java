@@ -1,7 +1,11 @@
 package racingcar.service;
 
+import racingcar.service.validation.TimesValidation;
+
 public class TimesParser {
     public static int parseTimes(String input) {
-        return Integer.parseInt(input.trim());
+        int times = Integer.parseInt(input.trim());
+        TimesValidation.validateZeroOrNegative(times);
+        return times;
     }
 }
