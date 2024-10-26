@@ -21,7 +21,7 @@ public class CarRacingGame {
         startRace(numberOfAttempts);
     }
 
-    private void createCarsFromNames(String carNameInput) {
+    void createCarsFromNames(String carNameInput) {
         if(carNameInput==null || carNameInput.isEmpty()) { // 빈문자열 처리
             throw new IllegalArgumentException("빈 문자열 입니다.");
         }
