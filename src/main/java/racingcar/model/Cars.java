@@ -29,15 +29,16 @@ public class Cars {
         return Randoms.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
     } // getPower
 
-    public void descendingByPosition() {
-        Collections.sort(cars);
-    } // sortCars
-
     public Cars judgeWinnerCars() {
+        descendingByPosition();
         Car maxPositionCar = cars.getFirst();
         cars.removeIf(car -> car.compareTo(maxPositionCar) != SAME_POSITION);
         return new Cars(cars);
     } // judgeWinnerCars
+
+    private void descendingByPosition() {
+        Collections.sort(cars);
+    } // sortCars
 
     public String getWinnersName() {
         StringBuilder winnersName = new StringBuilder();

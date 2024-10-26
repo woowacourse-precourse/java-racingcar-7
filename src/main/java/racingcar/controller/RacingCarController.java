@@ -48,7 +48,6 @@ public class RacingCarController {
     } // playRace
 
     public void judgeWinnerCars(Cars cars) {
-        cars.descendingByPosition();
         Cars winnerCars = cars.judgeWinnerCars();
         OutputView.displayWinner(winnerCars);
     } // judgeWinnerCars
