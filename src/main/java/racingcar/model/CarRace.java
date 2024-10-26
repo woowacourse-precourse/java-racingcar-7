@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarRace {
 
@@ -43,5 +45,22 @@ public class CarRace {
 
     private boolean canMove() {
         return Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END) >= MOVE_THRESHOLD;
+    }
+
+    public List<String> getWinnerCarNames() {
+        List<String> winnerCarNames = new ArrayList<>();
+        int maxPosition = 0;
+        for (Car car : cars.getCars()) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+                winnerCarNames = new ArrayList<>();
+                winnerCarNames.add(car.getName());
+                continue;
+            }
+            if (car.getPosition() == maxPosition) {
+                winnerCarNames.add(car.getName());
+            }
+        }
+        return winnerCarNames;
     }
 }
