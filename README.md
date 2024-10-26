@@ -24,11 +24,11 @@ List\<Car> participants: 경주에 참가한 자동차의 목록
 public playGame()
 : \: 자동차 경주 게임 전체를 진행하는 메소드
 
-- [ ]  for (int curr = 0; curr < limit; curr++)
-    - [ ]  playSingleRound() 호출해 라운드 진행
-    - [ ]  UI.printRoundResult() 호출해 현재 라운드의 결과 출력
-- [ ]  반복이 끝나면 Utils.countWinners() 호출해 결과 집계
-- [ ]  UI.printWinners() 호출해 결과 출력
+- [x]  for (int curr = 0; curr < limit; curr++)
+    - [x]  playSingleRound() 호출해 라운드 진행
+    - [x]  UI.printRoundResult() 호출해 현재 라운드의 결과 출력
+- [x]  반복이 끝나면 Utils.countWinners() 호출해 결과 집계
+- [x]  UI.printWinners() 호출해 결과 출력
 
 private void playSingleRound()
 : \: 하나의 라운드를 진행하는 메소드.
