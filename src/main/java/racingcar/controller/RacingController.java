@@ -3,9 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.service.Racing;
-import racingcar.strategy.Mode;
 import racingcar.strategy.ModeType;
-import racingcar.strategy.RacingCar;
 import racingcar.util.CarNameSeparator;
 import racingcar.util.CarsCreator;
 import racingcar.util.RacingResultCalculator;
@@ -24,14 +22,7 @@ public class RacingController {
     }
 
     public void setCarMode(ModeType modeType) {
-        cars.forEach(car -> car.setMode(createCarMode(modeType)));
-    }
-
-    private Mode createCarMode(ModeType modeType) {
-        if (modeType.equals(ModeType.RACING_CAR)) {
-            return new RacingCar();
-        }
-        throw new IllegalArgumentException("모드 미설정 예외");
+        cars.forEach(car -> car.setMode(ModeType.createCarMode(modeType)));
     }
 
     public void createRacing(String totalRound) {
