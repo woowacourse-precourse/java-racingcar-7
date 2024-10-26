@@ -1,17 +1,18 @@
 package racingcar.model;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Race {
     List<RacingCar> racingCarList;
 
-    public Race(List<String> racingCarsName){
+    public Race(List<String> racingCarsName) {
         this.racingCarList = racingCarsName.stream()
                 .map(RacingCar::new).toList();
     }
-    public HashMap<String, Integer> retrieveRaceResults(){
+
+    public HashMap<String, Integer> retrieveRaceResults() {
         executeRace();
         HashMap<String, Integer> executedResult = new HashMap<>();
         racingCarList.forEach(racingCar ->
@@ -23,4 +24,10 @@ public class Race {
         racingCarList.forEach(RacingCar::move);
     }
 
+    public List<String> findWinners() {
+        Integer winnerMoveCount = racingCarList.stream().mapToInt(RacingCar::getMoveCount).max().orElse(0);
+        List<RacingCar> winners = racingCarList.stream().filter(car -> car.getMoveCount().equals(winnerMoveCount))
+                .toList();
+        return winners.stream().map(RacingCar::getName).toList();
+    }
 }
