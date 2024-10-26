@@ -23,7 +23,7 @@ public class Car {
     }
 
     public void addScore() {
-        this.score = getScore() + 1;
+        this.score += 1;
     }
 
     public void drive() {
