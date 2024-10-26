@@ -12,7 +12,7 @@ public record CarName(String name) {
         }
 
         String trimName = name.trim();
-        validate(name);
+        validate(trimName);
         this.name = trimName;
     }
 

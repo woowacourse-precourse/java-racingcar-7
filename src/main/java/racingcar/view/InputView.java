@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
 public class InputView {
 
@@ -14,10 +15,10 @@ public class InputView {
 
     public int inputRaceRound() {
         System.out.println(INPUT_RACE_ROUND_MESSAGE);
-        String round = Console.readLine();
         try {
+            String round = Console.readLine();
             return Integer.parseInt(round);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NoSuchElementException e) {
             throw new IllegalArgumentException("숫자를 입력하세요", e);
         }
     }
