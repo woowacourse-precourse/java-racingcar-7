@@ -17,8 +17,8 @@ public class RacingCars {
                 .toList());
     }
 
-    public void move(RandomNumberGenerator randomNumberGenerator) {
-        racingCars.forEach(racingCar -> racingCar.move(randomNumberGenerator.generate()));
+    public void move(NumberGenerator numberGenerator) {
+        racingCars.forEach(racingCar -> racingCar.move(numberGenerator.generate()));
     }
 
     public List<String> findWinners() {
