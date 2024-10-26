@@ -35,4 +35,17 @@ public class CarTest {
         car.move(true);
         assertEquals("-----", car.getDistance());
     }
+
+    @Test
+    @DisplayName("자동차 이름 테스트")
+    public void testGetCarName() {
+        Car car1 = new Car("testCar1");
+        assertEquals("testCar1", car.getName());
+
+        Car car2 = new Car("pobbi");
+        assertEquals("pobbi", car.getName());
+
+        Car car3 = new Car("seophohoho");
+        assertEquals("seophohoho", car.getName());
+    }
 }

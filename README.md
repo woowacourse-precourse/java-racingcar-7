@@ -27,10 +27,10 @@
 
 ## Car Class
 
-- [ ] 테스트 코드 작성
+- [x] 테스트 코드 작성
     - [x] move 테스트 코드 작성
     - [x] increaseDistance 테스트 코드 작성
-    - [ ] getName 테스트 코드 작성
+    - [x] getName 테스트 코드 작성
 - [ ] move 메소드 구현
 - [ ] increaseDistance, getDistance 메소드 구현
 - [ ] setName, getName 메소드 구현
