@@ -12,7 +12,7 @@ public class OutputView {
 
     public void printWinner(List<String> winner){
         if(winner.size()==1){
-            System.out.println("최종 우승자 : " + winner);
+            System.out.println("최종 우승자 : " + winner.get(0));
             return;
         }
         StringBuilder sb = new StringBuilder();
