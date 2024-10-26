@@ -38,13 +38,21 @@ public class CarRacingGame {
 
     private List<String> addIdentifierToDuplicates(List<String> carNames) {
         Map<String,Integer> nameCounts = new HashMap<>();
-        return carNames.stream().peek(carName -> {
+        return carNames.stream().map(carName-> {
             int count = nameCounts.getOrDefault(carName,0);
             nameCounts.put(carName,count+1);
-            if(count!=0)
-                carName = carName + "(" + count + ")";
+            String newName =  addIdentifier(carName,count);
+            return newName;
         }).toList();
     }
+
+    private String addIdentifier(String carName, int count) {
+        if(count==0)
+            return carName;
+        else
+            return carName +"(" + count + ")";
+    }
+
     private void startRace(int numberOfAttempts) {
         System.out.println("실행 결과");
         for(int i=0; i<numberOfAttempts; i++) {

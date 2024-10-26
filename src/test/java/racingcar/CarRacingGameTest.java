@@ -37,7 +37,7 @@ class CarRacingGameTest {
                 new Object[]{"jhon,dan,kate,alex,pobby,tom,bob",List.of("jhon","dan","kate","alex","pobby","tom","bob")},
                 new Object[]{"jhon,jhon,jhon,jhon,jhon",List.of("jhon","jhon(1)","jhon(2)","jhon(3)","jhon(4)")},
                 new Object[]{"jhon1,love2",List.of("jhon1","love2")},
-                new Object[]{"변주형","형주변",List.of("변주형","형주변")});
+                new Object[]{"변주형,형주변",List.of("변주형","형주변")});
     }
     @MethodSource
     static Stream<Object[]> invalidInputs() {
