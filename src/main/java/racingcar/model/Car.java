@@ -1,8 +1,6 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
-import java.util.List;
 
 public class Car {
     private final String name;
@@ -29,12 +27,12 @@ public class Car {
     }
 
     public void drive() {
-        if (Randoms.pickNumberInRange(0,9) >= 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             addScore();
         }
     }
 
-    public String scoreToDash(int score){
+    public String scoreToDash(int score) {
         return "-".repeat(Math.max(0, score));
     }
 }
