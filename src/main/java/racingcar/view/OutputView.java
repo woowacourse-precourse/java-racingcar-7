@@ -2,7 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.dto.CarsPositionDto;
-import racingcar.dto.WinnersNameDto;
+import racingcar.dto.WinnerNamesDto;
 
 public class OutputView {
     private static final String RESULT_MESSAGE = "\n실행 결과:";
@@ -33,10 +33,10 @@ public class OutputView {
         fullResult.append(NEW_LINE);
     }
 
-    public void printWinners(WinnersNameDto winnersNameDto) {
+    public void printWinners(WinnerNamesDto winnerNamesDto) {
         String formattedWinners = WINNER_PREFIX +
-                String.join(DELIMITER, winnersNameDto.winners());
-        
+                String.join(DELIMITER, winnerNamesDto.winners());
+
         System.out.println(formattedWinners);
     }
 }

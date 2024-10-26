@@ -4,14 +4,14 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.vo.Name;
 
-public record WinnersNameDto(List<String> winners) {
+public record WinnerNamesDto(List<String> winners) {
 
-    public static WinnersNameDto from(List<Car> winningCars) {
+    public static WinnerNamesDto from(List<Car> winningCars) {
         List<String> winnerNames = winningCars.stream()
                 .map(Car::getName)
                 .map(Name::getValue)
                 .toList();
 
-        return new WinnersNameDto(List.copyOf(winnerNames));
+        return new WinnerNamesDto(List.copyOf(winnerNames));
     }
 }
