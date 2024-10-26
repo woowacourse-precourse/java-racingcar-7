@@ -1,14 +1,9 @@
 package racingcar.View;
 
-import static racingcar.View.constant.OutputMessage.ROUND_START_MESSAGE;
-import static racingcar.View.constant.OutputMessage.START_MESSAGE;
+import racingcar.View.constant.OutputMessage;
 
 public class OutputView {
-    public void printStart() {
-        System.out.println(START_MESSAGE.getMessage());
-    }
-
-    public void printRoundStart() {
-        System.out.println(ROUND_START_MESSAGE.getMessage());
+    public void printMessage(OutputMessage Message) {
+        System.out.println(Message.getMessage());
     }
 }
