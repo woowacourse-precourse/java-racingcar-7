@@ -34,7 +34,7 @@ public class Validator {
             if (num < 0) {
                 throw new IllegalArgumentException("양수만 입력 가능합니다.");
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
     }
