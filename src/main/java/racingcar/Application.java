@@ -23,9 +23,12 @@ public class Application {
             StartRaceOnetime(cars, carScore);
             PrintCurrentScore(cars, carScore);
         }
-        int[] ary = new int[cars.length];
-        StringtoIntArray(carScore, ary);
-        System.out.println(ary[0]);
+        int[] carScoreInt = new int[cars.length];
+        StringtoIntArray(carScore, carScoreInt);
+        int max = FindLargestValue(carScoreInt);
+        int countWinners = CountWinners(carScoreInt, max);
+        int[] winners = new int[countWinners];
+        StoreWinnerIndex(winners, carScoreInt, max);
 
     }
 
@@ -81,8 +84,35 @@ public class Application {
         }
     }
 
-    // 6. 배열에서 가장 큰 값(들)의 위치를 찾는 함수
-    private static void FindIndexLargestScore(int[] carScoreInt) {
+    // 6. 우승자를 위치를 저장하는 함수
+    // 점수가 같으면 입력한 순서대로 출력
+    private static void StoreWinnerIndex(int[] ary, int[] carScoreInt, int maxValue) {
+        int index = 0;
+        for(int i = 0; i < carScoreInt.length; i++) {
+            if (carScoreInt[i] == maxValue) {
+                ary[index] = i;
+                index++;
+            }
+        }
+    }
 
+    // 6-1. 배열에서 가장 큰 값을 찾는 함수
+    private static int FindLargestValue(int[] carScoreInt) {
+        int maxValue = carScoreInt[0];
+        for(int i = 1; i < carScoreInt.length; i++) {
+            maxValue = Math.max(maxValue, carScoreInt[i]);
+        }
+        return maxValue;
+    }
+
+    // 6-2. 우승자의 인원을 반환하는 함수
+    private static int CountWinners(int[] carScoreInt, int maxValue) {
+        int index = 0;
+        for(int i = 0; i < carScoreInt.length; i++) {
+            if (carScoreInt[i] == maxValue) {
+                index++;
+            }
+        }
+        return index;
     }
 }
