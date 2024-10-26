@@ -58,5 +58,5 @@
 ### Util
 - [ ] CarNameValidator
 - [ ] MoveCountValidator
-- [ ] ErrorMessage
+- [x] ErrorMessage
 
