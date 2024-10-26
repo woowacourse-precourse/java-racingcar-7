@@ -2,6 +2,7 @@ package racingcar.controller;
 
 
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +10,18 @@ import java.util.List;
 public class Controller {
 
     InputView inputView = new InputView();
+    static OutputView outputView = new OutputView();
 
     public void start() {
-
+        outputView.askCarName();
         String userInput = inputView.getCarNames();
 
         ArrayList<String> carNames = extractCarName(userInput);
+        inputView.validateCarNames(carNames);
 
+        outputView.askTurn();
         int numberOfTurn = inputView.getNumberOfTurn();
+
 
 
     }
