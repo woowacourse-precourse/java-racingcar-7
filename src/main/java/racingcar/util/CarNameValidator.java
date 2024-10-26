@@ -2,8 +2,7 @@ package racingcar.util;
 
 import java.util.Arrays;
 
-import static racingcar.util.Constants.CAR_NAME_DUPLICATE_ERROR;
-import static racingcar.util.Constants.CAR_NAME_SIZE_ERROR;
+import static racingcar.util.Constants.*;
 
 public class CarNameValidator {
     public static final int NAME_SIZE = 5;
@@ -15,6 +14,7 @@ public class CarNameValidator {
         nameList = carNames;
         isNotDuplicate();
         isRightNameSize();
+        hasEmptyName();
         return nameList;
     }
 
@@ -25,8 +25,14 @@ public class CarNameValidator {
     }
 
     public void isNotDuplicate() {
-        if (nameList.length != Arrays.stream(nameList).distinct().count()) {
+        if (Arrays.stream(nameList).distinct().count() != nameList.length) {
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR.getMessage());
+        }
+    }
+
+    public void hasEmptyName() {
+        if (Arrays.stream(nameList).anyMatch(String::isEmpty)) {
+            throw new IllegalArgumentException(CAR_NAME_EMPTY_ERROR.getMessage());
         }
     }
 }
