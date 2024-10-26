@@ -22,6 +22,7 @@ public class Race {
         for (int count = 0; count < attemptCount; ++count) {
             cars.move();
             cars.get().forEach(outputView::printResult);
+            outputView.printNewLine();
         }
     }
 }

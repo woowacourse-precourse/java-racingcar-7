@@ -9,14 +9,14 @@ public class Cars {
 
     public Cars(List<String> carNames) {
         final List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
+        for (final String carName : carNames) {
             cars.add(new Car(carName, 0));
         }
         this.cars = cars;
     }
 
     public void move() {
-        for (Car car : cars) {
+        for (final Car car : cars) {
             car.move(NumberGenerator.getRandomNumber());
         }
     }
