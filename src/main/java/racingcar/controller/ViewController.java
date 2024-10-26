@@ -28,6 +28,6 @@ public class ViewController {
         outputView.inputCountMessage();
         String count = inputView.readLine();
         int countNum = viewService.countValidation(count);
-        Utils.setAdvanceCount(countNum);
+        Utils.setAdvaceCount(countNum);
     }
 }

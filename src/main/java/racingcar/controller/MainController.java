@@ -10,5 +10,6 @@ public class MainController {
         String[] carNames = viewController.printGuide();
         List<Car> cars = carController.makeCarInstance(carNames);
         viewController.printCountGuide();
+        carController.advanceCar(cars);
     }
 }
