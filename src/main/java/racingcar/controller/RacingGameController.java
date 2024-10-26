@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import racingcar.model.RacingCars;
 import racingcar.validation.Validator;
 import racingcar.view.RacingGameView;
 
@@ -23,23 +24,24 @@ public class RacingGameController {
     }
 
     public void play() {
+        List<String> racingCarNames = getRacingCarNames();
+
+        Long attemptCount = getAttemptCount();
+    }
+
+    private List<String> getRacingCarNames() {
         view.printCarNamesInputMessage();
         String carNames = view.getInput();
 
-        List<String> names = getNames(carNames);
-
-        view.printAttemptCountInputMessage();
-
-        Long attemptCount = getAttemptCount(view.getInput());
-    }
-
-    private List<String> getNames(String carNames) {
         carNamesValidator.validate(carNames);
 
         return Arrays.asList(carNames.split(","));
     }
 
-    private Long getAttemptCount(String attemptCount) {
+    private Long getAttemptCount() {
+        view.printAttemptCountInputMessage();
+        String attemptCount = view.getInput();
+
         attemptCountValidator.validate(attemptCount);
 
         return Long.valueOf(attemptCount);
