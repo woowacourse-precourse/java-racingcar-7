@@ -26,4 +26,8 @@ public class Winner {
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
+
+    public List<String> getWinners() {
+        return winners;
+    }
 }
