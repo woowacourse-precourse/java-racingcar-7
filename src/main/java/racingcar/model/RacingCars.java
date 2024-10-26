@@ -55,7 +55,7 @@ public class RacingCars {
         return values.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()
-                .orElse(0);
+                .orElseThrow(() -> ExceptionFactory.createException(EMPTY_CARS));
     }
 
     private void validate(List<RacingCar> values) {
