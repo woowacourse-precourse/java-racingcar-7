@@ -46,7 +46,7 @@ public class Car {
     }
 
     private void validateNameSpecialCharacter(String name) {
-        Matcher matcher = Pattern.compile("[ !@#$%^&*(),.?\":{}|<>]").matcher(name);
+        Matcher matcher = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]").matcher(name);
         if (matcher.find()) {
             throw new IllegalArgumentException(CAR_NAME_CONTAIN_SPECIAL_CHARACTER.getMessage());
         }
