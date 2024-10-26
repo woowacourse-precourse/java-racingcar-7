@@ -1,11 +1,11 @@
 package racingcar.game.model;
 
 public class Counter {
-    private static final int INCREASE_VALUE = 1;
+    private static final int INCREMENT_STEP = 1;
     private int count = 0;
 
     public void increase() {
-        count += INCREASE_VALUE;
+        count += INCREMENT_STEP;
     }
 
     public boolean matchesCount(int count) {
