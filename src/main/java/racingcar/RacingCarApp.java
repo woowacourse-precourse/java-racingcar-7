@@ -1,12 +1,10 @@
 package racingcar;
 
-import racingcar.view.input.InputValueContainer;
+import racingcar.game.GameResult;
+import racingcar.game.RacingCarGame;
+import racingcar.view.input.InputValue;
 import racingcar.view.input.InputView;
 import racingcar.view.output.OutputView;
-
-import java.math.BigInteger;
-import java.util.List;
-import java.util.Map;
 
 public class RacingCarApp {
 
@@ -26,7 +24,7 @@ public class RacingCarApp {
     }
 
     private void readInput() {
-        InputValueContainer inputValueContainer = inputView.readInput();
-        racingCarGame = new RacingCarGame(inputValueContainer);
+        InputValue inputValue = inputView.readInput();
+        racingCarGame = new RacingCarGame(inputValue);
     }
 }

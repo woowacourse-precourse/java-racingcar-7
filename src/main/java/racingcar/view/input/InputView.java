@@ -14,12 +14,12 @@ public class InputView {
 
     private final InputValidator inputValidator = new InputValidator();
 
-    public InputValueContainer readInput() {
+    public InputValue readInput() {
         String delimitedCarNames = readCarName();
         List<String> carNames = inputValidator.validateDelimitedCarNames(delimitedCarNames);
         int attemptCount = readAttemptCount();
 
-        return new InputValueContainer(carNames, attemptCount);
+        return new InputValue(carNames, attemptCount);
     }
 
     private String readCarName() {

@@ -2,12 +2,12 @@ package racingcar.view.input;
 
 import java.util.List;
 
-public class InputValueContainer {
+public class InputValue {
 
     private List<String> carNames;
     private int attemptCount;
 
-    public InputValueContainer(List<String> carNames, int attemptCount) {
+    public InputValue(List<String> carNames, int attemptCount) {
         this.carNames = carNames;
         this.attemptCount = attemptCount;
     }
