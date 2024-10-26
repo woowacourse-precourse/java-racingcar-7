@@ -16,7 +16,7 @@ import racingcar.view.OutputView;
 
 public class RacingGameControllerTest {
 
-    
+
     private TestInputView inputView;
     private TestOutputView outputView;
     private RacingGameController controller;
@@ -45,14 +45,18 @@ public class RacingGameControllerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "'Ferrari,pobi,woni\n5', NAME_TOO_LONG",
-            "'pobi,woni,pobi\n5', DUPLICATE_NAME",
-            "' , , \n5', EMPTY_CAR_NAMES",
-            "'pobi,woni,jun\n-3', INVALID_TRY_COUNT"
+            "'Ferrari,pobi,woni\n5', NAME_TOO_LONG",             // 5자 초과
+            "'pobi,woni,pobi\n5', DUPLICATE_NAME",              // 중복된 이름
+            "' , , \n5', EMPTY_NAME_IN_LIST",                   // 빈 이름 포함
+            "'pobi,woni,jun\n-3', INVALID_TRY_COUNT",           // 음수 시도 횟수
+            "'pobi\n1', MINIMUM_CARS",                          // 최소 자동차 수 부족
+            "'pobi,woni,\n5', TRAILING_COMMA",                  // 끝에 쉼표 포함
+            "'\n5', EMPTY_CAR_NAMES"                            // 전체 빈 문자열
     })
     void testRun_WithInvalidInput_ShouldThrowException(String input, String errorMessage) {
         // Given: 잘못된 입력
         inputView.setInput(input);
+
         // When & Then: 예외 발생 확인
         assertExceptionMessage(errorMessage);
     }
