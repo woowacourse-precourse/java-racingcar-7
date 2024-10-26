@@ -12,6 +12,7 @@ public class RacingGame {
 
         OutputView.printStartMessage();
         runRounds();
+        declareWinners();
     }
 
     private void runRounds() {
@@ -19,5 +20,14 @@ public class RacingGame {
             cars.forEach(Car::move);
             OutputView.printRoundResult(cars);
         }
+    }
+
+    private void declareWinners() {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
+        OutputView.printWinners(winners);
     }
 }
