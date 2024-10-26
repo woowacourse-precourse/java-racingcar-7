@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import racingcar.domain.Car;
-import racingcar.enums.ErrorMessage;
+import racingcar.validator.RacingCarValidator;
 
 public class RacingCarService {
+
+    private final RacingCarValidator validator = new RacingCarValidator();
 
     public List<Car> makeCarList(String inputString) {
         List<Car> cars = new ArrayList<>();
         StringTokenizer stringTokenizer = new StringTokenizer(inputString, ",");
         while (stringTokenizer.hasMoreTokens()) {
             String carName = stringTokenizer.nextToken();
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException(ErrorMessage.CAR_NAME_LENGTH.getMessage());
-            }
+            validator.validateCarNameLength(carName);
             cars.add(new Car(carName));
         }
         return cars;
