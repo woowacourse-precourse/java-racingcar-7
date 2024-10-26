@@ -48,7 +48,7 @@ public class InputView {
     }
 
     private static void validateRoundCount(String input) {
-        if (Integer.parseInt(input) > ROUND_COUNT_THRESHOLD) {
+        if (Integer.parseInt(input) > ROUND_COUNT_THRESHOLD || Integer.parseInt(input) == 0) {
             throw new MaxRoundCountException();
         }
     }
