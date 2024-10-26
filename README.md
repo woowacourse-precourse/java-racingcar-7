@@ -11,13 +11,11 @@
     - Challenge : Car을 ArrayList로 저장-> 대회에 참가한 자동차들
 - [ ] B. IO class 구현
     - [x] Car정보, Move count 입력 받는 함수 구현
-    - ~~[ ] 중간과정 출력, 최종출력 함수 구현 ~~
     - [ ] 입력의 유효성 검사(입력형식, 이름길이, 자동차의 동일이름 처리 등등)
-- [ ] C. Car class 함수 구현
-    - 전진(moveCarFront) 기능 구현
+- [x] C. Car class 함수 구현
+    - 전진(moveCarFront) 기능 구현-> random 사용
 - [ ] D. Challenge 클래스에서 경주 진행하기
     - [ ] 자동차 등록하기
-    - [ ] Random 기능 추가
     - [ ] 우승자 선정하기
     - [x] 중간과정 출력, 최종출력 함수 구현
 - [ ] E. main 에서 경주 구현하기
