@@ -3,7 +3,7 @@ package racingcar.domain;
 import static racingcar.domain.ErrorMessage.ATTEMPT_RANGE;
 
 public class AttemptCounter {
-    private final static int MIN = 0;
+    private final static int MIN = 1;
     private final static int MAX = 100;
     private int attemptNumber;
 
@@ -21,7 +21,7 @@ public class AttemptCounter {
     }
 
     private void validateAttemptRange(int attemptNumber) {
-        if (attemptNumber <= MIN || attemptNumber > MAX) {
+        if (attemptNumber < MIN || attemptNumber > MAX) {
             throw new IllegalArgumentException(ATTEMPT_RANGE.getMessage());
         }
     }
