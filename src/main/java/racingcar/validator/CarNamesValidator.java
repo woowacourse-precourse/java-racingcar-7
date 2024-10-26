@@ -1,6 +1,10 @@
 package racingcar.validator;
 
 import java.util.ArrayList;
+import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
+import static racingcar.exception.ErrorMessage.EMPTY_CAR_NAME;
+import static racingcar.exception.ErrorMessage.TOO_LONG_NAME;
+import static racingcar.exception.ErrorMessage.DUPLICATION;
 
 public class CarNamesValidator {
 
@@ -14,18 +18,18 @@ public class CarNamesValidator {
 
     private static  void validateNotEmptyInput(ArrayList<String> carNames) {
         if (carNames.isEmpty()) {
-            throw new IllegalArgumentException("입력값이 비어있습니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
         }
 
         if (carNames.size() == 1 && carNames.getFirst().trim().isEmpty()) {
-            throw new IllegalArgumentException("입력값이 비어있습니다.");
+            throw new IllegalArgumentException();
         }
     }
 
     private static void validateCarNameNotEmpty(ArrayList<String> carNames){
         for( String carName: carNames){
             if (carName.trim().isEmpty()){
-                throw new IllegalArgumentException("자동차 이름이 공백입니다.");
+                throw new IllegalArgumentException(EMPTY_CAR_NAME.getMessage());
             }
         }
     }
@@ -33,14 +37,14 @@ public class CarNamesValidator {
     private static void validateLength(ArrayList<String> carNames) {
         for ( String carName : carNames ) {
             if (carName.length() > 5) {
-                throw new IllegalArgumentException("5글자를 초과하는 자동차 이름이 존재합니다.");
+                throw new IllegalArgumentException(TOO_LONG_NAME.getMessage());
             }
         }
     }
 
     private static void validateDuplication(ArrayList<String> carNames) {
         if(carNames.size() != carNames.stream().distinct().count()){
-            throw new IllegalArgumentException("자동차 이름이 중복되었습니다.");
+            throw new IllegalArgumentException(DUPLICATION.getMessage());
         }
     }
 

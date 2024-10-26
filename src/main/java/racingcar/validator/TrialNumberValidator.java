@@ -1,5 +1,9 @@
 package racingcar.validator;
 
+import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
+import static racingcar.exception.ErrorMessage.NOT_NUMBER;
+import static racingcar.exception.ErrorMessage.NOT_INT;
+
 public class TrialNumberValidator {
 
     public static void validate(String rawTrialNumber) {
@@ -11,7 +15,7 @@ public class TrialNumberValidator {
 
     private static void validateNotEmpty (String rawTrialNumber){
         if( rawTrialNumber.isEmpty() ){
-            throw new IllegalArgumentException("입력값이 공백입니다.");
+            throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
         }
     }
 
@@ -19,7 +23,7 @@ public class TrialNumberValidator {
         try {
             Float.parseFloat(rawTrialNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
         }
     }
 
@@ -27,7 +31,7 @@ public class TrialNumberValidator {
         try {
             Integer.parseInt(rawTrialNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 정수가 아닙니다.");
+            throw new IllegalArgumentException(NOT_INT.getMessage());
         }
     }
 
