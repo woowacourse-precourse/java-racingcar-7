@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
+            int max = -999;
 
             //경주할 자동차 이름 받기
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -38,7 +39,12 @@ public class Application {
                 }
                 System.out.println();
             }
-    }
 
-
+            // 최대값 구하기
+            for (int i=0; i<cars.length; i++){
+                if (racing_num[i] > max){
+                    max = racing_num[i];
+                }
+            }
+    }   
 }
