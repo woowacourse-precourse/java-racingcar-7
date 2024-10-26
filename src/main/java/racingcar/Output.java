@@ -26,6 +26,5 @@ public class Output {
         }else{
             System.out.println("최종 우승자 : " + String.join(", ", winnerName));
         }
-
     }
 }
