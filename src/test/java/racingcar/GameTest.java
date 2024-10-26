@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class GameTest {
 
@@ -44,6 +46,35 @@ class GameTest {
         assertThat(carList)
                 .extracting(Car::getName)
                 .containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    void 자동차이름_제한_초과하면_예외발생() {
+        InputParser inputParser = new InputParser();
+
+        assertThatThrownBy(() -> inputParser.stringToCarList("일이삼사오육"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자 이하로 해주세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "\t", "\n"})
+    void 자동차이름_공백이면_예외발생(String input) {
+        InputParser inputParser = new InputParser();
+
+        assertThatThrownBy(() -> inputParser.stringToCarList(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 공백을 허용하지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"po-bi", "wo/ni", "jun!!"})
+    void 자동차이름_숫자문자이외_포함하면_예외발생(String input) {
+        InputParser inputParser = new InputParser();
+
+        assertThatThrownBy(() -> inputParser.stringToCarList(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 숫자와 문자만 가능해요.");
     }
 
 }
