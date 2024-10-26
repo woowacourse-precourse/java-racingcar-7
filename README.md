@@ -20,9 +20,9 @@
     - [x] makeWinnerList()- 우승자 선정하기
     - [x] printStep()- 중간과정 출력, printWinner()- 최종출력 함수 구현
     - [x] runChallenge()- 입력한 숫자만큼 car move 수행하는 함수 구현
-- [ ] E. main 에서 경주 구현하기
+- [x] E. main 에서 경주 구현하기
     - 입력객체 생성후 입력받기
-    - 입력에 따라 Car 객체를 생성하기-> ArrayList에 저장
     - Challenge객체 만들기-> 대회 생성
-    - 우승자 구하고 출력하기
+    - 입력에 따라 Car 객체를 생성하기-> ArrayList에 저장
+    - 대회 진행후, 우승자 구하고 출력하기
 - [ ] F. Exception 처리하기

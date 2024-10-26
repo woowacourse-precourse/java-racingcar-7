@@ -24,7 +24,11 @@ public class Challenge {
             for(Car tmpcar: partCars) {
                 tmpcar.moveDistance();
             }
+            printStep();
         }
+
+        makeWinnerList();
+        printWinner();
     }
 
     public void makeWinnerList() {
