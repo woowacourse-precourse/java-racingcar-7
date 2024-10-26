@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class RacingCarInputTest {
-    RacingCarInput racingCarInput = new RacingCarInput();
+    private RacingCarInput racingCarInput = new RacingCarInput();
 
     @ParameterizedTest
     @ValueSource(strings = {" 1, 2 \n2 ", "한글\n3", "Engl,ish\n4"})
