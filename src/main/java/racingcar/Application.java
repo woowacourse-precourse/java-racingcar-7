@@ -24,6 +24,7 @@ public class Application {
 
         view.printRoundsGuide();
         Integer rounds = Integer.parseInt(input.rounds());
+        input.closeConsole();
 
         Application application = new Application(carNames);
         application.run(view, rounds);

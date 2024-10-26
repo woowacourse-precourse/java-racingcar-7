@@ -15,16 +15,18 @@ public class Input {
 
     public  String carNames() {
         String carNames = Console.readLine().trim();
-        Console.close();
         validateCarNames(carNames);
         return carNames;
     }
 
     public String rounds() {
         String rounds = Console.readLine();
-        Console.close();
         validateRoundNumber(rounds);
         return rounds;
+    }
+
+    public void closeConsole() {
+        Console.close();
     }
 
     private void validateRoundNumber(String rounds) {
