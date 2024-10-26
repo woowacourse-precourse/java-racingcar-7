@@ -25,6 +25,12 @@ public class Controller {
         this.textFormatter = textFormatter;
     }
 
+    public void startRace() {
+        Cars cars = initializeCars();
+        runRaceRounds(cars);
+        announceOfWinners(cars);
+    }
+
     private Cars initializeCars() {
         String carNames = inputView.readCarNames();
         String[] carNameArr = textFormatter.splitCarNamesByComma(carNames);
@@ -49,7 +55,7 @@ public class Controller {
         }
         outputView.printBlankLine();
     }
-    
+
     private void announceOfWinners(Cars cars) {
         List<Car> allCars = cars.getCars();
         int maxAdvanceMarkersCount = cars.getMaxAdvanceMarkerCount();
