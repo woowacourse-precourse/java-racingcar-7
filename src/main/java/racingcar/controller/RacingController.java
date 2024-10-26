@@ -49,8 +49,8 @@ public class RacingController {
         outputView.printNewLine();
         outputView.printMessage(RESULT_TITLE);
 
-       range(0, tryCount)
-               .forEach(round -> playRound(cars));
+        range(0, tryCount)
+                .forEach(round -> playRound(cars));
     }
 
     private void playRound(Cars cars) {
