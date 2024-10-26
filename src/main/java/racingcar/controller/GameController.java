@@ -24,29 +24,29 @@ public class GameController {
     }
 
     private void enterInputs() {
-        OutputView.printStartCommand();
+        OutputView.printCarsInputCommand();
 
         List<Car> carList=CarsFactory.makeCarList(InputView.enterCarNames());
 
         Cars cars=new Cars(carList);
 
-        OutputView.printRacingCounts();
+        OutputView.printGameCountsCommand();
         GameCounts gameCounts=new GameCounts(InputView.enterCounts());
 
         progressGame(cars,gameCounts);
     }
 
     private void progressGame(Cars cars, GameCounts gameCounts) {
-        OutputView.printRacingProcess();
+        OutputView.printRacingProcessCommand();
 
         for (int count=0;count<gameCounts.getGameCounts();count++){
             cars.race(numberGenerator);
-            outputView.printState(cars);
+            outputView.printCarsState(cars);
         }
-        printWinner(cars);
+        showWinner(cars);
     }
 
-    private static void printWinner(Cars cars) {
+    private static void showWinner(Cars cars) {
         String result=cars.findWinners();
         OutputView.printRacingWinner(result);
     }

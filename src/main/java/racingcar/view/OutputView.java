@@ -12,15 +12,15 @@ public class OutputView {
     private static final String RACING_PROCESS="실행 결과";
     private static final String RACING_WINNER="최종 우승자 : %s";
 
-    public static void printStartCommand(){
+    public static void printCarsInputCommand(){
         System.out.println(START_COMMAND);
     }
 
-    public static void printRacingCounts(){
+    public static void printGameCountsCommand(){
         System.out.println(RACING_COUNTS);
     }
 
-    public static void printRacingProcess(){
+    public static void printRacingProcessCommand(){
         System.out.println();
         System.out.println(RACING_PROCESS);
     }
@@ -29,7 +29,7 @@ public class OutputView {
         System.out.printf(RACING_WINNER,result);
     }
 
-    public void printState(Cars cars) {
+    public void printCarsState(Cars cars) {
         List<Car> carList=cars.getClonedCars();
 
         for (Car car:carList){
