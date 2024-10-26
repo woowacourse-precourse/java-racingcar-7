@@ -12,4 +12,10 @@ public class Car {
         this.name = name;
         this.position = position;
     }
+
+    public void move(boolean canMove){
+        if(canMove){
+            position++;
+        }
+    }
 }
