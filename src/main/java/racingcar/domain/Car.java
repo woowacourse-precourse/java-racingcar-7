@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -19,8 +19,18 @@ public class Car {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        boolean canMove = canMove();
+        if (canMove) {
             position++;
         }
+    }
+
+    private boolean canMove() {
+        int randomValue = generateRandomValue();
+        return randomValue >= 4;
+    }
+
+    private int generateRandomValue() {
+        return Randoms.pickNumberInRange(0, 9); // 0 to 9
     }
 }
