@@ -22,5 +22,8 @@ public class Application {
             }
         }
         System.out.println("몇 번의 이동을 할 것인가요?");
+
+        String move = Console.readLine();
+        System.out.println(move + "회");
     }
 }
