@@ -38,11 +38,12 @@ public class Application {
 
         playRaceInTotalCounts(cars, totalRaceCount);
 
+        List<String> winners = findWinners(cars);
+        printWinners(winners);
     }
 
     public static List<String> getCarNames(){
         String input = Console.readLine();
-        // 입력된 문자열을 쉼표로 분리하고, 빈 문자열을 필터링하여 유효한 이름만 리스트에 추가
         return Arrays.stream(input.split(","))
                 .map(String::trim) // 공백 제거
                 .filter(name -> !name.isEmpty()) // 빈 문자열 필터링
@@ -126,4 +127,30 @@ public class Application {
         }
         System.out.println();
     }
+
+    public static List<String> findWinners(List<Car> cars) {
+        final int maxPosition = findMaxPosition(cars);
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getCarPosition() == maxPosition) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
+    }
+
+    public static int findMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getCarPosition() > maxPosition) {
+                maxPosition = car.getCarPosition();
+            }
+        }
+        return maxPosition;
+    }
+
+    public static void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : " + String.join(", ", winners));
+    }
+
 }
