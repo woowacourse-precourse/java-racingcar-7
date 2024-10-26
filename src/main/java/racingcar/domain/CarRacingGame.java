@@ -25,4 +25,8 @@ public class CarRacingGame {
         }
         return rounds != 0;
     }
+
+    public List<String> getWinners() {
+        return cars.getWinners();
+    }
 }
