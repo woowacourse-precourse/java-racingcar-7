@@ -11,10 +11,11 @@ public class Cars {
         this.carList = carList;
     }
 
-    public List<Car> findWinners() {
+    public List<String> findWinners() {
         int maxMove = calculateMaxMove();
         return carList.stream()
                 .filter(car -> car.isSameMaxMove(maxMove))
+                .map(Car::getName)
                 .toList();
     }
 

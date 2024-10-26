@@ -34,6 +34,10 @@ public class Car {
         return position == maxMove;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {

@@ -23,7 +23,7 @@ public class CarsTest {
         List<Car> carList = List.of(CAR_POBI, CAR_NANA);
         Cars cars = new Cars(carList);
 
-        List<Car> winners = List.of(CAR_POBI);
+        List<String> winners = List.of("pobi");
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 
@@ -32,7 +32,7 @@ public class CarsTest {
         List<Car> carList = List.of(CAR_POBI, CAR_NANA, CAR_JUN);
         Cars cars = new Cars(carList);
 
-        List<Car> winners = List.of(CAR_POBI, CAR_JUN);
+        List<String> winners = List.of("pobi", "jun");
         assertThat(cars.findWinners()).isEqualTo(winners);
     }
 }

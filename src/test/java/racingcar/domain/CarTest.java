@@ -35,4 +35,9 @@ public class CarTest {
         assertThat(CAR_POBI.isSameMaxMove(0)).isTrue();
         assertThat(CAR_POBI.isSameMaxMove(1)).isFalse();
     }
+
+    @Test
+    void 자동차_이름_반환() {
+        assertThat(CAR_POBI.getName()).isEqualTo("pobi");
+    }
 }
