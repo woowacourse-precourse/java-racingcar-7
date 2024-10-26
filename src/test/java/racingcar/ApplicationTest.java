@@ -60,6 +60,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("이름은 2개 이상 들어와야 한다.")
+    @Test
+    void test() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("woowa"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
