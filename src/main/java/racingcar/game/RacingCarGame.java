@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.game.io.InputHandler;
 import racingcar.game.io.OutputHandler;
 import racingcar.game.model.AttemptCount;
-import racingcar.game.model.Car;
 import racingcar.game.model.RaceSnapshot;
 import racingcar.game.model.RacingCars;
 import racingcar.game.model.Winners;
@@ -15,12 +14,11 @@ public class RacingCarGame {
 
     public void race() {
         outputHandler.showCarNamesNavigateMessage();
-        List<Car> cars = inputHandler.getCarNamesFromUser();
+        RacingCars racingCars = inputHandler.getCarNamesFromUser();
 
         outputHandler.showAttemptCountNavigateMessage();
         AttemptCount attemptCount = inputHandler.getAttemptCountFromUser();
 
-        RacingCars racingCars = new RacingCars(cars);
         displayAccumulateForEachAttempt(attemptCount, racingCars);
 
         Winners winners = racingCars.retrieveWinners();

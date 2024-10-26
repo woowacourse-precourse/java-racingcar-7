@@ -5,17 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.game.model.AttemptCount;
 import racingcar.game.model.Car;
+import racingcar.game.model.RacingCars;
 
 public class InputHandler {
     private static final String NAME_SPLIT_DELIMITER = ",";
     private static final String UNSUPPORTED_ATTEMPT_COUNT_TYPE = "시도할 횟수는 문자일 수 없습니다.";
 
-    public List<Car> getCarNamesFromUser() {
+    public RacingCars getCarNamesFromUser() {
         String carNames = Console.readLine();
-
-        return Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
+        List<Car> cars = Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
                 .map(Car::create)
                 .toList();
+
+        return new RacingCars(cars);
     }
 
     public AttemptCount getAttemptCountFromUser() {
