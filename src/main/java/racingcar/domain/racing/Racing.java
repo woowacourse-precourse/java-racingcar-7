@@ -1,6 +1,7 @@
 package racingcar.domain.racing;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Racing {
     public void doRacing() {
         setRacingCars();
         setTryCount();
+        doRace();
     }
 
     private void setRacingCars() {
@@ -79,6 +81,17 @@ public class Racing {
         }
 
         return false;
+    }
+
+    private void doRace() {
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < tryCnt; i++) {
+            for (RacingCar racingCar : racingCars) {
+                racingCar.forwardCar(Randoms.pickNumberInRange(0, 9));
+                racingCar.printCurrentResult();
+            }
+            System.out.println();
+        }
     }
 
     private boolean isInvalidTryCount() {

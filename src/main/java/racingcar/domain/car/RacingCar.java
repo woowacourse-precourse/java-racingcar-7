@@ -10,6 +10,20 @@ public class RacingCar {
         this.forwardCount = 0;
     }
 
+    public void forwardCar(int score) {
+        if (score >= 4) {
+            this.forwardCount++;
+        }
+    }
+
+    public void printCurrentResult() {
+        String distance = "";
+        for (int i = 0; i < forwardCount; i++) {
+            distance += "-";
+        }
+        System.out.println(this.name + " : " + distance);
+    }
+
     public String getName() {
         return name;
     }
