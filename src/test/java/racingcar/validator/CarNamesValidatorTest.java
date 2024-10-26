@@ -1,11 +1,11 @@
-package racingcar.Validator;
+package racingcar.validator;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.RacingCarService;
+import racingcar.service.RacingCarService;
 
 class CarNamesValidatorTest {
 

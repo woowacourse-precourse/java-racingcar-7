@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.viewer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
