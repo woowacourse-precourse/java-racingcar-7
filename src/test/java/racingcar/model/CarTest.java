@@ -18,8 +18,8 @@ public class CarTest extends NsTest {
             "2, 0"
     })
     void car_테스트(int randomNumber, int answer) {
-        CarRacer carRacer = new CarRacer("거북이");
-        Car testCar = new Car(carRacer);
+        CarName carName = new CarName("거북이");
+        Car testCar = new Car(carName);
         testCar.decideToGo(randomNumber);
 
         assertThat(testCar.getDistance()).isEqualTo(answer);
