@@ -8,29 +8,29 @@ import racingcar.model.GameResult;
 import racingcar.model.GameRoundResult;
 
 public class OutputView {
+
+    private static final String RUN_RESULT = "\n실행결과";
     public OutputView() {
     }
 
     public void printRoundResult(GameResult gameResult) {
         List<GameRoundResult> roundResults = gameResult.getRoundResults();
+        roundResults.forEach(this::printSingleRoundResult);
+    }
 
-        for (GameRoundResult roundResult : roundResults) {
-            //메서드 분리 해야함
-            Cars cars = roundResult.getCars();
-            for (Car car : cars.getCars()) {
-                System.out.print(car.getName() + " : ");
-                for (int i = 0; i < car.getMoveCount(); i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
+    private void printSingleRoundResult(GameRoundResult roundResult) {
+        Cars cars = roundResult.getCars();
+        cars.getCars().forEach(this::printCarProgress);
+        System.out.println();
+    }
 
-        }
+    private void printCarProgress(Car car) {
+        System.out.print(car.getName() + " : ");
+        System.out.println("-".repeat(car.getMoveCount()));
     }
 
     public void printResultNoticeMessage() {
-        System.out.println("\n실행결과");
+        System.out.println(RUN_RESULT);
     }
 
     public void printWinner(Cars winners) {
