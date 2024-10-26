@@ -1,7 +1,12 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.service.RacingGame;
+import racingcar.domain.TryCount;
+import racingcar.domain.dto.TryCountDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
