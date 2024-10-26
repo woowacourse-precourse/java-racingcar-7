@@ -14,7 +14,7 @@ public class Cars {
 
     public Cars(List<String> inputNames, RandomGenerate randomGenerate){
         this.randomGenerate = randomGenerate;
-        Car[] carArray = new Car[maxCarNumber];
+        Car[] carArray = new Car[inputNames.size()];
 
         for(int i = startIndex; i < inputNames.size(); i++){
             Car car = new Car(inputNames.get(i), randomGenerate);
