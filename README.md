@@ -44,8 +44,8 @@
 - [ ] Application
 ### Model
 - [x] Car
-- [ ] Cars
-- [ ] Referee
+- [x] Cars
+- [x] Referee
 - [x] StringSplitter
 - [x] RandomNumberGenerator
 ### View
