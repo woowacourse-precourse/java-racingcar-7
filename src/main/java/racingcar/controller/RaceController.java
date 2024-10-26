@@ -16,6 +16,8 @@ public class RaceController {
         // 자동차 이름 입력 및 좌우 공백 제거
         List<String> trimmedNames = Converter.trimNames(InputView.getCarNames());
 
+        Validator.uniqueName(trimmedNames); // 중복 이름 검증
+
         // Car 객체 리스트 생성
         List<Car> cars = Converter.createCars(trimmedNames);
 
