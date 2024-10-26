@@ -26,4 +26,8 @@ public class Cars {
         cars.forEach(Car::getStatus);
         System.out.println();
     }
+
+    public Car getCar(int carNumber) {
+        return cars.get(carNumber);
+    }
 }

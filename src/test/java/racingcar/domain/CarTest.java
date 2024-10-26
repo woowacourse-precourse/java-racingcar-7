@@ -4,9 +4,6 @@ import org.assertj.core.api.IntegerAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.utils.RandomMoveUtils;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class CarTest {
@@ -20,7 +17,7 @@ public class CarTest {
 
     @Test
     @DisplayName("n번 이동한 후 자동차의 상태는 0이상 n이하 여야 한다")
-    void carMovesWhenConditionIsMet() {
+    void validateCarMovesNumber() {
         // given
         // when
         for (int i = 0; i < 5; i++) {
