@@ -13,13 +13,13 @@ public class RaceServiceTest {
 
     @BeforeEach
     void setUp() {
-        this.raceService = new RaceService;
+        this.raceService = new RaceService();
     }
 
     @DisplayName("자동차 이름을 쉼표 기준으로 분리하는 기능 테스트")
     @Test
     public void splitCarNamesTest() {
-        List<String> carNames = raceService.splitCarNames("pobi,won,juni");
+        String[] carNames = raceService.splitCarNames("pobi,won,juni");
         assertEquals(carNames[0], "pobi");
         assertEquals(carNames[1], "won");
         assertEquals(carNames[2], "juni");
