@@ -2,11 +2,14 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
-        Car[] cars = getInputCarNames();
+        List<Car> cars = getInputCarNames();
         int movecount = getInputMoveCount();
         printMoveResult(movecount, cars);
         String winner = findWinner(cars);
@@ -14,13 +17,13 @@ public class Application {
 
     }
 
-    private static Car[] getInputCarNames() {
+    private static List<Car> getInputCarNames() {
         System.out.println("자동차의 이름을 쉼표(,)로 구분해 입력해주세요 (5자 이하)");
         String[] carNames = (Console.readLine()).split(",");
 
         int countCars = carNames.length;
 
-        Car[] cars = new Car[countCars];
+        List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < countCars; i++) {
 
@@ -28,7 +31,7 @@ public class Application {
                 throw new IllegalArgumentException(carNames[i] + ": 5자 이하여야 합니다");
             }
 
-            cars[i] = new Car(carNames[i].trim());
+            cars.add(new Car(carNames[i].trim()));
         }
         return cars;
     }
@@ -53,33 +56,33 @@ public class Application {
     }
 
 
-    private static void printMoveResult(int moveCount, Car[] cars) {
+    private static void printMoveResult(int moveCount, List<Car> cars) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < moveCount; i++) {
-
             System.out.println((i + 1) + "회차 결과");
 
-            for (int c = 0; c < cars.length; c++) {
-                cars[c].move(pickNumberInRange(0, 9));
-                System.out.println(cars[c].getPosition());
+            for (int c = 0; c < cars.size(); c++) {
+                cars.get(c).move(pickNumberInRange(0, 9));
+                System.out.println(cars.get(c).getPosition());
             }
+            System.out.println();
         }
     }
 
 
-    private static String findWinner(Car[] cars) {
+    private static String findWinner(List<Car> cars) {
         String winner = "";
         int maxPosition = 0;
 
-        for (int i = 0; i < cars.length; i++) {
+        for (int i = 0; i < cars.size(); i++) {
 
-            if (cars[i].getPosition().length() > maxPosition) {
-                maxPosition = cars[i].getPosition().length();
-                winner = cars[i].getName();
+            if (cars.get(i).getPosition().length() > maxPosition) {
+                maxPosition = cars.get(i).getPosition().length();
+                winner = cars.get(i).getName();
 
-            } else if (cars[i].getPosition().length() == maxPosition) {
-                winner += ", " + cars[i].getName();
+            } else if (cars.get(i).getPosition().length() == maxPosition) {
+                winner += ", " + cars.get(i).getName();
 
             }
         }
@@ -87,16 +90,5 @@ public class Application {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-    }
+}
 
