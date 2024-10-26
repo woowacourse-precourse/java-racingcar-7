@@ -13,11 +13,15 @@ public class Validation {
     private static int MAX_RACINGCAR_NAME_LENGTH = 5;
 
     public static void validateRacingcarNamesDuplicate(List<String> racingcarNames){
-        Set<String> setRacingcarNames = Utils.listToSet(racingcarNames);
-        if(setRacingcarNames.size() != racingcarNames.size()){
+        if(hasDuplicates(racingcarNames)){
             ErrorView.printRacingcarDuplicateNameErrorMessage();
             throw new IllegalArgumentException();
         }
+    }
+
+    private static <T> boolean hasDuplicates(List<T> targetList){
+        Set<T> set = Utils.listToSet(targetList);
+        return set.size() != targetList.size();
     }
 
     public static void validateRacingcarName(String racingcarName){
@@ -26,31 +30,47 @@ public class Validation {
     }
 
     private static void validateRacingcarNameBlank(String racingcarName){
-        if(racingcarName == null || racingcarName.trim().isEmpty()){
+        if(isBlankOrNull(racingcarName)){
             ErrorView.printRacingcarBlankNameErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
+    private static boolean isBlankOrNull(String target){
+        return target == null || target.trim().isEmpty();
+    }
+
     private static void validateRacingcarNameLength(String racingcarName){
-        if(racingcarName.length() > MAX_RACINGCAR_NAME_LENGTH){
+        if(isNameLengthExceedingLimit(racingcarName)){
             ErrorView.printRacingcarLengthErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
+    private static boolean isNameLengthExceedingLimit(String racingcarName){
+        return racingcarName.length() > MAX_RACINGCAR_NAME_LENGTH;
+    }
+
     public static void validateRacingGameRoundCount(int racingGameCount){
-        if(racingGameCount <= 0){
+        if(isInvalidRoundCount(racingGameCount)){
             ErrorView.printRacingGameCountErrorMessage();
             throw new IllegalArgumentException();
         }
     }
 
+    private static boolean isInvalidRoundCount(int racingGameCount){
+        return racingGameCount <= 0;
+    }
+
     public static void validateStringToInteger(String input){
-        if(!input.chars().allMatch(Character::isDigit) || input.equals(NONE_INPUT_STRING)){
+        if(isNotNumeric(input)){
             ErrorView.printRacingGameCountErrorMessage();
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isNotNumeric(String target){
+        return !target.chars().allMatch(Character::isDigit) || target.equals(NONE_INPUT_STRING);
     }
 
 }
