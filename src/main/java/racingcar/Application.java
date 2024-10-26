@@ -10,11 +10,12 @@ public class Application {
 
         Exception exception = new Exception();
         exception.except1(names);
+        exception.except2(names);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String count_s = Console.readLine();
         int count = Integer.parseInt(count_s);
-        exception.except2(count);
+        exception.except3(count);
 
         Racing racing=new Racing();
         racing.race(names,count);
