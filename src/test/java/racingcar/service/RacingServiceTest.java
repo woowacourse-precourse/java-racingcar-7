@@ -86,7 +86,7 @@ public class RacingServiceTest {
         RacingResult actual = racingService.play(racingCars, playArgument.getTryCount());
         List<RacingRoundResult> racingRoundResults = actual.roundResults();
         RacingCars winners = actual.winners();
-        List<RacingCar> winnerCars = RacingCarsUtil.parseValues(winners);
+        List<RacingCar> winnerCars = RacingCarsUtil.getValues(winners);
 
         // then
         verifyRoundResults(racingRoundResults, playArgument.getTryCount(), playArgument.getRacingRoundResults());

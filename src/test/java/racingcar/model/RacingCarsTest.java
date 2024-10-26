@@ -40,7 +40,7 @@ public class RacingCarsTest {
         RacingCars racingCars = new RacingCars(racingCarList);
 
         // then
-        List<RacingCar> values = RacingCarsUtil.parseValues(racingCars);
+        List<RacingCar> values = RacingCarsUtil.getValues(racingCars);
 
         // List 가 다른 참조를 가지는지
         // 동일한 수의 요소를 가지는지
@@ -64,8 +64,8 @@ public class RacingCarsTest {
         RacingCars copied = new RacingCars(original);
 
         // then
-        List<RacingCar> originalValues = RacingCarsUtil.parseValues(original);
-        List<RacingCar> copiedValues = RacingCarsUtil.parseValues(copied);
+        List<RacingCar> originalValues = RacingCarsUtil.getValues(original);
+        List<RacingCar> copiedValues = RacingCarsUtil.getValues(copied);
 
 
         // List 가 다른 참조를 가지는지
@@ -121,7 +121,7 @@ public class RacingCarsTest {
         racingCars.move(moveableRandomNumberMaker);
 
         // then
-        List<RacingCar> values = RacingCarsUtil.parseValues(racingCars);
+        List<RacingCar> values = RacingCarsUtil.getValues(racingCars);
         assertThat(values)
                 .allMatch(car -> car.getPosition() != car.DEFAULT_POSITION);
     }
@@ -184,7 +184,7 @@ public class RacingCarsTest {
         RacingCars maxPositionCars = racingCars.getMaxPositionCars();
 
         // then
-        List<RacingCar> values = RacingCarsUtil.parseValues(maxPositionCars);
+        List<RacingCar> values = RacingCarsUtil.getValues(maxPositionCars);
 
         assertThat(values)
                 .hasSize(2)

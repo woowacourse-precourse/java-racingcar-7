@@ -12,7 +12,7 @@ public class RacingCarsUtil {
         RacingCars 객체의 values 필드에 접근하여 값을 가져온다.
         Reflection 을 사용하여 private 필드에 접근한다.
      */
-    public static List<RacingCar> parseValues(RacingCars racingCars) {
+    public static List<RacingCar> getValues(RacingCars racingCars) {
         try {
             Field valuesField = RacingCars.class.getDeclaredField("values");
             valuesField.setAccessible(true);
