@@ -49,13 +49,13 @@ public class InputServiceTest {
         String expectedResult = newCarName.trim();
         assertThat(inputService.validateCarName(newCarName)).isEqualTo(expectedResult);
     }
-
+    
     @ParameterizedTest
-    @ValueSource(strings = {"carA", "carB", "carC"})
-    public void InputService_자동차이름_유효성테스트_불통과_이미존재(String newCarName) {
-        Assertions.assertThatThrownBy(() -> inputService.validateCarName(newCarName))
+    @ValueSource(strings = {"po b", "  po b", "po  b ", " p o b"})
+    public void InputService_자동차이름_유효성테스트_불통과_이름안의_공백(String cars) {
+        assertThatThrownBy(() -> inputService.validateCarName(cars))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ExceptionMessage.CAR_ALEADY_EXIST);
+                .hasMessage(ExceptionMessage.CAR_NAME_HAVE_WHITESPACE);
     }
 
     @Test

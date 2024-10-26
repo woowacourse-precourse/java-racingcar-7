@@ -9,8 +9,6 @@ public class InputService {
     }
 
     public String validateCarName(String newCarName) {
-        newCarName = newCarName.trim();
-
         if (newCarName.isBlank()) {
             throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_EMPTY);
         }
@@ -18,6 +16,11 @@ public class InputService {
         int carNameLength = newCarName.length();
         if (carNameLength > 5) {
             throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_LENGTH_INVALID);
+        }
+
+        String[] newCarNameSplit = newCarName.split(" ");
+        if (newCarNameSplit.length > 1) {
+            throw new IllegalArgumentException(ExceptionMessage.CAR_NAME_HAVE_WHITESPACE);
         }
 
         return newCarName;
@@ -38,6 +41,7 @@ public class InputService {
         }
 
         for (String newCarName : carNames) {
+            newCarName = newCarName.trim();
             newCarName = validateCarName(newCarName);
             validCarNames.add(newCarName);
         }
