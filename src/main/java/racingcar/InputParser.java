@@ -10,7 +10,7 @@ public class InputParser {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : input.split(CARNAME_DELIMITER, -1)) {
-            carList.add(new Car(carName));
+            carList.add(Car.from(carName.trim()));
         }
 
         return carList;
