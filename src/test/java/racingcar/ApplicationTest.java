@@ -101,6 +101,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // [오류] 중복된 자동차 이름이 입력되었을 때
+    @Test
+    void Error_duplicated_car_name() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, pobi, jane", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
