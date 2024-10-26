@@ -20,7 +20,7 @@ public class Application {
 
         CarRepository.saveCarsAndRepeatCount(racingParam);
 
-        startRacing(CarRepository.repeatCount);
+        startRacing();
 
         Output.printRacingResult();
         Output.printWinningCars();
