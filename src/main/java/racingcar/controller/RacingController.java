@@ -5,13 +5,11 @@ import racingcar.view.InputView;
 
 public class RacingController {
 
-    private InputView inputView;
-
     public RacingController() {
-        inputView = new InputView();
     }
 
     public void run() {
+        InputView inputView = new InputView();
         inputView.printInputView();
 
         Racing racing = new Racing();
