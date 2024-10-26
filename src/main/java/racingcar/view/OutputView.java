@@ -4,10 +4,12 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
+import static racingcar.constants.Constants.*;
+
 public class OutputView {
 
     public static void resultMessage() {
-        System.out.println("\n실행 결과");
+        System.out.println(EXECUTE_RESULT);
     }
 
     public static void roundResult(List<Car> carList) {
@@ -18,6 +20,6 @@ public class OutputView {
     }
 
     public static void winnerMessage(String winnerList) {
-        System.out.println("최종 우승자 : " + winnerList);
+        System.out.println(WINNER_RESULT + winnerList);
     }
 }

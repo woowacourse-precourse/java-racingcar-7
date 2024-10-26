@@ -32,6 +32,6 @@ public class Car {
     }
 
     public String getCurrentPosition() {
-        return "-".repeat(Math.max(0, position));
+        return DASH.repeat(position);
     }
 }

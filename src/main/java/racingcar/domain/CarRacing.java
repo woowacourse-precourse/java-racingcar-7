@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.constants.Constants.*;
 import static racingcar.view.OutputView.*;
 
 public class CarRacing {
@@ -39,7 +40,7 @@ public class CarRacing {
         return carList.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(Car::getName)
-            .collect(Collectors.joining(","));
+            .collect(Collectors.joining(DELIMITER));
     }
 
     private int getMaxPosition() {
