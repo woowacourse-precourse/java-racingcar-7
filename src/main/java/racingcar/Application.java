@@ -1,9 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static java.lang.Integer.*;
 
 public class Application {
 
@@ -17,15 +20,16 @@ public class Application {
             throw new IllegalArgumentException("경주할 자동차 이름 입력 필요함.");
         }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String tryCount = Console.readLine();
-
         List<String> carNameList = Arrays.asList(carName.split(","));
-        
+
         for (int i = 0; carNameList.size() > i; i++){
             if (carNameList.get(i).length() > MAX_CAR_NAME_LENGTH){
                 throw new IllegalArgumentException("자동차의 이름은 5글자를 넘길 수 없습니다.");
             }
         }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String tryCountInput = Console.readLine();
+
     }
 }
