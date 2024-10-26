@@ -4,6 +4,7 @@ public class Car {
 
     private final String name;
     private Progress progress;
+    private boolean isWinner = false;
 
     public Car(String name) {
         if (name.length() > 5) {
@@ -13,15 +14,23 @@ public class Car {
         this.progress = new Progress("");
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getProgressResult() {
         return progress.getValue();
     }
 
     public void moveForward() {
         this.progress = progress.addStep("-");
+    }
+
+    public void win() {
+        this.isWinner = true;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isWinner() {
+        return isWinner;
     }
 }
