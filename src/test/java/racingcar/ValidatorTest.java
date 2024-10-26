@@ -40,4 +40,11 @@ public class ValidatorTest {
                 () -> validator.validateCarNameLength(cars));
     }
 
+    @DisplayName("자동차 이름 길이가 6이 넘어가지 않으면 정상 기능")
+    @Test
+    void validateCarNameLength_ShouldNotThrowException_WhenCarNameIsNotTooLong() {
+        String[] cars = {"BMW", "Audi"};
+        assertDoesNotThrow(() -> validator.validateCarNameLength(cars));
+    }
+
 }
