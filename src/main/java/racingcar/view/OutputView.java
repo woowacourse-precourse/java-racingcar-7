@@ -28,6 +28,7 @@ public class OutputView {
 
             System.out.println(carName + " : " + hyphenPoint);
         }
+        System.out.println();
     }
 
     public void printFinalWinner(Winner winner) {
