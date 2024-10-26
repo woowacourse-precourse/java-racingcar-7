@@ -31,12 +31,12 @@ public class RacingCarController {
     private Race setUpRace(){
         List<Car> cars = setUpCars();
         TryCount tryCount = setUpTryCount();
-        return new Race(cars, tryCount, new Winner(), new RaceResultStringGenerator());
+        Winner winner = new Winner();
+        return new Race(cars, tryCount, winner, new RaceResultStringGenerator());
     }
 
     private List<Car> setUpCars(){
         outputView.printScanCarsMessage();
-
         List<Car> cars = new ArrayList<>();
         for (String carName : inputView.scanCarNames()) {
             cars.add(new Car(carName, new CarNameValidator()));
@@ -50,7 +50,7 @@ public class RacingCarController {
     }
 
     private void raceCars(Race race) {
-        outputView.printMoveResultMessage();
+        outputView.printStartRaceMessage();
         String raceResult = race.startRace();
         outputView.printRaceResult(raceResult);
     }
