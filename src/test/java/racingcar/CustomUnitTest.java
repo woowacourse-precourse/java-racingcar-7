@@ -93,4 +93,20 @@ public class CustomUnitTest {
             validator.validate(trial);
         });
     }
+
+    @Test
+    void SAME_TWO_CAR_NAMES(){
+        Validator<String[]> validator = new CarNameValidator();
+        assertThrows(IllegalArgumentException.class, () ->{
+            validator.validate(new String[]{"pobi","pobi"});
+        });
+    }
+
+    @Test
+    void INPUT_ENDS_IN_COMMA(){
+        String input = "pobi,woni,";
+        String[] output = StringProcessor.process(input);
+
+        assertThat(output).containsExactly("pobi","woni");
+    }
 }

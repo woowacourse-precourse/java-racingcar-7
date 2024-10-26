@@ -19,24 +19,9 @@ public class StringProcessor {
     }
 
     public static String formatWinner(List<String> winners){
-        if(isSingleWinner(winners)){
-            return getFirstWinner(winners);
-        }
-        return formatMultipleWinners(winners);
+        return String.join(",",winners);
     }
-
-    private static String formatMultipleWinners(List<String> winners){
-        return String.join(COMMA + SPACE, winners);
-    }
-
-    private static String getFirstWinner(List<String> winners){
-        return winners.get(0);
-    }
-
-    private static boolean isSingleWinner(List<String> winner){
-        return winner.size() == ONE;
-    }
-
+    
     private static String trim(String input){
         return input.trim();
     }

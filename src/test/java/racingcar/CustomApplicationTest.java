@@ -48,6 +48,37 @@ class CustomApplicationTest extends NsTest{
         );
     }
 
+    @Test
+    void SIMULATE_SINGLE_PLAYER(){
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi","3");
+                assertThat(output()).contains("pobi : --", "최종 우승자 : pobi");
+            },
+            4,4,2
+        );
+    }
+
+    @Test
+    void SIMULATE_ONLY_COMMAS_EXCEPTION(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run(",,,", "3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
+    @Test
+    void SIMULATE_SINGLE_NAME_TWO_COMMAS(){
+        assertSimpleTest(
+            () -> {
+                assertThatThrownBy(() -> run("pobi,,", "3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            }
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
