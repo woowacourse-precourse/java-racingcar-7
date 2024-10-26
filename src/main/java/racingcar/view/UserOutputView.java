@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class UserOutputView {
 
@@ -13,15 +14,13 @@ public class UserOutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void RacingRoundMessage(Map<String, List<Integer>> m, int attemptCount){
+    public static void RacingRoundMessage(List<Map<String, Integer>> m, int attemptCount){
         System.out.println("실행 결과");
-        for(int i=0; i<attemptCount; i++){
-            for (Map.Entry<String, List<Integer>> stringListEntry : m.entrySet()) {
-                String name = stringListEntry.getKey();
-                int len = stringListEntry.getValue().get(i);
-                System.out.print(name + " : ");
-                System.out.println("-".repeat(len));
-            }
+
+        for (Map<String, Integer> stringIntegerMap : m) {
+            stringIntegerMap.forEach((key, value) -> {
+                System.out.print(key + " : " + "-".repeat(value));
+            });
         }
     }
 

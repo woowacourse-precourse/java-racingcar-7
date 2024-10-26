@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public record RacingResponse(
-        Map<String, List<Integer>> race,
+        List<Map<String, Integer>> race,
         List<String> winner
 ) {
 }

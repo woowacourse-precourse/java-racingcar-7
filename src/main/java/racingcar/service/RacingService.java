@@ -12,25 +12,25 @@ public class RacingService {
 
     public RacingResponse racing(String[] carName, int attemptCount) {
         List<Car> cars = getCars(carName);
-        Map<String, List<Integer>> moveData = getMoveData(attemptCount, cars);
+        List<Map<String, Integer>> moveData = getMoveData(attemptCount, cars);
         List<String> winners = getWinners(cars);
 
         return new RacingResponse(moveData, winners);
     }
 
-    private Map<String, List<Integer>> getMoveData(int attemptCount, List<Car> cars) {
-        Map<String, List<Integer>> m = new HashMap<>();
+    private List<Map<String, Integer>> getMoveData(int attemptCount, List<Car> cars) {
+        List<Map<String, Integer>> moveData = new ArrayList<>();
 
-        for(Car car : cars){
-            List<Integer> move = new ArrayList<>();
-            for(int i = 0; i< attemptCount; i++){
+        for(int i=0; i<attemptCount; i++) {
+            Map<String, Integer> move = new HashMap<>();
+            for (Car car : cars) {
                 car.move();
-                move.add(car.getLen());
+                move.put(car.getName(), car.getDistance());
             }
-            m.put(car.getName(), move);
+            moveData.add(move);
         }
 
-        return m;
+        return moveData;
     }
 
     private List<String> getWinners(List<Car> cars) {
@@ -38,12 +38,12 @@ public class RacingService {
         int max = -1;
 
         for(Car car : cars){
-            if(max < car.getLen()){
-                max = car.getLen();
+            if(max < car.getDistance()){
+                max = car.getDistance();
                 winners.clear();
                 winners.add(car.getName());
             }
-            else if(max == car.getLen()){
+            else if(max == car.getDistance()){
                 winners.add(car.getName());
             }
         }
