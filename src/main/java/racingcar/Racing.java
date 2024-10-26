@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Racing {
+    Output output = new Output();
+
     public boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) > 3;
     }
@@ -34,6 +36,7 @@ public class Racing {
         for (int i = 0; i < attemptCount; i++) {
             if(canMove()) racing(cars);
             compareMoveCount(cars);
+            output.printRacingResult(cars);
         }
     }
 }
