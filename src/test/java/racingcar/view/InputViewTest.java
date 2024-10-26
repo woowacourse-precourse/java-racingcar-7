@@ -1,14 +1,18 @@
 package racingcar.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.in;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
 
@@ -44,7 +48,7 @@ class InputViewTest {
         String input = "pobi,woni,jun";
         setInputStream(input);
 
-        String carNames = inputView.readCarNames();
+        ArrayList<String> carNames = inputView.readCarNames();
 
         assertThat(carNames).isEqualTo(input);
     }

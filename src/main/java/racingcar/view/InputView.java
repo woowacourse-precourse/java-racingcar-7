@@ -1,12 +1,18 @@
 package racingcar.view;
 
+import static racingcar.Util.Utils.splitNamesByComma;
+import static racingcar.validate.Validator.validateCarNames;
+
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class InputView {
 
-    public String readCarNames() {
+    public ArrayList<String> readCarNames() throws IllegalArgumentException {
         System.out.println(Message.INPUT_CAR_NAME.message);
-        return Console.readLine();
+        String input = Console.readLine();
+        validateCarNames(input);
+        return splitNamesByComma(input);
     }
 
     private enum Message {
