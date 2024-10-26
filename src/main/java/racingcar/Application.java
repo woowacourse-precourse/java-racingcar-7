@@ -13,6 +13,8 @@ public class Application {
 
             int tryCount = getTryCount();
             System.out.println("시도 횟수: " + tryCount);
+
+            raceCars(tryCount);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -46,6 +48,12 @@ public class Application {
         }
 
         return tryCount;
+    }
+
+    private static void raceCars(int tryCount){
+        for (int i = 0; i < tryCount; i++){
+            System.out.println("차수 " + (i + 1) + " 진행 중...");
+        }
     }
 
 }
