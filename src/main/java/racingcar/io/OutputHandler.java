@@ -33,9 +33,7 @@ public class OutputHandler {
 
 	public void promptGameStatus(Cars cars) {
 		List<CarStatus> carsStatus = cars.getStatus();
-		carsStatus.forEach(carStatus -> {
-			System.out.println(carStatus.getCarName() + " : " + "-".repeat(carStatus.getMoveDistance()));
-		});
+		carsStatus.forEach(carStatus -> System.out.println(carStatus.getCarName() + " : " + "-".repeat(carStatus.getMoveDistance())));
 		System.out.println();
 	}
 
