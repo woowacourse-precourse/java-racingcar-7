@@ -1,45 +1,59 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Game {
-    private final Map<String, StringBuilder> result;
+    private final View view;
+    private final Validator validator;
+    private final GameLogic gameLogic;
 
-    public Game(String[] carNames) {
-        this.result = initializeResult(carNames);
+    public Game(ApplicationContext applicationContext) {
+        this.view = applicationContext.getView();
+        this.validator = applicationContext.getValidator();
+        this.gameLogic = applicationContext.getGameLogic();
     }
 
-    public Map<String, StringBuilder> moveCarsIfQualified() {
-        for (String carName : result.keySet()) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
-                result.put(carName, result.get(carName).append("-"));
-            }
+    public void run() {
+        int count = start();
+        play(count);
+        end();
+    }
+
+    private int start() {
+        String[] carNames = getCarNames();
+        int count = getCount();
+        gameLogic.initialize(carNames);
+        return count;
+    }
+
+    private void play(int count) {
+        view.printResultPrompt();
+        for (int i = 0; i < count; i++) {
+            playSingleRound();
         }
-        return result;
     }
 
-    public List<String> getWinners() {
-        int maxMoveCount = getMaxMoveCount();
-        return result.entrySet().stream()
-                .filter(entry -> entry.getValue().length() == maxMoveCount)
-                .map(Map.Entry::getKey)
-                .toList();
+    private void end() {
+        List<String> winners = gameLogic.getWinners();
+        view.printWinners(winners);
     }
 
-    private Map<String, StringBuilder> initializeResult(String[] carNames) {
-        return Arrays.stream(carNames)
-                .collect(Collectors.toMap(name -> name, name -> new StringBuilder()));
+    private String[] getCarNames() {
+        view.printCarNamePrompt();
+        String input = view.readInput();
+        return validator.validateCarNames(input);
     }
 
-    private int getMaxMoveCount() {
-        return result.values().stream()
-                .mapToInt(StringBuilder::length)
-                .max()
-                .orElse(0);
+    private int getCount() {
+        view.printCountPrompt();
+        String input = view.readInput();
+        return validator.validateCount(input);
+    }
+
+    private void playSingleRound() {
+        Map<String, StringBuilder> roundResult = gameLogic.moveCarsIfQualified();
+        view.printStatus(roundResult);
+        System.out.println();
     }
 }
