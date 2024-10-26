@@ -1,7 +1,7 @@
 package racingcar.game.model;
 
 import java.util.List;
-import racingcar.game.model.util.RandomNumberGenerator;
+import racingcar.game.util.RandomNumberGenerator;
 
 public class RacingCars {
     private static final int MOVE_THRESHOLD = 4;
