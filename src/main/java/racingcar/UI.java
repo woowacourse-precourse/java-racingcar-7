@@ -25,14 +25,15 @@ public class UI {
 
     public void printRoundResult(boolean isFirstRound, List<Car> participants) {
         if (isFirstRound) {
-            System.out.println(PRINT_RESULT_STATEMENT);
+            System.out.println("\n" + PRINT_RESULT_STATEMENT);
         }
         for (Car car : participants) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getMovedCnt()));
         }
+        System.out.println();
     }
 
     public void printWinners(List<String> winners) {
-        System.out.println(PRINT_WINNERS_STATEMENT + String.join(", ", winners));
+        System.out.print(PRINT_WINNERS_STATEMENT + String.join(", ", winners));
     }
 }
