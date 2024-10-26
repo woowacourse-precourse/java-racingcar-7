@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Executor {
-    private long repeatCount;
     private final String operator = ",";
     private final int nameLengthLimit = 5;
     private final int moveStandard = 4;
 
+    private long repeatCount;
     private List<Car> cars = new ArrayList<>();
     private List<Car> winners = new ArrayList<>();
 
