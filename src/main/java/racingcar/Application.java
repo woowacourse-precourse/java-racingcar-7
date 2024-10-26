@@ -1,9 +1,5 @@
 package racingcar;
 
-import io.ConsoleInputHandler;
-import io.ConsoleOutputHandler;
-import io.InputHandler;
-import io.OutputHandler;
 import java.util.ArrayList;
 import racingcar.car.Attempt;
 import racingcar.car.Car;
@@ -12,6 +8,10 @@ import racingcar.comparable.IntegerComparable;
 import racingcar.comparable.NumberComparable;
 import racingcar.exception.InvalidAttemptException;
 import racingcar.exception.InvalidNameException;
+import racingcar.io.ConsoleInputHandler;
+import racingcar.io.ConsoleOutputHandler;
+import racingcar.io.InputHandler;
+import racingcar.io.OutputHandler;
 import racingcar.random.RandomIntegerGenerator;
 import racingcar.random.RandomNumberGenerator;
 import racingcar.strategy.MovingStrategy;
