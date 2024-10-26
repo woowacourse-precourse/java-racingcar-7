@@ -15,6 +15,14 @@ public class RacingCarController {
         this.output = output;
     }
 
+    public void run(){
+        try{
+            proceed();
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void proceed(){
         String carNames = input.inputCarsName();
         Cars.register(separateName(carNames));
