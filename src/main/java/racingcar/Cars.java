@@ -15,7 +15,7 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
