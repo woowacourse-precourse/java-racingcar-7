@@ -14,10 +14,8 @@ public class Racing implements RacingRule {
   public Racing(ArrayList<Car> cars) {
     this.cars = cars;
   }
-  /*
-   * setCars 메서드 수정하기
-   */
-  public static Racing setCars(String carNames) {
+
+  public static Racing startRacing(String carNames) {
     ArrayList<Car> cars = new ArrayList<>();
     List<String> splittedNames = Splitter.splitNames(carNames);
 
@@ -26,11 +24,10 @@ public class Racing implements RacingRule {
 
     for (String name : splittedNames) {
       CarValidator.validateCarName(name);
-      Car car = new Car(name);
-      cars.add(car);
+      cars.add(new Car(name));
     }
-    Racing racing = new Racing(cars);
-    return racing;
+
+    return new Racing(cars);
   }
 
   public void runRound() {
