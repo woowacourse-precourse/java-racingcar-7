@@ -17,23 +17,27 @@ public class RacingGameController {
     private final OutputView outputView = new OutputView();
 
     public void start() {
-        String carNames = inputCarNames();
-        List<String> parsedCarNames = parseCarNames(carNames);
+        List<Car> cars = parseCar(inputCarNames());
         int tryCount = inputTryCount();
         RacingGame racingGame = new RacingGame(
                 new RandomForwardMovementPolicy(new DefaultRandomNumberGenerator()),
                 tryCount
         );
-        parsedCarNames.forEach(carName -> {
-            Car car = new Car(carName);
-            racingGame.join(car);
-        });
+        racingGame.join(cars);
+        playRounds(racingGame, tryCount);
+        printWinners(racingGame);
+    }
+
+    public void playRounds(RacingGame racingGame, int tryCount) {
         outputView.printResultTitle();
         IntStream.range(0, tryCount).forEach(i -> {
             racingGame.tryRound();
             List<Car> cars = racingGame.getCurrentCarState();
             outputView.printRoundResult(RaceResultDTO.from(cars));
         });
+    }
+
+    private void printWinners(RacingGame racingGame) {
         List<String> winnerNames = racingGame.getWinners().stream()
                 .map(Car::getName)
                 .toList();
@@ -54,7 +58,9 @@ public class RacingGameController {
         }
     }
 
-    public List<String> parseCarNames(String input) {
-        return Arrays.stream(input.split(",")).toList();
+    public List<Car> parseCar(String input) {
+        return Arrays.stream(input.split(","))
+                .map(Car::new)
+                .toList();
     }
 }
