@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -55,19 +54,19 @@ public class UnitTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"1,1","2,2","3,3","4,4","5,5","10000,10000"})
     @DisplayName("parseTrial 글자수 정상 작동 테스트")
-    void parseTrialTest() {
-        String input = "5";
+    void parseTrialTest(String input, int realTrial) {
         Integer result = Application.parseTrial(input);
-        assertThat(result).isEqualTo(5)
+        assertThat(result).isEqualTo(realTrial)
                 .isPositive();
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"--","dkssdu","asdfasdf","!"})
     @DisplayName("parseTrial 예외 테스트")
-    void parseTrialTest2() {
-        final String input = "--\n";
+    void parseTrialTest2(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         assertThatThrownBy(() -> Application.parseTrial(input))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -75,7 +74,7 @@ public class UnitTest extends NsTest {
 
     @DisplayName("checkCarName 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"car123", "carcar", "asdfasdf123"})
+    @ValueSource(strings = {"car123", "carcar", "asdfasdf123, 안녕"})
     void checkCarNameTest(String carName) {
         assertThatThrownBy(() -> Application.checkCarName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -83,7 +82,7 @@ public class UnitTest extends NsTest {
 
     @ParameterizedTest
     @DisplayName("getRandomNumber 테스트")
-    @CsvSource({"5, 7", "1, 2"})
+    @CsvSource({"5, 7", "1, 2", "0, 0"})
     void getRandomNumberTest(int randomNumber1, int randomNumber2) {
         assertRandomNumberInRangeTest(
                 () -> {
