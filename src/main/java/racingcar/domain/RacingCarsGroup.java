@@ -11,4 +11,8 @@ public class RacingCarsGroup {
         this.cars = cars;
     }
 
+    public static List<Car> getCars() {
+        return cars;
+    }
+
 }

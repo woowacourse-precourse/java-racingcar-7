@@ -31,4 +31,13 @@ public class RacingCarGame {
 
     }
 
+    public void moveEachCars(List<Integer> moves) {
+        List<Car> cars = RacingCarsGroup.getCars();
+        for (int i = 0; i < moves.size(); i++) {
+            if (moves.get(i) >= 4) {
+                cars.get(i).increasePosition(moves.get(i));
+            }
+        }
+    }
+
 }
