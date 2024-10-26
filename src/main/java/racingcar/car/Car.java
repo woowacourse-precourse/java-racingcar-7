@@ -26,7 +26,7 @@ public class Car implements Comparable<Car> {
         return moveCount;
     }
 
-    public void attemptMove() {
+    public void attemptMoving() {
         int randomNumber = getRandomValue();
 
         if (isMoveableNumber(randomNumber)) {
@@ -34,7 +34,7 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void attemptMove(int randomNumber) {
+    public void attemptMoving(int randomNumber) {
         if (isMoveableNumber(randomNumber)) {
             move();
         }

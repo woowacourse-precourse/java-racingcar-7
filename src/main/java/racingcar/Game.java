@@ -15,8 +15,8 @@ public class Game {
 
             Cars cars = new Cars(names);
 
-            int tryCount = InputManager.readTryCount();
-            race(cars, tryCount);
+            int attemptCount = InputManager.readAttemptCount();
+            race(cars, attemptCount);
 
             List<String> winnerNames = cars.getWinnerNames();
             OutputManager.printWinner(winnerNames);
@@ -25,11 +25,11 @@ public class Game {
         }
     }
 
-    private static void race(Cars cars, int tryCount) {
+    private static void race(Cars cars, int attemptCount) {
 
         printStartMessage();
 
-        for(int i = 0; i< tryCount; i++) {
+        for (int i = 0; i < attemptCount; i++) {
             cars.attemptMoveAllCars();
             printNewLine();
         }

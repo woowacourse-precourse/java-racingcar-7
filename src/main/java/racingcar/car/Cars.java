@@ -26,7 +26,7 @@ public class Cars {
 
     public void attemptMoveAllCars() {
         for (Car car : cars) {
-            car.attemptMove();
+            car.attemptMoving();
             car.showStatus();
         }
     }
@@ -37,15 +37,9 @@ public class Cars {
         int index = 0;
         for (Car car : cars) {
             int randomNumber = randomNumbers.get(index);
-            car.attemptMove(randomNumber);
+            car.attemptMoving(randomNumber);
             car.showStatus();
             index++;
-        }
-    }
-
-    private void validateRandomNumberCount(List<Integer> randomNumbers) {
-        if (randomNumbers.size() != cars.size()) {
-            throw new IllegalArgumentException(ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE);
         }
     }
 
@@ -61,6 +55,12 @@ public class Cars {
             }
         }
         return winnerNames;
+    }
+
+    private void validateRandomNumberCount(List<Integer> randomNumbers) {
+        if (randomNumbers.size() != cars.size()) {
+            throw new IllegalArgumentException(ILLEGAL_RANDOM_NUMBER_COUNT_MESSAGE);
+        }
     }
 
     private void validateNameCount(List<String> names) {

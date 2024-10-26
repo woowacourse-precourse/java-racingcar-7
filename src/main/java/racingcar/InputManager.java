@@ -17,20 +17,20 @@ public class InputManager {
         return input;
     }
 
-    public static int readTryCount() {
+    public static int readAttemptCount() {
         OutputManager.printTryCountMessage();
-        int tryCount = 0;
+        int attemptCount = 0;
         try {
             String userInput = Console.readLine();
-            tryCount = Integer.parseInt(userInput);
+            attemptCount = Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_MESSAGE);
         }
 
-        if (tryCount <= 0) {
+        if (attemptCount <= 0) {
             throw new IllegalArgumentException(NOT_POSITIVE_NUMBER_ERROR_MESSAGE);
         }
-        return tryCount;
+        return attemptCount;
     }
 
     public static void close() {

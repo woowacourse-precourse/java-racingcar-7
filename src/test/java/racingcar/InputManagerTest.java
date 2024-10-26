@@ -38,7 +38,7 @@ class InputManagerTest {
         InputStream inputStream = getInputStream(userInput);
         System.setIn(inputStream);
 
-        assertThatThrownBy(() -> InputManager.readTryCount())
+        assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 1 부터 2147483647 까지의 정수값만 입력할 수 있습니다.");
     }
@@ -51,7 +51,7 @@ class InputManagerTest {
         InputStream inputStream = getInputStream(userInput);
         System.setIn(inputStream);
 
-        assertThatThrownBy(() -> InputManager.readTryCount())
+        assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 1 부터 2147483647 까지의 정수값만 입력할 수 있습니다.");
     }
@@ -64,7 +64,7 @@ class InputManagerTest {
         InputStream inputStream = getInputStream(userInput);
         System.setIn(inputStream);
 
-        assertThatThrownBy(() -> InputManager.readTryCount())
+        assertThatThrownBy(() -> InputManager.readAttemptCount())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("시도 횟수는 양수만 입력 가능합니다.");
     }
@@ -78,7 +78,7 @@ class InputManagerTest {
         System.setIn(inputStream);
 
         //when
-        int tryCount = InputManager.readTryCount();
+        int tryCount = InputManager.readAttemptCount();
 
         //then
         assertThat(tryCount).isEqualTo(1);

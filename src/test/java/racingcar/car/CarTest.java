@@ -64,7 +64,7 @@ class CarTest {
         int attemptCount = 3;
 
         for(int i = 0 ; i < attemptCount; i++) {
-            car.attemptMove(randomValues.get(i));
+            car.attemptMoving(randomValues.get(i));
         }
 
         //when
@@ -83,8 +83,8 @@ class CarTest {
         int randomValue = 3;
 
         //when
-        car.attemptMove(randomValue);
-        car.attemptMove(randomValue);
+        car.attemptMoving(randomValue);
+        car.attemptMoving(randomValue);
         car.showStatus();
         String result = getOutput();
 
