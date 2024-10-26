@@ -30,7 +30,7 @@ public class RacingController {
         }
 
         // 최종 우승자 출력
-
+        System.out.printf("최종 우승자 : %s", String.join(", ", cars.findWinner()));
     }
     public static void printScores(Map<String, Integer> scores) {
         scores.forEach((key, value) -> {

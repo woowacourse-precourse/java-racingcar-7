@@ -36,4 +36,11 @@ public class Cars {
         return tryTime == 0;
     }
 
+    public List<String> findWinner() {
+        return getCarInfo().entrySet().stream()
+                .filter(entry -> entry.getValue().equals(Collections.max(getCarInfo().values())))
+                .map(Map.Entry::getKey)
+                .toList();
+    }
+
 }
