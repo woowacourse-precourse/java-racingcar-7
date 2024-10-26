@@ -16,4 +16,7 @@ public class Car {
         if(pickNumberInRange(RANDOM_RANGE_MIN_NUMBER, RANDOM_RANGE_MAX_NUMBER) > MOVE_FORWARD_MIN_NUMBER) distance++;
     }
 
+    public void showDistance() {
+        ConsoleOutputHandler.showCarDistance(carName, distance);
+    }
 }

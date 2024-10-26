@@ -36,7 +36,9 @@ public class CarRacingSimulation {
         for(int attempt = 0; attempt < attemptCount; attempt++){
             for(Car car : carList){
                 car.moveForwardAttempt(RANDOM_RANGE_MIN_NUMBER,RANDOM_RANGE_MAX_NUMBER,MOVE_FORWARD_MIN_NUMBER);
+                car.showDistance();
             }
+            System.out.println();
         }
     }
 }
