@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import racingcar.service.RacingService;
+import racingcar.utils.StringReplacer;
 import racingcar.utils.StringSplitter;
+import racingcar.validate.RacingcarNameValidate;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,14 +13,18 @@ public class RacingController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final StringReplacer stringReplacer;
     private final StringSplitter stringSplitter;
     private final RacingService racingService;
+    private final RacingcarNameValidate racingcarNameValidate;
 
-    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter, RacingService racingService) {
+    public RacingController(InputView inputView, OutputView outputView, StringSplitter stringSplitter, RacingService racingService, RacingcarNameValidate racingcarNameValidate, StringReplacer stringReplacer) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.stringReplacer = stringReplacer;
         this.stringSplitter = stringSplitter;
         this.racingService = racingService;
+        this.racingcarNameValidate = racingcarNameValidate;
     }
 
     public void run() {
@@ -30,10 +36,14 @@ public class RacingController {
          * 자동차 이름 입력 받기
          */
         String carNames = inputView.askCarName();
+        racingcarNameValidate.isBlank(carNames);
+        carNames = stringReplacer.removeSpaces(carNames);
         /*
          * 구분자 기분으로 문자열 리스트로 변환
          */
         List<String> carList = stringSplitter.split(carNames);
+        racingcarNameValidate.isMoreThanFiveLetters(carList);
+        racingcarNameValidate.isDuplicate(carList);
         /*
          * Racingcar 객체를 Racingcars 객체 리스트에 저장
          */
