@@ -13,8 +13,10 @@ public class MainController {
     public void start(){
         UserOutputView.InputCarNameMessage();
         String carNames = UserInputView.readUserInput();
+
         UserOutputView.InputAttemptCountMessage();
         int attemptCount = Parser.parseStringToInt(UserInputView.readUserInput());
+
         RacingResponse response = racingController.startRace(new RacingRequest(carNames, attemptCount));
         UserOutputView.RacingRoundMessage(response.moveData());
         UserOutputView.RacingResultMessage(response.winner());
