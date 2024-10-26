@@ -28,10 +28,10 @@ public class Car {
         this.position += 1;
     }
 
-    public static List<Car> makeCarList(String[] carnames){
+    public static List<Car> makeCarList(List<String> carNames){
         List<Car> cars = new ArrayList<>();
-        for (String carNames : carnames) {
-            Car newcar = new Car(carNames);
+        for (String carName : carNames) {
+            Car newcar = new Car(carName);
             cars.add(newcar);
         }
         return cars;
