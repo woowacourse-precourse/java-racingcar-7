@@ -176,13 +176,36 @@ class GameUtilTest {
             if (result.isEmpty()) {
                 result += winnerName;
             } else {
-                result += ", " + winnerName;
+                result += winnerNames.toString().replaceAll("[\\[\\]]", "");
             }
         }
 
 
         assertThat(result).isEqualTo("koo, sang, woo");
-        assertThat(winnerNames.toString().replaceAll("[\\[\\]]", "")).isEqualTo("koo, sang, woo");
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideTwoWinnerList")
+    @DisplayName("우승자 구하기 최종 기능 테스트")
+    void 우승자_최종_기능_구현(List<CarVO> carNameAndGoCountList) {
+        List<String> winnerNameArray = new ArrayList<>();
+        var maxCount = GameUtil.getMaxGoCount(carNameAndGoCountList);
+        String winnerPrintValue = "최종 우승자 : ";
+
+        for (CarVO carNameAndCount : carNameAndGoCountList) {
+            if (carNameAndCount.getGoCount() == maxCount) {
+                winnerNameArray.add(carNameAndCount.getCarName());
+            }
+        }
+
+        if (winnerNameArray.size() == 1) {
+            winnerPrintValue += winnerNameArray.getFirst();
+        } else {
+            winnerPrintValue += winnerNameArray.toString().replaceAll("[\\[\\]]", "");
+        }
+
+        assertThat(winnerPrintValue).isEqualTo("최종 우승자 : woo, hong");
+
     }
 
 
@@ -217,8 +240,6 @@ class GameUtilTest {
                 Arguments.of(carNameAndGoCountList) // 자동차 이름과 실행 횟수
         );
     }
-
-
 
 
     // 우승자의 이름 리스트를 반환한다.
