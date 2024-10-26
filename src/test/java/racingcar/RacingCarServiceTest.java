@@ -143,4 +143,17 @@ class RacingCarServiceTest extends RacingCarService {
                 "이름은 5자 이하만 가능합니다.");
     }
 
+    @Test
+    @DisplayName("차 이름 중복 확인 메서드")
+    public void testIsDuplicatieCarName() throws Exception {
+        //given
+        List<String> listCarName1 = Arrays.asList("car1", "car2", "car2");
+        List<String> listCarName2 = Arrays.asList("car1", "car2", "car3");
+        //when
+        boolean result1 = racingCarService.isDuplicateCarName(listCarName1);
+        boolean result2 = racingCarService.isDuplicateCarName(listCarName2);
+        //then
+        Assertions.assertTrue(result1);
+        Assertions.assertFalse(result2);
+    }
 }
