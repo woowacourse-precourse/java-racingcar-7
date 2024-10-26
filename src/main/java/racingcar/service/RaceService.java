@@ -9,7 +9,11 @@ import java.util.*;
 
 public class RaceService {
 
-    private final CarRepository carRepository = new CarRepository();
+    private final CarRepository carRepository;
+
+    public RaceService(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     public void createCars(String[] carName) {
         Arrays.stream(carName)

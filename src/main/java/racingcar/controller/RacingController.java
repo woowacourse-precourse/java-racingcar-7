@@ -9,7 +9,11 @@ import racingcar.service.RaceService;
 public class RacingController {
 
     private static final String DELIMITERS = ",";
-    private final RaceService raceService = new RaceService();
+    private final RaceService raceService;
+
+    public RacingController(RaceService raceService) {
+        this.raceService = raceService;
+    }
 
     public void createCars(CreateCarsRequest request) {
         raceService.createCars(parseCarName(request.carNames()));
