@@ -14,6 +14,10 @@ public class Application {
             player.put(s,0);
         }
 
+        String countInput=Console.readLine();
+        int count;
+        count=Integer.parseInt(countInput);
+        
 
     }
 }
