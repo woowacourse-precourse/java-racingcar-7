@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.exception.domain.RaceErrorMessage;
 import racingcar.strategy.move.MovementStrategy;
 import racingcar.strategy.winner.WinnerStrategy;
+import racingcar.view.output.RaceOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,17 @@ public class Race {
         return cars;
     }
 
+
     public void start() {
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < attemptCount; i++) {
             for (Car car : cars) {
+                System.out.println(car.getName());
                 car.move(movementStrategy.shouldMove());
             }
+            System.out.print(RaceOutput.getProgress(this));
+            System.out.println();
         }
     }
 
