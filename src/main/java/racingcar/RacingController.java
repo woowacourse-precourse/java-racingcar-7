@@ -74,5 +74,6 @@ public class RacingController {
                 maxDistance = car.getGoStop();
             }
         }
+        outputView.printWinner(cars, maxDistance);
     }
 }
