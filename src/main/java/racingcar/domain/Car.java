@@ -10,6 +10,12 @@ public class Car {
         this.name = name;
     }
 
+    public void move() {
+        if(isMovable()) {
+            position++;
+        }
+    }
+
     private boolean isMovable() {
         return pickNumberInRange(0, 9) >= 4;
     }
