@@ -32,5 +32,6 @@ public class GameController {
             cars = race.play(cars);
             output.printRaceResult(cars);
         }
+        String winners = winner.getWinners(cars);
     }
 }
