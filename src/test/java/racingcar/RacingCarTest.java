@@ -43,6 +43,17 @@ class RacingCarTest extends NsTest {
         );
     }
 
+    @Test
+    void 공동_우승자가_나올_수_있다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("A, B, C", "1");
+                    assertThat(output()).contains("A : -", "B : -", "최종 우승자 : A, B");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
