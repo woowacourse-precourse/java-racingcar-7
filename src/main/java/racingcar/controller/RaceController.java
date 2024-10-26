@@ -9,6 +9,7 @@ public class RaceController {
     public void run() {
         Race race = setupRace();
         racing(race, getAttemptCount());
+        result(race);
     }
 
     private Race setupRace() {
@@ -27,6 +28,10 @@ public class RaceController {
             race.doRace();
             OutputView.renderResult(race);
         }
+    }
+
+    private void result(Race race) {
+        OutputView.renderWinners(race.getWinners());
     }
 
 }
