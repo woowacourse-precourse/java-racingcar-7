@@ -22,4 +22,15 @@ class ParserTest {
         assertThat(result).isEqualTo(expectedResult);
     }
 
+    @Test
+    void parseRepeatCount() {
+        Parser parser = new Parser();
+
+        String testStr = "15";
+        long expected = 15;
+
+        long result = parser.parseRepeatCount(testStr);
+        assertThat(result).isEqualTo(expected);
+    }
+
 }
