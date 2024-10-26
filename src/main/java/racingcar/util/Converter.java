@@ -1,9 +1,9 @@
-package racingcar.service;
+package racingcar.util;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Parser {
+public class Converter {
 
     public List<String> parseCarList(String input) {
         String[] inputArr = input.split(",");
