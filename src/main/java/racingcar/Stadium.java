@@ -2,32 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Set;
 
 public class Stadium {
     private final CarRegistry carRegistry;
-    private final Integer rounds;
-    private final StringBuilder executionResult = new StringBuilder();
+    private final RaceResult raceResult;
 
-    public Stadium(CarRegistry carRegistry, Integer rounds) {
+    public Stadium(CarRegistry carRegistry, RaceResult result) {
         this.carRegistry = carRegistry;
-        this.rounds = rounds;
+        this.raceResult = result;
     }
 
-    public void runGame() {
+    public void runGame(Integer rounds) {
         for (int i = 0; i < rounds; i++) {
             executeOneRound();
         }
-    }
-
-    public String getWinner() {
-        Set<String> winners = carRegistry.getWinnerNames();
-        String winnersString = "최종 우승자 : " + String.join(", ", winners);
-        return winnersString;
-    }
-
-    public String getResult() {
-        return executionResult.toString();
     }
 
     private void executeOneRound() {
@@ -36,7 +24,7 @@ public class Stadium {
                 car.goForward();
             }
         }
-        executionResult.append(carRegistry.toString()).append("\n");
+        this.raceResult.add(carRegistry.toString()).add("\n");
     }
 
     private boolean doesCarMove() {

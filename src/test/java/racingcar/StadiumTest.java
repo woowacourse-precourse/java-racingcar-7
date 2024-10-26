@@ -18,7 +18,8 @@ class StadiumTest {
     void verifyAllCarsMoveFourTimes() {
         // Given
         CarRegistry carRegistry = new CarRegistry("pobi,woni,jun");
-        Stadium stadium = new Stadium(carRegistry, 4);
+        RaceResult result = new RaceResult(new StringBuilder(), carRegistry);
+        Stadium stadium = new Stadium(carRegistry, result);
 
         String pobiString = "pobi : ----";
         String woniString = "woni : ----";
@@ -26,7 +27,7 @@ class StadiumTest {
 
         // When & Then
         assertRandomNumberInRangeTest(() -> {
-            stadium.runGame();
+            stadium.runGame(4);
             Set<Car> cars = carRegistry.getCars();
             String actualString = "";
             for (Car car : cars) {
@@ -41,7 +42,8 @@ class StadiumTest {
     void verifyCarsDoNotMoveWhenRandomNumberIsBelowThreshold() {
         // Given
         CarRegistry carRegistry = new CarRegistry("pobi,woni,jun");
-        Stadium stadium = new Stadium(carRegistry, 4);
+        RaceResult result = new RaceResult(new StringBuilder(), carRegistry);
+        Stadium stadium = new Stadium(carRegistry, result);
 
         String pobiString = "pobi : ";
         String woniString = "woni : ";
@@ -49,7 +51,7 @@ class StadiumTest {
 
         // When & Then
         assertRandomNumberInRangeTest(() -> {
-            stadium.runGame();
+            stadium.runGame(4);
             Set<Car> cars = carRegistry.getCars();
             String actualString = "";
             for (Car car : cars) {

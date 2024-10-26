@@ -15,10 +15,12 @@ public class Application {
         Integer rounds = Integer.parseInt(input.rounds());
 
         CarRegistry carRegistry = new CarRegistry(carNames);
-        Stadium stadium = new Stadium(carRegistry, rounds);
-        stadium.runGame();
+        RaceResult result = new RaceResult(new StringBuilder(), carRegistry);
+        Stadium stadium = new Stadium(carRegistry, result);
 
-        view.printExecutionOutput(stadium.getResult());
-        view.printWinner(stadium.getWinner());
+        stadium.runGame(rounds);
+
+        view.printExecutionOutput(result.toString());
+        view.printWinner(result.winnersToString());
     }
 }
