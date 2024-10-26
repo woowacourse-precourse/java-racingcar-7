@@ -1,7 +1,5 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import java.util.Arrays;
 import java.util.List;
 import racingcar.view.InputView;
@@ -15,28 +13,40 @@ public class RacingGameController {
     }
 
     public void run() {
-        String carNames = inputView.inputCarNames();
+        String inputCarNames = inputView.inputCarNames();
 
-        Cars cars = new Cars();
-
-        List<String> names = Arrays.stream(splitInput(carNames)).toList();
-
-        cars.registerAll(names);
-
-        System.out.println(cars);
+        Cars cars = registerCar(inputCarNames);
 
         String inputTryCount = inputView.inputTryCount();
 
-        TryCountDto tryCountDto = new TryCountDto(inputTryCount);
+        TryCount tryCount = registerTryCount(inputTryCount);
+
+        RacingGame racingGame = new RacingGame(cars);
+
+        for (int i = 0; i < tryCount.getCount(); i++) {
+            racingGame.round();
+        }
+
+        racingGame.checkWinner();
+    }
+
+
+    public Cars registerCar(String input) {
+        Cars cars = new Cars();
+
+        List<String> names = Arrays.stream(splitInput(input)).toList();
+
+        cars.registerAll(names);
+
+        return cars;
+    }
+
+    public TryCount registerTryCount(String input) {
+        TryCountDto tryCountDto = new TryCountDto(input);
 
         int count = Integer.parseInt(tryCountDto.input());
 
-        TryCount tryCount = TryCount.from(count);
-
-        System.out.println(tryCount);
-
-        RacingGame racingGame = new RacingGame(cars, tryCount);
-        racingGame.play();
+        return TryCount.from(count);
     }
 
 

@@ -6,19 +6,9 @@ import java.util.List;
 public class RacingGame {
 
     private final Cars cars;
-    private final TryCount count;
 
-    public RacingGame(Cars cars, TryCount count) {
+    public RacingGame(Cars cars) {
         this.cars = cars;
-        this.count = count;
-    }
-
-    public void play() {
-        for (int i = 0; i < count.getCount(); i++) {
-            round();
-        }
-
-        System.out.println(checkWinner());
     }
 
     public void round() {
@@ -29,7 +19,6 @@ public class RacingGame {
             }
         }
 
-        System.out.println(cars);
     }
 
     public List<Car> checkWinner() {
