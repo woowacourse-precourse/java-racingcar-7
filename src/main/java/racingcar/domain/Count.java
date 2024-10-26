@@ -1,23 +1,24 @@
 package racingcar.domain;
 
+import racingcar.constant.Rule;
 import racingcar.util.NumberValidator;
 
-public class Count<T extends Number>{
+public class Count {
 
-    private final T value;
+    private final int value;
 
-    private Count(final T value) {
+    private Count(final int value) {
         this.value = value;
     }
 
-    public static Count<Integer> of(final String input, final NumberValidator<Integer> numberValidator) {
+    public static Count of(final String input, final NumberValidator<Integer> numberValidator) {
         numberValidator.validateFormat(input);
         final int value = Integer.parseInt(input);
-        numberValidator.validateRange(value, Integer.MAX_VALUE);
-        return new Count<>(value);
+        numberValidator.validateRange(value, Rule.COUNT_MAX);
+        return new Count(value);
     }
 
-    public T getValue() {
+    public int getValue() {
         return this.value;
     }
 }
