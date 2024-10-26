@@ -10,8 +10,8 @@ public class Executor {
     private final int nameLengthLimit = 5;
     private final int moveStandard = 4;
 
-    private List<Car> cars;
-    private List<Car> winners;
+    private List<Car> cars = new ArrayList<>();
+    private List<Car> winners = new ArrayList<>();
 
     private IOController ioController;
     private Parser parser;
