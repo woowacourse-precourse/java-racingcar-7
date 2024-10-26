@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import racingcar.model.dto.Car;
 
 public class RaceStatus {
-    private ArrayList<Car> carList;
+    private final ArrayList<Car> carList;
 
     private RaceStatus() {
         carList = new ArrayList<>();

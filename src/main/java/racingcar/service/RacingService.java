@@ -5,7 +5,7 @@ import racingcar.model.RaceStatus;
 import racingcar.model.dto.Car;
 
 public class RacingService {
-    private RaceStatus raceStatus;
+    private final RaceStatus raceStatus;
 
     private RacingService() {
         raceStatus = RaceStatus.getInstance();

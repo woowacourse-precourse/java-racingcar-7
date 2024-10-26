@@ -3,7 +3,7 @@ package racingcar.service;
 import racingcar.model.RaceStatus;
 
 public class SetUpService {
-    private RaceStatus raceStatus;
+    private final RaceStatus raceStatus;
 
     private SetUpService() {
         raceStatus = RaceStatus.getInstance();

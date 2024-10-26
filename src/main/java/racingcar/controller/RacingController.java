@@ -6,10 +6,10 @@ import racingcar.service.SetUpService;
 import racingcar.view.RacingView;
 
 public class RacingController {
-    private SetUpService setUpService;
-    private RacingService racingService;
-    private ResultService resultService;
-    private RacingView racingView;
+    private final SetUpService setUpService;
+    private final RacingService racingService;
+    private final ResultService resultService;
+    private final RacingView racingView;
 
     private RacingController() {
         setUpService = SetUpService.getInstance();
