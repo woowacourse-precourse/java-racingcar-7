@@ -15,7 +15,7 @@ public class CarNameValidator {
         }
     }
 
-    public static void ValidateCarNameDuplication(String input) {
+    public static void validateCarNameDuplication(String input) {
         List<String> carNames = List.of(input.split(","));
         if (carNames.size() != carNames.stream().distinct().count()) {
             throw new IllegalArgumentException(CAR_NAMES_DUPLICATE_ERROR);

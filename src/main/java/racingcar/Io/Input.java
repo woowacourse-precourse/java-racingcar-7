@@ -28,7 +28,7 @@ public class Input {
 
     private static void validateCarNames(String carNames) {
         CarNameValidator.validateCarNameLength(carNames);
-        CarNameValidator.ValidateCarNameDuplication(carNames);
+        CarNameValidator.validateCarNameDuplication(carNames);
     }
 
     private static void validateAttempt(String attempt) {
