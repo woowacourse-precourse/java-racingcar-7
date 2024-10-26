@@ -13,6 +13,7 @@ public class OutputView {
 
     private static void printScore(List<Car> cars) {
         for (Car car : cars) {
+            printCarScore(car);
         }
         System.out.println();
     }
@@ -20,6 +21,15 @@ public class OutputView {
     public static void printWinners(List<String> carNames ) {
         System.out.println("최종 우승자 :");
         System.out.println(carNames.get(0));
+        if (checkSoloWin(carNames)) {
+            System.out.println();
+            return;
+        }
+        for (int i = 1; i < carNames.size(); i++) {
+            System.out.println(", ");
+            System.out.println(carNames.get(i));
+        }
+        System.out.println();
     }
 
     public static void printException(String message) {
