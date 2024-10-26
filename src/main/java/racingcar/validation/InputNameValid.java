@@ -12,7 +12,7 @@ import racingcar.exception.input.name.LengthNameException;
 import racingcar.exception.input.name.MultipleNameException;
 
 
-public class InputValid {
+public class InputNameValid {
 
     public static void validEmptyName(String carNames) {
         if (carNames.isEmpty()) {
