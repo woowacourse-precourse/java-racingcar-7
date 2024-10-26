@@ -74,6 +74,4 @@ class InputViewTest {
         return Stream.of(Arguments.of(new ByteArrayInputStream(inputs.get(0).getBytes()), expectedCarNames.get(0),
                 expectedPlayCounts.get(0)));
     }
-
-
 }

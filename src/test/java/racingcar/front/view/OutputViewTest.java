@@ -40,9 +40,9 @@ class OutputViewTest {
             CarRaceResponseDTO carRaceResponseDTO = carRaceGameRunnerService.runGame(carNames, gamePlayCount);
             //then
             outputView.writeGameResult(carRaceResponseDTO);
-            assertThat(byteArrayOutputStream.toString()).contains("실행 결과", "kim : ", "kim : ", "lee : ", "lee : ", "최종 우승자 : ", "kim, lee");
+            assertThat(byteArrayOutputStream.toString()).contains("실행 결과", "kim : ", "kim : ", "lee : ", "lee : ",
+                    "최종 우승자 : ", "kim, lee");
 
         }, STOP, STOP, STOP, STOP);
     }
-
 }
