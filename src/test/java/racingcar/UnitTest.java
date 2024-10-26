@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -66,10 +68,10 @@ public class UnitTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
     @DisplayName("checkCarName 테스트")
-    void checkCarNameTest() {
-        String carName = "car123";
+    @ParameterizedTest
+    @ValueSource(strings = {"car123", "carcar", "asdfasdf123"})
+    void checkCarNameTest(String carName) {
         assertThatThrownBy(() -> Application.checkCarName(carName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
