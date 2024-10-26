@@ -1,7 +1,9 @@
 package racingcar;
 
 public class Rule {
-    public boolean canMove(int distance) {
-        return distance >= 4;
+    private static final int MOVING_THRESHOLD = 4;
+
+    public boolean canMove(int number) {
+        return number >= MOVING_THRESHOLD;
     }
 }
