@@ -1,10 +1,17 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.util.*;
 
 public class Input {
+    public List<Car> getCarName() {
+        String carNames = Console.readLine();
+        validateInput(carNames);
+        return addCar(carNames);
+    }
+    
     public List<Car> addCar(String name) {
         List<Car> cars = new ArrayList<>();
         for (String s : name.split(",")) {
