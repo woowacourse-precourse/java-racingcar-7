@@ -37,6 +37,10 @@ public class Car {
         }
     }
 
+    public int max(int maxDistance) {
+        return distance.max(maxDistance);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

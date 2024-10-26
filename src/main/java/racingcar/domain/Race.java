@@ -5,10 +5,12 @@ public class Race {
     private static final String IS_NOT_TRY_COUNT = "유효한 시도횟수가 아닙니다.";
     private final int tryCount;
     private final Cars cars;
+    private int maxDistance;
 
     public Race(String inputTryCount, Cars cars) {
         this.tryCount = convertToInt(inputTryCount);
         this.cars = cars;
+        this.maxDistance = 0;
     }
 
     private static void validateTryCount(int num) {
@@ -33,5 +35,8 @@ public class Race {
         }
     }
 
+    public void getMaxDistance() {
+        this.maxDistance = cars.getMaxDistance();
+    }
 
 }

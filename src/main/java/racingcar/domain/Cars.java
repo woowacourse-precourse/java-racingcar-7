@@ -16,14 +16,18 @@ public class Cars {
     }
 
     public Cars(String[] carNameList) {
-        this.cars = makeCars(carNameList);
+        this(makeCars(carNameList));
+    }
+
+    public Cars(List<Car> carList) {
+        this.cars = carList;
     }
 
     private static String[] splitCarNames(String carNames) {
         return carNames.replace(SPACE, NO_SPACE).split(DELIMITER);
     }
 
-    private List<Car> makeCars(String[] carNameList) {
+    private static List<Car> makeCars(String[] carNameList) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNameList) {
             carList.add(new Car(carName));
@@ -52,6 +56,14 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    public int getMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            maxDistance = car.max(maxDistance);
+        }
+        return maxDistance;
     }
 }
 
