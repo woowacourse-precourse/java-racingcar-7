@@ -8,8 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private final Application application = new Application();
@@ -45,11 +44,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validateNotEmpty_정상_입력_테스트() {
+        assertThatCode(() -> application.validateNotEmpty("hello"))
+                .doesNotThrowAnyException();
+    }
+
+
+    @Test
     void validateMinimumTwoCars_예외_테스트() {
         String[] onlyOneCar = {"onlyMe"};
         assertThatThrownBy(() -> application.validateMinimumTwoCars(onlyOneCar))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateMinimumTwoCars_정상_입력_테스트() {
+        String[] twoCars = {"Me","andMe"};
+        assertThatCode(() -> application.validateMinimumTwoCars(twoCars))
+                .doesNotThrowAnyException();
+    }
+
 
     @Test
     void validateUniqueCarName_예외_테스트() {
