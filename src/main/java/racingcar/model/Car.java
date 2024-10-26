@@ -15,6 +15,10 @@ public class Car {
         this.movedNumber = 0;
     }
 
+    public boolean isWinner(int maxMovedNumber){
+        return maxMovedNumber == this.movedNumber;
+    }
+
     public void move(int movedNumber){
         if(canCarMove(movedNumber)){
             this.movedNumber += movedNumber;
