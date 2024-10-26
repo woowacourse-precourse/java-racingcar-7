@@ -12,7 +12,7 @@ public class Output {
 
     public static void winners(List<Car> winners) {
         StringBuilder output = new StringBuilder();
-        output.append("최종 우승자 :");
+        output.append("최종 우승자 : ");
         winners.stream()
                 .map(winner -> winner.getName() + ", ")
                 .forEach(output::append);
