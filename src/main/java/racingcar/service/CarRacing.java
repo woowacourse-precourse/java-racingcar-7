@@ -7,13 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.service.RoadPrinter.printRoad;
+
 public class CarRacing {
 
     private final int step;
     private final List<Car> carList;
     RandomRoadCreator roadCreator = new RandomRoadCreator();
-    RoadPrinter roadPrinter = new RoadPrinter();
-
 
     public CarRacing(String cars, int step) {
         this.step = step;
@@ -25,7 +25,7 @@ public class CarRacing {
         for(int i = 0; i < step; i++){
             for(Car car : carList){
                 roadCreator.addRandomRoad(car.getRoad());
-                roadPrinter.printRoad(car.getRoad());
+                printRoad(car);
             }
         }
     }
