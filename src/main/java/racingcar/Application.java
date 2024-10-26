@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Racing;
 import racingcar.enums.PrintMessage;
 import racingcar.utils.InputValidator;
 
