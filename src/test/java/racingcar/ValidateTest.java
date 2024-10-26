@@ -32,5 +32,13 @@ class ValidateTest {
         });
         assertEquals("숫자는 양의 정수여야 합니다.", exception.getMessage());
     }
-    
+
+    @Test
+    void testAttemptsInvalidFormat() {
+        String input = "!@#ㅃ";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Validate.attempts(input);
+        });
+        assertEquals("유효한 숫자가 아닙니다.", exception.getMessage());
+    }
 }
