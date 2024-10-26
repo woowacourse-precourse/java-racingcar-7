@@ -1,10 +1,12 @@
 package racingcar.car;
 
-import static racingcar.car.Constants.MAX_LENGTH_OF_NAME;
-import static racingcar.car.Constants.MOVEABLE_MIN_NUMBER;
-import static racingcar.car.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
-import static racingcar.car.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
+import static racingcar.car.constant.Constants.MAX_LENGTH_OF_NAME;
+import static racingcar.car.constant.Constants.MOVEABLE_MIN_NUMBER;
+import static racingcar.car.constant.ErrorMessage.EMPTY_STRING_NAME_ERROR_MESSAGE;
+import static racingcar.car.constant.ErrorMessage.NAME_LENGTH_ERROR_MESSAGE;
 import static racingcar.utils.RandomUtils.getRandomValue;
+
+import racingcar.io.OutputManager;
 
 public class Car {
 
@@ -79,6 +81,6 @@ public class Car {
     }
 
     private void printStatus(String moveStatus) {
-        System.out.println(name + " : " + moveStatus);
+        OutputManager.printMessage(name + " : " + moveStatus);
     }
 }
