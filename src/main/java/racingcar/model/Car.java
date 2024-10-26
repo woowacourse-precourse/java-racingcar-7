@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import racingcar.util.CarNameValidator;
+import static racingcar.util.CarNameValidator.checkOverRange;
+import static racingcar.util.CarNameValidator.checkSpace;
 
 public class Car {
 
@@ -9,8 +10,8 @@ public class Car {
     private static final int MIN_FORWARD_REQUIREMENT = 4;
 
     public Car(String name) {
-        CarNameValidator.checkOverRange(name);
-        CarNameValidator.checkSpace(name);
+        checkOverRange(name);
+        checkSpace(name);
 
         this.name = name;
     }

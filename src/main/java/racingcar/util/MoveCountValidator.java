@@ -6,7 +6,7 @@ public class MoveCountValidator {
 
     private static final Pattern NUMBER_REGEX = Pattern.compile("^[0-9]*$");
 
-    public static void validate(String input) throws IllegalArgumentException {
+    public static void validateMoveCount(String input) throws IllegalArgumentException {
         validateNumeric(input);
         validateRange(input);
         validateNumberRange(input);

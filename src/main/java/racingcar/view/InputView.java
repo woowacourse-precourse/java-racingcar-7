@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import static racingcar.util.MoveCountValidator.validate;
+import static racingcar.util.MoveCountValidator.validateMoveCount;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,7 +16,7 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회인가요?");
 
         String input = Console.readLine();
-        validate(input);
+        validateMoveCount(input);
 
         return input;
     }

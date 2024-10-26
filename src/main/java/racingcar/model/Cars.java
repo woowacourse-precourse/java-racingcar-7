@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static racingcar.util.CarNameValidator.checkDuplicate;
+import static racingcar.util.CarNameValidator.checkEmpty;
 import static racingcar.util.RandomNumberGenerator.generateRandomNumber;
 
 import java.util.ArrayList;
@@ -27,8 +29,8 @@ public class Cars {
     }
 
     private void checkInputCarNames(List<String> input) {
-        CarNameValidator.checkEmpty(input);
-        CarNameValidator.checkDuplicate(input);
+        checkEmpty(input);
+        checkDuplicate(input);
     }
 
     private void addCars(List<String> names) {
