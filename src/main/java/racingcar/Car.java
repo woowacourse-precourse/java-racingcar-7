@@ -1,15 +1,24 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Objects;
+import java.util.function.Supplier;
 
 public class Car {
     private Integer position;
-    private String name;
+    private final String name;
+    private final Supplier<Integer> randomSupplier;
 
     public Car(String name) {
+        this(name, ()-> Randoms.pickNumberInRange(0, 9));
+    }
+
+    public Car(String name, Supplier<Integer> randomSupplier) {
         validateCarNameLength(name);
         this.name = name;
         this.position = 0;
+        this.randomSupplier = randomSupplier;
     }
 
     private void validateCarNameLength(String carName) {
@@ -24,6 +33,12 @@ public class Car {
 
     public Integer getPosition() {
         return position;
+    }
+
+    public void moveIfPossible() {
+        if (randomSupplier.get() >= 4) {
+            goForward();
+        }
     }
 
     public void goForward() {

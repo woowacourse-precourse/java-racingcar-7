@@ -20,14 +20,9 @@ public class Stadium {
 
     private void executeOneRound() {
         for(Car car : carRegistry.getCars()){
-            if(doesCarMove()){
-                car.goForward();
-            }
+            car.moveIfPossible();
         }
         this.raceResult.add(carRegistry.toString()).add("\n");
     }
 
-    private boolean doesCarMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
-    }
 }
