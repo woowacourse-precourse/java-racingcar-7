@@ -10,10 +10,7 @@ public record Cars(
     public static Cars makeOriginCars(List<String> carNames) {
         List<Car> allCar = new ArrayList<>();
         for (String name : carNames) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException("이름의 길이는 5자 이하여야 합니다.");
-            }
-            allCar.add(new Car(name, 0));
+            allCar.add(Car.makeOriginCar(name));
         }
         return new Cars(allCar);
     }

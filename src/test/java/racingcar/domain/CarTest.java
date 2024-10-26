@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +20,30 @@ class CarTest {
         Car newsumin = sumin.updateDistance(sumin, false);
 
         //then
-        Assertions.assertThat(newboye.distance()).isEqualTo(1);
-        Assertions.assertThat(newsumin.distance()).isEqualTo(0);
+        assertThat(newboye.distance()).isEqualTo(1);
+        assertThat(newsumin.distance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이름에 따른 초기 Car 객체를 만든다.")
+    void makeOriginCar() {
+        //given
+        String name = "boye";
+        Car expectCar = new Car("boye", 0);
+
+        //when
+        Car car = Car.makeOriginCar(name);
+
+        //then
+        assertThat(car).isEqualTo(expectCar);
+    }
+
+    @Test
+    @DisplayName("이름의 예외사항이 있을 때 Car 객체를 만든다.")
+    void makeOriginCarWithException() {
+        //given
+        String name = "OhHyunji";
+
+        Assertions.assertThatThrownBy(() -> Car.makeOriginCar(name)).isInstanceOf(IllegalArgumentException.class);
     }
 }

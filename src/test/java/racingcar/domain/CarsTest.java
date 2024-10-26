@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class CarsTest {
 
     @Test
-    @DisplayName("이름에 대한 예외사항이 없는 상황에서 초기 Cars 객체를 만든다.")
+    @DisplayName("초기 Cars 객체를 만든다.")
     void makeOriginCars() {
         //given
         List<String> carNames = List.of("sumin", "boye");
@@ -22,16 +21,6 @@ class CarsTest {
 
         //then
         assertThat(allCar).isEqualTo(expectAllCar);
-    }
-
-    @Test
-    @DisplayName("이름에 대한 예외상황에서 초기 Cars 객체를 만든다.")
-    void makeOriginCarsHasException() {
-        //given
-        List<String> carNames = List.of("Uchae", "OhHyunji");
-
-        //then
-        assertThatThrownBy(() -> Cars.makeOriginCars(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
