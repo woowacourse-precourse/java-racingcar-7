@@ -36,16 +36,15 @@ public class Cars {
             List<Car> racingCars = moveCars(racingRecords.get(i));
             racingRecords.add(racingCars);
         }
-        racingRecords.remove(0);
 
-        return racingRecords;
+        return racingRecords.subList(1, racingRecords.size());
     }
 
-    public Map<String, Boolean> isCarsName(List<String> carNames){
+    public Map<String, Boolean> isCarsName(List<String> carNames) {
         Map<String, Boolean> carNamesMatchResult = new HashMap<>();
 
-        for(int i = 0; i<carNames.size(); i++){
-            if(cars.get(i).isName(carNames.get(i))){
+        for (int i = 0; i < carNames.size(); i++) {
+            if (cars.get(i).isName(carNames.get(i))) {
                 carNamesMatchResult.put(carNames.get(i), true);
                 continue;
             }
