@@ -1,7 +1,7 @@
-package racingcar.Factory;
+package racingcar.factory;
 
 import java.util.List;
-import racingcar.Model.Car;
+import racingcar.model.Car;
 
 public class CarFactory {
     public List<Car> makeCarList(List<String> names) {

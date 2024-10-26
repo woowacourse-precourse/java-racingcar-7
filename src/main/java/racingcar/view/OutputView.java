@@ -1,7 +1,7 @@
-package racingcar.View;
+package racingcar.view;
 
 import java.util.List;
-import racingcar.Model.Car;
+import racingcar.model.Car;
 
 public class OutputView {
     public static final String EXECUTION_RESULT_HEADER = "실행 결과";
