@@ -28,4 +28,13 @@ public class Race {
         }
         System.out.println();
     }
+
+    private int findMaxForwardCount() {
+        int maxForwardCount = 0;
+        for (RacingCar racingcar : racingCarList) {
+            int forwardCount = racingcar.getForwardCount();
+            maxForwardCount = Math.max(maxForwardCount, forwardCount);
+        }
+        return maxForwardCount;
+    }
 }
