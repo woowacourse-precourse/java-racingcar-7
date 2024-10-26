@@ -2,7 +2,7 @@ package racingcar.validator;
 
 public class StringValidator{
 
-    public static void validateAllValues(String[] input){
+    public static void validateAllStringValues(String[] input){
         isSeveralValue(input);
         isEmptyValue(input);
         areAllAlphabet(input);
