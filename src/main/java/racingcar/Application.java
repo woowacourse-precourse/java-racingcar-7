@@ -3,8 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.game.Car;
 import racingcar.game.GameDirector;
-import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.RandomNumStrategy;
+import racingcar.strategy.Condition;
 import racingcar.util.InputHandler;
 import racingcar.util.OutputHandler;
 
@@ -17,8 +16,8 @@ public class Application {
         String count = InputHandler.readAttemptCount();
         OutputHandler.printResultMessage();
 
-        MoveStrategy strategy = new RandomNumStrategy();
-        GameDirector gameDirector = new GameDirector(carNames, count, strategy);
+        Condition condition = Condition.getCondition();
+        GameDirector gameDirector = new GameDirector(carNames, count, condition);
         List<Car> matchResult = gameDirector.run();
         gameDirector.printWinner(matchResult);
 

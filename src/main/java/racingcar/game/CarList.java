@@ -1,8 +1,8 @@
 package racingcar.game;
 
-import racingcar.strategy.MoveStrategy;
-import racingcar.util.Printer;
 import racingcar.exception.Validator;
+import racingcar.strategy.Condition;
+import racingcar.util.Printer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,19 +14,19 @@ public class CarList {
     private static final String DELIMITER = ",";
     private static final String WINNER_FORMAT = ", ";
 
-    private final MoveStrategy moveStrategy;
+    private final Condition condition;
     private final List<Car> list;
 
-    public CarList(MoveStrategy moveStrategy) {
+    public CarList(Condition condition) {
         this.list = new ArrayList<>();
-        this.moveStrategy = moveStrategy;
+        this.condition = condition;
     }
 
     public void add(String carNames) {
         Validator.validateDelimiterFormatAndSingleRacer(carNames);
         Arrays.stream(carNames.split(DELIMITER))
                 .map(Validator::validateNameLength)
-                .map(name -> Car.generateCars(name, moveStrategy))
+                .map(name -> Car.generateCars(name, condition))
                 .forEach(list::add);
     }
 

@@ -1,24 +1,24 @@
 package racingcar.game;
 
-import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.Condition;
 
 public class Car {
     private static final String DASH = "-";
 
     private final String name;
-    private final MoveStrategy moveStrategy;
+    private final Condition condition;
     private int position;
 
-    private Car(String name, MoveStrategy moveStrategy) {
+    private Car(String name, Condition condition) {
         this.name = name;
-        this.moveStrategy = moveStrategy;
+        this.condition = condition;
     }
-    public static Car generateCars(String carName, MoveStrategy moveStrategy) {
-        return new Car(carName, moveStrategy);
+    public static Car generateCars(String carName, Condition condition) {
+        return new Car(carName, condition);
     }
 
     public void move() {
-        if (moveStrategy.canMove()) {
+        if (condition.canMove()) {
             position++;
         }
     }

@@ -3,8 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import racingcar.game.Car;
 import racingcar.game.GameDirector;
-import racingcar.strategy.MoveStrategy;
-import racingcar.strategy.RandomNumStrategy;
+import racingcar.strategy.Condition;
+
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ class GameDirectorTest {
         //given
         String carNames = "pobi,woni,jun";
         String count = "5";
-        MoveStrategy strategy = new RandomNumStrategy();
-        GameDirector gameDirector = new GameDirector(carNames,count,strategy);
+        Condition condition = Condition.getCondition();
+        GameDirector gameDirector = new GameDirector(carNames,count,condition);
         //when //then
         List<Car> matchResult = gameDirector.run();
         gameDirector.printWinner(matchResult);
