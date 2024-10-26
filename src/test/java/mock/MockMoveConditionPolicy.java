@@ -1,6 +1,6 @@
 package mock;
 
-import static util.Utils.MOVE_FORWARD;
+import static util.Utils.MOVING_FORWARD;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -25,6 +25,6 @@ public class MockMoveConditionPolicy implements MoveConditionPolicy {
 
     @Override
     public boolean isMovable() {
-        return pickNumber() >= MOVE_FORWARD;
+        return pickNumber() >= MOVING_FORWARD;
     }
 }
