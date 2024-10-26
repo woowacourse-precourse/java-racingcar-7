@@ -3,22 +3,21 @@ package racingcar.model;
 import java.util.List;
 import java.util.Objects;
 import racingcar.model.dto.CarStatusDto;
+import racingcar.model.primitive.Name;
+import racingcar.model.primitive.Position;
 import racingcar.util.randomnumber.RandomNumberStrategy;
 
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
-    private static final int MAX_CAR_NAME_SIZE = 5;
-    private static final int ONE_MOVE = 1;
 
-    private final String name;
-    private int position;
+    private final Name name;
+    private final Position position;
     private final RandomNumberStrategy randomNumberStrategy;
 
     private Car(String name, RandomNumberStrategy randomNumberStrategy) {
-        validateCar(name);
-        this.name = name;
-        this.position = DEFAULT_POSITION;
+        this.name = Name.from(name);
+        this.position = Position.from(DEFAULT_POSITION);
         this.randomNumberStrategy = randomNumberStrategy;
     }
 
@@ -34,33 +33,19 @@ public class Car {
     }
 
     public CarStatusDto mapStatusToDto() {
-        return CarStatusDto.of(this.name, this.position);
+        return CarStatusDto.of(name.getName(), position.getPosition());
     }
 
     public void addWinner(List<String> winners) {
-        winners.add(this.name);
+        name.add(winners);
     }
 
-    public int calculateMaxPosition(int maxPosition) {
-        return Math.max(maxPosition, this.position);
+    public int findMaxPosition(int maxPosition) {
+        return position.calculateMaxPosition(maxPosition);
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    private void validateCar(String name) {
-        if (name.length() > MAX_CAR_NAME_SIZE) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
+        return position.isMax(maxPosition);
     }
 
     private int createRandomNumber() {
@@ -72,7 +57,7 @@ public class Car {
     }
 
     private void moveForward() {
-        this.position += ONE_MOVE;
+        position.move();
     }
 
     @Override
@@ -84,11 +69,11 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return getPosition() == car.getPosition() && Objects.equals(getName(), car.getName());
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getPosition());
+        return Objects.hash(name, position);
     }
 }
