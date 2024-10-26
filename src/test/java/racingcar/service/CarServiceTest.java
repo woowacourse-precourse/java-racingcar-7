@@ -14,12 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarServiceTest {
 
     private CarService carService;
-    private CarGame carGame;
 
     @BeforeEach
     void setUp() {
         carService = new CarService();
-        carGame = new CarGame();
     }
 
     @Test
@@ -41,18 +39,34 @@ public class CarServiceTest {
     @DisplayName("차수별로 전진하는 조건 만족 시에 자동차는 전진할 수 있다.")
     void 자동차_전진_테스트() throws Exception{
         // Given
-        Car car1 = new Car("Car1", 0);
-        Car car2 = new Car("Car2", 0);
-        carGame.addParticipant(car1);
-        carGame.addParticipant(car2);
+        carService.addParticipant("Car1");
+        carService.addParticipant("Car2");
 
         // when
         carService.advanceCars();
 
         // then
-        for (Car car : carGame.getParticipants()) {
+        for (Car car : carService.getParticipants()) {
             assertTrue(car.getDistance() == 0 || car.getDistance() == 1);
         }
+    }
+
+    @Test
+    @DisplayName("우승자를 선정하는 로직")
+    void 우승자를_선정할_수_있다() throws Exception{
+
+        // given
+        carService.addParticipant("Car1");
+        carService.addParticipant("Car2");
+
+        // when
+        carService.advanceCars();
+        carService.updateWinners();
+
+        // then
+        List<String> winners = carService.getWinners();
+        assertTrue(winners.size() == 1 || winners.size() == 2);
+
     }
 
 }

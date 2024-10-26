@@ -26,7 +26,7 @@ public class CarService {
         }
     }
 
-    private void updateMaxDistance(Car car) {
+    public void updateMaxDistance(Car car) {
         if (car.getDistance() >= carGame.getMaxDistance()){
             carGame.updateMaxDistance(car.getDistance());
         }
