@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import racingcar.domain.Race;
 import racingcar.service.RaceService;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RaceController {
@@ -13,11 +12,8 @@ public class RaceController {
         this.raceService = raceService;
     }
 
-    public void raceStart() {
-        String raceCarNames = InputView.inputRaceCarNames();
-        String moveCount = InputView.inputMoveCount();
+    public String doRace(String raceCarNames, String moveCount) {
         Race race = raceService.doRace(raceCarNames,moveCount);
-        String raceResult = race.getRaceResult();
-        OutputView.printStr(raceResult);
+        return OutputView.responseStr(raceService.getRaceResult(race));
     }
 }
