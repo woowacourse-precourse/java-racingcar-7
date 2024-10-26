@@ -26,6 +26,11 @@ public class InputNameValid {
         }
     }
 
+    public static void validInputString(String carNames) {
+        validEmptyName(carNames);
+        validDelimiterName(carNames);
+    }
+
     public static void validMultipleName(List<String> carNameList) {
         if (carNameList.size() < NumberConstant.MIN_NAME_COUNT) {
             throw new MultipleNameException();
@@ -47,5 +52,11 @@ public class InputNameValid {
                 throw new DuplicateNameException();
             }
         }
+    }
+
+    public static void validSplitInputString(List<String> carNameList) {
+        validMultipleName(carNameList);
+        validLengthName(carNameList);
+        validDuplicateName(carNameList);
     }
 }

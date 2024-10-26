@@ -7,7 +7,7 @@ import racingcar.exception.input.count.TypeMissCountException;
 
 public class InputCountValid {
     public static void validTypeMissCount(String count) {
-        if (!count.matches("\\d+")) {
+        if (!count.matches(NumberConstant.NUMBER_REGEX)) {
             throw new TypeMissCountException();
         }
     }
@@ -22,5 +22,10 @@ public class InputCountValid {
         if (count > Integer.MAX_VALUE) {
             throw new MoreCountException();
         }
+    }
+
+    public static void validRangeCount(int count) {
+        validLessCount(count);
+        validMoreCount(count);
     }
 }
