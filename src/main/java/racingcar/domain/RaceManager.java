@@ -11,7 +11,7 @@ public class RaceManager {
 
     private final RacingCars racingCars;
     private final Attempts attempts;
-    private BigInteger winningPosition;
+    private int winningPosition;
     private List<String> winnersName;
 
     private RaceManager(RacingCars racingCars, Attempts attempts) {
@@ -44,15 +44,15 @@ public class RaceManager {
     private void findWinningPosition() {
         winningPosition =  racingCars.getCars()
                 .stream()
-                .map(Car::getPosition)
-                .max(BigInteger::compareTo)
-                .orElse(BigInteger.ZERO);
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 
     private void findWinningCarsNames() {
         winnersName = racingCars.getCars()
                 .stream()
-                .filter(car -> car.getPosition().compareTo(winningPosition) == 0)
+                .filter(car -> car.getPosition() == winningPosition) // == 연산으로 비교
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

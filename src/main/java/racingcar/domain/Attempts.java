@@ -6,19 +6,19 @@ import java.math.BigInteger;
 
 public class Attempts {
 
-    private BigInteger attempt;
+    private int attempt;
 
     private Attempts(String attempt) {
         AttemptValidation.validate(attempt);
-        this.attempt = new BigInteger(attempt);
+        this.attempt = Integer.parseInt(attempt);
     }
 
     public void decrease() {
-        attempt = attempt.subtract(BigInteger.ONE);
+        attempt -= 1;
     }
 
     public boolean isLeft() {
-        return !(attempt.compareTo(BigInteger.ZERO) == 0);
+        return !(attempt == 0);
     }
 
     public static Attempts from(String attempt) {

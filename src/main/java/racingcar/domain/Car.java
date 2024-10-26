@@ -17,8 +17,8 @@ public class Car {
         return name.getName();
     }
 
-    public BigInteger getPosition() {
-        return BigInteger.valueOf(position.positionDistance());
+    public int getPosition() {
+        return position.positionDistance();
     }
 
     public String currentPositionFormat() {
