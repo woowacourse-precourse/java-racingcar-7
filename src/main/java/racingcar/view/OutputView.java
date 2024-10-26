@@ -26,7 +26,7 @@ public class OutputView {
             String result = getResult(gameEntry.get(carName));
             System.out.println(carName + " : " + result);
         }
-        System.out.println('\n');
+        System.out.print('\n');
     }
 
     private String getResult(Integer value) {

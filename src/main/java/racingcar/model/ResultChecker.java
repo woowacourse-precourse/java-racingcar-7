@@ -13,12 +13,10 @@ public class ResultChecker {
         String winner = "";
         List<String> winnerList = checkScore(gameEntry);
 
-        for (String carName : winnerList) {
-            winner = winner + carName;
-            winnerList.remove(carName);
-            
-            if (!winnerList.isEmpty()) {
-                winner = winner + ",";
+        for (int i = 0; i < winnerList.size(); i++) {
+            winner += winnerList.get(i);
+            if (i < winnerList.size() - 1) {
+                winner += ",";
             }
         }
         return winner;
@@ -29,7 +27,7 @@ public class ResultChecker {
         List<String> winnerList = new ArrayList<>();
 
         for (String carName : gameEntry.keySet()) {
-            if (gameEntry.containsValue(winScore)) {
+            if (gameEntry.get(carName).equals(winScore)) {
                 winnerList.add(carName);
             }
         }
