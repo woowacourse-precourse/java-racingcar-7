@@ -3,9 +3,7 @@ package racingcar.domain;
 import static racingcar.domain.ErrorMessage.CAR_NAME_DUPLICATE;
 import static racingcar.domain.ErrorMessage.INPUT_CAR_EMPTY;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class CarsFactory {
@@ -13,26 +11,22 @@ public class CarsFactory {
 
     public Cars registerCars(String input) {
         validateEmptyCarName(input);
-        Set<Car> cars = new HashSet<>();
+        Set<Car> result = new HashSet<>();
 
-        for (Car car : getParsedCar(input)) {
-            if (!cars.add(car)) {
-                throw new IllegalArgumentException(CAR_NAME_DUPLICATE.getMessage());
-            }
+        for (String carName : input.split(CAR_NAME_DELIMITER)) {
+            Car car = new Car(carName.trim());
+
+            validateDuplicateCar(result, car);
+            result.add(car);
         }
-        return new Cars(cars);
+        return new Cars(result);
     }
 
-    private List<Car> getParsedCar(String carNames) {
-        List<Car> result = new ArrayList<>();
-        String[] splitWord = carNames.split(CAR_NAME_DELIMITER);
-
-        for (String s : splitWord) {
-            result.add(new Car(s.trim()));
+    private static void validateDuplicateCar(Set<Car> cars, Car car) {
+        if (cars.contains(car)) {
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATE.getMessage());
         }
-        return result;
     }
-
 
     private static void validateEmptyCarName(String input) {
         if (input.isEmpty()) {
