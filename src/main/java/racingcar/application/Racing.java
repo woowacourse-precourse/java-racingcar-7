@@ -50,7 +50,7 @@ public class Racing {
         });
     }
 
-    public boolean shouldMove() {
+    private boolean shouldMove() {
         int randomNumber = Randoms.pickNumberInRange(RandomRule.RANDOM_START.getValue(), RandomRule.RANDOM_END.getValue());
         return randomNumber >= ProgressRule.FORWARD_CONDITION.getValue();
     }
