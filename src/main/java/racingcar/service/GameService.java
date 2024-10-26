@@ -13,7 +13,6 @@ public class GameService {
     public Cars createCars(String input) {
         List<String> carNames = Parser.parseCarName(input);
         Validator.carNameValidate(carNames);
-
         return Cars.of(carNames);
     }
 
