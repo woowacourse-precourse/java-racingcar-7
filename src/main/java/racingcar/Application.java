@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -41,6 +43,7 @@ public class Application {
             System.out.println();
         }
 
+        winner(carList);
     }
 
     static LinkedList<Car> parsingCarName(String carNames){
@@ -87,6 +90,32 @@ public class Application {
                 System.out.print("-");
             }
             System.out.print("\n");
+        }
+    }
+
+    static void winner(LinkedList<Car> carList){
+        int max = Integer.MIN_VALUE;
+
+        Queue<Car> maxCarList = new LinkedList<>();
+        for (Car car : carList) {
+            if(car.moveDistance == max){
+                maxCarList.add(car);
+            }else if(car.moveDistance > max){
+                max = car.moveDistance;
+
+                maxCarList.clear();
+                maxCarList.add(car);
+            }
+        }
+
+        System.out.print("최종 우승자 : ");
+        while(!maxCarList.isEmpty()){
+            Car pollCar = maxCarList.poll();
+            System.out.print(pollCar.name);
+
+            if(!maxCarList.isEmpty()){
+                System.out.print(", ");
+            }
         }
     }
 }
