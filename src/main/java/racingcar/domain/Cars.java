@@ -9,8 +9,8 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(String carsInput) {
-        this.cars = CarsFactory.makeCarList(carsInput);
+    public Cars(List<Car> carsInput) {
+        this.cars = carsInput;
     }
 
     public List<Car> getClonedCars() {

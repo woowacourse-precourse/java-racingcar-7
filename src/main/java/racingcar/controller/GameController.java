@@ -1,10 +1,10 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
-import racingcar.domain.GameCounts;
-import racingcar.domain.NumberGenerator;
+import racingcar.domain.*;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 
 public class GameController {
@@ -25,7 +25,10 @@ public class GameController {
 
     private void enterInputs() {
         OutputView.printStartCommand();
-        Cars cars=new Cars(InputView.enterCarNames());
+
+        List<Car> carList=CarsFactory.makeCarList(InputView.enterCarNames());
+
+        Cars cars=new Cars(carList);
 
         OutputView.printRacingCounts();
         GameCounts gameCounts=new GameCounts(InputView.enterCounts());
