@@ -10,6 +10,8 @@ import racingcar.view.OutputView;
 
 public class RacingController {
 
+    private static final String CHECK_NUMBER_REGEX = "\\d";
+
     private Racing racing;
     private CarManager carManager;
     private OutputView outputView;
@@ -28,7 +30,9 @@ public class RacingController {
     }
 
     private void executeRaceRounds() {
-        int cnt = Integer.parseInt(InputView.getInputRepeatCount());
+        String userInput = InputView.getInputRepeatCount();
+        verifyRepeatCount(userInput);
+        int cnt = Integer.parseInt(userInput);
         outputView.printGameResultMessage();
         for (int i = 0; i < cnt; i++) {
             runSingleRound();
@@ -45,6 +49,12 @@ public class RacingController {
         List<Car> cars = carManager.startRacing(RandomNumber.generate());
         for (Car car : cars) {
             outputView.printGameResult(car.getName(), car.getMovedDistance());
+        }
+    }
+
+    private void verifyRepeatCount(String userInput) {
+        if (!userInput.matches(CHECK_NUMBER_REGEX)) {
+            throw new IllegalArgumentException();
         }
     }
 

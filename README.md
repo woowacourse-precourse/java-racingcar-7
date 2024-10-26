@@ -9,7 +9,7 @@
 - [x] `시도할 횟수는 몇 회인가요?` 출력 후 int 값 입력받기
   - Exception
   - [ ] 쉼표로 구분하지 않았을 경우, IllegalArgumentException을 발생시킨다
-  - [ ] 시도할 횟수에 숫자를 입력하지 않았을 경우, IllegalArguementException을 발생시킨다
+  - [x] 시도할 횟수에 숫자를 입력하지 않았을 경우, IllegalArguementException을 발생시킨다
 
 ### 입력값 나누기
 - [x] 입력값을 "," 기준으로 나눈다
