@@ -20,4 +20,14 @@ public class Race {
             this.cars.add(new Car(name));
         }
     }
+
+    public void startRace(){
+        Random rand = new Random();
+        for(int i = 0; i < attempts; i++) {
+            for(Car car : cars) {
+                car.move(randomMoveStrategy.canMove());
+            }
+            printRaceStatus();
+        }
+    }
 }
