@@ -19,4 +19,8 @@ public class Car {
     private boolean isMovable() {
         return pickNumberInRange(0, 9) >= 4;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
