@@ -10,15 +10,15 @@ public class Extractor {
     public static ArrayList<Car> extractCarList(String input) {
         String[] splitInput = input.split(",");
         ArrayList<String> inputCars = new ArrayList<>(Arrays.asList(splitInput));
-
         Validator.validateInputDate(inputCars);
+        return converToCarArrayList(inputCars);
+    }
 
-        // convertCarArrayList
+    private static ArrayList<Car> converToCarArrayList(ArrayList<String> inputCars) {
         ArrayList<Car> cars = new ArrayList<>();
         for (String inputCar : inputCars) {
             cars.add(new Car(inputCar));
         }
-
         return cars;
     }
 
