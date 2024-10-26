@@ -4,6 +4,7 @@ import racingcar.factory.CarsFactory;
 import racingcar.factory.NumberFactory;
 import racingcar.model.Cars;
 import racingcar.model.MoveNumber;
+import racingcar.view.CarsOutputView;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,10 +24,9 @@ public class RacingCarController {
     }
 
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {
+        cars.registerObserver(new CarsOutputView());
         OutputView.outputRaceStartLine();
-        for (int i = 0; i < moveNumber.getMoveNumber(); i++) {
-            OutputView.outputRaceIntermediateResult(cars.moveCars());
-        }
+        cars.moveCars(moveNumber.getMoveNumber());
         OutputView.outputRaceFinalResult(cars.findWinnerNames());
     }
 

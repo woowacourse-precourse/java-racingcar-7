@@ -1,23 +1,39 @@
 package racingcar.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.factory.ValidatorFactory;
 import racingcar.validation.Validator;
+import racingcar.view.Observer;
 
 public class Cars {
     private final List<Car> cars;
+    private List<Observer> observers;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+        this.observers = new ArrayList<>();
         Validator<Cars> validator = ValidatorFactory.createCarsValidator();
         validator.validate(this);
     }
 
-    public Cars moveCars() {
-        cars.forEach(Car::move);
-        return this;
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void moveCars(int moveNumber) {
+        for (int i = 0; i < moveNumber; i++) {
+            cars.forEach(Car::move);
+            notifyObserver();
+        }
+    }
+
+    private void notifyObserver() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
     }
 
     public List<String> findWinnerNames() {

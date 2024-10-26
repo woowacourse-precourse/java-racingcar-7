@@ -71,7 +71,7 @@ public class FunctionWithMVCTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    cars.moveCars();
+                    cars.moveCars(1);
                     assertThat(cars.getCars().get(0).getMoveDistance()).isEqualTo(1);
                     assertThat(cars.getCars().get(1).getMoveDistance()).isEqualTo(0);
                 },
@@ -89,7 +89,7 @@ public class FunctionWithMVCTest {
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    cars.moveCars();
+                    cars.moveCars(1);
                     List<String> winnerNames = cars.findWinnerNames();
                     assertThat(winnerNames.size()).isEqualTo(1);
                     assertThat(winnerNames.get(0)).isEqualTo(testWinnerName);
