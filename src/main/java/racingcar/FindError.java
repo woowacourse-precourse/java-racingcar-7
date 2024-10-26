@@ -12,6 +12,12 @@ public class FindError {
             if (carNames[i].contains(" ")) {
                 throw new IllegalArgumentException("자동차 이름에 공백이 포함되어 있습니다.");
             }
+            for (int j = i + 1; j < carNames.length; j++) {//중복 체크
+                if (carNames[i].equals(carNames[j])) {
+                    throw new IllegalArgumentException("자동차 이름이 중복되었습니다 Name : " + carNames[i]);
+                }
+            }
+
         }
         return carNames;
     }
