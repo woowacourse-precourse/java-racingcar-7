@@ -28,6 +28,6 @@ public class OutputView {
     }
 
     public enum InputType {
-        CAR_NAME, TRY_COUNT;
+        CAR_NAME, TRY_COUNT
     }
 }
