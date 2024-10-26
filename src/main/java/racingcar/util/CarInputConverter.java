@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
 
-public class CarService {
+public class CarInputConverter {
 
 
-    public static List<Car> convertToCarList(String[] carNames) {
+    public static List<Car> setCarList(String[] carNames) {
 
         List<Car> participants = Arrays.stream(carNames)
                 .map(String::trim)
