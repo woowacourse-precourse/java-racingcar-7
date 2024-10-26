@@ -11,7 +11,8 @@ class RacingGameTest {
         Car car1 = new Car("pobi");
         Car car2 = new Car("woni");
         List<Car> cars = Arrays.asList(car1, car2);
-        RacingGame game = new RacingGame(cars, 1);
+        RacingGameView view = new RacingGameView();
+        RacingGame game = new RacingGame(cars, 1, view);
 
         game.play();
         assertThat(car1.getPosition() >= 0).isTrue();
@@ -22,7 +23,8 @@ class RacingGameTest {
     void 시도횟수만큼_실행된다() {
         Car car = new Car("pobi");
         List<Car> cars = Arrays.asList(car);
-        RacingGame game = new RacingGame(cars, 3);
+        RacingGameView view = new RacingGameView();
+        RacingGame game = new RacingGame(cars, 3, view);
 
         game.play();
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);

@@ -20,7 +20,7 @@ public class CarTest {
     @Test
     void 자동차는_전진_한다() {
         Car car = new Car("pobi");
-        car.moveForward();
+        car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

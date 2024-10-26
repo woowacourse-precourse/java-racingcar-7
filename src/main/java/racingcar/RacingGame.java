@@ -19,6 +19,7 @@ public class RacingGame {
     }
 
     public void play() {
+        System.out.println("\n실행 결과");
         for (int i = 0; i < tryCount; i++) {
             moveAllCars();
             view.printRoundResult(cars);
