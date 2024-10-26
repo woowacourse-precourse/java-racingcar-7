@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 
 public class RacingResultCalculator {
-    public static Integer getCarRacingWinnerRecord(List<Car> racingCars) {
+    public static Integer calculateCarRacingWinnerRecord(List<Car> racingCars) {
         Integer racingCarRecord = 0;
         for (Car racingCar : racingCars) {
             if (racingCarRecord < racingCar.getMoveDistance()) {
@@ -15,7 +15,7 @@ public class RacingResultCalculator {
         return racingCarRecord;
     }
 
-    public static List<String> getCarRacingWinner(List<Car> racingCars, Integer racingCarRecord) {
+    public static List<String> calculateCarRacingWinner(List<Car> racingCars, Integer racingCarRecord) {
         List<String> carRacingWinnerNames = new ArrayList<>();
         for (Car racingCar : racingCars) {
             if (racingCar.getMoveDistance().equals(racingCarRecord)) {

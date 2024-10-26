@@ -1,12 +1,8 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.Car;
 import racingcar.service.Racing;
 import racingcar.strategy.ModeType;
-import racingcar.util.CarNameSeparator;
-import racingcar.util.CarsCreator;
-import racingcar.util.RacingResultCalculator;
 import racingcar.view.OutputView;
 import racingcar.view.PrintMessage;
 
@@ -15,12 +11,7 @@ public class RacingController {
     private Racing racing;
 
     public RacingController(String carNames) {
-        this.racing = new Racing(createCar(carNames));
-    }
-
-    private List<Car> createCar(String carNames) {
-        List<String> carNamesList = CarNameSeparator.splitCarNameWithSeparator(carNames);
-        return CarsCreator.createCarNameToCar(carNamesList);
+        this.racing = new Racing(carNames);
     }
 
     public void setCarMode(ModeType modeType) {
@@ -40,8 +31,6 @@ public class RacingController {
     }
 
     public List<String> endRacing() {
-        List<Car> racingRecord = racing.getRacingCars();
-        Integer racingWinnerRecord = RacingResultCalculator.getCarRacingWinnerRecord(racingRecord);
-        return RacingResultCalculator.getCarRacingWinner(racingRecord, racingWinnerRecord);
+        return racing.getRacingWinner();
     }
 }
