@@ -11,5 +11,6 @@ public class RoadPrinter {
         for(int i=0; i<road; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 }

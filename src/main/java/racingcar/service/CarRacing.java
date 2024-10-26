@@ -29,9 +29,7 @@ public class CarRacing {
                 printRoad(car);
             }
         }
-
         winnerPrinter.printWinner(carList);
-
     }
 
     private List<Car> addCar(String cars){

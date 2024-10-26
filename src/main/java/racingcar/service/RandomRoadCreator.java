@@ -8,6 +8,8 @@ public class RandomRoadCreator implements RoadCreator {
     @Override
     public void addRandomRoad(Road road){
         int addLength = Randoms.pickNumberInRange(0, 9);
-        road.addRoad(addLength);
+        if(addLength >= 4){
+            road.addRoad(1);
+        }
     }
 }
