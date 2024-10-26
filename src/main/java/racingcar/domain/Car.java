@@ -8,6 +8,10 @@ public class Car {
         this.carName = carName;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
     public int getAdvanceCount() {
         return advanceCount;
     }

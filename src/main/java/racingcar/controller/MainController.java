@@ -11,5 +11,6 @@ public class MainController {
         List<Car> cars = carController.makeCarInstance(carNames);
         viewController.printCountGuide();
         carController.advanceCar(cars);
+        viewController.printWinner(cars);
     }
 }
