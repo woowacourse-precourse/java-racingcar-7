@@ -4,7 +4,6 @@ import static racingcar.exception.ErrorMessage.*;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.exception.IllegalArgumentException;
 
 public class Validator {
 
