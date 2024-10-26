@@ -8,6 +8,9 @@ public class OutputView {
     }
 
     public static void printRoundResult(List<Car> cars) {
-        // 라운드 결과 출력 로직은 다음 기능에서 구현
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println();
     }
 }
