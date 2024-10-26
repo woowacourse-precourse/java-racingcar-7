@@ -15,6 +15,8 @@ public class Application {
         String count_s = Console.readLine();
         int count = Integer.parseInt(count_s);
         exception.except2(count);
-        //우승자 출력 추가예정
+
+        Racing racing=new Racing();
+        racing.race(names,count);
     }
 }
