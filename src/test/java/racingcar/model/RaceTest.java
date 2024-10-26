@@ -18,8 +18,8 @@ public class RaceTest {
     }
 
     @Test
-    @DisplayName("무작위로 전진할 수 있다")
-    public void moveRandomly() {
+    @DisplayName("숫자가 4이상 일 때 전진할 수 있다")
+    public void moveForwardIfAtLeastFour() {
         Race race = new Race("abc,def", 2);
         race.getCars().get(0).moveBasedOnPoint(3);
         race.getCars().get(1).moveBasedOnPoint(4);
