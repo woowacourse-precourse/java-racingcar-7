@@ -13,16 +13,15 @@ public class Racing {
 
     public Racing(String carNames) {
         if (CarValidation.validateCarNameSeparator(carNames)) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 쉼표(,)로 구분되어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 쉼표(,)로 구분되어야 합니다. 자동차 경주는 두 대 이상 가능합니다.");
         }
         List<String> carNameList = CarNameSeparator.splitCarNameWithoutSpace(carNames);
         if (CarValidation.validateCarNameEmpty(carNameList)) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름이 존재하지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름이 존재하지 않습니다. 자동차 경주는 두 대 이상 가능합니다.");
         }
         if (CarValidation.validateCarNameDuplication(carNameList)) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 중복되지 않아야 합니다.");
         }
-        // - 자동차가 하나일 경우 -> list.size == 1
         this.racingCars = createCar(carNameList);
     }
 
