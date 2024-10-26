@@ -20,6 +20,7 @@ public class Car implements Comparable{
     }
 
     public void forward() {
+        mileage += 1;
     }
 
     @Override
