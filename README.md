@@ -109,25 +109,3 @@ jun : -----
                 Randoms.pickNumberInRange(0, 9);
     
   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
-
-## 패키지 구조
-
-- 계층형 구조
-    - controller
-    - service
-    - dto
-    - domain
-
-## 구현 체크 리스트
-
-1. 입력 받기
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 출력
