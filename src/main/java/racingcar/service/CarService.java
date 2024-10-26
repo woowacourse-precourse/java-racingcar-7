@@ -37,6 +37,10 @@ public class CarService {
         }
     }
 
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
+
     public int getMoveCount() {
         return moveCount;
     }

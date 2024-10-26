@@ -12,4 +12,9 @@ public class Car {
     public void move() {
         carMoved++;
     }
+
+    @Override
+    public String toString() {
+        return carName + " : " + "-".repeat(carMoved);
+    }
 }
