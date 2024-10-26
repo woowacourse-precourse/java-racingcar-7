@@ -14,7 +14,7 @@ public class Validator {
         }
     }
 
-        public static void validateCarNameListLength(Set<CarName> carNameList){
+    public static void validateCarNameListLength(Set<CarName> carNameList){
         if(carNameList.isEmpty()){
             throw new IllegalArgumentException(NO_CAR_NAME.getMessage());
         }
@@ -22,4 +22,11 @@ public class Validator {
             throw new IllegalArgumentException(TOO_MANY_CAR_NAME.getMessage());
         }
     }
+
+    public static void validateIsContainNewLine(String carName){
+        if(carName.contains("\n")){
+            throw new IllegalArgumentException(THERE_IS_NEW_LINE_CHARACTER.getMessage());
+        }
+    }
+
 }
