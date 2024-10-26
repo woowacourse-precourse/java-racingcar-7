@@ -35,11 +35,6 @@ public class InputRacingCarViewTest {
         System.setOut(System.out);
     }
 
-    @BeforeEach
-    public void init(){
-        Console.close();
-    }
-
     @Test
     public void 자동차_이름_입력_문자열_테스트() {
         assertSimpleTest(() -> {
