@@ -15,7 +15,7 @@ public class Application {
 
     public void setCar(String[] carNames) {
         for (String name : carNames) {
-            cars.add(new RacingCar(name.trim())); // trim()으로 공백 제거
+            cars.add(new RacingCar(name.trim())); 
         }
     }
 
