@@ -10,9 +10,9 @@ public class Winner {
         winners = new ArrayList<>();
     }
 
-    public List<String> findWinner(Cars cars) {
+    public List<String> findWinner(List<Car> cars) {
         int maxMovedNumber = findMaxMovedNumber(cars);
-        for (Car car : cars.getCars()) {
+        for (Car car : cars) {
             if(car.isWinner(maxMovedNumber)){
                 this.winners.add(car.getName());
             }
@@ -20,9 +20,9 @@ public class Winner {
         return this.winners;
     }
 
-    private int findMaxMovedNumber(Cars cars) {
+    private int findMaxMovedNumber(List<Car> cars) {
         int maxMovedNumber = -1;
-        for (Car car : cars.getCars()) {
+        for (Car car : cars) {
             maxMovedNumber = Math.max(maxMovedNumber, car.getMovedNumber());
         }
         return maxMovedNumber;
