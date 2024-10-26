@@ -21,6 +21,6 @@ public class RacingCarController {
         String readTryCount = inputView.readTryCount();
         collection = new RacingCarCollection(readCarString, readTryCount);
         service = new RacingCarService(collection.getCarList(), collection.getTryCount());
-        outputView.resultPrint(service.winner());
+        outputView.resultPrint(service.winner(service.getResultMap()));
     }
 }
