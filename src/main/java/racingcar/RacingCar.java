@@ -5,18 +5,23 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.view.OutputView;
 
 public class RacingCar {
 
     static HashSet<Car> cars = new HashSet<>();
     static List<String> winnerNames = new ArrayList<>();
+    private final OutputView outputView;
 
-    public static void startRacing() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    public RacingCar() {
+        this.outputView = new OutputView();
+    }
+
+    public void startRacing() {
+        outputView.printInputCarNameGuideMessage();
         final String carNames = Console.readLine();
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        outputView.printInputRacingTryCount();
         final String tryCount = Console.readLine();
         final int tryCountNumber = Integer.parseInt(tryCount);
 
@@ -48,7 +53,7 @@ public class RacingCar {
         findRacingWinner();
     }
 
-    public static void findRacingWinner() {
+    public void findRacingWinner() {
         int winnerDistance = 0;
 
         for (Car car : cars) {
@@ -61,7 +66,7 @@ public class RacingCar {
             }
         }
 
-        String winners = String.join(", ", winnerNames);
-        System.out.println("최종 우승자 : " + winners);
+        String delimitedWinners = String.join(", ", winnerNames);
+        outputView.printFinalWinners(delimitedWinners);
     }
 }
