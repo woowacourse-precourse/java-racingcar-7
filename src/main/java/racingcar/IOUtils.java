@@ -23,8 +23,8 @@ public class IOUtils {
         }
     }
 
-    public static String resultOutput(List<RacingCar> biggestDistanceRacingCar) {
-        var racingCarName = biggestDistanceRacingCar.stream().map(RacingCar::name).toList();
+    public static String resultOutput(List<String> biggestDistanceRacingCar) {
+        var racingCarName = biggestDistanceRacingCar.stream().toList();
         return String.join(", ", racingCarName);
     }
 }

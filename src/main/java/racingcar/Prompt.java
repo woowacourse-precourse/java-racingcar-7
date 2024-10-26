@@ -24,7 +24,7 @@ public class Prompt {
     }
 
     public static void resultPrint(List<RacingCar> biggestDistanceRacingCar) {
-        var result = IOUtils.resultOutput(biggestDistanceRacingCar);
+        var result = IOUtils.resultOutput(biggestDistanceRacingCar.stream().map(RacingCar::name).toList());
         System.out.print("최종 우승자 : " + result);
         Console.close();
     }
