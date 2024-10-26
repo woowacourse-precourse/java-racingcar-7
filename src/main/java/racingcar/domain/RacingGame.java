@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -22,6 +23,20 @@ public class RacingGame {
 
             OutputView.printOneGameResult(playRacingCarList);
         }
+    }
+
+    public String findWinner() {
+
+        int maxMoveCount = playRacingCarList.stream()
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
+
+        return playRacingCarList.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
     }
 
 
