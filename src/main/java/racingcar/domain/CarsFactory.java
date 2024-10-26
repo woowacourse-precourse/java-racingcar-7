@@ -16,7 +16,9 @@ public class CarsFactory {
         Set<Car> cars = new HashSet<>();
 
         for (Car car : getParsedCar(input)) {
-            validateDuplicateCarName(car, cars);
+            if (!cars.add(car)) {
+                throw new IllegalArgumentException(CAR_NAME_DUPLICATE.getMessage());
+            }
         }
         return new Cars(cars);
     }
@@ -31,12 +33,6 @@ public class CarsFactory {
         return result;
     }
 
-
-    private void validateDuplicateCarName(Car car, Set<Car> cars) {
-        if (!cars.add(car)) {
-            throw new IllegalArgumentException(CAR_NAME_DUPLICATE.getMessage());
-        }
-    }
 
     private static void validateEmptyCarName(String input) {
         if (input.isEmpty()) {
