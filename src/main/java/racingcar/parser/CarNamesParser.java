@@ -16,7 +16,6 @@ public class CarNamesParser implements Parser<String, List<String>> {
             String value = tokenizer.nextToken().trim();
             this.checkCarNameLength(value);
             this.addWithoutDuplicated(result, value);
-            this.checkCarNamesSize(result);
         }
 
         return result;
@@ -24,7 +23,7 @@ public class CarNamesParser implements Parser<String, List<String>> {
 
     private void checkInputIsNullOrBlank(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("자동차 입력을 입력해주세요.");
+            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
         }
     }
 
@@ -42,11 +41,5 @@ public class CarNamesParser implements Parser<String, List<String>> {
             }
         }
         list.add(value);
-    }
-
-    private void checkCarNamesSize(List<String> list) {
-        if (list.size() > 10) {
-            throw new IllegalArgumentException("자동차 이름은 최대 10개까지만 입력할 수 있습니다.");
-        }
     }
 }
