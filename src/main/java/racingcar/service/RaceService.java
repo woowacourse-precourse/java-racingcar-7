@@ -7,6 +7,8 @@ import racingcar.model.Car;
 
 public class RaceService {
 
+    public static final int CAR_MAX_SCOPE = 100;
+
     public List<Car> carListOf(String userInput) {
         List<Car> cars = new ArrayList<>();
         for (String carName : userInput.split(",")) {
@@ -17,6 +19,8 @@ public class RaceService {
             cars.add(Car.from(carName));
         }
 
+        validateExistCarInList(cars);
+        validateCarListLessThenMaxLength(cars);
         return cars;
     }
 
@@ -53,6 +57,18 @@ public class RaceService {
             if (car.name().equals(carName)) {
                 throw new IllegalArgumentException("중복되는 이름이 존재합니다.");
             }
+        }
+    }
+
+    private static void validateCarListLessThenMaxLength(List<Car> cars) {
+        if (cars.size() > CAR_MAX_SCOPE) {
+            throw new IllegalArgumentException("자동차는 최대 " + CAR_MAX_SCOPE + "개까지 입력 가능합니다.");
+        }
+    }
+
+    private static void validateExistCarInList(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("자동차가 없습니다.");
         }
     }
 }
