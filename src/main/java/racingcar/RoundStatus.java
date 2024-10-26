@@ -10,6 +10,7 @@ public class RoundStatus {
             int round,
             List<CarStatus> carStatusList
     ) {
+
         this.round = round;
         this.carStatusList = carStatusList;
 
