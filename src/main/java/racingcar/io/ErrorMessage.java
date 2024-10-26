@@ -10,6 +10,6 @@ public final class ErrorMessage {
     public static final String WINNER_RESULT_MESSAGE = "최종 우승자 : ";
     public static final String TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
-    private ErrorMessage (){
+    private ErrorMessage() {
     }
 }

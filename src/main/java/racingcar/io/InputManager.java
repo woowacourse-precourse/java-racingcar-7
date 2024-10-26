@@ -10,7 +10,7 @@ public class InputManager {
 
     public static String readUserInput() {
         OutputManager.printGuideMessage();
-        String input =  Console.readLine();
+        String input = Console.readLine();
         if (input.isBlank()) {
             throw new IllegalArgumentException(INVALID_USER_INPUT_MESSAGE);
         }

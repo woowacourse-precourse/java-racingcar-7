@@ -24,14 +24,14 @@ public class Cars {
         return cars.size();
     }
 
-    public void attemptMoveAllCars() {
+    public void attemptMovingAllCars() {
         for (Car car : cars) {
             car.attemptMoving();
             car.showStatus();
         }
     }
 
-    public void attemptMoveAllCars(List<Integer> randomNumbers) {
+    public void attemptMovingAllCars(List<Integer> randomNumbers) {
         validateRandomNumberCount(randomNumbers);
 
         int index = 0;

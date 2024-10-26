@@ -54,7 +54,7 @@ class CarsTest {
         List<String> names = List.of("apple", "woowa", "kakao");
         Cars cars = new Cars(names);
         List<Integer> randomNumbers = List.of(2, 4, 1);
-        cars.attemptMoveAllCars(randomNumbers);
+        cars.attemptMovingAllCars(randomNumbers);
 
         //when
         List<String> winnerNames = cars.getWinnerNames();

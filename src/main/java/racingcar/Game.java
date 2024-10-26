@@ -32,7 +32,7 @@ public class Game {
         printStartMessage();
 
         for (int i = 0; i < attemptCount; i++) {
-            cars.attemptMoveAllCars();
+            cars.attemptMovingAllCars();
             printNewLine();
         }
     }
