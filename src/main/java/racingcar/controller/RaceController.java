@@ -4,17 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.InputValidator;
-import racingcar.model.CarRace;
+import racingcar.model.RaceModel;
 import racingcar.view.ConsoleView;
 
 public class RaceController {
 
-    private CarRace carRace;
+    private final RaceModel raceModel;
     private final ConsoleView view;
 
     // 의존성 주입
-    public RaceController(ConsoleView view) {
+    public RaceController(ConsoleView view, RaceModel raceModel) {
         this.view = view;
+        this.raceModel = raceModel;
     }
 
     /**
@@ -26,8 +27,7 @@ public class RaceController {
         List<String> carNames = getCarNamesFromUser();
         String numberOfAttempts = getNumberOfAttemptsFromUser();
 
-        // 경주를 위한 객체 생성
-        carRace = new CarRace(carNames);
+        raceModel.initializeCars(carNames);
 
         //경주 진행 상황 출력
         runRace(numberOfAttempts);
@@ -67,8 +67,8 @@ public class RaceController {
     public void runRace(String numberOfAttempts) {
         int repeat = Integer.parseInt(numberOfAttempts);
         for (int i = 0; i < repeat; i++) {
-            carRace.race();
-            view.displayRaceStatus(carRace.getCars());
+            raceModel.executeRaceRound();
+            view.displayRaceStatus(raceModel.getCurrentRaceStatus());
         }
     }
 
@@ -76,7 +76,7 @@ public class RaceController {
      * 경주 종료 후 우승자를 출력하는 메서드.
      */
     public void displayWinners() {
-        List<String> winners = carRace.findWinners();
+        List<String> winners = raceModel.getWinners();
         view.displayRaceResult(winners);
     }
 }

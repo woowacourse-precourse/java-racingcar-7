@@ -7,11 +7,8 @@ import java.util.List;
 public class CarRace {
     private final List<Car> cars;
 
-    public CarRace(List<String> carNames) {
-        cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name.trim()));
-        }
+    public CarRace(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
