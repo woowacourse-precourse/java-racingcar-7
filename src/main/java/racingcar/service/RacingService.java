@@ -15,8 +15,8 @@ public class RacingService {
     public static void moveCar(Car car,boolean state){
         if (state){
             car.moveForward();
-            car.displayNowResult();
         }
+        car.displayNowResult();
     }
 
     public static boolean isMove(int randomValue){
