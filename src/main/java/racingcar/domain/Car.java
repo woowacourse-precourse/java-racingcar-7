@@ -4,10 +4,26 @@ import java.util.Objects;
 
 public class Car {
 
+    private final int MOVE_STANDARD = 4;
+
     private final String name;
+    private int position;
 
     public Car(final String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
+        this.position = position;
+    }
+
+    public Car move(int random) {
+        if (random >= MOVE_STANDARD) {
+            position += 1;
+            return new Car(name, position);
+        }
+        return this;
     }
 
     @Override
@@ -25,4 +41,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }
