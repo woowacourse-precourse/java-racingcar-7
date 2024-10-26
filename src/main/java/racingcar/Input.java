@@ -2,11 +2,17 @@ package racingcar;
 
 import org.junit.platform.commons.util.StringUtils;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Input {
+    public List<Car> addCar(String name) {
+        List<Car> cars = new ArrayList<>();
+        for (String s : name.split(",")) {
+            cars.add(new Car(s));
+        }
+        return cars;
+    }
+
     public void validateBlank(String input) {
         if (input.contains(" ")) {
             throw new IllegalArgumentException("입력에 공백이 포함되어 있습니다.");
