@@ -56,4 +56,12 @@ class InputValidatorTest {
 
     }
 
+    @Test
+    public void 시도횟수가_숫자가_아닌경우() {
+        InputValidator inputValidator = new InputValidator();
+
+        boolean normalInput = inputValidator.IsNotNumber("5"); //정상적인 입력
+
+
+    }
 }

@@ -70,4 +70,14 @@ public class InputValidator {
         }
         return commaCount;
     }
+
+    //시도 횟수가 숫자가 아니면 true, 숫자면 false
+    public boolean IsNotNumber(String number) {
+        for (char tryNumber : number.toCharArray()) {
+            if (Character.isDigit(tryNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
