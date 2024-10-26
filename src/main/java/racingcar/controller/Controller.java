@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.service.RaceService;
 import racingcar.util.Converter;
 import racingcar.view.InputView;
 
@@ -9,6 +10,7 @@ public class Controller {
 
     private final InputView inputView = new InputView();
     private final Converter converter = new Converter();
+    private final RaceService raceService = new RaceService();
 
     public void run() {
         String inputCarList = inputView.inputCarList();
