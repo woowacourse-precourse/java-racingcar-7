@@ -15,6 +15,7 @@ public class OutputView {
     public void printMovement(CarsResponse carsResponse) {
         carsResponse.cars()
                 .forEach(car -> System.out.println(car.toString()));
+        System.out.println();
     }
 
     public void printWinner(WinnerResponse response) {

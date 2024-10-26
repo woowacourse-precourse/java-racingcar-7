@@ -22,19 +22,17 @@ public class GameController {
     public void run() {
         CarsRequest carsRequest = inputView.readCarNames();
         int tryCount = inputView.readTryCount();
-        Cars cars = playGame(carsRequest, tryCount);
-        WinnerResponse winnerResponse = gameService.drawWinner(cars);
+        gameService.initializeCars(carsRequest);
+        playGame(tryCount);
+        WinnerResponse winnerResponse = gameService.drawWinner();
         outputView.printWinner(winnerResponse);
     }
 
-    private Cars playGame(CarsRequest carsRequest, int tryCount) {
-        Cars cars = carsRequest.toCars();
+    private void playGame(int tryCount) {
         outputView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
-            CarsResponse result = gameService.moveCars(cars);
+            CarsResponse result = gameService.moveCars();
             outputView.printMovement(result);
-            System.out.println();
         }
-        return cars;
     }
 }
