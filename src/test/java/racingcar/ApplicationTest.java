@@ -33,6 +33,27 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void testIsValidCarNames() {
+        assertSimpleTest(() -> {
+            // 유효한 이름이 없는 경우 예외 발생
+            assertThatThrownBy(() -> Application.isValidCarNames(null))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidCarNames(Collections.emptyList()))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> Application.isValidCarNames(Arrays.asList("", "", "")))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+            // 중복된 이름이 있는 경우 예외 발생
+            assertThatThrownBy(() -> Application.isValidCarNames(Arrays.asList("pobi", "pobi", "jun")))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+            // 이름 길이가 잘못된 경우 예외 발생
+            assertThatThrownBy(() -> Application.isValidCarNames(Arrays.asList("pobi", "longName", "jun")))
+                    .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
+
 //    @Test
 //    void 기능_테스트() {
 //        assertRandomNumberInRangeTest(
