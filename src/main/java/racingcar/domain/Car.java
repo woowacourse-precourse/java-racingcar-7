@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.enums.Constants;
+
 public class Car {
     public final String name;
     public int moveCount = 0;
@@ -9,7 +11,7 @@ public class Car {
     }
 
     public void move(int value) {
-        if (value >= 4) {
+        if (value >= Constants.MOVE_CONDITION.getValue()) {
             moveCount++;
         }
     }
