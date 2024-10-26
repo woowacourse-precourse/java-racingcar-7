@@ -8,26 +8,26 @@ import racingcar.view.OutputView;
 public class RaceController {
     private final InputView inputView;
     private final OutputView outputView;
-    private RaceManager raceManager;
+    private final RaceManager raceManager;
 
     public RaceController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.raceManager = initializeGame();
     }
 
-    public void startGame() {
-        initializeGame();
-        playRace();
-        displayWinners();
-    }
-
-    private void initializeGame() {
+    private RaceManager initializeGame() {
         String[] names = inputView.inputNames();
         InputValidator.validateName(names);
         int totalTimes = inputView.inputTimes();
 
-        raceManager = new RaceManager(names, totalTimes);
         outputView.printResultMessage();
+        return new RaceManager(names, totalTimes);
+    }
+
+    public void startGame() {
+        playRace();
+        displayWinners();
     }
 
     private void playRace() {
