@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.validator.CarNameValidator;
+import racingcar.validator.RoundCountValidator;
 
 public class InputHandler {
 
@@ -20,6 +21,16 @@ public class InputHandler {
         carNameValidator.validate(carNames);
 
         return carNames;
+    }
+
+    public int getRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요? (1에서 9 사이 정수로 입력 가능)");
+        String input = Console.readLine().trim();
+
+        RoundCountValidator roundCountValidator = new RoundCountValidator();
+        roundCountValidator.validate(input);
+
+        return Integer.parseInt(input);
     }
 
 }
