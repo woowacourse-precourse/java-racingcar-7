@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -23,19 +24,23 @@ public class Application {
 
         int[] carProgressArr = new int[carNames.length];
         for (int i = 0; i < repeatRaceIntNum; i++) {
+            if (i == 0) {
+                System.out.println();
+                System.out.println("실행 결과");
+            }
             for (int car_ind = 0; car_ind < carNames.length; car_ind++) {
                 int carProgress = canProgressWithRandomNum();
                 carProgressArr[car_ind] += carProgress;
                 printCarNameProgress(carNames[car_ind], carProgressArr[car_ind]);
             }
             System.out.println();
-
         }
         // 우승자 판별
         String winners = getWinners(carNames, carProgressArr);
         System.out.println("최종 우승자 : " + winners);
 
     }
+
     public static void checkCarNameError(String[] carNameArr) {
         for (String carName : carNameArr) {
             if (carName.length() > 5) {
@@ -75,17 +80,16 @@ public class Application {
     }
 
     public static String getWinners(String[] carNames, int[] progressArr) {
-        String[] winners = new String[carNames.length];
+        ArrayList<String>winners = new ArrayList<String>();
 
         int largeProgressNum = getLargestProgress(progressArr);
         for (int i = 0; i < carNames.length; i++) {
             int progressNum = progressArr[i];
             if (progressNum == largeProgressNum) {
-                winners[i] = carNames[i];
+                winners.add(carNames[i]);
             }
         }
         var members = List.of(winners);
-//        System.out.println("이긴 멤버 : "+members);
         var result = String.join(",", winners);
         return result;
     }
