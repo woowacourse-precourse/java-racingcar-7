@@ -12,7 +12,6 @@ public class Application {
     public static List<String> winnerList = new ArrayList<>();
 
     public static void main(String[] args) {
-
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carName = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -23,9 +22,12 @@ public class Application {
             map.put(name, 0L);
         }
 
+        System.out.println("\n실행 결과");
+
         repeat(attempt, map);
         winnerSelect(map);
 
+        System.out.println("최종 우승자 : " + String.join(",", winnerList));
     }
 
     public static void winnerSelect(Map<String, Long> map) {
@@ -44,6 +46,8 @@ public class Application {
             for (Map.Entry<String, Long> entry : map.entrySet()) {
                 forwardDecision(map, entry);
             }
+            practiceOutput(map);
+            System.out.println();
         }
     }
 
@@ -56,5 +60,20 @@ public class Application {
     public static boolean randomDraw() {
         int n = Randoms.pickNumberInRange(0, 9);
         return n >= 4;
+    }
+
+    public static void practiceOutput(Map<String, Long> map) {
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + mark(entry.getValue()));
+        }
+    }
+
+    public static String mark(long count) {
+        StringBuilder sb = new StringBuilder();
+        for (long i = 0; i < count; i++) {
+            sb.append("-");
+        }
+
+        return sb.toString();
     }
 }
