@@ -63,6 +63,9 @@ public class Application {
             if (car.length() > VALID_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
             }
+            if (!car.matches("[a-zA-Z]+")) {
+                throw new IllegalArgumentException("자동차 이름은 알파벳만 포함할 수 있습니다.");
+            }
         }
     }
 }
