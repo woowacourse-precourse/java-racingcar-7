@@ -15,8 +15,8 @@ public class BasicRacingCarGeneratorTest {
     }
 
     @Test
-    public void 이름을_부여한_자동차_생성_테스트(){
-        assertSimpleTest(() ->{
+    public void 이름을_부여한_자동차_생성_테스트() {
+        assertSimpleTest(() -> {
             // given
             List<String> names = List.of("창의", "민규", "상현");
 

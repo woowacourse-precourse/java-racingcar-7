@@ -43,7 +43,7 @@ public class BasicRacingCarValidatorTest {
     }
 
     @Test
-    public void 경주_자동차_이동횟수_1회미만_테스트(){
+    public void 경주_자동차_이동횟수_1회미만_테스트() {
         assertSimpleTest(() -> {
             // given
             int moveCount = 0;
@@ -56,7 +56,7 @@ public class BasicRacingCarValidatorTest {
     }
 
     @Test
-    public void 경주_자동차_0명_테스트(){
+    public void 경주_자동차_0명_테스트() {
         assertSimpleTest(() -> {
             // given
             List<String> names = new ArrayList<>();
@@ -69,7 +69,7 @@ public class BasicRacingCarValidatorTest {
     }
 
     @Test
-    public void 경주_자동차_이름_1자이상_5자이하_테스트(){
+    public void 경주_자동차_이름_1자이상_5자이하_테스트() {
         assertSimpleTest(() -> {
             // given
             List<String> names = List.of("창의", "민규", "상현");
@@ -84,7 +84,7 @@ public class BasicRacingCarValidatorTest {
     }
 
     @Test
-    public void 경주_자동차_이동횟수_1회이상_테스트(){
+    public void 경주_자동차_이동횟수_1회이상_테스트() {
         assertSimpleTest(() -> {
             // given
             int moveCount = 1;

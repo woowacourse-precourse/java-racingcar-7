@@ -10,12 +10,12 @@ public class BasicRacingCarNameParserTest {
 
     private final BasicRacingCarNameParser basicRacingCarNameParser;
 
-    public BasicRacingCarNameParserTest(){
+    public BasicRacingCarNameParserTest() {
         basicRacingCarNameParser = new BasicRacingCarNameParser();
     }
 
     @Test
-    void 자동차_이름_분리_테스트(){
+    void 자동차_이름_분리_테스트() {
         assertSimpleTest(() -> {
             // given
             String names = "창의, 지후, 보성";

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class OutputRacingCarViewTest {
     private final OutputRacingCarView outputRacingCarView;
 
-    public OutputRacingCarViewTest(){
+    public OutputRacingCarViewTest() {
         this.outputRacingCarView = new OutputRacingCarView();
     }
 
@@ -27,7 +27,7 @@ public class OutputRacingCarViewTest {
     }
 
     @Test
-    public void 경주게임_실행_결과_문자열_테스트(){
+    public void 경주게임_실행_결과_문자열_테스트() {
         assertSimpleTest(() -> {
             // given
             String gameResultString = "실행 결과";
@@ -43,7 +43,7 @@ public class OutputRacingCarViewTest {
     }
 
     @Test
-    public void 경주게임_실행_결과_테스트(){
+    public void 경주게임_실행_결과_테스트() {
         assertSimpleTest(() -> {
             // given
             String gameResult = "창의 : --";
@@ -59,7 +59,7 @@ public class OutputRacingCarViewTest {
     }
 
     @Test
-    public void 경주게임_우승자_문자열_테스트(){
+    public void 경주게임_우승자_문자열_테스트() {
         assertSimpleTest(() -> {
             // given
             String winnersString = "최종 우승자 : ";
@@ -75,7 +75,7 @@ public class OutputRacingCarViewTest {
     }
 
     @Test
-    public void 경주게임_우승자_테스트(){
+    public void 경주게임_우승자_테스트() {
         assertSimpleTest(() -> {
             // given
             String winnerNames = "창의, 민규, 지후";

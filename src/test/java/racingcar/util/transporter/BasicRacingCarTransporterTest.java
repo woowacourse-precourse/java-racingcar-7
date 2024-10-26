@@ -10,12 +10,12 @@ import racingcar.domain.RacingCar;
 public class BasicRacingCarTransporterTest {
     private final BasicRacingCarTransporter basicRacingCarTransporter;
 
-    public BasicRacingCarTransporterTest(){
+    public BasicRacingCarTransporterTest() {
         this.basicRacingCarTransporter = new BasicRacingCarTransporter();
     }
 
     @Test
-    public void 무작위값_4인_경우_테스트(){
+    public void 무작위값_4인_경우_테스트() {
         assertSimpleTest(() -> {
             // given
             RacingCar car = new RacingCar("보성");
@@ -26,7 +26,6 @@ public class BasicRacingCarTransporterTest {
             // when
             basicRacingCarTransporter.transportRacingCar(racingCars, randomNumbers);
 
-
             // then
             assertThat(car.getCurrentLocation()).isEqualTo(location);
 
@@ -35,7 +34,7 @@ public class BasicRacingCarTransporterTest {
     }
 
     @Test
-    public void 무작위값_3인_경우_테스트(){
+    public void 무작위값_3인_경우_테스트() {
         assertSimpleTest(() -> {
             // given
             RacingCar car = new RacingCar("보성");
@@ -45,7 +44,6 @@ public class BasicRacingCarTransporterTest {
 
             // when
             basicRacingCarTransporter.transportRacingCar(racingCars, randomNumbers);
-
 
             // then
             assertThat(car.getCurrentLocation()).isEqualTo(location);
