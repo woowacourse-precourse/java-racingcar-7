@@ -2,10 +2,10 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import static racingcar.constant.RacingConstant.RACING_CAR_NAME_MAX_LENGTH;
 import static racingcar.constant.RacingConstant.RACING_CAR_MOVE_LIMIT;
-import static racingcar.message.ErrorMessage.CAR_NAME_REQUIRED;
+import static racingcar.constant.RacingConstant.RACING_CAR_NAME_MAX_LENGTH;
 import static racingcar.message.ErrorMessage.CAR_NAME_MAX_LENGTH;
+import static racingcar.message.ErrorMessage.CAR_NAME_REQUIRED;
 
 public class RacingCar {
 
@@ -21,7 +21,7 @@ public class RacingCar {
     }
 
     private void validateCarName(String name) {
-        if (isCarNameBlank(name)) {
+        if (isCarNameEmpty(name)) {
             throw new IllegalArgumentException(CAR_NAME_REQUIRED.getMessage());
         }
 
@@ -46,8 +46,8 @@ public class RacingCar {
         return position;
     }
 
-    private boolean isCarNameBlank(String name) {
-        return name.isBlank();
+    private boolean isCarNameEmpty(String name) {
+        return name.isEmpty();
     }
 
     private boolean isCarNameLengthExceeded(String name) {
