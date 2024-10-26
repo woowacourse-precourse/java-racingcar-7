@@ -47,4 +47,11 @@ public class ValidatorTest {
         assertDoesNotThrow(() -> validator.validateCarNameLength(cars));
     }
 
+    @DisplayName("입력된 문자열에 이름이 빈칸인 경우 예외 발생")
+    @Test
+    void validateNoEmptyCarNames_ShouldThrowException_WhenCarNameIsEmpty() {
+        String carNames = "BMW,,Audi";
+        assertThrows(IllegalArgumentException.class,
+                () -> validator.validateNoEmptyCarNames(carNames));
+    }
 }
