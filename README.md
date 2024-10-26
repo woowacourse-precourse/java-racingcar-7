@@ -56,8 +56,6 @@
 IllegalArgumentException("이름을 입력해 주세요.")을 터트린다.
 ### - 이름 입력 시 이름이 5자 이상인 경우
 IllegalArgumentException("5자 미만의 이름을 입력해 주세요.")을 터트린다.
-### - 이름 입력 시 쉼표(,)가 맨 앞에 있거나 맨 뒤에 존재하는 경우
-IllegalArgumentException("쉼표(,)로 시작하거나 끝날 수 없습니다.")을 터트린다.
 ### - 시도 횟수로 음수가 입력된 경우
 IllegalArgumentException("시도 횟수는 양수를 입력해주세요.")을 터트린다.
 ### - 시도 횟수로 숫자가 아닌 값이 입력된 경우
