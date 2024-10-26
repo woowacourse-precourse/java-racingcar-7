@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarsParser {
 
@@ -12,8 +14,8 @@ public class CarsParser {
         validateCarNames(splitCarNames);
 
         return splitCarNames.stream()
-                .map(Car::new)
-                .toList();
+            .map(Car::new)
+            .toList();
     }
 
     private List<String> getSplitCarNames(String carNames) {
@@ -32,7 +34,9 @@ public class CarsParser {
     }
 
     private void validateNoDuplicates(List<String> splitCarNames) {
-        if (splitCarNames.stream().distinct().count() != splitCarNames.size()) {
+        Set<String> uniqueNames = new HashSet<>(splitCarNames);
+
+        if (uniqueNames.size() != splitCarNames.size()) {
             throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다.");
         }
     }
