@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import racingcar.model.Cars;
 import racingcar.model.Racing;
 import racingcar.util.NumberGenerator;
 import racingcar.view.RacingGameView;
@@ -17,7 +18,8 @@ public class RacingGameController {
     public void startGame() {
         List<String> carNames = racingGameView.inputCarNames();
         int attempt = racingGameView.inputAttempt();
-        Racing racing = Racing.of(numberGenerator, carNames, attempt);
+        Cars cars = Cars.of(numberGenerator, carNames);
+        Racing racing = Racing.of(cars, attempt);
 
         race(racing);
 
