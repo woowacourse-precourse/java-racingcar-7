@@ -19,4 +19,12 @@ public class Car {
             throw new IllegalArgumentException("이름 길이는 1이상 5이하만 가능합니다.");
         }
     }
+
+    public int move() {
+        return engine.active();
+    }
+
+    public String getName() {
+        return name;
+    }
 }
