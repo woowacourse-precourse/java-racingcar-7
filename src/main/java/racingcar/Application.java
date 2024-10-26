@@ -28,11 +28,10 @@ public class Application {
         for (int i = 0; i < members.size(); i++) {
             carForawardList.add(0);
         }
+        System.out.println("실행 결과");
         for (int i = 0; i < playNum; i++) {
             carForawardList = forwardCount(carForawardList);
-        }
-        for (int i = 0; i < members.size(); i++) {
-            System.out.println(carForawardList.get(i));
+            printEachPlayResult(members, carForawardList);
         }
     }
 
@@ -50,6 +49,17 @@ public class Application {
         }
         return carForwardList;
     }
+
+    static void printEachPlayResult(List members, List carForwardList) {
+        for (int i = 0; i < members.size(); i++) {
+            System.out.printf(members.get(i).toString() + " : ");
+            String str = "-";
+            int cnt = Integer.parseInt(carForwardList.get(i).toString());
+            System.out.println(str.repeat(cnt));
+        }
+        System.out.println();
+    }
+
 
     public static void main(String[] args) {
         List<String> members = new ArrayList<>();
