@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import racingcar.car.Attempt;
 import racingcar.car.Car;
 import racingcar.car.Cars;
+import racingcar.car.History;
+import racingcar.car.Positions;
+import racingcar.car.RacingGame;
 import racingcar.comparable.IntegerComparable;
 import racingcar.comparable.NumberComparable;
 import racingcar.exception.InvalidAttemptException;
@@ -40,8 +43,9 @@ public class Application {
         Cars cars = initializeCars(splitter, inputNames, movingStrategy);
         Attempt attempt = readAttempt(outputHandler, inputHandler);
 
-        printRacingResult(cars, attempt, outputHandler);
-        String winners = cars.calculateWinners();
+        RacingGame racingGame = new RacingGame(cars, attempt);
+        showRacingResult(racingGame, outputHandler);
+        String winners = racingGame.calculateWinners();
         outputHandler.showWinners(winners);
     }
 
@@ -79,11 +83,13 @@ public class Application {
         }
     }
 
-    private static void printRacingResult(final Cars cars, final Attempt attempt, OutputHandler outputHandler) {
+    private static void showRacingResult(final RacingGame racingGame, OutputHandler outputHandler) {
         outputHandler.showCommentForResult();
-        for (int i = 0; i < attempt.getValue(); i++) {
-            cars.move();
-            outputHandler.showCarPosition(cars.getNames(), cars.getPositions());
+        racingGame.start();
+        Cars cars = racingGame.getCars();
+        History history = racingGame.getHistory();
+        for (Positions positions : history.value()) {
+            outputHandler.showCarPosition(cars.names(), positions.getValues());
         }
     }
 }

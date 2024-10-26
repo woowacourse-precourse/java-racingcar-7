@@ -1,6 +1,7 @@
 package racingcar.io;
 
 import java.util.List;
+import racingcar.car.Position;
 
 public interface OutputHandler {
     void showCommentForCarNames();
@@ -9,7 +10,7 @@ public interface OutputHandler {
 
     void showCommentForResult();
 
-    void showCarPosition(List<String> names, List<Long> positions);
+    void showCarPosition(List<String> names, List<Position> positions);
 
     void showWinners(String winners);
 }

@@ -2,6 +2,7 @@ package racingcar.io;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import racingcar.car.Position;
 
 public class ConsoleOutputHandler implements OutputHandler {
 
@@ -23,9 +24,9 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
-    public void showCarPosition(final List<String> names, final List<Long> positions) {
+    public void showCarPosition(final List<String> names, final List<Position> positions) {
         IntStream.range(0, names.size())
-                .mapToObj(number -> names.get(number) + " : " + repeatHyphen(positions.get(number)))
+                .mapToObj(number -> names.get(number) + " : " + repeatHyphen(positions.get(number).value()))
                 .forEach(System.out::println);
         System.out.println();
     }

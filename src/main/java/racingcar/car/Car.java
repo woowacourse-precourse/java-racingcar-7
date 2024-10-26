@@ -7,25 +7,16 @@ public class Car {
     private final Name name;
     private final MovingStrategy movingStrategy;
 
-    private long position;
-
     public Car(final String name, final MovingStrategy movingStrategy) {
         this.name = new Name(name);
-        this.position = 0;
         this.movingStrategy = movingStrategy;
     }
 
-    public void move() {
-        if (movingStrategy.canMove()) {
-            position++;
-        }
+    public boolean doesMove() {
+        return movingStrategy.canMove();
     }
 
-    public String getName() {
+    public String name() {
         return name.value();
-    }
-
-    public long getPosition() {
-        return position;
     }
 }

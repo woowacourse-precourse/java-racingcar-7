@@ -2,7 +2,6 @@ package racingcar.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.exception.InvalidNameException;
 
 public class Cars {
@@ -18,47 +17,34 @@ public class Cars {
         cars.add(car);
     }
 
-    public String calculateWinners() {
-        long maxPosition = calculateMaxPosition();
+    public List<Boolean> doMove() {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-    }
-
-    public void move() {
-        for (Car car : cars) {
-            car.move();
-        }
+                .map(Car::doesMove)
+                .toList();
     }
 
     private void validate(Car car) {
-        if (isDuplicateName(car.getName())) {
+        if (isDuplicateName(car.name())) {
             throw new InvalidNameException("이름은 중복될 수 없습니다.");
         }
     }
 
     private boolean isDuplicateName(String name) {
         return cars.stream()
-                .anyMatch(car -> car.getName().equals(name));
+                .anyMatch(car -> car.name().equals(name));
     }
 
-    private Long calculateMaxPosition() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .max(Long::compare)
-                .get();
+    public int size() {
+        return cars.size();
     }
 
-    public List<String> getNames() {
+    public List<String> names() {
         return cars.stream()
-                .map(Car::getName)
+                .map(Car::name)
                 .toList();
     }
 
-    public List<Long> getPositions() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .toList();
+    public String name(final Integer index) {
+        return cars.get(index).name();
     }
 }
