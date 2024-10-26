@@ -17,13 +17,6 @@ public class RacingController {
     }
 
     public String[] parseCarName(String carNames){
-        String[] split = carNames.split(DELIMITERS);
-        for (String str : split) {
-            if(str.length() >= 6){
-                throw new IllegalArgumentException("너무 김");
-            }
-        }
-
-        return split;
+        return carNames.split(DELIMITERS);
     }
 }
