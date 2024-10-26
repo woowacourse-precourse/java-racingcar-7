@@ -3,28 +3,39 @@ package racingcar.view.io.write;
 import camp.nextstep.edu.missionutils.Console;
 
 public class OutputView {
+
+    // Constructor
     private OutputView() {
     }
 
-    public static void printWithNewLineUpper(final String value) {
+    public static class OutputViewHolder {
+        private static final OutputView INSTANCE = new OutputView();
+    }
+
+    public static OutputView getInstance() {
+        return OutputViewHolder.INSTANCE;
+    }
+
+    // Method
+    public void printWithNewLineUpper(final String value) {
         newLine();
         simplePrint(value);
     }
 
-    public static void printWithNewLineLower(final String value) {
+    public void printWithNewLineLower(final String value) {
         simplePrint(value);
         newLine();
     }
 
-    public static void simplePrint(final String value) {
+    public void simplePrint(final String value) {
         System.out.println(value);
     }
 
-    public static void closeConsole() {
+    public void closeConsole() {
         Console.close();
     }
 
-    private static void newLine() {
+    private void newLine() {
         System.out.println();
     }
 }
