@@ -20,9 +20,7 @@ public class Application {
         System.out.println("실행 결과");
         for (int i=0; i<times; i++){
             for (int j=0; j<names.length; j++) {
-                if (Randoms.pickNumberInRange(0,9) >= 4) {
-                    counts[j] += 1;
-                }
+                RacingCar.randomlyProceed(counts, j);
                 System.out.println(names[j] + " : " + "-".repeat(counts[j]));
             }
             System.out.println("");
