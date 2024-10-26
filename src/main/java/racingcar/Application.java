@@ -15,9 +15,11 @@ public class Application {
         String[] cars = input.split(",");
         VaildInput(cars, stringNumber);
         int number = Integer.parseInt(stringNumber);
-        int random = Randoms.pickNumberInRange(0, 9);
-        System.out.println(random);
-        System.out.println(DecideStopOrNot(random));
+
+        String[] carScore = new String[cars.length];
+        StartRaceOnetime(cars, carScore);
+        System.out.println(cars[0]+":"+carScore[0]);
+        System.out.println(cars[1]+":"+carScore[1]);
     }
 
     // 1. 잘못된 입력 판단 함수
@@ -41,6 +43,15 @@ public class Application {
         return value >= 4;
     }
 
+    // 4. 참여자들의 경주를 1회 시행했을 때의 결과 계산.
+    private static void StartRaceOnetime(String[] cars, String[] carScore) {
+        for(int i = 0; i < cars.length; i++) {
+            int random = Randoms.pickNumberInRange(0, 9);
+            if (DecideStopOrNot(random)) {
+                carScore[i] += "-";
+            }
+        }
+    }
 
 
 }
