@@ -2,34 +2,41 @@ package racingcar.controller;
 
 import racingcar.domain.AttemptCounter;
 import racingcar.domain.Cars;
-import racingcar.domain.CarsRegistrar;
+import racingcar.domain.CarsFactory;
 import racingcar.domain.NumberMaker;
 import racingcar.domain.RandomNumberMaker;
-import racingcar.service.RacingCarScoreMachine;
+import racingcar.service.RaceService;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
 public class MainController {
-    private RacingCarScoreMachine racingCarScoreMachine;
+    private RaceService raceService;
 
     public void run() {
         Cars cars = createCars();
         AttemptCounter attemptManager = createAttemptManager();
-
-        racingCarScoreMachine = createRacingCarScoreMachine(cars, attemptManager);
+        raceService = createRacingCarScoreMachine(cars, attemptManager);
 
         Output.printExecutionResultsMessage();
         runRace();
-        printWinningCarResult(racingCarScoreMachine);
+        printWinningCarResult(raceService);
     }
 
-    private RacingCarScoreMachine createRacingCarScoreMachine(Cars cars, AttemptCounter attemptManager) {
+    private void runRace() {
+        while (!raceService.isOverRace()) {
+            raceService.runRace();
+            printCarsMiddleDistance();
+        }
+    }
+
+
+    private RaceService createRacingCarScoreMachine(Cars cars, AttemptCounter attemptManager) {
         NumberMaker numberMaker = new RandomNumberMaker();
-        return new RacingCarScoreMachine(cars, attemptManager, numberMaker);
+        return new RaceService(cars, attemptManager, numberMaker);
     }
 
     private Cars createCars() {
-        CarsRegistrar carsRegistrar = new CarsRegistrar();
+        CarsFactory carsRegistrar = new CarsFactory();
         return carsRegistrar.registerCars(inputCarNames());
     }
 
@@ -46,18 +53,11 @@ public class MainController {
     }
 
 
-    private void runRace() {
-        while (!racingCarScoreMachine.isOverRace()) {
-            racingCarScoreMachine.runRace();
-            printCarsMiddleDistance();
-        }
-    }
-
     private void printCarsMiddleDistance() {
-        Output.printIntermediateScore(racingCarScoreMachine.getCarsNameAndDistance());
+        Output.printIntermediateScore(raceService.getCarsNameAndDistance());
     }
 
-    private void printWinningCarResult(RacingCarScoreMachine racingCarScoreMachine) {
+    private void printWinningCarResult(RaceService racingCarScoreMachine) {
         Output.printWinningCars(racingCarScoreMachine.getWinningCarsNames());
     }
 

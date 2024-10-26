@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Cars {
+    private final static int MAX_NUMBER_OF_CAR = 50;
     private final Set<Car> cars;
 
     public Cars(Set<Car> cars) {
@@ -17,7 +18,6 @@ public class Cars {
         return cars;
     }
 
-    //todo 더 좋은 방법 없을까?
     public List<Car> getWinningCar() {
         List<Car> winningCars = new ArrayList<>();
         int winningDistanceScore = getHighestDistance();
@@ -38,11 +38,11 @@ public class Cars {
         return Collections.max(distances);
     }
 
+
     private void validateNumberOfCars(Set<Car> cars) {
-        if (cars.size() > 50) {
+        if (cars.size() > MAX_NUMBER_OF_CAR) {
             throw new IllegalArgumentException("자동차는 최대 50대까지만 입력 가능합니다.");
         }
     }
-
 
 }

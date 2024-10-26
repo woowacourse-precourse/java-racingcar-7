@@ -1,10 +1,12 @@
 package racingcar.domain;
 
-//note attemptcounter get 해오지 말고 내부에서 차감
 public class AttemptCounter {
+    private final static int MIN = 0;
+    private final static int MAX = 100;
     private int attemptNumber;
 
     public AttemptCounter(int attemptNumber) {
+        validateAttemptRange(attemptNumber);
         this.attemptNumber = attemptNumber;
     }
 
@@ -16,6 +18,10 @@ public class AttemptCounter {
         this.attemptNumber--;
     }
 
-    //todo 시도 횟수 유효검사ㅣ
+    private void validateAttemptRange(int attemptNumber) {
+        if (attemptNumber <= MIN || attemptNumber > MAX) {
+            throw new IllegalArgumentException("시도 횟수는 1~100까지 입력 가능합니다.");
+        }
+    }
 
 }

@@ -4,10 +4,8 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 이름 유효검사
- */
 public class Car {
+    private final static int MAX_NAME_LENGTH = 5;
     private final String name;
     private int distance = 0;
 
@@ -32,7 +30,7 @@ public class Car {
 
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하까지 입력 가능합니다.");
         }
     }
@@ -48,8 +46,8 @@ public class Car {
         if (matcher.find()) {
             throw new IllegalArgumentException("자동차 이름에 특수문자는 사용 불가합니다.");
         }
-
     }
+
 
     @Override
     public boolean equals(Object o) {

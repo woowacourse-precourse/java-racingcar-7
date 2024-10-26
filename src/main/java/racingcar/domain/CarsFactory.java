@@ -5,10 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 자동차 이름 예외하고, 중복 예외처리는 어디에서 하는게...
- */
 public class CarsFactory {
+    private final static String CAR_NAME_DELIMITER = ",";
 
     public Cars registerCars(String input) {
         validateEmptyCarName(input);
@@ -22,12 +20,14 @@ public class CarsFactory {
 
     private List<Car> getParsedCar(String carNames) {
         List<Car> result = new ArrayList<>();
-        String[] splitWord = carNames.split(",");
+        String[] splitWord = carNames.split(CAR_NAME_DELIMITER);
+
         for (String s : splitWord) {
             result.add(new Car(s.trim()));
         }
         return result;
     }
+
 
     private void validateDuplicateCarName(Car car, Set<Car> cars) {
         if (!cars.add(car)) {
@@ -40,6 +40,5 @@ public class CarsFactory {
             throw new IllegalArgumentException("입력된 자동차 이름이 없습니다. 최소 1대 이상 입력해주세요.");
         }
     }
-
 
 }

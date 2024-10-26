@@ -9,14 +9,11 @@ import racingcar.domain.Cars;
 import racingcar.domain.NumberMaker;
 
 public class RaceService {
+    private final static int CAN_MOVE_MIN_RANDOM_CRITERIA = 4;
+    private final static int MOVE_DISTANCE = 1;
     private final AttemptCounter attemptCounter;
     private final Cars cars;
-
-
     private final NumberMaker randomNumberMaker;
-    private final static int FORWARDABLE_MIN_RANDOM_CRITERIA = 4;
-    private final static int FORWARD_DISTANCE = 1;
-
 
     public RaceService(Cars cars, AttemptCounter attemptManager, NumberMaker randomNumberMaker) {
         this.cars = cars;
@@ -31,12 +28,13 @@ public class RaceService {
     public void runRace() {
         for (Car car : cars.getCars()) {
             int randomNumber = randomNumberMaker.make();
-            if (randomNumber >= FORWARDABLE_MIN_RANDOM_CRITERIA) {
-                car.updateDistance(FORWARD_DISTANCE);
+            if (randomNumber >= CAN_MOVE_MIN_RANDOM_CRITERIA) {
+                car.updateDistance(MOVE_DISTANCE);
             }
         }
         attemptCounter.decrease();
     }
+
 
     public Set<Car> getCarsNameAndDistance() {
         return cars.getCars();
