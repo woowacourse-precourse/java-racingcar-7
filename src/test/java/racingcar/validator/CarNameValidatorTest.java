@@ -1,10 +1,12 @@
 package racingcar.validator;
 
 import org.junit.jupiter.api.DisplayName;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarNameValidatorTest {
 
@@ -22,5 +24,27 @@ public class CarNameValidatorTest {
             inputValidator.validateIsEmpty(emptyInput);
         });
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"tobi"})
+    @DisplayName("입력값이 1~5자면 정상 통과")
+    void testSuccessInputLength(String input) {
+        assertDoesNotThrow(() -> inputValidator.validateCarNameLength(input));
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"too_long_name"})
+    @DisplayName("입력값이 6자 이상이면 예외가 발생한다.")
+    void testFailInputLength(String input) {
+        // When
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
+                () -> inputValidator.validateCarNameLength(input));
+
+        // Then
+        assertEquals("자동차 이름은 1자에서 5자 사이여야 합니다.", thrown.getMessage());
+    }
+
+
 
 }
