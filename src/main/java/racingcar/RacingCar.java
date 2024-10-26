@@ -26,7 +26,7 @@ public class RacingCar {
         try {
             round = Integer.valueOf(Console.readLine());
             checkRoundError(round);
-        }catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
@@ -36,32 +36,32 @@ public class RacingCar {
     }
 
     private void setUserList(String usernameArray[]) {
-        if(usernameArray.length == 0) {
+        if (usernameArray.length == 0) {
             throw new IllegalArgumentException();
         }
-        for(int i = 0; i < usernameArray.length; i++) {
+        for (int i = 0; i < usernameArray.length; i++) {
             checkUsernameError(usernameArray[i]);
             userList.add(new User(usernameArray[i]));
         }
     }
 
     private void checkUsernameError(String username) {
-        if(username.isEmpty()) {
+        if (username.isEmpty()) {
             throw new IllegalArgumentException();
-        }else if(username.length() > 5) {
+        } else if (username.length() > 5) {
             throw new IllegalArgumentException();
         }
     }
 
     private void checkRoundError(int round) {
-        if(round < 0) {
+        if (round < 0) {
             throw new IllegalArgumentException();
         }
     }
 
     private void startRace(int round) {
         System.out.println("\n실행 결과");
-        for(int i = 0; i < round; i++) {
+        for (int i = 0; i < round; i++) {
             runRaceForRound(i);
             System.out.println();
         }
@@ -69,7 +69,7 @@ public class RacingCar {
 
     private void runRaceForRound(int roundIndex) {
         Iterator<User> iterator = userList.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             User user = iterator.next();
             goOrStay(user);
             System.out.println(user);
@@ -78,7 +78,7 @@ public class RacingCar {
 
     private void goOrStay(User user) {
         int random = Randoms.pickNumberInRange(0, 9);
-        if(random >= 4) {
+        if (random >= 4) {
             user.totalGo++;
         }
     }
@@ -88,7 +88,7 @@ public class RacingCar {
         int max = 0;
 
         Iterator<User> iterator = userList.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             User user = iterator.next();
             max = updateWinnerList(user, max, winnerList);
         }
@@ -96,9 +96,9 @@ public class RacingCar {
     }
 
     private int updateWinnerList(User user, int max, Vector<User> winnerList) {
-        if(max == user.totalGo) {
+        if (max == user.totalGo) {
             winnerList.add(user);
-        }else if(max < user.totalGo) {
+        } else if (max < user.totalGo) {
             max = user.totalGo;
             winnerList.clear();
             winnerList.add(user);
@@ -111,7 +111,7 @@ public class RacingCar {
 
         Iterator<User> iterator = winnerList.iterator();
         System.out.print(iterator.next().name);
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             User user = iterator.next();
             System.out.print(", " + user.name);
         }
