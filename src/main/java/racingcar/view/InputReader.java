@@ -1,32 +1,37 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Validator;
 
 public class InputReader {
 
-    private final OutputWriter outputWriter; // 의존성을 주입받음
+    private final OutputWriter outputWriter;
+    private final Validator validator;
 
-    public InputReader(OutputWriter outputWriter) {
+    public InputReader(OutputWriter outputWriter, Validator validator) {
         this.outputWriter = outputWriter;
+        this.validator = validator;
     }
 
     public String inputRacingCarNames() {
 
         outputWriter.printCarNamesInputMessage();
-        String inputtedRacingCarNames = Console.readLine();
-        //예외처리 코드 추가 예정
+        String racingCarNames = Console.readLine().trim();
 
-        return inputtedRacingCarNames;
+        validator.validateEmptyRacingCarNames(racingCarNames);
+
+        return racingCarNames;
     }
 
     public Integer inputRacingCount() {
 
         outputWriter.printRaceCountInputMessage();
-        String inputtedRacingCount = Console.readLine();
-        //예외처리 코드 추가 예정
-        int racingCount = Integer.parseInt(inputtedRacingCount);
+        String racingCount = Console.readLine().trim();
 
-        return racingCount;
+        validator.validateEmptyRacingCount(racingCount);
+        validator.validateInvalidRacingCount(racingCount);
+
+        return Integer.parseInt(racingCount);
     }
 
 }

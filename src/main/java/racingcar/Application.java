@@ -1,17 +1,21 @@
 package racingcar;
 
 import racingcar.controller.RacingController;
+import racingcar.domain.Racing;
+import racingcar.domain.Validator;
 import racingcar.view.InputReader;
 import racingcar.view.OutputWriter;
 
 public class Application {
     public static void main(String[] args) {
 
+        Validator validator = new Validator();
+        Racing racing = new Racing();
+
         OutputWriter outputWriter = new OutputWriter();
-        InputReader inputReader = new InputReader(outputWriter);
+        InputReader inputReader = new InputReader(outputWriter, validator);
 
-        RacingController racingController = new RacingController(inputReader);
+        RacingController racingController = new RacingController(inputReader, racing);
         racingController.startRace();
-
     }
 }
