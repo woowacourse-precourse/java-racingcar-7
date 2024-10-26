@@ -69,4 +69,33 @@ public class InputViewTest {
 	    // WHEN - THEN
 		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("시도 횟수에 음수가 들어올 경우 예외를 발생시킨다.")
+	public void minusCountTest() {
+	    // GIVEN
+		String input = "-10";
+
+	    // WHEN - THEN
+		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("시도 횟수에 0이 들어올 경우 예외를 발생시킨다.")
+	public void zeroCountTest() {
+	    // GIVEN
+		String input = "0";
+
+	    // WHEN - THEN
+		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("경주 최대 횟수를 초과하면 예외를 발생시킨다.")
+	public void maxCountTest() {
+		// GIVEN
+		String input = "10000";
+
+		// WHEN - THEN
+		assertThatThrownBy(() -> inputView.parseCount(input)).isInstanceOf(IllegalArgumentException.class);
+	}
 }
