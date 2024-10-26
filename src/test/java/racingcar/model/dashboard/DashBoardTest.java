@@ -1,10 +1,12 @@
 package racingcar.model.dashboard;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.helper.CarsHelper.mocNoWinner;
+import static racingcar.helper.CarsHelper.mockMultiWinners;
+import static racingcar.helper.CarsHelper.mockSingleWinner;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.helper.CarsHelper;
 import racingcar.model.car.Cars;
 
 public class DashBoardTest {
@@ -13,7 +15,7 @@ public class DashBoardTest {
     @DisplayName("우승자 없음")
     void noWinner() {
         // given
-        Cars mockCars = CarsHelper.mockWithoutWinner();
+        Cars mockCars = mocNoWinner();
         DashBoard sut = DashBoard.from(mockCars);
 
         // when
@@ -25,27 +27,31 @@ public class DashBoardTest {
 
 
     @Test
-    @DisplayName("단독 우승자")
+    @DisplayName("단독 우승자 : Ruby")
     void singleWinner() {
         // given
-        Cars mockCars = CarsHelper.mockWithSingleWinner();
+        Cars mockCars = mockSingleWinner();
         DashBoard sut = DashBoard.from(mockCars);
+
         // when
         String actual = sut.offerLWinners();
+
         // then
-        assertThat(actual).isEqualTo("c");
+        assertThat(actual).isEqualTo("Ruby");
     }
 
     @Test
-    @DisplayName("단독 우승자")
+    @DisplayName("공동 우승자 : Rust, Ruby")
     void multiWinner() {
         // given
-        Cars mockCars = CarsHelper.mockWithMultiWinner();
+        Cars mockCars = mockMultiWinners();
         DashBoard sut = DashBoard.from(mockCars);
+
         // when
         String actual = sut.offerLWinners();
+
         // then
-        assertThat(actual).isEqualTo("b, c");
+        assertThat(actual).isEqualTo("Rust, Ruby");
     }
 
 }

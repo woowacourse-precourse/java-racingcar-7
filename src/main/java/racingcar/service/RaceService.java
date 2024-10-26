@@ -1,5 +1,7 @@
 package racingcar.service;
 
+import static racingcar.model.position.Position.ON_START_LINE;
+
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.car.Car;
@@ -15,7 +17,7 @@ public class RaceService {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             Lap lap = Lap.from(lapCount);
-            MyProgress myProgress = MyProgress.from(lap);
+            MyProgress myProgress = MyProgress.from(lap, ON_START_LINE);
             Car car = Car.from(carName, myProgress);
             cars.add(car);
         }

@@ -5,6 +5,9 @@ import static racingcar.common.constant.SystemConstant.EMPTY_STRING;
 import java.util.Objects;
 
 public class Position {
+
+    public static Position ON_START_LINE = initiate();
+
     private final String value;
 
     private Position() {
@@ -15,7 +18,7 @@ public class Position {
         this.value = value;
     }
 
-    public static Position initiate() {
+    private static Position initiate() {
         return new Position();
     }
 

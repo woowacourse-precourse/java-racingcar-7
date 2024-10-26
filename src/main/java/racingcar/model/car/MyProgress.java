@@ -9,6 +9,7 @@ import racingcar.model.position.Position;
 import racingcar.model.race.Lap;
 
 public class MyProgress {
+
     private Lap remainingLap;
     private Position position;
 
@@ -17,9 +18,10 @@ public class MyProgress {
         this.position = position;
     }
 
-    public static MyProgress from(final Lap remainingLap) {
+    public static MyProgress from(final Lap remainingLap, final Position position) {
         validateIsNull(remainingLap);
-        return new MyProgress(remainingLap, Position.initiate());
+        validateIsNull(position);
+        return new MyProgress(remainingLap, position);
     }
 
     public boolean completedAllLap() {
@@ -35,8 +37,8 @@ public class MyProgress {
         this.remainingLap = remainingLap.minus(DEFAULT_LAP_COUNTING_POLICY);
     }
 
-    private static void validateIsNull(Lap lap) {
-        if (isNull(lap)) {
+    private static <T> void validateIsNull(T obj) {
+        if (isNull(obj)) {
             throw new ShouldNotBeNullException();
         }
     }
