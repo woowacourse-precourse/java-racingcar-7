@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -37,10 +38,11 @@ public class Application {
         String[] racingCars = input.split(SPLITTER);
         List<RacingCar> racingCarList = new ArrayList<>();
 
-        for (String carName : racingCars) {
-            checkCarName(carName);
-            racingCarList.add(new RacingCar(carName));
-        }
+        Arrays.stream(racingCars)
+                .forEach(name -> {
+                        checkCarName(name);
+                        racingCarList.add(new RacingCar(name));
+                });
 
         for (int i = 0; i < racingCars.length; i++) {
             for (int j = i + 1; j < racingCars.length; j++) {
