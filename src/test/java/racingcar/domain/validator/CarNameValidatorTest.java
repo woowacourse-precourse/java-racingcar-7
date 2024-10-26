@@ -1,13 +1,12 @@
 package racingcar.domain.validator;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class CarNameValidatorTest {
 
@@ -27,7 +26,7 @@ public class CarNameValidatorTest {
         try {
             carNameValidator.validate(emptyList);
         } catch (IllegalArgumentException e) {
-            assertThat("입력한 값은 ,만 있으면 안됩니다").isEqualTo(e.getMessage());
+            assertThat("입력한 값은, 만 있으면 안 됩니다.").isEqualTo(e.getMessage());
         }
 
         //then
@@ -45,7 +44,7 @@ public class CarNameValidatorTest {
         try {
             carNameValidator.validate(carName);
         } catch (IllegalArgumentException e) {
-            assertThat("자동차 이름은 비어있거나 공백이어서는 안됩니다 : ").isEqualTo(e.getMessage());
+            assertThat("자동차 이름은 비어있거나 공백이면 안 됩니다.").isEqualTo(e.getMessage());
         }
 
         //then
@@ -63,7 +62,7 @@ public class CarNameValidatorTest {
         try {
             carNameValidator.validate(carName);
         } catch (IllegalArgumentException e) {
-            assertThat("자동차 이름은 비어있거나 공백이어서는 안됩니다 : "+" ").isEqualTo(e.getMessage());
+            assertThat("자동차 이름은 비어있거나 공백이면 안 됩니다.").isEqualTo(e.getMessage());
         }
 
         //then
@@ -81,7 +80,7 @@ public class CarNameValidatorTest {
         try {
             carNameValidator.validate(carName);
         } catch (IllegalArgumentException e) {
-            assertThat("자동차 이름은 5자를 초과할 수 없습니다 : " + 6).isEqualTo(e.getMessage());
+            assertThat("자동차 이름의 길이는 5자를 초과하면 안 됩니다.").isEqualTo(e.getMessage());
         }
 
         //then
@@ -99,7 +98,7 @@ public class CarNameValidatorTest {
         try {
             carNameValidator.validate(carName);
         } catch (IllegalArgumentException e) {
-            assertThat("자동차 이름은 중복될 수 없습니다 : " + 2).isEqualTo(e.getMessage());
+            assertThat("같은 자동차의 이름을 입력하면 안 됩니다.").isEqualTo(e.getMessage());
         }
 
         //then
