@@ -12,18 +12,18 @@ public class Racing {
     private final List<Car> racingCars;
 
     public Racing(String carNames) {
-        //검증 로직
         if (CarValidation.validateCarNameSeparator(carNames)) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 쉼표(,)로 구분되어야 합니다.");
         }
-        // - 자동차 이름 구분자가 쉼표가 아닌 경우 -> 쉼표 포함 여부 판별
-        // - 자동차 이름이 중복할 경우 -> set.size != list.size
+        List<String> carNameList = CarNameSeparator.splitCarNameWithoutSpace(carNames);
+        if (CarValidation.validateCarNameEmpty(carNameList)) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름이 존재하지 않습니다.");
+        }
         // - 자동차가 하나일 경우 -> list.size == 1
-        this.racingCars = createCar(carNames);
+        this.racingCars = createCar(carNameList);
     }
 
-    private List<Car> createCar(String carNames) {
-        List<String> carNamesList = CarNameSeparator.splitCarNameWithSeparator(carNames);
+    private List<Car> createCar(List<String> carNamesList) {
         return CarsCreator.createCarNameToCar(carNamesList);
     }
 
