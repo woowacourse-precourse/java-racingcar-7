@@ -1,6 +1,6 @@
 package racingcar.enums;
 
-public enum Message {
+public enum ErrorMessage {
     ERR_INVALID_CAR_LIST("자동차 이름 입력이 잘못되었습니다."),
     ERR_CAR_NAME_ISNULL("자동차 이름은 비어있을 수 없습니다."),
     ERR_INVALID_CAR_NAME_LENGTH("자동차 이름은 5글자 이하입니다."),
@@ -12,7 +12,7 @@ public enum Message {
     ERR_NUMBER_CANT_OVER_MAX_LIMIT("숫자 입력은 1000이하만 가능합니다.");
 
     private final String message;
-    Message(String message) {
+    ErrorMessage(String message) {
         this.message = message;
     }
 

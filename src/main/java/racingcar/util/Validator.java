@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import racingcar.model.Cars;
 import racingcar.model.Game;
-import racingcar.enums.Message;
+import racingcar.enums.ErrorMessage;
 
 public class Validator {
     private static final String VALID_NAME_PATTERN = "^[a-zA-Z0-9]+$";
@@ -19,7 +19,7 @@ public class Validator {
 
     private static void validateCarListSize(List<String> carNames) {
         if (carNames.isEmpty() || carNames.size() > Cars.MAX_CAR_COUNT) {
-            throw new IllegalArgumentException(Message.ERR_INVALID_CAR_LIST.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_INVALID_CAR_LIST.getMessage());
         }
     }
 
@@ -31,20 +31,20 @@ public class Validator {
 
     private static void validateCarName(String carName) {
         if (carName == null || carName.isBlank()) {
-            throw new IllegalArgumentException(Message.ERR_CAR_NAME_ISNULL.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_CAR_NAME_ISNULL.getMessage());
         }
         if (carName.length() > 5) {
-            throw new IllegalArgumentException(Message.ERR_INVALID_CAR_NAME_LENGTH.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_INVALID_CAR_NAME_LENGTH.getMessage());
         }
         if (!carName.matches(VALID_NAME_PATTERN) || !carName.matches(PRINTABLE_PATTERN)) {
-            throw new IllegalArgumentException(Message.ERR_CAR_NAME_CONTAIN_INVALID_CHARACTER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_CAR_NAME_CONTAIN_INVALID_CHARACTER.getMessage());
         }
     }
 
     private static void checkForDuplicateNames(List<String> carNames) {
         Set<String> uniqueCarNames = new HashSet<>(carNames);
         if (uniqueCarNames.size() < carNames.size()) {
-            throw new IllegalArgumentException(Message.ERR_NOT_ALLOW_DUPLICATED_NAME.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_NOT_ALLOW_DUPLICATED_NAME.getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ public class Validator {
 
     private static void validateNullOrBlank(String input) {
         if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException(Message.ERR_NOT_ALLOW_NUMBER_INPUT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_NOT_ALLOW_NUMBER_INPUT.getMessage());
         }
     }
 
@@ -66,19 +66,19 @@ public class Validator {
         try {
             return Double.parseDouble(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERR_INPUT_NUMBER_IS_NOT_VALID.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_INPUT_NUMBER_IS_NOT_VALID.getMessage());
         }
     }
 
     private static void validatePositiveInteger(double number) {
         if (number <= 0 || number != (int) number) {
-            throw new IllegalArgumentException(Message.ERR_NUMBER_MUST_BE_POSITIVE_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_NUMBER_MUST_BE_POSITIVE_NUMBER.getMessage());
         }
     }
 
     private static void validateWithinMaxLimit(double number) {
         if (number > Game.MAX_GAME_ROUND) {
-            throw new IllegalArgumentException(Message.ERR_NUMBER_CANT_OVER_MAX_LIMIT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERR_NUMBER_CANT_OVER_MAX_LIMIT.getMessage());
         }
     }
 }
