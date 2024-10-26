@@ -32,7 +32,6 @@ class GameCountsTest {
 
         assertThat(new GameCounts("3")).usingRecursiveComparison().isEqualTo(expectedCounts);
     }
-
 }
 
 

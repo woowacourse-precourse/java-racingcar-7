@@ -5,11 +5,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 class CarsFactoryTest {
 
@@ -33,11 +33,9 @@ class CarsFactoryTest {
     @MethodSource("generateCars")
     void 올바르게_입력하면_객체를_반환한다(String input,List<Car> carList){
      assertThat(CarsFactory.makeCarList(input)).usingRecursiveComparison().isEqualTo(carList);
-
     }
 
     static Stream<Arguments> generateCars(){
-        //string 입력 시 list를 반환한다
         return Stream.of(
                 Arguments.arguments("지우,포비,제이",List.of(new Car("지우",""),
                         new Car("포비",""),
@@ -47,6 +45,4 @@ class CarsFactoryTest {
                         new Car("포비","")))
         );
     }
-
-
 }

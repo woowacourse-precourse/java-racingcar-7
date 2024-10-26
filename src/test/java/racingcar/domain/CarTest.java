@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-
     Car car;
 
     @BeforeEach
@@ -29,7 +28,7 @@ class CarTest {
         for (int i=0;i<2;i++){
             car.act(4);
         }
+
         assertThat(car.getState()).isEqualTo("----");
     }
-
 }
