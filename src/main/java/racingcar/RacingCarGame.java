@@ -17,6 +17,12 @@ public class RacingCarGame {
         this.roundNum = roundNum;
     }
 
+    public void start(){
+        for (int i = 0; i < roundNum; i++) {
+            round();
+        }
+    }
+
     public void round(){
         carList.forEach(RacingCar::moveForward);
         carList.forEach(c -> System.out.println(c.getName() + ": " + c.getMoveCount()));
