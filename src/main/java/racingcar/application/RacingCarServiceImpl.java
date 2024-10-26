@@ -1,13 +1,31 @@
 package racingcar.application;
 
+import racingcar.common.InputController;
 import racingcar.model.CarName;
+import racingcar.model.RaceCount;
+import racingcar.model.RacingCarList;
+import racingcar.model.RawInput;
 
-import java.util.List;
+import java.util.Set;
 
 public class RacingCarServiceImpl implements RacingCarService{
 
+    private final Parser parser = new CarNameParser();
+
     @Override
-    public List<CarName> run() {
-        return List.of();
+    public void run() {
+        //input
+        RawInput rawInput = InputController.getCarNamesInput();
+        RaceCount raceCount = InputController.getRaceCountInput();
+
+        //parsing
+        Set<CarName> carNameSet = parser.getParsedCarNameList(rawInput);
+
+        //racing
+        RacingCarList racingCarList = RacingCarList.of(carNameSet);
+        racingCarList.gameStartPerRound(raceCount);
+
+        //output
+
     }
 }
