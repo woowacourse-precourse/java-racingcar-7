@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.controller.IndexController;
 import racingcar.controller.RaceController;
+import racingcar.domain.Race;
 import racingcar.domain.dto.CarsSaveRequestDto;
 
 /**
@@ -31,8 +32,9 @@ public class Application {
         int lap = indexController.displayRaceLapInputPage();
 
         // 4. 레이스 시작 후 차수별 실행결과 출력
-        raceController.raceStart(lap);
+        Race race = raceController.raceStart(lap);
 
         // 5. 우승자 보여주기
+        raceController.displayWinner(race);
     }
 }

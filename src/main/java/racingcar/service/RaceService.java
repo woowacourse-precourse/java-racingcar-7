@@ -2,6 +2,8 @@ package racingcar.service;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
+import java.util.List;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
 import racingcar.domain.dto.CarsSaveRequestDto;
@@ -33,6 +35,8 @@ public class RaceService {
     }
     //------------------------//
 
+    private final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public void saveAll(CarsSaveRequestDto requestDto) {
         Cars cars = new Cars(requestDto.toEntity());
         raceRepository.saveAll(cars);
@@ -47,7 +51,7 @@ public class RaceService {
     }
 
     public void getCarMovementByLap(Race race) {
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+        try {
             for (int i = 0; i < race.getLap(); i++) {
                 race.updateCarDataByLap();
                 outputView.displayResultByLap(race,bw);
@@ -60,5 +64,23 @@ public class RaceService {
     public Race createRace(int lap) {
         Cars cars = raceRepository.findAll();
         return new Race(cars, lap);
+    }
+
+    public void getWinner(Race race) {
+        List<Car> cars = race.getCars();
+        int max = 0;
+        try {
+            for (Car car : cars) {
+                int carMovement = car.getMoveCount();
+                if (max < car.getMoveCount()) {
+                    max = carMovement;
+                }
+            }
+            outputView.displayWinner(max,cars,bw);
+            bw.flush();
+            bw.close();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }

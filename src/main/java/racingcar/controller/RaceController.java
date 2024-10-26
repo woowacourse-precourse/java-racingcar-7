@@ -32,12 +32,15 @@ public class RaceController {
         raceService.saveAll(requestDto);
     }
 
-    public void raceStart(int lap) {
+    public Race raceStart(int lap) {
         raceService.isLapValid(lap);
         Race race = raceService.createRace(lap);
         raceService.getCarMovementByLap(race);
-        // 회원마다 랜덤값에 따라 상태 변경 및 전진 추가
-        // lap 1회당 결과 출력
 
+        return race;
+    }
+
+    public void displayWinner(Race race) {
+        raceService.getWinner(race);
     }
 }

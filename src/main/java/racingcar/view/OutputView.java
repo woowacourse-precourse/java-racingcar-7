@@ -2,6 +2,8 @@ package racingcar.view;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 
@@ -29,5 +31,16 @@ public class OutputView {
 
     private String move(int movement) {
         return "-".repeat(Math.max(0, movement));
+    }
+
+    public void displayWinner(int max, List<Car> cars, BufferedWriter bw) throws IOException{
+        List<String> winner = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getMoveCount() == max) {
+                winner.add(car.getName());
+            }
+        }
+        String winners = String.join(", ", winner);
+        bw.write("최종 우승자 : " + winners);
     }
 }
