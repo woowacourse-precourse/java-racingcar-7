@@ -2,7 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private Set<Car> cars = new HashSet<>();
@@ -18,6 +20,15 @@ public class RacingGame {
             moveCars();
             printCarStatus();
         }
+
+        int winningDistance = cars.stream()
+                .mapToInt(car -> car.getDistanceMovedForward())
+                .max()
+                .getAsInt();
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getDistanceMovedForward() == winningDistance)
+                .collect(Collectors.toList());
     }
 
     private void validateTotalMovesRange(int totalMoves) {

@@ -17,6 +17,10 @@ public class Car {
         distanceMovedForward++;
     }
 
+    public int getDistanceMovedForward() {
+        return distanceMovedForward;
+    }
+
     private void validateNameLength(final String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException();
