@@ -22,4 +22,20 @@ public class Executor {
             cars.add(new Car(carName));
         }
     }
+
+    private void executeForCount(List<Car> cars, long repeatCount) {
+        for (int i = 0; i < repeatCount; i++) {
+            executeForAllCars(cars);
+            ioController.printResults(cars);
+        }
+    }
+
+    private void executeForAllCars(List<Car> cars) {
+        for (Car car : cars) {
+            int randomVal = Randoms.pickNumberInRange(0, 9);
+            if (moveLimit <= randomVal) {
+                car.move();
+            }
+        }
+    }
 }
