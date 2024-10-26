@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.RacingGame;
 import racingcar.model.Racingcar;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 
 import java.util.ArrayList;
@@ -21,6 +22,13 @@ public class RacingcarController {
     }
 
 
+    public void RunGame(RacingGame racingGame, List<Racingcar> racingcarList, int moveCount) {
+        for(int i = 0; i < moveCount; i++) {
+            racingGame.MoveRacingcars();
+            OutputView.racingcarOutputView(racingGame.getCarsLocation());
+
+        }
+    }
 
 
 
