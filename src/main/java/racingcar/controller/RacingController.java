@@ -30,6 +30,7 @@ public class RacingController {
 
         RaceResultDTO raceResultDto = startRace(carNames, trialCount);
 
+        printRaceResults(raceResultDto);
     }
 
     private String[] getCarNames() {
@@ -55,5 +56,9 @@ public class RacingController {
     private RaceResultDTO startRace(String[] carNames, int trialCount) {
         return racingService.startRace(carNames, trialCount);
     }
-}
 
+    private void printRaceResults(RaceResultDTO raceResultDto) {
+        outputView.printRaceProcedure(raceResultDto.raceProcedure());
+        outputView.printWinner(raceResultDto.winner());
+    }
+}
