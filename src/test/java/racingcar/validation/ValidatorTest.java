@@ -25,14 +25,24 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("자동차들의 이름이 1~5개인지 확인하는 테스트")
-    void checkCarNameLength() {
+    void checkCarNameLengthTest() {
         List<String> overLengthCarName = new ArrayList<>();
         List<String> noCarName = new ArrayList<>();
 
         overLengthCarName.add("tooLongCar");
         noCarName.add("");
 
-        assertThrows(IllegalArgumentException.class, ()-> Validator.checkCarNameLength(overLengthCarName));
-        assertThrows(IllegalArgumentException.class, ()-> Validator.checkCarNameLength(noCarName));
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkCarNameLength(overLengthCarName));
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkCarNameLength(noCarName));
+    }
+
+    @Test
+    @DisplayName("자동차의 이름이 영대소문자,숫자로만 이루어져있는지 확인하는 테스트")
+    void checkAlphaNumericNameTest() {
+        List<String> invalidCarNames = new ArrayList<>();
+
+        invalidCarNames.add("na;me");
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkAlphaNumericName(invalidCarNames));
     }
 }
