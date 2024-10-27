@@ -2,7 +2,7 @@ package racingcar.validator;
 
 public class GameValidator {
     public static void validateName(String name) {
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 반드시 입력해야 합니다.");
         }
     }
@@ -19,7 +19,7 @@ public class GameValidator {
         }
 
         if (name.contains(" ")) {
-            throw new IllegalArgumentException("자동차 이름에 공백이 포함되면 안됩니다.");
+            throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
         }
     }
 }
