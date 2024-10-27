@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Ahn,", ""})
+    @ValueSource(strings = {"Ahn", ""})
     @DisplayName("자동차 이름을 두 개 이상으로 입력하지 않았으면 예외 발생")
     void inputMoreThanTwo_NotInputtedMoreThenTwo_ExceptionThrown(String carNames){
         //given
@@ -69,7 +69,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Ahn, ", " ,Seong", " , "})
+    @ValueSource(strings = {"Ahn, Seong, ", " ,Seong, Mo", " , ", "Ahn, "})
     @DisplayName("이름을 1자 이상으로 작성하지 않았으면 예외 발생")
     void inputMoreThenOneCharacter_NotInputtedMoreThenOneCharacter_ExceptionThrown(String carNames){
         //given
