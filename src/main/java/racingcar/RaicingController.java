@@ -9,11 +9,14 @@ public class RaicingController {
 
     private InputView inputView;
 
+    private OutputView outputView;
+
     public void start() {
         //입력
         List<Car> cars = inputCars();
         //실행
         race(cars);
+        printResult(cars);
 
 
     }
@@ -60,8 +63,8 @@ public class RaicingController {
             if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
-
         }
+        outputView.printWinners(winners);
     }
 
 }
