@@ -1,12 +1,16 @@
 package racingcar.Input;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static racingcar.service.InputService.isCorrectInput;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
+import racingcar.domain.Game;
+import racingcar.domain.Input;
+import racingcar.service.GameService;
 
 class CorrectInputTest extends NsTest {
 
@@ -56,6 +60,17 @@ class CorrectInputTest extends NsTest {
 
         // then
         assertFalse(result);
+    }
+
+    @Test
+    public void 중복된_이름은_불가능하다() {
+        // given
+        String strings = "pobi,woni,jun,pobi";
+        Game game = new Game();
+        GameService gameService = new GameService(new Input(strings, 0), game);
+
+        // then
+        assertThrows(IllegalArgumentException.class, () -> GameService.addCarName(strings));
     }
 
     @Override

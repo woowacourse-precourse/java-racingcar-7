@@ -21,7 +21,7 @@ public class GameService {
         GameView.displayGameProgress(input.getCount(), this);
     }
 
-    public void addCarName(String strings) {
+    public static void addCarName(String strings) {
         String[] names = strings.split(",");
 
         for (String name : names) {

@@ -7,8 +7,8 @@ import racingcar.view.InputView;
 
 public class InputController {
 
-    private static Input input = new Input("", 0);
-    private static Game game = new Game();
+    private static final Input input = new Input("", 0);
+    private static final Game game = new Game();
     private static final GameService gameService = new GameService(input, game);
 
     public static void run() {
