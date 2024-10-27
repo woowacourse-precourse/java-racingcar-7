@@ -14,8 +14,8 @@ public class RaceCars {
         this.cars = cars;
     }
 
-    public void moveAllCars(RandomMovement randomMovement) {
-        cars.forEach(car -> car.move(randomMovement.isAbleToMove()));
+    public void moveAllCars(Movement movement) {
+        cars.forEach(car -> car.move(movement.isAbleToMove()));
     }
 
     private boolean hasInappropriateNumberOfCars(List<Car> cars) {
