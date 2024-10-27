@@ -10,4 +10,14 @@ public class PrintResult {
         }
         System.out.println();
     }
+
+    public void printRaceResult(List<Integer> maxIndex, List<String> names) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < maxIndex.size(); i++) {
+            System.out.print(names.get(maxIndex.get(i)));
+            if (i < maxIndex.size() - 1) {
+                System.out.print(",");
+            }
+        }
+    }
 }
