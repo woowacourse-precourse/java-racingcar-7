@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import racingcar.dto.CarStatusDto;
+import racingcar.exception.CarNameContainsWhiteSpaceException;
+import racingcar.exception.CarNameLengthException;
+import racingcar.exception.NonBlankCarNameException;
 
 public class Car {
 
@@ -32,24 +35,20 @@ public class Car {
 
     private void validateNameLength(String name) {
         if (name.length() > NAME_LENGTH_THRESHOLD) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            throw new CarNameLengthException();
         }
     }
 
     private void validateNonBlankName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름에 빈 문자열은 허용되지 않습니다.");
+            throw new NonBlankCarNameException();
         }
     }
 
     private void validateNameWithoutWhiteSpace(String name) {
         if (name.contains(WHITE_SPACE)) {
-            throw new IllegalArgumentException("자동차 이름에 공백이 포함될 수 없습니다.");
+            throw new CarNameContainsWhiteSpaceException();
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getPosition() {
