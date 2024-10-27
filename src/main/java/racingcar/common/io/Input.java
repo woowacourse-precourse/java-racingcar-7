@@ -10,10 +10,9 @@ public class Input {
   public String[] getCarNames() {
     output.printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     String input = Console.readLine().trim();
-    String[] names = input.split(",");
+    InputValidator.validateAndParseCarNames(input);
 
-    InputValidator.validateCarNames(names);
-    return names;
+    return InputValidator.validateAndParseCarNames(input);
   }
 
   public int getAttempts() {
