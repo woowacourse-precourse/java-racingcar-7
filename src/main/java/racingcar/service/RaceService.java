@@ -15,12 +15,6 @@ public class RaceService {
         this.carRepository = carRepository;
     }
 
-    public void createCars(String[] carName) {
-        Arrays.stream(carName)
-                .map(Car::new)
-                .forEach(carRepository::save);
-    }
-
     public StartRaceResponse startRace(int attemptCount) {
         List<Car> cars = carRepository.getCars();
         List<Map<String, Integer>> moveData = getMoveData(attemptCount, cars);
@@ -33,7 +27,7 @@ public class RaceService {
         List<String> winnersName = cars.stream()
                 .map(Car::getName)
                 .toList();
-        
+
         return new GetWinnersResponse(winnersName);
     }
 

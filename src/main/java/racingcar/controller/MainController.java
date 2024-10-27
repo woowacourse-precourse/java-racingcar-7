@@ -5,6 +5,7 @@ import racingcar.dto.GetWinnersResponse;
 import racingcar.dto.StartRaceRequest;
 import racingcar.dto.StartRaceResponse;
 import racingcar.repository.CarRepository;
+import racingcar.service.CarService;
 import racingcar.service.RaceService;
 import racingcar.util.Parser;
 import racingcar.view.UserInputView;
@@ -12,7 +13,8 @@ import racingcar.view.UserOutputView;
 
 public class MainController {
 
-    private final RaceController raceController = new RaceController(new RaceService(new CarRepository()));
+    private final CarRepository carRepository = new CarRepository();
+    private final RaceController raceController = new RaceController(new RaceService(carRepository), new CarService(carRepository));
 
     public void start() {
         UserOutputView.InputCarNameMessage();
