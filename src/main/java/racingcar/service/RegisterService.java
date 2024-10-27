@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import racingcar.domain.Cars;
-import racingcar.view.InputView;
 
 public class RegisterService {
     private final Cars cars;
@@ -10,8 +9,7 @@ public class RegisterService {
         this.cars = cars;
     }
 
-    public void registerCars() {
-        String carNames = InputView.carNames();
+    public void registerCars(String carNames) {
         cars.registerCars(carNames);
     }
 }

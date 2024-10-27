@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.RegisterService;
+import racingcar.view.InputView;
 
 public class RacingGameController {
     private final RegisterService registerService;
@@ -10,7 +11,8 @@ public class RacingGameController {
     }
 
     public void start() {
-        registerService.registerCars();
+        String carNames = InputView.carNames();
+        registerService.registerCars(carNames);
     }
 
 }
