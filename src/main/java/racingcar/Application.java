@@ -38,4 +38,20 @@ public class Application {
         cars.forEach(Application::carNameValidCheck);
         return cars;
     }
+
+    /**
+     * 시도 횟수를 입력받아 반환하는 함수
+     *
+     * @return 시도 횟수
+     * @throws IllegalArgumentException 시도 횟수가 숫자가 아닐 경우
+     */
+    private static int readTimes() throws IllegalArgumentException {
+        System.out.println("시도할 회수는 몇 회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
+
 }
