@@ -2,11 +2,11 @@ package racingcar.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGenerator {
+public class RandomNumberPicker {
 	private static final int START_INCLUSIVE = 0;
 	private static final int END_INCLUSIVE = 9;
 
-	private RandomNumberGenerator() {
+	private RandomNumberPicker() {
 
 	}
 
