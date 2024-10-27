@@ -30,7 +30,7 @@ public class JudgeTest {
         cars1[2].increaseDistance();
         cars1[2].increaseDistance();
 
-        result = judge.judge(cars1);
+        result = judge.judge(List.of(cars1));
         assertEquals(List.of(cars1[1], cars1[2]), result);
 
         //distance result is 2.
@@ -46,7 +46,7 @@ public class JudgeTest {
         cars2[2].increaseDistance();
 
         result.clear();
-        result = judge.judge(cars2);
+        result = judge.judge(List.of(cars2));
         assertEquals(List.of(cars2[1]), result);
     }
 
@@ -69,7 +69,7 @@ public class JudgeTest {
         cars1[2].increaseDistance();
         cars1[2].increaseDistance();
 
-        judge.judge(cars1);
+        judge.judge(List.of(cars1));
         assertEquals("test2, test3", judge.getWinnerNames());
     }
 
@@ -90,7 +90,7 @@ public class JudgeTest {
         //distance result is 1.
         cars1[2].increaseDistance();
 
-        judge.judge(cars1);
+        judge.judge(List.of(cars1));
         assertEquals("test2", judge.getWinnerNames());
     }
 }
