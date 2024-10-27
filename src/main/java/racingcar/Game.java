@@ -20,43 +20,38 @@ public class Game {
         System.out.println("\n실행 결과");
         while (attemptCount-- > 0) {
             for (int i = 0; i < carList.size(); i++) {
-                if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                    carList.set(i, new Car(carList.get(i).getName(), carList.get(i).getPosition() + 1));
-                }
+                randomNumberTriggerAndStoreList(i);
             }
-
             printCarState();
         }
     }
 
+    private void randomNumberTriggerAndStoreList(int i) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            carList.set(i, new Car(carList.get(i).getName(), carList.get(i).getPosition() + 1));
+        }
+    }
 
-    // 경주에 참여하는 차를 리스트에 넣음
     public void inputLane() {
         for (int i = 0; i < carArray.length; i++) {
-            if(carArray[i].length() > 5) {
+            if (carArray[i].length() > 5) {
                 throw new IllegalArgumentException();
             }
 
             carList.add(new Car(carArray[i], 0));
         }
-
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ", " + carList.get(i).getPosition());
-        }
     }
 
-    // 현재 경주하는 차들의 상태 값 출력
     private void printCarState() {
         for (int i = 0; i < carList.size(); i++) {
             System.out.print(carList.get(i).getName() + " : ");
+
             for (int j = 0; j < carList.get(i).getPosition(); j++) {
                 System.out.print("-");
             }
+
             System.out.println();
         }
         System.out.print("\n");
     }
-
-
-
 }
