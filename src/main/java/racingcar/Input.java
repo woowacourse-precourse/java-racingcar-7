@@ -4,9 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static String[] readCarNames(){
+    public static String[] readCarNames() {
         String input = Console.readLine();
+        return parseCarNames(input);
+    }
 
+    public static int readNumberOfMoves() {
+        String input = Console.readLine();
+        return parseNumberOfMoves(input);
+    }
+
+    static String[] parseCarNames(String input){
         String[] carNames = input.split(",");
 
         for(String carName : carNames){
@@ -21,7 +29,7 @@ public class Input {
         return carNames;
     }
 
-    public static int readNumberOfMoves(){
-        return Integer.parseInt(Console.readLine());
+    static int parseNumberOfMoves(String input){
+        return Integer.parseInt(input);
     }
 }
