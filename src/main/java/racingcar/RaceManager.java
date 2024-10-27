@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -38,5 +39,23 @@ public class RaceManager {
 
     private int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    public List<String> findWinners() {
+        int maxMoves = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (String racingCarName : carMovementRecords.keySet()) {
+            int currentmoves = carMovementRecords.get(racingCarName).length();
+
+            if (currentmoves > maxMoves) {
+                maxMoves = currentmoves;
+                winners.clear();
+                winners.add(racingCarName);
+            } else if (currentmoves == maxMoves) {
+                winners.add(racingCarName);
+            }
+        }
+        return winners;
     }
 }
