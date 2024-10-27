@@ -12,7 +12,7 @@ public class CarNameValidatator {
     }
 
     private static void validateLength(String name) {
-        if (name.trim().length() > MAX_NAME_LENGTH) {  // trim() 추가
+        if (name.trim().length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_LENGTH);
         }
     }
