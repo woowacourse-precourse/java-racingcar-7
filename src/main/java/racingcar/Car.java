@@ -2,9 +2,11 @@ package racingcar;
 
 public class Car {
     private int location;
+    private final String name;
 
-    public Car(int location) {
+    public Car(String name, int location) {
         this.location = location;
+        this.name = name;
     }
 
     public void move(int distance) {
@@ -14,6 +16,10 @@ public class Car {
 
     public boolean isAhead(Car other) {
         return this.location > other.location;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getLocation() {

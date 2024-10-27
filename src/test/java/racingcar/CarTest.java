@@ -9,7 +9,7 @@ public class CarTest {
     @Test
     @DisplayName("차량 전진 확인")
     void test1() {
-        Car car = new Car(5);
+        Car car = new Car("A", 5);
 
         car.move(10);
 
@@ -19,9 +19,8 @@ public class CarTest {
     @Test
     @DisplayName("차량이 다른 차량 앞에 있는지 확인")
     void test2() {
-        assertTrue(new Car(5).isAhead(new Car(0)));
-        assertFalse(new Car(0).isAhead(new Car(5)));
-        assertFalse(new Car(5).isAhead(new Car(5)));
+        assertTrue(new Car("A", 5).isAhead(new Car("A", 0)));
+        assertFalse(new Car("A", 0).isAhead(new Car("A", 5)));
+        assertFalse(new Car("A", 5).isAhead(new Car("A", 5)));
     }
-
 }
