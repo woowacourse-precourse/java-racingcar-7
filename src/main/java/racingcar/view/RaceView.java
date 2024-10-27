@@ -13,7 +13,14 @@ public class RaceView {
     public ArrayList<String> inputCarsName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
-        String input = Console.readLine();
+        // 테스트 코드 작동을 위해 가변인자 testInput 사용
+        String input;
+
+        if (testInput.length != 0) {
+            input = testInput[0];
+        } else {
+            input = Console.readLine();
+        }
 
         ArrayList<String> carNames = new ArrayList<>();
 
@@ -43,15 +50,24 @@ public class RaceView {
 
     public int inputTryTime() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int N = 0;
+        int N;
+        String input;
+
+        // 테스트용 입력 설정
+        if (testInput.length != 0) {
+            input = testInput[0];
+        } else {
+            input = Console.readLine();
+        }
+
         try {
-            N = Integer.parseInt(Console.readLine().trim());
+            N = Integer.parseInt(input.trim());
             if (N <= 0) {
                 throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
             }
             return N;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("양수를 입력해주세요.");
+            throw new IllegalArgumentException("숫자를 입력해주세요");
         }
 
     }
