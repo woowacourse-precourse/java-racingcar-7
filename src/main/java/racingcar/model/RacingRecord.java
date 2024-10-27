@@ -19,4 +19,8 @@ public class RacingRecord {
     public int getMoveDistance() {
         return moveDistance;
     }
+
+    public String getCarName() {
+        return car.getName();
+    }
 }
