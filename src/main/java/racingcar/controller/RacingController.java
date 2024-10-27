@@ -35,7 +35,6 @@ public class RacingController {
 
     private void playRacingGame(Integer tryCount, List<RacingCar> racingCars) {
         OutputView.printResultMessage();
-
         for (int i = 0; i < tryCount; i++) {
             moveRacingCars(racingCars);
             OutputView.printGame(racingCars);
@@ -60,7 +59,6 @@ public class RacingController {
 
     public String getTryCount() {
         InputView.printTimeInputMessage();
-        ;
         return InputView.getInput();
     }
 }
