@@ -20,10 +20,15 @@ public class DependencyInjectionContainer {
 
   private void createRacingCarController() {
     CarStrategy carStrategy = new CarBasicStrategy();
+    container.put(CarStrategy.class, carStrategy);
     CarsStrategy carsStrategy = new CarsStrategy();
+    container.put(CarsStrategy.class, carsStrategy);
     CarFactory carFactory = new CarBasicFactory(carStrategy, carsStrategy);
+    container.put(CarFactory.class, carFactory);
     RacingService racingService = new RacingService();
+    container.put(RacingService.class, racingService);
     CarService carService = new CarService(carFactory);
+    container.put(CarService.class, carService);
     RacingCarController racingCarController = new RacingCarController(racingService, carService);
     container.put(RacingCarController.class, racingCarController);
   }
