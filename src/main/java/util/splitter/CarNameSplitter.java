@@ -1,20 +1,20 @@
 package util.splitter;
 
-import util.validator.InputValidator;
+import util.validator.CarNameValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CarNameSplitter {
-    private final InputValidator inputValidator;
-    public CarNameSplitter(InputValidator inputValidator) {
-        this.inputValidator = inputValidator;
+    private final CarNameValidator carNameValidator;
+    public CarNameSplitter(CarNameValidator carNameValidator) {
+        this.carNameValidator = carNameValidator;
     }
 
     public List<String> splitCarNames(String input) {
-        InputValidator inputValidator = new InputValidator();
-        inputValidator.inputValidate(input);
+        CarNameValidator carNameValidator = new CarNameValidator();
+        carNameValidator.validate(input);
         return new ArrayList<String>(Arrays.asList(input.split(",")));
     }
 }
