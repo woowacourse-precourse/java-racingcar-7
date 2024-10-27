@@ -22,4 +22,8 @@ public class Car {
         this.length++;
         this.distance += "-";
     }
+
+    public int lengthSize(){
+        return this.length;
+    }
 }
