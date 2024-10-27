@@ -3,16 +3,16 @@ package racingcar.model;
 public class RacingCar {
     private static final int MOVE_STANDARD = 4;
 
-    private String name;
+    private final String name;
     private int position;
 
-    public RacingCar(String name, int position) {
+    public RacingCar(String name) {
         this.name = name;
-        this.position = position;
+        this.position = 0;
     }
 
     public void move(int randomNumber){
-        if(randomNumber > MOVE_STANDARD){
+        if(randomNumber >= MOVE_STANDARD){
             position++;
         }
     }

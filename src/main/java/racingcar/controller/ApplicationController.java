@@ -18,6 +18,7 @@ public class ApplicationController {
         int winStandardNumber = viewInput.receiverNumberOfWin();
 
 
+
     }
 
 }
