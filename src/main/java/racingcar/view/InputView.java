@@ -3,7 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.regex.Pattern;
-import racingcar.exception.UserInputException;
+import racingcar.exception.MoveCountException;
 
 public class InputView {
     private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -30,16 +30,16 @@ public class InputView {
 
     private static void validateNumberOfAttempts(String inputNum) {
         if (inputNum == null || inputNum.isBlank()) {
-            throw new UserInputException("이동횟수를 입력해주세요.");
+            throw new MoveCountException("이동횟수를 입력해주세요.");
         }
         if (inputNum.equals("0")) {
-            throw new UserInputException("이동횟수는 1번 이상이어야합니다.");
+            throw new MoveCountException("이동횟수는 1번 이상이어야합니다.");
         }
         if (inputNum.contains("-")) {
-            throw new UserInputException("이동횟수는 음수가 될 수 없습니다.");
+            throw new MoveCountException("이동횟수는 음수가 될 수 없습니다.");
         }
         if (!NUMBER_PATTERN.matcher(inputNum).matches()) {
-            throw new UserInputException("이동횟수는 숫자로만 입력가능합니다.");
+            throw new MoveCountException("이동횟수는 숫자로만 입력가능합니다.");
         }
     }
 }
