@@ -1,5 +1,8 @@
 package racingcar.prompt;
 
+import static racingcar.prompt.CarRacingEnrollPrompt.CAR_NAMES_KEY;
+import static racingcar.prompt.CarRacingEnrollPrompt.attempt_KEY;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +16,14 @@ class CarRacingEnrollPromptTest extends PromptTest {
         String input = "pobi,woni,jun\n5\n";
         setInput(input);
         String carNamesExpected = "pobi,woni,jun";
-        String attemptsExpected = "5";
+        String attemptExpected = "5";
 
         //When
         carRacingEnrollPrompt.print(promptModel);
 
         //Then
-        Assertions.assertThat(promptModel.get("carNames")).isEqualTo(carNamesExpected);
-        Assertions.assertThat(promptModel.get("attempts")).isEqualTo(attemptsExpected);
+        Assertions.assertThat(promptModel.get(CAR_NAMES_KEY)).isEqualTo(carNamesExpected);
+        Assertions.assertThat(promptModel.get(attempt_KEY)).isEqualTo(attemptExpected);
     }
 
     @Test
@@ -31,13 +34,13 @@ class CarRacingEnrollPromptTest extends PromptTest {
         String input = "";
         setInput(input);
         String carNamesExpected = "";
-        String attemptsExpected = "";
+        String attemptExpected = "";
 
         //When
         carRacingEnrollPrompt.print(promptModel);
 
         //Then
-        Assertions.assertThat(promptModel.get("carNames")).isEqualTo(carNamesExpected);
-        Assertions.assertThat(promptModel.get("attempts")).isEqualTo(attemptsExpected);
+        Assertions.assertThat(promptModel.get(CAR_NAMES_KEY)).isEqualTo(carNamesExpected);
+        Assertions.assertThat(promptModel.get(attempt_KEY)).isEqualTo(attemptExpected);
     }
 }

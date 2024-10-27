@@ -9,12 +9,13 @@ class CarRacingWinnerTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    private final CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
 
     @Test
     public void 우승자_테스트() throws Exception {
         //Given
         String carNames = "pobi,woni";
-        CarGroup carGroup = Parser.parseCarNames(carNames);
+        CarGroup carGroup = carRacingEnroll.createCarGroup(carNames);
         assertRandomNumberInRangeTest(
                 carGroup::accelerateAll,
                 MOVING_FORWARD, STOP
@@ -34,7 +35,7 @@ class CarRacingWinnerTest {
     public void 중복_우승자_테스트() throws Exception {
         //Given
         String carNames = "pobi,woni";
-        CarGroup carGroup = Parser.parseCarNames(carNames);
+        CarGroup carGroup = carRacingEnroll.createCarGroup(carNames);
         assertRandomNumberInRangeTest(
                 carGroup::accelerateAll,
                 MOVING_FORWARD, MOVING_FORWARD

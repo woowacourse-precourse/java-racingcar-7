@@ -11,12 +11,13 @@ class CarRacingTest {
 
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
+    private final CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
 
     @Test
     public void 자동차_경주_테스트() throws Exception {
         //Given
         String carNames = "pobi,woni";
-        CarGroup carGroup = Parser.parseCarNames(carNames);
+        CarGroup carGroup = carRacingEnroll.createCarGroup(carNames);
         CarRacing carRacing = new CarRacing(carGroup, 2);
         List<String> expected = List.of("pobi : -\nwoni : ", "pobi : --\nwoni : ", "최종 우승자 : pobi");
 

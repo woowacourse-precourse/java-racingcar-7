@@ -4,16 +4,16 @@ import racingcar.prompt.PromptModel;
 
 public class CarRacing {
 
-    private final int attempts;
+    private final int attempt;
     private final CarGroup carGroup;
 
-    CarRacing(CarGroup carGroup, int attempts) {
+    CarRacing(CarGroup carGroup, int attempt) {
         this.carGroup = carGroup;
-        this.attempts = attempts;
+        this.attempt = attempt;
     }
 
-    public int getAttempts() {
-        return attempts;
+    public int getattempt() {
+        return attempt;
     }
 
     public CarGroup getCarGroup() {
@@ -26,7 +26,7 @@ public class CarRacing {
         /*
          * 별도의 메서드로 분리한다.
          * */
-        for (int i = 0; i < attempts; i++) {
+        for (int i = 0; i < attempt; i++) {
             carGroup.accelerateAll();
             result.add(carGroup.getDrivingRecords());
         }

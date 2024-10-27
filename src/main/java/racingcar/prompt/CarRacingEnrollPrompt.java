@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 
 public class CarRacingEnrollPrompt implements Prompt {
 
+    public static final String CAR_NAMES_KEY = "carNames";
+    public static final String attempt_KEY = "attempt";
+
     private String readNonEmptyLine() {
         String input;
         try {
@@ -21,7 +24,7 @@ public class CarRacingEnrollPrompt implements Prompt {
         promptModel.add("carNames", readNonEmptyLine());
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        promptModel.add("attempts", readNonEmptyLine());
+        promptModel.add("attempt", readNonEmptyLine());
 
         Console.close();
     }

@@ -1,8 +1,5 @@
 package racingcar;
 
-import static racingcar.Parser.parseAttempts;
-import static racingcar.Parser.parseCarNames;
-
 import racingcar.prompt.CarRacingEnrollPrompt;
 import racingcar.prompt.CarRacingResultPrompt;
 import racingcar.prompt.Prompt;
@@ -15,11 +12,11 @@ public class Application {
         Prompt enrollPrompt = new CarRacingEnrollPrompt();
         Prompt resultPrompt = new CarRacingResultPrompt();
         PromptModel promptModel = new PromptModel();
+        CarRacingEnroll carRacingEnroll = new CarRacingEnroll();
 
         enrollPrompt.print(promptModel);
 
-        CarRacing carRacing = new CarRacing(parseCarNames(promptModel.get("carNames")),
-                parseAttempts(promptModel.get("attempts")));
+        CarRacing carRacing = carRacingEnroll.lineUp(promptModel);
         PromptModel result = carRacing.race();
         resultPrompt.print(result);
     }
