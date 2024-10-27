@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 public class BasicRacingCarValidatorTest {
 
-    private final BasicRacingCarValidator basicRacingCarValidator;
+    private final BasicRacingCarGameValidator basicRacingCarValidator;
 
     public BasicRacingCarValidatorTest() {
-        this.basicRacingCarValidator = new BasicRacingCarValidator();
+        this.basicRacingCarValidator = new BasicRacingCarGameValidator();
     }
 
     @Test

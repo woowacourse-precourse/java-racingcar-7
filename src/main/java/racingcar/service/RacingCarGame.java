@@ -8,11 +8,11 @@ import racingcar.util.generator.RacingCarRandomGenerator;
 import racingcar.util.generator.RacingCarWinnerGenerator;
 import racingcar.util.parser.RacingCarNameParser;
 import racingcar.util.transporter.RacingCarTransporter;
-import racingcar.util.validator.RacingCarValidator;
+import racingcar.util.validator.RacingCarGameValidator;
 
 public class RacingCarGame {
     private final RacingCarNameParser racingCarNameParser;
-    private final RacingCarValidator racingCarValidator;
+    private final RacingCarGameValidator racingCarGameValidator;
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
     private final RacingCarWinnerGenerator racingCarWinnerGenerator;
@@ -21,14 +21,14 @@ public class RacingCarGame {
 
     public RacingCarGame(
             RacingCarNameParser racingCarNameParser,
-            RacingCarValidator racingCarValidator,
+            RacingCarGameValidator racingCarGameValidator,
             RacingCarGenerator racingCarGenerator,
             RacingCarTransporter racingCarTransporter,
             RacingCarWinnerGenerator racingCarWinnerGenerator,
             RacingCarRandomGenerator racingCarRandomGenerator
     ) {
         this.racingCarNameParser = racingCarNameParser;
-        this.racingCarValidator = racingCarValidator;
+        this.racingCarGameValidator = racingCarGameValidator;
         this.racingCarGenerator = racingCarGenerator;
         this.racingCarTransporter = racingCarTransporter;
         this.racingCarWinnerGenerator = racingCarWinnerGenerator;
@@ -37,8 +37,8 @@ public class RacingCarGame {
 
     public RacingCarGameResult playRacingGame(String carNames, int moveCount) {
         List<String> racingCarNames = racingCarNameParser.parseNamesStringToList(carNames);
-        racingCarValidator.validateCarNames(racingCarNames);
-        racingCarValidator.validateMoveCount(moveCount);
+        racingCarGameValidator.validateCarNames(racingCarNames);
+        racingCarGameValidator.validateMoveCount(moveCount);
         List<RacingCar> racingCars = racingCarGenerator.generateCar(racingCarNames);
         String gameResult = startRacingGame(racingCars, moveCount);
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import racingcar.error.RacingCarGameError;
 
-public class BasicRacingCarValidator implements RacingCarValidator {
+public class BasicRacingCarGameValidator implements RacingCarGameValidator {
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int CAR_NAME_MIN_LENGTH = 1;
     private static final int MOVE_COUNT_MIN = 1;
