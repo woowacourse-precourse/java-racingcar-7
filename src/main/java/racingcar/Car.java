@@ -3,8 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
-    public final Name name;
-    public int position;
+    private final Name name;
+    private int position;
 
     public Car(Name carName) {
         this.name = carName;
@@ -21,5 +21,13 @@ public class Car {
         if (randomValue >= 4) {
             incrementPosition();
         }
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

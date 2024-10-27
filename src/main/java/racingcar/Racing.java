@@ -47,7 +47,7 @@ public class Racing {
 
         System.out.print("최종 우승자 : ");
         for (int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i).name.getName());
+            System.out.print(winners.get(i).getName());
             if (i < winners.size() - 1) {
                 System.out.print(", ");
             }

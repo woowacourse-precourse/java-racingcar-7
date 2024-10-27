@@ -16,18 +16,14 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public void validateDuplicateName(List<Car> cars) {
 
         for (Car car : cars) {
-            Name name = car.name;
-            if (nameSet.contains(name.getName())) {
+            String name = car.getName();
+            if (nameSet.contains(name)) {
                 throw new IllegalArgumentException();
             }
-            nameSet.add(name.getName());
+            nameSet.add(name);
         }
     }
 
@@ -41,9 +37,9 @@ public class Cars {
     public void printRacingProgress() {
 
         for (Car car : cars) {
-            System.out.print(car.name.getName() + " : ");
+            System.out.print(car.getName() + " : ");
 
-            for (int j = 0; j < car.position; j++) {
+            for (int j = 0; j < car.getPosition(); j++) {
                 System.out.print("-");
             }
             System.out.println();
@@ -58,13 +54,13 @@ public class Cars {
         int maxPosition = Integer.MIN_VALUE;
 
         for (Car car : cars) {
-            if (car.position > maxPosition) {
-                maxPosition = car.position;
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
             }
         }
 
         for (Car car : cars) {
-            if (car.position == maxPosition) {
+            if (car.getPosition() == maxPosition) {
                 winners.add(car);
             }
         }
