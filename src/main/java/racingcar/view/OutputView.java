@@ -24,7 +24,7 @@ public class OutputView {
         String result = "";
 
         if (!check) {
-            result += OUTPUT_HEADER + "\n";
+            result += "\n" + OUTPUT_HEADER + "\n";
             check = true;
         }
 

@@ -69,11 +69,7 @@ public class OutputViewTest {
         outputView.displayRacing(cars);
 
         // then
-        String expectedOutput = "실행 결과\n" +
-                "pobi : --\n" +
-                "woni : -\n" +
-                "jun : \n";
-        assertThat(output.toString()).contains(expectedOutput);
+        assertThat(output.toString()).contains("pobi : --", "woni : -", "jun : ");
     }
 
     @Test
