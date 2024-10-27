@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.dto.FinalResultDto;
 import racingcar.model.dto.RoundResultDto;
 
 public class OutputView {
@@ -13,4 +14,9 @@ public class OutputView {
             System.out.println(name + " : " + position);
         });
     }
+
+    public void printWinners(FinalResultDto winners) {
+        System.out.println(ViewMessage.WINNERS_MESSAGE.getMessage() + winners.toString());
+    }
+
 }
