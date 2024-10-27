@@ -11,8 +11,8 @@ public class RaceController {
         this.raceView = raceView;
     }
 
-    public void startGame() {
-        try {
+    public void startGame() throws IllegalArgumentException {
+//        try {
             List<String> carNames = raceView.inputCarNames();
             Race race = raceService.initializeRace(carNames);
             int rounds = raceView.inputRounds();
@@ -26,8 +26,8 @@ public class RaceController {
 
             List<Car> winners = race.getWinners();
             raceView.printWinners(winners);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+//        } catch (IllegalArgumentException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 }
