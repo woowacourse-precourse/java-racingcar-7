@@ -17,12 +17,13 @@ public class ParseInput {
             }
         }
 
-        System.out.println("parse input");
-        for(int i=0;i<raceMember.length;i++) {
-            System.out.print(raceMember[i] +" ");
-        }
-        System.out.println();
-
+        /*
+         System.out.println("parse input");
+         for(int i=0;i<raceMember.length;i++) {
+             System.out.print(raceMember[i] +" ");
+         }
+         System.out.println();
+         */
 
     }
 
