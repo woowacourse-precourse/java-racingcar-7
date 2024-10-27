@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.Utilities.Random;
-import racingcar.Utilities.Splitter;
-import racingcar.Validation.CarValidator;
 
 public class Racing implements RacingRule {
   private ArrayList<Car> cars;
@@ -15,15 +13,10 @@ public class Racing implements RacingRule {
     this.cars = cars;
   }
 
-  public static Racing startRacing(String carNames) {
+  public static Racing startRacing(List<String> carNames) {
     ArrayList<Car> cars = new ArrayList<>();
-    List<String> splittedNames = Splitter.splitNames(carNames);
 
-    CarValidator.validateCarNumber(splittedNames);
-    CarValidator.validateDuplicateCarName(splittedNames);
-
-    for (String name : splittedNames) {
-      CarValidator.validateCarName(name);
+    for (String name : carNames) {
       cars.add(new Car(name));
     }
 
