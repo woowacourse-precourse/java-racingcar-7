@@ -8,6 +8,8 @@ public class GameBoard {
     private static final String DELIMITER_OF_CAR_NAMES = ",";
     private static final String SYMBOL_OF_EACH_TRY_FORMAT = " : ";
     private static final String NEW_LINE = "\n";
+    private static final String SYMBOL_OF_WINNER_FORMAT = ", ";
+
     private final Cars cars;
 
     private GameBoard(Cars cars) {
@@ -25,5 +27,15 @@ public class GameBoard {
         return cars.getCars().stream()
                 .map(car -> car.getName() + SYMBOL_OF_EACH_TRY_FORMAT + car.getMoveStatus())
                 .collect(Collectors.joining(NEW_LINE));
+    }
+
+    public String makeEndResult() {
+        return String.join(SYMBOL_OF_WINNER_FORMAT, findWinners().stream()
+                .map(Car::getName)
+                .toList());
+    }
+
+    private List<Car> findWinners() {
+        return Winners.from(cars).getWinners();
     }
 }
