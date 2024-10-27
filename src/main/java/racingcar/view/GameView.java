@@ -15,11 +15,16 @@ public class GameView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void displayRoundResult(List<Car> cars) {
+    public void displayRoundStart() {
+        System.out.println();
         System.out.println("실행결과");
+    }
+
+    public void displayRoundResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(renderPosition(car));
         }
+        System.out.println();
     }
 
     public String renderPosition(Car car) {
