@@ -1,10 +1,15 @@
 package racingcar.domain;
 
+import racingcar.util.Utils;
+
 public class Car {
     private final String carName;
     private int advanceCount = 0;
 
     public Car(String carName) {
+        if (carName.length() > Utils.MAX_NAME_SIZE){
+            throw new IllegalArgumentException();
+        }
         this.carName = carName;
     }
 
