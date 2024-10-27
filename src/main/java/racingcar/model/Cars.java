@@ -16,19 +16,6 @@ public class Cars {
         this.cars = createCars(numberGenerator, carNames);
     }
 
-    private void validateCarNames(List<String> carNames) {
-        Set<String> uniqueNames = new HashSet<>(carNames);
-        if (carNames.size() != uniqueNames.size()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<Car> createCars(NumberGenerator numberGenerator, List<String> carNames) {
-        return carNames.stream()
-                .map(carName -> Car.of(numberGenerator, carName))
-                .toList();
-    }
-
     public static Cars of(NumberGenerator numberGenerator, List<String> carNames) {
         return new Cars(numberGenerator, carNames);
     }
@@ -46,6 +33,19 @@ public class Cars {
     public List<Car> findWinners() {
         return cars.stream()
                 .filter(car -> car.compareTo(Collections.max(cars)) == 0)
+                .toList();
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (carNames.size() != uniqueNames.size()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Car> createCars(NumberGenerator numberGenerator, List<String> carNames) {
+        return carNames.stream()
+                .map(carName -> Car.of(numberGenerator, carName))
                 .toList();
     }
 }

@@ -15,12 +15,6 @@ public class RacingGameView {
         return inputNames;
     }
 
-    private void validateInputNames(List<String> inputNames) {
-        if (inputNames.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public int inputAttempt() {
         System.out.println("시도할 회수는 몇 회인가요?");
         return Integer.parseInt(Console.readLine());
@@ -39,5 +33,11 @@ public class RacingGameView {
 
     public void printWinner(List<String> winnerCarNames) {
         System.out.printf("최종 우승자 : %s", String.join(", ", winnerCarNames));
+    }
+
+    private void validateInputNames(List<String> inputNames) {
+        if (inputNames.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

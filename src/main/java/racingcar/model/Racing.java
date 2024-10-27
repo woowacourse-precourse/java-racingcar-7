@@ -13,12 +13,6 @@ public class Racing {
         this.attempt = attempt;
     }
 
-    private void validateAttempt(int attempt) {
-        if (attempt <= 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public static Racing of(Cars cars, int attempt) {
         return new Racing(cars, attempt);
     }
@@ -41,5 +35,11 @@ public class Racing {
         return cars.findWinners().stream()
                 .map(car -> car.name)
                 .toList();
+    }
+
+    private void validateAttempt(int attempt) {
+        if (attempt <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }

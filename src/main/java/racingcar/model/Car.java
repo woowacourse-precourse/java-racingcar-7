@@ -18,25 +18,14 @@ public class Car implements Comparable<Car> {
         this.position = INITIAL_POSITION;
     }
 
-    private static void validateName(String name) {
-        if (name.length() > MAX_NAME_LENGTH || name.isBlank()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public static Car of(NumberGenerator numberGenerator, String name) {
         return new Car(numberGenerator, name);
     }
 
     public void tryMove() {
-        if (canMove()) {
+        if (isMovable()) {
             position++;
         }
-    }
-
-    private boolean canMove() {
-        int randomNumber = numberGenerator.generate();
-        return randomNumber >= MIN_MOVE_VALUE;
     }
 
     public int getPosition() {
@@ -46,5 +35,16 @@ public class Car implements Comparable<Car> {
     @Override
     public int compareTo(Car other) {
         return Integer.compare(this.position, other.position);
+    }
+
+    private static void validateName(String name) {
+        if (name.length() > MAX_NAME_LENGTH || name.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isMovable() {
+        int randomNumber = numberGenerator.generate();
+        return randomNumber >= MIN_MOVE_VALUE;
     }
 }
