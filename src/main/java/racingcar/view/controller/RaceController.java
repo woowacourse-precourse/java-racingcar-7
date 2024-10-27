@@ -1,6 +1,9 @@
 package racingcar.view.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import racingcar.view.InputView;
+import racingcar.view.domain.Car;
 
 public class RaceController {
 
@@ -11,7 +14,8 @@ public class RaceController {
     }
 
     public void start() {
-        String Cars = inputView.requestCarsName();
+        String inputCarsString = inputView.requestCarsName();
+        List<Car> cars = Arrays.stream(inputCarsString.split(",")).map(Car::new).toList();
     }
 
 }
