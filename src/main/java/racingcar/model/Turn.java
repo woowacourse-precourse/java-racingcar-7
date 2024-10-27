@@ -10,6 +10,9 @@ public class Turn {
     public void setTurn(String input) {
         try {
             this.turn = Integer.parseInt(input);
+            if (turn < 0) {
+                throw new IllegalArgumentException();
+            }
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }

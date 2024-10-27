@@ -21,4 +21,9 @@ class TurnTest {
     void 공백을_입력하면_에외_발생() {
         assertThrows(IllegalArgumentException.class, () -> new Turn(""));
     }
+
+    @Test
+    void 음수를_입력하면_에외_발생() {
+        assertThrows(IllegalArgumentException.class, () -> new Turn("-1"));
+    }
 }
