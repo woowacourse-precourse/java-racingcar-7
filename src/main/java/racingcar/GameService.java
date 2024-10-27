@@ -6,15 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class GameService {
-
-    public Game game;
+    private Game game;
 
     public Game getGame() {
         return game;
     }
 
     public void init(Integer round, List<String> carNames) {
-        this.game = new Game(round, initCars(carNames));
+        this.game = Game.createGame(round, initCars(carNames));
     }
 
     public List<RacingCar> initCars(List<String> carNames) {
