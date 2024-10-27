@@ -37,10 +37,15 @@ public class Cars {
     }
 
     public List<String> findWinner() {
-        return getCarInfo().entrySet().stream()
-                .filter(entry -> entry.getValue().equals(Collections.max(getCarInfo().values())))
-                .map(Map.Entry::getKey)
-                .toList();
+        int maxScore = cars.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getScore() == maxScore)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
 }
