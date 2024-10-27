@@ -5,6 +5,8 @@ public class OutputView {
     private static final String COIN_INSERT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String WINNERS_MESSAGE = "최종 우승자 : ";
+    private static final String SCORE = "-";
+    private static final String COLON_DELIMITER = " : ";
 
     public static void printCarNameInputMessage() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
@@ -20,8 +22,8 @@ public class OutputView {
     }
 
     public static void printRoundResultMessage(String name, int count) {
-        String location = "-".repeat(count);
-        System.out.println(name + " : " + location);
+        String location = SCORE.repeat(count);
+        System.out.println(name + COLON_DELIMITER + location);
     }
 
     public static void printEmptyLine() {
