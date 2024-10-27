@@ -3,6 +3,7 @@ package racingcar.validator;
 import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
 import static racingcar.exception.ErrorMessage.NOT_NUMBER;
 import static racingcar.exception.ErrorMessage.NOT_INT;
+import static racingcar.exception.ErrorMessage.NOT_POSITIVE_INT;
 
 public class TotalRoundsValidator {
 
@@ -10,6 +11,7 @@ public class TotalRoundsValidator {
         validateNotEmpty(rawTotalRounds);
         validateIsNumber(rawTotalRounds);
         validateIsInteger(rawTotalRounds);
+        validateIstPositiveInteger(rawTotalRounds);
 
     }
 
@@ -32,6 +34,11 @@ public class TotalRoundsValidator {
             Integer.parseInt(rawTotalRounds);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_INT.getMessage());
+        }
+    }
+    private static void validateIstPositiveInteger (String rawTotalRounds){
+        if ( Integer.parseInt(rawTotalRounds) <= 0 ) {
+            throw new IllegalArgumentException(NOT_POSITIVE_INT.getMessage());
         }
     }
 

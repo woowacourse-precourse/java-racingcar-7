@@ -6,7 +6,8 @@ public enum ErrorMessage {
     TOO_LONG_NAME("이름이 다섯글자를 초과했습니다"),
     DUPLICATION("자동차 이름이 중복되었습니다"),
     NOT_NUMBER("입력값이 숫자가 아닙니다"),
-    NOT_INT("입력값이 정수가 아닙니다");
+    NOT_INT("입력값이 정수가 아닙니다"),
+    NOT_POSITIVE_INT("입력값이 양의 정수가 아닙니다");
 
     private final String message;
     ErrorMessage(String message) {
