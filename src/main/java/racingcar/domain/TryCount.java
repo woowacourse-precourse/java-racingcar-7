@@ -5,9 +5,9 @@ public class TryCount {
     private final int value;
 
     public TryCount(String inputTryCount) {
-        validateNotEmpty(inputTryCount);
+        validateNotEmpty(inputTryCount.trim());
         int intTryCount = validateNumberFormat(inputTryCount);
-        
+
         validateNegativeNumber(intTryCount);
         this.value = intTryCount;
     }
