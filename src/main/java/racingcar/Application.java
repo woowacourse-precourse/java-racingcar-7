@@ -5,6 +5,6 @@ public class Application {
         String cars = InputView.readCars();
         int trials = Integer.parseInt(InputView.readTrials());
         Racing racing = new Racing(cars);
-        System.out.println(racing.race(trials));
+        racing.race(trials);
     }
 }

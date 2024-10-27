@@ -13,7 +13,7 @@ public class Racing {
                 .toList();
     }
 
-    public String race(int repeat) {
+    public void race(int repeat) {
         System.out.println("실행 결과");
         for (int i = 0; i < repeat; i++) {
             for (Car car : carList) {
@@ -22,11 +22,8 @@ public class Racing {
             System.out.println(this);
             System.out.println();
         }
-        System.out.print("최종 우승자 : ");
         List<Car> winner = getWinner();
-        return winner.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+        OutputView.printWinner(winner);
     }
 
     public List<Car> getWinner() {
