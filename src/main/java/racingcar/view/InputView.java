@@ -8,17 +8,11 @@ public class InputView {
 
     public String requestCarNames() {
         System.out.println(CAR_NAME_PROMPT_MESSAGE);
-        return readInput();
+        return Console.readLine();
     }
 
     public String requestNumAttempts() {
         System.out.println(NUM_ATTEMPT_PROMPT_MESSAGE);
-        return readInput();
-    }
-
-    private String readInput() {
-        String input = Console.readLine();
-        Console.close();
-        return input;
+        return Console.readLine();
     }
 }
