@@ -9,12 +9,12 @@ public class NameParser {
     public static ArrayList<String> parse(String names) {
         ArrayList<String> nameList = new ArrayList<>();
         Collections.addAll(nameList, names.split(","));
-        validNameList(nameList);
+        checkEmpty(nameList);
         return nameList;
     }
 
-    public static void validNameList(ArrayList<String> nameList) {
-        if (nameList.size() == 0) {
+    public static void checkEmpty(ArrayList<String> nameList) {
+        if (nameList.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_NAME_ERROR_MESSAGE);
         }
     }
