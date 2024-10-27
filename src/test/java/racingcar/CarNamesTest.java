@@ -12,7 +12,7 @@ class CarNamesTest {
         CarNames carNames = new CarNames(carName);
         List<Car> cars = carNames.createCars();
 
-        SoftAssertions.assertSoftly((softly)->{
+        SoftAssertions.assertSoftly((softly) -> {
             softly.assertThat(cars.get(0).isName("pobi")).isTrue();
             softly.assertThat(cars.get(1).isName("woni")).isTrue();
         });
