@@ -3,6 +3,11 @@ package racingcar.validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import static racingcar.exception.ErrorMessage.EMPTY_INPUT;
+import static racingcar.exception.ErrorMessage.NOT_NUMBER;
+import static racingcar.exception.ErrorMessage.NOT_INT;
+import static racingcar.exception.ErrorMessage.NOT_POSITIVE_INT;
+
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -32,7 +37,9 @@ public class TotalRoundsValidatorTest {
             final String invalidTotalRounds = "";
 
             //when & then
-            assertThatThrownBy(() -> TotalRoundsValidator.validate(invalidTotalRounds));
+            assertThatThrownBy(() -> TotalRoundsValidator.validate(invalidTotalRounds))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(EMPTY_INPUT.getMessage());
         }
     }
 
@@ -47,7 +54,9 @@ public class TotalRoundsValidatorTest {
             final String notNumber = "뽀뚜";
 
             //when & then
-            assertThatThrownBy(() -> TotalRoundsValidator.validate(notNumber));
+            assertThatThrownBy(() -> TotalRoundsValidator.validate(notNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(NOT_NUMBER.getMessage());
         }
 
         @Test
@@ -57,7 +66,9 @@ public class TotalRoundsValidatorTest {
             final String notInteger = "1.1";
 
             //when & then
-            assertThatThrownBy(() -> TotalRoundsValidator.validate(notInteger));
+            assertThatThrownBy(() -> TotalRoundsValidator.validate(notInteger))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(NOT_INT.getMessage());
         }
 
         @Test
@@ -67,7 +78,9 @@ public class TotalRoundsValidatorTest {
             final String notPositiveInteger = "-1";
 
             //when & then
-            assertThatThrownBy(() -> TotalRoundsValidator.validate(notPositiveInteger));
+            assertThatThrownBy(() -> TotalRoundsValidator.validate(notPositiveInteger))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(NOT_POSITIVE_INT.getMessage());
         }
 
         @Test
