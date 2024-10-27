@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.View.constant.OutputMessage.FINAL_WINNER;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -23,6 +25,11 @@ public class ScoreBoard {
 
     private String createRoundResultForm(CarImpl car) {
         return car.getName() + " : " + car.toScoreSymbol();
+    }
+
+    private String createFinalForm(List<String> winnerList) {
+        String finalWinner = String.join(", ", winnerList);
+        return FINAL_WINNER.getMessage() + finalWinner;
     }
 
     private List<String> getWinner(int bestScore) {
