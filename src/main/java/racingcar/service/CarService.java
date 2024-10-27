@@ -19,4 +19,19 @@ public class CarService {
         }
         return cars;
     }
+
+    public int getNumber(String number) {
+        if (number == null || number.isBlank())
+            throw new IllegalArgumentException("널이거나 공백입니다.");
+        if (number.charAt(0) == '-')
+            throw new IllegalArgumentException("음수입니다.");
+        try {
+            int data = Integer.parseInt(number);
+            if (data <= 0)
+                throw new IllegalArgumentException("입력값이 0이거나 오버플로우가 발생했습니다.");
+            return data;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력값이 소수나 문자입니다.");
+        }
+    }
 }
