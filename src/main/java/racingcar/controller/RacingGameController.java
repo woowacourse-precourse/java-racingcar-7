@@ -10,7 +10,6 @@ import racingcar.vo.Car;
 import racingcar.vo.CarFactory;
 
 import java.util.List;
-import java.util.Set;
 
 public class RacingGameController {
 
@@ -32,20 +31,20 @@ public class RacingGameController {
     }
 
     public void run() {
-        Set<Car> cars = initializeCars();
-        int round = getRound();
+        List<Car> cars = initializeCars();
+        int round = getValidateRounds();
         startRaceAndPrintCarsPosition(round, cars);
         List<String> winner = racingGameService.getWinner(cars);
         printWinner(winner);
     }
 
-    private Set<Car> initializeCars() {
+    private List<Car> initializeCars() {
         String[] carNames = Separator.splitWithComma(inputView.getCarNames());
         inputValidator.validateCarNamesAndNumberOfCars(carNames);
         return carFactory.createCars(carNames);
     }
 
-    private void startRaceAndPrintCarsPosition(int round, Set<Car> cars) {
+    private void startRaceAndPrintCarsPosition(int round, List<Car> cars) {
         outputView.printResultMessage();
         for (int i = 0; i < round; i++) {
             racingGameService.moveCars(cars);
@@ -69,7 +68,7 @@ public class RacingGameController {
         return winner.size() > 1;
     }
 
-    private int getRound() {
+    private int getValidateRounds() {
         return inputValidator.validateAttemptCount(inputView.getGameAttempt());
     }
 }

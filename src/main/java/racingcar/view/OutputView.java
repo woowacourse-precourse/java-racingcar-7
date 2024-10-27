@@ -2,7 +2,7 @@ package racingcar.view;
 
 import racingcar.vo.Car;
 
-import java.util.Set;
+import java.util.List;
 
 public class OutputView {
 
@@ -16,7 +16,7 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCarsPosition(Set<Car> cars) {
+    public void printCarsPosition(List<Car> cars) {
         cars.forEach(car -> {
             System.out.println(car.getName() + COLON + POSITION.repeat(car.getPosition()));
         });
