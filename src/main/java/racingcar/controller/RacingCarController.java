@@ -20,5 +20,6 @@ public class RacingCarController {
 
         inputView.printInputTryCountMessage();
         String tryCountInput = inputView.getInput();
+        racingCarService.checkTryCountInput(tryCountInput);
     }
 }

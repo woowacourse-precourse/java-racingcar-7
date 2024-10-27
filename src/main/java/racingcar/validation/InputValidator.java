@@ -18,4 +18,17 @@ public class InputValidator {
             throw new IllegalArgumentException(ExceptionMessage.NAME_LENGTH_EXCEED);
         }
     }
+
+    public void validateTryCount(String tryCount) {
+        int tryCountNum;
+        try {
+            tryCountNum = Integer.parseInt(tryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.TRY_COUNT_NOT_INTEGER);
+        }
+
+        if (tryCountNum <= 0) {
+            throw new IllegalArgumentException(ExceptionMessage.TRY_COUNT_MUST_NATURAL_NUMBER);
+        }
+    }
 }

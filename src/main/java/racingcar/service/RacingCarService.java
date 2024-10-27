@@ -21,4 +21,10 @@ public class RacingCarService {
             inputValidator.validateCarName(carName);
         }
     }
+
+    public void checkTryCountInput(String input) {
+        inputValidator.validateInputIsEmpty(input);
+
+        inputValidator.validateTryCount(input);
+    }
 }
