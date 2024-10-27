@@ -12,7 +12,7 @@ public class CarManager {
     }
 
     public void setParticipateCars(String[] cars) {
-        if (carList.isEmpty()) {
+        if (!carList.isEmpty()) {
             return;
         }
         for (String carName : cars) {

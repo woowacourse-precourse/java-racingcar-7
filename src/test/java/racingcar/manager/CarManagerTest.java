@@ -1,6 +1,6 @@
 package racingcar.manager;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +21,7 @@ class CarManagerTest {
         carManager.setParticipateCars(carNames);
         List<Car> carList = carManager.getCarList();
 
+        assertThat(carList).isNotEmpty();
         for (int i = 0; i < carList.size(); i++) {
             Car car = carList.get(i);
             assertThat(car.getCarName()).isEqualTo(carNames[i]);
