@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static racingcar.constant.ErrorMessage.EMPTY_NAME;
+import static racingcar.constant.ErrorMessage.EMPTY_CAR_NAME;
 import static racingcar.constant.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.constant.ErrorMessage.TOO_LONG_CAR_NAME;
 
@@ -23,7 +23,7 @@ public class Car {
 
     private static void validateName(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException(EMPTY_NAME.getMessage());
+            throw new IllegalArgumentException(EMPTY_CAR_NAME.getMessage());
         }
 
         if (name.length() > MAX_NAME_LENGTH) {

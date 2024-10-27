@@ -4,7 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.constant.ErrorMessage.EMPTY_NAME;
+import static racingcar.constant.ErrorMessage.EMPTY_CAR_NAME;
 import static racingcar.constant.ErrorMessage.INVALID_CAR_NAME;
 import static racingcar.constant.ErrorMessage.INVALID_RACE_TIME;
 import static racingcar.constant.ErrorMessage.NEGATIVE_RACE_TIME;
@@ -65,8 +65,7 @@ class ApplicationTest extends NsTest {
             assertRandomNumberInRangeTest(
                     () -> {
                         run(names, raceTime);
-                        assertThat(output()).contains(
-                                "최종 우승자 : " + winners); // TODO: RaceOutput에서 "최종 우승자 : " 상수화해서 가져오기
+                        assertThat(output()).contains("최종 우승자 : " + winners);
                     },
                     MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
             );
@@ -130,7 +129,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(names))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(EMPTY_NAME.getMessage())
+                            .hasMessage(EMPTY_CAR_NAME.getMessage())
             );
         }
 

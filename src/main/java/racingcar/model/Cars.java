@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 
-// TODO: 일급 컬렉션에 부합하는지 좀 더 고려
 public class Cars {
     private static final int SPLIT_ALL = -1;
     private static final String DELIMITER = ",";
