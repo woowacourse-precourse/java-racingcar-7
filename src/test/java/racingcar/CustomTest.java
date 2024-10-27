@@ -35,5 +35,21 @@ public class CustomTest {
                 .hasMessage("자동차는 2개 이상이어야 합니다.");
     }
 
+    @Test
+    @DisplayName("자동차 이름이 한 글자 이상이 아닐 때 예외 발생")
+    void testMinimumCarNameException() {
+        Map<String, Integer> race = new HashMap<>();
+        assertThatThrownBy(() -> Application.getNames(race, "pobi,,jun"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 한 글자 이상이어야 합니다.");
+    }
 
+    @Test
+    @DisplayName("자동차 이름이 5자 초과일 때 예외 발생")
+    void testMaximumCarNameException() {
+        Map<String, Integer> race = new HashMap<>();
+        assertThatThrownBy(() -> Application.getNames(race, "pobi, javaji"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름은 5자 이하만 가능합니다.");
+    }
 }
