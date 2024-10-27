@@ -13,7 +13,7 @@ public class Car {
     }
 
     public void moveForwardAttempt(int RANDOM_RANGE_MIN_NUMBER, int RANDOM_RANGE_MAX_NUMBER, int MOVE_FORWARD_MIN_NUMBER) {
-        if(pickNumberInRange(RANDOM_RANGE_MIN_NUMBER, RANDOM_RANGE_MAX_NUMBER) > MOVE_FORWARD_MIN_NUMBER) distance++;
+        if(pickNumberInRange(RANDOM_RANGE_MIN_NUMBER, RANDOM_RANGE_MAX_NUMBER) >= MOVE_FORWARD_MIN_NUMBER) distance++;
     }
 
     public void showDistance() {
