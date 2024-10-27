@@ -11,7 +11,7 @@ import racingcar.validator.TotalRoundsValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class Game {
+public class Racing {
     private final String DELIMITER = ",";
 
     public void startRacing(){

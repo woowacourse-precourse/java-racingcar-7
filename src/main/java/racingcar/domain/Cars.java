@@ -13,10 +13,6 @@ public class Cars {
         this.cars = createCars(carNames);
     }
 
-    private static Car createCar(String carName){
-        return new Car(carName);
-    }
-
     public List<Car> createCars(List<String> carNames){
 
         return carNames.stream()
@@ -59,5 +55,9 @@ public class Cars {
         }
 
         return new Winners(winners);
+    }
+
+    private static Car createCar(String carName){
+        return new Car(carName);
     }
 }
