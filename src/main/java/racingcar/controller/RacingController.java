@@ -14,7 +14,6 @@ public class RacingController {
     private final RacingService racingService = new RacingService();
     private final List<Car> cars = new ArrayList<>();
 
-    // 컨트롤러 실행
     public void run() {
         cars.addAll(inputCarName());
         int tryNumber = InputView.inputTryNumber();

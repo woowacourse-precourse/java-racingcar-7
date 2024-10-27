@@ -8,7 +8,6 @@ import static racingcar.message.ViewMessage.TRY_NUMBER_MESSAGE;
 
 public class InputView {
 
-    // 입력
     public static String inputCarNames() {
         System.out.println(CAR_NAMES_MESSAGE);
         String input = Console.readLine().trim();
