@@ -4,22 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Application {
 	public static void main(String[] args) {
 
-		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-		String carNames = Console.readLine();
+		Input input = new Input();
 
-		Car[] cars = separateNames(carNames);
-		int n = cars.length;
-
-		System.out.println("시도할 횟수는 몇 회인가요?");
-		int m = validateNumber(Console.readLine());
+		Car[] cars = input.readNames();
+		int attemptNumber = input.readAttemptNumber();
 
 		int maxMoveCounter = 0;
-		for (int i = 0; i < m; i++) {
+		for (int i = 0; i < attemptNumber; i++) {
 			maxMoveCounter = findMaxCounter(cars);
 
 			System.out.println("\n실행 결과");
@@ -27,32 +21,6 @@ public class Application {
 		}
 
 		printWinner(maxMoveCounter, cars);
-	}
-
-	public static Car[] separateNames(String carNames) throws IllegalArgumentException {
-
-		String[] names = carNames.split(",");
-		Car[] cars = new Car[names.length];
-
-		for (int i = 0; i < names.length; i++) {
-			cars[i] = new Car(names[i]);
-		}
-
-		return cars;
-	}
-
-	public static int validateNumber(String numStr) throws IllegalArgumentException {
-
-		if (!numStr.matches("\\d+")) {
-			throw new IllegalArgumentException("유효한 숫자가 아닙니다.");
-		}
-
-		int number = Integer.parseInt(numStr);
-		if (number < 0) {
-			throw new IllegalArgumentException("이동 횟수는 음수일 수 없습니다.");
-		}
-
-		return number;
 	}
 
 	public static int findMaxCounter(Car[] cars) {
