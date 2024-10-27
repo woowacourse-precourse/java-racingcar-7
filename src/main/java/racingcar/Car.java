@@ -14,6 +14,7 @@ public class Car {
 
     ArrayList<String> move(InputView inputView){
         for (int i = 0; i < inputView.inputRounds() ; i++) {
+            RandomNumber.randomNumber();
             if(RandomNumber.getRandomNum() >= 4){
                 moveList.add("-");
             }
