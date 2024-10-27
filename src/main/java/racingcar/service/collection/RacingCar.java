@@ -3,7 +3,7 @@ package racingcar.service.collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import racingcar.Exception.ErrorMessage;
+import racingcar.exception.ErrorMessage;
 
 public class RacingCar {
 

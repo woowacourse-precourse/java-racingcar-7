@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.exception.ErrorMessage;
 
 public class InputView {
 
@@ -9,8 +10,14 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String inputGameCount() {
+    public int inputGameCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
+        String gameCount = Console.readLine();
+
+        try {
+            return Integer.parseInt(gameCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_VALID_NUMBER.getMessage());
+        }
     }
 }
