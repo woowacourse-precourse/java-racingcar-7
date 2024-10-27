@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompeteCars {
+    private static final String ERROR_CAR_NAME_DUPLICATION = "자동차 이름은 중복될 수 없습니다.";
     private final List<Car> cars = new ArrayList<>();
 
     private void validateDuplicatedCar(Car car) {
         if (cars.contains(car)) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(ERROR_CAR_NAME_DUPLICATION);
         }
     }
 

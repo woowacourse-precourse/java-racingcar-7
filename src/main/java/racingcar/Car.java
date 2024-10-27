@@ -6,20 +6,20 @@ import java.util.Objects;
 public final class Car {
     private static final int MOVE_CRITERIA = 4;
     private static final int NAME_LENGTH_LIMIT = 5;
-    private static final String BLANK_NAME_ERROR = "자동차 이름은 공백일 수 없습니다.";
-    private static final String NAME_LENGTH_ERROR = "자동차 이름은 %d자 이하만 가능합니다.".formatted(NAME_LENGTH_LIMIT);
+    private static final String ERROR_BLANK_NAME = "자동차 이름은 공백일 수 없습니다.";
+    private static final String ERROR_NAME_LENGTH = "자동차 이름은 %d자 이하만 가능합니다.".formatted(NAME_LENGTH_LIMIT);
     private final String name;
     private Integer position = 0;
 
     private void validateBlankName(String name) {
         if (name.isBlank()) {
-            throw new IllegalArgumentException(BLANK_NAME_ERROR);
+            throw new IllegalArgumentException(ERROR_BLANK_NAME);
         }
     }
 
     private void validateNameLength(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(NAME_LENGTH_ERROR);
+            throw new IllegalArgumentException(ERROR_NAME_LENGTH);
         }
     }
 
