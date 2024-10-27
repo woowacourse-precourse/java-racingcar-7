@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class RacingGame {
@@ -29,6 +30,17 @@ public class RacingGame {
     private void validateRacingCars(List<Car> racingCars) {
         if (MINIMUM_NUMBER_OF_CAR > racingCars.size()) {
             throw new IllegalArgumentException("경주에 참여할 자동차는 최소 2대 이상 있어야 해요.");
+        }
+    }
+
+    public void start() {
+        int count = 0;
+        while (count++ < round) {
+            racingCars
+                    .forEach(car -> {
+                        int distance = Randoms.pickNumberInRange(0, 9);
+                        car.moveForward(distance);
+                    });
         }
     }
 }
