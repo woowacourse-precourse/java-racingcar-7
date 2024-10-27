@@ -13,6 +13,10 @@ public class RaceProcessController {
     }
 
     public void run() {
-        RaceInfoDTO raceInfoDTO = raceViewController.gatherRaceInfo();
+        try {
+            RaceInfoDTO raceInfoDTO = raceViewController.gatherRaceInfo();
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
