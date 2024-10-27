@@ -8,8 +8,10 @@ public class Parser {
     private final InputValidator inputValidator = new InputValidator();
 
     public List<String> parse(String input) {
-        return Arrays.stream(input.split(","))
-                .map(String::trim)
+        inputValidator.checkPrecondition(input);
+
+        return Arrays.stream(input.trim()
+                .split(","))
                 .map(inputValidator::check)
                 .toList();
     }
