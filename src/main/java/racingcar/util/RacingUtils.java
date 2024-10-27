@@ -12,26 +12,11 @@ public class RacingUtils {
     private static final int LENGTH = 5;
 
     public static List<String> divideComma(String input) {
-        if (hasWhitespaceAroundComma(input)) {
-            input = replaceWhitespaceAroundComma(input);
-        }
-
-        List<String> list = Arrays.stream(input.split(",")).toList();// ,로 나눠 리스트에 나눠담음
+        List<String> list = Arrays.stream(input.split(",")).map(String::trim).toList();// ,로 나눠 리스트에 나눠담음
 
         RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasDuplicates(list) || hasAnyStringExceedingLength(list));
 
         return list;
-    }
-
-    public static boolean hasWhitespaceAroundComma(String input) {
-        return input.contains(", ") || input.contains(" ,");
-    }
-
-    public static String replaceWhitespaceAroundComma(String input) {
-        input = input.replace(" ,", ",");// `, `나 ` ,`일 경우 띄어쓰기를 제거
-        input = input.replace(", ", ",");
-
-        return input;
     }
 
     public static boolean hasDuplicates(List<String> list) {
