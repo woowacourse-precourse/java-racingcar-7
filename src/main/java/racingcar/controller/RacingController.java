@@ -21,6 +21,7 @@ public class RacingController {
         registerRacingCars();
         int round = getRound();
 
+        OutputView.printExecutionResultMessage();
         for (int i = 0; i < round; i++) {
             racingCars.updatePositionsWithRandomNumbers(generateRandomNumbers(countCars()));
             OutputView.printRoundResult(racingCars.getStatus());

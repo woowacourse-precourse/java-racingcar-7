@@ -11,6 +11,7 @@ public class OutputView {
     private static final String FINAL_WINNER_MESSAGE = "최종 우승자";
     private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String NAME_DELIMITER = ", ";
+    private static final String EXECUTION_RESULT_MESSAGE = "\n실행 결과";
 
     public static void printInputCarNameMessage() {
         System.out.println(INPUT_CAR_NAME_MESSAGE);
@@ -29,5 +30,9 @@ public class OutputView {
 
     public static void printWinnerNames(List<String> names) {
         System.out.println(FINAL_WINNER_MESSAGE + NAME_POSITION_SEPARATOR + String.join(NAME_DELIMITER, names));
+    }
+
+    public static void printExecutionResultMessage() {
+        System.out.println(EXECUTION_RESULT_MESSAGE);
     }
 }
