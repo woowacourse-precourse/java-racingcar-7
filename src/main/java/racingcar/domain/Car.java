@@ -19,14 +19,6 @@ public class Car {
         return new Car(name, INITIAL_POSITION);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
     public void move() {
         Status status = Status.createStatus();
         if (status.validateMoveForward()) {
@@ -36,5 +28,13 @@ public class Car {
 
     public String displayPosition() {
         return name + EXECUTE_RESULT_DELIMITER + CURRENT_CAR_POSITION.repeat(position) + NEW_LINE;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPosition() {
+        return position;
     }
 }
