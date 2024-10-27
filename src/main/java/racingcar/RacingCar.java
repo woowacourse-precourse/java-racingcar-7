@@ -6,9 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class RacingCar {
     String carNames;
@@ -144,4 +146,12 @@ public class RacingCar {
         }
     }
 
+    public void checkIfCarNameSame(String carNameForCheck) {
+        Set<String> carNameSet = new HashSet<>();
+        carNameSet.add(carNameForCheck);
+
+        if (carNameSet.size() != carNamesSize) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
