@@ -10,15 +10,6 @@ public class RacingGame {
     private final int trialCount;
     private int currentTrial;
 
-    /*public RacingGame(String[] carNames, int trialCount) {
-        this.cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name.trim())); // 자동차 이름 추가
-        }
-        this.trialCount = trialCount;
-        this.currentTrial = 0;
-    }*/
-
     // 수정된 생성자
     public RacingGame(List<Car> cars, int trialCount) {
         this.cars = cars; // List<Car>를 직접 사용
