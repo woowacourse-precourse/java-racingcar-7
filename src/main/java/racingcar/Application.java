@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,5 +33,12 @@ public class Application {
             throw e;
         }
         return cars;
+    }
+
+    public static void race(List<Car> cars) {
+        for (Car car : cars) {
+            int randNumber = pickNumberInRange(0,9);
+            car.moveCar(randNumber);
+        }
     }
 }
