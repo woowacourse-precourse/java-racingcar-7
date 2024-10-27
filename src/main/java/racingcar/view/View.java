@@ -24,7 +24,7 @@ public final class View {
 
     public static int getCount() {
         System.out.println(COUNT_INPUT_MESSAGE);
-        String count = Console.readLine();
+        String count = Console.readLine().trim();
         Validator.countValidate(count);
         System.out.println();
         return Integer.parseInt(count);
