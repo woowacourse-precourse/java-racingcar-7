@@ -78,10 +78,10 @@ public class Racing {
     public void calculateWinner() {
         int maxScore = 0;
         for (RacingCar racingCar : racingCars) {
+            if (racingCar.getForwardCount() > maxScore) {
+                winners.clear();
+            }
             if (racingCar.getForwardCount() >= maxScore) {
-                if (racingCar.getForwardCount() > maxScore) {
-                    winners.clear();
-                }
                 maxScore = racingCar.getForwardCount();
                 winners.add(racingCar);
             }
