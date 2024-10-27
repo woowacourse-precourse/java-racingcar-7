@@ -13,7 +13,7 @@
 - [x] randomNumber
   - [x] RandomNumber : 전진의 기준이 되는 난수를 생성합니다.
 - [x] validation
-  - [x] NameValidator : 사용자에게 입력받은 자동차 이름이 공백인지 확인합니다.
+  - [x] NameValidator : 사용자에게 입력받은 자동차 이름이 공백인지 5글자 이상인지 확인합니다.
   - [x] Parser : 사용자에게 입력받은 실행 횟수가 문자열인지 0 이하인지 확인합니다.
 - [x] view
   - [x] ErrorMessage : Error 발생시 사용자에게 안내 메세지를 출력합니다.
@@ -25,6 +25,7 @@
 - [x] 사용자로부터 자동차 이름을 입력받습니다.
 - [x] 잘못된 문자열을 입력한 경우, IllegalArgumentException을 발생시킨 후 종료합니다.
     - [x] 이름에 null이 들어간 경우
+    - [x] 이름이 5글자 이상인 경우
 - [x] 이름을 "," 를 기준으로 분리하여 저장합니다.
 - [x] 사용자에게 "시도할 횟수는 몇 회인가요?" 를 출력합니다.
 - [x] 잘못된 시도 횟수를 입력한 경우, IllegalArgumentException을 발생시킨 후 종료합니다.
