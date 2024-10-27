@@ -12,4 +12,8 @@ public class Record {
     public long getMoveCount() {
         return moveCount;
     }
+
+    public String getName() {
+        return name;
+    }
 }

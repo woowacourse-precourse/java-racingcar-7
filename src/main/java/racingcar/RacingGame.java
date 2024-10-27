@@ -5,9 +5,11 @@ import java.util.List;
 public class RacingGame {
 
     private final InputReceiver inputReceiver;
+    private final ResultLogger resultLogger;
 
-    public RacingGame(InputReceiver inputReceiver) {
+    public RacingGame(InputReceiver inputReceiver, ResultLogger resultLogger) {
         this.inputReceiver = inputReceiver;
+        this.resultLogger = resultLogger;
     }
 
     public void run() {
@@ -16,6 +18,8 @@ public class RacingGame {
 
         Racing racing = new Racing(createCars(carNames), attemptNumber);
         List<String> winners = racing.race();
+
+        resultLogger.print(racing.getResult(), racing.getAttemptNumber(), winners);
     }
 
     private List<Car> createCars(List<String> carNames) {
