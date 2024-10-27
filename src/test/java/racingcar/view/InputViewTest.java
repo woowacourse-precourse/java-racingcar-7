@@ -39,4 +39,21 @@ class InputViewTest {
         Assertions.assertThatThrownBy(inputView::getCarNames).isInstanceOf(IllegalArgumentException.class);
         Console.close();
     }
+
+    @Test
+    @DisplayName("입력한 시도 횟수를 반환한다.")
+    void getRoundCount() {
+        //given
+        String input = "5";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        InputView inputView = new InputView();
+
+        //when
+        int tryCount = inputView.getRoundCount();
+        Console.close();
+
+        //then
+        Assertions.assertThat(tryCount).isEqualTo(5);
+    }
 }
