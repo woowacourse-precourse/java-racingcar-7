@@ -24,7 +24,7 @@ class RacingCarsTest {
 
         //then
         for (int i = 0; i < carNames.size(); i++) {
-            Assertions.assertThat(status.get(i).getName()).isEqualTo(carNames.get(i));
+            Assertions.assertThat(status.get(i).name()).isEqualTo(carNames.get(i));
         }
     }
 
@@ -43,7 +43,7 @@ class RacingCarsTest {
         List<CarStatusDto> status = racingCars.getStatus();
         List<Integer> expectedPositions = List.of(0, 0, 1, 1);
         List<Integer> currentPositions = status.stream()
-                .map(CarStatusDto::getPosition)
+                .map(CarStatusDto::position)
                 .toList();
 
         //then

@@ -39,14 +39,14 @@ public class RacingCars {
         int maxPosition = getMaxPosition(raceResults);
 
         return raceResults.stream()
-                .filter(raceResult -> raceResult.getPosition() == maxPosition)
-                .map(CarStatusDto::getName)
+                .filter(raceResult -> raceResult.position() == maxPosition)
+                .map(CarStatusDto::name)
                 .toList();
     }
 
     private int getMaxPosition(List<CarStatusDto> raceResults) {
         return raceResults.stream()
-                .mapToInt(CarStatusDto::getPosition)
+                .mapToInt(CarStatusDto::position)
                 .max()
                 .orElse(0);
     }

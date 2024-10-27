@@ -1,20 +1,12 @@
 package racingcar.dto;
 
-public class CarStatusDto {
+public record CarStatusDto(String name, int position) {
 
-    private final String name;
-    private final int position;
+    private static final String NAME_POSITION_SEPARATOR = " : ";
+    private static final String MOVE_DASH = "-";
 
-    public CarStatusDto(String name, int position) {
-        this.name = name;
-        this.position = position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
+    @Override
+    public String toString() {
+        return name + NAME_POSITION_SEPARATOR + MOVE_DASH.repeat(position);
     }
 }

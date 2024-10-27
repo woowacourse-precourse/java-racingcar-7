@@ -10,7 +10,6 @@ public class OutputView {
     private static final String INPUT_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String FINAL_WINNER_MESSAGE = "최종 우승자";
     private static final String NAME_POSITION_SEPARATOR = " : ";
-    private static final String MOVE_DASH = "-";
     private static final String NAME_DELIMITER = ", ";
 
     public static void printInputCarNameMessage() {
@@ -23,7 +22,7 @@ public class OutputView {
 
     public static void printRoundResult(List<CarStatusDto> roundResult) {
         for (CarStatusDto carStatusDto : roundResult) {
-            System.out.println(carStatusDto.getName() + NAME_POSITION_SEPARATOR + MOVE_DASH.repeat(carStatusDto.getPosition()));
+            System.out.println(carStatusDto.toString());
         }
         System.out.println();
     }
