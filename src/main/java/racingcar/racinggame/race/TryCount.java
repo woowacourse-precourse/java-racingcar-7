@@ -16,7 +16,7 @@ public class TryCount {
 		this.count = tryCount;
 	}
 
-	public static TryCount of(int tryCount) {
+	public static TryCount from(int tryCount) {
 		return new TryCount(tryCount);
 	}
 

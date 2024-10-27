@@ -38,7 +38,7 @@ public class RacingGame {
 		outputHandler.showTryCountInputComment();
 
 		int tryCount = inputHandler.getTryCount();
-		return TryCount.of(tryCount);
+		return TryCount.from(tryCount);
 	}
 
 	private void raceAllRound(Cars cars, TryCount tryCount) {
