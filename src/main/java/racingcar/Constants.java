@@ -33,6 +33,4 @@ public class Constants {
     //GameLogic
     public static final int THRESHOLD = 4;
     public static final String MOVE_INDICATOR = "-";
-
-    public static final String ERROR_RESULT_MAP_NOT_INITIALIZED = "결과 Map의 초기 세팅이 이루어지지 않았습니다.";
 }

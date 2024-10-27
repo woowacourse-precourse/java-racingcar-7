@@ -26,7 +26,6 @@ public class GameLogic {
     }
 
     public void moveCarsIfQualified() {
-        checkInitialized();
         for (String carName : result.keySet()) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= THRESHOLD) {
@@ -41,12 +40,6 @@ public class GameLogic {
                 .filter(entry -> entry.getValue().length() == maxMoveCount)
                 .map(Map.Entry::getKey)
                 .toList();
-    }
-
-    private void checkInitialized() {
-        if(result.isEmpty()) {
-            throw new IllegalArgumentException(ERROR_RESULT_MAP_NOT_INITIALIZED);
-        }
     }
 
     private int getMaxMoveCount() {
