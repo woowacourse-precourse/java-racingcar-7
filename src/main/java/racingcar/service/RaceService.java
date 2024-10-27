@@ -9,6 +9,7 @@ import java.util.List;
 
 public class RaceService {
 
+    private static final int MOVEMENT_THRESHOLD = 4;
     private long numOfStages;
     private List<Car> carList;
     private String winnerList;
@@ -20,11 +21,11 @@ public class RaceService {
 
     public void raceStart() {
         for (long i = 0; i < numOfStages; i++)
-            race(i);
+            raceInStage(i);
         raceOver();
     }
 
-    public void race(final long stage) {
+    public void raceInStage(final long stage) {
         for (Car car : carList) {
             if (canMove(car))
                 car.move(stage);
@@ -38,7 +39,7 @@ public class RaceService {
     }
 
     public boolean canMove(final Car car) {
-        return car.getRandomNumber() >= 4;
+        return car.getRandomNumber() >= MOVEMENT_THRESHOLD;
     }
 
     public long getNumOfStages() {

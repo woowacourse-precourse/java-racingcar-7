@@ -8,6 +8,8 @@ import java.util.PriorityQueue;
 
 public class RaceUtils {
 
+    private static final String DELIMITER = ", ";
+
     public static String getWinners(final List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
 
@@ -24,6 +26,6 @@ public class RaceUtils {
             }
         }
 
-        return String.join(", ", winnerList);
+        return String.join(DELIMITER, winnerList);
     }
 }

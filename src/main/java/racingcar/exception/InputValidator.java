@@ -2,10 +2,12 @@ package racingcar.exception;
 
 import java.util.List;
 
-public class Validator {
+public class InputValidator {
+
+    private static final int NAME_LEN_LIMIT = 5;
 
     public static void checkNameLen(final String name) {
-        if (name.length() > 5)
+        if (name.length() > NAME_LEN_LIMIT)
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH);
     }
 

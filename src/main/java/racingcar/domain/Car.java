@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Car implements Comparable<Car> {
 
+    private static final String UNIT_MOVEMENT = "-";
+    private static final String DEFAULT_HISTORY = "";
     private final String name;
     private final long numOfStages;
     private Map<Long, String> moveHistory;
@@ -19,14 +21,14 @@ public class Car implements Comparable<Car> {
 
     public void move(final long stage) {
         if (stage == 0)
-            this.moveHistory.put(stage, "-");
+            this.moveHistory.put(stage, UNIT_MOVEMENT);
         else
-            this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1) + "-");
+            this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1) + UNIT_MOVEMENT);
     }
 
     public void stop(final long stage) {
         if (stage == 0)
-            this.moveHistory.put(stage, "");
+            this.moveHistory.put(stage, DEFAULT_HISTORY);
         else
             this.moveHistory.put(stage, this.getMoveHistoryAtStage(stage - 1));
     }
