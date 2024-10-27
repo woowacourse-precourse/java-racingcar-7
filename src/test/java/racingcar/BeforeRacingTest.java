@@ -15,7 +15,7 @@ class BeforeRacingTest {
 
     @Test
     void validateName(){
-        String carNameString = "kokddd";
+        String carNameString = "  ";
         org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BeforeRacing.validateName(carNameString);
         });
