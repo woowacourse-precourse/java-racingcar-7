@@ -1,8 +1,9 @@
 package racingcar;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
     private final String name;
-    private final int step;
+    private int step;
 
     public Car(String name) {
         this.name = name;
@@ -15,5 +16,11 @@ public class Car {
 
     public int getStep() {
         return step;
+    }
+
+    public void move(int randomNumber) {
+        if (randomNumber >= MOVE_THRESHOLD) {
+            this.step++;
+        }
     }
 }

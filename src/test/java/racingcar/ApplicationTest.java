@@ -61,6 +61,33 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("4 이상의 숫자를 뽑으면 자동차가 전진해야 한다.")
+    void should_MoveForward_When_RandomNumberIs4OrMore() {
+        Car car = new Car("pobi");
+
+        int initialStep = car.getStep();
+        car.move(4);
+        assertThat(initialStep + 1).isEqualTo(car.getStep());
+
+        car.move(5);
+        assertThat(initialStep + 2).isEqualTo(car.getStep());
+    }
+
+    @Test
+    @DisplayName("4 미만의 숫자를 뽑으면 자동차가 전진하지 않아야 한다.")
+    void should_NotMove_When_RandomNumberIsLessThan4() {
+        Car car = new Car("woni");
+
+        int initialStep = car.getStep();
+        car.move(3);
+        assertThat(initialStep).isEqualTo(car.getStep());
+
+        car.move(0);
+        assertThat(initialStep).isEqualTo(car.getStep());
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
