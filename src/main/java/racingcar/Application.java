@@ -1,17 +1,20 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Application {
     private static List<Integer> carPositions;
+    private static List<String> carNames;
 
     public static void main(String[] args) {
         try {
-            List<String> carNames = getCarNames();
+            carNames = getCarNames();
             System.out.println("입력한 자동차 이름: " + carNames);
 
             carPositions = new ArrayList<>(Arrays.asList(new Integer[carNames.size()]));
@@ -62,14 +65,32 @@ public class Application {
     private static void raceCars(int tryCount){
         for (int i = 0; i < tryCount; i++){
             System.out.println("차수 " + (i + 1) + " 진행 중...");
+            for(int j = 0; j < carPositions.size(); j++){
+                if(shouldMove(carNames.get(j))){
+                    carPositions.set(j, carPositions.get(j) + 1);
+                }
+            }
+            carPosition();
+            System.out.println();
         }
     }
 
     private static void carPosition(){
         for(int i= 0; i < carPositions.size(); i++){
-            System.out.println("자동차 " + (i + 1) + ": " );
+            System.out.print(carNames.get(i) + (i + 1) + ": " );
             System.out.println("-".repeat(carPositions.get(i)));
         }
+    }
+
+    private static boolean shouldMove(String carName){
+        int randomValue = Randoms.pickNumberInRange(0,9);
+        boolean move = randomValue >= 4;
+        if (move) {
+            System.out.println(carName + "자동차가 전진합니다.");
+        } else {
+            System.out.println(carName + "자동차가 전진하지 않습니다.");
+        }
+        return move;
     }
 
 }
