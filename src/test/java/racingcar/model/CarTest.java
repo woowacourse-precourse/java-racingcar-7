@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -29,5 +30,16 @@ public class CarTest {
         car.raiseMoveCount();
 
         assertThat(car.getMoveCount()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("전진 가능한 경우 이동 횟수 증가 테스트")
+    void moveIfPossibleTest() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    car.moveIfPossible();
+                    assertThat(car.getMoveCount()).isEqualTo(1);
+                }, 4
+        );
     }
 }
