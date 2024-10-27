@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.ValidationUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -10,7 +11,7 @@ import static racingcar.exception.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.exception.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
 public class RacingCarManager {
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
     public static int MIN_CAR_COUNT = 2;
 
     public RacingCarManager(List<String> carNames) {
@@ -44,7 +45,7 @@ public class RacingCarManager {
     }
 
     private void validateCarNames(List<String> carNames){
-        if(ValidationUtil.isMoreThanOne(carNames)){
+        if(!ValidationUtil.isMoreThanOne(carNames)){
             throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
         }
 
