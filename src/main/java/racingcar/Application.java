@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.car.RacingCar;
+import racingcar.validator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,15 +15,11 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameListInput = Console.readLine();
+
         List<String> carNameList = Arrays.stream(carNameListInput.split(","))
                 .collect(Collectors.toList());
-
-        // validate carName input
-        String charRegex = "^[ㄱ-ㅎ|가-힣|a-z|A-Z]*$";
         for(String carName : carNameList) {
-            if(!Pattern.matches(charRegex, carName) || carName.length()>5) {
-                throw new IllegalArgumentException();
-            }
+            InputValidator.isStringOnly(carName);
         }
 
         List<RacingCar> racingCarList = new ArrayList<>();
@@ -33,11 +30,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountInput = Console.readLine();
 
-        // validate trying move count
-        String numRegex = "^[0-9]*$";
-        if(!Pattern.matches(numRegex, tryCountInput)) {
-            throw new IllegalArgumentException();
-        }
+        InputValidator.isNumberOnly(tryCountInput);
+
         int tryCount = Integer.parseInt(tryCountInput);
 
         System.out.println("실행 결과");
