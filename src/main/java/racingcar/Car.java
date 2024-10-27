@@ -9,17 +9,23 @@ public class Car {
         this.name = name.trim();
     }
 
-    public void attemptMove(int randomValue) {
-        if (randomValue >= 4) {
-            position++;
-        }
-    }
-
     public String getName() {
         return name;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public void attemptMove(int threshold) {
+        if (threshold >= 4) {
+            position++;
+        }
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        super.clone();
+        return new Car(name);
     }
 }

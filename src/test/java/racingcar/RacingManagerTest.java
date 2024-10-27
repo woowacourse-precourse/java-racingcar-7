@@ -2,8 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -12,7 +12,8 @@ public class RacingManagerTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi,woni,jun", "pobi, woni, jun"})
     void 자동차_이름이_복수인_경우_쉼표_구분(String rawName) {
-        RacingManager manager = new RacingManager(rawName, "1");
+        List<String> carNames = Arrays.stream(rawName.split(",")).toList();
+        RacingManager manager = new RacingManager(carNames, 1);
         List<Car> cars = manager.getCars();
 
         assertThat(cars.size()).isEqualTo(3);
@@ -21,10 +22,20 @@ public class RacingManagerTest {
         assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
 
-    @Test
-    void 시도횟수는_양의_정수() {
-        RacingManager manager = new RacingManager("pobi,woni,jun", "1");
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void 시도횟수는_양의_정수(int round) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), round);
 
-        assertThat(manager.getTrials()).isEqualTo(1);
+        assertThat(manager.getRounds()).isEqualTo(round);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void 차수별_실행_결과를_출력(int round) {
+        RacingManager manager = new RacingManager(List.of("pobi", "woni", "jun"), round);
+        List<RoundResult> result = manager.startRace();
+
+        assertThat(result.size()).isEqualTo(round);
     }
 }
