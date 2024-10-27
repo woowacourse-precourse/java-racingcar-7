@@ -16,6 +16,7 @@ public class RacingController {
   public void startGame() {
     List<String> carsName = readCarsName();
     int turnCount = readTurnCount();
+    printGameResultMessage();
     startRacing(carsName, turnCount);
     printFinalWinner();
   }
@@ -55,5 +56,9 @@ public class RacingController {
   private void printFinalWinner() {
     ArrayList<String> winner = racing.pickWinner();
     OutputView.printWinner(winner);
+  }
+
+  private void printGameResultMessage(){
+    OutputView.printGameResultMessage();
   }
 }

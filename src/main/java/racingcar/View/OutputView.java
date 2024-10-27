@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import racingcar.Enum.IOMessage;
 
 public class OutputView {
-  private static final String WINNERS_DELIMITER = ",";
+  private static final String WINNERS_DELIMITER = ", ";
 
-  public static void printGameResult() {
-    System.out.println(IOMessage.PRINT_GAME_RESULT.getMessage());
+  public static void printGameResultMessage() {
+    System.out.println(System.lineSeparator() + IOMessage.PRINT_GAME_RESULT.getMessage());
   }
 
   public static void printResultOfTurn(String gameResult) {
