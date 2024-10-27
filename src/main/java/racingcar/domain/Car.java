@@ -6,7 +6,7 @@ import racingcar.global.exception.ErrorMessage;
 
 public class Car {
     private static int NAME_MAX_LENGTH = 5;
-    private String name;
+    private final String name;
     private int moveCount = 0;
 
     public Car(String name) {
