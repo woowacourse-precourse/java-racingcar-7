@@ -14,10 +14,10 @@ import racingcar.model.CarsPriorityBlockingQueue;
  * @author : jiffyin7@gmail.com
  * @since : 24. 10. 26.
  */
-public class CarsStrategy {
+public class CarsStrategy{
   private final Map<CarsType, Function<List<Car>, Cars>> carStrategy;
 
-  public CarsStrategy() {
+  public CarsStrategy(){
     this.carStrategy = new HashMap<>();
     this.carStrategy.put(CarsType.LIST, CarsList::from);
     this.carStrategy.put(CarsType.PRIORITY_BLOCKING_QUEUE, CarsPriorityBlockingQueue::from);
@@ -27,7 +27,7 @@ public class CarsStrategy {
     return carStrategy.get(carsType);
   }
 
-  public Function<List<Car>, Cars> getDefaultCollection() {
+  public Function<List<Car>, Cars> getDefaultCollection(){
     return carStrategy.get(CarsType.LIST);
   }
 }
