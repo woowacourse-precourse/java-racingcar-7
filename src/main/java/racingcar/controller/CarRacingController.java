@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-
 import racingcar.model.Car;
 import racingcar.model.CarRacing;
 import racingcar.utils.Engine;
@@ -22,17 +21,33 @@ public class CarRacingController {
     }
 
     public void run() {
-        // run 쪼개기
+        List<Car> cars = initializeCars();
+        int totalRacingCounter = getTotalRacingCounter();
+
+        CarRacing carRacing = new CarRacing(cars);
+        executeRaces(carRacing, totalRacingCounter);
+
+        List<String> winners = carRacing.getWinner();
+        outputView.printWinners(winners);
+    }
+
+    private List<Car> initializeCars() {
         outputView.printReadCarNameMessage();
         String readCarString = inputView.readInput();
         inputView.parserInputString(readCarString);
 
-        List<Car> cars = createCars(inputView.getParserInputString());
+        return createCars(inputView.getParserInputString());
+    }
 
+    private int getTotalRacingCounter() {
         outputView.printReadTotalTryMessage();
-        String totalRacingCounter = inputView.readInput();
+        return Integer.parseInt(inputView.readInput());
+    }
 
-        startCarRacing(cars, totalRacingCounter);
+    private void executeRaces(CarRacing carRacing, int totalRacingCounter) {
+        for (int i = 0; i < totalRacingCounter; i++) {
+            carRacing.startRacing();
+        }
     }
 
     private List<Car> createCars(ArrayList<String> carNameList) {
@@ -44,10 +59,4 @@ public class CarRacingController {
         }
         return cars;
     }
-
-    private void startCarRacing(List<Car> cars, String totalRacingCounter) {
-        CarRacing carRacing = new CarRacing(cars, totalRacingCounter);
-        carRacing.startRacing();
-    }
-
 }
