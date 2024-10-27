@@ -12,16 +12,14 @@ public class CarService {
     public ArrayList<String> enterCarName() {
         CarRequest carRequest = new CarRequest();
         String car = carRequest.enterCarNameString();
-        if (!carNameStringValidation(car))
-            throw new IllegalArgumentException();
+        carNameStringValidation(car);
         return Arrays.stream(car.split(","))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private boolean carNameStringValidation(String carName) {
+    private void carNameStringValidation(String carName) {
         if (!Pattern.matches(CarConstants.CAR_NAME_STRING_VALIDATION, carName)) {
             throw new IllegalArgumentException(CarConstants.CAR_NAME_ENTER_ERROR_MESSAGE);
         }
-        return true;
     }
 }
