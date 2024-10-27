@@ -1,7 +1,9 @@
 package racingcar.service;
 
+import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.domain.car.Cars;
+import racingcar.domain.car.Vehicle;
 import racingcar.domain.race.RaceManager;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -34,5 +36,10 @@ public class RaceService {
     public void playOnce() {
         Cars cars = raceManager.playOnce();
         OutputView.printCarsWithPosition(cars);
+    }
+
+    public void getWinners() {
+        List<Vehicle> winners = raceManager.getWinners();
+        OutputView.printWinners(winners);
     }
 }
