@@ -1,9 +1,9 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.List;
 import racingcar.handler.InputHandler;
 import racingcar.service.RacingGameService;
+
+import java.util.List;
 
 public class MainController {
 
@@ -18,6 +18,7 @@ public class MainController {
     public void gameStart() {
         List<String> carNames = inputHandler.getCarNames();
         int tryCount = inputHandler.getTryCount();
+        System.out.println();
         racingGameService.startRace(carNames, tryCount);
     }
 }
