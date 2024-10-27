@@ -1,7 +1,6 @@
 package racingcar.printer;
 
 import racingcar.car.Car;
-import racingcar.context.GameContext;
 import racingcar.event.manager.EventPubSubManager;
 import racingcar.game.Game;
 
@@ -33,6 +32,6 @@ public class ResultPrinter {
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
 
-        System.out.println("우승자: " + String.join(",", winners.stream().map(Car::getName).toList()));
+        System.out.println("최종 우승자 : " + String.join(",", winners.stream().map(Car::getName).toList()));
     }
 }
