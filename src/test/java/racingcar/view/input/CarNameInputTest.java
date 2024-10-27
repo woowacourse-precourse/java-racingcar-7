@@ -31,7 +31,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessages.CAR_NAME_IS_EMPTY.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.INPUT_IS_EMPTY.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -45,7 +45,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessages.CAR_NAME_TOO_LONG.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.CAR_NAME_INVALID_LENGTH.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -73,7 +73,7 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessages.CAR_NAME_CONTAINS_WHITESPACE.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.INPUT_CONTAINS_WHITESPACE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -101,6 +101,20 @@ class CarNameInputTest {
 
         // then
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
-        assertEquals(CarNameInputErrorMessages.INVALID_DELIMITER.getMessage(), exception.getMessage());
+        assertEquals(CarNameInputErrorMessages.INPUT_CONTAINS_INVALID_DELIMITER.getMessage(), exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("마지막에 빈 문자열이 입력되면 예외 발생 테스트")
+    void 마지막에_빈_문자열이_입력되면_예외_발생() {
+        // given
+        String carName = "kim,jung,";  // 쉼표 뒤에 빈 문자열
+
+        // when
+        CarNameInput carNameInput = new CarNameInput();
+
+        // then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> carNameInput.process(carName));
+        assertEquals(CarNameInputErrorMessages.INPUT_CONTAINS_WHITESPACE.getMessage(), exception.getMessage());
     }
 }
