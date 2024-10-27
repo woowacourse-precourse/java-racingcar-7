@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static racingcar.config.GameConstant.CAR_NAME_DELIMITER;
+import static racingcar.validator.AttemptValidator.validateAttempt;
 import static racingcar.validator.CarNameValidator.validateCarName;
 
 public class InputView {
@@ -18,7 +19,9 @@ public class InputView {
     }
 
     public static int getAttempts() {
-        return Integer.parseInt(readLine());
+        String attempt = getUserInput();
+        validateAttempt(attempt);
+        return Integer.parseInt(attempt);
     }
 
     public static String getUserInput() {
