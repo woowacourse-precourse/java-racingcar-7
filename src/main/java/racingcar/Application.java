@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.controller.RacingGameController;
+import racingcar.util.RandomNumberGenerator;
+import racingcar.view.RacingGameView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RacingGameView racingGameView = new RacingGameView();
+        RacingGameController racingGameController = new RacingGameController(randomNumberGenerator, racingGameView);
+        racingGameController.startGame();
     }
 }
