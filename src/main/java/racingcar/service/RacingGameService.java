@@ -87,7 +87,7 @@ public class RacingGameService {
         checkCarNameIsEmpty(carNames);
         String[] splitCarNames = processCarName(carNames);
 
-        checkCarCount(splitCarNames);
+        validateCarCount(splitCarNames);
         checkNameLength(splitCarNames);
         checkDuplicateCarName(splitCarNames);
     }
@@ -114,7 +114,7 @@ public class RacingGameService {
     }
 
 
-    private void checkCarCount(String[] splitCarNames) {
+    private void validateCarCount(String[] splitCarNames) {
         if (splitCarNames.length < MIN_CAR_COUNT) {
             throw new IllegalArgumentException("자동차는 2대 이상 입력해야 합니다.");
         }
