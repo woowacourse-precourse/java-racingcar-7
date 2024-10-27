@@ -17,4 +17,9 @@ public class View {
         outputView.printMessage(Output.INPUT_CARS);
         return inputView.userInput();
     }
+
+    public String inputRaceCount() {
+        outputView.printMessage(Output.INPUT_COUNT);
+        return inputView.userInput();
+    }
 }
