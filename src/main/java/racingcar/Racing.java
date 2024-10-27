@@ -23,11 +23,20 @@ public class Racing {
             System.out.println();
         }
         System.out.print("최종 우승자 : ");
-        int max = carList.stream().mapToInt(Car::getDistance).max().getAsInt();
-        return carList.stream()
-                .filter(c -> c.getDistance() == max)
+        List<Car> winner = getWinner();
+        return winner.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
+    }
+
+    public List<Car> getWinner() {
+        int maxDistance = carList.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow();
+        return carList.stream()
+                .filter(c -> c.getDistance() == maxDistance)
+                .toList();
     }
 
     public String toString() {
