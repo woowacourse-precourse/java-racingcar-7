@@ -10,16 +10,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ViewTest {
+class UserInteractionManagerTest {
     private final PrintStream originalOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
-    private View view;
+    private UserInteractionManager userInteractionManager;
 
     @BeforeEach
     void setUp() {
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        view = new View();
+        userInteractionManager = new UserInteractionManager();
     }
 
     @AfterEach
@@ -42,7 +42,7 @@ class ViewTest {
             attempts++;
         }
 
-        view.print(roundResult);
+        userInteractionManager.print(roundResult);
 
         String expectedOutput = "test1 : -\ntest2 : --\ntest3 : ---\n";
         assertEquals(expectedOutput, outputStreamCaptor.toString());
@@ -55,7 +55,7 @@ class ViewTest {
         winners.add("test2");
         winners.add("test3");
 
-        view.printFinalResult(winners);
+        userInteractionManager.printFinalResult(winners);
 
         String expectedOutput = "최종 우승자 : test1, test2, test3";
         assertEquals(expectedOutput, outputStreamCaptor.toString());

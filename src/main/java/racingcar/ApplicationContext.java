@@ -1,20 +1,20 @@
 package racingcar;
 
 public class ApplicationContext {
-    private final View view;
+    private final UserInteractionManager userInteractionManager;
     private final InputParser inputParser;
     private final Race race;
     private final Winner winner;
 
     public ApplicationContext() {
-        this.view = new View();
+        this.userInteractionManager = new UserInteractionManager();
         this.inputParser = new InputParser();
         this.race = new Race();
         this.winner = new Winner();
     }
 
-    public View getView() {
-        return view;
+    public UserInteractionManager getView() {
+        return userInteractionManager;
     }
 
     public InputParser getInputParser() {

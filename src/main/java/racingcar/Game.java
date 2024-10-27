@@ -3,14 +3,14 @@ package racingcar;
 import java.util.List;
 
 public class Game {
-    private final View view;
+    private final UserInteractionManager userInteractionManager;
     private final InputParser inputParser;
     private final Race race;
     private final Winner winner;
     private int attempts = 0;
 
     public Game(ApplicationContext applicationContext) {
-        this.view = applicationContext.getView();
+        this.userInteractionManager = applicationContext.getView();
         this.inputParser = applicationContext.getInputParser();
         this.race = applicationContext.getRace();
         this.winner = applicationContext.getWinner();
@@ -29,7 +29,7 @@ public class Game {
     }
 
     private void play() {
-        view.printResultHeader();
+        userInteractionManager.printResultHeader();
         for (int i = 0; i < attempts; i++) {
             playSingleRound();
         }
@@ -37,24 +37,24 @@ public class Game {
 
     private void end() {
         List<String> winners = winner.getBy(race.getResult());
-        view.printFinalResult(winners);
+        userInteractionManager.printFinalResult(winners);
     }
 
     private String[] getCarNames() {
-        view.printCarNamePrompt();
-        String input = view.readInput();
+        userInteractionManager.printCarNamePrompt();
+        String input = userInteractionManager.readInput();
         return inputParser.executeCarNames(input);
     }
 
     private int getAttempts() {
-        view.printAttemptsPrompt();
-        String input = view.readInput();
+        userInteractionManager.printAttemptsPrompt();
+        String input = userInteractionManager.readInput();
         return inputParser.executeAttempts(input);
     }
 
     private void playSingleRound() {
         race.moveCarsIfQualified();
-        view.print(race.getResult());
-        view.printNewLine();
+        userInteractionManager.print(race.getResult());
+        userInteractionManager.printNewLine();
     }
 }

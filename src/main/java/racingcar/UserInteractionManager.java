@@ -5,7 +5,7 @@ import static racingcar.Constants.*;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public class View {
+public class UserInteractionManager {
     public String readInput() {
         return Console.readLine();
     }
