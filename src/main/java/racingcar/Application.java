@@ -78,5 +78,10 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+
+        // 8. 시도할 횟수가 자연수인지 확인
+        if (tryNumber <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
