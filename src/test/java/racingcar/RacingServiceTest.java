@@ -20,7 +20,6 @@ public class RacingServiceTest {
         List<String> carNameList = new ArrayList<>();
         carNameList.add("test1");
         carNameList.add("test2");
-        carNameList.add("test3");
 
         racingService = new RacingService(carNameList);
         testCarList = racingService.getCarList();
@@ -41,6 +40,48 @@ public class RacingServiceTest {
         } else {
             Assertions.assertEquals(0L, testProgress.get(car1));
         }
+    }
+
+    @Test
+    void 우승자를_가려낸다() {
+
+        //given
+        racingService.moveForward();
+        racingService.moveForward();
+        racingService.moveForward();
+
+        Long winnerValue = Math.max(
+                testProgress.get(testCarList.get(0)),
+                testProgress.get(testCarList.get(1))
+        );
+
+        //when
+        List<String> winnerList = racingService.getWinner();
+
+        //then
+        for (String winner : winnerList) {
+            if (testCarList.get(0).getName().equals(winner)) {
+                Assertions.assertEquals(winnerValue, testProgress.get(testCarList.get(0)));
+            } else if (testCarList.get(1).getName().equals(winner)) {
+                Assertions.assertEquals(winnerValue, testProgress.get(testCarList.get(1)));
+            }
+
+        }
+
+        Assertions.assertAll(
+                () -> Assertions.assertFalse(winnerList.isEmpty()),
+                () -> {
+                    List<String> expectedWinners = testCarList.stream()
+                            .filter(car -> testProgress.get(car).equals(winnerValue))
+                            .map(Car::getName)
+                            .toList();
+
+                    Assertions.assertEquals(expectedWinners.size(), winnerList.size());
+                    Assertions.assertTrue(winnerList.containsAll(expectedWinners));
+                }
+        );
+
+
     }
 
 }
