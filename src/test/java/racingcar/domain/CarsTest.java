@@ -10,14 +10,14 @@ class CarsTest {
 
     @Test
     @DisplayName("초기 Cars 객체를 만든다.")
-    void makeOriginCars() {
+    void make() {
         //given
         List<String> carNames = List.of("sumin", "boye");
         List<Car> expectAllCarList = List.of(new Car("sumin", 0), new Car("boye", 0));
         Cars expectAllCar = new Cars(expectAllCarList);
 
         //when
-        Cars allCar = Cars.makeOriginCars(carNames);
+        Cars allCar = Cars.make(carNames);
 
         //then
         assertThat(allCar).isEqualTo(expectAllCar);

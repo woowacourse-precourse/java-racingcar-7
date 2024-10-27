@@ -7,10 +7,10 @@ public record Cars(
         List<Car> allCar
 ) {
 
-    public static Cars makeOriginCars(List<String> carNames) {
+    public static Cars make(List<String> carNames) {
         List<Car> allCar = new ArrayList<>();
         for (String name : carNames) {
-            allCar.add(Car.makeOriginCar(name));
+            allCar.add(Car.make(name));
         }
         return new Cars(allCar);
     }

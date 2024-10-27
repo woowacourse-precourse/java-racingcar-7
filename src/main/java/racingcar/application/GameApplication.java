@@ -29,7 +29,7 @@ public class GameApplication {
         printer.print("시도할 횟수는 몇 회인가요?");
         String gameNumber = reader.read();
 
-        Result result = racingApplication.race(Cars.makeOriginCars(carNames), GameNumber.findGameNumber(gameNumber));
+        Result result = racingApplication.race(Cars.make(carNames), GameNumber.findGameNumber(gameNumber));
         printer.printResultAfterGame(result);
     }
 }

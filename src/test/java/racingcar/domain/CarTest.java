@@ -26,13 +26,13 @@ class CarTest {
 
     @Test
     @DisplayName("이름에 따른 초기 Car 객체를 만든다.")
-    void makeOriginCar() {
+    void make() {
         //given
         String name = "boye";
         Car expectCar = new Car("boye", 0);
 
         //when
-        Car car = Car.makeOriginCar(name);
+        Car car = Car.make(name);
 
         //then
         assertThat(car).isEqualTo(expectCar);
@@ -40,10 +40,10 @@ class CarTest {
 
     @Test
     @DisplayName("이름의 예외사항이 있을 때 Car 객체를 만든다.")
-    void makeOriginCarWithException() {
+    void makeWithException() {
         //given
         String name = "OhHyunji";
 
-        Assertions.assertThatThrownBy(() -> Car.makeOriginCar(name)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> Car.make(name)).isInstanceOf(IllegalArgumentException.class);
     }
 }
