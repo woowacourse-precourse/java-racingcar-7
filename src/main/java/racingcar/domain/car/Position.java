@@ -12,4 +12,11 @@ public class Position {
         return new Position(START_POSITION);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void add() {
+        position++;
+    }
 }

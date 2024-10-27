@@ -1,7 +1,11 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.domain.car.dto.CarResultDto;
+import racingcar.domain.car.dto.CarsResultDto;
+import racingcar.domain.race.Race;
 
 public class Cars {
     private static final String SPLIT_DELIMITER = ",";
@@ -27,5 +31,13 @@ public class Cars {
         return Arrays.stream(carNames.split(SPLIT_DELIMITER))
                 .map(Car::of)
                 .toList();
+    }
+
+    public CarsResultDto race(Race race) {
+        List<CarResultDto> carResultDtos = new ArrayList<>();
+        for (Car car : cars) {
+            carResultDtos.add(race.move(car));
+        }
+        return new CarsResultDto(carResultDtos);
     }
 }

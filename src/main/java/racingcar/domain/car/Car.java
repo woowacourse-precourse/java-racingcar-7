@@ -15,6 +15,18 @@ public class Car {
         return new Car(name);
     }
 
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public void move() {
+        position.add();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

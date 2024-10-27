@@ -33,4 +33,11 @@ public class RaceCount {
         }
     }
 
+    public boolean hasCount() {
+        return raceCount > MIN_RACE_COUNT;
+    }
+
+    public void decrease() {
+        raceCount--;
+    }
 }
