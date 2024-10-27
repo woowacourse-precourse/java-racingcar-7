@@ -16,4 +16,8 @@ public class ConsoleIO {
         System.out.println(COUNT_INPUT_MSG);
         return Console.readLine();
     }
+
+    public void printResultMessage() {
+        System.out.println(OUTPUT_MSG);
+    }
 }
