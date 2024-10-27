@@ -28,11 +28,10 @@ public class Race {
     }
 
     public void updateCarDataByLap() {
-        int len = cars.getCarCount();
-        for (int i = 0; i < len; i++) {
+        for (Car car : cars.getCars()) {
             if (getRandom() >= FORWARD_THRESHOLD) {
-                cars.getCar(i).addMoveCount();
-                cars.getCar(i).updateMovementStatus(CarMovement.FORWARD);
+                car.addMoveCount();
+                car.updateMovementStatus(CarMovement.FORWARD);
             }
         }
     }
