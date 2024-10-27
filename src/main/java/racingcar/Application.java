@@ -3,6 +3,7 @@ package racingcar;
 import static racingcar.RacingConstants.CAR_START_POSITION;
 import static racingcar.RacingConstants.MAX_NUMBER;
 import static racingcar.RacingConstants.MIN_NUMBER;
+import static racingcar.ViewConstants.NAME_DELIMITER;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,9 @@ public class Application {
 
         String input = inputView.requestCarNames();
         inputValidator.validateCompetitor(input);
-        cars = Arrays.stream(input.split(",")).map(name -> new Car(name, CAR_START_POSITION)).toList();
+        String[] names = input.split(NAME_DELIMITER);
+        inputValidator.validateDuplicateName(names);
+        cars = Arrays.stream(names).map(name -> new Car(name, CAR_START_POSITION)).toList();
         totalAttempts = Integer.parseInt(inputView.requestTotalAttempts());
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
