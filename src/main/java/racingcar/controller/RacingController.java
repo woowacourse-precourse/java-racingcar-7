@@ -3,6 +3,7 @@ package racingcar.controller;
 import static racingcar.view.OutputView.*;
 import static racingcar.view.RaceMessage.*;
 import static racingcar.view.InputView.*;
+import static racingcar.validation.InputValidator.*;
 
 import racingcar.domain.Race;
 
@@ -20,23 +21,20 @@ public class RacingController {
     }
 
     private void setRace() {
-        String carName = printInputMessage(CAR_NAME_INPUT.getMessage());
+        String carName = requestInput(CAR_NAME_INPUT.getMessage());
         race.setCars(carName);
 
-        try {
-            race.setRounds(Integer.parseInt(printInputMessage(NUMBER_OF_RACE_INPUT.getMessage())));
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("2,147,483,647 이하의 양수를 입력해주세요.");
-        }
+        String roundsInput = requestInput(NUMBER_OF_RACE_INPUT.getMessage());
+        race.setRounds(validateRounds(roundsInput));
     }
 
     private void startRace() {
-        printMessage(PRINT_RACE_RESULT.getMessage());
+        print(PRINT_RACE_RESULT.getMessage());
 
         int rounds = race.getRounds();
         while (rounds-- > 0) {
             race.moveCars();
-            printMessage(race.getRaceResult() + "\n");
+            newLinePrint(race.getRaceResult());
         }
     }
 

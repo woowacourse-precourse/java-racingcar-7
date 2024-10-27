@@ -1,13 +1,13 @@
 package racingcar.domain;
 
-import static racingcar.domain.InputValidator.*;
+import static racingcar.validation.InputValidator.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
     private final List<Car> cars = new ArrayList<>();
-    private int rounds = 0;
+    private int rounds;
 
     public void setCars(String input) {
         String[] carName = splitInput(input);
@@ -20,8 +20,6 @@ public class Race {
     }
 
     public void setRounds(int rounds) {
-        validateRounds(rounds);
-
         this.rounds = rounds;
     }
 
@@ -40,6 +38,7 @@ public class Race {
         }
     }
 
+    // 실행 횟수 별 경주의 결과를 반환하는 메서드
     public String getRaceResult() {
         StringBuilder roundResult = new StringBuilder();
 
@@ -64,9 +63,6 @@ public class Race {
     }
 
     public int getMaxPosition() {
-        List<Car> sortedCars = new ArrayList<>(cars);
-        sortedCars.sort((o1, o2) -> Integer.compare(o2.getPosition(), o1.getPosition()));
-
-        return sortedCars.getFirst().getPosition();
+        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
     }
 }
