@@ -12,11 +12,15 @@ public class GameService {
         this.cars = cars;
     }
 
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
     private int getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow(IllegalStateException::new);
+                .orElse(0);
     }
 
     public ArrayList<Car> getWinners() {
