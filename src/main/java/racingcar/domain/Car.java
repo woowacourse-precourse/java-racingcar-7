@@ -16,6 +16,9 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 최대 5자까지만 입력 가능합니다.");
         }
+        if(name.isBlank()){
+            throw new IllegalArgumentException("자동차 이름은 빈칸일 수 없습니다.");
+        }
     }
 
     public void setDistance(int randomNumber) {
