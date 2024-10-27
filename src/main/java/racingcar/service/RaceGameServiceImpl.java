@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.Car;
+import racingcar.domain.Referee;
+import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.parser.StringParser;
 
 public class RaceGameServiceImpl implements RaceGameService{
@@ -17,4 +19,15 @@ public class RaceGameServiceImpl implements RaceGameService{
         }
         return racers;
     }
+
+    @Override
+    public void progressRound(List<Car> cars, Referee referee) {
+        for (Car car : cars){
+            if(referee.judgeRacerCanMove()) {
+                car.moveFoward();
+            }
+        }
+    }
+
+
 }
