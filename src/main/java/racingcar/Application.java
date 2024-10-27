@@ -7,7 +7,7 @@ public class Application {
     private static final String COUNT_INPUTMESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public static void main(String[] args) {
-        String carNames = getCarNames();
+        String[] carNames = getCarNames();
         int count = getCount();
 
 
@@ -15,11 +15,10 @@ public class Application {
 
     private static int getCount() {
         System.out.println(COUNT_INPUTMESSAGE);
-        String CountInputValue = Console.readLine();
-        return validateCountInputValue(CountInputValue);
+        String countInputValue = Console.readLine();
+        return validateCountInputValue(countInputValue);
     }
 
-    //count 숫자 검증 메서드
     private static int validateCountInputValue(String CountInputValue) {
         try {
             int count = Integer.parseInt(CountInputValue);
@@ -32,18 +31,32 @@ public class Application {
         }
     }
 
-    private static String getCarNames() {
+    private static String[] getCarNames() {
         System.out.println(CARNAMES_INPUTMESSAGE);
         String carNamesValue = Console.readLine();
-        //차이름이 5자 이하인지 검사
-        return validateCarNamesInputValue(carNamesValue);
+        return splitAndValidateCarNames(carNamesValue);
     }
 
-    private static String validateCarNamesInputValue(String carNamesValue) {
-        try {
-            if (carNamesValue.isEmpty()) {
-                throw new IllegalArgumentException()
+    private static void validateCarNames(String[] carNamesArray) {
+        for (int i = 0; i < carNamesArray.length; i++) {
+            carNamesArray[i] = carNamesArray[i].trim(); // 공백 제거 후 배열에 다시 할당
+            String name = carNamesArray[i];
+            if (name.isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 빈 값이 될 수 없습니다.");
+            }
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력해주세요");
             }
         }
     }
+
+    private static String[] splitAndValidateCarNames(String carNamesValue) {
+        if (carNamesValue == null || carNamesValue.isEmpty()) {
+            throw new IllegalArgumentException("반드시 자동차 이름을 입력하셔야 합니다");
+        }
+        String[] carNamesArray = carNamesValue.split(",");
+        validateCarNames(carNamesArray);
+        return carNamesArray;
+    }
+
 }
