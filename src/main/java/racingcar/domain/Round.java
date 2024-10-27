@@ -10,10 +10,6 @@ public class Round {
         round = INITIAL_ROUND;
     }
 
-    public int getRound() {
-        return round;
-    }
-
     public void updateRound(int round) {
         this.round = round;
         validateInteger();
@@ -23,5 +19,9 @@ public class Round {
         if (round < MINIMUM_ROUND) {
             throw new IllegalArgumentException();
         }
+    }
+    
+    public int getRound() {
+        return round;
     }
 }

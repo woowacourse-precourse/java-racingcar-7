@@ -12,13 +12,14 @@ public class Name {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
     private void validateNaming(String carName) {
         if (carName.isEmpty() || carName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
+    
+    public String getName() {
+        return name;
+    }
+
 }

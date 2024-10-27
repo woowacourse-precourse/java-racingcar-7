@@ -17,10 +17,6 @@ public class Car {
         position = INITIAL_POSITION;
     }
 
-    public void incrementPosition() {
-        position += 1;
-    }
-
     public void moveForward() {
         int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
@@ -28,6 +24,11 @@ public class Car {
             incrementPosition();
         }
     }
+
+    public void incrementPosition() {
+        position += 1;
+    }
+
 
     public String getName() {
         return name.getName();
