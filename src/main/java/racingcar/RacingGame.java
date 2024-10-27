@@ -26,6 +26,16 @@ class RacingGame {
         return cars;
     }
 
+    public RoundStatus getRoundStatus() {
+        List<CarStatus> carStatusList = cars.stream()
+                .map(it -> new CarStatus(
+                        it.getName(),
+                        it.getPosition(),
+                        round))
+                .toList();
+        return new RoundStatus(round, carStatusList);
+    }
+
     public String finalResult() {
         int maxPosition = 0;
         String winner = "";
@@ -38,15 +48,5 @@ class RacingGame {
             }
         }
         return winner;
-    }
-
-    public RoundStatus getRoundStatus() {
-        List<CarStatus> carStatusList = cars.stream()
-                .map(it -> new CarStatus(
-                        it.getName(),
-                        it.getPosition(),
-                        round))
-                .toList();
-        return new RoundStatus(round, carStatusList);
     }
 }

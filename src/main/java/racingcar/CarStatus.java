@@ -5,6 +5,7 @@ public class CarStatus {
     private final int position;
     private final int round;
 
+
     public CarStatus(
             String name,
             int position,
@@ -21,9 +22,5 @@ public class CarStatus {
 
     public int getPosition() {
         return position;
-    }
-
-    public int getRound() {
-        return round;
     }
 }

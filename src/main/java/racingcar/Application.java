@@ -27,13 +27,16 @@ public class Application {
         List<String> carNames = Input.inputCarNames();
         int round = Input.inputRound();
 
-        RacingGame racingGame = new RacingGame(carNames);    
+        RacingGame racingGame = new RacingGame(carNames);
+
         // 레이싱 게임 생성 및 플레이
         for (int i = 0; i < round; i++) {
             racingGame.playNextRound();
             RoundStatus roundStatus = racingGame.getRoundStatus();
             Output.showRound(roundStatus);
         }
-        Output.showWinner(racingGame.finalResult());
+
+        WinnerStatus winnerStatus = new WinnerStatus(racingGame.getRoundStatus().getCarStatusList());
+        Output.showWinner(winnerStatus);
     }
 }

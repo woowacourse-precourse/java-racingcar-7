@@ -14,7 +14,7 @@ public class RoundStatus {
         this.round = round;
         this.carStatusList = carStatusList;
 
-        var testRecord = new CarStatusRecord("a", 1, 1);
+        var testRecord = new CarStatusRecord("a", 5, 1);
         testRecord.name();
         testRecord.round();
         testRecord.position();

@@ -21,11 +21,7 @@ class Car {
       position++;
     }
   }
-  
-  public void showPosition() {
-    System.out.println(name + " : " + "-".repeat(position));
-  }
-  
+
   public String getName() {
     return name;
   }
@@ -33,5 +29,4 @@ class Car {
   public int getPosition() {
     return position;
   }
-  
 }
