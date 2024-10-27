@@ -44,7 +44,13 @@ public class Application {
             System.out.println();
         }
 
-        System.out.println("end");
+        System.out.print("최종 우승자 : ");
+        List<Car> winningCars = Car.getMaxByForward(cars);
+        for(int i=0; i< winningCars.size(); i++){
+            Car car = winningCars.get(i);
+            if(i == 0) car.printCarName();
+            else car.printCarNameWithComma();
+        }
     }
 
 }
