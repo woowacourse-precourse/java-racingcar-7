@@ -10,7 +10,7 @@ public class ValidatorTest {
         String validInput = "povi,hhj,java";
         String invalidInput = "povi,hhj.java";
         String invalidInput2 = "hohoho,hhj,java";
-        // hohoho -> 6자 이름
+        // hohoho -> 6 자 이름
 
         // 유효한 입력
         Assertions.assertThatCode(() -> InputValidator.nameValidator(validInput))
