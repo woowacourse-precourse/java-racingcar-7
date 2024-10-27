@@ -6,6 +6,9 @@ public class Car {
     String carName;
     int space = 0;
     Car(String carName){
+        if(carName.length()>=5){
+            throw new IllegalArgumentException();
+        }
         this.carName=carName;
     }
     public void randomRacing(){
