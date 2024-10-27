@@ -36,6 +36,7 @@ public class Controller {
     private Long readyTimes() {
         outputView.print("시도할 횟수는 몇 회인가요?");
         final Long times = inputView.longInput();
+        validator.validateTimes(times);
         outputView.print("");
         return times;
     }

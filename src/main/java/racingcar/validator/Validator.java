@@ -23,4 +23,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateTimes(Long times) {
+        if (times <= 0L) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
