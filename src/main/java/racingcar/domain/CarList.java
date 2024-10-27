@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +51,7 @@ public class CarList {
         carNamesValidator.add(carName);
     }
 
-    public Car getCar(int index) {
-        return cars.get(index);
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

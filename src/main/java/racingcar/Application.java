@@ -9,5 +9,6 @@ public class Application {
         // TODO: 프로그램 구현
         InputRequest inputRequest = InputView.readLine();
         CarList carList = CarList.from(inputRequest.carNames());
+
     }
 }
