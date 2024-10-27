@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    private final String name;
+    private final Name name2;
     private Position position;
 
     public Car(String name) {
@@ -14,13 +14,11 @@ public class Car {
     }
 
     public Car(String name, Position position) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException(String.format("자동차 이름은 null 이거나 빈 칸일 수 없습니다. 입력된 이름: (%s)", name));
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(String.format("자동차 이름은 쉼표(,)를 기준으로 5글자이하로만 가능합니다. 입력된 이름: (%s)", name));
-        }
-        this.name = name.trim();
+        this(new Name(name), position);
+    }
+
+    public Car(Name name, Position position) {
+        this.name2 = name;
         this.position = position;
     }
 
@@ -35,7 +33,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name2.getValue();
     }
 
     public Position getPosition() {
