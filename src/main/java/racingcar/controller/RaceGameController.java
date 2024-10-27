@@ -1,0 +1,23 @@
+package racingcar.controller;
+
+import racingcar.domain.Car;
+import racingcar.domain.InputValidator;
+import racingcar.view.InputView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RaceGameController {
+
+    /**
+     * 자동차 이름들을 Car 객체 리스트로 변환
+     */
+    public List<Car> convertCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
+    }
+}
