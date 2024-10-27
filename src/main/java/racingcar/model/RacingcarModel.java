@@ -9,6 +9,8 @@ import java.util.List;
 
 public class RacingcarModel {
 
+    private static final int ADVANCE = 4;
+
     private List<Car> cars = new ArrayList<>();
 
     // 자동차 이름 초기화 (입력받은 자동차 이름으로 빈 상태 초기화)
@@ -45,7 +47,7 @@ public class RacingcarModel {
 
     // 랜덤 값이 4 이상인지 확인하여 전진할지 여부를 결정
     private boolean shouldAdvance(int randomValue) {
-        return randomValue >= 4;
+        return randomValue >= ADVANCE;
     }
 
     // 자동차 전진 (자동차의 상태 업데이트)

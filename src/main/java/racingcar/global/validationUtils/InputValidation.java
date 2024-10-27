@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class InputValidation {
 
     private static final String REGEX = "[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]";
+    private static final Integer LIMITS = 5;
 
     public static void checkDuplicate(String carName) {
         Set<String> duplicateCheck = new HashSet<>();
@@ -26,11 +27,12 @@ public class InputValidation {
 
 
     public static void checkLength(String carName) {
-        if (carName.length() > 5) { // 길이가 5 초과인 경우
+        if (carName.length() > LIMITS) { // 길이가 5 초과인 경우
             System.out.println("차 이름 글자 수 5 이상 : " + carName.length());
             throw new IllegalArgumentException("자동차 이름이 5자가 넘습니다 : " + carName + " , " + carName.length());
         }
     }
+
 
     public static void  checkParseInt(int number) {
         if (number < 0) {
