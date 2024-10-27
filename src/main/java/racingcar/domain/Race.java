@@ -31,15 +31,13 @@ public class Race {
         return cars;
     }
 
-
     public void start() {
         System.out.println(OutputMessages.RACE_START);
         for (int i = 0; i < attemptCount; i++) {
             for (Car car : cars) {
-                System.out.println(car.getName());
                 car.move(movementStrategy.shouldMove());
             }
-            System.out.print(RaceOutput.getProgress(this) + '\n');
+            System.out.print(RaceOutput.getProgress(this)+OutputMessages.NEW_LINE);
         }
     }
 

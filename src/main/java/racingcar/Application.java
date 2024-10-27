@@ -1,42 +1,34 @@
 package racingcar;
 
 import racingcar.domain.Race;
-import racingcar.strategy.move.MovementStrategy;
 import racingcar.strategy.move.RandomMovementStrategy;
 import racingcar.strategy.winner.MaxPositionWinnerStrategy;
-import racingcar.strategy.winner.WinnerStrategy;
 import racingcar.view.input.InputHandler;
-import racingcar.view.output.RaceResultOutput;
+import racingcar.view.output.OutputHandler;
 
 import java.util.Set;
 
 public class Application {
     private final InputHandler inputHandler;
-    private final MovementStrategy movementStrategy;
-    private final WinnerStrategy winnerStrategy;
+    private final OutputHandler outputHandler;
 
-    public Application(InputHandler inputHandler, MovementStrategy movementStrategy, WinnerStrategy winnerStrategy) {
+    public Application(InputHandler inputHandler, OutputHandler outputHandler) {
         this.inputHandler = inputHandler;
-        this.movementStrategy = movementStrategy;
-        this.winnerStrategy = winnerStrategy;
+        this.outputHandler = outputHandler;
     }
 
-    public static void main(String[] args) {
-        InputHandler inputHandler = new InputHandler();
-        MovementStrategy movementStrategy = new RandomMovementStrategy();
-        WinnerStrategy winnerStrategy = new MaxPositionWinnerStrategy();
-
-        Application application = new Application(inputHandler, movementStrategy, winnerStrategy);
-        application.run();
-    }
-
-    private void run() {
+    public void run() {
         Set<String> carNames = inputHandler.inputCarNames();
         int attemptCount = inputHandler.inputAttemptCount();
 
-        Race race = new Race(carNames, attemptCount, movementStrategy, winnerStrategy);
+        Race race = new Race(carNames, attemptCount, new RandomMovementStrategy(), new MaxPositionWinnerStrategy());
         race.start();
 
-        System.out.println(RaceResultOutput.printWinners(race.getWinners()));
+        outputHandler.printWinners(race);
+    }
+
+    public static void main(String[] args) {
+        Application app = new Application(new InputHandler(), new OutputHandler());
+        app.run();
     }
 }
