@@ -17,4 +17,16 @@ class InputControllerTest {
         Assertions.assertThat(inputCarNames)
                 .isEqualTo(new InputCarNames(input));
     }
+
+    @Test
+    void 게임_라운드_입력() {
+        final String input = "count";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        final InputController inputController = new InputController(new InputConsole());
+        final InputGameRoundCount inputRoundCount = inputController.getInputRoundCount();
+
+        Assertions.assertThat(inputRoundCount)
+                .isEqualTo(new InputGameRoundCount(input));
+    }
 }

@@ -11,4 +11,8 @@ public class InputController {
     public InputCarNames getInputCarNames() {
         return new InputCarNames(inputConsole.readLine());
     }
+
+    public InputGameRoundCount getInputRoundCount() {
+        return new InputGameRoundCount(inputConsole.readLine());
+    }
 }
