@@ -13,7 +13,7 @@ public class OutputView {
 
     public void printRaceProcess(List<CarLocation> raceResult) {
         raceResult.forEach(carLocation ->
-                System.out.printf((OutputMessage.MOVEMENT_STATE_FORMAT) + "%n", carLocation.name(),
+                System.out.printf((OutputMessage.MOVEMENT_STATE_FORMAT), carLocation.name(),
                         "-".repeat(carLocation.location()))
         );
         printNewLine();
