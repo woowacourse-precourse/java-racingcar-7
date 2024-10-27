@@ -5,23 +5,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Input {
+    private static final String DELIMITER = ",";
 
-    public String getCarName(){
+    public List<String> getCarName(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        isValidCarName(splitCarName(input));
-        return input;
+        List<String> carName = splitCarName(input);
+        isValidCarName(carName);
+        return carName;
     }
 
     public int getRound() {
         System.out.println("시도할 회수는 몇회인가요?");
         int input = Integer.parseInt(Console.readLine());
+        isValidRound(input);
         return input;
     }
 
     //자동차 이름 쉼표로 구분
     public List<String> splitCarName(String carInput) {
-        List<String> carNames = Arrays.asList(carInput.split(","));
+        List<String> carNames = Arrays.asList(carInput.split(DELIMITER));
         return carNames;
     }
 
