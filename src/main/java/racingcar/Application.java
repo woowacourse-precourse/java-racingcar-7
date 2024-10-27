@@ -14,5 +14,6 @@ public class Application {
 
         RacingGame game = new RacingGame(cars, runLimit);
         game.run();
+        game.printWinners();
     }
 }
