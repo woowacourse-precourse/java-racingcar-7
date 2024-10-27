@@ -5,7 +5,7 @@ public class InputValidator {
 
     public static void nameValidator(String input) {
         if (!input.matches(NAME_PATTERN)) {
-            throw new IllegalArgumentException("이름 입력이 잘못되었습니다.");
+            throw new IllegalArgumentException("자동차 이름 입력이 잘못되었습니다.");
         }
     }
 
