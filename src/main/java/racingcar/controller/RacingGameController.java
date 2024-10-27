@@ -3,11 +3,11 @@ package racingcar.controller;
 import racingcar.domain.RacingCars;
 import racingcar.domain.TrialCount;
 import racingcar.util.CreatingRacingCar;
-import racingcar.view.InformationView;
+import racingcar.view.OutputView;
 import racingcar.view.InputView;
 
 public class RacingGameController {
-    private InformationView informationView = new InformationView();
+    private OutputView outputView = new OutputView();
     private InputView inputView = new InputView();
 
     public void playGame() {
@@ -16,13 +16,13 @@ public class RacingGameController {
     }
 
     private RacingCars createRacingCars() {
-        informationView.printRequestCarNames();
+        outputView.printRequestCarNames();
         String[] carNames = inputView.inputCarNames();
         return CreatingRacingCar.createCars(carNames);
     }
 
     private TrialCount getTrialCount() {
-        informationView.printRequestTryCount();
+        outputView.printRequestTryCount();
         String trialCount = inputView.inputTrialCount();
         return new TrialCount(trialCount);
     }
