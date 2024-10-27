@@ -1,62 +1,25 @@
 package racingcar.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import racingcar.domain.RacingCar;
+
 import java.util.List;
-import java.util.Objects;
 
 public class RacingCarService {
 
-    int MAX_LENGTH = 5;
-    Number validateRaceCount;
-    List<String> rawNames, validatedNames;
+    List<RacingCar> racingCars;
 
     public RacingCarService() {
-        this.validatedNames = new ArrayList<>();
-        this.rawNames = new ArrayList<>();
     }
 
-    public void validateName(String names) {
-        rawNames = Arrays.stream(names.split(",")).toList();
-
-        rawNames.forEach(rawName -> {
-            String trimmedName = rawName.trim();
-            // 공백처리
-            if (trimmedName.isEmpty()) {
-                throw new IllegalArgumentException("이름이 공백입니다.");
-            }
-
-            // 길이 제한
-            if (trimmedName.length() > MAX_LENGTH) {
-                throw new IllegalArgumentException("길이가 5이하를 만족하지 않습니다.");
-            }
-
-            // 유효한 이름
-            validatedNames.add(trimmedName);
-        });
+    public void setupRaceCars(List<String> racingCarNames) {
+        racingCars = racingCarNames.stream().map(RacingCar::new).toList();
     }
 
-    public void validateRaceCount(String raceCount) {
-        String trimmedRaceCount = raceCount.trim();
-
-        // 공백 입력
-        if (trimmedRaceCount.isEmpty()) {
-            throw new IllegalArgumentException("입력이 비어 있습니다.");
-        }
-
-        try {
-            int rawRaceCount = Integer.parseInt(trimmedRaceCount);
-
-            if (rawRaceCount <= 0) {
-                throw new IllegalArgumentException();
-            }
-            validateRaceCount = rawRaceCount;
-        } catch (Exception e) {
-            // 음수 확인, 숫자로 변경 할 수 없을 경우
-            throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
-        }
-
+    public void runRound() {
+        racingCars.forEach(RacingCar::move);
     }
 
-
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
 }
