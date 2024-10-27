@@ -16,11 +16,11 @@ class InputViewTest {
     @Test
     @DisplayName("자동차 이름 최소 1개 이상")
     public void minimumOneCarNameTest() {
-        String cars = ",";
+        String cars = "pobi";
         String[] splitCars = cars.split(",");
         Assertions.assertThatThrownBy(() -> InputView.testValidateCars(splitCars))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름을 최소 1개 이상 입력해야 합니다.");
+                .hasMessageContaining("자동차는 최소 2대 이상 입력해야 합니다.");
     }
 
     @Test
