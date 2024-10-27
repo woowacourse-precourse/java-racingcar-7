@@ -42,8 +42,9 @@ public class RaceController {
     }
 
     public void raceStartById(int id) {
+        StringBuilder output = new StringBuilder();
         Race race = raceService.findById(id);
-        raceService.displayCarMovementByLap(race);
-        raceService.displayWinner(race);
+        raceService.displayCarMovementByLap(race,output);
+        System.out.println(raceService.displayWinner(race,output));
     }
 }

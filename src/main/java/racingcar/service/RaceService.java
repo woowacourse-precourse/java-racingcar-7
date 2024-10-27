@@ -1,7 +1,5 @@
 package racingcar.service;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -34,8 +32,6 @@ public class RaceService {
     }
     //------------------------//
 
-    private final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
     public Race createRace(int lap) {
         List<Car> carList = carService.findAll();
         Cars cars = new Cars(carList);
@@ -55,35 +51,39 @@ public class RaceService {
         LapValidator.run(lap);
     }
 
-    public void displayCarMovementByLap(Race race) {
+    public void displayCarMovementByLap(Race race,StringBuilder output) {
         try {
-            bw.newLine();
-            bw.write("실행 결과");
+            output.append("\n실행 결과");
             for (int i = 0; i < race.getLap(); i++) {
                 race.updateCarDataByLap();
-                outputView.displayResultByLap(race,bw);
+                outputView.displayResultByLap(race,output);
             }
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void displayWinner(Race race) {
+    public String displayWinner(Race race, StringBuilder output) {
         Cars cars = race.getCars();
-        int max = 0;
+        int max = getMaxCarMovement(cars);
 
         try {
-            for (Car car : cars.getCars()) {
-                int carMovement = car.getMoveCount();
-                if (max < car.getMoveCount()) {
-                    max = carMovement;
-                }
-            }
-            outputView.displayWinner(max,cars,bw);
-            bw.flush();
-            bw.close();
+            outputView.displayWinner(max,cars,output);
+            return output.toString();
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private int getMaxCarMovement(Cars cars) {
+        int max = 0;
+
+        for (Car car : cars.getCars()) {
+            int carMovement = car.getMoveCount();
+            if (max < car.getMoveCount()) {
+                max = carMovement;
+            }
+        }
+        return max;
     }
 }
