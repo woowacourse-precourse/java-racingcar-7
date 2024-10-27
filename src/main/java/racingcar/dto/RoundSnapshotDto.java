@@ -1,11 +1,12 @@
 package racingcar.dto;
 
 import java.util.List;
+import racingcar.model.car.CarSnapshot;
 
 public class RoundSnapshotDto {
     private final List<CarSnapshotDto> carSnapshotDtos;
 
-    public RoundSnapshotDto(List<racingcar.model.car.CarSnapshot> carSnapshots) {
+    public RoundSnapshotDto(List<CarSnapshot> carSnapshots) {
         this.carSnapshotDtos = carSnapshots.stream()
                 .map(carStatus -> new CarSnapshotDto(carStatus.name(), carStatus.position()))
                 .toList();
