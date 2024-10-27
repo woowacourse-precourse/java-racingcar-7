@@ -5,10 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Stream;
 import racingcar.service.constant.ExpressionFormat;
+import racingcar.service.constant.RacingRules;
 
 public class Validation {
 
-    private static final Long limitLength = 5L;
+    private static final Long limitLength = RacingRules.CAR_NAME_LENGTH_LIMIT.status();
 
     public static String carNames(String carNamesInput) {
         vacantInput(carNamesInput);
