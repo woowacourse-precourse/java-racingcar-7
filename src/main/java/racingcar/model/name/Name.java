@@ -14,7 +14,7 @@ public class Name {
     }
 
     private String isValid(String name){
-        if(this.name.isBlank()) {
+        if(name.isBlank()) {
             throw new IllegalArgumentException(ERROR_EMPTY_NAME_MESSAGE);
         }
         if(name.length() > NAME_MAX_LENGTH) {

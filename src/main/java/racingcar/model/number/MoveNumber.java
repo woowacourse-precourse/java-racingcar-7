@@ -12,9 +12,10 @@ public class MoveNumber {
     }
 
     public void move(int number) {
-        if(number >= FRONT_MOVE_NUMBER) {
-            this.number += 1;
+        if(number < FRONT_MOVE_NUMBER) {
+            return ;
         }
+        this.number += 1;
     }
 
     public int getNumber() {

@@ -21,6 +21,13 @@ public class CarsTest {
     }
 
     @Test
+    void 자동차_이름_에러_테스트() {
+        assertThatThrownBy(() -> new Cars("phobi"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @Test
     void 자동차_이동_테스트() {
         Cars cars = new Cars("phobi,leo,luna");
 
