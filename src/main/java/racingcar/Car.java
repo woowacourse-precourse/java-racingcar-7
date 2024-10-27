@@ -27,9 +27,14 @@ public class Car {
         }
     }
 
+    public void printState() {
+        System.out.println(this.name + " : " + "-".repeat(this.location));
+    }
+
     public String getName() {
         return name;
     }
+
     public int getLocation() {
         return location;
     }

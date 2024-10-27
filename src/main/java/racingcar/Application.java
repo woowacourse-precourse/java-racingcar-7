@@ -11,6 +11,7 @@ public class Application {
 
         for (int i = 0; i < count; i++) {
             cars.race(randomNumberGenerator);
+            System.out.println("\n");
         }
     }
 

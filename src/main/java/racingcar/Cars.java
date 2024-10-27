@@ -25,6 +25,7 @@ public class Cars {
     public void race(IntegerGenerator generator) {
         for (Car car : this.cars) {
             car.moveForward(generator.generate());
+            car.printState();
         }
     }
 
