@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.game.RacingGame;
 import racingcar.view.InputView;
 
 import java.util.List;
@@ -9,5 +12,8 @@ public class Application {
         // TODO: 프로그램 구현
         List<String> carList = InputView.inputCarList();
         Integer tryRounds = InputView.inputTryRounds();
+
+        RacingGame racingGame = new RacingGame(carList, tryRounds);
+        racingGame.run();
     }
 }
