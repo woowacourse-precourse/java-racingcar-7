@@ -7,6 +7,7 @@ import static constant.Constants.RACING_NUMBER_MINIMUM;
 import constant.Constants;
 
 public class PlayerMoving {
+
     public static boolean isMoveAble(){
         return (randomNumber() >= Constants.MOVING_CRITERIA);
     }

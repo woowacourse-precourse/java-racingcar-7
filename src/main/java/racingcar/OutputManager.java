@@ -2,7 +2,6 @@ package racingcar;
 
 import constant.Constants;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class OutputManager {
     public static void printCurrentResult(ArrayList<RacingCar> group){
@@ -18,12 +17,7 @@ public class OutputManager {
 
     public static void printRaceResult(ArrayList<String> winner){
         System.out.print(Constants.RACING_WINNER_MESSAGE);
-        Iterator<String> iterator = winner.iterator();
-        while(iterator.hasNext()){
-            System.out.print(iterator.next());
-            if(iterator.hasNext()){
-                System.out.println(", ");
-            }
-        }
+        //join 메서드 각 원소를 ", "로 합쳐서 출력 가능
+        System.out.println(String.join(Constants.CONTENT_DELIMITER +" ",winner));
     }
 }
