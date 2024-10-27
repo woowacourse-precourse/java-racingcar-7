@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.Service.UserInputService;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,6 +95,7 @@ public class RacingRace {
 
     public void racingRace(){
         String[] carNames = inputMessage.inputCarNameReturnSplit(",");
+        UserInputService.racingCarUserInput(carNames);
         String tryRacingRaces = inputMessage.inputNumberOfTries();
         startingCarNumber(carNames);
         NumberOfRaces(tryRacingRaces, carNames);
