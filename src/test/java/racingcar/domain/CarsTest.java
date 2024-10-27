@@ -32,7 +32,7 @@ public class CarsTest {
         Car car4 = new Car("monsil", 2);
 
         List<Car> carList = Arrays.asList(car1, car2, car3, car4);
-        List<Car> winnerList = Arrays.asList(car1, car2);
+        List<String> winnerList = Arrays.asList(car1.getName(), car2.getName());
         Cars cars = new Cars(carList);
 
         assertThat(cars.findWinner()).isEqualTo(winnerList);

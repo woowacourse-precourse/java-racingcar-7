@@ -11,13 +11,13 @@ public class Cars {
         this.cars = carList;
     }
 
-    public List<Car> findWinner() {
+    public List<String> findWinner() {
         int maxLocation = getMaxLocation();
-        List<Car> winnerList = new ArrayList<>();
+        List<String> winnerList = new ArrayList<>();
 
         for (Car car : cars) {
             if (car.getLocation() == maxLocation) {
-                winnerList.add(car);
+                winnerList.add(car.getName());
             }
         }
 
