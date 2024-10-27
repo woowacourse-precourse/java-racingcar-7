@@ -39,20 +39,20 @@ class ApplicationTest extends NsTest {
         String simulatedInput = "pobi,woni,jun\n5\n";
         System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
 
-        RaceInput result = Application.getInput();
+        RaceInput result = Application.getUserInput();
         assertEquals("pobi,woni,jun", result.getCarNames());
         assertEquals(5, result.getTotalAttempts());
     }
 
     @Test
-    public void 빈_자동차이름_입력_테스트() {
+        public void 빈_자동차이름_입력_테스트() {
         String simulatedInput = "\n5\n";
         System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.getInput();
+            Application.getUserInput();
         });
-        assertEquals("자동차 이름과 시도 횟수는 비어있을 수 없습니다.", exception.getMessage());
+        assertEquals("자동차 이름은 비어있을 수 없습니다.", exception.getMessage());
 
     }
 
@@ -62,9 +62,9 @@ class ApplicationTest extends NsTest {
         System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.getInput();
+            Application.getUserInput();
         });
-        assertEquals("자동차 이름과 시도 횟수는 비어있을 수 없습니다.", exception.getMessage());
+        assertEquals("시도 횟수는 비어있을 수 없습니다.", exception.getMessage());
     }
 
     @Test
@@ -73,7 +73,7 @@ class ApplicationTest extends NsTest {
         System.setIn(new java.io.ByteArrayInputStream(simulatedInput.getBytes()));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.getInput();
+            Application.getUserInput();
         });
         assertEquals("시도 횟수는 0보다 작을 수 없습니다.", exception.getMessage());
     }
@@ -102,7 +102,7 @@ class ApplicationTest extends NsTest {
         String[] carNamesList = {"pobiii","","jun"};
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.validateCarNames(carNamesList);
+            Application.validateCarNamesList(carNamesList);
         });
         assertEquals("자동차 이름은 5자 이하이어야 합니다.", exception.getMessage());
     }
@@ -113,7 +113,7 @@ class ApplicationTest extends NsTest {
         String[] carNamesList = {"pobi","","jun"};
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Application.validateCarNames(carNamesList);
+            Application.validateCarNamesList(carNamesList);
         });
         assertEquals("자동차 이름이 유효하지 않습니다.", exception.getMessage());
     }

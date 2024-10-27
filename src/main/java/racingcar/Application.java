@@ -3,19 +3,19 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 
 public class Application {
     public static void main(String[] args) {
-        RaceInput input = getInput();
+
+        RaceInput input = getUserInput();
 
         String carNames = input.getCarNames();
         int totalAttempts = input.getTotalAttempts();
 
         String[] carNamesList = splitCarNames(carNames);
 
-        validateCarNames(carNamesList);
+        validateCarNamesList(carNamesList);
 
         List<Car> cars = createCars(carNamesList);
 
@@ -25,25 +25,46 @@ public class Application {
         RaceOutput.displayWinners(cars);
     }
 
-    public static RaceInput getInput() {
-        try {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            String carNames = Console.readLine();
+    public static RaceInput getUserInput() {
+        String carNames = getCarNamesInput();
+        int totalAttempts = getAttemptsInput();
+        return new RaceInput(carNames, totalAttempts);
+    }
 
-            System.out.println("시도할 횟수는 몇 회인가요?");
-            String inputAttempts = Console.readLine();
+    private static String getCarNamesInput() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String carNames = Console.readLine();
 
-            int totalAttempts = Integer.parseInt(inputAttempts.trim());
+        validateInputCarNames(carNames);
 
-            if (totalAttempts < 0) {
-                throw new IllegalArgumentException("시도 횟수는 0보다 작을 수 없습니다.");
-            }
+        return carNames;
+    }
 
-            return new RaceInput(carNames, totalAttempts);
+    private static int getAttemptsInput() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputAttempts = Console.readLine();
+
+        return validateInputAttempts(inputAttempts);
+    }
+
+    private static void validateInputCarNames(String carNames) {
+        if (carNames == null || carNames.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
-        catch (NoSuchElementException e){
-            throw new IllegalArgumentException("자동차 이름과 시도 횟수는 비어있을 수 없습니다.");
+    }
+
+    private static int validateInputAttempts(String inputAttempts) {
+        if (inputAttempts == null || inputAttempts.trim().isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수는 비어있을 수 없습니다.");
         }
+
+        int totalAttempts = Integer.parseInt(inputAttempts.trim());
+
+        if (totalAttempts < 0) {
+            throw new IllegalArgumentException("시도 횟수는 0보다 작을 수 없습니다.");
+        }
+
+        return totalAttempts;
     }
 
     public static String[] splitCarNames(String carNames) {
@@ -56,7 +77,7 @@ public class Application {
         return carNamesList;
     }
 
-    public static void validateCarNames(String[] carNamesList) {
+    public static void validateCarNamesList(String[] carNamesList) {
         final int MAX_LENGTH = 5;
 
         for (String carName : carNamesList) {
