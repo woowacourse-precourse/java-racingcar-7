@@ -27,7 +27,7 @@ class MoveDeciderTest extends NsTest {
 
     @Test
     void move() {
-        run("Harry,Amy,Tom");
+        run("Harry,Amy,Tom", "3");
         String result = MoveDecider.move();
         assertThat(result).contains("Harry : ","Amy : ","Tom : ");
 
