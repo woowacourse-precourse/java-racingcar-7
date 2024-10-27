@@ -9,4 +9,9 @@ public class InputView {
         System.out.print(RunMessage.INPUT_CAR.getMessage());
         return Console.readLine();
     }
+
+    public String inputAttemptCount() {
+        System.out.print(RunMessage.INPUT_ATTEMPT_COUNT.getMessage());
+        return Console.readLine();
+    }
 }
