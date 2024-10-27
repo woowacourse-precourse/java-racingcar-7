@@ -17,4 +17,8 @@ public class Game {
     public void run() {
 
     }
+
+    private boolean isMovable(int randomNumber) {
+        return randomNumber >= 4;
+    }
 }
