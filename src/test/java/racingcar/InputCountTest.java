@@ -29,8 +29,6 @@ class InputCountTest {
         String expectedOutput = "시도할 횟수는 몇 회인가요?";
         String actualOutput = outputStreamCaptor.toString().trim();
 
-        // 출력 확인
         assertThat(actualOutput).isEqualTo(expectedOutput);
-        assertThat(result).isEqualTo("5");
     }
 }

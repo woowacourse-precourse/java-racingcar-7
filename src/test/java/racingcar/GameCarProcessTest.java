@@ -2,6 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
@@ -31,16 +33,11 @@ class GameCarProcessTest {
         assertThat(gameCar.getForwardMarksSize()).isEqualTo(2);
     }
 
-    @Test
     @DisplayName("생성자는 이름으로 구성된 gameCar를 반환한다.")
+    @Test
     void 생성자는_이름으로_구성된_gameCar_반환_테스트() {
-        // given
         String name = "yi";
-
-        // when
         GameCar gameCar = new GameCar(name);
-
-        // then
         Assertions.assertThat(gameCar.getCarName())
                 .isEqualTo(name);
     }
@@ -48,16 +45,34 @@ class GameCarProcessTest {
     @DisplayName("정상적인 문자열 리스트가 들어올 경우 이름 수에 맞는 자동차 인스턴스를 가진 리스트를 생성한다.")
     @Test
     void 자동차_인스턴스_가진_리스트_반환_테스트() {
-        // given
         List<String> names = List.of("pobi", "java", "yi");
-
-        // when
         List<GameCar> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new GameCar(name));
         }
-
-        // then
         assertThat(cars.size()).isEqualTo(names.size());
+    }
+
+    @DisplayName("자동차 인스턴스의 차수별 과정이 올바르게 출력되는지 확인한다.")
+    @Test
+    void 자동차_인스턴스_과정출력_확인_테스트() {
+        GameCar car = new GameCar("pobi");
+
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        car.move(4);
+        car.displayPrint();
+        String firstOutput = outputStreamCaptor.toString().trim();
+        assertThat(firstOutput).isEqualTo("pobi : -");
+
+        outputStreamCaptor.reset();
+
+        car.move(4);
+        car.displayPrint();
+        String secondOutput = outputStreamCaptor.toString().trim();
+        assertThat(secondOutput).isEqualTo("pobi : --");
+
+        System.setOut(System.out);
     }
 }
