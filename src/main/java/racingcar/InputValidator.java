@@ -11,7 +11,12 @@ public class InputValidator {
     private static final String CAR_NAME_DUPLICATE_ERROR_MESSAGE = "자동차 이름은 중복될 수 없습니다.";
 
     public void validateCarNames(List<String> carNames) {
+        carNames.forEach(carName -> {
+            validateCarNameLength(carName);
+            validateCarNameNotEmpty(carName);
+        });
 
+        validateDuplicateNames(carNames);
     }
 
     private void validateCarNameLength(String carName) {
