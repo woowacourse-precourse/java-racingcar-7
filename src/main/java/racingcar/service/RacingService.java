@@ -14,16 +14,21 @@ public class RacingService {
     public RaceResultDTO startRace(String[] carNames, int trialCount) {
         List<Car> cars = createCarsByName(carNames, trialCount);
 
+        Map<Integer, List<CarDTO>> raceProcedure = getRaceProcedure(trialCount, cars);
+
+        List<String> winners = getRaceWinners(cars);
+
+        return new RaceResultDTO(winners, raceProcedure);
+    }
+
+    private Map<Integer, List<CarDTO>> getRaceProcedure(int trialCount, List<Car> cars) {
         Map<Integer, List<CarDTO>> raceProcedure = new HashMap<>();
 
         for (int i = 1; i <= trialCount; i++) {
             runRace(cars);
             raceProcedure.put(i, createCarDTOs(cars));
         }
-
-        List<String> winners = getRaceWinners(cars);
-
-        return new RaceResultDTO(winners, raceProcedure);
+        return raceProcedure;
     }
 
     private List<Car> createCarsByName(String[] carNames, int trialCount) {
