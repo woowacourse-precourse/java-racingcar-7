@@ -2,6 +2,7 @@ package racingcar.domain.racing;
 
 import java.util.List;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 public class RacingService {
 
@@ -11,8 +12,8 @@ public class RacingService {
         this.racingStrategy = racingStrategy;
     }
 
-    public void race(List<Car> cars){
-        for(Car car : cars) {
+    public void race(Cars cars){
+        for(Car car : cars.getCars()) {
             attemptToForwardCar(car);
         }
     }

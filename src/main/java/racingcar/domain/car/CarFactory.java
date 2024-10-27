@@ -1,16 +1,16 @@
 package racingcar.domain.car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
 
-    public List<Car> makeCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for(String carName : carNames) {
-            cars.add(makeCar(carName));
-        }
-        return cars;
+    public Cars makeCars(List<String> carNames) {
+      Cars cars = new Cars();
+      for(String carName : carNames) {
+          Car car = makeCar(carName);
+          cars.addCar(car);
+      }
+      return cars;
     }
 
     private Car makeCar(String carName) {

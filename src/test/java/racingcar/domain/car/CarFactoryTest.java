@@ -13,11 +13,11 @@ class CarFactoryTest {
     void makeCarsTest() {
         CarFactory carFactory = new CarFactory();
         List<String> carNames = List.of("genesis", "bmw", "bentley", "hybrid");
-        List<Car> cars = carFactory.makeCars(carNames);
+        Cars cars = carFactory.makeCars(carNames);
 
-        assertThat(cars.size()).isEqualTo(4);
+        assertThat(cars.getCars().size()).isEqualTo(4);
         for(int i = 0; i < carNames.size(); i++) {
-            assertThat(cars.get(i).getCarName()).isEqualTo(carNames.get(i));
+            assertThat(cars.getCars().get(i).getCarName()).isEqualTo(carNames.get(i));
         }
     }
 
