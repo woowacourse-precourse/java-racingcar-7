@@ -1,5 +1,9 @@
 package racingcar.util;
 
+import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_INCLUDE_BLANK;
+import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_INCLUDE_SPECIAL_CHARACTERS;
+import static racingcar.message.SplitStringExceptionMessage.CAR_NAME_LENGTH_OVER;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,15 +21,15 @@ public class SplitString {
 
     private static boolean checkCarNameLength(String carName) {
         if (carName.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 공백 혹은 빈 문자열은 허용되지 않습니다");
+            throw new IllegalArgumentException(CAR_NAME_INCLUDE_BLANK);
         }
 
         if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5글자 이하입니다. ");
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER);
         }
 
         if (!carName.matches(CAR_NAME_REGEX)) {
-            throw new IllegalArgumentException("자동차 이름은 한글, 영어, 숫자로만 구성될 수 있습니다");
+            throw new IllegalArgumentException(CAR_NAME_INCLUDE_SPECIAL_CHARACTERS);
         }
 
         return true;
