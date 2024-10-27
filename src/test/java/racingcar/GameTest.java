@@ -17,4 +17,13 @@ class GameTest {
             Assertions.assertThat(position.get(i)).isGreaterThanOrEqualTo(0);
         }
     }
+
+    @Test
+    void findWinners() {
+        Game game = new Game(List.of("pobi", "jun"));
+        game.getCarPositions().set(0, 2);
+        game.getCarPositions().set(1, 1);
+        Assertions.assertThat(game.findWinners()).contains("pobi");
+
+    }
 }
