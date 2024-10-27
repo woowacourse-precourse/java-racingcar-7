@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Separator {
+public class InputSeparator {
 
     public static List<String> split(String text) throws IllegalArgumentException {
         if (text == null || text.isEmpty()) {

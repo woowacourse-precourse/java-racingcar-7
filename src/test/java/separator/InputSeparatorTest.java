@@ -8,13 +8,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SeparatorTest {
+class InputSeparatorTest {
 
     @Test
     @DisplayName("자동차 이름 구분 테스트")
     void split() {
         //when
-        List<String> output = Separator.split("pobi,woni,jun");
+        List<String> output = InputSeparator.split("pobi,woni,jun");
         List<String> expected = List.of("pobi", "woni", "jun");
         //then
         Assertions.assertThat(output).containsExactlyElementsOf(expected);
