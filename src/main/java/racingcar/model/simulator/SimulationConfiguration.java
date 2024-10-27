@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model.simulator;
 
 public class SimulationConfiguration {
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model.car;
 
 public class Car implements Comparable<Car>{
     private String name;
