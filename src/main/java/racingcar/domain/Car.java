@@ -1,16 +1,18 @@
 package racingcar.domain;
 
+import static racingcar.constant.CarConstants.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
 
     private String name;
+
     private int distance;
 
     public Car(String name) {
         this.name = name;
-        this.distance = 0;
-
+        this.distance = DEFAULT_DISTANCE;
     }
 
     public String getName() {
@@ -32,6 +34,7 @@ public class Car {
     }
 
     private boolean canMoveForward() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_MIN_VALUE, RANDOM_NUMBER_RANGE_MAX_VALUE)
+                >= MOVE_FOWARD_CONDITION_MIN_VALUE;
     }
 }
