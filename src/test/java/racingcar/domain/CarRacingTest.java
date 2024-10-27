@@ -14,7 +14,7 @@ public class CarRacingTest {
     @BeforeEach
     void setUp() {
         cars = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
-        carRacing = new CarRacing(cars, 3);
+        carRacing = new CarRacing(cars);
     }
 
     @Test

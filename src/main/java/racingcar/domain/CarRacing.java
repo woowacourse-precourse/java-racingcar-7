@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 /**
@@ -8,21 +9,13 @@ import java.util.List;
  */
 public class CarRacing {
     private final List<Car> cars;
-    private final int trialCount;
 
-    public CarRacing(List<Car> cars, int trialCount) {
+    public CarRacing(List<Car> cars) {
         this.cars = cars;
-        this.trialCount = trialCount;
     }
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public void startRace() {
-        for (int i = 0; i < trialCount; i++) {
-            runRound();
-        }
     }
 
     public void runRound() {
@@ -34,7 +27,7 @@ public class CarRacing {
     }
 
     private boolean isMovable() {
-        int randomValue = RandomNumberGenerator.pickNumberInRange(0, 9);
+        int randomValue = Randoms.pickNumberInRange(0, 9);
         return randomValue >= 4;
     }
 

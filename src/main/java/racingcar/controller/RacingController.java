@@ -15,12 +15,12 @@ public class RacingController {
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .toList();
-        CarRacing carRacing = new CarRacing(cars, trialCount);
+        CarRacing carRacing = new CarRacing(cars);
 
         // 게임 라운드별 결과 출력
-        System.out.println("\n 실행 결과");
+        System.out.println("\n실행 결과");
         for (int i = 0; i < trialCount; i++) {
-            carRacing.startRace();
+            carRacing.runRound();
             OutputView.printRoundResult(carRacing.getCars());
         }
 

@@ -3,6 +3,7 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.validator.TrialCountValidator;
 
 public class InputView {
 
@@ -14,6 +15,8 @@ public class InputView {
 
     public static int getTrialCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int trialCount = Integer.parseInt(Console.readLine());
+        TrialCountValidator.validate(trialCount);
+        return trialCount;
     }
 }
