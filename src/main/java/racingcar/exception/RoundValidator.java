@@ -2,7 +2,7 @@ package racingcar.exception;
 
 public class RoundValidator {
 
-    public int validateRound(String round) {
+    public static int validateRound(String round) {
         try {
             int roundInt = Integer.parseInt(round);
             validateNonNegativeNumber(roundInt);
@@ -12,7 +12,7 @@ public class RoundValidator {
         }
     }
 
-    private void validateNonNegativeNumber(int roundInt) {
+    private static void validateNonNegativeNumber(int roundInt) {
         if (roundInt < 0) {
             throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }

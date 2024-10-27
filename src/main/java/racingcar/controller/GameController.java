@@ -14,8 +14,6 @@ public class GameController {
     private final OutputView outputView;
     private final InputView inputView;
     private final StringService stringService;
-    private final CarNameValidator carNameValidator;
-    private final RoundValidator roundValidator;
     private final CarService carService;
     private final GameService gameService;
 
@@ -23,8 +21,6 @@ public class GameController {
         this.outputView = new OutputView();
         this.inputView = new InputView();
         this.stringService = new StringService();
-        this.carNameValidator = new CarNameValidator();
-        this.roundValidator = new RoundValidator();
         this.carService = new CarService();
         this.gameService = new GameService();
     }
@@ -34,11 +30,11 @@ public class GameController {
         String carNames = inputView.userInput();
 
         String[] carNameList = stringService.splitString(carNames);
-        carNameValidator.validateCarName(carNameList);
+        CarNameValidator.validateCarName(carNameList);
 
         outputView.roundMessage();
         String roundInput = inputView.userInput();
-        int round = roundValidator.validateRound(roundInput);
+        int round = RoundValidator.validateRound(roundInput);
 
         Car[] cars = carService.createCars(carNameList);
 
