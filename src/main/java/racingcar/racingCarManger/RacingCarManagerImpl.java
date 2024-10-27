@@ -1,4 +1,4 @@
-package racingcar.racingGame;
+package racingcar.racingCarManger;
 
 import racingcar.car.Car;
 import racingcar.car.CarImpl;
@@ -13,10 +13,10 @@ import java.util.stream.IntStream;
 import static racingcar.exception.ExceptionMessage.CAR_NAME_NOT_DUPLICATION;
 import static racingcar.utils.InputSplitter.inputSplit;
 
-public class RacingGameImpl implements RacingGame{
+public class RacingCarManagerImpl implements RacingCarManager {
     private final List<Car> racingCars = new ArrayList<>();
 
-    public RacingGameImpl(String inputRacingCarsName) {
+    public RacingCarManagerImpl(String inputRacingCarsName) {
         List<String> carsName = inputSplit(inputRacingCarsName);
 
         for (String carName : carsName) {

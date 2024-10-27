@@ -1,10 +1,10 @@
-package racingcar.racingGame;
+package racingcar.racingCarManger;
 
 import racingcar.car.Car;
 
 import java.util.List;
 
-public interface RacingGame {
+public interface RacingCarManager {
     public List<Car> moveRacingCars(List<Integer> randomNumbers);
 
     public List<Car> getWinners();

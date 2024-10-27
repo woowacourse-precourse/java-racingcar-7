@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import racingcar.car.Car;
-import racingcar.racingGame.RacingGame;
-import racingcar.racingGame.RacingGameImpl;
+import racingcar.racingCarManger.RacingCarManager;
+import racingcar.racingCarManger.RacingCarManagerImpl;
 
 import java.util.List;
 
@@ -15,22 +15,22 @@ import static racingcar.view.OutputView.*;
 
 public class RacingGameController {
     public void run() {
-        RacingGame racingGame = setUpRacingGame();
+        RacingCarManager racingCarManager = setUpRacingGame();
         Integer tryNumber = setUpTryNumber();
-        playRacingGame(racingGame, tryNumber);
-        printWinners(racingGame);
+        playRacingGame(racingCarManager, tryNumber);
+        printWinners(racingCarManager);
     }
 
-    private void printWinners(RacingGame racingGame) {
-        List<Car> winners = racingGame.getWinners();
+    private void printWinners(RacingCarManager racingCarManager) {
+        List<Car> winners = racingCarManager.getWinners();
         outputWinner(winners);
     }
 
-    private void playRacingGame(RacingGame racingGame, Integer tryNumber) {
+    private void playRacingGame(RacingCarManager racingCarManager, Integer tryNumber) {
         excuteResult();
         for (int i = 0; i < tryNumber; i++) {
-            List<Integer> randomNumbers = generateRandomNumbersForSize(racingGame.getNumberOfRacingCars());
-            List<Car> cars = racingGame.moveRacingCars(randomNumbers);
+            List<Integer> randomNumbers = generateRandomNumbersForSize(racingCarManager.getNumberOfRacingCars());
+            List<Car> cars = racingCarManager.moveRacingCars(randomNumbers);
             resultPerTry(cars);
         }
     }
@@ -42,11 +42,11 @@ public class RacingGameController {
         return Integer.valueOf(tryNumber);
     }
 
-    private RacingGame setUpRacingGame() {
+    private RacingCarManager setUpRacingGame() {
         carNameOutView();
         String userInput = inputCarsName();
         inputCarsNameValidation(userInput);
-        RacingGame racingGame = new RacingGameImpl(userInput);
-        return racingGame;
+        RacingCarManager racingCarManager = new RacingCarManagerImpl(userInput);
+        return racingCarManager;
     }
 }
