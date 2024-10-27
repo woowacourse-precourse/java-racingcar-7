@@ -20,7 +20,7 @@ import racingcar.view.OutputView;
 
 public class RacingController {
     private final static String CAR_NAME_SPLIT_REGEX = ",";
-    private final static int TRAIL_NUMBER_MIN = 0;
+    private final static int TRAIL_NUMBER_MIN = 1;
     private final static int CAR_POSITION_MIN = 0;
     private final RaceService raceService;
 
