@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class InputValidator {
     public static void validateCarNames(List<String> carNames) {
+        validateCarCount(carNames);
         for (String name : carNames) {
             validateNullOrEmptyCarName(name);
             validateNameContainsBlank(name);
@@ -20,6 +21,12 @@ public class InputValidator {
     public static void validateMoveCount(String moveCountInput) {
         validateNullOrEmptyMoveCount(moveCountInput);
         validateNumericAndPositive(moveCountInput);
+    }
+
+    private static void validateCarCount(List<String> carNames) {
+        if (carNames.size() < ValidationConstants.MIN_CAR_COUNT) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_COUNT_LESS_THAN_TWO);
+        }
     }
 
     private static void validateNullOrEmptyCarName(String name) {
