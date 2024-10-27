@@ -54,14 +54,13 @@ public class CarService {
         this.moveCount = moveCount;
     }
 
-    public List<String> determineWinner() {
+    public void determineWinner() {
         int maxMoved = getMaxMoved();
         for (Car car : gameBoard.getCars()) {
             if (car.getCarMoved() == maxMoved) {
                 winners.add(car.getCarName());
             }
         }
-        return winners;
     }
 
     public int getMaxMoved() {
