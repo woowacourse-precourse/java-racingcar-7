@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
+    private static final int MIN_CAR_NAME_LENGTH = 1;
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final int MIN_ATTEMPT_COUNT = 0;
     private static final String NUMERIC_REGEX = "-?\\d+";
@@ -16,8 +17,11 @@ public class Validator {
     }
 
     public static void isCarNameRange(String name) {
+        if (name.length() < MIN_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 최소 1글자 이상이어야 합니다.");
+        }
         if (name.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다");
+            throw new IllegalArgumentException("자동차의 이름은 5글자 이하만 가능합니다.");
         }
     }
 
@@ -35,7 +39,9 @@ public class Validator {
     }
 
     public static void validateNumericInput(String input) {
-        if (!input.matches(NUMERIC_REGEX)) {
+        try {
+            Integer.parseInt(input);
+        }catch (NumberFormatException exception){
             throw new IllegalArgumentException("숫자만 입력가능합니다");
         }
     }
