@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,6 +38,13 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> new Car("길이가_6초과"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 이동_횟수_검증() {
+        assertThatThrownBy(() -> new RacingGame(List.of(new Car("pobi")), 0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
     @Override
     public void runMain() {
