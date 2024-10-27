@@ -58,7 +58,16 @@ public class Application {
     private static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountInput = Console.readLine();
-        return Integer.parseInt(tryCountInput);
+
+        return parseTryCount(tryCountInput);
+    }
+
+    private static int parseTryCount(String tryCountInput) {
+        try {
+            return Integer.parseInt(tryCountInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
+        }
     }
 
     private static List<Car> initializeCars(List<String> carNameList) {
