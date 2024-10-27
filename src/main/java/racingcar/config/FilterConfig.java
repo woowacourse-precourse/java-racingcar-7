@@ -2,6 +2,7 @@ package racingcar.config;
 
 import racingcar.filter.FilterChain;
 import racingcar.filter.impl.filter.CarNameCharacterFilter;
+import racingcar.filter.impl.filter.CarNameDuplicatedFilter;
 import racingcar.filter.impl.filter.CarNameLengthFilter;
 import racingcar.filter.impl.filter.RoundInputPositiveIntegerFilter;
 import racingcar.filter.impl.filter.RoundInputTypeFilter;
@@ -17,6 +18,7 @@ public class FilterConfig {
     private FilterConfig() {
         carNameFilterChain.addFilter(new CarNameCharacterFilter());
         carNameFilterChain.addFilter(new CarNameLengthFilter());
+        carNameFilterChain.addFilter(new CarNameDuplicatedFilter());
         roundFilterChain.addFilter(new RoundInputTypeFilter());
         roundFilterChain.addFilter(new RoundInputPositiveIntegerFilter());
     }
