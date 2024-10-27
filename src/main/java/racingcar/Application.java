@@ -1,8 +1,22 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<String> carNames = getCarNames();
+        int rounds = getRounds();
+
+        List<Integer> positions = initializePositions(carNames.size());
+
+        race(carNames, positions, rounds);
+        announceWinners(carNames, positions);
+    }
 
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -30,6 +44,17 @@ public class Application {
             }
         }
     }
+
+    public static List<Integer> initializePositions(int size) {
+        List<Integer> positions = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            positions.add(0);
+        }
+
+        return positions;
+    }
+
     public static void race(List<String> carNames, List<Integer> positions, int rounds) {
         System.out.println("실행 결과");
 
