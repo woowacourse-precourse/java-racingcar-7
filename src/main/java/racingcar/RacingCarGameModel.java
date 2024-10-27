@@ -26,6 +26,18 @@ public class RacingCarGameModel {
                 .collect(Collectors.joining("\n"));
     }
 
+    public String winnerParticipants() {
+        int maxDistanceLength = participantEntities.stream()
+                .mapToInt(p -> p.getDistance().length())
+                .max()
+                .orElse(0);
+
+        return participantEntities.stream()
+                .filter(p -> p.getDistance().length() == maxDistanceLength)
+                .map(ParticipantEntity::getName)
+                .collect(Collectors.joining(", "));
+    }
+
     private String forwardCar() {
         return participantEntities.stream()
                 .peek(entity -> {
