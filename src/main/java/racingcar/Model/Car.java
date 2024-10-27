@@ -9,7 +9,8 @@ public class Car {
         CarName = carName;
     }
 
-    public void move() {
+    public void move(int RandomNumber) {
+        this.RandomNumber = RandomNumber;
         if (RandomNumber >= 4) {
             Position++;
         }
