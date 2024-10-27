@@ -51,4 +51,18 @@ public class RaceGameController {
         }
         return max;
     }
+
+    /**
+     * 최종 우승자를 선정
+     */
+    public List<String> getWinner(List<Car> cars, int maxMoveCount) {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getMoveCount() == maxMoveCount) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
+    }
 }
