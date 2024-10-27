@@ -13,8 +13,8 @@ public class Validator {
     public void isValidName(List<String> names){
         Set<String> uniqueNames = new HashSet<>();
         for(String name : names) {
-            if(name.length() > 5) {throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해 주세요.");}
             if (name.contains(" ")) {throw new IllegalArgumentException("자동차 이름에는 공백이 포함될 수 없습니다.");}
+            if(name.length() > 5) {throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해 주세요.");}
             if(!uniqueNames.add(name)) {throw new IllegalArgumentException("중복되는 이름을 가진 자동차가 있습니다.");}
         }
     }

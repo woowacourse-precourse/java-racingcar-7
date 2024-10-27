@@ -63,6 +63,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("자동차 이름에 공백 포함")
+    void blankCarName(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun jun,woni", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("쉼표가 아닌 구분자 사용")
+    void notComma(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun!woni", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     @DisplayName("시도할 횟수 0 혹은 음수")
     void inputZeroOrNegativeInt(){
         assertSimpleTest(() ->
