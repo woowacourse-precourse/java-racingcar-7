@@ -24,5 +24,17 @@ public class RacingCar {
 
     }
 
+    public static String[] splitInputCarNames(String inputCarNames) {
+        return inputCarNames.split(",");
+    }
+
+    public static void checkInputCarNames(String[] carNames) {
+        for (String carName : carNames) {
+            if (carName.length() > 5 || carName.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 
 }
