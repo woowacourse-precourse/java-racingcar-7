@@ -3,6 +3,7 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -24,4 +25,11 @@ class RacingRacingGameValidatorTest {
         }).doesNotThrowAnyException();
     }
 
+    @Test
+    void 시도횟수_최대값_초과시_예외발생_테스트() {
+        assertThatThrownBy(() -> {
+            String numAttempts = Long.valueOf((long)Integer.MAX_VALUE + 1).toString();
+            RacingGameValidator.validate(numAttempts);
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage("입력된 시도 횟수가 허용된 최대 값을 초과했습니다.");
+    }
 }
