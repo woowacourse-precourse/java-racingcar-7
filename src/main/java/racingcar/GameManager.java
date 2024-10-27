@@ -16,7 +16,7 @@ public class GameManager {
             game();
         }
 
-        return car_list;
+        return findWinners();
     }
 
     private void setCarList(String[] car_list) {
@@ -39,5 +39,21 @@ public class GameManager {
 
     private boolean canMove(){
         return (int)(Math.random() * 10) >= 4;
+    }
+
+    private String[] findWinners(){
+        ArrayList<String> winners = new ArrayList<String>();
+        int maxDistance = 0;
+
+        for(Car car : cars){
+            maxDistance = Math.max(maxDistance, car.distance);
+        }
+        for(Car car : cars){
+            if(car.distance == maxDistance){
+                winners.add(car.name);
+            }
+        }
+
+        return winners.toArray(new String[winners.size()]);
     }
 }
