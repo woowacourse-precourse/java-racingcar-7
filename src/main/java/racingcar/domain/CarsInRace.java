@@ -8,21 +8,15 @@ import java.util.stream.Collectors;
 public class CarsInRace {
 
     private static List<Car> carsList = new ArrayList<>();
-    private static int carsCount = 0;
 
     public CarsInRace(List<Car> carsList) {
         this.carsList = carsList;
-        this.carsCount = carsList.size();
     }
 
     public void startRaceOnce() {
         for (Car car : carsList) {
             car.move();
         }
-    }
-
-    public int getCarsCount() {
-        return carsCount;
     }
 
     public static List<Car> getCarsInRace() {
