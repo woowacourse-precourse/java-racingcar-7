@@ -9,7 +9,6 @@ public class View {
 
     public static void integrateView(){
         String input = getInput();
-
         System.out.println(input);
     }
 }
