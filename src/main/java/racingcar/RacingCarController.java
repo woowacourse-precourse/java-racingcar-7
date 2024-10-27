@@ -4,6 +4,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class RacingCarController {
     private final RacingCarModel model;
     private final RacingCarView view;
@@ -16,9 +19,8 @@ public class RacingCarController {
         this.view = view;
     }
     public void isValidName(String name){
-        String replacedName = name.replaceAll("[a-z]", "");
         try {
-            if (replacedName.length() != 0 || name.length() > 5) {
+            if (name.length() > 5) {
                 throw new IllegalArgumentException();
             }
         }catch (IllegalArgumentException e){
