@@ -6,17 +6,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceSystem {
+    private static final int MAX_CAR_NAME_CONDITION = 5;
+    private static final int MIN_RACE_TIME_CONDITION = 1;
     private static final int MIN_MOVE_CONDITION = 4;
     private List<Car> cars;
     private int raceTime;
 
     public RaceSystem(List<String> carNames, int raceTime) {
-        this.cars = new ArrayList<>();
+        this.cars = initializeCars(carNames);
+        this.raceTime = initializeRaceTime(raceTime);
+    }
+    
+    private List<Car> initializeCars(List<String> carNames) {
+        List<Car> carList = new ArrayList<>();
+
         for (String carName: carNames) {
+            if (carName.isBlank() || carName.length() > MAX_CAR_NAME_CONDITION) {
+                StringBuilder errorMessage = new StringBuilder();
+                errorMessage.append("자동차 이름은 공백이거나 문자의 길이가 ");
+                errorMessage.append(MAX_CAR_NAME_CONDITION);
+                errorMessage.append(" 이상일 수 없습니다");
+                throw new IllegalArgumentException(errorMessage.toString());
+            }
+
             Car newCar = new Car(carName);
-            cars.add(newCar);
+            carList.add(newCar);
         }
-        this.raceTime = raceTime;
+
+        return carList;
+    }
+
+    private int initializeRaceTime(int raceTime) {
+        if (raceTime < MIN_RACE_TIME_CONDITION) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다");
+        }
+
+        return raceTime;
     }
 
     public String startRace() {
@@ -69,7 +94,7 @@ public class RaceSystem {
         int maxDistance = findMaxDistance();
 
         for (Car car: cars) {
-            if(car.getDistance() == maxDistance) {
+            if (car.getDistance() == maxDistance) {
                 winners.add(car.getName());
             }
         }
