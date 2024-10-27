@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import model.Car;
+import view.ResultView;
 
 public class RacingController {
     private final List<Car> cars;
@@ -21,16 +22,19 @@ public class RacingController {
         for (int round = 0; round < raceRounds; round++) {
             playRound();
         }
+        ResultView.printWinners(determineWinners());
     }
 
     private void playRound() {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             car.move(randomNumber);
+            ResultView.printCarPosition(car);
         }
+        System.out.println();
     }
 
-    private List<Car> Winners() {
+    private List<Car> determineWinners() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
         return cars.stream().filter(car -> car.getPosition() == maxPosition).toList();
     }
