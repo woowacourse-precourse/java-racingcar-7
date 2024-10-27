@@ -25,7 +25,7 @@ public class MessagePrinter {
         for (int i = 0; i < entry.size(); i++) {
             String carName = entry.get(i).getKey();
             String line = entry.get(i).getValue();
-            singleRoundResultMessage = carName + " : " + line +"\\n";
+            singleRoundResultMessage = carName + " : " + line;
         }
 
         return singleRoundResultMessage;
@@ -33,8 +33,8 @@ public class MessagePrinter {
 
     public String getTotalRoundResultMessage(List<String> totalRoundResultList) {
 
-        String totalRoundResultMessage = String.join("\\n", totalRoundResultList);
-        totalRoundResultMessage += "\\n";
+        String totalRoundResultMessage = String.join("\n", totalRoundResultList);
+        totalRoundResultMessage += "\n";
 
         return totalRoundResultMessage;
     }
