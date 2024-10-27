@@ -23,7 +23,7 @@ public class RacingController {
         String[] carNames = getCarNames();
         String trialCountInput = getTrialCount();
 
-        validateInput(trialCountInput);
+        validateInput(carNames, trialCountInput);
         inputView.close();
 
         int trialCount = Integer.parseInt(trialCountInput);
@@ -48,8 +48,8 @@ public class RacingController {
         return inputView.readLine();
     }
 
-    private void validateInput(String trialCountInput) {
-        inputValidator.validateTrialCount(trialCountInput);
+    private void validateInput(String[] carNameInput, String trialCountInput) {
+        inputValidator.validateCarName(carNameInput);
         inputValidator.validateTrialCount(trialCountInput);
     }
 
