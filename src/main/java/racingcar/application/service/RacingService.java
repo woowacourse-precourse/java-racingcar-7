@@ -1,5 +1,6 @@
 package racingcar.application.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.application.dto.InputCarNamesDTO;
 import racingcar.application.model.Car;
@@ -15,5 +16,20 @@ public class RacingService {
     cars = inputCarNamesDTO.toModel();
 
     this.attemptCount = inputAttemptCount;
+  }
+
+  public List<Car> playRound() {
+
+    for (Car car : cars) {
+      if (randomNumber() >= 4) {
+        car.move();
+      }
+    }
+
+    return cars;
+  }
+
+  private int randomNumber() {
+    return Randoms.pickNumberInRange(0, 9);
   }
 }
