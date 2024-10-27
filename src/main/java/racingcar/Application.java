@@ -1,6 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,17 +12,6 @@ import java.util.Set;
 
 public class Application {
     static Map<String, Integer> car = new HashMap<>();
-
-    public static void printInputMessageCarName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    }
-
-    public static String inputCarName() {
-        String carNames =  Console.readLine();
-        isSeperatorPresent(carNames);
-        isLastCharacterComma(carNames);
-        return carNames;
-    }
 
     public static void isSeperatorPresent(String carNames) {
         if (!carNames.contains(",")) {
@@ -73,18 +61,6 @@ public class Application {
         }
     }
 
-    public static void printInputMessageGameCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-    }
-
-    public static int inputGameCount() {
-        String gameCountStr = Console.readLine();
-        isGameCountNumber(gameCountStr);
-        int gameCount = Integer.parseInt(gameCountStr);
-        isGameCountOneOrMore(gameCount);
-        return gameCount;
-    }
-
     public static void isGameCountNumber(String gameCountStr) {
         if (!gameCountStr.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자를 입력해 주세요.");
@@ -129,11 +105,15 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        printInputMessageCarName();
-        String carNames = inputCarName();
+        InputView inputView = new InputView();
+        String carNames = inputView.inputCarName();
+        isSeperatorPresent(carNames);
+        isLastCharacterComma(carNames);
         String[] carName = seperateCarNames(carNames);
-        printInputMessageGameCount();
-        int gameCount = inputGameCount();
+        String gameCountStr = inputView.inputGameCount();
+        isGameCountNumber(gameCountStr);
+        int gameCount = Integer.parseInt(gameCountStr);
+        isGameCountOneOrMore(gameCount);
         runGame(carName, gameCount);
     }
 }
