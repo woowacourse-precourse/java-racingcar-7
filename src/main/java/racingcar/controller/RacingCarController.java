@@ -25,9 +25,7 @@ public class RacingCarController {
         Cars cars = getCars();
         int tryCount = getTryCount();
 
-        outputView.printRunResultMessage();
-        runRaceRounds(cars, tryCount, powerGenerator);
-        outputView.printWinningNames(cars.getWinnerNames());
+        race(cars, tryCount);
     }
 
     private Cars getCars() {
@@ -46,6 +44,12 @@ public class RacingCarController {
     private int getTryCount() {
         String inputTryCount = inputView.inputTryCount();
         return Integer.parseInt(inputTryCount);
+    }
+
+    private void race(Cars cars, int tryCount) {
+        outputView.printRunResultMessage();
+        runRaceRounds(cars, tryCount, powerGenerator);
+        outputView.printWinningNames(cars.getWinnerNames());
     }
 
     private void runRaceRounds(Cars cars, int tryCount, PowerGenerator powerGenerator) {
