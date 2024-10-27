@@ -1,6 +1,5 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.exception.InputValidator;
