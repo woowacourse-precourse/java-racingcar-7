@@ -4,7 +4,7 @@ import racingcar.strategy.MoveStrategy;
 
 public class RacingCar {
 
-    private String carName;
+    private final String carName;
     private int distance;
 
     public RacingCar(String carName, int distance) {
