@@ -54,4 +54,10 @@ public class Application {
 		}
 	}
 
+	public static void addDash(int[] result, String[] arr) {
+		for (int i = 0; i < result.length; i++) {
+		}
+		System.out.println();
+	}
+
 }
