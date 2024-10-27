@@ -10,10 +10,10 @@ public class Application {
 
         try {
             String input = InputManager.readInput();
-            int rounds = InputManager.readGameRound();
-
             Names names = new Names(input);
             Cars cars = new Cars(names);
+
+            int rounds = InputManager.readGameRound();
 
             Game.start(cars, rounds);
         } finally {
