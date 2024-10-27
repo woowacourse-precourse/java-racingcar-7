@@ -1,8 +1,6 @@
 package racingcar;
 
 import racingcar.car.Car;
-import racingcar.car.CarImpl;
-import racingcar.decider.Decider;
 
 import java.util.List;
 
@@ -16,17 +14,6 @@ public class CarGame {
     }
     private void moveCars() {
         this.entryCars.forEach(Car::forward);
-    }
-
-    private void printCars() {
-        for (Car car: entryCars) {
-            System.out.printf("%s : ", car.getName());
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     private List<String> getWinners() {
@@ -43,7 +30,6 @@ public class CarGame {
     public List<String> play() {
         for (int i = 0 ; i < numberOfTurn; i++) {
             moveCars();
-            printCars();
         }
         return getWinners();
     }
