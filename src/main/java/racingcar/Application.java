@@ -16,13 +16,16 @@ public class Application {
         printWinner(cars);
     }
 
-    private static void printWinner(List<Car> cars) {
-        int maxLocation = findMaxLocation(cars);
+    private static List<Car> inputCarNames() {
+        List<Car> cars = new ArrayList<>();
 
-        List<String> winners = findWinners(cars, maxLocation);
-
-        String finalWinner = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + finalWinner);
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        List<String> carNames = Arrays.asList(input.split(","));
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
     private static int inputTryCount() {
@@ -55,6 +58,15 @@ public class Application {
         System.out.println();
     }
 
+    private static void printWinner(List<Car> cars) {
+        int maxLocation = findMaxLocation(cars);
+
+        List<String> winners = findWinners(cars, maxLocation);
+
+        String finalWinner = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + finalWinner);
+    }
+
     private static List<String> findWinners(List<Car> cars, int maxLocation) {
         List<String> winners = new ArrayList<>();
 
@@ -71,17 +83,5 @@ public class Application {
                 .max(Comparator.comparingInt(Car::getLocation))
                 .get()
                 .getLocation();
-    }
-
-    private static List<Car> inputCarNames() {
-        List<Car> cars = new ArrayList<>();
-
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        List<String> carNames = Arrays.asList(input.split(","));
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
     }
 }
