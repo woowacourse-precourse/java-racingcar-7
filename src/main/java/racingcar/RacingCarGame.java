@@ -9,5 +9,6 @@ public class RacingCarGame {
     public void run() {
         
         RaceCars raceCars = racingCarIOHandler.askRaceCarsNames();
+        int raceCount = racingCarIOHandler.askRaceCount();
     }
 }

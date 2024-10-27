@@ -16,6 +16,15 @@ public class InputHandler {
         return RaceCars.addCars(carsNames);
     }
 
+    public int getRaceCount() {
+        String userInput = readLine();
+        int raceCount = parseIntRaceCount(userInput);
+
+        validateRaceCount(raceCount);
+
+        return raceCount;
+    }
+
     private String[] splitCarsNames(String input) {
         return input.split(",");
     }
@@ -41,4 +50,23 @@ public class InputHandler {
             throw new IllegalArgumentException("경주할 자동차의 이름은 5자 이하여야 합니다.");
         }
     }
+
+    private int parseIntRaceCount(String userInput) {
+        try {
+            return Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경주 횟수는 숫자를 입력해야 합니다.");
+        }
+    }
+
+    private void validateRaceCount(int raceCount) {
+        checkRaceCountIsPositive(raceCount);
+    }
+
+    private void checkRaceCountIsPositive(int raceCount) {
+        if (raceCount <= 0) {
+            throw new IllegalArgumentException("경주 횟수는 0이상을 입력해야 합니다.");
+        }
+    }
+
 }
