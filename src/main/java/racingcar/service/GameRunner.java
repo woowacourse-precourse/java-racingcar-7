@@ -12,6 +12,20 @@ public class GameRunner {
         for (String car : carNames) {
             carState.put(car, 0);
         }
+
+        for (int attemptCount = 0; attemptCount < finalAttemptCount; attemptCount++){
+            updateCarState(carState);
+        }
+
+    }
+
+    public void updateCarState(Map<String, Integer> carState){
+        carState.forEach((car, position) -> {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if (isMoved(randomNumber)) {
+                carState.put(car, position + 1);
+            }
+        });
     }
 
     public boolean isMoved(int randomNumber){
