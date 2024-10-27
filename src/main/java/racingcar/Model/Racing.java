@@ -1,9 +1,9 @@
 package racingcar.Model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import racingcar.Enum.TypeOfLocation;
 import racingcar.Utilities.Random;
 
 public class Racing implements RacingRule {
@@ -51,14 +51,21 @@ public class Racing implements RacingRule {
 
   @Override
   public ArrayList<String> pickWinner() {
-    Map<String, Object> result = new HashMap<>();
-    ArrayList<String> winners = new ArrayList<>();
-    int maxNumber = Integer.MIN_VALUE;
-    for (Car car : cars) {
-      result = car.compareLocation(maxNumber, winners);
-      winners = (ArrayList<String>) result.get("winners");
-      maxNumber = (int) result.get("maxNumber");
-    }
-    return winners;
+    ArrayList<String> winner = new ArrayList<>();
+    AtomicInteger winnerLocation = new AtomicInteger(Integer.MIN_VALUE);
+
+    cars.stream()
+        .filter(car -> car.compareLocation(winnerLocation.get()) != TypeOfLocation.BEHIND)
+        .forEach(
+            car -> {
+              TypeOfLocation typeOfLocation = car.compareLocation(winnerLocation.get());
+              if (typeOfLocation == TypeOfLocation.IN_FRONT) {
+                winner.clear();
+                winnerLocation.set(car.updateWinnerLocation(winnerLocation.get()));
+              }
+              car.addWinnerName(winner);
+            });
+
+    return winner;
   }
 }
