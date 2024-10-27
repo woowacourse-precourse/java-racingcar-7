@@ -11,15 +11,18 @@ public class PlayerService {
 
     public List<RacingCar> registerPlayers(String carNames) {
         List<String> carNameList = parseCarNames(carNames);
-        List<RacingCar> players = carNameList.stream().map(RacingCar::new).toList();
-
+        List<RacingCar> players = carNameList.stream()
+                .map(RacingCar::new)
+                .toList();
         RacingCarValidator.validate(players);
 
         return players;
     }
 
     private List<String> parseCarNames(String carNames) {
-        return Arrays.stream(carNames.split(DELIMITER)).map(this::preProcess).toList();
+        return Arrays.stream(carNames.split(DELIMITER))
+                .map(this::preProcess)
+                .toList();
     }
 
     private String preProcess(String carName) {
