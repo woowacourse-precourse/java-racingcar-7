@@ -38,6 +38,10 @@ public class Reader {
             }
         }
 
+        if (carNames.size() == 0 || carNames.contains(" ")) {
+            throw new IllegalArgumentException("자동차의 이름은 공백이나 빈 칸일 수 없습니다.");
+        }
+
         Set<String> carNameSet = new HashSet<>(carNames);
         if (carNameSet.size() != carNames.size()) {
             throw new IllegalArgumentException("자동차의 이름은 서로 중복될 수 없습니다");

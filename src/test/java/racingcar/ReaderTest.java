@@ -28,7 +28,9 @@ public class ReaderTest {
             "' '",
             "longname",
             "'hide, longn'",
-            "'same,same'"
+            "'same,same'",
+            "' , '",
+            "','"
     })
     void 잘못된_이름_입력_분리_테스트(String input) {
 
