@@ -27,7 +27,7 @@ public class OutputHandler {
     public void displayWinners(List<Car> winners) {
         String result = winners.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
 
         outputMessage("최종 우승자 : " + result);
     }

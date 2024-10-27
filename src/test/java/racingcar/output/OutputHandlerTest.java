@@ -59,6 +59,6 @@ class OutputHandlerTest {
         outputHandler.displayWinners(winners);
 
         // then
-        assertEquals("최종 우승자 : pobi,jjj", outContent.toString());
+        assertEquals("최종 우승자 : pobi, jjj", outContent.toString());
     }
 }
