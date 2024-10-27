@@ -16,4 +16,5 @@ public enum MessageType {
     public String getMessage() {
         return message;
     }
+
 }

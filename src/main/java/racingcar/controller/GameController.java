@@ -1,15 +1,9 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
-import racingcar.model.Car;
 import racingcar.model.CarHandler;
 import racingcar.validate.Validation;
 import racingcar.view.InputMessage;
 import racingcar.view.OutputMessage;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class GameController {
 
@@ -43,6 +37,5 @@ public class GameController {
         final String carNames = carHandler.getWinnerNames();
         OutputMessage.executeResultMessage(carNames);
     }
-
 
 }

@@ -7,7 +7,6 @@ public enum ErrorType {
     GAME_TRY_COUNT_ERROR("[ERROR] 입력 횟수는 1회 이상이여야 합니다."),
     CAR_NAME_DUPLICATE_ERROR("[ERROR] 중복된 이름이 있습니다.");
 
-
     private final String message;
 
     ErrorType(String message) {

@@ -15,4 +15,5 @@ public class OutputMessage {
     public static void printHyphenMessage(String carName, int carMoveCount) {
         System.out.println(carName + " : " + HYPHEN.repeat(carMoveCount));
     }
+
 }

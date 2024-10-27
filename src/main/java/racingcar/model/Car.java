@@ -3,9 +3,6 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Car {
 
     private String name;
@@ -33,6 +30,5 @@ public class Car {
     public int getMoveCount() {
         return moveCount;
     }
-
 
 }
