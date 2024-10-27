@@ -22,7 +22,7 @@ public class RacingGameController {
     public void startGame() {
         CarGroup carGroup = GameInitializer.createCars((inputView.requestCarNames()));
         GameRound gameRound = GameInitializer.setRound(inputView.requestNumberOfGames());
-        outputView.printRoundResult(racingGameService.playRound(gameRound, carGroup));
-        outputView.printWinnerList(racingGameService.getWinner(carGroup));
+        outputView.printRoundResult(racingGameService.runGameRounds(gameRound, carGroup));
+        outputView.printWinnerList(racingGameService.getWinners(carGroup));
     }
 }

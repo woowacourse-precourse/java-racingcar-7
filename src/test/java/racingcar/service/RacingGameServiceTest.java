@@ -41,7 +41,7 @@ class RacingGameServiceTest {
         GameRound gameRound = new GameRound("1");
 
         // when
-        List<List<CarInfo>> roundResults = service.playRound(gameRound, carGroup);
+        List<List<CarInfo>> roundResults = service.runGameRounds(gameRound, carGroup);
 
         // then
         Assertions.assertThat(roundResults).hasSize(1);
@@ -56,7 +56,7 @@ class RacingGameServiceTest {
         CarGroup carGroup = new CarGroup(Arrays.asList(new Car("povi"), new Car("minu")));
 
         // when
-        List<String> winners = service.getWinner(carGroup);
+        List<String> winners = service.getWinners(carGroup);
 
         // then
         Assertions.assertThat(winners).hasSize(2);

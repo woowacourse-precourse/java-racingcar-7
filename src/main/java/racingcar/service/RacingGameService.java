@@ -14,18 +14,16 @@ public class RacingGameService {
         this.gameManager = gameManager;
     }
 
-    public List<List<CarInfo>> playRound(GameRound gameRound, CarGroup carGroup) {
+    public List<List<CarInfo>> runGameRounds(GameRound gameRound, CarGroup carGroup) {
         List<List<CarInfo>> roundResult = new ArrayList<>();
-
-        for (int i = 0; i < gameRound.getRound(); i++) {
+        for (int currentRound = 1; currentRound <= gameRound.getRound(); currentRound++) {
             gameManager.moveCarsBasedOnRule(carGroup);
             roundResult.add(gameManager.retrieveCarStatus(carGroup));
         }
-
         return roundResult;
     }
 
-    public List<String> getWinner(CarGroup carGroup) {
+    public List<String> getWinners(CarGroup carGroup) {
         return gameManager.determineWinners(carGroup);
     }
 
