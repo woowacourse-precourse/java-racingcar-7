@@ -36,6 +36,10 @@ public class Car {
         return carName;
     }
 
+    public String getMode() {
+        return mode.getClass().getSimpleName();
+    }
+
     public void setMoveDistance(Integer move) {
         mode.setMovementDistance(move);
     }
