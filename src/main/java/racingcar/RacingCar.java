@@ -126,7 +126,7 @@ public class RacingCar {
         System.out.println("최종 우승자 : " + winners);
     }
 
-    public void catchError() {
+    private void catchError() {
         checkIfCarNameSame();
         for (String carNameForCheck : carNameList) {
             checkCarNameLength(carNameForCheck);
@@ -135,20 +135,20 @@ public class RacingCar {
         }
     }
 
-    public void checkCarNameLength(String carNameForCheck) {
+    private void checkCarNameLength(String carNameForCheck) {
         int maxLength = 5;
         if (carNameForCheck.length() > maxLength) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkIfCarNameBlank(String carNameForCheck) {
+    private void checkIfCarNameBlank(String carNameForCheck) {
         if (carNameForCheck.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void checkIfCarNameSame() {
+    private void checkIfCarNameSame() {
         carNameSet = new HashSet<>(carNameList);
         if (carNameSet.size() != carNamesSize) {
             throw new IllegalArgumentException();
