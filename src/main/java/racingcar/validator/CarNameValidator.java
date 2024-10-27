@@ -10,16 +10,32 @@ public class CarNameValidator {
     public List<String> validCarNames = new ArrayList<>();
 
     public List<String> validate(String carNames) {
-        validateBlank(carNames);
-        validateContainComma(carNames);
-        StringTokenizer stringTokenizer = new StringTokenizer(carNames, DELIM);
-        while (stringTokenizer.hasMoreTokens()) {
-            String name = stringTokenizer.nextToken();
-            validateMoreThanFive(carNames);
-            validateDuplicate(carNames);
+        validateUserInput(carNames);
+        List<String> names = tokenizerNames(carNames);
+        for (String name : names) {
+            validateEachName(name);
             validCarNames.add(name);
         }
         return validCarNames;
+    }
+
+    private void validateUserInput(String carNames) {
+        validateBlank(carNames);
+        validateContainComma(carNames);
+    }
+
+    private List<String> tokenizerNames(String carNames) {
+        List<String> names = new ArrayList<>();
+        StringTokenizer stringTokenizer = new StringTokenizer(carNames, DELIM);
+        while (stringTokenizer.hasMoreTokens()) {
+            names.add(stringTokenizer.nextToken());
+        }
+        return names;
+    }
+
+    private void validateEachName(String carNames) {
+        validateMoreThanFive(carNames);
+        validateDuplicate(carNames);
     }
 
     public void validateBlank(String input) {
