@@ -11,12 +11,12 @@ import racingcar.view.ResultView;
 public class RaceController {
     public void run() {
         String carNames = InputView.getCarNames();
-
         String[] carNamesList=wrongCheckName(carNames);
         int rounds = InputView.getRounds();
-
+        if (rounds<0){
+            throw new IllegalArgumentException("라운드 수가 음수임");
+        }
         Race race = new Race(Arrays.asList(carNamesList), rounds);
-
         for (int i = 0; i < rounds; i++) {
             race.start();
             ResultView.printRoundResult(race.getCars());
