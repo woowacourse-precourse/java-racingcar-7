@@ -1,35 +1,14 @@
 package racingcar;
 
 import racingcar.util.RandomGenerator;
+import racingcar.vehicle.Vehicle;
 
-public class Car {
-
-    String carName;
-    int tryCount;
-    int forwardCount = 0;
+public class Car extends Vehicle {
 
     private RandomGenerator randomGenerator = new RandomGenerator();
 
     public Car(String carName, int tryCount) {
-        if (carName.length() >= 6) {
-            throw new IllegalArgumentException("자동차 이름이 6글자 이상입니다.");
-        }
-
-        this.carName = carName;
-        this.tryCount = tryCount;
-    }
-
-    public String getCarName() {
-        return carName;
-
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public int getForwardCount() {
-        return forwardCount;
+        super(carName,tryCount);
     }
 
     public void moveForward() {
@@ -40,6 +19,5 @@ public class Car {
             }
         }
     }
-
 
 }
