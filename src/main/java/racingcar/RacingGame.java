@@ -84,6 +84,12 @@ public class RacingGame {
         }
     }
 
+    private String inputMaxTurn() {
+        String maxTrunString = Console.readLine();
+        maxTrunString = maxTrunString.trim();
+
+        return maxTrunString;
+    }
 
 
     private void playGame() {
