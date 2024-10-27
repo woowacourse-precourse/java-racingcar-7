@@ -29,7 +29,8 @@ public class Game {
         Output.executionResult();
         for (int i = 0; i < repetitionCount; i++) {
             for (Car car : cars) {
-                carService.incrementMoveCount(car);
+                int range = carService.incrementMoveCount(car);
+                Output.playerResult(car.getName(), range);
             }
             System.out.println();
         }

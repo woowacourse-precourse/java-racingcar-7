@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import java.util.List;
-import racingcar.io.output.Output;
 import racingcar.util.Random;
 
 public class CarService {
@@ -19,13 +18,13 @@ public class CarService {
                 .toList();
     }
 
-    public void incrementMoveCount(Car car) {
+    public int incrementMoveCount(Car car) {
         int range = random.pickNumberInRange();
 
         if (range > RANGE_CONDITION) {
             car.addMoveCount();
         }
 
-        Output.playerResult(car.getName(), range);
+        return range;
     }
 }
