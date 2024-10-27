@@ -7,21 +7,16 @@ import java.util.*;
 public class Application {
 
     public static void main(String[] args) {
-        try {
-            // 차명 입력
-            String[] carNames = getCarNames();
-            // 레이스 횟수 입력
-            int raceRounds = getRaceRounds();
-            // 차 객체 생성
-            List<Car> cars = initializeCars(carNames);
-            // 레이스 시작
-            startRace(cars, raceRounds);
-            // 우승자 출력
-            printWinners(cars);
-
-        } catch (IllegalArgumentException e) { // 잘못된 값 예외 처리
-            System.out.println(e.getMessage());
-        }
+        // 차명 입력
+        String[] carNames = getCarNames();
+        // 레이스 횟수 입력
+        int raceRounds = getRaceRounds();
+        // 차 객체 생성
+        List<Car> cars = initializeCars(carNames);
+        // 레이스 시작
+        startRace(cars, raceRounds);
+        // 우승자 출력
+        printWinners(cars);
     }
 
     // 차 이름 입력
