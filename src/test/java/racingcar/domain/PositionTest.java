@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ public class PositionTest {
     @DisplayName("Position은 음수가 될 수 없다.")
     void validatePosition_Test() {
         //expected
-        Assertions.assertThatThrownBy(() -> new Position(-1))
+        assertThatThrownBy(() -> new Position(-1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ILLEGAL_POSITION.getMessage());
     }
@@ -29,6 +29,6 @@ public class PositionTest {
         position.forward();
 
         //then
-        Assertions.assertThat(position.getValue()).isEqualTo(4);
+        assertThat(position.getValue()).isEqualTo(4);
     }
 }
