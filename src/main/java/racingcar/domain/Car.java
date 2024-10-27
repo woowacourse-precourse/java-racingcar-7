@@ -6,13 +6,17 @@ public class Car {
     private final String name;
     private int distance;
 
-
     public Car(String name) {
+        validateName(name);
         this.name = name;
         this.distance = 0;
     }
 
-    private void validateName(){}
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 최대 5자까지만 입력 가능합니다.");
+        }
+    }
 
     public void setDistance(int randomNumber) {
         if (randomNumber >= MINIMUM_ADVANCE_VALUE) {
@@ -20,10 +24,11 @@ public class Car {
         }
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public int getDistance(){
+
+    public int getDistance() {
         return distance;
     }
 }
