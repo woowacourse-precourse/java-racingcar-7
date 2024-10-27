@@ -94,6 +94,15 @@ public class RacingCar {
         return false;
     }
 
+    public static void printCarsActions(Car cars[]) {
+
+        for (int i = 0; i < cars.length; i++) {
+            String goString = getGoString(cars[i]);
+            System.out.println(cars[i].getName() + " : " + goString);
+
+        }
+        System.out.println();
+    }
 
 
 }
