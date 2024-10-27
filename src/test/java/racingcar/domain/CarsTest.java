@@ -2,12 +2,17 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.TestConstants.CAR_MOVE_COUNT;
+import static racingcar.TestConstants.CAR_MOVE_TWICE;
 import static racingcar.TestConstants.CAR_NAME_JUN;
 import static racingcar.TestConstants.CAR_NAME_POBI;
 import static racingcar.TestConstants.CAR_NAME_WONI;
-import static racingcar.TestConstants.MOVED_CAR_INDEX;
+import static racingcar.TestConstants.ONLY_WINNER;
+import static racingcar.TestConstants.POBI_CAR_INDEX;
 import static racingcar.TestConstants.START_LOCATION;
-import static racingcar.TestConstants.STOP_CAR_INDEX;
+import static racingcar.TestConstants.WINNER_COUNT;
+import static racingcar.TestConstants.WONI_CAR_INDEX;
+import static racingcar.common.Constants.MOVE;
+import static racingcar.common.Constants.ROUND_RESULT_PROMPT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +48,10 @@ class CarsTest {
         Cars cars = new Cars(carNames);
 
         // when
-        cars.carMove(MOVED_CAR_INDEX);
+        cars.carMove(POBI_CAR_INDEX);
 
         // then
-        assertThat(cars.checkCarMove(MOVED_CAR_INDEX, CAR_MOVE_COUNT)).isTrue();
+        assertThat(cars.checkCarMove(POBI_CAR_INDEX, CAR_MOVE_COUNT)).isTrue();
     }
 
     @Test
@@ -61,9 +66,62 @@ class CarsTest {
         Cars cars = new Cars(carNames);
 
         // when
-        cars.carMove(MOVED_CAR_INDEX);
+        cars.carMove(POBI_CAR_INDEX);
 
         // then
-        assertThat(cars.checkCarMove(STOP_CAR_INDEX, START_LOCATION)).isTrue();
+        assertThat(cars.checkCarMove(WONI_CAR_INDEX, START_LOCATION)).isTrue();
+    }
+
+    @Test
+    @DisplayName("라운드 결과를 가져오도록 요청한 차의 라운드 결과를 잘 가져온다.")
+    void getRountResult () {
+        // given
+        List<String> carNames = List.of(CAR_NAME_POBI, CAR_NAME_WONI, CAR_NAME_JUN);
+        Cars cars = new Cars(carNames);
+
+        cars.carMove(WONI_CAR_INDEX);
+        cars.carMove(WONI_CAR_INDEX);
+
+        // when
+        String roundResult = cars.getRoundResult(WONI_CAR_INDEX);
+
+        // then
+        String expectedResult = CAR_NAME_WONI + ROUND_RESULT_PROMPT + MOVE.repeat(CAR_MOVE_TWICE);
+        assertThat(roundResult).isEqualTo(expectedResult);
+
+    }
+
+    @Test
+    @DisplayName("경기의 우승자를 가져온다. (우승자가 1명인 경우)")
+    void getWinner () {
+        // given
+        List<String> carNames = List.of(CAR_NAME_POBI, CAR_NAME_WONI, CAR_NAME_JUN);
+        Cars cars = new Cars(carNames);
+
+        cars.carMove(POBI_CAR_INDEX);
+        cars.carMove(POBI_CAR_INDEX);
+
+        // when
+        Winners winners = cars.findWinners();
+
+        // then
+        assertThat(winners.size()).isEqualTo(ONLY_WINNER);
+    }
+
+    @Test
+    @DisplayName("경기의 우승자를 가져온다. (우승자가 여러 명인 경우)")
+    void getWinners () {
+        // given
+        List<String> carNames = List.of(CAR_NAME_POBI, CAR_NAME_WONI, CAR_NAME_JUN);
+        Cars cars = new Cars(carNames);
+
+        cars.carMove(POBI_CAR_INDEX);
+        cars.carMove(WONI_CAR_INDEX);
+
+        // when
+        Winners winners = cars.findWinners();
+
+        // then
+        assertThat(winners.size()).isEqualTo(WINNER_COUNT);
     }
 }

@@ -2,8 +2,12 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.TestConstants.CAR_MOVE_COUNT;
+import static racingcar.TestConstants.CAR_MOVE_TWICE;
 import static racingcar.TestConstants.CAR_NAME_POBI;
+import static racingcar.TestConstants.MAX;
 import static racingcar.TestConstants.START_LOCATION;
+import static racingcar.common.Constants.MOVE;
+import static racingcar.common.Constants.ROUND_RESULT_PROMPT;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,5 +38,21 @@ class CarTest {
 
         // then
         assertThat(car.compareCarGoCnt(CAR_MOVE_COUNT)).isTrue();
+    }
+
+    @Test
+    @DisplayName("라운드 결과 출력을 위한 값이 반환된다.")
+    void getRoundResult () {
+        // given
+        Car car = new Car(CAR_NAME_POBI);
+        car.move();
+        car.move();
+
+        // when
+        String roundResult = car.getRoundResult();
+
+        // then
+        String expectedResult = CAR_NAME_POBI + ROUND_RESULT_PROMPT + MOVE.repeat(CAR_MOVE_TWICE);
+        assertThat(roundResult).isEqualTo(expectedResult);
     }
 }

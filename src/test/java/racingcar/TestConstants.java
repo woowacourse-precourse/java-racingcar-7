@@ -17,9 +17,15 @@ public class TestConstants {
     public static Integer START_LOCATION = 0;
     public static Integer CAR_COUNT = 3;
     public static Integer CAR_MOVE_COUNT = 1;
-    public static Integer MOVED_CAR_INDEX = 1;
-    public static Integer STOP_CAR_INDEX = 0;
+    public static Integer CAR_MOVE_TWICE = 2;
+    public static Integer POBI_CAR_INDEX = 0;
+    public static Integer WONI_CAR_INDEX = 1;
 
     public static Integer STOP_NUMBER = 3;
     public static Integer MOVE_NUMBER = 4;
+
+    public static Integer ONLY_WINNER = 1;
+    public static Integer WINNER_COUNT = 2;
+
+    public static Integer MAX = 1;
 }

@@ -4,16 +4,20 @@ import static racingcar.service.ValidationService.validateGameCount;
 
 import racingcar.domain.Cars;
 import racingcar.domain.RandomNumber;
+import racingcar.domain.Winners;
 import racingcar.dto.GameDataDto;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Racing {
     private final InputView inputView;
+    private final OutputView outputView;
     private final CarService carService;
 
     public Racing() {
         this.inputView = new InputView();
+        this.outputView = new OutputView();
         this.carService = new CarService();
     }
 
@@ -22,6 +26,8 @@ public class Racing {
         GameDataDto gameDataDto = ready();
 
         racing(gameDataDto);
+
+        result(gameDataDto);
     }
 
     public GameDataDto ready () {
@@ -35,16 +41,25 @@ public class Racing {
         return new GameDataDto(cars, gameCnt);
     }
 
+    public void result(GameDataDto gameDataDto) {
+        Winners winners = carService.getWinners(gameDataDto.getCars());
+    }
+
     private void racing (GameDataDto gameDataDto) {
+        outputView.startRacing();
+
         for (int i = 0; i < gameDataDto.getGameCount(); i ++) {
             playingPerGame(gameDataDto.getCars());
+            outputView.perRacing();
         }
+
     }
 
     private void playingPerGame (Cars cars) {
         for (int i = 0; i < cars.size(); i ++) {
             RandomNumber randomNumber = createRandomNumber();
             carService.movePerCar(cars, randomNumber, i);
+            outputView.getRoundResult(cars, i);
         }
     }
 

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.RandomNumber;
+import racingcar.domain.Winners;
 
 public class CarService {
 
@@ -17,5 +18,9 @@ public class CarService {
         if (randomNumber.isMove()) {
             cars.carMove(index);
         }
+    }
+
+    public Winners getWinners(Cars cars) {
+        return cars.findWinners();
     }
 }
