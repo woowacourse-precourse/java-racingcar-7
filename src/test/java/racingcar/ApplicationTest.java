@@ -46,16 +46,23 @@ class ApplicationTest extends NsTest {
 
     // 5글자 초과 오류 테스트
     @Test
-    void 예외_테스트1() {
+    void name_error_test1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("AAAAAA", "3"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+    //이름 공백 입력
+    @Test
+    void name_error_test2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ,aa", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     //시행 횟수 문자 오류 테스트
     @Test
-    void 예외_테스트2() {
+    void try_error_test1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "a"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -64,7 +71,7 @@ class ApplicationTest extends NsTest {
 
     //시행 횟수 유리수 오류 테스트
     @Test
-    void 예외_테스트3() {
+    void try_error_test2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "3.3"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -73,7 +80,7 @@ class ApplicationTest extends NsTest {
 
     //시행 횟수 음수 오류 테스트
     @Test
-    void 예외_테스트4() {
+    void try_error_test3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-3"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -82,7 +89,7 @@ class ApplicationTest extends NsTest {
 
     //시행 횟수 공백 오류 테스트
     @Test
-    void 예외_테스트5() {
+    void try_error_test4() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", null))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -91,21 +98,14 @@ class ApplicationTest extends NsTest {
 
     //시행 횟수 0입력
     @Test
-    void 예외_테스트6() {
+    void try_error_test5() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "0"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    //이름 공백 입력
-    @Test
-    void 예외_테스트7() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(" ,aa", "3"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
+
 
     @Override
     public void runMain() {
