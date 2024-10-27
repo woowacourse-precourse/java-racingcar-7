@@ -1,25 +1,24 @@
 package racingcar.racing;
 
+import static racingcar.io.OutputUtil.println;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import racingcar.car.Car;
-import racingcar.io.OutputUtil;
 import racingcar.message.prompt.ResultPrompt;
 import racingcar.util.RandomNumberGenerator;
 
 public class RaceSimulator {
-    private static final OutputUtil outputUtil = OutputUtil.getInstance();
-
     private RaceSimulator() {
     }
 
     public static void startRace(List<Car> cars, long tryCount) {
-        outputUtil.println(ResultPrompt.RESULT_PROMPT);
+        println(ResultPrompt.RESULT_PROMPT);
 
         while (tryCount-- > 0) {
             tryMoveCars(cars);
-            outputUtil.println(getRacingProgress(cars));
+            println(getRacingProgress(cars));
         }
     }
 
