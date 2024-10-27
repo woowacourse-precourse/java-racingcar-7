@@ -22,9 +22,8 @@ public class Car {
         if (isForwardable()) {
             this.forwardCount++;
         }
-        String progress = PROGRESS_BAR.repeat(forwardCount);
 
-        return carName + " : " + progress;
+        return carName + " : " + PROGRESS_BAR.repeat(forwardCount);
     }
 
     public String getCarName() {
