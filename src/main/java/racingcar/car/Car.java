@@ -1,6 +1,6 @@
 package racingcar.car;
 
-abstract class Car {
+public abstract class Car {
     private String carName;
     protected long moveDistance;
 
