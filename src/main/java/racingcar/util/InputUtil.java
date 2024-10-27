@@ -14,7 +14,7 @@ public class InputUtil {
         return Arrays.stream(input.split(GameConfig.CAR_NAME_DELIMITER))
                 .map(String::trim)
                 .filter(InputUtil::validateHasInput)
-                .filter(i -> i.length() <= GameConfig.CAR_NAME_MAX_LENGTH)
+                .filter(InputUtil::validateNameForMaxLength)
                 .toList();
     }
 
@@ -44,9 +44,16 @@ public class InputUtil {
     }
 
     private static String readLine() {
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
         validateHasInput(input);
         return input;
+    }
+
+    private static boolean validateNameForMaxLength(String input) {
+        if (input.length() > GameConfig.CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
     private static boolean validateHasInput(String input) {
