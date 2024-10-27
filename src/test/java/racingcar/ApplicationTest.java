@@ -85,7 +85,7 @@ class ApplicationTest extends NsTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복되면 안됩니다.");
     }
-    
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

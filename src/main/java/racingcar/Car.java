@@ -51,14 +51,17 @@ public class Car {
     }
 
     private void validateTryNumber(String checkTryNumber) {
-        if (Integer.parseInt(checkTryNumber) <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 양의 정수로 입력 해야합니다.");
-        }
         if (checkTryNumber.isEmpty()) {
             throw new IllegalArgumentException("시도 횟수가 입력되지 않았습니다.");
         }
-        if (checkTryNumber.trim().isEmpty()) {
+        if (checkTryNumber.contains(" ")) {
             throw new IllegalArgumentException("공백을 포함하면 안됩니다.");
+        }
+        if (!checkTryNumber.matches("[0-9]*")) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수로 입력 해야합니다.");
+        }
+        if (Integer.parseInt(checkTryNumber) <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수로 입력 해야합니다.");
         }
     }
 }
