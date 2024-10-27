@@ -67,9 +67,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 차_이름이_중복인_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("중복,중복", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 시도할_횟수가_정수가_아닌_경우() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,woni", "a"))
+                assertThatThrownBy(() -> runException("pobi,woni", "정수가 아닙니다."))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -78,6 +86,22 @@ class ApplicationTest extends NsTest {
     void 시도할_횟수가_0인_경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도할_횟수가_표현_범위를_벗어난_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "2147483648"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 플레이어가_1명인_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
