@@ -8,7 +8,6 @@ public class Car {
     private int moveDistance=0;
     private ArrayList<Integer> moveLog=new ArrayList<>();
 
-
     public Car(String name) {
         this.name=name;
     }

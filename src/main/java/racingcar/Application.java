@@ -28,23 +28,26 @@ public class Application {
 
         ArrayList<Car> raceMember=competitionProgress.getRaceMember();
 
+        //각 시행마다 이동한 결과 출력
         System.out.println("실행 결과");
         for(int i=0;i<playCount;i++) {
-            //System.out.println((i+1)+"번째 시행");
            for(Car car: raceMember) {
                PrintLog(car,i);
            }
+           System.out.println();
         }
-        System.out.println();
+
 
         ArrayList<Car> raceWinner =competitionProgress.getRaceWinner();
         int numberOfWinners=raceWinner.size();
 
-        System.out.print("최종우승자 : ");
+        //최종 우승자 출력 2명 이상인 경우 모두 출력
+        System.out.print("최종 우승자 : ");
         for(int i=0;i<numberOfWinners;i++) {
 
             String winnerName=raceWinner.get(i).getName();
 
+            //마지막 우승 인원인 경우 , 붙이지 않고 출력 후 종료
             if(i==numberOfWinners-1) {
                 System.out.println(winnerName);
             } else {
@@ -60,7 +63,8 @@ public class Application {
         String name=car.getName();
         int moveDistance=raceLog.get(count);
 
-        System.out.print(name + ": ");
+        System.out.print(name + " : ");
+        //이동한 거리만큼 - 출력
         for(int i=0;i<moveDistance;i++) {
             System.out.print("-");
         }
@@ -84,6 +88,7 @@ public class Application {
         //자동차 대회 진행
         competitionProgress= new CompetitionProgress(parseInput,playCount);
 
+        //결과 출력
         Output(competitionProgress);
 
     }
