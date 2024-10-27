@@ -12,15 +12,11 @@ public class Application {
         Input input = new Input(carNames, roundNumber);
         Racing racing;
 
-        if (Util.isValidCarNamesInput(input.getCarNames()) && Util.isValidRoundNumber(input.getRounds())) {
-            if (Util.hasDuplicates(input.splitCarNameInput())) {
-                throw new IllegalArgumentException("입력한 자동차 이름에 중복이 있습니다.");
-            }
-            racing = new Racing(input.splitCarNameInput());
-            racing.runAllRound(Integer.parseInt(input.getRounds()));
-            racing.getWinner();
-        } else {
-            throw new IllegalArgumentException("입력이 유효하지 않습니다.");
-        }
+        Util.throwExceptionInputIsNotValid(input.getCarNames(), input.getRounds(), input.splitCarNameInput());
+        
+        racing = new Racing(input.splitCarNameInput());
+        racing.runAllRound(Integer.parseInt(input.getRounds()));
+        racing.getWinner();
+
     }
 }
