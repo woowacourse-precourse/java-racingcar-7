@@ -32,6 +32,7 @@ public class Application {
         String count;
 
         count = promptForGameCount();
+        Validator.validateGameCount(count);
         return Integer.parseInt(count);
     }
 
