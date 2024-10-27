@@ -1,6 +1,6 @@
 package util;
 
-public class CarNameValidator {
+public class InputValidator {
     public enum ErrorMessage {
         EMPTY_OR_NULL_NAME("자동차 이름에 공백이나 null 값이 포함될 수 없습니다."),
         INVALID_DELIMITER("자동차 이름은 쉼표로 구분되어야 합니다.");
