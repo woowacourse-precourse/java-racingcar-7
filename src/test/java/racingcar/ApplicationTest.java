@@ -2,6 +2,8 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -13,21 +15,58 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 자동차_이름_길이_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("이름은 5자 이하만 가능합니다.")
+        );
+    }
+
+    @Test
+    void 자동차_이름_중복_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 중복될 수 없습니다.")
+        );
+    }
+
+    @ParameterizedTest(name = "이동 횟수 유효성 예외 테스트: {0}")
+    @ValueSource(strings = {"0", "-1", "-100"})
+    void 이동_횟수_유효성_예외_테스트(String moveCount) {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", moveCount))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1 이상의 양수만 입력 가능합니다.")
+        );
+    }
+
+    @Test
+    void 잘못된_형식의_이동_횟수_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자만 입력 가능합니다.")
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
