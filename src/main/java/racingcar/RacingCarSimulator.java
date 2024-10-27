@@ -54,8 +54,9 @@ public class RacingCarSimulator {
 
 	private void simulateOneCycle() {
 		for (int carIndex = 0; carIndex < carNames.size(); carIndex++) {
-			if (canMoveCar())
+			if (canMoveCar()) {
 				moveCar(carIndex);
+			}
 		}
 	}
 
