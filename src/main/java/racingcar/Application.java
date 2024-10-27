@@ -25,7 +25,9 @@ public class Application {
         String[] names = input.split(NAME_DELIMITER);
         inputValidator.validateDuplicateName(names);
         cars = Arrays.stream(names).map(name -> new Car(name, CAR_START_POSITION)).toList();
-        totalAttempts = Integer.parseInt(inputView.requestTotalAttempts());
+        String inputAttempts = inputView.requestTotalAttempts();
+        inputValidator.checkHasNumberOnly(inputAttempts);
+        totalAttempts = Integer.parseInt(inputAttempts);
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
         racing.race();
