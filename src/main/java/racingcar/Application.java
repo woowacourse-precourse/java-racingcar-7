@@ -46,6 +46,18 @@ public class Application {
         return randomValue >= 4;
     }
 
+    public static void printStatus(String[] carName, int[] moveStatus){
+        for(int i = 0 ; i < carName.length ; i++){
+            System.out.print(carName[i]+" : ");
+
+            for(int j = 0 ; j < moveStatus[i] ; j++){
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
 
 
     public static void main(String[] args) {
@@ -63,6 +75,7 @@ public class Application {
 
         for(int i = 0 ; i < moveCount ; i++){
             moveCar(moveStatus);
+            printStatus(carName, moveStatus);
         }
 
 
