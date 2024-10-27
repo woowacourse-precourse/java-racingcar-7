@@ -53,12 +53,13 @@ public class Application {
 
     private static Car[] checkDuplicateName(ArrayList<String> carNames){
         ArrayList<Car> carList = new ArrayList<>();
+        List<String> carNameList = new ArrayList<>();
         for(String carName:carNames){
-            if(!carList.contains(carName)){
+            if(!carNameList.contains(carName)){
                 carList.add(new Car(carName));
+                carNameList.add(carName);
             }
         }
-
         if (carList.size() != carNames.size()){
             throw new IllegalArgumentException("중복된 자동차 이름은 사용할 수 없습니다.(대문자와 소문자는 동일하게 인식됩니다.)");
         }
