@@ -25,7 +25,7 @@ public class InputUtil {
     }
 
     public static int readInt() {
-        return parseToInteger(readLine());
+        return parseToInteger(readLine().trim());
     }
 
     private static int parseToInteger(String input) {

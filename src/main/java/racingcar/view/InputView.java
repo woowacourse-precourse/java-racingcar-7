@@ -21,4 +21,8 @@ public class InputView {
                 .toList();
     }
 
+    public int getTryNumberFromUser() {
+        return InputUtil.readInt();
+    }
+
 }
