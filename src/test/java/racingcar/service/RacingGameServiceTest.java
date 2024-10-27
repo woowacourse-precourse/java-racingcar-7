@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+
 import static racingcar.constant.ErrorMessages.CAR_COUNT_ERROR_MESSAGE;
 import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
@@ -34,9 +34,24 @@ class RacingGameServiceTest {
     @Test
     public void 자동차_수는_최소_2대_이상이어야_한다_2대_미만인_경우(){
         final var racingGameService = new RacingGameService();
-        String input = "";
+        String input = "a";
         assertThatThrownBy(()->racingGameService.createCarsWithUniqueName(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_COUNT_ERROR_MESSAGE);
+    }
+
+    @Test
+    public void 가장_많이_이동한_자동차를_우승자로_뽑는다(){
+        final var racingGameService = new RacingGameService();
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        Car car3 = new Car("jun");
+
+        car1.move(5);
+        car3.move(5);
+
+        List<String> winners = racingGameService.selectWinners(Arrays.asList(car1,car2,car3));
+
+        assertThat(winners).isEqualTo(Arrays.asList("pobi", "jun"));
     }
 }
