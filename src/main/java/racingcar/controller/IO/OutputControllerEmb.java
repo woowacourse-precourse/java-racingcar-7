@@ -39,11 +39,9 @@ public class OutputControllerEmb implements OutputController {
     @Override
     public void printCarsCurrentDistance(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            System.out.print(racingCar.getName() + " : ");
-            System.out.print("-".repeat(racingCar.getDistance()));
-            System.out.print("\n");
-
+            resultViewer.output(racingCar.getName() + " : ");
+            resultViewer.output("-".repeat(racingCar.getDistance()));
+            resultViewer.output("\n");
         }
     }
-
 }
