@@ -43,7 +43,7 @@
 
 ## Judge Class
 
-- [ ] 테스트 코드 작성
+- [x] 테스트 코드 작성
     - [x] judge 테스트 코드 작성
     - [x] getWinnerName 테스트 코드 작성
 - [x] judge 메소드 구현
@@ -52,6 +52,8 @@
 
 ## Race Class
 
+- [ ] 테스트 코드 작성
+    - [ ] setup 테스트 코드 작성
 - [ ] run 메소드 구현
 - [ ] startGame 메소드 구현
 - [ ] moveCar 메소드 구현
