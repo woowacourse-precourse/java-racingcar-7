@@ -16,23 +16,16 @@ public class Participant {
         return carName;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
     public int getMoveCount() {
         return moveCount;
     }
 
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
+    public void plusMoveCount() {
+        this.moveCount++;
     }
 
     @Override
     public String toString() {
-        return "Participant{" +
-                "carName='" + carName + '\'' +
-                ", moveCount=" + moveCount +
-                '}';
+        return carName + " : " + "-".repeat(moveCount);
     }
 }
