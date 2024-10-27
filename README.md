@@ -8,6 +8,7 @@
 - 자동차 이름별로 맵 형태로 저장 (이름이 키, 경주 진행 사항이 StringBuilder 형태로 저장)
 
 #### 2. 시도할 횟수 n 입력 받기
+- 숫자가 아닐 경우 예외 발생 (```IllegalArgumentException``` 발생)
 - 횟수가 0일 경우 예외 발생 (```IllegalArgumentException``` 발생)
 
 #### 3. for문으로 n번 반복
