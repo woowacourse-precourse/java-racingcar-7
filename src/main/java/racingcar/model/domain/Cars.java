@@ -28,4 +28,30 @@ public class Cars {
             car.moveConditionally();
         }
     }
+
+    public List<String> determineWinners() {
+        int maxDistance = getMaxDistance();
+        return getWinnerNames(maxDistance);
+    }
+
+    private int getMaxDistance() {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            int distance = car.getCurrentDistance();
+            if (distance > maxDistance) {
+                maxDistance = distance;
+            }
+        }
+        return maxDistance;
+    }
+
+    private List<String> getWinnerNames(int maxDistance) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getCurrentDistance() == maxDistance) {
+                winners.add(car.getCarName());
+            }
+        }
+        return winners;
+    }
 }
