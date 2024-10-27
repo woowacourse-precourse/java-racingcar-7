@@ -5,6 +5,8 @@ import racingcar.util.random.RandomNumberGenerator;
 
 public class RacingCarMovingStrategy implements MovingStrategy {
 
+    public static final int ZERO = 0;
+
     private final RandomNumberGenerator randomNumberGenerator;
     private final NumberComparable<Number> numberComparable;
     private final int forwardMinInclusive;
@@ -19,6 +21,6 @@ public class RacingCarMovingStrategy implements MovingStrategy {
     @Override
     public boolean canMove() {
         Number value = randomNumberGenerator.pickNumber();
-        return numberComparable.compare(value, forwardMinInclusive) >= 0;
+        return numberComparable.compare(value, forwardMinInclusive) >= ZERO;
     }
 }

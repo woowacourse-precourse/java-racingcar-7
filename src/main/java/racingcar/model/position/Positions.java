@@ -46,19 +46,19 @@ public class Positions {
                 .toList();
     }
 
-    public long calculateMax() {
+    public long longValue(final int index) {
+        return value(index).value();
+    }
+
+    private long calculateMax() {
         return values.stream()
                 .map(Position::value)
                 .max(Long::compare)
                 .orElseThrow(IllegalStateException::new);
     }
 
-    public Position value(final int index) {
+    private Position value(final int index) {
         return values.get(index);
-    }
-
-    public long longValue(final int index) {
-        return value(index).value();
     }
 
     @Override
