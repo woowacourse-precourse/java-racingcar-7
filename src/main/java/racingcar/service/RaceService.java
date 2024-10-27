@@ -21,14 +21,14 @@ public class RaceService {
         }
     }
 
-    private static List<String> getNameList(String input) {
-        return Arrays.stream(input.split(",")).toList();
-    }
-
     public void race() {
         for (Car car : cars) {
             car.run(Randoms.pickNumberInRange(0, 9));
         }
+    }
+
+    private static List<String> getNameList(String input) {
+        return Arrays.stream(input.split(",")).toList();
     }
 
     public List<Car> getCars(){

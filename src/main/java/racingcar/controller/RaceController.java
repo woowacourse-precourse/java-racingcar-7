@@ -21,17 +21,20 @@ public class RaceController {
     }
 
     public void run(){
-        service.init(inputView.getName());
-
+        String name = inputView.getName();
         int count = inputView.getCount();
 
+        service.init(name);
         outputView.start();
+        raceProcess(count);
+
+    }
+
+    private void raceProcess(int count) {
         for (int i = 0; i < count; i++) {
             service.race();
             outputView.displayRace(service.getCars());
         }
-
-
     }
 
 }
