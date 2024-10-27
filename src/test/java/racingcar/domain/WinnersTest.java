@@ -17,8 +17,8 @@ class WinnersTest {
         // given
         List<Car> test = new ArrayList<>();
 
-        Car pobi = new Car("pobi");
-        Car woni = new Car("woni");
+        Car pobi = Car.create("pobi");
+        Car woni = Car.create("woni");
 
         test.add(pobi);
         test.add(woni);

@@ -36,7 +36,8 @@ public class CarList {
     }
 
     public void add(String name) {
-        cars.add(new Car(name));
+        Car car = Car.create(name);
+        this.cars.add(car);
     }
 
     public void moveAll() {

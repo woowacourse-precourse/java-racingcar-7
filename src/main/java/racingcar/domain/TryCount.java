@@ -9,14 +9,34 @@ public class TryCount {
     private final Integer maxCount;
     private Integer count;
 
-    public TryCount(String input) {
-        this.maxCount = parseAndValidateInput(input);
-        this.count = 0;
-    }
-
     public TryCount(Integer maxCount) {
         this.maxCount = maxCount;
         this.count = 0;
+    }
+
+    public static TryCount create(String input) {
+        return new TryCount(parseAndValidateInput(input));
+    }
+
+    private static Integer parseAndValidateInput(String input) {
+        Integer parsedCount = parseInput(input);
+        validateParsedCount(parsedCount);
+
+        return parsedCount;
+    }
+
+    private static Integer parseInput(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_COUNT.getMessage());
+        }
+    }
+
+    private static void validateParsedCount(Integer count) {
+        if (count < 0) {
+            throw new IllegalArgumentException(INVALID_COUNT.getMessage());
+        }
     }
 
     public boolean canTry() {
@@ -26,28 +46,6 @@ public class TryCount {
         }
         return false;
     }
-
-    private Integer parseAndValidateInput(String input) {
-        Integer parsedCount = parseInput(input);
-        validateParsedCount(parsedCount);
-
-        return parsedCount;
-    }
-
-    private Integer parseInput(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_COUNT.getMessage());
-        }
-    }
-
-    private void validateParsedCount(Integer count) {
-        if (count < 0) {
-            throw new IllegalArgumentException(INVALID_COUNT.getMessage());
-        }
-    }
-
 
     @Override
     public boolean equals(Object o) {

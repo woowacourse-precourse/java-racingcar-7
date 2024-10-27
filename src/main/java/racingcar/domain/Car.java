@@ -15,13 +15,21 @@ public class Car {
     private Integer cnt;
 
     public Car(String name) {
-        this.name = NameCollect.validName(name);
+        this.name = name;
         this.cnt = 0;
     }
 
     public Car(String name, Integer cnt) {
-        this.name = NameCollect.validName(name);
+        this.name = name;
         this.cnt = cnt;
+    }
+
+    public static Car create(String name) {
+        return new Car(NameCollect.validName(name));
+    }
+
+    public static Car create(String name, Integer cnt) {
+        return new Car(NameCollect.validName(name), cnt);
     }
 
     public Integer move() {

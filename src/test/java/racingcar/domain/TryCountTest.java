@@ -18,7 +18,7 @@ class TryCountTest {
     @DisplayName("정상 값 테스트")
     void test1() {
         String s = "5";
-        TryCount result = new TryCount(s);
+        TryCount result = TryCount.create(s);
         TryCount except = new TryCount(5);
 
         assertThat(result).isEqualTo(except);
@@ -31,7 +31,7 @@ class TryCountTest {
         int except = 5;
 
         String s = "5";
-        TryCount trycount = new TryCount(s);
+        TryCount trycount = TryCount.create(s);
 
         while (trycount.canTry()) {
             result++;
@@ -45,7 +45,7 @@ class TryCountTest {
     void test3() {
         String s = "3.5";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new TryCount(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TryCount.create(s));
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
     }
@@ -55,7 +55,7 @@ class TryCountTest {
     void test4() {
         String s = "0";
 
-        TryCount result = new TryCount(s);
+        TryCount result = TryCount.create(s);
         TryCount except = new TryCount(0);
 
         assertThat(result).isEqualTo(except);
@@ -66,7 +66,7 @@ class TryCountTest {
     void test5() {
         String s = "-5";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new TryCount(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TryCount.create(s));
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
     }
@@ -76,7 +76,7 @@ class TryCountTest {
     void test6() {
         String maxValue = String.valueOf(Integer.MAX_VALUE);
 
-        TryCount result = new TryCount(maxValue);
+        TryCount result = TryCount.create(maxValue);
         TryCount except = new TryCount(Integer.MAX_VALUE);
 
         assertThat(result).isEqualTo(except);
@@ -86,7 +86,7 @@ class TryCountTest {
     @NullAndEmptySource
     @DisplayName("null, 빈 입력")
     void test7(String s) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new TryCount(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TryCount.create(s));
 
         assertThat(exception.getMessage()).isEqualTo(INVALID_COUNT.getMessage());
     }

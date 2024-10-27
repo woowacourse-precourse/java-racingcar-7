@@ -20,7 +20,7 @@ class CarTest {
     void carTest1() {
         // given
         String name = "car";
-        Car car = new Car(name, 5);
+        Car car = Car.create(name, 5);
 
         // when
         String result = car.generateStatus();
@@ -34,7 +34,7 @@ class CarTest {
     void carTest2() {
         // given
         String name = "car";
-        Car car = new Car(name, 0);
+        Car car = Car.create(name, 0);
 
         // when
         String result = car.generateStatus();
@@ -48,7 +48,7 @@ class CarTest {
     void carTest3() {
         // given
         String name = "car";
-        Car car = new Car(name);
+        Car car = Car.create(name);
 
         // when
         String result = car.generateStatus();
@@ -70,7 +70,7 @@ class CarTest {
 
         while (!memoryExceeded) {
             try {
-                Car car = new Car(name, tryCount);
+                Car car = Car.create(name, tryCount);
                 String result = car.generateStatus();
                 assertThat(result).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(tryCount));
                 tryCount += increase;
@@ -87,7 +87,7 @@ class CarTest {
     @NullAndEmptySource
     void test4(String name) {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Car(name);
+            Car.create(name);
         });
     }
 
@@ -95,7 +95,7 @@ class CarTest {
     @DisplayName("이름 5자 테스트")
     void test5() {
         String name = "12345";
-        Car car = new Car(name);
+        Car car = Car.create(name);
         assertThat(car.generateStatus()).isEqualTo(name + COLON_SEPARATOR + MOVING.repeat(0));
     }
 

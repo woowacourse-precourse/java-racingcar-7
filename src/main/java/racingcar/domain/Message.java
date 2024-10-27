@@ -3,8 +3,9 @@ package racingcar.domain;
 import static racingcar.utils.Constant.WINNER_RESULT;
 
 import java.util.Objects;
+import racingcar.viewer.Output;
 
-public class Message {
+public class Message extends Output {
 
     private final String value;
 

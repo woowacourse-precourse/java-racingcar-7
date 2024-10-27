@@ -28,7 +28,7 @@ public class CarController {
         viewer.printTryCount();
         String countStr = viewer.readTryCount();
 
-        return new TryCount(countStr);
+        return TryCount.create(countStr);
     }
 
     public void startRace(NameCollect nameCollect, TryCount tryCount) {
