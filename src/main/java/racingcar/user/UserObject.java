@@ -1,17 +1,21 @@
 package racingcar.user;
 
 public class UserObject {
-    public String name;
-    public String score;
-    public int scoreNum = 0;
+    private String name;
+    private String score;
+    private int scoreNum = 0;
 
     public void updateUserScore() {
         this.score += "-";
         this.scoreNum++;
     }
 
-    public int getUserScore() {
+    public int getUserScoreNum() {
         return scoreNum;
+    }
+
+    public String getUserScoreString() {
+        return score;
     }
 
     public String getUserName() {
