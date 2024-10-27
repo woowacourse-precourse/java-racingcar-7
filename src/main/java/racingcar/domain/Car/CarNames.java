@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.Car;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -38,5 +38,11 @@ public class CarNames {
 		if (uniqueNames.size() != carNames.size()) {
 			throw new IllegalArgumentException(ErrorMessages.DUPLICATED.getMessage());
 		}
+	}
+
+	public List<Car> toCars() {
+		return carNames.stream()
+			.map(carName -> new Car(carName, new Distance()))
+			.collect(Collectors.toList());
 	}
 }

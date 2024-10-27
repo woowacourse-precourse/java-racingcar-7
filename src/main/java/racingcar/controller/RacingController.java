@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import java.util.List;
+
 import racingcar.domain.Attempt;
-import racingcar.domain.CarNames;
+import racingcar.domain.Car.Car;
+import racingcar.domain.Car.CarNames;
 import racingcar.view.InputView;
 import racingcar.view.OutputMessage;
 import racingcar.view.OutputView;
@@ -17,7 +20,9 @@ public class RacingController {
 
 	public void run() {
 		CarNames carNames = inputCarName();
-		Attempt attept = inputAttempt();
+		Attempt attempt = inputAttempt();
+		List<Car> cars = registerCars(carNames);
+
 	}
 
 	private CarNames inputCarName() {
@@ -30,5 +35,9 @@ public class RacingController {
 		outputView.print(OutputMessage.INSERT_ATTEMPT);
 		String input = inputView.readLine();
 		return Attempt.from(input);
+	}
+
+	private List<Car> registerCars(CarNames carNames) {
+		return carNames.toCars();
 	}
 }
