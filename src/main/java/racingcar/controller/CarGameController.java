@@ -8,12 +8,12 @@ import racingcar.view.OutputView;
 
 public class CarGameController {
     private List<Car> carNames;
-    private int gameCount;
+    private int gameRound;
     private final OutputView outputView;
 
     public CarGameController() {
         setInputs();
-        RaceCarService raceCarService = new RaceCarServiceImpl(carNames, gameCount);
+        RaceCarService raceCarService = new RaceCarServiceImpl(carNames, gameRound);
         this.outputView = new OutputView(raceCarService);
 
         playRounds();
@@ -22,7 +22,7 @@ public class CarGameController {
 
     private void setInputs() {
         this.carNames = InputController.setCarNames();
-        this.gameCount = InputController.setGameCount();
+        this.gameRound = InputController.setGameRound();
     }
 
     private void playRounds() {

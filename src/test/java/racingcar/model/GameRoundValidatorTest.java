@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Application;
 
-class GameCountValidatorTest extends NsTest {
+class GameRoundValidatorTest extends NsTest {
 
     @Test
     @DisplayName("시도 횟수가 음수인 경우")

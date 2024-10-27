@@ -7,20 +7,20 @@ import racingcar.domain.Car;
 
 public class RaceCarServiceImpl implements RaceCarService {
     private final List<Car> carNames;
-    private final int gameCount;
+    private final int gameRound;
 
     private final int START_RANGE = 1;
     private final int END_RANGE = 9;
 
 
-    public RaceCarServiceImpl(List<Car> carNames, int gameCount) {
+    public RaceCarServiceImpl(List<Car> carNames, int gameRound) {
         this.carNames = carNames;
-        this.gameCount = gameCount;
+        this.gameRound = gameRound;
     }
 
     @Override
     public void playEachRound() {
-        for (int i = 0; i < gameCount; i++) {
+        for (int i = 0; i < gameRound; i++) {
             for (Car car : carNames) {
                 int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
                 car.printMyTrace(randomNumber);
