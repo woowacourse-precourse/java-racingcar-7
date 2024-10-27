@@ -20,7 +20,7 @@ public class Car {
         return position;
     }
 
-    public void move(int position) {
+    public void move() {
         this.position++;
     }
 }
