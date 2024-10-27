@@ -20,11 +20,13 @@ public class GameManager {
     }
 
     private void setCarList(String[] car_list) {
-
+        for (String s : car_list) {
+            cars.add(new Car(s));
+        }
     }
 
     private void setTryCount(int count) {
-
+        this.count = count;
     }
 
     private void game(){
