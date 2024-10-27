@@ -31,7 +31,7 @@ public class Car {
     @Override
     public String toString() {
         return String.format("%s : %s",
-                name.getName(),
+                name.name(),
                 STATUS_CHARACTER.repeat(position.getPosition()));
     }
 }

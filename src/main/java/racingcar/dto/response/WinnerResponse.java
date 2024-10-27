@@ -1,7 +1,6 @@
 package racingcar.dto.response;
 
 import racingcar.domain.Car;
-import racingcar.domain.CarName;
 
 import java.util.List;
 
@@ -10,8 +9,7 @@ public record WinnerResponse(
 ) {
     public static WinnerResponse from(List<Car> winners) {
         List<String> nameOfWinner = winners.stream()
-                .map(Car::getName)
-                .map(CarName::getName)
+                .map(car -> car.getName().name())
                 .toList();
         return new WinnerResponse(nameOfWinner);
     }
