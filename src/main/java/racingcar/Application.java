@@ -12,5 +12,15 @@ public class Application {
         int try_count = Integer.parseInt(Console.readLine());
 
         String[] cars = input.split(",");
+
+        GameManager gameManager = new GameManager();
+
+        String[] winners = gameManager.StartGame(cars, try_count);
+
+        System.out.print("최종 우승자 : ");
+        for(int i = 0; i < winners.length - 1; i++) {
+            System.out.print(winners[i] + ", ");
+        }
+        System.out.print(winners[winners.length - 1]);
     }
 }
