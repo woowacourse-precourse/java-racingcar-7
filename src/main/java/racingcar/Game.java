@@ -70,19 +70,32 @@ public class Game {
         //map 안의 value 체크
         //value가 제일 높은거 저장, 출력
         Set<String> winners=new HashSet<>();
-        playerScoreBoard.forEach((player,score)->{
-            int maxScore=0;
-            //최고점 동일
-            if(score==maxScore){
-                winners.add(player);
-            }
-            //최고점 갱신
-            if(score>maxScore){
+//        playerScoreBoard.forEach((player,score)->{
+//            int maxScore=0;
+//            //최고점 동일
+//            if(score==maxScore){
+//                winners.add(player);
+//            }
+//            //최고점 갱신
+//            if(score>maxScore){
+//                winners.clear();
+//                winners.add(player);
+//                maxScore=score;
+//            }
+//        });
+        int maxScore=0;
+        for (Map.Entry<String,Integer> playerentry: playerScoreBoard.entrySet()) {
+            String player = playerentry.getKey();
+            int score = playerentry.getValue();
+
+            if (score > maxScore) {
                 winners.clear();
                 winners.add(player);
-                maxScore=score;
+                maxScore = score;
+            } else if (score == maxScore) {
+                winners.add(player);
             }
-        });
+        }
 
         System.out.println("최종 우승자 : "+String.join(", ",winners));
     }
