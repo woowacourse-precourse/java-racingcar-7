@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<RacingCar> cars;
@@ -43,5 +44,19 @@ public class RacingCars {
 
     private void increaseCurrentAttempts() {
         currentAttempts++;
+    }
+
+    public List<RacingCar> findWinners() {
+        Integer maxAdvanceCount = getMaxAdvanceCount();
+        return cars.stream()
+                .filter(car -> car.getAdvanceCount().equals(maxAdvanceCount))
+                .collect(Collectors.toList());
+    }
+
+    private Integer getMaxAdvanceCount() {
+        return cars.stream()
+                .mapToInt(RacingCar::getAdvanceCount)
+                .max()
+                .orElse(0);
     }
 }

@@ -21,7 +21,7 @@
     - 시도 횟수
     - 우승자 정보
 -[X] RacingCars 1회 진행
--[ ] 우승자 결정
+-[X] 우승자 결정
 
 ### RacingCarsValidator
 
