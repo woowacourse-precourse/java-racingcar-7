@@ -2,6 +2,7 @@ package racingcar.util;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.util.InputValidator.*;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ class InputValidatorTest {
         String input = "pobi";
 
         // when & then
-        assertDoesNotThrow(() -> InputValidator.validateNotBlank(input));
+        assertDoesNotThrow(() -> validateNotBlank(input));
     }
 
     @Test
@@ -24,7 +25,7 @@ class InputValidatorTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateNotBlank(input));
+                () -> validateNotBlank(input));
     }
 
     @Test
@@ -34,7 +35,7 @@ class InputValidatorTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateNotBlank(input));
+                () -> validateNotBlank(input));
     }
 
     @Test
@@ -43,7 +44,7 @@ class InputValidatorTest {
         List<String> list = List.of("pobi", "jason", "yeontaek");
 
         // when & then
-        assertDoesNotThrow(() -> InputValidator.validateNoDuplicates(list));
+        assertDoesNotThrow(() -> validateNoDuplicates(list));
     }
 
     @Test
@@ -53,6 +54,6 @@ class InputValidatorTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateNoDuplicates(list));
+                () -> validateNoDuplicates(list));
     }
 }
