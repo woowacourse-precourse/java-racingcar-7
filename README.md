@@ -26,7 +26,7 @@
 - [x] 값을 형식에 맞게 출력한다. (PrintRacingResult)
 - [x] 문자열과 게임횟수를 입력받는다. (ConsoleReader)
 - [x] 게임을 실행한다. (GameApplication)
-  -[x] 게임 내의 레이싱을 실행한다. (RacingApplication)
+  - [x] 게임 내의 레이싱을 실행한다. (RacingApplication)
 
 ### 구현 기능 - 도메인 객체
 - [x] 한 대의 자동차 정보를 저장한다. (Car)
