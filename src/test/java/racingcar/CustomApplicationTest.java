@@ -52,7 +52,7 @@ public class CustomApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트_잘못된_시도_횟수() {
-        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,smith", "O")).isInstanceOf(
+        assertSimpleTest(() -> assertThatThrownBy(() -> runException("pobi,smith", "ㄱ")).isInstanceOf(
                 IllegalArgumentException.class));
     }
 
