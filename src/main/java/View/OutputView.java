@@ -31,6 +31,6 @@ public class OutputView {
         FindWinningCar findWinningCar = new FindWinningCar(cars.getCars());
         List<String> winningCars = findWinningCar.getWinningCars();
 
-        System.out.println("최종 우승자 : " + winningCars);
+        System.out.println("최종 우승자 : " + String.join(", ", winningCars));
     }
 }
