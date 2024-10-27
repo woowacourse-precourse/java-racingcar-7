@@ -22,11 +22,10 @@
         - [x] 자동차 이름이 5자 이상인 경우
         - [x] 플레이어 입력 값이 공백 or null일 경우
         - [x] 구분자가 쉼표(,)가 없을 경우
-    - [ ] 시도할 횟수 입력을 잘못한 경우
-        - [ ] 시도횟수 입력 값이 음수인 경우
-        - [ ] 시도횟수 입력 값이 소수인 경우
-        - [ ] 시도횟수 입력 값이 공백 or null일 경우
-        - [x] 숫자가 아닌 것(문자, 특수문자)를 입력할 경우
+    - [x] 시도할 횟수 입력을 잘못한 경우
+        - [x] 시도횟수 입력 값이 음수인 경우
+        - [x] 시도횟수 입력 값이 소수인 경우
+        - [x] 숫자가 아닌 것(문자, 특수문자, 공백, null)를 입력할 경우
 
 ## 사고 흐름 및 개발 과정
 
@@ -45,21 +44,57 @@
 - 기타 상수를 저장하는 객체 Constant
 - 자동차 경주 게임로직을 담당하는 객체 RacingGameController
 - 검증 기능을 수행하는 검증 객체 Validation
+- 각 라운드의 결과를 기록할 객체 RoundRecord (추가)
 
 각 객체에게 책임을 할당하면 다음과 같다.
 - 사용자 -> (입력을 받아라) -> 입력 객체
 - 입력 객체 -> (값을 기반으로 게임을 진행하라) -> 게임 로직 담당 객체
 - 게임 로직 담당 객체 -> (우승자를 출력하라) -> 출력 객체
 
+## 프로젝트 구조
+
+```text
+C:\USERS\SIYUN\JAVA-RACINGCAR-7\SRC
+├───main
+│   └───java
+│       └───racingcar
+│           │   Application.java
+│           │
+│           ├───constant
+│           │       Constant.java
+│           │       ErrorMessage.java
+│           │
+│           ├───controller
+│           │       RacingGameController.java
+│           │
+│           ├───model
+│           │       CarPlayer.java
+│           │       RoundRecord.java
+│           │
+│           ├───util
+│           │       Validation.java
+│           │
+│           └───view
+│                   InputView.java
+│                   OutputView.java
+│
+└───test
+    └───java
+        └───racingcar
+                ApplicationTest.java
+```
+
+## 객체의 협력, 역할, 책임
+
 ## 기타 요구사항 목록 
 
-- [ ] JDK 21 버전임을 확인하기
+- [x] JDK 21 버전임을 확인하기
 - [ ] 자바 코드 컨벤션을 지키면서 코드 구현하기
-- [ ] README.md에 정리한 기능 목록을 기반으로 커밋하기
-- [ ] AngularJS Git 커밋 메시지 컨벤션을 지키면서 커밋 메시지 작성하기
-- [ ] 제공된 Console API를 사용하여 구현하기
+- [x] README.md에 정리한 기능 목록을 기반으로 커밋하기
+- [x] AngularJS Git 커밋 메시지 컨벤션을 지키면서 커밋 메시지 작성하기
+- [x] 제공된 Console API를 사용하여 구현하기
 - [ ] indent의 depth가 3이 넘지 않도록 구현하기
-- [ ] 3항 연산자를 쓰지 않고 코드 작성하기
+- [x] 3항 연산자를 쓰지 않고 코드 작성하기
 - [ ] 함수가 한 가지 일만 하도록 최대한 작게 만들기
 - [ ] JUnit 5와 AssertJ를 이용, 테스트 코드로 확인하며 기능 점검하기
 
@@ -81,6 +116,10 @@
     - 배열 대신 컬렉션을 사용하기
 
 ## 추가 학습내용 및 과제수행 시 중점 사항
+
+## 테스트
+
+<img alt="테스트 결과" src="./docs/images/test.png" style="width:300px" />
 
 
 
