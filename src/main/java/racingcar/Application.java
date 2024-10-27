@@ -9,8 +9,8 @@ import java.util.List;
 
 
 class Car {
-    private final String carName;
-    private int position;
+    public final String carName;
+    public  int position;
 
     public Car(String carName) {
         this.carName = carName;
@@ -64,7 +64,17 @@ public class Application {
                 }
             }
 
+            for(Car car : cars) {
+                System.out.print(car.carName +" : ");
+
+                for(int j =0; j < car.position; j++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
+
 
     }
 }
