@@ -19,6 +19,14 @@ public class RacingCarModel {
         racingCars.add(new RacingCar(name));
     }
 
+    public int size() {
+        return racingCars.size();
+    }
+
+    public void forwardAction(List<Integer> randoms) {
+        System.out.println(randoms);
+    }
+
     // 저장된 RacingCar 확인용 메서드
     public void checkSavedCars() {
         System.out.println(Message.CHECK_SAVED_CARS_MESSAGE);

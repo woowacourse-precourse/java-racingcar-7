@@ -1,5 +1,8 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.RacingCarModel;
 import racingcar.parser.InputParser;
 import racingcar.validation.InputValidator;
@@ -37,5 +40,12 @@ public class RacingCarService {
     }
 
     private void round() {
+        int carCount = racingCarModel.size();
+
+        List<Integer> randomNumbers = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            randomNumbers.add(Randoms.pickNumberInRange(0, 9));
+        }
+        racingCarModel.forwardAction(randomNumbers);
     }
 }
