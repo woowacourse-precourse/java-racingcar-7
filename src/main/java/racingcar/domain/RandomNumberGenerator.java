@@ -9,12 +9,12 @@ import racingcar.dto.MovementNumber;
 public class RandomNumberGenerator {
 
     public MovementNumber movementNumber() {
-        Integer randomNumber = generateRandomNumber();
+        Integer randomNumber = randomNumber();
         validateNumber(randomNumber);
         return new MovementNumber(randomNumber);
     }
 
-    private Integer generateRandomNumber() {
+    private Integer randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
