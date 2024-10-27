@@ -13,6 +13,7 @@ public class OutputView {
         for (Car car : cars) {
             System.out.printf("%s : %s\n", car.name(), POSITION_POINT.repeat(car.position()));
         }
+        System.out.println();
     }
 
     public static void renderWinner(Cars cars) {
