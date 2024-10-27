@@ -18,6 +18,10 @@ public class RacingCarView {
         return validateAndParseAttempts(Console.readLine());
     }
 
+    public static void responseResultHeader() {
+        System.out.println("실행 결과");
+    }
+
     private static int validateAndParseAttempts(String input) {
         try {
             int attempts = Integer.parseInt(input);
