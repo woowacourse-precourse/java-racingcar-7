@@ -2,6 +2,7 @@ package racingcar.car;
 
 public class Car {
     private static final int MOVE_TRIGGER = 4;
+    private static final String MOVING_SYMBOL = "-";
 
     private final String name;
     private int position;
@@ -25,4 +26,7 @@ public class Car {
         }
     }
 
+    public void displayPosition() {
+        System.out.println(name + " : " + MOVING_SYMBOL.repeat(position));
+    }
 }
