@@ -21,4 +21,15 @@ public class RaceValidator {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
     }
+
+    public static int validateCount(String input) {
+        validateCountNotEmpty(input);
+        return Integer.parseInt(input);
+    }
+
+    private static void validateCountNotEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 비어있습니다.");
+        }
+    }
 }
