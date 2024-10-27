@@ -9,6 +9,9 @@ public class Race {
 
     public Race(List<String> carNames) {
         for (String carName : carNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException();
+            }
             progress.put(carName, 0);
         }
     }

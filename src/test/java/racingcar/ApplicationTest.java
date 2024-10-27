@@ -35,8 +35,8 @@ class ApplicationTest extends NsTest {
     void 과정_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("pobi,woni,javaji", "1");
-                    assertThat(output()).contains("pobi : -", "woni : ", "javaji : -");
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "jun : -");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD
         );
