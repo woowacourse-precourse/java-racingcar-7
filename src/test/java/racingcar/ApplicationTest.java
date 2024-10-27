@@ -47,6 +47,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 자동차이름하나입력_테스트() {
+        assertThatThrownBy(() -> run("pobi", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("하나 이상의 자동차 이름을 입력해주세요.");
+    }
+
+    @Test
     void 시도횟수제로입력_테스트() {
         assertThatThrownBy(() -> run("a,b,c", "0"))
                 .isInstanceOf(IllegalArgumentException.class)
