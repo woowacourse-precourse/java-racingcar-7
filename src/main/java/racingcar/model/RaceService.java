@@ -34,7 +34,13 @@ public class RaceService {
 
     private void raceRound(List<Car> carList) {
         for (Car car : carList) {
-            System.out.println(car.getName() + " 이(가) 뽑은 숫자는 : " + pickRandomNumber());
+            int num = pickRandomNumber();
+
+            if (goStraight(num))
+                car.move();
+
+            // 테스트용
+            System.out.println(car.getName() + " 의 위치는 : " + car.getDistance() + ", 숫자는 " + num);
         }
         // 라운드 별 구분
         System.out.println();
@@ -52,5 +58,11 @@ public class RaceService {
 
     private int pickRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private boolean goStraight(int num) {
+        if (num >= 4)
+            return true;
+        return false;
     }
 }
