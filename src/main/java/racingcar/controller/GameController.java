@@ -16,12 +16,12 @@ public final class GameController {
     }
 
     public void run() {
-        game = gameSetup();
+        gameSetup();
         doRace();
         showResult();
     }
 
-    public Game gameSetup() {
+    public void gameSetup() {
         String carNamesInput = gameView.getCarNamesInput();
         // 파싱과정에서 조건에 맞게 validate하기! -> 유효한 이름, 5글자 이하
         List<String> carNameList = parseCarNames(carNamesInput);
@@ -29,12 +29,10 @@ public final class GameController {
         // 입력값 정수인지 validate하기
         int totalRound = Integer.parseInt(gameView.getTotalRoundInput());
 
-        Game game = new Game(totalRound);
+        game = new Game(totalRound);
         for (String carName : carNameList) {
             game.addCar(new Car(carName));
         }
-
-        return game;
     }
 
     public void doRace() {
