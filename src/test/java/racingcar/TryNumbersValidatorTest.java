@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.validator.TryNumbersValidator;
 
 class TryNumbersValidatorTest {
     private TryNumbersValidator tryNumbersValidator;
