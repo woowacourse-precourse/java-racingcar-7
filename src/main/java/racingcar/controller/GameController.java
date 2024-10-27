@@ -24,11 +24,20 @@ public class GameController {
     public void startGame() {
         int rounds = validator.validateAttemptCount(inputView.inputAttemptCount());
         ArrayList<Car> cars = carService.getCars();
+        runRace(rounds, cars);
+        printWinners();
+    }
 
+    private void runRace(int rounds, ArrayList<Car> cars) {
         for (int i = 0; i < rounds; i++) {
             carService.moveCars();
             outputView.printCarPosition(cars);
             System.out.println();
         }
+    }
+
+    private void printWinners() {
+        ArrayList<Car> winners = gameService.getWinners();
+        outputView.printWinners(winners);
     }
 }
