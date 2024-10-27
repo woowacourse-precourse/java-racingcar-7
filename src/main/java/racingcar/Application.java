@@ -1,110 +1,53 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static final int MIN_VALUE = 0;
-    private static final int MAX_VALUE = 9;
-    private static final int FORWARD_CRITERIA = 4;
-    private static int[] carPositions;
-
-    private static String[] getCarNames() {
+    private static List<Car> getCars() {
         String carNames;
         String[] splitCarNames;
 
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        carNames = Console.readLine();
-        splitCarNames = splitCarNamesByDelimiter(carNames);
+        carNames = promptForCarNames();
+        splitCarNames = carNames.split(",");
         Validator.validateCarNames(splitCarNames);
-        return splitCarNames;
+        return createCars(splitCarNames);
     }
 
-    private static String[] splitCarNamesByDelimiter(String carNames) {
-        return carNames.split(",");
+    private static String promptForCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        return Console.readLine();
+    }
+
+    private static List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name.trim()));
+        }
+        return cars;
     }
 
     private static int getGameCount() {
         String count;
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        count = Console.readLine();
+        count = promptForGameCount();
         return Integer.parseInt(count);
     }
 
-    private static void startRaceNTimes(String[] carNames, int gameCount) {
-        carPositions = new int[carNames.length];
-
-        System.out.println();
-        System.out.println("실행 결과");
-        for (int i = 0; i < gameCount; i++) {
-            goOrStop(carNames);
-            printRaceStatus(carNames);
-        }
-    }
-
-    private static void goOrStop(String[] carNames) {
-        int randomNumber;
-        boolean canGo;
-
-        for (int i = 0; i < carNames.length; i++) {
-            randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-            canGo = randomNumber >= FORWARD_CRITERIA;
-            if (canGo) {
-                carPositions[i] += 1;
-            }
-        }
-    }
-
-    private static void printRaceStatus(String[] carNames) {
-        for (int i = 0; i < carNames.length; i++) {
-            System.out.print(carNames[i] + " : ");
-            System.out.println("-".repeat(carPositions[i]));
-        }
-        System.out.println();
-    }
-
-    private static void printFinalWinner(String[] carNames) {
-        int maxPosition;
-        List<String> winners;
-
-        maxPosition = findMaxPosition();
-        winners = findWinners(carNames, maxPosition);
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
-    }
-
-    private static int findMaxPosition() {
-        int maxPosition;
-
-        maxPosition = 0;
-        for (int position : carPositions) {
-            if (position > maxPosition) {
-                maxPosition = position;
-            }
-        }
-        return maxPosition;
-    }
-
-    private static List<String> findWinners(String[] carNames, int maxPosition) {
-        List<String> winners = new ArrayList<>();
-
-        for (int i = 0; i < carPositions.length; i++) {
-            if (carPositions[i] == maxPosition) {
-                winners.add(carNames[i]);
-            }
-        }
-        return winners;
+    private static String promptForGameCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        return Console.readLine();
     }
 
     public static void main(String[] args) {
-        String[] carNames;
+        List<Car> cars;
         int gameCount;
+        Race race;
 
-        carNames = getCarNames();
+        cars = getCars();
         gameCount = getGameCount();
-        startRaceNTimes(carNames, gameCount);
-        printFinalWinner(carNames);
+        race = new Race(cars);
+        race.startRaceNTimes(gameCount);
     }
 }
