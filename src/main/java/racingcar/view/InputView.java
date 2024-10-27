@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.domain.CarName;
 import racingcar.domain.TrialCount;
 import racingcar.dto.request.CarsRequest;
+import racingcar.dto.request.TrialCountRequest;
 import racingcar.io.input.Reader;
 import racingcar.io.output.Writer;
 import racingcar.util.CarNameConverter;
@@ -29,10 +30,9 @@ public class InputView {
         return new CarsRequest(cars);
     }
 
-    public TrialCount readTrialCount() {
+    public TrialCountRequest readTrialCount() {
         writer.writeln(TRIAL_COUNT_INPUT_MESSAGE);
-        String trialCountString = reader.readLine();
-        int trialCount = Integer.parseInt(trialCountString);
-        return new TrialCount(trialCount);
+        String trialCount = reader.readLine();
+        return new TrialCountRequest(trialCount);
     }
 }

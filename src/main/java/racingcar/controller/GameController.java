@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.TrialCount;
 import racingcar.dto.request.CarsRequest;
+import racingcar.dto.request.TrialCountRequest;
 import racingcar.dto.response.CarsResponse;
 import racingcar.dto.response.WinnerResponse;
 import racingcar.service.GameService;
@@ -32,7 +33,8 @@ public class GameController {
     }
 
     private void playRace() {
-        TrialCount trialCount = inputView.readTrialCount();
+        TrialCountRequest trialCountRequest = inputView.readTrialCount();
+        TrialCount trialCount = trialCountRequest.toTrialCount();
 
         while (trialCount.isProgress()) {
             CarsResponse result = gameService.moveCars();
