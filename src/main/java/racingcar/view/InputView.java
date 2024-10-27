@@ -12,7 +12,7 @@ public class InputView {
 
     public static String[] getCarNames() {
         String names = getUserInput();
-        String[] splitCarNames = names.split(CAR_NAME_DELIMITER);
+        String[] splitCarNames = names.split(CAR_NAME_DELIMITER, -1);
         validateCarName(splitCarNames);
         return splitCarNames;
     }

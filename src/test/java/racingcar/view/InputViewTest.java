@@ -72,4 +72,26 @@ class InputViewTest {
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage(EMPTY_NAME_MESSAGE);
     }
+
+    @Test
+    void 구분자로_시작하는_입력() {
+        String[] carNames = {"", "car"}; // ",car"
+        String testString = getTestString(carNames);
+        System.setIn(generateUserInput(testString));
+
+        assertThatThrownBy(InputView::getCarNames)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_NAME_MESSAGE);
+    }
+
+    @Test
+    void 구분자로_끝나는_입력() {
+        String[] carNames = {"car", ""};
+        String testString = getTestString(carNames);
+        System.setIn(generateUserInput(testString));
+
+        assertThatThrownBy(InputView::getCarNames)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_NAME_MESSAGE);
+    }
 }
