@@ -11,4 +11,8 @@ public class MapBuilder {
     public void mapCarNamesToStringForwardLines(List<String> carNames) {
 //        이 부분은 어떻게 할지 아직 모르겠다.
     }
+
+    public void mapSingleCarForwardResult(String carNames) {
+//        이 부분은 어떻게 할지 아직 모르겠다.
+    }
 }
