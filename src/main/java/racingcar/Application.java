@@ -1,6 +1,7 @@
 package racingcar;
 
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.GameController;
 import racingcar.model.domain.GameResult;
 import racingcar.validator.Validator;
@@ -18,6 +19,8 @@ public class Application {
             OutputView.printResult(response);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            Console.close();
         }
     }
 
