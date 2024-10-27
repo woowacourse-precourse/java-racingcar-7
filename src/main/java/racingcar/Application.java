@@ -1,10 +1,12 @@
 package racingcar;
 
 import racingcar.service.Game;
+import racingcar.service.InputHandler;
 
 public class Application {
     public static void main(String[] args) {
-        Game game = new Game();
+        InputHandler inputHandler = new InputHandler();
+        Game game = new Game(inputHandler);
         game.initialize();
     }
 }
