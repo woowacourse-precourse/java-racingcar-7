@@ -6,7 +6,7 @@ public class Application {
         String carNameInput = RacingIO.getInput();
 
         RacingIO.promptMoveCountInput();
-        int moveCountInput = Integer.parseInt(RacingIO.getInput());
+        String moveCountInput = RacingIO.getInput();
 
         RacingService racingService = new RacingService(carNameInput, moveCountInput);
 

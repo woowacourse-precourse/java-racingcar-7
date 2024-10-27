@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,11 +13,12 @@ public class RacingService {
     private final int INITIAL_POSITION = 0;
     private final int FORWARD_STEP = 1;
     private final int STOP_STEP = 0;
+    private final ArrayList<HashMap<String, Integer>> TURN_RESULTS = new ArrayList<>();
     public int executionCount = 0;
 
-    public RacingService(String carNameInput, int moveCountInput) {
-        this.MOVE_COUNT = moveCountInput;
+    public RacingService(String carNameInput, String moveCountInput) {
         initializeCarMapFromInput(carNameInput);
+        this.MOVE_COUNT = Integer.parseInt(moveCountInput);
     }
 
     public void setCarNameInput(String carNameInput) {
@@ -29,7 +31,7 @@ public class RacingService {
     }
 
     private void initializeCarMapFromInput(String carNameInput) {
-        for (String carName : carNameInput.split(CAR_INPUT_DELIMITER)) {
+        for (String carName : carNameInput.split(CAR_INPUT_DELIMITER, -1)) {
             CAR_MAP.put(carName, INITIAL_POSITION);
         }
     }
@@ -51,16 +53,16 @@ public class RacingService {
         CAR_MAP.replace(carName, carPosition + movement);
     }
 
-    public String[] getWinner() {
+    public String[] getWinners() {
         int maxPosition = getMaxPosition();
 
-        HashSet<String> winner = new HashSet<>();
+        HashSet<String> winners = new HashSet<>();
         for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
             if (entry.getValue() == maxPosition) {
-                winner.add(entry.getKey());
+                winners.add(entry.getKey());
             }
         }
-        return winner.toArray(new String[0]);
+        return winners.toArray(new String[0]);
     }
 
     private int getMaxPosition() {
@@ -74,17 +76,22 @@ public class RacingService {
         return maxPosition;
     }
 
-    private void executeTurn() {
-        for (Map.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
+    private HashMap<String, Integer> executeTurn() {
+        for (HashMap.Entry<String, Integer> entry : CAR_MAP.entrySet()) {
             int randomValue = createRandomValue();
             updateMovement(entry.getKey(), randomValue);
         }
+        return new HashMap<>(CAR_MAP);
     }
 
     public void startRaceGame() {
         while (executionCount < MOVE_COUNT) {
-            executeTurn();
+            TURN_RESULTS.add(executeTurn());
             executionCount++;
         }
+    }
+
+    public ArrayList<HashMap<String, Integer>> getTurnResult() {
+        return TURN_RESULTS;
     }
 }
