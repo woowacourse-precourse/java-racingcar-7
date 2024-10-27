@@ -29,6 +29,7 @@ public class RoundController {
         judge.judgeMaxLength(Car.getCarList());
         judge.judgeWinner(Car.getCarList());
 
+        outputView.outputProcess(roundNumber);
         outputView.outputWinnerList(Judge.getWinnerList());
     }
 
