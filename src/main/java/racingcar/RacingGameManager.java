@@ -7,8 +7,6 @@ import java.util.List;
  * 자동차 경주 게임을 관리한다.
  */
 public class RacingGameManager {
-    //TODO 승자를 찾고
-    //출력한다
     private final CarManager carManager;
     private final ConsoleIO console;
 
@@ -26,7 +24,6 @@ public class RacingGameManager {
         for (int i = 0; i < count; i++) {
             playGame(cars);
         }
-        //승자찾고 출력
         List<Car> winner = carManager.findWinner(cars);
         console.printWinner(winner.stream().map(Car::getName).toList());
     }
@@ -34,16 +31,9 @@ public class RacingGameManager {
     private void playGame(List<Car> cars) {
         for (Car car: cars) {
             int random = Randoms.pickNumberInRange(0,9);
-            if (isMovable(random)) {
-                car.moveForward();   //이걸 RacingGameManager에서 하는게 맞나?
-            }
+            car.moveOrStop(random);
         }
         console.printEachResult(cars);
-    }
-
-    private boolean isMovable(int randomNumber) {
-        int CRITERIA = 4;
-        return randomNumber >= CRITERIA;
     }
 
     private void validateInputCount(int count) {

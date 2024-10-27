@@ -3,6 +3,7 @@ package racingcar;
 public class Car {
     private final String name;
     private int distance;
+    private static final int CRITERIA = 4;
 
     public Car(String name) {
         validateName(name);
@@ -10,8 +11,14 @@ public class Car {
         this.distance = 0;
     }
 
-    public void moveForward() {
-        this.distance++;
+    public void moveOrStop(int number) {
+        if (isMovable(number)) {
+            this.distance++;
+        }
+    }
+
+    private boolean isMovable(int number) {
+        return number >= CRITERIA;
     }
 
     //이것들도 다 분리를 해야되나?
