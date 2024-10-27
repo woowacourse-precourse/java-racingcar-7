@@ -17,4 +17,10 @@ public class RaceService {
         String carNames = InputView.readCarNames();
         raceManager.setCars(carNames);
     }
+
+    public void setRaceCount() {
+        OutputView.printRaceCountMessage();
+        String raceCount = InputView.readRaceCount();
+        raceManager.setRaceCount(raceCount);
+    }
 }
