@@ -10,7 +10,6 @@ public class InputConverter {
     private InputConverter() {
     }
 
-
     public static List<String> convertNames(String input) {
         String trimmedInput = input.trim();
         return Arrays.stream(trimmedInput.split(COMMA))

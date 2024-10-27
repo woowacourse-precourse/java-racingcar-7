@@ -16,13 +16,13 @@ public class RaceCarsValidator {
         validateRaceCarCount(names);
     }
 
-    public static void validateDuplicateNames(List<String> names) {
+    private static void validateDuplicateNames(List<String> names) {
         if (names.size() != new HashSet<>(names).size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATE_NAME);
         }
     }
 
-    public static void validateRaceCarCount(List<String> names) {
+    private static void validateRaceCarCount(List<String> names) {
         if (names.size() < MIN_CAR_COUNT) {
             throw new IllegalArgumentException(ERROR_CAR_COUNT);
         }

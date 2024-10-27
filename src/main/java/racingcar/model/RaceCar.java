@@ -20,10 +20,6 @@ class RaceCar {
         return new RaceCar(trimmedName, INIT_POSITION);
     }
 
-    public static String trimName(String name) {
-        return name.trim();
-    }
-
     public void move() {
         position++;
     }
@@ -34,6 +30,10 @@ class RaceCar {
 
     public boolean canMove(int randomValue) {
         return randomValue >= MOVE_THRESHOLD;
+    }
+
+    private static String trimName(String name) {
+        return name.trim();
     }
 
     public int getPosition() {
