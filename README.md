@@ -4,13 +4,13 @@
 
 ### 입력
 
-- [ ] 경주할 자동차 이름 carName을 입력받는다.
+- [ ] 경주할 자동차 이름 carNames을 입력받는다.
 - [ ] 시도할 횟수 playCount를 입력받는다.
 
 ### 파싱
 
-- [ ] 자동차 이름을 쉼표로 구분하여 Cars에 담는다.
-- [ ] Cars를 순회하며 carName이 5글자 이하인지 확인한다. 5글자가 넘는다면 IllegalArgumentException을 발생시킨다.
+- [ ] carNames를 쉼표로 구분하여 배열에 담는다.  
+  carNames를 순회하며 이름이 5글자 이하인지 확인한다. 5글자가 넘는다면 IllegalArgumentException을 발생시킨다.
 - [ ] playCount에 숫자가 들어왔는지 확인한다.
 
 ### 자동차 게임
