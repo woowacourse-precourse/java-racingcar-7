@@ -5,6 +5,5 @@ public class RacingConstant {
     public static final int INPUT_CAR_NAMES_MESSAGE_MAX_LENGTH = 5 * 20 + 19;
     public static final String INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     public static final String DO_RACING_PREV_MESSAGE = "실행 결과";
-    public static final String DO_RACING_RESULT_PREV_MESSAGE = "최종 우승자 : ";
-
+    public static final String RACING_RESULT_MESSAGE = "최종 우승자 : %s";
 }

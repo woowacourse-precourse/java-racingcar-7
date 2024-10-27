@@ -16,12 +16,12 @@ public class RacingCar {
         }
     }
 
-    public void printCurrentResult() {
+    public String getCurrentResultMessage() {
         String distance = "";
         for (int i = 0; i < forwardCount; i++) {
             distance += "-";
         }
-        System.out.println(this.name + " : " + distance);
+        return this.name + " : " + distance;
     }
 
     public String getName() {

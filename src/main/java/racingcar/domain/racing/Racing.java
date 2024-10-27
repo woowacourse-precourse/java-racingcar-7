@@ -8,6 +8,7 @@ import java.util.Set;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCarConstant;
 import racingcar.domain.error.ErrorMessage;
+import racingcar.domain.io.RacingOutputView;
 
 public class Racing {
 
@@ -66,14 +67,17 @@ public class Racing {
     }
 
     public void iterateRace() {
-        System.out.println();
-        System.out.println(RacingConstant.DO_RACING_PREV_MESSAGE);
+        RacingOutputView racingOutputView = new RacingOutputView();
+        racingOutputView.printEnter();
+        racingOutputView.printIterateRacePrevMessage(RacingConstant.DO_RACING_PREV_MESSAGE);
+
         for (int i = 0; i < tryCnt; i++) {
             for (RacingCar racingCar : racingCars) {
                 racingCar.forwardCar(Randoms.pickNumberInRange(0, 9));
-                racingCar.printCurrentResult();
+                String currentResultMessage = racingCar.getCurrentResultMessage();
+                racingOutputView.printMessage(currentResultMessage);
             }
-            System.out.println();
+            racingOutputView.printEnter();
         }
     }
 
@@ -90,11 +94,6 @@ public class Racing {
         }
     }
 
-    public void printWinners() {
-        System.out.print(RacingConstant.DO_RACING_RESULT_PREV_MESSAGE +
-                String.join(", ", winners.stream().map(r -> r.getName()).toList()));
-    }
-
     private boolean isInvalidTryCount() {
         if (1 <= tryCnt && tryCnt <= 10) {
             return false;
@@ -102,11 +101,7 @@ public class Racing {
         return true;
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
-    }
-
-    public List<RacingCar> getWinners() {
-        return winners;
+    public String getWinnerNames() {
+        return String.join(", ", winners.stream().map(r -> r.getName()).toList());
     }
 }
