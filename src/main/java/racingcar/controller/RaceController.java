@@ -13,9 +13,9 @@ import java.util.List;
 public class RaceController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
-    private CommonIo io = new CommonIo();
     private CarController carController = new CarController();
     private MoveController moveController = new MoveController();
+    PlayCountController playCountController = new PlayCountController();
 
     public void run() {
         finishGame(playGame(prepareGame()));
@@ -31,7 +31,9 @@ public class RaceController {
     }
 
     public List<Car> playGame(List<Car> cars) {
-        int playCount = validatePlayCount();
+        outputView.printGetPlayCount();
+
+        int playCount = playCountController.validatePlayCount();
 
         for (int i = 0; i < playCount; i++) {
             for (Car car : cars) {
@@ -51,24 +53,6 @@ public class RaceController {
         List<String> winner = selectWinners(cars);
         outputView.printWinners(winner);
     }
-
-    public int validatePlayCount() {
-        outputView.printGetPlayCount();
-        int playCount;
-
-        try {
-            playCount = io.convertStringToInt(inputView.receivePlayCount());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.PLAY_COUNT_FORMAT.getError());
-        }
-
-        if (playCount < Limit.MIN_PLAY.getValue() || playCount > Limit.MAX_PLAY.getValue()) {
-            throw new IllegalArgumentException(ErrorMessage.PLAY_COUNT_LIMIT.getError());
-        }
-
-        return playCount;
-    }
-
 
     public List<String> selectWinners(List<Car> cars) {
         int maxPosition = Limit.MIN_POSITION.getValue();
