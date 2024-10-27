@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CarNameValidation {
-    private final static int MINIMUM_CAR_NUMBER = 1;
+    private final static int MINIMUM_CAR_NUMBER = 2;
     private final static int MAXIMUM_CAR_NAME_LENGTH = 5;
 
     public static void validate(String input) {
