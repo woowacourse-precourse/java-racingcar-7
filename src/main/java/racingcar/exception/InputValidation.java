@@ -8,24 +8,27 @@ public final class InputValidation {
     }
 
     public static void validateCarNames(String carNames) {
-        validate(carNames, ErrorMessage.CAR_NAME_REQUIRED.getMessage());
+        if (validateNullOrEmpty(carNames)) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_REQUIRED.getMessage());
+        }
+        if (validateBlank(carNames)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_BLANK.getMessage());
+        }
     }
 
     public static void validateDelimiter(String[] splitCarNames) {
         for (String splitCarName : splitCarNames) {
-            validate(splitCarName, ErrorMessage.SEQUENCE_DELIMITER.getMessage());
+            if (validateNullOrEmpty(splitCarName)) {
+                throw new IllegalArgumentException(ErrorMessage.SEQUENCE_DELIMITER.getMessage());
+            }
         }
     }
 
     public static void validateTryCount(String tryCount) {
-        validate(tryCount, ErrorMessage.TRY_COUNT_REQUIRED.getMessage());
-    }
-
-    private static void validate(String input, String exceptionMessage) {
-        if (InputValidation.validateNullOrEmpty(input)) {
-            throw new IllegalArgumentException(exceptionMessage);
+        if (validateNullOrEmpty(tryCount)) {
+            throw new IllegalArgumentException(ErrorMessage.TRY_COUNT_REQUIRED.getMessage());
         }
-        if (InputValidation.validateBlank(input)) {
+        if (validateBlank(tryCount)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_BLANK.getMessage());
         }
     }
