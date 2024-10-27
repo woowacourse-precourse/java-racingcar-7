@@ -20,9 +20,25 @@ public class RacingGameController {
     }
 
     public void startGame() {
-        CarGroup carGroup = GameInitializer.createCars((inputView.requestCarNames()));
-        GameRound gameRound = GameInitializer.setRound(inputView.requestNumberOfGames());
+        CarGroup carGroup = initializeCars();
+        GameRound gameRound = initializeGameRound();
+        runGame(carGroup, gameRound);
+        printWinners(carGroup);
+    }
+
+    private CarGroup initializeCars() {
+        return GameInitializer.createCars(inputView.requestCarNames());
+    }
+
+    private GameRound initializeGameRound() {
+        return GameInitializer.setRound(inputView.requestNumberOfGames());
+    }
+
+    private void runGame(CarGroup carGroup, GameRound gameRound) {
         outputView.printRoundResult(racingGameService.runGameRounds(gameRound, carGroup));
+    }
+
+    private void printWinners(CarGroup carGroup) {
         outputView.printWinnerList(racingGameService.getWinners(carGroup));
     }
 }
