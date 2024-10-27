@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.io.Input;
 import racingcar.io.Output;
 import racingcar.model.Racingcar;
+import racingcar.service.RacingcarService;
 import racingcar.util.Validator;
 
 import java.util.List;
@@ -12,11 +13,13 @@ public class RacingcarController {
     private final Output output;
     private final Input input;
     private final Validator validator;
+    private final RacingcarService racingcarService;
 
-    public RacingcarController(Output output, Input input, Validator validator) {
+    public RacingcarController(Output output, Input input, Validator validator, RacingcarService racingcarService) {
         this.output = output;
         this.input = input;
         this.validator = validator;
+        this.racingcarService = racingcarService;
     }
 
     public void playRacingcarGame() {
@@ -32,6 +35,10 @@ public class RacingcarController {
         final int count = validateCount(countString);
 
         output.printRaceResultPrompt();
+
+        for (int i = 0; i < count; i++) {
+            racingcarService.startRaceByCount(racingcars);
+        }
     }
 
     private List<String> validateCarName(String carName) {
