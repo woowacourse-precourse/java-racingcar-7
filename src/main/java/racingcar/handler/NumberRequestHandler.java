@@ -17,9 +17,9 @@ public class NumberRequestHandler {
     }
 
     public int convertToInteger(String rawNumber) {
-        try {
+        if (rawNumber.matches("\\d+")) {
             return Integer.parseInt(rawNumber);
-        } catch (NumberFormatException e) {
+        } else {
             throwException(INVALID_NUMBER_ERROR);
             return 0;
         }
