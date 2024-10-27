@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private Set<Car> cars = new HashSet<>();
 
-    public List<Car> run(final String carNames, final int totalMoves) {
+    public List<Car> run(final String[] carNames, final int totalMoves) {
         validateTotalMovesRange(totalMoves);
 
-        for (String name : carNames.split(",")) {
+        for (String name : carNames) {
             registerCar(new Car(name));
         }
 

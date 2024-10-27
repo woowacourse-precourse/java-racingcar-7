@@ -12,10 +12,13 @@ class RacingGameTest {
     public void should_ThrowException_When_CarNameDuplicated() {
         //given
         RacingGame racingGame = new RacingGame();
+        String[] carNames = new String[]{
+                "abc", "abc", "d"
+        };
 
         //when
         //then
-        assertThatThrownBy(() -> racingGame.run("abc,abc,d", 3))
+        assertThatThrownBy(() -> racingGame.run(carNames, 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차의 이름은 중복될 수 없습니다");
     }
