@@ -8,14 +8,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TestRacingController extends RacingController {
-    public TestRacingController() {
+    private final List<String> carNames;
+    private final int moveCount;
+
+    public TestRacingController(List<String> carNames, int moveCount) {
         super();
+        this.carNames = carNames;
+        this.moveCount = moveCount;
     }
 
     @Override
-    public Cars initializeCars(List<String> carNames) {
+    protected Cars initializeCars(List<String> carNames) {
         return new Cars(carNames.stream()
                 .map(i -> new TestCar(i, true))
                 .collect(Collectors.toList()));
+    }
+
+    @Override
+    protected List<String> readCarNames() {
+        return carNames;
+    }
+
+    @Override
+    protected int readMoveCount() {
+        return moveCount;
     }
 }

@@ -15,8 +15,8 @@ public class RacingController {
     }
 
     public void run() {
-        List<String> carNames = inputView.readCarNames();
-        int moveCount = inputView.readMoveCount();
+        List<String> carNames = readCarNames();
+        int moveCount = readMoveCount();
 
         Cars cars = initializeCars(carNames);
         OutputView outputView = new OutputView(cars);
@@ -36,5 +36,13 @@ public class RacingController {
             cars.moveAll();
             outputView.printProgress();
         }
+    }
+
+    protected List<String> readCarNames() {
+        return inputView.readCarNames();
+    }
+
+    protected int readMoveCount() {
+        return inputView.readMoveCount();
     }
 }
