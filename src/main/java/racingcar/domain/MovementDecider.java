@@ -4,15 +4,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class MovementDecider {
 
-    public static boolean checkMoveOrNot(){
+    private final int randomNumber;
 
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
+    public MovementDecider() {
+        this.randomNumber = generateRandomNumber();
+        generateRandomNumber();
+    }
 
-        if (randomNumber >= 4) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean makeDecision(){
+        return randomNumber >= 4;
+    }
 
+    private int generateRandomNumber(){
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

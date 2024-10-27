@@ -24,7 +24,8 @@ public class Cars {
 
     public void proceedOneRound(){
         for (Car car : cars) {
-            if (MovementDecider.checkMoveOrNot()){
+            MovementDecider movementDecider =  new MovementDecider();
+            if (movementDecider.makeDecision()){
                 car.move();
             }
         }
