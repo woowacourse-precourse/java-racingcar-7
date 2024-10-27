@@ -83,7 +83,7 @@ woni : ----
 
 ## 고려할 사항
 
-- 자동차 이름은 공백을 허용한다.
+- 자동차 이름 사이에 공백을 허용한다.
 - 자동차 이름은 중복을 허용하지 않는다.
 - 입력이 `,,`와 같이 자동차 이름이 아예 없을 경우 예외를 발생시킨다.
 
@@ -117,12 +117,19 @@ woni : ----
 
 message를 상수(enum)로 관리하는 클래스
 
-### 4. RacingCarService
+### 4. CarValidator
+
+자동차 유효성 검증 클래스
+
+**validateCarName()**
+- 자동차의 이름 형식이 올바른지 확인하는 함수
+
+**checkDuplicateCarName()**
+- 자동차의 이름이 중복됐는지 확인하는 함수
+
+### 5. RacingCarService
 
 자동차 서비스에 관한 클래스
-
-**isValidateCarName()**
-- 자동차의 이름 형식이 올바른지 확인하는 함수
 
 **saveCars()**
 - 자동차 목록을 저장하는 함수
@@ -133,10 +140,21 @@ message를 상수(enum)로 관리하는 클래스
 **extractRandom()**
 - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 Random 값 추출
 
-### 5. RacingCarController
+### 6. RacingCarController
 
 자동차 메인 로직에 관한 클래스
 
-**startRace()**
+**run()**
+- 자동차 경주를 실행하는 함수
+
+**start()**
 - 자동차 경주를 시작하는 함수
+
+**progress()**
+- 자동차 경주를 진행하는 함수
+
+**end()**
+- 자동차 경주를 종료하는 함수
+
+
 
