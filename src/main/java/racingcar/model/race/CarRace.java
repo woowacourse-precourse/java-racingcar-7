@@ -1,8 +1,10 @@
-package racingcar.model;
+package racingcar.model.race;
 
 import java.util.List;
 import racingcar.dto.RoundRaceRecord;
-import racingcar.model.move.MoveStrategy;
+import racingcar.model.car.Cars;
+import racingcar.model.car.Car;
+import racingcar.model.race.strategy.MoveStrategy;
 
 public class CarRace {
 

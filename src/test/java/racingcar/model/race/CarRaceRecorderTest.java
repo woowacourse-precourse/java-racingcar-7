@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.race;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RoundRaceRecord;
+import racingcar.model.car.Car;
 
 @DisplayName("자동차 경주 기록자 테스트")
 class CarRaceRecorderTest {

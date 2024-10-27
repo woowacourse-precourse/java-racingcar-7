@@ -1,4 +1,4 @@
-package racingcar.model.move;
+package racingcar.model.race.strategy;
 
 public interface MoveStrategy {
 

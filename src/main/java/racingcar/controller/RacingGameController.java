@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.dto.RacingRegisterForm;
 import racingcar.dto.RoundRaceRecord;
-import racingcar.model.CarRace;
-import racingcar.model.CarRaceRoundManager;
-import racingcar.model.RacingRegisterFormFactory;
-import racingcar.model.RegistrarClerk;
-import racingcar.model.move.MoveStrategy;
+import racingcar.model.race.CarRace;
+import racingcar.model.race.CarRaceRoundManager;
+import racingcar.model.register.RacingRegisterFormFactory;
+import racingcar.model.register.RegistrarClerk;
+import racingcar.model.race.strategy.MoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

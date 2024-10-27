@@ -1,7 +1,9 @@
-package racingcar.model;
+package racingcar.model.register;
 
 import racingcar.dto.RacingRegisterForm;
-import racingcar.model.move.MoveStrategy;
+import racingcar.model.car.Cars;
+import racingcar.model.race.strategy.MoveStrategy;
+import racingcar.model.race.CarRace;
 
 public class RegistrarClerk {
 

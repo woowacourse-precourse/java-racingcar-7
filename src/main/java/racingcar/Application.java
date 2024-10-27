@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
-import racingcar.model.move.MoveStrategy;
-import racingcar.model.move.RandomMoveStrategy;
+import racingcar.model.race.strategy.MoveStrategy;
+import racingcar.model.race.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

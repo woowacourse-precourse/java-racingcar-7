@@ -1,7 +1,8 @@
-package racingcar.model;
+package racingcar.model.race;
 
 import java.util.List;
 import racingcar.dto.RoundRaceRecord;
+import racingcar.model.car.Car;
 
 public class CarRaceRecorder {
 

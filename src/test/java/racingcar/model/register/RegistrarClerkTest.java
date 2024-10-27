@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.register;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -6,7 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RacingRegisterForm;
-import racingcar.model.move.RandomMoveStrategy;
+import racingcar.model.race.strategy.RandomMoveStrategy;
+import racingcar.model.race.CarRace;
 
 @DisplayName("자동차 경주 등록원 테스트")
 class RegistrarClerkTest {
