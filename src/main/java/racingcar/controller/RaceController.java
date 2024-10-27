@@ -13,6 +13,6 @@ public class RaceController {
     }
 
     public void raceRun() {
-        outputView.namePrompt();
+        outputView.printCarNameInputPrompt();
     }
 }
