@@ -12,6 +12,6 @@ public class RegexConstant {
             START_OF_STRING + CAR_NAME_REGEX +
                     "(" + NON_CAPTURING_GROUP + COMMA + CAR_NAME_REGEX + ")" + ONE_OR_MORE + END_OF_STRING;
 
-    public static final String POSITIVE_NUMBER = "^[1-9]*";
+    public static final String POSITIVE_NUMBER = "^[1-9][0-9]*$";
 
 }
