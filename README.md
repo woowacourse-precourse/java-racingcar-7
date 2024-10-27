@@ -115,7 +115,7 @@
 
 - [X]  자동차 게임 진행 관리 클래스(RacingCarGame)
 - [X]  자동차 그룹 관리 클래스(RacingCarsGroup)
-- [ ]  게임 각 라운드 결과값 및 최종 우승자 결과값 저장 클래스(GameRoundHistory)
+- [X]  게임 각 라운드 결과값 및 최종 우승자 결과값 저장 클래스(GameRoundHistory)
 - [ ]  콤마(,) 기준으로 입력값 자르기 클래스(SeparateCarNames)
 - [X]  자동차 이름 유효성 검증 클래스(CarNameValidation)
 - [X]  시도할 횟수 값 유효성 검증 클래스(InputNumberValidation)
