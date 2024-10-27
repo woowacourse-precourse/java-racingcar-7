@@ -9,7 +9,7 @@ import java.util.Map;
 public class OutputView {
 
     public void printExecutionResultHeader() {
-        System.out.println(EXECUTION_RESULT_HEADER);
+        System.out.println(EXECUTION_RESULT_HEADER.getMessage());
     }
 
     public void printCarsStatus(Map<String, String> cars) {
