@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import java.util.Objects;
-import java.util.function.IntUnaryOperator;
 
 public class CarPosition {
     private final int position;
@@ -17,10 +16,6 @@ public class CarPosition {
     public int getPosition() {
         return position;
     }
-
-//    public CarPosition apply(IntUnaryOperator operator) {
-//        return new CarPosition(operator.applyAsInt(position));
-//    }
 
     @Override
     public boolean equals(Object o) {
