@@ -29,4 +29,7 @@ public class RacingCars {
         }
     }
 
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
+    }
 }
