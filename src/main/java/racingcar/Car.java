@@ -7,7 +7,7 @@ public class Car {
 
     public Car(String name) {
         this.carName = new CarName(name);
-        this.carPosition = new CarPosition(0);
+        this.carPosition = new CarPosition();
     }
 
     private Car(CarName carName, CarPosition carPosition) {
@@ -33,8 +33,8 @@ public class Car {
         return this.carPosition.isPosition(givenPosition);
     }
 
-    public String toCustomFormatString(String customString) {
-        return this.carName.toString() + " : " + this.carPosition.toCustomFormatString(customString);
+    public String toCustomFormatString(String carFormat, String positionFormat) {
+        return this.carName.toString() + carFormat + this.carPosition.toCustomFormatString(positionFormat);
     }
 
     public String toCarNameString() {
