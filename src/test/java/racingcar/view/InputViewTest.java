@@ -1,10 +1,8 @@
 package racingcar.view;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import camp.nextstep.edu.missionutils.Console;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
@@ -21,6 +19,11 @@ class InputViewTest {
     @BeforeEach
     void setUp() {
         inputView = new InputView();
+    }
+
+    @AfterEach
+    void closeConsole(){
+        Console.close();
     }
 
     @Test
@@ -40,6 +43,7 @@ class InputViewTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("시도 횟수를 숫자로 입력했을 때, 올바르게 반환")
     void testGetRaceCountSuccess() {
         // Given
@@ -65,9 +69,8 @@ class InputViewTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @ParameterizedTest
-    @NullSource
     @ValueSource(strings = {" ", "", "a"})
-    @DisplayName("시도 횟수를 숫자가 아닌 문자나 null이나 공백을 입력했을때 예외처리")
+    @DisplayName("시도 횟수를 숫자가 아닌 문자나 공백을 입력했을때 예외처리")
     void testValidateRaceCountException_NotNumber(String input) {
         // Given
         setInputStream(input);

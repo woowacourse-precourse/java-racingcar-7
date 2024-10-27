@@ -85,7 +85,8 @@ class RacingGameTest {
         @DisplayName("단일 우승자 테스트")
         void testSingleWinner() {
             //given
-
+            MoveStrategy moveStrategy = createMoveStrategy(1);
+            racingGame.playRound(moveStrategy);
             //when
             List<String> winners = racingGame.getWinners();
             //then
