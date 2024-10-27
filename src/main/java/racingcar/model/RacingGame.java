@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private static final int FIRST_ROUND = 1;
-    private static final int ERROR_POSITION = -1;
 
     private final List<RacingCar> players;
     private final int totalRound;
@@ -33,11 +32,9 @@ public class RacingGame {
     }
 
     public void play() {
-        for (RacingCar player : players) {
-            if (player.canMove()) {
-                player.move();
-            }
-        }
+        players.stream()
+                .filter(RacingCar::canMove)
+                .forEach(RacingCar::move);
     }
 
     public void incrementRound() {
@@ -53,8 +50,13 @@ public class RacingGame {
     }
 
     public List<RacingCar> findFinalWinners() {
-        int maxPosition = players.stream().mapToInt(RacingCar::getPosition).max().orElse(ERROR_POSITION);
+        int maxPosition = players.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElseThrow(IllegalArgumentException::new);
 
-        return players.stream().filter(player -> player.getPosition() == maxPosition).collect(Collectors.toList());
+        return players.stream()
+                .filter(player -> player.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
