@@ -17,15 +17,22 @@ public class GameController {
         RacingGame racingGame = new RacingGame(carNames);
 
         UserOutputView.outputStartMessage();
-        for (int round = 0; round < Integer.parseInt(moves); round++) {
-            racingGame.moveCars();
-
-            for (Car car : racingGame.getCars()) {
-                UserOutputView.outputResult(car.getName(), car.getPosition());
-            }
-            System.out.println();
-        }
+        startRace(racingGame, Integer.parseInt(moves));
 
         UserOutputView.outputWinners(racingGame.getWinners());
+    }
+
+    private void startRace(RacingGame racingGame, int moves) {
+        for (int round = 0; round < moves; round++) {
+            racingGame.moveCars();
+            displayRoundResult(racingGame);
+        }
+    }
+
+    private void displayRoundResult(RacingGame racingGame) {
+        for (Car car : racingGame.getCars()) {
+            UserOutputView.outputResult(car.getName(), car.getPosition());
+        }
+        System.out.println();
     }
 }
