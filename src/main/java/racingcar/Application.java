@@ -14,6 +14,6 @@ public class Application {
         OutputView outputView = new OutputView();
         RacingController controller = new RacingController(parser, model, inputView, outputView);
 
-        controller.run();
+        controller.race();
     }
 }

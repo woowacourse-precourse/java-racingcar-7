@@ -19,7 +19,7 @@ public class RacingController {
         this.outputView = outputView;
     }
 
-    public void run() {
+    public void race() {
         LinkedHashMap<String, Integer> cars = parser.parseCars(inputView.getCars());
         int rounds = parser.parseRounds(inputView.getRounds());
 
