@@ -12,6 +12,7 @@ import racingcar.view.OutputView;
 public class Racing {
 
     private final Map<String, Integer> raceStatus = new LinkedHashMap<>();
+    private final List<String> winners = new ArrayList<>();
 
     public void initialize(List<String> input) {
         for (String name : input) {
@@ -28,8 +29,6 @@ public class Racing {
 
     public void determineWinner() {
         int maxForwardCount = calculateMaxForwardCount();
-
-        List<String> winners = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : raceStatus.entrySet()) {
             calculateWinner(entry, maxForwardCount);
@@ -59,10 +58,9 @@ public class Racing {
         return Collections.max(raceStatus.values());
     }
 
-    private String calculateWinner(Map.Entry<String, Integer> entry, int maxForwardCount) {
-        if(entry.getValue() == maxForwardCount) {
-            return entry.getKey();
+    private void calculateWinner(Map.Entry<String, Integer> input, int maxForwardCount) {
+        if(input.getValue() == maxForwardCount) {
+            winners.add(input.getKey());
         }
-        return null;
     }
 }
