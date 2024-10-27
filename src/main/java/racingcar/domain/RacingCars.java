@@ -41,4 +41,22 @@ private static final int MINIMUM_CAR_COUNT = 2;
             racingCar.move(randomGenerator.generateRandom());
         }
     }
+
+    public List<String> findRacingWinners(){
+        RacingCar maxDistanceCar = findMaxDistanceCar();
+        return findSameDistanceList(maxDistanceCar);
+    }
+
+    private RacingCar findMaxDistanceCar() {
+        return racingCars.stream()
+                .max(RacingCar::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("차량 리스트가 비었습니다."));
+    }
+
+    private List<String> findSameDistanceList(RacingCar maxDistanceCar) {
+        return racingCars.stream()
+                .filter(maxDistanceCar::isSameLocation)
+                .map(RacingCar::getRacingCarName)
+                .collect(Collectors.toList());
+    }
 }
