@@ -27,6 +27,27 @@ public class RacingUtilsTest {
     }
 
     @Test
+    @DisplayName("쉼표 옆에 띄어쓰기가 올 경우 예외를 발생시킨다.")
+    void commaWithEmptyTest() {
+        assertThatThrownBy(() -> RacingUtils.divideComma("123, "))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("잘못된 입력입니다.");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 하나만 존재하거나 빈 문자열일 경우 예외를 발생시킨다.")
+    void singleCarName() {
+        assertAll(
+            () -> assertThatThrownBy(() -> RacingUtils.divideComma("123"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("잘못된 입력입니다."),
+            () -> assertThatThrownBy(() -> RacingUtils.divideComma("123,,456"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("잘못된 입력입니다.")
+        );
+    }
+
+    @Test
     @DisplayName("자동차 이름이 5자를 넘어가는 경우 예외를 발생시킨다.")
     void ExceedCarNameLengthTest() {
         assertAll(

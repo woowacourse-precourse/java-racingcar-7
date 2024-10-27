@@ -14,6 +14,7 @@ public class RacingUtils {
     public static List<String> divideComma(String input) {
         List<String> list = Arrays.stream(input.split(",")).map(String::trim).toList();// ,로 나눠 리스트에 나눠담음
 
+        RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasEmptyOrBlankString(list) || isSingleName(list));
         RacingException.throwIllegalArgumentException("잘못된 입력입니다.", hasDuplicates(list) || hasAnyStringExceedingLength(list));
 
         return list;
@@ -52,6 +53,14 @@ public class RacingUtils {
 
     private static boolean hasStringExceedingLength(String string) {
         return string.length() > LENGTH;
+    }
+
+    private static boolean hasEmptyOrBlankString(List<String> list) {
+        return list.stream().anyMatch(String::isBlank);
+    }
+
+    private static boolean isSingleName(List<String> list) {
+        return list.size() <= 1;
     }
 
 }
