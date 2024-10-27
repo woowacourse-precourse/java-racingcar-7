@@ -37,7 +37,7 @@ public class RacingController {
     private void runRacing(Racing racing) {
         while (racing.hasNextRound()) {
             racing.executeRound();
-            outputView.printRoundResult(racing.getCars());
+            outputView.printRoundResult(racing.getParticipants());
         }
     }
 

@@ -1,32 +1,26 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
 import java.util.List;
 
 public class Racing {
-    private final List<Car> cars;
+    private final Participants participants;
     private final int totalRounds;
     private int currentRound;
 
-    private Racing(List<Car> cars, int totalRounds) {
-        this.cars = cars;
+    private Racing(Participants participants, int totalRounds) {
+        this.participants = participants;
         this.totalRounds = totalRounds;
         this.currentRound = 0;
     }
 
 
     public void executeRound() {
-        for (Car car : cars) {
-            if (Randoms.pickNumberInRange(1, 10) >= 4) {
-                car.move();
-            }
-        }
+        participants.moveCarsRandomly();
         currentRound++;
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+    public Participants getParticipants() {
+        return participants;
     }
 
     public boolean hasNextRound() {
@@ -34,18 +28,13 @@ public class Racing {
     }
 
     public List<Car> getWinners() {
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getMovedDistance)
-                .max()
-                .orElse(0);
-
-        return cars.stream()
-                .filter(car -> car.getMovedDistance() == maxDistance)
-                .toList();
+        int maxDistance = participants.getMaxMovedDistance();
+        return participants
+                .findCarsWithMovedDistance(maxDistance);
     }
 
     public static Racing from(List<String> carNames, int totalRounds) {
-        List<Car> cars = carNames.stream().map(Car::new).toList();
-        return new Racing(cars, totalRounds);
+        Participants participants = Participants.from(carNames);
+        return new Racing(participants, totalRounds);
     }
 }

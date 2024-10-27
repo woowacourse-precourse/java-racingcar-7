@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
+import racingcar.model.Participants;
 
 public class OutputView {
     private static final String ROUND_RESULT_START_MESSAGE = "실행 결과";
@@ -20,7 +21,8 @@ public class OutputView {
         System.out.println(winCarNames);
     }
 
-    public void printRoundResult(List<Car> cars) {
+    public void printRoundResult(Participants participants) {
+        List<Car> cars = participants.getParticipants();
         for (Car car : cars) {
             String distanceGraph = buildDistanceGraph(car.getMovedDistance());
             System.out.printf("%s : %s\n", car.getName(), distanceGraph);
