@@ -6,7 +6,6 @@ import racingcar.model.valuegenerator.ValueGenerator;
 
 public class Cars {
     private final List<Car> cars;
-    private final RandomValueGenerator randomValueGenerator = new RandomValueGenerator();
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -18,6 +17,13 @@ public class Cars {
                 .collect(Collectors.toUnmodifiableList());
 
         return new Cars(cars);
+    }
+
+    public List<String> getExecutionResult() {
+        return cars.stream()
+                .map(ExecutionResult::ofValue)
+                .map(Object::toString)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public void move(ValueGenerator valueGenerator) {
