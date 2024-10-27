@@ -47,11 +47,16 @@ public class OutputView {
 
     private void printSingleWinner(List<RacingCar> finalWinners) {
         String name = finalWinners.getFirst().getName();
+
         System.out.printf(FINAL_WINNER_TEMPLATE, name);
     }
 
     private void printMultipleWinners(List<RacingCar> finalWinners) {
-        List<String> names = finalWinners.stream().map(RacingCar::getName).toList();
-        System.out.printf(FINAL_WINNER_TEMPLATE, String.join(WINNERS_DELIMITER, names));
+        List<String> names = finalWinners.stream()
+                .map(RacingCar::getName)
+                .toList();
+        String namesWithDelimiter = String.join(WINNERS_DELIMITER, names);
+
+        System.out.printf(FINAL_WINNER_TEMPLATE, namesWithDelimiter);
     }
 }
