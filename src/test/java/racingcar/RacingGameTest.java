@@ -38,4 +38,59 @@ class RacingGameTest {
                 .containsExactlyElementsOf(carNames);
     }
 
+    @Test
+    @DisplayName("랜덤값이 4 이상이라고 가정했을때 Car 객체의 moveCount값이 증가하는지 테스트")
+    public void 랜덤값__4이상_자동차_전진_테스트(){
+        //given
+        Car car = new Car("car1");
+        int randomNumber = 4;
+        int expectedMoveCount = 5;
+
+        //when
+        for(int i = 0; i < 5; i ++){
+            car.move(randomNumber);
+        }
+
+        //then
+        Assertions.assertThat(car.getMoveCount()).isEqualTo(expectedMoveCount);
+
+    }
+
+    @Test
+    @DisplayName("랜덤값이 4 미만이라고 가정했을때 Car 객체의 moveCount값이 증가하는지 테스트")
+    public void 랜덤값_4미만_자동차_전진_예외테스트(){
+        //given
+        Car car = new Car("car1");
+        int randomNumber = 3;
+        int expectedMoveCount = 0;
+
+        //when
+        for(int i = 0; i < 5; i ++){
+            car.move(randomNumber);
+        }
+
+        //then
+        Assertions.assertThat(car.getMoveCount()).isEqualTo(expectedMoveCount);
+    }
+
+    @Test
+    @DisplayName("AttemptCount 만큼 RacingGame의 Car들이 전진하는지 테스트")
+    public void 시도횟수_만큼_모든_자동차_전진_테스트(){
+        //given
+        List<String> carNames = Arrays.asList("car1", "car2", "car3");
+        racingGame.addCars(carNames);
+        int attemptCount = 5;   // 반복 시도 횟수
+        int randomNumber = 4; // 항상 전진
+
+        //when
+        racingGame.raceByAttemptCount(attemptCount, randomNumber);
+        List<Car> cars = racingGame.getCars();
+
+        //then
+        Assertions.assertThat(cars.get(0).getMoveCount()).isEqualTo(attemptCount);
+        Assertions.assertThat(cars.get(1).getMoveCount()).isEqualTo(attemptCount);
+        Assertions.assertThat(cars.get(2).getMoveCount()).isEqualTo(attemptCount);
+    }
+
+
 }
