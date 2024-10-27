@@ -13,6 +13,7 @@ public class RacingGame {
 
     // 전체 레이싱 실행 메서드
     public void startRacing(int movementNumber) {
+        validateMovement(movementNumber);
         System.out.println("\n실행 결과");
         for (int i = 0; i < movementNumber; i++) {
             raceRound();
@@ -42,6 +43,12 @@ public class RacingGame {
 
     public int randomFunction() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private void validateMovement(int movement) {
+        if (movement <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+        }
     }
 }
 
