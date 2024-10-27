@@ -15,6 +15,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int roundCount = inputRoundCount();
 
+        System.out.println();
+
         List<RacingCar> racingCarList = createRacingCars(names);
         runGame(roundCount, racingCarList);
 
@@ -42,9 +44,11 @@ public class Application {
     }
 
     private static void runGame(int roundCount, List<RacingCar> racingCarList) {
+        System.out.println("실행 결과");
         for (int i = 0; i < roundCount; i++) {
             startOneRace(racingCarList);
             outputRoundResult(racingCarList);
+            System.out.println();
         }
     }
 
