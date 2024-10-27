@@ -50,8 +50,28 @@ IllegalArgumentException을 발생시킨다.
 
 ## 📌 최종 기능 명세
 
-| Class | Method | Input | Output | Description |
-|-------|--------|-------|--------|-------------|
+| Class           | Method                    | Input                  | Output          | Description                     |
+|-----------------|---------------------------|------------------------|-----------------|---------------------------------|
+| Car	            | getCarName                | 		                     | String          | 	자동차 이름을 반환                     |
+|                 | getCurrentDistance        | 	                      | int             | 	현재 이동 거리를 반환                   |
+|                 | moveConditionally	        |                        |                 | 조건에 따라 자동차를 이동                  |
+| Cars	           | getCarsReadOnly	          | 	                      | List\<Car>	     | 읽기 전용 자동차 리스트 반환                |
+|                 | raceOnce	                 | 	                      | 	               | 모든 자동차를 한 번씩 이동                 |
+|                 | determineWinners	         | 	                      | List\<String>	  | 최대 거리 이동한 자동차들의 이름 리스트 반환       |
+| Parser	         | parseCarNames             | 	String                | 	List\<String>	 | 자동차 이름을 파싱하고 리스트로 반환            |
+|                 | convertStringToBigInteger | 	String	               | BigInteger	     | 문자열 입력을 BigInteger로 변환          |
+|                 | joinWithJoiner            | 	List\<String>, String | 	String         | 	리스트를 지정된 구분자로 합쳐서 반환           |
+| Validator       | validateCarNames	         | List\<String>          | 	               | 	자동차 이름 유효성 검증                  |
+|                 | validateAttemptCount	     | BigInteger             | 		              | 시도할 횟수 유효성 검증                   |
+| InputView       | 	getCarNamesInput         |                        | String	         | 자동차 이름을 입력 받음                   |
+|                 | getAttemptCountInput	     | 	                      | String	         | 시도할 횟수을 입력 받음                   |
+| OutputView      | 	printStartMessage        | 		                     | 	               | 경주 시작 메시지를 출력                   |
+|                 | printRaceProgress         | 	Cars                  | 	               | 	각 자동차의 경주 진행 상황을 출력            |
+|                 | printWinners              | 	String                | 		              | 최종 우승자를 출력                      |
+| RaceController  | 	runRace	                 | Cars, BigInteger       | 	               | 	경주를 실행하고 각 라운드 진행 상황과 우승자를 출력  |
+| InputController | 	getValidatedCarNames	    | 	                      | Cars	           | 자동차 이름 입력을 검증 및 파싱 후 Cars 객체 반환 |
+|                 | getValidatedAttemptCount  | 	                      | 	BigInteger	    | 시도할 횟수를 검증하고 파싱하여 반환            |
+| Constant        | 	                         |                        | 상수              | 	프로그램 전반에서 사용하는 상수들을 정의         |
 
 <br>
 
