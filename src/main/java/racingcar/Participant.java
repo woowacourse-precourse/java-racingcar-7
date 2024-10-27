@@ -1,12 +1,8 @@
 package racingcar;
 
 public class Participant {
-    private String carName;
+    private final String carName;
     private int moveCount;
-
-    public Participant() {
-
-    }
 
     public Participant(String carName) {
         this.carName = carName;
