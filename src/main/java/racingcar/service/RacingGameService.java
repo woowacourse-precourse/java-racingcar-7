@@ -3,25 +3,18 @@ package racingcar.service;
 import racingcar.util.RandomGenerator;
 import racingcar.vo.Car;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameService {
 
-    private static final int MOVING_FORWARD = 4;
-    private final RandomGenerator randomGenerator;
-
-    public RacingGameService(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
-    }
+    private static final int MOVING_FORWARD_CONDITION = 4;
 
     public List<String> getWinner(List<Car> cars) {
-        int maxPosition = getMaxPosition(cars);
+        int maxPosition = findMaxPosition(cars);
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public void moveCars(List<Car> cars) {
@@ -30,15 +23,15 @@ public class RacingGameService {
                 .forEach(Car::forward);
     }
 
-    private int getMaxPosition(List<Car> cars) {
+    private int findMaxPosition(List<Car> cars) {
         return cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
                 .map(Car::getPosition)
+                .max(Integer::compareTo)
                 .orElse(0);
     }
 
     private boolean shouldMoveForward(Car car) {
-        return randomGenerator.generateNumber() >= MOVING_FORWARD;
+        return RandomGenerator.generateNumber() >= MOVING_FORWARD_CONDITION;
     }
 
 }
