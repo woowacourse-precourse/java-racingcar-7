@@ -2,6 +2,8 @@
 
 ##### Documentation Changes
 
+*  update README.md (e554e0ee)
+*  update CHANGELOG.md (73df022f)
 *  create CHANGELOG.md (20ef3336)
 *  update README.md (71029c46)
 
