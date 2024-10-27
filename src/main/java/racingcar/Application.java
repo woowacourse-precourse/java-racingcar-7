@@ -1,7 +1,16 @@
 package racingcar;
 
+import racingcar.controller.race.RaceController;
+import racingcar.service.factory.RaceControllerFactory;
+import racingcar.service.factory.RaceControllerFactoryEmb;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RaceControllerFactory raceControllerFactory = new RaceControllerFactoryEmb();
+        RaceController raceController = raceControllerFactory.createRaceController();
+
+        raceController.readyForRace();
+        raceController.broadcastRace();
+        raceController.announceWinner();
     }
 }
