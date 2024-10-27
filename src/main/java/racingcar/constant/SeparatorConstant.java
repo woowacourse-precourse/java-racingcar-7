@@ -2,6 +2,7 @@ package racingcar.constant;
 
 public enum SeparatorConstant {
     COMMA(","),
+    COMMA_WITH_SPACE(", "),
     SPACE("\\s"),
     EMPTY("");
 

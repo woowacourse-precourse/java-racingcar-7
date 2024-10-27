@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 
+import static racingcar.constant.SeparatorConstant.COMMA_WITH_SPACE;
 import static racingcar.view.InputView.UserInput;
 import static racingcar.view.OutputView.printAttemptCountInputMessage;
 import static racingcar.view.OutputView.printCarNamesInputMessage;
@@ -47,7 +48,7 @@ public class RacingCarController {
     private void showWinner(Cars cars) {
         printFinalWinner();
         List<String> winnerNames = cars.calculateFinalWinner();
-        String result = String.join(", ", winnerNames);
+        String result = String.join(COMMA_WITH_SPACE.getSeparator(), winnerNames);
         System.out.println(result);
     }
 }
