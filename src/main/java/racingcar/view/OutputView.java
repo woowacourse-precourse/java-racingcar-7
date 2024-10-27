@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.model.Game;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingGame;
 
 public class OutputView {
 
@@ -11,12 +11,12 @@ public class OutputView {
     private static final String FOOTER = "\n";
     private static final String ONE_STEP = "-";
 
-    public void printRoundResults(Game game) {
-        if (game.isFirstRound()) {
+    public void printRoundResults(RacingGame racingGame) {
+        if (racingGame.isFirstRound()) {
             System.out.printf(HEADER);
         }
 
-        List<RacingCar> players = game.getPlayers();
+        List<RacingCar> players = racingGame.getPlayers();
         for (RacingCar player : players) {
             System.out.printf(PLAYER_POSITION_TEMPLATE, player.getName(), printPosition(player.getPosition()));
         }

@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.regex.Pattern;
 
-public class GameValidator {
+public class RacingGameValidator {
     private static final String POSITIVE_NUMBER_PATTERN = "^[1-9][0-9]*$";
     private static final String INVALID_NUM_ATTEMPTS_ERROR_MESSAGE = "부적절한 형식의 시도 횟수를 입력했습니다. (시도 횟수는 양수)";
 

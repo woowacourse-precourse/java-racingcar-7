@@ -8,15 +8,15 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Game;
 import racingcar.model.RacingCar;
+import racingcar.model.RacingGame;
 
 class OutputViewTest {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private List<RacingCar> players;
-    private Game game;
+    private RacingGame racingGame;
     private OutputView outputView;
 
 
@@ -24,7 +24,7 @@ class OutputViewTest {
     void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
         players = List.of(new RacingCar("pobi"), new RacingCar("woni"), new RacingCar("jun"));
-        game = new Game(players, "3");
+        racingGame = new RacingGame(players, "3");
         outputView = new OutputView();
     }
 
@@ -46,7 +46,7 @@ class OutputViewTest {
         players.get(2).move();
         players.get(2).move();
 
-        outputView.printRoundResults(game);
+        outputView.printRoundResults(racingGame);
 
         assertEquals(expectedResult,
                 outputStreamCaptor.toString().substring(0, outputStreamCaptor.toString().length() - 1));
@@ -56,7 +56,7 @@ class OutputViewTest {
     void 두_번째_라운드_출력_테스트() {
         String expectedResult = "pobi : -\nwoni : --\njun : ---\n";
 
-        game.incrementRound();
+        racingGame.incrementRound();
 
         players.get(0).move();
 
@@ -67,7 +67,7 @@ class OutputViewTest {
         players.get(2).move();
         players.get(2).move();
 
-        outputView.printRoundResults(game);
+        outputView.printRoundResults(racingGame);
 
         assertEquals(expectedResult,
                 outputStreamCaptor.toString().substring(0, outputStreamCaptor.toString().length() - 1));

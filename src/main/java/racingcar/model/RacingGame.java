@@ -3,7 +3,7 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-public class Game {
+public class RacingGame {
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
     private static final int MOVE_THRESHOLD = 4;
@@ -13,8 +13,8 @@ public class Game {
     private final int totalRound;
     private int currentRound;
 
-    public Game(List<RacingCar> players, String totalRound) {
-        GameValidator.validate(totalRound);
+    public RacingGame(List<RacingCar> players, String totalRound) {
+        RacingGameValidator.validate(totalRound);
 
         this.players = players;
         this.totalRound = Integer.parseInt(totalRound);
@@ -42,7 +42,7 @@ public class Game {
     }
 
     public void incrementRound() {
-        this.currentRound += 1;
+        currentRound += 1;
     }
 
     private boolean canMove() {

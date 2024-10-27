@@ -8,36 +8,37 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GameTest {
+class RacingGameTest {
 
-    private Game game;
+    private RacingGame racingGame;
     private List<RacingCar> players;
     private static final String TOTAL_ROUND = "6";
 
     @BeforeEach
     void setUp() {
         players = List.of(new RacingCar("pobi"), new RacingCar("woni"), new RacingCar("jun"));
-        game = new Game(players, TOTAL_ROUND);
+        racingGame = new RacingGame(players, TOTAL_ROUND);
     }
 
     @Test
     void Game_객체_초기화_테스트() {
-        assertEquals(Integer.parseInt(TOTAL_ROUND), game.getTotalRound());
-        assertEquals(1, game.getCurrentRound());
-        assertEquals(3, game.getPlayers().size());
+        assertEquals(Integer.parseInt(TOTAL_ROUND), racingGame.getTotalRound());
+        assertEquals(1, racingGame.getCurrentRound());
+        assertEquals(3, racingGame.getPlayers().size());
     }
 
     @Test
     void 라운드_종료시_게임_진행_불가능() {
-        for (int i = 0; i < game.getTotalRound(); i++) {
-            game.play();
+        for (int i = 0; i < racingGame.getTotalRound(); i++) {
+            racingGame.play();
+            racingGame.incrementRound();
         }
-        assertFalse(game.isNotFinished());
+        assertFalse(racingGame.isNotFinished());
     }
 
     @Test
     void 라운드가_미종료시_게임_진행_가능() {
-        game.play();
-        assertTrue(game.isNotFinished());
+        racingGame.play();
+        assertTrue(racingGame.isNotFinished());
     }
 }
