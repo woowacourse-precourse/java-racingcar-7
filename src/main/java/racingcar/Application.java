@@ -15,10 +15,12 @@ public class Application {
         int moveCount = getMoveCount();
 
         List<Car> cars = createCars(carNames);
+        runGame(cars, moveCount);
+        announceWinners(cars);
     }
 
     private static String[] getCarNames() {
-        System.out.println("자동차 이름을 쉼표로 구분하여 입력하세요.");
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String[] carNames = Console.readLine().split(",");
         validateCarNames(carNames);
         return carNames;
@@ -33,7 +35,7 @@ public class Application {
     }
 
     public static int getMoveCount() {
-        System.out.println("시도할 회수는 몇 번인가요?");
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String moveCountInput = Console.readLine();
         return validateMoveCount(moveCountInput);
     }
@@ -57,6 +59,7 @@ public class Application {
 
     // 게임 진행 로직
     private static void runGame(List<Car> cars, int moveCount) {
+        System.out.println("\n실행 결과");
         for (int i = 0; i < moveCount; i++) {
             moveCars(cars);
             printCarsPosition(cars);
