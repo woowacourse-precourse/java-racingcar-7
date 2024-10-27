@@ -9,7 +9,7 @@ public class Application {
         RaceController controller = new RaceController();
 
         RaceController controller = new RaceController(raceService, raceView);
-        controller.run();
+        controller.startGame();
 
 
 
