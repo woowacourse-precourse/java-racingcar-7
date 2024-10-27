@@ -4,7 +4,8 @@ package racingcar.validation;
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAMES_ONLY_COMMA;
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_DUPLICATED;
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_UNDER_LENGTH_FIVE;
-import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES_OR_SEPARATOR;
+import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
+import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 import static racingcar.service.exception.CarNamesExceptionMessage.NO_INPUT;
 
 import java.util.Arrays;
@@ -15,7 +16,8 @@ import racingcar.service.exception.CarNamesException;
 
 public class CarNamesValidator {
 
-    private static final String KOR_ENG_DIGIT_COMMA_REGEX = ".*[^가-힣a-zA-Z0-9,].*";
+    private static final String KOR_ENG_DIGIT_COMMA_REGEX = "^[가-힣a-zA-Z0-9,]+$";
+    private static final String KOR_ENG_DIGIT_REGEX = "^[가-힣a-zA-Z0-9]+$";
     private static final String ONLY_COMMA_REGEX = "^,+$";
     private static final String CAR_NAMES_SEPARATOR = ",";
 
@@ -24,6 +26,7 @@ public class CarNamesValidator {
         validateCarNamesBlank(carNames);
         validateCarNamez(carNames);
         validateCarNamesOnlyComma(carNames);
+        validateCarName(carNames);
         validateCarNameUnderLengthFive(carNames);
         validateCarNamesDuplicated(carNames);
         return carNames;
@@ -36,8 +39,8 @@ public class CarNamesValidator {
     }
 
     private static void validateCarNamez(String carNames) {
-        if (carNames.matches(KOR_ENG_DIGIT_COMMA_REGEX)) {
-            throw new CarNamesException(INVALID_CAR_NAMES_OR_SEPARATOR);
+        if (!carNames.matches(KOR_ENG_DIGIT_COMMA_REGEX)) {
+            throw new CarNamesException(INVALID_CAR_NAMES);
         }
     }
 
@@ -47,8 +50,18 @@ public class CarNamesValidator {
         }
     }
 
+    private static void validateCarName(String carNames) {
+        String[] split = carNames.split(CAR_NAMES_SEPARATOR);
+        for (String carName : split) {
+            if (!carName.matches(KOR_ENG_DIGIT_REGEX)) {
+                throw new CarNamesException(INVALID_CAR_NAME);
+            }
+        }
+    }
+
     private static void validateCarNameUnderLengthFive(String carNames) {
-        for (String carName : carNames.split(CAR_NAMES_SEPARATOR)) {
+        String[] split = carNames.split(CAR_NAMES_SEPARATOR);
+        for (String carName : split) {
             if (carName.length() > 5) {
                 throw new CarNamesException(CAR_NAME_MUST_UNDER_LENGTH_FIVE);
             }
