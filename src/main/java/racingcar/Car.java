@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Car {
     private static String name;
-    private static ArrayList<String> moveList;
-    private static ArrayList<Car> carList;
+    private static ArrayList<String> moveList = new ArrayList<>();
+    private static ArrayList<Car> carList = new ArrayList<>();
 
     public Car(String name) {
         this.name = name;

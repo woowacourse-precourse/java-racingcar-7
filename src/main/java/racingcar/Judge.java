@@ -3,7 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 
 public class Judge {
-    private static ArrayList<String> winnerList;
+    private static ArrayList<String> winnerList = new ArrayList<>();
 
     ArrayList<String> judgeWinner (ArrayList<Car> carList){
         int moveLength = carList.get(0).getMoveList().size();
