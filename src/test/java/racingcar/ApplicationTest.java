@@ -1,12 +1,14 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.*;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -29,6 +31,19 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 이름_분류_테스트(){
+        //given
+        InputManager inputManager = new ConsoleInputManager();
+        List<String> comparisonValue = Arrays.asList("pobi", "woni");
+
+        //when
+        List<String> classifiedName = inputManager.splitName("pobi,woni");
+
+        //then
+        assertEquals(comparisonValue, classifiedName, "결과는 {pobi,woni}여야 합니다.");
     }
 
     @Override
