@@ -9,15 +9,19 @@ import racingcar.dto.Winners;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
-        this.cars = createCars(carNames);
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Car> createCars(List<String> carNames){
+    private static Car createCar(String carName){
+        return new Car(carName);
+    }
 
-        return carNames.stream()
+    public static Cars createCars(List<String> carNames){
+
+        return new Cars (carNames.stream()
                         .map(Cars::createCar)
-                        .toList();
+                        .toList());
 
     }
 
@@ -57,7 +61,5 @@ public class Cars {
         return new Winners(winners);
     }
 
-    private static Car createCar(String carName){
-        return new Car(carName);
-    }
+
 }

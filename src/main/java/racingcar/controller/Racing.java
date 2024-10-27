@@ -18,7 +18,7 @@ public class Racing {
         String rawCarNames = InputView.requestCarNames();
         List<String> carNames = Parser.parse(rawCarNames,DELIMITER);
         CarNamesValidator.validate(carNames);
-        Cars cars = new Cars(carNames);
+        Cars cars = Cars.createCars(carNames);
 
         String rawTotalRounds = InputView.requestTotalRounds();
         TotalRoundsValidator.validate(rawTotalRounds);

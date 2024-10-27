@@ -11,7 +11,7 @@ import racingcar.dto.CarPosition;
 public class CarTest {
 
     @Nested
-    @DisplayName("차량 객체 생성 시 name에 인자로 입력된 값이 할당된다")
+    @DisplayName("차량 객체를 생성한다")
     class createCarTest{
         @Test
         @DisplayName("차량 객체 생성 시 입력한 값과 이름이 동일하다")
