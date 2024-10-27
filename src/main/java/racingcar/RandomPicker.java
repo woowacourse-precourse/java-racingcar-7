@@ -21,4 +21,10 @@ public class RandomPicker {
         validateRandomRange(randomRunResult);
         return randomRunResult >= 4;
     }
+
+    private static void validateRandomRange(int runRandom) {
+        if (runRandom > 9 || runRandom < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
