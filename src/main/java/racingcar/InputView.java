@@ -10,18 +10,26 @@ public class InputView {
 
     public static InputRequest readLine() {
         String inputCarNames = readCarNames();
-        String inputMovingCount = readMovingCount();
+        int inputMovingCount = readMovingCount();
 
         Console.close();
 
         return new InputRequest(inputCarNames, inputMovingCount);
     }
 
-    private static String readMovingCount() {
+    private static int readMovingCount() {
         System.out.println("시도할 회수는 몇 회인가요?");
         String inputMovingCount = Console.readLine();
         isInvalidInput(inputMovingCount);
-        return inputMovingCount;
+        return parseInt(inputMovingCount);
+    }
+
+    private static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요");
+        }
     }
 
     private static String readCarNames() {

@@ -17,10 +17,17 @@ class InputViewTest extends NsTest {
     }
 
     @Test
-    void 숫자_입력_빈값_실패() {
+    void 이동횟수_입력_빈값_실패() {
         assertThatThrownBy(() -> run("test,test"," "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("빈 값을 입력하셨습니다");
+    }
+
+    @Test
+    void 이동횟수_입력_숫자가_아닌_값_실패() {
+        assertThatThrownBy(() -> run("test,test","test"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자를 입력해주세요");
     }
 
     @Override
