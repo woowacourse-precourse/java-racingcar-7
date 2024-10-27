@@ -9,10 +9,12 @@ public class CarNameValidatorFacade {
 
     public CarNameValidatorFacade() {
         this.validators = new ArrayList<>();
-        validators.add(new CarNameDuplicateValidator());
-        validators.add(new CarNameLengthValidator());
         validators.add(new CarNameNullValidator());
+        validators.add(new CarNameSpaceValidator());
+        validators.add(new CarNameDelimiterValidator());
         validators.add(new CarNameNumberValidator());
+        validators.add(new CarNameLengthValidator());
+        validators.add(new CarNameDuplicateValidator());
     }
 
     public void validateAll(List<String> carNames) {
