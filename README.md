@@ -73,7 +73,7 @@
 
 ### 예외 처리
 
-- [ ] `IllegalArgumentException` 외에 발생한 예외는 `IllegalArgumentException` 으로 변환하여 다시 던진다.
+- [x] `IllegalArgumentException` 외에 발생한 예외는 `IllegalArgumentException` 으로 변환하여 다시 던진다.
 - [ ] 상위 메서드에서 `IllegalArgumentException` 예외를 잡아 예외 정보를 출력한다.
 
 ### 출력

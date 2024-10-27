@@ -5,4 +5,6 @@ public class Message {
     public static final String INPUT_TRY_COUNT_MESSAGE = "시도할 횟수는 몇 회인가요?";
     public static final String CHECK_SAVED_CARS_MESSAGE = "저장된 차량 목록은 다음과 같습니다.";
 
+    public static final String ERROR_PREFIX = "에러 : ";
+    public static final String ERROR_SEPARATOR = ", ";
 }
