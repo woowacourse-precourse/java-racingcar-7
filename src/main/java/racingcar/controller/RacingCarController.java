@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.medel.Car;
+import racingcar.model.Car;
 import racingcar.view.CarNameInputValidator;
 import racingcar.view.MoveCountInputValidator;
 
