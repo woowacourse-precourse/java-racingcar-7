@@ -15,10 +15,6 @@ public class Cars {
         this.cars = cars;
     }
 
-//    public List<Car> getCars() {
-//        return cars;
-//    }
-
     public void move() {
         for (Car car : cars) {
             int randomNumber = RandomGeneratorUtil.getRandomNumber();
@@ -27,7 +23,6 @@ public class Cars {
             }
         }
         printCurrentResult(cars);
-
     }
 
     private int findMaxMovement() {
