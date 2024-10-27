@@ -23,7 +23,7 @@ public class InputView {
 
     public int getAttempts() {
         System.out.println(OutputMessage.ENTER_ATTEMPTS);
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
         return ValidationService.validateAttempts(input);
     }
 }
