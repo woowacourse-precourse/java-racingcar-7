@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RaceController {
+    private final int defaultRound = 1;
+    private final int defualtMinRound = 0;
+
     public void runRace() throws IllegalArgumentException {
         // 입력 받기
         String[] carNames = InputView.getCarNames();
@@ -26,8 +29,8 @@ public class RaceController {
         // 경주 진행
         Race race = new Race(cars);
         for (int i = 0; i < raceRounds; i++) {
-            race.race(1);  // 한 라운드마다 모든 자동차 전진 시도
-            OutputView.printRaceResult(cars);  // 각 라운드 결과 출력
+            race.race(defaultRound);  // 한 라운드마다 모든 자동차 전진
+            OutputView.printRaceResult(cars);
         }
 
         // 우승자 출력
@@ -53,8 +56,8 @@ public class RaceController {
     }
 
     private void validateRaceRounds(int raceRounds) throws IllegalArgumentException{
-        if (raceRounds <= 0) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상의 값이어야 합니다.");
+        if (raceRounds <= defualtMinRound) {
+            throw new IllegalArgumentException(String.format("시도할 횟수는 %d 이상의 값이어야 합니다.", defualtMinRound));
         }
     }
 }
