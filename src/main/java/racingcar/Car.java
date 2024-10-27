@@ -29,3 +29,9 @@ public class Car {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
+    }
+}
+
