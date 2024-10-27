@@ -15,6 +15,11 @@ public class InputView {
         return input.split(CAR_NAME_DELIMITER);
     }
 
+    public int readMovementNumber() {
+        String number = readLine();
+        return Integer.parseInt(number);
+    }
+
     private String readLine() {
         return Console.readLine();
     }

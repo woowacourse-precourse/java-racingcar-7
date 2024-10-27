@@ -13,6 +13,11 @@ public class GameManager {
     public void start() {
         String[] carName = readCarName();
         Cars cars = putCars(carName);
+        int movementNumber = readMovementNumber();
+    }
+
+    private int readMovementNumber() {
+        return inputView.readMovementNumber();
     }
 
     private Cars putCars(String[] carName) {
