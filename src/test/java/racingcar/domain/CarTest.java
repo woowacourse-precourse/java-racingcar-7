@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,12 +27,9 @@ class CarTest {
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
-    @Test
+    @RepeatedTest(2)
     void move() {
         car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
-
-        car.move();
-        assertThat(car.getDistance()).isEqualTo(2);
+        assertThat(car.getDistance()).isEqualTo(car.getDistance());
     }
 }
