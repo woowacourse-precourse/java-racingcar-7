@@ -4,13 +4,14 @@ import static camp.nextstep.edu.missionutils.Randoms.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
     private final List<RacingCar> racingCars;
     private final Integer raceCount;
 
-    public void race() {
+    public List<RacingCar> race() {
 
         for (int i = 0; i < raceCount; i++) {
             for (RacingCar racingCar : racingCars) {
@@ -21,6 +22,8 @@ public class Race {
 
             printRoundResult();
         }
+
+        return findWinners();
     }
 
     private List<RacingCar> createRacingCars(String[] carNames) {
@@ -54,6 +57,22 @@ public class Race {
         }
 
         return sb.toString();
+    }
+
+    private List<RacingCar> findWinners() {
+
+        int winnerPosition = findWinnerPosition();
+
+        return racingCars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int findWinnerPosition() {
+        return racingCars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
     }
 
     public Race(String[] racingCars, Integer raceCount) {

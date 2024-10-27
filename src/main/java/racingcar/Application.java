@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -10,6 +12,6 @@ public class Application {
 
         Race race = new Race(racingCars, raceCount);
 
-        race.race();
+        List<RacingCar> winners = race.race();
     }
 }
