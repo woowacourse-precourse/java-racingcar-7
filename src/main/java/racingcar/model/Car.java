@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static racingcar.constants.Constants.ADVANCE_LIMIT;
+import static racingcar.constants.Constants.ONE_STEP;
+
 import java.util.Objects;
 import racingcar.constants.Constants;
 
@@ -48,10 +51,10 @@ public class Car {
     }
 
     private void goOneStep() {
-        this.distance += 1;
+        this.distance += ONE_STEP;
     }
 
     private boolean canProceed(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= ADVANCE_LIMIT;
     }
 }

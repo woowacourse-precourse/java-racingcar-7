@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import static racingcar.constants.Constants.MAX_NAME_LENGTH;
 import static racingcar.constants.ErrorMessages.INVALID_RACER_NAME_BLANK;
 import static racingcar.constants.ErrorMessages.INVALID_RACER_NAME_RANGE;
 
@@ -52,6 +53,6 @@ public class CarName {
     }
 
     private boolean isProperLength(String name) {
-        return name.length() <= 5;
+        return name.length() <= MAX_NAME_LENGTH;
     }
 }

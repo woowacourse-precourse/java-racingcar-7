@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import static racingcar.constants.Constants.COMMA_SPACE;
+import static racingcar.constants.Constants.START_INDEX;
+import static racingcar.constants.Constants.TRIM_LENGTH;
+
 import java.util.List;
 import racingcar.constants.OutputMessages;
 
@@ -26,10 +30,10 @@ public class OutputView {
         StringBuilder result = new StringBuilder();
 
         for (String winner : finalWinners) {
-            result.append(winner).append(", ");
+            result.append(winner).append(COMMA_SPACE);
         }
 
-        System.out.println(result.substring(0, result.length() - 2));
+        System.out.println(result.substring(START_INDEX, result.length() - TRIM_LENGTH));
     }
 
     public static void printRacingResult(String racingResult) {

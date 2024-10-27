@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static racingcar.constants.Constants.MIN_TRY_COUNT;
+
 import java.util.List;
 import racingcar.constants.ErrorMessages;
 
@@ -39,7 +41,7 @@ public class RacingGame {
     }
 
     private void validateOverZero(int tryCount) {
-        if (tryCount < 0) {
+        if (tryCount < MIN_TRY_COUNT) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_TRY_COUNT.getMessage());
         }
     }
