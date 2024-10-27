@@ -34,7 +34,7 @@ public class Application {
         WinnerDeterminer winnerDeterminer = new WinnerDeterminer();
         List<String> winner = winnerDeterminer.determineWinner(racingLog, carNameList);
 
-        System.out.println("최종 우승자 : " + String.join(COMMA + SPACE, winner));
+        printWinner(winner);
     }
 
     private static void initRacingLog(HashMap<String, Integer> racingLog, List<String> carNameList) {
@@ -50,5 +50,13 @@ public class Application {
             stringBuilder.append(carName + RESULT + moveCount + NEW_LINE);
         }
         System.out.println(stringBuilder);
+    }
+
+    private static void printWinner(List<String> winner) {
+        if (winner == null) {
+            System.out.println("우승자가 존재하지 않습니다.");
+            return;
+        }
+        System.out.println("최종 우승자 : " + String.join(COMMA + SPACE, winner));
     }
 }

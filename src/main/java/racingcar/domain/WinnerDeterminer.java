@@ -12,6 +12,9 @@ public class WinnerDeterminer {
         ArrayList<String> winnerList = new ArrayList<>();
         int maxMoveCount = getMaxMoveCount(racingLog);
 
+        if (maxMoveCount == 0) {
+            return null;
+        }
         for (String carName : carNameList) {
             Integer moveCount = racingLog.get(carName);
             if (maxMoveCount == moveCount) {
@@ -22,7 +25,7 @@ public class WinnerDeterminer {
     }
 
     private int getMaxMoveCount(HashMap<String, Integer> racingLog) {
-        int maxMoveCount = 0;
+        int maxMoveCount = Integer.MIN_VALUE;
         for (Map.Entry<String, Integer> entry : racingLog.entrySet()) {
             maxMoveCount = Math.max(maxMoveCount, entry.getValue());
         }
