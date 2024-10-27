@@ -7,6 +7,9 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.ExceptionMessage.ERROR_CAR_NAME_EMPTY;
+import static racingcar.ExceptionMessage.ERROR_CAR_NAME_NOT_EXIST;
+import static racingcar.ExceptionMessage.ERROR_TRY_COUNT_NOT_NATURAL_NUMBER;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -46,28 +49,28 @@ class ApplicationTest extends NsTest {
     void 예외_테스트_다중쉼표() {
         assertThatThrownBy(() -> runException("pobi,,java", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("쉼표 이전 또는 이후에 자동차 이름이 존재하지 않습니다");
+                .hasMessage(ERROR_CAR_NAME_EMPTY);
     }
 
     @Test
     void 예외_테스트_시도횟수() {
         assertThatThrownBy(() -> runException("pobi,java", "-1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("시도할 횟수가 자연수가 아닙니다");
+                .hasMessage(ERROR_TRY_COUNT_NOT_NATURAL_NUMBER);
     }
 
     @Test
     void 예외_테스트_빈문자열() {
         assertThatThrownBy(() -> runException("", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름이 존재하지 않습니다");
+                .hasMessage(ERROR_CAR_NAME_NOT_EXIST);
     }
 
     @Test
     void 예외_테스트_쉼표만() {
         assertThatThrownBy(() -> runException(",,", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름이 존재하지 않습니다");
+                .hasMessage(ERROR_CAR_NAME_NOT_EXIST);
     }
 
     @Override
