@@ -24,4 +24,15 @@ public class InputValidator {
             }
         }
     }
+
+    /**
+     * 시도 횟수가 정수형 숫자인지 검사
+     */
+    public static int isIntegerNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
