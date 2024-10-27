@@ -22,7 +22,7 @@ class RacingResultTests {
     @BeforeAll
     static void setup() {
         inputNames = List.of("alice", "bob", "john", "paul");
-        totalTrialCount = 3;
+        totalTrialCount = 2;
     }
 
     @Test
@@ -37,7 +37,8 @@ class RacingResultTests {
                     assertThat(racingResult.findMaxDistance()).isEqualTo(expectedMaxDistance);
                     assertThat(racingResult.findWinner()).isEqualTo(expectedWinner);
                 },
-                STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+                STOP, STOP, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
         );
     }
 
