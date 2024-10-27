@@ -7,9 +7,17 @@ import java.util.List;
 
 public class RacingCar {
     private final String carName;
-    private final List<String> advanceResults;
+    private final List<Character> advanceResults;
 
-    public RacingCar(String carName, List<String> advanceResult) {
+    public String getCarName() {
+        return carName;
+    }
+
+    public List<Character> getAdvanceResults() {
+        return advanceResults;
+    }
+
+    public RacingCar(String carName, List<Character> advanceResult) {
         this.carName = carName;
         this.advanceResults = advanceResult;
     }
@@ -38,7 +46,7 @@ public class RacingCar {
 
     public void addRandomAdvanceResult(int randomInteger) {
         for (int i = 0; i < randomInteger; i++) {
-            this.advanceResults.add("-");
+            this.advanceResults.add('-');
         }
     }
 }
