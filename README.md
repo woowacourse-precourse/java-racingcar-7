@@ -13,15 +13,18 @@
 ---
 
 ### 2. 자동차 게임 실행
-#### 게임 1회 실행
+#### 자동차
 - [X] 0-9 사이의 무작위 숫자 생성 - Car#generateRandomNumber
 - [X] 무작위 숫자가 4이상이라면, 1만큼 전진 - Car#forwardCar
 - [X] 게임 1회 진행 - Car#startOneGame
 
+#### 게임 실행
+- [X] 자동차 이름들을 자동차 객체 리스트로 변환 - RaceGameController#convertCars
+- [X] 자동차별로 게임 1회 진행 - RaceGameController#startOneGame
+
 #### 게임 종료
-- [ ] 종료 조건 검사
-- [ ] 가장 많이 전진한 자동차를 리스트로 추출
-- [ ] 최종 우승 자동차들을 형식에 맞게 출력 (공동 우승일 경우 쉼표로 구분)
+- [X] 가장 많이 전진한 자동차의 전진 횟수 반환 - RaceGameController#getMaxMoveCount
+- [X] 최종 우승자를 리스트로 추출 - RaceGameController#getWinner
 
 ---
 
@@ -39,7 +42,8 @@
 ---
 
 ### 4. 출력
-- [ ] 최종 우승자를 형식에 맞게 출력
+- [X] 실행 결과 출력 전, 설명 문구 출력 - OutputView#printDescription
+- [X] 게임 1회를 실행한 결과 출력 - OutputView#printGameResult
+- [X] 최종 우승자를 형식에 맞게 출력 (공동 우승일 경우 쉼표(,)로 구분) - OutputView#printWinner
 
 ---
-
