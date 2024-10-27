@@ -22,4 +22,8 @@ public class Car {
         curLocation += "-";
     }
 
+    public Boolean isSamePosition(int maximumLength) {
+        return curLocation.length() == maximumLength;
+    }
+
 }
