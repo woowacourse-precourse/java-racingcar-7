@@ -21,14 +21,4 @@ public class RacingCarService {
         }
         return cars;
     }
-
-    public List<String> findWinners(List<Car> cars, int maxMoveCount) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.moveCount == maxMoveCount) {
-                winners.add(car.name);
-            }
-        }
-        return winners;
-    }
 }

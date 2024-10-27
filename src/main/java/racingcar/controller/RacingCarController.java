@@ -2,8 +2,8 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Race;
 import racingcar.enums.Delimiter;
-import racingcar.enums.ViewMessage;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,10 +15,10 @@ public class RacingCarController {
     private final RacingCarService racingCarService = new RacingCarService();
 
     public void play() {
-        List<Car> cars = prepareCars();
+        Race race = new Race(prepareCars());
         int rounds = inputRounds();
-        int maxMoveCount = startRace(cars, rounds);
-        printWinners(cars, maxMoveCount);
+        startRace(race, rounds);
+        printWinners(race);
     }
 
     private List<Car> prepareCars() {
@@ -30,28 +30,20 @@ public class RacingCarController {
         return Integer.parseInt(inputView.promptRounds());
     }
 
-    private int startRace(List<Car> cars, int rounds) {
+    private void startRace(Race race, int rounds) {
         outputView.printResult();
-        int maxMoveCount = 0;
         while (rounds-- > 0) {
-            maxMoveCount = runRace(cars, maxMoveCount);
+            runAndPrintRoundStatus(race);
         }
-        return maxMoveCount;
     }
 
-    private int runRace(List<Car> cars, int maxMoveCount) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : cars) {
-            car.move();
-            maxMoveCount = Math.max(maxMoveCount, car.moveCount);
-            stringBuilder.append(car).append(ViewMessage.PRINT_BLANK.getMessage());
-        }
-        outputView.printRoundStatus(stringBuilder.toString());
-        return maxMoveCount;
+    private void runAndPrintRoundStatus(Race race) {
+        race.runRace();
+        outputView.printRoundStatus(race);
     }
 
-    private void printWinners(List<Car> cars, int maxMoveCount) {
-        List<String> winners = racingCarService.findWinners(cars, maxMoveCount);
+    private void printWinners(Race race) {
+        List<String> winners = race.findWinners();
         String result = String.join(Delimiter.COMMA_WITH_SPACE.getSymbol(), winners);
         outputView.printWinners(result);
     }

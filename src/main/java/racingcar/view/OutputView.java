@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.Race;
 import racingcar.enums.ViewMessage;
 
 public class OutputView {
@@ -9,8 +10,8 @@ public class OutputView {
         System.out.println(ViewMessage.PRINT_RESULT.getMessage());
     }
 
-    public void printRoundStatus(String status) {
-        System.out.println(status);
+    public void printRoundStatus(Race race) {
+        System.out.println(race);
     }
 
     public void printWinners(String result) {
