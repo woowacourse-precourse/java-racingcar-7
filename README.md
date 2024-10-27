@@ -11,6 +11,8 @@
 
 ### 3. InputNumber
 - 시도할 횟수를 입력 받는다.
+  - 숫자가 아닌 입력을 받는 경우, `IllegalArgumentException`을 발생시키며 종료한다.
+  - 1 미만의 숫자를 입력받을 경우, `IllegalArgumentException`을 발생시키며 종료한다.
 
 ### 4. PlayGames
 - 시도 횟수와, 경주할 자동차를 반복문으로 중첩하여 반복하는 역할을 한다.
