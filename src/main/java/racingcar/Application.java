@@ -16,6 +16,7 @@ public class Application {
         String input_names = "";
         String input_times = "";
         RacingCar.readInputs(input_names, input_times);
+        RacingCar.checkInputException(input_names, input_times);
         RacingCar.processInputs(names, distances, times, input_names, input_times);
         RacingCar.printOutputs(names,distances,times);
     }

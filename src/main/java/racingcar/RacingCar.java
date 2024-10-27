@@ -38,9 +38,9 @@ public class RacingCar {
         input_times = readLine();
     }
 
-    public static void processInputs(String[] names, int[] counts, Integer times, String input_names, String input_times){
+    public static void processInputs(String[] names, int[] distances, Integer times, String input_names, String input_times){
         names = input_names.split(",");
-        counts = new int[names.length];
+        distances = new int[names.length];
         times = Integer.parseInt(input_times);
     }
 
@@ -51,5 +51,14 @@ public class RacingCar {
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
-
+    public static void checkInputException(String input_names, String input_times) {
+        // input_names 스트링을 반점 기준으로 나눴을때 빈 스트링이 없는지 체크
+        if(input_names == null ||  input_names == "" || input_names.charAt(-1)==','){
+            throw new IllegalArgumentException();
+        }
+        // input_times 스트링이 양의 정수로 변환가능한지 체크
+        if(input_times == null || input_times.matches("\\d+")){
+            throw new IllegalArgumentException();
+        }
+    }
 }
