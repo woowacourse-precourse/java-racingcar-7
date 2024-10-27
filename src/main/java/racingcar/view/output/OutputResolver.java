@@ -18,6 +18,8 @@ final class OutputResolver {
                 .map(OutputResolver::formatRoundResult)
                 .collect(Collectors.joining(LINE_SEPARATOR + LINE_SEPARATOR));
 
+        String winners = String.join(", ", response.winnerNames());
+
         return null;
     }
 
