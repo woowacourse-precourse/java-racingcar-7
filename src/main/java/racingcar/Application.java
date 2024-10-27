@@ -21,6 +21,7 @@ public class Application {
         }
 
         // 시도할 횟수 입력
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String tryNumStr = Console.readLine();
         int tryNum = Exception.tryNumber(tryNumStr);    // 예외 처리 및 int로 형변환
 
