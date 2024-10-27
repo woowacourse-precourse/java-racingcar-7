@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.Constants;
 import racingcar.util.Converter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -40,7 +41,7 @@ public class RaceService {
 
     private void raceRound(List<Car> carList) {
         for (Car car : carList) {
-            if (pickRandomNumber() >= 4)
+            if (pickRandomNumber() >= Constants.MOVE_NUM)
                 car.move();
         }
     }
@@ -68,7 +69,7 @@ public class RaceService {
     }
 
     private int pickRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+        return Randoms.pickNumberInRange(Constants.MIN_RANDOM_NUM, Constants.MAX_RANDOM_NUM);
     }
 
 }
