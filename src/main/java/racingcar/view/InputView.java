@@ -11,8 +11,7 @@ public class InputView {
         return SplittingRacingCarName.splitRacingCarName(carNames);
     }
 
-    public TrialCount inputTrialCount(){
-        String trialCount = Console.readLine();
-        return new TrialCount(trialCount);
+    public String inputTrialCount(){
+        return Console.readLine();
     }
 }
