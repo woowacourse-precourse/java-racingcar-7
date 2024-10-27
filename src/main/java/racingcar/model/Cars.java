@@ -13,15 +13,15 @@ public class Cars {
     public static void register(List<String> names){
         for(String name : names){
             Validator.validateCarName(name);
-            cars.put(name,"");
+            cars.put(name, "");
         }
     }
 
     public static Map<String,String> moveForward(){
-        for(String key:cars.keySet()){
+        for(String key : cars.keySet()){
             int random = Randoms.pickNumberInRange(0, 9);
-            if(random>=4){
-                cars.put(key,cars.get(key)+"-");
+            if(random >= 4){
+                cars.put(key, cars.get(key) + "-");
             }
         }
         return cars;
