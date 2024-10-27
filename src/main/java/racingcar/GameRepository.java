@@ -6,6 +6,7 @@ import java.util.List;
 public class GameRepository {
 
     private List<String> names = new ArrayList<>();
+    private int round;
 
     public void setCarName(List<String> splitNames) {
         this.names = splitNames;
@@ -17,5 +18,13 @@ public class GameRepository {
 
     public List<String> getAllNames() {
         return this.names;
+    }
+
+    public void setRound(int input) {
+        this.round = input;
+    }
+
+    public int getRound() {
+        return this.round;
     }
 }

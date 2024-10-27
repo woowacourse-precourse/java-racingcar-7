@@ -22,5 +22,5 @@ public class GameRepositoryTest {
         assertThat(allNames).containsExactly("tokki", "pobi", "nori");
     }
 
-    
+
 }

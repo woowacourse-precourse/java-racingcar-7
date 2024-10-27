@@ -15,4 +15,11 @@ public class GameService {
 
 
     }
+
+    public void setNumberOfRounds(String input) {
+
+        int round = Integer.parseInt(input);
+        gameRepository.setRound(round);
+
+    }
 }
