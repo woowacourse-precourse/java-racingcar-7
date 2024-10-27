@@ -9,7 +9,27 @@ public class RoundService {
 
     public void playRound(Cars cars) {
         for (Car car : cars.getCars()) {
-            int randomValue = RandomNumber.make();
+            int randomValue = generateRandomValue();
+            moveCarIfNeeded(car, randomValue);
+
         }
+    }
+
+    private int generateRandomValue() {
+        return RandomNumber.make();
+    }
+
+    private void moveCarIfNeeded(Car car, int randomValue) {
+        if (shouldMove(randomValue)) {
+            car.forward();
+        }
+    }
+
+
+    private boolean shouldMove(int randomValue) {
+        if (randomValue >= MOVING_FORWARD) {
+            return true;
+        }
+        return false;
     }
 }
