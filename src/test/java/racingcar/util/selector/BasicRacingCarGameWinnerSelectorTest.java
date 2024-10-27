@@ -1,4 +1,4 @@
-package racingcar.util.generator;
+package racingcar.util.selector;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,11 +7,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
 
-public class BasicRacingCarWinnerGeneratorTest {
-    private final BasicRacingCarWinnerGenerator basicRacingCarWinnerGenerator;
+public class BasicRacingCarGameWinnerSelectorTest {
+    private final BasicRacingCarGameWinnerSelector basicRacingCarWinnerGenerator;
 
-    public BasicRacingCarWinnerGeneratorTest() {
-        this.basicRacingCarWinnerGenerator = new BasicRacingCarWinnerGenerator();
+    public BasicRacingCarGameWinnerSelectorTest() {
+        this.basicRacingCarWinnerGenerator = new BasicRacingCarGameWinnerSelector();
     }
 
     @Test

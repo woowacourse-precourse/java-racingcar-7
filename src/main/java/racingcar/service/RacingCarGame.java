@@ -5,7 +5,7 @@ import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.util.generator.RacingCarGenerator;
 import racingcar.util.generator.RacingCarGameRandomGenerator;
-import racingcar.util.generator.RacingCarWinnerGenerator;
+import racingcar.util.selector.RacingCarGameWinnerSelector;
 import racingcar.util.parser.RacingCarNameParser;
 import racingcar.util.transporter.RacingCarTransporter;
 import racingcar.util.validator.RacingCarGameValidator;
@@ -15,7 +15,7 @@ public class RacingCarGame {
     private final RacingCarGameValidator racingCarGameValidator;
     private final RacingCarGenerator racingCarGenerator;
     private final RacingCarTransporter racingCarTransporter;
-    private final RacingCarWinnerGenerator racingCarWinnerGenerator;
+    private final RacingCarGameWinnerSelector racingCarWinnerGenerator;
     private final RacingCarGameRandomGenerator racingCarRandomGenerator;
     private static final String WINNER_NAME_DELIMITER = ", ";
 
@@ -24,7 +24,7 @@ public class RacingCarGame {
             RacingCarGameValidator racingCarGameValidator,
             RacingCarGenerator racingCarGenerator,
             RacingCarTransporter racingCarTransporter,
-            RacingCarWinnerGenerator racingCarWinnerGenerator,
+            RacingCarGameWinnerSelector racingCarWinnerGenerator,
             RacingCarGameRandomGenerator racingCarRandomGenerator
     ) {
         this.racingCarNameParser = racingCarNameParser;

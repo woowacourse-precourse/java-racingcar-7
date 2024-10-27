@@ -1,8 +1,8 @@
-package racingcar.util.generator;
+package racingcar.util.selector;
 
 import java.util.List;
 import racingcar.domain.RacingCar;
 
-public interface RacingCarWinnerGenerator {
+public interface RacingCarGameWinnerSelector {
     public List<RacingCar> generateWinner(List<RacingCar> racingCars);
 }

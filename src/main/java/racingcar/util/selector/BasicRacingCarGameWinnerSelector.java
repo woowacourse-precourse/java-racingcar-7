@@ -1,10 +1,10 @@
-package racingcar.util.generator;
+package racingcar.util.selector;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 
-public class BasicRacingCarWinnerGenerator implements RacingCarWinnerGenerator {
+public class BasicRacingCarGameWinnerSelector implements RacingCarGameWinnerSelector {
     @Override
     public List<RacingCar> generateWinner(List<RacingCar> racingCars) {
         int maxLocation = getMaxLocation(racingCars);
