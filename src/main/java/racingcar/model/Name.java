@@ -8,9 +8,14 @@ public class Name {
     private final String value;
 
     public Name(final String value) {
-        validateNameLength(value);
-        validateBlank(value);
-        this.value = value;
+        String trimmedValue = value.trim();
+        validateNameLength(trimmedValue);
+        validateBlank(trimmedValue);
+        this.value = trimmedValue;
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

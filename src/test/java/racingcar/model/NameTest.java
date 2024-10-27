@@ -31,4 +31,17 @@ class NameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차의 이름은 공백이 될 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("이름에 공백이 포홤되어 있으면 이를 삭제한 값을 가진다.")
+    void removeBlank() {
+        // given
+        Name name = new Name("우테코 ");
+
+        // when
+        String result = name.getValue();
+
+        // then
+        Assertions.assertThat(result).isEqualTo("우테코");
+    }
 }
