@@ -49,7 +49,7 @@ class OutputViewTest {
         outputView.printRoundResult(RoundResultDto.of(result));
         // then
         Assertions.assertThat(out.toString())
-                .isEqualTo("박재연 : 2\n우테코 : 3\n");
+                .isEqualTo("\n박재연 : --\n우테코 : ---\n");
     }
 
     @Test
@@ -61,6 +61,6 @@ class OutputViewTest {
         outputView.printWinners(result);
         // then
         Assertions.assertThat(out.toString())
-                .isEqualTo(ViewMessage.WINNERS_MESSAGE.getMessage() + "우테코, 박재연\n");
+                .isEqualTo("\n" + ViewMessage.WINNERS_MESSAGE.getMessage() + "우테코, 박재연");
     }
 }
