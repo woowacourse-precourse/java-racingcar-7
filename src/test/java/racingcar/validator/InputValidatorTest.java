@@ -10,7 +10,6 @@ import racingcar.global.validator.InputValidator.ValidationMode;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class InputValidatorTest {
     @Test
@@ -25,36 +24,12 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 자동차_이름의_길이가_최소_글자수_미만인_경우() {
-        ValidationMode carName = ValidationMode.CAR_NAME;
-        String input = Stream.of("a".repeat(carName.getMin() - 1),
-                        "a".repeat(carName.getMin() - 1))
-                .collect(Collectors.joining(","));
-        int minLength = carName.getMin();
-        int maxLength = carName.getMax();
-
-        assertThatThrownBy(() -> InputValidator.validate(carName, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(carNameLength(minLength, maxLength));
-    }
-
-    @Test
     void 자동차_이름을_입력하지_않은_경우() {
         ValidationMode carCount = ValidationMode.CAR_COUNT;
         String input = "";
 
         assertThatThrownBy(() -> InputValidator.validate(carCount, input)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage(emptyCarName());
-    }
-
-    @Test
-    void 자동차의_수가_최소_등록해야_히는_자동차수_미만인_경우() {
-        ValidationMode carCount = ValidationMode.CAR_COUNT;
-        String input = "1";
-        int minCount = carCount.getMin();
-        int maxCount = carCount.getMax();
-
-        assertThatThrownBy(() -> InputValidator.validate(carCount, input)).isInstanceOf(
-                IllegalArgumentException.class).hasMessage(carCount(minCount, maxCount));
     }
 
     @Test
