@@ -38,10 +38,9 @@ public class InputView {
     private void checkDuplicateNames(List<String> carNames){
         HashSet<String> names = new HashSet<>();
         for(String carName : carNames){
-            if(names.contains(carName)){
+            if(!names.add(carName)){
                 throw new IllegalArgumentException(CANNOT_INPUT_DUPLICATED_NAMES);
             }
-            names.add(carName);
         }
     }
 
