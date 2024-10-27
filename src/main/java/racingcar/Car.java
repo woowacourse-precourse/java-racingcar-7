@@ -1,5 +1,7 @@
 package racingcar;
 
+import static console.Message.OUTPUT_SEPARATOR;
+
 public class Car {
     private final String name;
     private int advanceCount;
@@ -13,7 +15,7 @@ public class Car {
     }
 
     public void printRacingInfo() {
-        String racingInfo = this.name + " : " + this.makeHyphen();
+        String racingInfo = this.name + OUTPUT_SEPARATOR + this.makeHyphen();
         System.out.println(racingInfo);
     }
 
@@ -30,5 +32,9 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void setAdvanceCount(int advanceCount) {
+        this.advanceCount = advanceCount;
     }
 }
