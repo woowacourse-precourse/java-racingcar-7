@@ -29,4 +29,12 @@ public class InputValidatorTest {
 
         assertThrows(IllegalArgumentException.class, runner::splitByComma);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "-1", "1a"})
+    void 시도_횟수_양의_정수_테스트(String mockInput) {
+        var runner = new InputValidator(mockInput);
+
+        assertThrows(IllegalArgumentException.class, runner::attemptCountValidator);
+    }
 }
