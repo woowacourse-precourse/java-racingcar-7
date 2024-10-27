@@ -3,10 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     public static List<String> getCarsFromInput() {
@@ -21,10 +18,21 @@ public class Application {
             carMoves.put(car, 0);
         }
     }
+    public static List<String> isCarNameUnique(List<String> cars) {
+        Set<String> carsSet = new HashSet<>(cars);
+        if (carsSet.size() != cars.size()) {
+            throw new IllegalArgumentException("잘못된 입력 형식입니다. 자동차 이름이 중복됩니다.");
+        }
+        return cars;
+    }
     public static int getCountFromInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            return Integer.parseInt(Console.readLine());
+            int count = Integer.parseInt(Console.readLine());
+            if (count < 0) {
+                throw new IllegalArgumentException("잘못된 입력 형식입니다. 양수를 입력해주세요.");
+            }
+            return count;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력 형식입니다. 숫자만 입력해주세요.");
         }
@@ -68,7 +76,7 @@ public class Application {
     }
     public static void main(String[] args) {
         Map<String, Integer> carMoves = new HashMap<>();
-        List<String> cars = getCarsFromInput();
+        List<String> cars = isCarNameUnique(getCarsFromInput());
         int count = getCountFromInput();
 
         validateAndInitializeCars(cars, carMoves);
