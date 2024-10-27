@@ -32,6 +32,11 @@ public class Cars {
                 .collect(Collectors.joining());
     }
 
+    public List<Car> getWinners() {
+        int maxMoveCount = getMaxMoveCount();
+        return cars.stream().filter(it -> it.getMoveCount() == maxMoveCount).toList();
+    }
+
     private int getMaxMoveCount() {
         return cars.stream().mapToInt(Car::getMoveCount).max().orElse(0);
     }

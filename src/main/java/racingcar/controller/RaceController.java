@@ -36,7 +36,7 @@ public class RaceController {
     }
 
     private void finish(Cars cars) {
-
+        List<Car> winners = cars.getWinners();
     }
 
 }
