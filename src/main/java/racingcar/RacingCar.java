@@ -1,6 +1,7 @@
 package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ public class RacingCar {
     int tryCount;
     HashMap<String, Integer> raceStatus = new HashMap<>();
     String raceResult;
+    int moveCount;
 
     public void getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -46,4 +48,14 @@ public class RacingCar {
             System.out.println(raceResult);
         }
     }
+
+    public void moveCar(String key) {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber >= 4) {
+            this.moveCount = raceStatus.get(key);
+            moveCount = moveCount + 1;
+            raceStatus.put(key, moveCount);
+        }
+    }
+
 }
