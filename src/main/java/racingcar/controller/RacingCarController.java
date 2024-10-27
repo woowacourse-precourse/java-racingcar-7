@@ -12,5 +12,8 @@ public class RacingCarController {
 
     public void run() {
         inputView.printInputCarNameMessage();
+
+        String carNames = inputView.getInput();
+        System.out.println(carNames);
     }
 }
