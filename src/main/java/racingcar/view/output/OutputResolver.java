@@ -1,6 +1,9 @@
 package racingcar.view.output;
 
+import java.util.stream.Collectors;
 import racingcar.dto.response.CarRoundStateDTO;
+import racingcar.dto.response.RacingResponseDTO;
+import racingcar.dto.response.RoundResultDTO;
 
 final class OutputResolver {
     private static final String WINNER_MESSAGE_PREFIX = "최종 우승자 : ";
@@ -9,6 +12,19 @@ final class OutputResolver {
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
     private OutputResolver() {
+    }
+    static String resolveRacingResult(RacingResponseDTO response) {
+        String roundResults = response.roundResultDTOs().stream()
+                .map(OutputResolver::formatRoundResult)
+                .collect(Collectors.joining(LINE_SEPARATOR + LINE_SEPARATOR));
+
+        return null;
+    }
+
+    private static String formatRoundResult(RoundResultDTO roundResultDTO) {
+        return roundResultDTO.carRoundStateDTOs().stream()
+                .map(OutputResolver::formatCarRoundState)
+                .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
     private static String formatCarRoundState(CarRoundStateDTO carRoundStateDTO) {
