@@ -37,15 +37,18 @@ public class Application {
     }
 
     public static List<RacingCar> car_input(String input){
+        validateCar(input);
         String[] carArray = input.split(",");
         List<RacingCar> cars = new ArrayList<>();
         for(String name : carArray){
+            validateCarLength(name);
             cars.add(new RacingCar(name.trim()));
         }
         return cars;
     }
 
     public static int count_input(String input){
+        validateCount(input);
         return Integer.parseInt(input);
     }
 
@@ -70,6 +73,32 @@ public class Application {
         }
         return winner.toString();
     }
+
+    public static void validateCar(String input){
+        if(input == null || input.trim().isEmpty()){
+            throw new IllegalArgumentException("입력 형식이 맞지 않습니다.");
+        }
+    }
+
+    public static void validateCarLength(String name){
+        if(name.trim().length()>5 ){
+            throw new IllegalArgumentException("길이가 너무 깁니다.");
+        }
+    }
+
+    public static void validateCount(String input){
+        try {
+            int count = Integer.parseInt(input);
+            if (count <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("유효하지 않은 시도 횟수입니다. 숫자 형식의 정수를 입력해 주세요.");
+        }
+
+    }
+
+
 }
 
 
