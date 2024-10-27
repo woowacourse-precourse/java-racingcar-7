@@ -8,14 +8,6 @@ import racingcar.validation.CarNameValidation;
 import racingcar.validation.CountValidation;
 
 public class InputView {
-    private CarNameValidation carNameValidation;
-    private CountValidation countValidation;
-
-
-    public InputView(CarNameValidation carNameValidation, CountValidation countValidation) {
-        this.carNameValidation = carNameValidation;
-        this.countValidation = countValidation;
-    }
 
     public List<String> enterCarNames() {
         System.out.println(Message.enterName.getMessage());
@@ -24,9 +16,9 @@ public class InputView {
         String[] carNames = userInput.split("\\s*,\\s*");
         List<String> carNameList = Arrays.asList(carNames);
 
-        carNameValidation.isNotEmpty(carNameList);
-        carNameValidation.isNameLengthValid(carNameList);
-        carNameValidation.isNotDuplicate(carNameList);
+        CarNameValidation.isNotEmpty(carNameList);
+        CarNameValidation.isNameLengthValid(carNameList);
+        CarNameValidation.isNotDuplicate(carNameList);
 
         return carNameList;
     }
@@ -35,6 +27,6 @@ public class InputView {
         System.out.println(Message.count.getMessage());
         String userInput = Console.readLine();
 
-        return countValidation.convertToNaturalNum(userInput);
+        return CountValidation.convertToNaturalNum(userInput);
     }
 }
