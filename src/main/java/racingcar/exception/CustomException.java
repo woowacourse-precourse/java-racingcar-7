@@ -1,9 +1,9 @@
 package racingcar.exception;
 
-import racingcar.message.ErrorMessage;
+import racingcar.message.MessageManager;
 
 public class CustomException extends IllegalArgumentException{
-    public CustomException(ErrorMessage errorMessage){
-        super(errorMessage.getMessage());
+    public CustomException(MessageManager messageManager){
+        super(messageManager.getMessage());
     }
 }

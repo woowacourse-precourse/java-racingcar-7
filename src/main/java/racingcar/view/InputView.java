@@ -1,17 +1,18 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.message.InputMessage;
 import racingcar.validation.Validator;
 
 public class InputView {
 
     public String inputCarName(){
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(InputMessage.INPUT_NAME.getMessage());
         return Console.readLine();
     }
 
     public int getAttemptCount(){
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(InputMessage.INPUT_COUNT.getMessage());
         String count = Console.readLine();
         return Validator.checkIfNumber(count);
     }

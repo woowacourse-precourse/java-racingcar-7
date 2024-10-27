@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.config.GameConfig;
+import racingcar.message.OutputMessage;
 import racingcar.model.Car;
 import racingcar.validation.Validator;
 import racingcar.view.InputView;
@@ -23,7 +24,6 @@ public class CarService {
         String inputCarName = inputView.inputCarName();
 
         List<String> carNames = Arrays.asList(inputCarName.split(","));
-
         Validator.checkDuplicateNames(carNames);
 
         List<Car> cars = carNames.stream()
@@ -35,7 +35,7 @@ public class CarService {
     }
 
     public void startRace(List<Car> cars, int count) {
-        System.out.println("실행 결과");
+        System.out.println(OutputMessage.RESULT.getMessage());
         for (int i = 0; i < count; i++) {
             cars.forEach(Car::move);
             outputView.racingView(cars);
