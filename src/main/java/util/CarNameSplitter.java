@@ -5,14 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CarNameSplitter {
-    private final InputValidator carNameValidator;
-    public CarNameSplitter(InputValidator carNameValidator) {
-        this.carNameValidator = carNameValidator;
+    private final InputValidator inputValidator;
+    public CarNameSplitter(InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
     }
 
     public List<String> splitCarNames(String input) {
-        InputValidator carNameValidator = new InputValidator();
-        carNameValidator.validate(input);
+        InputValidator inputValidator = new InputValidator();
+        inputValidator.inputValidate(input);
         List<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
         return carNames;
     }

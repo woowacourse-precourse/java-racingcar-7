@@ -16,7 +16,7 @@ public class InputValidator {
         }
     }
 
-    public void validate(String input) {
+    public void inputValidate(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_OR_NULL_NAME.getMessage());
         }
