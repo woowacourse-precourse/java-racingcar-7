@@ -16,10 +16,18 @@ public class GameController {
     public void run() {
         String carRegistrationRequest = inputView.readCarRegistrationRequest();
         List<String> carNames = Arrays.asList(carRegistrationRequest.split(","));
+        List<Car> cars = carNames.stream().map(Car::new).toList();
         int roundCount = inputView.readRoundCount();
 
-        List<Car> cars = carNames.stream().map(Car::new).toList();
+        System.out.println("/n실행 결과");
         for(int round = 0; round < roundCount; round++) {
+            playRound(cars);
+        }
+    }
+
+    private void playRound(List<Car> cars) {
+        for(Car car:cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
         }
     }
 }
