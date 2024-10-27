@@ -10,8 +10,17 @@ public class NameValidator implements InputValidator<List<String>> {
     @Override
     public int validate(List<String> names) {
         checkEmpty(names.get(0));
+        checkLength(names);
         checkDuplicate(names);
         return 1; // TODO: 크아아아악 ㅜㅜㅜ
+    }
+
+    private void checkLength(List<String> names) throws IllegalArgumentException {
+        for (String name : names) { // TODO: 스트림으로 고칠 수 있나?
+            if (name.length() > 5) {
+                throw new IllegalArgumentException(ErrorMessageEnum.NAME_LENGTH_ERROR.getErrorMessage());
+            }
+        }
     }
 
     // TODO: try-catch로 수정?
