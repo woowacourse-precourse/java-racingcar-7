@@ -41,7 +41,7 @@ public class RacingGame {
     }
 
     private void validateOverZero(int tryCount) {
-        if (tryCount < MIN_TRY_COUNT) {
+        if (tryCount <= MIN_TRY_COUNT) {
             throw new IllegalArgumentException(ErrorMessages.INVALID_RANGE_TRY_COUNT.getMessage());
         }
     }
