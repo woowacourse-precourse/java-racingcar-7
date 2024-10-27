@@ -119,3 +119,34 @@ jun : -----
 ## 순서도
 
 <img width = "500" alt = "image" src="https://github.com/user-attachments/assets/dc3e5c02-44cf-46f4-bc15-b887363af775">
+
+## 파일 구조
+
+````
+└── src
+    ├── main
+    │   └── java
+    │       └── racingcar
+    │           ├── Application.java
+    │           ├── controller
+    │           │   └── RacingCarController.java
+    │           ├── domain
+    │           │   ├── Game.java
+    │           │   └── Input.java
+    │           ├── exception
+    │           │   └── InputException.java
+    │           ├── service
+    │           │   ├── GameService.java
+    │           │   └── InputService.java
+    │           └── view
+    │               ├── GameView.java
+    │               └── InputView.java
+    └── test
+        └── java
+            └── racingcar
+                ├── ApplicationTest.java
+                └── Input
+                    ├── CorrectInputTest.java
+                    └── TheLengthOfStringLessThanFiveTest.java
+
+````
