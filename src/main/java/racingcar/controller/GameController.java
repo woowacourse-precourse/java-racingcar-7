@@ -55,8 +55,12 @@ public class GameController {
 	}
 
 	private void printWinnerResultMessage(List<Car> cars) {
-		List<String> winners = WinnerDeterminer.determineWinner(cars);
-		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
+		String winnerResult = generateWinnerResult(cars);
 		OutputView.printWinnerResultMessage(winnerResult);
+	}
+
+	private String generateWinnerResult(List<Car> cars) {
+		List<String> winners = WinnerDeterminer.determineWinner(cars);
+		return WinnerResultGenerator.generateWinnerResult(winners);
 	}
 }
