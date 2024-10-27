@@ -11,12 +11,12 @@ public class InputView {
         return input;
     }
 
-    public int getNumberOfRounds(){
+    public String getNumberOfRounds(){
         String input = readLine();
         if(input.isEmpty()){
             throw new IllegalArgumentException();
         }
-        return Integer.parseInt(input);
+        return input;
     }
 
 }

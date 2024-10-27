@@ -9,7 +9,8 @@ public class Application {
         Racing racing = new Racing(
                 appConfig.inputView(),
                 appConfig.outputView(),
-                appConfig.racingManager()
+                appConfig.racingManager(),
+                appConfig.validator()
         );
         racing.start();
     }

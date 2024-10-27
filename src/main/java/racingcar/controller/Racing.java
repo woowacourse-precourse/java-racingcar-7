@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.Validator;
 import racingcar.model.Car;
 import racingcar.model.RacingManager;
 import racingcar.view.InputView;
@@ -11,11 +12,13 @@ public class Racing {
     private InputView inputView;
     private OutputView outputView;
     private RacingManager racingManager;
+    private Validator validator;
 
-    public Racing(InputView inputView, OutputView outputView, RacingManager racingManager) {
+    public Racing(InputView inputView, OutputView outputView, RacingManager racingManager, Validator validator) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.racingManager = racingManager;
+        this.validator = validator;
     }
 
     public void start(){
@@ -27,7 +30,9 @@ public class Racing {
 
     private int getValidatedNumberOfRounds() {
         outputView.requestNumberOfRoundsMessage();
-        return inputView.getNumberOfRounds();
+        String numberOfRounds = inputView.getNumberOfRounds();
+        validator.isValidNumberOfRounds(numberOfRounds);
+        return Integer.parseInt(numberOfRounds);
     }
 
     private void displayResult(List<Car> carList) {

@@ -1,5 +1,6 @@
 package racingcar.config;
 
+import racingcar.Validator;
 import racingcar.controller.Racing;
 import racingcar.model.RacingManager;
 import racingcar.view.InputView;
@@ -12,6 +13,10 @@ public class AppConfig {
 
     public OutputView outputView(){
         return new OutputView();
+    }
+
+    public Validator validator(){
+        return new Validator();
     }
 
     public RacingManager racingManager(){
