@@ -12,8 +12,8 @@ public class Executor {
     private static final int endInclusive = 9;
 
     private long repeatCount;
-    private List<Car> cars = new ArrayList<>();
-    private List<Car> winners = new ArrayList<>();
+    private List<Car> cars;
+    private List<Car> winners;
 
     private final IOController ioController;
     private final Parser parser;
@@ -71,19 +71,13 @@ public class Executor {
     }
 
     public List<Car> getWinners(List<Car> cars) {
-        long maxMoveCount = 0;
-        for (Car car : cars) {
-            if (maxMoveCount < car.getMoveCount()) {
-                maxMoveCount = car.getMoveCount();
-            }
-        }
+        final long maxMoveCount = cars.stream()
+            .mapToLong(Car::getMoveCount).max().orElse(0);
 
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (maxMoveCount == car.getMoveCount()) {
-                winners.add(car);
-            }
-        }
+        winners = cars.stream()
+            .filter(car -> car.getMoveCount() == maxMoveCount)
+            .toList();
+
         return winners;
     }
 }
