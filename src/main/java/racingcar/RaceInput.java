@@ -2,18 +2,18 @@ package racingcar;
 
 public class RaceInput {
     private String carNames;
-    private int numberOfAttempts;
+    private int totalAttempts;
 
-    public RaceInput(String carNames, int numberOfAttempts) {
+    public RaceInput(String carNames, int totalAttempts) {
         this.carNames = carNames;
-        this.numberOfAttempts = numberOfAttempts;
+        this.totalAttempts = totalAttempts;
     }
 
     public String getCarNames() {
         return carNames;
     }
 
-    public int getNumberOfAttempts() {
-        return numberOfAttempts;
+    public int getTotalAttempts() {
+        return totalAttempts;
     }
 }

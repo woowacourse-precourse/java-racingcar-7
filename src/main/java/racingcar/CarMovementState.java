@@ -1,6 +1,6 @@
 package racingcar;
 
-public enum MoveStatus {
+public enum CarMovementState {
     MOVE,
     STOP
 }

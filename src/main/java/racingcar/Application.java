@@ -11,7 +11,7 @@ public class Application {
         RaceInput input = getInput();
 
         String carNames = input.getCarNames();
-        int numberOfAttempts = input.getNumberOfAttempts();
+        int totalAttempts = input.getTotalAttempts();
 
         String[] carNamesList = splitCarNames(carNames);
 
@@ -19,9 +19,9 @@ public class Application {
 
         List<Car> cars = createCars(carNamesList);
 
-        runRace(cars, numberOfAttempts);
+        runRace(cars, totalAttempts);
 
-        RaceOutput.displayRaceResults(cars, numberOfAttempts);
+        RaceOutput.displayRaceResults(cars, totalAttempts);
         RaceOutput.displayWinners(cars);
     }
 
@@ -31,15 +31,15 @@ public class Application {
             String carNames = Console.readLine();
 
             System.out.println("시도할 횟수는 몇 회인가요?");
-            String inputOfAttempts = Console.readLine();
+            String inputAttempts = Console.readLine();
 
-            int numberOfAttempts = Integer.parseInt(inputOfAttempts.trim());
+            int totalAttempts = Integer.parseInt(inputAttempts.trim());
 
-            if (numberOfAttempts < 0) {
+            if (totalAttempts < 0) {
                 throw new IllegalArgumentException("시도 횟수는 0보다 작을 수 없습니다.");
             }
 
-            return new RaceInput(carNames, numberOfAttempts);
+            return new RaceInput(carNames, totalAttempts);
         }
         catch (NoSuchElementException e){
             throw new IllegalArgumentException("자동차 이름과 시도 횟수는 비어있을 수 없습니다.");
@@ -48,18 +48,22 @@ public class Application {
 
     public static String[] splitCarNames(String carNames) {
         String[] carNamesList = carNames.split(",");
+
         for (int i = 0; i < carNamesList.length; i++) {
             carNamesList[i] = carNamesList[i].trim();
         }
+
         return carNamesList;
     }
 
     public static void validateCarNames(String[] carNamesList) {
+        final int MAX_LENGTH = 5;
+
         for (String carName : carNamesList) {
             if (carName == null || carName.trim().isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
             }
-            if (carName.length() >= 6) {
+            if (carName.length() > MAX_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
             }
         }
@@ -75,8 +79,8 @@ public class Application {
         return cars;
     }
 
-    public static void runRace(List<Car> cars, int numberOfAttempts) {
-        for (int i = 0; i < numberOfAttempts; i++) {
+    public static void runRace(List<Car> cars, int totalAttempts) {
+        for (int i = 0; i < totalAttempts; i++) {
             for (Car car : cars) {
                 car.move();
             }

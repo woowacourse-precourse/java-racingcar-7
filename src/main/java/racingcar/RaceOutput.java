@@ -18,13 +18,13 @@ public class RaceOutput {
 
     private static void displayCarMovement(Car car, int attempt) {
         System.out.print(car.getName() + " : ");
-        String movementRecords = getMovementRecords(car, attempt);
-        System.out.println(movementRecords);
+        String movementLog = getMovementLog(car, attempt);
+        System.out.println(movementLog);
     }
 
-    private static String getMovementRecords(Car car, int attempt) {
-        return car.getMoveLog(attempt).stream()
-                .map(status -> status == MoveStatus.MOVE ? "-" : "")
+    private static String getMovementLog(Car car, int attempt) {
+        return car.getMovementLog(attempt).stream()
+                .map(status -> status == CarMovementState.MOVE ? "-" : "")
                 .collect(Collectors.joining());
     }
 

@@ -1,10 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.TestClassOrder;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -44,7 +41,7 @@ class ApplicationTest extends NsTest {
 
         RaceInput result = Application.getInput();
         assertEquals("pobi,woni,jun", result.getCarNames());
-        assertEquals(5, result.getNumberOfAttempts());
+        assertEquals(5, result.getTotalAttempts());
     }
 
     @Test

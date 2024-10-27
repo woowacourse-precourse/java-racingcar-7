@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private String name;
-    private List<MoveStatus> moveLog = new ArrayList<>();
+    private List<CarMovementState> movementLog = new ArrayList<>();
     private int moveCount = 0;
 
     public Car(String name) {
@@ -18,15 +18,15 @@ public class Car {
     public void move() {
         int randomValue = Randoms.pickNumberInRange(0, 9);
         if (randomValue >= 4) {
-            moveLog.add(MoveStatus.MOVE);
+            movementLog.add(CarMovementState.MOVE);
             moveCount++;
         } else {
-            moveLog.add(MoveStatus.STOP);
+            movementLog.add(CarMovementState.STOP);
         }
     }
 
-    public List<MoveStatus> getMoveLog(int round) {
-        return moveLog.subList(0, round);
+    public List<CarMovementState> getMovementLog(int attempt) {
+        return movementLog.subList(0, attempt);
     }
 
     public String getName() {
