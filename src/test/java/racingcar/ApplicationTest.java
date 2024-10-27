@@ -12,8 +12,9 @@ class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
 
+//    기능_테스트
     @Test
-    void 기능_테스트() {
+    void test() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -23,8 +24,9 @@ class ApplicationTest extends NsTest {
         );
     }
 
+//    예외_테스트
     @Test
-    void 예외_테스트() {
+    void test2() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
