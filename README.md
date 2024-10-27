@@ -91,6 +91,9 @@
         - `TryCountNotNullOrEmptyValidator`: 시도 횟수가 비어 있는 경우 `IllegalArgumentException` 발생
             - **입력값 예시**: 시도 횟수 입력 없음 (빈 문자열)
             - **예외 메시지**: `시도 횟수는 비어 있을 수 없습니다.`
+        - `TryCountMaximumValidator`: 시도 횟수가 1000번을 넘어가는지 검증하여, 초과 시 `IllegalArgumentException` 발생
+            - **입력값 예시**: `1001`
+            - **예외 메시지**: `시도 횟수는 최대 1000회 이하로 입력해 주세요.`
 
 - [x] 
     3. **Service (RacingGameService)**
