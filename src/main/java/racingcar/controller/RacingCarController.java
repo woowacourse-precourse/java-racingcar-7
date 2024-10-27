@@ -3,7 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Count;
-import racingcar.domain.Racing;
+import racingcar.domain.Race;
 import racingcar.dto.RacingCarResult;
 import racingcar.dto.RacingCarWinner;
 import racingcar.service.RacingCarService;
@@ -26,10 +26,10 @@ public class RacingCarController {
     public void start() {
         final List<Car> cars = requestRacingCar();
         final Count count = requestCount();
-        final Racing racing = new Racing(cars);
-        final List<RacingCarResult> results = racingCarService.getRacingCarResult(racing, count);
+        final Race race = new Race(cars);
+        final List<RacingCarResult> results = racingCarService.getRacingCarResult(race, count);
         responseResults(results);
-        final RacingCarWinner racingCarWinner = racingCarService.getRacingCarWinner(racing);
+        final RacingCarWinner racingCarWinner = racingCarService.getRacingCarWinner(race);
         responseWinner(racingCarWinner);
     }
 

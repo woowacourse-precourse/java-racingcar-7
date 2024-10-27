@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.constant.Rule;
 import racingcar.domain.Car;
 import racingcar.domain.Count;
-import racingcar.domain.Racing;
+import racingcar.domain.Race;
 import racingcar.dto.RacingCarProgress;
 import racingcar.dto.RacingCarResult;
 import racingcar.dto.RacingCarWinner;
@@ -23,7 +23,7 @@ import racingcar.util.validator.ListValidator;
 import racingcar.util.validator.NumberValidator;
 import racingcar.util.validator.StringValidator;
 
-class RacingCarServiceTest {
+class RaceCarServiceTest {
 
     private NumberGenerator numberGenerator;
     private StringValidator stringValidator;
@@ -88,7 +88,7 @@ class RacingCarServiceTest {
         //given
         final String value = "전진 하는 자동차1,전진 하는 자동차2";
         final List<Car> cars = racingCarService.generateCars(value);
-        final Racing racing = new Racing(cars);
+        final Race race = new Race(cars);
         final Count count = Count.of("2", numberValidator);
         final RacingCarProgress mockProgress1 = new RacingCarProgress("전진 하는 자동차1", 1);
         final RacingCarProgress mockProgress2 = new RacingCarProgress("전진 하는 자동차2", 1);
@@ -96,7 +96,7 @@ class RacingCarServiceTest {
         final RacingCarProgress mockProgress4 = new RacingCarProgress("전진 하는 자동차2", 2);
 
         //when
-        final List<RacingCarResult> results = racingCarService.getRacingCarResult(racing, count);
+        final List<RacingCarResult> results = racingCarService.getRacingCarResult(race, count);
         final RacingCarResult result1 = results.getFirst();
         final RacingCarResult result2 = results.get(1);
         final List<RacingCarProgress> progresses1 = result1.progresses();

@@ -7,7 +7,7 @@ import racingcar.constant.Rule;
 import racingcar.domain.Car;
 import racingcar.domain.CarName;
 import racingcar.domain.Count;
-import racingcar.domain.Racing;
+import racingcar.domain.Race;
 import racingcar.domain.Score;
 import racingcar.dto.RacingCarProgress;
 import racingcar.dto.RacingCarResult;
@@ -45,18 +45,18 @@ public class RacingCarService {
         return Count.of(value, numberValidator);
     }
 
-    public List<RacingCarResult> getRacingCarResult(final Racing racing, final Count count) {
+    public List<RacingCarResult> getRacingCarResult(final Race race, final Count count) {
         final List<RacingCarResult> racingCarResult = new ArrayList<>();
         final int value = count.getValue();
         for (int turn = 0; turn < value; turn++) {
-            final List<Car> cars = racing.move(Rule.FORWARD_SCORE);
+            final List<Car> cars = race.move(Rule.FORWARD_SCORE);
             racingCarResult.add(RacingCarResult.of(mapToRacingCarProgresses(cars)));
         }
         return racingCarResult;
     }
 
-    public RacingCarWinner getRacingCarWinner(final Racing racing) {
-        final List<Car> winners = racing.getWinners();
+    public RacingCarWinner getRacingCarWinner(final Race race) {
+        final List<Car> winners = race.getWinners();
         return RacingCarWinner.of(winners);
     }
 

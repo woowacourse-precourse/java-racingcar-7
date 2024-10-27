@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.util.validator.RacingCarListValidator;
 
-class RacingCarListValidatorTest {
+class RaceCarListValidatorTest {
 
     private RacingCarListValidator racingCarListValidator;
 

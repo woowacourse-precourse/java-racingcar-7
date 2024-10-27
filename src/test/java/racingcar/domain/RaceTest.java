@@ -13,7 +13,7 @@ import racingcar.fake.FakeStringValidator;
 import racingcar.util.generator.NumberGenerator;
 import racingcar.util.validator.StringValidator;
 
-class RacingTest {
+class RaceTest {
 
     private NumberGenerator forwardNumberGenerator;
     private NumberGenerator stopNumberGenerator;
@@ -36,10 +36,10 @@ class RacingTest {
         final Score score2 = new Score(0);
         final Car car1 = new Car(carName1, score1, forwardNumberGenerator);
         final Car car2 = new Car(carName2, score2, stopNumberGenerator);
-        final Racing racing = new Racing(List.of(car1, car2));
+        final Race race = new Race(List.of(car1, car2));
 
         //when
-        final List<Car> cars = racing.move(1);
+        final List<Car> cars = race.move(1);
 
         //then
         assertAll(
@@ -64,10 +64,10 @@ class RacingTest {
         final Car car2 = new Car(carName2, score2, forwardNumberGenerator);
         final Car car3 = new Car(carName3, score3, stopNumberGenerator);
         final Car car4 = new Car(carName4, score4, stopNumberGenerator);
-        final Racing racing = new Racing(List.of(car1, car2, car3, car4));
+        final Race race = new Race(List.of(car1, car2, car3, car4));
 
         //when
-        final List<Car> winners = racing.getWinners();
+        final List<Car> winners = race.getWinners();
 
         //then
         assertAll(

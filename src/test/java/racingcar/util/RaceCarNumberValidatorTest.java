@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.validator.RacingCarNumberValidator;
 
-class RacingCarNumberValidatorTest {
+class RaceCarNumberValidatorTest {
 
     private RacingCarNumberValidator racingCarNumberValidator;
 
