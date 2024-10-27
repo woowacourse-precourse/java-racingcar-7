@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class RacingGame {
@@ -27,7 +28,7 @@ public class RacingGame {
     }
 
     private int generateRandomNumber() {
-        return (int) (Math.random() * 10); // 0~9 범위의 난수
+        return Randoms.pickNumberInRange(0, 9); // 0~9 범위의 난수
     }
 
     public int findMaxPosition() {
