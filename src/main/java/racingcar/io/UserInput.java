@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInput {
     private static final String SEPARATOR = ",";
 
-    public void getCars() {
+    public void  getCars() {
         String input = Console.readLine();
         validateEmptyInput(input);
         validateContainsSeparator(input);
+        String[] carsName = input.split(SEPARATOR);
     }
 
     public void getGameCount() {
