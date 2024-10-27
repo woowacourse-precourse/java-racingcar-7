@@ -10,6 +10,13 @@ public class InputValidator {
   public List<String> checkCarNames(String carNames) {
 
     List<String> carNameList;
+
+    if (carNames.endsWith(",")) {
+      throw new IllegalArgumentException("구분자로 끝나는 문자열은 입력할 수 없습니다");
+    }
+    if (carNames.startsWith(",")) {
+      throw new IllegalArgumentException("구분자로 시작하는 문자열은 입력할 수 없습니다");
+    }
     try {
       carNameList = Stream.of(carNames.split(DELIMITER))
               .map(String::trim)
