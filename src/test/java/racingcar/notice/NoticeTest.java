@@ -22,7 +22,6 @@ class NoticeTest {
         }
 
         List<inputData> dataList = List.of(
-                new inputData("", List.of("")),
                 new inputData("abcde", List.of("abcde")),
                 new inputData("abcde,안녕하세요", List.of("abcde", "안녕하세요"))
         );
@@ -46,7 +45,8 @@ class NoticeTest {
         }
 
         List<inputData> dataList = List.of(
-                new inputData(",,")
+                new inputData(",,"),
+                new inputData("abcdefsada")
         );
 
         List<Predicate<String>> policies = List.of(
@@ -54,7 +54,6 @@ class NoticeTest {
         );
 
         for(inputData inputData : dataList) {
-            List<String> names = Notice.inputName(() -> inputData.input, policies);
             assertThrows(IllegalArgumentException.class, () -> {
                 Notice.inputName(() -> inputData.input, policies);
             });
