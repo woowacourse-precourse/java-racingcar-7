@@ -39,7 +39,13 @@ public class Race {
     }
 
     private int getMaxPosition() {
-        return 0;
+        int maxPosition = 0;
+        for(Car car : cars) {
+            if(car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
     }
 
     private void playRound() {
