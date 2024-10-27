@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.player.GamePlayer;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Distance;
 
 
 class CarTest {
@@ -37,7 +38,7 @@ class CarTest {
             final String Null = null;
 
             // expect
-            assertThatThrownBy(() -> GamePlayer.of(Null))
+            assertThatThrownBy(() -> Car.of(Null))
                     .isInstanceOf(NullPointerException.class);
         }
 
@@ -51,7 +52,7 @@ class CarTest {
             final String expectMessage = "자동차 이름은 최대 10자까지 가능합니다.";
 
             assertThatThrownBy(() -> {
-                GamePlayer.of(elevenWords);
+                Car.of(elevenWords);
             })
                     .isInstanceOf(NameLengthExceededException.class)
                     .hasMessage(expectMessage);
@@ -65,7 +66,7 @@ class CarTest {
             final String expectMessage = "자동차 이름은 최소 1자부터 가능합니다.";
 
             assertThatThrownBy(() -> {
-                GamePlayer.of(inSufficientLengthName);
+                Car.of(inSufficientLengthName);
             })
                     .isInstanceOf(NameLengthShortException.class)
                     .hasMessage(expectMessage);
