@@ -46,6 +46,15 @@ class InputViewTest {
         assertThat(carNames).isEqualTo(List.of("pobi","woni","jun"));
     }
 
+    @Test
+    void 시도_횟수_입력_테스트() {
+        int input = 5;
+        setInputStream(String.valueOf(input));
+
+        int repeatCount = InputView.readRepeatCount();
+
+        assertThat(repeatCount).isEqualTo(input);
+    }
 
     void setInputStream(String input) {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());

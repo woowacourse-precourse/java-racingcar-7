@@ -6,17 +6,17 @@ import racingcar.constants.RegexConstants;
 public class OutputView {
 
     public static void printResultMessage() {
-        System.out.println(Message.RESULT.message);
+        Message.RESULT.display(System.lineSeparator());
     }
 
     public static void printRoundResult(List<String> roundResult) {
         roundResult.forEach(System.out::println);
-        System.out.println();
+        System.out.print(System.lineSeparator());
     }
 
     public static void printWinningCars(List<String> winningCars) {
-        System.out.print(Message.WINNER.message);
-        System.out.println(String.join(RegexConstants.COMMA_SPACE, winningCars));
+        Message.WINNER.display();
+        System.out.print(String.join(RegexConstants.COMMA_SPACE, winningCars));
     }
 
     private enum Message {
@@ -27,6 +27,14 @@ public class OutputView {
 
         Message(String message) {
             this.message = message;
+        }
+
+        private void display(String lineSeparator) {
+            System.out.print(message + lineSeparator);
+        }
+
+        private void display() {
+            System.out.print(message);
         }
     }
 }

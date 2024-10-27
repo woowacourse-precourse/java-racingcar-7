@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class InputView {
 
     public static ArrayList<String> readCarNames() throws IllegalArgumentException {
-        System.out.println(Message.INPUT_CAR_NAME.message);
+        Message.INPUT_CAR_NAME.display();
         String carNames = Console.readLine();
         validateCarNames(carNames);
         return splitNamesByComma(carNames);
     }
 
     public static int readRepeatCount() {
-        System.out.println(Message.INPUT_REPEAT_COUNT.message);
+        Message.INPUT_REPEAT_COUNT.display();
         String repeatCount = Console.readLine();
         validateRepeatCount(repeatCount);
         return Integer.parseInt(repeatCount);
@@ -31,6 +31,10 @@ public class InputView {
 
         Message(String message) {
             this.message = message;
+        }
+
+        private void display() {
+            System.out.print(message + System.lineSeparator());
         }
     }
 }
