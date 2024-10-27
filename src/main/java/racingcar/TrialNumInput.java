@@ -23,12 +23,12 @@ public class TrialNumInput {
         try {
             int validTrialNum = Integer.parseInt(inputData);     // 입력값을 int 로 변환
             if (validTrialNum <= 0) {           // 0 이하의 숫자일 시
-                throw new IllegalArgumentException("시도 횟수는 0 이상 입력되어야 합니다. 다시 시도해주세요.");
+                throw new IllegalArgumentException("시도 횟수는 0 이상의 정수가 입력되어야 합니다. 다시 시도해주세요.");
             }
             // numCheck()메소드의 반환값
             return validTrialNum;
         } catch (NumberFormatException e) {     // 숫자 포맷 예외발생 시
-            throw new IllegalArgumentException("입력된 시도 횟수가 숫자 형식이 아닙니다. 다시 시도해주세요.");
+            throw new IllegalArgumentException("입력된 시도 횟수가 정수가 아닙니다. 다시 시도해주세요.");
         }
     }
 }
