@@ -5,58 +5,58 @@ import racingcar.validator.RacingCarValidator;
 import java.util.*;
 
 public class RacingCarModel {
-
-    private LinkedHashMap<String, Integer> carHashMap = new LinkedHashMap<>();
+    private final LinkedHashMap<String, Integer> carHashMap = new LinkedHashMap<>();
+    private static final int INITIAL_FORWARD_COUNT = 0;
     public List<String> carNameList = new ArrayList<>();
     public List<String> winnerList = new ArrayList<>();
 
 
-    public void splitCarNameString(String carNameString){
-        String[] carNamesArray = carNameString.split(",");
-        for (String carName : carNamesArray) {
-            carName = carName.trim();
-            RacingCarValidator.isValidCarName(carName);
-            addRacingCar(carName, 0);
+    public void setCarHashMap(){
+        for (String carName : carNameList){
+            addRacingCar(carName, INITIAL_FORWARD_COUNT);
         }
-        createCarNameList(carNamesArray);
     }
 
-    private void createCarNameList(String[] carNamesArray){
-        carNameList = Arrays.asList(carNamesArray);
+
+    public void setCarNameList(String carNameString){
+        Arrays.stream(carNameString.split(","))
+                .map(String::trim)
+                .peek(RacingCarValidator::isValidCarName)
+                .forEach(carNameList::add);
     }
 
-    public void addRacingCar(String carName, Integer forwardCount){
-        carHashMap.put(carName, forwardCount);
-    }
 
     public List<String> getCarNameList(){
         return carNameList;
     }
 
-    public void updateCarMap(String carName){
-        Integer carForwardCount = carHashMap.get(carName);
-        Integer updatedForwardCount = carForwardCount + 1;
-        carHashMap.put(carName, updatedForwardCount);
+
+    public void addRacingCar(String carName, int forwardCount){
+        carHashMap.put(carName, forwardCount);
     }
 
 
-    public Integer getForwardCount(String carName){
+    public void updateCarMap(String carName){
+        int carForwardCount = carHashMap.get(carName) + 1;
+        carHashMap.put(carName, carForwardCount);
+    }
+
+
+    public int getForwardCount(String carName){
         return carHashMap.get(carName);
     }
 
 
-    private void findRacingWinner(){
-        Integer maxValue = Collections.max(carHashMap.values());
-
-        for (String car : carNameList) {
-            if (carHashMap.get(car).equals(maxValue)){
-                winnerList.add(car);
-            }
-        }
+    public void setWinnerList(){
+        int maxValue = Collections.max(carHashMap.values());
+        carNameList.stream()
+                .filter(carName -> carHashMap.get(carName).equals(maxValue))
+                .forEach(winnerList::add);
     }
 
+
     public List<String> getWinnerList(){
-        findRacingWinner();
+        setWinnerList();
         return winnerList;
     }
 
