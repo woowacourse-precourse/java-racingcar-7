@@ -35,4 +35,10 @@ public class RacingCar {
         }
         return randomInteger;
     }
+
+    public void addRandomAdvanceResult(int randomInteger) {
+        for (int i = 0; i < randomInteger; i++) {
+            this.advanceResults.add("-");
+        }
+    }
 }
