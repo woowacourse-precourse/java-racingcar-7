@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
 
     private final String name;
@@ -15,5 +17,11 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public void move() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            position++;
+        }
     }
 }
