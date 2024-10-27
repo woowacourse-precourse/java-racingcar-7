@@ -23,7 +23,7 @@ public class Car {
 
     public void move(){
         int randomNumber = numberGenerator.generateRandomNumber();
-        if(4 <= randomNumber && randomNumber <= 9){
+        if(4 <= randomNumber){
             position++;
         }
     }
