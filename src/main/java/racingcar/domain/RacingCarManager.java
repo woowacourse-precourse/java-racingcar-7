@@ -13,9 +13,11 @@ public class RacingCarManager {
     private List<Car> cars;
     public static int MIN_CAR_COUNT = 2;
 
-    public RacingCarManager(List<Car> cars) {
-        validateCars(cars);
-        this.cars = cars;
+    public RacingCarManager(List<String> carNames) {
+        validateCarNames(carNames);
+        for(String carName : carNames){
+            cars.add(new Car(carName));
+        }
     }
 
     public List<Car> getCars() {
@@ -41,12 +43,12 @@ public class RacingCarManager {
                 .orElse(0);
     }
 
-    private void validateCars(List<Car> cars){
-        if(ValidationUtil.isMoreThanOne(cars)){
+    private void validateCarNames(List<String> carNames){
+        if(ValidationUtil.isMoreThanOne(carNames)){
             throw new IllegalArgumentException(CAR_COUNT_ERROR_MESSAGE);
         }
 
-        if(ValidationUtil.isDuplicate(cars)){
+        if(ValidationUtil.isDuplicate(carNames)){
             throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
         }
     }
