@@ -55,7 +55,7 @@ public class ValidatingParser {
 		try {
 			convertNumber = Integer.parseInt(inputAttemptNumber);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException(ValidationError.ERROR_ATTEMPT_COUNT_NOT_NUMBER.getMessage());
+			throw new IllegalArgumentException(ValidationError.ERROR_ATTEMPT_COUNT_NOT_NUMBER_OR_OVERFLOW.getMessage());
 		}
 		return convertNumber;
 	}
