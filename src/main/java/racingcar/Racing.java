@@ -30,13 +30,10 @@ public class Racing {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    // 전진 시 "-" 출력, 멈춤 시 " " 공백문자 출력
+    // 전진 시 "-" 출력
     public void advance(int count) {
         for (int i = 0; i < count; i++) {
             System.out.print("-");
-        }
-        for (int i = 0; count == 0; ) {
-            System.out.println("");
         }
     }
 
