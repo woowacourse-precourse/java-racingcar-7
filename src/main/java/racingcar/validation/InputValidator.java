@@ -10,15 +10,6 @@ public class InputValidator {
         }
     }
 
-    public void validateCarName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException(ExceptionMessage.NAME_EMPTY);
-        }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(ExceptionMessage.NAME_LENGTH_EXCEED);
-        }
-    }
-
     public void validateTryCount(String tryCount) {
         int tryCountNum;
         try {

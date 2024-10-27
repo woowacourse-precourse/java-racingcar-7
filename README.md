@@ -61,7 +61,7 @@
 
 ### 게임 진행
 
-- [ ] 입력된 자동차 이름들을 저장한다.
+- [x] 입력된 자동차 이름들을 저장한다.
 - [ ] for 문으로 입력된 시도 횟수만큼 라운드를 진행한다.
 - [ ] 각 자동차에 대해 랜덤 값을 할당한다.
   > 랜덤 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.

@@ -16,7 +16,7 @@ public class RacingCarController {
     public void run() {
         inputView.printInputCarNameMessage();
         String carNameInput = inputView.getInput();
-        racingCarService.checkCarNamesInput(carNameInput);
+        racingCarService.settingRacingCars(carNameInput);
 
         inputView.printInputTryCountMessage();
         String tryCountInput = inputView.getInput();
