@@ -19,14 +19,14 @@ public class InputExtractorTest {
     }
 
     @Test
-    @DisplayName("입력된 자동차이름 문자열에 쉼표가 없으면 문자열을 그대로 반환하므로 리스트의 사이즈는 1이다.")
+    @DisplayName("자동차 이름 조건은 5자 이하이므로, 5자 이상을 입력하면 IllegalArgumentException이 발생한다.")
     void testExtractCarNamesListWithNoComma() {
-        assertThat(InputExtractor.extractCarNames("boratubinanapo"))
-                .hasSize(1);
+        assertThatThrownBy(() -> InputExtractor.extractCarNames("boradori"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {""," "})
+    @ValueSource(strings = {""," ","      "})
     @NullSource
     @DisplayName("입력된 자동차이름이 비어있거나 null이면 IllegalArgumentException이 발생한다.")
     void testExtractCarNamesListNull(String userInputCar) {

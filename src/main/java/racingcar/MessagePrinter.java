@@ -13,6 +13,9 @@ public class MessagePrinter {
     final String resultGuideMessage = "실행 결과";
 
     public String getWinnerMessage(List<String> winnerList) {
+
+        validateWinnerList(winnerList);
+
         String winnerMessage = "최종 우승자 : ";
         winnerMessage += String.join(",", winnerList);
 
@@ -39,5 +42,11 @@ public class MessagePrinter {
         totalRoundResultMessage += "\n";
 
         return totalRoundResultMessage;
+    }
+
+    private void validateWinnerList(List<String> winnerList) {
+        if(winnerList == null) {
+            throw new IllegalArgumentException();
+        }
     }
 }
