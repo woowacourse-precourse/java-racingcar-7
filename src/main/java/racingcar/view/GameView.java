@@ -26,4 +26,8 @@ public final class GameView {
     public void displayNewLine() {
         System.out.println();
     }
+
+    public void displayWinners(String winnersString) {
+        System.out.println("최종 우승자 : " + winnersString);
+    }
 }
