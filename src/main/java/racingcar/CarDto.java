@@ -2,10 +2,13 @@ package racingcar;
 
 public class CarDto {
 
-    private String carName;
-    private boolean isMoving;
+    private final String carName;
+    private final boolean isMoving;
 
-    public CarDto(String carName, boolean isMoving) {}
+    public CarDto(String carName, boolean isMoving) {
+        this.carName = carName;
+        this.isMoving = isMoving;
+    }
 
     public String getCarName() {
         return carName;
@@ -14,5 +17,6 @@ public class CarDto {
     public boolean isMoving() {
         return isMoving;
     }
+
 
 }
