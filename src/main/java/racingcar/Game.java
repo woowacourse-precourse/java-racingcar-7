@@ -8,5 +8,6 @@ public class Game {
         cars.createCars();
         resultByRace.askPlayTime();
         resultByRace.showEachResult(cars);
+        resultByRace.showWinner(cars);
     }
 }

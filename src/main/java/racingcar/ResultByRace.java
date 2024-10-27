@@ -34,4 +34,12 @@ public class ResultByRace {
             currentRound++;
         }
     }
+
+    public void showWinner(Cars cars) {
+        cars.determineWinners();
+    }
+
+    public int getFinalRound() {
+        return finalRound;
+    }
 }
