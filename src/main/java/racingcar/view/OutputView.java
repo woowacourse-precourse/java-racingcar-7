@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import static racingcar.message.InfoMessages.OUTPUT_FINAL_WINNER;
 import static racingcar.message.InfoMessages.OUTPUT_RUN_RESULT;
 
 import java.util.List;
@@ -23,5 +24,10 @@ public class OutputView {
         );
 
         System.out.println(raceProgress);
+    }
+
+    public void displayFinalWinner(List<String> winnerNames) {
+        String finalWinnerNames = String.join(", ", winnerNames);
+        System.out.println(OUTPUT_FINAL_WINNER + finalWinnerNames);
     }
 }
