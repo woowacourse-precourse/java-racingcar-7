@@ -11,6 +11,31 @@ import java.util.List;
 public class RaceGameController {
 
     /**
+     * 컨트롤러 시작
+     */
+    public void start() {
+        // 사용자 입력 받기
+        List<String> carNames = InputValidator.isValidCarName(InputView.getCarName());
+        int attemptNumber = InputValidator.isValidAttemptNumber(InputView.getAttemptNumber());
+
+        // Car 객체 리스트로 변환
+        List<Car> cars = convertCars(carNames);
+
+        OutputView.printDescription();
+
+        // 시도 횟수만큼 게임 실행
+        for (int i = 0; i < attemptNumber; i++) {
+            startOneGame(cars);
+            printGameResult(cars);
+        }
+
+        // 최종 우승자 선정 및 출력
+        int maxMoveCount = getMaxMoveCount(cars);
+        List<String> winners = getWinner(cars, maxMoveCount);
+        OutputView.printWinner(winners);
+    }
+
+    /**
      * 자동차 이름들을 Car 객체 리스트로 변환
      */
     public List<Car> convertCars(List<String> carNames) {
