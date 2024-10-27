@@ -40,6 +40,8 @@ public class RacingcarController {
             racingcarService.startRaceByCount(racingcars);
             output.printResultsByCount(racingcars);
         }
+
+        output.printWinnerPrompt();
     }
 
     private List<String> validateCarName(String carName) {

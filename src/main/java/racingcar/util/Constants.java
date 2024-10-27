@@ -16,4 +16,5 @@ public class Constants {
     public static final String COUNT_ZERO_LESS_INTEGER_ERROR_MESSAGE = "시도할 횟수는 1 이상 양수 값으로 입력되어야 합니다.";
 
     public static final String RACE_RESULT_PROMPT = "\n실행 결과";
+    public static final String WINNER_PROMPT = "최종 우승자 : ";
 }

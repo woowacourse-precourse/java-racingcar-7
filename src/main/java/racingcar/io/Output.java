@@ -38,4 +38,8 @@ public class Output {
         }
         System.out.println();
     }
+
+    public void printWinnerPrompt() {
+        System.out.print(Constants.WINNER_PROMPT);
+    }
 }
