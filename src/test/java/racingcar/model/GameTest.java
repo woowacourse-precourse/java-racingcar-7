@@ -16,7 +16,7 @@ public class GameTest {
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         Cars cars = new Cars(List.of(car1, car2));
-        game =  new Game(cars, 5);
+        game = new Game(cars, 5);
     }
 
     @Test
