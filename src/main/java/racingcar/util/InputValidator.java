@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class InputValidator {
     private static final int MAX_NAME_LENGTH = 5;
-    private static final int MAX_EPOCH = 100000;
+    private static final int MAX_EPOCH = 100;
 
     public void validateCarNames(String carNames) {
         if (carNames == null || carNames.isEmpty()) {
@@ -30,7 +30,7 @@ public class InputValidator {
         if (epoch < 0) {
             throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
         } else if (epoch > MAX_EPOCH) {
-            throw new IllegalArgumentException("시도 횟수는 100000번 이하로 가능합니다.");
+            throw new IllegalArgumentException("시도 횟수는 100번 이하로 가능합니다.");
         }
     }
 
