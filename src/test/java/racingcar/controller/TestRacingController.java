@@ -33,4 +33,5 @@ public class TestRacingController extends RacingController {
     protected int readMoveCount() {
         return moveCount;
     }
+
 }

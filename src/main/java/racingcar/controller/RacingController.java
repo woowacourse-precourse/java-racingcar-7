@@ -9,6 +9,7 @@ import java.util.List;
 
 public class RacingController {
     private final InputView inputView;
+    private OutputView outputView;
 
     public RacingController() {
         this.inputView = new InputView();
@@ -19,7 +20,7 @@ public class RacingController {
         int moveCount = readMoveCount();
 
         Cars cars = initializeCars(carNames);
-        OutputView outputView = new OutputView(cars);
+        outputView = new OutputView(cars);
 
         race(cars, moveCount, outputView);
         outputView.printWinners();
@@ -44,5 +45,9 @@ public class RacingController {
 
     protected int readMoveCount() {
         return inputView.readMoveCount();
+    }
+
+    public OutputView getOutputView() {
+        return outputView;
     }
 }
