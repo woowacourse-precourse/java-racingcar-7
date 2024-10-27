@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.domain.road.entity.Length.FORWARD;
 
 class RoadPrinterTest {
     private ByteArrayOutputStream outputStream;
@@ -26,7 +27,7 @@ class RoadPrinterTest {
     void printRoadWithValidLength() {
         // given
         Car car = new Car("pobi");
-        car.getRoad().addRoad(1);
+        car.getRoad().addRoad(FORWARD.getValue());
 
         // when
         RoadPrinter.printRoad(car);

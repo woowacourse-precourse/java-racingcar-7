@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.domain.road.entity.Length.FORWARD;
 
 class WinnerCalculatorTest {
 
@@ -24,7 +25,7 @@ class WinnerCalculatorTest {
         Car car2 = new Car("car2");
         Car car3 = new Car("car3");
         List<Car> carList = Arrays.asList(car1, car2, car3);
-        car1.getRoad().addRoad(1);
+        car1.getRoad().addRoad(FORWARD.getValue());
 
         // when
         Winner winner = calculator.calculateWinner(carList);
@@ -41,8 +42,8 @@ class WinnerCalculatorTest {
         Car car2 = new Car("car2");
         Car car3 = new Car("car3");
         List<Car> carList = Arrays.asList(car1, car2, car3);
-        car1.getRoad().addRoad(1);
-        car2.getRoad().addRoad(1);
+        car1.getRoad().addRoad(FORWARD.getValue());
+        car2.getRoad().addRoad(FORWARD.getValue());
 
         // when
         Winner winner = calculator.calculateWinner(carList);

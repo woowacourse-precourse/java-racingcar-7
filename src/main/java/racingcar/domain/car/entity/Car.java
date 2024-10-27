@@ -2,6 +2,8 @@ package racingcar.domain.car.entity;
 
 import racingcar.domain.road.entity.Road;
 
+import static racingcar.domain.road.entity.Length.INITIALIZE;
+
 public class Car {
 
     private final String name;
@@ -9,7 +11,7 @@ public class Car {
 
     public Car(String name){
         this.name=name;
-        this.road=new Road(0);
+        this.road=new Road(INITIALIZE.getValue());
     }
 
     public String getName() {
