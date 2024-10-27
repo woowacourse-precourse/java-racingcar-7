@@ -67,6 +67,6 @@ public class RacingCarController {
                 winner.add(carName);
             }
         }
-        System.out.println("최종우승자 : " + String.join(", ", winner));
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 }
