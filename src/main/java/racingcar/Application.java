@@ -47,15 +47,18 @@ public class Application {
         return testCase;
     }
 
-    public static void racingCar(int tc, List<Car> carList) {
+    public static void moveAndPrintCars(List<Car> carList) {
+        for (Car car : carList) {
+            car.move();
+            car.print();
+        }
+    }
+
+    public static void racingCar(int trialCount, List<Car> carList) {
         System.out.println("실행 결과");
 
-        while (tc >= 0) {
-            for (Car car : carList) {
-                car.move();
-                car.print();
-            }
-            tc--;
+        for (int cnt_i = 0; cnt_i < trialCount; cnt_i++) {
+            moveAndPrintCars(carList);
         }
     }
 
