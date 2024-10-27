@@ -5,11 +5,18 @@ import racingcar.ErrorMessage;
 
 public class RoundCount {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^-?[0-9]+$");
-    private final int roundCount;
+    private int roundCount;
 
     public RoundCount(String roundCount) {
         validateRoundCount(roundCount);
         this.roundCount = Integer.parseInt(roundCount);
+    }
+
+    public void decrease() {
+        if (roundCount <= 0) {
+            throw new IllegalStateException(ErrorMessage.NO_MORE_ROUND.getMessage());
+        }
+        roundCount--;
     }
 
     private void validateRoundCount(String input) {

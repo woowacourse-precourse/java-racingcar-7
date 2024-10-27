@@ -39,4 +39,18 @@ class RoundCountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.ROUND_COUNT_OUT_OF_RANGE.getMessage());
     }
+
+    @Test
+    @DisplayName("roundcount가 0이하라면 감소시킬 때 예외가 발생한다.")
+    void decreaseRoundCount() {
+        // given
+        RoundCount round = new RoundCount("1");
+        round.decrease();
+        // when, then
+        Assertions.assertThatThrownBy(round::decrease)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining(ErrorMessage.NO_MORE_ROUND.getMessage());
+
+    }
+
 }
