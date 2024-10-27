@@ -16,7 +16,7 @@ public class RacingCarController {
     }
 
     public void run() {
-        List<String> carNames = getCarNames();
+        List<String> carNameList = getCarNames();
         int tryCount = getTryCount();
     }
 
