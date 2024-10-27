@@ -15,16 +15,14 @@ public class Car {
 		return moveCounter;
 	}
 
-	public Car(String name) throws IllegalArgumentException {
-
+	public Car(String name) {
 		validateName(name);
 
 		this.name = name;
 		this.moveCounter = 0;
 	}
 
-	private void validateName(String name) throws IllegalArgumentException {
-
+	private void validateName(String name) {
 		String trimmedName = name.trim();
 
 		if (trimmedName.length() > 5) {
