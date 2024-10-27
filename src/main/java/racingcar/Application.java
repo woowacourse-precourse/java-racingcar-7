@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -60,6 +62,22 @@ public class Application {
         // 최종 결과 출력
         for (String car : carNames) {
             System.out.println(car + " : " + "-".repeat(carDistances.get(car)));
+        }
+
+        int maxDistance = 0;
+        List<String> winnnrs = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : carDistances.entrySet()) {
+            String car = entry.getKey();
+            int distance = entry.getValue();
+
+            if (distance > maxDistance) {
+                maxDistance = distance; // 최대 거리 갱신
+                winnnrs.clear();        // 이전 우승자 록록 초기화
+                winnnrs.add(car);       // 새로운 우승자 추가
+            } else if (distance == maxDistance) {
+                winnnrs.add(car);       // 공동 우승자 추가
+            }
         }
 
     }
