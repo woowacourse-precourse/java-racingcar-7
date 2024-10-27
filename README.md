@@ -47,6 +47,7 @@
 3. **JUnit 5**와 **AssertJ**를 사용하여 테스트 코드를 작성해야 합니다.
 4. **camp.nextstep.edu.missionutils**에서 제공하는 `Randoms`와 `Console API`를 사용합니다.
 
+
 # 자동차 경주 게임 구현 체크리스트
 
 ## 과제 진행 요구 사항
@@ -92,5 +93,56 @@
   - [ ] `Console.readLine()`을 사용하여 사용자 입력을 받는다.
 
 ## 디자인 패턴 적용 요구 사항
-- [ ] 각 역할을 분리하여 MVC 패턴으로 설계한다.
+- [ ] 각 역할을 분리하여 MVC 패턴으로 설계한다. -> 아래의 클래스 다이어그램을 참고한다.
 - [ ] 싱글톤 패턴을 적용하여 객체의 생성을 제한하고 동일 객체를 재사용한다.
+
+# 프로그램 클래스 다이어그램
+```mermaid
+classDiagram
+    class Application {
+        +main(String[] args)
+    }
+
+    class RacingGameController {
+        -racingGame: RacingGame
+        -racingGameView: RacingGameView
+        +RacingGameController()
+        +run()
+        -createView()
+        -processGame()
+        -showResult()
+        -validateInput(String)
+        -createGame(String[] carNames, int rounds)
+    }
+
+    class RacingGame {
+        -cars: List~Car~
+        -rounds: int
+        +RacingGame(String[] carNames, int rounds)
+        +race()
+        +getWinners(): List~Car~
+        +getCurrentStatus(): List~Car~
+    }
+
+    class Car {
+        -name: String
+        -position: int
+        +Car(String name)
+        +move()
+        +getName(): String
+        +getPosition(): int
+    }
+
+    class RacingGameView {
+        +inputCarNames(): String
+        +inputRounds(): int
+        +showRaceStatus(List~Car~)
+        +showWinners(List~Car~)
+        +showError(String)
+    }
+
+    Application --> RacingGameController : creates
+    RacingGameController --> RacingGameView : creates and manages
+    RacingGameController --> RacingGame : creates and manages
+    RacingGame --> Car : contains
+```
