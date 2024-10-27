@@ -5,7 +5,7 @@
 - 쉼표(,) 기준으로 나눈다.
   - 나누었을 때 토큰에 공백이 있을 경우 예외 발생 (```IllegalArgumentException``` 발생)
   - 자동차 이름이 6글자 이상이면 예외 발생 (```IllegalArgumentException``` 발생)
-- 자동차 이름별로 맵 형태로 저장 (이름이 키, 경주 진행 사항이 리스트 형태로 저장)
+- 자동차 이름별로 맵 형태로 저장 (이름이 키, 경주 진행 사항이 StringBuilder 형태로 저장)
 
 #### 2. 시도할 횟수 n 입력 받기
 - 횟수가 0일 경우 예외 발생 (```IllegalArgumentException``` 발생)
