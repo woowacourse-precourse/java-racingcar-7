@@ -35,6 +35,14 @@ public class InputValidator {
     }
 
     /**
+     * 시도 횟수의 유효성 검사
+     */
+    public static int isValidAttemptNumber(String input) {
+        int attemptNumber = isIntegerNumber(input);
+        return attemptNumber;
+    }
+
+    /**
      * 시도 횟수가 정수형 숫자인지 검사
      */
     public static int isIntegerNumber(String input) {
