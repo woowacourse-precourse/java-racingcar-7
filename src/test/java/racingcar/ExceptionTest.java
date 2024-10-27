@@ -33,4 +33,13 @@ public class ExceptionTest {
             racingService.startRaceGame();
         });
     }
+
+    @Test
+    @DisplayName("시도할 횟수가 숫자가 아닌 경우 에러 발생")
+    void 시도할_횟수_숫자_테스트() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            racingService = new RacingService("a,b,c", "a");
+            racingService.startRaceGame();
+        });
+    }
 }
