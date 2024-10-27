@@ -9,9 +9,8 @@ public class Parser {
 
     public List<String> parse(String input) {
         inputValidator.checkPrecondition(input);
-
-        return Arrays.stream(input.trim()
-                .split(","))
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
                 .map(inputValidator::check)
                 .toList();
     }
