@@ -13,4 +13,5 @@ public class Message {
     public static final String CAR_NAME_FORMAT_ERROR = "경주할 자동차 이름은 공백없이 쉼표(,)로 구분해주세요.";
     public static final String CAR_NAME_SEPARATOR_ERROR = "각 자동차는 쉼표(,)로 구분되어야 합니다.";
     public static final String VALUE_REQUIRED_ERROR = "값을 입력해주세요";
+    public static final String OUTPUT_SEPARATOR = " : ";
 }
