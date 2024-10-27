@@ -97,6 +97,10 @@ public class RacingCarService {
     public String getWinnersMessage() {
         List<String> maxValueKeys = findWinners();
 
+        return formatWinnersMessage(maxValueKeys);
+    }
+
+    private static String formatWinnersMessage(List<String> maxValueKeys) {
         if (maxValueKeys.size() == 1) {
             return "최종 우승자 : " + maxValueKeys.get(0);
         } else if (maxValueKeys.size() > 1) {
