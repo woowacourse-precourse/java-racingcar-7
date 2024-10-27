@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class BasicRacingCarValidatorTest {
+public class BasicRacingCarGameValidatorTest {
 
     private final BasicRacingCarGameValidator basicRacingCarValidator;
 
-    public BasicRacingCarValidatorTest() {
+    public BasicRacingCarGameValidatorTest() {
         this.basicRacingCarValidator = new BasicRacingCarGameValidator();
     }
 
