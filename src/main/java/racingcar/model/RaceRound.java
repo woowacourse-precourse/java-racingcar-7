@@ -19,7 +19,7 @@ public class RaceRound {
         List<Car> cars = thisRoundCarList.getCarList();
         StringBuilder result = new StringBuilder();
         for(Car car : cars){
-            result.append(car.getName()).append(": ").append(car.getDistance().getDistanceValue()).append("\\n");
+            result.append(car.getName()).append(": ").append(car.getDistance().getDistanceValue()).append("\n");
         }
         return result.toString();
     }
