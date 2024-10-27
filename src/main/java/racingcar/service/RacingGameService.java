@@ -85,14 +85,19 @@ public class RacingGameService {
 
     private void validateCarNames(String carNames) {
         checkCarNameIsEmpty(carNames);
-
         String[] splitCarNames = processCarName(carNames);
 
         checkCarCount(splitCarNames);
-        for (String carName : splitCarNames) {
-            checkNameLength(carName);
-        }
+        checkNameLength(splitCarNames);
         checkDuplicateCarName(splitCarNames);
+    }
+
+    private static void checkNameLength(String[] splitCarNames) {
+        for (String carName : splitCarNames) {
+            if (carName.length() > NAME_LENGTH_LIMIT) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 하셔야 합니다.");
+            }
+        }
     }
 
     private static void checkDuplicateCarName(String[] splitCarNames) {
@@ -118,12 +123,6 @@ public class RacingGameService {
     private void checkCarNameIsEmpty(String carNames) {
         if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름이 입력되지 않았습니다.");
-        }
-    }
-
-    private void checkNameLength(String carName) {
-        if (carName.length() > NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력 하셔야 합니다.");
         }
     }
 
