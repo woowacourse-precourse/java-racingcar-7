@@ -13,13 +13,21 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 우승자가_한_명일_경우() {
+    void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "1");
                     assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -38,7 +46,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_이름을_입력하지_않을_경우_예외() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException(null, "5"))
+            assertThatThrownBy(() -> runException("\n"))
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
@@ -54,7 +62,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 시도_횟수를_입력하지_않을_경우_예외() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("pobi,woni,juni", null))
+            assertThatThrownBy(() -> runException("pobi,woni,juni", "\n"))
                     .isInstanceOf(IllegalArgumentException.class);
         });
     }
