@@ -3,7 +3,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-
+import racingcar.model.Car;
 
 public class Application {
     public static void main(String[] args) {
@@ -59,31 +59,6 @@ public class Application {
             System.out.println("최종 우승자 : " + winners.get(0));
         } else {
             System.out.println("최종 우승자 : " + String.join(", ", winners));
-        }
-    }
-
-    // car 클래스 생성
-    static class Car {
-        private String name;
-        private int position = 0;
-
-        public Car(String name) {
-            this.name = name;
-        }
-
-        public void move() {
-            int randomValue = Randoms.pickNumberInRange(0, 9);
-            if (randomValue >= 4) {
-                position++;
-            }
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getPosition() {
-            return position;
         }
     }
 }
