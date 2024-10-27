@@ -18,7 +18,7 @@ public class OutputView {
         System.out.print(RESULT_MESSAGE + result);
     }
 
-    public void closeOutputView() {
+    public void close() {
         if (outputView != null) {
             outputView = null;
         }
