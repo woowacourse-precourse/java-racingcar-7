@@ -7,7 +7,7 @@ public class Play {
     public static void play(Car[] cars) {
         for (Car car : cars) {
             int randomValue = Randoms.pickNumberInRange(0, 9);
-            
+
             System.out.print(car.getName() + " : ");
             if (randomValue >= 4) {
                 car.move();

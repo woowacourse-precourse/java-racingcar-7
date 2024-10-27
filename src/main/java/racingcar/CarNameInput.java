@@ -10,7 +10,7 @@ public class CarNameInput {
         String[] inputData = input.split(",");
         carNumCheck(inputData);
 
-        // 유요한 이름만 저장할 배열 생성
+        // 유효한 이름만 저장할 배열 생성
         String[] validCarNames = new String[inputData.length];
         nameLengthCheck(inputData, validCarNames);
 
@@ -26,10 +26,10 @@ public class CarNameInput {
 
     // 자동차 개수 체크 메소드
     public static void carNumCheck(String[] inputData) {
-        if(inputData.length< 2) {
+        if (inputData.length < 2) {
             throw new IllegalArgumentException("자동차 이름은 최소 두 개 이상 입력해야 합니다. 다시 시도해주세요.");
         }
-}
+    }
 
     // 이름 길이 체크 메소드
     public static String[] nameLengthCheck(String[] inputData, String[] validCarNames) {
