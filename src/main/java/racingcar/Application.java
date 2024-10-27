@@ -1,5 +1,6 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
@@ -16,6 +17,10 @@ public class Application {
     public static void main(String[] args) {
         String[] carNames = getCarNames();
         int count = getCount();
+
+        int[] carPositions = new int[carNames.length];
+
+        raceStart(count, carNames, carPositions);
 
 
     }
@@ -65,6 +70,29 @@ public class Application {
         String[] carNamesArray = carNamesValue.split(",");
         validateCarNames(carNamesArray);
         return carNamesArray;
+    }
+
+    private static void raceStart(int count, String[] carNames, int[] carPositions) {
+        for (int i = 0; i < count; i++) {
+            carMove(carNames, carPositions);
+            printCarPositions(carNames, carPositions);
+        }
+    }
+
+    private static void carMove(String[] carNames, int[] carPositions) {
+        for (int i = 0; i < carNames.length; i++) {
+            int randomValue = Randoms.pickNumberInRange(0,9);
+            if (randomValue >=4) {
+                carPositions[i]++;
+            }
+        }
+    }
+
+    private static void printCarPositions(String[] carNames, int[] carPositions) {
+        for (int i = 0; i < carNames.length; i++) {
+            System.out.println(carNames[i] + " : " + "-".repeat(carPositions[i]));
+        }
+        System.out.println();
     }
 
 }
