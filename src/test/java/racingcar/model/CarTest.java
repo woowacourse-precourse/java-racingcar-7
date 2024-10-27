@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static racingcar.model.CarTestConstants.*;
+import static racingcar.model.ModelTestConstants.*;
 
 class CarTest {
 

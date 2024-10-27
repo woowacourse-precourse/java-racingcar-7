@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.model.ModelTestConstants.*;
 
 class RaceGameTest {
 
@@ -14,9 +15,9 @@ class RaceGameTest {
 
     @BeforeEach
     void setUp() {
-        Car car1 = new Car("pobi", 5); // 우승 예상
-        Car car2 = new Car("woni", 3);
-        Car car3 = new Car("jun", 5); // 우승 예상
+        Car car1 = new Car("pobi", WINNER_POSITION_NUM.getValue()); // 우승 예상
+        Car car2 = new Car("woni", FAILURE_POSITION_NUM.getValue());
+        Car car3 = new Car("jun", WINNER_POSITION_NUM.getValue()); // 우승 예상
         List<Car> cars = List.of(car1,car2, car3);
         raceGame = new RaceGame(cars);
     }
