@@ -8,12 +8,27 @@ import java.util.List;
 public class InputValidator {
     public static void validateCarNames(List<String> carNames) {
         for (String name : carNames) {
-            if (name.trim().isEmpty()) {
-                throw new IllegalArgumentException(ErrorMessages.ERROR_EMPTY_CAR_NAME);
-            }
-            if (name.length() > ValidationConstants.MAX_CAR_NAME_LENGTH) {
-                throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_TOO_LONG);
-            }
+            validateEmptyOrBlank(name);
+            validateNameContainsBlank(name);
+            validateNameLength(name);
+        }
+    }
+
+    private static void validateEmptyOrBlank(String name) {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_EMPTY_CAR_NAME);
+        }
+    }
+
+    private static void validateNameContainsBlank(String name) {
+        if (name.matches(".*\\s.*")) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_CONTAINS_BLANK);
+        }
+    }
+
+    private static void validateNameLength(String name) {
+        if (name.length() > ValidationConstants.MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessages.ERROR_CAR_NAME_TOO_LONG);
         }
     }
 
