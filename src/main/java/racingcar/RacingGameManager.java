@@ -22,6 +22,7 @@ public class RacingGameManager {
             playGame(cars);
         }
         List<Car> winner = carManager.findWinner(cars);
+        validateResult(winner);
         console.printWinner(winner.stream().map(Car::getName).toList());
     }
 
@@ -36,6 +37,12 @@ public class RacingGameManager {
     private void validateInputCount(int count) {
         if (count < 1 || count > 1000) {
             throw new IllegalArgumentException("횟수는 최소 1번부터 최대 1000번까지 가능합니다. 입력값 :" + count);
+        }
+    }
+
+    private void validateResult(List<Car> result) {
+        if (result.isEmpty()) {
+            throw new IllegalArgumentException("잘못된 결과입니다. 승자는 최소 1명입니다.");
         }
     }
 }
