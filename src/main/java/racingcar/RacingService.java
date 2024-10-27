@@ -33,6 +33,7 @@ public class RacingService {
     private void initializeCarMapFromInput(String carNameInput) {
         for (String carName : carNameInput.split(CAR_INPUT_DELIMITER, -1)) {
             Exception.validateLength(carName);
+            Exception.validateUnique(getCarMap(), carName);
             CAR_MAP.put(carName, INITIAL_POSITION);
         }
     }
