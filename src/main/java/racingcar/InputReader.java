@@ -40,4 +40,28 @@ public class InputReader {
         carNames.forEach(this::validateCarName);
         return carNames;
     }
+
+    public int readTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        validateTryCount(input);
+        int tryCount = Integer.parseInt(input);
+        Console.close();
+        return tryCount;
+    }
+
+    private void validateTryCount(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수는 비어있을 수 없습니다.");
+        }
+
+        try {
+            int count = Integer.parseInt(input);
+            if (count < 1) {
+                throw new IllegalArgumentException("시도 횟수는 1이상의 정수여야 합니다.");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 1이상의 정수여야 합니다.");
+        }
+    }
 }

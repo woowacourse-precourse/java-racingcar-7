@@ -7,6 +7,7 @@ public class Application {
         try {
             InputReader inputReader = new InputReader();
             List<String> carNames = inputReader.readCarNames();
+            int tryCount = inputReader.readTryCount();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
