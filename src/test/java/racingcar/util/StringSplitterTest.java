@@ -24,12 +24,12 @@ class StringSplitterTest {
     }
 
     @Test
-    @DisplayName("문자열 나누기 테스트2 (양 옆 공백 지우기) - 성공")
+    @DisplayName("문자열 나누기 테스트2 - 성공")
     void splitTest2() throws Exception {
         //given
         String input = " abc,dkaso,dosak ";
         StringSplitter splitter = new StringSplitter();
-        List<String> expectNames = List.of("abc", "dkaso", "dosak");
+        List<String> expectNames = List.of(" abc", "dkaso", "dosak ");
 
         //when
         List<String> splitNames = splitter.splitString(input);

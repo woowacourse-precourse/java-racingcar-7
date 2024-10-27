@@ -13,7 +13,7 @@ class GeneralCarFactoryTest {
     void createCarTestSuccess1() throws Exception {
         //given
         CarFactory carFactory = GeneralCarFactory.getInstance();
-        List<String> carList = List.of("He1", "EH2", "CarName");
+        List<String> carList = List.of("He1", "EH2", "CarNm");
 
         //when
         List<Car> cars = carFactory.createCars(carList);
@@ -65,6 +65,20 @@ class GeneralCarFactoryTest {
         Assertions.assertThatThrownBy(() -> carFactory.createCars(carList))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("공백으로만 이루어져 있습니다.");
+
+    }
+
+    @Test
+    @DisplayName("자동차 생성 테스트 - 실패3")
+    void createCarTestFail3() throws Exception {
+        //given
+        CarFactory carFactory = GeneralCarFactory.getInstance();
+        List<String> carList = List.of("Hello", "MyCarName", "Hell");
+
+        //when & then
+        Assertions.assertThatThrownBy(() -> carFactory.createCars(carList))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름의 길이가 5초과 합니다.");
 
     }
 }
