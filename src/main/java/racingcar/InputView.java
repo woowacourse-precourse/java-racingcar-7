@@ -14,6 +14,13 @@ public class InputView {
         return parseCarNames(input);
     }
 
+    public int enterRoundCount() {
+        System.out.print("시도할 횟수는 몇 회인가요?");
+        System.out.print(LINE_SEPARATOR);
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
+
     private List<String> parseCarNames(String carNames) {
         return Arrays.stream(carNames.split(","))
                 .toList();
