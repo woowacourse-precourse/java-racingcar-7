@@ -5,6 +5,7 @@ import racingcar.util.CommonIo;
 import racingcar.util.Limit;
 import racingcar.util.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
@@ -25,20 +26,22 @@ public class OutputView {
 
     public void printWinners(List<Car> cars) {
         int maxPosition = Limit.MIN_POSITION.getValue();
-        StringBuilder winner = new StringBuilder();
+        List<String> winner = new ArrayList<>();
 
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
-                winner.setLength(Limit.DEFAULT.getValue());
-                winner.append(car.getName());
+                winner.clear();
+                winner.add(car.getName());
                 maxPosition = car.getPosition();
             } else if (car.getPosition() == maxPosition) {
-                winner.append(Message.COMMA.getSentence())
-                        .append(Message.WHITE_SPACE.getSentence())
-                        .append(car.getName());
+                winner.add(car.getName());
             }
         }
 
-        io.printMessage(Message.FINAL_WINNER.getSentence() + Message.COLON_WITH_SPACE.getSentence() + winner);
+        String finalWinner = String.join(Message.COMMA.getSentence()+Message.WHITE_SPACE.getSentence(),winner);
+
+        io.printMessage(Message.FINAL_WINNER.getSentence()
+                + Message.COLON_WITH_SPACE.getSentence()
+                + finalWinner);
     }
 }
