@@ -24,12 +24,6 @@ public class Cars {
         }
     }
 
-    public List<Integer> getPositions() {
-        return carList.stream()
-                .map(Car::getPosition)
-                .toList();
-    }
-
     public List<Car> getCarList() {
         return new ArrayList<>(carList);
     }
