@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
-import racingcar.domain.dto.TryCountDto;
+import racingcar.domain.TryCountDto;
 
 class RacingGameControllerTest {
     private Cars cars;

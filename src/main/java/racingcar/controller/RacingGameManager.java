@@ -4,18 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.service.RacingGame;
+import racingcar.domain.RacingGame;
 import racingcar.domain.TryCount;
-import racingcar.domain.dto.TryCountDto;
+import racingcar.domain.TryCountDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingGameController {
+public class RacingGameManager {
 
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingGameController(InputView inputView, OutputView outputView) {
+    public RacingGameManager(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -40,7 +40,6 @@ public class RacingGameController {
         List<Car> winners = racingGame.checkWinner();
         outputView.printWinner(winners);
     }
-
 
     public Cars registerCar(String input) {
         Cars cars = new Cars();

@@ -1,6 +1,8 @@
-package racingcar.domain.dto;
+package racingcar.domain;
 
 public record TryCountDto(String input) {
+
+
 
     public TryCountDto {
         validate(input);
