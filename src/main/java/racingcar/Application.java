@@ -11,20 +11,67 @@ public class Application {
     public static final int RANDOM_CONDITIONS = 4;
     public static final String BAR = "-";
 
+
     public static void main(String[] args) {
-        // 자동차 이름 받기
-        // String => String[] 을 위한 split
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        String[] carNames = input.replaceAll(" ", "").split(",");
+        Map<String, Integer> carNamesMap = getCarNamesMap(getCarNames());
 
-        // 시도할 횟수 입력 받기
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String inputCount = Console.readLine();
-        int count = Integer.parseInt(inputCount);
+        Set<Map.Entry<String, Integer>> carNameSet = carNamesMap.entrySet();
 
-        // 자동차 이름(String[]) => LinkedHashMap에 저장 (value 디폴트 0)
-        // 이름 5글자 이내 검수
+        processAndPrint(carNameSet, carNamesMap);
+
+        winnerPrint(getWinnerList(carNameSet, getMaxCount(carNameSet)));
+    }
+
+
+    private static void processAndPrint(Set<Map.Entry<String, Integer>> carNameSet, Map<String, Integer> carNamesMap) {
+        int count = getCount();
+        for (int i = 0; i < count; i++) {
+            process(carNameSet, carNamesMap);
+            processPrint(carNameSet);
+        }
+    }
+
+    private static void winnerPrint(List<String> winnerList) {
+        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    }
+
+    private static List<String> getWinnerList(Set<Map.Entry<String, Integer>> carNameSet, int maxCount) {
+        List<String> winnerList = new ArrayList<>();
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            if (carName.getValue() == maxCount) {
+                winnerList.add(carName.getKey());
+            }
+        }
+        return winnerList;
+    }
+
+    private static int getMaxCount(Set<Map.Entry<String, Integer>> carNameSet) {
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            if (carName.getValue() > maxCount) {
+                maxCount = carName.getValue();
+            }
+        }
+        return maxCount;
+    }
+
+    private static void processPrint(Set<Map.Entry<String, Integer>> carNameSet) {
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            System.out.println(carName.getKey() + " : " + BAR.repeat(carName.getValue()));
+        }
+        System.out.println();
+    }
+
+    private static void process(Set<Map.Entry<String, Integer>> carNameSet, Map<String, Integer> carNamesMap) {
+        for (Map.Entry<String, Integer> carName : carNameSet) {
+            int random = Randoms.pickNumberInRange(0, 9);
+            if (random >= RANDOM_CONDITIONS) {
+                carNamesMap.put(carName.getKey(), carName.getValue() + 1);
+            }
+        }
+    }
+
+    private static Map<String, Integer> getCarNamesMap(String[] carNames) {
         Map<String, Integer> carNamesMap = new LinkedHashMap<>();
         for (String carName : carNames) {
             if (carName.length() > NAME_HANDLING_CRITERIA) {
@@ -32,45 +79,18 @@ public class Application {
             }
             carNamesMap.put(carName, 0);
         }
+        return carNamesMap;
+    }
 
-        // entrySet 기본 세팅
-        Set<Map.Entry<String, Integer>> carNameSet = carNamesMap.entrySet();
+    private static int getCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputCount = Console.readLine();
+        return Integer.parseInt(inputCount);
+    }
 
-        // 자동차 전진,스탑 진행 처리
-        for (int i = 0; i < count; i++) {
-            for (Map.Entry<String, Integer> carName : carNameSet) {
-                int random = Randoms.pickNumberInRange(0, 9);
-                if (random >= RANDOM_CONDITIONS) {
-                    carNamesMap.put(carName.getKey(), carName.getValue() + 1);
-                }
-            }
-        }
-
-        // LinkedHashMap 정보 출력
-        for (int i = 0; i < count; i++) {
-            for (Map.Entry<String, Integer> carName : carNameSet) {
-                System.out.println(carName.getKey() + " : " + BAR.repeat(carName.getValue()));
-            }
-            System.out.println();
-        }
-
-        // 우승자 출력을 위한 비교값 세팅
-        int maxCount = 0;
-        for (Map.Entry<String, Integer> carName : carNameSet) {
-            if (carName.getValue() > maxCount) {
-                maxCount = carName.getValue();
-            }
-        }
-
-        // 우승자 목록 ArrayList에 담기
-        List<String> winnerList = new ArrayList<>();
-        for (Map.Entry<String, Integer> carName : carNameSet) {
-            if (carName.getValue() == maxCount) {
-                winnerList.add(carName.getKey());
-            }
-        }
-
-        // 우승자 출력
-        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
+    private static String[] getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+        return input.replaceAll(" ", "").split(",");
     }
 }
