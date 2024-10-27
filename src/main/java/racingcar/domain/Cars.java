@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,17 +10,13 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        if (hasDuplicateCarNames(cars)) {
-            throw CustomException.of(ErrorMessage.DUPLICATE_CAR_NAME_ERROR);
-        }
+        validCars(cars);
         this.cars = cars;
     }
 
     public void playSingleRound() {
         for (Car car : cars) {
-            if (car.canMove()) {
-                car.move();
-            }
+            car.tryMove();
         }
     }
 
@@ -35,6 +30,12 @@ public class Cars {
     public List<Car> getWinners() {
         int maxMoveCount = getMaxMoveCount();
         return cars.stream().filter(it -> it.getMoveCount() == maxMoveCount).toList();
+    }
+
+    private void validCars(List<Car> cars) {
+        if (hasDuplicateCarNames(cars)) {
+            throw CustomException.of(ErrorMessage.DUPLICATE_CAR_NAME_ERROR);
+        }
     }
 
     private int getMaxMoveCount() {

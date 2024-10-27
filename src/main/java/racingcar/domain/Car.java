@@ -10,20 +10,21 @@ public class Car {
     private int moveCount = 0;
 
     public Car(String name) {
-        if (isNameEmpty(name)) {
-            throw CustomException.of(ErrorMessage.BLANK_CAR_NAME_ERROR);
-        }
-        if (isNameTooLong(name)) {
-            throw CustomException.of(ErrorMessage.CAR_NAME_TOO_LONG_ERROR);
-        }
+        validName(name);
         this.name = name;
     }
 
-    public boolean canMove() {
+    public void tryMove() {
+        if (canMove()) {
+            move();
+        }
+    }
+
+    private boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
-    public void move() {
+    private void move() {
         moveCount++;
     }
 
@@ -33,6 +34,15 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    private void validName(String name) {
+        if (isNameEmpty(name)) {
+            throw CustomException.of(ErrorMessage.BLANK_CAR_NAME_ERROR);
+        }
+        if (isNameTooLong(name)) {
+            throw CustomException.of(ErrorMessage.CAR_NAME_TOO_LONG_ERROR);
+        }
     }
 
     private boolean isNameEmpty(String name) {
