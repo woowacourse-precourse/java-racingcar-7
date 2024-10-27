@@ -45,8 +45,8 @@ public class DefaultGameInputValidator implements GameInputValidator {
             throw new IllegalArgumentException("총 라운드는 빈 값을 입력하실 수 없습니다.");
         }
 
-        if (isNotPositiveInteger(input)) {
-            throw new IllegalArgumentException("총 라운드는 양의 정수 형태로 입력하셔야 합니다.");
+        if (!isInteger(input)) {
+            throw new IllegalArgumentException("총 라운드는 정수 형태로 입력하셔야 합니다.");
         }
     }
 
@@ -60,7 +60,7 @@ public class DefaultGameInputValidator implements GameInputValidator {
         return !input.matches(pattern);
     }
 
-    private boolean isNotPositiveInteger(String input) {
-        return !input.matches("^[1-9]\\d*$");
+    private boolean isInteger(String input) {
+        return input.matches("-?\\d+");
     }
 }

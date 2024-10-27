@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.controller.DefaultGameInputValidator;
 
 public class DefaultGameInputValidatorTest {
 
@@ -67,14 +66,15 @@ public class DefaultGameInputValidatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("사용자가 입력한 총 라운드가 양의 정수가 아니면 예외를 던진다.")
-    @ValueSource(strings = {"abc", "123abc", "-1", "42.5", "0"})
+    @DisplayName("사용자가 입력한 총 라운드가 정수가 아니라면 예외를 던진다.")
+    @ValueSource(strings = {"abc", "123abc", "42.5"})
     void throwExceptionWhenTotalRoundsIsNotPositiveInteger(String inputValue) {
         // when & then
         assertThatThrownBy(() -> gameInputValidator.validateTotalRounds(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("총 라운드는 양의 정수 형태로 입력하셔야 합니다.");
+                .hasMessage("총 라운드는 정수 형태로 입력하셔야 합니다.");
     }
+
 
     @ParameterizedTest
     @DisplayName("사용자가 입력한 총 라운드가 빈 값이면 예외를 던진다.")
