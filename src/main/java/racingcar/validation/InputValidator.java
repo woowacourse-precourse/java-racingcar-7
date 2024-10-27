@@ -17,5 +17,11 @@ public class InputValidator {
         }
     }
 
-
+    public static void validateIsNumber(String input) {
+        try{
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_COUNT.getMessage());
+        }
+    }
 }
