@@ -14,5 +14,13 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String intInput = Console.readLine();
+
+        int tryCount = InputValidator(intInput);
+    }
+
+    public static int InputValidator(String intInput){
+        if (intInput.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력이 잘못되었습니다.");
+        }
     }
 }
