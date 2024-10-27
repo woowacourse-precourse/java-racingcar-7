@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRepositoryImpl implements CarRepository{
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public CarRepositoryImpl() {
-        this.cars = new ArrayList<>();
+    public CarRepositoryImpl(List<Car> cars) {
+        this.cars = cars;
     }
 
     @Override
