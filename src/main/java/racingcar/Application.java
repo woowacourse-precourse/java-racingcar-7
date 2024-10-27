@@ -1,7 +1,11 @@
 package racingcar;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingGameView racingGameView = new RacingGameView();
+
+        RacingGame racingGame = new RacingGame(racingGameView);
+        racingGame.run();
     }
 }
