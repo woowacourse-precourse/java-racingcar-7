@@ -69,5 +69,8 @@ public class Application {
                 winnerList.add(carName.getKey());
             }
         }
+
+        // 우승자 출력
+        System.out.println("최종 우승자 : " + String.join(", ", winnerList));
     }
 }
