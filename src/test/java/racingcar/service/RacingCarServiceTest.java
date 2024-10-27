@@ -4,9 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.car.RacingCar;
 import racingcar.strategy.MoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
@@ -27,6 +30,7 @@ class RacingCarServiceTest {
     private final RacingCarService racingCarService = new RacingCarService(mockMoveStrategy);
     private final List<RacingCar> racingCarList = new ArrayList<>();
 
+
     @BeforeEach
     void setUp() {
         racingCarList.add(new RacingCar("CarA", 8));
@@ -35,15 +39,33 @@ class RacingCarServiceTest {
         racingCarList.add(new RacingCar("CarD", 8));
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("testWinnerCars")
     @DisplayName("레이싱 게임 우승자 반환 함수 테스트")
-    void testWinnerCars() {
+    void testWinnerCars(List<RacingCar> racingCarList, String[] winners) {
         // Given & When
         List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCarList);
 
         // Then
-        assertThat(winnerRacingCars).hasSize(2).extracting(RacingCar::getCarName)
-                .containsExactlyInAnyOrder("CarA", "CarD");
+        assertThat(winnerRacingCars).hasSize(winners.length).extracting(RacingCar::getCarName)
+                .containsExactlyInAnyOrder(winners);
+    }
+
+    static Stream<Object[]> testWinnerCars() {
+        return Stream.of(
+                new Object[]{
+                    List.of(new RacingCar("CarA", 8), new RacingCar("CarB", 5),
+                            new RacingCar("CarC", 3), new RacingCar("CarD", 8)),
+                    new String[]{"CarA", "CarD"}},
+                new Object[]{
+                    List.of(new RacingCar("CarA", 8), new RacingCar("CarB", 5),
+                            new RacingCar("CarC", 3), new RacingCar("CarD", 1)),
+                    new String[]{"CarA"}},
+                new Object[]{
+                    List.of(new RacingCar("Car", 1)),
+                    new String[]{"Car"}
+                }
+        );
     }
 
     @Test
