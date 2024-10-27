@@ -13,6 +13,10 @@ public class RandomPicker {
         }
     }
 
+    private static int runRandom() {
+        return Randoms.pickNumberInRange(0,9);
+    }
+
     private static boolean validateRandomResult(int randomRunResult) {
         validateRandomRange(randomRunResult);
         return randomRunResult >= 4;
