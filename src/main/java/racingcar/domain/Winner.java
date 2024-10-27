@@ -10,7 +10,15 @@ public class Winner {
         this.winners = cars.findWinners(car);
     }
 
-    public String winnerInfo() {
-        return winners.getFirst().joinCars(winners);
+    @Override
+    public String toString() {
+        List<String> winnerList = getWinnerNames();
+        return String.join(WINNER_DELIMITER, winnerList);
+    }
+
+    private List<String> getWinnerNames() {
+        return winners.stream()
+                .map(Car::getName)
+                .toList();
     }
 }
