@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -18,19 +20,19 @@ class ApplicationTest extends NsTest {
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("pobi,woni", "1");
-                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
-            },
-            MOVING_FORWARD, STOP
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
@@ -55,9 +57,9 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Ahn", ""})
+    @ValueSource(strings = {"Ahn", "Ahn,"})
     @DisplayName("자동차 이름을 두 개 이상으로 입력하지 않았으면 예외 발생")
-    void inputMoreThanTwo_NotInputtedMoreThenTwo_ExceptionThrown(String carNames){
+    void inputMoreThanTwo_NotInputtedMoreThanTwo_ExceptionThrown(String carNames){
         //given
         final String expectedMessage = "자동차 이름을 두 개 이상으로 입력해주세요";
         final CarNameValidator carNameValidator = new CarNameValidator();
@@ -69,15 +71,17 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Ahn, Seong, ", " ,Seong, Mo", " , ", "Ahn, "})
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {" "})
     @DisplayName("이름을 1자 이상으로 작성하지 않았으면 예외 발생")
-    void inputMoreThenOneCharacter_NotInputtedMoreThenOneCharacter_ExceptionThrown(String carNames){
+    void inputMoreThanOneCharacter_NotInputtedMoreThanOneCharacter_ExceptionThrown(String carNames){
         //given
         final String expectedMessage = "이름을 1자 이상으로 입력해주세요";
         final CarNameValidator carNameValidator = new CarNameValidator();
 
         //when & then
-        assertThatThrownBy(() -> carNameValidator.inputMoreThenOneCharacter(carNames))
+        assertThatThrownBy(() -> carNameValidator.inputMoreThanOneCharacter(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
     }

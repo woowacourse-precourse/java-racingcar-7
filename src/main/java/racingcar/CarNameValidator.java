@@ -13,13 +13,7 @@ public class CarNameValidator {
         }
     }
 
-    public void inputMoreThenOneCharacter(String carNames) {
-        for (String carName : split(carNames)) {
-            checkMoreThenOneCharacter(carName);
-        }
-    }
-
-    private void checkMoreThenOneCharacter(String carName) {
+    public void inputMoreThanOneCharacter(String carName) {
         if(isBlank(carName)) {
             throw new IllegalArgumentException("이름을 1자 이상으로 입력해주세요");
         }
