@@ -1,7 +1,6 @@
 package racingcar.model.game;
 
 import java.util.List;
-import racingcar.model.car.Car;
 import racingcar.model.car.CarSnapshot;
 import racingcar.model.car.Cars;
 
@@ -14,16 +13,18 @@ public class Game {
     private final Cars cars;
     private final TotalRounds totalRounds;
     private final NumberPicker numberPicker;
+    private final Referee referee;
     private Winners winners;
     private int currentRound;
 
-    public Game(Cars cars, TotalRounds totalRounds, NumberPicker numberPicker) {
+    public Game(Cars cars, TotalRounds totalRounds, NumberPicker numberPicker, Referee referee) {
         validate(cars);
 
         this.cars = cars;
         this.totalRounds = totalRounds;
         this.currentRound = 0;
         this.numberPicker = numberPicker;
+        this.referee = referee;
     }
 
     private void validate(Cars cars) {
@@ -48,8 +49,7 @@ public class Game {
     }
 
     public void judgeWinners() {
-        List<Car> maxPositionCars = cars.getMaxPositionCars();
-        this.winners = new Winners(maxPositionCars);
+        this.winners = referee.judgeWinners(cars);
     }
 
     public List<CarSnapshot> getCarSnapshots() {
