@@ -78,6 +78,15 @@ class ApplicationTest extends NsTest {
         assertEquals("-",car1.getPosition());
         assertEquals("",car2.getPosition());
     }
+    @Test
+    void 자동차_이름_5자_초과_테스트(){
+        String CarName="woniwoni";
+        ByteArrayInputStream CarNamein=new ByteArrayInputStream(CarName.getBytes());
+        System.setIn(CarNamein);
+        assertThrows(IllegalArgumentException.class,()->{
+            InputView.Car_names();
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
