@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Cars;
+import racingcar.domain.Race;
 import racingcar.view.Input;
 
 public class Racing {
@@ -13,21 +13,21 @@ public class Racing {
 
     public void ready() {
         String rawCarNames = input.readCarNames();
-        Cars cars = new Cars(rawCarNames);
+        Race race = new Race(rawCarNames);
 
-        start(cars);
+        start(race);
     }
 
-    private void start(Cars cars) {
+    private void start(Race race) {
         int lap = 5;
         for (int i = 0; i < lap; i++) {
-            cars.moveAll();
+            race.moveAll();
         }
 
-        finish(cars);
+        finish(race);
     }
 
-    private void finish(Cars cars) {
-        cars.findWinners();
+    private void finish(Race race) {
+        race.findWinners();
     }
 }

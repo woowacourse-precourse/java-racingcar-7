@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Cars {
+public class Race {
     private final List<Car> cars;
 
-    public Cars(String rawCarNames) {
+    public Race(String rawCarNames) {
         this.cars = parseCarNames(rawCarNames);
     }
 
