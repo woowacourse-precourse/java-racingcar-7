@@ -16,9 +16,17 @@ public class InputView {
             throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
         }
 
-        return Arrays.stream(carNames.split(","))
+        List<String> carNameList = Arrays.stream(carNames.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
+
+        for (String name : carNameList) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            }
+        }
+
+        return carNameList;
     }
 
     public static int inputAttemptNumber() {
