@@ -1,4 +1,4 @@
 package racingcar.dto;
 
-public record RacingGameInitializationRequest(String participants, int time) {
+public record RacingGameInitializationRequest(String participants, String time) {
 }
