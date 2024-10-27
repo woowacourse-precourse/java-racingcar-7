@@ -2,10 +2,10 @@ package racingcar.filter;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.common.exception.InvalidCarNameException;
 import racingcar.common.util.CarListCollector;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.exception.InvalidCarNameException;
 import racingcar.model.CarList;
 import racingcar.model.RacingCarProxy;
 

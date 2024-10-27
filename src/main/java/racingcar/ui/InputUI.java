@@ -1,7 +1,7 @@
 package racingcar.ui;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.exception.InvalidInputException;
+import racingcar.common.exception.InvalidInputException;
 
 public class InputUI {
     private static void printMessage(String msg) {

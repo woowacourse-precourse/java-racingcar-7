@@ -17,6 +17,9 @@ public class RaceWinnerDecisionFilter implements Filter<RaceRequest, RaceRespons
 
     private List<String> getWinners(CarList cars) {
         int maxDistance = cars.getMaxDistance();
-        return cars.getCars().stream().filter(car -> car.getDistance() == maxDistance).map(Drivable::getName).toList();
+        return cars.getCars().stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Drivable::getName)
+                .toList();
     }
 }

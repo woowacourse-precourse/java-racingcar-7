@@ -1,9 +1,9 @@
 package racingcar.filter;
 
+import racingcar.common.exception.InvalidCommandException;
+import racingcar.common.exception.NegativeIterationException;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
-import racingcar.exception.InvalidCommandException;
-import racingcar.exception.NegativeIterationException;
 
 public class RaceInputValidationFilter implements Filter<RaceRequest, RaceResponse> {
 
@@ -26,8 +26,8 @@ public class RaceInputValidationFilter implements Filter<RaceRequest, RaceRespon
         }
     }
 
-    private void validateIterations(Integer tryCount) {
-        if (tryCount < 0) {
+    private void validateIterations(Integer iterations) {
+        if (iterations < 0) {
             throw new NegativeIterationException();
         }
     }
