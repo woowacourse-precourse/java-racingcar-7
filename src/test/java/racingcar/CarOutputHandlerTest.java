@@ -23,7 +23,7 @@ public class CarOutputHandlerTest {
     }
 
     @Test
-    public void 테스트_경주_실행() {
+    public void 경주_실행_테스트() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
@@ -38,7 +38,7 @@ public class CarOutputHandlerTest {
     }
 
     @Test
-    public void 테스트_우승자_찾기() {
+    public void 우승자_찾기_테스트() {
         carList.get(0).carPosition = 3;
         carList.get(1).carPosition = 3;
 

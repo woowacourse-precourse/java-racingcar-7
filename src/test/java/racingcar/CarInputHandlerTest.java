@@ -15,7 +15,7 @@ public class CarInputHandlerTest {
     }
 
     @Test
-    void userInputCarNames_유효한_입력() {
+    void 자동차_유효한_입력() {
         System.setIn(new ByteArrayInputStream("자동차1, 자동차2".getBytes()));
 
         String result = carInputHandler.userInputCarNames();
@@ -24,21 +24,21 @@ public class CarInputHandlerTest {
     }
 
     @Test
-    void splitCarNames_유효한_입력() {
+    void 자동차_이름_구분_테스트() {
         String[] result = carInputHandler.splitCarNames("자동차1, 자동차2, 자동차3");
 
         assertThat(result).containsExactly("자동차1", "자동차2", "자동차3");
     }
 
     @Test
-    void splitCarNames_자동차이름_중복_예외발생() {
+    void 중복_예외_테스트() {
         assertThatThrownBy(() -> carInputHandler.splitCarNames("자동차1, 자동차2, 자동차1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력하신 자동차 이름중에 중복이 있습니다.");
     }
 
     @Test
-    void splitCarNames_이름_길이_초과_예외발생() {
+    void 이름_길이_초과_테스트() {
         assertThatThrownBy(() -> carInputHandler.splitCarNames("자동차1, 자동차이름길게"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하로 입력해야 합니다.");
