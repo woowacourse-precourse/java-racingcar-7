@@ -8,8 +8,8 @@ public class GameController {
     private final InputView inputView;
     private final InputValidator inputValidator;
 
-    public GameController(GameService gameService, OutputView outputView, InputView inputView
-    , InputValidator inputValidator) {
+    public GameController(GameService gameService, OutputView outputView, InputView inputView,
+                          InputValidator inputValidator) {
         this.gameService = gameService;
         this.outputView = outputView;
         this.inputView = inputView;
