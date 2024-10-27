@@ -41,6 +41,7 @@ public class Racing {
     }
 
     private void finish(Race race) {
-        race.findWinners();
+        List<Car> winners = race.findWinners();
+        output.printWinners(winners);
     }
 }
