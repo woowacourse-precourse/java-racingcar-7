@@ -1,11 +1,10 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
 
 public class Cars {
 
@@ -19,7 +18,7 @@ public class Cars {
     public Cars(String carName, MoveStrategy moveStrategy) {
         this.cars = createCars(carName);
         this.moveStrategy = moveStrategy;
-        validateDuplicateCarNames();
+        validateDuplicateCarNames(carName);
     }
 
     public void moveAllCars() {
@@ -35,25 +34,24 @@ public class Cars {
 
     private List<Car> createCars(String carNames) {
         String[] splitCarNames = splitCarNames(carNames);
-        List<Car> cars = new ArrayList<>();
 
-        for (String name : splitCarNames) {
-            cars.add(new Car(name));
-        }
-
-        return cars;
+        return Arrays.stream(splitCarNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    private String[] splitCarNames(final String carNames) {
-        return carNames.split(SPLIT_DELIMITER);
-    }
-
-    private void validateDuplicateCarNames() {
-        int uniqueCarNames = new HashSet<>(cars).size();
+    private void validateDuplicateCarNames(String carNames) {
+        String[] splitCarNames = splitCarNames(carNames);
+        List<String> carNameList = Arrays.asList(splitCarNames);
+        int uniqueCarNames = new HashSet<>(carNameList).size();
 
         if (uniqueCarNames != cars.size()) {
             throw new IllegalArgumentException(DUPLICATE_CAR_NAME);
         }
+    }
+
+    private String[] splitCarNames(final String carNames) {
+        return carNames.split(SPLIT_DELIMITER);
     }
 
     public List<Car> getCars() {
