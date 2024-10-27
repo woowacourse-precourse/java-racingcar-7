@@ -15,66 +15,66 @@ public class GameEngine {
     private final CarRepository carRepository;
     private final List<String> winners;
 
-    public GameEngine(CarRepository carRepository){
+    public GameEngine(CarRepository carRepository) {
 
         this.carRepository = carRepository;
         this.winners = new ArrayList<>();
     }
 
-    public void runSingleRound(){
+    public void runSingleRound() {
 
-        for(Car car: carRepository.getCarList()){
+        for (Car car : carRepository.getCarList()) {
             updateCarProgress(car, generateRandomNumber());
         }
     }
 
-    public void decideWinners(){
+    public void decideWinners() {
 
         int maxWin = calculateMaxWins();
-        for(Car car : carRepository.getCarList()){
+        for (Car car : carRepository.getCarList()) {
             decideIfWinner(car, maxWin);
         }
     }
 
-    public List<String> getWinners(){
+    public List<String> getWinners() {
 
         return Collections.unmodifiableList(winners);
     }
 
-    private int calculateMaxWins(){
+    private int calculateMaxWins() {
 
         int maxWin = 0;
-        for(Car car : carRepository.getCarList()){
+        for (Car car : carRepository.getCarList()) {
             maxWin = getMaxWin(maxWin, car.getProgress());
         }
         return maxWin;
     }
 
-    private int getMaxWin(int maxWin, int currentProgress){
+    private int getMaxWin(int maxWin, int currentProgress) {
 
         return Math.max(maxWin, currentProgress);
     }
 
-    private void decideIfWinner(Car car, int maxWin){
+    private void decideIfWinner(Car car, int maxWin) {
 
-        if(car.getProgress() == maxWin){
+        if (car.getProgress() == maxWin) {
             addToWinner(car.getName());
         }
     }
 
-    private void addToWinner(String name){
+    private void addToWinner(String name) {
 
         winners.add(name);
     }
 
-    private int generateRandomNumber(){
+    private int generateRandomNumber() {
 
-        return Randoms.pickNumberInRange(RANDOM_MIN,RANDOM_MAX);
+        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
     }
 
-    private void updateCarProgress(Car car, int random){
+    private void updateCarProgress(Car car, int random) {
 
-        if(random >= PROGRESS_CONDITION){
+        if (random >= PROGRESS_CONDITION) {
             car.updateProgress();
         }
     }

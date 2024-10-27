@@ -5,22 +5,22 @@ public class Car {
     private final String name;
     private int progress = 0;
 
-    public Car(String name){
+    public Car(String name) {
 
         this.name = name;
     }
 
-    public int getProgress(){
+    public int getProgress() {
 
         return progress;
     }
 
-    public String getName(){
+    public String getName() {
 
         return name;
     }
 
-    public void updateProgress(){
+    public void updateProgress() {
 
         progress++;
     }

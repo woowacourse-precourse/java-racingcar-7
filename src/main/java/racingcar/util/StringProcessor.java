@@ -7,9 +7,9 @@ public class StringProcessor {
 
     private final static String COMMA = ",";
 
-    public static String[] process(String input){
+    public static String[] process(String input) {
 
-        if(input.endsWith(COMMA)){
+        if (input.endsWith(COMMA)) {
             throw new IllegalArgumentException();
         }
 
@@ -20,17 +20,17 @@ public class StringProcessor {
             .toArray(String[]::new);
     }
 
-    public static String formatWinner(List<String> winners){
+    public static String formatWinner(List<String> winners) {
 
-        return String.join(", ",winners);
+        return String.join(", ", winners);
     }
 
-    private static String trim(String input){
+    private static String trim(String input) {
 
         return input.trim();
     }
 
-    private static String[] split(String input){
+    private static String[] split(String input) {
 
         return input.split(COMMA);
     }

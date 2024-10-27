@@ -1,33 +1,27 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 import racingcar.model.car.Car;
-import racingcar.model.car.CarRepository;
-import racingcar.model.raceGame.GameEngine;
 import racingcar.util.StringProcessor;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.TrialValidator;
 import racingcar.validator.Validator;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 public class CustomUnitTest {
 
     @Test
-    void CHECK_RANDOM_GENERATOR(){
-        int randomNumber = Randoms.pickNumberInRange(8,9);
-        assertThat(randomNumber).isBetween(8,9);
+    void CHECK_RANDOM_GENERATOR() {
+        int randomNumber = Randoms.pickNumberInRange(8, 9);
+        assertThat(randomNumber).isBetween(8, 9);
     }
 
 
     @Test
-    void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION(){
+    void CHECK_CAR_NAME_IS_EMPTY_EXCEPTION() {
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car(" ");
         assertThrows(IllegalArgumentException.class, () -> {
@@ -36,7 +30,7 @@ public class CustomUnitTest {
     }
 
     @Test
-    void CHECK_CAR_NAME_OVER_FIVE_LETTERS_EXCEPTION(){
+    void CHECK_CAR_NAME_OVER_FIVE_LETTERS_EXCEPTION() {
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car("ABCDEF");
         assertThrows(IllegalArgumentException.class, () -> {
@@ -45,7 +39,7 @@ public class CustomUnitTest {
     }
 
     @Test
-    void CHECK_CAR_NAME_HAS_SPACE_IN_BETWEEN_EXCEPTION(){
+    void CHECK_CAR_NAME_HAS_SPACE_IN_BETWEEN_EXCEPTION() {
         Validator<String[]> validator = new CarNameValidator();
         Car car = new Car("A B");
         assertThrows(IllegalArgumentException.class, () -> {
@@ -54,16 +48,16 @@ public class CustomUnitTest {
     }
 
     @Test
-    void TRIM_SPACES_AT_BOTH_ENDS(){
+    void TRIM_SPACES_AT_BOTH_ENDS() {
 
         String input = " pobi , woni ";
         String[] output = StringProcessor.process(input);
 
-        assertThat(output).containsExactly("pobi","woni");
+        assertThat(output).containsExactly("pobi", "woni");
     }
 
     @Test
-    void CHECK_TRIAL_NUMBER_IS_NUMBER_EXCEPTION(){
+    void CHECK_TRIAL_NUMBER_IS_NUMBER_EXCEPTION() {
         String trial = "a";
         Validator<String> validator = new TrialValidator();
         assertThrows(IllegalArgumentException.class, () -> {
@@ -72,7 +66,7 @@ public class CustomUnitTest {
     }
 
     @Test
-    void CHECK_TRIAL_NUMBER_IS_NEGATIVE(){
+    void CHECK_TRIAL_NUMBER_IS_NEGATIVE() {
         String trial = "-1";
         Validator<String> validator = new TrialValidator();
         assertThrows(IllegalArgumentException.class, () -> {
@@ -81,15 +75,15 @@ public class CustomUnitTest {
     }
 
     @Test
-    void SAME_TWO_CAR_NAMES(){
+    void SAME_TWO_CAR_NAMES() {
         Validator<String[]> validator = new CarNameValidator();
-        assertThrows(IllegalArgumentException.class, () ->{
-            validator.validate(new String[]{"pobi","pobi"});
+        assertThrows(IllegalArgumentException.class, () -> {
+            validator.validate(new String[]{"pobi", "pobi"});
         });
     }
 
     @Test
-    void INPUT_ENDS_IN_COMMA(){
+    void INPUT_ENDS_IN_COMMA() {
         String input = "pobi,woni,";
 
         assertThrows(IllegalArgumentException.class, () -> {

@@ -15,13 +15,14 @@ public class GameController {
     private final CarRepository carRepository;
     private final GameEngine gameEngine;
 
-    public GameController(Validator<String[]> carValidator, Validator<String> trialValidator, CarRepository carRepository){
+    public GameController(Validator<String[]> carValidator, Validator<String> trialValidator, CarRepository carRepository) {
         this.carValidator = carValidator;
         this.trialValidator = trialValidator;
         this.carRepository = carRepository;
         this.gameEngine = new GameEngine(carRepository);
     }
-    public void run(){
+
+    public void run() {
 
         String[] carNames = getCarNames();
         int trialCount = getTrialCount();
@@ -30,7 +31,7 @@ public class GameController {
         printWinners();
     }
 
-    private String[] getCarNames(){
+    private String[] getCarNames() {
 
         String userCarInput = InputView.userInputCar();
         String[] carNameArr = StringProcessor.process(userCarInput);
@@ -38,22 +39,22 @@ public class GameController {
         return carNameArr;
     }
 
-    private int getTrialCount(){
+    private int getTrialCount() {
 
         String userTrialInput = InputView.userInputTrial();
         trialValidator.validate(userTrialInput);
         return Integer.parseInt(userTrialInput);
     }
 
-    private void runGame(int trial){
+    private void runGame(int trial) {
 
-        for(int i = 0; i<trial; i++){
+        for (int i = 0; i < trial; i++) {
             gameEngine.runSingleRound();
             OutputView.printCarProgress(carRepository.getCarList());
         }
     }
 
-    private void printWinners(){
+    private void printWinners() {
 
         gameEngine.decideWinners();
         List<String> winners = gameEngine.getWinners();
