@@ -6,11 +6,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    public static class Car{
-        String carName;
-        int pos = 0;
-    }
-
 
 
 /*    initializeCars(List<String> carNames)
