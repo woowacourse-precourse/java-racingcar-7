@@ -1,6 +1,8 @@
 package racingcar.validation;
 
 public class AttemptCountValidation {
+    private final static int MINIMUM_ATTEMPT_COUNT = 1;
+
     public static void validate(String input) {
         validateNotNullOrEmpty(input);
         validateIsInteger(input);
@@ -22,7 +24,7 @@ public class AttemptCountValidation {
     }
 
     private static void validatePositiveNumber(String input) {
-        if (Integer.parseInt(input) <= 0) {
+        if (Integer.parseInt(input) < MINIMUM_ATTEMPT_COUNT) {
             throw new IllegalArgumentException();
         }
     }
