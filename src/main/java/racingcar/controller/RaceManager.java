@@ -24,5 +24,7 @@ public class RaceManager {
             outputView.displayRaceProgress(cars.getCars());
             currentTryCount++;
         }
+
+        outputView.displayFinalWinner(cars.getWinners().getNames());
     }
 }
