@@ -2,14 +2,16 @@ package racingcar.view;
 
 import racingcar.model.Car;
 import racingcar.util.CommonIo;
-import racingcar.util.Limit;
 import racingcar.util.Message;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
-    private CommonIo io = new CommonIo();
+    private final CommonIo io;
+
+    public OutputView() {
+        this.io = new CommonIo();
+    }
 
     public void printGetCarNames(){
         io.printMessage(Message.RECEIVE_CAR_NAMES.getSentence());
