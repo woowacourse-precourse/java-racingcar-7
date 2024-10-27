@@ -7,10 +7,12 @@ import racingcar.message.ErrorMessage;
 
 public class InputValidator {
 
-    public static void isCarNameNull(String carNames) throws CarNameException {
-        if(carNames.isBlank()) {
-            throw new CarNameException(ErrorMessage.CAR_NAME_NULL_ERROR.getMessage());
-        }
+    public static void isCarNameNull(List<String> carNameList) throws CarNameException {
+        carNameList.forEach(carName -> {
+            if(carName.isBlank()) {
+                throw new CarNameException(ErrorMessage.CAR_NAME_NULL_ERROR.getMessage());
+            }
+        });
     }
 
     public static void isCarNameOverSize(List<String> carNameList) throws CarNameException {

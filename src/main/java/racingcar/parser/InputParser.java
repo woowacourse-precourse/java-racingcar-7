@@ -9,11 +9,11 @@ import racingcar.validation.InputValidator;
 public class InputParser {
 
     public static CarNameRequest parseCarName(String carNames) {
-        InputValidator.isCarNameNull(carNames);
 
         List<String> carNameList = Arrays.stream(carNames.split(","))
                 .toList();
 
+        InputValidator.isCarNameNull(carNameList);
         InputValidator.isCarNameOverSize(carNameList);
 
         return CarNameRequest.of(carNameList);
