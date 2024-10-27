@@ -18,7 +18,7 @@ public class ConsoleInputHandler implements InputHandler{
         return Integer.parseInt(Console.readLine());
     }
 
-    private List<String> parseCarInput(String carInput) {
+    public List<String> parseCarInput(String carInput) {
         List<String> parsedCarInputs = List.of(carInput.split(","));
         for (String parsedCarInput : parsedCarInputs) {
             if (parsedCarInput.length() >= 5) {

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
     private String carName;
-    private Integer moveCount;
+    protected Integer moveCount;
 
     public RacingCar(String carName) {
         this.carName = carName;
@@ -12,9 +12,13 @@ public class RacingCar {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (getRandomInteger() >= 4) {
             moveCount += 1;
         }
+    }
+
+    protected int getRandomInteger() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
     public String getName() {

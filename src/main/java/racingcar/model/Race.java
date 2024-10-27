@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Race {
-    List<RacingCar> racingCarList;
+    protected List<RacingCar> racingCarList;
 
     public Race(List<String> racingCarsName) {
         this.racingCarList = racingCarsName.stream()
