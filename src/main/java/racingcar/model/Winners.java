@@ -29,4 +29,8 @@ public class Winners {
         });
         return winners;
     }
+
+    public List<Car> getWinners() {
+        return winners;
+    }
 }

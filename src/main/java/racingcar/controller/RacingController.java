@@ -6,6 +6,7 @@ import racingcar.model.Race;
 import racingcar.model.Winners;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
@@ -22,5 +23,7 @@ public class RacingController {
 
         Cars cars = racingService.enterCars(carNames);
         Winners winners = racingService.startRace(cars, race);
+        OutputView outputView = new OutputView();
+        outputView.displayWinners(winners);
     }
 }
