@@ -2,7 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static racingcar.util.ErrorMessages.ERROR_INVALID_MOVE_COUNT;
+import static racingcar.util.message.ErrorMessages.ERROR_INVALID_MOVE_COUNT;
 
 public class InputView {
     public String getPlayer(){

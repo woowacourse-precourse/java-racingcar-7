@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.util.message;
 
 public class ErrorMessages {
     private ErrorMessages() {}

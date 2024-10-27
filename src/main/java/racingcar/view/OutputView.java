@@ -5,7 +5,7 @@ import racingcar.model.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.util.Constants.*;
+import static racingcar.util.constant.Constants.*;
 
 public class OutputView {
     public void printInputCarName(){
