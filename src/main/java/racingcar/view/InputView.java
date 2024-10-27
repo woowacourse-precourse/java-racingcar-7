@@ -6,15 +6,17 @@ import racingcar.exception.ErrorCode;
 
 public class InputView {
 
-    public String racingCarNamesWithDelimeter(){
+    public String getRacingCarNamesWithDelimeter(){
 
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNamesWithDelimeter = Console.readLine();
 
         return carNamesWithDelimeter;
     }
 
-    public int countOfTry(){
+    public int getCountOfTry(){
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
         String countOfTry = Console.readLine();
 
         try{
