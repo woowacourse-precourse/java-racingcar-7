@@ -2,18 +2,15 @@ package racingcar.domain;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Game {
-    private final int tryCount;
+public class Cars {
     private final List<Car> cars;
 
-    public Game(int tryCount, List<Car> cars) {
-        this.tryCount = tryCount;
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void run() {
+    public void move() {
         cars.forEach(Car::move);
     }
 

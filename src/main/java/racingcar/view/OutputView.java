@@ -1,10 +1,7 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.domain.Game;
 
 public class OutputView {
 
