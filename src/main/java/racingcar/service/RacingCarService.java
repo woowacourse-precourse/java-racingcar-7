@@ -18,11 +18,6 @@ public class RacingCarService implements CarService {
     }
 
     @Override
-    public Car getCar(String name) {
-        return carRepository.findByName(name);
-    }
-
-    @Override
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }

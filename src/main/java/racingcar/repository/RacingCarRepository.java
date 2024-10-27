@@ -15,11 +15,6 @@ public class RacingCarRepository implements CarRepository {
     }
 
     @Override
-    public Car findByName(String name) {
-        return repository.get(name);
-    }
-
-    @Override
     public List<Car> findAll() {
         return new ArrayList<>(repository.values());
     }

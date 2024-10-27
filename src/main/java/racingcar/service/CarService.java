@@ -7,7 +7,5 @@ public interface CarService {
 
     void register(Car car);
 
-    Car getCar(String name);
-
     List<Car> getAllCars();
 }
