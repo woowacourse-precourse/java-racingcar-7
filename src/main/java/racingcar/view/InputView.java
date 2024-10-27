@@ -3,7 +3,6 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.ErrorCode;
-import racingcar.exception.IllegalArgumentException;
 
 public class InputView {
 
@@ -21,7 +20,7 @@ public class InputView {
         try{
             return Integer.valueOf(countOfTry);
         }catch(Exception e){
-            throw new IllegalArgumentException(ErrorCode.CANT_CONVERT_TO_INTEGER);
+            throw new IllegalArgumentException(ErrorCode.CANT_CONVERT_TO_INTEGER.getMessage());
         }
     }
 
