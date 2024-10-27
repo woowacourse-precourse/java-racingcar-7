@@ -9,12 +9,10 @@ public class Application {
         System.out.println("========== 자동차 경주 게임 ==========");
         List<String> carNames = inputHandler.getCarNames();
         int attemptCount = inputHandler.getAttempCount();
+        System.out.println();
 
         CarRace carRace = new CarRace();
-        Map<String, Integer> carPositions = carRace.initializeCarPositions(carNames);
-        for (int i = 0; i < attemptCount; i++) {
-            System.out.println(i + 1 + "번째 시도");
-            carRace.moveCars(carPositions);
-        }
+        carRace.initializeCarPositions(carNames);
+        carRace.attemptRace(attemptCount);
     }
 }
