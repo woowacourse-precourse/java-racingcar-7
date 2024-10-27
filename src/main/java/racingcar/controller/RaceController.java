@@ -2,17 +2,16 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class GameController {
+public class RaceController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public GameController(final InputView inputView, final OutputView outputView) {
+    public RaceController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }

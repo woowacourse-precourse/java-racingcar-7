@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.controller.GameController;
+import racingcar.controller.RaceController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -9,7 +9,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        GameController gameController = new GameController(inputView, outputView);
+        RaceController gameController = new RaceController(inputView, outputView);
         gameController.run();
     }
 }
