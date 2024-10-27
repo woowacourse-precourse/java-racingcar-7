@@ -14,4 +14,7 @@ public class Round {
         return attemptCount;
     }
 
+    public int getAttemptCount() {
+        return attemptCount;
+    }
 }

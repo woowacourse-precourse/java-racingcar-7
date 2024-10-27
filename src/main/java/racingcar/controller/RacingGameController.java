@@ -20,6 +20,7 @@ public class RacingGameController {
         Cars cars = registerService.registerCars(carNames);
 
         Round round = setupRound();
+        playRounds(round, cars);
     }
 
     private Round setupRound() {
@@ -27,4 +28,10 @@ public class RacingGameController {
         return new Round(attemptCountInput);
     }
 
+    private void playRounds(Round round, Cars cars) {
+        for (int i = 0; i < round.getAttemptCount(); i++) {
+            roundService.playRound(cars);
+        }
+    }
+    
 }
