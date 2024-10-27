@@ -2,7 +2,7 @@ HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/raceController/**
+!**/src/main/**
 !**/src/test/**
 
 ### STS ###
