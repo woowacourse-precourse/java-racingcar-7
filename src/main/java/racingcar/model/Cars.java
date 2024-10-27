@@ -21,6 +21,10 @@ public class Cars {
         return cars;
     }
 
+    public int getLongestPosition() {
+        return calculateLongestPosition();
+    }
+
     private void initCars(List<String> carNames) {
         RandomIntGenerator randomIntGenerator = new RandomIntGenerator();
         for (String carName : carNames) {
@@ -29,5 +33,11 @@ public class Cars {
         }
     }
 
-    // TODO: 가장 멀리 간 자동차의 이동 거리를 반환한다.
+    private int calculateLongestPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
 }
