@@ -6,10 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 사용자 입력으로부터 Car를 생성한다.
- * 자동차와 관련된 기능을 수행한다.
- */
 public class CarManager {
     private static final String SPLITTER = ",";
 

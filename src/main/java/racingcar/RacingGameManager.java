@@ -3,9 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-/**
- * 자동차 경주 게임을 관리한다.
- */
 public class RacingGameManager {
     private final CarManager carManager;
     private final ConsoleIO console;

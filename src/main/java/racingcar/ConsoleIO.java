@@ -23,7 +23,6 @@ public class ConsoleIO {
     }
 
     public void printEachResult(List<Car> cars) {
-        //각 라운드의 자동차 결과를 출력한다
         for(Car car : cars) {
             System.out.printf("%s : %s\n", car.getName(), "-".repeat(car.getDistance()));
         }
