@@ -31,7 +31,7 @@ public class OutputView {
 			.map(WinnerResponse::name)
 			.collect(Collectors.joining(", "));
 
-		System.out.print("최종 우승자: " + winners);
+		System.out.print("최종 우승자 : " + winners);
 	}
 
 	public void printNewLine() {
