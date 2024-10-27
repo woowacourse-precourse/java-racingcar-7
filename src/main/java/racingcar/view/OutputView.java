@@ -32,7 +32,7 @@ public class OutputView {
      * 최종 우승자를 출력
      */
     public static void printWinner(List<String> winners) {
-        String winner = String.join(",", winners);
+        String winner = String.join(", ", winners);
         String result = "최종 우승자 : " + winner;
         System.out.println(result);
     }
