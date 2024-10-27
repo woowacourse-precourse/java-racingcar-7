@@ -23,5 +23,6 @@
 
 - 이름 입력, 전진 횟수 입력에서 null이나 빈칸이 입력으로 들어왔을 경우 `IllegalArgumentException`을 발생시킨다.
 - 이름 입력에서 자동차의 이름이 5자가 넘어갈 경우 `IllegalArgumentException` 을 발생시킨다.
+- 이름 입력에서 동일한 이름이 입력 될 경우 `IllegalArgumentException` 을 발생시킨다.
 - 전진 횟수 입력에서 숫자가 아닌 값이 들어올 경우 `IllegalArgumentException` 을 발생시킨다.
 - 전진 횟수 입력에서 양의 정수가 아닌 값이 입력되면 `IllegalArgumentException` 을 발생시킨다.
