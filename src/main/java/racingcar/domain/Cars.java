@@ -18,6 +18,10 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void moveEachCar() {
         cars.forEach(Car::move);
     }
