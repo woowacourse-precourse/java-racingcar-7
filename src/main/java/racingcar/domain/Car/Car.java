@@ -3,12 +3,18 @@ package racingcar.domain.Car;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
+
+    private static final int INITIAL_POSITION = 0;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int MAX_RANDOM_VALUE = 9;
+    private static final int MIN_RANDOM_VALUE = 0;
+
     private final Name name;
     private int position;
 
     public Car(Name carName) {
         this.name = carName;
-        position = 0;
+        position = INITIAL_POSITION;
     }
 
     public void incrementPosition() {
@@ -16,9 +22,9 @@ public class Car {
     }
 
     public void moveForward() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
+        int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
 
-        if (randomValue >= 4) {
+        if (randomValue >= MOVE_THRESHOLD) {
             incrementPosition();
         }
     }

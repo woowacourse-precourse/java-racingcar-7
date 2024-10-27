@@ -8,6 +8,7 @@ import racingcar.io.Output.OutputHandler;
 
 public class Racing {
 
+    private static final String CAR_NAME_DELIMITER = ",";
     private final InputHandler inputHandler;
     private final OutputHandler outputHandler;
 
@@ -27,7 +28,7 @@ public class Racing {
 
         String input = inputHandler.inputCarNameList();
 
-        String[] carNameList = input.split(",", -1);
+        String[] carNameList = input.split(CAR_NAME_DELIMITER, -1);
 
         cars.addCar(carNameList);
 
