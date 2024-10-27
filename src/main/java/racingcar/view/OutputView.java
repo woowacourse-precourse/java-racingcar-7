@@ -16,14 +16,6 @@ public class OutputView {
             System.out.println("최종 우승자 : " + winner.getFirst());
             return;
         }
-        StringBuilder sb = new StringBuilder();
-        String firstWinner = winner.getFirst();
-        sb.append(firstWinner);
-        winner.remove(firstWinner);
-        for (String name : winner) {
-            sb.append(", ");
-            sb.append(name);
-        }
-        System.out.println("최종 우승자 : " + sb);
+        System.out.println("최종 우승자 : " + String.join(", ", winner));
     }
 }
