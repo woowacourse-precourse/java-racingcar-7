@@ -7,6 +7,9 @@ public class CarValidator {
         if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
+        if (name.length() == 0) {
+            throw new IllegalArgumentException("자동차 이름은 최소 1글자 이상부터 가능합니다.")
+        }
     }
 
     public static void validateAttempts(int attempts){
