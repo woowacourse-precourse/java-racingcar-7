@@ -21,6 +21,11 @@ public class RaceService {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-
+    private Distance moveOrStop(Distance previousDistance, int randomNumber) {
+        if (randomNumber >= 4 && randomNumber <= 9) {
+            return new Distance(previousDistance.move(randomNumber));
+        }
+        return previousDistance;
+    }
 
 }
