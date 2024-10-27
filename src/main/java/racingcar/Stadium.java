@@ -6,27 +6,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Racing {
+public class Stadium {
 
-    private String inputName;
-    private List<String> carNames;
+    private String inputNames;
 
-    public Racing() {
-        carNames = new ArrayList<>();
+    private final Integer count;
+    private final List<Car> carList = new ArrayList<>();
+
+    public Stadium() {
+        input();
+        this.count = inputCount();
     }
 
     public int input(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        inputName = Console.readLine();
-        carNames = Arrays.asList(tokenization());
-        System.out.println(carNames);
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        inputNames = Console.readLine();
+        for (String name : tokenization()) {
+            carList.add(new Car(name));
         }
-
     }
 
     private String[] tokenization(){
@@ -43,6 +40,12 @@ public class Racing {
         }
     }
 
+    // 실행 출력
+    public void printResult() {
+        for (Car car : carList) {
+            System.out.println(car);
+        }
 
-    // 결과 출력
+        System.out.println();
+    }
 }
