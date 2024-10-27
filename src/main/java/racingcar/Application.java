@@ -1,7 +1,15 @@
 package racingcar;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        RacingCarInput car = new RacingCarInput();
+
+        List<String> carNames = car.getCarNames();
+        int count = car.getCount();
+
+        System.out.println(carNames + " " + count);
     }
 }
