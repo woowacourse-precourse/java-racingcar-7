@@ -9,6 +9,7 @@ import racingcar.view.OutputView;
 
 
 public class Race {
+    private static final String CAR_NAME_EMPTY_EXCEPTION_MSG = "자동차 이름을 설정해주세요.";
     private static final String CAR_NAME_LENGTH_OVER_EXCEPTION_MSG = "자동차 이름은 5자 이하만 가능합니다.";
     private static final String NUMBER_FORMAT_EXCEPTION_MSG = "정수를 입력해주세요.";
     private static final String SAME_CAR_EXCEPTION_MSG = "중복된 자동차 이름이 존재합니다.";
@@ -28,20 +29,21 @@ public class Race {
 
     private void validateRacingCarNames(String racingCarNames) {
         String[] racingCarNameTokens = racingCarNames.split(STRING_DELIMITER);
-
-        try {
-            validateNoEmptyName(racingCarNameTokens);
-            validateNoNameOver5Characters(racingCarNameTokens);
-            validateNoSameName(racingCarNameTokens);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        }
+        validateNoEmptyName(racingCarNames);
+        validateNoNameOver5Characters(racingCarNameTokens);
+        validateNoSameName(racingCarNameTokens);
     }
 
-    private void validateNoEmptyName(String[] racingCarNameTokens) {
+    private void validateNoEmptyName(String racingCarNames) {
+        if (racingCarNames.startsWith(STRING_DELIMITER) || racingCarNames.endsWith(STRING_DELIMITER)
+                || racingCarNames.contains(STRING_DELIMITER.repeat(2))) {
+            throw new IllegalArgumentException(CAR_NAME_EMPTY_EXCEPTION_MSG);
+        }
+        String[] racingCarNameTokens = racingCarNames.split(STRING_DELIMITER);
+
         Arrays.stream(racingCarNameTokens).forEach(carName -> {
             if (carName.isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(CAR_NAME_EMPTY_EXCEPTION_MSG);
             }
         });
     }
@@ -64,7 +66,7 @@ public class Race {
     private void validateRoundInput(String roundInput) {
         int round;
         try {
-            round = Integer.valueOf(roundInput);
+            round = Integer.parseInt(roundInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NUMBER_FORMAT_EXCEPTION_MSG);
         }
@@ -74,12 +76,11 @@ public class Race {
     }
 
     private void setRacingCars(String racingCarNames) {
-        racingCars = Arrays.stream(racingCarNames.split(STRING_DELIMITER))
-                .map(Car::new).toList();
+        racingCars = Arrays.stream(racingCarNames.split(STRING_DELIMITER)).map(Car::new).toList();
     }
 
     private void setRound(String roundInput) {
-        this.round = Integer.valueOf(roundInput);
+        this.round = Integer.parseInt(roundInput);
     }
 
     public void runRace() {
@@ -98,9 +99,8 @@ public class Race {
     public List<String> getWinnerNames() {
         int maxScore = racingCars.stream().mapToInt(Car::getProgressCount).max()
                 .orElseThrow(IllegalArgumentException::new);
-        return racingCars.stream().filter(
-                        racingCar -> racingCar.getProgressCount() == maxScore)
-                .map(Car::getName).toList();
+        return racingCars.stream().filter(racingCar -> racingCar.getProgressCount() == maxScore).map(Car::getName)
+                .toList();
 
     }
 
