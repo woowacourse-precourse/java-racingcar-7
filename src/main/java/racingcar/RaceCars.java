@@ -21,4 +21,18 @@ public class RaceCars {
 
         return new RaceCars(raceCars);
     }
+
+    public void initializeRaceRecords(int raceCount) {
+        for (Car car : raceCars) {
+            car.initializeRecords(raceCount);
+        }
+    }
+
+    public Car getCarByIndex(int index) {
+        return raceCars.get(index);
+    }
+
+    public int size() {
+        return raceCars.size();
+    }
 }
