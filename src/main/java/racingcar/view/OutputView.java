@@ -7,7 +7,6 @@ import java.util.List;
 
 public class OutputView {
 
-    private static final String NAME_POSITION_SEPARATOR = " : ";
     private static final String NAME_DELIMITER = ", ";
 
     public static void printInputCarNameMessage() {
@@ -26,7 +25,7 @@ public class OutputView {
     }
 
     public static void printWinnerNames(List<String> names) {
-        System.out.println(Message.FINAL_WINNER + NAME_POSITION_SEPARATOR + String.join(NAME_DELIMITER, names));
+        System.out.println(Message.FINAL_WINNER + String.join(NAME_DELIMITER, names));
     }
 
     public static void printExecutionResultMessage() {
