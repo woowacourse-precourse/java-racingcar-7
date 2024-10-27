@@ -2,9 +2,13 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingCarTest {
 
@@ -32,5 +36,29 @@ class RacingCarTest {
         assertThatThrownBy(() -> new RacingCar(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(String.format("자동차 이름으로 %s는 적절하지 않습니다.", name));
+    }
+
+    @DisplayName("자동차가 움직일 수 있을 때 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void givenCanMove_whenIsMove_thenReturnTrue(int randomNum) throws Exception {
+        // given
+        String name = "test";
+        RacingCar racingCar = new RacingCar(name);
+
+        // when & then
+        assertTrue(racingCar.isMove(randomNum));
+    }
+
+    @DisplayName("자동차가 움직일 수 없을 때 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void givenCanNotMove_whenIsMove_thenReturnFalse(int randomNum) throws Exception {
+        // given
+        String name = "test";
+        RacingCar racingCar = new RacingCar(name);
+
+        // when & then
+        assertFalse(racingCar.isMove(randomNum));
     }
 }
