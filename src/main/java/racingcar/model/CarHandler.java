@@ -3,7 +3,9 @@ package racingcar.model;
 import racingcar.validate.Validation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CarHandler {
@@ -15,14 +17,22 @@ public class CarHandler {
     private final Validation validation = new Validation();
 
     public void createCar(String input) {
+        Set<String> unDuplicateCars = new HashSet<>();
+
         String[] carNames = input.split(COMMA);
         for (String car : carNames) {
             car = car.trim();
             validation.isInvalidInput(car);
             validation.isInvalidNameLength(car);
+
+            if(!unDuplicateCars.add(car)) {
+                throw new IllegalArgumentException(ErrorType.CAR_NAME_DUPLICATE_ERROR.getMessage());
+            }
+
             this.cars.add(new Car(car));
         }
     }
+
 
     public void executeRounds(int num) {
         for (int i = 0; i < num; i++) {

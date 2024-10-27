@@ -7,6 +7,8 @@ import racingcar.validate.Validation;
 import racingcar.view.InputMessage;
 import racingcar.view.OutputMessage;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GameController {
@@ -35,6 +37,7 @@ public class GameController {
     private void attemptGame() {
         InputMessage.inputGamesAttempts();
         final int num = Integer.parseInt(Console.readLine());
+        validation.isInvalidGameTryCount(num);
         OutputMessage.resultMessage();
         carHandler.executeRounds(num);
     }
