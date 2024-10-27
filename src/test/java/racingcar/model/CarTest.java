@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CarTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"jenny", "ab", "hap"})
+    @ValueSource(strings = {"jenny", "a b", "./3"})
     @DisplayName("유효성 검사에 통과한 자동차 이름은 자동차가 생성된다.")
     void makeCar(String name){
 
