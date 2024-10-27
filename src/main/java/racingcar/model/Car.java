@@ -17,6 +17,10 @@ public class Car {
         }
     }
 
+    public boolean hasBiggerPositionThan(Car car) {
+        return position.isBiggerOrEqualTo(car.position);
+    }
+
     public Position getPosition() {
         return position;
     }

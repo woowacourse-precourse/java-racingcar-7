@@ -42,4 +42,20 @@ class CarTest {
         // then
         Assertions.assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
+
+    @Test
+    @DisplayName("자동차 객체의 위치를 비교할 수 있다.")
+    void comparePosition() {
+        // given
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("박재연");
+        Car car1 = new Car(name1);
+        Car car2 = new Car(name2);
+
+        // when
+        car1.move(true);
+
+        // then
+        Assertions.assertThat(car1.hasBiggerPositionThan(car2)).isTrue();
+    }
 }
