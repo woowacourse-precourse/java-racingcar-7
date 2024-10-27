@@ -12,19 +12,27 @@ public class Referee {
         LapResult lastLap = getLastLapResult(lapResults);
         List<CarStatus> lastLapCarStatuses = lastLap.getCarStatuses();
 
-        int maxPosition = lastLapCarStatuses.stream()
-                .mapToInt(CarStatus::getPosition)
-                .max()
-                .orElse(Integer.MIN_VALUE);
+        int maxPosition = findMaxPosition(lastLapCarStatuses);
 
-        return lastLapCarStatuses.stream()
-                .filter(carStatus -> carStatus.getPosition() == maxPosition)
-                .toList();
+        return findMaxPositionCars(lastLapCarStatuses, maxPosition);
     }
 
-    private LapResult getLastLapResult(List<LapResult> lapResults) {
+    private static LapResult getLastLapResult(List<LapResult> lapResults) {
         ArrayList<LapResult> sortedLapResults = new ArrayList<>(lapResults);
         Collections.sort(sortedLapResults);
         return sortedLapResults.getLast();
+    }
+
+    private static int findMaxPosition(List<CarStatus> lastLapCarStatuses) {
+        return lastLapCarStatuses.stream()
+                .mapToInt(CarStatus::getPosition)
+                .max()
+                .orElse(Integer.MIN_VALUE);
+    }
+
+    private static List<CarStatus> findMaxPositionCars(List<CarStatus> lastLapCarStatuses, int maxPosition) {
+        return lastLapCarStatuses.stream()
+                .filter(carStatus -> carStatus.getPosition() == maxPosition)
+                .toList();
     }
 }
