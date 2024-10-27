@@ -8,7 +8,7 @@ public class RacingCar {
         this.distance = distance + "-";
     }
 
-    RacingCar(String name) {
+    public RacingCar(String name) {
         this.name = name;
         this.distance = "";
     }
