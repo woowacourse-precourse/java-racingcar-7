@@ -14,6 +14,10 @@ public class InputView {
         return names.split(CAR_NAME_DELIMITER);
     }
 
+    public static int getAttempts() {
+        return Integer.parseInt(readLine());
+    }
+
     public static String getUserInput() {
         return readLine();
     }
