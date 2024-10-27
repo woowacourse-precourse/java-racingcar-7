@@ -21,10 +21,33 @@ public class CarsTest {
         List<Car> carList = Arrays.asList(Car.from(CarName.from("kiri")), Car.from(CarName.from("alice")));
         Cars cars = Cars.from(carList);
         for (Car car : carList) {
-            car.move(()->true);
+            car.move(() -> true);
         }
-        assertThat(cars.fetchCarsPositions()).containsExactly(1,1);
+        assertThat(cars.fetchCarsPositions()).containsExactly(1, 1);
     }
 
+    @Test
+    @DisplayName("자동차들중 최대거리를 찾는다")
+    void findMaxDistance() {
+        List<Car> carList = Arrays.asList(
+                Car.from(CarName.from("kiri")),
+                Car.from(CarName.from("alice")),
+                Car.from(CarName.from("bob")),
+                Car.from(CarName.from("ash"))
+        );
+        Cars cars = Cars.from(carList);
+
+        carList.get(0).move(() -> true);
+        carList.get(1).move(() -> true);
+        carList.get(1).move(() -> true);
+        carList.get(2).move(() -> false);
+
+        int maxDistance = cars.findRaceWinners().stream()
+                .map(name -> cars.fetchCarsPositions().get(cars.fetchCarNames().indexOf(name)))
+                .max(Integer::compare)
+                .orElse(0);
+
+        assertThat(maxDistance).isEqualTo(2);
+    }
 
 }
