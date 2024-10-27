@@ -15,6 +15,7 @@ public class GameController {
         // 사용자 입력 받기
         List<String> carNames = inputView.getCarNamesInput();
         int gameCount = inputView.getGameCountInput();
+        System.out.println();
 
         // 사용자 입력 정보를 토대로 게임을 실행
         GameService gameService = new GameService(gameCount, carNames);
