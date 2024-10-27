@@ -6,7 +6,7 @@ public class InputView {
     public String getPlayer(){
         return Console.readLine();
     }
-    public int getRoundNumber(){
+    public int getMoveCount(){
         return Integer.parseInt(Console.readLine());
     }
 }
