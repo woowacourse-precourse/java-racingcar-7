@@ -1,7 +1,8 @@
 package racingcar.domain.validator;
 
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarNameValidator {
     private final static String EXCEPTION_MESSAGE_ONLY_COMMA = "입력한 값은, 만 있으면 안 됩니다.";
@@ -34,14 +35,13 @@ public class CarNameValidator {
     }
 
     private void validateDuplicationCarName(List<String> carNames) {
-        HashMap<String, Integer> carsMap = new HashMap<>();
+        Set<String> uniqueCarNames = new HashSet<>();
+
         for (String carName : carNames) {
-            carsMap.put(carName, carsMap.getOrDefault(carName, 0) + 1);
-        }
-        for (int count : carsMap.values()) {
-            if (count > 1) {
+            if (!uniqueCarNames.add(carName)) {
                 throw new IllegalArgumentException(EXCEPTION_MESSAGE_DUPLICATE_CAR_NAME);
             }
         }
     }
+
 }
