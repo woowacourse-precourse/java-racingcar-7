@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+    private static final int MAX_CAR_NAME_LENGTH = 5;
+
     public void run() {
         List<Car> cars = initializeCars();
         RacingGame game = new RacingGame(cars);
@@ -28,7 +30,7 @@ public class GameController {
 
         for (String name : carNames) {
             String trimmedName = name.trim();
-            if (trimmedName.isEmpty() || trimmedName.length() > 5) {
+            if (trimmedName.isEmpty() || trimmedName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하이어야 합니다.");
             }
             cars.add(new Car(trimmedName));
