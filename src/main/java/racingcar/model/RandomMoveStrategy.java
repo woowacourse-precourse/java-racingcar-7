@@ -11,6 +11,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     @Override
     public boolean canMove() {
         int randomValue = RandomNumberGenerator.generate(MIN, MAX);
+
         return randomValue >= MOVE_THRESHOLD;
     }
 
