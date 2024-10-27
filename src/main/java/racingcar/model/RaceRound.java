@@ -24,10 +24,6 @@ public class RaceRound {
         return result.toString();
     }
 
-    public Cars getThisRoundCarList() {
-        return thisRoundCarList;
-    }
-
     public void roundStart(Cars cars){
         for(Car car : cars.getCarList()) {
             car.moveIfTrue(car.getRandomValue());
