@@ -3,6 +3,7 @@ package racingcar.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCar {
@@ -23,9 +24,9 @@ public class RacingCar {
     }
 
     public String[] splitCarsName(String inputCarsName) {
-        String trimmedInput = inputCarsName.trim();
-        String[] carsNames = trimmedInput.split(",");
-        return carsNames;
+        return Arrays.stream(inputCarsName.split(","))
+                .map(String::trim)
+                .toArray(String[]::new);
     }
 
     public List<RacingCar> createRacingCarsBySplitCarsName(String[] carsNames) {
