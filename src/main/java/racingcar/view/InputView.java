@@ -25,9 +25,17 @@ public class InputView {
     }
 
     public static Integer inputTryRounds() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        Integer input = Integer.valueOf(Console.readLine());
+        String input = getTryRounds();
+        Validator.validateIsNumeric(input);
+        Integer rounds = Integer.valueOf(input);
+        Validator.validateTryRounds(rounds);
 
-        return input;
+        return rounds;
+    }
+
+    private static String getTryRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
+        return Console.readLine();
     }
 }
