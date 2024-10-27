@@ -19,7 +19,10 @@ public class GameController {
             racingCarService.playRound(cars);
             outputView.printRaceStatus(cars);
         }
-        List<String> winner = racingCarService.findFinalWinners(cars);
-        outputView.printFinalWinner(winner);
+    }
+
+    public void announceWinners(List<Car> cars) {
+        List<String> winners = racingCarService.findFinalWinners(cars);
+        outputView.printFinalWinner(winners);
     }
 }
