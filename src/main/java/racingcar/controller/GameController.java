@@ -39,12 +39,11 @@ public class GameController {
         return gameService.determineGameCount(getGameCount());
     }
 
-
     public void gameStart() {
         RacingGame racingGame = gameService.readyRacingGame(createCars(), setGameCount());
         OutputView.resultMessage();
         gameService.play(racingGame);
+        OutputView.printWinnerName(gameService.getWinnerCarName(racingGame));
     }
-
 
 }
