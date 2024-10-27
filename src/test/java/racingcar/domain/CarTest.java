@@ -28,4 +28,13 @@ public class CarTest {
 
         Assertions.assertThat(cars.getWinners()).isEqualTo("pobi");
     }
+
+    @Test
+    @DisplayName("이름 길이 테스트")
+    void 이름_길이_테스트() {
+        Assertions.assertThatThrownBy(() -> new Car("javajigi"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름의 길이가 5자를 넘을 수 없습니다");
+    }
+
 }
