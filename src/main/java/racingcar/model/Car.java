@@ -28,4 +28,12 @@ public class Car {
     private String getLocationDisplay() {
         return "-".repeat(position);
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -10,7 +10,7 @@ public class GameController {
     private OutputView outputView;
     private InputView inputView;
 
-    public GameController(InputView inputView) {
+    public GameController(InputView inputView,OutputView outputView) {
         this.inputView = inputView;
         this.outputView= outputView;
     }
@@ -27,8 +27,11 @@ public class GameController {
 
             for (int trial = 0; trial < numberOfTrials; trial++) {
                 cars.move();
-                outputView.printMoving(cars);
+                outputView.printRacing(cars);
             }
+
+            System.out.println(cars.getWinners());
+            outputView.printWinner(cars);
 
         }catch(IllegalArgumentException exception){
             outputView.printExceptionMessage(exception);

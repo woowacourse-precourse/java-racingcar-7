@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class CarsManager {
@@ -22,6 +23,24 @@ public class CarsManager {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public String getWinners() {
+        StringJoiner result = new StringJoiner(", ");
+        int maxValue = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getPosition() == maxValue)
+                .collect(Collectors.toList());
+
+        winners.stream()
+                .map(Car::getName)
+                .forEach(result::add);
+
+        return result.toString();
     }
 
     @Override

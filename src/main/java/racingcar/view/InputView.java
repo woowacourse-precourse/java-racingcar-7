@@ -23,6 +23,6 @@ public class InputView {
         System.out.println(INPUT_TRIALS_COUNT_MESSAGE);
         String input = Console.readLine();
         new TrialsCountValidator().validate(input);
-        return Integer.parseInt(input);
+        return Integer.parseInt(Util.removeSpace(input));
     }
 }
