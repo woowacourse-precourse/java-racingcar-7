@@ -59,6 +59,41 @@ public class Application {
     }
 
 
+    public static int findMax(int[] moveStatus){
+        int maxValue = 0;
+
+        for (int status : moveStatus) {
+            if (status > maxValue) {
+                maxValue = status;
+            }
+        }
+
+        return maxValue;
+    }
+
+    public static void printWinnver(String[] carName, int[] moveStatus){
+        int maxValue = findMax(moveStatus);
+
+        System.out.print("최종 우승자 : ");
+
+        String winner = "";
+        for(int i = 0 ; i < moveStatus.length ; i++){
+            if(moveStatus[i] == maxValue){
+                winner = updateWinner(winner, carName[i]);
+            }
+        }
+
+        System.out.println(winner);
+    }
+
+    public static String updateWinner(String winner, String name){
+        if(winner.isEmpty()){
+            return name;
+        }else{
+            return winner+", "+name;
+        }
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -78,6 +113,6 @@ public class Application {
             printStatus(carName, moveStatus);
         }
 
-
+        printWinnver(carName, moveStatus);
     }
 }
