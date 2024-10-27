@@ -29,4 +29,12 @@ public class Car {
             forwardCount += 1;
         }
     }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
+    }
 }
