@@ -6,9 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import racingcar.enums.ErrorMessage;
-
 import org.junit.jupiter.api.Test;
+import racingcar.enums.ErrorMessage;
 
 class ApplicationTest extends NsTest {
   private static final int MOVING_FORWARD = 4;
@@ -38,7 +37,8 @@ class ApplicationTest extends NsTest {
     assertRandomNumberInRangeTest(
         () -> {
           run("pobi,woni,javai", "2");
-          assertThat(output()).contains("pobi : --", "woni : --", "javai : --", "최종 우승자 : pobi, woni, javai");
+          assertThat(output())
+              .contains("pobi : --", "woni : --", "javai : --", "최종 우승자 : pobi, woni, javai");
         },
         MOVING_FORWARD,
         MOVING_FORWARD,

@@ -3,7 +3,6 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-
 import racingcar.model.Racing;
 import racingcar.utilities.Splitter;
 import racingcar.validation.CarValidator;
@@ -59,7 +58,7 @@ public class RacingController {
     OutputView.printWinner(winner);
   }
 
-  private void printGameResultMessage(){
+  private void printGameResultMessage() {
     OutputView.printGameResultMessage();
   }
 }

@@ -3,9 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
 import racingcar.enums.TypeOfLocation;
-
 
 public class Car {
   private static final String NAME_AND_LOCATION_DELIMITER = " : ";
