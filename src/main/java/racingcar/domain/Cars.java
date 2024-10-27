@@ -33,8 +33,7 @@ public class Cars {
 
     public Winners determineWinner() {
         int maxAdvanceNum = getMaxAdvanceNum();
-        Winners winners = createWinners(maxAdvanceNum);
-        return winners;
+        return createWinners(maxAdvanceNum);
     }
 
     private int getMaxAdvanceNum() {
@@ -45,6 +44,9 @@ public class Cars {
     }
 
     private Winners createWinners(int maxAdvanceNum) {
-        return null;
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getAdvanceNum() == maxAdvanceNum)
+                .toList();
+        return new Winners(winners);
     }
 }
