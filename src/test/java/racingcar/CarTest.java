@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
     @Test
@@ -34,4 +35,11 @@ public class CarTest {
         assertEquals(car.getPosition(), 0);
     }
 
+    @Test
+    @DisplayName("움직인 거리에 따른 실행 결과를 getStatus()로 출력한다.")
+    void getStatusTest() {
+        Car car = new Car("testcar");
+        car.currentDistance = 5;
+        assertTrue(car.getStatus().startsWith("testcar : -----"));
+    }
 }
