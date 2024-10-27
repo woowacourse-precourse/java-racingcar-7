@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.Application.MOVE_NUM;
+
 public class Car {
 
     private String name;
@@ -19,6 +21,6 @@ public class Car {
     }
 
     public void move() {
-        this.Location++;
+        Location++;
     }
 }

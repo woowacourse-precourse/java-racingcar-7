@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> carList) {
         this.cars = carList;
@@ -35,5 +35,9 @@ public class Cars {
         }
 
         return maxLocation;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
