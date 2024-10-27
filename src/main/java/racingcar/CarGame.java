@@ -9,12 +9,10 @@ import java.util.List;
 public class CarGame {
     private final int numberOfTurn;
     private List<Car> entryCars;
-    private Decider decider;
 
-    public CarGame(int numberOfTurn, List<Car> entryCars, Decider decider) {
+    public CarGame(int numberOfTurn, List<Car> entryCars) {
         this.numberOfTurn = numberOfTurn;
         this.entryCars = entryCars;
-        this.decider = decider;
     }
     private void moveCars() {
         this.entryCars.forEach(Car::forward);
