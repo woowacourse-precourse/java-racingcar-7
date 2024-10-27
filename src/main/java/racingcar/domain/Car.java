@@ -15,7 +15,7 @@ public class Car {
 		}
 	}
 
-	public boolean isMovable(int randomNumber) {
+	private boolean isMovable(int randomNumber) {
 		return randomNumber >= 4;
 	}
 
@@ -25,5 +25,10 @@ public class Car {
 
 	public int getDistance() {
 		return distance;
+	}
+
+	@Override
+	public String toString() {
+		return name + " : " + "-".repeat(distance);
 	}
 }
