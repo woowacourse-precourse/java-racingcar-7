@@ -18,4 +18,11 @@ public class RacingController {
 
         return names;
     }
+
+    public String getValidated(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다. ");
+        }
+        return name;
+    }
 }
