@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.validator.CarNameValidator;
+
 public class Car {
 
     private static final String EXECUTE_RESULT_DELIMITER = " : ";
@@ -16,6 +18,7 @@ public class Car {
     }
 
     public static Car createCar(final String name) {
+        CarNameValidator.validateCarName(name);
         return new Car(name, INITIAL_POSITION);
     }
 
