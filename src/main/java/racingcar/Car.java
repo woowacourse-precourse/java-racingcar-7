@@ -13,6 +13,10 @@ public class Car {
         this.distanceMovedForward = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void moveForward() {
         distanceMovedForward++;
     }
