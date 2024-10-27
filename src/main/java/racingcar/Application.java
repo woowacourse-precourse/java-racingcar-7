@@ -18,16 +18,11 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
 
-        carRacing.racing(carList, numberOfMoves);
-
-        int max = 0;
-        for (Car car : carList) {
-            max = Math.max(max, car.getLocation());
-        }
+        int maxLocation = carRacing.racing(carList, numberOfMoves);
 
         List<String> winners = new ArrayList<>();
         for (Car car : carList) {
-            if (car.getLocation() == max) {
+            if (car.getLocation() == maxLocation) {
                 winners.add(car.getName());
             }
         }

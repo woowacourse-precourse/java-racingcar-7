@@ -7,14 +7,16 @@ import java.util.List;
 
 public class CarRacing {
 
-    public void racing(List<Car> carList, int numberOfMoves) {
+    public int racing(List<Car> carList, int numberOfMoves) {
+        int maxLocation = 0;
         for (int i = 0; i < numberOfMoves; i++) {
             for (Car car : carList) {
                 moveCar(car);
-                printCarLocation(car);
+                maxLocation = Math.max(maxLocation, printCarLocation(car));
             }
             System.out.println();
         }
+        return maxLocation;
     }
 
     public void moveCar(Car car) {
@@ -23,12 +25,14 @@ public class CarRacing {
         }
     }
 
-    public void printCarLocation(Car car) {
+    public int printCarLocation(Car car) {
+        int location = car.getLocation();
         System.out.print(car.getName() + " : ");
-        for (int i = 0; i < car.getLocation(); i++) {
+        for (int i = 0; i < location; i++) {
             System.out.print("-");
         }
         System.out.println();
+        return location;
     }
 
     public List<Car> settingCar(String[] carNames){
