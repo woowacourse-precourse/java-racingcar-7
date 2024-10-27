@@ -16,10 +16,6 @@ public class Application {
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         carNames = Console.readLine();
-        return splitCarNameByDelimiter(carNames);
-    }
-
-    private static String[] splitCarNameByDelimiter(String carNames) {
         return carNames.split(",");
     }
 
@@ -31,12 +27,22 @@ public class Application {
         return Integer.parseInt(count);
     }
 
+    private static void startRaceNTimes(String[] carNames, int gameCount) {
+        carPositions = new int[carNames.length];
+
+        System.out.println();
+        System.out.println("실행 결과");
+        for (int i = 0; i < gameCount; i++) {
+            goOrStop(carNames);
+            printRaceStatus(carNames);
+        }
+    }
+
     private static void goOrStop(String[] carNames) {
         int randomNumber;
 
         for (int i = 0; i < carNames.length; i++) {
             randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-
             if (randomNumber >= FORWARD_CRITERIA) {
                 carPositions[i] += 1;
             }
@@ -51,23 +57,12 @@ public class Application {
         System.out.println();
     }
 
-    private static void startRaceNTimes(String[] carNames, int gameCount) {
-        carPositions = new int[carNames.length];
-
-        System.out.println("\n실행 결과");
-        for (int i = 0; i < gameCount; i++) {
-            goOrStop(carNames);
-            printRaceStatus(carNames);
-        }
-    }
-
     private static void printFinalWinner(String[] carNames) {
         int maxPosition;
         List<String> winners;
 
         maxPosition = findMaxPosition();
         winners = findWinners(carNames, maxPosition);
-
         System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 
