@@ -3,6 +3,7 @@ package racingcar.view.output;
 import java.util.List;
 import java.util.Map;
 import racingcar.model.Car;
+import racingcar.view.output.dto.RacingResponse;
 
 /**
  * @author : jiffyin7@gmail.com
@@ -27,14 +28,21 @@ public class OutputView {
     System.out.println(stringBuilder);
   }
 
+  public static void printRoundResult(List<Car> cars){
+    for (Car car : cars){
+      printCarStatus(car);
+    }
+    System.out.println();
+  }
+
   public static void printRoundResult(Map<String, Car> carNameMap, List<String> carNames){
     for (String carName : carNames){
       printCarStatus(carNameMap.get(carName));
     }
   }
 
-  public static void printRacingResult(List<String> winnerNames){
-    System.out.println(WINNER_PREFIX + String.join(WINNER_DELIMITER, winnerNames));
+  public static void printRacingResult(RacingResponse racingResponse){
+    System.out.println(WINNER_PREFIX + String.join(WINNER_DELIMITER, racingResponse.winners()));
   }
 
 }

@@ -27,4 +27,8 @@ public class Racing {
     return cars.getWinners();
   }
 
+  public int getRoundCount(){
+    return roundCount;
+  }
+
 }
