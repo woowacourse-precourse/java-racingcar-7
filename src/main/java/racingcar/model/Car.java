@@ -22,7 +22,10 @@ public class Car {
     }
 
     public String getResult() {
-        String positionDisplay = "-".repeat(position);
-        return String.format("%s : %s%n", name, positionDisplay);
+        return String.format("%s : %s%n", name, getLocationDisplay());
+    }
+
+    private String getLocationDisplay() {
+        return "-".repeat(position);
     }
 }
