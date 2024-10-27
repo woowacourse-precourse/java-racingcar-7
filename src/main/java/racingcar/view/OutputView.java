@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 
 public class OutputView {
@@ -25,11 +26,17 @@ public class OutputView {
                 + ATTEMPT_RESULT_MESSAGE_ADVANCE_INDICATOR.repeat(car.getAdvanceCount());
     }
 
-    public void printWinner(List<String> winners) {
-        System.out.println(WINNER_MESSAGE + getWinnerFormat(winners));
+    public void printWinner(List<RacingCar> winners) {
+        System.out.println(WINNER_MESSAGE + getWinnerFormat(extractWinnerName(winners)));
     }
 
     private String getWinnerFormat(List<String> winners) {
         return String.join(WINNER_FORMAT_SEPARATOR, winners);
+    }
+
+    private List<String> extractWinnerName(List<RacingCar> winners) {
+        return winners.stream()
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
     }
 }
