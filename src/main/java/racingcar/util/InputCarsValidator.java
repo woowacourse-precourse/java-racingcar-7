@@ -8,6 +8,7 @@ import racingcar.model.Car;
 public class InputCarsValidator {
 
     public static void isEmpty(String input) {
+
         if (input.isEmpty()) {
             throw new IllegalArgumentException("입력이 비어 있습니다.");
         }
