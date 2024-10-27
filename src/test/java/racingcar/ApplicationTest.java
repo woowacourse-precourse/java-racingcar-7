@@ -14,6 +14,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
@@ -57,6 +58,25 @@ class ApplicationTest extends NsTest {
         assertThrows(IllegalArgumentException.class,()->{
             InputView.Game_count();
         });
+    }
+    @Test
+    void 자동차_전진_테스트(){
+        ArrayList<Car> cars=new ArrayList<>();
+        Car car1=new Car("pobi");
+        Car car2=new Car("woni");
+        cars.add(car1);
+        cars.add(car2);
+        CarService car=new CarService();
+        int testValueMove=4;
+        int testValueNoMove=3;
+        if(car.is_Move(testValueMove)){
+            car1.setPosition();
+        }
+        if(car.is_Move(testValueNoMove)){
+            car2.setPosition();
+        }
+        assertEquals("-",car1.getPosition());
+        assertEquals("",car2.getPosition());
     }
     @Override
     public void runMain() {
