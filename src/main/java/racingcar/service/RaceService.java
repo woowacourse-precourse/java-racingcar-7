@@ -16,7 +16,7 @@ public class RaceService {
 
         for (int i = 0; i < Integer.parseInt(repeatTimes); i++) {
             cars.roundProcess(randNumGenerator);
-            allRoundStatus.append(cars.roundStatus());
+            allRoundStatus.append(cars.roundStatus()).append("\n");
         }
         return cars.findWinners();
     }

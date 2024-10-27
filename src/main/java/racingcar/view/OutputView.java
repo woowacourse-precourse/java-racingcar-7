@@ -25,13 +25,13 @@ public class OutputView {
     }
 
     public void printRoundResult(String allRoundStatus) {
-        System.out.println(allRoundStatus);
+        System.out.print(allRoundStatus);
     }
 
     public void printFinalResult(List<String> result) {
         System.out.print(IOMessages.PRE_RESULT.getMsg());
         String finalWinners = result.toString();
-        System.out.println(removeBracket(finalWinners));
+        System.out.print(removeBracket(finalWinners));
     }
 
     private String removeBracket(String finalWinners) {
