@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 import racingcar.ErrorMessage;
 
 public class RoundCount {
-    private static Pattern NUMBER_REGEX = Pattern.compile("^-?[0-9]+$");
+    private static final Pattern NUMBER_REGEX = Pattern.compile("^-?[0-9]+$");
     private final int roundCount;
 
     public RoundCount(String roundCount) {
