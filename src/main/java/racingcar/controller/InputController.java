@@ -45,11 +45,20 @@ public class InputController {
     }
 
     private int turnCountToInt(final String inputTurnCount) {
+        int turnCount = 0;
         try {
-            return Integer.parseInt(inputTurnCount);
+            turnCount = Integer.parseInt(inputTurnCount);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(ExceptionCode.INVALID_TURN.getDescription());
         }
+        return validateTurnCount(turnCount);
+    }
+
+    private int validateTurnCount(final int turnCount) {
+        if (turnCount <= 0) {
+            throw new IllegalArgumentException(ExceptionCode.TURN_MORE_THAN_0.getDescription());
+        }
+        return turnCount;
     }
 
 }
