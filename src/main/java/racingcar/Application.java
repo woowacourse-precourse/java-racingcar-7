@@ -11,13 +11,10 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String[] names = {};
-        int[] counts = {};
+        int[] distances = {};
         Integer times = 0;
-        RacingCar.readInputs(names,counts,times);
+        RacingCar.readInputs(names,distances,times);
+        RacingCar.printOutputs(names,distances,times);
 
-        System.out.println("실행 결과");
-        RacingCar.printProcess(times,names,counts);
-        String[] winners = RacingCar.getWinners(names, counts);
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
