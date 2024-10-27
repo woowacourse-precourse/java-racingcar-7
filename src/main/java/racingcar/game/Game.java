@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.car.Car;
 
 import java.util.Arrays;
@@ -14,6 +15,39 @@ public class Game {
     public Game(String carNames){
         createCars(carNames);
     }
+
+    public void start(){
+        racingStart();
+        findWinner();
+        printWinner();
+    }
+
+    private void racingStart() {
+        racingCars.forEach(car -> {
+            if(randomNumber() >= 4) car.forwardOne();
+        });
+
+        printCurrent();
+    }
+
+    private void printCurrent() {
+        racingCars.forEach(car -> {
+            System.out.println(car + " : "+car.getCurrentLocation());
+        });
+        System.out.println();
+    }
+
+    private void printWinner() {
+    }
+
+    private void findWinner() {
+    }
+
+    private int randomNumber(){
+        return Randoms.pickNumberInRange(0, 9);
+    }
+
+
 
     private void createCars(String carNames) {
         String[] carNameArray = carNames.split(",");
