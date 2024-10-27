@@ -16,12 +16,12 @@ public class CarTest {
 
     @Test
     void 전진() {
-        assertThat(CAR_MARU.move(4)).isEqualTo(new Car("maru", 3));
+        assertThat(CAR_MARU.decideMove(4)).isEqualTo(new Car("maru", 3));
     }
 
     @Test
     void 정지() {
-        assertThat(CAR_MARU.move(3)).isEqualTo(CAR_MARU);
+        assertThat(CAR_MARU.decideMove(3)).isEqualTo(CAR_MARU);
     }
 
     @Test

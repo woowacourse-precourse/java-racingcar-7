@@ -14,7 +14,7 @@ public class Cars {
     }
 
     public void takeTurn() {
-        carList.forEach(car -> car.move(RandomUtil.pickRandom()));
+        carList.forEach(car -> car.decideMove(RandomUtil.pickRandom()));
     }
 
     public List<String> findWinners() {
