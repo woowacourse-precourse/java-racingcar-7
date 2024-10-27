@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -11,21 +12,19 @@ class ReaderTest {
     public Reader reader = new Reader();
 
     @Test
-    void getNameInput() {
+    void inputTest() {
         assertSimpleTest(() -> {
+            command("pobi,woni,jun", "2");
+            List<String> nameResult = reader.getNameInput();
+            int tryResult = reader.getTryInput();
 
-            System.setIn(new java.io.ByteArrayInputStream("pobi,woni,jun\n".getBytes()));
-            List<String> result = reader.getNameInput();
-            assertThat(result).containsExactly("pobi", "woni", "jun");
+            assertThat(nameResult).containsExactly("pobi", "woni", "jun");
+            assertThat(tryResult).isEqualTo(2);
         });
     }
 
-    @Test
-    void getTryInput() {
-        assertSimpleTest(() -> {
-            System.setIn(new java.io.ByteArrayInputStream("2\n".getBytes()));
-            int result = reader.getTryInput();
-            assertThat(result).isEqualTo(2);
-        });
+    private void command(final String... args) {
+        final byte[] buf = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
     }
 }
