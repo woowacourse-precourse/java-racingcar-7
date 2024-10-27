@@ -15,6 +15,10 @@ public class Car {
         }
     }
 
+    public String forwardStatus() {
+        return String.format("%s : " + "-".repeat(Math.max(0, position)), name);
+    }
+
     public String getName() {
         return name;
     }

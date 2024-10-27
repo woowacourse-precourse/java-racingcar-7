@@ -25,8 +25,10 @@ public class RacingCarController {
         List<String> names = Arrays.asList(inputCarNames.split(","));
         Cars cars = new Cars(names);
 
+        System.out.println("실행 결과");
         for (int i = 0; i < Integer.parseInt(inputTryCount); i++) {
             cars.move(powerGenerator);
+            System.out.println(cars.getForwardStatuses() + "\n");
         }
 
     }
