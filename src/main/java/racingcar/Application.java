@@ -1,6 +1,7 @@
 package racingcar;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -8,9 +9,11 @@ public class Application {
     Scanner scan = new Scanner(System.in);
     String[] nameList = null;
     int count = 0;
+    ArrayList<Integer> moveList = new ArrayList<>();
 
     void run() {
         getName();
+        getCount();
     }
 
     void getName() {
@@ -28,6 +31,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         count = scan.nextInt();
     }
+
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
