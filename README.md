@@ -148,12 +148,12 @@ jun : -----
 
 #### _**RacingcarService Class**_
 
-* ✅ runRace() 경주 시작
 * ✅ movingForward() 자동차 전진
-* ☑️ startRace()
-* ☑️ printRoundResult()
-* ☑️ getMaxDashLength()
-* ☑️ pickWinner()
+* ☑️ getInstance() 인스턴스 반환
+* ☑️ startRace() 레이스 시작
+* ☑️ printRoundResult() 라운드별 결과 출력
+* ☑️ getMaxDashLength() 최대 대쉬 길이 반환
+* ☑️ pickWinner() 우승자 반환
 
 ***
 
@@ -193,12 +193,13 @@ jun : -----
 
 #### _**InvalidInputException Class**_
 
-* ✅ validateCarNames() 자동차 이름 입력에 대한 예외 처리
+* ✅ validateInput() 초기 공백 입력에 대한 예외 처리
+* ✅ validateCarNames() 자동차 이름 입력에 대한 예외 처리 상위 메서드
 * ✅ validateAttemptCount() 시도할 횟수 입력에 대한 예외 처리
-* ☑️ validateCarNameSize()
-* ☑️ validateCarNameBlankInput()
-* ☑️ validateDuplicateName()
-* ☑️ validateMaxCarNameLength()
+* ☑️ validateCarNameSize() 단일 자동차 이름 입력에 대한 예외 처리
+* ☑️ validateCarNameBlankInput() 자동차 이름 공백 입력에 대한 예외 처리
+* ☑️ validateDuplicateName() 자동차 이름 중복 입력에 대한 예외 처리
+* ☑️ validateMaxCarNameLength() 자동차 이름 최대 글자 초과에 대한 예외 처리
 
 ##### _**ExceptionMessage Enum**_
 
@@ -224,6 +225,27 @@ jun : -----
 
 ***
 
-### TestCase ( 코드 구현 후 수정 예정 )
+### TestCase
+
+#### _**InvalidInputExceptionTest Class**_
+
+* ☑️ testValidateCarNames_ValidateCarNames_ShouldNoteThrowException() 자동차 이름 정상 입력시 정상작동
+* ☑️ testValidateInput_BlankInput_ShouldThrowException() 공백 입력시 예외 발생
+* ☑️ testValidateInput_NullInput_ShouldThrowException() null 입력시 예외 발생
+* ☑️ testValidateCarNames_SingleCarName_ShouldThrowException() 자동차 이름이 하나만 입력 됐을 때 예외 발생
+* ☑️ testValidateCarNameBlankInput_BlankInput_ShouldThrowException() 자동차 이름에 공백이 입력 됐을 때 예외 발생
+* ☑️ testValidateCarNameBlankInput_NullIInput_ShouldThrowException() 자동차 이름에 null이 포함 됐을 때 예외 발생
+* ☑️ testValidateDuplicateName_DuplicateInput_ShouldThrowException() 자동차 이름에 중복이 있을 때 예외 발생
+* ☑️ testValidateCarNames_ExceedMaxCarNameLength_ShouldThrowException 자동차 이름이 최대 글자를 초과 했을 때 예외 발생
+* ☑️ testValidateAttemptCount_ZeroAttempt_ShouldThrowException() 시도 횟수로 0회 입력했을 때 예외 발생
+* ☑️ testValidateAttemptCount_NegativeAttempt_ShouldThrowException() 시도 횟수로 음수 입력했을 때 예외 발생
+* ☑️ testValidateAttemptCount_ValidAttempt_ShouldNotThrowException() 시도 횟수 정상 입력시 정상 작동
+
+#### _**RacingcarServiceTest Class**_
+
+* ☑️ testPrintRoundResult() 라운드 별 결과 출력
+* ☑️ testGetMaxDashLength() 최대 전진 크기 반환
+* ☑️ testPickSingleWinner() 단일 우승자 출력
+* ☑️ testPickMultiWinner() 복수 우승자 출력
 
 ***
