@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.dto.RaceResultDto;
 import racingcar.service.RacingService;
+import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -31,7 +32,7 @@ public class RacingController {
         List<String> carNames = stringSplitter.split(inputView.getCarNames());
         int roundCount = numberParser.parse(inputView.getTotalRace());
 
-        RaceResultDto result = racingService.createAndExecute(carNames, roundCount);
+        RaceResultDto result = racingService.createAndExecute(carNames, roundCount, RandomMovingStrategy.getInstance());
 
         outputView.printRoundResults(result.raceHistory());
         outputView.printWinners(result.winners());

@@ -6,14 +6,14 @@ import racingcar.domain.Cars;
 import racingcar.domain.Race;
 import racingcar.domain.RoundProgress;
 import racingcar.dto.RaceResultDto;
-import racingcar.strategy.RandomMovingStrategy;
+import racingcar.strategy.MovingStrategy;
 import racingcar.vo.Name;
 import racingcar.vo.Round;
 
 public class RacingService {
-    public RaceResultDto createAndExecute(List<String> carNames, int roundCount) {
+    public RaceResultDto createAndExecute(List<String> carNames, int roundCount, MovingStrategy strategy) {
         Race race = createRace(carNames, roundCount);
-        executeRace(race);
+        race.execute(strategy);
 
         return RaceResultDto.of(
                 race.getEntireHistory(),
@@ -27,10 +27,6 @@ public class RacingService {
         RoundProgress roundProgress = RoundProgress.createFromTotalRounds(round);
 
         return Race.initializeRace(cars, roundProgress);
-    }
-
-    private void executeRace(Race race) {
-        race.execute(RandomMovingStrategy.getInstance());
     }
 
     private Cars createCars(List<String> carNames) {
