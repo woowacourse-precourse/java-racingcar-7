@@ -58,6 +58,26 @@ class ApplicationTest extends NsTest {
         assertThat(winners).contains("pobi", "woni");
     }
 
+    @Test
+    void 전진_조건_테스트_4_이상() {
+        Car car = new Car("pobi");
+        int randomNumber = 4; // 4 이상일 경우
+
+        car.move(randomNumber);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 전진_조건_테스트_4_미만() {
+        Car car = new Car("woni");
+        int randomNumber = 3; // 4 미만일 경우
+
+        car.move(randomNumber);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
