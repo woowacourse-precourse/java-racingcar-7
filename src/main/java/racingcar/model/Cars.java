@@ -2,13 +2,13 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.validator.Validator;
 
 public class Cars {
-    static Map<String, String> cars = new HashMap<>();
+    static Map<String, String> cars = new LinkedHashMap<>();
 
     public static void register(List<String> names) {
         for (String name : names) {
