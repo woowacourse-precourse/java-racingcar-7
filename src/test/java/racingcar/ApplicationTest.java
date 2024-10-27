@@ -48,6 +48,38 @@ class ApplicationTest extends NsTest {
 		Assertions.assertEquals("car3", cars[2].getName());
 	}
 
+	@Test
+	void 유효한_시도횟수() {
+		// Given
+		String m = "5";
+
+		// When
+		int result = Application.validateNumber(m);
+
+		// Then
+		Assertions.assertEquals(5, result);
+	}
+
+	@Test
+	void 음수_시도횟수_예외() {
+		// Given
+		String m = "-3";
+
+		// Then
+		Assertions.assertThrows(IllegalArgumentException.class,
+			() -> Application.validateNumber(m));
+	}
+
+	@Test
+	void 숫자가_아닌_문자열_시도횟수_예외() {
+		// Given
+		String m = "abc";
+
+		// Then
+		Assertions.assertThrows(IllegalArgumentException.class,
+			() -> Application.validateNumber(m));
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
