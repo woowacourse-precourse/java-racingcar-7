@@ -111,6 +111,28 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    @DisplayName("사용자의 시도 횟수 입력값이 0일 때 예외 처리")
+    void 시도횟수_0(){
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,joon", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorCode.CANT_TRY_COUNT_UNDER_ZERO.getMessage()));
+
+    }
+
+    @Test
+    @DisplayName("사용자의 시도 횟수 입력값이 음수일 때 예외 처리")
+    void 시도횟수_음수(){
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,joon", "-3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorCode.CANT_TRY_COUNT_UNDER_ZERO.getMessage()));
+
+    }
+
 
 
     @Override
