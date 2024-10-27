@@ -66,15 +66,11 @@ public class RacingCarService {
 
 
     public void initRacingCars(String inputCarNames) {
-        if (inputValidator.isInputEmpty(inputCarNames)) {
-            throw new IllegalArgumentException("경주할 자동차 이름을 입력해주세요.");
-        }
+        inputValidator.isInputEmpty(inputCarNames);
 
         String[] carNames = separatorParser.parseCarNames(inputCarNames);
 
-        if (!inputValidator.validCarNameLength(carNames)) {
-            throw new IllegalArgumentException("자동차 이름은 최대 5글자 입니다.");
-        }
+        inputValidator.validCarNameLength(carNames);
 
         for (int i = 0; i < carNames.length; i++) {
             cars.put(carNames[i], 0);

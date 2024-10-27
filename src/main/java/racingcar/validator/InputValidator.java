@@ -4,16 +4,19 @@ import java.util.Arrays;
 
 public class InputValidator {
 
-    public boolean isInputEmpty(String inputCarNames) {
+    public void isInputEmpty(String inputCarNames) {
         if (inputCarNames == null || inputCarNames.isBlank()) {
-            return true;
+            throw new IllegalArgumentException("경주할 자동차 이름을 입력해주세요.");
         }
-        return false;
     }
 
-    public boolean validCarNameLength(String[] carNames) {
-        return Arrays.stream(carNames)
+    public void validCarNameLength(String[] carNames) {
+        boolean result = Arrays.stream(carNames)
                 .allMatch(c -> c.length() <= 5);
+
+        if (!result) {
+            throw new IllegalArgumentException("자동차 이름은 최대 5글자 입니다.");
+        }
     }
 
     public int getValidatedRacingAttempt(String inputRacingAttempt) {
