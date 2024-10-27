@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.util.parser;
 
 public class InputSplitter {
     private static final String DELIMETER = ",";
