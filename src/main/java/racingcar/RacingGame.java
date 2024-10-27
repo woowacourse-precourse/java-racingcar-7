@@ -81,6 +81,11 @@ public class RacingGame {
         System.out.println();
     }
 
+    private void announceWinners() {
+        List<String> winners = findWinners();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
     private List<String> findWinners() {
         int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElseThrow();
         return cars.stream()
