@@ -38,7 +38,7 @@ public class RunManager {
 
     }
 
-    private void printResultMessage(List<String> winnerList) {
+    public void printResultMessage(List<String> winnerList) {
         System.out.print(RESULT_MESSAGE);
         String result = String.join(", ", winnerList);
         System.out.println(result);
