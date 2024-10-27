@@ -30,14 +30,23 @@ public class Cars {
 
     private void addCars(List<String> names) {
         for (String name : names) {
-            validateNameLength(name);
+            validateName(name);
             Car car = new Car(name);
             cars.add(car);
         }
     }
 
+    private void validateName(String name) {
+        validateInputName(name);
+        validateNameLength(name);
+    }
+
+    private void validateInputName(String name) {
+        Validator.validateNameIsEmpty(name);
+    }
+
     private void validateNameLength(String name) {
-        Validator.checkNameLength(name);
+        Validator.validateNameLengthLimit(name);
     }
 
     public List<Car> getCars() {
