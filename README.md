@@ -41,7 +41,10 @@
   - findWinners(): 전진횟수를 비교하여 우승자를 찾는다.
 
 * Controller : CarController 구현
-    
+  - startRace(): 자동차를 생성하고, 주어진 횟수만큼 레이스를 진행한 후, 최종 우승자를 발표한다.
+  - createRace(): 사용자로부터 자동차 이름을 입력받아 등록한다.
+  - raceRound(): 주어진 횟수만큼 자동차를 이동시키고, 현재 라운드 결과를 출력한다.
+  - raceOver(): 레이스 종료 후 우승자를 발표한다.
 
 * View : Input 및 Output 구현
     
