@@ -26,7 +26,6 @@ public class Controller {
     public void gameStart() {
         List<String> carNames = splitCarNames(inputCarNames());
         int round = Convertor.convertStringToInt(inputRound());
-        validateRound(round);
 
         Game game = Game.start(carNames, round);
         while (!game.isGameEnd()) {
@@ -34,12 +33,6 @@ public class Controller {
             printStatus(game.getStatus());
         }
         printWinner(game.findWinners());
-    }
-
-    private void validateRound(int round) {
-        if (round < 1) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private void printStatus(List<String> stats) {

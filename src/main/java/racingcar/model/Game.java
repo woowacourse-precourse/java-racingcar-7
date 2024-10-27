@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Game {
     private final List<Car> cars;
-    private int round;
+    private final Round round;
 
     private Game(List<String> carNames, int round) {
         validateDuplicatedCarName(carNames);
         this.cars = carNames.stream()
                 .map(Car::create)
                 .toList();
-        this.round = round;
+        this.round = Round.of(round);
     }
 
     public static Game start(List<String> carNames, int round) {
@@ -26,7 +26,7 @@ public class Game {
 
     public void play() {
         playARound();
-        round--;
+        round.proceed();
     }
 
     private void playARound() {
@@ -60,14 +60,10 @@ public class Game {
     }
 
     public boolean isGameEnd() {
-        if (isRoundZero()) {
+        if (round.isZero()) {
             return true;
         }
         return false;
-    }
-
-    private boolean isRoundZero() {
-        return round == 0;
     }
 
     public List<String> getStatus() {
