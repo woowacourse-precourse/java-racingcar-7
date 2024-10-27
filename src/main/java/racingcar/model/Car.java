@@ -13,6 +13,14 @@ public class Car {
         this.position = 0;
     }
 
+    public String getName() {
+        return this.name.getCarName();
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
     public HashMap<String,Integer> randomlyMoveForward() {
         if (checkBiggerThanFour()) {
             moveForward();

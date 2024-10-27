@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class Race {
     private RaceTurn turn;
@@ -23,5 +24,21 @@ public class Race {
                 .forEach(map -> allCarsNameAndPosition.putAll(map));
 
         return allCarsNameAndPosition;
+    }
+
+    public String getWinner() {
+        int highestPosition = getHighestPosition();
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == highestPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    public int getHighestPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
     }
 }
