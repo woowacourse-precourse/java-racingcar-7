@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.controller.CarController;
+import racingcar.controller.MoveController;
 import racingcar.util.CommonIo;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -15,6 +16,7 @@ public class Main {
     private OutputView outputView = new OutputView();
     private CommonIo io = new CommonIo();
     private CarController carController = new CarController();
+    private MoveController moveController = new MoveController();
 
     public void run(){
         finishGame(playGame(prepareGame()));
@@ -35,10 +37,10 @@ public class Main {
 
         for (int i = 0; i < playCount; i++) {
             for (Car car : cars) {
-                int randomNumber = createRandomNumber();
-                boolean isMove = isMove(randomNumber);
+                int randomNumber = moveController.createRandomNumber();
+                boolean isMove = moveController.isMove(randomNumber);
                 if(isMove) {
-                    setMoveInformation(car);
+                    moveController.setMoveInformation(car);
                 }
                 outputView.printSingleResult(car);
             }
@@ -56,15 +58,4 @@ public class Main {
         return carNames;
     }
 
-    public int createRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
-    }
-
-    public boolean isMove(int randomNumber) {
-        return randomNumber >= 4;
-    }
-
-    public void setMoveInformation(Car car) {
-        car.setPosition(1);
-    }
 }

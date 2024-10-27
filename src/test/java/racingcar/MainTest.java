@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.CarController;
+import racingcar.controller.MoveController;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,6 +19,7 @@ class MainTest extends NsTest {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private CarController carController = new CarController();
+    private MoveController moveController = new MoveController();
 
     @Test
     @DisplayName("자동차 이름을 입력받는다")
@@ -58,14 +60,14 @@ class MainTest extends NsTest {
     @Test
     @DisplayName("생성된 랜덤 숫자가 범위 내인지 확인한다")
     void checkRandomNumberRange() {
-        assertThat(main.createRandomNumber()).isBetween(0, 9);
+        assertThat(moveController.createRandomNumber()).isBetween(0, 9);
     }
 
     @Test
     @DisplayName("랜덤 숫자가 4이상이면 전진한다")
     void isMove() {
-        assertThat(main.isMove(4)).isTrue();
-        assertThat(main.isMove(3)).isFalse();
+        assertThat(moveController.isMove(4)).isTrue();
+        assertThat(moveController.isMove(3)).isFalse();
     }
 
     @Test
