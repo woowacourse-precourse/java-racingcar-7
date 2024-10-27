@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.validator.RacingCarStringValidator;
 
 class RacingCarStringValidatorTest {
@@ -16,12 +18,11 @@ class RacingCarStringValidatorTest {
         racingCarStringValidator = new RacingCarStringValidator();
     }
 
-    @Test
-    @DisplayName("문자열이 빈문자열이므로 예외가 발생한다.")
-    void validateFormatTest() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("문자열이 빈문자열 또는 공백이므로 예외가 발생한다.")
+    void validateFormatTest(final String value) throws Exception {
         //given
-        final String value = "";
-
         //when
         //then
         assertThatThrownBy(() -> racingCarStringValidator.validateFormat(value))
