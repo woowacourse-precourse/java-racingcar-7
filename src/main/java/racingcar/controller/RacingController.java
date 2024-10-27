@@ -25,7 +25,15 @@ public class RacingController {
 
         outputView.printStartMessage();
         IntStream.range(0, attempts).forEach(i -> playOneRace());
+
+        outputView.printWinnerNames(getWinnerNames());
     }
+
+    public List<String> getWinnerNames() {
+        return cars.stream()
+            .filter(car -> car.getCurrentLocation() == getMaxCurrentLocation())
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 
     public int getMaxCurrentLocation() {
