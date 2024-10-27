@@ -56,7 +56,11 @@ public class Application {
     public static int getMovementCounts() {
         try{
             System.out.println("시도할 횟수는 몇 회인가요?");
-            return Integer.parseInt(Console.readLine());
+            int moves = Integer.parseInt(Console.readLine());
+            if (moves <= 0) {
+                throw new IllegalArgumentException("입력 오류: 0 이상의 정수를 입력하세요.");
+            }
+            return moves;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력 오류: 정수를 입력하세요.");
         }
