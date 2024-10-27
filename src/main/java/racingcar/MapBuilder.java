@@ -24,4 +24,9 @@ public class MapBuilder {
 //        이 부분은 어떻게 할지 아직 모르겠다.
         return "";
     }
+
+    public Map<String, Integer> getCarNameAndForwardCount(){
+//        이 부분은 어떻게 할지 아직 모르겠다.
+        return null;
+    }
 }

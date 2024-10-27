@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -36,6 +37,8 @@ public class Application {
             mapBuilder.mapSingleRandomRoundResult(i);
         }
         System.out.println(messagePrinter.totalRandomResultMessage());
-
+        
+        //우승자 목록 도출하기
+        Map<String, Integer> totalForwardCount= mapBuilder.getCarNameAndForwardCount();
     }
 }
