@@ -28,7 +28,7 @@ public class OutputView {
 
     private String getMoveDistance(int position) {
         String moveDistance = "";
-        for (int i = 0; i<position; i++) {
+        for (int i = 0; i < position; i++) {
             moveDistance += MOVE_EXPRESSION;
         }
         return moveDistance;

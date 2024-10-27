@@ -25,7 +25,7 @@ public class InputView {
         return convertTryCountToInt(InputTryCount);
     }
 
-    private List<String> convertCarNamesToList (String inputCarNames) {
+    private List<String> convertCarNamesToList(String inputCarNames) {
         return Arrays.stream(inputCarNames.split(","))
                 .map(String::trim)
                 .filter(inputCarNamesValidator::isNotCarNameEmpty)
@@ -34,7 +34,7 @@ public class InputView {
                 .toList();
     }
 
-    private int convertTryCountToInt (String inputTryCount) {
+    private int convertTryCountToInt(String inputTryCount) {
         int tryCount = 0;
         if (inputCountValidator.isNotBlankTryCount(inputTryCount)) {
 

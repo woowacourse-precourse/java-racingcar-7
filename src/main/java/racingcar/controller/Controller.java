@@ -70,5 +70,4 @@ public class Controller {
         List<String> winnersName = racingResult.getWinnerNames(cars);
         outputView.printWinners(winnersName);
     }
-
 }

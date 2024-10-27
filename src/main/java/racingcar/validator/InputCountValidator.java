@@ -10,7 +10,7 @@ public class InputCountValidator {
         return true;
     }
 
-    public boolean isValidScope (String tryCount) {
+    public boolean isValidScope(String tryCount) {
         try {
             Integer.parseInt(tryCount);
         } catch (NumberFormatException e) {

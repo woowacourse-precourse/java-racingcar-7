@@ -12,7 +12,7 @@ public class Racing {
         this.tryCount--;
     }
 
-    public boolean isProgress(){
+    public boolean isProgress() {
         return this.tryCount > END_GAME_COUNT;
     }
 }

@@ -19,7 +19,7 @@ public class InputCarNamesValidator {
         validCarNames.add(carName);
         return true;
     }
-    
+
     public boolean isNotCarNameEmpty(String carName) {
         if (carName.isEmpty()) {
             throw new IllegalArgumentException("공백이 입력되었습니다.");
