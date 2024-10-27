@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
+    private static final String POSITION_MARKER = "-";
     private final String name;
     private int position;
 
@@ -27,6 +28,6 @@ public class RacingCar {
     }
 
     public String getPositionWithDash() {
-        return "-".repeat(position);
+        return POSITION_MARKER.repeat(position);
     }
 }

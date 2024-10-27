@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingController {
-    private Race race;
+    private static final String DELIMITER = ",";
 
     public void run() {
         String carNamesInput = InputHandler.getRacingCarNames();
@@ -12,14 +12,14 @@ public class RacingController {
 
         List<RacingCar> racingCars = createRacingCars(carNamesInput);
 
-        race = new Race(racingCars);
+        Race race = new Race(racingCars);
         race.startRace(numberOfAttempts);
 
         OutputHandler.printWinners(race.getWinners());
     }
 
     private List<RacingCar> createRacingCars(String carNamesInput) {
-        String[] names = carNamesInput.split(",");
+        String[] names = carNamesInput.split(DELIMITER);
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (String name : names) {
