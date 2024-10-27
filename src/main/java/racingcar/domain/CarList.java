@@ -48,7 +48,7 @@ public class CarList {
     }
 
     // 모든 자동차들의 현황을 출력합니다.
-    public Message generateAllStatus() {
+    public String generateAllStatus() {
         StringJoiner stringJoiner = new StringJoiner(ENTER);
 
         for (Car car : this.cars) {
@@ -57,9 +57,8 @@ public class CarList {
         }
 
         stringJoiner.add(ENTER);
-        String allStatus = stringJoiner.toString();
 
-        return Message.create(allStatus);
+        return stringJoiner.toString();
     }
 
     protected List<Car> toWinners() {

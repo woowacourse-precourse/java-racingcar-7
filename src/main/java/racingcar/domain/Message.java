@@ -13,12 +13,20 @@ public class Message extends Output {
         this.value = value;
     }
 
-    public static Message create(String value) {
-        return new Message(value);
+    public static Message createWinner(String result) {
+        return new Message(WINNER_RESULT + result);
     }
 
-    public static Message createWinner(String value) {
-        return new Message(WINNER_RESULT + value);
+    public static Message allStatus(CarList carList) {
+        String allStatus = carList.generateAllStatus();
+
+        return new Message(allStatus);
+    }
+
+    public static Message result(Winners winners) {
+        String result = winners.result();
+
+        return createWinner(result);
     }
 
     @Override

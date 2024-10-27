@@ -20,7 +20,7 @@ public class Winners {
     }
 
     // 최종 승자를 반환합니다.
-    public Message result() {
+    protected String result() {
         StringJoiner stringJoiner = new StringJoiner(COMMA_SEPARATOR + " ");
 
         winnerList.forEach(
@@ -29,9 +29,7 @@ public class Winners {
                 )
         );
 
-        String result = stringJoiner.toString();
-
-        return Message.createWinner(result);
+        return stringJoiner.toString();
     }
 
     @Override

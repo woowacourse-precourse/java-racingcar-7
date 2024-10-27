@@ -1,8 +1,8 @@
 package racingcar.service.impl;
 
 import racingcar.domain.CarList;
-import racingcar.domain.NameCollect;
 import racingcar.domain.Message;
+import racingcar.domain.NameCollect;
 import racingcar.domain.TryCount;
 import racingcar.domain.Winners;
 import racingcar.service.CarService;
@@ -26,8 +26,8 @@ public class CarServiceImpl implements CarService {
         // 입력된 횟수만큼 반복하도록 돌아가는 메소드
         while (tryCount.canTry()) {
             carList.moveAll();
-            Message status = carList.generateAllStatus();
-            output.append(status);
+            Message allStatus = Message.allStatus(carList);
+            output.append(allStatus);
         }
 
         return Winners.from(carList);
@@ -35,7 +35,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void result(Winners winners) {
-        Message result = winners.result();
+        Message result = Message.result(winners);
         output.append(result);
     }
 }

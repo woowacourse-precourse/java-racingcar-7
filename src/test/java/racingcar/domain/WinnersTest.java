@@ -27,7 +27,7 @@ class WinnersTest {
 
         // when
         Winners winners = Winners.from(carList);
-        Message result = winners.result();
+        Message result = Message.result(winners);
 
         // then
         assertThat(result).isEqualTo(Message.createWinner(carList.toString()));
