@@ -7,7 +7,6 @@ import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import racingcar.global.exception.RacingcarException;
 
