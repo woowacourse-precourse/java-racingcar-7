@@ -2,6 +2,7 @@ package racingcar.racingcarView;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Map.Entry;
 
 public class CarView {
 
@@ -17,13 +18,13 @@ public class CarView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printRunResults() {
+    public void printStartResults() {
         System.out.println("실행 결과");
         System.out.println();
     }
 
-    public void printResults() {
-        System.out.println();
+    public void printResults(Entry<String, Integer> entry) {
+        System.out.println(entry.getKey()+ " : " + "-".repeat(entry.getValue()) );
     }
 
 

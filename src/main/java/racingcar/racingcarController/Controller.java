@@ -1,7 +1,7 @@
 package racingcar.racingcarController;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import racingcar.racingcarModel.CarModel;
 import racingcar.racingcarModel.ExceptionModel;
 import racingcar.racingcarView.CarView;
@@ -38,13 +38,12 @@ public class Controller {
 
         LinkedHashMap<String, Integer> carInfo = carModel.initializeCarInfo(nameInput);
 
-        carView.printRunResults();
+        carView.printStartResults();
 
         for (int i = 0; i < tryInput; i++) {
-            for (HashMap.Entry<String, Integer> entry : carInfo.entrySet()) {
+            for (Map.Entry<String, Integer> entry : carInfo.entrySet()) {
                 carInfo.put(entry.getKey(), carModel.isForward(entry.getValue()));
-                System.out.println(entry.getKey()+ " : " + "-".repeat(entry.getValue()) );
-
+                carView.printResults(entry);
             }
             System.out.println();
         }
