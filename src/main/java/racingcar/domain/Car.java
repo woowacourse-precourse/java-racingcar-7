@@ -16,7 +16,12 @@ public class Car {
         }
     }
 
+    public boolean isWinner(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     public int getPosition() {
         return position;
     }
 }
+
