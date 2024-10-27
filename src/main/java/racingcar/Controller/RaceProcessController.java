@@ -15,7 +15,7 @@ public class RaceProcessController {
     public void run() {
         try {
             RaceInfoDTO raceInfoDTO = raceViewController.gatherRaceInfo();
-            raceProcessService.readyRace(raceInfoDTO);
+            raceProcessService.readyRace(raceInfoDTO, raceViewController);
         } catch (IllegalArgumentException e) {
             throw e;
         }
