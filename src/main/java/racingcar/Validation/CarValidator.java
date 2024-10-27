@@ -1,9 +1,9 @@
-package racingcar.Validation;
+package racingcar.validation;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import racingcar.Enum.ErrorMessage;
+import racingcar.enums.ErrorMessage;
 
 public class CarValidator {
   private static final String regex = "[^a-zA-Z0-9]";

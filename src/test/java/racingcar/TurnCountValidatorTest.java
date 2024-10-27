@@ -3,8 +3,8 @@ package racingcar;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import racingcar.Enum.ErrorMessage;
-import racingcar.Validation.TurnCountValidator;
+import racingcar.enums.ErrorMessage;
+import racingcar.validation.TurnCountValidator;
 
 public class TurnCountValidatorTest {
 

@@ -1,7 +1,7 @@
-package racingcar.Validation;
+package racingcar.validation;
 
-import racingcar.Enum.ErrorMessage;
-import racingcar.Utilities.NumberParser;
+import racingcar.enums.ErrorMessage;
+import racingcar.utilities.NumberParser;
 
 public class TurnCountValidator {
     public static int validateTurnCount(String turnCount) {

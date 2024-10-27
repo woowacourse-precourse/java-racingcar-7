@@ -1,14 +1,15 @@
-package racingcar.Controller;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.Model.Racing;
-import racingcar.Utilities.Splitter;
-import racingcar.Validation.CarValidator;
-import racingcar.Validation.TurnCountValidator;
-import racingcar.View.InputView;
-import racingcar.View.OutputView;
+
+import racingcar.model.Racing;
+import racingcar.utilities.Splitter;
+import racingcar.validation.CarValidator;
+import racingcar.validation.TurnCountValidator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
   private Racing racing;

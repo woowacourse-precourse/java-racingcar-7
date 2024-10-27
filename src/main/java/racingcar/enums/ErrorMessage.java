@@ -1,4 +1,4 @@
-package racingcar.Enum;
+package racingcar.enums;
 
 public enum ErrorMessage implements SystemMessage {
   INVALID_DUPLICATE_CAR_NAME("중복된 자동차 이름 있습니다."),

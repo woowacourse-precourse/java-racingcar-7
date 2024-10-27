@@ -1,7 +1,7 @@
-package racingcar.View;
+package racingcar.view;
 
 import java.util.ArrayList;
-import racingcar.Enum.IOMessage;
+import racingcar.enums.IOMessage;
 
 public class OutputView {
   private static final String WINNERS_DELIMITER = ", ";

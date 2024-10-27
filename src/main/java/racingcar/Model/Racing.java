@@ -1,10 +1,10 @@
-package racingcar.Model;
+package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import racingcar.Enum.TypeOfLocation;
-import racingcar.Utilities.Random;
+import racingcar.enums.TypeOfLocation;
+import racingcar.utilities.Random;
 
 public class Racing implements RacingRule {
   private ArrayList<Car> cars;

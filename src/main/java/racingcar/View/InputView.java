@@ -1,7 +1,7 @@
-package racingcar.View;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Enum.IOMessage;
+import racingcar.enums.IOMessage;
 
 public class InputView {
   public static String readCarsName() {

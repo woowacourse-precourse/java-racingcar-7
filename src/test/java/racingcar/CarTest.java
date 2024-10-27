@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
-import racingcar.Enum.TypeOfLocation;
-import racingcar.Model.Car;
+import racingcar.enums.TypeOfLocation;
+import racingcar.model.Car;
 
 public class CarTest {
 

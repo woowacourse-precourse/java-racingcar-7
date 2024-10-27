@@ -1,6 +1,6 @@
-package racingcar.Utilities;
+package racingcar.utilities;
 
-import racingcar.Enum.ErrorMessage;
+import racingcar.enums.ErrorMessage;
 
 public class NumberParser {
     public static int parseToInt(String value) {

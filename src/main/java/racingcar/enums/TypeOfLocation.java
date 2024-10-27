@@ -1,4 +1,4 @@
-package racingcar.Enum;
+package racingcar.enums;
 
 public enum TypeOfLocation{
     SAME,
