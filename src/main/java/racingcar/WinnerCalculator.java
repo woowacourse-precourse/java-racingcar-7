@@ -26,7 +26,7 @@ public class WinnerCalculator {
     }
 
     private static void addWinner(List<String> winnerNames, Car currentCar, Car otherCar) {
-        boolean isWinner = currentCar != otherCar && currentCar.calculateMaxPosition(otherCar);
+        boolean isWinner = currentCar != otherCar && currentCar.isAheadOrEqual(otherCar);
         if (isWinner) {
             List<String> winnerDetails = Arrays.stream(currentCar.toString().split(" : "))
                     .toList();

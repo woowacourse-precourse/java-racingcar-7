@@ -19,7 +19,7 @@ public class Car {
         return new Car(this.name, this.carPosition.updateCurrentPosition());
     }
 
-    public boolean calculateMaxPosition(Car otherCar) {
+    public boolean isAheadOrEqual(Car otherCar) {
         return this.carPosition.isAheadOrEqual(otherCar.carPosition);
     }
 
