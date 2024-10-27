@@ -69,5 +69,13 @@ public class ExceptionModel {
         }
     }
 
+    // 경기 시행 횟수가 0 또는 음수일 경우
+    public void isPositiveNumberTryInput(String tryInput) {
+        int tryCount = Integer.parseInt(tryInput);
+
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
