@@ -1,50 +1,87 @@
 # [자동차 경주] 우아한테크코스(pre) 2주차
 
+## 프로젝트 구조
+
 <details>
-<summary> 프로젝트 구조 </summary>
+<summary> Application </summary>
 
-Application
 - RacingGame.run()
+</details>
 
-UserView()
-- readCarName()
-- readAttempNum()
-- printResultGuide()
-- printCarNameGuide()
-- printWinner()
-- printAttempResult()
+<details>
+<summary> UserView </summary>
 
-RacingGame()
-- run()
-  - Car.set()
-  - setAttempNum()
-  - UserView.printResultGuide()
-  - for{
-  goOrStop()
-  UserView.printAttempResult()
-  }
-  - findWinner()
-  - UserView.printWinner()
-- setAttempNum()
-  - UserView.readAttempNum()
-  - checkAttempNum()
-- checkAttempNum()
-- goOrStop()
-- findWinner()
+- readCarName
+- printCarNameGuide
+- readAttemptNum
+- printAttemptNumGuide
+- printResultGuide
+- printPlayerAttemptResult
+- printWinner
+- changeLine
+</details>
 
-Car()
-- set()
-  - UserView.readCarName()
-  - separateName()
-- get()
-- separateName()
-  - checkBlank()
-  - checkDuplication()
-  - checkCount()
-- checkCount()
-- checkDuplication()
-- checkBlank()
+<details>
+<summary> RacingGame </summary>
+
+- run
+  - Car.set
+  - setAttemptNum
+  - startGame
+  - selectWinner
+- setAttemptNum
+  - UserView.readAttemptNum
+  - checkAttemptNumContext
+  - checkAttemptNumSize
+- checkAttemptNumContext
+  - throwArgumentException
+- checkAttemptNumSize
+  - throwArgumentException
+- startGame
+  - UserView.changeLine
+  - UserView.printResultGuide
+  - carMove
+  - printAttemptResult
+- carMove
+  - Randoms.pickNumberInRange
+- printAttemptResult
+  - UserView.printPlayerAttemptResult
+  - UserView.changeLine
+- selectWinner
+  - getMaxScore
+  - findWinner
+  - UserView.printWinner
+- getMaxScore
+- findWinner
+- throwArgumentException
+</details>
+
+<details>
+<summary> Car </summary>
+
+- set
+  - UserView.readCarName
+  - separateName
+- separateName
+  - checkDoubleSeparator
+  - checkLastBlank
+  - checkBlank
+  - checkCount
+  - checkNameLen
+  - checkDuplication
+  - putCarMap
+- checkCount
+  - throwArgumentException
+- checkLastBlank
+  - throwArgumentException
+- checkBlank
+  - throwArgumentException
+- checkNameLen
+  - throwArgumentException
+- checkDuplication
+  - throwArgumentException
 - putCarMap()
+- throwArgumentException
 </details>
 
 ___
@@ -75,7 +112,9 @@ ___
   - 중복될 수 없다.
   - 공백은 포함될 수 없다.
   - 쉼표(,) 외의 특수문자는 허용한다.
-- 최대 시도 횟수는 10이며 1 이상의 양의 정수만 허용한다.
+- 시도 횟수
+  - 최댓값은 10이며 1 이상의 양의 정수만 허용한다.
+  - 앞에 0이 오는 것은 허용한다.(001, 00010)
 
 ### 입출력 요구 사항
 #### 입력
