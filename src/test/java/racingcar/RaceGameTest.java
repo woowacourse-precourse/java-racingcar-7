@@ -85,5 +85,70 @@ public class RaceGameTest {
         assertThrows(IllegalArgumentException.class, () -> raceGame.getNamesList(input));
     }
 
+    @Test
+    @DisplayName("totalRounds: null 예외처리")
+    void getTotalRoundsTest1(){
+        RaceGame raceGame = new RaceGame();
 
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(null));
+    }
+
+    @Test
+    @DisplayName("totalRounds: 공백 예외처리")
+    void getTotalRoundsTest2(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = " ";
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(userInput));
+    }
+
+
+    @Test
+    @DisplayName("totalRounds: 빈 문자 예외처리")
+    void getTotalRoundsTest3(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = "";
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(userInput));
+    }
+
+
+    @Test
+    @DisplayName("totalRounds: 음수 예외처리")
+    void getTotalRoundsTest4(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = "-1";
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(userInput));
+    }
+
+    @Test
+    @DisplayName("totalRounds: 숫자가 아닌 문자 예외처리")
+    void getTotalRoundsTest5(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = "lds";
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(userInput));
+    }
+
+    @Test
+    @DisplayName("totalRounds: 매우 큰 수가 들어올 경우")
+    void getTotalRoundsTest6(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = "1000000000000000000000";
+        BigInteger a = new BigInteger("1000000000000000000000");
+
+        assertThrows(IllegalArgumentException.class, () -> raceGame.getTotalRounds(userInput));
+    }
+
+    @Test
+    @DisplayName("totalRounds: 양의 정수가 들어올 경우")
+    void getTotalRoundsTest7(){
+        RaceGame raceGame = new RaceGame();
+        String userInput = "1234";
+        int a = 1234;
+
+        assertDoesNotThrow(() -> raceGame.getTotalRounds(userInput));
+        assertEquals(raceGame.totalRounds, a);
+    }
 }
