@@ -27,12 +27,13 @@ public class RacingProgram {
     List<Car> splitName(String input) {
         List<Car> cars = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<>();
-        String[] results = input.split(",", -1);
+        String[] carList = input.split(",", -1);
 
-        for (String result : results) {
-            validateCarName(result);  // 유효성 검사 분리
-            validateDuplication(uniqueNames, result);  //차 이름 중복되는지 검사
-            cars.add(createCar(result));  // 객체 생성 로직 분리
+        for (String carName : carList) {
+            String withoutSpaceName = carName.trim(); //입력받은 문자열에 대해 공백이 있는 경우 삭제
+            validateCarName(withoutSpaceName);  // 유효성 검사 분리
+            validateDuplication(uniqueNames, withoutSpaceName);  //차 이름 중복되는지 검사
+            cars.add(createCar(withoutSpaceName));  // 객체 생성 로직 분리
         }
         return cars;
     }
@@ -76,11 +77,5 @@ public class RacingProgram {
             throw new IllegalArgumentException("게임 횟수는 0이하가 될 수 없습니다.");
         }
     }
-
-
-
-
-
-
 
 }

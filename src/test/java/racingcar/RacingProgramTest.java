@@ -29,6 +29,15 @@ class RacingProgramTest {
     }
 
     @Test
+    void 올바른_공백_입력_테스트(){
+        String input = "test1 ,test2, test3 ";
+
+        List<Car> cars = racingProgram.splitName(input);
+
+        assertThat(cars).hasSize(3);
+    }
+
+    @Test
     void 공백_예외_테스트(){
         //문자열 내에 공백이 입력되는 경우
         String input = "test1,,test2";
@@ -87,5 +96,6 @@ class RacingProgramTest {
         assertThatThrownBy(() -> racingProgram.parseStringToNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 
 }
