@@ -6,12 +6,16 @@ import racingcar.car.domain.Car;
 
 public class OutputView {
 
+    public static void printResultHeader(){
+        System.out.println("\n실행결과");
+    }
 
-    public static void printResult(List<Car> cars) {
-        System.out.println("\n실행 결과");
+
+    public static void printCarPositions(List<Car> cars) {
         for (Car car : cars) {
             System.out.printf("%s : %s\n",car.getName(), generateMovement(car.getMove()));
         }
+        System.out.println();
     }
 
     private static String generateMovement(int move) {

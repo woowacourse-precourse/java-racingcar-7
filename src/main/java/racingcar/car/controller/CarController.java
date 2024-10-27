@@ -40,9 +40,10 @@ public class CarController {
     }
 
     private void moveCars(int tryCount, List<Car> cars) {
+        OutputView.printResultHeader();
         for (int i = 0; i < tryCount; i++) {
             carService.move(cars);
-            OutputView.printResult(cars);
+            OutputView.printCarPositions(cars);
         }
     }
 
