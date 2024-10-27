@@ -75,4 +75,12 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_시도_횟수_0번_이하_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("최소 한 번 이상 시도해야 합니다.")
+        );
+    }
 }

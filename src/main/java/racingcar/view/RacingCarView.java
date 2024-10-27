@@ -12,6 +12,11 @@ public class RacingCarView {
     }
     public int getTryCountInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        int tryCount = Integer.parseInt(Console.readLine());
+        if (tryCount <= 0) {
+            throw new IllegalArgumentException("최소 한 번 이상 시도해야 합니다.");
+        }
+        // 게임 로직
+        return tryCount;
     }
 }

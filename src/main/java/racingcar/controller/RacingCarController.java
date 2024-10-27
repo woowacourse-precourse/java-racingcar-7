@@ -19,6 +19,9 @@ public class RacingCarController {
         try {
             List<String> carNameList = view.getCarInput();
             List<Car> carList = createCarList(carNameList);
+
+            int tryCount = view.getTryCountInput();
+
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
