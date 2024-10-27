@@ -8,6 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
+
+    // 매번 값을 수정해야 하기 때문에 조회, 수정이 많아서 Map 자료형 선택
+    // 다른 클래스에서 접근해야 하기 때문에 public static으로 선언
+    public static String [][] carMap;
+    public static int len = 0;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -25,7 +31,13 @@ public class Application {
 
         // 각 자동차 이름이 유효한지 확인
         for (String car : carArray) {
+            // 총 자동차의 개수 세기
+            len++;
+
+            // 자동차의 이름 값이 비었는지 확인
             Validation.isNull(car);
+
+            // 자동차의 이름 길이가 5가 넘는지 확인
             Validation.lengthOver5(car);
         }
 
@@ -38,13 +50,18 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다.");
         }
 
-        // 매번 값을 수정해야 하기 때문에 조회, 수정이 많아서 Map 자료형 선택
-        Map<String, Integer> race = new HashMap<>();
+        // 결과값을 저장할 2차원 배열 선언하기
+        carMap = new String[len][2];
 
-        // Map 안에 자동차의 이름을 key로 초기값인 0 넣기
-        for (String car : carArray) {
-            race.put(car, 0);
+        // 배열의 첫 번째 열에 자동차의 이름, 두 번째 열에 빈 문자열을 저장
+        for (int i=0;i<len;i++) {
+            carMap[i][0] = carArray[i];
+            carMap[i][1] = "";
         }
 
+        // 시도 횟수만큼 이동하기
+        for (int i=0;i<movenumber;i++) {
+            Race.move();
+        }
     }
 }
