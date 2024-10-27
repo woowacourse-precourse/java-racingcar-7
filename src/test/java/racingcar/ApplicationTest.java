@@ -16,6 +16,17 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 우승자_여러명_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "2");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 자동차입력_테스트(){
         // given: 쉼표로 구분된 자동차 이름 문자열
         String input = "car1,car2,car3";
