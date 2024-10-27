@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.config.GameConfig;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -18,15 +19,13 @@ public class CarService {
         this.outputView = new OutputView();
     }
 
-    public List<Car> initializeCars() {
+    public GameConfig initializeGame() {
         String inputCarName = inputView.inputCarName();
-        return Arrays.stream(inputCarName.split(","))
+        List<Car> cars = Arrays.stream(inputCarName.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
-    }
-
-    public int inputCount(){
-        return inputView.getAttemptCount();
+        int attemptCount = inputView.getAttemptCount();
+        return new GameConfig(cars, attemptCount);
     }
 
     public void startRace(List<Car> cars, int count) {

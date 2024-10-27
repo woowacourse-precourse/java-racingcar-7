@@ -1,9 +1,7 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
+import racingcar.config.GameConfig;
 import racingcar.service.CarService;
-
-import java.util.List;
 
 public class CarController {
 
@@ -13,10 +11,9 @@ public class CarController {
         this.carService = new CarService();
     }
 
-    public void run(){
-        List<Car> cars = carService.initializeCars();
-        int inputCount = carService.inputCount();
-        carService.startRace(cars, inputCount);
-        carService.showResults(cars);
+    public void run() {
+        GameConfig config = carService.initializeGame();
+        carService.startRace(config.getCars(), config.getAttemptCount());
+        carService.showResults(config.getCars());
     }
 }
