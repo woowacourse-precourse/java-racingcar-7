@@ -47,6 +47,7 @@
 3. **JUnit 5**와 **AssertJ**를 사용하여 테스트 코드를 작성해야 합니다.
 4. **camp.nextstep.edu.missionutils**에서 제공하는 `Randoms`와 `Console API`를 사용합니다.
 
+
 # 자동차 경주 게임 구현 체크리스트
 
 ## 과제 진행 요구 사항
@@ -55,22 +56,22 @@
 - [ ] AngularJS Git Commit Message Conventions에 맞춰 커밋 메시지를 작성한다.
 
 ## 기능 요구 사항
-- [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있도록 구현한다.
-- [ ] 각 자동차에 이름을 부여하고, 전진하는 자동차의 이름을 출력한다.
-  - [ ] 자동차 이름은 쉼표(,)로 구분한다.
-  - [ ] 이름은 5자 이하만 허용한다.
-- [ ] 사용자가 시도할 횟수를 입력할 수 있도록 한다.
-- [ ] 0에서 9 사이 무작위 값을 생성하여 4 이상일 경우 전진하도록 한다.
-- [ ] 경주 종료 후 우승자를 표시한다.
-  - [ ] 우승자가 여러 명일 경우 쉼표(,)로 구분한다.
-- [ ] 잘못된 값 입력 시 `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
+- [x] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있도록 구현한다.
+- [x] 각 자동차에 이름을 부여하고, 전진하는 자동차의 이름을 출력한다.
+  - [x] 자동차 이름은 쉼표(,)로 구분한다.
+  - [x] 이름은 5자 이하만 허용한다.
+- [x] 사용자가 시도할 횟수를 입력할 수 있도록 한다.
+- [x] 0에서 9 사이 무작위 값을 생성하여 4 이상일 경우 전진하도록 한다.
+- [x] 경주 종료 후 우승자를 표시한다.
+  - [x] 우승자가 여러 명일 경우 쉼표(,)로 구분한다.
+- [x] 잘못된 값 입력 시 `IllegalArgumentException`을 발생시키고 애플리케이션을 종료한다.
 
 ## 입출력 요구 사항
-- [ ] 경주할 자동차 이름을 쉼표(,) 기준으로 입력받는다.
-- [ ] 시도할 횟수를 입력받는다.
-- [ ] 차수별 실행 결과를 출력한다.
-- [ ] 단독 우승자 안내 문구를 출력한다.
-- [ ] 공동 우승자 안내 문구를 출력한다.
+- [x] 경주할 자동차 이름을 쉼표(,) 기준으로 입력받는다.
+- [x] 시도할 횟수를 입력받는다.
+- [x] 차수별 실행 결과를 출력한다.
+- [x] 단독 우승자 안내 문구를 출력한다.
+- [x] 공동 우승자 안내 문구를 출력한다.
 
 ## 프로그래밍 요구 사항
 - [ ] JDK 21 버전에서 실행 가능하도록 한다.
@@ -92,5 +93,56 @@
   - [ ] `Console.readLine()`을 사용하여 사용자 입력을 받는다.
 
 ## 디자인 패턴 적용 요구 사항
-- [ ] 각 역할을 분리하여 MVC 패턴으로 설계한다.
+- [ ] 각 역할을 분리하여 MVC 패턴으로 설계한다. -> 아래의 클래스 다이어그램을 참고한다.
 - [ ] 싱글톤 패턴을 적용하여 객체의 생성을 제한하고 동일 객체를 재사용한다.
+
+# 프로그램 클래스 다이어그램
+```mermaid
+classDiagram
+    class Application {
+        +main(String[] args)
+    }
+
+    class RacingGameController {
+        -racingGame: RacingGame
+        -racingGameView: RacingGameView
+        +RacingGameController()
+        +run()
+        -createView()
+        -processGame()
+        -showResult()
+        -validateInput(String)
+        -createGame(String[] carNames, int rounds)
+    }
+
+    class RacingGame {
+        -cars: List~Car~
+        -rounds: int
+        +RacingGame(String[] carNames, int rounds)
+        +race()
+        +getWinners(): List~Car~
+        +getCurrentStatus(): List~Car~
+    }
+
+    class Car {
+        -name: String
+        -position: int
+        +Car(String name)
+        +move()
+        +getName(): String
+        +getPosition(): int
+    }
+
+    class RacingGameView {
+        +inputCarNames(): String
+        +inputRounds(): int
+        +showRaceStatus(List~Car~)
+        +showWinners(List~Car~)
+        +showError(String)
+    }
+
+    Application --> RacingGameController : creates
+    RacingGameController --> RacingGameView : creates and manages
+    RacingGameController --> RacingGame : creates and manages
+    RacingGame --> Car : contains
+```
