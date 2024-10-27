@@ -1,7 +1,7 @@
 package racingcar;
 
 public class UserInputValidator {
-    public static boolean isOneRacingCar(String[] carNames) {
+    public static boolean isLessThanTwo(String[] carNames) {
         return carNames.length > 1;
     }
 
