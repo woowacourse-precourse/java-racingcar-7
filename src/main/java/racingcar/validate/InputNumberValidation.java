@@ -3,14 +3,12 @@ package racingcar.validate;
 import racingcar.validate.enums.ValidateMessages;
 
 public class InputNumberValidation {
-    public static int validateInputNumber(String inputNumber) {
-        int numberOfAttempts = 0;
+    public static void validateInputNumber(String inputNumber) {
         validateNumberIfNullOrEmpty(inputNumber);
         validateIfInputCanCovertToInt(inputNumber);
         validateNumberIfContainsNewLine(inputNumber);
         validateNumberifWhiteSpaceExist(inputNumber);
         validateIfNumberStartsWithZero(inputNumber);
-        return numberOfAttempts;
     }
 
     public static void validateNumberIfNullOrEmpty(String inputNumber) {
