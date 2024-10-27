@@ -25,8 +25,8 @@ public class RacingService {
     }
 
     public void setUpRacing(String userInput) {
-        List<Car> cars = CarCreator.createCars(InputParser.parserCarNames(userInput));
-        this.carManager = new CarManager(cars);
+        this.carManager = new CarManager(
+                CarCreator.createCars(InputParser.parserCarNames(userInput)));
     }
 
     public List<List<Car>> fullRacing(int count) {

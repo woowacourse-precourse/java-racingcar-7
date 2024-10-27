@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import static racingcar.validation.ErrorMessage.NOT_PERMIT_SAME_CAR;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +13,7 @@ public class CarManager {
 
     public CarManager(List<Car> cars) {
         verifyDuplicateCar(cars);
-        this.cars = new ArrayList<>(cars);
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
