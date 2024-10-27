@@ -11,7 +11,7 @@ public class RaceController {
     }
 
     public void start() {
-        inputView.requestCarsName();
+        String Cars = inputView.requestCarsName();
     }
 
 }
