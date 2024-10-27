@@ -70,7 +70,7 @@ public class CarNameValidation {
 
 
     private static void validateCarCount(Set<String> inputs) {
-        if (inputs.size() <= MINIMUM_CAR_NUMBER) {
+        if (inputs.size() < MINIMUM_CAR_NUMBER) {
             throw new IllegalArgumentException(MINIMUM_CAR_NUMBER_IS_ONE.getMessage());
         }
 
