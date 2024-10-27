@@ -11,6 +11,7 @@ public class RacingCar {
     private final ConsoleInputHandler consoleInputHandler = new ConsoleInputHandler();
     private final ConsoleOutputHandler consoleOutputHandler = new ConsoleOutputHandler();
     private final Separator separator = new Separator();
+    private final Winner winner = new Winner();
 
     public void run(){
         consoleOutputHandler.printCarNameInstruction();
@@ -35,8 +36,9 @@ public class RacingCar {
             System.out.println();
         }
 
-        
+        List<Car> winners = winner.determineWinners(cars);
 
+        consoleOutputHandler.printWinner(winners);
     }
 
 }

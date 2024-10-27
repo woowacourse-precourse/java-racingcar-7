@@ -2,6 +2,7 @@ package racingcar.io;
 
 import java.util.List;
 import racingcar.Car;
+import racingcar.Winner;
 
 public class ConsoleOutputHandler {
 
@@ -25,5 +26,17 @@ public class ConsoleOutputHandler {
         System.out.println();
     }
 
+    public void printWinner(List<Car> winners){
+        System.out.print("최종 우승자 : ");
+        for(int i=0;i< winners.size();i++){
+            if(i < winners.size()-1) {
+                System.out.print(winners.get(i).getCarName() + ", ");
+                continue;
+            }
+
+                System.out.println(winners.get(i).getCarName());
+                System.out.println();
+        }
+    }
 
 }
