@@ -1,12 +1,12 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 /**
  * 자동차 경주 게임을 관리한다.
  */
 public class RacingGameManager {
-    //TODO 자동차를 생산하고 횟수만큼 반복하며 자동차를 이동한다
     //TODO 승자를 찾고
     //출력한다
     private final CarManager carManager;
@@ -22,7 +22,24 @@ public class RacingGameManager {
         List<Car> cars = carManager.createCarsFromInput(input);
         int count = Integer.parseInt(console.getCountInput());
         validateInputCount(count);
+        for (int i = 0; i < count; i++) {
+            playGame(cars);
+        }
+    }
 
+    private void playGame(List<Car> cars) {
+        for (Car car: cars) {
+            int random = Randoms.pickNumberInRange(0,9);
+            if (isMovable(random)) {
+                car.moveForward();   //이걸 RacingGameManager에서 하는게 맞나?
+            }
+        }
+        //TODO 결과 출력
+    }
+
+    private boolean isMovable(int randomNumber) {
+        int CRITERIA = 4;
+        return randomNumber >= CRITERIA;
     }
 
     private void validateInputCount(int count) {

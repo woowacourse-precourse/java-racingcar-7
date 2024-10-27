@@ -10,6 +10,10 @@ public class Car {
         this.distance = 0;
     }
 
+    public void moveForward() {
+        this.distance++;
+    }
+
     //이것들도 다 분리를 해야되나?
     private void validateName(String name) {
         String regex = "^[a-zA-Z]+$";
