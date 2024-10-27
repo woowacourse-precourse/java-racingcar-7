@@ -63,4 +63,14 @@ public class RaceGame {
         }
     }
 
+    RacingCar[] registerCar(String[] carNamesList, int totalCars){
+        RacingCar[] carList = new RacingCar[totalCars];
+
+        for (int i = 0; i < totalCars; i++){
+            carList[i] = new RacingCar();
+            carList[i].carName = carNamesList[i];
+        }
+        return carList;
+    }
+
 }
