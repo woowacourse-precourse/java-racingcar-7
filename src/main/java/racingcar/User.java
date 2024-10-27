@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class User {
 
-    final static private String USER_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    final static private String USER_INPUT_GAME_REPEAT = "시도할 횟수는 몇 회인가요?";
-    final static private String USER_INPUT_GAME_REPEAT_ERROR_MESSAGE = "1 이상의 정수만 입력이 가능합니다";
+    private final static String USER_INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private final static String USER_INPUT_GAME_REPEAT = "시도할 횟수는 몇 회인가요?";
+    private final static String USER_INPUT_GAME_REPEAT_ERROR_MESSAGE = "1 이상의 정수만 입력이 가능합니다";
 
     public static List<String> inputCarNames() {
         System.out.println(USER_INPUT_CAR_NAME);

@@ -7,6 +7,11 @@ import java.util.List;
 public class Game {
     private final List<Car> participants = new ArrayList<>();
 
+    private final String DISTANCE_INDICATOR = "-";
+    private final String NAME_DISTANCE_SPLIT = " : ";
+
+    private final int MOVE_STANDARD_NUMBER = 4;
+
     public Game(List<String> carNamesList) {
         registerParticipants(carNamesList);
     }
@@ -18,15 +23,13 @@ public class Game {
     public void moveCar() {
         for (Car participant : participants) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
-            if (randomNumber >= 4) {
+            if (randomNumber >= MOVE_STANDARD_NUMBER) {
                 participant.move();
             }
         }
     }
 
     public void printProgress() {
-        String DISTANCE_INDICATOR = "-";
-        String NAME_DISTANCE_SPLIT = " : ";
         StringBuilder printMessage = new StringBuilder();
 
         for (Car participant : participants) {
