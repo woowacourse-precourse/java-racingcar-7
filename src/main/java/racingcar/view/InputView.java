@@ -17,7 +17,7 @@ public class InputView {
             trialCount = scanner.nextInt();
 
         } catch (Exception e) {
-            System.out.println("오류: 입력값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException("오류: 입력값이 숫자가 아닙니다.");
         }
         return trialCount;
     }

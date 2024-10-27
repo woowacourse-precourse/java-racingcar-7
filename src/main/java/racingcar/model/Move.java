@@ -14,7 +14,7 @@ public class Move {
         return randomValue;
     }
 
-    private boolean checkMovable(int randomValue) {
+    public boolean checkMovable(int randomValue) {
         if (randomValue >= MOVE_STANDARD_VALUE) return true;
         return false;
     }
