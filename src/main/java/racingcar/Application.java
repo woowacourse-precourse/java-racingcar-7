@@ -9,10 +9,10 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            String name = InputManager.readInput();
+            String input = InputManager.readInput();
             int rounds = InputManager.readGameRound();
 
-            Names names = new Names(name);
+            Names names = new Names(input);
             Cars cars = new Cars(names);
 
             Game.start(cars, rounds);
