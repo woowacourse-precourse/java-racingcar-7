@@ -27,12 +27,12 @@ public class CarNameValidatorTest extends NsTest {
 
     @Test
     void 자동차의_이름이_공백으로만_이루어진_경우_예외_발생() {
-        assertSimpleTest(() -> assertIllegalArgumentException(" , , , ", ErrorMessage.CAR_NAME_IS_SPACE));
+        assertSimpleTest(() -> assertIllegalArgumentException("kim, , ,lee", ErrorMessage.CAR_NAME_IS_SPACE));
     }
 
     @Test
     void 자동차의_이름이_빈_문자열일_경우_예외_발생() {
-        assertSimpleTest(() -> assertIllegalArgumentException("\n", ErrorMessage.CAR_NAME_IS_EMPTY));
+        assertSimpleTest(() -> assertIllegalArgumentException("kim,,lee", ErrorMessage.CAR_NAME_IS_EMPTY));
     }
 
     @Test
