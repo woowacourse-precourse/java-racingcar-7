@@ -1,4 +1,4 @@
-package racingcar.model.attempt;
+package racingcar.model.game.attempt;
 
 import java.util.Objects;
 import racingcar.exception.InvalidAttemptException;

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.model.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,13 +6,14 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.attempt.Attempt;
+import racingcar.model.game.RacingCar;
+import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
-import racingcar.model.position.History;
-import racingcar.model.position.Position;
-import racingcar.model.position.Positions;
-import racingcar.strategy.MovingStrategy;
+import racingcar.model.game.position.History;
+import racingcar.model.game.position.Position;
+import racingcar.model.game.position.Positions;
+import racingcar.model.game.strategy.MovingStrategy;
 
 @DisplayName("자동차 경주 테스트")
 class RacingCarTest {

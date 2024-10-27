@@ -1,18 +1,18 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import racingcar.RacingCar;
+import racingcar.model.game.RacingCar;
 import racingcar.exception.InvalidAttemptException;
-import racingcar.model.attempt.Attempt;
+import racingcar.model.game.attempt.Attempt;
 import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
-import racingcar.model.position.History;
-import racingcar.model.position.Positions;
-import racingcar.strategy.MovingStrategy;
+import racingcar.model.game.position.History;
+import racingcar.model.game.position.Positions;
+import racingcar.model.game.strategy.MovingStrategy;
 import racingcar.support.repeater.StringRepeater;
 import racingcar.support.splitter.Splitter;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.input.InputView;
+import racingcar.view.output.OutputView;
 
 public class RacingCarController {
 

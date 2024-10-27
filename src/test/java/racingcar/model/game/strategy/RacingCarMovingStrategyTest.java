@@ -1,10 +1,11 @@
-package racingcar.strategy;
+package racingcar.model.game.strategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.model.game.strategy.RacingCarMovingStrategy;
 import racingcar.support.comparable.IntegerComparable;
 import racingcar.support.comparable.NumberComparable;
 import racingcar.support.random.RandomNumberGenerator;

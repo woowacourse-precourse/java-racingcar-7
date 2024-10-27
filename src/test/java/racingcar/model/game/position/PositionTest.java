@@ -1,10 +1,11 @@
-package racingcar.model.position;
+package racingcar.model.game.position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.model.game.position.Position;
 
 @DisplayName("위치 테스트")
 class PositionTest {

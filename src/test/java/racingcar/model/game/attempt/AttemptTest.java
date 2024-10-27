@@ -1,4 +1,4 @@
-package racingcar.model.attempt;
+package racingcar.model.game.attempt;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.InvalidAttemptException;
+import racingcar.model.game.attempt.Attempt;
 
 @DisplayName("시도 횟수 테스트")
 class AttemptTest {

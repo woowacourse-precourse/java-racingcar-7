@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.model.game.strategy;
 
 import racingcar.support.comparable.NumberComparable;
 import racingcar.support.random.RandomNumberGenerator;

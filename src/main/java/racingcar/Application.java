@@ -2,18 +2,18 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.controller.RacingCarController;
-import racingcar.strategy.MovingStrategy;
-import racingcar.strategy.RacingCarMovingStrategy;
+import racingcar.model.game.strategy.MovingStrategy;
+import racingcar.model.game.strategy.RacingCarMovingStrategy;
 import racingcar.support.repeater.StringRepeater;
 import racingcar.support.comparable.IntegerComparable;
 import racingcar.support.comparable.NumberComparable;
 import racingcar.support.random.RandomIntegerGenerator;
 import racingcar.support.random.RandomNumberGenerator;
 import racingcar.support.splitter.Splitter;
-import racingcar.view.ConsoleInputView;
-import racingcar.view.ConsoleOutputView;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.input.ConsoleInputView;
+import racingcar.view.output.ConsoleOutputView;
+import racingcar.view.input.InputView;
+import racingcar.view.output.OutputView;
 
 public class Application {
 

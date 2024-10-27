@@ -1,7 +1,7 @@
 package racingcar.model.car;
 
 import java.util.Objects;
-import racingcar.strategy.MovingStrategy;
+import racingcar.model.game.strategy.MovingStrategy;
 
 public class Car {
 

@@ -1,7 +1,7 @@
-package racingcar.view;
+package racingcar.view.output;
 
 import java.util.List;
-import racingcar.model.position.Positions;
+import racingcar.model.game.position.Positions;
 import racingcar.support.repeater.StringRepeater;
 
 public interface OutputView {

@@ -1,4 +1,4 @@
-package racingcar.model.position;
+package racingcar.model.game.position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -8,6 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import racingcar.model.game.position.Position;
+import racingcar.model.game.position.Positions;
 
 @DisplayName("위치 집합 테스트")
 class PositionsTest {
