@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-public class TestRandomNumberGenerator implements NumberGenerator{
+public class TestRandomNumberGenerator implements NumberGenerator {
     private final int fixedValue;
 
     public TestRandomNumberGenerator(int fixedValue) {
