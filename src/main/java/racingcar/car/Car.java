@@ -15,6 +15,12 @@ public class Car {
         this.location++;
     }
 
+    public String getCurrentLocation(){
+        return "-".repeat(this.location);
+    }
+
+    public String getName() { return this.name; }
+
     private void nameValidation(String name){
         if(name.length() > 5) throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
     }
