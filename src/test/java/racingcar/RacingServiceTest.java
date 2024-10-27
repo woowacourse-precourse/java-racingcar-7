@@ -41,7 +41,6 @@ public class RacingServiceTest {
         } else {
             Assertions.assertEquals(0L, testProgress.get(car1));
         }
-
     }
 
 }
