@@ -4,6 +4,7 @@ import racingcar.utils.NumberGenerator;
 import racingcar.utils.RandomNumberGenerator;
 
 public class Car {
+    private final static int MOVE_THRESHOLD = 4;
     private final NumberGenerator numberGenerator;
     private final String name;
     private int position;
@@ -40,7 +41,7 @@ public class Car {
     }
 
     public void move() {
-        if (numberGenerator.getNumber() >= 4)
+        if (numberGenerator.getNumber() >= MOVE_THRESHOLD)
             position++;
     }
 
