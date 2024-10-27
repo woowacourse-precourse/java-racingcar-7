@@ -135,6 +135,9 @@ class Car {
     private String track = "";
 
     public Car(String name) {
+        if(name == null || name.trim().isEmpty() | name.length()>5){
+            throw new IllegalArgumentException("자동차 이름의 길이는 1부터 5까지 입니다.");
+        }
         this.name = name;
     }
 
