@@ -7,6 +7,8 @@ public enum ErrorMessage {
     INVALID_CAR_COUNT("경주 자동차는 최소 2개 이상이여야 합니다."),
     CONFLICT_ERROR("자동차 이름은 중복될 수 없습니다."),
 
+    OUT_OF_RANGE("범위를 벗어나는 숫자입니다."),
+
     INVALID_TRY_COUNT("시도 횟수는 0보다 커야 합니다."),
 
     EMPTY_CAR_LIST("자동차 목록이 비어 있습니다."),
