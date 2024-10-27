@@ -9,9 +9,17 @@ public class Car {
     private final CarName carName;
     private int position;
 
-    public Car(CarName carName) {
+    private Car(CarName carName, int position) {
         this.carName = carName;
-        position = 0;
+        this.position = position;
+    }
+
+    public static Car from(String input) {
+        return new Car(CarName.from(input), 0);
+    }
+
+    public String getName() {
+        return carName.getName();
     }
 
     private void move() {

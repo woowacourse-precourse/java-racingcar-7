@@ -17,6 +17,10 @@ public class CarName {
         return new CarName(carName);
     }
 
+    public String getName() {
+        return carName;
+    }
+
     private static void validate(String carName) {
         validateBlank(carName);
         validateNoName(carName);
