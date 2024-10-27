@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
 import racingcar.model.Race;
+import racingcar.view.Output;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,6 +41,16 @@ public class RaceTest {
     @DisplayName("하나의_턴을_플레이한다")
     public void 하나의_턴을_플레이한다() {
         race.playOneTurn();
+        assertTrue(true);
+    }
+
+    @Test
+    @DisplayName("경주가_끝난_후_우승자를_찾는다")
+    public void 경주가_끝난_후_우승자를_찾는다() {
+        while (race.isAvailableRace()) {
+            race.playOneTurn();
+        }
+        Output.printWinners(race.getWinner());
         assertTrue(true);
     }
 }
