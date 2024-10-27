@@ -5,6 +5,7 @@ import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Race;
+import racingcar.view.OutputView;
 
 public class RacingService {
 
@@ -21,6 +22,7 @@ public class RacingService {
     public void startRace(Cars cars, Race race) {
         while (race.hasNext()) {
             cars.moveAll();
+            OutputView.display(cars);
         }
     }
 }

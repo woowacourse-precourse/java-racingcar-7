@@ -15,11 +15,15 @@ public class Cars {
     }
 
     public void moveAll() {
-        for (Car car : cars) {
+        cars.forEach(car -> {
             car.generateSpeed();
             if (car.isMoveable()) {
                 car.move();
             }
-        }
+        });
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
