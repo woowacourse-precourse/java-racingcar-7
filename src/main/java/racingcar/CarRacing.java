@@ -25,7 +25,7 @@ public class CarRacing {
     }
 
     void getRacingResult() {
-        for(String lab: records) {
+        for (String lab : records) {
             System.out.println(lab);
         }
         System.out.println(this.result);
@@ -34,15 +34,19 @@ public class CarRacing {
     private void recordRacer() {
         if (!validation.isRightCount(inputCount)) throw new IllegalArgumentException("잘못된 횟수를 입력했습니다.");
 
-        int count = Integer.parseInt(inputCount);
+        try {
+            int count = Integer.parseInt(inputCount);
 
-        while (count != 0) {
-            checkMoveForwardOrStop();
-            setRecordLap();
-            count--;
+            while (count != 0) {
+                checkMoveForwardOrStop();
+                setRecordLap();
+                count--;
+            }
+
+            resultRace();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 횟수를 입력했습니다.");
         }
-
-        resultRace();
     }
 
     private void resultRace() {
@@ -70,7 +74,7 @@ public class CarRacing {
     private void getPlayers() {
         if (!validation.isRightInputName(inputCarName)) throw new IllegalArgumentException("자동차 입력이 잘못되었습니다.");
         for (String name : inputCarName.split(",")) {
-            players.add(new Player(name.trim(), 0));
+            players.add(new Player(name, 0));
         }
     }
 

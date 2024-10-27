@@ -27,7 +27,7 @@ public class CarRacingTest {
     @CsvSource(value = {"pobi2222,woni:1", ":1", "java,javaji:3", "a,b,c,:1", "a,,b,c:1"}, delimiter = ':')
     void 예외_이름_입력_동작_경우(String inputName, String inputCount) {
         String name = "";
-        if(inputName == null) {
+        if (inputName == null) {
             name = "";
         } else {
             name = inputName;
@@ -41,10 +41,10 @@ public class CarRacingTest {
 
     @DisplayName("입력 예외인 경우 - 올바른 횟수를 입력하지 않은 경우")
     @ParameterizedTest
-    @CsvSource(value = {"pobi,woni:", "pobi:1a", "java,pobi:aacv", "a,b,c:-123"}, delimiter = ':')
+    @CsvSource(value = {"pobi,woni:", "pobi:1a", "java,pobi:aacv", "a,b,c:-123", "a,b,c:3333333333"}, delimiter = ':')
     void 예외_횟수_입력_동작_경우(String inputName, String inputCount) {
         String count = "";
-        if(inputCount == null) {
+        if (inputCount == null) {
             count = "";
         } else {
             count = inputCount;
