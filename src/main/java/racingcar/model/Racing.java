@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import static racingcar.util.Validator.validateRacingCarCount;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,8 +10,9 @@ public class Racing {
 
     private final List<RacingCar> allRacers;
 
-    public Racing(List<String> names) {
-        this.allRacers = names.stream()
+    public Racing(List<String> racerNames) {
+        validateRacingCarCount(racerNames);
+        this.allRacers = racerNames.stream()
                 .map(RacingCar::new)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
