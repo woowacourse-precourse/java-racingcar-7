@@ -17,66 +17,123 @@
 
 ## Controller
 
+### Controller
+
 - [x] 게임 실행하는 기능(gameStart)
 - [x] 게임 진행 결과 출력하는 기능(printGame)
 
-## 입력
+### InputController
 
 - [x] 경주할 자동차 이름 입력하는 기능(inputCarNames)
 - [x] 시도할 횟수 입력하는 기능(inputAttemptCount)
 
-## 출력
+### OutputController
 
 - [x] 개행 문자를 출력하는 기능(printEndLine)
 - [x] "실행 결과" 메시지를 출력하는 기능(printGameResultMessage)
 - [x] 레이스에 참가한 자동차들의 이름과 현 위치를 출력하는 기능(printRoundResult)
-  - 정수로 표현되는 현 위치를 "-"로 변환하는 기능
-  - 우승자 문자열을 만드는 기능
-    - 우승자가 여러명이면 ", "로 구분한다.
 - [x] 우승자 출력하는 기능(printWinners)
 
-## 자동차
+### CarController
+
+- [x] 입력한 문자열에서 이름 리스트를 가져 오는 기능(getName)
+- [x] 입력받은 이름들로 차 등록하는 기능(registerCar)
+
+### RaceController
+
+- [x] 차 리스트와 시도 횟수로 레이스를 등록하는 기능(registerRace)
+- [x] 게임을 한판 진행하는 기능(playRound)
+- [x] 우승자 선정하는 기능(getWinnerCarList)
+- [x] 레이스에 참가한 자동차 중 가장 멀리 이동한 값을 구하는 기능 (getMaxDistance)
+
+## domain
+
+### Car
 
 - [x] 이름 가져 오는 기능(getName)
 - [x] 위치 가져 오는 기능(getLocation)
 - [x] 전진하는 기능(plussLocation)
-- [x] 움직일 수 있는지 확인하는 기능(isMove)
-  - 랜덤 숫자를 뽑는 기능(pickNumber)
-  - 랜덤 숫자가 4 이상이면 움직일 수 있다.
-- [x] 각 이름을 ","로 구분하는 기능(getCarNames)
-- [x] 입력받은 이름들로 차 등록하는 기능(registerCar)
+- [x] 움직일 수 있는지 확인하는 기능(isMove) -[x] 랜덤 숫자를 뽑는 기능(pickNumber)
 
-## 레이스
+### Race
 
 - [x] 레이스에 참가한 차들 리스트 가져오는 기능(getCarList)
 - [x] 레이스를 시도할 횟수 반환받는 기능(getAttemptCount)
 - [x] 레이스에 참가한 차들의 현재 위치를 리스트로 가져오는 기능(getDistanceList)
+
+## service
+
+### CarService
+
+- [x] 각 이름을 ","로 구분하는 기능(splitCarNames)
+- [x] 입력받은 이름들로 차 등록하는 기능(registerCar)
+
+### RaceService
+
 - [x] 차 리스트와 시도 횟수로 레이스를 등록하는 기능(registerRace)
 - [x] 게임을 한판 진행하는 기능(playRound)
-- [x] 우승자 선정하는 기능(getWinnerCarList)
+- [x] 레이스에 참가한 자동차 중 가장 멀리 이동한 값을 구하는 기능 (getMaxDistance)
 
-  - 레이스에 참가한 자동차 중 가장 멀리 이동한 값을 구하는 기능 (getMaxDistance)
-  - 가장 멀리 이동한 값과 현재 위치가 동일한 자동차를 구해 리스트로 반환하는 기능(getCarListWithMaxDistance)
+## validate
+
+### CarValidator
+
+- [x] 차 이름의 길이는 5자 이내인지 확인하는 기능(carNameLengthLimit5)
+- [x] 차 이름이 중복되었는지 확인하는 기능(noDuplicateCarNames)
+
+### InputValidator
+
+- [x] 입력한 문자열에서 자동차 이름을 뽑을때 검증하는 기능(validateInputCarNames)
+- [x] 입력한 문자열에서 시도 횟수를 입력했을 때 검증하는 기능(validateInputAttemptCount)
+- [x] 입력한 문열이 null인지 확인하는 기능(noNull)
+- [x] 입력한 문자열이 빈 문자열, 공백인지 확인하는 기능(noBlank)
+- [x] 입력한 문자열이 영어(소문자, 대문자)와 쉼표(",")로 이루어져 있는지 확인하는 기능(containsOnlyEnglishAndComma)
+- [x] 입력한 문자열이 쉼표(",")로 시작하는지 확인하는 기능(noStartWithComma)
+- [x] 입력한 문자열이 쉼표(",")로 끝나는지 확인하는 기능(noEndWithComma)
+- [x] 쉼표(",")가 연속으로 입력되었는지 확인하는 기능(hasNoContinuousComma)
+- [x] 시도 횟수는 (0~9)인 숫자인지 확인하는 기능(onlyInputNumber)
+
+## view
+
+### InputView
+
+- [x] 경주할 자동차 이름을 입력받는 기능(getCarNames)
+- [x] 시도 횟수를 입력받는 기능(getAttemptCount)
+
+### OutputView
+
+- [x] 개행 문자를 출력하는 기능(printEndLine)
+- [x] "실행 결과" 메시지를 출력하는 기능(printGameResultMessage)
+- [x] 레이스에 참가한 자동차들의 이름과 현 위치를 출력하는 기능(printRoundResult)
+- [x] 우승자 출력하는 기능(printWinners)
+- [x] 정수로 표현되는 현 위치를 "-"로 변환하는 기능(getDashString)
+- [x] 우승자 문자열을 만드는 기능(createWinnersString)
 
 ---
 
-# 에러 상황
+# package 구조
 
-- [x] 입력한 문열이 null인지 확인하는 기능
-- [x] 입력한 문자열이 빈 문자열, 공백인지 확인하는 기능
-- [x] 입력한 문자열이 영어(소문자, 대문자)와 쉼표(",")로 이루어져 있는지 확인하는 기능
-- [x] 입력한 문자열이 쉼표(",")로 시작하는지 확인하는 기능
-- [x] 입력한 문자열이 쉼표(",")로 끝나는지 확인하는 기능
-- [x] 쉼표(",")가 연속으로 입력되었는지 확인하는 기능
-
-- 차 이름의 길이는 5자 이내인지 확인하는 기능
-- 차 이름이 중복되었는지 확인하는 기능
-
-- [ ] 시도할 횟수 입력하는 기능
-
-  - 숫자가 아닌 경우
-  - 소수, 문자, ...
-  - int 타입의 최대값인인 2,147483647을 초과한 숫자를 입력한 경우
-  - 음수 입력한 상황
-  - null
-  - 빈 입력
+```
+racingcar
+  ├── Application.java
+  ├── config
+  │   └── AppConfig.java
+  ├── controller
+  │   ├── CarController.java
+  │   ├── Controller.java
+  │   ├── InputController.java
+  │   ├── OutputController.java
+  │   └── RaceController.java
+  ├── domain
+  │   ├── Car.java
+  │   └── Race.java
+  ├── service
+  │   ├── CarService.java
+  │   └── RaceService.java
+  ├── validate
+  │   ├── CarValidator.java
+  │   └── InputValidator.java
+  └── view
+      ├── InputView.java
+      └── OutputView.java
+```
