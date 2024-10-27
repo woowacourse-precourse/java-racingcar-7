@@ -2,6 +2,7 @@ package racingcar.stream;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ConsoleInput implements Input {
@@ -10,7 +11,9 @@ public class ConsoleInput implements Input {
     public List<String> inputNames() {
         String input = Console.readLine();
         validateNamesInput(input);
-        return List.of(input.split(","));
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .toList();
     }
 
     private void validateNamesInput(String inputNames) {
