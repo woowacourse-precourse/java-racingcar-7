@@ -24,8 +24,8 @@ public class InputHandler {
         return inputReceiver.receiveRaceCount();
     }
 
-    public void validateInput(String carNames) {
-        inputValidator.validateInput(carNames);
+    public void validateInput(String carNames, long raceCount) {
+        inputValidator.validateInput(carNames, raceCount);
     }
 
 }
