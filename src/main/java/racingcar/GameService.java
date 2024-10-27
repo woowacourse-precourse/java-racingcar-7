@@ -16,6 +16,7 @@ public class GameService {
             nullValidation(input);
             String delimiter = ",";
             List<String> splitNames = List.of(input.split(delimiter));
+            nameValidation(splitNames);
             gameRepository.setCarName(splitNames);
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
@@ -104,6 +105,14 @@ public class GameService {
     private void nullValidation(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+    }
+
+    private void nameValidation(List<String> names) {
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("ERROR : 5자 이하의 이름만 입력 가능합니다.");
+            }
         }
     }
 
