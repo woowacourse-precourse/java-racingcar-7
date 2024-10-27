@@ -27,6 +27,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("이동 시도 횟수가 0번이어도 잘 작동해야 한다")
+    @Test
+    void 이동횟수는_0_이상이어야_한다() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "0");
+                    assertThat(output()).contains("최종 우승자 : pobi,woni");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @DisplayName("이름은 6글자 이상이면 예외가 발생한다.")
     @Test
     void 예외_테스트() {
