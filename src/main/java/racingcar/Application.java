@@ -95,12 +95,22 @@ public class Application {
     }
 
     public static void runGame(String[] carName, int gameCount) {
+        System.out.println();
+        System.out.println("실행 결과");
         for (int i = 0; i < gameCount; i++) {
             for (int j = 0; j < carName.length; j++) {
                 int randomNumber = makeRandomNumber();
                 moveOrStop(carName[j], randomNumber);
             }
+            printExecutionResult(carName);
         }
+    }
+
+    public static void printExecutionResult(String[] carName) {
+        for (int i = 0; i < carName.length; i++) {
+            System.out.println(carName[i] + " : " + "-".repeat(car.get(carName[i])));
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
