@@ -18,11 +18,11 @@ public class RacingTest {
 
     static Stream<Arguments> testData() {
         return Stream.of(
-                Arguments.arguments(List.of(Car.create("pobi", 2), Car.create("yiju", 3)),
+                Arguments.arguments(List.of(new Car("pobi", 2), new Car("yiju", 3)),
                         List.of("yiju")),
-                Arguments.arguments(List.of(Car.create("pobi", 2), Car.create("yiju", 2)),
+                Arguments.arguments(List.of(new Car("pobi", 2), new Car("yiju", 2)),
                         List.of("pobi", "yiju")),
-                Arguments.arguments(List.of(Car.create("pobi", 3), Car.create("yiju", 2)),
+                Arguments.arguments(List.of(new Car("pobi", 3), new Car("yiju", 2)),
                         List.of("pobi"))
         );
     }

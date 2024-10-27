@@ -12,14 +12,14 @@ public class CarTest {
     @MethodSource("testData")
     @ParameterizedTest
     void 차_생성_성공(String input, String output) {
-        Car car = Car.create(input, 0);
+        Car car = new Car(input, 0);
         assertThat(car.getName()).isEqualTo(output);
     }
 
     @MethodSource("errorTestData")
     @ParameterizedTest
     void 차_생성_실패(String input, Exception e) {
-        assertThatThrownBy(() -> Car.create(input, 0)).isInstanceOf(e.getClass());
+        assertThatThrownBy(() -> new Car(input, 0)).isInstanceOf(e.getClass());
     }
 
     static Stream<Arguments> testData() {

@@ -67,7 +67,7 @@ public class RacingController {
                     if (!carNames.add(carName)) {
                         throw new IllegalArgumentException(CAR_NAME_DUPLICATE_ERROR.getMessage());
                     }
-                    return Car.create(carName, CAR_POSITION_MIN);
+                    return new Car(carName, CAR_POSITION_MIN);
                 })
                 .toList();
     }

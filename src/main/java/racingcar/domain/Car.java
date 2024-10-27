@@ -8,14 +8,10 @@ public class Car {
     private final String name;
     private int position;
 
-    private Car(final String name, final int position) {
+    public Car(final String name, final int position) {
         validateCarName(name);
         this.name = name;
         this.position = position;
-    }
-
-    public static Car create(final String name, final int position) {
-        return new Car(name, position);
     }
 
     public String getName() {
