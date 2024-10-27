@@ -44,6 +44,7 @@ public class Application {
 			playRound(cars);
 			displayRoundResult(cars);
 		}
+		displayWinners(cars);
 	}
 
 	private static void playRound(List<Car> cars) {
@@ -60,6 +61,24 @@ public class Application {
 		System.out.println();
 	}
 
+	private static void displayWinners(List<Car> cars) {
+		int maxPosition = 0;
+		for(Car car : cars) {
+			if(car.getPosition() > maxPosition) {
+				maxPosition = car.getPosition();
+			}
+		}
+		
+		List<String> winners = new ArrayList<>();
+		for (Car car : cars) {
+			if(car.getPosition() == maxPosition) {
+				winners.add(car.getName());
+			}
+		}
+		
+		System.out.println("최종 우승자 : " + String.join(", ", winners));
+	}
+	
 	public static void main(String[] args) {
 		List<Car> cars = inputCarNames();
 		int tryCount = inputTryCount();
