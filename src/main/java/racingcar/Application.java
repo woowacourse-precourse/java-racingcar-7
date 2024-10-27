@@ -1,11 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Application {
     /*
     * 자동차 이름 입력 기능(readLine()) - 0
-    * - 자동차 이름은 쉼표(,)를 기준으로 구분
+    * - 자동차 이름은 쉼표(,)를 기준으로 구분 - 0
     * - 이름은 5자 이하만 가능
     * 게임 진행 회차수 입력 기능(readLine())
     * - String -> int로 변환
@@ -24,5 +25,11 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCarNames = Console.readLine();
 
+        List<String> cars = splitCarNames(inputCarNames);
+
+    }
+
+    public static List<String> splitCarNames(String inputCarNames){
+        return List.of(inputCarNames.split(","));
     }
 }
