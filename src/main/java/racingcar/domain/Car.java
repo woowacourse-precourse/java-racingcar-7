@@ -17,6 +17,10 @@ public class Car implements Comparable<Car> {
         this.position = FIRST_POSITION;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void moveForward(boolean isCarMovable) {
         if (isCarMovable) {
             position++;
@@ -29,6 +33,10 @@ public class Car implements Comparable<Car> {
 
     private String convertDigitPositionToVisualizedPosition() {
         return POSITION_INDICATOR.repeat(position);
+    }
+
+    public boolean isCarSamePosition(Car car) {
+        return car.position == this.position;
     }
 
     @Override
