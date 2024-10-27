@@ -9,13 +9,13 @@ public class CarController {
 
     public Map<String, String> createCars() {
         CarService carService = new CarService();
-        ArrayList<String> cars = carService.enterCarName();
-        Map<String, String> race = new HashMap<>();
+        ArrayList<String> carList = carService.enterCarName();
+        Map<String, String> cars = new HashMap<>();
 
-        for (String carName : cars) {
-            race.put(carName, "");
+        for (String carName : carList) {
+            cars.put(carName, "");
         }
 
-        return race;
+        return cars;
     }
 }
