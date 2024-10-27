@@ -28,21 +28,22 @@ public class RaceService {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCnt; i++) {
             raceRound(carList);
+            printRaceResult(carList);
         }
-        System.out.println();
     }
 
     private void raceRound(List<Car> carList) {
         for (Car car : carList) {
-            int num = pickRandomNumber();
-
-            if (goStraight(num))
+            if (pickRandomNumber() >= 4)
                 car.move();
-
-            // 테스트용
-            System.out.println(car.getName() + " 의 위치는 : " + car.getDistance() + ", 숫자는 " + num);
         }
-        // 라운드 별 구분
+    }
+
+    private void printRaceResult(List<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getDistance()));
+        }
+        // 라운드 간 간격을 위한 빈 줄 출력
         System.out.println();
     }
 
