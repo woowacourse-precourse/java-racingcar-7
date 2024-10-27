@@ -42,7 +42,6 @@ public class Application {
         // 우승자 출력(공동 우승자)
         private void displayWinners(List<Car> winners) {
             if (winners.size() == 1) {
-                System.out.println(winners.getFirst().name);
                 System.out.println("최종 우승자 : " + winners.getFirst().name);
             } else {
                 String winnerNames = winners.stream()
