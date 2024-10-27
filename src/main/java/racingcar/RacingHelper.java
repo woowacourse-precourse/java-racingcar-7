@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -78,5 +79,28 @@ public class RacingHelper {
         if (!racingTime.matches("\\d+")) {
             throw new IllegalArgumentException("입력 값에 숫자 외의 허용되지 않은 문자가 포함되어 있습니다");
         }
+    }
+
+    /**
+     * 1번 경주한 뒤의 자동차 이름 별 결과 출력
+     */
+    public static List<Integer> printRacingCourse(List<String> carNameList, List<Integer> carRunningCountList) {
+        for (int i = 0; i < carNameList.size(); i++) {
+            System.out.print(carNameList.get(i) + " : ");
+            if (isCarRunning()) {
+                carRunningCountList.set(i, carRunningCountList.get(i) + 1);
+            }
+            System.out.println("-".repeat(carRunningCountList.get(i)));
+        }
+        System.out.println();
+        return carRunningCountList;
+    }
+
+    /**
+     * 자동차가 전진인지 여부 검사 (4 이상인 경우 전진)
+     */
+    private static boolean isCarRunning() {
+        int randomNum = Randoms.pickNumberInRange(0, 9);
+        return randomNum >= 4;
     }
 }
