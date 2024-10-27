@@ -45,7 +45,7 @@ src
     │       └── view
     │           ├── InputView.java
     │           └── OutputView.java
-└── test
+    test
     └── java
         └── racingcar
             ├── validator
