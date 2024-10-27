@@ -58,6 +58,7 @@ public class RacingView {
     private void validateCar(String[] car) {
         InputValidation.checkOnce(car);
         for (String carName : car) {
+            InputValidation.checkWhite(carName);
             InputValidation.checkDuplicate(carName);
             InputValidation.checkSpecialCharacters(carName);
             InputValidation.checkLength(carName);

@@ -39,6 +39,12 @@ public class InputValidation {
         }
     }
 
+    public static void checkWhite(String carName){
+        if (carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("빈 이름이나 공백만 포함된 이름은 허용되지 않습니다: " + carName);
+        }
+    }
+
 
     public static void  checkParseInt(int number) {
         if (number < 0) {
