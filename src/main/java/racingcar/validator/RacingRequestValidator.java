@@ -3,12 +3,15 @@ package racingcar.validator;
 import java.util.List;
 import racingcar.dto.request.RacingRequestDTO;
 
-public class RacingRequestValidator {
+public final class RacingRequestValidator {
     private final static String BLANK_CAR_NAME_MESSAGE = "자동차 이름이 비어있습니다.";
     private final static String CAR_NAME_TOO_LONG_MESSAGE = "자동차 이름 %d자 초과 되었습니다.";
     private final static Integer MAX_CAR_NAME_LENGTH = 5;
     private final static String INVALID_MOVE_COUNT_MESSAGE = "이동 횟수는 %d 이상이어야 합니다.";
     private final static Integer MIN_MOVE_COUNT = 1;
+
+    private RacingRequestValidator() {
+    }
 
     public static void validate(RacingRequestDTO racingRequestDTO) {
         validateCarNames(racingRequestDTO.carNames());
