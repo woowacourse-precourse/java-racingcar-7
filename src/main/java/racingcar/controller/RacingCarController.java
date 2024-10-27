@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.car.RacingCar;
 import racingcar.service.RacingCarService;
@@ -23,5 +24,6 @@ public class RacingCarController {
 
         List<RacingCar> winners = racingCarService.getWinnerRacingCars(racingCars);
         OutputView.printWinner(winners);
+        Console.close();
     }
 }
