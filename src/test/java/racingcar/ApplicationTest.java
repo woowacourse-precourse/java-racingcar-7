@@ -61,6 +61,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트2_attempt_0() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java;kate", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     // ','가 아닌 다른 문자가 있을 경우
 
     @Override
