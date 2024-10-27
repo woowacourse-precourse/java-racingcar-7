@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-import racingcar.util.StringValidator;
+import racingcar.constant.Rule;
+import racingcar.util.validator.StringValidator;
 
 public class CarName {
 
-    private static final int MAX_LENGTH = 5;
     private final String value;
 
     private CarName(final String value) {
@@ -13,7 +13,7 @@ public class CarName {
 
     public static CarName of(final String value, final StringValidator stringValidator) {
         stringValidator.validateFormat(value);
-        stringValidator.validateLength(value, MAX_LENGTH);
+        stringValidator.validateLength(value, Rule.CAR_NAME_LENGTH_MAX);
         return new CarName(value);
     }
 
