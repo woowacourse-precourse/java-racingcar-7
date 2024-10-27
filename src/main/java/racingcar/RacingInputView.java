@@ -26,7 +26,7 @@ public class RacingInputView {
         return input.matches("-?\\d+");
     }
 
-    private void validateNumberInput(String input) {
+    private void validateIntegerInput(String input) {
         if (!isInteger(input)) {
             throw new IllegalArgumentException(ERROR_MOVE_COUNT_NOT_INTEGER);
         }
@@ -35,7 +35,7 @@ public class RacingInputView {
     public Integer getMoveCount() {
         System.out.println(MESSAGE_MOVE_COUNT_INPUT);
         String input = Console.readLine().strip();
-        validateNumberInput(input);
+        validateIntegerInput(input);
         return Integer.parseInt(input);
     }
 }
