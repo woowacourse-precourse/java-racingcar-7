@@ -10,8 +10,9 @@ public class TryCountNotNullOrEmptyValidator implements ValidationStrategy<Strin
         validateNotNullOrEmpty(value);
     }
 
+
     private void validateNotNullOrEmpty(String value) {
-        if (value == null || value.trim().isEmpty()) {
+        if (value == null || value.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_TRY_COUNT.getMessage());
         }
     }
