@@ -1,5 +1,8 @@
 package racingcar.validator;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import racingcar.exception.CarRacingException;
 import racingcar.exception.ErrorMessage;
 
@@ -8,6 +11,16 @@ import racingcar.exception.ErrorMessage;
  * - 자동차 이름 유효성 검사
  */
 public class CarNameValidator {
+
+    public static void validateNames(List<String> carNames) {
+        Set<String> nameSet = new HashSet<>();
+        for (String name : carNames) {
+            validate(name);
+            if (!nameSet.add(name)) {
+                throw new CarRacingException(ErrorMessage.DUPLICATE_CAR_NAME);
+            }
+        }
+    }
 
     public static void validate(String name) {
         if (name == null || name.isBlank()) {

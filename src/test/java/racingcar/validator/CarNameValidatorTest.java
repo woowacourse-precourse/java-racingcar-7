@@ -2,6 +2,8 @@ package racingcar.validator;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.exception.CarRacingException;
@@ -33,6 +35,14 @@ public class CarNameValidatorTest {
         CarRacingException exception = assertThrows(CarRacingException.class,
                 () -> CarNameValidator.validate("po un"));
         assert exception.getMessage().equals(ErrorMessage.INVALID_CAR_NAME_SPACE.getMessage());
+    }
+
+    @Test
+    @DisplayName("자동차 이름에 중복이 있을 때 예외 발생")
+    void duplicateNamesThrowsException() {
+        List<String> carNames = Arrays.asList("pobi", "crong", "pobi");  // 중복된 이름 포함
+        CarRacingException exception = assertThrows(CarRacingException.class, () -> CarNameValidator.validateNames(carNames));
+        assert exception.getMessage().equals(ErrorMessage.DUPLICATE_CAR_NAME.getMessage());
     }
 
     @Test
