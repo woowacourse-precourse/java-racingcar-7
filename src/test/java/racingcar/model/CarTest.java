@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     private Car car;
-    private static final String TEST_CAR = "pobi";
+    private final String TEST_CAR = "pobi";
 
     @BeforeEach
     void setUp() {
