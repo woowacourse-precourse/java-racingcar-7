@@ -12,6 +12,7 @@ public class Application {
         NumCounter numCounter = new NumCounter();
         MapBuilder mapBuilder = new MapBuilder();
         RandomPicker randomPicker = new RandomPicker();
+        WinnerSorter winnerSorter = new WinnerSorter();
 
         System.out.println(messagePrinter.carNameGuideMessage);
         String userInputCar = inputReader.getUserInput();
@@ -37,8 +38,9 @@ public class Application {
             mapBuilder.mapSingleRandomRoundResult(i);
         }
         System.out.println(messagePrinter.totalRandomResultMessage());
-        
+
         //우승자 목록 도출하기
         Map<String, Integer> totalForwardCount= mapBuilder.getCarNameAndForwardCount();
+        Map<String, Integer> sortedTotalForwardCount = winnerSorter.sort(totalForwardCount);
     }
 }
