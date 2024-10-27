@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,7 @@ public class RacingCarTest{
 
     //setCarName() 메서드 테스트
     @Test
-    @DisplayName("이름 저장 실패: 한글, 영어 외의 문자 포함")
+    @DisplayName("이름 설정 실패: 한글, 영어 외의 문자 포함 오류")
     void failSetCarNameTest1() throws Exception {
         RacingCar car = new RacingCar();
         //String TestName = "ㅇㅇ";
@@ -27,7 +26,7 @@ public class RacingCarTest{
     }
 
     @Test
-    @DisplayName("이름 저장 실패: 5글자 초과, 1글자 미만")
+    @DisplayName("이름 설정 실패: 5글자 초과, 1글자 미만 오류")
     void failSetCarNameTest2() {
         RacingCar car = new RacingCar();
         String TestName = "kkkkkkk";
@@ -38,7 +37,7 @@ public class RacingCarTest{
     }
 
     @Test
-    @DisplayName("이름 저장 성공")
+    @DisplayName("이름 설정 성공")
     void successCarNameTest() throws Exception {
         RacingCar car = new RacingCar();
         String TestName = "pobi";
@@ -62,7 +61,7 @@ public class RacingCarTest{
 
     //moveForward 기능 체크
     @Test
-    @DisplayName("moveForward 예외 처리(거리와 현재 위치 표현에 차이가 있는 경우")
+    @DisplayName("moveForward 예외 처리(거리와 현재 위치 표현에 차이가 있는 경우)")
     void moveForwardTest() {
         RacingCar car = new RacingCar();
         car.currentDistance = 3;
