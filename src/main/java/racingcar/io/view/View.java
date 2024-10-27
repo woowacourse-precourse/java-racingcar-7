@@ -2,13 +2,15 @@ package racingcar.io.view;
 
 import racingcar.dto.CarsDto;
 
-public class OutPutView {
+public class View {
     private final RacePositionView racePositionView;
     private final WinnerView winnerView;
+    private final InputView inputView;
 
-    public OutPutView(RacePositionView racePositionView, WinnerView winnerView) {
+    public View(RacePositionView racePositionView, WinnerView winnerView, InputView inputView) {
         this.racePositionView = racePositionView;
         this.winnerView = winnerView;
+        this.inputView = inputView;
     }
 
     public void showRacePosition(CarsDto racePositionDto) {
@@ -17,5 +19,13 @@ public class OutPutView {
 
     public void showWinner(CarsDto carList) {
         winnerView.showWinner(carList);
+    }
+
+    public void showCarNameExplanation() {
+        inputView.showCarNameExplanation();
+    }
+
+    public void showAttemptExplanation() {
+        inputView.showAttemptExplanation();
     }
 }

@@ -1,19 +1,19 @@
 package racingcar.config;
 
 import racingcar.io.InputReceiver;
-import racingcar.io.view.OutPutView;
+import racingcar.io.view.View;
 
 public class CarRaceConfig {
-    private final OutPutView outPutView;
+    private final View view;
     private final InputReceiver inputReceiver;
 
-    public CarRaceConfig(OutPutView outPutView, InputReceiver inputReceiver) {
-        this.outPutView = outPutView;
+    public CarRaceConfig(View view, InputReceiver inputReceiver) {
+        this.view = view;
         this.inputReceiver = inputReceiver;
     }
 
-    public OutPutView getOutPutView() {
-        return outPutView;
+    public View getOutPutView() {
+        return view;
     }
 
     public InputReceiver getInputReceiver() {
