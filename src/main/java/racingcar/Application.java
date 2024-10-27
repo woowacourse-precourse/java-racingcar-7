@@ -1,15 +1,17 @@
 package racingcar;
+
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         try {
             // 차명 입력
-            String[] carNames = getCarNames(scanner);
+            String[] carNames = getCarNames();
             // 레이스 횟수 입력
-            int raceRounds = getRaceRounds(scanner);
+            int raceRounds = getRaceRounds();
             // 차 객체 생성
             List<Car> cars = initializeCars(carNames);
             // 레이스 시작
@@ -19,15 +21,13 @@ public class Application {
 
         } catch (IllegalArgumentException e) { // 잘못된 값 예외 처리
             System.out.println(e.getMessage());
-        } finally {
-            scanner.close();
         }
     }
 
     // 차 이름 입력
-    private static String[] getCarNames(Scanner scanner) {
+    private static String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] carNames = scanner.nextLine().split(",");
+        String[] carNames = Console.readLine().split(",");
         // 이름 유효성 검사
         checkCarNames(carNames);
         return carNames;
@@ -44,9 +44,9 @@ public class Application {
     }
 
     // 레이스 횟수 입력 및 유효성 검사
-    private static int getRaceRounds(Scanner scanner) {
+    public static int getRaceRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int raceRounds = scanner.nextInt();
+        int raceRounds = Integer.parseInt(Console.readLine().trim());
         if(raceRounds < 1){
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
@@ -66,18 +66,17 @@ public class Application {
     private static void startRace(List<Car> cars, int raceRounds){
         System.out.println("실행 결과");
         for (int i = 0; i < raceRounds; i++) { // 지정된 시도 횟수만큼 반복
-             // 차 이동
-             moveCars(cars);
-             // 현재 위치
-             raceStatus(cars);
+            // 차 이동
+            moveCars(cars);
+            // 현재 위치
+            raceStatus(cars);
         }
     }
 
     // 랜덤 값에 따라 이동
     private static void moveCars(List<Car> cars) {
-        Random random = new Random();
         for (Car car : cars) {
-            if (random.nextInt(10) >= 4) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.moveForward();
             }
         }
@@ -94,20 +93,25 @@ public class Application {
     // 우승자 결정 및 출력
     private static void printWinners(List<Car> cars){
         List<String> winners = new ArrayList<>();
-        int topPosition = 0;
-
-        for(Car car : cars){
-            if(car.currentPosition() > topPosition ){
-                topPosition = car.currentPosition();
-            }
-        }
-
+        // 일등 위치 정하기
+        int topPosition = getTopPosition(cars);
+        // 우승자 이름 출력
         for(Car car : cars){
             if(car.currentPosition() == topPosition){
                 winners.add(car.getName());
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static int getTopPosition(List<Car> cars) {
+        int topPosition = 0;
+        for( Car car : cars ) {
+            if (car.currentPosition() > topPosition) {
+                topPosition = car.currentPosition();
+            }
+        }
+        return topPosition;
     }
 }
 
