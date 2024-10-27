@@ -7,8 +7,12 @@ public class GameValidation {
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public static void validateCarNames(List<String> carNames) {
-        for (String carName : carNames) {
-            validateCarNameLength(carName);
+        carNames.forEach(GameValidation::validateCarNameLength);
+    }
+
+    public static void validateTryCountIsNumber(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_A_NUMBER.getMessage());
         }
     }
 

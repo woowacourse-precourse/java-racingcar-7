@@ -23,4 +23,16 @@ public class InputView {
             return getCarNames();
         }
     }
+
+    public int getTryCount() {
+        try {
+            String input = Console.readLine();
+            GameValidation.validateTryCountIsNumber(input);
+            return inputParser.parseTryCount(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getTryCount();
+        }
+    }
+
 }

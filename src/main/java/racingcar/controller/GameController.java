@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import static racingcar.view.OutputView.printGameStart;
+import static racingcar.view.OutputView.printTryCount;
 
 import java.util.List;
 import racingcar.domain.Car;
@@ -16,6 +17,7 @@ public class GameController {
 
     public void run() {
         Cars cars = setCars();
+        int tryCount = setTryCount();
     }
 
     private Cars setCars() {
@@ -25,5 +27,10 @@ public class GameController {
                 .map(Car::of)
                 .toList();
         return new Cars(carList);
+    }
+
+    private int setTryCount() {
+        printTryCount();
+        return inputView.getTryCount();
     }
 }

@@ -9,4 +9,8 @@ public class InputParser {
         String[] carNames = input.split(",");
         return Arrays.stream(carNames).toList();
     }
+
+    public int parseTryCount(String input) {
+        return Integer.parseInt(input);
+    }
 }
