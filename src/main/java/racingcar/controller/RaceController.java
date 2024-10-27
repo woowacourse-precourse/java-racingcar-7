@@ -24,5 +24,7 @@ public class RaceController {
         for (int i=0; i<turn; i++) {
             Output.printEachTurnResult(race.playOneTurn());
         }
+
+        Output.printWinners(race.getWinner());
     }
 }
