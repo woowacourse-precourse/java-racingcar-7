@@ -19,19 +19,15 @@ public class RacingGameController {
     }
 
     public void run() {
-        // 초기화 단계: 사용자 입력을 통해 경주 초기화
         List<String> carNames = inputView.getCarNames();
         int attempts = inputView.getAttempts();
         RacingGame racingGame = racingGameService.initializeRace(carNames, attempts);
 
-        // 경주 진행 및 결과 출력
         outputView.printRaceResultPrefix();
         List<List<CarLocation>> raceHistory = racingGameService.runRace(racingGame);
 
-        // 라운드별 결과 출력
         raceHistory.forEach(outputView::printRaceProcess);
 
-        // 최종 우승자 출력
         List<String> winners = racingGameService.getWinners(racingGame.cars());
         outputView.printWinners(winners);
     }

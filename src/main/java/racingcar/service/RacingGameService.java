@@ -13,13 +13,11 @@ public class RacingGameService {
     public static final int MAX_RANDOM_VALUE = 9;
     private static final int FORWARD_THRESHOLD = 4;
 
-    // 경주 초기화: 자동차 이름 목록과 시도 횟수를 받아 RacingGame 객체 생성
     public RacingGame initializeRace(List<String> carNames, int attempts) {
         List<RacingCar> cars = RacingCar.createRacingCars(carNames);
         return new RacingGame(cars, attempts);
     }
 
-    // 경주 실행: 각 라운드별로 자동차 이동을 시도하고, 각 라운드의 결과를 기록하여 반환
     public List<List<CarLocation>> runRace(RacingGame racingGame) {
         List<List<CarLocation>> raceHistory = new ArrayList<>();
 
@@ -30,7 +28,6 @@ public class RacingGameService {
         return raceHistory;
     }
 
-    // 각 라운드에서 자동차를 이동시키는 메서드
     private void raceRound(List<RacingCar> cars) {
         cars.forEach(car -> {
             int randomValue = Randoms.pickNumberInRange(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
@@ -39,7 +36,6 @@ public class RacingGameService {
         });
     }
 
-    // 이동 상태 결정
     private Movement determineMovement(int randomNumber) {
         if (randomNumber >= FORWARD_THRESHOLD) {
             return Movement.MOVING_FORWARD;
