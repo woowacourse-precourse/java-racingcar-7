@@ -29,6 +29,6 @@ public class RacingController {
             outputView.printRound(cars);
         }
 
-        outputView.printWinners(cars);
+        outputView.printWinners(racingModel.getWinners(cars));
     }
 }
