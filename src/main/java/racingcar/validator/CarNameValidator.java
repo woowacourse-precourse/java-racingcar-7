@@ -1,7 +1,7 @@
 package racingcar.validator;
 
 import java.util.List;
-import racingcar.util.CarNameUtils;
+import racingcar.utils.CarNameParser;
 import racingcar.validator.strategies.carnames.CarMinimumCountValidator;
 import racingcar.validator.strategies.carnames.CarNameDuplicateValidator;
 import racingcar.validator.strategies.carnames.CarNameListNotEmptyValidator;
@@ -35,7 +35,7 @@ public class CarNameValidator {
         carNameTrailingCommaValidator.validate(carNames);
 
         // 3. carNames를 리스트로 분리하여 모든 Validator에 전달
-        List<String> nameList = CarNameUtils.splitCarNames(carNames);
+        List<String> nameList = CarNameParser.splitCarNames(carNames);
 
         // 4. 빈 항목을 포함하지 않는지 검증
         carNameListNotEmptyValidator.validate(nameList);
