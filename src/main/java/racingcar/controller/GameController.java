@@ -1,8 +1,9 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 
 public class GameController {
@@ -14,7 +15,11 @@ public class GameController {
 
     public void run() {
         String carRegistrationRequest = inputView.readCarRegistrationRequest();
-        List<String> cars = Arrays.asList(carRegistrationRequest.split(","));
+        List<String> carNames = Arrays.asList(carRegistrationRequest.split(","));
         int roundCount = inputView.readRoundCount();
+
+        List<Car> cars = carNames.stream().map(Car::new).toList();
+        for(int round = 0; round < roundCount; round++) {
+        }
     }
 }
