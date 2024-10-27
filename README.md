@@ -10,7 +10,7 @@
 
 ## Class Diagram
 
-![java-racingcar-class-diagram](./class-diagram.drawio.png)
+![java-racingcar-class-diagram](./class-diagram-v3.png)
 
 ## Application Class
 
