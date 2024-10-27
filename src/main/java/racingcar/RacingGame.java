@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -29,7 +30,25 @@ public class RacingGame {
                 for(int j=0;j<car.count;j++){
                     System.out.print("-");
                 }
+                System.out.println();
+            }
+            System.out.println();
+        }
+
+        int max=0;
+        for(Car car : carList) {
+            if(car.count > max) {
+                max = car.count;
             }
         }
+
+        String winnerString = "";
+        for(Car car : carList) {
+            if(car.count == max) {
+                winnerString += car.name + ", ";
+            }
+        }
+        winnerString = winnerString.substring(0, winnerString.length() - 2);
+        System.out.println("최종 우승자 : " + winnerString);
     }
 }
