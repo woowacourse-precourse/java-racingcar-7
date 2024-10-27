@@ -72,7 +72,7 @@ class CarUtilTest {
     @DisplayName("한글로 값이 들어와도 예외가 발생되면 안된다")
     void 유효성_검사_한글_테스트(String carNames) {
         assertDoesNotThrow(() -> {
-            CarUtil.specialCharValidation(carNames);
+            CarUtil.splitAndNameValidation(carNames);
         });
     }
 
@@ -81,7 +81,7 @@ class CarUtilTest {
     @DisplayName("영문 이름으로 이루어진 이름들은 예외를 발생하면 안된다.")
     void 유효성_검사_영문_테스트(String carNames) {
         assertDoesNotThrow(() -> {
-            CarUtil.specialCharValidation(carNames);
+            CarUtil.splitAndNameValidation(carNames);
         });
     }
 
@@ -112,7 +112,7 @@ class CarUtilTest {
     @DisplayName("다른 특수기호, 숫자값에 대해 모두 예외를 리턴해야함")
     void 이름_유효성_검사_예외_테스트(String carNames) {
         assertThatThrownBy(() -> {
-            CarUtil.specialCharValidation(carNames);
+            CarUtil.splitAndNameValidation(carNames);
         }).isInstanceOf(IllegalArgumentException.class).hasMessage(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
     }
 
@@ -121,7 +121,6 @@ class CarUtilTest {
     @DisplayName("replace를 통해 중간 공백은 물론 2칸 이상의 공백도 없앤다.")
     void 공백_제거_2차_테스트(String carNames) {
         assertDoesNotThrow(() -> {
-            CarUtil.specialCharValidation(carNames);
             CarUtil.splitAndNameValidation(carNames);
         });
     }
@@ -130,7 +129,6 @@ class CarUtilTest {
     @ValueSource(strings = {"구상우,ksw,sang"})
     @DisplayName("자동차명 문자열을 넘기면 차명과 전진횟수 문자열을 가진 Map 리턴")
     void 자동차별_Map_생성(String carNames) {
-        CarUtil.specialCharValidation(carNames);
         var trimCarNames = CarUtil.splitAndNameValidation(carNames);
         var carNameConvertMapList = trimCarNames.stream().map(carName -> {
             var nameAndGoCount = new HashMap<String, String>();

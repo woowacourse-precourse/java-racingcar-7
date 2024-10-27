@@ -17,7 +17,6 @@ public class CarUtil {
 
     // 자동차의 이름과 전진횟수를 넣을 수 있는 객체를 리턴함
     public static List<CarVO> getCarNameAndGoCountList(String inputValue) {
-        specialCharValidation(inputValue);
         return splitAndNameValidation(inputValue).stream().map(carName -> {
             var nameAndGoCount = new CarVO(carName);
             return nameAndGoCount;
@@ -25,18 +24,16 @@ public class CarUtil {
 
     }
 
-    public static void specialCharValidation(String inputVal) {
-        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z가-힣 ].*");
-
-        if (isContainAnotherSpecialChar) {
-            throw new IllegalArgumentException(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
-        }
-    }
 
     // 특수기호 유효성검사를 마치고 공백 제거 및 길이 확인
     public static List<String> splitAndNameValidation(String inputVal) {
         List<String> trimCarNameList = Arrays.stream(inputVal.split(","))
                 .map(carName -> carName.replace(" ", "")).toList();
+        boolean isContainAnotherSpecialChar = inputVal.matches(".*[^,a-zA-Z가-힣 ].*");
+
+        if (isContainAnotherSpecialChar) {
+            throw new IllegalArgumentException(", 외에 다른 특수 기호와 숫자를 사용하면 안됩니다.");
+        }
 
         for (String carName : trimCarNameList) {
             if (carName.length() > 5) {
