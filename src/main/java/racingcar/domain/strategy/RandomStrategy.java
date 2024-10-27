@@ -12,14 +12,8 @@ public class RandomStrategy implements Strategy {
 
     @Override
     public int generate() {
-        if (fixedMoveNumber != null && fixedMoveNumber < MIN_MOVABLE_NUMBER) {
+        if (fixedMoveNumber != null) {
             return fixedMoveNumber;
-        }
-        if (fixedMoveNumber != null && fixedMoveNumber >= MIN_MOVABLE_NUMBER) {
-            return fixedMoveNumber;
-        }
-        if (fixedMoveNumber == null && fixedMoveNumber == null) {
-            return Randoms.pickNumberInRange(LOWER_BOUND, UPPER_BOUND);
         }
         return Randoms.pickNumberInRange(LOWER_BOUND, UPPER_BOUND);
     }
