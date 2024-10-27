@@ -16,7 +16,7 @@ public class Application {
         validateTryCount(tryCount);
 
        List<RacingCar> racingCarList = initRacingCarList(carNames);
-       int maxRoundValue = Integer.parseInt(tryCount);
+       int maxRoundValue = initMaxRoundValue(tryCount);
        Race race = new Race(racingCarList, maxRoundValue);
        race.start();
     }
@@ -28,6 +28,10 @@ public class Application {
             racingCarList.add(racingCar);
         }
         return racingCarList;
+    }
+
+    static int initMaxRoundValue(String tryCount) {
+        return Integer.parseInt(tryCount);
     }
 
 }
