@@ -26,9 +26,7 @@ public class Race {
     }
 
     public void play() {
-        for (int i = 0; i < round; i++) {
-            executeRound();
-        }
+        executeRound();
     }
 
     private void executeRound() {

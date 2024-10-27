@@ -41,10 +41,11 @@ public class GameController {
     }
 
     private void play() {
-
+        outputView.printResultMessage();
         for (int i = 0; i < race.getRound(); i++) {
             race.play();
             outputView.printCarStates(race.getCarList());
+            System.out.println();
         }
     }
 

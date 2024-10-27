@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
+    private final static String RESULT_MESSAGE = "실행 결과";
+
+    public void printResultMessage() {
+        System.out.println(RESULT_MESSAGE);
+    }
 
     public void printCarStates(List<Car> carList) {
         for (Car car : carList) {
