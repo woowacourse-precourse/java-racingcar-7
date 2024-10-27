@@ -21,10 +21,6 @@ public class Car {
         return distance;
     }
 
-    private void increaseDistance() {
-        distance++;
-    }
-
     public String toStringCarPosition(Car car) {
         return String.format("%s : %s%n", car.getName(), "-".repeat(car.getDistance()));
     }
@@ -33,6 +29,10 @@ public class Car {
         if (canMoveForward()) {
             increaseDistance();
         }
+    }
+
+    public void increaseDistance() {
+        distance++;
     }
 
     private boolean canMoveForward() {
