@@ -19,6 +19,14 @@ public class Validation {
         return carNamesInput;
     }
 
+    public static String lapCount(String lapCountInput) {
+        vacantInput(lapCountInput);
+        nonNumericCharsExist(lapCountInput);
+        tooBigNumber(lapCountInput);
+        lapCountIsZero(lapCountInput);
+        return lapCountInput;
+    }
+
     // 공용 빈 입력 검증
     private static void vacantInput(String input) {
         if(input == null || input.isEmpty()) {
@@ -72,5 +80,25 @@ public class Validation {
     private static Long separatorCount(String input) {
         return Stream.of(input.split(ExpressionFormat.VACANT.form()))
                 .filter(c -> c.equals(ExpressionFormat.SEPARATOR.form())).count();
+    }
+
+    // 시도할 횟수 입력 검증
+    private static void nonNumericCharsExist(String lapCountInput){
+        if(!lapCountInput.matches(ExpressionFormat.ONLY_NUMBERS.form())){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void tooBigNumber(String lapCountInput) {
+        BigInteger bigInt = new BigInteger(lapCountInput);
+        if(bigInt.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void lapCountIsZero(String lapCountInput) {
+        if(Long.parseLong(lapCountInput) < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 }

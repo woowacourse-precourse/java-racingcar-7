@@ -1,7 +1,6 @@
 package racingcar.service.input;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,7 @@ class ValidationTest {
     void vacant() {
         String nullString = null;
         assertThatThrownBy(() -> Validation.carNames(nullString)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(nullString)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -20,6 +20,7 @@ class ValidationTest {
     void whitespace() {
         String whitespace = "";
         assertThatThrownBy(() -> Validation.carNames(whitespace)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(whitespace)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -27,6 +28,7 @@ class ValidationTest {
     void blank() {
         String blank = " ";
         assertThatThrownBy(() -> Validation.carNames(blank)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(blank)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -34,6 +36,7 @@ class ValidationTest {
     void blank2() {
         String blank = "  ";
         assertThatThrownBy(() -> Validation.carNames(blank)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(blank)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -41,6 +44,7 @@ class ValidationTest {
     void blank3() {
         String blank = "\t";
         assertThatThrownBy(() -> Validation.carNames(blank)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(blank)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -48,5 +52,6 @@ class ValidationTest {
     void blank4() {
         String blank = "\n";
         assertThatThrownBy(() -> Validation.carNames(blank)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validation.lapCount(blank)).isInstanceOf(IllegalArgumentException.class);
     }
 }
