@@ -34,7 +34,7 @@ public class CarService {
         return cars;
     }
 
-    public List<Car> getWinners(List<Car> cars) {
+    public List<String> getWinners(List<Car> cars) {
         Optional<Integer> maxDistanceOptional = cars.stream()
                 .map(Car::getPosition)
                 .max(Integer::compareTo);
@@ -43,6 +43,7 @@ public class CarService {
 
         return cars.stream()
                 .filter(car -> car.getPosition() == maxDistance)
+                .map(Car::getName)
                 .toList();
     }
 

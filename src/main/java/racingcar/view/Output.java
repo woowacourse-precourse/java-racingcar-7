@@ -13,14 +13,7 @@ public class Output {
         System.out.println("실행결과");
     }
 
-    public void printWinner(List<Car> winners) {
-        System.out.println("최종 우승자 : " + joinNames(winners));
-    }
-
-    private String joinNames(List<Car> winnerList) {
-        return winnerList.stream()
-                .map(Car::getName)
-                .reduce((name1, name2) -> name1 + ", " + name2)
-                .orElse("");
+    public void printWinner(List<String> winners) {
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
