@@ -20,4 +20,13 @@ public class RaceGameController {
         }
         return cars;
     }
+
+    /**
+     * 자동차별로 게임을 1회 실행
+     */
+    public void startOneGame(List<Car> cars) {
+        for (Car car : cars) {
+            car.startOneGame();
+        }
+    }
 }
