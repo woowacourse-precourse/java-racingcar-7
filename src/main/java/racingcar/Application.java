@@ -1,15 +1,30 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
     public static class View {
         // 사용자로 부터 자동차 이름들을 입력 받음
+        private String inputCarName() {
+            return Console.readLine();
+        }
         // 사용자로 부터 자동차 이동 횟수를 입력 받음
+        private String inputCarRoundCount() {
+            return Console.readLine();
+        }
 
         // 경주할 자동차 입력에 대한 출력
+        private void printOutputCarName(String input) {
+            System.out.println(input);
+        }
         // 시도할 이동 횟수 입력에 대한 출력
+        private void printOutputCarRoundCount(String inputCount) {
+            System.out.println(inputCount);
+        }
+
         // 자동차들의 이동 상황(차수별 실행 결과)에 대한 출력
         // 우승자 출력(단독 우승자)
         // 우승자 출력(공동 우승자)
