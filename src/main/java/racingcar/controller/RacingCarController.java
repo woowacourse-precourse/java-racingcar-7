@@ -12,9 +12,10 @@ public class RacingCarController {
 
     public void run() {
         inputView.printInputCarNameMessage();
-
         String carNames = inputView.getInput();
 
         inputView.printInputTryCountMessage();
+        String tryCount = inputView.getInput();
+        System.out.println(tryCount);
     }
 }
