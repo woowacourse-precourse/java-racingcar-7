@@ -11,8 +11,6 @@ public class ParsingServiceEmb implements ParsingService {
         return Arrays.asList(s.split(","));
     }
 
-
-
     @Override
     public Long parseStringIntoLong(String s) {
         return Long.parseLong(s);

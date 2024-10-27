@@ -1,7 +1,6 @@
 package racingcar;
 
-
-import racingcar.controller.RaceController;
+import racingcar.controller.race.RaceController;
 import racingcar.service.factory.RaceControllerFactory;
 import racingcar.service.factory.RaceControllerFactoryEmb;
 

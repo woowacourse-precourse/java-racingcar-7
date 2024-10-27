@@ -30,6 +30,7 @@ public class InputControllerEmb implements InputController{
 
     @Override
     public Long getRoundInput(){
-        return parsingService.parseStringIntoLong(inputHandler.getInput());
+        Long round = parsingService.parseStringIntoLong(inputHandler.getInput());
+        return round;
     }
 }

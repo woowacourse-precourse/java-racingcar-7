@@ -19,7 +19,8 @@ public class RacingCarEmb implements RacingCar {
     }
 
     @Override
-    public void increaseDistance(){
+    public RacingCar increaseDistance(){
         this.distance++;
+        return this;
     }
 }

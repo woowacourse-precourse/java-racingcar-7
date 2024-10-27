@@ -1,4 +1,4 @@
-package racingcar.controller;
+package racingcar.controller.race;
 
 import racingcar.controller.IO.InputController;
 import racingcar.controller.IO.OutputController;
@@ -21,6 +21,7 @@ public class RaceControllerEmb implements RaceController {
     private final ResultViewer resultViewer;
     private Long currentRound = 0L;
     private Long totalRound = 0L;
+
     public RaceControllerEmb(OutputController outputController, InputController inputController,CarFactory carFactory,RacingCarController racingCarController,WinnerEvaluator winnerEvaluator,ResultViewer resultViewer) {
         this.outputController = outputController;
         this.inputController = inputController;
@@ -63,5 +64,10 @@ public class RaceControllerEmb implements RaceController {
     @Override
     public void announceWinner(){
         outputController.printWinner(winnerEvaluator.determineWinners(racingCars));
+    }
+
+    @Override
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
