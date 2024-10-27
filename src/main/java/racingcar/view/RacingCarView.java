@@ -20,4 +20,8 @@ public class RacingCarView {
     public static void printRoundResult(String result) {
         System.out.println(result);
     }
+
+    public static void printWinner(String result) {
+        System.out.println("최종 우승자 : " + result);
+    }
 }

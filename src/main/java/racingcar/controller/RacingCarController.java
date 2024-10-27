@@ -20,5 +20,6 @@ public class RacingCarController {
         for (int i = 0; i < rounds; i++) {
             RacingCarView.printRoundResult(race.runRound());
         }
+        RacingCarView.printWinner(race.checkWinner());
     }
 }
