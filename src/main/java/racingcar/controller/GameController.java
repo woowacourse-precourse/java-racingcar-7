@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
@@ -27,6 +28,9 @@ public class GameController {
             playRound(cars);
             System.out.println();
         }
+
+        List<Car> winners = determineWinners(cars);
+        outputView.printRacingResult(winners);
     }
 
     private void playRound(List<Car> cars) {
@@ -37,5 +41,10 @@ public class GameController {
             }
             outputView.printCarPosition(car);
         }
+    }
+
+    private List<Car> determineWinners(List<Car> cars) {
+        int farthestPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+        return cars.stream().filter(car -> car.getPosition() == farthestPosition).toList();
     }
 }
