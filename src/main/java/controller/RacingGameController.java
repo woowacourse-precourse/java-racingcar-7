@@ -17,7 +17,7 @@ public class RacingGameController {
     public void play(){
         String names = inputView.carNameInput();
         List<Car> cars = racingGameService.splitCarsName(names);
-        int attempts = inputView.numberOfAttemptsInput();
+        int attempts = racingGameService.validationRange(inputView.numberOfAttemptsInput());
 
         for (int i = 0; i < attempts; i++) {
             racingGameService.racing(cars);
