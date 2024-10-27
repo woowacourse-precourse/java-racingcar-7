@@ -13,8 +13,8 @@ public class InputManager {
 
     public static int inputTurn(){
         System.out.println(Constants.RACING_TRIAL_INPUT_MESSAGE);
-        String turn = Console.readLine();
-        Validator.validatePlayerTurn(turn);
-        return Integer.parseInt(turn);
+        String orinalInput = Console.readLine();
+        Validator.validatePlayerTurn(orinalInput);
+        return Integer.parseInt(orinalInput);
     }
 }

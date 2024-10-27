@@ -9,9 +9,9 @@ import java.util.Set;
 import static utils.LetterCounter.letterCounter;
 
 public class Validator {
-    public static void validatePlayerTurn(String turn){
+    public static void validatePlayerTurn(String originalInput){
         try{
-            int convertedTurn = Integer.parseInt(turn);
+            int convertedTurn = Integer.parseInt(originalInput);
             validatePositivePlayerTurn(convertedTurn);
         }catch(IllegalArgumentException e){
             throw new IllegalArgumentException("입력한 값이 정수가 아님");

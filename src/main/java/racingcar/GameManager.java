@@ -40,7 +40,7 @@ public class GameManager {
             currentTurn++;
         }
         InspectRaceResult inspectRaceResult = new InspectRaceResult();
-        inspectRaceResult.inspecting(racingCarGroup);
+        inspectRaceResult.inspectWinner(racingCarGroup);
     }
 
     private void racing(){
