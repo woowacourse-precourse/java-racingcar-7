@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.vehicle;
 
 import racingcar.util.RandomGenerator;
 import racingcar.vehicle.Vehicle;
@@ -11,6 +11,7 @@ public class Car extends Vehicle {
         super(carName,tryCount);
     }
 
+    @Override
     public void moveForward() {
         if (tryCount > 0) {
             if (randomGenerator.getRandomNumber() >= 4) {

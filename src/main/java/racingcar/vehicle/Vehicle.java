@@ -1,6 +1,6 @@
 package racingcar.vehicle;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Movable {
 
     protected int forwardCount;
     protected int tryCount;
