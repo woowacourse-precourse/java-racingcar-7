@@ -21,4 +21,18 @@ class CarTest {
         assertThat(car.getName()).isEqualTo(name);
     }
 
+    @Test
+    @DisplayName("자동차는 전진하면 위치가 증가한다")
+    void carMoveIncreasePosition() {
+        Car car = new Car("test");
+        int initialPosition = car.getPosition();
+
+        // 적어도 한 번은 전진할 때까지 반복
+        while (car.getPosition() == initialPosition) {
+            car.move();
+        }
+
+        assertThat(car.getPosition()).isGreaterThan(initialPosition);
+    }
+
 }
