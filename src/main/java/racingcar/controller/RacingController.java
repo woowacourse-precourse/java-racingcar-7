@@ -1,9 +1,9 @@
 package racingcar.controller;
 
+import racingcar.dto.InputDTO;
 import racingcar.message.ExceptionCode;
 import racingcar.model.Car;
 import racingcar.model.Racing;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
@@ -11,26 +11,19 @@ import java.util.List;
 
 public class RacingController {
 
-    private final InputView inputView;
+    private final InputController inputController;
     private final OutputView outputView;
 
-    public RacingController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
+    public RacingController(InputController inputController, OutputView outputView) {
+        this.inputController = inputController;
         this.outputView = outputView;
     }
 
     public void run() {
-        String inputCarNameList = inputView.inputCarNames();
 
-        String[] carNameList = inputCarNameList.split(",");
-
-        int inputTurns = 0;
-        try {
-            inputTurns = Integer.parseInt(inputView.inputTurnCount());
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ExceptionCode.INVALID_TURN.getDescription());
-        }
-        System.out.println();
+        InputDTO inputDTO = inputController.getInput();
+        String[] carNameList = inputDTO.getCarNameList();
+        int inputTurns = inputDTO.getTurnCount();
 
         List<Car> carList = new ArrayList<>();
         for (final String name : carNameList) {
