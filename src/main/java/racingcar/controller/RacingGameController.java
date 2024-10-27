@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.dto.RacingRegisterForm;
 import racingcar.dto.RoundRaceRecord;
@@ -30,6 +31,7 @@ public class RacingGameController {
             executeRaceRound(carRace, roundManager);
         }
         displayWinners(carRace);
+        releaseResources();
     }
 
     private RacingRegisterForm getRacingRegisterForm() {
@@ -55,5 +57,9 @@ public class RacingGameController {
     private void displayWinners(CarRace carRace) {
         List<String> winnerCarNames = carRace.getWinnerCarNames();
         outputView.printWinner(winnerCarNames);
+    }
+
+    private void releaseResources() {
+        Console.close();
     }
 }
