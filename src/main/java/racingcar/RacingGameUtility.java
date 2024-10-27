@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +8,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameUtility {
+
+    public static void runGame() {
+        printMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String input = Console.readLine();
+
+        List<String> nameList = splitStringToArray(input, ",");
+        List<RacingCar> carList = generateRacingCar(nameList);
+
+        printMessage("시도할 횟수는 몇 회인가요?");
+        int count = 0;
+        try {
+            count = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자만 입력하셔야 합니다.");
+        }
+
+        printMessage("\n실행결과");
+        for(int i = count; i > 0; i--) {
+            for (RacingCar car : carList) {
+                moveRacingCar(car);
+                printMessage(car.racingCarInfo());
+            }
+            printMessage("");
+        }
+
+        printMessage(getResultMessage(carList));
+    }
 
     public static void moveRacingCar(RacingCar car) {
         if(Randoms.pickNumberInRange(0, 9) >= 4) {
