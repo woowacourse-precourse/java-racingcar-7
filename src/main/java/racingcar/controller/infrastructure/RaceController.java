@@ -4,6 +4,7 @@ import racingcar.controller.domain.GameController;
 import racingcar.model.domain.Race;
 import racingcar.model.domain.RaceFind;
 import racingcar.model.infrastructure.CarRace;
+import racingcar.model.infrastructure.RaceRule;
 import racingcar.util.Splitter;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -59,7 +60,7 @@ public class RaceController implements GameController {
         String carNamesInput = requestCarNames();
         int tryTimes = requestTryTimes();
         List<String> carNames = process(carNamesInput);
-        return CarRace.init(carNames, tryTimes);
+        return CarRace.init(carNames, tryTimes,new RaceRule());
     }
 
 

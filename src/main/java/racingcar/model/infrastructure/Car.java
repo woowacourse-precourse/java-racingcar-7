@@ -1,6 +1,5 @@
 package racingcar.model.infrastructure;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.domain.Decider;
 import racingcar.model.domain.Vehicle;
 
@@ -14,15 +13,12 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void move() {
-        int playNum = play();
-        if (moveDecider.canMove(playNum)) {
+    public boolean move(int raceScore) {
+        if (moveDecider.canMove(raceScore)) {
             incrementDistance(MOVE_DISTANCE);
+            return true;
+        }else{
+            return false;
         }
-    }
-
-    @Override
-    protected int play() {
-        return Randoms.pickNumberInRange(0, 9);
     }
 }

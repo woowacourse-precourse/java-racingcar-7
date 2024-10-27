@@ -9,9 +9,7 @@ public abstract class Vehicle {
         this.distance = distance;
     }
 
-    public abstract void move();
-
-    protected abstract int play();
+    public abstract boolean move(int raceScore);
 
     public int getDistance() {
         return distance;

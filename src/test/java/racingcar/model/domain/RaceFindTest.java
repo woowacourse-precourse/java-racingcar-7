@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.infrastructure.Car;
 import racingcar.model.infrastructure.CarMoveDecider;
 import racingcar.model.infrastructure.CarRace;
+import racingcar.model.infrastructure.RaceRule;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RaceFindTest {
     @Test
@@ -18,7 +18,7 @@ class RaceFindTest {
         List<Car> cars = List.of(new Car("name1", 1, carMoveDecider),
                 new Car("name2", 2, carMoveDecider),
                 new Car("name3", 3, carMoveDecider));
-        RaceFind race = new CarRace(1, cars);
+        RaceFind race = new CarRace(1, cars,new RaceRule());
 
         // when
         System.out.println("=====Logic Start=====");

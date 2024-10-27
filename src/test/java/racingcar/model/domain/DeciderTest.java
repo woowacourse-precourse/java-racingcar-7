@@ -1,7 +1,7 @@
-package racingcar.model.infrastructure;
+package racingcar.model.domain;
 
 import org.junit.jupiter.api.Test;
-import racingcar.model.domain.Decider;
+import racingcar.model.infrastructure.CarMoveDecider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
