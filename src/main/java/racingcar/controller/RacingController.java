@@ -21,9 +21,9 @@ public class RacingController {
     }
 
     // 입력 기능
-    public void inputInfo() {
+    private void inputInfo() {
         String input = InputView.inputCarNames(); // 자동차 이름 입력
-        String[] carArr = Utils.splitDelimiterCars(input); // 쉼표 기준으로 자동차 이름 나누기
+        List<String> carArr = Utils.splitDelimiterCars(input); // 쉼표 기준으로 자동차 이름 나누기
 
         for (String name : carArr) {
             InputValidator.validateNameLength(name);
@@ -34,33 +34,33 @@ public class RacingController {
     }
 
     // 경주 시작
-    public void startRace() {
+    private void startRace() {
         while (tryNumber > 0) {
-            advanceCar();
+            advanceMoveCar();
             runResult(cars);
             tryNumber--;
         }
     }
 
     // 차량 전진
-    public void advanceCar() {
+    private void advanceMoveCar() {
         for (Car car : cars) {
             moveCarAllowed(car);
         }
     }
 
     // 전진 조건 만족하는 지 검사
-    public void moveCarAllowed(Car car) {
+    private void moveCarAllowed(Car car) {
         if (Utils.advanceConditions()) {
             car.move();
         }
     }
 
-    public void runResult(List<Car> cars) {
+    private void runResult(List<Car> cars) {
         OutputView.printRunResult(cars);
     }
 
-    public void endRace() {
+    private void endRace() {
         List<String> winners = new ArrayList<>();
         int max = -1;
         for (Car car : cars) {
