@@ -26,7 +26,11 @@ public class Application {
             if (!carSet.add(carName)) {
                 throw new IllegalArgumentException();
             }
-            
+
+            if (carName == null || carName.isBlank()) {
+                throw new IllegalArgumentException();
+            }
+
             carList.add(new Car(carName));
         }
 
