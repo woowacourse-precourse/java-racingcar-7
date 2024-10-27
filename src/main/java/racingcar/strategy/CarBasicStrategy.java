@@ -27,6 +27,7 @@ public class CarBasicStrategy implements CarStrategy{
     Set<String> uniqueNames = new HashSet<>();
     for (String name : splitNames){
       validateSingleName(name, uniqueNames);
+      uniqueNames.add(name);
     }
   }
 
