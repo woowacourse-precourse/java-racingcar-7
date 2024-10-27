@@ -23,6 +23,16 @@ class FilterConfigTest {
     }
 
     @Test
+    void testDuplicateNameInput() {
+        String input = "test,test";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() ->{
+                    carNameFilterChain.doFilter(input);
+                }).isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void testCarNameTooLong() {
         String input = "Test12";
         assertSimpleTest(() ->
