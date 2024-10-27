@@ -13,9 +13,14 @@ public class Application {
         int rounds = Integer.parseInt(Console.readLine());
 
         //자동차 게임 시작
+        // 입력받은 이름 파싱
         String[] names = carNames.split(",");
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
+            String trimmedName = name.trim();
+            if(trimmedName.length() > 5){
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
             cars.add(new Car(name));
         }
         // 실행
