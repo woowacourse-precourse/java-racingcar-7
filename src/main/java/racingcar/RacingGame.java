@@ -71,6 +71,13 @@ public class RacingGame {
         }
     }
 
+    public void startRace() {
+        for (int i = 0; i < rounds; i++) {
+            raceRound();
+        }
+        announceWinners();
+    }
+
     private void raceRound() {
         cars.forEach(Car::move);
         printRoundResults();
