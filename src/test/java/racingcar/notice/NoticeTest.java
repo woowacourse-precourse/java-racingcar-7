@@ -62,6 +62,44 @@ class NoticeTest {
 
 
     @Test
-    void inputGameTime() {
+    void inputGameTime_성공테스트() {
+        class inputData {
+            final String input;
+            final Integer answer;
+
+            inputData(String input, Integer answer) {
+                this.input = input;
+                this.answer = answer;
+            }
+        }
+
+        List<inputData> dataList = List.of(
+                new inputData("12345", 12345),
+                new inputData("0", 0)
+        );
+
+        for(inputData inputData : dataList) {
+            Integer result = Notice.inputGameTime(() -> inputData.input);
+            assertThat(result).isEqualTo(inputData.answer);
+        }
+    }
+    @Test
+    void inputGameTime_실패테스트() {
+        class inputData {
+            final String input;
+
+            inputData(String input) {
+                this.input = input;
+            }
+        }
+
+        List<inputData> dataList = List.of(
+                new inputData("-10"),
+                new inputData("abs")
+        );
+
+        for(inputData inputData : dataList) {
+            assertThrows(IllegalArgumentException.class, () -> Notice.inputGameTime(() -> inputData.input));
+        }
     }
 }
