@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.LongStream;
 import racingcar.model.Car;
 import racingcar.util.Util;
 import racingcar.validator.Validator;
@@ -15,9 +18,8 @@ public class Controller {
 
     public void run() {
         List<Car> cars = readyCar();
-        outputView.print("시도할 횟수는 몇 회인가요?");
-        final Long times = inputView.longInput();
-        outputView.print("");
+        Long times = readyTimes();
+        showGameResult(playGame(cars, times));
     }
 
     private List<Car> readyCar() {
@@ -29,5 +31,12 @@ public class Controller {
             cars.add(new Car(name));
         }
         return cars;
+    }
+
+    private Long readyTimes() {
+        outputView.print("시도할 횟수는 몇 회인가요?");
+        final Long times = inputView.longInput();
+        outputView.print("");
+        return times;
     }
 }
