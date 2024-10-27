@@ -5,7 +5,8 @@ public class Constant {
     public static final String INPUT_TRIAL_PROMPT = "시도할 횟수는 몇 회인가요?";
     public static final String OUTPUT_PROMPT = "실행 결과";
     public static final String WINNER_PROMPT = "최종 우승자 : ";
-    public static final String DELIMITER = ",";
+    public static final String INPUT_DELIMITER = ",";
+    public static final String JOIN_DELIMITER = ", ";
     public static final String TRIAL_REGEX = "[0-9]+";
     public static final String DOUBLE_DOT = ".";
     public static final int RANDOM_RANGE_MIN = 0;

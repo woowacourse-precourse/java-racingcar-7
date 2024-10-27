@@ -30,7 +30,7 @@ public class Validation {
     }
 
     public void isPlayerInputDelimiterWrong(String inputStr) {
-        if (!inputStr.contains(Constant.DELIMITER)) {
+        if (!inputStr.contains(Constant.INPUT_DELIMITER)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE5);
         }
     }

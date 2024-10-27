@@ -38,7 +38,7 @@ public class InputView {
             return null;
         }
 
-        ArrayList<String> nameArray = new ArrayList<String>(List.of(inputStr.split(Constant.DELIMITER)));
+        ArrayList<String> nameArray = new ArrayList<String>(List.of(inputStr.split(Constant.INPUT_DELIMITER)));
         int count = 0;
 
         for (String name : nameArray) {

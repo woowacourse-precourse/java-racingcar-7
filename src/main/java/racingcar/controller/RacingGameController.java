@@ -11,9 +11,9 @@ public class RacingGameController {
     private int roundCount;
     private final InputView inputView;
     private final OutputView outputView;
-    private ArrayList<CarPlayer> carPlayers = new ArrayList<>();
-    private ArrayList<RoundRecord> roundRecords = new ArrayList<>();
-    private ArrayList<String> winnerList = new ArrayList<>();
+    private final ArrayList<CarPlayer> carPlayerList = new ArrayList<>();
+    private final ArrayList<RoundRecord> roundRecordList = new ArrayList<>();
+    private final ArrayList<String> winnerList = new ArrayList<>();
 
     public RacingGameController() {
         this.inputView = new InputView();
@@ -31,38 +31,38 @@ public class RacingGameController {
         for (int i = 0; i < playerCount; i++) {
             CarPlayer carPlayer = new CarPlayer();
             carPlayer.setName(inputView.getPlayersList().get(i));
-            carPlayers.add(carPlayer);
+            carPlayerList.add(carPlayer);
         }
     }
 
     private void setRoundRecordsList() {
         for (int i = 0; i < roundCount; i++) {
             RoundRecord roundRecord = new RoundRecord();
-            roundRecords.add(roundRecord);
+            roundRecordList.add(roundRecord);
         }
     }
 
     private void moveCarPlayers() {
         for (int i = 0; i < roundCount; i++) {
             for (int j = 0; j < playerCount; j++) {
-                carPlayers.get(j).move();
-                roundRecords.get(i).saveRoundRecord(carPlayers.get(j));
+                carPlayerList.get(j).move();
+                roundRecordList.get(i).saveRoundRecord(carPlayerList.get(j));
             }
         }
     }
 
     private void selectWinner() {
         int max = 0;
-        for (int i = 0; i < playerCount; i++) {
-            int stepCount = carPlayers.get(i).getStepCount();
+        for (CarPlayer player : carPlayerList) {
+            int stepCount = player.getStepCount();
             if (stepCount > max) {
                 max = stepCount;
             }
         }
 
-        for (int i = 0; i < playerCount; i++) {
-            if (carPlayers.get(i).getStepCount() == max) {
-                winnerList.add(carPlayers.get(i).getName());
+        for (CarPlayer player : carPlayerList) {
+            if (player.getStepCount() == max) {
+                winnerList.add(player.getName());
             }
         }
     }
@@ -76,8 +76,7 @@ public class RacingGameController {
         moveCarPlayers();
         selectWinner();
 
-        outputView.setGameResult(roundRecords);
-        outputView.setGameRound(roundCount);
+        outputView.setGameResult(roundRecordList);
         outputView.setGameWinner(winnerList);
         outputView.printGameResult();
     }
