@@ -5,6 +5,7 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.dto.RoundResultDto;
 
 class RaceGameTest {
     @Test
@@ -46,4 +47,26 @@ class RaceGameTest {
         }
     }
 
+    @Test
+    @DisplayName("매 라운드 마다 결과를 반환할 수 있다.")
+    void getRoundResult() {
+        // given
+        Name name1 = new Name("우테코");
+        Name name2 = new Name("박재연");
+        Car car1 = new Car(name1);
+        Car car2 = new Car(name2);
+        car1.move(true);
+        car1.move(true);
+        car2.move(true);
+        List<Car> cars = Arrays.asList(car1, car2);
+        RaceCars raceCars = new RaceCars(cars);
+        RaceGame raceGame = new RaceGame(raceCars, new RandomMovement());
+
+        //when
+        RoundResultDto roundResult = raceGame.getRoundResult();
+        List<String> convertedResult = roundResult.result();
+
+        //then
+        Assertions.assertThat(convertedResult).containsExactly("우테코 : --", "박재연 : -");
+    }
 }

@@ -41,4 +41,14 @@ public class Car {
     public int hashCode() {
         return Objects.hashCode(name);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        return getString(sb);
+    }
+
+    private String getString(StringBuilder sb) {
+        return sb.append(name.getValue()).append(" : ") + "-".repeat(position.getPosition());
+    }
 }

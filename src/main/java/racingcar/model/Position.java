@@ -22,6 +22,10 @@ public class Position {
         return this.position >= position.position;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
