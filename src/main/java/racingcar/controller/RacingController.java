@@ -22,6 +22,7 @@ public class RacingController {
         Cars cars = initializeCars(carNames);
         outputView = new OutputView(cars);
 
+        System.out.println("\n실행 결과");
         race(cars, moveCount, outputView);
         outputView.printWinners();
     }
