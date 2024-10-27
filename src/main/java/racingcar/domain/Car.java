@@ -17,7 +17,7 @@ public class Car {
     }
 
     public String forwardStatus() {
-        return String.format("%s : " + "-".repeat(Math.max(0, position)), name);
+        return String.format("%s : " + "-".repeat(Math.max(0, position)), name.value());
     }
 
     public boolean isMaxPosition(int maxPosition) {
