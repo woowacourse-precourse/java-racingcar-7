@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
 
 public class Output {
     public void printIntermediateResult(StringBuilder stringBuilder) {
