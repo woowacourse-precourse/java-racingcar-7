@@ -26,7 +26,6 @@ public class InputView {
     }
     //------------------------//
 
-
     public CarsSaveRequestDto getCarsName() {
         System.out.println(Message.INPUT_CARS_NAME);
         return new CarsSaveRequestDto(

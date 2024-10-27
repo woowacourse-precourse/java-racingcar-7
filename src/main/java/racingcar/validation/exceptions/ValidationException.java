@@ -3,7 +3,7 @@ package racingcar.validation.exceptions;
 import static racingcar.constants.CarConstants.NAME_LENGTH_LIMIT;
 
 /**
- * packageName    : racingcar.validation
+ * packageName    : racingcar.validation.exceptions
  * fileName       : ValidationException
  * author         : ehgur
  * date           : 2024-10-25
