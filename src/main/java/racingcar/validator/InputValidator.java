@@ -34,6 +34,15 @@ public class InputValidator {
         throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
       }
     }
+    // 자동자 이름 중복 확인(메서드로 분리 예정)
+    for (int i = 0; i < carNameList.size(); i++) {
+      for (int j = i + 1; j < carNameList.size(); j++) {
+        if (carNameList.get(i).equals(carNameList.get(j))) {
+          throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+        }
+      }
+    }
+
 
     return carNameList;
   }
