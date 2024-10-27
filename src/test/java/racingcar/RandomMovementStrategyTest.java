@@ -29,7 +29,7 @@ public class RandomMovementStrategyTest {
                 return 3;
             }
         };
-        assertThat(randomMovementStrategy.moveable()).isTrue();
+        assertThat(randomMovementStrategy.moveable()).isFalse();
     }
 
 }

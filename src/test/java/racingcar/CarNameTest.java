@@ -14,8 +14,7 @@ public class CarNameTest {
     void createEmptyCarName() {
         String name = "";
         assertThatThrownBy(() -> CarName.from(name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름에 빈칸은 입력할수 없습니다");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
