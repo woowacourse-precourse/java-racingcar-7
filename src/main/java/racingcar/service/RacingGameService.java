@@ -55,9 +55,7 @@ public class RacingGameService {
         return racingCars;
     }
 
-
     private String[] processCarName(String carNames) {
-
         String[] parseCarName = carNames.split(",");
         normalizeCarNames(parseCarName);
         return parseCarName;

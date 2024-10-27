@@ -16,7 +16,7 @@ public class RacingController {
 
     public void startRacingGame() {
         try {
-            String carNames = getCarNames();
+            String carNames = InputView.getCarNames();
             Integer tryCount = getTryCountByInteger();
             List<RacingCar> racingCars = racingGameService.initializeRacingGame(carNames);
             playRacingGame(tryCount, racingCars);
@@ -29,7 +29,7 @@ public class RacingController {
     }
 
     private Integer getTryCountByInteger() {
-        String tryCountInString = getTryCount();
+        String tryCountInString = InputView.getTryCount();
         return racingGameService.convertTryCountToInt(tryCountInString);
     }
 
@@ -52,13 +52,5 @@ public class RacingController {
         }
     }
 
-    public String getCarNames() {
-        InputView.printNameInputMessage();
-        return InputView.getInput();
-    }
 
-    public String getTryCount() {
-        InputView.printTimeInputMessage();
-        return InputView.getInput();
-    }
 }
