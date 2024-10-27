@@ -13,7 +13,6 @@ public class Application {
         InputController inputController = new InputController(inputValidator);
         OutputView outputView = new OutputView();
         NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE);
-        NumberValidator numberValidator = new NumberValidator();
         List<Car> cars;
         int totalAttempts;
         Move move;
@@ -26,7 +25,7 @@ public class Application {
         String inputAttempts = inputView.requestTotalAttempts();
         totalAttempts = inputController.convertToNumber(inputAttempts);
 
-        move = new Move(cars, numberValidator, numberGenerator);
+        move = new Move(cars, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
         racing.race();
         racing.announceWinners();
