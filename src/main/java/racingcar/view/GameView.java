@@ -10,7 +10,7 @@ public class GameView {
     public void displayRoundResult(List<Car> cars) {
         System.out.println("실행결과");
         for (Car car : cars) {
-            renderPosition(car);
+            System.out.println(renderPosition(car));
         }
     }
 
