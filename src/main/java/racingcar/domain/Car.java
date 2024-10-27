@@ -20,4 +20,8 @@ public class Car {
     public int getMovement() {
         return movement;
     }
+
+    public String getName() {
+        return name.name();
+    }
 }

@@ -69,4 +69,17 @@ class RaceRuleTest {
         // then
         assertThrows(IllegalArgumentException.class, rule::canMove);
     }
+
+    @Test
+    void 중복된_이름이_있으면_예외발생() {
+        Car car1 = new Car("car1", 5);
+        Car car2 = new Car("car1", 4);
+        Car car3 = new Car("car3", 5);
+        List<Car> cars = List.of(car1, car2, car3);
+
+        // when
+        assertThrows(IllegalArgumentException.class, () -> {
+            RaceRule.determineWinners(cars);
+        });
+    }
 }

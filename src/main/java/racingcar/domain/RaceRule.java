@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.utils.generator.NumberGenerator;
@@ -26,7 +27,7 @@ public class RaceRule {
         return findWinners(cars);
     }
 
-    private void validateGeneratedNumber(int number) {
+    private static void validateGeneratedNumber(int number) {
         if (MIN_NUMBER <= number && number <= MAX_NUMBER) {
             return;
         }
@@ -40,8 +41,9 @@ public class RaceRule {
         if (cars == null || cars.isEmpty()) {
             throw new IllegalArgumentException("자동차 목록은 비었을 수 없습니다.");
         }
-
-
+        if (isDuplicatedNames(cars)) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     private static List<Car> findWinners(List<Car> cars) {
@@ -56,5 +58,9 @@ public class RaceRule {
                 .mapToInt(Car::getMovement)
                 .max()
                 .orElse(0);
+    }
+
+    public static boolean isDuplicatedNames(List<Car> cars) {
+        return cars.size() != new HashSet<>(cars.stream().map(Car::getName).toList()).size();
     }
 }
