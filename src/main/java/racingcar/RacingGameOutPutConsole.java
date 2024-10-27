@@ -20,4 +20,9 @@ public class RacingGameOutPutConsole implements GameResultView {
         }
         System.out.println(result);
     }
+
+    @Override
+    public void printGameResult(){
+
+    }
 }

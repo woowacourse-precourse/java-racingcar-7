@@ -41,6 +41,14 @@ public class Cars {
         });
     }
 
+    public List<String> findWinners() {
+        return null;
+    }
+
+    private int findMaxPosition() {
+        return 0;
+    }
+
     public int size() {
         return cars.size();
     }
