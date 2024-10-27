@@ -2,7 +2,6 @@ package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.RacingCarInputConverter;
 
 public class ConsoleInputHandler implements InputHandler {
 
