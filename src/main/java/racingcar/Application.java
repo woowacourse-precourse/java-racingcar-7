@@ -23,6 +23,7 @@ public class Application {
         input = Console.readLine();
 
         int attempts = Integer.parseInt(input);
+        validateAttempts(attempts);
         for (int i = 0; i < attempts; i++) {
             printAttempts(cars);
             System.out.println();
@@ -78,29 +79,35 @@ public class Application {
         }
 
         StringBuilder winners = new StringBuilder();
-        for(Car car : cars) {
+        for (Car car : cars) {
             appendWinner(winners, car, maxPosition);
         }
         System.out.println("최종 우승자 : " + winners.toString());
     }
 
     private static void appendWinner(StringBuilder winners, Car car, int maxPosition) {
-        if(car.getPosition() == maxPosition) {
-            if (winners.length() > 0){
+        if (car.getPosition() == maxPosition) {
+            if (winners.length() > 0) {
                 winners.append(", ");
             }
             winners.append(car.getName());
         }
     }
 
-    private static void validateCarNames(String[] carNames){
-        for(String name : carNames){
-            if(name.length() > 5){
+    private static void validateCarNames(String[] carNames) {
+        for (String name : carNames) {
+            if (name.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다 : " + name);
             }
             if (name.contains(" ")) {
                 throw new IllegalArgumentException("자동차 이름은 공백을 포함할 수 없습니다 : " + name);
             }
+        }
+    }
+
+    private static void validateAttempts(int attempts) {
+        if(attempts < 1) {
+            throw new IllegalArgumentException("시도할 횟수는 1 이상의 정수만 가능합니다 : " + attempts);
         }
     }
 }
