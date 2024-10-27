@@ -19,6 +19,7 @@ public class RacingGame {
     public void run() {
         init();
         start();
+        decideWinners();
     }
 
     private void init() {
@@ -63,5 +64,22 @@ public class RacingGame {
             view.displayCarState(car.getName(), car.getDistance());
         }
         view.displayCurrentTurnOver();
+    }
+
+    private void decideWinners() {
+        List<String> winnersName = new ArrayList<>();
+        int maxDistance = 0;
+
+        for (Car car : cars) {
+            int currentDistance = car.getDistance();
+            if (currentDistance < maxDistance) {
+                continue;
+            } else if (currentDistance > maxDistance) {
+                maxDistance = currentDistance;
+                winnersName.clear();
+            }
+            winnersName.add(car.getName());
+        }
+        view.displayWinners(winnersName);
     }
 }
