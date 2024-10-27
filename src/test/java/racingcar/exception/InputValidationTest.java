@@ -25,7 +25,7 @@ class InputValidationTest {
     @ValueSource(strings = {" ", "pobi ", "po bi,wo ni", "pobi,woni, jun",})
     void carNameContainsBlank(String input) {
         //given //when //then
-        assertThatThrownBy(() -> InputValidation.validateRacingCount(input))
+        assertThatThrownBy(() -> InputValidation.validateTryCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -34,7 +34,7 @@ class InputValidationTest {
     @NullAndEmptySource
     void tryCountNullOrEmpty(String input) {
         //given //when //then
-        assertThatThrownBy(() -> InputValidation.validateRacingCount(input))
+        assertThatThrownBy(() -> InputValidation.validateTryCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +43,7 @@ class InputValidationTest {
     @ValueSource(strings = {" ", "1 ", "1 2"})
     void tryCountContainsBlank(String input) {
         //given //when //then
-        assertThatThrownBy(() -> InputValidation.validateRacingCount(input))
+        assertThatThrownBy(() -> InputValidation.validateTryCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -73,7 +73,7 @@ class InputValidationTest {
     @ValueSource(strings = {"1", "2", "12"})
     void nonTryCountContainsBlank(String input) {
         //given //when //then
-        assertThatCode(() -> InputValidation.validateRacingCount(input))
+        assertThatCode(() -> InputValidation.validateTryCount(input))
                 .doesNotThrowAnyException();
     }
 }

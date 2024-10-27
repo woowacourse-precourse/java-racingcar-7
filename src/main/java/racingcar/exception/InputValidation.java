@@ -17,8 +17,8 @@ public final class InputValidation {
         }
     }
 
-    public static void validateRacingCount(String racingCount) {
-        validate(racingCount, ErrorMessage.TRY_COUNT_NULL_OR_EMPTY.getMessage());
+    public static void validateTryCount(String tryCount) {
+        validate(tryCount, ErrorMessage.TRY_COUNT_NULL_OR_EMPTY.getMessage());
     }
 
     private static void validate(String input, String exceptionMessage) {

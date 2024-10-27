@@ -37,8 +37,8 @@ public class RacingController {
 
     private RacingCount readyRacingCount() {
         outputView.printInputRacingCount();
-        int count = inputView.inputRacingCount();
-        return RacingCount.from(count);
+        int tryCount = inputView.inputTryCount();
+        return RacingCount.from(tryCount);
     }
 
     private void runRacing(Racing racing) {

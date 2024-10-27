@@ -17,11 +17,11 @@ public class InputView {
         return Convertor.toList(splitCarNames);
     }
 
-    public int inputRacingCount() {
-        String racingCount = Console.readLine();
-        InputValidation.validateRacingCount(racingCount);
+    public int inputTryCount() {
+        String tryCount = Console.readLine();
+        InputValidation.validateTryCount(tryCount);
 
-        return Convertor.toInt(racingCount);
+        return Convertor.toInt(tryCount);
     }
 
     private String[] carNameSplit(String carNames) {
