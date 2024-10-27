@@ -1,10 +1,7 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -275,6 +272,32 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 시도_회수_int_범위초과_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n" + (Integer.MAX_VALUE + 1) + "\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 시도_회수_음수_예외_테스트() {
+        //given
+        String input = "pobi,woni,jun\n-1\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     //경주 자동차 이름 유효성 테스트
     @Test
     void 경주_자동차_입력_기능_테스트() {
@@ -363,6 +386,19 @@ class ApplicationTest extends NsTest {
     void 경주_자동차_특수문자_포함_예외_테스트() {
         //given
         String input = "jun&,ju%\n3\n";
+
+        //when
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        //then
+        assertThatThrownBy(Application::inputAndValidate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 경주_자동차_쉼표_여러개_예외_테스트() {
+        //given
+        String input = "jun,,,pobi\n3\n";
 
         //when
         System.setIn(new ByteArrayInputStream(input.getBytes()));
