@@ -40,6 +40,7 @@ public class Application {
 
 
         int roundToInt = Integer.parseInt(round);
+        System.out.println("\n실행결과");
         for(int i = 0; i < roundToInt; i++) {
 
             for (String key: racingStatus.keySet()) {
@@ -47,12 +48,26 @@ public class Application {
                     racingStatus.get(key).append("-");
             }
 
-            StringBuilder statusOutput = new StringBuilder("실행결과\n");
+            StringBuilder statusOutput = new StringBuilder();
             for (String key: racingStatus.keySet()) {
                 statusOutput.append(key).append(" : ").append(racingStatus.get(key)).append("\n");
             }
 
             System.out.println(statusOutput);
         }
+
+        int max = racingStatus.values().stream()
+                .mapToInt(StringBuilder::length)
+                .max()
+                .orElse(0);
+
+        StringBuilder resultOutput = new StringBuilder("최종 우승자: ");
+        for(Entry<String, StringBuilder> entry : racingStatus.entrySet()) {
+            if (max == entry.getValue().length()) {
+                resultOutput.append(entry.getKey()).append(", ");
+            }
+        }
+
+        System.out.println(resultOutput.substring(0, resultOutput.length()-2));
     }
 }
