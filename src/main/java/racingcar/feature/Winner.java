@@ -2,6 +2,8 @@ package racingcar.feature;
 
 import racingcar.obj.Car;
 
+import java.util.List;
+
 public class Winner {
 
     StringBuilder sb;
@@ -11,17 +13,17 @@ public class Winner {
         sb = new StringBuilder();
     }
 
-    public void getWinner(Car[] cars) {
-        sb.append(cars[0].getName());
-        max = cars[0].getDistance();
+    public void getWinner(List<Car> cars) {
+        sb.append(cars.get(0).getName());
+        max = cars.get(0).getDistance();
 
-        for (int i = 1; i < cars.length; i++) {
-            if (cars[i].getDistance() > max) {
-                sb.setLength(0);
-                sb.append(cars[i].getName());
-                max = cars[i].getDistance();
-            } else if (cars[i].getDistance() == max) {
-                sb.append(",").append(cars[i].getName());
+        for (int i = 1; i < cars.size(); i++) {
+            if (cars.get(i).getDistance() > max) {
+                sb.setLength(i);
+                sb.append(cars.get(i).getName());
+                max = cars.get(i).getDistance();
+            } else if (cars.get(i).getDistance() == max) {
+                sb.append(",").append(cars.get(i).getName());
             }
         }
 

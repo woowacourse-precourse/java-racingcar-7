@@ -6,6 +6,8 @@ import racingcar.feature.Race;
 import racingcar.feature.Winner;
 import racingcar.obj.Car;
 
+import java.util.List;
+
 public class RacingCar {
 
     InputInfo inputInfo;
@@ -23,7 +25,7 @@ public class RacingCar {
     public void run() {
         String[] carsName = inputInfo.getCarsName();
         int time = inputInfo.getTime();
-        Car[] cars = produceCar.getCars(carsName);
+        List<Car> cars = produceCar.getCars(carsName);
         race.startRace(cars,time);
         winner.getWinner(cars);
     }

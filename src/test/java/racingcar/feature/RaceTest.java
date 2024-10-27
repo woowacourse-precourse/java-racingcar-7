@@ -6,6 +6,7 @@ import racingcar.obj.Car;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,8 +28,8 @@ class RaceTest {
         Car car3 = new Car("3번");
 
         try {
-            race.startRace(new Car[]{car1,car2,car3},5);
-            winner.getWinner(new Car[]{car1,car2,car3});
+            race.startRace(List.of(car1,car2,car3),5);
+            winner.getWinner(List.of(car1,car2,car3));
 
             String output = outputStream.toString().trim();
             assertThat(output).contains("1번","2번","3번","최종 우승자");
