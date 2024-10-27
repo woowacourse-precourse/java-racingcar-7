@@ -16,7 +16,7 @@ public class ConsoleOutputHandler {
     }
 
     public void printExecumentInstruction(Car car) {
-        System.out.print(car.getCarName() + " : ");
+        System.out.print(car.getVehicleName() + " : ");
         printProgressLine(car.getForwardCount());
     }
 
@@ -41,11 +41,11 @@ public class ConsoleOutputHandler {
         String winnerMembers;
         if (winners.size() > 1) {
             winnerMembers = String.join(", ", winners.stream()
-                    .map(Car::getCarName)
+                    .map(Car::getVehicleName)
                     .collect(Collectors.toList()));
         }
         else  {
-            winnerMembers = winners.getFirst().getCarName();
+            winnerMembers = winners.getFirst().getVehicleName();
         }
         return winnerMembers;
     }
