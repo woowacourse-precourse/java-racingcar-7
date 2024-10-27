@@ -20,9 +20,9 @@ class CarTest {
     @Test
     @DisplayName("유효한 객체 생성 테스트")
     void createCar() {
-        assertEquals("phobi", car.getName().getCarName());
+        assertEquals("phobi", car.getName());
     }
-    
+
     @Test
     @DisplayName("자동차가 전진 테스트")
     void MoveForward() {

@@ -19,7 +19,7 @@ class CarsParserTest {
         List<Car> test = CarsParser.parse("phobi");
 
         assertEquals(test.size(), 1);
-        assertEquals(test.getFirst().getName().getCarName(), "phobi");
+        assertEquals(test.getFirst().getName(), "phobi");
     }
 
     @Test
@@ -28,9 +28,9 @@ class CarsParserTest {
         List<Car> test = CarsParser.parse("phobi,wooni,kgy18");
 
         assertEquals(test.size(), 3);
-        assertEquals(test.get(0).getName().getCarName(), "phobi");
-        assertEquals(test.get(1).getName().getCarName(), "wooni");
-        assertEquals(test.get(2).getName().getCarName(), "kgy18");
+        assertEquals(test.get(0).getName(), "phobi");
+        assertEquals(test.get(1).getName(), "wooni");
+        assertEquals(test.get(2).getName(), "kgy18");
     }
 
     @ParameterizedTest

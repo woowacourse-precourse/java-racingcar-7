@@ -2,6 +2,7 @@ package racingcar.model.race;
 
 import java.util.List;
 import racingcar.common.ErrorMessage;
+import racingcar.model.car.Car;
 import racingcar.model.car.Cars;
 
 public class Winner {
@@ -15,7 +16,7 @@ public class Winner {
         final int maxDistance = findMaxMovingDistance();
         return cars.getCars().stream()
                 .filter(car -> car.getPosition().calculateMovingDistance() == maxDistance)
-                .map(Car -> Car.getName().getCarName())
+                .map(Car::getName)
                 .toList();
     }
 

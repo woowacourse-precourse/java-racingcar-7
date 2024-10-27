@@ -23,6 +23,6 @@ class NameTest {
     @ValueSource(strings = {"phobi", "woni", "bmwM3"})
     void createValidName(String name) {
         Name createdName = new Name(name);
-        assertEquals(name, createdName.getCarName());
+        assertEquals(name, createdName.getName());
     }
 }
