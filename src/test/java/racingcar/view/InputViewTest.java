@@ -20,13 +20,14 @@ public class InputViewTest{
 
     @Test
     @DisplayName("자동차 이름과 시도 횟수 입력받기")
-    void readCarRacingSetup_메서드_테스트() {
-        String simulationSetup = "car1,car2,car3\n5\n";
-        System.setIn(new ByteArrayInputStream(simulationSetup.getBytes()));
+    void readCarNamesAndTryCount() {
+        String input = "car1,car2,car3\n5\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        inputView.readCarRacingSetup();
+        String carNames = inputView.readCarNames();
+        String tryCount = inputView.readTryCount();
 
-        assertThat(inputView.getCarNames()).isEqualTo("car1,car2,car3");
-        assertThat(inputView.getTryCount()).isEqualTo("5");
+        assertThat(carNames).isEqualTo("car1,car2,car3");
+        assertThat(tryCount).isEqualTo("5");
     }
 }
