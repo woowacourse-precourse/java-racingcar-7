@@ -15,18 +15,25 @@ public class RacingService {
 
     public RacingResponseDTO race(RacingRequestDTO racingRequestDTO) {
         Cars cars = createCars(racingRequestDTO.getInputNames());
-        RacingRoundResultRecorder racingRoundResultRecorder = playAllRound(
-                Integer.parseInt(racingRequestDTO.getRoundCount()),
-                cars);
+        RacingRoundResultRecorder racingRoundResultRecorder = recordRacing(getRoundCount(racingRequestDTO), cars);
         return RacingResponseDTO.create(racingRoundResultRecorder.getRecorderToString());
     }
 
-    private RacingRoundResultRecorder playAllRound(int roundCount, Cars cars) {
+    private int getRoundCount(RacingRequestDTO racingRequestDTO) {
+        return Integer.parseInt(racingRequestDTO.getRoundCount());
+    }
+
+    private RacingRoundResultRecorder recordRacing(int roundCount, Cars cars) {
+        RacingRoundResultRecorder racingRoundResultRecorder = recordEachRound(roundCount, cars);
+        racingRoundResultRecorder.recordTopRanker(cars.findTopRankers());
+        return racingRoundResultRecorder;
+    }
+
+    private RacingRoundResultRecorder recordEachRound(int roundCount, Cars cars) {
         RacingRoundResultRecorder racingRoundResultRecorder = RacingRoundResultRecorder.create();
         for (int i = 1; i <= roundCount; i++) {
-            racingRound.recordEachRound(cars, racingRoundResultRecorder);
+            racingRound.recordRound(cars, racingRoundResultRecorder);
         }
-        racingRoundResultRecorder.recordTopRanker(cars.findTopRankers());
         return racingRoundResultRecorder;
     }
 
