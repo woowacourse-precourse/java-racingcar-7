@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.domain.RacingGame;
 import racingcar.utils.CarNameInputProcessor;
 import racingcar.utils.MoveInputProcessor;
-import racingcar.view.RacingGameView;
+import racingcar.view.InputView;
 
 public class RacingGameController {
     public void run(){
@@ -14,13 +14,13 @@ public class RacingGameController {
     }
 
     private List<String> setCarNames(){
-        String carNames = RacingGameView.getCarNames();
+        String carNames = InputView.getCarNames();
         CarNameInputProcessor carNameInputProcessor = new CarNameInputProcessor(carNames);
         return carNameInputProcessor.splitCarNames();
     }
 
     private int setMoveCount(){
-        String moveCount = RacingGameView.getMoveCount();
+        String moveCount = InputView.getMoveCount();
         MoveInputProcessor moveInputProcessor = new MoveInputProcessor(moveCount);
         return moveInputProcessor.getMoveCount();
     }
