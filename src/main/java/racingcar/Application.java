@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +15,12 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int Attempt = ReadAttempt();
 
-        System.out.println(CarList);
-        System.out.println(Attempt);
+        Race race = new Race(CarList, Attempt);
+        race.PlayRace();
 
     }
 
+    // 쉼표(,)를 기준으로 배열로 변환
     public static List<Car> Cars(String CarNameList) {
         String[] CarNames = CarNameList.split(",");
         List<Car> CarList = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Application {
             CarList.add(new Car(CarName.trim()));
         }
         return CarList;
-    };
+    }
 
     // 시도 횟수 Int 형식으로 입력 (그 외 오류 처리)
     public static int ReadAttempt(){
