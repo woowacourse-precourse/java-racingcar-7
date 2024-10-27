@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.iohandler;
+
+import racingcar.User;
 
 import java.util.List;
 
