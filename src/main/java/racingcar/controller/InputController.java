@@ -48,7 +48,7 @@ public class InputController {
             throw new IllegalArgumentException("아무 숫자도 입력하지 않음");
         }
 
-        if (moveCount < 0) {
+        if (moveCount <= 0) {
             throw new IllegalArgumentException();
         }
 
