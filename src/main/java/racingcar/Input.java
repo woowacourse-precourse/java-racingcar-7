@@ -17,12 +17,12 @@ public class Input {
     static String[] parseCarNames(String input){
         String[] carNames = input.split(",");
 
-        for(String carName : carNames){
+        for (String carName : carNames) {
             if(carName.length() > 5){
                 throw new IllegalArgumentException("차 이름이 너무 깁니다.");
             }
         }
-        if(input.charAt(input.length() - 1) == ','){
+        if (input.charAt(input.length() - 1) == ',') {
             throw new IllegalArgumentException("쉼표는 구분자로만 사용해야 합니다.");
         }
 
@@ -30,6 +30,17 @@ public class Input {
     }
 
     static int parseNumberOfMoves(String input){
-        return Integer.parseInt(input);
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("숫자 외의 문자를 입력하지 마세요.");
+            }
+        }
+
+        int num = Integer.parseInt(input);
+        if (num == 0) {
+            throw new IllegalArgumentException("이동 횟수는 양수여야 합니다.");
+        }
+
+        return num;
     }
 }
