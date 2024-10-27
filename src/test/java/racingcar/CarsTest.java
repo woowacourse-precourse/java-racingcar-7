@@ -5,12 +5,27 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static racingcar.MovingUnit.MOVING_FORWARD;
 import static racingcar.MovingUnit.STOP;
 
 class CarsTest {
+    @Test
+    void 자동차_이름_부여_테스트() {
+        List<String> carNames = Arrays.asList("pobi", "woni");
+        Cars cars = new Cars(carNames);
+        Map<String, Boolean> carNamesMatchResult = cars.matchCarNames(carNames);
+
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(carNamesMatchResult)
+                    .containsEntry("pobi", true);
+            softly.assertThat(carNamesMatchResult)
+                    .containsEntry("woni", true);
+        });
+    }
+
     @Test
     void 횟수가_1_일떄_자동차_경주게임_기능_테스트() {
         assertRandomNumberInRangeTest(() -> {
