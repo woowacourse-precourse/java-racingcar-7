@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class racingGame {
         int tryNum = inputResult.tryNum;
 
         for (String name : carNames) {
-            race.put(name, 0); // value값 초기화해서 npe 처리
+            race.put(name, 0);
         }
 
         for (int i = 0; i < tryNum; i++) {
@@ -51,14 +50,14 @@ public class racingGame {
 
     private void execute(String carName) {
         boolean go = goOrStop();
-        if (go)
+        if (go) {
             moveForward(carName, 1);
+        }
 
         int moveCnt = race.get(carName);
         System.out.println(carName + " : " + "-".repeat(moveCnt));
     }
 
-    // 최댓값 구해서 이름 출력하기
     private ArrayList<String> findMax(String[] carNames) {
         Integer maxValue = Collections.max(race.values());
         ArrayList<String> winners = new ArrayList<>();
