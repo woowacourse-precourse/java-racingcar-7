@@ -25,5 +25,12 @@ public class RacingController {
         String inputAttemptCount = inputView.inputAttemptCount();
 
         int attemptCount = racingService.parseAttemptCount(inputAttemptCount);
+
+        for (int i = 0; i < attemptCount; i++) {
+            for (String carName : cars.keySet()) {
+                boolean isForward = racingService.canMove();
+                carService.updateCarLocation(cars, carName, isForward);
+            }
+        }
     }
 }
