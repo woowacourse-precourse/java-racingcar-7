@@ -15,5 +15,9 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputRaceTime = Console.readLine();
         int raceTime = Integer.parseInt(inputRaceTime);
+
+        RaceSystem raceSystem = new RaceSystem(carNames, raceTime);
+        String result = raceSystem.startRace();
+        System.out.println(result);
     }
 }
