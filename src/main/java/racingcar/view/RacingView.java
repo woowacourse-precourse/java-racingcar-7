@@ -3,36 +3,18 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Car;
 import racingcar.dto.RaceResponse;
-
+import racingcar.global.validationUtils.InputValidation;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class RacingView {
 
-    private final String regex = "[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]";
 
     // 자동차 이름 입력 받기
     public String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)");
         String[] carName = Console.readLine().trim().split(",");
-        Pattern pattern = Pattern.compile(regex);
-
-        for (String car : carName) {
-            Matcher matcher = pattern.matcher(car);
-
-            if (car.contains(" ")) { // 이름에 공백이 포함된 경우
-                System.out.println("공백이 포함된 이름 : " + car);
-                throw new IllegalArgumentException("공백은 허용하지 않습니다. : " + car);
-            }else if (matcher.find()) { // 특수 문자가 있는 경우
-                System.out.println("한국어, 영어가 아닐 때 : " + car);
-                throw new IllegalArgumentException("한글 또는 영어만 허용합니다. : " + car);
-            } else if (car.length() > 5) { // 길이가 5 초과인 경우
-                System.out.println("차 이름 글자 수 5 이상 : " + car.length());
-                throw new IllegalArgumentException("자동차 이름이 5자가 넘습니다 : " + car + " : " + car.length());
-            }
-        }
+        validateCarNames(carName);
         return carName;
     }
 
@@ -41,9 +23,7 @@ public class RacingView {
     public int getRoundCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int parseInt = Integer.parseInt(Console.readLine());
-        if (parseInt < 0){
-            throw new IllegalArgumentException("음수는 허용 하지 않습니다 : " + parseInt);
-        }
+        InputValidation.checkParseInt(parseInt);
         return parseInt;
     }
 
@@ -62,6 +42,21 @@ public class RacingView {
     public void printRaceResult(RaceResponse response){
         printCarStates(response.getCarStates());
         printCarStates(response.getCarStates());
+    }
+
+    // 자동차 이름에 대한 전체 검증 로직
+    private void validateCarNames(String[] carNames) {
+        for (String car : carNames) {
+            String trimmedCar = car.trim();  // 공백 제거
+            validateCar(trimmedCar);         // 개별 검증 호출
+        }
+    }
+
+    // 개별 자동차 이름에 대한 검증
+    private void validateCar(String car) {
+        InputValidation.checkDuplicate(car);
+        InputValidation.checkSpecialCharacters(car);
+        InputValidation.checkLength(car);
     }
 }
 
