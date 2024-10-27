@@ -104,6 +104,44 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_자동차_이름_정렬_안함_성공() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("woni,pobi", "1");
+                    assertThat(output()).contains("woni : -", "pobi : ", "최종 우승자 : woni");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_특수문자_성공() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("@,!,#,$,?", "1");
+                    assertThat(output()).contains("@ : -","! : ","# : ","$ : -", "? : ", "최종 우승자 : @, $");
+                },
+                MOVING_FORWARD, STOP, STOP, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_빈문자열_오류() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",a,,c,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차_이름_마지막_문자_쉼표_오류() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,c,", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
