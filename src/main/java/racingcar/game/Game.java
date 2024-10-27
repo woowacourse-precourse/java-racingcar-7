@@ -1,22 +1,21 @@
 package racingcar.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.car.Car;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import racingcar.car.Car;
 
 public class Game {
 
     private final Set<Car> racingCars = new HashSet<>();
     private final Set<Car> winnerCars = new HashSet<>();
 
-    public Game(String carNames){
+    public Game(String carNames) {
         createCars(carNames);
     }
 
-    public void start(){
+    public void start() {
         racingStart();
         findWinner();
         printWinner();
@@ -24,7 +23,9 @@ public class Game {
 
     private void racingStart() {
         racingCars.forEach(car -> {
-            if(randomNumber() >= 4) car.forwardOne();
+            if (randomNumber() >= 4) {
+                car.forwardOne();
+            }
         });
 
         printCurrent();
@@ -32,7 +33,7 @@ public class Game {
 
     private void printCurrent() {
         racingCars.forEach(car -> {
-            System.out.println(car + " : "+car.getCurrentLocation());
+            System.out.println(car + " : " + car.getCurrentLocation());
         });
         System.out.println();
     }
@@ -43,10 +44,9 @@ public class Game {
     private void findWinner() {
     }
 
-    private int randomNumber(){
+    private int randomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
-
 
 
     private void createCars(String carNames) {
