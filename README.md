@@ -129,3 +129,7 @@ src/
 # 6. 시도 횟수가 음수인 경우
 -   입력: 경주할 자동차 이름: pobi,jun, 시도할 횟수: -1
 -   기대 출력: IllegalArgumentException 발생
+
+# 7. 중복되는 이름이 있는 경우
+-   입력 : 경주할 자동차 이름 : pobi,pobi, 시도할 횟수: 1
+-   기대 출력 : IllegalArgumentException 발생
