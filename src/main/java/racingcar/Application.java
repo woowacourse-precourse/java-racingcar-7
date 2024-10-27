@@ -10,7 +10,7 @@ public class Application {
 		System.out.println("이름은 5글자 이하 쉼표(,) 기준으로 구분");
 		String input = Console.readLine();
 		String[] arr = splitInput(input);
-		n_lenCheck(arr);
+		n_lenCheck(arr); 
 		move(arr);
 	}
 
@@ -33,17 +33,17 @@ public class Application {
 		}
 	}
 
-	public static int getMoveCount() {
-		System.out.println("시도할 횟수는 몇 회인가요?");
-		String number = Console.readLine();
-		return Integer.parseInt(number);
-	}
-
 	public static void move(String[] arr) {
 		System.out.println(String.join(",", arr));
 		int moveNum = getMoveCount();
 		System.out.println("실행 결과");
 		racing(arr, moveNum);
+	}
+
+	public static int getMoveCount() {
+		System.out.println("시도할 횟수는 몇 회인가요?");
+		String number = Console.readLine();
+		return Integer.parseInt(number);
 	}
 
 	public static void racing(String[] arr, int moveNum) {
@@ -52,6 +52,7 @@ public class Application {
 			makeRand(result);
 			addDash(result, arr);
 		}
+		printWinners(result, arr);
 	}
 
 	public static void makeRand(int[] result) {
@@ -76,6 +77,12 @@ public class Application {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+
+	public static void printWinners(int[] result, String[] arr) {
+		int max = Arrays.stream(result).max().orElse(0);
+		String winners = findWinners(result, arr, max);
+		System.out.println("최종 우승자 : " + winners);
 	}
 
 	public static String findWinners(int[] result, String[] arr, int max) {
