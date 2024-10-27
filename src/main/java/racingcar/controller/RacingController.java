@@ -19,8 +19,8 @@ public class RacingController {
     public void run() {
 
         InputDTO inputDTO = inputController.getInputView();
-        List<Car> carList = inputDTO.getCarList();
-        int inputTurns = inputDTO.getTurnCount();
+        List<Car> carList = inputDTO.carList();
+        int inputTurns = inputDTO.turnCount();
 
         Racing racing = new Racing(carList);
 
