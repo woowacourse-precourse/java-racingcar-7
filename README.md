@@ -47,17 +47,25 @@
 - [x] 경주할 자동차 이름 요청을 출력한다.
 - [x] 시도 횟수 입력 요청을 출력한다.
 
-## 고려 사항
+## 심판
+- [ ] 게임의 진행을 관리한다
+- [ ] 게임의 규칙을 안다.
+  - [x] 라운드 수는 음수일 수 없다.
+  - [ ] 숫자가 4보다 커야 자동차는 움직일 수 있다.
+- [ ] 게임의 우승자를 결정한다.
+
+## 추가 고려 사항
 
 - [x] 경주 라운드 수는 숫자만 입력해야한다.
 - [x] 경주에 참여할 자동차의 이름은 쉼표로 구분되어야한다.
 - [x] 자동차의 이름은 공백이나 구분자(,)로 시작할 수 없다.
 - [ ] 라운드 수는 음수가 될 수 없다.
+- [ ] 사용이 끝난 자원은 닫는다.
 
 # TDD
 
 - 테스트의 메서드 이름은 [Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)
-  를 참고하여 간단하게 기능을 명시하는 'Feature to be tested' 방법으로 한다.
+  를 참고하여 <i>Given_Preconditions_When_StateUnderTest_Then_ExpectedBehavior</i> 방법으로 한다.
 - 이번 미션에서 TDD를 구현하는 방법은 다음과 같다.
 
 ```markdown
