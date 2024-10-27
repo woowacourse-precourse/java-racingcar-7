@@ -1,4 +1,6 @@
-package util;
+package util.splitter;
+
+import util.validator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;

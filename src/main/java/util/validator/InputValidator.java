@@ -1,4 +1,4 @@
-package util;
+package util.validator;
 
 public class InputValidator {
     public enum ErrorMessage {

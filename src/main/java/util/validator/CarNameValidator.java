@@ -1,4 +1,6 @@
-package util;
+package util.validator;
+
+import util.splitter.CarNameSplitter;
 
 import java.util.List;
 
