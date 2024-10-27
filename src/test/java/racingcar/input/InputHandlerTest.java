@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputHandlerTest {
 
-    private static final String CAR_NAMES = "pobi,woni,jun";
+    private static final String VALID_CAR_NAMES = "pobi,woni,jun";
     private static final String ATTEMPT_COUNT = "3";
     private static final String EMPTY_STRING = "";
 
@@ -19,14 +19,14 @@ class InputHandlerTest {
     void 올바른입력() {
         // given
         InputHandler inputHandler = new InputHandler(new OutputHandler());
-        String simulatedInput = CAR_NAMES + "\n" + ATTEMPT_COUNT + "\n";
+        String simulatedInput = VALID_CAR_NAMES + "\n" + ATTEMPT_COUNT + "\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         // when
         UserInput userInput = inputHandler.inputCarNamesAndAttemptCount();
 
         // then
-        assertEquals(CAR_NAMES, userInput.carNames());
+        assertEquals(VALID_CAR_NAMES, userInput.carNames());
         assertEquals(ATTEMPT_COUNT, userInput.attemptCount());
     }
 

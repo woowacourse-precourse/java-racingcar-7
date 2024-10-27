@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RacingGameTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
     private static final int STOP = 3;
-    public static final String CAR_NAMES = "pobi,woni,jjj";
+    public static final String VALID_CAR_NAMES = "pobi,woni,jjj";
     public static final String EMPTY_STRING = "";
 
     @Test
@@ -21,7 +21,7 @@ class RacingGameTest extends NsTest {
     void gameRunsAndSingleWinnerIsDisplayed() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run(CAR_NAMES, "1");
+                    run(VALID_CAR_NAMES, "1");
                     assertThat(output()).contains("pobi : -", "woni : ", "jjj : ", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP, STOP
@@ -33,7 +33,7 @@ class RacingGameTest extends NsTest {
     void gameRunsAndMultipleWinnersAreDisplayed() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run(CAR_NAMES, "6");
+                    run(VALID_CAR_NAMES, "6");
                     assertThat(output()).contains("pobi : ------", "woni : ------", "jjj : ---", "최종 우승자 : pobi, woni");
                 },
                 MOVING_FORWARD, MOVING_FORWARD, STOP,
@@ -67,7 +67,7 @@ class RacingGameTest extends NsTest {
     @DisplayName("시도 횟수가 빈 문자열일 경우 IllegalArgumentException이 발생한다.")
     void throwsExceptionForEmptyAttempts() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(CAR_NAMES, EMPTY_STRING))
+                assertThatThrownBy(() -> runException(VALID_CAR_NAMES, EMPTY_STRING))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -76,7 +76,7 @@ class RacingGameTest extends NsTest {
     @DisplayName("시도 횟수가 0일 경우 IllegalArgumentException이 발생한다.")
     void throwsExceptionForZeroAttempts() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(CAR_NAMES, "0"))
+                assertThatThrownBy(() -> runException(VALID_CAR_NAMES, "0"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -85,7 +85,7 @@ class RacingGameTest extends NsTest {
     @DisplayName("시도 횟수가 음수일 경우 IllegalArgumentException이 발생한다.")
     void throwsExceptionForNegativeAttempts() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(CAR_NAMES, "-1"))
+                assertThatThrownBy(() -> runException(VALID_CAR_NAMES, "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -113,7 +113,7 @@ class RacingGameTest extends NsTest {
     void noWinnersIfAllCarsStop() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run(CAR_NAMES, "1");
+                    run(VALID_CAR_NAMES, "1");
                     assertThat(output()).contains("pobi : ", "woni : ", "jjj : ", "최종 우승자 : pobi, woni, jjj");
                 },
                 STOP, STOP, STOP
