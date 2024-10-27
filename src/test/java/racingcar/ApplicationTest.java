@@ -29,6 +29,49 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력값_검증_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdef,pobi", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 전진_조건_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : ---", "woni : --", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, // pobi
+                STOP, MOVING_FORWARD, MOVING_FORWARD // woni
+        );
+    }
+
+    @Test
+    void 우승자_판단_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "5");
+                    assertThat(output()).contains("최종 우승자 : pobi, jun");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, // pobi
+                STOP, STOP, STOP, MOVING_FORWARD, MOVING_FORWARD, // woni
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, STOP, STOP  // jun
+        );
     }
 
     @Override
