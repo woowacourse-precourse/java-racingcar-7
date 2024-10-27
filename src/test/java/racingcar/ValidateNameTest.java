@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class ValidateNameTest {
 
     @Test
-    void 컴마를_이름에_포함하지_않으면_올바른_입력이다() {
+    void 컴마를_이름에_포함하지_않으면_올바른_입력입니다() {
         // given
         String validInput = "yuze,woodz,jason";
 
@@ -20,7 +20,7 @@ class ValidateNameTest {
     }
 
     @Test
-    void 숫자를_이름에_포함할_수_있다() {
+    void 숫자를_이름에_포함할_수_있습니다() {
         // given
         String validInput = "yu1ze,woodz,2jon";
 
@@ -33,7 +33,7 @@ class ValidateNameTest {
     }
 
     @Test
-    void 공백을_이름에_포함할_수_있다() {
+    void 공백을_이름에_포함할_수_있습니다() {
         // given
         String validInput = "yu ze,woodz,jason";
 
@@ -46,7 +46,7 @@ class ValidateNameTest {
     }
 
     @Test
-    void 컴마가_아닌_기호를_이름에_포함할_수_있다() {
+    void 컴마가_아닌_기호를_이름에_포함할_수_있습니다() {
         // given
         String validInput = "yu.ze,woodz,jon~";
 
@@ -59,7 +59,7 @@ class ValidateNameTest {
     }
 
     @Test
-    void 컴마가_이름에_포함되면_올바르지않은_입력이다() {
+    void 컴마가_이름에_포함되면_올바르지않은_입력입니다() {
         // given
         String invalidInput = "yuze,w,,oodz,jason";
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class ValidateInputFormatTest {
 
     @Test
-    void 앞뒤에_컴마가_없는_경우_올바른_입력이다() {
+    void 앞뒤에_컴마가_없는_경우_올바른_입력입니다() {
         // given
         String validInput = "yuze,woodz,jason";
 
@@ -20,7 +20,7 @@ class ValidateInputFormatTest {
     }
 
     @Test
-    void 앞뒤에_컴마가_존재하면_올바르지않은_입력이다() {
+    void 앞뒤에_컴마가_존재하면_올바르지않은_입력입니다() {
         // given
         String startAndEndWithComma = ",,yuze,woodz,jason,,";
 
@@ -34,7 +34,7 @@ class ValidateInputFormatTest {
     }
 
     @Test
-    void 앞에_컴마가_존재하면_올바르지않은_입력이다() {
+    void 앞에_컴마가_존재하면_올바르지않은_입력입니다() {
         // given
         String startWithComma = ",yuze,woodz,jason";
 
@@ -48,7 +48,7 @@ class ValidateInputFormatTest {
     }
 
     @Test
-    void 뒤에_컴마가_존재하면_올바르지않은_입력이다() {
+    void 뒤에_컴마가_존재하면_올바르지않은_입력입니다() {
         // given
         String endWithComma = "yuze,woodz,jason,";
 
