@@ -44,6 +44,7 @@ public class GameController {
 
     private void registerCar(String input) {
         for (String name : input.split(",")) {
+            name = name.trim();
             this.carList.add(new Car(name));
         }
     }
