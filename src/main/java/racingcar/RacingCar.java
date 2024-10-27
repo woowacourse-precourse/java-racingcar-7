@@ -68,5 +68,23 @@ public class RacingCar {
         }
 
     }
+    public static void OutputEachTrial(int trial, Car cars[]) {
+
+        for (int i = 0; i < trial; i++) {
+            saveCarsActions(cars);
+            printCarsActions(cars);
+        }
+
+    }
+
+    public static void saveCarsActions(Car cars[]) {
+
+        for (int i = 0; i < cars.length; i++) {
+            if (stopOrGo(cars[i])) {
+                cars[i].addTrial();
+            }
+        }
+    }
+
 
 }
