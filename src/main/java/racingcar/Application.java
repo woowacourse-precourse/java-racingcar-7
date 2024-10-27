@@ -98,6 +98,8 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         N = Integer.parseInt(Console.readLine());
+
+        if (N <= 0) throw new IllegalArgumentException("플레이 횟수는 음수가 불가능합니다.");
     }
 
     static void playerListInput(String[] playerArray) throws IllegalArgumentException{
