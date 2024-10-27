@@ -7,7 +7,7 @@ public class Extractor {
 
         Cars cars = Cars.newCars();
         for (String s : split) {
-            cars.addCar(Car.newCar(s));
+            cars.addCar(Car.newCar(s.strip()));
         }
 
         return cars;
