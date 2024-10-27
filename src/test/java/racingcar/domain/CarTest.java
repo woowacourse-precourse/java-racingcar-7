@@ -44,25 +44,25 @@ class CarTest {
     void 무작위_값이_4이상_이면_전진한다() {
         // given
         Car car = new Car("pobis");
-        String beforeDistance = car.generateCarState();
+        String beforeDistance = car.toString();
 
         // when
         car.moveForward(4);
 
         // then
-        assertNotEquals(beforeDistance, car.generateCarState());
+        assertNotEquals(beforeDistance, car.toString());
     }
 
     @Test
     void 무작위_값이_4미만_이면_전진하지_않는다() {
         // given
         Car car = new Car("pobis");
-        String beforeDistance = car.generateCarState();
+        String beforeDistance = car.toString();
 
         // when
         car.moveForward(3);
 
         // then
-        assertEquals(beforeDistance, car.generateCarState());
+        assertEquals(beforeDistance, car.toString());
     }
 }

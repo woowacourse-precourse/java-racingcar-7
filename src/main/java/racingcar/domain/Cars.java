@@ -26,7 +26,7 @@ public class Cars {
 
     public List<String> getCarStates() {
         List<String> states = new ArrayList<>();
-        cars.forEach(car -> states.add(car.generateCarState()));
+        cars.forEach(car -> states.add(car.toString()));
 
         return states;
     }
