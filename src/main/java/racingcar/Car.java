@@ -18,4 +18,8 @@ public class Car {
     public int getCurrentPos(){
         return currentPos;
     }
+
+    public void incCurrentPos(){
+        this.currentPos++;
+    }
 }

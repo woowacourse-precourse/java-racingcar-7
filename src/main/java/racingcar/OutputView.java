@@ -17,8 +17,9 @@ public class OutputView {
 
     public void printResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName()+" : ");
+            System.out.print(car.getName()+" : ");
             printCurrentPos(car.getCurrentPos());
+            System.out.print("\n");
         }
     }
 
