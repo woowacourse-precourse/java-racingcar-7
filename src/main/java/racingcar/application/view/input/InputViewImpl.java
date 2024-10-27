@@ -16,6 +16,10 @@ public class InputViewImpl implements InputView {
 
   @Override
   public int readInputAttemptCount() {
-    return 0;
+
+    String inputAttemptCount = Console.readLine();
+    validateInputAttemptCount(inputAttemptCount);
+
+    return Integer.parseInt(inputAttemptCount);
   }
 }
