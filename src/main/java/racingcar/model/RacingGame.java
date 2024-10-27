@@ -27,7 +27,7 @@ public class RacingGame {
             }
         }
     }
-    public boolean moveControl(){
+    private boolean moveControl(){
         int randomValue= Randoms.pickNumberInRange(0,9);
         return randomValue>=4;
     }
@@ -35,16 +35,16 @@ public class RacingGame {
         int maxDashes = getMaxDashCount();
         return getWinnersByMaxDash(maxDashes);
     }
-    public int getMaxDashCount(){
+    private int getMaxDashCount(){
         return cars.stream()
                 .mapToInt(Car::getDashCount)
                 .max()
                 .orElse(0);
     }
-    public boolean isWinner(Car car, int maxDashes){
+    private boolean isWinner(Car car, int maxDashes){
         return car.getDashCount()==maxDashes;
     }
-    public List<String> getWinnersByMaxDash(int maxDashes) {
+    private List<String> getWinnersByMaxDash(int maxDashes) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (isWinner(car, maxDashes)) {
