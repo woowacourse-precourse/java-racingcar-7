@@ -1,0 +1,55 @@
+package racingcar.common;
+
+import racingcar.model.CarName;
+
+import java.util.List;
+
+import static racingcar.common.ErrorMessage.*;
+
+public class Validator {
+
+    public static void validateCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(TOO_LONG_CAR_NAME.getMessage());
+        }
+    }
+
+    public static void validateCarNameListLength(List<CarName> carNameList) {
+        if (carNameList.isEmpty()) {
+            throw new IllegalArgumentException(NO_CAR_NAME.getMessage());
+        }
+        if (carNameList.size() > 100) {
+            throw new IllegalArgumentException(TOO_MANY_CAR_NAME.getMessage());
+        }
+    }
+
+    public static void validateIsContainNewLine(String carName) {
+        if (carName.contains("\n")) {
+            throw new IllegalArgumentException(THERE_IS_NEW_LINE_CHARACTER.getMessage());
+        }
+    }
+
+    public static void validateRaceCountSize(int raceCount) {
+        if (raceCount < 0 || raceCount > 100) {
+            throw new IllegalArgumentException(RACE_COUNT_SIZE.getMessage());
+        }
+    }
+
+    public static void validateRawInputHasCommaInLast(String rawInput) {
+        if (rawInput.endsWith(",")) {
+            throw new IllegalArgumentException(INPUT_MUST_NOT_END_WITH_COMMA.getMessage());
+        }
+    }
+
+    public static void validateCarNameIsNotEmpty(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_MUST_NOT_BE_EMPTY.getMessage());
+        }
+    }
+
+    public static void validateCarNameContainBlank(String carName) {
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException(CAR_NAME_MUST_NOT_CONTAIN_BLANK.getMessage());
+        }
+    }
+}
