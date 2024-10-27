@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.stream.IntStream;
+import racingcar.view.OutputView;
 
 public class Car implements Comparable<Car> {
     private final Name name;
@@ -40,7 +41,8 @@ public class Car implements Comparable<Car> {
         stringBuilder.append(this.getName()).append(" : ");
         IntStream.range(0, this.getDistance())
                 .forEach((i) -> stringBuilder.append("-"));
-        System.out.println(stringBuilder);
+        OutputView outputView = OutputView.INSTANCE;
+        outputView.print(stringBuilder.toString());
     }
 
     @Override
