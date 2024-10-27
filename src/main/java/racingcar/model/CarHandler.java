@@ -46,7 +46,13 @@ public class CarHandler {
         System.out.println();
     }
 
-    public List<Car> getWinnerList() {
+    public String resultWinnerList() { // 이동된 메서드
+        return getWinnerList().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(COMMA));
+    }
+
+    private List<Car> getWinnerList() {
         return cars.stream()
                 .filter(car -> car.isSameMoveCount(getWinnerMoveCount()))
                 .collect(Collectors.toList());

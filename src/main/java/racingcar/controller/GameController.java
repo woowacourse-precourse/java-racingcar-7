@@ -40,9 +40,7 @@ public class GameController {
     }
 
     private void resultWinnerList() {
-        String carNames = carHandler.getWinnerList().stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
+        final String carNames = carHandler.resultWinnerList();
         OutputMessage.executeResultMessage(carNames);
     }
 
