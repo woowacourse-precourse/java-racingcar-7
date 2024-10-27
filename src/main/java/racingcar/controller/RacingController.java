@@ -30,6 +30,7 @@ public class RacingController {
         ArrayList<Car> carList = new ArrayList<>();
 
         for (String name : nameList){
+            checkNameCondition(name);
             carList.add(new Car(name));
         }
 
@@ -51,7 +52,21 @@ public class RacingController {
     }
 
     int stringToInt(String string){
+        checkNumberCondition(string);
         return Integer.parseInt(string);
+    }
+
+    void checkNameCondition(String name){
+        if (name.length() > 5){
+            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+        }
+    }
+
+    void checkNumberCondition(String number){
+        String regex = "^(0|[1-9]\\d*)$";
+        if (!number.matches(regex)) {
+            throw new IllegalArgumentException("0또는 양수를 입력해주세요.");
+        }
     }
 
 }
