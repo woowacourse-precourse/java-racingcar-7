@@ -18,6 +18,15 @@ public class RaceGame {
     void start() {
         inputCarNames();
         inputRoundCount();
+        System.out.println("실행 결과");
+        int currentRound = 0;
+        while(currentRound < roundCount) {
+            startRound();
+            currentRound++;
+        }
+
+        List<String> winner = getWinner();
+        System.out.println("최종 우승자 : " + String.join(",", winner));
     }
 
     @Test
@@ -58,5 +67,23 @@ public class RaceGame {
         }
         System.out.println();
     }
+
+    List<String> getWinner() {
+        List<String> winners = new ArrayList<>();
+        int maxForwardCount = Integer.MIN_VALUE;
+
+        for(Car car : carList) {
+            if(car.getForwardCount() > maxForwardCount) {
+                winners.clear();
+                winners.add(car.getName());
+                maxForwardCount = car.getForwardCount();
+            } else if(car.getForwardCount() == maxForwardCount) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
 
 }
