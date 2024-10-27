@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.global;
 
 public enum Message {
 
