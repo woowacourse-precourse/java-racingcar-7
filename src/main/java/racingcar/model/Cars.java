@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.List;
 import racingcar.constants.Constants;
+import racingcar.constants.ErrorMessages;
 import racingcar.utils.RandomNumberGenerator;
 
 public class Cars {
@@ -53,13 +54,13 @@ public class Cars {
 
     private void validateEmpty(List<Car> cars) {
         if (cars.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_RACER_NAME_BLANK.getMessage());
         }
     }
 
     private void validateDuplication(List<Car> cars) {
         if (isDuplicated(cars)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_RACER_NAME_DUPLICATED.getMessage());
         }
     }
 

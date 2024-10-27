@@ -42,13 +42,13 @@ public class RacingGame {
 
     private void validateOverZero(int tryCount) {
         if (tryCount < MIN_TRY_COUNT) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_TRY_COUNT.getMessage());
+            throw new IllegalArgumentException(ErrorMessages.INVALID_RANGE_TRY_COUNT.getMessage());
         }
     }
 
     private void validateInt(String tryCount) {
         if (!isInt(tryCount)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_NOT_NUMBER_TRY_COUNT.getMessage());
         }
     }
 
