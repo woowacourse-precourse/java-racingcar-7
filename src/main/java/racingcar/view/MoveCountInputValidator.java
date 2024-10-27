@@ -15,6 +15,9 @@ public class MoveCountInputValidator {
             if (moveCount < 0) {
                 throw new IllegalArgumentException("이동 횟수는 0 이상의 정수여야 합니다.");
             }
+            if (moveCount > Integer.MAX_VALUE) {
+                throw new IllegalArgumentException("이동 횟수는 정수 범위를 초과할 수 없습니다.");
+            }
             return moveCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력해야 합니다.");
