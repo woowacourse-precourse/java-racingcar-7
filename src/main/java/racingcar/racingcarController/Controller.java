@@ -1,12 +1,9 @@
 package racingcar.racingcarController;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
-import racingcar.racingcarView.View;
 import racingcar.racingcarModel.Model;
+import racingcar.racingcarView.View;
 
 
 public class Controller {
@@ -20,9 +17,9 @@ public class Controller {
 
     public void run() {
         view.printNameInputMessage();
-        String nameInput = Console.readLine();
+        String nameInput = view.readInput();
         view.printTryInputMessage();
-        int tryInput = Integer.parseInt(Console.readLine());
+        int tryInput = Integer.parseInt(view.readInput());
 
         LinkedHashMap<String, Integer> carInfo = model.initializeCarInfo(nameInput);
 

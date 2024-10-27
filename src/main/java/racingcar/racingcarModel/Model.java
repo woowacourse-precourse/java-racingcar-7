@@ -63,7 +63,7 @@ public class Model {
     // 승자가 두 명 이상이면 사이에 콤마를 붙여주는 메서드
     public void appendWinner (StringBuilder winner, String key) {
         if (winner.length() > 0) {
-            winner.append(",");
+            winner.append(", ");
         }
         winner.append(key);
     }
