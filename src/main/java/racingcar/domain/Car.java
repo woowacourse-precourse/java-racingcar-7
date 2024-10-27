@@ -5,6 +5,9 @@ public class Car {
 	private int distance;
 
 	public Car(String name, int distance) {
+		validateLength(name);
+		validateAlphabet(name);
+
 		this.name = name;
 		this.distance = distance;
 	}
