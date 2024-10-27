@@ -1,27 +1,35 @@
 package racingcar;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Random;
-
 public class Car {
-    CarList carList = new CarList();
+    private int position = 0;
+    private final CarList carList = new CarList();
+    private TryNumber tryNumber; // TryNumber 필드 추가
 
     public void addCar(String carNames) {
-        for(String carName : carNames.split(",")) {
+        for (String carName : carNames.split(",")) {
             carList.add(carName);
         }
     }
 
-    public void SelectMoveOrStop() {
-        int CarMove=0;
-        if (CarMove == Randoms.pickNumberInRange(4,9)) {
-            Move();
+    public void selectMoveOrStop() {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            move();
         }
     }
-    public void Move() {
+
+    public void move() {
         this.position++;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    // setTryNumber 메서드 추가
+    public void setTryNumber(String tryNumberValue) {
+        this.tryNumber = new TryNumber();
+        this.tryNumber.setTryNumber(tryNumberValue);
+    }
 }
