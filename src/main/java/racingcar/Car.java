@@ -19,6 +19,10 @@ public class Car {
         return new Car(name);
     }
 
+    public boolean isAtLocation(int location) {
+        return this.location == location;
+    }
+
     public static void validateCarName(String input) {
         checkBlank(input);
         checkLength(input);

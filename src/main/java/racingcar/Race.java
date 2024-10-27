@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -10,6 +11,14 @@ public class Race {
 
     private List<Car> carList;
     private int round;
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public int getRound() {
+        return round;
+    }
 
     Race(List<Car> carList, int round) {
         this.carList = carList;
@@ -31,4 +40,30 @@ public class Race {
         }
     }
 
+    public List<Car> getWinnerList() {
+        int first = findFirstLocation(carList);
+        return getCarsAt(first);
+    }
+
+    private int findFirstLocation(List<Car> carList) {
+        int first = 0;
+
+        for (Car car : carList) {
+            first = Math.max(first, car.getLocation());
+        }
+
+        return first;
+    }
+
+    private List<Car> getCarsAt(int location) {
+        List<Car> findCarList = new ArrayList<>();
+
+        for (Car car : carList) {
+            if (car.isAtLocation(location)) {
+                findCarList.add(car);
+            }
+        }
+
+        return findCarList;
+    }
 }
