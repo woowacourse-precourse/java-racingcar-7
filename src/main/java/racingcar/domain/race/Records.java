@@ -1,6 +1,6 @@
 package racingcar.domain.race;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import racingcar.domain.car.CarName;
@@ -10,7 +10,7 @@ public class Records {
     private final Map<CarName, Distance> records;
 
     public Records() {
-        records = new HashMap<>();
+        records = new LinkedHashMap<>();
     }
 
     public void addRecord(CarName carName, Distance distance) {
