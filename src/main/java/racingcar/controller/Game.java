@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.Parser;
+import racingcar.dto.CarsPositions;
 import racingcar.validator.CarNamesValidator;
 import racingcar.validator.TotalRoundsValidator;
 import racingcar.view.InputView;
@@ -33,8 +34,8 @@ public class Game {
 
         for (int i = 0; i < totalRounds; i++) {
             cars.proceedOneRound();
-            List<String> currentStates = cars.getCurrentStates();
-            OutputView.printRoundResult(currentStates);
+            CarsPositions carsPositions = cars.buildCurrentStates();
+            OutputView.printRoundResult(carsPositions.getVisualizedPositions());
         }
     }
 

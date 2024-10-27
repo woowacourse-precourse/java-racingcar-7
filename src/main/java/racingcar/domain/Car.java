@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.CarPosition;
+
 public class Car {
     private final String name;
     private int position = 0;
@@ -18,9 +20,8 @@ public class Car {
         position++;
     }
 
-    public String getCurrentState(){
-        String positionBar = "-".repeat(position);
-        return name + " : " + positionBar;
+    public CarPosition buildCarPosition(){
+        return new CarPosition(name, position);
     }
 
 }

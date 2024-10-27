@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.CarPosition;
+import racingcar.dto.CarsPositions;
 
 public class Cars {
     private final List<Car> cars;
@@ -31,13 +33,13 @@ public class Cars {
         }
     }
 
-    public List<String> getCurrentStates(){
-        List<String> currentStates = new ArrayList<>();
+    public CarsPositions buildCurrentStates(){
+        List<CarPosition> carsPositions = new ArrayList<>();
         for (Car car : cars) {
-            currentStates.add(car.getCurrentState());
+            carsPositions.add(car.buildCarPosition());
         }
 
-        return currentStates;
+        return new CarsPositions(carsPositions);
     }
 
     public List<String> getWinner(){
