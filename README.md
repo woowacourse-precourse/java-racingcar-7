@@ -51,3 +51,13 @@
 
 - 모든 차들에 움직임 요청한다. ("{name} : ----" + \n + "{name} : ----"의 형태의 반환값)
 - 우승자를 찾는다.(maxPosition을 찾고, 각 차들의 위치로 우승자를 찾는다.)
+
+### 3. RandomNumbers
+
+- 차들의 갯수만큼 랜덤 숫자를 저장한다.
+
+## Service
+
+### 1. RandomNumberGenerator
+
+- RandomNumbers를 생성한다.
