@@ -1,6 +1,9 @@
 package racingcar.constants;
 
 public class FormatConstants {
+    private FormatConstants() {
+    }
+
     public static String BLANK = " ";
     public static String NEXT_LINE = "\n";
     public static String BAR = "-";
