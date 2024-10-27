@@ -1,6 +1,5 @@
 package racingcar.custom_test;
 
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.*;
 import racingcar.view.InputView;
 
@@ -10,7 +9,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class FeatureTest {
+public class InputViewTest {
     private InputView inputView;
 
     @BeforeEach //실행 전, inputView Instance 가져오기
@@ -28,7 +27,7 @@ public class FeatureTest {
     @Test
     @Order(1)
     @DisplayName("입력 확인 테스트")
-    void inputViewTest(){
+    void inputViewGetVehicleNameTest(){
         //given
 
         // 정상 결과 (검사용)
