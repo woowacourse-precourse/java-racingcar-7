@@ -8,7 +8,6 @@ import racingcar.ui.OutputUI;
 
 public class Application {
 
-
     public static void main(String[] args) {
 
         // 1. ApplicationConfig로부터 RaceController를 생성
