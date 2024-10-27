@@ -39,7 +39,7 @@
 
 ---
 
-## Model
+## `Model`
 
 ### 1. Car
 
@@ -66,7 +66,7 @@
 - 마지막 라운드 이후 TopRanker 저장
 - 모두 StringBuilder로 출력 위한 저장
 
-## Service
+## `Service`
 
 ### 1. RandomNumberGenerator
 
@@ -81,3 +81,23 @@
 ### 3. RacingRound
 
 - 한 라운드를 record
+
+### 4. ValidatorService
+
+- 입력받은 inputNames와 roundCount를 검증(형식, 길이 등)
+
+## `Validator`
+
+**1. InputNameValidator**
+
+- InputNameCountValidator : 이름은 최대 99개까지 입력 가능
+- InputNameCharacterValidator : 이름 내 공백문자 검증(공백문자 시 예외처리)
+- InputNameDuplicationValidator : 이름 중복 검증(중복 시 예외)
+- InputNameLengthValidator : 이름 길이 검증(범위 밖일 시 예외)
+- InputNameValidatorsFactory : List<InputNameValidator>로 검증 리스트 객체 생성
+
+**2. InputRoundValidator**
+
+- InputRoundFormatValidator : 시도 횟수 숫자인지 검증
+- InputRoundRangeValidator : 시도 횟수 1이상 Integer.MAX_VALUE 이하 인지 검증
+- InputRoundValidatorsFactory : List<InputRoundValidator>로 검증 리스트 객체 생성
