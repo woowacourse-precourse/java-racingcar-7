@@ -18,8 +18,9 @@ public class RacingGame {
             for (Car car : cars) {
                 int number = Randoms.pickNumberInRange(0, 9);
                 car.moveForward(number);
-                printResult();
             }
+
+            printResult();
         }
     }
 
