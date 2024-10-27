@@ -12,13 +12,13 @@ public class RacingManager {
         }
     }
 
-    public void moveCars(List<Car> cars) {
+    private void moveCars(List<Car> cars) {
         for (Car car : cars) {
             car.attemptMoveForward();
         }
     }
 
-    public void displayPositions(List<Car> cars) {
+    private void displayPositions(List<Car> cars) {
         for (Car car : cars) {
             car.displayPosition();
         }

@@ -32,7 +32,5 @@ public class RacingManagerTest {
         for (Car car : cars) {
             assertThat(car.getPosition().length()).isGreaterThanOrEqualTo(0);
         }
-
-        racingManager.displayPositions(cars);
     }
 }
