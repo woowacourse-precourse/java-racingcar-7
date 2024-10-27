@@ -31,17 +31,16 @@ public class CarNameValidation {
     }
 
     private static void validateIncludeComma(String input) {
-        if (!input.contains(",")) {
+        if (!input.contains(COMMA.getSeparator())) {
             throw new IllegalArgumentException(CAR_NAME_MUST_BE_SEPARATED_BY_COMMAS.getMessage());
         }
     }
 
     private static void validateNotEndWithComma(String input) {
-        if (input.endsWith(",")) {
+        if (input.endsWith(COMMA.getSeparator())) {
             throw new IllegalArgumentException(CAR_NAME_CANNOT_END_WITH_COMMA.getMessage());
         }
     }
-
 
     private static void validateCarName(String input) {
         String[] carNames = input.replaceAll(SPACE.getSeparator(), EMPTY.getSeparator()).split(COMMA.getSeparator());
