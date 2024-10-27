@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import racingcar.domain.car.CarGroup;
+import racingcar.domain.game.GameInitializer;
 import racingcar.domain.game.GameRound;
-import racingcar.factory.GameInitializer;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

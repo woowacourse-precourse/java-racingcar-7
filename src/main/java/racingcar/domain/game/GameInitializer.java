@@ -1,4 +1,4 @@
-package racingcar.factory;
+package racingcar.domain.game;
 
 import static racingcar.config.GameConfig.CAR_NAMES_DELIMITER;
 
@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarGroup;
-import racingcar.domain.game.GameRound;
 
 public abstract class GameInitializer {
 
