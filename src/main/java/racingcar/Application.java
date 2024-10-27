@@ -14,6 +14,8 @@ public class Application {
         String input = Console.readLine();
         List<String> carNameList = getCarName(input);
         System.out.println("시도할 횟수는 몇 회인가요?");
+        String attempts = Console.readLine();
+        playGame(carNameList, attempts);
     }
 
     public static List<String> getCarName(String input){
@@ -30,6 +32,21 @@ public class Application {
             if(carName.isBlank()){
                 throw new IllegalArgumentException("자동차 이름을 1자 이상으로 정해주세요.");
             }
+        }
+    }
+
+    public static void playGame(List<String> carNameList, String attempts){
+        int round = validateAttempts(attempts);
+    }
+
+    public static int validateAttempts(String attempts){
+        try{
+            if(Integer.parseInt(attempts) < 1){
+                throw new IllegalArgumentException("음수나 0은 입력이 안됩니다.");
+            }
+            return Integer.parseInt(attempts);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자 외에는 입력이 안됩니다.");
         }
     }
 }
