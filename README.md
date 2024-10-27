@@ -72,12 +72,6 @@
 
 - 경주의 결과값으로 승자를 출력합니다.
 
-### 📌 자동차 이동 : `moveCar()`
-
-- 자동차는 전진 또는 멈출 수 있습니다.
-- 0에서 9 사이의 무작위 값을 구한 후, 해당 값이 4 이상일 경우 자동차는 전진합니다.
-    - 랜덤값은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용합니다.
-
 ### 📌 잘못된 입력값 예외처리 : `catchError()`
 
 - 사용자가 잘못된 값을 입력할 경우, `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료합니다.
