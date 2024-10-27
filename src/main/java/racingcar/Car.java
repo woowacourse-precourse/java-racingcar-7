@@ -18,4 +18,12 @@ public class Car {
             moveCount++;
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getMoveCount() {
+        return moveCount;
+    }
 }
