@@ -5,6 +5,10 @@ import racingcar.validation.Validator;
 
 public class Car {
 
+    private final int RANDOM_NUMBER_START = 0;
+    private final int RANDOM_NUMBER_END = 9;
+    private final int RANDOM_MOVE_NUMBER = 4;
+
     private final String name;
     private int position;
 
@@ -16,8 +20,8 @@ public class Car {
     }
 
     public void move() {
-        int number = Randoms.pickNumberInRange(0, 9);
-        if (number >= 4) {
+        int number = Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END);
+        if (number >= RANDOM_MOVE_NUMBER) {
             position++;
         }
     }

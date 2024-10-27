@@ -37,6 +37,7 @@ public class CarService {
 
     public void startRace(List<Car> cars, int count) {
         System.out.println(OutputMessage.RESULT.getMessage());
+
         for (int i = 0; i < count; i++) {
             cars.forEach(Car::move);
             outputView.racingView(cars);

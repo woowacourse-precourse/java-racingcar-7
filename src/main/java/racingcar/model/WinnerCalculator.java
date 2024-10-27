@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.List;
 
 public class WinnerCalculator {
+
     public static List<String> calculateWinners(List<Car> cars) {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
