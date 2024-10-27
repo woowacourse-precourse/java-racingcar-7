@@ -7,12 +7,12 @@ public class Cars {
     private static final int INCLUDE_LAST_EMPTY_STRING = -1;
 
     public Cars(String namesStr) {
-        List<String> namesArr = List.of(namesStr.split(",", INCLUDE_LAST_EMPTY_STRING));
+        List<String> nameList = List.of(namesStr.split(",", INCLUDE_LAST_EMPTY_STRING));
 
-        validateWrongValue(namesArr);
-        validateNameLength(namesArr);
+        validateWrongValue(nameList);
+        validateNameLength(nameList);
 
-        this.nameList = namesArr;
+        this.nameList = nameList;
     }
 
     public List<String> getNameList() {

@@ -15,8 +15,8 @@ public class Race {
 
     public Race(int totalRaceTurn, Cars cars) {
         validateNaturalNumber(totalRaceTurn);
-
         LinkedHashMap<String, Integer> racingScoreBoard = new LinkedHashMap<>();
+
         for (String car : cars.getNameList()) {
             racingScoreBoard.put(car, DEFAULT_MOVE_POINT);
         }
