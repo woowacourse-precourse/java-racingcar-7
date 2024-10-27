@@ -44,18 +44,7 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
-    @Test
-    @DisplayName("assertEquals")
-    void assertEqualsTest() {
-        final var a = 1;
-        final var b = 2;
-        final var actual = a + b;
-
-        final var expected = 3;
-
-        assertEquals(expected, actual);
-    }
-
+    // 자동차 움직임 테스트
     @Test
     @DisplayName("car move test")
     void testCarMove() {
@@ -66,6 +55,7 @@ class ApplicationTest extends NsTest {
         assertTrue(moveCar.getDistance() == carDistance || moveCar.getDistance() == carDistance + 1);
     }
 
+    // 자동차 객체 생성 테스트
     @Test
     @DisplayName("car create test")
     void testCreateCar() {
@@ -78,6 +68,7 @@ class ApplicationTest extends NsTest {
         assertEquals("createCar3", createCars.get(2).getName());
     }
 
+    // 최대 전진 횟수 구하기 테스트
     @Test
     @DisplayName("find max distance test")
     void testFindMaxDistance() {
@@ -97,6 +88,8 @@ class ApplicationTest extends NsTest {
     }
 
 
+    // 최대 전진 횟수를 가지는 자동차 이름 구하기 테스트
+    // 최종 우승 자동차 구하기 테스트
     @Test
     @DisplayName("find winner test")
     void testFindWinner() {
