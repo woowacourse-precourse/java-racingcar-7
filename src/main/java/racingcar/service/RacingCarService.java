@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.constant.GamePolicy;
+import racingcar.constant.Message;
 import racingcar.model.RacingCarModel;
 import racingcar.parser.InputParser;
 import racingcar.validation.InputValidator;
@@ -29,17 +30,21 @@ public class RacingCarService {
         }
     }
 
-    public void racingStart(String tryCountInput) {
+    public String racingStart(String tryCountInput) {
         inputValidator.validateInputIsEmpty(tryCountInput);
         inputValidator.validateTryCount(tryCountInput);
 
+        StringBuilder sb = new StringBuilder();
+
         int tryCount = inputParser.parseInt(tryCountInput);
         for (int i = 0; i < tryCount; i++) {
-            round();
+            round(sb);
         }
+
+        return sb.toString();
     }
 
-    private void round() {
+    private void round(StringBuilder sb) {
         int carCount = racingCarModel.size();
 
         List<Integer> randomNumbers = new ArrayList<>();
@@ -47,5 +52,7 @@ public class RacingCarService {
             randomNumbers.add(Randoms.pickNumberInRange(GamePolicy.RANDOM_MINIMUM, GamePolicy.RANDOM_MAXIMUM));
         }
         racingCarModel.forwardAction(randomNumbers);
+        racingCarModel.appendRunResult(sb);
+        sb.append(Message.NEW_LINE);
     }
 }

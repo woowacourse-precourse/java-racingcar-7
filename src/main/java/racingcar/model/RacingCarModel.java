@@ -34,13 +34,19 @@ public class RacingCarModel {
         }
     }
 
-    // 저장된 RacingCar 확인용 메서드
-    public void checkSavedCars() {
-        System.out.println(Message.CHECK_SAVED_CARS_MESSAGE);
+    public void appendRunResult(StringBuilder sb) {
         racingCars.forEach(
-                racingCar -> System.out.println(
-                        "차 이름 : " + racingCar.getName() + ", 앞으로 나아간 거리 : " + racingCar.getDistance())
+                racingCar -> appendResult(sb, racingCar)
         );
+    }
+
+    private void appendResult(StringBuilder sb, RacingCar racingCar) {
+        sb.append(racingCar.getName())
+                .append(Message.RUN_RESULT_SEPARATOR);
+        for (int i = 0; i < racingCar.getDistance(); i++) {
+            sb.append(Message.RUN_RESULT_DISTANCE);
+        }
+        sb.append(Message.NEW_LINE);
     }
 
     private void validateDuplicateCarName(String name) {
