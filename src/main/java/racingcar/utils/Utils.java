@@ -31,7 +31,7 @@ public class Utils {
     public static int inputToInt(String input) {
         try {
             return Integer.parseInt(Utils.removeWhitespace(input));
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorCode.INVALID_NUMBER.getMessage());
         }
     }

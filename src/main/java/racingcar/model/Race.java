@@ -22,4 +22,15 @@ public class Race {
             OutputView.showRaceStatus(cars);
         }
     }
+
+    public List<Car> getWinners() {
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
 }
