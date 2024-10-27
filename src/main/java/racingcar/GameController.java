@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameController {
     private final List<Car> cars;
@@ -18,4 +19,18 @@ public class GameController {
             }
         }
     }
+
+    public void startRace(int attempts) {
+        for (int i = 0; i < attempts; i++) {
+            OutputHandler.printRoundResult(cars);
+        }
+        OutputHandler.printWinners(getWinners());
+    }
+
+    private List<String> getWinners() {
+        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().orElse(0);
+
+        return cars.stream().filter(car -> car.getPosition() == maxPosition).map(Car::getName).collect(Collectors.toList());
+    }
+
 }
