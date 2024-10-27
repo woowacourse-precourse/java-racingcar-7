@@ -35,11 +35,22 @@ public class Race implements Iterator<List<Car>> {
         }
     }
 
+    /**
+     * 경주에 남은 시도가 있는지 확인한다.
+     *
+     * @return 남은 시도가 있으면 true, 그렇지 않다면 false.
+     */
     @Override
     public boolean hasNext() {
         return lap.isRemaining();
     }
 
+    /**
+     * 경주를 한 번 진행하고 각 자동차의 움직임을 시도한다.
+     *
+     * @return 현재 라운드가 진행된 후 자동차들의 위치를 포함한 리스트의 복사본.
+     * @throws IllegalStateException 시도할 횟수가 더 이상 남아있지 않은 경우.
+     */
     @Override
     public List<Car> next() {
         if (!hasNext()) {
@@ -59,6 +70,12 @@ public class Race implements Iterator<List<Car>> {
         });
     }
 
+    /**
+     * 모든 경주가 완료된 후 우승자를 결정한다.
+     *
+     * @return 가장 멀리 이동한 자동차들의 리스트.
+     * @throws IllegalStateException 경주가 아직 완료되지 않은 경우.
+     */
     public List<Car> finish() {
         if (hasNext()) {
             throw new IllegalStateException("경주가 완료되지 않았습니다.");
