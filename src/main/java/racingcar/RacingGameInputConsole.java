@@ -2,13 +2,23 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class InputConsole {
-    void run(){
+public class RacingGameInputConsole implements GameInputView {
+    @Override
+    public void start() {
+        Game game = createGame();
+        game.play();
+    }
+
+    @Override
+    public Game createGame() {
         String carNames = readCarsInput();
-        Cars.createCarsFrom(carNames);
+        Cars cars = Cars.createCarsFrom(carNames);
 
         String tryCountInput = readTryCountInput();
-        RacingGameCount racingCount = new RacingGameCount(tryCountInput);
+        RacingGameCount count = new RacingGameCount(tryCountInput);
+
+        GameResultView resultView = new RacingGameOutPutConsole(cars);
+        return new RacingGame(cars, count, resultView);
     }
 
     private String readCarsInput() {

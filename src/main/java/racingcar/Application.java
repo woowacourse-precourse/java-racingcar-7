@@ -2,8 +2,7 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        InputConsole input = new InputConsole();
-
-        input.run();
+        GameInputView gameInput = new RacingGameInputConsole();
+        gameInput.start();
     }
 }

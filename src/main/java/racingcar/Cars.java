@@ -1,6 +1,8 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +34,18 @@ public class Cars {
         }
     }
 
+    public void pickRandomNumberAndMoveCar() {
+        cars.forEach(car -> {
+            int number = Randoms.pickNumberInRange(0, 9);
+            car.moveCar(number);
+        });
+    }
+
     public int size() {
         return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
