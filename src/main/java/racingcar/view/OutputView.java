@@ -23,20 +23,8 @@ public class OutputView {
 
     public void rankResult(List<String> carNames){
 
-        String rankResult = "";
-
-        for(int i = 0;i<carNames.size();i++){
-
-            if(i==0){
-                rankResult += carNames.get(i);
-            }
-            else{
-                rankResult += ", "+carNames.get(i);
-            }
-
-        }
-
-        System.out.print("최종 우승자 : "+rankResult);
+        String rankResult = String.join(", ", carNames);
+        System.out.print("최종 우승자 : " + rankResult);
     }
 
 
