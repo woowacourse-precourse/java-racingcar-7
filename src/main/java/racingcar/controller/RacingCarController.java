@@ -39,8 +39,7 @@ public class RacingCarController {
 
     private void racing(Cars cars, int attemptCount) {
         printExecutionResult();
-//        i 이름 변경
-        for (int i = 0; i < attemptCount; i++) {
+        for (int currentRound = 1; currentRound <= attemptCount; currentRound++) {
             cars.move();
         }
     }
