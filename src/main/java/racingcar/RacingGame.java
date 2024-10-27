@@ -20,6 +20,7 @@ public class RacingGame {
             Writer.writeRoundResult(carManager.getCars());
         }
 
-        Writer.writeWinner(carManager.getWinners());
+        int winnerScore = carManager.getMaximumScore();
+        Writer.writeWinner(carManager.getCarsByScore(winnerScore));
     }
 }
