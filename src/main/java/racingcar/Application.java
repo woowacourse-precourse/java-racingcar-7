@@ -15,6 +15,7 @@ public class Application {
 
         System.out.println("시도할 회수는 몇회인가요?");
         String round = Console.readLine();
+        Console.close();
 
         RacingGameController racingGameController = RacingGameControllerFactory.create();
         String result = racingGameController.run(CarFactory.createCars(cars, MOVE_CONDITION, 5), round);
