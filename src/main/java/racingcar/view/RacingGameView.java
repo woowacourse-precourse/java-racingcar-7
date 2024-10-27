@@ -5,6 +5,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.validator.TrialCountValidator;
 
 public class RacingGameView {
 
@@ -21,7 +22,9 @@ public class RacingGameView {
     }
 
     public int getTrialCount(){
-        return Integer.parseInt(Console.readLine());
+        int trialCount = Integer.parseInt(Console.readLine());
+        TrialCountValidator.trialCountValidator(trialCount);
+        return trialCount;
     }
 
     public void showTrialResultsMessage(){

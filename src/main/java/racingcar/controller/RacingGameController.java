@@ -10,7 +10,6 @@ import racingcar.validator.CarNameValidator;
 import racingcar.view.RacingGameView;
 
 public class RacingGameController {
-
     RacingGameView view = new RacingGameView();
     List<Car> cars = new ArrayList<>();
     int trialCount = 0;
