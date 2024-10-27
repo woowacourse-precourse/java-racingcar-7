@@ -12,18 +12,21 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<String> cars = getCarNames(br);
+        List<Car> cars = getCarNames(br);
         int moves = getMovementCounts(br);
 
     }
 
-    public static List<String> getCarNames(BufferedReader br) {
+    public static List<Car> getCarNames(BufferedReader br) {
         try{
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
             String input = br.readLine().trim();
 
             validateInput(input);
-            List<String> cars = new ArrayList<>(List.of(input.split(",")));
+            List<Car> cars = new ArrayList<>();
+            for (String name : input.split(",")) {
+                cars.add(new Car(name));
+            }
             validateNames(cars);
             return cars;
         } catch (IOException e){
@@ -40,15 +43,15 @@ public class Application {
         }
     }
 
-    public static void validateNames(List<String> cars) {
+    public static void validateNames(List<Car> cars) {
         Set<String> uniqueNames = new HashSet<>();
 
-        for (String car : cars) {
-            if (car.length() > 5) {
+        for (Car car : cars) {
+            if (car.getName().length() > 5) {
                 throw new IllegalArgumentException("입력 오류: 5글자를 초과한 이름이 있습니다.");
             }
 
-            if (!uniqueNames.add(car)) {
+            if (!uniqueNames.add(car.getName())) {
                 throw new IllegalArgumentException("입력 오류: 중복된 이름이 있습니다.");
             }
         }
