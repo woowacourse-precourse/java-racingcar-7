@@ -63,11 +63,7 @@ public class Application {
     public void add(){
         for(int i = 0; i < list.length; i++){
             int random = Randoms.pickNumberInRange(0,9);
-            if(random >= 4){
-                list[i] = new Car(list[i].racer_name,true,list[i].racer_point);
-            }else{
-                list[i] = new Car(list[i].racer_name,false,list[i].racer_point);
-            }
+            list[i] = new Car(list[i].getRacer_name(),random >= 4,list[i].getRacer_point());
         }
     }
 
