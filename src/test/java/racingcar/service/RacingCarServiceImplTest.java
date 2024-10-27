@@ -40,6 +40,13 @@ class RacingCarServiceImplTest {
     }
 
     @Test
+    @DisplayName("자동차_이름_NULL_테스트")
+    void 자동차_이름_NULL_테스트() {
+        assertThatThrownBy(() -> new Car(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차_이름_공백_테스트1")
     void 자동차_이름_공백_테스트1() {
         assertThatThrownBy(() -> new Car(""))

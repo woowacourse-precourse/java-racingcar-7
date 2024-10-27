@@ -61,6 +61,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+//    @Test
+//    void 입력값_null_경우 () {
+//        assertSimpleTest(() ->
+//                assertThatThrownBy(() -> runException(null, "1"))
+//                        .isInstanceOf(IllegalArgumentException.class)
+//        );
+//    }
+
     @Test
     void 자동차_이름_공백인_경우1 () {
         assertSimpleTest(() ->
@@ -69,8 +77,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름_공백인_경우2 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 //    @Test
-//    void 자동차_이름_공백인_경우2 () {
+//    void 자동차_이름_공백인_경우3 () {
 //        assertSimpleTest(() ->
 //                assertThatThrownBy(() -> runException("pobi,woni,", "1"))
 //                        .isInstanceOf(IllegalArgumentException.class)
@@ -97,6 +113,14 @@ class ApplicationTest extends NsTest {
     void 이동_횟수_공백인_경우2 () {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "  "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이동_횟수_NULL인_경우 () {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", null))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
