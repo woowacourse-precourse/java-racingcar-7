@@ -6,6 +6,8 @@ import racingcar.name.Name;
 public class Car {
 
     private final int MOVEABLE_NUMBER = 4;
+    private final int RANDOM_MIN_VALUE = 0;
+    private final int RANDOM_MAX_VALUE = 9;
     private final String COLON_WITH_BLANK = " : ";
     private final String HYPHAN = "-";
 
@@ -31,7 +33,7 @@ public class Car {
     }
 
     private int getRandomNum () {
-        return  Randoms.pickNumberInRange(0, 9);
+        return  Randoms.pickNumberInRange(RANDOM_MIN_VALUE, RANDOM_MAX_VALUE);
     }
 
     public String printStatus(){
