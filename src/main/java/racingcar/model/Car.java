@@ -19,6 +19,9 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 돼요.");
         }
+        if (!name.matches("^[a-zA-Z0-9]*$")) {
+            throw new IllegalArgumentException("자동차 이름은 영문 대소문자와 숫자만 돼요");
+        }
     }
 
     public String getName() {
