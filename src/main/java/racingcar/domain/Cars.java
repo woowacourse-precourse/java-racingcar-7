@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.power.PowerGenerator;
 
 public class Cars {
+    
     private final List<Car> cars;
 
     public Cars(List<String> names) {

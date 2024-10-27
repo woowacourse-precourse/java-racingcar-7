@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+
     private final String name;
     private int position;
 
@@ -19,7 +20,6 @@ public class Car {
         return String.format("%s : " + "-".repeat(Math.max(0, position)), name);
     }
 
-
     public boolean isMaxPosition(int maxPosition) {
         return position >= maxPosition;
     }
@@ -31,4 +31,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
 }

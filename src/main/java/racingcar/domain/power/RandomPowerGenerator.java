@@ -8,4 +8,5 @@ public class RandomPowerGenerator implements PowerGenerator {
     public int generatorPower() {
         return Randoms.pickNumberInRange(0, 9);
     }
+    
 }
