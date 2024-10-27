@@ -6,8 +6,11 @@ import racingcar.Model.Car;
 import racingcar.Service.CarService;
 import racingcar.Service.GameService;
 import racingcar.View.InputView;
+import racingcar.View.OutputView;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -109,6 +112,25 @@ class ApplicationTest extends NsTest {
         assertEquals(2, winners.size());
         assertEquals("pobi",winners.get(0).getCarName());
         assertEquals("jun",winners.get(1).getCarName());
+    }
+    @Test
+    void 우승자_출력_테스트(){
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        Car car1=new Car("pobi");
+        Car car2=new Car("woni");
+        car1.setPosition();
+        car1.setPosition();
+        car2.setPosition();
+        car2.setPosition();
+        ArrayList<Car> cars=new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
+        OutputView.Print_Winners(cars);
+        String expectedOutput = "최종 우승자 : pobi, woni";
+        assertEquals(expectedOutput, outputStream.toString());
+        System.setOut(originalOut);
     }
     @Override
     public void runMain() {

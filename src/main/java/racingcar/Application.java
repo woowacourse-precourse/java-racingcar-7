@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.Controller.RacingcarRameController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingcarRameController racingcarRameController = new RacingcarRameController();
+        racingcarRameController.GameStart();
     }
 }

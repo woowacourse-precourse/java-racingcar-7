@@ -26,7 +26,12 @@ public class InputView {
     private static void CheckCount(int count){
         if(count<0) throw new IllegalArgumentException("Error: 실행 횟수는 음수가 아닌 양수여야합니다.");
     }
-    private static void CheckCarName(String CarNames){
-        if(CarNames.length()>5) throw new IllegalArgumentException("Eroor: 자동차 이름은 5자 이하만 가능합니다.");
+    private static void CheckCarName(String carNames) {
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("Error: 자동차 이름은 5자 이하만 가능합니다. 입력된 이름: " + name);
+            }
+        }
     }
 }
