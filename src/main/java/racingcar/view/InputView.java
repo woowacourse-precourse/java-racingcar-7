@@ -36,13 +36,17 @@ public class InputView {
 
         String[] names = carNames.split(COMMA_DELIMITER);
         for (String name : names) {
-            if (name.isBlank() || name.length() > 5) {
-                throw new CarNameException("각 자동차 이름은 1자 이상 5자 이하로 입력해주어야합니다.");
-            }
+            checkNameLength(name);
         }
 
         if (!carNames.contains(COMMA_DELIMITER)) {
             throw new CarNameException("자동차 이름은 쉼표(,)를 기준으로 구분하여야합니다.");
+        }
+    }
+
+    private static void checkNameLength(String name) {
+        if (name.isBlank() || name.length() > 5) {
+            throw new CarNameException("각 자동차 이름은 1자 이상 5자 이하로 입력해주어야합니다.");
         }
     }
 
