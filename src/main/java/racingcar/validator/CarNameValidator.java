@@ -4,17 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CarNameValidator {
-    private CarNameValidator(){
+    private CarNameValidator() {
     }
 
-    public static void validateCarNames(String input){
+    public static void validateCarNames(String input) {
         validateNotBlank(input);
         validateNoSpace(input);
         validateDelimiter(input);
         validateEnd(input);
         String[] carNames = input.split(",");
         Set<String> nameSet = new HashSet<>();
-        for(String carName : carNames){
+        for (String carName : carNames) {
             validateEmptyName(carName);
             validateCarNameLength(carName);
             nameSet.add(carName);
@@ -22,46 +22,46 @@ public class CarNameValidator {
         validateDuplication(nameSet.size(), carNames.length);
     }
 
-    static void validateCarNameLength(String input){
-        if(input.length() > 5){
+    static void validateCarNameLength(String input) {
+        if (input.length() > 5) {
             throw new IllegalArgumentException("자동차의 이름은 5자 이하만 가능합니다.");
         }
     }
 
-    static void validateEnd(String input){
-        if(input.endsWith(",")){
+    static void validateEnd(String input) {
+        if (input.endsWith(",")) {
             throw new IllegalArgumentException("입력의 마지막은 콤마(,)로 끝날 수 없습니다.");
         }
     }
 
-    static void validateDelimiter(String input){
+    static void validateDelimiter(String input) {
         String regex = "^[^,]*$";
-        if(input.matches(regex)){
+        if (input.matches(regex)) {
             throw new IllegalArgumentException("자동차 이름들은 콤마로 구분해야합니다.");
         }
     }
 
-    static void validateNotBlank(String input){
-        if(input.isBlank()){
+    static void validateNotBlank(String input) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
         }
     }
 
-    static void validateNoSpace(String input){
-        if(input.contains(" ")){
+    static void validateNoSpace(String input) {
+        if (input.contains(" ")) {
             throw new IllegalArgumentException("입력에 공백이 포함될 수 없습니다.");
         }
     }
 
-    static void validateDuplication(int carSetSize, int carArrayLength){
-        if(carSetSize != carArrayLength){
+    static void validateDuplication(int carSetSize, int carArrayLength) {
+        if (carSetSize != carArrayLength) {
             throw new IllegalArgumentException("자동차 이름에 중복이 존재합니다.");
         }
     }
 
 
-    static void validateEmptyName(String input){
-        if(input.isBlank()){
+    static void validateEmptyName(String input) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException("자동차의 이름은 빈 값일 수 없습니다.");
         }
     }

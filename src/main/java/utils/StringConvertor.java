@@ -11,7 +11,7 @@ public class StringConvertor {
         return Integer.parseInt(input);
     }
 
-    public static List<String> toList(String input){
+    public static List<String> toList(String input) {
         return Arrays.asList(input.split(","));
     }
 }
