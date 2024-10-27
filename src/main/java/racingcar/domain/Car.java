@@ -19,7 +19,7 @@ public class Car {
     }
 
     public void move(int randomNumber, RacingRule racingRule) {
-        if (racingRule.cadAdvance(randomNumber)) {
+        if (racingRule.canAdvance(randomNumber)) {
             position++;
         }
     }
