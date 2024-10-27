@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.common.constant.OutputMessage;
 
@@ -30,6 +31,7 @@ class ConsoleInputViewTest {
     }
 
     @Test
+    @DisplayName("자동차_이름_표시_요청_테스트")
     void testDisplayCarNameRequest() {
         assertSimpleTest(() -> {
             String input = "Car1,Car2";
@@ -45,6 +47,7 @@ class ConsoleInputViewTest {
     }
 
     @Test
+    @DisplayName("라운드_표시_요청_테스트")
     void testDisplayRoundRequest() {
         assertSimpleTest(() -> {
             String input = "5";

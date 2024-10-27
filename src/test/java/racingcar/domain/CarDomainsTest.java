@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarDomainsTest {
@@ -21,6 +22,7 @@ public class CarDomainsTest {
     }
 
     @Test
+    @DisplayName("자동차_초기화_테스트")
     public void testInitialCars() {
         assertSimpleTest(() -> {
             List<CarDomain> cars = carDomains.getCarDomainList();
@@ -34,6 +36,7 @@ public class CarDomainsTest {
     }
 
     @Test
+    @DisplayName("우승자_인스턴스_테스트")
     public void testGetWinnersInstance() {
         assertRandomNumberInRangeTest(() -> {
             CarDomains winners = carDomains.getWinnersInstance();
@@ -51,6 +54,7 @@ public class CarDomainsTest {
     }
 
     @Test
+    @DisplayName("한_라운드_실행_테스트")
     public void testExecuteOneRound() {
         assertRandomNumberInRangeTest(() -> {
             int distanceCar1 = carDomains.getCarDomainList().get(0).getDistance();

@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarDomain;
 import racingcar.domain.CarDomains;
@@ -25,6 +26,7 @@ class ConsoleOutputViewTest {
     }
 
     @Test
+    @DisplayName("라운드_결과_문자열_표시_테스트")
     void testDisplayRoundResultString() {
         assertSimpleTest(() -> {
             consoleOutputView.displayRoundResultString();
@@ -35,6 +37,7 @@ class ConsoleOutputViewTest {
     }
 
     @Test
+    @DisplayName("각_라운드_상태_표시_테스트")
     void testDisplayEachRoundStatus() {
         assertSimpleTest(() -> {
             CarDomain car1 = CarDomain.create("Car1", 2);
@@ -50,6 +53,7 @@ class ConsoleOutputViewTest {
     }
 
     @Test
+    @DisplayName("자동차_경주_우승자_표시_테스트")
     void testDisplayCarRaceWinner() {
         assertSimpleTest(() -> {
             CarDomain winner1 = CarDomain.create("Car1", 5);

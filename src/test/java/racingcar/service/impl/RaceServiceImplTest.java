@@ -9,6 +9,7 @@ import static racingcar.common.constant.Constant.MOVE_FORWARD_RANGE;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarDomain;
 import racingcar.domain.CarDomains;
@@ -31,6 +32,7 @@ class RaceServiceImplTest {
     }
 
     @Test
+    @DisplayName("한_라운드_실행_테스트")
     void testRunOneRound() {
         assertRandomNumberInRangeTest(() -> {
             assertEquals(0, raceDomain.getCurrentRound());
@@ -46,6 +48,7 @@ class RaceServiceImplTest {
     }
 
     @Test
+    @DisplayName("우승자_조회_테스트")
     void testGetWinners() {
         assertRandomNumberInRangeTest(() -> {
                     raceService.runOneRound(raceDomain);
@@ -63,6 +66,7 @@ class RaceServiceImplTest {
     }
 
     @Test
+    @DisplayName("현재_라운드_마지막_라운드_초과_불가_테스트")
     void testCurrentRoundCannotExceedLastRound() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> {

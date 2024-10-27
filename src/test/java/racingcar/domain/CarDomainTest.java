@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static racingcar.common.constant.Constant.MOVE_FORWARD_RANGE;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarDomainTest {
@@ -16,6 +17,7 @@ class CarDomainTest {
     }
 
     @Test
+    @DisplayName("이동_시도_허용_테스트")
     void testAttemptMove_WhenMoveIsAllowed() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -27,6 +29,7 @@ class CarDomainTest {
     }
 
     @Test
+    @DisplayName("이동_시도_불가_테스트")
     void testAttemptMove_WhenMoveIsNotAllowed() {
         assertRandomNumberInRangeTest(
                 () -> {

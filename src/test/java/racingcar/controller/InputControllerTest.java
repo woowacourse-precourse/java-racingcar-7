@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.CarDomain;
 import racingcar.domain.CarDomains;
@@ -21,6 +22,7 @@ class InputControllerTest {
     }
 
     @Test
+    @DisplayName("자동차이름_요청_테스트")
     void testGetCarNameRequest() {
         assertSimpleTest(() -> {
             String inputCarNames = "Car1,Car2,Car3";
@@ -37,6 +39,7 @@ class InputControllerTest {
     }
 
     @Test
+    @DisplayName("경기_진행_횟수_요청_테스트")
     void testGetRoundRequest() {
         assertSimpleTest(() -> {
             String inputRound = "5";

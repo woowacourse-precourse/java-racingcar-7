@@ -8,6 +8,7 @@ import static racingcar.common.constant.Constant.MOVE_FORWARD_RANGE;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RaceDomainTest {
@@ -22,7 +23,8 @@ class RaceDomainTest {
     }
 
     @Test
-    public void testInitialState() {
+    @DisplayName("경주_초기화_테스트")
+    public void testInitialRace() {
         assertSimpleTest(() -> {
             assertNotNull(raceDomain.getCars());
             assertEquals(0, raceDomain.getCurrentRound());
@@ -31,6 +33,7 @@ class RaceDomainTest {
     }
 
     @Test
+    @DisplayName("한_라운드_실행_테스트")
     public void testExecuteOneRound() {
         assertSimpleTest(() -> {
             raceDomain.executeOneRound();
@@ -45,6 +48,7 @@ class RaceDomainTest {
     }
 
     @Test
+    @DisplayName("우승자_인스턴스_조회_테스트")
     public void testGetWinnersInstance() {
         assertRandomNumberInRangeTest(() -> {
                     CarDomains winners = raceDomain.getWinnersInstance();
@@ -64,6 +68,7 @@ class RaceDomainTest {
     }
 
     @Test
+    @DisplayName("현재_라운드_제한_테스트")
     public void testCurrentRoundLimit() {
         assertSimpleTest(() -> {
             IntStream.range(0, raceDomain.getLastRound()).forEach(i -> raceDomain.executeOneRound());

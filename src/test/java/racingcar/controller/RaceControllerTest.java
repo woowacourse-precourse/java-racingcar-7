@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import racingcar.domain.CarDomain;
@@ -28,6 +29,7 @@ class RaceControllerTest {
     }
 
     @Test
+    @DisplayName("경주_인스턴스_생성_테스트")
     void testGetRaceRequest() {
         assertSimpleTest(() -> {
             CarDomains cars = CarDomains.create(Arrays.asList(
@@ -45,6 +47,7 @@ class RaceControllerTest {
     }
 
     @Test
+    @DisplayName("경주_실행_요청_테스트")
     void testExecuteRaceRequest() {
         assertSimpleTest(() -> {
             CarDomains cars = CarDomains.create(Arrays.asList(
@@ -63,6 +66,7 @@ class RaceControllerTest {
     }
 
     @Test
+    @DisplayName("우승자_요청_테스트")
     void testGetWinnerRequest() {
         assertSimpleTest(() -> {
             CarDomains cars = CarDomains.create(Arrays.asList(
