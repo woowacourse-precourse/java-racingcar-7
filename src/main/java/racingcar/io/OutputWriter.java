@@ -10,7 +10,7 @@ public class OutputWriter {
     private final StringBuilder stringBuilder = new StringBuilder();
 
     public void printResultStart() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public void printIntermediateResult(List<Car> cars) {
