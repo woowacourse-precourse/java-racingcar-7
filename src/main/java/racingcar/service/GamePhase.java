@@ -12,7 +12,7 @@ public class GamePhase {
     int maxDistance = 0;
     static final int CONDITION_TO_MOVE = 4;
 
-    public void RegisterList(List<Car> carList) {
+    public void registerList(List<Car> carList) {
         this.carList = carList;
         this.winners = new ArrayList<>();
     }
