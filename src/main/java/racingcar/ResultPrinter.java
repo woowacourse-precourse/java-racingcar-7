@@ -5,7 +5,7 @@ import java.util.List;
 public class ResultPrinter {
 
     public void printRoundResult(List<Car> racingCar) {
-        for(Car car : racingCar) {
+        for (Car car : racingCar) {
             String statusBar = "-".repeat(car.advance);
             System.out.println(car.name + " : " + statusBar);
         }

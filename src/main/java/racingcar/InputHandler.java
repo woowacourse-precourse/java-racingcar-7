@@ -19,8 +19,8 @@ public class InputHandler {
     }
 
     public void validateNames(String[] names) throws IllegalArgumentException {
-        for(String singleName : names) {
-            if(singleName.length() > 5 || singleName.isBlank()) {
+        for (String singleName : names) {
+            if (singleName.length() > 5 || singleName.isBlank()) {
                 throw new IllegalArgumentException();
             }
         }
@@ -42,7 +42,7 @@ public class InputHandler {
 
     public int validateNumberOfGames(String input) throws IllegalArgumentException {
         try {
-            if(Integer.parseInt(input) <= 0) {
+            if (Integer.parseInt(input) <= 0) {
                 throw new IllegalArgumentException();
             } else {
                 return Integer.parseInt(input);
