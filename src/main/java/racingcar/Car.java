@@ -25,11 +25,6 @@ public class Car {
     }
 
     public static List<Car> createCarsByName(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
+        return carNames.stream().map(Car::new).toList();
     }
 }
