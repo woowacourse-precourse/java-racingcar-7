@@ -23,11 +23,6 @@
 -[X] RacingCars 1회 진행
 -[X] 우승자 결정
 
-### RacingCarsValidator
-
--[ ] 시도 횟수 검증
-- 유효하지 않을 경우 `IllegalArgumentException` 발생
-
 ## NameExtractor
 
 -[ ] 자동차 이름 입력에서 이름 추출
