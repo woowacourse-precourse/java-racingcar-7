@@ -14,7 +14,7 @@ public class Car {
         if (name == null) {
             throw new IllegalArgumentException("자동차 이름은 null이 될수 없습니다.");
         }
-        if (name.isEmpty()) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
         }
         if (name.length() > NAME_MAX_LENGTH) {
