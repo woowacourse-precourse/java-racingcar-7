@@ -126,7 +126,17 @@ class CarsTest {
 			.containsExactly("bbb", "ccc");
 	}
 
+	@DisplayName("자동차의 개수를 조회할 수 있다")
 	@Test
 	void getCarCount() {
+		// given
+		List<String> carNames = asList("aaa", "bbb", "ccc", "ddd", "eee");
+		Cars cars = Cars.create(carNames);
+
+		// when
+		int carCount = cars.getCarCount();
+
+		// then
+		assertThat(carCount).isEqualTo(5);
 	}
 }
