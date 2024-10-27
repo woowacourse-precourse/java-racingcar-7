@@ -23,4 +23,8 @@ public class OutputView {
 			System.out.println(result);
 		});
 	}
+
+	public void printNewLine() {
+		System.out.println();
+	}
 }
