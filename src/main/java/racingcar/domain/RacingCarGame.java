@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.validate.CarNameValidation;
-import racingcar.view.OutputView;
 
 public class RacingCarGame {
 
@@ -21,15 +20,15 @@ public class RacingCarGame {
         RacingCarsGroup racingCarsGroup = new RacingCarsGroup(cars);
     }
 
-    public void playCarGame(int inputNumbersOfAttempts) {
-        OutputView.attemptsResult();
+    public String playCarGame(int inputNumbersOfAttempts) {
+        GameRoundHistory gameRoundHistory = new GameRoundHistory();
         for (int i = 0; i < inputNumbersOfAttempts; i++) {
             moveEachCars(generateMove(cars.size()));
-            OutputView.eachAttemptsResult(cars);
+            gameRoundHistory.storeGameRoundHistory(cars);
         }
-        OutputView.finalWinners();
-        OutputView.finalWinnersResult(RacingCarsGroup.getFinalWinners(cars));
 
+        gameRoundHistory.storeFinalWinners(cars);
+        return gameRoundHistory.getEachRoundResult();
     }
 
     public List<Integer> generateMove(int totalCars) {
