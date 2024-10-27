@@ -12,22 +12,22 @@ public class Car {
         this.name = name;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void move(int randomValue){
-        if(randomValue >= MOVE_THRESHOLD){
+    public void move(int randomValue) {
+        if (randomValue >= MOVE_THRESHOLD) {
             this.position += 1;
         }
     }
 
-    private void validateName(String name){
-        if(name.isEmpty() || name.length()>5){
+    private void validateName(String name) {
+        if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
     }
