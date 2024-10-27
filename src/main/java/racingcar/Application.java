@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.controller.RacingCarController;
-import racingcar.domain.RandomNumberGenerator;
-import racingcar.domain.RandomGenerator;
+import racingcar.utils.RandomNumberGenerator;
+import racingcar.utils.RandomGenerator;
 
 public class Application {
     public static void main(String[] args) {

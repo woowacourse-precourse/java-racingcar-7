@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.RandomGenerator;
+import racingcar.utils.RandomGenerator;
 import racingcar.domain.Winners;
 import racingcar.mock.TestRandomNumberGenerator;
 import racingcar.view.OutputView;

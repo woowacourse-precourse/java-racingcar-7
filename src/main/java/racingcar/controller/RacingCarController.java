@@ -17,7 +17,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.RoundCount;
 import racingcar.domain.Winners;
 import racingcar.domain.dto.CarsDto;
-import racingcar.domain.RandomGenerator;
+import racingcar.utils.RandomGenerator;
 
 public class RacingCarController {
     private final RandomGenerator randomNumberGenerator;
