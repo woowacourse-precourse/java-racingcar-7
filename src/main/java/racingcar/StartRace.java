@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.Constants.RESULT_NOTICE;
