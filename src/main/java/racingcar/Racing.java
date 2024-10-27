@@ -26,13 +26,16 @@ public class Racing {
         OutputView.printWinner(winner);
     }
 
-    public List<Car> getWinner() {
-        int maxDistance = carList.stream()
+    public int calcMaxDistance() {
+        return carList.stream()
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElseThrow();
+    }
+
+    public List<Car> getWinner() {
         return carList.stream()
-                .filter(c -> c.getDistance() == maxDistance)
+                .filter(c -> c.getDistance() == calcMaxDistance())
                 .toList();
     }
 
