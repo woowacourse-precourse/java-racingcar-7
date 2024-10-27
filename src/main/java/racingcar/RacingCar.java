@@ -20,13 +20,22 @@ public class RacingCar {
         List<String> carList = separator.separateCarList(carListInput);
         List<Car> cars = new ArrayList<>();
 
+        System.out.println();
+        System.out.println("실행 결과");
+
         for(int i=0;i<carList.size();i++){
             cars.add(new Car(carList.get(i),tryCount));
         }
 
-        for(int i=0;i<cars.size();i++){
-            cars.get(i).moveForward();
+        for(int i=0;i<tryCount;i++){
+            cars.forEach(car->{
+                car.moveForward();
+                consoleOutputHandler.printExecumentInstruction(car);
+            });
+            System.out.println();
         }
+
+        
 
     }
 

@@ -19,11 +19,21 @@ public class Car {
         return carName;
     }
 
-    public void moveForward(){
-        for(int i=0;i<tryCount;i++){
-            if(randomGenerator.getRandomNumber()>=4)
-            this.forwardCount++;
-        }
+    public int getTryCount(){
+        return tryCount;
     }
+
+    public int getForwardCount(){
+        return forwardCount;
+    }
+
+    public void moveForward(){
+        if(tryCount > 0)
+            if(randomGenerator.getRandomNumber()>=4) {
+                this.forwardCount++;
+                this.tryCount--;
+            }
+        }
+
 
 }

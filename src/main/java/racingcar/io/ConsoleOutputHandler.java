@@ -1,5 +1,8 @@
 package racingcar.io;
 
+import java.util.List;
+import racingcar.Car;
+
 public class ConsoleOutputHandler {
 
     public void printCarNameInstruction(){
@@ -9,5 +12,18 @@ public class ConsoleOutputHandler {
     public void printTryCountInstruction(){
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    public void printExecumentInstruction(Car car){
+        System.out.print(car.getCarName()+ " : " );
+        printProgressLine(car.getForwardCount());
+    }
+
+    public void printProgressLine(int forwardCount){
+        for(int i=0;i<forwardCount;i++)
+        System.out.print("-");
+
+        System.out.println();
+    }
+
 
 }
