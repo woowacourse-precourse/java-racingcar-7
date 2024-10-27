@@ -1,6 +1,11 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.Car;
+import racingcar.model.CarManager;
+import racingcar.view.InputView;
+
+import java.util.List;
 
 
 public class CarController {
@@ -10,5 +15,13 @@ public class CarController {
             return true;
         }
         return false;
+    }
+
+    public void race(List<Car> cars) {
+        for(Car car : cars) {
+            if(canMove()) {
+                car.move();
+            }
+        }
     }
 }
