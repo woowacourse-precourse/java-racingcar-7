@@ -124,7 +124,7 @@
 ## 🔧리펙토링
 
 - [x] 에러 메시지를 공통적으로 다루는 Enum 도입
-- [ ] Controller의 run 메서드 안의 로직 분리
+- [x] Controller의 run 메서드 안의 로직 분리
 - [ ] 일급 컬렉션 사용을 위해 `Racing` 클래스 안의 `List<Car> cars` 필드 분리
 - [ ] `OutputView`에 비즈니스 로직의 결과를 DTO를 통해 한번에 전달
     - 기존 로직은 `System.out.print`를 비즈니스 로직 중간중간에 호출하여 I/O비용이 큼
