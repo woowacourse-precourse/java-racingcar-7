@@ -1,23 +1,60 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
 
     static List<String> players = new ArrayList<>();
+    static Map<String, Integer> playerDistanceMap = new HashMap<>();
     static int N;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
             Input();
+            gameStart();
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 입력입니다: " + e.getMessage());
             throw e;
         }
+    }
+
+    private static void gameStart() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < N; i++) {
+            iterGame();
+            iterOutPut();
+        }
+    }
+
+    private static void iterOutPut() {
+        for (String player : players) {
+            String distance = "";
+            int k = playerDistanceMap.get(player);
+            for (int i = 0; i < k; i++) {
+                distance += "-";
+            }
+            System.out.println(player + " : " + distance);
+        }
+        System.out.println();
+    }
+
+    private static void iterGame() {
+        for (String player : players) {
+            playerDistanceMap.put(player, playerDistanceMap.getOrDefault(player,0) + ramdom());
+        }
+    }
+
+    private static int ramdom() {
+        int r = Randoms.pickNumberInRange(0, 9);
+        if(r >= 4) return 1;
+        else return 0;
     }
 
     private static void Input() throws IllegalArgumentException{
