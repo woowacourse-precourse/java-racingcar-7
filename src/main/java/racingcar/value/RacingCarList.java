@@ -2,6 +2,7 @@ package racingcar.value;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class RacingCarList {
 
     public WinnerPlayerList getWinnersList() {
         return list.stream()
-            .filter(e -> e.getDistance().equals(getWinnerDistance()))
+            .filter(e -> Objects.equals(e.getDistance(), getWinnerDistance()))
             .map(RacingCar::getPlayer)
             .collect(Collectors.collectingAndThen(Collectors.toList(), WinnerPlayerList::new));
     }
