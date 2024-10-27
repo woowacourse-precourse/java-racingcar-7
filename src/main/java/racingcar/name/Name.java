@@ -4,18 +4,24 @@ import java.util.Objects;
 
 public class Name {
 
-    private final String name;
+    private final int MAXIMUM_NAME_LENGTH = 5;
     private final String NAME_LENGTH_HAVE_TO_UNDER_FIVE = "입력한 이름의 길이는 5보다 클 수 없습니다.";
 
+    private final String name;
+
     public Name(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(NAME_LENGTH_HAVE_TO_UNDER_FIVE);
-        }
+        validateLength(name);
         this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    private void validateLength(String name) {
+        if (name.length() > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException(NAME_LENGTH_HAVE_TO_UNDER_FIVE);
+        }
     }
 
     @Override
