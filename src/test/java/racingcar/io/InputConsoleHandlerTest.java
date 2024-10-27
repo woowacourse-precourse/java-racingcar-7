@@ -16,7 +16,6 @@ class InputConsoleHandlerTest {
         // given
         InputConsoleHandler inputConsoleHandler = new InputConsoleHandler();
 
-        byte[] bytes = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)".getBytes();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
 
@@ -30,5 +29,4 @@ class InputConsoleHandlerTest {
         System.setOut(System.out);
 
     }
-
 }
