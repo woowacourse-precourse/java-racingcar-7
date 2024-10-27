@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.global.enums.ErrorMessage;
+import racingcar.global.util.Validator;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Race;
@@ -12,6 +12,7 @@ import java.util.List;
 
 public class RacingCarController {
     private final InputView inputView = InputView.getInstance();
+    private final Validator validator = Validator.getInstance();
     private final RacingCarService racingCarService;
 
     public RacingCarController(RacingCarService racingCarService) {
@@ -34,7 +35,7 @@ public class RacingCarController {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
-            validateName(carName);
+            validator.validateName(carName);
             cars.add(new Car(carName));
         }
         return cars;
@@ -42,16 +43,5 @@ public class RacingCarController {
 
     private Integer setRaceCount() {
         return inputView.inputCount();
-    }
-
-    private void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(
-                    ErrorMessage.INVALID_NAME_LENGTH.getMessage());
-        }
-        if (name.isBlank()) {
-            throw new IllegalArgumentException(
-                    ErrorMessage.NOT_ALLOWED_EMPTY_SPACE.getMessage());
-        }
     }
 }

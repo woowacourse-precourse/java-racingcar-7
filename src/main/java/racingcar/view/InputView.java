@@ -1,14 +1,15 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.global.enums.ErrorMessage;
 import racingcar.global.enums.PrintMessage;
+import racingcar.global.util.Validator;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
     private static final OutputView outputView = OutputView.getInstance();
+    private static final Validator validator = Validator.getInstance();
     private static InputView instance;
 
     public static InputView getInstance() {
@@ -34,18 +35,6 @@ public class InputView {
         outputView.printMessage(PrintMessage.COUNT_MESSAGE);
         String count = Console.readLine();
         Console.close();
-        return stringToInt(count);
-    }
-
-    private Integer stringToInt(String count) {
-        if (count.isBlank()) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_ALLOWED_EMPTY_SPACE.getMessage());
-        }
-
-        try {
-            return Integer.parseInt(count);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
-        }
+        return validator.validateAndReturnCount(count);
     }
 }
