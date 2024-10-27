@@ -1,5 +1,7 @@
 package racingcar.constant;
 
+import java.math.BigInteger;
+
 public class Constant {
 
     // InputView
@@ -16,7 +18,7 @@ public class Constant {
     public static final int MAX_CAR_NAME_LENGTH = 5;
     public static final int MIN_CAR_COUNT = 2;
     public static final String SPACE = " ";
-    public static final int MIN_ATTEMPT_COUNT = 1;
+    public static final BigInteger MIN_ATTEMPT_COUNT = BigInteger.ONE;
 
     // Parser
     public static final String CAR_NAME_SEPARATOR = ",";

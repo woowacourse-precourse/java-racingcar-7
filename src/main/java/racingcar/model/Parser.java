@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static racingcar.constant.Constant.*;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,9 +15,12 @@ public class Parser {
         return trimCarNames(carNamesList);
     }
 
-    // TODO: 엄청 큰 숫자가 들어왔을 때도 고려
-    public int convertStringToInt(String input) {
-        return Integer.parseInt(input);
+    public BigInteger convertStringToBigInteger(String input) {
+        try {
+            return new BigInteger(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String joinWithJoiner(List<String> list, String joiner) {

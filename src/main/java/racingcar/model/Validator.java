@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static racingcar.constant.Constant.*;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +21,8 @@ public class Validator {
         validateMinCount(uniqueCarNames, MIN_CAR_COUNT);
     }
 
-    public void validateAttemptCount(String attemptCountInput) {
-        try {
-            int attemptCount = Integer.parseInt(attemptCountInput);
-            validatePositiveNumber(attemptCount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+    public void validateAttemptCount(BigInteger attemptCount) {
+        validatePositiveNumber(attemptCount);
     }
 
     private void validateNotEmpty(String input) {
@@ -59,8 +55,8 @@ public class Validator {
         }
     }
 
-    private void validatePositiveNumber(int number) {
-        if (number < MIN_ATTEMPT_COUNT) {
+    private void validatePositiveNumber(BigInteger bigInteger) {
+        if (bigInteger.compareTo(MIN_ATTEMPT_COUNT) < 0) {
             throw new IllegalArgumentException();
         }
     }

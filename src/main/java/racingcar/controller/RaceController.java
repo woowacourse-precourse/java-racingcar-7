@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import static racingcar.constant.Constant.*;
 
+import java.math.BigInteger;
 import java.util.List;
 import racingcar.model.Parser;
 import racingcar.model.RaceService;
@@ -29,7 +30,7 @@ public class RaceController {
 
     public void run() {
         List<String> carNames = getValidatedCarNames();
-        int attemptCount = getValidatedAttemptCount();
+        BigInteger attemptCount = getValidatedAttemptCount();
 
         List<Car> cars = raceService.createCars(carNames);
         runRace(attemptCount, cars);
@@ -43,17 +44,21 @@ public class RaceController {
         return carNames;
     }
 
-    private int getValidatedAttemptCount() {
+    private BigInteger getValidatedAttemptCount() {
         String attemptCountInput = inputView.getAttemptCountInput();
-        validator.validateAttemptCount(attemptCountInput);
-        return parser.convertStringToInt(attemptCountInput);
+        BigInteger attemptCount = parser.convertStringToBigInteger(attemptCountInput);
+        validator.validateAttemptCount(attemptCount);
+        return attemptCount;
     }
 
-    private void runRace(int attemptCount, List<Car> cars) {
+    private void runRace(BigInteger attemptCount, List<Car> cars) {
         outputView.printStartMessage();
-        for (int i = 0; i < attemptCount; i++) {
+        BigInteger round = BigInteger.ZERO;
+
+        while (round.compareTo(attemptCount) < 0) {
             raceService.raceOnce(cars);
             outputView.printRaceProgress(cars);
+            round = round.add(BigInteger.ONE);
         }
     }
 
