@@ -1,6 +1,5 @@
 package racingcar.exception;
 
-
 import static racingcar.domain.RacingCarManager.MIN_CAR_COUNT;
 
 public class ErrorMessages {
