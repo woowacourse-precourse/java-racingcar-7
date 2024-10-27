@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.ConstantMessage.FINAL_RESULT;
+import static racingcar.ConstantMessage.FINAL_WINNER;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,7 @@ public class GameCarProcess {
     }
 
     void gameProgress() {
-        System.out.println("\n실행 결과");
+        System.out.println(FINAL_RESULT);
         for (int i = 0; i < count; i++) {
             gameCarProgress();
             System.out.println();
@@ -47,7 +50,7 @@ public class GameCarProcess {
     }
 
     void winnerPrint(List<String> winners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(FINAL_WINNER);
         System.out.println(String.join(", ", winners));
     }
 }
