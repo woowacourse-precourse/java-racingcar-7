@@ -13,6 +13,12 @@ public class RacingGameController {
     public void start() {
         String carNames = InputView.carNames();
         registerService.registerCars(carNames);
+
+        setupRound();
+    }
+
+    private void setupRound() {
+        String attemptCount = InputView.attemptCount();
     }
 
 }
