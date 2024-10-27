@@ -22,7 +22,7 @@ public class CarNames {
                 .distinct()
                 .count() != names.size();
 
-        if (result) {
+        if (!result) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
