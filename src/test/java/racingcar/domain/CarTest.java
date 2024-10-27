@@ -40,7 +40,6 @@ class CarTest {
     @DisplayName("랜덤 숫자가 4 이상이면 자동차가 1만큼 이동한다")
     @Test
     void 랜덤_숫자_4이상_이동() {
-        //given
         assertRandomNumberInRangeTest(() -> {
                     //given
                     Car testCar = car;
@@ -56,7 +55,6 @@ class CarTest {
     @DisplayName("랜덤 숫자가 4 미만이면 자동차가 이동하지 않는다")
     @Test
     void 랜덤_숫자_4미만_정지() {
-        //given
         assertRandomNumberInRangeTest(() -> {
                     //given
                     Car testCar = car;
