@@ -22,7 +22,7 @@ public class Car {
         return carName.getName();
     }
 
-    private void move() {
+    public void move() {
         if (canMove()) {
             position++;
         }
