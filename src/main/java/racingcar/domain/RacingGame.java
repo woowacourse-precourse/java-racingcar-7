@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.utils.RandomNoGenarator;
 
 public class RacingGame {
 
@@ -11,14 +10,14 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public void game() {
+    public void game(GameRule gameRule) {
 
         List<Car> cars = this.cars.getCars();
 
         for (Car car : cars) {
-            int randNo = RandomNoGenarator.getRandomNo();
-            car.move(randNo);
+            if (gameRule.isMovable()){
+                car.move();
+            }
         }
-
     }
 }

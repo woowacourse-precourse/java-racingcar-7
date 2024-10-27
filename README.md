@@ -26,16 +26,19 @@
 ## Domain
 - [x] **Car**
   - [x] 이름, 위치
-  - [x] 움직이는 동작
+  - [x] 움직이는 동작 : move()
 - [x] **Cars**
   - [x] 'car' 객체 리스트
   - [x] `car` 목록 관리
-  - [x] `winner` 찾기
-    -[x] 최대 이동거리 찾기
-- [ ] **Game**
-  - [ ] `Cars` 관리
-  - [ ] Random 값에 따라 'Cars' move
-
+  - [x] `winner` 찾기  : findWinner()
+     -[x] 최대 이동거리 찾기 : getMaxLocation()
+- [x] **RacingGame**
+  - [x] `Cars` 
+  - [x] Random 값을 Car 에 전달 : game() 
+- [x] **GameRule**
+  - [x] 인터페이스
+  - [x] isMovable()
+  - [x] 현재는 RandomRule 구현체만 존재
 ## Controller
 - [ ] **GameController**
   - [ ] Game 을 실행
