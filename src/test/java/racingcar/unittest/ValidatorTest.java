@@ -25,7 +25,7 @@ class ValidatorTest extends NsTest {
     @DisplayName("자동차 이름이 빈 문자열인 경우 예외 발생 테스트")
     void validateCarNames_withEmptyName_shouldThrowException() {
         // Given
-        String[] names = {""};
+        String[] names = {"", ""};
 
         // When & Then
         assertThatThrownBy(() -> Validator.validateCarNames(names))
@@ -37,7 +37,7 @@ class ValidatorTest extends NsTest {
     @DisplayName("자동차 이름이 5자를 초과하는 경우 예외 발생 테스트")
     void validateCarNames_withNameLongerThanFive_shouldThrowException() {
         // Given
-        String[] names = {"pobi123"};
+        String[] names = {"pobi123", "pobi1234"};
 
         // When & Then
         assertThatThrownBy(() -> Validator.validateCarNames(names))
@@ -66,8 +66,21 @@ class ValidatorTest extends NsTest {
         // When & Then
         assertThatThrownBy(() -> Validator.validateCarNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("적어도 한 대의 자동차 이름을 입력해야 합니다.");
+                .hasMessageContaining("적어도 두 대의 자동차 이름을 입력해야 합니다.");
     }
+
+    @Test
+    @DisplayName("자동차 이름이 하나만 입력된 경우 예외 발생 테스트")
+    void validateCarNames_withSingleCarName_shouldThrowException() {
+        // Given
+        String[] names = {"pobi"};
+
+        // When & Then
+        assertThatThrownBy(() -> Validator.validateCarNames(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("적어도 두 대의 자동차 이름을 입력해야 합니다.");
+    }
+
 
     @Test
     @DisplayName("시도 횟수가 양의 정수인 경우 검증 통과 테스트")
