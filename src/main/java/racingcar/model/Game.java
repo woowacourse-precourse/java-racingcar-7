@@ -14,4 +14,18 @@ public final class Game {
     public void addCar(Car car) {
         carList.add(car);
     }
+
+    public void playRound() {
+        for (Car car : carList) {
+            car.attemptMove();
+        }
+    }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public int getTotalRound() {
+        return totalRound;
+    }
 }
