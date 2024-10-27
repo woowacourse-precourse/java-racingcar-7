@@ -3,6 +3,8 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +17,11 @@ public class InputParserTest {
         String tryCount = "5";
         InputParser inputParser = new InputParser(carNames, tryCount);
 
-        assertThat(inputParser.getCarNameList())
+        List<String> carNamesList = inputParser.getCars().stream()
+                .map(Car::getName)
+                .toList();
+
+        assertThat(carNamesList)
             .containsExactly("car1", "car2", "car3");
         assertThat(inputParser.getTryCount())
             .isEqualTo(5);
