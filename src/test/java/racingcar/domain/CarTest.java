@@ -56,4 +56,20 @@ class CarTest {
 
     }
 
+    @Test
+    @DisplayName("스코어가 최대 스코어 이므로 isWinner()는 true를 반환한다.")
+    void isWinnerTest() throws Exception {
+        //given
+        final int maxScore = 10;
+        final CarName carName = CarName.of("우승 자동차", fakeStringValidator);
+        final Score score = new Score(maxScore);
+        final Car car = new Car(carName, score, forwardNumberGenerator);
+
+        //when
+        final boolean winner = car.isWinner(maxScore);
+
+        //then
+        assertThat(winner).isTrue();
+    }
+
 }
