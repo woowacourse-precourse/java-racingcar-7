@@ -6,7 +6,7 @@ import java.util.Set;
 public class InputValidator {
 
     // 자동차 이름 유효성 검증
-    public static void validateCarNames(String carNames) {
+    /*public static void validateCarNames(String carNames) {
         if (carNames == null || carNames.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
         }
@@ -33,5 +33,5 @@ public class InputValidator {
         if (trialCount < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
         }
-    }
+    }*/
 }
