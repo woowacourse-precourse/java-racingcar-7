@@ -2,15 +2,14 @@ package racingcar.mvc.model.observer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.math.BigInteger;
-import java.util.Objects;
 
 public class Car implements CarObserver {
+    private static final String UNIT_OF_DISTANCE = "-";
     private String name;
-    private BigInteger distance;
+    private BigInteger distance = BigInteger.ZERO;
 
     public Car(String name) {
         this.name = name;
-        this.distance = BigInteger.ZERO;
     }
 
     public BigInteger getDistance() {
@@ -27,50 +26,30 @@ public class Car implements CarObserver {
             distance = distance.add(BigInteger.ONE);
         }
 
-        System.out.println(toString());
+        //여기를 뷰로 내보내고 싶은데...
+        System.out.println(this);
+    }
+
+    private boolean goOrStop() {
+        return makeRandomNumber() >= 4;
     }
 
     private int makeRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    private boolean goOrStop() {
-        if (makeRandomNumber() >= 4) {
-            return true;
-        }
-
-        return false;
-    }
-
     @Override
     public String toString() {
-        return name + " : " + printDistance();
+        return name + " : " + convertDistanceToSign();
     }
 
-    private String printDistance() {
-        StringBuilder print = new StringBuilder();
+    private String convertDistanceToSign() {
+        StringBuilder sign = new StringBuilder();
 
         for (BigInteger i = BigInteger.ZERO; i.compareTo(distance) < 0; i = i.add(BigInteger.ONE)) {
-            print.append("-");
+            sign.append(UNIT_OF_DISTANCE);
         }
 
-        return print.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Car car = (Car) o;
-        return Objects.equals(distance, car.distance);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(distance);
+        return sign.toString();
     }
 }

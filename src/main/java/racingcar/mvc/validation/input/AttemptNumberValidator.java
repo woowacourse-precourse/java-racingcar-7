@@ -10,9 +10,13 @@ public class AttemptNumberValidator {
     }
 
     private static void isEmpty(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isBlank(input)) {
             throw new IllegalArgumentException("입력하지 않았습니다.");
         }
+    }
+
+    private static boolean isBlank(String input) {
+        return input == null || input.isEmpty();
     }
 
     private static void isPositiveNumber(String input) {

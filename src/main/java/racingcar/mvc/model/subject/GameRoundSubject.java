@@ -16,9 +16,7 @@ public class GameRoundSubject implements Subject {
 
     @Override
     public void notifyObservers() {
-        for (CarObserver observer : observers) {
-            observer.update();
-        }
+        observers.forEach(observer -> observer.update());
     }
 
     @Override

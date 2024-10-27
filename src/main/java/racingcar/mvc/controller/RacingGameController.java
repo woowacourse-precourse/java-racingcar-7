@@ -48,11 +48,55 @@ public class RacingGameController {
         showFinalWinner(gameRoundSubject);
     }
 
+    private List<String> getCarNames() {
+        inputView.showInitMsg();
+        String nameString = trimInput();
+
+        CarNameValidator.isValid(nameString);
+
+        List<String> names = new ArrayList<>();
+        for (String name : nameString.split(CarNameValidator.NAME_DELIMITER)) {
+            names.add(name);
+        }
+
+        return names;
+    }
+
+    private String trimInput() {
+        String nameString = inputView.getUserInput();
+        nameString = nameString.trim();
+
+        return nameString;
+    }
+
+    private BigInteger getAttempt() {
+        inputView.showReceiveNumberMsg();
+        String attemptString = inputView.getUserInput();
+
+        AttemptNumberValidator.isValid(attemptString);
+
+        return new BigInteger(attemptString);
+    }
+
+    private Subject getRoundSubject(Subject gamesubject, List<String> names) {
+        Subject gameRoundSubject = gamesubject;
+
+        return enrollCars(names, gameRoundSubject);
+    }
+
+    private Subject enrollCars(List<String> names, Subject gameRoundSubject) {
+        for (String name : names) {
+            gameRoundSubject.registerObserver(new Car(name));
+        }
+        return gameRoundSubject;
+    }
+
     private void showFinalWinner(Subject gameRoundSubject) {
         outputView.showFinalWinnerMsg();
 
         String winnerMsg = getWinner(gameRoundSubject);
 
+        //뷰에게 맡기고 싶다
         System.out.println(winnerMsg);
     }
 
@@ -89,44 +133,5 @@ public class RacingGameController {
             gameRoundSubject.notifyObservers();
             System.out.println();
         }
-    }
-
-    private Subject getRoundSubject(Subject gamesubject, List<String> names) {
-        Subject gameRoundSubject = gamesubject;
-
-        return enrollCars(names, gameRoundSubject);
-    }
-
-    private Subject enrollCars(List<String> names, Subject gameRoundSubject) {
-        for (String name : names) {
-            gameRoundSubject.registerObserver(new Car(name));
-        }
-        return gameRoundSubject;
-    }
-
-    private List<String> getCarNames() {
-        inputView.showInitMsg();
-
-        String nameString = inputView.getUserInput();
-        nameString = nameString.trim();
-
-        CarNameValidator.isValid(nameString);
-
-        List<String> names = new ArrayList<>();
-
-        for (String name : nameString.split(",")) {
-            names.add(name);
-        }
-
-        return names;
-    }
-
-    private BigInteger getAttempt() {
-        inputView.showReceiveNumberMsg();
-        String attemptString = inputView.getUserInput();
-
-        AttemptNumberValidator.isValid(attemptString);
-
-        return new BigInteger(attemptString);
     }
 }
