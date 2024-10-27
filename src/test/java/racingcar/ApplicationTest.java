@@ -28,8 +28,12 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "2");
-                    assertThat(output()).contains("pobi : -", "woni : ", "pobi : -", "woni : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : -",
+                            "pobi : --", "woni : -",
+                            "최종 우승자 : pobi");
                 },
+                MOVING_FORWARD, MOVING_FORWARD,
                 MOVING_FORWARD, STOP
         );
     }
@@ -39,10 +43,14 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "3");
-                    assertThat(output()).contains("pobi : -", "woni : ", "pobi : -", "woni : ", "pobi : -", "woni : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : ",
+                            "pobi : --", "woni : ",
+                            "pobi : ---", "woni : ",
+                            "최종 우승자 : pobi");
                 },
-                MOVING_FORWARD, STOP
-        );
+                MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP
+                );
     }
 
     @Test
@@ -50,9 +58,19 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,bha, kaeri", "5");
-                    assertThat(output()).contains("pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : ", "bha : ", "kaeri : ",
+                            "pobi : -", "woni : ", "bha : -", "kaeri : ",
+                            "pobi : -", "woni : ", "bha : -", "kaeri : -",
+                            "pobi : -", "woni : ", "bha : -", "kaeri : --",
+                            "pobi : -", "woni : ", "bha : -", "kaeri : --",
+                            "최종 우승자 : bha, kaeri");
                 },
-                MOVING_FORWARD, STOP
+                MOVING_FORWARD, STOP, STOP, STOP,
+                STOP, STOP, MOVING_FORWARD, STOP,
+                STOP, STOP, STOP, MOVING_FORWARD,
+                STOP, STOP, STOP, MOVING_FORWARD,
+                STOP, STOP, MOVING_FORWARD, STOP
         );
     }
 
@@ -61,9 +79,18 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,, bha, kaeri", "5");
-                    assertThat(output()).contains("pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ","pobi : -", "woni : ", "bha : ", "kaeri : ", "최종 우승자 : pobi");
+                    assertThat(output()).contains(
+                            "pobi : -", "woni : -", "bha : -", "kaeri : -",
+                            "pobi : --", "woni : --", "bha : --", "kaeri : --",
+                            "pobi : ---", "woni : ---", "bha : ---", "kaeri : ---",
+                            "pobi : ----", "woni : ----", "bha : ----", "kaeri : ----",
+                            "최종 우승자 : pobi, woni, bha, kaeri");
                 },
-                MOVING_FORWARD, STOP
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                STOP, STOP, STOP, STOP
         );
     }
 
