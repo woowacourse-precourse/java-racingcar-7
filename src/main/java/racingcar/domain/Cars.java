@@ -12,6 +12,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public void moveAll() {
+        this.cars.forEach(Car::move);
+    }
+
     public List<Car> getCars() {
         return cars;
     }
