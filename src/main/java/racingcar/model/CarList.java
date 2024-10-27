@@ -26,7 +26,7 @@ public class CarList {
         return cars;
     }
 
-    public List<Drivable> getAllCars() {
+    public List<Drivable> getCarsCopy() {
         return new ArrayList<>(cars);// 방어적 복사
     }
 

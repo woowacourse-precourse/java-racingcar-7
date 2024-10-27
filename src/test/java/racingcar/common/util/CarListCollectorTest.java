@@ -39,8 +39,8 @@ class CarListCollectorTest {
 
         // then
         assertNotNull(carList);
-        assertEquals(1, carList.getAllCars().size());
-        assertEquals("Car1", carList.getAllCars().get(0).getName());
+        assertEquals(1, carList.getCarsCopy().size());
+        assertEquals("Car1", carList.getCarsCopy().get(0).getName());
     }
 
     @DisplayName("다수 차량 수집기 테스트")
@@ -53,9 +53,9 @@ class CarListCollectorTest {
 
         // then
         assertNotNull(carList);
-        assertEquals(cars.size(), carList.getAllCars().size());
+        assertEquals(cars.size(), carList.getCarsCopy().size());
         for (int i = 0; i < cars.size(); i++) {
-            assertEquals(cars.get(i).getName(), carList.getAllCars().get(i).getName());
+            assertEquals(cars.get(i).getName(), carList.getCarsCopy().get(i).getName());
         }
     }
 
@@ -77,9 +77,9 @@ class CarListCollectorTest {
 
         // then
         assertNotNull(carList);
-        assertEquals(3, carList.getAllCars().size());
-        assertEquals("Car1", carList.getAllCars().get(0).getName());
-        assertEquals("Car2", carList.getAllCars().get(1).getName());
-        assertEquals("Car3", carList.getAllCars().get(2).getName());
+        assertEquals(3, carList.getCarsCopy().size());
+        assertEquals("Car1", carList.getCarsCopy().get(0).getName());
+        assertEquals("Car2", carList.getCarsCopy().get(1).getName());
+        assertEquals("Car3", carList.getCarsCopy().get(2).getName());
     }
 }

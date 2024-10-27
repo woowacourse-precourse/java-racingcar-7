@@ -27,7 +27,7 @@ public class CarListCollector {
      * @return 병합된 CarList
      */
     private static CarList mergeCarLists(CarList cl1, CarList cl2) {
-        cl1.getAllCars().addAll(cl2.getAllCars());
+        cl1.getCarsCopy().addAll(cl2.getCarsCopy());
         return cl1;
     }
 }
