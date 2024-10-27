@@ -1,8 +1,8 @@
 package racingcar;
 
-import static racingcar.ConstantMessage.BE_DIGIT;
-import static racingcar.ConstantMessage.BE_NATURAL_NUMBER;
-import static racingcar.ConstantMessage.INPUT_IS_EMPTY;
+import static racingcar.ErrorMessage.BE_DIGIT;
+import static racingcar.ErrorMessage.BE_NATURAL_NUMBER;
+import static racingcar.ErrorMessage.INPUT_IS_EMPTY;
 
 public class ValidateCount {
     public static void validateInputCount(String userInputCount) {

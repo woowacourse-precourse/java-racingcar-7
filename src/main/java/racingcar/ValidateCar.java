@@ -1,10 +1,10 @@
 package racingcar;
 
-import static racingcar.ConstantMessage.DUPLICATE_NAME;
-import static racingcar.ConstantMessage.INCORRECT_TYPE_COMMA_N_NAME;
-import static racingcar.ConstantMessage.INPUT_IS_EMPTY;
-import static racingcar.ConstantMessage.ONLY_COMMA_HERE;
-import static racingcar.ConstantMessage.OVER_5_LENGTH;
+import static racingcar.ErrorMessage.DUPLICATE_NAME;
+import static racingcar.ErrorMessage.INCORRECT_TYPE_COMMA_N_NAME;
+import static racingcar.ErrorMessage.INPUT_IS_EMPTY;
+import static racingcar.ErrorMessage.ONLY_COMMA_HERE;
+import static racingcar.ErrorMessage.OVER_5_LENGTH;
 
 import java.util.HashSet;
 import java.util.Set;

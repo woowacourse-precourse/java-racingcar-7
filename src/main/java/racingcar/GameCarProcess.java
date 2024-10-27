@@ -1,12 +1,12 @@
 package racingcar;
 
-import static racingcar.ConstantMessage.FINAL_RESULT;
-import static racingcar.ConstantMessage.FINAL_WINNER;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameCarProcess {
+    private static final String FINAL_RESULT = "\n실행 결과";
+    private static final String FINAL_WINNER = "최종 우승자 : ";
+
     private List<GameCar> gameCarList;
     private int count;
 
