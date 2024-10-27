@@ -5,6 +5,8 @@ import static racingcar.constants.exception.ErrorMessage.INVALID_CAR_NAME_FORMAT
 
 public class Input {
 
+    private static final String CAR_NAME_REGEX = "^[a-zA-Z,]+$";
+
     private final String names;
 
     private Input(String names) {
@@ -34,7 +36,7 @@ public class Input {
         }
 
         private static void validateCommaSeparatedEnglishNames(String text) {
-            if (!text.matches("^[a-zA-Z,]+$")) {
+            if (!text.matches(CAR_NAME_REGEX)) {
                 throw new IllegalArgumentException(INVALID_CAR_NAME_FORMAT.getMessage());
             }
         }

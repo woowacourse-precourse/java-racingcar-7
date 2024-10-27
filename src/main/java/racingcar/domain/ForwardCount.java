@@ -4,6 +4,8 @@ import static racingcar.constants.exception.ErrorMessage.FORWARD_COUNT_MUST_BE_I
 
 public class ForwardCount {
 
+    private static final String FORWARD_COUNT_REGEX = "^(100|[1-9][0-9]?)$";
+
     private final int forwardCount;
 
     private ForwardCount(String forwardCount) {
@@ -30,7 +32,7 @@ public class ForwardCount {
         }
 
         private static void validateNumeric(String number) {
-            if (!number.matches("^(100|[1-9][0-9]?)$")) {
+            if (!number.matches(FORWARD_COUNT_REGEX)) {
                 throw new IllegalArgumentException(FORWARD_COUNT_MUST_BE_IN_RANGE.getMessage());
             }
         }

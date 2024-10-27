@@ -7,6 +7,8 @@ import static racingcar.constants.exception.ErrorMessage.DUPLICATE_CAR_NAME_NOT_
 
 public class Car {
 
+    private static final String CAR_NAME_DELIMITER = ",";
+
     private final List<String> cars;
 
     private Car(String input) {
@@ -24,7 +26,7 @@ public class Car {
     }
 
     private static List<String> splitByComma(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(CAR_NAME_DELIMITER))
                 .toList();
     }
 
