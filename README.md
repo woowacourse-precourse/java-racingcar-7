@@ -15,7 +15,7 @@
 
 ## 🚖RacingCars🚘
 
--[ ] RacingCars 생성자
+-[X] RacingCars 생성자
     - RacingCar 리스트
     - 현재까지 시도 횟수
     - 시도 횟수
