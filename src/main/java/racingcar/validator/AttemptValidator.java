@@ -1,9 +1,8 @@
 package racingcar.validator;
 
-import static racingcar.config.GameErrorMessage.NEGATIVE_ATTEMPT_MESSAGE;
-import static racingcar.config.GameErrorMessage.NON_NUMERIC_MESSAGE;
-
 public class AttemptValidator {
+    public static final String NON_NUMERIC_MESSAGE = "숫자를 입력해주세요";
+    public static final String NEGATIVE_ATTEMPT_MESSAGE = "0이하의 정수는 입력할 수 없습니다.";
     private AttemptValidator() {
         throw new IllegalStateException("Validator Class");
     }

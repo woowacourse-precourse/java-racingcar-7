@@ -1,8 +1,8 @@
 package racingcar.validator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static racingcar.config.GameErrorMessage.NEGATIVE_ATTEMPT_MESSAGE;
-import static racingcar.config.GameErrorMessage.NON_NUMERIC_MESSAGE;
+import static racingcar.validator.AttemptValidator.NEGATIVE_ATTEMPT_MESSAGE;
+import static racingcar.validator.AttemptValidator.NON_NUMERIC_MESSAGE;
 import static racingcar.validator.AttemptValidator.validateAttempt;
 
 import org.junit.jupiter.api.Test;

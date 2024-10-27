@@ -1,10 +1,10 @@
 package racingcar.validator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static racingcar.config.GameErrorMessage.DUPLICATE_CAR_NAME_MESSAGE;
-import static racingcar.config.GameErrorMessage.EMPTY_NAME_MESSAGE;
-import static racingcar.config.GameErrorMessage.INVALID_NAME_FORMAT_MESSAGE;
-import static racingcar.config.GameErrorMessage.LENGTH_EXCEED_MESSAGE;
+import static racingcar.validator.CarNameValidator.DUPLICATE_CAR_NAME_MESSAGE;
+import static racingcar.validator.CarNameValidator.EMPTY_NAME_MESSAGE;
+import static racingcar.validator.CarNameValidator.INVALID_NAME_FORMAT_MESSAGE;
+import static racingcar.validator.CarNameValidator.LENGTH_EXCEED_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 
