@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,7 +11,7 @@ public class WinnerSorter {
     public List<String> getJointWinners(TreeMap<String, Integer> forwardCounter) {
 
         List<String> winnerList = new ArrayList<>();
-        String winner = forwardCounter.lastKey();
+        String winner = Collections.max(forwardCounter.entrySet(), Map.Entry.comparingByValue()).getKey();
         Integer winnerValue = forwardCounter.get(winner);
 
         for (Map.Entry<String, Integer> entry : forwardCounter.entrySet()) {
