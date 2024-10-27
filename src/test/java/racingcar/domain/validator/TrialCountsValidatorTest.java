@@ -64,6 +64,22 @@ public class TrialCountsValidatorTest {
     }
 
     @Test
+    void 숫자가_최대값을_넘어가면_예외_발생() {
+        //given
+        String overflowNumber = "101";
+        //when
+        try {
+            trialCountsValidator.validate(overflowNumber);
+        } catch (IllegalArgumentException e) {
+            assertThat("시도 횟수는 1~100사이의 숫자를 입력하셔야 합니다.").isEqualTo(e.getMessage());
+        }
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            trialCountsValidator.validate(overflowNumber);
+        });
+    }
+
+    @Test
     void 올바른_숫자_값이_들어오면_정상_처리() {
         //given
         String validInput = "5";
@@ -72,4 +88,5 @@ public class TrialCountsValidatorTest {
         //then
         assertEquals(5, result);
     }
+
 }
