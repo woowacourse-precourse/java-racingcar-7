@@ -19,6 +19,10 @@ public class Input {
             }
         }
 
+        if (carNames.size() != carNames.stream().distinct().count()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
+
         return carNames;
     }
 
