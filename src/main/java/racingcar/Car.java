@@ -25,4 +25,8 @@ public class Car {
         return carName + " : " + "-".repeat(currentDistance);
     }
 
+    int getPosition() {
+        return currentDistance;
+    }
+
 }
