@@ -38,6 +38,15 @@ class ParserTest {
         );
         assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
     }
+    @Test
+    void 쉼표가_마지막에_있을경우_예외처리() {
+        String input = "자동차1, 자동차3,";
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> parser.parse(input)
+        );
+        assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
+    }
 
     @Test
     void 입력이_숫자가_아닌경우_예외처리() {
