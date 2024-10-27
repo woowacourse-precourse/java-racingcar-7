@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 public class InputHandler {
     private static ArrayList<String> carNameList;
 
-    static ArrayList<String> handleCarNames(){
-        InputView inputView = new InputView();
+    static ArrayList<String> handleCarNames(InputView inputView){
         carNameList = Arrays.stream(inputView.inputCarName().split(","))
                 .collect(Collectors.toCollection(ArrayList::new));
         return carNameList;
