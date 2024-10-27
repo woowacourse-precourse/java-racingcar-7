@@ -1,8 +1,15 @@
 package racingcar.modle.vehicle.car;
 
-public class CarFactory {
+import racingcar.modle.movableStrategy.MovableStrategy;
 
-    public Car create(String carName) {
-        return new Car(carName);
+public class CarFactory {
+    private MovableStrategy movableStrategy;
+
+    public CarFactory(MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
+    }
+
+    public Car create(String name) {
+        return new Car(name, movableStrategy);
     }
 }

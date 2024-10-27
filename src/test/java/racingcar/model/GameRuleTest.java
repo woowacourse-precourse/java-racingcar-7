@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.modle.movableStrategy.BasicMoveStrategy;
 import racingcar.modle.rule.GameRule;
 import racingcar.modle.vehicle.Movable;
 import racingcar.modle.vehicle.car.CarFactory;
@@ -17,7 +18,7 @@ public class GameRuleTest {
 
     @BeforeEach
     public void setUp() {
-        this.carFactory = new CarFactory();
+        this.carFactory = new CarFactory(new BasicMoveStrategy());
         this.gameRule = new GameRule();
         this.car = carFactory.create("gamza");
     }

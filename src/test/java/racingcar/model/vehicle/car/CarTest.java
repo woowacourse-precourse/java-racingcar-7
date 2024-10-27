@@ -5,12 +5,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.modle.movableStrategy.BasicMoveStrategy;
 import racingcar.modle.vehicle.car.Car;
 import racingcar.modle.vehicle.car.CarFactory;
 
 public class CarTest {
 
-    CarFactory carFactory = new CarFactory();
+    CarFactory carFactory = new CarFactory(new BasicMoveStrategy());
     private Car car;
 
     @BeforeEach
