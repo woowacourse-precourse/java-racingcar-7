@@ -29,6 +29,7 @@ public class CarNameValidator {
         ValidationException.isEmpty(name);
         ValidationException.isBlank(name);
         ValidationException.isCarNameLengthValid(name);
+        ValidationException.isDuplicate(name);
     }
 
 }

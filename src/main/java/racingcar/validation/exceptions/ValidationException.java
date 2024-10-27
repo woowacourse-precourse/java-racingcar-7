@@ -2,6 +2,9 @@ package racingcar.validation.exceptions;
 
 import static racingcar.constants.CarConstants.NAME_LENGTH_LIMIT;
 
+import java.util.HashSet;
+import java.util.NoSuchElementException;
+
 /**
  * packageName    : racingcar.validation.exceptions
  * fileName       : ValidationException
@@ -15,6 +18,14 @@ import static racingcar.constants.CarConstants.NAME_LENGTH_LIMIT;
  */
 
 public class ValidationException {
+    private static final HashSet<String> set = new HashSet<>();
+
+    public static void isDuplicate(String name) {
+        if (set.contains(name)) {
+            throw new IllegalArgumentException();
+        }
+        set.add(name);
+    }
 
     public static void isCarNameLengthValid(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
@@ -34,8 +45,13 @@ public class ValidationException {
         }
     }
 
-    public static void isPositiveNumber(int value) {
-        if (value < 1) {
+    public static void isPositiveNumber(String value) {
+        try {
+            int lap = Integer.parseInt(value);
+            if (lap < 1) {
+                throw new IllegalArgumentException();
+            }
+        } catch (NoSuchElementException | NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
