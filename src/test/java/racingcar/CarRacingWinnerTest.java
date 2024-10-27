@@ -23,7 +23,7 @@ class CarRacingWinnerTest {
         String expected = "최종 우승자 : pobi";
 
         //When
-        String actual = carRacingWinner.toString();
+        String actual = carRacingWinner.getWinners();
 
         //Then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -43,7 +43,7 @@ class CarRacingWinnerTest {
         String expected = "최종 우승자 : pobi,woni";
 
         //When
-        String actual = carRacingWinner.toString();
+        String actual = carRacingWinner.getWinners();
 
         //Then
         Assertions.assertThat(actual).isEqualTo(expected);

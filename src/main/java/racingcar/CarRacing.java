@@ -28,10 +28,10 @@ public class CarRacing {
          * */
         for (int i = 0; i < attempts; i++) {
             carGroup.accelerateAll();
-            result.add(carGroup.toString());
+            result.add(carGroup.getDrivingRecords());
         }
         CarRacingWinner winner = new CarRacingWinner(carGroup);
-        result.add(winner.toString());
+        result.add(winner.getWinners());
 
         return result;
     }

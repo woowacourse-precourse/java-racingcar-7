@@ -49,8 +49,8 @@ class CarTest {
         String expected2 = "pobi : -";
 
         //When
-        String actual1 = car1.toString();
-        String actual2 = car2.toString();
+        String actual1 = car1.getDrivingRecord();
+        String actual2 = car2.getDrivingRecord();
 
         //Then
         Assertions.assertThat(actual1).isEqualTo(expected1);

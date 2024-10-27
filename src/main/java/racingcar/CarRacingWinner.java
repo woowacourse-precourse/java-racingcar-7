@@ -4,21 +4,21 @@ import java.util.List;
 
 public class CarRacingWinner {
 
-    private final List<Car> winners;
+    private final CarGroup carGroup;
 
     CarRacingWinner(CarGroup carGroup) {
-        winners = carGroup.getLongestMileageCars();
+        this.carGroup = carGroup;
     }
 
-    private String toStringWinnersName() {
-        List<String> winnerNames = winners.stream()
+    private String getWinnersName() {
+        List<String> winnerNames = carGroup.getLongestMileageCars()
+                .stream()
                 .map(Car::getName)
                 .toList();
         return String.join(",", winnerNames);
     }
 
-    @Override
-    public String toString() {
-        return "최종 우승자 : " + toStringWinnersName();
+    public String getWinners() {
+        return "최종 우승자 : " + getWinnersName();
     }
 }

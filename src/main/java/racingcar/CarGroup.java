@@ -33,10 +33,9 @@ public class CarGroup {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
+    public String getDrivingRecords() {
         return cars.stream()
-                .map(Car::toString)
+                .map(Car::getDrivingRecord)
                 .collect(Collectors.joining("\n"));
     }
 }

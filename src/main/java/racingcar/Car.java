@@ -34,9 +34,7 @@ public class Car {
         mileage += accelerator.accelerate(ACCELERATION_THRESHOLD);
     }
 
-    @Override
-    public String toString() {
-        // 별도의 메서드로 분리한다.
+    public String getDrivingRecord() {
         return String.format("%s : %s", name, "-".repeat(mileage));
     }
 }
