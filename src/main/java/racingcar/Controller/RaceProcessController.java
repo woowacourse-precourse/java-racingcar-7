@@ -1,5 +1,6 @@
 package racingcar.Controller;
 
+import racingcar.DTO.RaceInfoDTO;
 import racingcar.Service.RaceProcessService;
 
 public class RaceProcessController {
@@ -10,7 +11,8 @@ public class RaceProcessController {
         this.raceViewController = raceViewController;
         this.raceProcessService = raceProcessService;
     }
-    public void run() {
 
+    public void run() {
+        RaceInfoDTO raceInfoDTO = raceViewController.gatherRaceInfo();
     }
 }
