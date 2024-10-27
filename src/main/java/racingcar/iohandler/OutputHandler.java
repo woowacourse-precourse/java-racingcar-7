@@ -1,6 +1,6 @@
 package racingcar.iohandler;
 
-import racingcar.User;
+import racingcar.Car;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ public class OutputHandler {
         System.out.println("시도할 횟수는 몇 회 인가요?");
     }
 
-    public void showCarProceedScore(User user, int proceedScore) {
-        System.out.println(user.getName() + " : " + "-".repeat(proceedScore));
+    public void showCarProceedScore(Car car, int proceedScore) {
+        System.out.println(car.getCarName() + " : " + "-".repeat(proceedScore));
     }
 
     public void showNewLine() {

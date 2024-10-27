@@ -2,20 +2,20 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class User {
+public class Car {
 
-    private final String name;
+    private final String carName;
     private int score = 0;
 
-    private User(String name) {
-        this.name = name;
+    private Car(String carName) {
+        this.carName = carName;
     }
 
-    public static User createUser(String name) {
-        if (name.length() > 5) {
+    public static Car createCar(String carName) {
+        if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
-        return new User(name);
+        return new Car(carName);
     }
 
     public int proceed() {
@@ -26,8 +26,8 @@ public class User {
         return score;
     }
 
-    public String getName() {
-        return name;
+    public String getCarName() {
+        return carName;
     }
 
     public int getScore() {

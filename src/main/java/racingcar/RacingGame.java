@@ -14,39 +14,39 @@ public class RacingGame {
     public void run() {
 
         outputHandler.showCarNamesInputComments();
-        List<User> users = inputHandler.getCarNamesFromUser();
+        List<Car> cars = inputHandler.getCarNamesFromUser();
 
         outputHandler.showMoveCountInputComments();
         int moveCount = inputHandler.getMoveCountFromUser();
 
-        showCarProceedScores(moveCount, users);
+        showCarProceedScores(moveCount, cars);
 
-        List<String> winners = calculateWinners(users);
+        List<String> winners = calculateWinners(cars);
         outputHandler.showWinners(winners);
     }
 
-    private void showCarProceedScores(int moveCount, List<User> users) {
+    private void showCarProceedScores(int moveCount, List<Car> cars) {
         outputHandler.showCarProceedComments();
         for (int i = 0; i < moveCount; i++) {
-            for (User user : users) {
-                int proceedScore = user.proceed();
-                outputHandler.showCarProceedScore(user, proceedScore);
+            for (Car car : cars) {
+                int proceedScore = car.proceed();
+                outputHandler.showCarProceedScore(car, proceedScore);
             }
             outputHandler.showNewLine();
         }
     }
 
-    private List<String> calculateWinners(List<User> users) {
+    private List<String> calculateWinners(List<Car> cars) {
         List<String> winners = new ArrayList<>();
         int max = Integer.MIN_VALUE;
-        for (User user : users) {
-            int score = user.getScore();
+        for (Car car : cars) {
+            int score = car.getScore();
             if (score > max) {
                 max = score;
                 winners.clear();
-                winners.add(user.getName());
+                winners.add(car.getCarName());
             } else if (score == max) {
-                winners.add(user.getName());
+                winners.add(car.getCarName());
             }
         }
         return winners;
