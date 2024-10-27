@@ -1,10 +1,12 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Stadium {
 
@@ -18,7 +20,42 @@ public class Stadium {
         this.count = inputCount();
     }
 
-    public int input(){
+    public void start() {
+        for (int i = 0; count > i; i++) {
+            for (Car car : carList) {
+                car.advance(Randoms.pickNumberInRange(0, 9));
+            }
+            printResult();
+        }
+    }
+
+    public List<String> getWinners() {
+        Optional<Car> maxDistanceCar = carList.stream()
+                .max(Comparator.comparing(Car::getDistance));
+        if (maxDistanceCar.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        int maxDistance = maxDistanceCar.get().getDistance();
+        List<String> winners = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
+    public int inputCount() {
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+    }
+
+    public void input() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         inputNames = Console.readLine();
         for (String name : tokenization()) {
@@ -26,8 +63,8 @@ public class Stadium {
         }
     }
 
-    private String[] tokenization(){
-        String[] names = inputName.split(",");
+    private String[] tokenization() {
+        String[] names = inputNames.split(",");
         validateNameLength(names);
         return names;
     }
