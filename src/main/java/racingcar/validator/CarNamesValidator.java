@@ -13,7 +13,6 @@ public class CarNamesValidator {
         validateCarNameNotEmpty(carNames);
         validateLength(carNames);
         validateDuplication(carNames);
-
     }
 
     private static  void validateNotEmptyInput(ArrayList<String> carNames) {

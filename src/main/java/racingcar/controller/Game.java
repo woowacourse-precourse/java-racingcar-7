@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import racingcar.domain.Cars;
 import racingcar.domain.Parser;
@@ -22,9 +23,11 @@ public class Game {
 
         proceedRacing(cars, totalRounds);
         OutputView.printWinner(cars.getWinner());
+
+        Console.close();
     }
 
-    public void proceedRacing(Cars cars , int totalRounds ) {
+    private void proceedRacing(final Cars cars ,final int totalRounds ) {
         OutputView.printProcessResult();
 
         for (int i = 0; i < totalRounds; i++) {

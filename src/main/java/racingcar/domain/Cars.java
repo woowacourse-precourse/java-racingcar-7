@@ -3,13 +3,13 @@ package racingcar.domain;
 import java.util.ArrayList;
 
 public class Cars {
-    private ArrayList<Car> cars;
+    private final ArrayList<Car> cars;
 
     public Cars(ArrayList<String> carNames) {
         this.cars = createCars(carNames);
     }
 
-    public static Car createCar(String carName){
+    private static Car createCar(String carName){
         return new Car(carName);
     }
 

@@ -7,15 +7,11 @@ public class Parser {
     public static ArrayList<String> parse(String rawCarNames) {
         if (rawCarNames == null || rawCarNames.trim().isEmpty()) {
 
-            ArrayList<String> emptyList = new ArrayList<>();
-
-            return emptyList;
+            return new ArrayList<>();
         }else{
             String[] carNamesArray = rawCarNames.split(",");
 
-            ArrayList<String> carNames = new ArrayList<>(Arrays.asList(carNamesArray));
-
-            return carNames;
+            return new ArrayList<>(Arrays.asList(carNamesArray));
         }
     }
 }
