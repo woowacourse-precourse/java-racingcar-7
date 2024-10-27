@@ -7,7 +7,7 @@ public class ExecutionResult {
     private final String carName;
     private final int movedDistance;
 
-    public ExecutionResult(String carName, int movedDistance) {
+    private ExecutionResult(String carName, int movedDistance) {
         this.carName = carName;
         this.movedDistance = movedDistance;
     }
