@@ -29,7 +29,7 @@ public class GameController {
     }
 
     private Winner winnerPlayers(Cars cars) {
-        Car manyMoveCar = cars.getManyMoveCar();
+        Car manyMoveCar = cars.getFurthestCar();
         return new Winner(cars, manyMoveCar);
     }
 
@@ -43,7 +43,7 @@ public class GameController {
 
         outputView.printRunResult();
         for (int round = 0; round < totalRoundCount; round++) {
-            cars.playRound();
+            cars.executeRound();
             outputView.printRoundResult(cars.getCarStates());
         }
     }

@@ -7,7 +7,7 @@ public class Winner {
     private final List<Car> winners;
 
     public Winner(Cars cars, Car car) {
-        this.winners = cars.winnerCarplay(car);
+        this.winners = cars.findWinners(car);
     }
 
     public String winnerInfo() {

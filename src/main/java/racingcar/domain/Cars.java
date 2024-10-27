@@ -2,23 +2,25 @@ package racingcar.domain;
 
 import static racingcar.util.InputValidator.validateNoDuplicates;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.util.RandomUtil;
 
 public class Cars {
 
+    private static final String COMMA = ",";
+    private static final int ZERO = 0;
+
     private final List<Car> cars;
 
-    public Cars(String inputCarNames) {
-        List<String> carList = splitCarNames(inputCarNames);
+    public Cars(String carNames) {
+        List<String> carList = splitCarNames(carNames);
         validateNoDuplicates(carList);
 
         this.cars = createCars(carList);
     }
 
-    public void playRound() {
+    public void executeRound() {
         cars.forEach(car ->
                 car.moveForward(RandomUtil.generateRandomNumber())
         );
@@ -30,7 +32,7 @@ public class Cars {
                 .toList();
     }
 
-    public Car getManyMoveCar() {
+    public Car getFurthestCar() {
         return cars.stream()
                 .max(Car::compareDistance)
                 .orElse(cars.getFirst());
@@ -46,8 +48,8 @@ public class Cars {
         return car.compareDistance(furthestCar) == ZERO;
     }
 
-    private List<String> splitCarNames(String inputCarsName) {
-        return Arrays.asList(inputCarsName.split(","));
+    private List<String> splitCarNames(String carNames) {
+        return Arrays.asList(carNames.split(COMMA));
     }
 
     private List<Car> createCars(List<String> carList) {
