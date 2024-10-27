@@ -1,7 +1,8 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import org.junit.jupiter.api.AfterEach;
 import racingcar.common.io.Input;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -10,9 +11,9 @@ import java.io.ByteArrayInputStream;
 
 class InputTest {
 
-  @BeforeEach
-  void setUp() {
-    System.setIn(System.in);
+  @AfterEach
+  void closeConsole() {
+    Console.close();
   }
 
   @Test
