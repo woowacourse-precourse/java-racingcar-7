@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,14 @@ public class CarsTest {
         List<Car> carList = List.of(new Car("pobi"), new Car("nana"));
         Cars cars = new Cars(carList);
         assertThat(cars).isEqualTo(new Cars(carList));
+    }
+
+    @Test
+    void 자동차_이름_중복() {
+        List<Car> carList = List.of(new Car("pobi"), new Car("pobi"));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Cars(carList))
+                .withMessageMatching("중복되는 자동차 이름은 사용할 수 없습니다");
     }
 
     @Test

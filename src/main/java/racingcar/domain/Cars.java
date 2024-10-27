@@ -1,7 +1,9 @@
 package racingcar.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.util.RandomUtil;
 
@@ -10,7 +12,15 @@ public class Cars {
     private final List<Car> carList;
 
     public Cars(final List<Car> carList) {
+        checkDuplicateCarName(carList);
         this.carList = carList;
+    }
+
+    private void checkDuplicateCarName(List<Car> carList) {
+        Set<Car> carSet = new HashSet<>(carList);
+        if (carSet.size() < carList.size()) {
+            throw new IllegalArgumentException("중복되는 자동차 이름은 사용할 수 없습니다");
+        }
     }
 
     public void takeTurn() {
