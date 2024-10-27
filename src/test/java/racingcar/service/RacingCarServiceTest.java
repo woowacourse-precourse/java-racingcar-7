@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.RacingCar;
 import racingcar.strategy.MoveStrategy;
@@ -41,8 +40,20 @@ class RacingCarServiceTest {
         List<RacingCar> winnerRacingCars = racingCarService.getWinnerRacingCars(racingCarList);
 
         // Then
-        assertThat(winnerRacingCars).hasSize(2)
-                .extracting(RacingCar::getCarName)
+        assertThat(winnerRacingCars).hasSize(2).extracting(RacingCar::getCarName)
                 .containsExactlyInAnyOrder("CarA", "CarD");
+    }
+
+    @Test
+    void testGenerateRacingCarList() {
+        // Given
+        String[] carNames = {"CarA", "CarB", "CarC", "CarD"};
+
+        // When
+        List<RacingCar> racingCars = racingCarService.generateRacingCarList(List.of(carNames));
+
+        // Then
+        assertThat(racingCars).hasSize(4);
+        assertThat(racingCars).extracting(RacingCar::getCarName).containsExactlyInAnyOrder(carNames);
     }
 }
