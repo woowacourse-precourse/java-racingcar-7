@@ -23,6 +23,8 @@ public class RaceManager {
             moveCarsForward();
             raceOutput.printRaceStatus(carMovementRecords);
         }
+        List<String> winners = findWinners();
+        raceOutput.printWinners(winners);
     }
 
     public void moveCarsForward() {
