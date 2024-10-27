@@ -19,7 +19,6 @@ public class OutputView {
         }
 
         List<RacingCar> players = racingGame.getPlayers();
-
         for (RacingCar player : players) {
             String name = player.getName();
             String position = printPosition(player.getPosition());
