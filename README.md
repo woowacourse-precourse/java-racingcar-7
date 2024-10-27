@@ -41,13 +41,15 @@
   - [x] isMovable()
   - [x] 현재는 RandomRule 구현체만 존재
 ## View
-- [ ] **InputView**
-  - [ ] 사용자의 입력을 받음
-- [ ] **OutputView**
-  - [ ] 게임 별 결과를 출력 (횟수 별)
-    - [ ] 'Cars' 전달
-  - [ ] 게임의 결과를 양식에 맞게 출력
-    - [ ] 'Winner' 전달
+- [x] **InputView**
+  - [x] 사용자의 입력을 받음
+  - [x] validator 호출하여 검증
+  - [x] 
+- [x] **OutputView**
+  - [x] 게임 별 결과를 출력 (횟수 별)
+    - [x] 'Cars' 전달
+  - [x] 게임의 결과를 양식에 맞게 출력
+    - [x] 'Winner' List 전달
 
 ## Controller
 - [ ] **GameController**
