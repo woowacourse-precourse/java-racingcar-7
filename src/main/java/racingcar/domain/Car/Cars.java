@@ -45,10 +45,11 @@ public class Cars {
 
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+        int maxPosition = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
 
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
