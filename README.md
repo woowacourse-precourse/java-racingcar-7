@@ -24,11 +24,11 @@
 
 - [ ] 사용자가 입력한 자동차 이름 문자열을 구분자(,)를 사용하여 분리
   - [ ] 자동차 이름 배열 생성
-- [ ] 자동차 이름을 바탕으로 자동차 생성
-  - [ ] 빈 문자열인지 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
-  - [ ] 자동차 이름 길이 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
+- [x] 자동차 이름을 바탕으로 자동차 생성
+  - [x] 빈 문자열인지 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
+  - [x] 자동차 이름 길이 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
 - [ ] 참가 자동차 리스트 생성
   - [ ] 참가 자동차 이름 중복 검증
     - [ ] 예외인 경우 IllegalArgumentException 발생
