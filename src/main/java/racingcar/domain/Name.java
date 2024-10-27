@@ -3,9 +3,8 @@ package racingcar.domain;
 public record Name(String value) {
 
     public Name {
-        validateNotEmpty(value);
-
         value = nameTrim(value);
+        validateNotEmpty(value);
         validationNameLength(value);
     }
 
