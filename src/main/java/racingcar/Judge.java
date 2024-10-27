@@ -39,6 +39,6 @@ public class Judge {
     }
 
     public void show() {
-        System.out.println(getWinnerNames());
+        System.out.println("최종 우승자 : " + getWinnerNames());
     }
 }

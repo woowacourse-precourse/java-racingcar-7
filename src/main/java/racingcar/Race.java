@@ -17,6 +17,8 @@ public class Race {
         validator.validate(inputCars, inputCount);
 
         setup(inputCars);
+
+        System.out.println("\n실행 결과");
         startGame(inputCount);
 
         judge.judge(carList);
@@ -48,6 +50,7 @@ public class Race {
             car.isMovable();
             show(car.getName(), car.getDistance());
         }
+        System.out.print("\n");
     }
 
     public void startGame(String inputCount) {
