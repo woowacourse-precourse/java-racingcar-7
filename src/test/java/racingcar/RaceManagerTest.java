@@ -1,15 +1,19 @@
 package racingcar;
 
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.in;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.commons.util.ReflectionUtils;
 
 public class RaceManagerTest extends NsTest {
 
@@ -54,6 +58,75 @@ public class RaceManagerTest extends NsTest {
 
         assertThatThrownBy(() -> rm.setCarName(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 우승자_가려내기_테스트_우승자가_1명일때() {
+        //given
+        RaceManager rm = new RaceManager();
+        //when
+        try {
+            Field field = rm.getClass().getDeclaredField("cars");
+            field.setAccessible(true);
+            Car car1 = new Car();
+            Car car2 = new Car();
+
+            car1.nameCar("car1");
+            car2.nameCar("car2");
+            car1.forward();
+            car1.forward();
+            car2.forward();
+
+            ArrayList<Car> tempList = new ArrayList<>();
+            tempList.add(car1);
+            tempList.add(car2);
+
+            field.set(rm, tempList);
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<String> champion = rm.selectChampion();
+
+        //then
+        assertThat(champion.size()).isEqualTo(1);
+        assertThat(champion.get(0)).isEqualTo("car1");
+
+    }
+
+    @Test
+    void 우승자_가려내기_테스트_우승자가_여러명일때() {
+        //given
+        RaceManager rm = new RaceManager();
+        //when
+        try {
+            Field field = rm.getClass().getDeclaredField("cars");
+            field.setAccessible(true);
+            Car car1 = new Car();
+            Car car2 = new Car();
+
+            car1.nameCar("car1");
+            car2.nameCar("car2");
+            car1.forward();
+            car1.forward();
+            car2.forward();
+            car2.forward();
+
+            ArrayList<Car> tempList = new ArrayList<>();
+            tempList.add(car1);
+            tempList.add(car2);
+
+            field.set(rm, tempList);
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<String> champion = rm.selectChampion();
+
+        //then
+        assertThat(champion.size()).isEqualTo(2);
+        assertThat(champion.get(0)).isEqualTo("car1");
+        assertThat(champion.get(1)).isEqualTo("car2");
     }
 
     @Override
