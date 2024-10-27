@@ -17,7 +17,7 @@ public class RacingCar {
         List<Car> cars = new ArrayList<>();
 
         for(int i=0;i<carList.size();i++){
-            cars.add(new Car(carList.get(i)));
+            cars.add(new Car(carList.get(i),tryCount));
         }
 
     }
