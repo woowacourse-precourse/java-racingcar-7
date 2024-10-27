@@ -5,7 +5,7 @@ public class StringValidator{
     public static void validateAllStringValues(String[] input){
         isSeveralValue(input);
         isEmptyValue(input);
-        areAllAlphabet(input);
+        areAllLetter(input);
         areAllLengthUnderFive(input);
     }
 
@@ -17,16 +17,16 @@ public class StringValidator{
 
     public static void isEmptyValue(String[] input){
         for(String value : input){
-            if(value.isEmpty()){
+            if(value==null || value.isEmpty()){
                 throw new IllegalArgumentException("공백 문자열이 포함되어 있습니다. : " + value);
             }
         }
     }
 
-    public static void areAllAlphabet(String[] input){
+    public static void areAllLetter(String[] input){
         for(String value : input){
             if(!value.chars().allMatch(Character::isLetter)){
-                throw new IllegalArgumentException("영문으로 구성된 이름을 입력해주세요. : " + value);
+                throw new IllegalArgumentException("한글과 염문으로 구성된 이름을 입력해주세요. : " + value);
             }
         }
     }
