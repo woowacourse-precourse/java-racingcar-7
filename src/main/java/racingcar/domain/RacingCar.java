@@ -16,5 +16,15 @@ public class RacingCar implements Car{
         this.mileage = 0L;
     }
 
+    public void accelerate() {
+        if(enoughOil()){
+            mileage += engine.getPerformance();
+            oilGauge -= engine.getOilConsumption();
+        }
+    }
+
+    private Boolean enoughOil() {
+        return oilGauge >= engine.getOilConsumption();
+    }
 
 }
