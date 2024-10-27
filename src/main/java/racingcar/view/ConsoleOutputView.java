@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.position.Positions;
 
-public class ConsoleOutputHandler implements OutputHandler {
+public class ConsoleOutputView implements OutputView {
 
     private static final String HYPHEN = "-";
     public static final String COLON = " : ";
@@ -27,7 +27,7 @@ public class ConsoleOutputHandler implements OutputHandler {
     @Override
     public void showCarPosition(final List<String> names, final Positions positions) {
         IntStream.range(0, names.size())
-                .mapToObj(number -> names.get(number) + COLON + repeatHyphen(positions.getValue(number)))
+                .mapToObj(number -> names.get(number) + COLON + repeatHyphen(positions.longValue(number)))
                 .forEach(System.out::println);
         System.out.println();
     }

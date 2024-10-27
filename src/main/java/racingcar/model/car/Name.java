@@ -5,6 +5,8 @@ import racingcar.exception.InvalidNameException;
 
 public class Name {
 
+    public static final int MAX_LENGTH = 5;
+
     private final String value;
 
     public Name(final String value) {
@@ -16,7 +18,7 @@ public class Name {
         if (value == null || value.isBlank()) {
             throw new InvalidNameException("이름은 null이거나 공백일 수 없습니다.");
         }
-        if (value.length() > 5) {
+        if (value.length() > MAX_LENGTH) {
             throw new InvalidNameException("이름은 5글자 이하여야 합니다.");
         }
     }

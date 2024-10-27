@@ -24,7 +24,7 @@ public class RacingCar {
     }
 
     public void start() {
-        for (int round = 0; round < attempt.getValue(); round++) {
+        for (int round = 0; round < attempt.value(); round++) {
             List<Boolean> moves = cars.doMove();
             moveWithPositions(moves);
         }

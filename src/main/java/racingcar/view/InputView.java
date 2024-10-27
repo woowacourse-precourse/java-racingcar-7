@@ -1,5 +1,5 @@
 package racingcar.view;
 
-public interface InputHandler {
+public interface InputView {
     String read();
 }

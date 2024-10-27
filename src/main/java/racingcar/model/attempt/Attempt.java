@@ -17,7 +17,7 @@ public class Attempt {
         }
     }
 
-    public long getValue() {
+    public long value() {
         return value;
     }
 }

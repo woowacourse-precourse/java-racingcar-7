@@ -33,14 +33,14 @@ public class Positions {
     }
 
     public void increase(final int index) {
-        Position position = values.get(index);
+        Position position = value(index);
         position.increase();
     }
 
     public List<Integer> calculateWinners() {
         long maxPosition = calculateMax();
         return IntStream.range(0, values.size())
-                .filter(index -> getValue(index) == maxPosition)
+                .filter(index -> value(index).isValue(maxPosition))
                 .boxed()
                 .toList();
     }
@@ -49,11 +49,14 @@ public class Positions {
         return values.stream()
                 .map(Position::value)
                 .max(Long::compare)
-                .get();
+                .orElseThrow(IllegalStateException::new);
     }
 
-    public long getValue(final int index) {
-        return values.get(index)
-                .value();
+    public Position value(final int index) {
+        return values.get(index);
+    }
+
+    public long longValue(final int index) {
+        return value(index).value();
     }
 }

@@ -10,38 +10,38 @@ import racingcar.model.position.History;
 import racingcar.model.position.Positions;
 import racingcar.strategy.MovingStrategy;
 import racingcar.util.splitter.Splitter;
-import racingcar.view.InputHandler;
-import racingcar.view.OutputHandler;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingCarController {
 
-    private final InputHandler inputHandler;
-    private final OutputHandler outputHandler;
+    private final InputView inputView;
+    private final OutputView outputView;
     private final Splitter splitter;
     private final MovingStrategy movingStrategy;
 
-    public RacingCarController(final InputHandler inputHandler, final OutputHandler outputHandler,
+    public RacingCarController(final InputView inputView, final OutputView outputView,
                                final Splitter splitter,
                                final MovingStrategy movingStrategy) {
-        this.inputHandler = inputHandler;
-        this.outputHandler = outputHandler;
+        this.inputView = inputView;
+        this.outputView = outputView;
         this.splitter = splitter;
         this.movingStrategy = movingStrategy;
     }
 
     public void process() {
-        String inputNames = readNames(outputHandler, inputHandler);
+        String inputNames = readNames(outputView, inputView);
         Cars cars = initializeCars(splitter, inputNames, movingStrategy);
-        Attempt attempt = readAttempt(outputHandler, inputHandler);
+        Attempt attempt = readAttempt(outputView, inputView);
 
         RacingCar racingCar = new RacingCar(cars, attempt);
-        showRacingResult(outputHandler, racingCar);
+        showRacingResult(outputView, racingCar);
         showWinners(racingCar);
     }
 
-    private String readNames(OutputHandler outputHandler, InputHandler inputHandler) {
-        outputHandler.showCommentForCarNames();
-        return inputHandler.read();
+    private String readNames(OutputView outputView, InputView inputView) {
+        outputView.showCommentForCarNames();
+        return inputView.read();
     }
 
     private Cars initializeCars(final Splitter splitter, final String inputNames,
@@ -53,9 +53,9 @@ public class RacingCarController {
         return cars;
     }
 
-    private Attempt readAttempt(OutputHandler outputHandler, InputHandler inputHandler) {
-        outputHandler.showCommentForAttempt();
-        String inputAttempt = inputHandler.read();
+    private Attempt readAttempt(OutputView outputView, InputView inputView) {
+        outputView.showCommentForAttempt();
+        String inputAttempt = inputView.read();
         validateInputAttempt(inputAttempt);
         return new Attempt(Long.parseLong(inputAttempt));
     }
@@ -66,18 +66,18 @@ public class RacingCarController {
         }
     }
 
-    private void showRacingResult(OutputHandler outputHandler, final RacingCar racingCar) {
-        outputHandler.showCommentForResult();
+    private void showRacingResult(OutputView outputView, final RacingCar racingCar) {
+        outputView.showCommentForResult();
         racingCar.start();
         Cars cars = racingCar.getCars();
         History history = racingCar.getHistory();
         for (Positions positions : history.values()) {
-            outputHandler.showCarPosition(cars.names(), positions);
+            outputView.showCarPosition(cars.names(), positions);
         }
     }
 
     private void showWinners(final RacingCar racingCar) {
         String winners = racingCar.calculateWinners();
-        outputHandler.showWinners(winners);
+        outputView.showWinners(winners);
     }
 }

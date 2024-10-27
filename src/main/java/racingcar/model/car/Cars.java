@@ -24,12 +24,12 @@ public class Cars {
     }
 
     private void validate(Car car) {
-        if (isDuplicateName(car.name())) {
+        if (isDuplicated(car.name())) {
             throw new InvalidNameException("이름은 중복될 수 없습니다.");
         }
     }
 
-    private boolean isDuplicateName(String name) {
+    private boolean isDuplicated(String name) {
         return values.stream()
                 .anyMatch(car -> car.name().equals(name));
     }
@@ -44,7 +44,7 @@ public class Cars {
         return values.size();
     }
 
-    public Car car(final int index){
+    public Car car(final int index) {
         return values.get(index);
     }
 }

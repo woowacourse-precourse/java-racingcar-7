@@ -24,6 +24,10 @@ public class Position {
         value++;
     }
 
+    public boolean isValue(final long value) {
+        return this.value == value;
+    }
+
     public long value() {
         return value;
     }

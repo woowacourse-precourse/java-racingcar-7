@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 import racingcar.model.position.Positions;
 
-public interface OutputHandler {
+public interface OutputView {
     void showCommentForCarNames();
 
     void showCommentForAttempt();
