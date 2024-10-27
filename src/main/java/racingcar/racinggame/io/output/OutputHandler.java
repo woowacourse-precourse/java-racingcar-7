@@ -1,10 +1,10 @@
-package racingcar.io.output;
+package racingcar.racinggame.io.output;
 
 import java.util.List;
 import java.util.StringJoiner;
 
-import racingcar.io.domain.Car;
-import racingcar.io.domain.Cars;
+import racingcar.racinggame.car.Car;
+import racingcar.racinggame.car.Cars;
 
 public class OutputHandler {
 

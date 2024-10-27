@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.io.input.InputHandler;
-import racingcar.io.input.validation.UserInputValidation;
-import racingcar.io.output.OutputHandler;
+import racingcar.racinggame.io.input.InputHandler;
+import racingcar.racinggame.io.input.validation.UserInputValidation;
+import racingcar.racinggame.io.output.OutputHandler;
 import racingcar.racinggame.RacingGame;
 
 public class Application {

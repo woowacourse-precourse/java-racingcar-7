@@ -1,4 +1,4 @@
-package racingcar.io.input.validation;
+package racingcar.racinggame.io.input.validation;
 
 import java.util.regex.Pattern;
 

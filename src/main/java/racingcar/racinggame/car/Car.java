@@ -1,4 +1,4 @@
-package racingcar.io.domain;
+package racingcar.racinggame.car;
 
 import java.util.List;
 
