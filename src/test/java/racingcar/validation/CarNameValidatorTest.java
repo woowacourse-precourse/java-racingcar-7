@@ -53,4 +53,12 @@ public class CarNameValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_INVALID_CHARACTERS);
     }
+
+    @Test
+    void 자동차_개수가_2개_미만인_경우_예외_테스트() {
+        List<String> carNames = List.of("pobi");
+        assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_COUNT_LESS_THAN_TWO);
+    }
 }
