@@ -19,7 +19,7 @@ public class UserName {
     }
 
     private void checkMaximumLength(String userName) {
-        if(userName.length() > MAXIMUM_LENGTH_USERNAME){
+        if (userName.length() > MAXIMUM_LENGTH_USERNAME) {
             throw new IllegalArgumentException();
         }
     }
