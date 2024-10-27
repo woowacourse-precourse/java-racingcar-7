@@ -1,5 +1,6 @@
 package racingcar;
 
+
 import java.util.ArrayList;
 
 public class RoundController {
@@ -20,6 +21,9 @@ public class RoundController {
             Car car = new Car(carName);
             car.move(inputView);
         }
+        judge.judgeWinner(Car.getCarList());
 
+        outputView.outputWinnerList(Judge.getWinnerList());
     }
+
 }
