@@ -17,17 +17,24 @@ public class ParseStringUtils {
         String[] carNamesArray = carNamesInput.split(",");
         List<String> carNamesList = new ArrayList<>();
         for (String name : carNamesArray) {
-            validateAndAddName(carNamesList, name);
+            validateName(name);
+            addValidatedName(carNamesList, name);
         }
 
         return carNamesList;
     }
 
-    private static void validateAndAddName(List<String> carNamesList, String name) {
+    private static void validateName(String name) {
         String trimmedName = name.trim();
         if (trimmedName.isBlank()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getMessage());
         }
+    }
+
+    private static void addValidatedName(List<String> carNamesList, String name) {
+        String trimmedName = name.trim();
         carNamesList.add(trimmedName);
     }
+
+
 }
