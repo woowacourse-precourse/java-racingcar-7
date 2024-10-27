@@ -8,7 +8,6 @@ import racingcar.model.Car;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarServiceTest {
-
     @Test
     public void 자동차_이름_구분() {
         // given
