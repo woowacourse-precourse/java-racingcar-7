@@ -15,26 +15,41 @@ public class RandomNumbersGeneratorTest {
 
     @BeforeAll
     static void initializeGenerator() {
-        randomNumbersGenerator = new RandomNumbersGenerator();  // 객체 초기화
+
+        //given
+        randomNumbersGenerator = new RandomNumbersGenerator();
     }
 
     private RandomNumbers generateRandomNumbers() {
+
+        //when
         return randomNumbersGenerator.generate(CAR_COUNT);
     }
 
     @Test
     @DisplayName("generate(carCount)로 생성된 RandomNumbers의 size()는 carCount와 동일하다.")
     void shouldHaveCorrectSizeWhenGeneratedWithCarCount() {
+
+        //given
         RandomNumbers randomNumbers = generateRandomNumbers();
+
+        //then
         assertEquals(CAR_COUNT, randomNumbers.size());
     }
 
     @RepeatedTest(100)
     @DisplayName("generate(carCount)로 생성된 RandomNumbers의 각 값은 0 이상 9 이하이다.")
     void eachGeneratedNumberShouldWithinRange() {
+
+        //given
         RandomNumbers randomNumbers = generateRandomNumbers();
+
         for (int i = 0; i < CAR_COUNT; i++) {
+
+            //when
             int randomNumber = randomNumbers.getNextNumber();
+
+            //then
             assertTrue(randomNumber >= 0 && randomNumber <= 9);
         }
     }

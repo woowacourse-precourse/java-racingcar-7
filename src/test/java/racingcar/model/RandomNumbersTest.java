@@ -14,18 +14,27 @@ class RandomNumbersTest {
 
     @BeforeAll
     static void InitializeRandomNumbers() {
+
+        //given
         randomNumbers = RandomNumbers.create(TEST_NUMBERS);
     }
 
     @Test
     @DisplayName("randomNumbers의 size()는 리스트 크기와 동일해야 한다.")
     void shouldReturnCorrectRandomNumbersSizeWhenCreateWithSize() {
-        assertEquals(TEST_NUMBERS.size(), randomNumbers.size());
+
+        //when
+        int expectedSize = randomNumbers.size();
+
+        //then
+        assertEquals(expectedSize, randomNumbers.size());
     }
 
     @Test
     @DisplayName("getNextNumber()는 리스트의 각 숫자를 순서대로 반환해야 한다.")
     void shouldReturnCorrectRandomNumbersWhenGetNextNumber() {
+
+        //then-then
         TEST_NUMBERS.forEach(expected -> assertEquals(expected, randomNumbers.getNextNumber()));
     }
 }
