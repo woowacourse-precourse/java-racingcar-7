@@ -5,6 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Application {
+    public static void decideCarMove(Map<String, Integer> cars) {
+        for (String car : cars.keySet()) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                cars.replace(car, cars.get(car) + 1);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Map<String, Integer> cars = new LinkedHashMap<>();
@@ -18,6 +26,10 @@ public class Application {
         // set initial value for each car name as 0
         for(String name : nameInput.split(",")) {
             cars.put(name, 0);
+        }
+
+        for (int i = 0; i < tryCount; i++) {
+            decideCarMove(cars);
         }
 
     }
