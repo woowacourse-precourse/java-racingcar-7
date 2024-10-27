@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.domain.Cars;
 import racingcar.service.RegisterService;
 
 public class AppConfig {
@@ -9,6 +10,10 @@ public class AppConfig {
     }
 
     public RegisterService registerService() {
-        return new RegisterService();
+        return new RegisterService(cars());
+    }
+
+    public Cars cars() {
+        return new Cars();
     }
 }
