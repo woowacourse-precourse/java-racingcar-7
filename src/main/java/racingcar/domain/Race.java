@@ -15,15 +15,15 @@ public class Race {
     public void runRace() {
         for (Car car : cars) {
             car.move();
-            maxMoveCount = Math.max(maxMoveCount, car.moveCount);
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
         }
     }
 
     public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.moveCount == maxMoveCount) {
-                winners.add(car.name);
+            if (car.getMoveCount() == maxMoveCount) {
+                winners.add(car.getName());
             }
         }
         return winners;

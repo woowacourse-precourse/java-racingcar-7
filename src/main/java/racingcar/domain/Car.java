@@ -4,11 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.enums.Constants;
 
 public class Car {
-    public final String name;
-    public int moveCount = 0;
+    private final String name;
+    private int moveCount = 0;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public void move() {
