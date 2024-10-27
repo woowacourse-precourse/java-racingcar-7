@@ -1,10 +1,16 @@
 package racingcar.model;
 
 public class Position {
+    private static final int DEFAULT_MOVEMENT_AMOUNT = 1;
+
     private final int position;
 
     public Position(final int position) {
         this.position = position;
+    }
+
+    public Position move() {
+        return new Position(position + DEFAULT_MOVEMENT_AMOUNT);
     }
 
     @Override
