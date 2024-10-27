@@ -18,7 +18,7 @@ public class InputHandlerTest {
 
     @Test
     @DisplayName("올바른 입력을 받았을 때 자동차 이름 리스트를 반환한다")
-    void parseCarNames_Test() {
+    void parseCarNamesTest() {
         String carNames = "pobi,woni,jun";  // given
         List<String> result = inputHandler.parseCarNames(carNames);  // when
         assertThat(result).containsExactly("pobi", "woni", "jun");  // then
@@ -26,7 +26,7 @@ public class InputHandlerTest {
 
     @Test
     @DisplayName("공백 문자 또는 빈 문자열을 입력받으면 예외 처리한다")
-    void parseCarNames_Test2() {
+    void parseCarNamesTest2() {
         String blankInput = " ";
         assertThatThrownBy(() -> inputHandler.parseCarNames(blankInput))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -34,7 +34,7 @@ public class InputHandlerTest {
 
     @Test
     @DisplayName("이동 횟수가 1 이상 1000 이하가 아니면 예외 처리한다")
-    void getMoveCount_Test() {
+    void getMoveCountTest() {
         String outOfRangeInput = "1004";
 
         assertThatThrownBy( () -> {
@@ -45,7 +45,7 @@ public class InputHandlerTest {
 
     @Test
     @DisplayName("이동 횟수로 숫자가 아닌 값을 받으면 예외 처리한다")
-    void getMoveCount_Test2() {
+    void getMoveCountTest2() {
         String nonNumberInput = "pobi";
 
         assertThatThrownBy( () -> {
