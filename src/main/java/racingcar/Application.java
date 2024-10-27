@@ -13,6 +13,7 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int num = Integer.parseInt(Console.readLine());
+        checkNum(num);
 
         System.out.println("\n실행 결과");
         runRacing(num, carList);
@@ -34,6 +35,12 @@ public class Application {
             }
         }
         return carList;
+    }
+
+    static public void checkNum(int num) throws IllegalArgumentException{
+        if(num <= 0) {
+            throw new IllegalArgumentException("1 이상 시도할 횟수를 입력해주세요.");
+        }
     }
 
     static public void runRacing(int num, String[] carList) {
