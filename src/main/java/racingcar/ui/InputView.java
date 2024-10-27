@@ -34,7 +34,7 @@ public class InputView {
     }
 
     private List<String> convertStringToList(String[] splitNames) {
-        return Arrays.asList(splitNames); // 무결성 보장
+        return Arrays.asList(splitNames);
     }
 
     private void validateNoWhitespace(List<String> carNames) {
