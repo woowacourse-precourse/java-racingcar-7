@@ -20,4 +20,15 @@ public class Validator {
             }
         }
     }
+
+    // 시도 횟수 유효성 검사
+    public static void validateTryCnt(String input) {
+        try {
+            int tryCnt = Integer.parseInt(input);
+            if (tryCnt <= 0)
+                throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
+    }
 }
