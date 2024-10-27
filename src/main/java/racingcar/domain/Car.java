@@ -4,8 +4,10 @@ public class Car {
 
     private String name;
     private int position;
+    private final static int MAX_CAR_NAME_LENGTH = 5;
 
     public Car(String name) {
+        validateCarName(name);
         this.name = name;
         this.position = 0;
     }
@@ -20,5 +22,13 @@ public class Car {
 
     public void move() {
         this.position++;
+    }
+
+    private boolean validateCarName(String name) {
+        int nameLength = name.length();
+        if (nameLength > MAX_CAR_NAME_LENGTH) {
+            return false;
+        }
+        return true;
     }
 }
