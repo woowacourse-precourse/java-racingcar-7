@@ -7,7 +7,7 @@ public class Car {
     private static final int INCREMENT_VALUE = 1;
     private static final int DEFAULT_POSITION = 0;
     private static final int NAME_MAX_LENGTH = 5;
-    private static int position = DEFAULT_POSITION;
+    private int position = DEFAULT_POSITION;
     private final String name;
 
     public Car(String name) {
