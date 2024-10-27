@@ -30,5 +30,25 @@ public class Application {
             }
         }
     }
+    public static void race(List<String> carNames, List<Integer> positions, int rounds) {
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < rounds; i++) {
+            playRound(carNames, positions);
+            System.out.println(generateRoundResult(carNames, positions));
+        }
+    }
+
+    public static void playRound(List<String> carNames, List<Integer> positions) {
+        for (int i = 0; i < carNames.size(); i++) {
+            if (canMove()) {
+                positions.set(i, positions.get(i) + 1);
+            }
+        }
+    }
+
+    public static boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
     }
 }
