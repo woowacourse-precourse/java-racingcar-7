@@ -17,4 +17,11 @@ public class Track {
             car.move();
         }
     }
+
+    public void print() {
+        for (Car car : cars) {
+            car.print();
+        }
+    }
+
 }
