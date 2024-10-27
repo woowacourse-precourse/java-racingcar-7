@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class UserInputValidationTest {
 
@@ -53,7 +55,37 @@ class UserInputValidationTest {
 		assertDoesNotThrow(() -> userInputValidation.validateInputCarNames(carNames, delimiter));
 	}
 
+	@DisplayName("사용자는 시도 횟수로 빈 문자열을 입력할 수 없다")
+	@Test
+	void validateTryCountAsBlank() {
+		// given
+		String inputTryCount = "";
+
+		// when // then
+		assertThatThrownBy(() -> userInputValidation.validateTryCount(inputTryCount))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("빈 문자열은 입력할 수 없습니다.");
+	}
+
+	@DisplayName("사용자는 시도 횟수로 자연수만 입력할 수 없다")
+	@ValueSource(strings = {"a", "-1", "0"})
+	@ParameterizedTest(name = "{0}은 입력할 수 없습니다")
+	void validateTryCountAsNotNumber(String inputTryCount) {
+
+		// when // then
+		assertThatThrownBy(() -> userInputValidation.validateTryCount(inputTryCount))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("1 이상의 숫자만 입력 가능합니다.");
+	}
+
+	@DisplayName("사용자는 시도 횟수를 입력할 수 있다")
 	@Test
 	void validateTryCount() {
+
+		// given
+		String inputTryCount = "123";
+
+		// when // then
+		assertDoesNotThrow(() -> userInputValidation.validateTryCount(inputTryCount));
 	}
 }
