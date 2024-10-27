@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.controller.Controller;
+import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -9,7 +10,8 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        Controller controller = new Controller(inputView, outputView);
+        RacingGameService racingGameService = new RacingGameService();
+        Controller controller = new Controller(inputView, outputView, racingGameService);
 
         controller.startGame();
     }
