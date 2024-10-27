@@ -20,6 +20,15 @@ public class ConsoleOutputHandler {
         printProgressLine(car.getForwardCount());
     }
 
+    public void printWinner(List<Car> winners) {
+        String winnerMembers;
+        winnerMembers = winnersListToString(winners);
+
+        System.out.print("최종 우승자 : ");
+        System.out.println(winnerMembers);
+
+    }
+
     public void printProgressLine(int forwardCount) {
         for (int i = 0; i < forwardCount; i++) {
             System.out.print("-");
@@ -28,7 +37,7 @@ public class ConsoleOutputHandler {
         System.out.println();
     }
 
-    public void printWinner(List<Car> winners) {
+    private static String winnersListToString(List<Car> winners) {
         String winnerMembers;
         if (winners.size() > 1) {
             winnerMembers = String.join(", ", winners.stream()
@@ -38,9 +47,6 @@ public class ConsoleOutputHandler {
         else  {
             winnerMembers = winners.getFirst().getCarName();
         }
-
-        System.out.print("최종 우승자 : ");
-        System.out.println(winnerMembers);
-
+        return winnerMembers;
     }
 }
