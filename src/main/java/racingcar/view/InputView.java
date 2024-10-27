@@ -20,11 +20,22 @@ public class InputView {
 
     public int requestRoundCount() {
         ConsoleWriter.printlnMessage(REQUEST_ROUND_COUNT_MESSAGE);
-        return Integer.parseInt(ConsoleReader.enterMessage());
+        String input = ConsoleReader.enterMessage();
+        if (isEmptyOrBlank(input)) {
+            throw CustomException.of(ErrorMessage.BLANK_INPUT_ERROR);
+        }
+        if (isNotPositiveInteger(input)) {
+            throw CustomException.of(ErrorMessage.INVALID_ROUND_COUNT_ERROR);
+        }
+        return Integer.parseInt(input);
     }
 
     private boolean isEmptyOrBlank(String str) {
         return str == null || str.isBlank();
+    }
+
+    private boolean isNotPositiveInteger(String str) {
+        return !str.matches("\\d+") || Integer.parseInt(str) <= 0;
     }
 
 }
