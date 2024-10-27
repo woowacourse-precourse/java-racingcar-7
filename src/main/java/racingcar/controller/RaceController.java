@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.utils.Utils;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,6 +16,8 @@ public class RaceController {
 
     public void raceRun() {
         outputView.printCarNameInputPrompt();
-        inputView.inputCarNames();
+        String input = inputView.inputCarNames();
+        List<String> carNameList = Utils.splitNames(input);
+        outputView.printInputAttempsPrompt();
     }
 }
