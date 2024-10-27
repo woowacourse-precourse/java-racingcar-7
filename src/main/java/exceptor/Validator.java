@@ -1,6 +1,7 @@
 package exceptor;
 
 import constant.Constants;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,9 +30,9 @@ public class Validator {
         }
     }
 
-    public static void validateDuplicatedName(String[] group){
-        Set<String> removedDuplicategroup = new HashSet<>(List.of(group));
-        if(removedDuplicategroup.size() != group.length){
+    public static void validateDuplicatedName(ArrayList<String> group){
+        Set<String> removedDuplicategroup = new HashSet<>(group);
+        if(removedDuplicategroup.size() != group.size()){
             throw new IllegalArgumentException("중복된 이름이 들어갔음");
         }
     }

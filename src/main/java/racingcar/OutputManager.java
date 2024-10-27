@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class OutputManager {
-    public static void printCurrentResult(RacingCar[] group){
+    public static void printCurrentResult(ArrayList<RacingCar> group){
         for(RacingCar racingCar : group){
             System.out.println(racingCar);
         }

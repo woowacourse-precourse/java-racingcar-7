@@ -2,11 +2,12 @@ package racingcar;
 
 import constant.Constants;
 import inspector.InspectRaceResult;
+import java.util.ArrayList;
 import utils.ContentParser;
 
 public class GameManager {
-    private String[] playerGroup;
-    private RacingCar[] racingCarGroup;
+    private ArrayList<String> playerGroup;
+    private ArrayList<RacingCar> racingCarGroup;
     private int playerTurn;
     private int currentTurn = 0;
 
@@ -21,7 +22,7 @@ public class GameManager {
         racingCarGroup = RacingCarFactory.createRacingCarGroup(playerGroup);
     }
 
-    private String[] playerGroupSetting(){
+    private ArrayList<String> playerGroupSetting(){
         String inputContent = InputManager.inputPlayerGroup();
         return ContentParser.parsingContentToGroup(inputContent);
     }

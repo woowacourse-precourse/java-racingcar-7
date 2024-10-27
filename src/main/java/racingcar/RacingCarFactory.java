@@ -1,13 +1,15 @@
 package racingcar;
 
+import java.util.ArrayList;
+
 public class RacingCarFactory {
 
-    public static RacingCar[] createRacingCarGroup(String[] playerGroup){
-        final int GROUP_LENGTH = playerGroup.length;
+    public static ArrayList<RacingCar> createRacingCarGroup(ArrayList<String> playerGroup){
+        final int GROUP_SIZE = playerGroup.size();
 
-        RacingCar[] racingCarGroup = new RacingCar[GROUP_LENGTH];
-        for(int i = 0; i < GROUP_LENGTH; i++){
-            racingCarGroup[i] = new RacingCar(playerGroup[i]);
+        ArrayList<RacingCar> racingCarGroup = new ArrayList<>();
+        for(int i = 0; i < GROUP_SIZE; i++){
+            racingCarGroup.add(new RacingCar(playerGroup.get(i)));
         }
 
         return racingCarGroup;

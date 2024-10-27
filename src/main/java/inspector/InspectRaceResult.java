@@ -8,7 +8,7 @@ public class InspectRaceResult {
     ArrayList<String> winner = new ArrayList<>();
     private int highDistance = 0;
 
-    public void inspecting(RacingCar[] group){
+    public void inspecting(ArrayList<RacingCar> group){
         for(RacingCar racingCar : group){
             elementInspecting(racingCar);
         }

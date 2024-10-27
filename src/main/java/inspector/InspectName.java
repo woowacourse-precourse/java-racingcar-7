@@ -1,10 +1,11 @@
 package inspector;
 
 import exceptor.Validator;
+import java.util.ArrayList;
 
 public class InspectName {
 
-    public void inspecting(String[] group){
+    public void inspecting(ArrayList<String> group){
         Validator.validateDuplicatedName(group);
 
         for (String content : group) {
