@@ -14,11 +14,11 @@ public class GameController {
     }
 
     public void run() {
-        String carNames = InputView.getCarNames();
-        Cars cars = new Cars(carNames);
+        final String carNames = InputView.getCarNames();
+        final int numberOfAttempts = InputView.getNumberOfAttempts();
 
-        int numberOfAttempts = InputView.getNumberOfAttempts();
-        RacingGame racingGame = new RacingGame(cars, moveStrategy, numberOfAttempts);
+        final Cars cars = new Cars(carNames);
+        final RacingGame racingGame = new RacingGame(cars, moveStrategy, numberOfAttempts);
 
         racingGame.play();
     }
