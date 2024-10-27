@@ -4,7 +4,7 @@ import racingcar.validator.strategies.ValidationStrategy;
 import racingcar.view.ErrorMessage;
 
 /**
- * 단일 자동차 이름이 빈 값이 아닌지 검증
+ * 자동차 이름이 null 또는 공백 문자열이 아닌지 검증
  */
 public class CarNameNotEmptyValidator implements ValidationStrategy<String> {
 

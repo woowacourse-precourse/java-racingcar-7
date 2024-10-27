@@ -16,8 +16,13 @@ public class TryCountValidator {
     }
 
     public void validate(String tryCount) {
+        // 1. null 또는 빈 문자열인지 검증
         notNullOrEmptyValidator.validate(tryCount);
+
+        // 2. 양의 정수인지 검증
         tryCountPositiveIntegerValidator.validate(tryCount);
+
+        // 3. 최대 허용 값을 초과하지 않는지 검증
         tryCountMaximumValidator.validate(tryCount);
     }
 

@@ -34,19 +34,18 @@ public class CarNameValidator {
         // 2. 마지막에 쉼표가 있는지 확인
         carNameTrailingCommaValidator.validate(carNames);
 
-        // 3. carNames를 리스트로 분리
         List<String> nameList = CarNameParser.splitCarNames(carNames);
 
-        // 4. 빈 항목을 포함하지 않는지 검증
+        // 3. 빈 항목을 포함하지 않는지 검증
         carNameListNotEmptyValidator.validate(nameList);
 
-        // 5. 각 자동차 이름 길이 검증
+        // 4. 각 자동차 이름 길이 검증
         carNameMaxLengthValidator.validate(nameList);
 
-        // 6. 최소 자동차 수 검증
+        // 5. 최소 자동차 수 검증
         carMinimumCountValidator.validate(nameList);
 
-        // 7. 중복 이름 검증
+        // 6. 중복 이름 검증
         carNameDuplicateValidator.validate(nameList);
     }
 
