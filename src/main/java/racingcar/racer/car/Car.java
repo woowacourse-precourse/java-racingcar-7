@@ -1,11 +1,9 @@
 package racingcar.racer.car;
 
 import racingcar.racer.Racer;
-import racingcar.racer.RacerUtils;
 
 public class Car extends Racer {
-
-    CarUtils carUtils = new CarUtils();
+    private final CarUtils carUtils = CarUtils.getInstance();
 
     public Car(String name) {
         super(name);
