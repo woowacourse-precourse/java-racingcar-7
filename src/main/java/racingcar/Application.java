@@ -1,8 +1,13 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
@@ -23,9 +28,33 @@ public class Application {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
 
-        int tryNum = Integer.parseInt(rawTryCount);
-        if (tryNum < 1) {
+        int tryCount = Integer.parseInt(rawTryCount);
+        if (tryCount < 1) {
             throw new IllegalArgumentException("1 이상의 양수만 입력 가능합니다.");
+        }
+
+        Map<String, Integer> carPositions = new HashMap<>();
+        for (String car : racingCarNames) {
+            carPositions.put(car, 0);
+        }
+
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            for (String car : racingCarNames) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber >= 4) {
+                    carPositions.put(car, carPositions.get(car) + 1);
+                }
+            }
+
+            for (String car : racingCarNames) {
+                System.out.print(car + " : ");
+                for (int j = 0; j < carPositions.get(car); j++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
     }
 }
