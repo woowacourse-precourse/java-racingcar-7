@@ -1,6 +1,9 @@
 package racingcar.util;
 
-public class Validatior {
+import java.util.HashSet;
+import java.util.Set;
+
+public class Validator {
 
     public static void isInteger(int num){
         if (num <= 0) {
@@ -17,6 +20,20 @@ public class Validatior {
     private static void checkLength(String carName) {
         if(carName.length() > 5){
             throw new IllegalArgumentException("자동차의 이름은 5글자 이하여야 합니다.");
+        }
+    }
+
+    public static void checkDuplicateForCarName(String[] carNames){
+        Set<String> nameSet = new HashSet<>();
+
+        for (String name : carNames) {
+            checkDuplicate(name, nameSet);
+        }
+    }
+
+    private static void checkDuplicate(String name, Set<String> nameSet) {
+        if (!nameSet.add(name)) {
+            throw new IllegalArgumentException("중복된 이름 발견: " + name);
         }
     }
 }

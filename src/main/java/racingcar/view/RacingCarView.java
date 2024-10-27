@@ -25,6 +25,7 @@ public class RacingCarView {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + getStringPosition(car.getPosition()));
         }
+        System.out.println();
     }
 
     private String getStringPosition(int position){

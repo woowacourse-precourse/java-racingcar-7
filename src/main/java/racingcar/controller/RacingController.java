@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingGame;
 import racingcar.service.RacingService;
-import racingcar.util.Validatior;
+import racingcar.util.Validator;
 import racingcar.view.RacingCarView;
 
 import java.util.List;
@@ -20,10 +20,13 @@ public class RacingController {
 
     public void init(){
         String[] carNames = racingCarView.readCarName();
-        Validatior.checkCarNames(carNames);
+        Validator.checkCarNames(carNames);
+        Validator.checkDuplicateForCarName(carNames);
+
         List<Car> cars = racingService.generateCars(carNames);
+
         int num = racingCarView.readNum();
-        Validatior.isInteger(num);
+        Validator.isInteger(num);
         racingService.initGame(cars, num);
     }
 
@@ -31,10 +34,12 @@ public class RacingController {
         racingCarView.printStarting();
         RacingGame racingGame = racingService.getRacingGame();
         int num = racingGame.getNum();
+
         for (int i = 0; i < num; i++) {
             List<Car> cars = racingService.playOneGame();
             racingCarView.printEachGame(cars);
         }
+        
         List<Car> carList = racingGame.getWinner();
         racingCarView.printWinners(carList);
     }
