@@ -1,8 +1,13 @@
 package racingcar.model;
 
 public class Car {
-    // TODO: 이동 가능 유무에 따라 이동한다.
-    // TODO: 이동 가능 유무를 판단한다.
-    // TODO: 현재 상태를 요약한다.
-    // TODO: 이동한 거리를 반환한다.
+    // TODO: 자동차를 생성한다.
+
+    // TODO: 자동차 이름을 조회한다.
+
+    // TODO: 현재 자동차 위치를 조회한다.
+
+    // TODO: 이동 가능 여부에 따라 이동한다.
+
+    // TODO: 이동 가능 여부를 판단한다.
 }
