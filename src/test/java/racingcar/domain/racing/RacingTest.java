@@ -15,12 +15,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Application;
 
 class RacingTest extends NsTest {
-
     @AfterEach
     void tearDown() {
         Console.close();
     }
-
 
     @DisplayName("경주할 자동차의 입력값으로 빈 문자열은 들어올 수 없다.")
     @Test

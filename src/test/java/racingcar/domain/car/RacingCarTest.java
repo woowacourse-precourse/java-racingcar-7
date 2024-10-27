@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingCarTest {
-
-
     @DisplayName("4이상의 점수에만 전진한다.")
     @Test
     void 전진_성공_테스트() {

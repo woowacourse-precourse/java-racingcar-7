@@ -16,7 +16,6 @@ public class Racing {
     private int tryCnt;
     private List<RacingCar> winners = new ArrayList<>();
 
-
     public void setRacingCars(String inputTextForRacingCars) {
         //빈문자열, 최대 글자수, 비허용 문자 검증
         if (isInvalidInputTextForRacingCars(inputTextForRacingCars)) {
@@ -103,5 +102,9 @@ public class Racing {
 
     public String getWinnerNames() {
         return String.join(", ", winners.stream().map(r -> r.getName()).toList());
+    }
+
+    public List<RacingCar> getWinners() {
+        return winners;
     }
 }
