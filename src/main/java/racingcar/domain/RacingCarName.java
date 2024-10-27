@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-public record RacingCarName(String carName) {
+public record RacingCarName(String racingCarName) {
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
     public RacingCarName {
-        ValidateCarNameLength(carName);
+        ValidateCarNameLength(racingCarName);
     }
     private void ValidateCarNameLength(final String carName){
         if (carName.isEmpty() || carName.length() > CAR_NAME_MAX_LENGTH){
