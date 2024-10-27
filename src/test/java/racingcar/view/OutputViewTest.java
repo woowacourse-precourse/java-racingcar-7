@@ -46,7 +46,7 @@ class OutputViewTest {
         result.put(new Name("우테코"), new Position(3));
 
         //when
-        outputView.printRoundInformation(RoundResultDto.of(result));
+        outputView.printRoundResult(RoundResultDto.of(result));
         // then
         Assertions.assertThat(out.toString())
                 .isEqualTo("박재연 : 2\n우테코 : 3\n");

@@ -8,7 +8,7 @@ public class OutputView {
         System.out.println(ViewMessage.RESULT_MESSAGE.getMessage());
     }
 
-    public void printRoundInformation(RoundResultDto result) {
+    public void printRoundResult(RoundResultDto result) {
         result.roundResult().forEach((name, position) -> System.out.println(name + " : " + position));
     }
 
