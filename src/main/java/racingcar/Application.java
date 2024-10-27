@@ -1,6 +1,9 @@
 package racingcar;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -44,6 +47,16 @@ public class Application {
             System.out.println();
             tryNumber -= 1;
         }
+
+        System.out.print("최종 우승자 : ");
+        Optional<Integer> maxValue = carInfo.values().stream().max(Integer::compareTo);
+        maxValue.ifPresent(value -> {
+            String maxKeys = carInfo.entrySet().stream()
+                    .filter(entry -> entry.getValue().equals(value))
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.joining(", "));
+            System.out.println(maxKeys);
+        });
 
     }
 }

@@ -34,7 +34,6 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("시도하는 횟수가 너무 많습니다. 10회 이하로 설정해주세요");
     }
 
-
     @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
@@ -43,6 +42,14 @@ class ApplicationTest extends NsTest {
                 assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
             },
             MOVING_FORWARD, STOP
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
         );
     }
 
