@@ -21,6 +21,20 @@ public final class Game {
         }
     }
 
+    public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition).toList();
+    }
+
+    public int getMaxPosition() {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
     public List<Car> getCarList() {
         return carList;
     }
