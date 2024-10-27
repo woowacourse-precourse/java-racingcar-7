@@ -5,9 +5,17 @@ public class TryCount {
     private final int value;
 
     public TryCount(String inputTryCount) {
+        validateNotEmpty(inputTryCount);
         int intTryCount = validateNumberFormat(inputTryCount);
+        
         validateNegativeNumber(intTryCount);
         this.value = intTryCount;
+    }
+
+    private void validateNotEmpty(String inputTryCount) {
+        if (inputTryCount.isEmpty()) {
+            throw new IllegalArgumentException("값을 입력해주세요.");
+        }
     }
 
     private int validateNumberFormat(String inputTryCount) {

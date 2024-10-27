@@ -35,7 +35,14 @@ public class RacingCarController {
     }
 
     private List<String> parseCarNames(String inputCarNames) {
+        validateCommaSeparated(inputCarNames);
         return Arrays.asList(inputCarNames.split(","));
+    }
+
+    private void validateCommaSeparated(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("자동차 이름을 쉼표(,)로 구분하여 입력해야 합니다.");
+        }
     }
 
     private Cars createCars(List<String> names) {
