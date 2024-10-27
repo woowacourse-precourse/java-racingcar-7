@@ -14,10 +14,15 @@ public class RacingCarValidator {
         }
     }
 
-    public static void validate(List<RacingCar> list) {
-        if (!list.stream().allMatch(new HashSet<>()::add)) {
+    public static void validate(List<RacingCar> racingCars) {
+        if (containsDuplicatedCarNames(racingCars)) {
             throw new IllegalArgumentException(DUPLICATED_CAR_NAME_ERROR_MESSAGE);
         }
+    }
+
+    private static boolean containsDuplicatedCarNames(List<RacingCar> racingCars) {
+        return !racingCars.stream()
+                .allMatch(new HashSet<>()::add);
     }
 
     private static boolean exceedsLengthLimit(String name) {
