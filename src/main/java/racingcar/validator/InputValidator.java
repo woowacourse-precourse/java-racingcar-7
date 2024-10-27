@@ -22,7 +22,7 @@ public class InputValidator {
 
         validateCarNameLength(carNames);
 
-        validateCarNameContainsWhitespace(carNames);
+//        validateCarNameContainsWhitespace(carNames);
 
         validateRaceCount(raceCount);
 
@@ -49,17 +49,7 @@ public class InputValidator {
                     }
                 });
     }
-
-    private void validateCarNameContainsWhitespace(String carNames) {
-        Stream.of(separator.separate(carNames))
-                .forEach(carName -> {
-                    if (carName.isEmpty()) {
-                        throw new IllegalArgumentException();
-                    }
-                });
-    }
-
-
+    
     private void validateRaceCount(long raceCount) {
         if (raceCount < MIN_RACE_COUNT.value()) {
             throw new IllegalArgumentException();
