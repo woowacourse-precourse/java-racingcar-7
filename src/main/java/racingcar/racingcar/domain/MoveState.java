@@ -1,4 +1,4 @@
-package racingcar.service.move;
+package racingcar.racingcar.domain;
 
 import racingcar.constant.move.MoveConstant;
 
@@ -9,7 +9,7 @@ public enum MoveState {
         this.moveAble = moveAble;
     }
     private final boolean moveAble;
-    public static boolean move(int moveCnt) {
+    public static boolean isMove(int moveCnt) {
         if (moveCnt >= MoveConstant.MOVE_THRESHOLD) return MOVE.moveAble;
         return STOP.moveAble;
     }
