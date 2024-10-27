@@ -2,9 +2,21 @@ package console;
 
 public class Message {
 
-    public static final String PROMPT_FOR_RACING_CARS =
-            "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
-    public static final String PROMPT_FOR_ATTEMPTS = "시도할 횟수는 몇 회인가요?";
+    public static final String PROMPT_FOR_RACING_CARS = """
+            경주할 자동차 이름을 입력해주세요.
+                        
+            * 여러 차량의 이름은 쉼표(,)로 구분하세요.
+            * 각 이름에는 공백을 넣지 마세요.
+            * 예시: pobi,woni,jun
+                        
+            입력 후 엔터를 누르면 확인됩니다.""";
+    public static final String PROMPT_FOR_ATTEMPTS = """
+            시도할 횟수를 입력해주세요.
+                        
+            * 숫자만 입력 가능합니다.
+            * 입력 횟수는 1이상의 정수를 입력해주세요
+            * 최대 2147483647까지 입력 가능합니다.
+            * 예시: 5""";
     public static final String WINNER_ANNOUNCEMENT_PREFIX = "최종 우승자 : ";
     public static final String CAR_NAME_LENGTH_ERROR = "이름은 5자 이하만 가능합니다.";
     public static final String NUMERIC_INPUT_PATTERN = "[0-9]+";
