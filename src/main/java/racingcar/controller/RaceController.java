@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.model.RaceLog;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -28,6 +30,7 @@ public class RaceController {
 
     public void run() {
         raceService.setRaceCars(inputView.inputCarNames());
-        raceService.runRaceRounds(Integer.parseInt(inputView.inputTryCount()));
+        List<RaceLog> raceLogs = raceService.runRaceRounds(Integer.parseInt(inputView.inputTryCount()));
+        outputView.printRaceLogs(raceLogs);
     }
 }
