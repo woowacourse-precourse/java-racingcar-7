@@ -22,4 +22,10 @@ public class Winners {
                 .max()
                 .orElse(MIN_POSITION);
     }
+
+    public List<String> getNames() {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
 }
