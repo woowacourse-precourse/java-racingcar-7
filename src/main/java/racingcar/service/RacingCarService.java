@@ -14,7 +14,7 @@ public class RacingCarService {
     }
 
     public List<RacingCar> generateRacingCarList(List<String> carNames) {
-        return carNames.stream().map(name -> new RacingCar(name, 0)).toList();
+        return carNames.stream().map(RacingCar::of).toList();
     }
 
     public void runCarRacing(List<RacingCar> racingCars, int moveCount) {
