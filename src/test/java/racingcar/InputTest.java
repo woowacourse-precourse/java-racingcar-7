@@ -6,21 +6,28 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 
 class InputTest {
-  @DisplayName("유저가_자동차_이름을_입력한다")
+
+  Input input;
+  @DisplayName("유저가 자동차 이름을 입력한다")
   @ParameterizedTest
-  public void 유저가_자동차_이름을_입력한다() throws Exception{
+  public void inputCarNamesTest() throws Exception{
       //given
+    String cars = "pobi,woni";
 
       //when
+    input.inputCarNames(cars);
+
 
       //then
   }
-  @DisplayName("유저가_자동차_이름을_입력한다")
+  @DisplayName("유저가 게임 시도 횟수를 입력한다")
   @ParameterizedTest
-  public void 유저가_게임_시도_횟수를_입력한다() throws Exception{
+  public void inputPlayCountsTest() throws Exception{
     //given
+    int playCount = 3;
 
     //when
+    input.inputPlayCounts(playCount);
 
     //then
   }
