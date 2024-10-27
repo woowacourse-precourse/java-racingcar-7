@@ -11,7 +11,7 @@ public class Application {
         List<Car> cars = Car.makeListFrom(CustomConsole.readLine());
 
         System.out.println("시도할 회수는 몇 회인가요?");
-        int round = Integer.parseInt(CustomConsole.readLine());
+        int round = CustomConsole.readInteger();
 
         Game game = Game.create(round, cars);
         game.start();

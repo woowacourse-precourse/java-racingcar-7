@@ -12,4 +12,16 @@ public class CustomConsole {
             return "";
         }
     }
+
+    public static int readInteger() {
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static void close() {
+        Console.close();
+    }
 }
