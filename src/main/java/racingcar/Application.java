@@ -1,7 +1,14 @@
 package racingcar;
 
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            RacingGame racingGame = new RacingGame();
+            racingGame.start();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            throw e;
+        }
     }
 }
