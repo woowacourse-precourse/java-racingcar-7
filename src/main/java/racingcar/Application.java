@@ -32,7 +32,8 @@ public class Application {
     // 차수별 실행결과 출력 함수
     private static void printRoundResults(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + ": " + car.getPosition());
+            String position = "-".repeat(car.getPosition());
+            System.out.println(car.getName() + " : " + position);
         }
         System.out.println();
     }
