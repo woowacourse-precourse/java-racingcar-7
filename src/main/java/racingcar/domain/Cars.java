@@ -36,13 +36,22 @@ public class Cars {
         return new Cars(farthestCarList);
     }
 
-    public void printCar() {
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : this.cars) {
             stringBuilder.append(car);
             stringBuilder.append("\n");
         }
-        System.out.println(stringBuilder);
+        return stringBuilder.toString();
     }
 
+    public void printCarNames() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : this.cars) {
+            stringBuilder.append(car.getName() + ", ");
+        }
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        System.out.println(stringBuilder);
+    }
 }

@@ -9,7 +9,7 @@ public class Name {
     }
 
     private void validate(String value) {
-        if (value.length() > 6) {
+        if (value.length() > 5) {
             throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
         }
     }

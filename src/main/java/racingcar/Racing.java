@@ -37,7 +37,7 @@ public class Racing {
     }
 
     private void printStatus() {
-        this.cars.printCar();
+        System.out.println(this.cars);
     }
 
     public Cars getWinners() {

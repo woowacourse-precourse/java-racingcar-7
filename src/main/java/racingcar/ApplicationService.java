@@ -5,9 +5,11 @@ import racingcar.domain.Cars;
 public class ApplicationService {
 
     private final UserInputService userInputService;
+    private final UserOutputService userOutputService;
 
     public ApplicationService() {
         this.userInputService = new UserInputService();
+        this.userOutputService = new UserOutputService();
     }
 
     public void run() {
@@ -18,5 +20,6 @@ public class ApplicationService {
         Racing racing = new Racing(cars, repeat);
         racing.start();
         Cars winners = racing.getWinners();
+        this.userOutputService.printResult(winners);
     }
 }
