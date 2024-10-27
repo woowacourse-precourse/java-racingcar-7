@@ -15,7 +15,7 @@ public class RaceController {
     private OutputView outputView = new OutputView();
     private CarController carController = new CarController();
     private MoveController moveController = new MoveController();
-    PlayCountController playCountController = new PlayCountController();
+    private PlayCountController playCountController = new PlayCountController();
 
     public void run() {
         finishGame(playGame(prepareGame()));
@@ -32,18 +32,10 @@ public class RaceController {
 
     public List<Car> playGame(List<Car> cars) {
         outputView.printGetPlayCount();
-
         int playCount = playCountController.validatePlayCount();
 
         for (int i = 0; i < playCount; i++) {
-            for (Car car : cars) {
-                int randomNumber = moveController.createRandomNumber();
-                boolean isMove = moveController.isMove(randomNumber);
-                if (isMove) {
-                    moveController.setMoveInformation(car);
-                }
-                outputView.printSingleResult(car);
-            }
+            playSingleRound(cars);
         }
 
         return cars;
@@ -52,6 +44,20 @@ public class RaceController {
     public void finishGame(List<Car> cars) {
         List<String> winner = selectWinners(cars);
         outputView.printWinners(winner);
+    }
+
+    private void playSingleRound(List<Car> cars) {
+        for (Car car : cars) {
+            performSingleMove(car);
+            outputView.printSingleResult(car);
+        }
+    }
+
+    private void performSingleMove(Car car) {
+        int randomNumber = moveController.createRandomNumber();
+        if (moveController.isMove(randomNumber)) {
+            moveController.setMoveInformation(car);
+        }
     }
 
     public List<String> selectWinners(List<Car> cars) {
@@ -70,5 +76,4 @@ public class RaceController {
 
         return winner;
     }
-
 }
