@@ -2,11 +2,12 @@ package racingcar.adapter.inbound.cli;
 
 import racingcar.application.dto.RacingGameRequest;
 import racingcar.application.dto.Response;
+import racingcar.application.port.inbound.InboundAdapter;
 import racingcar.application.port.inbound.GameUseCase;
 import racingcar.application.port.inbound.InputPort;
 import racingcar.application.port.outbound.OutputPort;
 
-public class InputAdapter {
+public class InputAdapter implements InboundAdapter {
     private final OutputPort outputPort;
     private final InputPort inputPort;
     private final GameUseCase gameUseCase;
@@ -17,6 +18,7 @@ public class InputAdapter {
         this.gameUseCase = gameUseCase;
     }
 
+    @Override
     public void run() {
         outputPort.writeMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         final String cars = inputPort.get();
