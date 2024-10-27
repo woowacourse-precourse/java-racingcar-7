@@ -7,31 +7,30 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application ap = new Application();
-
+        ap.start(ap);
+    }
+    public void start(Application ap) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = Console.readLine();
-        ap.check(input);
+        check(input);
         member = input.split(",");
-        ap.mem_trim();
         ap.mem_trim();
         list = ap.initial(member);
         System.out.println("시도할 횟수는 몇 회인가요?");
         int try_count = 0;
-
         try{
             try_count = Integer.parseInt(Console.readLine());
         }catch (IllegalArgumentException e){
             System.out.print("invalid error");
         }
-
-        System.out.println();
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for(int i = 0; i < try_count; i++){
             ap.add();
             ap.print_result();
         }
         ap.print_winner(ap.winner_score());
     }
+
     public void check(String input){
         if(input.endsWith(",")) {
             throw new IllegalArgumentException("invalid error");
