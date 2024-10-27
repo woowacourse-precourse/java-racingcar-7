@@ -4,7 +4,8 @@ package racingcar;
 public class Car {
     private String name;
 
-    public void setName(String name){
+
+    public Car(String name){
         this.name = name;
     }
 
@@ -12,12 +13,5 @@ public class Car {
         return name;
     }
 
-    /**
-     * 차 객체를 생성하는 메서드
-     */
-    public static Car createCar(String name){
-        Car car = new Car();
-        car.setName(name);
-        return car;
-    }
+
 }

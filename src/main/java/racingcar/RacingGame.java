@@ -23,7 +23,7 @@ public class RacingGame {
      * */
     public void addCars(List<String> validatedCarNames){
         for(String carName : validatedCarNames){
-            cars.add(Car.createCar(carName));
+            cars.add(new Car(carName));
         }
     }
 
