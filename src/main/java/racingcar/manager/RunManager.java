@@ -10,17 +10,23 @@ public class RunManager {
     private final static String INPUT_ATTEMPT_NUMBER_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     private final InputManager inputManager;
+    private final RacingManager racingManager;
 
-    public RunManager(InputManager inputManager){
+    public RunManager(InputManager inputManager, RacingManager racingManager) {
         this.inputManager = inputManager;
+        this.racingManager = racingManager;
     }
 
     public void run(){
         printNameInputMessage();
         final String inputNames = inputManager.inputCarName();
+
         Set<Car> cars = CarFactory.createCars(inputNames);
 
         printNumberInputMessage();
+        int number = inputManager.inputAttemptNumber();
+
+        racingManager.racingStart(cars, number);
     }
 
     private void printNumberInputMessage() {

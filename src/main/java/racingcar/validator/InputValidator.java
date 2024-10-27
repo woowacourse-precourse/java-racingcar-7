@@ -14,4 +14,12 @@ public class InputValidator {
             throw new IllegalArgumentException(NEGATIVE_ATTEMPT_INPUT.getMessage());
         }
     }
+
+    public int isParseInt(String input) {
+        try{
+            return Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException(NOT_CONVERTED_STRING.getMessage());
+        }
+    }
 }
