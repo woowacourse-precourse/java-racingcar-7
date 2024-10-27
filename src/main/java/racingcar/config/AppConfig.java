@@ -1,6 +1,6 @@
 package racingcar.config;
 
-import racingcar.domain.CarFactory;
+import racingcar.car.CarFactory;
 import racingcar.io.Input;
 import racingcar.io.View;
 
@@ -17,11 +17,11 @@ public class AppConfig {
     }
 
     public Input createInput() {
-        return Input.getInstance();
+        return new Input();
     }
 
     public View createView() {
-        return View.getInstance();
+        return  new View();
     }
 
     public CarFactory createCarFactory() {

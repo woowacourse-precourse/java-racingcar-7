@@ -2,7 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.*;
+import racingcar.car.*;
+import racingcar.race.RaceResult;
+import racingcar.race.Stadium;
 
 import java.util.Set;
 
@@ -29,7 +31,7 @@ class StadiumTest {
 
         // When & Then
         assertRandomNumberInRangeTest(() -> {
-            stadium.runGame(4);
+            stadium.raceEachRounds(4);
             Set<Car> cars = carRegistry.getCars();
             String actualString = "";
             for (Car car : cars) {
@@ -55,7 +57,7 @@ class StadiumTest {
 
         // When & Then
         assertRandomNumberInRangeTest(() -> {
-            stadium.runGame(4);
+            stadium.raceEachRounds(4);
             Set<Car> cars = carRegistry.getCars();
             String actualString = "";
             for (Car car : cars) {

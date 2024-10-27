@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.race;
+
+import racingcar.car.CarRegistry;
 
 import java.util.Set;
 
@@ -14,7 +16,7 @@ public class RaceResult {
     }
 
     public RaceResult add(String result) {
-        this.result.append(result);
+        this.result.append(result).append("\n");
         return this;
     }
 

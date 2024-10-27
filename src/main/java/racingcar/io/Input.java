@@ -5,18 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class Input {
-    private static Input INSTANCE;
-
     private static final Pattern VALID_CAR_NAMES_PATTERN = Pattern.compile("^[^,]+(,[^,]+)*$");
-
-    private Input() {}
-
-    public static Input getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Input();
-        }
-        return INSTANCE;
-    }
 
     public  String carNames() {
         String carNames = Console.readLine().trim();

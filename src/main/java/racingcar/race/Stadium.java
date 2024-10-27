@@ -1,5 +1,9 @@
-package racingcar.domain;
+package racingcar.race;
 
+
+import racingcar.car.Car;
+import racingcar.car.CarRegistry;
+import racingcar.car.CarStatusFormatter;
 
 public class Stadium {
     private final CarRegistry carRegistry;
@@ -14,7 +18,7 @@ public class Stadium {
         this.carStatusFormatter = new CarStatusFormatter();
     }
 
-    public void runGame(Integer rounds) {
+    public void raceEachRounds(Integer rounds) {
         for (int i = 0; i < rounds; i++) {
             executeOneRound();
         }

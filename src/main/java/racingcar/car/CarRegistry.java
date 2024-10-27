@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.car;
 
 import java.util.HashSet;
 import java.util.Set;
