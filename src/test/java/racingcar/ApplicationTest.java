@@ -33,6 +33,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_이름_다른_구분자_사용() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi;woni;jun", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
@@ -53,6 +61,57 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi,woni", "-1"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_시도_횟수_비숫자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "two"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_이동_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    assertThat(output()).contains("pobi : -");
+                },
+                MOVING_FORWARD // 무작위 값이 4 이상이므로 이동
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    assertThat(output()).contains("pobi : ");
+                },
+                STOP // 무작위 값이 3 이하여서 멈춤
+        );
+    }
+
+    @Test
+    void 최대_위치_우승자_결정_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output())
+                            .contains("최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD // pobi가 가장 멀리 이동함
+        );
+    }
+
+    @Test
+    void 여러명_우승자_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "3");
+                    assertThat(output())
+                            .contains("최종 우승자 : pobi, jun");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD // pobi와 jun이 동일한 거리로 이동
         );
     }
 
