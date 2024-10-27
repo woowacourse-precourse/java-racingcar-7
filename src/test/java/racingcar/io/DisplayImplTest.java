@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.game.Display;
 
 class DisplayImplTest {
 
@@ -53,6 +54,20 @@ class DisplayImplTest {
 
         //then
         String expect = "최종 우승자 : A, C\n";
+        assertThat(CUSTOM_OUTPUT_STREAM.toString()).isEqualTo(expect);
+    }
+
+    @Test
+    public void 단독_우승자를_쉼표없이_출력할_수_있다() throws Exception {
+        //given
+        Display display = new DisplayImpl();
+        List<Car> winners = List.of(new Car("A"));
+
+        //when
+        display.winners(winners);
+
+        //then
+        String expect = "최종 우승자 : A\n";
         assertThat(CUSTOM_OUTPUT_STREAM.toString()).isEqualTo(expect);
     }
 }
