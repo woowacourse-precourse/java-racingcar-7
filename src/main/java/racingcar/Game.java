@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -72,8 +73,8 @@ public class Game {
     }
 
     private void addToCarList(String[] carNames) {
-        for (final String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        cars.addAll(Arrays.stream(carNames)
+                .map(Car::new)
+                .toList());
     }
 }
