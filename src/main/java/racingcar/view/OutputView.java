@@ -20,4 +20,13 @@ public class OutputView {
     private String convertDistance(int value) {
         return "-".repeat(Math.max(0, value));
     }
+
+    public void printWinner(List<String> winners) {
+        if (winners.size() >= 2) {
+            System.out.println(WINNER_FORMAT + String.join(", ", winners));
+        }
+        if (winners.size() == 1) {
+            System.out.println(WINNER_FORMAT + winners.getFirst());
+        }
+    }
 }
