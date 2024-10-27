@@ -6,21 +6,29 @@ import java.util.List;
 public class Racing {
 
     private List<String> carNames;
+    private int tryCount;
+    private int[] carPositions;
 
-    public Racing(List<String> carNames) {
+    public Racing(List<String> carNames, int tryCount) {
         this.carNames = carNames;
+        this.tryCount = tryCount;
+        this.carPositions = new int[carNames.size()];
     }
+
     public void startRace() {
         System.out.println("실행 결과");
-        for (String name : carNames) {
-            System.out.print(name.trim() + ": ");
-            int randomNumber = randomNumber();
+
+        for (int i = 0; i < tryCount; i++) {
+            for (int j = 0; j < carNames.size(); j++) {
+                System.out.print(carNames.get(j).trim() + ": ");
+                int randomNumber = randomNumber();
 
             // 0에서 3일 경우는 멈춤, 4에서 9일 경우 전진
             if (randomNumber >= 4) {
-                advance(1);  // 전진일 때 '-' 출력
+                carPositions[j]++;  // 전진 시 자동차의 위치를 증가
             }
 
+            advance(carPositions[j]);
             System.out.println();
         }
     }
@@ -31,17 +39,10 @@ public class Racing {
     }
 
     // 전진 시 "-" 출력
-    public void advance(int count) {
-        for (int i = 0; i < count; i++) {
+    public void advance(int position) {
+        for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
-    }
-
-    public static void main(String[] args) {
-        int tryCount = 0;
-        while (tryCount-1 > 0) {
-            tryCount --;
-        }   System.out.println();
     }
 }
 

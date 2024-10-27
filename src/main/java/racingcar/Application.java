@@ -30,11 +30,9 @@ public class Application {
             if (tryCount <= 0) {
                 throw new IllegalArgumentException("이동 횟수는 1회 이상이어야 합니다.");
             }
-        }catch (NumberFormatException e) {
-                throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
-            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("올바른 숫자를 입력해주세요.");
         }
-
 
         List<String> carNameList = Arrays.asList(splitName);
 
