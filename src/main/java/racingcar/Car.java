@@ -38,7 +38,7 @@ public class Car {
 		return moveCounter;
 	}
 
-	private boolean pickNumber() {
+	public boolean pickNumber() {
 		int randomValue = Randoms.pickNumberInRange(0, 9);
 
 		if (randomValue >= 4) {
