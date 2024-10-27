@@ -22,11 +22,12 @@ public class CarUtil {
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public static void advanceSixTimesOutOfTen(Car car) {
+    public static int advanceSixTimesOutOfTen(Car car) {
         int randomInt = makeRandomInt();
         if (randomInt >= 4) {
             car.addAdvanceCount();
         }
+        return randomInt;
     }
 
     public static int getMaxAdvanceCount(ArrayList<Car> cars) {
