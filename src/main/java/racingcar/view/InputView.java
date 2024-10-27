@@ -10,9 +10,10 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int enterNumberOfAttempts() {
+    public static String enterNumberOfAttempts() {
         System.out.println(ViewMessages.ENTER_NUMBER_OF_ATTEMPTS.getViewMessages());
         String inputNumber = Console.readLine();
-        return InputNumberValidation.validateInputNumber(inputNumber);
+        InputNumberValidation.validateInputNumber(inputNumber);
+        return inputNumber;
     }
 }

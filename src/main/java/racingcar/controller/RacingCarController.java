@@ -12,11 +12,11 @@ public class RacingCarController {
 
     public void run() {
         String inputCarNames = InputView.enterCarNames();
-        int inputNumberOfAttempts = InputView.enterNumberOfAttempts();
+        String inputNumber = InputView.enterNumberOfAttempts();
 
         List<String> carNames = SeparateCarNames.separateCarNames(inputCarNames);
 
         RacingCarGame racingCarGame = new RacingCarGame(carNames);
-        racingCarGame.playCarGame(inputNumberOfAttempts);
+        racingCarGame.playCarGame(Integer.parseInt(inputNumber));
     }
 }
