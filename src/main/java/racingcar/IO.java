@@ -8,5 +8,6 @@ public class IO {
         String cars = Console.readLine();
         System.out.println("시도할 횟수는 몇 회인가요?");
         long number = Long.parseLong(Console.readLine());
+        System.out.println("\n");
     }
 }

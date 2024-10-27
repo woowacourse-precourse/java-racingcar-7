@@ -15,8 +15,11 @@ public class Race {
     }
 
     public void start(int number) {
+        System.out.println("실행 결과");
         for (int i = 0; i < number; i++) {
             randomMovement();
+            carPosition();
+            System.out.println();
         }
     }
 
@@ -24,6 +27,12 @@ public class Race {
         for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= FORWARD_CRITERION) car.moveForward();
+        }
+    }
+
+    public void carPosition() {
+        for (Car car : cars) {
+            car.printPosition();
         }
     }
 
