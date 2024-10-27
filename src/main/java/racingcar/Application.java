@@ -6,14 +6,10 @@ import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
-        try {
             String[] cars = getCars();
             int attempts = getAttempts();
             int[] racingNum = race(cars, attempts);
             printWinners(cars, racingNum);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     // 자동차 이름 입력받기
