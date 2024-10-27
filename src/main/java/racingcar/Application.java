@@ -26,6 +26,10 @@ public class Application {
         String inputCars = inputContainer.getCars();
         int attempts = inputContainer.getAttempts();
 
+        if(!validator.attemptValidate(attempts)) {
+            throw new IllegalArgumentException();
+        }
+
         String[] cars = inputCars.split(",");
 
         Map<String, String> carMoveMap = racingCarRepository.getCarMoveMap();

@@ -21,5 +21,7 @@ public class Validator {
         return true;
     }
 
-
+    public Boolean attemptValidate(int attempt) {
+        return attempt >= 1;
+    }
 }
