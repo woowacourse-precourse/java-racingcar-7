@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
-import racingcar.ErrorMessage;
+import racingcar.view.ErrorMessage;
 
 public class RaceCars {
     private final List<Car> cars;

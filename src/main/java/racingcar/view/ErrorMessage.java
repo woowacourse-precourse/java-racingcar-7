@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public enum ErrorMessage {
     NULL_INPUT("입력값이 필요합니다."),

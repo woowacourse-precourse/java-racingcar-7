@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.Objects;
-import racingcar.ErrorMessage;
+import racingcar.view.ErrorMessage;
 
 public class Name {
     private static final int MAX_NAME_LENGTH = 5;

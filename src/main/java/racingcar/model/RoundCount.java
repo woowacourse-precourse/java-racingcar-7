@@ -1,7 +1,7 @@
 package racingcar.model;
 
 import java.util.regex.Pattern;
-import racingcar.ErrorMessage;
+import racingcar.view.ErrorMessage;
 
 public class RoundCount {
     private static final Pattern NUMBER_REGEX = Pattern.compile("^-?[0-9]+$");
