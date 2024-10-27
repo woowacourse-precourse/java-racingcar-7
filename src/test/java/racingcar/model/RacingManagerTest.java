@@ -2,7 +2,6 @@ package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,6 +53,22 @@ class RacingManagerTest {
         for (Car car : carList) {
             assertThat(car.getDistance()).isBetween(0, 1); // 자동차가 이동했거나 그대로일 수 있음
         }
+    }
+
+    @Test
+    void 우승자들을_반환(){
+        List<Car>carList = Arrays.asList(
+                new Car("A",5),
+                new Car("B",4),
+                new Car("C",5),
+                new Car("D",3));
+
+        List<Car>winnerList = racingManager.getWinners(carList);
+
+        assertThat(winnerList)
+                .hasSize(2)
+                .extracting(Car::getName)
+                .containsExactlyInAnyOrder("A","C");
     }
 
 }
