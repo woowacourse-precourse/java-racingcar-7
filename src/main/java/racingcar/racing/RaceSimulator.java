@@ -6,6 +6,7 @@ import static racingcar.io.OutputUtil.println;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.car.Car;
 import racingcar.message.prompt.ResultPrompt;
 import racingcar.util.RandomNumberGenerator;
@@ -24,25 +25,15 @@ public class RaceSimulator {
     }
 
     private static void tryMoveCars(List<Car> cars) {
-        for (Car car : cars) {
-            if (RandomNumberGenerator.getRandomNumber() >= MOVE_STAND_NUMBER) {
-                car.moveCar();
-            }
-        }
+        cars.stream()
+                .filter(car -> RandomNumberGenerator.getRandomNumber() >= MOVE_STAND_NUMBER)
+                .forEach(Car::moveCar);
     }
 
     private static String getRacingProgress(List<Car> cars) {
-        StringBuilder racingProgress = new StringBuilder();
-
-        for (Car car : cars) {
-            racingProgress.append(car.getCarName()).append(" : ");
-            for (long i = 0; i < car.getMoveDistance(); i++) {
-                racingProgress.append("-");
-            }
-            racingProgress.append("\n");
-        }
-
-        return racingProgress.toString();
+        return cars.stream()
+                .map(car -> car.getCarName() + " : " + "-".repeat(car.getMoveDistance()))
+                .collect(Collectors.joining("\n"));
     }
 
     public static String getRacingWinner(List<Car> cars) {
@@ -63,7 +54,7 @@ public class RaceSimulator {
     }
 
     private static int getMoveDistanceMax(List<Car> cars) {
-        cars.sort(Comparator.comparingInt(Car::getMoveDistance));
+        cars.sort(Comparator.comparingInt(Car::getMoveDistance).reversed());
         return cars.getFirst().getMoveDistance();
     }
 }
