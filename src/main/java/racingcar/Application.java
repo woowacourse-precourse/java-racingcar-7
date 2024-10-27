@@ -12,50 +12,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        RacingCarView racingCarView = new RacingCarView();
+        RacingCarView carView = new RacingCarView();
 
-        String carNameInput = racingCarView.getCarNameInput();
-        Long tryCount = Long.parseLong(racingCarView.getTryCount());
+        String carNameInput = carView.getCarNameInput();
+        int tryCount = Integer.parseInt(carView.getTryCount());
 
-        List<Car> cars = new ArrayList<>();
-
-        for(String carName : carNameInput.split(",")) {
-            cars.add(new Car(carName, 0));
+        String[] cars = carNameInput.split(",");
+        for(String car : cars) {
+            System.out.println("여기:" + car + "사이즈 : " + car.length());
         }
+        System.out.println(cars.length);
 
-        // 게임 진행
-        while(tryCount-- > 0){
-            for(Car car : cars){
-                int ramdomNumber = Randoms.pickNumberInRange(0, 9);
-
-                System.out.print(car.getName() + " : ");
-
-                if(ramdomNumber >= 4){      // 전진
-                    car.go();
-                }
-                for(int i = 0; i < car.getPos(); i++){
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
-
-        // 게임 결과 산출
-        int max = 0;
-        for(Car car : cars){
-            max = Math.max(max, car.getPos());
-        }
-
-        List<String> winnerList = new ArrayList<>();
-        for(Car car : cars){
-            if(car.getPos() == max){
-                winnerList.add(car.getName());
-            }
-        }
-
-        String result = String.join(", ", winnerList);
-
-        racingCarView.printResult(result);
     }
 }
