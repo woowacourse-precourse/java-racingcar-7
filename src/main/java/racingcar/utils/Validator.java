@@ -25,6 +25,12 @@ public class Validator {
         }
     }
 
+    public static void checkLastIndexAndThrowException(String input) {
+        if (input.lastIndexOf(",") == input.length() - 1) {
+            throw new IllegalArgumentException("자동차 이름은 최소 1글자 이상이어야 합니다.");
+        }
+    }
+
     public static void containDuplicate(List<String> names) {
         Set<String> uniqueCars = new HashSet<>(names);
         if (uniqueCars.size() != names.size()) {
