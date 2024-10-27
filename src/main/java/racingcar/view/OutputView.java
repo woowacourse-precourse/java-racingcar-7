@@ -15,4 +15,9 @@ public class OutputView {
         String joinedWinners = String.join(", ", winners);
         System.out.println("최종 우승자 : " + joinedWinners);
     }
+
+    public void printProcess() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
 }

@@ -17,6 +17,7 @@ public class CarRaceManager {
 
     public void start(){
         String[] userInitialInputs = inputView.getUserInitialInputs();
+        outputView.printProcess();
         UserInputDto userInputDto = userInputValidator.validate(userInitialInputs);
 
         initializeCars(userInputDto.carNames());
