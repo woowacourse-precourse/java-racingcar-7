@@ -7,6 +7,10 @@ public class InputView {
         return Console.readLine();
     }
     public int getMoveCount(){
-        return Integer.parseInt(Console.readLine());
+        try{
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
