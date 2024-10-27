@@ -18,7 +18,7 @@ public class RacingcarModel {
         System.out.println("자동차 이름 초기화 시작...");
         for (String name : carNames) {
             cars.add(new Car(name));
-            System.out.println("자동차 이름 초기화 완료: " + cars);
+            System.out.println("자동차 이름 초기화 완료: " + name);
         }
 
     }
@@ -37,11 +37,11 @@ public class RacingcarModel {
     // 자동차 전진 여부 확인 및 전진
     public void advanceCar(Car car) {
         int randomValue = generateRandomValue();
-        System.out.println("자동차: " + car + "의 랜덤 값: " + randomValue);
+        System.out.println("자동차: " + car.getName() + "의 랜덤 값: " + randomValue);
         if (shouldAdvance(randomValue)) {
             car.move();
         } else {
-            System.out.println("자동차: " + car + " 멈춤 -> 현재 상태: " + car.getDistance());
+            System.out.println("자동차: " + car.getName() + " 멈춤 -> 현재 상태: " + car.getDistance());
         }
     }
 

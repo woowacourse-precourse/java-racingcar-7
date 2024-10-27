@@ -14,12 +14,9 @@ public class RacingView {
     public String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요. (이름은 쉼표로 구분)");
         String[] carName = Console.readLine().trim().split(",");
-        if (carName.length == 1) {
-            System.out.println("자동차 " + carName[0] + "가 우승하였습니다!");
-            return carName;  // 우승 메시지를 출력하고 반환
-        }
-        validateCarNames(carName);
-        return carName;
+        String[] trimmedCarNames = validateCarNames(carName);  // 공백 제거 및 배열 반환
+        validateCar(trimmedCarNames);  // 검증 수행
+        return trimmedCarNames;
     }
 
 
@@ -43,24 +40,28 @@ public class RacingView {
         System.out.println("최종 우승자 : " + winners);
     }
 
-    public void printRaceResult(RaceResponse response){
+    public void printRaceResult(RaceResponse response) {
         printCarStates(response.getCarStates());
         printCarStates(response.getCarStates());
     }
 
-    // 자동차 이름에 대한 전체 검증 로직
-    private void validateCarNames(String[] carNames) {
-        for (String car : carNames) {
-            String trimmedCar = car.trim();  // 공백 제거
-            validateCar(trimmedCar);         // 개별 검증 호출
+    // 자동차 이름에 공백 제거
+    private String[] validateCarNames(String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            carNames[i] = carNames[i].trim();
         }
+        return carNames;
+
     }
 
     // 개별 자동차 이름에 대한 검증
-    private void validateCar(String car) {
-        InputValidation.checkDuplicate(car);
-        InputValidation.checkSpecialCharacters(car);
-        InputValidation.checkLength(car);
+    private void validateCar(String[] car) {
+        InputValidation.checkOnce(car);
+        for (String carName : car) {
+            InputValidation.checkDuplicate(carName);
+            InputValidation.checkSpecialCharacters(carName);
+            InputValidation.checkLength(carName);
+        }
     }
 }
 

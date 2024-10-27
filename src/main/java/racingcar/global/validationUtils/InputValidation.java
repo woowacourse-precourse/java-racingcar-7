@@ -33,6 +33,12 @@ public class InputValidation {
         }
     }
 
+    public static void checkOnce(String[] car){
+        if (car.length == 1) {
+           throw new IllegalArgumentException("자동차 경주 하려면 두대 이상 되어야 합니다");
+        }
+    }
+
 
     public static void  checkParseInt(int number) {
         if (number < 0) {
