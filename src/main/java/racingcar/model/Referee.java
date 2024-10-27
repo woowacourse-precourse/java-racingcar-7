@@ -1,10 +1,9 @@
-package racingcar.controller;
+package racingcar.model;
 
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.IntStream;
-import racingcar.model.Cars;
 
 public class Referee {
 
