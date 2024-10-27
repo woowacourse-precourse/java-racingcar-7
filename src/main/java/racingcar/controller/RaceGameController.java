@@ -31,7 +31,24 @@ public class RaceGameController {
         }
     }
 
+    /**
+     * 게임 1회를 실행한 결과 출력
+     */
     public void printGameResult(List<Car> cars) {
         OutputView.printGameResult(cars);
+    }
+
+    /**
+     * 가장 큰 전진 횟수 반환
+     */
+    public int getMaxMoveCount(List<Car> cars) {
+        int max = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            if (car.getMoveCount() > max) {
+                max = car.getMoveCount();
+            }
+        }
+        return max;
     }
 }
