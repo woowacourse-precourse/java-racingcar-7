@@ -18,4 +18,13 @@ public class CarNameTest {
                 .hasMessage("자동차 이름에 빈칸은 입력할수 없습니다");
     }
 
+    @Test
+    @DisplayName("자동차 이름이 5글자를 초과하면 예외가 발생한다")
+    void createCarNameExceedingLength() {
+        String name = "abcdef";
+        assertThatThrownBy(() -> CarName.from(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차의 이름은 5글자 이하만 가능합니다");
+    }
+
 }
