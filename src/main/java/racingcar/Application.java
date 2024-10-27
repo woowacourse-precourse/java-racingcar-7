@@ -45,17 +45,13 @@ public class Application {
     }
 
     public static List<RacingCar> splitInput(String input) {
-        String[] racingCars = input.split(SPLITTER);
+        List<String> racingCarListStr = new ArrayList<>(Arrays.asList(input.split(SPLITTER)));
         List<RacingCar> racingCarList = new ArrayList<>();
+        racingCarListStr.stream()
+                .forEach(name -> racingCarList.add(new RacingCar(name.trim())));
 
-        Arrays.stream(racingCars)
-                .forEach(name -> {
-                    checkCarName(name);
-                    racingCarList.add(new RacingCar(name.trim()));
-                });
-
-        Set<String> hashCars = new HashSet<>(Arrays.asList(racingCars));
-        if (hashCars.size() != racingCarList.size()) {
+        Set<String> hashCars = new HashSet<>(racingCarListStr);
+        if (hashCars.size() != racingCarListStr.size()) {
             throw new IllegalArgumentException("동일한 이름을 가진 차종을 입력하실 수 없습니다.");
         }
 
