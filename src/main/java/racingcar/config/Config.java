@@ -4,8 +4,8 @@ import racingcar.model.Car;
 import racingcar.model.RacingCar;
 
 public class Config {
-    public Car car(){
-        return new RacingCar();
+    public Car car(String s){
+        return new RacingCar(s);
     }
 
 }

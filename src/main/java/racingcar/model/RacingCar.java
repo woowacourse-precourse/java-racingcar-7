@@ -10,7 +10,7 @@ public class RacingCar implements Car{
         score++;
     }
 
-    public void setName(String name) {
+    public RacingCar(String name) {
         this.name = name;
     }
 
