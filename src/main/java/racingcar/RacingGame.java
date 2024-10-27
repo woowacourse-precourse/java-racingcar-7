@@ -1,14 +1,17 @@
 package racingcar;
 
-public class RacingGame implements Game{
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class RacingGame implements Game {
     private final Cars cars;
     private final RacingGameCount racingCount;
-    private final GameResultView resultView;
+    private final GameResultOutput resultView;
 
-    public RacingGame(Cars cars, RacingGameCount racingCount, GameResultView gameResultView) {
+    public RacingGame(Cars cars, RacingGameCount racingCount, GameResultOutput gameResultOutput) {
         this.cars = cars;
         this.racingCount = racingCount;
-        this.resultView = gameResultView;
+        this.resultView = gameResultOutput;
     }
 
     @Override
@@ -18,10 +21,20 @@ public class RacingGame implements Game{
         for (int i = 0; i < totalTries; i++) {
             playOneRound();
         }
+        printWinners();
     }
 
     private void playOneRound() {
         cars.pickRandomNumberAndMoveCar();
-        resultView.printRoundResult();
+        List<GameRoundResultOutput> roundResults = cars.getCars().stream()
+                .map(car -> new RacingRoundResultOutput(car.getName(), car.getPosition()))
+                .collect(Collectors.toList());
+
+        resultView.printRoundResult(roundResults);
+    }
+
+    private void printWinners() {
+        List<String> winners = cars.findWinners();
+        resultView.printGameResult(winners);
     }
 }
