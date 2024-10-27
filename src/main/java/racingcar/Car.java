@@ -33,4 +33,9 @@ public class Car {
         }
         System.out.println(sb);
     }
+    public void move(){
+        if(canMove()) {
+            position++;
+        }
+    }
 }
