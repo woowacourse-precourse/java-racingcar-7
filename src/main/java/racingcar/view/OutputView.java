@@ -41,8 +41,7 @@ public class OutputView {
         //최종 결과 출력
         System.out.print("최종 우승자 : ");
         for (int i = 0; i<result.size()-1; i++) {
-            System.out.print(result.get(i).getName());
-            System.out.print(", ");
+            System.out.print(result.get(i).getName()+", ");
         }
         System.out.println(result.getLast().getName());
     }
