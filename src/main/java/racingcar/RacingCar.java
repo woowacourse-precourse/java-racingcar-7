@@ -2,23 +2,23 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RacingCar {
 
-    private static void randomlyProceed(int[] distances, int car){
+    private static void randomlyProceed(List<Integer> distances, Integer car){
         if (Randoms.pickNumberInRange(0,9) >= 4) {
-            distances[car] += 1;
+            distances.set(car, distances.get(car) + 1);
         }
     }
-    private static void printProcess(int times, String[] names, int[] distances){
+    private static void printProcess(Integer times, List<String> names, List<Integer> distances){
         for (int i=0; i<times; i++){
-            for (int j=0; j<names.length; j++) {
+            for (int j=0; j<names.size(); j++) {
                 randomlyProceed(distances, j);
-                System.out.println(names[j] + " : " + "-".repeat(distances[j]));
+                System.out.println(names.get(j) + " : " + "-".repeat(distances.get(j)));
             }
             System.out.println("");
         }
@@ -39,13 +39,16 @@ public class RacingCar {
         return new String[] {input_names, input_times};
     }
 
-    public static void processInputs(String[] names, int[] distances, Integer times, String input_names, String input_times){
-        names = input_names.split(",");
-        distances = new int[names.length];
-        times = Integer.parseInt(input_times);
+    public static Map<String, Object> processInputs(String input_names, String input_times){
+        Map<String, Object> processed_input = new HashMap<>();
+        String[] name_arr = input_names.split(",");
+        processed_input.put("names",Arrays.asList(name_arr));
+        processed_input.put("distances", Collections.nCopies(name_arr.length, 0));
+        processed_input.put("times", Integer.parseInt(input_times));
+        return processed_input;
     }
 
-    public static void printOutputs(String[] names, int[] distances, Integer times) {
+    public static void printOutputs(List<String> names, List<Integer> distances, Integer times) {
         System.out.println("실행 결과");
         printProcess(times,names,distances);
         String[] winners = getWinners(names, distances);
