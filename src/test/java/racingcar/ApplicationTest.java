@@ -64,9 +64,9 @@ class ApplicationTest extends NsTest {
         InputString inputString = new InputString("pobi,woni");
         CarCollection carCollection1 = inputString.getCarCollection();
 
-        Car pobiCar = new Car("pobi");
-        Car woniCar = new Car("woni");
-        CarCollection carCollection2 = new CarCollection(List.of(pobiCar, woniCar));
+        CarCollection carCollection2 = new CarCollection();
+        carCollection2.add("pobi");
+        carCollection2.add("woni");
 
         assertThat(carCollection1.getCarNames()).isEqualTo(carCollection2.getCarNames());
     }
