@@ -1,7 +1,6 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,38 +32,43 @@ public class Racing {
         System.out.println("실행 결과");
 
         for (int i = 0; i < tryCount; i++) {
-            System.out.println();
-
-            for (int j = 0; j < carNames.size(); j++) {
-                System.out.print(carNames.get(j).trim() + " : ");
-                int randomNumber = randomNumber();
-
-                // 0에서 3일 경우는 멈춤, 4에서 9일 경우 전진
-                if (randomNumber >= 4) {
-                    carPositions[j]++;  // 전진 시 자동차의 위치를 증가
-                }
-
-                advance(carPositions[j]);
-
-                System.out.println();
-            }
+            runOneRound();
         }
     }
+
+    private void runOneRound() {
+        System.out.println();
+        for (int j = 0; j < carNames.size(); j++) {
+            String carName = carNames.get(j).trim();
+            System.out.print(carName + " : ");
+            moveCar(j);
+            advance(carPositions[j]);
+            System.out.println();
+        }
+    }
+
+    private void moveCar(int carIndex) {
+        int randomNumber = randomNumber();
+        if (randomNumber >= 4) {
+            carPositions[carIndex]++;
+        }
+    }
+
     public void winners() {
         int maxPosition = findMaxPosition();
-        List<String> winners = new ArrayList<>();
+        List<String> winners = findWinners(maxPosition);
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 
-        // 자동차의 위치가 최대 위치와 같으면 우승자로 추가
+    private List<String> findWinners(int maxPosition) {
+        List<String> winners = new ArrayList<>();
         for (int i = 0; i < carNames.size(); i++) {
             if (carPositions[i] == maxPosition) {
                 winners.add(carNames.get(i));
             }
         }
-
-        // 우승자 출력
-        System.out.println("최종 우승자 : " + String.join(", ", winners));
+        return winners;
     }
-
 
     private int findMaxPosition() {
         int maxPosition = 0;

@@ -18,7 +18,7 @@ public class Application {
         // 이름은 5자 이하로 가능하며 5자 초과시 IllegalArgumentException을 발생시킨 후 애플리케이션 종료시킨다.
         for (int i = 0; i < splitName.length; i++) {
             if (splitName[i].length() > 5) {
-                throw new IllegalArgumentException("5자 이하로 이름을 정하시오.");
+               throw new IllegalArgumentException("5자 이하로 이름을 정하시오.");
             }
         }
         System.out.println("몇 번의 이동을 할 것인가요?");
