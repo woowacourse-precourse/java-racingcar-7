@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
-import racingcar.model.MovementStrategy;
 
 public class CarsTest {
     @Test

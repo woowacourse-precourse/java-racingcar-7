@@ -24,6 +24,5 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
-
 }
 

@@ -55,4 +55,5 @@ public class RacingService {
     private CarName createCarName(String name) {
         return CarName.from(name);
     }
+
 }
