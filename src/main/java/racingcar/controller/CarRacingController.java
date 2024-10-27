@@ -34,28 +34,26 @@ public class CarRacingController {
         this.count = 0;
     }
 
-    public void inputNames(){
-
+    public void inputNames(){ //자동차 이름 입력
         outputView.printCarNameMessage();
         String input = inputView.inputCarName();
-        List<String> names = parser.parsingCarNames(input);
 
-        //for(String name: names) System.out.println("name: "+ name);
+        validator.isValidInput(input);
+        List<String> names = parser.parsingCarNames(input);
         validator.isValidName(names);
 
         for(String name: names) carList.add(new Car(name));
 
-        //for(Car car: carList) car.toString();
-
     }
 
-    public void inputCount(){
+    public void inputCount(){ //시행할 홧수 입력
         outputView.printCountMessage();
         String countString  = inputView.inputCount();
+        validator.isValidInput(countString);
         count = validator.isValidCount(countString);
     }
 
-    public void racingStart(){
+    public void racingStart(){ //경주 시작
         System.out.println();
         System.out.println("실행 결과");
 
@@ -65,7 +63,7 @@ public class CarRacingController {
         }
     }
 
-    public void moveOrStop(){
+    public void moveOrStop(){ //무작위 값 구해서 전진 또는 정지 결정
         for(Car car: carList){
             if(pickNumberInRange(0, 9)>=4) car.distance++;
         }
@@ -73,9 +71,9 @@ public class CarRacingController {
 
     public void printResult(){
         outputView.printResult(carList);
-    }
+    } //경주 진행 과정 출력
 
-    public void printWinner(){
+    public void printWinner(){ //우승자 출력
         outputView.printWinner(carList);
     }
 

@@ -44,6 +44,51 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("자동차 이름 빈 문자열 입력")
+    void emptyCarName(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("중복된 자동차 이름 입력")
+    void duplicateCarName(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,pobi", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("시도할 횟수 0 혹은 음수")
+    void inputZeroOrNegativeInt(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,woni", "-3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("시도할 횟수 문자 입력")
+    void inputCharacter(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,woni", "abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("시도할 횟수 빈 문자열 입력")
+    void emptyCountValue(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jun,woni", " "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
