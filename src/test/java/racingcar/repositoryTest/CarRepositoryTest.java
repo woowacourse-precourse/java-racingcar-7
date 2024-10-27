@@ -1,7 +1,6 @@
 package racingcar.repositoryTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -27,31 +26,25 @@ public class CarRepositoryTest {
         List<Car> exCarList = List.of(exCar2, exCar3);
 
         Round exRound = new Round.Builder()
-                .carList(exCarList)
                 .thisRound(3)
                 .build();
 
         //when
-        exCar2.addRound(exRound);
-
         exCar1 = carRepository.saveAndReturn(exCar1);
         exCar2 = carRepository.saveAndReturn(exCar2);
         exCar3 = carRepository.saveAndReturn(exCar3);
 
-        exCar3.addRound(exRound);
+        exRound.addCar(exCar1);
+        exRound.addCar(exCar2);
+
         carRepository.update(exCar3);
 
         //then
-        assertTrue(exCar1.getRoundIdList().isEmpty());
-        assertEquals(exCar2.getRoundIdList().get(0), exRound.getId());
-
         assertEquals(carRepository.findByCarId(exCar1.getId()), exCar1);
         assertEquals(carRepository.findByCarId(exCar2.getId()), exCar2);
 
         assertEquals(carRepository.findByCarName("car1"), exCar1);
         assertEquals(carRepository.findByCarName("car2"), exCar2);
-
-        assertEquals(carRepository.findByCarName("car3").getRoundIdList().get(0), exRound.getId());
     }
 
 
