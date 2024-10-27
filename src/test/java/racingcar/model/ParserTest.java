@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,15 +33,26 @@ class ParserTest {
 
     @Test
     @DisplayName("문자열을 정수로 변환하는 테스트")
-    void convertStringToInt() {
+    void convertStringToBigInteger() {
         // given
         String input = "5";
 
         // when
-        int result = parser.convertStringToInt(input);
+        BigInteger bigInteger = parser.convertStringToBigInteger(input);
 
         // then
-        assertThat(result).isEqualTo(5);
+        assertThat(bigInteger).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("문자열을 정수로 변환하는 테스트: 숫자가 아닌 값 - 예외 테스트")
+    void convertStringToBigInteger_nonNumeric() {
+        // given
+        String input = "abc";
+
+        // when & then
+        assertThatThrownBy(() -> parser.convertStringToBigInteger(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

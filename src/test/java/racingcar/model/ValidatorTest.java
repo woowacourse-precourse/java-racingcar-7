@@ -2,6 +2,7 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -91,31 +92,20 @@ class ValidatorTest {
     @DisplayName("시도할 횟수 유효성 검사 - 성공 테스트")
     void validateAttemptCount_success() {
         // given
-        String attemptCountInput = "5";
+        BigInteger attemptCount = BigInteger.valueOf(5);
 
         // when & then
-        assertThatCode(() -> validator.validateAttemptCount(attemptCountInput)).doesNotThrowAnyException();
+        assertThatCode(() -> validator.validateAttemptCount(attemptCount)).doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("시도할 횟수 유효성 검사: 음수 - 예외 테스트")
     void validateAttemptCount_negativeNumber() {
         // given
-        String attemptCountInput = "-1";
+        BigInteger attemptCount = BigInteger.valueOf(-1);
 
         // when & then
-        assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("시도할 횟수 유효성 검사: 숫자가 아닌 값 - 예외 테스트")
-    void validateAttemptCount_nonNumeric() {
-        // given
-        String attemptCountInput = "abc";
-
-        // when & then
-        assertThatThrownBy(() -> validator.validateAttemptCount(attemptCountInput))
+        assertThatThrownBy(() -> validator.validateAttemptCount(attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
