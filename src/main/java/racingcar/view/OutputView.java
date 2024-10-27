@@ -2,11 +2,12 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.util.Message;
 
 public class OutputView {
     public void printExecutionResult() {
         System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(Message.EXECUTION_RESULT);
     }
 
     public void printCurrentRoundRacingResult(List<Car> cars) {
@@ -17,7 +18,7 @@ public class OutputView {
     }
 
     public void printFinalRacingResult(List<String> winnerNames) {
-        System.out.print("최종 우승자 : " + String.join(", ", winnerNames));
+        System.out.print(Message.FINAL_WINNER + String.join(", ", winnerNames));
     }
 
 }
