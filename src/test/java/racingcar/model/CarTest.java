@@ -1,9 +1,6 @@
 package racingcar.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +15,10 @@ class CarTest {
         //given
         //when
         //then
-        assertNotNull(car);
+        assertThat(car).isNotNull();
+        assertThat(car)
+                .extracting("name")
+                .isEqualTo("pobi");
     }
 
     @DisplayName("Car_이름_조회_테스트")
@@ -28,7 +28,7 @@ class CarTest {
         //when
         String carName = car.getName();
         //then
-        assertEquals("pobi", carName);
+        assertThat(carName).isEqualTo("pobi");
     }
 
     @DisplayName("Car_이동_테스트")
@@ -39,8 +39,8 @@ class CarTest {
         boolean moveResult = car.canMoveUsing(4);
         boolean stopResult = car.canMoveUsing(3);
         //then
-        assertTrue(moveResult);
-        assertFalse(stopResult);
+        assertThat(moveResult).isTrue();
+        assertThat(stopResult).isFalse();
     }
 
 

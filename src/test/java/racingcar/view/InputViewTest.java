@@ -1,9 +1,8 @@
 package racingcar.view;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static racingcar.message.InputRequestMessage.NAMES_REQUEST;
-import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPTS_REQUEST;
+import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.message.InputRequestMessage.NAMES_REQUEST_MESSAGE;
+import static racingcar.message.InputRequestMessage.NUMBER_OF_ATTEMPTS_REQUEST_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.io.ByteArrayInputStream;
@@ -43,7 +42,7 @@ class InputViewTest {
         //given
         //when
         //then
-        assertNotNull(inputView);
+        assertThat(inputView).isNotNull();
     }
 
     @DisplayName("이름_입력_요청_메세지_출력_테스트")
@@ -54,7 +53,7 @@ class InputViewTest {
         inputView.printCarNamesRequest();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(NAMES_REQUEST.getMessage(), printResult);
+        assertThat(printResult).isEqualTo(NAMES_REQUEST_MESSAGE.getMessage());
     }
 
     @DisplayName("이름_문자열_입력_테스트")
@@ -67,7 +66,7 @@ class InputViewTest {
         setInputStreamsByMyInput(input);
         String names = inputView.getCarNames();
         //then
-        assertEquals(input, names);
+        assertThat(names).isEqualTo(input);
     }
 
     @DisplayName("시도횟수_입력_요청_메세지_출력_테스트")
@@ -78,7 +77,7 @@ class InputViewTest {
         inputView.printNumberOfAttemptsRequest();
         String printResult = outputMessage.toString().trim();
         //then
-        assertEquals(NUMBER_OF_ATTEMPTS_REQUEST.getMessage(), printResult);
+        assertThat(printResult).isEqualTo(NUMBER_OF_ATTEMPTS_REQUEST_MESSAGE.getMessage());
     }
 
     @DisplayName("시도횟수_입력_테스트")
@@ -91,6 +90,6 @@ class InputViewTest {
         setInputStreamsByMyInput(input);
         String attempts = inputView.getNumberOfAttempts();
         //then
-        assertEquals(input, attempts);
+        assertThat(attempts).isEqualTo(input);
     }
 }
