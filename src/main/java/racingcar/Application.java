@@ -14,12 +14,9 @@ public class Application {
         List<String> racingCarNames = getRacingCarNames();
         int tryCount = getTryCount();
 
-        Map<String, Integer> carPositions = new HashMap<>();
-        for (String car : racingCarNames) {
-            carPositions.put(car, 0);
-        }
-
+        Map<String, Integer> carPositions = initializeCarPositions(racingCarNames);
         System.out.println("\n실행 결과");
+
         for (int i = 0; i < tryCount; i++) {
             for (String car : racingCarNames) {
                 int randomNumber = Randoms.pickNumberInRange(0, 9);
@@ -90,5 +87,13 @@ public class Application {
         if (number < 1) {
             throw new IllegalArgumentException("1 이상의 양수만 입력 가능합니다.");
         }
+    }
+
+    private static Map<String, Integer> initializeCarPositions(List<String> carNames) {
+        Map<String, Integer> carPositions = new HashMap<>();
+        for (String car : carNames) {
+            carPositions.put(car, 0);
+        }
+        return carPositions;
     }
 }
