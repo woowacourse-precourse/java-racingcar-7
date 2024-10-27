@@ -97,6 +97,27 @@ public class Application {
         }
     }
 
+    public static class RaceManager {
+        View view = new View();
+        private final List<Car> cars;
+        private final int round;
+
+        private RaceManager(List<Car> cars, int round) {
+            this.cars = cars;
+            this.round = round;
+        }
+
+        private void playRoundUntilRoundCount() {
+            for (int i = 0; i < round; i++) {
+                for (Car car : cars) {
+                    car.attemptMoveForward();
+                }
+                view.displayRoundResults(this);
+                System.out.println();
+            }
+        }
+
+    }
     public static class business {
         // 전진하는 로직 구현(랜덤으로 0~9까지 숫자 뽑아서 4 이상이면 60%의 확률로 전진)
         // 우승자를 정함
