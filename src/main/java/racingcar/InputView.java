@@ -13,7 +13,6 @@ public class InputView {
     private static final String EMPTY_NAME_ERROR = "자동차 이름은 필수입니다.";
     private static final String INVALID_ROUND_INPUT = "경주 횟수는 1 이상의 정수여야 합니다.";
 
-    // 자동차 이름 입력과 유효성 검사
     public static List<String> inputCarNames() {
         System.out.println(CAR_NAME_PROMPT);
         String input = Console.readLine();
