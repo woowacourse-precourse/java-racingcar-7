@@ -23,8 +23,6 @@ public class Race {
         }
     }
 
-
-
     public List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
         PriorityQueue<Car> priorityQueue = new PriorityQueue<>();
