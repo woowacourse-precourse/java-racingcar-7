@@ -5,37 +5,27 @@ import java.util.List;
 public class Game {
     private final View view;
     private final InputParser inputParser;
-    private final GameLogic gameLogic;
+    private final Race race;
+    private final Winner winner;
 
     public Game(ApplicationContext applicationContext) {
         this.view = applicationContext.getView();
         this.inputParser = applicationContext.getInputParser();
-        this.gameLogic = applicationContext.getGameLogic();
+        this.race = applicationContext.getRace();
+        this.winner = applicationContext.getWinner();
     }
 
     public void run() {
-        int attempts = start();
-        play(attempts);
-        end();
-    }
-
-    private int start() {
         String[] carNames = getCarNames();
         int attempts = getAttempts();
-        gameLogic.initialize(carNames);
-        return attempts;
-    }
+        race.initialize(carNames);
 
-    private void play(int attempts) {
         view.printResultHeader();
         for (int i = 0; i < attempts; i++) {
             playSingleRound();
         }
-    }
-
-    private void end() {
-        List<String> winners = gameLogic.getWinners();
-        view.printWinners(winners);
+        List<String> winners = winner.getBy(race.getResult());
+        view.print(winners);
     }
 
     private String[] getCarNames() {
@@ -51,8 +41,8 @@ public class Game {
     }
 
     private void playSingleRound() {
-        gameLogic.moveCarsIfQualified();
-        view.printStatus(gameLogic.getResult());
-        System.out.println();
+        race.moveCarsIfQualified();
+        view.print(race.getResult());
+        view.printNewLine();
     }
 }
