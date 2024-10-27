@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -73,6 +74,27 @@ public class Application {
             car.printPosition();
         }
         System.out.println();
+    }
+
+    // 우승자 결정 및 출력
+    private static void announceWinners(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+        List<String> winners = findWinners(cars, maxPosition);
+        System.out.println("최종 우승자: " + String.join(", ", winners));
+    }
+
+    private static int getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
+    private static List<String> findWinners(List<Car> cars, int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
 
