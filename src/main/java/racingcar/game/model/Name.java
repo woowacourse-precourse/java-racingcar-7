@@ -7,6 +7,7 @@ public class Name {
     private static Integer MAX_CAR_NAME_COUNT = 5;
     private static Integer MIN_CAR_NAME_COUNT = 1;
     private String name;
+
     public Name(String name) {
         name = name.trim();
         validateCarName(name);

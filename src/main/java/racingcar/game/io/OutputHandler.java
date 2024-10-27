@@ -10,9 +10,10 @@ public class OutputHandler {
     private static final String ERROR_PREFIX = "에러: ";
     private static final String WINNER_DELIMITER = ", ";
     private static final String POSITION_DISPLAY = "-";
+
     public void printWinner(List<Car> winners) {
         List<String> winnersName = new ArrayList<>();
-        for(Car car : winners) winnersName.add(car.getName());
+        for (Car car : winners) winnersName.add(car.getName());
         System.out.print(WINNER_RESULT_PREFIX);
         System.out.println(String.join(WINNER_DELIMITER, winnersName));
     }

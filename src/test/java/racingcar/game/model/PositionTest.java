@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
     private final Position position = new Position();
+
     @Test
     @DisplayName("위치 이동 성공 케이스")
     void movePosition_ValidCondition() {

@@ -8,6 +8,7 @@ import static racingcar.game.constant.ExceptionMessage.INVALID_CAR_COUNT;
 public class CarGroup {
     private List<Car> cars = new ArrayList<>();
     private Integer carCountLimit = 10;
+
     public void addCars(List<String> carNameList) {
         validateCarCount(carNameList);
         for (String carName : carNameList) {
@@ -23,7 +24,7 @@ public class CarGroup {
 
     public List<Car> getWinners() {
         List<Integer> carsPosition = new ArrayList<>();
-        for(Car car : cars) carsPosition.add(car.getPosition());
+        for (Car car : cars) carsPosition.add(car.getPosition());
 
         int maxPosition = Collections.max(carsPosition);
 
@@ -37,7 +38,7 @@ public class CarGroup {
     }
 
     private void validateCarCount(List<String> carNameList) {
-        if(carCountLimit< carNameList.size())
+        if (carCountLimit < carNameList.size())
             throw new IllegalArgumentException(INVALID_CAR_COUNT.getMessage());
     }
 

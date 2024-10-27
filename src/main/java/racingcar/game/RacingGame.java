@@ -38,7 +38,7 @@ public class RacingGame {
             Integer racingCount = inputHandler.getRacingCount();
             validateRacingCount(racingCount);
 
-            playRace(racingCount,carGroup);
+            playRace(racingCount, carGroup);
             List<Car> winners = carGroup.getWinners();
 
             outputHandler.printWinner(winners);

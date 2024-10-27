@@ -3,6 +3,7 @@ package racingcar.game.model;
 public class Car {
     private Name name;
     private Position position;
+
     public Car(String carName) {
         this.name = new Name(carName);
         this.position = new Position();

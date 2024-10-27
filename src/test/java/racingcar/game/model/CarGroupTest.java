@@ -49,7 +49,7 @@ class CarGroupTest {
     @DisplayName("자동차 이름 개수 초과 예외 케이스")
     void addCars_MoreThan10() {
         //given
-        List<String> carNames = List.of("pobi","jun","woni","yeonjoo","soeun","somin","chaeyoung","chaerin","seohyun","jinho","seongjin");
+        List<String> carNames = List.of("pobi", "jun", "woni", "yeonjoo", "soeun", "somin", "chaeyoung", "chaerin", "seohyun", "jinho", "seongjin");
 
         assertThatThrownBy(() -> carGroup.addCars(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
