@@ -9,6 +9,7 @@ public class Application {
         String readed = Console.readLine();
 
         String[] cars = readed.split(",");
-        
+
+        int count = Integer.getInteger(Console.readLine());
     }
 }
