@@ -11,15 +11,7 @@ import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String rawCarNames = Console.readLine();
-        List<String> racingCarNames = List.of(rawCarNames.split(","));
-
-        for (String racingCarName : racingCarNames) {
-            if (racingCarName.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
-            }
-        }
+        List<String> racingCarNames = getRacingCarNames();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String rawTryCount = Console.readLine();
@@ -68,5 +60,23 @@ public class Application {
 
         System.out.print("최종 우승자 : ");
         System.out.println(String.join(", ", winners));
+    }
+
+    private static List<String> getRacingCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String rawCarNames = Console.readLine();
+        List<String> racingCarNames = List.of(rawCarNames.split(","));
+
+        for (String name : racingCarNames) {
+            validateCarName(name);
+        }
+
+        return racingCarNames;
+    }
+
+    private static void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+        }
     }
 }
