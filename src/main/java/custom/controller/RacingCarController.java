@@ -9,19 +9,19 @@ import custom.view.OutputView;
 import java.util.List;
 
 public class RacingCarController {
-    private final InputView inputView;
     private final RacingScoreBoard racingScoreBoard;
     private final CarNameParser carNameParser;
     private final GetAttemptCount getAttemptCount;
     private final RaceExecutor raceExecutor;
+    private final InputView inputView;
     private final OutputView outputView;
 
     public RacingCarController() {
-        this.inputView = new InputView();
-        this.racingScoreBoard = new RacingScoreBoard(); // 인스턴스 생성
+        this.racingScoreBoard = new RacingScoreBoard(); // racingScoreBoard 인스턴스 생성
         this.carNameParser = new CarNameParser();
         this.getAttemptCount = new GetAttemptCount();
         this.raceExecutor = new RaceExecutor(racingScoreBoard); // racingScoreBoard 인스턴스 주입
+        this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
@@ -36,7 +36,7 @@ public class RacingCarController {
             String attemptCountInput = inputView.displayCountPrompt();
             attemptCount = getAttemptCount.run(attemptCountInput);
         } catch (IllegalArgumentException e) {
-            outputView.displayError(e.getMessage()); // 예외 메시지를 출력
+            outputView.displayError(e.getMessage()); // 예외 메시지 출력
             throw e; // 프로그램 종료
         }
 

@@ -17,8 +17,11 @@ public class GetAttemptCount {
         inputValidator.checkEmptyInput(input);
         inputValidator.validateAttemptCountIsNumeric(input);
         inputValidator.validateIntegerOverflow(input);
+
         int attemptCount = convertStringToNumber(input);
+
         inputValidator.validateAttemptCountRange(attemptCount);
+
         return attemptCount;
     }
 }

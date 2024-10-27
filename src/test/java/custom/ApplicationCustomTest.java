@@ -70,7 +70,6 @@ class ApplicationCustomTest extends NsTest {
     }
 
     // 실행 횟수 입력 예외 테스트
-
     @Test
     void 실행횟수입력_입력이공백으로구성되어있을때_테스트() {
         assertThatThrownBy(() -> runException("pobi,woni", "      "))
@@ -157,7 +156,7 @@ class ApplicationCustomTest extends NsTest {
     }
 
     @Test
-    void 자동차이름입력_길이가같은공백이2개이상있는경우_테스트() {
+    void 자동차이름입력_쉼표기준으로나누어진공백이2개이상있는경우_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni,    ,    ,  ", "1");
