@@ -8,9 +8,9 @@ public class SeperateCarNameService {
 
     private static final String BASIC_DELIMETER = ",";
 
-    public Cars seperate(final String carNamesWithDelimieter){
+    public Cars seperateCarNameFromCarNamesWithDelimeter(final String carNamesWithDelimeter){
 
-        String[] carNames = carNamesWithDelimieter.split(BASIC_DELIMETER);
+        String[] carNames = carNamesWithDelimeter.split(BASIC_DELIMETER);
 
         return new Cars(carNames);
 

@@ -36,7 +36,7 @@ public class RacingCarController {
         outputView.printInsertRacingCarName();
         String carNamesWithDelimeter = inputView.racingCarNamesWithDelimeter();
 
-        Cars cars = seperateCarNameService.seperate(carNamesWithDelimeter);
+        Cars cars = seperateCarNameService.seperateCarNameFromCarNamesWithDelimeter(carNamesWithDelimeter);
 
         outputView.printCountOfTry();
         int countOfTry = inputView.countOfTry();
