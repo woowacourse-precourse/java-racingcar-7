@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayGame {
     public void setTryNumber(Car[] cars, int count) {
         for (Car car : cars) {
@@ -25,5 +28,21 @@ public class PlayGame {
             System.out.print(car.name +" : ");
             System.out.println(car.advance.toString()); // 누적된 전진 상태 출력
         }
+    }
+    public String findWinners(Car[] cars) {
+        int maxDistance = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            int distance = car.advance.length();
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                winners.clear(); // Clear previous winners
+                winners.add(car.name);
+            } else if (distance == maxDistance) {
+                winners.add(car.name);
+            }
+        }
+        return String.join(", ", winners);
     }
 }

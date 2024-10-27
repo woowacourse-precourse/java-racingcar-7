@@ -17,6 +17,9 @@ public class Application {
             play.printAdvanceArrays(cars);
             System.out.println();
         }
+        String winners = play.findWinners(cars);
+        System.out.print("최종 우승자 : " + winners);
+
     }
 
     public static Car[] createCars(String[] carNames) {
