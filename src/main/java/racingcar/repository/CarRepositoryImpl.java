@@ -27,4 +27,8 @@ public class CarRepositoryImpl implements CarRepository {
         return cars;
     }
 
+    public void clear() {
+        cars.clear(); // 테스트를 위해 레포지토리를 초기화
+    }
+
 }
