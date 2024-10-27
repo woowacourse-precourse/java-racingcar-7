@@ -18,7 +18,7 @@ public class Application {
         List<List<Car>> raceRecords = cars.race(raceTime);
         for (List<Car> raceRecord : raceRecords) {
             for (Car car : raceRecord) {
-                System.out.println(car.toString());
+                System.out.println(car.toCustomFormatString("-"));
             }
         }
 

@@ -24,8 +24,7 @@ public class CarPosition {
         return this.currentPosition == givenPosition;
     }
 
-    @Override
-    public String toString() {
-        return "-".repeat(this.currentPosition);
+    public String toCustomFormatString(String customString) {
+        return customString.repeat(this.currentPosition);
     }
 }

@@ -28,7 +28,7 @@ public class WinnerCalculator {
     private static void addWinner(List<String> winnerNames, Car currentCar, Car otherCar) {
         boolean isWinner = currentCar != otherCar && currentCar.isAheadOrEqual(otherCar);
         if (isWinner) {
-            List<String> winnerDetails = Arrays.stream(currentCar.toString().split(" : "))
+            List<String> winnerDetails = Arrays.stream(currentCar.toCustomFormatString("-").split(" : "))
                     .toList();
 
             winnerNames.add(winnerDetails.get(0));

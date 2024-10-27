@@ -32,8 +32,7 @@ public class Car {
         return this.carPosition.isPosition(givenPosition);
     }
 
-    @Override
-    public String toString() {
-        return this.name + " : " + carPosition.toString();
+    public String toCustomFormatString(String customString) {
+        return this.name + " : " + carPosition.toCustomFormatString(customString);
     }
 }
