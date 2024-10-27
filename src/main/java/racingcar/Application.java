@@ -11,7 +11,8 @@ import racingcar.view.OutputView;
 public class Application {
 
     public static void main(String[] args) {
-        RaceController controller = new RaceController();
+        AppConfig config = new AppConfig();
+        RaceController controller = config.raceController();
 
         List<String> names = InputView.getNames();
         int tryCount = InputView.getTryCount();

@@ -14,9 +14,8 @@ public class RaceService {
     private final RaceRule rule;
     private Race race;
 
-    public RaceService() {
-        NumberGenerator numberGenerator = new RandomDigitsGenerator();
-        this.rule = new RaceRule(numberGenerator);
+    public RaceService(RaceRule rule) {
+        this.rule = rule;
     }
 
     public void createRace(List<String> names, int tryCount) {

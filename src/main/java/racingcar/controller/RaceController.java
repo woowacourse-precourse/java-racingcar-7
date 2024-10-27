@@ -10,8 +10,8 @@ import racingcar.service.RaceService;
 public class RaceController {
     private final RaceService service;
 
-    public RaceController() {
-        this.service = new RaceService();
+    public RaceController(RaceService service) {
+        this.service = service;
     }
 
     public void createRace(RaceCreateRequest request) {
