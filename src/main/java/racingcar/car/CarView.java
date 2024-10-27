@@ -16,6 +16,7 @@ public class CarView {
 
     public static String winnerNames(List<String> names) {
         StringBuilder sb = new StringBuilder();
+        sb.append("최종우승자 : ");
         for (int i = 0 ; i < names.size() - 1; i++) {
             sb.append(names.get(i));
             sb.append(", ");
