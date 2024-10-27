@@ -11,12 +11,10 @@ public class Race {
 
     public void startRace(HashMap<String, Integer> car, int tryNumber) {
         System.out.println("\n실행 결과");
-        while (tryNumber > 0) {
+        for (int i = 0; i < tryNumber; i++) {
             updateCarLocations(car);
             System.out.println();
-            tryNumber -= 1;
         }
-        resultRace(car);
     }
 
     private void updateCarLocations(HashMap<String, Integer> car) {
@@ -25,8 +23,7 @@ public class Race {
             if (decideMovement()) {
                 car.replace(i, currentLocation + 1);
             }
-            String carLocation = "-";
-            System.out.println(i + " : " + carLocation.repeat(car.get(i)));
+            System.out.println(i + " : " + "-".repeat(car.get(i)));
         }
     }
 
@@ -35,15 +32,18 @@ public class Race {
         return randomNum > 3;
     }
 
-    private void resultRace(HashMap<String, Integer> car) {
+    public void resultRace(HashMap<String, Integer> car) {
         System.out.print("최종 우승자 : ");
-        Optional<Integer> maxValue = car.values().stream().max(Integer::compareTo);
-        maxValue.ifPresent(value -> {
-            String maxKeys = car.entrySet().stream()
-                    .filter(entry -> entry.getValue().equals(value))
+
+        Optional<Map.Entry<String, Integer>> winner = car.entrySet().stream()
+                .max(Map.Entry.comparingByValue());
+
+        winner.ifPresent(entry -> {
+            String winners = car.entrySet().stream()
+                    .filter(e -> e.getValue().equals(entry.getValue()))
                     .map(Map.Entry::getKey)
                     .collect(Collectors.joining(", "));
-            System.out.println(maxKeys);
+            System.out.println(winners);
         });
     }
 }
