@@ -19,6 +19,13 @@ public class RacingController {
         this.outputView = outputView;
         this.carService = carService;
     }
+    public static RacingController create() {
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        CarService carService = CarService.create();
+
+        return new RacingController(inputView, outputView, carService);
+    }
 
     public void run(){
         outputView.printInputCarName();

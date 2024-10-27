@@ -28,6 +28,16 @@ public class CarService {
         this.carFactory = carFactory;
     }
 
+    public static CarService create() {
+        PlayerNameValidator playerNameValidator = new PlayerNameValidator();
+        WinnerSelector winnerSelector = new WinnerSelector();
+        PlayerNameParser playerNameParser = new PlayerNameParser();
+        RaceExecutor raceExecutor = new RaceExecutor();
+        CarFactory carFactory = new CarFactory();
+
+        return new CarService(playerNameValidator, winnerSelector, playerNameParser, raceExecutor, carFactory);
+    }
+
     public List<Car> playRounds(String playersName, int moveCount) {
         List<String> names = playerNameParser.splitByComma(playersName);
         playerNameValidator.validateName(names);
