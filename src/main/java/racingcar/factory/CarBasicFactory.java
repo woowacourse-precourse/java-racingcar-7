@@ -71,11 +71,6 @@ public class CarBasicFactory implements CarFactory{
   }
 
   @Override
-  public CarNameMap createCarNameMap(List<Car> cars) {
-    return CarNameMap.from(cars);
-  }
-
-  @Override
   public Cars createCars(String rawCarNames, CarsType carsType) {
     return getCollection(carsType)
         .apply(getListFromRawCarNames(rawCarNames));
