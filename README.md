@@ -43,9 +43,10 @@ jun : -----
 - ```camp.nextstep.edu.missionutils.Console```의 ```readLine()```으로 입력을 받는다.
   - 경주할 자동차 이름 (쉼표(,)로 구분)
   - 시도할 횟수
-- 잘못된 입력을 받을 시 ```IllegalArgumentException```를 발생 발생시킨다.
+- 잘못된 입력을 받을 시 ```IllegalArgumentException```를 발생시킨다.
   - 애플리케이션이 종료된다.
 ### 기능
+- 사용자가 입력한 이름의 자동차를 생성한다.
 - 사용자가 입력한 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 - 전진하는 조건은 0에서 9 사이의 무작위 값이 4 이상일 경우이다.
   - Random 값 추출은 ```camp.nextstep.edu.missionutils.Randoms```의 ```pickNumberInRange()```를 활용한다.
