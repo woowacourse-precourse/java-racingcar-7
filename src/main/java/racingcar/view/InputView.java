@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -11,6 +12,7 @@ public class InputView {
     public static String[] inputCars(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
         String text = Console.readLine();
+        text = text.replaceAll("^,+|,+$", ""); // 앞뒤 , 오는경우 제거
         String[] cars = text.split(",");
         validateCars(cars);
         return cars;
@@ -36,16 +38,22 @@ public class InputView {
     private static void validateCars(String[] cars) {
         Set<String> cheakUnique = new HashSet<>();
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+$");
+
+        for (String name : cars) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            }
+        }
+        cars = Arrays.stream(cars)
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
+                .toArray(String[]::new);
+
         if (cars.length <2 ) throw new IllegalArgumentException("자동차는 최소 2대 이상 입력해야 합니다.");
         for (String name : cars) {
-            if (name.isEmpty())
-                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
-            if (name.length() > 5)
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
-            if (!pattern.matcher(name).matches())
-                throw new IllegalArgumentException("자동차 이름은 영문자와 숫자만 포함해야 합니다.");
-            if (!cheakUnique.add(name))
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            if (name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            if (!pattern.matcher(name).matches()) throw new IllegalArgumentException("자동차 이름은 영문자와 숫자만 포함해야 합니다.");
+            if (!cheakUnique.add(name)) throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
     }
 
