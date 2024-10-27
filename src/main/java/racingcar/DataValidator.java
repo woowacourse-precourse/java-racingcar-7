@@ -57,6 +57,9 @@ public class DataValidator {
                 throw new IllegalArgumentException();
             }
         }
+        if (Integer.parseInt(tryCount) <= 0) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(tryCount);
     }
 
