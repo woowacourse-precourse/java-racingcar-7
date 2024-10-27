@@ -25,6 +25,7 @@ public class RacingCar {
     int max;
     List<String> winnerList = new ArrayList<>();
     String winners;
+    Set<String> carNameSet;
 
     public void getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -126,6 +127,7 @@ public class RacingCar {
     }
 
     public void catchError() {
+        checkIfCarNameSame();
         for (String carNameForCheck : carNameList) {
             checkCarNameLength(carNameForCheck);
             checkIfCarNameBlank(carNameForCheck);
@@ -146,10 +148,8 @@ public class RacingCar {
         }
     }
 
-    public void checkIfCarNameSame(String carNameForCheck) {
-        Set<String> carNameSet = new HashSet<>();
-        carNameSet.add(carNameForCheck);
-
+    public void checkIfCarNameSame() {
+        carNameSet = new HashSet<>(carNameList);
         if (carNameSet.size() != carNamesSize) {
             throw new IllegalArgumentException();
         }
