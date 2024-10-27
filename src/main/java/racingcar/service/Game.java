@@ -1,8 +1,7 @@
-package racingcar.domain;
+package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Type;
 import java.util.*;
 
 public class Game {
