@@ -51,10 +51,6 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public CarStatusDto toCarStatusDto() {
         return new CarStatusDto(name, position);
     }

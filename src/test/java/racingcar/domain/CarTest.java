@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.dto.CarStatusDto;
 import racingcar.exception.CarNameContainsWhiteSpaceException;
 import racingcar.exception.CarNameLengthException;
 import racingcar.exception.NonBlankCarNameException;
@@ -20,10 +21,11 @@ class CarTest {
 
         //when
         car.move(moveCondition);
-        int position = car.getPosition();
+        CarStatusDto carStatusDto = car.toCarStatusDto();
+        int expectedPosition = carStatusDto.position();
 
         //then
-        Assertions.assertThat(position).isEqualTo(1);
+        Assertions.assertThat(expectedPosition).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -35,10 +37,11 @@ class CarTest {
 
         //when
         car.move(moveCondition);
-        int position = car.getPosition();
+        CarStatusDto carStatusDto = car.toCarStatusDto();
+        int expectedPosition = carStatusDto.position();
 
         //then
-        Assertions.assertThat(position).isEqualTo(0);
+        Assertions.assertThat(expectedPosition).isEqualTo(0);
     }
 
     @ParameterizedTest
