@@ -23,7 +23,13 @@ public class Validator {
 
     public static int checkIfNumber(String number){
         try{
-            return Integer.parseInt(number);
+            int count = Integer.parseInt(number);
+
+            if(count <= 0 ){
+                throw new CustomException(ErrorMessage.NEGATIVE_NUMBER);
+            }
+
+            return count;
         } catch (NumberFormatException e){
             throw new CustomException(ErrorMessage.INVALID_NUMBER);
         }
