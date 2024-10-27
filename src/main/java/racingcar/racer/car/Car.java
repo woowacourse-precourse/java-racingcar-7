@@ -5,7 +5,7 @@ import racingcar.racer.RacerUtils;
 
 public class Car extends Racer {
 
-    RacerUtils racerUtils = new RacerUtils();
+    CarUtils carUtils = new CarUtils();
 
     public Car(String name) {
         super(name);
@@ -13,7 +13,7 @@ public class Car extends Racer {
 
     @Override
     public boolean move() {
-        int randomNum = racerUtils.pickNumber(0, 9);
-        return racerUtils.isMovable(randomNum);
+        int randomNum = carUtils.pickNumber(0, 9);
+        return carUtils.isMovable(randomNum);
     }
 }

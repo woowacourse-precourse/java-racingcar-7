@@ -1,20 +1,7 @@
 package racingcar.racer.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.racer.RacerUtils;
 
-public class CarUtils implements RacerUtils {
-    public boolean isMovable(int randomNum) {
-        if (0 <= randomNum && randomNum <= 3) {
-            return false;
-        } else if (4 <= randomNum && randomNum <= 9) {
-            return true;
-        } else {
-            throw new RuntimeException("랜덤값이 0 ~ 9 범위를 벗어났습니다.");
-        }
-    }
-
-    public int pickNumber(int minNum, int maxNum) {
-        return Randoms.pickNumberInRange(minNum, maxNum);
-    }
+// Car 객체에만 할당돼야 하는 기능 추가 (확장성 고려)
+public class CarUtils extends RacerUtils {
 }
