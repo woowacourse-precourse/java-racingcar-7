@@ -28,4 +28,15 @@ public class ValidateTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Validator.INPUT_NAME_MESSAGE);
     }
+
+    @DisplayName("이름이 중복하는 경우 예외 발생")
+    @Test
+    void throwsExceptionWhenNameIsDuplicate() {
+        String carNames = "pobi, pobi";
+        Cars cars = new Cars();
+
+        assertThatThrownBy(() -> cars.registerCars(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Validator.NAME_ALREADY_EXISTS_MESSAGE);
+    }
 }
