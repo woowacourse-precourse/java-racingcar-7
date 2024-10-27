@@ -10,7 +10,8 @@ public enum ValidateMessages {
     NUMBER_CANNOT_BE_NULL_OR_EMPTY("null이거나 아무 숫자도 입력하지 않았습니다."),
     NUMBER_SHOULD_BE_INTEGER("시도 횟수는 Integer여야 합니다."),
     NUMBER_SHOULD_NOT_CONTAIN_NEW_LINE("숫자는 개행문자를 포함해선 안됩니다."),
-    NUMBER_SHOULD_NOT_CONTAIN_EMPTY("숫자는 공백을 포함할 수 없습니다.");
+    NUMBER_SHOULD_NOT_CONTAIN_EMPTY("숫자는 공백을 포함할 수 없습니다."),
+    NUMBER_CANNOT_START_WITH_ZERO("숫자는 0으로 시작할 수 없습니다.");
 
     private final String validateMessage;
 

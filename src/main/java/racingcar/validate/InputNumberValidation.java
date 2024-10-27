@@ -9,6 +9,7 @@ public class InputNumberValidation {
         validateIfInputCanCovertToInt(inputNumber);
         validateNumberIfContainsNewLine(inputNumber);
         validateNumberifWhiteSpaceExist(inputNumber);
+        validateIfNumberStartsWithZero(inputNumber);
         return numberOfAttempts;
     }
 
@@ -36,6 +37,12 @@ public class InputNumberValidation {
     public static void validateNumberifWhiteSpaceExist(String inputNumber) {
         if (inputNumber.contains(" ")) {
             throw new IllegalArgumentException(ValidateMessages.NUMBER_SHOULD_NOT_CONTAIN_EMPTY.getValidateMessage());
+        }
+    }
+
+    public static void validateIfNumberStartsWithZero(String inputNumber) {
+        if (inputNumber.length() > 1 && inputNumber.startsWith("0")) {
+            throw new IllegalArgumentException(ValidateMessages.NUMBER_CANNOT_START_WITH_ZERO.getValidateMessage());
         }
     }
 }
