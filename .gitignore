@@ -33,3 +33,9 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+### .gitmessage 파일 제외 ###
+.gitmessage.txt
+
+# .class 파일 제외
+*.class
