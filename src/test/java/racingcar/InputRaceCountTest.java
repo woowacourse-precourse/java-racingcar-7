@@ -8,24 +8,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.validator.ValidateRaceTimes;
 
-public class InputRaceTimesTest {
+import racingcar.model.RaceCount;
+
+public class InputRaceCountTest {
     private static final String RACE_TIMES_ALPHABET = "abc";
     private static final String RACE_TIMES_KOREAN = "가나다";
     private static final String RACE_TIMES_ZERO = "0";
     private static final String RACE_TIMES_NEGATIVE_NUMBER = "-3";
     private static final String RACE_TIMES_REAL_NUMBER = "3.3";
 
-    private final ValidateRaceTimes validateRaceTimes = new ValidateRaceTimes();
-
     @DisplayName("시도 횟수가 문자를 포함하는 경우 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {RACE_TIMES_ALPHABET, RACE_TIMES_KOREAN,
             RACE_TIMES_NEGATIVE_NUMBER, RACE_TIMES_REAL_NUMBER})
-    public void ThrowExceptionIfRaceTimesContainsCharacters(String raceTimes) {
+    public void ThrowExceptionIfRaceTimesHasCharacters(String raceTimes) {
         Throwable thrown = catchThrowable(() -> {
-            validateRaceTimes.containsCharacters(raceTimes);
+            RaceCount.hasCharacters(raceTimes);
         });
 
         assertThat(thrown)
@@ -38,7 +37,7 @@ public class InputRaceTimesTest {
     @NullAndEmptySource
     public void ThrowExceptionIfRaceTimesEmpty(String raceTimes) {
         Throwable thrown = catchThrowable(() -> {
-            validateRaceTimes.isBlank(raceTimes);
+            RaceCount.isBlank(raceTimes);
         });
 
         assertThat(thrown)
@@ -50,7 +49,7 @@ public class InputRaceTimesTest {
     @Test
     public void ThrowExceptionIfRaceTimesZero() {
         Throwable thrown = catchThrowable(() -> {
-            validateRaceTimes.isZero(RACE_TIMES_ZERO);
+            RaceCount.isZero(RACE_TIMES_ZERO);
         });
 
         assertThat(thrown)
