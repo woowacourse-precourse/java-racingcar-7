@@ -6,11 +6,12 @@ import static racingcar.common.constant.OutputViewConst.*;
 
 public class OutputView {
 
-    public void noticeResult() {
+    private void noticeResult() {
         System.out.println(RESULT_PROMPT);
     }
 
     public void printResult(GameResult gameResult) {
+        this.noticeResult();
         gameResult.getRoundResult()
                 .forEach(round -> {
                     round.getResultList()
