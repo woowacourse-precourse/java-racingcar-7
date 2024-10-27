@@ -1,4 +1,4 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.game.RacingCarGame;
 import racingcar.domain.game.exception.GamePlayersException.MaximumPlayersExceededException;
 import racingcar.domain.game.exception.GamePlayersException.MinimumPlayersRequiredException;
 import racingcar.domain.game.exception.GameRoundException.MaximumGameRoundExceededException;

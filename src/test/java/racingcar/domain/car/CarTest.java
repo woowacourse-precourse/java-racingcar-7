@@ -1,18 +1,19 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.exception.CarNameException.NameLengthExceededException;
+import static racingcar.exception.CarNameException.NameLengthShortException;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.car.Name;
-import racingcar.exception.CarNameException.NameLengthExceededException;
-import racingcar.exception.CarNameException.NameLengthShortException;
 
-class NameTest {
+
+class CarTest {
 
     @Nested
     @DisplayName("생성 메서드")
@@ -24,7 +25,7 @@ class NameTest {
             final String sufficientLengthName = "kim";
 
             // expect
-            assertThatCode(() -> Name.of(sufficientLengthName))
+            assertThatCode(() -> Car.of(sufficientLengthName))
                     .doesNotThrowAnyException();
         }
 
@@ -35,7 +36,7 @@ class NameTest {
             final String Null = null;
 
             // expect
-            assertThatThrownBy(() -> Name.of(Null))
+            assertThatThrownBy(() -> Car.of(Null))
                     .isInstanceOf(NullPointerException.class);
         }
 
@@ -49,7 +50,7 @@ class NameTest {
             final String expectMessage = "자동차 이름은 최대 10자까지 가능합니다.";
 
             assertThatThrownBy(() -> {
-                Name.of(elevenWords);
+                Car.of(elevenWords);
             })
                     .isInstanceOf(NameLengthExceededException.class)
                     .hasMessage(expectMessage);
@@ -63,7 +64,7 @@ class NameTest {
             final String expectMessage = "자동차 이름은 최소 1자부터 가능합니다.";
 
             assertThatThrownBy(() -> {
-                Name.of(inSufficientLengthName);
+                Car.of(inSufficientLengthName);
             })
                     .isInstanceOf(NameLengthShortException.class)
                     .hasMessage(expectMessage);
@@ -75,8 +76,65 @@ class NameTest {
                 "ㅌㅌㅌㅌㅌㅌㅌㅌㅌㅌ"})
         void 생성_성공_유효길이이름(String sufficientLengthName) {
             //expect
-            assertThatCode(() -> Name.of(sufficientLengthName))
+            assertThatCode(() -> Car.of(sufficientLengthName))
                     .doesNotThrowAnyException();
+            ;
+        }
+    }
+
+    @Nested
+    @DisplayName("전진 메서드")
+    class 전진_메서드 {
+
+        @DisplayName("전진_성공")
+        @Test
+        void 전진_성공() {
+            // given
+            final String carName = "carName";
+            final int amount = 5;
+            Car car = Car.of(carName);
+            Distance distance = Distance.of(amount);
+
+            //expect
+            assertThatCode(() -> car.move(distance)).doesNotThrowAnyException();
+        }
+    }
+
+    @Nested
+    @DisplayName("거리같음여부 메서드")
+    class 거리같음여부_메서드 {
+        @DisplayName("참_거리같음판별")
+        @Test
+        void 거리같음판별_참() {
+            // given
+            final String carName = "carName";
+            final int expectDistance = 0;
+            Car car = Car.of(carName);
+
+            // when
+            boolean result = car.hasSamePosition(expectDistance);
+
+            // then
+            final boolean True = true;
+            Assertions.assertEquals(result, True);
+
+        }
+
+        @DisplayName("참_거리같음판별")
+        @ParameterizedTest
+        @ValueSource(ints = {-1, 1, 2, 3, 4, 5, 100})
+        void 거리같음판별_거짓(int unexpectDistance) {
+            // given
+            final String carName = "carName";
+            Car car = Car.of(carName);
+
+            // when
+            boolean result = car.hasSamePosition(unexpectDistance);
+
+            // then
+            final boolean False = false;
+            Assertions.assertEquals(result, False);
+
         }
     }
 }
