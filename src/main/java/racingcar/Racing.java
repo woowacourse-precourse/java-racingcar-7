@@ -1,12 +1,17 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
 public class Racing {
     private final Map<String, Integer> positions;
+
+    public Map<String, Integer> positions() {
+        return positions;
+    }
 
     public Racing(List<String> carNames) {
         positions = new LinkedHashMap<>();
