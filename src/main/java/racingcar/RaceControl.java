@@ -131,6 +131,7 @@ public class RaceControl {
             }
         }
 
+        System.out.println();
         System.out.print("최종 우승자 : ");
 
         List<String> winnerNames = new ArrayList<>();
