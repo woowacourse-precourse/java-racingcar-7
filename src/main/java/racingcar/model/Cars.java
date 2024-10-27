@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.model.valuegenerator.ValueGenerator;
 
 public class Cars {
+    private static final int DEFAULT_POSITION = 0;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -24,6 +25,19 @@ public class Cars {
                 .map(ExecutionResult::ofValue)
                 .map(Object::toString)
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<String> getTotalResult() {
+        Integer maxPositionValue = cars
+                .stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(DEFAULT_POSITION);
+
+        return cars.stream()
+                .filter(car -> maxPositionValue.equals(car.getPosition()))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public void move(ValueGenerator valueGenerator) {
