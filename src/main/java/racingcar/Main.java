@@ -76,10 +76,11 @@ public class Main {
 
     public void setMoveInformation(Car car, boolean move) {
         car.setMove(move);
+        car.setPosition(1);
     }
 
     public void printSingleResult(Car car) {
-        System.out.println(car.getName() + " : " + (car.getMove() ? "-" : ""));
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
     }
 
     public void printWinners(List<Car> cars) {

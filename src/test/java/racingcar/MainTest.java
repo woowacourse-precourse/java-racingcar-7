@@ -75,7 +75,7 @@ class MainTest extends NsTest {
     @DisplayName("자동차 이름과 1회 움직임 출력을 확인한다")
     void printCarNameAndSingleMove() {
         Car car = new Car("pobi", false,0);
-        Car car2 = new Car("jun", true,0);
+        Car car2 = new Car("jun", true,1);
         main.printSingleResult(car);
         main.printSingleResult(car2);
         assertThat(output()).contains("pobi :");
