@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Winner {
+public class Cars {
     private static List<Car> winner;
 
-    public Winner() {
+    public Cars() {
         this.winner = new ArrayList<>();
     }
 
