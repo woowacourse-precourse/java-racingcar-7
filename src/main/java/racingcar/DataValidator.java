@@ -17,6 +17,7 @@ public class DataValidator {
         }
 
         validateEndWith(input);
+        checkPlayer(list);
         checkSame(list);
     }
 
@@ -40,6 +41,12 @@ public class DataValidator {
 
     private static void validateEndWith(String input) {
         if (input.charAt(input.length() - 1) == ',') {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkPlayer(List<String> list) {
+        if (!(list.size() >= 2)) {
             throw new IllegalArgumentException();
         }
     }
