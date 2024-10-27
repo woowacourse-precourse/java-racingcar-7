@@ -55,11 +55,11 @@ public class CarController {
         return max;
     }
 
-    public List<Car> getWinner(List<Car> cars, int max) {
-        List<Car> winners = new ArrayList<>();
+    public List<String> getWinner(List<Car> cars, int max) {
+        List<String> winners = new ArrayList<>();
         for(Car car : cars) {
             if(car.getMovedDistance() >= max) {
-                winners.add(car);
+                winners.add(car.getName());
             }
         }
         return winners;
