@@ -23,4 +23,8 @@ public class OutputHandler {
     public void showWinners(List<String> winners) {
         System.out.print("최종 우승자 : " + String.join(", ", winners));
     }
+
+    public void showCarProceedComments() {
+        System.out.println("실행 결과");
+    }
 }

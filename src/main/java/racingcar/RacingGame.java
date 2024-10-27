@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,14 @@ public class RacingGame {
         outputHandler.showMoveCountInputComments();
         int moveCount = inputHandler.getMoveCountFromUser();
 
-        System.out.println("실행 결과");
+        showCarProceedScores(moveCount, users);
+
+        List<String> winners = calculateWinners(users);
+        outputHandler.showWinners(winners);
+    }
+
+    private void showCarProceedScores(int moveCount, List<User> users) {
+        outputHandler.showCarProceedComments();
         for (int i = 0; i < moveCount; i++) {
             for (User user : users) {
                 int proceedScore = user.proceed();
@@ -26,7 +31,9 @@ public class RacingGame {
             }
             outputHandler.showNewLine();
         }
+    }
 
+    private List<String> calculateWinners(List<User> users) {
         List<String> winners = new ArrayList<>();
         int max = Integer.MIN_VALUE;
         for (User user : users) {
@@ -39,6 +46,6 @@ public class RacingGame {
                 winners.add(user.getName());
             }
         }
-        outputHandler.showWinners(winners);
+        return winners;
     }
 }
