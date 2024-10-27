@@ -10,6 +10,7 @@ public class RacingCarService {
 
     private final NameParser nameParser;
     private final InMemoryRacingCarRepository racingRepository;
+    private int tryNumber;
 
     public RacingCarService(NameParser nameParser) {
         this.nameParser = nameParser;
@@ -36,6 +37,9 @@ public class RacingCarService {
     }
 
     // TODO : 시도횟수 입력받기
+    public void inputTryNumber(int tryNumber){
+        this.tryNumber = tryNumber;
+    }
 
     // TODO : 시도횟수 만큼 랜덤 숫자 뽑기
 
