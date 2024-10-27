@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
         System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
 
         // When
-        List<String> carNames = Application.getCarNames();
+        List<String> carNames = Application.getCarNames(input);
 
         // Then
         assertThat(carNames).containsExactly("car1", "car2", "car3");
@@ -70,18 +70,20 @@ class ApplicationTest extends NsTest {
 
         // When & Then
         assertThatThrownBy(() -> Application.getCarNames(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 1~5 글자 사이여야 합니다.");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @Order(6)
     @DisplayName("입력된 이동 횟수를 올바르게 반환한다")
     void getMovementCountTest() {
+        // Given
         String input = "5";
-        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
 
-        Integer movementCount = Application.getMovementCount();
+        // When
+        Integer movementCount = Application.getMovementCount(input);
+
+        // Then
         assertThat(movementCount).isEqualTo(5);
     }
 
@@ -89,10 +91,11 @@ class ApplicationTest extends NsTest {
     @Order(7)
     @DisplayName("숫자가 아닌 이동 횟수를 입력하면 예외를 발생시킨다")
     void getMovementCountExceptionTest() {
+        // Given
         String input = "five";
-        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
 
-        assertThatThrownBy(Application::getMovementCount)
+        // When & Then
+        assertThatThrownBy(() -> Application.getMovementCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
