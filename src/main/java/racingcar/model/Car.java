@@ -28,6 +28,10 @@ public class Car {
         position++;
     }
 
+    public String getPositionInfo() {
+        return this.name + " : " + "-".repeat(this.position);
+    }
+
     private void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(CarException.CAR_NAME_IS_NULL_OR_EMPTY.getMessage());
