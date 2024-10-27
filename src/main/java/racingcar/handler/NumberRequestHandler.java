@@ -1,15 +1,15 @@
 package racingcar.handler;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.view.RequestView;
 
 import static racingcar.message.ErrorMessage.INVALID_NUMBER_ERROR;
 import static racingcar.message.ErrorMessage.NEGATIVE_NUMBER_ERROR;
-import static racingcar.message.InfoMessage.REQUEST_NUMBER_MESSAGE;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NumberRequestHandler {
     public int getNumber() {
-        System.out.println(REQUEST_NUMBER_MESSAGE.getMessage());
+        RequestView.requestMoveNumber();
         String inputString = Console.readLine();
         int rawNumber = convertToInteger(inputString);
         validateNegative(rawNumber);

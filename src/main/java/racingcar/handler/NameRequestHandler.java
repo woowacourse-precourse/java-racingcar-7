@@ -1,17 +1,17 @@
 package racingcar.handler;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.view.RequestView;
 
 import java.util.Arrays;
 
 import static racingcar.message.ErrorMessage.*;
-import static racingcar.message.InfoMessage.REQUEST_NAMES_MESSAGE;
 import static racingcar.utils.ExceptionUtils.throwException;
 
 public class NameRequestHandler {
 
     public String[] getNames() {
-        System.out.println(REQUEST_NAMES_MESSAGE.getMessage());
+        RequestView.requestNames();
         String rawInput = Console.readLine();
         return validateInput(rawInput);
     }
@@ -23,7 +23,6 @@ public class NameRequestHandler {
         validateNames(rawNames);
         return rawNames;
     }
-
 
     public void validateBlank(String rawInput) {
         if (rawInput == null || rawInput.isBlank()) {
