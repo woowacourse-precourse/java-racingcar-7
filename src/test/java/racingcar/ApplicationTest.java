@@ -157,6 +157,23 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 테스트_3_2_현재_진행_상태_출력_확인() {
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    Application.proceedTurn(carList);
+                    Application.printTurnResult(carList);
+                    assertThat(output()).contains("a : -", "b : ", "c : -");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD
+        );
+    }
+
     @AfterEach
     void closeConsole() {
         Console.close();

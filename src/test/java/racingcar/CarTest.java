@@ -15,4 +15,13 @@ class CarTest {
 
         assertThat(afterDistance - beforeDistance).isEqualTo(1);
     }
+
+    @Test
+    void 테스트_3_2_toString_확인() {
+        Car car = new Car("a");
+        car.goForward();
+        car.goForward();
+
+        assertThat(car.toString()).isEqualTo("a : --");
+    }
 }
