@@ -18,16 +18,23 @@ public class RacingController {
         List<String> carNames = inputView.readCarNames();
         int moveCount = inputView.readMoveCount();
 
-        Cars cars = new Cars(carNames.stream()
-                .map(Car::new)
-                .toList());
+        Cars cars = initializeCars(carNames);
         OutputView outputView = new OutputView(cars);
 
-        for(int i=0;i<moveCount;i++) {
+        race(cars, moveCount, outputView);
+        outputView.printWinners();
+    }
+
+    private Cars initializeCars(List<String> carNames) {
+        return new Cars(carNames.stream()
+                .map(Car::new)
+                .toList());
+    }
+
+    private void race(Cars cars, int moveCount, OutputView outputView) {
+        for(int i = 0; i < moveCount; i++) {
             cars.moveAll();
             outputView.printProgress();
-            System.out.println();
         }
-        outputView.printWinners();
     }
 }
