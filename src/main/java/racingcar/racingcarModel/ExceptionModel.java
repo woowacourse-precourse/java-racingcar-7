@@ -12,12 +12,15 @@ public class ExceptionModel {
 
 
 
+
+
     //자동차 입력 공백 확인
     public void emptyCarName(String nameInput) {
         if (nameInput == null || nameInput.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
+
     //자동차 입력 배열 내 공백 확인
     public void emptyCarNames(String nameInput) {
         for (String carName : carNames(nameInput)) {
@@ -47,26 +50,15 @@ public class ExceptionModel {
     }
 
     // 경기 시행 횟수 검증 메서드
-    public void validateTryCount(String tryInput) {
-        // 경기 시행 횟수가 입력되지 않은 경우
-        if (tryInput == null || tryInput.trim().isEmpty()) {
-            throw new IllegalArgumentException("경기 시행 횟수가 입력되지 않았습니다.");
-        }
+//    public void validateTryCount(String tryInput) {
+//
 
-        try {
-            int tryCount = Integer.parseInt(tryInput);
-
-            // 경기 시행 횟수가 0 또는 음수일 경우
-            if (tryCount <= 0) {
-                throw new IllegalArgumentException("경기 시행 횟수는 0보다 커야 합니다: " + tryCount);
-            }
-        } catch (NumberFormatException e) {
-            // 입력된 값이 숫자가 아닐 경우
-            throw new IllegalArgumentException("경기 시행 횟수는 숫자만 입력 가능합니다: " + tryInput);
+    // 경기 시행 횟수가 입력되지 않은 경우
+    public void emptyTryInput(String tryInput) {
+        if (tryInput == null || tryInput.isEmpty()) {
+            throw new IllegalArgumentException();
         }
     }
-
-
 
 
 }
