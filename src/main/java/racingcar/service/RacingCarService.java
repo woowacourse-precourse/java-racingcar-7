@@ -20,11 +20,11 @@ public class RacingCarService {
 
     public void racingStart(UserInputDto dto) {
         List<String> splitInput = dto.carNames();
-        int epoch = dto.attemptCount();
+        int attemptCount = dto.attemptCount();
 
         mapInit(splitInput);
 
-        for (int i = 0; i < epoch; i++) {
+        for (int i = 0; i < attemptCount; i++) {
             for (String car : splitInput) {
                 chooseGoSTOP(car);
                 outputView.displayProgress(car, racingCarMap.get(car));

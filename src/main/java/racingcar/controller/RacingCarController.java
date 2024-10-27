@@ -23,7 +23,7 @@ public class RacingCarController {
 
     public void start() {
         List<String> carNames = getUserInputAndValidate();
-        int attemptCount = getUserEpoch();
+        int attemptCount = getUserAttemptCount();
         UserInputDto dto = UserInputDto.of(carNames, attemptCount);
         racingCarService.racingStart(dto);
         displayResult();
@@ -35,10 +35,10 @@ public class RacingCarController {
         return Arrays.asList(carNames.split(","));
     }
 
-    private int getUserEpoch() {
-        int epoch = inputView.getAttemptCount();
-        inputValidator.validateAttemptCount(epoch);
-        return epoch;
+    private int getUserAttemptCount() {
+        int attemptCount = inputView.getAttemptCount();
+        inputValidator.validateAttemptCount(attemptCount);
+        return attemptCount;
     }
 
     private void displayResult() {
