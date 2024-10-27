@@ -34,4 +34,11 @@ public class Validator {
             throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
         }
     }
+
+    public Integer isPositiveNumber(Integer count) {
+        if (count > 0) {
+            return count;
+        }
+        throw new IllegalArgumentException(ErrorMessage.ALLOWED_ONLY_POSITIVE.getMessage());
+    }
 }

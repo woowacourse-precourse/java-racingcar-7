@@ -35,6 +35,8 @@ public class InputView {
         outputView.printMessage(PrintMessage.COUNT_MESSAGE);
         String count = Console.readLine();
         Console.close();
-        return validator.validateAndReturnCount(count);
+
+        Integer verifiedCount = validator.validateAndReturnCount(count);
+        return validator.isPositiveNumber(verifiedCount);
     }
 }
