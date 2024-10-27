@@ -30,4 +30,27 @@ public class InputHandler {
         }
     }
 
+
+    public int inputAttemptNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = Console.readLine();
+        int attemptNumber = parseAttemptNumber(input);
+        validateAttemptNumber(attemptNumber);
+
+        return attemptNumber;
+    }
+
+    private int parseAttemptNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자여야 합니다.");
+        }
+    }
+
+    private void validateAttemptNumber(int attemptNumber) {
+        if (attemptNumber <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 숫자여야 합니다.");
+        }
+    }
 }
