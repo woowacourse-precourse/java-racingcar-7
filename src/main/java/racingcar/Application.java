@@ -32,18 +32,23 @@ public class Application {
     private static int getMoveCount() {
         System.out.println("시도할 횟수");
 
+        String input = Console.readLine().trim();
+        return validateMoveCount(input);
+    }
+
+    private static int validateMoveCount(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("시도 횟수를 입력해 주세요.");
+        }
+
         try {
-            int moveCount = Integer.parseInt(Console.readLine());
-            validateMoveCount(moveCount);
+            int moveCount = Integer.parseInt(input);
+            if (moveCount < 1) {
+                throw new IllegalArgumentException("이동 횟수는 1 이상의 숫자를 입력하세요.");
+            }
             return moveCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
-        }
-    }
-
-    private static void validateMoveCount(int moveCount) {
-        if (moveCount < 1) {
-            throw new IllegalArgumentException("이동 횟수는 1 이상의 숫자를 입력하세요.");
         }
     }
 
