@@ -1,14 +1,16 @@
 package racingcar.controller;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.model.Car;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class RacingCarControllerTest {
     static RacingCarController racingCarController;
@@ -19,13 +21,17 @@ class RacingCarControllerTest {
         racingCarController = new RacingCarController(new RacingCarService());
     }
 
-    @DisplayName("이름이 4자를 넘어갈 경우 에러 발생")
+    @DisplayName("이름이 쉼표 기준으로 나눠 Car 클래스 생성 테스트")
     @ParameterizedTest
-    @ValueSource(strings = "pobi,woni,abcdef")
+    @ValueSource(strings = "pobi,woni")
     void validateNameLength(String names) {
         List<String> nameList = inputView.splitNames(names);
-        assertThatThrownBy(() -> racingCarController.setCarsName(nameList))
-                .isInstanceOf(IllegalArgumentException.class);
+        List<Car> carList = racingCarController.setCarsName(nameList);
+        List<String> carNameList = new ArrayList<>();
+        for (Car car : carList) {
+            carNameList.add(car.getName());
+        }
+        Assertions.assertThat(carNameList).isEqualTo(List.of("pobi", "woni"));
     }
 
 }
