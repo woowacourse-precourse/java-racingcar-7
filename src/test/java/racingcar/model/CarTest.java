@@ -1,6 +1,5 @@
 package racingcar.model;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,8 +13,8 @@ class CarTest {
     private Car car;
 
     @BeforeEach
-    void init() {
-        car = new Car("TestCar");
+    void setUp() {
+        car = new Car("TestCar",0);
     }
 
     @DisplayName("무작위 값이 4이상일 경우 전진하기")
@@ -33,7 +32,7 @@ class CarTest {
     }
 
     @AfterEach
-    void close() {
+    void tearDown() {
         car = null;
     }
 }
