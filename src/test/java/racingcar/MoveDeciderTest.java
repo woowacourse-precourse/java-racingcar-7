@@ -1,9 +1,10 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-class MoveDeciderTest {
+class MoveDeciderTest extends NsTest {
 
     @Test
     void pickRandomNum() {
@@ -22,6 +23,19 @@ class MoveDeciderTest {
         } else {
             assertThat(moved).isEqualTo("");
         }
+    }
+
+    @Test
+    void move() {
+        run("Harry,Amy,Tom");
+        String result = MoveDecider.move();
+        assertThat(result).contains("Harry : ","Amy : ","Tom : ");
+
+    }
+
+
+    @Override
+    protected void runMain() {
 
     }
 }
