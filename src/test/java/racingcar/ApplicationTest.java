@@ -62,6 +62,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //이름 공백 입력2
+    @Test
+    void name_error_test3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("aa, ", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     //시행 횟수 문자 오류 테스트
     @Test
     void try_error_test1() {
