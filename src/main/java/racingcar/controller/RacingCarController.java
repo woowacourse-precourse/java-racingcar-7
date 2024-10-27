@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.util.InputParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,9 +16,17 @@ public class RacingCarController {
     }
 
     public void run() {
+        List<String> carNames = getCarNames();
+        int tryCount = getTryCount();
+    }
+
+    public List<String> getCarNames() {
         outputView.printCarNameInputMessage();
-        String carNames = inputView.getInput();
+        return InputParser.parseCarNames(inputView.getInput());
+    }
+
+    public int getTryCount() {
         outputView.printTryCountInputMessage();
-        int tryCount = Integer.parseInt(inputView.getInput());
+        return InputParser.parseTryCount(inputView.getInput());
     }
 }
