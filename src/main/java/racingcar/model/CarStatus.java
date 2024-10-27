@@ -39,7 +39,7 @@ public class CarStatus {
         return winnerFinder.findWinners(cars);
     }
 
-    public void playRound() {
+    public void playOneRound() {
         moveCars();
     }
 }

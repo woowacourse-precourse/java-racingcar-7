@@ -6,7 +6,7 @@ import static racingcar.util.ExceptionMessage.MUST_BE_INT;
 public class RoundNumberValidator {
     private static final String DIGIT_REGEX = "\\d+";
 
-    public static int validateRoundNumber(String value) {
+    public static int parseAndValidateRoundNumber(String value) {
         validateInput(value);
         int rounds = Parser.toInt(value);
         isPositiveRound(rounds);

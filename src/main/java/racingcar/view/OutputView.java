@@ -10,14 +10,14 @@ public class OutputView {
         System.out.println(SHOW_RESULT);
     }
 
-    public void printCarPositions(List<String> carNames, List<Integer> carPositions) {
+    public void printGameProgress(List<String> carNames, List<Integer> carPositions) {
         for (int i = 0; i < carNames.size(); i++) {
             System.out.println(carNames.get(i) + " : " + "-".repeat(carPositions.get(i)));
         }
         System.out.println();
     }
 
-    public void printWinners(List<String> winners) {
+    public void showWinners(List<String> winners) {
         String result = String.join(", ", winners);
         System.out.println(WINNER + result);
     }

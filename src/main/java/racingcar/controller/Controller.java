@@ -17,15 +17,15 @@ public class Controller {
 
     public void playGame() {
         List<String> carNames = CarNameValidator.splitAndValidateCarNames(InputView.readCarNames());
-        int numberOfRounds = RoundNumberValidator.validateRoundNumber(InputView.readCountOfRounds());
+        int numberOfRounds = RoundNumberValidator.parseAndValidateRoundNumber(InputView.readCountOfRounds());
 
         CarStatus carStatus = new CarStatus(carNames);
 
         outputView.showResultMessage();
         for (int i = 0; i < numberOfRounds; i++) {
-            carStatus.playRound();
-            outputView.printCarPositions(carStatus.getCarNames(), carStatus.getCarPositions());
+            carStatus.playOneRound();
+            outputView.printGameProgress(carStatus.getCarNames(), carStatus.getCarPositions());
         }
-        outputView.printWinners(carStatus.getWinners());
+        outputView.showWinners(carStatus.getWinners());
     }
 }
