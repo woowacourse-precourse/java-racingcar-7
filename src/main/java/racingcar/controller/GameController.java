@@ -21,12 +21,7 @@ public class GameController {
 				.map(Car::new)
 				.toList();
 		int trialCount = getTrialCountInput();
-		OutputView.printExecutionResultMessage();
-		while(trialCount-- > 0) {
-			executeRaceRound(cars);
-			String progressResult = ProgressResultGenerator.generateProgressResult(cars);
-			OutputView.printProgressResultMessage(progressResult);
-		}
+		executeRaceGame(cars, trialCount);
 		List<String> winners = WinnerDeterminer.determineWinner(cars);
 		String winnerResult = WinnerResultGenerator.generateWinnerResult(winners);
 		OutputView.printWinnerResultMessage(winnerResult);
@@ -41,6 +36,15 @@ public class GameController {
 		OutputView.printTrialCountInputMessage();
 		String trialCountInput = InputView.getTrialCountInput();
 		return NumberValidator.validateTrialCountIsDigit(trialCountInput);
+	}
+
+	private void executeRaceGame(List<Car> cars, int trialCount) {
+		OutputView.printExecutionResultMessage();
+		while(trialCount-- > 0) {
+			executeRaceRound(cars);
+			String progressResult = ProgressResultGenerator.generateProgressResult(cars);
+			OutputView.printProgressResultMessage(progressResult);
+		}
 	}
 
 	private void executeRaceRound(List<Car> cars) {
