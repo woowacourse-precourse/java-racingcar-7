@@ -1,13 +1,15 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import racingcar.util.RandomNumberPicker;
 
 public class Cars {
-	private final List<Car> cars;
+	private final Set<Car> cars;
 
-	public Cars(List<Car> cars) {
+	public Cars(Set<Car> cars) {
 		this.cars = cars;
 	}
 
@@ -15,12 +17,12 @@ public class Cars {
 		cars.forEach(car -> car.move(RandomNumberPicker.pickNumber()));
 	}
 
-	public List<Car> selectWinners() {
+	public Set<Car> selectWinners() {
 		int maxDistance = findMaxDistance();
 
 		return cars.stream()
 			.filter(car -> car.getDistance() == maxDistance)
-			.toList();
+			.collect(Collectors.toUnmodifiableSet());
 	}
 
 	private int findMaxDistance() {
