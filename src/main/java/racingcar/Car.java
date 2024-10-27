@@ -10,8 +10,9 @@ public class Car {
     }
 
     public void go(int randomValue) {
-        if (randomValue >= 4)
+        if (randomValue >= 4) {
             score++;
+        }
     }
 
     public String getName() {
