@@ -21,11 +21,11 @@ public class Application {
 
         String carNames = inputHandler.receiveCarNames();
 
-        inputHandler.validateInput(carNames);
-
         inputHandler.promptRaceCount();
 
         long raceCount = inputHandler.receiveRaceCount();
+
+        inputHandler.validateInput(carNames, raceCount);
 
         CarFactory carFactory = new CarFactory();
 
