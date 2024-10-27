@@ -14,7 +14,7 @@ public class InputController {
 
     public void validateInputFormat(){
         inputView.printCarNameInputPrompt();
-        this.userInput = userInputHandler.getName();
+        this.userInput = userInputHandler.inputCarNames();
         NameValidator.validateTrailingComma(userInput);
     }
 

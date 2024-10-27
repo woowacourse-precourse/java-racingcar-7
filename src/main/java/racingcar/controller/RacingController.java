@@ -12,7 +12,7 @@ public class RacingController {
 
     public void playGame(Cars cars) {
         inputView.printPlayTimesPrompt();
-        int numberOfRounds = userInputHandler.getPlayTime();
+        int numberOfRounds = userInputHandler.inputPlayTime();
         for (int i = 0; i < numberOfRounds; i++) {
             outputView.printRaceResultHeader();
             cars.play();
