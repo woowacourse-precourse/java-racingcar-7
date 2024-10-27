@@ -10,14 +10,6 @@ public final class Car {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
     public void attemptMove() {
         if (canMove()) {
             position++;
@@ -26,5 +18,18 @@ public final class Car {
 
     private boolean canMove() {
         return (Randoms.pickNumberInRange(0, 9) >= 4);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + "-".repeat(position);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
