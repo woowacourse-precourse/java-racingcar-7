@@ -4,9 +4,9 @@ import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class NameValidator {
+    int defaultNameCount = 1;
     static final String DELIMITER = ",";
     static final int NAME_LENGTH_LIMIT = 5;
     static final String VALID_PATTERN = "^[a-zA-Z0-9]+$";
@@ -14,10 +14,10 @@ public class NameValidator {
     private final List<Car> playerList = new ArrayList<>();
 
     public List<Car> separatePlayerList(String input) {
-        StringTokenizer players = new StringTokenizer(input, DELIMITER);
+        String[] players = input.split(DELIMITER, -1);
 
-        while(players.hasMoreTokens()) {
-            String playerName = players.nextToken();
+        for(String playerName : players) {
+            playerName = validateNameEmpty(playerName);
             validateNamePattern(playerName);
             validateNameLength(playerName);
             validateNameDuplication(playerName);
@@ -31,6 +31,14 @@ public class NameValidator {
     private void registerCar(String name) {
         Car car = new Car(name);
         playerList.add(car);
+    }
+
+    private String validateNameEmpty(String name) {
+        if(name.isEmpty()) {
+            name = "car" + (defaultNameCount++);
+        }
+
+        return name;
     }
 
     private void validateNamePattern(String name) {
