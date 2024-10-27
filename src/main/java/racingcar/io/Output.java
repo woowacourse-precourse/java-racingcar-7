@@ -18,4 +18,8 @@ public class Output {
     public void printCountInputPrompt() {
         System.out.println(Constants.COUNT_INPUT_PROMPT);
     }
+
+    public void printRaceResultPrompt() {
+        System.out.println(Constants.RACE_RESULT_PROMPT);
+    }
 }

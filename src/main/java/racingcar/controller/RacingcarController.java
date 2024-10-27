@@ -30,6 +30,8 @@ public class RacingcarController {
         String countString = input.inputString();
 
         final int count = validateCount(countString);
+
+        output.printRaceResultPrompt();
     }
 
     private List<String> validateCarName(String carName) {
