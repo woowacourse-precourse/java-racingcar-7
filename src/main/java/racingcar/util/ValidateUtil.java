@@ -19,6 +19,6 @@ public class ValidateUtil {
 
     public static void validateNum(int attemptCount) {
         if (attemptCount < 1)
-            throw new IllegalArgumentException("Inserted attemptCount is not a number.");
+            throw new IllegalArgumentException("attemptCount must be positive number.");
     }
 }
