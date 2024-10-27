@@ -42,6 +42,8 @@ public class RacingCarController {
     }
 
     private void race() {
+        System.out.println();
+        view.printNowString();
         for (int i = 0; i < tryNum; i++) {
             carGroup.go();
             printNow();
