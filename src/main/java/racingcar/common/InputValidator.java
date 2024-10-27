@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class InputValidator {
 
-    private static final int MIN_ATTEMPT_COUNT = 2;
+    private static final int MIN_ATTEMPT_COUNT = 1;
     private static final int MIN_NUMBER_OF_CARS = 2;
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
