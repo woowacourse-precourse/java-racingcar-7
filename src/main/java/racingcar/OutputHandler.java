@@ -16,7 +16,7 @@ public class OutputHandler {
         System.out.println(result);
     }
 
-    public static void ouputRAcingWinner(List<String> winnerList){
+    public static void ouputRacingWinner(List<String> winnerList){
         StringBuilder winner = new StringBuilder();
         int lastIndex = winnerList.size() - 1;
         winner.append("최종 우승자 : ");
@@ -30,6 +30,5 @@ public class OutputHandler {
 
         System.out.println(winner);
     }
-
 
 }
