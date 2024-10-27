@@ -27,7 +27,7 @@ public class RacingGame {
         OutputView.printWinner(findWinner());
     }
 
-    private String findWinner() {
+    public String findWinner() {
 
         return playRacingCarList.stream()
                 .filter(car -> car.getMoveCount() == getMaxMoveCount())
