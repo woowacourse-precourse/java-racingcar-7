@@ -7,10 +7,19 @@ public class ValidationService {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int MINIMUM_CAR_COUNT = 2;
 
-    public static void validateCarNames(List<String> carNames) {
-        if (carNames.isEmpty()) {
+    public static void validateCarNamesInputFormat(String input) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT.getMessage());
         }
+        if (input.endsWith(",")) {
+            throw new IllegalArgumentException(ErrorMessage.UNEXPECTED_COMMA.getMessage());
+        }
+        if (input.contains(",,")){
+            throw new IllegalArgumentException(ErrorMessage.MISSING_CAR_NAME.getMessage());
+        }
+    }
+
+    public static void validateCarNames(List<String> carNames) {
         if (carNames.size() < MINIMUM_CAR_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_CAR_NAMES.getMessage());
         }
