@@ -11,19 +11,19 @@ public class InputView {
     public String readNames(){
         System.out.println(PROMPT_NAME);
         String input = Console.readLine();
-        validate(input);
+        validateNullAndBlank(input);
         return input;
     }
 
     public Integer readTime(){
         System.out.println(PROMPT_TIME);
         String input = Console.readLine();
-        validate(input);
+        validateNullAndBlank(input);
         Console.close();
         return Integer.valueOf(input);
     }
 
-    private void validate(String input){
+    private void validateNullAndBlank(String input){
         if(input == null || input.isBlank()){
             throw new IllegalArgumentException("입력이 null이거나 빈 문자열일 수 없다.");
         }
