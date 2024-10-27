@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.ErrorCode;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -71,6 +72,30 @@ class ApplicationTest extends NsTest {
                 },
                 4,7,4,5,6,4,2,7,3
         );
+
+    }
+
+    @Test
+    @DisplayName("사용자의 차 이름 입력값이 빈 값일 떄 예외처리")
+    void 사용자_입력값_빈값(){
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorCode.CANT_CONVERT_CAR_NAME_WITH_NULL_OR_BLANK.getMessage()));
+
+
+    }
+
+    @Test
+    @DisplayName("사용자의 차 이름 입력값이 5보다 클때 예외처리")
+    void 사용자_입력값_길이_5초과(){
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("java,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorCode.CANT_CAR_NAME_LENGTH_EXCEED_FIVE.getMessage()));
+
 
     }
 
