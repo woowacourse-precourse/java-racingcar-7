@@ -14,9 +14,10 @@ class OutputViewTest {
     private Car car3;
 
     private RacingCar racingCars;
+    OutputView outputView = new OutputView();
 
     @BeforeEach
-    void setup(){
+    void setup() {
         car1 = new Car("car1");
         car2 = new Car("car2");
         car3 = new Car("car3");
@@ -26,26 +27,26 @@ class OutputViewTest {
 
     @DisplayName("자동차 경주 차수별 실행 결과 출력")
     @Test
-    void printRacing(){
-        for(int i = 0; i < 3; i++){
+    void printRacing() {
+        for (int i = 0; i < 3; i++) {
             racingCars.moving();
-            OutputView.printRacing(racingCars.getCars());
+            outputView.printRacing(racingCars.getCars());
         }
     }
 
     @DisplayName("단독 우승자 출력")
     @Test
-    void printWinner_single(){
+    void printWinner_single() {
         car1.move(4);
         car1.move(5);
         car2.move(3);
 
-        OutputView.printWinner(racingCars.getWinner());
+        outputView.printWinner(racingCars.getWinner());
     }
 
     @DisplayName("공동 우승자 출력")
     @Test
-    void printWinner_multiple(){
+    void printWinner_multiple() {
 
         car1.move(4);
         car1.move(5);
@@ -53,17 +54,17 @@ class OutputViewTest {
         car2.move(5);
         car3.move(3);
 
-        OutputView.printWinner(racingCars.getWinner());
+        outputView.printWinner(racingCars.getWinner());
     }
 
     @DisplayName("최종 통합 출력 테스트")
     @Test
-    void printRacing_and_printWinner(){
-        for(int i = 0; i < 5; i++){
+    void printRacing_and_printWinner() {
+        for (int i = 0; i < 5; i++) {
             racingCars.moving();
-            OutputView.printRacing(racingCars.getCars());
+            outputView.printRacing(racingCars.getCars());
         }
 
-        OutputView.printWinner(racingCars.getWinner());
+        outputView.printWinner(racingCars.getWinner());
     }
 }
