@@ -2,6 +2,7 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static java.lang.Integer.MAX_VALUE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +14,7 @@ import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_N
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_CANNOT_BLANK;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_MUST_DIGIT;
+import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_OVERFLOW;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -183,5 +185,15 @@ class ApplicationTest extends NsTest {
         // when & then
         RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
         assertEquals(e.getMessage(), RACE_COUNT_MUST_DIGIT.message());
+    }
+
+    @Test
+    void 경주_횟수가_정수_타입_최대값을_초과한다면_예외발생() {
+        // given
+        String raceCount = String.valueOf((long) MAX_VALUE + 1);
+        System.out.println(raceCount);
+        // when & then
+        RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
+        assertEquals(e.getMessage(), RACE_COUNT_OVERFLOW.message());
     }
 }
