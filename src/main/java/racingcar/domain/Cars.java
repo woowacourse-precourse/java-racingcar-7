@@ -18,24 +18,14 @@ public class Cars {
         return new Cars(cars);
     }
 
-    private static List<Car> getCarList(List<String> carNames) {
-        return carNames.stream().map(Car::new).toList();
-    }
-
-    private static void validate(List<String> carNames) {
-        if (isDuplicate(carNames)) {
-            throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MASSAGE);
-        }
-    }
-
-    private static boolean isDuplicate(List<String> carNames) {
-        return carNames.stream().distinct().count() != carNames.size();
-    }
-
     public void move(NumberGenerator numberGenerator) {
         for (Car car : carList) {
             car.move(numberGenerator.generate());
         }
+    }
+
+    public boolean isEmpty() {
+        return carList.isEmpty();
     }
 
     public List<Integer> getPositions() {
@@ -53,6 +43,24 @@ public class Cars {
         return getWinners(winner);
     }
 
+    private static void validate(List<String> carNames) {
+        if (isDuplicate(carNames)) {
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAME_MASSAGE);
+        }
+    }
+
+    private static boolean isDuplicate(List<String> carNames) {
+        return getDistinctCarCount(carNames) != carNames.size();
+    }
+
+    private static long getDistinctCarCount(List<String> carNames) {
+        return carNames.stream().distinct().count();
+    }
+
+    private static List<Car> getCarList(List<String> carNames) {
+        return carNames.stream().map(Car::new).toList();
+    }
+
     private Car getWinner() {
         return carList.stream()
                 .max(Car::compareTo)
@@ -63,9 +71,5 @@ public class Cars {
         return carList.stream()
                 .filter(car -> car.isSamePosition(winner))
                 .map(Car::getName).toList();
-    }
-
-    public boolean isEmpty() {
-        return carList.isEmpty();
     }
 }
