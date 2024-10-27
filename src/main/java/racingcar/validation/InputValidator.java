@@ -1,5 +1,9 @@
 package racingcar.validation;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class InputValidator {
 
     private static final int NAME_MAX_LENGTH = 5;
@@ -8,6 +12,16 @@ public class InputValidator {
     private static final String TRY_COUNT_REGEX = "^\\d+$";
     private static final int MIN_RANGE = 1;
     private static final int MAX_RANGE = 10;
+
+    public void validateCarNames(List<String> names) {
+        if (isCheckedDuplicate(names)) {
+            throw new IllegalArgumentException("중복된 이름은 사용할 수 없습니다: ");
+        }
+
+        for (String name : names) {
+            validateCarName(name);
+        }
+    }
 
     public void validateCarName(String name) {
         if (isCheckedEmpty(name)) {
@@ -25,7 +39,7 @@ public class InputValidator {
 
     public void validateTryCount(String count) {
         if (isCheckedEmpty(count)) {
-            throw new IllegalArgumentException("시도 횟수를 입력");
+            throw new IllegalArgumentException("시도 횟수는 빈 값을 입력할 수 없습니다.");
         }
 
         if (isCheckedNumber(count)) {
@@ -35,6 +49,12 @@ public class InputValidator {
         if (isCheckedRange(count)) {
             throw new IllegalArgumentException("시도 횟수는 1부터 10까지 입력할 수 있습니다.");
         }
+    }
+
+    private boolean isCheckedDuplicate(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>();
+
+        return names.stream().anyMatch(name -> !uniqueNames.add(name));
     }
 
     private boolean isCheckedEmpty(String str) {

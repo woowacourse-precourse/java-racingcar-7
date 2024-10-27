@@ -2,9 +2,12 @@ package racingcar.validation;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -36,6 +39,20 @@ class InputValidatorTest {
     @ValueSource(strings = "우테코")
     void inputCarNameNotEnglishException(String name) {
         assertThrows(IllegalArgumentException.class, () -> inputValidator.validateCarName(name));
+    }
+
+    @ParameterizedTest
+    @DisplayName("이름이 중복되었을 경우 예외가 발생한다.")
+    @MethodSource("duplicateCarNames")
+    void inputCarNameDuplicateException(List<String> names) {
+        assertThrows(IllegalArgumentException.class, () -> inputValidator.validateCarNames(names));
+    }
+
+    private static Stream<List<String>> duplicateCarNames() {
+        return Stream.of(
+                List.of("pobi", "pobi"),
+                List.of("pobi", "woni", "pobi")
+        );
     }
 
     @ParameterizedTest

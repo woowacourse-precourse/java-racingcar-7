@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import java.util.Arrays;
 import java.util.List;
 import racingcar.model.MovementRecord;
 import racingcar.validation.InputValidator;
@@ -16,13 +17,14 @@ public class IOService {
 
     public List<String> readCarNames() {
         String carNamesInput = InputView.readCarName();
-        String[] carNames = carNamesInput.split(",");
 
-        for (String name : carNames) {
-            inputValidator.validateCarName(name.trim());
-        }
+        List<String> carNames = Arrays.stream(carNamesInput.split(","))
+                .map(String::trim)
+                .toList();
 
-        return List.of(carNames);
+        inputValidator.validateCarNames(carNames);
+
+        return carNames;
     }
 
     public int readTryCount() {
