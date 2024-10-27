@@ -7,9 +7,11 @@ import service.PlayerService;
 
 public class Application {
     public static void main(String[] args) {
-        RacingGameController racingGameController = new RacingGameController(new InputView(), new OutputView(),
-                new PlayerService());
-        
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        PlayerService playerService = new PlayerService();
+
+        RacingGameController racingGameController = new RacingGameController(inputView, outputView, playerService);
         racingGameController.run();
     }
 }
