@@ -13,8 +13,8 @@ public abstract class CustomValidator {
         return str.chars().allMatch(Character::isDigit);
     }
 
-    public static boolean validateDuplicate(List<RacingCar> cars, String carName) {
-        for (RacingCar car : cars) {
+    public static boolean validateDuplicate(List<RacingCar> carList, String carName) {
+        for (RacingCar car : carList) {
             if (car.getName().equals(carName)) {
                 return false;
             }
