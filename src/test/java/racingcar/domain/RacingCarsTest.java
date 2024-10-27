@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class RacingCarsTest {
@@ -62,6 +61,20 @@ class RacingCarsTest {
 
         int position = racingCars.findWinnerPosition();
         assertThat(position).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("동일한 위치의 자동자 이름을 찾을 수 있다.")
+    public void findRacingCarNamesByPosition() {
+        List<RacingCar> createdCars = new ArrayList<>(List.of(
+                new RacingCar("A", 2),
+                new RacingCar("B", 3),
+                new RacingCar("C", 3)
+        ));
+        RacingCars racingCars = new RacingCars(createdCars);
+
+        List<String> names = racingCars.findNamesByPosition(3);
+        assertThatList(names).isEqualTo(List.of("B", "C"));
     }
 
 }

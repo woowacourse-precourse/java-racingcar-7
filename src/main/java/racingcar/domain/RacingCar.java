@@ -38,4 +38,8 @@ public class RacingCar {
     public int getPosition() {
         return position;
     }
+
+    public boolean isInPosition(int position) {
+        return this.position == position;
+    }
 }

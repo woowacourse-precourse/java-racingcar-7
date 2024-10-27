@@ -45,4 +45,11 @@ public class RacingCars {
                 .orElseThrow(RuntimeException::new)
                 .getPosition();
     }
+
+    public List<String> findNamesByPosition(int position) {
+        return racingCars.stream()
+                .filter((racingCar) -> racingCar.isInPosition(position))
+                .map(RacingCar::getName)
+                .toList();
+    }
 }

@@ -72,13 +72,7 @@ public class Application {
 
     private static List<String> findWinnersName(RacingCars racingCars) {
         int position = racingCars.findWinnerPosition();
-        return findCoWinnersName(racingCars.getRacingCars(), position);
+        return racingCars.findNamesByPosition(position);
     }
 
-    private static List<String> findCoWinnersName(List<RacingCar> racingCarList, int winnerPosition) {
-        return racingCarList.stream()
-                .filter((racingCar) -> racingCar.getPosition() == winnerPosition)
-                .map(RacingCar::getName)
-                .toList();
-    }
 }
