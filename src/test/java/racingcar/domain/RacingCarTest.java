@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
@@ -16,6 +17,15 @@ public class RacingCarTest {
         String racingCarName = racingCar.getName();
 
         assertThat(racingCarName).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("자동차는 5자를 초과하는 이름을 가질 수 없다.")
+    public void racingCarCannotHaveNameOver5Length() {
+        String name = "여섯자리이름";
+
+        assertThatThrownBy(() -> new RacingCar(name))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
