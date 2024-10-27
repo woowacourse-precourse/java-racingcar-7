@@ -61,4 +61,12 @@ public class Race {
     public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
+
+    public int getTotalRounds() {
+        return totalRounds;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
 }
