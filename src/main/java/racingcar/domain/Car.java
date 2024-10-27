@@ -20,6 +20,10 @@ public class Car {
         this.movement += m;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name + " : " + movement;
