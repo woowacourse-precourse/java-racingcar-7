@@ -4,6 +4,7 @@ import static racingcar.view.OutputView.printCurrentResult;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.util.RandomGeneratorUtil;
 
 public class Cars {
@@ -33,6 +34,10 @@ public class Cars {
                 .max(Comparator.comparingInt(car -> car.movementOfNumber)).map(car -> car.movementOfNumber).orElse(0);
     }
 
+    public List<String> calculateFinalWinner() {
+        int maxMovement = findMaxMovement();
+        return cars.stream().filter(car -> car.movementOfNumber == maxMovement).map(carMovement -> carMovement.name)
+                .collect(Collectors.toList());
 
     }
 }
