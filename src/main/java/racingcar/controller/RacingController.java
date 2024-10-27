@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import racingcar.dto.InputDTO;
-import racingcar.message.ExceptionCode;
 import racingcar.model.Car;
 import racingcar.model.Racing;
 import racingcar.view.OutputView;
@@ -27,10 +26,6 @@ public class RacingController {
 
         List<Car> carList = new ArrayList<>();
         for (final String name : carNameList) {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException(ExceptionCode.CAR_NAME_LENGTH_5.getDescription());
-            }
-
             Car car = new Car(name);
             carList.add(car);
         }
