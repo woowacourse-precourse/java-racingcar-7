@@ -12,7 +12,7 @@ public class RacingCarInfo {
         this.racingCarInfo = racingCarInfo;
     }
     public List<RacingCar> getRacingCarInfo() {
-        return Collections.synchronizedList(racingCarInfo);
+        return Collections.unmodifiableList(racingCarInfo);
     }
     @Override
     public String toString() {
