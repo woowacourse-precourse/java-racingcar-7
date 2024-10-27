@@ -20,9 +20,7 @@ public class GameController {
         String carNames = inputView.executeNameInput();
         String round = inputView.executeRoundInput();
 
-        inputValidator.isValidInputFormat(carNames);
-        inputValidator.isValidName(carNames);
-        inputValidator.isValidInputFormat(round);
+        inputValidator.isValid(carNames, round);
 
         gameService.init(Parser.toInteger(round), Parser.splitByDelimiter(carNames));
         play(Parser.toInteger(round));

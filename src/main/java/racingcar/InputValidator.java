@@ -4,6 +4,12 @@ import java.util.List;
 
 public class InputValidator {
 
+    public void isValid(String carNames, String round) {
+        isValidInputFormat(carNames);
+        isValidName(carNames);
+        isValidRound(round);
+    }
+
     public Boolean isValidInputFormat(String input) {
         if (input.startsWith(RegexPatterns.DELIMITER) || input.endsWith(RegexPatterns.DELIMITER)) {
             throw new IllegalArgumentException(ExceptionMessages.INVALID_INPUT_FORMAT);
