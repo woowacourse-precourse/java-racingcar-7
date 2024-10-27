@@ -24,9 +24,11 @@ public class Racing {
         outputView.requestNumberOfRoundsMessage();
         int numberOfRounds = inputView.getNumberOfRounds();
         List<Car>carList = racingManager.parseCarNamesToCar(carNames);
+        outputView.raceStartMessage();
 
         for(int x=0; x<numberOfRounds; x++){
             racingManager.moveOrStop(carList);
+            outputView.displayRaceProgress(carList);
         }
 
 
