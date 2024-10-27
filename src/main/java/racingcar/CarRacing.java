@@ -111,8 +111,8 @@ public class CarRacing {
     }
 
     private static void validateCarName(String carName) {
-        if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은" + MAX_CAR_NAME_LENGTH + "자 이하여야 합니다.");
+        if (carName.length() > MAX_CAR_NAME_LENGTH || carName.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 1자 이상, " + MAX_CAR_NAME_LENGTH + "자 이하여야 합니다.");
         }
     }
 }
