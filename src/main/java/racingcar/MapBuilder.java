@@ -8,8 +8,8 @@ import java.util.TreeMap;
 
 public class MapBuilder {
 
-    TreeMap<String, Integer> forwardCounter = new TreeMap<>();
-    Map<String, String> lineCounter = new HashMap<>();
+    public static TreeMap<String, Integer> forwardCounter = new TreeMap<>();
+    public static Map<String, String> lineCounter = new HashMap<>();
 
     public void mapCarNamesToForwardCounts(List<String> carNames) {
         for (int i = 0; i < carNames.size(); i++) {
