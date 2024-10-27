@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,15 @@ public class CarsTest {
 
         // then
         assertThat(maxAdvanceMarkerCount).isEqualTo(2);
+    }
+
+    @Test
+    void 중복된_자동차_이름이_있으면_예외가_발생한다() {
+        // given
+        String[] carNames = {"pobi", "woni", "woni"};
+
+        // when, then
+        assertThatThrownBy(() -> Cars.from(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
