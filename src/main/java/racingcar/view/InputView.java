@@ -13,7 +13,7 @@ public class InputView {
         String input = Console.readLine();
 
         List<String> carNames = Arrays.stream(input.split(","))
-                .map(String::trim) // 공백 제거
+                .map(String::trim)
                 .collect(Collectors.toList());
         return carNames;
     }
