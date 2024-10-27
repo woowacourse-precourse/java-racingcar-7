@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import racingcar.front.exception.InvalidCarNameInputException;
 
 public class CommaDelimiterParser {
-    private static final Pattern INPUT_FORMAT = Pattern.compile("^[^,]{1,5}(?:,[^,]{1,5})*$");
+    private static final Pattern INPUT_FORMAT = Pattern.compile("^[^,\\s]{1,5}(?:,[^,\\s]{1,5})*$");
     private static final String COMMA = ",";
 
     public static List<String> parse(String carNames) {
