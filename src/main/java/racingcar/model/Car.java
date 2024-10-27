@@ -1,12 +1,9 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.validation.Validator;
 
 public class Car {
 
-    private final int RANDOM_NUMBER_START = 0;
-    private final int RANDOM_NUMBER_END = 9;
     private final int RANDOM_MOVE_NUMBER = 4;
 
     private final String name;
@@ -19,8 +16,7 @@ public class Car {
         this.position = 0;
     }
 
-    public void move() {
-        int number = Randoms.pickNumberInRange(RANDOM_NUMBER_START, RANDOM_NUMBER_END);
+    public void move(int number) {
         if (number >= RANDOM_MOVE_NUMBER) {
             position++;
         }

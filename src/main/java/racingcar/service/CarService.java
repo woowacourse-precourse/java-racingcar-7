@@ -3,7 +3,8 @@ package racingcar.service;
 import racingcar.config.GameConfig;
 import racingcar.message.OutputMessage;
 import racingcar.model.Car;
-import racingcar.model.WinnerCalculator;
+import racingcar.util.RandomNumberGenerator;
+import racingcar.util.WinnerCalculator;
 import racingcar.validation.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -39,7 +40,7 @@ public class CarService {
         System.out.println(OutputMessage.RESULT.getMessage());
 
         for (int i = 0; i < count; i++) {
-            cars.forEach(Car::move);
+            cars.forEach(car -> car.move(RandomNumberGenerator.move()));
             outputView.racingView(cars);
         }
     }
