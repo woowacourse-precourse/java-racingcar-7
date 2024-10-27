@@ -10,6 +10,10 @@ public class CarList {
         this.cars = new ArrayList<>();
     }
 
+    public CarList(List<Drivable> cars) {
+        this.cars = cars;
+    }
+
     public void addCar(Drivable car) {
         cars.add(car);
     }
