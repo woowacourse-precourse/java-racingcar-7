@@ -18,7 +18,7 @@ public class Application {
         tmp = Console.readLine();
         int attemptCount = Integer.parseInt(tmp);
 
-        String result = racingGameController.RacingGame(carNames, attemptCount);
+        racingGameController.RacingGame(carNames, attemptCount);
 
     }
 }

@@ -22,8 +22,12 @@ public class RacingGameService {
         return new ArrayList<>(cars);
     }
 
-    public int getAttemptCount() {
-        return attemptCount;
+    public void playRound() { // 게임한라운드, 이동
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.setPosition();
+            }
+        }
     }
 
 }
