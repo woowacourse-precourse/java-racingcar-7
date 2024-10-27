@@ -32,13 +32,13 @@ public class Car {
         validateMaxLength(name);
     }
 
-    private static void validateNotBlank(String name) {
+    private void validateNotBlank(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름이 비어 있지 않아야 합니다.");
         }
     }
 
-    private static void validateMaxLength(String name) {
+    private void validateMaxLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }

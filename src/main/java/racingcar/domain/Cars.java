@@ -31,7 +31,7 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    private static void validateNotBlank(String carNames) {
+    private void validateNotBlank(String carNames) {
         if (carNames == null || carNames.isBlank()) {
             throw new IllegalArgumentException("자동차 이름 목록이 비어 있지 않아야 합니다.");
         }
