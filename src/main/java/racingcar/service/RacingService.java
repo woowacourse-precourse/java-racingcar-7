@@ -1,13 +1,12 @@
 package racingcar.service;
 
-import static racingcar.model.OutputFormat.NAME_SPLIT_DELIMITER;
-
 import racingcar.model.Cars;
 import racingcar.model.RacingRoundResultRecorder;
 import racingcar.model.dto.RacingRequestDTO;
 import racingcar.model.dto.RacingResponseDTO;
 
 public class RacingService {
+    private final static String NAME_SPLIT_DELIMITER = ",";
     private final RacingRound racingRound;
 
     public RacingService(RacingRound racingRound) {
@@ -32,6 +31,6 @@ public class RacingService {
     }
 
     private Cars createCars(String inputNames) {
-        return Cars.create(inputNames.split(NAME_SPLIT_DELIMITER.getFormat()));
+        return Cars.create(inputNames.split(NAME_SPLIT_DELIMITER));
     }
 }
