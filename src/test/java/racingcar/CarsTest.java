@@ -3,6 +3,7 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -26,13 +27,46 @@ public class CarsTest {
     }
 
     @Test
-    public void 자동차를_한번에_이동한다() {
-        List<Car> before = List.of(new Car("test", 1), new Car("test2", 0));
-        Cars cars = new Cars(before);
+    public void 모든자동차를_이동한다() {
+        Cars cars = new Cars(createTwoCars(1, 0));
 
-        Cars result = cars.move(() -> MoveCommand.MOVE);
+        Cars result = cars.move(new EvenNumberMoveCommander());
 
-        List<Car> after = List.of(new Car("test", 2), new Car("test2", 1));
-        assertThat(result).isEqualTo(new Cars(after));
+        assertThat(result).isEqualTo(new Cars(createTwoCars(2, 0)));
+    }
+
+    private static List<Car> createTwoCars(int position1, int position2) {
+        return carsFixture(new Car("test1", position1), new Car("test2", position2));
+    }
+
+    private static List<Car> carsFixture(Car... cars) {
+        return Arrays.asList(cars);
+    }
+
+    private static class EvenNumberMoveCommander implements MovementCommander {
+
+        private int count = 0;
+
+        @Override
+        public MoveCommand moveCommand() {
+            MoveCommand command = command();
+            increaseCount();
+            return command;
+        }
+
+        private void increaseCount() {
+            count++;
+        }
+
+        private MoveCommand command() {
+            if (isEven()) {
+                return MoveCommand.MOVE;
+            }
+            return MoveCommand.STOP;
+        }
+
+        private boolean isEven() {
+            return count % 2 == 0;
+        }
     }
 }
