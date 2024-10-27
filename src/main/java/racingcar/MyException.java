@@ -1,7 +1,8 @@
 package racingcar;
 
 public enum MyException {
-    INVALID_CAR_NAME("유효하지 않은 자동차 이름입니다.", IllegalArgumentException.class);
+    INVALID_CAR_NAME("유효하지 않은 자동차 이름입니다.", IllegalArgumentException.class),
+    INVALID_MOVE_COUNT("유효하지 않은 시도 횟수입니다.", IllegalArgumentException.class);
 
     private final String message;
     private final Class<? extends RuntimeException> exception;
