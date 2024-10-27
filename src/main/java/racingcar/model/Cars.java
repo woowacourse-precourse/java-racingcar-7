@@ -4,19 +4,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import racingcar.exception.ErrorCode;
 
 public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] carNames) {
+    public Cars(final List<String> carNames) {
         makeCarListWithNames(carNames);
     }
 
-    private void makeCarListWithNames(String[] carNames) {
-        for (String carName : carNames) {
-            this.cars.add(makeCar(carName));
+    private void makeCarListWithNames(final List<String> carNames) {
+
+        carNames.stream()
+                .peek(this::checkDuplicateCarName)
+                .map(this::makeCar)
+                .forEach(cars::add);
+    }
+
+    private void checkDuplicateCarName(final String carName) {
+
+        if (cars.stream().anyMatch(car -> car.getName().equals(carName))) {
+            throw new IllegalArgumentException(ErrorCode.CANT_INSERT_DUPLICATE_CAR_NAME.getMessage());
         }
+
     }
 
     private Car makeCar(String name) {
