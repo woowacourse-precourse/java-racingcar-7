@@ -3,13 +3,8 @@ package racingcar.validator;
 import racingcar.constants.ErrorMessage;
 
 public class InputValidator {
-  private void validateNotNull(String input) {
-    if (input == null) {
-      throw new IllegalArgumentException(ErrorMessage.NULL);
-    }
-  }
   private void validateNotEmpty(String input) {
-    if (input == null || input.isEmpty()) {
+    if (input.isEmpty()) {
       throw new IllegalArgumentException(ErrorMessage.EMPTY_INPUT);
     }
   }
@@ -29,17 +24,34 @@ public class InputValidator {
     }
   }
   public void validateCarNameInput(String carNameInput) {
-    validateNotNull(carNameInput);
-    String trimmedCarNameInput = carNameInput.trim();
-    validateNotEmpty(trimmedCarNameInput);
-    validateNoSpaces(trimmedCarNameInput);
-    validateDelimiter(trimmedCarNameInput);
-    validateNotOnlyCommas(trimmedCarNameInput);
+    validateNotEmpty(carNameInput);
+    validateNoSpaces(carNameInput);
+    validateDelimiter(carNameInput);
+    validateNotOnlyCommas(carNameInput);
   }
   public void validateAttemptsInput(String attemptsInput) {
-    validateNotNull(attemptsInput);
-    String trimmedAttemptsInput = attemptsInput.trim();
-    validateNotEmpty(trimmedAttemptsInput);
-    validateNoSpaces(trimmedAttemptsInput);
+    validateNotEmpty(attemptsInput);
+    validateNoSpaces(attemptsInput);
+  }
+  public void validateEachCarName(String[] carNames) {
+    for (String name : carNames) {
+      if (name.isEmpty()) {
+        throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME);
+      }
+      if (name.contains(" ")) {
+        throw new IllegalArgumentException(ErrorMessage.SPACE_CAR_NAME);
+      }
+      if (name.length() > 5) {
+        throw new IllegalArgumentException(ErrorMessage.LONG_CAR_NAME);
+      }
+    }
+  }
+  private void validatePositiveNumber(String attemptsInput) {
+    if (!attemptsInput.matches("([1-9]\\d*|\\+\\d+)")) {
+      throw new IllegalArgumentException(ErrorMessage.POSITIVE_NUMBER);
+    }
+  }
+  public void validateAttemptCount(String attemptsInput) {
+    validatePositiveNumber(attemptsInput);
   }
 }

@@ -3,11 +3,11 @@ package racingcar.controller;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 
-public class InputController {
+public class RacingCarController {
   private final InputView inputView;
   private final InputValidator inputValidator;
 
-  public InputController(InputView inputView, InputValidator inputValidator) {
+  public RacingCarController(InputView inputView, InputValidator inputValidator) {
     this.inputView = inputView;
     this.inputValidator = inputValidator;
   }
@@ -16,5 +16,10 @@ public class InputController {
     inputValidator.validateCarNameInput(carNameInput);
     String attemptsInput = inputView.askForAttempts();
     inputValidator.validateAttemptsInput(attemptsInput);
+
+    String[] carNames = carNameInput.split(",");
+    inputValidator.validateEachCarName(carNames);
+    inputValidator.validateAttemptCount(attemptsInput);
+    int attemptsCount = Integer.parseInt(attemptsInput);
   }
 }
