@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Cars;
 import racingcar.utils.CarNameParser;
 import racingcar.utils.TryCountParser;
@@ -18,6 +19,8 @@ public class RacingController {
         final Cars cars = Cars.createFromCarNames(carNames);
 
         final int tryCount = getTryCount();
+
+        Console.close();
 
         startRace(cars, tryCount);
         determineWinners(cars);
