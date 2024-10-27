@@ -76,13 +76,17 @@ public class Application {
 
         StringBuilder winners = new StringBuilder();
         for(Car car : cars) {
-            if(car.getPosition() == maxPosition) {
-                if (winners.length() > 0){
-                    winners.append(", ");
-                }
-                winners.append(car.getName());
-            }
+            appendWinner(winners, car, maxPosition);
         }
         System.out.println("최종 우승자 : " + winners.toString());
+    }
+
+    private static void appendWinner(StringBuilder winners, Car car, int maxPosition) {
+        if(car.getPosition() == maxPosition) {
+            if (winners.length() > 0){
+                winners.append(", ");
+            }
+            winners.append(car.getName());
+        }
     }
 }
