@@ -1,11 +1,9 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.CarService;
 import racingcar.util.RandomUtil;
 import racingcar.util.RandomUtilTest;
 
