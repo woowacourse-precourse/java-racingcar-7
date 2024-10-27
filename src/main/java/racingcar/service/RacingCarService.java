@@ -98,6 +98,26 @@ public class RacingCarService {
         }
     }
 
+    public List<String> getFinalWinners() {
+
+        List<String> winners = new ArrayList<>();
+        List<RacingCar> racingCars = racingCarRepository.findAll();
+        BigInteger maxDistance = BigInteger.ZERO;
+
+        //TODO : 리팩토링 필요
+        for (RacingCar racingCar : racingCars) {
+            BigInteger distance = racingCar.getDistance();
+            if (maxDistance.compareTo(distance) == 0) {
+                winners.add(racingCar.getName());
+            } else if (maxDistance.compareTo(distance) < 0) {
+                winners = new ArrayList<>(List.of(racingCar.getName()));
+                maxDistance = distance;
+            }
+        }
+
+        return winners;
+    }
+
     //FIXME : just for test??
     public Optional<RacingCar> getByName(String name) {
         return racingCarRepository.findByName(name);

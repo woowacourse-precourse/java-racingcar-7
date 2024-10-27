@@ -10,4 +10,5 @@ public class RacingCarStatic {
     public static final int MIN_NUM_IN_RANDOM_RANGE = 0;
     public static final int MAX_NUM_IN_RANDOM_RANGE = 9;
     public static final int RACE_CONDITION = 4;
+    public static final String FINAL_WINNER_SEPARATOR = ",";
 }

@@ -25,7 +25,8 @@ public class RacingCarController {
         racingCarService.startRacing(raceCount, outputView);
     }
 
-    public void finalAward() {
-        //TODO : 최종 결과를 산출하여 우승자를 가리는 일련의 과정
+    public void finalAward(OutputView outputView) {
+        List<String> winners = racingCarService.getFinalWinners();
+        outputView.printFinalWinners(winners);
     }
 }

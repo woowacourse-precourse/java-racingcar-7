@@ -17,5 +17,6 @@ public class Application {
     public static void main(String[] args) {
         racingCarController.setRacingCar(inputView);
         racingCarController.openingRacingGame(inputView, outputView);
+        racingCarController.finalAward(outputView);
     }
 }
