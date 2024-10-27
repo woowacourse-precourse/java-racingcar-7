@@ -17,9 +17,15 @@ public class Application {
     }
 
     public static void race(final String textFirst, final String textSecond) {
-        String[] name = textFirst.split(",");
-        // 이름은 5자 이하만 가능하게 해야 함
-        final int numberOfCar = name.length;
+        String[] nameList = textFirst.split(",");
+
+        for (String name : nameList) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        final int numberOfCar = nameList.length;
 
         // racintCnt가 정수 값인지 확인해야 함
         int racingCnt = Integer.parseInt(textSecond);
@@ -30,10 +36,10 @@ public class Application {
 
         for (int i = 0; i < racingCnt; i++) {
             moveCar(numberOfCar);
-            viewRace(numberOfCar, name);
+            viewRace(numberOfCar, nameList);
         }
 
-        viewWinner(numberOfCar, name);
+        viewWinner(numberOfCar, nameList);
     }
 
     public static void moveCar(final int numberOfCar) {
