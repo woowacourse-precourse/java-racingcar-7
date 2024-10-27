@@ -1,15 +1,17 @@
 package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.ParticipatingCars;
 
 public class UserInput {
     private static final String SEPARATOR = ",";
 
-    public void  getCars() {
+    public ParticipatingCars getCars() {
         String input = Console.readLine();
         validateEmptyInput(input);
         validateContainsSeparator(input);
         String[] carsName = input.split(SEPARATOR);
+        return new ParticipatingCars(carsName);
     }
 
     public void getGameCount() {

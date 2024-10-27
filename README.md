@@ -29,9 +29,9 @@
     - [x] 예외인 경우 IllegalArgumentException 발생
   - [x] 자동차 이름 길이 검증
     - [x] 예외인 경우 IllegalArgumentException 발생
-- [ ] 참가 자동차 리스트 생성
-  - [ ] 참가 자동차 이름 중복 검증
-    - [ ] 예외인 경우 IllegalArgumentException 발생
+- [x] 참가 자동차 리스트 생성
+  - [x] 참가 자동차 이름 중복 검증
+    - [x] 예외인 경우 IllegalArgumentException 발생
 
 ### 4) 참가 자동차 경주 기능
 

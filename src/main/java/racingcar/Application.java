@@ -14,7 +14,7 @@ public class Application {
 
     public void run() {
         output.requestCarsName();
-        input.getCars();
+        ParticipatingCars cars = input.getCars();
 
         output.requestGameCount();
         input.getGameCount();
