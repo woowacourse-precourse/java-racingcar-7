@@ -22,7 +22,7 @@ public class View {
     }
 
     public void outputRaceResults(List<List<Car>> raceResults) {
-        System.out.println("실행 결과");
+        System.out.print("\n실행 결과\n");
         raceResults.forEach(this::outputOneRoundResult);
     }
 
