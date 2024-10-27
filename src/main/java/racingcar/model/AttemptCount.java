@@ -3,8 +3,8 @@ package racingcar.model;
 import java.math.BigInteger;
 
 public class AttemptCount {
-    public static final BigInteger ZERO = BigInteger.ZERO;
-    public static final BigInteger DECREMENT_VALUE = BigInteger.ONE;
+    private static final BigInteger ZERO = BigInteger.ZERO;
+    private static final BigInteger DECREMENT_VALUE = BigInteger.ONE;
     private BigInteger count;
 
     public AttemptCount(String count) {
