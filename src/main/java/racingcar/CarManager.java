@@ -11,18 +11,12 @@ import java.util.List;
 public class CarManager {
     private static final String SPLITTER = ",";
 
-    //TODO 유효성 검사 메서드 분리
     //TODO 중복 요소 확인시 문제가 되는 요소가 무엇인지 에러메시지에 적을 수 있도록 로직 개선
     public List<Car> createCarsFromInput(String input) {
         List<String> carNames = Arrays.stream(input.split(SPLITTER)).toList();
-        //개수 검증
-        if (carNames.size() < 2 || carNames.size() > 1000) {
-            throw new IllegalArgumentException("자동차의 개수는 최소 2개부터 최대 1,000개까지 가능합니다.");
-        }
 
-        if (carNames.stream().distinct().count() != carNames.size()) {
-            throw new IllegalArgumentException("중복된 이름은 작성할 수 없습니다.");
-        }
+        validateCount(carNames);
+        validateDuplicate(carNames);
 
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
@@ -32,16 +26,26 @@ public class CarManager {
         return cars;
     }
 
+    private void validateDuplicate(List<String> carNames) {
+        if (carNames.stream().distinct().count() != carNames.size()) {
+            throw new IllegalArgumentException("중복된 이름은 작성할 수 없습니다.");
+        }
+    }
+
+    private void validateCount(List<String> carNames) {
+        if (carNames.size() < 2 || carNames.size() > 1000) {
+            throw new IllegalArgumentException("자동차의 개수는 최소 2개부터 최대 1,000개까지 가능합니다.");
+        }
+    }
+
     public List<Car> findWinner(List<Car> cars) {
         int maxDistance = cars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 결과입니다."));
 
-        List<Car> winners = cars.stream()
+        return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList();
-
-        return winners;
     }
 }
