@@ -39,7 +39,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
+    @Test
+    void 예외_실행횟수_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,jinno", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
