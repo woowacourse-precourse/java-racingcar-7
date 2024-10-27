@@ -89,6 +89,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("공백이 포함된 입력 예외 테스트1")
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("공백이 포함된 입력 예외 테스트2")
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,  ,seo", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
