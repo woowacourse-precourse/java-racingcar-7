@@ -48,24 +48,14 @@ class IoTest extends NsTest {
     @Test
     @DisplayName("단독 우승자를 출력한다")
     void printSingleWinners() {
-        Car car = new Car("pobi", 0);
-        Car car2 = new Car("jun", 1);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car);
-        cars.add(car2);
-        outputView.printWinners(cars);
+        outputView.printWinners(List.of("jun"));
         assertThat(output()).isEqualTo("최종 우승자 : jun");
     }
 
     @Test
-    @DisplayName("단독 우승자를 출력한다")
+    @DisplayName("공동 우승자를 출력한다")
     void printMultiWinners() {
-        Car car = new Car("pobi", 1);
-        Car car2 = new Car("jun", 1);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car);
-        cars.add(car2);
-        outputView.printWinners(cars);
+        outputView.printWinners(List.of("pobi", "jun"));
         assertThat(output()).isEqualTo("최종 우승자 : pobi, jun");
     }
 

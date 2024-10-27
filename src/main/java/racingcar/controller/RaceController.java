@@ -2,9 +2,12 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.util.CommonIo;
+import racingcar.util.Limit;
+import racingcar.util.Message;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RaceController {
@@ -46,7 +49,25 @@ public class RaceController {
     }
 
     public void finishGame(List<Car> cars) {
-        outputView.printWinners(cars);
+        List<String> winner = selectWinners(cars);
+        outputView.printWinners(winner);
+    }
+
+    public List<String> selectWinners(List<Car> cars) {
+        int maxPosition = Limit.MIN_POSITION.getValue();
+        List<String> winner = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                winner.clear();
+                winner.add(car.getName());
+                maxPosition = car.getPosition();
+            } else if (car.getPosition() == maxPosition) {
+                winner.add(car.getName());
+            }
+        }
+
+        return winner;
     }
 
 }

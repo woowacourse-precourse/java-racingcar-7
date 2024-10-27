@@ -24,20 +24,7 @@ public class OutputView {
                 + Message.POSITION_DASH.getSentence().repeat(car.getPosition()));
     }
 
-    public void printWinners(List<Car> cars) {
-        int maxPosition = Limit.MIN_POSITION.getValue();
-        List<String> winner = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                winner.clear();
-                winner.add(car.getName());
-                maxPosition = car.getPosition();
-            } else if (car.getPosition() == maxPosition) {
-                winner.add(car.getName());
-            }
-        }
-
+    public void printWinners(List<String> winner) {
         String finalWinner = String.join(Message.COMMA.getSentence()+Message.WHITE_SPACE.getSentence(),winner);
 
         io.printMessage(Message.FINAL_WINNER.getSentence()
