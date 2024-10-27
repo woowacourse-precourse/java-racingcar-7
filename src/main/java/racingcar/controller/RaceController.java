@@ -9,27 +9,35 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class RaceController {
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private CarController carController = new CarController();
-    private MoveController moveController = new MoveController();
-    private PlayCountController playCountController = new PlayCountController();
-    private CommonIo io = new CommonIo();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final CarController carController;
+    private final MoveController moveController;
+    private final PlayCountController playCountController;
+    private final CommonIo io;
+
+    public RaceController() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+        this.carController = new CarController();
+        this.moveController = new MoveController();
+        this.playCountController = new PlayCountController();
+        this.io = new CommonIo();
+    }
 
     public void run() {
         finishGame(playGame(prepareGame()));
     }
 
-    public List<Car> prepareGame() {
+    private List<Car> prepareGame() {
         outputView.printGetCarNames();
         String carNameInput = inputView.receiveCarNames();
         List<String> carNames = carController.splitCarNames(carNameInput);
-        List<Car> cars = carController.createAllCars(carNames);
 
-        return cars;
+        return carController.createAllCars(carNames);
     }
 
-    public List<Car> playGame(List<Car> cars) {
+    private List<Car> playGame(List<Car> cars) {
         outputView.printGetPlayCount();
         int playCount = playCountController.validatePlayCount();
 
@@ -40,7 +48,7 @@ public class RaceController {
         return cars;
     }
 
-    public void finishGame(List<Car> cars) {
+    private void finishGame(List<Car> cars) {
         List<String> winner = selectWinners(cars);
         outputView.printWinners(winner);
     }
