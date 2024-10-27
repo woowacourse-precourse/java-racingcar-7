@@ -41,6 +41,10 @@ public class Cars {
         return cars;
     }
 
+    public Winners getWinners() {
+        return new Winners(cars);
+    }
+
     private void validateUnprovidedNames(String names) {
         if (names == null || names.isEmpty()) {
             throw new InvalidInputException(UNPROVIDED_NAMES);
