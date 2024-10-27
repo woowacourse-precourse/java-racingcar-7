@@ -31,7 +31,7 @@ public class Cars {
         }
     }
 
-    public void currentStatus() {
+    public void printCurrentStatus() {
         for (Car car : cars) {
             OutputManager.printCurrent(car);
         }
