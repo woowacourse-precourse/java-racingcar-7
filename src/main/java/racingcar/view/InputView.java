@@ -10,4 +10,8 @@ public class InputView {
     public static String inputCarNames() {
         return Console.readLine();
     }
+
+    public static String inputTryCount() {
+        return Console.readLine();
+    }
 }
