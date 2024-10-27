@@ -7,9 +7,9 @@ import racingcar.racingcarModel.ExceptionModel;
 import racingcar.racingcarView.CarView;
 
 public class Controller {
-    private CarView carView;
-    private CarModel carModel;
-    private ExceptionModel exceptionModel;
+    private final CarView carView;
+    private final CarModel carModel;
+    private final ExceptionModel exceptionModel;
 
     public Controller(CarView carView, CarModel carModel, ExceptionModel exceptionModel) {
         this.carView = carView;
