@@ -2,9 +2,8 @@ package racingcar.controller;
 
 import static racingcar.service.ValidationService.validateGameCount;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.RandomNumbers;
+import racingcar.domain.RandomNumber;
 import racingcar.dto.GameDataDto;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
@@ -38,13 +37,19 @@ public class Racing {
 
     private void racing (GameDataDto gameDataDto) {
         for (int i = 0; i < gameDataDto.getGameCount(); i ++) {
-            RandomNumbers randomNumbers = createRandomNumbers(gameDataDto);
-            carService.playingPerGame(gameDataDto.getCars(), randomNumbers);
+            playingPerGame(gameDataDto.getCars());
         }
     }
 
-    private RandomNumbers createRandomNumbers (GameDataDto gameDataDto) {
-        return new RandomNumbers(gameDataDto.getCars().size());
+    private void playingPerGame (Cars cars) {
+        for (int i = 0; i < cars.size(); i ++) {
+            RandomNumber randomNumber = createRandomNumber();
+            carService.movePerCar(cars, randomNumber, i);
+        }
+    }
+
+    private RandomNumber createRandomNumber ( ) {
+        return new RandomNumber();
     }
 
 }

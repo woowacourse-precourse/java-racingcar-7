@@ -3,7 +3,7 @@ package racingcar.service;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Cars;
-import racingcar.domain.RandomNumbers;
+import racingcar.domain.RandomNumber;
 
 public class CarService {
 
@@ -13,14 +13,8 @@ public class CarService {
         return new Cars(carNames);
     }
 
-    public void playingPerGame (Cars cars, RandomNumbers randomNumbers) {
-        for (int i = 0; i < cars.size(); i ++) {
-            movePerCar(cars, randomNumbers, i);
-        }
-    }
-
-    private void movePerCar(Cars cars, RandomNumbers randomNumbers, int index) {
-        if (randomNumbers.isMove(index)) {
+    public void movePerCar(Cars cars, RandomNumber randomNumber, int index) {
+        if (randomNumber.isMove()) {
             cars.carMove(index);
         }
     }
