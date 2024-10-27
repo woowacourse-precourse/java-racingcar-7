@@ -8,7 +8,9 @@ public enum ErrorCode {
 
     ABNORMAL_USER_INPUT("사용자의 입력값이 비정상 적입니다"),
 
-    CANT_CONVERT_CAR_NAME_WITH_NULL_OR_BLANK("NULL 혹은 빈 값은 차량의 이름이 되지 못합니다");
+    CANT_CONVERT_CAR_NAME_WITH_NULL_OR_BLANK("NULL 혹은 빈 값은 차량의 이름이 되지 못합니다"),
+
+    CANT_TRY_COUNT_UNDER_ZERO("시도 횟수는 0 이하가 될 수 없습니다");
 
    private final String message;
 

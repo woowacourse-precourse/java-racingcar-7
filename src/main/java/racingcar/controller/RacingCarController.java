@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import racingcar.exception.ErrorCode;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.service.RacingCarGameService;
@@ -39,6 +40,7 @@ public class RacingCarController {
         Cars cars = seperateCarNameService.seperateCarNameFromCarNamesWithDelimeter(carNamesWithDelimeter);
 
         int countOfTry = inputView.getCountOfTry();
+        checkValidateTryCount(countOfTry);
 
         outputView.printResult();
         playRacingGame(cars,countOfTry);
@@ -46,6 +48,14 @@ public class RacingCarController {
         outputView.rankResult(cars.getTopRankCarName());
 
 
+
+    }
+
+    private void checkValidateTryCount(int countOfTry) {
+
+        if(countOfTry<=0){
+            throw new IllegalArgumentException(ErrorCode.CANT_TRY_COUNT_UNDER_ZERO.getMessage());
+        }
 
     }
 
