@@ -3,13 +3,15 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.model.ModelConstants.*;
+
 public class RaceGame {
     private List<Car> cars;
 
     public RaceGame(List<String> carNames) {
         this.cars = new ArrayList<>();
         for (String name : carNames) {
-            cars.add(new Car(name));
+            cars.add(new Car(name, POSITION_INITIALIZE.getValue()));
         }
     }
 
@@ -29,5 +31,9 @@ public class RaceGame {
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .toList();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

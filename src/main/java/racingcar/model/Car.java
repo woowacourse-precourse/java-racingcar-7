@@ -2,15 +2,16 @@ package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static racingcar.model.CarConstants.*;
+import static racingcar.model.ModelConstants.*;
 
 public class Car {
 
     private String name;
-    private int position = 0;
+    private int position;
 
-    public Car(String name) {
+    public Car(String name, int position) {
         this.name = name;
+        this.position = position;
     }
 
     public void move(int number) {
