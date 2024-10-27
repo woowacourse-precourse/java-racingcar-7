@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.model.Cars;
 
 public class Referee {
@@ -23,4 +25,19 @@ public class Referee {
         return st.toString();
     }
 
+    public void start(int times) {
+        for (int i = 0; i < times; i++) {
+            cars.moveAll(getRandomNumbers(cars.getSize()));
+        }
+    }
+
+    private List<Integer> getRandomNumbers(int size){
+        return IntStream.range(0,size).mapToObj(
+                i -> getRandomNumber()
+        ).toList();
+    }
+
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
 }

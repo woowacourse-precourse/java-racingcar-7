@@ -46,4 +46,8 @@ public class Cars {
         return this.cars.stream().filter(car -> Objects.equals(maxDistance, car.getDistance()))
                 .map(car -> car.getName()).toList();
     }
+
+    public int getSize(){
+        return this.cars.size();
+    }
 }
