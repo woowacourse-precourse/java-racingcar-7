@@ -16,12 +16,6 @@ public class RacingCarService {
         this.racingCarModel = new RacingCarModel();
     }
 
-    public void checkTryCountInput(String input) {
-        inputValidator.validateInputIsEmpty(input);
-
-        inputValidator.validateTryCount(input);
-    }
-
     public void settingRacingCars(String carNameInput) {
         inputValidator.validateInputIsEmpty(carNameInput);
 
@@ -30,5 +24,18 @@ public class RacingCarService {
             racingCarModel.add(carName);
         }
         racingCarModel.checkSavedCars();
+    }
+
+    public void racingStart(String tryCountInput) {
+        inputValidator.validateInputIsEmpty(tryCountInput);
+        inputValidator.validateTryCount(tryCountInput);
+
+        int tryCount = inputParser.parseInt(tryCountInput);
+        for (int i = 0; i < tryCount; i++) {
+            round();
+        }
+    }
+
+    private void round() {
     }
 }
