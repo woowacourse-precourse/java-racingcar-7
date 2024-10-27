@@ -1,13 +1,16 @@
 package racingcar.view;
 
-import racingcar.DTO;
+import racingcar.domain.DTO;
 
 public class Output {
     public static final String forwardDelimiter = "-";
+    private static boolean isFirstOutput = true;
 
     public static void gameResult(DTO[] player) {
-        System.out.println("실행 결과");
-
+        if(isFirstOutput) {
+            System.out.println("\n실행 결과");
+            isFirstOutput = false;
+        }
         for (DTO dto : player) {
             System.out.print(dto.getCarName() + " : ");
             System.out.println(forwardDelimiter.repeat(dto.getForwardCount()));

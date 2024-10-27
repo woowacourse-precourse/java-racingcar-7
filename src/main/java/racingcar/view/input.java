@@ -12,6 +12,7 @@ public class input {
     public static String GameCountInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String gameCountBuffer = Console.readLine();
+        //System.out.println(); // 가시성을 위한 한 칸 띄움 기능
         return gameCountBuffer;
     }
 }
