@@ -13,7 +13,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
-    void 기능_테스트() {
+    void 기능_테스트1() {
         assertRandomNumberInRangeTest(
             () -> {
                 run("pobi,woni", "1");
@@ -24,10 +24,50 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 기능_테스트2() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("pobi,woni,kim", "3");
+                assertThat(output()).contains(
+                            "pobi : -",
+                            "woni : ",
+                            "kim : -",
+                            "pobi : -",
+                            "woni : -",
+                            "kim : --",
+                            "pobi : --",
+                            "woni : -",
+                            "kim : ---",
+                            "최종 우승자 : kim"
+                    );
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD,  // 1회차 (pobi 이동, woni 멈춤, kim 이동)
+                STOP, MOVING_FORWARD, MOVING_FORWARD,  // 2회차 (pobi 멈춤, woni 이동, kim 이동)
+                MOVING_FORWARD, STOP, MOVING_FORWARD   // 3회차 (pobi 이동, woni 멈춤, kim 이동)
+        );
+    }
+
+    @Test
+    void 예외_테스트1() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("aa,bb,cc,dd,ee,ff", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
