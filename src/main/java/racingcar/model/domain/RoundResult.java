@@ -1,6 +1,5 @@
 package racingcar.model.domain;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,22 +24,5 @@ public class RoundResult {
                         .append("-".repeat(position))
                         .append("\n"));
         return result.toString();
-    }
-
-    public List<String> getMaxPositionCar() {
-        int maxPosition = getMaxPosition();
-        return carPositions.entrySet()
-                .stream()
-                .filter(entry -> entry.getValue() == maxPosition)
-                .map(Map.Entry::getKey)
-                .toList();
-    }
-
-    private int getMaxPosition() {
-        return carPositions.values()
-                .stream()
-                .mapToInt(Integer::intValue)
-                .max()
-                .orElse(0);
     }
 }
