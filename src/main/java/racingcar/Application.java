@@ -29,6 +29,7 @@ public class Application {
 
         for(int i=0; i<=raceCount; i++) {
             carValueAssigner.assignRandomValue(cars);
+
         }
 
     }

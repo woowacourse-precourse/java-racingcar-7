@@ -106,9 +106,33 @@ class ApplicationTest extends NsTest {
         assertEquals(1, cars.get(1).getScore());
         assertEquals(0, cars.get(2).getScore());
 
+    }
 
+    @Test
+    public void a() {
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("포르쉐", 4));
+        cars.add(new Car("페라리", 5));
+        cars.add(new Car("람보르기니", 3));
+
+        int raceCount = 1;
+        CarValueAssigner carValueAssigner = new CarValueAssigner();
+
+        for (int i = 0; i < raceCount; i++) {
+            carValueAssigner.assignRandomValue(cars); // 랜덤 값 할당
+
+            for (Car car : cars) {
+                int randomValue = car.getRandomValue(); // 랜덤 값 가져오기
+                carValueAssigner.updateScoreBasedOnComparison(car, randomValue);
+            }
+
+            assertThat(output()).contains("포르쉐 : -", "페라리 : -", "람보르기니 : ");
+        }
 
     }
+
+
 
 
     @Override
