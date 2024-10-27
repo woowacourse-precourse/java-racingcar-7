@@ -15,7 +15,10 @@ public class GameService {
     }
 
     public void initializeGame(List<String> carNames) {
-        gameBoard.setupCars(carNames);
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .toList();
+        gameBoard.setupCars(cars);
     }
 
     public List<Car> gameStart() {

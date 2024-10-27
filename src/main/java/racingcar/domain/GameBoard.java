@@ -6,10 +6,9 @@ import java.util.List;
 public class GameBoard {
     private final List<Car> cars = new ArrayList<>();
 
-    public void setupCars(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+    public void setupCars(List<Car> carNames) {
+        this.cars.clear();
+        this.cars.addAll(carNames);
     }
 
     public void playRound() {

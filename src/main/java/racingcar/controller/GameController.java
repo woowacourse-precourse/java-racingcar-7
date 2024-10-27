@@ -25,8 +25,7 @@ public class GameController {
     }
 
     public void initializeGame() {
-        String carsString = inputView.getUserInput();
-        List<String> carNames = List.of(carsString.split(","));
+        List<String> carNames = inputView.getUserInput();
         this.totalRounds = inputView.getUserInputAsInt();
 
         gameService.initializeGame(carNames);

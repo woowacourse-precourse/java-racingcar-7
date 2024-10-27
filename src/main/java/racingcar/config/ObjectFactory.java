@@ -7,7 +7,7 @@ import racingcar.service.GameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-//Application -> GameController -> (View, GameService -> Gameboard, Racejudge)
+//Application -> GameController -> (View, GameService -> GameBoard, RaceJudge)
 public class ObjectFactory {
     public static GameController createGameController() {
         InputView inputView = new InputView();
