@@ -1,6 +1,5 @@
 package racingcar.view.domain;
 
-import racingcar.view.global.Validator;
 import racingcar.view.global.exception.CustomException;
 import racingcar.view.global.exception.ErrorMessage;
 
@@ -9,7 +8,9 @@ public class Car {
     private String name;
 
     public Car(String name) {
-        Validator.validString(name);
+        if (isNameEmpty(name)) {
+            throw CustomException.of(ErrorMessage.BLANK_CAR_NAME_ERROR);
+        }
         if (isNameTooLong(name)) {
             throw CustomException.of(ErrorMessage.CAR_NAME_TOO_LONG_ERROR);
         }
@@ -18,6 +19,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    private boolean isNameEmpty(String name) {
+        return name == null || name.isBlank();
     }
 
     private boolean isNameTooLong(String name) {
