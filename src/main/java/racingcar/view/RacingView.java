@@ -8,10 +8,15 @@ import racingcar.exception.ExceptionUtils;
 import racingcar.exception.GeneralError;
 
 public class RacingView {
+    private final InputProvider inputProvider;
+
+    public RacingView(InputProvider inputProvider) {
+        this.inputProvider = inputProvider;
+    }
 
     private String readline() {
         try {
-            return Console.readLine();
+            return inputProvider.readLine();
         } catch (NoSuchElementException e) {
             ExceptionUtils.throwIllegalArgException(GeneralError.EMPTY_INPUT);
         }
