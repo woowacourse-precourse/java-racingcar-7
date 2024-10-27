@@ -28,6 +28,13 @@ public class OutputView {
     System.out.println(stringBuilder);
   }
 
+  public static void printRoundResult(List<Car> cars){
+    for (Car car : cars){
+      printCarStatus(car);
+    }
+    System.out.println();
+  }
+
   public static void printRoundResult(Map<String, Car> carNameMap, List<String> carNames){
     for (String carName : carNames){
       printCarStatus(carNameMap.get(carName));
