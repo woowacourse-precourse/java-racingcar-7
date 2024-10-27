@@ -10,7 +10,7 @@ import racingcar.view.OutputView;
 public class RacingGameController {
 
     public void startGame() {
-        RacingGame racingGame = createRacingGame();
+        RacingGame racingGame = initializeRacingGame();
         playRace(racingGame);
     }
 
@@ -23,7 +23,7 @@ public class RacingGameController {
         OutputView.printWinners(racingGame.findWinnerNames());
     }
 
-    private RacingGame createRacingGame() {
+    private RacingGame initializeRacingGame() {
         RaceCars raceCars = RaceCars.fromNames(InputView.inputCarNames());
         AttemptCount attemptCount = AttemptCount.from(InputView.inputAttemptCount());
         return new RacingGame(raceCars, attemptCount, new RandomNumberGenerator());
