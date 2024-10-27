@@ -17,7 +17,7 @@ public class InputHandler {
 		this.userInputValidation = userInputValidation;
 	}
 
-	public List<String> getCarNames(){
+	public List<String> getCarNames() {
 		String inputCarNames = Console.readLine();
 		userInputValidation.validateInputCarNames(inputCarNames, CAR_NAME_DELIMITER);
 
@@ -28,9 +28,6 @@ public class InputHandler {
 		String inputTryCount = Console.readLine();
 		userInputValidation.validateTryCount(inputTryCount);
 
-		int tryCount = Integer.parseInt(inputTryCount);
-		userInputValidation.validateTryCountRange(tryCount);
-
-		return tryCount;
+		return Integer.parseInt(inputTryCount);
 	}
 }
