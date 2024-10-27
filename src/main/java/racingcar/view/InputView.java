@@ -21,4 +21,17 @@ public class InputView {
                 .map(String::trim)
                 .collect(Collectors.toList());
     }
+
+    public int readTrialCount() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        return readPositive();
+    }
+
+    private int readPositive() {
+        int input = Integer.parseInt(Console.readLine());
+        if (input <= 0) {
+            throw new IllegalArgumentException("양수를 입력해야 합니다");
+        }
+        return input;
+    }
 }
