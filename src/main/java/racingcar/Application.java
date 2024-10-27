@@ -73,7 +73,12 @@ public class Application {
 
     private static int getGameTimes(){
         final int GAME_TIMES;
-        GAME_TIMES = Integer.parseInt(getInput());
+        String timesString = getInput();
+        try{
+            GAME_TIMES = Integer.parseInt(timesString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("게임 횟수로는 숫자만 입력할 수 있습니다.");
+        }
         isValidTimes(GAME_TIMES);
         return GAME_TIMES;
     }
