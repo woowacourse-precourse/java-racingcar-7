@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.config.RaceSetupFacade;
 import racingcar.domain.*;
 import racingcar.dto.RaceResult;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.lang.reflect.Method;
@@ -27,11 +26,12 @@ class RaceControllerTest {
 
     @BeforeEach
     void setUp() {
-        InputView inputView = new InputView();
         outputView = new OutputView();
-        setupFacade = new RaceSetupFacade(inputView, outputView);
+        setupFacade = new RaceSetupFacade();
 
-        cars = List.of(new RacingCar("벤츠"), new RacingCar("볼보"));
+        List<String> carNames = List.of("벤츠", "볼보");
+        cars = setupFacade.initializeCars(carNames);
+
         raceProgressManager = new RaceProgressManager(cars);
         randomNumberGenerator = new RandomNumberGenerator();
         winnerDecider = new WinnerDecider();
