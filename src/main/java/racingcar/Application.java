@@ -13,8 +13,7 @@ public class Application {
         List<String> names = inputNames();
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String count = Console.readLine();
-        int roundCount = Integer.parseInt(count);
+        int roundCount = inputRoundCount();
 
         RacingCars racingCars = new RacingCars(new ArrayList<>());
 
@@ -48,6 +47,11 @@ public class Application {
                 .toList();
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static int inputRoundCount() {
+        String count = Console.readLine();
+        return Integer.parseInt(count);
     }
 
     private static List<String> inputNames() {
