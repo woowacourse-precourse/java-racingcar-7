@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(Cars cars) {
         this.cars = cars;
