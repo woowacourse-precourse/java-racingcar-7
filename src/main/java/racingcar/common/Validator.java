@@ -35,4 +35,9 @@ public class Validator {
         }
     }
 
+    public static void validateRawInputHasCommaInLast(String rawInput) {
+        if (rawInput.endsWith(",")) {
+            throw new IllegalArgumentException(INPUT_MUST_NOT_END_WITH_COMMA.getMessage());
+        }
+    }
 }
