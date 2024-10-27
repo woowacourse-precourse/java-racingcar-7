@@ -14,34 +14,46 @@ import static racingcar.constant.ErrorMessages.CAR_NAME_DUPLICATE_ERROR_MESSAGE;
 
 class RacingGameServiceTest {
     @Test
-    public void 자동차를_생성한다(){
+    public void 자동차를_생성한다() {
+        // given
         final var racingGameService = new RacingGameService();
         String input = "pobi,woni,jun";
+
+        // when
         List<Car> registeredCars = racingGameService.createCarsWithUniqueName(input);
+
+        // then
         assertThat(registeredCars.size()).isEqualTo(3);
         assertThat(registeredCars.get(2).getName()).isEqualTo("jun");
     }
 
     @Test
-    public void 자동차를_생성한다_중복된_이름인_경우(){
+    public void 자동차를_생성한다_중복된_이름인_경우() {
+        // given
         final var racingGameService = new RacingGameService();
         String input = "pobi,woni,pobi";
-        assertThatThrownBy(()->racingGameService.createCarsWithUniqueName(input))
+
+        // when & then
+        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_NAME_DUPLICATE_ERROR_MESSAGE);
     }
 
     @Test
-    public void 자동차_수는_최소_2대_이상이어야_한다_2대_미만인_경우(){
+    public void 자동차_수는_최소_2대_이상이어야_한다_2대_미만인_경우() {
+        // given
         final var racingGameService = new RacingGameService();
         String input = "a";
-        assertThatThrownBy(()->racingGameService.createCarsWithUniqueName(input))
+
+        // when & then
+        assertThatThrownBy(() -> racingGameService.createCarsWithUniqueName(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(CAR_COUNT_ERROR_MESSAGE);
     }
 
     @Test
-    public void 가장_많이_이동한_자동차를_우승자로_뽑는다(){
+    public void 가장_많이_이동한_자동차를_우승자로_뽑는다() {
+        // given
         final var racingGameService = new RacingGameService();
         Car car1 = new Car("pobi");
         Car car2 = new Car("woni");
@@ -50,8 +62,10 @@ class RacingGameServiceTest {
         car1.move(5);
         car3.move(5);
 
-        List<String> winners = racingGameService.selectWinners(Arrays.asList(car1,car2,car3));
+        // when
+        List<String> winners = racingGameService.selectWinners(Arrays.asList(car1, car2, car3));
 
+        // then
         assertThat(winners).isEqualTo(Arrays.asList("pobi", "jun"));
     }
 }
