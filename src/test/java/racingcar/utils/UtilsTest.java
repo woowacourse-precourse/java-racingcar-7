@@ -16,5 +16,13 @@ class UtilsTest {
         assertThat(carNames).containsExactly("pobi", "woni", "jun");
     }
 
+
+    @Test
+    void 이름_양쪽_공백_제거_테스트() {
+        String carNamesInput = "pobi , woni ,  jun ";
+        List<String> carNames = ParseStringUtils.splitCarNames(carNamesInput);
+
+        assertThat(carNames).containsExactly("pobi", "woni", "jun");
+    }
 }
 
