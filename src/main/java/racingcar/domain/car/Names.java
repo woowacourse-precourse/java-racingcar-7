@@ -16,7 +16,10 @@ public class Names {
     }
 
     private void validateNameDuplicate(List<Name> names) {
-        Set<Name> duplicateNames = new HashSet<>(names);
+        Set<String> duplicateNames = new HashSet<>();
+        for (Name name : names) {
+            duplicateNames.add(name.toString());
+        }
         if (duplicateNames.size() != names.size()) {
             throw new IllegalArgumentException("이름은 중복될 수 없습니다.");
         }
