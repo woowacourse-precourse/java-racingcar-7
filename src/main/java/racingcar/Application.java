@@ -1,6 +1,5 @@
 package racingcar;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,8 @@ public class Application {
         Race race = new Race(cars, raceCount);
         race.start();
 
+        List<Car> winners = race.getWinners();
+        printWinners(winners);
     }
     private static String getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -42,6 +43,16 @@ public class Application {
         for (Car car: cars){
             if (car.getName().equals(name))
                 throw new IllegalArgumentException("중복된 자동차 이름");
+        }
+    }
+    private static void printWinners(List<Car> winners){
+        System.out.print("최종 우승자 : ");
+        for (int i=0; i<winners.size(); i++){
+            System.out.print(winners.get(i).getName());
+            if (i == winners.size()-1){
+                break;
+            }
+            System.out.print(", ");
         }
     }
 }
