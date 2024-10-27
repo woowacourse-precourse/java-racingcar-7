@@ -38,7 +38,7 @@ public class WinnerTest {
         racingCarManager.getRacingCarList().get(2).move();
         WinnerFinder winnerFinder = new WinnerFinder(racingCarManager);
         String winner = winnerFinder.getWinner();
-        String expected = "pobi,minki,tony";
+        String expected = "pobi, minki, tony";
         //then
         assertThat(winner).isEqualTo(expected);
     }

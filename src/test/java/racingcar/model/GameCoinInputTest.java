@@ -46,8 +46,7 @@ public class GameCoinInputTest {
                 .hasMessageContaining("입력 할 수 있는 수의 최대치를 넘었습니다");
         ;
     }
-
-
+    
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1"})
     @DisplayName("0 이하의 숫자 입력의 경우 테스트")
