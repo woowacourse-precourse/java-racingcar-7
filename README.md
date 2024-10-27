@@ -9,13 +9,12 @@
     - [X] "시도할 횟수는 몇 회인가요?" 출력 <br>
     - [X] Console.redline()으로 사용자가 문자열 입력 <br>
   ---
-- [ ] 오류 처리 <br>
-  - [ ] 자동차 이름이 5자 초과면 IllegalArgumentException 발생 <br>
-  - [ ] 시도할 횟수 Int 아니면 IllegalArgumentException 발생 <br>
-  - [ ] 그 외 잘못된 값 입력 시 IllegalArgumentException 발생 <br>
+- [X] 오류 처리 <br>
+  - [X] 자동차 이름이 5자 초과면 IllegalArgumentException 발생 <br>
+  - [X] 시도할 횟수 Int 아니면 IllegalArgumentException 발생 <br>
   ---
 - [ ] 주요 기능 <br>
-  - [ ] token을 사용하여 쉼표(,)로 입력받은 자동차 이름 구분 <br>
+  - [ ] 배열과 리스트를 사용하여 쉼표(,)로 입력받은 자동차 이름 구분 <br>
   - [ ] pickNumberInRange() 이용하여 0 ~ 9 사이에서 무작위 값 중 4 이상일 때만 전진 <br>
   - [ ] 조건문 이용하여 전진 최댓값을 비교 후 우승자 추출 <br>
   ---
