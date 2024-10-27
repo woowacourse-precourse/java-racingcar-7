@@ -22,6 +22,7 @@ public class RacingGame {
         for(int i = 0; i < round; i++) {
             playRound(cars);
         }
+        resultView.printWinners(cars.getWinners());
     }
 
     private void playRound(Cars cars) {
