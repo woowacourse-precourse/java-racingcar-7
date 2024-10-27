@@ -12,15 +12,18 @@ class NameValidatorTest {
 
     @Test
     void 유효한_이름은_예외가_발생하지_않는다() throws NoSuchFieldException, IllegalAccessException {
+        // given
         int maxNameLength = getMaxNameLength();
         String validName = "a".repeat(maxNameLength);
 
+        // when & then
         assertThatCode(() -> NameValidator.validate(validName))
                 .doesNotThrowAnyException();
     }
 
     @Test
     void 유효하지_않은_이름은_예외가_발생한다() throws NoSuchFieldException, IllegalAccessException {
+        // given
         int minNameLength = getMinNameLength();
         int maxNameLength = getMaxNameLength();
 
@@ -29,6 +32,7 @@ class NameValidatorTest {
         String tooLongName = "a".repeat(maxNameLength + 1);
         String tooShortName = "a".repeat(Math.max(0, minNameLength - 1));
 
+        // when & then
         assertThatThrownBy(() -> NameValidator.validate(tooLongName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
@@ -40,14 +44,17 @@ class NameValidatorTest {
 
     @Test
     void 유효한_이름_리스트는_예외가_발생하지_않는다() {
+        // given
         List<String> validNames = List.of("car1", "car2", "car3");
 
+        // when & then
         assertThatCode(() -> NameValidator.validate(validNames))
                 .doesNotThrowAnyException();
     }
 
     @Test
     void 유효하지_않은_이름_리스트는_예외가_발생한다() throws NoSuchFieldException, IllegalAccessException {
+        // given
         int minNameLength = getMinNameLength();
         int maxNameLength = getMaxNameLength();
 
@@ -58,6 +65,7 @@ class NameValidatorTest {
 
         List<String> invalidNames = List.of("car1", tooLongName, tooShortName);
 
+        // when & then
         assertThatThrownBy(() -> NameValidator.validate(invalidNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);

@@ -11,6 +11,7 @@ class AttemptCountValidatorTest {
 
     @Test
     void 유효한_시도_횟수는_예외가_발생하지_않는다() {
+        // when & then
         assertThatCode(() -> AttemptCountValidator.validate(1))
                 .doesNotThrowAnyException();
 
@@ -20,9 +21,11 @@ class AttemptCountValidatorTest {
 
     @Test
     void 유효하지_않은_시도_횟수는_예외가_발생한다() throws NoSuchFieldException, IllegalAccessException {
+        // given
         int minAttemptCount = getMinAttemptCount();
         String expectedMessage = ErrorCode.INVALID_ATTEMPT_COUNT.getMessage(minAttemptCount);
 
+        // when & then
         assertThatThrownBy(() -> AttemptCountValidator.validate(0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
