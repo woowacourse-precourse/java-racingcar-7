@@ -2,7 +2,7 @@ package racingcar.domain.game;
 
 import static racingcar.utils.ExceptionConstants.EXCEEDS_MAX_ROUNDS;
 import static racingcar.utils.ExceptionConstants.INVALID_ROUND_COUNT;
-import static racingcar.utils.ExceptionConstants.INVALID_ROUND_NUMBER;
+import static racingcar.view.InputValidator.validateUserInputIsNumber;
 
 public class GameRound {
     private final int MAX_ROUNDS = 100;
@@ -18,7 +18,8 @@ public class GameRound {
     }
 
     private int parseAndValidateRound(String roundInput) {
-        int parsedRound = convertToInteger(roundInput);
+        validateUserInputIsNumber(roundInput);
+        int parsedRound = Integer.parseInt(roundInput);
         validateRound(parsedRound);
         return parsedRound;
     }
@@ -27,18 +28,8 @@ public class GameRound {
         if (round > MAX_ROUNDS) {
             throw new IllegalArgumentException(EXCEEDS_MAX_ROUNDS.getErrorMessage());
         }
-
         if (round < MIN_ROUNDS) {
             throw new IllegalArgumentException(INVALID_ROUND_COUNT.getErrorMessage());
         }
     }
-
-    private int convertToInteger(String roundInput) {
-        try {
-            return Integer.parseInt(roundInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_ROUND_NUMBER.getErrorMessage());
-        }
-    }
-
 }
