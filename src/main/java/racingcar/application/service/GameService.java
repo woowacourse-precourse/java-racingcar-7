@@ -39,9 +39,8 @@ public class GameService implements GameUseCase {
         final StringBuilder stringBuilder = new StringBuilder();
 
         carRacingManager.getList().forEach(car -> {
-            stringBuilder.append(car.toString());
+            stringBuilder.append(String.format("%s\n", car.toString()));
         });
-        stringBuilder.append('\n');
 
         outputPort.writeMessage(stringBuilder.toString());
     }
