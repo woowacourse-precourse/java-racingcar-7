@@ -11,9 +11,12 @@ public class RacingCarService {
     private final RacingCarValidator validator = new RacingCarValidator();
 
     public List<Car> makeCarList(String inputString) {
-        List<Car> cars = new ArrayList<>();
+        validator.validateInputString(inputString);
+
         String[] carNames = inputString.split(Delimiter.COMMA.getSymbol());
         validator.validateCarNames(carNames);
+
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             validator.validateCarName(carName);
             cars.add(new Car(carName));
