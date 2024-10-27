@@ -1,41 +1,41 @@
 package racingcar.model;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+class RacingGameTest {
     private RacingGame racingGame;
+    private final List<String> carNames = List.of("pobi", "woni", "jun");
 
     @BeforeEach
-    public void setUp() {
+    void initRacingGameTest() {
         //given
-        racingGame = new RacingGame(List.of("pobi", "woni", "jun"));
+        racingGame = new RacingGame(carNames);
     }
 
     @DisplayName("자동차 리스트 초기화 테스트")
     @Test
-    public void testCarListInit() {
+    void testCarListInit() {
         //when
         List<Car> cars = racingGame.getCars();
         //then
-        assertThat(cars).hasSize(3);
-        assertThat(cars.get(0).getName()).isEqualTo("pobi");
-        assertThat(cars.get(1).getName()).isEqualTo("woni");
-        assertThat(cars.get(2).getName()).isEqualTo("jun");
+        assertThat(cars).hasSize(carNames.size());
+        for (int i = 0; i < carNames.size(); i++) {
+            assertThat(cars.get(i).getName()).isEqualTo(carNames.get(i));
+        }
     }
 
     @DisplayName("한 라운드 진행시 자동차 리스트 이동 테스트")
     @Nested
-    class testPlayRound {
+    class TestPlayRound {
         @Test
         @DisplayName("한 라운드에서 모든 자동차가 이동하지 못하는 경우")
-        public void testNoCarsMoving() {
+        void testNoCarsMoving() {
             //given
             MoveStrategy moveStrategy = () -> false;
             //when
@@ -46,51 +46,27 @@ public class RacingGameTest {
             }
         }
 
-        @Test
-        @DisplayName("한 라운드에서 한 대의 자동차만 이동하는 경우")
-        public void testOneCarMoving() {
+        @ParameterizedTest
+        @ValueSource(ints = {1, 2})
+        @DisplayName("한 라운드에서 일부 자동차만 이동하는 경우")
+        void testSomeCarsMoving(int moveCount) {
             //given
-            MoveStrategy testMoveStrategy = new MoveStrategy() {
-                private int count = 0;
-
-                @Override
-                public boolean canMove() {
-                    return count++ < 1;
-                }
-            };
+            MoveStrategy moveStrategy = createMoveStrategy(moveCount);
             //when
-            racingGame.playRound(testMoveStrategy);
+            racingGame.playRound(moveStrategy);
             //then
             List<Car> cars = racingGame.getCars();
-            assertThat(cars.get(0).getPosition()).isEqualTo(1);
-            assertThat(cars.get(1).getPosition()).isEqualTo(0);
-            assertThat(cars.get(2).getPosition()).isEqualTo(0);
-        }
-
-        @Test
-        @DisplayName("한 라운드에서 두 대의 자동차만 이동하는 경우")
-        public void testTwoCarsMoving() {
-            //given
-            MoveStrategy testMoveStrategy = new MoveStrategy() {
-                private int count = 0;
-
-                @Override
-                public boolean canMove() {
-                    return count++ < 2;
-                }
-            };
-            //when
-            racingGame.playRound(testMoveStrategy);
-            //then
-            List<Car> cars = racingGame.getCars();
-            assertThat(cars.get(0).getPosition()).isEqualTo(1);
-            assertThat(cars.get(1).getPosition()).isEqualTo(1);
-            assertThat(cars.get(2).getPosition()).isEqualTo(0);
+            for (int i = 0; i < moveCount; i++) {
+                assertThat(cars.get(i).getPosition()).isEqualTo(1);
+            }
+            for (int i = moveCount; i < cars.size(); i++) {
+                assertThat(cars.get(i).getPosition()).isEqualTo(0);
+            }
         }
 
         @Test
         @DisplayName("한 라운드에서 모든 자동차가 이동하는 경우")
-        public void testAllCarsMoving() {
+        void testAllCarsMoving() {
             //given
             MoveStrategy moveStrategy = () -> true;
             //when
@@ -104,60 +80,51 @@ public class RacingGameTest {
 
     @Nested
     @DisplayName("우승자 결정 테스트")
-    class testWinner{
+    class TestWinner {
         @Test
         @DisplayName("단일 우승자 테스트")
-        public void testSingleWinner(){
+        void testSingleWinner() {
             //given
-            MoveStrategy testMoveStrategy = new MoveStrategy() {
-                private int count = 0;
 
-                @Override
-                public boolean canMove() {
-                    return count++ < 1;
-                }
-            };
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
             //when
             List<String> winners = racingGame.getWinners();
             //then
-            assertThat(winners).containsExactly("pobi");
+            assertThat(winners).containsExactly(carNames.get(0));
         }
 
         @Test
         @DisplayName("공동 우승자 테스트")
-        public void testMultipleWinner(){
+        void testMultipleWinner() {
             //given
-            MoveStrategy testMoveStrategy = new MoveStrategy() {
-                private int count = 0;
+            MoveStrategy moveStrategy = createMoveStrategy(2);
+            racingGame.playRound(moveStrategy);
+            //when
+            List<String> winners = racingGame.getWinners();
+            //then
+            assertThat(winners).containsExactlyInAnyOrder(carNames.get(0), carNames.get(1));
+        }
 
-                @Override
-                public boolean canMove() {
-                    return count++ < 2;
-                }
-            };
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
-            //when
-            List<String> winners = racingGame.getWinners();
-            //then
-            assertThat(winners).containsExactlyInAnyOrder("pobi","woni");
-        }
         @Test
-        @DisplayName("모든 자동차 이동 x 테스트")
-        public void testAllWinner(){
+        @DisplayName("모든 자동차 이동하지 않는 경우 우승자 테스트")
+        void testNoCarsMovingWinner() {
             //given
-            MoveStrategy testMoveStrategy = () -> false;
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
-            racingGame.playRound(testMoveStrategy);
+            MoveStrategy moveStrategy = () -> false;
+            racingGame.playRound(moveStrategy);
             //when
             List<String> winners = racingGame.getWinners();
             //then
-            assertThat(winners).containsExactlyInAnyOrder("pobi","woni","jun");
+            assertThat(winners).containsExactlyInAnyOrderElementsOf(carNames);
         }
+    }
+
+    private MoveStrategy createMoveStrategy(int moveCount) {
+        return new MoveStrategy() {
+            private int count = moveCount;
+
+            @Override
+            public boolean canMove() {
+                return count-- > 0;
+            }
+        };
     }
 }
