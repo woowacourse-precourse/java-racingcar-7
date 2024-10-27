@@ -6,6 +6,7 @@ import racingcar.application.port.inbound.GameUseCase;
 import racingcar.application.port.inbound.InputPort;
 import racingcar.application.port.outbound.OutputPort;
 import racingcar.infrastructure.exception.EmptyInputException;
+import racingcar.infrastructure.exception.InvalidNumberFormatException;
 import racingcar.infrastructure.exception.NegativeNumberException;
 import racingcar.domain.service.CarRacingManager;
 import racingcar.domain.util.RandomNumberGenerator;
@@ -85,7 +86,7 @@ public class GameService implements GameUseCase {
                 throw new NegativeNumberException();
             }
         } catch (NumberFormatException e) {
-            throw new NumberFormatException();
+            throw new InvalidNumberFormatException();
         }
     }
 
