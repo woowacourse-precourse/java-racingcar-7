@@ -21,7 +21,7 @@ public class Car {
         return this.position;
     }
 
-    public HashMap<String,Integer> randomlyMoveForward() {
+    public HashMap<String, Integer> randomlyMoveForward() {
         if (checkBiggerThanFour()) {
             moveForward();
         }

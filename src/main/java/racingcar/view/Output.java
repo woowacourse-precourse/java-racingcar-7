@@ -22,7 +22,7 @@ public class Output {
 
     private static String getPositionBar(int position) {
         String positionBar = "";
-        for (int i=0; i<position; i++) {
+        for (int i = 0; i < position; i++) {
             positionBar += "-";
         }
         return positionBar;
