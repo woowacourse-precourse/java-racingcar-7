@@ -21,4 +21,19 @@ public class RacingGame {
             car.move(randomValue);
         }
     }
+
+    public List<String> getWinners() {
+        int maxPosition = participatingCars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElse(-1);
+
+        List<String> winners = new ArrayList<>();
+        for (Car car : participatingCars) {
+            if (car.getLocation() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
 }
