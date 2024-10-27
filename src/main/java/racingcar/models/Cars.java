@@ -11,10 +11,16 @@ public class Cars {
         addToCars(carNames);
     }
 
+    public void incrementDistance() {
+        for (Car car : this.cars) {
+            car.incrementDistance();
+        }
+    }
+
+
     private void addToCars(List<String> carNames) {
         for (String carName : carNames) {
             this.cars.add(new Car(carName.trim()));
         }
     }
-
 }
