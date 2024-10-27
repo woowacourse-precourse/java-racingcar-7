@@ -3,9 +3,8 @@ package racingcar;
 public class Parser {
     public static void parseNames(String input) {
         ValidatorForNames validator = new ValidatorForNames();
-        String[] names = input.split(",");
 
-        for (String name : names) {
+        for (String name : input.split(",")) {
             validator.checkValidation(name);
             Data.addCarToCarsByName(name);
         }

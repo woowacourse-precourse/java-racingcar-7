@@ -6,13 +6,24 @@ public class RaceController {
     private static int mostMove;
 
     public static void startRacing() {
-        mostMove = 0;
-        Printer.printMessage(Constants.RESULT);
+        resetRace();
+        informStartRacing();
+        loopForEachLap();
+        informWinner();
+    }
 
+    private static void resetRace() {
+        mostMove = 0;
+    }
+
+    private static void informStartRacing() {
+        Printer.printMessage(Constants.RESULT);
+    }
+
+    private static void loopForEachLap() {
         for (int lap = 0; lap < Data.getRacingCount(); lap++) {
             loopForEachCar();
         }
-        Printer.printMessage(Constants.WINNER + createWinnerString(Data.getCars()));
     }
 
     private static void loopForEachCar() {
@@ -21,7 +32,7 @@ public class RaceController {
         for (Car curCar : cars) {
             int randomNum = NumberMaker.makeRandomNumber();
             applyNumberToCar(randomNum, curCar);
-            Printer.printRaceResult(curCar);
+            informStateOfCar(curCar);
         }
         System.out.print("\n");
     }
@@ -33,6 +44,20 @@ public class RaceController {
         }
     }
 
+    private static void informStateOfCar(Car car) {
+        Printer.printMessage(createResultMessage(car));
+    }
+
+    private static String createResultMessage(Car car) {
+        String result = car.getName() + " : ";
+
+        for (int i = 0; i < car.getMoveCount(); i++) {
+            result += '-';
+        }
+
+        return result;
+    }
+
     private static void setMostMove(int curMove) {
         if (curMove > mostMove) {
             mostMove = curMove;
@@ -40,17 +65,30 @@ public class RaceController {
     }
 
     private static String createWinnerString(ArrayList<Car> cars) {
-        String winner = "";
+        String winnerString = "";
 
         for (Car curCar : cars) {
-            if (curCar.getMoveCount() == mostMove) {
-                if (winner != "") {
-                    winner += ", ";
-                }
-                winner += curCar.getName();
-            }
+            winnerString += extractWinnerName(curCar, winnerString);
         }
 
-        return winner;
+        return winnerString;
+    }
+
+    private static String extractWinnerName(Car curCar, String winnerString) {
+        if (curCar.getMoveCount() == mostMove) {
+            return divideStringByComma(winnerString) + curCar.getName();
+        }
+        return "";
+    }
+
+    private static String divideStringByComma(String winnerString) {
+        if (winnerString != "") {
+            return ", ";
+        }
+        return "";
+    }
+
+    private static void informWinner() {
+        Printer.printMessage(Constants.WINNER + createWinnerString(Data.getCars()));
     }
 }

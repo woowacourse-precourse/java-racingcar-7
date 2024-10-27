@@ -1,6 +1,6 @@
 package racingcar;
-public class ValidatorForCount implements Validater {
-    @Override
+
+public class ValidatorForCount {
     public void checkValidation(String input) {
         checkValidFormat(input);
     }

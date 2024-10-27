@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.HashMap;
 
-public class ValidatorForNames implements Validater {
+public class ValidatorForNames {
     private HashMap<String, Boolean> parsedNames;
     private int nameCount;
     private String curName;
@@ -13,7 +13,6 @@ public class ValidatorForNames implements Validater {
         curName = "";
     }
 
-    @Override
     public void checkValidation(String input) {
         curName = input;
         checkValidFormat();
