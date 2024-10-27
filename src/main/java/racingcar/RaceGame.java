@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 public class RaceGame {
     String[] carNamesList;
     int totalCars;
+    int totalRounds;
 
     //사용자의 입력을 받아들이는 메서드
     String getUserInput() throws IOException{
@@ -47,6 +48,18 @@ public class RaceGame {
             if (carNamesList[i].matches("^( )+$")){
                 throw new IllegalArgumentException("입력값이 공백으로 이루어져 있습니다.");
             }
+        }
+    }
+
+    void getTotalRounds(String userInput){
+        try{
+            this.totalRounds = Integer.parseInt(userInput);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+
+        if (totalRounds < 1){
+            throw new IllegalArgumentException();
         }
     }
 
