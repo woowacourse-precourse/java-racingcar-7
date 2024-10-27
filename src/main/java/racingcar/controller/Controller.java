@@ -31,7 +31,8 @@ public class Controller {
         outputView.printBlank();
 
         startGame(player, scoreBoard, tryCount);
-        outputView.printResult(scoreBoard.returnFinalResult());
+        String finalResult = scoreBoard.returnFinalResult().getResult();
+        outputView.printResult(finalResult);
     }
 
     private void startGame(Player player, ScoreBoard scoreBoard, int tryCount) {
