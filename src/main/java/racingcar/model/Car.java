@@ -10,6 +10,7 @@ import racingcar.util.randomnumber.RandomNumberStrategy;
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
+    private static final int MIN_MOVE_CONDITION = 4;
 
     private final Name name;
     private final Position position;
@@ -27,7 +28,7 @@ public class Car {
 
     public void isMove() {
         int randomNumber = createRandomNumber();
-        if (isRandomNumberSize(randomNumber)) {
+        if (isMoveCondition(randomNumber)) {
             moveForward();
         }
     }
@@ -52,8 +53,8 @@ public class Car {
         return randomNumberStrategy.generateNumber();
     }
 
-    private boolean isRandomNumberSize(int randomNumber) {
-        return randomNumber >= 4;
+    private boolean isMoveCondition(int randomNumber) {
+        return randomNumber >= MIN_MOVE_CONDITION;
     }
 
     private void moveForward() {
