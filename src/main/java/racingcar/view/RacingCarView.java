@@ -14,6 +14,11 @@ public class RacingCarView {
         return Console.readLine();
     }
 
-    public void printResult() {
+    public void printRoundResult(String roundResult) {
+        System.out.println(roundResult);
+    }
+
+    public void printRaceResult(String raceResult) {
+        System.out.println("최종 우승자 : " + raceResult);
     }
 }
