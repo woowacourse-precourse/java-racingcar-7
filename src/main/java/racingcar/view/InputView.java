@@ -3,7 +3,11 @@ package racingcar.view;
 import racingcar.util.CommonIo;
 
 public class InputView {
-    private CommonIo io = new CommonIo();
+    private final CommonIo io;
+
+    public InputView(){
+        this.io = new CommonIo();
+    }
 
     public String receiveCarNames() {
         String original = io.receiveInput();
