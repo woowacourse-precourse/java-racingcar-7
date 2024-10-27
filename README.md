@@ -1,5 +1,31 @@
 # java-racingcar-precourse
 
+## 폴더 구조
+
+```
+├── Application.java
+├── controller
+│   └── Controller.java
+├── domain
+│   ├── car
+│   │   ├── Car.java
+│   │   ├── CarFactory.java
+│   │   ├── CarType.java
+│   │   └── strategy
+│   │       ├── FixedMoveStrategy.java
+│   │       ├── MoveStrategy.java
+│   │       ├── RandomMoveStrategy.java
+│   │       └── StopMoveStrategy.java
+│   └── racing
+│       ├── Racing.java
+│       └── RacingConfig.java
+├── dto
+│   └── UserInput.java
+└── view
+    ├── InputView.java
+    └── OutputView.java
+```
+
 ## 🎯 구현할 기능 목록
 
 ### ✅ 입력
