@@ -15,7 +15,7 @@ public class Car {
     }
 
     public static Car from(String name) {
-        return new Car(name);
+        return new Car(name.strip());
     }
 
     public void addAdvanceMarker() {
