@@ -45,12 +45,21 @@ public class RaceSystem {
                 car.move();
             }
 
-            String distance = "-".repeat(car.getDistance());
-            result.append(car.getName());
-            result.append(" : ");
-            result.append(distance);
-            result.append('\n');
+            StringBuilder carStatus = getCarStatus(car);
+            result.append(carStatus);
         }
+
+        return result;
+    }
+
+    private StringBuilder getCarStatus(Car car) {
+        String distance = "-".repeat(car.getDistance());
+
+        StringBuilder result = new StringBuilder();
+        result.append(car.getName());
+        result.append(" : ");
+        result.append(distance);
+        result.append('\n');
 
         return result;
     }
