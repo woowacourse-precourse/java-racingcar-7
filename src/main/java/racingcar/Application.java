@@ -21,7 +21,9 @@ public class Application {
     }
 
     private static List<Car> createCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
+        List<Car> cars;
+
+        cars = new ArrayList<>();
         for (String name : carNames) {
             cars.add(new Car(name.trim()));
         }
