@@ -20,10 +20,6 @@ public class CarNamesValidator {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
         }
-
-        if (carNames.size() == 1 && carNames.getFirst().trim().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private static void validateCarNameNotEmpty(ArrayList<String> carNames){
