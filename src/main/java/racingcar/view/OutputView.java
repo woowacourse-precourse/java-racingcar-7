@@ -17,4 +17,8 @@ public class OutputView {
     public void printBlankLine() {
         System.out.println();
     }
+
+    public void printErrorMessage(Exception exception) {
+        System.out.println("Error: " + exception.getMessage());
+    }
 }

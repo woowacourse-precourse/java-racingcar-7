@@ -26,9 +26,13 @@ public class Controller {
     }
 
     public void startRace() {
-        Cars cars = initializeCars();
-        runRaceRounds(cars);
-        announceOfWinners(cars);
+        try {
+            Cars cars = initializeCars();
+            runRaceRounds(cars);
+            announceOfWinners(cars);
+        } catch (IllegalArgumentException error) {
+            outputView.printErrorMessage(error);
+        }
     }
 
     private Cars initializeCars() {
