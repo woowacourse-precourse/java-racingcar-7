@@ -10,11 +10,15 @@ public class Validator {
         List<String> carNameList = new ArrayList<>();
         for (String carName : carNames.split(",", -1)) {
             String stripCarName = carName.strip();
-            checkEmptyName(stripCarName);
-            checkCarNameLength(stripCarName);
-            checkDuplicateName(stripCarName, carNameList);
+            checkConditionForName(stripCarName, carNameList);
             carNameList.add(stripCarName);
         }
+    }
+
+    static void checkConditionForName(String carName, List<String> carNameList) {
+        checkEmptyName(carName);
+        checkCarNameLength(carName);
+        checkDuplicateName(carName, carNameList);
     }
 
     static void checkDuplicateName(String carName, List<String> carNameList) {
