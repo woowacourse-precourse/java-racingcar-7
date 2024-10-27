@@ -1,5 +1,6 @@
 package racingcar.racing;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import racingcar.car.Car;
@@ -45,12 +46,13 @@ public class RaceSimulator {
     }
 
     public static String getRacingWinner(List<Car> cars) {
+        List<Car> copyCars = new ArrayList<>(cars);
         StringBuilder winners = new StringBuilder();
-        int moveDistanceMax = getMoveDistanceMax(cars);
+        int moveDistanceMax = getMoveDistanceMax(copyCars);
 
-        winners.append(cars.getFirst().getCarName());
-        for (int i = 1; i < cars.size(); i++) {
-            Car car = cars.get(i);
+        winners.append(copyCars.getFirst().getCarName());
+        for (int i = 1; i < copyCars.size(); i++) {
+            Car car = copyCars.get(i);
             if (car.getMoveDistance() != moveDistanceMax) {
                 break;
             }
