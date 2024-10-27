@@ -1,18 +1,15 @@
 package racingcar;
 
-import java.util.List;
+import racingcar.application.RandomForwardPolicy;
 import racingcar.application.converter.CarNamesConverter;
 import racingcar.application.converter.CountConverter;
-import racingcar.application.converter.InputStringConverter;
-import racingcar.domain.car.Car;
-import racingcar.domain.game.Display;
+import racingcar.application.validation.CarNameValidator;
+import racingcar.application.validation.CountValidator;
+import racingcar.application.validation.Validator;
 import racingcar.domain.car.ForwardPolicy;
-import racingcar.application.RandomForwardPolicy;
+import racingcar.domain.game.Display;
 import racingcar.io.DisplayImpl;
 import racingcar.io.InputStringReader;
-import racingcar.io.validation.CarNameValidator;
-import racingcar.io.validation.CountValidator;
-import racingcar.io.validation.Validator;
 
 public class AppConfig {
 

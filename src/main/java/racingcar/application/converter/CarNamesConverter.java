@@ -3,7 +3,7 @@ package racingcar.application.converter;
 import java.util.List;
 import racingcar.AppConfig;
 import racingcar.domain.car.Car;
-import racingcar.io.validation.Validator;
+import racingcar.application.validation.Validator;
 
 public class CarNamesConverter extends InputStringConverter<List<Car>> {
 

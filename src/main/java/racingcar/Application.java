@@ -3,7 +3,6 @@ package racingcar;
 import java.util.List;
 import racingcar.application.converter.CarNamesConverter;
 import racingcar.application.converter.CountConverter;
-import racingcar.application.converter.InputStringConverter;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.ForwardPolicy;
 import racingcar.domain.game.Display;

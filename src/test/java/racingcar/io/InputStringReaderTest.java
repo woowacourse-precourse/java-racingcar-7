@@ -3,9 +3,7 @@ package racingcar.io;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
-import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
 
 class InputStringReaderTest {
 

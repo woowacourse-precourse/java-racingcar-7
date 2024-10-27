@@ -1,7 +1,7 @@
 package racingcar.application.converter;
 
 import racingcar.AppConfig;
-import racingcar.io.validation.Validator;
+import racingcar.application.validation.Validator;
 
 public class CountConverter extends InputStringConverter<Integer> {
 

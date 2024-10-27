@@ -1,4 +1,4 @@
-package racingcar.io.validation;
+package racingcar.application.validation;
 
 public class CountValidator implements Validator {
 
@@ -9,7 +9,7 @@ public class CountValidator implements Validator {
         }
 
         string = string.trim();
-        
+
         if (!string.matches("\\d*")) {
             throw new IllegalArgumentException("정수만 입력 가능합니다.");
         }
