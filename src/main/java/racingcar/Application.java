@@ -12,18 +12,7 @@ import java.util.Map;
 public class Application {
     public static void main(String[] args) {
         List<String> racingCarNames = getRacingCarNames();
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String rawTryCount = Console.readLine();
-
-        if (!rawTryCount.matches("[0-9]+")) {
-            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
-        }
-
-        int tryCount = Integer.parseInt(rawTryCount);
-        if (tryCount < 1) {
-            throw new IllegalArgumentException("1 이상의 양수만 입력 가능합니다.");
-        }
+        int tryCount = getTryCount();
 
         Map<String, Integer> carPositions = new HashMap<>();
         for (String car : racingCarNames) {
@@ -77,6 +66,29 @@ public class Application {
     private static void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
+        }
+    }
+
+    private static int getTryCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String rawTryCount = Console.readLine();
+        validateNumber(rawTryCount);
+
+        int tryCount = Integer.parseInt(rawTryCount);
+        validatePositiveNumber(tryCount);
+
+        return tryCount;
+    }
+
+    private static void validateNumber(String number) {
+        if (!number.matches("[0-9]+")) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+    }
+
+    private static void validatePositiveNumber(Integer number) {
+        if (number < 1) {
+            throw new IllegalArgumentException("1 이상의 양수만 입력 가능합니다.");
         }
     }
 }
