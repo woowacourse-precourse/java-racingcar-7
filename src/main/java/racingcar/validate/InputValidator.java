@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidator {
     private static final Pattern ALPHABET_AND_COMMA_REGEX = Pattern.compile("[a-zA-Z,]+");
     private static final Pattern CONTINUOUS_COMMA_REGEX = Pattern.compile(",{2,}");
+    private static final Pattern ONLY_NUMBER_REGEX = Pattern.compile("[0-9]");
 
     public void noNull(final String inputCarNames) {
         if (inputCarNames == null) {
@@ -39,6 +40,12 @@ public class InputValidator {
     public void hasNoContinuousComma(final String inputCarNames) {
         if (CONTINUOUS_COMMA_REGEX.matcher(inputCarNames).find()) {
             throw new IllegalArgumentException("쉼표(\",\"가 연속으로 입력되서는 안됩니다.");
+        }
+    }
+
+    public void onlyInputNumber(final String inputAttemptCount) {
+        if (!ONLY_NUMBER_REGEX.matcher(inputAttemptCount).matches()) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다.");
         }
     }
 }

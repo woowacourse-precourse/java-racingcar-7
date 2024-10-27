@@ -66,6 +66,15 @@ class InputValidatorTest {
                 () -> inputValidator.hasNoContinuousComma(inputCarNames));
     }
 
+    @DisplayName("시도 횟수는 숫자만 입력 가능합니다.")
+    @MethodSource("provideOnlyInputNumberTestCases")
+    @ParameterizedTest(name = "입력값: \"{0}\"")
+    void onlyInputNumber(String inputAttemptCount) {
+        assertThrows(IllegalArgumentException.class, () ->
+                inputValidator.onlyInputNumber(inputAttemptCount)
+        );
+    }
+
     private static Stream<Arguments> provideNoBlankTestCases() {
         return Stream.of(
                 Arguments.of(""), // 빈 문자열
@@ -78,6 +87,15 @@ class InputValidatorTest {
                 Arguments.of("pobi woni jun"), // 띄어쓰기
                 Arguments.of("pobi.woni?jun"), // 다른 문자
                 Arguments.of("포비,워니,준")
+        );
+    }
+
+    private static Stream<Arguments> provideOnlyInputNumberTestCases() {
+        return Stream.of(
+                Arguments.of("pobi"), // 문자열
+                Arguments.of("5.3"),          // 소수점
+                Arguments.of("-5"),           // 음수
+                Arguments.of("")              // empty
         );
     }
 }
