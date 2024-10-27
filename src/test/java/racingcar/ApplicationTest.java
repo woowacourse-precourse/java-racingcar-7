@@ -24,6 +24,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 플레이어_정상입력(){
+        assertSimpleTest(
+                ()-> {
+                    run("pobi,woni","1");
+                    assertThat(output()).contains("players: pobi, woni");
+                }
+        );
+    }
+
+    @Test
+    void 횟수_입력(){
+        assertSimpleTest(
+                ()-> {
+                    run("pobi,woni","1");
+                    assertThat(output()).contains("count: 1");
+                }
+        );
+    }
+
+    
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
@@ -31,6 +53,41 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_이상한문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java!", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이상한숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_음수() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java!", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 동시_우승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "3");
+                    assertThat(output()).contains("pobi : -", "woni : -", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD,STOP,STOP
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
