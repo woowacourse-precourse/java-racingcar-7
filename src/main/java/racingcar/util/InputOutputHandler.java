@@ -5,7 +5,6 @@ import java.util.List;
 import racingcar.domain.Car;
 
 public class InputOutputHandler {
-
     private final InputParser inputParser;
 
     public InputOutputHandler() {

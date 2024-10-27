@@ -6,7 +6,6 @@ import racingcar.util.InputOutputHandler;
 import racingcar.util.RandomMovementDecider;
 
 public class Game {
-
     private final InputOutputHandler ioHandler;
 
     public Game() {
@@ -14,8 +13,7 @@ public class Game {
     }
 
     public void play() {
-        List<String> carNames = ioHandler.getCarNames();
-        List<Car> cars = createCars(carNames);
+        List<Car> cars = initializeCars();
         int round = ioHandler.getRound();
 
         ioHandler.printRunResult();
@@ -26,6 +24,11 @@ public class Game {
 
         List<Car> winners = determineWinners(cars);
         ioHandler.printWinners(winners);
+    }
+
+    private List<Car> initializeCars() {
+        List<String> carNames = ioHandler.getCarNames();
+        return createCars(carNames);
     }
 
     private List<Car> createCars(List<String> carNames) {
