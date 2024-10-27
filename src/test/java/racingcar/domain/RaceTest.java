@@ -8,12 +8,15 @@ import org.junit.jupiter.api.Test;
 
 class RaceTest {
 
+    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator stopGenerator = () -> 3;
+
     @DisplayName("자동차 이름 분리 성공")
     @Test
     void parseCarNamesTest() {
         String rawCarNames = "pobi,woni";
 
-        Race race = new Race(rawCarNames);
+        Race race = new Race(rawCarNames, stopGenerator);
 
         Assertions.assertThat(race.getCars().get(0).getName()).isEqualTo("pobi");
         Assertions.assertThat(race.getCars().get(1).getName()).isEqualTo("woni");
@@ -22,7 +25,7 @@ class RaceTest {
     @DisplayName("우승자 판별 성공")
     @Test
     void findWinnersTest() {
-        Race race = new Race("pobi,woni");
+        Race race = new Race("pobi,woni", forwardGenerator);
 
         race.getCars().get(0).move();
         List<Car> winners = race.findWinners();

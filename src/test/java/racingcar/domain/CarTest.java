@@ -6,12 +6,15 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
+    NumberGenerator forwardGenerator = () -> 4;
+    NumberGenerator stopGenerator = () -> 3;
+
     @DisplayName("자동차 생성 성공")
     @Test
     void carTest() {
         String carName = "pobi";
 
-        Car car = new Car(carName);
+        Car car = new Car(carName, stopGenerator);
 
         Assertions.assertThat(car.getName()).isEqualTo(carName);
     }
@@ -21,7 +24,7 @@ class CarTest {
     void validateNameTest() {
         String carName = "javaji";
 
-        Assertions.assertThatThrownBy(() -> new Car(carName))
+        Assertions.assertThatThrownBy(() -> new Car(carName, stopGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하여야 합니다.");
     }
@@ -29,7 +32,7 @@ class CarTest {
     @DisplayName("자동차 전진 성공")
     @Test
     void moveTest() {
-        Car car = new Car("pobi");
+        Car car = new Car("pobi", forwardGenerator);
 
         car.move();
 
