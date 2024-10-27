@@ -39,6 +39,7 @@ public class InputValidator {
     private static void validateCarName(String input) {
         String[] names = input.split(",");
         for (String name : names) {
+            name = name.trim();
             if (name.length() < ValidationMode.CAR_NAME.getMin() || name.length() > ValidationMode.CAR_NAME.getMax())
                 throw new IllegalArgumentException(
                         InvalidInputExceptionMessage.carNameLength(
