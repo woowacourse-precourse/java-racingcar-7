@@ -19,7 +19,7 @@ public class UserInputValidator {
     }
 
     private int validateTrialCount(String trialCount) {
-        if (trialCount.chars().allMatch(Character::isDigit)) {
+        if (trialCount.chars().allMatch(Character::isDigit) && !trialCount.isEmpty()) {
             int parsedCount = Integer.parseInt(trialCount);
             validatePositive(parsedCount);
             return parsedCount;
