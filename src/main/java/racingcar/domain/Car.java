@@ -36,4 +36,8 @@ public class Car {
     public Integer getGoCnt() {
         return goCnt;
     }
+
+    public String getName() {
+        return name;
+    }
 }

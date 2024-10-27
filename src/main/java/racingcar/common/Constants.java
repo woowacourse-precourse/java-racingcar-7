@@ -6,9 +6,11 @@ public class Constants {
     public static String GAME_START_PROMPT = "\n실행 결과";
     public static String ROUND_RESULT_PROMPT = " : ";
     public static String PER_ROUND_PROMPT = "";
+    public static String RESULT_PROMPT = "최종 우승자 : ";
 
     public static String ONLY_POSITIVE = "^[1-9]\\d*$";
     public static String MOVE = "-";
+    public static String DELIMITER = ",";
 
     public static Integer START_LOCATION = 0;
     public static Integer MAX_NAME_LENGTH = 5;

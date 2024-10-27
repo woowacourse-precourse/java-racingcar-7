@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import static racingcar.service.ValidationService.validateGameCount;
 
+import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.RandomNumber;
 import racingcar.domain.Winners;
@@ -43,6 +44,9 @@ public class Racing {
 
     public void result(GameDataDto gameDataDto) {
         Winners winners = carService.getWinners(gameDataDto.getCars());
+
+        String winnerNames = winners.getNames();
+        outputView.showWinners(winnerNames);
     }
 
     private void racing (GameDataDto gameDataDto) {
