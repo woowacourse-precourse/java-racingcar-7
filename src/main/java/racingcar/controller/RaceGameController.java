@@ -2,8 +2,10 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Referee;
 import racingcar.domain.TrialCount;
 import racingcar.service.RaceGameService;
+import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.parser.InputStringParser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -26,7 +28,16 @@ public class RaceGameController {
     public void run() {
         String racerNames = requestInputStringRacerName();
         List<Car> cars = raceGameService.enrollRacer(racerNames, new InputStringParser());
-        final TrialCount trialCount = new TrialCount(requestInputTrialCount());
+        final TrialCount trialCount = requestInputTrialCount();
+        progressGame(trialCount.getAmount(), cars);
+    }
+
+    private void progressGame(final int trialCount, List<Car> cars) {
+        outputView.printRoundResultStart();
+        for (int i = 0; i < trialCount; i++){
+            raceGameService.progressRound(cars, new Referee(new RandomNumberGenerator()));
+            outputView.printRoundResultDetail(cars);
+        }
     }
 
     private String requestInputStringRacerName() {
@@ -34,8 +45,8 @@ public class RaceGameController {
         return inputView.read();
     }
 
-    private String requestInputTrialCount(){
+    private TrialCount requestInputTrialCount(){
         outputView.printAskInputTrialCount();
-        return inputView.read();
+        return new TrialCount(inputView.read());
     }
 }

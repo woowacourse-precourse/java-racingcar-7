@@ -12,7 +12,7 @@ public class TrialCount {
     }
 
     public int getAmount() {
-        return this.getAmount();
+        return this.amount;
     }
 
     private void validateIsNumber(final String str) {
