@@ -10,10 +10,11 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Game {
+    private final String DELIMITER = ",";
 
-    public void run(){
+    public void startRacing(){
         String rawCarNames = InputView.requestCarNames();
-        List<String> carNames = Parser.parse(rawCarNames);
+        List<String> carNames = Parser.parse(rawCarNames,DELIMITER);
         CarNamesValidator.validate(carNames);
         Cars cars = new Cars(carNames);
 
