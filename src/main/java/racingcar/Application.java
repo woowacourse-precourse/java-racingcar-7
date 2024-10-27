@@ -23,6 +23,7 @@ public class Application {
             printRoundResults(cars);
             System.out.println();
         }
+        printWinner(cars);
     }
     public static void validateCarNames(String[] carNames) {
         for(String carName : carNames) {
@@ -48,5 +49,16 @@ public class Application {
             }
         }
     }
+    public static void printWinner(HashMap<String, Integer> cars) {
+        int maxValue = Collections.max(cars.values());
+        String championsList = "";
 
+        for(Map.Entry<String, Integer> car : cars.entrySet()) {
+            if(car.getValue() == maxValue){
+                championsList += car.getKey()+" ";
+            }
+        }
+        championsList = championsList.trim().replace(" ",", ");
+        System.out.println("최종 우승자 : "+ championsList);
+    }
 }
