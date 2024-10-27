@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class Judge {
     private static ArrayList<String> winnerList = new ArrayList<>();
+    private static int maxMoveLength;
+
 
     ArrayList<String> judgeWinner (ArrayList<Car> carList){
-        int moveLength = carList.get(0).getMoveList().size();
         for (Car car : carList) {
-            if(car.getMoveList().size() >= moveLength){
+            if (car.getMoveList().size() == maxMoveLength) {
                 winnerList.add(car.getName());
             }
         }
