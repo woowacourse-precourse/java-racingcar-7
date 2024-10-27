@@ -1,34 +1,37 @@
 package controller;
 
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import service.RacingcarService;
-import validators.CarValidator;
+import service.CarSetService;
+import service.GameService;
 import validators.RoundValidator;
 import view.InputView;
 import view.OutputView;
 
-public class RacingcarController {
+public class RacingController {
 
-    private final OutputView outputView;
     private final InputView inputView;
-    private final RacingcarService service;
+    private final OutputView outputView;
+    private final GameService gameService;
+    private final CarSetService carSetService;
 
-    public RacingcarController(InputView inputView, OutputView outputView, RacingcarService service) {
+    public RacingController(InputView inputView, OutputView outputView, GameService gameService, CarSetService carSetService) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.service = service;
+        this.gameService = gameService;
+        this.carSetService = carSetService;
     }
 
     public void start() {
         String carName = inputView.getInputCarName();
-        Set<String> uniqueNames = new HashSet<>();
-        service.getCars(carName);
-        CarValidator.validateCarName(carName,uniqueNames);
-        int rounds = inputView.getRounds();
+        carSetService.getCars(carName);
+
+        String roundsInput = inputView.getRounds();
+        RoundValidator.StringValidate(Collections.singletonList(roundsInput));
+
+        int rounds = Integer.parseInt(roundsInput);
         RoundValidator.countValidate(Collections.singletonList(rounds));
-        String roundResults = service.playRounds(rounds);
+
+        String roundResults = gameService.playRounds(rounds);
         outputView.gameResultMessage(roundResults);
         outputView.gameWinnerMessage();
     }
