@@ -6,7 +6,7 @@ import racingcar.model.Racing;
 public class RacingService {
 
     public RacingResult racing(Racing racing) {
-        racing.startRacing();
+        racing.start();
 
         return new RacingResult(racing.getRacingRecord(), racing.getWinners());
     }

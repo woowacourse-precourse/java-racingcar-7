@@ -18,12 +18,12 @@ public class Car {
         this.forwardCount = 0;
     }
 
-    public String forwardProcess() {
+    public String moveAndFormatProgress() {
         if (isForwardable()) {
             this.forwardCount++;
         }
 
-        return carName + " : " + PROGRESS_BAR.repeat(forwardCount);
+        return formatCarProgress();
     }
 
     public String getCarName() {
@@ -32,6 +32,10 @@ public class Car {
 
     public int getForwardCount() {
         return forwardCount;
+    }
+
+    private String formatCarProgress() {
+        return carName + " : " + PROGRESS_BAR.repeat(forwardCount);
     }
 
     private void checkCarNameIsValid(String carName) {

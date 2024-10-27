@@ -15,9 +15,9 @@ public class Racing {
         this.racingRecord = new RacingRecord();
     }
 
-    public void startRacing() {
+    public void start() {
         IntStream.range(0, tryCount)
-                .mapToObj(i -> racingCars.racing())
+                .mapToObj(i -> racingCars.recordRoundProgress())
                 .forEach(racingRecord::addRoundRecordLog);
     }
 
