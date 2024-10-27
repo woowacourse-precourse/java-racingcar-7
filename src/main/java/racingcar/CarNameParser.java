@@ -44,14 +44,31 @@ public class CarNameParser {
         }
     }
 
+    /**
+     * 중복되는 자동차 이름이 있는지 확인하는 메서드
+     * */
+    public void hasDuplicateCarNames(List<String> carNames){
+        Set<String> carNamesSet = new HashSet<>(carNames);
+        if(carNamesSet.size() != carNames.size()){
+            throw new IllegalArgumentException("중복되는 이름이 있습니다.");
+        }
+    }
 
     /**
      * 자동차 이름 배열을 검증하고 리스트로 반환하는 메서드
+     *  -자동차 이름 유효성 검증과 중복 검증 후 리스트 반환
      * @param splitCarNames 쉼표 기준으로 분리한 문자열 배열
      * @return 유효성이 검증된 자동차 이름 리스트
      * */
     public List<String> getValidatedCarNames(String[] splitCarNames) {
-        return Arrays.stream(splitCarNames).peek(this::validateCarName).toList();
+        // 자동차 이름 유효성 검증
+        List<String> validatedCarNames = Arrays.stream(splitCarNames)
+                .peek(this::validateCarName)
+                .toList();
+        // 중복 검증
+        hasDuplicateCarNames(validatedCarNames);
+
+        return validatedCarNames;
     }
 
 }
