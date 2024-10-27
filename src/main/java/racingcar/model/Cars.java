@@ -1,5 +1,8 @@
 package racingcar.model;
 
+import static racingcar.common.ErrorMessage.NOT_DUPLICATE_CAR_NAME;
+import static racingcar.common.ErrorMessage.NOT_SAME_CARS_SIZE_AND_NUMBER_SIZE;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +24,7 @@ public class Cars {
         List<String> carNames = cars.stream().map(car -> car.getName()).toList();
         Set<String> distinctCarNames = cars.stream().map(car -> car.getName()).collect(Collectors.toSet());
         if(!Objects.equals(carNames.size(), distinctCarNames.size())){
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(NOT_DUPLICATE_CAR_NAME.getMessage());
         }
     }
 
@@ -44,7 +47,7 @@ public class Cars {
 
     private void validateSize(List<Integer> randomNumbers) {
         if(!Objects.equals(randomNumbers.size(), cars.size())){
-            throw new IllegalArgumentException("자동차 수에 맞게 무작위 값이 입력되어야합니다.");
+            throw new IllegalArgumentException(NOT_SAME_CARS_SIZE_AND_NUMBER_SIZE.getMessage());
         }
     }
 

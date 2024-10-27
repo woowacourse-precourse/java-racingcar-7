@@ -1,4 +1,8 @@
 package racingcar.model;
+
+import static racingcar.common.ErrorMessage.NOT_CAR_NAME_OVER_FIVE;
+import static racingcar.common.ErrorMessage.NOT_NULL_AND_NOT_BLANK;
+
 public class Name {
     private final String name;
     private Name(String name){
@@ -11,13 +15,13 @@ public class Name {
     }
     private void validateNullAndBlank(String name){
         if(name == null || name.isBlank()){
-            throw new IllegalArgumentException("입력이 null이거나 빈 문자열일 수 없다.");
+            throw new IllegalArgumentException(NOT_NULL_AND_NOT_BLANK.getMessage());
         }
     }
 
     private void validateLength(String name){
         if(name.length() > 5){
-            throw new IllegalArgumentException("자동차 이름은 5자 이하입니다.");
+            throw new IllegalArgumentException(NOT_CAR_NAME_OVER_FIVE.getMessage());
         }
     }
 

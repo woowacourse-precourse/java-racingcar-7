@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.common.ErrorMessage.NOT_NULL_AND_NOT_BLANK;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -25,7 +27,7 @@ public class InputView {
 
     private void validateNullAndBlank(String input){
         if(input == null || input.isBlank()){
-            throw new IllegalArgumentException("입력이 null이거나 빈 문자열일 수 없다.");
+            throw new IllegalArgumentException(NOT_NULL_AND_NOT_BLANK.getMessage());
         }
     }
 }
