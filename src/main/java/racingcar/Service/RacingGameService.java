@@ -30,4 +30,14 @@ public class RacingGameService {
         }
     }
 
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream() // 가장 먼 값 찾기
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream() // 가장 멀리간 차들 추출
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
 }

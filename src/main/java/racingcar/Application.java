@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.Controller.RacingGameController;
+import racingcar.Entity.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,8 @@ public class Application {
         tmp = Console.readLine();
         int attemptCount = Integer.parseInt(tmp);
 
-        racingGameController.RacingGame(carNames, attemptCount);
+        String winnerNames = racingGameController.RacingGame(carNames, attemptCount);
 
+        System.out.println("최종 우승자 : " + winnerNames);
     }
 }

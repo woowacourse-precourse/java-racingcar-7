@@ -4,9 +4,10 @@ import racingcar.Entity.Car;
 import racingcar.Service.RacingGameService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameController {
-    public void RacingGame(List<String> carsname, int attemptCount){
+    public String RacingGame(List<String> carsname, int attemptCount){
 
         RacingGameService racingGameService = new RacingGameService(carsname, attemptCount);
 
@@ -20,6 +21,11 @@ public class RacingGameController {
             System.out.println();
         }
 
+        List<Car> winners = racingGameService.getWinners();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
 
+        return winnerNames;
     }
 }
