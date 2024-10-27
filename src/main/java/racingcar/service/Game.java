@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.service;
 
-import static racingcar.Constant.PRINT_RESULT_MESSAGE;
+import static racingcar.util.Constant.PRINT_RESULT_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.util.InputUtils;
+import racingcar.util.OutputUtils;
 
 public class Game {
     List<Car> carList = new ArrayList<>();

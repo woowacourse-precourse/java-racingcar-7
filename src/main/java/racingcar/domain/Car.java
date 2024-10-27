@@ -1,15 +1,15 @@
-package racingcar;
+package racingcar.domain;
 
-import static racingcar.Constant.MAX_RANDOM;
-import static racingcar.Constant.MIN_RANDOM;
-import static racingcar.Constant.STANDARD_FOR_MOVING;
+import static racingcar.util.Constant.MAX_RANDOM;
+import static racingcar.util.Constant.MIN_RANDOM;
+import static racingcar.util.Constant.STANDARD_FOR_MOVING;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
     private final String name;
     private int position = 0;
-    Car(String name){
+    public Car(String name){
         this.name = name;
     }
 

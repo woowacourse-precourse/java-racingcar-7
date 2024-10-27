@@ -1,11 +1,12 @@
-package racingcar;
+package racingcar.util;
 
-import static racingcar.Constant.*;
+import static racingcar.util.Constant.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
 
 public class OutputUtils {
 

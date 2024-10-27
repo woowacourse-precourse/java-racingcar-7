@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class Constant {
     public static final String NAME_SEPARATOR = ",";

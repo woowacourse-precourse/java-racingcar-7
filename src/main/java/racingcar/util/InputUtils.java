@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.util;
 
-import static racingcar.Constant.*;
+import static racingcar.util.Constant.*;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.Car;
 
 public class InputUtils {
     public static List<Car> inputCarName() {
