@@ -8,24 +8,18 @@ import org.junit.jupiter.api.Test;
 class RoundTest {
 
     @Test
-    void hasNext() {
-        Round round1 = new Round(1);
-        Round round2 = new Round(2);
-
-        assertThat(round1.hasNext()).isFalse();
-        assertThat(round2.hasNext()).isTrue();
-    }
-
-    @Test
-    void next() {
+    void Round_진행_테스트() {
         Round round = new Round(3);
 
-        assertThat(round.getCurrent()).isEqualTo(1);
+        assertThat(round.getCurrent()).isEqualTo(0);
         round.next();
-        assertThat(round.getCurrent()).isEqualTo(2);
+        assertThat(round.getCurrent()).isEqualTo(1);
 
         round.next();
+        assertThat(round.getCurrent()).isEqualTo(2);
+        round.next();
         assertThat(round.getCurrent()).isEqualTo(3);
+        assertThat(round.hasNext()).isFalse();
     }
 
     @Test
