@@ -27,8 +27,8 @@ class RefereeTest {
     }
 
     private Cars getCars() {
-        String input = "pobi,woni,jun";
-        return Cars.getInstance(input);
+        List<String> names = List.of("pobi", "woni", "jun");
+        return Cars.getInstance(names);
     }
 
 }

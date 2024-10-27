@@ -3,7 +3,6 @@ package racingcar.model;
 import static racingcar.common.ErrorMessage.NOT_DUPLICATE_CAR_NAME;
 import static racingcar.common.ErrorMessage.NOT_SAME_CARS_SIZE_AND_NUMBER_SIZE;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -28,8 +27,8 @@ public class Cars {
         }
     }
 
-    public static Cars getInstance(String input) {
-        return new Cars(Arrays.stream(input.split(",")).toList());
+    public static Cars getInstance(List<String> rawNames) {
+        return new Cars(rawNames);
     }
 
     public List<Car> getCars(){

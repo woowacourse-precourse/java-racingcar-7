@@ -19,14 +19,14 @@ class CarsTest {
 
     @Test
     void 쉼표를_기준으로_자른_이름이_5글자_보다_클_경우() {
-        String input = "daesun,woni,jun";
-        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(input));
+        List<String> rawNames = List.of("daesun", "woni", "jun");
+        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(rawNames));
     }
 
     @Test
     void 쉼표를_기준으로_자른_이름이_중복_될_경우_예외_발생(){
-        String input = "pobi,woni,woni";
-        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(input));
+        List<String> rawNames = List.of("pobi", "woni", "woni");
+        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(rawNames));
     }
 
     @Test
@@ -69,8 +69,8 @@ class CarsTest {
     }
 
     private Cars getCars() {
-        String input = "pobi,woni,jun";
-        return Cars.getInstance(input);
+        List<String> names = List.of("pobi", "woni", "jun");
+        return Cars.getInstance(names);
     }
 
 }
