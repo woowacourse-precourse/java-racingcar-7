@@ -8,8 +8,6 @@ import racingcar.domain.Cars;
 import racingcar.domain.Rounds;
 
 class ValidateTest {
-    private final int MAX_NAME_LENGTH = 5;
-
     RacingGame racingGame = new RacingGame();
 
     @ParameterizedTest

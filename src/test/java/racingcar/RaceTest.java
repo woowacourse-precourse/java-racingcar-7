@@ -3,7 +3,6 @@ package racingcar;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.RacingGame;
 import racingcar.domain.Cars;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;

@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
 
 public class Car {
     private final int MAX_NAME_LENGTH = 5;
@@ -32,10 +31,10 @@ public class Car {
 
     private String checkBlank(String name) {
         String result = String.valueOf(name);
-        if(name.isBlank()) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
         }
-        if(name.substring(0,1).equals(" ") || name.substring(name.length()-1,name.length()).equals(" ")) {
+        if (name.substring(0, 1).equals(" ") || name.substring(name.length() - 1, name.length()).equals(" ")) {
             result = handleBlank(result);
         }
         return result;
@@ -44,19 +43,19 @@ public class Car {
     private String handleBlank(String name) {
         int startIndex = 0;
         int endIndex = name.length();
-        for(int i = 0; i < name.length(); i++) {
-            if(!name.substring(i,i+1).equals(" ")) {
+        for (int i = 0; i < name.length(); i++) {
+            if (!name.substring(i, i + 1).equals(" ")) {
                 startIndex = i;
                 break;
             }
         }
-        for(int i = name.length()-1; i > 0; i--) {
-            if(!name.substring(i,i+1).equals(" ")) {
+        for (int i = name.length() - 1; i > 0; i--) {
+            if (!name.substring(i, i + 1).equals(" ")) {
                 endIndex = i;
                 break;
             }
         }
-        return name.substring(startIndex, endIndex+1);
+        return name.substring(startIndex, endIndex + 1);
     }
 
     public void randomGo() {

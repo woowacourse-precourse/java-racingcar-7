@@ -30,7 +30,6 @@ public class RacingGame {
         return cars;
     }
 
-
     private void updateProgress(Cars cars) {
         for (int i = 0; i < cars.size(); i++) {
             Car racer = cars.getCar(i);
