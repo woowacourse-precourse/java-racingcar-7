@@ -2,19 +2,19 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.Cars;
-import racingcar.service.CarNameParser;
 import racingcar.service.RacingRunService;
 import racingcar.service.RacingService;
-import racingcar.service.TimesParser;
-import racingcar.service.WinnerService;
-import racingcar.service.validation.CarNamesValidation;
-import racingcar.service.validation.TimesValidation;
+
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
 
-    RacingService racingService = new RacingService();
+    private final RacingService racingService;
+
+    public RacingController(RacingService racingService){
+        this.racingService = racingService;
+    }
 
     public void run(){
         String input = InputView.carsInput();
@@ -24,23 +24,16 @@ public class RacingController {
         int times = racingService.getTimes(timesInput);
 
         OutputView.racingResult();
-        excuteRacing(times, cars);
+        executeRacing(times, cars);
 
         List<String> winner = racingService.getWinner(cars);
         OutputView.printWinner(winner);
     }
 
-    private void excuteRacing(int times, Cars cars) {
+    private void executeRacing(int times, Cars cars) {
         for (int i = 0; i< times; i++){
             RacingRunService.doRacing(cars);
             OutputView.newLine();
         }
     }
-
-
-
-
-
-
-
 }
