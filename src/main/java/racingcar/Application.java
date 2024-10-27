@@ -83,5 +83,28 @@ public class Application {
         if (tryNumber <= 0) {
             throw new IllegalArgumentException();
         }
+
+        // 9. 자동차 게임 시작
+        System.out.println("");
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < tryNumber; i++) {
+            for (String carName : carNames) {
+
+                // 9-1. 시도할 횟수만큼 각 자동차마다 무작위 값을 구함
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+
+                // 9-2. 무작위 값이 4 이상일 경우 한 칸 앞으로 전진
+                if (randomNumber >= 4) {
+                    carPositions.put(carName, carPositions.get(carName)+1);
+                }
+            }
+
+            // 9-3. 한 회가 마무리되면 차수별 실행 결과를 예시에 따라 출력
+            for (String carName : carNames) {
+                System.out.println(carName + " : " + "-".repeat(carPositions.get(carName)));
+            }
+            System.out.println("");
+        }
     }
 }
