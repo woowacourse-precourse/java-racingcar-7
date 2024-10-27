@@ -2,7 +2,7 @@ package util.randomnumber;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGenerator {
+public class RandomNumberHandler {
     private static final int MINIMUM_MOVEMENT_VALUE = 4;
     private static final int START_INCLUSIVE = 0;
     private static final int END_INCLUSIVE = 9;
