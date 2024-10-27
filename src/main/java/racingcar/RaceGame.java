@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
@@ -43,6 +44,19 @@ public class RaceGame {
             throw new RuntimeException();
         }
         this.roundCount = inputCount;
+    }
+
+    @Test
+    @DisplayName("라운드 횟수만큼 레이스를 하는 메서드")
+    void startRound() {
+        for(Car car : carList) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if(randomNumber > 3) {
+                car.forward();
+            }
+            System.out.println(car.getName() + " : " + "-".repeat(car.getForwardCount()));
+        }
+        System.out.println();
     }
 
 }
