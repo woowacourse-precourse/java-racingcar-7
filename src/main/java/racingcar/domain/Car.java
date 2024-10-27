@@ -24,11 +24,10 @@ public class Car {
         this.position++;
     }
 
-    private boolean validateCarName(String name) {
+    private void validateCarName(String name) {
         int nameLength = name.length();
         if (nameLength > MAX_CAR_NAME_LENGTH) {
-            return false;
+            throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다.");
         }
-        return true;
     }
 }
