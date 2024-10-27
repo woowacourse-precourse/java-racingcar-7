@@ -5,7 +5,7 @@ public class Parser {
     private static final String DELIMITERS = ",";
 
     public static String[] parseDelimitersString(String delimitedString) {
-        return delimitedString.split(DELIMITERS);
+        return delimitedString.split(DELIMITERS, -1);
     }
 
     public static int parseStringToInt(String input) {
