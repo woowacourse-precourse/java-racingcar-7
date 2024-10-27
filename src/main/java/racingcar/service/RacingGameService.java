@@ -6,14 +6,13 @@ import racingcar.validation.InputValidator;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameService {
     public List<Car> createCars(String carNamesInput) {
         List<String> carNames = parseAndValidateCarNames(carNamesInput);
         return carNames.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public int parseMoveCount(String moveCountInput) {
@@ -32,7 +31,7 @@ public class RacingGameService {
         int maxPosition = getMaxPosition(cars);
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private int getMaxPosition(List<Car> cars) {
