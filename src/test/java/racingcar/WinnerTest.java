@@ -23,7 +23,6 @@ class WinnerTest {
         gameCarList.add(secondGameCar);
 
         GameCarProcess gameCarProcess = new GameCarProcess(gameCarList, 1);
-        //gameCarProcess.gameProgress();
 
         List<String> winners = gameCarProcess.findWinner();
         assertThat(winners).hasSize(1).containsExactly("java");
