@@ -53,6 +53,7 @@ MVC 패턴으로 입출력, 컨트롤러, 경주 기능 분리
 * Distance : 자동차 전진 거리
 * RaceRound : 자동차 이동 횟수
 * RacingGame : 경주 관리
+* WinnerCalculator : 최종 우승자 계산
 
 ### View
 사용자 데이터 입출력을 분리하여 클래스 단위 최소화
