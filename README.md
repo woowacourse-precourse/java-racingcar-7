@@ -13,7 +13,7 @@
 ## Application Class
 
 - [ ] 입력 값 추가
-- [ ] Race 객체 생성
+- [x] Race 객체 생성
 - [ ] 사용자 인터페이스 추가
 
 ## Validator Class
