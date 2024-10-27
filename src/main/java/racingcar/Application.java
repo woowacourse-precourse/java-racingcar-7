@@ -1,8 +1,10 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -12,6 +14,12 @@ public class Application {
 
         // 이동 횟수 입력 및 검증
         int times = inputRaceTimes();
+
+        // 자동차 경주 진행
+        List<Integer> racePositions = initializePositions(nameList.size());
+        for (int i = 0; i < times; i++) {
+            moveCars(racePositions);
+        }
     }
 
     private static List<String> inputCarNames() {
@@ -32,6 +40,22 @@ public class Application {
             return Integer.parseInt(readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("횟수는 숫자만 입력할 수 있습니다.");
+        }
+    }
+
+    private static List<Integer> initializePositions(int size) {
+        List<Integer> positions = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            positions.add(0);
+        }
+        return positions;
+    }
+
+    private static void moveCars(List<Integer> positions) {
+        for (int i = 0; i < positions.size(); i++) {
+            if (pickNumberInRange(0, 9) >= 4) {
+                positions.set(i, positions.get(i) + 1);
+            }
         }
     }
 }
