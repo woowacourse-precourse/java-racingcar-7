@@ -3,7 +3,6 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.util.CommonIo;
 import racingcar.util.Limit;
-import racingcar.util.Message;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,7 +16,7 @@ public class RaceController {
     private CarController carController = new CarController();
     private MoveController moveController = new MoveController();
 
-    public void run(){
+    public void run() {
         finishGame(playGame(prepareGame()));
     }
 
@@ -31,14 +30,13 @@ public class RaceController {
     }
 
     public List<Car> playGame(List<Car> cars) {
-        outputView.printGetPlayCount();
-        int playCount = io.convertStringToInt(inputView.receivePlayCount());
+        int playCount = validatePlayCount();
 
         for (int i = 0; i < playCount; i++) {
             for (Car car : cars) {
                 int randomNumber = moveController.createRandomNumber();
                 boolean isMove = moveController.isMove(randomNumber);
-                if(isMove) {
+                if (isMove) {
                     moveController.setMoveInformation(car);
                 }
                 outputView.printSingleResult(car);
@@ -52,6 +50,24 @@ public class RaceController {
         List<String> winner = selectWinners(cars);
         outputView.printWinners(winner);
     }
+
+    public int validatePlayCount() {
+        outputView.printGetPlayCount();
+        int playCount;
+
+        try {
+            playCount = io.convertStringToInt(inputView.receivePlayCount());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력하세요.");
+        }
+
+        if (playCount < 1 || playCount > 9) {
+            throw new IllegalArgumentException("1에서 9사이가 좋겠어요.");
+        }
+
+        return playCount;
+    }
+
 
     public List<String> selectWinners(List<Car> cars) {
         int maxPosition = Limit.MIN_POSITION.getValue();
