@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.math.BigInteger;
+import java.util.List;
+import racingcar.controller.InputController;
 import racingcar.controller.RaceController;
 import racingcar.model.Parser;
 import racingcar.model.RaceService;
@@ -15,8 +18,15 @@ public class Application {
         Validator validator = new Validator();
         RaceService raceService = new RaceService();
 
-        RaceController raceController = new RaceController(inputView, outputView, parser, validator, raceService);
+        InputController inputController = new InputController(inputView, parser, validator);
+        RaceController raceController = new RaceController(outputView, parser, raceService);
 
-        raceController.run();
+        run(inputController, raceController);
+    }
+
+    private static void run(InputController inputController, RaceController raceController) {
+        List<String> carNames = inputController.getValidatedCarNames();
+        BigInteger attemptCount = inputController.getValidatedAttemptCount();
+        raceController.runRace(carNames, attemptCount);
     }
 }
