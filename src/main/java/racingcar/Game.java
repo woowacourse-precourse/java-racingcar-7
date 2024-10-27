@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,18 @@ public class Game {
         for (int i = 0; i < carList.size(); i++) {
             carPositions.add(0);
         }
+    }
+
+    public void attemptStatus() {
+        for (int i = 0; i < carList.size(); i++) {
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+            if (randomNum >= 4) {
+                carPositions.set(i, carPositions.get(i) + 1);
+            }
+            System.out.print(carList.get(i) + " : ");
+            System.out.println("-".repeat(carPositions.get(i)));
+        }
+        System.out.println();
     }
 
 }
