@@ -1,16 +1,26 @@
 package racingcar.validate;
 
+import racingcar.validate.enums.ValidateMessages;
+
 public class InputNumberValidation {
     public static int validateInputNumber(String inputNumber) {
-        if (inputNumber == null || inputNumber.isEmpty()) {
-            throw new IllegalArgumentException("null이거나 아무 숫자도 입력하지 않았습니다.");
-        }
-        int numberOfAttempts;
-        try {
-            numberOfAttempts = Integer.parseInt(inputNumber);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도횟수는 Integer여야 합니다.");
-        }
+        int numberOfAttempts = 0;
+        validateNumberIfNullOrEmpty(inputNumber);
+        validateIfInputCanCovertToInt(inputNumber);
         return numberOfAttempts;
+    }
+
+    public static void validateNumberIfNullOrEmpty(String inputNumber) {
+        if (inputNumber == null || inputNumber.isEmpty()) {
+            throw new IllegalArgumentException(ValidateMessages.NUMBER_CANNOT_BE_NULL_OR_EMPTY.getValidateMessage());
+        }
+    }
+
+    public static void validateIfInputCanCovertToInt(String inputNumber) {
+        try {
+            Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ValidateMessages.NUMBER_SHOULD_BE_INTEGER.getValidateMessage());
+        }
     }
 }
