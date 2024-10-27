@@ -156,6 +156,17 @@ class ApplicationCustomTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차이름입력_길이가같은공백이2개이상있는경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,    ,    ,  ", "1");
+                    assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

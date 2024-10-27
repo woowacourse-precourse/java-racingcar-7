@@ -2,12 +2,11 @@ package custom.validator;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class InputValidator {
     public void checkEmptyInput(String input) {
-        if (Objects.isNull(input)) {
+        if (input == null) {
             throw new IllegalArgumentException("입력은 null 일 수 없습니다");
         }
         if (input.isEmpty()) {

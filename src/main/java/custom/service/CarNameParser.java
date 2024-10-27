@@ -24,6 +24,7 @@ public class CarNameParser {
     public List<String> trimCarNames(List<String> input) {
         return input.stream() // 리스트를 스트림으로 변환
                 .map(String::trim) // 각 문자열에 trim() 적용
+                .filter(s -> !s.isEmpty()) // 빈 문자열 제외
                 .collect(Collectors.toList()); // 결과를 리스트로 수집
     }
 
@@ -32,6 +33,7 @@ public class CarNameParser {
         String cleanedCommaString = cleanComma(input);
         List<String> separatedStrings = splitByComma(cleanedCommaString);
         List<String> carList = trimCarNames(separatedStrings);
+
         inputValidator.checkNumberOfCars(carList);
         inputValidator.validateCarNames(carList);
         return carList;
