@@ -26,7 +26,7 @@ class CarListTest {
     }
 
     @Test
-    @DisplayName("getCarList()메서드는 불변 객체가 반환되어야한다.")
+    @DisplayName("getCarList()메서드는 불변 객체가 반환되어야 한다.")
     void getCarList() {
         //when
         this.testCarList.add(TestCar.getTestCar(carName));
@@ -39,7 +39,7 @@ class CarListTest {
     }
 
     @Test
-    @DisplayName("가장 멀리 간 자동차의 거리를 반환해야한다.")
+    @DisplayName("가장 멀리 간 자동차의 거리를 반환해야 한다.")
     void getFurthestPosition() {
         //given
         List<Car> carList = testCarList.getCarList();

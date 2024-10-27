@@ -34,7 +34,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 진전한 상태를 표시해야한다.")
+    @DisplayName("자동차가 진전한 상태를 표시해야 한다.")
     void getPosition() {
         Assertions.assertThat(testCar.getStatus()).isEqualTo("");
         testCar.move();

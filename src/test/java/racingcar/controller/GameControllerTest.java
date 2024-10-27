@@ -22,7 +22,7 @@ class GameControllerTest extends NsTest {
     }
 
     @Test
-    @DisplayName("게임을 실행하면 정상적으로 결과 출력까지 완료가 되어야한다.")
+    @DisplayName("게임을 실행하면 정상적으로 결과 출력까지 완료되어야 한다.")
     void run() {
         assertRandomNumberInRangeTest(
                 () -> {
