@@ -22,6 +22,7 @@
     - 우승자 정보
 -[X] RacingCars 1회 진행
 -[X] 우승자 결정
+-[X] 시도 횟수를 다 채웠는지 확인
 
 ## NameExtractor
 

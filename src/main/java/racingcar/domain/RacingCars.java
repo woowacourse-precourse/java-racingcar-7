@@ -57,4 +57,8 @@ public class RacingCars {
                 .max()
                 .orElse(0);
     }
+
+    public boolean isNotEnoughAttempts() {
+        return currentAttempts < totalAttempts;
+    }
 }
