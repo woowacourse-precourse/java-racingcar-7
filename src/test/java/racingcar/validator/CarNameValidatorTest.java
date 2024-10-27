@@ -1,8 +1,7 @@
-package racingcar;
+package racingcar.validator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.validator.CarNameValidator;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

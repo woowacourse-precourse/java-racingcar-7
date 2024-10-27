@@ -4,15 +4,17 @@ public class CarNameValidator {
 
     public boolean validate(String carName) {
         if (carName == null) {
-            return false;
+            throw new IllegalArgumentException("자동차 이름은 null일 수 없습니다.");
         }
-        if (carName.trim().isEmpty()){
-            return false;
-        }
-        if (carName.length() > 5) {
-            return false;
-        }
-        return true;
 
+        if (carName.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+        }
+
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+
+        return true;
     }
 }
