@@ -17,9 +17,9 @@ public class RaceTest {
     @BeforeEach
     public void Car_객체들과_함께_Race_객체를_생성한다() {
         race = new Race(5);
-        race.join(new Car("firstCar"));
-        race.join(new Car("secondCar"));
-        race.join(new Car("thirdCar"));
+        race.join(new Car("first"));
+        race.join(new Car("secon"));
+        race.join(new Car("third"));
     }
 
     @Test
@@ -34,5 +34,12 @@ public class RaceTest {
     @DisplayName("턴이_0이하_또는_6이상의_입력으로_예외가_발생한다")
     public void 턴이_0이하_또는_6이상의_입력으로_예외가_발생한다(int turn) {
         assertThrows(IllegalArgumentException.class, () -> new Race(turn));
+    }
+
+    @Test
+    @DisplayName("하나의_턴을_플레이한다")
+    public void 하나의_턴을_플레이한다() {
+        race.playOneTurn();
+        assertTrue(true);
     }
 }
