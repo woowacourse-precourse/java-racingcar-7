@@ -1,8 +1,10 @@
 package racingcar.service.constant;
 
 public enum ExpressionFormat {
+
+    VACANT(""),
     SEPARATOR(","),
-    GHOST_CAR(",,"),
+    MID_PART_GHOST_CAR(",,"),
     ONLY_NUMBERS("[0-9]+"),
     WINNER_SEPARATOR(", ");
 
