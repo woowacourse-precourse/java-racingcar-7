@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.common.config.RacingCarConfig;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarConfig config = new RacingCarConfig();
+        config.getRacingController().processRace();
     }
 }
