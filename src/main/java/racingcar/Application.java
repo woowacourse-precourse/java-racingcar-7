@@ -17,8 +17,9 @@ public class Application {
         List<String> carNames = nameSpliter(inputNames);
 
         for(int i = 0; i < tryNum; i++ ) {
-
+           
         }
+
     }
 
     public static List<String> nameSpliter(String inputNames) {
