@@ -26,6 +26,12 @@ public class Application {
         // 시도 횟수 입력
         System.out.println(Message.TRY_COUNT.getMessage());
         String inputTryCount = Console.readLine();
+        int tryCount;
+        try {
+            tryCount = Integer.parseInt(inputTryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.TRY_COUNT_NUMBER_ONLY.getMessage());
+        }
 
         // 입력된 이름을 기반으로 Car 객체를 생성하여 리스트에 저장
         List<Car> cars = new ArrayList<>();
@@ -35,7 +41,7 @@ public class Application {
 
         // 레이싱 게임 전체 사이클
         System.out.println(Message.RESULT.getMessage());
-        for (int i = 0; i < Integer.parseInt(inputTryCount); i++) {
+        for (int i = 0; i < tryCount; i++) {
             // 자동차 무빙 기능
             for (Car car : cars) {
                 car.move();
