@@ -4,11 +4,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
 
-    public String inputNames() {
+    private InputView() {
+    }
+
+    public static String inputNames() {
         return readLine();
     }
 
-    public int inputGameCnt() {
+    public static int inputGameCnt() {
         return Integer.parseInt(readLine());
     }
 }
