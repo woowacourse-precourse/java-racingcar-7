@@ -9,6 +9,8 @@ public class LapValidator {
     }
 
     private static void validateLpa(String lap) {
+//        ValidationException.isBlank(lap);
+//        ValidationException.isBlank(lap);
         ValidationException.isPositiveNumber(lap);
     }
 }

@@ -3,7 +3,6 @@ package racingcar.validation.exceptions;
 import static racingcar.constants.CarConstants.NAME_LENGTH_LIMIT;
 
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 
 /**
  * packageName    : racingcar.validation.exceptions
@@ -46,12 +45,8 @@ public class ValidationException {
     }
 
     public static void isPositiveNumber(String value) {
-        try {
-            int lap = Integer.parseInt(value);
-            if (lap < 1) {
-                throw new IllegalArgumentException();
-            }
-        } catch (NoSuchElementException | NumberFormatException e) {
+        int lap = Integer.parseInt(value);
+        if (lap < 1) {
             throw new IllegalArgumentException();
         }
     }
