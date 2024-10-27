@@ -34,8 +34,8 @@ public class OutputView {
 
     public static void printWinnerMessage(String winnerString) {
         StringBuilder winnerMessage = new StringBuilder(WINNER_NOTIFICATION_MESSAGE);
-        winnerMessage.append(winnerMessage);
-        printMessage(winnerString);
+        winnerMessage.append(winnerString);
+        printMessage(winnerMessage.toString());
     }
 
     public static void printLineBreak() {

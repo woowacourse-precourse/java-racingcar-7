@@ -1,11 +1,25 @@
 package racingcar.manager;
 
+import static racingcar.view.InputView.getAttempts;
+import static racingcar.view.InputView.getCarNames;
+import static racingcar.view.OutputView.printCarPosition;
+import static racingcar.view.OutputView.printGameStartMessage;
+import static racingcar.view.OutputView.printRacingResultMessage;
+import static racingcar.view.OutputView.printRequestAttemptMessage;
+import static racingcar.view.OutputView.printWinnerMessage;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import racingcar.entity.Car;
 
 public class GameManager {
+    private CarManager carManager;
+
+    public GameManager() {
+        carManager = new CarManager();
+    }
+
     public List<Car> judgeWinner(List<Car> cars) {
         List<Car> winners = new ArrayList<>();
         int longest = 0;
@@ -37,5 +51,24 @@ public class GameManager {
         }
 
         return winnerString.toString();
+    }
+
+    public void gameStart() {
+        printGameStartMessage();
+        String[] carNames = getCarNames();
+        carManager.setParticipateCars(carNames);
+
+        printRequestAttemptMessage();
+        int attempts = getAttempts();
+
+        printRacingResultMessage();
+        for (int i = 0; i < attempts; i++) {
+            carManager.moveCars();
+            printCarPosition(carManager.getCarList());
+        }
+
+        List<Car> winners = judgeWinner(carManager.getCarList());
+        String winnerMessage = getWinnerMessage(winners);
+        printWinnerMessage(winnerMessage);
     }
 }
