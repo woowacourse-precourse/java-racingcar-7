@@ -24,12 +24,15 @@ public class RacingController {
 
     private Race initializeRace() {
         String carNames = inputView.inputCarNames();
+        InputValidator.validateEmpty(carNames);
         int attemptCount = parseAttemptCount();
         return Race.createRace(carNames, attemptCount);
     }
 
     private int parseAttemptCount() {
         String attemptInput = inputView.inputAttemptCount();
+        InputValidator.validateEmpty(attemptInput);
+        InputValidator.validateNumeric(attemptInput);
         return Integer.parseInt(attemptInput);
     }
 
