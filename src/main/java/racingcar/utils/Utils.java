@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Utils {
 
-    public static List<String> splitDelimiterCars(String input) {
+    public static List<String> splitByDelimiter(String input) {
         return List.of(input.split(","));
     }
 
