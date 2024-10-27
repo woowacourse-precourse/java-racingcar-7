@@ -11,6 +11,7 @@ import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_DUPL
 import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_UNDER_LENGTH_FIVE;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
+import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_CANNOT_BLANK;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ import racingcar.domain.car.Vehicle;
 import racingcar.domain.race.RaceManager;
 import racingcar.domain.strategy.RandomStrategy;
 import racingcar.service.exception.CarNamesException;
+import racingcar.service.exception.RaceCountException;
 
 class ApplicationTest extends NsTest {
 
@@ -155,4 +157,12 @@ class ApplicationTest extends NsTest {
         assertEquals(e.getMessage(), CAR_NAME_DUPLICATED.message());
     }
 
+    @Test
+    void 경주_횟수가_빈_문자열이라면_예외발생() {
+        // given
+        String raceCount = "     ";
+        // when & then
+        RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
+        assertEquals(e.getMessage(), RACE_COUNT_CANNOT_BLANK.message());
+    }
 }
