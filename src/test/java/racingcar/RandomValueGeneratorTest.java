@@ -32,7 +32,7 @@ public class RandomValueGeneratorTest {
     void 랜덤값여러개생성_0부터9사이() {
         // given
         RandomValueGenerator randomValueGenerator = new RandomValueGenerator();
-        int count = 5;
+        int count = 10000;
 
         // when
         List<Integer> randomValues = randomValueGenerator.generateMultiple(DEFAULT_START_INCLUSIVE, DEFAULT_END_INCLUSIVE, count);
