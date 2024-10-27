@@ -66,4 +66,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_자동차_입력_중복_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,java,pobi", "5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 중복될 수 없습니다")
+        );
+    }
+
 }
