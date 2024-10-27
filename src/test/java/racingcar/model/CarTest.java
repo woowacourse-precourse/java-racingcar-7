@@ -1,11 +1,6 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.function.DoubleBinaryOperator;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
