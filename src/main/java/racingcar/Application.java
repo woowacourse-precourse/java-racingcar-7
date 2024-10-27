@@ -1,6 +1,8 @@
 package racingcar;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +16,8 @@ public class Application {
     void run() {
         getName();
         getCount();
+        resetMoveList();
+        output();
     }
 
     void getName() {
@@ -30,6 +34,39 @@ public class Application {
     void getCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         count = scan.nextInt();
+    }
+
+    void resetMoveList() {
+        for (int i = 0; i < nameList.length; i++) {
+            moveList.add(0);
+        }
+    }
+
+    void output() {
+        System.out.println("실행결과");
+        for (int i = 0; i < count; i++) {
+            doRace();
+        }
+    }
+
+    void doRace() {
+        for (int j = 0; j < nameList.length; j++) {
+            if (Randoms.pickNumberInRange(0, 9) > 3) {
+                moveList.set(j, moveList.get(j) + 1);
+            }
+        }
+        printCurrentRace();
+        System.out.println();
+    }
+
+    void printCurrentRace() {
+        for (int k = 0; k < nameList.length; k++) {
+            System.out.printf("%s : ", nameList[k]);
+            for (int l = 0; l < moveList.get(k); l++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
     }
 
 
