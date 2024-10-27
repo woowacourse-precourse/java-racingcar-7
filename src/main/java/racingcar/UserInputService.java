@@ -7,6 +7,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Name;
 import racingcar.domain.Names;
+import racingcar.domain.RepeatCount;
 
 public class UserInputService {
 
@@ -42,21 +43,10 @@ public class UserInputService {
         return new Names(nameList);
     }
 
-    public int createRepeat() {
+    public RepeatCount createRepeat() {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String userInput = Console.readLine();
-        repeatValidate(userInput);
-        return Integer.parseInt(userInput);
-    }
-
-    private void repeatValidate(String userInput) {
-        if (userInput == null || userInput.isEmpty() || !userInput.matches("^[1-9][0-9]*$")) {
-            throw new IllegalArgumentException("자연수만 입력할 수 있습니다.");
-        }
-
-        if (userInput.length() > 5) {
-            throw new IllegalArgumentException("입력 값이 10만 미만이어야합니다.");
-        }
+        return new RepeatCount(userInput);
     }
 }

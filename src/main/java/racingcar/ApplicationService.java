@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.RepeatCount;
 
 public class ApplicationService {
 
@@ -14,7 +15,7 @@ public class ApplicationService {
 
     public void run() {
         Cars cars = this.userInputService.createCar();
-        int repeat = this.userInputService.createRepeat();
+        RepeatCount repeat = this.userInputService.createRepeat();
         this.userInputService.close();
 
         Racing racing = new Racing(cars, repeat);

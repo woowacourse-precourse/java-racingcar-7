@@ -3,22 +3,23 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.RepeatCount;
 
 public class Racing {
 
     private final int MINIMUM_MOVEABLE_VALUE = 4;
 
     private final Cars cars;
-    private final int repeat;
+    private final RepeatCount repeat;
 
-    public Racing(Cars cars, int repeat) {
+    public Racing(Cars cars, RepeatCount repeat) {
         this.cars = cars;
         this.repeat = repeat;
     }
 
     public void start() {
         System.out.println("실행 결과");
-        for (int i = 0; i < this.repeat; i++) {
+        for (int i = 0; i < this.repeat.getValue(); i++) {
             race();
             printStatus();
         }
