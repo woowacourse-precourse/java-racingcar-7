@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.NoSuchElementException;
 import racingcar.domain.Race;
 import racingcar.service.RaceService;
 import racingcar.view.InputView;
@@ -33,9 +34,14 @@ public class RaceController {
 
 
     public void displayRaceLapInputPage() {
-        String lap = inputView.getLapCount();
-        raceService.isLapValid(lap);
-        raceService.save(raceService.createRace(lap));
+        try {
+            String lap = inputView.getLapCount();
+            raceService.isLapValid(lap);
+            raceService.save(raceService.createRace(lap));
+
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void raceStartById(int id) {
