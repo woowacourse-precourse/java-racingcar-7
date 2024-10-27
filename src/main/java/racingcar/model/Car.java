@@ -1,21 +1,19 @@
 package racingcar.model;
 
-import racingcar.util.RandomUtil;
-
 public class Car {
     private final String name;
     private int position = 0;
 
-    private Car(final String name) {
+    private Car(String name) {
         this.name = name;
     }
 
-    public static Car of(final String name) {
+    public static Car of(String name) {
         return new Car(name);
     }
 
     public void move() {
-        if(RandomUtil.generateRandomNumber() >= 4) {
+        if(RandomNumberGenerator.generateRandomNumber() >= 4) {
             position++;
         }
     }
