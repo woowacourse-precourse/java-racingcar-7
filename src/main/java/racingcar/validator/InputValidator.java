@@ -22,7 +22,7 @@ public class InputValidator {
             isRacingAttemptPositive(attempt);
             return attempt;
         } catch (RuntimeException e) {
-            throw new IllegalArgumentException("양수를 입력해주세요.");
+            throw new IllegalArgumentException("1이상의 양수를 입력해주세요.");
         }
     }
 
