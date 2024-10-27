@@ -1,5 +1,7 @@
 package racingcar.validate;
 
+import java.util.HashSet;
+import java.util.List;
 import racingcar.validate.enums.ValidateMessages;
 
 public class CarNameValidation {
@@ -33,6 +35,12 @@ public class CarNameValidation {
         if (carName.contains(" ")) {
             throw new IllegalArgumentException(
                     ValidateMessages.CAR_NAME_SHOULD_NOT_CONTAIN_WHITESPACE.getValidateMessage());
+        }
+    }
+
+    public static void validateIfCarNameDuplicated(List<String> carNames) {
+        if (carNames.size() != new HashSet<>(carNames).size()) {
+            throw new IllegalArgumentException(ValidateMessages.CAR_NAME_CANNOT_BE_DUPLICATED.getValidateMessage());
         }
     }
 }
