@@ -9,10 +9,13 @@ public class Car {
         this.position = 0;
     }
 
-    //to do : 삼항연산자 안 쓰게 고치기
     public int move(int randomNumber) {
-        return randomNumber >= 4 ? this.position + randomNumber : this.position;
+        if (randomNumber >= 4) {
+            this.position += randomNumber;
+        }
+        return this.position;
     }
+
 
     public String getName() {
         return this.name;
