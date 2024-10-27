@@ -38,3 +38,16 @@
 - List<Validator>로 만들어 모든 validator를 검사한다.
 
 ---
+
+## Model
+
+### 1. Car
+
+- 움직인다.({name} : ---- 의 형태로 String return)
+- maxPosition보다 자신의 위치가 더 큰지 확인
+- top 랭커에 부합하는지 확인 후 자신 return
+
+### 2. Cars
+
+- 모든 차들에 움직임 요청한다. ("{name} : ----" + \n + "{name} : ----"의 형태의 반환값)
+- 우승자를 찾는다.(maxPosition을 찾고, 각 차들의 위치로 우승자를 찾는다.)
