@@ -25,7 +25,7 @@ public class CarNameValidator extends Validator {
 
     private static void validateNumberOfCars(List<String> carNames) {
         if (carNames.size() < MIN_CARS_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_CARS_COUNT.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_OF_CARS.getMessage());
         }
     }
 }
