@@ -45,7 +45,7 @@ public class RacingGame {
 		outputHandler.showResultComment();
 
 		int carCount = cars.getCarCount();
-		for (int i = 0; i < tryCount.getCount(); i++) {
+		for (int round = 0; round < tryCount.getCount(); round++) {
 			raceEachRound(cars, carCount);
 		}
 	}
