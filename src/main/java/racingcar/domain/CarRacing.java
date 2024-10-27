@@ -37,4 +37,15 @@ public class CarRacing {
         int randomValue = RandomNumberGenerator.pickNumberInRange(0, 9);
         return randomValue >= 4;
     }
+
+    public List<Car> findWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
 }

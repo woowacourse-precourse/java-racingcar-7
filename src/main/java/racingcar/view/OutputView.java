@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 import racingcar.domain.Car;
 
-public class OutView {
+public class OutputView {
 
     public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
