@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.InputValidator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +29,9 @@ public class RaceGameController {
         for (Car car : cars) {
             car.startOneGame();
         }
+    }
+
+    public void printGameResult(List<Car> cars) {
+        OutputView.printGameResult(cars);
     }
 }
