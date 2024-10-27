@@ -29,4 +29,12 @@ public class CarNameValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessageConstants.ERROR_EMPTY_CAR_NAME);
     }
+
+    @Test
+    void 자동차_이름_길이_초과_예외_테스트() {
+        List<String> carNames = Arrays.asList("pobi", "woowacourse", "jun");
+        assertThatThrownBy(() -> CarNameValidator.validateCarNames(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessageConstants.ERROR_CAR_NAME_TOO_LONG);
+    }
 }
