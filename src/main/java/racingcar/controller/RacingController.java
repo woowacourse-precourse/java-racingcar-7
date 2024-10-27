@@ -27,7 +27,7 @@ public class RacingController {
 
         outputHandler.showGameResult();
 
-        while(!gameManager.isGameOver()){
+        while (!gameManager.isGameOver()) {
             gameManager.playGame();
             outputHandler.showCurrentCarPosition(gameManager.getCars());
         }
@@ -35,14 +35,13 @@ public class RacingController {
         outputHandler.showWinners(gameManager.getWinners());
     }
 
-    private String[] getCarNamesFromUserInput(){
+    private String[] getCarNamesFromUserInput() {
         outputHandler.promptCarNameInput();
         return inputHandler.split();
     }
 
-    private int getGameCountFromUserInput(){
+    private int getGameCountFromUserInput() {
         outputHandler.promptAttemptCountInput();
         return inputHandler.getAttemptGameCount();
     }
-
 }

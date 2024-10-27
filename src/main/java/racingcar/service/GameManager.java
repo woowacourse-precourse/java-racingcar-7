@@ -12,7 +12,7 @@ public class GameManager {
     private int currentCount;
     private CarManager carManager;
 
-    public GameManager(String[] cars, int gameCount){
+    public GameManager(String[] cars, int gameCount) {
         this.carManager = new CarManager();
         this.gameCount = gameCount;
         carManager.createCars(cars);
@@ -20,7 +20,16 @@ public class GameManager {
         clearCurrentCount();
     }
 
-    public List<Car> getWinners(){
+    public void playGame() {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.moveForward();
+            }
+        }
+        currentCount++;
+    }
+
+    public List<Car> getWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max().orElse(0);
@@ -30,24 +39,15 @@ public class GameManager {
                 .toList();
     }
 
-    public boolean isGameOver(){
+    public boolean isGameOver() {
         return currentCount >= gameCount;
     }
 
-    public void playGame() {
-        for (Car car : cars){
-            if(Randoms.pickNumberInRange(0,9) >= 4){
-                car.moveForward();
-            }
-        }
-        currentCount++;
-    }
-
-    private void clearCurrentCount(){
+    private void clearCurrentCount() {
         this.currentCount = 0;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 }

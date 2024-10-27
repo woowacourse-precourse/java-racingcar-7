@@ -4,18 +4,20 @@ public class Car {
     private String name;
     private int position;
 
-    public Car(String nameInput){
+    public Car(String nameInput) {
         this.name = nameInput;
         this.position = 0;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public void moveForward(){
+    public void moveForward() {
         position++;
     }
-    public int getPosition(){
+
+    public int getPosition() {
         return position;
     }
 }
