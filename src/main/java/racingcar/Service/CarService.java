@@ -13,6 +13,7 @@ public class CarService {
             Move(cars);
             OutputView.Print_Race(cars);
         }
+        OutputView.Print_Winners(getWinnerCar(cars));
     }
     private int Generate_RandomValue(){
         return Randoms.pickNumberInRange(0,9);
@@ -28,6 +29,21 @@ public class CarService {
                 cars.get(i).setPosition();
             }
         }
+    }
+    public ArrayList<Car> getWinnerCar(ArrayList<Car> cars) {
+        ArrayList<Car> winnerCars = new ArrayList<>();
+        int maxposition=cars.get(0).getPosition().length();
+        for (int i = 0; i < cars.size(); i++) {
+            if(cars.get(i).getPosition().length()>=maxposition){
+                maxposition=cars.get(i).getPosition().length();
+            }
+        }
+        for (Car car : cars) {
+            if (car.getPosition().length() == maxposition) {
+                winnerCars.add(car);
+            }
+        }
+        return winnerCars;
     }
 
 }
