@@ -18,8 +18,9 @@ public class InputView {
         return input;
     }
 
-    public void requestRoundCount() {
+    public int requestRoundCount() {
         ConsoleWriter.printlnMessage(REQUEST_ROUND_COUNT_MESSAGE);
+        return Integer.parseInt(ConsoleReader.enterMessage());
     }
 
     private boolean isEmptyOrBlank(String str) {
