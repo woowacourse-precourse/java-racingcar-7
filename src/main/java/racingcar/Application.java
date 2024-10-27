@@ -1,10 +1,10 @@
 package racingcar;
 
-import racingcar.view.CarNameInputValidator;
+import racingcar.controller.RacingCarController;
 
 public class Application {
     public static void main(String[] args) {
-        CarNameInputValidator carNameInputValidator = new CarNameInputValidator();
-        carNameInputValidator.getCarNames();
+        RacingCarController racingCarController = new RacingCarController();
+        racingCarController.startRace();
     }
 }
