@@ -1,22 +1,18 @@
 package racingcar.controller;
 
 import java.io.IOException;
-import java.util.List;
-import racingcar.domain.Car;
-import racingcar.service.CarService;
-import racingcar.view.InputView;
+import racingcar.domain.GameData;
+import racingcar.service.GameService;
 
 public class GameController {
-    private final InputView inputView = new InputView();
-    private final CarService carService = new CarService();
+    private final GameService gameService = new GameService();
 
     public void startGame() throws IOException {
-        String carNames = inputView.getCarNames();
-        List<Car> cars = carService.createCars(carNames);
+        GameData gameData = gameService.getGameData();
 
     }
 
-    private void playGame() {
+    private void playGame(GameData gameData) {
 
     }
 }

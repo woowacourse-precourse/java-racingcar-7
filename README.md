@@ -24,6 +24,11 @@
 
 ### CarService
 
+- [ ] 자동차 생성
+
+### GameService
+
+- [ ] 게임 데이터 생성
 - [ ] 우승자 판단
 
 ### InputView
