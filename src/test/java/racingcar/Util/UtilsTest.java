@@ -3,9 +3,7 @@ package racingcar.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Race;
 
 class UtilsTest {
 

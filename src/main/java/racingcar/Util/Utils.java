@@ -1,9 +1,8 @@
 package racingcar.Util;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
-import racingcar.constants.NumberConstants;
+import java.util.stream.IntStream;
 
 public class Utils {
 
@@ -13,9 +12,7 @@ public class Utils {
 
     public static StringBuilder getTotalMoveDistance(int moveDistance) {
         StringBuilder total = new StringBuilder();
-        for (int i = 0; i < moveDistance; i++) {
-            total.append("-");
-        }
+        IntStream.range(0, moveDistance).forEach(i -> total.append("-"));
         return total;
     }
 }

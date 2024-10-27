@@ -3,6 +3,7 @@ package racingcar.constants;
 public class RegexConstants {
 
     public static final String COMMA = ",";
+    public static final String COMMA_SPACE = ", ";
     public static final String COLON = ":";
 
     private static final String HANGUL_PATTERN = "가-힣";
