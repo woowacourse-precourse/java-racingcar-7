@@ -12,6 +12,7 @@ public class RaceInfo {
 
     public RaceInfo(List<String> names, String totalTryCnt) {
         validateNames(names);
+        validateTotalTryCnt(totalTryCnt);
 
         this.names = names;
         this.totalTryCnt = Long.parseLong(totalTryCnt);
@@ -28,6 +29,22 @@ public class RaceInfo {
                 throw new IllegalArgumentException(ErrorCode.NAME_DUPLICATE_ERROR.getMessage());
 
             uniqueNames.add(name);
+        }
+
+        return Boolean.TRUE;
+    }
+
+    private Boolean validateTotalTryCnt(String totalTryCnt){
+        Long tmpValue;
+
+        try {
+            tmpValue = Long.parseLong(totalTryCnt);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException(ErrorCode.CNT_FORMAT_ERROR.getMessage());
+        }
+
+        if (tmpValue <= 0) {
+            throw new IllegalArgumentException(ErrorCode.CNT_RANGE_ERROR.getMessage());
         }
 
         return Boolean.TRUE;
