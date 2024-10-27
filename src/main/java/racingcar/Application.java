@@ -16,19 +16,7 @@ public class Application {
         int roundCount = inputRoundCount();
 
         List<RacingCar> racingCarList = createRacingCars(names);
-
-        for (int i = 0; i < roundCount; i++) {
-            for (RacingCar racingCar : racingCarList) {
-                int number = Randoms.pickNumberInRange(0, 10);
-                racingCar.move(number);
-            }
-
-            for (RacingCar racingCar : racingCarList) {
-                String positionMark = "-";
-                String repeatedMark = positionMark.repeat(racingCar.getPosition());
-                System.out.println(racingCar.getName() + " : " + repeatedMark);
-            }
-        }
+        runGame(roundCount, racingCarList);
 
         RacingCar winner = racingCarList.stream()
                 .max(Comparator.comparingInt(RacingCar::getPosition))
@@ -40,6 +28,28 @@ public class Application {
                 .toList();
 
         System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    private static void runGame(int roundCount, List<RacingCar> racingCarList) {
+        for (int i = 0; i < roundCount; i++) {
+            startOneRace(racingCarList);
+            outputRoundResult(racingCarList);
+        }
+    }
+
+    private static void startOneRace(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            int number = Randoms.pickNumberInRange(0, 10);
+            racingCar.move(number);
+        }
+    }
+
+    private static void outputRoundResult(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            String positionMark = "-";
+            String repeatedMark = positionMark.repeat(racingCar.getPosition());
+            System.out.println(racingCar.getName() + " : " + repeatedMark);
+        }
     }
 
     private static List<RacingCar> createRacingCars(List<String> names) {
