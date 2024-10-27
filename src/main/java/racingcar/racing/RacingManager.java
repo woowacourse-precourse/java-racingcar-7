@@ -23,17 +23,17 @@ public class RacingManager {
     public void Racing() {
         String carNames = inputCarName();
         int numberOfRounds = Integer.parseInt(inputNumberOfRound());
-        Car[] cars = carFactory.createRacingCars(carNames);
+        List<Car> cars = carFactory.createRacingCars(carNames);
 
         System.out.println("실행결과");
 
         for (int i = 0; i < numberOfRounds; i++) {
             roundRace.playRound(cars);
-            output.printRaceResult(cars);  // 라운드 결과 출력
+            output.printRaceResult(cars);
         }
 
         List<String> winners = winner.findWinners(cars);
-        output.printWinner(winners);  // 우승자 출력
+        output.printWinner(winners);
     }
 
 }

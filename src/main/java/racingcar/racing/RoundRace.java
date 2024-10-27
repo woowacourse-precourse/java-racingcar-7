@@ -2,16 +2,16 @@ package racingcar.racing;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class RoundRace {
     public int randomNumber(){
         return Randoms.pickNumberInRange(0, 9);
     }
 
-    public void playRound(Car[] cars) {
+    public void playRound(List<Car> cars) {
         for(Car car : cars) {
-            int random = randomNumber();
-
-            if(random >= 4){
+            if(randomNumber() >= 4){
                 car.moveForward();
             }
         }

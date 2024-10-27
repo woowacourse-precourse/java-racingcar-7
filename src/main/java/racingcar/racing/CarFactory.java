@@ -1,12 +1,15 @@
 package racingcar.racing;
 
-public class CarFactory {
-    public Car[] createRacingCars(String carNames) {
-        String[] carName = carNames.split(",");
-        Car[] cars = new Car[carName.length];
+import java.util.ArrayList;
+import java.util.List;
 
-        for (int i = 0; i < carName.length; i++) {
-            cars[i] = new Car(carName[i].trim());
+public class CarFactory {
+    public List<Car> createRacingCars(String carNames) {
+        String[] carName = carNames.split(",");
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : carName) {
+            cars.add(new Car(name.trim()));
         }
 
         return cars;

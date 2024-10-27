@@ -14,6 +14,7 @@ public class ValidateInput {
 
     public static void validateName(String carNames) {
         validateEmpty(carNames);
+
         String[] carNameArray = carNames.split(",");
 
         for (String carName : carNameArray) {
