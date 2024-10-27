@@ -22,11 +22,9 @@ public class RacingCarController {
     String carNames = racingCarView.inputCarNames();
     String numberOfAttempts = racingCarView.inputNumberOfAttempts();
 
-    // 입력 값 검증
-    List<String> carList = inputValidator.checkCarNames(carNames);    // 완료
-    int parsedAtmp = inputValidator.isValidAtmp(numberOfAttempts);    // 완료
+    List<String> carList = inputValidator.checkCarNames(carNames);
+    int parsedAtmp = inputValidator.isValidAtmp(numberOfAttempts);
 
-    // 경주 시작
     List<String> winnersList = racingCarService.startRace(carList, parsedAtmp);
     racingCarView.displayResults(winnersList);
   }

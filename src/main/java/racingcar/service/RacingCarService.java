@@ -10,8 +10,9 @@ public class RacingCarService {
   RandomValidator randomValidator = new RandomValidator();
 
   public List<String> startRace(List<String> carList, int parsedAtmp){
+
     System.out.println("실행결과\n");
-    // 랜덤 값 생성
+
     String[] carRaceResults = new String[carList.size()];
     Arrays.fill(carRaceResults, "");
 
