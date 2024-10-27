@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import java.awt.event.MouseEvent;
 import racingcar.model.move.MoveStrategy;
 
 public class Car {
@@ -19,6 +20,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public void setMoveStrategy(MoveStrategy moveStrategy){
+        this.moveStrategy = moveStrategy;
     }
 
     public void move() {
