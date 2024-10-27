@@ -17,25 +17,37 @@ public class CarRacer {
         System.out.println();
         System.out.println("실행 결과");
         for (int i = 0; i < moveCount; i++) {
-            for (int j = 0; j < carPositions.length; j++) {
-                if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                    carPositions[j]++;
-                }
-            }
-
-            for (int j = 0; j < carPositions.length; j++) {
-                System.out.println(carNames[j] + " : " + "-".repeat(carPositions[j]));
-            }
-            System.out.println();
+            racing();
+            racingResultPrint();
         }
     }
 
-    public String[] getWinners() {
-        int maxPosition = 0;
-        for (int position : carPositions) {
-            maxPosition = Math.max(maxPosition, position);
+    private void racingResultPrint() {
+        for (int j = 0; j < carPositions.length; j++) {
+            System.out.println(carNames[j] + " : " + "-".repeat(carPositions[j]));
         }
+        System.out.println();
+    }
 
+    private void racing() {
+        for (int j = 0; j < carPositions.length; j++) {
+            if (moveOrStop()) {
+                carPositions[j]++;
+            }
+        }
+    }
+
+    private static boolean moveOrStop() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    public String[] getWinners() {
+        int maxPosition = findWinnerIdx();
+
+        return findWinnerCarNames(maxPosition);
+    }
+
+    private String[] findWinnerCarNames(int maxPosition) {
         ArrayList<String> winnersList = new ArrayList<>();
         for (int i = 0; i < carPositions.length; i++) {
             if (carPositions[i] == maxPosition) {
@@ -44,6 +56,14 @@ public class CarRacer {
         }
 
         return winnersList.toArray(new String[0]);
+    }
+
+    private int findWinnerIdx() {
+        int maxPosition = 0;
+        for (int position : carPositions) {
+            maxPosition = Math.max(maxPosition, position);
+        }
+        return maxPosition;
     }
 
     public String[] getCarNames() {

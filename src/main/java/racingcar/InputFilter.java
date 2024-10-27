@@ -16,25 +16,38 @@ public class InputFilter {
 
     public String[] validateCarNames(String carNames) {
         String[] splitCarNames = carNames.split(",");
+        validNameLength(splitCarNames);
+        return splitCarNames;
+    }
+
+    private static void validNameLength(String[] splitCarNames) {
         for (String carName : splitCarNames) {
             if (carName.length() > MAX_NAME_LENGTH || carName.isEmpty()) {
                 throw new IllegalArgumentException("자동차 이름은 1자 이상 5자 이하만 가능합니다.");
             }
         }
-        return splitCarNames;
     }
 
     public int validateMoveCount(String moveCount) {
+        int moveCountInt = validInteger(moveCount);
+        validPositive(moveCountInt);
+
+        return moveCountInt;
+    }
+
+    private static void validPositive(int moveCountInt) {
+        if (moveCountInt < 1) {
+            throw new IllegalArgumentException("이동 횟수는 1 이상만 가능합니다.");
+        }
+    }
+
+    private static int validInteger(String moveCount) {
         int moveCountInt;
         try {
             moveCountInt = Integer.parseInt(moveCount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("이동 횟수는 숫자만 가능합니다.");
         }
-        if (moveCountInt < 1) {
-            throw new IllegalArgumentException("이동 횟수는 1 이상만 가능합니다.");
-        }
-
         return moveCountInt;
     }
 
