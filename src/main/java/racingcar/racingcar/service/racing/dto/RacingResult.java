@@ -1,4 +1,4 @@
-package racingcar.service.racing.dto;
+package racingcar.racingcar.service.racing.dto;
 
 import racingcar.constant.separator.SeparatorConstant;
 
