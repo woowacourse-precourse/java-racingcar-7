@@ -57,8 +57,11 @@
     - 입력값 검증
         - 자동차 이름은 알파벳, 한글, 숫자로만 이루어져야 한다
         - 자동차 이름의 길이는 5자 이하여야 한다
+        - 자동차 개수는 최소 2개 이상이여야 한다
+        - 자동차 개수는 최대 10000개 이하여야 한다
         - 시행 횟수는 숫자로만 이루어져야 한다
         - 시행 횟수는 0보다 큰 정수여야 한다
+        - 시행 횟수는 10,000 이하의 정수여야 한다
 
 ## **플로우 차트**
 <img src="https://raw.githubusercontent.com/eraser502/java-racingcar-7/b4e7141eb78089ca7fcd36c9e6e1ea8c9a757a4c/Images/flowChart.svg" width="400px">
