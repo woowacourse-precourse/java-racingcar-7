@@ -42,12 +42,31 @@ public class Application {
         }
     }
 
+    private static void printRaceStatus(String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            System.out.print(carNames[i] + " : ");
+            System.out.println("-".repeat(carPositions[i]));
+        }
+        System.out.println();
+    }
+
+    private static void startRaceNTimes(String[] carNames, int gameCount) {
+        carPositions = new int[carNames.length];
+
+        System.out.println("\n실행 결과");
+        for (int i = 0; i < gameCount; i++) {
+            goOrStop(carNames);
+            printRaceStatus(carNames);
+        }
+    }
+
     public static void main(String[] args) {
         String[] carNames;
         int gameCount;
 
         carNames = getCarNames();
         gameCount = getGameCount();
+        startRaceNTimes(carNames, gameCount);
 
         // 최종 우승자 출력
     }
