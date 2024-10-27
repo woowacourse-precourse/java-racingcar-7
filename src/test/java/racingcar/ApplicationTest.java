@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +31,51 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 자동차_이름_검증() {
+        assertThatThrownBy(() -> new Car("길이가_6초과"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이동_횟수_검증() {
+        assertThatThrownBy(() -> new RacingGame(List.of(new Car("pobi")), 0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 우승자_선정_테스트() {
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("woni");
+        car1.move(4);
+        car2.move(5);
+
+        RacingGame game = new RacingGame(List.of(car1, car2), 1);
+        List<String> winners = game.getWinners();
+
+        assertThat(winners).contains("pobi", "woni");
+    }
+
+    @Test
+    void 전진_조건_테스트_4_이상() {
+        Car car = new Car("pobi");
+        int randomNumber = 4; // 4 이상일 경우
+
+        car.move(randomNumber);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 전진_조건_테스트_4_미만() {
+        Car car = new Car("woni");
+        int randomNumber = 3; // 4 미만일 경우
+
+        car.move(randomNumber);
+
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Override
