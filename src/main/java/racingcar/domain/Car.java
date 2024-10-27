@@ -5,8 +5,7 @@ public class Car {
 	private int distance;
 
 	public Car(String name, int distance) {
-		validateLength(name);
-		validateAlphabet(name);
+		validateName(name);
 
 		this.name = name;
 		this.distance = distance;
@@ -20,6 +19,18 @@ public class Car {
 
 	private boolean isMovable(int randomNumber) {
 		return randomNumber >= 4;
+	}
+
+	private void validateName(String name) {
+		validateNotBlank(name);
+		validateLength(name);
+		validateAlphabet(name);
+	}
+
+	private void validateNotBlank(String name) {
+		if (name == null || name.isBlank()) {
+			throw new IllegalArgumentException("[ERROR] 자동차 이름은 비어있을 수 없습니다.");
+		}
 	}
 
 	private void validateLength(String name) {
