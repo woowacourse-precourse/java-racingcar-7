@@ -6,7 +6,6 @@ public class InputView {
 
     public final int readRacingRound() {
         String input = Console.readLine();
-        Console.close();
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -16,7 +15,6 @@ public class InputView {
 
     public final String readCarNames() {
         String carNames = Console.readLine();
-        Console.close();
         if (carNames.matches("^([^\\s,]+)(,[^\\s,]+)*$")) {
             return carNames;
         } else {
