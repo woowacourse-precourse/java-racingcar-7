@@ -39,7 +39,7 @@ public class GameService {
         Optional<RacingCar> firstWinner = game.getRacingCars().stream().max(Comparator.comparing(RacingCar::getScore));
 
         if (firstWinner.isEmpty()) {
-            throw new IllegalArgumentException("승자가 없습니다.");
+            throw new IllegalArgumentException(ExceptionMessages.NO_WINNER);
         }
 
         Integer maxScore = firstWinner.get().getScore();
