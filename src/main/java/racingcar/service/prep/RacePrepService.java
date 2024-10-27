@@ -16,4 +16,8 @@ public class RacePrepService {
     private List<Car> prepareCars(Registration raceInfo) {
         return paddockService.createPaddock(raceInfo).getEntry();
     }
+
+    public Race prepare(Registration raceInfo) {
+        return new Race(raceInfo.getLapCount(),prepareCars(raceInfo));
+    }
 }
