@@ -89,7 +89,10 @@ jun : -----
     - 입력받은 이름들, 그리고 Racing 시도 횟수를 `Racing` 클래스를 호출해 넘긴다.
 
 - `Validate` 클래스 : 입력값 검증
+    - `name`이 5자 이하인지 검증
+    - `name` 리스트와 `시도횟수`가 제대로 입력되는지 검증
 
 - `Racing` 클래스 : 랜덤으로 레이싱을 굴려 우승자를 가려내는 클래스
     - `random` 함수 : `camp.nextstep.edu.missionutils.Randoms`에서 제공하는 `pickNumberInRange()`로 랜덤값 하나 반환
-    - `racing_car` 함수 : 랜덤으로 우승자 구해 출력.
+    - `goStop` 함수 : `random` 함수를 이용해서 `전진` or `멈춤` 수행하는 함수
+    - `racing_car` 함수 : 시도횟수만큼 랜덤으로 게임을 수행하는 함수.
