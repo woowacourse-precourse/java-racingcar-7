@@ -28,6 +28,13 @@ class ApplicationCustomTest extends NsTest {
     }
 
     @Test
+    void 자동차이름입력_입력이공백과쉼표로구성되어있을때_테스트() {
+        assertThatThrownBy(() -> runException(" , ,  ,,  ,,,", "1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력이 이루어지지 않았습니다");
+    }
+
+    @Test
     void 자동차대수판별_테스트() {
         assertThatThrownBy(() -> runException("pobi", "1"))
                 .isInstanceOf(IllegalArgumentException.class)

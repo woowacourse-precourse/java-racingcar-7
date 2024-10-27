@@ -79,6 +79,13 @@ class ServiceTest {
     }
 
     @Test
+    void 자동차이름분리기능_입력이공백과쉼표로구성되어있을때_테스트() {
+        assertThatThrownBy(() -> carNameParser.run(",   ,   ,, , ,, "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력이 이루어지지 않았습니다");
+    }
+
+    @Test
     void 자동차이름분리기능_입력된자동차가2대미만일때_테스트() {
         assertThatThrownBy(() -> carNameParser.run("pobi"))
                 .isInstanceOf(IllegalArgumentException.class)

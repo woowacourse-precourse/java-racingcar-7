@@ -18,6 +18,14 @@ public class InputValidator {
         }
     }
 
+    public void checkCarNamesEmptyInput(String input) {
+        checkEmptyInput(input);
+
+        if (input.replace(" ", "").replace(",", "").isEmpty()) {
+            throw new IllegalArgumentException("입력이 이루어지지 않았습니다");
+        }
+    }
+
     public void checkNumberOfCars(List<String> input) {
         if (input.size() < 2) {
             throw new IllegalArgumentException("자동차가 2대 미만 입력되었습니다");

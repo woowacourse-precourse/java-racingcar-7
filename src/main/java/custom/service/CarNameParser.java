@@ -28,7 +28,7 @@ public class CarNameParser {
     }
 
     public List<String> run(String input) {
-        inputValidator.checkEmptyInput(input);
+        inputValidator.checkCarNamesEmptyInput(input);
         String cleanedCommaString = cleanComma(input);
         List<String> separatedStrings = splitByComma(cleanedCommaString);
         List<String> carList = trimCarNames(separatedStrings);
