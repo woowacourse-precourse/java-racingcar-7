@@ -30,4 +30,6 @@ class InputValidatorTest {
         );
         assertEquals(BLANK_VALUE.getMessage(), exception.getMessage());
     }
+
+
 }
