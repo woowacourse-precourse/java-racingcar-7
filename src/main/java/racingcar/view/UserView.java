@@ -39,7 +39,7 @@ public class UserView {
 
         String input = Console.readLine();
 
-        if(input == null || input.isBlank()) {
+        if (input == null || input.isBlank()) {
             throw new IllegalArgumentException(RacingCarErrorMessage.START_INPUT_ERROR.getMessage());
         }
 
@@ -52,14 +52,14 @@ public class UserView {
         return getValidRepeatNumber(Console.readLine());
     }
 
-    private int getValidRepeatNumber(String repeatNumber){
-        if(repeatNumber == null || repeatNumber.isBlank()) {
+    private int getValidRepeatNumber(String repeatNumber) {
+        if (repeatNumber == null || repeatNumber.isBlank()) {
             throw new IllegalArgumentException(RacingCarErrorMessage.BLANK_REPEAT_NUMBER_ERROR.getMessage());
         }
 
         try {
             int number = Integer.parseInt(repeatNumber.trim());
-            if(number <= 0) {
+            if (number <= 0) {
                 throw new IllegalArgumentException(RacingCarErrorMessage.POSITIVE_REPEAT_NUMBER_ERROR.getMessage());
             }
             return number;
@@ -68,12 +68,12 @@ public class UserView {
         }
     }
 
-    private List<Car> getCarsList(String input){
+    private List<Car> getCarsList(String input) {
         List<Car> cars = new ArrayList<>();
 
         String[] carNames = input.split(",");
 
-        for(String carName : carNames){
+        for (String carName : carNames) {
             cars.add(new Car(carName.trim()));
         }
 

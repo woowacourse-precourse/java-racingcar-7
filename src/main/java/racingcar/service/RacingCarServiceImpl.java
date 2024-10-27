@@ -9,7 +9,7 @@ public class RacingCarServiceImpl implements RacingCarService {
 
     @Override
     public List<String> startRacing(int repeatNumber, List<Car> cars) {
-        while(repeatNumber-- > 0) {
+        while (repeatNumber-- > 0) {
             updateCars(cars);
         }
 
@@ -17,7 +17,7 @@ public class RacingCarServiceImpl implements RacingCarService {
     }
 
     private void updateCars(List<Car> cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
 
             car.move(randomNumber);

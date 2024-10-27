@@ -10,11 +10,11 @@ public class Car {
     private int moveCount;
 
     public Car(String name) {
-        if(name == null || name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(RacingCarErrorMessage.CAR_NAME_BLANK_ERROR.getMessage());
         }
 
-        if(name.length() > MAX_NAME_LENGTH) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(RacingCarErrorMessage.CAR_NAME_LENGTH_ERROR.getMessage());
         }
 
@@ -31,7 +31,7 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if(randomNumber >= MIN_NUMBER) {
+        if (randomNumber >= MIN_NUMBER) {
             moveCount++;
         }
     }
