@@ -2,9 +2,9 @@ package racingcar.domain;
 
 public class Car {
 	String name;
-	String distance;
+	int distance;
 
-	public Car(String name, String distance) {
+	public Car(String name, int distance) {
 		this.name = name;
 		this.distance = distance;
 	}
