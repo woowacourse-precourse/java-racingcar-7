@@ -20,6 +20,7 @@ public class RacingController {
 
     public void init(){
         String[] carNames = racingCarView.readCarName();
+        Validatior.checkCarNames(carNames);
         List<Car> cars = racingService.generateCars(carNames);
         int num = racingCarView.readNum();
         Validatior.isInteger(num);
