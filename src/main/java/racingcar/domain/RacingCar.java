@@ -42,4 +42,8 @@ public class RacingCar {
     public boolean isInPosition(int position) {
         return this.position == position;
     }
+
+    public boolean isSameName(RacingCar racingCar) {
+        return this.name.equals(racingCar.name);
+    }
 }
