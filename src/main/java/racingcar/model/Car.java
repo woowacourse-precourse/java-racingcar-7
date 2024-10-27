@@ -13,7 +13,7 @@ public class Car {
     }
 
     public void move(){
-            this.distance++;
+        this.distance++;
     }
 
     public String getName(){
