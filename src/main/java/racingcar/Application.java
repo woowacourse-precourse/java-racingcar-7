@@ -92,7 +92,6 @@ public class Application {
     private static void Input() throws IllegalArgumentException{
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String playerText = Console.readLine();
-//        String playerText = "aa,bb,c";
 
         String[] playerArray = playerText.split(",");
         playerListInput(playerArray);
@@ -112,6 +111,10 @@ public class Application {
             }
 
             players.add(player);
+        }
+
+        if (players.size() <= 1) {
+            throw new IllegalArgumentException("플레이어의 수가 너무 적습니다.");
         }
     }
 }
