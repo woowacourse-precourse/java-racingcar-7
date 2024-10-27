@@ -14,7 +14,7 @@ public class CarController {
     private final Validator validator = new Validator();
 
     public void createCars() {
-        String input = inputView.input();
+        String input = inputView.inputCarNames();
         String[] strings = StringUtil.splitByComma(input);
         ArrayList<String> names = StringUtil.toArrayList(strings);
         ArrayList<Car> cars = new ArrayList<>();
