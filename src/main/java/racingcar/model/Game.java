@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.valid.NameValid;
+import racingcar.model.component.Car;
 
 import java.util.ArrayList;
 import java.util.List;

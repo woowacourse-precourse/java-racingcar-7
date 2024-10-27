@@ -1,15 +1,14 @@
 package racingcar.view;
 
 import racingcar.constants.MessageConstants;
-import racingcar.model.Car;
+import racingcar.model.component.Car;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public static  void requestCarNames() {
+    public static void requestCarNames() {
         System.out.print(MessageConstants.INPUT_CAR_NAMES);
     }
 
