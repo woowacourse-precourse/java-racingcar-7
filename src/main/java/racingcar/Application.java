@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.factory.StringParserFactory;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -10,7 +12,7 @@ public class Application {
         String inputLoopCount = Console.readLine();
 
         StringParserFactory stringParserFactory = new StringParserFactory();
-        stringParserFactory.parseCarName(inputCarName);
-        stringParserFactory.parseLoopCount(inputLoopCount);
+        List<String> carNameList = stringParserFactory.parseCarName(inputCarName);
+        int loopCount = stringParserFactory.parseLoopCount(inputLoopCount);
     }
 }

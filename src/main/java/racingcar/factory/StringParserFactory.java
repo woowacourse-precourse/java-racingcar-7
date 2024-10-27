@@ -9,12 +9,14 @@ public class StringParserFactory {
 
     private final InputValidator inputValidator = new InputValidator();
 
-    public void parseCarName(String inputCarName) {
+    public List<String> parseCarName(String inputCarName) {
         List<String> carNameList = List.of(inputCarName.split(Symbol.COMMA));
         inputValidator.validateCarName(carNameList);
+        return carNameList;
     }
 
-    public void parseLoopCount(String inputLoopCount) {
+    public int parseLoopCount(String inputLoopCount) {
         inputValidator.validateLoopCount(inputLoopCount);
+        return Integer.parseInt(inputLoopCount);
     }
 }
