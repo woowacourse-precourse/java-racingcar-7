@@ -54,6 +54,20 @@ public class RacingCarIO {
     }
 
     /**
+     * 문제형식을 준수하여 현재 진행중인 경주상태를 출력합니다.
+     * @param statusDto 현재 상태정보를 담고있는 객체
+     */
+    public static void printStatus( StatusDTO statusDto ) {
+        Map<String, Integer> status = statusDto.status();
+        for ( String key: status.keySet() ) {
+            Integer value = status.get(key);
+            String result_msg = String.format(OUTPUT_STAGE_FORMAT, key, "-".repeat( value ));
+            System.out.println( result_msg );
+        }
+        System.out.println();
+    }
+
+    /**
      * 문제형식을 준수하여 최종 경주결과를 출력합니다.
      * @param statusDTO 마지막 경주상태정보를 담고있는 객체
      */
