@@ -1,7 +1,9 @@
 package racingcar.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.exceptions.RacingCarExceptionHandler;
 import racingcar.exceptions.RacingCarExceptionMessage;
 
@@ -12,13 +14,14 @@ public class CarGroup {
         if (carList == null) {
             RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.CAR_NAME_CANNOT_BE_NULL);
         }
+        Set<String> carSet = new HashSet<>(List.of(carList));
+        if (carList.length != carSet.size()) {
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.DUPLICATED_CAR_NAME);
+        }
         List<Car> carGroup = new ArrayList<>();
         for (String carName : carList) {
             Car car = new Car(carName);
             carGroup.add(car);
-        }
-        if(carGroup.size() != carGroup.stream().distinct().count()){
-            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.DUPLICATED_CAR_NAME);
         }
         this.racingCarList = List.copyOf(carGroup);
     }
