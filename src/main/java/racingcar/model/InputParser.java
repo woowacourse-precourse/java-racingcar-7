@@ -13,6 +13,7 @@ public class InputParser {
         InputValidator.validateCharacters(cars_list);
         InputValidator.validateLength(cars_list);
         InputValidator.validateDuplicates(cars_list);
+        InputValidator.validateMaxCarCount(cars_list);
 
         LinkedHashMap<String, Integer> cars_parsed = new LinkedHashMap<>();
         for (String car : cars_list) {

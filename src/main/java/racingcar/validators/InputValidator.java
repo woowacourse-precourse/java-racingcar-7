@@ -31,10 +31,22 @@ public class InputValidator {
         }
     }
 
+    public static void validateMaxCarCount(List<String> names) {
+        final int MAX_CAR_COUNT = 100;
+        if (names.size() > MAX_CAR_COUNT) {
+            throw new IllegalArgumentException("차의 대수는 " + MAX_CAR_COUNT + "대를 넘길 수 없습니다.");
+        }
+    }
+
     public static void validateNumber(String input) {
+        final int MIN_ROUND_COUNT = 1;
+        final int MAX_ROUND_COUNT = 10000;
+
         try {
-            if (Integer.parseInt(input) <= 0) {
-                throw new IllegalArgumentException("양수를 입력해주세요.");
+            if (Integer.parseInt(input) < MIN_ROUND_COUNT) {
+                throw new IllegalArgumentException("시도할 횟수는 " + MIN_ROUND_COUNT + " 이상이어야 합니다.");
+            } else if (Integer.parseInt(input) > MAX_ROUND_COUNT) {
+                throw new IllegalArgumentException("시도할 횟수는 " + MAX_ROUND_COUNT + " 이하여야 합니다.");
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효하지 않은 숫자입니다.");
