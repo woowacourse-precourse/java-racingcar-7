@@ -3,9 +3,8 @@ package racingcar.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import racingcar.constant.Movement;
+import racingcar.dto.CarLocation;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 
@@ -21,8 +20,8 @@ public class RacingGameService {
     }
 
     // 경주 실행: 각 라운드별로 자동차 이동을 시도하고, 각 라운드의 결과를 기록하여 반환
-    public List<Map<String, Integer>> runRace(RacingGame racingGame) {
-        List<Map<String, Integer>> raceHistory = new ArrayList<>();
+    public List<List<CarLocation>> runRace(RacingGame racingGame) {
+        List<List<CarLocation>> raceHistory = new ArrayList<>();
 
         for (int i = 0; i < racingGame.attempts(); i++) {
             raceRound(racingGame.cars());
@@ -49,11 +48,10 @@ public class RacingGameService {
         }
     }
 
-    private Map<String, Integer> getCurrentLocations(List<RacingCar> cars) {
+    private List<CarLocation> getCurrentLocations(List<RacingCar> cars) {
         return cars.stream()
-                .collect(Collectors.toMap(
-                        RacingCar::getName, RacingCar::getLocation
-                ));
+                .map(car -> new CarLocation(car.getName(), car.getLocation()))
+                .toList();
     }
 
     public List<String> getWinners(List<RacingCar> cars) {

@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Map;
+import racingcar.dto.CarLocation;
 import racingcar.model.RacingGame;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
@@ -26,7 +26,7 @@ public class RacingGameController {
 
         // 경주 진행 및 결과 출력
         outputView.printRaceResultPrefix();
-        List<Map<String, Integer>> raceHistory = racingGameService.runRace(racingGame);
+        List<List<CarLocation>> raceHistory = racingGameService.runRace(racingGame);
 
         // 라운드별 결과 출력
         raceHistory.forEach(outputView::printRaceProcess);
