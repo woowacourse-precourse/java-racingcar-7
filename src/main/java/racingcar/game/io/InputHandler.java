@@ -13,17 +13,29 @@ public class InputHandler {
 
     public RacingCars getCarsFromUser() {
         String carNames = Console.readLine();
-        List<Car> cars = Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
-                .map(Car::new)
-                .toList();
+        checkInputIsEmptyOrBlank(carNames);
+        List<Car> cars = convertToCars(carNames);
 
         return new RacingCars(cars);
     }
 
     public AttemptCount getAttemptCountFromUser() {
         String attemptCount = Console.readLine();
+        checkInputIsEmptyOrBlank(attemptCount);
 
         return new AttemptCount(parseAsInteger(attemptCount));
+    }
+
+    private void checkInputIsEmptyOrBlank(String input) {
+        if (isInputBlankOrEmpty(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getDescription());
+        }
+    }
+
+    private List<Car> convertToCars(String carNames) {
+        return Arrays.stream(carNames.split(NAME_SPLIT_DELIMITER))
+                .map(Car::new)
+                .toList();
     }
 
     private int parseAsInteger(String attemptCount) {
@@ -32,5 +44,9 @@ public class InputHandler {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.ATTEMPT_COUNT_TYPE.getDescription());
         }
+    }
+
+    private boolean isInputBlankOrEmpty(String input) {
+        return input.isEmpty() || input.isBlank();
     }
 }
