@@ -15,4 +15,8 @@ public enum Symbol {
     public String formatMessageOf(String message) {
         return String.format(message, this.name, this.symbol);
     }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }
