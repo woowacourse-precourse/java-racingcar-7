@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class RacingProgramTest {
 
@@ -51,6 +52,39 @@ class RacingProgramTest {
         String input = "test1,test12,test2";
 
         Assertions.assertThatThrownBy(() -> racingProgram.splitName(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 정상_게임_횟수_테스트(){
+        String input = "5";
+
+        int attemptNumber = racingProgram.parseStringToNumber(input);
+
+        assertThat(attemptNumber).isEqualTo(5);
+    }
+
+    @Test
+    void 형식_예외_테스트(){
+        String input = "wrong";
+
+        assertThatThrownBy(() -> racingProgram.parseStringToNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 음수_게임_횟수_테스트(){
+        String input = "-10";
+
+        assertThatThrownBy(() -> racingProgram.parseStringToNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_횟수_0_입력_테스트(){
+        String input = "0";
+
+        assertThatThrownBy(() -> racingProgram.parseStringToNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
