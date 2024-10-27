@@ -44,5 +44,13 @@ class ConsoleUtilTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"aa, bb", "aa,,cc"})
+    @DisplayName("자동차 이름이 문자와 쉼표만으로 이루지지않았을때 IllegalArgumentException 발생여부 확인")
+    void ifInvalidCarNameThrowsException(String carNames) {
+        assertThatThrownBy(() -> ConsoleUtil.checkCarNameException(carNames))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
