@@ -13,10 +13,10 @@ public class GameService {
     public void setCarsNames(String input) {
 
         try {
-            nullValidation(input);
+            InputValidator(input);
             String delimiter = ",";
             List<String> splitNames = List.of(input.split(delimiter));
-            nameValidation(splitNames);
+            nameLengthValidator(splitNames);
             gameRepository.setCarName(splitNames);
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
@@ -29,7 +29,7 @@ public class GameService {
     public void setNumberOfRounds(String input) {
 
         try {
-            nullValidation(input);
+            InputValidator(input);
             int round = Integer.parseInt(input);
             gameRepository.setRound(round);
         } catch (Exception e) {
@@ -102,13 +102,13 @@ public class GameService {
         return String.join(",", gameRepository.getWinner());
     }
 
-    private void nullValidation(String input) {
+    private void InputValidator(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
     }
 
-    private void nameValidation(List<String> names) {
+    private void nameLengthValidator(List<String> names) {
         for (String name : names) {
             if (name.length() > 5) {
                 throw new IllegalArgumentException("ERROR : 5자 이하의 이름만 입력 가능합니다.");
