@@ -18,6 +18,12 @@ public class RacingProgram {
         cars = splitName(carList);
     }
 
+    void getAttemptFromUser(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String attemptNum = Console.readLine();
+        attempts = parseStringToNumber(attemptNum);
+    }
+
     List<Car> splitName(String input) {
         List<Car> cars = new ArrayList<>();
         Set<String> uniqueNames = new HashSet<>();
@@ -31,6 +37,19 @@ public class RacingProgram {
         return cars;
     }
 
+    int parseStringToNumber(String num){
+        int resultNum;
+
+        try {
+            resultNum = Integer.parseInt(num);
+            validatePositive(resultNum);
+        } catch (NumberFormatException e){
+            //정수 형태의 문자열이 아닌 경우
+            throw new IllegalArgumentException(e);
+        }
+        return resultNum;
+    }
+
     private void validateCarName(String name) {
         if (name == null || name.isEmpty() || name.isBlank()) {
             throw new IllegalArgumentException("차 이름은 공백일 수 없습니다");
@@ -41,6 +60,7 @@ public class RacingProgram {
     }
 
     private void validateDuplication(Set<String> cars, String name){
+        //Set을 활용해 중복 여부 확인
         if(!cars.add(name)){
             throw new IllegalArgumentException();
         }
@@ -49,6 +69,15 @@ public class RacingProgram {
     private Car createCar(String name) {
         return new Car(name);
     }
+
+    private void validatePositive(int resultNum){
+        //우승자는 한 명 이상일 수 있다
+        if(resultNum <= 0){
+            throw new IllegalArgumentException("게임 횟수는 0이하가 될 수 없습니다.");
+        }
+    }
+
+
 
 
 
