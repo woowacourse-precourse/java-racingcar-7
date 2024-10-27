@@ -53,6 +53,27 @@ public class Application {
         }
         return cars;
     }
+
+    // 게임 진행 로직
+    private static void runGame(List<Car> cars, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            moveCars(cars);
+            printCarsPosition(cars);
+        }
+    }
+
+    private static void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    private static void printCarsPosition(List<Car> cars) {
+        for (Car car : cars) {
+            car.printPosition();
+        }
+        System.out.println();
+    }
 }
 
 class Car {
