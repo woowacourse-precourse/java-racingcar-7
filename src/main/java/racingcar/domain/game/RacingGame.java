@@ -23,7 +23,14 @@ public class RacingGame {
 
     private void executeCarsAction() {
         for (Car car : cars.getCars()) {
-            boolean isMovable = movementChecker.isMovable();
+            moveCar(car);
+        }
+    }
+
+    private void moveCar(Car car) {
+        boolean isMovable = movementChecker.isMovable();
+        if (isMovable) {
+            car.move();
         }
     }
 }
