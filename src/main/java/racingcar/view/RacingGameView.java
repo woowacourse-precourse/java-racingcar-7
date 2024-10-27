@@ -15,4 +15,8 @@ public class RacingGameView {
     public String getCarNames(){
         return Console.readLine();
     }
+
+    public int getTrialCount(){
+        return Integer.parseInt(Console.readLine());
+    }
 }

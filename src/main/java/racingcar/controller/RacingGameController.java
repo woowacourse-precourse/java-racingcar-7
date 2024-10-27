@@ -11,6 +11,7 @@ public class RacingGameController {
     public void run(){
         view.carNameInputMessage();
         createCarInstances();
+        view.trialCountInputMessage();
     }
 
     private List<String> createCarInstances(){
