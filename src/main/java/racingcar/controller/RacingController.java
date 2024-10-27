@@ -28,7 +28,7 @@ public class RacingController {
 
         Cars cars = racingService.enterCars(carNames);
         Winners winners = racingService.startRace(cars, race);
-        OutputView outputView = new OutputView();
+        OutputView outputView = OutputView.getInstance();
         outputView.displayWinners(winners);
     }
 }

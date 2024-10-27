@@ -5,19 +5,27 @@ import racingcar.model.Winners;
 
 public class OutputView {
 
-    public static void display(Cars cars) {
-        cars.getCars().forEach(car -> {
-            String name = car.getName();
-            int distance = car.getDistance();
+    private final OutputProcessor outputProcessor;
 
-            System.out.print(name + " : ");
-            System.out.println("-".repeat(distance));
-        });
-        System.out.println();
+    private OutputView() {
+        this.outputProcessor = new OutputProcessor();
+    }
+
+    private static class OutputViewHolder {
+        private static final OutputView INSTANCE = new OutputView();
+    }
+
+    public static OutputView getInstance() {
+        return OutputViewHolder.INSTANCE;
+    }
+
+    public void displayCars(Cars cars) {
+        String formattedCars = outputProcessor.formatCars(cars);
+        System.out.println(formattedCars);
     }
 
     public void displayWinners(Winners winners) {
-        String winnerNames = winners.getWinnerNames();
-        System.out.println(Message.FINAL_WINNER + winnerNames);
+        String formattedWinners = outputProcessor.formatWinners(winners);
+        System.out.println(formattedWinners);
     }
 }

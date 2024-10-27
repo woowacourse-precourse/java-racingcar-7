@@ -23,7 +23,7 @@ public class RacingService {
     public Winners startRace(Cars cars, Race race) {
         while (race.hasNext()) {
             cars.moveAll();
-            OutputView.display(cars);
+            OutputView.getInstance().displayCars(cars);
         }
         return Winners.from(cars);
     }
