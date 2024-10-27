@@ -3,8 +3,10 @@ package racingcar.controller;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.constant.RacingCarInfoMsg.PRESENT_FINAL_WINNER_MSG;
 import static racingcar.constant.RacingCarInfoMsg.TRACKING_START_MSG;
 import static racingcar.constant.RacingCarInfoMsg.TYPE_RACE_COUNT;
+import static racingcar.constant.RacingCarStatic.FINAL_WINNER_SEPARATOR;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
@@ -181,13 +183,46 @@ class RacingCarControllerTest extends NsTest {
         List<String> testCarNames = new ArrayList<>(Arrays.asList("seo"));
         racingCarService.saveAll(testCarNames);
 
-        RacingCar seoCar = racingCarService.getByName("seo").get();
-
         //when
         racingCarController.openingRacingGame(inputView, outputView);
 
         //then
         assertThat(output().split("seo : ", -1).length - 1).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("최종 우승자 안내를 위한 문구가 출력됨")
+    void t011() {
+        //given
+        String testInput = "10";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+
+        List<String> testCarNames = new ArrayList<>(Arrays.asList("seo"));
+        racingCarService.saveAll(testCarNames);
+        racingCarController.openingRacingGame(inputView, outputView);
+
+        //when
+        racingCarController.finalAward(outputView);
+
+        assertThat(output()).contains(PRESENT_FINAL_WINNER_MSG.getMsg());
+    }
+
+    @Test
+    @DisplayName("최종 우승자가 쉼표로 구분지어 출력됨")
+    void t012() {
+        //given
+        String testInput = "0";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+
+        List<String> testCarNames = new ArrayList<>(Arrays.asList("seo","pobi"));
+        racingCarService.saveAll(testCarNames);
+        racingCarController.openingRacingGame(inputView, outputView);
+
+        //when
+        racingCarController.finalAward(outputView);
+
+        //then
+        assertThat(output()).contains("최종 우승자 : pobi" + FINAL_WINNER_SEPARATOR + " seo");
     }
 
     @Override
