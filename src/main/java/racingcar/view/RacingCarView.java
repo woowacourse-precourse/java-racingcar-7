@@ -28,7 +28,7 @@ public class RacingCarView {
         System.out.println(carName + " : " + carScoreDash);
     }
 
-    public void printNowString(){
+    public void printNowString() {
         System.out.println(NOW_STRING);
     }
 }
