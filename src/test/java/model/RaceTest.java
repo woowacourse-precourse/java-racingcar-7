@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import service.MoveStrategy;
-import service.RaceStatusCallback;
 
 import java.util.ArrayList;
 import java.util.List;
