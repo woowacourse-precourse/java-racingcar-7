@@ -57,7 +57,7 @@ public class Validators implements Validator {
     public int validateInteger(String input) throws IllegalArgumentException {
         try {
             int num = Integer.parseInt(input.strip());
-            if (num < 0) {
+            if (num <= 0) {
                 throw new IllegalArgumentException("숫자 범위 오류");
             }
             return num;
