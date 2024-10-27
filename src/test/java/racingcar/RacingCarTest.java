@@ -113,9 +113,25 @@ public class RacingCarTest extends NsTest {
     }
 
     @Test
-    void 시도횟수_숫자_아님() {
+    void 시도횟수_숫자_아님_실패() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi ", "A"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 이름_길이_5자_초과_실패() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobibi ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 쉼표가_아닌_구분자로_길이_초과_실패() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi&jun ", "1"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
