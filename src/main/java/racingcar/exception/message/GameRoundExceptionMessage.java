@@ -1,6 +1,6 @@
-package racingcar.domain.game.exception.message;
+package racingcar.exception.message;
 
-import racingcar.domain.game.policy.GameRoundPolicy;
+import racingcar.domain.game.GameRoundPolicy;
 
 public class GameRoundExceptionMessage {
     public static final String MINIMUM_ROUND_REQUIRED = String.format("최소 %d번부터 게임 시작 가능합니다",

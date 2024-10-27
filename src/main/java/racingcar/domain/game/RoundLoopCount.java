@@ -1,8 +1,7 @@
 package racingcar.domain.game;
 
-import racingcar.domain.game.exception.GameRoundException.MaximumGameRoundExceededException;
-import racingcar.domain.game.exception.GameRoundException.MinimumGameRoundRequiredException;
-import racingcar.domain.game.policy.GameRoundPolicy;
+import racingcar.exception.GameRoundException.MaximumGameRoundExceededException;
+import racingcar.exception.GameRoundException.MinimumGameRoundRequiredException;
 
 public class RoundLoopCount {
     private final int value;

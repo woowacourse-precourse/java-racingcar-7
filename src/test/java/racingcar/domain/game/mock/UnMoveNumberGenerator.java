@@ -1,10 +1,10 @@
-package racingcar.player.mock;
+package racingcar.domain.game.mock;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-import racingcar.domain.game.GameNumberGenerator;
+import racingcar.domain.game.NumberGenerator;
 
-public class UnMoveGameNumberGenerator implements GameNumberGenerator {
+public class UnMoveNumberGenerator implements NumberGenerator {
     @Override
     public int generate() {
         return pickNumberInRange(0, 3);

@@ -1,6 +1,6 @@
 package racingcar.domain.game;
 
-public interface GameNumberGenerator {
+public interface NumberGenerator {
 
     int generate();
 }

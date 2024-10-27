@@ -1,4 +1,4 @@
-package racingcar.domain.game.policy;
+package racingcar.domain.game;
 
 public class GameRoundPolicy {
     public static final int GAME_MINIMUM_ROUND = 1;

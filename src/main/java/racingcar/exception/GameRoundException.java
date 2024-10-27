@@ -1,7 +1,7 @@
-package racingcar.domain.game.exception;
+package racingcar.exception;
 
 import racingcar.common.exception.RacingCarException;
-import racingcar.domain.game.exception.message.GameRoundExceptionMessage;
+import racingcar.exception.message.GameRoundExceptionMessage;
 
 public class GameRoundException extends RacingCarException {
     public GameRoundException(String message) {
