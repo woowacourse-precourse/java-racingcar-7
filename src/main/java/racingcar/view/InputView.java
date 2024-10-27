@@ -7,6 +7,8 @@ import racingcar.util.Convertor;
 
 public class InputView {
 
+    private static final String CAR_NAME_DELIMITER = ",";
+
     public List<String> inputCarNames() {
         String carNames = Console.readLine();
         InputValidation.validateCarNames(carNames);
@@ -25,6 +27,6 @@ public class InputView {
     }
 
     private String[] carNameSplit(String carNames) {
-        return carNames.split(",");
+        return carNames.split(CAR_NAME_DELIMITER);
     }
 }
