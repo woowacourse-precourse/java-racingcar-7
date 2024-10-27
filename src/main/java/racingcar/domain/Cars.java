@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.StatusView;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -7,7 +9,7 @@ import java.util.stream.IntStream;
 import static racingcar.message.InfoMessage.STATUS_NOTIFICATION_MESSAGE;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(String[] names) {
         cars = Arrays.stream(names)
@@ -24,13 +26,8 @@ public class Cars {
         IntStream.range(0, moveNum)
                 .forEach(i -> {
                     cars.forEach(Car::moveOrStop);
-                    printStatus();
+                    StatusView.printStatus(cars);
                 });
-    }
-
-    private void printStatus() {
-        cars.forEach(Car::getStatus);
-        System.out.println();
     }
 
     // 테스트 전용 메서드
