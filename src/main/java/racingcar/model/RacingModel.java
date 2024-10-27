@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,16 +22,8 @@ public class RacingModel {
     }
 
     public List<String> getWinners(LinkedHashMap<String, Integer> cars) {
-        List<String> winners = new ArrayList<>();
-
         final int winnerScore = Collections.max(cars.values());
 
-        for (Entry<String, Integer> car : cars.entrySet()) {
-            if (car.getValue() == winnerScore) {
-                winners.add(car.getKey());
-            }
-        }
-
-        return winners;
+        return cars.entrySet().stream().filter(car -> car.getValue() == winnerScore).map(Entry::getKey).toList();
     }
 }
