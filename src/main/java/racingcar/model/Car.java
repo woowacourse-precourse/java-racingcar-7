@@ -2,18 +2,18 @@ package racingcar.model;
 
 public class Car {
     private final String name;
-    private int position;
+    private Long position;
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
+        this.position = 0L;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
+    public Long getPosition() {
         return position;
     }
 
