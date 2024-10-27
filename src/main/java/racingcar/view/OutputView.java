@@ -1,8 +1,8 @@
 package racingcar.view;
 
 public class OutputView {
-    public static void print(String prompt, String result) {
-        System.out.print(prompt);
+    public static void printResult(String result) {
         System.out.print(result);
+        System.out.println();
     }
 }

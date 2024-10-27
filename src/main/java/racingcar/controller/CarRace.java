@@ -1,4 +1,4 @@
-package racingcar.carrace;
+package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
