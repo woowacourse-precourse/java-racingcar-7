@@ -8,6 +8,7 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public void add(Car car) {
+        validateDuplication(car);
         cars.add(car);
     }
 
@@ -29,5 +30,11 @@ public class Cars {
             .mapToInt(Car::getPosition)
             .max()
             .orElse(0);
+    }
+
+    private void validateDuplication(Car car) {
+        if (cars.contains(car)) {
+            throw new IllegalArgumentException("자동차 이름이 중복되었습니다.");
+        }
     }
 }
