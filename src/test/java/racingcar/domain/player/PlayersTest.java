@@ -99,8 +99,35 @@ class PlayersTest {
             players.update(p3);
 
             // then
-            Assertions.assertThat(players.getAll().get(1).getDistanceValue()).isEqualTo(30);
+            Assertions.assertThat(players.getAll().get(1).getDistanceValue())
+                    .isEqualTo(30);
         }
     }
+
+    @DisplayName("전체 플레이어 조회하기")
+    @Nested
+    class GetAllPlayersTest {
+
+        @DisplayName("모든 플레이어 목록 조회")
+        @Test
+        void getAllPlayers() {
+            // given
+            Player p1 = Player.of(1L, "name1");
+            p1 = p1.move(Distance.of(10));
+
+            Player p2 = Player.of(2L, "name2");
+            p2 = p2.move(Distance.of(20));
+
+            Players players = Players.from(List.of(p1, p2));
+
+            // when
+            List<Player> result = players.getAll();
+
+            // then
+            Assertions.assertThat(result)
+                    .containsExactlyInAnyOrder(p1, p2);
+        }
+    }
+
 
 }
