@@ -23,7 +23,7 @@ public class DataValidator {
 
     private static void checkNonEmpty(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.NULL_NAME.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class DataValidator {
         final int MAX_LENGTH = 5;
 
         if (input.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.LENGTH_EXCEEDED.getMessage());
         }
     }
 
@@ -41,31 +41,31 @@ public class DataValidator {
 
     private static void validateEndWith(String input) {
         if (input.charAt(input.length() - 1) == ',') {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.NULL_NAME.getMessage());
         }
     }
 
     private static void checkPlayer(List<String> list) {
         if (!(list.size() >= 2)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.REQUIRED_PLAYER.getMessage());
         }
     }
 
     private static void checkSame(List<String> list) {
         Set<String> set = new HashSet<>(list);
         if (set.size() < list.size()) {
-            throw new IllegalArgumentException("중복 작성");
+            throw new IllegalArgumentException(ErrorMassage.DUPLICATE_NAME.getMessage());
         }
     }
 
     public static int validateTryCount(String tryCount) {
         for (char c : tryCount.toCharArray()) {
             if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMassage.INVALIDE_TRY.getMessage());
             }
         }
         if (Integer.parseInt(tryCount) <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.REQUIRED_TRY.getMessage());
         }
         return Integer.parseInt(tryCount);
     }
@@ -73,7 +73,7 @@ public class DataValidator {
     private static void checkLetterOrDigit(String input) {
         for (char c : input.toCharArray()) {
             if (!(Character.isLetter(c) || Character.isDigit(c))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMassage.INVALID_NAME.getMessage());
             }
         }
     }

@@ -13,7 +13,7 @@ public class GameStart {
             for (RacingCar racingCar : racingCarList) {
                 racingCar.move();
             }
-            System.out.println("");
+            System.out.println();
         }
 
         System.out.print(PRINT_WINNER);
@@ -41,7 +41,7 @@ public class GameStart {
         }
 
         if (maxMove == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMassage.NO_STARTED.getMessage());
         }
         return maxMove;
     }
