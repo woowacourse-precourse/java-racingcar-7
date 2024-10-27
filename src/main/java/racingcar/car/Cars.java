@@ -17,6 +17,10 @@ public class Cars {
         cars.add(new Car(name));
     }
 
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
     public void move(NumberGenerator numberGenerator) {
         cars.forEach(car -> moveCar(car, numberGenerator.generateNumber()));
     }
@@ -30,5 +34,9 @@ public class Cars {
 
     public Car get(int index) {
         return cars.get(index);
+    }
+
+    public List<Car> toList() {
+        return cars;
     }
 }
