@@ -7,6 +7,7 @@ public class CarNameValidation {
         validateIfCarNameIsNUllOrEmpty(name);
         validateIfCarNameHasNewline(name);
         validateIfCarNameLengthWithinFive(name);
+        validateIfCarNameContainsWhiteSpace(name);
     }
 
     public static void validateIfCarNameIsNUllOrEmpty(String name) {
@@ -25,6 +26,13 @@ public class CarNameValidation {
         if (name.length() > 5) {
             throw new IllegalArgumentException(
                     ValidateMessages.CAR_NAME_LENGTH_CANNOT_BE_OVER_FIVE.getValidateMessage());
+        }
+    }
+
+    public static void validateIfCarNameContainsWhiteSpace(String carName) {
+        if (carName.contains(" ")) {
+            throw new IllegalArgumentException(
+                    ValidateMessages.CAR_NAME_SHOULD_NOT_CONTAIN_WHITESPACE.getValidateMessage());
         }
     }
 }
