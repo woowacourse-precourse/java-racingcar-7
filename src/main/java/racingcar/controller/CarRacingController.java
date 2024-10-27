@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -37,6 +38,9 @@ public class CarRacingController {
             carRacingGame.race();
             outputView.printRaceResult(racingCars);
         });
+
+        List<Car> winner = carRacingGame.getWinner();
+        outputView.printWinner(winner);
     }
 
     private Cars makeCarList(String carNames) {
