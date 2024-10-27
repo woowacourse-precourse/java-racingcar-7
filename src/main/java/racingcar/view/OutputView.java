@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,6 +15,18 @@ public class OutputView {
         Set<String> names = input.keySet();
         for (String name : names) {
             System.out.println(name + " : " + printForwardCount(input.get(name)));
+        }
+    }
+
+    public static void printWinner(List<String> input) {
+        StringBuilder sb = new StringBuilder();
+        Iterator<String> it = input.iterator();
+        sb.append("최종 우승자 : ");
+        while(it.hasNext()) {
+            sb.append(it.next());
+            if(it.hasNext()) {
+                sb.append(", ");
+            }
         }
     }
 
