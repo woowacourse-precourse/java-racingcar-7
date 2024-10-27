@@ -42,4 +42,13 @@ public class Car {
     public void moveForward() {
         this.distance++;
     }
+
+    private String getDistanceText() {
+        return String.valueOf(CarConstants.DISTANCE).repeat(distance);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", name, getDistanceText());
+    }
 }
