@@ -44,4 +44,10 @@ public class Car {
     public Integer getMoveCount() {
         return moveCount;
     }
+
+    public void tryMove() {
+        if(MoveConditionEvaluator.isCanMove()) {
+            this.moveCount++;
+        }
+    }
 }
