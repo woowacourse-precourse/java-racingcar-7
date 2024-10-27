@@ -28,4 +28,9 @@ public class Car {
     public int currentLocation() {
         return this.location;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
