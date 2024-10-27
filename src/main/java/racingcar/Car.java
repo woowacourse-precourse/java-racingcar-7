@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Car implements Vehicle {
 
     private final String name;
     private int position;
@@ -11,6 +11,7 @@ public class Car {
         this.position = 0;
     }
 
+    @Override
     public void move(final MoveStrategy moveStrategy) {
         if (moveStrategy.canMove()) {
             position++;
