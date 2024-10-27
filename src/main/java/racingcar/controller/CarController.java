@@ -25,10 +25,9 @@ public class CarController {
         while(carManager.getRemainingAttempts() > 0) {
             carManager.decrementRemainingAttempts();
             race(carManager.getCars());
-
             OutputView.printCarState(carManager.getCars());
-
         }
+        OutputView.printWinner(getWinner(carManager.getCars(), getMostMovedCar(carManager.getCars())));
     }
     public boolean canMove() {
         if(Randoms.pickNumberInRange(0,9) >= MOVEMENT_STANDARD) {
