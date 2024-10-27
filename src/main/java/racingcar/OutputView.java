@@ -8,7 +8,7 @@ public class OutputView {
 
     public void printFirst() {
 
-        System.out.println("\n실행 결과 : ");
+        System.out.println("\n실행 결과");
 
     }
 
