@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.presentation.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.*;
