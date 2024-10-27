@@ -39,7 +39,22 @@ public class Application {
 
         }
         // 우승자 출력(단독 우승자)
+//        private void displayWinner(List<Car> winner) {
+//            System.out.println("최종 우승자 : "+ winner.getFirst().name);
+//        }
+
         // 우승자 출력(공동 우승자)
+        private void displayWinners(List<Car> winners) {
+            if (winners.size() == 1) {
+                System.out.println(winners.getFirst().name);
+            } else {
+                String winnerNames = winners.stream()
+                        .map(winner -> winner.name)
+                        .collect(Collectors.joining(", "));
+                System.out.println("최종 우승자 : " + winnerNames);
+            }
+
+        }
     }
 
     public static class Validator {
