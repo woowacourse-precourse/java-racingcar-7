@@ -4,11 +4,9 @@ public class PositionBuilder {
 
     private static final String POSITION_ICON = "-";
 
-    // Constructor
     private PositionBuilder() {
     }
 
-    // Method
     public static Position from(Distance distance) {
         StringBuilder positionBuilder = new StringBuilder();
         distance.initiateLongStream()

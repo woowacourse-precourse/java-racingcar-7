@@ -6,11 +6,9 @@ import racingcar.app.server.service.RaceService;
 
 public class AppConfig {
 
-    // Constructor
     private AppConfig() {
     }
 
-    // Singleton Helper
     public static class AppConfigHolder {
         private static final AppConfig INSTANCE = new AppConfig();
     }
@@ -19,7 +17,6 @@ public class AppConfig {
         return AppConfigHolder.INSTANCE;
     }
 
-    // Bean Creation
     public ServerController initializeServerController() {
         return new ServerController(initializeRaceService());
     }

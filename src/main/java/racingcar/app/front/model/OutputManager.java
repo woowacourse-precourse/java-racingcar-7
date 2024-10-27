@@ -8,7 +8,6 @@ public class OutputManager {
     private static final String RACE_WINNERS = "최종 우승자 : %s";
     private static final String NO_WINNER = "우승자가 없습니다.";
 
-    // Constructor
     private OutputManager() {
     }
 
@@ -20,7 +19,6 @@ public class OutputManager {
         return OutputManagerHolder.INSTANCE;
     }
 
-    // Method
     public void showLapCharts(final String lapCharts) {
         OutputView instance = OutputView.getInstance();
         instance.printWithNewLineUpper(LAP_CHART_RESULT);

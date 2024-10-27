@@ -17,7 +17,6 @@ public class Car {
     private final MyProgress myProgress;
 
 
-    // Constructor
     private Car(final String name, final MyProgress myProgress) {
         this.name = name;
         this.myProgress = myProgress;
@@ -29,7 +28,6 @@ public class Car {
         return new Car(name, myProgress);
     }
 
-    // Method
     public boolean completedAllLap() {
         return myProgress.completedAllLap();
     }
@@ -53,7 +51,6 @@ public class Car {
         return this.name;
     }
 
-    // validation
     private static void validateNameLength(final String name) {
         boolean longerThanMinLength = name.length() > CAR_NAME_MIN_LENGTH;
         if (longerThanMinLength) {

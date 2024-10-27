@@ -4,11 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class OutputView {
 
-    // Constructor
     private OutputView() {
     }
 
-    // Singleton helper
     public static class OutputViewHolder {
         private static final OutputView INSTANCE = new OutputView();
     }
@@ -17,7 +15,6 @@ public class OutputView {
         return OutputViewHolder.INSTANCE;
     }
 
-    // Method
     public void printWithNewLineUpper(final String value) {
         newLine();
         simplePrint(value);

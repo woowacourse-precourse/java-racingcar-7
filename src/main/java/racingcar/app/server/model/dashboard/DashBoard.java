@@ -12,7 +12,6 @@ public class DashBoard {
     private final Cars cars;
     private final LapCharts lapCharts;
 
-    // Constructor
     private DashBoard(final Cars cars) {
         this.cars = cars;
         lapCharts = LapCharts.initiate();
@@ -23,7 +22,6 @@ public class DashBoard {
         return new DashBoard(cars);
     }
 
-    // Method
     public void offerLapChart() {
         List<String> positions = cars.currentPositions();
         String summary = String.join("\n", positions);

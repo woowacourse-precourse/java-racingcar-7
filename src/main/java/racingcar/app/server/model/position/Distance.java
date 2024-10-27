@@ -13,7 +13,6 @@ public class Distance {
 
     private final long value;
 
-    // Constructor
     private Distance(final long source) {
         this.value = source;
     }
@@ -22,7 +21,6 @@ public class Distance {
         return new Distance(source);
     }
 
-    // Method
     public boolean isBiggerThanZero() {
         return this.value > ZERO.value;
     }

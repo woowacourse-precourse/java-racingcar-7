@@ -10,7 +10,6 @@ import racingcar.app.server.model.race.Lap;
 public class Cars {
     private final List<Car> cars;
 
-    // Constructor
     private Cars(final List<Car> cars) {
         this.cars = cars;
     }
@@ -20,7 +19,6 @@ public class Cars {
         return new Cars(cars);
     }
 
-    // Method
     public void move() {
         for (Car car : cars) {
             Distance distance = car.movableDistance();
@@ -43,7 +41,6 @@ public class Cars {
                 .toList();
     }
 
-    // Validation
     private static void validateIsNotNull(final List<Car> cars) {
         cars.forEach(car -> requireNonNull(car, SHOULD_NOT_BE_NULL));
     }

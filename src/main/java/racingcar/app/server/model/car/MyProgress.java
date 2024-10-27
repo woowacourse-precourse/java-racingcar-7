@@ -12,7 +12,6 @@ public class MyProgress {
     private Lap remainingLap;
     private Position position;
 
-    // Constructor
     private MyProgress(final Lap remainingLap, final Position position) {
         this.remainingLap = remainingLap;
         this.position = position;
@@ -24,7 +23,6 @@ public class MyProgress {
         return new MyProgress(remainingLap, position);
     }
 
-    // Method
     public boolean completedAllLap() {
         return remainingLap.equals(Lap.ZERO);
     }
@@ -43,7 +41,6 @@ public class MyProgress {
         return position.toString();
     }
 
-    // Validation
     private static <T> void validateIsNull(T obj) {
         requireNonNull(obj, SHOULD_NOT_BE_NULL);
     }

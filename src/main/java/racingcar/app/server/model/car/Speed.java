@@ -9,7 +9,6 @@ public class Speed {
 
     private final long value;
 
-    // Constructor
     private Speed(final long value) {
         this.value = value;
     }
@@ -18,7 +17,6 @@ public class Speed {
         return new Speed(value);
     }
 
-    // Method
     private static Speed minSpeed() {
         return Speed.from(MIN_SPEED_POLICY);
     }

@@ -11,7 +11,6 @@ public class Race {
 
     private Lap remainingCount;
 
-    // Constructor
     private Race(final Lap remainingCount) {
         this.remainingCount = remainingCount;
     }
@@ -21,7 +20,6 @@ public class Race {
         return new Race(lap);
     }
 
-    // Method
     public boolean isUnderway() {
         return remainingCount.hasRemaining();
     }

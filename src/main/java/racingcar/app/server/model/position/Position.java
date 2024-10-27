@@ -10,16 +10,16 @@ import racingcar.app.server.exception.ShouldNotBeMinusException;
 public class Position {
 
     public static Position ON_START_LINE = initiate();
+    private static final String INITIAL_POSITION = "";
 
     private final String value;
 
-    // Constructor
     private Position(final String value) {
         this.value = value;
     }
 
     private static Position initiate() {
-        return new Position("");
+        return new Position(INITIAL_POSITION);
     }
 
     public static Position from(String source) {
@@ -27,7 +27,6 @@ public class Position {
         return new Position(source.strip());
     }
 
-    // Method
     public Position add(final Distance distance) {
         Distance destination = currentDistance().add(distance);
         if (destination.isLowerThanZero()) {

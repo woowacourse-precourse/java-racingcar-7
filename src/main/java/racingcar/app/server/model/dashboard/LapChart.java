@@ -6,7 +6,6 @@ import static racingcar.app.server.error.ErrorMessage.SHOULD_NOT_BE_NULL;
 public class LapChart {
     private final String summary;
 
-    // Constructor
     private LapChart(final String summary) {
         this.summary = summary;
     }
@@ -16,7 +15,6 @@ public class LapChart {
         return new LapChart(summary);
     }
 
-    // Method
     @Override
     public String toString() {
         return summary;
