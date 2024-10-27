@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST_UNDER_LENGTH_FIVE;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 
@@ -134,4 +135,14 @@ class ApplicationTest extends NsTest {
         CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
         assertEquals(e.getMessage(), INVALID_CAR_NAMES.message());
     }
+
+    @Test
+    void 자동차_이름_길이가_5를_초과한다면_예외발생() {
+        // given
+        String carNames = "aaaaaa,b,c";
+        // when & then
+        CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
+        assertEquals(e.getMessage(), CAR_NAME_MUST_UNDER_LENGTH_FIVE.message());
+    }
+
 }
