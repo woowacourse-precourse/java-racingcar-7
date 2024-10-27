@@ -10,9 +10,9 @@
 
 ## Class Diagram
 
-## Application Class
-
 ![java-racingcar-class-diagram](./class-diagram.drawio.png)
+
+## Application Class
 
 - [x] 입력 값 추가
 - [x] Race 객체 생성
