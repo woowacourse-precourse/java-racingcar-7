@@ -3,9 +3,9 @@ package racingcar;
 import java.util.List;
 
 public class OutputHandler {
-    public static void printCars(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.getName() + " : " + car.getPositionWithDash());
+    public static void printCars(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            System.out.println(racingCar.getName() + " : " + racingCar.getPositionWithDash());
         }
         System.out.println();
     }
