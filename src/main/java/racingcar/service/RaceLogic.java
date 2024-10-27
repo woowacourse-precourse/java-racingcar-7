@@ -29,6 +29,24 @@ public class RaceLogic {
         }
     }
 
+    public List<Integer> findWinners() {
+        List<Integer> maxIndex = new ArrayList<>();
+        int max = 0;
+
+        for (int score : raceResult) {
+            if (max < score) {
+                max = score;
+            }
+        }
+        for (int i = 0; i < raceResult.size(); i++) {
+            if (raceResult.get(i) == max) {
+                maxIndex.add(i);
+            }
+        }
+
+        return maxIndex;
+    }
+
     public List<Integer> getRaceResult() {
         return raceResult;
     }
