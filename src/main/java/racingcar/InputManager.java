@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface InputManager {
     void whatIsYourName();
-    List<String> getName();
+    String getName();
+    List<String> splitName(String readName);
     void HowManyAttempt();
     int getNumberOfAttempt();
 }

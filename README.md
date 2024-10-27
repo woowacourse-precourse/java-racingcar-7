@@ -46,10 +46,11 @@
 
 - InputManager 입력 클래스 (Interface)
   - ConsoleInputManager 구현 클래스
-      - [ ] 자동차 이름 입력 안내 문구 출력
-      - [ ] 자동차 이름 입력 받기
-      - [ ] 시도 횟수 입력 안내 문구 출력
-      - [ ] 시도 횟수 입력 받기
+      - [X] 자동차 이름 입력 안내 문구 출력
+      - [X] 자동차 이름 입력 받기
+      - [X] 자동차 이름 분류하기
+      - [X] 시도 횟수 입력 안내 문구 출력
+      - [X] 시도 횟수 입력 받기
 
 - OutputManager 출력 클래스 (Interface)
   - ConsoleOutputManager 구현 클래스
