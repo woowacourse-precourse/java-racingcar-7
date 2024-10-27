@@ -47,8 +47,8 @@ public class InputParser {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         // 입력 유효성 검증
-        int input = parseInt(Console.readLine());
         try {
+            int input = parseInt(Console.readLine());
             if (input < 1) {
                 throw new IllegalArgumentException();
             } else {
