@@ -1,4 +1,4 @@
-package utils;
+package racingcar.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
