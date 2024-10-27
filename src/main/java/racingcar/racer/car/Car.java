@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.racer.car;
 
 import racingcar.racer.Racer;
 
@@ -18,5 +18,13 @@ public class Car implements Racer {
         if (carUtils.isMovable(randomNum)) {
             distance += "-";
         }
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public String getName() {
+        return name;
     }
 }
