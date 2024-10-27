@@ -15,4 +15,10 @@ public class CarService {
 
         return cars;
     }
+
+    public void updateCarLocation(HashMap<String, Integer> cars, String carName, boolean isForward) {
+        if (isForward) {
+            cars.put(carName, cars.get(carName) + 1);
+        }
+    }
 }
