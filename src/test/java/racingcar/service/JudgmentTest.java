@@ -9,11 +9,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class JudgmentTest {
 
-	private final Judgment judgment = new Judgment();
+	private final JudgmentCarName judgment = new JudgmentCarName();
 
 	@Test
 	@DisplayName("이름 중복 판정 테스트")
