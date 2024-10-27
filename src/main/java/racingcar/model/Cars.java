@@ -11,6 +11,7 @@ public class Cars {
 
     private Cars(List<Car> cars) {
         validateUniqueCarNames(cars);
+        validateCarCountAboveTwo(cars);
         this.cars = cars;
     }
 
@@ -41,6 +42,12 @@ public class Cars {
             if (!uniqueNames.add(carName)) {
                 throw new IllegalArgumentException("이름은 중복될 수 없습니다. 중복된 이름 : " + carName);
             }
+        }
+    }
+
+    public void validateCarCountAboveTwo(List<Car> cars) {
+        if (cars.size() < 2) {
+            throw new IllegalArgumentException("자동차 이름을 2개 이상 입력해야 합니다. (쉼표로 구분)");
         }
     }
 }
