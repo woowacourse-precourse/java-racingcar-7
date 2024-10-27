@@ -40,7 +40,7 @@ public class RacingGame {
 
         System.out.println("실행결과");
 
-        for(int i = 0; i< maxTurn; i++){
+        for (int i = 0; i < maxTurn; i++) {
             moveCar(); // 배열에 저장된 자동차 중 무작위 수가 4이상인 자동차를 움직임
             printGamePlay(); // 배열에 저장된 자동차의 이름과 이동거리 표시
         }
@@ -57,6 +57,8 @@ public class RacingGame {
     /// 자동차 이름을 입력받아 문자열 배열을 리턴
     private String[] inputCarName() {
 
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+
         String carNameString = Console.readLine(); // 사용자로부터 자동차 이름 입력받기
         carNameString = carNameString.trim();
 
@@ -70,7 +72,7 @@ public class RacingGame {
         if (carNameArray.length > 8) {
             throw new IllegalArgumentException("자동차 이름은 최대 8개까지 입력 가능합니다.");
         }
-        if (carNameArray.length < 2){
+        if (carNameArray.length < 2) {
             throw new IllegalArgumentException("자동차 이름은 최소 2개 이상 입력해야합니다.");
         }
 
@@ -106,13 +108,15 @@ public class RacingGame {
 
     private String inputMaxTurn() {
 
+        System.out.println("시도할 횟수는 몇 회인가요?");
+
         String maxTrunString = Console.readLine();
         maxTrunString = maxTrunString.trim();
 
         return maxTrunString;
     }
 
-    private void validateMaxTurn(String maxTurnString){
+    private void validateMaxTurn(String maxTurnString) {
 
         int turn = 0;
 
@@ -123,36 +127,36 @@ public class RacingGame {
             throw new IllegalArgumentException("이동횟수는 숫자만 입력 가능합니다.");
         }
 
-        if(turn < 1){
+        if (turn < 1) {
             throw new IllegalArgumentException("이동횟수는 최소 1 이상입니다.");
         }
 
-        if(turn > 20) {
+        if (turn > 20) {
             throw new IllegalArgumentException("이동횟수는 최대 20 이하입니다.");
         }
 
     }
 
     /// 자동차 이동
-    private void moveCar(){
-        for(Car car : cars){
+    private void moveCar() {
+        for (Car car : cars) {
             car.takeTurn();
         }
     }
 
     /// 자동차 이동거리 표시
-    private void printGamePlay(){
-        for(Car car : cars){
+    private void printGamePlay() {
+        for (Car car : cars) {
             printMoveCar(car);
         }
         System.out.println();
     }
 
     /// 자동차 이름과 이동거리를 출력
-    private void printMoveCar(Car car){
-        System.out.print(car.getCarName()+" : ");
+    private void printMoveCar(Car car) {
+        System.out.print(car.getCarName() + " : ");
 
-        for(int i = 0; i< car.getDistance(); i++){
+        for (int i = 0; i < car.getDistance(); i++) {
             System.out.print("-");
         }
 
@@ -160,11 +164,11 @@ public class RacingGame {
     }
 
     /// 우승점수 계산
-    private int getWinScore(){
+    private int getWinScore() {
         int winScore = 0;
 
-        for(Car car : cars){
-            if(winScore < car.getDistance()){
+        for (Car car : cars) {
+            if (winScore < car.getDistance()) {
                 winScore = car.getDistance();
             }
         }
@@ -173,18 +177,18 @@ public class RacingGame {
     }
 
     ///점수가 가장 많은 자동차를 Winners 배열에 저장
-    private void selectWinner(int winScore){
+    private void selectWinner(int winScore) {
 
-        for(Car car : cars){
-            if(car.getDistance() == winScore){
+        for (Car car : cars) {
+            if (car.getDistance() == winScore) {
                 winners.add(car.getCarName());
             }
         }
     }
 
     /// 우승자 목록 출력
-    private  void printWinners(){
+    private void printWinners() {
         String result = String.join(",", winners);
-        System.out.println(result);
+        System.out.println("최종 우승자 : "+result);
     }
 }
