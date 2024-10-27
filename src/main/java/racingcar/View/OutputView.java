@@ -14,10 +14,13 @@ public class OutputView {
         }
         System.out.println();
     }
-    public static void Print_Winners(ArrayList<Car> cars) {
-        System.out.println(printWinner);
-        for(Car car : cars) {
-
+    public static void Print_Winners(ArrayList<Car> winnercars) {
+        System.out.print(printWinner);
+        for (int i = 0; i < winnercars.size(); i++) {
+            System.out.print(winnercars.get(i).getCarName());
+            if (i < winnercars.size() - 1) {
+                System.out.print(", ");
+            }
         }
     }
 }
