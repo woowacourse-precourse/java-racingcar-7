@@ -61,8 +61,9 @@ class PlayerTest {
         void 새로운_위치로_플레이어_이동() {
             // given
             final int amount = 10;
-            final Distance newDistance = Distance.of(amount);
-            final Distance zeroDistance = Distance.zero();
+
+            Distance newDistance = Distance.of(amount);
+            Distance zeroDistance = Distance.zero();
 
             // when
             Distance changedDistance = zeroDistance.add(newDistance);
@@ -72,8 +73,63 @@ class PlayerTest {
             Assertions.assertThat(changedDistanceValue).isEqualTo(10);
 
         }
+    }
 
+    @DisplayName("플레이어 조회하기")
+    @Nested
+    class 플레이어_조회하기 {
 
+        @DisplayName("플레이어 ID 조회")
+        @Test
+        void 플레이어_ID_조회() {
+            // given
+            final Long validId = 1L;
+            final String validName = "name";
+
+            Player player = Player.of(1L, validName);
+
+            // when
+            Long playerId = player.getId();
+
+            // then
+            Assertions.assertThat(playerId).isEqualTo(1L);
+        }
+
+        @DisplayName("플레이어 이름 조회")
+        @Test
+        void 플레이어_이름_조회() {
+            // given
+            final Long validId = 1L;
+            final String validName = "name";
+
+            Player player = Player.of(1L, validName);
+
+            // when
+            String playerName = player.getName();
+
+            // then
+            Assertions.assertThat(playerName).isEqualTo("name");
+
+        }
+
+        @DisplayName("플레이어 위치 조회")
+        @Test
+        void 플레이어_위치_조회() {
+            // given
+            final Long validId = 1L;
+            final String validName = "name";
+            final Distance fiveDistance = Distance.of(5);
+
+            Player player = Player.of(1L, validName);
+            Player movedPlayer = player.move(fiveDistance);
+
+            // when
+            int distanceValue = movedPlayer.getDistanceValue();
+
+            // then
+            Assertions.assertThat(distanceValue).isEqualTo(5);
+
+        }
     }
 
 

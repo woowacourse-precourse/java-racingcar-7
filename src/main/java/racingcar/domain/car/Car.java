@@ -20,13 +20,20 @@ public class Car {
         return new Car(name, newDistance);
     }
 
-    public boolean hasSamePosition(int distance) {
+    public boolean hasPosition(int distance) {
         return Integer.valueOf(distance).equals(this.distance.getValue());
     }
 
-    public int getDistance() {
-        return this.distance.getValue();
+    public int getDistanceValue() {
+        return distance.getValue();
     }
 
+    public String getName() {
+        return name.getValue();
+    }
+
+    public Distance getDistance() {
+        return this.distance;
+    }
 
 }

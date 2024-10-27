@@ -112,7 +112,7 @@ class CarTest {
             Car car = Car.of(carName);
 
             // when
-            boolean result = car.hasSamePosition(expectDistance);
+            boolean result = car.hasPosition(expectDistance);
 
             // then
             final boolean True = true;
@@ -129,7 +129,7 @@ class CarTest {
             Car car = Car.of(carName);
 
             // when
-            boolean result = car.hasSamePosition(unexpectDistance);
+            boolean result = car.hasPosition(unexpectDistance);
 
             // then
             final boolean False = false;

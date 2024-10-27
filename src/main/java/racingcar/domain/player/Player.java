@@ -23,5 +23,25 @@ public class Player {
         return new Player(id, car.move(newDistance));
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return car.getName();
+    }
+
+    public Distance getDistance() {
+        return car.getDistance();
+    }
+
+    public int getDistanceValue() {
+        return car.getDistanceValue();
+    }
+
+    public boolean hasPosition(int position) {
+        return car.hasPosition(position);
+    }
+
 
 }
