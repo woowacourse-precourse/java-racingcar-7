@@ -4,7 +4,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import racingcar.modle.movableStrategy.BasicMoveStrategy;
 import racingcar.modle.vehicle.car.Car;
 import racingcar.modle.vehicle.car.CarFactory;
@@ -12,23 +13,21 @@ import racingcar.modle.vehicle.car.CarFactory;
 public class CarTest {
 
     CarFactory carFactory = new CarFactory(new BasicMoveStrategy());
-    private Car car;
+    private Car car = carFactory.create("gamza");
 
     @BeforeEach
     public void setUp() {
         car = carFactory.create("gamza");
     }
 
-    @Test
     @DisplayName("자동차 이동 기능 테스트")
-    public void moveTest(){
-        // given
-        int movedCount = 3;
+    @RepeatedTest(value = 7, name = "자동차 이동 : {currentRepetition}/{totalRepetitions}")
+    public void moveTest(RepetitionInfo repetitionInfo){
         // when
-        for(int i = 0; i < movedCount; i++){
-            car = car.move(); // 이거 쫌 걸리는데... 흐음... 고민해보자
+        for(int i = 0 ; i < repetitionInfo.getCurrentRepetition(); i++){
+            car = car.move();
         }
         // then
-        assertThat(car.getPosition()).isEqualTo(movedCount);
+        assertThat(car.getPosition()).isEqualTo(repetitionInfo.getCurrentRepetition());
     }
 }

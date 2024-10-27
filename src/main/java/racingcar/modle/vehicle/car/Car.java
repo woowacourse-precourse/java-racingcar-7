@@ -8,7 +8,7 @@ public class Car implements Movable {
 
     private final Name name;
     private final Position position;
-    private MovableStrategy movableStrategy;
+    private final MovableStrategy movableStrategy;
 
     public Car(String name, MovableStrategy movableStrategy) {
         this.name = new Name(name);
@@ -16,14 +16,16 @@ public class Car implements Movable {
         this.movableStrategy = movableStrategy;
     }
 
-    private Car(String name, int position) {
+    private Car(String name, int position, MovableStrategy movableStrategy) {
         this.name = new Name(name);
         this.position = new Position(position);
+        this.movableStrategy = movableStrategy;
     }
 
     @Override
     public Car move(){
-        return new Car(name.getName(), position.getPosition() + movableStrategy.move());
+        int movedPosition = getPosition() + movableStrategy.move();
+        return new Car(getName(), movedPosition, movableStrategy);
     }
 
     @Override

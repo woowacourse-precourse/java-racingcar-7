@@ -6,7 +6,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.modle.vehicle.car.Name;
@@ -25,7 +24,7 @@ public class NameTest {
         assertThat(expected).isEqualTo(actual);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "이름 = {0} 경우")
     @DisplayName("null 값 또는 빈값(\"\") 그리고 공백(\" \") 이름 테스트 ")
     @NullSource
     @ValueSource(strings = {"", " "})
@@ -33,6 +32,4 @@ public class NameTest {
         //when, then
         assertThatThrownBy(()-> new Name(name)).isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }
