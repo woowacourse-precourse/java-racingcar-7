@@ -1,6 +1,5 @@
 package racingcar.global.support;
 
-import java.util.Set;
 import racingcar.racing.controller.RacingController;
 import racingcar.racing.dto.request.RacingRequestDTO;
 import racingcar.racing.dto.response.RacingResponseDTO;
@@ -9,12 +8,6 @@ import racingcar.racing.view.RacingRequestView;
 import racingcar.racing.view.RacingResponseView;
 
 public final class FrontController {
-
-    static {
-        ProjectScanner projectScanner = new ProjectScanner();
-        Set<Class<?>> classesToBeBeans = projectScanner.getClassesForBeans();
-        BeanConfig.registerBeanContainer(classesToBeBeans);
-    }
 
     private void racingRequestHandling() {
         RacingController racingController = BeanConfig.getBean(RacingController.class);
