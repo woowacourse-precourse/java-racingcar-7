@@ -22,6 +22,12 @@ public class RacingServiceImpl implements RacingService {
         return RacingManager.createWithCars(carNames);
     }
 
+    private RoundResultDTO executeMove(RacingManager racingManager) {
+        racingManager.moveCars();
+        List<Car> movedCars = racingManager.getCars();
+        return createRoundResult(movedCars);
+    }
+
     private RoundResultDTO createRoundResult(List<Car> cars) {
         List<CarRoundStateDTO> carStates = cars.stream()
                 .map(CarRoundStateDTO::from)
