@@ -1,11 +1,14 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class MapBuilder {
 
+    MessagePrinter messagePrinter = new MessagePrinter();
     Map<String, Integer> forwardCounter = new TreeMap<>();
     Map<String, String> lineCounter = new TreeMap<>();
 
@@ -33,8 +36,15 @@ public class MapBuilder {
         lineCounter.put(carName, forwardLine);
     }
 
-    public void mapSingleRandomRoundResult(int i) {
-//        이 부분은 어떻게 할지 아직 모르겠다.
+    public void getSingleRoundResult(List<String> carNames, int roundNum) {
+
+        List<Map.Entry<String, String>> entry = new ArrayList<>(lineCounter.entrySet());
+
+        for (int i = 0; i < entry.size(); i++) {
+            String carName = entry.get(i).getKey();
+            String line = entry.get(i).getValue();
+            System.out.println(messagePrinter.getSingleRoundResultMessage(carName, line));
+        }
     }
 
     public String getTotalRandomResultFromMap(){

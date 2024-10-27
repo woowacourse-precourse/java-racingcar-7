@@ -22,4 +22,8 @@ public class MessagePrinter {
 
         return winnerMessage;
     }
+
+    public String getSingleRoundResultMessage(String carName, String line) {
+        return carName + " : " + line;
+    }
 }

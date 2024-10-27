@@ -10,7 +10,7 @@ public class RandomPicker {
     public void runRandomRounds(List<String> carNames, int totalRounds) {
         for(int i = 0; i < totalRounds; i++){
             runSingleRandomRound(carNames);
-            mapBuilder.mapSingleRandomRoundResult(i);
+            mapBuilder.getSingleRoundResult(carNames, i);
         }
     }
 
