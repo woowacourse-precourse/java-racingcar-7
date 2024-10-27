@@ -21,6 +21,9 @@ public class Application {
     }
 
     private static void validateCarName(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
+        }
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하로 입력하세요.");
         }
@@ -30,9 +33,9 @@ public class Application {
         System.out.println("시도할 횟수");
 
         try {
-           int moveCount = Integer.parseInt(Console.readLine());
-           validateMoveCount(moveCount);
-           return moveCount;
+            int moveCount = Integer.parseInt(Console.readLine());
+            validateMoveCount(moveCount);
+            return moveCount;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("유효한 숫자를 입력하세요.");
         }
@@ -74,7 +77,7 @@ public class Application {
 
     private static void printRaceStatus(List<String> carNames, List<Integer> positions) {
         for (int i = 0; i < carNames.size(); i++) {
-            System.out.println(carNames.get(i) + " : ");
+            System.out.print(carNames.get(i) + " : ");
             System.out.println("-".repeat(positions.get(i)));
         }
         System.out.println();
