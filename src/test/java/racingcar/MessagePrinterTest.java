@@ -38,6 +38,7 @@ public class MessagePrinterTest {
     }
 
     @Test
+    @DisplayName("시행 1회의 결과 메시지는 carName1 : lineCount 후 줄바꿈 carName2 : lineCount 형식을 따른다.")
     void testGetSingleRoundResultMessage() {
 
         List<String> carNames = Arrays.asList("bora", "tubi");
@@ -54,4 +55,12 @@ public class MessagePrinterTest {
         assertThat(possibleMessages).contains(singleRoundResultMessage);
     }
 
+    @Test
+    @DisplayName("totalRoundResultList가 null이면 IllegalArgumentException이 발생한다.")
+    void testGetTotalRoundResultMessageNull() {
+
+        List<String> totalRoundResultList = null;
+        assertThatThrownBy(() -> messagePrinter.getTotalRoundResultMessage(totalRoundResultList))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

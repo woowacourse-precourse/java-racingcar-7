@@ -38,6 +38,8 @@ public class MessagePrinter {
 
     public String getTotalRoundResultMessage(List<String> totalRoundResultList) {
 
+        validateTotalRoundResultList(totalRoundResultList);
+
         String totalRoundResultMessage = String.join("\n", totalRoundResultList);
         totalRoundResultMessage += "\n";
 
@@ -49,4 +51,11 @@ public class MessagePrinter {
             throw new IllegalArgumentException();
         }
     }
+
+    private void validateTotalRoundResultList(List<String> totalRoundResultList) {
+        if(totalRoundResultList == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
