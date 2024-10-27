@@ -48,7 +48,7 @@ public class Race {
     private int getHighestPosition() {
         return raceCars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
-                .orElseThrow()
+                .orElseThrow(() -> new IllegalArgumentException("Race car not found."))
                 .getPosition();
     }
 
