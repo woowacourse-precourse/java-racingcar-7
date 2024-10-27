@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import racingcar.enums.TypeOfLocation;
 
 public class Car {
-  private static final String NAME_AND_LOCATION_DELIMITER = " : ";
+  private final String NAME_AND_LOCATION_DELIMITER = " : ";
 
   private String name;
   private int location;

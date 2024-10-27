@@ -10,7 +10,7 @@ public enum ErrorMessage implements SystemMessage {
   INVALID_TURN_NUMBER("자연수가 아닌 숫자입니다."),
   INVALID_INT_NUMBER("숫자가 아닌 것이 입력 되었습니다.");
 
-  private static final String ERROR_LOG_LEVEL = "[ERROR] ";
+  private final String ERROR_LOG_LEVEL = "[ERROR] ";
   private final String message;
 
   ErrorMessage(String message) {
