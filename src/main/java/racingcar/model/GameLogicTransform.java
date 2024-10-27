@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Map;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.validation.ValidateException;
 
 public class GameLogicTransform {
     private static Map<String, Integer> resultMap;
@@ -12,8 +13,9 @@ public class GameLogicTransform {
 
     public void mapByCarName(String carName) {
         String[] carNames = carName.split(",");
-
+        ValidateException validateException = new ValidateException();
         for (String name : carNames) {
+            validateException.isCarNameValid(name);
             resultMap.put(name.trim(), 0);
         }
     }

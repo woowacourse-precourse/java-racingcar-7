@@ -13,6 +13,7 @@ public class Output {
             System.out.print(MOVE_COUNT.repeat(racingResult.get(carName)));
             System.out.println();
         }
+        System.out.println();
     }
 
     public void printFinalWinner(String winner) {

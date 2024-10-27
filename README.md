@@ -29,10 +29,13 @@
   
 ### validation package
 - validateException class
-    + [] 자동차 이름이 5자 이하인지 검증 - isCarNameValid
-    + [] 자동차 이름이 입력되었는지 검증 - isCarNameEmpty
-    + [] 경주 횟수가 0이상인지 검증 - isTryCountValid
-    + [] 경주 횟수가 숫자인지 검증 - isTryCountNumber
+    + [0] 자동차 이름에 대한 검증 메서드 - isCarNameValid
+      + [0] 자동차 이름이 5자 이하인지 검증 - isCarNameLengthValid
+      + [0] 자동차 이름이 입력되었는지 검증 - isCarNameEmpty
+   + [0] 경주 횟수에 대한 검증 메서드 - isTryCountValid
+      + [0] 경주 횟수가 입력되었는지 검증 - isTryCountEmpty
+      + [0] 경주 횟수가 1이상인지 검증 - isTryCountNaturalNumber
+      + [0] 경주 횟수가 숫자인지 검증 - isTryCountNumber
 
   
 ## 구현 규칙
