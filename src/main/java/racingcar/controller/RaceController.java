@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.Car;
+import racingcar.dto.CarStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,8 @@ public class RaceController {
 
     public void startRace() {
         getCarNames();
-        getMoveCount();
+        int moveCount = getMoveCount();
+        executeRace(moveCount);
     }
 
     private void getCarNames() {
@@ -49,5 +52,26 @@ public class RaceController {
         if (count > MAX_GAME_NUMBER) {
             throw new IllegalArgumentException("최대 경주 횟수(1000회)를 벗어났습니다.");
         }
+    }
+
+    private void executeRace(int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            for (Car car : cars) {
+                if (canMove()) {
+                    car.move();
+                }
+                CarStatus status = car.toStatus();
+                displayCurrentPosition(status);
+            }
+            System.out.println();
+        }
+    }
+
+    private boolean canMove() {
+        return Randoms.pickNumberInRange(0, 9) >= 4;
+    }
+
+    private void displayCurrentPosition(CarStatus status) {
+        System.out.println(status.getName() + " : " + "-".repeat(status.getDistance()));
     }
 }

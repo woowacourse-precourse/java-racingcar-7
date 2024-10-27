@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.dto.CarStatus;
+
 public class Car {
     private final String name;
     private int distance;
@@ -8,6 +10,14 @@ public class Car {
         validateName(name);
         this.name = name;
         this.distance = 0;
+    }
+
+    public void move() {
+        distance++;
+    }
+
+    public CarStatus toStatus() {
+        return new CarStatus(name, distance);
     }
 
     private void validateName(String name) {
