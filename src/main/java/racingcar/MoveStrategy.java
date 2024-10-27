@@ -1,4 +1,5 @@
 package racingcar;
 
-public class MoveStrategy {
+public interface MoveStrategy {
+    boolean canMove();
 }
