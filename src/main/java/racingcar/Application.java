@@ -8,7 +8,4 @@ public class Application {
         controller.run();
     }
 }
-// pobi,woni,jun  -> o
-// pobibi,woni,jun -> x
-// pobi, woni,jun -> x
-// pobi,woni;jun -> x
+
