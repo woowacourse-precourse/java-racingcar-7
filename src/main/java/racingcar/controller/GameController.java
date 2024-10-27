@@ -20,9 +20,7 @@ public class GameController {
 		List<Car> cars = carNames.stream()
 				.map(Car::new)
 				.toList();
-		OutputView.printTrialCountInputMessage();
-		String trialCountInput = InputView.getTrialCountInput();
-		int trialCount = NumberValidator.validateTrialCountIsDigit(trialCountInput);
+		int trialCount = getTrialCountInput();
 		OutputView.printExecutionResultMessage();
 		while(trialCount-- > 0) {
 			executeRaceRound(cars);
@@ -37,6 +35,12 @@ public class GameController {
 	private String getCarNamesInput() {
 		OutputView.printCarNamesInputMessage();
 		return InputView.getCarNamesInput();
+	}
+
+	private int getTrialCountInput() {
+		OutputView.printTrialCountInputMessage();
+		String trialCountInput = InputView.getTrialCountInput();
+		return NumberValidator.validateTrialCountIsDigit(trialCountInput);
 	}
 
 	private void executeRaceRound(List<Car> cars) {
