@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
@@ -12,7 +13,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 생성 테스트")
 class CarControllerTest {
-    private CarController carController = new CarController();
+    private CarController carController;
+
+    @BeforeEach
+    void setUp() {
+        this.carController = new CarController();
+    }
 
     @Test
     @DisplayName("쉼표를 기준으로 자동차 이름을 분리한다")
@@ -57,6 +63,5 @@ class CarControllerTest {
         assertThatCode(()->carController.validateCarNames(List.of("pobi", "povi", "pob1")))
                 .doesNotThrowAnyException();
     }
-
 
 }

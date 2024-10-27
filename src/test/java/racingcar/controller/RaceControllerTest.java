@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
@@ -8,13 +9,15 @@ import racingcar.model.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RaceControllerTest extends NsTest {
-    private RaceController raceController = new RaceController();
+    private RaceController raceController;
+
+    @BeforeEach
+    void setUp() {
+        this.raceController = new RaceController();
+    }
 
     @Test
     @DisplayName("단독 우승자를 선정한다")

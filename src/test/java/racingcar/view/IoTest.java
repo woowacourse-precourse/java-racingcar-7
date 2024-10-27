@@ -1,11 +1,11 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -13,8 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("입출력 테스트")
 class IoTest extends NsTest {
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private InputView inputView;
+    private OutputView outputView;
+
+    @BeforeEach
+    void setUp() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
 
     @Test
     @DisplayName("자동차 이름을 입력받는다")

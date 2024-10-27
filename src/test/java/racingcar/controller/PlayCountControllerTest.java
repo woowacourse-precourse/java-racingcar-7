@@ -1,16 +1,21 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PlayCountControllerTest extends NsTest {
-    private PlayCountController playCountController = new PlayCountController();
+    private PlayCountController playCountController;
+
+    @BeforeEach
+    void setUp() {
+        this.playCountController = new PlayCountController();
+    }
 
     @Test
     @DisplayName("반복 횟수에 숫자가 아닌 것을 입력하면 예외가 발생한다")
