@@ -17,9 +17,10 @@ public class Application {
         List<String> racingCars = Arrays.asList(racingCarNameInput.split(","));
         validateRacingCars(racingCars);
 
-        // TODO 2. 시도 횟수 입력 받고, 유효성 검증
+        // TODO 2. 시도 횟수를 문자열로 입력 받고, 유효성 검증 이후 정수로 변환
         String tryCountInput = inputString("시도할 횟수는 몇 회인가요?");
         validateTryCount(tryCountInput);
+        int tryCount = Integer.parseInt(tryCountInput);
     }
 
     private static String inputString() {
