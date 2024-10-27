@@ -49,5 +49,11 @@ class InputSeparatorTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(duplicatedName));
     }
+
+    @ParameterizedTest
+    @DisplayName("자동차 이름 5자 초과")
+    @ValueSource(strings = {"pobi,javaji","junjun", "pobi,jun,woni,ouvir,6langs"})
+    void 자동차_이름_5자_이상(String overLengthName) {
+        assertThrows(IllegalArgumentException.class, () -> InputSeparator.split(overLengthName));
     }
 }
