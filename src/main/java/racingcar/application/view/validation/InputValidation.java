@@ -7,6 +7,7 @@ public class InputValidation {
 
   private static final String EMPTY_INPUT_ERROR = "자동차 이름은 비어있을 수 없습니다.";
   private static final String INVALID_CAR_NAME_LENGTH_ERROR = "자동차 이름은 1자 이상, 5자 이하로 입력해야 합니다.";
+  private static final String INVALID_ATTEMPT_COUNT_ERROR = "시도할 횟수는 0 이상의 숫자로 입력해 주세요.";
 
   public static void validateInputCarNames(String inputCarNames) {
 
@@ -37,6 +38,21 @@ public class InputValidation {
 
     if (carName.length() == 0 || carName.length() > 5) {
       throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_ERROR);
+    }
+  }
+
+  public static void validateInputAttemptCount(String inputAttemptCount) {
+
+    int parsedAttemptCount;
+
+    try {
+      parsedAttemptCount = Integer.parseInt(inputAttemptCount);
+    } catch (Exception e) {
+      throw new IllegalArgumentException(INVALID_ATTEMPT_COUNT_ERROR);
+    }
+
+    if (parsedAttemptCount < 0) {
+      throw new IllegalArgumentException(INVALID_ATTEMPT_COUNT_ERROR);
     }
   }
 }
