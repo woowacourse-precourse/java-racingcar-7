@@ -16,7 +16,7 @@ public class ValidateUtil {
     private static void validateCarNameLength(List<String> carNames) {
         carNames.forEach(car -> {
             if (car.length() >= 5)
-                throw new IllegalArgumentException("Car name's length must be less than 5");
+                throw new IllegalArgumentException("Car name's length must be equal or less than 5");
         });
     }
 
