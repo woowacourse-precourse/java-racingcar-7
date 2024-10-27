@@ -4,44 +4,51 @@ import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CarService {
 
-    private final Car car;
     private final InputView inputView;
     private final OutputView outputView;
 
     public CarService(){
-        this.car = new Car();
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public Map<String, Integer> inputCar() {
+    public List<Car> initializeCars() {
         String inputCarName = inputView.inputCarName();
-        return car.carNameSplit(inputCarName);
+        return Arrays.stream(inputCarName.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public int inputCount(){
         return inputView.getAttemptCount();
     }
 
-    public Map<String, Integer> racing(Map<String, Integer> cars, int count){
-
+    public void startRace(List<Car> cars, int count) {
         System.out.println("실행 결과");
-
-        for(int i=0; i<count; i++){
-            cars = car.racingTry(cars);
+        for (int i = 0; i < count; i++) {
+            cars.forEach(Car::move);
             outputView.racingView(cars);
         }
-
-        return cars;
     }
 
-    public void result(Map<String, Integer> cars){
-        List<String> winnerCarList = car.getWinningCars(cars);
+    public void showResults(List<Car> cars){
+        List<String> winnerCarList = getWinners(cars);
         outputView.resultView(winnerCarList);
+    }
+
+    private List<String> getWinners(List<Car> cars) {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName).toList();
     }
 }

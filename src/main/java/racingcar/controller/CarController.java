@@ -1,8 +1,9 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.service.CarService;
 
-import java.util.Map;
+import java.util.List;
 
 public class CarController {
 
@@ -13,9 +14,9 @@ public class CarController {
     }
 
     public void run(){
-        Map<String, Integer> cars = carService.inputCar();
+        List<Car> cars = carService.initializeCars();
         int inputCount = carService.inputCount();
-        cars = carService.racing(cars, inputCount);
-        carService.result(cars);
+        carService.startRace(cars, inputCount);
+        carService.showResults(cars);
     }
 }
