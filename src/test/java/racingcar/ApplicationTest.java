@@ -2,6 +2,11 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
+import racingcar.view.RacingCarView;
+
+import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -35,4 +40,30 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 자동차_입력_테스트() {
+        // 가상 입력 스트림 설정
+        String input = "pobi,woni\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        RacingCarView racingCarView = new RacingCarView();
+        List<String> carNames = racingCarView.getCarInput();
+
+
+        List<Car> cars = carNames.stream().map(Car::new).toList();
+
+        assertThat("pobi").isEqualTo(cars.get(0).getName());
+        assertThat("woni").isEqualTo(cars.get(1).getName());
+    }
+
+    @Test
+    void 예외_자동차_입력_5자_초과_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("자동차 이름은 5글자 이하만 가능합니다.")
+        );
+    }
+
 }
