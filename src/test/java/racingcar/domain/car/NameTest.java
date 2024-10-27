@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.InvalidCarNameException.NameLengthExceededExceptionInvalid;
 import racingcar.exception.InvalidCarNameException.NameLengthShortExceptionInvalid;
 
+@DisplayName("자동차 이름(Name) 유스케이스")
 class NameTest {
 
     @Nested

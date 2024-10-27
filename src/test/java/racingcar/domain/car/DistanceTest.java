@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+
+@DisplayName("자동차 거리(Distance) 유스케이스")
 class DistanceTest {
 
     @Nested

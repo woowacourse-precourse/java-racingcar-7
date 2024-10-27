@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+@DisplayName("자동차(Car) 유스케이스")
 class CarTest {
 
     @Nested
