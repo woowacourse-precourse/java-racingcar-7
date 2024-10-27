@@ -7,7 +7,7 @@ import static racingcar.ViewConstants.ATTEMPT_REGEX;
 import static racingcar.ViewConstants.NO_COMPETITOR_ERROR_MESSAGE;
 import static racingcar.ViewConstants.NUMBER_ONLY_ERROR_MESSAGE;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class InputValidator {
     public void validateCompetitor(String input) {
@@ -16,9 +16,9 @@ public class InputValidator {
         }
     }
 
-    public void validateDuplicateName(String[] names) {
-        long nonDuplicateNames = Arrays.stream(names).distinct().count();
-        if (names.length != nonDuplicateNames) {
+    public void validateDuplicateName(List<String> names) {
+        long nonDuplicateNames = names.stream().distinct().count();
+        if (names.size() != nonDuplicateNames) {
             throw new IllegalArgumentException(DUPLICATE_NAME_ERROR_MESSAGE);
         }
     }

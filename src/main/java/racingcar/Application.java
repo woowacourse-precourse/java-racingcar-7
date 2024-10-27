@@ -3,15 +3,14 @@ package racingcar;
 import static racingcar.RacingConstants.CAR_START_POSITION;
 import static racingcar.RacingConstants.MAX_NUMBER;
 import static racingcar.RacingConstants.MIN_NUMBER;
-import static racingcar.ViewConstants.NAME_DELIMITER;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         InputValidator inputValidator = new InputValidator();
+        InputController inputController = new InputController(inputValidator);
         OutputView outputView = new OutputView();
         NumberGenerator numberGenerator = new NumberGenerator(MIN_NUMBER, MAX_NUMBER);
         NumberValidator numberValidator = new NumberValidator();
@@ -20,15 +19,13 @@ public class Application {
         Move move;
         Racing racing;
 
-        String input = inputView.requestCarNames();
-        inputValidator.validateCompetitor(input);
-        String[] names = input.split(NAME_DELIMITER);
-        inputValidator.validateDuplicateName(names);
-        cars = Arrays.stream(names).map(name -> new Car(name, CAR_START_POSITION)).toList();
+        String inputNames = inputView.requestCarNames();
+        List<String> carNames = inputController.extractCarNames(inputNames);
+        cars = carNames.stream().map(name -> new Car(name, CAR_START_POSITION)).toList();
+
         String inputAttempts = inputView.requestTotalAttempts();
-        inputValidator.checkHasNumberOnly(inputAttempts);
-        totalAttempts = Integer.parseInt(inputAttempts);
-        inputValidator.checkIsGreaterThanZero(totalAttempts);
+        totalAttempts = inputController.convertToNumber(inputAttempts);
+
         move = new Move(cars, numberValidator, numberGenerator);
         racing = new Racing(cars, totalAttempts, move, outputView);
         racing.race();
