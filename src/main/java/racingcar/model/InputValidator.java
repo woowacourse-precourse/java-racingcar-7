@@ -13,42 +13,57 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
-    private final String regex = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9\\s,]+$";
-
     public boolean isValidNames(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
-        }
+        nullCheck(input);
 
         List<String> names = List.of(input.split(","));
 
         for (String name : names) {
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException(EMPTY_NAME_EXCEPTION_MESSAGE.getMessage());
-            }
-
-            if (name.length() > 5) {
-                throw new IllegalArgumentException(NAME_LENGTH_OVER_EXCEPTION_MESSAGE.getMessage());
-            }
-
-            if (name.startsWith(" ") | name.endsWith(" ")) {
-                throw new IllegalArgumentException(START_OR_END_WITH_WHITESPACE_EXCEPTION_MESSAGE.getMessage());
-            }
-
-            if (!Pattern.matches(regex, name)) {
-                throw new IllegalArgumentException(INVALID_CHARACTER_EXCEPTION_MESSAGE.getMessage());
-            }
+            checkEmptyOf(name);
+            checkThresholdLengthOf(name);
+            checkStartEndWhiteSpaceOf(name);
+            checkInvalidCharacterOf(name);
         }
-
-        HashSet<String> forDuplicationTest = new HashSet<>(names);
-        if (forDuplicationTest.size() != names.size()) {
-            throw new IllegalArgumentException(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
-        }
+        checkDuplicationOf(names);
 
         return true;
     }
 
-    public static void main(String[] args) {
-        System.out.println("a" + List.of(String.valueOf("").split(",")).size() + "a");
+    private void checkEmptyOf(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(EMPTY_NAME_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void checkThresholdLengthOf(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException(NAME_LENGTH_OVER_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void checkStartEndWhiteSpaceOf(String name) {
+        if (name.startsWith(" ") | name.endsWith(" ")) {
+            throw new IllegalArgumentException(START_OR_END_WITH_WHITESPACE_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void checkInvalidCharacterOf(String name) {
+        String regex = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9\\s,]+$";
+        if (!Pattern.matches(regex, name)) {
+            throw new IllegalArgumentException(INVALID_CHARACTER_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void checkDuplicationOf(List<String> names) {
+        HashSet<String> forDuplicationTest = new HashSet<>(names);
+        if (forDuplicationTest.size() != names.size()) {
+            throw new IllegalArgumentException(DUPLICATION_NAME_EXCEPTION_MESSAGE.getMessage());
+        }
+    }
+
+    private void nullCheck(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
+        }
     }
 }

@@ -39,9 +39,9 @@ class InputValidatorTest {
     @Test
     public void NameForNullExceptionTest() {
         //given
-        String names = null;
+        String input = null;
         //when,then
-        assertThatThrownBy(() -> inputValidator.isValidNames(names))
+        assertThatThrownBy(() -> inputValidator.isValidNames(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NULL_INPUT_EXCEPTION_MESSAGE.getMessage());
     }
