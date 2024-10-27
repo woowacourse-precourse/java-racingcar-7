@@ -10,7 +10,7 @@ public class Validator {
     final HashSet<String> names;
     final int MAX_LEN = 5;
 
-    Validator() {
+    public Validator() {
         this.names = new HashSet<>();
     }
 
