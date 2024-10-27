@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingCar {
@@ -21,20 +19,6 @@ public class RacingCar {
     public RacingCar(String carName, List<Character> advanceResult) {
         this.carName = carName;
         this.advanceResults = advanceResult;
-    }
-
-    public String[] splitCarsName(String inputCarsName) {
-        return Arrays.stream(inputCarsName.split(","))
-                .map(String::trim)
-                .toArray(String[]::new);
-    }
-
-    public List<RacingCar> createRacingCarsBySplitCarsName(String[] carsNames) {
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (String carName : carsNames) {
-            racingCars.add(new RacingCar(carName, new ArrayList<>()));
-        }
-        return racingCars;
     }
 
     public int getRandomOrZero() {

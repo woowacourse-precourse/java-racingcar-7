@@ -3,19 +3,19 @@ package racingcar.service;
 import racingcar.domain.RacingCar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarService {
-    private final RacingCar racingCar;
     private List<RacingCar> racingCars;
 
-    public RacingCarService(RacingCar racingCar) {
-        this.racingCar = racingCar;
+    public RacingCarService() {
+        this.racingCars = new ArrayList<>();
     }
 
     public void createRacingCars(String inputCarsName) {
-        String[] carsNames = racingCar.splitCarsName(inputCarsName);
-        this.racingCars = racingCar.createRacingCarsBySplitCarsName(carsNames);
+        String[] carsNames = splitCarsName(inputCarsName);
+        createRacingCarsBySplitCarsName(carsNames);
     }
 
     public void advanceRacingCarByRandomOrZero() {
@@ -41,5 +41,17 @@ public class RacingCarService {
             stringBuilder.append(advanceSymbol);
         }
         return stringBuilder.toString();
+    }
+
+    public String[] splitCarsName(String inputCarsName) {
+        return Arrays.stream(inputCarsName.split(","))
+                .map(String::trim)
+                .toArray(String[]::new);
+    }
+
+    public void createRacingCarsBySplitCarsName(String[] carsNames) {
+        for (String carName : carsNames) {
+            this.racingCars.add(new RacingCar(carName, new ArrayList<>()));
+        }
     }
 }
