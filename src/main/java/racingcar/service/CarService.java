@@ -14,7 +14,13 @@ public class CarService {
     this.cars = cars;
     this.attemptsCount = attemptsCount;
   }
-
+  public static List<Car> createCars(String[] carNames) {
+    List<Car> cars = new ArrayList<>();
+    for (String name : carNames) {
+      cars.add(new Car(name));
+    }
+    return cars;
+  }
   private boolean canMove() {
     return Randoms.pickNumberInRange(0, 9) >= 4;
   }
@@ -24,19 +30,27 @@ public class CarService {
       System.out.println(car.getStatus());
     }
   }
-  private void printWinners() {
+  private int findMaxPosition() {
     int maxPosition = 0;
+
     for (Car car : cars) {
       if (car.getPosition() > maxPosition) {
         maxPosition = car.getPosition();
       }
     }
+    return maxPosition;
+  }
+  private List<String> findWinners() {
+    int maxPosition = findMaxPosition();
     List<String> winners = new ArrayList<>();
     for (Car car : cars) {
       if (car.getPosition() == maxPosition) {
         winners.add(car.getName());
       }
     }
+    return winners;
+  }
+  private void printWinners(List<String> winners) {
     System.out.print("최종 우승자 : ");
     for (int i = 0; i < winners.size(); i++) {
       System.out.print(winners.get(i));
@@ -46,17 +60,21 @@ public class CarService {
     }
     System.out.println();
   }
-  public void start() {
+  private void moveCars() {
+    for (Car car : cars) {
+      if (canMove()) {
+        car.move();
+      }
+    }
+  }
+  public void startRace() {
     System.out.println("실행 결과");
     for (int i = 0; i < attemptsCount; i++) {
-      for (Car car : cars) {
-        if (canMove()) {
-          car.move();
-        }
-      }
+      moveCars();
       printStatus();
       System.out.println();
     }
-    printWinners();
+    List<String>Winners = findWinners();
+    printWinners(Winners);
   }
 }

@@ -10,5 +10,5 @@ public class ErrorMessage {
   public static final String EMPTY_CAR_NAME = "Error: 빈 문자열은 자동차 이름이 될 수 없습니다.";
   public static final String LONG_CAR_NAME = "Error: 자동차 이름은 5자 이상이 될 수 없습니다.";
   public static final String SPACE_CAR_NAME = "Error: 자동차 이름에는 공백이 포함될 수 없습니다.";
-
+  public static final String DUPLICATE_CAR_NAME = "Error: 자동차 이름은 중복될 수 없습니다.";
 }

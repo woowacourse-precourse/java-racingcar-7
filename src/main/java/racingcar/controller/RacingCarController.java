@@ -5,7 +5,6 @@ import racingcar.service.CarService;
 import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
@@ -27,11 +26,8 @@ public class RacingCarController {
     inputValidator.validateAttemptCount(attemptsInput);
     int attemptsCount = Integer.parseInt(attemptsInput);
 
-    List<Car> cars = new ArrayList<>();
-    for (String name : carNames) {
-      cars.add(new Car(name));
-    }
+    List<Car> cars = CarService.createCars(carNames);
     CarService carService = new CarService(cars, attemptsCount);
-    carService.start();
+    carService.startRace();
   }
 }

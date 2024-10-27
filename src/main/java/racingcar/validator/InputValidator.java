@@ -2,6 +2,9 @@ package racingcar.validator;
 
 import racingcar.constants.ErrorMessage;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputValidator {
   private void validateNotEmpty(String input) {
     if (input.isEmpty()) {
@@ -14,7 +17,7 @@ public class InputValidator {
     }
   }
   private void validateDelimiter(String carNameInput) {
-    if (!carNameInput.matches("[a-zA-Z,]+")) {
+    if (!carNameInput.matches("[a-zA-Z0-9,]+")) {
       throw new IllegalArgumentException(ErrorMessage.INVALID_DELIMITER);
     }
   }
@@ -34,6 +37,8 @@ public class InputValidator {
     validateNoSpaces(attemptsInput);
   }
   public void validateEachCarName(String[] carNames) {
+    Set<String> uniqueNames = new HashSet<>();
+
     for (String name : carNames) {
       if (name.isEmpty()) {
         throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME);
@@ -43,6 +48,9 @@ public class InputValidator {
       }
       if (name.length() > 5) {
         throw new IllegalArgumentException(ErrorMessage.LONG_CAR_NAME);
+      }
+      if (!uniqueNames.add(name)) {
+        throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR_NAME);
       }
     }
   }
