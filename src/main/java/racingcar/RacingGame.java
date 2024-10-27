@@ -50,4 +50,20 @@ public class RacingGame {
         return Console.readLine();
     }
 
+    protected static int parseRounds(String input) {
+        try {
+            int rounds = Integer.parseInt(input);
+            validateRounds(rounds);
+            return rounds;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+    }
+
+    private static void validateRounds(int rounds) {
+        if (rounds <= 0) {
+            throw new IllegalArgumentException("이동 횟수는 0보다 커야 합니다.");
+        }
+    }
+
 }
