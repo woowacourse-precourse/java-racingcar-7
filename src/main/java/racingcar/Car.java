@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Car {
     String name;
     int distance;
@@ -15,7 +17,7 @@ public class Car {
     }
 
     private boolean canMove(){
-        return (int)(Math.random() * 10) >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     public void printCurrentDistance(){
