@@ -1,7 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -25,6 +29,24 @@ class ApplicationTest extends NsTest {
         Car car = new Car("test");
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    private RaceService raceService;
+    private List<Car> cars;
+
+    @BeforeEach
+    void setUp() {
+        raceService = new RaceService();
+        cars = Arrays.asList(new Car("pobi"), new Car("woni"), new Car("jun"));
+    }
+
+    @Test
+    void raceAndWinnersTest() {
+        raceService.moveCars(cars);
+        cars.get(0).move(4); // 포비를 우승자로 만듦
+
+        List<String> winners = raceService.getWinners(cars);
+        assertThat(winners).contains("pobi");
     }
 
     @Test
