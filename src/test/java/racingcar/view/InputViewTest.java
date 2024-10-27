@@ -24,7 +24,7 @@ class InputViewTest {
     }
 
     @Test
-    void 자동차_입력_테스트() {
+    void 정상_문자열_입력을_처리한다() {
         // given
         String input = "pobi";
         provideSetInputStream(input);
@@ -37,7 +37,7 @@ class InputViewTest {
     }
 
     @Test
-    void 게임_횟수_입력_테스트() {
+    void 정상_횟수_입력을_처리한다() {
         // given
         String input = "5";
         provideSetInputStream(input);
@@ -51,7 +51,7 @@ class InputViewTest {
 
     @ParameterizedTest(name = "입력값: \"{0}\"")
     @ValueSource(strings = {"      ", ",", "\n"})
-    void 자동차_입력_예외_테스트(String input) {
+    void 비정상_자동차_이름_입력을_예외_처리한다(String input) {
         // given
         provideSetInputStream(input);
 
@@ -63,7 +63,7 @@ class InputViewTest {
 
     @ParameterizedTest(name = "입력값: \"{0}\"")
     @ValueSource(strings = {"0", "1000001"})
-    void 게임_횟수_입력_최소_예외_테스트(String input) {
+    void 비정상_플레이_횟수_입력을_예외_처리한다(String input) {
         // given
         provideSetInputStream(input);
 
