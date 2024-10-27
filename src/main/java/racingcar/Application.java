@@ -55,6 +55,16 @@ public class Application {
         return mx;
     }
 
+    public static List<String> createWinnerList(List<Car> cars, int maxNum) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getMoveCount() == maxNum) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String text = inputText();
@@ -69,6 +79,7 @@ public class Application {
         System.out.println();
         int mx = findMax(carList);
 
-        
+        List<String> winnerList = new ArrayList<>();
+        winnerList = createWinnerList(carList, mx);
     }
 }
