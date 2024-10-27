@@ -49,6 +49,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("시도할 횟수에 숫자가 아닌 다른 값을 입력한 경우 예외 테스트")
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,seo", "n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
