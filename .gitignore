@@ -4,6 +4,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+gradle-app.setting
 
 ### STS ###
 .apt_generated
@@ -20,6 +21,8 @@ build/
 *.iml
 *.ipr
 out/
+.idea_modules/
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,3 +36,12 @@ out/
 
 ### Mac OS ###
 .DS_Store
+Thumbs.db
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Test output
+test-output/
