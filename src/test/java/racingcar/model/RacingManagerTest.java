@@ -23,8 +23,8 @@ public class RacingManagerTest {
     }
 
     @Test
-    @DisplayName("시도 횟수 값만큼 라운드 실행")
-    void playRounds_byTryCount() {
+    @DisplayName("시도 횟수 값만큼 라운드 실행 및 결과 출력")
+    void playAndDisplayRounds_withTryCount() {
         int tryCount = 5;
 
         racingManager.playRounds(cars, tryCount);
@@ -32,5 +32,7 @@ public class RacingManagerTest {
         for (Car car : cars) {
             assertThat(car.getPosition().length()).isGreaterThanOrEqualTo(0);
         }
+
+        racingManager.displayPositions(cars);
     }
 }
