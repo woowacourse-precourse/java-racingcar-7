@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
+    private static final String DUPLICATE_CAR_NAME = "자동차 이름이 중복되었습니다.";
+
     public Set<Car> createCars(String[] carNames) {
         validateDuplicateCarNames(carNames);
         return Arrays.stream(carNames)
@@ -17,7 +19,7 @@ public class CarFactory {
     private void validateDuplicateCarNames(String[] carNames) {
         Set<String> nameSet = new HashSet<>(Arrays.asList(carNames));
         if (nameSet.size() != carNames.length) {
-            throw new IllegalArgumentException("자동차 이름이 중복되었습니다.");
+            throw new IllegalArgumentException(DUPLICATE_CAR_NAME);
         }
     }
 }

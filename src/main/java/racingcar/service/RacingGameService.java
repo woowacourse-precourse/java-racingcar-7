@@ -3,13 +3,15 @@ package racingcar.service;
 import racingcar.util.RandomGenerator;
 import racingcar.vo.Car;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RacingGameService {
 
     private static final int MOVING_FORWARD = 4;
-    private final RandomGenerator randomGenerator;
+    private RandomGenerator randomGenerator;
 
     public RacingGameService(RandomGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;
@@ -25,7 +27,7 @@ public class RacingGameService {
 
     public void moveCars(Set<Car> cars) {
         cars.stream()
-                .filter(car -> shouldMoveForward())
+                .filter(this::shouldMoveForward)
                 .forEach(Car::forward);
     }
 
@@ -36,7 +38,7 @@ public class RacingGameService {
                 .orElse(0);
     }
 
-    private boolean shouldMoveForward() {
+    private boolean shouldMoveForward(Car car) {
         return randomGenerator.generateNumber() >= MOVING_FORWARD;
     }
 

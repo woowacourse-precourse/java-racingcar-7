@@ -16,19 +16,16 @@ public class RacingGameController {
 
     private final InputView inputView;
     private final InputValidator inputValidator;
-    private final Separator separator;
     private final CarFactory carFactory;
     private final RacingGameService racingGameService;
     private final OutputView outputView;
 
     public RacingGameController(InputView inputView,
                                 InputValidator inputValidator,
-                                Separator separator,
                                 CarFactory carFactory,
                                 RacingGameService racingGameService, OutputView outputView) {
         this.inputView = inputView;
         this.inputValidator = inputValidator;
-        this.separator = separator;
         this.carFactory = carFactory;
         this.racingGameService = racingGameService;
         this.outputView = outputView;
@@ -36,14 +33,14 @@ public class RacingGameController {
 
     public void run() {
         Set<Car> cars = initializeCars();
-        int round = inputValidator.validateAttemptCount(inputView.getGameAttempt());
+        int round = getRound();
         startRaceAndPrintCarsPosition(round, cars);
         List<String> winner = racingGameService.getWinner(cars);
         printWinner(winner);
     }
 
     private Set<Car> initializeCars() {
-        String[] carNames = separator.splitWithComma(inputView.getCarNames());
+        String[] carNames = Separator.splitWithComma(inputView.getCarNames());
         inputValidator.validateCarNamesAndNumberOfCars(carNames);
         return carFactory.createCars(carNames);
     }
@@ -63,8 +60,7 @@ public class RacingGameController {
 
     private String convertWinnerToString(List<String> winner) {
         if (isMultiWinner(winner)) {
-            Joiner joiner = new Joiner(",");
-            return joiner.join(winner);
+            return Joiner.join(",", winner);
         }
         return winner.get(0);
     }
@@ -73,4 +69,7 @@ public class RacingGameController {
         return winner.size() > 1;
     }
 
+    private int getRound() {
+        return inputValidator.validateAttemptCount(inputView.getGameAttempt());
+    }
 }
