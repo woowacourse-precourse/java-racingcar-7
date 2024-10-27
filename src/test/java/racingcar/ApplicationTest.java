@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,6 +15,7 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    @DisplayName("CarName Length Check")
     void testNameOverLengthLimit() {
         assertThatThrownBy(() -> {
             run("pobi,woni,kdu3840"); // "kdu3840" 길이 초과
@@ -22,6 +24,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("Empty Car Name")
     void carNameIsEmpty() {
         assertThatThrownBy(()-> {
             run("\n");
@@ -30,6 +33,7 @@ class ApplicationTest extends NsTest {
     }
 
     @ParameterizedTest
+    @DisplayName("attempt Count Check")
     @ValueSource(strings = {"0", "-1"})
     void attemptCountIsZeroOrNegative(String attemptCount) {
         assertThatThrownBy(()-> {
@@ -39,22 +43,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("Single Winners Case")
     void singleWinner() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "3");
-                    assertThat(output()).contains("pobi : --", "woni : -", "최종 우승자 : pobi");
+                    assertThat(output())
+                            .withFailMessage("Single Winners Case Error")
+                            .contains("pobi : --", "woni : -", "최종 우승자 : pobi");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, STOP, MOVING_FORWARD
         );
     }
 
     @Test
+    @DisplayName("Multiple Winners Case")
     void multipleWinners() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("pobi,woni", "3");
-                    assertThat(output()).contains("pobi : --", "woni : --", "최종 우승자 : pobi, woni");
+                    assertThat(output())
+                            .withFailMessage("Multiple Winners Case Error")
+                            .contains("pobi : --", "woni : --", "최종 우승자 : pobi, woni");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD, STOP, MOVING_FORWARD
         );
