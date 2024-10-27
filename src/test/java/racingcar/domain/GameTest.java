@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     private static final int GAMECOUNT = 10;
-
     Game game;
 
     @BeforeEach
