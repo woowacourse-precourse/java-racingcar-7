@@ -7,21 +7,26 @@ import java.util.List;
 
 public class CarRacing {
 
-    public void moveCar(List<Car> carList) {
-        for (Car car : carList) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.move();
+    public void racing(List<Car> carList, int numberOfMoves) {
+        for (int i = 0; i < numberOfMoves; i++) {
+            for (Car car : carList) {
+                moveCar(car);
+                printCarLocation(car);
             }
+            System.out.println();
         }
     }
 
-    public void printCarLocation(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getLocation(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
+    public void moveCar(Car car) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+            car.move();
+        }
+    }
+
+    public void printCarLocation(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getLocation(); i++) {
+            System.out.print("-");
         }
         System.out.println();
     }

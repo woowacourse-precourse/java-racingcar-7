@@ -18,10 +18,7 @@ public class Application {
         System.out.println();
         System.out.println("실행 결과");
 
-        for (int i = 0; i < numberOfMoves; i++) {
-            carRacing.moveCar(carList);
-            carRacing.printCarLocation(carList);
-        }
+        carRacing.racing(carList, numberOfMoves);
 
         int max = 0;
         for (Car car : carList) {
