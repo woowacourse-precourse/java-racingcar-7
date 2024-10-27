@@ -3,6 +3,7 @@ package racingcar;
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final String ERROR_NAME_LENGTH = "자동차 이름은 5자 이하여야 합니다.";
+    private static final String ERROR_EMPTY_NAME = "자동차 이름은 공백이 될 수 없습니다.";
     private static final String POSITION_SEPARATOR = " : ";
     private static final String POSITION_INDICATOR = "-";
 
@@ -27,10 +28,29 @@ public class Car {
         position++;
     }
 
-    private void validateName(String name) {
-        if (name == null || name.trim().isEmpty() || name.length() > MAX_NAME_LENGTH) {
+    public static void validateName(String name) {
+        validateEmptyName(name);
+        validateNameLength(name);
+    }
+
+    private static void validateEmptyName(String name) {
+        if (isEmptyName(name)) {
+            throw new IllegalArgumentException(ERROR_EMPTY_NAME);
+        }
+    }
+
+    private static boolean isEmptyName(String name) {
+        return name == null || name.trim().isEmpty();
+    }
+
+    private static void validateNameLength(String name) {
+        if (isNameLengthExceeded(name)) {
             throw new IllegalArgumentException(ERROR_NAME_LENGTH);
         }
+    }
+
+    private static boolean isNameLengthExceeded(String name) {
+        return name.length() > MAX_NAME_LENGTH;
     }
 
     public String getCurrentPosition() {
