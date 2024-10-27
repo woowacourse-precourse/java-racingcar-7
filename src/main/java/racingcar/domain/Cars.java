@@ -9,6 +9,7 @@ import racingcar.util.RandomGeneratorUtil;
 
 public class Cars {
     private final List<Car> cars;
+    private static final int MINIMUM_MOVEMENT_VALUE = 4;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -21,7 +22,7 @@ public class Cars {
     public void move() {
         for (Car car : cars) {
             int randomNumber = RandomGeneratorUtil.getRandomNumber();
-            if (randomNumber >= 4) {
+            if (randomNumber >= MINIMUM_MOVEMENT_VALUE) {
                 car.movementOfNumber++;
             }
         }
