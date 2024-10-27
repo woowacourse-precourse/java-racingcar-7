@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    private static final int MOVING_FORWARD = 4;
+    private static final int MOVING_FORWARD = 5;
     private static final int STOP = 3;
 
     @Test
@@ -21,6 +21,14 @@ class ApplicationTest extends NsTest {
             },
             MOVING_FORWARD, STOP
         );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    assertThat(output()).contains("pobi : -", "최종 우승자 : pobi");
+                },
+                MOVING_FORWARD, STOP
+        );
     }
 
     @Test
@@ -28,6 +36,11 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobiiii,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
