@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.model.AttemptCount;
 import racingcar.model.RaceCars;
 import racingcar.model.RacingGame;
+import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -25,7 +26,7 @@ public class RacingGameController {
     private RacingGame createRacingGame() {
         RaceCars raceCars = RaceCars.fromNames(InputView.inputCarNames());
         AttemptCount attemptCount = AttemptCount.from(InputView.inputAttemptCount());
-        return new RacingGame(raceCars, attemptCount);
+        return new RacingGame(raceCars, attemptCount, new RandomNumberGenerator());
     }
 
 }

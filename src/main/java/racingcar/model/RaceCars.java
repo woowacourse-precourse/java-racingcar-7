@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import racingcar.utils.NumberGenerator;
 import racingcar.validator.RaceCarsValidator;
 
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
-import static racingcar.utils.NumberGenerator.createRandomNumber;
 
 public class RaceCars {
     private final List<RaceCar> raceCars;
@@ -40,9 +40,9 @@ public class RaceCars {
                 .orElse(0);
     }
 
-    public void race() {
+    public void race(NumberGenerator numberGenerator) {
         raceCars.stream()
-                .filter(car -> car.canMove(createRandomNumber()))
+                .filter(car -> car.canMove(numberGenerator.generate()))
                 .forEach(RaceCar::move);
     }
 

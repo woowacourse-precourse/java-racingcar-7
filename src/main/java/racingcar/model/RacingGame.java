@@ -1,19 +1,23 @@
 package racingcar.model;
 
+import racingcar.utils.NumberGenerator;
+
 import java.util.List;
 import java.util.Map;
 
 public class RacingGame {
     private final RaceCars raceCars;
     private final AttemptCount attemptCount;
+    private final NumberGenerator numberGenerator;
 
-    public RacingGame(RaceCars raceCars, AttemptCount attemptCount) {
+    public RacingGame(RaceCars raceCars, AttemptCount attemptCount, NumberGenerator numberGenerator) {
         this.raceCars = raceCars;
         this.attemptCount = attemptCount;
+        this.numberGenerator = numberGenerator;
     }
 
     public void race() {
-        raceCars.race();
+        raceCars.race(numberGenerator);
         attemptCount.decrease();
     }
 
