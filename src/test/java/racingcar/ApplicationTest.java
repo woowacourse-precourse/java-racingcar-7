@@ -98,4 +98,13 @@ class ApplicationTest extends NsTest {
         CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
         assertEquals(e.getMessage(), INVALID_CAR_NAMES.message());
     }
+
+    @Test
+    void 자동차_이름이_한글_또는_영어_또는_숫자_또는_콤마가_아니라면_예외발생() {
+        // given & when
+        String carNames = "a,?,c";
+        // when & then
+        CarNamesException e = assertThrows(CarNamesException.class, () -> raceManager.setCars(carNames));
+        assertEquals(e.getMessage(), INVALID_CAR_NAMES.message());
+    }
 }
