@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private List<Car> cars;
-    private int attempts;
+    private final List<Car> cars;
+    private final int attempts;
 
     public RacingGame(List<Car> cars, int attempts) {
         if (attempts < 1) {
