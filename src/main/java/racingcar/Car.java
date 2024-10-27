@@ -16,6 +16,9 @@ public class Car {
         if (name.length() > 5) {
             throw new IllegalArgumentException(String.format("자동차 이름은 쉼표(,)를 기준으로 5글자이하로만 가능합니다. 입력된 이름: (%s)", name));
         }
+        if (position < 0) {
+            throw new IllegalArgumentException(String.format("자동차 position 은 음수일 수 없습니다. 현재 포지션: (%d)", position));
+        }
         this.name = name.trim();
         this.position = position;
     }

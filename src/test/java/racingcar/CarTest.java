@@ -10,6 +10,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
+    @DisplayName("자동차 위치가 음수인 경우 예외를 반환하는 걸 테스트하라")
+    @Test
+    void test() {
+        int position = -1;
+        assertThatThrownBy(() -> new Car("test", position))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(String.format("자동차 position 은 음수일 수 없습니다. 현재 포지션: (%d)", position));
+    }
+
     @DisplayName("자동차의 이름이 5글자를 초과하는 경우 예외를 반환하는 걸 테스트하라")
     @Test
     void test1() {

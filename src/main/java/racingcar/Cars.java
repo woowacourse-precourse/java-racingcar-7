@@ -7,6 +7,7 @@ public class Cars {
 
     private final List<Car> cars;
 
+    // Todo: init 을 RacingGame 에서 해야하는건지 다시 보기 
     public static Cars withNames(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
