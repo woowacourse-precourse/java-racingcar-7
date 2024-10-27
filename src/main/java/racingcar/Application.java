@@ -31,5 +31,13 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 0 이상의 정수만 가능");
         }
         int tryCount = Integer.parseInt(tryCountString);
+
+        Track track = new Track(carNameList);
+        for (int i = 0; i < tryCount; i++) {
+            track.move();
+            track.print();
+            System.out.println();
+        }
+        track.printWinners();
     }
 }
