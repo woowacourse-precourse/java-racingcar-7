@@ -20,6 +20,7 @@ public class OutputView {
         for (Car car : participants) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     /**
