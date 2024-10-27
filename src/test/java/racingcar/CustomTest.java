@@ -16,4 +16,17 @@ public class CustomTest {
         assertThat(race).containsKeys("pobi", "woni", "jun");
         assertThat(race.values()).allMatch(val -> val == 0);
     }
+
+    @Test
+    @DisplayName("자동차 이름 목록이 빈 문자열일 때 예외 발생")
+    void testEmptyStringException() {
+        Map<String, Integer> race = new HashMap<>();
+        assertThatThrownBy(() -> Application.getNames(race, ""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("빈 문자열을 입력할 수 없습니다.");
+    }
+
+
+
+
 }
