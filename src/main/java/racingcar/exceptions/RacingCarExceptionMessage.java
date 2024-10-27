@@ -9,11 +9,12 @@ public enum RacingCarExceptionMessage {
     ;
 
     private final String text;
+
     RacingCarExceptionMessage(String text) {
         this.text = text;
     }
 
-    public String getText(){
+    public String getText() {
         return this.text;
     }
 }
