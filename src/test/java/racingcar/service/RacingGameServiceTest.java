@@ -13,14 +13,12 @@ import racingcar.view.OutputView;
 public class RacingGameServiceTest {
 
     private RacingGameService racingGameService;
-    private List<String> carNames;
-    private OutputView outputView;
 
     @BeforeEach
     void setUp() {
-        carNames = Arrays.asList("pobi", "woni", "jun");
-        outputView = new OutputView(); // OutputView 객체 생성
-        racingGameService = new RacingGameService(carNames, outputView); // OutputView 전달
+        List<String> carNames = Arrays.asList("pobi", "woni", "jun");
+        OutputView outputView = new OutputView();
+        racingGameService = new RacingGameService(carNames, outputView);
     }
 
     @Test
@@ -64,6 +62,5 @@ public class RacingGameServiceTest {
         assertThat(winners).hasSize(1);
         assertThat(winners.get(0).getName()).isEqualTo("pobi");
     }
-
 
 }
