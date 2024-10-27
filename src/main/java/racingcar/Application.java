@@ -15,6 +15,9 @@ public class Application {
         this.cars = new Car[carCount];
 
         for(int i=0;i<carCount;i++){
+            if (carName[i].trim().length() > 5){
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");//5글자
+            }
             this.cars[i] = new Car(carName[i].trim());
         }
     }
