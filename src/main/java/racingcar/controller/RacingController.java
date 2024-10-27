@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Race;
 import racingcar.domain.Winners;
+import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,13 +17,30 @@ public class RacingController {
     }
 
     public void run() {
+        Race race = initializeRace();
+        executeRace(race);
+        announceWinners(race);
+    }
+
+    private Race initializeRace() {
         String carNames = inputView.inputCarNames();
-        int attemptCount = Integer.parseInt(inputView.inputAttemptCount());
+        int attemptCount = parseAttemptCount();
+        return Race.createRace(carNames, attemptCount);
+    }
 
-        Race race = Race.createRace(carNames, attemptCount);
-        outputView.printExecuteResult(race.displayRacingProgress());
+    private int parseAttemptCount() {
+        String attemptInput = inputView.inputAttemptCount();
+        return Integer.parseInt(attemptInput);
+    }
 
+    private void executeRace(Race race) {
+        String racingProgress = race.displayRacingProgress();
+        outputView.printExecuteResult(racingProgress);
+    }
+
+    private void announceWinners(Race race) {
         Winners winners = Winners.createWinners(race.getWinners());
-        outputView.printFinalResult(winners.displayWinners());
+        String winnerNames = winners.displayWinners();
+        outputView.printFinalResult(winnerNames);
     }
 }
