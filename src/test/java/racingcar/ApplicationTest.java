@@ -53,4 +53,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(expectedMessage);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Ahn;", ""})
+    @DisplayName("자동차 이름을 두 개 이상으로 입력하지 않았으면 예외 발생")
+    void inputMoreThanTwo_NotInputtedMoreThenTwo_ExceptionThrown(String carNames){
+        //given
+        final String expectedMessage = "자동차 이름을 두 개 이상으로 입력해주세요";
+        final CarNameValidator carNameValidator = new CarNameValidator();
+
+        //when & then
+        assertThatThrownBy(() -> carNameValidator.inputMoreThanTwo(carNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(expectedMessage);
+    }
 }
