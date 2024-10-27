@@ -1,4 +1,4 @@
-package racingcar.entity;
+package racingcar.domain.road.entity;
 
 public class Road {
 

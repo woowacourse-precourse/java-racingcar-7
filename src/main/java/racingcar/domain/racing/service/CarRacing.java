@@ -1,13 +1,15 @@
-package racingcar.service;
+package racingcar.domain.racing.service;
 
-import racingcar.entity.Car;
+import racingcar.domain.car.entity.Car;
+import racingcar.domain.car.service.CarNameValidator;
+import racingcar.domain.road.service.RandomRoadCreator;
+import racingcar.domain.winner.service.WinnerPrinter;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.service.RoadPrinter.printRoad;
+import static racingcar.domain.road.service.RoadPrinter.printRoad;
 
 public class CarRacing {
 

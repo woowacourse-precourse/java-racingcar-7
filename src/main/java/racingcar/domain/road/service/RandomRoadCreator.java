@@ -1,7 +1,7 @@
-package racingcar.service;
+package racingcar.domain.road.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.entity.Road;
+import racingcar.domain.road.entity.Road;
 
 public class RandomRoadCreator implements RoadCreator {
 

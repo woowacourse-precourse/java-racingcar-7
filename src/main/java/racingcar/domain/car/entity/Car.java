@@ -1,4 +1,6 @@
-package racingcar.entity;
+package racingcar.domain.car.entity;
+
+import racingcar.domain.road.entity.Road;
 
 public class Car {
 

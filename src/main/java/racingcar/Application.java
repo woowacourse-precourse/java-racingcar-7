@@ -1,7 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.service.CarRacing;
+import racingcar.domain.racing.service.CarRacing;
 
 public class Application {
     public static void main(String[] args) {

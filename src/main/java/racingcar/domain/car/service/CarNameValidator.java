@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain.car.service;
 
 public class CarNameValidator {
     public static void validate(String name) {

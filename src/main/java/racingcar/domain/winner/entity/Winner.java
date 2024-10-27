@@ -1,4 +1,6 @@
-package racingcar.entity;
+package racingcar.domain.winner.entity;
+
+import racingcar.domain.car.entity.Car;
 
 import java.util.List;
 

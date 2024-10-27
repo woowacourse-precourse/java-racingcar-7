@@ -1,7 +1,7 @@
-package racingcar.service;
+package racingcar.domain.winner.service;
 
-import racingcar.entity.Car;
-import racingcar.entity.Winner;
+import racingcar.domain.car.entity.Car;
+import racingcar.domain.winner.entity.Winner;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package racingcar.service;
+package racingcar.domain.road.service;
 
-import racingcar.entity.Car;
+import racingcar.domain.car.entity.Car;
 
 public class RoadPrinter {
 
