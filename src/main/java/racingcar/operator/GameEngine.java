@@ -1,47 +1,37 @@
 package racingcar.operator;
 
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.controller.GameController;
 import racingcar.user.SettingGameUser;
 import racingcar.user.UserObject;
 import racingcar.view.InputView;
-import racingcar.view.OutputView;
 
 public class GameEngine {
-    List<String> winners = new ArrayList<>();
-    UserObject[] user = new UserObject[InputView.result.length];
-    RandomNumberGenerator random = new RandomNumberGenerator();
-    OutputView output = new OutputView();
-    WinnerSelector finalScore = new WinnerSelector();
+    UserObject[] user;
+    public static int NUMBER_OF_USERS = 0;
+    public static int TURN_NUMBER = 0;
 
-    public void runGame() {
-        output.printResultSentence();
-        for (int i = 0; i < InputView.trynum; i++) {
-            startTurn();
-        }
-        finalScore.selectWinner(user);
+    public void progressGame() {
+        startNewTurn();
+        GameController.displayProgress();
     }
 
-    private void startTurn() {
-        for (int i = 0; i < user.length; i++) {
-            playUserTurn(user[i]);
+    private void startNewTurn() {
+        for (UserObject users : user) {
+            playUserTurn(users);
         }
-        output.printTurnResult();
+        GameController.displayProgress();
     }
 
     private void playUserTurn(UserObject user) {
-        int randomNum = random.generateRandomNumber();
+        int randomNum = RandomNumberGenerator.generateRandomNumber();
         if (randomNum >= 4) {
-            updateUserScore(user);
+            user.updateUserScore();
         }
-    }
-
-    private void updateUserScore(UserObject user) {
-        user.score += "-";
-        user.scoreNum++;
     }
 
     public GameEngine() {
         this.user = SettingGameUser.user;
+        NUMBER_OF_USERS = user.length;
+        TURN_NUMBER = InputView.trynum;
     }
 }
