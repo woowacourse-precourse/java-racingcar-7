@@ -33,7 +33,7 @@ public class CarOutputHandler {
         }
         System.out.println(winnerNames);
     }
-    private List<Car> findRacingWinners(List<Car> carList) {
+    public List<Car> findRacingWinners(List<Car> carList) {
         int maxPosition = carList.stream()
                 .mapToInt(Car::getCarPosition)
                 .max()
