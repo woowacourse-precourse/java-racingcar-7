@@ -6,12 +6,15 @@ import racingcar.model.Car;
 import racingcar.util.Util;
 import racingcar.validator.Validator;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Controller {
     InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
     Validator validator = new Validator();
 
     public void run() {
+        outputView.print("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         List<Car> cars = readyCar();
     }
 
