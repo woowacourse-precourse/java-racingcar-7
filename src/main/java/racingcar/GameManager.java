@@ -30,6 +30,7 @@ public class GameManager {
     private void Game(){
         for (Car car : cars) {
             car.Move();
+            car.PrintCurrentDistance();
         }
     }
 }
