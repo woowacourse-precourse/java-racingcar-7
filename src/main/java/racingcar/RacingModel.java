@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class Model {
+public class RacingModel {
 
     private String getStep(String step, int randomNumber) {
         if (randomNumber >= 4) {

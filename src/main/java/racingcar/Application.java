@@ -2,7 +2,7 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.run();
+        RacingController racingController = new RacingController();
+        racingController.run();
     }
 }
