@@ -45,6 +45,11 @@ public class RacingGame {
         return carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
+    public static int initializeRounds() {
+        String input = inputRounds();
+        return parseRounds(input);
+    }
+
     private static String inputRounds() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return Console.readLine();
