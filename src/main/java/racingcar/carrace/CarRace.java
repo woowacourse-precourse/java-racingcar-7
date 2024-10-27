@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.utils.Parser;
+import racingcar.view.OutputView;
 
 public class CarRace {
-    private List<Car> carList;
+    private final List<Car> carList;
     private int remainNum;
 
     public CarRace(String cars, int num) {
@@ -17,8 +18,22 @@ public class CarRace {
     public void startRace() {
         while (remainNum > 0) {
             moveCar();
+            OutputView.printResult(createOutputMessage());
             remainNum--;
         }
+    }
+
+    private String createOutputMessage() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Car car : carList) {
+            sb.append(car.getName());
+            sb.append(" : ");
+            sb.append("-".repeat(car.getDistance()));
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 
     private void moveCar() {
