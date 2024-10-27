@@ -36,10 +36,6 @@ public class UserInterface {
      * 최종 우승자 출력
      */
     public void showFinalWinner(List<Car> finalWinners) {
-        if (finalWinners.isEmpty()) {
-            // TODO 최종 우승자가 없는 경우는 없어야 함
-            System.out.println("모두 정지한 경우도 최종우승자로 전체 자동차로 해야함");
-        }
         StringBuilder finalWinnerNames = new StringBuilder(finalWinners.getFirst().getName());
         if (finalWinners.size() > 1) { // 공동 우승인 경우
             for (int i = 1; i < finalWinners.size(); i++) {
