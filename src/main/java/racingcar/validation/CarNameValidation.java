@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CarNameValidation {
+    private final static int MINIMUM_CAR_NUMBER = 1;
+    private final static int MAXIMUM_CAR_NAME_LENGTH = 5;
+
     public static void validate(String input) {
         validateNotNullOrEmpty(input);
         validateIncludeComma(input);
@@ -31,7 +34,7 @@ public class CarNameValidation {
 
 
     private static void validateCarName(String input) {
-        String[] carNames = input.replaceAll("\\s+", "").split(","); // 공백 처리 완료
+        String[] carNames = input.replaceAll("\\s+", "").split(",");
 
         Set<String> carNamesSet = new HashSet<>();
 
@@ -41,11 +44,10 @@ public class CarNameValidation {
         }
         validateDuplicateName(carNames.length, carNamesSet.size());
         validateCarCount(carNamesSet);
-//        carNamesSet.forEach(System.out::println);
     }
 
     private static void validateCarNameLength(String input) {
-        if (input.isEmpty() || input.length() > 5) {
+        if (input.isEmpty() || input.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -58,7 +60,7 @@ public class CarNameValidation {
 
 
     private static void validateCarCount(Set<String> inputs) {
-        if (inputs.size() < 2) {
+        if (inputs.size() <= MINIMUM_CAR_NUMBER) {
             throw new IllegalArgumentException();
         }
 
