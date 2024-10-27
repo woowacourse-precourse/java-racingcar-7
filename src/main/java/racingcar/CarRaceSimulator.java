@@ -47,7 +47,7 @@ public class CarRaceSimulator {
         }
 
         if(winnerList.isEmpty()) {
-            System.out.println("우승자가 없습니다.");
+            System.out.println("결승선을 통과한 자동차가 없습니다. \n우승자는 없습니다.");
         }else {
             String winner = String.join(", ", winnerList);
             System.out.println("최종 우승자 : " + winner);
