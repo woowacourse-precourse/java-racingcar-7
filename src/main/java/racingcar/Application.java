@@ -1,9 +1,11 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Application {
 
@@ -31,6 +33,19 @@ public class Application {
                 throw new IllegalArgumentException("자동차 이름은 5글자 이내로 입력해주세요!");
             }
             carNamesMap.put(carName, 0);
+        }
+
+        // entrySet 기본 세팅
+        Set<Map.Entry<String, Integer>> carNameSet = carNamesMap.entrySet();
+
+        // 자동차 전진,스탑 진행 처리
+        for (int i = 0; i < count; i++) {
+            for (Map.Entry<String, Integer> carName : carNameSet) {
+                int random = Randoms.pickNumberInRange(0, 9);
+                if (random >= RANDOM_CONDITIONS) {
+                    carNamesMap.put(carName.getKey(), carName.getValue() + 1);
+                }
+            }
         }
     }
 }
