@@ -1,5 +1,7 @@
 package racingcar.domain.race;
 
+import racingcar.exception.ErrorMessage;
+
 public class RoundCount {
     private final int roundCount;
 
@@ -15,7 +17,7 @@ public class RoundCount {
 
     private static void validateInputBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("시도할 횟수를 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.BLANK_ROUND_COUNT_INPUT.getMessage());
         }
     }
 
@@ -24,13 +26,13 @@ public class RoundCount {
             int roundCount = Integer.parseInt(input);
             validateNegativeNumber(roundCount);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("양의 정수를 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ROUND_COUNT.getMessage());
         }
     }
 
     private static void validateNegativeNumber(int roundCount) {
         if (roundCount < 0) {
-            throw new IllegalArgumentException("양의 정수를 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ROUND_COUNT.getMessage());
         }
     }
 

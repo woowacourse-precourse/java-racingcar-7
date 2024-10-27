@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.ErrorMessage;
 
 class CarNamesTest {
 
@@ -16,7 +17,7 @@ class CarNamesTest {
         //when & then
         assertThatThrownBy(() -> CarNames.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("경주할 자동차의 이름을 입력해 주세요.");
+                .hasMessageContaining(ErrorMessage.BLANK_CAR_NAME_INPUT.getMessage());
     }
 
     @Test
@@ -28,7 +29,7 @@ class CarNamesTest {
         //when & then
         assertThatThrownBy(() -> CarNames.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이름을 지정하지 않은 자동차가 있습니다.");
+                .hasMessageContaining(ErrorMessage.BLANK_CAR_NAME.getMessage());
     }
 
     @Test
@@ -40,7 +41,7 @@ class CarNamesTest {
         //when & then
         assertThatThrownBy(() -> CarNames.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 이름은 5자 이하로 설정해 주세요.");
+                .hasMessageContaining(ErrorMessage.TOO_LONG_CAR_NAME.getMessage());
     }
 
     @Test
@@ -52,7 +53,7 @@ class CarNamesTest {
         //when & then
         assertThatThrownBy(() -> CarNames.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("중복된 자동차 이름이 존재합니다.");
+                .hasMessageContaining(ErrorMessage.DUPLICATED_CAR_NAME.getMessage());
     }
 
 }

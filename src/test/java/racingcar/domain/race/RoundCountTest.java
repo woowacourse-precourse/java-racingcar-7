@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.ErrorMessage;
 
 class RoundCountTest {
 
@@ -16,7 +17,7 @@ class RoundCountTest {
         //when & then
         assertThatThrownBy(() -> RoundCount.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("시도할 횟수를 입력해 주세요.");
+                .hasMessageContaining(ErrorMessage.BLANK_ROUND_COUNT_INPUT.getMessage());
     }
 
     @Test
@@ -28,7 +29,7 @@ class RoundCountTest {
         //when & then
         assertThatThrownBy(() -> RoundCount.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("양의 정수를 입력해 주세요.");
+                .hasMessageContaining(ErrorMessage.INVALID_ROUND_COUNT.getMessage());
     }
 
     @Test
@@ -40,6 +41,6 @@ class RoundCountTest {
         //when & then
         assertThatThrownBy(() -> RoundCount.from(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("양의 정수를 입력해 주세요.");
+                .hasMessageContaining(ErrorMessage.INVALID_ROUND_COUNT.getMessage());
     }
 }
