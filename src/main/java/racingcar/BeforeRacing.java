@@ -17,9 +17,20 @@ public class BeforeRacing {
     }
 
     public static void validateName(String carName) {
+        validateLength(carName);
+        validateNull(carName);
+    }
+
+    public static void validateLength(String carName) {
         int length = carName.length();
         if (length >= 6) {
             throw new IllegalArgumentException("이름이 5자 이하가 아닙니다.");
+        }
+    }
+
+    public static void validateNull(String carName){
+        if(carName.isBlank()){
+            throw new IllegalArgumentException("이름값이 공백 입니다.");
         }
     }
 
