@@ -36,4 +36,17 @@ class PositionTest {
         // when, then
         Assertions.assertThat(position2.isBiggerOrEqualTo(position1)).isTrue();
     }
+
+    @Test
+    @DisplayName("Position 객체를 이동시킨다.")
+    void movePosition() {
+        // given
+        Position position = new Position(1);
+
+        // when
+        Position movedPosition = position.move();
+
+        // then
+        Assertions.assertThat(movedPosition).isEqualTo(new Position(2));
+    }
 }
