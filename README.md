@@ -60,6 +60,12 @@
 
 - 각종 출력 형식을 저장
 
+### 5. RacingRoundResultRecorder
+
+- 각 라운드 실행 결과 저장
+- 마지막 라운드 이후 TopRanker 저장
+- 모두 StringBuilder로 출력 위한 저장
+
 ## Service
 
 ### 1. RandomNumberGenerator
