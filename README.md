@@ -5,6 +5,7 @@
 ### 1. 입력
 ####    -> 경주할 자동차 이름 (쉼표 기준 구분) 
 ###### ------------- 입력값이 6자 이상 일 경우, illegalArgumentException 발생 시키고 종료
+###### ------------- 입력값이 없을 경우, illegalArgumentException 발생 시키고 종료
 ####    -> 경주를 진행할 횟수 
 ###### ------------- 입력값이 0 이하일 경우, illegalArgumentException 발생 시키고 종료
 ###### ------------- 입력값이 문자열일 경우, illegalArgumentException 발생 시키고 종료

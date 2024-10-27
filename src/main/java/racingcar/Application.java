@@ -16,8 +16,7 @@ public class Application {
     private static int getCount() {
         System.out.println(COUNT_INPUTMESSAGE);
         String CountInputValue = Console.readLine();
-        int count = validateCountInputValue(CountInputValue);
-        return count;
+        return validateCountInputValue(CountInputValue);
     }
 
     //count 숫자 검증 메서드
@@ -35,8 +34,16 @@ public class Application {
 
     private static String getCarNames() {
         System.out.println(CARNAMES_INPUTMESSAGE);
-        String carNames = Console.readLine();
+        String carNamesValue = Console.readLine();
         //차이름이 5자 이하인지 검사
-        return carNames;
+        return validateCarNamesInputValue(carNamesValue);
+    }
+
+    private static String validateCarNamesInputValue(String carNamesValue) {
+        try {
+            if (carNamesValue.isEmpty()) {
+                throw new IllegalArgumentException()
+            }
+        }
     }
 }
