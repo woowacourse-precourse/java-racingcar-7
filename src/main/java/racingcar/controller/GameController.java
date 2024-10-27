@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public GameController(final InputView inputView) {
+    public GameController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
@@ -22,6 +25,7 @@ public class GameController {
         System.out.println("/n실행 결과");
         for(int round = 0; round < roundCount; round++) {
             playRound(cars);
+            System.out.println();
         }
     }
 
@@ -31,6 +35,7 @@ public class GameController {
             if (randomNumber >= 4) {
                 car.goForward();
             }
+            outputView.printCarPosition(car);
         }
     }
 }
