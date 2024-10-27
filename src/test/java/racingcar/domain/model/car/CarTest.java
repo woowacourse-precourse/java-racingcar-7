@@ -10,6 +10,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
     @Test
+    @DisplayName("올바른 입력 값을 처리할 수 있다.")
+    void 정상_케이스() {
+        // given
+        final String input = "자동차!";
+
+        // when
+        final Car car = Car.from(input);
+
+        // then
+        assertThat(car.getName()).isEqualTo(input);
+    }
+
+    @Test
     @DisplayName("다섯 글자를 넘는 이름은 설정할 수 없다.")
     void 예외_이름_다섯_글자_초과() {
         // given
