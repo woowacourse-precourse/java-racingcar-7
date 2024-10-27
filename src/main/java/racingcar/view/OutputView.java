@@ -19,8 +19,8 @@ public class OutputView {
     }
 
     public static void printWinners(List<String> carNames ) {
-        System.out.print("최종 우승자 :");
-        System.out.print(carNames.get(0));
+        System.out.print("최종 우승자 : ");
+        System.out.print(carNames.getFirst());
         if (checkSoloWin(carNames)) {
             System.out.println();
             return;
