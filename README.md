@@ -6,8 +6,8 @@
     + [0] 최종 우승자를 출력하는 기능 - printFinalWinner
   
 - input class
-    + [] 경주할 자동차 이름을 입력받는 기능 - getCarName
-    + [] 경주 시도 횟수를 입력받는 기능 - getTryCount
+    + [0] 경주할 자동차 이름을 입력받는 기능 - inputCarName
+    + [0] 경주 시도 횟수를 입력받는 기능 - inputTryCount
   
 ### model package
 - GameLogicTransform class
