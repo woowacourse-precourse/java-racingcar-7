@@ -14,7 +14,7 @@ public class GameRunnerTest extends NsTest {
     void 자동차_전진_테스트() {
         assertSimpleTest(() -> {
             int randomValue = 4;
-            boolean isMoved = gameRunner.moveCarForward(randomValue);
+            boolean isMoved = gameRunner.isMoved(randomValue);
             assertThat(isMoved).isTrue();
         });
     }
@@ -23,7 +23,7 @@ public class GameRunnerTest extends NsTest {
     void 자동차_멈춤_테스트() {
         assertSimpleTest(() ->{
             int randomValue = 1;
-            boolean isMoved = gameRunner.moveCarForward(randomValue);
+            boolean isMoved = gameRunner.isMoved(randomValue);
             assertThat(isMoved).isFalse();
         });
     }
