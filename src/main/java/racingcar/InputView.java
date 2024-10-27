@@ -3,12 +3,19 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-    public void printNameMessage() {
-        System.out.println(GameMessages.INPUT_GUIDE_NAME_MESSAGE);
+
+    public String executeNameInput() {
+        printMessage(GameMessages.INPUT_GUIDE_NAME_MESSAGE);
+        return input();
     }
 
-    public void printNumberMessage() {
-        System.out.println(GameMessages.INPUT_GUIDE_NUMBER_MESSAGE);
+    public String executeRoundInput() {
+        printMessage(GameMessages.INPUT_GUIDE_ROUND_MESSAGE);
+        return input();
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
     public String input() {

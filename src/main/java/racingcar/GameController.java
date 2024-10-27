@@ -17,10 +17,8 @@ public class GameController {
     }
 
     public void run() {
-        inputView.printNameMessage();
-        String carNames = inputView.input();
-        inputView.printNumberMessage();
-        String round = inputView.input();
+        String carNames = inputView.executeNameInput();
+        String round = inputView.executeRoundInput();
 
         inputValidator.isValidInputFormat(carNames);
         inputValidator.isValidName(carNames);
