@@ -44,6 +44,17 @@ public class Application {
         }
     }
 
+    public static int findMax(List<Car> cars) {
+        // list를 받아서 가장 많이 전진한 car를 찾는 메서드
+        int mx = 0;
+        for (Car car : cars) {
+            if (mx < car.getMoveCount()) {
+                mx = car.getMoveCount();
+            }
+        }
+        return mx;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String text = inputText();
@@ -54,5 +65,10 @@ public class Application {
         int tc = inputTestCaseNum();
 
         racingCar(tc, carList);
+
+        System.out.println();
+        int mx = findMax(carList);
+
+        
     }
 }
