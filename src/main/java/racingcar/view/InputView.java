@@ -14,6 +14,9 @@ public class InputView {
     }
 
     public static void checkInput(List<String> input) {
+        if (input.isEmpty() || (input.size() == 1 && input.getFirst().isEmpty())){
+            throw new IllegalArgumentException(Messages.NO_INPUT_ERROR);
+        }
         for (String carName : input) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException(Messages.INPUT_LENGTH_ERROR);
