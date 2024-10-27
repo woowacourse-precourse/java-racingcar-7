@@ -3,7 +3,7 @@
 경주할 자동차 이름을 통해 초간단 자동차 경주 게임을 진행하고 결과를 안내합니다.
 
 ## 자동차 이름 입력
-경주할 자동차 이름을 입력합니다.
+경주할 자동차 이름을 중복 이름 없이 입력합니다.
 - 이름은 쉼표`,` 기준으로 구분합니다.
   ```text
   pobi,woni,jun
@@ -15,6 +15,7 @@
   ```
 
 ### 예외 상황
+- 경주할 자동차 이름이 중복된 경우 `IllegalArgumentException`이 발생합니다.
 - int 범위를 벗어난 경우 `IllegalArgumentException`이 발생합니다.
 - 음수를 입력한 경우 `IllegalArgumentException`이 발생합니다.
 
