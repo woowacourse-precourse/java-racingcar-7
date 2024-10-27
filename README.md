@@ -16,7 +16,7 @@
     + [0] 0부터 9사이의 무작위 값 중 4이상 값이 나오는지 판단하는 기능 isNumberMoreFour
   
 - GameLogicValidation class
-    + [] 최종 우승자를 판단하는 기능 validateRacingWinner
+    + [0] 최종 우승자를 판단하는 기능 findRacingWinner
   
 ### service package
 - racingCarGameService class : model 기능을 통해 게임 로직 구현, map 저장 위치
@@ -31,8 +31,10 @@
 ### validation package
 - validateException class
     + [] 자동차 이름이 5자 이하인지 검증 - isCarNameValid
+    + [] 자동차 이름이 입력되었는지 검증 - isCarNameEmpty
     + [] 경주 횟수가 0이상인지 검증 - isTryCountValid
     + [] 경주 횟수가 숫자인지 검증 - isTryCountNumber
+
   
 ## 구현 규칙
 - indent(들여쓰기) depth를 2단계로 제한한다.
