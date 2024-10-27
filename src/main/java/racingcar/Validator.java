@@ -8,8 +8,8 @@ public final class Validator {
     } // Util Class
 
     public static void validateCarNames(final String[] names) {
-        if (names.length == 0) {
-            throw new IllegalArgumentException("적어도 한 대의 자동차 이름을 입력해야 합니다.");
+        if (names.length == 0 || names.length == 1) {
+            throw new IllegalArgumentException("적어도 두 대의 자동차 이름을 입력해야 합니다.");
         }
 
         final Set<String> uniqueNames = new HashSet<>(); // 중복 체크용 Set
