@@ -2,8 +2,10 @@ package racingcar;
 
 import controller.RacingGameController;
 import service.RacingGameService;
+import util.randomnumber.RandomNumberHandler;
 import util.randomnumber.RandomNumberHandlerImpl;
 import util.splitter.CarNameSplitter;
+import util.splitter.CarNameSplitterImpl;
 import view.InputView;
 import view.OutputView;
 import util.validator.CarNameValidator;
@@ -21,12 +23,15 @@ public class Application {
         // TODO: 프로그램 구현
         CarNameValidator carNameValidator = new CarNameValidatorImpl();
         RaceCountValidator raceCountValidator = new RaceCountValidatorImpl();
+
         InputView inputView = new InputView(carNameValidator, raceCountValidator);
         OutputView outputView = new OutputView();
-        CarNameSplitter carNameSplitter = new CarNameSplitter();
-        RandomNumberHandlerImpl randomNumberHandler = new RandomNumberHandlerImpl();
+
+        CarNameSplitter carNameSplitter = new CarNameSplitterImpl();
+        RandomNumberHandler randomNumberHandler = new RandomNumberHandlerImpl();
+
         RacingGameService raceService = new RacingGameService(randomNumberHandler, outputView);
-        RacingGameController controller = new RacingGameController(inputView, outputView, carNameSplitter, raceService);
-        controller.run();
+        RacingGameController racingGamecontroller = new RacingGameController(inputView, outputView, carNameSplitter, raceService);
+        racingGamecontroller.run();
     }
 }
