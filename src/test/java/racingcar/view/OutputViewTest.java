@@ -72,4 +72,27 @@ class OutputViewTest {
         assertEquals(expectedResult,
                 outputStreamCaptor.toString().substring(0, outputStreamCaptor.toString().length() - 1));
     }
+
+    @Test
+    void 최종_우승자가_한_명인_경우_테스트() {
+        String expectedResult = "최종 우승자 : pobi";
+
+        players.getFirst().move();
+
+        outputView.printFinalWinners(racingGame);
+
+        assertEquals(expectedResult, outputStreamCaptor.toString().trim());
+    }
+
+    @Test
+    void 최종_우승자가_두_명인_경우_테스트() {
+        String expectedResult = "최종 우승자 : pobi, jun";
+
+        players.getFirst().move();
+        players.getLast().move();
+
+        outputView.printFinalWinners(racingGame);
+
+        assertEquals(expectedResult, outputStreamCaptor.toString().trim());
+    }
 }
