@@ -25,8 +25,8 @@
 │  └─java
 │      └─racingcar
 │              Application.java
-│              CarGame.java
-│              CarName.java
+│              Game.java
+│              Car.java
 │              Input.java
 │              Output.java
 │
