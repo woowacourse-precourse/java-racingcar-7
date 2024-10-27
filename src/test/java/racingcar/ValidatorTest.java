@@ -36,10 +36,18 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("음수를 입력하면 예외가 발생한다")
+    @DisplayName("숫자외에 입력값이 들어가면 예외가 발생한다")
     void check_tryCount_nonNumeric(){
         String tryCount = "nonNumeric";
         assertThatThrownBy(() -> Validator.validateNumericInput(tryCount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("시도횟수에 음수를 입력하면 예외가 발생한다")
+    void check_tryCount_negative(){
+        int tryCount = -1;
+        assertThatThrownBy(() -> Validator.isNegative(tryCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -19,7 +19,7 @@ public class RacingService {
         try {
             Validator.validateNumericInput(input);
             int attemptCount = Integer.parseInt(input);
-            Validator.validateAttemptCount(attemptCount);
+            Validator.isNegative(attemptCount);
             return attemptCount;
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());

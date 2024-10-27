@@ -28,7 +28,7 @@ public class Validator {
         }
     }
 
-    public static void validateAttemptCount(int attemptCount) {
+    public static void isNegative(int attemptCount) {
         if (attemptCount < MIN_ATTEMPT_COUNT) {
             throw new IllegalArgumentException("시도 횟수는 음수가 될수 없습니다");
         }
