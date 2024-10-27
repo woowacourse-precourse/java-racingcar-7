@@ -136,8 +136,8 @@ ErrorMessage
 
 - [x] indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
 - [x] 3항 연산자를 쓰지 않는다.
-- [ ] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- [ ] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
+- [x] 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
+- [x] JUnit 5와 AssertJ를 이용하여 정리한 기능 목록이 정상적으로 작동하는지 테스트 코드로 확인한다.
 
 - [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용한다.
 - [x] 사용자가 입력하는 값 은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
