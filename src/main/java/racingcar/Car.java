@@ -3,7 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.RaceConfig.RANDOM_POINT_NUMBER;
+import static racingcar.constant.RaceConfig.RANDOM_POINT_NUMBER;
 
 public class Car {
 

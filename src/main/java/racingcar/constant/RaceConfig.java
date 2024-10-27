@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.constant;
 
 public class RaceConfig {
     public static final int RANDOM_START_NUMBER = 0;

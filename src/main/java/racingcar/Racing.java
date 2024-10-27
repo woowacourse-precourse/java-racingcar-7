@@ -6,8 +6,8 @@ import racingcar.io.OutputHandler;
 
 import java.util.List;
 
-import static racingcar.RaceConfig.RANDOM_END_NUMBER;
-import static racingcar.RaceConfig.RANDOM_START_NUMBER;
+import static racingcar.constant.RaceConfig.RANDOM_END_NUMBER;
+import static racingcar.constant.RaceConfig.RANDOM_START_NUMBER;
 
 public class Racing {
 

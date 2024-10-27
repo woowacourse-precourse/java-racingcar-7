@@ -1,7 +1,6 @@
 package racingcar.io;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.Validator;
 
 import java.util.Arrays;
 import java.util.List;
