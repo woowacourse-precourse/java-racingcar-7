@@ -7,6 +7,7 @@ import racingcar.handler.OutputHandler;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Race {
     private final InputHandler inputHandler;
@@ -17,29 +18,33 @@ public class Race {
         this.outputHandler = outputHandler;
     }
 
-    public List<Car> startRace() {
+    public List<Car> start() {
         List<Car> cars = inputHandler.carList();
         int tryCount = inputHandler.tryCount();
 
-        for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                if (shouldMove()) {
-                    car.move();
-                }
-            }
-            outputHandler.printResults(cars);
-        }
+        performRace(tryCount, cars);
         return cars;
     }
 
-    public void endRace(List<Car> cars) {
-        List<Car> winners = winner(cars);
-        outputHandler.printWinners(winners);
+    private void performRace(int tryCount, List<Car> cars) {
+        IntStream.range(0, tryCount).forEach(i -> {
+            progress(cars);
+            outputHandler.printResults(cars);
+        });
+    }
+
+    private void progress(List<Car> cars) {
+        cars.stream()
+                .filter(car -> shouldMove())
+                .forEach(Car::move);
+    }
+
+    public void end(List<Car> cars) {
+        outputHandler.printWinners(winner(cars));
     }
 
     private boolean shouldMove() {
-        int number = Randoms.pickNumberInRange(0, 9);
-        return number >= 4;
+        return Randoms.pickNumberInRange(0, 9) >= 4;
     }
 
     private List<Car> winner(List<Car> cars) {

@@ -14,28 +14,22 @@ public class InputHandlerImpl implements InputHandler {
     }
 
     public int tryCount() {
-        String input = requestInput();
-        return parseInteger(input);
-    }
-
-    private String requestInput() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Console.readLine();
-    }
-
-    private int parseInteger(String input) {
+        String input = Console.readLine();
         validateInput(input);
-        return Integer.parseInt(input);
+        return parseInteger(input);
     }
 
     private void validateInput(String input) {
         if (input == null || input.isBlank()) {
             throw new IllegalArgumentException("입력값은 null 또는 빈 문자열일 수 없습니다.");
         }
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
+        if (!input.matches("\\d+")) { // 숫자 형식 검증
             throw new IllegalArgumentException("유효한 정수가 아닙니다.");
         }
+    }
+
+    private int parseInteger(String input) {
+        return Integer.parseInt(input);
     }
 }
