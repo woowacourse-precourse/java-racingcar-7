@@ -55,3 +55,35 @@
 - 이름은 알파벳,숫자와 언더바(_)만 가능
 - 이름 입력시 ,로 끝난경우는
 - 시도횟수입력으로 0은 불가능하다.
+
+---
+## 시퀀스다이어그램
+
+```mermaid
+
+sequenceDiagram
+    participant R as RacingGameController
+    participant I as InputView
+    participant C as Car
+    participant U as UserInputData
+    participant O as OutputView
+
+    R ->> I: readStrings()
+    I -->> R: String
+    R ->> C: createByStrings(String)
+    C -->> R: List<Car>
+    R ->> I: readTryCount()
+    I -->> R: int
+    R ->> U: new UserInputData(cars, tryCount)
+    U -->> R: UserInputData
+
+    R ->> U: startRacing()
+    U ->> C: moveRandomly() (for each Car)
+    C -->> U: update position (repeated for each Car)
+
+    R ->> U: printResult()
+    U ->> O: printTryresults
+    U ->> O: printWinnerResults
+
+
+```
