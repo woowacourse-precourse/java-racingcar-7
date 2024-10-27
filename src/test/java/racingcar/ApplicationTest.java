@@ -35,6 +35,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 자동차_이름의_길이가_5이상이면_예외를_발생시킨다(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
