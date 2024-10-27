@@ -44,7 +44,7 @@ public class RacingController {
     }
 
     private void processRacing(List<Car> cars, int roundCount) {
-        outputView.outputRacingProcessingStart();
+        outputView.outputCustomContent("실행 결과");
         for (int i = 0; i < roundCount; i++) {
             racingService.processRound(cars);
             outputView.outputCarDetails(cars);

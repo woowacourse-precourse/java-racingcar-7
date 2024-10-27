@@ -5,8 +5,8 @@ import racingcar.model.Car;
 
 public class OutputView {
 
-    public void outputRacingProcessingStart() {
-        System.out.println("실행 결과");
+    public void outputCustomContent(String string) {
+        System.out.println(string);
     }
 
     public void outputCarDetails(List<Car> cars) {
