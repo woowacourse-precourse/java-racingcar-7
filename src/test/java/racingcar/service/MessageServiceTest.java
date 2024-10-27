@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Message;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.Results;
+import racingcar.domain.race.Result;
 import racingcar.domain.race.RoundCount;
 
 class MessageServiceTest {
@@ -28,10 +28,10 @@ class MessageServiceTest {
         final CarNames carNames = new CarNames(names);
         final Cars cars = Cars.from(carNames);
         final RoundCount roundCount = RoundCount.from("5");
-        final Results results = racingService.startRace(cars, roundCount);
+        final Result result = racingService.startRace(cars, roundCount);
 
         //when
-        Message resultMessage = messageService.generateResultMessage(results);
+        Message resultMessage = messageService.generateResultMessage(result);
 
         //then
         assertThat(resultMessage.getMessage()).contains("a : ", "b : ", "c : ");
@@ -54,6 +54,6 @@ class MessageServiceTest {
         Message winnerMessage = messageService.generateWinnerMessage(cars);
 
         //then
-        assertThat(winnerMessage.getMessage()).isNotEmpty();
+        assertThat(winnerMessage.getMessage()).contains("최종 우승자 : ");
     }
 }

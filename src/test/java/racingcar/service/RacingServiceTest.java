@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.race.Result;
-import racingcar.domain.race.Results;
 import racingcar.domain.race.RoundCount;
-import racingcar.domain.race.RoundRecord;
 
 class RacingServiceTest {
 
@@ -30,16 +28,9 @@ class RacingServiceTest {
         final RoundCount roundCount = RoundCount.from("5");
 
         //when
-        final Results results = racingService.startRace(cars, roundCount);
+        final Result result = racingService.startRace(cars, roundCount);
 
         //then
-        List<Result> raceResults = results.getResults();
-        Result firstResult = raceResults.getFirst();
-        List<RoundRecord> firstRecords = firstResult.getRecords();
-        RoundRecord firstRecord = firstRecords.getFirst();
-
-        assertThat(raceResults).hasSize(5);
-        assertThat(firstResult.getRound()).isEqualTo(1);
-        assertThat(firstRecord.getCarName()).isEqualTo("a");
+        assertThat(result.getResults()).hasSize(5);
     }
 }

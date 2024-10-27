@@ -5,32 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.constant.Constant;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
 import racingcar.domain.car.Cars;
+import racingcar.domain.car.Distance;
+import racingcar.domain.race.Records;
 import racingcar.domain.race.Result;
-import racingcar.domain.race.Results;
 import racingcar.domain.race.RoundCount;
-import racingcar.domain.race.RoundRecord;
 
 public class RacingService {
 
-    public Results startRace(Cars cars, RoundCount roundCount) {
-        List<Result> results = new ArrayList<>();
-        int count = roundCount.getRoundCount();
-        for (int round = 1; round <= count; round++) {
-            Result result = new Result(round);
-            startRound(cars, result);
-            results.add(result);
+    public Result startRace(Cars cars, RoundCount roundCount) {
+        List<Records> records = new ArrayList<>();
+        for (int i = 1; i <= roundCount.getRoundCount(); i++) {
+            records.add(startRound(cars));
         }
-        return new Results(results);
+        return new Result(records);
     }
 
-    private void startRound(Cars cars, Result result) {
-        List<Car> raceCars = cars.getCars();
-        for (Car car : raceCars) {
+    private Records startRound(Cars cars) {
+        Records records = new Records();
+        for (Car car : cars.getCars()) {
             moveOrStop(car);
-            RoundRecord record = new RoundRecord(car.getName(), car.getDistance());
-            result.addRecord(record);
+            records.addRecord(new CarName(car.getName()), new Distance(car.getDistance()));
         }
+        return records;
     }
 
     private void moveOrStop(Car car) {

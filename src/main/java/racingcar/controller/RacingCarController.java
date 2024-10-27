@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Message;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
-import racingcar.domain.race.Results;
+import racingcar.domain.race.Result;
 import racingcar.domain.race.RoundCount;
 import racingcar.service.CarService;
 import racingcar.service.MessageService;
@@ -34,9 +34,9 @@ public class RacingCarController {
         RoundCount roundCount = RoundCount.from(inputView.getInput());
 
         Cars cars = carService.createCars(carNames);
-        Results results = racingService.startRace(cars, roundCount);
+        Result result = racingService.startRace(cars, roundCount);
 
-        Message resultMessage = messageService.generateResultMessage(results);
+        Message resultMessage = messageService.generateResultMessage(result);
         Message winnerMessage = messageService.generateWinnerMessage(cars);
 
         outputView.printResult(resultMessage);

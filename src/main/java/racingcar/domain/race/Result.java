@@ -1,25 +1,25 @@
 package racingcar.domain.race;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-    private final Round round;
-    private final RoundRecords roundRecords;
+    private final List<Records> records;
 
-    public Result(int round) {
-        this.round = new Round(round);
-        this.roundRecords = new RoundRecords();
+    public Result(List<Records> records) {
+        this.records = new ArrayList<>(records);
     }
 
-    public void addRecord(RoundRecord record) {
-        this.roundRecords.addRecord(record);
+    public String generateResultMessage() {
+        StringBuilder message = new StringBuilder();
+        for (Records records : this.records) {
+            message.append(records.generateRecordsMessage());
+            message.append(System.lineSeparator());
+        }
+        return message.toString();
     }
 
-    public int getRound() {
-        return round.getRound();
-    }
-
-    public List<RoundRecord> getRecords() {
-        return roundRecords.getRecords();
+    public List<Records> getResults() {
+        return records;
     }
 }

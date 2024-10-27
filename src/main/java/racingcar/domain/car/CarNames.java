@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +11,7 @@ public class CarNames {
     private final List<String> carNames;
 
     public CarNames(List<String> carNames) {
-        this.carNames = carNames;
+        this.carNames = new ArrayList<>(carNames);
     }
 
     public static CarNames from(String input) {
@@ -30,12 +31,6 @@ public class CarNames {
         }
     }
 
-    private static String[] splitCarName(String input) {
-        String[] names = input.split(Constant.DELIMITER);
-        Arrays.setAll(names, i -> names[i].trim());
-        return names;
-    }
-
     private static void validateNameBlank(String name) {
         if (name.isBlank()) {
             throw new IllegalArgumentException("이름을 지정하지 않은 자동차가 있습니다.");
@@ -53,6 +48,12 @@ public class CarNames {
         if (cars.size() != names.length) {
             throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
         }
+    }
+
+    private static String[] splitCarName(String input) {
+        String[] names = input.split(Constant.DELIMITER);
+        Arrays.setAll(names, i -> names[i].trim());
+        return names;
     }
 
     public List<String> getCarNames() {

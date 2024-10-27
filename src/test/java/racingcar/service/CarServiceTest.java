@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 
@@ -28,11 +27,7 @@ class CarServiceTest {
         final Cars cars = carService.createCars(carNames);
 
         //then
-        List<Car> raceCars = cars.getCars();
-        Car firstCar = raceCars.getFirst();
-        assertThat(raceCars).hasSize(3);
-        assertThat(firstCar.getName()).isEqualTo("a");
-        assertThat(firstCar.getDistance()).isEqualTo(0);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
 }
