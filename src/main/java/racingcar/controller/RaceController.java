@@ -20,6 +20,7 @@ public class RaceController {
                 .map(Car::new)
                 .forEach(race::join);
 
+        Output.printExcecutionResult();
         for (int i=0; i<turn; i++) {
             Output.printEachTurnResult(race.playOneTurn());
         }
