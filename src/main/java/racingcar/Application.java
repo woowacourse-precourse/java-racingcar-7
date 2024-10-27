@@ -3,7 +3,10 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static javax.management.Query.or;
@@ -16,7 +19,7 @@ public class Application {
         return movements;
     }
 
-    public static void calculateMovement(String[] cars, Map<String, Integer> carMoves) {
+    public static void calculateMovement(List<String> cars, Map<String, Integer> carMoves) {
         for (String car: cars) {
             int random = Randoms.pickNumberInRange(0, 9);
             int movements = carMoves.get(car);
@@ -31,7 +34,7 @@ public class Application {
         int count;
 
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String[] cars = Console.readLine().split(",");
+        List<String> cars = new ArrayList<>(List.of(Console.readLine().split(",")));
 
         for (String car: cars) {
             if (car.length() > 5 || car.trim().isEmpty()) {
