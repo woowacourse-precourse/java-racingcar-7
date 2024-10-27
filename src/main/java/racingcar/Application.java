@@ -27,6 +27,8 @@ public class Application {
 
         // 3.1 0에서 9 사이의 무작위 수를 생성하여 자동차를 전진하거나 정지하게 하는 기능
         proceedTurn(carList);
+        // 3.2 차수별 실행 결과를 출력하는 기능
+        printTurnResult(carList);
     }
 
     public static String getCarNamesInputString() {
@@ -93,5 +95,12 @@ public class Application {
                 car.goForward();
             }
         }
+    }
+
+    public static void printTurnResult(ArrayList<Car> carList) {
+        for (Car car : carList) {
+            System.out.println(car.toString());
+        }
+        System.out.println();
     }
 }
