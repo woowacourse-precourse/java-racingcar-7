@@ -18,7 +18,7 @@ class CarsTest {
     @Test
     void 쉼표를_기준으로_자른_이름이_5글자_보다_클_경우() {
         String input = "daesun,woni,jun";
-        assertThrows(IllegalArgumentException.class, () -> Car.getInstance(input));
+        assertThrows(IllegalArgumentException.class, () -> Cars.getInstance(input));
     }
 
     @Test
