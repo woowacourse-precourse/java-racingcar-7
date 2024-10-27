@@ -1,8 +1,8 @@
 package racingcar;
-import camp.nextstep.edu.missionutils.Console;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static java.lang.Integer.parseInt;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputParser {
     String delimiter;
@@ -45,7 +45,17 @@ public class InputParser {
 
     private int processTryNum() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int trynum = parseInt(readLine()); // 5
-        return trynum;
+
+        // 입력 유효성 검증
+        int input = parseInt(Console.readLine());
+        try {
+            if (input < 1) {
+                throw new IllegalArgumentException();
+            } else {
+                return input;
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
