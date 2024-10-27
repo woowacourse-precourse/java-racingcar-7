@@ -12,6 +12,7 @@ import static racingcar.service.exception.CarNamesExceptionMessage.CAR_NAME_MUST
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAME;
 import static racingcar.service.exception.CarNamesExceptionMessage.INVALID_CAR_NAMES;
 import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_CANNOT_BLANK;
+import static racingcar.service.exception.RaceCountExceptionMessage.RACE_COUNT_MUST_DIGIT;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -173,5 +174,14 @@ class ApplicationTest extends NsTest {
         // when & then
         RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
         assertEquals(e.getMessage(), RACE_COUNT_CANNOT_BLANK.message());
+    }
+
+    @Test
+    void 경주_횟수가_숫자가_아니라면_예외발생() {
+        // given
+        String raceCount = "세 번";
+        // when & then
+        RaceCountException e = assertThrows(RaceCountException.class, () -> raceManager.setRaceCount(raceCount));
+        assertEquals(e.getMessage(), RACE_COUNT_MUST_DIGIT.message());
     }
 }
