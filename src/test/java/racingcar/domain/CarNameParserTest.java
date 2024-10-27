@@ -12,7 +12,10 @@ class CarNameParserTest {
     @Test
     public void 자동차_이름은_콤마로_구분한다() {
         // given
-        List<String> carNames = CarNameParser.parse("pobi,woni,jun");
+        CarNameParser carNameParser = new CarNameParser();
+
+        // when
+        List<String> carNames = carNameParser.parse("pobi,woni,jun");
 
         // then
         assertThat(carNames).isEqualTo(Arrays.asList("pobi", "woni", "jun"));
