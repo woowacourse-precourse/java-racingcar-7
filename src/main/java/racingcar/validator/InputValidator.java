@@ -3,6 +3,7 @@ package racingcar.validator;
 import static racingcar.View.constant.ErrorMessage.BLANK_VALUE;
 import static racingcar.View.constant.ErrorMessage.DUPLICATED;
 import static racingcar.View.constant.ErrorMessage.INVALID_INTEGER;
+import static racingcar.View.constant.ErrorMessage.OVER_VALUE;
 import static racingcar.View.constant.ErrorMessage.TOO_LONG_VALUE;
 
 import java.util.HashSet;
@@ -30,10 +31,24 @@ public class InputValidator {
         }
     }
 
-    public int checkInteger(String input) {
+    public int checkValue(String input) {
+        long validValue = checkInteger(input);
+
+        return checkInRange(validValue);
+    }
+
+    public int checkInRange(long validValue) {
+        if (validValue > Integer.MAX_VALUE || validValue < Integer.MIN_VALUE) {
+            throw new RacingcarException(OVER_VALUE);
+        }
+
+        return (int) validValue;
+    }
+
+    public long checkInteger(String input) {
         try {
-            return Integer.parseInt(input);
-        } catch (Exception e) {
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
             throw new RacingcarException(INVALID_INTEGER);
         }
     }
