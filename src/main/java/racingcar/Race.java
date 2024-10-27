@@ -3,32 +3,32 @@ package racingcar;
 import static racingcar.Constants.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 public class Race {
-    private final Map<String, StringBuilder> result;
+    private final List<Car> result;
 
     public Race() {
-        this.result = new LinkedHashMap<>();
+        this.result = new ArrayList<>();
     }
 
-    public void initialize(String[] carNames) {
+    public List<Car> getResult() {
+        return Collections.unmodifiableList(result);
+    }
+
+    public void register(String[] carNames) {
         for(String carName : carNames) {
-            result.put(carName, new StringBuilder());
+            result.add(new Car(carName));
         }
     }
 
-    public Map<String, StringBuilder> getResult() {
-        return Collections.unmodifiableMap(result);
-    }
-
     public void moveCarsIfQualified() {
-        for (String carName : result.keySet()) {
+        for (Car car : result) {
             int randomNumber = Randoms.pickNumberInRange(0, 9);
             if (randomNumber >= THRESHOLD) {
-                result.put(carName, result.get(carName).append(MOVE_INDICATOR));
+               car.moveForward();
             }
         }
     }

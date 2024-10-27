@@ -1,20 +1,19 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Map;
 
 public class Winner {
-    public List<String> getBy(Map<String, StringBuilder> finalResult) {
+    public List<String> getBy(List<Car> finalResult) {
         int maxMoveCount = getMaxMoveCount(finalResult);
-        return finalResult.entrySet().stream()
-                .filter(entry -> entry.getValue().length() == maxMoveCount)
-                .map(Map.Entry::getKey)
+        return finalResult.stream()
+                .filter(car -> car.getMovingCount() == maxMoveCount)
+                .map(Car::getName)
                 .toList();
     }
 
-    private int getMaxMoveCount(Map<String, StringBuilder> finalResult) {
-        return finalResult.values().stream()
-                .mapToInt(StringBuilder::length)
+    private int getMaxMoveCount(List<Car> finalResult) {
+        return finalResult.stream()
+                .mapToInt(Car::getMovingCount)
                 .max()
                 .orElse(0);
     }

@@ -2,9 +2,8 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.Constants.*;
 
-import java.util.Map;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ class RaceTest {
     @BeforeEach
     void setUp() {
         race = new Race();
-        race.initialize(new String[]{"test1", "test2", "test3"});
+        race.register(new String[]{"test1", "test2", "test3"});
     }
 
     @Test
@@ -25,11 +24,11 @@ class RaceTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     race.moveCarsIfQualified();
-                    Map<String, StringBuilder> result = race.getResult();
+                    List<Car> result = race.getResult();
 
-                    assertThat(result.get("test1").toString()).isEqualTo(MOVE_INDICATOR);
-                    assertThat(result.get("test2").toString()).isEqualTo("");
-                    assertThat(result.get("test3").toString()).isEqualTo(MOVE_INDICATOR);
+                    assertThat(result.get(0).getMoving()).isEqualTo("-");
+                    assertThat(result.get(1).getMoving()).isEqualTo("");
+                    assertThat(result.get(2).getMoving()).isEqualTo("-");
                 },
                 MOVING_FORWARD, STOP, MOVING_FORWARD
         );
