@@ -8,16 +8,16 @@ import racingcar.io.Output;
 
 public class RaceController {
     private final InputHandler inputHandler;
-    private final CarFactory carFactory;
     private final Race race;
     private final Cars cars;
+    private final CarFactory carFactory;
     private int numOfRounds;
 
-    public RaceController(InputHandler inputHandler, CarFactory carFactory) {
+    public RaceController(InputHandler inputHandler, Race race, Cars cars, CarFactory carFactory) {
         this.inputHandler = inputHandler;
+        this.race = race;
+        this.cars = cars;
         this.carFactory = carFactory;
-        this.race = new Race(); // TODO
-        this.cars = new Cars();
     }
 
     public void runRace() {
@@ -28,9 +28,13 @@ public class RaceController {
     }
 
     private void setupRace() {
-        String[] carNames = inputHandler.processCarNamesInput();
-        numOfRounds = inputHandler.processNumberOfRoundInput();
-        createCars(carNames);
+        try {
+            String[] carNames = inputHandler.inputCarNamesProcess();
+            numOfRounds = inputHandler.inputNumberOfRoundProcess();
+            createCars(carNames);
+        } finally {
+            inputHandler.closeConsole();
+        }
     }
 
     private void createCars(String[] carNames) {
