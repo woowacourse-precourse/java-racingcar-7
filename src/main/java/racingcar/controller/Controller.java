@@ -3,6 +3,7 @@ package racingcar.controller;
 import static java.lang.Integer.parseInt;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -48,7 +49,8 @@ public class Controller {
 
         outputView.printRaceResultMessage();
         for (int round = 0; round < totalRounds; round++) {
-            racing.advance(cars);
+            int number = Randoms.pickNumberInRange(0, 9);
+            racing.advance(cars, number);
             showRoundResults(cars);
         }
     }
