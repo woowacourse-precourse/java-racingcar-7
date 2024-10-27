@@ -45,18 +45,28 @@ class CarTest {
         @Test
         @DisplayName("랜덤 값이 4 이상이면 자동차가 전진한다")
         void carMove() {
+            // given
             Car car = Car.of("car1");
             int initPosition = car.getPosition();
+
+            // when
             car.move(4);
+
+            // then
             assertEquals(initPosition + 1, car.getPosition());
         }
 
         @Test
         @DisplayName("랜덤 값이 4 미만이면 자동차가 정지한다")
         void carStopsWhenRandomValueIsLessThanFour() {
+            // given
             Car car = Car.of("car1");
             int initPosition = car.getPosition();
+
+            // when
             car.move(3);
+
+            // then
             assertEquals(initPosition, car.getPosition());
         }
 
