@@ -13,7 +13,7 @@ public class RacingController {
         List<RacingCar> racingCars = createRacingCars(carNamesInput);
 
         race = new Race(racingCars);
-        race.startRacing(numberOfAttempts);
+        race.startRace(numberOfAttempts);
 
         OutputHandler.printWinners(race.getWinners());
     }

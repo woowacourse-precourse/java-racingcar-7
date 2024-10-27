@@ -10,13 +10,17 @@ public class Race {
         this.racingCars = racingCars;
     }
 
-    public void startRacing(int inputMoves) {
+    public void startRace(int inputMoves) {
         System.out.println("실행 결과");
         for (int i = 0; i < inputMoves; i++) {
-            for (RacingCar racingCar : racingCars) {
-                racingCar.move();
-            }
+            moveCars();
             OutputHandler.printCars(racingCars);
+        }
+    }
+
+    private void moveCars() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.move();
         }
     }
 
