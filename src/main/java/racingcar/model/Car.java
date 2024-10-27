@@ -1,25 +1,29 @@
 package racingcar.model;
 
+import racingcar.util.ErrorMessage;
+import racingcar.util.Limit;
+import racingcar.util.Regex;
+
 public class Car {
     private String name;
     private int position;
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
+        this.position = Limit.DEFAULT.getValue();
 
         validate();
     }
 
     private void validate() {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름이 없어요.");
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME.getError());
         }
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하만 돼요.");
+        if (name.length() > Limit.CAR_NAME_LENGTH.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.MAX_CAR_NAME_LENGTH.getError());
         }
-        if (!name.matches("^[a-zA-Z0-9]*$")) {
-            throw new IllegalArgumentException("자동차 이름은 영문 대소문자와 숫자만 돼요");
+        if (!name.matches(Regex.DIGIT_AND_ALPHABET.getRegex())) {
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_FORMAT.getError());
         }
     }
 

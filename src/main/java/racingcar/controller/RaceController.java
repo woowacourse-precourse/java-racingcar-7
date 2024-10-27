@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.util.CommonIo;
+import racingcar.util.ErrorMessage;
 import racingcar.util.Limit;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -58,11 +59,11 @@ public class RaceController {
         try {
             playCount = io.convertStringToInt(inputView.receivePlayCount());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.PLAY_COUNT_FORMAT.getError());
         }
 
-        if (playCount < 1 || playCount > 9) {
-            throw new IllegalArgumentException("1에서 9사이가 좋겠어요.");
+        if (playCount < Limit.MIN_PLAY.getValue() || playCount > Limit.MAX_PLAY.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.PLAY_COUNT_LIMIT.getError());
         }
 
         return playCount;

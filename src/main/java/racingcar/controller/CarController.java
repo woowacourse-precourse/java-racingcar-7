@@ -1,6 +1,9 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.util.ErrorMessage;
+import racingcar.util.Limit;
+import racingcar.util.Regex;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,17 +12,17 @@ import java.util.List;
 public class CarController {
 
     public List<String> splitCarNames(String input) {
-        List<String> carNames = Arrays.stream(input.split(",")).toList();
+        List<String> carNames = Arrays.stream(input.split(Regex.DELIMITER_COMMA.getRegex())).toList();
         validateCarNames(carNames);
         return carNames;
     }
 
     public void validateCarNames(List<String> carNames) {
-        if (carNames.size() > 5) {
-            throw new IllegalArgumentException("자동차는 5대까지만.");
+        if (carNames.size() > Limit.CAR_NAME_LENGTH.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.MAX_CAR_COUNT.getError());
         }
         if (carNames.size() != carNames.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복 자동차가 있어요.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_CAR.getError());
         }
     }
 
