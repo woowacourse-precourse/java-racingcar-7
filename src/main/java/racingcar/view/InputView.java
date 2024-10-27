@@ -23,6 +23,7 @@ public class InputView {
     public int inputRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int number = Integer.parseInt(Console.readLine());
+        System.out.println("\n실행 결과");
         return roundValidation(number);
     }
 

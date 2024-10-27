@@ -26,7 +26,6 @@ public class CarRacingController {
     public void race() {
         register.carListUp(divide(inputView.inputCar()));
         int count = inputView.inputRound();
-        System.out.println("\n실행 결과");
         while (count > 0) {
             carMoves();
             outputView.outputCarMoves(register.carsMoveCount());
