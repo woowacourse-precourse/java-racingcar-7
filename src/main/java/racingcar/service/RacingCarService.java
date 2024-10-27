@@ -24,14 +24,12 @@ public class RacingCarService {
     private void moveCars(List<Car> cars, StringBuilder racingResultBuilder) {
 
         for (Car car : cars) {
-            racingResultBuilder.append(car.getName()).append(" : ");
             if (RandomUtil.generateRandomNumber() >= MINIMUM_GO_NUMBER) {      // 전진
                 car.go();
             }
-            for (int i = 0; i < car.getPos(); i++) {
-                racingResultBuilder.append("-");
-            }
-            racingResultBuilder.append("\n");
+
+            racingResultBuilder.append(car.getName()).append(" : ")
+                    .append(car.getTrace()).append("\n");
         }
         racingResultBuilder.append("\n");
     }
