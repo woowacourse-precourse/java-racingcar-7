@@ -93,14 +93,14 @@
 # **기능 구현 목록**
 
 ## 1. 사용자 입력 처리
-- [ ] **자동차 이름 입력받기**
-    - [ ] 쉼표(,)로 구분된 이름 입력
+- [x] **자동차 이름 입력받기**
+    - [x] 쉼표(,)로 구분된 이름 입력
     - [ ] 각 이름은 5자 이하로 제한
     - [ ] 중복된 이름 없는지 검증
-    - [ ] 이름 앞뒤의 공백 제거(`trim()`)
+    - [x] 이름 앞뒤의 공백 제거(`trim()`)
     - [ ] 비어있는 이름 입력 시 예외 처리
 
-- [ ] **시도 횟수 입력받기**
+- [x] **시도 횟수 입력받기**
     - [ ] 음수 입력 시 예외 처리
     - [ ] 0 입력 시 예외 처리
     - [ ] 정수가 아닌 값 입력 시 예외 처리
@@ -190,15 +190,16 @@
     - NameValidation // 이름 관련 검증
     - NumberOfTrialValidation // 시행 횟수 관련 검증
 - Factory
-    - DomainFactory // 도메인 객체 생성 위임, 서비스로부터의 의존성 역전 원칙 준수
+    - ControllerFactory // 컨트롤러 객체 생성 위임
+    - DomainFactory // 도메인 객체 생성 위임
 - Util
     - Constants // 전반적으로 사용되는 상수 관리
         - Constant
-    - Message // 문자열 관련 상수
-        - ErrorMessage  // 에러 메시지 관련 문자열 상수화
-        - IOMessage // 입출력 관련 문자열 상수화
     - Exception
-        - ExceptionType// Enum 객체
+      - ErrorMessage  // 에러 메시지 관련 문자열 상수화
+      - ExceptionType // Enum 객체
+    - Message // 문자열 관련 상수
+      - IOMessage // 입출력 관련 문자열 상수화
 - View
     - InputView // 사용자에게 보여질 화면 (입력)
     - OutputView // 사용자에게 보여질 화면 (출력)
