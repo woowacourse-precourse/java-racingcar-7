@@ -78,35 +78,8 @@ public class Main {
         car.setMove(move);
     }
 
-    public int repeatCreation() {
-        String userInput = receiveCarNames();
-        String[] carNames = splitCarNames(userInput);
-
-        List<Car> cars = createAllCars(carNames);
-
-        int repeatCount = 0;
-
-        for (Car car : cars) {
-            setMoveInformation(car, isMove(createRandomNumber()));
-            repeatCount++;
-        }
-
-        return repeatCount;
-    }
-
     public void printSingleResult(Car car) {
         System.out.println(car.getName() + " : " + (car.getMove() ? "-" : ""));
-    }
-
-    public int repeatGame(int count) {
-        int game = 0;
-        repeatCreation();
-
-        for (int i = 0; i < count; i++) {
-            game++;
-        }
-
-        return game;
     }
 
     public void printWinners(List<Car> cars) {
