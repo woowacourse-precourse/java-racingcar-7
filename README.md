@@ -69,7 +69,7 @@
 - 입력값의 유효성을 검증하는 클래스
 - 자동차 이름이 빈 문자열인지, 중복된 이름이 있는지, 구분자가 쉼표(,)가 아닌지 등 검증
 - 시도 횟수가 음수이거나 숫자가 아닌 값이 입력된 경우 검증하여 예외를 발생
-- `validateEmptyInput()`, `validateCommaSeparator()`, `validateSameCarName()`, `validateNumber()` 
+- `validateCarNames()`, `validateNumber()` 
 
 ---
 
