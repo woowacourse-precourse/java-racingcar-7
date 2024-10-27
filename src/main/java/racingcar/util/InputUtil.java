@@ -4,8 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.domain.Input;
 import racingcar.domain.RacingCar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class InputUtil {
 
@@ -40,7 +39,11 @@ public class InputUtil {
         if(input.startsWith(",") || input.endsWith(","))
             throw new IllegalArgumentException("공백의 이름은 넣을 수 없습니다.");
 
-        String[] splitNames = input.split(",");
+        List<String> splitNames = List.of(input.split(","));
+
+        Set<String> tempSet = new HashSet<>(splitNames);
+        if(splitNames.size() != tempSet.size())
+            throw new IllegalArgumentException("중복되는 이름은 사용할 수 없습니다.");
 
         for(String s : splitNames){
             if( !s.matches("^[a-zA-Z0-9,]*$"))
@@ -49,7 +52,7 @@ public class InputUtil {
                 throw new IllegalArgumentException("각 이름은 1자 이상 5자 이하여야 합니다.");
         }
 
-        return List.of(splitNames);
+        return splitNames;
     }
 
     private static int getTryNumber(String input) throws IllegalArgumentException {
