@@ -1,5 +1,6 @@
 package racingcar.application.service;
 
+import racingcar.application.constant.InputNumberBoundary;
 import racingcar.application.constant.MoveConditionBoundary;
 import racingcar.application.constant.RandomNumberBoundary;
 import racingcar.application.port.inbound.GameUseCase;
@@ -10,6 +11,7 @@ import racingcar.infrastructure.exception.InvalidNumberFormatException;
 import racingcar.infrastructure.exception.NegativeNumberException;
 import racingcar.domain.service.CarRacingManager;
 import racingcar.domain.util.RandomNumberGenerator;
+import racingcar.infrastructure.exception.OutOfBoundNumberException;
 
 import java.util.List;
 
@@ -84,6 +86,9 @@ public class GameService implements GameUseCase {
             final int repeat = Integer.parseInt(input);
             if (repeat < 1) {
                 throw new NegativeNumberException();
+            }
+            if (repeat > InputNumberBoundary.REPEAT_MAX) {
+                throw new OutOfBoundNumberException();
             }
         } catch (NumberFormatException e) {
             throw new InvalidNumberFormatException();
