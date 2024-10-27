@@ -25,13 +25,11 @@ public class CarService {
     }
 
     private List<CarDto> createCar() {
+        if(isOneName()) carNameList.add("car");
+
         if (isSameName()) {
             carNameList.forEach(this::changeCarId);
             return cars;
-        }
-
-        if(isOneName()) {
-            cars.add(new CarDto());
         }
 
         carNameList.forEach(name -> cars.add(new CarDto(name)));
