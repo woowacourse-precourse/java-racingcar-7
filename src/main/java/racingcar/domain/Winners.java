@@ -13,6 +13,10 @@ public class Winners {
         return new Winners(findWinners(cars));
     }
 
+    public List<Car> getWinners() {
+        return winners;
+    }
+
     private static List<Car> findWinners(Cars cars) {
         int maxDistance = findMaxDistance(cars);
         return cars.getCars()
