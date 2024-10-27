@@ -4,17 +4,14 @@ import racingcar.domain.RacingCars;
 import racingcar.domain.TrialCount;
 import racingcar.util.CreatingRacingCar;
 import racingcar.util.RandomGenerator;
+import racingcar.util.RandomGeneratorImpl;
 import racingcar.view.OutputView;
 import racingcar.view.InputView;
 
 public class RacingGameController {
     private OutputView outputView = new OutputView();
     private InputView inputView = new InputView();
-    private final RandomGenerator randomGenerator;
-
-    public RacingGameController(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
-    }
+    private final RandomGenerator randomGenerator = new RandomGeneratorImpl();
 
     public void playGame() {
         RacingCars racingCars = createRacingCars();
