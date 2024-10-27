@@ -10,15 +10,6 @@ import racingcar.constant.ErrorMessage;
 class ValidationServiceTest {
 
     @Test
-    void 자동차_이름_입력값이_존재하지_않을_경우() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of()))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.EMPTY_INPUT.getMessage())
-        );
-    }
-
-    @Test
     void 자동차_이름이_하나일_경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobi")))
@@ -51,24 +42,6 @@ class ValidationServiceTest {
                 assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("pobi", "POBI")))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(ErrorMessage.DUPLICATE_CAR_NAME.getMessage())
-        );
-    }
-
-    @Test
-    void 자동차_이름을_입력하지_않고_쉼표를_적었는지() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("a", "", "b")))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.MISSING_CAR_NAME.getMessage())
-        );
-    }
-
-    @Test
-    void 자동차_이름을_입력하고_쉼표로_끝냈는지() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> ValidationService.validateCarNames(List.of("a", "b", "")))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(ErrorMessage.MISSING_CAR_NAME.getMessage())
         );
     }
 

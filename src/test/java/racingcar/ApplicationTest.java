@@ -55,6 +55,33 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름을_입력하지_않고_쉼표를_적었는지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,,b"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.MISSING_CAR_NAME.getMessage())
+        );
+    }
+
+    @Test
+    void 자동차_이름_입력값이_존재하지_않을_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.EMPTY_INPUT.getMessage())
+        );
+    }
+
+    @Test
+    void 자동차_이름을_입력하고_쉼표로_끝냈는지() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,b,"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.UNEXPECTED_COMMA.getMessage())
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
