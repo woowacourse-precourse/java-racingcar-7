@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
@@ -9,10 +10,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGameController {
+
     public static void game() {
-        start();
-    }
-    public static void start() {
         List<String> carNames = InputView.getCars();
         validateName(carNames);
 
@@ -24,13 +23,29 @@ public class RacingGameController {
             moveCars(cars);
             OutputView.printResult(cars);
         }
+
+        OutputView.printWinner(getWinner(cars));
     }
-    public static Cars createCars(List<String> carNames) {
+
+    private static List<Car> getWinner(Cars cars) {
+        List<Car> carList = cars.getCarList();
+        List<Car> winner = new ArrayList<>();
+
+        int max = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == max)
+                .collect(Collectors.toList());
+    }
+    private static Cars createCars(List<String> carNames) {
         return new Cars(carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList()));
     }
-    public static void moveCars(Cars cars) {
+    private static void moveCars(Cars cars) {
         List<Car> carList = cars.getCarList();
         for (Car car : carList) {
             car.move();
