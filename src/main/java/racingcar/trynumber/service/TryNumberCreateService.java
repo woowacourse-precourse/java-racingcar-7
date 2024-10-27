@@ -1,4 +1,4 @@
-package racingcar.service.create;
+package racingcar.trynumber.service;
 
 import racingcar.trynumber.domain.TryNumber;
 
