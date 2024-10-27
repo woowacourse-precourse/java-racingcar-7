@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class Application {
     private static final int MAX_CAR_NAME_LENGTH = 5;
@@ -12,6 +13,8 @@ public class Application {
         String[] carNames = getCarNames(carNamesInputString);
         // 1.3 경주할 자동차 목록이 형식에 맞지 않으면 예외를 발생시키는 기능
         validateCarNames(carNames);
+        // 1.4 자동차(Car) 객체의 리스트를 생성하는 기능
+        ArrayList<Car> carList = createCarList(carNames);
     }
 
     public static String getCarNamesInputString() {
@@ -29,5 +32,13 @@ public class Application {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public static ArrayList<Car> createCarList(String[] carNames) {
+        ArrayList<Car> carList = new ArrayList<>();
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
+        }
+        return carList;
     }
 }
