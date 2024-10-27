@@ -1,19 +1,19 @@
 package racingcar.back.controller;
 
+import racingcar.back.service.CarRaceGameRunnerService;
 import racingcar.global.dto.CarRaceRequestDTO;
 import racingcar.global.dto.CarRaceResponseDTO;
-import racingcar.back.service.impl.CarRaceGameRunnerServiceImpl;
 
 public class CarRaceController {
 
-    private final CarRaceGameRunnerServiceImpl carRaceGameRunnerServiceImpl;
+    private final CarRaceGameRunnerService carRaceGameRunnerService;
 
-    public CarRaceController(CarRaceGameRunnerServiceImpl carRaceGameRunnerServiceImpl) {
-        this.carRaceGameRunnerServiceImpl = carRaceGameRunnerServiceImpl;
+    public CarRaceController(CarRaceGameRunnerService carRaceGameRunnerService) {
+        this.carRaceGameRunnerService = carRaceGameRunnerService;
     }
 
     public CarRaceResponseDTO playRaceGame(CarRaceRequestDTO carRaceRequestDTO) {
         Integer gamePlayCount = carRaceRequestDTO.gamePlayCount();
-        return carRaceGameRunnerServiceImpl.runGame(carRaceRequestDTO.carNames(), gamePlayCount);
+        return carRaceGameRunnerService.runGame(carRaceRequestDTO.carNames(), gamePlayCount);
     }
 }
