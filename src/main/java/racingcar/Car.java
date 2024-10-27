@@ -6,15 +6,17 @@ import java.util.List;
 
 
 public class Car {
+    private static final int MAX_CAR_NAME_LENGTH = 5;
     private String name;
     private List<CarMovementState> movementLog = new ArrayList<>();
     private int moveCount = 0;
+
 
     public Car(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
         }
         this.name = name;
