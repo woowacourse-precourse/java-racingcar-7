@@ -38,5 +38,9 @@ public class Application {
 
         Racing racing = new Racing(carNameList, tryCount);
         racing.startRace();
+
+        // 우승자 선발 및 출력
+        System.out.println();
+        racing.winners();
     }
 }

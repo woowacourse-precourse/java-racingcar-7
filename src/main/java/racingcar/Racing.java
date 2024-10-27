@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
@@ -47,5 +49,30 @@ public class Racing {
                 System.out.println();
             }
         }
+    }
+    public void winners() {
+        int maxPosition = findMaxPosition();
+        List<String> winners = new ArrayList<>();
+
+        // 자동차의 위치가 최대 위치와 같으면 우승자로 추가
+        for (int i = 0; i < carNames.size(); i++) {
+            if (carPositions[i] == maxPosition) {
+                winners.add(carNames.get(i));
+            }
+        }
+
+        // 우승자 출력
+        System.out.println("최종 우승자: " + String.join(", ", winners));
+    }
+
+
+    private int findMaxPosition() {
+        int maxPosition = 0;
+        for (int position : carPositions) {
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+        return maxPosition;
     }
 }
