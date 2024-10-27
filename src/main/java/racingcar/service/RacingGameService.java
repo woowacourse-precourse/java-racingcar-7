@@ -46,7 +46,7 @@ public class RacingGameService {
     }
 
 
-    private static List<RacingCar> createRacingCars(String[] parseCarName) {
+    private List<RacingCar> createRacingCars(String[] parseCarName) {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (String carName : parseCarName) {
