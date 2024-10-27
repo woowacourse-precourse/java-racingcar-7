@@ -61,6 +61,7 @@
 **- 필드**  
 `String name`: 자동차 이름  
 `int location`: 자동차 위치  
+`String NAME_AND_LOCATION_DELIMITER`: 출력 메세지를 위한 이름과 위치 구분자 변수    
 
 **- 생성자**  
 `Car(String name)`: 이름을 받아 자동차 객체 생성하기  
@@ -98,6 +99,9 @@
 
 ### OutputView 👉 결과 출력 클래스
 
+**- 필드**  
+`String WINNERS_DELIMITER`: 우승자를 위한 구분자 변수  
+
 **- 메서드**  
 `printGameResultMessage()`: 경주 결과 출력을 시작하는 메세지 출력하기  
 `printResultOfTurn(String gameResult)`: 한 라운드의 결과를 출력하기  
@@ -116,6 +120,7 @@
 `startGame()`: 게임을 시작하기  
 `readCarsName()`: 자동차 이름을 입력받고 유효성을 검사하기  
 `readTurnCount()`: 시도 횟수를 입력받고 유효성을 검사하기  
+`initializeRacing(List<String> carsName)`: Racing 객체 생성하기  
 `startRacing(List<String> carsName, int turnCount)`: 입력받은 자동차로 경주를 시작하기  
 `playRound()`: 한 라운드를 진행하기  
 `displayRoundResult()`: 한 라운드의 결과를 출력하기  
@@ -157,6 +162,8 @@
 `INVALID_CAR_NAME_INCLUDE_SPECIAL_CHAR`: "자동차 이름에 특수문자가 포함될 수 없습니다."  
 `INVALID_CAR_NUMBER`: "경기에 최소 2대 자동차가 참여할 수 있습니다."  
 `INVALID_TURN_NUMBER`: "자연수가 아닌 숫자입니다."  
+`String ERROR_LOG_LEVEL`: error 로그 레벨을 위한 변수  
+`String message`: 메세지를 위한 변수   
 
 **- 메서드**  
 `getMessage`: 에러 메세지를 반환하기  
@@ -168,6 +175,7 @@
 `INPUT_TURN_COUNT`: "시도할 횟수는 몇 회인가요?"  
 `PRINT_GAME_RESULT`: "실행 결과"  
 `PRINT_GAME_WINNER`: "최종 우승자 : "  
+`String message`: 메세지를 위한 변수  
 
 **- 메서드**  
 `getMessage`: 입출력 메세지를 반환하기  
