@@ -13,7 +13,7 @@ public class Car {
         return position.getValue();
     }
 
-    public void speed() {
+    public void move() {
         if (MovingStrategy.canMove()) {
             position.moveForward();
         }

@@ -2,17 +2,17 @@ package racingcar.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.Domain.Car;
-import racingcar.View.CarNameView;
+import racingcar.View.InputView;
 
 public class Controller {
-    private CarNameView carNameView;
+    private InputView inputView;
 
-    public Controller(CarNameView carNameView) {
-        this.carNameView = carNameView;
+    public Controller(InputView inputView) {
+        this.inputView = inputView;
     }
 
     public Car run() {
-        carNameView.carnameInput();
+        inputView.carnameInput();
         String input = Console.readLine();
         return new Car(input);
     }
