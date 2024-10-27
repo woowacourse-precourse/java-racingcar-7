@@ -18,6 +18,10 @@ public class Car {
         return name + " : " + distance;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void move(){
         this.length++;
         this.distance += "-";
