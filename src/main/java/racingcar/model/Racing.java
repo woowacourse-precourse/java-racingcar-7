@@ -23,4 +23,8 @@ public class Racing {
     return cars.moveOrStayAll();
   }
 
+  public List<Car> retrieveWinners(){
+    return cars.getWinners();
+  }
+
 }
