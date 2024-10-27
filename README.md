@@ -50,49 +50,39 @@
 ## MVC
 🔵 **Model**
 
-### RacingRule 👉 확장을 고려하여 레이싱 룰을 위한 인터페이스
+### RacingRule 👉 레이싱 룰을 확장할 수 있도록 정의된 인터페이스
 
 **- 메서드**  
-`goOrStop`: 자동차 전진 조건을 확인하기  
-`pickWinner`: 최종 우승자를 확인하기  
+`goOrStop`: 자동차가 전진할지 멈출지 결정하는 조건 확인  
+`pickWinner`: 최종 우승자를 선별하는 로직  
 
-
-### Car 👉 자동차를 위한 클래스
+### Car 👉 자동차 클래스
 
 **- 필드**  
 `String name`: 자동차 이름  
 `int location`: 자동차 위치  
 
 **- 생성자**  
-`Car()`
+`Car(String name)`: 이름을 받아 자동차 객체 생성하기  
 
 **- 메서드**  
-`goFront()`: 자동차 위치를 증가하기   
-`nameWithLocationToString()`: 이름과 위치를 문자열로 변환하기  
-`compareLocation()`: 자기 위치와 최고위치를 비교하기  
+`goFront()`: 자동차의 위치를 1만큼 증가하가  
+`nameWithLocationToString()`: 자동차 이름과 위치를 문자열로 변환하기  
+`compareLocation(int maxNumber)`: 현재 위치와 최고 위치를 비교하기  
+`addWinnerName(ArrayList<String> winner)`: 우승자 이름을 리스트에 추가하기  
+`updateWinnerLocation(int winnerLocation)`: 최고 위치를 업데이트  
 
-### Splitter 👉 이름 문자열을 분할하는 클래스
-
-**- 메서드**   
-`splitNames()`: ','기준으로 문자열을 분할하기  
-
-### Random 👉 무작위 작업을 위한 클래스
-
-**- 메서드**   
-`generateRandomNumber()`: 무작위 숫자를 만들기  
-
-### Racing 👉 자동차 경주를 진행하기 위한 클래스
+### Racing 👉 자동차 경주 진행을 위한 클래스
 
 **- 필드**  
-`Collection<Car> Cars`: 경기에 참여할 자동차 객체들  
+`ArrayList<Car> cars`: 경기에 참여할 자동차 객체들  
 
 **- 생성자**  
-`Cars()`  
+`Racing(ArrayList<Car> cars)`: 자동차 리스트를 받아 경주를 시작하는 객체 생성하기  
 
 **- 메서드**  
-`setCars()`: 자동차들을 세팅하기  
-`runRound()`: 한 라운드 진행하기  
-`goOrStop()`: 자동차 전진 조건을 확인하기  
+`runRound()`: 한 라운드를 진행하기  
+`goOrStop()`: 자동차가 전진할지 여부를 무작위로 결정하기  
 `resultOfRound()`: 한 라운드의 결과를 문자열로 반환하기  
 `pickWinner()`: 최종 우승자를 선별하기  
 
@@ -100,72 +90,78 @@
 
 🟡 **View**
 
-### InputView 👉 사용자로부터 입력을 받는 클래스
+### InputView 👉 사용자 입력을 처리하는 클래스
 
 **- 메서드**  
-`nameAndTurn()`: 사용자로부터 받은 이름과 시도 횟수 한번에 반환하기  
-`readCarsName()`: 서용자로부터 자동차 이름 문자열 입력 받기  
-`readTurnCount()`: 사용자로부터 시도 횟수 입력 받기  
+`readCarsName()`: 사용자로부터 자동차 이름을 입력받기  
+`readTurnCount()`: 사용자로부터 시도 횟수를 입력받기  
 
-### OutputView 👉 계산 결과를 출력하는 클래스
+### OutputView 👉 결과 출력 클래스
 
 **- 메서드**  
-`printGameResult()`: 이제부터 레이싱 결과를 출력하겠다는 텍스트 출력하기  
-`printResultOfTurn()`: 한 횟차의 결과를 출력하기  
-`printWinner()`: 최종 우승자를 출력하기  
+`printGameResultMessage()`: 경주 결과 출력을 시작하는 메세지 출력하기  
+`printResultOfTurn(String gameResult)`: 한 라운드의 결과를 출력하기  
+`printWinner(ArrayList<String> winner)`: 최종 우승자를 출력하기  
 
 ---
 
 🟢 **Controller**
-#### RacingController 👉 사용자 요청을 처리여 모델과 상호작용 후 응답을 다시 사용자에서 전달하기 위한 클래스
+
+### RacingController 👉 사용자 입력을 받고 모델과 상호작용하여 경주를 진행하는 컨트롤러
 
 **- 필드**  
-`Racing racing`: racing 객체  
+`Racing racing`: Racing 객체  
 
 **- 메서드**  
-`startGame()` : 애플리케이션 시작하기  
-`readNamesAndTurnCount()` : 사용자로부터 자동차 이름과 시도 횟수 입력 받기  
-`startRacing()` : 경기 시작하기  
-`printGameResult()` : 이제부터 레이싱 결과를 출력하겠다는 텍스트 출력하기  
-`printResultOfTurn()` : 한 횟차 결과를 출력하기  
-`pickWinner()` : 최종 우승자를 선별하기  
-`printWinner()` : 최종 우승자를 출력하기  
+`startGame()`: 게임을 시작하기  
+`readCarsName()`: 자동차 이름을 입력받고 유효성을 검사하기  
+`readTurnCount()`: 시도 횟수를 입력받고 유효성을 검사하기  
+`startRacing(List<String> carsName, int turnCount)`: 입력받은 자동차로 경주를 시작하기  
+`playRound()`: 한 라운드를 진행하기  
+`displayRoundResult()`: 한 라운드의 결과를 출력하기  
+`printFinalWinner()`: 최종 우승자를 출력하기  
+`printGameResultMessage()`: 경주 결과 출력을 위한 메세지 출력하기  
 
 ---
 
 🔴 **Validation**
 
-### CarValidator 👉 자동차 유효성을 검사하는 클래스
+### CarValidator 👉 자동차 입력값의 유효성을 검사하는 클래스
 
 **- 메서드**  
-`validateCarName()`: 자동차 이름의 유효성 검하하기  
-`validateCarNumber()`: 자동차 수량 유효성 검하하기  
+`validateCarNumber(List<String> splittedNames)`: 자동차 수량 유효성 검사하기  
+`validateDuplicateCarName(List<String> splittedNames)`: 중복된 자동차 이름 유효성 검사하기  
+`validateCarName(String name)`: 자동차 이름의 유효성 검사하기  
 
-### TurnCountValidator 👉 시도 횟수 유효성을 검사하는 클래스
+### TurnCountValidator 👉 시도 횟수 입력값의 유효성을 검사하는 클래스
 
 **- 메서드**  
-`validateTurnCount()`: 시도 홧수의 유효성 검하하기  
+`validateTurnCount(String turnCount)`: 시도 횟수의 유효성 검사하기  
 
 ---
 
-🟣 Enum
+🟣 **Enum**
 
-### SystemMessage 👉 시스템 메세지 관리를 위한 인터페이스  
+### SystemMessage 👉 시스템 메세지를 관리하는 인터페이스
 
 **- 메서드**  
-`getMessage`: 시스템 메세지 반환하기   
+`getMessage`: 시스템 메세지 반환하기  
 
-### ErrorMessage 👉 시스템 에러 메세지 관리를 위한 enum  
+### ErrorMessage 👉 시스템 에러 메세지를 관리하는 enum
 
 **- 상수 필드**  
-`INVALID_CAR_NAME`: "유효하지 않은 자동차 이름이 포함되어 있습니다."  
+`INVALID_DUPLICATE_CAR_NAME`: "중복된 자동차 이름 있습니다."  
+`INVALID_CAR_NAME_EMPTY`: "비어있는 자동차 이름이 존재합니다."  
+`INVALID_CAR_NAME_LENGTH`: "자동차 이름은 5자 이하만 가능합니다."  
+`INVALID_CAR_NAME_NUMERIC_ONLY`: "자동차 이름이 숫자로만 구성될 수 없습니다."  
+`INVALID_CAR_NAME_INCLUDE_SPECIAL_CHAR`: "자동차 이름에 특수문자가 포함될 수 없습니다."  
 `INVALID_CAR_NUMBER`: "경기에 최소 2대 자동차가 참여할 수 있습니다."  
 `INVALID_TURN_NUMBER`: "자연수가 아닌 숫자입니다."  
 
 **- 메서드**  
-`getMessage`: 시스템 메세지 반환하기   
+`getMessage`: 에러 메세지를 반환하기  
 
-### IOMessage 👉 시스템 입출력 메세지 관리를 위한 enum  
+### IOMessage 👉 시스템 입출력 메세지를 관리하는 enum
 
 **- 상수 필드**  
 `INPUT_CARS_NAME`: "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"  
@@ -174,7 +170,26 @@
 `PRINT_GAME_WINNER`: "최종 우승자 : "  
 
 **- 메서드**  
-`getMessage`: 시스템 메세지 반환하기   
+`getMessage`: 입출력 메세지를 반환하기  
+
+---
+
+🟤 **Utilities**
+
+### Splitter 👉 자동차 이름을 분할하는 클래스
+
+**- 메서드**  
+`splitNames(String carNames)`: ','를 기준으로 이름 문자열을 분할하기  
+
+### Random 👉 무작위 숫자를 생성하는 클래스
+
+**- 메서드**  
+`generateRandomNumber()`: 무작위 숫자를 생성하기  
+
+### NumberParser 👉 문자열을 숫자로 변환하는 클래스
+
+**- 메서드**  
+`parseToInt(String value)`: 문자열을 정수로 변환하기  
 
 ---
 
