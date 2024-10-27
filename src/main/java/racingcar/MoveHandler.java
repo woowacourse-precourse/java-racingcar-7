@@ -4,9 +4,20 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class MoveHandler {
 
-
-    public int generateRandomNumber(){
+    // 0~9 범위의 랜덤 숫자를 생성
+    public int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
     }
 
+    // 자동차가 이동할 수 있는지 여부를 확인
+    public boolean canMove(int randomNumber) {
+        return randomNumber >= 4;
+    }
+
+    // 자동차 이동 처리
+    public void carMove(Car car) {
+        if (canMove(generateRandomNumber())) {
+            car.pos++;
+        }
+    }
 }
