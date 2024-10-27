@@ -14,4 +14,8 @@ public class Judge {
         }
         return winnerList;
     }
+
+    public static ArrayList<String> getWinnerList() {
+        return winnerList;
+    }
 }
