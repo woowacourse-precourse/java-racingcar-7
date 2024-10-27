@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Validator {
@@ -51,7 +52,7 @@ public class Validator {
 	}
 
 	private static void validateNoDuplicates(String name, List<String> carNames) {
-	    long count = carNames.stream().filter(name::equals).count();
+	    long count = Collections.frequency(carNames, name);
 	    if (count > 1) {
 	        throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
 	    }
