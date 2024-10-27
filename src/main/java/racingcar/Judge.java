@@ -4,6 +4,7 @@ import static racingcar.RacingConstants.CAR_START_POSITION;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Judge {
     private final List<CurrentCar> currentCars;
@@ -12,7 +13,14 @@ public class Judge {
         this.currentCars = currentCars;
     }
 
-    public Integer findMaxPosition() {
+    public String getWinnerNames() {
+        return currentCars.stream()
+                .filter(car -> findMaxPosition().equals(car.position()))
+                .map(CurrentCar::carName)
+                .collect(Collectors.joining());
+    }
+
+    private Integer findMaxPosition() {
         return currentCars.stream()
                 .map(CurrentCar::position)
                 .max(Comparator.naturalOrder())
