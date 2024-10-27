@@ -16,7 +16,10 @@ public class Race {
     private Map<String, Integer> currentStatus;
 
     public Race( InputDTO inputs ) {
-        this.participants = inputs.cars();
+        this.participants = inputs.carNames().stream()
+                .map( RacingCarIO::createCar )
+                .toList();
+
         this.tryCnt = inputs.tryCnt();
         this.currentStatus = new HashMap<>();
     }

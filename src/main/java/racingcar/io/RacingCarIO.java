@@ -33,15 +33,15 @@ public class RacingCarIO {
     public static InputDTO getInput() {
 
         System.out.println( INPUT_MSG_A );
-        String carNames = Console.readLine() + " ";
+        String carNamesInput = Console.readLine() + " ";
 
-        List<Car> cars = Arrays.stream( carNames.split( "," ) )
+        List<String> carNames = Arrays.stream( carNamesInput.split( "," ) )
                 .map( String::trim )
-                .map( RacingCarIO::createCar )
                 .toList();
 
         System.out.println( INPUT_MSG_B );
         int tryCnt = 0;
+
         try {
             tryCnt = Integer.parseInt( Console.readLine() );
         } catch( Error ignored ) {}
@@ -50,7 +50,7 @@ public class RacingCarIO {
                 throw new IllegalArgumentException( INVALID_INPUT_ERR );
         }
 
-        return new InputDTO( cars, tryCnt );
+        return new InputDTO( carNames, tryCnt );
     }
 
     /**
