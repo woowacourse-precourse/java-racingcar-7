@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CarNameValidator {
+    private final int MAX_NAME_LENGTH = 5;
+
     public void separateByComma(String carNames) {
         if (!isCommaSeparated(carNames)) {
             throw new IllegalArgumentException("쉼표(,)로 구분하여 자동차 이름들을 입력해주세요");
@@ -54,7 +56,7 @@ public class CarNameValidator {
     }
 
     private boolean isOverFiveCharacter(String carName) {
-        return carName.length() > 5;
+        return carName.length() > MAX_NAME_LENGTH;
     }
 
     private boolean isBlank(String carName) {
