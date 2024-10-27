@@ -5,7 +5,7 @@ import racingcar.domain.model.car.Car;
 import racingcar.infrastructure.constant.CarConstants;
 import racingcar.domain.util.CarNameParser;
 import racingcar.domain.util.RandomNumberGenerator;
-import racingcar.infrastructure.exception.EmptyInputException;
+import racingcar.infrastructure.constant.ExceptionMessage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CarRacingManager {
 
     private static void validateInput(final String input) {
         if (input == null || input.trim().isEmpty()) {
-            throw new EmptyInputException();
+            throw new IllegalArgumentException(ExceptionMessage.EMPTY_INPUT);
         }
     }
 

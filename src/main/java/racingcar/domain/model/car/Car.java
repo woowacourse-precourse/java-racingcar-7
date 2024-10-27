@@ -1,7 +1,6 @@
 package racingcar.domain.model.car;
 
-import racingcar.infrastructure.exception.EmptyNameException;
-import racingcar.infrastructure.exception.InvalidNameLengthException;
+import racingcar.infrastructure.constant.ExceptionMessage;
 import racingcar.infrastructure.constant.CarConstants;
 
 public class Car {
@@ -21,13 +20,13 @@ public class Car {
 
     private static void validateLength(final String name) {
         if (name.trim().length() > CarConstants.MAX_LEN) {
-            throw new InvalidNameLengthException();
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NAME_LENGTH);
         }
     }
 
     private static void validateEmpty(final String name) {
         if (name.trim().isEmpty()) {
-            throw new EmptyNameException();
+            throw new IllegalArgumentException(ExceptionMessage.EMPTY_NAME);
         }
     }
 

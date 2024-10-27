@@ -4,10 +4,8 @@ import racingcar.infrastructure.constant.Boundary;
 import racingcar.application.dto.RacingGameRequest;
 import racingcar.application.port.inbound.GameUseCase;
 import racingcar.application.port.outbound.OutputPort;
-import racingcar.infrastructure.exception.InvalidNumberFormatException;
-import racingcar.infrastructure.exception.NegativeNumberException;
+import racingcar.infrastructure.constant.ExceptionMessage;
 import racingcar.domain.service.CarRacingManager;
-import racingcar.infrastructure.exception.OutOfBoundNumberException;
 
 public class GameService implements GameUseCase {
     private final OutputPort outputPort;
@@ -56,13 +54,13 @@ public class GameService implements GameUseCase {
         try {
             final int repeat = Integer.parseInt(input);
             if (repeat < 1) {
-                throw new NegativeNumberException();
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_RANGE);
             }
             if (repeat > Boundary.REPEAT_MAX) {
-                throw new OutOfBoundNumberException();
+                throw new IllegalArgumentException(ExceptionMessage.EXCEED_NUMBER);
             }
         } catch (NumberFormatException e) {
-            throw new InvalidNumberFormatException();
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_FORMAT);
         }
     }
 }
