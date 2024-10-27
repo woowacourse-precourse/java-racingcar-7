@@ -6,6 +6,8 @@ import java.util.Set;
 public class CarNameInputParser {
 	public Set<String> parseInput(String input) {
 		String[] carNames = input.split(",");
+		validateParticipantCount(carNames);
+		validateUniqueName(carNames);
 
 		return Set.of(carNames);
 	}
