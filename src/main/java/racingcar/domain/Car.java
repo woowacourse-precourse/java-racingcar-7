@@ -5,7 +5,7 @@ import racingcar.global.exception.CustomException;
 import racingcar.global.exception.ErrorMessage;
 
 public class Car {
-    private static int NAME_MAX_LENGTH = 5;
+    private static final int NAME_MAX_LENGTH = 5;
     private final String name;
     private int moveCount = 0;
 
