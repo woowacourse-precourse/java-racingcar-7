@@ -25,5 +25,8 @@ public class Application {
 
             round--;
         }
+
+        String winner = cars.getWinners();
+        System.out.println("최종 우승자 : " + winner);
     }
 }
