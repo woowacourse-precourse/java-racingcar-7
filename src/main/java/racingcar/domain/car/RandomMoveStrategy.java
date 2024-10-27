@@ -1,11 +1,18 @@
 package racingcar.domain.car;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.util.RandomNumberGenerator;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
+	private static final int THRESHOLD = 4;
+	private final RandomNumberGenerator randomNumberGenerator;
+
+	public RandomMoveStrategy() {
+		this.randomNumberGenerator = new RandomNumberGenerator();
+	}
+
 	@Override
 	public boolean isMovable() {
-		return Randoms.pickNumberInRange(0, 9) >= 4;
+		return randomNumberGenerator.pick() >= THRESHOLD;
 	}
 }
