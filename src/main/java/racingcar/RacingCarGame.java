@@ -19,6 +19,7 @@ public class RacingCarGame {
         }
 
         racingCarIOHandler.showExecutionResult(raceCount, raceCars);
+        racingCarIOHandler.showFinalWinner(raceCars);
     }
 
     private void race(RaceCars raceCars, int round) {

@@ -20,4 +20,8 @@ public class RacingCarIOHandler {
     public void showExecutionResult(int raceCount, RaceCars raceCars) {
         ouputHandler.showExecutionResult(raceCount, raceCars);
     }
+
+    public void showFinalWinner(RaceCars raceCars) {
+        ouputHandler.showFinalWinner(raceCars);
+    }
 }

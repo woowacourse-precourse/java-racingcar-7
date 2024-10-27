@@ -35,13 +35,17 @@ public class Car {
         System.out.println();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getLastRaceRecord() {
+        return raceRecords.getLastRaceRecord();
+    }
+
     private void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
-    }
-
-    private String getName() {
-        return name;
     }
 }

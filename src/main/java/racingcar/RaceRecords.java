@@ -34,4 +34,9 @@ public class RaceRecords {
     public List<String> getByRound(int round) {
         return raceRecords.get(round);
     }
+
+    public int getLastRaceRecord() {
+        List<String> lastRaceRecord = getByRound(raceRecords.size() - 1);
+        return lastRaceRecord.size();
+    }
 }
