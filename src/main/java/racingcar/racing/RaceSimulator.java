@@ -38,12 +38,21 @@ public class RaceSimulator {
 
     public static String getRacingWinner(List<Car> cars) {
         List<Car> copyCars = new ArrayList<>(cars);
-        StringBuilder winners = new StringBuilder();
         int moveDistanceMax = getMoveDistanceMax(copyCars);
+        return choseRacingWinner(copyCars, moveDistanceMax);
+    }
 
-        winners.append(copyCars.getFirst().getCarName());
-        for (int i = 1; i < copyCars.size(); i++) {
-            Car car = copyCars.get(i);
+    private static int getMoveDistanceMax(List<Car> cars) {
+        cars.sort(Comparator.comparingInt(Car::getMoveDistance).reversed());
+        return cars.getFirst().getMoveDistance();
+    }
+
+    private static String choseRacingWinner(List<Car> cars, int moveDistanceMax) {
+        StringBuilder winners = new StringBuilder();
+
+        winners.append(cars.getFirst().getCarName());
+        for (int i = 1; i < cars.size(); i++) {
+            Car car = cars.get(i);
             if (car.getMoveDistance() != moveDistanceMax) {
                 break;
             }
@@ -51,10 +60,5 @@ public class RaceSimulator {
         }
 
         return winners.toString();
-    }
-
-    private static int getMoveDistanceMax(List<Car> cars) {
-        cars.sort(Comparator.comparingInt(Car::getMoveDistance).reversed());
-        return cars.getFirst().getMoveDistance();
     }
 }
