@@ -9,7 +9,7 @@ public class Application {
     * - 자동차 이름은 쉼표(,)를 기준으로 구분 - 0
     * - 이름은 5자 이하만 가능
     * 게임 진행 회차수 입력 기능(readLine()) - 0
-    * - String -> int로 변환
+    * - String -> int로 변환 - 0
     * 무작위 0-9 사이 숫자 생성(pickNumberInRange())
     * 자동차 클래스 생성
     * - 자동차 전진 조건 추가(무작위 값이 4 이상일 경우 전진)
@@ -29,10 +29,16 @@ public class Application {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String inputGameCount = Console.readLine();
+        int gameCount = convertStrToInt(inputGameCount);
 
     }
 
     public static List<String> splitCarNames(String inputCarNames){
         return List.of(inputCarNames.split(","));
     }
+
+    public static int convertStrToInt(String inputGameCount){
+        return Integer.parseInt(inputGameCount);
+    }
+
 }
