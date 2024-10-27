@@ -17,7 +17,12 @@ public class Application {
     static List<String> winners = new ArrayList<>();
 
     public static boolean isValidName(String name) {
-
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름의 길이는 5글자 이하이어야 합니다.");
+        }
+        if (participantList.contains(name)) {
+            throw new IllegalArgumentException("중복된 이름이 존재합니다.");
+        }
         return true;
     }
 
@@ -83,9 +88,6 @@ public class Application {
         System.out.println("최종 우승자 : " + result);
     }
 
-    //- 자동차 경주 게임을 완료한 후 누가 우승했는지를 출력한다.
-    //    - 우승자는 여러 명일 수 있다.
-    //    - 우승자가 여러 명일 경우, 쉼표를 이용하여 구분한다.
     public static void playGame(String number) {
         int playNumber = Integer.parseInt(number);
         initScore();
