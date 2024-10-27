@@ -26,7 +26,7 @@ public class Game {
         return racingCarList;
     }
 
-    public void play() {
+    public void playOneRound() {
         for (RacingCar racingCar : this.racingCarList) {
             racingCar.rollDice();
         }
@@ -51,7 +51,7 @@ public class Game {
     public void start() {
         System.out.println("\n실행 결과");
         for (int i = 0; i < this.round; i++) {
-            play();
+            playOneRound();
             Utils.printResult(this.racingCarList);
             System.out.println();
         }
