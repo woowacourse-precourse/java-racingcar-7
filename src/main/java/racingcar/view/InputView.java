@@ -24,12 +24,20 @@ public class InputView {
         String tryCount = Console.readLine();
 
         checkRacingInfoIsNull(tryCount);
-        return Integer.parseInt(tryCount);
+        return convertToNumericTryCount(tryCount);
     }
 
     private void checkRacingInfoIsNull(String carNames) {
         if (carNames == null || carNames.isBlank()) {
             throw new IllegalArgumentException("자동차 이름 또는 경기횟수를 입력해주세요.");
+        }
+    }
+
+    private int convertToNumericTryCount(String tryCount) {
+        try {
+            return Integer.parseInt(tryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("경기횟수는 숫자를 입력해주세요.");
         }
     }
 }
