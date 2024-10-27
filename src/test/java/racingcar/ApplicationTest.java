@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.validation.InputValidator;
 
@@ -35,6 +36,12 @@ class ApplicationTest extends NsTest {
     @Test
     void 자동차_이름_예외_테스트() {
         assertThatThrownBy(() ->InputValidator.validateCarNames("poby,pobyyyy"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 중복_이름_예외_테스트() {
+        assertThatThrownBy(() -> InputValidator.validateDuplicateName(List.of("poby","poby")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

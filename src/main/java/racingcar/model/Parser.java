@@ -16,6 +16,8 @@ public class Parser {
             result.add(name);
         }
 
+        InputValidator.validateDuplicateName(result);
+
         return result;
     }
 
