@@ -10,6 +10,9 @@ public class CarRepository {
     private final List<Car> cars = new ArrayList<>();
 
     public void save(Car car) {
+        if (isNameDuplicate(car)) {
+            throw new IllegalArgumentException("이미 존재하는 이름입니다.");
+        }
         this.cars.add(car);
     }
 
@@ -30,5 +33,10 @@ public class CarRepository {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElse(0);
+    }
+
+    private boolean isNameDuplicate(Car car) {
+        return cars.stream()
+                .anyMatch(c -> c.getName().equals(car.getName()));
     }
 }
