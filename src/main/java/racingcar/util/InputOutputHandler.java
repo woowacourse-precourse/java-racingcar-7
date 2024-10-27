@@ -25,13 +25,14 @@ public class InputOutputHandler {
     }
 
     public void printRunResult() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
     public void printCarsStatus(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
+        System.out.println();
     }
 
     public void printWinners(List<Car> winners) {
