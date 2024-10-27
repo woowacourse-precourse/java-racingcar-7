@@ -4,11 +4,12 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        InputHandler inputHandler = new InputHandler();
+        InputCarNameHandler inputCarNameHandler = new InputCarNameHandler();
+        InputAttemptHandler inputAttemptHandler = new InputAttemptHandler();
 
         System.out.println("========== 자동차 경주 게임 ==========");
-        List<String> carNames = inputHandler.getCarNames();
-        int attemptCount = inputHandler.getAttempCount();
+        List<String> carNames = inputCarNameHandler.getCarNames();
+        int attemptCount = inputAttemptHandler.getAttempCount();
         System.out.println();
 
         CarRace carRace = new CarRace();
