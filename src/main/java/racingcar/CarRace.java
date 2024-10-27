@@ -42,4 +42,9 @@ public class CarRace {
             printCarPositions();
         }
     }
+
+    //5. 자동차 위치 반환
+    public Map<String, Integer> getCarPositions() {
+        return carPositions;
+    }
 }

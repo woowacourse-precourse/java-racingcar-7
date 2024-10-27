@@ -14,5 +14,8 @@ public class Application {
         CarRace carRace = new CarRace();
         carRace.initializeCarPositions(carNames);
         carRace.attemptRace(attemptCount);
+
+        WinnerAnnouncer winnerAnnouncer = new WinnerAnnouncer();
+        winnerAnnouncer.announceWinners(carRace.getCarPositions());
     }
 }
