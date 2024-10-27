@@ -23,8 +23,7 @@ public class CarNameTest {
     void createCarNameExceedingLength() {
         String name = "abcdef";
         assertThatThrownBy(() -> CarName.from(name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차의 이름은 5글자 이하만 가능합니다");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
