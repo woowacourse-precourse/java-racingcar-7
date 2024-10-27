@@ -17,6 +17,11 @@ public class UserView {
 
         Set<String> uniqueNames = new HashSet<>();
         for (String name : carNames) {
+
+            if(name.isEmpty() || name.equals(" ")) {
+                throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
+            }
+
             if (!uniqueNames.add(name)) {
                 throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
             }
