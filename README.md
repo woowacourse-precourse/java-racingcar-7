@@ -2,7 +2,7 @@
 # 자동차 경주 게임
 ![](src/main/java/resources/freepik__racing-car-game-image-with-many-car__58401.jpeg)
 # UML
-![](src/main/java/resources/스크린샷 2024-10-28 오전 6.05.26.png)
+![](src/main/java/resources/uml_screenshot.png)
 # 기능 요구 사항
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 - 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
