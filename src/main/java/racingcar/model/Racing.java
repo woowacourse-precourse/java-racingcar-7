@@ -29,4 +29,22 @@ public class Racing {
             }
         }
     }
+
+    public String getWinners() {
+        int max = 0;
+        StringBuilder winners = new StringBuilder();
+
+        for (Car car : cars) {
+            if (car.getPosition() > max) {
+                max = car.getPosition();
+            }
+        }
+        for (Car car : cars) {
+            if (car.getPosition() == max) {
+                winners.append(car.getName()).append(",");
+            }
+        }
+
+        return winners.substring(0, winners.length()-1);
+    }
 }
