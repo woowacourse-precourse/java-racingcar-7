@@ -1,6 +1,13 @@
-package racingcar;
+package racingcar.game;
 
+import racingcar.car.Cars;
+import racingcar.input.InputHandler;
+import racingcar.input.UserInput;
+import racingcar.input.Validator;
 import racingcar.observer.CarMovePrinter;
+import racingcar.output.OutputHandler;
+import racingcar.util.RandomValueGenerator;
+import racingcar.util.StringSplitter;
 
 import java.util.List;
 

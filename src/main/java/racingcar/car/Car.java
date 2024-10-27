@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import racingcar.observer.CarObserver;
 

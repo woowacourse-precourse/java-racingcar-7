@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.output.OutputHandler;
 
 import java.util.NoSuchElementException;
 

@@ -1,4 +1,9 @@
-package racingcar;
+package racingcar.game;
+
+import racingcar.input.InputHandler;
+import racingcar.input.Validator;
+import racingcar.output.OutputHandler;
+import racingcar.util.RandomValueGenerator;
 
 public class RacingGameFactory {
     public static RacingGame createRacingGame() {

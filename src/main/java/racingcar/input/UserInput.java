@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.input;
 
 public record UserInput(
         String carNames,

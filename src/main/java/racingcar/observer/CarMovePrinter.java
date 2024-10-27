@@ -1,7 +1,7 @@
 package racingcar.observer;
 
-import racingcar.Car;
-import racingcar.OutputHandler;
+import racingcar.car.Car;
+import racingcar.output.OutputHandler;
 
 public class CarMovePrinter implements CarObserver {
 

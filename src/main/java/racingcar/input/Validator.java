@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.input;
+
+import racingcar.util.StringSplitter;
 
 public class Validator {
 

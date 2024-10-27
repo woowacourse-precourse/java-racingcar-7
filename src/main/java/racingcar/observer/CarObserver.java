@@ -1,6 +1,6 @@
 package racingcar.observer;
 
-import racingcar.Car;
+import racingcar.car.Car;
 
 public interface CarObserver {
     void onMoved(Car car);

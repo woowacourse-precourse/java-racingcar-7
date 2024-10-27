@@ -1,6 +1,6 @@
 package racingcar.observer;
 
-import racingcar.Car;
+import racingcar.car.Car;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
