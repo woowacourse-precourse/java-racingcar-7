@@ -27,7 +27,7 @@ public class RacingCarGame {
             gameRoundHistory.storeGameRoundHistory(cars);
         }
 
-        gameRoundHistory.storeFinalWinners(cars);
+        gameRoundHistory.storeFinalWinners(RacingCarsGroup.getFinalWinners(cars));
         return gameRoundHistory.getEachRoundResult();
     }
 
