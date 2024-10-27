@@ -9,7 +9,6 @@ public class Application {
             MessagePrinter messagePrinter = new MessagePrinter();
             InputReader inputReader = new InputReader();
             InputExtractor inputExtractor = new InputExtractor();
-            NumCounter numCounter = new NumCounter();
             MapBuilder mapBuilder = new MapBuilder();
             RandomPicker randomPicker = new RandomPicker();
             WinnerSorter winnerSorter = new WinnerSorter();
@@ -19,9 +18,7 @@ public class Application {
             String userInputCar = inputReader.getUserInput();
 
             List<String> carNames = inputExtractor.extractCarNames(userInputCar);
-            int carCount = numCounter.countCars(carNames);
-            numCounter.validateCarCount(carCount);
-            numCounter.validateCarNames(carNames);
+            int carCount = inputExtractor.countCars(carNames);
 
             System.out.println(messagePrinter.roundNumGuideMessage);
             String userInputRound = inputReader.getUserInput();
