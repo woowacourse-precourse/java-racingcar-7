@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.InputValidator;
 
@@ -33,8 +34,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("자동차 이름의 길이가 5 미만이어야 한다.")
     void 자동차_이름_길이_검사() {
-        // 자동차 이름의 길이가 5 미만인 경우 테스트
         String[] carNames = {"Car1","racingCar1"};
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
@@ -44,8 +45,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("중복이 되는 이름의 자동차가 있으면 안된다.")
     void 자동차_중복_검사() {
-        // 자동차의 이름이 같은 경우 중복 테스트
         String[] carNames = {"Car1", "Car1"};
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.lenValidate(carNames))
@@ -55,8 +56,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력 값이 빈값이나, NULL이 아니어야 한다.")
     void 빈_입력_값_테스트() {
-        // 빈 입력에 대한 예외 테스트
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.nullValidate(" "))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -65,8 +66,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("시도 횟수가 음수이면 안된다.")
     void 시도_횟수_양수_테스트() {
-        // 음수 시도 횟수에 대한 예외 테스트
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> InputValidator.attemptsValidate(-1))
                         .isInstanceOf(IllegalArgumentException.class)
