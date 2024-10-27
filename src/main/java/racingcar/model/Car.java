@@ -9,4 +9,20 @@ public class Car {
         this.name = name;
         this.position = 0;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void move() {
+        position++;
+    }
+
+    public String printPosition() {
+        return this.name + " : " + "-".repeat(this.position);
+    }
 }

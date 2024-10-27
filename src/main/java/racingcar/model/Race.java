@@ -11,4 +11,12 @@ public class Race {
         this.cars = cars;
         this.round = round;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public Integer getRound() {
+        return round;
+    }
 }

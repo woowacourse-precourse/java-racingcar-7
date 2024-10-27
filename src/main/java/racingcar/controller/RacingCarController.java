@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Race;
+import racingcar.service.RacingCarService;
 import racingcar.validator.Validator;
 import racingcar.view.RacingCarView;
 
@@ -11,10 +12,12 @@ public class RacingCarController {
 
     private final RacingCarView racingCarView;
     private final Validator validator;
+    private final RacingCarService racingCarService;
 
     public RacingCarController() {
         this.racingCarView = new RacingCarView();
         this.validator = new Validator();
+        this.racingCarService = new RacingCarService();
     }
 
     public void run() {
@@ -23,12 +26,10 @@ public class RacingCarController {
         String roundInput = racingCarView.inputRound();
         validator.validateRound(roundInput);
 
-        setUpGame(carInput, roundInput);
-        // TODO 서비스 구현
-        printResult();
+        racingCarService.raceStart(setUpGame(carInput, roundInput));
     }
 
-    private void setUpGame(String carInput, String roundInput) {
+    private Race setUpGame(String carInput, String roundInput) {
         List<String> carNames = List.of(carInput.split(","));
         int round = Integer.parseInt(roundInput);
 
@@ -37,7 +38,7 @@ public class RacingCarController {
             cars.add(new Car(carName));
         }
 
-        Race race = new Race(cars, round);
+        return new Race(cars, round);
     }
 
     public void printResult() {
