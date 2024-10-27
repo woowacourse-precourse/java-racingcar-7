@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static racingcar.constants.RaceConstants.*;
+
 public class Race {
 
     private final Map<String, Integer> carPositions;
@@ -23,7 +25,7 @@ public class Race {
     }
 
     public String startRace() {
-        StringBuilder result = new StringBuilder("\n실행 결과\n");
+        StringBuilder result = new StringBuilder(RACE_EXECUTION_RESULT_HEADER);
         runAllRounds(result);
         appendWinners(result);
         return result.toString();
@@ -45,17 +47,17 @@ public class Race {
     private void recordRoundResults(StringBuilder result) {
         for (String carName : carPositions.keySet()) {
             result.append(carName)
-                    .append(" : ")
-                    .append("-".repeat(carPositions.get(carName)))
-                    .append("\n");
+                    .append(CAR_NAME_POSITION_SEPARATOR)
+                    .append(CAR_POSITION_MARKER.repeat(carPositions.get(carName)))
+                    .append(LINE_BREAK);
         }
-        result.append("\n");
+        result.append(LINE_BREAK);
     }
 
     private void moveCar(String carName) {
         int randomPosition = RandomForwardGenerator.randomSingleDigitNumber();
-        if (randomPosition >= 4) {
-            carPositions.put(carName, carPositions.get(carName) + 1);
+        if (randomPosition >= CAR_MOVE_THRESHOLD) {
+            carPositions.put(carName, carPositions.get(carName) + CAR_MOVE_INCREMENT);
         }
     }
 
@@ -63,10 +65,10 @@ public class Race {
         int maxPosition = carPositions.values()
                 .stream()
                 .max(Integer::compareTo)
-                .orElse(0);
+                .orElse(DEFAULT_VALUE);
 
-        result.append("최종 우승자 : ")
-                .append(String.join(", ", findWinners(maxPosition)));
+        result.append(FINAL_WINNER_MESSAGE)
+                .append(String.join(WINNER_NAME_SEPARATOR, findWinners(maxPosition)));
     }
 
     private List<String> findWinners(int maxPosition) {
@@ -81,7 +83,7 @@ public class Race {
 
     private void setInitialPositions(Car car) {
         car.getCars()
-                .forEach(carName -> carPositions.put(carName, 0));
+                .forEach(carName -> carPositions.put(carName, DEFAULT_VALUE));
     }
 
 }
