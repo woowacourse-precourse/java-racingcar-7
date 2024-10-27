@@ -24,8 +24,8 @@
 - [x] 0에서 9 사이에서 무작위 값을 구한다.
 - [x] 전진할지 판단한다.
 - [x] 라운드별 진행 상황을 출력한다(차수별 실행 결과).
-- [ ] 우승자를 출력한다(단독 우승자 안내).
-- [ ] 우승자가 여러 명일 경우 쉼표를 이용하여 구분한다(공동 우승자 안내).
+- [x] 우승자를 출력한다(단독 우승자 안내).
+- [x] 우승자가 여러 명일 경우 쉼표를 이용하여 구분한다(공동 우승자 안내).
 - [x] 자동차 이름을 입력하라는 메시지를 출력한다.
 - [x] 시도할 횟수를 입력하라는 메시지를 출력한다.
 
@@ -69,7 +69,7 @@
   - parseCarNames()
 - OutputView
   - printRoundResult()
-  - printWinners()
+  - printWinner()
   - printCarNameInputMessage()
   - printRoundCountInputMessage()
 - RandomNumberGenerator
