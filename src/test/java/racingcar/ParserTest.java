@@ -10,7 +10,7 @@ class ParserTest {
 
     @Test
     void 구분자로_자동차_이름_파싱() {
-        assertThat(parser.parseCarNamesByOperator("one,two,three,four,five", ","))
+        assertThat(parser.parseCarNamesByOperator("one,two,three,four,five"))
             .isEqualTo(List.of("one", "two", "three", "four", "five"));
     }
 

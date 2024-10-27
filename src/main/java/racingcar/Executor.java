@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Executor {
-    private static final String OPERATOR = ",";
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVE_STANDARD = 4;
 
@@ -31,7 +30,7 @@ public class Executor {
         Console.close();
 
         validator.validateCarNamesInput(inputCarNamesStr);
-        List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr, OPERATOR);
+        List<String> carNames = parser.parseCarNamesByOperator(inputCarNamesStr);
 
         validator.validateCarNamesLength(carNames, NAME_LENGTH_LIMIT);
         cars = Car.createCarsByName(carNames);
