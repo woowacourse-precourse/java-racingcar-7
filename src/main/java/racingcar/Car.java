@@ -12,8 +12,8 @@ public class Car {
         carList.add(this);
     }
 
-    ArrayList<String> move(InputView inputView){
-        for (int i = 0; i < inputView.inputRounds() ; i++) {
+    ArrayList<String> move(int roundNumber){
+        for (int i = 0; i < roundNumber ; i++) {
             RandomNumber.randomNumber();
             if(RandomNumber.getRandomNum() >= 4){
                 moveList.add("-");
@@ -22,11 +22,11 @@ public class Car {
         return moveList;
     }
 
-    public static ArrayList<String> getMoveList() {
+    public ArrayList<String> getMoveList() {
         return moveList;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 

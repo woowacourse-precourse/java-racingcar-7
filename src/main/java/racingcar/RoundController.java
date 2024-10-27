@@ -14,12 +14,12 @@ public class RoundController {
 
     void gameStart(){
         ArrayList<String> carNameList = InputHandler.handleCarNames(inputView);
-        int roundNumber = inputView.inputRounds();
         Judge judge = new Judge();
+        int roundNumber = inputView.inputRounds();
 
         for (String carName : carNameList) {
             Car car = new Car(carName);
-            car.move(inputView);
+            car.move(roundNumber);
         }
         judge.judgeWinner(Car.getCarList());
 
