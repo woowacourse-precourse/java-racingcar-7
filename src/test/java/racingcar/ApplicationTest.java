@@ -45,6 +45,34 @@ class ApplicationTest extends NsTest {
         assertThat(carNamesInputString).isEqualTo("a,b,c,d");
     }
 
+    @Test
+    void 테스트_1_2_쉼표로_이름_구분() {
+        String carNamesInputString = "a,b,c,d";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThat(carNames).isEqualTo(new String[]{"a","b","c","d"});
+    }
+    @Test
+    void 테스트_1_2_이름이_하나만_입력된_경우() {
+        String carNamesInputString = "abcd";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThat(carNames).isEqualTo(new String[]{"abcd"});
+    }
+    @Test
+    void 테스트_1_2_공백이_포함된_이름() {
+        String carNamesInputString = "a b, c d ,e ,f  ";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThat(carNames).isEqualTo(new String[]{"a b", " c d ", "e ", "f  "});
+    }
+    @Test
+    void 테스트_1_2_이름이_길이_0인_경우() {
+        String carNamesInputString = "a,,b";
+        String[] carNames = Application.getCarNames(carNamesInputString);
+
+        assertThat(carNames).isEqualTo(new String[]{"a", "", "b"});
+    }
 
     @Override
     public void runMain() {
