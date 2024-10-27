@@ -30,13 +30,16 @@ public class Race {
         return winners;
     }
 
-    public void playRace() {
-        for (int i = 0; i < tryCount; i++) {
-            playOneRound(cars);
-        }
+    public int getTryCount() {
+        return this.tryCount;
     }
 
-    private void playOneRound(List<Car> cars) {
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public void playOneRound() {
+        List<Car> cars = this.cars;
         for (Car car : cars) {
             if (canMove()) {
                 car.move();
