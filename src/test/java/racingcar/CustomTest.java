@@ -61,5 +61,12 @@ public class CustomTest {
                 .hasMessage("숫자 형식이 아닙니다.");
     }
 
+    @Test
+    @DisplayName("음수 이동 횟수를 입력했을 때 예외 발생")
+    void testParseNumberNegativeException() {
+        assertThatThrownBy(() -> Application.parseNumber("-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("음수는 입력할 수 없습니다.");
+    }
 
 }
