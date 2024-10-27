@@ -4,11 +4,19 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int MOVABLE_MARGIN = 4;
+
     private final String name;
     private int distance;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public void move(int number) {
+        if (number >= MOVABLE_MARGIN) {
+            distance += 1;
+        }
     }
 
     public String getName() {

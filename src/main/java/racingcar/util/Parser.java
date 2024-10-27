@@ -9,4 +9,10 @@ public class Parser {
                 Symbol.NAME_DELIMITER.getSymbol()
         );
     }
+
+    public static int parseInt(String input) {
+        InputValidator.validateNumeric(input);
+
+        return Integer.parseInt(input);
+    }
 }
