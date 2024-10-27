@@ -1,9 +1,8 @@
 package racingcar.controller;
 
-import javax.naming.ldap.Control;
 import racingcar.factory.CarsFactory;
 import racingcar.factory.ControllerFactory;
-import racingcar.factory.NumberFactory;
+import racingcar.factory.MoveNumberFactory;
 import racingcar.domain.Cars;
 import racingcar.domain.MoveNumber;
 import racingcar.view.InputView;
@@ -21,7 +20,7 @@ public class RacingCarController {
     }
 
     private MoveNumber createMoveNumber() {
-        return NumberFactory.createMoveNumber(InputView.inputMoveNumber());
+        return MoveNumberFactory.createMoveNumber(InputView.inputMoveNumber());
     }
 
     private void outputRaceResult(Cars cars, MoveNumber moveNumber) {

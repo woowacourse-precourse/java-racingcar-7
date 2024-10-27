@@ -4,30 +4,30 @@ import static racingcar.validation.Exceptions.DUPLICATED_CAR_NAME;
 import static racingcar.validation.Exceptions.INSUFFICIENT_CARS;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
 
-public class CarsValidator implements Validator<Cars>{
+public class CarsValidator implements Validator<List<Car>>{
     private static final int MIN_CARS_AMOUNT = 2;
 
     @Override
-    public void validate(Cars cars) {
+    public void validate(List<Car> cars) {
         validateNameDuplication(cars);
         validateCarsSize(cars);
     }
 
-    private void validateNameDuplication(Cars cars) {
+    private void validateNameDuplication(List<Car> cars) {
         Set<String> uniqueCarNames = new HashSet<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars) {
             if (!uniqueCarNames.add(car.getName())) {
                 throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMsg());
             }
         }
     }
 
-    private void validateCarsSize(Cars cars) {
-        if (cars.getCars().size() < MIN_CARS_AMOUNT) {
+    private void validateCarsSize(List<Car> cars) {
+        if (cars.size() < MIN_CARS_AMOUNT) {
             throw new IllegalArgumentException(INSUFFICIENT_CARS.getMsg());
         }
     }

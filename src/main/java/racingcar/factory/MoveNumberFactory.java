@@ -3,10 +3,15 @@ package racingcar.factory;
 import static racingcar.validation.Exceptions.MOVE_NUMBER_NOT_INTEGER;
 
 import racingcar.domain.MoveNumber;
+import racingcar.validation.MoveNumberValidator;
+import racingcar.validation.Validator;
 
-public class NumberFactory {
+public class MoveNumberFactory {
+    private static final Validator<Integer> validator = new MoveNumberValidator();
+
     public static MoveNumber createMoveNumber(String moveNumberInput) {
         int moveNumber = transferMoveNumberToInt(moveNumberInput);
+        validator.validate(moveNumber);
         return new MoveNumber(moveNumber);
     }
 

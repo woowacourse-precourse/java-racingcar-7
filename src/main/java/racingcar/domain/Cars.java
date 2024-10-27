@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.factory.ValidatorFactory;
-import racingcar.validation.Validator;
 import racingcar.view.Observer;
 
 public class Cars {
@@ -15,8 +13,6 @@ public class Cars {
     public Cars(List<Car> cars) {
         this.cars = cars;
         this.observers = new ArrayList<>();
-        Validator<Cars> validator = ValidatorFactory.createCarsValidator();
-        validator.validate(this);
     }
 
     public void registerObserver(Observer observer) {
