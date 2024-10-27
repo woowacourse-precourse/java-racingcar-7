@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GameUtilTest {
 
@@ -211,10 +212,43 @@ class GameUtilTest {
     @DisplayName("우승자 명단 리턴 함수가 기존 테스트 코드처럼 원하는 우승자 양식을 리턴해야함")
     void 우승자_함수_적용_테스트(List<CarVO> carList) {
         String winnerName = GameUtil.getWinnerName(carList);
-
         assertThat(winnerName).isEqualTo("최종 우승자 : woo, hong");
     }
 
+
+    @ParameterizedTest
+    @ValueSource(strings = {"4,", "4번", "4회", "4게임", "4 ", " 4 ", "4   3  ", "2   3  32 "})
+    @DisplayName("잘못된 값이 있으면 NumberFormatExcep이 발생해야함")
+    void 게임_횟수_입력값_유효성_테스트(String inputValue) {
+        assertThrows(NumberFormatException.class, () -> {
+            Integer.valueOf(inputValue);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"4 ", " 4 ", "4   3  ", "2   3  32 "})
+    @DisplayName("공백을 모두 지우고 붙이는 것으로 판단함")
+    void 공백값_지우기(String spaceVal) {
+        assertDoesNotThrow(() -> {
+            Integer result = Integer.valueOf(spaceVal.replace(" ", ""));
+            assertThat(result.toString()).doesNotContain(" ");
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"4 ", "1 3  2  4 ", " 23 ", "235"})
+    @DisplayName("게임 횟수 유효성 검사 및 공백제거 기능 최종 테스트")
+    void 게임_횟수_기능_최종_테스트(String turnNumber) {
+        assertDoesNotThrow(() -> {
+            String replaceNumber = turnNumber.replace(" ", "");
+
+            try {
+                Integer.valueOf(replaceNumber);
+            } catch (NumberFormatException numberFormatException) {
+                throw new IllegalArgumentException("숫자만 입력해야합니다!");
+            }
+        });
+    }
 
     // 매개변수 제공 메서드
     static Stream<Arguments> provideCarNamesAndExecuteNumbers() {
