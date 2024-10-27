@@ -19,4 +19,34 @@ public class RaceSystem {
         }
         this.raceTime = raceTime;
     }
+
+    public String startRace() {
+        StringBuilder result = new StringBuilder("실행 결과\n");
+
+        for (int i = 0; i < raceTime; i++) {
+            StringBuilder roundResult = startRound();
+            result.append(roundResult);
+            result.append('\n');
+        }
+
+        return result.toString();
+    }
+
+    private StringBuilder startRound() {
+        StringBuilder result = new StringBuilder();
+
+        for (Car car: cars) {
+            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            if(randomNumber >= MIN_MOVE_CONDITION) {
+                car.move();
+                String distance = "-".repeat(car.getDistance());
+                result.append(car.getName());
+                result.append(" : ");
+                result.append(distance);
+                result.append('\n');
+            }
+        }
+
+        return result;
+    }
 }
