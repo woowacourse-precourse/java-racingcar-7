@@ -8,7 +8,7 @@ public final class InputValidation {
     }
 
     public static void validateCarNames(String carNames) {
-        validate(carNames, ErrorMessage.CAR_NAME_NULL_OR_EMPTY.getMessage());
+        validate(carNames, ErrorMessage.CAR_NAME_REQUIRED.getMessage());
     }
 
     public static void validateDelimiter(String[] splitCarNames) {
@@ -18,7 +18,7 @@ public final class InputValidation {
     }
 
     public static void validateTryCount(String tryCount) {
-        validate(tryCount, ErrorMessage.TRY_COUNT_NULL_OR_EMPTY.getMessage());
+        validate(tryCount, ErrorMessage.TRY_COUNT_REQUIRED.getMessage());
     }
 
     private static void validate(String input, String exceptionMessage) {
