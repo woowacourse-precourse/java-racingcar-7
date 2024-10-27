@@ -21,7 +21,10 @@ public class OutputView {
         LinkedHashMap<String, Integer> state = round.getState();
 
         state.sequencedEntrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " : " + DISTANCE_SIGN.repeat(entry.getValue()));
+            String carName = entry.getKey();
+            String distance = DISTANCE_SIGN.repeat(entry.getValue());
+
+            System.out.println(carName + " : " + distance);
         });
 
         System.out.println();
