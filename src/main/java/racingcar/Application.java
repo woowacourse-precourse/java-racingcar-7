@@ -17,7 +17,7 @@ public class Application {
         CarFactory carFactory = new CarFactory();
         RacingCarService racingCarService = new RacingCarService();
 
-        CarController carController = new CarController(inputView, outputView, carFactory);
+        CarController carController = new CarController(inputView, carFactory);
         GameController gameController = new GameController(racingCarService, outputView);
         MainController mainController = new MainController(carController, gameController);
 

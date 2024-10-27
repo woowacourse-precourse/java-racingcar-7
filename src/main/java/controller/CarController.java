@@ -6,23 +6,19 @@ import model.Car;
 import util.ParsingUtil;
 import validator.carNameValidator;
 import view.InputView;
-import view.OutputView;
 
 public class CarController {
     private final InputView inputView;
-    private final OutputView outputView;
     private final CarFactory carFactory;
 
-    public CarController(InputView inputView, OutputView outputView, CarFactory carFactory) {
+    public CarController(InputView inputView, CarFactory carFactory) {
         this.inputView = inputView;
-        this.outputView = outputView;
         this.carFactory = carFactory;
     }
 
     public List<Car> getCarsFromUserInput() {
-        outputView.printGuide();
         String userInput = inputView.getCarNames();
-        List<String> carNames = ParsingUtil.CarNamesToList(userInput);
+        List<String> carNames = ParsingUtil.carNamesToList(userInput);
         carNameValidator.isValid(carNames); // 검증
 
         return createCars(carNames);
@@ -33,7 +29,6 @@ public class CarController {
     }
 
     public int getAttemptCount() {
-        outputView.printAttemptPrompt();
         return inputView.getAttemptCount();
     }
 }
