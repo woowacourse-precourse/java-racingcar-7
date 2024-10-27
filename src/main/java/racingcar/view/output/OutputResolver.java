@@ -20,7 +20,7 @@ final class OutputResolver {
 
         String winners = String.join(", ", response.winnerNames());
 
-        return null;
+        return buildFinalResult(roundResults, winners);
     }
 
     private static String formatRoundResult(RoundResultDTO roundResultDTO) {
@@ -34,5 +34,14 @@ final class OutputResolver {
                 carRoundStateDTO.name(),
                 NAME_MOVE_COUNT_SEPARATOR,
                 "-".repeat(carRoundStateDTO.moveCount()));
+    }
+
+    private static String buildFinalResult(String roundResults, String winners) {
+        return LINE_SEPARATOR + String.join(LINE_SEPARATOR,
+                RACE_RESULT_PREFIX,
+                roundResults,
+                "",
+                WINNER_MESSAGE_PREFIX + winners
+        );
     }
 }
