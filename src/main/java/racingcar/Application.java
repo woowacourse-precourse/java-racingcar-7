@@ -1,19 +1,28 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     static ArrayList<Integer> racingDistance = new ArrayList<>();
 
     public static void main(String[] args) {
-        race("AA,B,CCC", 5);
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        String inputCar = Console.readLine();
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String inputRacingCnt = Console.readLine();
+        race(inputCar, inputRacingCnt);
     }
 
-    public static void race(final String text, final int racingCnt) {
-        String[] name = text.split(",");
+    public static void race(final String textFirst, final String textSecond) {
+        String[] name = textFirst.split(",");
         // 이름은 5자 이하만 가능하게 해야 함
         final int numberOfCar = name.length;
+
+        // racintCnt가 정수 값인지 확인해야 함
+        int racingCnt = Integer.parseInt(textSecond);
 
         for (int i = 0; i < numberOfCar; i++) {
             racingDistance.add(0);
@@ -23,6 +32,8 @@ public class Application {
             moveCar(numberOfCar);
             viewRace(numberOfCar, name);
         }
+
+        viewWinner(numberOfCar, name);
     }
 
     public static void moveCar(final int numberOfCar) {
@@ -46,5 +57,17 @@ public class Application {
             System.out.print("\n");
         }
         System.out.print("\n");
+    }
+
+    public static void viewWinner(final int numberOfCar, final String[] name) {
+        int winnerDistance = Collections.max(racingDistance);
+
+        ArrayList<String> winner = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            if (racingDistance.get(i) == winnerDistance) {
+                winner.add(name[i]);
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(",", winner));
     }
 }
