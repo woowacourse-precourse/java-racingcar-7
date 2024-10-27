@@ -8,6 +8,12 @@ public class Validator {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
+    public void validatePositive(int count) {
+        if(count < 0) {
+            throw new IllegalArgumentException("입력값은 양수여야 합니다.");
+        }
+    }
+
     public void validateCarNames(List<String> carNames){
 
         validateDuplicates(carNames);

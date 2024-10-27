@@ -16,11 +16,15 @@ public class InputHandler {
     public int inputCount() {
         try {
             String input = getInput(COUNT_INPUT_MESSAGE);
-            return Integer.parseInt(input);
+            int count = Integer.parseInt(input);
+            validator.validatePositive(count);
+            return count;
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e.getMessage());
         }
     }
+
+
 
     public List<String> inputCarName() {
         String input = getInput(CAR_NAME_INPUT_MESSAGE);
