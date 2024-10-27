@@ -1,10 +1,10 @@
 package racingcar.domain;
 
 public class RacingCar {
-    private String name;
+    private RacingCarName racingCarName;
 
-    public RacingCar(String name){
-        this.name = name;
+    public RacingCar(final String racingCarName){
+        this.racingCarName = new RacingCarName(racingCarName);
     }
 }
 
