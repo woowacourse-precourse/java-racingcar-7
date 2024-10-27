@@ -20,6 +20,7 @@ public class GameManager {
     }
 
     private int readMovementNumber() {
+        outputView.printMovementNumberMessage();
         return inputView.readMovementNumber();
     }
 
@@ -32,7 +33,7 @@ public class GameManager {
     }
 
     private String[] readCarName() {
-        outputView.printReadCarNameMessage();
+        outputView.printCarNameMessage();
         return inputView.readCarName();
     }
 
