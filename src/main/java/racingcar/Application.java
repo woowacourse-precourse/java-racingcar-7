@@ -17,7 +17,7 @@ public class Application {
 
         for(int i=0;i<carCount;i++){
             if (carName[i].trim().length() > 5){
-                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");//5글자
+                throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
             }
             this.cars[i] = new Car(carName[i].trim());
         }
@@ -53,11 +53,26 @@ public class Application {
         System.out.println();
     }
 
+    void showWinner(){
+        String winner = "";
+        int maxGo = 0;
+        for (int i=0;i<carCount;i++) {
+            if (maxGo < this.cars[i].go) {
+                maxGo = this.cars[i].go;
+                winner = this.cars[i].name;
+            }
+            else if (maxGo == this.cars[i].go) {
+                winner = winner + ", " + this.cars[i].name;
+            }
+        }
+        System.out.println("최종 우승자 : " + winner);
+    }
 
     public void start(){
         inputCar();
         inputNum();
         playRacing();
+        showWinner();
     }
 
     public static void main(String[] args) {
