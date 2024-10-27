@@ -2,8 +2,6 @@ package racingcar.car;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-import racingcar.car.CarName;
 
 class CarTest {
 
@@ -25,7 +23,7 @@ class CarTest {
         //given
         CarName carName = new CarName("test");
         Car car = new Car(carName);
-        
+
         //when
         car.forward();
         final String output = car.toString();
