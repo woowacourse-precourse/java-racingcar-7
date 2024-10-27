@@ -1,14 +1,14 @@
 package racingcar.model.repository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import racingcar.model.domain.Car;
 
 public class RacingcarRepository {
 
-    private final Map<String, Car> cars = new HashMap<>();
+    private final Map<String, Car> cars = new LinkedHashMap<>();
 
     public Car save(Car car) {
         this.cars.put(car.getName(), car);
