@@ -9,8 +9,8 @@ public class CarGroup {
     private final List<Car> racingCarList;
 
     public CarGroup(String[] carList) {
-        if(carList==null){
-            throw new IllegalArgumentException(RacingCarExceptionMessage.CAR_NAME_CANNOT_BE_NULL.getText());
+        if (carList == null) {
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.CAR_NAME_CANNOT_BE_NULL);
         }
         List<Car> carGroup = new ArrayList<>();
         for (String carName : carList) {

@@ -35,9 +35,9 @@ public class RacingCarController {
 
     private void checkTryNumLength(String tryNum) {
         if (tryNum.isEmpty()) {
-            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.NO_TRY_NUM);
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.NO_TRY_NUM);
         } else if (tryNum.equals("0")) {
-            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.TRY_NUM_CANNOT_BE_ZERO);
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.TRY_NUM_CANNOT_BE_ZERO);
         }
     }
 

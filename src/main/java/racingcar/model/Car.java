@@ -16,10 +16,10 @@ public class Car {
 
     private void validateCarName(String carName) {
         if (carName.isEmpty()) {
-            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_LENGTH_CANNOT_BE_ZERO);
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.CAR_NAME_LENGTH_CANNOT_BE_ZERO);
         }
         if (carName.length() > 5) {
-            RacingCarExceptionHandler.getException(RacingCarExceptionMessage.CAR_NAME_CANNOT_EXCEED_FIVE);
+            RacingCarExceptionHandler.throwException(RacingCarExceptionMessage.CAR_NAME_CANNOT_EXCEED_FIVE);
         }
     }
 
