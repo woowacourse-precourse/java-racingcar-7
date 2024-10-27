@@ -4,10 +4,12 @@ public class Car {
 
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
+    private int location;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
+        this.location = 0;
     }
 
     private void validateName(String name) {
@@ -19,7 +21,16 @@ public class Car {
         }
     }
 
+    public void moveForward(int randomNumber) {
+        if (randomNumber >= 4) {
+            this.location += 1;
+        }
+    }
+
     public String getName() {
         return name;
+    }
+    public int getLocation() {
+        return location;
     }
 }

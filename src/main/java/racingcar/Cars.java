@@ -21,4 +21,14 @@ public class Cars {
             }
         }
     }
+
+    public void race(IntegerGenerator generator) {
+        for (Car car : this.cars) {
+            car.moveForward(generator.generate());
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
