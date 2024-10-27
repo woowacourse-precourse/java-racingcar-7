@@ -33,6 +33,7 @@ public class Application {
         System.out.println("실행 결과");
         for(int j=0;j<attempt;j++){
             actionPerAttempt();
+            printScorePerAttempt();
         }
     }
 
@@ -44,6 +45,14 @@ public class Application {
             }
         }
     }
+
+    void printScorePerAttempt(){
+        for(int i=0;i<carCount;i++){
+            System.out.println(cars[i].name + " : " + "-".repeat(cars[i].go));
+        }
+        System.out.println();
+    }
+
 
     public void start(){
         inputCar();
