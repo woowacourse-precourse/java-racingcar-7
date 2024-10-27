@@ -15,7 +15,7 @@ public class CarPosition {
         this.position = START_POSITION;
     }
 
-    public void increase() {
+    public void increasePositionOnCondition() {
         if (RandomNumberGenerator.pickNumberInRange() >= MINIMUM_NUMBER) {
             position++;
         }

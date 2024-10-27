@@ -13,7 +13,7 @@ public class Car {
     }
 
     public void move() {
-        position.increase();
+        position.increasePositionOnCondition();
     }
 
     public boolean isPositionGreaterThan(Car otherCar) {
