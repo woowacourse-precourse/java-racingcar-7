@@ -15,4 +15,8 @@ public class Car {
     public int getMovedDistance() {
         return movedDistance;
     }
+
+    public String getName() {
+        return name;
+    }
 }
