@@ -25,4 +25,14 @@ public class Cars {
             throw new IllegalArgumentException("중복된 이름이 존재합니다.");
         }
     }
+
+    public int findMaxPosition(List<Car> cars) {
+        int maximum = 0;
+        for (Car car : cars) {
+            if (car.getCurLocation().length() > maximum) {
+                maximum = car.getCurLocation().length();
+            }
+        }
+        return maximum;
+    }
 }
