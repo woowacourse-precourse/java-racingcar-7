@@ -13,6 +13,12 @@ public class InputValidator {
         return input;
     }
 
+    public void checkPrecondition(String input) {
+        if (input.trim().endsWith(",")) {
+            throw new RacingcarException(BLANK_VALUE);
+        }
+    }
+
     public int checkInteger(String input) {
         try {
             return Integer.parseInt(input);
@@ -28,7 +34,7 @@ public class InputValidator {
     }
 
     public void checkBlank(String input) {
-        if (input.isBlank()) {
+        if (input == null || input.isBlank() || input.isEmpty()) {
             throw new RacingcarException(BLANK_VALUE);
         }
     }
