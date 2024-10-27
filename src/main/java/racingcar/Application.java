@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,6 +28,22 @@ public class Application {
 
             cars.put(carName, 0);
         }
+
+        System.out.println("\n실행 결과");
+
+        race(gameRoundInput, cars);
+
+        List<String> winners = new ArrayList<>();
+        for (String car : cars.keySet()) {
+            int maxDistance = Collections.max(cars.values());
+            int distance = cars.get(car);
+
+            if (distance >= maxDistance) {
+                winners.add(car);
+            }
+        }
+
+        System.out.println("최종 우승자 : " + java.lang.String.join(", ", winners));
     }
 
     public static final String MOVE_SYMBOL = "-";
