@@ -1,12 +1,11 @@
 package racingcar.component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     private final int round;
     private final List<Car> cars;
-    private final List<Car> winners;
 
     public static Game create(int round, List<Car> cars) {
         return new Game(round, cars);
@@ -15,7 +14,6 @@ public class Game {
     private Game(int round, List<Car> cars) {
         this.round = round;
         this.cars = cars;
-        this.winners = new ArrayList<>();
     }
 
     public void start() {
@@ -26,8 +24,8 @@ public class Game {
             printRound();
         }
 
-        selectWinners();
-        printWinners();
+        List<Car> winners = findWinners();
+        printWinners(winners);
     }
 
     private void processRound() {
@@ -39,24 +37,23 @@ public class Game {
         System.out.println();
     }
 
-    private void selectWinners() {
-        int maxPosition = findMaxPosition();
-        cars.stream()
-                .filter(car -> car.checkWinner(maxPosition))
-                .forEach(winners::add);
+    private List<Car> findWinners() {
+        Car firstCar = findFirstCar();
+        return cars.stream()
+                .filter(car -> car.isSamePosition(firstCar))
+                .toList();
     }
 
-    private int findMaxPosition() {
+    private Car findFirstCar() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
+                .max(Car::compareTo)
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private void printWinners() {
-        String names = String.join(", ", winners.stream()
-                .map(Car::getName)
-                .toList());
+    private void printWinners(List<Car> winners) {
+        String names = winners.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining(", "));
 
         System.out.print("최종 우승자 : " + names);
     }

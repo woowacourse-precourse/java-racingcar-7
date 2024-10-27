@@ -4,10 +4,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private final String name;
-
     private int position;
+
+    @Override
+    public int compareTo(Car other) {
+        return this.position - other.position;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
     private Car(String name) {
         this.name = name;
@@ -34,19 +43,11 @@ public class Car {
         position++;
     }
 
-    public boolean checkWinner(int maxPosition) {
-        return position == maxPosition;
+    public boolean isSamePosition(Car other) {
+        return position == other.position;
     }
 
     public void printPosition() {
         System.out.println(name + " : " + "-".repeat(position));
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }
