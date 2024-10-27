@@ -13,4 +13,9 @@ public class InputView {
         return Console.readLine();
     }
 
+    public String[] seperatePlayers(String players) {
+        return players.split(",");
+    }
+
+
 }
