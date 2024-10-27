@@ -11,4 +11,6 @@ public class Constants {
     public static final String CAR_NAME_REGEX = "^[a-zA-Z가-힣]+$";
 
     public static final String COUNT_INPUT_PROMPT = "시도할 횟수는 몇 회인가요?";
+    public static final String COUNT_CONTAIN_SPACE_ERROR_MESSAGE = "시도할 횟수에 공백이 들어갈 수 없습니다.";
+
 }

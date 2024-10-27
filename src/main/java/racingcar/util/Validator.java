@@ -49,4 +49,10 @@ public class Validator {
             }
         }
     }
+
+    public void validateCountContainsSpace(String count) {
+        if (count.contains(" ")) {
+            throw new IllegalArgumentException(Constants.COUNT_CONTAIN_SPACE_ERROR_MESSAGE);
+        }
+    }
 }
