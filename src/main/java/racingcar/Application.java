@@ -1,7 +1,5 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +11,15 @@ public class Application {
 
         List<Car> carList = new ArrayList<>(); // Car 객체를 입력 받는 List
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
         carNameList = inputView.createCar();
 
-        for (String s: carNameList) {
-            carList.add(new Car(s));
+        for (String name: carNameList) {
+            carList.add(new Car(name));
         }
         tryCount = inputView.tryCount();
 
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        n = Integer.parseInt(Console.readLine());
+        outputView.startGame(carList, tryCount);
     }
 }
