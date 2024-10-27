@@ -16,7 +16,7 @@ public class CarNames {
 
     public static CarNames from(String input) {
         validateInputBlank(input);
-        String[] names = splitCarName(input);
+        String[] names = getNames(input);
         for (String name : names) {
             validateNameBlank(name);
             validateNameTooLong(name);
@@ -50,7 +50,7 @@ public class CarNames {
         }
     }
 
-    private static String[] splitCarName(String input) {
+    private static String[] getNames(String input) {
         String[] names = input.split(Constant.DELIMITER);
         Arrays.setAll(names, i -> names[i].trim());
         return names;
