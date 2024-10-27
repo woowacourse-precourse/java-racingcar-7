@@ -2,6 +2,8 @@ package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.close;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.config.GameErrorMessage.EMPTY_NAME_MESSAGE;
 import static racingcar.view.InputView.getCarNames;
 
 import java.io.ByteArrayInputStream;
@@ -27,6 +29,26 @@ class InputViewTest {
         String[] actualResult = getCarNames();
 
         assertThat(actualResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void 구분자_연속_입력() {
+        String testString = "car,,car";
+        System.setIn(generateUserInput(testString));
+
+        assertThatThrownBy(InputView::getCarNames)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_NAME_MESSAGE);
+    }
+
+    @Test
+    void 공백_이름_입력() {
+        String testString = "car, ,car1";
+        System.setIn(generateUserInput(testString));
+
+        assertThatThrownBy(InputView::getCarNames)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(EMPTY_NAME_MESSAGE);
     }
 
 }

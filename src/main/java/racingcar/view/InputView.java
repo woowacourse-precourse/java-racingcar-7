@@ -1,9 +1,10 @@
 package racingcar.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static racingcar.config.GameConstant.CAR_NAME_DELIMITER;
+import static racingcar.validator.CarNameValidator.validateCarName;
 
 public class InputView {
-    private static final String CAR_NAME_DELIMITER = ",";
 
     private InputView() {
         throw new IllegalStateException("View Class");
@@ -11,7 +12,9 @@ public class InputView {
 
     public static String[] getCarNames() {
         String names = getUserInput();
-        return names.split(CAR_NAME_DELIMITER);
+        String[] splitCarNames = names.split(CAR_NAME_DELIMITER);
+        validateCarName(splitCarNames);
+        return splitCarNames;
     }
 
     public static int getAttempts() {
