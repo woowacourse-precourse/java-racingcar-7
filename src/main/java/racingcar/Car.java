@@ -27,6 +27,10 @@ public class Car implements Comparable<Car> {
         return distance;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void execute(final int command) {
         if (command >= 4) {
             this.distance++;
