@@ -2,7 +2,7 @@ package racingcar;
 
 
 import controller.RacingGameController;
-import service.RaceService;
+import service.RacingGameService;
 import util.randomnumber.RandomNumberHandler;
 import util.splitter.CarNameSplitter;
 import view.InputView;
@@ -18,7 +18,7 @@ public class Application {
         CarNameSplitter carNameSplitter = new CarNameSplitter(inputValidator);
         RandomNumberHandler randomNumberHandler = new RandomNumberHandler();
 
-        RaceService raceService = new RaceService(randomNumberHandler, outputView);
+        RacingGameService raceService = new RacingGameService(randomNumberHandler, outputView);
         RacingGameController controller = new RacingGameController(inputView, outputView, carNameSplitter, raceService);
         controller.startGame();
 

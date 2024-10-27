@@ -8,11 +8,11 @@ import view.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RaceService {
+public class RacingGameService {
     private final RandomNumberHandler randomNumberHandler;
     private final OutputView outputView;
 
-    public RaceService(RandomNumberHandler randomNumberHandler, OutputView outputView) {
+    public RacingGameService(RandomNumberHandler randomNumberHandler, OutputView outputView) {
         this.randomNumberHandler = randomNumberHandler;
         this.outputView = outputView;
     }

@@ -2,7 +2,7 @@ package controller;
 
 import model.Car;
 import model.Cars;
-import service.RaceService;
+import service.RacingGameService;
 import util.splitter.CarNameSplitter;
 import view.InputView;
 import view.OutputView;
@@ -14,9 +14,9 @@ public class RacingGameController {
     private final InputView inputView;
     private final OutputView outputView;
     private final CarNameSplitter carNameSplitter;
-    private final RaceService raceService;
+    private final RacingGameService raceService;
 
-    public RacingGameController(InputView inputView, OutputView outputView, CarNameSplitter carNameSplitter, RaceService raceService) {
+    public RacingGameController(InputView inputView, OutputView outputView, CarNameSplitter carNameSplitter, RacingGameService raceService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.carNameSplitter = carNameSplitter;
