@@ -8,19 +8,39 @@ public class DataParser {
     public static List<RacingCar> parseName(String input) {
         List<String> list = Arrays.asList(input.split(","));
 
-        isNonEmpty(list);
-        checkLenght(list);
-        isAlphaNumeric(list);
+        for (int i = 0; i < list.size(); i++) {
+            isNonEmpty(list.get(i));
+            list.set(i, list.get(i).trim());
+            checkLenght(list.get(i));
+            isAlphaNumeric(list.get(i));
+        }
         return createRacingCar(list);
     }
 
-    public static int parseCount(String tryCount) {
-        for (char c : tryCount.toCharArray()) {
-            if (!Character.isDigit(c)) {
+    private static void isNonEmpty(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkLenght(String input) {
+        final int MAX_LENGHT = 5;
+
+        if (input.length() > MAX_LENGHT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isAlphaNumeric(String input) {
+        isLetterOrDigit(input);
+    }
+
+    private static void isLetterOrDigit(String input) {
+        for (char c : input.toCharArray()) {
+            if (!(Character.isLetter(c) || Character.isDigit(c))) {
                 throw new IllegalArgumentException();
             }
         }
-        return Integer.parseInt(tryCount);
     }
 
     private static List<RacingCar> createRacingCar(List<String> list) {
@@ -32,38 +52,12 @@ public class DataParser {
         return racingCarList;
     }
 
-    private static void isAlphaNumeric(List<String> list) {
-        for (String input : list) {
-            isLetterOrDigit(input);
-        }
-    }
-
-    private static void isLetterOrDigit(String input) {
-        for (char c : input.toCharArray()) {
-            if (!(Character.isLetter(c) || Character.isDigit(c))) {
+    public static int parseCount(String tryCount) {
+        for (char c : tryCount.toCharArray()) {
+            if (!Character.isDigit(c)) {
                 throw new IllegalArgumentException();
             }
         }
+        return Integer.parseInt(tryCount);
     }
-
-    private static void checkLenght(List<String> list) {
-        final int MAX_LENGHT = 5;
-
-        for (String s : list) {
-            if (s.length() > MAX_LENGHT) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private static void isNonEmpty(List<String> list) {
-
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).isBlank()) {
-                throw new IllegalArgumentException();
-            }
-            list.set(i, list.get(i).trim());
-        }
-    }
-
 }
