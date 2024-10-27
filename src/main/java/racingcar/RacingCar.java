@@ -6,17 +6,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class RacingCar{
-    private String[] carNames;
-    private HashMap<String, Integer> record;
+    private String carNames;
+    private HashMap<String, Integer> record = new HashMap<>();
     private int numOfTrial;
+    private InputReader inputReader;
 
-    public void readUserInput(){
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNamesInput = camp.nextstep.edu.missionutils.Console.readLine();
-        carNames = carNamesInput.split(",");
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String stringUserInput = camp.nextstep.edu.missionutils.Console.readLine();
-        numOfTrial = Integer.parseInt(stringUserInput);
+    public RacingCar(InputReader inputReader){
+        this.inputReader = inputReader;
     }
 
     public void race(){
@@ -39,7 +35,7 @@ public class RacingCar{
         Optional<Integer> longestMovement = record.values().stream().max(Integer::compareTo);
         ArrayList<String> winner = new ArrayList<>();
         for(String car : carNames){
-            if(record.get(car).equals(longestMovement)){
+            if(record.get(car).equals(longestMovement.get())){
                 winner.add(car);
             }
         }
