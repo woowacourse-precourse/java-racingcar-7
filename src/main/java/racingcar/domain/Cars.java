@@ -14,4 +14,11 @@ public class Cars {
 	public void moveEachCars() {
 		cars.forEach(car -> car.move(RandomNumberPicker.pickNumber()));
 	}
+
+	private int getMaxDistance() {
+		return cars.stream()
+			.mapToInt(Car::getDistance)
+			.max()
+			.orElse(0);
+	}
 }
