@@ -41,16 +41,24 @@ public class InputView {
     }
 
     private static void validateTryCount(final int input) {
-        if (input == ZERO) {
+        if (input <= ZERO) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
         }
     }
 
     private static int convertStringToInt(final String input) {
         try {
-            return Integer.parseInt(input);
+            long value = Long.parseLong(input);
+            checkOutOfIntegerRange(value);
+            return (int) value;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT.getMessage());
+        }
+    }
+
+    private static void checkOutOfIntegerRange(final long input) {
+        if (input > Integer.MAX_VALUE || input < Integer.MIN_VALUE) {
+            throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE.getMessage());
         }
     }
 }
