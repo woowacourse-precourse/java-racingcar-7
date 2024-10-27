@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 
-class InputReaderTest {
+class InputStringReaderTest {
 
     private void command(String... args) {
         byte[] buf = String.join("\n", args).getBytes();
@@ -18,13 +18,12 @@ class InputReaderTest {
     public void 자동차_이름을_순서대로_읽을_수_있다() throws Exception {
         //given
         command("pobi,woni,jun");
-        InputReader inputReader = new InputReader();
+        InputStringReader inputStringReader = new InputStringReader();
 
         //when
-        List<Car> cars = inputReader.readCarNames();
+        String rawCarNames = inputStringReader.readCarNames();
 
         //then
-        assertThat(cars).map(Car::getName)
-            .containsExactly("pobi", "woni", "jun");
+        assertThat(rawCarNames).contains("pobi", "woni", "jun");
     }
 }
