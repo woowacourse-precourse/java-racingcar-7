@@ -16,8 +16,4 @@ public enum OutputMessage {
     public String getMessage() {
         return message;
     }
-
-    public static String repeatDash(int range) {
-        return "-".repeat(range);
-    }
 }
