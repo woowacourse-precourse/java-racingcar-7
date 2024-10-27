@@ -25,7 +25,7 @@ public class ConsoleInputView extends InputView {
         try {
             input = Console.readLine();
         } catch (NoSuchElementException e) {
-            throw new IllegalArgumentException("입력이 null일 수 없습니다.");
+            throw new IllegalArgumentException("입력이 null일 수 없습니다.", e);
         }
         return input;
     }

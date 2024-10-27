@@ -9,17 +9,19 @@ import racingcar.controller.strategy.MoveStrategy;
 public class Race implements Iterator<List<Car>> {
 
     private final List<Car> cars;
+    private final MoveStrategy moveStrategy;
     private final Lap lap;
 
     public Race(final String carNames, final MoveStrategy moveStrategy, final String numberOfAttempts) {
-        this.cars = parseAndValidateCarNames(carNames, moveStrategy);
+        this.cars = parseAndValidateCarNames(carNames);
+        this.moveStrategy = moveStrategy;
         this.lap = new Lap(numberOfAttempts);
     }
 
-    private List<Car> parseAndValidateCarNames(final String carNames, final MoveStrategy moveStrategy) {
+    private List<Car> parseAndValidateCarNames(final String carNames) {
         final List<String> names = parseCarNames(carNames);
         return names.stream()
-                .map(name -> new Car(name, moveStrategy, 0))
+                .map(name -> new Car(name, 0))
                 .toList();
     }
 
@@ -44,9 +46,17 @@ public class Race implements Iterator<List<Car>> {
             throw new IllegalStateException("더 이상 시도할 수 없습니다.");
         }
 
-        cars.forEach(Car::attemptMove);
+        this.attemptMove();
         lap.proceed();
         return List.copyOf(cars);
+    }
+
+    private void attemptMove() {
+        cars.forEach(car -> {
+            if (moveStrategy.isMovable()) {
+                car.move();
+            }
+        });
     }
 
     public List<Car> finish() {

@@ -1,16 +1,12 @@
 package racingcar.model;
 
-import racingcar.controller.strategy.MoveStrategy;
-
 public class Car {
 
     private final Name name;
-    private final MoveStrategy moveStrategy;
     private int position;
 
-    public Car(final String name, final MoveStrategy moveStrategy, final int position) {
+    public Car(final String name, final int position) {
         this.name = new Name(name);
-        this.moveStrategy = moveStrategy;
         validateSize(position);
         this.position = position;
     }
@@ -21,13 +17,7 @@ public class Car {
         }
     }
 
-    public void attemptMove() {
-        if (moveStrategy.isMovable()) {
-            this.move();
-        }
-    }
-
-    private void move() {
+    public void move() {
         this.position += 1;
     }
 
