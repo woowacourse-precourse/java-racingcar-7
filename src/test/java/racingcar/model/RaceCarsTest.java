@@ -32,7 +32,8 @@ class RaceCarsTest {
         List<Car> cars = Arrays.asList(car);
         //when, then
         Assertions.assertThatThrownBy(() -> new RaceCars(cars))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.INVALID_RACINGCAR_NUMBER.getMessage());
     }
 
     @Test
