@@ -55,6 +55,9 @@ pobi,pobi
 4
 ```
 
+## 순서도
+![flowchart.png](flowchart.png)
+
 ## 프로젝트 구조
 ```text
 │
