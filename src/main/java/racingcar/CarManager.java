@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarManager {
@@ -14,7 +15,7 @@ public class CarManager {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public void goAllCars() {
@@ -42,6 +43,6 @@ public class CarManager {
                 result.add(car);
         }
 
-        return result;
+        return Collections.unmodifiableList(result);
     }
 }
