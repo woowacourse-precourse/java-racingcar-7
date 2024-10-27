@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +41,52 @@ public class GameServiceTest {
         //then
         assertThat(winner).isEqualTo("pobi,woni");
 
+    }
+
+    @Test
+    void 이름_공백_예외처리() {
+
+        //given
+        String invalidInput = "";
+
+        //when & then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.setCarsNames(invalidInput);
+        });
+    }
+
+    @Test
+    void 전진횟수_공백_입력_예외처리() {
+        //given
+        String invalidInput = "";
+
+        //when&then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.setNumberOfRounds(invalidInput);
+        });
+    }
+
+    @Test
+    void 이름_null_예외처리() {
+
+        //given
+        String invalidInput = null;
+
+        //when & then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.setCarsNames(invalidInput);
+        });
+    }
+
+    @Test
+    void 전진횟수_null_예외처리() {
+        //given
+        String invalidInput = null;
+
+        //when&then
+        assertThrows(IllegalArgumentException.class, () -> {
+            gameService.setNumberOfRounds(invalidInput);
+        });
     }
 
 
