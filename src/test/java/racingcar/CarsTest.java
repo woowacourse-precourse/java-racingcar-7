@@ -13,9 +13,7 @@ class CarsTest {
     @Test
     void 자동차들_이동_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            String carName = "pobi,woni";
-            CarNames carNames = new CarNames(carName);
-            Cars cars = new Cars(carNames.createCars());
+            Cars cars = createGivenCars();
 
             List<Car> racingCars = cars.moveCars();
 
@@ -26,9 +24,7 @@ class CarsTest {
     @Test
     void 자동차들_횟수_많은_이동_테스트() {
         assertRandomNumberInRangeTest(() -> {
-            String carName = "pobi,woni";
-            CarNames carNames = new CarNames(carName);
-            Cars cars = new Cars(carNames.createCars());
+            Cars cars = createGivenCars();
 
             cars.moveCars();
             cars.moveCars();
@@ -36,6 +32,12 @@ class CarsTest {
 
             assertCarsAtPositions(racingCars, 3, 1);
         }, MOVING_FORWARD, STOP, MOVING_FORWARD, STOP, MOVING_FORWARD, MOVING_FORWARD);
+    }
+
+    private Cars createGivenCars() {
+        String carName = "pobi,woni";
+        CarNames carNames = new CarNames(carName);
+        return new Cars(carNames.createCars());
     }
 
     private void assertCarsAtPositions(List<Car> racingCars, int firstCarGivenPosition, int secondCarGivenPosition) {
