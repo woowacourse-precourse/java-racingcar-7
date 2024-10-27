@@ -1,2 +1,4 @@
-package racingcar.io;public class WoowaUserInput {
+package racingcar.io;
+
+public class WoowaUserInput implements UserInputHandler{
 }
