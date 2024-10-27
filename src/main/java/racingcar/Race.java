@@ -10,6 +10,10 @@ public class Race {
         this.racingCars = racingCars;
     }
 
+    /**
+     * 시도 횟수를 입력으로 받아서 전진 조건에 맞추어서 시도 횟수만큼 반복하여 차를 움직이는 메소드
+     * @param inputMoves 시도 횟수
+     */
     public void startRace(int inputMoves) {
         System.out.println("실행 결과");
         for (int i = 0; i < inputMoves; i++) {
