@@ -13,6 +13,6 @@ public enum ErrorMessage {
     }
 
     public String print() {
-        return message;
+        return message; // 메시지 반환
     }
 }

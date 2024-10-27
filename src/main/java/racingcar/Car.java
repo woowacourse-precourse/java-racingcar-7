@@ -1,22 +1,17 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import view.ErrorMessage;
 
 public class Car {
-    private int position = 0;
-    private final CarList carList = new CarList();
-    private TryNumber tryNumber; // TryNumber 필드 추가
+    private String name; // 자동차 이름
+    private int position = 0; // 자동차의 현재 위치
+    private int tryNumber; // 시도 횟수
 
-    public void addCar(String carNames) {
-        for (String carName : carNames.split(",")) {
-            carList.add(carName);
+    public Car(String name) {
+        if (name.length() < 1 || name.length() > 5) { // 이름 길이 검사
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_OVER_SIZE_ERROR.print()); // 유효성 검사 실패 시 예외 발생
         }
-    }
-
-    public void selectMoveOrStop() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            move();
-        }
+        this.name = name;
     }
 
     public void move() {
@@ -27,9 +22,15 @@ public class Car {
         return position;
     }
 
-    // setTryNumber 메서드 추가
-    public void setTryNumber(String tryNumberValue) {
-        this.tryNumber = new TryNumber();
-        this.tryNumber.setTryNumber(tryNumberValue);
+    public String getName() {
+        return name; // 자동차 이름 getter
+    }
+
+    public void setTryNumber(int tryNumberValue) {
+        this.tryNumber = tryNumberValue; // 시도 횟수 설정
+    }
+
+    public int getTryNumber() {
+        return tryNumber; // 시도 횟수 getter
     }
 }
