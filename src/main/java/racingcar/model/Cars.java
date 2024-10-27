@@ -20,17 +20,38 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String inputCarNames) {
-        String inputNames = Objects.requireNonNullElse(inputCarNames, "").trim();
+        String inputNames = prepareInputNames(inputCarNames);
         validateUnprovidedNames(inputNames);
 
-        List<String> names = Arrays.stream(inputNames.split(NAME_DELIMITER))
-                .map(String::trim)
-                .collect(Collectors.toList());
+        List<String> names = extractNames(inputNames);
         validateDuplicatedNames(names);
 
         this.cars = names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    private String prepareInputNames(String inputCarNames) {
+        return Objects.requireNonNullElse(inputCarNames, "").trim();
+    }
+
+    private List<String> extractNames(String inputNames) {
+        return Arrays.stream(inputNames.split(NAME_DELIMITER))
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
+
+    private void validateUnprovidedNames(String names) {
+        if (names.isBlank()) {
+            throw new InvalidInputException(UNPROVIDED_NAMES);
+        }
+    }
+
+    private void validateDuplicatedNames(List<String> names) {
+        Set<String> nameSet = new HashSet<>(names);
+        if (nameSet.size() != names.size()) {
+            throw new InvalidInputException(DUPLICATED_NAMES);
+        }
     }
 
     public void race() {
@@ -48,18 +69,5 @@ public class Cars {
 
     public Winners getWinners() {
         return new Winners(cars);
-    }
-
-    private void validateUnprovidedNames(final String names) {
-        if (names.isBlank()) {
-            throw new InvalidInputException(UNPROVIDED_NAMES);
-        }
-    }
-
-    private void validateDuplicatedNames(List<String> names) {
-        Set<String> nameSet = new HashSet<>(names);
-        if (nameSet.size() != names.size()) {
-            throw new InvalidInputException(DUPLICATED_NAMES);
-        }
     }
 }
