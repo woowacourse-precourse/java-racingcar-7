@@ -21,8 +21,8 @@ public class Car {
     }
 
     public void setPosition() {
-        int randomNum = Randoms.pickNumberInRange(0,9);
-        if (randomNum > 4) {
+        int randomNumber = Randoms.pickNumberInRange(0,9);
+        if (randomNumber > 4) {
             this.position = position + 1;
         }
     }
