@@ -7,11 +7,6 @@ public class RandomNumbers {
     private final List<Integer> numbers;
     private int position;
 
-    private RandomNumbers(List<Integer> numbers) {
-        this.numbers = new ArrayList<>(numbers);
-        this.position = -1;
-    }
-
     public int getNextNumber() {
         position++;
         return numbers.get(position);
@@ -19,6 +14,11 @@ public class RandomNumbers {
 
     public int size() {
         return numbers.size();
+    }
+
+    private RandomNumbers(List<Integer> numbers) {
+        this.numbers = new ArrayList<>(numbers);
+        this.position = -1;
     }
 
     public static RandomNumbers create(List<Integer> numbers) {
