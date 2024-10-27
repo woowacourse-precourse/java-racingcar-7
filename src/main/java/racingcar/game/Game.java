@@ -42,6 +42,13 @@ public class Game {
     }
 
     private void findWinner() {
+        int maxLocation = findMaxLocation();
+
+        racingCars.forEach(car -> {
+            if (car.getLocation() == maxLocation) {
+                winnerCars.add(car);
+            }
+        });
     }
 
     private int findMaxLocation() {
