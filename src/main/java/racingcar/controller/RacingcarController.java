@@ -53,7 +53,6 @@ public class RacingcarController {
         validator.validateDuplicateName(carNameList);
         validator.validateNameCharacters(carNameList);
         validator.validateContainSpaceName(carNameList);
-        validator.validateNameCharacters(carNameList);
 
         return carNameList;
     }
