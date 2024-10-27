@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class RacingInputView {
     private static final String MESSAGE_CAR_NAMES_INPUT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -14,11 +15,11 @@ public class RacingInputView {
         }
     }
 
-    public String getCarNamesInput() {
+    public List<String> getCarNames() {
         System.out.println(MESSAGE_CAR_NAMES_INPUT);
         String Input = Console.readLine().strip();
         validateBlankInput(Input);
-        return Input;
+        return List.of(Input.split(","));
     }
 
     private boolean isInteger(String input) {

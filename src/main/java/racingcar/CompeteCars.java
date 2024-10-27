@@ -13,8 +13,8 @@ public class CompeteCars {
         }
     }
 
-    public CompeteCars(String Input) {
-        for (String carName : Input.split(",")) {
+    public CompeteCars(List<String> carNames) {
+        for (String carName : carNames) {
             Car car = new Car(carName);
             validateDuplicatedCar(car);
             cars.add(car);

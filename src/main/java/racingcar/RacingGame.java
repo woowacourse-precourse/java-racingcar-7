@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingGame {
     private final RacingInputView inputView;
     private final RacingOutputView outputView;
@@ -10,8 +12,8 @@ public class RacingGame {
     }
 
     private CompeteCars makeCompeteCars() {
-        String carNamesInput = inputView.getCarNamesInput();
-        return new CompeteCars(carNamesInput);
+        List<String> carNames = inputView.getCarNames();
+        return new CompeteCars(carNames);
     }
 
     private Round setRound(CompeteCars competeCars) {
