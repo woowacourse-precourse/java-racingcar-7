@@ -27,6 +27,12 @@ public class ScoreBoard {
         return car.getName() + " : " + car.toScoreSymbol();
     }
 
+    public String returnFinalResult() {
+        int topScore = getTopScore();
+        List<String> winnerList = getWinner(topScore);
+        return createFinalForm(winnerList);
+    }
+
     private String createFinalForm(List<String> winnerList) {
         String finalWinner = String.join(", ", winnerList);
         return FINAL_WINNER.getMessage() + finalWinner;
