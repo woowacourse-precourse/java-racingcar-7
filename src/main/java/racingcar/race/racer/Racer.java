@@ -2,19 +2,19 @@ package racingcar.race.racer;
 
 public abstract class Racer {
     private final String name;
-    private String distance = "";
+    protected String distance = "";
 
     public Racer(String name) {
         this.name = name;
     }
 
-    public void tryMove() {
-        if (canMove()) {
-            distance += "-";
-        }
-    }
+    public abstract void tryMove(boolean canMove);
 
     public abstract boolean canMove();
+
+    protected void setDistance(String distance) {
+        this.distance = distance;
+    }
 
     public String getDistance() {
         return distance;
