@@ -8,6 +8,8 @@ public class Car {
     private final String name;
     private int position;
 
+    private final static String STICK = "-";
+
     public Car(String name) {
         CarNameValidator.validate(name);
         this.name = name;
@@ -29,6 +31,12 @@ public class Car {
     // 테스트시 tearDown을 위한 메서드
     public void clearPosition(){
         this.position = 0;
+    }
+
+    @Override
+    public String toString() {
+        String progress = STICK.repeat(position);
+        return name + " : " + progress;
     }
 
     @Override

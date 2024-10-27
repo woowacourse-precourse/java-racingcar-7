@@ -21,12 +21,15 @@ public class RunManager {
         printNameInputMessage();
         final String inputNames = inputManager.inputCarName();
 
-        Set<Car> cars = CarFactory.createCars(inputNames);
+        final Set<Car> cars = CarFactory.createCars(inputNames);
 
         printNumberInputMessage();
         int number = inputManager.inputAttemptNumber();
 
         racingManager.racingStart(cars, number);
+
+
+
     }
 
     private void printNumberInputMessage() {
