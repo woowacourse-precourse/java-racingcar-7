@@ -55,7 +55,7 @@ public class Application {
                 System.out.print(list[i].racer_name);
                 check = false;
             }else if(len == max) {
-                System.out.print(","+list[i].racer_name);
+                System.out.print(", "+list[i].racer_name);
             }
         }
     }
