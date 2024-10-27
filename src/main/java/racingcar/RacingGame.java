@@ -7,12 +7,14 @@ import racingcar.provider.RandomNumberProvider;
 
 public class RacingGame {
 
+    private static final int MOVING_DISTANCE_EACH_TRIAL = 1;
+
     private final NumberProvider numberProvider = new RandomNumberProvider();
 
-    public void forwardCars(List<Car> cars) {
+    public void tryMoveForward(List<Car> cars) {
         for (Car car : cars) {
-            int randomNumber = numberProvider.getNumber();
-            car.forward(randomNumber);
+            int value = numberProvider.getNumber();
+            car.tryMoveForward(value, MOVING_DISTANCE_EACH_TRIAL);
         }
     }
 

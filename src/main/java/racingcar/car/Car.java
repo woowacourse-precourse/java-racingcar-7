@@ -24,13 +24,12 @@ public class Car {
         return position;
     }
 
-    public void forward(int positionDelta) {
-
-        if (canMove(positionDelta)) {
+    public void tryMoveForward(int value, int positionDelta) {
+        if (canMove(value)) {
             position += positionDelta;
         }
-
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -48,9 +47,8 @@ public class Car {
         return Objects.hashCode(name);
     }
 
-    private boolean canMove(int positionDelta) {
-        return positionDelta >= MOVING_CRITERION;
+    private boolean canMove(int value) {
+        return value >= MOVING_CRITERION;
     }
-
 
 }
