@@ -31,6 +31,34 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    // 테스트 추가
+    @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "jun : ", "최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 경계값_테스트_이름길이() {
+        assertSimpleTest(() ->
+                run("pobi,woni,abcd5", "1") // 자동차 이름이 정확히 5자
+        );
+        assertThat(output()).doesNotContain("자동차 이름은 1자 이상 5자 이하로 입력해 주세요.");
+    }
+
+    @Test
+    void 라운드수_경계값_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0")) // 라운드 수가 0일 때
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
