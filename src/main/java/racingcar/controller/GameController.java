@@ -18,7 +18,7 @@ public class GameController {
         GameService gameService = new GameService(input.getCars());
         for (int i = 0; i < input.getGameCount(); i++) {
             List<RacingCar> gamePerResult = gameService.game();
-            outputView.game(gamePerResult);
+            outputView.game(gamePerResult, i);
         }
 
         List<String> winner = gameService.findWinner();

@@ -8,18 +8,18 @@ public class OutputView {
     private final static String EXECUTION_RESULT = "실행 결과";
     private final static String FINAL_WINNER = "최종 우승자 : ";
 
-    private boolean isFirst = true;
+    public final void game(List<RacingCar> carNames, int gameCount) {
+        StringBuilder output = new StringBuilder();
 
-    public final void game(List<RacingCar> carNames) {
-        if (isFirst) {
-            System.out.println(EXECUTION_RESULT);
-            isFirst = false;
+        if (gameCount == 0) {
+            output.append(EXECUTION_RESULT).append("\n");
         }
 
         carNames.stream()
-                .map(car -> car.getName() + " : " + "-".repeat(car.getDistance())) // 자동차 이름과 거리 표시
-                .forEach(System.out::println); // 각 줄을 출력
-        System.out.println();
+                .map(car -> car.getName() + " : " + "-".repeat(car.getDistance()))
+                .forEach(result -> output.append(result).append("\n"));
+        output.append("\n");
+        System.out.print(output);
     }
 
     public final void printWinner(List<String> winners) {
