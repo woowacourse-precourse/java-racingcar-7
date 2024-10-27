@@ -50,5 +50,16 @@ public class Application {
     public static boolean canMove() {
         return Randoms.pickNumberInRange(0, 9) >= 4;
     }
+
+    public static String generateRoundResult(List<String> carNames, List<Integer> positions) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < carNames.size(); i++) {
+            sb.append(carNames.get(i)).append(" : ").append("-".repeat(positions.get(i)));
+        }
+        sb.append("\n");
+
+        return sb.toString();
+    }
     }
 }
