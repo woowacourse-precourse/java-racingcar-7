@@ -20,10 +20,6 @@ public final class InputHandler {
         String inputAttempt = readLine().trim();
         System.out.println();
 
-        if (inputAttempt == null) {
-            throw new IllegalArgumentException("시도 횟수를 입력해야 합니다.");
-        }
-
         try {
             return Integer.parseInt(inputAttempt);
         } catch (NumberFormatException e) {
