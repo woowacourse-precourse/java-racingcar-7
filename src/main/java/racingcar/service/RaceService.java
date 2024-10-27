@@ -18,7 +18,7 @@ public class RaceService {
             cars.roundStatus();
         }
 
-        return new ArrayList<>();
+        return cars.findWinners();
     }
 
     private static void validateInputs(String carsNames, String repeatTimes) {
