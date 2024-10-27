@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.dto.RaceRequest;
 import racingcar.dto.RaceResponse;
 import racingcar.filter.RaceFilterChain;
-import racingcar.util.StringUtil;
+import racingcar.common.util.StringUtil;
 
 public class RaceServiceImpl implements RaceService {
     private final RaceFilterChain raceFilterChain;
@@ -15,8 +15,7 @@ public class RaceServiceImpl implements RaceService {
 
     @Override
     public String startRace(RaceRequest request) {
-        RaceResponse response = new RaceResponse();
-        raceFilterChain.doFilter(request, response);
+        RaceResponse response = raceFilterChain.doFilter(request);
         List<String> winners = response.winners();
         return StringUtil.joinWithComma(winners);
     }
