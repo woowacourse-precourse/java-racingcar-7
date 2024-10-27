@@ -5,14 +5,24 @@ import racingcar.domain.Car;
 
 public class OutputView {
 
-    public static void printRaceProgress(List<Car> cars) {
+    private OutputView() {
+    }
+
+    public static void printRaceStart() {
         System.out.println("\n실행 결과");
-        cars.forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        });
+    }
+
+    public static void printRaceProgress(List<Car> cars) {
+        cars.forEach(OutputView::printCarPosition);
+        System.out.println();
     }
 
     public static void printWinners(List<String> winners) {
-        System.out.println("\n최종 우승자 : " + String.join(", ", winners));
+        final String winnersText = String.join(", ", winners);
+        System.out.printf("최종 우승자 : %s%n", winnersText);
+    }
+
+    private static void printCarPosition(Car car) {
+        System.out.printf("%s : %s%n", car.getName(), "-".repeat(car.getPosition()));
     }
 }

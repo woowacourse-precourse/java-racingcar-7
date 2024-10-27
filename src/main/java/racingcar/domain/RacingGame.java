@@ -18,6 +18,7 @@ public class RacingGame {
     }
 
     public void play() {
+        OutputView.printRaceStart();
         IntStream.range(0, numberOfAttempts).forEach(i -> playRound());
         OutputView.printWinners(cars.getWinners());
     }
