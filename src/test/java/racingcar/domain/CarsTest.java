@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class CarsTest {
 
     private Cars cars;
@@ -51,8 +53,8 @@ public class CarsTest {
 
         // when
         cars.racing(moveNumber);
-        Winners winners = cars.determineWinner();
-        int winnersNum = winners.getWinnersCount();
+        List<Car> winnerCars = cars.determineWinner();
+        int winnersNum = winnerCars.size();
 
         // then
         new IntegerAssert(winnersNum).isGreaterThan(0);

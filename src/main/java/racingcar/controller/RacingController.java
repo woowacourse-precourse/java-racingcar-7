@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 import racingcar.handler.NameRequestHandler;
 import racingcar.handler.NumberRequestHandler;
 import racingcar.view.WinnersView;
@@ -23,7 +24,7 @@ public class RacingController {
         Cars cars = Cars.from(names);
 
         cars.racing(moveNum);
-        winnersView.show(cars.determineWinner());
+        winnersView.show(new Winners(cars.determineWinner()));
     }
 
 }
