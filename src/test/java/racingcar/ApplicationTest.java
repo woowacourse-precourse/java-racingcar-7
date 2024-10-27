@@ -24,10 +24,72 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("leo,star", "2");
+                assertThat(output()).contains("최종 우승자 : leo, star");
+            },
+            MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 공동_우승자_테스트2() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("leo,star,rin", "4");
+                assertThat(output()).contains("최종 우승자 : leo, star");
+            },
+            MOVING_FORWARD, MOVING_FORWARD, STOP,
+            MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+            MOVING_FORWARD, MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 계속_정지만_나왔을때_테스트() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("leo,star,rin", "3");
+                assertThat(output()).contains("최종 우승자 : leo, star, rin");
+            },
+            STOP, STOP, STOP,
+            STOP, STOP, STOP,
+            STOP, STOP, STOP
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 콤마_사이_공백_예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("leo, ,star", "1"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수_숫자_아닌_경우_예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("leo, ,star", "n"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 횟수_0_예외_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("leo, ,star", "0"))
+                    .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
