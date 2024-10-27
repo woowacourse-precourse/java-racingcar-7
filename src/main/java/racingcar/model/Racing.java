@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.List;
+
 /**
  * @author : jiffyin7@gmail.com
  * @since : 24. 10. 26.
@@ -15,6 +17,14 @@ public class Racing {
 
   public static Racing from(Cars cars, int roundCount) {
     return new Racing(cars, roundCount);
+  }
+
+  public RacingRoundResult executeRound(){
+    return cars.moveOrStayAll();
+  }
+
+  public List<Car> retrieveWinners(){
+    return cars.getWinners();
   }
 
 }

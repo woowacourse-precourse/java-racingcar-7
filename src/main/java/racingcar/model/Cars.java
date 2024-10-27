@@ -11,4 +11,6 @@ public interface Cars {
   List<Car> findCarsByPosition(int position);
   int findMaxPosition();
   List<Car> getWinners ();
+
+  RacingRoundResult moveOrStayAll();
 }
