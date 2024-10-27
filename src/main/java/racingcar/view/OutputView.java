@@ -10,4 +10,12 @@ public class OutputView {
     public static void requestTryNumber () {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
+
+    public static void printCarState (String carName, String location) {
+        System.out.println(carName + " : " + location);
+    }
+
+    public static void printNewLine () {
+        System.out.println();
+    }
 }

@@ -18,4 +18,14 @@ public class RaceController {
                 raceService.makeCarList(Validate.validateCarNames(carNames)),
                 Validate.validateTryNumber(tryNumber));
     }
+
+    public void play (RequestRaceDto requestRaceDto) {
+        for (int index = 0; index < requestRaceDto.getTryNumber(); index++) {
+            raceService.race(requestRaceDto.getCarList());
+            for (Car car : requestRaceDto.getCarList()) {
+                OutputView.printCarState(car.getCarName(), "-".repeat(Math.max(0, car.getLocation())));
+            }
+            OutputView.printNewLine();
+        }
+    }
 }
