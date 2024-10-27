@@ -12,7 +12,7 @@ public class Racers {
         this.racers = new ArrayList<>();
     }
 
-    public void register(Racer racer) {
+    public void add(Racer racer) {
         this.racers.add(racer);
     }
 

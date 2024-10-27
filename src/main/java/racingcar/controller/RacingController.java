@@ -38,7 +38,7 @@ public class RacingController {
         List<String> carNames = this.inputView.showGetCarNamesInput();
 
         Racers racers = new Racers();
-        carNames.forEach(carName -> racers.register(Racer.of(carName, this.numberGenerator)));
+        carNames.forEach(carName -> racers.add(Racer.of(carName, this.numberGenerator)));
 
         return racers;
     }
