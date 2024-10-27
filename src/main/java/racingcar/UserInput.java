@@ -26,6 +26,14 @@ public class UserInput {
 
     public int readRaceCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return Integer.parseInt(Console.readLine());
+        String raceCountInput = Console.readLine();
+
+        inputValidator.checkForEmptyInput(raceCountInput);
+        inputValidator.checkIfContainsLetters(raceCountInput);
+
+        int raceCount = Integer.parseInt(raceCountInput);
+        inputValidator.checkIfValidRaceCount(raceCount);
+
+        return raceCount;
     }
 }

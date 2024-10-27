@@ -36,4 +36,24 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void checkIfValidRaceCount(int raceCount) {
+        if (raceCount <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkForEmptyInput(String raceCountInput) {
+        if (raceCountInput == null || raceCountInput.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkIfContainsLetters(String raceCountInput) {
+        try {
+            Integer.parseInt(raceCountInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
